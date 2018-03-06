@@ -3,7 +3,7 @@ import Radio, { RadioGroup } from 'material-ui/Radio';
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TwoChoice } from '@pie-libs/config-ui';
+import { TwoChoice } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 
 export const ChoiceType = (props) => {

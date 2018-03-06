@@ -1,5 +1,5 @@
 {
-  "name": "@pie-ui/multiple-choice-configure",
+  "name": "@pie-element/multiple-choice-configure",
   "version": "0.0.1",
   "private": true,
   "main": "./src/index.js",
@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-libs/scoring-config": "^0.3.25",
-    "@pie-libs/config-ui": "^2.1.2",
-    "@pie-libs/editable-html": "^2.2.1",
+    "@pie-lib/scoring-config": "^0.3.28",
+    "@pie-lib/config-ui": "^2.1.5",
+    "@pie-lib/editable-html": "^2.2.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "lodash": "^4.17.4",
