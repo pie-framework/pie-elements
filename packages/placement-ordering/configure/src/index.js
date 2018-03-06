@@ -1,11 +1,11 @@
-import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-libs/pie-configure-events';
+import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
 
-const log = debug('pie-elements:placement-ordering');
+const log = debug('pie-element:placement-ordering');
 
 export default class PlacementOrdering extends HTMLElement {
 

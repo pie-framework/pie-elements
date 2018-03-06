@@ -2,11 +2,12 @@
   "name": "@pie-element/extended-text-entry",
   "version": "1.2.1",
   "description": "",
+  "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/extended-text-entry": "^0.0.1"
+    "@pie-ui/extended-text-entry": "^0.0.2"
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"

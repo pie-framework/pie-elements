@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
-import { ModelUpdatedEvent } from '@pie-libs/pie-configure-events';
+import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
 const log = debug('pie-elements:text-entry:configure');

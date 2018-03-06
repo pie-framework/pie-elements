@@ -1,4 +1,4 @@
-import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-libs/pie-configure-events';
+import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

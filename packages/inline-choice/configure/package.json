@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@pie-libs/config-ui": "^2.0.1",
-    "@pie-libs/pie-configure-events": "^1.1.0",
+    "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-libs/scoring-config": "~0.3.14",
     "debug": "^3.1.0",
     "lodash": "^4.17.4",
