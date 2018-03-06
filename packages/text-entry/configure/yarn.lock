@@ -16,23 +16,23 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@pie-libs/config-ui@^1.4.1":
+"@pie-lib/config-ui@^1.4.1":
   version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@pie-libs/config-ui/-/config-ui-1.8.1.tgz#cc34d6401d736143af27513f38ab06337b294909"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-1.8.1.tgz#cc34d6401d736143af27513f38ab06337b294909"
   dependencies:
-    "@pie-libs/editable-html" "^2.2.1"
-    "@pie-libs/icons" "^0.3.1"
+    "@pie-lib/editable-html" "^2.2.1"
+    "@pie-lib/icons" "^0.3.1"
     debug "^3.0.1"
     material-ui "^1.0.0-beta.27"
     material-ui-icons "^1.0.0-beta.17"
     prop-types "^15.5.10"
     react "^15.6.1"
 
-"@pie-libs/editable-html@^2.2.1":
+"@pie-lib/editable-html@^2.2.1":
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-libs/editable-html/-/editable-html-2.2.1.tgz#ca82b194b7d38d20555d67af38e91fc2e8f0b62a"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-2.2.1.tgz#ca82b194b7d38d20555d67af38e91fc2e8f0b62a"
   dependencies:
-    "@pie-libs/math-input" "^1.0.0"
+    "@pie-lib/math-input" "^1.0.0"
     classnames "^2.2.5"
     debug "^3.0.0"
     immutable "^3.8.2"
@@ -46,18 +46,18 @@
     slate-html-serializer "^0.4.11"
     slate-react "^0.10.17"
 
-"@pie-libs/icons@^0.3.1":
+"@pie-lib/icons@^0.3.1":
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@pie-libs/icons/-/icons-0.3.1.tgz#883b15552e2693dd0810f7766a73662e647cad2b"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-0.3.1.tgz#883b15552e2693dd0810f7766a73662e647cad2b"
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.5.10"
     react "^15.6.1"
     react-jss "^7.0.2"
 
-"@pie-libs/math-input@^1.0.0":
+"@pie-lib/math-input@^1.0.0":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@pie-libs/math-input/-/math-input-1.1.0.tgz#05f34289b365a7448fcdcc0a58b2bfce4d9bcfaf"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-1.1.0.tgz#05f34289b365a7448fcdcc0a58b2bfce4d9bcfaf"
   dependencies:
     debug "^3.0.0"
     lodash "^4.17.4"

@@ -1,7 +1,7 @@
 import { withStyles } from 'material-ui/styles';
 import React from 'react';
 import { Typography, TextField } from 'material-ui';
-import { FeedbackConfig } from '@pie-libs/config-ui';
+import { FeedbackConfig } from '@pie-lib/config-ui';
 import IconButton from 'material-ui/IconButton';
 import debug from 'debug';
 import Responses from './responses';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputCheckbox, TagsInput } from '@pie-libs/config-ui';
+import { InputCheckbox, TagsInput } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 import Box from './box';
 import debug from 'debug';

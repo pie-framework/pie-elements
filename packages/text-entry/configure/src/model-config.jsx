@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, TextField, FormControl, Select, MenuItem } from 'material-ui';
-import { Checkbox, FeedbackConfig, TagsInput, NChoice, InputCheckbox } from '@pie-libs/config-ui';
+import { Checkbox, FeedbackConfig, TagsInput, NChoice, InputCheckbox } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 import range from 'lodash/range';
 import Box from './box';
