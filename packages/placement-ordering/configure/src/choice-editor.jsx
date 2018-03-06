@@ -1,4 +1,4 @@
-import { Checkbox, InputContainer, InputSwitch } from '@pie-libs/config-ui';
+import { Checkbox, InputContainer, InputSwitch } from '@pie-lib/config-ui';
 
 import { AddCircle } from 'material-ui-icons';
 import ChoiceTile from './choice-tile';

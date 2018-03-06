@@ -3,7 +3,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import Design from './design';
 import Help from './help';
 import React from 'react';
-import ScoringConfig from '@pie-libs/scoring-config';
+import ScoringConfig from '@pie-lib/scoring-config';
 import omit from 'lodash/omit';
 import { withContext } from '@pie-ui/placement-ordering';
 import { withStyles } from 'material-ui/styles';

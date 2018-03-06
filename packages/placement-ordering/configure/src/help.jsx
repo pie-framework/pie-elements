@@ -1,4 +1,4 @@
-import { Help } from '@pie-libs/config-ui';
+import { Help } from '@pie-lib/config-ui';
 import React from 'react';
 
 export default (props) => (

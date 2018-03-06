@@ -1,5 +1,5 @@
-import { Checkbox } from '@pie-libs/config-ui';
-import EditableHtml from '@pie-libs/editable-html';
+import { Checkbox } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 
 import { DragSource, DropTarget } from 'react-dnd';
 

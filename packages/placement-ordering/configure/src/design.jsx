@@ -7,8 +7,8 @@ import {
   InputSwitch,
   LanguageControls,
   TwoChoice
-} from '@pie-libs/config-ui';
-import EditableHtml from '@pie-libs/editable-html';
+} from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import { get, set } from 'nested-property';
