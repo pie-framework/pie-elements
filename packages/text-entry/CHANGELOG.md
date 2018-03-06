@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.2"></a>
+## 1.2.2 (2018-03-06)
+
+
+### Bug Fixes
+
+* **dependencies:** fix dependencies ([46a2162](https://github.com/pie-framework/pie-elements/commit/46a2162))
+* **dependencies:** fix dependencies ([136beff](https://github.com/pie-framework/pie-elements/commit/136beff))
+* **dependencies:** update dependency names ([dc789ac](https://github.com/pie-framework/pie-elements/commit/dc789ac))
+
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/v1.1.1...v1.2.0) (2018-03-01)
 
