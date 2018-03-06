@@ -1,0 +1,6 @@
+{
+  "sourceMaps": "inline",
+  "presets": [
+    "airbnb"
+  ]
+}

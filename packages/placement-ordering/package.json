@@ -1,0 +1,20 @@
+{
+  "name": "@pie-element/placement-ordering",
+  "version": "1.2.1",
+  "description": "",
+  "repository": "pie-framework/pie-elements",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pie-ui/placement-ordering": "^2.0.0"
+  },
+  "pie": {
+    "element": "@pie-ui/placement-ordering"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

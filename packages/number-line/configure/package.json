@@ -1,0 +1,13 @@
+{
+  "name": "@pie-element/number-line-configure",
+  "private": true,
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "@pie-ui/number-line-element": "^1.0.0",
+    "@pie-libs/config-ui": "^2.1.2",
+    "material-ui": "^1.0.0-beta.27"
+  }
+}

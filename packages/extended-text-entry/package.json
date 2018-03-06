@@ -1,0 +1,19 @@
+{
+  "name": "@pie-element/extended-text-entry",
+  "version": "1.2.1",
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pie-ui/extended-text-entry": "^0.0.1"
+  },
+  "pie": {
+    "element": "@pie-ui/extended-text-entry"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

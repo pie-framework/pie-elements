@@ -1,0 +1,29 @@
+{
+  "name": "@pie-element/inline-choice",
+  "repository": "pie-framework/pie-elements",
+  "version": "1.2.1",
+  "description": "An inline-choice component.",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "configure-test": "echo todo",
+    "controller-test": "cd controller && npm run test",
+    "test": "npm run configure-test && npm run controller-test"
+  },
+  "author": "ed.eustace@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@pie-ui/inline-choice": "^2.0.0"
+  },
+  "pie": {
+    "element": "@pie-ui/inline-choice"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "configure"
+    ]
+  }
+}
