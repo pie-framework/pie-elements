@@ -3,7 +3,7 @@ import {
   Checkbox,
   FeedbackConfig,
   NumberTextField
-} from '@pie-libs/config-ui';
+} from '@pie-lib/config-ui';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import {
   Graph,

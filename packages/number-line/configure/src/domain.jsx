@@ -1,4 +1,4 @@
-import { NumberTextField } from '@pie-libs/config-ui';
+import { NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 
