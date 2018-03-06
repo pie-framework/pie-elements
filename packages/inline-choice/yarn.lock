@@ -10,11 +10,11 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@pie-libs/correct-answer-toggle@^0.1.4":
+"@pie-lib/correct-answer-toggle@^0.1.4":
   version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@pie-libs/correct-answer-toggle/-/correct-answer-toggle-0.1.4.tgz#8218eafca337be9f75c828954b3c5ad45d7b862d"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-0.1.4.tgz#8218eafca337be9f75c828954b3c5ad45d7b862d"
   dependencies:
-    "@pie-libs/icons" "^0.2.3"
+    "@pie-lib/icons" "^0.2.3"
     classnames "^2.2.5"
     jss "^8.1.0"
     less "^2.7.2"
@@ -24,16 +24,16 @@
     react-jss "^7.0.2"
     react-transition-group "^2.1.0"
 
-"@pie-libs/icons@^0.2.3":
+"@pie-lib/icons@^0.2.3":
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@pie-libs/icons/-/icons-0.2.3.tgz#892b105e0ee96797df671f0b96331f89dbf64dd9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-0.2.3.tgz#892b105e0ee96797df671f0b96331f89dbf64dd9"
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.5.10"
     react "^15.6.1"
     react-jss "^7.0.2"
 
-"@pie-libs/icons@^0.3.0":
+"@pie-lib/icons@^0.3.0":
   version "0.3.0"
   resolved "http://localhost:4873/@pie-libs%2ficons/-/icons-0.3.0.tgz#d80312ad1a706e52dbb20220ce62f84c9c0861fb"
   dependencies:
@@ -42,15 +42,15 @@
     react "^15.6.1"
     react-jss "^7.0.2"
 
-"@pie-libs/pie-player-events@0.0.1":
+"@pie-lib/pie-player-events@0.0.1":
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-libs/pie-player-events/-/pie-player-events-0.0.1.tgz#de4b66f408391b4544e920700026570e3d1f7dea"
+  resolved "https://registry.yarnpkg.com/@pie-lib/pie-player-events/-/pie-player-events-0.0.1.tgz#de4b66f408391b4544e920700026570e3d1f7dea"
 
-"@pie-libs/render-ui@^0.1.6":
+"@pie-lib/render-ui@^0.1.6":
   version "0.1.6"
   resolved "http://localhost:4873/@pie-libs%2frender-ui/-/render-ui-0.1.6.tgz#f237aeed903e6abd9c2e9ab50dd38c227c24216c"
   dependencies:
-    "@pie-libs/icons" "^0.3.0"
+    "@pie-lib/icons" "^0.3.0"
     debug "^3.1.0"
     material-ui "1.0.0-beta.27"
     react-addons-css-transition-group "^15.6.2"

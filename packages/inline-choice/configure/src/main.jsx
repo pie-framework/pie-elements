@@ -1,6 +1,6 @@
 import React from 'react';
-import { ChoiceConfiguration } from '@pie-libs/config-ui';
-import EditableHtml from '@pie-libs/editable-html';
+import { ChoiceConfiguration } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
