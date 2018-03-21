@@ -1,0 +1,17 @@
+{
+  "name": "@pie-element/function-entry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/function-entry": "../../../pie-ui/packages/function-entry"
+  },
+  "pie": {
+    "element": "@pie-ui/function-entry"
+  },
+  "author": "",
+  "license": "ISC"
+}
