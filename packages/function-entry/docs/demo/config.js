@@ -16,10 +16,8 @@ module.exports = {
         equation: '3x+2',
       },
       model: {
-        config: {
-          ignoreSpacing: true,
-          showFormattingHelp: true
-        }
+        ignoreSpacing: true,
+        showFormattingHelp: true
       }
     }
   ]
