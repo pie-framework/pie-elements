@@ -6,7 +6,8 @@
     {
       "id": "1",
       "element": "extended-text-entry",
-      "message": "Hello world 2"
+      "width": 100,
+      "height": 200
     }
   ]
 }
