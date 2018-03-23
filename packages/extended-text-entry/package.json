@@ -7,7 +7,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/extended-text-entry": "^0.0.2"
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/config-ui": "^2.1.5",
+    "lodash": "^4.17.5",
+    "lodash.throttle": "^4.1.1"
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
