@@ -11,11 +11,11 @@ export default class Main extends React.Component {
   }
 
   handleWidthChange(event) {
-    this.props.handleWidthChange(parseInt(event.target.value));
+    this.props.handleBoxResize(parseInt(event.target.value), 'width');
   }
 
   handleHeightChange(event) {
-    this.props.handleHeightChange(parseInt(event.target.value));
+    this.props.handleBoxResize(parseInt(event.target.value), 'height');
   }
 
   render() {
@@ -45,7 +45,6 @@ export default class Main extends React.Component {
 }
 
 Main.propTypes = {
-  handleWidthChange: PropTypes.func.isRequired,
-  handleHeightChange: PropTypes.func.isRequired,
+  handleBoxResize: PropTypes.func.isRequired,
   model: PropTypes.object
 }

@@ -21,16 +21,9 @@ export default class Root extends React.Component {
     })
   }
 
-  handleWidthChange = (width) => {
+  handleBoxResize = (value, type) => {
     let update = cloneDeep(this.state.model);
-    update.width = width;
-    this.update(update);
-  }
-
-  handleHeightChange = (height) => {
-    
-    let update = cloneDeep(this.state.model);
-    update.height = height;
+    update[type] = value;
     this.update(update);
   }  
 
@@ -38,8 +31,7 @@ export default class Root extends React.Component {
     return (
       <Main
         model={this.state.model}
-        handleWidthChange={this.handleWidthChange}
-        handleHeightChange={this.handleHeightChange}
+        handleBoxResize={this.handleBoxResize}
       />
     );
   }
