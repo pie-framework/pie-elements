@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component Match Snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Main
+    handleBoxResize={[Function]}
+    model={Object {}}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "Box Width",
+        <NumberTextField
+          max={3}
+          min={1}
+          onChange={[Function]}
+          value={undefined}
+        />,
+        "column",
+        <br />,
+        "Box Height",
+        <NumberTextField
+          max={10}
+          min={1}
+          onChange={[Function]}
+          value={undefined}
+        />,
+        "rows",
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      "Box Width",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "max": 3,
+          "min": 1,
+          "onChange": [Function],
+          "value": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "column",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": "br",
+      },
+      "Box Height",
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "max": 10,
+          "min": 1,
+          "onChange": [Function],
+          "value": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "rows",
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "Box Width",
+          <NumberTextField
+            max={3}
+            min={1}
+            onChange={[Function]}
+            value={undefined}
+          />,
+          "column",
+          <br />,
+          "Box Height",
+          <NumberTextField
+            max={10}
+            min={1}
+            onChange={[Function]}
+            value={undefined}
+          />,
+          "rows",
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        "Box Width",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "max": 3,
+            "min": 1,
+            "onChange": [Function],
+            "value": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "column",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        "Box Height",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "max": 10,
+            "min": 1,
+            "onChange": [Function],
+            "value": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "rows",
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactFifteenAdapter {
+      "options": Object {
+        "supportPrevContextArgumentOfComponentDidUpdate": true,
+      },
+    },
+  },
+}
+`;
