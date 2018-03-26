@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Typography } from 'material-ui';
 import { InputCheckbox } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 import Box from './box';
 
 class RawModelConfig extends React.Component {
-
+  static propTypes = {
+    classes: PropTypes.object,
+    config: PropTypes.object,
+    onChange: PropTypes.func,
+  }
   onChange = (key) => (event) => {
     this.props.config[key] = event.target.checked;
     this.props.onChange(this.props.config);
@@ -33,7 +38,7 @@ class RawModelConfig extends React.Component {
   }
 }
 
-const ModelConfig = withStyles(theme => ({
+const ModelConfig = withStyles(() => ({
   numberOpts: {
     display: 'flex',
     flexWrap: 'wrap',
