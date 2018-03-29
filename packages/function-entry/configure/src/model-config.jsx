@@ -7,14 +7,15 @@ import Box from './box';
 
 class RawModelConfig extends React.Component {
   static propTypes = {
-    classes: PropTypes.object,
-    config: PropTypes.object,
-    onChange: PropTypes.func,
-  }
+    classes: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+  };
+
   onChange = (key) => (event) => {
     this.props.config[key] = event.target.checked;
     this.props.onChange(this.props.config);
-  }
+  };
 
   render() {
     const { config, classes } = this.props;
