@@ -8,12 +8,14 @@ module.exports = {
       id: '1',
       element: 'function-entry',
       weight: 1,
-      feedback: {
-        correctFeedbackType: 'default',
-        incorrectFeedbackType: 'default'
+      incorrectFeedback: {
+        type: 'default',
       },
       correctResponse: {
         equation: '3x+2',
+        feedback: {
+          type: 'default',
+        },
       },
       model: {
         ignoreSpacing: true,
