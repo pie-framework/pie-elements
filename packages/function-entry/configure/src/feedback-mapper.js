@@ -8,8 +8,8 @@ export const modelToFeedbackConfig = model => {
     correctFeedbackType: correctFeedback.type || 'default',
     incorrectFeedback: incorrectFeedback.value,
     incorrectFeedbackType: incorrectFeedback.type || 'default',
-  }
-}
+  };
+};
 
 export const feedbackConfigToModel = (config, model) => {
 
@@ -18,11 +18,12 @@ export const feedbackConfigToModel = (config, model) => {
   model.correctResponse.feedback = {
     type: config.correctFeedbackType,
     value: config.correctFeedback
-  }
+  };
 
   model.incorrectFeedback = {
     type: config.incorrectFeedbackType,
     value: config.incorrectFeedback
-  }
+  };
+
   return model;
-}
+};
