@@ -1,0 +1,19 @@
+{
+  "name": "@pie-element/point-intercept",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/point-intercept": "^0.0.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "pie": {
+    "element": "@pie-ui/point-intercept"
+  }
+}
