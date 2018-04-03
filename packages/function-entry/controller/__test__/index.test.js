@@ -31,10 +31,6 @@ describe('model', () => {
       result = await model(question, session, env);
     });
 
-    it('returns color_contrast', () => {
-      expect(result.colorContrast).toEqual('black_on_white');
-    });
-
     it('returns disabled:false', () => {
       expect(result.disabled).toEqual(false);
     });
@@ -113,4 +109,15 @@ describe('model', () => {
       expect(result.feedback).toEqual('foo');
     });
   });
+
+  describe('evaluate - correct with mathjs', () => {
+    it('returns correct for mathematically correct answer too', async () => {
+      question = mkQuestion();
+      session = { value: '3x+2+1-1+x-x' };
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness).toEqual('correct');
+    });
+  })
 });
