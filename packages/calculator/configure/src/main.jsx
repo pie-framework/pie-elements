@@ -13,6 +13,23 @@ export default class Main extends React.Component {
     };
   }
 
+  handleModelChange(){
+    this.props.onModelChanged(this.state.model);
+  }
+
+  update(model){
+    this.setState({ model }, () => {
+      this.handleModelChange();
+    })
+  }
+
+  onChangeHandler = (twoChoice) => {
+    this.setState({ twoChoice, model: this.props.model});
+    let update = this.props.model;
+    update.mode = twoChoice;
+    this.update(update);
+  }
+
   render() {
     const { basic, scientific } = this.state;
     return (
@@ -20,10 +37,10 @@ export default class Main extends React.Component {
         <TwoChoice
           header="Choose Calculator Type"
           value={this.state.twoChoice}
-          onChange={twoChoice => this.setState({ twoChoice })}
+          onChange={twoChoice => this.onChangeHandler(twoChoice)}
           one={{ label: 'Basic', value: 'basic' }}
           two={{ label: 'Scientific', value: 'scientific' }} />
-          {this.state.twoChoice && <Calculator mode={this.state.twoChoice} />}
+        {this.state.twoChoice && <Calculator mode={this.state.twoChoice} />}
       </div>
     );
   }
