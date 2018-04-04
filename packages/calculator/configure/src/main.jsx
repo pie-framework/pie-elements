@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Calculator from '@pie-framework/material-ui-calculator';
 import { InputRadio, TwoChoice } from '@pie-lib/config-ui';
 
 export default class Main extends React.Component {
@@ -40,7 +39,6 @@ export default class Main extends React.Component {
           onChange={twoChoice => this.onChangeHandler(twoChoice)}
           one={{ label: 'Basic', value: 'basic' }}
           two={{ label: 'Scientific', value: 'scientific' }} />
-        {this.state.twoChoice && <Calculator mode={this.state.twoChoice} />}
       </div>
     );
   }
