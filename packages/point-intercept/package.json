@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/point-intercept": "^0.0.1"
+    "@pie-ui/point-intercept": "../../../pie-ui/packages/point-intercept"
   },
   "author": "",
   "license": "ISC",

@@ -7,5 +7,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+  "dependencies": {
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/charting": "^0.1.0",
+    "@pie-lib/config-ui": "^2.1.5",
+    "@pie-lib/correct-answer-toggle": "^0.1.9",
+    "material-ui": "^1.0.0-beta.27",
+    "prop-types": "^15.6.0",
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.6",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "jest": "^22.0.6",
+    "regenerator-runtime": "^0.11.1"
+  },
   "license": "ISC"
 }
