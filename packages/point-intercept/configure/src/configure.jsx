@@ -64,22 +64,25 @@ class Configure extends React.Component {
     this.state = {
       session: { ...props.session, points },
       selection: [],
-      showCorrect: false
     };
   }
 
+  componentWillMount() {
+    this.props.onModelChanged(this.props.model);
+  }
+
   componentWillReceiveProps(nextProps) {
-    const points = nextProps.session && nextProps.session.points || [];
-    const session = { ...nextProps.session, points };
-    this.setState({ session });
+    // const points = nextProps.session && nextProps.session.points || [];
+    // const session = { ...nextProps.session, points };
+    // this.setState({ session });
   }
 
   addPoint = p => {
-    const { pointLabels } = this.props.model;
+    const { pointLabels } = this.props.model.model;
     const points = utils.addPoint(this.state.session.points, p, pointLabels);
     const session = { ...this.state.session, points };
     log('[addPoint] points: ', session.points);
-    this.setState({ session }, this.callOnSessionChange);
+    this.setState({ session }, this.updateSessionAndModel);
   };
 
   selectionChange = selection => {
@@ -87,8 +90,21 @@ class Configure extends React.Component {
     this.setState({ selection });
   };
 
+  updateSessionAndModel = () => {
+    this.callOnSessionChange();
+    this.callOnModelChange();
+  };
+
+  callOnModelChange = () => {
+    const { session } = this.state;
+
+    this.props.model.correctResponse = session.points;
+    this.props.onModelChanged(this.props.model);
+  };
+
   callOnSessionChange = () => {
     const { onSessionChange } = this.props;
+
     if (onSessionChange) {
       onSessionChange(this.state.session);
     }
@@ -101,32 +117,34 @@ class Configure extends React.Component {
     );
 
     const session = { ...this.state.session, points };
-    this.setState({ session, selection: [] }, this.callOnSessionChange());
+    this.setState({ session, selection: [] }, this.updateSessionAndModel);
   };
 
   movePoint = (from, to) => {
     const points = utils.swapPoint(this.state.session.points, from, to);
     const session = { ...this.state.session, points };
     const selection = utils.swapPoint(this.state.selection, from, to);
-    this.setState({ session, selection }, this.callOnSessionChange);
+    this.setState({ session, selection }, this.updateSessionAndModel);
   };
 
   onModelConfigChange = (name) => event => {
-    this.props.model[name] = event.target.checked;
+    this.props.model.model[name] = event.target.checked;
     this.props.onModelChanged(this.props.model);
   };
 
   onPointLabelChange = (index) => event => {
     const session = this.state.session;
+    const model = this.props.model.model;
     session.points[index].label = event.target.value;
-    this.setState({ session }, this.callOnSessionChange);
+    model.pointLabels[index] = event.target.value;
+    this.setState({ session }, this.updateSessionAndModel);
   };
 
   onRangeModelConfigChange = (name, shouldNotBeNumber) => event => {
     const newNumberValue = parseInt(event.target.value, 10);
 
     if (!shouldNotBeNumber && !isNaN(newNumberValue) || shouldNotBeNumber) {
-      this.props.model.range[name] = shouldNotBeNumber ? event.target.value : newNumberValue;
+      this.props.model.model.range[name] = shouldNotBeNumber ? event.target.value : newNumberValue;
       this.props.onModelChanged(this.props.model);
     }
   };
@@ -135,7 +153,7 @@ class Configure extends React.Component {
     const newNumberValue = parseInt(event.target.value, 10);
 
     if (!shouldNotBeNumber && !isNaN(newNumberValue) || shouldNotBeNumber) {
-      this.props.model.domain[name] = shouldNotBeNumber ? event.target.value : newNumberValue;
+      this.props.model.model.domain[name] = shouldNotBeNumber ? event.target.value : newNumberValue;
       this.props.onModelChanged(this.props.model);
     }
   };
@@ -158,10 +176,10 @@ class Configure extends React.Component {
           onDeleteClick={this.deleteSelection}
         />
         <PlotPoints
-          width={model.width}
-          height={model.height}
-          domain={model.domain}
-          range={model.range}
+          width={model.model.width}
+          height={model.model.height}
+          domain={model.model.domain}
+          range={model.model.range}
           disabled={model.disabled || false}
           onAddPoint={this.addPoint}
           onSelectionChange={this.selectionChange}
@@ -224,7 +242,7 @@ class Configure extends React.Component {
                 <Input
                   type="text"
                   onChange={this.onRangeModelConfigChange('label', true)}
-                  value={model.range.label}
+                  value={model.model.range.label}
                   placeholder="Enter Label"
                 />
               </InputContainer>
@@ -232,7 +250,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onRangeModelConfigChange('min')}
-                  value={model.range.min}
+                  value={model.model.range.min}
                   placeholder="Enter Minimum"
                 />
               </InputContainer>
@@ -240,7 +258,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onRangeModelConfigChange('max')}
-                  value={model.range.max}
+                  value={model.model.range.max}
                   placeholder="Enter Maximum"
                 />
               </InputContainer>
@@ -248,7 +266,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onRangeModelConfigChange('step')}
-                  value={model.range.step}
+                  value={model.model.range.step}
                   placeholder="Enter Step"
                 />
               </InputContainer>
@@ -257,7 +275,7 @@ class Configure extends React.Component {
                   className={classes['options-input']}
                   type="number"
                   onChange={this.onRangeModelConfigChange('snap')}
-                  value={model.range.snap}
+                  value={model.model.range.snap}
                   placeholder="Enter Snap"
                 />
               </InputContainer>
@@ -265,7 +283,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onRangeModelConfigChange('labelFrequency')}
-                  value={model.range.labelFrequency}
+                  value={model.model.range.labelFrequency}
                   placeholder="Enter Label Frequency"
                 />
               </InputContainer>
@@ -273,7 +291,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onRangeModelConfigChange('padding')}
-                  value={model.range.padding}
+                  value={model.model.range.padding}
                   placeholder="Enter Padding"
                 />
               </InputContainer>
@@ -284,7 +302,7 @@ class Configure extends React.Component {
                 <Input
                   type="text"
                   onChange={this.onDomainModelConfigChange('label', true)}
-                  value={model.domain.label}
+                  value={model.model.domain.label}
                   placeholder="Enter Label"
                 />
               </InputContainer>
@@ -292,7 +310,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onDomainModelConfigChange('min')}
-                  value={model.domain.min}
+                  value={model.model.domain.min}
                   placeholder="Enter Minimum"
                 />
               </InputContainer>
@@ -300,7 +318,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onDomainModelConfigChange('max')}
-                  value={model.domain.max}
+                  value={model.model.domain.max}
                   placeholder="Enter Maximum"
                 />
               </InputContainer>
@@ -308,7 +326,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onDomainModelConfigChange('step')}
-                  value={model.domain.step}
+                  value={model.model.domain.step}
                   placeholder="Enter Step"
                 />
               </InputContainer>
@@ -317,7 +335,7 @@ class Configure extends React.Component {
                   className={classes['options-input']}
                   type="number"
                   onChange={this.onDomainModelConfigChange('snap')}
-                  value={model.domain.snap}
+                  value={model.model.domain.snap}
                   placeholder="Enter Snap"
                 />
               </InputContainer>
@@ -325,7 +343,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onDomainModelConfigChange('labelFrequency')}
-                  value={model.domain.labelFrequency}
+                  value={model.model.domain.labelFrequency}
                   placeholder="Enter Label Frequency"
                 />
               </InputContainer>
@@ -333,7 +351,7 @@ class Configure extends React.Component {
                 <Input
                   type="number"
                   onChange={this.onDomainModelConfigChange('padding')}
-                  value={model.domain.padding}
+                  value={model.model.domain.padding}
                   placeholder="Enter Padding"
                 />
               </InputContainer>

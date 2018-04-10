@@ -1,23 +1,12 @@
 export const model = (question, session, env) => {
-  const { model: { config } } = question;
+  const { model } = question;
+debugger;
   return Promise.resolve({
-    width: config.graphWidth,
-    height: config.graphHeight,
+    width: model.width,
+    height: model.height,
     disabled: env.mode !== 'gather',
-    pointLabels: ['A', 'B', 'C', 'D'],
-    domain: {
-      min: config.domainMin,
-      max: config.domainMax,
-      padding: config.domainGraphPadding,
-      step: config.domainStepValue,
-      snap: config.domainSnapValue
-    },
-    range: {
-      min: config.rangeMin,
-      max: config.rangeMax,
-      padding: config.rangeGraphPadding,
-      step: config.rangeStepValue,
-      snap: config.rangeSnapValue
-    }
+    pointLabels: model.pointLabels,
+    domain: model.domain,
+    range: model.range,
   });
 };

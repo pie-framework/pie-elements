@@ -65,11 +65,11 @@ export function formatToOldModel(newModel) {
   const oldModel = Object.assign(newModel, {});
 
   Object.keys(rangeModelMap).forEach(key => {
-    oldModel.model.config[key] = newModel.range[rangeModelMap[key]];
+    oldModel.model.config[key] = newModel.model.range[rangeModelMap[key]];
   });
 
   Object.keys(domainModelMap).forEach(key => {
-    oldModel.model.config[key] = newModel.domain[domainModelMap[key]];
+    oldModel.model.config[key] = newModel.model.domain[domainModelMap[key]];
   });
 
   return oldModel;
@@ -79,19 +79,22 @@ export function formatToNewModel(oldModel) {
   const newModel = Object.assign(oldModel, {});
   const oldModelCopy = Object.assign(oldModel, {});
 
-  newModel.range = {};
-  newModel.domain = {};
+  newModel.model = {
+    range: {},
+    domain: {},
+    config: oldModel.model.config,
+  };
 
   Object.keys(rangeModelMap).forEach(key => {
-    newModel.range[rangeModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.model.range[rangeModelMap[key]] = oldModelCopy.model.config[key];
   });
 
   Object.keys(domainModelMap).forEach(key => {
-    newModel.domain[domainModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.model.domain[domainModelMap[key]] = oldModelCopy.model.config[key];
   });
 
   Object.keys(oldModelCopy.model.config).forEach(key => {
-    newModel[modelMap[key] || key] = oldModel.model.config[key];
+    newModel.model[modelMap[key] || key] = oldModel.model.config[key];
   });
 
   return newModel;
