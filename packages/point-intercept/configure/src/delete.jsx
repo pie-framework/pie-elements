@@ -4,8 +4,7 @@ import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
 import Delete from 'material-ui-icons/Delete';
 
-export class Controls extends React.Component {
-
+export class DeleteControl extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     onDeleteClick: PropTypes.func.isRequired,
@@ -18,23 +17,18 @@ export class Controls extends React.Component {
     return (<div>
       <Button
         className={classes.button}
-        color="primary"
         disabled={disabled}
         onClick={onDeleteClick} >
-        Delete
-        <Delete className={classes.rightIcon} />
+        <Delete />
       </Button>
     </div>);
   }
 }
 
-const styles = theme => ({
+const styles = () => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: 0,
   },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
-  }
 });
 
-export default withStyles(styles)(Controls);
+export default withStyles(styles)(DeleteControl);

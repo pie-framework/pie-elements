@@ -13,8 +13,11 @@ module.exports = {
       partialScoring: [{}],
       feedback: {
         correctFeedbackType: 'none',
+        correctFeedbackValue: '',
         partialFeedbackType: 'none',
-        incorrectFeedbackType: 'none'
+        partialFeedbackValue: '',
+        incorrectFeedbackType: 'none',
+        incorrectFeedbackValue: '',
       },
       model: {
         config: {

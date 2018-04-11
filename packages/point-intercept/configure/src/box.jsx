@@ -3,9 +3,14 @@ import { withStyles } from 'material-ui/styles';
 
 const Box = withStyles(theme => ({
   box: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    padding: 0,
+  },
+  separator: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+    border: 0,
+    'border-top': '1px solid #eeeeee',
   }
-}))(({ classes, children }) => (<div className={classes.box}>{children}</div>))
+}))(({ classes, children }) => (<div className={classes.box}>{children}<hr className={classes.separator} /></div>))
 
 export default Box;
