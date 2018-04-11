@@ -12,7 +12,7 @@ const process = (v, ignoreWhitespace) => {
 const isResponseCorrect = (correctResponse, model, value) => {
   const processedValue = process(value, model.ignoreSpacing);
 
-  return processedValue === correctResponse;
+  return processedValue.equals(mathjs.simplify(correctResponse));
 };
 
 export function model(question, session, env) {
@@ -28,13 +28,15 @@ export function model(question, session, env) {
 
     const getFeedback = (correctness) => {
 
-      const fb = (config) => {
+      const fb = (config, defaultValue, incorrect) => {
         config = config || {};
         if (config.type === 'custom') {
           return config.value;
-        } else if (config.type === 'default') {
+        } else if (config.type === 'default' && !incorrect) {
           return 'Correct';
         }
+
+        return defaultValue;
       };
 
       if (env.mode === 'evaluate') {
@@ -44,7 +46,7 @@ export function model(question, session, env) {
         }
 
         if (correctness === 'incorrect') {
-          return fb(question.incorrectFeedback, defaultFeedback.incorrect);
+          return fb(question.incorrectFeedback, defaultFeedback.incorrect, true);
         }
 
         if (correctness === 'empty') {
@@ -67,7 +69,6 @@ export function model(question, session, env) {
 
     const correctness = getCorrectness();
     const base = {
-      colorContrast: 'black_on_white',
       correctness,
       feedback: getFeedback(correctness),
       disabled: env.mode !== 'gather'

@@ -1,5 +1,4 @@
 export const modelToFeedbackConfig = model => {
-
   const correctFeedback = model.correctResponse.feedback || {};
   const incorrectFeedback = model.incorrectFeedback || {};
 
