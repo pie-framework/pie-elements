@@ -9,7 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/point-intercept": "../../../pie-ui/packages/point-intercept"
+    "@pie-lib/scoring-config": "^0.3.31",
+    "@pie-ui/point-intercept": "../../../pie-ui/packages/point-intercept",
+    "react-swipeable-views": "^0.12.13"
   },
   "author": "",
   "license": "ISC",

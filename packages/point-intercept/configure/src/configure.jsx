@@ -1,9 +1,12 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import { InputRadio, InputCheckbox, InputContainer } from '@pie-lib/config-ui';
+import PartialScoringConfig from '@pie-lib/scoring-config';
 import { FeedbackConfig } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
+import SwipeableViews from 'react-swipeable-views';
+import Tabs, { Tab } from 'material-ui/Tabs';
 import Input from 'material-ui/Input';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -98,6 +101,9 @@ const styles = theme => ({
   'display-input': {
     width: '90%',
   },
+  tab: {
+    marginTop: theme.spacing.unit * 2,
+  }
 });
 
 class Configure extends React.Component {
@@ -110,14 +116,25 @@ class Configure extends React.Component {
   constructor(props) {
     super(props);
     this.defaults = JSON.parse(JSON.stringify(props.model));
+    this.state = {
+      activeTab: 0,
+    };
   }
 
   resetToDefaults = () => {
     this.props.onModelChanged({ ...this.defaults });
   };
 
+  onTabChange = (event, value) => {
+    this.setState({ activeTab: value });
+  };
+
+  onChangeTabIndex = index => {
+    this.setState({ activeTab: index });
+  };
+
   onModelConfigChange = (name) => event => {
-    this.props.model.model[name] = event.target.checked;
+    this.props.model.model.config[name] = event.target.checked;
     this.props.onModelChanged(this.props.model);
   };
 
@@ -179,11 +196,20 @@ class Configure extends React.Component {
 
   onFeedbackChange = (feedbackConfig) => {
     const model = feedbackConfigToModel(feedbackConfig, this.props.model);
-    this.props.onModelChanged(this.props.model);
-  }
+    this.props.onModelChanged(model);
+  };
 
   onToggleWithLabels = (setTrue) => () => {
     this.props.model.model.config.showPointLabels = setTrue;
+    this.props.onModelChanged(this.props.model);
+  };
+
+  onPartialScoringChange = (partialScoring) => {
+    this.props.model.partialScoring = partialScoring.map(partialScore => ({
+      numberOfCorrect: partialScore.numberOfCorrect || '',
+      scorePercentage: partialScore.scorePercentage || '',
+    }));
+
     this.props.onModelChanged(this.props.model);
   };
 
@@ -196,301 +222,337 @@ class Configure extends React.Component {
 
     return (
       <div>
-        <Typography type="body1">
-          <span>In Plot Points, students identify coordinates or plot points on a graph by clicking on the graph.</span>
-        </Typography>
-        <h2>Points</h2>
-        <div className={classes['with-labels-container']}>
-          <InputRadio
-            className={classes['with-labels-radio-control']}
-            checked={config.showPointLabels}
-            onChange={this.onToggleWithLabels(true)}
-            label="With Labels"
-          />
-          <InputRadio
-            className={classes['with-labels-radio-control']}
-            checked={config.showPointLabels === false}
-            onChange={this.onToggleWithLabels(false)}
-            label="Without Labels"
-          />
-        </div>
-        <div className={classes['options-checkbox']}>
-          <InputCheckbox
-            label="Points Must Match Labels"
-            checked={config.pointsMustMatchLabels}
-            onChange={this.onModelConfigChange('pointsMustMatchLabels')}/>
-        </div>
-        <Box>
-          <div className={classes['points-column-container']}>
-            {model.correctResponse.length === 0 && <Typography>There are currently no points on the table.</Typography>}
-            {model.correctResponse.map((point, index) => {
-              const [pointX, pointY] = point.split(',');
-
-              return (
-                <div className={classes['points-row']} key={index}>
-                  <b>(</b>
-                  <Input
-                    className={classes['point-input']}
-                    type="number"
-                    onChange={this.onPointValueChange(index, 0)}
-                    value={pointX}
-                    placeholder="Enter Value"
-                  />
-                  <b>,</b>
-                  <Input
-                    className={classes['point-input']}
-                    type="number"
-                    onChange={this.onPointValueChange(index, 1)}
-                    value={pointY}
-                    placeholder="Enter Value"
-                  />
-                  <b>)</b>
-                  <Input
-                    className={classes['point-input']}
-                    type="text"
-                    onChange={this.onPointLabelChange(index)}
-                    value={config.pointLabels[index]}
-                    placeholder="Enter Value"
-                  />
-                  <DeleteControl onDeleteClick={this.deletePoint(index)} disabled={false}/>
-                </div>
-              );
-            })}
-            <AddControl onAddClick={this.addPoint}/>
-            <div className={classes['max-input-container']}>
-              <Typography type="body1">
-                Maximum number of points a student is allowed to plot (optional):
-              </Typography>
-              <Input
-                className={classes['max-input']}
-                type="number"
-                onChange={this.onMaxPointsChange}
-                value={config.maxPoints}
-                placeholder="Enter Value"
+        <Tabs
+          value={this.state.activeTab}
+          onChange={this.onTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+          fullWidth
+        >
+          <Tab label="Design" />
+          <Tab disabled={!config.allowPartialScoring} label="Scoring" />
+        </Tabs>
+        <SwipeableViews
+          axis="x"
+          index={this.state.activeTab}
+          onChangeIndex={this.onChangeTabIndex}
+        >
+          <div className={classes.tab}>
+            <Typography component="div" type="body1">
+              <span>In Plot Points, students identify coordinates or plot points on a graph by clicking on the graph.</span>
+              <h2>Points</h2>
+            </Typography>
+            <div className={classes['with-labels-container']}>
+              <InputRadio
+                className={classes['with-labels-radio-control']}
+                checked={config.showPointLabels}
+                onChange={this.onToggleWithLabels(true)}
+                label="With Labels"
+              />
+              <InputRadio
+                className={classes['with-labels-radio-control']}
+                checked={config.showPointLabels === false}
+                onChange={this.onToggleWithLabels(false)}
+                label="Without Labels"
               />
             </div>
-          </div>
-        </Box>
-        <Box>
-          <h2>Graph Attributes</h2>
-          <Typography type="body1">
+            <div style={{ display: 'flex' }}>
+              <div className={classes['display-options-container']}>
+                <div className={classes['options-checkbox']}>
+                  <InputCheckbox
+                    label="Points Must Match Labels"
+                    checked={config.pointsMustMatchLabels}
+                    onChange={this.onModelConfigChange('pointsMustMatchLabels')}/>
+                </div>
+              </div>
+              <div className={classes['display-options-container']}>
+                <div className={classes['options-checkbox']}>
+                  <InputCheckbox
+                    label="Allow Partial Scoring"
+                    checked={config.allowPartialScoring}
+                    onChange={this.onModelConfigChange('allowPartialScoring')}/>
+                </div>
+              </div>
+            </div>
+            <Box>
+              <div className={classes['points-column-container']}>
+                {model.correctResponse.length === 0 && <Typography>There are currently no points on the table.</Typography>}
+                {model.correctResponse.map((point, index) => {
+                  const [pointX, pointY] = point.split(',');
+
+                  return (
+                    <div className={classes['points-row']} key={index}>
+                      <b>(</b>
+                      <Input
+                        className={classes['point-input']}
+                        type="number"
+                        onChange={this.onPointValueChange(index, 0)}
+                        value={pointX}
+                        placeholder="Enter Value"
+                      />
+                      <b>,</b>
+                      <Input
+                        className={classes['point-input']}
+                        type="number"
+                        onChange={this.onPointValueChange(index, 1)}
+                        value={pointY}
+                        placeholder="Enter Value"
+                      />
+                      <b>)</b>
+                      <Input
+                        className={classes['point-input']}
+                        type="text"
+                        onChange={this.onPointLabelChange(index)}
+                        value={config.pointLabels[index]}
+                        placeholder="Enter Value"
+                      />
+                      <DeleteControl onDeleteClick={this.deletePoint(index)} disabled={false}/>
+                    </div>
+                  );
+                })}
+                <AddControl onAddClick={this.addPoint}/>
+                <div className={classes['max-input-container']}>
+                  <Typography type="body1">
+                    Maximum number of points a student is allowed to plot (optional):
+                  </Typography>
+                  <Input
+                    className={classes['max-input']}
+                    type="number"
+                    onChange={this.onMaxPointsChange}
+                    value={config.maxPoints}
+                    placeholder="Enter Value"
+                  />
+                </div>
+              </div>
+            </Box>
+            <Box>
+              <h2>Graph Attributes</h2>
+              <Typography type="body1">
             <span>
               Use this section to setup the graph area. Note: Minimum value may not be greater than 0.
               Maximum value may not be less than 0. Minimum and maximum values can not be equal.
             </span>
-          </Typography>
-          <h3>Domain (X)</h3>
-          <div className={classes['graph-attributes-container']}>
-            <div className={classes['options-column-container']}>
-              <div className={classes['options-column']}>
-                <InputContainer label="Minimum Value">
+              </Typography>
+              <h3>Domain (X)</h3>
+              <div className={classes['graph-attributes-container']}>
+                <div className={classes['options-column-container']}>
+                  <div className={classes['options-column']}>
+                    <InputContainer label="Minimum Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('domainMin')}
+                        value={config.domainMin}
+                        placeholder="Enter Minimum"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Tick Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('domainStepValue')}
+                        value={config.domainStepValue}
+                        placeholder="Enter Tick"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Tick Label Frequency">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('domainLabelFrequency')}
+                        value={config.domainLabelFrequency}
+                        placeholder="Enter Tick Label Frequency"
+                      />
+                    </InputContainer>
+                  </div>
+                  <div className={classes['options-column']}>
+                    <InputContainer label="Maximum Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('domainMax')}
+                        value={config.domainMax}
+                        placeholder="Enter Maximum"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Snap Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('domainSnapValue')}
+                        value={config.domainSnapValue}
+                        placeholder="Enter Snap"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Padding (%)">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        step={25}
+                        onChange={this.onModelConfigAttributeChange('domainGraphPadding')}
+                        value={config.domainGraphPadding}
+                        placeholder="Enter Padding"
+                      />
+                    </InputContainer>
+                  </div>
+                </div>
+              </div>
+              <h3>Range (Y)</h3>
+              <div className={classes['graph-attributes-container']}>
+                <div className={classes['options-column-container']}>
+                  <div className={classes['options-column']}>
+                    <InputContainer label="Minimum Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('rangeMin')}
+                        value={config.rangeMin}
+                        placeholder="Enter Minimum"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Tick Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('rangeStepValue')}
+                        value={config.rangeStepValue}
+                        placeholder="Enter Tick"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Tick Label Frequency">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('rangeLabelFrequency')}
+                        value={config.rangeLabelFrequency}
+                        placeholder="Enter Tick Label Frequency"
+                      />
+                    </InputContainer>
+                  </div>
+                  <div className={classes['options-column']}>
+                    <InputContainer label="Maximum Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('rangeMax')}
+                        value={config.rangeMax}
+                        placeholder="Enter Maximum"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Snap Value">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        onChange={this.onModelConfigAttributeChange('rangeSnapValue')}
+                        value={config.rangeSnapValue}
+                        placeholder="Enter Snap"
+                      />
+                    </InputContainer>
+                    <InputContainer label="Padding (%)">
+                      <Input
+                        className={classes['attribute-input']}
+                        type="number"
+                        step={25}
+                        onChange={this.onModelConfigAttributeChange('rangeGraphPadding')}
+                        value={config.rangeGraphPadding}
+                        placeholder="Enter Padding"
+                      />
+                    </InputContainer>
+                  </div>
+                </div>
+              </div>
+            </Box>
+            <Box>
+              <h2>Display</h2>
+              <h4>Graph Labels</h4>
+              <div className={classes['display-controls-container']}>
+                <InputContainer label="Top">
                   <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('domainMin')}
-                    value={config.domainMin}
-                    placeholder="Enter Minimum"
+                    className={classes['display-input']}
+                    type="text"
+                    onChange={this.onModelConfigAttributeChange('graphTitle', true)}
+                    value={config.graphTitle}
+                    placeholder="Enter Value"
                   />
                 </InputContainer>
-                <InputContainer label="Tick Value">
+                <InputContainer label="Left">
                   <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('domainStepValue')}
-                    value={config.domainStepValue}
-                    placeholder="Enter Tick"
+                    className={classes['display-input']}
+                    type="text"
+                    onChange={this.onModelConfigAttributeChange('domainLabel', true)}
+                    value={config.domainLabel}
+                    placeholder="Enter Value"
                   />
                 </InputContainer>
-                <InputContainer label="Tick Label Frequency">
+                <InputContainer label="Bottom">
                   <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('domainLabelFrequency')}
-                    value={config.domainLabelFrequency}
-                    placeholder="Enter Tick Label Frequency"
+                    className={classes['display-input']}
+                    type="text"
+                    onChange={this.onModelConfigAttributeChange('rangeLabel', true)}
+                    value={config.rangeLabel}
+                    placeholder="Enter Value"
                   />
                 </InputContainer>
               </div>
-              <div className={classes['options-column']}>
-                <InputContainer label="Maximum Value">
+              <div className={classes['display-controls-container']}>
+                <InputContainer label="Width">
                   <Input
-                    className={classes['attribute-input']}
+                    className={classes['display-input']}
                     type="number"
-                    onChange={this.onModelConfigAttributeChange('domainMax')}
-                    value={config.domainMax}
-                    placeholder="Enter Maximum"
+                    onChange={this.onModelConfigAttributeChange('graphWidth')}
+                    value={config.graphWidth}
+                    placeholder="Enter Value"
                   />
                 </InputContainer>
-                <InputContainer label="Snap Value">
+                <InputContainer label="Height">
                   <Input
-                    className={classes['attribute-input']}
+                    className={classes['display-input']}
                     type="number"
-                    onChange={this.onModelConfigAttributeChange('domainSnapValue')}
-                    value={config.domainSnapValue}
-                    placeholder="Enter Snap"
-                  />
-                </InputContainer>
-                <InputContainer label="Padding (%)">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    step={25}
-                    onChange={this.onModelConfigAttributeChange('domainGraphPadding')}
-                    value={config.domainGraphPadding}
-                    placeholder="Enter Padding"
+                    onChange={this.onModelConfigAttributeChange('graphHeight')}
+                    value={config.graphHeight}
+                    placeholder="Enter Value"
                   />
                 </InputContainer>
               </div>
-            </div>
+              <div style={{ display: 'flex' }}>
+                <div className={classes['display-options-container']}>
+                  <div className={classes['options-checkbox']}>
+                    <InputCheckbox
+                      label="Show Point Labels"
+                      checked={config.showPointLabels}
+                      onChange={this.onModelConfigAttributeChange('showPointLabels', true, true)}/>
+                  </div>
+                  <div className={classes['options-checkbox']}>
+                    <InputCheckbox
+                      label="Show Axis Labels"
+                      checked={config.showAxisLabels}
+                      onChange={this.onModelConfigAttributeChange('showAxisLabels', true, true)}/>
+                  </div>
+                </div>
+                <div className={classes['display-options-container']}>
+                  <div className={classes['options-checkbox']}>
+                    <InputCheckbox
+                      label="Show Point Coordinates"
+                      checked={config.showCoordinates}
+                      onChange={this.onModelConfigAttributeChange('showCoordinates', true, true)}/>
+                  </div>
+                </div>
+              </div>
+              <Button onClick={this.resetToDefaults}>
+                <i>Reset to default values</i>
+              </Button>
+            </Box>
+            <FeedbackConfig
+              feedback={feedbackConfig}
+              onChange={this.onFeedbackChange}/>
           </div>
-          <h3>Range (Y)</h3>
-          <div className={classes['graph-attributes-container']}>
-            <div className={classes['options-column-container']}>
-              <div className={classes['options-column']}>
-                <InputContainer label="Minimum Value">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('rangeMin')}
-                    value={config.rangeMin}
-                    placeholder="Enter Minimum"
-                  />
-                </InputContainer>
-                <InputContainer label="Tick Value">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('rangeStepValue')}
-                    value={config.rangeStepValue}
-                    placeholder="Enter Tick"
-                  />
-                </InputContainer>
-                <InputContainer label="Tick Label Frequency">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('rangeLabelFrequency')}
-                    value={config.rangeLabelFrequency}
-                    placeholder="Enter Tick Label Frequency"
-                  />
-                </InputContainer>
-              </div>
-              <div className={classes['options-column']}>
-                <InputContainer label="Maximum Value">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('rangeMax')}
-                    value={config.rangeMax}
-                    placeholder="Enter Maximum"
-                  />
-                </InputContainer>
-                <InputContainer label="Snap Value">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    onChange={this.onModelConfigAttributeChange('rangeSnapValue')}
-                    value={config.rangeSnapValue}
-                    placeholder="Enter Snap"
-                  />
-                </InputContainer>
-                <InputContainer label="Padding (%)">
-                  <Input
-                    className={classes['attribute-input']}
-                    type="number"
-                    step={25}
-                    onChange={this.onModelConfigAttributeChange('rangeGraphPadding')}
-                    value={config.rangeGraphPadding}
-                    placeholder="Enter Padding"
-                  />
-                </InputContainer>
-              </div>
-            </div>
+          <div className={classes.tab}>
+            <PartialScoringConfig
+              numberOfCorrectResponses={model.correctResponse.length}
+              partialScoring={model.partialScoring}
+              onChange={this.onPartialScoringChange} />
           </div>
-        </Box>
-        <Box>
-          <h2>Display</h2>
-          <h4>Graph Labels</h4>
-          <div className={classes['display-controls-container']}>
-            <InputContainer label="Top">
-              <Input
-                className={classes['display-input']}
-                type="text"
-                onChange={this.onModelConfigAttributeChange('graphTitle', true)}
-                value={config.graphTitle}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
-            <InputContainer label="Left">
-              <Input
-                className={classes['display-input']}
-                type="text"
-                onChange={this.onModelConfigAttributeChange('domainLabel', true)}
-                value={config.domainLabel}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
-            <InputContainer label="Bottom">
-              <Input
-                className={classes['display-input']}
-                type="text"
-                onChange={this.onModelConfigAttributeChange('rangeLabel', true)}
-                value={config.rangeLabel}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
-          </div>
-          <div className={classes['display-controls-container']}>
-            <InputContainer label="Width">
-              <Input
-                className={classes['display-input']}
-                type="number"
-                onChange={this.onModelConfigAttributeChange('graphWidth')}
-                value={config.graphWidth}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
-            <InputContainer label="Height">
-              <Input
-                className={classes['display-input']}
-                type="number"
-                onChange={this.onModelConfigAttributeChange('graphHeight')}
-                value={config.graphHeight}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
-          </div>
-          <div style={{ display: 'flex' }}>
-            <div className={classes['display-options-container']}>
-              <div className={classes['options-checkbox']}>
-                <InputCheckbox
-                  label="Show Point Labels"
-                  checked={config.showPointLabels}
-                  onChange={this.onModelConfigAttributeChange('showPointLabels', true, true)}/>
-              </div>
-              <div className={classes['options-checkbox']}>
-                <InputCheckbox
-                  label="Show Axis Labels"
-                  checked={config.showAxisLabels}
-                  onChange={this.onModelConfigAttributeChange('showAxisLabels', true, true)}/>
-              </div>
-            </div>
-            <div className={classes['display-options-container']}>
-              <div className={classes['options-checkbox']}>
-                <InputCheckbox
-                  label="Show Point Coordinates"
-                  checked={config.showCoordinates}
-                  onChange={this.onModelConfigAttributeChange('showCoordinates', true, true)}/>
-              </div>
-            </div>
-          </div>
-          <Button onClick={this.resetToDefaults}>
-            <i>Reset to default values</i>
-          </Button>
-        </Box>
-        <FeedbackConfig
-          feedback={feedbackConfig}
-          onChange={this.onFeedbackChange}/>
+        </SwipeableViews>
       </div>
     )
   }

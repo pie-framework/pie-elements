@@ -10,7 +10,7 @@ module.exports = {
       minimumWidth: 500,
       correctResponse: ['0,0', '1,1', '2,2', '3,3'],
       allowPartialScoring: false,
-      partialScoring: [{}],
+      partialScoring: [],
       feedback: {
         correctFeedbackType: 'none',
         correctFeedbackValue: '',
