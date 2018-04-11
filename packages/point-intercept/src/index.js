@@ -40,7 +40,7 @@ export default class PointIntercept extends HTMLElement {
       session: {
         id: this._session.id,
         element: this._session.element,
-        poitns: mapper.toSessionPoints(this._session, this._model)
+        points: mapper.toSessionPoints(this._session, this._model)
       },
       onSessionChange: this.sessionChanged.bind(this)
     };
