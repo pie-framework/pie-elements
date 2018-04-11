@@ -4,18 +4,16 @@
     "access": "public"
   },
   "version": "1.0.0",
+  "main": "src/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@pie-lib/scoring-config": "^0.3.31",
-    "@pie-ui/point-intercept": "../../../pie-ui/packages/point-intercept",
+    "@pie-ui/point-intercept": "^0.0.1",
     "react-swipeable-views": "^0.12.13"
   },
   "author": "",
-  "license": "ISC",
-  "pie": {
-    "element": "@pie-ui/point-intercept"
-  }
+  "license": "ISC"
 }
