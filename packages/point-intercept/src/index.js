@@ -37,7 +37,11 @@ export default class PointIntercept extends HTMLElement {
 
     const props = {
       model: mapper.toComponentModel(this._model),
-      session: mapper.toSessionPoints(this._session, this._model),
+      session: {
+        id: this._session.id,
+        element: this._session.element,
+        poitns: mapper.toSessionPoints(this._session, this._model)
+      },
       onSessionChange: this.sessionChanged.bind(this)
     };
 
