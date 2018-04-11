@@ -7,7 +7,6 @@
 //   partialScoring: [{}],
 // }
 
-
 //
 // /**
 //  * Legacy system had sigfigs - which i think is for checking if a value
@@ -33,7 +32,7 @@ const rangeModelMap = {
   rangeStepValue: 'step',
   rangeSnapValue: 'snap',
   rangeLabelFrequency: 'labelFrequency',
-  rangeGraphPadding: 'padding',
+  rangeGraphPadding: 'padding'
 };
 
 const domainModelMap = {
@@ -43,7 +42,7 @@ const domainModelMap = {
   domainStepValue: 'step',
   domainSnapValue: 'snap',
   domainLabelFrequency: 'labelFrequency',
-  domainGraphPadding: 'padding',
+  domainGraphPadding: 'padding'
 };
 
 const modelMap = {
@@ -61,28 +60,22 @@ const modelMap = {
   showFeedback: ''
 };
 
-export function formatToOldModel(newModel) {
-  const oldModel = Object.assign(newModel, {});
-
-  Object.keys(rangeModelMap).forEach(key => {
-    oldModel.model.config[key] = newModel.model.range[rangeModelMap[key]];
-  });
-
-  Object.keys(domainModelMap).forEach(key => {
-    oldModel.model.config[key] = newModel.model.domain[domainModelMap[key]];
-  });
-
-  return oldModel;
+export function toSessionPoints(answers, oldModel) {
+  return [];
 }
 
-export function formatToNewModel(oldModel) {
-  const newModel = Object.assign(oldModel, {});
-  const oldModelCopy = Object.assign(oldModel, {});
+export function toSessionAnswers(points) {
+  return [];
+}
+
+export function toComponentModel(m) {
+  const newModel = Object.assign({}, m);
+  const oldModelCopy = Object.assign({}, m);
 
   newModel.model = {
     range: {},
     domain: {},
-    config: oldModel.model.config,
+    config: m.model.config
   };
 
   Object.keys(rangeModelMap).forEach(key => {
@@ -94,7 +87,7 @@ export function formatToNewModel(oldModel) {
   });
 
   Object.keys(oldModelCopy.model.config).forEach(key => {
-    newModel.model[modelMap[key] || key] = oldModel.model.config[key];
+    newModel.model[modelMap[key] || key] = m.model.config[key];
   });
 
   return newModel;

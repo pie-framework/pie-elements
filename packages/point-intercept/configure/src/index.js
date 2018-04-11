@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
-import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
-import { formatToNewModel, formatToOldModel } from './model-mapper';
 
 const log = debug('pie-elements:function-entry:configure');
 
 export default class FunctionEntryConfigure extends HTMLElement {
-
   constructor() {
     super();
   }
 
   set model(m) {
-    // this._model = formatToNewModel(m);
     this._model = m;
     this._render();
   }
@@ -22,7 +19,6 @@ export default class FunctionEntryConfigure extends HTMLElement {
   onModelChanged(model) {
     this._model = model;
     log('[onModelChanged]: ', this._model);
-    // this.dispatchEvent(new ModelUpdatedEvent(formatToOldModel(this._model)));
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
