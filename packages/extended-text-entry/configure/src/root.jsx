@@ -1,36 +1,43 @@
 import React from 'react';
-import {NumberTextField} from '@pie-lib/config-ui'
+import Main from './main';
+import PropTypes from 'prop-types';
+import cloneDeep from 'lodash/cloneDeep';
 
 export default class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.handleNumberFieldChange = this.handleNumberFieldChange.bind(this);
+    this.state = {
+      model : props.model
+    }
   }
 
-  handleNumberFieldChange(change) {
-    console.log("CHANGE", change);
+  handleModelChange(){
+    this.props.onModelChanged(this.state.model);
   }
+
+  update(model){
+    this.setState({ model }, () => {
+      this.handleModelChange();
+    })
+  }
+
+  handleBoxResize = (value, type) => {
+    let update = cloneDeep(this.state.model);
+    update[type] = value;
+    this.update(update);
+  }  
 
   render() {
     return (
-      <div>
-      <NumberTextField 
-        value={100}
-        min={1}
-        max={3}
-        onChange={this.handleNumberFieldChange}
-        
+      <Main
+        model={this.state.model}
+        handleBoxResize={this.handleBoxResize}
       />
-      Column
-      <NumberTextField 
-        value={100}
-        min={1}
-        max={10}
-        onChange={this.handleNumberFieldChange}
-        label="Hello"
-      />
-      Rows
-      </div>
     );
   }
+}
+
+Root.propTypes = {
+  model: PropTypes.object.isRequired,
+  onModelChanged: PropTypes.func.isRequired
 }

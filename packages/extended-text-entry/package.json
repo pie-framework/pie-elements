@@ -9,16 +9,16 @@
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^2.1.5",
+    "@pie-ui/extended-text-entry": "^0.0.2",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
     "lodash": "^4.17.5",
     "lodash.throttle": "^4.1.1",
-    "@pie-ui/extended-text-entry": "^0.0.4"
+    "prop-types": "^15.6.1"
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "Mukesh Sharma",
   "license": "ISC"
 }
