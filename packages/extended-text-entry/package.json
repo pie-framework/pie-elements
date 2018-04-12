@@ -6,16 +6,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "author": "Mukesh Sharma",
+  "license": "ISC",
   "dependencies": {
     "@pie-ui/extended-text-entry": "^0.0.5"
   },
-  "devDependencies": {
-    "babel-eslint": "^8.2.2",
-    "eslint": "^4.19.1"
-  },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
-  },
-  "author": "Mukesh Sharma",
-  "license": "ISC"
+  }
 }

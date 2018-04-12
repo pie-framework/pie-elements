@@ -6,8 +6,8 @@ module.exports = {
     {
       id: '1',
       element: 'extended-text-entry',
-      width: 100,
-      height: 200,
+      width: '200px',
+      height: '100px',
       disabled: false,
       mode: 'gather'
     }

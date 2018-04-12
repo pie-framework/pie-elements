@@ -22,8 +22,8 @@ export default class Main extends React.Component {
     return (
       <div>
         Box Width
-        <NumberTextField
-          value={this.props.model.width}
+        <NumberTextField 
+          value={parseInt(this.props.model.width)}
           min={1}
           max={3}
           onChange={this.handleWidthChange}
@@ -31,10 +31,10 @@ export default class Main extends React.Component {
         column
         <br />
         Box Height
-        <NumberTextField
-          value={this.props.model.height}
+        <NumberTextField 
+          value={parseInt(this.props.model.height)}
           min={1}
-          max={10}
+          max={3}
           onChange={this.handleHeightChange}
         />
         rows
