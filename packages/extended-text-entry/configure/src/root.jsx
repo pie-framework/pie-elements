@@ -1,7 +1,7 @@
 import React from 'react';
-import Main from './main';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
+import Main from './main';
 
 export default class Root extends React.Component {
   constructor(props) {
@@ -29,10 +29,12 @@ export default class Root extends React.Component {
 
   render() {
     return (
-      <Main
-        model={this.state.model}
-        handleBoxResize={this.handleBoxResize}
-      />
+      <div>
+        <Main
+          model={this.state.model}
+          handleBoxResize={this.handleBoxResize}        
+        />
+      </div>
     );
   }
 }

@@ -1,9 +1,7 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root.jsx';
-
+import Root from './root';
 
 export default class extends HTMLElement {
 
@@ -12,18 +10,14 @@ export default class extends HTMLElement {
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
-  set model(s) {
-    this._model = s;
+  set model(m) {
+    this._model = m;
     this._render();
-  }
-
-  dispatchModelUpdated() {
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
   onModelChanged(m) {
     this._model = m;
-    this.dispatchModelUpdated();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
   _render() {
