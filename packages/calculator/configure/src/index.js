@@ -4,10 +4,8 @@ import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 export default class extends HTMLElement {
-
-  constructor(){
+  constructor() {
     super();
-    this._render();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
@@ -16,21 +14,22 @@ export default class extends HTMLElement {
     this._render();
   }
 
-  dispatchModelUpdated() {
+  onModelChanged(m) {
+    this._model = m;
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
-  onModelChanged(m) {
-    this._model = m;
-    this.dispatchModelUpdated();
+  connectedCallback() {
+    this._render();
   }
 
   _render() {
-    let element = React.createElement(Main, {
-      model: this._model,
-      onModelChanged: this.onModelChanged
-    });
-    ReactDOM.render(element, this);
+    if (this._model) {
+      const element = React.createElement(Main, {
+        model: this._model,
+        onChange: this.onModelChanged
+      });
+      ReactDOM.render(element, this);
+    }
   }
-
 }

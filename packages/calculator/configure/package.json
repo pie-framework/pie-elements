@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-framework/material-ui-calculator": "^1.1.1",
-    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-framework/pie-configure-events": "^1.3.0",
     "@pie-lib/config-ui": "^2.2.1",
+    "@pie-ui/calculator": "^1.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
