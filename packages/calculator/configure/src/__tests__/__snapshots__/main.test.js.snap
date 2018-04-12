@@ -3,7 +3,7 @@
 exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
 <div>
   <TwoChoice
-    header="Choose Calculator Type"
+    header="Choose a Calculator"
     onChange={[Function]}
     one={
       Object {
@@ -17,7 +17,17 @@ exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
         "value": "scientific",
       }
     }
-    value=""
+    value="basic"
   />
+  <br />
+  <CalculatorLayout
+    mode="basic"
+    onClose={[Function]}
+  />
+  <br />
+  <br />
+  <WithStyles(Typography)>
+    Please note that the calculators are tools for students and do not record answers.
+  </WithStyles(Typography)>
 </div>
 `;

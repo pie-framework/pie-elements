@@ -1,22 +1,23 @@
 import React from 'react';
-import Main from '../main';
+import { Main } from '../main';
 import { truncateSync } from 'fs';
 
 describe('Render a calculator element', () => {
-  let wrapper;
+  let wrapper, onChange;
 
   beforeEach(() => {
-    wrapper = shallow(<Main model={{mode: 'basic'}} onModelChanged={() => true}/>)
-  })
+    onChange = jest.fn();
+    wrapper = shallow(<Main model={{ mode: 'basic' }} onChange={onChange} />);
+  });
 
   it('Creates snapshot using enzyme', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('Test for onChangeHandler', () => {
-    wrapper.instance().onChangeHandler('scientific');
-    const twoChoice = wrapper.state('twoChoice');
-    expect(twoChoice).toEqual('scientific');
-  })
-
+  describe('onModeChange', () => {
+    it('calls onChange', () => {
+      wrapper.instance().onModeChange('scientific');
+      expect(onChange.mock.calls.length).toEqual(1);
+    });
+  });
 });
