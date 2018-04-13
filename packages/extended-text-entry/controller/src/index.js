@@ -6,7 +6,7 @@ export function model(model, session, env) {
       value: env.mode === 'evaluate' ? ((!session.value) ? '' : session.value ) : undefined
     };
 
-    const out = Object.assign(base, model);
+    const out = Object.assign(model, base);
     resolve(out);
   });
 }
