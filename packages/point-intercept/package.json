@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@pie-lib/scoring-config": "^0.3.31",
-    "@pie-ui/point-intercept": "^0.0.1",
+    "@pie-ui/point-intercept": "../../../pie-ui/packages/point-intercept",
     "react-swipeable-views": "^0.12.13"
   },
   "author": "",

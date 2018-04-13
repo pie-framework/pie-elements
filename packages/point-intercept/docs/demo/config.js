@@ -9,7 +9,6 @@ module.exports = {
       //below is the legacy corespring point intercept model...
       minimumWidth: 500,
       correctResponse: ['0,0', '1,1', '2,2', '3,3'],
-      allowPartialScoring: false,
       partialScoring: [],
       feedback: {
         correctFeedbackType: 'none',
@@ -42,6 +41,7 @@ module.exports = {
           rangeLabelFrequency: 1,
           rangeGraphPadding: 50,
           sigfigs: -1,
+          allowPartialScoring: false,
           showCoordinates: false,
           showPointLabels: true,
           showInputs: true,

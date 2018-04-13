@@ -4,5 +4,5 @@ module.exports = [
    * What this really means is that the order of the points are important.
    * The labels aren't saved in the session.
    */
-  { id: '1', element: 'point-intercept', answers: ['0,0', '1,1', '2,2', '3,3'] }
+  { id: '1', element: 'point-intercept' }
 ];

@@ -6,7 +6,7 @@ import debug from 'debug';
 
 const log = debug('pie-elements:function-entry:configure');
 
-export default class FunctionEntryConfigure extends HTMLElement {
+export default class PointInterceptConfigure extends HTMLElement {
   constructor() {
     super();
   }

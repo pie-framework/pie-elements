@@ -22,7 +22,7 @@ export default class PointIntercept extends HTMLElement {
   }
 
   sessionChanged(s) {
-    this._session.answers = mapper.toSessionAnswers(s.points);
+    this._session.answers = s.points;
     log('session: ', this._session);
   }
 
@@ -37,11 +37,7 @@ export default class PointIntercept extends HTMLElement {
 
     const props = {
       model: mapper.toComponentModel(this._model),
-      session: {
-        id: this._session.id,
-        element: this._session.element,
-        points: mapper.toSessionPoints(this._session, this._model)
-      },
+      session: this._session,
       onSessionChange: this.sessionChanged.bind(this)
     };
 
