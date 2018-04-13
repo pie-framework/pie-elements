@@ -6,10 +6,8 @@
   "author": "Mukesh Sharma",
   "license": "ISC",
   "dependencies": {
-    "@pie-lib/config-ui": "^2.1.5",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^2.2.2",
-    "prop-types": "^15.6.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "lodash": "^4.17.5",
