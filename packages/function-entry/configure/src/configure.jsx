@@ -83,8 +83,6 @@ class Configure extends React.Component {
 
     log('[render] model', model);
 
-    debugger;
-
     return (
         <div>
           <Typography type="body1">
