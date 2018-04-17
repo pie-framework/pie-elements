@@ -9,7 +9,7 @@
   "author": "",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^2.1.5",
+    "@pie-lib/config-ui": "^3.0.1",
     "@pie-ui/function-entry": "^1.1.1",
     "material-ui": "^1.0.0-beta.27",
     "prop-types": "^15.6.0",

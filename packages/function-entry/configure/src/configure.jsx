@@ -1,33 +1,44 @@
 import { withStyles } from 'material-ui/styles';
 import { FeedbackConfig, Checkbox } from '@pie-lib/config-ui';
-import { HintsPopover } from '@pie-ui/function-entry';
+import { Hints } from '@pie-ui/function-entry';
 import React from 'react';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Input from 'material-ui/Input';
 import Typography from 'material-ui/Typography';
-import ModelConfig from './model-config';
 import { modelToFeedbackConfig, feedbackConfigToModel } from './feedback-mapper';
 
 const log = debug('@pie-element:text-entry:configure');
 
 const styles = theme => ({
   title: {
-    'font-size': '1.1rem',
+    fontSize: '1.1rem',
     display: 'block',
-    'margin-top': theme.spacing.unit * 2,
-    'margin-bottom': theme.spacing.unit,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit,
   },
-  'equation-row-container': {
+  equationRowContainer: {
     display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-    'margin-top': theme.spacing.unit * 2,
-    'margin-bottom': theme.spacing.unit * 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
-  'equation-label': {
-    'margin-right': theme.spacing.unit,
+  equationLabel: {
+    marginRight: theme.spacing.unit,
   },
+  hintsControlRow: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  hintsCheckbox: {
+    display: 'inline-block',
+  },
+  hints: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 class Configure extends React.Component {
@@ -37,66 +48,41 @@ class Configure extends React.Component {
     onModelChanged: PropTypes.func,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hintsAnchorEl: null,
-      anchorReference: 'anchorEl',
-      hintsOpen: true,
-    };
-  }
-
-  onModelConfigChange = (cfg) => {
-    this.props.model.model = cfg;
-    this.props.onModelChanged(this.props.model);
-  }
-
   onEquationChange = (event) => {
     this.props.model.correctResponse.equation = event.target.value;
     this.props.onModelChanged(this.props.model);
-  }
-
-  onFormattingHelpChange = (event) => {
-    this.props.model.showFormattingHelp = event.target.value;
-    this.props.onModelChanged(this.props.model);
-  }
-
-  handleHintsPopoverOpen = event => {
-    this.setState({ hintsAnchorEl: event.target });
   };
 
-  handleHintsPopoverClose = () => {
-    this.setState({ hintsAnchorEl: null });
+  onFormattingHelpChange = (event) => {
+    this.props.model.model.showFormattingHelp = event.target.checked;
+    this.props.onModelChanged(this.props.model);
   };
 
   onFeedbackChange = (feedbackConfig) => {
     const model = feedbackConfigToModel(feedbackConfig, this.props.model);
-    this.props.onModelChanged(this.props.model);
-  }
+    this.props.onModelChanged(model);
+  };
 
   render() {
     const { classes, model } = this.props;
-    const { anchorReference, hintsAnchorEl } = this.state;
     const feedbackConfig = modelToFeedbackConfig(model);
-    const hintsOpen = !!hintsAnchorEl;
 
     log('[render] model', model);
 
     return (
         <div>
-          <Typography type="body1">
-            <span>In Evaluate an Expression, a student submits a linear or polynomial expression to be evaluated.</span>
-            <span className={classes.title}>Expression</span>
-            <span>Enter the expression against which the the student&#39;s response will be evaluated. <br/>
+          <Typography component="div" type="body1">
+            <p>In Evaluate an Expression, a student submits a linear or polynomial expression to be evaluated.</p>
+            <p className={classes.title}>Expression</p>
+            <p>Enter the expression against which the the student&#39;s response will be evaluated. <br/>
               Note that <b><i> y </i></b>is the dependent variable and <b><i> f(x) </i></b> is some function
               where <b><i> x </i></b> is the independent variable. <br/>
               Expressions <b> must </b> be input using <b><i> x </i></b> and/or <b><i> y </i></b> variables.
-            </span>
+            </p>
           </Typography>
-          <div className={classes['equation-row-container']}>
+          <div className={classes.equationRowContainer}>
             <Typography type="body1">
-              <span className={classes['equation-label']}>y = </span>
+              <span className={classes.equationLabel}>y = </span>
             </Typography>
             <Input
               type="text"
@@ -115,32 +101,18 @@ class Configure extends React.Component {
               to be sure of the correctness.
             </span>
           </Typography>
-          <div className={classes['hints-control-row']}>
+          <div className={classes.hintsControlRow}>
             <Checkbox
-              className={classes['hints-checkbox']}
+              className={classes.hintsCheckbox}
               checked={model.model.showFormattingHelp}
               onChange={this.onFormattingHelpChange}
               label=""
             />
-            <Typography>
-              <span>
-                Show the student the formatting &nbsp;
-                <span
-                    onMouseOver={this.handleHintsPopoverOpen}
-                    onMouseOut={this.handleHintsPopoverClose}
-                >
-                  <i><b>hints</b></i>
-                </span>
-                &nbsp; for constructing an answer
-              </span>
+            <Typography component="span">
+              Show the student the formatting hints for constructing an answer
             </Typography>
           </div>
-          <HintsPopover
-            hintsOpen={hintsOpen}
-            hintsAnchorEl={hintsAnchorEl}
-            anchorReference={anchorReference}
-          />
-          <ModelConfig config={model.model} onChange={this.onModelConfigChange} />
+          { model.model.showFormattingHelp && <Hints className={classes.hints} />}
           <FeedbackConfig
               feedback={feedbackConfig}
               onChange={this.onFeedbackChange} />
@@ -162,10 +134,10 @@ class StateWrapper extends React.Component {
 
     this.state = {
       model: props.model
-    }
+    };
 
-    this.onModelChanged = (m) => {
-      this.setState({ model: m }, () => {
+    this.onModelChanged = (model) => {
+      this.setState({ model }, () => {
         this.props.onModelChanged(this.state.model);
       });
     }
@@ -173,6 +145,7 @@ class StateWrapper extends React.Component {
 
   render() {
     const { model } = this.state;
+
     return <ConfigureMain model={model} onModelChanged={this.onModelChanged}/>
   }
 }

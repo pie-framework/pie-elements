@@ -1,5 +1,4 @@
 module.exports = {
-
   elements: {
     'function-entry': '../..'
   },
@@ -18,9 +17,8 @@ module.exports = {
         },
       },
       model: {
-        ignoreSpacing: true,
         showFormattingHelp: true
       }
     }
   ]
-}
+};

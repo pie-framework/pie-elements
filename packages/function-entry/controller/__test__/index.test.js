@@ -1,15 +1,9 @@
 import { model } from '../src/index';
 
-
 describe('model', () => {
-
-
   let result, question, session, env;
 
   const mkQuestion = () => ({
-    model: {
-      ignoreSpacing: true,
-    },
     correctResponse: {
       equation: '3x+2',
       feedback: {
@@ -110,14 +104,26 @@ describe('model', () => {
     });
   });
 
-  describe('evaluate - correct with mathjs', () => {
-    it('returns correct for mathematically correct answer too', async () => {
+  describe('evaluate - correctness with mathjs', () => {
+    it('returns (in)correct for mathematically (in)correct answer too', async () => {
       question = mkQuestion();
       session = { value: '3x+2+1-1+x-x' };
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
 
       expect(result.correctness).toEqual('correct');
+
+      session = { value: '3+3x+2-3' };
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness).toEqual('correct');
+
+      session = { value: '3+3x+2-3+x' };
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness).toEqual('incorrect');
     });
   })
 });
