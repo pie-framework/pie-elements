@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/function-entry": "../../../pie-ui/packages/function-entry"
+    "@pie-ui/function-entry": "^2.1.0"
   },
   "pie": {
     "element": "@pie-ui/function-entry"
