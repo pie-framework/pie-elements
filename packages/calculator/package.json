@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/calculator",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A catalog tool",
   "repository": "pie-framework/pie-elements",
   "scripts": {
@@ -9,8 +9,12 @@
     "test:coverage": "jest --coverage"
   },
   "jest": {
-    "setupFiles": ["./jestsetup.js"],
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "setupFiles": [
+      "./jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     }
