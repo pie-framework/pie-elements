@@ -3,14 +3,10 @@ import mathjs from 'mathjs';
 
 const log = debug('@pie-element:function-entry:controller');
 
-const process = (v, ignoreWhitespace) => {
-  let out = v ? v.trim() : '';
-  out = !ignoreWhitespace ? out : out.replace(/ /g, '');
-  return mathjs.simplify(out);
-};
+const process = v => mathjs.simplify(v ? v.trim() : '');
 
 const isResponseCorrect = (correctResponse, model, value) => {
-  const processedValue = process(value, model.ignoreSpacing);
+  const processedValue = process(value);
 
   return processedValue.equals(mathjs.simplify(correctResponse));
 };
@@ -18,7 +14,7 @@ const isResponseCorrect = (correctResponse, model, value) => {
 export function model(question, session, env) {
   return new Promise((resolve) => {
 
-    const {model, correctResponse} = question;
+    const { model, correctResponse } = question;
 
     const defaultFeedback = Object.assign({
       correct: 'Correct',
@@ -27,10 +23,12 @@ export function model(question, session, env) {
     }, question.defaultFeedback);
 
     const getFeedback = (correctness) => {
-
       const fb = (config, defaultValue, incorrect) => {
         config = config || {};
-        if (config.type === 'custom') {
+
+        if (config.type === 'none') {
+          return '';
+        } else if (config.type === 'custom') {
           return config.value;
         } else if (config.type === 'default' && !incorrect) {
           return 'Correct';
@@ -40,7 +38,6 @@ export function model(question, session, env) {
       };
 
       if (env.mode === 'evaluate') {
-
         if (correctness === 'correct') {
           return fb(question.correctResponse.feedback, defaultFeedback.correct);
         }
@@ -75,7 +72,9 @@ export function model(question, session, env) {
     };
 
     const out = Object.assign(base, model);
+
     log('out: ', out);
+
     resolve(out);
   });
 }
