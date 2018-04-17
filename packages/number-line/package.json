@@ -11,8 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/number-line": "^2.0.2",
-    "@pie-ui/number-line-controller": "^1.0.1"
+    "@pie-ui/number-line": "^3.0.0",
+    "@pie-ui/number-line-controller": "^1.1.0"
   },
   "pie": {
     "element": "@pie-ui/number-line",
