@@ -2,8 +2,15 @@ import Main from './Main';
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
+import PropTypes from 'prop-types';
 
 export default class Root extends React.Component {
+  static propTypes = {
+    model: PropTypes.object.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
+    imageSupport: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
 
@@ -12,13 +19,12 @@ export default class Root extends React.Component {
     };
   }
 
-  onChoiceModeChanged = (value) => {
+  onChoiceModeChanged = value => {
     const { model } = this.state;
     model.choiceMode = value;
     if (value === 'radio') {
       let correctFound = false;
       model.choices = model.choices.map(c => {
-
         if (correctFound) {
           c.correct = false;
           return c;
@@ -32,29 +38,29 @@ export default class Root extends React.Component {
     }
 
     this.updateModel(model);
-  }
+  };
 
-  onRemoveChoice = (index) => {
+  onRemoveChoice = index => {
     const { model } = this.state;
     model.choices.splice(index, 1);
     this.updateModel(model);
-  }
+  };
 
-  onPartialScoringChanged = (partialScoring) => {
+  onPartialScoringChanged = partialScoring => {
     const { model } = this.state;
     model.partialScoring = partialScoring;
     this.updateModel(model);
-  }
+  };
 
   modelChanged = () => {
     this.props.onModelChanged(this.state.model);
-  }
+  };
 
-  updateModel = (model) => {
+  updateModel = model => {
     this.setState({ model }, () => {
       this.modelChanged();
     });
-  }
+  };
 
   onAddChoice = () => {
     const { model } = this.state;
@@ -66,16 +72,15 @@ export default class Root extends React.Component {
       }
     });
     this.updateModel(model);
-  }
+  };
 
-  onKeyModeChanged = (value) => {
+  onKeyModeChanged = value => {
     const { model } = this.state;
     model.keyMode = value;
     this.updateModel(model);
-  }
+  };
 
   onChoiceChanged = (index, choice) => {
-
     const { model } = this.state;
     if (choice.correct && model.choiceMode === 'radio') {
       model.choices = model.choices.map(c => {
@@ -85,13 +90,13 @@ export default class Root extends React.Component {
 
     model.choices.splice(index, 1, choice);
     this.updateModel(model);
-  }
+  };
 
-  onPromptChanged = (prompt) => {
+  onPromptChanged = prompt => {
     const update = cloneDeep(this.state.model);
     update.prompt = prompt;
     this.updateModel(update);
-  }
+  };
 
   render() {
     const props = {
@@ -105,7 +110,7 @@ export default class Root extends React.Component {
       onDefaultLangChanged: this.onDefaultLangChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
       imageSupport: this.props.imageSupport
-    }
+    };
 
     return <Main {...props} />;
   }
