@@ -1,25 +1,24 @@
 import debug from 'debug';
-import { pointUtils as utils } from '@pie-lib/charting';
 
 const log = debug('@pie-element:point-intercept:controller');
 
-const getResponseCorrectness = (correctResponseWithLabels, answers, model, partialScores) => {
+const getResponseCorrectness = (correctResponseWithLabels, points, model, partialScores) => {
   const allowPartialScores = model.config.allowPartialScoring;
   const pointsMustMatchLabels = model.config.pointsMustMatchLabels;
 
   let correctAnswers = 0;
 
-  if (!answers || answers.length === 0) {
+  if (!points || points.length === 0) {
     return {
       correctness: 'empty',
       score: 0,
     };
   }
 
-  answers.forEach(answer => {
+  points.forEach(point => {
     const isCorrectAnswer = correctResponseWithLabels.find(correctAnswer => {
-      const answerPresent = correctAnswer.x === answer.x && correctAnswer.y === answer.y;
-      return  pointsMustMatchLabels ? (answerPresent && correctAnswer.label === answer.label) : answerPresent;
+      const answerPresent = correctAnswer.x === point.x && correctAnswer.y === point.y;
+      return  pointsMustMatchLabels ? (answerPresent && correctAnswer.label === point.label) : answerPresent;
     });
 
     if (isCorrectAnswer) {
@@ -68,7 +67,7 @@ export function model(question, session, env) {
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
 
-        if (!session.answers || session.answers.length === 0) {
+        if (!session.points || session.points.length === 0) {
           return 'empty';
         }
 
@@ -78,7 +77,7 @@ export function model(question, session, env) {
           return { x: parseInt(x, 10), y: parseInt(y, 10), label: model.config.pointLabels[idx] };
         });
 
-        return getResponseCorrectness(correctResponseWithLabels, session.answers, model, partialScoring);
+        return getResponseCorrectness(correctResponseWithLabels, session.points, model, partialScoring);
       }
     };
 
@@ -87,10 +86,10 @@ export function model(question, session, env) {
     const base = {
       correctness,
       feedback: getFeedback(correctness),
-      disabled: env.mode !== 'gather'
+      disabled: env.mode !== 'gather',
     };
 
-    const out = Object.assign(base, { model });
+    const out = Object.assign(base, { model, correctResponse: env.mode === 'evaluate' ? correctResponse : undefined });
     log('out: ', out);
     resolve(out);
   });

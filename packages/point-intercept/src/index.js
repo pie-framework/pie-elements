@@ -22,7 +22,7 @@ export default class PointIntercept extends HTMLElement {
   }
 
   sessionChanged(s) {
-    this._session.answers = s.points;
+    this._session.points = s.points;
     log('session: ', this._session);
   }
 

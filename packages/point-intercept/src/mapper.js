@@ -35,14 +35,14 @@ const modelMap = {
 
 /**
  * Convert old xy string array to points array
- * @param {string[]} answers - eg: ['x,y', 'x,y']
+ * @param {string[]} points - eg: ['x,y', 'x,y']
  * @param {*} oldModel
  *
  * @return {{x:number,y:number,label:string}[]}
  */
-export function toSessionPoints(answers = [], oldModel) {
-  return answers.map((answer, idx) => {
-    const [x, y] = answer.split(',');
+export function toSessionPoints(points = [], oldModel) {
+  return points.map((point, idx) => {
+    const [x, y] = point.split(',');
 
     return { x: parseInt(x, 10), y: parseInt(y, 10), label: oldModel.model.config.pointLabels[idx] };
   });
@@ -69,6 +69,10 @@ export function toComponentModel(m) {
   newModel.range = {};
   newModel.domain = {};
   newModel.config = m.model.config;
+
+  if (m.correctResponse) {
+    newModel.correctResponse = toSessionPoints(m.correctResponse, m);
+  }
 
   Object.keys(rangeModelMap).forEach(key => {
     newModel.range[rangeModelMap[key]] = oldModelCopy.model.config[key];
