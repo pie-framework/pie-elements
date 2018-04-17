@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/pie-framework/pie-elements/compare/v1.4.0...v1.4.1) (2018-04-17)
+
+
+
+
+**Note:** Version bump only for package undefined
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/v1.3.0...v1.4.0) (2018-04-17)
 
