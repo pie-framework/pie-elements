@@ -2,6 +2,7 @@
   "name": "@pie-element/function-entry",
   "version": "1.5.0",
   "description": "",
+  "repository": "pie-framework/pie-elements",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
