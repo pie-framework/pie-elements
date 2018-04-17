@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/v1.4.1...v1.5.0) (2018-04-17)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependencies ([c774453](https://github.com/pie-framework/pie-elements/commit/c774453))
+* **icon:** use [@material-ui](https://github.com/material-ui)/icons package ([9e45c1a](https://github.com/pie-framework/pie-elements/commit/9e45c1a))
+
+
+### Features
+
+* **dependencie:** use latest [@pie-ui](https://github.com/pie-ui)/text-entry ([d6ef0cb](https://github.com/pie-framework/pie-elements/commit/d6ef0cb))
+* **dependencies:** use [@pie-ui](https://github.com/pie-ui)/calculator@2.x ([6011077](https://github.com/pie-framework/pie-elements/commit/6011077))
+* **dependencies:** use latest [@pie-ui](https://github.com/pie-ui)/multiple-choice ([9b73dbb](https://github.com/pie-framework/pie-elements/commit/9b73dbb))
+* **dependencies:** use latest [@pie-ui](https://github.com/pie-ui)/number-line ([e8fcdba](https://github.com/pie-framework/pie-elements/commit/e8fcdba))
+* **dependencies:** use latest [@pie-ui](https://github.com/pie-ui)/placement-ordering ([fd9d12d](https://github.com/pie-framework/pie-elements/commit/fd9d12d))
+
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/pie-framework/pie-elements/compare/v1.4.0...v1.4.1) (2018-04-17)
 
