@@ -1,8 +1,11 @@
 import { model } from '../index';
-import { isResponseCorrect } from '@pie-ui/multiple-choice-controller';
+import { isResponseCorrect } from '../utils';
+
+jest.mock('../utils', () => ({
+  isResponseCorrect: jest.fn()
+}));
 
 describe('model', () => {
-
   let result, question, session, env;
 
   beforeEach(() => {
@@ -12,7 +15,9 @@ describe('model', () => {
       choiceMode: 'radio',
       choices: [
         {
-          label: 'a', value: 'apple', correct: true,
+          label: 'a',
+          value: 'apple',
+          correct: true,
           feedback: {
             type: 'custom',
             value: 'foo'
@@ -26,14 +31,13 @@ describe('model', () => {
           }
         }
       ]
-    }
+    };
   });
 
   describe('mode: gather', () => {
-
     beforeEach(async () => {
-      session = {}
-      env = { mode: 'gather' }
+      session = {};
+      env = { mode: 'gather' };
       result = await model(question, session, env);
     });
 
@@ -58,8 +62,8 @@ describe('model', () => {
     });
 
     it('returns complete', () => {
-      expect(result.complete).toEqual({ min: 1 })
-    })
+      expect(result.complete).toEqual({ min: 1 });
+    });
 
     it('returns choices', () => {
       expect(result.choices).toEqual([
@@ -74,10 +78,9 @@ describe('model', () => {
   });
 
   describe('mode: view', () => {
-
     beforeEach(async () => {
-      session = {}
-      env = { mode: 'view' }
+      session = {};
+      env = { mode: 'view' };
       result = await model(question, session, env);
     });
 
@@ -87,24 +90,23 @@ describe('model', () => {
   });
 
   describe('mode: evaluate', () => {
-
     beforeEach(async () => {
-      session = {}
-      env = { mode: 'evaluate' }
+      session = {};
+      env = { mode: 'evaluate' };
       isResponseCorrect.mockReturnValue(false);
       result = await model(question, session, env);
+      return result;
     });
 
     it('returns choices w/ correct', () => {
       expect(result.choices).toEqual([
         { label: 'a', value: 'apple', correct: true, feedback: 'foo' },
         { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect' }
-      ])
+      ]);
     });
 
     it('returns is response correct', () => {
       expect(result.responseCorrect).toEqual(false);
     });
   });
-
 });

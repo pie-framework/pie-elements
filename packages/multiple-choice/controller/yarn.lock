@@ -16,12 +16,6 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@pie-ui/multiple-choice-controller@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice-controller/-/multiple-choice-controller-1.0.0.tgz#e1dc81497bac95374a90ee9d1fa8078c12be6586"
-  dependencies:
-    lodash "^4.17.4"
-
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"

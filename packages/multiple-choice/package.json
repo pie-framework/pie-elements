@@ -5,6 +5,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts" : {
+    "controller-test" :"cd controller && npm test",
+    "test" : "npm run controller-test"
+  },
   "dependencies": {
     "@pie-ui/multiple-choice": "^3.0.0"
   },
