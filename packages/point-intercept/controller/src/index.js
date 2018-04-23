@@ -27,15 +27,15 @@ const getResponseCorrectness = (correctResponseWithLabels, points, model, partia
   });
 
   if (correctResponseWithLabels.length === correctAnswers) {
-    return { correctness: 'correct', score: 100 };
+    return { correctness: 'correct', score: '100%' };
   } else if (allowPartialScores && partialScores && partialScores.length) {
     return {
       correctness: 'partial',
-      score: partialScores.find(partialScore => partialScore.numberOfCorrect === correctAnswers).scorePercentage
+      score: `${partialScores.find(partialScore => partialScore.numberOfCorrect === correctAnswers).scorePercentage}%`
     };
   }
 
-  return { correctness: 'incorrect', score: 0 };
+  return { correctness: 'incorrect', score: '0%' };
 };
 
 export function model(question, session, env) {
@@ -68,7 +68,10 @@ export function model(question, session, env) {
       if (env.mode === 'evaluate') {
 
         if (!session.points || session.points.length === 0) {
-          return 'empty';
+          return {
+            correctness: 'empty',
+            score: '0%',
+          };
         }
 
         const correctResponseWithLabels = correctResponse.map((answer, idx) => {

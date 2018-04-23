@@ -42,6 +42,7 @@ module.exports = {
           rangeGraphPadding: 50,
           sigfigs: -1,
           allowPartialScoring: false,
+          pointsMustMatchLabels: false,
           showCoordinates: false,
           showPointLabels: true,
           showInputs: true,

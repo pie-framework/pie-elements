@@ -118,6 +118,7 @@ class Configure extends React.Component {
     this.defaults = JSON.parse(JSON.stringify(props.model));
     this.state = {
       activeTab: 0,
+      withLabels: true
     };
   }
 
@@ -200,8 +201,9 @@ class Configure extends React.Component {
   };
 
   onToggleWithLabels = (setTrue) => () => {
-    this.props.model.model.config.showPointLabels = setTrue;
-    this.props.onModelChanged(this.props.model);
+    this.setState({
+      withLabels: setTrue,
+    });
   };
 
   onPartialScoringChange = (partialScoring) => {
@@ -245,26 +247,26 @@ class Configure extends React.Component {
             <div className={classes['with-labels-container']}>
               <InputRadio
                 className={classes['with-labels-radio-control']}
-                checked={config.showPointLabels}
+                checked={this.state.withLabels}
                 onChange={this.onToggleWithLabels(true)}
                 label="With Labels"
               />
               <InputRadio
                 className={classes['with-labels-radio-control']}
-                checked={config.showPointLabels === false}
+                checked={!this.state.withLabels}
                 onChange={this.onToggleWithLabels(false)}
                 label="Without Labels"
               />
             </div>
             <div style={{ display: 'flex' }}>
-              <div className={classes['display-options-container']}>
+              {this.state.withLabels && <div className={classes['display-options-container']}>
                 <div className={classes['options-checkbox']}>
                   <InputCheckbox
                     label="Points Must Match Labels"
                     checked={config.pointsMustMatchLabels}
                     onChange={this.onModelConfigChange('pointsMustMatchLabels')}/>
                 </div>
-              </div>
+              </div>}
               <div className={classes['display-options-container']}>
                 <div className={classes['options-checkbox']}>
                   <InputCheckbox
@@ -276,7 +278,7 @@ class Configure extends React.Component {
             </div>
             <Box>
               <div className={classes['points-column-container']}>
-                {model.correctResponse.length === 0 && <Typography>There are currently no points on the table.</Typography>}
+                {model.correctResponse.length === 0 && <Typography>There are currently no points added.</Typography>}
                 {model.correctResponse.map((point, index) => {
                   const [pointX, pointY] = point.split(',');
 
@@ -299,13 +301,13 @@ class Configure extends React.Component {
                         placeholder="Enter Value"
                       />
                       <b>)</b>
-                      <Input
+                      {this.state.withLabels && <Input
                         className={classes['point-input']}
                         type="text"
                         onChange={this.onPointLabelChange(index)}
                         value={config.pointLabels[index]}
                         placeholder="Enter Value"
-                      />
+                      />}
                       <DeleteControl onDeleteClick={this.deletePoint(index)} disabled={false}/>
                     </div>
                   );
