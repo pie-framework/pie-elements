@@ -3,7 +3,15 @@ import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
+import includes from 'lodash/includes';
 
+const firstAvailableIndex = (values, index) => {
+  if (includes(values, `${index}`)) {
+    return firstAvailableIndex(values, index + 1);
+  } else {
+    return `${index}`;
+  }
+};
 export default class Root extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -66,7 +74,7 @@ export default class Root extends React.Component {
     const { model } = this.state;
     model.choices.push({
       label: 'label',
-      value: `${model.choices.length}`,
+      value: firstAvailableIndex(model.choices.map(c => c.value), 0),
       feedback: {
         type: 'none'
       }
