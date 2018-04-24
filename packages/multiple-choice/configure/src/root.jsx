@@ -66,7 +66,7 @@ export default class Root extends React.Component {
     const { model } = this.state;
     model.choices.push({
       label: 'label',
-      value: 'value',
+      value: `${model.choices.length}`,
       feedback: {
         type: 'none'
       }
