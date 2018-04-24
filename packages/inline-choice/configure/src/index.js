@@ -4,16 +4,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root.jsx';
 
+const normalizeChoices = m => {
+  const choices = m.choices.map((c, index) => {
+    if (!c.value) {
+      c.value = `${index}`;
+    }
+    return c;
+  });
+
+  return Object.assign(m, { choices });
+};
 
 export default class extends HTMLElement {
-
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = s;
+    this._model = normalizeChoices(s);
     this._render();
   }
 
