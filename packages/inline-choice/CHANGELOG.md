@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@1.6.0...@pie-element/inline-choice@1.7.0) (2018-04-25)
+
+
+### Features
+
+* **layout:** use [@pie-ui](https://github.com/pie-ui)/inline-choice@^4.0.1 - it uses an inline layout ([b91827f](https://github.com/pie-framework/pie-elements/commit/b91827f)), closes [#17](https://github.com/pie-framework/pie-elements/issues/17)
+
+
+
+
 <a name="1.6.0"></a>
 # 1.6.0 (2018-04-25)
 
