@@ -31,7 +31,7 @@ const getResponseCorrectness = (correctResponseWithLabels, points, model, partia
   } else if (allowPartialScores && partialScores && partialScores.length) {
     return {
       correctness: 'partial',
-      score: `${partialScores.find(partialScore => partialScore.numberOfCorrect === correctAnswers).scorePercentage}%`
+      score: `${(partialScores.find(partialScore => partialScore.numberOfCorrect === correctAnswers) || {}).scorePercentage || 0}%`
     };
   }
 
