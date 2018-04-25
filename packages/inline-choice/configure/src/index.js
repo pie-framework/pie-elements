@@ -3,17 +3,7 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root.jsx';
-
-const normalizeChoices = m => {
-  const choices = m.choices.map((c, index) => {
-    if (!c.value) {
-      c.value = `${index}`;
-    }
-    return c;
-  });
-
-  return Object.assign(m, { choices });
-};
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 export default class extends HTMLElement {
   constructor() {
@@ -22,7 +12,7 @@ export default class extends HTMLElement {
   }
 
   set model(s) {
-    this._model = normalizeChoices(s);
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 

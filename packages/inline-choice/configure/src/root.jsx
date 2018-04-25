@@ -2,15 +2,8 @@ import React from 'react';
 import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import PropTypes from 'prop-types';
-import includes from 'lodash/includes';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-const firstAvailableIndex = (values, index) => {
-  if (includes(values, `${index}`)) {
-    return firstAvailableIndex(values, index + 1);
-  } else {
-    return `${index}`;
-  }
-};
 export default class Root extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -39,7 +32,7 @@ export default class Root extends React.Component {
     const update = cloneDeep(model);
     update.choices.push({
       correct: false,
-      value: firstAvailableIndex(model.choices.map(c => c.value), 0),
+      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
       feedback: { type: 'default' },
       label: ''
     });
