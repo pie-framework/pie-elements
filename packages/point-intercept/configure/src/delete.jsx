@@ -14,14 +14,14 @@ export class DeleteControl extends React.Component {
   render() {
     const { classes, disabled, onDeleteClick } = this.props;
 
-    return (<div>
+    return (
       <Button
         className={classes.button}
         disabled={disabled}
         onClick={onDeleteClick} >
         <Delete />
       </Button>
-    </div>);
+    );
   }
 }
 

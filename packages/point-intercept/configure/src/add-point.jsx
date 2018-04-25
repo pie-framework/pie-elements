@@ -13,7 +13,7 @@ export class AddPointButton extends React.Component {
   render() {
     const { classes, onAddClick } = this.props;
 
-    return (<div>
+    return (
       <Button
         className={classes.button}
         disabled={false}
@@ -21,14 +21,14 @@ export class AddPointButton extends React.Component {
         <AddButton />
         Add Another Point
       </Button>
-    </div>);
+    );
   }
 }
 
 const styles = (theme) => ({
   button: {
     margin: 0,
-    'margin-bottom': theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
