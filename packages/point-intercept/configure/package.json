@@ -9,8 +9,8 @@
   "author": "",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/charting": "^2.1.0",
-    "@pie-lib/config-ui": "^2.1.5",
+    "@pie-lib/charting": "^2.2.0",
+    "@pie-lib/config-ui": "^5.1.0",
     "@pie-lib/correct-answer-toggle": "^0.1.9",
     "material-ui": "^1.0.0-beta.42",
     "prop-types": "^15.6.0",
