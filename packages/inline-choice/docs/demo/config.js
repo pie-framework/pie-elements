@@ -8,7 +8,6 @@ module.exports = {
       element: 'inline-choice',
       defaultLang: 'en-US',
       choiceLabel: 'Select option ...',
-      prompt: 'Which of these northern European countries are EU members?',
       choices: [
         {
           correct: true,
@@ -24,17 +23,17 @@ module.exports = {
         },
         {
           value: 'norway',
-          label: 'Norway',
+          label: 'Norway'
         },
         {
           value: 'finland',
           label: 'Finland',
           feedback: {
             type: 'custom',
-            value: 'Finland joined the EU in 1995'
+            value: 'Nokia was founded in Finland.'
           }
         }
       ]
     }
   ]
-}
+};
