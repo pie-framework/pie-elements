@@ -8,19 +8,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root.jsx';
 import debug from 'debug';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 const log = debug('multiple-choice:configure');
-
-const normalizeChoices = model => {
-  const choices = model.choices.map((c, index) => {
-    if (!c.value) {
-      c.value = `${index}`;
-    }
-    return c;
-  });
-
-  return Object.assign(model, { choices });
-};
 
 export default class extends HTMLElement {
   constructor() {
@@ -29,7 +19,7 @@ export default class extends HTMLElement {
   }
 
   set model(s) {
-    this._model = normalizeChoices(s);
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 

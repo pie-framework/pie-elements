@@ -3,15 +3,8 @@ import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
-import includes from 'lodash/includes';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-const firstAvailableIndex = (values, index) => {
-  if (includes(values, `${index}`)) {
-    return firstAvailableIndex(values, index + 1);
-  } else {
-    return `${index}`;
-  }
-};
 export default class Root extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -74,7 +67,7 @@ export default class Root extends React.Component {
     const { model } = this.state;
     model.choices.push({
       label: 'label',
-      value: firstAvailableIndex(model.choices.map(c => c.value), 0),
+      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
       feedback: {
         type: 'none'
       }
