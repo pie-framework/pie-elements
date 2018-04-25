@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@1.7.0...@pie-element/inline-choice@1.7.1) (2018-04-25)
+
+
+### Bug Fixes
+
+* **dependency:** bump [@pie-ui](https://github.com/pie-ui)/inline-choice to ^4.0.1 ([af6c79d](https://github.com/pie-framework/pie-elements/commit/af6c79d))
+
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@1.6.0...@pie-element/inline-choice@1.7.0) (2018-04-25)
 
