@@ -4,18 +4,25 @@ import Design from './design';
 import Help from './help';
 import React from 'react';
 import ScoringConfig from '@pie-lib/scoring-config';
-import omit from 'lodash/omit';
 import { withContext } from '@pie-ui/placement-ordering';
 import { withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
+import cloneDeep from 'lodash/cloneDeep';
 
 const styles = {
   tabBar: {
     display: 'flex',
     justifyContent: 'space-between'
   }
-}
+};
 
 class Main extends React.Component {
+  static propTypes = {
+    initialModel: PropTypes.object,
+    onModelChange: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+    imageSupport: PropTypes.object
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -27,29 +34,29 @@ class Main extends React.Component {
 
     this.onTabIndexChange = (event, index) => {
       this.setState({ index });
-    }
+    };
 
-    this.onPartialScoringChange = (partialScoring) => {
+    this.onPartialScoringChange = partialScoring => {
       const { onModelChange } = this.props;
       const model = cloneDeep(this.state.model);
       model.partialScoring = partialScoring;
       this.setState({ model }, () => {
         onModelChange(this.state.model);
       });
-    }
+    };
 
-    this.onModelChange = (model) => {
+    this.onModelChange = model => {
       const { onModelChange } = this.props;
-      const resetSession = model.config.placementType !== this.state.model.config.placementType ||
+      const resetSession =
+        model.config.placementType !== this.state.model.config.placementType ||
         model.model.choices.length !== this.state.model.model.choices.length;
       this.setState({ model }, () => {
         onModelChange(this.state.model, resetSession);
       });
-    }
+    };
   }
 
   render() {
-
     const { classes, imageSupport } = this.props;
     const { index, model } = this.state;
 
@@ -66,16 +73,19 @@ class Main extends React.Component {
           <Design
             model={model}
             onModelChange={this.onModelChange}
-            imageSupport={imageSupport} />
+            imageSupport={imageSupport}
+          />
         )}
-        {index === 1 && <ScoringConfig
-          partialScoring={model.partialScoring}
-          numberOfCorrectResponses={model.correctResponse.length}
-          onChange={this.onPartialScoringChange} />}
+        {index === 1 && (
+          <ScoringConfig
+            partialScoring={model.partialScoring}
+            numberOfCorrectResponses={model.correctResponse.length}
+            onChange={this.onPartialScoringChange}
+          />
+        )}
       </div>
     );
   }
 }
-
 
 export default withContext(withStyles(styles)(Main));

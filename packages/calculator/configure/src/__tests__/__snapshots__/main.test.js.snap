@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
+<div>
+  <TwoChoice
+    header="Choose a Calculator"
+    onChange={[Function]}
+    one={
+      Object {
+        "label": "Basic",
+        "value": "basic",
+      }
+    }
+    two={
+      Object {
+        "label": "Scientific",
+        "value": "scientific",
+      }
+    }
+    value="basic"
+  />
+  <br />
+  <CalculatorLayout
+    mode="basic"
+    onClose={[Function]}
+  />
+  <br />
+  <br />
+  <WithStyles(Typography)>
+    Please note that the calculators are tools for students and do not record answers.
+  </WithStyles(Typography)>
+</div>
+`;

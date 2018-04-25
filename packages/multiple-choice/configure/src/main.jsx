@@ -4,7 +4,7 @@ import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer, ChoiceConfiguration } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
-import { ChoiceType, KeyType } from './choice-type'
+import { ChoiceType, KeyType } from './choice-type';
 import Button from 'material-ui/Button';
 import debug from 'debug';
 import PartialScoringConfig from '@pie-lib/scoring-config';
@@ -30,7 +30,7 @@ const styles = theme => ({
   }
 });
 
-const Design = withStyles(styles)((props) => {
+const Design = withStyles(styles)(props => {
   const {
     classes,
     model,
@@ -44,35 +44,35 @@ const Design = withStyles(styles)((props) => {
   return (
     <div className={classes.design}>
       <Basics {...props} />
-      <InputContainer label="Prompt" className={classes.promptHolder} >
+      <InputContainer label="Prompt" className={classes.promptHolder}>
         <EditableHtml
           className={classes.prompt}
           markup={model.prompt}
-          onChange={onPromptChanged} />
+          onChange={onPromptChanged}
+        />
       </InputContainer>
-      {model.choices.map((choice, index) => <ChoiceConfiguration
-        index={index + 1}
-        className={classes.choiceConfiguration}
-        mode={model.choiceMode}
-        key={index}
-        data={choice}
-        defaultFeedback={{}}
-        imageSupport={imageSupport}
-        onDelete={() => onRemoveChoice(index)}
-        onChange={c => onChoiceChanged(index, c)} />)}
+      {model.choices.map((choice, index) => (
+        <ChoiceConfiguration
+          index={index + 1}
+          className={classes.choiceConfiguration}
+          mode={model.choiceMode}
+          key={index}
+          data={choice}
+          defaultFeedback={{}}
+          imageSupport={imageSupport}
+          onDelete={() => onRemoveChoice(index)}
+          onChange={c => onChoiceChanged(index, c)}
+        />
+      ))}
       <br />
-      <Button
-        variant="raised"
-        color="primary"
-        onClick={() => onAddChoice()} >Add a choice</Button>
+      <Button variant="raised" color="primary" onClick={() => onAddChoice()}>
+        Add a choice
+      </Button>
     </div>
   );
-
 });
 
-
-const Basics = (props) => {
-
+const Basics = props => {
   log('[Basics] props', props);
 
   const { classes, model, onChoiceModeChanged, onKeyModeChanged } = props;
@@ -82,53 +82,61 @@ const Basics = (props) => {
       <KeyType value={model.keyMode} onChange={onKeyModeChanged} />
     </div>
   );
-}
+};
+
+Basics.propTypes = {
+  classes: PropTypes.object.isRequired,
+  model: PropTypes.object.isRequired,
+  onChoiceModeChanged: PropTypes.func.isRequired,
+  onKeyModeChanged: PropTypes.func.isRequired
+};
 
 export class Main extends React.Component {
+  static propTypes = {
+    model: PropTypes.object.isRequired,
+    onPromptChanged: PropTypes.func.isRequired,
+    onPartialScoringChanged: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       index: 0
-    }
+    };
   }
 
   onTabsChange = (event, index) => {
     this.setState({ index });
-  }
+  };
 
   render() {
-
-    const {
-      model,
-      onPromptChanged,
-      onPartialScoringChanged,
-      classes } = this.props;
+    const { model, onPartialScoringChanged } = this.props;
     const { index } = this.state;
 
     return (
       <div>
         <Tabs onChange={this.onTabsChange} value={index}>
-          <Tab label="Design"></Tab>
-          <Tab label="Scoring"></Tab>
+          <Tab label="Design" />
+          <Tab label="Scoring" />
         </Tabs>
         {index === 0 && <Design {...this.props} />}
-        {index === 1 && <PartialScoringConfig
-          partialScoring={model.partialScoring}
-          numberOfCorrectResponses={model.choices.filter(choice => choice.correct).length}
-          onChange={onPartialScoringChanged} />}
+        {index === 1 && (
+          <PartialScoringConfig
+            partialScoring={model.partialScoring}
+            numberOfCorrectResponses={
+              model.choices.filter(choice => choice.correct).length
+            }
+            onChange={onPartialScoringChanged}
+          />
+        )}
       </div>
-
     );
   }
 }
-
-Main.propTypes = {
-  imageSupport: PropTypes.shape({
-    add: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired
-  })
-}
-
 
 export default withStyles(styles)(Main);

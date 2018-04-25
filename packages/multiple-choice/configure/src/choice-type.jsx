@@ -1,12 +1,8 @@
-import { FormControl, FormControlLabel, FormLabel } from 'material-ui/Form';
-import Radio, { RadioGroup } from 'material-ui/Radio';
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import { TwoChoice } from '@pie-lib/config-ui';
-import { withStyles } from 'material-ui/styles';
 
-export const ChoiceType = (props) => {
+export const ChoiceType = props => {
   let choiceProps = {
     header: 'Response Type',
     defaultSelected: 'radio',
@@ -20,11 +16,11 @@ export const ChoiceType = (props) => {
       label: 'Checkbox',
       value: 'checkbox'
     }
-  }
+  };
   return <TwoChoice {...choiceProps} />;
-}
+};
 
-export const KeyType = (props) => {
+export const KeyType = props => {
   let choiceProps = {
     header: 'Choice Labels',
     defaultSelected: 'numbers',
@@ -38,6 +34,11 @@ export const KeyType = (props) => {
       label: 'Letters',
       value: 'letters'
     }
-  }
+  };
   return <TwoChoice {...choiceProps} />;
-}
+};
+
+KeyType.propTypes = ChoiceType.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};

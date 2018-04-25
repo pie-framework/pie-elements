@@ -6,41 +6,53 @@ import { DragSource, DropTarget } from 'react-dnd';
 import IconButton from 'material-ui/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { RemoveCircle } from 'material-ui-icons';
+import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
-import { DragSource as dragSource } from 'react-dnd';
-import { findDOMNode } from 'react-dom';
 import { withStyles } from 'material-ui/styles';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
 class ChoiceTile extends React.Component {
+  static propTypes = {
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
+    choice: PropTypes.object,
+    onChoiceChange: PropTypes.func.isRequired,
+    connectDragSource: PropTypes.func.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool,
+    classes: PropTypes.object.isRequired,
+    onDelete: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);
 
-    this.onLabelChange = (label) => {
+    this.onLabelChange = label => {
       const { choice, onChoiceChange } = this.props;
       choice.label = label;
       onChoiceChange(choice);
-    }
+    };
 
     this.onMoveOnDragChange = (event, value) => {
       const { choice, onChoiceChange } = this.props;
       choice.moveOnDrag = value;
       onChoiceChange(choice);
-    }
+    };
   }
 
   render() {
-    const { choice,
+    const {
+      choice,
       connectDragSource,
       connectDropTarget,
       isDragging,
       classes,
-      activeLang,
       onDelete,
-      imageSupport } = this.props;
+      imageSupport
+    } = this.props;
 
     const opacity = isDragging ? 0 : 1;
     const markup = (
@@ -50,33 +62,30 @@ class ChoiceTile extends React.Component {
           placeholder="Enter a choice"
           markup={choice.label}
           imageSupport={imageSupport}
-          onChange={this.onLabelChange} />
+          onChange={this.onLabelChange}
+        />
         <div className={classes.controls}>
-          <Checkbox label="Remove tile after placing"
+          <Checkbox
+            label="Remove tile after placing"
             checked={choice.moveOnDrag === true}
-            onChange={this.onMoveOnDragChange} />
-          <IconButton
-            color="primary"
-            onClick={onDelete}>
+            onChange={this.onMoveOnDragChange}
+          />
+          <IconButton color="primary" onClick={onDelete}>
             <RemoveCircle
               classes={{
                 root: classes.removeCircle
-              }} />
+              }}
+            />
           </IconButton>
         </div>
-      </div>);
-
-    return connectDragSource(
-      connectDropTarget(markup)
+      </div>
     );
+
+    return connectDragSource(connectDropTarget(markup));
   }
 }
 
-ChoiceTile.propTypes = {
-  imageSupport: PropTypes.shape({ add: PropTypes.func.isRequired, delete: PropTypes.func.isRequired })
-}
-
-const Styled = withStyles((theme) => ({
+const Styled = withStyles(theme => ({
   removeCircle: {
     fill: theme.palette.error[500]
   },
@@ -103,20 +112,15 @@ const choiceSource = {
       index: props.index
     };
   }
-}
+};
 
-const StyledSource = DragSource(
-  NAME,
-  choiceSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  })
-)(Styled);
-
+const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging()
+}))(Styled);
 
 const choiceTarget = {
-  hover(props, monitor, component) {
+  hover() {
     log('[hover]');
   },
   drop(props, monitor) {
@@ -124,14 +128,10 @@ const choiceTarget = {
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
     props.onMoveChoice(item.index, props.index);
   }
-}
+};
 
-const StyledSourceAndTarget = DropTarget(
-  NAME,
-  choiceTarget,
-  connect => ({
-    connectDropTarget: connect.dropTarget()
-  })
-)(StyledSource);
+const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, connect => ({
+  connectDropTarget: connect.dropTarget()
+}))(StyledSource);
 
 export default StyledSourceAndTarget;
