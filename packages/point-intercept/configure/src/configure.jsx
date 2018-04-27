@@ -150,6 +150,63 @@ class Configure extends React.Component {
     }
   };
 
+  onGridParameterChange = (name) => event => {
+    const config = this.props.model.model.config;
+    const newValue = parseInt(event.target.value, 10);
+
+    if (!isNaN(newValue)) {
+      config[name] = newValue;
+
+      // also need to update the points if they become outside of range after the domain/range value change
+
+      const points = this.props.model.correctResponse;
+      const newPoints = [];
+
+      points.forEach(point => {
+        let [pointX, pointY] = point.split(',');
+        pointX = parseInt(pointX, 10);
+        pointY = parseInt(pointY, 10);
+
+        switch (name) {
+          case 'domainMin': {
+            if (pointX < newValue) {
+              point = `${newValue},${pointY}`;
+            }
+
+            break;
+          }
+
+          case 'domainMax': {
+            if (pointX > newValue) {
+              point = `${newValue},${pointY}`;
+            }
+
+            break;
+          }
+          case 'rangeMin': {
+            if (pointY < newValue) {
+              point = `${pointX},${newValue}`;
+            }
+
+            break;
+          }
+          case 'rangeMax': {
+            if (pointY > newValue) {
+              point = `${pointX},${newValue}`;
+            }
+
+            break;
+          }
+        }
+
+        newPoints.push(point);
+      });
+
+      this.props.model.correctResponse = newPoints;
+      this.props.onModelChanged(this.props.model);
+    }
+  };
+
   onPointLabelChange = (index) => event => {
     const config = this.props.model.model.config;
     config.pointLabels[index] = event.target.value;
@@ -286,6 +343,10 @@ class Configure extends React.Component {
                     <div className={classes['points-row']} key={index}>
                       <b>(</b>
                       <Input
+                        inputProps={{
+                          min: config.domainMin,
+                          max: config.domainMax
+                        }}
                         className={classes['point-input']}
                         type="number"
                         onChange={this.onPointValueChange(index, 0)}
@@ -294,6 +355,10 @@ class Configure extends React.Component {
                       />
                       <b>,</b>
                       <Input
+                        inputProps={{
+                          min: config.rangeMin,
+                          max: config.rangeMax
+                        }}
                         className={classes['point-input']}
                         type="number"
                         onChange={this.onPointValueChange(index, 1)}
@@ -318,6 +383,10 @@ class Configure extends React.Component {
                     Maximum number of points a student is allowed to plot (optional):
                   </Typography>
                   <Input
+                    inputProps={{
+                      min: 0,
+                      max: 20
+                    }}
                     className={classes['max-input']}
                     type="number"
                     onChange={this.onMaxPointsChange}
@@ -341,9 +410,12 @@ class Configure extends React.Component {
                   <div className={classes['options-column']}>
                     <InputContainer label="Minimum Value">
                       <Input
+                        inputProps={{
+                          max: parseInt(config.domainMax, 10) - 1
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        onChange={this.onModelConfigAttributeChange('domainMin')}
+                        onChange={this.onGridParameterChange('domainMin')}
                         value={config.domainMin}
                         placeholder="Enter Minimum"
                       />
@@ -370,9 +442,12 @@ class Configure extends React.Component {
                   <div className={classes['options-column']}>
                     <InputContainer label="Maximum Value">
                       <Input
+                        inputProps={{
+                          min: parseInt(config.domainMin, 10) + 1
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        onChange={this.onModelConfigAttributeChange('domainMax')}
+                        onChange={this.onGridParameterChange('domainMax')}
                         value={config.domainMax}
                         placeholder="Enter Maximum"
                       />
@@ -388,9 +463,11 @@ class Configure extends React.Component {
                     </InputContainer>
                     <InputContainer label="Padding (%)">
                       <Input
+                        inputProps={{
+                          step: 25
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        step={25}
                         onChange={this.onModelConfigAttributeChange('domainGraphPadding')}
                         value={config.domainGraphPadding}
                         placeholder="Enter Padding"
@@ -405,9 +482,12 @@ class Configure extends React.Component {
                   <div className={classes['options-column']}>
                     <InputContainer label="Minimum Value">
                       <Input
+                        inputProps={{
+                          max: parseInt(config.rangeMax, 10) - 1
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        onChange={this.onModelConfigAttributeChange('rangeMin')}
+                        onChange={this.onGridParameterChange('rangeMin')}
                         value={config.rangeMin}
                         placeholder="Enter Minimum"
                       />
@@ -434,9 +514,12 @@ class Configure extends React.Component {
                   <div className={classes['options-column']}>
                     <InputContainer label="Maximum Value">
                       <Input
+                        inputProps={{
+                          min: parseInt(config.rangeMin, 10) + 1
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        onChange={this.onModelConfigAttributeChange('rangeMax')}
+                        onChange={this.onGridParameterChange('rangeMax')}
                         value={config.rangeMax}
                         placeholder="Enter Maximum"
                       />
@@ -452,9 +535,11 @@ class Configure extends React.Component {
                     </InputContainer>
                     <InputContainer label="Padding (%)">
                       <Input
+                        inputProps={{
+                          step: 25
+                        }}
                         className={classes['attribute-input']}
                         type="number"
-                        step={25}
                         onChange={this.onModelConfigAttributeChange('rangeGraphPadding')}
                         value={config.rangeGraphPadding}
                         placeholder="Enter Padding"
@@ -499,6 +584,11 @@ class Configure extends React.Component {
               <div className={classes['display-controls-container']}>
                 <InputContainer label="Width">
                   <Input
+                    inputProps={{
+                      step: 10,
+                      min: 250,
+                      max: 1000
+                    }}
                     className={classes['display-input']}
                     type="number"
                     onChange={this.onModelConfigAttributeChange('graphWidth')}
@@ -508,6 +598,11 @@ class Configure extends React.Component {
                 </InputContainer>
                 <InputContainer label="Height">
                   <Input
+                    inputProps={{
+                      step: 10,
+                      min: 250,
+                      max: 1000
+                    }}
                     className={classes['display-input']}
                     type="number"
                     onChange={this.onModelConfigAttributeChange('graphHeight')}

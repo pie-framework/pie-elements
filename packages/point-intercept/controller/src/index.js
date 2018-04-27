@@ -28,6 +28,8 @@ const getResponseCorrectness = (correctResponseWithLabels, points, model, partia
 
   if (correctResponseWithLabels.length === correctAnswers) {
     return { correctness: 'correct', score: '100%' };
+  } else if (correctAnswers === 0) {
+    return { correctness: 'incorrect', score: '0%' };
   } else if (allowPartialScores && partialScores && partialScores.length) {
     return {
       correctness: 'partial',
