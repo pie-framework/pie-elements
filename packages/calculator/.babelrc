@@ -1,0 +1,13 @@
+{
+  "sourceMaps": "inline",
+  "presets": [
+    "env",
+    "react",
+    "es2015",
+    "stage-0",
+    "airbnb"
+  ],
+  "plugins": [
+    "transform-class-properties"
+  ]
+}

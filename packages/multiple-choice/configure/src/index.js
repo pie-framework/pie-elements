@@ -1,22 +1,25 @@
-import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  DeleteImageEvent,
+  InsertImageEvent,
+  ModelUpdatedEvent
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root.jsx';
 import debug from 'debug';
-import merge from 'lodash/merge';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 const log = debug('multiple-choice:configure');
 
 export default class extends HTMLElement {
-
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = s;
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 
@@ -30,8 +33,8 @@ export default class extends HTMLElement {
   }
 
   /**
-   * 
-   * @param {done, progress, file} handler 
+   *
+   * @param {done, progress, file} handler
    */
   insertImage(handler) {
     this.dispatchEvent(new InsertImageEvent(handler));

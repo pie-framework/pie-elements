@@ -1,0 +1,20 @@
+{
+  "name": "@pie-element/point-intercept",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "1.1.0",
+  "main": "src/index.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-lib/scoring-config": "^2.0.18",
+    "@pie-ui/point-intercept": "^0.1.0",
+    "react-swipeable-views": "^0.12.13"
+  },
+  "author": "",
+  "license": "ISC"
+}

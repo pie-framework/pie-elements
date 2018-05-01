@@ -3,17 +3,16 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root.jsx';
-
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 export default class extends HTMLElement {
-
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = s;
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 

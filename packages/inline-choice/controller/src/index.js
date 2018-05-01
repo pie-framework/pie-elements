@@ -5,14 +5,13 @@ const log = debug('pie-element:inline-choice:controller');
 /** build a ui model to work with @pie-ui/inline-choice */
 
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
-
+  return new Promise(resolve => {
     const getResult = () => {
-      if (!session || !session.selectedChoice) {
-        return { correct: false, nothingSubmitted: true }
+      if (!session || !session.value) {
+        return { correct: false, nothingSubmitted: true, feedback: undefined };
       }
 
-      const c = question.choices.find(c => c.value === session.selectedChoice);
+      const c = question.choices.find(c => c.value === session.value);
 
       log('[getResult] c: ', c);
       const correct = c && !!c.correct;
@@ -31,10 +30,13 @@ export function model(question, session, env) {
         }
       })();
 
-      return { correct, feedback }
-    }
+      return { correct, feedback };
+    };
 
-    const choices = question.choices.map(c => ({ label: c.label, value: c.value }));
+    const choices = question.choices.map(c => ({
+      label: c.label,
+      value: c.value
+    }));
 
     resolve({
       choices,

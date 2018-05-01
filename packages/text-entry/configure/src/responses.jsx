@@ -14,34 +14,56 @@ const SubHeader = withStyles(theme => ({
     paddingBottom: theme.spacing.unit,
     fontSize: '0.7rem'
   }
-}))(({ classes, children }) => <Typography className={classes.subHeader}>{children}</Typography>);
+}))(({ classes, children }) => (
+  <Typography className={classes.subHeader}>{children}</Typography>
+));
 
 class RawResponses extends React.Component {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired,
+    responses: PropTypes.object.isRequired,
+    feedback: PropTypes.string,
+    feedbackType: PropTypes.string,
+    label: PropTypes.string,
+    subHeader: PropTypes.string,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+    ]).isRequired,
+    classes: PropTypes.object.isRequired
+  };
 
-  onAnswersChange = (answers) => {
+  onAnswersChange = answers => {
     const { feedback, feedbackType } = this.props;
 
-    const valueFeedback = feedbackType === 'custom' ? feedback : (feedbackType === 'default' ? 'DEFAULT' : undefined);
-    this.props.responses.values = answers.map(a => ({ lang: 'en-US', value: a, feedback: valueFeedback }));
+    const valueFeedback =
+      feedbackType === 'custom'
+        ? feedback
+        : feedbackType === 'default'
+          ? 'DEFAULT'
+          : undefined;
+    this.props.responses.values = answers.map(a => ({
+      lang: 'en-US',
+      value: a,
+      feedback: valueFeedback
+    }));
     this.props.onChange(this.props.responses);
-  }
+  };
 
-  onIgnoreCaseChange = (event) => {
+  onIgnoreCaseChange = event => {
     this.props.responses.ignoreCase = event.target.checked;
     this.props.onChange(this.props.responses);
-  }
+  };
 
-  onIgnoreWhitespaceChange = (event) => {
+  onIgnoreWhitespaceChange = event => {
     this.props.responses.ignoreWhitespace = event.target.checked;
     this.props.onChange(this.props.responses);
-  }
+  };
 
   render() {
-    const { responses, label, subHeader, children, classes, onChange } = this.props;
+    const { responses, label, subHeader, children, classes } = this.props;
     log('[responses]: ', responses);
 
-    // const values = responses.values.map(v => v.value);
-    // log('[values]: ', values);
     return (
       <Box>
         <Typography type="body1">{label}</Typography>
@@ -56,19 +78,13 @@ class RawResponses extends React.Component {
           <InputCheckbox
             label="Ignore Whitespace"
             checked={responses.ignoreWhitespace}
-            onChange={this.onIgnoreWhitespaceChange} />
+            onChange={this.onIgnoreWhitespaceChange}
+          />
         </div>
         {children ? children : <div />}
-      </Box >
+      </Box>
     );
   }
-}
-
-RawResponses.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  responses: PropTypes.object.isRequired,
-  feedback: PropTypes.string,
-  feedbackType: PropTypes.string
 }
 
 const Responses = withStyles(theme => ({

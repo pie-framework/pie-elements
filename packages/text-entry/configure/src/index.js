@@ -7,7 +7,6 @@ import debug from 'debug';
 const log = debug('pie-elements:text-entry:configure');
 
 export default class TextEntryConfigure extends HTMLElement {
-
   constructor() {
     super();
   }
