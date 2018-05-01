@@ -3,6 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": "pie-framework/pie-elements",
   "version": "1.0.0",
   "main": "src/index.js",
   "description": "",
