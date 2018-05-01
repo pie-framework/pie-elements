@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
-import Delete from 'material-ui-icons/Delete';
+import Delete from '@material-ui/icons/Delete';
 
 export class DeleteControl extends React.Component {
   static propTypes = {
@@ -18,7 +18,8 @@ export class DeleteControl extends React.Component {
       <Button
         className={classes.button}
         disabled={disabled}
-        onClick={onDeleteClick} >
+        onClick={onDeleteClick}
+      >
         <Delete />
       </Button>
     );
@@ -27,8 +28,8 @@ export class DeleteControl extends React.Component {
 
 const styles = () => ({
   button: {
-    margin: 0,
-  },
+    margin: 0
+  }
 });
 
 export default withStyles(styles)(DeleteControl);
