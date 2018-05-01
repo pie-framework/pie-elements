@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChoiceConfiguration } from '@pie-lib/config-ui';
-import EditableHtml from '@pie-lib/editable-html';
 
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
@@ -51,26 +50,13 @@ export class RawMain extends React.Component {
     this.props.onChoiceChange(index, choice);
   };
 
-  onPromptChange = value => {
-    this.props.onPromptChange(value);
-  };
-
   render() {
-    const { model, classes, onRemoveChoice, onAddChoice } = this.props;
+    const { model, onRemoveChoice, onAddChoice } = this.props;
 
     log('choices', model.choices);
 
     return (
       <div>
-        {model.prompt && (
-          <EditableHtml
-            label="Prompt"
-            markup={model.prompt}
-            lang={'en-US'}
-            onChange={this.onPromptChange}
-            className={classes.prompt}
-          />
-        )}
         {model.choices.map((choice, index) => (
           <Choice
             choice={choice}

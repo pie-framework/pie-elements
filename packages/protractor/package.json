@@ -1,0 +1,20 @@
+{
+  "name": "@pie-element/protractor",
+  "version": "1.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "pie": {
+    "element": "@pie-ui/protractor"
+  },
+  "dependencies": {
+    "@pie-ui/protractor": "^1.2.2"
+  }
+}
