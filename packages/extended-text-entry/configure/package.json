@@ -7,15 +7,15 @@
   "license": "ISC",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^2.2.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "lodash": "^4.17.5",
+    "@pie-lib/config-ui": "^5.1.5",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "lodash": "^4.17.10",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.1.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^22.4.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-airbnb": "^2.4.0",
     "babel-preset-env": "^1.6.1",
@@ -23,16 +23,14 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-15": "^1.0.5",
-    "jest": "^22.1.4",
-    "react-test-renderer": "^15.6.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.3",
+    "react-test-renderer": "^16.3.2"
   },
   "scripts": {
     "test": "./node_modules/.bin/jest --verbose"
   },
   "jest": {
-    "setupFiles": [
-      "./jestsetup.js"
-    ]
+    "setupFiles": ["./jestsetup.js"]
   }
 }
