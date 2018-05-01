@@ -3,28 +3,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root';
 
+const csToUi = cs => {};
+/**
+ *
+ * @param
+ * {"{"width":"200px","height":"100px","disabled":true,"mode":"evaluate","feedback":{"type":"default","default":"Your answer has been submitted","customFeedback":"<div>Thank you very much</div>"},"id":"1","element":"extended-text-entry","value":"<div>asrt</div>","mathEnabled":false}"} ui
+ */
+const uiToCs = ui => {};
 export default class extends HTMLElement {
-
-  constructor() {
-    super();
-    this.onModelChanged = this.onModelChanged.bind(this);
-  }
-
   set model(m) {
     this._model = m;
-    this._render();
+    this.render();
   }
 
-  onModelChanged(m) {
+  change(m) {
     this._model = m;
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
-  _render() {
-    let element = React.createElement(Root, {
-      model: this._model,
-      onModelChanged: this.onModelChanged
-    });
-    ReactDOM.render(element, this);
+  render() {
+    if (this._model) {
+      const element = React.createElement(Root, {
+        model: this._model,
+        onChange: this.change.bind(this)
+      });
+      ReactDOM.render(element, this);
+    }
   }
 }

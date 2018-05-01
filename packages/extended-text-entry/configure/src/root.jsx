@@ -1,45 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
 
 export default class Root extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      model : props.model
-    }
+      model: props.model
+    };
   }
 
-  handleModelChange(){
-    this.props.onModelChanged(this.state.model);
-  }
-
-  update(model){
+  change = model => {
+    const { onChange } = this.props;
     this.setState({ model }, () => {
-      this.handleModelChange();
-    })
-  }
-
-  handleBoxResize = (value, type) => {
-    let update = cloneDeep(this.state.model);
-    update[type] = value;
-    this.update(update);
-  }  
+      onChange(this.state.model);
+    });
+  };
 
   render() {
-    return (
-      <div>
-        <Main
-          model={this.state.model}
-          handleBoxResize={this.handleBoxResize}        
-        />
-      </div>
-    );
+    return <Main model={this.state.model} onChange={this.change} />;
   }
 }
 
 Root.propTypes = {
   model: PropTypes.object.isRequired,
-  onModelChanged: PropTypes.func.isRequired
-}
+  onChange: PropTypes.func.isRequired
+};
