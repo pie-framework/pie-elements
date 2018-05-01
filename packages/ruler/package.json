@@ -1,0 +1,20 @@
+{
+  "name": "@pie-element/ruler",
+  "version": "1.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "pie": {
+    "element": "@pie-ui/ruler"
+  },
+  "dependencies": {
+    "@pie-ui/ruler": "^1.1.0"
+  }
+}
