@@ -9,12 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main" : "src/index.js",
   "author": "",
   "license": "ISC",
-  "pie": {
-    "element": "@pie-ui/ruler"
-  },
   "dependencies": {
-    "@pie-ui/ruler": "^1.1.0"
+    "@pie-ui/ruler": "^1.1.1"
   }
 }
