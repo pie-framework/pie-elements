@@ -99,8 +99,8 @@ export class Main extends React.Component {
             label={'Length'}
             className={classes.length}
             value={model.config.length}
-            max={21}
-            min={1}
+            max={30}
+            min={5}
             onChange={this.lengthChange}
           />
           <NumberTextField
@@ -108,7 +108,7 @@ export class Main extends React.Component {
             className={classes.pixelsPerUnit}
             value={model.config.pixelsPerUnit}
             max={100}
-            min={20}
+            min={25}
             onChange={this.pixelsPerUnitChange}
           />
         </div>

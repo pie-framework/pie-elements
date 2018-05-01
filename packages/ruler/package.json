@@ -13,6 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/ruler": "^1.1.1"
+    "@pie-ui/ruler": "^1.2.0"
   }
 }
