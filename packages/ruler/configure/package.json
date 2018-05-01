@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^5.1.4"
+    "@pie-lib/config-ui": "^5.1.5"
   },
   "author": "",
   "license": "ISC"

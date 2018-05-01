@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  TwoChoice,
-  NChoice,
-  NumberTextField,
-  InputContainer
-} from '@pie-lib/config-ui';
+import { TwoChoice, NChoice, NumberTextField } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
 
 const metricLabels = [
@@ -21,9 +16,9 @@ const imperialLabels = [
   { label: 'Miles', value: 'm' }
 ];
 const imperialTickOpts = [
-  { label: '16', value: 16 },
-  { label: '8', value: 8 },
-  { label: '4', value: 4 }
+  { label: '16', value: '16' },
+  { label: '8', value: '8' },
+  { label: '4', value: '4' }
 ];
 
 export class Main extends React.Component {
@@ -47,7 +42,7 @@ export class Main extends React.Component {
     onChange(model);
   };
 
-  lengthChange = l => {
+  lengthChange = (e, l) => {
     const { model, onChange } = this.props;
     model.model.config.length = l;
     onChange(model);
@@ -59,7 +54,7 @@ export class Main extends React.Component {
     onChange(model);
   };
 
-  pixelsPerUnitChange = t => {
+  pixelsPerUnitChange = (e, t) => {
     const { model, onChange } = this.props;
     model.model.config.pixelsPerUnit = parseInt(t, 10);
     onChange(model);
@@ -76,7 +71,7 @@ export class Main extends React.Component {
       <div>
         <div>
           <TwoChoice
-            header="type"
+            header="Type"
             value={model.config.units}
             onChange={this.typeChange}
             one={{ label: 'Imperial', value: 'imperial' }}
@@ -86,7 +81,7 @@ export class Main extends React.Component {
           {model.config.units === 'imperial' && (
             <NChoice
               header="Number of Ticks"
-              value={model.config.ticks}
+              value={model.config.ticks.toString()}
               onChange={this.ticksChange}
               opts={imperialTickOpts}
             />
@@ -94,38 +89,33 @@ export class Main extends React.Component {
         </div>
         <NChoice
           className={classes.opt}
-          header="label"
+          header="Label"
           value={model.config.label}
           onChange={this.labelChange}
           opts={labelOpts}
         />
-        {/*TODO: add NumberInput */}
-        {/*
-        <NumberInput label={'Length'} value={} config={{}} onChange={}/>
-        */}
-        <InputContainer label={'Length'}>
+        <div className={classes.row}>
           <NumberTextField
+            label={'Length'}
             className={classes.length}
             value={model.config.length}
-            max={12}
+            max={21}
             min={1}
             onChange={this.lengthChange}
           />
-        </InputContainer>
-        <InputContainer
-          label={'Pixels per unit'}
-          className={classes.pixelsPerUnit}
-        >
           <NumberTextField
+            label={'Pixels per unit'}
             className={classes.pixelsPerUnit}
             value={model.config.pixelsPerUnit}
             max={100}
             min={20}
             onChange={this.pixelsPerUnitChange}
           />
-          help
-          {/* TODO - add popever ? icon here...*/}
-        </InputContainer>
+        </div>
+        {/* 
+          TODO - add popever ? help icon here...
+          <HelpButton>Foo bar baz</HelpButton> 
+          */}
       </div>
     );
   }
@@ -136,10 +126,13 @@ const Styled = withStyles(theme => ({
     display: 'flex'
   },
   pixelsPerUnit: {
-    display: 'flex'
+    width: '100px'
   },
   length: {
-    paddingTop: theme.spacing.unit * 1.5
+    width: '100px'
+  },
+  row: {
+    display: 'flex'
   }
 }))(Main);
 
