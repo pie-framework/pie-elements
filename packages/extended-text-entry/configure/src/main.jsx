@@ -50,8 +50,8 @@ export class Main extends React.Component {
 
   changeFeedback = feedback => {
     const { model, onChange } = this.props;
-    const innerModel = { ...model.model, feedback };
-    const update = { ...model, model: innerModel };
+    // const innerModel = { ...model.model, feedback };
+    const update = { ...model, feedback };
     onChange(update);
   };
 
@@ -83,7 +83,7 @@ export class Main extends React.Component {
         <InputCheckbox
           label={'Student responses can include math notation'}
           onChange={this.toggleMath}
-          checked={!!model.mathEnabled}
+          checked={!!config.showMathInput}
         />
 
         <Typography className={classes.header} variant="subheading">
@@ -92,6 +92,7 @@ export class Main extends React.Component {
 
         <LegacyFeedbackSelector
           label="When submitted, show"
+          defaultFeedback={'Your work has been submitted'}
           feedback={model.feedback || defaultFeedback}
           onFeedbackChange={this.changeFeedback}
         />
