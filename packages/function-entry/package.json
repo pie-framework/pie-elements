@@ -12,7 +12,7 @@
     "test": "npm run controller-test"
   },
   "dependencies": {
-    "@pie-ui/function-entry": "^2.1.0"
+    "@pie-ui/function-entry": "3.0.1"
   },
   "pie": {
     "element": "@pie-ui/function-entry"

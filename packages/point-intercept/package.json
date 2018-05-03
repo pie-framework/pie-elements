@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@pie-lib/scoring-config": "^2.0.18",
-    "@pie-ui/point-intercept": "^0.1.0",
+    "@pie-ui/point-intercept": "^1.0.1",
     "react-swipeable-views": "^0.12.13"
   },
   "author": "",

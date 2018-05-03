@@ -12,7 +12,6 @@ const styles = {
 };
 
 class PointConfig extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,41 +34,61 @@ class PointConfig extends React.Component {
   }
 
   _stateUpdate() {
-    this.setState({
-      selection: this.state.selection
-    }, () => {
-      this.props.onSelectionChange(this.state.selection);
-    });
+    this.setState(
+      {
+        selection: this.state.selection
+      },
+      () => {
+        this.props.onSelectionChange(this.state.selection);
+      }
+    );
   }
 
   active(point) {
-    return this.state.selection[point] === true ? 'active' : '';
+    return this.state.selection[point] === true; // ? 'active' : '';
   }
 
   render() {
-
     const { classes } = this.props;
 
     const icons = PointConfig.types.map((point, key) => {
-      return <Point
-        iconKey={point.toLowerCase()}
-        key={point.toLowerCase()}
-        onClick={this.toggle.bind(this, point)}
-        active={this.active(point)} />
+      return (
+        <Point
+          iconKey={point.toLowerCase()}
+          key={point.toLowerCase()}
+          onClick={this.toggle.bind(this, point)}
+          active={this.active(point)}
+        />
+      );
     });
 
     return (
       <div>
         <div>{icons}</div>
         <div className={classes.displayToggles}>
-          <Button variant="raised" onClick={this.toggleAll.bind(this, true)}>Display All</Button>
-          <Button variant="raised" onClick={this.toggleAll.bind(this, false)}>None</Button>
+          <Button variant="raised" onClick={this.toggleAll.bind(this, true)}>
+            Display All
+          </Button>
+          <Button variant="raised" onClick={this.toggleAll.bind(this, false)}>
+            None
+          </Button>
         </div>
       </div>
-    )
+    );
   }
 }
 
-PointConfig.types = ["PF", "PE", "LFF", "LEF", "LFE", "LEE", "RFN", "RFP", "REN", "REP"];
+PointConfig.types = [
+  'PF',
+  'PE',
+  'LFF',
+  'LEF',
+  'LFE',
+  'LEE',
+  'RFN',
+  'RFP',
+  'REN',
+  'REP'
+];
 
 export default withStyles(styles, { name: 'PointConfig' })(PointConfig);

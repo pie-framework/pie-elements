@@ -10,10 +10,11 @@
     "configure-test": "cd configure && npm run test",
     "controller-test": "cd controller && npm run test",
     "test": "npm run configure-test && npm run controller-test",
-    "postinstall": "cd configure && npm install && cd ../controller && npm install"
+    "postinstall":
+      "cd configure && npm install && cd ../controller && npm install"
   },
   "dependencies": {
-    "@pie-ui/text-entry": "^2.0.0"
+    "@pie-ui/text-entry": "^3.0.1"
   },
   "pie": {
     "element": "@pie-ui/text-entry"

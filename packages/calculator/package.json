@@ -9,12 +9,8 @@
     "test:coverage": "jest --coverage"
   },
   "jest": {
-    "setupFiles": [
-      "./jestsetup.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "setupFiles": ["./jestsetup.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "publishConfig": {
     "access": "public"
@@ -22,7 +18,7 @@
   "author": "Harry",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/calculator": "^2.0.0"
+    "@pie-ui/calculator": "^3.0.1"
   },
   "pie": {
     "element": "@pie-ui/calculator"
