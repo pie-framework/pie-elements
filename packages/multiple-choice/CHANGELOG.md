@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.6.1...@pie-element/multiple-choice@1.7.0) (2018-05-03)
+
+
+### Features
+
+* **dependencies:** use latest of [@pie-ui](https://github.com/pie-ui)/* ([ac9d2e5](https://github.com/pie-framework/pie-elements/commit/ac9d2e5))
+
+
+
+
 <a name="1.6.1"></a>
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.6.0...@pie-element/multiple-choice@1.6.1) (2018-05-02)
 
