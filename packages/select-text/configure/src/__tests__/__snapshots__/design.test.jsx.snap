@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`design snapshot renders 1`] = `
+<div
+  className="foo"
+>
+  <TextField
+    label="Content"
+    multiline={true}
+    onChange={[Function]}
+    required={false}
+    select={false}
+  />
+  <Component
+    label="Highlight choices"
+    onChange={[Function]}
+  />
+  <Component
+    label="Tokens"
+  >
+    <WithStyles(Tokenizer)
+      onChange={[Function]}
+      tokens={Array []}
+    />
+  </Component>
+  <WithStyles(Chip)
+    label="Selections Available: 0"
+  />
+  <WithStyles(Chip)
+    label="Correct Answers: 0"
+  />
+  <Component
+    label="Selection count (0:any)"
+    max={0}
+    min={0}
+    onChange={[Function]}
+  />
+  <Component
+    onChange={[Function]}
+  />
+</div>
+`;
