@@ -1,0 +1,14 @@
+{
+  "name": "@pie-element/likert-choice",
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "pie": {
+    "element": "@pie-ui/likert-choice"
+  }
+}
