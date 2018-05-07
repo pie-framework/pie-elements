@@ -9,7 +9,7 @@ export default class extends HTMLElement {
     }
 
     set model(s) {
-        this._model = utils.normalizeChoices(s);
+        this._model = s;
         this._render();
     }
 
