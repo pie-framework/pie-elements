@@ -10,6 +10,7 @@ module.exports = {
             choiceMode: 'radio',
             keyMode: 'numbers',
             activeLanguage: 'en-US',
+            disabled: false,
             choices: [
                 {
                     correct: true,
