@@ -10,5 +10,8 @@
   },
   "pie": {
     "element": "@pie-ui/likert-choice"
+  },
+  "dependencies": {
+    "@pie-lib/editable-html": "^5.0.12"
   }
 }

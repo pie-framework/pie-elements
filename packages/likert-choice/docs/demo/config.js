@@ -9,29 +9,31 @@ module.exports = {
             prompt: 'Do you Like northern European countries ?',
             choiceMode: 'radio',
             keyMode: 'numbers',
-            activeLanguage: 'en-US',
+            activeLang: 'en-US',
+            defaultLang: 'en-US',
             disabled: false,
             choices: [
                 {
                     correct: true,
-                    value: 'like',
+                    value: 'disagree',
                     label: [
-                        {lang: 'en-US', value: 'Like'},
-                        {lang: 'es-ES', value: 'Me gusta'}
+                        {lang: 'en-US', value: 'Disagree'},
+                        {lang: 'es-ES', value: 'Discrepar'}
                     ],
                 },
                 {
-                    value: 'dislike',
+                    correct: true,
+                    value: 'neutral',
                     label: [
-                        {lang: 'en-US', value: 'Dislike'},
-                        {lang: 'es-ES', value: 'Disgusto'}
+                        {lang: 'en-US', value: 'Neutral'},
+                        {lang: 'es-ES', value: 'Neutral'}
                     ],
                 },
                 {
-                    value: 'notLikely',
+                    value: 'agree',
                     label: [
-                        {lang: 'en-US', value: 'Dislike'},
-                        {lang: 'es-ES', value: 'Disgusto'}
+                        {lang: 'en-US', value: 'Agree'},
+                        {lang: 'es-ES', value: 'De Acuerdo'}
                     ],
                 }
             ]
