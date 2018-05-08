@@ -1,8 +1,8 @@
 import * as React from 'react';
-import DeleteControl from '../delete';
+import { shallowChild } from '@pie-lib/test-utils';
 import Button from 'material-ui/Button';
 import Delete from '@material-ui/icons/Delete';
-import { shallowChild } from '@pie-lib/test-utils';
+import DeleteControl from '../delete';
 
 describe('DeleteControl', () => {
   const defaultProps = {
