@@ -7,17 +7,23 @@ module.exports = {
       id: '1',
       element: 'function-entry',
       weight: 1,
-      incorrectFeedback: {
-        type: 'default',
-      },
+      showFormattingHelp: true,
       correctResponse: {
-        equation: '3x+2',
-        feedback: {
-          type: 'default',
-        },
+        equation: '3x+2'
       },
-      model: {
-        showFormattingHelp: true
+      /**
+       * TODO: import {getFeedback} from '@pie-lib/feedback'
+       * const s :string = getFeedback(correctness, feedback);
+       */
+      feedback: {
+        correct: {
+          type: 'default',
+          default: 'Correct'
+        },
+        incorrect: {
+          type: 'default',
+          default: 'Incorrect'
+        }
       }
     }
   ]

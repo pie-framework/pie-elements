@@ -12,17 +12,19 @@ const isResponseCorrect = (correctResponse, model, value) => {
 };
 
 export function model(question, session, env) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
+    const { showFormattingHelp, correctResponse } = question;
 
-    const { model, correctResponse } = question;
+    const defaultFeedback = Object.assign(
+      {
+        correct: 'Correct',
+        incorrect: 'Incorrect',
+        empty: 'The answer is empty'
+      },
+      question.defaultFeedback
+    );
 
-    const defaultFeedback = Object.assign({
-      correct: 'Correct',
-      incorrect: 'Incorrect',
-      empty: 'The answer is empty'
-    }, question.defaultFeedback);
-
-    const getFeedback = (correctness) => {
+    const getFeedback = correctness => {
       const fb = (config, defaultValue, incorrect) => {
         config = config || {};
 
@@ -43,7 +45,11 @@ export function model(question, session, env) {
         }
 
         if (correctness === 'incorrect') {
-          return fb(question.incorrectFeedback, defaultFeedback.incorrect, true);
+          return fb(
+            question.incorrectFeedback,
+            defaultFeedback.incorrect,
+            true
+          );
         }
 
         if (correctness === 'empty') {
@@ -54,24 +60,24 @@ export function model(question, session, env) {
 
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
-
         if (!session.value) {
           return 'empty';
         }
 
-        return isResponseCorrect(correctResponse.equation, model, session.value) ? 'correct' : 'incorrect';
+        return isResponseCorrect(correctResponse.equation, model, session.value)
+          ? 'correct'
+          : 'incorrect';
       }
     };
 
-
     const correctness = getCorrectness();
-    const base = {
+
+    const out = {
+      showFormattingHelp,
       correctness,
       feedback: getFeedback(correctness),
       disabled: env.mode !== 'gather'
     };
-
-    const out = Object.assign(base, model);
 
     log('out: ', out);
 
