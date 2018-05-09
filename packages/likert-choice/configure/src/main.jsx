@@ -1,17 +1,9 @@
 import React, {Component} from 'react';
-import {NChoice, LanguageControls} from '@pie-lib/config-ui';
+import {LanguageControls, ChoiceConfiguration} from '@pie-lib/config-ui';
 import InputComponent from './input-component';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-
-const styled = {
-    commonFlex: {
-        '& > div': {
-            flexDirection: 'column',
-            color: 'yellow'
-        }
-    }
-}
+import Choice from './choice';
 
 const Section = withStyles({
     section: {
@@ -43,51 +35,23 @@ const Section = withStyles({
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.state = {response: '', choice: '', type: '', activeLang: 'en-US', defaultLang: 'en-US'}
+        this.state = {activeLang: props.model.activeLang, defaultLang: props.model.defaultLang}
+    }
+
+    filter(nameKey, myArray){
+        for (var i=0; i < myArray.length; i++) {
+            if (myArray[i].lang === nameKey) {
+                console.log(myArray[i].value);
+                return myArray[i];
+            }
+        }
     }
 
     render() {
 
-        const {classes} = this.props;
-
         return (
             <div>
-                <NChoice
-                    style={styled.commonFlex}
-                    header="Response Type"
-                    value={this.state.response}
-                    onChange={response => this.setState({response})}
-                    opts={[
-                        {label: 'Likert 3', value: '3'},
-                        {label: 'Likert 5', value: '5'},
-                        {label: 'Likert 7', value: '7'}
-                    ]}
-                />
-                <NChoice
-                    header="Choice Labels"
-                    value={this.state.choice}
-                    onChange={choice => this.setState({choice})}
-                    opts={[
-                        {label: 'Numbers', value: 'numbers'},
-                        {label: 'Letters', value: 'letters'},
-                        {label: 'Graphics', value: 'graphics'},
-                        {label: 'None', value: 'none'}
-                    ]}
-                />
-                <NChoice
-                    header="Label Type"
-                    value={this.state.type}
-                    onChange={type => this.setState({type})}
-                    opts={[
-                        {label: 'Agreement', value: 'agreement'},
-                        {label: 'Frequency', value: 'frequency'},
-                        {label: 'Yes/No', value: 'yesno'},
-                        {label: 'Likelihood', value: 'likelihood'},
-                        {label: 'Importance', value: 'importance'},
-                        {label: 'None', value: 'none'},
-                        {label: 'Custom', value: 'custom'}
-                    ]}
-                />
+                <Choice />
                 <Section name="">
                 <LanguageControls
                     langs={['en-US', 'es-ES']}
@@ -99,12 +63,23 @@ class Main extends Component {
                     }
                 />
                 </Section>
-
                 <InputComponent/>
+                {this.props.model.choices.map((v,i) => (<ChoiceConfiguration
+                    key={i}
+                    index={i+1}
+                    mode={'radio'}
+                    data={this.filter(this.state.activeLang,v.label)}
+                    defaultFeedback={{
+                        correct: 'Correct',
+                        incorrect: 'Incorrect'
+                    }}
+                    onChange={() => console.log("onChange")}
+                    onDelete={() => console.log("onDelete")}
+                />))}
             </div>
         )
     }
 }
 
 
-export default withStyles(styled)(Main);
+export default Main;

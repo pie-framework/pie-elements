@@ -59,6 +59,7 @@ const Design = withStyles(styles)(props => {
           key={index}
           data={choice}
           defaultFeedback={{}}
+          showValueInput={true}
           imageSupport={imageSupport}
           onDelete={() => onRemoveChoice(index)}
           onChange={c => onChoiceChanged(index, c)}
