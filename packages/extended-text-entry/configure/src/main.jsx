@@ -2,12 +2,12 @@ import React from 'react';
 import {
   NumberTextField,
   InputCheckbox,
-  LegacyFeedbackSelector
+  FeedbackSelector
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import cloneDeep from 'lodash/cloneDeep';
+
 const defaultFeedback = {
   type: 'default',
   feedback: 'Your answer has been submitted'
@@ -25,74 +25,70 @@ export class Main extends React.Component {
     this.state = {
       setDimensions: true
     };
-    this.changeWidth = this.change('expectedLength');
-    this.changeHeight = this.change('expectedLines');
+    this.changeWidth = this.change('width');
+    this.changeHeight = this.change('height');
   }
 
   change = key => (event, v) => {
     const { onChange } = this.props;
-    const model = this.updateConfig({ [key]: v });
+    const model = this.applyUpdate({ [key]: v });
     onChange(model);
   };
 
-  updateConfig(update) {
+  applyUpdate(update) {
     const { model } = this.props;
-    const out = cloneDeep(model);
-    out.model.config = { ...out.model.config, ...update };
+    const out = Object.assign({}, model, update);
     return out;
   }
 
   toggleMath = event => {
     const { onChange } = this.props;
-    const model = this.updateConfig({ showMathInput: event.target.checked });
+    const model = this.applyUpdate({ showMathInput: event.target.checked });
     onChange(model);
   };
 
   changeFeedback = feedback => {
     const { model, onChange } = this.props;
-    // const innerModel = { ...model.model, feedback };
     const update = { ...model, feedback };
     onChange(update);
   };
 
   render() {
     const { model, classes } = this.props;
-    const { config } = model.model;
     return (
       <div>
         <Typography className={classes.header} variant="subheading">
           Display
         </Typography>
         <NumberTextField
-          label="Width (Columns)"
+          label="Width (px)"
           disabled={!this.state.setDimensions}
-          value={parseInt(config.expectedLength)}
-          min={35}
-          max={70}
+          value={parseInt(model.width)}
+          min={100}
+          max={500}
           onChange={this.changeWidth}
         />
         <NumberTextField
-          label="Height (Rows)"
+          label="Height (px)"
           disabled={!this.state.setDimensions}
-          value={parseInt(config.expectedLines)}
-          min={3}
-          max={10}
+          value={parseInt(model.height)}
+          min={100}
+          max={500}
           onChange={this.changeHeight}
         />
         <br />
         <InputCheckbox
           label={'Student responses can include math notation'}
           onChange={this.toggleMath}
-          checked={!!config.showMathInput}
+          checked={!!model.showMathInput}
         />
 
         <Typography className={classes.header} variant="subheading">
           Feedback
         </Typography>
 
-        <LegacyFeedbackSelector
+        <FeedbackSelector
           label="When submitted, show"
-          defaultFeedback={'Your work has been submitted'}
           feedback={model.feedback || defaultFeedback}
           onFeedbackChange={this.changeFeedback}
         />
