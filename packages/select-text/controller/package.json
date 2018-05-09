@@ -7,6 +7,9 @@
   "dependencies": {
     "debug": "^3.1.0"
   },
+  "devDependencies": {
+    "lodash": "^4.17.10"
+  },
   "author": "",
   "license": "ISC"
 }
