@@ -12,6 +12,7 @@
     "element": "@pie-ui/likert-choice"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.46",
     "@pie-lib/editable-html": "^5.0.12"
   }
 }
