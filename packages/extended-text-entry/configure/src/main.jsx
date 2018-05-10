@@ -10,7 +10,7 @@ import { withStyles } from 'material-ui/styles';
 
 const defaultFeedback = {
   type: 'default',
-  feedback: 'Your answer has been submitted'
+  default: 'Your answer has been submitted'
 };
 
 export class Main extends React.Component {
@@ -90,7 +90,7 @@ export class Main extends React.Component {
         <FeedbackSelector
           label="When submitted, show"
           feedback={model.feedback || defaultFeedback}
-          onFeedbackChange={this.changeFeedback}
+          onChange={this.changeFeedback}
         />
       </div>
     );
