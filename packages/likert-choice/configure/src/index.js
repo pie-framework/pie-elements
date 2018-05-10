@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main';
+import Root from './root';
+import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
 
 export default class extends HTMLElement {
     constructor() {
@@ -23,7 +24,7 @@ export default class extends HTMLElement {
     }
 
     _render() {
-        let element = React.createElement(Main, {
+        let element = React.createElement(Root, {
             model: this._model,
             onModelChanged: this.onModelChanged
         });

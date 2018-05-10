@@ -9,11 +9,13 @@ export default class Choice extends Component {
     }
 
     render() {
+        const {response,choice,type} = this.state;
         return (
             <Fragment>
                 <NChoice
+                    direction="vertical"
                     header="Response Type"
-                    value={this.state.response}
+                    value={response}
                     onChange={response => this.setState({response})}
                     opts={[
                         {label: 'Likert 3', value: '3'},
@@ -22,8 +24,9 @@ export default class Choice extends Component {
                     ]}
                 />
                 <NChoice
+                    direction="vertical"
                     header="Choice Labels"
-                    value={this.state.choice}
+                    value={choice}
                     onChange={choice => this.setState({choice})}
                     opts={[
                         {label: 'Numbers', value: 'numbers'},
@@ -33,14 +36,23 @@ export default class Choice extends Component {
                     ]}
                 />
                 <NChoice
+                    direction="vertical"
                     header="Label Type"
-                    value={this.state.type}
+                    value={type}
                     onChange={type => this.setState({type})}
                     opts={[
                         {label: 'Agreement', value: 'agreement'},
                         {label: 'Frequency', value: 'frequency'},
                         {label: 'Yes/No', value: 'yesno'},
-                        {label: 'Likelihood', value: 'likelihood'},
+                        {label: 'Likelihood', value: 'likelihood'}
+                    ]}
+                />
+                <NChoice
+                    direction="vertical"
+                    header=""
+                    value={type}
+                    onChange={type => this.setState({type})}
+                    opts={[
                         {label: 'Importance', value: 'importance'},
                         {label: 'None', value: 'none'},
                         {label: 'Custom', value: 'custom'}

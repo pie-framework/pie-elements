@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
     promptHolder: {
@@ -15,7 +16,13 @@ const styles = theme => ({
     }
 });
 
-class InputComponent extends Component {
+class Prompt extends Component {
+
+    static propTypes = {
+        classes: PropTypes.object.isRequired,
+        prompt: PropTypes.string.isRequired,
+        onPromptChanged: PropTypes.func.isRequired
+    }
 
     constructor(props){
         super(props);
@@ -23,18 +30,18 @@ class InputComponent extends Component {
 
     render(){
 
-        const {classes} = this.props;
+        const {classes, prompt, onPromptChanged} = this.props;
 
         return (<div>
             <InputContainer label="Prompt" className={classes.promptHolder}>
                 <EditableHtml
                     className={classes.prompt}
-                    markup=''
-                    onChange={() => console.log('Hello')}
+                    markup={prompt}
+                    onChange={onPromptChanged}
                 />
             </InputContainer>
         </div>)
     }
 }
 
-export default withStyles(styles)(InputComponent);
+export default withStyles(styles)(Prompt);
