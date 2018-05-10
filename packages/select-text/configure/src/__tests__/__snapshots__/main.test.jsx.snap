@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main snapshot renders 1`] = `
+<Component>
+  <WithStyles(Design)
+    model={
+      Object {
+        "tokens": Array [],
+      }
+    }
+    onChange={[MockFunction]}
+    title="Design"
+  />
+  <Component
+    numberOfCorrectResponses={0}
+    onChange={[Function]}
+    title="Scoring"
+  />
+</Component>
+`;

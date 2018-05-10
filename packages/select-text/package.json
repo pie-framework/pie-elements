@@ -1,0 +1,22 @@
+{
+  "name": "@pie-element/select-text",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@pie-ui/select-text": "^1.1.1",
+    "@babel/runtime": "^7.0.0-beta.46"
+  },
+  "pie": {
+    "element": "@pie-ui/select-text"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
