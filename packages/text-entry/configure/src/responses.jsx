@@ -22,31 +22,28 @@ class RawResponses extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     responses: PropTypes.object.isRequired,
-    feedback: PropTypes.string,
-    feedbackType: PropTypes.string,
     label: PropTypes.string,
     subHeader: PropTypes.string,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node
-    ]).isRequired,
+    ]),
     classes: PropTypes.object.isRequired
   };
 
   onAnswersChange = answers => {
-    const { feedback, feedbackType } = this.props;
-
-    const valueFeedback =
-      feedbackType === 'custom'
-        ? feedback
-        : feedbackType === 'default'
-          ? 'DEFAULT'
-          : undefined;
-    this.props.responses.values = answers.map(a => ({
-      lang: 'en-US',
-      value: a,
-      feedback: valueFeedback
-    }));
+    // const valueFeedback =
+    //   feedbackType === 'custom'
+    //     ? feedback
+    //     : feedbackType === 'default'
+    //       ? 'DEFAULT'
+    //       : undefined;
+    this.props.responses.values = answers;
+    // .map(a => ({
+    //   lang: 'en-US',
+    //   value: a,
+    //   feedback: valueFeedback
+    // }));
     this.props.onChange(this.props.responses);
   };
 

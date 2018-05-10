@@ -1,5 +1,4 @@
 module.exports = {
-  langs: ['en-US', 'es-ES'],
   elements: {
     'text-entry': '../..'
   },
@@ -7,36 +6,36 @@ module.exports = {
     {
       id: '1',
       element: 'text-entry',
+      feedback: {
+        correct: {
+          type: 'custom',
+          custom: 'correct-o'
+        },
+        incorrect: {
+          type: 'custom',
+          custom: 'custom feedback'
+        },
+        partial: {
+          type: 'custom',
+          custom: 'foo'
+        }
+      },
       correctResponses: {
         values: ['mutt', 'hound'],
         ignoreWhitespace: true,
-        ignoreCase: false,
-        feedback: {
-          type: 'custom',
-          value: 'correct-o'
-        }
+        ignoreCase: false
       },
       partialResponses: {
         values: ['mutty'],
         ignoreWhitespace: true,
         ignoreCase: true,
-        awardPercentage: '50',
-        feedback: {
-          type: 'custom',
-          value: 'foo'
-        }
+        awardPercentage: '50'
       },
-      incorrectFeedback: {
-        type: 'custom',
-        value: 'custom feedback'
-      },
-      model: {
-        answerBlankSize: '10',
-        answerAlignment: 'left',
-        allowDecimal: true,
-        allowIntegersOnly: false,
-        allowThousandsSeparator: true
-      }
+      answerBlankSize: '10',
+      answerAlignment: 'left',
+      allowDecimal: true,
+      allowIntegersOnly: false,
+      allowThousandsSeparator: true
     }
   ]
-}
+};

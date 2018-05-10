@@ -1,16 +1,11 @@
 import { withStyles } from 'material-ui/styles';
 import React from 'react';
 import { Typography } from 'material-ui';
-import { FeedbackConfig } from '@pie-lib/config-ui';
+import { FeedbackConfig, NumberTextField } from '@pie-lib/config-ui';
 import debug from 'debug';
 import Responses from './responses';
 import PropTypes from 'prop-types';
 import ModelConfig from './model-config';
-import {
-  modelToFeedbackConfig,
-  feedbackConfigToModel
-} from './feedback-mapper';
-import NumberInput from './number-input';
 
 const log = debug('@pie-element:text-entry:configure');
 
@@ -26,6 +21,7 @@ class Configure extends React.Component {
     model: PropTypes.object,
     classes: PropTypes.object.isRequired
   };
+
   updateResponses = name => responses => {
     const { model } = this.props;
     model[name] = responses;
@@ -38,24 +34,27 @@ class Configure extends React.Component {
   onPartialResponsesChanged = this.updateResponses('partialResponses');
 
   onModelConfigChange = cfg => {
-    this.props.model.model = cfg;
-    this.props.onModelChanged(this.props.model);
+    const { model, onModelChanged } = this.props;
+    const update = { ...model, ...cfg };
+    onModelChanged(update);
   };
 
-  onFeedbackChange = feedbackConfig => {
-    feedbackConfigToModel(feedbackConfig, this.props.model);
-    this.props.onModelChanged(this.props.model);
+  onFeedbackChange = feedback => {
+    const { model, onModelChanged } = this.props;
+    model.feedback = feedback;
+    onModelChanged(model);
   };
 
-  onAwardPercentageChange = percent => {
-    this.props.model.partialResponses.awardPercentage = percent;
-    this.props.onModelChanged(this.props.model);
+  onAwardPercentageChange = (event, percent) => {
+    const { model, onModelChanged } = this.props;
+    model.partialResponses.awardPercentage = percent;
+    onModelChanged(model);
   };
 
   render() {
     const { classes, model } = this.props;
 
-    const feedbackConfig = modelToFeedbackConfig(model);
+    // const feedbackConfig = modelToFeedbackConfig(model);
 
     log('[render] model', model);
 
@@ -70,29 +69,27 @@ class Configure extends React.Component {
           subHeader="Additional correct answers may be added by clicking enter/return between answers."
           responses={model.correctResponses}
           onChange={this.onCorrectResponsesChanged}
-          feedbackType={feedbackConfig.correctFeedbackType}
-          feedback={feedbackConfig.correctFeedback}
         />
         <Responses
           label="Partial Correct Answers (optional)"
           subHeader="Additional partially correct answers may be added by clicking enter/return between answers."
           responses={model.partialResponses}
-          feedbackType={feedbackConfig.partialFeedbackType}
-          feedback={feedbackConfig.partialFeedback}
           onChange={this.onPartialResponsesChanged}
         >
           <div>
-            <NumberInput
+            <NumberTextField
+              label={'Award % for partially correct answer'}
+              min={0}
+              max={100}
               className={classes.award}
-              value={model.partialResponses.awardPercentage}
+              value={parseInt(model.partialResponses.awardPercentage, 10)}
               onChange={this.onAwardPercentageChange}
-              placeholder="Award % for partially correct answer"
             />
           </div>
         </Responses>
-        <ModelConfig config={model.model} onChange={this.onModelConfigChange} />
+        <ModelConfig config={model} onChange={this.onModelConfigChange} />
         <FeedbackConfig
-          feedback={feedbackConfig}
+          feedback={model.feedback}
           onChange={this.onFeedbackChange}
         />
       </div>

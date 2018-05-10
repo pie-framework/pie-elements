@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class RawModelConfig extends React.Component {
   static propTypes = {
     config: PropTypes.object,
-    onChange: PropTypes.func.allowIntegersOnly,
+    onChange: PropTypes.func.isRequired,
     classes: PropTypes.object
   };
 
