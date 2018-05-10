@@ -1,62 +1,22 @@
 import debug from 'debug';
 import mathjs from 'mathjs';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
 const log = debug('@pie-element:function-entry:controller');
 
 const process = v => mathjs.simplify(v ? v.trim() : '');
 
-const isResponseCorrect = (correctResponse, model, value) => {
+const isResponseCorrect = (correctResponse, value) => {
   const processedValue = process(value);
-
-  return processedValue.equals(mathjs.simplify(correctResponse));
+  const cr = mathjs.simplify(correctResponse);
+  log('processed:', processedValue);
+  log('correctResponse:', cr);
+  return processedValue.equals(cr);
 };
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { showFormattingHelp, correctResponse } = question;
-
-    const defaultFeedback = Object.assign(
-      {
-        correct: 'Correct',
-        incorrect: 'Incorrect',
-        empty: 'The answer is empty'
-      },
-      question.defaultFeedback
-    );
-
-    const getFeedback = correctness => {
-      const fb = (config, defaultValue, incorrect) => {
-        config = config || {};
-
-        if (config.type === 'none') {
-          return '';
-        } else if (config.type === 'custom') {
-          return config.value;
-        } else if (config.type === 'default' && !incorrect) {
-          return 'Correct';
-        }
-
-        return defaultValue;
-      };
-
-      if (env.mode === 'evaluate') {
-        if (correctness === 'correct') {
-          return fb(question.correctResponse.feedback, defaultFeedback.correct);
-        }
-
-        if (correctness === 'incorrect') {
-          return fb(
-            question.incorrectFeedback,
-            defaultFeedback.incorrect,
-            true
-          );
-        }
-
-        if (correctness === 'empty') {
-          return defaultFeedback.empty;
-        }
-      }
-    };
+    const { showFormattingHelp, equation, feedback } = question;
 
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
@@ -64,7 +24,7 @@ export function model(question, session, env) {
           return 'empty';
         }
 
-        return isResponseCorrect(correctResponse.equation, model, session.value)
+        return isResponseCorrect(equation, session.value)
           ? 'correct'
           : 'incorrect';
       }
@@ -72,15 +32,22 @@ export function model(question, session, env) {
 
     const correctness = getCorrectness();
 
-    const out = {
-      showFormattingHelp,
-      correctness,
-      feedback: getFeedback(correctness),
-      disabled: env.mode !== 'gather'
-    };
+    const fb =
+      env.mode === 'evaluate'
+        ? getFeedbackForCorrectness(correctness, feedback)
+        : Promise.resolve(undefined);
 
-    log('out: ', out);
+    fb.then(feedback => {
+      const out = {
+        showFormattingHelp,
+        correctness,
+        feedback,
+        disabled: env.mode !== 'gather'
+      };
 
-    resolve(out);
+      log('out: ', out);
+
+      resolve(out);
+    });
   });
 }
