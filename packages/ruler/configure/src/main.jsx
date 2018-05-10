@@ -28,60 +28,61 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
-  typeChange = t => {
+  measureChange = t => {
     const { model, onChange } = this.props;
-    model.model.config.units = t;
-    model.model.config.label = t === 'imperial' ? 'in' : 'cm';
-    model.model.config.ticks = t === 'imperial' ? 8 : undefined;
+    model.measure = t;
+    model.label = t === 'imperial' ? 'in' : 'cm';
+    model.imperialTicks = t === 'imperial' ? 8 : undefined;
     onChange(model);
   };
 
   labelChange = l => {
     const { model, onChange } = this.props;
-    model.model.config.label = l;
+    model.label = l;
     onChange(model);
   };
 
-  lengthChange = (e, l) => {
+  unitsChange = (e, l) => {
     const { model, onChange } = this.props;
-    model.model.config.length = l;
+    model.width = l * (model.width / model.units);
+    model.units = l;
     onChange(model);
   };
 
   ticksChange = t => {
     const { model, onChange } = this.props;
-    model.model.config.ticks = parseInt(t, 10);
+    model.imperialTicks = parseInt(t, 10);
     onChange(model);
   };
 
   pixelsPerUnitChange = (e, t) => {
     const { model, onChange } = this.props;
-    model.model.config.pixelsPerUnit = parseInt(t, 10);
+    model.width = model.units * parseInt(t, 10);
     onChange(model);
   };
 
   render() {
-    const { model: outerModel, classes } = this.props;
-    const { model } = outerModel;
+    const { model, classes } = this.props;
 
+    const pixelsPerUnit = model.width / model.units;
     const labelOpts =
-      model.config.units === 'metric' ? metricLabels : imperialLabels;
+      model.measure === 'metric' ? metricLabels : imperialLabels;
 
     return (
       <div>
         <div>
           <TwoChoice
             header="Type"
-            value={model.config.units}
-            onChange={this.typeChange}
+            value={model.measure}
+            onChange={this.measureChange}
             one={{ label: 'Imperial', value: 'imperial' }}
             two={{ label: 'Metric', value: 'metric' }}
           />
 
-          {model.config.units === 'imperial' && (
+          {model.measure === 'imperial' && (
             <NChoice
               header="Number of Ticks"
-              value={model.config.ticks.toString()}
+              value={model.imperialTicks.toString()}
               onChange={this.ticksChange}
               opts={imperialTickOpts}
             />
@@ -90,7 +91,7 @@ export class Main extends React.Component {
         <NChoice
           className={classes.opt}
           header="Label"
-          value={model.config.label}
+          value={model.label}
           onChange={this.labelChange}
           opts={labelOpts}
         />
@@ -98,24 +99,20 @@ export class Main extends React.Component {
           <NumberTextField
             label={'Length'}
             className={classes.length}
-            value={model.config.length}
+            value={model.units}
             max={30}
             min={5}
-            onChange={this.lengthChange}
+            onChange={this.unitsChange}
           />
           <NumberTextField
             label={'Pixels per unit'}
             className={classes.pixelsPerUnit}
-            value={model.config.pixelsPerUnit}
+            value={pixelsPerUnit}
             max={100}
             min={25}
             onChange={this.pixelsPerUnitChange}
           />
         </div>
-        {/* 
-          TODO - add popever ? help icon here...
-          <HelpButton>Foo bar baz</HelpButton> 
-          */}
       </div>
     );
   }
