@@ -2,6 +2,7 @@ import {
   FeedbackConfig,
   FormSection,
   InputCheckbox,
+  InputContainer,
   TwoChoice
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
@@ -45,7 +46,7 @@ class Design extends React.Component {
 
     this.onLayoutChange = layout => {
       this.applyUpdate(model => {
-        model.config.choiceAreaLayout = layout;
+        model.choiceAreaLayout = layout;
         return model;
       });
     };
@@ -53,7 +54,7 @@ class Design extends React.Component {
     this.onPlacementTypeChange = event => {
       const includePlacment = event.currentTarget.checked;
       this.applyUpdate(model => {
-        model.config.placementType = includePlacment ? 'placement' : 'none';
+        model.placementType = includePlacment ? 'placement' : 'none';
         return model;
       });
     };
@@ -67,34 +68,31 @@ class Design extends React.Component {
 
     this.onPromptChange = this.changeHandler('prompt');
     this.onChoiceAreaLabelChange = this.changeHandler(
-      'config.choiceAreaLabel',
+      'choiceAreaLabel',
       'target.value'
     );
     this.onAnswerAreaLabelChange = this.changeHandler(
-      'config.answerAreaLabel',
+      'answerAreaLabel',
       'target.value'
     );
     this.onFeedbackChange = this.changeHandler('feedback');
-    this.onShuffleChange = this.changeHandler(
-      'config.shuffle',
-      'target.checked'
-    );
+    this.onShuffleChange = this.changeHandler('shuffle', 'target.checked');
     this.onShowOrderingChange = this.changeHandler(
-      'config.showOrdering',
+      'showOrdering',
       'target.checked'
     );
 
     this.onChoiceEditorChange = (choices, correctResponse) => {
       const { model, onModelChange } = this.props;
       const update = cloneDeep(model);
-      update.model.choices = choices;
+      update.choices = choices;
       update.correctResponse = correctResponse;
       onModelChange(update);
     };
   }
 
   render() {
-    const { model, onFeedbackChange, classes, imageSupport } = this.props;
+    const { model, classes, imageSupport } = this.props;
     const { allMoveOnDrag } = this.state;
     return (
       <div className={classes.design}>
@@ -102,7 +100,7 @@ class Design extends React.Component {
           <TwoChoice
             className={classes.orientation}
             header={'Orientation'}
-            value={model.config.choiceAreaLayout}
+            value={model.choiceAreaLayout}
             onChange={this.onLayoutChange}
             one={{ label: 'vertical', value: 'vertical' }}
             two={{ label: 'horizontal', value: 'horizontal' }}
@@ -111,44 +109,45 @@ class Design extends React.Component {
         <div className={classes.row}>
           <InputCheckbox
             label="Shuffle"
-            checked={model.config.shuffle}
+            checked={model.shuffle}
             onChange={this.onShuffleChange}
             aria-label="shuffle"
           />
           <InputCheckbox
             label="Include placement area"
-            checked={model.config.placementType === 'placement'}
+            checked={model.placementType === 'placement'}
             onChange={this.onPlacementTypeChange}
             aria-label="include-placment"
           />
           <InputCheckbox
-            disabled={model.config.placementType !== 'placement'}
+            disabled={model.placementType !== 'placement'}
             label="Numbered guides"
-            checked={model.config.showOrdering}
+            checked={model.showOrdering}
             onChange={this.onShowOrderingChange}
             aria-label="shuffle"
           />
         </div>
-        <EditableHtml
-          label="Prompt"
-          markup={model.model.prompt}
-          onChange={this.onPromptChange}
-          imageSupport={imageSupport}
-          className={classes.prompt}
-        />
+        <InputContainer label="Prompt" className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.prompt}
+            onChange={this.onPromptChange}
+            imageSupport={imageSupport}
+          />
+        </InputContainer>
 
         <div className={classes.row}>
           <TextField
             className={classes.choiceLabel}
             label="Choice label"
-            value={model.config.choiceAreaLabel}
+            value={model.choiceAreaLabel}
             onChange={this.onChoiceAreaLabelChange}
             fullWidth
           />
-          {model.config.placementType === 'placement' && (
+          {model.placementType === 'placement' && (
             <TextField
               label="Answer label"
-              value={model.config.answerAreaLabel}
+              value={model.answerAreaLabel}
               onChange={this.onAnswerAreaLabelChange}
               fullWidth
             />
@@ -157,7 +156,7 @@ class Design extends React.Component {
         <FormSection label="Choices">
           <ChoiceEditor
             correctResponse={model.correctResponse}
-            choices={model.model.choices}
+            choices={model.choices}
             onChange={this.onChoiceEditorChange}
             imageSupport={imageSupport}
           />
@@ -178,6 +177,13 @@ Design.propTypes = {
 };
 
 export default withStyles(theme => ({
+  promptHolder: {
+    width: '100%'
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit
+  },
   row: {
     display: 'grid',
     gridAutoFlow: 'column',
@@ -198,8 +204,5 @@ export default withStyles(theme => ({
   orientation: {
     marginTop: '0px',
     marginBottom: '0px'
-  },
-  prompt: {
-    paddingBottom: theme.spacing.unit
   }
 }))(Design);

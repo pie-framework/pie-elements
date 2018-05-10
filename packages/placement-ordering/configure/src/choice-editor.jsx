@@ -85,7 +85,7 @@ class ChoiceEditor extends React.Component {
       const { correctResponse, choices, onChange } = this.props;
       const allMoveOnDrag =
         choices.find(c => c.moveOnDrag === false) === undefined;
-      choices.foreach(c => (c.moveOnDrag = !allMoveOnDrag));
+      choices.forEach(c => (c.moveOnDrag = !allMoveOnDrag));
       onChange(choices, correctResponse);
     };
   }

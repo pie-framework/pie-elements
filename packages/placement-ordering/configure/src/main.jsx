@@ -48,8 +48,8 @@ class Main extends React.Component {
     this.onModelChange = model => {
       const { onModelChange } = this.props;
       const resetSession =
-        model.config.placementType !== this.state.model.config.placementType ||
-        model.model.choices.length !== this.state.model.model.choices.length;
+        model.placementType !== this.state.model.placementType ||
+        model.choices.length !== this.state.model.choices.length;
       this.setState({ model }, () => {
         onModelChange(this.state.model, resetSession);
       });
