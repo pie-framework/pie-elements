@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^3.0.1",
+    "@pie-lib/config-ui": "^6.0.0",
     "@pie-ui/calculator": "^3.0.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
-  "author": "Harry",
+  "author": "Pie framework developers",
   "license": "ISC"
 }
