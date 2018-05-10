@@ -11,12 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/number-line": "^4.0.1",
-    "@pie-ui/number-line-controller": "^1.1.0"
+    "@pie-ui/number-line": "^4.0.1"
   },
   "pie": {
-    "element": "@pie-ui/number-line",
-    "controller": "@pie-ui/number-line-controller"
+    "element": "@pie-ui/number-line"
   },
   "author": "",
   "license": "ISC"

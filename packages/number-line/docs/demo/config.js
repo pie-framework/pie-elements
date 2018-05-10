@@ -21,10 +21,18 @@ module.exports = {
         }
       ],
       feedback: {
-        correctFeedbackType: 'default',
-        partialFeedbackType: 'default',
-        incorrectFeedbackType: 'custom',
-        incorrectFeedback: '<h1>incorrect</h1>'
+        correct: {
+          type: 'default',
+          default: 'Correct'
+        },
+        partial: {
+          type: 'default',
+          default: 'Nearly'
+        },
+        incorrect: {
+          type: 'custom',
+          custom: '<h1>Incorrect</h1>'
+        }
       },
       allowPartialScoring: true,
       partialScoring: [
@@ -33,42 +41,37 @@ module.exports = {
           scorePercentage: 35
         }
       ],
-      model: {
-        config: {
-          width: 500,
-          height: 400,
-          domain: [
-            -5,
-            5
-          ],
-          initialElements: [
-            {
-              type: 'point',
-              pointType: 'empty',
-              domainPosition: -1
-            }
-          ],
-          maxNumberOfPoints: 20,
-          tickFrequency: 6,
-          showMinorTicks: true,
-          snapPerTick: 1,
-          tickLabelOverrides: [],
-          initialType: 'PF',
-          exhibitOnly: false,
-          availableTypes: {
-            PF: true,
-            PE: true,
-            LFF: true,
-            LEF: true,
-            LFE: true,
-            LEE: true,
-            RFN: true,
-            RFP: true,
-            REN: true,
-            REP: true
+      config: {
+        width: 500,
+        height: 400,
+        domain: [-5, 5],
+        initialElements: [
+          {
+            type: 'point',
+            pointType: 'empty',
+            domainPosition: -1
           }
+        ],
+        maxNumberOfPoints: 20,
+        tickFrequency: 6,
+        showMinorTicks: true,
+        snapPerTick: 1,
+        tickLabelOverrides: [],
+        initialType: 'PF',
+        exhibitOnly: false,
+        availableTypes: {
+          PF: true,
+          PE: true,
+          LFF: true,
+          LEF: true,
+          LFE: true,
+          LEE: true,
+          RFN: true,
+          RFP: true,
+          REN: true,
+          REP: true
         }
       }
     }
   ]
-}
+};

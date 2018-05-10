@@ -1,0 +1,17 @@
+{
+  "name": "@pie-element/number-line-controller",
+  "version": "1.0.0",
+  "description": "Controller logic for @pie-ui/number-line",
+  "keywords": ["pie", "number-line"],
+  "repository": "pie-framework/pie-ui",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "@pie-lib/feedback": "^0.2.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

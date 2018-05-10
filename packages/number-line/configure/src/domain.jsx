@@ -1,4 +1,4 @@
-import { NumberTextField } from '@pie-lib/config-ui';
+import NumberTextField from './number-text-field';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -6,11 +6,17 @@ const DOMAIN_BEGIN = 'domainBegin';
 const DOMAIN_END = 'domainEnd';
 
 export class Domain extends React.Component {
-
+  static propTypes = {
+    domain: PropTypes.arrayOf(PropTypes.number),
+    onChange: PropTypes.func.isRequired
+  };
 
   constructor(props) {
     super(props);
-    this.onDomainBeginChange = this.onDomainValueChange.bind(this, DOMAIN_BEGIN);
+    this.onDomainBeginChange = this.onDomainValueChange.bind(
+      this,
+      DOMAIN_BEGIN
+    );
     this.onDomainEndChange = this.onDomainValueChange.bind(this, DOMAIN_END);
   }
 
@@ -30,7 +36,7 @@ export class Domain extends React.Component {
       d[1] = newValue;
     }
     //Make sure that d[0] < d[1]
-    const sorted = d.sort();
+    d.sort();
     const out = d[0] > d[1] ? [d[1], d[0]] : d;
     onChange(out);
   }
@@ -38,23 +44,22 @@ export class Domain extends React.Component {
   render() {
     const { domain } = this.props;
 
-    return <div>
-      Domain =
-          <NumberTextField
-        value={domain[0]}
-        name={DOMAIN_BEGIN}
-        onChange={this.onDomainBeginChange} /> to
-          <NumberTextField
-        value={domain[1]}
-        name={DOMAIN_END}
-        onChange={this.onDomainEndChange} />
-    </div>;
+    return (
+      <div>
+        Domain =
+        <NumberTextField
+          value={domain[0]}
+          name={DOMAIN_BEGIN}
+          onChange={this.onDomainBeginChange}
+        />{' '}
+        to
+        <NumberTextField
+          value={domain[1]}
+          name={DOMAIN_END}
+          onChange={this.onDomainEndChange}
+        />
+      </div>
+    );
   }
 }
-
-Domain.propTypes = {
-  domain: PropTypes.arrayOf(PropTypes.number),
-  onChange: PropTypes.func.isRequired
-}
-
 export default Domain;

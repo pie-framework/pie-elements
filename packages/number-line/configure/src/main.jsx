@@ -1,5 +1,7 @@
 import Card, { CardContent } from 'material-ui/Card';
-import { Checkbox, FeedbackConfig, NumberTextField } from '@pie-lib/config-ui';
+import { Checkbox, FeedbackConfig } from '@pie-lib/config-ui';
+import NumberTextField from './number-text-field';
+
 import {
   Graph,
   NumberLineComponent,
@@ -94,7 +96,7 @@ class Main extends React.Component {
   }
 
   getDomain() {
-    let config = this.props.model.model.config;
+    let config = this.props.model.config;
     let domainArray = config.domain;
     return {
       min: domainArray[0],
@@ -103,12 +105,12 @@ class Main extends React.Component {
   }
 
   setDefaults() {
-    this.props.model.model.config = _.cloneDeep(defaultConfig);
-    this.props.onConfigChange(this.props.model.model.config);
+    this.props.model.config = _.cloneDeep(defaultConfig);
+    this.props.onConfigChange(this.props.model.config);
   }
 
   getTicks() {
-    let config = this.props.model.model.config;
+    let config = this.props.model.config;
     return {
       major: config.tickFrequency || 2,
       minor: config.showMinorTicks ? config.snapPerTick || 0 : 0
@@ -116,8 +118,8 @@ class Main extends React.Component {
   }
 
   exhibitChanged(event, value) {
-    this.props.model.model.config.exhibitOnly = value;
-    this.props.onConfigChange(this.props.model.model.config);
+    this.props.model.config.exhibitOnly = value;
+    this.props.onConfigChange(this.props.model.config);
   }
 
   moveCorrectResponse(index, el, position) {
@@ -134,10 +136,8 @@ class Main extends React.Component {
     let update = toSessionFormat(
       el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el
     );
-    this.props.model.model.config.initialElements[index] = update;
-    this.props.onInitialElementsChange(
-      this.props.model.model.config.initialElements
-    );
+    this.props.model.config.initialElements[index] = update;
+    this.props.onInitialElementsChange(this.props.model.config.initialElements);
   }
 
   availableTypesChange(availableTypes) {
@@ -172,14 +172,12 @@ class Main extends React.Component {
   }
 
   deleteInitialView(indices) {
-    this.props.model.model.config.initialElements = this.props.model.model.config.initialElements.filter(
+    this.props.model.config.initialElements = this.props.model.config.initialElements.filter(
       (v, index) => {
         return !indices.some(d => d === index);
       }
     );
-    this.props.onInitialElementsChange(
-      this.props.model.model.config.initialElements
-    );
+    this.props.onInitialElementsChange(this.props.model.config.initialElements);
   }
 
   addCorrectResponse(data) {
@@ -188,15 +186,14 @@ class Main extends React.Component {
   }
 
   addInitialView(data) {
-    this.props.model.model.config.initialElements.push(toSessionFormat(data));
-    this.props.onCorrectResponseChange(
-      this.props.model.model.config.initialElements
-    );
+    this.props.model.config.initialElements.push(toSessionFormat(data));
+    this.props.onCorrectResponseChange(this.props.model.config.initialElements);
   }
 
   render() {
-    const { classes, onDomainChange } = this.props;
+    const { classes, onDomainChange, model } = this.props;
 
+    const { config } = model;
     const numberFieldStyle = {
       width: '50px',
       margin: '0 10px'
@@ -204,18 +201,8 @@ class Main extends React.Component {
 
     let noOp = () => {};
 
-    let correctResponse = cloneDeep(this.props.model.correctResponse).map(
-      toGraphFormat
-    );
-    let initialView = cloneDeep(
-      this.props.model.model.config.initialElements
-    ).map(toGraphFormat);
-
-    const {
-      model: {
-        model: { config }
-      }
-    } = this.props;
+    let correctResponse = cloneDeep(model.correctResponse).map(toGraphFormat);
+    let initialView = cloneDeep(config.initialElements).map(toGraphFormat);
 
     return (
       <div className={classes.root}>
@@ -288,6 +275,7 @@ class Main extends React.Component {
           </CardContent>
         </Card>
         <br />
+
         {!config.exhibitOnly && (
           <Card>
             <CardContent>
@@ -306,7 +294,12 @@ class Main extends React.Component {
                 onDeleteElements={this.deleteCorrectResponse}
                 onAddElement={this.addCorrectResponse}
                 answer={correctResponse}
-                model={this.props.model.model}
+                //strip feedback for this model
+                model={{
+                  ...model,
+                  feedback: undefined,
+                  correctResponse: undefined
+                }}
               />
               <hr />
               <Typography type="headline">Available Types</Typography>
@@ -340,7 +333,11 @@ class Main extends React.Component {
               onDeleteElements={this.deleteInitialView}
               onAddElement={this.addInitialView}
               answer={initialView}
-              model={this.props.model.model}
+              model={{
+                ...model,
+                feedback: undefined,
+                correctResponse: undefined
+              }}
             />
             <Checkbox
               label="Make exhibit"
@@ -351,15 +348,14 @@ class Main extends React.Component {
           </CardContent>
         </Card>
 
-        {!config.exhibitOnly && <br />}
         {!config.exhibitOnly && (
-          <FeedbackConfig
-            feedback={this.props.model.feedback}
-            onChange={this.props.onFeedbackChange.bind(this)}
-            defaultCorrectFeedback="Correct"
-            defaultPartialFeedback="Almost!"
-            defaultIncorrectFeedback="Incorrect"
-          />
+          <React.Fragment>
+            <br />
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.props.onFeedbackChange.bind(this)}
+            />
+          </React.Fragment>
         )}
       </div>
     );
