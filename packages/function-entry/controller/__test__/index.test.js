@@ -4,20 +4,19 @@ describe('model', () => {
   let result, question, session, env;
 
   const mkQuestion = () => ({
-    correctResponse: {
-      equation: '3x+2',
-      feedback: {
+    equation: '3x+2',
+    feedback: {
+      correct: {
         type: 'default'
+      },
+      incorrect: {
+        type: 'custom',
+        custom: 'foo'
       }
-    },
-    incorrectFeedback: {
-      type: 'custom',
-      value: 'foo'
     }
   });
 
   describe('gather', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
       session = { value: '3x+2' };
@@ -36,11 +35,9 @@ describe('model', () => {
     it('returns undefined for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
-
   });
 
   describe('view', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
       session = { value: '3x+2' };
@@ -59,7 +56,6 @@ describe('model', () => {
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
-
   });
 
   describe('evaluate - correct', () => {
@@ -125,5 +121,5 @@ describe('model', () => {
 
       expect(result.correctness).toEqual('incorrect');
     });
-  })
+  });
 });
