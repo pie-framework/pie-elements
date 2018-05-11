@@ -3,7 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<a name="1.7.0"></a>
+    <a name="2.0.0"></a>
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@1.7.0...@pie-element/function-entry@2.0.0) (2018-05-11)
+
+
+### Bug Fixes
+
+* **controller:** bump feedback version ([a07c9ec](https://github.com/pie-framework/pie-elements/commit/a07c9ec))
+* **dependecies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([4be839f](https://github.com/pie-framework/pie-elements/commit/4be839f))
+* **dependencies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([6fea7bb](https://github.com/pie-framework/pie-elements/commit/6fea7bb))
+
+
+### Features
+
+* **model:** move away from legacy model, use latest feedback model. ([317a9c3](https://github.com/pie-framework/pie-elements/commit/317a9c3))
+
+
+### BREAKING CHANGES
+
+* **model:** The model has moved from this:
+
+```javascript
+{
+  id: '1',
+  element: 'function-entry',
+  weight: 1,
+  incorrectFeedback: {
+    type: 'default',
+  },
+  correctResponse: {
+    equation: '3x+2',
+    feedback: {
+      type: 'default',
+    },
+  },
+  model: {
+    showFormattingHelp: true
+  }
+}
+
+```
+
+To this:
+
+```javascript
+{
+  id: '1',
+  element: 'function-entry',
+  weight: 1,
+  showFormattingHelp: true,
+  equation: '3x+2',
+  feedback: {
+    correct: {
+      type: 'default',
+      default: 'Correct'
+    },
+    incorrect: {
+      type: 'default',
+      default: 'Incorrect'
+    }
+  }
+}
+
+```
+
+
+
+
+    <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@1.6.0...@pie-element/function-entry@1.7.0) (2018-05-03)
 
 

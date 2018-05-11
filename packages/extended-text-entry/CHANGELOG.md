@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@1.4.0...@pie-element/extended-text-entry@2.0.0) (2018-05-11)
+
+
+### Bug Fixes
+
+* **controller:** bump feedback version ([a07c9ec](https://github.com/pie-framework/pie-elements/commit/a07c9ec))
+* **dependecies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([4be839f](https://github.com/pie-framework/pie-elements/commit/4be839f))
+* **dependencies:** bump [@pie-lib](https://github.com/pie-lib)/feedback ([6fea7bb](https://github.com/pie-framework/pie-elements/commit/6fea7bb))
+
+
+### Features
+
+* **feedback:** Use new feedback model ([326f9b2](https://github.com/pie-framework/pie-elements/commit/326f9b2))
+* **model:** discard legacy model - use streamlined model. ([ed47b59](https://github.com/pie-framework/pie-elements/commit/ed47b59))
+* **select-text:** new select text component ([878f957](https://github.com/pie-framework/pie-elements/commit/878f957))
+
+
+### BREAKING CHANGES
+
+* **feedback:** Feedback is now of the form: `{type,default?, custom?}`
+* **model:** The old corespring model is no longer supported.
+
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@1.3.0...@pie-element/extended-text-entry@1.4.0) (2018-05-03)
 

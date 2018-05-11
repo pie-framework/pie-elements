@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@1.6.0...@pie-element/calculator@1.7.0) (2018-05-11)
+
+
+### Features
+
+* **select-text:** new select text component ([878f957](https://github.com/pie-framework/pie-elements/commit/878f957))
+
+
+
+
 <a name="1.6.0"></a>
 # 1.6.0 (2018-05-03)
 
