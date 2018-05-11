@@ -1,37 +1,35 @@
 import { model } from '../index';
 
-
 describe('model', () => {
-
-
   let result, question, session, env;
 
   const mkQuestion = () => ({
     correctResponses: {
-      values: ['a'],
-      feedback: {
+      values: ['a']
+    },
+    feedback: {
+      correct: {
         type: 'default'
+      },
+      partial: {
+        type: 'custom',
+        custom: 'foo'
+      },
+      incorrect: {
+        type: 'custom',
+        custom: 'foo'
       }
     },
     partialResponses: {
-      values: ['aa'],
-      feedback: {
-        type: 'custom',
-        value: 'foo'
-      }
-    },
-    incorrectFeedback: {
-      type: 'custom',
-      value: 'foo'
+      values: ['aa']
     }
   });
 
   describe('gather', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
-      session = { value: 'a' }
-      env = { mode: 'gather' }
+      session = { value: 'a' };
+      env = { mode: 'gather' };
       result = await model(question, session, env);
     });
 
@@ -53,15 +51,13 @@ describe('model', () => {
     it('returns undefined for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
-
   });
 
   describe('view', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
-      session = { value: 'a' }
-      env = { mode: 'view' }
+      session = { value: 'a' };
+      env = { mode: 'view' };
       result = await model(question, session, env);
     });
 
@@ -76,15 +72,13 @@ describe('model', () => {
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
-
   });
 
   describe('evaluate - correct', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
-      session = { value: 'a' }
-      env = { mode: 'evaluate' }
+      session = { value: 'a' };
+      env = { mode: 'evaluate' };
       result = await model(question, session, env);
     });
 
@@ -99,15 +93,13 @@ describe('model', () => {
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual('Correct');
     });
-
   });
 
   describe('evaluate - partially correct', () => {
-
     beforeEach(async () => {
       question = mkQuestion();
-      session = { value: 'aa' }
-      env = { mode: 'evaluate' }
+      session = { value: 'aa' };
+      env = { mode: 'evaluate' };
       result = await model(question, session, env);
     });
 
@@ -122,6 +114,5 @@ describe('model', () => {
     it('returns custom correct for feedback', () => {
       expect(result.feedback).toEqual('foo');
     });
-
   });
 });
