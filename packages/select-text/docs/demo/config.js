@@ -50,13 +50,16 @@ const base = extras =>
       highlightChoices: true,
       feedback: {
         correct: {
-          type: 'default'
+          type: 'default',
+          default: 'Correct'
         },
         incorrect: {
-          type: 'default'
+          type: 'default',
+          default: 'Incorrect'
         },
         partial: {
-          type: 'default'
+          type: 'default',
+          default: 'Nearly'
         }
       },
       partialScoring: [{ numberOfCorrect: 1, scorePercentage: 25 }],
