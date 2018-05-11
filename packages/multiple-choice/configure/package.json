@@ -10,12 +10,12 @@
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/scoring-config": "^2.0.12",
-    "@pie-lib/config-ui": "^5.1.0",
-    "@pie-lib/editable-html": "^5.0.8",
+    "@pie-lib/config-ui": "^6.0.0",
+    "@pie-lib/editable-html": "^5.0.13",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "lodash": "^4.17.5",
-    "material-ui": "^1.0.0-beta.43",
+    "material-ui": "^1.0.0-beta.47",
     "@material-ui/icons": "^1.0.0-beta.43",
     "prop-types": "^15.6.1",
     "debug": "^3.1.0"

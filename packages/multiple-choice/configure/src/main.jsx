@@ -49,6 +49,7 @@ const Design = withStyles(styles)(props => {
           className={classes.prompt}
           markup={model.prompt}
           onChange={onPromptChanged}
+          imageSupport={imageSupport}
         />
       </InputContainer>
       {model.choices.map((choice, index) => (
