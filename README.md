@@ -2,6 +2,19 @@
 
 A collection of pies.
 
+### Commands
+
+| Action         | Notes                                                                   |
+| -------------- | ----------------------------------------------------------------------- |
+| test           |                                                                         |
+| lint           |                                                                         |
+| release        |                                                                         |
+| pie-clean      | cleans out the `docs/demo` dir                                          |
+| pie-install    | cleans out the `docs/demo` dir                                          |
+| pie-pack-clean | cleans out the `docs/demo` dir + any generated assets from a `pie pack` |
+
+> TODO: pie-install
+
 ## running
 
 > You need to have `pie>=10.1.1` installed | `npm install -g pie`.
