@@ -1,5 +1,5 @@
 import _ from 'lodash';
-
+import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
 
 const question = {
@@ -10,9 +10,18 @@ const question = {
       domainPosition: 1
     }
   ],
-  model: {
-    config: {
-      domain: [0, 1]
+  config: {
+    domain: [0, 1]
+  },
+  feedback: {
+    correct: {
+      type: 'default'
+    },
+    incorrect: {
+      type: 'default'
+    },
+    partial: {
+      type: 'default'
     }
   }
 };
@@ -105,9 +114,7 @@ describe('controller', () => {
   describe('model', () => {
     const assertModel = (msg, question, session, env, expected) => {
       question = _.merge(question, {
-        model: {
-          config: {}
-        }
+        config: {}
       });
       session = _.merge(session, {});
       env = _.merge(env, {});
@@ -155,10 +162,8 @@ describe('controller', () => {
       assertModel(
         'disabled is true if exhibitOnly is true',
         {
-          model: {
-            config: {
-              exhibitOnly: true
-            }
+          config: {
+            exhibitOnly: true
           }
         },
         {},
@@ -172,7 +177,7 @@ describe('controller', () => {
     describe('config', () => {
       assertModel(
         'config is returned',
-        { model: { config: { domain: [0, 1] } } },
+        { config: { domain: [0, 1] } },
         {},
         {},
         {
@@ -235,7 +240,7 @@ describe('controller', () => {
         assertModel(fbType, question, s, mode('evaluate'), {
           feedback: {
             type: fbType,
-            message: controller.DEFAULT_FEEDBACK[fbType]
+            message: defaults[fbType].default
           }
         });
       };
