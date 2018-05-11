@@ -84,6 +84,7 @@ export function model(question, session, env) {
 
     log('[model] removing tileSize for the moment.');
 
+    base.prompt = question.prompt;
     base.config = {
       orientation: question.choiceAreaLayout || 'vertical',
       includeTargets: question.placementType === 'placement',
