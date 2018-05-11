@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.7.0...@pie-element/multiple-choice@1.7.1) (2018-05-11)
+
+
+### Bug Fixes
+
+* **prompt:** add image functionality back in ([3aa73db](https://github.com/pie-framework/pie-elements/commit/3aa73db))
+
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.6.1...@pie-element/multiple-choice@1.7.0) (2018-05-03)
 
