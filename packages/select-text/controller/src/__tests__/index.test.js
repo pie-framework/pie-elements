@@ -158,12 +158,26 @@ describe('model', () => {
       feedback: undefined
     });
     assert(
-      'feedback is undefined in evaluate',
+      'feedback is defined in evaluate',
       q(),
       s(),
       e({ mode: 'evaluate' }),
       {
         feedback: 'Incorrect'
+      }
+    );
+    assert(
+      'correct feedback is defined in evaluate',
+      q(),
+      s({
+        selectedTokens: [
+          { start: 0, end: 1, text: 'f', correct: true },
+          { start: 2, end: 3, text: 'o', correct: true }
+        ]
+      }),
+      e({ mode: 'evaluate' }),
+      {
+        feedback: 'Correct'
       }
     );
   });

@@ -49,12 +49,15 @@ const base = extras =>
       element: 'select-text',
       highlightChoices: true,
       feedback: {
-        correctFeedback: '',
-        correctFeedbackType: 'default',
-        incorrectFeedback: '',
-        incorrectFeedbackType: 'default',
-        partialFeedback: '',
-        partialFeedbackType: 'default'
+        correct: {
+          type: 'default'
+        },
+        incorrect: {
+          type: 'default'
+        },
+        partial: {
+          type: 'default'
+        }
       },
       partialScoring: [{ numberOfCorrect: 1, scorePercentage: 25 }],
       maxSelections: 2,

@@ -1,4 +1,5 @@
 import debug from 'debug';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
 const log = debug('@pie-element:select-text:controller');
 
@@ -12,53 +13,53 @@ const buildTokens = (tokens, evaluateMode) => {
   );
 };
 
-const defaultFeedback = () => ({
-  correctFeedbackType: 'default',
-  correctFeedback: 'Correct',
-  incorrectFeedbackType: 'default',
-  incorrectFeedback: 'Incorrect',
-  partialFeedbackType: 'default',
-  partialFeedback: 'Nearly'
-});
+// const defaultFeedback = () => ({
+//   correctFeedbackType: 'default',
+//   correctFeedback: 'Correct',
+//   incorrectFeedbackType: 'default',
+//   incorrectFeedback: 'Incorrect',
+//   partialFeedbackType: 'default',
+//   partialFeedback: 'Nearly'
+// });
 
-const getFeedbackText = (type, text, fallback) => {
-  if (type === 'none') {
-    return;
-  }
-  if (!text || text === '') {
-    return fallback;
-  }
-  return text;
-};
+// const getFeedbackText = (type, text, fallback) => {
+//   if (type === 'none') {
+//     return;
+//   }
+//   if (!text || text === '') {
+//     return fallback;
+//   }
+//   return text;
+// };
 
-export const getFeedback = (correctness, feedback) => {
-  feedback = Object.assign(defaultFeedback(), feedback);
-  log('feedback: ', feedback);
+// export const getFeedback = (correctness, feedback) => {
+//   feedback = Object.assign(defaultFeedback(), feedback);
+//   log('feedback: ', feedback);
 
-  let fb = undefined;
+//   let fb = undefined;
 
-  if (correctness === 'correct') {
-    fb = getFeedbackText(
-      feedback.correctFeedbackType,
-      feedback.correctFeedback,
-      'Correct'
-    );
-  } else if (correctness === 'incorrect') {
-    fb = getFeedbackText(
-      feedback.incorrectFeedbackType,
-      feedback.incorrectFeedback,
-      'Incorrect'
-    );
-  } else if (correctness === 'partially-correct') {
-    fb = getFeedbackText(
-      feedback.partialFeedbackType,
-      feedback.partialFeedback,
-      'Nearly'
-    );
-  }
+//   if (correctness === 'correct') {
+//     fb = getFeedbackText(
+//       feedback.correctFeedbackType,
+//       feedback.correctFeedback,
+//       'Correct'
+//     );
+//   } else if (correctness === 'incorrect') {
+//     fb = getFeedbackText(
+//       feedback.incorrectFeedbackType,
+//       feedback.incorrectFeedback,
+//       'Incorrect'
+//     );
+//   } else if (correctness === 'partially-correct') {
+//     fb = getFeedbackText(
+//       feedback.partialFeedbackType,
+//       feedback.partialFeedback,
+//       'Nearly'
+//     );
+//   }
 
-  return fb;
-};
+//   return fb;
+// };
 
 export const getCorrectness = (tokens, selected) => {
   const correct = tokens.filter(t => t.correct === true);
@@ -144,20 +145,26 @@ export const model = (question, session, env) => {
       env.mode === 'evaluate'
         ? getCorrectness(question.tokens, session.selectedTokens)
         : undefined;
-    const out = {
-      tokens,
-      highlightChoices: question.highlightChoices,
-      text: question.text,
-      disabled: env.mode !== 'gather',
-      maxSelections: question.maxSelections,
-      correctness,
-      feedback:
-        env.mode === 'evaluate'
-          ? getFeedback(correctness, question.feedback)
-          : undefined,
-      incorrect: env.mode === 'evaluate' ? correctness !== 'correct' : undefined
-    };
 
-    resolve(out);
+    const fb =
+      env.mode === 'evaluate'
+        ? getFeedbackForCorrectness(correctness, question.feedback)
+        : Promise.resolve(undefined);
+
+    fb.then(feedback => {
+      const out = {
+        tokens,
+        highlightChoices: question.highlightChoices,
+        text: question.text,
+        disabled: env.mode !== 'gather',
+        maxSelections: question.maxSelections,
+        correctness,
+        feedback,
+        incorrect:
+          env.mode === 'evaluate' ? correctness !== 'correct' : undefined
+      };
+
+      resolve(out);
+    });
   });
 };
