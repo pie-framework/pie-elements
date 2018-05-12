@@ -8,7 +8,7 @@ module.exports = {
             element: 'likert-choice',
             prompt: 'Do you Like northern European countries ?',
             choiceMode: 'radio',
-            keyMode: 'numbers',
+            keyMode: 'letters',
             activeLang: 'en-US',
             defaultLang: 'en-US',
             disabled: false,

@@ -38,7 +38,8 @@ class Main extends Component {
     static propTypes = {
         model: PropTypes.object.isRequired,
         onPromptChanged: PropTypes.func.isRequired,
-        onChoiceChanged: PropTypes.func.isRequired
+        onChoiceChanged: PropTypes.func.isRequired,
+        onResponseTypeChanged: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -56,12 +57,12 @@ class Main extends Component {
 
     render() {
 
-        const {model, onPromptChanged, onChoiceChanged} = this.props;
+        const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged} = this.props;
         const {activeLang, defaultLang} = this.state;
 
         return (
             <div>
-                <Choice />
+                <Choice onResponseTypeChanged={onResponseTypeChanged}/>
                 <Section name="">
                 <LanguageControls
                     langs={['en-US', 'es-ES']}

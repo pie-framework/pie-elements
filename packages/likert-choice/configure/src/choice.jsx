@@ -5,7 +5,12 @@ export default class Choice extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {response: '', choice: '', type: ''}
+        this.state = {response: '3', choice: 'numbers', type: 'agreement'}
+    }
+
+    responseTypeHandler = (e) => {
+        this.setState({response: e});
+        this.props.onResponseTypeChanged(e);
     }
 
     render() {
@@ -15,8 +20,9 @@ export default class Choice extends Component {
                 <NChoice
                     direction="vertical"
                     header="Response Type"
+                    checked={true}
                     value={response}
-                    onChange={response => this.setState({response})}
+                    onChange={this.responseTypeHandler}
                     opts={[
                         {label: 'Likert 3', value: '3'},
                         {label: 'Likert 5', value: '5'},

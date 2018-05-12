@@ -46,11 +46,34 @@ export default class Root extends React.Component {
         this.updateModel(model);
     };
 
+    onResponseTypeChanged = count => {
+        const update = cloneDeep(this.state.model);
+        const addTo = {
+            value: '',
+            label: [
+                {lang: 'en-US', label: '', value: ''},
+                {lang: 'es-ES', label: '', value: ''}
+            ],
+        };
+        let data = this.loopOverData(addTo,count,update.choices);
+        update.choices = data;
+        this.updateModel(update);
+    }
+
+    loopOverData(obj,count,arr){
+        let limit = count-arr.length;
+        for(let i=0;i<limit;i++){
+            arr.push(obj);
+        }
+        return arr;
+    }
+
     render(){
         const props = {
             model: this.state.model,
             onPromptChanged: this.onPromptChanged,
-            onChoiceChanged: this.onChoiceChanged
+            onChoiceChanged: this.onChoiceChanged,
+            onResponseTypeChanged: this.onResponseTypeChanged
         };
 
         return <Main {...props} />;
