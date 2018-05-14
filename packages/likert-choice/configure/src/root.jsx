@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
+import slice from 'lodash/slice';
 
 export default class Root extends React.Component {
 
@@ -55,15 +56,19 @@ export default class Root extends React.Component {
                 {lang: 'es-ES', label: '', value: ''}
             ],
         };
-        let data = this.loopOverData(addTo,count,update.choices);
+        let data = this.crateArray(addTo,count,update.choices);
         update.choices = data;
         this.updateModel(update);
     }
 
-    loopOverData(obj,count,arr){
+    crateArray(obj,count,arr){
         let limit = count-arr.length;
-        for(let i=0;i<limit;i++){
-            arr.push(obj);
+        if(count>arr.length){
+            for(let i=0;i<limit;i++){
+                arr.push(obj);
+            }
+        }else{
+            arr = slice(arr, 0, count);
         }
         return arr;
     }
