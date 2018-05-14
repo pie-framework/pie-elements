@@ -4,6 +4,7 @@ import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import slice from 'lodash/slice';
+import reverse from 'lodash/reverse';
 
 export default class Root extends React.Component {
 
@@ -79,13 +80,20 @@ export default class Root extends React.Component {
         this.updateModel(update);
     }
 
+    onOrderReversed = () => {
+        const update = cloneDeep(this.state.model);
+        reverse(update.choices);
+        this.updateModel(update);
+    }
+
     render(){
         const props = {
             model: this.state.model,
             onPromptChanged: this.onPromptChanged,
             onChoiceChanged: this.onChoiceChanged,
             onResponseTypeChanged: this.onResponseTypeChanged,
-            onChoiceLabelChanged: this.onChoiceLabelChanged
+            onChoiceLabelChanged: this.onChoiceLabelChanged,
+            onOrderReversed: this.onOrderReversed
         };
 
         return <Main {...props} />;

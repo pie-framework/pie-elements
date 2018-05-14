@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {LanguageControls, ChoiceConfiguration} from '@pie-lib/config-ui';
+import {LanguageControls, ChoiceConfiguration, InputCheckbox} from '@pie-lib/config-ui';
 import Prompt from './prompt';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
+import Checkbox from 'material-ui/Checkbox';
 import Choice from './choice';
 import PropTypes from 'prop-types';
 
@@ -39,12 +40,13 @@ class Main extends Component {
         model: PropTypes.object.isRequired,
         onPromptChanged: PropTypes.func.isRequired,
         onChoiceChanged: PropTypes.func.isRequired,
-        onResponseTypeChanged: PropTypes.func.isRequired
+        onResponseTypeChanged: PropTypes.func.isRequired,
+        onOrderReversed: PropTypes.func.isRequired
     }
 
     constructor(props) {
         super(props);
-        this.state = {activeLang: props.model.activeLang, defaultLang: props.model.defaultLang}
+        this.state = {activeLang: props.model.activeLang, defaultLang: props.model.defaultLang, checked:false}
     }
 
     filter(nameKey, myArray){
@@ -55,10 +57,15 @@ class Main extends Component {
         }
     }
 
+    reverseOrderHandler = () => {
+        this.setState({checked: !this.state.checked});
+        this.props.onOrderReversed();
+    }
+
     render() {
 
         const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged, onChoiceLabelChanged} = this.props;
-        const {activeLang, defaultLang} = this.state;
+        const {activeLang, defaultLang, checked} = this.state;
 
         return (
             <div>
@@ -75,6 +82,7 @@ class Main extends Component {
                 />
                 </Section>
                 <Prompt prompt={model.prompt} onPromptChanged={onPromptChanged}/>
+                <Typography><Checkbox checked={checked} onChange={this.reverseOrderHandler} />Reverse Order</Typography>
                 {model.choices.map((v,i) => (<ChoiceConfiguration
                     key={i}
                     index={i+1}
