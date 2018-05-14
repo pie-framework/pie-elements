@@ -57,12 +57,12 @@ class Main extends Component {
 
     render() {
 
-        const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged} = this.props;
+        const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged, onChoiceLabelChanged} = this.props;
         const {activeLang, defaultLang} = this.state;
 
         return (
             <div>
-                <Choice onResponseTypeChanged={onResponseTypeChanged}/>
+                <Choice onResponseTypeChanged={onResponseTypeChanged} onChoiceLabelChanged={onChoiceLabelChanged}/>
                 <Section name="">
                 <LanguageControls
                     langs={['en-US', 'es-ES']}

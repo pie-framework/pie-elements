@@ -8,9 +8,14 @@ export default class Choice extends Component {
         this.state = {response: '3', choice: 'numbers', type: 'agreement'}
     }
 
-    responseTypeHandler = (e) => {
+    responseTypeHandler = e => {
         this.setState({response: e});
         this.props.onResponseTypeChanged(e);
+    }
+
+    choiceLabelHandler = e => {
+        this.setState({choice: e});
+        this.props.onChoiceLabelChanged(e);
     }
 
     render() {
@@ -33,7 +38,7 @@ export default class Choice extends Component {
                     direction="vertical"
                     header="Choice Labels"
                     value={choice}
-                    onChange={choice => this.setState({choice})}
+                    onChange={this.choiceLabelHandler}
                     opts={[
                         {label: 'Numbers', value: 'numbers'},
                         {label: 'Letters', value: 'letters'},

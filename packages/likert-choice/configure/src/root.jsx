@@ -73,12 +73,19 @@ export default class Root extends React.Component {
         return arr;
     }
 
+    onChoiceLabelChanged = e => {
+        const update = cloneDeep(this.state.model);
+        update.keyMode = e;
+        this.updateModel(update);
+    }
+
     render(){
         const props = {
             model: this.state.model,
             onPromptChanged: this.onPromptChanged,
             onChoiceChanged: this.onChoiceChanged,
-            onResponseTypeChanged: this.onResponseTypeChanged
+            onResponseTypeChanged: this.onResponseTypeChanged,
+            onChoiceLabelChanged: this.onChoiceLabelChanged
         };
 
         return <Main {...props} />;
