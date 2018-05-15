@@ -1,0 +1,17 @@
+{
+  "name": "@pie-element/categorize",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "author": "pie framework developers",
+  "license": "ISC",
+  "pie": {
+    "element": "@pie-ui/categorize"
+  },
+  "dependencies": {
+    "@pie-ui/categorize": "^0.1.0"
+  }
+}
