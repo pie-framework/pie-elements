@@ -15,6 +15,6 @@
     "element": "@pie-ui/protractor"
   },
   "dependencies": {
-    "@pie-ui/protractor": "^2.0.1"
+    "@pie-ui/protractor": "^2.1.1"
   }
 }
