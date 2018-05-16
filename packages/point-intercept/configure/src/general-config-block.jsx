@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InputRadio, InputCheckbox } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   optionsCheckbox: {

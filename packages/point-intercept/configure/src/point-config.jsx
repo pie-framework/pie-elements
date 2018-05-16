@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Input from 'material-ui/Input';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import Typography from '@material-ui/core/Typography';
 import DeleteControl from './delete';
 import AddControl from './add-point';
 import Box from './box';

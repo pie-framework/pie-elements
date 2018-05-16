@@ -11,12 +11,18 @@ module.exports = {
       correctResponse: ['0,0', '1,1', '2,2', '3,3'],
       partialScoring: [],
       feedback: {
-        correctFeedbackType: 'none',
-        correctFeedbackValue: '',
-        partialFeedbackType: 'none',
-        partialFeedbackValue: '',
-        incorrectFeedbackType: 'none',
-        incorrectFeedbackValue: '',
+        correct: {
+          type: 'none',
+          default: 'Correct'
+        },
+        incorrect: {
+          type: 'none',
+          default: 'Incorrect'
+        },
+        partial: {
+          type: 'none',
+          default: 'Nearly'
+        }
       },
       model: {
         config: {

@@ -1,13 +1,17 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import { FeedbackConfig } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import SwipeableViews from 'react-swipeable-views';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
-import { modelToFeedbackConfig, feedbackConfigToModel } from './feedback-mapper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+// import {
+//   modelToFeedbackConfig,
+//   feedbackConfigToModel
+// } from './feedback-mapper';
 import GeneralConfigBlock from './general-config-block';
 import PointConfig from './point-config';
 import GraphAttributeConfig from './graph-attribute-config';
@@ -55,23 +59,31 @@ class Configure extends React.Component {
     this.setState({ activeTab: index });
   };
 
-  onModelConfigChange = (name) => event => {
+  onModelConfigChange = name => event => {
     this.props.model.model.config[name] = event.target.checked;
     this.props.onModelChanged(this.props.model);
   };
 
-  onModelConfigAttributeChange = (name, shouldNotBeNumber, isCheckbox) => event => {
+  onModelConfigAttributeChange = (
+    name,
+    shouldNotBeNumber,
+    isCheckbox
+  ) => event => {
     const config = this.props.model.model.config;
     const newValue = parseInt(event.target.value, 10);
 
     if (!isNaN(newValue) || shouldNotBeNumber || isCheckbox) {
-      config[name] = shouldNotBeNumber ? (isCheckbox ? event.target.checked : event.target.value) : newValue;
+      config[name] = shouldNotBeNumber
+        ? isCheckbox
+          ? event.target.checked
+          : event.target.value
+        : newValue;
 
       this.props.onModelChanged(this.props.model);
     }
   };
 
-  onGridParameterChange = (name) => event => {
+  onGridParameterChange = name => event => {
     const config = this.props.model.model.config;
     const newValue = parseInt(event.target.value, 10);
 
@@ -128,7 +140,7 @@ class Configure extends React.Component {
     }
   };
 
-  onPointLabelChange = (index) => event => {
+  onPointLabelChange = index => event => {
     const config = this.props.model.model.config;
     config.pointLabels[index] = event.target.value;
     this.props.onModelChanged(this.props.model);
@@ -156,13 +168,13 @@ class Configure extends React.Component {
     this.props.onModelChanged(this.props.model);
   };
 
-  deletePoint = (pointIndex) => () => {
+  deletePoint = pointIndex => () => {
     const points = this.props.model.correctResponse;
     points.splice(pointIndex, 1);
     this.props.onModelChanged(this.props.model);
   };
 
-  onMaxPointsChange = (event) => {
+  onMaxPointsChange = event => {
     const config = this.props.model.model.config;
     const newValue = parseInt(event.target.value, 10);
 
@@ -173,21 +185,22 @@ class Configure extends React.Component {
     }
   };
 
-  onFeedbackChange = (feedbackConfig) => {
-    const model = feedbackConfigToModel(feedbackConfig, this.props.model);
-    this.props.onModelChanged(model);
+  onFeedbackChange = feedback => {
+    const { model, onModelChanged } = this.props;
+    model.feedback = feedback;
+    onModelChanged(model);
   };
 
-  onToggleWithLabels = (setTrue) => () => {
+  onToggleWithLabels = setTrue => () => {
     this.setState({
-      withLabels: setTrue,
+      withLabels: setTrue
     });
   };
 
-  onPartialScoringChange = (partialScoring) => {
+  onPartialScoringChange = partialScoring => {
     this.props.model.partialScoring = partialScoring.map(partialScore => ({
       numberOfCorrect: partialScore.numberOfCorrect || '',
-      scorePercentage: partialScore.scorePercentage || '',
+      scorePercentage: partialScore.scorePercentage || ''
     }));
 
     this.props.onModelChanged(this.props.model);
@@ -196,7 +209,7 @@ class Configure extends React.Component {
   render() {
     const { classes, model } = this.props;
     const config = model.model.config;
-    const feedbackConfig = modelToFeedbackConfig(model);
+    // const feedbackConfig = modelToFeedbackConfig(model);
 
     log('[render] model', model);
 
@@ -219,7 +232,10 @@ class Configure extends React.Component {
         >
           <div className={classes.tab}>
             <Typography component="div" type="body1">
-              <span>In Plot Points, students identify coordinates or plot points on a graph by clicking on the graph.</span>
+              <span>
+                In Plot Points, students identify coordinates or plot points on
+                a graph by clicking on the graph.
+              </span>
               <h2>Points</h2>
             </Typography>
             <GeneralConfigBlock
@@ -249,18 +265,20 @@ class Configure extends React.Component {
               resetToDefaults={this.resetToDefaults}
             />
             <FeedbackConfig
-              feedback={feedbackConfig}
-              onChange={this.onFeedbackChange}/>
+              feedback={model.feedback}
+              onChange={this.onFeedbackChange}
+            />
           </div>
           <div className={classes.tab}>
             <PartialScoringConfig
               numberOfCorrectResponses={model.correctResponse.length}
               partialScoring={model.partialScoring}
-              onChange={this.onPartialScoringChange} />
+              onChange={this.onPartialScoringChange}
+            />
           </div>
         </SwipeableViews>
       </div>
-    )
+    );
   }
 }
 
@@ -269,7 +287,7 @@ const ConfigureMain = withStyles(styles)(Configure);
 class StateWrapper extends React.Component {
   static propTypes = {
     model: PropTypes.any,
-    onModelChanged: PropTypes.func,
+    onModelChanged: PropTypes.func
   };
 
   constructor(props) {
@@ -279,16 +297,16 @@ class StateWrapper extends React.Component {
       model: props.model
     };
 
-    this.onModelChanged = (m) => {
+    this.onModelChanged = m => {
       this.setState({ model: m }, () => {
         this.props.onModelChanged(this.state.model);
       });
-    }
+    };
   }
 
   render() {
     const { model } = this.state;
-    return <ConfigureMain model={model} onModelChanged={this.onModelChanged}/>
+    return <ConfigureMain model={model} onModelChanged={this.onModelChanged} />;
   }
 }
 

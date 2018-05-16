@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Input from 'material-ui/Input';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Input from '@material-ui/core/Input';
 import { InputContainer } from '@pie-lib/config-ui';
 import Box from './box';
 
