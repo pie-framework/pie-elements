@@ -10,7 +10,7 @@
     "test": "npm run controller-test"
   },
   "dependencies": {
-    "@pie-ui/multiple-choice": "^4.0.1"
+    "@pie-ui/multiple-choice": "^4.1.1"
   },
   "pie": {
     "element": "@pie-ui/multiple-choice"

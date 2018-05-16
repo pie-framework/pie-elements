@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer, ChoiceConfiguration } from '@pie-lib/config-ui';
-import { withStyles } from 'material-ui/styles';
-import Tabs, { Tab } from 'material-ui/Tabs';
+import { withStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import { ChoiceType, KeyType } from './choice-type';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import debug from 'debug';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 
