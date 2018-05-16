@@ -1,7 +1,7 @@
 import React from 'react';
 import { TwoChoice } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import Typography from 'material-ui/Typography';
+import Typography from '@material-ui/core/Typography';
 import { CalculatorLayout } from '@pie-ui/calculator';
 
 const MainTypes = {
