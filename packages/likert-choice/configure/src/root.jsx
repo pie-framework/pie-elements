@@ -46,7 +46,6 @@ export default class Root extends React.Component {
     });
     model.choices.splice(index, 1, choice);
     this.updateModel(model);
-    console.log(model);
   };
 
   onResponseTypeChanged = count => {
