@@ -13,7 +13,7 @@
     "postinstall": "cd configure && npm install && cd ../controller && npm install"
   },
   "dependencies": {
-    "@pie-ui/text-entry": "^3.0.1"
+    "@pie-ui/text-entry": "^3.1.1"
   },
   "pie": {
     "element": "@pie-ui/text-entry"

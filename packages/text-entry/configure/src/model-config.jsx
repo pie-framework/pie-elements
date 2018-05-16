@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from 'material-ui';
+import Typography from '@material-ui/core/Typography';
 import { NChoice, InputCheckbox } from '@pie-lib/config-ui';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import range from 'lodash/range';
 import Box from './box';
 import PropTypes from 'prop-types';

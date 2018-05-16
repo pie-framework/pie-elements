@@ -1,7 +1,7 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
-import Input from 'material-ui/Input';
+import Input from '@material-ui/core/Input';
 
 const NumberFormatCustom = props => {
   const { inputRef, onChange, ...other } = props;

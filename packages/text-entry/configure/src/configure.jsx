@@ -1,6 +1,6 @@
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Typography } from 'material-ui';
+import Typography from '@material-ui/core/Typography';
 import { FeedbackConfig, NumberTextField } from '@pie-lib/config-ui';
 import debug from 'debug';
 import Responses from './responses';

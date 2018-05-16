@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputCheckbox, TagsInput } from '@pie-lib/config-ui';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Box from './box';
 import debug from 'debug';
-import { Typography } from 'material-ui';
+import Typography from '@material-ui/core/Typography';
 
 const log = debug('@pie-element:text-entry:configure');
 
