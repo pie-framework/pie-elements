@@ -42,7 +42,8 @@ class Main extends Component {
     onPromptChanged: PropTypes.func.isRequired,
     onChoiceChanged: PropTypes.func.isRequired,
     onResponseTypeChanged: PropTypes.func.isRequired,
-    onOrderReversed: PropTypes.func.isRequired
+    onOrderReversed: PropTypes.func.isRequired,
+    onChoiceLabelChanged: PropTypes.func.isRequired
   }
 
   constructor(props) {

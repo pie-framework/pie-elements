@@ -1,7 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import {NChoice} from '@pie-lib/config-ui';
+import PropTypes from 'prop-types';
 
 export default class Choice extends Component {
+
+  static propTypes = {
+    onResponseTypeChanged: PropTypes.func.isRequired,
+    onChoiceLabelChanged: PropTypes.func.isRequired
+  }
 
   constructor(props) {
     super(props);
