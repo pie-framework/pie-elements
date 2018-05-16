@@ -1,7 +1,7 @@
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import React from 'react';
 import { pointChooser } from '@pie-ui/number-line';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const { Point } = pointChooser;
 

@@ -1,4 +1,5 @@
-import Card, { CardContent } from 'material-ui/Card';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import { Checkbox, FeedbackConfig } from '@pie-lib/config-ui';
 import NumberTextField from './number-text-field';
 
@@ -10,14 +11,14 @@ import {
 } from '@pie-ui/number-line';
 import PropTypes from 'prop-types';
 
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import Domain from './domain';
 import PointConfig from './point-config';
 import React from 'react';
-import Typography from 'material-ui/Typography';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const {
   lineIsSwitched,
