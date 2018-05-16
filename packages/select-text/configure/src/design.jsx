@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from 'material-ui/TextField';
-import { withStyles } from 'material-ui/styles';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 import { Tokenizer } from '@pie-lib/text-select';
 import {
@@ -10,7 +10,7 @@ import {
   NumberTextField,
   FeedbackConfig
 } from '@pie-lib/config-ui';
-import Chip from 'material-ui/Chip';
+import Chip from '@material-ui/core/Chip';
 import debug from 'debug';
 
 const log = debug('@pie-element:select-text:configure');

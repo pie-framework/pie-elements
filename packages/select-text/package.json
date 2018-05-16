@@ -7,8 +7,7 @@
   "version": "2.0.0",
   "description": "",
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.46",
-    "@pie-ui/select-text": "^1.1.1"
+    "@pie-ui/select-text": "^1.2.1"
   },
   "pie": {
     "element": "@pie-ui/select-text"

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Design from './design';
 import PartialScoring from '@pie-lib/scoring-config';
 import { Tabs } from '@pie-lib/config-ui';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 
 export class Main extends React.Component {
