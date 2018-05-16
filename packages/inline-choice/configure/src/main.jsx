@@ -1,8 +1,8 @@
 import React from 'react';
 import { ChoiceConfiguration } from '@pie-lib/config-ui';
 
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import PropTypes from 'prop-types';
 
