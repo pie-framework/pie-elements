@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Design snapshot renders 1`] = `
+<[object Object]
+  value="1"
+>
+  <div
+    className="design className"
+  >
+    <WithStyles(Typography)
+      className="text"
+    >
+      In Categorize, students may drag & drop answer tiles to the appropriate category area(s).
+    </WithStyles(Typography)>
+    <WithStyles(Categories)
+      categories={
+        Array [
+          Object {
+            "choices": Array [
+              Object {
+                "content": "content",
+                "id": "1",
+              },
+            ],
+            "id": "1",
+            "label": "Category Title",
+          },
+        ]
+      }
+      columns={2}
+      onAdd={[Function]}
+      onAddChoice={[Function]}
+      onChange={[Function]}
+      onColumnsChange={[Function]}
+      onDelete={[Function]}
+      onDeleteChoice={[Function]}
+    />
+    <WithStyles(Component) />
+    <WithStyles(Choices)
+      choices={
+        Array [
+          Object {
+            "content": "content",
+            "correctResponseCount": 1,
+            "id": "1",
+          },
+        ]
+      }
+      config={
+        Object {
+          "columns": 2,
+          "label": "",
+        }
+      }
+      onAdd={[Function]}
+      onChange={[Function]}
+      onConfigChange={[Function]}
+      onDelete={[Function]}
+    />
+  </div>
+</[object Object]>
+`;

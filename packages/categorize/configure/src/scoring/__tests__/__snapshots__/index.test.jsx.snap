@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scoring snapshot renders 1`] = `
+<div
+  className="className"
+>
+  <WithStyles(Weighting)
+    categories={Array []}
+    onChange={[Function]}
+    weighting={
+      Object {
+        "enabled": true,
+        "rules": Array [],
+      }
+    }
+  />
+  <WithStyles(Partial)
+    categories={Array []}
+    correctResponse={Array []}
+    onChange={[Function]}
+    partial={
+      Object {
+        "enabled": true,
+        "rules": Array [],
+      }
+    }
+  />
+</div>
+`;

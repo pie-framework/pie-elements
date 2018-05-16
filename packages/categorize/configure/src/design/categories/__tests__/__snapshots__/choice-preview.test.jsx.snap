@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChoicePreview snapshot renders 1`] = `
+<div
+  className="className"
+>
+  <WithStyles(Choice)>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "content",
+        }
+      }
+    />
+    <WithStyles(IconButton)
+      aria-label="delete"
+      color="secondary"
+      onClick={[Function]}
+    >
+      <pure(Delete) />
+    </WithStyles(IconButton)>
+  </WithStyles(Choice)>
+</div>
+`;

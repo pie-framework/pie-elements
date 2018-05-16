@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Categories snapshot renders 1`] = `
+<div
+  className="categories className"
+>
+  <WithStyles(Header)
+    label="Categories"
+    onAdd={[MockFunction]}
+  />
+  <div
+    className="categoriesHolder"
+    style={
+      Object {
+        "gridTemplateColumns": "repeat(1, 1fr)",
+      }
+    }
+  >
+    <WithStyles(Category)
+      category={
+        Object {
+          "choices": Array [],
+          "id": "1",
+          "label": "foo",
+        }
+      }
+      key="0"
+      onAddChoice={[MockFunction]}
+      onChange={[Function]}
+      onDelete={[Function]}
+      onDeleteChoice={[Function]}
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <Component
+      label="Categories per row"
+      max={4}
+      min={1}
+      onChange={[MockFunction]}
+      value={2}
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snapshot renders 1`] = `
+<div
+  className="header className"
+>
+  <WithStyles(Typography)
+    variant="title"
+  >
+    Header
+  </WithStyles(Typography)>
+  <WithStyles(RawAddButton)
+    onClick={[MockFunction]}
+  />
+</div>
+`;
