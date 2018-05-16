@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0-rc.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^5.1.5"
+    "@pie-lib/config-ui": "^7.1.1"
   },
   "author": "",
   "license": "ISC"

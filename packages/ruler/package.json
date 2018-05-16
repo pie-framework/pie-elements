@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/ruler": "^2.0.1"
+    "@pie-ui/ruler": "^2.1.0"
   },
   "pie": {
     "element": "@pie-ui/ruler"
