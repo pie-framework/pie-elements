@@ -2,13 +2,13 @@ import { InputSwitch } from '@pie-lib/config-ui';
 
 import AddCircle from '@material-ui/icons/AddCircle';
 import ChoiceTile from './choice-tile';
-import IconButton from 'material-ui/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 import compact from 'lodash/compact';
 import debug from 'debug';
 import { swap } from '@pie-ui/placement-ordering';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;

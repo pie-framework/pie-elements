@@ -1,11 +1,12 @@
-import Tabs, { Tab } from 'material-ui/Tabs';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 import Design from './design';
 import Help from './help';
 import React from 'react';
 import ScoringConfig from '@pie-lib/scoring-config';
 import { withContext } from '@pie-ui/placement-ordering';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 

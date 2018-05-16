@@ -12,10 +12,10 @@ import { get, set } from 'nested-property';
 import ChoiceEditor from './choice-editor';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import cloneDeep from 'lodash/cloneDeep';
 import debug from 'debug';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const log = debug('@pie-element:placement-ordering:design');
 
