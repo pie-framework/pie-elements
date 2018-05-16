@@ -17,23 +17,23 @@ module.exports = {
           correct: true,
           value: 'disagree',
           label: [
-            {lang: 'en-US', label: 'Disagree', value: 'Disagree'},
-            {lang: 'es-ES', label: 'Discrepar', value: 'Discrepar'}
+            {lang: 'en-US', label: 'Disagree', value: 'disagree'},
+            {lang: 'es-ES', label: 'Discrepar', value: 'discrepar'}
           ],
         },
         {
           correct: true,
           value: 'neutral',
           label: [
-            {lang: 'en-US', label: 'Neutral', value: 'Neutral'},
-            {lang: 'es-ES', label: 'Neutral', value: 'Neutral'}
+            {lang: 'en-US', label: 'Neutral', value: 'neutral'},
+            {lang: 'es-ES', label: 'Neutral', value: 'neutral'}
           ],
         },
         {
           value: 'agree',
           label: [
-            {lang: 'en-US', label: 'Agree', value: 'Agree'},
-            {lang: 'es-ES', label: 'De Acuerdo', value: 'De Acuerdo'}
+            {lang: 'en-US', label: 'Agree', value: 'agree'},
+            {lang: 'es-ES', label: 'De Acuerdo', value: 'deacuerdo'}
           ],
         }
       ]
