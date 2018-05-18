@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {LanguageControls} from '@pie-lib/config-ui';
 import Prompt from './prompt';
-import {withStyles} from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Checkbox from 'material-ui/Checkbox';
+import {withStyles} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Checkbox from '@material-ui/core/Checkbox';
 import Choice from './choice';
 import PropTypes from 'prop-types';
 import ChoiceConfiguration from './choice-configuation';

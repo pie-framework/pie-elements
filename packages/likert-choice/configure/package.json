@@ -7,11 +7,11 @@
     "test": "npm run test"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^5.1.7",
+    "@pie-lib/config-ui": "^7.1.1",
     "@pie-lib/editable-html": "^5.0.13",
     "lodash": "^4.17.10",
-    "material-ui": "^1.0.0-beta.44",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

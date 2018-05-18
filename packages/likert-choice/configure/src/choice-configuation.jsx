@@ -1,11 +1,12 @@
 import React from 'react';
-import {withStyles} from 'material-ui/styles';
+import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {InputContainer} from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
-import Typography from 'material-ui/Typography';
-import IconButton from 'material-ui/IconButton';
+import Typography from '@material-ui/core/Typography';
+import Input from '@material-ui/core/Input';
+import IconButton from '@material-ui/core/IconButton';
 import ActionDelete from '@material-ui/icons/Delete';
 
 
@@ -34,6 +35,9 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit,
     paddingLeft: 0,
     marginLeft: 0
+  },
+  editableHtml: {
+    width: '60%'
   }
 });
 
@@ -109,12 +113,17 @@ class ChoiceConfiguration extends React.Component {
               {index}
             </Typography>
           )}
+          <InputContainer label="value">
+            <Input
+              className={classes.displayInput}
+              type="text"
+              onChange={onChange}
+              value={data.value}
+              placeholder="Enter Value"
+            />
+          </InputContainer>
           <EditableHtmlContainer
-            label={'Value'}
-            value={data.value}
-            onChange={onChange}
-          />
-          <EditableHtmlContainer
+            className={classes.editableHtml}
             label={'Label'}
             value={data.label}
             onChange={this.onLabelChange}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import EditableHtml from '@pie-lib/editable-html';
 import {InputContainer} from '@pie-lib/config-ui';
-import {withStyles} from 'material-ui/styles';
+import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
