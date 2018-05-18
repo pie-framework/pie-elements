@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import ChartConfig from '@pie-lib/charting-config';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import { FeedbackConfig } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
@@ -8,14 +9,8 @@ import SwipeableViews from 'react-swipeable-views';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-// import {
-//   modelToFeedbackConfig,
-//   feedbackConfigToModel
-// } from './feedback-mapper';
 import GeneralConfigBlock from './general-config-block';
 import PointConfig from './point-config';
-import GraphAttributeConfig from './graph-attribute-config';
-import DisplayConfig from './display-config';
 
 const log = debug('@pie-element:text-entry:configure');
 
@@ -64,80 +59,54 @@ class Configure extends React.Component {
     this.props.onModelChanged(this.props.model);
   };
 
-  onModelConfigAttributeChange = (
-    name,
-    shouldNotBeNumber,
-    isCheckbox
-  ) => event => {
-    const config = this.props.model.model.config;
-    const newValue = parseInt(event.target.value, 10);
+  onChange = (config, fieldName) => {
+    const newValue = parseInt(config[fieldName], 10);
+    const points = this.props.model.correctResponse;
+    const newPoints = [];
 
-    if (!isNaN(newValue) || shouldNotBeNumber || isCheckbox) {
-      config[name] = shouldNotBeNumber
-        ? isCheckbox
-          ? event.target.checked
-          : event.target.value
-        : newValue;
+    points.forEach(point => {
+      let [pointX, pointY] = point.split(',');
+      pointX = parseInt(pointX, 10);
+      pointY = parseInt(pointY, 10);
 
-      this.props.onModelChanged(this.props.model);
-    }
-  };
-
-  onGridParameterChange = name => event => {
-    const config = this.props.model.model.config;
-    const newValue = parseInt(event.target.value, 10);
-
-    if (!isNaN(newValue)) {
-      config[name] = newValue;
-
-      // also need to update the points if they become outside of range after the domain/range value change
-
-      const points = this.props.model.correctResponse;
-      const newPoints = [];
-
-      points.forEach(point => {
-        let [pointX, pointY] = point.split(',');
-        pointX = parseInt(pointX, 10);
-        pointY = parseInt(pointY, 10);
-
-        switch (name) {
-          case 'domainMin': {
-            if (pointX < newValue) {
-              point = `${newValue},${pointY}`;
-            }
-
-            break;
+      switch (fieldName) {
+        case 'domainMin': {
+          if (pointX < newValue) {
+            point = `${newValue},${pointY}`;
           }
 
-          case 'domainMax': {
-            if (pointX > newValue) {
-              point = `${newValue},${pointY}`;
-            }
-
-            break;
-          }
-          case 'rangeMin': {
-            if (pointY < newValue) {
-              point = `${pointX},${newValue}`;
-            }
-
-            break;
-          }
-          case 'rangeMax': {
-            if (pointY > newValue) {
-              point = `${pointX},${newValue}`;
-            }
-
-            break;
-          }
+          break;
         }
 
-        newPoints.push(point);
-      });
+        case 'domainMax': {
+          if (pointX > newValue) {
+            point = `${newValue},${pointY}`;
+          }
 
-      this.props.model.correctResponse = newPoints;
-      this.props.onModelChanged(this.props.model);
-    }
+          break;
+        }
+        case 'rangeMin': {
+          if (pointY < newValue) {
+            point = `${pointX},${newValue}`;
+          }
+
+          break;
+        }
+        case 'rangeMax': {
+          if (pointY > newValue) {
+            point = `${pointX},${newValue}`;
+          }
+
+          break;
+        }
+      }
+
+      newPoints.push(point);
+    });
+
+    this.props.model.correctResponse = newPoints;
+    this.props.model.model.config = { ...config };
+    this.props.onModelChanged(this.props.model);
   };
 
   onPointLabelChange = index => event => {
@@ -209,7 +178,6 @@ class Configure extends React.Component {
   render() {
     const { classes, model } = this.props;
     const config = model.model.config;
-    // const feedbackConfig = modelToFeedbackConfig(model);
 
     log('[render] model', model);
 
@@ -254,14 +222,9 @@ class Configure extends React.Component {
               onPointValueChange={this.onPointValueChange}
               onPointLabelChange={this.onPointLabelChange}
             />
-            <GraphAttributeConfig
+            <ChartConfig
               config={config}
-              onGridParameterChange={this.onGridParameterChange}
-              onModelConfigAttributeChange={this.onModelConfigAttributeChange}
-            />
-            <DisplayConfig
-              config={config}
-              onModelConfigAttributeChange={this.onModelConfigAttributeChange}
+              onChange={this.onChange}
               resetToDefaults={this.resetToDefaults}
             />
             <FeedbackConfig
