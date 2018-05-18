@@ -113,17 +113,12 @@ class ChoiceConfiguration extends React.Component {
               {index}
             </Typography>
           )}
-          <InputContainer label="value">
-            <Input
-              className={classes.displayInput}
-              type="text"
-              onChange={onChange}
-              value={data.value}
-              placeholder="Enter Value"
-            />
-          </InputContainer>
           <EditableHtmlContainer
-            className={classes.editableHtml}
+            label={'Value'}
+            value={data.value}
+            onChange={onChange}
+          />
+          <EditableHtmlContainer
             label={'Label'}
             value={data.label}
             onChange={this.onLabelChange}

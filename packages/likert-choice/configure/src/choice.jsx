@@ -6,7 +6,8 @@ export default class Choice extends Component {
 
   static propTypes = {
     onResponseTypeChanged: PropTypes.func.isRequired,
-    onChoiceLabelChanged: PropTypes.func.isRequired
+    onChoiceLabelChanged: PropTypes.func.isRequired,
+    onLabelTypeChanged: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -22,6 +23,11 @@ export default class Choice extends Component {
   choiceLabelHandler = e => {
     this.setState({choice: e});
     this.props.onChoiceLabelChanged(e);
+  }
+
+  labelTypeHandler = e => {
+    this.setState({type: e});
+    this.props.onLabelTypeChanged(e);
   }
 
   render() {
@@ -56,7 +62,7 @@ export default class Choice extends Component {
           direction="vertical"
           header="Label Type"
           value={type}
-          onChange={type => this.setState({type})}
+          onChange={this.labelTypeHandler}
           opts={[
             {label: 'Agreement', value: 'agreement'},
             {label: 'Frequency', value: 'frequency'},
@@ -68,7 +74,7 @@ export default class Choice extends Component {
           direction="vertical"
           header=""
           value={type}
-          onChange={type => this.setState({type})}
+          onChange={this.labelTypeHandler}
           opts={[
             {label: 'Importance', value: 'importance'},
             {label: 'None', value: 'none'},

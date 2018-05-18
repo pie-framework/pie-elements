@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
-import slice from 'lodash/slice';
 import reverse from 'lodash/reverse';
 
 export default class Root extends React.Component {
@@ -39,39 +38,15 @@ export default class Root extends React.Component {
   onChoiceChanged = (index, data) => {
     const {model} = this.state;
     const choice = model.choices[index];
-    choice.label.map(k => {
-      if (k.lang === model.activeLang) {
-        return merge(k, data);
-      }
-    });
+    merge(choice, data);
     model.choices.splice(index, 1, choice);
     this.updateModel(model);
   };
 
   onResponseTypeChanged = count => {
     const update = cloneDeep(this.state.model);
-    const addTo = {
-      value: '',
-      label: [
-        {lang: 'en-US', label: '', value: ''},
-        {lang: 'es-ES', label: '', value: ''}
-      ],
-    };
-    let data = this.createArray(addTo, count, update.choices);
-    update.choices = data;
+    update.responseType = count;
     this.updateModel(update);
-  }
-
-  createArray(obj, count, arr) {
-    let limit = count - arr.length;
-    if (count > arr.length) {
-      for (let i = 0; i < limit; i++) {
-        arr.push(obj);
-      }
-    } else {
-      arr = slice(arr, 0, count);
-    }
-    return arr;
   }
 
   onChoiceLabelChanged = e => {
@@ -86,6 +61,39 @@ export default class Root extends React.Component {
     this.updateModel(update);
   }
 
+  onLabelTypeChanged = (e) => {
+    const update = cloneDeep(this.state.model);
+    const selected = update.meta[e];
+    const activeLang = update.activeLang;
+    let data = [];
+    selected.map(choice => {
+      choice.label.map(value => {
+        if(value.lang === activeLang){
+          data.push(value);
+        }
+      });
+    });
+    update.choices = this.refactorArray(update.likert,data);
+    this.updateModel(update);
+  }
+
+  refactorArray(count,data){
+    switch (count){
+      case '3':
+        for(let i=0; i<2; i++){
+          data.shift();
+          data.pop();
+        }
+        return data;
+      case '5':
+        data.shift();
+        data.pop();
+        return data;
+      default:
+        return data;
+    }
+  }
+
   render() {
     const props = {
       model: this.state.model,
@@ -93,7 +101,8 @@ export default class Root extends React.Component {
       onChoiceChanged: this.onChoiceChanged,
       onResponseTypeChanged: this.onResponseTypeChanged,
       onChoiceLabelChanged: this.onChoiceLabelChanged,
-      onOrderReversed: this.onOrderReversed
+      onOrderReversed: this.onOrderReversed,
+      onLabelTypeChanged: this.onLabelTypeChanged
     };
 
     return <Main {...props} />;

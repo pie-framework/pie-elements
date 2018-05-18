@@ -43,20 +43,13 @@ class Main extends Component {
     onChoiceChanged: PropTypes.func.isRequired,
     onResponseTypeChanged: PropTypes.func.isRequired,
     onOrderReversed: PropTypes.func.isRequired,
-    onChoiceLabelChanged: PropTypes.func.isRequired
+    onChoiceLabelChanged: PropTypes.func.isRequired,
+    onLabelTypeChanged: PropTypes.func.isRequired
   }
 
   constructor(props) {
     super(props);
     this.state = {activeLang: props.model.activeLang, defaultLang: props.model.defaultLang, orderReversed: false}
-  }
-
-  filter(nameKey, myArray) {
-    for (var i = 0; i < myArray.length; i++) {
-      if (myArray[i].lang === nameKey) {
-        return myArray[i];
-      }
-    }
   }
 
   reverseOrderHandler = () => {
@@ -66,12 +59,12 @@ class Main extends Component {
 
   render() {
 
-    const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged, onChoiceLabelChanged} = this.props;
+    const {model, onPromptChanged, onChoiceChanged, onResponseTypeChanged, onChoiceLabelChanged, onLabelTypeChanged} = this.props;
     const {activeLang, defaultLang, orderReversed} = this.state;
 
     return (
       <div>
-        <Choice onResponseTypeChanged={onResponseTypeChanged} onChoiceLabelChanged={onChoiceLabelChanged}/>
+        <Choice onResponseTypeChanged={onResponseTypeChanged} onChoiceLabelChanged={onChoiceLabelChanged} onLabelTypeChanged={onLabelTypeChanged}/>
         <Section name="">
           <LanguageControls
             langs={['en-US', 'es-ES']}
@@ -89,7 +82,7 @@ class Main extends Component {
           key={i}
           index={i + 1}
           mode={'radio'}
-          data={this.filter(activeLang, v.label)}
+          data={v}
           defaultFeedback={{
             correct: 'Correct',
             incorrect: 'Incorrect'
