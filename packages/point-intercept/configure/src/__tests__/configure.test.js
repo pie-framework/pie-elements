@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Configure from '../configure';
-import DisplayConfig from '../display-config';
 import GeneralConfigBlock from '../general-config-block';
-import GraphAttributeConfig from '../graph-attribute-config';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import Input from 'material-ui/Input';
 import Button from 'material-ui/Button';
@@ -107,30 +105,6 @@ describe('Configure', () => {
   });
 });
 
-describe('DisplayConfig', () => {
-  let wrapper;
-  let props;
-
-  beforeEach(() => {
-    props = {
-      config: defaultProps.model.model.config,
-      onModelConfigAttributeChange: jest.fn(),
-      resetToDefaults: jest.fn()
-    };
-
-    wrapper = shallowChild(DisplayConfig, props, 1);
-  });
-
-  it('renders correctly', () => {
-    const component = wrapper();
-
-    expect(component.find(Button).length).toEqual(1);
-    expect(component.find(InputCheckbox).length).toEqual(3);
-    expect(component.find(InputContainer).length).toEqual(5);
-    expect(component.find(Input).length).toEqual(5);
-  });
-});
-
 describe('GeneralConfigBlock', () => {
   let wrapper;
   let props;
@@ -150,29 +124,6 @@ describe('GeneralConfigBlock', () => {
 
     expect(component.find(InputCheckbox).length).toEqual(1);
     expect(component.find(InputRadio).length).toEqual(2);
-  });
-});
-
-describe('GraphAttributeConfig', () => {
-  let wrapper;
-  let props;
-
-  beforeEach(() => {
-    props = {
-      config: defaultProps.model.model.config,
-      onGridParameterChange: jest.fn(),
-      onModelConfigAttributeChange: jest.fn()
-    };
-
-    wrapper = shallowChild(GraphAttributeConfig, props, 1);
-  });
-
-  it('renders correctly', () => {
-    const component = wrapper();
-
-    expect(component.find(Box).length).toEqual(1);
-    expect(component.find(Input).length).toBeGreaterThan(10);
-    expect(component.find(InputContainer).length).toBeGreaterThan(10);
   });
 });
 
