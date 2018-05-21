@@ -4,6 +4,7 @@ import Main from './main';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import reverse from 'lodash/reverse';
+import {meta} from './meta';
 
 export default class Root extends React.Component {
 
@@ -45,7 +46,9 @@ export default class Root extends React.Component {
 
   onResponseTypeChanged = count => {
     const update = cloneDeep(this.state.model);
+    let selected = meta[update.labelType];
     update.responseType = count;
+    update.choices= this.refactorArray(count,selected,update.activeLang);
     this.updateModel(update);
   }
 
@@ -63,24 +66,24 @@ export default class Root extends React.Component {
 
   onLabelTypeChanged = (e) => {
     const update = cloneDeep(this.state.model);
-    const selected = update.meta[e];
-    const activeLang = update.activeLang;
+    let selected = meta[e];
+    update.labelType = e;
+    update.choices = this.refactorArray(update.responseType,selected,update.activeLang);
+    this.updateModel(update);
+  }
+
+  refactorArray = (count, arr, activeLang) => {
     let data = [];
-    selected.map(choice => {
+    arr.map(choice => {
       choice.label.map(value => {
         if(value.lang === activeLang){
           data.push(value);
         }
       });
     });
-    update.choices = this.refactorArray(update.likert,data);
-    this.updateModel(update);
-  }
-
-  refactorArray(count,data){
-    switch (count){
+    switch (count) {
       case '3':
-        for(let i=0; i<2; i++){
+        for (let i = 0; i < 2; i++) {
           data.shift();
           data.pop();
         }

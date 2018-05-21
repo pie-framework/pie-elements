@@ -1,11 +1,10 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {InputContainer} from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import ActionDelete from '@material-ui/icons/Delete';
 
@@ -92,8 +91,7 @@ class ChoiceConfiguration extends React.Component {
 
   onLabelChange = this._changeFn('label');
 
-  render(){
-
+  render() {
     const {
       data,
       classes,
@@ -102,7 +100,7 @@ class ChoiceConfiguration extends React.Component {
       index,
       className
     } = this.props;
-
+    
     const names = classNames(classes.choiceConfiguration, className);
 
     return (
