@@ -18,7 +18,8 @@ module.exports = {
         {lang: 'en-US', value: 'disagree', label: 'Disagree'},
         {lang: 'en-US', value: 'unsure', label: 'Unsure'},
         {lang: 'en-US', value: 'agree', label: 'Agree'}
-      ]
+      ],
+      graphicsType: 'a'
     }
   ]
 }
