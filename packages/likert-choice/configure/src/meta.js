@@ -263,4 +263,6 @@ export const meta = {
       ]
     }
   ]
-}
+};
+
+meta.none = [...meta.custom];
