@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.7.1...@pie-element/multiple-choice@1.8.0) (2018-05-22)
+
+
+### Features
+
+* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([3d57d5c](https://github.com/pie-framework/pie-elements/commit/3d57d5c))
+
+
+
+
 <a name="1.7.1"></a>
 ## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@1.7.0...@pie-element/multiple-choice@1.7.1) (2018-05-11)
 

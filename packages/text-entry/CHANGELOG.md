@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-    <a name="2.0.0"></a>
+      <a name="2.1.0"></a>
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.0.0...@pie-element/text-entry@2.1.0) (2018-05-22)
+
+
+### Features
+
+* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([1e38e50](https://github.com/pie-framework/pie-elements/commit/1e38e50))
+
+
+
+
+      <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@1.7.0...@pie-element/text-entry@2.0.0) (2018-05-11)
 
 
@@ -29,38 +40,38 @@ From:
 ```javascript
 
 {
-  id: '1',
-  element: 'text-entry',
-  correctResponses: {
-    values: ['mutt', 'hound'],
-    ignoreWhitespace: true,
-    ignoreCase: false,
-    feedback: {
-      type: 'custom',
-      value: 'correct-o'
-    }
-  },
-  partialResponses: {
-    values: ['mutty'],
-    ignoreWhitespace: true,
-    ignoreCase: true,
-    awardPercentage: '50',
-    feedback: {
-      type: 'custom',
-      value: 'foo'
-    }
-  },
-  incorrectFeedback: {
+id: '1',
+element: 'text-entry',
+correctResponses: {
+  values: ['mutt', 'hound'],
+  ignoreWhitespace: true,
+  ignoreCase: false,
+  feedback: {
     type: 'custom',
-    value: 'custom feedback'
-  },
-  model: {
-    answerBlankSize: '10',
-    answerAlignment: 'left',
-    allowDecimal: true,
-    allowIntegersOnly: false,
-    allowThousandsSeparator: true
+    value: 'correct-o'
   }
+},
+partialResponses: {
+  values: ['mutty'],
+  ignoreWhitespace: true,
+  ignoreCase: true,
+  awardPercentage: '50',
+  feedback: {
+    type: 'custom',
+    value: 'foo'
+  }
+},
+incorrectFeedback: {
+  type: 'custom',
+  value: 'custom feedback'
+},
+model: {
+  answerBlankSize: '10',
+  answerAlignment: 'left',
+  allowDecimal: true,
+  allowIntegersOnly: false,
+  allowThousandsSeparator: true
+}
 }
 
 ```
@@ -68,45 +79,45 @@ From:
 To:
 ```javascript
 {
-  id: '1',
-  element: 'text-entry',
-  feedback: {
-    correct: {
-      type: 'custom',
-      custom: 'correct-o'
-    },
-    incorrect: {
-      type: 'custom',
-      custom: 'custom feedback'
-    },
-    partial: {
-      type: 'custom',
-      custom: 'foo'
-    }
+id: '1',
+element: 'text-entry',
+feedback: {
+  correct: {
+    type: 'custom',
+    custom: 'correct-o'
   },
-  correctResponses: {
-    values: ['mutt', 'hound'],
-    ignoreWhitespace: true,
-    ignoreCase: false
+  incorrect: {
+    type: 'custom',
+    custom: 'custom feedback'
   },
-  partialResponses: {
-    values: ['mutty'],
-    ignoreWhitespace: true,
-    ignoreCase: true,
-    awardPercentage: '50'
-  },
-  answerBlankSize: '10',
-  answerAlignment: 'left',
-  allowDecimal: true,
-  allowIntegersOnly: false,
-  allowThousandsSeparator: true
+  partial: {
+    type: 'custom',
+    custom: 'foo'
+  }
+},
+correctResponses: {
+  values: ['mutt', 'hound'],
+  ignoreWhitespace: true,
+  ignoreCase: false
+},
+partialResponses: {
+  values: ['mutty'],
+  ignoreWhitespace: true,
+  ignoreCase: true,
+  awardPercentage: '50'
+},
+answerBlankSize: '10',
+answerAlignment: 'left',
+allowDecimal: true,
+allowIntegersOnly: false,
+allowThousandsSeparator: true
 }
 ```
 
 
 
 
-    <a name="1.7.0"></a>
+  <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@1.6.0...@pie-element/text-entry@1.7.0) (2018-05-03)
 
 

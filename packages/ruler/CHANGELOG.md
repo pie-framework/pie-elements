@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-     <a name="2.0.0"></a>
+       <a name="2.1.0"></a>
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@2.0.0...@pie-element/ruler@2.1.0) (2018-05-22)
+
+
+### Features
+
+* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([4a86e00](https://github.com/pie-framework/pie-elements/commit/4a86e00))
+
+
+
+
+       <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.3.0...@pie-element/ruler@2.0.0) (2018-05-11)
 
 
@@ -20,17 +31,17 @@ FROM:
 
 ```javascript
 
- {
-   model: {
-     config: {
-       units: 'metric',
-       label: 'm',
-       length: 20,
-       pixelsPerUnit: 30,
-       ticks: 10
-     }
-   }
- }
+{
+  model: {
+    config: {
+      units: 'metric',
+      label: 'm',
+      length: 20,
+      pixelsPerUnit: 30,
+      ticks: 10
+    }
+  }
+}
 
 ```
 
@@ -38,18 +49,18 @@ TO:
 
 ```javascript
 {
-   measure: 'metric',
-   label: 'm',
-   units: 10,
-   width: 500,
-   imperialTicks: undefined
- }
+  measure: 'metric',
+  label: 'm',
+  units: 10,
+  width: 500,
+  imperialTicks: undefined
+}
 ```
 
 
 
 
-     <a name="1.3.0"></a>
+    <a name="1.3.0"></a>
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.2.1...@pie-element/ruler@1.3.0) (2018-05-03)
 
 

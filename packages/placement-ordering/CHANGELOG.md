@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-    <a name="2.0.0"></a>
+      <a name="2.1.0"></a>
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@2.0.0...@pie-element/placement-ordering@2.1.0) (2018-05-22)
+
+
+### Features
+
+* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([02ac71a](https://github.com/pie-framework/pie-elements/commit/02ac71a))
+
+
+
+
+      <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@1.7.0...@pie-element/placement-ordering@2.0.0) (2018-05-11)
 
 
@@ -30,96 +41,27 @@ From:
 
 ```javascript
 {
-  id: '1',
-  element: 'placement-ordering',
-  correctResponse: [
-    {
-      id: 'c1',
-      weight: 0.2
-    },
-    {
-      id: 'c4',
-      weight: 0.2
-    },
-    {
-      id: 'c3',
-      weight: 0.3
-    },
-    {
-      id: 'c2',
-      weight: 0.3
-    }
-  ],
-  model: {
-    prompt: 'Arrange the fruits alphabetically',
-    choices: [
-      {
-        id: 'c2',
-        label: 'Lemon',
-        shuffle: false,
-        moveOnDrag: true
-      },
-      {
-        id: 'c3',
-        label: 'Melon',
-        moveOnDrag: true
-      },
-      {
-        id: 'c1',
-        label: 'Blueberry',
-        moveOnDrag: false
-      },
-      {
-        id: 'c4',
-        label: 'Pear',
-        moveOnDrag: false
-      }
-    ]
+id: '1',
+element: 'placement-ordering',
+correctResponse: [
+  {
+    id: 'c1',
+    weight: 0.2
   },
-  config: {
-    shuffle: false,
-    placementType: 'none',
-    choiceAreaLayout: 'vertical',
-    choiceAreaLabel: 'choices: ',
-    answerAreaLabel: 'Answer Area Label',
-    showOrdering: true
+  {
+    id: 'c4',
+    weight: 0.2
   },
-  feedback: {
-    correctFeedbackType: 'custom',
-    correctFeedback: 'foo',
-    incorrectFeedbackType: 'custom',
-    incorrectFeedback: 'foo',
-    partialFeedbackType: 'custom',
-    partialFeedback: 'foo',
+  {
+    id: 'c3',
+    weight: 0.3
+  },
+  {
+    id: 'c2',
+    weight: 0.3
   }
-}
-```
-
-To:
-
-```javascript
-
-{
-  id: '1',
-  element: 'placement-ordering',
-  correctResponse: [
-    {
-      id: 'c1',
-      weight: 0.2
-    },
-    {
-      id: 'c4',
-      weight: 0.2
-    },
-    {
-      id: 'c3',
-      weight: 0.3
-    },
-    {
-      id: 'c2',
-      weight: 0.3
-    }
-  ],
+],
+model: {
   prompt: 'Arrange the fruits alphabetically',
   choices: [
     {
@@ -143,27 +85,96 @@ To:
       label: 'Pear',
       moveOnDrag: false
     }
-  ],
+  ]
+},
+config: {
   shuffle: false,
   placementType: 'none',
   choiceAreaLayout: 'vertical',
   choiceAreaLabel: 'choices: ',
   answerAreaLabel: 'Answer Area Label',
-  showOrdering: true,
-  feedback: {
-    correct: {
-      type: 'custom',
-      custom: 'foo'
-    },
-    incorrect: {
-      type: 'custom',
-      custom: 'no'
-    },
-    partial: {
-      type: 'custom',
-      custom: 'nearly'
-    }
+  showOrdering: true
+},
+feedback: {
+  correctFeedbackType: 'custom',
+  correctFeedback: 'foo',
+  incorrectFeedbackType: 'custom',
+  incorrectFeedback: 'foo',
+  partialFeedbackType: 'custom',
+  partialFeedback: 'foo',
+}
+}
+```
+
+To:
+
+```javascript
+
+{
+id: '1',
+element: 'placement-ordering',
+correctResponse: [
+  {
+    id: 'c1',
+    weight: 0.2
+  },
+  {
+    id: 'c4',
+    weight: 0.2
+  },
+  {
+    id: 'c3',
+    weight: 0.3
+  },
+  {
+    id: 'c2',
+    weight: 0.3
   }
+],
+prompt: 'Arrange the fruits alphabetically',
+choices: [
+  {
+    id: 'c2',
+    label: 'Lemon',
+    shuffle: false,
+    moveOnDrag: true
+  },
+  {
+    id: 'c3',
+    label: 'Melon',
+    moveOnDrag: true
+  },
+  {
+    id: 'c1',
+    label: 'Blueberry',
+    moveOnDrag: false
+  },
+  {
+    id: 'c4',
+    label: 'Pear',
+    moveOnDrag: false
+  }
+],
+shuffle: false,
+placementType: 'none',
+choiceAreaLayout: 'vertical',
+choiceAreaLabel: 'choices: ',
+answerAreaLabel: 'Answer Area Label',
+showOrdering: true,
+feedback: {
+  correct: {
+    type: 'custom',
+    custom: 'foo'
+  },
+  incorrect: {
+    type: 'custom',
+    custom: 'no'
+  },
+  partial: {
+    type: 'custom',
+    custom: 'nearly'
+  }
+}
 }
 
 ```
@@ -171,7 +182,7 @@ To:
 
 
 
-    <a name="1.7.0"></a>
+  <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@1.6.0...@pie-element/placement-ordering@1.7.0) (2018-05-03)
 
 

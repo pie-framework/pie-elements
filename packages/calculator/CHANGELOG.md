@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@1.7.0...@pie-element/calculator@1.8.0) (2018-05-22)
+
+
+### Features
+
+* upgrade dependencies ([705a474](https://github.com/pie-framework/pie-elements/commit/705a474))
+* upgrade material-ui -> [@material-ui](https://github.com/material-ui)/core@1.0.0-rc.1 ([9ae36d5](https://github.com/pie-framework/pie-elements/commit/9ae36d5))
+
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@1.6.0...@pie-element/calculator@1.7.0) (2018-05-11)
 
