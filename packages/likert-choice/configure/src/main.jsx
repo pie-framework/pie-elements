@@ -44,7 +44,8 @@ class Main extends Component {
     onResponseTypeChanged: PropTypes.func.isRequired,
     onOrderReversed: PropTypes.func.isRequired,
     onChoiceLabelChanged: PropTypes.func.isRequired,
-    onLabelTypeChanged: PropTypes.func.isRequired
+    onLabelTypeChanged: PropTypes.func.isRequired,
+    onLangChanged: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -55,6 +56,16 @@ class Main extends Component {
   reverseOrderHandler = () => {
     this.setState({orderReversed: !this.state.orderReversed});
     this.props.onOrderReversed();
+  }
+
+  activeLangChangeHandler = (activeLang) => {
+    this.setState({activeLang});
+    this.props.onLangChanged(activeLang);
+  }
+
+  defaultLangChangeHandler = (defaultLang) => {
+    this.setState({defaultLang});
+    this.props.onLangChanged(defaultLang);
   }
 
   render() {
@@ -70,10 +81,8 @@ class Main extends Component {
             langs={['en-US', 'es-ES']}
             activeLang={activeLang}
             defaultLang={defaultLang}
-            onActiveLangChange={activeLang => this.setState({activeLang})}
-            onDefaultLangChange={defaultLang =>
-              this.setState({defaultLang})
-            }
+            onActiveLangChange={this.activeLangChangeHandler}
+            onDefaultLangChange={this.defaultLangChangeHandler}
           />
         </Section>
         <Prompt prompt={model.prompt} onPromptChanged={onPromptChanged}/>

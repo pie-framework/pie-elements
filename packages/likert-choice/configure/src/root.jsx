@@ -97,6 +97,14 @@ export default class Root extends React.Component {
     }
   }
 
+  onLangChanged = (lang) => {
+    const update = cloneDeep(this.state.model);
+    let selected = meta[update.labelType];
+    update[lang] = lang;
+    update.choices = this.refactorArray(update.responseType,selected,lang);
+    this.updateModel(update);
+  }
+
   render() {
     const props = {
       model: this.state.model,
@@ -105,7 +113,8 @@ export default class Root extends React.Component {
       onResponseTypeChanged: this.onResponseTypeChanged,
       onChoiceLabelChanged: this.onChoiceLabelChanged,
       onOrderReversed: this.onOrderReversed,
-      onLabelTypeChanged: this.onLabelTypeChanged
+      onLabelTypeChanged: this.onLabelTypeChanged,
+      onLangChanged: this.onLangChanged
     };
 
     return <Main {...props} />;
