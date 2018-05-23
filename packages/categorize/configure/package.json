@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "version": "1.0.0",
   "description": "",
   "scripts": {},

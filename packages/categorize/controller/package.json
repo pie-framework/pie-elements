@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {},
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "author": "pie framework developers",
   "license": "ISC"
 }
