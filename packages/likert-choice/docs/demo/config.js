@@ -1,4 +1,5 @@
 module.exports = {
+  langs: ['en-US','es-ES'],
   elements: {
     'likert-choice': '../..'
   },
@@ -19,7 +20,8 @@ module.exports = {
         {lang: 'en-US', value: 'unsure', label: 'Unsure'},
         {lang: 'en-US', value: 'agree', label: 'Agree'}
       ],
-      graphicsType: 'a'
+      graphicsType: 'a',
+      reverse: false
     }
   ]
 }

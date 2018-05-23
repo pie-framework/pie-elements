@@ -60,6 +60,7 @@ export default class Root extends React.Component {
 
   onOrderReversed = () => {
     const update = cloneDeep(this.state.model);
+    update.reverse = !update.reverse
     reverse(update.choices);
     this.updateModel(update);
   }
