@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -11,9 +11,6 @@
   },
   "pie": {
     "element": "@pie-ui/placement-ordering"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"
