@@ -6,8 +6,19 @@ const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs-extra');
 const spawn = require('child-process-promise').spawn;
 const rimraf = require('rimraf');
+const _ = require('lodash');
 
-const packages = ['calculator', 'categorize'];
+log('scope: ', argv.scope);
+
+const listPackages = () => ['calculator', 'categorize', 'extended-text-entry'];
+
+const getPackages = () => {
+  if (argv.scope) {
+    return Array.isArray(argv.scope) ? argv.scope : [argv.scope];
+  } else {
+    return listPackages();
+  }
+};
 
 argv.clean = argv.clean !== false;
 
@@ -77,6 +88,9 @@ const buildPackage = async name => {
   }
 };
 
+const packages = getPackages();
+
+log('packages: ', packages);
 const buildPromises = packages.map(p => buildPackage(p));
 
 Promise.all(buildPromises)
