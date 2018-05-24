@@ -1,58 +1,38 @@
-const categorize = {
-  choices: () => [
-    { id: '1', content: '<h3>Hi</h3>' },
-    { id: '2', content: '<b>Banana</b>' }
-  ],
-  categories: () => [
-    { id: '1', label: 'Fruit' },
-    { id: '2', label: 'Vegetable' }
-  ]
+const model = (pkg, id, element) => {
+  element = element || pkg;
+  const generate = require(`../packages/${pkg}/docs/demo/generate`);
+  return generate.model(id, element);
 };
 
 module.exports = {
   elements: {
     'categorize-el': '@pie-element/categorize@2.0.0',
-    'calculator-el': '@pie-element/calculator@2.0.0'
+    'calculator-el': '@pie-element/calculator@2.0.0',
+    'extended-text-entry': '@pie-element/extended-text-entry@3.0.0',
+    'function-entry': '@pie-element/function-entry@3.0.0',
+    'inline-choice': '@pie-element/inline-choice@2.0.0',
+    'multiple-choice': '@pie-element/multiple-choice@2.0.0',
+    'number-line': '@pie-element/number-line@3.0.0',
+    'placement-ordering': '@pie-element/placement-ordering@3.0.0',
+    'point-intercept': '@pie-element/point-intercept@3.0.0',
+    'protractor-el': '@pie-element/protractor@2.0.0',
+    'ruler-el': '@pie-element/ruler@3.0.0',
+    'select-text': '@pie-element/select-text@3.0.0',
+    'text-entry': '@pie-element/text-entry@3.0.0'
   },
   models: [
-    {
-      id: '1',
-      element: 'calculator-el',
-      mode: 'scientific'
-    },
-    {
-      id: '2',
-      element: 'categorize-el',
-      choices: categorize.choices(),
-      categories: categorize.categories(),
-      correctResponse: [{ category: '1', choices: ['1', '2', '1'] }],
-      scoring: {
-        weighting: {
-          enabled: true,
-          rules: [{ category: '1', points: 1 }, { category: '2', points: 1 }]
-        },
-        partial: {
-          enabled: true,
-          rules: [
-            {
-              category: '1',
-              rules: [{ count: 1, percent: 50 }, { count: 2, percent: 100 }]
-            },
-            { category: '2', rules: [] }
-          ]
-        }
-      },
-      config: {
-        choices: {
-          columns: 2,
-          position: 'above',
-          label: 'Here are the choices',
-          shuffle: false
-        },
-        categories: {
-          columns: 2
-        }
-      }
-    }
+    model('calculator', '1', 'calculator-el'),
+    model('categorize', '2', 'categorize-el'),
+    model('extended-text-entry', '3'),
+    model('function-entry', '4'),
+    model('inline-choice', '5'),
+    model('multiple-choice', '6'),
+    model('number-line', '7'),
+    model('placement-ordering', '8'),
+    model('point-intercept', '9'),
+    model('protractor', '10', 'protractor-el'),
+    model('ruler', '11', 'ruler-el'),
+    model('select-text', '12'),
+    model('text-entry', '13')
   ]
 };
