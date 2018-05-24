@@ -1,14 +1,10 @@
 {
   "name": "@pie-element/number-line",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "repository": "pie-framework/pie-elements",
   "description": "",
   "publishConfig": {
     "access": "public"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@pie-lib/feedback": "^0.4.1",
@@ -17,6 +13,6 @@
   "pie": {
     "element": "@pie-ui/number-line"
   },
-  "author": "",
+  "author": "pie framework developers",
   "license": "ISC"
 }
