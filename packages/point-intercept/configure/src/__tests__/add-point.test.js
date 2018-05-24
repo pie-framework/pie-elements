@@ -1,13 +1,13 @@
 import * as React from 'react';
 import AddPoint from '../add-point';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import AddButton from '@material-ui/icons/Add';
 import { shallowChild } from '@pie-lib/test-utils';
 
 describe('AddPoint', () => {
   const defaultProps = {
     onAddClick: () => {},
-    disabled: false,
+    disabled: false
   };
   let wrapper;
 

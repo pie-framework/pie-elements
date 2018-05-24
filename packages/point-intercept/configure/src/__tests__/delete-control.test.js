@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { shallowChild } from '@pie-lib/test-utils';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import DeleteControl from '../delete';
 
 describe('DeleteControl', () => {
   const defaultProps = {
     onDeleteClick: () => {},
-    disabled: false,
+    disabled: false
   };
   let wrapper;
 

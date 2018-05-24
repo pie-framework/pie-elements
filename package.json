@@ -5,11 +5,12 @@
     "pie-clean": "lerna exec -- pie clean --dir docs/demo",
     "pie-install": "lerna exec --parallel -- pie install --dir docs/demo",
     "pie-pack-clean": "scripts/clean.sh",
-    "release": "lerna publish --conventional-commits"
+    "release":
+      "scripts/build --cleanOnly && npm test && scripts/build && lerna publish --conventional-commits"
   },
   "devDependencies": {
+    "@pie-lib/test-utils": "^0.0.3",
     "lerna": "^2.8.0",
-    "rimraf": "^2.6.2",
     "eslint": "^4.18.2",
     "jest": "^22.4.3",
     "babel-eslint": "^8.2.2",

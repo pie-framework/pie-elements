@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
+    "@pie-lib/charting-config": "^0.2.3",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/charting": "^2.2.3",
     "@pie-lib/config-ui": "^7.1.1",

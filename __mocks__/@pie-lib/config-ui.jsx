@@ -11,6 +11,7 @@ module.exports = {
   FeedbackConfig: Comp('FeedbackConfig'),
   Tabs: Comp('Tabs'),
   Checkbox: Comp('Checkbox'),
+  FeedbackSelector: Comp('FeedbackSelector'),
   choiceUtils: {
     firstAvailableIndex: jest.fn(() => '1')
   }

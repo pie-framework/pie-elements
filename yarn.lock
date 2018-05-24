@@ -96,6 +96,10 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-1.0.3.tgz#c51b1b3ebf03f4ca2aedcc0996ce18422fa4fb4d"
 
+"@pie-lib/test-utils@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.0.3.tgz#9bef3bfb236af4cda24e9ed6446794d9615175a0"
+
 "@types/node@*":
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.6.tgz#c0bce8e539bf34c1b850c13ff46bead2fecc2e58"

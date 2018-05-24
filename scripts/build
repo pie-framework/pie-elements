@@ -23,6 +23,7 @@ const getPackages = async () => {
 };
 
 argv.clean = argv.clean !== false;
+argv.onlyClean = argv.onlyClean === true;
 
 processFix(log, () => {
   process.exit();
@@ -30,77 +31,88 @@ processFix(log, () => {
 
 const cleanLib = p =>
   new Promise((resolve, reject) => {
-    if (argv.clean) {
-      const lib = `${p}/lib`;
-      log('clean: ', lib);
-      rimraf(lib, e => {
-        if (e) {
-          reject(e);
-        } else {
-          resolve();
-        }
-      });
-    } else {
-      resolve();
-    }
+    const lib = `${p}/lib`;
+    log('clean: ', lib);
+    rimraf(lib, e => {
+      if (e) {
+        reject(e);
+      } else {
+        resolve();
+      }
+    });
   });
 
 const buildDir = p => {
   log(`build: ${p}`);
 
-  return cleanLib(p).then(() => {
-    const args = [
-      `${p}/src`,
-      '--out-dir',
-      `${p}/lib`,
-      '--ignore',
-      '/__test__/,/__tests__/,/__mocks__/'
-    ];
-    return spawn('./node_modules/.bin/babel', args, {
-      stdio: 'inherit'
-    });
+  const args = [
+    `${p}/src`,
+    '--out-dir',
+    `${p}/lib`,
+    '--ignore',
+    '/__test__/,/__tests__/,/__mocks__/'
+  ];
+  return spawn('./node_modules/.bin/babel', args, {
+    stdio: 'inherit'
   });
 };
 
-const buildPackage = async name => {
-  log('buildPackage: ', name);
+const getFolders = async name => {
+  log('getFolders: ', name);
   const n = `packages/${name}`;
   const stat = await fs.stat(n);
-  const builds = [];
+  const out = [];
 
   if (stat.isDirectory()) {
     const files = await fs.readdir(n);
     if (files.indexOf('src') !== -1) {
-      builds.push(buildDir(n));
+      out.push(n);
     }
 
     if (files.indexOf('controller') !== -1) {
-      builds.push(buildDir(`${n}/controller`));
+      out.push(`${n}/controller`);
     }
 
     if (files.indexOf('configure') !== -1) {
-      builds.push(buildDir(`${n}/configure`));
+      out.push(`${n}/configure`);
     }
-
-    return Promise.all(builds);
+    return Promise.all(out);
   } else {
     return Promise.resolve([]);
   }
+};
+
+const cleanPackage = async name => {
+  const folders = await getFolders(name);
+  return Promise.all(folders.map(cleanLib));
+};
+
+const buildPackage = async name => {
+  const folders = await getFolders(name);
+  return Promise.all(folders.map(buildDir));
 };
 
 const run = async () => {
   const packages = await getPackages();
 
   log('packages: ', packages);
-  const buildPromises = packages.map(p => buildPackage(p));
 
-  Promise.all(buildPromises)
-    .then(() => {
-      log('---------> done');
-    })
-    .catch(e => {
-      log('error', e);
-    });
+  if (argv.clean || argv.onlyClean) {
+    await Promise.all(packages.map(cleanPackage));
+    log('clean done.');
+  }
+
+  if (!argv.onlyClean) {
+    const buildPromises = packages.map(p => buildPackage(p));
+
+    Promise.all(buildPromises)
+      .then(() => {
+        log('---------> done');
+      })
+      .catch(e => {
+        log('error', e);
+      });
+  }
 };
 
 run();
