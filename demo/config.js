@@ -11,8 +11,8 @@ const categorize = {
 
 module.exports = {
   elements: {
-    'categorize-el': '@pie-element/categorize@next',
-    'calculator-el': '@pie-element/calculator@next'
+    'categorize-el': '@pie-element/categorize@2.0.0',
+    'calculator-el': '@pie-element/calculator@2.0.0'
   },
   models: [
     {
