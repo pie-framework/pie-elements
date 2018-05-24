@@ -10,13 +10,15 @@ const _ = require('lodash');
 
 log('scope: ', argv.scope);
 
-const listPackages = () => ['calculator', 'categorize', 'extended-text-entry'];
+const listPackages = () => fs.readdir('packages');
 
-const getPackages = () => {
+const getPackages = async () => {
   if (argv.scope) {
-    return Array.isArray(argv.scope) ? argv.scope : [argv.scope];
+    return Promise.resolve(
+      Array.isArray(argv.scope) ? argv.scope : [argv.scope]
+    );
   } else {
-    return listPackages();
+    return await listPackages();
   }
 };
 
@@ -52,9 +54,7 @@ const buildDir = p => {
       '--out-dir',
       `${p}/lib`,
       '--ignore',
-      '/__test__/',
-      '--ignore',
-      '/__tests__/'
+      '/__test__/,/__tests__/,/__mocks__/'
     ];
     return spawn('./node_modules/.bin/babel', args, {
       stdio: 'inherit'
@@ -88,15 +88,19 @@ const buildPackage = async name => {
   }
 };
 
-const packages = getPackages();
+const run = async () => {
+  const packages = await getPackages();
 
-log('packages: ', packages);
-const buildPromises = packages.map(p => buildPackage(p));
+  log('packages: ', packages);
+  const buildPromises = packages.map(p => buildPackage(p));
 
-Promise.all(buildPromises)
-  .then(() => {
-    log('---------> done');
-  })
-  .catch(e => {
-    log('error', e);
-  });
+  Promise.all(buildPromises)
+    .then(() => {
+      log('---------> done');
+    })
+    .catch(e => {
+      log('error', e);
+    });
+};
+
+run();
