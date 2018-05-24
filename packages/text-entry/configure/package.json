@@ -1,7 +1,7 @@
 {
   "name": "@pie-ui/text-entry-configure",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -15,13 +15,5 @@
     "react-dom": "^16.3.2",
     "prop-types": "^15.6.1",
     "@material-ui/core": "^1.0.0-rc.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^22.4.3",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "jest": "^22.4.3"
   }
 }

@@ -2,7 +2,7 @@
   "name": "@pie-element/number-line-configure",
   "private": true,
   "version": "1.0.0",
-  "main": "./src/index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
