@@ -10,6 +10,7 @@ A collection of pies.
 | lint           | runs eslint                                                             |
 | clean          | removes all the lib dirs                                                |
 | release        | cleans, runs tests, then runs lerna publish                             |
+| info $pkg      | run `pie info` for a package                                            |
 | pie-clean      | cleans out the `docs/demo` dir                                          |
 | pie-install    | cleans out the `docs/demo` dir                                          |
 | pie-pack-clean | cleans out the `docs/demo` dir + any generated assets from a `pie pack` |
