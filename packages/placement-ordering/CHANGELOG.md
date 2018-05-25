@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.1"></a>
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@2.1.0...@pie-element/placement-ordering@3.0.1) (2018-05-25)
+
+
+
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
       <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@2.0.0...@pie-element/placement-ordering@2.1.0) (2018-05-22)
 
@@ -14,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-      <a name="2.0.0"></a>
+    <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@1.7.0...@pie-element/placement-ordering@2.0.0) (2018-05-11)
 
 
@@ -44,93 +52,24 @@ From:
 id: '1',
 element: 'placement-ordering',
 correctResponse: [
-  {
-    id: 'c1',
-    weight: 0.2
-  },
-  {
-    id: 'c4',
-    weight: 0.2
-  },
-  {
-    id: 'c3',
-    weight: 0.3
-  },
-  {
-    id: 'c2',
-    weight: 0.3
-  }
+{
+  id: 'c1',
+  weight: 0.2
+},
+{
+  id: 'c4',
+  weight: 0.2
+},
+{
+  id: 'c3',
+  weight: 0.3
+},
+{
+  id: 'c2',
+  weight: 0.3
+}
 ],
 model: {
-  prompt: 'Arrange the fruits alphabetically',
-  choices: [
-    {
-      id: 'c2',
-      label: 'Lemon',
-      shuffle: false,
-      moveOnDrag: true
-    },
-    {
-      id: 'c3',
-      label: 'Melon',
-      moveOnDrag: true
-    },
-    {
-      id: 'c1',
-      label: 'Blueberry',
-      moveOnDrag: false
-    },
-    {
-      id: 'c4',
-      label: 'Pear',
-      moveOnDrag: false
-    }
-  ]
-},
-config: {
-  shuffle: false,
-  placementType: 'none',
-  choiceAreaLayout: 'vertical',
-  choiceAreaLabel: 'choices: ',
-  answerAreaLabel: 'Answer Area Label',
-  showOrdering: true
-},
-feedback: {
-  correctFeedbackType: 'custom',
-  correctFeedback: 'foo',
-  incorrectFeedbackType: 'custom',
-  incorrectFeedback: 'foo',
-  partialFeedbackType: 'custom',
-  partialFeedback: 'foo',
-}
-}
-```
-
-To:
-
-```javascript
-
-{
-id: '1',
-element: 'placement-ordering',
-correctResponse: [
-  {
-    id: 'c1',
-    weight: 0.2
-  },
-  {
-    id: 'c4',
-    weight: 0.2
-  },
-  {
-    id: 'c3',
-    weight: 0.3
-  },
-  {
-    id: 'c2',
-    weight: 0.3
-  }
-],
 prompt: 'Arrange the fruits alphabetically',
 choices: [
   {
@@ -154,6 +93,75 @@ choices: [
     label: 'Pear',
     moveOnDrag: false
   }
+]
+},
+config: {
+shuffle: false,
+placementType: 'none',
+choiceAreaLayout: 'vertical',
+choiceAreaLabel: 'choices: ',
+answerAreaLabel: 'Answer Area Label',
+showOrdering: true
+},
+feedback: {
+correctFeedbackType: 'custom',
+correctFeedback: 'foo',
+incorrectFeedbackType: 'custom',
+incorrectFeedback: 'foo',
+partialFeedbackType: 'custom',
+partialFeedback: 'foo',
+}
+}
+```
+
+To:
+
+```javascript
+
+{
+id: '1',
+element: 'placement-ordering',
+correctResponse: [
+{
+  id: 'c1',
+  weight: 0.2
+},
+{
+  id: 'c4',
+  weight: 0.2
+},
+{
+  id: 'c3',
+  weight: 0.3
+},
+{
+  id: 'c2',
+  weight: 0.3
+}
+],
+prompt: 'Arrange the fruits alphabetically',
+choices: [
+{
+  id: 'c2',
+  label: 'Lemon',
+  shuffle: false,
+  moveOnDrag: true
+},
+{
+  id: 'c3',
+  label: 'Melon',
+  moveOnDrag: true
+},
+{
+  id: 'c1',
+  label: 'Blueberry',
+  moveOnDrag: false
+},
+{
+  id: 'c4',
+  label: 'Pear',
+  moveOnDrag: false
+}
 ],
 shuffle: false,
 placementType: 'none',
@@ -162,18 +170,18 @@ choiceAreaLabel: 'choices: ',
 answerAreaLabel: 'Answer Area Label',
 showOrdering: true,
 feedback: {
-  correct: {
-    type: 'custom',
-    custom: 'foo'
-  },
-  incorrect: {
-    type: 'custom',
-    custom: 'no'
-  },
-  partial: {
-    type: 'custom',
-    custom: 'nearly'
-  }
+correct: {
+  type: 'custom',
+  custom: 'foo'
+},
+incorrect: {
+  type: 'custom',
+  custom: 'no'
+},
+partial: {
+  type: 'custom',
+  custom: 'nearly'
+}
 }
 }
 
@@ -182,7 +190,7 @@ feedback: {
 
 
 
-  <a name="1.7.0"></a>
+<a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@1.6.0...@pie-element/placement-ordering@1.7.0) (2018-05-03)
 
 

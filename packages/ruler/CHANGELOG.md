@@ -3,7 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-       <a name="2.1.0"></a>
+      <a name="3.0.1"></a>
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@2.1.0...@pie-element/ruler@3.0.1) (2018-05-25)
+
+
+
+
+**Note:** Version bump only for package @pie-element/ruler
+
+      <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@2.0.0...@pie-element/ruler@2.1.0) (2018-05-22)
 
 
@@ -14,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-       <a name="2.0.0"></a>
+     <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.3.0...@pie-element/ruler@2.0.0) (2018-05-11)
 
 
@@ -32,15 +40,15 @@ FROM:
 ```javascript
 
 {
-  model: {
-    config: {
-      units: 'metric',
-      label: 'm',
-      length: 20,
-      pixelsPerUnit: 30,
-      ticks: 10
-    }
+model: {
+  config: {
+    units: 'metric',
+    label: 'm',
+    length: 20,
+    pixelsPerUnit: 30,
+    ticks: 10
   }
+}
 }
 
 ```
@@ -49,18 +57,18 @@ TO:
 
 ```javascript
 {
-  measure: 'metric',
-  label: 'm',
-  units: 10,
-  width: 500,
-  imperialTicks: undefined
+measure: 'metric',
+label: 'm',
+units: 10,
+width: 500,
+imperialTicks: undefined
 }
 ```
 
 
 
 
-    <a name="1.3.0"></a>
+  <a name="1.3.0"></a>
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.2.1...@pie-element/ruler@1.3.0) (2018-05-03)
 
 

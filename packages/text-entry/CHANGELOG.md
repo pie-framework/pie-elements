@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.1"></a>
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.1.0...@pie-element/text-entry@3.0.1) (2018-05-25)
+
+
+
+
+**Note:** Version bump only for package @pie-element/text-entry
+
       <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.0.0...@pie-element/text-entry@2.1.0) (2018-05-22)
 
@@ -14,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-      <a name="2.0.0"></a>
+    <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@1.7.0...@pie-element/text-entry@2.0.0) (2018-05-11)
 
 
@@ -43,34 +51,34 @@ From:
 id: '1',
 element: 'text-entry',
 correctResponses: {
-  values: ['mutt', 'hound'],
-  ignoreWhitespace: true,
-  ignoreCase: false,
-  feedback: {
-    type: 'custom',
-    value: 'correct-o'
-  }
+values: ['mutt', 'hound'],
+ignoreWhitespace: true,
+ignoreCase: false,
+feedback: {
+  type: 'custom',
+  value: 'correct-o'
+}
 },
 partialResponses: {
-  values: ['mutty'],
-  ignoreWhitespace: true,
-  ignoreCase: true,
-  awardPercentage: '50',
-  feedback: {
-    type: 'custom',
-    value: 'foo'
-  }
+values: ['mutty'],
+ignoreWhitespace: true,
+ignoreCase: true,
+awardPercentage: '50',
+feedback: {
+  type: 'custom',
+  value: 'foo'
+}
 },
 incorrectFeedback: {
-  type: 'custom',
-  value: 'custom feedback'
+type: 'custom',
+value: 'custom feedback'
 },
 model: {
-  answerBlankSize: '10',
-  answerAlignment: 'left',
-  allowDecimal: true,
-  allowIntegersOnly: false,
-  allowThousandsSeparator: true
+answerBlankSize: '10',
+answerAlignment: 'left',
+allowDecimal: true,
+allowIntegersOnly: false,
+allowThousandsSeparator: true
 }
 }
 
@@ -82,29 +90,29 @@ To:
 id: '1',
 element: 'text-entry',
 feedback: {
-  correct: {
-    type: 'custom',
-    custom: 'correct-o'
-  },
-  incorrect: {
-    type: 'custom',
-    custom: 'custom feedback'
-  },
-  partial: {
-    type: 'custom',
-    custom: 'foo'
-  }
+correct: {
+  type: 'custom',
+  custom: 'correct-o'
+},
+incorrect: {
+  type: 'custom',
+  custom: 'custom feedback'
+},
+partial: {
+  type: 'custom',
+  custom: 'foo'
+}
 },
 correctResponses: {
-  values: ['mutt', 'hound'],
-  ignoreWhitespace: true,
-  ignoreCase: false
+values: ['mutt', 'hound'],
+ignoreWhitespace: true,
+ignoreCase: false
 },
 partialResponses: {
-  values: ['mutty'],
-  ignoreWhitespace: true,
-  ignoreCase: true,
-  awardPercentage: '50'
+values: ['mutty'],
+ignoreWhitespace: true,
+ignoreCase: true,
+awardPercentage: '50'
 },
 answerBlankSize: '10',
 answerAlignment: 'left',
@@ -117,7 +125,7 @@ allowThousandsSeparator: true
 
 
 
-  <a name="1.7.0"></a>
+<a name="1.7.0"></a>
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@1.6.0...@pie-element/text-entry@1.7.0) (2018-05-03)
 
 
