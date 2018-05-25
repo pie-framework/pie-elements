@@ -6,19 +6,19 @@ const model = (pkg, id, element) => {
 
 module.exports = {
   elements: {
-    'categorize-el': '@pie-element/categorize@2.0.0',
-    'calculator-el': '@pie-element/calculator@2.0.0',
-    'extended-text-entry': '@pie-element/extended-text-entry@3.0.0',
-    'function-entry': '@pie-element/function-entry@3.0.0',
-    'inline-choice': '@pie-element/inline-choice@2.0.0',
-    'multiple-choice': '@pie-element/multiple-choice@2.0.0',
-    'number-line': '@pie-element/number-line@3.0.0',
-    'placement-ordering': '@pie-element/placement-ordering@3.0.0',
-    'point-intercept': '@pie-element/point-intercept@3.0.0',
-    'protractor-el': '@pie-element/protractor@2.0.0',
-    'ruler-el': '@pie-element/ruler@3.0.0',
-    'select-text': '@pie-element/select-text@3.0.0',
-    'text-entry': '@pie-element/text-entry@3.0.0'
+    'categorize-el': '@pie-element/categorize@2.0.1',
+    'calculator-el': '@pie-element/calculator@2.0.1',
+    'extended-text-entry': '@pie-element/extended-text-entry@3.0.1',
+    'function-entry': '@pie-element/function-entry@3.0.1',
+    'inline-choice': '@pie-element/inline-choice@2.0.1',
+    'multiple-choice': '@pie-element/multiple-choice@2.0.1',
+    'number-line': '@pie-element/number-line@3.0.1',
+    'placement-ordering': '@pie-element/placement-ordering@3.0.1',
+    'point-intercept': '@pie-element/point-intercept@3.0.1',
+    'protractor-el': '@pie-element/protractor@2.0.1',
+    'ruler-el': '@pie-element/ruler@3.0.1',
+    'select-text': '@pie-element/select-text@3.0.1',
+    'text-entry': '@pie-element/text-entry@3.0.1'
   },
   models: [
     model('calculator', '1', 'calculator-el'),
