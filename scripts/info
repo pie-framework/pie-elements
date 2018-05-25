@@ -1,25 +1,26 @@
 #!/usr/bin/env node
 const debug = require('debug');
-const log = debug('@pie-element:scripts:build');
+const log = debug('@pie-element:scripts:info');
 const { processFix, watch } = require('@pie-framework/build-helper');
 const argv = require('minimist')(process.argv.slice(2));
 const fs = require('fs-extra');
-const spawn = require('child-process').spawn;
-const rimraf = require('rimraf');
-const _ = require('lodash');
+const spawn = require('child_process').spawn;
 
 let processes;
 let info;
-processFix(log, () => {
-  process.exit();
 
+processFix(log, () => {
   if (processes) {
+    log('exit processes...');
     processes.exit();
   }
 
   if (info) {
+    log('kill info...');
     info.kill();
   }
+  log('process exit');
+  process.exit();
 });
 
 log('pkg: ', argv._[0]);
@@ -56,105 +57,4 @@ const run = async () => {
   info = spawn('pie', ['info'], { cwd: `packages/${pkg}`, stdio: 'inherit' });
 };
 
-// const listPackages = () => fs.readdir('packages');
-
-// const getPackages = async () => {
-//   if (argv.scope) {
-//     return Promise.resolve(
-//       Array.isArray(argv.scope) ? argv.scope : [argv.scope]
-//     );
-//   } else {
-//     return await listPackages();
-//   }
-// };
-
-// argv.clean = argv.clean !== false;
-// argv.onlyClean = argv.onlyClean === true;
-
-// const cleanLib = p =>
-//   new Promise((resolve, reject) => {
-//     const lib = `${p}/lib`;
-//     log('clean: ', lib);
-//     rimraf(lib, e => {
-//       if (e) {
-//         reject(e);
-//       } else {
-//         resolve();
-//       }
-//     });
-//   });
-
-// const buildDir = p => {
-//   log(`build: ${p}`);
-
-//   const args = [
-//     `${p}/src`,
-//     '--out-dir',
-//     `${p}/lib`,
-//     '--ignore',
-//     '/__test__/,/__tests__/,/__mocks__/'
-//   ];
-//   return spawn('./node_modules/.bin/babel', args, {
-//     stdio: 'inherit'
-//   });
-// };
-
-// const getFolders = async name => {
-//   log('getFolders: ', name);
-//   const n = `packages/${name}`;
-//   const stat = await fs.stat(n);
-//   const out = [];
-
-//   if (stat.isDirectory()) {
-//     const files = await fs.readdir(n);
-//     if (files.indexOf('src') !== -1) {
-//       out.push(n);
-//     }
-
-//     if (files.indexOf('controller') !== -1) {
-//       out.push(`${n}/controller`);
-//     }
-
-//     if (files.indexOf('configure') !== -1) {
-//       out.push(`${n}/configure`);
-//     }
-//     return Promise.all(out);
-//   } else {
-//     return Promise.resolve([]);
-//   }
-// };
-
-// const cleanPackage = async name => {
-//   const folders = await getFolders(name);
-//   return Promise.all(folders.map(cleanLib));
-// };
-
-// const buildPackage = async name => {
-//   const folders = await getFolders(name);
-//   return Promise.all(folders.map(buildDir));
-// };
-
-// const run = async () => {
-//   const packages = await getPackages();
-
-//   log('packages: ', packages);
-
-//   if (argv.clean || argv.onlyClean) {
-//     await Promise.all(packages.map(cleanPackage));
-//     log('clean done.');
-//   }
-
-//   if (!argv.onlyClean) {
-//     const buildPromises = packages.map(p => buildPackage(p));
-
-//     Promise.all(buildPromises)
-//       .then(() => {
-//         log('---------> done');
-//       })
-//       .catch(e => {
-//         log('error', e);
-//       });
-//   }
-// };
-
-// run();
+run();
