@@ -4,18 +4,16 @@ A collection of pies.
 
 ### Commands
 
-| Action         | Notes                                                                   |
-| -------------- | ----------------------------------------------------------------------- |
-| test           | runs all the tests                                                      |
-| lint           | runs eslint                                                             |
-| clean          | removes all the lib dirs                                                |
-| release        | cleans, runs tests, then runs lerna publish                             |
-| info $pkg      | run `pie info` for a package                                            |
-| pie-clean      | cleans out the `docs/demo` dir                                          |
-| pie-install    | cleans out the `docs/demo` dir                                          |
-| pie-pack-clean | cleans out the `docs/demo` dir + any generated assets from a `pie pack` |
-
-> TODO: pie-install
+| Action            | Notes                                                                   |
+| ----------------- | ----------------------------------------------------------------------- |
+| test              | runs all the tests, all tests run from the root of the monorepo         |
+| lint              | runs eslint                                                             |
+| clean             | removes all the lib dirs                                                |
+| release           | cleans, runs tests, builds, then runs lerna publish                     |
+| pie-clean         | cleans out the `docs/demo` dir                                          |
+| pie-install       | installs in the `docs/demo` dir                                         |
+| pie-pack-clean    | cleans out the `docs/demo` dir + any generated assets from a `pie pack` |
+| scripts/info $pkg | run `pie info` for a package, with watch enabled                        |
 
 ## running
 
