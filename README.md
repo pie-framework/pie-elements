@@ -1,6 +1,6 @@
 # pie-elements
 
-A collection of pies.
+A collection of pies. These packages are pie packages in that they have an optional `configure` and/or `controller` sub package.
 
 ### Commands
 
@@ -17,15 +17,20 @@ A collection of pies.
 
 ## running
 
-> You need to have `pie>=10.1.1` installed | `npm install -g pie`.
+Each package need to be built w/ babel before you can use it.
+
+The following script:
 
 ```shell
-cd packages/multiple-choice # or any other package.
-pie info
+scripts/info $package
 ```
+
+Will run a watched babel process and the run `pie info`.
+
+> You need to have `pie>=10.1.1` installed | `npm install -g pie`.
 
 ## Tests
 
-We are transitioning the repo to move all build/test functionality to the root of the repo (instead of having to install it in every package sub-package). Eventually you'll be able to run `npm test` from the root and all the tests will run.
-
-For now it depends on the package.
+```shell
+npm test
+```
