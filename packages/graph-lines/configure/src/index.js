@@ -19,7 +19,7 @@ export default class GraphLinesConfigure extends HTMLElement {
   onModelChanged(model) {
     this._model = model;
     log('[onModelChanged]: ', this._model);
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
   }
 
   _render() {

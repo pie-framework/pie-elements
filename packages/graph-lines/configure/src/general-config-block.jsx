@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
+import AddLineButton from './add-line';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -34,7 +35,12 @@ const styles = theme => ({
   equationLabel: {
     marginRight: theme.spacing.unit
   },
+  checkboxContainer: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   optionsCheckbox: {
+    flex: 1,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
@@ -46,6 +52,8 @@ class GeneralConfigBlock extends React.Component {
     classes: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
+    onMultipleToggle: PropTypes.func.isRequired,
+    multiple: PropTypes.bool.isRequired,
   };
 
   onChange = (name, isBoolean) => event => {
@@ -55,49 +63,80 @@ class GeneralConfigBlock extends React.Component {
     newConfig[name] = isBoolean ? event.target.checked : event.target.value;
 
     onChange(newConfig, name);
-  }
+  };
+
+  onLineChange = (lineIndex, name) => event => {
+    const { config, onChange } = this.props;
+    const newConfig = { ...config };
+
+    newConfig.lines[lineIndex][name] = event.target.value;
+
+    onChange(newConfig, name);
+  };
 
   render() {
-    const { classes, config } = this.props;
+    const { classes, config, multiple, onAddLine, onMultipleToggle } = this.props;
 
     return (
       <div className={classes.container}>
-        <div className={classes.inputContainer}>
-          {!config.exhibitOnly &&<div className={classes.inputItem}>
-            <Typography type="body1">
-              <span className={classes.equationLabel}>y = </span>
-            </Typography>
-            <InputContainer label="Correct Line">
-            <Input
-              type="text"
-              className={classes.input}
-              onChange={this.onChange('correctLine')}
-              value={config.correctLine}
-              placeholder="Enter Value"
-            />
-            </InputContainer>
-          </div>}
+        {config.lines.map((line, idx) => (
+          <div key={idx} className={classes.inputContainer}>
+            <div className={classes.inputItem}>
+              <InputContainer label="Line Label">
+                <Input
+                  type="text"
+                  className={classes.input}
+                  onChange={this.onLineChange(idx, 'label')}
+                  value={line.label || ''}
+                  placeholder="Enter Value"
+                />
+              </InputContainer>
+            </div>
+            {!config.exhibitOnly && <div className={classes.inputItem}>
+              <Typography type="body1">
+                <span className={classes.equationLabel}>y = </span>
+              </Typography>
+              <InputContainer label="Correct Line">
+                <Input
+                  type="text"
+                  className={classes.input}
+                  onChange={this.onLineChange(idx, 'correctLine')}
+                  value={line.correctLine}
+                  placeholder="Enter Value"
+                />
+              </InputContainer>
+            </div>}
 
-          <div className={classnames(classes.inputItem, { [classes.exhibitOnly]: config.exhibitOnly })}>
-            <Typography type="body1">
-              <span className={classes.equationLabel}>y = </span>
-            </Typography>
-            <InputContainer label="Initial View">
-              <Input
-                type="text"
-                className={classes.input}
-                onChange={this.onChange('initialView')}
-                value={config.initialView}
-                placeholder="Enter Value"
-              />
-            </InputContainer>
+            <div className={classnames(classes.inputItem, { [classes.exhibitOnly]: config.exhibitOnly })}>
+              <Typography type="body1">
+                <span className={classes.equationLabel}>y = </span>
+              </Typography>
+              <InputContainer label="Initial View">
+                <Input
+                  type="text"
+                  className={classes.input}
+                  onChange={this.onLineChange(idx, 'initialView')}
+                  value={line.initialView}
+                  placeholder="Enter Value"
+                />
+              </InputContainer>
+            </div>
           </div>
-        </div>
-        <div className={classes.optionsCheckbox}>
-          <InputCheckbox
-            label="Make this graph an exhibit only"
-            checked={config.exhibitOnly}
-            onChange={this.onChange('exhibitOnly', true)}/>
+        ))}
+        {multiple && <AddLineButton onAddClick={onAddLine} />}
+        <div className={classes.checkboxContainer}>
+          <div className={classes.optionsCheckbox}>
+            <InputCheckbox
+              label="Multiple Line Graph"
+              checked={multiple}
+              onChange={onMultipleToggle}/>
+          </div>
+          <div className={classes.optionsCheckbox}>
+            <InputCheckbox
+              label="Make this graph an exhibit only"
+              checked={config.exhibitOnly}
+              onChange={this.onChange('exhibitOnly', true)}/>
+          </div>
         </div>
       </div>
     );

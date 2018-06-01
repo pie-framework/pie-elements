@@ -6,14 +6,17 @@ module.exports = {
     {
       id: '1',
       element: 'graph-lines',
-      //below is the legacy corespring point intercept model...
       minimumWidth: 500,
-      correctResponse: '3x+2',
+      multiple: false,
       partialScoring: [],
       feedback: {
         correct: {
           type: 'none',
           default: 'Correct'
+        },
+        partial: {
+          type: 'none',
+          default: 'Nearly'
         },
         incorrect: {
           type: 'none',
@@ -22,14 +25,14 @@ module.exports = {
       },
       model: {
         config: {
+          lines: [{
+            label: 'Line One',
+            correctLine: '3x+2',
+            initialView: '3x+3'
+          }],
           graphTitle: '',
           graphWidth: 500,
           graphHeight: 500,
-          maxPoints: '',
-          labelsType: 'present',
-          pointLabels: ['A', 'B', 'C', 'D'],
-          correctLine: '3x+2',
-          initialView: '3x+3',
           domainLabel: '',
           domainMin: -10,
           domainMax: 10,
@@ -45,7 +48,6 @@ module.exports = {
           rangeLabelFrequency: 1,
           rangeGraphPadding: 50,
           sigfigs: -1,
-          pointsMustMatchLabels: false,
           showCoordinates: false,
           showPointLabels: true,
           showInputs: true,
