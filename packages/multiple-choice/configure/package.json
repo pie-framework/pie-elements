@@ -2,11 +2,7 @@
   "name": "@pie-element/multiple-choice-configure",
   "version": "0.0.1",
   "private": true,
-  "main": "./src/index.js",
-  "scripts": {
-    "test":
-      "./node_modules/.bin/mocha --require babel-register test/**/*-test.js"
-  },
+  "main": "lib/index.js",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/scoring-config": "^3.1.1",
@@ -19,11 +15,5 @@
     "@material-ui/icons": "^1.0.0-rc.0",
     "prop-types": "^15.6.1",
     "debug": "^3.1.0"
-  },
-  "devDependencies": {
-    "babel-preset-airbnb": "^2.4.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "enzyme": "^3.3.0"
   }
 }

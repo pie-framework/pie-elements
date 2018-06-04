@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`category snapshot renders 1`] = `
+<WithStyles(Card)
+  className="className"
+>
+  <WithStyles(InputHeader)
+    label="Category title"
+    onChange={[Function]}
+    onDelete={[MockFunction]}
+  />
+  <Wrapped
+    categoryId="1"
+    onDeleteChoice={[MockFunction]}
+    onDropChoice={[MockFunction]}
+  />
+  <WithStyles(CardActions)>
+    <WithStyles(Component)
+      label="delete"
+      onClick={[MockFunction]}
+    />
+  </WithStyles(CardActions)>
+</WithStyles(Card)>
+`;

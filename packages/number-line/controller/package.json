@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Controller logic for @pie-ui/number-line",
   "keywords": ["pie", "number-line"],
-  "repository": "pie-framework/pie-ui",
-  "main": "src/index.js",
+  "repository": "pie-framework/pie-elements",
+  "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
   },

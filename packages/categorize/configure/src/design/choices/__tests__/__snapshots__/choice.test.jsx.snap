@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`choice snapshot renders 1`] = `
+<WithStyles(Card)
+  className="classname"
+>
+  <WithStyles(CardActions) />
+  <WithStyles(CardActions)>
+    <WithStyles(Component)
+      label="delete"
+      onClick={[MockFunction]}
+    />
+    <Component
+      checked={false}
+      label="Remove after placing"
+      mini={true}
+      onChange={[Function]}
+    />
+  </WithStyles(CardActions)>
+</WithStyles(Card)>
+`;

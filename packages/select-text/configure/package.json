@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "@pie-lib/text-select": "^1.2.0",
     "@pie-lib/config-ui": "^7.1.1",

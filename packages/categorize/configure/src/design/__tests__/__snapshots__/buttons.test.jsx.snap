@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddButton snapshot renders 1`] = `
+<WithStyles(Button)
+  className="addButton className"
+  color="primary"
+  onClick={[MockFunction]}
+  size="small"
+  variant="raised"
+>
+  Add
+</WithStyles(Button)>
+`;

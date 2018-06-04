@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`config snapshot renders 1`] = `
+<div
+  className=""
+>
+  <div>
+    <Component
+      label="Choices per row"
+      max={4}
+      min={1}
+      onChange={[Function]}
+      value={2}
+    />
+    <Component
+      label="Remove all tiles after placing"
+    />
+    <Component
+      label="Shuffle"
+      onChange={[Function]}
+      value={false}
+    />
+  </div>
+  <WithStyles(Component) />
+  <div>
+    <TextField
+      InputLabelProps={
+        Object {
+          "shrink": true,
+        }
+      }
+      label="Label"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      value=""
+    />
+    <Component
+      header="Position"
+      onChange={[Function]}
+      one={
+        Object {
+          "label": "Above",
+          "value": "above",
+        }
+      }
+      two={
+        Object {
+          "label": "Below",
+          "value": "below",
+        }
+      }
+      value="above"
+    />
+  </div>
+</div>
+`;

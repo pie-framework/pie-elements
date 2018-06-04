@@ -2,12 +2,9 @@
   "name": "@pie-element/text-entry-controller",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "test": "./node_modules/.bin/jest"
-  },
   "author": "",
   "license": "ISC",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "@pie-lib/feedback": "^0.4.1",
     "debug": "^3.1.0"
