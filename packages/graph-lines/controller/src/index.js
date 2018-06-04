@@ -1,41 +1,37 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { lineUtils as utils } from '@pie-lib/charting';
 
 const log = debug('@pie-element:graph-lines:controller');
 
 const getResponseCorrectness = (
-  correctResponseWithLabels,
-  points,
+  correctResponse,
+  lines,
   model,
   partialScores
 ) => {
   const allowPartialScores = model.config.allowPartialScoring;
-  const pointsMustMatchLabels = model.config.pointsMustMatchLabels;
-
+  const correctExpressions = correctResponse.map(line => utils.expression(line.from, line.to));
   let correctAnswers = 0;
 
-  if (!points || points.length === 0) {
+  if (!lines || lines.length === 0) {
     return {
       correctness: 'empty',
       score: 0
     };
   }
 
-  points.forEach(point => {
-    const isCorrectAnswer = correctResponseWithLabels.find(correctAnswer => {
-      const answerPresent =
-        correctAnswer.x === point.x && correctAnswer.y === point.y;
-      return pointsMustMatchLabels
-        ? answerPresent && correctAnswer.label === point.label
-        : answerPresent;
-    });
+  lines.forEach(line => {
+    let isCorrectAnswer;
+
+    correctExpressions.find(correctExpression => correctExpression.equals(line.expression));
 
     if (isCorrectAnswer) {
       correctAnswers += 1;
     }
   });
 
-  if (correctResponseWithLabels.length === correctAnswers) {
+  if (correctExpressions.length === correctAnswers) {
     return { correctness: 'correct', score: '100%' };
   } else if (correctAnswers === 0) {
     return { correctness: 'incorrect', score: '0%' };
@@ -55,30 +51,29 @@ const getResponseCorrectness = (
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { model, correctResponse, partialScoring } = question;
+    const { model, partialScoring } = question;
+
+    const correctResponse = [];
+
+    model.config.lines.forEach(line => {
+      const lineExpression = utils.expressionFromDescriptor(line.initialView);
+      const points = utils.pointsFromExpression(lineExpression, model.domain.min, model.domain.max); // how to pick min and max? TODO
+
+      correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
+    });
 
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
-        if (!session.points || session.points.length === 0) {
+        if (!session.lines || session.lines.length === 0) {
           return {
             correctness: 'unanswered',
             score: '0%'
           };
         }
 
-        const correctResponseWithLabels = correctResponse.map((answer, idx) => {
-          const [x, y] = answer.split(',');
-
-          return {
-            x: parseInt(x, 10),
-            y: parseInt(y, 10),
-            label: model.config.pointLabels[idx]
-          };
-        });
-
         return getResponseCorrectness(
-          correctResponseWithLabels,
-          session.points,
+          correctResponse,
+          session.lines,
           model,
           partialScoring
         );
