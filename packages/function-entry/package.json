@@ -1,14 +1,10 @@
 {
   "name": "@pie-element/function-entry",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "controller-test": "cd controller && npm test",
-    "test": "npm run controller-test"
   },
   "dependencies": {
     "@pie-ui/function-entry": "^3.1.1"
@@ -16,6 +12,6 @@
   "pie": {
     "element": "@pie-ui/function-entry"
   },
-  "author": "",
+  "author": "pie framework developers",
   "license": "ISC"
 }

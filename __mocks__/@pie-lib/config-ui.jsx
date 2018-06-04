@@ -9,5 +9,10 @@ module.exports = {
   TwoChoice: Comp('TwoChoice'),
   InputContainer: Comp('InputContainer'),
   FeedbackConfig: Comp('FeedbackConfig'),
-  Tabs: Comp('Tabs')
+  Tabs: Comp('Tabs'),
+  Checkbox: Comp('Checkbox'),
+  FeedbackSelector: Comp('FeedbackSelector'),
+  choiceUtils: {
+    firstAvailableIndex: jest.fn(() => '1')
+  }
 };

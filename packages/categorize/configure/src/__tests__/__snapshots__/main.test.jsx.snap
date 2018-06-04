@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders 1`] = `
+<div
+  className="className"
+>
+  <Component>
+    <DragDropContext(WithStyles(Design))
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+          "correctResponse": Array [],
+        }
+      }
+      onChange={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "categories": Array [],
+                "choices": Array [],
+                "correctResponse": Array [],
+                "scoring": Object {
+                  "update": true,
+                },
+              },
+            ],
+          ],
+        }
+      }
+      title="Design"
+    />
+    <WithStyles(Scoring)
+      categories={Array []}
+      correctResponse={Array []}
+      onChange={[Function]}
+      title="Scoring"
+    />
+  </Component>
+</div>
+`;

@@ -2,7 +2,7 @@
 
 exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
 <div>
-  <TwoChoice
+  <Component
     header="Choose a Calculator"
     onChange={[Function]}
     one={
@@ -20,7 +20,7 @@ exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
     value="basic"
   />
   <br />
-  <CalculatorLayout
+  <Component
     mode="basic"
     onClose={[Function]}
   />

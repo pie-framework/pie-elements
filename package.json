@@ -5,24 +5,30 @@
     "pie-clean": "lerna exec -- pie clean --dir docs/demo",
     "pie-install": "lerna exec --parallel -- pie install --dir docs/demo",
     "pie-pack-clean": "scripts/clean.sh",
-    "release": "lerna publish --conventional-commits"
+    "release":
+      "scripts/build --cleanOnly && npm test && scripts/build && lerna publish --conventional-commits"
   },
   "devDependencies": {
-    "lerna": "^2.8.0",
-    "rimraf": "^2.6.2",
-    "eslint": "^4.18.2",
-    "jest": "^22.4.3",
-    "babel-eslint": "^8.2.2",
-    "eslint-plugin-react": "^7.7.0",
-    "babel-core": "^6.26.0",
-    "babel-jest": "^22.4.3",
+    "@pie-lib/test-utils": "^0.0.3",
+    "lerna": "^2.11.0",
+    "eslint": "^4.19.1",
+    "jest": "^23.0.0",
+    "babel-eslint": "^8.2.3",
+    "eslint-plugin-react": "^7.8.2",
+    "babel-cli": "~6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.0.0",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.3",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "enzyme-to-json": "^3.3.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "child-process-promise": "^2.2.1",
+    "minimist": "^1.2.0",
+    "@pie-framework/build-helper": "^1.0.3",
+    "rimraf": "^2.6.2"
   }
 }

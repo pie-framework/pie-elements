@@ -1,6 +1,6 @@
 import React from 'react';
 import { Main } from '../main';
-import { truncateSync } from 'fs';
+import { shallow } from 'enzyme';
 
 describe('Render a calculator element', () => {
   let wrapper, onChange;

@@ -102,7 +102,6 @@ export function model(question, session, env) {
         model,
         correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
       });
-      log('out: ', out);
       resolve(out);
     });
   });

@@ -1,12 +1,8 @@
+const generate = require('./generate');
+
 module.exports = {
   elements: {
-    'pie-calculator': '../..'
+    'calculator-el': '../..'
   },
-  models: [
-    {
-      id: '1',
-      element: 'pie-calculator',
-      mode: 'basic'
-    }
-  ]
-}
+  models: [generate.model('1', 'calculator-el')]
+};

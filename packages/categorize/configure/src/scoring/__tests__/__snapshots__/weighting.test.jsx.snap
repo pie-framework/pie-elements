@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weighting snapshot renders 1`] = `
+<WithStyles(Panel)
+  enabled={true}
+  onToggleEnabled={[Function]}
+  title="Weighting"
+>
+  <WithStyles(Grid)
+    headings={
+      Array [
+        "Category",
+        "Points",
+        "",
+      ]
+    }
+    size="1fr 70px 70px"
+  >
+    <WithStyles(Component)
+      disabled={false}
+      key="0"
+      onChange={[Function]}
+      percent="100"
+      rule={
+        Object {
+          "category": "1",
+          "label": "Content",
+          "points": 1,
+        }
+      }
+    />
+  </WithStyles(Grid)>
+</WithStyles(Panel)>
+`;

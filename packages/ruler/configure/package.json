@@ -2,10 +2,7 @@
   "name": "@pie-element/ruler-configure",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "lib/index.js",
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
     "@pie-framework/pie-configure-events": "^1.2.0",

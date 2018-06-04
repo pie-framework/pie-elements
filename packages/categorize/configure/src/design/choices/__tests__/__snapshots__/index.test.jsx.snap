@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`choices snapshot renders 1`] = `
+<div
+  className=""
+>
+  <WithStyles(Header)
+    label="Choices"
+    onAdd={[MockFunction]}
+  />
+  <div
+    style={
+      Object {
+        "gridTemplateColumns": "repeat(2, 1fr)",
+      }
+    }
+  >
+    <Wrapped
+      choice={
+        Object {
+          "content": "content",
+          "id": "1",
+        }
+      }
+      key="0"
+      onChange={[Function]}
+      onDelete={[Function]}
+    />
+  </div>
+  <WithStyles(Config)
+    categoryCountIsOne={false}
+    config={
+      Object {
+        "columns": 2,
+      }
+    }
+    onChange={[MockFunction]}
+    onToggleCategoryCount={[Function]}
+  />
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid snapshot renders 1`] = `
+<div
+  className="className"
+  style={
+    Object {
+      "gridTemplateColumns": "repeat(2, 1fr)",
+    }
+  }
+>
+  <WithStyles(Component)
+    key="0"
+  >
+    A
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    key="1"
+  >
+    B
+  </WithStyles(Component)>
+  <div>
+    a
+  </div>
+  <div>
+    b
+  </div>
+</div>
+`;

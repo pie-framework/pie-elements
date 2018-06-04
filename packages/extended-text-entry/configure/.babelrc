@@ -1,9 +1,0 @@
-{
-  "sourceMaps": "inline",
-  "presets": [
-    "env","react","stage-0","airbnb"
-  ],
-  "plugins": [
-    "transform-class-properties"
-  ]  
-}

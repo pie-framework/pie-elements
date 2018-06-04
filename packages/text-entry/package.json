@@ -1,16 +1,10 @@
 {
   "name": "@pie-element/text-entry",
   "repository": "pie-framework/pie-elements",
-  "version": "2.0.0",
+  "version": "3.0.1",
   "description": "",
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "configure-test": "cd configure && npm run test",
-    "controller-test": "cd controller && npm run test",
-    "test": "npm run configure-test && npm run controller-test",
-    "postinstall": "cd configure && npm install && cd ../controller && npm install"
   },
   "dependencies": {
     "@pie-ui/text-entry": "^3.1.1"
@@ -18,6 +12,6 @@
   "pie": {
     "element": "@pie-ui/text-entry"
   },
-  "author": "",
+  "author": "pie framework developers",
   "license": "ISC"
 }

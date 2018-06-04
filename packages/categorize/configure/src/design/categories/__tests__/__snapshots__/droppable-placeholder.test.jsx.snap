@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DroppablePlaceholder snapshot renders 1`] = `
+<div
+  className="className"
+>
+  <WithStyles(PlaceHolder)>
+    <Previews
+      choices={
+        Array [
+          Object {
+            "content": "content",
+            "id": "1",
+          },
+        ]
+      }
+      onDeleteChoice={[MockFunction]}
+    />
+  </WithStyles(PlaceHolder)>
+</div>
+`;
+
+exports[`DroppablePlaceholder snapshot renders helper 1`] = `
+<div
+  className="className"
+>
+  <WithStyles(PlaceHolder)>
+    <WithStyles(Component) />
+  </WithStyles(PlaceHolder)>
+</div>
+`;

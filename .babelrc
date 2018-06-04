@@ -1,3 +1,19 @@
 {
-  "presets": ["env", "react", "stage-0"]
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "chrome": 52,
+          "safari": 11,
+          "firefox": 59,
+          "edge": 14
+        },
+        "modules": "commonjs",
+        "loose": false
+      }
+    ],
+    "react",
+    "stage-0"
+  ]
 }
