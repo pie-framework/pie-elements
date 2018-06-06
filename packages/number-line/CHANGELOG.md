@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.2"></a>
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.0.1...@pie-element/number-line@3.0.2) (2018-06-06)
+
+
+### Bug Fixes
+
+* dont import *.jsx files ([5811854](https://github.com/pie-framework/pie-elements/commit/5811854))
+
+
+
+
       <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@2.1.0...@pie-element/number-line@3.0.1) (2018-05-25)
 
@@ -11,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/number-line
 
-      <a name="2.1.0"></a>
+    <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@2.0.0...@pie-element/number-line@2.1.0) (2018-05-22)
 
 
@@ -22,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-   <a name="2.0.0"></a>
+ <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@1.6.0...@pie-element/number-line@2.0.0) (2018-05-11)
 
 
@@ -54,118 +65,40 @@ From:
 id: '1',
 element: 'number-line',
 correctResponse: [
-  {
-    type: 'point',
-    pointType: 'full',
-    domainPosition: 1
-  },
-  {
-    type: 'line',
-    leftPoint: 'full',
-    rightPoint: 'empty',
-    domainPosition: 1,
-    size: 2
-  }
+{
+  type: 'point',
+  pointType: 'full',
+  domainPosition: 1
+},
+{
+  type: 'line',
+  leftPoint: 'full',
+  rightPoint: 'empty',
+  domainPosition: 1,
+  size: 2
+}
 ],
 feedback: {
-  correctFeedbackType: 'default',
-  partialFeedbackType: 'default',
-  incorrectFeedbackType: 'custom',
-  incorrectFeedback: '<h1>incorrect</h1>'
+correctFeedbackType: 'default',
+partialFeedbackType: 'default',
+incorrectFeedbackType: 'custom',
+incorrectFeedback: '<h1>incorrect</h1>'
 },
 allowPartialScoring: true,
 partialScoring: [
-  {
-    numberOfCorrect: 1,
-    scorePercentage: 35
-  }
+{
+  numberOfCorrect: 1,
+  scorePercentage: 35
+}
 ],
 model: {
-  config: {
-    width: 500,
-    height: 400,
-    domain: [
-      -5,
-      5
-    ],
-    initialElements: [
-      {
-        type: 'point',
-        pointType: 'empty',
-        domainPosition: -1
-      }
-    ],
-    maxNumberOfPoints: 20,
-    tickFrequency: 6,
-    showMinorTicks: true,
-    snapPerTick: 1,
-    tickLabelOverrides: [],
-    initialType: 'PF',
-    exhibitOnly: false,
-    availableTypes: {
-      PF: true,
-      PE: true,
-      LFF: true,
-      LEF: true,
-      LFE: true,
-      LEE: true,
-      RFN: true,
-      RFP: true,
-      REN: true,
-      REP: true
-    }
-  }
-}
-}
-
-```
-
-To:
-
-```javascript
-
-{
-id: '1',
-element: 'number-line',
-correctResponse: [
-  {
-    type: 'point',
-    pointType: 'full',
-    domainPosition: 1
-  },
-  {
-    type: 'line',
-    leftPoint: 'full',
-    rightPoint: 'empty',
-    domainPosition: 1,
-    size: 2
-  }
-],
-feedback: {
-  correct: {
-    type: 'default',
-    default: 'Correct'
-  },
-  partial: {
-    type: 'default',
-    default: 'Nearly'
-  },
-  incorrect: {
-    type: 'custom',
-    custom: '<h1>Incorrect</h1>'
-  }
-},
-allowPartialScoring: true,
-partialScoring: [
-  {
-    numberOfCorrect: 1,
-    scorePercentage: 35
-  }
-],
 config: {
   width: 500,
   height: 400,
-  domain: [-5, 5],
+  domain: [
+    -5,
+    5
+  ],
   initialElements: [
     {
       type: 'point',
@@ -194,13 +127,91 @@ config: {
   }
 }
 }
+}
+
+```
+
+To:
+
+```javascript
+
+{
+id: '1',
+element: 'number-line',
+correctResponse: [
+{
+  type: 'point',
+  pointType: 'full',
+  domainPosition: 1
+},
+{
+  type: 'line',
+  leftPoint: 'full',
+  rightPoint: 'empty',
+  domainPosition: 1,
+  size: 2
+}
+],
+feedback: {
+correct: {
+  type: 'default',
+  default: 'Correct'
+},
+partial: {
+  type: 'default',
+  default: 'Nearly'
+},
+incorrect: {
+  type: 'custom',
+  custom: '<h1>Incorrect</h1>'
+}
+},
+allowPartialScoring: true,
+partialScoring: [
+{
+  numberOfCorrect: 1,
+  scorePercentage: 35
+}
+],
+config: {
+width: 500,
+height: 400,
+domain: [-5, 5],
+initialElements: [
+  {
+    type: 'point',
+    pointType: 'empty',
+    domainPosition: -1
+  }
+],
+maxNumberOfPoints: 20,
+tickFrequency: 6,
+showMinorTicks: true,
+snapPerTick: 1,
+tickLabelOverrides: [],
+initialType: 'PF',
+exhibitOnly: false,
+availableTypes: {
+  PF: true,
+  PE: true,
+  LFF: true,
+  LEF: true,
+  LFE: true,
+  LEE: true,
+  RFN: true,
+  RFP: true,
+  REN: true,
+  REP: true
+}
+}
+}
 
 ```
 
 
 
 
-  <a name="1.6.0"></a>
+<a name="1.6.0"></a>
 # 1.6.0 (2018-05-03)
 
 

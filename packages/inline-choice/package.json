@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/inline-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "An inline-choice component.",
   "publishConfig": {
     "access": "public"
