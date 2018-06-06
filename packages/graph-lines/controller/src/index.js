@@ -22,9 +22,7 @@ const getResponseCorrectness = (
   }
 
   lines.forEach(line => {
-    let isCorrectAnswer;
-
-    correctExpressions.find(correctExpression => correctExpression.equals(line.expression));
+    const isCorrectAnswer = correctExpressions.find(correctExpression => correctExpression.equals(line.expression || utils.expression(line.from, line.to)));
 
     if (isCorrectAnswer) {
       correctAnswers += 1;
@@ -57,7 +55,7 @@ export function model(question, session, env) {
 
     model.config.lines.forEach(line => {
       const lineExpression = utils.expressionFromDescriptor(line.initialView);
-      const points = utils.pointsFromExpression(lineExpression, model.domain.min, model.domain.max); // how to pick min and max? TODO
+      const points = utils.pointsFromExpression(lineExpression);
 
       correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
     });
