@@ -51,6 +51,7 @@ class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,
+    onAddLine: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     onMultipleToggle: PropTypes.func.isRequired,
     multiple: PropTypes.bool.isRequired,

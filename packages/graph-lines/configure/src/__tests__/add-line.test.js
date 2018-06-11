@@ -1,10 +1,10 @@
 import * as React from 'react';
-import AddPoint from '../add-point';
-import Button from 'material-ui/Button';
+import AddLine from '../add-line';
+import Button from '@material-ui/core/Button';
 import AddButton from '@material-ui/icons/Add';
 import { shallowChild } from '@pie-lib/test-utils';
 
-describe('AddPoint', () => {
+describe('AddLine', () => {
   const defaultProps = {
     onAddClick: () => {},
     disabled: false,
@@ -12,7 +12,7 @@ describe('AddPoint', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowChild(AddPoint, defaultProps, 1);
+    wrapper = shallowChild(AddLine, defaultProps, 1);
   });
 
   it('renders correctly', () => {
