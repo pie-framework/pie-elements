@@ -1,0 +1,21 @@
+{
+  "name": "@pie-element/match",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/match": "^1.0.0"
+  },
+  "pie": {
+    "element": "@pie-ui/match"
+  },
+  "author": "",
+  "license": "ISC"
+}
