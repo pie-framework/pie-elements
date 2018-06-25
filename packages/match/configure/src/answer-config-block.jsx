@@ -190,6 +190,12 @@ class AnswerConfigBlock extends React.Component {
                 checked={model.shuffled}
                 onChange={this.onChange('shuffled', true)}/>
             </div>
+            <div className={classes.optionsCheckbox}>
+              <InputCheckbox
+                label="Allow Partial Scoring"
+                checked={model.allowPartialScoring}
+                onChange={this.onChange('allowPartialScoring', true)}/>
+            </div>
           </div>
         </div>
       </div>

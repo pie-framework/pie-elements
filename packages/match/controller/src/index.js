@@ -1,6 +1,5 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lineUtils as utils } from '@pie-lib/charting';
 
 const log = debug('@pie-element:graph-lines:controller');
 
@@ -8,39 +7,40 @@ const getResponseCorrectness = (
   model,
   answers
 ) => {
-  // const allowPartialScores = model.config.allowPartialScoring;
-  // const correctExpressions = correctResponse.map(line => utils.expression(line.from, line.to));
-  // let correctAnswers = 0;
-  //
-  // if (!lines || lines.length === 0) {
-  //   return {
-  //     correctness: 'empty',
-  //     score: 0
-  //   };
-  // }
-  //
-  // lines.forEach(line => {
-  //   const isCorrectAnswer = correctExpressions.find(correctExpression => correctExpression.equals(line.expression || utils.expression(line.from, line.to)));
-  //
-  //   if (isCorrectAnswer) {
-  //     correctAnswers += 1;
-  //   }
-  // });
-  //
-  // if (correctExpressions.length === correctAnswers) {
-  //   return { correctness: 'correct', score: '100%' };
-  // } else if (correctAnswers === 0) {
-  //   return { correctness: 'incorrect', score: '0%' };
-  // } else if (allowPartialScores && partialScores && partialScores.length) {
-  //   return {
-  //     correctness: 'partial',
-  //     score: `${(
-  //       partialScores.find(
-  //         partialScore => partialScore.numberOfCorrect === correctAnswers
-  //       ) || {}
-  //     ).scorePercentage || 0}%`
-  //   };
-  // }
+  const allowPartialScores = model.allowPartialScoring;
+  const partialScores = model.partialScoring;
+  const rows = model.rows;
+  let correctAnswers = 0;
+
+  if (!answers || Object.keys(answers).length === 0) {
+    return {
+      correctness: 'empty',
+      score: 0
+    };
+  }
+
+  rows.forEach(row => {
+    const isCorrectAnswer = answers[row.id] && JSON.stringify(answers[row.id]) === JSON.stringify(row.values);
+
+    if (isCorrectAnswer) {
+      correctAnswers += 1;
+    }
+  });
+
+  if (rows.length === correctAnswers) {
+    return { correctness: 'correct', score: '100%' };
+  } else if (correctAnswers === 0) {
+    return { correctness: 'incorrect', score: '0%' };
+  } else if (allowPartialScores && partialScores && partialScores.length) {
+    return {
+      correctness: 'partial',
+      score: `${(
+        partialScores.find(
+          partialScore => partialScore.numberOfCorrect === correctAnswers
+        ) || {}
+      ).scorePercentage || 0}%`
+    };
+  }
 
   return { correctness: 'incorrect', score: '0%' };
 };
@@ -64,6 +64,12 @@ export function model(question, session, env) {
     };
 
     const correctInfo = getCorrectness();
+    const correctResponse = {};
+
+    question.rows.forEach(row => {
+      correctResponse[row.id] = row.values;
+    });
+
     const fb =
       env.mode === 'evaluate'
         ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
@@ -74,11 +80,12 @@ export function model(question, session, env) {
         config: question,
         correctness: correctInfo,
         feedback,
-        disabled: env.mode !== 'gather'
+        disabled: env.mode !== 'gather',
+        view: env.mode === 'view'
       };
 
       const out = Object.assign(base, {
-        correctResponse: env.mode === 'evaluate' ? question.rows : undefined
+        correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
       });
       log('out: ', out);
       resolve(out);

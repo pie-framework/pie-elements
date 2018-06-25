@@ -158,7 +158,7 @@ class Configure extends React.Component {
           fullWidth
         >
           <Tab label="Design" />
-          <Tab disabled={model.rows.length <= 1 } label="Scoring" />
+          <Tab disabled={!model.allowPartialScoring} label="Scoring" />
         </Tabs>
         <SwipeableViews
           axis="x"
