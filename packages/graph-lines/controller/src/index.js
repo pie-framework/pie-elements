@@ -54,7 +54,7 @@ export function model(question, session, env) {
     const correctResponse = [];
 
     model.config.lines.forEach(line => {
-      const lineExpression = utils.expressionFromDescriptor(line.initialView);
+      const lineExpression = utils.expressionFromDescriptor(line.correctLine);
       const points = utils.pointsFromExpression(lineExpression);
 
       correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));

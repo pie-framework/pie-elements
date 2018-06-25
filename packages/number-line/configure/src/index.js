@@ -1,4 +1,4 @@
-import Main from './main.jsx';
+import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

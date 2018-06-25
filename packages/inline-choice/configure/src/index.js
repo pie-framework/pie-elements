@@ -2,7 +2,7 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root.jsx';
+import Root from './root';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 export default class extends HTMLElement {

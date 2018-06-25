@@ -88,7 +88,6 @@ class Configure extends React.Component {
     onModelChanged(model);
   };
 
-
   onPartialScoringChange = partialScoring => {
     this.props.model.partialScoring = partialScoring.map(partialScore => ({
       numberOfCorrect: partialScore.numberOfCorrect || '',

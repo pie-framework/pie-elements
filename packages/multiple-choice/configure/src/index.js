@@ -6,7 +6,7 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root.jsx';
+import Root from './root';
 import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 

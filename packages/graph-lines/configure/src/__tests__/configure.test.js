@@ -2,40 +2,44 @@ import * as React from 'react';
 import Configure from '../configure';
 import GeneralConfigBlock from '../general-config-block';
 import PartialScoringConfig from '@pie-lib/scoring-config';
-import Input from 'material-ui/Input';
-import Button from 'material-ui/Button';
-import { InputRadio, InputCheckbox, InputContainer } from '@pie-lib/config-ui';
+import SwipeableViews from 'react-swipeable-views';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
 import { FeedbackConfig } from '@pie-lib/config-ui';
-import PointConfig from '../point-config';
-import Box from '../box';
-import DeleteControl from '../delete';
-import AddControl from '../add-point';
 import { shallowChild } from '@pie-lib/test-utils';
 
 const defaultProps = {
   model: {
     id: '1',
     element: 'graph-lines',
-    //below is the legacy corespring point intercept model...
     minimumWidth: 500,
-    correctResponse: ['0,0', '1,1', '2,2', '3,3'],
+    multiple: false,
     partialScoring: [],
     feedback: {
-      correctFeedbackType: 'none',
-      correctFeedbackValue: '',
-      partialFeedbackType: 'none',
-      partialFeedbackValue: '',
-      incorrectFeedbackType: 'none',
-      incorrectFeedbackValue: '',
+      correct: {
+        type: 'none',
+        default: 'Correct'
+      },
+      partial: {
+        type: 'none',
+        default: 'Nearly'
+      },
+      incorrect: {
+        type: 'none',
+        default: 'Incorrect'
+      }
     },
     model: {
       config: {
+        lines: [{
+          label: 'Line One',
+          correctLine: '3x+2',
+          initialView: '3x+3'
+        }],
         graphTitle: '',
         graphWidth: 500,
         graphHeight: 500,
-        maxPoints: '',
-        labelsType: 'present',
-        pointLabels: ['A', 'B', 'C', 'D'],
         domainLabel: '',
         domainMin: -10,
         domainMax: 10,
@@ -51,8 +55,6 @@ const defaultProps = {
         rangeLabelFrequency: 1,
         rangeGraphPadding: 50,
         sigfigs: -1,
-        allowPartialScoring: false,
-        pointsMustMatchLabels: false,
         showCoordinates: false,
         showPointLabels: true,
         showInputs: true,
@@ -73,34 +75,80 @@ describe('Configure', () => {
   it('renders correctly', () => {
     const component = wrapper();
 
-    expect(component.find(DisplayConfig).length).toEqual(1);
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
-    expect(component.find(GraphAttributeConfig).length).toEqual(1);
-    expect(component.find(PointConfig).length).toEqual(1);
     expect(component.find(PartialScoringConfig).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
+    expect(component.find(SwipeableViews).length).toEqual(1);
+    expect(component.find(Tabs).length).toEqual(1);
+    expect(component.find(Tab).length).toEqual(2);
   });
 
   it('restores default model correctly', () => {
     const onModelChanged = jest.fn();
     const component = wrapper({ onModelChanged });
 
-    component.setProps({ ...defaultProps, model: { ...defaultProps.model, correctResponse: ['0,0'] }});
+    component.setProps({ ...defaultProps, model: { ...defaultProps.model, multiple: true } });
 
     component.instance().resetToDefaults();
 
     expect(onModelChanged).toBeCalledWith(expect.objectContaining(defaultProps.model));
   });
 
-  it('updates grid parameter min/max values accordingly', () => {
+  it('updates multiple line graph correctly', () => {
+    const onModelChanged = jest.fn();
+    const component = wrapper({
+      ...defaultProps,
+      onModelChanged,
+      multiple: true,
+      model: {
+        ...defaultProps.model,
+        model: {
+          ...defaultProps.model.model,
+          config: {
+            ...defaultProps.model.config,
+            lines: [{
+              from: { x: 0, y: 0 },
+              to: { x: 1, y: 1 },
+            }, {
+              from: { x: -2, y: -2 },
+              to: { x: 3, y: 4 },
+            }]
+          }
+        }
+      }
+    });
+
+    component.instance().onMultipleToggle({ target: { checked: false } });
+
+    expect(onModelChanged).toBeCalledWith({
+      ...defaultProps.model,
+      model: { config: { lines: [{ 'from': { 'x': 0, 'y': 0 }, 'to': { 'x': 1, 'y': 1 } }] } },
+    });
+  });
+
+  it('adds a new line correctly', () => {
     const onModelChanged = jest.fn();
     const component = wrapper({ onModelChanged });
 
-    component.instance().onGridParameterChange('domainMin')({ target: { value: 3 }});
+    component.instance().onAddLine();
 
     expect(onModelChanged).toBeCalledWith(expect.objectContaining({
       ...defaultProps.model,
-      correctResponse: ['3,0', '3,1', '3,2', '3,3'],
+      model: {
+        ...defaultProps.model.model,
+        config: {
+          ...defaultProps.model.model.config,
+          lines: [{
+            correctLine: '3x+2',
+            initialView: '3x+3',
+            label: 'Line One' },
+          {
+            correctLine: '',
+            initialView: '',
+            label: ''
+          }],
+        }
+      },
     }));
   });
 });
@@ -108,48 +156,28 @@ describe('Configure', () => {
 describe('GeneralConfigBlock', () => {
   let wrapper;
   let props;
+  let component;
 
   beforeEach(() => {
     props = {
       config: defaultProps.model.model.config,
-      onToggleWithLabels: jest.fn(),
-      onModelConfigChange: jest.fn()
+      onChange: jest.fn(),
+      onMultipleToggle: jest.fn(),
+      multiple: false,
     };
 
     wrapper = shallowChild(GeneralConfigBlock, props, 1);
   });
 
   it('renders correctly', () => {
-    const component = wrapper();
+    component = wrapper();
 
-    expect(component.find(InputCheckbox).length).toEqual(1);
-    expect(component.find(InputRadio).length).toEqual(2);
-  });
-});
+    expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
+    expect(component.find(InputContainer).length).toBeGreaterThan(3);
 
-describe('PointConfig', () => {
-  let wrapper;
-  let props;
+    component = wrapper({ config: { ...props.config, exhibitOnly: true } });
 
-  beforeEach(() => {
-    props = {
-      model: defaultProps.model,
-      config: defaultProps.model.model.config,
-      addPoint: jest.fn(),
-      onMaxPointsChange: jest.fn(),
-      deletePoint: jest.fn(),
-      onPointValueChange: jest.fn(),
-      onPointLabelChange: jest.fn()
-    };
-
-    wrapper = shallowChild(PointConfig, props, 1);
-  });
-
-  it('renders correctly', () => {
-    const component = wrapper();
-
-    expect(component.find(DeleteControl).length).toEqual(4);
-    expect(component.find(AddControl).length).toEqual(1);
-    expect(component.find(Input).length).toBeGreaterThan(8);
+    expect(component.find(InputCheckbox).length).toEqual(2);
+    expect(component.find(InputContainer).length).toBeGreaterThan(2);
   });
 });
