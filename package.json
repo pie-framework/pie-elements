@@ -5,8 +5,8 @@
     "pie-clean": "lerna exec -- pie clean --dir docs/demo",
     "pie-install": "lerna exec --parallel -- pie install --dir docs/demo",
     "pie-pack-clean": "scripts/clean.sh",
-    "release":
-      "scripts/build --cleanOnly && npm test && scripts/build && lerna publish --conventional-commits"
+    "build": "scripts/build",
+    "release": "scripts/build --cleanOnly && npm test && scripts/build && lerna publish --conventional-commits"
   },
   "devDependencies": {
     "@pie-lib/test-utils": "^0.0.3",
