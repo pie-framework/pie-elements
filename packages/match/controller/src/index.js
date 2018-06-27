@@ -49,7 +49,7 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
-        if (!session.answers || session.answers.length === 0) {
+        if (!session.answers || Object.keys(session.answers).length === 0) {
           return {
             correctness: 'unanswered',
             score: '0%'
