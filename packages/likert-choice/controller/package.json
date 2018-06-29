@@ -1,0 +1,9 @@
+{
+  "name": "@pie-element/multiple-choice-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {},
+  "author": "",
+  "license": "ISC"
+}

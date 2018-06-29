@@ -1,0 +1,25 @@
+{
+  "name": "@pie-element/likert-choice-configure",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "dependencies": {
+    "@material-ui/core": "^1.0.0",
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/config-ui": "^7.1.1",
+    "@pie-lib/editable-html": "^5.0.13",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "slate": "^0.33.5"
+  },
+  "devDependencies": {
+    "babel-preset-airbnb": "^2.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0"
+  }
+}

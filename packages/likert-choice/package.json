@@ -1,0 +1,18 @@
+{
+  "name": "@pie-element/likert-choice",
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "pie": {
+    "element": "@pie-ui/likert-choice"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.46",
+    "@material-ui/core": "^1.0.0-rc.0"
+  }
+}
