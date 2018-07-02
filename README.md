@@ -31,6 +31,10 @@ Will run a watched babel process and the run `pie info`.
 
 ## Tests
 
+All tests are run from the root of the repo.
+
+> Don't add any test `devDependencies` or `jest.config.js` etc in the packages - it's unnecessary and can break the tests.
+
 ```shell
 npm test
 ```
