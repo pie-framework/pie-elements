@@ -10,25 +10,25 @@ exports.model = (id, element) => ({
       value: 'sweden',
       label: 'Sweden',
       feedback: {
-        type: 'custom',
-        value: 'Sweden joined in 1995'
+        type: 'none',
+        value: ''
       }
     },
     {
       value: 'iceland',
       label: 'Iceland',
       feedback: {
-        type: 'custom',
-        value: 'Iceland is not an EU member state'
+        type: 'none',
+        value: ''
       }
     },
     {
       value: 'norway',
       label: 'Norway',
       feedback: {
-        type: 'custom',
+        type: 'none',
         value:
-          'Norway is not an EU member, but they are a member for the Single Market'
+          ''
       }
     },
     {
@@ -36,8 +36,8 @@ exports.model = (id, element) => ({
       value: 'finland',
       label: 'Finland',
       feedback: {
-        type: 'custom',
-        value: 'Finland joined the EU in 1995'
+        type: 'none',
+        value: ''
       }
     }
   ],
