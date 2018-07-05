@@ -55,10 +55,12 @@ const Design = withStyles(styles)(props => {
       </InputContainer>
       {model.choices.map((choice, index) => (
         <ChoiceConfiguration
+          key={index}
+          noLabels
           index={index + 1}
+          useLetterOrdering={model.keyMode === 'letters'}
           className={classes.choiceConfiguration}
           mode={model.choiceMode}
-          key={index}
           data={choice}
           defaultFeedback={{}}
           imageSupport={imageSupport}
