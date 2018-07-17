@@ -65,11 +65,11 @@ export class Design extends React.Component {
     onChange(model);
   };
 
-  changeCategoryColumns = columns => {
+  changeCategoryColumns = event => {
     this.apply(model => {
       model.config = model.config || {};
       model.config.categories = model.config.categories || { columns: 2 };
-      model.config.categories.columns = columns;
+      model.config.categories.columns = parseInt(event.target.value, 10);
     });
   };
 
