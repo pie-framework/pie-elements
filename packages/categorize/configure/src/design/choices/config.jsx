@@ -4,8 +4,22 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
 import TextField from '@material-ui/core/TextField';
-import { InputCheckbox, NumberTextField, TwoChoice } from '@pie-lib/config-ui';
-import { Divider } from '../buttons';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import { InputCheckbox } from '@pie-lib/config-ui';
+
+const positionOptions = [{
+  label: 'Above',
+  value: 'above',
+  secondaryText: 'Label will be shown above choices'
+}, {
+  label: 'Below',
+  value: 'below',
+  secondaryText: 'Label will be shown below choices'
+}];
 
 const withDefaults = o => ({
   label: '',
@@ -26,8 +40,12 @@ export class Config extends React.Component {
 
   static defaultProps = {};
 
-  changeColumns = (event, columns) => {
-    this.apply(config => (config.columns = columns));
+  state = {
+    anchorEl: null
+  };
+
+  changeColumns = event => {
+    this.apply(config => (config.columns = parseInt(event.target.value, 10)));
   };
 
   apply = fn => {
@@ -46,10 +64,24 @@ export class Config extends React.Component {
   };
 
   changePosition = position => {
-    this.apply(config => (config.position = position));
+    this.apply(config => (config.position = position.value));
+    this.setState({ anchorEl: null });
+  };
+
+  handleClickPosition = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleMenuItemClick = (event, index) => {
+    this.setState({ selectedIndex: index, anchorEl: null });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
   };
 
   render() {
+    const { anchorEl } = this.state;
     const {
       classes,
       className,
@@ -58,15 +90,18 @@ export class Config extends React.Component {
     } = this.props;
 
     const config = withDefaults(this.props.config);
+    const positionOption = positionOptions.find(option => option.value === config.position);
 
     return (
       <div className={classNames(classes.config, className)}>
         <div className={classes.row}>
-          <NumberTextField
-            className={classes.numberTextField}
+          <TextField
             label={'Choices per row'}
-            min={1}
-            max={4}
+            type="number"
+            inputProps={{
+              min: 1,
+              max: 4
+            }}
             value={config.columns}
             onChange={this.changeColumns}
           />
@@ -76,14 +111,14 @@ export class Config extends React.Component {
             onChange={onToggleCategoryCount}
           />
           <InputCheckbox
+            className={classes.shuffleCheckbox}
             label={'Shuffle'}
             value={config.shuffle}
             onChange={this.toggleShuffle}
           />
         </div>
-        <Divider />
 
-        <div className={classes.header}>
+        <div className={classes.configuration}>
           <TextField
             className={classes.label}
             InputLabelProps={{
@@ -93,19 +128,66 @@ export class Config extends React.Component {
             value={config.label}
             onChange={this.changeLabel}
           />
-          <TwoChoice
-            header={'Position'}
-            value={config.position}
-            onChange={this.changePosition}
-            one={{ label: 'Above', value: 'above' }}
-            two={{ label: 'Below', value: 'below' }}
-          />
+          <List component="nav">
+            <ListItem
+              button
+              aria-haspopup="true"
+              onClick={this.handleClickPosition}
+            >
+              <ListItemText
+                primary="Label Position"
+                secondary={positionOption.secondaryText}
+              />
+            </ListItem>
+          </List>
+          <Menu
+            id="lock-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+          >
+            {positionOptions.map(option => (
+              <MenuItem
+                key={option.value}
+                selected={option.value === config.position}
+                onClick={() => this.changePosition(option)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </Menu>
         </div>
       </div>
     );
   }
 }
 const styles = theme => ({
-  config: {}
+  configuration: {
+    display: 'grid',
+    alignItems: 'center',
+    gridColumnGap: `${theme.spacing.unit}px`,
+    gridRowGap: `${theme.spacing.unit}px`,
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    justifyContent: 'space-between',
+    marginBottom: theme.spacing.unit
+  },
+  choiceConfig: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+  row: {
+    display: 'grid',
+    gridColumnGap: `${theme.spacing.unit}px`,
+    gridRowGap: `${theme.spacing.unit}px`,
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    justifyContent: 'space-between',
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
+  },
+  shuffleCheckbox: {
+    gridColumnStart: 2,
+    gridColumnEnd: 2
+  }
 });
 export default withStyles(styles)(Config);

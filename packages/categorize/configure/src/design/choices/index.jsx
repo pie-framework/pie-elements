@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Divider } from '../buttons';
 import classNames from 'classnames';
 import Choice from './choice';
 import Header from '../header';
@@ -64,8 +65,13 @@ export class Choices extends React.Component {
     };
     return (
       <div className={classNames(classes.choices, className)}>
-        <Header label="Choices" onAdd={onAdd} />
-
+        <Header label="Choices" buttonLabel="ADD A CHOICE" onAdd={onAdd} />
+        <Config
+          config={config}
+          onChange={onConfigChange}
+          categoryCountIsOne={categoryCountIsOne}
+          onToggleCategoryCount={this.toggleRemoveAllTiles}
+        />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
           {choices.map((h, index) => (
             <Choice
@@ -77,26 +83,12 @@ export class Choices extends React.Component {
             />
           ))}
         </div>
-        <Config
-          config={config}
-          onChange={onConfigChange}
-          categoryCountIsOne={categoryCountIsOne}
-          onToggleCategoryCount={this.toggleRemoveAllTiles}
-        />
+        <Divider />
       </div>
     );
   }
 }
 const styles = theme => ({
-  row: {
-    display: 'grid',
-    gridColumnGap: `${theme.spacing.unit}px`,
-    gridRowGap: `${theme.spacing.unit}px`,
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    justifyContent: 'space-between',
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
-  },
   choiceHolder: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,

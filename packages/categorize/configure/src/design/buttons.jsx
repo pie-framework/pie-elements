@@ -36,7 +36,6 @@ export class RawAddButton extends React.Component {
 }
 const styles = theme => ({
   addButton: {
-    maxWidth: '80px',
     height: theme.spacing.unit * 4
   }
 });
@@ -61,8 +60,8 @@ const DeleteButton = withStyles(theme => ({
 
 const Divider = withStyles(theme => ({
   divider: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
+    marginTop: 2 * theme.spacing.unit,
+    marginBottom: 2 * theme.spacing.unit
   }
 }))(({ classes }) => <MuiDivider className={classes.divider} />);
 

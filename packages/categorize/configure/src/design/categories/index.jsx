@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
-import { NumberTextField } from '@pie-lib/config-ui';
 import Category from './category';
 import Header from '../header';
-import debug from 'debug';
-
-const log = debug('@pie-element:categorize:configure');
 
 export class Categories extends React.Component {
   static propTypes = {
@@ -51,12 +48,24 @@ export class Categories extends React.Component {
     } = this.props;
 
     const holderStyle = {
-      gridTemplateColumns: `repeat(${1}, 1fr)`
+      gridTemplateColumns: `repeat(${columns}, 1fr)`
     };
 
     return (
       <div className={classNames(classes.categories, className)}>
-        <Header label="Categories" onAdd={onAdd} />
+        <Header label="Categories" buttonLabel="ADD A CATEGORY" onAdd={onAdd} />
+        <div className={classes.row}>
+          <TextField
+            label="Categories per row"
+            type="number"
+            inputProps={{
+              min: 1,
+              max: 4
+            }}
+            value={columns}
+            onChange={onColumnsChange}
+          />
+        </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => (
             <Category
@@ -70,15 +79,6 @@ export class Categories extends React.Component {
               onAddChoice={onAddChoice}
             />
           ))}
-        </div>
-        <div className={classes.row}>
-          <NumberTextField
-            label="Categories per row"
-            min={1}
-            max={4}
-            value={columns}
-            onChange={onColumnsChange}
-          />
         </div>
       </div>
     );
@@ -100,7 +100,8 @@ const styles = theme => ({
     gridColumnGap: `${theme.spacing.unit}px`,
     alignItems: 'baseline',
     width: '100%',
-    justifyContent: 'space-between'
+    marginTop: theme.spacing.unit,
+    marginBottom: 2 * theme.spacing.unit
   }
 });
 

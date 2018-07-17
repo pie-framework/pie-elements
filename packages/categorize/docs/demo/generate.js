@@ -1,10 +1,12 @@
 const choices = () => [
-  { id: '1', content: '<h3>Hi</h3>' },
-  { id: '2', content: '<b>Banana</b>' }
+  { id: '1', content: 'Choice 1' },
+  { id: '2', content: 'Choice 2' },
+  { id: '3', content: 'Choice 3' },
+  { id: '4', content: 'Choice 4' }
 ];
 const categories = () => [
-  { id: '1', label: 'Fruit' },
-  { id: '2', label: 'Vegetable' }
+  { id: '1', label: 'Category 1' },
+  { id: '2', label: 'Category 2' }
 ];
 
 exports.model = (id, element) => ({
@@ -12,7 +14,7 @@ exports.model = (id, element) => ({
   element,
   choices: choices(),
   categories: categories(),
-  correctResponse: [{ category: '1', choices: ['1', '2', '1'] }],
+  correctResponse: [{}],
 
   scoring: {
     weighting: {
