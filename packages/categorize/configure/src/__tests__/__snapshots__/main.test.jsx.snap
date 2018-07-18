@@ -27,12 +27,6 @@ exports[`Main snapshot renders 1`] = `
               },
             ],
           ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": undefined,
-            },
-          ],
         }
       }
       title="Design"
