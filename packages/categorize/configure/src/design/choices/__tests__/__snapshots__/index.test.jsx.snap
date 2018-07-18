@@ -5,8 +5,19 @@ exports[`choices snapshot renders 1`] = `
   className=""
 >
   <WithStyles(Header)
+    buttonLabel="ADD A CHOICE"
     label="Choices"
     onAdd={[MockFunction]}
+  />
+  <WithStyles(Config)
+    categoryCountIsOne={false}
+    config={
+      Object {
+        "columns": 2,
+      }
+    }
+    onChange={[MockFunction]}
+    onToggleCategoryCount={[Function]}
   />
   <div
     style={
@@ -27,15 +38,6 @@ exports[`choices snapshot renders 1`] = `
       onDelete={[Function]}
     />
   </div>
-  <WithStyles(Config)
-    categoryCountIsOne={false}
-    config={
-      Object {
-        "columns": 2,
-      }
-    }
-    onChange={[MockFunction]}
-    onToggleCategoryCount={[Function]}
-  />
+  <WithStyles(Component) />
 </div>
 `;

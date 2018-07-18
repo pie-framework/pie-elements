@@ -5,11 +5,18 @@ exports[`config snapshot renders 1`] = `
   className=""
 >
   <div>
-    <Component
+    <TextField
+      inputProps={
+        Object {
+          "max": 4,
+          "min": 1,
+        }
+      }
       label="Choices per row"
-      max={4}
-      min={1}
       onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
       value={2}
     />
     <Component
@@ -21,7 +28,6 @@ exports[`config snapshot renders 1`] = `
       value={false}
     />
   </div>
-  <WithStyles(Component) />
   <div>
     <TextField
       InputLabelProps={
@@ -35,23 +41,41 @@ exports[`config snapshot renders 1`] = `
       select={false}
       value=""
     />
-    <Component
-      header="Position"
-      onChange={[Function]}
-      one={
-        Object {
-          "label": "Above",
-          "value": "above",
-        }
-      }
-      two={
-        Object {
-          "label": "Below",
-          "value": "below",
-        }
-      }
-      value="above"
-    />
+    <WithStyles(List)
+      component="nav"
+    >
+      <WithStyles(ListItem)
+        aria-haspopup="true"
+        button={true}
+        onClick={[Function]}
+      >
+        <WithStyles(ListItemText)
+          primary="Label Position"
+          secondary="Label will be shown above choices"
+        />
+      </WithStyles(ListItem)>
+    </WithStyles(List)>
+    <WithStyles(Menu)
+      anchorEl={null}
+      id="lock-menu"
+      onClose={[Function]}
+      open={false}
+    >
+      <WithStyles(MenuItem)
+        key="above"
+        onClick={[Function]}
+        selected={true}
+      >
+        Above
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="below"
+        onClick={[Function]}
+        selected={false}
+      >
+        Below
+      </WithStyles(MenuItem)>
+    </WithStyles(Menu)>
   </div>
 </div>
 `;

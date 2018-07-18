@@ -5,14 +5,33 @@ exports[`Categories snapshot renders 1`] = `
   className="categories className"
 >
   <WithStyles(Header)
+    buttonLabel="ADD A CATEGORY"
     label="Categories"
     onAdd={[MockFunction]}
   />
   <div
+    className="row"
+  >
+    <TextField
+      inputProps={
+        Object {
+          "max": 4,
+          "min": 1,
+        }
+      }
+      label="Categories per row"
+      onChange={[MockFunction]}
+      required={false}
+      select={false}
+      type="number"
+      value={2}
+    />
+  </div>
+  <div
     className="categoriesHolder"
     style={
       Object {
-        "gridTemplateColumns": "repeat(1, 1fr)",
+        "gridTemplateColumns": "repeat(2, 1fr)",
       }
     }
   >
@@ -29,17 +48,6 @@ exports[`Categories snapshot renders 1`] = `
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}
-    />
-  </div>
-  <div
-    className="row"
-  >
-    <Component
-      label="Categories per row"
-      max={4}
-      min={1}
-      onChange={[MockFunction]}
-      value={2}
     />
   </div>
 </div>
