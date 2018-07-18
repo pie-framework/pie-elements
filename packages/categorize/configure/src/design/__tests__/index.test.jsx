@@ -61,7 +61,7 @@ describe('Design', () => {
 
     describe('changeCategoryColumns', () => {
       const config = { config: { categories: { columns: 4 } } };
-      callsOnChange('changeCategoryColumns', 4, config);
+      callsOnChange('changeCategoryColumns', { target: { value: 4 } }, config);
     });
 
     describe('changeCategories', () => {

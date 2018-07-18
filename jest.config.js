@@ -3,5 +3,5 @@ module.exports = {
   setupFiles: ['./jest.setup.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testRegex: '(/__tests__/.*(\\.|/)(test|spec))\\.jsx?$',
-  testPathIgnorePatterns: ['/node_modules/', '/lib/']
+  testPathIgnorePatterns: ['/node_modules/', '/lib/', '/docs/']
 };

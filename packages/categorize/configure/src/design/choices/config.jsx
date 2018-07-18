@@ -64,7 +64,7 @@ export class Config extends React.Component {
   };
 
   changePosition = position => {
-    this.apply(config => (config.position = position.value));
+    this.apply(config => (config.position = position));
     this.setState({ anchorEl: null });
   };
 
