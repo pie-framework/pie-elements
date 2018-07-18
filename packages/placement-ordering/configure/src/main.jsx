@@ -5,7 +5,7 @@ import Design from './design';
 import Help from './help';
 import React from 'react';
 import ScoringConfig from '@pie-lib/scoring-config';
-import { withContext } from '@pie-ui/placement-ordering';
+import { withDragContext } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
@@ -89,4 +89,4 @@ class Main extends React.Component {
   }
 }
 
-export default withContext(withStyles(styles)(Main));
+export default withDragContext(withStyles(styles)(Main));
