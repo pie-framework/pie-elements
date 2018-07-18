@@ -34,7 +34,7 @@ describe('config', () => {
           handler();
         });
       };
-      assert('changeColumns', {}, 4, () => {
+      assert('changeColumns', { target: { value: 4 } }, () => {
         expect(onChange).toBeCalledWith({
           columns: 4,
           label: '',
