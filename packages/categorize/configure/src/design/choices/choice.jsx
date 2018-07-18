@@ -10,7 +10,7 @@ import { DeleteButton } from '../buttons';
 import DragHandle from '@material-ui/icons/DragHandle';
 import { DragSource } from 'react-dnd';
 import debug from 'debug';
-import { idContext } from '@pie-lib/drag';
+import { uid } from '@pie-lib/drag';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -150,4 +150,4 @@ const DraggableChoice = DragSource(
   })
 )(StyledChoice);
 
-export default idContext.withUid(DraggableChoice);
+export default uid.withUid(DraggableChoice);

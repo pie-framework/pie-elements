@@ -8,7 +8,7 @@ import Choices from './choices';
 import { Divider } from './buttons';
 import { buildCategories } from './builder';
 import debug from 'debug';
-import { idContext, withContext } from '@pie-lib/drag';
+import { uid, withDragContext } from '@pie-lib/drag';
 
 import {
   removeAllChoices,
@@ -21,7 +21,7 @@ import {
 
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-const { Provider: IdProvider } = idContext;
+const { Provider: IdProvider } = uid;
 
 const log = debug('@pie-element:categorize:configure:design');
 
@@ -38,7 +38,7 @@ export class Design extends React.Component {
 
   constructor(props) {
     super(props);
-    this.uid = props.uid || idContext.generateId();
+    this.uid = props.uid || uid.generateId();
   }
 
   apply = applyFn => {
@@ -240,4 +240,4 @@ const styles = theme => ({
   }
 });
 
-export default withContext(withStyles(styles)(Design));
+export default withDragContext(withStyles(styles)(Design));

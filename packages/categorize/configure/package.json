@@ -4,7 +4,7 @@
     "access": "public"
   },
   "main": "lib/index.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "scripts": {},
   "author": "pie framework developers",

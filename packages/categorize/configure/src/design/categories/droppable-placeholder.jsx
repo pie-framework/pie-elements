@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import ChoicePreview from './choice-preview';
 import { DropTarget } from 'react-dnd';
-import { idContext } from '@pie-lib/drag';
+import { uid } from '@pie-lib/drag';
 import debug from 'debug';
 
 const log = debug('@pie-element:categorize:configure');
@@ -105,4 +105,4 @@ const WithTarget = DropTarget(({ uid }) => uid, spec, (connect, monitor) => ({
   isOver: monitor.isOver()
 }))(Styled);
 
-export default idContext.withUid(WithTarget);
+export default uid.withUid(WithTarget);
