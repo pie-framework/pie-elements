@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.1.0...@pie-element/categorize@2.2.0) (2018-07-20)
+
+
+### Bug Fixes
+
+* **categorize:** drag and drop related fixes and version bump ([5004aa9](https://github.com/pie-framework/pie-elements/commit/5004aa9))
+
+
+### Features
+
+* **categorize:** bump [@pie-ui](https://github.com/pie-ui)/categorize to ^0.3.6 ([1a43165](https://github.com/pie-framework/pie-elements/commit/1a43165))
+* **categorize:** drag dependency update and version bump ([a7d13f5](https://github.com/pie-framework/pie-elements/commit/a7d13f5))
+* **categorize:** drag dependency update and version bump ([485b661](https://github.com/pie-framework/pie-elements/commit/485b661))
+
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.0.1...@pie-element/categorize@2.1.0) (2018-07-18)
 
