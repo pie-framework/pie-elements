@@ -26,7 +26,7 @@ exports[`choices snapshot renders 1`] = `
       }
     }
   >
-    <Wrapped
+    <DragSource(WithStyles(Choice))
       choice={
         Object {
           "content": "content",

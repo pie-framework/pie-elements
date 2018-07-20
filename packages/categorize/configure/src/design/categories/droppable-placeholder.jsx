@@ -4,12 +4,10 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import ChoicePreview from './choice-preview';
 import { DropTarget } from 'react-dnd';
-import { uid } from '@pie-lib/drag';
+import { uid, PlaceHolder } from '@pie-lib/drag';
 import debug from 'debug';
 
 const log = debug('@pie-element:categorize:configure');
-
-import { PlaceHolder } from '@pie-lib/drag';
 
 const Helper = withStyles(() => ({
   helper: {

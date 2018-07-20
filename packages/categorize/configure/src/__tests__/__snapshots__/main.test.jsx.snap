@@ -5,7 +5,7 @@ exports[`Main snapshot renders 1`] = `
   className="className"
 >
   <Component>
-    <DragDropContext(WithStyles(Design))
+    <WithStyles(Design)
       model={
         Object {
           "categories": Array [],

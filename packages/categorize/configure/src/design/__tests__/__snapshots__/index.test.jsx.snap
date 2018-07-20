@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Design snapshot renders 1`] = `
-<[object Object]
+<mockConstructor
   value="1"
 >
   <div
@@ -58,5 +58,5 @@ exports[`Design snapshot renders 1`] = `
       onDelete={[Function]}
     />
   </div>
-</[object Object]>
+</mockConstructor>
 `;
