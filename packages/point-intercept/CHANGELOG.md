@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@3.0.1...@pie-element/point-intercept@3.1.0) (2018-07-26)
+
+
+### Bug Fixes
+
+* **point-intercept:** fix demo ([320afa0](https://github.com/pie-framework/pie-elements/commit/320afa0))
+
+
+### Features
+
+* **point-intercept:** dependecy updates, latest charting libs ([a51ad85](https://github.com/pie-framework/pie-elements/commit/a51ad85))
+
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@1.3.0...@pie-element/point-intercept@3.0.1) (2018-05-25)
 
