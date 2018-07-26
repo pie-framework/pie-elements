@@ -1,14 +1,14 @@
 {
   "name": "@pie-element/point-intercept-configure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
-    "@pie-lib/charting-config": "^0.2.3",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/charting": "^2.2.3",
-    "@pie-lib/config-ui": "^7.1.1",
+    "@pie-lib/charting": "^2.3.2",
+    "@pie-lib/charting-config": "^0.3.0",
+    "@pie-lib/config-ui": "^7.6.0",
     "@material-ui/core": "^1.0.0-rc.1",
     "@material-ui/icons": "^1.0.0-rc.0",
     "prop-types": "^15.6.1",
