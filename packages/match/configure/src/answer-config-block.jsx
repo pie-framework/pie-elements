@@ -29,7 +29,8 @@ const styles = theme => ({
     justifyContent: 'center'
   },
   deleteIcon: {
-    flex: 0.5
+    flex: 0.5,
+    minWidth: '88px',
   },
   questionText: {
     flex: 2,
