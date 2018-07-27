@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.0.3...@pie-element/multiple-choice@2.0.4) (2018-07-27)
+
+
+### Bug Fixes
+
+* bump config-ui and editable html versions ([002fb60](https://github.com/pie-framework/pie-elements/commit/002fb60))
+
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.0.2...@pie-element/multiple-choice@2.0.3) (2018-07-18)
 
