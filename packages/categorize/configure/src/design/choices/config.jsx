@@ -45,7 +45,11 @@ export class Config extends React.Component {
   };
 
   changeColumns = event => {
-    this.apply(config => (config.columns = parseInt(event.target.value, 10)));
+    const numberValue = parseInt(event.target.value, 10);
+
+    if (numberValue && numberValue >= 1 && numberValue <= 4) {
+      this.apply(config => (config.columns = numberValue));
+    }
   };
 
   apply = fn => {
