@@ -66,11 +66,15 @@ export class Design extends React.Component {
   };
 
   changeCategoryColumns = event => {
-    this.apply(model => {
-      model.config = model.config || {};
-      model.config.categories = model.config.categories || { columns: 2 };
-      model.config.categories.columns = parseInt(event.target.value, 10);
-    });
+    const numberValue = parseInt(event.target.value, 10);
+
+    if (numberValue && numberValue >= 1 && numberValue <= 4) {
+      this.apply(model => {
+        model.config = model.config || {};
+        model.config.categories = model.config.categories || { columns: 2 };
+        model.config.categories.columns = numberValue;
+      });
+    }
   };
 
   changeCategories = categories => {
