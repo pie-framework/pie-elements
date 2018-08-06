@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-      <a name="3.0.2"></a>
+       <a name="3.0.3"></a>
+## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.0.2...@pie-element/number-line@3.0.3) (2018-08-06)
+
+
+### Bug Fixes
+
+* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+
+
+
+
+       <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.0.1...@pie-element/number-line@3.0.2) (2018-06-06)
 
 
@@ -14,7 +25,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-      <a name="3.0.1"></a>
+     <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@2.1.0...@pie-element/number-line@3.0.1) (2018-05-25)
 
 
@@ -22,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/number-line
 
-    <a name="2.1.0"></a>
+   <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@2.0.0...@pie-element/number-line@2.1.0) (2018-05-22)
 
 
@@ -33,7 +44,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
- <a name="2.0.0"></a>
+<a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@1.6.0...@pie-element/number-line@2.0.0) (2018-05-11)
 
 
@@ -66,16 +77,16 @@ id: '1',
 element: 'number-line',
 correctResponse: [
 {
-  type: 'point',
-  pointType: 'full',
-  domainPosition: 1
+ type: 'point',
+ pointType: 'full',
+ domainPosition: 1
 },
 {
-  type: 'line',
-  leftPoint: 'full',
-  rightPoint: 'empty',
-  domainPosition: 1,
-  size: 2
+ type: 'line',
+ leftPoint: 'full',
+ rightPoint: 'empty',
+ domainPosition: 1,
+ size: 2
 }
 ],
 feedback: {
@@ -87,44 +98,44 @@ incorrectFeedback: '<h1>incorrect</h1>'
 allowPartialScoring: true,
 partialScoring: [
 {
-  numberOfCorrect: 1,
-  scorePercentage: 35
+ numberOfCorrect: 1,
+ scorePercentage: 35
 }
 ],
 model: {
 config: {
-  width: 500,
-  height: 400,
-  domain: [
-    -5,
-    5
-  ],
-  initialElements: [
-    {
-      type: 'point',
-      pointType: 'empty',
-      domainPosition: -1
-    }
-  ],
-  maxNumberOfPoints: 20,
-  tickFrequency: 6,
-  showMinorTicks: true,
-  snapPerTick: 1,
-  tickLabelOverrides: [],
-  initialType: 'PF',
-  exhibitOnly: false,
-  availableTypes: {
-    PF: true,
-    PE: true,
-    LFF: true,
-    LEF: true,
-    LFE: true,
-    LEE: true,
-    RFN: true,
-    RFP: true,
-    REN: true,
-    REP: true
-  }
+ width: 500,
+ height: 400,
+ domain: [
+   -5,
+   5
+ ],
+ initialElements: [
+   {
+     type: 'point',
+     pointType: 'empty',
+     domainPosition: -1
+   }
+ ],
+ maxNumberOfPoints: 20,
+ tickFrequency: 6,
+ showMinorTicks: true,
+ snapPerTick: 1,
+ tickLabelOverrides: [],
+ initialType: 'PF',
+ exhibitOnly: false,
+ availableTypes: {
+   PF: true,
+   PE: true,
+   LFF: true,
+   LEF: true,
+   LFE: true,
+   LEE: true,
+   RFN: true,
+   RFP: true,
+   REN: true,
+   REP: true
+ }
 }
 }
 }
@@ -140,37 +151,37 @@ id: '1',
 element: 'number-line',
 correctResponse: [
 {
-  type: 'point',
-  pointType: 'full',
-  domainPosition: 1
+ type: 'point',
+ pointType: 'full',
+ domainPosition: 1
 },
 {
-  type: 'line',
-  leftPoint: 'full',
-  rightPoint: 'empty',
-  domainPosition: 1,
-  size: 2
+ type: 'line',
+ leftPoint: 'full',
+ rightPoint: 'empty',
+ domainPosition: 1,
+ size: 2
 }
 ],
 feedback: {
 correct: {
-  type: 'default',
-  default: 'Correct'
+ type: 'default',
+ default: 'Correct'
 },
 partial: {
-  type: 'default',
-  default: 'Nearly'
+ type: 'default',
+ default: 'Nearly'
 },
 incorrect: {
-  type: 'custom',
-  custom: '<h1>Incorrect</h1>'
+ type: 'custom',
+ custom: '<h1>Incorrect</h1>'
 }
 },
 allowPartialScoring: true,
 partialScoring: [
 {
-  numberOfCorrect: 1,
-  scorePercentage: 35
+ numberOfCorrect: 1,
+ scorePercentage: 35
 }
 ],
 config: {
@@ -178,11 +189,11 @@ width: 500,
 height: 400,
 domain: [-5, 5],
 initialElements: [
-  {
-    type: 'point',
-    pointType: 'empty',
-    domainPosition: -1
-  }
+ {
+   type: 'point',
+   pointType: 'empty',
+   domainPosition: -1
+ }
 ],
 maxNumberOfPoints: 20,
 tickFrequency: 6,
@@ -192,16 +203,16 @@ tickLabelOverrides: [],
 initialType: 'PF',
 exhibitOnly: false,
 availableTypes: {
-  PF: true,
-  PE: true,
-  LFF: true,
-  LEF: true,
-  LFE: true,
-  LEE: true,
-  RFN: true,
-  RFP: true,
-  REN: true,
-  REP: true
+ PF: true,
+ PE: true,
+ LFF: true,
+ LEF: true,
+ LFE: true,
+ LEE: true,
+ RFN: true,
+ RFP: true,
+ REN: true,
+ REP: true
 }
 }
 }

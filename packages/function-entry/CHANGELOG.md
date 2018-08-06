@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.2"></a>
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.0.1...@pie-element/function-entry@3.0.2) (2018-08-06)
+
+
+### Bug Fixes
+
+* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+
+
+
+
       <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@2.1.0...@pie-element/function-entry@3.0.1) (2018-05-25)
 
@@ -11,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/function-entry
 
-      <a name="2.1.0"></a>
+    <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@2.0.0...@pie-element/function-entry@2.1.0) (2018-05-22)
 
 
@@ -22,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-    <a name="2.0.0"></a>
+  <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@1.7.0...@pie-element/function-entry@2.0.0) (2018-05-11)
 
 
@@ -53,7 +64,7 @@ type: 'default',
 correctResponse: {
 equation: '3x+2',
 feedback: {
-  type: 'default',
+type: 'default',
 },
 },
 model: {
@@ -74,12 +85,12 @@ showFormattingHelp: true,
 equation: '3x+2',
 feedback: {
 correct: {
-  type: 'default',
-  default: 'Correct'
+type: 'default',
+default: 'Correct'
 },
 incorrect: {
-  type: 'default',
-  default: 'Incorrect'
+type: 'default',
+default: 'Incorrect'
 }
 }
 }

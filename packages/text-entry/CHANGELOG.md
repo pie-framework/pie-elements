@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.2"></a>
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.0.1...@pie-element/text-entry@3.0.2) (2018-08-06)
+
+
+### Bug Fixes
+
+* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+
+
+
+
       <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.1.0...@pie-element/text-entry@3.0.1) (2018-05-25)
 
@@ -11,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/text-entry
 
-      <a name="2.1.0"></a>
+    <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.0.0...@pie-element/text-entry@2.1.0) (2018-05-22)
 
 
@@ -22,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-    <a name="2.0.0"></a>
+  <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@1.7.0...@pie-element/text-entry@2.0.0) (2018-05-11)
 
 
@@ -55,8 +66,8 @@ values: ['mutt', 'hound'],
 ignoreWhitespace: true,
 ignoreCase: false,
 feedback: {
-  type: 'custom',
-  value: 'correct-o'
+type: 'custom',
+value: 'correct-o'
 }
 },
 partialResponses: {
@@ -65,8 +76,8 @@ ignoreWhitespace: true,
 ignoreCase: true,
 awardPercentage: '50',
 feedback: {
-  type: 'custom',
-  value: 'foo'
+type: 'custom',
+value: 'foo'
 }
 },
 incorrectFeedback: {
@@ -91,16 +102,16 @@ id: '1',
 element: 'text-entry',
 feedback: {
 correct: {
-  type: 'custom',
-  custom: 'correct-o'
+type: 'custom',
+custom: 'correct-o'
 },
 incorrect: {
-  type: 'custom',
-  custom: 'custom feedback'
+type: 'custom',
+custom: 'custom feedback'
 },
 partial: {
-  type: 'custom',
-  custom: 'foo'
+type: 'custom',
+custom: 'foo'
 }
 },
 correctResponses: {

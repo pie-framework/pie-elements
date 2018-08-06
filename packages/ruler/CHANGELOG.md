@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.0.2"></a>
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.0.1...@pie-element/ruler@3.0.2) (2018-08-06)
+
+
+### Bug Fixes
+
+* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+
+
+
+
       <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@2.1.0...@pie-element/ruler@3.0.1) (2018-05-25)
 
@@ -11,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/ruler
 
-      <a name="2.1.0"></a>
+    <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@2.0.0...@pie-element/ruler@2.1.0) (2018-05-22)
 
 
@@ -22,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-     <a name="2.0.0"></a>
+   <a name="2.0.0"></a>
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.3.0...@pie-element/ruler@2.0.0) (2018-05-11)
 
 
@@ -41,13 +52,13 @@ FROM:
 
 {
 model: {
-  config: {
-    units: 'metric',
-    label: 'm',
-    length: 20,
-    pixelsPerUnit: 30,
-    ticks: 10
-  }
+config: {
+  units: 'metric',
+  label: 'm',
+  length: 20,
+  pixelsPerUnit: 30,
+  ticks: 10
+}
 }
 }
 
@@ -68,7 +79,7 @@ imperialTicks: undefined
 
 
 
-  <a name="1.3.0"></a>
+<a name="1.3.0"></a>
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@1.2.1...@pie-element/ruler@1.3.0) (2018-05-03)
 
 

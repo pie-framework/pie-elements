@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.2.1...@pie-element/categorize@2.3.0) (2018-08-06)
+
+
+### Bug Fixes
+
+* **categorize:** fix changing label positions ([f624dbe](https://github.com/pie-framework/pie-elements/commit/f624dbe))
+* **categorize:** fix min and max for choice/categories per row fields ([9bfead6](https://github.com/pie-framework/pie-elements/commit/9bfead6))
+* bump config-ui@^7.6.6 ([266235a](https://github.com/pie-framework/pie-elements/commit/266235a))
+
+
+### Features
+
+* **categorize:** toolbar fix for math interaction in choices and categories ([d14796b](https://github.com/pie-framework/pie-elements/commit/d14796b))
+
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.2.0...@pie-element/categorize@2.2.1) (2018-07-26)
 
