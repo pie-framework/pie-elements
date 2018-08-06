@@ -19,6 +19,7 @@ export class InputHeader extends React.Component {
     return (
       <div className={classNames(classes.inputHeader, className)}>
         <EditableHtml
+          autoWidthToolbar
           label={'label'}
           markup={label}
           onChange={onChange}
