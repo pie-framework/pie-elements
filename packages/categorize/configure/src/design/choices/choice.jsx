@@ -108,7 +108,8 @@ const styles = theme => ({
     justifyContent: 'space-between'
   },
   choice: {
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
+    overflow: 'visible'
   },
   dragHandle: {
     cursor: 'move'

@@ -80,7 +80,8 @@ const styles = theme => ({
     justifyContent: 'space-between'
   },
   category: {
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
+    overflow: 'visible'
   },
   editor: {
     flex: '1',
