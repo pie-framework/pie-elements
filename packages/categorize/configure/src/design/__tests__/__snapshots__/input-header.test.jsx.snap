@@ -5,6 +5,7 @@ exports[`InputHeader snapshot renders 1`] = `
   className="inputHeader className"
 >
   <EditableHtml
+    autoWidthToolbar={true}
     className="editor"
     label="label"
     onChange={[MockFunction]}
