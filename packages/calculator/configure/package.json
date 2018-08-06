@@ -7,7 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^7.1.1",
+    "@pie-lib/config-ui": "^7.6.6",
     "@pie-ui/calculator": "^3.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
