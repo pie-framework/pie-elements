@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.0...@pie-element/categorize@2.3.1) (2018-08-09)
+
+
+### Bug Fixes
+
+* fix version range for [@pie-ui](https://github.com/pie-ui)/categorize ([036b91e](https://github.com/pie-framework/pie-elements/commit/036b91e))
+
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.2.1...@pie-element/categorize@2.3.0) (2018-08-06)
 
