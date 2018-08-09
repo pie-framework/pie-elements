@@ -12,6 +12,6 @@
     "element": "@pie-ui/categorize"
   },
   "dependencies": {
-    "@pie-ui/categorize": "^0.3.6"
+    "@pie-ui/categorize": ">=0.3.6 < 1.x"
   }
 }
