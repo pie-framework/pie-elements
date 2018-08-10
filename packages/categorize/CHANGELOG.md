@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.1...@pie-element/categorize@2.3.2) (2018-08-10)
+
+
+### Bug Fixes
+
+* render math in choice preview ([cbc5b0a](https://github.com/pie-framework/pie-elements/commit/cbc5b0a))
+
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.0...@pie-element/categorize@2.3.1) (2018-08-09)
 
