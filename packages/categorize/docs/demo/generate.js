@@ -1,6 +1,9 @@
 const choices = () => [
-  { id: '1', content: 'Choice 1' },
-  { id: '2', content: 'Choice 2' },
+  {
+    id: '1',
+    content: '! Choice 1 <span data-latex="">\\(\\frac{2}{1}\\)</span>'
+  },
+  { id: '2', content: 'Choice 2 <span data-latex="">$\\frac{3}{1}$</span>' },
   { id: '3', content: 'Choice 3' },
   { id: '4', content: 'Choice 4' }
 ];
@@ -36,7 +39,7 @@ exports.model = (id, element) => ({
     choices: {
       columns: 2,
       position: 'above',
-      label: 'Here are the choices',
+      label: 'Here are the choices \\(\\frac{1}{2}\\)',
       shuffle: false
     },
     categories: {

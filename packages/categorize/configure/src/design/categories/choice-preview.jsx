@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { Choice } from '@pie-lib/drag';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
+import { HtmlAndMath } from '@pie-lib/math-rendering';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {
@@ -25,7 +26,7 @@ export class ChoicePreview extends React.Component {
     return (
       <div className={classNames(classes.choicePreview, className)}>
         <Choice>
-          <div dangerouslySetInnerHTML={{ __html: choice.content }} />
+          <HtmlAndMath html={choice.content} />
           <IconButton
             color="secondary"
             aria-label="delete"

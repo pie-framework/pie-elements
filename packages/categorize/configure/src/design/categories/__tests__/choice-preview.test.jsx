@@ -1,6 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { ChoicePreview } from '../choice-preview';
+jest.mock('@pie-lib/math-rendering', () => ({
+  renderMath: jest.fn(),
+  HtmlAndMath: props => <div>{props.html}</div>
+}));
 
 describe('ChoicePreview', () => {
   let w;
