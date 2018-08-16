@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.0.5...@pie-element/multiple-choice@2.1.0) (2018-08-16)
+
+
+### Features
+
+* add outcome method to controller ([ec2853e](https://github.com/pie-framework/pie-elements/commit/ec2853e))
+
+
+
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.0.4...@pie-element/multiple-choice@2.0.5) (2018-08-06)
 
