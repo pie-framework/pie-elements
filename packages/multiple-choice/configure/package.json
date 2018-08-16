@@ -5,15 +5,15 @@
   "main": "lib/index.js",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/scoring-config": "^3.1.1",
-    "@pie-lib/config-ui": "^7.6.6",
-    "@pie-lib/editable-html": "^6.2.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "@pie-lib/scoring-config": "^3.2.0",
+    "@pie-lib/config-ui": "^7.6.8",
+    "@pie-lib/editable-html": "^6.5.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "lodash": "^4.17.10",
-    "@material-ui/core": "^1.4.1",
-    "@material-ui/icons": "^2.0.0",
-    "prop-types": "^15.6.1",
+    "@material-ui/core": "^1.5.0",
+    "@material-ui/icons": "^2.0.2",
+    "prop-types": "^15.6.2",
     "debug": "^3.1.0"
   }
 }

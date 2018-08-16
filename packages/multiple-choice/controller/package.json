@@ -4,5 +4,9 @@
   "description": "",
   "main": "lib/index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "lodash": "^4.17.10"
+  }
 }
