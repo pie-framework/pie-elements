@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.0.1...@pie-element/extended-text-entry@3.1.0) (2018-09-07)
+
+
+### Features
+
+* add outcome method to extended text-entry ([c92c41d](https://github.com/pie-framework/pie-elements/commit/c92c41d))
+
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@2.1.0...@pie-element/extended-text-entry@3.0.1) (2018-05-25)
 
