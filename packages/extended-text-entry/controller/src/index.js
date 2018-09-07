@@ -16,3 +16,11 @@ export async function model(model, session, env) {
     feedback
   }));
 }
+
+export async function outcome(question, session, env) {
+  return {
+    score: 0,
+    completed: 'n/a',
+    note: 'Requires manual scoring'
+  };
+}
