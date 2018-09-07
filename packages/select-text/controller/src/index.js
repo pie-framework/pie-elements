@@ -13,54 +13,6 @@ const buildTokens = (tokens, evaluateMode) => {
   );
 };
 
-// const defaultFeedback = () => ({
-//   correctFeedbackType: 'default',
-//   correctFeedback: 'Correct',
-//   incorrectFeedbackType: 'default',
-//   incorrectFeedback: 'Incorrect',
-//   partialFeedbackType: 'default',
-//   partialFeedback: 'Nearly'
-// });
-
-// const getFeedbackText = (type, text, fallback) => {
-//   if (type === 'none') {
-//     return;
-//   }
-//   if (!text || text === '') {
-//     return fallback;
-//   }
-//   return text;
-// };
-
-// export const getFeedback = (correctness, feedback) => {
-//   feedback = Object.assign(defaultFeedback(), feedback);
-//   log('feedback: ', feedback);
-
-//   let fb = undefined;
-
-//   if (correctness === 'correct') {
-//     fb = getFeedbackText(
-//       feedback.correctFeedbackType,
-//       feedback.correctFeedback,
-//       'Correct'
-//     );
-//   } else if (correctness === 'incorrect') {
-//     fb = getFeedbackText(
-//       feedback.incorrectFeedbackType,
-//       feedback.incorrectFeedback,
-//       'Incorrect'
-//     );
-//   } else if (correctness === 'partially-correct') {
-//     fb = getFeedbackText(
-//       feedback.partialFeedbackType,
-//       feedback.partialFeedback,
-//       'Nearly'
-//     );
-//   }
-
-//   return fb;
-// };
-
 export const getCorrectness = (tokens, selected) => {
   const correct = tokens.filter(t => t.correct === true);
 
