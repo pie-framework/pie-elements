@@ -28,6 +28,7 @@ exports.model = (id, element) => ({
   },
   answerBlankSize: '10',
   answerAlignment: 'left',
+  prompt: 'Question Prompt goes here',
   allowDecimal: true,
   allowIntegersOnly: false,
   allowThousandsSeparator: true
