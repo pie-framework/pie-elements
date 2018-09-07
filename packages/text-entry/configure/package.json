@@ -1,5 +1,5 @@
 {
-  "name": "@pie-ui/text-entry-configure",
+  "name": "@pie-element/text-entry-configure",
   "version": "1.0.0",
   "main": "lib/index.js",
   "publishConfig": {
