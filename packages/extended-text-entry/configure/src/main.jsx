@@ -5,6 +5,7 @@ import {
   FeedbackSelector
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -32,6 +33,12 @@ export class Main extends React.Component {
   change = key => (event, v) => {
     const { onChange } = this.props;
     const model = this.applyUpdate({ [key]: v });
+    onChange(model);
+  };
+
+  onPromptChange = event => {
+    const { onChange } = this.props;
+    const model = this.applyUpdate({ prompt: event.target.value });
     onChange(model);
   };
 
@@ -82,6 +89,18 @@ export class Main extends React.Component {
           onChange={this.toggleMath}
           checked={!!model.showMathInput}
         />
+        <br />
+
+        <TextField
+          classes={{
+            root: classes.promptInput
+          }}
+          label="Prompt"
+          multiline
+          onChange={this.onPromptChange}
+          value={model.prompt || ''}
+          placeholder="Enter Value"
+        />
 
         <Typography className={classes.header} variant="subheading">
           Feedback
@@ -99,5 +118,9 @@ export class Main extends React.Component {
 export default withStyles(theme => ({
   header: {
     paddingBottom: theme.spacing.unit
+  },
+  promptInput: {
+    width: '100%',
+    marginBottom: theme.spacing.unit
   }
 }))(Main);

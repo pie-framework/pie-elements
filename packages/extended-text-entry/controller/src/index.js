@@ -10,6 +10,7 @@ export async function model(model, session, env) {
       ? getFeedback(model.feedback, 'Your answer has been submitted')
       : Promise.resolve(undefined);
   return fb.then(feedback => ({
+    prompt: model.prompt,
     width: model.width,
     height: model.height,
     disabled: env.mode !== 'gather',

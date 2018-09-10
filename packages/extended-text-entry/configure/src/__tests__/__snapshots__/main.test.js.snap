@@ -29,6 +29,21 @@ exports[`Render Main Component Match Snapshot 1`] = `
     label="Student responses can include math notation"
     onChange={[Function]}
   />
+  <br />
+  <TextField
+    classes={
+      Object {
+        "root": undefined,
+      }
+    }
+    label="Prompt"
+    multiline={true}
+    onChange={[Function]}
+    placeholder="Enter Value"
+    required={false}
+    select={false}
+    value=""
+  />
   <WithStyles(Typography)
     variant="subheading"
   >
