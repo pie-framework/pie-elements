@@ -37,6 +37,6 @@ export const outcome = (question, session, env) => {
       question.correctResponse
     );
     log('state: ', state);
-    return score(state.categories, question.scoring);
+    return score(state.categories, question.scoring || {});
   }
 };
