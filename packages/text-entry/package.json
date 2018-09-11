@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/text-entry": "^3.1.1"
+    "@pie-ui/text-entry": "^3.2.0"
   },
   "pie": {
     "element": "@pie-ui/text-entry"
