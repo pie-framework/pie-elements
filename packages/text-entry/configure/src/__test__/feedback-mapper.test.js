@@ -7,6 +7,7 @@ describe('feedback-mapper', () => {
     it('returns data', () => {
 
       const model = {
+        prompt: 'Something',
         correctResponses: {
           feedback: {
             type: 'default'
@@ -26,6 +27,7 @@ describe('feedback-mapper', () => {
       const result = feedbackMapper.modelToFeedbackConfig(model);
 
       expect(result).toEqual({
+        prompt: 'Something',
         correctFeedback: undefined,
         correctFeedbackType: 'default',
         incorrectFeedback: undefined,

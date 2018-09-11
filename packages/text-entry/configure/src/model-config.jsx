@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { NChoice, InputCheckbox } from '@pie-lib/config-ui';
+import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import range from 'lodash/range';
 import Box from './box';
@@ -15,6 +16,11 @@ class RawModelConfig extends React.Component {
 
   onChange = key => event => {
     this.props.config[key] = event.target.checked;
+    this.props.onChange(this.props.config);
+  };
+
+  onPromptChange = event => {
+    this.props.config.prompt = event.target.value;
     this.props.onChange(this.props.config);
   };
 
@@ -41,6 +47,17 @@ class RawModelConfig extends React.Component {
     return (
       <Box>
         <Typography>Options</Typography>
+        <br />
+        <TextField
+          classes={{
+            root: classes.promptInput
+          }}
+          label="Prompt"
+          multiline
+          onChange={this.onPromptChange}
+          value={config.prompt || ''}
+          placeholder="Enter Value"
+        />
         <br />
         <div className={classes.numberOpts}>
           <InputCheckbox
@@ -97,6 +114,10 @@ const ModelConfig = withStyles(() => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
+  },
+  promptInput: {
+    width: '100%',
+    marginBottom: '10px'
   }
 }))(RawModelConfig);
 

@@ -46,6 +46,7 @@ export function model(question, session, env) {
 
     getFeedbackForCorrectness(correctness, question.feedback).then(feedback => {
       const out = {
+        prompt: question.prompt,
         numbersOnlyWarning: undefined,
         colorContrast: 'black_on_white',
         correctness,
