@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+      <a name="3.1.0"></a>
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.0.3...@pie-element/text-entry@3.1.0) (2018-09-11)
+
+
+### Bug Fixes
+
+* bump ui dependency ([da39d3d](https://github.com/pie-framework/pie-elements/commit/da39d3d))
+
+
+### Features
+
+* **text-entry:** added prompt property ([10a6646](https://github.com/pie-framework/pie-elements/commit/10a6646))
+
+
+
+
       <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.0.2...@pie-element/text-entry@3.0.3) (2018-09-07)
 
@@ -11,7 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/text-entry
 
-      <a name="3.0.2"></a>
+    <a name="3.0.2"></a>
 ## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.0.1...@pie-element/text-entry@3.0.2) (2018-08-06)
 
 
@@ -22,7 +38,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-    <a name="3.0.1"></a>
+  <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.1.0...@pie-element/text-entry@3.0.1) (2018-05-25)
 
 
@@ -30,7 +46,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @pie-element/text-entry
 
-  <a name="2.1.0"></a>
+<a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@2.0.0...@pie-element/text-entry@2.1.0) (2018-05-22)
 
 
