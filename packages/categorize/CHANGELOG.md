@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.4"></a>
+## [2.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.3...@pie-element/categorize@2.3.4) (2018-09-11)
+
+
+### Bug Fixes
+
+* default scoring to empty object ([14bcdb4](https://github.com/pie-framework/pie-elements/commit/14bcdb4))
+
+
+
+
 <a name="2.3.3"></a>
 ## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.2...@pie-element/categorize@2.3.3) (2018-09-07)
 
