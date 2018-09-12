@@ -15,7 +15,7 @@
     "@pie-lib/drag": "^1.1.0",
     "@pie-lib/categorize": "^0.4.1",
     "@pie-lib/config-ui": "^7.6.6",
-    "@pie-lib/math-rendering": "^0.2.2",
+    "@pie-lib/math-rendering": "^0.5.0",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "react-dnd-html5-backend": "^2.6.0",
     "debug": "^3.1.0"
