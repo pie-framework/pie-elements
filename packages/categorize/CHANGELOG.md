@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.5"></a>
+## [2.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.4...@pie-element/categorize@2.3.5) (2018-09-12)
+
+
+### Bug Fixes
+
+* use [@pie-lib](https://github.com/pie-lib)/math-rendering@^0.5.0 ([f4d6a76](https://github.com/pie-framework/pie-elements/commit/f4d6a76))
+
+
+
+
 <a name="2.3.4"></a>
 ## [2.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.3.3...@pie-element/categorize@2.3.4) (2018-09-11)
 
