@@ -30,20 +30,13 @@ exports[`Render Main Component Match Snapshot 1`] = `
     onChange={[Function]}
   />
   <br />
-  <TextField
-    classes={
-      Object {
-        "root": undefined,
-      }
-    }
+  <Component
     label="Prompt"
-    multiline={true}
-    onChange={[Function]}
-    placeholder="Enter Value"
-    required={false}
-    select={false}
-    value=""
-  />
+  >
+    <EditableHtml
+      onChange={[Function]}
+    />
+  </Component>
   <WithStyles(Typography)
     variant="subheading"
   >
