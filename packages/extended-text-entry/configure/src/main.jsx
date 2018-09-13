@@ -2,12 +2,13 @@ import React from 'react';
 import {
   NumberTextField,
   InputCheckbox,
-  FeedbackSelector
+  FeedbackSelector,
+  InputContainer
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import EditableHtml from '@pie-lib/editable-html';
 
 const defaultFeedback = {
   type: 'default',
@@ -36,9 +37,9 @@ export class Main extends React.Component {
     onChange(model);
   };
 
-  onPromptChange = event => {
+  onPromptChange = markup => {
     const { onChange } = this.props;
-    const model = this.applyUpdate({ prompt: event.target.value });
+    const model = this.applyUpdate({ prompt: markup });
     onChange(model);
   };
 
@@ -90,17 +91,9 @@ export class Main extends React.Component {
           checked={!!model.showMathInput}
         />
         <br />
-
-        <TextField
-          classes={{
-            root: classes.promptInput
-          }}
-          label="Prompt"
-          multiline
-          onChange={this.onPromptChange}
-          value={model.prompt || ''}
-          placeholder="Enter Value"
-        />
+        <InputContainer label="Prompt" className={classes.promptContainer}>
+          <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />
+        </InputContainer>
 
         <Typography className={classes.header} variant="subheading">
           Feedback
@@ -118,6 +111,11 @@ export class Main extends React.Component {
 export default withStyles(theme => ({
   header: {
     paddingBottom: theme.spacing.unit
+  },
+  promptContainer: {
+    paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
+    width: '100%'
   },
   promptInput: {
     width: '100%',
