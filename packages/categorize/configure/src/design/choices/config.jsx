@@ -11,15 +11,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { InputCheckbox } from '@pie-lib/config-ui';
 
-const positionOptions = [{
-  label: 'Above',
-  value: 'above',
-  secondaryText: 'Label will be shown above choices'
-}, {
-  label: 'Below',
-  value: 'below',
-  secondaryText: 'Label will be shown below choices'
-}];
+const positionOptions = [
+  {
+    label: 'Above',
+    value: 'above',
+    secondaryText: 'Label will be shown above choices'
+  },
+  {
+    label: 'Below',
+    value: 'below',
+    secondaryText: 'Label will be shown below choices'
+  }
+];
 
 const withDefaults = o => ({
   label: '',
@@ -94,7 +97,10 @@ export class Config extends React.Component {
     } = this.props;
 
     const config = withDefaults(this.props.config);
-    const positionOption = positionOptions.find(option => option.value === config.position);
+
+    const positionOption =
+      positionOptions.find(option => option.value === config.position) ||
+      positionOption[1];
 
     return (
       <div className={classNames(classes.config, className)}>
@@ -178,7 +184,7 @@ const styles = theme => ({
   choiceConfig: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
   },
   row: {
     display: 'grid',
