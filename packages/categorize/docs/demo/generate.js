@@ -37,7 +37,7 @@ exports.model = (id, element) => ({
         { category: '2', rules: [] }
       ]
     }
-  ,
+  },
   config: {
     choices: {
       columns: 2,
