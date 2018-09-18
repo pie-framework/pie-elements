@@ -41,6 +41,7 @@ export class Scoring extends React.Component {
       categories,
       correctResponse
     } = this.props;
+
     return (
       <div className={classNames(classes.scoring, className)}>
         <Weighting

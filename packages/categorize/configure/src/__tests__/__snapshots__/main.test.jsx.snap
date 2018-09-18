@@ -11,6 +11,16 @@ exports[`Main snapshot renders 1`] = `
           "categories": Array [],
           "choices": Array [],
           "correctResponse": Array [],
+          "scoring": Object {
+            "partial": Object {
+              "enabled": false,
+              "rules": Array [],
+            },
+            "weighting": Object {
+              "enabled": false,
+              "rules": Array [],
+            },
+          },
         }
       }
       onChange={
@@ -35,6 +45,18 @@ exports[`Main snapshot renders 1`] = `
       categories={Array []}
       correctResponse={Array []}
       onChange={[Function]}
+      scoring={
+        Object {
+          "partial": Object {
+            "enabled": false,
+            "rules": Array [],
+          },
+          "weighting": Object {
+            "enabled": false,
+            "rules": Array [],
+          },
+        }
+      }
       title="Scoring"
     />
   </Component>

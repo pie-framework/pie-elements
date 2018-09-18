@@ -24,6 +24,19 @@ export class Main extends React.Component {
 
   render() {
     const { classes, className, model, onChange } = this.props;
+
+    if (!model.scoring) {
+      model.scoring = {
+        weighting: {
+          enabled: false,
+          rules: []
+        },
+        partial: {
+          enabled: false,
+          rules: []
+        }
+      };
+    }
     return (
       <div className={classNames(classes.main, className)}>
         <Tabs>

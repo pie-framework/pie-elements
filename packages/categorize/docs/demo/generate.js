@@ -3,7 +3,10 @@ const choices = () => [
     id: '1',
     content: '! Choice 1 <span data-latex="">\\(\\frac{2}{1}\\)</span>'
   },
-  { id: '2', content: 'Choice 2 <span data-latex="">$\\frac{3}{1}$</span>' },
+  {
+    id: '2',
+    content: 'Choice 2 <span data-latex="">\\(\\frac{3}{1}\\)</span>'
+  },
   { id: '3', content: 'Choice 3' },
   { id: '4', content: 'Choice 4' }
 ];
@@ -34,7 +37,7 @@ exports.model = (id, element) => ({
         { category: '2', rules: [] }
       ]
     }
-  },
+  ,
   config: {
     choices: {
       columns: 2,

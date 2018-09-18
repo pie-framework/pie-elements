@@ -40,6 +40,7 @@ export class Partial extends React.Component {
       categories,
       correctResponse
     } = this.props;
+
     return (
       <div className={classNames(classes.partial, className)}>
         <Panel
@@ -48,22 +49,28 @@ export class Partial extends React.Component {
           onToggleEnabled={this.toggleEnabled}
         >
           <Grid headings={['Category', 'Scoring']} size={'40% 1fr'}>
-            {categories.map((c, index) => (
-              <React.Fragment key={index}>
-                <Cell html={c.label} />
-                <Cell>
-                  <PartialForCategory
-                    key={index}
-                    category={c}
-                    correctResponse={correctResponse.find(
-                      r => r.category === c.id
-                    )}
-                    onChange={this.changeInnerPartial}
-                    partial={partial.rules.find(r => r.category === c.id)}
-                  />
-                </Cell>
-              </React.Fragment>
-            ))}
+            {categories.map((c, index) => {
+              const categoryPartial = partial.rules.find(
+                r => r.category === c.id
+              ) || { category: c.id, rules: [] };
+
+              return categoryPartial ? (
+                <React.Fragment key={index}>
+                  <Cell html={c.label} />
+                  <Cell>
+                    <PartialForCategory
+                      key={index}
+                      category={c}
+                      correctResponse={correctResponse.find(
+                        r => r.category === c.id
+                      )}
+                      onChange={this.changeInnerPartial}
+                      partial={categoryPartial}
+                    />
+                  </Cell>
+                </React.Fragment>
+              ) : null;
+            })}
           </Grid>
         </Panel>
       </div>
