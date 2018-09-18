@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.4.1...@pie-element/categorize@2.5.0) (2018-09-18)
+
+
+### Features
+
+* don't throw error if score config is empty ([d456b84](https://github.com/pie-framework/pie-elements/commit/d456b84))
+
+
+
+
 <a name="2.4.1"></a>
 ## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.4.0...@pie-element/categorize@2.4.1) (2018-09-17)
 
