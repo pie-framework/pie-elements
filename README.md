@@ -2,6 +2,13 @@
 
 A collection of pies. These packages are pie packages in that they have an optional `configure` and/or `controller` sub package.
 
+## Install
+
+```shell
+npm install
+lerna bootstrap
+```
+
 ### Commands
 
 | Action            | Notes                                                                   |
