@@ -5,8 +5,8 @@ A collection of pies. These packages are pie packages in that they have an optio
 ## Install
 
 ```shell
-yarn install
-lerna bootstrap
+yarn install # install monorepo dependencies
+lerna bootstrap # symlinks any dependencies, uses yarn workspaces to speed up install
 ```
 
 ### pie global
