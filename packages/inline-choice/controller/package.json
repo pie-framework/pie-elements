@@ -1,5 +1,6 @@
 {
   "name": "@pie-element/inline-choice-controller",
+  "private": true,
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
