@@ -1,8 +1,9 @@
 {
   "name": "@pie-element/graph-lines-configure",
+  "private": true,
   "version": "1.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "author": "",
   "dependencies": {
     "@material-ui/core": "^1.2.3",

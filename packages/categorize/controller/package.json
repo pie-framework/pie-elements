@@ -1,8 +1,6 @@
 {
   "name": "@pie-element/categorize-controller",
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "dependencies": {
     "@pie-lib/categorize": "^0.4.1"
   },

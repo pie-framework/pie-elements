@@ -1,5 +1,6 @@
 {
   "name": "@pie-element/point-intercept-configure",
+  "private": true,
   "version": "1.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -16,5 +17,6 @@
     "react-dom": "^16.3.2",
     "react-swipeable-views": "^0.12.17"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
 }

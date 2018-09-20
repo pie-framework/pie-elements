@@ -12,5 +12,6 @@
     "@pie-ui/point-intercept": "^1.1.1"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
 }

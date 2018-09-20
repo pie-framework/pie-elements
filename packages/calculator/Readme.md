@@ -1,1 +1,0 @@
-A draggable pie calculator.
