@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graph-lines-configure",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "main": "lib/index.js",
   "author": "",
@@ -19,7 +19,6 @@
     "react-dom": "^16.3.2",
     "react-swipeable-views": "^0.12.13"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "./node_modules/.bin/jest"
   },

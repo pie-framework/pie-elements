@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.3"></a>
+## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@3.1.2...@pie-element/point-intercept@3.1.3) (2018-09-20)
+
+
+### Bug Fixes
+
+* build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
+
+
+
+
+
 <a name="3.1.2"></a>
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@3.1.1...@pie-element/point-intercept@3.1.2) (2018-09-20)
 

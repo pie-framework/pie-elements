@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.0.3...@pie-element/inline-choice@2.0.4) (2018-09-20)
+
+
+### Bug Fixes
+
+* build fixes ([3c3a7f2](https://github.com/pie-framework/pie-elements/commit/3c3a7f2))
+* private flag ([50ab6fa](https://github.com/pie-framework/pie-elements/commit/50ab6fa))
+
+
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.0.2...@pie-element/inline-choice@2.0.3) (2018-08-06)
 
