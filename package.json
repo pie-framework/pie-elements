@@ -1,4 +1,5 @@
 {
+  "private": true,
   "scripts": {
     "lint": "./node_modules/.bin/eslint --ext .js --ext .jsx packages",
     "test": "jest",
@@ -10,7 +11,8 @@
   },
   "devDependencies": {
     "@pie-lib/test-utils": "^0.0.3",
-    "lerna": "^2.11.0",
+    "lerna": "^3.4.0",
+    "yarn": "^1.9.4",
     "eslint": "^4.19.1",
     "jest": "^23.0.0",
     "babel-eslint": "^8.2.3",
@@ -30,5 +32,10 @@
     "minimist": "^1.2.0",
     "@pie-framework/build-helper": "^1.0.3",
     "rimraf": "^2.6.2"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/*/configure",
+    "packages/*/controller"
+  ]
 }

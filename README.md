@@ -2,6 +2,21 @@
 
 A collection of pies. These packages are pie packages in that they have an optional `configure` and/or `controller` sub package.
 
+## Install
+
+```shell
+yarn install # install monorepo dependencies
+lerna bootstrap # symlinks any dependencies, uses yarn workspaces to speed up install
+```
+
+### pie global
+
+For some of the scripts you'll need the pie cli installed (note that you must use npm to install this)
+
+```shell
+npm install -g pie
+```
+
 ### Commands
 
 | Action            | Notes                                                                   |
