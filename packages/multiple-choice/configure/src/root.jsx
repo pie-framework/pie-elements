@@ -1,4 +1,4 @@
-import Main from './Main';
+import Main from './main';
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
