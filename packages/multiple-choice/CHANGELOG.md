@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.1.2...@pie-element/multiple-choice@2.1.3) (2018-10-10)
+
+
+### Bug Fixes
+
+* **editable-html-package-update:** updated the editable-html version ([4240cb8](https://github.com/pie-framework/pie-elements/commit/4240cb8))
+
+
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.1.1...@pie-element/multiple-choice@2.1.2) (2018-09-20)
 

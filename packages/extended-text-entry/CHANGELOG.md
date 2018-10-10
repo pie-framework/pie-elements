@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.3.2"></a>
+## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.1...@pie-element/extended-text-entry@3.3.2) (2018-10-10)
+
+
+### Bug Fixes
+
+* **editable-html-package-update:** updated the editable-html version ([4240cb8](https://github.com/pie-framework/pie-elements/commit/4240cb8))
+
+
+
+
+
 <a name="3.3.1"></a>
 ## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.0...@pie-element/extended-text-entry@3.3.1) (2018-09-20)
 
