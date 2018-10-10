@@ -781,7 +781,7 @@
     classnames "^2.2.5"
     lodash "^4.17.10"
 
-"@pie-lib/editable-html@^6.1.0", "@pie-lib/editable-html@^6.5.0", "@pie-lib/editable-html@^6.6.7", "@pie-lib/editable-html@^6.7.0":
+"@pie-lib/editable-html@^6.1.0", "@pie-lib/editable-html@^6.7.0":
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-6.7.0.tgz#98ad616408bb9eb6e627e78eaf3353d9df2f8d6a"
   dependencies:
@@ -799,6 +799,33 @@
     react-jss "^8.6.1"
     react-portal "^4.1.5"
     slate "^0.40.2"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^6.7.4":
+  version "6.7.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-6.7.4.tgz#584e694d64820902edd564551ebf789a0049b25b"
+  dependencies:
+    "@material-ui/core" "^1.4.1"
+    "@material-ui/icons" "^2.0.0"
+    "@pie-lib/math-input" "^4.2.3"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^3.1.0"
+    immutable "^3.8.2"
+    keycode "^2.2.0"
+    lodash "^4.17.10"
+    mathquill "git+https://github.com/luxp/mathquill-webpack.git"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.1.5"
+    slate "^0.36.2"
     slate-edit-list "^0.11.3"
     slate-edit-table "^0.17.0"
     slate-html-serializer "^0.6.12"
@@ -7773,13 +7800,27 @@ slate-react@^0.14.3:
     slate-plain-serializer "^0.5.26"
     slate-prop-types "^0.4.43"
 
-slate-schema-violations@^0.1.39:
+slate-schema-violations@^0.1.24, slate-schema-violations@^0.1.39:
   version "0.1.39"
   resolved "https://registry.yarnpkg.com/slate-schema-violations/-/slate-schema-violations-0.1.39.tgz#854ab5624136419cef4c803b1823acabe11f1c15"
 
 slate-soft-break@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/slate-soft-break/-/slate-soft-break-0.8.1.tgz#673d1b76799731edd7aedd5cfc5513c7b5234895"
+
+slate@^0.36.2:
+  version "0.36.2"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.36.2.tgz#63640fde050aa3b88342c2ffb665bc0e00be6239"
+  dependencies:
+    debug "^3.1.0"
+    direction "^0.1.5"
+    esrever "^0.2.0"
+    is-empty "^1.0.0"
+    is-plain-object "^2.0.4"
+    lodash "^4.17.4"
+    slate-dev-logger "^0.1.42"
+    slate-schema-violations "^0.1.24"
+    type-of "^2.0.1"
 
 slate@^0.40.2:
   version "0.40.2"
