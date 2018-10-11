@@ -10,15 +10,21 @@ export class InputHeader extends React.Component {
     className: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,
-    onDelete: PropTypes.func
+    onDelete: PropTypes.func,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className } = this.props;
+    const { onChange, label, classes, className, imageSupport } = this.props;
+
     return (
       <div className={classNames(classes.inputHeader, className)}>
         <EditableHtml
+          imageSupport={imageSupport}
           autoWidthToolbar
           label={'label'}
           markup={label}

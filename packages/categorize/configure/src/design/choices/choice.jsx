@@ -32,7 +32,11 @@ export class Choice extends React.Component {
     onDelete: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDragPreview: PropTypes.func.isRequired,
-    correctResponseCount: PropTypes.number.isRequired
+    correctResponseCount: PropTypes.number.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -60,7 +64,8 @@ export class Choice extends React.Component {
       choice,
       onDelete,
       connectDragSource,
-      connectDragPreview
+      connectDragPreview,
+      imageSupport
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -82,6 +87,7 @@ export class Choice extends React.Component {
         {connectDragPreview(
           <span>
             <InputHeader
+              imageSupport={imageSupport}
               label={choice.content}
               onChange={this.changeContent}
               onDelete={onDelete}

@@ -17,7 +17,11 @@ export class Choices extends React.Component {
     choices: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -55,7 +59,8 @@ export class Choices extends React.Component {
       onAdd,
       onDelete,
       config,
-      onConfigChange
+      onConfigChange,
+      imageSupport
     } = this.props;
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
@@ -78,6 +83,7 @@ export class Choices extends React.Component {
               choice={h}
               correctResponseCount={h.correctResponseCount}
               key={index}
+              imageSupport={imageSupport}
               onChange={this.changeChoice}
               onDelete={() => onDelete(h)}
             />

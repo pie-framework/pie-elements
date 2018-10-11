@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './main';
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent
+} from '@pie-framework/pie-configure-events';
 
 export default class CategorizeConfigure extends HTMLElement {
   set model(m) {
@@ -17,10 +21,26 @@ export default class CategorizeConfigure extends HTMLElement {
 
   connectedCallback() {}
 
+  /**
+   *
+   * @param {done, progress, file} handler
+   */
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   render() {
     const el = React.createElement(Main, {
       model: this._model,
-      onChange: this.onChange.bind(this)
+      onChange: this.onChange.bind(this),
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this)
+      }
     });
     ReactDOM.render(el, this);
   }
