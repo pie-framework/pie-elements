@@ -11,7 +11,8 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     model: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    imageSupport: PropTypes.object
   };
 
   static defaultProps = {};
@@ -37,10 +38,16 @@ export class Main extends React.Component {
         }
       };
     }
+
     return (
       <div className={classNames(classes.main, className)}>
         <Tabs>
-          <Design title="Design" model={model} onChange={onChange} />
+          <Design
+            imageSupport={this.props.imageSupport}
+            title="Design"
+            model={model}
+            onChange={onChange}
+          />
           <Scoring
             title="Scoring"
             scoring={model.scoring}
@@ -62,7 +69,8 @@ const StyledMain = withStyles(styles)(Main);
 class Stateful extends React.Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    imageSupport: PropTypes.object
   };
 
   constructor(props) {
@@ -83,7 +91,13 @@ class Stateful extends React.Component {
   };
 
   render() {
-    return <StyledMain model={this.state.model} onChange={this.onChange} />;
+    return (
+      <StyledMain
+        imageSupport={this.props.imageSupport}
+        model={this.state.model}
+        onChange={this.onChange}
+      />
+    );
   }
 }
 

@@ -31,7 +31,11 @@ export class Design extends React.Component {
     className: PropTypes.string,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    uid: PropTypes.string
+    uid: PropTypes.string,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -182,7 +186,7 @@ export class Design extends React.Component {
   };
 
   render() {
-    const { classes, className, model } = this.props;
+    const { classes, className, model, imageSupport } = this.props;
 
     const config = model.config || {};
     config.categories = config.categories || { columns: 2 };
@@ -218,6 +222,7 @@ export class Design extends React.Component {
           />
           <Divider />
           <Choices
+            imageSupport={imageSupport}
             choices={choices}
             config={config.choices}
             onConfigChange={this.changeChoicesConfig}
