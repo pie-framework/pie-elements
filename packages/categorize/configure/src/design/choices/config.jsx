@@ -15,12 +15,22 @@ const positionOptions = [
   {
     label: 'Above',
     value: 'above',
-    secondaryText: 'Label will be shown above choices'
+    secondaryText: 'Choices will be shown above categories'
   },
   {
     label: 'Below',
     value: 'below',
-    secondaryText: 'Label will be shown below choices'
+    secondaryText: 'Choices will be shown below categories'
+  },
+  {
+    label: 'Left',
+    value: 'left',
+    secondaryText: 'Choices will be shown to the left of the categories'
+  },
+  {
+    label: 'Right',
+    value: 'right',
+    secondaryText: 'Choices will be shown to the right of the categories'
   }
 ];
 
@@ -145,7 +155,7 @@ export class Config extends React.Component {
               onClick={this.handleClickPosition}
             >
               <ListItemText
-                primary="Label Position"
+                primary="Choices Position"
                 secondary={positionOption.secondaryText}
               />
             </ListItem>
