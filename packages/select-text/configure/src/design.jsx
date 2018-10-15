@@ -32,11 +32,14 @@ export class Design extends React.Component {
     });
   };
 
-  changeTokens = tokens => {
+  changeTokens = (tokens, mode) => {
     this.apply(u => {
       u.tokens = tokens;
+      u.mode = mode;
+
       const correctTokenCount = tokens.filter(t => t.correct).length;
       const max = isFinite(u.maxSelections) ? u.maxSelections : 0;
+
       u.maxSelections = Math.max(max, correctTokenCount);
     });
   };
@@ -89,6 +92,10 @@ export class Design extends React.Component {
             onChange={this.changeTokens}
           />
         </InputContainer>
+        <Chip
+          label={`Tokenizer Mode: ${model.mode ? model.mode : 'None'}`}
+          className={classes.chip}
+        />
         <Chip
           label={`Selections Available: ${model.tokens.length}`}
           className={classes.chip}

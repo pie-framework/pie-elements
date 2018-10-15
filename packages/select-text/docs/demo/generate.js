@@ -39,6 +39,7 @@ const base = extras =>
       },
       partialScoring: [{ numberOfCorrect: 1, scorePercentage: 25 }],
       maxSelections: 2,
+      mode: 'sentence',
       text:
         'Rachel cut out 8 stars in 6 minutes. Lovelle cut out 6 stars in 4 minutes. Rachel cut out 4 more stars than Lovelle. Lovelle and Rachel cut the same number of stars in 6 minutes.',
       tokens: tokens()
