@@ -915,6 +915,17 @@
     parse-english "^4.1.1"
     unist-util-inspect "^4.1.3"
 
+"@pie-lib/text-select@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.2.2.tgz#c514cd5fc64290ed47b71c20c8187885eed7ee0f"
+  dependencies:
+    "@pie-lib/style-utils" "^0.1.0"
+    classnames "^2.2.5"
+    invariant "^2.2.4"
+    lodash "^4.17.5"
+    parse-english "^4.1.1"
+    unist-util-inspect "^4.1.3"
+
 "@pie-lib/tools@^0.7.0":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/tools/-/tools-0.7.3.tgz#5cbf8676693579f95d69dbf9c56dc2d5c9bff4f7"
