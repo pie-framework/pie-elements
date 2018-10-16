@@ -50,8 +50,8 @@ exports[`config snapshot renders 1`] = `
         onClick={[Function]}
       >
         <WithStyles(ListItemText)
-          primary="Label Position"
-          secondary="Label will be shown above choices"
+          primary="Choices Position"
+          secondary="Choices will be shown above categories"
         />
       </WithStyles(ListItem)>
     </WithStyles(List)>
@@ -74,6 +74,20 @@ exports[`config snapshot renders 1`] = `
         selected={false}
       >
         Below
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="left"
+        onClick={[Function]}
+        selected={false}
+      >
+        Left
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="right"
+        onClick={[Function]}
+        selected={false}
+      >
+        Right
       </WithStyles(MenuItem)>
     </WithStyles(Menu)>
   </div>
