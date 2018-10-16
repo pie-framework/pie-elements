@@ -24,6 +24,9 @@ exports[`design snapshot renders 1`] = `
     />
   </Component>
   <WithStyles(Chip)
+    label="Tokenizer Mode: None"
+  />
+  <WithStyles(Chip)
     label="Selections Available: 0"
   />
   <WithStyles(Chip)
