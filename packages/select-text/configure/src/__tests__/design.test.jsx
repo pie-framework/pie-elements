@@ -43,18 +43,20 @@ describe('design', () => {
     });
 
     describe('changeTokens', () => {
-      assert('changeTokens', [[{ start: 0, end: 1, text: 'f' }]], m => ({
+      assert('changeTokens', [[{ start: 0, end: 1, text: 'f' }], 'words'], m => ({
         ...m,
         maxSelections: 0,
-        tokens: [{ start: 0, end: 1, text: 'f' }]
+        tokens: [{ start: 0, end: 1, text: 'f' }],
+        mode: 'words'
       }));
       assert(
         'changeTokens',
-        [[{ start: 0, end: 1, text: 'f', correct: true }]],
+        [[{ start: 0, end: 8, text: 'Foo bar.', correct: true }], 'sentences'],
         m => ({
           ...m,
           maxSelections: 1,
-          tokens: [{ start: 0, end: 1, text: 'f', correct: true }]
+          tokens: [{ start: 0, end: 8, text: 'Foo bar.', correct: true }],
+          mode: 'sentences'
         })
       );
     });
