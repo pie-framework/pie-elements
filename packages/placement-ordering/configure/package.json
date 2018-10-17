@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-ui/placement-ordering": "^4.2.5",
+    "@pie-ui/placement-ordering": "^4.3.2",
     "@pie-lib/scoring-config": "^3.1.1",
     "@pie-lib/config-ui": "^7.6.6",
     "react": "^16.3.2",
