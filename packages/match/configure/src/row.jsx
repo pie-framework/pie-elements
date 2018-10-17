@@ -13,17 +13,17 @@ import debug from 'debug';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
-let canDrag = false;
+export let canDrag = false;
 
 export class Row extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
     model: PropTypes.object.isRequired,
     row: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
     isDragging: PropTypes.bool.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
     onMoveRow: PropTypes.func.isRequired
@@ -185,7 +185,7 @@ const StyledRow = withStyles(styles)(Row);
 
 const NAME = 'row-config';
 
-const choiceSource = {
+export const choiceSource = {
   canDrag() {
     return canDrag;
   },
@@ -202,7 +202,7 @@ const StyledSource = DragSource(NAME, choiceSource, (connect, monitor) => ({
   isDragging: monitor.isDragging()
 }))(StyledRow);
 
-const choiceTarget = {
+export const choiceTarget = {
   hover() {
     log('[hover]');
   },

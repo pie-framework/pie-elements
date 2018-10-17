@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cx from 'classnames';
-import cloneDeep from 'lodash/cloneDeep';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';

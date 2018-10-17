@@ -5,7 +5,6 @@ import GeneralConfigBlock from '../general-config-block';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import SwipeableViews from 'react-swipeable-views';
 import Button from '@material-ui/core/Button';
-import Delete from '@material-ui/icons/Delete';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Input from '@material-ui/core/Input';
@@ -14,8 +13,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FeedbackConfig } from '@pie-lib/config-ui';
 import { InputCheckbox } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
+import { shallow } from 'enzyme';
+import { styles } from '../answer-config-block';
+import cloneDeep from 'lodash/cloneDeep';
 
-const defaultProps = {
+export const defaultProps = {
   model: {
     id: '1',
     element: 'match-element',
@@ -57,6 +59,7 @@ const defaultProps = {
     },
   }
 };
+const clonedDefaultProps = cloneDeep(defaultProps);
 
 describe('Configure', () => {
   let wrapper;
@@ -294,24 +297,60 @@ describe('AnswerConfigBlock', () => {
   let wrapper;
   let props;
   let component;
+  let topWrapper;
+  let onChange;
 
   beforeEach(() => {
+    onChange = jest.fn();
+
     props = {
-      model: defaultProps.model,
-      onChange: jest.fn(),
+      classes: styles,
+      model: clonedDefaultProps.model,
+      onChange: onChange,
       onAddRow: jest.fn(),
       onDeleteRow: jest.fn()
     };
 
     wrapper = shallowChild(AnswerConfigBlock, props, 1);
+    topWrapper = shallow(<AnswerConfigBlock {...props} />);
   });
 
-  it('renders correctly', () => {
-    component = wrapper();
+  describe('render', () => {
+    it('renders correctly', () => {
+      component = wrapper();
 
-    expect(component.find(Input).length).toBeGreaterThan(3);
-    expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
-    expect(component.find(Button).length).toBeGreaterThan(1);
-    expect(component.find(Delete).length).toBeGreaterThan(1);
+      expect(component.find(Input).length).toBeGreaterThan(2);
+      expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
+      expect(component.find(Button).length).toEqual(1);
+    });
+  });
+
+  describe('moveRow', () => {
+    it('calls onChange', () => {
+      component = topWrapper.dive().instance();
+
+      component.moveRow(0, 1);
+
+      expect(onChange).toBeCalledWith({
+        ...clonedDefaultProps.model,
+        rows: [{
+          id: 2,
+          title: 'Question Text 2',
+          values: [false, false]
+        }, {
+          id: 1,
+          title: 'Question Text 1',
+          values: [false, false]
+        }, {
+          id: 3,
+          title: 'Question Text 3',
+          values: [false, false]
+        }, {
+          id: 4,
+          title: 'Question Text 4',
+          values: [false, false]
+        }]
+      });
+    });
   });
 });
