@@ -13,25 +13,6 @@ import { swap } from '@pie-ui/placement-ordering';
 
 import debug from 'debug';
 
-/*const swap = (arr, fromIndex, toIndex) => {
-  log('[swap]', arr, fromIndex, toIndex);
-  if (
-    !arr ||
-    arr.length <= 1 ||
-    fromIndex === undefined ||
-    toIndex === undefined
-  ) {
-    throw new Error(
-      `swap requires a non-empty array, fromIndex, toIndex: ${arr}, ${fromIndex} ${toIndex}`
-    );
-  }
-  const update = cloneDeep(arr);
-  const tmp = arr[toIndex];
-  update[toIndex] = update[fromIndex];
-  update[fromIndex] = tmp;
-  return update;
-};*/
-
 const log = debug('pie-elements:match:configure');
 
 const styles = theme => ({
