@@ -10,6 +10,7 @@ import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
+import { withDragContext } from '@pie-lib/drag';
 
 const log = debug('@pie-element:match:configure');
 
@@ -203,7 +204,7 @@ class Configure extends React.Component {
   }
 }
 
-const ConfigureMain = withStyles(styles)(Configure);
+const ConfigureMain = withDragContext(withStyles(styles)(Configure));
 
 class StateWrapper extends React.Component {
   static propTypes = {

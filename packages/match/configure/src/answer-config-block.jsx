@@ -2,14 +2,17 @@ import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Delete from '@material-ui/icons/Delete';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
-import Radio from '@material-ui/core/Radio';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { InputCheckbox } from '@pie-lib/config-ui';
 import AddRow from './add-row';
+import Row from './row';
+import { swap } from '@pie-ui/placement-ordering';
+
+import debug from 'debug';
+
+const log = debug('pie-elements:match:configure');
 
 const styles = theme => ({
   container: {
@@ -72,6 +75,22 @@ class AnswerConfigBlock extends React.Component {
     onAddRow: PropTypes.func.isRequired
   };
 
+  moveRow = (from, to) => {
+    const { model, onChange } = this.props;
+    const newModel = { ...model };
+    const rows = newModel.rows;
+
+    log('[moveRow]: ', from, to);
+
+    const update = swap(rows, from, to);
+
+    log('update: ', update);
+
+    newModel.rows = update;
+
+    onChange(newModel);
+  };
+
   onChange = (name, isBoolean) => event => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
@@ -79,34 +98,6 @@ class AnswerConfigBlock extends React.Component {
     newModel[name] = isBoolean ? event.target.checked : event.target.value;
 
     onChange(newModel, name);
-  };
-
-  onDeleteRow = (idx) => () => {
-    this.props.onDeleteRow(idx)
-  };
-
-  onRowValueChange = (rowIndex, rowValueIndex) => event => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    if (model.responseType === 'radio') {
-      for (let i = 0; i < newModel.rows[rowIndex].values.length; i++) {
-        newModel.rows[rowIndex].values[i] = false;
-      }
-    }
-
-    newModel.rows[rowIndex].values[rowValueIndex] = event.target.checked;
-
-    onChange(newModel);
-  };
-
-  onRowTitleChange = rowIndex => event => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    newModel.rows[rowIndex].title = event.target.value;
-
-    onChange(newModel);
   };
 
   onHeaderChange = headerIndex => event => {
@@ -148,40 +139,15 @@ class AnswerConfigBlock extends React.Component {
           </div>
           <hr className={classes.separator} />
           {model.rows.map((row, idx) => (
-            <div key={idx}>
-              <div className={classes.rowContainer}>
-                  <div className={cx(classes.rowItem, classes.questionText)}>
-                    <Input
-                      type="text"
-                      disableUnderline
-                      onChange={this.onRowTitleChange(idx)}
-                      value={row.title}
-                      placeholder="Enter Value"
-                    />
-                  </div>
-                  {row.values.map((rowValue, rowIdx) => (
-                    <div key={rowIdx} className={classes.rowItem}>
-                      {model.responseType === 'radio' ? (
-                        <Radio
-                          onChange={this.onRowValueChange(idx, rowIdx)}
-                          checked={rowValue === true}
-                        />
-                      ) : (
-                        <Checkbox
-                          onChange={this.onRowValueChange(idx, rowIdx)}
-                          checked={rowValue === true}
-                        />
-                      )}
-                    </div>
-                  ))}
-                <div className={classes.deleteIcon}>
-                  <Button onClick={this.onDeleteRow(idx)}>
-                    <Delete className={classes.deleteIcon} />
-                  </Button>
-                </div>
-              </div>
-              <hr className={classes.separator} />
-            </div>
+            <Row
+              key={idx}
+              model={model}
+              row={row}
+              idx={idx}
+              onDeleteRow={this.props.onDeleteRow}
+              onChange={this.props.onChange}
+              onMoveRow={this.moveRow}
+            />
           ))}
           <AddRow onAddClick={onAddRow} />
           <div className={classes.checkboxContainer}>
