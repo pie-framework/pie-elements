@@ -1,17 +1,17 @@
 {
   "name": "@pie-element/placement-ordering-configure",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "private": true,
   "main": "lib/index.js",
   "dependencies": {
-    "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-ui/placement-ordering": "^4.3.2",
-    "@pie-lib/scoring-config": "^3.1.1",
-    "@pie-lib/config-ui": "^7.6.6",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
-    "nested-property": "^0.0.7"
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/config-ui": "^7.6.6",
+    "@pie-lib/scoring-config": "^3.1.1",
+    "@pie-ui/placement-ordering": "^4.3.2",
+    "nested-property": "^0.0.7",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   }
 }

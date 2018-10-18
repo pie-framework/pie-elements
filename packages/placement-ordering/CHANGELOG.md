@@ -3,7 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-      <a name="3.0.4"></a>
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.0.4...@pie-element/placement-ordering@3.1.0) (2018-10-18)
+
+
+### Features
+
+* **ch467:** updated 2 packages ([04fdd85](https://github.com/pie-framework/pie-elements/commit/04fdd85))
+
+
+
+
+
+<a name="3.0.4"></a>
 ## [3.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.0.3...@pie-element/placement-ordering@3.0.4) (2018-08-06)
 
 
