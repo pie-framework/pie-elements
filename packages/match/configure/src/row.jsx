@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
+import EditableHtml from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -26,7 +27,11 @@ export class Row extends React.Component {
     onChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
-    onMoveRow: PropTypes.func.isRequired
+    onMoveRow: PropTypes.func.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -35,11 +40,11 @@ export class Row extends React.Component {
     document.addEventListener('mouseup', this.onMouseUpOnHandle);
   }
 
-  onRowTitleChange = rowIndex => event => {
+  onRowTitleChange = rowIndex => value => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel.rows[rowIndex].title = event.target.value;
+    newModel.rows[rowIndex].title = value;
 
     onChange(newModel);
   };
@@ -74,6 +79,7 @@ export class Row extends React.Component {
   render() {
     const {
       classes,
+      imageSupport,
       connectDragSource,
       connectDropTarget,
       isDragging,
@@ -96,12 +102,14 @@ export class Row extends React.Component {
         </span>
         <div className={classes.rowContainer}>
           <div className={classNames(classes.rowItem, classes.questionText)}>
-            <Input
-              type="text"
+            <EditableHtml
+              imageSupport={imageSupport}
+              autoWidthToolbar
               disableUnderline
+              label={'label'}
+              markup={row.title}
               onChange={this.onRowTitleChange(idx)}
-              value={row.title}
-              placeholder="Enter Value"
+              className={classes.editor}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
@@ -162,7 +170,10 @@ const styles = theme => ({
   rowItem: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    '&> div': {
+      width: '100%'
+    }
   },
   deleteIcon: {
     flex: 0.5,
