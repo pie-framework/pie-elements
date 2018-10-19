@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.1.0...@pie-element/match@1.2.0) (2018-10-19)
+
+
+### Features
+
+* **ch467:** changed the regular input to an editable-html component and added image support ([5521b15](https://github.com/pie-framework/pie-elements/commit/5521b15))
+
+
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.0.5...@pie-element/match@1.1.0) (2018-10-18)
 
