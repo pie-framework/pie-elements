@@ -30,7 +30,11 @@ class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     classes: PropTypes.object,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   constructor(props) {
@@ -145,7 +149,7 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { classes, model, imageSupport } = this.props;
 
     log('[render] model', model);
 
@@ -181,6 +185,7 @@ class Configure extends React.Component {
               />
               <AnswerConfigBlock
                 model={model}
+                imageSupport={imageSupport}
                 onChange={this.onChange}
                 onAddRow={this.onAddRow}
                 onDeleteRow={this.onDeleteRow}
@@ -227,8 +232,9 @@ class StateWrapper extends React.Component {
   }
 
   render() {
+    const { imageSupport } = this.props;
     const { model } = this.state;
-    return <ConfigureMain model={model} onModelChanged={this.onModelChanged} />;
+    return <ConfigureMain imageSupport={imageSupport} model={model} onModelChanged={this.onModelChanged} />;
   }
 }
 

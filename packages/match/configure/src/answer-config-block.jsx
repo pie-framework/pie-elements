@@ -72,7 +72,11 @@ class AnswerConfigBlock extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
-    onAddRow: PropTypes.func.isRequired
+    onAddRow: PropTypes.func.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   moveRow = (from, to) => {
@@ -110,7 +114,7 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, onAddRow } = this.props;
+    const { classes, model, onAddRow, imageSupport } = this.props;
 
     return (
       <div className={classes.container}>
@@ -147,6 +151,7 @@ class AnswerConfigBlock extends React.Component {
               onDeleteRow={this.props.onDeleteRow}
               onChange={this.props.onChange}
               onMoveRow={this.moveRow}
+              imageSupport={imageSupport}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
