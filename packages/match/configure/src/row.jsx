@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { Checkbox } from '@pie-lib/config-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
-import Input from '@material-ui/core/Input';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
