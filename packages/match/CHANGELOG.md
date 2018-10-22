@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.2.0...@pie-element/match@1.3.0) (2018-10-22)
+
+
+### Features
+
+* **ch467:** removed unnecessary import and updated the version of the packages for pie-lib/editable-html and pie-ui/match ([e340627](https://github.com/pie-framework/pie-elements/commit/e340627))
+
+
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.1.0...@pie-element/match@1.2.0) (2018-10-19)
 
