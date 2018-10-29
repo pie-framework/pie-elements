@@ -72,28 +72,31 @@ export function outcome(config, session, env) {
   return new Promise((resolve, reject) => {
     log('outcome...');
 
-    const choices = compact(
-      (session.value || []).map(v => config.choices.find(c => c.value === v))
-    );
-    const correct = choices.filter(isCorrect);
-    const totalCorrect = config.choices.filter(isCorrect);
-    const allCorrect = correct.length === totalCorrect.length;
-    if (allCorrect) {
-      resolve({
-        score: 1
-      });
-    } else if (correct.length === 0) {
-      resolve({ score: 0 });
-    } else {
-      if (config.partialScoring) {
-        const rule = config.partialScoring.find(
-          ps => ps.numberOfCorrect === correct.length
-        );
-        const score = scoreFromRule(rule, correct / totalCorrect);
-        resolve({ score });
-      } else {
-        resolve({ score: 0 });
+    const choices = (session.value || []).reduce((obj, c) => {
+      obj[c] = true;
+
+      return obj;
+    }, {});
+    const maxScore = config.choices.length;
+    let score = maxScore;
+
+    config.choices.forEach((c) => {
+      if (
+        (isCorrect(c) && !choices[c.value]) ||
+        (!isCorrect(c) && choices[c.value])
+      ) {
+        score -= 1;
       }
+    });
+
+    score = (score / maxScore).toFixed(2).replace(/[.,]00$/, '');
+
+    if (!config.partialScoring && score !== '1') {
+      score = 0;
     }
+
+    resolve({
+      score: parseFloat(score)
+    });
   });
 }

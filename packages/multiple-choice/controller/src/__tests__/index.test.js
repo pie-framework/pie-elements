@@ -73,23 +73,23 @@ describe('controller', () => {
         const choices = question.choices.concat({ value: 'c', correct: true });
         question = {
           ...question,
-          partialScoring: [{ numberOfCorrect: 1, scorePercentage: 34.5 }],
+          partialScoring: true,
           choices
         };
       });
 
-      it('returns a score of 0', async () => {
+      it('returns a score of 0.33', async () => {
         const result = await outcome(question, {}, {});
-        expect(result.score).toEqual(0);
+        expect(result.score).toEqual(0.33);
       });
 
-      it('returns score of 0.345', async () => {
+      it('returns score of 0.67', async () => {
         const result = await outcome(
           question,
           { value: ['apple'] },
           { mode: 'gather' }
         );
-        expect(result.score).toBeCloseTo(0.345);
+        expect(result.score).toBeCloseTo(0.67);
       });
     });
   });

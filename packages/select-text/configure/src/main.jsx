@@ -35,9 +35,7 @@ export class Main extends React.Component {
         />
         <PartialScoring
           title={'Scoring'}
-          numberOfCorrectResponses={
-            model.tokens.filter(t => t.correct === true).length
-          }
+          label={model.partialScoringLabel}
           partialScoring={model.partialScoring}
           onChange={this.changePartialScoring}
         />

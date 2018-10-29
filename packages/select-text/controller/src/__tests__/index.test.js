@@ -97,14 +97,14 @@ describe('outcome', () => {
     }
   );
   assert(
-    'score 0.4 for partially-correct and partialScoring config',
+    'score 0.50 for partially-correct and partialScoring config',
     q({
-      partialScoring: [{ numberOfCorrect: 1, scorePercentage: 40 }]
+      partialScoring: true
     }),
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {
-      score: 0.4
+      score: "0.50"
     }
   );
 });

@@ -8,8 +8,9 @@ const getResponseCorrectness = (
   answers
 ) => {
   const allowPartialScores = model.allowPartialScoring;
-  const partialScores = model.partialScoring;
+  const partialScoring = model.partialScoring;
   const rows = model.rows;
+  let totalCorrectAnswers = 0;
   let correctAnswers = 0;
 
   if (!answers || Object.keys(answers).length === 0) {
@@ -19,26 +20,30 @@ const getResponseCorrectness = (
     };
   }
 
-  rows.forEach(row => {
-    const isCorrectAnswer = answers[row.id] && JSON.stringify(answers[row.id]) === JSON.stringify(row.values);
+  if (rows.length) {
+    totalCorrectAnswers += rows.length * (model.layout - 1);
+  }
 
-    if (isCorrectAnswer) {
-      correctAnswers += 1;
+  rows.forEach(row => {
+    const answer = answers[row.id];
+
+    if (answer) {
+      row.values.forEach((v, i) => {
+        if (answer[i] === v) {
+          correctAnswers += 1;
+        }
+      });
     }
   });
 
-  if (rows.length === correctAnswers) {
+  if (totalCorrectAnswers === correctAnswers) {
     return { correctness: 'correct', score: '100%' };
   } else if (correctAnswers === 0) {
     return { correctness: 'incorrect', score: '0%' };
-  } else if (allowPartialScores && partialScores && partialScores.length) {
+  } else if (allowPartialScores && partialScoring) {
     return {
       correctness: 'partial',
-      score: `${(
-        partialScores.find(
-          partialScore => partialScore.numberOfCorrect === correctAnswers
-        ) || {}
-      ).scorePercentage || 0}%`
+      score: `${(correctAnswers / totalCorrectAnswers * 100).toFixed(2).replace(/[.,]00$/, '')}%`
     };
   }
 

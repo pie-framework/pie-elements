@@ -24,7 +24,7 @@ module.exports = {
         values: [false, false]
       }],
       shuffled: false,
-      partialScoring: [],
+      partialScoring: false,
       layout: 3,
       headers: ['Column 1', 'Column 2', 'Column 3'],
       responseType: 'radio',

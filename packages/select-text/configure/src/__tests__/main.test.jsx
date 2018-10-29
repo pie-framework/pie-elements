@@ -21,10 +21,10 @@ describe('main', () => {
   describe('logic', () => {
     describe('changePartialScoring', () => {
       it('calls onChange', () => {
-        w.instance().changePartialScoring([{ foo: 'foo' }]);
+        w.instance().changePartialScoring(true);
         expect(onChange).toBeCalledWith({
           ...getModel(),
-          partialScoring: [{ foo: 'foo' }]
+          partialScoring: true
         });
       });
     });

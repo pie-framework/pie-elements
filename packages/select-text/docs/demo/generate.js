@@ -37,7 +37,7 @@ const base = extras =>
           default: 'Nearly'
         }
       },
-      partialScoring: [{ numberOfCorrect: 1, scorePercentage: 25 }],
+      partialScoring: false,
       maxSelections: 2,
       mode: 'sentence',
       text:

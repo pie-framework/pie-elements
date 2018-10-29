@@ -12,7 +12,6 @@ exports[`main snapshot renders 1`] = `
     title="Design"
   />
   <Component
-    numberOfCorrectResponses={0}
     onChange={[Function]}
     title="Scoring"
   />
