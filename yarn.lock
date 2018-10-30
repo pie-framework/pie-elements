@@ -764,6 +764,19 @@
     lodash "^4.17.10"
     prop-types "^15.6.1"
 
+"@pie-lib/config-ui@^7.6.22":
+  version "7.6.22"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.6.22.tgz#7d692488b2d7c127c85217080fa5fe735283845e"
+  dependencies:
+    "@material-ui/core" "^1.3.0"
+    "@material-ui/icons" "^1.1.0"
+    "@pie-lib/editable-html" "^6.7.6"
+    "@pie-lib/icons" "^2.2.0"
+    classnames "^2.2.6"
+    debug "^3.0.1"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+
 "@pie-lib/correct-answer-toggle@2.1.0", "@pie-lib/correct-answer-toggle@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.1.0.tgz#7c5cc9b105fa59ed7b47bb43005e4f5b63379bf2"
@@ -862,6 +875,34 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
+"@pie-lib/editable-html@^6.7.6":
+  version "6.7.6"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-6.7.6.tgz#eed6fb8c2b53e736e0105b4c796ec6b17ac3ed4d"
+  dependencies:
+    "@material-ui/core" "^1.4.1"
+    "@material-ui/icons" "^2.0.0"
+    "@pie-lib/math-input" "^4.2.3"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^3.1.0"
+    immutable "^3.8.2"
+    keycode "^2.2.0"
+    lodash "^4.17.10"
+    mathquill "git+https://github.com/luxp/mathquill-webpack.git"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.1.5"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
 "@pie-lib/feedback@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.4.1.tgz#07daba2840166945bffadaa47355f91051506566"
@@ -912,13 +953,24 @@
     debug "^3.1.0"
     react-transition-group "^2.3.1"
 
-"@pie-lib/scoring-config@^3.1.1", "@pie-lib/scoring-config@^3.1.8", "@pie-lib/scoring-config@^3.2.0":
+"@pie-lib/scoring-config@^3.1.1", "@pie-lib/scoring-config@^3.1.8":
   version "3.2.10"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.2.10.tgz#784cd250891976f930b320d023dcbafc9419696a"
   dependencies:
     "@material-ui/core" "^1.0.0-rc.1"
     "@material-ui/icons" "^1.0.0-rc.0"
     "@pie-lib/config-ui" "^7.6.18"
+    classnames "^2.2.6"
+    debug "^3.1.0"
+    lodash "^4.17.4"
+
+"@pie-lib/scoring-config@^3.2.15":
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.2.15.tgz#0c4d26db39747423a28d4ff609b760be23a524d9"
+  dependencies:
+    "@material-ui/core" "^1.0.0-rc.1"
+    "@material-ui/icons" "^1.0.0-rc.0"
+    "@pie-lib/config-ui" "^7.6.22"
     classnames "^2.2.6"
     debug "^3.1.0"
     lodash "^4.17.4"
@@ -7775,6 +7827,12 @@ slate-base64-serializer@^0.2.45:
 slate-dev-environment@^0.1.4:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/slate-dev-environment/-/slate-dev-environment-0.1.6.tgz#ff22b40ef4cc890ff7706b6b657abc276782424f"
+  dependencies:
+    is-in-browser "^1.1.3"
+
+slate-dev-environment@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/slate-dev-environment/-/slate-dev-environment-0.2.0.tgz#c43f4a5e13cccc16ad4c3015c8ad182b6e5b5b3a"
   dependencies:
     is-in-browser "^1.1.3"
 
