@@ -104,7 +104,7 @@ describe('outcome', () => {
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {
-      score: "0.50"
+      score: 0.5
     }
   );
 });

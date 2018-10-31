@@ -60,11 +60,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness).toEqual(undefined);
-    });
-
-    it('returns undefined for correstResponse ', () => {
-      expect(result.correctResponse).toEqual(undefined);
+      expect(result.correctness.correctness).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
@@ -85,11 +81,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness).toEqual(undefined);
-    });
-
-    it('returns undefined for correstResponse ', () => {
-      expect(result.correctResponse).toEqual(undefined);
+      expect(result.correctness.correctness).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {
@@ -232,7 +224,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('62.50%');
+      expect(result.correctness.score).toEqual('63%');
 
       session = {
         answers: {

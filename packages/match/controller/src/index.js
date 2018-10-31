@@ -12,7 +12,7 @@ const getResponseCorrectness = (
   const rows = model.rows;
 
   if (!answers || Object.keys(answers).length === 0) {
-    return 'empty';
+    return 'unanswered';
   }
 
   const totalCorrectAnswers = getTotalCorrect(model);
