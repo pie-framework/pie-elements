@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.1.3...@pie-element/multiple-choice@2.2.0) (2018-10-31)
+
+
+### Features
+
+* **ch497:** updated the partial scoring for 3 packages: match, select-text and multiple-choice ([5a46b06](https://github.com/pie-framework/pie-elements/commit/5a46b06))
+* **choice-interaction-update:** made the requested changes for the multiple-choice package ([d03dc1a](https://github.com/pie-framework/pie-elements/commit/d03dc1a))
+* **choice-interaction-update:** updated the partial scoring package version for 3 packages: match, select-text and multiple-choice (ch497) ([b1f2803](https://github.com/pie-framework/pie-elements/commit/b1f2803))
+
+
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.1.2...@pie-element/multiple-choice@2.1.3) (2018-10-10)
 
