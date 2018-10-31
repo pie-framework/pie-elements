@@ -65,7 +65,7 @@ export const outcome = (question, session, env) => {
       const getPartialScore = () => {
         const count = getCorrectCount(question.tokens, session.selectedTokens);
 
-        return (count / totalCorrect.length).toFixed(2).replace(/[.,]00$/, '');
+        return parseFloat((count / totalCorrect.length).toFixed(2));
       };
       const out = {
         score:
@@ -83,6 +83,7 @@ export const outcome = (question, session, env) => {
     }
   });
 };
+
 export const model = (question, session, env) => {
   return new Promise((resolve, reject) => {
     log('[model]', 'question: ', question);
