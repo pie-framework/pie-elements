@@ -8,63 +8,105 @@ const getResponseCorrectness = (
   answers
 ) => {
   const allowPartialScores = model.allowPartialScoring;
-  const partialScores = model.partialScoring;
+  const partialScoring = model.partialScoring;
   const rows = model.rows;
-  let correctAnswers = 0;
 
   if (!answers || Object.keys(answers).length === 0) {
-    return {
-      correctness: 'empty',
-      score: 0
-    };
+    return 'unanswered';
   }
 
-  rows.forEach(row => {
-    const isCorrectAnswer = answers[row.id] && JSON.stringify(answers[row.id]) === JSON.stringify(row.values);
+  const totalCorrectAnswers = getTotalCorrect(model);
+  const correctAnswers = getCorrectSelected(rows, answers);
 
-    if (isCorrectAnswer) {
-      correctAnswers += 1;
+  if (totalCorrectAnswers === correctAnswers) {
+    return  'correct';
+  } else if (correctAnswers === 0) {
+    return 'incorrect';
+  } else if (allowPartialScores && partialScoring) {
+    return 'partial';
+  }
+
+  return 'incorrect';
+};
+
+const getCorrectness = (question, env, answers) => {
+  if (env.mode === 'evaluate') {
+    return getResponseCorrectness(
+      question,
+      answers
+    );
+  }
+};
+
+const getCorrectSelected = (rows, answers) => {
+  let correctAnswers = 0;
+
+  rows.forEach(row => {
+    const answer = answers[row.id];
+
+    if (answer) {
+      row.values.forEach((v, i) => {
+        if (answer[i] === v) {
+          correctAnswers += 1;
+        }
+      });
     }
   });
 
-  if (rows.length === correctAnswers) {
-    return { correctness: 'correct', score: '100%' };
-  } else if (correctAnswers === 0) {
-    return { correctness: 'incorrect', score: '0%' };
-  } else if (allowPartialScores && partialScores && partialScores.length) {
-    return {
-      correctness: 'partial',
-      score: `${(
-        partialScores.find(
-          partialScore => partialScore.numberOfCorrect === correctAnswers
-        ) || {}
-      ).scorePercentage || 0}%`
-    };
-  }
+  return correctAnswers;
+};
 
-  return { correctness: 'incorrect', score: '0%' };
+const getTotalCorrect = (question) => {
+  return (question.rows.length || 0) * (question.layout - 1);
+};
+
+const getPartialScore = (question, answers) => {
+  const count = getCorrectSelected(question.rows, answers);
+  const totalCorrect = getTotalCorrect(question);
+
+  return parseFloat((count / totalCorrect).toFixed(2));
+};
+
+const getOutComeScore = (question, env, answers) => {
+  const correctness = getCorrectness(
+    question,
+    env,
+    answers
+  );
+
+  return (
+    correctness === 'correct'
+      ? 1
+      : correctness === 'partial' &&
+      question.partialScoring
+      ? getPartialScore(question, answers)
+      : 0
+  );
+};
+
+export const outcome = (question, session, env) => {
+  return new Promise((resolve, reject) => {
+    if (env.mode !== 'evaluate') {
+      resolve({ score: undefined, completed: undefined });
+    } else {
+      const out = {
+        score: getOutComeScore(question, env, session.answers)
+      };
+
+      resolve(out);
+    }
+  });
 };
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const getCorrectness = () => {
-      if (env.mode === 'evaluate') {
-        if (!session.answers || Object.keys(session.answers).length === 0) {
-          return {
-            correctness: 'unanswered',
-            score: '0%'
-          };
-        }
-
-        return getResponseCorrectness(
-          question,
-          session.answers
-        );
-      }
-    };
-
-    const correctInfo = getCorrectness();
+    const correctness = getCorrectness(question, env, session.answers);
     const correctResponse = {};
+    const score =  `${getOutComeScore(question, env, session.answers) * 100}%`;
+    const correctInfo = {
+      score,
+      correctness
+    };
 
     question.rows.forEach(row => {
       correctResponse[row.id] = row.values;
@@ -85,7 +127,7 @@ export function model(question, session, env) {
       };
 
       const out = Object.assign(base, {
-        correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
+        correctResponse
       });
       log('out: ', out);
       resolve(out);

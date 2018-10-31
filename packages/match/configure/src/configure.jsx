@@ -140,11 +140,7 @@ class Configure extends React.Component {
   };
 
   onPartialScoringChange = partialScoring => {
-    this.props.model.partialScoring = partialScoring.map(partialScore => ({
-      numberOfCorrect: partialScore.numberOfCorrect || '',
-      scorePercentage: partialScore.scorePercentage || ''
-    }));
-
+    this.props.model.partialScoring = partialScoring;
     this.props.onModelChanged(this.props.model);
   };
 
@@ -198,8 +194,8 @@ class Configure extends React.Component {
           </div>
           <div className={classes.tab}>
             <PartialScoringConfig
-              numberOfCorrectResponses={model.rows.length}
               partialScoring={model.partialScoring}
+              label={model.partialScoringLabel}
               onChange={this.onPartialScoringChange}
               />
           </div>

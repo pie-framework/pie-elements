@@ -25,7 +25,7 @@ describe('model', () => {
       values: [false, false]
     }],
     shuffled: false,
-    partialScoring: [],
+    partialScoring: false,
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],
     responseType: 'radio',
@@ -60,11 +60,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness).toEqual(undefined);
-    });
-
-    it('returns undefined for correstResponse ', () => {
-      expect(result.correctResponse).toEqual(undefined);
+      expect(result.correctness.correctness).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
@@ -85,11 +81,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness).toEqual(undefined);
-    });
-
-    it('returns undefined for correstResponse ', () => {
-      expect(result.correctResponse).toEqual(undefined);
+      expect(result.correctness.correctness).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {
@@ -159,11 +151,7 @@ describe('model', () => {
       question = mkQuestion({
         ...defaultModel,
         allowPartialScoring: true,
-        partialScoring: [
-          { numberOfCorrect: 1, scorePercentage: 50 },
-          { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+        partialScoring: true
       });
 
       session = {
@@ -175,7 +163,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('50%');
+      expect(result.correctness.score).toEqual('25%');
 
       session = {
         answers: {
@@ -186,7 +174,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('50%');
+      expect(result.correctness.score).toEqual('25%');
 
       session = {
         answers: {
@@ -198,7 +186,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('60%');
+      expect(result.correctness.score).toEqual('50%');
 
       session = {
         answers: {
@@ -210,7 +198,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('60%');
+      expect(result.correctness.score).toEqual('50%');
 
       session = {
         answers: {
@@ -223,7 +211,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('70%');
+      expect(result.correctness.score).toEqual('75%');
 
       session = {
         answers: {
@@ -236,7 +224,7 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('60%');
+      expect(result.correctness.score).toEqual('63%');
 
       session = {
         answers: {
@@ -256,11 +244,7 @@ describe('model', () => {
       question = mkQuestion({
         ...defaultModel,
         allowPartialScoring: true,
-        partialScoring: [
-          { numberOfCorrect: 1, scorePercentage: 50 },
-          { numberOfCorrect: 2, scorePercentage: 60 },
-          { numberOfCorrect: 3, scorePercentage: 70 }
-        ]
+        partialScoring: true
       });
 
       session = {
@@ -316,7 +300,7 @@ describe('model', () => {
       question = mkQuestion({
         ...defaultModel,
         allowPartialScoring: false,
-        partialScoring: []
+        partialScoring: false
       });
 
       session = {

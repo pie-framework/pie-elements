@@ -122,6 +122,7 @@ export class Row extends React.Component {
                 <Checkbox
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
+                  label={''}
                 />
               )}
             </div>

@@ -71,29 +71,25 @@ export const scoreFromRule = (rule, fallback) => {
 export function outcome(config, session, env) {
   return new Promise((resolve, reject) => {
     log('outcome...');
+    const maxScore = config.choices.length;
 
-    const choices = compact(
-      (session.value || []).map(v => config.choices.find(c => c.value === v))
-    );
-    const correct = choices.filter(isCorrect);
-    const totalCorrect = config.choices.filter(isCorrect);
-    const allCorrect = correct.length === totalCorrect.length;
-    if (allCorrect) {
-      resolve({
-        score: 1
-      });
-    } else if (correct.length === 0) {
+    const chosen = c => !!(session.value || []).find(v => v === c.value);
+    const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
+    const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
+    const correctCount = config.choices.reduce((total, choice) => {
+      if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
+        return total - 1;
+      } else {
+        return total;
+      }
+    }, config.choices.length);
+
+    if (!config.partialScoring && correctCount < maxScore) {
       resolve({ score: 0 });
     } else {
-      if (config.partialScoring) {
-        const rule = config.partialScoring.find(
-          ps => ps.numberOfCorrect === correct.length
-        );
-        const score = scoreFromRule(rule, correct / totalCorrect);
-        resolve({ score });
-      } else {
-        resolve({ score: 0 });
-      }
+      const scoreString = ( correctCount / config.choices.length ).toFixed(2);
+
+      resolve( {score: parseFloat( scoreString ) });
     }
   });
 }
