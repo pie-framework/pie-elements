@@ -80,7 +80,15 @@ export function outcome(config, session, env) {
     const maxScore = config.choices.length;
     let score = maxScore;
 
-    config.choices.forEach((c) => {
+  const chosen = c => !!(session.value || []).find( v => v === c.value);
+  const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
+  const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
+  const correctCount = config.choices.reduce( (total, choice) => {
+    if( correctAndNotChosen(c) || incorrectAndChosen(c) ) {
+      return total - 1;
+    } else {
+      return total;
+  }, config.choices.length );
       if (
         (isCorrect(c) && !choices[c.value]) ||
         (!isCorrect(c) && choices[c.value])
