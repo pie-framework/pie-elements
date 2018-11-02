@@ -44,5 +44,19 @@ exports.model = (id, element) => ({
   partialScoring: false,
   partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
           that is correctly unchecked will be worth 1 point.
-          The maximum points is the total number of answer choices.`
+          The maximum points is the total number of answer choices.`,
+  config: {
+    /**
+     * These are the configurable options
+     */
+    /*promptLabel : 'Item Stem',
+    responseTypeLabel: 'Type of Answer',
+    choicesLabel: 'Answer Choice',
+    addChoiceButtonLabel: 'Add New Choice',
+    enableSelectChoiceLabel: false,
+    enableSelectResponseType: false,
+    enableAddChoice: false,
+    enableAddFeedBack: false,
+    enableDeleteChoice: false*/
+  }
 });

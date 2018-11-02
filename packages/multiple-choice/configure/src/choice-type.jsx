@@ -4,7 +4,7 @@ import { TwoChoice } from '@pie-lib/config-ui';
 
 export const ChoiceType = props => {
   let choiceProps = {
-    header: 'Response Type',
+    header: props.header,
     defaultSelected: 'radio',
     value: props.value,
     onChange: props.onChange,
@@ -22,7 +22,7 @@ export const ChoiceType = props => {
 
 export const KeyType = props => {
   let choiceProps = {
-    header: 'Choice Labels',
+    header: props.header,
     defaultSelected: 'numbers',
     value: props.value,
     onChange: props.onChange,
