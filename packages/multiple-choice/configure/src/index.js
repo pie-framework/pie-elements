@@ -28,7 +28,7 @@ const prepareCustomizationObject = (model) => {
 
   return {
     ...model,
-    config: defaults(model.config, defaultValues)
+    configure: defaults(model.configure, defaultValues)
   };
 };
 

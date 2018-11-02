@@ -45,7 +45,7 @@ exports.model = (id, element) => ({
   partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
           that is correctly unchecked will be worth 1 point.
           The maximum points is the total number of answer choices.`,
-  config: {
+  configure: {
     /**
      * These are the configurable options
      */

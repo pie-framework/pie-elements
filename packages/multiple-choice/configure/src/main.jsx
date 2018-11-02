@@ -41,7 +41,7 @@ const Design = withStyles(styles)(props => {
     onAddChoice,
     imageSupport
   } = props;
-  const { config: {
+  const { configure: {
     promptLabel,
     addChoiceButtonLabel,
     enableAddChoice,
@@ -91,7 +91,7 @@ const Design = withStyles(styles)(props => {
 const Basics = props => {
   log('[Basics] props', props);
   const { classes, model, onChoiceModeChanged, onKeyModeChanged } = props;
-  const { config: {
+  const { configure: {
     responseTypeLabel,
     choicesLabel,
     enableSelectResponseType,
