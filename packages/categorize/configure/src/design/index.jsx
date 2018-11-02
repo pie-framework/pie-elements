@@ -211,6 +211,7 @@ export class Design extends React.Component {
             appropriate category area(s).
           </Typography>
           <Categories
+            imageSupport={imageSupport}
             categories={categories}
             columns={config.categories.columns}
             onColumnsChange={this.changeCategoryColumns}
