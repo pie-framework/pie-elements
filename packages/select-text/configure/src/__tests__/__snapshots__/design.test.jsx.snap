@@ -4,6 +4,11 @@ exports[`design snapshot renders 1`] = `
 <div
   className="foo"
 >
+  <Component
+    label="Prompt"
+  >
+    <EditableHtml />
+  </Component>
   <TextField
     label="Content"
     multiline={true}
@@ -24,7 +29,7 @@ exports[`design snapshot renders 1`] = `
     />
   </Component>
   <WithStyles(Chip)
-    label="Tokenizer Mode: None"
+    label="Mode: None"
   />
   <WithStyles(Chip)
     label="Selections Available: 0"

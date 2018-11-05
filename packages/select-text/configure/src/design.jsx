@@ -12,6 +12,7 @@ import {
 } from '@pie-lib/config-ui';
 import Chip from '@material-ui/core/Chip';
 import debug from 'debug';
+import EditableHtml from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:select-text:configure');
 
@@ -20,7 +21,12 @@ export class Design extends React.Component {
     model: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onPromptChanged: PropTypes.func.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -64,60 +70,116 @@ export class Design extends React.Component {
   };
 
   render() {
-    const { model, classes, className } = this.props;
+    const { model, classes, className, onPromptChanged, imageSupport } = this.props;
+    const { configure : {
+      promptLabel,
+      enableContentChange,
+      contentLabel,
+      enableHighlightChoices,
+      highlightChoicesLabel,
+      enableTokensChange,
+      tokensLabel,
+      showMode,
+      modeLabel,
+      showSelections,
+      availableSelectionsLabel,
+      showCorrectAnswersNumber,
+      correctAnswersLabel,
+      showSelectionCount,
+      selectionCountLabel,
+      enableFeedback
+    }} = model;
 
     log('[render] maxSelections:', model.maxSelections);
 
     return (
       <div className={className}>
-        <TextField
-          label="Content"
-          className={classes.input}
-          multiline
-          value={model.text}
-          onChange={this.changeText}
-        />
-
-        <InputCheckbox
-          label={'Highlight choices'}
-          checked={model.highlightChoices}
-          onChange={this.changeHighlight}
-        />
-
-        <InputContainer label={'Tokens'} className={classes.tokenizerContainer}>
-          <Tokenizer
-            className={classes.tokenizer}
-            text={model.text}
-            tokens={model.tokens}
-            onChange={this.changeTokens}
+        <InputContainer label={promptLabel} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.prompt}
+            onChange={onPromptChanged}
+            imageSupport={imageSupport}
           />
         </InputContainer>
-        <Chip
-          label={`Tokenizer Mode: ${model.mode ? model.mode : 'None'}`}
-          className={classes.chip}
-        />
-        <Chip
-          label={`Selections Available: ${model.tokens.length}`}
-          className={classes.chip}
-        />
-        <Chip
-          label={`Correct Answers: ${
-            model.tokens.filter(t => t.correct).length
-          }`}
-          className={classes.chip}
-        />
-        <NumberTextField
-          min={0}
-          label={'Selection count (0:any)'}
-          max={model.tokens.length}
-          value={model.maxSelections}
-          onChange={this.changeMaxSelections}
-        />
 
-        <FeedbackConfig
-          feedback={model.feedback}
-          onChange={this.changeFeedback}
-        />
+        {
+          enableContentChange &&
+          <TextField
+            label={contentLabel}
+            className={classes.input}
+            multiline
+            value={model.text}
+            onChange={this.changeText}
+          />
+        }
+
+        {
+          enableHighlightChoices &&
+          <InputCheckbox
+            label={highlightChoicesLabel}
+            checked={model.highlightChoices}
+            onChange={this.changeHighlight}
+          />
+        }
+
+        {
+          enableTokensChange &&
+          <InputContainer label={tokensLabel} className={classes.tokenizerContainer}>
+            <Tokenizer
+              className={classes.tokenizer}
+              text={model.text}
+              tokens={model.tokens}
+              onChange={this.changeTokens}
+            />
+          </InputContainer>
+        }
+
+        {
+          showMode &&
+          <Chip
+            label={`${modeLabel}: ${model.mode ? model.mode : 'None'}`}
+            className={classes.chip}
+          />
+        }
+
+        {
+          showSelections &&
+          <Chip
+            label={`${availableSelectionsLabel}: ${model.tokens.length}`}
+            className={classes.chip}
+          />
+        }
+
+        {
+          showCorrectAnswersNumber &&
+          <Chip
+            label={`${correctAnswersLabel}: ${
+              model.tokens.filter(t => t.correct).length
+              }`}
+            className={classes.chip}
+          />
+        }
+
+        {
+          showSelectionCount &&
+          <NumberTextField
+            min={0}
+            label={`${selectionCountLabel} (0:any)`}
+            max={model.tokens.length}
+            value={model.maxSelections}
+            onChange={this.changeMaxSelections}
+          />
+        }
+
+        {
+          enableFeedback &&
+          <FeedbackConfig
+            feedback={model.feedback}
+            onChange={this.changeFeedback}
+          />
+        }
+
       </div>
     );
   }
@@ -152,5 +214,14 @@ export default withStyles(theme => ({
     justifyContent: 'space-between',
     display: 'flex',
     alignItems: 'baseline'
+  },
+  promptHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
   }
 }))(Design);

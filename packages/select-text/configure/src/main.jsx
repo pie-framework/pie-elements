@@ -10,7 +10,11 @@ export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -22,8 +26,16 @@ export class Main extends React.Component {
     onChange(update);
   };
 
+  onPromptChanged = prompt => {
+    const { onChange, model } = this.props;
+    const update = cloneDeep(model);
+
+    update.prompt = prompt;
+    onChange(update);
+  };
+
   render() {
-    const { model, onChange, classes } = this.props;
+    const { model, onChange, classes, imageSupport } = this.props;
 
     return (
       <Tabs>
@@ -32,6 +44,8 @@ export class Main extends React.Component {
           title={'Design'}
           model={model}
           onChange={onChange}
+          imageSupport={imageSupport}
+          onPromptChanged={this.onPromptChanged}
         />
         <PartialScoring
           title={'Scoring'}

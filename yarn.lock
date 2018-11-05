@@ -777,6 +777,19 @@
     lodash "^4.17.10"
     prop-types "^15.6.1"
 
+"@pie-lib/config-ui@^7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.7.1.tgz#ba68246e500f95ae5f0157bafdc8786439ba42df"
+  dependencies:
+    "@material-ui/core" "^1.3.0"
+    "@material-ui/icons" "^1.1.0"
+    "@pie-lib/editable-html" "^6.8.0"
+    "@pie-lib/icons" "^2.2.0"
+    classnames "^2.2.6"
+    debug "^3.0.1"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+
 "@pie-lib/correct-answer-toggle@2.1.0", "@pie-lib/correct-answer-toggle@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.1.0.tgz#7c5cc9b105fa59ed7b47bb43005e4f5b63379bf2"
@@ -903,6 +916,34 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
+"@pie-lib/editable-html@^6.8.0":
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-6.8.0.tgz#60946d81cfafaf41404f976bb2fe184143fc4278"
+  dependencies:
+    "@material-ui/core" "^1.4.1"
+    "@material-ui/icons" "^2.0.0"
+    "@pie-lib/math-input" "^4.2.3"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^3.1.0"
+    immutable "^3.8.2"
+    keycode "^2.2.0"
+    lodash "^4.17.10"
+    mathquill "git+https://github.com/luxp/mathquill-webpack.git"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.1.5"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
 "@pie-lib/feedback@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.4.1.tgz#07daba2840166945bffadaa47355f91051506566"
@@ -971,6 +1012,17 @@
     "@material-ui/core" "^1.0.0-rc.1"
     "@material-ui/icons" "^1.0.0-rc.0"
     "@pie-lib/config-ui" "^7.6.22"
+    classnames "^2.2.6"
+    debug "^3.1.0"
+    lodash "^4.17.4"
+
+"@pie-lib/scoring-config@^3.2.16":
+  version "3.2.17"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.2.17.tgz#a0e96bbaa7bd3d54a9658e7315e9c229abbbe814"
+  dependencies:
+    "@material-ui/core" "^1.0.0-rc.1"
+    "@material-ui/icons" "^1.0.0-rc.0"
+    "@pie-lib/config-ui" "^7.7.1"
     classnames "^2.2.6"
     debug "^3.1.0"
     lodash "^4.17.4"
