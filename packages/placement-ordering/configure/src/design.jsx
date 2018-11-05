@@ -93,57 +93,100 @@ class Design extends React.Component {
 
   render() {
     const { model, classes, imageSupport } = this.props;
+    const { configure: {
+      orientationLabel,
+      shuffleLabel,
+      includePlacementAreaLabel,
+      numberedGuidesLabel,
+      promptLabel,
+      choiceLabel,
+      choicesLabel,
+      enableOrientationChange,
+      enableShuffleChange,
+      enablePlacementAreaChange,
+      enableNumberedGuideChange,
+      enablePromptChange,
+      enableChoiceLabelChange,
+      enableChoicesLabelChange,
+      enableFeedback,
+      removeTilesLabel,
+      enableRemoveTiles
+    } } = model;
     const { allMoveOnDrag } = this.state;
+
     return (
       <div className={classes.design}>
+        {
+          enableOrientationChange &&
+          <div className={classes.row}>
+            <TwoChoice
+              className={classes.orientation}
+              header={orientationLabel}
+              value={model.choiceAreaLayout}
+              onChange={this.onLayoutChange}
+              one={{ label: 'vertical', value: 'vertical' }}
+              two={{ label: 'horizontal', value: 'horizontal' }}
+            />
+          </div>
+        }
         <div className={classes.row}>
-          <TwoChoice
-            className={classes.orientation}
-            header={'Orientation'}
-            value={model.choiceAreaLayout}
-            onChange={this.onLayoutChange}
-            one={{ label: 'vertical', value: 'vertical' }}
-            two={{ label: 'horizontal', value: 'horizontal' }}
-          />
+          {
+            enableShuffleChange &&
+            <InputCheckbox
+              label={shuffleLabel}
+              checked={model.shuffle}
+              onChange={this.onShuffleChange}
+              aria-label="shuffle"
+            />
+          }
+
+          {
+            enablePlacementAreaChange &&
+            <InputCheckbox
+              label={includePlacementAreaLabel}
+              checked={model.placementType === 'placement'}
+              onChange={this.onPlacementTypeChange}
+              aria-label="include-placment"
+            />
+          }
+
+          {
+            enableNumberedGuideChange &&
+            <InputCheckbox
+              disabled={model.placementType !== 'placement'}
+              label={numberedGuidesLabel}
+              checked={model.showOrdering}
+              onChange={this.onShowOrderingChange}
+              aria-label="shuffle"
+            />
+          }
+
         </div>
-        <div className={classes.row}>
-          <InputCheckbox
-            label="Shuffle"
-            checked={model.shuffle}
-            onChange={this.onShuffleChange}
-            aria-label="shuffle"
-          />
-          <InputCheckbox
-            label="Include placement area"
-            checked={model.placementType === 'placement'}
-            onChange={this.onPlacementTypeChange}
-            aria-label="include-placment"
-          />
-          <InputCheckbox
-            disabled={model.placementType !== 'placement'}
-            label="Numbered guides"
-            checked={model.showOrdering}
-            onChange={this.onShowOrderingChange}
-            aria-label="shuffle"
-          />
-        </div>
-        <InputContainer label="Prompt" className={classes.promptHolder}>
-          <EditableHtml
-            className={classes.prompt}
-            markup={model.prompt}
-            onChange={this.onPromptChange}
-            imageSupport={imageSupport}
-          />
-        </InputContainer>
+
+        {
+          enablePromptChange &&
+          <InputContainer label={promptLabel} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={this.onPromptChange}
+              imageSupport={imageSupport}
+            />
+          </InputContainer>
+        }
 
         <div className={classes.row}>
-          <TextField
-            className={classes.choiceLabel}
-            label="Choice label"
-            value={model.choiceAreaLabel}
-            onChange={this.onChoiceAreaLabelChange}
-            fullWidth
-          />
+          {
+            enableChoiceLabelChange &&
+            <TextField
+              className={classes.choiceLabel}
+              label={choiceLabel}
+              value={model.choiceAreaLabel}
+              onChange={this.onChoiceAreaLabelChange}
+              fullWidth
+            />
+          }
+
           {model.placementType === 'placement' && (
             <TextField
               label="Answer label"
@@ -153,19 +196,32 @@ class Design extends React.Component {
             />
           )}
         </div>
-        <FormSection label="Choices">
-          <ChoiceEditor
-            correctResponse={model.correctResponse}
-            choices={model.choices}
-            onChange={this.onChoiceEditorChange}
+
+        {
+          enableChoicesLabelChange &&
+          <FormSection label={choicesLabel}>
+            <ChoiceEditor
+              correctResponse={model.correctResponse}
+              choices={model.choices}
+              configuration={{
+                removeTilesLabel,
+                enableRemoveTiles,
+              }}
+              onChange={this.onChoiceEditorChange}
+              imageSupport={imageSupport}
+            />
+          </FormSection>
+        }
+
+        {
+          enableFeedback &&
+          <FeedbackConfig
+            feedback={model.feedback}
+            onChange={this.onFeedbackChange}
             imageSupport={imageSupport}
           />
-        </FormSection>
-        <FeedbackConfig
-          feedback={model.feedback}
-          onChange={this.onFeedbackChange}
-          imageSupport={imageSupport}
-        />
+        }
+
       </div>
     );
   }
