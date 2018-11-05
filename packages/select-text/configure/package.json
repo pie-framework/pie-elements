@@ -1,16 +1,16 @@
 {
   "name": "@pie-element/select-text-configure",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^7.6.6",
+    "@pie-lib/editable-html": "^6.7.4",
     "@pie-lib/scoring-config": "^3.2.16",
     "@pie-lib/text-select": "^1.2.2",
-    "@pie-lib/editable-html": "^6.7.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
