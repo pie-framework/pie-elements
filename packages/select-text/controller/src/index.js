@@ -104,6 +104,7 @@ export const model = (question, session, env) => {
       const out = {
         tokens,
         highlightChoices: question.highlightChoices,
+        prompt: question.prompt,
         text: question.text,
         disabled: env.mode !== 'gather',
         maxSelections: question.maxSelections,
