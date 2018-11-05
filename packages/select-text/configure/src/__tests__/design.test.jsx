@@ -1,48 +1,70 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Design } from '../design';
+import defaultValues from '../defaultConfiguration';
 
 describe('design', () => {
   let w;
   let onChange;
+  let onPromptChanged;
 
   const getModel = () => ({
     tokens: [],
-    configure: {
-      promptLabel: 'Prompt',
-      contentLabel : 'Content',
-      highlightChoicesLabel: 'Highlight choices',
-      tokensLabel: 'Tokens',
-      setCorrectAnswersLabel: 'Set correct answers',
-      modeLabel: 'Mode',
-      availableSelectionsLabel: 'Selections Available',
-      correctAnswersLabel: 'Correct Answers',
-      selectionCountLabel: 'Selection count',
-      enableContentChange: true,
-      enableHighlightChoices: true,
-      enableTokensChange: true,
-      showMode: true,
-      showSelections: true,
-      showCorrectAnswersNumber: true,
-      showSelectionCount: true,
-      enableFeedback: true
-    }
+    configure: defaultValues
   });
   beforeEach(() => {
     onChange = jest.fn();
+    onPromptChanged = jest.fn();
     w = shallow(
       <Design
         model={getModel()}
         classes={{}}
         className={'foo'}
         onChange={onChange}
+        onPromptChanged={onPromptChanged}
       />
     );
   });
 
   describe('snapshot', () => {
-    it('renders', () => {
+    it('renders all items with defaultProps', () => {
       expect(w).toMatchSnapshot();
+    });
+
+    it('renders all items except feedback', () => {
+      const defaultModel = getModel();
+
+      defaultModel.configure.enableFeedback = false;
+
+      const wrapper = shallow(
+        <Design
+          model={getModel()}
+          classes={{}}
+          className={'foo'}
+          onChange={onChange}
+          onPromptChanged={onPromptChanged}
+        />
+      );
+
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('renders all items except the content input', () => {
+      const defaultModel = getModel();
+
+      defaultModel.configure.enableContentChange = false;
+
+      const wrapper = shallow(
+        <Design
+          model={getModel()}
+          classes={{}}
+          className={'foo'}
+          onChange={onChange}
+          onPromptChanged={onPromptChanged}
+        />
+      );
+
+      expect(wrapper).toMatchSnapshot();
     });
   });
 

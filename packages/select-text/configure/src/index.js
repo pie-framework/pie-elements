@@ -7,28 +7,9 @@ import {
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 import defaults from 'lodash/defaults';
+import defaultValues from './defaultConfigure';
 
 const prepareCustomizationObject = (model) => {
-  const defaultValues = {
-    promptLabel: 'Prompt',
-    contentLabel : 'Content',
-    highlightChoicesLabel: 'Highlight choices',
-    tokensLabel: 'Tokens',
-    setCorrectAnswersLabel: 'Set correct answers',
-    modeLabel: 'Mode',
-    availableSelectionsLabel: 'Selections Available',
-    correctAnswersLabel: 'Correct Answers',
-    selectionCountLabel: 'Selection count',
-    enableContentChange: true,
-    enableHighlightChoices: true,
-    enableTokensChange: true,
-    showMode: true,
-    showSelections: true,
-    showCorrectAnswersNumber: true,
-    showSelectionCount: true,
-    enableFeedback: true
-  };
-
   return {
     ...model,
     configure: defaults(model.configure, defaultValues)
