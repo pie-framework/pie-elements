@@ -17,7 +17,11 @@ export class Category extends React.Component {
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onDeleteChoice: PropTypes.func,
-    onAddChoice: PropTypes.func
+    onAddChoice: PropTypes.func,
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    })
   };
 
   static defaultProps = {};
@@ -35,7 +39,8 @@ export class Category extends React.Component {
       className,
       onDelete,
       onDeleteChoice,
-      onAddChoice
+      onAddChoice,
+      imageSupport
     } = this.props;
 
     return (
@@ -44,6 +49,7 @@ export class Category extends React.Component {
           label={category.label}
           onChange={this.changeLabel}
           onDelete={onDelete}
+          imageSupport={imageSupport}
         />
         <PlaceHolder
           className={classes.placeHolder}

@@ -8,6 +8,10 @@ import Header from '../header';
 
 export class Categories extends React.Component {
   static propTypes = {
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     columns: PropTypes.number.isRequired,
@@ -44,7 +48,8 @@ export class Categories extends React.Component {
       categories,
       onAdd,
       onDelete,
-      onAddChoice
+      onAddChoice,
+      imageSupport
     } = this.props;
 
     const holderStyle = {
@@ -70,6 +75,7 @@ export class Categories extends React.Component {
           {categories.map((category, index) => (
             <Category
               key={index}
+              imageSupport={imageSupport}
               category={category}
               onChange={this.changeCategory}
               onDelete={() => onDelete(category)}
