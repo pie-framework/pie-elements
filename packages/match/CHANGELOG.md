@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.3.0...@pie-element/match@1.4.0) (2018-10-31)
+
+
+### Features
+
+* **ch497:** updated the partial scoring for 3 packages: match, select-text and multiple-choice ([5a46b06](https://github.com/pie-framework/pie-elements/commit/5a46b06))
+* **choice-interaction-update:** added the outcome function to the match controller and refactored the controller to work with the new structure ([56faf8c](https://github.com/pie-framework/pie-elements/commit/56faf8c))
+* **choice-interaction-update:** fixed some tests ([2cd4f14](https://github.com/pie-framework/pie-elements/commit/2cd4f14))
+* **choice-interaction-update:** updated the partial scoring package version for 3 packages: match, select-text and multiple-choice (ch497) ([b1f2803](https://github.com/pie-framework/pie-elements/commit/b1f2803))
+
+
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.2.0...@pie-element/match@1.3.0) (2018-10-22)
 
