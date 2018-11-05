@@ -41,11 +41,18 @@ const Design = withStyles(styles)(props => {
     onAddChoice,
     imageSupport
   } = props;
+  const { configure: {
+    promptLabel,
+    addChoiceButtonLabel,
+    enableAddChoice,
+    enableAddFeedBack,
+    enableDeleteChoice
+  } } = model;
 
   return (
     <div className={classes.design}>
       <Basics {...props} />
-      <InputContainer label="Prompt" className={classes.promptHolder}>
+      <InputContainer label={promptLabel} className={classes.promptHolder}>
         <EditableHtml
           className={classes.prompt}
           markup={model.prompt}
@@ -66,24 +73,41 @@ const Design = withStyles(styles)(props => {
           imageSupport={imageSupport}
           onDelete={() => onRemoveChoice(index)}
           onChange={c => onChoiceChanged(index, c)}
+          allowFeedBack={enableAddFeedBack}
+          allowDelete={enableDeleteChoice}
         />
       ))}
       <br />
-      <Button variant="raised" color="primary" onClick={() => onAddChoice()}>
-        Add a choice
-      </Button>
+      {
+        enableAddChoice &&
+        <Button variant="raised" color="primary" onClick={() => onAddChoice()}>
+          {addChoiceButtonLabel}
+        </Button>
+      }
     </div>
   );
 });
 
 const Basics = props => {
   log('[Basics] props', props);
-
   const { classes, model, onChoiceModeChanged, onKeyModeChanged } = props;
+  const { configure: {
+    responseTypeLabel,
+    choicesLabel,
+    enableSelectResponseType,
+    enableSelectChoiceLabel
+  } } = model;
+
   return (
     <div className={classes.baseTypes}>
-      <ChoiceType value={model.choiceMode} onChange={onChoiceModeChanged} />
-      <KeyType value={model.keyMode} onChange={onKeyModeChanged} />
+      {
+        enableSelectResponseType &&
+        <ChoiceType header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged} />
+      }
+      {
+        enableSelectChoiceLabel &&
+        <KeyType header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged} />
+      }
     </div>
   );
 };

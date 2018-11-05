@@ -9,8 +9,28 @@ import ReactDOM from 'react-dom';
 import Root from './root';
 import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
+import defaults from 'lodash/defaults';
 
 const log = debug('multiple-choice:configure');
+
+const prepareCustomizationObject = (model) => {
+  const defaultValues = {
+    promptLabel : 'Prompt',
+    responseTypeLabel: 'Response Type',
+    choicesLabel: 'Choice Labels',
+    addChoiceButtonLabel: 'Add a choice',
+    enableSelectChoiceLabel: true,
+    enableSelectResponseType: true,
+    enableAddChoice: true,
+    enableAddFeedBack: true,
+    enableDeleteChoice: true
+  };
+
+  return {
+    ...model,
+    configure: defaults(model.configure, defaultValues)
+  };
+};
 
 export default class extends HTMLElement {
   constructor() {
@@ -19,7 +39,7 @@ export default class extends HTMLElement {
   }
 
   set model(s) {
-    this._model = utils.normalizeChoices(s);
+    this._model = prepareCustomizationObject(utils.normalizeChoices(s));
     this._render();
   }
 
