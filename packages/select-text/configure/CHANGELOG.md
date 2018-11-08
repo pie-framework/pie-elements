@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.2.0...@pie-element/select-text-configure@2.2.1) (2018-11-08)
+
+
+### Bug Fixes
+
+* fix defaultConfiguration import error ([a092493](https://github.com/pie-framework/pie-elements/commit/a092493))
+
+
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.1.0...@pie-element/select-text-configure@2.2.0) (2018-11-05)
 
