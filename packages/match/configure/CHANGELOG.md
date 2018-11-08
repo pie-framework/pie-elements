@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.4.1...@pie-element/match-configure@1.4.2) (2018-11-08)
+
+
+### Bug Fixes
+
+* add missing dependency [@pie-lib](https://github.com/pie-lib)/drag ([ef7c123](https://github.com/pie-framework/pie-elements/commit/ef7c123))
+
+
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.4.0...@pie-element/match-configure@1.4.1) (2018-11-05)
 
