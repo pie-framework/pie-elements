@@ -43,13 +43,15 @@ export default class extends HTMLElement {
     this._render();
   }
 
-  dispatchModelUpdated() {
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+  dispatchModelUpdated(reset) {
+    const resetValue = !!reset;
+
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, resetValue));
   }
 
-  onModelChanged(m) {
+  onModelChanged(m, reset) {
     this._model = m;
-    this.dispatchModelUpdated();
+    this.dispatchModelUpdated(reset);
   }
 
   /**

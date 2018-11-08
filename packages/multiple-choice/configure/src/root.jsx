@@ -38,7 +38,7 @@ export default class Root extends React.Component {
       });
     }
 
-    this.updateModel(model);
+    this.updateModel(model, true);
   };
 
   onRemoveChoice = index => {
@@ -53,13 +53,13 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  modelChanged = () => {
-    this.props.onModelChanged(this.state.model);
+  modelChanged = (reset) => {
+    this.props.onModelChanged(this.state.model, reset);
   };
 
-  updateModel = model => {
+  updateModel = (model, reset) => {
     this.setState({ model }, () => {
-      this.modelChanged();
+      this.modelChanged(reset);
     });
   };
 
