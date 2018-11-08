@@ -12,6 +12,7 @@
     "@pie-lib/config-ui": "^7.6.6",
     "@pie-lib/editable-html": "^6.7.5",
     "@pie-lib/scoring-config": "^3.2.15",
+    "@pie-lib/drag": "^1.1.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
