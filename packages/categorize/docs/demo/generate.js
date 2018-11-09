@@ -21,6 +21,20 @@ exports.model = (id, element) => ({
   choices: choices(),
   categories: categories(),
   correctResponse: [{}],
+  feedback: {
+    correct: {
+      type: 'default',
+      default: 'Correct'
+    },
+    incorrect: {
+      type: 'default',
+      default: 'Incorrect'
+    },
+    partial: {
+      type: 'default',
+      default: 'Nearly'
+    }
+  },
 
   scoring: {
     weighting: {
