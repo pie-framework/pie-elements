@@ -3,34 +3,39 @@ import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import debug from 'debug';
 const log = debug('@pie-element:categorize:controller');
 
-const getCorrectness = (question, session) => {
+export { score };
+
+export const getCorrectness = (question, session, env) => {
   return new Promise(resolve => {
-    const state = buildState(
-      question.categories,
-      question.choices,
-      session.answers,
-      question.correctResponse
-    );
-    log('state: ', state);
+    if (env.mode === 'evaluate') {
+      const state = buildState(
+        question.categories,
+        question.choices,
+        session.answers,
+        question.correctResponse
+      );
+      log('state: ', state);
 
-    const scorePromise = score(state.categories, question.scoring || {});
+      const scorePromise = score(state.categories, question.scoring || {});
 
-
-    scorePromise.then(scoreInfo => {
-      if (scoreInfo.score === 1) {
-        resolve('correct');
-      } else if (scoreInfo.score === 0) {
-        resolve('incorrect');
-      } else {
-        resolve('partially-correct');
-      }
-    });
+      scorePromise.then(scoreInfo => {
+        if (scoreInfo.score === 1) {
+          resolve('correct');
+        } else if (scoreInfo.score === 0) {
+          resolve('incorrect');
+        } else {
+          resolve('partially-correct');
+        }
+      });
+    } else {
+      resolve(undefined);
+    }
   });
 };
 
 export const model = (question, session, env) =>
   new Promise(resolve => {
-    const correctPromise = getCorrectness(question, session);
+    const correctPromise = getCorrectness(question, session, env);
 
     correctPromise.then(correctness => {
       const fb =
@@ -42,6 +47,7 @@ export const model = (question, session, env) =>
         const out = {
           correctness,
           feedback,
+          scoring: question.scoring,
           choices: question.choices,
           categories: question.categories,
           disabled: env.mode !== 'gather',

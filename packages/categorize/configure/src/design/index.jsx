@@ -35,15 +35,10 @@ export class Design extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     uid: PropTypes.string,
-    enableFeedback: PropTypes.bool.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     })
-  };
-
-  static defaultProps = {
-    enableFeedback: true
   };
 
   constructor(props) {

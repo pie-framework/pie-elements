@@ -1,27 +1,114 @@
-import { model, outcome } from '../index';
+import { model, outcome, getCorrectness } from '../index';
 import { buildState, score } from '@pie-lib/categorize';
+
+const categorize = require('@pie-lib/categorize');
 
 const categories = () => [{ id: '1', label: 'One' }];
 
-const choices = () => [{ id: '1', content: 'Foo' }];
-
-jest.mock('@pie-lib/categorize', () => {
-  return {
-    buildState: jest.fn(o => o),
-    score: jest.fn().mockReturnValue(Promise.resolve({ score: 1 }))
-  };
-});
+const choices = () => [{ id: '1', content: 'Foo' }, { id: '2', content: 'Bar' }];
 
 describe('controller', () => {
   let question;
   let result;
+  const scoreSpy = jest.spyOn(categorize, 'score');
+  const buildStateSpy = jest.spyOn(categorize, 'buildState');
 
   beforeEach(() => {
     question = {
       categories: categories(),
       choices: choices(),
-      correctResponse: [{ category: '1', choices: ['1'] }]
+      correctResponse: [{ category: '1', choices: ['1', '2'] }],
+      scoring: {
+        weighting: {
+          enabled: true,
+          rules: [{ category: '1', points: 1 }, { category: '2', points: 1 }]
+        },
+        partial: {
+          enabled: true,
+          rules: [
+            {
+              category: '1',
+              rules: [{ count: 1, percent: 50 }, { count: 2, percent: 100 }]
+            },
+            { category: '2', rules: [] }
+          ]
+        }
+      }
     };
+  });
+
+  describe('getCorrectness', () => {
+    describe('mode: gather', () => {
+      it('resolves undefined', () => {
+        expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+      });
+    });
+
+    describe('mode: view', () => {
+      it('resolves undefined', () => {
+        expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+      });
+    });
+
+    describe('mode: evaluate', () => {
+      let correctness;
+
+      beforeEach(() => {
+        correctness = getCorrectness(question, {}, { mode: 'evaluate' });
+      });
+
+      it('calls buildState ', () => {
+        expect(buildStateSpy).toBeCalled();
+      });
+
+      it('calls score ', () => {
+        expect(scoreSpy).toHaveBeenCalled();
+      });
+
+      it('resolves incorrect', () => {
+        expect(getCorrectness(
+          question,
+          {},
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('incorrect');
+      });
+
+      it('resolves correct', () => {
+        expect(getCorrectness(
+          question,
+          {
+            answers: [
+              {
+                category: '1',
+                choices: ['1', '2']
+              }
+            ]
+          },
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('correct');
+      });
+
+      it('resolves partially-correct', () => {
+        expect(getCorrectness(
+          question,
+          {
+            answers: [
+              {
+                category: '1',
+                choices: ['1']
+              }
+            ]
+          },
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('partially-correct');
+      });
+    });
   });
 
   describe('outcome', () => {
@@ -46,10 +133,10 @@ describe('controller', () => {
         outcome(question, {}, { mode: 'evaluate' });
       });
       it('calls buildState ', () => {
-        expect(buildState).toBeCalled();
+        expect(buildStateSpy).toBeCalled();
       });
       it('calls score ', () => {
-        expect(score).toBeCalled();
+        expect(scoreSpy).toHaveBeenCalled();
       });
     });
   });
@@ -80,7 +167,7 @@ describe('controller', () => {
     it('adds correctResponse for evaluate', async () => {
       const result = await model(question, {}, { mode: 'evaluate' });
       expect(result).toMatchObject({
-        correctResponse: [{ category: '1', choices: ['1'] }]
+        correctResponse: [{ category: '1', choices: ['1', '2'] }]
       });
     });
 
