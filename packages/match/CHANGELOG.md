@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.4.2...@pie-element/match@1.4.3) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+* fix tests ([79ee8a5](https://github.com/pie-framework/pie-elements/commit/79ee8a5))
+
+
+
+
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.4.1...@pie-element/match@1.4.2) (2018-11-08)
 

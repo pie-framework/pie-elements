@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@1.1.1...@pie-element/match-controller@1.1.2) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+
+
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@1.1.0...@pie-element/match-controller@1.1.1) (2018-11-05)
 

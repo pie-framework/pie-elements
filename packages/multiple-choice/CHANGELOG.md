@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.3.0...@pie-element/multiple-choice@2.3.1) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+
+
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.2.0...@pie-element/multiple-choice@2.3.0) (2018-11-05)
 
