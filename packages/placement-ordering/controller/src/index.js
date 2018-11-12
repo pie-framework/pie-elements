@@ -92,6 +92,7 @@ export function model(question, session, env) {
       choiceLabel: question.choiceAreaLabel,
       showOrdering: question.showOrdering
     };
+    base.configure = question.configure;
 
     base.disabled = env.mode !== 'gather';
 

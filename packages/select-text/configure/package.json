@@ -11,8 +11,11 @@
     "@pie-lib/editable-html": "^6.7.4",
     "@pie-lib/scoring-config": "^3.2.16",
     "@pie-lib/text-select": "^1.2.2",
+    "debug": "^3.1.0",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "prop-types": "^15.6.0",
+    "lodash": "^4.17.10"
   },
   "author": "",
   "license": "ISC"

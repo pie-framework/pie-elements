@@ -21,23 +21,28 @@ export const defaultProps = {
   model: {
     id: '1',
     element: 'match-element',
-    rows: [{
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false]
-    }, {
-      id: 2,
-      title: 'Question Text 2',
-      values: [false, false]
-    }, {
-      id: 3,
-      title: 'Question Text 3',
-      values: [false, false]
-    }, {
-      id: 4,
-      title: 'Question Text 4',
-      values: [false, false]
-    }],
+    rows: [
+      {
+        id: 1,
+        title: 'Question Text 1',
+        values: [false, false]
+      },
+      {
+        id: 2,
+        title: 'Question Text 2',
+        values: [false, false]
+      },
+      {
+        id: 3,
+        title: 'Question Text 3',
+        values: [false, false]
+      },
+      {
+        id: 4,
+        title: 'Question Text 4',
+        values: [false, false]
+      }
+    ],
     shuffled: false,
     partialScoring: [],
     layout: 3,
@@ -56,7 +61,7 @@ export const defaultProps = {
         type: 'none',
         default: 'Incorrect'
       }
-    },
+    }
   }
 };
 const clonedDefaultProps = cloneDeep(defaultProps);
@@ -83,12 +88,14 @@ describe('Configure', () => {
   it('updates responseType correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged,
+      onModelChanged
     });
 
     component.instance().onResponseTypeChange('checkbox');
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({ responseType: 'checkbox' }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({ responseType: 'checkbox' })
+    );
 
     onModelChanged = jest.fn();
 
@@ -97,23 +104,28 @@ describe('Configure', () => {
       model: {
         ...defaultProps.model,
         responseType: 'checkbox',
-        rows: [{
-          id: 1,
-          title: 'Question Text 1',
-          values: [true, true]
-        }, {
-          id: 2,
-          title: 'Question Text 2',
-          values: [true, true]
-        }, {
-          id: 3,
-          title: 'Question Text 3',
-          values: [false, true]
-        }, {
-          id: 4,
-          title: 'Question Text 4',
-          values: [true, false]
-        }]
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [true, true]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [true, true]
+          },
+          {
+            id: 3,
+            title: 'Question Text 3',
+            values: [false, true]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [true, false]
+          }
+        ]
       }
     });
 
@@ -122,23 +134,28 @@ describe('Configure', () => {
     expect(onModelChanged).toBeCalledWith({
       id: '1',
       element: 'match-element',
-      rows: [{
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false]
-      }, {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false]
-      }, {
-        id: 3,
-        title: 'Question Text 3',
-        values: [false, true]
-      }, {
-        id: 4,
-        title: 'Question Text 4',
-        values: [true, false]
-      }],
+      rows: [
+        {
+          id: 1,
+          title: 'Question Text 1',
+          values: [false, false]
+        },
+        {
+          id: 2,
+          title: 'Question Text 2',
+          values: [false, false]
+        },
+        {
+          id: 3,
+          title: 'Question Text 3',
+          values: [false, true]
+        },
+        {
+          id: 4,
+          title: 'Question Text 4',
+          values: [true, false]
+        }
+      ],
       shuffled: false,
       partialScoring: [],
       layout: 3,
@@ -157,116 +174,142 @@ describe('Configure', () => {
           type: 'none',
           default: 'Incorrect'
         }
-      },
-    })
+      }
+    });
   });
 
   it('adds a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged,
+      onModelChanged
     });
 
     component.instance().onAddRow();
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      rows: [{
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false]
-      }, {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false]
-      }, {
-        id: 3,
-        title: 'Question Text 3',
-        values: [false, false]
-      }, {
-        id: 4,
-        title: 'Question Text 4',
-        values: [false, false]
-      }, {
-        id: 6,
-        title: 'Question Text 5',
-        values: [false, false]
-      }]
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false]
+          },
+          {
+            id: 3,
+            title: 'Question Text 3',
+            values: [false, false]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [false, false]
+          },
+          {
+            id: 6,
+            title: 'Question Text 5',
+            values: [false, false]
+          }
+        ]
+      })
+    );
   });
 
   it('deletes a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged,
+      onModelChanged
     });
 
     component.instance().onDeleteRow(2);
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      rows: [{
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false]
-      }, {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false]
-      }, {
-        id: 4,
-        title: 'Question Text 4',
-        values: [false, false]
-      }]
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [false, false]
+          }
+        ]
+      })
+    );
   });
 
   it('updates layout correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged,
+      onModelChanged
     });
 
     component.instance().onLayoutChange(4);
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      layout: 4,
-      rows: [{
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false, false]
-      }, {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false, false]
-      }, {
-        id: 4,
-        title: 'Question Text 4',
-        values: [false, false, false]
-      }]
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        layout: 4,
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false, false]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [false, false, false]
+          }
+        ]
+      })
+    );
 
     onModelChanged = jest.fn();
     component = wrapper({
-      onModelChanged,
+      onModelChanged
     });
 
     component.instance().onLayoutChange(5);
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      layout: 5,
-      rows: [{
-        id: 1,
-        title: 'Question Text 1',
-        values: [false, false, false, false, false]
-      }, {
-        id: 2,
-        title: 'Question Text 2',
-        values: [false, false, false, false, false]
-      }, {
-        id: 4,
-        title: 'Question Text 4',
-        values: [false, false, false, false, false]
-      }]
-    }));
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({
+        layout: 5,
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false, false, false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false, false, false, false]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [false, false, false, false, false]
+          }
+        ]
+      })
+    );
   });
 });
 
@@ -333,23 +376,28 @@ describe('AnswerConfigBlock', () => {
 
       expect(onChange).toBeCalledWith({
         ...clonedDefaultProps.model,
-        rows: [{
-          id: 2,
-          title: 'Question Text 2',
-          values: [false, false]
-        }, {
-          id: 1,
-          title: 'Question Text 1',
-          values: [false, false]
-        }, {
-          id: 3,
-          title: 'Question Text 3',
-          values: [false, false]
-        }, {
-          id: 4,
-          title: 'Question Text 4',
-          values: [false, false]
-        }]
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false]
+          },
+          {
+            id: 3,
+            title: 'Question Text 3',
+            values: [false, false]
+          },
+          {
+            id: 4,
+            title: 'Question Text 4',
+            values: [false, false]
+          }
+        ]
       });
     });
   });
