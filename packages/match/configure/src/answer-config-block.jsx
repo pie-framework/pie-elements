@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { InputCheckbox } from '@pie-lib/config-ui';
 import AddRow from './add-row';
 import Row from './row';
-import { swap } from '@pie-ui/placement-ordering';
+import { swap } from '@pie-lib/drag';
 
 import debug from 'debug';
 

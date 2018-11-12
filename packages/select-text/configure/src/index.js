@@ -7,7 +7,7 @@ import {
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 import defaults from 'lodash/defaults';
-import defaultValues from './defaultConfigure';
+import defaultValues from './defaultConfiguration';
 
 const prepareCustomizationObject = (model) => {
   return {
