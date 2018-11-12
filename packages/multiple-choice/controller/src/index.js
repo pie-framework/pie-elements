@@ -1,6 +1,5 @@
 import { isResponseCorrect } from './utils';
 import debug from 'debug';
-import compact from 'lodash/compact';
 
 const log = debug('pie-elements:multiple-choice:controller');
 

@@ -3,5 +3,18 @@
 exports[`ChoicePreview snapshot renders 1`] = `
 <div
   className="className"
-/>
+>
+  <Component>
+    <HtmlAndMath
+      html="content"
+    />
+    <WithStyles(IconButton)
+      aria-label="delete"
+      color="secondary"
+      onClick={[Function]}
+    >
+      <pure(Delete) />
+    </WithStyles(IconButton)>
+  </Component>
+</div>
 `;
