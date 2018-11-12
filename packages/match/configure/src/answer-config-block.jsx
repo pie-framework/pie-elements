@@ -9,7 +9,6 @@ import { InputCheckbox } from '@pie-lib/config-ui';
 import AddRow from './add-row';
 import Row from './row';
 import { swap } from '@pie-lib/drag';
-
 import debug from 'debug';
 
 const log = debug('pie-elements:match:configure');
