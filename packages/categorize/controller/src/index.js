@@ -1,27 +1,72 @@
 import { buildState, score } from '@pie-lib/categorize';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import debug from 'debug';
 const log = debug('@pie-element:categorize:controller');
 
+export { score };
+
+export const getCorrectness = (question, session, env) => {
+  return new Promise(resolve => {
+    if (env.mode === 'evaluate') {
+      const state = buildState(
+        question.categories,
+        question.choices,
+        session.answers,
+        question.correctResponse
+      );
+      log('state: ', state);
+
+      const scorePromise = score(state.categories, question.scoring || {});
+
+      scorePromise.then(scoreInfo => {
+        if (scoreInfo.score === 1) {
+          resolve('correct');
+        } else if (scoreInfo.score === 0) {
+          resolve('incorrect');
+        } else {
+          resolve('partially-correct');
+        }
+      });
+    } else {
+      resolve(undefined);
+    }
+  });
+};
+
 export const model = (question, session, env) =>
   new Promise(resolve => {
-    const out = {
-      choices: question.choices,
-      categories: question.categories,
-      disabled: env.mode !== 'gather',
-      config: question.config || {
-        choices: {
-          columns: 2
-        },
-        categories: {
-          columns: 2
-        }
-      }
-    };
+    const correctPromise = getCorrectness(question, session, env);
 
-    out.correctResponse =
-      env.mode === 'evaluate' ? question.correctResponse : undefined;
+    correctPromise.then(correctness => {
+      const fb =
+        env.mode === 'evaluate'
+          ? getFeedbackForCorrectness(correctness, question.feedback)
+          : Promise.resolve(undefined);
 
-    resolve(out);
+      fb.then(feedback => {
+        const out = {
+          correctness,
+          feedback,
+          scoring: question.scoring,
+          choices: question.choices,
+          categories: question.categories,
+          disabled: env.mode !== 'gather',
+          config: question.config || {
+            choices: {
+              columns: 2
+            },
+            categories: {
+              columns: 2
+            }
+          }
+        };
+
+        out.correctResponse =
+          env.mode === 'evaluate' ? question.correctResponse : undefined;
+
+        resolve(out);
+      });
+    })
   });
 
 export const outcome = (question, session, env) => {
