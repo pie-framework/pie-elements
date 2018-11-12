@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.1...@pie-element/categorize-configure@1.3.2) (2018-11-12)
+
+
+### Bug Fixes
+
+* **categorize-add-feedback:** added possibility of setting feedback for the evaluation and fixed some dependencies ([6a3a8ef](https://github.com/pie-framework/pie-elements/commit/6a3a8ef))
+* **categorize-add-feedback:** added tests for the new logic ([3c2ca0d](https://github.com/pie-framework/pie-elements/commit/3c2ca0d))
+
+
+
+
+
 ## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.0...@pie-element/categorize-configure@1.3.1) (2018-11-12)
 
 
