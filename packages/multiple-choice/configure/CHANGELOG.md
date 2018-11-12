@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.3.0...@pie-element/multiple-choice-configure@0.3.1) (2018-11-12)
+
+
+### Bug Fixes
+
+* **multiple-choice-item-preview-reset:** resetting the item preview when changing response type ([eb2f4c2](https://github.com/pie-framework/pie-elements/commit/eb2f4c2))
+* **multiple-choice-tests:** added tests for the new and old logic ([b78d059](https://github.com/pie-framework/pie-elements/commit/b78d059))
+
+
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.2.0...@pie-element/multiple-choice-configure@0.3.0) (2018-11-05)
 

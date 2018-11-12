@@ -22,9 +22,12 @@ export default class Root extends React.Component {
 
   onChoiceModeChanged = value => {
     const { model } = this.state;
+
     model.choiceMode = value;
+
     if (value === 'radio') {
       let correctFound = false;
+
       model.choices = model.choices.map(c => {
         if (correctFound) {
           c.correct = false;
@@ -34,11 +37,12 @@ export default class Root extends React.Component {
         if (c.correct) {
           correctFound = true;
         }
+
         return c;
       });
     }
 
-    this.updateModel(model);
+    this.updateModel(model, true);
   };
 
   onRemoveChoice = index => {
@@ -53,13 +57,13 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  modelChanged = () => {
-    this.props.onModelChanged(this.state.model);
+  modelChanged = (reset) => {
+    this.props.onModelChanged(this.state.model, reset);
   };
 
-  updateModel = model => {
+  updateModel = (model, reset) => {
     this.setState({ model }, () => {
-      this.modelChanged();
+      this.modelChanged(reset);
     });
   };
 

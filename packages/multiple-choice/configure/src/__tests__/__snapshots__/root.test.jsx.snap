@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root snapshot renders 1`] = `
+<WithStyles(Main)
+  model={
+    Object {
+      "choiceMode": "checkbox",
+      "choices": Array [
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Sweden",
+          "value": "sweden",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Iceland",
+          "value": "iceland",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Norway",
+          "value": "norway",
+        },
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Finland",
+          "value": "finland",
+        },
+      ],
+      "configure": Object {},
+      "keyMode": "numbers",
+      "partialScoring": false,
+      "partialScoringLabel": "Each correct response that is correctly checked and each incorrect response
+          that is correctly unchecked will be worth 1 point.
+          The maximum points is the total number of answer choices.",
+      "prompt": "Which of these northern European countries are EU members?",
+    }
+  }
+  onAddChoice={[Function]}
+  onChoiceChanged={[Function]}
+  onChoiceModeChanged={[Function]}
+  onKeyModeChanged={[Function]}
+  onPartialScoringChanged={[Function]}
+  onPromptChanged={[Function]}
+  onRemoveChoice={[Function]}
+/>
+`;
