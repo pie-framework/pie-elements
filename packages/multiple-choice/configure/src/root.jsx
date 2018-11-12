@@ -22,9 +22,12 @@ export default class Root extends React.Component {
 
   onChoiceModeChanged = value => {
     const { model } = this.state;
+
     model.choiceMode = value;
+
     if (value === 'radio') {
       let correctFound = false;
+
       model.choices = model.choices.map(c => {
         if (correctFound) {
           c.correct = false;
@@ -34,6 +37,7 @@ export default class Root extends React.Component {
         if (c.correct) {
           correctFound = true;
         }
+
         return c;
       });
     }
