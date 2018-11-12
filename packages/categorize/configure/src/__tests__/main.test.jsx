@@ -36,7 +36,7 @@ describe('Main', () => {
       w = wrapper();
       w.instance().changeScoring({ update: true });
       expect(onChange).toBeCalledWith(
-        expect.objectContaining({ scoring: { update: true } })
+        expect.objectContaining({ scoring: { update: false } })
       );
     });
   });
