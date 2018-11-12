@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.3.0...@pie-element/multiple-choice@2.3.1) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+
+
+
+
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.2.0...@pie-element/multiple-choice@2.3.0) (2018-11-05)
+
+
+### Features
+
+* **multiple-choice-configure-customization:** added possibility to customize some of the elements from the design tab (ch557) ([b3b9d47](https://github.com/pie-framework/pie-elements/commit/b3b9d47))
+* **multiple-choice-configure-customization:** changed the key for the options object from config to configure ([8c01e2b](https://github.com/pie-framework/pie-elements/commit/8c01e2b))
+* **multiple-choice-configure-customization:** updated the scoring config version ([947cdd0](https://github.com/pie-framework/pie-elements/commit/947cdd0))
+
+
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.1.3...@pie-element/multiple-choice@2.2.0) (2018-10-31)
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.1.0...@pie-element/placement-ordering@3.2.0) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+
+
+### Features
+
+* **placement-ordering-configure-customization:** made some elements from the design config customizable (ch564) ([a89ff83](https://github.com/pie-framework/pie-elements/commit/a89ff83))
+
+
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.0.4...@pie-element/placement-ordering@3.1.0) (2018-10-18)
 

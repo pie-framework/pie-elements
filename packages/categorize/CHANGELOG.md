@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.0...@pie-element/categorize@2.7.1) (2018-11-12)
+
+
+### Bug Fixes
+
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+* fix tests ([79ee8a5](https://github.com/pie-framework/pie-elements/commit/79ee8a5))
+
+
+
+
+
+<a name="2.7.0"></a>
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.6.0...@pie-element/categorize@2.7.0) (2018-11-05)
+
+
+### Features
+
+* **categorize-image-support:** added image support for all categorize elements ([d9dd0b5](https://github.com/pie-framework/pie-elements/commit/d9dd0b5))
+
+
+
+
+
 <a name="2.6.0"></a>
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.5.2...@pie-element/categorize@2.6.0) (2018-10-16)
 
