@@ -35,9 +35,9 @@ jobs:
 
       # run tests!
       - run:
-        name: Running Tests
-        command: yarn test
+          name: Running Tests
+          command: yarn test
 
       - run:
-        name: Running Lint
-        command: yarn lint
+          name: Running Lint
+          command: yarn lint
