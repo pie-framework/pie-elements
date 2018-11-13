@@ -50,7 +50,8 @@ const buildDir = p => {
     '--out-dir',
     `${p}/lib`,
     '--ignore',
-    '/__test__/,/__tests__/,/__mocks__/'
+    '/__test__/,/__tests__/,/__mocks__/',
+    '--source-maps'
   ];
   return spawn('./node_modules/.bin/babel', args, {
     stdio: 'inherit'
