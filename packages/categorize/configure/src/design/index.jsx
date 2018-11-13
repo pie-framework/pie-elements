@@ -9,6 +9,9 @@ import { Divider } from './buttons';
 import { buildCategories } from './builder';
 import debug from 'debug';
 import { uid, withDragContext } from '@pie-lib/drag';
+import {
+  FeedbackConfig
+} from '@pie-lib/config-ui';
 
 import {
   removeAllChoices,
@@ -38,8 +41,6 @@ export class Design extends React.Component {
     })
   };
 
-  static defaultProps = {};
-
   constructor(props) {
     super(props);
     this.uid = props.uid || uid.generateId();
@@ -67,6 +68,10 @@ export class Design extends React.Component {
       categoryCount: h.categoryCount
     }));
     onChange(model);
+  };
+
+  changeFeedback = feedback => {
+    this.apply(model => (model.feedback = feedback));
   };
 
   changeCategoryColumns = event => {
@@ -232,6 +237,10 @@ export class Design extends React.Component {
             onShuffleChange={this.toggleShuffle}
             onAdd={this.addChoice}
             onDelete={this.deleteChoice}
+          />
+          <FeedbackConfig
+            feedback={model.feedback}
+            onChange={this.changeFeedback}
           />
         </div>
       </IdProvider>

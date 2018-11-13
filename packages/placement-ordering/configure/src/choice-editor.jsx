@@ -30,7 +30,8 @@ class ChoiceEditor extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    configuration: PropTypes.object
   };
 
   constructor(props) {
@@ -91,7 +92,11 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport } = this.props;
+    const { classes, correctResponse, choices, imageSupport, configuration } = this.props;
+    const {
+      removeTilesLabel,
+      enableRemoveTiles
+    } = configuration;
 
     const sortedChoices = compact(
       correctResponse.map(cr => choices.find(c => c.id === cr.id))
@@ -113,24 +118,27 @@ class ChoiceEditor extends React.Component {
             imageSupport={imageSupport}
           />
         ))}
-        <div className={classes.controls}>
-          <InputSwitch
-            className={classes.allToggle}
-            checked={allMoveOnDrag}
-            onChange={this.toggleAllOnDrag}
-            value="allMoveOnDrag"
-            label="Remove all tiles after placing"
-          />
-          <IconButton
-            onClick={this.addChoice}
-            classes={{
-              root: classes.addButtonRoot,
-              label: classes.addButtonLabel
-            }}
-          >
-            <AddCircle classes={{ root: classes.root }} />
-          </IconButton>
-        </div>
+        {
+          enableRemoveTiles &&
+          <div className={classes.controls}>
+            <InputSwitch
+              className={classes.allToggle}
+              checked={allMoveOnDrag}
+              onChange={this.toggleAllOnDrag}
+              value="allMoveOnDrag"
+              label={removeTilesLabel}
+            />
+            <IconButton
+              onClick={this.addChoice}
+              classes={{
+                root: classes.addButtonRoot,
+                label: classes.addButtonLabel
+              }}
+            >
+              <AddCircle classes={{ root: classes.root }} />
+            </IconButton>
+          </div>
+        }
       </div>
     );
   }

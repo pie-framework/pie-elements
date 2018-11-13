@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`design snapshot renders all items except feedback 1`] = `
+<Design
+  className="foo"
+  classes={
+    Object {
+      "choices": "Design-choices-6",
+      "design": "Design-design-4",
+      "langControls": "Design-langControls-5",
+      "orientation": "Design-orientation-7",
+      "prompt": "Design-prompt-2",
+      "promptHolder": "Design-promptHolder-1",
+      "row": "Design-row-3",
+    }
+  }
+  model={
+    Object {
+      "configure": Object {
+        "choiceLabel": "Choice label",
+        "choicesLabel": "Choices",
+        "enableChoiceLabelChange": true,
+        "enableChoicesLabelChange": true,
+        "enableFeedback": false,
+        "enableNumberedGuideChange": true,
+        "enableOrientationChange": true,
+        "enablePlacementAreaChange": true,
+        "enablePromptChange": true,
+        "enableRemoveTiles": true,
+        "enableShuffleChange": true,
+        "includePlacementAreaLabel": "Include placement area",
+        "numberedGuidesLabel": "Numbered guides",
+        "orientationLabel": "Orientation",
+        "promptLabel": "Prompt",
+        "removeTilesLabel": "Remove all tiles after placing",
+        "shuffleLabel": "Highlight choices",
+      },
+      "tokens": Array [],
+    }
+  }
+  onChange={[MockFunction]}
+  onModelChange={[MockFunction]}
+/>
+`;
+
+exports[`design snapshot renders all items except the prompt input 1`] = `
+<Design
+  className="foo"
+  classes={
+    Object {
+      "choices": "Design-choices-6",
+      "design": "Design-design-4",
+      "langControls": "Design-langControls-5",
+      "orientation": "Design-orientation-7",
+      "prompt": "Design-prompt-2",
+      "promptHolder": "Design-promptHolder-1",
+      "row": "Design-row-3",
+    }
+  }
+  model={
+    Object {
+      "configure": Object {
+        "choiceLabel": "Choice label",
+        "choicesLabel": "Choices",
+        "enableChoiceLabelChange": true,
+        "enableChoicesLabelChange": true,
+        "enableFeedback": false,
+        "enableNumberedGuideChange": true,
+        "enableOrientationChange": true,
+        "enablePlacementAreaChange": true,
+        "enablePromptChange": false,
+        "enableRemoveTiles": true,
+        "enableShuffleChange": true,
+        "includePlacementAreaLabel": "Include placement area",
+        "numberedGuidesLabel": "Numbered guides",
+        "orientationLabel": "Orientation",
+        "promptLabel": "Prompt",
+        "removeTilesLabel": "Remove all tiles after placing",
+        "shuffleLabel": "Highlight choices",
+      },
+      "tokens": Array [],
+    }
+  }
+  onChange={[MockFunction]}
+  onModelChange={[MockFunction]}
+/>
+`;
+
+exports[`design snapshot renders all items with defaultProps 1`] = `
+<Design
+  className="foo"
+  classes={
+    Object {
+      "choices": "Design-choices-6",
+      "design": "Design-design-4",
+      "langControls": "Design-langControls-5",
+      "orientation": "Design-orientation-7",
+      "prompt": "Design-prompt-2",
+      "promptHolder": "Design-promptHolder-1",
+      "row": "Design-row-3",
+    }
+  }
+  model={
+    Object {
+      "configure": Object {
+        "choiceLabel": "Choice label",
+        "choicesLabel": "Choices",
+        "enableChoiceLabelChange": true,
+        "enableChoicesLabelChange": true,
+        "enableFeedback": true,
+        "enableNumberedGuideChange": true,
+        "enableOrientationChange": true,
+        "enablePlacementAreaChange": true,
+        "enablePromptChange": true,
+        "enableRemoveTiles": true,
+        "enableShuffleChange": true,
+        "includePlacementAreaLabel": "Include placement area",
+        "numberedGuidesLabel": "Numbered guides",
+        "orientationLabel": "Orientation",
+        "promptLabel": "Prompt",
+        "removeTilesLabel": "Remove all tiles after placing",
+        "shuffleLabel": "Highlight choices",
+      },
+      "tokens": Array [],
+    }
+  }
+  onChange={[MockFunction]}
+  onModelChange={[MockFunction]}
+/>
+`;

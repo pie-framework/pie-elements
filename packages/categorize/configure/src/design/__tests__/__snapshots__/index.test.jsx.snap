@@ -57,6 +57,9 @@ exports[`Design snapshot renders 1`] = `
       onConfigChange={[Function]}
       onDelete={[Function]}
     />
+    <Component
+      onChange={[Function]}
+    />
   </div>
 </mockConstructor>
 `;

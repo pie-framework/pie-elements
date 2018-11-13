@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.3.1...@pie-element/select-text@3.3.2) (2018-11-12)
+
+
+### Bug Fixes
+
+* **dependencies-add:** added dependencies where needed ([23df697](https://github.com/pie-framework/pie-elements/commit/23df697))
+* conflict ([b854c6b](https://github.com/pie-framework/pie-elements/commit/b854c6b))
+
+
+
+
+
+<a name="3.3.1"></a>
+## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.3.0...@pie-element/select-text@3.3.1) (2018-11-08)
+
+
+### Bug Fixes
+
+* fix defaultConfiguration import error ([a092493](https://github.com/pie-framework/pie-elements/commit/a092493))
+
+
+
+
+
+<a name="3.3.0"></a>
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.2.0...@pie-element/select-text@3.3.0) (2018-11-05)
+
+
+### Features
+
+* **select-text-configure-customization:** created an exportable module for the defaultValues and added some tests for customization ([e047522](https://github.com/pie-framework/pie-elements/commit/e047522))
+* **select-text-configure-customization:** made it possible to customize the elements from the config design, updated tests ([9fb0fd4](https://github.com/pie-framework/pie-elements/commit/9fb0fd4))
+* **select-text-configure-customization:** updated the pie-ui select-text version ([9583f45](https://github.com/pie-framework/pie-elements/commit/9583f45))
+
+
+
+
+
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.1.0...@pie-element/select-text@3.2.0) (2018-10-31)
 

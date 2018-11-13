@@ -139,6 +139,42 @@ describe('Design', () => {
       );
     });
 
+    describe('changeFeedback', () => {
+      callsOnChange(
+        'changeFeedback',
+        {
+          correct: {
+            type: 'none',
+            default: 'Correct'
+          },
+          incorrect: {
+            type: 'none',
+            default: 'Incorrect'
+          },
+          partial: {
+            type: 'default',
+            default: 'Nearly'
+          }
+        },
+        {
+          feedback: {
+            correct: {
+              type: 'none',
+              default: 'Correct'
+            },
+            incorrect: {
+              type: 'none',
+              default: 'Incorrect'
+            },
+            partial: {
+              type: 'default',
+              default: 'Nearly'
+            }
+          }
+        }
+      );
+    });
+
     describe('countInCorrectResponse', () => {
       it('counts', () => {
         let w = wrapper();
