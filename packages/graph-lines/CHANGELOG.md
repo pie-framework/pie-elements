@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.1.2...@pie-element/graph-lines@1.1.3) (2018-11-15)
+
+
+### Bug Fixes
+
+* add generate.js ([7953997](https://github.com/pie-framework/pie-elements/commit/7953997))
+
+
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.1.1...@pie-element/graph-lines@1.1.2) (2018-09-20)
 
