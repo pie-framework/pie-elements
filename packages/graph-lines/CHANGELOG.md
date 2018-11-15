@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.1.3...@pie-element/graph-lines@1.1.4) (2018-11-15)
+
+
+### Bug Fixes
+
+* fix export ([8a88d54](https://github.com/pie-framework/pie-elements/commit/8a88d54))
+
+
+
+
+
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.1.2...@pie-element/graph-lines@1.1.3) (2018-11-15)
 
 
