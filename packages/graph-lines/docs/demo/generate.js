@@ -1,4 +1,4 @@
-module.exports = (id, element) => ({
+exports.model = (id, element) => ({
   id,
   element,
   minimumWidth: 500,
