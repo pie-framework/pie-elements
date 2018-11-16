@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.4.3...@pie-element/match@1.5.0) (2018-11-16)
+
+
+### Features
+
+* add generate module ([ad80818](https://github.com/pie-framework/pie-elements/commit/ad80818))
+
+
+
+
+
 ## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.4.2...@pie-element/match@1.4.3) (2018-11-12)
 
 
