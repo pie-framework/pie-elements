@@ -1,0 +1,22 @@
+{
+  "name": "@pie-element/math-inline",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "",
+  "dependencies": {
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/config-ui": "^7.7.5",
+    "@pie-lib/math-evaluator": "^6.7.5",
+    "@pie-lib/math-toolbar": "^6.7.5",
+    "classnames": "^2.2.5",
+    "debug": "^3.1.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "license": "ISC"
+}
