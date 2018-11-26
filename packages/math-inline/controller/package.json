@@ -1,0 +1,22 @@
+{
+  "name": "@pie-element/match-inline-controller",
+  "private": true,
+  "version": "1.1.2",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "@pie-lib/feedback": "^0.4.1",
+    "debug": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.4.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "jest": "^22.4.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
