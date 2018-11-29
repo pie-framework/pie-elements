@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { MathToolbar, MathPreview } from '@pie-lib/math-toolbar';
 
 const styles = theme => ({
   container: {
     marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
     display: 'flex',
   },
   input: {
@@ -23,14 +24,18 @@ class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired
   };
 
-  onChange = name => event => {
+  onChange = event => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel[name] = event.target.value;
+    newModel.expression = event.target.value;
 
     onChange(newModel);
   };
+
+  onDone = event => {
+    console.log(event);
+  }
 
   render() {
     const { classes, model } = this.props;
@@ -40,15 +45,16 @@ class GeneralConfigBlock extends React.Component {
     return (
       <div className={classes.container}>
         <div className={classes.input}>
-          <InputContainer label="Layout" className={classes.inputContainer}>
-            {/* math-toolbar here */}
-          </InputContainer>
+            <MathToolbar
+              allowAnswerBlock
+              latex={model.expression}
+              onChange={this.onChange}
+              onDone={this.onDone}
+            />
         </div>
-        <div className={classes.input}>
-          <InputContainer label="Answer" className={classes.inputContainer}>
-            {/* math-toolbar here for answer */}
-          </InputContainer>
-        </div>
+        {/*<div className={classes.input}>*/}
+            {/*<MathPreview />*/}
+        {/*</div>*/}
       </div>
     );
   }

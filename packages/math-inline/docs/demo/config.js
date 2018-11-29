@@ -6,6 +6,7 @@ module.exports = {
     {
       id: '1',
       element: 'math-inline',
+      expression: '1+1',
       feedback: {
         correct: {
           type: 'none',
