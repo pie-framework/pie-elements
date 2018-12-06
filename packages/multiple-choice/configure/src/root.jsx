@@ -1,6 +1,5 @@
 import Main from './main';
 import React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
@@ -18,17 +17,16 @@ export default class Root extends React.Component {
     this.state = {
       model: props.model
     };
+    this.cachedModel = props.model;
   }
 
   onChoiceModeChanged = value => {
-    const { model } = this.state;
-
-    model.choiceMode = value;
+    this.cachedModel.choiceMode = value;
 
     if (value === 'radio') {
       let correctFound = false;
 
-      model.choices = model.choices.map(c => {
+      this.cachedModel.choices = this.cachedModel.choices.map(c => {
         if (correctFound) {
           c.correct = false;
           return c;
@@ -42,65 +40,60 @@ export default class Root extends React.Component {
       });
     }
 
-    this.updateModel(model, true);
+    this.updateModel(true);
   };
 
   onRemoveChoice = index => {
-    const { model } = this.state;
-    model.choices.splice(index, 1);
-    this.updateModel(model);
+    this.cachedModel.choices.splice(index, 1);
+    this.updateModel();
   };
 
   onPartialScoringChanged = partialScoring => {
-    const { model } = this.state;
-    model.partialScoring = partialScoring;
-    this.updateModel(model);
+    this.cachedModel.partialScoring = partialScoring;
+    this.updateModel();
   };
 
   modelChanged = (reset) => {
-    this.props.onModelChanged(this.state.model, reset);
-  };
-
-  updateModel = (model, reset) => {
-    this.setState({ model }, () => {
-      this.modelChanged(reset);
+    this.props.onModelChanged(this.cachedModel, reset);
+    this.setState({
+      model: this.cachedModel
     });
   };
 
+  updateModel = (reset) => {
+    this.modelChanged(reset);
+  };
+
   onAddChoice = () => {
-    const { model } = this.state;
-    model.choices.push({
+    this.cachedModel.choices.push({
       label: 'label',
-      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
+      value: utils.firstAvailableIndex(this.cachedModel.choices.map(c => c.value), 0),
       feedback: {
         type: 'none'
       }
     });
-    this.updateModel(model);
+    this.updateModel();
   };
 
   onKeyModeChanged = value => {
-    const { model } = this.state;
-    model.keyMode = value;
-    this.updateModel(model);
+    this.cachedModel.keyMode = value;
+    this.updateModel();
   };
 
   onChoiceChanged = (index, choice) => {
-    const { model } = this.state;
-    if (choice.correct && model.choiceMode === 'radio') {
-      model.choices = model.choices.map(c => {
+    if (choice.correct && this.cachedModel.choiceMode === 'radio') {
+      this.cachedModel.choices = this.cachedModel.choices.map(c => {
         return merge({}, c, { correct: false });
       });
     }
 
-    model.choices.splice(index, 1, choice);
-    this.updateModel(model);
+    this.cachedModel.choices.splice(index, 1, choice);
+    this.updateModel();
   };
 
   onPromptChanged = prompt => {
-    const update = cloneDeep(this.state.model);
-    update.prompt = prompt;
-    this.updateModel(update);
+    this.cachedModel.prompt = prompt;
+    this.updateModel();
   };
 
   render() {

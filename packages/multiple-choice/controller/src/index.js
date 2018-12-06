@@ -9,7 +9,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
     value: choice.value
   };
 
-  if (mode == 'evaluate') {
+  if (mode === 'evaluate') {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
