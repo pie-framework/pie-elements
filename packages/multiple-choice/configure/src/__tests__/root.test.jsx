@@ -57,7 +57,7 @@ const model = () => ({
     responseTypeLabel: 'Type of Answer',
     choicesLabel: 'Answer Choice',
     addChoiceButtonLabel: 'Add New Choice',
-    enableSelectChoiceLabel: false,
+    enableSelectChoiceMode: false,
     enableSelectResponseType: false,
     enableAddChoice: false,
     enableAddFeedBack: false,
