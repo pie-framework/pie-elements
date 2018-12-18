@@ -9,6 +9,8 @@ import { shallowChild } from '@pie-lib/test-utils';
 import { shallow } from 'enzyme';
 import cloneDeep from 'lodash/cloneDeep';
 
+jest.mock('../general-config-block', () => () => <div>GeneralConfigBlock</div>);
+
 export const defaultProps = {
   model: {
     id: '1',
@@ -45,27 +47,5 @@ describe('Configure', () => {
 
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
-  });
-});
-
-describe('GeneralConfigBlock', () => {
-  let wrapper;
-  let props;
-  let component;
-
-  beforeEach(() => {
-    props = {
-      model: defaultProps.model,
-      onResponseTypeChange: jest.fn(),
-      onLayoutChange: jest.fn()
-    };
-
-    wrapper = shallowChild(GeneralConfigBlock, props, 1);
-  });
-
-  it('renders correctly', () => {
-    component = wrapper();
-
-    expect(component.find(InputContainer).length).toBeGreaterThan(1);
   });
 });
