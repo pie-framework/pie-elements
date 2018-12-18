@@ -87,6 +87,7 @@ class GeneralConfigBlock extends React.Component {
 
   onAnswerBlockAdd = answerBlockId => {
     const { model, onChange } = this.props;
+    const newModel = { ...model };
 
     // first answer block is in the model by default, UX requirement
     if (answerBlockId !== 'answerBlock1') {
@@ -99,13 +100,11 @@ class GeneralConfigBlock extends React.Component {
         allowDecimals: true
       };
 
-      const newModel = { ...model };
-
       newModel.responses = newModel.responses.concat(response);
       onChange(newModel);
     }
 
-    this.handleAnswerBlockDomUpdate(answerBlockId, '');
+    this.handleAnswerBlockDomUpdate(answerBlockId, newModel.responses.length - 1, '');
   };
 
   handleAnswerBlockDomUpdate = (answerBlockId, index, latex) => {
