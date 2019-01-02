@@ -18,9 +18,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  input: {
-    flex: 1
-  },
   templateTitle: {
     fontSize: '0.85rem'
   },
