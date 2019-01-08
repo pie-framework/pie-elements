@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer, ChoiceConfiguration, Layout } from '@pie-lib/config-ui';
-import { withStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { InputContainer, ChoiceConfiguration, ConfigLayout } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ChoiceType, KeyType } from './choice-type';
 import Button from '@material-ui/core/Button';
-import debug from 'debug';
-
-const log = debug('@pie-element:multiple-choice:main');
 
 const styles = theme => ({
   promptHolder: {
@@ -129,7 +126,7 @@ const Design = withStyles(styles)(props => {
 
   return (
     <div className={classes.design}>
-      <Layout
+      <ConfigLayout
         sideMenuItems={getSideMenuItems(props)}
         regularItems={
           <div>
@@ -175,37 +172,6 @@ const Design = withStyles(styles)(props => {
   );
 });
 
-const Basics = props => {
-  log('[Basics] props', props);
-  const { classes, model, onChoiceModeChanged, onKeyModeChanged } = props;
-  const { configure: {
-    responseTypeLabel,
-    choicesLabel,
-    enableSelectResponseType,
-    enableSelectChoiceMode
-  } } = model;
-
-  return (
-    <div className={classes.baseTypes}>
-      {
-        enableSelectResponseType &&
-        <ChoiceType header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged} />
-      }
-      {
-        enableSelectChoiceMode &&
-        <KeyType header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged} />
-      }
-    </div>
-  );
-};
-
-Basics.propTypes = {
-  classes: PropTypes.object.isRequired,
-  model: PropTypes.object.isRequired,
-  onChoiceModeChanged: PropTypes.func.isRequired,
-  onKeyModeChanged: PropTypes.func.isRequired
-};
-
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -228,45 +194,5 @@ export class Main extends React.Component {
 
 const Styled = withStyles(styles)(Main);
 
-const theme = createMuiTheme({
-  palette: {
-    action: {
-      disabled: 'rgba(0, 0, 0, 0.54);'
-    }
-  },
-  overrides: {
-    MuiRadio: {
-      checked: {
-        color: '#3f51b5 !important'
-      }
-    },
-    MuiCheckbox: {
-      checked: {
-        color: '#3f51b5 !important'
-      }
-    },
-    MuiTabs: {
-      root: {
-        borderBottom: '1px solid #eee'
-      }
-    },
-    MuiSwitch: {
-      checked: {
-        color: '#3f51b5 !important',
-        '& + $bar': {
-          backgroundColor: '#3f51b5 !important',
-          opacity: 0.5
-        }
-      }
-    }
-  }
-});
-
-const RootElem = props => (
-  <MuiThemeProvider theme={theme}>
-    <Styled {...props} />
-  </MuiThemeProvider>
-);
-
-export default RootElem;
+export default Styled;
 
