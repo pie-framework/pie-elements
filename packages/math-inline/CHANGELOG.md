@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.0.3...@pie-element/math-inline@0.0.9) (2019-01-08)
+
+
+### Bug Fixes
+
+* **math-inline:** bumped version ([412a589](https://github.com/pie-framework/pie-elements/commit/412a589))
+
+
+
+
+
 ## [0.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.0.2...@pie-element/math-inline@0.0.3) (2019-01-08)
 
 
