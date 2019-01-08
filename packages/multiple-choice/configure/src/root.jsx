@@ -8,6 +8,7 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 export default class Root extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.object
   };
@@ -16,8 +17,20 @@ export default class Root extends React.Component {
     super(props);
 
     this.state = {
-      model: props.model
+      model: props.model,
+      disableSidePanel: props.disableSidePanel
     };
+  }
+
+  componentWillReceiveProps(props) {
+    const { disableSidePanel } = props;
+    const { disableSidePanel: oldDisableProp } = this.props;
+
+    if (disableSidePanel !== oldDisableProp) {
+      this.setState({
+        disableSidePanel
+      });
+    }
   }
 
   onChoiceModeChanged = value => {
@@ -51,9 +64,15 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onPartialScoringChanged = partialScoring => {
+  onPartialScoringChanged = () => {
     const { model } = this.state;
-    model.partialScoring = partialScoring;
+    model.partialScoring = !model.partialScoring;
+    this.updateModel(model);
+  };
+
+  onShuffleChanged = () => {
+    const { model } = this.state;
+    model.shuffle = !model.shuffle;
     this.updateModel(model);
   };
 
@@ -106,6 +125,7 @@ export default class Root extends React.Component {
   render() {
     const props = {
       model: this.state.model,
+      disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
       onChoiceModeChanged: this.onChoiceModeChanged,
       onKeyModeChanged: this.onKeyModeChanged,
@@ -114,6 +134,7 @@ export default class Root extends React.Component {
       onPromptChanged: this.onPromptChanged,
       onDefaultLangChanged: this.onDefaultLangChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
+      onShuffleChanged: this.onShuffleChanged,
       imageSupport: this.props.imageSupport
     };
 

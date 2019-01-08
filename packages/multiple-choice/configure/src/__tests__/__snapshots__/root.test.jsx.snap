@@ -57,5 +57,6 @@ exports[`Root snapshot renders 1`] = `
   onPartialScoringChanged={[Function]}
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
+  onShuffleChanged={[Function]}
 />
 `;

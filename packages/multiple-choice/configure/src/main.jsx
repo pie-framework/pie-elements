@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer, ChoiceConfiguration } from '@pie-lib/config-ui';
+import { InputContainer, ChoiceConfiguration, ConfigLayout } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ChoiceType, KeyType } from './choice-type';
 import Button from '@material-ui/core/Button';
-import debug from 'debug';
-import PartialScoringConfig from '@pie-lib/scoring-config';
-
-const log = debug('@pie-element:multiple-choice:main');
 
 const styles = theme => ({
   promptHolder: {
@@ -28,13 +24,90 @@ const styles = theme => ({
   choiceConfiguration: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
+  },
+  switchElement: {
+    justifyContent: 'space-between',
+    margin: 0
+  },
+  addButton: {
+    float: 'right'
   }
 });
+
+const getSideMenuItems = (props) => {
+  const {
+    classes,
+    model,
+    onChoiceModeChanged,
+    onKeyModeChanged,
+    onPartialScoringChanged,
+    onShuffleChanged
+  } = props;
+  const { configure: {
+    responseTypeLabel,
+    choicesLabel,
+    enableSelectResponseType,
+    enableSelectChoiceMode,
+    partialScoring,
+    shuffle,
+    enablePartialScoring,
+    enableConfigShuffle
+  } } = model;
+
+  return [
+    {
+      items: [
+        enableSelectResponseType &&
+        <ChoiceType key={0} header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
+        enableSelectChoiceMode &&
+        <KeyType key={1} header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
+      ]
+    },
+    {
+      items: []
+    },
+    {
+      items: [
+        enablePartialScoring && <FormControlLabel
+          key={3}
+          classes={{
+            root: classes.switchElement
+          }}
+          control={
+            <Switch
+              checked={partialScoring}
+              onChange={onPartialScoringChanged}
+              value="checkedA"
+            />
+          }
+          label="Allow Partial Scoring"
+          labelPlacement="start"
+        />,
+        enableConfigShuffle && <FormControlLabel
+          key={4}
+          classes={{
+            root: classes.switchElement
+          }}
+          control={
+            <Switch
+              checked={shuffle}
+              onChange={onShuffleChanged}
+              value="checkedA"
+            />
+          }
+          label="Allow Shuffle Choices"
+          labelPlacement="start"
+        />
+      ]
+    }
+  ];
+};
 
 const Design = withStyles(styles)(props => {
   const {
     classes,
     model,
+    disableSidePanel,
     onPromptChanged,
     onChoiceChanged,
     onRemoveChoice,
@@ -46,82 +119,63 @@ const Design = withStyles(styles)(props => {
     addChoiceButtonLabel,
     enableAddChoice,
     enableAddFeedBack,
-    enableDeleteChoice
+    enableDeleteChoice,
+    enableSelectChoiceLabels,
+    enableShowPrompt
   } } = model;
 
   return (
     <div className={classes.design}>
-      <Basics {...props} />
-      <InputContainer label={promptLabel} className={classes.promptHolder}>
-        <EditableHtml
-          className={classes.prompt}
-          markup={model.prompt}
-          onChange={onPromptChanged}
-          imageSupport={imageSupport}
-        />
-      </InputContainer>
-      {model.choices.map((choice, index) => (
-        <ChoiceConfiguration
-          key={index}
-          noLabels
-          index={index + 1}
-          useLetterOrdering={model.keyMode === 'letters'}
-          className={classes.choiceConfiguration}
-          mode={model.choiceMode}
-          data={choice}
-          defaultFeedback={{}}
-          imageSupport={imageSupport}
-          onDelete={() => onRemoveChoice(index)}
-          onChange={c => onChoiceChanged(index, c)}
-          allowFeedBack={enableAddFeedBack}
-          allowDelete={enableDeleteChoice}
-        />
-      ))}
-      <br />
-      {
-        enableAddChoice &&
-        <Button variant="raised" color="primary" onClick={() => onAddChoice()}>
-          {addChoiceButtonLabel}
-        </Button>
-      }
+      <ConfigLayout
+        sideMenuItems={getSideMenuItems(props)}
+        regularItems={
+          <div>
+            <InputContainer label={promptLabel} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={onPromptChanged}
+                imageSupport={imageSupport}
+              />
+            </InputContainer>
+            {model.choices.map((choice, index) => (
+              <ChoiceConfiguration
+                key={index}
+                noLabels
+                index={index + 1}
+                useLetterOrdering={model.keyMode === 'letters'}
+                className={classes.choiceConfiguration}
+                mode={model.choiceMode}
+                data={choice}
+                defaultFeedback={{}}
+                imageSupport={imageSupport}
+                onDelete={() => onRemoveChoice(index)}
+                onChange={c => onChoiceChanged(index, c)}
+                allowFeedBack={enableAddFeedBack}
+                allowDelete={enableDeleteChoice}
+                disabled={!enableSelectChoiceLabels}
+                nonEmpty={!enableShowPrompt}
+              />
+            ))}
+            <br />
+            {
+              enableAddChoice &&
+              <Button className={classes.addButton} variant="raised" color="primary" onClick={onAddChoice}>
+                {addChoiceButtonLabel}
+              </Button>
+            }
+          </div>
+        }
+        disableSidePanel={disableSidePanel}
+      />
     </div>
   );
 });
 
-const Basics = props => {
-  log('[Basics] props', props);
-  const { classes, model, onChoiceModeChanged, onKeyModeChanged } = props;
-  const { configure: {
-    responseTypeLabel,
-    choicesLabel,
-    enableSelectResponseType,
-    enableSelectChoiceLabel
-  } } = model;
-
-  return (
-    <div className={classes.baseTypes}>
-      {
-        enableSelectResponseType &&
-        <ChoiceType header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged} />
-      }
-      {
-        enableSelectChoiceLabel &&
-        <KeyType header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged} />
-      }
-    </div>
-  );
-};
-
-Basics.propTypes = {
-  classes: PropTypes.object.isRequired,
-  model: PropTypes.object.isRequired,
-  onChoiceModeChanged: PropTypes.func.isRequired,
-  onKeyModeChanged: PropTypes.func.isRequired
-};
-
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    disableSidePanel: PropTypes.bool,
     onPromptChanged: PropTypes.func.isRequired,
     onPartialScoringChanged: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
@@ -131,38 +185,14 @@ export class Main extends React.Component {
     })
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      index: 0
-    };
-  }
-
-  onTabsChange = (event, index) => {
-    this.setState({ index });
-  };
-
   render() {
-    const { model, onPartialScoringChanged } = this.props;
-    const { index } = this.state;
-
     return (
-      <div>
-        <Tabs onChange={this.onTabsChange} value={index}>
-          <Tab label="Design" />
-          <Tab label="Scoring" />
-        </Tabs>
-        {index === 0 && <Design {...this.props} />}
-        {index === 1 && (
-          <PartialScoringConfig
-            partialScoring={model.partialScoring}
-            label={model.partialScoringLabel}
-            onChange={onPartialScoringChanged}
-          />
-        )}
-      </div>
+      <Design {...this.props} />
     );
   }
 }
 
-export default withStyles(styles)(Main);
+const Styled = withStyles(styles)(Main);
+
+export default Styled;
+

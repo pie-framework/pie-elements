@@ -14,20 +14,44 @@ import defaults from 'lodash/defaults';
 const log = debug('multiple-choice:configure');
 
 const prepareCustomizationObject = (model) => {
+  const answerChoiceCount = model.configure.answerChoiceCount
+    ? model.configure.answerChoiceCount
+    : 4;
   const defaultValues = {
     promptLabel : 'Prompt',
     responseTypeLabel: 'Response Type',
     choicesLabel: 'Choice Labels',
     addChoiceButtonLabel: 'Add a choice',
-    enableSelectChoiceLabel: true,
+    enableSelectChoiceMode: true,
     enableSelectResponseType: true,
     enableAddChoice: true,
     enableAddFeedBack: true,
-    enableDeleteChoice: true
+    enableDeleteChoice: true,
+    enablePartialScoring: true,
+    enableSelectChoiceLabels: true,
+    enableConfigShuffle: true,
+    enableShowPrompt: true
   };
+  let formattedChoices = model.choices;
+
+  if (!formattedChoices || formattedChoices.length === 0) {
+    formattedChoices = [];
+
+    for (let i = 0; i < answerChoiceCount; i++) {
+      formattedChoices.push({
+        value: '',
+        label: '',
+        feedback: {
+          type: 'none',
+          value: ''
+        }
+      });
+    }
+  }
 
   return {
     ...model,
+    choices: formattedChoices,
     configure: defaults(model.configure, defaultValues)
   };
 };
@@ -40,6 +64,11 @@ export default class extends HTMLElement {
 
   set model(s) {
     this._model = prepareCustomizationObject(utils.normalizeChoices(s));
+    this._render();
+  }
+
+  set disableSidePanel(s) {
+    this._disableSidePanel = s;
     this._render();
   }
 
@@ -70,6 +99,7 @@ export default class extends HTMLElement {
     log('_render');
     let element = React.createElement(Root, {
       model: this._model,
+      disableSidePanel: this._disableSidePanel,
       onModelChanged: this.onModelChanged,
       imageSupport: {
         add: this.insertImage.bind(this),
