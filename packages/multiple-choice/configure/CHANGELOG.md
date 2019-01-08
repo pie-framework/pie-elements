@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.3.2...@pie-element/multiple-choice-configure@0.4.0) (2019-01-08)
+
+
+### Bug Fixes
+
+* **tests:** fixed tests for the multiple choice element ([0fa715c](https://github.com/pie-framework/pie-elements/commit/0fa715c))
+
+
+### Features
+
+* **multiple-choice:** moved the theming to the config-ui layout element and removed some unnecessary code ([910e799](https://github.com/pie-framework/pie-elements/commit/910e799))
+* **multiple-choice:** refactored the code of the multiple-choice package in order to use the new layout ([b16b654](https://github.com/pie-framework/pie-elements/commit/b16b654))
+* **multiple-choice:** updated snapshot in order to fix tests ([3fb6464](https://github.com/pie-framework/pie-elements/commit/3fb6464))
+* **multiple-choice:** updated the config-ui package ([bc7aac1](https://github.com/pie-framework/pie-elements/commit/bc7aac1))
+* **multiple-choice:** updated the config-ui package and the pie-ui package ([95ae357](https://github.com/pie-framework/pie-elements/commit/95ae357))
+* **multiple-choice:** updated the version of the config-ui ([1d79056](https://github.com/pie-framework/pie-elements/commit/1d79056))
+
+
+
+
+
 ## [0.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.3.1...@pie-element/multiple-choice-configure@0.3.2) (2018-11-14)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure

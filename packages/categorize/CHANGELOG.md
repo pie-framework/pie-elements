@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.2...@pie-element/categorize@2.7.3) (2019-01-08)
+
+
+
+## 2.3.4 (2018-12-17)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [2.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.1...@pie-element/categorize@2.7.2) (2018-11-12)
 
 
