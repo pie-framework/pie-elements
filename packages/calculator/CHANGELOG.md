@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.0.3...@pie-element/calculator@2.0.4) (2019-01-08)
+
+
+### Bug Fixes
+
+* **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
+
+
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.0.2...@pie-element/calculator@2.0.3) (2018-09-20)
 
