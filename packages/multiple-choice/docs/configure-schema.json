@@ -1,0 +1,84 @@
+{
+   "definitions": {},
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "http://pie-framework.org/elements/multiple-choice/configure.json",
+   "type": "object",
+   "description": "@pie-elements/mulitple-choice Authoring Configuration Object",
+   "properties": {
+     "promptLabel": {
+       "type": "string",
+       "description": "The label for the item stem/prompt field",
+       "default": "Item Stem",
+       "examples": [
+         "Item Stem",
+         "Prompt"
+       ]
+     },
+     "choicesLabel": {
+       "type": "string",
+       "description": "The label for the section that allows an author to choose prefix labels for choices, using:`letters`, `numbers` or `none`",
+       "default": "",
+       "examples": [
+         "Answer Choice Labels"
+       ]
+     },
+     "addChoiceButtonLabel": {
+       "type": "string",
+       "description": "The label shown on the add choice button",
+       "default": "",
+       "examples": [
+         "Add New Choice"
+       ]
+     },
+     "enableSelectChoiceMode": {
+       "type": "boolean",
+       "description": " Indicates whether author can modify the response type (radio / checkboxes) for single or multi-choice questions.",
+       "default": true
+     },
+     "enableSelectResponseType": {
+       "type": "boolean",
+       "description": "The Enableselectresponsetype Schema",
+       "default": true
+     },
+     "enableAddChoice": {
+       "type": "boolean",
+       "description": "Whether config view will show a button that allows an author to add more choices ",
+       "default": true
+     },
+     "enableAddFeedBack": {
+       "type": "boolean",
+       "description": "Show fields that allow author to edit content / messages that student role user would see if item is in evaluate mode",
+       "default": false
+     },
+     "enableDeleteChoice": {
+       "type": "boolean",
+       "description": "The Enabledeletechoice Schema",
+       "default": false
+     },
+     "enablePartialScoring": {
+       "type": "boolean",
+       "description": "Allow the author to modify settings for partial scoring",
+       "default": true
+     },
+     "enableSelectChoiceLabels": {
+       "type": "boolean",
+       "description": "Allow author to modify choice label options",
+       "default": true
+     },
+     "enableConfigShuffle": {
+       "type": "boolean",
+       "description": "allow author to control choice shuffling",
+       "default": true
+     },
+     "enableShowPrompt": {
+       "type": "boolean",
+       "description": "Determines whether author can show / hide prompt field",
+       "default": false
+     },
+     "answerChoiceCount": {
+       "type": "integer",
+       "description": "Number of empty choices to show in config view if no choice model is provided",
+       "default": 4
+     }
+   }
+ }
