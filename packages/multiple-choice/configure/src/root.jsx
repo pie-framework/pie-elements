@@ -8,6 +8,7 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 export default class Root extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    configure: PropTypes.object,
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.object
@@ -125,6 +126,7 @@ export default class Root extends React.Component {
   render() {
     const props = {
       model: this.state.model,
+      configure: this.props.configure,
       disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
       onChoiceModeChanged: this.onChoiceModeChanged,
