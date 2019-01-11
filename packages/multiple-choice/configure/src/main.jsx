@@ -38,28 +38,29 @@ const getSideMenuItems = (props) => {
   const {
     classes,
     model,
+    configure,
     onChoiceModeChanged,
     onKeyModeChanged,
     onPartialScoringChanged,
     onShuffleChanged
   } = props;
-  const { configure: {
+  const {
     responseTypeLabel,
     choicesLabel,
-    enableSelectResponseType,
+    enableSelectChoiceLabels,
     enableSelectChoiceMode,
     partialScoring,
     shuffle,
     enablePartialScoring,
     enableConfigShuffle
-  } } = model;
+  } = configure;
 
   return [
     {
       items: [
-        enableSelectResponseType &&
-        <ChoiceType key={0} header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
         enableSelectChoiceMode &&
+        <ChoiceType key={0} header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
+        enableSelectChoiceLabels &&
         <KeyType key={1} header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
       ]
     },
@@ -106,6 +107,7 @@ const getSideMenuItems = (props) => {
 const Design = withStyles(styles)(props => {
   const {
     classes,
+    configure,
     model,
     disableSidePanel,
     onPromptChanged,
@@ -114,15 +116,14 @@ const Design = withStyles(styles)(props => {
     onAddChoice,
     imageSupport
   } = props;
-  const { configure: {
+  const {
     promptLabel,
     addChoiceButtonLabel,
-    enableAddChoice,
+    addChoices,
     enableAddFeedBack,
     enableDeleteChoice,
-    enableSelectChoiceLabels,
     enableShowPrompt
-  } } = model;
+  } = configure;
 
   return (
     <div className={classes.design}>
@@ -153,13 +154,12 @@ const Design = withStyles(styles)(props => {
                 onChange={c => onChoiceChanged(index, c)}
                 allowFeedBack={enableAddFeedBack}
                 allowDelete={enableDeleteChoice}
-                disabled={!enableSelectChoiceLabels}
                 nonEmpty={!enableShowPrompt}
               />
             ))}
             <br />
             {
-              enableAddChoice &&
+              addChoices &&
               <Button className={classes.addButton} variant="raised" color="primary" onClick={onAddChoice}>
                 {addChoiceButtonLabel}
               </Button>
