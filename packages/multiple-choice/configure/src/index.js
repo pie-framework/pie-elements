@@ -50,11 +50,11 @@ const prepareCustomizationObject = (configure, model) => {
   }
 
   return {
+    configure: defaults(configure, defaultValues),
     model: {
       ...model,
       choices: formattedChoices
-    },
-    configure: defaults(configure, defaultValues)
+    }
   };
 };
 
