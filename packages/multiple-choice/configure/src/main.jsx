@@ -45,7 +45,7 @@ const getSideMenuItems = (props) => {
     onShuffleChanged
   } = props;
   const {
-    settingsResponseTypeLabel,
+    settingsSelectChoiceModeLabel,
     settingsChoicePrefixesLabel,
     settingsSelectChoicePrefixes,
     settingsSelectChoiceMode,
@@ -59,7 +59,7 @@ const getSideMenuItems = (props) => {
     {
       items: [
         settingsSelectChoiceMode &&
-        <ChoiceType key={0} header={settingsResponseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
+        <ChoiceType key={0} header={settingsSelectChoiceModeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
         settingsSelectChoicePrefixes &&
         <KeyType key={1} header={settingsChoicePrefixesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
       ]

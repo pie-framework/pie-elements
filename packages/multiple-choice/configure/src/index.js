@@ -23,7 +23,7 @@ const defaultValues = {
   answerChoiceCount: 0,
   settingsSelectChoiceMode: true,
   settingsSelectChoicePrefixes: true,
-  settingsResponseTypeLabel: 'Response Type',
+  settingsSelectChoiceModeLabel: 'Response Type',
   settingsChoicePrefixesLabel: 'Choice Labels',
   settingsPartialScoring: true,
   settingsConfigShuffle: true
