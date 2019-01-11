@@ -18,12 +18,12 @@ const defaultValues = {
   responseTypeLabel: 'Response Type',
   choicesLabel: 'Choice Labels',
   addChoiceButtonLabel: 'Add a choice',
-  enableSelectChoiceMode: true,
   addChoices: true,
+  enableSelectChoiceMode: true,
+  enableSelectChoiceLabels: true,
   enableAddFeedBack: true,
   enableDeleteChoice: true,
   enablePartialScoring: true,
-  enableSelectChoiceLabels: true,
   enableConfigShuffle: true,
   enableShowPrompt: true
 };

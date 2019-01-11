@@ -137,6 +137,7 @@ const Design = withStyles(styles)(props => {
                 markup={model.prompt}
                 onChange={onPromptChanged}
                 imageSupport={imageSupport}
+                nonEmpty={!enableShowPrompt}
               />
             </InputContainer>
             {model.choices.map((choice, index) => (
@@ -154,7 +155,6 @@ const Design = withStyles(styles)(props => {
                 onChange={c => onChoiceChanged(index, c)}
                 allowFeedBack={enableAddFeedBack}
                 allowDelete={enableDeleteChoice}
-                nonEmpty={!enableShowPrompt}
               />
             ))}
             <br />
