@@ -45,23 +45,23 @@ const getSideMenuItems = (props) => {
     onShuffleChanged
   } = props;
   const {
-    responseTypeLabel,
-    choicesLabel,
-    enableSelectChoiceLabels,
-    enableSelectChoiceMode,
+    settingsResponseTypeLabel,
+    settingsChoicePrefixesLabel,
+    settingsSelectChoicePrefixes,
+    settingsSelectChoiceMode,
     partialScoring,
     shuffle,
-    enablePartialScoring,
-    enableConfigShuffle
+    settingsPartialScoring,
+    settingsConfigShuffle
   } = configure;
 
   return [
     {
       items: [
-        enableSelectChoiceMode &&
-        <ChoiceType key={0} header={responseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
-        enableSelectChoiceLabels &&
-        <KeyType key={1} header={choicesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
+        settingsSelectChoiceMode &&
+        <ChoiceType key={0} header={settingsResponseTypeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
+        settingsSelectChoicePrefixes &&
+        <KeyType key={1} header={settingsChoicePrefixesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
       ]
     },
     {
@@ -69,7 +69,7 @@ const getSideMenuItems = (props) => {
     },
     {
       items: [
-        enablePartialScoring && <FormControlLabel
+        settingsPartialScoring && <FormControlLabel
           key={3}
           classes={{
             root: classes.switchElement
@@ -84,7 +84,7 @@ const getSideMenuItems = (props) => {
           label="Allow Partial Scoring"
           labelPlacement="start"
         />,
-        enableConfigShuffle && <FormControlLabel
+        settingsConfigShuffle && <FormControlLabel
           key={4}
           classes={{
             root: classes.switchElement
@@ -119,10 +119,10 @@ const Design = withStyles(styles)(props => {
   const {
     promptLabel,
     addChoiceButtonLabel,
-    addChoices,
-    enableAddFeedBack,
-    enableDeleteChoice,
-    enableShowPrompt
+    addChoice,
+    addFeedBack,
+    deleteChoice,
+    showPrompt
   } = configure;
 
   return (
@@ -137,7 +137,7 @@ const Design = withStyles(styles)(props => {
                 markup={model.prompt}
                 onChange={onPromptChanged}
                 imageSupport={imageSupport}
-                nonEmpty={!enableShowPrompt}
+                nonEmpty={!showPrompt}
               />
             </InputContainer>
             {model.choices.map((choice, index) => (
@@ -153,13 +153,13 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 onDelete={() => onRemoveChoice(index)}
                 onChange={c => onChoiceChanged(index, c)}
-                allowFeedBack={enableAddFeedBack}
-                allowDelete={enableDeleteChoice}
+                allowFeedBack={addFeedBack}
+                allowDelete={deleteChoice}
               />
             ))}
             <br />
             {
-              addChoices &&
+              addChoice &&
               <Button className={classes.addButton} variant="raised" color="primary" onClick={onAddChoice}>
                 {addChoiceButtonLabel}
               </Button>

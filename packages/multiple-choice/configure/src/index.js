@@ -15,17 +15,18 @@ const log = debug('multiple-choice:configure');
 
 const defaultValues = {
   promptLabel : 'Prompt',
-  responseTypeLabel: 'Response Type',
-  choicesLabel: 'Choice Labels',
   addChoiceButtonLabel: 'Add a choice',
-  addChoices: true,
-  enableSelectChoiceMode: true,
-  enableSelectChoiceLabels: true,
-  enableAddFeedBack: true,
-  enableDeleteChoice: true,
-  enablePartialScoring: true,
-  enableConfigShuffle: true,
-  enableShowPrompt: true
+  addChoice: true,
+  addFeedBack: true,
+  deleteChoice: true,
+  showPrompt: true,
+  answerChoiceCount: 0,
+  settingsSelectChoiceMode: true,
+  settingsSelectChoicePrefixes: true,
+  settingsResponseTypeLabel: 'Response Type',
+  settingsChoicePrefixesLabel: 'Choice Labels',
+  settingsPartialScoring: true,
+  settingsConfigShuffle: true
 };
 
 const prepareCustomizationObject = (configure, model) => {
