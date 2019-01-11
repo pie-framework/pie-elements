@@ -5,80 +5,78 @@
    "type": "object",
    "description": "@pie-elements/mulitple-choice Authoring Configuration Object",
    "properties": {
-     "promptLabel": {
-       "type": "string",
-       "description": "The label for the item stem/prompt field",
-       "default": "Item Stem",
-       "examples": [
-         "Item Stem",
-         "Prompt"
-       ]
-     },
-     "choicesLabel": {
-       "type": "string",
-       "description": "The label for the section that allows an author to choose prefix labels for choices, using:`letters`, `numbers` or `none`",
-       "default": "",
-       "examples": [
-         "Answer Choice Labels"
-       ]
-     },
+    "addChoice": {
+      "type": "boolean",
+      "description": "Whether config view will show a button that allows an author to add more choices ",
+      "default": true
+    },
      "addChoiceButtonLabel": {
        "type": "string",
        "description": "The label shown on the add choice button",
-       "default": "",
-       "examples": [
-         "Add New Choice"
-       ]
+       "default": "Add New Choice"
      },
-     "enableSelectChoiceMode": {
+     "addFeedBack": {
+      "type": "boolean",
+      "description": "Show fields that allow author to edit content / messages that student role user would see if item is in evaluate mode",
+      "default": true
+    },
+    "answerChoiceCount": {
+      "type": "integer",
+      "description": "The number of empty choices to show in config view if no choice model is provided",
+      "default": 4
+    },
+    "deleteChoice": {
+      "type": "boolean",
+      "description": "Allow choices to be deleted by author",
+      "default": false
+    },
+    "showPrompt": {
+     "type": "boolean",
+     "description": "Determines whether prompt field will be displayed or not",
+     "default": false
+    },
+    "promptLabel": {
+      "type": "string",
+      "description": "The label for the item stem/prompt field",
+      "default": "Item Stem",
+      "examples": [
+        "Item Stem",
+        "Prompt"
+      ]
+    },
+     "settingsSelectChoiceMode": {
        "type": "boolean",
-       "description": " Indicates whether author can modify the response type (radio / checkboxes) for single or multi-choice questions.",
+       "description": " Indicates whether the settings panel will allow an author to modify the choice mode (radio / checkboxes) for single or multi-choice questions.",
        "default": true
      },
-     "enableSelectResponseType": {
+     "settingsSelectChoiceModeLabel": {
+      "type": "string",
+      "description": "The label presented above the `settingsSelectChoiceMode` setting",
+      "default": "Choice Mode"
+
+    },
+    "settingsSelectChoicePrefixes": {
+      "type": "boolean",
+      "description": "Indicates whether the settings panel will allow the author to chose prefixes to be prepended to choices, the author may choose `letters`, `numbers` or `none`",
+      "default": true
+    },
+     "settingsChoicePrefixesLabel": {
+      "type": "string",
+      "description": "The label for the  `settingsSelectChoicePrefixes` section in the settings panel",
+      "default": "",
+      "examples": [
+        "Answer Choice Labels"
+      ]
+    },
+     "settingsPartialScoring": {
        "type": "boolean",
-       "description": "The Enableselectresponsetype Schema",
+       "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
        "default": true
      },
-     "enableAddChoice": {
+     "settingsConfigShuffle": {
        "type": "boolean",
-       "description": "Whether config view will show a button that allows an author to add more choices ",
+       "description": "Indicates whether the settings panel will allow author to control choice shuffling",
        "default": true
-     },
-     "enableAddFeedBack": {
-       "type": "boolean",
-       "description": "Show fields that allow author to edit content / messages that student role user would see if item is in evaluate mode",
-       "default": false
-     },
-     "enableDeleteChoice": {
-       "type": "boolean",
-       "description": "The Enabledeletechoice Schema",
-       "default": false
-     },
-     "enablePartialScoring": {
-       "type": "boolean",
-       "description": "Allow the author to modify settings for partial scoring",
-       "default": true
-     },
-     "enableSelectChoiceLabels": {
-       "type": "boolean",
-       "description": "Allow author to modify choice label options",
-       "default": true
-     },
-     "enableConfigShuffle": {
-       "type": "boolean",
-       "description": "allow author to control choice shuffling",
-       "default": true
-     },
-     "enableShowPrompt": {
-       "type": "boolean",
-       "description": "Determines whether author can show / hide prompt field",
-       "default": false
-     },
-     "answerChoiceCount": {
-       "type": "integer",
-       "description": "Number of empty choices to show in config view if no choice model is provided",
-       "default": 4
      }
    }
  }
