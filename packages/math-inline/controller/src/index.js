@@ -1,6 +1,6 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-// need math stuff in here for comparison, math-evaluator @pie-lib
+import { areValuesEqual } from '@pie-lib/math-evaluator';
 
 const log = debug('@pie-element:math-inline:controller');
 
@@ -8,26 +8,52 @@ const getResponseCorrectness = (
   model,
   answers
 ) => {
-  console.log(model);
-  console.log(answers);
+  const correctResponses = model.responses;
 
-  // if (!answers || Object.keys(answers).length === 0) {
-  //   return 'unanswered';
-  // }
-  //
-  // const totalCorrectAnswers = getTotalCorrect(model);
-  // const correctAnswers = getCorrectSelected(rows, answers);
-  //
-  // if (totalCorrectAnswers === correctAnswers) {
-  //   return  'correct';
-  // } else if (correctAnswers === 0) {
-  //   return 'incorrect';
-  // } else if (allowPartialScores && partialScoring) {
-  //   return 'partial';
-  // }
+  if (!answers || answers.length === 0) {
+    return 'unanswered';
+  }
+
+  const correctAnswers = getCorrectAnswers(correctResponses, answers);
+
+  if (correctResponses === correctAnswers) {
+    return  'correct';
+  } else if (correctAnswers === 0) {
+    return 'incorrect';
+  }
 
   return 'incorrect';
 };
+
+function getCorrectAnswers(correctResponses, answers) {
+  let correct = 0;
+
+  correctResponses.forEach(correctResponse => {
+    let answerCorrect = false;
+    const correspondingAnswer = answers[correctResponse.id];
+    const acceptedValues = [correctResponse.answer].concat(Object.keys(correctResponse.alternates).map(alternateId =>
+      correctResponse.alternates[alternateId].answer));
+
+    if (correspondingAnswer && correspondingAnswer.value) {
+      if (correctResponse.validation === 'literal') {
+        for (let i = 0; i < acceptedValues.length; i++) {
+          if (acceptedValues[i] === correspondingAnswer.value) {
+            answerCorrect = true;
+            break;
+          }
+        }
+      } else {
+        answerCorrect = areValuesEqual(correctResponse.answer, correspondingAnswer.value, { isLatex: true });
+      }
+    }
+
+    if (answerCorrect) {
+      correct++;
+    }
+  });
+
+  return correct;
+}
 
 const getCorrectness = (question, env, answers) => {
   if (env.mode === 'evaluate') {
@@ -37,24 +63,6 @@ const getCorrectness = (question, env, answers) => {
     );
   }
 };
-
-// const getCorrectSelected = (rows, answers) => {
-//   let correctAnswers = 0;
-//
-//   rows.forEach(row => {
-//     const answer = answers[row.id];
-//
-//     if (answer) {
-//       row.values.forEach((v, i) => {
-//         if (answer[i] === v) {
-//           correctAnswers += 1;
-//         }
-//       });
-//     }
-//   });
-//
-//   return correctAnswers;
-// };
 
 export function model(question, session, env) {
   return new Promise(resolve => {
