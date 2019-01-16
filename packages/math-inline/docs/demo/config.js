@@ -6,6 +6,9 @@ module.exports = {
     {
       id: '1',
       mode: 'advanced',
+      config: {
+        allowPartialScores: false
+      },
       element: 'math-inline',
       expression: '1+1',
       question: 'What is the equation for a slope?',

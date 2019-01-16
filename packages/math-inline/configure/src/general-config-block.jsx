@@ -72,10 +72,14 @@ class GeneralConfigBlock extends React.Component {
     }
 
     onChange(newModel);
+
+    setTimeout(this.checkAnswerBlocks, 0);
   };
 
   onDone = () => {
     this.setState({ showKeypad: false });
+
+    setTimeout(this.checkAnswerBlocks, 0);
   };
 
   onFocus = () => {
@@ -87,7 +91,7 @@ class GeneralConfigBlock extends React.Component {
     const newModel = { ...model };
 
     // first answer block is in the model by default, UX requirement
-    if (answerBlockId !== 'answerBlock1') {
+    if (answerBlockId !== 'answerBlock1' || (answerBlockId === 'answerBlock1' && !document.getElementById('answerBlock1'))) {
       const response = {
         id: answerBlockId,
         validation: 'symbolic',
@@ -101,24 +105,41 @@ class GeneralConfigBlock extends React.Component {
       onChange(newModel);
     }
 
-    this.handleAnswerBlockDomUpdate(answerBlockId, newModel.responses.length - 1, '');
+    this.handleAnswerBlockDomUpdate(answerBlockId, newModel.responses.length - 1, '', true);
   };
 
   handleAnswerBlockDomUpdate = (answerBlockId, index, latex) => {
+    const { advancedAnswerIsPristine } = this.state;
     const container = document.getElementById(answerBlockId);
     const element = (
       <AnswerBlock
         id={answerBlockId}
         index={index}
-        latex={answerBlockId === 'answerBlock1' ? 'y = mx + b' : latex}
+        latex={advancedAnswerIsPristine && answerBlockId === 'answerBlock1' ? 'y = mx + b' : latex}
       />
     );
 
     if (container) {
       ReactDOM.render(element, document.getElementById(answerBlockId));
     } else {
-      setTimeout(() => this.handleAnswerBlockDomUpdate(answerBlockId, index, latex), 200);
+      setTimeout(() => this.handleAnswerBlockDomUpdate(answerBlockId, index, latex), 0);
     }
+  };
+
+  checkAnswerBlocks = () => {
+    const { model, onChange } = this.props;
+    const newModel = { ...model };
+    newModel.responses = [];
+
+    model.responses.forEach(response => {
+      const container = document.getElementById(response.id);
+
+      if (container || (!container && response.id === 'answerBlock1')) {
+        newModel.responses = newModel.responses.concat(response);
+      }
+    });
+
+    onChange(newModel);
   };
 
   onResponseChange = (response, index) => {

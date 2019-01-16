@@ -56,9 +56,12 @@ const styles = theme => ({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-  alternateButton: {},
+  alternateButton: {
+    border: '1px solid lightgrey'
+  },
   removeAlternateButton: {
     marginLeft: theme.spacing.unit * 2,
+    border: '1px solid lightgrey',
     color: 'gray',
     fontSize: '0.8rem'
   },
