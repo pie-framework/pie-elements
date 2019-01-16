@@ -15,7 +15,7 @@ This will install the typescript lib and also provide the json schemas in `dist/
 Using the types will provide IDE auto-compplete and type-checking on model objects:
 
 ```ts
-import {MultipleChoiceConfig} from `@pie-models`;
+import {MultipleChoiceConfig} from `@pie-element/pie-models`;
 
 let myConfig:MultipleChoiceConfig = {...};
 ```
