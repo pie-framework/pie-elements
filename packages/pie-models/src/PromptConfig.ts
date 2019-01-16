@@ -1,7 +1,7 @@
 /**
  * Shared properties of configure views for interactions that support optional prompts
  */
-export default interface PromptConfig {
+export interface PromptConfig {
 
   /**
    * Determines whether prompt field will be displayed or not

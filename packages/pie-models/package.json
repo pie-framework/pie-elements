@@ -11,7 +11,7 @@
   "scripts": {
     "make-schemas": "ts-node scripts/GenerateSchemas.ts",
     "build": "tsc",
-    "view-docs": "npm run make-schemas && docson -d dist/schemas",
+    "view-docs": "docson -d dist/schemas",
     "prepare": "npm run build & npm run make-schemas"
   },
   "author": "PIE Framework",

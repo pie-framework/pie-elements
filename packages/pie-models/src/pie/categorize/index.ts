@@ -1,4 +1,4 @@
-import PromptConfig from '../../PromptConfig';
+import {PromptConfig} from '../../PromptConfig';
 
 /**
  * Config Object for @pie-elements/categorize
