@@ -1,14 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "now-start": "docson -d packages/",
     "lint": "./node_modules/.bin/eslint --ext .js --ext .jsx packages",
     "test": "jest",
     "pie-clean": "lerna exec -- pie clean --dir docs/demo",
     "pie-install": "lerna exec --parallel -- pie install --dir docs/demo",
     "pie-pack-clean": "scripts/clean.sh",
     "build": "scripts/build",
-    "start-docson": "docson -d packages/",
     "release": "scripts/build --cleanOnly && npm test && scripts/build && lerna publish --conventional-commits"
   },
   "devDependencies": {
@@ -22,7 +20,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "child-process-promise": "^2.2.1",
-    "docson": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
