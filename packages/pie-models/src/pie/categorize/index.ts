@@ -1,7 +1,24 @@
+import PromptConfig from '../../PromptConfig';
+
 /**
- * Config Object for @pie-elements/multiple-choice
+ * Config Object for @pie-elements/categorize
  */
-export interface MultipleChoiceConfigure  {
+export interface CategorizeConfigure extends PromptConfig  {
+
+
+
+  /**
+   * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
+   * @default true
+   */
+  settingsPartialScoring?:  boolean;
+
+}
+
+/**
+ * Config Object for @pie-elements/categorize
+ */
+export interface CategorizePie  {
 
   /** 
    * Whether config view will show a button that allows an author to add more choices 

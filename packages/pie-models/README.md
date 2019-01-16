@@ -30,19 +30,18 @@ Will run a local docson server to view the schema documentation.
 
 ## Adding / modifying types
 
+Types should be exported for the PIE in:
 
-
-Models should be defined for the item configuration model under:
-
-`src/pies/pie-name/Item.ts`
-
-And for the authoring view element at:
-
-`src/pies/pie-name/Configure.ts`
+`src/pies/pie-name/index.ts`
 
 Where `pie-name`is the same as the directory/package name for the pie in `../packages`.
 
-These should create an export using the package name as pascale case with `Configure` or `Pie` appended. 
+> the `src/pies` directory should only contain subdirectories that match pies in `pie-elements/packages`
+
+
+These `index.ts` files should create exports using the package name as pascale case with `Configure` or `Pie` appended. 
 
 e.g. `CategorizeConfigure` `MultipleChoicePie`
+
+`src/index.ts` should be updated with any new types.
 

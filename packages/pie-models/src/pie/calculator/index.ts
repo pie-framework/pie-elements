@@ -7,7 +7,7 @@ enum CalculatorMode {
 /**
  * Model Object for @pie-elements/calculator
  */
-export default interface CalculatorPie  {
+export interface CalculatorPie  {
   /** Which calculator mode to show */
   mode: CalculatorMode
 }
