@@ -1,5 +1,5 @@
 {
-  "name": "pie-models",
+  "name": "@pie-element/pie-models",
   "version": "0.1.0",
   "description": "This project contains typescript interfaces for models that may be passed to PIE interactions.",
   "main": "index.js",
