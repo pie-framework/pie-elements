@@ -1,4 +1,6 @@
 import {Choice}  from '../../Choice';
+import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
 
 enum KeyMode {
   /** keyed with letters */
@@ -15,7 +17,7 @@ enum ChoiceMode {
 /**
 * Model for the Choice Interaction
 */
-export interface MultipleChoicePie {
+export interface MultipleChoicePie extends PieModel {
   
   /** The choice options for the question */
   choices: Choice[];
@@ -35,7 +37,7 @@ export interface MultipleChoicePie {
 /**
  * Config Object for @pie-elements/multiple-choice
  */
-export interface MultipleChoiceConfigure  {
+export interface MultipleChoiceConfigure extends PromptConfig {
 
   /** 
    * Whether config view will show a button that allows an author to add more choices 
@@ -69,18 +71,6 @@ export interface MultipleChoiceConfigure  {
    * @default true
    */
   deleteChoice?: boolean;
-
-  /**
-   * Determines whether prompt field will be displayed or not
-   * @default true
-   */
-  showPrompt?: boolean;
-
-  /**
-   * The label for the item stem/prompt field
-   * @default "Item Stem"
-   */
-  promptLabel?: string;
 
   /**
    * Indicates whether the settings panel will allow an author to modify the choice 

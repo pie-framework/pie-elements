@@ -1,106 +1,97 @@
 import {PromptConfig} from '../../PromptConfig';
-
-/**
- * Config Object for @pie-elements/categorize
- */
-export interface CategorizeConfigure extends PromptConfig  {
+import {PieModel} from '../../PieModel';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 
+interface CategoryChoice {
+  /** Identifier for the choice */
+  id: string;
+
+  /** The xhtml content for the choice */
+  content: string;
+}
+
+interface Category {
+    /** Identifier for the category */
+    id: string;
+
+    /** The label to display with the category. */
+    label: string;
+
+    /** The choices presented in this category */
+    choices: CategoryChoice[];
+}
+
+interface CategoryCorrectResponse {
+  /** The identifier for the category */
+  category: string;
+
+  /** Array of identifiers for the choices that belong in this category */
+  choices: string[];
+
+}
+
+enum ChoicesPosition {
+  above = 'above',
+  below = 'below'
+}
+
+interface ChoicesConfig {
+  /**
+   * @default 2
+   */
+  columns: number;
 
   /**
-   * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-   * @default true
+   * Indicates where the choices should be presented in relation to the categories.
    */
-  settingsPartialScoring?:  boolean;
+  position: ChoicesPosition;
 
+  /** Label to be displayed for the choices */
+  label: string;
+
+  /** Should the choices be shuffled */
+  shuffle: boolean;
+
+  /**
+   * Indicates if the choice, after it is dragged into a category, should be removed from the choices
+   * area or should remain in place.
+   */
+  removeafterplacing: boolean;
+}
+
+interface CategoriesConfig {
+  /** 
+   * The number of columns in which to present the categories
+   * @default 2
+   */
+  columns: number
 }
 
 /**
  * Config Object for @pie-elements/categorize
  */
-export interface CategorizePie  {
+export interface CategorizePie extends PieModel {
 
-  /** 
-   * Whether config view will show a button that allows an author to add more choices 
-   * @default true
-   */
-  addChoice?: boolean;
+  /** The available choices */
+  choices: CategoryChoice[];
 
-  /** 
-   * The label shown on the add choice button 
-   * @maxLength 50
-   * @default "Add New Choice"
-   */
-  addChoiceButtonLabel?: string;
+  /** The categories in which choices may be placed */
+  categories: Category[];
+  
+  /** The defintion of the correct response to the question */
+  correctResponse: CategoryCorrectResponse[];
 
-  /** 
-   * Show fields that allow author to edit content / messages that student role user would see if item 
-   * is in evaluate mode
-   * @default true
-   */
-  addFeedBack?: boolean;
-
-  /** 
-   * The number of empty choices to show in config view if no choice model is provided 
-   * @minimum 1
-   * @default 4
-   */
-  answerChoiceCount?: number;
-
-  /** 
-   * Allow choices to be deleted by author 
-   * @default true
-   */
-  deleteChoice?: boolean;
-
-  /**
-   * Determines whether prompt field will be displayed or not
-   * @default true
-   */
-  showPrompt?: boolean;
-
-  /**
-   * The label for the item stem/prompt field
-   * @default "Item Stem"
-   */
-  promptLabel?: string;
-
-  /**
-   * Indicates whether the settings panel will allow an author to modify the choice 
-   * mode (radio / checkboxes) for single or multi-choice questions
-   * 
-   * @default true
-   */
-  settingsSelectChoiceMode?: boolean;
-
-  /**
-   * The label presented above the `settingsSelectChoiceMode` setting
-   * @default "Choice Mode"
-   */
-  settingsSelectChoiceModeLabel?: string;
-
-  /**
-   * Indicates whether the settings panel will allow the author to chose prefixes to be prepended to 
-   * choices, the author may choose `letters`, `numbers` or `none`
-   * @default true
-   */
-  settingsSelectChoicePrefixes?: boolean;
-
-  /**
-   * The label for the `settingsSelectChoicePrefixes` section in the settings panel
-   * @default "Choice Prefixes"
-   */
-  settingsChoicePrefixesLabel?: string;
-
-  /**
-   * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-   * @default true
-   */
-  settingsPartialScoring?:  boolean;
-
-  /**
-   * Indicates whether the settings panel will allow author to control choice shuffling
-   * @default true
-   */
-  settingsConfigShuffle?: boolean;
+  /** Configuration options for the presentataion of the interaction */
+  config: {choices:ChoicesConfig, categories: CategoriesConfig}
 }
+
+/**
+ * Config Object for @pie-elements/categorize
+ */
+export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
+
+
+
+}
+

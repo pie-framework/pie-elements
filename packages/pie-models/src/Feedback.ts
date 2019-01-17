@@ -8,6 +8,7 @@ export enum FeedbackType {
   custom = 'custom'
 }
 export interface Feedback {
+  /** @default FeedbackType.default */
   type: FeedbackType;
   value: string;
 }

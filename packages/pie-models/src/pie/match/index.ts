@@ -1,11 +1,12 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
+import {PieModel} from '../../PieModel';
 
 /**
 * Model for the @pie-elements/match Interaction
 */
-export interface MatchPie {
-  
+export interface MatchPie extends PieModel {
+
   /** The rows of choices to be presented.  */
   rows:[MatchRow];
   
