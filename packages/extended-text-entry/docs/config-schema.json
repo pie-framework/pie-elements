@@ -1,0 +1,22 @@
+{
+  "description": "Config Object for @pie-elements/extended-text-entry",
+  "type": "object",
+  "properties": {
+    "showPrompt": {
+      "description": "Determines whether prompt field will be displayed or not",
+      "default": true,
+      "type": "boolean"
+    },
+    "promptLabel": {
+      "description": "The label for the item stem/prompt field",
+      "default": "Item Stemm",
+      "type": "string"
+    },
+    "settingsPartialScoring": {
+      "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+      "default": true,
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

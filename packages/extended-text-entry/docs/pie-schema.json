@@ -1,0 +1,72 @@
+{
+  "description": "Model for the @pie-elements/extended-text-entry Interaction",
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "$ref": "#/definitions/Feedback",
+      "description": "Feedback configuration"
+    },
+    "width": {
+      "description": "Width the editor should take. USE CSS-style definition.",
+      "type": "string"
+    },
+    "height": {
+      "description": "Height the editor should take. USE CSS-style definition.",
+      "type": "string"
+    },
+    "disabled": {
+      "description": "Should the editor be disabled?",
+      "default": false,
+      "type": "boolean"
+    },
+    "prompt": {
+      "description": "The question prompt",
+      "type": "string"
+    },
+    "showMathInput": {
+      "description": "Whether a control to allow insertion of math forumulas should be displayed",
+      "default": false,
+      "type": "boolean"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "showMathInput"
+  ],
+  "definitions": {
+    "Feedback": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/FeedbackType",
+          "default": "FeedbackType.default"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "FeedbackType": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+      "enum": [
+        "custom",
+        "default"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

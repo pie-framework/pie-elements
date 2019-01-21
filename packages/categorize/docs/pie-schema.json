@@ -1,0 +1,176 @@
+{
+  "description": "Config Object for @pie-elements/categorize",
+  "type": "object",
+  "properties": {
+    "choices": {
+      "description": "The available choices",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CategoryChoice"
+      }
+    },
+    "categories": {
+      "description": "The categories in which choices may be placed",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Category"
+      }
+    },
+    "correctResponse": {
+      "description": "The defintion of the correct response to the question",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CategoryCorrectResponse"
+      }
+    },
+    "config": {
+      "description": "Configuration options for the presentataion of the interaction",
+      "type": "object",
+      "properties": {
+        "choices": {
+          "$ref": "#/definitions/ChoicesConfig"
+        },
+        "categories": {
+          "$ref": "#/definitions/CategoriesConfig"
+        }
+      },
+      "required": [
+        "categories",
+        "choices"
+      ]
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "categories",
+    "choices",
+    "config",
+    "correctResponse",
+    "element",
+    "id"
+  ],
+  "definitions": {
+    "CategoryChoice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for the choice",
+          "type": "string"
+        },
+        "content": {
+          "description": "The xhtml content for the choice",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "id"
+      ]
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for the category",
+          "type": "string"
+        },
+        "label": {
+          "description": "The label to display with the category.",
+          "type": "string"
+        },
+        "choices": {
+          "description": "The choices presented in this category",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CategoryChoice"
+          }
+        }
+      },
+      "required": [
+        "choices",
+        "id",
+        "label"
+      ]
+    },
+    "CategoryCorrectResponse": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "The identifier for the category",
+          "type": "string"
+        },
+        "choices": {
+          "description": "Array of identifiers for the choices that belong in this category",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "category",
+        "choices"
+      ]
+    },
+    "ChoicesConfig": {
+      "type": "object",
+      "properties": {
+        "columns": {
+          "default": 2,
+          "type": "number"
+        },
+        "position": {
+          "$ref": "#/definitions/ChoicesPosition",
+          "description": "Indicates where the choices should be presented in relation to the categories."
+        },
+        "label": {
+          "description": "Label to be displayed for the choices",
+          "type": "string"
+        },
+        "shuffle": {
+          "description": "Should the choices be shuffled",
+          "type": "boolean"
+        },
+        "removeafterplacing": {
+          "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "columns",
+        "label",
+        "position",
+        "removeafterplacing",
+        "shuffle"
+      ]
+    },
+    "ChoicesPosition": {
+      "enum": [
+        "above",
+        "below"
+      ],
+      "type": "string"
+    },
+    "CategoriesConfig": {
+      "type": "object",
+      "properties": {
+        "columns": {
+          "description": "The number of columns in which to present the categories",
+          "default": 2,
+          "type": "number"
+        }
+      },
+      "required": [
+        "columns"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
