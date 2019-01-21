@@ -4,15 +4,19 @@ Typescript types & JSON Schemas for PIE Elments.
 This project contains typescript interfaces for models used with PIE components.
 It also generates JSON schema documentation for the models. 
 
+
 ## Usage
 
 `npm install`
 
 This will install the typescript lib and also provide the json schemas in `dist/schemas`.
 
+
 ### Typescript
 
 Using the types will provide IDE auto-compplete and type-checking on model objects:
+
+`npm install @pie-element/pie-models`
 
 ```ts
 import {MultipleChoiceConfig} from `@pie-element/pie-models`;
@@ -20,7 +24,29 @@ import {MultipleChoiceConfig} from `@pie-element/pie-models`;
 let myConfig:MultipleChoiceConfig = {...};
 ```
 
+> The types will apply only to the latest versions of PIEs defined in `../packages`
+> To validate data for older versions of PIE items use the json schema file in
+> the pie package itself under `@pie-elements/packages/pie-name/docs/`
 
+
+
+### Generating JSON Schemas
+
+The schemas are generated from Typescript types in `src` dir.
+
+`npm run make-schemas`
+
+Will generate JSON schemas and put them in `dist` dir.
+
+### Copying JSON Schemas to PIE docs dirs
+
+`npm run copy-schemas`
+
+This is intended to be run in the context of the `pie-elements` repository. It copies schemas from the `dist/` dir
+ in this package to `packages/pie-name/docs` dir. 
+
+ This should be run, and the generated schema document committed to the relevant package, every time a schema change 
+ is made for a PIE. This provides version-related json schema validation. 
 
 ### View Docs
 
@@ -44,4 +70,5 @@ These `index.ts` files should create exports using the package name as pascale c
 e.g. `CategorizeConfigure` `MultipleChoicePie`
 
 `src/index.ts` should be updated with any new types.
+
 

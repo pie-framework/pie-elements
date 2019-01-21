@@ -9,7 +9,8 @@
   ],
   "types": "lib/index.d.ts",
   "scripts": {
-    "make-schemas": "ts-node scripts/GenerateSchemas.ts",
+    "make-schemas": "ts-node scripts/GenerateSchemas.ts -m",
+    "copy-schemas": "ts-node scripts/GenerateSchemas.ts -c",
     "build": "tsc",
     "view-docs": "docson -d dist/schemas",
     "prepare": "npm run build & npm run make-schemas"
@@ -17,10 +18,12 @@
   "author": "PIE Framework",
   "license": "ISC",
   "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
     "@types/fs-extra": "^5.0.4",
     "@types/lodash": "^4.14.119",
     "@types/node": "^10.12.18",
     "change-case": "^3.1.0",
+    "command-line-args": "^5.0.2",
     "docson": "^2.1.0",
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
