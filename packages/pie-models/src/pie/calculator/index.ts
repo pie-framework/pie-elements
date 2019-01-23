@@ -9,6 +9,7 @@ enum CalculatorMode {
 }
 /**
  * Model Object for @pie-elements/calculator
+ * @additionalProperties false
  */
 export interface CalculatorPie extends PieModel {
   /** Which calculator mode to show */

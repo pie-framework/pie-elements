@@ -26,9 +26,11 @@
     "command-line-args": "^5.0.2",
     "docson": "^2.1.0",
     "fs-extra": "^7.0.1",
+    "json-schema-deref-sync": "^0.7.0",
     "lodash": "^4.17.11",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
-    "typescript-json-schema": "^0.34.0"
+    "typescript-json-schema": "^0.34.0",
+    "wetzel": "0.0.5"
   }
 }

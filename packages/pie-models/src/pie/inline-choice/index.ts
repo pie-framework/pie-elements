@@ -5,6 +5,7 @@ import { CommonConfigSettings } from '../../CommonConfigSettings';
 
 /**
 * Model for the @pie-elements/inline-choice Interaction
+* @additionalProperties false
 */
 export interface InlineChoicePie extends PieModel {
   
@@ -23,6 +24,7 @@ export interface InlineChoicePie extends PieModel {
 
 /**
  * Config Object for @pie-elements/inline-choice
+ * @additionalProperties false
  */
 export interface InlineChoiceConfigure extends PromptConfig, CommonConfigSettings {
 

@@ -22,7 +22,10 @@ interface TextToken {
 }
 
 /**
- * Config Object for @pie-elements/select-text
+ * Pie Model Object for @pie-elements/select-text
+ * @title  @pie-elements/select-text
+ * @name jsdoc -  @pie-elements/select-text
+ * @additionalProperties false
  */
 export interface SelectTextPie extends PieModel {
 
@@ -57,6 +60,10 @@ export interface SelectTextPie extends PieModel {
 
 /**
  * Config Object for @pie-elements/select-text
+ * @title  @pie-elements/select-text
+ * @name jsdoc -  @pie-elements/select-text
+ * @TJS-title this is the title
+ * @additionalProperties false
  */
 export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings {
 

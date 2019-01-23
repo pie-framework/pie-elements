@@ -16,6 +16,7 @@ enum ChoiceMode {
 
 /**
 * Model for the Choice Interaction
+* @additionalProperties false
 */
 export interface MultipleChoicePie extends PieModel {
   
@@ -36,6 +37,7 @@ export interface MultipleChoicePie extends PieModel {
 
 /**
  * Config Object for @pie-elements/multiple-choice
+ * @additionalProperties false
  */
 export interface MultipleChoiceConfigure extends PromptConfig {
 

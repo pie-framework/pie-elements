@@ -69,7 +69,8 @@ interface CategoriesConfig {
 }
 
 /**
- * Config Object for @pie-elements/categorize
+ * Pie Model Object for @pie-elements/categorize
+ * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
 
@@ -88,6 +89,7 @@ export interface CategorizePie extends PieModel {
 
 /**
  * Config Object for @pie-elements/categorize
+ * @additionalProperties false
  */
 export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
 

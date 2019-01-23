@@ -4,6 +4,7 @@ import {PieModel} from '../../PieModel';
 
 /**
 * Model for the @pie-elements/match Interaction
+* @additionalProperties false
 */
 export interface MatchPie extends PieModel {
 
@@ -45,6 +46,7 @@ enum ResponseType {
 
 /**
  * Config Object for @pie-elements/match
+ * @additionalProperties false
  */
 export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
 

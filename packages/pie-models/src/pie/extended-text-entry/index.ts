@@ -5,6 +5,7 @@ import { Feedback } from '../../Feedback';
 
 /**
 * Model for the @pie-elements/extended-text-entry Interaction
+* @additionalProperties false
 */
 export interface ExtendedTextEntryPie extends PieModel {
 
@@ -44,6 +45,7 @@ export interface ExtendedTextEntryPie extends PieModel {
 
 /**
  * Config Object for @pie-elements/extended-text-entry
+ * @additionalProperties false
  */
 export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSettings {
 

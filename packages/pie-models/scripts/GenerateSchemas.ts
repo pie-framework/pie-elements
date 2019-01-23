@@ -11,6 +11,13 @@ import {
   copyFileSync
 } from 'fs-extra';
 import { pascalCase, paramCase, camelCase } from 'change-case';
+const deref = require('json-schema-deref-sync');
+const generateMarkdown = require('wetzel');
+
+const wetzelOptions = {
+  suppressWarnings: true,
+  headerLevel: 1
+};
 
 const optionDefinitions:Array<commandLineArgs.OptionDefinition> = [
   { name: 'make', alias: 'm', type: Boolean},
@@ -25,15 +32,19 @@ const PIE_SCHEMA_FILENAME = 'pie-schema.json';
 const CONFIG_SCHEMA_FILENAME = 'config-schema.json';
 
 const SETTINGS: TJS.PartialArgs = {
-  required: true
+  required: true,
+  titles: true
 };
 
 
+const dereferenceSchema = (schema: TJS.Definition): Promise<Object> =>{
+  return deref(schema);
+}
 
 const getDirectories = (p: any) =>
   readdirSync(p).filter(f => lstatSync(join(p, f)).isDirectory());
 
-const writeSchemaForPie = (packageName: string, filePath: string) => {
+const writeSchemaForPie = async (packageName: string, filePath: string) => {
   const typePrefix = pascalCase(packageName);
   const packageOutDir = join(OUT_DIR, packageName);
   mkdirpSync(packageOutDir);
@@ -50,18 +61,34 @@ const writeSchemaForPie = (packageName: string, filePath: string) => {
       const configSchema = generator.getSchemaForSymbol(
         typePrefix + 'Configure'
       );
+      let cSchema = await dereferenceSchema(configSchema);
+      cSchema = {...cSchema, title: packageName + "-configure", $schema:"http://json-schema.org/draft-03/schema" };
       writeFileSync(
         join(packageOutDir, CONFIG_SCHEMA_FILENAME),
-        JSON.stringify(configSchema, null, 2)
+        JSON.stringify(cSchema, null, 2)
+      );
+      // make markdown
+      const mkDocs = generateMarkdown({ ...wetzelOptions, schema:cSchema });
+      writeFileSync(
+        join(packageOutDir, CONFIG_SCHEMA_FILENAME + '.md'),
+        mkDocs
       );
     } catch (error) {
       console.log(`no config available for ${packageName}`);
     }
     try {
       const pieSchema = generator.getSchemaForSymbol(typePrefix + 'Pie');
+      let pSchema = await dereferenceSchema(pieSchema);
+      pSchema = {...pSchema, title: packageName + "-pie", $schema:"http://json-schema.org/draft-03/schema" };
       writeFileSync(
         join(packageOutDir, PIE_SCHEMA_FILENAME),
-        JSON.stringify(pieSchema, null, 2)
+        JSON.stringify(dereferenceSchema(pieSchema), null, 2)
+      );
+      // make markdown
+      const mkDocs = generateMarkdown({ ...wetzelOptions, schema:pSchema });
+      writeFileSync(
+        join(packageOutDir, PIE_SCHEMA_FILENAME + '.md'),
+        mkDocs
       );
     } catch (error) {
       console.log(`no pie model available for ${packageName}`);
