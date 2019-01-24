@@ -10,8 +10,8 @@ enum KeyMode {
 } 
 
 enum ChoiceMode {
-  checkbox, // user can select multiple choices
-  radio // user can  select one choice
+  checkbox = 'checkbox', // user can select multiple choices
+  radio = 'radio'// user can  select one choice
 }
 
 /**
