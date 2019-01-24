@@ -8,7 +8,10 @@ import {
   writeFile,
   mkdirpSync,
   removeSync,
-  copyFileSync
+  copyFileSync,
+  ensureDirSync,
+  copy,
+  copySync
 } from 'fs-extra';
 import { pascalCase } from 'change-case';
 const deref = require('json-schema-deref-sync');
@@ -21,7 +24,8 @@ const wetzelOptions = {
 
 const optionDefinitions: Array<commandLineArgs.OptionDefinition> = [
   { name: 'make', alias: 'm', type: Boolean },
-  { name: 'copy', alias: 'c', type: Boolean }
+  { name: 'copy', alias: 'c', type: Boolean },
+  { name: 'copy-dir', alias: 'd', type: String }
 ];
 
 const options: commandLineArgs.CommandLineOptions = commandLineArgs(
@@ -63,7 +67,7 @@ const writeDocs = async (
   writeFile(join(outDir, schemaFile + '.md'), mkDocs);
 };
 
-const writeSchemaForPie = async (packageName: string, filePath: string) => {
+const processTypescriptFile = async (packageName: string, filePath: string) => {
   const typePrefix = pascalCase(packageName);
   const packageOutDir = join(outDir, packageName);
   mkdirpSync(packageOutDir);
@@ -114,28 +118,29 @@ if (options.make || options.copy) {
     dirs.forEach(dir => {
       const modelFile = resolve(pieDefinitionsDir, dir, 'index.ts');
       if (existsSync(modelFile)) {
-        writeSchemaForPie(dir, modelFile);
+        processTypescriptFile(dir, modelFile);
       }
     });
   }
 
   if (options.copy) {
-    console.log(
-      'copy schemas from dist - needs to be run in context of pie-elements repository'
-    );
+    // defaults assumes running in pie-elements repo and will copy to
+    // pie-elements/packages/pie-name/docs
+    let baseDocsDestinationDir = resolve('../');
+    if (options['copy-dir']) {
+      baseDocsDestinationDir = options['copy-dir'];
+      ensureDirSync(baseDocsDestinationDir);
+    }
+    console.log(`copying schemas from ${outDir} to ${baseDocsDestinationDir}`);
     dirs.forEach(dir => {
-      const pieDocsDir = resolve('../', dir, 'docs');
+      const pieDocsDir = resolve(baseDocsDestinationDir, dir, 'docs');
+      // create dir if passed dir option
+      options['copy-dir'] && ensureDirSync(pieDocsDir);
+      const generatedDocsDir = resolve(outDir, dir);
       if (existsSync(pieDocsDir)) {
-        console.log('write schemas to ' + pieDocsDir);
-        const configSchemaFile = resolve(outDir, dir, configSchemaFilename);
-        const pieSchemaFile = resolve(outDir, dir, pieSchemaFilename);
-        existsSync(configSchemaFile) &&
-          copyFileSync(
-            configSchemaFile,
-            resolve(pieDocsDir, configSchemaFilename)
-          );
-        existsSync(pieSchemaFile) &&
-          copyFileSync(pieSchemaFile, resolve(pieDocsDir, pieSchemaFilename));
+        copySync(generatedDocsDir, pieDocsDir);
+      } else {
+        console.log(`dir: ${baseDocsDestinationDir} does not exist`);
       }
     });
   }
