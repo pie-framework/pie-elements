@@ -14,13 +14,8 @@ import {
   copySync
 } from 'fs-extra';
 import { pascalCase } from 'change-case';
+const jsonSchemaTomarkdown =require('json-schema-to-markdown');
 const deref = require('json-schema-deref-sync');
-const generateMarkdown = require('wetzel');
-
-const wetzelOptions = {
-  suppressWarnings: true,
-  headerLevel: 1
-};
 
 const optionDefinitions: Array<commandLineArgs.OptionDefinition> = [
   { name: 'make', alias: 'm', type: Boolean },
@@ -57,14 +52,10 @@ const writeDocs = async (
   docTitle: string
 ) => {
   let schema = await dereferenceSchema(tjsSchema);
-  schema = {
-    ...schema,
-    title: docTitle,
-    $schema: 'http://json-schema.org/draft-03/schema'
-  };
   writeFile(join(outDir, schemaFile), JSON.stringify(schema, null, 2));
   // make markdown
-  const mkDocs = generateMarkdown({ ...wetzelOptions, schema });
+  // const mkDocs = generateMarkdown({ ...wetzelOptions, schema });
+  const mkDocs = jsonSchemaTomarkdown(schema);
   writeFile(join(outDir, schemaFile + '.md'), mkDocs);
 };
 
