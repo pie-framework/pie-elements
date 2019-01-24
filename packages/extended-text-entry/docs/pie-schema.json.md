@@ -1,74 +1,81 @@
-# extended-text-entry-pie
-
 Model for the @pie-elements/extended-text-entry Interaction
 
-**Properties**
+The schema defines the following properties:
 
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**feedback**|`object`|-| :white_check_mark: Yes|
-|**width**|`string`|Width the editor should take. USE CSS-style definition.|No|
-|**height**|`string`|Height the editor should take. USE CSS-style definition.|No|
-|**disabled**|`boolean`|Should the editor be disabled?|No, default: `false`|
-|**prompt**|`string`|The question prompt|No|
-|**showMathInput**|`boolean`|Whether a control to allow insertion of math forumulas should be displayed| :white_check_mark: Yes|
-|**id**|`string`|Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.| :white_check_mark: Yes|
-|**element**|`string`|The html Element tag name| :white_check_mark: Yes|
+# `feedback` (object)
 
-Additional properties are not allowed.
+Properties of the `feedback` object:
 
-## extended-text-entry-pie.feedback :white_check_mark: 
+## `type` (string, enum, required)
 
-* **Type**: `object`
-* **Required**: Yes
+The type of feedback to use:
+   `default` = a standard feedback message
+   `custom` = a customized feedback message
 
-## extended-text-entry-pie.width
+This element must be one of the following enum values:
+
+* `custom`
+* `default`
+
+## `value` (string, required)
+
+# `width` (string)
 
 Width the editor should take. USE CSS-style definition.
 
-* **Type**: `string`
-* **Required**: No
-
-## extended-text-entry-pie.height
+# `height` (string)
 
 Height the editor should take. USE CSS-style definition.
 
-* **Type**: `string`
-* **Required**: No
-
-## extended-text-entry-pie.disabled
+# `disabled` (boolean)
 
 Should the editor be disabled?
 
-* **Type**: `boolean`
-* **Required**: No, default: `false`
+Default: `false`
 
-## extended-text-entry-pie.prompt
+# `prompt` (string)
 
 The question prompt
 
-* **Type**: `string`
-* **Required**: No
-
-## extended-text-entry-pie.showMathInput
+# `showMathInput` (boolean, required)
 
 Whether a control to allow insertion of math forumulas should be displayed
 
-* **Type**: `boolean`
-* **Required**: No, default: `false`
+Default: `false`
 
-## extended-text-entry-pie.id
+# `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
 
-* **Type**: `string`
-* **Required**: No
-
-## extended-text-entry-pie.element
+# `element` (string, required)
 
 The html Element tag name
 
-* **Type**: `string`
-* **Required**: No
+---
 
+# Sub Schemas
 
+The schema defines the following additional types:
+
+## `Feedback` (object)
+
+Properties of the `Feedback` object:
+
+### `type` (string, enum, required)
+
+The type of feedback to use:
+   `default` = a standard feedback message
+   `custom` = a customized feedback message
+
+This element must be one of the following enum values:
+
+* `custom`
+* `default`
+
+### `value` (string, required)
+
+## `FeedbackType` (string)
+
+The type of feedback to use:
+   `default` = a standard feedback message
+   `custom` = a customized feedback message

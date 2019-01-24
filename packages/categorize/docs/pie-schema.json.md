@@ -1,60 +1,221 @@
-# categorize-pie
-
 Pie Model Object for @pie-elements/categorize
 
-**Properties**
+The schema defines the following properties:
 
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**choices**|`object[]`|The available choices| :white_check_mark: Yes|
-|**categories**|`object[]`|The categories in which choices may be placed| :white_check_mark: Yes|
-|**correctResponse**|`object[]`|The defintion of the correct response to the question| :white_check_mark: Yes|
-|**config**|`object`|Configuration options for the presentataion of the interaction| :white_check_mark: Yes|
-|**id**|`string`|Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.| :white_check_mark: Yes|
-|**element**|`string`|The html Element tag name| :white_check_mark: Yes|
-
-Additional properties are not allowed.
-
-## categorize-pie.choices
+# `choices` (array, required)
 
 The available choices
 
-* **Type**: `object[]`
-* **Required**: No
+The object is an array with all elements of the type `object`.
 
-## categorize-pie.categories
+The array object has the following properties:
+
+## `id` (string, required)
+
+Identifier for the choice
+
+## `content` (string, required)
+
+The xhtml content for the choice
+
+# `categories` (array, required)
 
 The categories in which choices may be placed
 
-* **Type**: `object[]`
-* **Required**: No
+The object is an array with all elements of the type `object`.
 
-## categorize-pie.correctResponse
+The array object has the following properties:
+
+## `id` (string, required)
+
+Identifier for the category
+
+## `label` (string, required)
+
+The label to display with the category.
+
+## `choices` (array, required)
+
+The choices presented in this category
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+### `id` (string, required)
+
+Identifier for the choice
+
+### `content` (string, required)
+
+The xhtml content for the choice
+
+# `correctResponse` (array, required)
 
 The defintion of the correct response to the question
 
-* **Type**: `object[]`
-* **Required**: No
+The object is an array with all elements of the type `object`.
 
-## categorize-pie.config :white_check_mark: 
+The array object has the following properties:
+
+## `category` (string, required)
+
+The identifier for the category
+
+## `choices` (array, required)
+
+Array of identifiers for the choices that belong in this category
+
+The object is an array with all elements of the type `string`.
+
+# `config` (object, required)
 
 Configuration options for the presentataion of the interaction
 
-* **Type**: `object`
-* **Required**: Yes
+Properties of the `config` object:
 
-## categorize-pie.id
+## `choices` (object, required)
+
+Properties of the `choices` object:
+
+### `columns` (number, required)
+
+Default: `2`
+
+### `position` (string, enum, required)
+
+This element must be one of the following enum values:
+
+* `above`
+* `below`
+
+### `label` (string, required)
+
+Label to be displayed for the choices
+
+### `shuffle` (boolean, required)
+
+Should the choices be shuffled
+
+### `removeafterplacing` (boolean, required)
+
+Indicates if the choice, after it is dragged into a category, should be removed from the choices
+area or should remain in place.
+
+## `categories` (object, required)
+
+Properties of the `categories` object:
+
+### `columns` (number, required)
+
+The number of columns in which to present the categories
+
+Default: `2`
+
+# `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
 
-* **Type**: `string`
-* **Required**: No
-
-## categorize-pie.element
+# `element` (string, required)
 
 The html Element tag name
 
-* **Type**: `string`
-* **Required**: No
+---
 
+# Sub Schemas
 
+The schema defines the following additional types:
+
+## `CategoryChoice` (object)
+
+Properties of the `CategoryChoice` object:
+
+### `id` (string, required)
+
+Identifier for the choice
+
+### `content` (string, required)
+
+The xhtml content for the choice
+
+## `Category` (object)
+
+Properties of the `Category` object:
+
+### `id` (string, required)
+
+Identifier for the category
+
+### `label` (string, required)
+
+The label to display with the category.
+
+### `choices` (array, required)
+
+The choices presented in this category
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `id` (string, required)
+
+Identifier for the choice
+
+#### `content` (string, required)
+
+The xhtml content for the choice
+
+## `CategoryCorrectResponse` (object)
+
+Properties of the `CategoryCorrectResponse` object:
+
+### `category` (string, required)
+
+The identifier for the category
+
+### `choices` (array, required)
+
+Array of identifiers for the choices that belong in this category
+
+The object is an array with all elements of the type `string`.
+
+## `ChoicesConfig` (object)
+
+Properties of the `ChoicesConfig` object:
+
+### `columns` (number, required)
+
+Default: `2`
+
+### `position` (string, enum, required)
+
+This element must be one of the following enum values:
+
+* `above`
+* `below`
+
+### `label` (string, required)
+
+Label to be displayed for the choices
+
+### `shuffle` (boolean, required)
+
+Should the choices be shuffled
+
+### `removeafterplacing` (boolean, required)
+
+Indicates if the choice, after it is dragged into a category, should be removed from the choices
+area or should remain in place.
+
+## `ChoicesPosition` (string)
+
+## `CategoriesConfig` (object)
+
+Properties of the `CategoriesConfig` object:
+
+### `columns` (number, required)
+
+The number of columns in which to present the categories
+
+Default: `2`

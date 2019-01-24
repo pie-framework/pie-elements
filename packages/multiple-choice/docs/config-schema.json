@@ -84,6 +84,5 @@
       "title": "promptLabel"
     }
   },
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "title": "multiple-choice-configure"
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

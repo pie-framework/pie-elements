@@ -1,35 +1,26 @@
-# calculator-pie
-
 Model Object for @pie-elements/calculator
 
-**Properties**
+The schema defines the following properties:
 
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**mode**|`string`|-| :white_check_mark: Yes|
-|**id**|`string`|Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.| :white_check_mark: Yes|
-|**element**|`string`|The html Element tag name| :white_check_mark: Yes|
+# `mode` (string, enum, required)
 
-Additional properties are not allowed.
+This element must be one of the following enum values:
 
-## calculator-pie.mode
+* `basic`
+* `scientific`
 
-* **Type**: `string`
-* **Required**: No
-* **Allowed values**: `"basic"`, `"scientific"`
-
-## calculator-pie.id
+# `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
 
-* **Type**: `string`
-* **Required**: No
-
-## calculator-pie.element
+# `element` (string, required)
 
 The html Element tag name
 
-* **Type**: `string`
-* **Required**: No
+---
 
+# Sub Schemas
 
+The schema defines the following additional types:
+
+## `CalculatorMode` (string)

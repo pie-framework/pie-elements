@@ -1,36 +1,21 @@
-# select-text-configure
-
 Config Object for @pie-elements/select-text
 
-**Properties**
+The schema defines the following properties:
 
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**showPrompt**|`boolean`|Determines whether prompt field will be displayed or not|No, default: `true`|
-|**promptLabel**|`string`|The label for the item stem/prompt field|No, default: `"Item Stemm"`|
-|**settingsPartialScoring**|`boolean`|Indicates whether the settings panel wil allow the author to modify settings for partial scoring|No, default: `true`|
-
-Additional properties are not allowed.
-
-## select-text-configure.showPrompt
+# `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
 
-* **Type**: `boolean`
-* **Required**: No, default: `true`
+Default: `true`
 
-## select-text-configure.promptLabel
+# `promptLabel` (string)
 
 The label for the item stem/prompt field
 
-* **Type**: `string`
-* **Required**: No, default: `"Item Stemm"`
+Default: `"Item Stemm"`
 
-## select-text-configure.settingsPartialScoring
+# `settingsPartialScoring` (boolean)
 
 Indicates whether the settings panel wil allow the author to modify settings for partial scoring
 
-* **Type**: `boolean`
-* **Required**: No, default: `true`
-
-
+Default: `true`

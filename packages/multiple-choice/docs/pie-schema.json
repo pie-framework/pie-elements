@@ -74,10 +74,10 @@
     "choiceMode": {
       "title": "ChoiceMode",
       "enum": [
-        0,
-        1
+        "checkbox",
+        "radio"
       ],
-      "type": "number"
+      "type": "string"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -189,12 +189,11 @@
     "ChoiceMode": {
       "title": "ChoiceMode",
       "enum": [
-        0,
-        1
+        "checkbox",
+        "radio"
       ],
-      "type": "number"
+      "type": "string"
     }
   },
-  "$schema": "http://json-schema.org/draft-03/schema",
-  "title": "multiple-choice-pie"
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

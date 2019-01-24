@@ -1,67 +1,72 @@
-# match-pie
-
 Model for the @pie-elements/match Interaction
 
-**Properties**
+The schema defines the following properties:
 
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**rows**|`array[1-*]`|The rows of choices to be presented.| :white_check_mark: Yes|
-|**shuffled**|`boolean`|Indicates if the order of the rows should be randomly sorted on render| :white_check_mark: Yes|
-|**layout**|`number`|The number of columns to be presented| :white_check_mark: Yes|
-|**headers**|`array[1-*]`|Array of strings for column headers| :white_check_mark: Yes|
-|**responseType**|`string`|-| :white_check_mark: Yes|
-|**id**|`string`|Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.| :white_check_mark: Yes|
-|**element**|`string`|The html Element tag name| :white_check_mark: Yes|
-
-Additional properties are not allowed.
-
-## match-pie.rows
+# `rows` (array, required)
 
 The rows of choices to be presented.
 
-* **Type**: `array[1-*]`
-* **Required**: No
+Additional restrictions:
 
-## match-pie.shuffled
+* Minimum items: `1`
+
+# `shuffled` (boolean, required)
 
 Indicates if the order of the rows should be randomly sorted on render
 
-* **Type**: `boolean`
-* **Required**: No
-
-## match-pie.layout
+# `layout` (number, required)
 
 The number of columns to be presented
 
-* **Type**: `number`
-* **Required**: No
-
-## match-pie.headers
+# `headers` (array, required)
 
 Array of strings for column headers
 
-* **Type**: `array[1-*]`
-* **Required**: No
+Additional restrictions:
 
-## match-pie.responseType
+* Minimum items: `1`
 
-* **Type**: `string`
-* **Required**: No
-* **Allowed values**: `"checkbox"`, `"radio"`
+# `responseType` (string, enum, required)
 
-## match-pie.id
+This element must be one of the following enum values:
+
+* `checkbox`
+* `radio`
+
+# `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
 
-* **Type**: `string`
-* **Required**: No
-
-## match-pie.element
+# `element` (string, required)
 
 The html Element tag name
 
-* **Type**: `string`
-* **Required**: No
+---
 
+# Sub Schemas
 
+The schema defines the following additional types:
+
+## `MatchRow` (object)
+
+One row in the match list.
+
+Properties of the `MatchRow` object:
+
+### `id` (string, required)
+
+Identifier for a row
+
+### `title` (string, required)
+
+Title that will be displayed for the row
+
+### `values` (array, required)
+
+Array of boolean values indicating which columns are selected in the row
+
+Additional restrictions:
+
+* Minimum items: `1`
+
+## `ResponseType` (string)
