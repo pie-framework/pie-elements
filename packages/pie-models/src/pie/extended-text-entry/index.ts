@@ -14,13 +14,13 @@ export interface ExtendedTextEntryPie extends PieModel {
 
   /** 
    * Width the editor should take. USE CSS-style definition.
-   * @examples ["500px", "100%"] 
+   * @TJS-examples ["500px", "100%"] 
    */
   width?: string;
 
   /** 
    * Height the editor should take. USE CSS-style definition.
-   * @examples ["500px", "100%"] 
+   * @TJS-examples ["500px", "100%"] 
    */
   height?: string;
 

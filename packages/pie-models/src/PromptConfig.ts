@@ -12,7 +12,7 @@ export interface PromptConfig {
   /**
    * The label for the item stem/prompt field
    * @default "Item Stemm"
-   * @examples ["Question Prompt", "Item Stem"]
+   * @TJS-examples ["Question Prompt", "Item Stem"]
    */
   promptLabel?: string;
 
