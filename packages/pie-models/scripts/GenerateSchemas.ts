@@ -25,6 +25,7 @@ const wetzelOptions = {
 const optionDefinitions: Array<commandLineArgs.OptionDefinition> = [
   { name: 'make', alias: 'm', type: Boolean },
   { name: 'copy', alias: 'c', type: Boolean },
+  { name: 'package', alias: 'p', type: String },
   { name: 'copy-dir', alias: 'd', type: String }
 ];
 
@@ -110,7 +111,12 @@ const processTypescriptFile = async (packageName: string, filePath: string) => {
 };
 
 if (options.make || options.copy) {
-  const dirs = getDirectories(pieDefinitionsDir);
+  let dirs = getDirectories(pieDefinitionsDir);
+  if (options['package']) {
+    dirs = dirs.filter(dir => {
+      return options['package'] === dir;
+    });
+  }
 
   if (options.make) {
     removeSync('dist');
