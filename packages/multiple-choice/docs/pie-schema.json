@@ -1,33 +1,93 @@
 {
   "description": "Model for the Choice Interaction",
+  "additionalProperties": false,
   "type": "object",
   "properties": {
     "choices": {
       "description": "The choice options for the question",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Choice"
-      }
+        "title": "Choice",
+        "type": "object",
+        "properties": {
+          "correct": {
+            "description": "Indicates if the choice is correct",
+            "type": "boolean",
+            "title": "correct"
+          },
+          "value": {
+            "description": "the value that will be stored if this choice is selected",
+            "type": "string",
+            "title": "value"
+          },
+          "label": {
+            "description": "the text label that will be presented to the user for this choice",
+            "type": "string",
+            "title": "label"
+          },
+          "feedback": {
+            "title": "Feedback",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+                "title": "FeedbackType",
+                "enum": [
+                  "custom",
+                  "default"
+                ],
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "title": "value"
+              }
+            },
+            "required": [
+              "type",
+              "value"
+            ]
+          }
+        },
+        "required": [
+          "correct",
+          "feedback",
+          "label",
+          "value"
+        ]
+      },
+      "title": "choices"
     },
     "prompt": {
       "description": "The question prompt or item stem",
-      "type": "string"
+      "type": "string",
+      "title": "prompt"
     },
     "keyMode": {
-      "$ref": "#/definitions/KeyMode",
-      "description": "What key should be displayed before choices. If undefined no  key will be displayed."
+      "title": "KeyMode",
+      "enum": [
+        "letters",
+        "numbers"
+      ],
+      "type": "string"
     },
     "choiceMode": {
-      "$ref": "#/definitions/ChoiceMode",
-      "description": "Indicates the choices are single or multiple selection"
+      "title": "ChoiceMode",
+      "enum": [
+        0,
+        1
+      ],
+      "type": "number"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
-      "type": "string"
+      "type": "string",
+      "title": "id"
     },
     "element": {
       "description": "The html Element tag name",
-      "type": "string"
+      "type": "string",
+      "title": "element"
     }
   },
   "required": [
@@ -37,23 +97,46 @@
   ],
   "definitions": {
     "Choice": {
+      "title": "Choice",
       "type": "object",
       "properties": {
         "correct": {
           "description": "Indicates if the choice is correct",
-          "type": "boolean"
+          "type": "boolean",
+          "title": "correct"
         },
         "value": {
           "description": "the value that will be stored if this choice is selected",
-          "type": "string"
+          "type": "string",
+          "title": "value"
         },
         "label": {
           "description": "the text label that will be presented to the user for this choice",
-          "type": "string"
+          "type": "string",
+          "title": "label"
         },
         "feedback": {
-          "$ref": "#/definitions/Feedback",
-          "description": "student feedback for this choice, only shown in evaluate mode"
+          "title": "Feedback",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+              "title": "FeedbackType",
+              "enum": [
+                "custom",
+                "default"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "title": "value"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ]
         }
       },
       "required": [
@@ -64,14 +147,21 @@
       ]
     },
     "Feedback": {
+      "title": "Feedback",
       "type": "object",
       "properties": {
         "type": {
-          "$ref": "#/definitions/FeedbackType",
-          "default": "FeedbackType.default"
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+          "title": "FeedbackType",
+          "enum": [
+            "custom",
+            "default"
+          ],
+          "type": "string"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "title": "value"
         }
       },
       "required": [
@@ -81,6 +171,7 @@
     },
     "FeedbackType": {
       "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+      "title": "FeedbackType",
       "enum": [
         "custom",
         "default"
@@ -88,6 +179,7 @@
       "type": "string"
     },
     "KeyMode": {
+      "title": "KeyMode",
       "enum": [
         "letters",
         "numbers"
@@ -95,6 +187,7 @@
       "type": "string"
     },
     "ChoiceMode": {
+      "title": "ChoiceMode",
       "enum": [
         0,
         1
@@ -102,5 +195,6 @@
       "type": "number"
     }
   },
-  "$schema": "http://json-schema.org/draft-07/schema#"
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "multiple-choice-pie"
 }
