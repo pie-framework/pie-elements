@@ -1,7 +1,8 @@
 {
   "name": "@pie-element/pie-models",
+  "private": true,
   "version": "0.1.0",
-  "description": "This project contains typescript interfaces for models that may be passed to PIE interactions.",
+  "description": "This project contains documented typescript interfaces for generating schema documentation.",
   "main": "index.js",
   "files": [
     "lib/**/*",
