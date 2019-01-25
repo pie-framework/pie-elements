@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/math-inline-configure",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "author": "",
@@ -9,7 +9,7 @@
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^7.7.5",
+    "@pie-lib/config-ui": "^7.8.0",
     "@pie-lib/math-evaluator": "^0.2.0",
     "@pie-lib/math-toolbar": "^0.1.0",
     "classnames": "^2.2.5",

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TwoChoice } from '@pie-lib/config-ui';
+import { TwoChoice, NChoice } from '@pie-lib/config-ui';
 
 export const ChoiceType = props => {
   let choiceProps = {
@@ -26,16 +26,22 @@ export const KeyType = props => {
     defaultSelected: 'numbers',
     value: props.value,
     onChange: props.onChange,
-    one: {
-      label: 'Numbers',
-      value: 'numbers'
-    },
-    two: {
-      label: 'Letters',
-      value: 'letters'
-    }
+    opts: [
+      {
+        label: 'Numbers',
+        value: 'numbers'
+      },
+      {
+        label: 'Letters',
+        value: 'letters'
+      },
+      {
+        label: 'None',
+        value: 'none'
+      }
+    ]
   };
-  return <TwoChoice {...choiceProps} />;
+  return <NChoice {...choiceProps} />;
 };
 
 KeyType.propTypes = ChoiceType.propTypes = {

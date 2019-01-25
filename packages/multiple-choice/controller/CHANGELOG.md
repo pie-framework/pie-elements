@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.2.2...@pie-element/multiple-choice-controller@1.3.0) (2019-01-08)
+
+
+### Features
+
+* **multiple-choice:** refactored the code of the multiple-choice package in order to use the new layout ([b16b654](https://github.com/pie-framework/pie-elements/commit/b16b654))
+
+
+
+
+
 ## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.2.1...@pie-element/multiple-choice-controller@1.2.2) (2018-11-12)
 
 

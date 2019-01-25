@@ -1,5 +1,6 @@
-import { isResponseCorrect } from './utils';
 import debug from 'debug';
+import shuffle from 'lodash/shuffle';
+import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:multiple-choice:controller');
 
@@ -9,7 +10,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
     value: choice.value
   };
 
-  if (mode == 'evaluate') {
+  if (mode === 'evaluate') {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
@@ -30,9 +31,13 @@ export function model(question, session, env) {
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
     );
-    const choices = question.choices.map(
+    let choices = question.choices.map(
       prepareChoice(env.mode, defaultFeedback)
     );
+
+    if (question.shuffle) {
+      choices = shuffle(choices);
+    }
 
     const out = {
       disabled: env.mode !== 'gather',
@@ -40,6 +45,7 @@ export function model(question, session, env) {
       prompt: question.prompt,
       choiceMode: question.choiceMode,
       keyMode: question.keyMode,
+      shuffle: question.shuffle,
       choices,
 
       //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
