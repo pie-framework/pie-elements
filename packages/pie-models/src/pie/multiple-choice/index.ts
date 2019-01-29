@@ -31,6 +31,12 @@ export interface MultipleChoicePie extends PieModel {
   
   /** Indicates the choices are single or multiple selection */
   choiceMode?: ChoiceMode;
+
+  /**  Indicates the order of choices should be randdomly ordered when presented to user */
+  shuffle?: boolean;
+
+  /** Indicates that the item should use partial scoring */
+  partialScoring: boolean;
   
 }
 

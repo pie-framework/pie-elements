@@ -79,6 +79,16 @@
       ],
       "type": "string"
     },
+    "shuffle": {
+      "description": "Indicates the order of choices should be randdomly ordered when presented to user",
+      "type": "boolean",
+      "title": "shuffle"
+    },
+    "partialScoring": {
+      "description": "Indicates that the item should use partial scoring",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -93,7 +103,8 @@
   "required": [
     "choices",
     "element",
-    "id"
+    "id",
+    "partialScoring"
   ],
   "definitions": {
     "Choice": {

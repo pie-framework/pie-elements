@@ -57,6 +57,14 @@ This element must be one of the following enum values:
 * `checkbox`
 * `radio`
 
+# `shuffle` (boolean)
+
+Indicates the order of choices should be randdomly ordered when presented to user
+
+# `partialScoring` (boolean, required)
+
+Indicates that the item should use partial scoring
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
