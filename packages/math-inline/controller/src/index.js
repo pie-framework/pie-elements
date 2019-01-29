@@ -1,6 +1,6 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { areValuesEqual } from '@pie-lib/math-evaluator';
+import areValuesEqual from '@pie-lib/math-evaluator';
 
 const log = debug('@pie-element:math-inline:controller');
 
@@ -16,17 +16,18 @@ const getResponseCorrectness = (
 
   const correctAnswers = getCorrectAnswers(correctResponses, answers);
 
-  if (correctResponses === correctAnswers) {
-    return  'correct';
+  if (correctResponses.length === correctAnswers.count) {
+    return  { correctness: 'correct', score: '100%', info: correctAnswers.info };
   } else if (correctAnswers === 0) {
-    return 'incorrect';
+    return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
   }
 
-  return 'incorrect';
+  return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
 };
 
 function getCorrectAnswers(correctResponses, answers) {
   let correct = 0;
+  const answerInfo = {};
 
   correctResponses.forEach(correctResponse => {
     let answerCorrect = false;
@@ -48,11 +49,17 @@ function getCorrectAnswers(correctResponses, answers) {
     }
 
     if (answerCorrect) {
+      answerInfo[correctResponse.id] = true;
       correct++;
+    } else {
+      answerInfo[correctResponse.id] = false;
     }
   });
 
-  return correct;
+  return {
+    info: answerInfo,
+    count: correct,
+  };
 }
 
 const getCorrectness = (question, env, answers) => {
@@ -68,19 +75,16 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(question, env, session.answers);
     const correctResponse = {};
-    const correctInfo = {
-      correctness
-    };
 
     const fb =
       env.mode === 'evaluate'
-        ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
+        ? getFeedbackForCorrectness(correctness, question.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
       const base = {
         config: question,
-        correctness: correctInfo,
+        correctness,
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view'

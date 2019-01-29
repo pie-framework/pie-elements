@@ -115,7 +115,7 @@ class GeneralConfigBlock extends React.Component {
       <AnswerBlock
         id={answerBlockId}
         index={index}
-        latex={advancedAnswerIsPristine && answerBlockId === 'answerBlock1' ? 'y = mx + b' : latex}
+        latex={advancedAnswerIsPristine && answerBlockId === 'answerBlock1' ? 'mx + b' : latex}
       />
     );
 

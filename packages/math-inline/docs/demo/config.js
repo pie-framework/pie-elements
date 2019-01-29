@@ -10,13 +10,13 @@ module.exports = {
         allowPartialScores: false
       },
       element: 'math-inline',
-      expression: '1+1',
+      expression: 'y = ',
       question: 'What is the equation for a slope?',
       equationEditor: 'simple',
       defaultResponse: {
         id: 0,
         validation: 'symbolic',
-        answer: 'y = mx + b',
+        answer: 'mx + b',
         alternates: {},
         allowSpaces: true,
         allowDecimals: true
@@ -24,7 +24,7 @@ module.exports = {
       responses: [{
         id: 'answerBlock1',
         validation: 'symbolic',
-        answer: 'y = mx + b',
+        answer: 'mx + b',
         alternates: {},
         allowSpaces: true,
         allowDecimals: true

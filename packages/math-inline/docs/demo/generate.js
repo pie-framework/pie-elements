@@ -5,13 +5,13 @@ exports.model = (id, element) => ({
   config: {
     allowPartialScores: false
   },
-  expression: '1+1',
+  expression: 'y = ',
   question: 'What is the equation for a slope?',
   equationEditor: 'simple',
   defaultResponse: {
     id: 0,
     validation: 'symbolic',
-    answer: 'y = mx + b',
+    answer: 'mx + b',
     alternates: {},
     allowSpaces: true,
     allowDecimals: true
@@ -19,7 +19,7 @@ exports.model = (id, element) => ({
   responses: [{
     id: 'answerBlock1',
     validation: 'symbolic',
-    answer: 'y = mx + b',
+    answer: 'mx + b',
     alternates: {},
     allowSpaces: true,
     allowDecimals: true
