@@ -825,7 +825,7 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^7.1.1", "@pie-lib/config-ui@^7.6.16", "@pie-lib/config-ui@^7.6.6", "@pie-lib/config-ui@^7.6.7", "@pie-lib/config-ui@^7.7.4":
+"@pie-lib/config-ui@^7.1.1", "@pie-lib/config-ui@^7.6.7", "@pie-lib/config-ui@^7.7.4":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.7.4.tgz#ee045f2de55e3af3933cccacc44a7b52769d5aaa"
   dependencies:
@@ -838,7 +838,7 @@
     lodash "^4.17.10"
     prop-types "^15.6.1"
 
-"@pie-lib/config-ui@^7.7.5", "@pie-lib/config-ui@^7.8.0":
+"@pie-lib/config-ui@^7.8.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.8.0.tgz#1b7b3d7fa0ad23dd88f26a5516a1030d801090e2"
   dependencies:
@@ -1223,9 +1223,9 @@
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@pie-ui/multiple-choice@^4.4.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.4.2.tgz#c5cb7a83d4ffe7c59b4f515edfc65328c18c05dc"
+"@pie-ui/multiple-choice@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.4.3.tgz#428821c8508d35ac55466d34223c62a37a51c901"
   dependencies:
     "@material-ui/core" "^1.0.0-rc.1"
     "@pie-lib/config-ui" "^7.8.0"
