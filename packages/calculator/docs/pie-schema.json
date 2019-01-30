@@ -1,0 +1,41 @@
+{
+  "description": "Model Object for @pie-elements/calculator",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "mode": {
+      "title": "CalculatorMode",
+      "enum": [
+        "basic",
+        "scientific"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "mode"
+  ],
+  "definitions": {
+    "CalculatorMode": {
+      "title": "CalculatorMode",
+      "enum": [
+        "basic",
+        "scientific"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

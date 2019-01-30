@@ -1,0 +1,107 @@
+{
+  "description": "Model for the @pie-elements/extended-text-entry Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "title": "Feedback",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+          "title": "FeedbackType",
+          "enum": [
+            "custom",
+            "default"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "title": "value"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "width": {
+      "description": "Width the editor should take. USE CSS-style definition.",
+      "type": "string",
+      "title": "width"
+    },
+    "height": {
+      "description": "Height the editor should take. USE CSS-style definition.",
+      "type": "string",
+      "title": "height"
+    },
+    "disabled": {
+      "description": "Should the editor be disabled?",
+      "default": false,
+      "type": "boolean",
+      "title": "disabled"
+    },
+    "prompt": {
+      "description": "The question prompt",
+      "type": "string",
+      "title": "prompt"
+    },
+    "showMathInput": {
+      "description": "Whether a control to allow insertion of math forumulas should be displayed",
+      "default": false,
+      "type": "boolean",
+      "title": "showMathInput"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "showMathInput"
+  ],
+  "definitions": {
+    "Feedback": {
+      "title": "Feedback",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+          "title": "FeedbackType",
+          "enum": [
+            "custom",
+            "default"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "title": "value"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "FeedbackType": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+      "title": "FeedbackType",
+      "enum": [
+        "custom",
+        "default"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

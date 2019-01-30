@@ -1,0 +1,205 @@
+{
+  "description": "Pie Model Object for @pie-elements/select-text",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "description": "The user prompt/item stem",
+      "type": "string",
+      "title": "prompt"
+    },
+    "text": {
+      "description": "The passage of text from which user may select responses",
+      "type": "string",
+      "title": "text"
+    },
+    "highlightChoices": {
+      "description": "Indicates if the parts of text that are choosable, should be highligned when presented to student.",
+      "default": false,
+      "type": "boolean",
+      "title": "highlightChoices"
+    },
+    "feedback": {
+      "description": "Feedback for student responses",
+      "type": "array",
+      "items": {
+        "title": "Feedback",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+            "title": "FeedbackType",
+            "enum": [
+              "custom",
+              "default"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "title": "feedback"
+    },
+    "partialScoring": {
+      "description": "Indicates if partial scoring should be used",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "maxSelections": {
+      "description": "The maximum number of token selections a user can make when responding",
+      "type": "number",
+      "title": "maxSelections"
+    },
+    "mode": {
+      "title": "SelectionMode",
+      "enum": [
+        "paragraphs",
+        "sentence",
+        "word"
+      ],
+      "type": "string"
+    },
+    "tokens": {
+      "description": "The selectable text tokens in the main text content",
+      "type": "array",
+      "items": {
+        "title": "TextToken",
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "The token text",
+            "type": "string",
+            "title": "text"
+          },
+          "start": {
+            "description": "The start point in the main text for this token",
+            "type": "number",
+            "title": "start"
+          },
+          "end": {
+            "description": "The end point in the main text for this token",
+            "type": "number",
+            "title": "end"
+          },
+          "correct": {
+            "description": "Is selected does the token represent a correct response",
+            "type": "boolean",
+            "title": "correct"
+          }
+        },
+        "required": [
+          "correct",
+          "end",
+          "start",
+          "text"
+        ]
+      },
+      "title": "tokens"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "feedback",
+    "highlightChoices",
+    "id",
+    "maxSelections",
+    "mode",
+    "partialScoring",
+    "prompt",
+    "text",
+    "tokens"
+  ],
+  "definitions": {
+    "Feedback": {
+      "title": "Feedback",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+          "title": "FeedbackType",
+          "enum": [
+            "custom",
+            "default"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "title": "value"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "FeedbackType": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+      "title": "FeedbackType",
+      "enum": [
+        "custom",
+        "default"
+      ],
+      "type": "string"
+    },
+    "SelectionMode": {
+      "title": "SelectionMode",
+      "enum": [
+        "paragraphs",
+        "sentence",
+        "word"
+      ],
+      "type": "string"
+    },
+    "TextToken": {
+      "title": "TextToken",
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "The token text",
+          "type": "string",
+          "title": "text"
+        },
+        "start": {
+          "description": "The start point in the main text for this token",
+          "type": "number",
+          "title": "start"
+        },
+        "end": {
+          "description": "The end point in the main text for this token",
+          "type": "number",
+          "title": "end"
+        },
+        "correct": {
+          "description": "Is selected does the token represent a correct response",
+          "type": "boolean",
+          "title": "correct"
+        }
+      },
+      "required": [
+        "correct",
+        "end",
+        "start",
+        "text"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

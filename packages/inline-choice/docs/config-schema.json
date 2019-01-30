@@ -1,0 +1,26 @@
+{
+  "description": "Config Object for @pie-elements/inline-choice",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "showPrompt": {
+      "description": "Determines whether prompt field will be displayed or not",
+      "default": true,
+      "type": "boolean",
+      "title": "showPrompt"
+    },
+    "promptLabel": {
+      "description": "The label for the item stem/prompt field",
+      "default": "Item Stemm",
+      "type": "string",
+      "title": "promptLabel"
+    },
+    "settingsPartialScoring": {
+      "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
+      "default": true,
+      "type": "boolean",
+      "title": "settingsPartialScoring"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
