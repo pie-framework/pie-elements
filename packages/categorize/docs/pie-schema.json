@@ -161,11 +161,14 @@
               "default": 2,
               "type": "number",
               "title": "columns"
+            },
+            "rows": {
+              "description": "The number of rows in which to present the categories",
+              "default": 1,
+              "type": "number",
+              "title": "rows"
             }
-          },
-          "required": [
-            "columns"
-          ]
+          }
         }
       },
       "required": [
@@ -341,11 +344,14 @@
           "default": 2,
           "type": "number",
           "title": "columns"
+        },
+        "rows": {
+          "description": "The number of rows in which to present the categories",
+          "default": 1,
+          "type": "number",
+          "title": "rows"
         }
-      },
-      "required": [
-        "columns"
-      ]
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
