@@ -65,7 +65,13 @@ interface CategoriesConfig {
    * The number of columns in which to present the categories
    * @default 2
    */
-  columns: number
+  columns?: number
+
+   /** 
+   * The number of rows in which to present the categories
+   * @default 1
+   */
+  rows?: number
 }
 
 /**

@@ -106,11 +106,17 @@ area or should remain in place.
 
 Properties of the `categories` object:
 
-### `columns` (number, required)
+### `columns` (number)
 
 The number of columns in which to present the categories
 
 Default: `2`
+
+### `rows` (number)
+
+The number of rows in which to present the categories
+
+Default: `1`
 
 # `id` (string, required)
 
@@ -214,8 +220,14 @@ area or should remain in place.
 
 Properties of the `CategoriesConfig` object:
 
-### `columns` (number, required)
+### `columns` (number)
 
 The number of columns in which to present the categories
 
 Default: `2`
+
+### `rows` (number)
+
+The number of rows in which to present the categories
+
+Default: `1`
