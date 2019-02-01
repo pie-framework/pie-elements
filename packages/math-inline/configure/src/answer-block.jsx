@@ -27,8 +27,8 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 8,
-    '& > mq-math-mode': {
-      '& > mq-hasCursor': {
+    '& > .mq-math-mode': {
+      '& > .mq-hasCursor': {
         '& > .mq-cursor': {
           display: 'none'
         },
