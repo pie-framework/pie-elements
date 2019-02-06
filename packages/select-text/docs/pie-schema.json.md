@@ -2,7 +2,7 @@ Pie Model Object for @pie-elements/select-text
 
 The schema defines the following properties:
 
-# `prompt` (string, required)
+# `prompt` (string)
 
 The user prompt/item stem
 
@@ -10,13 +10,13 @@ The user prompt/item stem
 
 The passage of text from which user may select responses
 
-# `highlightChoices` (boolean, required)
+# `highlightChoices` (boolean)
 
 Indicates if the parts of text that are choosable, should be highligned when presented to student.
 
 Default: `false`
 
-# `feedback` (array, required)
+# `feedback` (array)
 
 Feedback for student responses
 
@@ -37,7 +37,7 @@ This element must be one of the following enum values:
 
 ## `value` (string, required)
 
-# `partialScoring` (boolean, required)
+# `partialScoring` (boolean)
 
 Indicates if partial scoring should be used
 
@@ -45,7 +45,11 @@ Indicates if partial scoring should be used
 
 The maximum number of token selections a user can make when responding
 
-# `mode` (string, enum, required)
+# `mode` (string, enum)
+
+The selected mode for tokenizing the text.
+This is only used in the config UI to present the mode by which text has been tokenized for selection.
+If importing an item, only set this property it the text tokens are stricly parsed by of these methods.
 
 This element must be one of the following enum values:
 
@@ -115,6 +119,10 @@ The type of feedback to use:
    `custom` = a customized feedback message
 
 ## `SelectionMode` (string)
+
+The selected mode for tokenizing the text.
+This is only used in the config UI to present the mode by which text has been tokenized for selection.
+If importing an item, only set this property it the text tokens are stricly parsed by of these methods.
 
 ## `TextToken` (object)
 
