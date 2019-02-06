@@ -3,7 +3,11 @@ import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { Feedback } from '../../Feedback';
 
-
+ /** 
+   * The selected mode for tokenizing the text.
+   * This is only used in the config UI to present the mode by which text has been tokenized for selection.
+   * If importing an item, only set this property it the text tokens are stricly parsed by of these methods.
+   */
 enum SelectionMode {
   sentence = 'sentence',
   word = 'word',
@@ -30,7 +34,7 @@ interface TextToken {
 export interface SelectTextPie extends PieModel {
 
   /** The user prompt/item stem */
-  prompt: string;
+  prompt?: string;
 
   /** The passage of text from which user may select responses */
   text: string;
@@ -39,19 +43,18 @@ export interface SelectTextPie extends PieModel {
    * Indicates if the parts of text that are choosable, should be highligned when presented to student. 
    * @default false 
    */
-  highlightChoices: boolean;
+  highlightChoices?: boolean;
 
   /** Feedback for student responses */
-  feedback: Feedback[];
+  feedback?: Feedback[];
 
   /** Indicates if partial scoring should be used */
-  partialScoring: boolean;
+  partialScoring?: boolean;
 
   /** The maximum number of token selections a user can make when responding */
   maxSelections: number;
 
-  /** The selected mode for tokenizing the text */
-  mode: SelectionMode;
+  mode?: SelectionMode;
 
   /** The selectable text tokens in the main text content */
   tokens: TextToken[];

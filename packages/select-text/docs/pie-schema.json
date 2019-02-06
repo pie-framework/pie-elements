@@ -58,6 +58,7 @@
       "title": "maxSelections"
     },
     "mode": {
+      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are stricly parsed by of these methods.",
       "title": "SelectionMode",
       "enum": [
         "paragraphs",
@@ -116,13 +117,8 @@
   },
   "required": [
     "element",
-    "feedback",
-    "highlightChoices",
     "id",
     "maxSelections",
-    "mode",
-    "partialScoring",
-    "prompt",
     "text",
     "tokens"
   ],
@@ -160,6 +156,7 @@
       "type": "string"
     },
     "SelectionMode": {
+      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are stricly parsed by of these methods.",
       "title": "SelectionMode",
       "enum": [
         "paragraphs",
