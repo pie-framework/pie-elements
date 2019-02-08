@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.4.0...@pie-element/multiple-choice@2.5.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* **multiple-choice:** fixed a warning ([c8ccb36](https://github.com/pie-framework/pie-elements/commit/c8ccb36))
+* add partial scoring and shuffle prop for multiple-choice ([7577651](https://github.com/pie-framework/pie-elements/commit/7577651))
+
+
+### Features
+
+* **multiple-choice:** added a configurable property for the multiple-choice configure element and fixed some names for the customization properties ([9959eda](https://github.com/pie-framework/pie-elements/commit/9959eda))
+* **multiple-choice:** added a third option for the choices label and also fixed a configuration property name ([2f6d28d](https://github.com/pie-framework/pie-elements/commit/2f6d28d))
+* **multiple-choice:** changed the behaviour when enableShowPrompt is false ([5edaad1](https://github.com/pie-framework/pie-elements/commit/5edaad1))
+* **multiple-choice:** made some change in order to be able to publish a new version ([2be2aae](https://github.com/pie-framework/pie-elements/commit/2be2aae))
+* **multiple-choice:** made some change to the customization properties ([6f0d1b6](https://github.com/pie-framework/pie-elements/commit/6f0d1b6))
+* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+* **multiple-choice:** updated package version ([8f75d56](https://github.com/pie-framework/pie-elements/commit/8f75d56))
+
+
+
+## 2.4.1 (2019-01-08)
+
+
+### Bug Fixes
+
+* **multiple-choice:** bumped the editable-html version ([220b147](https://github.com/pie-framework/pie-elements/commit/220b147))
+
+
+
+
+
 # [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.3.3...@pie-element/multiple-choice@2.4.0) (2019-01-08)
 
 

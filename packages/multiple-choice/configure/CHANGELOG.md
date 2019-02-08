@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.4.0...@pie-element/multiple-choice-configure@0.5.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* **multiple-choice:** bumped the editable-html version ([220b147](https://github.com/pie-framework/pie-elements/commit/220b147))
+* **multiple-choice:** fixed a warning ([c8ccb36](https://github.com/pie-framework/pie-elements/commit/c8ccb36))
+
+
+### Features
+
+* **multiple-choice:** added a configurable property for the multiple-choice configure element and fixed some names for the customization properties ([9959eda](https://github.com/pie-framework/pie-elements/commit/9959eda))
+* **multiple-choice:** added a third option for the choices label and also fixed a configuration property name ([2f6d28d](https://github.com/pie-framework/pie-elements/commit/2f6d28d))
+* **multiple-choice:** changed the behaviour when enableShowPrompt is false ([5edaad1](https://github.com/pie-framework/pie-elements/commit/5edaad1))
+* **multiple-choice:** made some change in order to be able to publish a new version ([2be2aae](https://github.com/pie-framework/pie-elements/commit/2be2aae))
+* **multiple-choice:** made some change to the customization properties ([6f0d1b6](https://github.com/pie-framework/pie-elements/commit/6f0d1b6))
+
+
+
+
+
 # [0.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.3.2...@pie-element/multiple-choice-configure@0.4.0) (2019-01-08)
 
 

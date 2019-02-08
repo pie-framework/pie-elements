@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.3.3...@pie-element/select-text@3.4.0) (2019-02-08)
+
+
+### Features
+
+* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+* **docs:** select text docs fix, clarify mode property ([#117](https://github.com/pie-framework/pie-elements/issues/117)) ([46c30ab](https://github.com/pie-framework/pie-elements/commit/46c30ab))
+* Support markup + mathml rendering in select-text ([48db493](https://github.com/pie-framework/pie-elements/commit/48db493))
+
+
+
+
+
 ## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.3.2...@pie-element/select-text@3.3.3) (2019-01-08)
 
 

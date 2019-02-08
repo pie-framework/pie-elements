@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.3...@pie-element/extended-text-entry@3.4.0) (2019-02-08)
+
+
+### Features
+
+* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+* **extended-text-entry:** removed the unnecessary space ([a1dfd90](https://github.com/pie-framework/pie-elements/commit/a1dfd90))
+
+
+
+
+
 ## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.3.2...@pie-element/extended-text-entry@3.3.3) (2019-01-08)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.5.1...@pie-element/match@1.6.0) (2019-02-08)
+
+
+### Features
+
+* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+
+
+
+
+
 ## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.5.0...@pie-element/match@1.5.1) (2019-01-08)
 
 
