@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.1.0...@pie-element/select-text-controller@2.2.0) (2019-02-08)
+
+
+### Features
+
+* Support markup + mathml rendering in select-text ([48db493](https://github.com/pie-framework/pie-elements/commit/48db493))
+
+
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.0.0...@pie-element/select-text-controller@2.1.0) (2018-11-05)
 

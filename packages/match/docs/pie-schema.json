@@ -1,0 +1,205 @@
+{
+  "description": "Model for the @pie-elements/match Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "rows": {
+      "description": "The rows of choices to be presented.",
+      "type": "array",
+      "items": [
+        {
+          "description": "One row in the match list.",
+          "title": "MatchRow",
+          "type": "object",
+          "properties": {
+            "id": {
+              "description": "Identifier for a row",
+              "type": "string",
+              "title": "id"
+            },
+            "title": {
+              "description": "Title that will be displayed for the row",
+              "type": "string",
+              "title": "title"
+            },
+            "values": {
+              "description": "Array of boolean values indicating which columns are selected in the row",
+              "type": "array",
+              "items": [
+                {
+                  "type": "boolean"
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "title": "values"
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "values"
+          ]
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "description": "One row in the match list.",
+            "title": "MatchRow",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "Identifier for a row",
+                "type": "string",
+                "title": "id"
+              },
+              "title": {
+                "description": "Title that will be displayed for the row",
+                "type": "string",
+                "title": "title"
+              },
+              "values": {
+                "description": "Array of boolean values indicating which columns are selected in the row",
+                "type": "array",
+                "items": [
+                  {
+                    "type": "boolean"
+                  }
+                ],
+                "minItems": 1,
+                "additionalItems": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                "title": "values"
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "values"
+            ]
+          }
+        ]
+      },
+      "title": "rows"
+    },
+    "shuffled": {
+      "description": "Indicates if the order of the rows should be randomly sorted on render",
+      "type": "boolean",
+      "title": "shuffled"
+    },
+    "layout": {
+      "description": "The number of columns to be presented",
+      "type": "number",
+      "title": "layout"
+    },
+    "headers": {
+      "description": "Array of strings for column headers",
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "title": "headers"
+    },
+    "responseType": {
+      "title": "ResponseType",
+      "enum": [
+        "checkbox",
+        "radio"
+      ],
+      "type": "string"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "headers",
+    "id",
+    "layout",
+    "responseType",
+    "rows",
+    "shuffled"
+  ],
+  "definitions": {
+    "MatchRow": {
+      "description": "One row in the match list.",
+      "title": "MatchRow",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for a row",
+          "type": "string",
+          "title": "id"
+        },
+        "title": {
+          "description": "Title that will be displayed for the row",
+          "type": "string",
+          "title": "title"
+        },
+        "values": {
+          "description": "Array of boolean values indicating which columns are selected in the row",
+          "type": "array",
+          "items": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "title": "values"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "values"
+      ]
+    },
+    "ResponseType": {
+      "title": "ResponseType",
+      "enum": [
+        "checkbox",
+        "radio"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

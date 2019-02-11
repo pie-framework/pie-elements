@@ -1,0 +1,358 @@
+{
+  "description": "Pie Model Object for @pie-elements/categorize",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "choices": {
+      "description": "The available choices",
+      "type": "array",
+      "items": {
+        "title": "CategoryChoice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identifier for the choice",
+            "type": "string",
+            "title": "id"
+          },
+          "content": {
+            "description": "The xhtml content for the choice",
+            "type": "string",
+            "title": "content"
+          }
+        },
+        "required": [
+          "content",
+          "id"
+        ]
+      },
+      "title": "choices"
+    },
+    "categories": {
+      "description": "The categories in which choices may be placed",
+      "type": "array",
+      "items": {
+        "title": "Category",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identifier for the category",
+            "type": "string",
+            "title": "id"
+          },
+          "label": {
+            "description": "The label to display with the category.",
+            "type": "string",
+            "title": "label"
+          },
+          "choices": {
+            "description": "The choices presented in this category",
+            "type": "array",
+            "items": {
+              "title": "CategoryChoice",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "Identifier for the choice",
+                  "type": "string",
+                  "title": "id"
+                },
+                "content": {
+                  "description": "The xhtml content for the choice",
+                  "type": "string",
+                  "title": "content"
+                }
+              },
+              "required": [
+                "content",
+                "id"
+              ]
+            },
+            "title": "choices"
+          }
+        },
+        "required": [
+          "choices",
+          "id",
+          "label"
+        ]
+      },
+      "title": "categories"
+    },
+    "correctResponse": {
+      "description": "The defintion of the correct response to the question",
+      "type": "array",
+      "items": {
+        "title": "CategoryCorrectResponse",
+        "type": "object",
+        "properties": {
+          "category": {
+            "description": "The identifier for the category",
+            "type": "string",
+            "title": "category"
+          },
+          "choices": {
+            "description": "Array of identifiers for the choices that belong in this category",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "choices"
+          }
+        },
+        "required": [
+          "category",
+          "choices"
+        ]
+      },
+      "title": "correctResponse"
+    },
+    "config": {
+      "description": "Configuration options for the presentataion of the interaction",
+      "type": "object",
+      "properties": {
+        "choices": {
+          "title": "ChoicesConfig",
+          "type": "object",
+          "properties": {
+            "columns": {
+              "default": 2,
+              "type": "number",
+              "title": "columns"
+            },
+            "position": {
+              "title": "ChoicesPosition",
+              "enum": [
+                "above",
+                "below"
+              ],
+              "type": "string"
+            },
+            "label": {
+              "description": "Label to be displayed for the choices",
+              "type": "string",
+              "title": "label"
+            },
+            "shuffle": {
+              "description": "Should the choices be shuffled",
+              "type": "boolean",
+              "title": "shuffle"
+            },
+            "removeafterplacing": {
+              "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
+              "type": "boolean",
+              "title": "removeafterplacing"
+            }
+          },
+          "required": [
+            "columns",
+            "label",
+            "position",
+            "removeafterplacing",
+            "shuffle"
+          ]
+        },
+        "categories": {
+          "title": "CategoriesConfig",
+          "type": "object",
+          "properties": {
+            "columns": {
+              "description": "The number of columns in which to present the categories",
+              "default": 2,
+              "type": "number",
+              "title": "columns"
+            },
+            "rows": {
+              "description": "The number of rows in which to present the categories",
+              "default": 1,
+              "type": "number",
+              "title": "rows"
+            }
+          }
+        }
+      },
+      "required": [
+        "categories",
+        "choices"
+      ],
+      "title": "config"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "categories",
+    "choices",
+    "config",
+    "correctResponse",
+    "element",
+    "id"
+  ],
+  "definitions": {
+    "CategoryChoice": {
+      "title": "CategoryChoice",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for the choice",
+          "type": "string",
+          "title": "id"
+        },
+        "content": {
+          "description": "The xhtml content for the choice",
+          "type": "string",
+          "title": "content"
+        }
+      },
+      "required": [
+        "content",
+        "id"
+      ]
+    },
+    "Category": {
+      "title": "Category",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for the category",
+          "type": "string",
+          "title": "id"
+        },
+        "label": {
+          "description": "The label to display with the category.",
+          "type": "string",
+          "title": "label"
+        },
+        "choices": {
+          "description": "The choices presented in this category",
+          "type": "array",
+          "items": {
+            "title": "CategoryChoice",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "Identifier for the choice",
+                "type": "string",
+                "title": "id"
+              },
+              "content": {
+                "description": "The xhtml content for the choice",
+                "type": "string",
+                "title": "content"
+              }
+            },
+            "required": [
+              "content",
+              "id"
+            ]
+          },
+          "title": "choices"
+        }
+      },
+      "required": [
+        "choices",
+        "id",
+        "label"
+      ]
+    },
+    "CategoryCorrectResponse": {
+      "title": "CategoryCorrectResponse",
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "The identifier for the category",
+          "type": "string",
+          "title": "category"
+        },
+        "choices": {
+          "description": "Array of identifiers for the choices that belong in this category",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "choices"
+        }
+      },
+      "required": [
+        "category",
+        "choices"
+      ]
+    },
+    "ChoicesConfig": {
+      "title": "ChoicesConfig",
+      "type": "object",
+      "properties": {
+        "columns": {
+          "default": 2,
+          "type": "number",
+          "title": "columns"
+        },
+        "position": {
+          "title": "ChoicesPosition",
+          "enum": [
+            "above",
+            "below"
+          ],
+          "type": "string"
+        },
+        "label": {
+          "description": "Label to be displayed for the choices",
+          "type": "string",
+          "title": "label"
+        },
+        "shuffle": {
+          "description": "Should the choices be shuffled",
+          "type": "boolean",
+          "title": "shuffle"
+        },
+        "removeafterplacing": {
+          "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
+          "type": "boolean",
+          "title": "removeafterplacing"
+        }
+      },
+      "required": [
+        "columns",
+        "label",
+        "position",
+        "removeafterplacing",
+        "shuffle"
+      ]
+    },
+    "ChoicesPosition": {
+      "title": "ChoicesPosition",
+      "enum": [
+        "above",
+        "below"
+      ],
+      "type": "string"
+    },
+    "CategoriesConfig": {
+      "title": "CategoriesConfig",
+      "type": "object",
+      "properties": {
+        "columns": {
+          "description": "The number of columns in which to present the categories",
+          "default": 2,
+          "type": "number",
+          "title": "columns"
+        },
+        "rows": {
+          "description": "The number of rows in which to present the categories",
+          "default": 1,
+          "type": "number",
+          "title": "rows"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

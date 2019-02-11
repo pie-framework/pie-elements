@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.1.2...@pie-element/text-entry@3.1.4) (2019-02-08)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.1.1...@pie-element/text-entry@3.1.2) (2019-01-08)
+
+
+### Bug Fixes
+
+* **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
+
+
+
+
+
 <a name="3.1.1"></a>
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.1.0...@pie-element/text-entry@3.1.1) (2018-09-20)
 

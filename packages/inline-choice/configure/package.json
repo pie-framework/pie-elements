@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/inline-choice-configure",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "lib/index.js",
   "author": "Mukesh Sharma",
@@ -10,7 +10,7 @@
     "@material-ui/core": "^1.0.0-rc.1",
     "@material-ui/icons": "^1.0.0-rc.0",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^7.6.6",
+    "@pie-lib/config-ui": "^7.8.0",
     "@pie-lib/scoring-config": "^3.1.1",
     "debug": "^3.1.0",
     "lodash": "^4.17.5",

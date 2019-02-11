@@ -40,9 +40,7 @@ export const getCorrectness = (tokens, selected) => {
 const getCorrectSelected = (tokens, selected) => {
   return selected.filter(s => {
     const index = tokens.findIndex(c => {
-      return (
-        c.correct && c.text === s.text && c.start === s.start && c.end === s.end
-      );
+      return c.correct && c.start === s.start && c.end === s.end;
     });
     return index !== -1;
   });
@@ -71,10 +69,9 @@ export const outcome = (question, session, env) => {
         score:
           correctness === 'correct'
             ? 1
-            : correctness === 'partially-correct' &&
-              question.partialScoring
-              ? getPartialScore()
-              : 0,
+            : correctness === 'partially-correct' && question.partialScoring
+            ? getPartialScore()
+            : 0,
         completed:
           Array.isArray(session.selectedTokens) &&
           session.selectedTokens.length > 0

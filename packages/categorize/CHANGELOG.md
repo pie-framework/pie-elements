@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.4...@pie-element/categorize@2.8.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* add rows property for categorize docs ([0f68419](https://github.com/pie-framework/pie-elements/commit/0f68419))
+
+
+### Features
+
+* json schemas and docs ([6bfc2a9](https://github.com/pie-framework/pie-elements/commit/6bfc2a9))
+
+
+
+
+
+## [2.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.3...@pie-element/categorize@2.7.4) (2019-01-08)
+
+
+### Bug Fixes
+
+* **general:** bumped the config-ui version for all packages ([159521d](https://github.com/pie-framework/pie-elements/commit/159521d))
+
+
+
+
+
+## [2.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.2...@pie-element/categorize@2.7.3) (2019-01-08)
+
+
+
+## 2.3.4 (2018-12-17)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [2.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.7.1...@pie-element/categorize@2.7.2) (2018-11-12)
 
 

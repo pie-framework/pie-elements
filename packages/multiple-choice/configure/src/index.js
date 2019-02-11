@@ -13,22 +13,49 @@ import defaults from 'lodash/defaults';
 
 const log = debug('multiple-choice:configure');
 
-const prepareCustomizationObject = (model) => {
-  const defaultValues = {
-    promptLabel : 'Prompt',
-    responseTypeLabel: 'Response Type',
-    choicesLabel: 'Choice Labels',
-    addChoiceButtonLabel: 'Add a choice',
-    enableSelectChoiceLabel: true,
-    enableSelectResponseType: true,
-    enableAddChoice: true,
-    enableAddFeedBack: true,
-    enableDeleteChoice: true
-  };
+const defaultValues = {
+  promptLabel : 'Prompt',
+  addChoiceButtonLabel: 'Add a choice',
+  addChoice: true,
+  addFeedBack: true,
+  deleteChoice: true,
+  showPrompt: true,
+  answerChoiceCount: 0,
+  settingsSelectChoiceMode: true,
+  settingsSelectChoicePrefixes: true,
+  settingsSelectChoiceModeLabel: 'Response Type',
+  settingsChoicePrefixesLabel: 'Choice Labels',
+  settingsPartialScoring: true,
+  settingsConfigShuffle: true
+};
+
+const prepareCustomizationObject = (configure, model) => {
+  const answerChoiceCount = configure.answerChoiceCount
+    ? configure.answerChoiceCount
+    : 4;
+  let formattedChoices = model.choices;
+
+  if (!formattedChoices || formattedChoices.length === 0) {
+    formattedChoices = [];
+
+    for (let i = 0; i < answerChoiceCount; i++) {
+      formattedChoices.push({
+        value: '',
+        label: '',
+        feedback: {
+          type: 'none',
+          value: ''
+        }
+      });
+    }
+  }
 
   return {
-    ...model,
-    configure: defaults(model.configure, defaultValues)
+    configure: defaults(configure, defaultValues),
+    model: {
+      ...model,
+      choices: formattedChoices
+    }
   };
 };
 
@@ -36,10 +63,24 @@ export default class extends HTMLElement {
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
+    this._configure = defaultValues;
   }
 
   set model(s) {
-    this._model = prepareCustomizationObject(utils.normalizeChoices(s));
+    this._model = utils.normalizeChoices(s);
+    this._render();
+  }
+
+  set configure(c) {
+    const info = prepareCustomizationObject(c, this._model);
+
+    this.onModelChanged(info.model);
+    this._configure = info.configure;
+    this._render();
+  }
+
+  set disableSidePanel(s) {
+    this._disableSidePanel = s;
     this._render();
   }
 
@@ -70,6 +111,8 @@ export default class extends HTMLElement {
     log('_render');
     let element = React.createElement(Root, {
       model: this._model,
+      configure: this._configure,
+      disableSidePanel: this._disableSidePanel,
       onModelChanged: this.onModelChanged,
       imageSupport: {
         add: this.insertImage.bind(this),

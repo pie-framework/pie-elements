@@ -1,0 +1,172 @@
+{
+  "description": "Model for the @pie-elements/inline-choice Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "choiceLabel": {
+      "description": "Text to display in the dropdown",
+      "type": "string",
+      "title": "choiceLabel"
+    },
+    "choices": {
+      "description": "The choice options for the question",
+      "type": "array",
+      "items": {
+        "title": "Choice",
+        "type": "object",
+        "properties": {
+          "correct": {
+            "description": "Indicates if the choice is correct",
+            "type": "boolean",
+            "title": "correct"
+          },
+          "value": {
+            "description": "the value that will be stored if this choice is selected",
+            "type": "string",
+            "title": "value"
+          },
+          "label": {
+            "description": "the text label that will be presented to the user for this choice",
+            "type": "string",
+            "title": "label"
+          },
+          "feedback": {
+            "title": "Feedback",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+                "title": "FeedbackType",
+                "enum": [
+                  "custom",
+                  "default"
+                ],
+                "type": "string"
+              },
+              "value": {
+                "type": "string",
+                "title": "value"
+              }
+            },
+            "required": [
+              "type",
+              "value"
+            ]
+          }
+        },
+        "required": [
+          "correct",
+          "feedback",
+          "label",
+          "value"
+        ]
+      },
+      "title": "choices"
+    },
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "choices",
+    "element",
+    "id"
+  ],
+  "definitions": {
+    "Choice": {
+      "title": "Choice",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates if the choice is correct",
+          "type": "boolean",
+          "title": "correct"
+        },
+        "value": {
+          "description": "the value that will be stored if this choice is selected",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "the text label that will be presented to the user for this choice",
+          "type": "string",
+          "title": "label"
+        },
+        "feedback": {
+          "title": "Feedback",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+              "title": "FeedbackType",
+              "enum": [
+                "custom",
+                "default"
+              ],
+              "type": "string"
+            },
+            "value": {
+              "type": "string",
+              "title": "value"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ]
+        }
+      },
+      "required": [
+        "correct",
+        "feedback",
+        "label",
+        "value"
+      ]
+    },
+    "Feedback": {
+      "title": "Feedback",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+          "title": "FeedbackType",
+          "enum": [
+            "custom",
+            "default"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "title": "value"
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "FeedbackType": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
+      "title": "FeedbackType",
+      "enum": [
+        "custom",
+        "default"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

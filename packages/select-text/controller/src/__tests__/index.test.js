@@ -6,8 +6,8 @@ const token = (start, end, text, correct) => ({ start, end, text, correct });
 describe('getCorrectness', () => {
   const assert = (tokens, selected, expected) => {
     //set tokens to be correct if not set
-    tokens = tokens.map(
-      t => (t.correct !== undefined ? t : { ...t, correct: true })
+    tokens = tokens.map(t =>
+      t.correct !== undefined ? t : { ...t, correct: true }
     );
 
     it(`${JSON.stringify(tokens)}, ${JSON.stringify(
@@ -35,6 +35,43 @@ describe('getCorrectness', () => {
     [token(1, 2, 'b')],
     'partially-correct'
   );
+
+  describe('with markup', () => {
+    const markupArrayToTokens = (arr, correctIndicies) => {
+      const text = arr.join(' ');
+
+      return arr.map((s, index) => {
+        const start = text.indexOf(s);
+        const end = start + s.length;
+        const correct = correctIndicies.indexOf(index) >= 0;
+        return token(start, end, null, correct);
+      });
+    };
+
+    it('returns partially correct', () => {
+      const markup = ['<div>hi</div>', '<div>there</div>', '<div>?</div>'];
+      const tokens = markupArrayToTokens(markup, [0, 2]);
+
+      const result = getCorrectness(tokens, [tokens[0]]);
+      expect(result).toEqual('partially-correct');
+    });
+
+    it.only('returns correct', () => {
+      const markup = ['<div>hi</div>', '<div>there</div>', '<div>?</div>'];
+      const tokens = markupArrayToTokens(markup, [0, 2]);
+
+      const result = getCorrectness(tokens, [tokens[0], tokens[2]]);
+      expect(result).toEqual('correct');
+    });
+
+    it('returns incorrect', () => {
+      const markup = ['<div>hi</div>', '<div>there</div>', '<div>?</div>'];
+      const tokens = markupArrayToTokens(markup, [0, 2]);
+
+      const result = getCorrectness(tokens, [tokens[1]]);
+      expect(result).toEqual('incorrect');
+    });
+  });
 });
 
 const q = extras => ({

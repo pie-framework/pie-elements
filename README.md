@@ -22,6 +22,7 @@ npm install -g pie
 | Action            | Notes                                                                   |
 | ----------------- | ----------------------------------------------------------------------- |
 | test              | runs all the tests, all tests run from the root of the monorepo         |
+| build             | build the libs                                                          |
 | lint              | runs eslint                                                             |
 | clean             | removes all the lib dirs                                                |
 | release           | cleans, runs tests, builds, then runs lerna publish                     |
@@ -29,6 +30,8 @@ npm install -g pie
 | pie-install       | installs in the `docs/demo` dir                                         |
 | pie-pack-clean    | cleans out the `docs/demo` dir + any generated assets from a `pie pack` |
 | scripts/info $pkg | run `pie info` for a package, with watch enabled                        |
+
+> when building make sure all watchers are disabled - we had an issue where a watcher was corrupting the build.
 
 ## running
 
