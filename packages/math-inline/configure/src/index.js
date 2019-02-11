@@ -6,7 +6,7 @@ import debug from 'debug';
 
 const log = debug('pie-elements:math-inline:configure');
 
-export default class MatchConfigure extends HTMLElement {
+export default class MathInlineConfigure extends HTMLElement {
   constructor() {
     super();
   }
