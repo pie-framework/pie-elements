@@ -13,7 +13,7 @@ exports[`ChoicePreview snapshot renders 1`] = `
       color="secondary"
       onClick={[Function]}
     >
-      <pure(Delete) />
+      <pure(DeleteIcon) />
     </WithStyles(IconButton)>
   </Component>
 </div>
