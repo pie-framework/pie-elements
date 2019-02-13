@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Static from '@pie-lib/math-toolbar/lib/mathquill/static';
+import { mq } from '@pie-lib/math-input';
 import { withStyles } from '@material-ui/core/styles/index';
 import PropTypes from 'prop-types';
 
@@ -55,7 +55,7 @@ class AnswerBlock extends React.Component {
       <div className={classes.container}>
         <div className={classes.response}>R{index + 1}</div>
         <div className={classes.math}>
-          <Static latex={latex} />
+          <mq.Static latex={latex} />
         </div>
       </div>
     );
