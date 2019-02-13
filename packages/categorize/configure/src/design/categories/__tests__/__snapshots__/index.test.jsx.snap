@@ -25,6 +25,7 @@ exports[`Categories snapshot renders 1`] = `
       select={false}
       type="number"
       value={2}
+      variant="standard"
     />
   </div>
   <div

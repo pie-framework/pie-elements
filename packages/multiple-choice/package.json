@@ -10,5 +10,6 @@
   },
   "pie": {
     "element": "@pie-ui/multiple-choice"
-  }
+  },
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

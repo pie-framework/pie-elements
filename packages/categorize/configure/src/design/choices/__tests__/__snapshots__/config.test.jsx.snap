@@ -18,6 +18,7 @@ exports[`config snapshot renders 1`] = `
       select={false}
       type="number"
       value={2}
+      variant="standard"
     />
     <Component
       label="Remove all tiles after placing"
@@ -40,6 +41,7 @@ exports[`config snapshot renders 1`] = `
       required={false}
       select={false}
       value=""
+      variant="standard"
     />
     <WithStyles(List)
       component="nav"

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/number-line",
-  "version": "3.0.10",
+  "version": "3.2.1",
   "repository": "pie-framework/pie-elements",
   "description": "",
   "publishConfig": {
@@ -14,5 +14,6 @@
     "element": "@pie-ui/number-line"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

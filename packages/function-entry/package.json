@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/function-entry",
-  "version": "3.0.4",
+  "version": "3.2.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -13,5 +13,6 @@
     "element": "@pie-ui/function-entry"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

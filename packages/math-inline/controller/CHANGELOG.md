@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-inline-controller@1.2.0...@pie-element/match-inline-controller@1.2.1) (2019-02-13)
+
+**Note:** Version bump only for package @pie-element/match-inline-controller
+
+
+
+
+
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-inline-controller@1.1.3...@pie-element/match-inline-controller@1.2.0) (2019-02-13)
+
+
+### Features
+
+* **math-inline:** answer block generation related functionality ([045173e](https://github.com/pie-framework/pie-elements/commit/045173e))
+* **math-inline:** config panel and controller done for initial release ([f8d4ed8](https://github.com/pie-framework/pie-elements/commit/f8d4ed8))
+* **math-inline:** finalize for first release ([e33b3ad](https://github.com/pie-framework/pie-elements/commit/e33b3ad))
+
+
+
+
+
 ## 1.1.3 (2018-11-26)
 
 

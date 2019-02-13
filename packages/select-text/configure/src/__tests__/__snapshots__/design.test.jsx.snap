@@ -17,6 +17,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
     onChange={[Function]}
     required={false}
     select={false}
+    variant="standard"
   />
   <Component
     label="Highlight choices"
@@ -106,6 +107,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
     onChange={[Function]}
     required={false}
     select={false}
+    variant="standard"
   />
   <Component
     label="Highlight choices"

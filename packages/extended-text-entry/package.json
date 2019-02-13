@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "3.4.0",
+  "version": "3.6.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -13,5 +13,6 @@
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
-  }
+  },
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

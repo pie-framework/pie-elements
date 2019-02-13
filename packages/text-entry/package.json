@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/text-entry",
   "repository": "pie-framework/pie-elements",
-  "version": "3.1.4",
+  "version": "3.3.1",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -13,5 +13,6 @@
     "element": "@pie-ui/text-entry"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

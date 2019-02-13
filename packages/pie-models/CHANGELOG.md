@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.3.1...@pie-element/pie-models@0.4.1) (2019-02-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [0.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.2.0...@pie-element/pie-models@0.3.1) (2019-02-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
 # 0.2.0 (2019-02-08)
 
 

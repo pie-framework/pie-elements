@@ -4,18 +4,19 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "0.0.9",
+  "version": "0.3.1",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^0.0.2"
+    "@pie-ui/math-inline": "^1.1.0"
   },
   "pie": {
     "element": "@pie-ui/math-inline"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }
