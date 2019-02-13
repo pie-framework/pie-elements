@@ -1,10 +1,6 @@
 {
   "name": "@pie-element/calculator",
-<<<<<<< HEAD
   "version": "2.2.0",
-=======
-  "version": "2.1.1",
->>>>>>> 219a60617f4d6223e62092e80034a52c2ec5c001
   "description": "A catalog tool",
   "repository": "pie-framework/pie-elements",
   "scripts": {
