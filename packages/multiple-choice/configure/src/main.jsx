@@ -138,12 +138,12 @@ const Design = withStyles(styles)(props => {
                 onChange={onPromptChanged}
                 imageSupport={imageSupport}
                 nonEmpty={!showPrompt}
+                disableUnderline
               />
             </InputContainer>
             {model.choices.map((choice, index) => (
               <ChoiceConfiguration
                 key={index}
-                noLabels
                 index={index + 1}
                 useLetterOrdering={model.keyMode === 'letters'}
                 className={classes.choiceConfiguration}
@@ -160,7 +160,7 @@ const Design = withStyles(styles)(props => {
             <br />
             {
               addChoice &&
-              <Button className={classes.addButton} variant="raised" color="primary" onClick={onAddChoice}>
+              <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
                 {addChoiceButtonLabel}
               </Button>
             }
