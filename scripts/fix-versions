@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+const fs = require('fs-extra');
+const { join } = require('path');
+const { execSync } = require('child_process');
+
+const semver = require('semver');
+console.log('fix versions');
+
+const dirs = fs.readdirSync('packages');
+
+console.log('dirs', dirs);
+
+const list = execSync(`git tag --list`).toString();
+
+// console.log('list:', list);
+
+const rows = list.split(`\n`).map(n => n.trim());
+// console.log('rows', rows);
+dirs.forEach(d => {
+  const pkgFile = join('packages', d, 'package.json');
+  const pkg = fs.readJsonSync(pkgFile);
+
+  const index = rows.indexOf(`${pkg.name}@${pkg.version}`);
+
+  if (index >= 0) {
+    console.log(pkg.name, pkg.version, 'needs fixing');
+    const versions = rows
+      .filter(r => {
+        return r.startsWith(`${pkg.name}@`);
+      })
+      .map(r => r.replace(`${pkg.name}@`, ''))
+      .sort();
+
+    const last = versions[versions.length - 1];
+
+    const bumped = semver.inc(last, 'minor');
+
+    console.log('versions:', versions);
+    console.log('new version:', bumped);
+
+    pkg.version = bumped;
+    fs.writeJsonSync(pkgFile, pkg, { spaces: '  ' });
+  }
+});
