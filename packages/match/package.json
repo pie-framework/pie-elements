@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -17,5 +17,6 @@
     "element": "@pie-ui/match"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

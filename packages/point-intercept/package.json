@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "main": "lib/index.js",
   "description": "",
   "dependencies": {
@@ -13,5 +13,5 @@
   },
   "author": "pie framework developers",
   "license": "ISC",
-  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

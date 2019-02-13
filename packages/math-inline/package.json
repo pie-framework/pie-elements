@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -17,5 +17,6 @@
     "element": "@pie-ui/math-inline"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }
