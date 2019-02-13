@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/text-entry",
   "repository": "pie-framework/pie-elements",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "description": "",
   "publishConfig": {
     "access": "public"
