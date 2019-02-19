@@ -8,6 +8,8 @@ before_install:
 stages:
   - test
   - checker
+  - status
+  - diff
   - name: release-next
     if: branch = feature/next-build
 
@@ -15,6 +17,10 @@ jobs:
   include:
     - stage: checker
       script: npm whoami
+    - stage: status
+      script: git status
+    - stage: diff
+      script: git diff
     - stage: release-next
       script: 'npm run release:next'
 branches:

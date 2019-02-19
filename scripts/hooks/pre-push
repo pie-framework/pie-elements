@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+
+const {
+  checkDependencies,
+  getCurrentBranch,
+  getPackageFiles,
+  getLockFile
+} = require('./shared');
+
+const chalk = require('chalk');
+
+const branches = ['master'];
+
+const currentBranch = getCurrentBranch();
+
+const run = async () => {
+  const files = getPackageFiles();
+  const yarnLock = getLockFile();
+
+  const dependencyResult = await Promise.all(
+    files.map(f => checkDependencies(yarnLock, f))
+  );
+
+  const fixableDeps = dependencyResult.filter(r => r.fixable);
+  const notFixableDeps = dependencyResult.filter(r => r.notFixable);
+
+  if (fixableDeps.length > 0 || notFixableDeps.length > 0) {
+    console.log(chalk.green('FIX:'));
+    fixableDeps.forEach(f => {
+      console.log(chalk.green(f.pkg.name, JSON.stringify(f.fixable)));
+    });
+
+    console.log(chalk.red('CANT FIX'));
+    notFixableDeps.forEach(f => {
+      console.log(chalk.red(f.pkg.name, JSON.stringify(f.notFixable)));
+    });
+
+    // eslint-disable-next-line quotes
+    throw new Error(
+      `some dependencies are using 'next', you have to remove these dependencies before you can push to ${currentBranch}`
+    );
+  }
+};
+
+if (branches.indexOf(currentBranch) >= 0) {
+  run()
+    .then(() => {
+      console.log('ok');
+      process.exit(0);
+    })
+    .catch(e => {
+      console.log(e);
+      console.log(chalk.red(e.message));
+      process.exit(1);
+    });
+} else {
+  process.exit(0);
+}

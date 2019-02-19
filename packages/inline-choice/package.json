@@ -9,7 +9,7 @@
   "author": "ed.eustace@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/inline-choice": "^5.1.1"
+    "@pie-ui/inline-choice": "next"
   },
   "pie": {
     "element": "@pie-ui/inline-choice"

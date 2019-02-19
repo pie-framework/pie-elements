@@ -22,7 +22,7 @@
   "author": "Harry",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/calculator": "^3.2.0"
+    "@pie-ui/calculator": "next"
   },
   "pie": {
     "element": "@pie-ui/calculator"
