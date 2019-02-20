@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.3.1...@pie-element/math-inline@0.3.3) (2019-02-20)
+
+
+### Bug Fixes
+
+* **math-inline:** keypad update for different types and keypad fixes ([d6e4a81](https://github.com/pie-framework/pie-elements/commit/d6e4a81))
+
+
+
+
+
 ## [0.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.2.1...@pie-element/math-inline@0.3.1) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/math-inline

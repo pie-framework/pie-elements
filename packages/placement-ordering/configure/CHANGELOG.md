@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@1.1.3...@pie-element/placement-ordering-configure@1.2.0) (2019-02-20)
+
+
+### Features
+
+* **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
+
+
+
+
+
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@1.1.2...@pie-element/placement-ordering-configure@1.1.3) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure

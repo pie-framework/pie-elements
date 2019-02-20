@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.10.1...@pie-element/categorize@2.11.0) (2019-02-20)
+
+
+### Features
+
+* **general:** updated the pie-lib/editable-html versions for all elements ([f642cb5](https://github.com/pie-framework/pie-elements/commit/f642cb5))
+
+
+
+
+
 ## [2.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.9.1...@pie-element/categorize@2.10.1) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/categorize

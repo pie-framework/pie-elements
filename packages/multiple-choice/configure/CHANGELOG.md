@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.5.2...@pie-element/multiple-choice-configure@0.6.0) (2019-02-20)
+
+
+### Features
+
+* **multiple-choice:** reimplemented the new design ([10c3b9b](https://github.com/pie-framework/pie-elements/commit/10c3b9b))
+
+
+
+
+
 ## [0.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.5.1...@pie-element/multiple-choice-configure@0.5.2) (2019-02-13)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure
