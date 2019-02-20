@@ -207,9 +207,6 @@ class Response extends React.Component {
     const { showKeypad } = this.state;
     const { validation, answer, alternates, allowDecimals, allowSpaces } = response;
     const hasAlternates = Object.keys(alternates).length > 0;
-
-    console.log(mode);
-
     const classNames = {
       editor: classes.responseEditor
     };
