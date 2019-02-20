@@ -838,6 +838,21 @@
     lodash "^4.17.10"
     prop-types "^15.6.1"
 
+"@pie-lib/config-ui@^7.11.13", "@pie-lib/config-ui@^7.11.9":
+  version "7.11.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.13.tgz#2ea788736572e0278aa40516caadea9c6679ca67"
+  integrity sha512-uOSH2/T8/NgZTsF38Vpxv+Th2kdT86+RaxUQef1IBRFV+huwuGU6c+dy0iraJdbPhet0Qf8LCC/cZVYlYDGJhA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^7.1.4"
+    "@pie-lib/icons" "^2.3.1"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-measure "^2.2.2"
+
 "@pie-lib/config-ui@^7.8.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.8.0.tgz#1b7b3d7fa0ad23dd88f26a5516a1030d801090e2"
@@ -941,26 +956,26 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
-"@pie-lib/editable-html@^6.14.0":
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-6.14.0.tgz#d9e9104f520a5b51b899201374aee802ea27b7c9"
+"@pie-lib/editable-html@^7.0.4", "@pie-lib/editable-html@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.1.4.tgz#2b65183b44a1fa4e2ce10ad42903261489bff891"
+  integrity sha512-R4NQqwv0gC01CZ3uRBHqXrKp8aL7MKg2HDEr3kZ5MGHvu2otHMgJNdL7iDzsN0w9BHOel/yZGbscM63NEly5dw==
   dependencies:
-    "@material-ui/core" "^1.4.1"
-    "@material-ui/icons" "^2.0.0"
-    "@pie-lib/math-input" "^4.4.1"
-    "@pie-lib/math-rendering" "^1.1.2"
-    "@pie-lib/math-toolbar" "^0.2.1"
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-rendering" "^1.2.1"
+    "@pie-lib/math-toolbar" "^0.9.0"
     change-case "^3.0.2"
     classnames "^2.2.6"
-    debug "^3.1.0"
-    immutable "^3.8.2"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
     keycode "^2.2.0"
-    lodash "^4.17.10"
+    lodash "^4.17.11"
     mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
-    prop-types "^15.6.1"
+    prop-types "^15.6.2"
     react-attr-converter "^0.3.1"
     react-jss "^8.6.1"
-    react-portal "^4.1.5"
+    react-portal "^4.2.0"
     slate "^0.36.2"
     slate-dev-environment "^0.2.0"
     slate-edit-list "^0.11.3"
@@ -1033,6 +1048,18 @@
     mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-5.1.0.tgz#7a8fcd4e9e0feef4da12204dd7aec2ec51486d42"
+  integrity sha512-RmNhRTJrpf17OqRcQG9okH1HymzyHL1Jsf91JmjpTON70nx84byisGwRr1Gq7l3Yq4M3y3RfZvIzKz4FKp/VPA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-rendering@^1.0.0", "@pie-lib/math-rendering@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-1.1.0.tgz#a5489dd55bb9e585350a19f4431adfb0df640f2c"
@@ -1071,14 +1098,14 @@
     mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
     prop-types "^15.6.1"
 
-"@pie-lib/math-toolbar@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-0.8.0.tgz#240f2f443ffbfeb00c90f9dbd1e088c35eaa1141"
-  integrity sha512-j0hpwHgbug0YDEFcPGbN+eC14wkznKpo4gubigxvRCvTr8onP58dPE2ZsyQE89lLjcgSmz/QmGZIifyaNZT2fQ==
+"@pie-lib/math-toolbar@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-0.9.0.tgz#7a2dd09b0cc592bafaac50f608755b205cfd75e0"
+  integrity sha512-2THpcPL+zYkL+q+XZ+6jUDxWKRspH3DMi4Z+Hj6G2Adj86eaRUdpw0CSS1C1rc8ZYmEdHnCjP6Mm4JTd+3vfiA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/math-input" "^5.0.4"
+    "@pie-lib/math-input" "^5.1.0"
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
@@ -1127,6 +1154,18 @@
     classnames "^2.2.6"
     debug "^3.1.0"
     lodash "^4.17.4"
+
+"@pie-lib/scoring-config@^3.3.9":
+  version "3.3.12"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.3.12.tgz#4a264dd8efa45cb46a2c4053984a55f7fb4558d2"
+  integrity sha512-n2yBUnvRkZKs0r4BWZW3gsDPVU0+o7pMsnmXPJ9ELLb1xWSwkegM54pelD9uGQkx+cUlRKsLJJ7QW0AlQgpy4Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/config-ui" "^7.11.13"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
 
 "@pie-lib/style-utils@^0.1.0":
   version "0.1.0"
@@ -1292,22 +1331,23 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.4.3":
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.4.3.tgz#428821c8508d35ac55466d34223c62a37a51c901"
+"@pie-ui/multiple-choice@^4.5.4":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.6.0.tgz#aa90de802a742bebfa62151b3a68efee8078c375"
+  integrity sha512-1WrdoTDDbU2/rXX9+HXH1bdkyK71HtFS7HJTW0oqlxxzQA93Ge0Ti3dJrTwKJ58RCT3BqqghPAtAvsjP3Xw/Tg==
   dependencies:
-    "@material-ui/core" "^1.0.0-rc.1"
-    "@pie-lib/config-ui" "^7.8.0"
-    "@pie-lib/correct-answer-toggle" "^2.1.0"
-    "@pie-lib/math-rendering" "^1.0.0"
-    "@pie-lib/render-ui" "^2.1.0"
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^7.11.9"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/math-rendering" "^1.2.1"
+    "@pie-lib/render-ui" "^4.3.1"
     classnames "^2.2.5"
     debug "^3.1.0"
     enzyme-to-json "^3.3.3"
     lodash "^4.17.10"
     prop-types "^15.6.1"
-    react "^16.3.2"
-    react-dom "^16.3.2"
+    react "^16.8.1"
+    react-dom "^16.8.1"
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
@@ -4870,6 +4910,11 @@ ignore@^3.3.3, ignore@^3.3.5:
 immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+
+immutable@^4.0.0-rc.12:
+  version "4.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
+  integrity sha512-0M2XxkZLx/mi3t8NVwIm1g8nHoEmM9p9UBl/G9k4+hm0kBgOVdMV/B3CY5dQ8qG8qc80NN4gDV4HQv6FTJ5q7A==
 
 import-fresh@^2.0.0:
   version "2.0.0"
