@@ -7,7 +7,7 @@ exports.model = (id, element) => ({
   },
   expression: 'y = ',
   question: 'What is the equation for a slope?',
-  equationEditor: 'simple',
+  equationEditor: 'everything',
   defaultResponse: {
     id: 0,
     validation: 'symbolic',

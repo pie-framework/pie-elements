@@ -80,7 +80,7 @@ class Response extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     defaultResponse: PropTypes.bool,
-    mode: PropTypes.string,
+    mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
     response: PropTypes.object.isRequired
@@ -88,7 +88,7 @@ class Response extends React.Component {
 
   static defaultProps = {
     defaultResponse: false,
-    mode: 'scientific'
+    mode: 'everything'
   };
 
   constructor(props) {
@@ -207,7 +207,6 @@ class Response extends React.Component {
     const { showKeypad } = this.state;
     const { validation, answer, alternates, allowDecimals, allowSpaces } = response;
     const hasAlternates = Object.keys(alternates).length > 0;
-
     const classNames = {
       editor: classes.responseEditor
     };
@@ -255,6 +254,7 @@ class Response extends React.Component {
               <MathToolbar
                 classNames={classNames}
                 controlledKeypad
+                keypadMode={mode}
                 showKeypad={showKeypad[alternateId] || false}
                 latex={alternates[alternateId].answer}
                 onChange={this.onAlternateAnswerChange(alternateId)}

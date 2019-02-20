@@ -213,7 +213,7 @@ class GeneralConfigBlock extends React.Component {
             controlledKeypad
             showKeypad={showKeypad}
             latex={expression}
-            keypadMode="scientific"
+            keypadMode="everything"
             onChange={this.onChange('expression')}
             onFocus={this.onFocus}
             onDone={this.onDone}
@@ -226,9 +226,14 @@ class GeneralConfigBlock extends React.Component {
             onChange={this.onChange('equationEditor')}
             value={equationEditor}
           >
-            <MenuItem value="simple">Lower Grade</MenuItem>
-            <MenuItem value="advanced">Higher Grade</MenuItem>
-            <MenuItem value="scientific">Scientific</MenuItem>
+            <MenuItem value={1}>Grade 1 - 2</MenuItem>
+            <MenuItem value={3}>Grade 3 - 5</MenuItem>
+            <MenuItem value={6}>Grade 6 - 7</MenuItem>
+            <MenuItem value={8}>Grade 8 - HS</MenuItem>
+            <MenuItem value={'geometry'}>Geometry</MenuItem>
+            <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+            <MenuItem value={'statistics'}>Statistics</MenuItem>
+            <MenuItem value={'everything'}>Everything</MenuItem>
           </Select>
         </InputContainer>
         {mode === 'simple' && (

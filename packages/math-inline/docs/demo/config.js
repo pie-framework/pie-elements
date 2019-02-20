@@ -12,7 +12,7 @@ module.exports = {
       element: 'math-inline',
       expression: 'y = ',
       question: 'What is the equation for a slope?',
-      equationEditor: 'simple',
+      equationEditor: 'everything',
       defaultResponse: {
         id: 0,
         validation: 'symbolic',
