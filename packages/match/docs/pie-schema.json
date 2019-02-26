@@ -148,8 +148,7 @@
     "id",
     "layout",
     "responseType",
-    "rows",
-    "shuffled"
+    "rows"
   ],
   "definitions": {
     "MatchRow": {
