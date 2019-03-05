@@ -109,7 +109,8 @@ exports.model = (id, element) => ({
       'removeafterplacing': false
     },
     'categories': {
-      'columns': 2
+      'columns': 2,
+      'rows': 1,
     }
   }
 });
