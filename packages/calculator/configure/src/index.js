@@ -3,14 +3,25 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
-export default class extends HTMLElement {
+export default class Calculator extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const { mode: modeFromProps } = model;
+
+    const mode = modeFromProps !== 'scientific' ? 'basic' : 'scientific';
+
+    return {
+      ...model,
+      mode,
+    };
+  };
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = s;
+    this._model = Calculator.prepareModelObject(s);
     this._render();
   }
 
