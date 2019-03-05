@@ -8,6 +8,8 @@ import { CommonConfigSettings } from '../../CommonConfigSettings';
 * @additionalProperties false
 */
 export interface InlineChoicePie extends PieModel {
+  /** Default language */
+  defaultLang?: string;
   
   /** Text to display in the dropdown */
   choiceLabel?: string;
