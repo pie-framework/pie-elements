@@ -22,6 +22,15 @@ export interface MatchPie extends PieModel {
 
   /** Indicates if the conrol for responses should be single (radio) or multiple (checkbox) */
   responseType: ResponseType;
+
+  /** Indicates if partial scoring should be used */
+  partialScoring?: boolean;
+
+  /** Partial scoring label to be displayed */
+  partialScoringLabel?: string;
+
+  /** Indicates that the item should use partial scoring */
+  allowPartialScoring?: boolean;
 }
 
 /**
