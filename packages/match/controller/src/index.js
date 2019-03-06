@@ -98,6 +98,30 @@ export const outcome = (question, session, env) => {
   });
 };
 
+export function createConfigModel(model = {}) {
+  return new Promise(resolve => {
+    const sensibleDefaults = {
+      config: {
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [false, false]
+          }
+        ],
+        layout: 3,
+        headers: ['Column 1', 'Column 2', 'Column 3'],
+        responseType: 'radio',
+      }
+    };
+
+    resolve({
+      ...sensibleDefaults,
+      ...model
+    });
+  });
+}
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(question, env, session.answers);
