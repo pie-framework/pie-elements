@@ -25,6 +25,59 @@ interface TextToken {
   correct: boolean;
 }
 
+interface SelectTextPieConfigure {
+  /**  The question prompt or item stem */
+  promptLabel: string,
+
+  /** Indicates if the content can change */
+  enableContentChange: boolean,
+
+  /** Content label */
+  contentLabel : string,
+
+  /** Indicates if the choices are highlighted  */
+  enableHighlightChoices: boolean,
+
+  /** Label for highlight choices checkbox */
+  highlightChoicesLabel: string,
+
+  /** Indicates if tokens are changeable */
+  enableTokensChange: boolean,
+
+  /** Label for the tokens */
+  tokensLabel: string,
+
+  /** Indicates if feedback is enabled */
+  enableFeedback: boolean;
+
+  /** Label for Set Correct Answers switch */
+  setCorrectAnswersLabel: string,
+
+  /** Indicates if the mode of the text tokens is displayed */
+  showMode: boolean,
+
+  /** Label to display the mode of the text tokens */
+  modeLabel: string,
+
+  /** Indicates if the available selections number is displayed */
+  showSelections: boolean,
+
+  /** Label to display the number of available selections */
+  availableSelectionsLabel: string,
+
+  /** Indicates if the correct answers number is displayed */
+  showCorrectAnswersNumber: boolean,
+
+  /** Label to display the number of correct answers*/
+  correctAnswersLabel: string,
+
+  /** Indicates if selection count is displayed */
+  showSelectionCount: boolean,
+
+  /** Label for selection count */
+  selectionCountLabel: string,
+}
+
 /**
  * Pie Model Object for @pie-elements/select-text
  * @title  @pie-elements/select-text
@@ -51,6 +104,9 @@ export interface SelectTextPie extends PieModel {
   /** Indicates if partial scoring should be used */
   partialScoring?: boolean;
 
+  /** Partial scoring label */
+  partialScoringLabel?: string;
+
   /** The maximum number of token selections a user can make when responding */
   maxSelections: number;
 
@@ -58,6 +114,9 @@ export interface SelectTextPie extends PieModel {
 
   /** The selectable text tokens in the main text content */
   tokens: TextToken[];
+
+  /** */
+  configure: SelectTextPieConfigure;
 }
 
 

@@ -126,8 +126,6 @@ export function model(question, session, env) {
         view: env.mode === 'view'
       };
 
-      console.log('feedback', question.feedback);
-
       const out = Object.assign(base, {
         correctResponse
       });
