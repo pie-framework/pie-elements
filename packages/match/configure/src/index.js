@@ -11,12 +11,32 @@ import debug from 'debug';
 const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const sensibleDefaults = {
+      rows: [
+        {
+          id: 1,
+          title: 'Question Text 1',
+          values: [false, false]
+        }
+      ],
+      layout: 3,
+      headers: ['Column 1', 'Column 2', 'Column 3'],
+      responseType: 'radio',
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
+
   constructor() {
     super();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = MatchConfigure.prepareModelObject(m);
     this._render();
   }
 
