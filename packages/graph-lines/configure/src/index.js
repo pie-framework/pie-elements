@@ -7,9 +7,7 @@ import debug from 'debug';
 const log = debug('pie-elements:graph-lines:configure');
 
 export default class GraphLinesConfigure extends HTMLElement {
-  static prepareModelObject = () => {
-    const model = { };
-
+  static prepareModelObject = (model = {}) => {
     const sensibleDefaults = {
       model: {
         config: {
