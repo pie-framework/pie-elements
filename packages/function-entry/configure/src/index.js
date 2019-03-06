@@ -7,13 +7,23 @@ import debug from 'debug';
 const log = debug('pie-elements:function-entry:configure');
 
 export default class FunctionEntryConfigure extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const sensibleDefaults = {
+      showFormattingHelp: true,
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
 
   constructor() {
     super();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = FunctionEntryConfigure.prepareModelObject(m);
     this._render();
   }
 
