@@ -4,6 +4,32 @@ const log = debug('pie-element:inline-choice:controller');
 
 /** build a ui model to work with @pie-ui/inline-choice */
 
+export function createConfigModel(model = {}) {
+  return new Promise(resolve => {
+    const sensibleDefaults = {
+      choices: [
+        {
+          value: 'sweden',
+          label: 'Sweden'
+        },
+        {
+          value: 'iceland',
+          label: 'Iceland',
+        },
+        {
+          value: 'finland',
+          label: 'Finland',
+        }
+      ]
+    };
+
+    resolve({
+      ...sensibleDefaults,
+      ...model
+    });
+  });
+}
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const getResult = () => {
