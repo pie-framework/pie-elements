@@ -71,6 +71,40 @@ const getCorrectness = (question, env, answers) => {
   }
 };
 
+export function createConfigModel(model = {}) {
+  return new Promise(resolve => {
+    const sensibleDefaults = {
+      config: {
+        mode: 'advanced',
+        expression: 'y = ',
+        question: 'What is the equation for a slope?',
+        equationEditor: 'everything',
+        defaultResponse: {
+          id: 0,
+          validation: 'symbolic',
+          answer: 'mx + b',
+          alternates: {},
+          allowSpaces: true,
+          allowDecimals: true
+        },
+        responses: [{
+          id: 'answerBlock1',
+          validation: 'symbolic',
+          answer: 'mx + b',
+          alternates: {},
+          allowSpaces: true,
+          allowDecimals: true
+        }],
+      }
+    };
+
+    resolve({
+      ...sensibleDefaults,
+      ...model
+    });
+  });
+}
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(question, env, session.answers);
