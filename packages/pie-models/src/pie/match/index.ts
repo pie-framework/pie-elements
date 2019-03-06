@@ -1,6 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
+import { Feedback } from '../../Feedback';
 
 /**
 * Model for the @pie-elements/match Interaction
@@ -31,6 +32,9 @@ export interface MatchPie extends PieModel {
 
   /** Indicates that the item should use partial scoring */
   allowPartialScoring?: boolean;
+
+  /** Feedback for student responses */
+  feedback?: Feedback
 }
 
 /**
