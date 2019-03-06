@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-
+import { Feedback } from '../../Feedback';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -60,6 +60,79 @@ interface ChoicesConfig {
   removeafterplacing: boolean;
 }
 
+interface PartialScoringCategoryRule {
+  /**
+   *  Indicates the number of correct answers
+   */
+  count: number;
+
+  /**
+   *  Indicates the percentage for partial scoring
+   */
+  percent: number;
+}
+
+
+interface PartialScoringRule {
+  /**
+   * The id of the category
+   */
+  category: string;
+
+  /**
+   * Array of rules for partial scoring for the category
+   */
+  rules: [PartialScoringCategoryRule];
+}
+
+interface PartialScoringConfig {
+  /**
+   *  Indicates if partial scoring is enabled
+   */
+  enabled: boolean;
+
+  /**
+   * Array of rules for partial scoring
+   */
+  rules?: [PartialScoringRule]
+}
+
+interface WeightingConfigRule {
+  /**
+   *  The id of the category
+   */
+  category: string;
+
+  /**
+   * The value of weighting
+   */
+  points: number;
+}
+
+interface WeightingConfig {
+  /**
+   *  Indicates if weighting is enabled
+   */
+  enabled: boolean;
+
+  /**
+   * Array of rules for weighting
+   */
+  rules?: [WeightingConfigRule]
+}
+
+interface ScoringConfig {
+  /**
+   * The configuration for weighting
+   */
+  weighting?: WeightingConfig;
+
+  /**
+   * The configuration for partial scoring
+   */
+  partial?: PartialScoringConfig;
+}
+
 interface CategoriesConfig {
   /** 
    * The number of columns in which to present the categories
@@ -91,6 +164,12 @@ export interface CategorizePie extends PieModel {
 
   /** Configuration options for the presentataion of the interaction */
   config: {choices:ChoicesConfig, categories: CategoriesConfig}
+
+  /** Feedback configuration */
+  feedback?: Feedback;
+
+  /** Scoring configuration */
+  scoring?: ScoringConfig
 }
 
 /**
