@@ -2,6 +2,25 @@ import debug from 'debug';
 const log = debug('@pie-element:extended-text-entry:controller');
 import { getFeedback } from '@pie-lib/feedback';
 
+export async function createConfigModel(model = {}) {
+  log('[createConfigModel]', model);
+
+  const sensibleDefaults = {
+    prompt: '<div>This is the question prompt</div>',
+    width: '500px',
+  };
+
+  const fb =
+    model.feedback
+      ? getFeedback(model.feedback, 'Your answer has been submitted')
+      : Promise.resolve(undefined);
+  return fb.then(feedback => ({
+    ...sensibleDefaults,
+    ...model,
+    feedback,
+  }));
+}
+
 export async function model(model, session, env) {
   log('[model]', model);
 
