@@ -25,6 +25,32 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
+export function createConfigModel(model = {}) {
+  return new Promise(resolve => {
+    const sensibleDefaults = {
+      prompt: 'Which of these northern European countries are EU members?',
+      choiceMode: 'checkbox',
+      keyMode: 'numbers',
+      choices: [
+        {
+          correct: true,
+          value: 'sweden',
+          label: 'Sweden',
+        },
+        {
+          value: 'iceland',
+          label: 'Iceland',
+        },
+      ],
+    };
+
+    resolve({
+      ...sensibleDefaults,
+      ...model
+    });
+  });
+}
+
 export function model(question, session, env) {
   return new Promise((resolve, reject) => {
     const defaultFeedback = Object.assign(
