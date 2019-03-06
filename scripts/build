@@ -51,36 +51,37 @@ class ElementsCommands extends Commands {
   }
 
   clean() {
-    this.packages().forEach(p => {
-      const cwd = resolve(__dirname, '..', p);
-      log('cwd:', cwd);
-      this.runCmd('rm -fr lib', { cwd });
-    });
+    return Promise.all(
+      this.packages().map(p => {
+        const cwd = resolve(__dirname, '..', p);
+        log('cwd:', cwd);
+        return this.runCmd('rm -fr lib', { cwd });
+      })
+    );
   }
 
   babel() {
-    this.packages().forEach(p => {
-      const cwd = resolve(__dirname, '..', p);
-      const cmd = `${
-        this.p.babel
-      } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
-      this.runCmd(cmd, { cwd });
-    });
+    return Promise.all(
+      this.packages().map(p => {
+        const cwd = resolve(__dirname, '..', p);
+        const cmd = `${
+          this.p.babel
+        } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+        return this.runCmd(cmd, { cwd });
+      })
+    );
   }
 }
 
 const cmds = new ElementsCommands(resolve(__dirname, '..'), args);
 
-const knownActions = args._.filter(a => cmds[a]);
-
-if (knownActions.length !== args._.length) {
-  throw new Error(`unknown actions: ${args._}`);
-}
-
-knownActions.forEach(a => {
-  const fn = cmds[a];
-  if (!fn) {
-    throw new Error('unknown action:', a);
-  }
-  cmds[a]();
-});
+cmds
+  .execute()
+  .then(() => {
+    console.log('all done');
+    process.exit(0);
+  })
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
+  });
