@@ -10,9 +10,24 @@ const csToUi = cs => {};
  * {"{"width":"200px","height":"100px","disabled":true,"mode":"evaluate","feedback":{"type":"default","default":"Your answer has been submitted","customFeedback":"<div>Thank you very much</div>"},"id":"1","element":"extended-text-entry","value":"<div>asrt</div>","mathEnabled":false}"} ui
  */
 const uiToCs = ui => {};
-export default class extends HTMLElement {
+export default class ExtendedTextEntry extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const { feedback, prompt, width } = model;
+
+    const sensibleDefault = {
+      feedback: feedback || {type: 'default', default: 'this is default feedback'},
+      prompt: prompt || 'This is the question prompt',
+      width: width || '500px',
+    };
+
+    return {
+      ...sensibleDefault,
+      ...model,
+    };
+  };
+
   set model(m) {
-    this._model = m;
+    this._model = ExtendedTextEntry.prepareModelObject(m);
     this.render();
   }
 
