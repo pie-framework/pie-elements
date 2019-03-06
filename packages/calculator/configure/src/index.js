@@ -5,13 +5,11 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 export default class Calculator extends HTMLElement {
   static prepareModelObject = (model = {}) => {
-    const { mode: modeFromProps } = model;
-
-    const mode = modeFromProps !== 'scientific' ? 'basic' : 'scientific';
+    const { mode } = model;
 
     return {
+      mode: mode || 'basic',
       ...model,
-      mode,
     };
   };
 
