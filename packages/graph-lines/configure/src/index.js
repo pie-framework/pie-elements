@@ -7,12 +7,49 @@ import debug from 'debug';
 const log = debug('pie-elements:graph-lines:configure');
 
 export default class GraphLinesConfigure extends HTMLElement {
+  static prepareModelObject = () => {
+    const model = { };
+
+    const sensibleDefaults = {
+      model: {
+        config: {
+          lines: [{
+            label: 'Line One',
+            correctLine: '3x+2',
+            initialView: '3x+3'
+          }],
+          domainMin: -10,
+          domainMax: 10,
+          domainStepValue: 1,
+          domainSnapValue: 1,
+          domainLabelFrequency: 1,
+          domainGraphPadding: 50,
+          rangeMin: -10,
+          rangeMax: 10,
+          rangeStepValue: 1,
+          rangeSnapValue: 1,
+          rangeLabelFrequency: 1,
+          rangeGraphPadding: 50,
+          showPointLabels: true,
+          showInputs: true,
+          showAxisLabels: true,
+          showFeedback: true
+        }
+      }
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
+
   constructor() {
     super();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = GraphLinesConfigure.prepareModelObject(m);
     this._render();
   }
 
