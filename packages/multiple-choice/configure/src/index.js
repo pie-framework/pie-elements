@@ -59,7 +59,31 @@ const prepareCustomizationObject = (configure, model) => {
   };
 };
 
-export default class extends HTMLElement {
+export default class MultipleChoice extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const sensibleDefaults = {
+      prompt: 'Which of these northern European countries are EU members?',
+      choiceMode: 'checkbox',
+      keyMode: 'numbers',
+      choices: [
+        {
+          correct: true,
+          value: 'sweden',
+          label: 'Sweden',
+        },
+        {
+          value: 'iceland',
+          label: 'Iceland',
+        },
+      ],
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
@@ -67,7 +91,9 @@ export default class extends HTMLElement {
   }
 
   set model(s) {
-    this._model = utils.normalizeChoices(s);
+    const modelParsed = MultipleChoice.prepareModelObject(s);
+
+    this._model = utils.normalizeChoices(modelParsed);
     this._render();
   }
 
