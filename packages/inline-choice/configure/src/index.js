@@ -5,14 +5,48 @@ import ReactDOM from 'react-dom';
 import Root from './root';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-export default class extends HTMLElement {
+export default class InlineChoice extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const sensibleDefaults = {
+      choices: [
+        {
+          correct: true,
+          value: 'sweden',
+          label: 'Sweden'
+        },
+        {
+          value: 'iceland',
+          label: 'Iceland',
+          feedback: {
+            type: 'default'
+          }
+        },
+        {
+          value: 'finland',
+          label: 'Finland',
+          feedback: {
+            type: 'custom',
+            value: 'Nokia was founded in Finland.'
+          }
+        }
+      ]
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = utils.normalizeChoices(s);
+    const modelParsed = InlineChoice.prepareModelObject(s);
+
+    this._model = utils.normalizeChoices(modelParsed);
     this._render();
   }
 
