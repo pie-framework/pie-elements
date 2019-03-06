@@ -14,6 +14,17 @@ const isResponseCorrect = (correctResponse, value) => {
   return processedValue.equals(cr);
 };
 
+export function createConfigModel(model = {}) {
+  const sensibleDefaults = {
+    showFormattingHelp: true,
+  };
+
+  return {
+    ...sensibleDefaults,
+    ...model,
+  };
+}
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const { showFormattingHelp, equation, feedback } = question;
