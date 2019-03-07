@@ -7,3 +7,5 @@ export { InlineChoicePie, InlineChoiceConfigure } from './pie/inline-choice';
 export { ExtendedTextEntryPie, ExtendedTextEntryConfigure } from './pie/extended-text-entry';
 export { SelectTextPie, SelectTextConfigure } from './pie/select-text';
 export { FunctionEntryPie, FunctionEntryConfigure } from './pie/function-entry';
+export { GraphLinesPie, GraphLinesConfigure } from './pie/graph-lines';
+export { NumberLinePie, NumberLineConfigure } from './pie/number-line';

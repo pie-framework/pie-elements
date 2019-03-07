@@ -53,10 +53,10 @@ interface SelectTextPieConfigure {
   /** Label for Set Correct Answers switch */
   setCorrectAnswersLabel: string,
 
-  /** Indicates if the mode of the text tokens is displayed */
+  /** Indicates if the selected mode of the text tokens is displayed */
   showMode: boolean,
 
-  /** Label to display the mode of the text tokens */
+  /** Label to display the selected mode of the text tokens */
   modeLabel: string,
 
   /** Indicates if the available selections number is displayed */
@@ -110,6 +110,7 @@ export interface SelectTextPie extends PieModel {
   /** The maximum number of token selections a user can make when responding */
   maxSelections: number;
 
+  /** The selected mode for text tokens */
   mode?: SelectionMode;
 
   /** The selectable text tokens in the main text content */
