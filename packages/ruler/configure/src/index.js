@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
+import defaults from './defaults';
+
 const defaultModel = () => ({
   model: {
     config: {
@@ -16,18 +18,10 @@ const defaultModel = () => ({
 });
 
 export default class RulerConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      measure: 'metric',
-      label: 'm',
-      units: 10,
-    };
-
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   connectedCallback() {
     setTimeout(() => {
