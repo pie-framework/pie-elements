@@ -1,5 +1,6 @@
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import defaults from './defaults';
 import debug from 'debug';
 const log = debug('@pie-element:categorize:controller');
 
@@ -35,40 +36,8 @@ export const getCorrectness = (question, session, env) => {
 
 export const createConfigModel = (model = {}) =>
   new Promise(resolve => {
-    const sensibleDefaults = {
-      choices: [
-        {
-          id: '0',
-          content: '420 cm = 4.2 meters'
-        },
-        {
-          id: '1',
-          content: '3.4 kg = 340 g'
-        },
-      ],
-      categories: [
-        {
-          id: '0',
-          label: 'Equivalent',
-        },
-        {
-          id: '1',
-          label: '<b>NOT </b>equivalent',
-        }
-      ],
-      config: {
-        choices: {
-          columns: 2,
-          position: 'below',
-        },
-        categories: {
-          columns: 2
-        }
-      }
-    };
-
     resolve({
-      ...sensibleDefaults,
+      ...defaults,
       ...model,
     })
   });
