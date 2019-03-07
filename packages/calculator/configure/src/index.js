@@ -3,15 +3,13 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
-export default class Calculator extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const { mode } = model;
+import defaults from './defaults';
 
-    return {
-      mode: mode || 'basic',
-      ...model,
-    };
-  };
+export default class Calculator extends HTMLElement {
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();
