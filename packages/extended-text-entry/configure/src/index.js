@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root';
 
+import defaults from './defaults';
+
 const csToUi = cs => {};
 /**
  *
@@ -11,20 +13,10 @@ const csToUi = cs => {};
  */
 const uiToCs = ui => {};
 export default class ExtendedTextEntry extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const { feedback, prompt, width } = model;
-
-    const sensibleDefault = {
-      feedback: feedback || {type: 'default', default: 'this is default feedback'},
-      prompt: prompt || 'This is the question prompt',
-      width: width || '500px',
-    };
-
-    return {
-      ...sensibleDefault,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   set model(m) {
     this._model = ExtendedTextEntry.prepareModelObject(m);
