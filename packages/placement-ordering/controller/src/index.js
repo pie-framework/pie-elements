@@ -3,6 +3,9 @@ import { flattenCorrect, score } from './scoring';
 import _ from 'lodash';
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+
+import defaults from './defaults';
+
 const log = debug('@pie-element:placement-ordering-controller');
 
 export function outcome(question, session, env) {
@@ -72,42 +75,8 @@ function shuffle(session, choices) {
 
 export function createConfigModel(model = {}) {
   return new Promise(resolve => {
-    const sensibleDefaults = {
-      choices: [
-        {
-          id: 'c2',
-          label: 'Lemon',
-          shuffle: false,
-          moveOnDrag: true
-        },
-        {
-          id: 'c3',
-          label: 'Melon',
-          moveOnDrag: true
-        },
-        {
-          id: 'c1',
-          label: 'Blueberry',
-          moveOnDrag: false
-        },
-        {
-          id: 'c4',
-          label: 'Pear',
-          moveOnDrag: false
-        }
-      ],
-      completeLength: 4,
-      config: {
-        orientation: 'vertical',
-        targetLabel: 'Answer Area Label',
-        choiceLabel: 'choices: ',
-        showOrdering: true
-      },
-      prompt: 'Arrange the fruits alphabetically',
-    };
-
     resolve({
-      ...sensibleDefaults,
+      ...defaults,
       ...model
     });
   });
