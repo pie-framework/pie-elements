@@ -6,6 +6,8 @@ import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const score = number => {
   return {
     score: {
@@ -143,41 +145,12 @@ export function normalize(question) {
 
 export function createConfigModel(model = {}) {
   return new Promise(resolve => {
-    const sensibleDefaults = {
+    const out = {
       config: {
-        domain: [-5, 5],
-        initialElements: [
-          {
-            type: 'point',
-            pointType: 'empty',
-            domainPosition: -1
-          }
-        ],
-        maxNumberOfPoints: 20,
-        tickFrequency: 6,
-        showMinorTicks: true,
-        snapPerTick: 1,
-        tickLabelOverrides: [],
-        initialType: 'PF',
-        availableTypes: {
-          PF: true,
-          PE: true,
-          LFF: true,
-          LEF: true,
-          LFE: true,
-          LEE: true,
-          RFN: true,
-          RFP: true,
-          REN: true,
-          REP: true
-        }
+        ...defaults,
+        ...model
       },
       colorContrast: 'black_on_white',
-    };
-
-    const out = {
-      ...sensibleDefaults,
-      ...model
     };
 
     resolve(omitBy(out, v => !v));

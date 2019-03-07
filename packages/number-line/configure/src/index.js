@@ -2,57 +2,13 @@ import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class NumberLineConfigReactElement extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      correctResponse: [
-        {
-          type: 'point',
-          pointType: 'full',
-          domainPosition: 1
-        },
-        {
-          type: 'line',
-          leftPoint: 'full',
-          rightPoint: 'empty',
-          domainPosition: 1,
-          size: 2
-        }
-      ],
-      config: {
-        domain: [-5, 5],
-        initialElements: [
-          {
-            type: 'point',
-            pointType: 'empty',
-            domainPosition: -1
-          }
-        ],
-        maxNumberOfPoints: 20,
-        tickFrequency: 6,
-        showMinorTicks: true,
-        snapPerTick: 1,
-        initialType: 'PF',
-        availableTypes: {
-          PF: true,
-          PE: true,
-          LFF: true,
-          LEF: true,
-          LFE: true,
-          LEE: true,
-          RFN: true,
-          RFP: true,
-          REN: true,
-          REP: true
-        }
-      }
-    };
+import defaults from './defaults';
 
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+export default class NumberLineConfigReactElement extends HTMLElement {
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();
