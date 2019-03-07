@@ -16,7 +16,7 @@ export default class CategorizeConfigure extends HTMLElement {
   });
 
   set model(m) {
-    this._model = CategorizeConfigure.prepareModelObject();
+    this._model = CategorizeConfigure.prepareModelObject(m);
     this.render();
   }
 
