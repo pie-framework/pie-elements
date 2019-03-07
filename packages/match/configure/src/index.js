@@ -8,28 +8,15 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      rows: [
-        {
-          id: 1,
-          title: 'Question Text 1',
-          values: [false, false]
-        }
-      ],
-      layout: 3,
-      headers: ['Column 1', 'Column 2', 'Column 3'],
-      responseType: 'radio',
-    };
-
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();
