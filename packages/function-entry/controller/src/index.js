@@ -2,6 +2,8 @@ import debug from 'debug';
 import mathjs from 'mathjs';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:function-entry:controller');
 
 const process = v => mathjs.simplify(v ? v.trim() : '');
@@ -15,14 +17,12 @@ const isResponseCorrect = (correctResponse, value) => {
 };
 
 export function createConfigModel(model = {}) {
-  const sensibleDefaults = {
-    showFormattingHelp: true,
-  };
-
-  return {
-    ...sensibleDefaults,
-    ...model,
-  };
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model,
+    });
+  });
 }
 
 export function model(question, session, env) {
