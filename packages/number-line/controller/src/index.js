@@ -141,6 +141,49 @@ export function normalize(question) {
   });
 }
 
+export function createConfigModel(model = {}) {
+  return new Promise(resolve => {
+    const sensibleDefaults = {
+      config: {
+        domain: [-5, 5],
+        initialElements: [
+          {
+            type: 'point',
+            pointType: 'empty',
+            domainPosition: -1
+          }
+        ],
+        maxNumberOfPoints: 20,
+        tickFrequency: 6,
+        showMinorTicks: true,
+        snapPerTick: 1,
+        tickLabelOverrides: [],
+        initialType: 'PF',
+        availableTypes: {
+          PF: true,
+          PE: true,
+          LFF: true,
+          LEF: true,
+          LFE: true,
+          LEE: true,
+          RFN: true,
+          RFP: true,
+          REN: true,
+          REP: true
+        }
+      },
+      colorContrast: 'black_on_white',
+    };
+
+    const out = {
+      ...sensibleDefaults,
+      ...model
+    };
+
+    resolve(omitBy(out, v => !v));
+  });
+}
+
 export function model(question, session, env) {
   if (!question) {
     return Promise.reject(new Error('question is null'));
