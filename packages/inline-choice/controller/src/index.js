@@ -1,30 +1,15 @@
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-element:inline-choice:controller');
 
 /** build a ui model to work with @pie-ui/inline-choice */
 
 export function createConfigModel(model = {}) {
   return new Promise(resolve => {
-    const sensibleDefaults = {
-      choices: [
-        {
-          value: 'sweden',
-          label: 'Sweden'
-        },
-        {
-          value: 'iceland',
-          label: 'Iceland',
-        },
-        {
-          value: 'finland',
-          label: 'Finland',
-        }
-      ]
-    };
-
     resolve({
-      ...sensibleDefaults,
+      ...defaults,
       ...model
     });
   });
