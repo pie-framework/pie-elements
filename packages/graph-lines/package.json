@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/graph-lines": "^1.0.0"
+    "@pie-ui/graph-lines": "next"
   },
   "author": "",
   "license": "ISC",

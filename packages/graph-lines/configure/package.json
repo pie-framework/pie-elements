@@ -15,8 +15,8 @@
     "@pie-lib/scoring-config": "^3.2.16",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-swipeable-views": "^0.12.17"
   },
   "scripts": {

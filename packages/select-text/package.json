@@ -7,7 +7,7 @@
   "version": "3.7.0",
   "description": "",
   "dependencies": {
-    "@pie-ui/select-text": "^1.4.0"
+    "@pie-ui/select-text": "next"
   },
   "pie": {
     "element": "@pie-ui/select-text"
