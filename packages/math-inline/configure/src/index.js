@@ -4,38 +4,15 @@ import Configure from './configure';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:math-inline:configure');
 
 export default class MathInlineConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      mode: 'advanced',
-      expression: 'y = ',
-      question: 'What is the equation for a slope?',
-      equationEditor: 'everything',
-      defaultResponse: {
-        id: 0,
-        validation: 'symbolic',
-        answer: 'mx + b',
-        alternates: {},
-        allowSpaces: true,
-        allowDecimals: true
-      },
-      responses: [{
-        id: 'answerBlock1',
-        validation: 'symbolic',
-        answer: 'mx + b',
-        alternates: {},
-        allowSpaces: true,
-        allowDecimals: true
-      }],
-    };
-
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();

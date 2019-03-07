@@ -2,6 +2,8 @@ import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:math-inline:controller');
 
 const getResponseCorrectness = (
@@ -73,34 +75,11 @@ const getCorrectness = (question, env, answers) => {
 
 export function createConfigModel(model = {}) {
   return new Promise(resolve => {
-    const sensibleDefaults = {
-      config: {
-        mode: 'advanced',
-        expression: 'y = ',
-        question: 'What is the equation for a slope?',
-        equationEditor: 'everything',
-        defaultResponse: {
-          id: 0,
-          validation: 'symbolic',
-          answer: 'mx + b',
-          alternates: {},
-          allowSpaces: true,
-          allowDecimals: true
-        },
-        responses: [{
-          id: 'answerBlock1',
-          validation: 'symbolic',
-          answer: 'mx + b',
-          alternates: {},
-          allowSpaces: true,
-          allowDecimals: true
-        }],
-      }
-    };
-
     resolve({
-      ...sensibleDefaults,
-      ...model
+      config: {
+        ...defaults,
+        ...model
+      }
     });
   });
 }
