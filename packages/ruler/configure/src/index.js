@@ -16,6 +16,19 @@ const defaultModel = () => ({
 });
 
 export default class RulerConfigure extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    const sensibleDefaults = {
+      measure: 'metric',
+      label: 'm',
+      units: 10,
+    };
+
+    return {
+      ...sensibleDefaults,
+      ...model,
+    };
+  };
+
   connectedCallback() {
     setTimeout(() => {
       if (!this._model) {
@@ -28,7 +41,7 @@ export default class RulerConfigure extends HTMLElement {
 
   set model(m) {
     console.log('m?', m);
-    this._model = m;
+    this._model = RulerConfigure.prepareModelObject(m);
     this.render();
   }
 
