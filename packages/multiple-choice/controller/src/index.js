@@ -2,6 +2,8 @@ import debug from 'debug';
 import shuffle from 'lodash/shuffle';
 import { isResponseCorrect } from './utils';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:multiple-choice:controller');
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -27,25 +29,8 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
 
 export function createConfigModel(model = {}) {
   return new Promise(resolve => {
-    const sensibleDefaults = {
-      prompt: 'Which of these northern European countries are EU members?',
-      choiceMode: 'checkbox',
-      keyMode: 'numbers',
-      choices: [
-        {
-          correct: true,
-          value: 'sweden',
-          label: 'Sweden',
-        },
-        {
-          value: 'iceland',
-          label: 'Iceland',
-        },
-      ],
-    };
-
     resolve({
-      ...sensibleDefaults,
+      ...defaults,
       ...model
     });
   });

@@ -11,6 +11,8 @@ import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
+import sensibleDefaults from './defaults';
+
 const log = debug('multiple-choice:configure');
 
 const defaultValues = {
@@ -60,29 +62,10 @@ const prepareCustomizationObject = (configure, model) => {
 };
 
 export default class MultipleChoice extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      prompt: 'Which of these northern European countries are EU members?',
-      choiceMode: 'checkbox',
-      keyMode: 'numbers',
-      choices: [
-        {
-          correct: true,
-          value: 'sweden',
-          label: 'Sweden',
-        },
-        {
-          value: 'iceland',
-          label: 'Iceland',
-        },
-      ],
-    };
-
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...sensibleDefaults,
+    ...model,
+  });
 
   constructor() {
     super();
