@@ -4,34 +4,15 @@ import Configure from './configure';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:text-entry:configure');
 
 export default class TextEntryConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => {
-    const sensibleDefaults = {
-      correctResponses: {
-        values: ['mutt', 'hound'],
-        ignoreWhitespace: true,
-        ignoreCase: false
-      },
-      partialResponses: {
-        values: ['mutty'],
-        ignoreWhitespace: true,
-        ignoreCase: true,
-        awardPercentage: '50'
-      },
-      answerBlankSize: '10',
-      answerAlignment: 'left',
-      prompt: 'Question Prompt goes here',
-      allowDecimal: true,
-      allowThousandsSeparator: true
-    };
-
-    return {
-      ...sensibleDefaults,
-      ...model,
-    };
-  };
+  static prepareModelObject = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();
