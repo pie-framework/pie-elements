@@ -9,20 +9,21 @@ import {
 import defaults from 'lodash/defaults';
 import defaultValues from './defaultConfiguration';
 
-const prepareCustomizationObject = model => {
-  return {
-    ...model,
-    configure: defaults(model.configure, defaultValues)
-  };
-};
-
 export default class SelectTextConfigure extends HTMLElement {
+  static prepareModelObject = (model = {}) => {
+    return {
+      ...defaultValues,
+      configure: defaults(model.configure, defaultValues.configure),
+      ...model,
+    };
+  };
+
   constructor() {
     super();
   }
 
   set model(m) {
-    this._model = prepareCustomizationObject(m);
+    this._model = SelectTextConfigure.prepareModelObject(m);
     this.render();
   }
 
