@@ -3,6 +3,11 @@ import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { ComplexFeedbackType } from '../../ComplexFeedback';
 
+declare enum ResponseType {
+  radio = 'radio',
+  checkbox = 'checkbox'
+}
+
 /**
 * Model for the @pie-elements/match Interaction
 * @additionalProperties false
@@ -47,14 +52,6 @@ interface MatchRow {
   title: string;
   /** Array of boolean values indicating which columns are selected in the row */
   values: [boolean];
-}
-
-/**
- * 
- */
-enum ResponseType {
-  radio = 'radio',
-  checkbox = 'checkbox'
 }
 
 /**
