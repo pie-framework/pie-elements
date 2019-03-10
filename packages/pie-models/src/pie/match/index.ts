@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { Feedback } from '../../Feedback';
+import { ComplexFeedbackType } from '../../ComplexFeedback';
 
 /**
 * Model for the @pie-elements/match Interaction
@@ -34,7 +34,7 @@ export interface MatchPie extends PieModel {
   allowPartialScoring?: boolean;
 
   /** Feedback for student responses */
-  feedback?: Feedback
+  feedback?: ComplexFeedbackType
 }
 
 /**

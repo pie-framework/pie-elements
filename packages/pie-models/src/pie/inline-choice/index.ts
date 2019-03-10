@@ -19,8 +19,6 @@ export interface InlineChoicePie extends PieModel {
   
   /**  The question prompt or item stem*/
   prompt?: string;
-  
-
 }
 
 
