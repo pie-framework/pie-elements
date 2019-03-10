@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import {Feedback} from '../../Feedback';
+import { ComplexFeedbackType } from '../../ComplexFeedback';
 
 interface PartialScoringRule extends PieModel {
     /** Number of correct answers */
@@ -22,9 +22,9 @@ interface GraphLine extends PieModel {
     initialView: string;
 }
 
-interface GraphLineModelConfig extends PieModel {
+interface GraphLineModelConfig {
     /** The lines that should appear on the graph */
-    lines: [GraphLine];
+    lines: GraphLine[];
 
     /** Indicates the title for the graph */
     graphTitle: string;
@@ -107,7 +107,7 @@ interface GraphLineModel extends PieModel {
  */
 export interface GraphLinesPie extends PieModel {
     /** Feedback for student answer */
-    feedback?: Feedback;
+    feedback?: ComplexFeedbackType;
 
     /** Indicates if the graph can have multiple lines */
     multiple?: boolean;
@@ -116,7 +116,7 @@ export interface GraphLinesPie extends PieModel {
     partialScoring?: boolean;
 
     /** Indicates partial scoring rules */
-    partialScoringRules?: [PartialScoringRule];
+    partialScoringRules?: PartialScoringRule[];
 
     /** Indicates the graph line model */
     model: GraphLineModel;
