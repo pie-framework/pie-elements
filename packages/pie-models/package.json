@@ -13,7 +13,6 @@
     "make-schemas": "ts-node scripts/GenerateSchemas.ts -m",
     "copy-schemas": "ts-node scripts/GenerateSchemas.ts -c",
     "build": "tsc",
-    "build-and-run": "npm run prepare && npm run view-docs",
     "view-docs": "docson -d dist/schemas",
     "prepare": "npm run build & npm run make-schemas"
   },

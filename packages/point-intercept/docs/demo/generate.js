@@ -24,7 +24,9 @@ exports.model = (id, element) => ({
       graphTitle: '',
       graphWidth: 500,
       graphHeight: 500,
-
+      maxPoints: '',
+      labelsType: 'present',
+      pointLabels: ['A', 'B', 'C', 'D'],
       domainLabel: '',
       domainMin: -10,
       domainMax: 10,
@@ -39,21 +41,14 @@ exports.model = (id, element) => ({
       rangeSnapValue: 1,
       rangeLabelFrequency: 1,
       rangeGraphPadding: 50,
-
       sigfigs: -1,
+      allowPartialScoring: false,
+      pointsMustMatchLabels: false,
       showCoordinates: false,
       showPointLabels: true,
       showInputs: true,
       showAxisLabels: true,
-      showFeedback: true,
-
-
-      maxPoints: '',
-      labelsType: 'present',
-      pointLabels: ['A1', 'B', 'C', 'D'],
-
-      allowPartialScoring: false,
-      pointsMustMatchLabels: false,
+      showFeedback: true
     }
   }
 });
