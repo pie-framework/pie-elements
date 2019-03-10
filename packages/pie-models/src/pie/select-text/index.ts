@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { Feedback } from '../../Feedback';
+import { ComplexFeedbackType } from '../../ComplexFeedback';
 
  /** 
    * The selected mode for tokenizing the text.
@@ -99,7 +100,7 @@ export interface SelectTextPie extends PieModel {
   highlightChoices?: boolean;
 
   /** Feedback for student responses */
-  feedback?: Feedback[];
+  feedback?: ComplexFeedbackType;
 
   /** Indicates if partial scoring should be used */
   partialScoring?: boolean;
