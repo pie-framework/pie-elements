@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { Feedback } from '../../Feedback';
+import { ComplexFeedbackType } from '../../ComplexFeedback';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -82,7 +82,7 @@ interface PartialScoringRule {
   /**
    * Array of rules for partial scoring for the category
    */
-  rules: [PartialScoringCategoryRule];
+  rules: PartialScoringCategoryRule[];
 }
 
 interface PartialScoringConfig {
@@ -118,7 +118,7 @@ interface WeightingConfig {
   /**
    * Array of rules for weighting
    */
-  rules?: [WeightingConfigRule]
+  rules?: WeightingConfigRule[]
 }
 
 interface ScoringConfig {
@@ -166,7 +166,7 @@ export interface CategorizePie extends PieModel {
   config: {choices:ChoicesConfig, categories: CategoriesConfig}
 
   /** Feedback configuration */
-  feedback?: Feedback;
+  feedback?: ComplexFeedbackType;
 
   /** Scoring configuration */
   scoring?: ScoringConfig
