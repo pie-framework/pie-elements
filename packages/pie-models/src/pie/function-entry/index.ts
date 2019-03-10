@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import {Feedback} from '../../Feedback';
+import { ComplexFeedbackType } from '../../ComplexFeedback';
 
 /**
  * Model Object for @pie-elements/function-entry
@@ -15,7 +15,7 @@ export interface FunctionEntryPie extends PieModel {
     showFormattingHelp?: boolean;
 
     /** Feedback for student responses */
-    feedback?: Feedback;
+    feedback?: ComplexFeedbackType;
 }
 
 /**
