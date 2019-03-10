@@ -24,12 +24,6 @@ export interface ExtendedTextEntryPie extends PieModel {
    */
   height?: string;
 
-  /**
-   * Should the editor be disabled?
-   * @default false
-   */
-  disabled?: boolean;
-
   /** The question prompt */
   prompt?: string;
 
