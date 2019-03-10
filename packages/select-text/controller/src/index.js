@@ -82,7 +82,7 @@ export const outcome = (question, session, env) => {
 };
 
 export const model = (question, session, env) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     log('[model]', 'question: ', question);
     log('[model]', 'session: ', session);
     const tokens = buildTokens(question.tokens, env.mode === 'evaluate');

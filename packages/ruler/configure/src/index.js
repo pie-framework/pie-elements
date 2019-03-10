@@ -27,7 +27,6 @@ export default class RulerConfigure extends HTMLElement {
   }
 
   set model(m) {
-    console.log('m?', m);
     this._model = m;
     this.render();
   }
