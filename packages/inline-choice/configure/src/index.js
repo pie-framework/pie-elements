@@ -8,7 +8,7 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from './defaults';
 
 export default class InlineChoice extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -19,9 +19,7 @@ export default class InlineChoice extends HTMLElement {
   }
 
   set model(s) {
-    const modelParsed = InlineChoice.prepareModelObject(s);
-
-    this._model = utils.normalizeChoices(modelParsed);
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 
