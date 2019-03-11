@@ -73,7 +73,7 @@ const getCorrectness = (question, env, answers) => {
   }
 };
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
       config: {

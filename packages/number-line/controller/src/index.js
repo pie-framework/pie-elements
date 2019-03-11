@@ -143,7 +143,7 @@ export function normalize(question) {
   });
 }
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     const out = {
       config: {

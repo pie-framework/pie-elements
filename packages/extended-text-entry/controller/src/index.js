@@ -5,7 +5,7 @@ import { getFeedback } from '@pie-lib/feedback';
 import defaults from './defaults';
 
 export async function createDefaultModel(model = {}) {
-  log('[createConfigModel]', model);
+  log('[createDefaultModel]', model);
 
   return {
     ...defaults,
