@@ -2,6 +2,8 @@ import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:math-inline:controller');
 
 const getResponseCorrectness = (
@@ -70,6 +72,17 @@ const getCorrectness = (question, env, answers) => {
     );
   }
 };
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      config: {
+        ...defaults,
+        ...model
+      }
+    });
+  });
+}
 
 export function model(question, session, env) {
   return new Promise(resolve => {
