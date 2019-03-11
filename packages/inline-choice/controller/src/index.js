@@ -1,8 +1,19 @@
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-element:inline-choice:controller');
 
 /** build a ui model to work with @pie-ui/inline-choice */
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model
+    });
+  });
+}
 
 export function model(question, session, env) {
   return new Promise(resolve => {
