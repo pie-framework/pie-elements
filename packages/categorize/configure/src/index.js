@@ -10,13 +10,13 @@ import {
 import defaults from './defaults';
 
 export default class CategorizeConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
 
   set model(m) {
-    this._model = CategorizeConfigure.prepareModelObject(m);
+    this._model = m;
     this.render();
   }
 
