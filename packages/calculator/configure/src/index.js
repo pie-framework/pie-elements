@@ -6,7 +6,7 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import defaults from './defaults';
 
 export default class Calculator extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -17,7 +17,7 @@ export default class Calculator extends HTMLElement {
   }
 
   set model(s) {
-    this._model = Calculator.prepareModelObject(s);
+    this._model = s;
     this._render();
   }
 
