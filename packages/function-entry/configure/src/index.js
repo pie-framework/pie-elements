@@ -9,7 +9,7 @@ import defaults from './defaults';
 const log = debug('pie-elements:function-entry:configure');
 
 export default class FunctionEntryConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -19,7 +19,7 @@ export default class FunctionEntryConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = FunctionEntryConfigure.prepareModelObject(m);
+    this._model = m;
     this._render();
   }
 
