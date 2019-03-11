@@ -12,11 +12,19 @@ import defaultValues from './defaultConfiguration';
 const prepareCustomizationObject = model => {
   return {
     ...model,
-    configure: defaults(model.configure, defaultValues)
+    configure: defaults(model.configure, defaultValues.configure)
   };
 };
 
 export default class SelectTextConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => {
+    return {
+      ...defaultValues,
+      configure: defaults(model.configure, defaultValues.configure),
+      ...model,
+    };
+  };
+
   constructor() {
     super();
   }
