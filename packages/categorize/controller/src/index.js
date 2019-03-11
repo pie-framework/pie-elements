@@ -34,7 +34,7 @@ export const getCorrectness = (question, session, env) => {
   });
 };
 
-export const createConfigModel = (model = {}) =>
+export const createDefaultModel = (model = {}) =>
   new Promise(resolve => {
     resolve({
       ...defaults,
