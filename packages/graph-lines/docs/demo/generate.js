@@ -1,9 +1,9 @@
 exports.model = (id, element) => ({
   id,
   element,
-  minimumWidth: 500,
   multiple: false,
-  partialScoring: [],
+  partialScoring: false,
+  partialScoringRules: [],
   feedback: {
     correct: {
       type: 'none',

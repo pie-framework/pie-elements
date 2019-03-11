@@ -4,79 +4,68 @@ import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { Feedback } from '../../Feedback';
 import { ComplexFeedbackType } from '../../ComplexFeedback';
 
- /** 
-   * The selected mode for tokenizing the text.
-   * This is only used in the config UI to present the mode by which text has been tokenized for selection.
-   * If importing an item, only set this property it the text tokens are stricly parsed by of these methods.
-   */
-enum SelectionMode {
-  sentence = 'sentence',
-  word = 'word',
-  paragraph = 'paragraphs'
-}
-
 interface TextToken {
   /** The token text */
-  text: string;
+  text?: string;
   /** The start point in the main text for this token */
   start: number;
   /** The end point in the main text for this token */
   end: number;
   /** Is selected does the token represent a correct response */
-  correct: boolean;
+  correct?: boolean;
 }
 
 interface SelectTextPieConfigure {
   /**  The question prompt or item stem */
-  promptLabel: string,
+  promptLabel?: string,
 
   /** Indicates if the content can change */
-  enableContentChange: boolean,
+  enableContentChange?: boolean,
 
   /** Content label */
-  contentLabel : string,
+  contentLabel?: string,
 
   /** Indicates if the choices are highlighted  */
-  enableHighlightChoices: boolean,
+  enableHighlightChoices?: boolean,
 
   /** Label for highlight choices checkbox */
-  highlightChoicesLabel: string,
+  highlightChoicesLabel?: string,
 
   /** Indicates if tokens are changeable */
-  enableTokensChange: boolean,
+  enableTokensChange?: boolean,
 
   /** Label for the tokens */
-  tokensLabel: string,
+  tokensLabel?: string,
 
   /** Indicates if feedback is enabled */
-  enableFeedback: boolean;
+  enableFeedback?: boolean;
 
   /** Label for Set Correct Answers switch */
-  setCorrectAnswersLabel: string,
+  setCorrectAnswersLabel?: string,
 
   /** Indicates if the selected mode of the text tokens is displayed */
-  showMode: boolean,
+  showMode?: boolean,
 
   /** Label to display the selected mode of the text tokens */
-  modeLabel: string,
+  modeLabel?: string,
 
   /** Indicates if the available selections number is displayed */
-  showSelections: boolean,
+  showSelections?: boolean,
 
   /** Label to display the number of available selections */
-  availableSelectionsLabel: string,
+  availableSelectionsLabel?: string,
 
   /** Indicates if the correct answers number is displayed */
-  showCorrectAnswersNumber: boolean,
+  showCorrectAnswersNumber?: boolean,
 
   /** Label to display the number of correct answers*/
-  correctAnswersLabel: string,
+  correctAnswersLabel?: string,
 
   /** Indicates if selection count is displayed */
-  showSelectionCount: boolean,
+  showSelectionCount?: boolean,
 
   /** Label for selection count */
-  selectionCountLabel: string,
+  selectionCountLabel?: string,
 }
 
 /**
@@ -111,8 +100,12 @@ export interface SelectTextPie extends PieModel {
   /** The maximum number of token selections a user can make when responding */
   maxSelections: number;
 
-  /** The selected mode for text tokens */
-  mode?: SelectionMode;
+  /**
+   * The selected mode for tokenizing the text.
+   * This is only used in the config UI to present the mode by which text has been tokenized for selection.
+   * If importing an item, only set this property it the text tokens are strictly parsed by of these methods.
+   */
+  mode?: 'sentence' | 'word' | 'paragraph';
 
   /** The selectable text tokens in the main text content */
   tokens: TextToken[];
@@ -130,8 +123,5 @@ export interface SelectTextPie extends PieModel {
  * @additionalProperties false
  */
 export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings {
-
-
-
 }
 

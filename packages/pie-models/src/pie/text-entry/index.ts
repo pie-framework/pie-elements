@@ -39,13 +39,13 @@ export interface TextEntryPie extends PieModel {
     allowIntegersOnly: boolean;
 
     /** Indicates if decimals are allowed if allowIntegersOnly is enabled */
-    allowDecimal: boolean;
+    allowDecimal?: boolean;
 
     /** Indicates if thousands separator is allowed if allowIntegersOnly is enabled */
-    allowThousandsSeparator: boolean;
+    allowThousandsSeparator?: boolean;
 
     /** Indicates if negative numbers are allowed if allowIntegersOnly is enabled */
-    allowNegative: boolean;
+    allowNegative?: boolean;
 
     /** Indicates allowed answer size */
     answerBlankSize: '2' | '4' | '6' | '8' | '10' | '12';

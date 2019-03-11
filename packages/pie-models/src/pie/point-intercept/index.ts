@@ -86,7 +86,7 @@ interface GraphLineModelConfig {
     /** Indicates if points must match labels at the evaluation time */
     pointsMustMatchLabels?: boolean;
 
-    /** */
+    /** TODO add description */
     labelsType?: 'present' | string;
 }
 
@@ -106,7 +106,7 @@ export interface PointInterceptPie extends PieModel {
     /** Feedback for student answer */
     feedback: ComplexFeedbackType;
 
-    /** Array of strings (each string having this form: x,y) */
+    /** Array of strings (each string should have this form: x,y) */
     correctResponse: string[];
 
     /** The configuration for the model */

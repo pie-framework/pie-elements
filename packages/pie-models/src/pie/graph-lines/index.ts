@@ -3,7 +3,7 @@ import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { ComplexFeedbackType } from '../../ComplexFeedback';
 
-interface PartialScoringRule extends PieModel {
+interface PartialScoringRule {
     /** Number of correct answers */
     numberOfCorrect: number;
 
@@ -11,7 +11,7 @@ interface PartialScoringRule extends PieModel {
     scorePercentage: number;
 }
 
-interface GraphLine extends PieModel {
+interface GraphLine {
     /** Label for the line */
     label: string;
 
@@ -96,7 +96,7 @@ interface GraphLineModelConfig {
     showFeedback: boolean;
 }
 
-interface GraphLineModel extends PieModel {
+interface GraphLineModel {
     /** Config for graph line model */
     config: GraphLineModelConfig;
 }

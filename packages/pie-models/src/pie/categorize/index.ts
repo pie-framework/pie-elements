@@ -33,7 +33,9 @@ interface CategoryCorrectResponse {
 
 enum ChoicesPosition {
   above = 'above',
-  below = 'below'
+  below = 'below',
+  left = 'left',
+  right = 'right'
 }
 
 interface ChoicesConfig {
@@ -177,8 +179,5 @@ export interface CategorizePie extends PieModel {
  * @additionalProperties false
  */
 export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
-
-
-
 }
 
