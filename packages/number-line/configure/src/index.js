@@ -2,7 +2,14 @@ import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import defaults from './defaults';
+
 export default class NumberLineConfigReactElement extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   constructor() {
     super();
   }

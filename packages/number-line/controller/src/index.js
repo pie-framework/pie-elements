@@ -6,6 +6,8 @@ import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const score = number => {
   return {
     score: {
@@ -138,6 +140,20 @@ export function normalize(question) {
       question.feedback = feedback;
       resolve(question);
     }
+  });
+}
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    const out = {
+      config: {
+        ...defaults,
+        ...model
+      },
+      colorContrast: 'black_on_white',
+    };
+
+    resolve(omitBy(out, v => !v));
   });
 }
 
