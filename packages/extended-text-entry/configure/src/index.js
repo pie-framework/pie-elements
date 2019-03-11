@@ -13,13 +13,13 @@ const csToUi = cs => {};
  */
 const uiToCs = ui => {};
 export default class ExtendedTextEntry extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
 
   set model(m) {
-    this._model = ExtendedTextEntry.prepareModelObject(m);
+    this._model = m;
     this.render();
   }
 
