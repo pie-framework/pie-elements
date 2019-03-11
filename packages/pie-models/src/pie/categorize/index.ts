@@ -9,6 +9,12 @@ interface CategoryChoice {
 
   /** The xhtml content for the choice */
   content: string;
+
+  /** */
+  categoryCount?: number | string;
+
+  /** */
+  correctResponseCount?: number | string;
 }
 
 interface Category {
