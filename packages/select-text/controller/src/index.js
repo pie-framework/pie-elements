@@ -83,7 +83,7 @@ export const outcome = (question, session, env) => {
   });
 };
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
       ...defaults,
