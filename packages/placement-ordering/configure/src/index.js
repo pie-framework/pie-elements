@@ -48,7 +48,7 @@ export default class PlacementOrdering extends HTMLElement {
   }
 
   set model(s) {
-    this._model = PlacementOrdering.createDefaultModel(s);
+    this._model = prepareCustomizationObject(s);
     this._rerender();
   }
 
