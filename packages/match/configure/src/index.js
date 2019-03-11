@@ -8,9 +8,16 @@ import {
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   constructor() {
     super();
   }
