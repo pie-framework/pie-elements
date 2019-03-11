@@ -27,7 +27,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
       ...defaults,
