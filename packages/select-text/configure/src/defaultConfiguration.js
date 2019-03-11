@@ -20,20 +20,6 @@ const tokens = () => [
 
 export default {
   highlightChoices: true,
-  feedback: {
-    correct: {
-      type: 'default',
-      default: 'Correct'
-    },
-    incorrect: {
-      type: 'default',
-      default: 'Incorrect'
-    },
-    partial: {
-      type: 'default',
-      default: 'Nearly'
-    }
-  },
   partialScoring: false,
   maxSelections: 2,
   mode: 'sentence',
