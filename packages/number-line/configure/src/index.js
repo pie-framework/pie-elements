@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import defaults from './defaults';
 
 export default class NumberLineConfigReactElement extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -15,7 +15,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   set model(s) {
-    this._model = NumberLineConfigReactElement.prepareModelObject(s);
+    this._model = s;
     this._rerender();
   }
 
