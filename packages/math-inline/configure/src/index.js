@@ -9,7 +9,7 @@ import defaults from './defaults';
 const log = debug('pie-elements:math-inline:configure');
 
 export default class MathInlineConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -19,7 +19,7 @@ export default class MathInlineConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = MathInlineConfigure.prepareModelObject(m);
+    this._model = m;
     this._render();
   }
 
