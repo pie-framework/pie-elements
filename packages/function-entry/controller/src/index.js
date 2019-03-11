@@ -16,7 +16,7 @@ const isResponseCorrect = (correctResponse, value) => {
   return processedValue.equals(cr);
 };
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
       ...defaults,
