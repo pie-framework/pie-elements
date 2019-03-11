@@ -60,9 +60,7 @@ export default {
       moveOnDrag: false
     }
   ],
-  placementType: 'none',
   choiceAreaLayout: 'vertical',
   choiceAreaLabel: 'choices: ',
-  answerAreaLabel: 'Answer Area Label',
   showOrdering: true,
 };
