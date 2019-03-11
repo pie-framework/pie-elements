@@ -62,7 +62,7 @@ const prepareCustomizationObject = (configure, model) => {
 };
 
 export default class MultipleChoice extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...sensibleDefaults,
     ...model,
   });
@@ -74,9 +74,7 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   set model(s) {
-    const modelParsed = MultipleChoice.prepareModelObject(s);
-
-    this._model = utils.normalizeChoices(modelParsed);
+    this._model = utils.normalizeChoices(s);
     this._render();
   }
 
