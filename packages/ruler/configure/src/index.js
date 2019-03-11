@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
+import defaults from './defaults';
+
 const defaultModel = () => ({
   model: {
     config: {
@@ -16,6 +18,11 @@ const defaultModel = () => ({
 });
 
 export default class RulerConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   connectedCallback() {
     setTimeout(() => {
       if (!this._model) {
