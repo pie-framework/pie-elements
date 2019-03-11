@@ -8,7 +8,7 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from './defaults';
 
 export default class InlineChoice extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
+  static createDefaultModel = (model = {}) => utils.normalizeChoices({
     ...defaults,
     ...model,
   });
