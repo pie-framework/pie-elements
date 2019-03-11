@@ -7,7 +7,14 @@ import {
   InsertImageEvent
 } from '@pie-framework/pie-configure-events';
 
+import defaults from './defaults';
+
 export default class CategorizeConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   set model(m) {
     this._model = m;
     this.render();

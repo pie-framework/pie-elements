@@ -1,5 +1,6 @@
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import defaults from './defaults';
 import debug from 'debug';
 const log = debug('@pie-element:categorize:controller');
 
@@ -32,6 +33,14 @@ export const getCorrectness = (question, session, env) => {
     }
   });
 };
+
+export const createDefaultModel = (model = {}) =>
+  new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model,
+    })
+  });
 
 export const model = (question, session, env) =>
   new Promise(resolve => {
