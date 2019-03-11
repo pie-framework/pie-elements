@@ -18,7 +18,7 @@ const defaultModel = () => ({
 });
 
 export default class RulerConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -34,7 +34,7 @@ export default class RulerConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = RulerConfigure.prepareModelObject(m);
+    this._model = m;
     this.render();
   }
 
