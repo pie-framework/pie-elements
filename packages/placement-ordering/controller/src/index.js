@@ -73,7 +73,7 @@ function shuffle(session, choices) {
   }
 }
 
-export function createConfigModel(model = {}) {
+export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
       ...defaults,
