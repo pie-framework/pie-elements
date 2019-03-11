@@ -1,7 +1,7 @@
 import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { ComplexFeedbackType } from '../../ComplexFeedback';
+import { ComplexFeedbackType } from '../../Feedback';
 
 interface Responses {
     /** Array of possible responses */

@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { DefaultFeedbackType } from '../../ComplexFeedback';
+import { DefaultFeedbackType } from '../../Feedback';
 
 /**
 * Model for the @pie-elements/extended-text-entry Interaction

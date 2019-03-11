@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { ComplexFeedbackType } from '../../ComplexFeedback';
+import { ComplexFeedbackType } from '../../Feedback';
 
 /**
  * One row in the match list.

@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import {ComplexFeedbackType} from '../../ComplexFeedback';
+import {ComplexFeedbackType} from '../../Feedback';
 
 interface ResponseDefault {
     /** Indicates the response type */
@@ -140,4 +140,3 @@ export interface NumberLinePie extends PieModel {
  * @additionalProperties false
  */
 export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {}
-
