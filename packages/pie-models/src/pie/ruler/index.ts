@@ -2,8 +2,8 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 
-type RulerPieMetric = 'mm' | 'cm' | 'm' | 'km';
-type RulerPieImperial = 'in' | 'ft' | 'yd' | 'm';
+type Metric = 'mm' | 'cm' | 'm' | 'km';
+type Imperial = 'in' | 'ft' | 'yd' | 'm';
 /**
 * Model for the @pie-elements/ruler
 * @additionalProperties false
@@ -17,7 +17,7 @@ export interface RulerPie extends PieModel {
      * for measure: imperial it can be 'in' | 'ft' | 'yd' | 'm'
      * for measure: metric it can be ''mm' | 'cm' | 'm' | 'km' |
      */
-    label: RulerPieMetric | RulerPieImperial;
+    label: Metric | Imperial;
 
     /** Number of ticks to display if metric is imperial
      * @default is 8
