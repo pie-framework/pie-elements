@@ -8,3 +8,5 @@ node_modules
 **/dist
 .vscode
 .npmrc
+NEXT.CHANGELOG.md
+
