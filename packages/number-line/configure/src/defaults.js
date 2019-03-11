@@ -1,18 +1,6 @@
 export default {
-  correctResponse: [
-    {
-      type: 'point',
-      pointType: 'full',
-      domainPosition: 1
-    },
-    {
-      type: 'line',
-      leftPoint: 'full',
-      rightPoint: 'empty',
-      domainPosition: 1,
-      size: 2
-    }
-  ],
+  correctResponse: [],
+  allowPartialScoring: false,
   config: {
     domain: [-5, 5],
     initialElements: [
@@ -22,11 +10,9 @@ export default {
         domainPosition: -1
       }
     ],
-    maxNumberOfPoints: 20,
-    tickFrequency: 6,
     showMinorTicks: true,
-    snapPerTick: 1,
     initialType: 'PF',
+    exhibitOnly: false,
     availableTypes: {
       PF: true,
       PE: true,
