@@ -1,3 +1,3 @@
 export default {
-  prompt: '',
+  prompt: 'This is the question prompt',
 };
