@@ -1,4 +1,4 @@
-interface DefaultFeedbackType {
+export interface DefaultFeedbackType {
     /** Indicates the feedback type */
     type: 'default' | 'none';
 

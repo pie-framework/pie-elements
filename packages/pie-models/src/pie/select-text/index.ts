@@ -1,7 +1,6 @@
 import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-import { Feedback } from '../../Feedback';
 import { ComplexFeedbackType } from '../../ComplexFeedback';
 
 interface TextToken {

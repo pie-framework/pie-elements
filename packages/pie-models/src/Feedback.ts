@@ -13,7 +13,4 @@ export interface Feedback {
 
   /** Custom value for feedback */
   custom?: string;
-
-  /** Default value for feedback */
-  default?: string;
 }

@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { Feedback } from '../../Feedback';
+import { DefaultFeedbackType } from '../../ComplexFeedback';
 
 /**
 * Model for the @pie-elements/extended-text-entry Interaction
@@ -10,7 +10,7 @@ import { Feedback } from '../../Feedback';
 export interface ExtendedTextEntryPie extends PieModel {
 
   /** Feedback configuration */
-  feedback?: Feedback;
+  feedback?: DefaultFeedbackType;
 
   /** 
    * Width the editor should take. USE CSS-style definition.
