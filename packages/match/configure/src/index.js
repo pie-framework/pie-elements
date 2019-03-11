@@ -13,7 +13,7 @@ import defaults from './defaults';
 const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
-  static prepareModelObject = (model = {}) => ({
+  static createDefaultModel = (model = {}) => ({
     ...defaults,
     ...model,
   });
@@ -23,7 +23,7 @@ export default class MatchConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = MatchConfigure.prepareModelObject(m);
+    this._model = m;
     this._render();
   }
 
