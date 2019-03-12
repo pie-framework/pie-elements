@@ -7,12 +7,16 @@ before_install:
 
 stages:
   - name: release-next
-    if: branch = develop
+    if: branch = develop AND type != pull_request
+  - name: test
+    if: branch = develop AND type = pull_request
 
 jobs:
   include:
     - stage: release-next
       script: 'npm run release:next'
+    - stage: test
+      script: 'npm run test'
 branches:
   only:
     - develop
