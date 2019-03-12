@@ -66,10 +66,10 @@ class PointConfig extends React.Component {
       <div>
         <div>{icons}</div>
         <div className={classes.displayToggles}>
-          <Button variant="raised" onClick={this.toggleAll.bind(this, true)}>
+          <Button variant="contained" onClick={this.toggleAll.bind(this, true)}>
             Display All
           </Button>
-          <Button variant="raised" onClick={this.toggleAll.bind(this, false)}>
+          <Button variant="contained" onClick={this.toggleAll.bind(this, false)}>
             None
           </Button>
         </div>
