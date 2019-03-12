@@ -1,0 +1,1360 @@
+{
+  "description": "Model Object for @pie-elements/number-line",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "correctResponse": {
+      "description": "Array that returns responses",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "anyOf": [
+            {
+              "title": "ResponsePoint",
+              "type": "object",
+              "properties": {
+                "pointType": {
+                  "description": "Indicates point type",
+                  "enum": [
+                    "empty",
+                    "full"
+                  ],
+                  "type": "string",
+                  "title": "pointType"
+                },
+                "type": {
+                  "description": "Indicates the response type",
+                  "enum": [
+                    "line",
+                    "point",
+                    "ray"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "domainPosition": {
+                  "description": "Indicates response domain position",
+                  "type": "number",
+                  "title": "domainPosition"
+                }
+              },
+              "required": [
+                "domainPosition",
+                "pointType",
+                "type"
+              ]
+            },
+            {
+              "title": "ResponseLine",
+              "type": "object",
+              "properties": {
+                "leftPoint": {
+                  "description": "Indicates left point (left limit for the line) type",
+                  "enum": [
+                    "empty",
+                    "full"
+                  ],
+                  "type": "string",
+                  "title": "leftPoint"
+                },
+                "rightPoint": {
+                  "description": "Indicates right point (left limit for the line) type",
+                  "enum": [
+                    "empty",
+                    "full"
+                  ],
+                  "type": "string",
+                  "title": "rightPoint"
+                },
+                "size": {
+                  "description": "Indicates line size",
+                  "type": "number",
+                  "title": "size"
+                },
+                "type": {
+                  "description": "Indicates the response type",
+                  "enum": [
+                    "line",
+                    "point",
+                    "ray"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "domainPosition": {
+                  "description": "Indicates response domain position",
+                  "type": "number",
+                  "title": "domainPosition"
+                }
+              },
+              "required": [
+                "domainPosition",
+                "leftPoint",
+                "rightPoint",
+                "size",
+                "type"
+              ]
+            },
+            {
+              "title": "ResponseRay",
+              "type": "object",
+              "properties": {
+                "pointType": {
+                  "description": "Indicates point type",
+                  "enum": [
+                    "empty",
+                    "full"
+                  ],
+                  "type": "string",
+                  "title": "pointType"
+                },
+                "direction": {
+                  "description": "Indicates ray direction",
+                  "enum": [
+                    "negative",
+                    "positive"
+                  ],
+                  "type": "string",
+                  "title": "direction"
+                },
+                "type": {
+                  "description": "Indicates the response type",
+                  "enum": [
+                    "line",
+                    "point",
+                    "ray"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "domainPosition": {
+                  "description": "Indicates response domain position",
+                  "type": "number",
+                  "title": "domainPosition"
+                }
+              },
+              "required": [
+                "direction",
+                "domainPosition",
+                "pointType",
+                "type"
+              ]
+            }
+          ]
+        }
+      },
+      "title": "correctResponse"
+    },
+    "allowPartialScoring": {
+      "description": "Indicates if partial scoring is enabled",
+      "type": "boolean",
+      "title": "allowPartialScoring"
+    },
+    "partialScoring": {
+      "description": "Partial scoring rules",
+      "type": "array",
+      "items": {
+        "title": "PartialScoringRule",
+        "type": "object",
+        "properties": {
+          "numberOfCorrect": {
+            "description": "Number of correct answers",
+            "type": "number",
+            "title": "numberOfCorrect"
+          },
+          "scorePercentage": {
+            "description": "The percentage for partial scoring",
+            "type": "number",
+            "title": "scorePercentage"
+          }
+        },
+        "required": [
+          "numberOfCorrect",
+          "scorePercentage"
+        ]
+      },
+      "title": "partialScoring"
+    },
+    "config": {
+      "title": "NumberLineDomainConfiguration",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Indicates domain representation width",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Indicates domain representation height",
+          "type": "number",
+          "title": "height"
+        },
+        "domain": {
+          "description": "Domain limits",
+          "type": "array",
+          "items": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "minItems": 2,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "title": "domain"
+        },
+        "maxNumberOfPoints": {
+          "description": "Indicates the maximum number of correct response values",
+          "type": "number",
+          "title": "maxNumberOfPoints"
+        },
+        "tickFrequency": {
+          "description": "Indicates number of ticks on the domain representation",
+          "type": "number",
+          "title": "tickFrequency"
+        },
+        "showMinorTicks": {
+          "description": "Indicates if minor ticks should be displayed",
+          "type": "boolean",
+          "title": "showMinorTicks"
+        },
+        "snapPerTick": {
+          "description": "The number of minor ticks between the ticks",
+          "type": "number",
+          "title": "snapPerTick"
+        },
+        "tickLabelOverrides": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "tickLabelOverrides"
+        },
+        "exhibitOnly": {
+          "description": "Indicates if the exhibit mode is enabled",
+          "type": "boolean",
+          "title": "exhibitOnly"
+        },
+        "initialType": {
+          "description": "Indicates the initial type of response",
+          "enum": [
+            "LEE",
+            "LEF",
+            "LFE",
+            "LFF",
+            "PE",
+            "PF",
+            "REN",
+            "REP",
+            "RFN",
+            "RFP"
+          ],
+          "type": "string",
+          "title": "initialType"
+        },
+        "availableTypes": {
+          "description": "Indicates the available types of responses",
+          "type": "object",
+          "properties": {
+            "PF": {
+              "description": "Indicates if full point is available",
+              "type": "boolean",
+              "title": "PF"
+            },
+            "PE": {
+              "description": "Indicates if empty point is available",
+              "type": "boolean",
+              "title": "PE"
+            },
+            "LFF": {
+              "description": "Indicates if line with full left & right point is available",
+              "type": "boolean",
+              "title": "LFF"
+            },
+            "LEF": {
+              "description": "Indicates if line with empty left & full right point is available",
+              "type": "boolean",
+              "title": "LEF"
+            },
+            "LFE": {
+              "description": "Indicates if line with full left & empty right point is available",
+              "type": "boolean",
+              "title": "LFE"
+            },
+            "LEE": {
+              "description": "Indicates if line with empty left & right point is available",
+              "type": "boolean",
+              "title": "LEE"
+            },
+            "RFN": {
+              "description": "Indicates if ray with full point and negative direction is available",
+              "type": "boolean",
+              "title": "RFN"
+            },
+            "REN": {
+              "description": "Indicates if ray with empty point and negative direction is available",
+              "type": "boolean",
+              "title": "REN"
+            },
+            "RFP": {
+              "description": "Indicates if ray with full point and positive direction is available",
+              "type": "boolean",
+              "title": "RFP"
+            },
+            "REP": {
+              "description": "Indicates if ray with empty point and positive direction is available",
+              "type": "boolean",
+              "title": "REP"
+            }
+          },
+          "required": [
+            "LEE",
+            "LEF",
+            "LFE",
+            "LFF",
+            "PE",
+            "PF",
+            "REN",
+            "REP",
+            "RFN",
+            "RFP"
+          ],
+          "title": "availableTypes"
+        },
+        "initialElements": {
+          "description": "Array that returns responses",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "anyOf": [
+                {
+                  "title": "ResponsePoint",
+                  "type": "object",
+                  "properties": {
+                    "pointType": {
+                      "description": "Indicates point type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "pointType"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "domainPosition",
+                    "pointType",
+                    "type"
+                  ]
+                },
+                {
+                  "title": "ResponseLine",
+                  "type": "object",
+                  "properties": {
+                    "leftPoint": {
+                      "description": "Indicates left point (left limit for the line) type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "leftPoint"
+                    },
+                    "rightPoint": {
+                      "description": "Indicates right point (left limit for the line) type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "rightPoint"
+                    },
+                    "size": {
+                      "description": "Indicates line size",
+                      "type": "number",
+                      "title": "size"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "domainPosition",
+                    "leftPoint",
+                    "rightPoint",
+                    "size",
+                    "type"
+                  ]
+                },
+                {
+                  "title": "ResponseRay",
+                  "type": "object",
+                  "properties": {
+                    "pointType": {
+                      "description": "Indicates point type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "pointType"
+                    },
+                    "direction": {
+                      "description": "Indicates ray direction",
+                      "enum": [
+                        "negative",
+                        "positive"
+                      ],
+                      "type": "string",
+                      "title": "direction"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "direction",
+                    "domainPosition",
+                    "pointType",
+                    "type"
+                  ]
+                }
+              ]
+            }
+          },
+          "title": "initialElements"
+        }
+      },
+      "required": [
+        "availableTypes",
+        "domain",
+        "exhibitOnly",
+        "height",
+        "initialElements",
+        "initialType",
+        "maxNumberOfPoints",
+        "showMinorTicks",
+        "snapPerTick",
+        "tickFrequency",
+        "tickLabelOverrides",
+        "width"
+      ]
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "allowPartialScoring",
+    "config",
+    "correctResponse",
+    "element",
+    "id",
+    "partialScoring"
+  ],
+  "definitions": {
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
+    },
+    "ResponsePoint": {
+      "title": "ResponsePoint",
+      "type": "object",
+      "properties": {
+        "pointType": {
+          "description": "Indicates point type",
+          "enum": [
+            "empty",
+            "full"
+          ],
+          "type": "string",
+          "title": "pointType"
+        },
+        "type": {
+          "description": "Indicates the response type",
+          "enum": [
+            "line",
+            "point",
+            "ray"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "domainPosition": {
+          "description": "Indicates response domain position",
+          "type": "number",
+          "title": "domainPosition"
+        }
+      },
+      "required": [
+        "domainPosition",
+        "pointType",
+        "type"
+      ]
+    },
+    "ResponseLine": {
+      "title": "ResponseLine",
+      "type": "object",
+      "properties": {
+        "leftPoint": {
+          "description": "Indicates left point (left limit for the line) type",
+          "enum": [
+            "empty",
+            "full"
+          ],
+          "type": "string",
+          "title": "leftPoint"
+        },
+        "rightPoint": {
+          "description": "Indicates right point (left limit for the line) type",
+          "enum": [
+            "empty",
+            "full"
+          ],
+          "type": "string",
+          "title": "rightPoint"
+        },
+        "size": {
+          "description": "Indicates line size",
+          "type": "number",
+          "title": "size"
+        },
+        "type": {
+          "description": "Indicates the response type",
+          "enum": [
+            "line",
+            "point",
+            "ray"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "domainPosition": {
+          "description": "Indicates response domain position",
+          "type": "number",
+          "title": "domainPosition"
+        }
+      },
+      "required": [
+        "domainPosition",
+        "leftPoint",
+        "rightPoint",
+        "size",
+        "type"
+      ]
+    },
+    "ResponseRay": {
+      "title": "ResponseRay",
+      "type": "object",
+      "properties": {
+        "pointType": {
+          "description": "Indicates point type",
+          "enum": [
+            "empty",
+            "full"
+          ],
+          "type": "string",
+          "title": "pointType"
+        },
+        "direction": {
+          "description": "Indicates ray direction",
+          "enum": [
+            "negative",
+            "positive"
+          ],
+          "type": "string",
+          "title": "direction"
+        },
+        "type": {
+          "description": "Indicates the response type",
+          "enum": [
+            "line",
+            "point",
+            "ray"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "domainPosition": {
+          "description": "Indicates response domain position",
+          "type": "number",
+          "title": "domainPosition"
+        }
+      },
+      "required": [
+        "direction",
+        "domainPosition",
+        "pointType",
+        "type"
+      ]
+    },
+    "PartialScoringRule": {
+      "title": "PartialScoringRule",
+      "type": "object",
+      "properties": {
+        "numberOfCorrect": {
+          "description": "Number of correct answers",
+          "type": "number",
+          "title": "numberOfCorrect"
+        },
+        "scorePercentage": {
+          "description": "The percentage for partial scoring",
+          "type": "number",
+          "title": "scorePercentage"
+        }
+      },
+      "required": [
+        "numberOfCorrect",
+        "scorePercentage"
+      ]
+    },
+    "NumberLineDomainConfiguration": {
+      "title": "NumberLineDomainConfiguration",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Indicates domain representation width",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Indicates domain representation height",
+          "type": "number",
+          "title": "height"
+        },
+        "domain": {
+          "description": "Domain limits",
+          "type": "array",
+          "items": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "minItems": 2,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          },
+          "title": "domain"
+        },
+        "maxNumberOfPoints": {
+          "description": "Indicates the maximum number of correct response values",
+          "type": "number",
+          "title": "maxNumberOfPoints"
+        },
+        "tickFrequency": {
+          "description": "Indicates number of ticks on the domain representation",
+          "type": "number",
+          "title": "tickFrequency"
+        },
+        "showMinorTicks": {
+          "description": "Indicates if minor ticks should be displayed",
+          "type": "boolean",
+          "title": "showMinorTicks"
+        },
+        "snapPerTick": {
+          "description": "The number of minor ticks between the ticks",
+          "type": "number",
+          "title": "snapPerTick"
+        },
+        "tickLabelOverrides": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "tickLabelOverrides"
+        },
+        "exhibitOnly": {
+          "description": "Indicates if the exhibit mode is enabled",
+          "type": "boolean",
+          "title": "exhibitOnly"
+        },
+        "initialType": {
+          "description": "Indicates the initial type of response",
+          "enum": [
+            "LEE",
+            "LEF",
+            "LFE",
+            "LFF",
+            "PE",
+            "PF",
+            "REN",
+            "REP",
+            "RFN",
+            "RFP"
+          ],
+          "type": "string",
+          "title": "initialType"
+        },
+        "availableTypes": {
+          "description": "Indicates the available types of responses",
+          "type": "object",
+          "properties": {
+            "PF": {
+              "description": "Indicates if full point is available",
+              "type": "boolean",
+              "title": "PF"
+            },
+            "PE": {
+              "description": "Indicates if empty point is available",
+              "type": "boolean",
+              "title": "PE"
+            },
+            "LFF": {
+              "description": "Indicates if line with full left & right point is available",
+              "type": "boolean",
+              "title": "LFF"
+            },
+            "LEF": {
+              "description": "Indicates if line with empty left & full right point is available",
+              "type": "boolean",
+              "title": "LEF"
+            },
+            "LFE": {
+              "description": "Indicates if line with full left & empty right point is available",
+              "type": "boolean",
+              "title": "LFE"
+            },
+            "LEE": {
+              "description": "Indicates if line with empty left & right point is available",
+              "type": "boolean",
+              "title": "LEE"
+            },
+            "RFN": {
+              "description": "Indicates if ray with full point and negative direction is available",
+              "type": "boolean",
+              "title": "RFN"
+            },
+            "REN": {
+              "description": "Indicates if ray with empty point and negative direction is available",
+              "type": "boolean",
+              "title": "REN"
+            },
+            "RFP": {
+              "description": "Indicates if ray with full point and positive direction is available",
+              "type": "boolean",
+              "title": "RFP"
+            },
+            "REP": {
+              "description": "Indicates if ray with empty point and positive direction is available",
+              "type": "boolean",
+              "title": "REP"
+            }
+          },
+          "required": [
+            "LEE",
+            "LEF",
+            "LFE",
+            "LFF",
+            "PE",
+            "PF",
+            "REN",
+            "REP",
+            "RFN",
+            "RFP"
+          ],
+          "title": "availableTypes"
+        },
+        "initialElements": {
+          "description": "Array that returns responses",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "anyOf": [
+                {
+                  "title": "ResponsePoint",
+                  "type": "object",
+                  "properties": {
+                    "pointType": {
+                      "description": "Indicates point type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "pointType"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "domainPosition",
+                    "pointType",
+                    "type"
+                  ]
+                },
+                {
+                  "title": "ResponseLine",
+                  "type": "object",
+                  "properties": {
+                    "leftPoint": {
+                      "description": "Indicates left point (left limit for the line) type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "leftPoint"
+                    },
+                    "rightPoint": {
+                      "description": "Indicates right point (left limit for the line) type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "rightPoint"
+                    },
+                    "size": {
+                      "description": "Indicates line size",
+                      "type": "number",
+                      "title": "size"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "domainPosition",
+                    "leftPoint",
+                    "rightPoint",
+                    "size",
+                    "type"
+                  ]
+                },
+                {
+                  "title": "ResponseRay",
+                  "type": "object",
+                  "properties": {
+                    "pointType": {
+                      "description": "Indicates point type",
+                      "enum": [
+                        "empty",
+                        "full"
+                      ],
+                      "type": "string",
+                      "title": "pointType"
+                    },
+                    "direction": {
+                      "description": "Indicates ray direction",
+                      "enum": [
+                        "negative",
+                        "positive"
+                      ],
+                      "type": "string",
+                      "title": "direction"
+                    },
+                    "type": {
+                      "description": "Indicates the response type",
+                      "enum": [
+                        "line",
+                        "point",
+                        "ray"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "domainPosition": {
+                      "description": "Indicates response domain position",
+                      "type": "number",
+                      "title": "domainPosition"
+                    }
+                  },
+                  "required": [
+                    "direction",
+                    "domainPosition",
+                    "pointType",
+                    "type"
+                  ]
+                }
+              ]
+            }
+          },
+          "title": "initialElements"
+        }
+      },
+      "required": [
+        "availableTypes",
+        "domain",
+        "exhibitOnly",
+        "height",
+        "initialElements",
+        "initialType",
+        "maxNumberOfPoints",
+        "showMinorTicks",
+        "snapPerTick",
+        "tickFrequency",
+        "tickLabelOverrides",
+        "width"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

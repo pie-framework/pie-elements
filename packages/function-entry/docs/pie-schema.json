@@ -1,23 +1,17 @@
 {
-  "description": "Pie Model Object for @pie-elements/select-text",
+  "description": "Model Object for @pie-elements/function-entry",
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "prompt": {
-      "description": "The user prompt/item stem",
+    "equation": {
+      "description": "The expression against which the response will be evaluated",
       "type": "string",
-      "title": "prompt"
+      "title": "equation"
     },
-    "text": {
-      "description": "The passage of text from which user may select responses",
-      "type": "string",
-      "title": "text"
-    },
-    "highlightChoices": {
-      "description": "Indicates if the parts of text that are choosable, should be highligned when presented to student.",
-      "default": false,
+    "showFormattingHelp": {
+      "description": "Indicates if formatting hints for constructing an answer are displayed",
       "type": "boolean",
-      "title": "highlightChoices"
+      "title": "showFormattingHelp"
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -185,157 +179,6 @@
         "incorrect"
       ]
     },
-    "partialScoring": {
-      "description": "Indicates if partial scoring should be used",
-      "type": "boolean",
-      "title": "partialScoring"
-    },
-    "partialScoringLabel": {
-      "description": "Partial scoring label",
-      "type": "string",
-      "title": "partialScoringLabel"
-    },
-    "maxSelections": {
-      "description": "The maximum number of token selections a user can make when responding",
-      "type": "number",
-      "title": "maxSelections"
-    },
-    "mode": {
-      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are strictly parsed by of these methods.",
-      "enum": [
-        "paragraph",
-        "sentence",
-        "word"
-      ],
-      "type": "string",
-      "title": "mode"
-    },
-    "tokens": {
-      "description": "The selectable text tokens in the main text content",
-      "type": "array",
-      "items": {
-        "title": "TextToken",
-        "type": "object",
-        "properties": {
-          "text": {
-            "description": "The token text",
-            "type": "string",
-            "title": "text"
-          },
-          "start": {
-            "description": "The start point in the main text for this token",
-            "type": "number",
-            "title": "start"
-          },
-          "end": {
-            "description": "The end point in the main text for this token",
-            "type": "number",
-            "title": "end"
-          },
-          "correct": {
-            "description": "Is selected does the token represent a correct response",
-            "type": "boolean",
-            "title": "correct"
-          }
-        },
-        "required": [
-          "end",
-          "start"
-        ]
-      },
-      "title": "tokens"
-    },
-    "configure": {
-      "title": "SelectTextPieConfigure",
-      "type": "object",
-      "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
-          "type": "string",
-          "title": "promptLabel"
-        },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
-          "type": "boolean",
-          "title": "enableContentChange"
-        },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
-          "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
-        }
-      }
-    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -348,12 +191,8 @@
     }
   },
   "required": [
-    "configure",
     "element",
-    "id",
-    "maxSelections",
-    "text",
-    "tokens"
+    "id"
   ],
   "definitions": {
     "ComplexFeedbackType": {
@@ -567,127 +406,6 @@
         "custom",
         "type"
       ]
-    },
-    "TextToken": {
-      "title": "TextToken",
-      "type": "object",
-      "properties": {
-        "text": {
-          "description": "The token text",
-          "type": "string",
-          "title": "text"
-        },
-        "start": {
-          "description": "The start point in the main text for this token",
-          "type": "number",
-          "title": "start"
-        },
-        "end": {
-          "description": "The end point in the main text for this token",
-          "type": "number",
-          "title": "end"
-        },
-        "correct": {
-          "description": "Is selected does the token represent a correct response",
-          "type": "boolean",
-          "title": "correct"
-        }
-      },
-      "required": [
-        "end",
-        "start"
-      ]
-    },
-    "SelectTextPieConfigure": {
-      "title": "SelectTextPieConfigure",
-      "type": "object",
-      "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
-          "type": "string",
-          "title": "promptLabel"
-        },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
-          "type": "boolean",
-          "title": "enableContentChange"
-        },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
-          "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
-        }
-      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

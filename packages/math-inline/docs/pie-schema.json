@@ -1,23 +1,41 @@
 {
-  "description": "Pie Model Object for @pie-elements/select-text",
+  "description": "Model for the @pie-elements/math-inline",
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "prompt": {
-      "description": "The user prompt/item stem",
+    "question": {
+      "description": "Indicates the question statement",
       "type": "string",
-      "title": "prompt"
+      "title": "question"
     },
-    "text": {
-      "description": "The passage of text from which user may select responses",
+    "mode": {
+      "description": "Indicates the mode of the question",
+      "enum": [
+        "advanced",
+        "simple"
+      ],
       "type": "string",
-      "title": "text"
+      "title": "mode"
     },
-    "highlightChoices": {
-      "description": "Indicates if the parts of text that are choosable, should be highligned when presented to student.",
-      "default": false,
-      "type": "boolean",
-      "title": "highlightChoices"
+    "expression": {
+      "description": "Indicates the expression for advanced mode",
+      "type": "string",
+      "title": "expression"
+    },
+    "equationEditor": {
+      "description": "Indicates what type of editor should be displayed for all the possible responses\n1 for Grade 1 - 2\n3 for Grade 3 - 5\n6 for Grade 6 - 7\n8 for Grade 8 - HS",
+      "default": "- everything",
+      "enum": [
+        1,
+        3,
+        6,
+        8,
+        "advanced-algebra",
+        "everything",
+        "geometry",
+        "statistics"
+      ],
+      "title": "equationEditor"
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -185,156 +203,171 @@
         "incorrect"
       ]
     },
-    "partialScoring": {
-      "description": "Indicates if partial scoring should be used",
-      "type": "boolean",
-      "title": "partialScoring"
-    },
-    "partialScoringLabel": {
-      "description": "Partial scoring label",
-      "type": "string",
-      "title": "partialScoringLabel"
-    },
-    "maxSelections": {
-      "description": "The maximum number of token selections a user can make when responding",
-      "type": "number",
-      "title": "maxSelections"
-    },
-    "mode": {
-      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are strictly parsed by of these methods.",
-      "enum": [
-        "paragraph",
-        "sentence",
-        "word"
-      ],
-      "type": "string",
-      "title": "mode"
-    },
-    "tokens": {
-      "description": "The selectable text tokens in the main text content",
+    "responses": {
+      "description": "Array of all correct responses",
       "type": "array",
       "items": {
-        "title": "TextToken",
+        "title": "MathInlineResponse",
         "type": "object",
         "properties": {
-          "text": {
-            "description": "The token text",
+          "id": {
+            "description": "The id of the response",
+            "type": [
+              "string",
+              "number"
+            ],
+            "title": "id"
+          },
+          "validation": {
+            "description": "Indicates what type of validation should be applied on the response",
+            "default": "is symbolic",
+            "enum": [
+              "literal",
+              "symbolic"
+            ],
             "type": "string",
-            "title": "text"
+            "title": "validation"
           },
-          "start": {
-            "description": "The start point in the main text for this token",
-            "type": "number",
-            "title": "start"
+          "answer": {
+            "description": "The answer for the question",
+            "type": "string",
+            "title": "answer"
           },
-          "end": {
-            "description": "The end point in the main text for this token",
-            "type": "number",
-            "title": "end"
+          "alternates": {
+            "description": "For validation type = literal, alternates represents\nan object with some alternatives for the correct answers",
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[0-9]+$": {
+                "title": "Alternate",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "The id for the alternative response",
+                    "type": "number",
+                    "title": "id"
+                  },
+                  "answer": {
+                    "description": "The value for the alternative response",
+                    "type": "string",
+                    "title": "answer"
+                  }
+                },
+                "required": [
+                  "answer",
+                  "id"
+                ]
+              }
+            },
+            "title": "alternates"
           },
-          "correct": {
-            "description": "Is selected does the token represent a correct response",
+          "allowSpaces": {
+            "description": "Indicates if spaces are allowed",
             "type": "boolean",
-            "title": "correct"
+            "title": "allowSpaces"
+          },
+          "allowDecimals": {
+            "description": "Indicates if decimals are allowed",
+            "type": "boolean",
+            "title": "allowDecimals"
           }
         },
         "required": [
-          "end",
-          "start"
+          "alternates",
+          "answer",
+          "id",
+          "validation"
         ]
       },
-      "title": "tokens"
+      "title": "responses"
     },
-    "configure": {
-      "title": "SelectTextPieConfigure",
+    "defaultResponse": {
+      "title": "MathInlineResponse",
       "type": "object",
       "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
-          "type": "string",
-          "title": "promptLabel"
+        "id": {
+          "description": "The id of the response",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "id"
         },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
+        "validation": {
+          "description": "Indicates what type of validation should be applied on the response",
+          "default": "is symbolic",
+          "enum": [
+            "literal",
+            "symbolic"
+          ],
+          "type": "string",
+          "title": "validation"
+        },
+        "answer": {
+          "description": "The answer for the question",
+          "type": "string",
+          "title": "answer"
+        },
+        "alternates": {
+          "description": "For validation type = literal, alternates represents\nan object with some alternatives for the correct answers",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "title": "Alternate",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The id for the alternative response",
+                  "type": "number",
+                  "title": "id"
+                },
+                "answer": {
+                  "description": "The value for the alternative response",
+                  "type": "string",
+                  "title": "answer"
+                }
+              },
+              "required": [
+                "answer",
+                "id"
+              ]
+            }
+          },
+          "title": "alternates"
+        },
+        "allowSpaces": {
+          "description": "Indicates if spaces are allowed",
           "type": "boolean",
-          "title": "enableContentChange"
+          "title": "allowSpaces"
         },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
+        "allowDecimals": {
+          "description": "Indicates if decimals are allowed",
           "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
+          "title": "allowDecimals"
         }
-      }
+      },
+      "required": [
+        "alternates",
+        "answer",
+        "id",
+        "validation"
+      ]
+    },
+    "config": {
+      "description": "The configuration",
+      "type": "object",
+      "properties": {
+        "allowPartialScores": {
+          "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
+          "type": "boolean",
+          "title": "allowPartialScores"
+        }
+      },
+      "required": [
+        "allowPartialScores"
+      ],
+      "title": "config"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -348,12 +381,14 @@
     }
   },
   "required": [
-    "configure",
+    "config",
     "element",
+    "equationEditor",
+    "expression",
+    "feedback",
     "id",
-    "maxSelections",
-    "text",
-    "tokens"
+    "mode",
+    "responses"
   ],
   "definitions": {
     "ComplexFeedbackType": {
@@ -568,126 +603,98 @@
         "type"
       ]
     },
-    "TextToken": {
-      "title": "TextToken",
+    "MathInlineResponse": {
+      "title": "MathInlineResponse",
       "type": "object",
       "properties": {
-        "text": {
-          "description": "The token text",
+        "id": {
+          "description": "The id of the response",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "id"
+        },
+        "validation": {
+          "description": "Indicates what type of validation should be applied on the response",
+          "default": "is symbolic",
+          "enum": [
+            "literal",
+            "symbolic"
+          ],
           "type": "string",
-          "title": "text"
+          "title": "validation"
         },
-        "start": {
-          "description": "The start point in the main text for this token",
-          "type": "number",
-          "title": "start"
+        "answer": {
+          "description": "The answer for the question",
+          "type": "string",
+          "title": "answer"
         },
-        "end": {
-          "description": "The end point in the main text for this token",
-          "type": "number",
-          "title": "end"
+        "alternates": {
+          "description": "For validation type = literal, alternates represents\nan object with some alternatives for the correct answers",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "title": "Alternate",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The id for the alternative response",
+                  "type": "number",
+                  "title": "id"
+                },
+                "answer": {
+                  "description": "The value for the alternative response",
+                  "type": "string",
+                  "title": "answer"
+                }
+              },
+              "required": [
+                "answer",
+                "id"
+              ]
+            }
+          },
+          "title": "alternates"
         },
-        "correct": {
-          "description": "Is selected does the token represent a correct response",
+        "allowSpaces": {
+          "description": "Indicates if spaces are allowed",
           "type": "boolean",
-          "title": "correct"
+          "title": "allowSpaces"
+        },
+        "allowDecimals": {
+          "description": "Indicates if decimals are allowed",
+          "type": "boolean",
+          "title": "allowDecimals"
         }
       },
       "required": [
-        "end",
-        "start"
+        "alternates",
+        "answer",
+        "id",
+        "validation"
       ]
     },
-    "SelectTextPieConfigure": {
-      "title": "SelectTextPieConfigure",
+    "Alternate": {
+      "title": "Alternate",
       "type": "object",
       "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
+        "id": {
+          "description": "The id for the alternative response",
+          "type": "number",
+          "title": "id"
+        },
+        "answer": {
+          "description": "The value for the alternative response",
           "type": "string",
-          "title": "promptLabel"
-        },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
-          "type": "boolean",
-          "title": "enableContentChange"
-        },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
-          "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
+          "title": "answer"
         }
-      }
+      },
+      "required": [
+        "answer",
+        "id"
+      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

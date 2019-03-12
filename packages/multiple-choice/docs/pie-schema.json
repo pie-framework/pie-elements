@@ -26,32 +26,37 @@
             "title": "label"
           },
           "feedback": {
+            "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
             "title": "Feedback",
             "type": "object",
             "properties": {
               "type": {
-                "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-                "title": "FeedbackType",
+                "default": "default",
                 "enum": [
                   "custom",
-                  "default"
+                  "default",
+                  "none"
                 ],
-                "type": "string"
+                "type": "string",
+                "title": "type"
               },
               "value": {
+                "description": "Value for feedback",
                 "type": "string",
                 "title": "value"
+              },
+              "custom": {
+                "description": "Custom value for feedback",
+                "type": "string",
+                "title": "custom"
               }
             },
             "required": [
-              "type",
-              "value"
+              "type"
             ]
           }
         },
         "required": [
-          "correct",
-          "feedback",
           "label",
           "value"
         ]
@@ -64,20 +69,22 @@
       "title": "prompt"
     },
     "keyMode": {
-      "title": "KeyMode",
+      "description": "What key should be displayed before choices. If undefined no  key will be displayed.",
       "enum": [
         "letters",
         "numbers"
       ],
-      "type": "string"
+      "type": "string",
+      "title": "keyMode"
     },
     "choiceMode": {
-      "title": "ChoiceMode",
+      "description": "Indicates the choices are single or multiple selection",
       "enum": [
         "checkbox",
         "radio"
       ],
-      "type": "string"
+      "type": "string",
+      "title": "choiceMode"
     },
     "shuffle": {
       "description": "Indicates the order of choices should be randdomly ordered when presented to user",
@@ -88,6 +95,11 @@
       "description": "Indicates that the item should use partial scoring",
       "type": "boolean",
       "title": "partialScoring"
+    },
+    "partialScoringLabel": {
+      "description": "The label for partial scoring",
+      "type": "string",
+      "title": "partialScoringLabel"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -127,83 +139,70 @@
           "title": "label"
         },
         "feedback": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
           "title": "Feedback",
           "type": "object",
           "properties": {
             "type": {
-              "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-              "title": "FeedbackType",
+              "default": "default",
               "enum": [
                 "custom",
-                "default"
+                "default",
+                "none"
               ],
-              "type": "string"
+              "type": "string",
+              "title": "type"
             },
             "value": {
+              "description": "Value for feedback",
               "type": "string",
               "title": "value"
+            },
+            "custom": {
+              "description": "Custom value for feedback",
+              "type": "string",
+              "title": "custom"
             }
           },
           "required": [
-            "type",
-            "value"
+            "type"
           ]
         }
       },
       "required": [
-        "correct",
-        "feedback",
         "label",
         "value"
       ]
     },
     "Feedback": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
       "title": "Feedback",
       "type": "object",
       "properties": {
         "type": {
-          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-          "title": "FeedbackType",
+          "default": "default",
           "enum": [
             "custom",
-            "default"
+            "default",
+            "none"
           ],
-          "type": "string"
+          "type": "string",
+          "title": "type"
         },
         "value": {
+          "description": "Value for feedback",
           "type": "string",
           "title": "value"
+        },
+        "custom": {
+          "description": "Custom value for feedback",
+          "type": "string",
+          "title": "custom"
         }
       },
       "required": [
-        "type",
-        "value"
+        "type"
       ]
-    },
-    "FeedbackType": {
-      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-      "title": "FeedbackType",
-      "enum": [
-        "custom",
-        "default"
-      ],
-      "type": "string"
-    },
-    "KeyMode": {
-      "title": "KeyMode",
-      "enum": [
-        "letters",
-        "numbers"
-      ],
-      "type": "string"
-    },
-    "ChoiceMode": {
-      "title": "ChoiceMode",
-      "enum": [
-        "checkbox",
-        "radio"
-      ],
-      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -3,6 +3,11 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "defaultLang": {
+      "description": "Default language",
+      "type": "string",
+      "title": "defaultLang"
+    },
     "choiceLabel": {
       "description": "Text to display in the dropdown",
       "type": "string",
@@ -31,32 +36,37 @@
             "title": "label"
           },
           "feedback": {
+            "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
             "title": "Feedback",
             "type": "object",
             "properties": {
               "type": {
-                "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-                "title": "FeedbackType",
+                "default": "default",
                 "enum": [
                   "custom",
-                  "default"
+                  "default",
+                  "none"
                 ],
-                "type": "string"
+                "type": "string",
+                "title": "type"
               },
               "value": {
+                "description": "Value for feedback",
                 "type": "string",
                 "title": "value"
+              },
+              "custom": {
+                "description": "Custom value for feedback",
+                "type": "string",
+                "title": "custom"
               }
             },
             "required": [
-              "type",
-              "value"
+              "type"
             ]
           }
         },
         "required": [
-          "correct",
-          "feedback",
           "label",
           "value"
         ]
@@ -105,67 +115,70 @@
           "title": "label"
         },
         "feedback": {
+          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
           "title": "Feedback",
           "type": "object",
           "properties": {
             "type": {
-              "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-              "title": "FeedbackType",
+              "default": "default",
               "enum": [
                 "custom",
-                "default"
+                "default",
+                "none"
               ],
-              "type": "string"
+              "type": "string",
+              "title": "type"
             },
             "value": {
+              "description": "Value for feedback",
               "type": "string",
               "title": "value"
+            },
+            "custom": {
+              "description": "Custom value for feedback",
+              "type": "string",
+              "title": "custom"
             }
           },
           "required": [
-            "type",
-            "value"
+            "type"
           ]
         }
       },
       "required": [
-        "correct",
-        "feedback",
         "label",
         "value"
       ]
     },
     "Feedback": {
+      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
       "title": "Feedback",
       "type": "object",
       "properties": {
         "type": {
-          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-          "title": "FeedbackType",
+          "default": "default",
           "enum": [
             "custom",
-            "default"
+            "default",
+            "none"
           ],
-          "type": "string"
+          "type": "string",
+          "title": "type"
         },
         "value": {
+          "description": "Value for feedback",
           "type": "string",
           "title": "value"
+        },
+        "custom": {
+          "description": "Custom value for feedback",
+          "type": "string",
+          "title": "custom"
         }
       },
       "required": [
-        "type",
-        "value"
+        "type"
       ]
-    },
-    "FeedbackType": {
-      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-      "title": "FeedbackType",
-      "enum": [
-        "custom",
-        "default"
-      ],
-      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -6,91 +6,37 @@
     "rows": {
       "description": "The rows of choices to be presented.",
       "type": "array",
-      "items": [
-        {
-          "description": "One row in the match list.",
-          "title": "MatchRow",
-          "type": "object",
-          "properties": {
-            "id": {
-              "description": "Identifier for a row",
-              "type": "string",
-              "title": "id"
-            },
-            "title": {
-              "description": "Title that will be displayed for the row",
-              "type": "string",
-              "title": "title"
-            },
-            "values": {
-              "description": "Array of boolean values indicating which columns are selected in the row",
-              "type": "array",
-              "items": [
-                {
-                  "type": "boolean"
-                }
-              ],
-              "minItems": 1,
-              "additionalItems": {
-                "anyOf": [
-                  {
-                    "type": "boolean"
-                  }
-                ]
-              },
-              "title": "values"
-            }
+      "items": {
+        "description": "One row in the match list.",
+        "title": "MatchRow",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identifier for a row",
+            "type": [
+              "string",
+              "number"
+            ],
+            "title": "id"
           },
-          "required": [
-            "id",
-            "title",
-            "values"
-          ]
-        }
-      ],
-      "minItems": 1,
-      "additionalItems": {
-        "anyOf": [
-          {
-            "description": "One row in the match list.",
-            "title": "MatchRow",
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identifier for a row",
-                "type": "string",
-                "title": "id"
-              },
-              "title": {
-                "description": "Title that will be displayed for the row",
-                "type": "string",
-                "title": "title"
-              },
-              "values": {
-                "description": "Array of boolean values indicating which columns are selected in the row",
-                "type": "array",
-                "items": [
-                  {
-                    "type": "boolean"
-                  }
-                ],
-                "minItems": 1,
-                "additionalItems": {
-                  "anyOf": [
-                    {
-                      "type": "boolean"
-                    }
-                  ]
-                },
-                "title": "values"
-              }
+          "title": {
+            "description": "Title that will be displayed for the row",
+            "type": "string",
+            "title": "title"
+          },
+          "values": {
+            "description": "Array of boolean values indicating which columns are selected in the row",
+            "type": "array",
+            "items": {
+              "type": "boolean"
             },
-            "required": [
-              "id",
-              "title",
-              "values"
-            ]
+            "title": "values"
           }
+        },
+        "required": [
+          "id",
+          "title",
+          "values"
         ]
       },
       "title": "rows"
@@ -108,28 +54,200 @@
     "headers": {
       "description": "Array of strings for column headers",
       "type": "array",
-      "items": [
-        {
-          "type": "string"
-        }
-      ],
-      "minItems": 1,
-      "additionalItems": {
-        "anyOf": [
-          {
-            "type": "string"
-          }
-        ]
+      "items": {
+        "type": "string"
       },
       "title": "headers"
     },
     "responseType": {
-      "title": "ResponseType",
+      "description": "Indicates if the conrol for responses should be single (radio) or multiple (checkbox)",
       "enum": [
         "checkbox",
         "radio"
       ],
-      "type": "string"
+      "type": "string",
+      "title": "responseType"
+    },
+    "partialScoring": {
+      "description": "Indicates if partial scoring should be used",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "partialScoringLabel": {
+      "description": "Partial scoring label to be displayed",
+      "type": "string",
+      "title": "partialScoringLabel"
+    },
+    "allowPartialScoring": {
+      "description": "Indicates that the item can use partial scoring",
+      "type": "boolean",
+      "title": "allowPartialScoring"
+    },
+    "feedback": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -158,7 +276,10 @@
       "properties": {
         "id": {
           "description": "Identifier for a row",
-          "type": "string",
+          "type": [
+            "string",
+            "number"
+          ],
           "title": "id"
         },
         "title": {
@@ -169,18 +290,8 @@
         "values": {
           "description": "Array of boolean values indicating which columns are selected in the row",
           "type": "array",
-          "items": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "minItems": 1,
-          "additionalItems": {
-            "anyOf": [
-              {
-                "type": "boolean"
-              }
-            ]
+          "items": {
+            "type": "boolean"
           },
           "title": "values"
         }
@@ -191,13 +302,217 @@
         "values"
       ]
     },
-    "ResponseType": {
-      "title": "ResponseType",
-      "enum": [
-        "checkbox",
-        "radio"
-      ],
-      "type": "string"
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
