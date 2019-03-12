@@ -1,0 +1,823 @@
+{
+  "description": "Model for the @pie-elements/point-intercept",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "correctResponse": {
+      "description": "Array of strings (each string should have this form: x,y)",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "correctResponse"
+    },
+    "model": {
+      "description": "The configuration for the model",
+      "type": "object",
+      "properties": {
+        "config": {
+          "title": "GraphLineModelConfig",
+          "type": "object",
+          "properties": {
+            "graphTitle": {
+              "description": "Indicates the title for the graph",
+              "type": "string",
+              "title": "graphTitle"
+            },
+            "graphWidth": {
+              "description": "Indicated the width for the graph",
+              "type": "number",
+              "title": "graphWidth"
+            },
+            "graphHeight": {
+              "description": "Indicates the height for the graph",
+              "type": "number",
+              "title": "graphHeight"
+            },
+            "domainLabel": {
+              "description": "Indicates the domain label for the graph",
+              "type": "string",
+              "title": "domainLabel"
+            },
+            "domainMin": {
+              "description": "Indicates the left limit (for the x axis)",
+              "type": "number",
+              "title": "domainMin"
+            },
+            "domainMax": {
+              "description": "Indicates the right limit (for the x axis)",
+              "type": "number",
+              "title": "domainMax"
+            },
+            "domainStepValue": {
+              "description": "Indicates step value (for the x axis)",
+              "type": "number",
+              "title": "domainStepValue"
+            },
+            "domainSnapValue": {
+              "description": "Indicates snap value (for the x axis)",
+              "type": "number",
+              "title": "domainSnapValue"
+            },
+            "domainLabelFrequency": {
+              "description": "Indicates domain label frequency (for the x axis)",
+              "type": "number",
+              "title": "domainLabelFrequency"
+            },
+            "domainGraphPadding": {
+              "description": "Indicates domain graph padding (for the x axis)",
+              "type": "number",
+              "title": "domainGraphPadding"
+            },
+            "rangeLabel": {
+              "description": "Indicates the range label for the graph",
+              "type": "string",
+              "title": "rangeLabel"
+            },
+            "rangeMin": {
+              "description": "Indicates the bottom limit (for the y axis)",
+              "type": "number",
+              "title": "rangeMin"
+            },
+            "rangeMax": {
+              "description": "Indicates the top limit (for the y axis)",
+              "type": "number",
+              "title": "rangeMax"
+            },
+            "rangeStepValue": {
+              "description": "Indicates step value (for the y axis)",
+              "type": "number",
+              "title": "rangeStepValue"
+            },
+            "rangeSnapValue": {
+              "description": "Indicates snap value (for the y axis)",
+              "type": "number",
+              "title": "rangeSnapValue"
+            },
+            "rangeLabelFrequency": {
+              "description": "Indicates range label frequency (for the y axis)",
+              "type": "number",
+              "title": "rangeLabelFrequency"
+            },
+            "rangeGraphPadding": {
+              "description": "Indicates range graph padding (for the y axis)",
+              "type": "number",
+              "title": "rangeGraphPadding"
+            },
+            "sigfigs": {
+              "type": "number",
+              "title": "sigfigs"
+            },
+            "showCoordinates": {
+              "description": "Indicates if coordinates should be displayed",
+              "type": "boolean",
+              "title": "showCoordinates"
+            },
+            "showPointLabels": {
+              "description": "Indicates if point labels should be displayed",
+              "type": "boolean",
+              "title": "showPointLabels"
+            },
+            "showInputs": {
+              "description": "Indicates if inputs should be displayed",
+              "type": "boolean",
+              "title": "showInputs"
+            },
+            "showAxisLabels": {
+              "description": "Indicates if axis labels should be displayed",
+              "type": "boolean",
+              "title": "showAxisLabels"
+            },
+            "showFeedback": {
+              "description": "Indicates if feedback should be displayed",
+              "type": "boolean",
+              "title": "showFeedback"
+            },
+            "maxPoints": {
+              "description": "Indicates the maximum number of points that the student can select",
+              "type": [
+                "string",
+                "number"
+              ],
+              "title": "maxPoints"
+            },
+            "pointLabels": {
+              "description": "The array with point labels",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "pointLabels"
+            },
+            "allowPartialScoring": {
+              "description": "Indicates if partial scoring is enabled",
+              "type": "boolean",
+              "title": "allowPartialScoring"
+            },
+            "pointsMustMatchLabels": {
+              "description": "Indicates if points must match labels at the evaluation time",
+              "type": "boolean",
+              "title": "pointsMustMatchLabels"
+            },
+            "labelsType": {
+              "description": "TODO add description",
+              "type": "string",
+              "title": "labelsType"
+            }
+          },
+          "required": [
+            "domainGraphPadding",
+            "domainLabel",
+            "domainLabelFrequency",
+            "domainMax",
+            "domainMin",
+            "domainSnapValue",
+            "domainStepValue",
+            "graphHeight",
+            "graphTitle",
+            "graphWidth",
+            "pointLabels",
+            "rangeGraphPadding",
+            "rangeLabel",
+            "rangeLabelFrequency",
+            "rangeMax",
+            "rangeMin",
+            "rangeSnapValue",
+            "rangeStepValue",
+            "showAxisLabels",
+            "showCoordinates",
+            "showFeedback",
+            "showInputs",
+            "showPointLabels",
+            "sigfigs"
+          ]
+        }
+      },
+      "required": [
+        "config"
+      ],
+      "title": "model"
+    },
+    "partialScoring": {
+      "description": "The array of partial scoring rules",
+      "type": "array",
+      "items": {
+        "title": "PartialScoringRule",
+        "type": "object",
+        "properties": {
+          "numberOfCorrect": {
+            "description": "Number of correct answers",
+            "type": "number",
+            "title": "numberOfCorrect"
+          },
+          "scorePercentage": {
+            "description": "The percentage for partial scoring",
+            "type": "number",
+            "title": "scorePercentage"
+          }
+        },
+        "required": [
+          "numberOfCorrect",
+          "scorePercentage"
+        ]
+      },
+      "title": "partialScoring"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "correctResponse",
+    "element",
+    "feedback",
+    "id",
+    "model",
+    "partialScoring"
+  ],
+  "definitions": {
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
+    },
+    "GraphLineModelConfig": {
+      "title": "GraphLineModelConfig",
+      "type": "object",
+      "properties": {
+        "graphTitle": {
+          "description": "Indicates the title for the graph",
+          "type": "string",
+          "title": "graphTitle"
+        },
+        "graphWidth": {
+          "description": "Indicated the width for the graph",
+          "type": "number",
+          "title": "graphWidth"
+        },
+        "graphHeight": {
+          "description": "Indicates the height for the graph",
+          "type": "number",
+          "title": "graphHeight"
+        },
+        "domainLabel": {
+          "description": "Indicates the domain label for the graph",
+          "type": "string",
+          "title": "domainLabel"
+        },
+        "domainMin": {
+          "description": "Indicates the left limit (for the x axis)",
+          "type": "number",
+          "title": "domainMin"
+        },
+        "domainMax": {
+          "description": "Indicates the right limit (for the x axis)",
+          "type": "number",
+          "title": "domainMax"
+        },
+        "domainStepValue": {
+          "description": "Indicates step value (for the x axis)",
+          "type": "number",
+          "title": "domainStepValue"
+        },
+        "domainSnapValue": {
+          "description": "Indicates snap value (for the x axis)",
+          "type": "number",
+          "title": "domainSnapValue"
+        },
+        "domainLabelFrequency": {
+          "description": "Indicates domain label frequency (for the x axis)",
+          "type": "number",
+          "title": "domainLabelFrequency"
+        },
+        "domainGraphPadding": {
+          "description": "Indicates domain graph padding (for the x axis)",
+          "type": "number",
+          "title": "domainGraphPadding"
+        },
+        "rangeLabel": {
+          "description": "Indicates the range label for the graph",
+          "type": "string",
+          "title": "rangeLabel"
+        },
+        "rangeMin": {
+          "description": "Indicates the bottom limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMin"
+        },
+        "rangeMax": {
+          "description": "Indicates the top limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMax"
+        },
+        "rangeStepValue": {
+          "description": "Indicates step value (for the y axis)",
+          "type": "number",
+          "title": "rangeStepValue"
+        },
+        "rangeSnapValue": {
+          "description": "Indicates snap value (for the y axis)",
+          "type": "number",
+          "title": "rangeSnapValue"
+        },
+        "rangeLabelFrequency": {
+          "description": "Indicates range label frequency (for the y axis)",
+          "type": "number",
+          "title": "rangeLabelFrequency"
+        },
+        "rangeGraphPadding": {
+          "description": "Indicates range graph padding (for the y axis)",
+          "type": "number",
+          "title": "rangeGraphPadding"
+        },
+        "sigfigs": {
+          "type": "number",
+          "title": "sigfigs"
+        },
+        "showCoordinates": {
+          "description": "Indicates if coordinates should be displayed",
+          "type": "boolean",
+          "title": "showCoordinates"
+        },
+        "showPointLabels": {
+          "description": "Indicates if point labels should be displayed",
+          "type": "boolean",
+          "title": "showPointLabels"
+        },
+        "showInputs": {
+          "description": "Indicates if inputs should be displayed",
+          "type": "boolean",
+          "title": "showInputs"
+        },
+        "showAxisLabels": {
+          "description": "Indicates if axis labels should be displayed",
+          "type": "boolean",
+          "title": "showAxisLabels"
+        },
+        "showFeedback": {
+          "description": "Indicates if feedback should be displayed",
+          "type": "boolean",
+          "title": "showFeedback"
+        },
+        "maxPoints": {
+          "description": "Indicates the maximum number of points that the student can select",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "maxPoints"
+        },
+        "pointLabels": {
+          "description": "The array with point labels",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "pointLabels"
+        },
+        "allowPartialScoring": {
+          "description": "Indicates if partial scoring is enabled",
+          "type": "boolean",
+          "title": "allowPartialScoring"
+        },
+        "pointsMustMatchLabels": {
+          "description": "Indicates if points must match labels at the evaluation time",
+          "type": "boolean",
+          "title": "pointsMustMatchLabels"
+        },
+        "labelsType": {
+          "description": "TODO add description",
+          "type": "string",
+          "title": "labelsType"
+        }
+      },
+      "required": [
+        "domainGraphPadding",
+        "domainLabel",
+        "domainLabelFrequency",
+        "domainMax",
+        "domainMin",
+        "domainSnapValue",
+        "domainStepValue",
+        "graphHeight",
+        "graphTitle",
+        "graphWidth",
+        "pointLabels",
+        "rangeGraphPadding",
+        "rangeLabel",
+        "rangeLabelFrequency",
+        "rangeMax",
+        "rangeMin",
+        "rangeSnapValue",
+        "rangeStepValue",
+        "showAxisLabels",
+        "showCoordinates",
+        "showFeedback",
+        "showInputs",
+        "showPointLabels",
+        "sigfigs"
+      ]
+    },
+    "PartialScoringRule": {
+      "title": "PartialScoringRule",
+      "type": "object",
+      "properties": {
+        "numberOfCorrect": {
+          "description": "Number of correct answers",
+          "type": "number",
+          "title": "numberOfCorrect"
+        },
+        "scorePercentage": {
+          "description": "The percentage for partial scoring",
+          "type": "number",
+          "title": "scorePercentage"
+        }
+      },
+      "required": [
+        "numberOfCorrect",
+        "scorePercentage"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

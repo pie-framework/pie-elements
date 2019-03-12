@@ -102,7 +102,7 @@ class GeneralConfigBlock extends React.Component {
                   type="text"
                   className={classes.input}
                   onChange={this.onLineChange(idx, 'correctLine')}
-                  value={line.correctLine}
+                  value={line.correctLine || ''}
                   placeholder="Enter Value"
                 />
               </InputContainer>
@@ -117,7 +117,7 @@ class GeneralConfigBlock extends React.Component {
                   type="text"
                   className={classes.input}
                   onChange={this.onLineChange(idx, 'initialView')}
-                  value={line.initialView}
+                  value={line.initialView || ''}
                   placeholder="Enter Value"
                 />
               </InputContainer>
@@ -135,7 +135,7 @@ class GeneralConfigBlock extends React.Component {
           <div className={classes.optionsCheckbox}>
             <InputCheckbox
               label="Make this graph an exhibit only"
-              checked={config.exhibitOnly}
+              checked={config.exhibitOnly || false}
               onChange={this.onChange('exhibitOnly', true)}/>
           </div>
         </div>

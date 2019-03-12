@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
-
+import { ComplexFeedbackType } from '../../Feedback';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -9,6 +9,12 @@ interface CategoryChoice {
 
   /** The xhtml content for the choice */
   content: string;
+
+  /** */
+  categoryCount?: number | string;
+
+  /** */
+  correctResponseCount?: number | string;
 }
 
 interface Category {
@@ -33,7 +39,9 @@ interface CategoryCorrectResponse {
 
 enum ChoicesPosition {
   above = 'above',
-  below = 'below'
+  below = 'below',
+  left = 'left',
+  right = 'right'
 }
 
 interface ChoicesConfig {
@@ -58,6 +66,79 @@ interface ChoicesConfig {
    * area or should remain in place.
    */
   removeafterplacing: boolean;
+}
+
+interface PartialScoringCategoryRule {
+  /**
+   *  Indicates the number of correct answers
+   */
+  count: number;
+
+  /**
+   *  Indicates the percentage for partial scoring
+   */
+  percent: number;
+}
+
+
+interface PartialScoringRule {
+  /**
+   * The id of the category
+   */
+  category: string;
+
+  /**
+   * Array of rules for partial scoring for the category
+   */
+  rules: PartialScoringCategoryRule[];
+}
+
+interface PartialScoringConfig {
+  /**
+   *  Indicates if partial scoring is enabled
+   */
+  enabled: boolean;
+
+  /**
+   * Array of rules for partial scoring
+   */
+  rules?: [PartialScoringRule]
+}
+
+interface WeightingConfigRule {
+  /**
+   *  The id of the category
+   */
+  category: string;
+
+  /**
+   * The value of weighting
+   */
+  points: number;
+}
+
+interface WeightingConfig {
+  /**
+   *  Indicates if weighting is enabled
+   */
+  enabled: boolean;
+
+  /**
+   * Array of rules for weighting
+   */
+  rules?: WeightingConfigRule[]
+}
+
+interface ScoringConfig {
+  /**
+   * The configuration for weighting
+   */
+  weighting?: WeightingConfig;
+
+  /**
+   * The configuration for partial scoring
+   */
+  partial?: PartialScoringConfig;
 }
 
 interface CategoriesConfig {
@@ -91,6 +172,12 @@ export interface CategorizePie extends PieModel {
 
   /** Configuration options for the presentataion of the interaction */
   config: {choices:ChoicesConfig, categories: CategoriesConfig}
+
+  /** Feedback configuration */
+  feedback?: ComplexFeedbackType;
+
+  /** Scoring configuration */
+  scoring?: ScoringConfig
 }
 
 /**
@@ -98,8 +185,5 @@ export interface CategorizePie extends PieModel {
  * @additionalProperties false
  */
 export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
-
-
-
 }
 

@@ -2,6 +2,10 @@ Model for the @pie-elements/inline-choice Interaction
 
 The schema defines the following properties:
 
+# `defaultLang` (string)
+
+Default language
+
 # `choiceLabel` (string)
 
 Text to display in the dropdown
@@ -14,7 +18,7 @@ The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
 
-## `correct` (boolean, required)
+## `correct` (boolean)
 
 Indicates if the choice is correct
 
@@ -26,22 +30,31 @@ the value that will be stored if this choice is selected
 
 the text label that will be presented to the user for this choice
 
-## `feedback` (object, required)
-
-Properties of the `feedback` object:
-
-### `type` (string, enum, required)
+## `feedback` (object)
 
 The type of feedback to use:
    `default` = a standard feedback message
    `custom` = a customized feedback message
 
+Properties of the `feedback` object:
+
+### `type` (string, enum, required)
+
 This element must be one of the following enum values:
 
 * `custom`
 * `default`
+* `none`
 
-### `value` (string, required)
+Default: `"default"`
+
+### `value` (string)
+
+Value for feedback
+
+### `custom` (string)
+
+Custom value for feedback
 
 # `prompt` (string)
 
@@ -65,7 +78,7 @@ The schema defines the following additional types:
 
 Properties of the `Choice` object:
 
-### `correct` (boolean, required)
+### `correct` (boolean)
 
 Indicates if the choice is correct
 
@@ -77,42 +90,54 @@ the value that will be stored if this choice is selected
 
 the text label that will be presented to the user for this choice
 
-### `feedback` (object, required)
+### `feedback` (object)
+
+The type of feedback to use:
+   `default` = a standard feedback message
+   `custom` = a customized feedback message
 
 Properties of the `feedback` object:
 
 #### `type` (string, enum, required)
 
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
-
 This element must be one of the following enum values:
 
 * `custom`
 * `default`
+* `none`
 
-#### `value` (string, required)
+Default: `"default"`
+
+#### `value` (string)
+
+Value for feedback
+
+#### `custom` (string)
+
+Custom value for feedback
 
 ## `Feedback` (object)
+
+The type of feedback to use:
+   `default` = a standard feedback message
+   `custom` = a customized feedback message
 
 Properties of the `Feedback` object:
 
 ### `type` (string, enum, required)
 
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
-
 This element must be one of the following enum values:
 
 * `custom`
 * `default`
+* `none`
 
-### `value` (string, required)
+Default: `"default"`
 
-## `FeedbackType` (string)
+### `value` (string)
 
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+Value for feedback
+
+### `custom` (string)
+
+Custom value for feedback
