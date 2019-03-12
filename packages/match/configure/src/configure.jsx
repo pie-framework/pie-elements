@@ -156,7 +156,7 @@ class Configure extends React.Component {
           onChange={this.onTabChange}
           indicatorColor="primary"
           textColor="primary"
-          fullWidth
+          variant="fullWidth"
         >
           <Tab label="Design" />
           <Tab disabled={!model.allowPartialScoring} label="Scoring" />
