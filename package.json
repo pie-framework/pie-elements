@@ -8,7 +8,7 @@
     "pie-pack-clean": "scripts/clean.sh",
     "build": "scripts/build build",
     "release": "scripts/build build release",
-    "release:next": "scripts/build build release --next",
+    "release:next": "scripts/build build release --next --lernaLogLevel silly",
     "postinstall": "git config --local include.path ../.gitconfig"
   },
   "devDependencies": {
@@ -19,7 +19,7 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@pie-framework/build-helper": "^2.1.0",
+    "@pie-framework/build-helper": "^3.1.1",
     "@pie-lib/test-utils": "^0.0.3",
     "@yarnpkg/lockfile": "^1.1.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -33,7 +33,7 @@
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.8.2",
     "jest": "^23.0.0",
-    "lerna": "3.11.0",
+    "lerna": "^3.13.1",
     "minimist": "^1.2.0",
     "pacote": "^9.5.0",
     "react": "^16.4.0",
