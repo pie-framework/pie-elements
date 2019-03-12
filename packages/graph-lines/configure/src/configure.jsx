@@ -110,7 +110,7 @@ class Configure extends React.Component {
           onChange={this.onTabChange}
           indicatorColor="primary"
           textColor="primary"
-          fullWidth
+          variant="fullWidth"
         >
           <Tab label="Design" />
           <Tab disabled={!model.multiple} label="Scoring" />
@@ -152,7 +152,7 @@ class Configure extends React.Component {
           <div className={classes.tab}>
             <PartialScoringConfig
               numberOfCorrectResponses={config.lines.length}
-              partialScoring={model.partialScoring}
+              partialScoring={!!model.partialScoring}
               onChange={this.onPartialScoringChange}
               />
           </div>
