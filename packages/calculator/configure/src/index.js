@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
+// foo test
+
 export default class extends HTMLElement {
   constructor() {
     super();
