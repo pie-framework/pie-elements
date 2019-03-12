@@ -2,7 +2,6 @@ exports.model = (id, element) => ({
   id,
   element,
   //below is the legacy corespring point intercept model...
-  minimumWidth: 500,
   correctResponse: ['0,0', '1,1', '2,2', '3,3'],
   partialScoring: [],
   feedback: {
