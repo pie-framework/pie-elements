@@ -1,119 +1,92 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 const debug = require('debug');
-const log = debug('@pie-element:scripts:build');
-const { processFix } = require('@pie-framework/build-helper');
+const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
-const fs = require('fs-extra');
-const spawn = require('child-process-promise').spawn;
-const rimraf = require('rimraf');
+const { readdirSync, pathExistsSync } = require('fs-extra');
 const _ = require('lodash');
+const { Commands } = require('@pie-framework/build-helper');
+const { resolve, relative } = require('path');
+const minimist = require('minimist');
 
 log('scope: ', argv.scope);
 
-const listPackages = () => fs.readdir('packages');
+const args = minimist(process.argv.slice(2));
 
-const getPackages = async () => {
-  if (argv.scope) {
-    return Promise.resolve(
-      Array.isArray(argv.scope) ? argv.scope : [argv.scope]
-    );
-  } else {
-    return await listPackages();
-  }
-};
+const r = (...parts) =>
+  resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
 
-argv.clean = argv.clean !== false;
-argv.onlyClean = argv.onlyClean === true;
+const rel = p => relative(resolve(__dirname, '..'), p);
 
-processFix(log, () => {
-  process.exit();
-});
-
-const cleanLib = p =>
-  new Promise((resolve, reject) => {
-    const lib = `${p}/lib`;
-    log('clean: ', lib);
-    rimraf(lib, e => {
-      if (e) {
-        reject(e);
-      } else {
-        resolve();
-      }
-    });
-  });
-
-const buildDir = p => {
-  log(`build: ${p}`);
-
-  const args = [
-    `${p}/src`,
-    '--out-dir',
-    `${p}/lib`,
-    '--ignore',
-    '/__test__/,/__tests__/,/__mocks__/',
-    '--source-maps'
-  ];
-  return spawn('./node_modules/.bin/babel', args, {
-    stdio: 'inherit'
-  });
-};
-
-const getFolders = async name => {
-  log('getFolders: ', name);
-  const n = `packages/${name}`;
-  const stat = await fs.stat(n);
-  const out = [];
-
-  if (stat.isDirectory()) {
-    const files = await fs.readdir(n);
-    if (files.indexOf('src') !== -1) {
-      out.push(n);
-    }
-
-    if (files.indexOf('controller') !== -1) {
-      out.push(`${n}/controller`);
-    }
-
-    if (files.indexOf('configure') !== -1) {
-      out.push(`${n}/configure`);
-    }
-    return Promise.all(out);
-  } else {
-    return Promise.resolve([]);
-  }
-};
-
-const cleanPackage = async name => {
-  const folders = await getFolders(name);
-  return Promise.all(folders.map(cleanLib));
-};
-
-const buildPackage = async name => {
-  const folders = await getFolders(name);
-  return Promise.all(folders.map(buildDir));
-};
-
-const run = async () => {
-  const packages = await getPackages();
-
-  log('packages: ', packages);
-
-  if (argv.clean || argv.onlyClean) {
-    await Promise.all(packages.map(cleanPackage));
-    log('clean done.');
+class ElementsCommands extends Commands {
+  constructor(root, args) {
+    super(root, args);
   }
 
-  if (!argv.onlyClean) {
-    const buildPromises = packages.map(p => buildPackage(p));
+  expandPkg(d) {
+    const out = [];
+    if (pathExistsSync(r(d, 'src'))) {
+      out.push(rel(r(d)));
+    }
 
-    Promise.all(buildPromises)
-      .then(() => {
-        log('---------> done');
+    if (pathExistsSync(r(d, 'controller', 'src'))) {
+      out.push(rel(r(d, 'controller')));
+    }
+
+    if (pathExistsSync(r(d, 'configure', 'src'))) {
+      out.push(rel(r(d, 'configure')));
+    }
+
+    return out;
+  }
+
+  packages() {
+    if (args.scope) {
+      const arr = Array.isArray(argv.scope) ? argv.scope : [argv.scope];
+      return _.flatten(arr.map(p => this.expandPkg(p)));
+    }
+    const dirs = readdirSync(resolve(__dirname, '..', 'packages'));
+    const all = _.flatten(dirs.map(d => this.expandPkg(d)));
+    return all;
+  }
+
+  break() {
+    return Promise.reject(new Error('no'));
+  }
+
+  clean() {
+    return Promise.all(
+      this.packages().map(p => {
+        const cwd = resolve(__dirname, '..', p);
+        log('cwd:', cwd);
+        return this.runCmd('rm -fr lib', { cwd });
       })
-      .catch(e => {
-        log('error', e);
-      });
+    );
   }
-};
 
-run();
+  babel() {
+    return Promise.all(
+      this.packages().map(p => {
+        const cwd = resolve(__dirname, '..', p);
+        const cmd = `${
+          this.p.babel
+        } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+        return this.runCmd(cmd, { cwd });
+      })
+    );
+  }
+}
+
+const cmds = new ElementsCommands(resolve(__dirname, '..'), args);
+
+cmds
+  .execute()
+  .then(() => {
+    console.log('all done');
+    process.exit(0);
+  })
+  .catch(e => {
+    console.error('build failed:');
+    console.error(e);
+    process.exit(1);
+  });

@@ -20,7 +20,7 @@ exports[`Render a calculator element Creates snapshot using enzyme 1`] = `
     value="basic"
   />
   <br />
-  <Component
+  <CalculatorLayout
     mode="basic"
     onClose={[Function]}
   />

@@ -1,24 +1,24 @@
 language: node_js
 node_js:
-  - 9.11.2
+  - 11.10.0
 
 before_install:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
 
 stages:
-  - test
-  - checker
   - name: release-next
-    if: branch = feature/next-build
+    if: branch = develop AND type != pull_request
+  - name: test
+    if: branch = develop AND type = pull_request
 
 jobs:
   include:
-    - stage: checker
-      script: npm whoami
     - stage: release-next
       script: 'npm run release:next'
+    - stage: test
+      script: 'npm run test'
 branches:
   only:
-    - feature/next-build
+    - develop
 
 cache: npm

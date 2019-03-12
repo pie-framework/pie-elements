@@ -1,7 +1,13 @@
 {
-  "lerna": "3.4.0",
-  "packages": ["packages/*"],
+  "lerna": "3.13.1",
+  "packages": ["packages/*", "packages/*/configure", "packages/*/controller"],
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": ["yarn.lock"],
+      "message": "[skip travis] chore: publish"
+    }
+  }
 }

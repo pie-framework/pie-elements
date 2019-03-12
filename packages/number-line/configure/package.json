@@ -6,8 +6,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-lib/config-ui": "^7.8.0",
-    "@pie-ui/number-line": "^4.1.1",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "@pie-ui/number-line": "next",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   }
 }
