@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Design } from '../design';
 import defaultValues from '../defaultConfiguration';
-
 describe('design', () => {
   let w;
   let onChange;
@@ -86,12 +85,16 @@ describe('design', () => {
     });
 
     describe('changeTokens', () => {
-      assert('changeTokens', [[{ start: 0, end: 1, text: 'f' }], 'words'], m => ({
-        ...m,
-        maxSelections: 0,
-        tokens: [{ start: 0, end: 1, text: 'f' }],
-        mode: 'words'
-      }));
+      assert(
+        'changeTokens',
+        [[{ start: 0, end: 1, text: 'f' }], 'words'],
+        m => ({
+          ...m,
+          maxSelections: 0,
+          tokens: [{ start: 0, end: 1, text: 'f' }],
+          mode: 'words'
+        })
+      );
       assert(
         'changeTokens',
         [[{ start: 0, end: 8, text: 'Foo bar.', correct: true }], 'sentences'],
