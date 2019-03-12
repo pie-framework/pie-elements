@@ -25,13 +25,14 @@ export interface MatchPie extends PieModel {
   rows: MatchRow[];
   
   /** Indicates if the order of the rows should be randomly sorted on render */
-  shuffled: boolean;
+  shuffled?: boolean;
 
   /** The number of columns to be presented */
   layout: number;
 
   /** Array of strings for column headers */
   headers: string[];
+
 
   /** Indicates if the conrol for responses should be single (radio) or multiple (checkbox) */
   responseType: 'radio' | 'checkbox';

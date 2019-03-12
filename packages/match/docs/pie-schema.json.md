@@ -10,7 +10,7 @@ Additional restrictions:
 
 * Minimum items: `1`
 
-# `shuffled` (boolean, required)
+# `shuffled` (boolean)
 
 Indicates if the order of the rows should be randomly sorted on render
 
