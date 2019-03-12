@@ -2,6 +2,17 @@ import debug from 'debug';
 const log = debug('@pie-element:extended-text-entry:controller');
 import { getFeedback } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
+export async function createDefaultModel(model = {}) {
+  log('[createDefaultModel]', model);
+
+  return {
+    ...defaults,
+    ...model,
+  };
+}
+
 export async function model(model, session, env) {
   log('[model]', model);
 

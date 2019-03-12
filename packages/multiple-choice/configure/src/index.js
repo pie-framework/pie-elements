@@ -11,6 +11,8 @@ import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
+import sensibleDefaults from './defaults';
+
 const log = debug('multiple-choice:configure');
 
 const defaultValues = {
@@ -59,7 +61,12 @@ const prepareCustomizationObject = (configure, model) => {
   };
 };
 
-export default class extends HTMLElement {
+export default class MultipleChoice extends HTMLElement {
+  static createDefaultModel = (model = {}) => utils.normalizeChoices({
+    ...sensibleDefaults,
+    ...model,
+  });
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);

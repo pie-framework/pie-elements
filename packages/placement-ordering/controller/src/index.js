@@ -3,6 +3,9 @@ import { flattenCorrect, score } from './scoring';
 import _ from 'lodash';
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+
+import defaults from './defaults';
+
 const log = debug('@pie-element:placement-ordering-controller');
 
 export function outcome(question, session, env) {
@@ -68,6 +71,15 @@ function shuffle(session, choices) {
     session.stash.shuffledOrder = shuffled.map(({ id }) => id);
     return shuffled;
   }
+}
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model
+    });
+  });
 }
 
 export function model(question, session, env) {

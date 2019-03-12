@@ -4,9 +4,15 @@ import Configure from './configure';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:function-entry:configure');
 
 export default class FunctionEntryConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
 
   constructor() {
     super();
