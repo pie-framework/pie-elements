@@ -1,23 +1,202 @@
 {
-  "description": "Pie Model Object for @pie-elements/select-text",
+  "description": "Model for the @pie-elements/placement-ordering",
   "additionalProperties": false,
   "type": "object",
   "properties": {
     "prompt": {
-      "description": "The user prompt/item stem",
+      "description": "Th epropmpt for the question",
       "type": "string",
       "title": "prompt"
     },
-    "text": {
-      "description": "The passage of text from which user may select responses",
+    "choiceAreaLabel": {
+      "description": "The label for possible choices",
       "type": "string",
-      "title": "text"
+      "title": "choiceAreaLabel"
     },
-    "highlightChoices": {
-      "description": "Indicates if the parts of text that are choosable, should be highligned when presented to student.",
+    "choiceAreaLayout": {
+      "description": "The layout for displaying the choices",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "type": "string",
+      "title": "choiceAreaLayout"
+    },
+    "answerAreaLabel": {
+      "description": "The label for answer area if placement area is enabled",
+      "type": "string",
+      "title": "answerAreaLabel"
+    },
+    "shuffle": {
+      "description": "Indicates if the choices can shuffle",
       "default": false,
       "type": "boolean",
-      "title": "highlightChoices"
+      "title": "shuffle"
+    },
+    "choices": {
+      "description": "Array of all the available choices",
+      "type": "array",
+      "items": {
+        "title": "Choice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The id of the choice",
+            "type": "string",
+            "title": "id"
+          },
+          "label": {
+            "description": "The label of the choice",
+            "type": "string",
+            "title": "label"
+          },
+          "moveOnDrag": {
+            "description": "Indicates if choice will be removed after is placed into a placement area",
+            "default": false,
+            "type": "boolean",
+            "title": "moveOnDrag"
+          },
+          "shuffle": {
+            "description": "If the entire array of choices can shuffle, each choice itself\nhas this property to indicate if it should shuffle",
+            "default": true,
+            "type": "boolean",
+            "title": "shuffle"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "title": "choices"
+    },
+    "correctResponse": {
+      "description": "Array of the correct responses in the correct order",
+      "type": "array",
+      "items": {
+        "title": "CorrectResponse",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The id of the correct response",
+            "type": "string",
+            "title": "id"
+          },
+          "weight": {
+            "description": "The weight of the correct response\nNote: weights are not configurable in the existing component so we'll ignore it for now",
+            "type": "number",
+            "title": "weight"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "title": "correctResponse"
+    },
+    "placementType": {
+      "description": "Indicates if the items can be replaced with each other or if they can be placed inside other boxes",
+      "enum": [
+        "none",
+        "placement"
+      ],
+      "type": "string",
+      "title": "placementType"
+    },
+    "showOrdering": {
+      "description": "If placement type is placement, show ordering indicates if the boxes are numbered",
+      "type": "boolean",
+      "title": "showOrdering"
+    },
+    "configure": {
+      "title": "ConfigurePlacementOrdering",
+      "type": "object",
+      "properties": {
+        "enableOrientationChange": {
+          "description": "Indicates if changing orientation is enabled",
+          "type": "boolean",
+          "title": "enableOrientationChange"
+        },
+        "enableShuffleChange": {
+          "description": "Indicates if changing shuffle mode is enabled",
+          "type": "boolean",
+          "title": "enableShuffleChange"
+        },
+        "enableNumberedGuideChange": {
+          "description": "Indicates if changing numbered guide mode is enabled",
+          "type": "boolean",
+          "title": "enableNumberedGuideChange"
+        },
+        "enablePlacementAreaChange": {
+          "description": "Indicates if changing placement area mode is enabled",
+          "type": "boolean",
+          "title": "enablePlacementAreaChange"
+        },
+        "enablePromptChange": {
+          "description": "Indicates if changing prompt is enabled",
+          "type": "boolean",
+          "title": "enablePromptChange"
+        },
+        "enableChoiceLabelChange": {
+          "description": "Indicates if changing choice label is enabled",
+          "type": "boolean",
+          "title": "enableChoiceLabelChange"
+        },
+        "enableChoicesLabelChange": {
+          "description": "Indicates if changing the label for the choices is enabled",
+          "type": "boolean",
+          "title": "enableChoicesLabelChange"
+        },
+        "enableRemoveTiles": {
+          "description": "Indicates if changing the remove tiles mode is enabled",
+          "type": "boolean",
+          "title": "enableRemoveTiles"
+        },
+        "enableFeedback": {
+          "description": "Indicates if feedback is enabled",
+          "type": "boolean",
+          "title": "enableFeedback"
+        },
+        "orientationLabel": {
+          "description": "The label for the orientation checkboxes",
+          "type": "string",
+          "title": "orientationLabel"
+        },
+        "shuffleLabel": {
+          "description": "The label for the shuffle checkbox",
+          "type": "string",
+          "title": "shuffleLabel"
+        },
+        "includePlacementAreaLabel": {
+          "description": "The label for the include placement area checkbox",
+          "type": "string",
+          "title": "includePlacementAreaLabel"
+        },
+        "numberedGuidesLabel": {
+          "description": "The label for the numbered guides checkbox",
+          "type": "string",
+          "title": "numberedGuidesLabel"
+        },
+        "promptLabel": {
+          "description": "The label for the prompt input",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "choiceLabel": {
+          "description": "The label for the choice input",
+          "type": "string",
+          "title": "choiceLabel"
+        },
+        "choicesLabel": {
+          "description": "The label for the individual choice input",
+          "type": "string",
+          "title": "choicesLabel"
+        },
+        "removeTilesLabel": {
+          "description": "The label for the remove tiles switch",
+          "type": "string",
+          "title": "removeTilesLabel"
+        }
+      }
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -186,155 +365,9 @@
       ]
     },
     "partialScoring": {
-      "description": "Indicates if partial scoring should be used",
+      "description": "Indicates if partialScoring is enabled",
       "type": "boolean",
       "title": "partialScoring"
-    },
-    "partialScoringLabel": {
-      "description": "Partial scoring label",
-      "type": "string",
-      "title": "partialScoringLabel"
-    },
-    "maxSelections": {
-      "description": "The maximum number of token selections a user can make when responding",
-      "type": "number",
-      "title": "maxSelections"
-    },
-    "mode": {
-      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are strictly parsed by of these methods.",
-      "enum": [
-        "paragraph",
-        "sentence",
-        "word"
-      ],
-      "type": "string",
-      "title": "mode"
-    },
-    "tokens": {
-      "description": "The selectable text tokens in the main text content",
-      "type": "array",
-      "items": {
-        "title": "TextToken",
-        "type": "object",
-        "properties": {
-          "text": {
-            "description": "The token text",
-            "type": "string",
-            "title": "text"
-          },
-          "start": {
-            "description": "The start point in the main text for this token",
-            "type": "number",
-            "title": "start"
-          },
-          "end": {
-            "description": "The end point in the main text for this token",
-            "type": "number",
-            "title": "end"
-          },
-          "correct": {
-            "description": "Is selected does the token represent a correct response",
-            "type": "boolean",
-            "title": "correct"
-          }
-        },
-        "required": [
-          "end",
-          "start"
-        ]
-      },
-      "title": "tokens"
-    },
-    "configure": {
-      "title": "SelectTextPieConfigure",
-      "type": "object",
-      "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
-          "type": "string",
-          "title": "promptLabel"
-        },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
-          "type": "boolean",
-          "title": "enableContentChange"
-        },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
-          "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
-        }
-      }
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -348,14 +381,159 @@
     }
   },
   "required": [
+    "choiceAreaLayout",
+    "choices",
     "configure",
+    "correctResponse",
     "element",
+    "feedback",
     "id",
-    "maxSelections",
-    "text",
-    "tokens"
+    "prompt",
+    "showOrdering",
+    "shuffle"
   ],
   "definitions": {
+    "Choice": {
+      "title": "Choice",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The id of the choice",
+          "type": "string",
+          "title": "id"
+        },
+        "label": {
+          "description": "The label of the choice",
+          "type": "string",
+          "title": "label"
+        },
+        "moveOnDrag": {
+          "description": "Indicates if choice will be removed after is placed into a placement area",
+          "default": false,
+          "type": "boolean",
+          "title": "moveOnDrag"
+        },
+        "shuffle": {
+          "description": "If the entire array of choices can shuffle, each choice itself\nhas this property to indicate if it should shuffle",
+          "default": true,
+          "type": "boolean",
+          "title": "shuffle"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "CorrectResponse": {
+      "title": "CorrectResponse",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The id of the correct response",
+          "type": "string",
+          "title": "id"
+        },
+        "weight": {
+          "description": "The weight of the correct response\nNote: weights are not configurable in the existing component so we'll ignore it for now",
+          "type": "number",
+          "title": "weight"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ConfigurePlacementOrdering": {
+      "title": "ConfigurePlacementOrdering",
+      "type": "object",
+      "properties": {
+        "enableOrientationChange": {
+          "description": "Indicates if changing orientation is enabled",
+          "type": "boolean",
+          "title": "enableOrientationChange"
+        },
+        "enableShuffleChange": {
+          "description": "Indicates if changing shuffle mode is enabled",
+          "type": "boolean",
+          "title": "enableShuffleChange"
+        },
+        "enableNumberedGuideChange": {
+          "description": "Indicates if changing numbered guide mode is enabled",
+          "type": "boolean",
+          "title": "enableNumberedGuideChange"
+        },
+        "enablePlacementAreaChange": {
+          "description": "Indicates if changing placement area mode is enabled",
+          "type": "boolean",
+          "title": "enablePlacementAreaChange"
+        },
+        "enablePromptChange": {
+          "description": "Indicates if changing prompt is enabled",
+          "type": "boolean",
+          "title": "enablePromptChange"
+        },
+        "enableChoiceLabelChange": {
+          "description": "Indicates if changing choice label is enabled",
+          "type": "boolean",
+          "title": "enableChoiceLabelChange"
+        },
+        "enableChoicesLabelChange": {
+          "description": "Indicates if changing the label for the choices is enabled",
+          "type": "boolean",
+          "title": "enableChoicesLabelChange"
+        },
+        "enableRemoveTiles": {
+          "description": "Indicates if changing the remove tiles mode is enabled",
+          "type": "boolean",
+          "title": "enableRemoveTiles"
+        },
+        "enableFeedback": {
+          "description": "Indicates if feedback is enabled",
+          "type": "boolean",
+          "title": "enableFeedback"
+        },
+        "orientationLabel": {
+          "description": "The label for the orientation checkboxes",
+          "type": "string",
+          "title": "orientationLabel"
+        },
+        "shuffleLabel": {
+          "description": "The label for the shuffle checkbox",
+          "type": "string",
+          "title": "shuffleLabel"
+        },
+        "includePlacementAreaLabel": {
+          "description": "The label for the include placement area checkbox",
+          "type": "string",
+          "title": "includePlacementAreaLabel"
+        },
+        "numberedGuidesLabel": {
+          "description": "The label for the numbered guides checkbox",
+          "type": "string",
+          "title": "numberedGuidesLabel"
+        },
+        "promptLabel": {
+          "description": "The label for the prompt input",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "choiceLabel": {
+          "description": "The label for the choice input",
+          "type": "string",
+          "title": "choiceLabel"
+        },
+        "choicesLabel": {
+          "description": "The label for the individual choice input",
+          "type": "string",
+          "title": "choicesLabel"
+        },
+        "removeTilesLabel": {
+          "description": "The label for the remove tiles switch",
+          "type": "string",
+          "title": "removeTilesLabel"
+        }
+      }
+    },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
       "type": "object",
@@ -567,127 +745,6 @@
         "custom",
         "type"
       ]
-    },
-    "TextToken": {
-      "title": "TextToken",
-      "type": "object",
-      "properties": {
-        "text": {
-          "description": "The token text",
-          "type": "string",
-          "title": "text"
-        },
-        "start": {
-          "description": "The start point in the main text for this token",
-          "type": "number",
-          "title": "start"
-        },
-        "end": {
-          "description": "The end point in the main text for this token",
-          "type": "number",
-          "title": "end"
-        },
-        "correct": {
-          "description": "Is selected does the token represent a correct response",
-          "type": "boolean",
-          "title": "correct"
-        }
-      },
-      "required": [
-        "end",
-        "start"
-      ]
-    },
-    "SelectTextPieConfigure": {
-      "title": "SelectTextPieConfigure",
-      "type": "object",
-      "properties": {
-        "promptLabel": {
-          "description": "The question prompt or item stem",
-          "type": "string",
-          "title": "promptLabel"
-        },
-        "enableContentChange": {
-          "description": "Indicates if the content can change",
-          "type": "boolean",
-          "title": "enableContentChange"
-        },
-        "contentLabel": {
-          "description": "Content label",
-          "type": "string",
-          "title": "contentLabel"
-        },
-        "enableHighlightChoices": {
-          "description": "Indicates if the choices are highlighted",
-          "type": "boolean",
-          "title": "enableHighlightChoices"
-        },
-        "highlightChoicesLabel": {
-          "description": "Label for highlight choices checkbox",
-          "type": "string",
-          "title": "highlightChoicesLabel"
-        },
-        "enableTokensChange": {
-          "description": "Indicates if tokens are changeable",
-          "type": "boolean",
-          "title": "enableTokensChange"
-        },
-        "tokensLabel": {
-          "description": "Label for the tokens",
-          "type": "string",
-          "title": "tokensLabel"
-        },
-        "enableFeedback": {
-          "description": "Indicates if feedback is enabled",
-          "type": "boolean",
-          "title": "enableFeedback"
-        },
-        "setCorrectAnswersLabel": {
-          "description": "Label for Set Correct Answers switch",
-          "type": "string",
-          "title": "setCorrectAnswersLabel"
-        },
-        "showMode": {
-          "description": "Indicates if the selected mode of the text tokens is displayed",
-          "type": "boolean",
-          "title": "showMode"
-        },
-        "modeLabel": {
-          "description": "Label to display the selected mode of the text tokens",
-          "type": "string",
-          "title": "modeLabel"
-        },
-        "showSelections": {
-          "description": "Indicates if the available selections number is displayed",
-          "type": "boolean",
-          "title": "showSelections"
-        },
-        "availableSelectionsLabel": {
-          "description": "Label to display the number of available selections",
-          "type": "string",
-          "title": "availableSelectionsLabel"
-        },
-        "showCorrectAnswersNumber": {
-          "description": "Indicates if the correct answers number is displayed",
-          "type": "boolean",
-          "title": "showCorrectAnswersNumber"
-        },
-        "correctAnswersLabel": {
-          "description": "Label to display the number of correct answers",
-          "type": "string",
-          "title": "correctAnswersLabel"
-        },
-        "showSelectionCount": {
-          "description": "Indicates if selection count is displayed",
-          "type": "boolean",
-          "title": "showSelectionCount"
-        },
-        "selectionCountLabel": {
-          "description": "Label for selection count",
-          "type": "string",
-          "title": "selectionCountLabel"
-        }
-      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
