@@ -2,18 +2,6 @@ import {Choice}  from '../../Choice';
 import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 
-enum KeyMode {
-  /** keyed with letters */
-  letters = 'letters', 
-  /** keyed with numbers */
-  numbers = 'numbers' 
-} 
-
-enum ChoiceMode {
-  checkbox = 'checkbox', // user can select multiple choices
-  radio = 'radio'// user can  select one choice
-}
-
 /**
 * Model for the Choice Interaction
 * @additionalProperties false
@@ -27,17 +15,19 @@ export interface MultipleChoicePie extends PieModel {
   prompt?: string;
   
   /** What key should be displayed before choices. If undefined no  key will be displayed.  */
-  keyMode?: KeyMode; 
+  keyMode?: 'letters' | 'numbers';
   
   /** Indicates the choices are single or multiple selection */
-  choiceMode?: ChoiceMode;
+  choiceMode?: 'checkbox' | 'radio';
 
   /**  Indicates the order of choices should be randdomly ordered when presented to user */
   shuffle?: boolean;
 
   /** Indicates that the item should use partial scoring */
   partialScoring: boolean;
-  
+
+  /** The label for partial scoring */
+  partialScoringLabel?: string;
 }
 
 
