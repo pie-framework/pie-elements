@@ -79,7 +79,7 @@ class Main extends React.Component {
         )}
         {index === 1 && (
           <ScoringConfig
-            partialScoring={model.partialScoring}
+            partialScoring={!!model.partialScoring}
             numberOfCorrectResponses={model.correctResponse.length}
             onChange={this.onPartialScoringChange}
           />

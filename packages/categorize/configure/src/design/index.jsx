@@ -233,7 +233,7 @@ export class Design extends React.Component {
             config={config.choices}
             onConfigChange={this.changeChoicesConfig}
             onChange={this.changeChoices}
-            shuffle={model.shuffle}
+            shuffle={model.config.choices.shuffle}
             onShuffleChange={this.toggleShuffle}
             onAdd={this.addChoice}
             onDelete={this.deleteChoice}
