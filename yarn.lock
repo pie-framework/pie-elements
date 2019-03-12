@@ -1518,10 +1518,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@pie-framework/build-helper@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-3.0.0.tgz#2deac0cc3ca895891743d4f3ca22d97e977dc320"
-  integrity sha512-fqcvYBDvl1IsaHM8yOMdML+TA7vz2lxDlfJ+TRHWy5+pWXM0b6CyJz6ldAS5zZPh8rRNegvqRGxfTY/Nc2Eh9A==
+"@pie-framework/build-helper@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-3.0.1.tgz#62752f5aa9f51bfd5f3f8eef3464db0eee6c388e"
+  integrity sha512-j41J+ymTGdgPPO+nNxib4Ho4iHsPvA7LH2J7K/lNhd5c88ffKw16St0Gsz3fVmsutXHPJfXy26Z69JX7ygU+FQ==
   dependencies:
     conventional-changelog-core "^3.1.6"
     debug "^4.1.1"
@@ -9316,7 +9316,7 @@ react-measure@^2.2.2:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
 
-"react-number-format@github:PieElements/react-number-format#feature/bad-input":
+react-number-format@PieElements/react-number-format#feature/bad-input:
   version "3.2.0"
   resolved "https://codeload.github.com/PieElements/react-number-format/tar.gz/ca13da7e71b4aeba759365fc0b08536185749123"
   dependencies:
