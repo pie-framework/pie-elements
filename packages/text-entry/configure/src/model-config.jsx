@@ -83,7 +83,7 @@ class RawModelConfig extends React.Component {
           {allowIntegersOnly && (
             <InputCheckbox
               label="Negative"
-              checked={!!config.allowNegative}
+              checked={config.allowNegative || false}
               onChange={this.onChange('allowNegative')}
             />
           )}
