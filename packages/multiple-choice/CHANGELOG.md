@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.8.0...@pie-element/multiple-choice@2.9.0) (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+* update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
+
+
+
+
+
 # [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.7.1...@pie-element/multiple-choice@2.8.0) (2019-02-20)
 
 

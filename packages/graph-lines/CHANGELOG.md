@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.3.2...@pie-element/graph-lines@1.4.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* Send partialScoring property as a boolean to PartialScoringConfig as expected instead of array. InputCheckbox has to have a boolean value (undefined was throwing an error) ([#130](https://github.com/pie-framework/pie-elements/issues/130)) ([c391d3c](https://github.com/pie-framework/pie-elements/commit/c391d3c))
+
+
+### Features
+
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+* update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
+
+
+
+
+
 ## [1.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.3.1...@pie-element/graph-lines@1.3.2) (2019-02-20)
 
 **Note:** Version bump only for package @pie-element/graph-lines

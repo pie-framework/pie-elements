@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.0.4...@pie-element/text-entry-configure@2.1.0) (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 ## [2.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.0.3...@pie-element/text-entry-configure@2.0.4) (2019-02-20)
 
 **Note:** Version bump only for package @pie-element/text-entry-configure

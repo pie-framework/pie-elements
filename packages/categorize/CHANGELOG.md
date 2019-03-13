@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.11.0...@pie-element/categorize@2.12.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* Fixed console warning. ([3455bf2](https://github.com/pie-framework/pie-elements/commit/3455bf2))
+* Fixed snapshots. ([8adf681](https://github.com/pie-framework/pie-elements/commit/8adf681))
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+* update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
+
+
+
+
+
 # [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.10.1...@pie-element/categorize@2.11.0) (2019-02-20)
 
 

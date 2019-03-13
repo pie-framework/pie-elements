@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.1.4...@pie-element/inline-choice-configure@1.2.0) (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 ## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.1.3...@pie-element/inline-choice-configure@1.1.4) (2019-02-20)
 
 **Note:** Version bump only for package @pie-element/inline-choice-configure

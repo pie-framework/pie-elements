@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.4.0...@pie-element/categorize-configure@1.5.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* Fixed console warning. ([3455bf2](https://github.com/pie-framework/pie-elements/commit/3455bf2))
+* Fixed snapshots. ([8adf681](https://github.com/pie-framework/pie-elements/commit/8adf681))
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.3.5...@pie-element/categorize-configure@1.4.0) (2019-02-20)
 
 
