@@ -10,7 +10,7 @@
   ],
   "types": "lib/index.d.ts",
   "scripts": {
-    "make-schemas": "ts-node scripts/GenerateSchemas.ts -m",
+    "make-schemas": "ts-node --max-old-space-size=4096 scripts/GenerateSchemas.ts -m",
     "copy-schemas": "ts-node scripts/GenerateSchemas.ts -c",
     "build": "tsc",
     "view-docs": "docson -d dist/schemas",

@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root';
 
+import defaults from './defaults';
+
 const csToUi = cs => {};
 /**
  *
@@ -10,7 +12,12 @@ const csToUi = cs => {};
  * {"{"width":"200px","height":"100px","disabled":true,"mode":"evaluate","feedback":{"type":"default","default":"Your answer has been submitted","customFeedback":"<div>Thank you very much</div>"},"id":"1","element":"extended-text-entry","value":"<div>asrt</div>","mathEnabled":false}"} ui
  */
 const uiToCs = ui => {};
-export default class extends HTMLElement {
+export default class ExtendedTextEntry extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   set model(m) {
     this._model = m;
     this.render();

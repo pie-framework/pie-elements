@@ -13,11 +13,19 @@ import defaults from 'lodash/defaults';
 const prepareCustomizationObject = (model) => {
   return {
     ...model,
-    configure: defaults(model.configure, defaultValues)
+    configure: defaults(model.configure, defaultValues.configure)
   };
 };
 
 export default class PlacementOrdering extends HTMLElement {
+  static createDefaultModel = (model = {}) => {
+    return {
+      ...defaultValues,
+      configure: defaults(model.configure, defaultValues.configure),
+      ...model
+    };
+  };
+
   constructor() {
     super();
     this.onModelChange = (model, resetSession) => {

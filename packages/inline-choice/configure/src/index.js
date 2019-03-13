@@ -5,7 +5,14 @@ import ReactDOM from 'react-dom';
 import Root from './root';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-export default class extends HTMLElement {
+import defaults from './defaults';
+
+export default class InlineChoice extends HTMLElement {
+  static createDefaultModel = (model = {}) => utils.normalizeChoices({
+    ...defaults,
+    ...model,
+  });
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);

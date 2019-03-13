@@ -2,6 +2,8 @@ import debug from 'debug';
 import shuffle from 'lodash/shuffle';
 import { isResponseCorrect } from './utils';
 
+import defaults from './defaults';
+
 const log = debug('pie-elements:multiple-choice:controller');
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -24,6 +26,15 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
 
   return out;
 };
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model
+    });
+  });
+}
 
 export function model(question, session, env) {
   return new Promise((resolve, reject) => {

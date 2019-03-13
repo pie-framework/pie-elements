@@ -208,6 +208,8 @@ export class Design extends React.Component {
       return c;
     });
 
+    const { shuffle } = (config && config.choices) || {};
+
     return (
       <IdProvider value={this.uid}>
         <div className={classNames(classes.design, className)}>
@@ -233,7 +235,7 @@ export class Design extends React.Component {
             config={config.choices}
             onConfigChange={this.changeChoicesConfig}
             onChange={this.changeChoices}
-            shuffle={model.config.choices.shuffle}
+            shuffle={!!shuffle}
             onShuffleChange={this.toggleShuffle}
             onAdd={this.addChoice}
             onDelete={this.deleteChoice}

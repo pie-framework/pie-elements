@@ -8,16 +8,16 @@ Properties of the `feedback` object:
 
 ## `type` (string, enum, required)
 
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
 * `default`
+* `none`
 
-## `value` (string, required)
+## `default` (string)
+
+Indicates the feedback value
 
 # `width` (string)
 
@@ -26,12 +26,6 @@ Width the editor should take. USE CSS-style definition.
 # `height` (string)
 
 Height the editor should take. USE CSS-style definition.
-
-# `disabled` (boolean)
-
-Should the editor be disabled?
-
-Default: `false`
 
 # `prompt` (string)
 
@@ -57,25 +51,19 @@ The html Element tag name
 
 The schema defines the following additional types:
 
-## `Feedback` (object)
+## `DefaultFeedbackType` (object)
 
-Properties of the `Feedback` object:
+Properties of the `DefaultFeedbackType` object:
 
 ### `type` (string, enum, required)
 
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+Indicates the feedback type
 
 This element must be one of the following enum values:
 
-* `custom`
 * `default`
+* `none`
 
-### `value` (string, required)
+### `default` (string)
 
-## `FeedbackType` (string)
-
-The type of feedback to use:
-   `default` = a standard feedback message
-   `custom` = a customized feedback message
+Indicates the feedback value

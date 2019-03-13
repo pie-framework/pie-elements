@@ -1,6 +1,8 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:select-text:controller');
 
 const buildTokens = (tokens, evaluateMode) => {
@@ -80,6 +82,15 @@ export const outcome = (question, session, env) => {
     }
   });
 };
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model
+    });
+  });
+}
 
 export const model = (question, session, env) => {
   return new Promise(resolve => {

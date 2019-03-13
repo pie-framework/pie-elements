@@ -1,6 +1,8 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:graph-lines:controller');
 
 const getResponseCorrectness = (
@@ -97,6 +99,15 @@ export const outcome = (question, session, env) => {
     }
   });
 };
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model
+    });
+  });
+}
 
 export function model(question, session, env) {
   return new Promise(resolve => {

@@ -2,6 +2,8 @@ import debug from 'debug';
 import mathjs from 'mathjs';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
+import defaults from './defaults';
+
 const log = debug('@pie-element:function-entry:controller');
 
 const process = v => mathjs.simplify(v ? v.trim() : '');
@@ -13,6 +15,15 @@ const isResponseCorrect = (correctResponse, value) => {
   log('correctResponse:', cr);
   return processedValue.equals(cr);
 };
+
+export function createDefaultModel(model = {}) {
+  return new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model,
+    });
+  });
+}
 
 export function model(question, session, env) {
   return new Promise(resolve => {

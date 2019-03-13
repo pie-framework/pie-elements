@@ -3,7 +3,14 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
-export default class extends HTMLElement {
+import defaults from './defaults';
+
+export default class Calculator extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   constructor() {
     super();
     this.onModelChanged = this.onModelChanged.bind(this);
