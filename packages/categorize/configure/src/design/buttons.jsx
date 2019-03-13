@@ -26,7 +26,7 @@ export class RawAddButton extends React.Component {
         disabled={disabled}
         className={classNames(classes.addButton, className)}
         size="small"
-        variant="raised"
+        variant="contained"
         color="primary"
       >
         {label}
