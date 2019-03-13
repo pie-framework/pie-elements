@@ -6,7 +6,7 @@ exports[`AddButton snapshot renders 1`] = `
   color="primary"
   onClick={[MockFunction]}
   size="small"
-  variant="raised"
+  variant="contained"
 >
   Add
 </WithStyles(Button)>
