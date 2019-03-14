@@ -9,6 +9,7 @@
   },
   "author": "",
   "dependencies": {
+    "@pie-element/multiple-choice": "^2.8.7",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
