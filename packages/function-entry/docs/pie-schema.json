@@ -1,0 +1,412 @@
+{
+  "description": "Model Object for @pie-elements/function-entry",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "equation": {
+      "description": "The expression against which the response will be evaluated",
+      "type": "string",
+      "title": "equation"
+    },
+    "showFormattingHelp": {
+      "description": "Indicates if formatting hints for constructing an answer are displayed",
+      "type": "boolean",
+      "title": "showFormattingHelp"
+    },
+    "feedback": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id"
+  ],
+  "definitions": {
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

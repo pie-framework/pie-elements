@@ -1,0 +1,70 @@
+{
+  "description": "Model for the @pie-elements/ruler",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "measure": {
+      "description": "Type of the ruler",
+      "enum": [
+        "imperial",
+        "metric"
+      ],
+      "type": "string",
+      "title": "measure"
+    },
+    "label": {
+      "description": "Ruler label\nfor measure: imperial it can be 'in' | 'ft' | 'yd' | 'm'\nfor measure: metric it can be ''mm' | 'cm' | 'm' | 'km' |",
+      "enum": [
+        "cm",
+        "ft",
+        "in",
+        "km",
+        "m",
+        "mm",
+        "yd"
+      ],
+      "type": "string",
+      "title": "label"
+    },
+    "imperialTicks": {
+      "description": "Number of ticks to display if metric is imperial",
+      "default": "is 8",
+      "enum": [
+        16,
+        4,
+        8
+      ],
+      "type": "number",
+      "title": "imperialTicks"
+    },
+    "units": {
+      "description": "Units number for the ruler",
+      "type": "number",
+      "title": "units"
+    },
+    "width": {
+      "description": "Ruler width",
+      "type": "number",
+      "title": "width"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id",
+    "label",
+    "measure",
+    "units",
+    "width"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

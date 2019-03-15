@@ -56,6 +56,7 @@ exports[`Design snapshot renders 1`] = `
       onChange={[Function]}
       onConfigChange={[Function]}
       onDelete={[Function]}
+      shuffle={false}
     />
     <Component
       onChange={[Function]}

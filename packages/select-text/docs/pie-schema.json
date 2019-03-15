@@ -20,37 +20,180 @@
       "title": "highlightChoices"
     },
     "feedback": {
-      "description": "Feedback for student responses",
-      "type": "array",
-      "items": {
-        "title": "Feedback",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-            "title": "FeedbackType",
-            "enum": [
-              "custom",
-              "default"
-            ],
-            "type": "string"
-          },
-          "value": {
-            "type": "string",
-            "title": "value"
-          }
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
         },
-        "required": [
-          "type",
-          "value"
-        ]
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
       },
-      "title": "feedback"
+      "required": [
+        "correct",
+        "incorrect"
+      ]
     },
     "partialScoring": {
       "description": "Indicates if partial scoring should be used",
       "type": "boolean",
       "title": "partialScoring"
+    },
+    "partialScoringLabel": {
+      "description": "Partial scoring label",
+      "type": "string",
+      "title": "partialScoringLabel"
     },
     "maxSelections": {
       "description": "The maximum number of token selections a user can make when responding",
@@ -58,14 +201,14 @@
       "title": "maxSelections"
     },
     "mode": {
-      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are stricly parsed by of these methods.",
-      "title": "SelectionMode",
+      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are strictly parsed by of these methods.",
       "enum": [
-        "paragraphs",
+        "paragraph",
         "sentence",
         "word"
       ],
-      "type": "string"
+      "type": "string",
+      "title": "mode"
     },
     "tokens": {
       "description": "The selectable text tokens in the main text content",
@@ -96,13 +239,102 @@
           }
         },
         "required": [
-          "correct",
           "end",
-          "start",
-          "text"
+          "start"
         ]
       },
       "title": "tokens"
+    },
+    "configure": {
+      "title": "SelectTextPieConfigure",
+      "type": "object",
+      "properties": {
+        "promptLabel": {
+          "description": "The question prompt or item stem",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "enableContentChange": {
+          "description": "Indicates if the content can change",
+          "type": "boolean",
+          "title": "enableContentChange"
+        },
+        "contentLabel": {
+          "description": "Content label",
+          "type": "string",
+          "title": "contentLabel"
+        },
+        "enableHighlightChoices": {
+          "description": "Indicates if the choices are highlighted",
+          "type": "boolean",
+          "title": "enableHighlightChoices"
+        },
+        "highlightChoicesLabel": {
+          "description": "Label for highlight choices checkbox",
+          "type": "string",
+          "title": "highlightChoicesLabel"
+        },
+        "enableTokensChange": {
+          "description": "Indicates if tokens are changeable",
+          "type": "boolean",
+          "title": "enableTokensChange"
+        },
+        "tokensLabel": {
+          "description": "Label for the tokens",
+          "type": "string",
+          "title": "tokensLabel"
+        },
+        "enableFeedback": {
+          "description": "Indicates if feedback is enabled",
+          "type": "boolean",
+          "title": "enableFeedback"
+        },
+        "setCorrectAnswersLabel": {
+          "description": "Label for Set Correct Answers switch",
+          "type": "string",
+          "title": "setCorrectAnswersLabel"
+        },
+        "showMode": {
+          "description": "Indicates if the selected mode of the text tokens is displayed",
+          "type": "boolean",
+          "title": "showMode"
+        },
+        "modeLabel": {
+          "description": "Label to display the selected mode of the text tokens",
+          "type": "string",
+          "title": "modeLabel"
+        },
+        "showSelections": {
+          "description": "Indicates if the available selections number is displayed",
+          "type": "boolean",
+          "title": "showSelections"
+        },
+        "availableSelectionsLabel": {
+          "description": "Label to display the number of available selections",
+          "type": "string",
+          "title": "availableSelectionsLabel"
+        },
+        "showCorrectAnswersNumber": {
+          "description": "Indicates if the correct answers number is displayed",
+          "type": "boolean",
+          "title": "showCorrectAnswersNumber"
+        },
+        "correctAnswersLabel": {
+          "description": "Label to display the number of correct answers",
+          "type": "string",
+          "title": "correctAnswersLabel"
+        },
+        "showSelectionCount": {
+          "description": "Indicates if selection count is displayed",
+          "type": "boolean",
+          "title": "showSelectionCount"
+        },
+        "selectionCountLabel": {
+          "description": "Label for selection count",
+          "type": "string",
+          "title": "selectionCountLabel"
+        }
+      }
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -116,6 +348,7 @@
     }
   },
   "required": [
+    "configure",
     "element",
     "id",
     "maxSelections",
@@ -123,47 +356,217 @@
     "tokens"
   ],
   "definitions": {
-    "Feedback": {
-      "title": "Feedback",
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
       "type": "object",
       "properties": {
-        "type": {
-          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-          "title": "FeedbackType",
-          "enum": [
-            "custom",
-            "default"
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
           ],
-          "type": "string"
+          "title": "correct"
         },
-        "value": {
-          "type": "string",
-          "title": "value"
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
         }
       },
       "required": [
-        "type",
-        "value"
+        "correct",
+        "incorrect"
       ]
     },
-    "FeedbackType": {
-      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-      "title": "FeedbackType",
-      "enum": [
-        "custom",
-        "default"
-      ],
-      "type": "string"
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
     },
-    "SelectionMode": {
-      "description": "The selected mode for tokenizing the text.\nThis is only used in the config UI to present the mode by which text has been tokenized for selection.\nIf importing an item, only set this property it the text tokens are stricly parsed by of these methods.",
-      "title": "SelectionMode",
-      "enum": [
-        "paragraphs",
-        "sentence",
-        "word"
-      ],
-      "type": "string"
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
     },
     "TextToken": {
       "title": "TextToken",
@@ -191,11 +594,100 @@
         }
       },
       "required": [
-        "correct",
         "end",
-        "start",
-        "text"
+        "start"
       ]
+    },
+    "SelectTextPieConfigure": {
+      "title": "SelectTextPieConfigure",
+      "type": "object",
+      "properties": {
+        "promptLabel": {
+          "description": "The question prompt or item stem",
+          "type": "string",
+          "title": "promptLabel"
+        },
+        "enableContentChange": {
+          "description": "Indicates if the content can change",
+          "type": "boolean",
+          "title": "enableContentChange"
+        },
+        "contentLabel": {
+          "description": "Content label",
+          "type": "string",
+          "title": "contentLabel"
+        },
+        "enableHighlightChoices": {
+          "description": "Indicates if the choices are highlighted",
+          "type": "boolean",
+          "title": "enableHighlightChoices"
+        },
+        "highlightChoicesLabel": {
+          "description": "Label for highlight choices checkbox",
+          "type": "string",
+          "title": "highlightChoicesLabel"
+        },
+        "enableTokensChange": {
+          "description": "Indicates if tokens are changeable",
+          "type": "boolean",
+          "title": "enableTokensChange"
+        },
+        "tokensLabel": {
+          "description": "Label for the tokens",
+          "type": "string",
+          "title": "tokensLabel"
+        },
+        "enableFeedback": {
+          "description": "Indicates if feedback is enabled",
+          "type": "boolean",
+          "title": "enableFeedback"
+        },
+        "setCorrectAnswersLabel": {
+          "description": "Label for Set Correct Answers switch",
+          "type": "string",
+          "title": "setCorrectAnswersLabel"
+        },
+        "showMode": {
+          "description": "Indicates if the selected mode of the text tokens is displayed",
+          "type": "boolean",
+          "title": "showMode"
+        },
+        "modeLabel": {
+          "description": "Label to display the selected mode of the text tokens",
+          "type": "string",
+          "title": "modeLabel"
+        },
+        "showSelections": {
+          "description": "Indicates if the available selections number is displayed",
+          "type": "boolean",
+          "title": "showSelections"
+        },
+        "availableSelectionsLabel": {
+          "description": "Label to display the number of available selections",
+          "type": "string",
+          "title": "availableSelectionsLabel"
+        },
+        "showCorrectAnswersNumber": {
+          "description": "Indicates if the correct answers number is displayed",
+          "type": "boolean",
+          "title": "showCorrectAnswersNumber"
+        },
+        "correctAnswersLabel": {
+          "description": "Label to display the number of correct answers",
+          "type": "string",
+          "title": "correctAnswersLabel"
+        },
+        "showSelectionCount": {
+          "description": "Indicates if selection count is displayed",
+          "type": "boolean",
+          "title": "showSelectionCount"
+        },
+        "selectionCountLabel": {
+          "description": "Label for selection count",
+          "type": "string",
+          "title": "selectionCountLabel"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

@@ -4,48 +4,11 @@ exports[`design snapshot renders all items except feedback 1`] = `
 <div
   className="foo"
 >
-  <Component
-    label="Prompt"
-  >
+  <Component>
     <EditableHtml
       onChange={[MockFunction]}
     />
   </Component>
-  <TextField
-    label="Content"
-    multiline={true}
-    onChange={[Function]}
-    required={false}
-    select={false}
-    variant="standard"
-  />
-  <Component
-    label="Highlight choices"
-    onChange={[Function]}
-  />
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <WithStyles(Chip)
-    label="Mode: None"
-  />
-  <WithStyles(Chip)
-    label="Selections Available: 0"
-  />
-  <WithStyles(Chip)
-    label="Correct Answers: 0"
-  />
-  <Component
-    label="Selection count (0:any)"
-    max={0}
-    min={0}
-    onChange={[Function]}
-  />
 </div>
 `;
 
@@ -53,40 +16,11 @@ exports[`design snapshot renders all items except the content input 1`] = `
 <div
   className="foo"
 >
-  <Component
-    label="Prompt"
-  >
+  <Component>
     <EditableHtml
       onChange={[MockFunction]}
     />
   </Component>
-  <Component
-    label="Highlight choices"
-    onChange={[Function]}
-  />
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <WithStyles(Chip)
-    label="Mode: None"
-  />
-  <WithStyles(Chip)
-    label="Selections Available: 0"
-  />
-  <WithStyles(Chip)
-    label="Correct Answers: 0"
-  />
-  <Component
-    label="Selection count (0:any)"
-    max={0}
-    min={0}
-    onChange={[Function]}
-  />
 </div>
 `;
 
@@ -94,50 +28,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 <div
   className="foo"
 >
-  <Component
-    label="Prompt"
-  >
+  <Component>
     <EditableHtml
       onChange={[MockFunction]}
     />
   </Component>
-  <TextField
-    label="Content"
-    multiline={true}
-    onChange={[Function]}
-    required={false}
-    select={false}
-    variant="standard"
-  />
-  <Component
-    label="Highlight choices"
-    onChange={[Function]}
-  />
-  <Component
-    label="Tokens"
-  >
-    <WithStyles(Tokenizer)
-      onChange={[Function]}
-      tokens={Array []}
-    />
-  </Component>
-  <WithStyles(Chip)
-    label="Mode: None"
-  />
-  <WithStyles(Chip)
-    label="Selections Available: 0"
-  />
-  <WithStyles(Chip)
-    label="Correct Answers: 0"
-  />
-  <Component
-    label="Selection count (0:any)"
-    max={0}
-    min={0}
-    onChange={[Function]}
-  />
-  <Component
-    onChange={[Function]}
-  />
 </div>
 `;

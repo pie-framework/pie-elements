@@ -1,0 +1,582 @@
+{
+  "description": "Model for the @pie-elements/text-entry",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "correctResponses": {
+      "title": "Responses",
+      "type": "object",
+      "properties": {
+        "values": {
+          "description": "Array of possible responses",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "values"
+        },
+        "ignoreWhitespace": {
+          "description": "Indicates if whitespaces should be ignored",
+          "type": "boolean",
+          "title": "ignoreWhitespace"
+        },
+        "ignoreCase": {
+          "description": "Indicates if case should be ignored",
+          "type": "boolean",
+          "title": "ignoreCase"
+        }
+      },
+      "required": [
+        "values"
+      ]
+    },
+    "partialResponses": {
+      "title": "PartialResponses",
+      "type": "object",
+      "properties": {
+        "awardPercentage": {
+          "description": "The percentage for the partial response",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "awardPercentage"
+        },
+        "values": {
+          "description": "Array of possible responses",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "values"
+        },
+        "ignoreWhitespace": {
+          "description": "Indicates if whitespaces should be ignored",
+          "type": "boolean",
+          "title": "ignoreWhitespace"
+        },
+        "ignoreCase": {
+          "description": "Indicates if case should be ignored",
+          "type": "boolean",
+          "title": "ignoreCase"
+        }
+      },
+      "required": [
+        "awardPercentage",
+        "values"
+      ]
+    },
+    "prompt": {
+      "description": "Prompt for the question",
+      "type": "string",
+      "title": "prompt"
+    },
+    "allowIntegersOnly": {
+      "type": "boolean",
+      "title": "allowIntegersOnly"
+    },
+    "allowDecimal": {
+      "description": "Indicates if decimals are allowed if allowIntegersOnly is enabled",
+      "type": "boolean",
+      "title": "allowDecimal"
+    },
+    "allowThousandsSeparator": {
+      "description": "Indicates if thousands separator is allowed if allowIntegersOnly is enabled",
+      "type": "boolean",
+      "title": "allowThousandsSeparator"
+    },
+    "allowNegative": {
+      "description": "Indicates if negative numbers are allowed if allowIntegersOnly is enabled",
+      "type": "boolean",
+      "title": "allowNegative"
+    },
+    "answerBlankSize": {
+      "description": "Indicates allowed answer size",
+      "enum": [
+        "10",
+        "12",
+        "2",
+        "4",
+        "6",
+        "8"
+      ],
+      "type": "string",
+      "title": "answerBlankSize"
+    },
+    "answerAlignment": {
+      "description": "Indicates answer alignment",
+      "enum": [
+        "center",
+        "left",
+        "right"
+      ],
+      "type": "string",
+      "title": "answerAlignment"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "allowIntegersOnly",
+    "answerAlignment",
+    "answerBlankSize",
+    "correctResponses",
+    "element",
+    "feedback",
+    "id",
+    "partialResponses",
+    "prompt"
+  ],
+  "definitions": {
+    "ComplexFeedbackType": {
+      "title": "ComplexFeedbackType",
+      "type": "object",
+      "properties": {
+        "correct": {
+          "description": "Indicates the configuration for feedback when answer is correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "correct"
+        },
+        "incorrect": {
+          "description": "Indicates the configuration for feedback when answer is incorrect",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "incorrect"
+        },
+        "partial": {
+          "description": "Indicates the configuration for feedback when answer is partially correct",
+          "anyOf": [
+            {
+              "title": "DefaultFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "enum": [
+                    "default",
+                    "none"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "default": {
+                  "description": "Indicates the feedback value",
+                  "type": "string",
+                  "title": "default"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "title": "CustomFeedbackType",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates the feedback type",
+                  "type": "string",
+                  "enum": [
+                    "custom"
+                  ],
+                  "title": "type"
+                },
+                "custom": {
+                  "description": "Indicates the feedback custom value",
+                  "type": "string",
+                  "title": "custom"
+                }
+              },
+              "required": [
+                "custom",
+                "type"
+              ]
+            }
+          ],
+          "title": "partial"
+        }
+      },
+      "required": [
+        "correct",
+        "incorrect"
+      ]
+    },
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "enum": [
+            "default",
+            "none"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "CustomFeedbackType": {
+      "title": "CustomFeedbackType",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates the feedback type",
+          "type": "string",
+          "enum": [
+            "custom"
+          ],
+          "title": "type"
+        },
+        "custom": {
+          "description": "Indicates the feedback custom value",
+          "type": "string",
+          "title": "custom"
+        }
+      },
+      "required": [
+        "custom",
+        "type"
+      ]
+    },
+    "Responses": {
+      "title": "Responses",
+      "type": "object",
+      "properties": {
+        "values": {
+          "description": "Array of possible responses",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "values"
+        },
+        "ignoreWhitespace": {
+          "description": "Indicates if whitespaces should be ignored",
+          "type": "boolean",
+          "title": "ignoreWhitespace"
+        },
+        "ignoreCase": {
+          "description": "Indicates if case should be ignored",
+          "type": "boolean",
+          "title": "ignoreCase"
+        }
+      },
+      "required": [
+        "values"
+      ]
+    },
+    "PartialResponses": {
+      "title": "PartialResponses",
+      "type": "object",
+      "properties": {
+        "awardPercentage": {
+          "description": "The percentage for the partial response",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "awardPercentage"
+        },
+        "values": {
+          "description": "Array of possible responses",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "values"
+        },
+        "ignoreWhitespace": {
+          "description": "Indicates if whitespaces should be ignored",
+          "type": "boolean",
+          "title": "ignoreWhitespace"
+        },
+        "ignoreCase": {
+          "description": "Indicates if case should be ignored",
+          "type": "boolean",
+          "title": "ignoreCase"
+        }
+      },
+      "required": [
+        "awardPercentage",
+        "values"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

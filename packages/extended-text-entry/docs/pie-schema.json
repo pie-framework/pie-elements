@@ -4,26 +4,26 @@
   "type": "object",
   "properties": {
     "feedback": {
-      "title": "Feedback",
+      "title": "DefaultFeedbackType",
       "type": "object",
       "properties": {
         "type": {
-          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-          "title": "FeedbackType",
+          "description": "Indicates the feedback type",
           "enum": [
-            "custom",
-            "default"
+            "default",
+            "none"
           ],
-          "type": "string"
-        },
-        "value": {
           "type": "string",
-          "title": "value"
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
         }
       },
       "required": [
-        "type",
-        "value"
+        "type"
       ]
     },
     "width": {
@@ -35,12 +35,6 @@
       "description": "Height the editor should take. USE CSS-style definition.",
       "type": "string",
       "title": "height"
-    },
-    "disabled": {
-      "description": "Should the editor be disabled?",
-      "default": false,
-      "type": "boolean",
-      "title": "disabled"
     },
     "prompt": {
       "description": "The question prompt",
@@ -70,37 +64,28 @@
     "showMathInput"
   ],
   "definitions": {
-    "Feedback": {
-      "title": "Feedback",
+    "DefaultFeedbackType": {
+      "title": "DefaultFeedbackType",
       "type": "object",
       "properties": {
         "type": {
-          "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-          "title": "FeedbackType",
+          "description": "Indicates the feedback type",
           "enum": [
-            "custom",
-            "default"
+            "default",
+            "none"
           ],
-          "type": "string"
-        },
-        "value": {
           "type": "string",
-          "title": "value"
+          "title": "type"
+        },
+        "default": {
+          "description": "Indicates the feedback value",
+          "type": "string",
+          "title": "default"
         }
       },
       "required": [
-        "type",
-        "value"
+        "type"
       ]
-    },
-    "FeedbackType": {
-      "description": "The type of feedback to use:\n   `default` = a standard feedback message\n   `custom` = a customized feedback message",
-      "title": "FeedbackType",
-      "enum": [
-        "custom",
-        "default"
-      ],
-      "type": "string"
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

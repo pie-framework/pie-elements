@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@pie-lib/feedback": "^0.4.1",
-    "@pie-ui/number-line": "next"
+    "@pie-ui/number-line": "^4.2.2"
   },
   "pie": {
     "element": "@pie-ui/number-line"

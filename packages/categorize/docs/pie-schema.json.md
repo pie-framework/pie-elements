@@ -18,6 +18,10 @@ Identifier for the choice
 
 The xhtml content for the choice
 
+## `categoryCount` (string,number)
+
+## `correctResponseCount` (string,number)
+
 # `categories` (array, required)
 
 The categories in which choices may be placed
@@ -49,6 +53,10 @@ Identifier for the choice
 ### `content` (string, required)
 
 The xhtml content for the choice
+
+### `categoryCount` (string,number)
+
+### `correctResponseCount` (string,number)
 
 # `correctResponse` (array, required)
 
@@ -88,6 +96,8 @@ This element must be one of the following enum values:
 
 * `above`
 * `below`
+* `left`
+* `right`
 
 ### `label` (string, required)
 
@@ -118,6 +128,66 @@ The number of rows in which to present the categories
 
 Default: `1`
 
+# `feedback` (object)
+
+Properties of the `feedback` object:
+
+## `correct` (, required)
+
+Indicates the configuration for feedback when answer is correct
+
+## `incorrect` (, required)
+
+Indicates the configuration for feedback when answer is incorrect
+
+## `partial`
+
+Indicates the configuration for feedback when answer is partially correct
+
+# `scoring` (object)
+
+Properties of the `scoring` object:
+
+## `weighting` (object)
+
+Properties of the `weighting` object:
+
+### `enabled` (boolean, required)
+
+Indicates if weighting is enabled
+
+### `rules` (array)
+
+Array of rules for weighting
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `category` (string, required)
+
+The id of the category
+
+#### `points` (number, required)
+
+The value of weighting
+
+## `partial` (object)
+
+Properties of the `partial` object:
+
+### `enabled` (boolean, required)
+
+Indicates if partial scoring is enabled
+
+### `rules` (array)
+
+Array of rules for partial scoring
+
+Additional restrictions:
+
+* Minimum items: `1`
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -143,6 +213,10 @@ Identifier for the choice
 ### `content` (string, required)
 
 The xhtml content for the choice
+
+### `categoryCount` (string,number)
+
+### `correctResponseCount` (string,number)
 
 ## `Category` (object)
 
@@ -172,6 +246,10 @@ Identifier for the choice
 
 The xhtml content for the choice
 
+#### `categoryCount` (string,number)
+
+#### `correctResponseCount` (string,number)
+
 ## `CategoryCorrectResponse` (object)
 
 Properties of the `CategoryCorrectResponse` object:
@@ -200,6 +278,8 @@ This element must be one of the following enum values:
 
 * `above`
 * `below`
+* `left`
+* `right`
 
 ### `label` (string, required)
 
@@ -231,3 +311,184 @@ Default: `2`
 The number of rows in which to present the categories
 
 Default: `1`
+
+## `ComplexFeedbackType` (object)
+
+Properties of the `ComplexFeedbackType` object:
+
+### `correct` (, required)
+
+Indicates the configuration for feedback when answer is correct
+
+### `incorrect` (, required)
+
+Indicates the configuration for feedback when answer is incorrect
+
+### `partial`
+
+Indicates the configuration for feedback when answer is partially correct
+
+## `DefaultFeedbackType` (object)
+
+Properties of the `DefaultFeedbackType` object:
+
+### `type` (string, enum, required)
+
+Indicates the feedback type
+
+This element must be one of the following enum values:
+
+* `default`
+* `none`
+
+### `default` (string)
+
+Indicates the feedback value
+
+## `CustomFeedbackType` (object)
+
+Properties of the `CustomFeedbackType` object:
+
+### `type` (string, enum, required)
+
+Indicates the feedback type
+
+This element must be one of the following enum values:
+
+* `custom`
+
+### `custom` (string, required)
+
+Indicates the feedback custom value
+
+## `ScoringConfig` (object)
+
+Properties of the `ScoringConfig` object:
+
+### `weighting` (object)
+
+Properties of the `weighting` object:
+
+#### `enabled` (boolean, required)
+
+Indicates if weighting is enabled
+
+#### `rules` (array)
+
+Array of rules for weighting
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+##### `category` (string, required)
+
+The id of the category
+
+##### `points` (number, required)
+
+The value of weighting
+
+### `partial` (object)
+
+Properties of the `partial` object:
+
+#### `enabled` (boolean, required)
+
+Indicates if partial scoring is enabled
+
+#### `rules` (array)
+
+Array of rules for partial scoring
+
+Additional restrictions:
+
+* Minimum items: `1`
+
+## `WeightingConfig` (object)
+
+Properties of the `WeightingConfig` object:
+
+### `enabled` (boolean, required)
+
+Indicates if weighting is enabled
+
+### `rules` (array)
+
+Array of rules for weighting
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `category` (string, required)
+
+The id of the category
+
+#### `points` (number, required)
+
+The value of weighting
+
+## `WeightingConfigRule` (object)
+
+Properties of the `WeightingConfigRule` object:
+
+### `category` (string, required)
+
+The id of the category
+
+### `points` (number, required)
+
+The value of weighting
+
+## `PartialScoringConfig` (object)
+
+Properties of the `PartialScoringConfig` object:
+
+### `enabled` (boolean, required)
+
+Indicates if partial scoring is enabled
+
+### `rules` (array)
+
+Array of rules for partial scoring
+
+Additional restrictions:
+
+* Minimum items: `1`
+
+## `PartialScoringRule` (object)
+
+Properties of the `PartialScoringRule` object:
+
+### `category` (string, required)
+
+The id of the category
+
+### `rules` (array, required)
+
+Array of rules for partial scoring for the category
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `count` (number, required)
+
+Indicates the number of correct answers
+
+#### `percent` (number, required)
+
+Indicates the percentage for partial scoring
+
+## `PartialScoringCategoryRule` (object)
+
+Properties of the `PartialScoringCategoryRule` object:
+
+### `count` (number, required)
+
+Indicates the number of correct answers
+
+### `percent` (number, required)
+
+Indicates the percentage for partial scoring

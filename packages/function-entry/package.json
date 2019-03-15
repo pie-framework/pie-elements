@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/function-entry": "next"
+    "@pie-ui/function-entry": "^3.2.2"
   },
   "pie": {
     "element": "@pie-ui/function-entry"

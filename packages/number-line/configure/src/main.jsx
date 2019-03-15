@@ -270,7 +270,7 @@ class Main extends React.Component {
                 />
               </div>
             </div>
-            <Button variant="raised" color="primary" onClick={this.setDefaults}>
+            <Button variant="contained" color="primary" onClick={this.setDefaults}>
               Reset to default values
             </Button>
           </CardContent>
