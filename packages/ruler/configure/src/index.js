@@ -23,6 +23,11 @@ export default class RulerConfigure extends HTMLElement {
     ...model,
   });
 
+  constructor() {
+    super();
+    this._model = RulerConfigure.createDefaultModel();
+  }
+
   connectedCallback() {
     setTimeout(() => {
       if (!this._model) {
@@ -34,7 +39,7 @@ export default class RulerConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = m;
+    this._model = RulerConfigure.createDefaultModel(m);
     this.render();
   }
 
