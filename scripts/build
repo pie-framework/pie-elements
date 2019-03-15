@@ -50,10 +50,6 @@ class ElementsCommands extends Commands {
     return all;
   }
 
-  break() {
-    return Promise.reject(new Error('no'));
-  }
-
   clean() {
     return Promise.all(
       this.packages().map(p => {
