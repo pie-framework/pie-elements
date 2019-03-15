@@ -1,16 +1,12 @@
 export default {
-  prompt: 'Which of these northern European countries are EU members?',
+  prompt: 'Question Prompt goes here',
   choiceMode: 'checkbox',
   keyMode: 'numbers',
   choices: [
     {
       correct: true,
-      value: 'sweden',
-      label: 'Sweden',
-    },
-    {
-      value: 'iceland',
-      label: 'Iceland',
+      value: 'choice1',
+      label: 'Choice One',
     },
   ],
 };
