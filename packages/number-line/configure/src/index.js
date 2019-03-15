@@ -12,10 +12,11 @@ export default class NumberLineConfigReactElement extends HTMLElement {
 
   constructor() {
     super();
+    this._model = NumberLineConfigReactElement.createDefaultModel();
   }
 
   set model(s) {
-    this._model = s;
+    this._model = NumberLineConfigReactElement.createDefaultModel(s);
     this._rerender();
   }
 
