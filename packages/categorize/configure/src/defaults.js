@@ -2,13 +2,13 @@ export default {
   choices: [
     {
       id: '0',
-      content: 'Choice 1'
+      content: 'Choice 0'
     },
   ],
   categories: [
     {
       id: '0',
-      label: 'Category 1',
+      label: 'Category 0',
       choices: []
     },
   ],
