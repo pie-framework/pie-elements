@@ -9,4 +9,5 @@ node_modules
 .vscode
 .npmrc
 NEXT.CHANGELOG.md
+NEXT.CHANGELOG.json
 
