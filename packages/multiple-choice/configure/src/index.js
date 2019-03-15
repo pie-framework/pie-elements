@@ -69,12 +69,13 @@ export default class MultipleChoice extends HTMLElement {
 
   constructor() {
     super();
-    this.onModelChanged = this.onModelChanged.bind(this);
+    this._model = MultipleChoice.createDefaultModel();
     this._configure = defaultValues;
+    this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = utils.normalizeChoices(s);
+    this._model = MultipleChoice.createDefaultModel(s);
     this._render();
   }
 
