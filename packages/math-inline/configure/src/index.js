@@ -16,10 +16,11 @@ export default class MathInlineConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._model = MathInlineConfigure.createDefaultModel();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = MathInlineConfigure.createDefaultModel(m);
     this._render();
   }
 

@@ -13,11 +13,12 @@ export default class Calculator extends HTMLElement {
 
   constructor() {
     super();
+    this._model = Calculator.createDefaultModel();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = s;
+    this._model = Calculator.createDefaultModel(s);
     this._render();
   }
 

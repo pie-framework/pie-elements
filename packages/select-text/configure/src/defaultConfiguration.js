@@ -1,31 +1,18 @@
 const tokens = () => [
   {
-    text: 'Rachel cut out 8 stars in 6 minutes.',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     start: 0,
-    end: 36,
-    correct: true
+    end: 55,
   },
-  {
-    text: 'Lovelle cut out 6 stars in 4 minutes.',
-    start: 37,
-    end: 74,
-    correct: true
-  },
-  {
-    text: 'Lovelle and Rachel cut the same number of stars in 6 minutes.',
-    start: 117,
-    end: 177
-  }
 ];
 
 export default {
-  highlightChoices: true,
+  highlightChoices: false,
   partialScoring: false,
   maxSelections: 2,
   mode: 'sentence',
-  prompt: 'What sentences contain the character 6 in them?',
-  text:
-    'Rachel cut out 8 stars in 6 minutes. Lovelle cut out 6 stars in 4 minutes. Rachel cut out 4 more stars than Lovelle. Lovelle and Rachel cut the same number of stars in 6 minutes.',
+  prompt: 'Question Prompt goes here',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   tokens: tokens(),
   configure: {
     contentLabel: 'Content',

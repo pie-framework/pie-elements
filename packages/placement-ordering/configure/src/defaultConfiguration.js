@@ -21,46 +21,17 @@ export default {
   correctResponse: [
     {
       id: 'c1',
-      weight: 0.2
     },
-    {
-      id: 'c4',
-      weight: 0.2
-    },
-    {
-      id: 'c3',
-      weight: 0.3
-    },
-    {
-      id: 'c2',
-      weight: 0.3
-    }
   ],
-  prompt: 'Arrange the fruits alphabetically',
+  prompt: 'Question Prompt goes here',
   choices: [
     {
-      id: 'c2',
-      label: 'Lemon',
-      shuffle: false,
-      moveOnDrag: true
-    },
-    {
-      id: 'c3',
-      label: 'Melon',
-      moveOnDrag: true
-    },
-    {
       id: 'c1',
-      label: 'Blueberry',
-      moveOnDrag: false
+      label: 'Choice 1',
     },
-    {
-      id: 'c4',
-      label: 'Pear',
-      moveOnDrag: false
-    }
   ],
   choiceAreaLayout: 'vertical',
-  choiceAreaLabel: 'choices: ',
+  choiceAreaLabel: 'Choice Label goes here',
   showOrdering: true,
+  shuffle: false
 };

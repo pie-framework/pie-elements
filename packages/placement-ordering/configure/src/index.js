@@ -10,13 +10,6 @@ import ReactDOM from 'react-dom';
 import defaultValues from './defaultConfiguration';
 import defaults from 'lodash/defaults';
 
-const prepareCustomizationObject = (model) => {
-  return {
-    ...model,
-    configure: defaults(model.configure, defaultValues.configure)
-  };
-};
-
 export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     return {
@@ -28,6 +21,7 @@ export default class PlacementOrdering extends HTMLElement {
 
   constructor() {
     super();
+    this._model = PlacementOrdering.createDefaultModel();
     this.onModelChange = (model, resetSession) => {
       this._model = model;
       this.dispatchUpdate(resetSession);
@@ -48,7 +42,7 @@ export default class PlacementOrdering extends HTMLElement {
   }
 
   set model(s) {
-    this._model = prepareCustomizationObject(s);
+    this._model = PlacementOrdering.createDefaultModel(s);
     this._rerender();
   }
 

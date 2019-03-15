@@ -1,18 +1,18 @@
 export default {
   correctResponses: {
-    values: ['mutt', 'hound'],
-    ignoreWhitespace: true,
+    values: ['correct response'],
+    ignoreWhitespace: false,
     ignoreCase: false
   },
   partialResponses: {
-    values: ['mutty'],
-    ignoreWhitespace: true,
-    ignoreCase: true,
+    values: ['partial response'],
+    ignoreWhitespace: false,
+    ignoreCase: false,
     awardPercentage: '50'
   },
   answerBlankSize: '10',
   answerAlignment: 'left',
   prompt: 'Question Prompt goes here',
-  allowDecimal: true,
-  allowThousandsSeparator: true
+  allowDecimal: false,
+  allowThousandsSeparator: false
 };

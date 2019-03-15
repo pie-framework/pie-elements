@@ -15,11 +15,12 @@ export default class InlineChoice extends HTMLElement {
 
   constructor() {
     super();
+    this._model = InlineChoice.createDefaultModel();
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = utils.normalizeChoices(s);
+    this._model = InlineChoice.createDefaultModel(s);
     this._render();
   }
 

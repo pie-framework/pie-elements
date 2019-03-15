@@ -1,20 +1,22 @@
 export default {
   mode: 'advanced',
-  expression: 'y = ',
-  question: '',
+  expression: 'Expression',
+  question: 'Question goes here',
   equationEditor: 'everything',
   defaultResponse: {
-    id: 0,
+    id: 'answerBlockDefault',
     validation: 'symbolic',
-    answer: 'mx + b',
+    answer: 'answer',
     alternates: {},
-    allowDecimals: true
+    allowSpaces: false,
+    allowDecimals: false
   },
   responses: [{
     id: 'answerBlock1',
     validation: 'symbolic',
-    answer: 'mx + b',
+    answer: 'answer',
     alternates: {},
-    allowDecimals: true
-  }],
+    allowSpaces: false,
+    allowDecimals: false
+  }]
 };
