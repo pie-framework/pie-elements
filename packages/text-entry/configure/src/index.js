@@ -16,10 +16,11 @@ export default class TextEntryConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._model = TextEntryConfigure.createDefaultModel();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = TextEntryConfigure.createDefaultModel(m);
     this._render();
   }
 
