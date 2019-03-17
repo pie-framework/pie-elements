@@ -5,7 +5,7 @@ const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
 const { readdirSync, pathExistsSync } = require('fs-extra');
 const _ = require('lodash');
-const { Commands } = require('@pie-framework/build-helper');
+const { Commands, getPackage } = require('@pie-framework/build-helper');
 const { resolve, relative, join } = require('path');
 const minimist = require('minimist');
 
@@ -20,10 +20,8 @@ const rel = p => relative(resolve(__dirname, '..'), p);
 
 const expandPkg = d => {
   const out = [];
-  if (pathExistsSync(r(d, 'src'))) {
-    out.push(rel(r(d)));
-  }
 
+  out.push(rel(r(d)));
   if (pathExistsSync(r(d, 'controller', 'src'))) {
     out.push(rel(r(d, 'controller')));
   }
@@ -35,10 +33,11 @@ const expandPkg = d => {
   return out;
 };
 
-const getElementPackages = (dir: string) => {
+const getElementPackages = dir => {
   const dirs = readdirSync(dir);
   const all = _.flatten(dirs.map(d => expandPkg(d)));
-  return all;
+  const out = all.map(getPackage);
+  return out;
 };
 
 class ElementsCommands extends Commands {
@@ -48,8 +47,8 @@ class ElementsCommands extends Commands {
 
   clean() {
     return Promise.all(
-      this.packages().map(p => {
-        const cwd = resolve(__dirname, '..', p);
+      getElementPackages(join(this.projectRoot, 'packages')).map(p => {
+        const cwd = resolve(__dirname, '..', p.dir);
         log('cwd:', cwd);
         return this.runCmd('rm -fr lib', { cwd });
       })
@@ -58,13 +57,15 @@ class ElementsCommands extends Commands {
 
   babel() {
     return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages')).map(p => {
-        const cwd = resolve(__dirname, '..', p);
-        const cmd = `${
-          this.p.babel
-        } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
-        return this.runCmd(cmd, { cwd });
-      })
+      getElementPackages(join(this.projectRoot, 'packages'))
+        .filter(p => pathExistsSync(join(p.dir, 'src')))
+        .map(p => {
+          const cwd = resolve(__dirname, '..', p.dir);
+          const cmd = `${
+            this.p.babel
+          } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+          return this.runCmd(cmd, { cwd });
+        })
     );
   }
 }
