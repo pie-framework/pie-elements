@@ -1,0 +1,112 @@
+[
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "initialize default model (#129)",
+    "merge": null,
+    "header": "feat(general): initialize default model (#129)",
+    "body": "* feat: initialize empty README\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* fix: add babel-transform-runtime in order to support async/await\n\n* bump yarn lock\n\n* update snapshots",
+    "footer": null,
+    "notes": [],
+    "hash": "b62d0585a86c8e2fbe5a6181b869a28c1131756b",
+    "gitTags": "",
+    "committerDate": "2019-03-12 15:47:20 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "placement-ordering-configure-customization",
+    "subject": "made some elements from the design config customizable (ch564)",
+    "merge": null,
+    "header": "feat(placement-ordering-configure-customization): made some elements from the design config customizable (ch564)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a89ff839ac132c2e272316ec8af607ea89a3a26b",
+    "gitTags": " (origin/ch564/placement-ordering-config-customization)",
+    "committerDate": "2018-11-05 16:17:09 +0200",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "rename test dir",
+    "merge": null,
+    "header": "chore: rename test dir",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3050c7cfafde78a7c1977eda6f92d99ce82543f2",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:39:13 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "fix tests",
+    "merge": null,
+    "header": "chore: fix tests",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8e8a092808eca78af173d0744aa9e9213a3e95a2",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:38:35 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "dependecies",
+    "subject": "bump @pie-lib/feedback",
+    "merge": null,
+    "header": "fix(dependecies): bump @pie-lib/feedback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4be839f6f062d7457e46458a827c9d785b7ba8b0",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:23:16 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "controller",
+    "subject": "bump feedback version",
+    "merge": null,
+    "header": "fix(controller): bump feedback version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a07c9ecf3f44f94bdeb48e847cca52ac8e13f619",
+    "gitTags": "",
+    "committerDate": "2018-05-10 19:13:44 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "model",
+    "subject": "move away from old model",
+    "merge": null,
+    "header": "feat(model): move away from old model",
+    "body": null,
+    "footer": "BREAKING CHANGE:\n\nThe model has changed.\n\n* `model` is gone, all properties within it have moved to the root.\n* `config` is gone, all properties within it have moved to the root.\n* `feedback` is using the new model.\n\nFrom:\n\n```javascript\n{\n      id: '1',\n      element: 'placement-ordering',\n      correctResponse: [\n        {\n          id: 'c1',\n          weight: 0.2\n        },\n        {\n          id: 'c4',\n          weight: 0.2\n        },\n        {\n          id: 'c3',\n          weight: 0.3\n        },\n        {\n          id: 'c2',\n          weight: 0.3\n        }\n      ],\n      model: {\n        prompt: 'Arrange the fruits alphabetically',\n        choices: [\n          {\n            id: 'c2',\n            label: 'Lemon',\n            shuffle: false,\n            moveOnDrag: true\n          },\n          {\n            id: 'c3',\n            label: 'Melon',\n            moveOnDrag: true\n          },\n          {\n            id: 'c1',\n            label: 'Blueberry',\n            moveOnDrag: false\n          },\n          {\n            id: 'c4',\n            label: 'Pear',\n            moveOnDrag: false\n          }\n        ]\n      },\n      config: {\n        shuffle: false,\n        placementType: 'none',\n        choiceAreaLayout: 'vertical',\n        choiceAreaLabel: 'choices: ',\n        answerAreaLabel: 'Answer Area Label',\n        showOrdering: true\n      },\n      feedback: {\n        correctFeedbackType: 'custom',\n        correctFeedback: 'foo',\n        incorrectFeedbackType: 'custom',\n        incorrectFeedback: 'foo',\n        partialFeedbackType: 'custom',\n        partialFeedback: 'foo',\n      }\n    }\n```\n\nTo:\n\n```javascript\n\n{\n      id: '1',\n      element: 'placement-ordering',\n      correctResponse: [\n        {\n          id: 'c1',\n          weight: 0.2\n        },\n        {\n          id: 'c4',\n          weight: 0.2\n        },\n        {\n          id: 'c3',\n          weight: 0.3\n        },\n        {\n          id: 'c2',\n          weight: 0.3\n        }\n      ],\n      prompt: 'Arrange the fruits alphabetically',\n      choices: [\n        {\n          id: 'c2',\n          label: 'Lemon',\n          shuffle: false,\n          moveOnDrag: true\n        },\n        {\n          id: 'c3',\n          label: 'Melon',\n          moveOnDrag: true\n        },\n        {\n          id: 'c1',\n          label: 'Blueberry',\n          moveOnDrag: false\n        },\n        {\n          id: 'c4',\n          label: 'Pear',\n          moveOnDrag: false\n        }\n      ],\n      shuffle: false,\n      placementType: 'none',\n      choiceAreaLayout: 'vertical',\n      choiceAreaLabel: 'choices: ',\n      answerAreaLabel: 'Answer Area Label',\n      showOrdering: true,\n      feedback: {\n        correct: {\n          type: 'custom',\n          custom: 'foo'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: 'no'\n        },\n        partial: {\n          type: 'custom',\n          custom: 'nearly'\n        }\n      }\n    }\n\n```",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "The model has changed.\n\n* `model` is gone, all properties within it have moved to the root.\n* `config` is gone, all properties within it have moved to the root.\n* `feedback` is using the new model.\n\nFrom:\n\n```javascript\n{\n      id: '1',\n      element: 'placement-ordering',\n      correctResponse: [\n        {\n          id: 'c1',\n          weight: 0.2\n        },\n        {\n          id: 'c4',\n          weight: 0.2\n        },\n        {\n          id: 'c3',\n          weight: 0.3\n        },\n        {\n          id: 'c2',\n          weight: 0.3\n        }\n      ],\n      model: {\n        prompt: 'Arrange the fruits alphabetically',\n        choices: [\n          {\n            id: 'c2',\n            label: 'Lemon',\n            shuffle: false,\n            moveOnDrag: true\n          },\n          {\n            id: 'c3',\n            label: 'Melon',\n            moveOnDrag: true\n          },\n          {\n            id: 'c1',\n            label: 'Blueberry',\n            moveOnDrag: false\n          },\n          {\n            id: 'c4',\n            label: 'Pear',\n            moveOnDrag: false\n          }\n        ]\n      },\n      config: {\n        shuffle: false,\n        placementType: 'none',\n        choiceAreaLayout: 'vertical',\n        choiceAreaLabel: 'choices: ',\n        answerAreaLabel: 'Answer Area Label',\n        showOrdering: true\n      },\n      feedback: {\n        correctFeedbackType: 'custom',\n        correctFeedback: 'foo',\n        incorrectFeedbackType: 'custom',\n        incorrectFeedback: 'foo',\n        partialFeedbackType: 'custom',\n        partialFeedback: 'foo',\n      }\n    }\n```\n\nTo:\n\n```javascript\n\n{\n      id: '1',\n      element: 'placement-ordering',\n      correctResponse: [\n        {\n          id: 'c1',\n          weight: 0.2\n        },\n        {\n          id: 'c4',\n          weight: 0.2\n        },\n        {\n          id: 'c3',\n          weight: 0.3\n        },\n        {\n          id: 'c2',\n          weight: 0.3\n        }\n      ],\n      prompt: 'Arrange the fruits alphabetically',\n      choices: [\n        {\n          id: 'c2',\n          label: 'Lemon',\n          shuffle: false,\n          moveOnDrag: true\n        },\n        {\n          id: 'c3',\n          label: 'Melon',\n          moveOnDrag: true\n        },\n        {\n          id: 'c1',\n          label: 'Blueberry',\n          moveOnDrag: false\n        },\n        {\n          id: 'c4',\n          label: 'Pear',\n          moveOnDrag: false\n        }\n      ],\n      shuffle: false,\n      placementType: 'none',\n      choiceAreaLayout: 'vertical',\n      choiceAreaLabel: 'choices: ',\n      answerAreaLabel: 'Answer Area Label',\n      showOrdering: true,\n      feedback: {\n        correct: {\n          type: 'custom',\n          custom: 'foo'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: 'no'\n        },\n        partial: {\n          type: 'custom',\n          custom: 'nearly'\n        }\n      }\n    }\n\n```"
+      }
+    ],
+    "hash": "048571e2fdba07034c511a22eb538b13631d7018",
+    "gitTags": "",
+    "committerDate": "2018-05-10 12:46:56 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/placement-ordering-controller@2.0.0"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "initialize default model (#129)",
+    "merge": null,
+    "header": "feat(general): initialize default model (#129)",
+    "body": "* feat: initialize empty README\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* fix: add babel-transform-runtime in order to support async/await\n\n* bump yarn lock\n\n* update snapshots",
+    "footer": null,
+    "notes": [],
+    "hash": "b62d0585a86c8e2fbe5a6181b869a28c1131756b",
+    "gitTags": "",
+    "committerDate": "2019-03-12 15:47:20 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/inline-choice-controller@1.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "private flag",
+    "merge": null,
+    "header": "fix: private flag",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "50ab6fa430187e5295ad391844f77415b34a471b",
+    "gitTags": "",
+    "committerDate": "2018-09-20 09:51:29 +0100",
+    "isTagged": true,
+    "earliestTag": "@pie-element/inline-choice-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "layout",
+    "subject": "use @pie-ui/inline-choice@^4.0.1 - it uses an inline layout",
+    "merge": null,
+    "header": "feat(layout): use @pie-ui/inline-choice@^4.0.1 - it uses an inline layout",
+    "body": null,
+    "footer": "Closes #17",
+    "notes": [],
+    "hash": "b91827ffa0c4a9e24d97d8dece44c12e59f0e3a5",
+    "gitTags": "",
+    "committerDate": "2018-04-25 11:27:59 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/inline-choice-controller@1.1.0"
+  }
+]

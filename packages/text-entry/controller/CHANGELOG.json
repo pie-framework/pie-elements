@@ -1,0 +1,97 @@
+[
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "build fixes",
+    "merge": null,
+    "header": "fix: build fixes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3c3a7f20ff7805fa1265eb7b187b80d77e1820ac",
+    "gitTags": "",
+    "committerDate": "2018-09-20 09:49:51 +0100",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "text-entry",
+    "subject": "added prompt property",
+    "merge": null,
+    "header": "feat(text-entry): added prompt property",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "10a6646d5b765f2fd9365c2656e9c4c159e38803",
+    "gitTags": "",
+    "committerDate": "2018-09-07 18:41:20 +0300",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "fix tests",
+    "merge": null,
+    "header": "chore: fix tests",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b7862473236d2c137c0ec27de2e50907b57c9862",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:53:17 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "dependencies",
+    "subject": "bump @pie-lib/feedback",
+    "merge": null,
+    "header": "fix(dependencies): bump @pie-lib/feedback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6fea7bb8bd678952103c1d6efb9d1e3d8ea4ef90",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:39:29 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "dependecies",
+    "subject": "bump @pie-lib/feedback",
+    "merge": null,
+    "header": "fix(dependecies): bump @pie-lib/feedback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4be839f6f062d7457e46458a827c9d785b7ba8b0",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:23:16 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "model",
+    "subject": "move away from old model",
+    "merge": null,
+    "header": "feat(model): move away from old model",
+    "body": null,
+    "footer": "BREAKING CHANGE:\n\n* Feedback now uses the new model\n* `model` is gone, properties moved up a level.\n\nFull example:\n\nFrom:\n```javascript\n\n    {\n      id: '1',\n      element: 'text-entry',\n      correctResponses: {\n        values: ['mutt', 'hound'],\n        ignoreWhitespace: true,\n        ignoreCase: false,\n        feedback: {\n          type: 'custom',\n          value: 'correct-o'\n        }\n      },\n      partialResponses: {\n        values: ['mutty'],\n        ignoreWhitespace: true,\n        ignoreCase: true,\n        awardPercentage: '50',\n        feedback: {\n          type: 'custom',\n          value: 'foo'\n        }\n      },\n      incorrectFeedback: {\n        type: 'custom',\n        value: 'custom feedback'\n      },\n      model: {\n        answerBlankSize: '10',\n        answerAlignment: 'left',\n        allowDecimal: true,\n        allowIntegersOnly: false,\n        allowThousandsSeparator: true\n      }\n    }\n\n```\n\nTo:\n```javascript\n    {\n      id: '1',\n      element: 'text-entry',\n      feedback: {\n        correct: {\n          type: 'custom',\n          custom: 'correct-o'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: 'custom feedback'\n        },\n        partial: {\n          type: 'custom',\n          custom: 'foo'\n        }\n      },\n      correctResponses: {\n        values: ['mutt', 'hound'],\n        ignoreWhitespace: true,\n        ignoreCase: false\n      },\n      partialResponses: {\n        values: ['mutty'],\n        ignoreWhitespace: true,\n        ignoreCase: true,\n        awardPercentage: '50'\n      },\n      answerBlankSize: '10',\n      answerAlignment: 'left',\n      allowDecimal: true,\n      allowIntegersOnly: false,\n      allowThousandsSeparator: true\n    }\n```",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "* Feedback now uses the new model\n* `model` is gone, properties moved up a level.\n\nFull example:\n\nFrom:\n```javascript\n\n    {\n      id: '1',\n      element: 'text-entry',\n      correctResponses: {\n        values: ['mutt', 'hound'],\n        ignoreWhitespace: true,\n        ignoreCase: false,\n        feedback: {\n          type: 'custom',\n          value: 'correct-o'\n        }\n      },\n      partialResponses: {\n        values: ['mutty'],\n        ignoreWhitespace: true,\n        ignoreCase: true,\n        awardPercentage: '50',\n        feedback: {\n          type: 'custom',\n          value: 'foo'\n        }\n      },\n      incorrectFeedback: {\n        type: 'custom',\n        value: 'custom feedback'\n      },\n      model: {\n        answerBlankSize: '10',\n        answerAlignment: 'left',\n        allowDecimal: true,\n        allowIntegersOnly: false,\n        allowThousandsSeparator: true\n      }\n    }\n\n```\n\nTo:\n```javascript\n    {\n      id: '1',\n      element: 'text-entry',\n      feedback: {\n        correct: {\n          type: 'custom',\n          custom: 'correct-o'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: 'custom feedback'\n        },\n        partial: {\n          type: 'custom',\n          custom: 'foo'\n        }\n      },\n      correctResponses: {\n        values: ['mutt', 'hound'],\n        ignoreWhitespace: true,\n        ignoreCase: false\n      },\n      partialResponses: {\n        values: ['mutty'],\n        ignoreWhitespace: true,\n        ignoreCase: true,\n        awardPercentage: '50'\n      },\n      answerBlankSize: '10',\n      answerAlignment: 'left',\n      allowDecimal: true,\n      allowIntegersOnly: false,\n      allowThousandsSeparator: true\n    }\n```"
+      }
+    ],
+    "hash": "47636680a3fcc0803f83209e6d565fda537c79a5",
+    "gitTags": "",
+    "committerDate": "2018-05-10 19:13:44 -0400",
+    "isTagged": true,
+    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+  }
+]
