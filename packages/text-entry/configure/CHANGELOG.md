@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.1.0...@pie-element/text-entry-configure@2.2.0) (2019-03-18)
+
+
+### Features
+
+* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
+
+
+
+
+
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.0.4...@pie-element/text-entry-configure@2.1.0) (2019-03-13)
 
 

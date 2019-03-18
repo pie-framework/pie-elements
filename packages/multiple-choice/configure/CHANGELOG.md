@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.7.0...@pie-element/multiple-choice-configure@0.8.0) (2019-03-18)
+
+
+### Features
+
+* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
+
+
+
+
+
 # [0.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.6.0...@pie-element/multiple-choice-configure@0.7.0) (2019-03-13)
 
 
