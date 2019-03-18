@@ -9,7 +9,7 @@
     "build": "scripts/build build",
     "release": "scripts/build build release",
     "release:next": "scripts/build build release --next --lernaLogLevel silly",
-    "postinstall": "git config --local include.path ../.gitconfig",
+    "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
     "prepack": "scripts/build changelog"
   },
   "devDependencies": {
