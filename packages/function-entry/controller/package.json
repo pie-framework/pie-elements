@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/function-entry-controller",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "",
   "scripts": {
     "test": "./node_modules/.bin/jest"

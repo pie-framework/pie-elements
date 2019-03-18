@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines-configure@1.2.0...@pie-element/graph-lines-configure@1.2.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/graph-lines-configure
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines-configure@1.1.4...@pie-element/graph-lines-configure@1.2.0) (2019-03-13)
 
 

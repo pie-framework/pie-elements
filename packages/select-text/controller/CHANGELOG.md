@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.3.0...@pie-element/select-text-controller@2.3.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
 # 2.3.0 (2019-03-13)
 
 
