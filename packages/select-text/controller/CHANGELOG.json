@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.3.0"
+    "tag": "@pie-element/select-text-controller@2.3.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 19:46:59 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.3.0"
+    "tag": "@pie-element/select-text-controller@2.3.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": " (origin/feature/select-text-math, feature/select-text-math)",
     "committerDate": "2019-02-08 11:28:45 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.2.0"
+    "tag": "@pie-element/select-text-controller@2.2.0"
   },
   {
     "type": "feat",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-11-05 11:19:40 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.1.0"
+    "tag": "@pie-element/select-text-controller@2.1.0"
   },
   {
     "type": "feat",
@@ -72,7 +72,7 @@
     "gitTags": " (origin/ch497/update-partial-scoring-behavior)",
     "committerDate": "2018-10-31 12:06:01 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2018-10-31 10:24:07 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2018-10-29 14:27:25 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "chore",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2018-09-07 15:03:36 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -137,7 +137,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:48:32 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "chore",
@@ -152,7 +152,7 @@
     "gitTags": "",
     "committerDate": "2018-05-09 10:28:31 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -167,6 +167,6 @@
     "gitTags": "",
     "committerDate": "2018-05-09 09:40:51 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-controller@2.0.0"
+    "tag": "@pie-element/select-text-controller@2.0.0"
   }
 ]

@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.2.0"
+    "tag": "@pie-element/categorize-controller@1.2.0"
   },
   {
     "type": "fix",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-11-09 18:20:33 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.1"
+    "tag": "@pie-element/categorize-controller@1.1.1"
   },
   {
     "type": "fix",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2018-11-09 10:40:53 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.1"
+    "tag": "@pie-element/categorize-controller@1.1.1"
   },
   {
     "type": "fix",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.0"
+    "tag": "@pie-element/categorize-controller@1.1.0"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2018-09-11 13:41:48 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.0"
+    "tag": "@pie-element/categorize-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -87,7 +87,7 @@
     "gitTags": " (origin/feature/categorize)",
     "committerDate": "2018-05-22 14:42:13 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.0"
+    "tag": "@pie-element/categorize-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -102,6 +102,6 @@
     "gitTags": "",
     "committerDate": "2018-05-22 14:42:10 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/categorize-controller@1.1.0"
+    "tag": "@pie-element/categorize-controller@1.1.0"
   }
 ]

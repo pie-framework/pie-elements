@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.4.0"
+    "tag": "@pie-element/select-text-configure@2.4.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 19:46:59 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.4.0"
+    "tag": "@pie-element/select-text-configure@2.4.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 09:52:28 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.3.0"
+    "tag": "@pie-element/select-text-configure@2.3.0"
   },
   {
     "type": "chore",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2019-02-13 10:52:56 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.4"
+    "tag": "@pie-element/select-text-configure@2.2.4"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 15:04:14 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.3"
+    "tag": "@pie-element/select-text-configure@2.2.3"
   },
   {
     "type": "fix",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2018-11-12 12:28:04 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.2"
+    "tag": "@pie-element/select-text-configure@2.2.2"
   },
   {
     "type": "fix",
@@ -102,7 +102,7 @@
     "gitTags": " (origin/fix/added-dependencies-where-needed)",
     "committerDate": "2018-11-09 11:31:39 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.2"
+    "tag": "@pie-element/select-text-configure@2.2.2"
   },
   {
     "type": "fix",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2018-11-08 17:54:08 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.1"
+    "tag": "@pie-element/select-text-configure@2.2.1"
   },
   {
     "type": "feat",
@@ -132,7 +132,7 @@
     "gitTags": "",
     "committerDate": "2018-11-05 14:15:28 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.0"
+    "tag": "@pie-element/select-text-configure@2.2.0"
   },
   {
     "type": "feat",
@@ -147,7 +147,7 @@
     "gitTags": "",
     "committerDate": "2018-11-05 11:19:40 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.2.0"
+    "tag": "@pie-element/select-text-configure@2.2.0"
   },
   {
     "type": "feat",
@@ -162,7 +162,7 @@
     "gitTags": "",
     "committerDate": "2018-10-30 12:48:03 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.1.0"
+    "tag": "@pie-element/select-text-configure@2.1.0"
   },
   {
     "type": "feat",
@@ -177,7 +177,7 @@
     "gitTags": "",
     "committerDate": "2018-10-29 14:27:25 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.1.0"
+    "tag": "@pie-element/select-text-configure@2.1.0"
   },
   {
     "type": "feat",
@@ -192,7 +192,7 @@
     "gitTags": "",
     "committerDate": "2018-10-16 13:42:38 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "feat",
@@ -207,7 +207,7 @@
     "gitTags": "",
     "committerDate": "2018-10-16 12:21:35 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "feat",
@@ -222,7 +222,7 @@
     "gitTags": "",
     "committerDate": "2018-10-15 12:30:37 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "fix",
@@ -237,7 +237,7 @@
     "gitTags": "",
     "committerDate": "2018-08-06 13:32:09 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "feat",
@@ -252,7 +252,7 @@
     "gitTags": "",
     "committerDate": "2018-05-16 12:01:19 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "feat",
@@ -272,7 +272,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:48:32 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   },
   {
     "type": "feat",
@@ -287,6 +287,6 @@
     "gitTags": "",
     "committerDate": "2018-05-09 09:40:51 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/select-text-configure@2.0.0"
+    "tag": "@pie-element/select-text-configure@2.0.0"
   }
 ]

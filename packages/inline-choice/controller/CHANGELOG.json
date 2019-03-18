@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/inline-choice-controller@1.2.0"
+    "tag": "@pie-element/inline-choice-controller@1.2.0"
   },
   {
     "type": "fix",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:51:29 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/inline-choice-controller@1.1.0"
+    "tag": "@pie-element/inline-choice-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -42,6 +42,6 @@
     "gitTags": "",
     "committerDate": "2018-04-25 11:27:59 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/inline-choice-controller@1.1.0"
+    "tag": "@pie-element/inline-choice-controller@1.1.0"
   }
 ]

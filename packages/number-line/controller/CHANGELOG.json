@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.1.0"
+    "tag": "@pie-element/number-line-controller@2.1.0"
   },
   {
     "type": "fix",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.0.0"
+    "tag": "@pie-element/number-line-controller@2.0.0"
   },
   {
     "type": "fix",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:39:29 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.0.0"
+    "tag": "@pie-element/number-line-controller@2.0.0"
   },
   {
     "type": "chore",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:21:58 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.0.0"
+    "tag": "@pie-element/number-line-controller@2.0.0"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 19:13:44 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.0.0"
+    "tag": "@pie-element/number-line-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -92,6 +92,6 @@
     "gitTags": "",
     "committerDate": "2018-05-10 12:13:31 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/number-line-controller@2.0.0"
+    "tag": "@pie-element/number-line-controller@2.0.0"
   }
 ]

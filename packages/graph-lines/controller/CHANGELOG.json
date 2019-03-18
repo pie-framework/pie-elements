@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/graph-lines-controller@1.0.1"
+    "tag": "@pie-element/graph-lines-controller@1.0.1"
   },
   {
     "type": "feature",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-06-11 17:04:57 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/graph-lines-controller@1.0.1"
+    "tag": "@pie-element/graph-lines-controller@1.0.1"
   },
   {
     "type": "feature",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2018-06-06 14:35:16 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/graph-lines-controller@1.0.1"
+    "tag": "@pie-element/graph-lines-controller@1.0.1"
   },
   {
     "type": "feature",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-06-04 12:28:06 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/graph-lines-controller@1.0.1"
+    "tag": "@pie-element/graph-lines-controller@1.0.1"
   },
   {
     "type": "feature",
@@ -72,6 +72,6 @@
     "gitTags": "",
     "committerDate": "2018-05-21 14:58:41 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/graph-lines-controller@1.0.1"
+    "tag": "@pie-element/graph-lines-controller@1.0.1"
   }
 ]

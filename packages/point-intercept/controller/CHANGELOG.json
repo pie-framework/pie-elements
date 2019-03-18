@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-05-16 12:19:58 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2018-04-27 14:31:15 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-04-25 16:07:36 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2018-04-25 10:13:49 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2018-04-25 09:43:11 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2018-04-23 14:09:50 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 12:12:36 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -132,7 +132,7 @@
     "gitTags": "",
     "committerDate": "2018-04-13 13:45:27 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -147,7 +147,7 @@
     "gitTags": "",
     "committerDate": "2018-04-11 13:56:53 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   },
   {
     "type": "feat",
@@ -162,6 +162,6 @@
     "gitTags": "",
     "committerDate": "2018-04-10 13:16:43 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/point-intercept-controller@1.1.0"
+    "tag": "@pie-element/point-intercept-controller@1.1.0"
   }
 ]

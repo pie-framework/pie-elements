@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2018-09-07 18:41:20 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   },
   {
     "type": "chore",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:53:17 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   },
   {
     "type": "fix",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:39:29 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:23:16 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   },
   {
     "type": "feat",
@@ -92,6 +92,6 @@
     "gitTags": "",
     "committerDate": "2018-05-10 19:13:44 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/text-entry-controller@2.0.0"
+    "tag": "@pie-element/text-entry-controller@2.0.0"
   }
 ]

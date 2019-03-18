@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 23:33:57 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.4.0"
+    "tag": "@pie-element/math-inline@0.4.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.4.0"
+    "tag": "@pie-element/math-inline@0.4.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 14:22:55 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.4.0"
+    "tag": "@pie-element/math-inline@0.4.0"
   },
   {
     "type": "chore",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2019-02-20 13:44:58 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.3.3"
+    "tag": "@pie-element/math-inline@0.3.3"
   },
   {
     "type": "chore",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2019-02-20 14:11:59 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.3.3"
+    "tag": "@pie-element/math-inline@0.3.3"
   },
   {
     "type": "chore",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2019-02-20 14:10:34 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.3.3"
+    "tag": "@pie-element/math-inline@0.3.3"
   },
   {
     "type": "fix",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2019-02-20 13:54:06 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.3.3"
+    "tag": "@pie-element/math-inline@0.3.3"
   },
   {
     "type": "feat",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 19:46:59 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.4.0"
+    "tag": "@pie-element/math-inline@0.4.0"
   },
   {
     "type": "chore",
@@ -132,7 +132,7 @@
     "gitTags": "",
     "committerDate": "2019-02-13 12:49:48 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -147,7 +147,7 @@
     "gitTags": "",
     "committerDate": "2019-02-13 12:44:46 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "fix",
@@ -162,7 +162,7 @@
     "gitTags": "",
     "committerDate": "2019-02-13 09:55:09 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -177,7 +177,7 @@
     "gitTags": "",
     "committerDate": "2019-02-07 12:53:18 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -192,7 +192,7 @@
     "gitTags": "",
     "committerDate": "2019-02-06 10:51:36 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -207,7 +207,7 @@
     "gitTags": "",
     "committerDate": "2019-02-05 18:47:03 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -222,7 +222,7 @@
     "gitTags": "",
     "committerDate": "2019-02-05 17:49:49 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -237,7 +237,7 @@
     "gitTags": "",
     "committerDate": "2019-02-05 08:32:11 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -252,7 +252,7 @@
     "gitTags": "",
     "committerDate": "2019-02-04 19:20:03 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -267,7 +267,7 @@
     "gitTags": "",
     "committerDate": "2019-02-04 18:23:22 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -282,7 +282,7 @@
     "gitTags": "",
     "committerDate": "2019-02-04 09:35:14 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -297,7 +297,7 @@
     "gitTags": "",
     "committerDate": "2019-02-04 09:25:36 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -312,7 +312,7 @@
     "gitTags": "",
     "committerDate": "2019-02-01 16:06:21 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -327,7 +327,7 @@
     "gitTags": "",
     "committerDate": "2019-02-01 15:54:22 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -342,7 +342,7 @@
     "gitTags": "",
     "committerDate": "2019-02-01 13:57:07 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -357,7 +357,7 @@
     "gitTags": "",
     "committerDate": "2019-02-01 13:54:54 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -372,7 +372,7 @@
     "gitTags": "",
     "committerDate": "2019-01-29 15:10:29 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -387,7 +387,7 @@
     "gitTags": "",
     "committerDate": "2019-01-28 13:57:34 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -402,7 +402,7 @@
     "gitTags": "",
     "committerDate": "2019-01-16 19:12:40 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "fix",
@@ -417,7 +417,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 15:25:09 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.9"
+    "tag": "@pie-element/math-inline@0.0.9"
   },
   {
     "type": "fix",
@@ -432,7 +432,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 15:04:14 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.3"
+    "tag": "@pie-element/math-inline@0.0.3"
   },
   {
     "type": "chore",
@@ -447,7 +447,7 @@
     "gitTags": "",
     "committerDate": "2019-01-02 15:11:30 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "fix",
@@ -462,7 +462,7 @@
     "gitTags": "",
     "committerDate": "2019-01-02 15:09:32 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -477,7 +477,7 @@
     "gitTags": "",
     "committerDate": "2018-12-21 13:47:58 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -492,7 +492,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 15:34:35 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -507,7 +507,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 17:08:02 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -522,7 +522,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 17:05:22 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -537,7 +537,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 16:54:30 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -552,7 +552,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 16:53:45 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -567,7 +567,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 16:51:45 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -582,7 +582,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 16:49:49 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -597,7 +597,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 16:23:52 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "chore",
@@ -612,7 +612,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 13:33:15 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -627,7 +627,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 14:13:21 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -642,7 +642,7 @@
     "gitTags": "",
     "committerDate": "2018-12-18 13:52:47 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "feat",
@@ -657,7 +657,7 @@
     "gitTags": "",
     "committerDate": "2018-11-29 13:36:41 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.1.0"
+    "tag": "@pie-element/math-inline@0.1.0"
   },
   {
     "type": "fix",
@@ -672,7 +672,7 @@
     "gitTags": "",
     "committerDate": "2018-11-26 15:04:21 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.2"
+    "tag": "@pie-element/math-inline@0.0.2"
   },
   {
     "type": "fix",
@@ -687,7 +687,7 @@
     "gitTags": "",
     "committerDate": "2018-11-26 15:04:03 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.2"
+    "tag": "@pie-element/math-inline@0.0.2"
   },
   {
     "type": "fix",
@@ -702,7 +702,7 @@
     "gitTags": "",
     "committerDate": "2018-11-26 15:03:49 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.2"
+    "tag": "@pie-element/math-inline@0.0.2"
   },
   {
     "type": "fix",
@@ -717,7 +717,7 @@
     "gitTags": "",
     "committerDate": "2018-11-26 14:10:26 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.2"
+    "tag": "@pie-element/math-inline@0.0.2"
   },
   {
     "type": "fix",
@@ -732,6 +732,6 @@
     "gitTags": "",
     "committerDate": "2018-11-26 13:51:45 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/math-inline@0.0.2"
+    "tag": "@pie-element/math-inline@0.0.2"
   }
 ]

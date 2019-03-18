@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.7.0"
+    "tag": "@pie-element/multiple-choice-configure@0.7.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 19:46:59 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.7.0"
+    "tag": "@pie-element/multiple-choice-configure@0.7.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2019-02-13 22:01:21 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.6.0"
+    "tag": "@pie-element/multiple-choice-configure@0.6.0"
   },
   {
     "type": "feat",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2019-01-11 20:06:51 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": " (origin/feat/multiple-choice-customization)",
     "committerDate": "2019-01-11 19:08:58 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "feat",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2019-01-11 19:07:28 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "feat",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2019-01-11 15:05:10 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "feat",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2019-01-11 14:46:26 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "feat",
@@ -132,7 +132,7 @@
     "gitTags": "",
     "committerDate": "2019-01-11 09:54:34 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "fix",
@@ -147,7 +147,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 14:37:46 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.5.0"
+    "tag": "@pie-element/multiple-choice-configure@0.5.0"
   },
   {
     "type": "fix",
@@ -162,7 +162,7 @@
     "gitTags": " (origin/feat/multiple-choice-using-layout)",
     "committerDate": "2019-01-08 12:42:09 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -177,7 +177,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 12:36:19 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -192,7 +192,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 11:07:43 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -207,7 +207,7 @@
     "gitTags": "",
     "committerDate": "2018-12-20 10:29:28 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -222,7 +222,7 @@
     "gitTags": "",
     "committerDate": "2018-12-20 10:20:00 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -237,7 +237,7 @@
     "gitTags": "",
     "committerDate": "2018-12-17 20:05:26 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "feat",
@@ -252,7 +252,7 @@
     "gitTags": "",
     "committerDate": "2018-12-17 19:40:38 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.4.0"
+    "tag": "@pie-element/multiple-choice-configure@0.4.0"
   },
   {
     "type": "chore",
@@ -267,7 +267,7 @@
     "gitTags": "",
     "committerDate": "2018-11-14 15:52:12 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.2"
+    "tag": "@pie-element/multiple-choice-configure@0.3.2"
   },
   {
     "type": "fix",
@@ -282,7 +282,7 @@
     "gitTags": " (origin/issue78/multiple-choice-preview-reset)",
     "committerDate": "2018-11-12 09:20:07 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.1"
+    "tag": "@pie-element/multiple-choice-configure@0.3.1"
   },
   {
     "type": "fix",
@@ -297,7 +297,7 @@
     "gitTags": "",
     "committerDate": "2018-11-08 17:28:40 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.1"
+    "tag": "@pie-element/multiple-choice-configure@0.3.1"
   },
   {
     "type": "feat",
@@ -312,7 +312,7 @@
     "gitTags": " (origin/ch557/multi-choice-config-customizations)",
     "committerDate": "2018-11-02 15:40:38 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.0"
+    "tag": "@pie-element/multiple-choice-configure@0.3.0"
   },
   {
     "type": "feat",
@@ -327,7 +327,7 @@
     "gitTags": "",
     "committerDate": "2018-11-02 15:18:14 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.0"
+    "tag": "@pie-element/multiple-choice-configure@0.3.0"
   },
   {
     "type": "feat",
@@ -342,7 +342,7 @@
     "gitTags": "",
     "committerDate": "2018-11-02 07:55:25 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.3.0"
+    "tag": "@pie-element/multiple-choice-configure@0.3.0"
   },
   {
     "type": "feat",
@@ -357,7 +357,7 @@
     "gitTags": "",
     "committerDate": "2018-10-30 12:48:03 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.2.0"
+    "tag": "@pie-element/multiple-choice-configure@0.2.0"
   },
   {
     "type": "feat",
@@ -372,7 +372,7 @@
     "gitTags": "",
     "committerDate": "2018-10-29 14:27:25 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.2.0"
+    "tag": "@pie-element/multiple-choice-configure@0.2.0"
   },
   {
     "type": "fix",
@@ -387,7 +387,7 @@
     "gitTags": " (origin/fix/editable-html-package-update)",
     "committerDate": "2018-10-10 10:56:15 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.1"
+    "tag": "@pie-element/multiple-choice-configure@0.1.1"
   },
   {
     "type": "fix",
@@ -402,7 +402,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 10:32:59 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feat",
@@ -417,7 +417,7 @@
     "gitTags": "",
     "committerDate": "2018-08-15 21:36:45 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -432,7 +432,7 @@
     "gitTags": "",
     "committerDate": "2018-08-06 13:32:09 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -447,7 +447,7 @@
     "gitTags": "",
     "committerDate": "2018-07-27 10:48:06 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feature",
@@ -462,7 +462,7 @@
     "gitTags": "",
     "committerDate": "2018-07-03 15:11:13 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -477,7 +477,7 @@
     "gitTags": "",
     "committerDate": "2018-06-06 16:02:53 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feat",
@@ -492,7 +492,7 @@
     "gitTags": "",
     "committerDate": "2018-05-16 12:00:48 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -507,7 +507,7 @@
     "gitTags": "",
     "committerDate": "2018-05-11 12:14:48 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feat",
@@ -522,7 +522,7 @@
     "gitTags": "",
     "committerDate": "2018-04-24 21:28:59 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -537,7 +537,7 @@
     "gitTags": "",
     "committerDate": "2018-04-24 15:08:03 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feat",
@@ -552,7 +552,7 @@
     "gitTags": "",
     "committerDate": "2018-04-24 14:47:35 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -567,7 +567,7 @@
     "gitTags": "",
     "committerDate": "2018-04-24 13:32:17 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -582,7 +582,7 @@
     "gitTags": "",
     "committerDate": "2018-04-24 11:34:37 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "feat",
@@ -597,7 +597,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 14:12:26 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -612,7 +612,7 @@
     "gitTags": "",
     "committerDate": "2018-03-06 14:47:24 -0500",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   },
   {
     "type": "fix",
@@ -627,6 +627,6 @@
     "gitTags": "",
     "committerDate": "2018-03-06 14:22:23 -0500",
     "isTagged": true,
-    "earliestTag": "@pie-element/multiple-choice-configure@0.1.0"
+    "tag": "@pie-element/multiple-choice-configure@0.1.0"
   }
 ]

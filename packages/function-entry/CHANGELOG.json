@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 23:33:57 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.3.0"
+    "tag": "@pie-element/function-entry@3.3.0"
   },
   {
     "type": "feat",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 15:47:20 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.3.0"
+    "tag": "@pie-element/function-entry@3.3.0"
   },
   {
     "type": "feat",
@@ -42,7 +42,7 @@
     "gitTags": "",
     "committerDate": "2019-03-12 14:22:55 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.3.0"
+    "tag": "@pie-element/function-entry@3.3.0"
   },
   {
     "type": "feat",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2019-02-19 19:46:59 +0000",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.3.0"
+    "tag": "@pie-element/function-entry@3.3.0"
   },
   {
     "type": "fix",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2019-01-08 15:04:14 +0200",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.0.4"
+    "tag": "@pie-element/function-entry@3.0.4"
   },
   {
     "type": "fix",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2018-09-20 09:49:51 +0100",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.0.3"
+    "tag": "@pie-element/function-entry@3.0.3"
   },
   {
     "type": "fix",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2018-08-06 13:32:09 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.0.2"
+    "tag": "@pie-element/function-entry@3.0.2"
   },
   {
     "type": "feat",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2018-05-16 12:00:36 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@3.0.1"
+    "tag": "@pie-element/function-entry@3.0.1"
   },
   {
     "type": "fix",
@@ -132,7 +132,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:39:29 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "chore",
@@ -147,7 +147,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:23:31 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "fix",
@@ -162,7 +162,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 21:23:16 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "chore",
@@ -177,7 +177,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 19:17:51 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "fix",
@@ -192,7 +192,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 19:13:44 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "feat",
@@ -212,7 +212,7 @@
     "gitTags": "",
     "committerDate": "2018-05-10 10:37:02 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@2.0.0"
+    "tag": "@pie-element/function-entry@2.0.0"
   },
   {
     "type": "feat",
@@ -227,7 +227,7 @@
     "gitTags": "",
     "committerDate": "2018-05-02 21:22:39 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.7.0"
+    "tag": "@pie-element/function-entry@1.7.0"
   },
   {
     "type": "fix",
@@ -242,7 +242,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 15:52:06 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "chore",
@@ -257,7 +257,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 15:03:45 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "chore",
@@ -272,7 +272,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 13:35:15 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "chore",
@@ -287,7 +287,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 13:33:55 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -302,7 +302,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 13:28:49 -0400",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -317,7 +317,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 13:34:35 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -332,7 +332,7 @@
     "gitTags": "",
     "committerDate": "2018-04-17 13:20:52 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -347,7 +347,7 @@
     "gitTags": "",
     "committerDate": "2018-04-16 14:14:51 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -362,7 +362,7 @@
     "gitTags": "",
     "committerDate": "2018-04-13 16:55:54 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -377,7 +377,7 @@
     "gitTags": "",
     "committerDate": "2018-04-03 14:04:21 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -392,7 +392,7 @@
     "gitTags": "",
     "committerDate": "2018-03-29 18:28:11 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -407,7 +407,7 @@
     "gitTags": "",
     "committerDate": "2018-03-29 17:49:30 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   },
   {
     "type": "feat",
@@ -422,6 +422,6 @@
     "gitTags": "",
     "committerDate": "2018-03-29 13:54:55 +0300",
     "isTagged": true,
-    "earliestTag": "@pie-element/function-entry@1.6.0"
+    "tag": "@pie-element/function-entry@1.6.0"
   }
 ]
