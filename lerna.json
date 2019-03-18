@@ -7,7 +7,7 @@
   "command": {
     "publish": {
       "ignoreChanges": ["yarn.lock"],
-      "message": "[skip travis] chore: publish"
+      "message": "[ci skip] chore: publish"
     }
   }
 }
