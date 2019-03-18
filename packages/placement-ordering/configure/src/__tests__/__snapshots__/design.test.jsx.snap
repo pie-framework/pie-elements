@@ -17,29 +17,12 @@ exports[`design snapshot renders all items except feedback 1`] = `
   model={
     Object {
       "configure": Object {
-        "choiceAreaLabel": "choices: ",
+        "choiceAreaLabel": "Choice Label goes here",
         "choiceAreaLayout": "vertical",
         "choices": Array [
           Object {
-            "id": "c2",
-            "label": "Lemon",
-            "moveOnDrag": true,
-            "shuffle": false,
-          },
-          Object {
-            "id": "c3",
-            "label": "Melon",
-            "moveOnDrag": true,
-          },
-          Object {
             "id": "c1",
-            "label": "Blueberry",
-            "moveOnDrag": false,
-          },
-          Object {
-            "id": "c4",
-            "label": "Pear",
-            "moveOnDrag": false,
+            "label": "Choice 1",
           },
         ],
         "configure": Object {
@@ -64,24 +47,12 @@ exports[`design snapshot renders all items except feedback 1`] = `
         "correctResponse": Array [
           Object {
             "id": "c1",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c4",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c3",
-            "weight": 0.3,
-          },
-          Object {
-            "id": "c2",
-            "weight": 0.3,
           },
         ],
         "enableFeedback": false,
-        "prompt": "Arrange the fruits alphabetically",
+        "prompt": "Question Prompt goes here",
         "showOrdering": true,
+        "shuffle": false,
       },
       "tokens": Array [],
     }
@@ -108,29 +79,12 @@ exports[`design snapshot renders all items except the prompt input 1`] = `
   model={
     Object {
       "configure": Object {
-        "choiceAreaLabel": "choices: ",
+        "choiceAreaLabel": "Choice Label goes here",
         "choiceAreaLayout": "vertical",
         "choices": Array [
           Object {
-            "id": "c2",
-            "label": "Lemon",
-            "moveOnDrag": true,
-            "shuffle": false,
-          },
-          Object {
-            "id": "c3",
-            "label": "Melon",
-            "moveOnDrag": true,
-          },
-          Object {
             "id": "c1",
-            "label": "Blueberry",
-            "moveOnDrag": false,
-          },
-          Object {
-            "id": "c4",
-            "label": "Pear",
-            "moveOnDrag": false,
+            "label": "Choice 1",
           },
         ],
         "configure": Object {
@@ -155,25 +109,13 @@ exports[`design snapshot renders all items except the prompt input 1`] = `
         "correctResponse": Array [
           Object {
             "id": "c1",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c4",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c3",
-            "weight": 0.3,
-          },
-          Object {
-            "id": "c2",
-            "weight": 0.3,
           },
         ],
         "enableFeedback": false,
         "enablePromptChange": false,
-        "prompt": "Arrange the fruits alphabetically",
+        "prompt": "Question Prompt goes here",
         "showOrdering": true,
+        "shuffle": false,
       },
       "tokens": Array [],
     }
@@ -200,29 +142,12 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
   model={
     Object {
       "configure": Object {
-        "choiceAreaLabel": "choices: ",
+        "choiceAreaLabel": "Choice Label goes here",
         "choiceAreaLayout": "vertical",
         "choices": Array [
           Object {
-            "id": "c2",
-            "label": "Lemon",
-            "moveOnDrag": true,
-            "shuffle": false,
-          },
-          Object {
-            "id": "c3",
-            "label": "Melon",
-            "moveOnDrag": true,
-          },
-          Object {
             "id": "c1",
-            "label": "Blueberry",
-            "moveOnDrag": false,
-          },
-          Object {
-            "id": "c4",
-            "label": "Pear",
-            "moveOnDrag": false,
+            "label": "Choice 1",
           },
         ],
         "configure": Object {
@@ -247,23 +172,11 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
         "correctResponse": Array [
           Object {
             "id": "c1",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c4",
-            "weight": 0.2,
-          },
-          Object {
-            "id": "c3",
-            "weight": 0.3,
-          },
-          Object {
-            "id": "c2",
-            "weight": 0.3,
           },
         ],
-        "prompt": "Arrange the fruits alphabetically",
+        "prompt": "Question Prompt goes here",
         "showOrdering": true,
+        "shuffle": false,
       },
       "tokens": Array [],
     }

@@ -16,10 +16,11 @@ export default class FunctionEntryConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._model = FunctionEntryConfigure.createDefaultModel();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = FunctionEntryConfigure.createDefaultModel(m);
     this._render();
   }
 
