@@ -25,52 +25,48 @@ export default class Root extends React.Component {
     const { partA, partB } = this;
 
     customElements.whenDefined('multiple-choice-configure').then(() => {
-      this.configurePart(partA, 'partA');
-      this.configurePart(partB, 'partB');
+      this.setupPart(partA, 'partA');
+      this.setupPart(partB, 'partB');
     });
   }
 
-  configurePart(part, key) {
-    this.updatePart(part, key, true);
-    this.handleModelUpdateListener(part, key);
+  setupPart(part, key) {
+    this.initiatePart(part, key);
+    this.captureModelUpdated(part, key);
   }
 
-  updatePart(part, key, setModel) {
-    const { onModelChanged } = this.props;
+  initiatePart(part, key) {
     const { model } = this.state;
+    const { onModelChanged } = this.props;
 
-    const { keyMode } = model;
-    const { choices, choiceMode, labelMode, prompt } = model[key];
+    part.model = model[key];
 
-    const partModel = {
-      prompt,
-      choiceMode,
-      keyMode,
-      choices,
-      labelMode,
-      // hardcoded for now
-      lockChoiceOrder: false,
-      sequentialLabel: false
-    };
+    onModelChanged(model);
+  }
 
-    if (setModel) {
-      part.model = partModel;
-    }
+  captureModelUpdated(part, key) {
+    const self = this;
+
+    part.addEventListener('model.updated', event => {
+      event.stopImmediatePropagation();
+      self.updateModel(event.update, key);
+    });
+  }
+
+  updateModel(partModel, key) {
+    const { model } = this.state;
+    const { onModelChanged } = this.props;
 
     const repackedModel = {
       ...model,
-      [key]: partModel,
+      [key]: partModel
     };
 
-    onModelChanged(repackedModel);
-  }
+    this.setState({
+      model: repackedModel
+    });
 
-  handleModelUpdateListener(part, key) {
-    const self = this;
-
-    part.addEventListener('model.updated', (model) => {
-      self.updatePart(model.update, key);
-    })
+    onModelChanged(repackedModel)
   }
 
   render() {

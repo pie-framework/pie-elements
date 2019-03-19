@@ -1,19 +1,32 @@
 import debug from 'debug';
+import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:ebsr:controller');
 
+const parsePart = (part, session, env) => ({
+  ...part,
+  disabled: env.mode !== 'gather',
+  complete: {
+    min: part.choices.filter(c => c.correct).length
+  },
+  responseCorrect:
+    env.mode === 'evaluate'
+      ? isResponseCorrect(part, session)
+      : undefined
+});
+
 export function model(question, session, env) {
   return new Promise((resolve, reject) => {
+    const { mode, shuffle } = question;
+
+    const partA = parsePart(question.partA, session, env);
+    const partB = parsePart(question.partB, session, env);
+
     const out = {
-      disabled: env.mode !== 'gather',
-      mode: env.mode,
-      partA: question.partA,
-      partB: question.partB,
-      prompt: question.prompt,
-      choiceMode: question.choiceMode,
-      keyMode: question.keyMode,
-      shuffle: question.shuffle,
-      responseCorrect: [],
+      mode,
+      partA,
+      partB,
+      shuffle,
     };
 
     resolve(out);

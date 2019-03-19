@@ -1,12 +1,7 @@
 exports.model = (id, element) => ({
   id,
   element,
-  keyMode: 'numbers',
-  labelMode: 'numbers',
-  sequentialLabel: false,
-  lockChoiceOrder: false,
   partA: {
-    prompt: 'What color is the sky?',
     choiceMode: 'radio',
     choices: [
       {
@@ -22,10 +17,17 @@ exports.model = (id, element) => ({
         value: 'blue',
         label: 'Blue',
       },
-    ]
+    ],
+    keyMode: 'numbers',
+    partialScoring: false,
+    partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
+          that is correctly unchecked will be worth 1 point.
+          The maximum points is the total number of answer choices.`,
+    prompt: 'What color is the sky?',
+    shuffle: false,
+    showCorrect: false,
   },
   partB: {
-    prompt: 'What color do you get when you mix Red with your answer in Part 1?',
     choiceMode: 'radio',
     choices: [
       {
@@ -45,6 +47,13 @@ exports.model = (id, element) => ({
         value: 'green',
         label: 'Green',
       },
-    ]
+    ],
+    keyMode: 'numbers',
+    partialScoring: false,
+    partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
+          that is correctly unchecked will be worth 1 point.
+          The maximum points is the total number of answer choices.`,
+    prompt: 'What color do you get when you mix Red with your answer in Part 1?',
+    shuffle: false,
   },
 });
