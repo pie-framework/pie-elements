@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.5.3...@pie-element/math-inline@0.5.4) (2019-03-19)
+
+
+### Bug Fixes
+
+* **math-inline:** fix simple mode interaction and remove defaultResponse from model ([cc82516](https://github.com/pie-framework/pie-elements/commit/cc82516))
+
+
+
+
+
 ## [0.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.5.2...@pie-element/math-inline@0.5.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/math-inline
