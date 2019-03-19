@@ -56,8 +56,7 @@ class GeneralConfigBlock extends React.Component {
     super(props);
 
     this.state = {
-      showKeypad: false,
-      advancedAnswerIsPristine: true
+      showKeypad: false
     };
   }
 
@@ -90,32 +89,28 @@ class GeneralConfigBlock extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    // first answer block is in the model by default, UX requirement
-    if (answerBlockId !== 'answerBlock1' || (answerBlockId === 'answerBlock1' && !document.getElementById('answerBlock1'))) {
-      const response = {
-        id: answerBlockId,
-        validation: 'symbolic',
-        answer: '',
-        alternates: {},
-        allowSpaces: true,
-        allowDecimals: true
-      };
+    const response = {
+      id: answerBlockId,
+      validation: 'symbolic',
+      answer: '',
+      alternates: {},
+      allowSpaces: true,
+      allowDecimals: true
+    };
 
-      newModel.responses = newModel.responses.concat(response);
-      onChange(newModel);
-    }
+    newModel.responses = newModel.responses.concat(response);
+    onChange(newModel);
 
     this.handleAnswerBlockDomUpdate(answerBlockId, newModel.responses.length - 1, '', true);
   };
 
   handleAnswerBlockDomUpdate = (answerBlockId, index, latex) => {
-    const { advancedAnswerIsPristine } = this.state;
     const container = document.getElementById(answerBlockId);
     const element = (
       <AnswerBlock
         id={answerBlockId}
         index={index}
-        latex={advancedAnswerIsPristine && answerBlockId === 'answerBlock1' ? 'mx + b' : latex}
+        latex={latex}
       />
     );
 
@@ -134,7 +129,7 @@ class GeneralConfigBlock extends React.Component {
     model.responses.forEach(response => {
       const container = document.getElementById(response.id);
 
-      if (container || (!container && response.id === 'answerBlock1')) {
+      if (container) {
         newModel.responses = newModel.responses.concat(response);
       }
     });
@@ -149,26 +144,14 @@ class GeneralConfigBlock extends React.Component {
     newModel.responses[index] = response;
     onChange(newModel);
 
-    if (model.mode === 'advanced') {
-      // the changed answer is not the default one, so we're no longer working with a pristine answer
-      this.setState({
-        advancedAnswerIsPristine: false
-      });
-    }
-
     this.handleAnswerBlockDomUpdate(response.id, index, response.answer)
   };
 
-  onDefaultResponseChange = response => {
+  onSimpleResponseChange = response => {
     const { model, onChange } = this.props;
-    const { advancedAnswerIsPristine } = this.state;
     const newModel = { ...model };
 
-    newModel.defaultResponse = response;
-
-    if (advancedAnswerIsPristine) {
-      newModel.responses[0] = { ...response };
-    }
+    newModel.response = response;
 
     onChange(newModel);
   };
@@ -176,7 +159,7 @@ class GeneralConfigBlock extends React.Component {
   render() {
     const { classes, model } = this.props;
     const { showKeypad } = this.state;
-    const { mode, question, expression, equationEditor, responses, defaultResponse } = model;
+    const { mode, question, expression, equationEditor, responses, response } = model;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -240,8 +223,8 @@ class GeneralConfigBlock extends React.Component {
           <Response
             mode={equationEditor}
             defaultResponse
-            response={defaultResponse}
-            onResponseChange={this.onDefaultResponseChange}
+            response={response}
+            onResponseChange={this.onSimpleResponseChange}
           />
         )}
         {mode === 'advanced' && responses.map((response, idx) => (

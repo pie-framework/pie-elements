@@ -13,22 +13,15 @@ module.exports = {
       expression: 'y = ',
       question: 'What is the equation for a slope?',
       equationEditor: 'everything',
-      defaultResponse: {
-        id: 0,
-        validation: 'symbolic',
+      response: {
+        id: 'answerBlock1',
         answer: 'mx + b',
+        validation: 'symbolic',
         alternates: {},
         allowSpaces: true,
         allowDecimals: true
       },
-      responses: [{
-        id: 'answerBlock1',
-        validation: 'symbolic',
-        answer: 'mx + b',
-        alternates: {},
-        allowSpaces: true,
-        allowDecimals: true
-      }],
+      responses: [],
       feedback: {
         correct: {
           type: 'none',
