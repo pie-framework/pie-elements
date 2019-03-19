@@ -1785,6 +1785,18 @@
     mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^5.1.13":
+  version "5.1.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-5.1.13.tgz#5462c9603b3d306c03d6037d679cea352eaae988"
+  integrity sha512-NHyfWdO1nFJaYxhV5IDOxhOVUCZIlFa/1CMK0dFSZKASLU2Yykv01u3MQLZKfzMg0o3CJwD1JQb6+Ls97Taerw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-rendering@^1.0.0", "@pie-lib/math-rendering@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-1.2.1.tgz#1fba12739de5a626488cd1b1ed83550bfff02b2b"
@@ -1816,6 +1828,20 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-input" "^5.1.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+    mathquill "git+https://github.com/pie-framework/mathquill-webpack.git"
+    prop-types "^15.6.2"
+
+"@pie-lib/math-toolbar@^0.9.13":
+  version "0.9.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-0.9.13.tgz#33bc11ed111d01dbe28a77720ec1e735e2c07018"
+  integrity sha512-9PuZb3SOOn9b8fg92CW6/Z321d771D1wXAnxI0GHrj7FLBezUS5iGxnb3RfagfA8msbPcSQdziubzMJj2hceOw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^5.1.13"
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
@@ -1993,14 +2019,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-1.1.1.tgz#478c1351a9897b6880b5b4d1600416a7e6a47493"
-  integrity sha512-eCeHKHaY9OeLf18mNY91Qdix2YDHcfAKDox345E/ap9bY2DIuk3+Y/kdHDi9eu1S0h/hr09Z//t4pFfKc2SB9A==
+"@pie-ui/math-inline@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-1.1.5.tgz#e5177a70810e7225fb5de410467ee38f83786018"
+  integrity sha512-kWUic7ZuRxpgLgmlNPPHhyYF+rwj7jmiVP7+aOtqbHwV1CnO1LMN+ETxRxcesAcS+Sn2Fu6ffnDKRlc28PXMVg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/math-input" "^5.0.4"
+    "@pie-lib/math-toolbar" "^0.9.13"
     "@pie-lib/render-ui" "^4.3.1"
     classnames "^2.2.5"
     debug "^3.1.0"
