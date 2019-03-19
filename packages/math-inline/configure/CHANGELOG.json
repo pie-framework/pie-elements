@@ -463,5 +463,20 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@0.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "fix simple mode interaction and remove defaultResponse from model",
+    "merge": null,
+    "header": "fix(math-inline): fix simple mode interaction and remove defaultResponse from model",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "cc82516b0ccd9a8b7712b6adeb5231f32494e32c",
+    "gitTags": " (origin/fix/math-inline-simple-mode)",
+    "committerDate": "2019-03-19 16:25:36 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.3.4"
   }
 ]
