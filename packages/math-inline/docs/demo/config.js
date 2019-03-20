@@ -10,18 +10,18 @@ module.exports = {
         allowPartialScores: false
       },
       element: 'math-inline',
-      expression: 'y = ',
+      "expression": "n = {\\embed{answerBlock}[answerBlock1]}",
       question: 'What is the equation for a slope?',
       equationEditor: 'everything',
-      response: {
-        id: 'answerBlock1',
-        answer: 'mx + b',
-        validation: 'symbolic',
-        alternates: {},
-        allowSpaces: true,
-        allowDecimals: true
-      },
-      responses: [],
+      response: {},
+      "responses": [
+        {
+          "answer": "n=-11",
+          "id": "answerBlock1",
+          "alternates": {},
+          "validation": "literal"
+        }
+      ],
       feedback: {
         correct: {
           type: 'none',
