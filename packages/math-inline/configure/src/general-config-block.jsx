@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -43,12 +44,23 @@ const styles = theme => ({
     textAlign: 'left',
     padding: theme.spacing.unit
   },
+  promptHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%',
+    maxWidth: '600px'
+  }
 });
 
 class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
+    imageSupport: PropTypes.object,
     onChange: PropTypes.func.isRequired
   };
 
@@ -157,7 +169,7 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { classes, model, imageSupport } = this.props;
     const { showKeypad } = this.state;
     const { mode, question, expression, equationEditor, responses, response } = model;
 
@@ -178,15 +190,15 @@ class GeneralConfigBlock extends React.Component {
             <MenuItem value="advanced">Advanced Multi</MenuItem>
           </Select>
         </InputContainer>
-        <div className={classes.inputContainer}>
-          <TextField
-            className={classes.input}
-            label="ITEM STEM"
-            type="textarea"
-            value={question}
+        <InputContainer label="Item Stem" className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.question}
             onChange={this.onChange('question')}
+            imageSupport={imageSupport}
+            nonEmpty={false}
           />
-        </div>
+        </InputContainer>
         {mode === 'advanced' && <div className={classes.inputContainer}>
           <InputLabel className={classes.templateTitle}>RESPONSE TEMPLATE</InputLabel>
           <MathToolbar

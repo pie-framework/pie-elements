@@ -24,7 +24,8 @@ class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     classes: PropTypes.object,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    imageSupport: PropTypes.object
   };
 
   onChange = model => {
@@ -38,7 +39,7 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { classes, model, imageSupport } = this.props;
 
     log('[render] model', model);
 
@@ -52,6 +53,7 @@ class Configure extends React.Component {
             </span>
           </Typography>
           <GeneralConfigBlock
+            imageSupport={imageSupport}
             model={model}
             onChange={this.onChange}
           />
@@ -70,6 +72,7 @@ const ConfigureMain = withStyles(styles)(Configure);
 class StateWrapper extends React.Component {
   static propTypes = {
     model: PropTypes.any,
+    imageSupport: PropTypes.object,
     onModelChanged: PropTypes.func
   };
 
@@ -88,8 +91,15 @@ class StateWrapper extends React.Component {
   }
 
   render() {
+    const { imageSupport } = this.props;
     const { model } = this.state;
-    return <ConfigureMain model={model} onModelChanged={this.onModelChanged} />;
+    return (
+      <ConfigureMain
+        model={model}
+        imageSupport={imageSupport}
+        onModelChanged={this.onModelChanged}
+      />
+    );
   }
 }
 
