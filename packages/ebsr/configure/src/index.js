@@ -1,37 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Main from './main';
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
-import debug from 'debug';
-
-const log = debug('pie-elements:ebsr:configure');
 
 export default class EbsrConfigure extends HTMLElement {
+  static getMain = ()  => document.querySelector('ebsr-main');
+
+  static defineMain() {
+    if (!customElements.get('ebsr-main')) {
+      customElements.define('ebsr-main', Main);
+    }
+  }
+
+  static setModel(m) {
+    const main = EbsrConfigure.getMain();
+    main.model = m;
+  }
 
   constructor() {
     super();
-    this.onModelChanged = this.onModelChanged.bind(this);
+
+    EbsrConfigure.defineMain();
   }
 
   set model(m) {
-    this._model = m;
     this._render();
-  }
 
-  onModelChanged(model) {
-    this._model = model;
-    log('[onModelChanged]: ', this._model);
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    EbsrConfigure.setModel(m);
   }
 
   _render() {
-    if (this._model) {
-      const el = React.createElement(Main, {
-        model: this._model,
-        onModelChanged: this.onModelChanged.bind(this),
-      });
-
-      ReactDOM.render(el, this);
-    }
+    this.innerHTML = `<ebsr-main></ebsr-main>`;
   }
 }
