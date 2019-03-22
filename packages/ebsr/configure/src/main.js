@@ -50,10 +50,10 @@ export default class Main extends HTMLElement {
     this.dispatchModelChanged();
   }
 
-  dispatchModelChanged() {
+  dispatchModelChanged(reset = false) {
     log('[onModelChanged]: ', this._model);
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
   }
 
   captureModelUpdated(part, key) {
