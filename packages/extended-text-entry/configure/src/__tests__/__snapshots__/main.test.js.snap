@@ -13,6 +13,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     max={500}
     min={100}
     onChange={[Function]}
+    showErrorWhenOutsideRange={true}
     value={NaN}
   />
   <Component
@@ -21,6 +22,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     max={500}
     min={100}
     onChange={[Function]}
+    showErrorWhenOutsideRange={true}
     value={NaN}
   />
   <br />
