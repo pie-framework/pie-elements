@@ -263,5 +263,35 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-configure@2.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": "extended-text-entry",
+    "subject": "fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field.",
+    "merge": null,
+    "header": "fix(extended-text-entry): fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field.",
+    "body": "fix(select-text): fixed the width for number text field (after updating pie-lib, it was required in few places).",
+    "footer": null,
+    "notes": [],
+    "hash": "eb64e613aad3e138853b352e42171e24f134f709",
+    "gitTags": "",
+    "committerDate": "2019-03-22 14:16:18 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@2.3.4"
+  },
+  {
+    "type": "fix",
+    "scope": "extended-text-entry",
+    "subject": "fixed updating dimensions (width & height).",
+    "merge": null,
+    "header": "fix(extended-text-entry): fixed updating dimensions (width & height).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5f16e2a6eac233dcf6d643cb58f706a9cce5e5be",
+    "gitTags": "",
+    "committerDate": "2019-03-21 10:03:12 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@2.3.4"
   }
 ]
