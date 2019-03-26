@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.5.4...@pie-element/math-inline@0.6.0) (2019-03-26)
+
+
+### Bug Fixes
+
+* continued mathquill math-input work ([18bd710](https://github.com/pie-framework/pie-elements/commit/18bd710))
+* math-inline model adjustments ([d78c619](https://github.com/pie-framework/pie-elements/commit/d78c619))
+
+
+### Features
+
+* **math-inline:** html and math support for item stem ([c317deb](https://github.com/pie-framework/pie-elements/commit/c317deb))
+
+
+
+
+
 ## [0.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.5.3...@pie-element/math-inline@0.5.4) (2019-03-19)
 
 

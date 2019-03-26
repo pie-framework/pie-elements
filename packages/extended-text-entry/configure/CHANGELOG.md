@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@2.3.3...@pie-element/extended-text-entry-configure@2.3.4) (2019-03-26)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field. ([eb64e61](https://github.com/pie-framework/pie-elements/commit/eb64e61))
+* **extended-text-entry:** fixed updating dimensions (width & height). ([5f16e2a](https://github.com/pie-framework/pie-elements/commit/5f16e2a))
+
+
+
+
+
 ## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@2.3.2...@pie-element/extended-text-entry-configure@2.3.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure
