@@ -5,7 +5,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wct --npm --expanded ./src/__tests__/index.html"
   },
   "author": "",
   "dependencies": {
@@ -14,5 +14,12 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "wct-browser-legacy": "^1.0.2",
+    "wct-headless": "^2.2.2",
+    "web-component-tester": "^6.9.2"
+  }
 }
