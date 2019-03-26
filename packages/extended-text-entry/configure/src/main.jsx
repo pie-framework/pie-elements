@@ -68,6 +68,7 @@ export class Main extends React.Component {
         <Typography className={classes.header} variant="subheading">
           Display
         </Typography>
+
         <NumberTextField
           label="Width (px)"
           disabled={!this.state.setDimensions}
@@ -75,6 +76,8 @@ export class Main extends React.Component {
           min={100}
           max={500}
           onChange={this.changeWidth}
+          showErrorWhenOutsideRange
+          className={classes.field}
         />
         <NumberTextField
           label="Height (px)"
@@ -83,7 +86,10 @@ export class Main extends React.Component {
           min={100}
           max={500}
           onChange={this.changeHeight}
+          showErrorWhenOutsideRange
+          className={classes.field}
         />
+
         <br />
         <InputCheckbox
           label={'Student responses can include math notation'}
@@ -120,5 +126,8 @@ export default withStyles(theme => ({
   promptInput: {
     width: '100%',
     marginBottom: theme.spacing.unit
+  },
+  field: {
+    width: '200px'
   }
 }))(Main);

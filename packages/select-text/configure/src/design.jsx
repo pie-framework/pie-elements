@@ -169,6 +169,7 @@ export class Design extends React.Component {
             max={model.tokens.length}
             value={model.maxSelections}
             onChange={this.changeMaxSelections}
+            className={classes.numberField}
           />
         }
 
@@ -223,5 +224,8 @@ export default withStyles(theme => ({
   prompt: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
+  },
+  numberField: {
+    width: '180px'
   }
 }))(Design);
