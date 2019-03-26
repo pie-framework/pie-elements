@@ -478,5 +478,50 @@
     "committerDate": "2019-03-19 16:25:36 +0200",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@0.3.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "continued mathquill math-input work",
+    "merge": null,
+    "header": "fix: continued mathquill math-input work",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "18bd7108a588f7177de40424862dcbc7145c7c1f",
+    "gitTags": "",
+    "committerDate": "2019-03-22 16:04:55 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.4.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "html and math support for item stem",
+    "merge": null,
+    "header": "feat(math-inline): html and math support for item stem",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c317debfaabfac3ffcab66d478d7444704a85d14",
+    "gitTags": "",
+    "committerDate": "2019-03-21 10:48:17 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.4.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "added math-inline infinite loop breaking code for reproduction purposes",
+    "merge": null,
+    "header": "chore: added math-inline infinite loop breaking code for reproduction purposes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1e5035377f14208d53880df0d3130e0c881d3352",
+    "gitTags": "",
+    "committerDate": "2019-03-20 13:46:44 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.4.0"
   }
 ]

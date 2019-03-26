@@ -173,5 +173,20 @@
     "committerDate": "2018-05-01 21:51:21 -0400",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "extended-text-entry",
+    "subject": "fixed updating dimensions (width & height).",
+    "merge": null,
+    "header": "fix(extended-text-entry): fixed updating dimensions (width & height).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5f16e2a6eac233dcf6d643cb58f706a9cce5e5be",
+    "gitTags": "",
+    "committerDate": "2019-03-21 10:03:12 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-controller@2.1.5"
   }
 ]
