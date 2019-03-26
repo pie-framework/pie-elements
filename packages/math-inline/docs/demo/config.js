@@ -10,7 +10,7 @@ module.exports = {
         allowPartialScores: false
       },
       element: 'math-inline',
-      "expression": "n = {\\embed{answerBlock}[answerBlock2]}",
+      expression: 'y = ',
       question: 'What is the equation for a slope?',
       equationEditor: 'everything',
       response: {
@@ -21,14 +21,7 @@ module.exports = {
         allowSpaces: true,
         allowDecimals: true
       },
-      "responses": [
-        {
-          "answer": "n=-11",
-          "id": "answerBlock2",
-          "alternates": {},
-          "validation": "literal"
-        }
-      ],
+      responses: [],
       feedback: {
         correct: {
           type: 'none',
