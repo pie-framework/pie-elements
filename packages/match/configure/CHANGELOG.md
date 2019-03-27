@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.7.2...@pie-element/match-configure@1.7.3) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.7.1...@pie-element/match-configure@1.7.2) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.7.0...@pie-element/match-configure@1.7.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.6.0...@pie-element/match-configure@1.7.0) (2019-03-18)
+
+
+### Features
+
+* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.5.0...@pie-element/match-configure@1.6.0) (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.4.6...@pie-element/match-configure@1.5.0) (2019-02-20)
 
 

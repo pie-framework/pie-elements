@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.3...@pie-element/pie-models@0.5.4) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [0.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.2...@pie-element/pie-models@0.5.3) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [0.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.1...@pie-element/pie-models@0.5.2) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [0.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.0...@pie-element/pie-models@0.5.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [0.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.4.2...@pie-element/pie-models@0.5.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* update schema for match interaction ([#123](https://github.com/pie-framework/pie-elements/issues/123)) ([74fad0b](https://github.com/pie-framework/pie-elements/commit/74fad0b))
+
+
+### Features
+
+* update schema docs ([#136](https://github.com/pie-framework/pie-elements/issues/136)) ([184f262](https://github.com/pie-framework/pie-elements/commit/184f262))
+
+
+
+
+
 ## [0.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.4.1...@pie-element/pie-models@0.4.2) (2019-02-20)
 
 **Note:** Version bump only for package @pie-element/pie-models

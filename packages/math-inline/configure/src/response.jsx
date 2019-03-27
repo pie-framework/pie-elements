@@ -144,6 +144,10 @@ class Response extends React.Component {
     const { alternateIdCounter } = this.state;
     const newResponse = { ...response };
 
+    if (!newResponse.alternates) {
+      newResponse.alternates = {}
+    }
+
     newResponse.alternates[alternateIdCounter] = { id: alternateIdCounter, answer: '' };
 
     onResponseChange(newResponse, index);
@@ -206,7 +210,7 @@ class Response extends React.Component {
     const { classes, mode, defaultResponse, index, response } = this.props;
     const { showKeypad } = this.state;
     const { validation, answer, alternates, allowDecimals, allowSpaces } = response;
-    const hasAlternates = Object.keys(alternates).length > 0;
+    const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor
     };
@@ -237,7 +241,7 @@ class Response extends React.Component {
               classNames={classNames}
               controlledKeypad
               showKeypad={showKeypad.main}
-              latex={answer}
+              latex={answer || ''}
               onChange={this.onAnswerChange}
               onFocus={this.onFocus}
               onDone={this.onDone}
@@ -256,7 +260,7 @@ class Response extends React.Component {
                 controlledKeypad
                 keypadMode={mode}
                 showKeypad={showKeypad[alternateId] || false}
-                latex={alternates[alternateId].answer}
+                latex={alternates[alternateId].answer || ''}
                 onChange={this.onAlternateAnswerChange(alternateId)}
                 onFocus={this.onAlternateFocus(alternateId)}
                 onDone={this.onAlternateDone(alternateId)}

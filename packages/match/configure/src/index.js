@@ -20,10 +20,11 @@ export default class MatchConfigure extends HTMLElement {
 
   constructor() {
     super();
+    this._model = MatchConfigure.createDefaultModel();
   }
 
   set model(m) {
-    this._model = m;
+    this._model = MatchConfigure.createDefaultModel(m);
     this._render();
   }
 

@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.3.3...@pie-element/math-inline-configure@0.3.4) (2019-03-19)
+
+
+### Bug Fixes
+
+* **math-inline:** fix simple mode interaction and remove defaultResponse from model ([cc82516](https://github.com/pie-framework/pie-elements/commit/cc82516))
+
+
+
+
+
+## [0.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.3.2...@pie-element/math-inline-configure@0.3.3) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [0.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.3.1...@pie-element/math-inline-configure@0.3.2) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [0.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.3.0...@pie-element/math-inline-configure@0.3.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+# [0.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.2.0...@pie-element/math-inline-configure@0.3.0) (2019-03-18)
+
+
+### Features
+
+* **general:** initialize default model (2) ([#138](https://github.com/pie-framework/pie-elements/issues/138)) ([fc72eca](https://github.com/pie-framework/pie-elements/commit/fc72eca))
+
+
+
+
+
+# [0.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.1.2...@pie-element/math-inline-configure@0.2.0) (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 ## [0.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.1.1...@pie-element/math-inline-configure@0.1.2) (2019-02-20)
 
 

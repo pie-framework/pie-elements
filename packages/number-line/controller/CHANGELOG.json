@@ -1,0 +1,97 @@
+[
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "initialize default model (#129)",
+    "merge": null,
+    "header": "feat(general): initialize default model (#129)",
+    "body": "* feat: initialize empty README\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* feat: implement default-model-initialization method\n\n* fix: add babel-transform-runtime in order to support async/await\n\n* bump yarn lock\n\n* update snapshots",
+    "footer": null,
+    "notes": [],
+    "hash": "b62d0585a86c8e2fbe5a6181b869a28c1131756b",
+    "gitTags": "",
+    "committerDate": "2019-03-12 15:47:20 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "build fixes",
+    "merge": null,
+    "header": "fix: build fixes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3c3a7f20ff7805fa1265eb7b187b80d77e1820ac",
+    "gitTags": "",
+    "committerDate": "2018-09-20 09:49:51 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "dependencies",
+    "subject": "bump @pie-lib/feedback",
+    "merge": null,
+    "header": "fix(dependencies): bump @pie-lib/feedback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6fea7bb8bd678952103c1d6efb9d1e3d8ea4ef90",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:39:29 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": "test",
+    "subject": "update tests",
+    "merge": null,
+    "header": "chore(test): update tests",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8b663ad51a6bcc9d6c9fab3de3a9a23da23a24a8",
+    "gitTags": "",
+    "committerDate": "2018-05-10 21:21:58 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "controller",
+    "subject": "bump feedback version",
+    "merge": null,
+    "header": "fix(controller): bump feedback version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a07c9ecf3f44f94bdeb48e847cca52ac8e13f619",
+    "gitTags": "",
+    "committerDate": "2018-05-10 19:13:44 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "model",
+    "subject": "move away from legacy model",
+    "merge": null,
+    "header": "feat(model): move away from legacy model",
+    "body": null,
+    "footer": "BREAKING CHANGE:\n\nModel has moved from:\n\n* `model.config` -> `config`\n* `feedback` - uses new feedback structure\n\nFull example:\n\nFrom:\n\n```javascript\n\n    {\n      id: '1',\n      element: 'number-line',\n      correctResponse: [\n        {\n          type: 'point',\n          pointType: 'full',\n          domainPosition: 1\n        },\n        {\n          type: 'line',\n          leftPoint: 'full',\n          rightPoint: 'empty',\n          domainPosition: 1,\n          size: 2\n        }\n      ],\n      feedback: {\n        correctFeedbackType: 'default',\n        partialFeedbackType: 'default',\n        incorrectFeedbackType: 'custom',\n        incorrectFeedback: '<h1>incorrect</h1>'\n      },\n      allowPartialScoring: true,\n      partialScoring: [\n        {\n          numberOfCorrect: 1,\n          scorePercentage: 35\n        }\n      ],\n      model: {\n        config: {\n          width: 500,\n          height: 400,\n          domain: [\n            -5,\n            5\n          ],\n          initialElements: [\n            {\n              type: 'point',\n              pointType: 'empty',\n              domainPosition: -1\n            }\n          ],\n          maxNumberOfPoints: 20,\n          tickFrequency: 6,\n          showMinorTicks: true,\n          snapPerTick: 1,\n          tickLabelOverrides: [],\n          initialType: 'PF',\n          exhibitOnly: false,\n          availableTypes: {\n            PF: true,\n            PE: true,\n            LFF: true,\n            LEF: true,\n            LFE: true,\n            LEE: true,\n            RFN: true,\n            RFP: true,\n            REN: true,\n            REP: true\n          }\n        }\n      }\n    }\n\n```\n\nTo:\n\n```javascript\n\n {\n      id: '1',\n      element: 'number-line',\n      correctResponse: [\n        {\n          type: 'point',\n          pointType: 'full',\n          domainPosition: 1\n        },\n        {\n          type: 'line',\n          leftPoint: 'full',\n          rightPoint: 'empty',\n          domainPosition: 1,\n          size: 2\n        }\n      ],\n      feedback: {\n        correct: {\n          type: 'default',\n          default: 'Correct'\n        },\n        partial: {\n          type: 'default',\n          default: 'Nearly'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: '<h1>Incorrect</h1>'\n        }\n      },\n      allowPartialScoring: true,\n      partialScoring: [\n        {\n          numberOfCorrect: 1,\n          scorePercentage: 35\n        }\n      ],\n      config: {\n        width: 500,\n        height: 400,\n        domain: [-5, 5],\n        initialElements: [\n          {\n            type: 'point',\n            pointType: 'empty',\n            domainPosition: -1\n          }\n        ],\n        maxNumberOfPoints: 20,\n        tickFrequency: 6,\n        showMinorTicks: true,\n        snapPerTick: 1,\n        tickLabelOverrides: [],\n        initialType: 'PF',\n        exhibitOnly: false,\n        availableTypes: {\n          PF: true,\n          PE: true,\n          LFF: true,\n          LEF: true,\n          LFE: true,\n          LEE: true,\n          RFN: true,\n          RFP: true,\n          REN: true,\n          REP: true\n        }\n      }\n    }\n\n```",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "Model has moved from:\n\n* `model.config` -> `config`\n* `feedback` - uses new feedback structure\n\nFull example:\n\nFrom:\n\n```javascript\n\n    {\n      id: '1',\n      element: 'number-line',\n      correctResponse: [\n        {\n          type: 'point',\n          pointType: 'full',\n          domainPosition: 1\n        },\n        {\n          type: 'line',\n          leftPoint: 'full',\n          rightPoint: 'empty',\n          domainPosition: 1,\n          size: 2\n        }\n      ],\n      feedback: {\n        correctFeedbackType: 'default',\n        partialFeedbackType: 'default',\n        incorrectFeedbackType: 'custom',\n        incorrectFeedback: '<h1>incorrect</h1>'\n      },\n      allowPartialScoring: true,\n      partialScoring: [\n        {\n          numberOfCorrect: 1,\n          scorePercentage: 35\n        }\n      ],\n      model: {\n        config: {\n          width: 500,\n          height: 400,\n          domain: [\n            -5,\n            5\n          ],\n          initialElements: [\n            {\n              type: 'point',\n              pointType: 'empty',\n              domainPosition: -1\n            }\n          ],\n          maxNumberOfPoints: 20,\n          tickFrequency: 6,\n          showMinorTicks: true,\n          snapPerTick: 1,\n          tickLabelOverrides: [],\n          initialType: 'PF',\n          exhibitOnly: false,\n          availableTypes: {\n            PF: true,\n            PE: true,\n            LFF: true,\n            LEF: true,\n            LFE: true,\n            LEE: true,\n            RFN: true,\n            RFP: true,\n            REN: true,\n            REP: true\n          }\n        }\n      }\n    }\n\n```\n\nTo:\n\n```javascript\n\n {\n      id: '1',\n      element: 'number-line',\n      correctResponse: [\n        {\n          type: 'point',\n          pointType: 'full',\n          domainPosition: 1\n        },\n        {\n          type: 'line',\n          leftPoint: 'full',\n          rightPoint: 'empty',\n          domainPosition: 1,\n          size: 2\n        }\n      ],\n      feedback: {\n        correct: {\n          type: 'default',\n          default: 'Correct'\n        },\n        partial: {\n          type: 'default',\n          default: 'Nearly'\n        },\n        incorrect: {\n          type: 'custom',\n          custom: '<h1>Incorrect</h1>'\n        }\n      },\n      allowPartialScoring: true,\n      partialScoring: [\n        {\n          numberOfCorrect: 1,\n          scorePercentage: 35\n        }\n      ],\n      config: {\n        width: 500,\n        height: 400,\n        domain: [-5, 5],\n        initialElements: [\n          {\n            type: 'point',\n            pointType: 'empty',\n            domainPosition: -1\n          }\n        ],\n        maxNumberOfPoints: 20,\n        tickFrequency: 6,\n        showMinorTicks: true,\n        snapPerTick: 1,\n        tickLabelOverrides: [],\n        initialType: 'PF',\n        exhibitOnly: false,\n        availableTypes: {\n          PF: true,\n          PE: true,\n          LFF: true,\n          LEF: true,\n          LFE: true,\n          LEE: true,\n          RFN: true,\n          RFP: true,\n          REN: true,\n          REP: true\n        }\n      }\n    }\n\n```"
+      }
+    ],
+    "hash": "91533425f0b1f43ec90fe8ac8231cbbb3aac9309",
+    "gitTags": "",
+    "committerDate": "2018-05-10 12:13:31 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@2.0.0"
+  }
+]

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.3...@pie-element/point-intercept-configure@1.2.4) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.2...@pie-element/point-intercept-configure@1.2.3) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.1...@pie-element/point-intercept-configure@1.2.2) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.0...@pie-element/point-intercept-configure@1.2.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.1.5...@pie-element/point-intercept-configure@1.2.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* InputCheckbox has to have a boolean value (undefined was throwing an error). The parameter that onPartialScoringChange has is a boolean and you can not map through it. ([#132](https://github.com/pie-framework/pie-elements/issues/132)) ([2a9b95e](https://github.com/pie-framework/pie-elements/commit/2a9b95e))
+
+
+### Features
+
+* all elements on `develop` target [@next](https://github.com/next) releases ([d3766e6](https://github.com/pie-framework/pie-elements/commit/d3766e6))
+
+
+
+
+
 ## [1.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.1.4...@pie-element/point-intercept-configure@1.1.5) (2019-02-20)
 
 **Note:** Version bump only for package @pie-element/point-intercept-configure

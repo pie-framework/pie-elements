@@ -18,8 +18,13 @@ export default class ExtendedTextEntry extends HTMLElement {
     ...model,
   });
 
+  constructor() {
+    super();
+    this._model = ExtendedTextEntry.createDefaultModel();
+  }
+
   set model(m) {
-    this._model = m;
+    this._model = ExtendedTextEntry.createDefaultModel(m);
     this.render();
   }
 

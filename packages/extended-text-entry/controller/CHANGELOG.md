@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.3...@pie-element/extended-text-entry-controller@2.1.4) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.2...@pie-element/extended-text-entry-controller@2.1.3) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.1...@pie-element/extended-text-entry-controller@2.1.2) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.0...@pie-element/extended-text-entry-controller@2.1.1) (2019-03-18)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+# 2.1.0 (2019-03-13)
+
+
+### Features
+
+* **general:** initialize default model ([#129](https://github.com/pie-framework/pie-elements/issues/129)) ([b62d058](https://github.com/pie-framework/pie-elements/commit/b62d058))
+
+
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2018-09-20)
 

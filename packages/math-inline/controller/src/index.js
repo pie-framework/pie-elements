@@ -8,15 +8,24 @@ const log = debug('@pie-element:math-inline:controller');
 
 const getResponseCorrectness = (
   model,
-  answers
+  answerItem
 ) => {
   const correctResponses = model.responses;
+  const isAdvanced = model.mode === 'advanced';
 
-  if (!answers || answers.length === 0) {
+  if (!answerItem || (isAdvanced && answerItem.length === 0)) {
     return 'unanswered';
   }
 
-  const correctAnswers = getCorrectAnswers(correctResponses, answers);
+  const correctAnswers = getCorrectAnswers(isAdvanced ? correctResponses : model.response, answerItem, isAdvanced);
+
+  if (!isAdvanced) {
+    if (correctAnswers.count === 0) {
+      return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
+    } else {
+      return  { correctness: 'correct', score: '100%', info: correctAnswers.info };
+    }
+  }
 
   if (correctResponses.length === correctAnswers.count) {
     return  { correctness: 'correct', score: '100%', info: correctAnswers.info };
@@ -27,36 +36,59 @@ const getResponseCorrectness = (
   return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
 };
 
-function getCorrectAnswers(correctResponses, answers) {
+function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
   let correct = 0;
   const answerInfo = {};
 
-  correctResponses.forEach(correctResponse => {
-    let answerCorrect = false;
-    const correspondingAnswer = answers[correctResponse.id];
-    const acceptedValues = [correctResponse.answer].concat(Object.keys(correctResponse.alternates).map(alternateId =>
-      correctResponse.alternates[alternateId].answer));
+  if (isAdvanced) {
+    correctResponseItem.forEach(correctResponse => {
+      let answerCorrect = false;
+      const correspondingAnswer = answerItem[correctResponse.id];
+      const acceptedValues = [correctResponse.answer].concat(Object.keys(correctResponse.alternates).map(alternateId =>
+        correctResponse.alternates[alternateId].answer));
 
-    if (correspondingAnswer && correspondingAnswer.value) {
-      if (correctResponse.validation === 'literal') {
-        for (let i = 0; i < acceptedValues.length; i++) {
-          if (acceptedValues[i] === correspondingAnswer.value) {
-            answerCorrect = true;
-            break;
+      if (correspondingAnswer && correspondingAnswer.value) {
+        if (correctResponse.validation === 'literal') {
+          for (let i = 0; i < acceptedValues.length; i++) {
+            if (acceptedValues[i] === correspondingAnswer.value) {
+              answerCorrect = true;
+              break;
+            }
           }
+        } else {
+          answerCorrect = areValuesEqual(correctResponse.answer, correspondingAnswer.value, { isLatex: true });
         }
-      } else {
-        answerCorrect = areValuesEqual(correctResponse.answer, correspondingAnswer.value, { isLatex: true });
       }
+
+      if (answerCorrect) {
+        answerInfo[correctResponse.id] = true;
+        correct++;
+      } else {
+        answerInfo[correctResponse.id] = false;
+      }
+    });
+  } else {
+    let answerCorrect = false;
+    const acceptedValues = [correctResponseItem.answer].concat(Object.keys(correctResponseItem.alternates).map(alternateId =>
+      correctResponseItem.alternates[alternateId].answer));
+
+    if (correctResponseItem.validation === 'literal') {
+      for (let i = 0; i < acceptedValues.length; i++) {
+        if (acceptedValues[i] === answerItem) {
+          answerCorrect = true;
+          break;
+        }
+      }
+    } else {
+      answerCorrect = areValuesEqual(correctResponseItem.answer, answerItem, { isLatex: true });
     }
 
     if (answerCorrect) {
-      answerInfo[correctResponse.id] = true;
       correct++;
-    } else {
-      answerInfo[correctResponse.id] = false;
     }
-  });
+
+    answerInfo.defaultResponse = answerCorrect;
+  }
 
   return {
     info: answerInfo,
@@ -64,11 +96,11 @@ function getCorrectAnswers(correctResponses, answers) {
   };
 }
 
-const getCorrectness = (question, env, answers) => {
+const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      answers
+      question.mode === 'advanced' ? session.answers : session.response
     );
   }
 };
@@ -86,7 +118,7 @@ export function createDefaultModel(model = {}) {
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const correctness = getCorrectness(question, env, session.answers);
+    const correctness = getCorrectness(question, env, session);
     const correctResponse = {};
 
     const fb =

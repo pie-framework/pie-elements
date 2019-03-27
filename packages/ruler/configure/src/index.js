@@ -5,6 +5,8 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import defaults from './defaults';
 
+const Foo = 'foo';
+
 const defaultModel = () => ({
   model: {
     config: {
@@ -20,8 +22,13 @@ const defaultModel = () => ({
 export default class RulerConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults,
-    ...model,
+    ...model
   });
+
+  constructor() {
+    super();
+    this._model = RulerConfigure.createDefaultModel();
+  }
 
   connectedCallback() {
     setTimeout(() => {
@@ -34,7 +41,7 @@ export default class RulerConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = m;
+    this._model = RulerConfigure.createDefaultModel(m);
     this.render();
   }
 

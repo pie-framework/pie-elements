@@ -15,8 +15,13 @@ export default class CategorizeConfigure extends HTMLElement {
     ...model,
   });
 
+  constructor() {
+    super();
+    this._model = CategorizeConfigure.createDefaultModel();
+  }
+
   set model(m) {
-    this._model = m;
+    this._model = CategorizeConfigure.createDefaultModel(m);
     this.render();
   }
 

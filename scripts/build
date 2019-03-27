@@ -5,8 +5,8 @@ const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
 const { readdirSync, pathExistsSync } = require('fs-extra');
 const _ = require('lodash');
-const { Commands } = require('@pie-framework/build-helper');
-const { resolve, relative } = require('path');
+const { Commands, getPackage } = require('@pie-framework/build-helper');
+const { resolve, relative, join } = require('path');
 const minimist = require('minimist');
 
 log('scope: ', argv.scope);
@@ -18,46 +18,37 @@ const r = (...parts) =>
 
 const rel = p => relative(resolve(__dirname, '..'), p);
 
+const expandPkg = d => {
+  const out = [];
+
+  out.push(rel(r(d)));
+  if (pathExistsSync(r(d, 'controller', 'src'))) {
+    out.push(rel(r(d, 'controller')));
+  }
+
+  if (pathExistsSync(r(d, 'configure', 'src'))) {
+    out.push(rel(r(d, 'configure')));
+  }
+
+  return out;
+};
+
+const getElementPackages = dir => {
+  const dirs = readdirSync(dir);
+  const all = _.flatten(dirs.map(d => expandPkg(d)));
+  const out = all.map(getPackage);
+  return out;
+};
+
 class ElementsCommands extends Commands {
   constructor(root, args) {
-    super(root, args);
-  }
-
-  expandPkg(d) {
-    const out = [];
-    if (pathExistsSync(r(d, 'src'))) {
-      out.push(rel(r(d)));
-    }
-
-    if (pathExistsSync(r(d, 'controller', 'src'))) {
-      out.push(rel(r(d, 'controller')));
-    }
-
-    if (pathExistsSync(r(d, 'configure', 'src'))) {
-      out.push(rel(r(d, 'configure')));
-    }
-
-    return out;
-  }
-
-  packages() {
-    if (args.scope) {
-      const arr = Array.isArray(argv.scope) ? argv.scope : [argv.scope];
-      return _.flatten(arr.map(p => this.expandPkg(p)));
-    }
-    const dirs = readdirSync(resolve(__dirname, '..', 'packages'));
-    const all = _.flatten(dirs.map(d => this.expandPkg(d)));
-    return all;
-  }
-
-  break() {
-    return Promise.reject(new Error('no'));
+    super(root, args, getElementPackages);
   }
 
   clean() {
     return Promise.all(
-      this.packages().map(p => {
-        const cwd = resolve(__dirname, '..', p);
+      getElementPackages(join(this.projectRoot, 'packages')).map(p => {
+        const cwd = resolve(__dirname, '..', p.dir);
         log('cwd:', cwd);
         return this.runCmd('rm -fr lib', { cwd });
       })
@@ -66,13 +57,15 @@ class ElementsCommands extends Commands {
 
   babel() {
     return Promise.all(
-      this.packages().map(p => {
-        const cwd = resolve(__dirname, '..', p);
-        const cmd = `${
-          this.p.babel
-        } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
-        return this.runCmd(cmd, { cwd });
-      })
+      getElementPackages(join(this.projectRoot, 'packages'))
+        .filter(p => pathExistsSync(join(p.dir, 'src')))
+        .map(p => {
+          const cwd = resolve(__dirname, '..', p.dir);
+          const cmd = `${
+            this.p.babel
+          } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+          return this.runCmd(cmd, { cwd });
+        })
     );
   }
 }
