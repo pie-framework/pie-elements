@@ -12,12 +12,10 @@ export default class EbsrConfigure extends HTMLElement {
     }
   }
 
-  static getParts() {
-    return {
-      partA: document.getElementById('part-a-configure'),
-        partB: document.getElementById('part-b-configure'),
-    }
-  };
+  static getParts = () => ({
+    partA: document.getElementById('part-a-configure'),
+    partB: document.getElementById('part-b-configure'),
+  });
 
   constructor() {
     super();
@@ -82,8 +80,4 @@ export default class EbsrConfigure extends HTMLElement {
       </div>
     `;
   }
-}
-
-if(!customElements.get('ebsr-element')){
-  customElements.define('ebsr-element', EbsrConfigure);
 }
