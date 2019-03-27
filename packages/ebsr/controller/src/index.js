@@ -59,6 +59,7 @@ export function model(question, session, env) {
     const partB = parsePart(question.partB, 'partB', session, env);
 
     const out = {
+      disabled: env.mode !== 'gather',
       mode: env.mode,
       partA,
       partB,
