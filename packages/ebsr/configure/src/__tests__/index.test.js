@@ -1,7 +1,6 @@
 const PART_A = 'partA';
 const PART_B = 'partB';
-
-const model1 = {
+const model = {
   partA: {
     choiceMode: 'radio',
     choices: [
@@ -20,10 +19,10 @@ const model1 = {
         feedback: {
           type: 'default'
         }
-      },
+      }
     ],
     keyMode: 'numbers',
-    prompt: `prompt ${PART_A}`,
+    prompt: `prompt ${PART_A}`
   },
   partB: {
     choiceMode: 'radio',
@@ -43,25 +42,40 @@ const model1 = {
         feedback: {
           type: 'default'
         }
-      },
+      }
     ],
     keyMode: 'numbers',
-    prompt: `prompt ${PART_B}`,
+    prompt: `prompt ${PART_B}`
   }
 };
 
-describe('Root', () => {
-  let componentRoot;
-  let mcs;
+describe('index', () => {
+  let Def;
+  let el;
+  let partA;
+  let partB;
 
-  beforeEach(() => {
-    componentRoot = document.querySelector('ebsr-element-configure');
-    componentRoot.model = model1;
-
-    mcs = document.querySelectorAll('multiple-choice-configure');
+  beforeAll(() => {
+    Def = require('../index').default;
   });
 
-  it('should have a container element for the greeting', () => {
-    expect(mcs.length).to.equal(2);
+  beforeEach(() => {
+    el = new Def();
+    el.connectedCallback();
+    partA = new HTMLElement();
+    partB = new HTMLElement();
+    el.querySelector = jest.fn(s => {
+      if (s === '#part-a-configure') {
+        return partA;
+      } else {
+        return partB;
+      }
+    });
+    el.model = model;
+  });
+
+  it('should have set the model', () => {
+    console.log(partA);
+    expect(partA.model).toEqual(model.partA);
   });
 });
