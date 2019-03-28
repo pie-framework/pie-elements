@@ -6,17 +6,13 @@
     <script src="../../node_modules/wct-browser-legacy/browser.js"></script>
     <script src="../../node_modules/@polymer/test-fixture/test-fixture-mocha.js"></script>
     <script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script type="module" src="../"></script>
+    <script src="../../dist/index.js"></script>
 </head>
 
 <body>
-    <test-fixture id="ebsr-fixture">
-        <template>
-            <ebsr-element></ebsr-element>
-        </template>
-    </test-fixture>
+    <ebsr-element-configure></ebsr-element-configure>
 
-    <script type="module">
+    <script >
       WCT.loadSuites([
         './root.test.js'
       ]);

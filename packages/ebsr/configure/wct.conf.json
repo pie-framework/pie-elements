@@ -2,20 +2,14 @@
   "verbose": false,
   "plugins": {
     "local": {
-      "browsers": ["chrome"]
-    },
-    "sauce": {
-      "disabled": true,
-      "username": "redacted",
-      "accessKey": "redacted",
-      "browsers": [
-        {
-          "browserName": "firefox"
-        },
-        {
-          "browserName": "safari"
-        }
-      ]
+      "browsers": ["chrome"],
+      "browserOptions": {
+        "chrome": [
+          "headless",
+          "disable-gpu",
+          "no-sandbox"
+        ]
+      }
     }
   }
 }
