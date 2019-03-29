@@ -1,5 +1,6 @@
 import debug from 'debug';
 import shuffle from 'lodash/shuffle';
+import defaults from './defaults';
 import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:ebsr:controller');
@@ -68,6 +69,14 @@ export function model(question, session, env) {
     resolve(out);
   });
 }
+
+export const createDefaultModel = (model = {}) =>
+  new Promise(resolve => {
+    resolve({
+      ...defaults,
+      ...model,
+    })
+  });
 
 const isCorrect = c => c.correct === true;
 
