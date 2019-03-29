@@ -1,6 +1,8 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 
+import defaults from './defaults';
+
 import debug from 'debug';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const log = debug('pie-elements:ebsr:configure');
@@ -12,6 +14,11 @@ const defineMultipleChoice = () => {
 };
 
 export default class EbsrConfigure extends HTMLElement {
+  static createDefaultModel = (model = {}) => ({
+    ...defaults,
+    ...model,
+  });
+
   constructor() {
     super();
     defineMultipleChoice();
@@ -21,6 +28,8 @@ export default class EbsrConfigure extends HTMLElement {
         e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
       this.handleUpdate(e, key);
     };
+
+    this._model = EbsrConfigure.createDefaultModel();
   }
 
   handleUpdate(e, key) {
@@ -29,7 +38,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = m;
+    this._model = EbsrConfigure.createDefaultModel(m);
     this.partA.model = this._model.partA;
     this.partB.model = this._model.partB;
   }
