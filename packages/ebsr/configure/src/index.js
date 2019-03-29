@@ -19,9 +19,13 @@ export default class EbsrConfigure extends HTMLElement {
       e.stopImmediatePropagation();
       const key =
         e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
-      this._model[key] = e.update;
-      this.dispatchModelChanged();
+      this.handleUpdate(e, key);
     };
+  }
+
+  handleUpdate(e, key) {
+    this._model[key] = e.update;
+    this.dispatchModelChanged();
   }
 
   set model(m) {

@@ -19,26 +19,3 @@ global.customElements = {
   whenDefined: jest.fn().mockResolvedValue(),
   get: jest.fn()
 };
-// const { JSDOM } = require('@tbranyen/jsdom');
-// const window = new JSDOM().window;
-// const {
-//   HTMLElement,
-//   customElements,
-//   document,
-//   CustomEvent,
-//   InputEvent
-// } = window;
-
-// console.log('registering JSDOM...');
-
-// global.HTMLElement = HTMLElement;
-// global.CustomEvent = CustomEvent;
-// global.customElements = customElements;
-// global.InputEvent = InputEvent;
-
-// global.document = document;
-
-// const Root = require('../../dist/index.js');
-
-// customElements.define('custom-element', Root);
-// document.body.appendChild(new Root());
