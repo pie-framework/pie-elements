@@ -38,7 +38,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = EbsrConfigure.createDefaultModel(m);
+    this._model = m;
     this.partA.model = this._model.partA;
     this.partB.model = this._model.partB;
   }
