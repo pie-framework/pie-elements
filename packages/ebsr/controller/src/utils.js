@@ -5,7 +5,12 @@ export const getCorrectResponse = (choices) => choices
   .map(c => c.value)
   .sort();
 
-export const isResponseCorrect = (question, session) => {
+export const isResponseCorrect = (question, key, session) => {
   let correctResponse = getCorrectResponse(question.choices);
-  return isEqual((session.value || []).sort(), correctResponse);
+
+  if (session.value) {
+    return isEqual((session.value[key].value || []).sort(), correctResponse);
+  }
+
+  return false;
 };

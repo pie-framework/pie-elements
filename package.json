@@ -23,6 +23,7 @@
     "@babel/preset-react": "^7.0.0",
     "@pie-framework/build-helper": "^4.4.2",
     "@pie-lib/test-utils": "^0.0.3",
+    "@tbranyen/jsdom": "^13.0.0",
     "@yarnpkg/lockfile": "^1.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
