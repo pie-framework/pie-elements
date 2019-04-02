@@ -13,7 +13,7 @@ function partialScore(question, session) {
   let numCorrect = flattenCorrect(question).reduce((score, response, index) => {
     return (session.value[index] === response) ? score + 1 : score;
   }, 0);
-  let weighting = question.partialScoring.find(({ correctCount }) => correctCount === numCorrect);
+  let weighting = question.partialScoring && question.partialScoring.find(({ correctCount }) => correctCount === numCorrect);
   return allCorrect ? maxScore : (weighting !== undefined && weighting.weight !== undefined) ? weighting.weight * maxScore : 0;
 }
 

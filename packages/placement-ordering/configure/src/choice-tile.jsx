@@ -1,7 +1,9 @@
-import { Checkbox } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import CardActions from '@material-ui/core/CardActions';
+import DragHandle from '@material-ui/icons/DragHandle';
 
 import { DragSource, DropTarget } from 'react-dnd';
+import classNames from 'classnames';
 
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
@@ -12,76 +14,93 @@ import { withStyles } from '@material-ui/core/styles';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
-class ChoiceTile extends React.Component {
+export class ChoiceTile extends React.Component {
   static propTypes = {
-    imageSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    }),
-    choice: PropTypes.object,
-    onChoiceChange: PropTypes.func.isRequired,
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool,
+    isDragging: PropTypes.bool.isRequired,
+    id: PropTypes.any,
+    label: PropTypes.string,
+    isOver: PropTypes.bool,
     classes: PropTypes.object.isRequired,
+    type: PropTypes.string,
+    empty: PropTypes.bool,
+    disabled: PropTypes.bool,
+    outcome: PropTypes.object,
+    index: PropTypes.number,
+    imageSupport: PropTypes.oneOfType([
+      PropTypes.shape({
+        add: PropTypes.func.isRequired,
+        delete: PropTypes.func.isRequired
+      }),
+      PropTypes.bool
+    ]),
+    choice: PropTypes.object,
+    onChoiceChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-
-    this.onLabelChange = label => {
-      const { choice, onChoiceChange } = this.props;
-      choice.label = label;
-      onChoiceChange(choice);
-    };
-
-    this.onMoveOnDragChange = (event, value) => {
-      const { choice, onChoiceChange } = this.props;
-      choice.moveOnDrag = value;
-      onChoiceChange(choice);
-    };
-  }
+  onLabelChange = label => {
+    const { choice, onChoiceChange } = this.props;
+    choice.label = label;
+    onChoiceChange(choice);
+  };
 
   render() {
     const {
-      choice,
+      choice: {
+        label,
+        editable
+      },
+      isDragging,
       connectDragSource,
       connectDropTarget,
-      isDragging,
       classes,
       onDelete,
-      imageSupport
+      imageSupport,
     } = this.props;
+
+    const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
 
     const opacity = isDragging ? 0 : 1;
     const markup = (
-      <div className={classes.choiceTile} style={{ opacity: opacity }}>
+      <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
+        <CardActions>
+            <span className={classNames(classes.dragHandle )}>
+              <DragHandle className={classes.actions} />
+            </span>
+        </CardActions>
         <EditableHtml
-          style={{ display: 'inline-block' }}
+          disabled={!editable}
+          className={classNames(classes.prompt, !editable && classes.targetPrompt)}
           placeholder="Enter a choice"
-          markup={choice.label}
-          imageSupport={imageSupport}
+          markup={label}
+          imageSupport={imageSupport || undefined}
           onChange={this.onLabelChange}
         />
-        <div className={classes.controls}>
-          <Checkbox
-            label="Remove tile after placing"
-            checked={choice.moveOnDrag === true}
-            onChange={this.onMoveOnDragChange}
-          />
-          <IconButton color="primary" onClick={onDelete}>
-            <RemoveCircle
-              classes={{
-                root: classes.removeCircle
-              }}
-            />
-          </IconButton>
-        </div>
+        {editable && (
+          <div className={classes.controls}>
+            <IconButton color='default' onClick={onDelete}>
+              <RemoveCircle
+                classes={{
+                  root: classes.removeCircle
+                }}
+              />
+            </IconButton>
+          </div>
+        )}
       </div>
     );
 
-    return connectDragSource(connectDropTarget(markup));
+
+    return connectDragSource(
+      connectDropTarget(
+        <div>
+          {markup}
+        </div>
+      ),
+      dragSourceOpts
+    );
   }
 }
 
@@ -92,14 +111,24 @@ const Styled = withStyles(theme => ({
   choiceTile: {
     cursor: 'move',
     backgroundColor: 'white',
-    border: '1px solid #c2c2c2',
     marginTop: '5px',
     marginBottom: '5px',
-    padding: '5px'
+    display: 'flex',
+    alignItems: 'center'
   },
   controls: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'flex-end'
+  },
+  prompt: {
+    width: '80%',
+    border: 'none',
+  },
+  targetPrompt: {
+    backgroundColor: '#D7D7D7'
+  },
+  actions: {
+    color: '#B1B1B1'
   }
 }))(ChoiceTile);
 
@@ -109,7 +138,9 @@ const choiceSource = {
   beginDrag(props) {
     return {
       id: props.choice.id,
-      index: props.index
+      index: props.index,
+      type: props.choice.type,
+      instanceId: props.choice.instanceId
     };
   }
 };
@@ -126,12 +157,14 @@ const choiceTarget = {
   drop(props, monitor) {
     const item = monitor.getItem();
     log('[drop] item: ', item, 'didDrop?', monitor.didDrop());
-    props.onMoveChoice(item.index, props.index);
+
+    props.onDropChoice(item, props.index);
   }
 };
 
-const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
+const StyledSourceAndTarget = DropTarget(NAME, choiceTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  isOver: monitor.isOver()
 }))(StyledSource);
 
 export default StyledSourceAndTarget;
