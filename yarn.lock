@@ -1483,6 +1483,14 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
+"@pie-lib/controller-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.1.0.tgz#4074bf6a00abcd9abbafc1c1a49516f15c44f34d"
+  integrity sha512-A8cjc1EpcJtwBnQ0amvxJvba+6yazLaYnSfZ4E916cjfGXP0cNduzJ1+6fR4ZkijZKM4aGvebKRx0v1pvF8evw==
+  dependencies:
+    debug "^4.1.1"
+    lodash "^4.17.11"
+
 "@pie-lib/correct-answer-toggle@2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.1.2.tgz#fc035d2d271a637a98be9096639d2fff788c40a8"
