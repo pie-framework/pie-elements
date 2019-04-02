@@ -90,7 +90,8 @@ export const partialScoring = {
     if (config.partialScoring === false) {
       return false;
     }
-    return defaultValue || true;
+
+    return _.isBoolean(defaultValue) ? defaultValue : true;
   }
 };
 
