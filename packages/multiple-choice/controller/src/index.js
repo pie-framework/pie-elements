@@ -123,7 +123,7 @@ const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides `config.partialScoring`.
  */
 export function outcome(config, session, env) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const partialScoringEnabled =
       partialScoring.enabled(config, env) && config.choiceMode !== 'radio';
     const score = getScore(config, session);
