@@ -1,8 +1,8 @@
 import debug from 'debug';
 import shuffle from 'lodash/shuffle';
 import { isResponseCorrect } from './utils';
-
 import defaults from './defaults';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('pie-elements:multiple-choice:controller');
 
@@ -77,23 +77,6 @@ export function model(question, session, env) {
 }
 
 const isCorrect = c => c.correct === true;
-
-export const partialScoring = {
-  enabled: (config, env, defaultValue) => {
-    if (env.partialScoring === true) {
-      return true;
-    }
-    if (env.partialScoring === false) {
-      return false;
-    }
-
-    if (config.partialScoring === false) {
-      return false;
-    }
-
-    return _.isBoolean(defaultValue) ? defaultValue : true;
-  }
-};
 
 const getScore = (config, session) => {
   const maxScore = config.choices.length;
