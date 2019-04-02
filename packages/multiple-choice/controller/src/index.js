@@ -47,6 +47,9 @@ export function model(question, session, env) {
     );
 
     if (question.shuffle) {
+      console.error(
+        '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
+      );
       choices = shuffle(choices);
     }
 
@@ -75,37 +78,55 @@ export function model(question, session, env) {
 
 const isCorrect = c => c.correct === true;
 
-const normalize = (n, min, max) => Math.max(min, Math.min(max, n));
+export const partialScoring = {
+  enabled: (config, env, defaultValue) => {
+    if (env.partialScoring === true) {
+      return true;
+    }
+    if (env.partialScoring === false) {
+      return false;
+    }
 
-export const scoreFromRule = (rule, fallback) => {
-  if (!rule || !Number.isFinite(rule.scorePercentage)) {
-    return fallback;
+    if (config.partialScoring === false) {
+      return false;
+    }
+    return defaultValue || true;
   }
-  return normalize(rule.scorePercentage, 0, 100) * 0.01;
 };
 
+const getScore = (config, session) => {
+  const maxScore = config.choices.length;
+  const chosen = c => !!(session.value || []).find(v => v === c.value);
+  const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
+  const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
+  const correctCount = config.choices.reduce((total, choice) => {
+    if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
+      return total - 1;
+    } else {
+      return total;
+    }
+  }, config.choices.length);
+
+  const str = (correctCount / maxScore).toFixed(2);
+  return parseFloat(str, 10);
+};
+
+/**
+ *
+ * The score is partial by default for checkbox mode, allOrNothing for radio mode.
+ * To disable partial scoring for checkbox mode you either set config.partialScoring = false or env.partialScoring = false. the value in `env` will
+ * override the value in `config`.
+ * @param {Object} config - the main model
+ * @param {boolean} config.partialScoring - is partial scoring enabled (if undefined set to to true)
+ * @param {*} session
+ * @param {Object} env
+ * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides `config.partialScoring`.
+ */
 export function outcome(config, session, env) {
   return new Promise((resolve, reject) => {
-    log('outcome...');
-    const maxScore = config.choices.length;
-
-    const chosen = c => !!(session.value || []).find(v => v === c.value);
-    const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
-    const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
-    const correctCount = config.choices.reduce((total, choice) => {
-      if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
-        return total - 1;
-      } else {
-        return total;
-      }
-    }, config.choices.length);
-
-    if (!config.partialScoring && correctCount < maxScore) {
-      resolve({ score: 0 });
-    } else {
-      const scoreString = ( correctCount / config.choices.length ).toFixed(2);
-
-      resolve( {score: parseFloat( scoreString ) });
-    }
+    const partialScoringEnabled =
+      partialScoring.enabled(config, env) && config.choiceMode !== 'radio';
+    const score = getScore(config, session);
+    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }
