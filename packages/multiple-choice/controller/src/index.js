@@ -1,10 +1,7 @@
-import debug from 'debug';
 import shuffle from 'lodash/shuffle';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { partialScoring } from '@pie-lib/controller-utils';
-
-const log = debug('pie-elements:multiple-choice:controller');
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
@@ -37,7 +34,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
@@ -47,6 +44,7 @@ export function model(question, session, env) {
     );
 
     if (question.shuffle) {
+      // eslint-disable-next-line no-console
       console.error(
         '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
       );
