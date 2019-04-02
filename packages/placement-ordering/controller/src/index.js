@@ -87,7 +87,8 @@ export function model(question, session, env) {
     const base = {};
 
     base.outcomes = [];
-    base.completeLength = question.correctResponse.length;
+
+    base.completeLength = (question.correctResponse || []).length;
 
     const choices = question.shuffle
       ? shuffle(session, question.choices)
@@ -96,14 +97,16 @@ export function model(question, session, env) {
 
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = question.prompt;
+    base.prompt = question.itemStem;
     base.config = {
       orientation: question.choiceAreaLayout || 'vertical',
-      includeTargets: question.placementType === 'placement',
+      includeTargets: question.placementArea,
       targetLabel: question.answerAreaLabel,
       choiceLabel: question.choiceAreaLabel,
-      showOrdering: question.showOrdering
+      showOrdering: question.numberedGuides,
+      removeTile: question.configure && question.configure.removeTileAfterPlacing
     };
+
     base.configure = question.configure;
 
     base.disabled = env.mode !== 'gather';

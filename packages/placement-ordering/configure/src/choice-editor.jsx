@@ -1,14 +1,13 @@
-import { InputSwitch } from '@pie-lib/config-ui';
-
-import AddCircle from '@material-ui/icons/AddCircle';
 import ChoiceTile from './choice-tile';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import compact from 'lodash/compact';
 import debug from 'debug';
 import { swap } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
+import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
+import uniqueId from 'lodash/uniqueId';
+import Button from '@material-ui/core/Button';
 
 function findFreeChoiceSlot(choices) {
   let slot = 1;
@@ -21,33 +20,80 @@ function findFreeChoiceSlot(choices) {
 
 const log = debug('@pie-element:placement-ordering:configure:choice-editor');
 
+function updateResponse(response, from, to) {
+  const update = cloneDeep(response);
+  const { type: fromType } = from;
+  const { type: toType, index: placeAtIndex } = to;
+
+  if ((fromType === 'choice' && toType === 'target') || (fromType === 'target' && toType === 'target')) {
+    const optionToSwitch = update[placeAtIndex];
+
+    const currentPositionOfOption = update.findIndex(up => up.id === from.id);
+    const option = update.find(up => up.id === from.id);
+
+    update[placeAtIndex] = option;
+    update[currentPositionOfOption] = optionToSwitch;
+
+    return update;
+  }
+
+  return response;
+}
+
+function buildTiles(choices, response, instanceId) {
+  const targets = response.map((r, index) => {
+    const respId = r && r.id;
+
+    const choice = choices.find(c => respId !== undefined && respId !== null && c.id === respId);
+
+    return {
+      type: 'target',
+      instanceId,
+      ...choice,
+      draggable: true,
+      index,
+      editable: false
+    };
+  });
+
+  const processedChoices = choices.map(m => {
+    return Object.assign({}, m, {
+      type: 'choice',
+      droppable: false,
+      draggable: true,
+      instanceId,
+      editable: true
+    });
+  });
+
+  return processedChoices.concat(targets);
+}
+
 class ChoiceEditor extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array.isRequired,
     choices: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
-    imageSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    }),
-    configuration: PropTypes.object
+    imageSupport: PropTypes.oneOfType([
+      PropTypes.shape({
+        add: PropTypes.func.isRequired,
+        delete: PropTypes.func.isRequired
+      }),
+      PropTypes.bool
+    ]),
   };
 
   constructor(props) {
     super(props);
-    this.moveChoice = (from, to) => {
-      const { correctResponse, onChange, choices } = this.props;
-      log('[moveChoice]: ', from, to);
-      const update = swap(correctResponse, from, to);
-      log('update: ', update);
-      onChange(choices, update);
-    };
+
+    this.instanceId = uniqueId();
 
     this.onChoiceChange = choice => {
       const { choices, onChange, correctResponse } = this.props;
       const index = choices.findIndex(c => c.id === choice.id);
-      choices.splice(index, 1, choice);
+
+      choices.splice(index, 1, { ...choices[index], label: choice.label });
       onChange(choices, correctResponse);
     };
 
@@ -79,66 +125,68 @@ class ChoiceEditor extends React.Component {
       const updatedCorrectResponse = correctResponse.concat([
         newCorrectResponse
       ]);
+
       onChange(updatedChoices, updatedCorrectResponse);
     };
 
-    this.toggleAllOnDrag = () => {
-      const { correctResponse, choices, onChange } = this.props;
-      const allMoveOnDrag =
-        choices.find(c => c.moveOnDrag === false) === undefined;
-      choices.forEach(c => (c.moveOnDrag = !allMoveOnDrag));
-      onChange(choices, correctResponse);
+    this.onDropChoice = (ordering, target, source) => {
+      const { onChange, choices } = this.props;
+      const from = ordering.tiles.find(
+        t => t.id === source.id && t.type === source.type
+      );
+      const to = target;
+      log('[onDropChoice] ', from, to);
+      const response = updateResponse(ordering.response, from, to);
+
+      onChange(choices, response);
     };
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport, configuration } = this.props;
-    const {
-      removeTilesLabel,
-      enableRemoveTiles
-    } = configuration;
+    const { classes, correctResponse, choices, imageSupport, disableImages } = this.props;
 
-    const sortedChoices = compact(
-      correctResponse.map(cr => choices.find(c => c.id === cr.id))
-    );
+    const ordering = {
+      choices,
+      response: !correctResponse || isEmpty(correctResponse) ? new Array(choices.length) : correctResponse,
+      tiles: buildTiles(choices, correctResponse, this.instanceId),
+    };
 
-    const allMoveOnDrag =
-      choices.find(c => c.moveOnDrag === false) === undefined;
+    const style = {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridTemplateRows: `repeat(${choices.length}, 1fr)`
+    };
 
     return (
       <div className={classes.choiceEditor}>
-        {sortedChoices.map((c, index) => (
-          <ChoiceTile
-            choice={c}
-            onMoveChoice={this.moveChoice}
-            onDelete={this.onDelete.bind(this, c)}
-            onChoiceChange={this.onChoiceChange}
-            index={index}
-            key={index}
-            imageSupport={imageSupport}
-          />
-        ))}
-        {
-          enableRemoveTiles &&
-          <div className={classes.controls}>
-            <InputSwitch
-              className={classes.allToggle}
-              checked={allMoveOnDrag}
-              onChange={this.toggleAllOnDrag}
-              value="allMoveOnDrag"
-              label={removeTilesLabel}
+        <div className={classes.vtiler} style={style}>
+
+          {ordering.tiles.map((c, index) => (
+            <ChoiceTile
+              choice={c}
+              index={index}
+              key={index}
+              imageSupport={imageSupport}
+              onDelete={this.onDelete.bind(this, c)}
+              onChoiceChange={this.onChoiceChange}
+              onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
+              disableImages={disableImages}
             />
-            <IconButton
-              onClick={this.addChoice}
-              classes={{
-                root: classes.addButtonRoot,
-                label: classes.addButtonLabel
-              }}
-            >
-              <AddCircle classes={{ root: classes.root }} />
-            </IconButton>
-          </div>
-        }
+          ))}
+        </div>
+        <div className={classes.controls}>
+          <Button
+            onClick={this.addChoice}
+            size="small"
+            variant="contained"
+            color="default"
+            classes={{
+              root: classes.addButtonRoot,
+              label: classes.addButtonLabel
+            }}
+          >
+            ADD CHOICE
+          </Button>
+        </div>
       </div>
     );
   }
@@ -160,13 +208,19 @@ const styles = theme => ({
     fill: theme.palette.primary[500]
   },
   addButtonRoot: {
-    top: '-5px'
+    marginTop: '24px',
+    paddingHorizontal: '12px'
   },
   addButtonLabel: {
     transition: 'opacity 200ms linear',
     '&:hover': {
       opacity: 0.3
     }
+  },
+  vtiler: {
+    gridAutoFlow: 'column',
+    display: 'grid',
+    gridGap: '10px'
   }
 });
 
