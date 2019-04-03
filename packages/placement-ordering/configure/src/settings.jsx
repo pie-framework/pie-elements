@@ -15,7 +15,7 @@ const onPartialScoringChange = ({ model, updateModel }) => {
 
 const onPlacementAreaChange = ({ model, updateModel }) => {
   model.placementArea = !model.placementArea;
-  updateModel(model, true);
+  updateModel(model);
 };
 
 const onLayoutChange = ({ model, updateModel }, value) => {
@@ -30,13 +30,13 @@ const onNumberedGuidesChange = ({ model, updateModel }) => {
 
 const onEnableImagesChange = ({ model, updateModel }) => {
   model.configure.imagesEnabled = !model.configure.imagesEnabled;
-  updateModel(model, true);
+  updateModel(model);
 };
 
 const onRemoveTileAfterPlacingChange = ({ model, updateModel }) => {
   model.configure.removeTileAfterPlacing = !model.configure.removeTileAfterPlacing;
 
-  updateModel(model, true);
+  updateModel(model);
 };
 
 const onShuffleChange = ({ model, updateModel }) => {
