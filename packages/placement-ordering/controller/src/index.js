@@ -104,7 +104,7 @@ export function model(question, session, env) {
       targetLabel: question.answerAreaLabel,
       choiceLabel: question.choiceAreaLabel,
       showOrdering: question.numberedGuides,
-      removeTile: question.configure.removeTileAfterPlacing
+      removeTile: question.configure && question.configure.removeTileAfterPlacing
     };
 
     base.configure = question.configure;
