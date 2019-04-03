@@ -134,7 +134,8 @@ class Design extends React.Component {
                 correctResponse={model.correctResponse}
                 choices={model.choices}
                 onChange={this.onChoiceEditorChange}
-                imageSupport={model.configure.imagesEnabled && imageSupport}
+                imageSupport={imageSupport}
+                disableImages={model.configure && !model.configure.imagesEnabled}
               />
             </InputContainer>
           }

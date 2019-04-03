@@ -143,7 +143,7 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport } = this.props;
+    const { classes, correctResponse, choices, imageSupport, disableImages } = this.props;
 
     const ordering = {
       choices,
@@ -169,6 +169,7 @@ class ChoiceEditor extends React.Component {
               onDelete={this.onDelete.bind(this, c)}
               onChoiceChange={this.onChoiceChange}
               onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
+              disableImages={disableImages}
             />
           ))}
         </div>

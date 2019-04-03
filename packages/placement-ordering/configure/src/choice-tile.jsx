@@ -58,6 +58,7 @@ export class ChoiceTile extends React.Component {
       classes,
       onDelete,
       imageSupport,
+      disableImages,
     } = this.props;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
@@ -77,6 +78,7 @@ export class ChoiceTile extends React.Component {
           markup={label}
           imageSupport={imageSupport || undefined}
           onChange={this.onLabelChange}
+          disableImages={disableImages}
         />
         {editable && (
           <div className={classes.controls}>
