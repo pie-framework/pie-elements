@@ -2,6 +2,7 @@ import Main from './main';
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
+import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
@@ -31,6 +32,10 @@ export default class Root extends React.Component {
       this.setState({
         disableSidePanel
       });
+    }
+
+    if (!isEqual(this.state.model, props.model)) {
+      this.updateModel(props.model);
     }
   }
 
