@@ -9,6 +9,10 @@
   "pie": {
     "element": "@pie-ui/ebsr"
   },
+  "dependencies" :  {
+    "@pie-ui/ebsr" : "latest"
+  },
+  
   "author": "pie framework developers",
   "license": "ISC"
 }
