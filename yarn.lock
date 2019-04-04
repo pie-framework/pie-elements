@@ -1875,16 +1875,14 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/ebsr@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.0.tgz#b36fbb936d6646456c7a891d917c355f8e46d963"
-  integrity sha512-tktrsi6hRBlKkPAz0hvJXXmLHKckeJYmPfO0yJieRRRjdf/zfxOLRg9W7f7zg+LClfA+elBOpU21igHJZ1aIYg==
+"@pie-ui/ebsr@next":
+  version "1.1.1-next.18"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.1-next.18.tgz#755cded36bd91ef7d4f729ccbc4cd37bf626480b"
+  integrity sha512-Q/8L3lzZlozHlez4rNIfgZqSmRp4bGthMPrpzTjOerKfJ5SkooDiewL219M09WpD1cqMDwdeC/8TPqVzr0wQyA==
   dependencies:
+    "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-ui/multiple-choice" "^4.7.7"
-    classnames "^2.2.5"
-    prop-types "^15.6.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
+    debug "^4.1.1"
 
 "@pie-ui/extended-text-entry@^2.4.2":
   version "2.4.9"
