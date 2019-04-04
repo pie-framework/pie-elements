@@ -10,7 +10,7 @@
     "element": "@pie-ui/ebsr"
   },
   "dependencies" :  {
-    "@pie-ui/ebsr" : "latest"
+    "@pie-ui/ebsr" : "^1.1.0" 
   },
   
   "author": "pie framework developers",

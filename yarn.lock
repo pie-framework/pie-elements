@@ -1875,7 +1875,7 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/ebsr@latest":
+"@pie-ui/ebsr@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.0.tgz#b36fbb936d6646456c7a891d917c355f8e46d963"
   integrity sha512-tktrsi6hRBlKkPAz0hvJXXmLHKckeJYmPfO0yJieRRRjdf/zfxOLRg9W7f7zg+LClfA+elBOpU21igHJZ1aIYg==
