@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.4...@pie-element/extended-text-entry@3.9.5) (2019-04-04)
+
+
+### Bug Fixes
+
+* bump editable-html ([6f3cad2](https://github.com/pie-framework/pie-elements/commit/6f3cad2))
+* **package.json:** Updated @pie-lib/config-ui and @pie-lib/editable-html versions. ([e16d619](https://github.com/pie-framework/pie-elements/commit/e16d619))
+
+
+
+
+
 ## [3.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.3...@pie-element/extended-text-entry@3.9.4) (2019-03-26)
 
 

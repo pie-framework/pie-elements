@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.4.0...@pie-element/math-inline-configure@0.4.1) (2019-04-04)
+
+
+### Bug Fixes
+
+* bump configure dependencies ([ff0b7ae](https://github.com/pie-framework/pie-elements/commit/ff0b7ae))
+* bump math deps ([1573e90](https://github.com/pie-framework/pie-elements/commit/1573e90))
+* bump math-input ([b27313b](https://github.com/pie-framework/pie-elements/commit/b27313b))
+* remove mathquill ref from general-config-block ([ae5faf9](https://github.com/pie-framework/pie-elements/commit/ae5faf9))
+
+
+
+
+
 # [0.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.3.4...@pie-element/math-inline-configure@0.4.0) (2019-03-26)
 
 
