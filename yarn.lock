@@ -1875,10 +1875,10 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/ebsr@next":
-  version "1.1.1-next.18"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.1-next.18.tgz#755cded36bd91ef7d4f729ccbc4cd37bf626480b"
-  integrity sha512-Q/8L3lzZlozHlez4rNIfgZqSmRp4bGthMPrpzTjOerKfJ5SkooDiewL219M09WpD1cqMDwdeC/8TPqVzr0wQyA==
+"@pie-ui/ebsr@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.1.tgz#740bdf29302a79927535c8de9cd363d7ed4b6074"
+  integrity sha512-eh00Oxx0JamxXeDs4HXiag1fzUINW2V3jG/T32l7UQF8JEnBEev91a3s5Rzbn9Jz68d7I8YgVHPIV9iNqn1/lg==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-ui/multiple-choice" "^4.7.7"
