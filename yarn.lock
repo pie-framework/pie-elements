@@ -1851,6 +1851,17 @@
     react-dnd-html5-backend "^2.6.0"
     react-dom "^16.8.1"
 
+"@pie-ui/ebsr@latest":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.0.tgz#b36fbb936d6646456c7a891d917c355f8e46d963"
+  integrity sha512-tktrsi6hRBlKkPAz0hvJXXmLHKckeJYmPfO0yJieRRRjdf/zfxOLRg9W7f7zg+LClfA+elBOpU21igHJZ1aIYg==
+  dependencies:
+    "@pie-ui/multiple-choice" "^4.7.7"
+    classnames "^2.2.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
 "@pie-ui/extended-text-entry@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-2.4.2.tgz#392ff5f5a36451a9c2f2f708b6fff699212428a3"
@@ -1948,6 +1959,26 @@
     "@pie-lib/render-ui" "^4.3.1"
     classnames "^2.2.5"
     debug "^3.1.0"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
+"@pie-ui/multiple-choice@^4.7.7":
+  version "4.7.7"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.7.tgz#e99237a8fbfab65e08a0a2f66ff2e0e2f14024b4"
+  integrity sha512-tEcXbQZz8/PHqkPB7NWQsbKUJAGzdfYY2CAMxJYOOpREI0Z64mWKpoxedDjnkp3ay708Y91K7ymptyzLSuvpRA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^7.11.9"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/math-rendering" "^1.2.1"
+    "@pie-lib/render-ui" "^4.3.1"
+    classnames "^2.2.5"
+    debug "^4.1.1"
     enzyme-to-json "^3.3.3"
     lodash "^4.17.10"
     prop-types "^15.6.1"
