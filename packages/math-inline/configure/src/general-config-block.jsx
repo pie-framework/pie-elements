@@ -150,7 +150,7 @@ class GeneralConfigBlock extends React.Component {
     const { classes } = this.props;
 
     if (typeof window !== 'undefined') {
-      const MathQuill = require('mathquill');
+      const MathQuill = require('@pie-framework/mathquill');
       let MQ = MathQuill.getInterface(2);
 
       if (!registered) {
@@ -189,7 +189,7 @@ class GeneralConfigBlock extends React.Component {
         const indexEl = this.root.querySelector(`#${response.id}Index`);
 
         if (el) {
-          const MathQuill = require('mathquill');
+          const MathQuill = require('@pie-framework/mathquill');
           let MQ = MathQuill.getInterface(2);
           el.textContent = response.answer;
           MQ.StaticMath(el);
