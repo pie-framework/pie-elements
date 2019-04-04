@@ -1,5 +1,6 @@
-import { model, outcome, scoreFromRule } from '../index';
+import { model, outcome, scoreFromRule, partialScoring } from '../index';
 import { isResponseCorrect } from '../utils';
+import _ from 'lodash';
 
 jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
@@ -34,20 +35,7 @@ describe('controller', () => {
     };
   });
 
-  describe('scoreFromRule', () => {
-    const assertScoreFromRule = (scorePercentage, expected, fallback) => {
-      it(`${scorePercentage} (fallback: ${fallback}) => ${expected}`, () => {
-        const result = scoreFromRule(
-          scorePercentage ? { scorePercentage } : null,
-          fallback
-        );
-        expect(result).toBeCloseTo(expected, 8);
-      });
-    };
-    assertScoreFromRule(80, 0.8);
-    assertScoreFromRule(70, 0.7);
-    assertScoreFromRule(null, 0.75, 0.75);
-  });
+  const { stringify } = JSON;
 
   describe('outcome', () => {
     it('returns score of 0', async () => {
@@ -69,27 +57,55 @@ describe('controller', () => {
     });
 
     describe('partial scoring', () => {
-      beforeEach(() => {
-        const choices = question.choices.concat({ value: 'c', correct: true });
-        question = {
-          ...question,
-          partialScoring: true,
-          choices
-        };
+      describe('choiceMode:radio is disabled', () => {
+        it('with defaults', async () => {
+          const result = await outcome(question, {}, {});
+          expect(result.score).toEqual(0);
+        });
+        it('with defaults and correct', async () => {
+          const result = await outcome(question, { value: ['apple'] }, {});
+          expect(result.score).toEqual(1);
+        });
+        it('with env.partialScoring: true', async () => {
+          const result = await outcome(question, { partialScoring: true }, {});
+          expect(result.score).toEqual(0);
+        });
+        it('with env.partialScoring: true + config.partialScoring: true', async () => {
+          const result = await outcome(
+            { ...question, partialScoring: true },
+            { partialScoring: true },
+            {}
+          );
+          expect(result.score).toEqual(0);
+        });
       });
 
-      it('returns a score of 0.33', async () => {
-        const result = await outcome(question, {}, {});
-        expect(result.score).toEqual(0.33);
-      });
+      describe('checkbox', () => {
+        beforeEach(() => {
+          const choices = question.choices.concat({
+            value: 'c',
+            correct: true
+          });
+          question = {
+            ...question,
+            choiceMode: 'checkbox',
+            partialScoring: true,
+            choices
+          };
+        });
+        it('returns a score of 0.33', async () => {
+          const result = await outcome(question, {}, {});
+          expect(result.score).toEqual(0.33);
+        });
 
-      it('returns score of 0.67', async () => {
-        const result = await outcome(
-          question,
-          { value: ['apple'] },
-          { mode: 'gather' }
-        );
-        expect(result.score).toBeCloseTo(0.67);
+        it('returns score of 0.67', async () => {
+          const result = await outcome(
+            question,
+            { value: ['apple'] },
+            { mode: 'gather' }
+          );
+          expect(result.score).toBeCloseTo(0.67);
+        });
       });
     });
   });
