@@ -1959,7 +1959,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^1.1.5":
+"@pie-ui/math-inline@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-1.2.2.tgz#c6e8d995baa568937491ea696e999d9cfc3733ef"
   integrity sha512-lml8lNYnzw6vcGRwcXV7SzAtT7W8q+c3LwHWkMdPaCrMhkl4MQt/8hmqSVcMXBwStWECRzOGTwlFjIxUF++UJA==
