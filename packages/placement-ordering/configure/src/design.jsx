@@ -1,9 +1,7 @@
 import {
   FeedbackConfig,
   FormSection,
-  InputCheckbox,
   InputContainer,
-  TwoChoice
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 
@@ -12,7 +10,6 @@ import { get, set } from 'nested-property';
 import ChoiceEditor from './choice-editor';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
 import cloneDeep from 'lodash/cloneDeep';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,20 +17,23 @@ import getSideMenuItems from './settings';
 
 const log = debug('@pie-element:placement-ordering:design');
 
-class Design extends React.Component {
+export class Design extends React.Component {
   constructor(props) {
     super(props);
 
     this.applyUpdate = modelFn => {
       const { model, updateModel } = this.props;
       const update = modelFn(cloneDeep(model));
+
       updateModel(update);
     };
 
     this.changeHandler = (modelPath, valuePath) => {
       return value => {
         log('[changeHandler] value: ', value);
+
         const v = valuePath ? get(value, valuePath) : value;
+
         this.applyUpdate(model => {
           set(model, modelPath, v);
           return model;
@@ -51,15 +51,11 @@ class Design extends React.Component {
       'target.value'
     );
     this.onFeedbackChange = this.changeHandler('feedback');
-    this.onShuffleChange = this.changeHandler('shuffle', 'target.checked');
-    this.onShowOrderingChange = this.changeHandler(
-      'numberedGuides',
-      'target.checked'
-    );
 
     this.onChoiceEditorChange = (choices, correctResponse) => {
       const { model, updateModel } = this.props;
       const update = cloneDeep(model);
+
       update.choices = choices;
       update.correctResponse = correctResponse;
       updateModel(update);
@@ -81,17 +77,15 @@ class Design extends React.Component {
       },
     } = model;
 
-    const sideMenuItems = getSideMenuItems(this.props);
-
     return (
       <div className={classes.design}>
         <div className={classes.settings}>
-          {sideMenuItems}
+          {getSideMenuItems(this.props)}
         </div>
 
-        <FormSection label="Ordering">
-          {
-            settingsItemStemChange &&
+        {
+          settingsItemStemChange &&
+          <FormSection label="Ordering">
             <InputContainer label={itemStemLabel && itemStemLabel.toUpperCase()} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
@@ -100,8 +94,8 @@ class Design extends React.Component {
                 imageSupport={imageSupport}
               />
             </InputContainer>
-          }
-        </FormSection>
+          </FormSection>
+        }
 
         <FormSection label="Define Choices">
           <div className={classes.row}>
@@ -158,7 +152,9 @@ class Design extends React.Component {
 
 Design.propTypes = {
   model: PropTypes.object.isRequired,
-  onModelChanged: PropTypes.func
+  updateModel: PropTypes.func,
+  classes: PropTypes.object.isRequired,
+  imageSupport: PropTypes.object
 };
 
 export default withStyles(theme => ({

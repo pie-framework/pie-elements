@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TwoChoice } from '@pie-lib/config-ui';
 
 export const ChoiceType = props => {
@@ -18,4 +19,10 @@ export const ChoiceType = props => {
   };
 
   return <TwoChoice {...choiceProps} />;
+};
+
+ChoiceType.propTypes = {
+  header: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func
 };

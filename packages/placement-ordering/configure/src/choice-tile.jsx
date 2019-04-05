@@ -28,16 +28,14 @@ export class ChoiceTile extends React.Component {
     disabled: PropTypes.bool,
     outcome: PropTypes.object,
     index: PropTypes.number,
-    imageSupport: PropTypes.oneOfType([
-      PropTypes.shape({
-        add: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }),
-      PropTypes.bool
-    ]),
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
     choice: PropTypes.object,
     onChoiceChange: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    disableImages: PropTypes.bool
   };
 
   onLabelChange = label => {

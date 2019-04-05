@@ -4,7 +4,6 @@ import Tab from '@material-ui/core/Tab';
 import Design from './design';
 import Help from './help';
 import React from 'react';
-import ScoringConfig from '@pie-lib/scoring-config';
 import { withDragContext } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -66,7 +65,6 @@ class Main extends React.Component {
         <div className={classes.tabBar}>
           <Tabs onChange={this.onTabIndexChange} value={index}>
             <Tab label="Design"/>
-            <Tab label="Scoring"/>
           </Tabs>
           <Help />
         </div>
@@ -76,13 +74,6 @@ class Main extends React.Component {
             onModelChanged={this.onModelChanged}
             imageSupport={imageSupport}
             updateModel={this.updateModel}
-          />
-        )}
-        {index === 1 && (
-          <ScoringConfig
-            partialScoring={!!model.partialScoring}
-            numberOfCorrectResponses={model.correctResponse.length}
-            onChange={this.onPartialScoringChange}
           />
         )}
       </div>

@@ -2,7 +2,6 @@ import ChoiceTile from './choice-tile';
 import PropTypes from 'prop-types';
 import React from 'react';
 import debug from 'debug';
-import { swap } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
@@ -75,13 +74,11 @@ class ChoiceEditor extends React.Component {
     correctResponse: PropTypes.array.isRequired,
     choices: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
-    imageSupport: PropTypes.oneOfType([
-      PropTypes.shape({
-        add: PropTypes.func.isRequired,
-        delete: PropTypes.func.isRequired
-      }),
-      PropTypes.bool
-    ]),
+    imageSupport: PropTypes.shape({
+      add: PropTypes.func.isRequired,
+      delete: PropTypes.func.isRequired
+    }),
+    disableImages: PropTypes.bool,
   };
 
   constructor(props) {
