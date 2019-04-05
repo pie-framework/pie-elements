@@ -243,6 +243,22 @@ describe('Root', () => {
         );
       });
     });
+
+    describe('onChoiceModelChanged', () => {
+      it('resets the model', () => {
+        w = wrapper();
+        const updatedModel = w.state('model');
+
+        updatedModel.choices.forEach(c => {
+          c.correct = !c.correct;
+        });
+
+        w.setProps({ model: updatedModel });
+        w.update();
+
+        expect(w.state('model')).toEqual(updatedModel);
+      });
+    });
   });
 });
 

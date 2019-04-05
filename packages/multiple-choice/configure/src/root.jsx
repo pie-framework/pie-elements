@@ -24,7 +24,7 @@ export default class Root extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const { disableSidePanel } = props;
     const { disableSidePanel: oldDisableProp } = this.props;
 
