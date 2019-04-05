@@ -78,7 +78,11 @@ export class ChoiceTile extends React.Component {
           markup={label}
           imageSupport={imageSupport || undefined}
           onChange={this.onLabelChange}
-          disableImages={disableImages}
+          pluginProps={{
+            image: {
+              disabled: disableImages
+            }
+          }}
         />
         {editable && (
           <div className={classes.controls}>
