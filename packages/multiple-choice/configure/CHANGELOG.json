@@ -643,5 +643,20 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@0.8.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump editable-html",
+    "merge": null,
+    "header": "fix: bump editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1b4b238011c7f3802f26cb320675f846cbbbf71b",
+    "gitTags": "",
+    "committerDate": "2019-04-04 10:08:50 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@0.8.4"
   }
 ]

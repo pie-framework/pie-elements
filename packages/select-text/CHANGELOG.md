@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.9.4...@pie-element/select-text@3.9.5) (2019-04-04)
+
+
+### Bug Fixes
+
+* bump editable-html ([7ece980](https://github.com/pie-framework/pie-elements/commit/7ece980))
+
+
+
+
+
+## [3.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.9.3...@pie-element/select-text@3.9.4) (2019-03-26)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** fixed the width for number text field (after updating pie-lib, it was required in few places). Added option to display error message on field. ([eb64e61](https://github.com/pie-framework/pie-elements/commit/eb64e61))
+
+
+
+
+
 ## [3.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.9.2...@pie-element/select-text@3.9.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/select-text
