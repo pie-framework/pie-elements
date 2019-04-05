@@ -8,4 +8,4 @@ export const getCorrectResponse = (choices) => choices
 export const isResponseCorrect = (question, session) => {
   let correctResponse = getCorrectResponse(question.choices);
   return isEqual((session.value || []).sort(), correctResponse);
-}
+};

@@ -45,6 +45,11 @@ class ElementsCommands extends Commands {
     super(root, args, getElementPackages);
   }
 
+
+  beforePublish(){
+    return this.commit(['yarn.lock'], '[ci skip] commit yarn.lock');
+  }
+
   clean() {
     return Promise.all(
       getElementPackages(join(this.projectRoot, 'packages')).map(p => {

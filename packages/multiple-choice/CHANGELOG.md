@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.10.3...@pie-element/multiple-choice@2.11.0) (2019-04-04)
+
+
+### Bug Fixes
+
+* bump editable-html ([1b4b238](https://github.com/pie-framework/pie-elements/commit/1b4b238))
+
+
+### Features
+
+* allow config to control the UI ([70551b8](https://github.com/pie-framework/pie-elements/commit/70551b8))
+* partial scoring ([928bcc3](https://github.com/pie-framework/pie-elements/commit/928bcc3))
+* support env.partialScoring, disable for radio ([40862cb](https://github.com/pie-framework/pie-elements/commit/40862cb))
+
+
+
+
+
 ## [2.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.10.2...@pie-element/multiple-choice@2.10.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

@@ -80,7 +80,7 @@ const styles = theme => ({
       '& > .mq-hasCursor': {
         '& > .mq-cursor': {
           display: 'none'
-        },
+        }
       }
     }
   }
@@ -150,7 +150,7 @@ class GeneralConfigBlock extends React.Component {
     const { classes } = this.props;
 
     if (typeof window !== 'undefined') {
-      const MathQuill = require('mathquill');
+      const MathQuill = require('@pie-framework/mathquill');
       let MQ = MathQuill.getInterface(2);
 
       if (!registered) {
@@ -189,13 +189,13 @@ class GeneralConfigBlock extends React.Component {
         const indexEl = this.root.querySelector(`#${response.id}Index`);
 
         if (el) {
-          const MathQuill = require('mathquill');
+          const MathQuill = require('@pie-framework/mathquill');
           let MQ = MathQuill.getInterface(2);
           el.textContent = response.answer;
           MQ.StaticMath(el);
           indexEl.textContent = `R${idx + 1}`;
         }
-      })
+      });
     }
   };
 
@@ -222,7 +222,7 @@ class GeneralConfigBlock extends React.Component {
     newModel.responses[index] = response;
     onChange(newModel);
 
-    this.handleAnswerBlockDomUpdate(response.id, index, response.answer)
+    this.handleAnswerBlockDomUpdate(response.id, index, response.answer);
   };
 
   onSimpleResponseChange = response => {
@@ -237,7 +237,14 @@ class GeneralConfigBlock extends React.Component {
   render() {
     const { classes, model, imageSupport } = this.props;
     const { showKeypad } = this.state;
-    const { mode, question, expression, equationEditor, responses, response } = model;
+    const {
+      mode,
+      question,
+      expression,
+      equationEditor,
+      responses,
+      response
+    } = model;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -245,7 +252,10 @@ class GeneralConfigBlock extends React.Component {
     };
 
     return (
-      <div ref={r => (this.root = r || this.root)} className={classes.container}>
+      <div
+        ref={r => (this.root = r || this.root)}
+        className={classes.container}
+      >
         <InputContainer label="Item Type" className={classes.selectContainer}>
           <Select
             className={classes.select}
@@ -265,23 +275,30 @@ class GeneralConfigBlock extends React.Component {
             nonEmpty={false}
           />
         </InputContainer>
-        {mode === 'advanced' && <div className={classes.inputContainer}>
-          <InputLabel className={classes.templateTitle}>RESPONSE TEMPLATE</InputLabel>
-          <MathToolbar
-            classNames={classNames}
-            allowAnswerBlock
-            onAnswerBlockAdd={this.onAnswerBlockAdd}
-            controlledKeypad
-            showKeypad={showKeypad}
-            latex={expression}
-            keypadMode="everything"
-            onChange={this.onChange('expression')}
-            onFocus={this.onFocus}
-            onDone={this.onDone}
-          />
-        </div>}
+        {mode === 'advanced' && (
+          <div className={classes.inputContainer}>
+            <InputLabel className={classes.templateTitle}>
+              RESPONSE TEMPLATE
+            </InputLabel>
+            <MathToolbar
+              classNames={classNames}
+              allowAnswerBlock
+              onAnswerBlockAdd={this.onAnswerBlockAdd}
+              controlledKeypad
+              showKeypad={showKeypad}
+              latex={expression}
+              keypadMode="everything"
+              onChange={this.onChange('expression')}
+              onFocus={this.onFocus}
+              onDone={this.onDone}
+            />
+          </div>
+        )}
         <h3>Define Correct Response</h3>
-        <InputContainer label="Equation Editor" className={classes.selectContainer}>
+        <InputContainer
+          label="Equation Editor"
+          className={classes.selectContainer}
+        >
           <Select
             className={classes.select}
             onChange={this.onChange('equationEditor')}
@@ -305,15 +322,16 @@ class GeneralConfigBlock extends React.Component {
             onResponseChange={this.onSimpleResponseChange}
           />
         )}
-        {mode === 'advanced' && responses.map((response, idx) => (
-          <Response
-            key={response.id}
-            mode={equationEditor}
-            response={response}
-            onResponseChange={this.onResponseChange}
-            index={idx}
-          />
-        ))}
+        {mode === 'advanced' &&
+          responses.map((response, idx) => (
+            <Response
+              key={response.id}
+              mode={equationEditor}
+              response={response}
+              onResponseChange={this.onResponseChange}
+              index={idx}
+            />
+          ))}
       </div>
     );
   }

@@ -718,5 +718,20 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/categorize@2.13.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump editable-html",
+    "merge": null,
+    "header": "fix: bump editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "763cf1d0469571a994ac167ab5bd0c84b3a1f90d",
+    "gitTags": "",
+    "committerDate": "2019-04-04 10:07:46 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@2.13.4"
   }
 ]
