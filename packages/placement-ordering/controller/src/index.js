@@ -3,11 +3,12 @@ import { flattenCorrect, score } from './scoring';
 import _ from 'lodash';
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-
+import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:placement-ordering-controller');
-
+export const questionError = () =>
+  new Error('Question is missing required array: correctResponse');
 export function outcome(question, session, env) {
   session.value = session.value || [];
   return new Promise((resolve, reject) => {
@@ -16,12 +17,16 @@ export function outcome(question, session, env) {
       !question.correctResponse ||
       _.isEmpty(question.correctResponse)
     ) {
-      reject(new Error('Question is missing required array: correctResponse'));
+      reject(questionError());
     } else {
+      const s = score(question, session);
+      const finalScore = partialScoring.enabled(question, env || {})
+        ? s
+        : s === 1
+        ? 1
+        : 0;
       resolve({
-        score: {
-          scaled: score(question, session)
-        }
+        score: finalScore
       });
     }
   });
