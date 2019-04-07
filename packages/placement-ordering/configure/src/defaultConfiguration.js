@@ -1,4 +1,13 @@
 export default {
+  answerAreaLabel: 'Answer Label goes here',
+  choiceAreaLabel: 'Choice Label goes here',
+  choiceAreaLayout: 'vertical',
+  choices: [
+    {
+      id: 'c1',
+      label: 'Choice 1',
+    },
+  ],
   configure: {
     itemStemLabel: 'Item Stem',
     choiceLabel: 'Choice label',
@@ -33,7 +42,7 @@ export default {
     // if remove tiles after placing switch will be displayed in settings panel
     settingsRemoveTileAfterPlacing: false,
     // if partial scoring switch will be displayed in settings panel
-    settingsPartialScoring: false,
+    settingsPartialScoring: true,
     // if feedback settings can be changed
     settingsFeedback: true,
 
@@ -49,15 +58,8 @@ export default {
       id: 'c1',
     },
   ],
-  prompt: 'Question Prompt goes here',
-  choices: [
-    {
-      id: 'c1',
-      label: 'Choice 1',
-    },
-  ],
-  choiceAreaLayout: 'vertical',
-  choiceAreaLabel: 'Choice Label goes here',
+  itemStem: 'Question Prompt goes here',
+  placementArea: true,
   showOrdering: true,
-  shuffle: false
+  shuffle: false,
 };

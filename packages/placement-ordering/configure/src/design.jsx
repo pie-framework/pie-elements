@@ -89,9 +89,9 @@ class Design extends React.Component {
           {sideMenuItems}
         </div>
 
-        <FormSection label="Ordering">
-          {
-            settingsItemStemChange &&
+        {
+          settingsItemStemChange &&
+          <FormSection label="Ordering">
             <InputContainer label={itemStemLabel && itemStemLabel.toUpperCase()} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
@@ -100,8 +100,8 @@ class Design extends React.Component {
                 imageSupport={imageSupport}
               />
             </InputContainer>
-          }
-        </FormSection>
+          </FormSection>
+        }
 
         <FormSection label="Define Choices">
           <div className={classes.row}>
