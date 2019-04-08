@@ -533,5 +533,35 @@
     "committerDate": "2019-03-21 10:03:12 +0200",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry@3.9.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump editable-html",
+    "merge": null,
+    "header": "fix: bump editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6f3cad2013042430ccaa5bbeee7de9a8b5d4af62",
+    "gitTags": "",
+    "committerDate": "2019-04-04 10:08:15 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@3.9.5"
+  },
+  {
+    "type": "fix",
+    "scope": "package.json",
+    "subject": "Updated @pie-lib/config-ui and @pie-lib/editable-html versions.",
+    "merge": null,
+    "header": "fix(package.json): Updated @pie-lib/config-ui and @pie-lib/editable-html versions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e16d6190a18acbdfecd7f5ec9d13780649b6b8b6",
+    "gitTags": "",
+    "committerDate": "2019-03-26 17:29:37 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@3.9.5"
   }
 ]
