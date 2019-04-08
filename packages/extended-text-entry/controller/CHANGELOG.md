@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.5...@pie-element/extended-text-entry-controller@2.1.6) (2019-04-04)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+## [2.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.4...@pie-element/extended-text-entry-controller@2.1.5) (2019-03-26)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** fixed updating dimensions (width & height). ([5f16e2a](https://github.com/pie-framework/pie-elements/commit/5f16e2a))
+
+
+
+
+
 ## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.1.3...@pie-element/extended-text-entry-controller@2.1.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

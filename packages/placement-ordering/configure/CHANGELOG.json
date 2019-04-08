@@ -273,5 +273,20 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-configure@1.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump editable-html",
+    "merge": null,
+    "header": "fix: bump editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "180f49936fb9462179dd852f6329cc21a9eed591",
+    "gitTags": "",
+    "committerDate": "2019-04-04 10:09:08 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-configure@1.4.4"
   }
 ]

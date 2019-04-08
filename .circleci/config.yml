@@ -47,7 +47,7 @@ jobs:
       - restore_cache: *restore_cache
       - run: yarn install
       - save_cache: *save_cache
-      - run: scripts/build release --next --skipForcePublish
+      - run: scripts/build release --next 
   release:
     <<: *defaults
     steps:

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.7.3...@pie-element/placement-ordering@3.7.4) (2019-04-04)
+
+
+### Bug Fixes
+
+* bump editable-html ([180f499](https://github.com/pie-framework/pie-elements/commit/180f499))
+
+
+
+
+
 ## [3.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.7.2...@pie-element/placement-ordering@3.7.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.4.4...@pie-element/multiple-choice-controller@1.5.0) (2019-04-04)
+
+
+### Features
+
+* allow config to control the UI ([70551b8](https://github.com/pie-framework/pie-elements/commit/70551b8))
+* partial scoring ([928bcc3](https://github.com/pie-framework/pie-elements/commit/928bcc3))
+* support env.partialScoring, disable for radio ([40862cb](https://github.com/pie-framework/pie-elements/commit/40862cb))
+
+
+
+
+
 ## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.4.3...@pie-element/multiple-choice-controller@1.4.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller
