@@ -5,7 +5,7 @@ describe('index', () => {
   let base = o => {
     o = _.merge(
       {
-        prompt: 'hi',
+        itemStem: 'hi',
         choices: [],
         correctResponse: []
       },
@@ -130,7 +130,7 @@ describe('index', () => {
     describe('shuffle', () => {
       let model = {
         correctResponse: ['a', 'b'],
-        prompt: 'this is a prmopt',
+        itemStem: 'this is a prompt',
         choices: [
           { label: 'one', id: '1', shuffle: false },
           { label: 'two', id: '2' },
