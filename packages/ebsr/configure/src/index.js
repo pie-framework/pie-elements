@@ -1,11 +1,13 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
-import EbsrMCConfigure from '@pie-element/multiple-choice/configure/lib';
+import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 
 import defaults from './defaults';
 
 import debug from 'debug';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const log = debug('pie-elements:ebsr:configure');
+
+class EbsrMCConfigure extends MultipleChoiceConfigure {}
 
 const defineMultipleChoice = () => {
   if (!customElements.get('ebsr-multiple-choice-configure')) {
