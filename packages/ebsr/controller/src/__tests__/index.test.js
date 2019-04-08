@@ -8,7 +8,7 @@ jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
 }));
 
-xdescribe('controller', () => {
+describe('controller', () => {
   let result, question, session, env;
 
   beforeEach(() => {

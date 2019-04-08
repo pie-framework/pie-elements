@@ -54,7 +54,7 @@ const model = {
   }
 };
 
-xdescribe('index', () => {
+describe('index', () => {
   let Def;
   let el;
   let ebsr;
