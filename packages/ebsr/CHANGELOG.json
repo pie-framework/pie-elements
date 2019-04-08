@@ -343,5 +343,20 @@
     "committerDate": "2019-04-08 13:12:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@1.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "scope multiple-choice config constructor",
+    "merge": null,
+    "header": "fix: scope multiple-choice config constructor",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "abbbae7a351273272f736f1fe36bfc48a2ac27e8",
+    "gitTags": "",
+    "committerDate": "2019-04-08 15:06:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@1.1.2"
   }
 ]
