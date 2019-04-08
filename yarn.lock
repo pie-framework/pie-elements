@@ -1815,10 +1815,24 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.0.3.tgz#9bef3bfb236af4cda24e9ed6446794d9615175a0"
   integrity sha512-oZ5XTtdy7NiFdN9M9fRSwc56M3CgNC1YFH9P9BryuBT39GlMyWTABz/neCzBc/TGhVylfMVuGo0LJOA0IkwUOw==
 
-"@pie-lib/text-select@^1.2.2", "@pie-lib/text-select@^1.4.0":
+"@pie-lib/text-select@^1.2.2":
   version "1.4.11"
   resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.4.11.tgz#295cda260e5fc7764a446607f998490f947a8283"
   integrity sha512-2WKmeUt7hSTbOGXoj0earU5c3Y8WXxPmxf62cFI1Rcewx/UqicDQzBY6MpqLSEicee9o0tXMMAQylC2gFLga8w==
+  dependencies:
+    "@pie-lib/style-utils" "^0.1.8"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    parse-english "^4.1.1"
+    prop-types "^15.6.2"
+    unist-util-inspect "^4.1.3"
+
+"@pie-lib/text-select@^1.4.10":
+  version "1.4.12"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.4.12.tgz#fabfa83c23fda0fb3ed86c13c70d6f621f3bd74f"
+  integrity sha512-BwCIg+5onZV0VzAtw/obm1WnyyNrvunOBgziCSD+ekSDKTxHgBdrWoDXaRc/HZQNfogJvk6tkdn1hIb6bR9QSA==
   dependencies:
     "@pie-lib/style-utils" "^0.1.8"
     classnames "^2.2.6"
@@ -2074,17 +2088,17 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/select-text@^1.5.0":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@pie-ui/select-text/-/select-text-1.5.6.tgz#b7b3387606477ffb25c5d28f721d4f5dd9c29012"
-  integrity sha512-pMAVhHyPdafKtk+DzL9aPmD3CluL0UFwVSCEXab9B1G8NOrszvC129Z0hQV3Lc7+nC/9g6YOphi9gbi5PniqXA==
+"@pie-ui/select-text@^1.5.7":
+  version "1.5.7"
+  resolved "https://registry.yarnpkg.com/@pie-ui/select-text/-/select-text-1.5.7.tgz#4b9a43bbaef8ea5ff365e713f560606b6b45db0d"
+  integrity sha512-6gGIApThw7/0V+1VtH466r+tQli2KcoKlJIgHZpZ2c0dtQmJc4lkctSWelg1OzeL5tBQZxI2yjRMB29YN5brjQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/math-rendering" "^1.2.1"
     "@pie-lib/render-ui" "^4.3.1"
-    "@pie-lib/text-select" "^1.4.0"
+    "@pie-lib/text-select" "^1.4.10"
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"

@@ -4,7 +4,9 @@ exports[`design snapshot renders all items except feedback 1`] = `
 <div
   className="foo"
 >
-  <Component>
+  <Component
+    label=""
+  >
     <EditableHtml
       onChange={[MockFunction]}
     />
@@ -16,7 +18,9 @@ exports[`design snapshot renders all items except the content input 1`] = `
 <div
   className="foo"
 >
-  <Component>
+  <Component
+    label=""
+  >
     <EditableHtml
       onChange={[MockFunction]}
     />
@@ -28,7 +32,9 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 <div
   className="foo"
 >
-  <Component>
+  <Component
+    label=""
+  >
     <EditableHtml
       onChange={[MockFunction]}
     />
