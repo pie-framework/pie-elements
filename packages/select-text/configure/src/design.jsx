@@ -94,7 +94,7 @@ export class Design extends React.Component {
 
     return (
       <div className={className}>
-        <InputContainer label={promptLabel} className={classes.promptHolder}>
+        <InputContainer label={promptLabel || ''} className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
             markup={model.prompt}
@@ -125,7 +125,7 @@ export class Design extends React.Component {
 
         {
           enableTokensChange &&
-          <InputContainer label={tokensLabel} className={classes.tokenizerContainer}>
+          <InputContainer label={tokensLabel || ''} className={classes.tokenizerContainer}>
             <Tokenizer
               className={classes.tokenizer}
               text={model.text}
