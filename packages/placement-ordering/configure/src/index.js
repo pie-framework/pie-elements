@@ -16,12 +16,20 @@ import defaults from 'lodash/defaults';
  */
 export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-    return {
+    const mapChoicesToReturnCorrectResponse = choices => choices && choices.map(ch => ({ id: ch.id }));
+    let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
+
+    const defaultModel = {
       ...defaultValues,
       ...model,
       configure: defaults(model.configure, defaultValues.configure),
-      correctResponse: model.correctResponse || (model.choices && model.choices.map(ch => ({ id: ch.id, weight: 0 }))) || defaultValues.correctResponse
     };
+
+    if (correctResponse) {
+      defaultModel.correctResponse = correctResponse;
+    }
+
+    return defaultModel;
   };
 
   constructor() {
