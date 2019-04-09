@@ -25,6 +25,7 @@ export default class EbsrConfigure extends HTMLElement {
     super();
     defineMultipleChoice();
     this.onPartUpdated = e => {
+      e.preventDefault();
       e.stopImmediatePropagation();
       const key =
         e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
