@@ -88,5 +88,25 @@
     "committerDate": "2019-01-21 15:42:32 -0500",
     "isTagged": true,
     "tag": "@pie-element/pie-models@0.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "UI and model updates [ch423]",
+    "merge": null,
+    "header": "feat: UI and model updates [ch423]",
+    "body": "* Updated design\n* Removed `moveOnDrag` for a choice individually\n*  added `removeTilesAfterPlacing` property on the entire list of choices.",
+    "footer": "BREAKING CHANGE: `moveOnDrag` is gone use `removeAllTilesAfterPlacing`.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`moveOnDrag` is gone use `removeAllTilesAfterPlacing`."
+      }
+    ],
+    "hash": "b83c4b9b87374ae46eff0a3657dc7b83b7da3d90",
+    "gitTags": "",
+    "committerDate": "2019-04-09 18:14:32 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.0.0"
   }
 ]

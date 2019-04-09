@@ -253,5 +253,20 @@
     "committerDate": "2019-04-08 15:06:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@1.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "prevent default model.updated event [ch498]",
+    "merge": null,
+    "header": "fix: prevent default model.updated event [ch498]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6fe41e172f432cd6e86109ee91f20c2d16e41992",
+    "gitTags": "",
+    "committerDate": "2019-04-09 18:27:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@1.1.4"
   }
 ]
