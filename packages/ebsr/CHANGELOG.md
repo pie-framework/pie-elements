@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.1.1...@pie-element/ebsr@1.1.2) (2019-04-08)
+
+
+### Bug Fixes
+
+* scope multiple-choice config constructor ([abbbae7](https://github.com/pie-framework/pie-elements/commit/abbbae7))
+
+
+
+
+
+## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.1.0...@pie-element/ebsr@1.1.1) (2019-04-08)
+
+
+### Bug Fixes
+
+* set model after multiple-choice is defined ([ac77594](https://github.com/pie-framework/pie-elements/commit/ac77594))
+
+
+
+
+
 # 1.1.0 (2019-04-04)
 
 
