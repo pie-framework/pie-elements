@@ -1,6 +1,6 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-
+import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
@@ -51,37 +51,24 @@ const getCorrectSelected = (tokens, selected) => {
 const getCorrectCount = (tokens, selected) =>
   getCorrectSelected(tokens, selected).length;
 
-export const outcome = (question, session, env) => {
-  return new Promise((resolve, reject) => {
+const getPartialScore = (question, session, totalCorrect) => {
+  const count = getCorrectCount(question.tokens, session.selectedTokens);
+  return parseFloat((count / totalCorrect.length).toFixed(2));
+};
+
+export const outcome = (question, session, env) =>
+  new Promise(resolve => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
+      const enabled = partialScoring.enabled(question, env, true);
       const totalCorrect = question.tokens.filter(t => t.correct);
-      const correctness = getCorrectness(
-        question.tokens,
-        session.selectedTokens
-      );
-
-      const getPartialScore = () => {
-        const count = getCorrectCount(question.tokens, session.selectedTokens);
-
-        return parseFloat((count / totalCorrect.length).toFixed(2));
-      };
-      const out = {
-        score:
-          correctness === 'correct'
-            ? 1
-            : correctness === 'partially-correct' && question.partialScoring
-            ? getPartialScore()
-            : 0,
-        completed:
-          Array.isArray(session.selectedTokens) &&
-          session.selectedTokens.length > 0
-      };
-      resolve(out);
+      const score = getPartialScore(question, session, totalCorrect);
+      resolve({
+        score: enabled ? score : score === 1 ? 1 : 0
+      });
     }
   });
-};
 
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
