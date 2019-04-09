@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.9.7...@pie-element/select-text@3.10.0) (2019-04-09)
+
+
+### Features
+
+* partial scoring - use @pie-lib/controller-utils ([dac819f](https://github.com/pie-framework/pie-elements/commit/dac819f))
+
+
+
+
+
 ## [3.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.9.6...@pie-element/select-text@3.9.7) (2019-04-08)
 
 
