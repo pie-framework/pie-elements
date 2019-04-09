@@ -513,5 +513,20 @@
     "committerDate": "2019-04-04 10:09:29 +0100",
     "isTagged": true,
     "tag": "@pie-element/select-text@3.9.5"
+  },
+  {
+    "type": "fix",
+    "scope": "select-text",
+    "subject": "Fixed console warning.",
+    "merge": null,
+    "header": "fix(select-text): Fixed console warning.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5957c41c5fddbf380db6e742737728cc8fd92f8e",
+    "gitTags": "",
+    "committerDate": "2019-03-30 09:14:11 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@3.9.7"
   }
 ]
