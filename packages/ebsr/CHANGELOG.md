@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.1.3...@pie-element/ebsr@1.1.4) (2019-04-09)
+
+
+### Bug Fixes
+
+* prevent default model.updated event [ch498] ([6fe41e1](https://github.com/pie-framework/pie-elements/commit/6fe41e1))
+
+
+
+
+
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.1.2...@pie-element/ebsr@1.1.3) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/ebsr
