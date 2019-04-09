@@ -99,4 +99,4 @@ workflows:
               only:
                 - develop
     jobs:
-      - deploy_demo
+      - build 
