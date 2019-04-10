@@ -7,9 +7,11 @@ import debug from 'debug';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const log = debug('pie-elements:ebsr:configure');
 
+class EbsrMCConfigure extends MultipleChoiceConfigure {}
+
 const defineMultipleChoice = () => {
-  if (!customElements.get('multiple-choice-configure')) {
-    customElements.define('multiple-choice-configure', MultipleChoiceConfigure);
+  if (!customElements.get('ebsr-multiple-choice-configure')) {
+    customElements.define('ebsr-multiple-choice-configure', EbsrMCConfigure);
   }
 };
 
@@ -23,6 +25,7 @@ export default class EbsrConfigure extends HTMLElement {
     super();
     defineMultipleChoice();
     this.onPartUpdated = e => {
+      e.preventDefault();
       e.stopImmediatePropagation();
       const key =
         e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
@@ -39,8 +42,12 @@ export default class EbsrConfigure extends HTMLElement {
 
   set model(m) {
     this._model = m;
-    this.partA.model = this._model.partA;
-    this.partB.model = this._model.partB;
+
+    customElements.whenDefined('ebsr-multiple-choice-configure')
+      .then(() => {
+        this.partA.model = this._model.partA;
+        this.partB.model = this._model.partB;
+      });
   }
 
   connectedCallback() {
@@ -70,8 +77,8 @@ export default class EbsrConfigure extends HTMLElement {
   _render() {
     this.innerHTML = `
       <div>
-        <multiple-choice-configure id="part-a-configure"></multiple-choice-configure>
-        <multiple-choice-configure id="part-b-configure"></multiple-choice-configure>
+        <ebsr-multiple-choice-configure id="part-a-configure"></ebsr-multiple-choice-configure>
+        <ebsr-multiple-choice-configure id="part-b-configure"></ebsr-multiple-choice-configure>
       </div>
     `;
   }

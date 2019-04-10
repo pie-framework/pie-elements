@@ -223,5 +223,50 @@
     "committerDate": "2019-03-13 18:07:56 +0200",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "set model after multiple-choice is defined",
+    "merge": null,
+    "header": "fix: set model after multiple-choice is defined",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ac775942bd5d1fada5e63830039c21bc3de4b717",
+    "gitTags": "",
+    "committerDate": "2019-04-08 13:12:56 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@1.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "scope multiple-choice config constructor",
+    "merge": null,
+    "header": "fix: scope multiple-choice config constructor",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "abbbae7a351273272f736f1fe36bfc48a2ac27e8",
+    "gitTags": "",
+    "committerDate": "2019-04-08 15:06:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@1.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "prevent default model.updated event [ch498]",
+    "merge": null,
+    "header": "fix: prevent default model.updated event [ch498]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6fe41e172f432cd6e86109ee91f20c2d16e41992",
+    "gitTags": "",
+    "committerDate": "2019-04-09 18:27:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@1.1.4"
   }
 ]

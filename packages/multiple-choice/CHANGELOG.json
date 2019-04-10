@@ -898,5 +898,20 @@
     "committerDate": "2019-03-19 12:46:28 +0200",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@2.11.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Update state.model if there are any changes.",
+    "merge": null,
+    "header": "fix: Update state.model if there are any changes.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "610a9db51e4ba9c094fcaba6efdb2c7af944ed15",
+    "gitTags": "",
+    "committerDate": "2019-04-03 14:31:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@2.11.1"
   }
 ]

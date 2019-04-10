@@ -1,187 +1,372 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`design snapshot renders all items except feedback 1`] = `
-<Design
-  className="foo"
-  classes={
-    Object {
-      "choices": "Design-choices-6",
-      "design": "Design-design-4",
-      "langControls": "Design-langControls-5",
-      "orientation": "Design-orientation-7",
-      "prompt": "Design-prompt-2",
-      "promptHolder": "Design-promptHolder-1",
-      "row": "Design-row-3",
-    }
-  }
-  model={
-    Object {
-      "configure": Object {
-        "choiceAreaLabel": "Choice Label goes here",
-        "choiceAreaLayout": "vertical",
-        "choices": Array [
-          Object {
-            "id": "c1",
-            "label": "Choice 1",
-          },
-        ],
-        "configure": Object {
-          "choiceLabel": "Choice label",
-          "choicesLabel": "Choices",
-          "enableChoiceLabelChange": true,
-          "enableChoicesLabelChange": true,
-          "enableFeedback": true,
-          "enableNumberedGuideChange": true,
-          "enableOrientationChange": true,
-          "enablePlacementAreaChange": true,
-          "enablePromptChange": true,
-          "enableRemoveTiles": true,
-          "enableShuffleChange": true,
-          "includePlacementAreaLabel": "Include placement area",
-          "numberedGuidesLabel": "Numbered guides",
-          "orientationLabel": "Orientation",
-          "promptLabel": "Prompt",
-          "removeTilesLabel": "Remove all tiles after placing",
-          "shuffleLabel": "Highlight choices",
-        },
-        "correctResponse": Array [
-          Object {
-            "id": "c1",
-          },
-        ],
-        "enableFeedback": false,
-        "prompt": "Question Prompt goes here",
-        "showOrdering": true,
-        "shuffle": false,
-      },
-      "tokens": Array [],
-    }
-  }
-  onChange={[MockFunction]}
-  onModelChange={[MockFunction]}
-/>
+exports[`Placement Ordering snapshot renders all default items 1`] = `
+<div>
+  <div>
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="0"
+      label="Choice label"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="6"
+      label="Shuffle Choices"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="7"
+      label="Partial Scoring"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={true}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="1"
+      label="Placement Area"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="2"
+      label="Numbered Guides"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="3"
+      label="Enable Images"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <ChoiceType
+      header="Orientation"
+      key="5"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+      value="vertical"
+    />
+  </div>
+  <FormSection
+    label="Ordering"
+  >
+    <InputContainer
+      label="ITEM STEM"
+    >
+      <EditableHtml
+        markup="Question Prompt goes here"
+        onChange={[Function]}
+      />
+    </InputContainer>
+  </FormSection>
+  <FormSection
+    label="Define Choices"
+  >
+    <div>
+      <InputContainer
+        label="ANSWER LABEL"
+      >
+        <EditableHtml
+          markup="Answer Label goes here"
+          onChange={[Function]}
+        />
+      </InputContainer>
+    </div>
+    <InputContainer
+      label="CHOICES"
+    >
+      <WithStyles(ChoiceEditor)
+        choices={
+          Array [
+            Object {
+              "id": "c1",
+              "label": "Choice 1",
+            },
+          ]
+        }
+        correctResponse={
+          Array [
+            Object {
+              "id": "c1",
+            },
+          ]
+        }
+        disableImages={true}
+        onChange={[Function]}
+      />
+    </InputContainer>
+  </FormSection>
+  <FeedbackConfig
+    onChange={[Function]}
+  />
+</div>
 `;
 
-exports[`design snapshot renders all items except the prompt input 1`] = `
-<Design
-  className="foo"
-  classes={
-    Object {
-      "choices": "Design-choices-6",
-      "design": "Design-design-4",
-      "langControls": "Design-langControls-5",
-      "orientation": "Design-orientation-7",
-      "prompt": "Design-prompt-2",
-      "promptHolder": "Design-promptHolder-1",
-      "row": "Design-row-3",
-    }
-  }
-  model={
-    Object {
-      "configure": Object {
-        "choiceAreaLabel": "Choice Label goes here",
-        "choiceAreaLayout": "vertical",
-        "choices": Array [
-          Object {
-            "id": "c1",
-            "label": "Choice 1",
-          },
-        ],
-        "configure": Object {
-          "choiceLabel": "Choice label",
-          "choicesLabel": "Choices",
-          "enableChoiceLabelChange": true,
-          "enableChoicesLabelChange": true,
-          "enableFeedback": true,
-          "enableNumberedGuideChange": true,
-          "enableOrientationChange": true,
-          "enablePlacementAreaChange": true,
-          "enablePromptChange": true,
-          "enableRemoveTiles": true,
-          "enableShuffleChange": true,
-          "includePlacementAreaLabel": "Include placement area",
-          "numberedGuidesLabel": "Numbered guides",
-          "orientationLabel": "Orientation",
-          "promptLabel": "Prompt",
-          "removeTilesLabel": "Remove all tiles after placing",
-          "shuffleLabel": "Highlight choices",
-        },
-        "correctResponse": Array [
-          Object {
-            "id": "c1",
-          },
-        ],
-        "enableFeedback": false,
-        "enablePromptChange": false,
-        "prompt": "Question Prompt goes here",
-        "showOrdering": true,
-        "shuffle": false,
-      },
-      "tokens": Array [],
-    }
-  }
-  onChange={[MockFunction]}
-  onModelChange={[MockFunction]}
-/>
-`;
-
-exports[`design snapshot renders all items with defaultProps 1`] = `
-<Design
-  className="foo"
-  classes={
-    Object {
-      "choices": "Design-choices-6",
-      "design": "Design-design-4",
-      "langControls": "Design-langControls-5",
-      "orientation": "Design-orientation-7",
-      "prompt": "Design-prompt-2",
-      "promptHolder": "Design-promptHolder-1",
-      "row": "Design-row-3",
-    }
-  }
-  model={
-    Object {
-      "configure": Object {
-        "choiceAreaLabel": "Choice Label goes here",
-        "choiceAreaLayout": "vertical",
-        "choices": Array [
-          Object {
-            "id": "c1",
-            "label": "Choice 1",
-          },
-        ],
-        "configure": Object {
-          "choiceLabel": "Choice label",
-          "choicesLabel": "Choices",
-          "enableChoiceLabelChange": true,
-          "enableChoicesLabelChange": true,
-          "enableFeedback": true,
-          "enableNumberedGuideChange": true,
-          "enableOrientationChange": true,
-          "enablePlacementAreaChange": true,
-          "enablePromptChange": true,
-          "enableRemoveTiles": true,
-          "enableShuffleChange": true,
-          "includePlacementAreaLabel": "Include placement area",
-          "numberedGuidesLabel": "Numbered guides",
-          "orientationLabel": "Orientation",
-          "promptLabel": "Prompt",
-          "removeTilesLabel": "Remove all tiles after placing",
-          "shuffleLabel": "Highlight choices",
-        },
-        "correctResponse": Array [
-          Object {
-            "id": "c1",
-          },
-        ],
-        "prompt": "Question Prompt goes here",
-        "showOrdering": true,
-        "shuffle": false,
-      },
-      "tokens": Array [],
-    }
-  }
-  onChange={[MockFunction]}
-  onModelChange={[MockFunction]}
-/>
+exports[`Placement Ordering snapshot renders custom items 1`] = `
+<div>
+  <div>
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="0"
+      label="Choice label"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="6"
+      label="Shuffle Choices"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="7"
+      label="Partial Scoring"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={true}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="1"
+      label="Placement Area"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="2"
+      label="Numbered Guides"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={false}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="3"
+      label="Enable Images"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <WithStyles(WithFormControlContext(FormControlLabel))
+      control={
+        <WithStyles(Switch)
+          checked={true}
+          onChange={[Function]}
+          value="checkedA"
+        />
+      }
+      key="4"
+      label="Remove tiles after placing"
+      labelPlacement="start"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+          "width": "33%",
+        }
+      }
+    />
+    <ChoiceType
+      header="Orientation"
+      key="5"
+      onChange={[Function]}
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+      value="vertical"
+    />
+  </div>
+  <FormSection
+    label="Define Choices"
+  >
+    <div>
+      <InputContainer
+        label="ANSWER LABEL"
+      >
+        <EditableHtml
+          markup="Answer Label goes here"
+          onChange={[Function]}
+        />
+      </InputContainer>
+    </div>
+    <InputContainer
+      label="CHOICES"
+    >
+      <WithStyles(ChoiceEditor)
+        choices={
+          Array [
+            Object {
+              "id": "c1",
+              "label": "Choice 1",
+            },
+          ]
+        }
+        correctResponse={
+          Array [
+            Object {
+              "id": "c1",
+            },
+          ]
+        }
+        disableImages={true}
+        onChange={[Function]}
+      />
+    </InputContainer>
+  </FormSection>
+  <FeedbackConfig
+    onChange={[Function]}
+  />
+</div>
 `;
