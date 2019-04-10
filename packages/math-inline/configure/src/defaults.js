@@ -1,22 +1,30 @@
 export default {
   mode: 'advanced',
-  expression: 'Expression',
-  question: 'Question goes here',
+  expression: 'y = ',
+  question: 'What is the equation for a slope?',
   equationEditor: 'everything',
-  defaultResponse: {
-    id: 'answerBlockDefault',
-    validation: 'symbolic',
-    answer: 'answer',
-    alternates: {},
-    allowSpaces: false,
-    allowDecimals: false
-  },
-  responses: [{
+  response: {
     id: 'answerBlock1',
+    answer: 'mx + b',
     validation: 'symbolic',
-    answer: 'answer',
     alternates: {},
-    allowSpaces: false,
-    allowDecimals: false
-  }]
+    allowSpaces: true,
+    allowDecimals: true
+  },
+  responses: [],
+  partialScoring: true,
+  feedback: {
+    correct: {
+      type: 'none',
+      default: 'Correct'
+    },
+    partial: {
+      type: 'none',
+      default: 'Nearly'
+    },
+    incorrect: {
+      type: 'none',
+      default: 'Incorrect'
+    }
+  },
 };

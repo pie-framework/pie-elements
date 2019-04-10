@@ -40,15 +40,17 @@ const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
     correctnessObject.score = '100%';
   }
 
-  if (correctResponses.length === correctAnswers.count) {
-    correctnessObject.correctness = 'correct';
-    correctnessObject.score = '100%';
-  } else if (partialScoringEnabled) {
-    correctnessObject.correctness = 'partially-correct';
-    correctnessObject.score = `${(
-      (correctAnswers.count * 100) /
-      correctResponses.length
-    ).toFixed(2)}%`;
+  if (isAdvanced) {
+    if (correctResponses.length === correctAnswers.count) {
+      correctnessObject.correctness = 'correct';
+      correctnessObject.score = '100%';
+    } else if (partialScoringEnabled) {
+      correctnessObject.correctness = 'partially-correct';
+      correctnessObject.score = `${(
+        (correctAnswers.count * 100) /
+        correctResponses.length
+      ).toFixed(2)}%`;
+    }
   }
 
   return correctnessObject;
