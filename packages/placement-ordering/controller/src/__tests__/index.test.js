@@ -5,7 +5,7 @@ describe('index', () => {
   let base = o => {
     o = _.merge(
       {
-        prompt: 'hi',
+        itemStem: 'hi',
         choices: [],
         correctResponse: []
       },
@@ -40,10 +40,12 @@ describe('index', () => {
       'returns empty config for mode=gather',
       assertModel(base(), {}, { mode: 'gather' }, {})
     );
+
     it(
       'returns empty config for mode=view',
       assertModel(base(), {}, { mode: 'view' }, { disabled: true })
     );
+
     it(
       'returns config.disabled=true for mode=evaluate',
       assertModel(base(), {}, { mode: 'evaluate' }, { disabled: true })
@@ -69,6 +71,7 @@ describe('index', () => {
         correctResponse: ['a', 'b'],
         choices: [{ label: 'a', id: 'a' }, { label: 'b', id: 'b' }]
       });
+
       session = { value: ['a', 'b'] };
       env = { mode: 'evaluate' };
 
@@ -127,7 +130,7 @@ describe('index', () => {
     describe('shuffle', () => {
       let model = {
         correctResponse: ['a', 'b'],
-        prompt: 'this is a prmopt',
+        itemStem: 'this is a prompt',
         choices: [
           { label: 'one', id: '1', shuffle: false },
           { label: 'two', id: '2' },
@@ -165,82 +168,41 @@ describe('index', () => {
   });
 
   describe('outcome', () => {
-    let outcome = (q, s, e, handler) => {
-      return done => {
-        controller
-          .outcome(q, s, e)
-          .then(o => {
-            handler(o);
-            done();
-          })
-          .catch(e => {
-            handler(e);
-            done();
-          });
-      };
+    const assertOutcome = (question, value, expectedScore, env) => {
+      it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(
+        question
+      )}, env: ${JSON.stringify(env)}`, async () => {
+        const result = await controller.outcome(question, { value }, env);
+        expect(result.score).toEqual(expectedScore);
+      });
     };
-
-    it(
-      'returns an error if the question is null',
-      outcome(null, {}, {}, result => {
-        expect(result.message).toEqual(
-          'Question is missing required array: correctResponse'
-        );
-      })
+    const assertOutcomeError = (question, session, env) => {
+      it(`throws error for ${JSON.stringify(question)}`, () =>
+        expect(controller.outcome(question, session, env)).rejects.toThrow(
+          controller.questionError()
+        ));
+    };
+    assertOutcomeError(null, {}, {});
+    assertOutcomeError({}, {}, {});
+    assertOutcomeError({ correctResponse: [] }, {}, {});
+    assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['a'], 1);
+    assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['b'], 0);
+    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0.33);
+    assertOutcome(
+      { partialScoring: true, correctResponse: ['a', 'b', 'c'] },
+      ['a', 'b'],
+      0.33
     );
-
-    it(
-      'returns an error if the question.correctResponse',
-      outcome({}, {}, {}, result => {
-        expect(result.message).toEqual(
-          'Question is missing required array: correctResponse'
-        );
-      })
+    assertOutcome(
+      { partialScoring: false, correctResponse: ['a', 'b', 'c'] },
+      ['a', 'b'],
+      0
     );
-
-    it(
-      'returns an error if the question.correctResponse is empty',
-      outcome({ correctResponse: [] }, {}, {}, result => {
-        expect(result.message).toEqual(
-          'Question is missing required array: correctResponse'
-        );
-      })
-    );
-
-    it(
-      'returns score.scaled: 1 for a correct response',
-      outcome(
-        {
-          correctResponse: ['a']
-        },
-        { value: ['a'] },
-        null,
-        result => {
-          expect(result).toEqual({
-            score: {
-              scaled: 1
-            }
-          });
-        }
-      )
-    );
-
-    it(
-      'returns score.scaled: 0 for an incorrect response',
-      outcome(
-        {
-          correctResponse: ['a']
-        },
-        { value: ['b'] },
-        null,
-        result => {
-          expect(result).toEqual({
-            score: {
-              scaled: 0
-            }
-          });
-        }
-      )
+    assertOutcome(
+      { partialScoring: false, correctResponse: ['a', 'b', 'c'] },
+      ['a', 'b'],
+      0.33,
+      { partialScoring: true }
     );
   });
 });

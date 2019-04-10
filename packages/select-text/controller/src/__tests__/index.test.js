@@ -56,7 +56,7 @@ describe('getCorrectness', () => {
       expect(result).toEqual('partially-correct');
     });
 
-    it.only('returns correct', () => {
+    it('returns correct', () => {
       const markup = ['<div>hi</div>', '<div>there</div>', '<div>?</div>'];
       const tokens = markupArrayToTokens(markup, [0, 2]);
 
@@ -125,8 +125,17 @@ describe('outcome', () => {
     }
   );
   assert(
+    'score 0.5 when partialScoring is not defined (on by default)',
+    q({ partialScoring: undefined }),
+    s({ selectedTokens: [q().tokens[0]] }),
+    e({ mode: 'evaluate' }),
+    {
+      score: 0.5
+    }
+  );
+  assert(
     'score 0 for partially-correct',
-    q(),
+    q({ partialScoring: false }),
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {

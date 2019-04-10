@@ -7,22 +7,35 @@ import {
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import defaultValues from './defaultConfiguration';
+import defaultValues from './defaults';
 import defaults from 'lodash/defaults';
 
+/**
+ * assuming that the correct response will be set via ui, not via config,
+ * correctResponse (if not set) will be initialized with choices default order
+ */
 export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-    return {
+    const mapChoicesToReturnCorrectResponse = choices => choices && choices.map(ch => ({ id: ch.id }));
+    let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
+
+    const defaultModel = {
       ...defaultValues,
+      ...model,
       configure: defaults(model.configure, defaultValues.configure),
-      ...model
     };
+
+    if (correctResponse) {
+      defaultModel.correctResponse = correctResponse;
+    }
+
+    return defaultModel;
   };
 
   constructor() {
     super();
     this._model = PlacementOrdering.createDefaultModel();
-    this.onModelChange = (model, resetSession) => {
+    this.onModelChanged = (model, resetSession) => {
       this._model = model;
       this.dispatchUpdate(resetSession);
     };
@@ -37,7 +50,6 @@ export default class PlacementOrdering extends HTMLElement {
   }
 
   dispatchUpdate(reset) {
-    const detail = { update: this._model, reset };
     this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
   }
 
@@ -48,8 +60,8 @@ export default class PlacementOrdering extends HTMLElement {
 
   _rerender() {
     let element = React.createElement(Main, {
-      initialModel: this._model,
-      onModelChange: this.onModelChange,
+      model: this._model,
+      onModelChanged: this.onModelChanged,
       imageSupport: {
         add: this.insertImage,
         delete: this.deleteImage
