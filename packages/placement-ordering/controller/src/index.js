@@ -19,15 +19,19 @@ export function outcome(question, session, env) {
     ) {
       reject(questionError());
     } else {
-      const s = score(question, session);
-      const finalScore = partialScoring.enabled(question, env || {})
-        ? s
-        : s === 1
-        ? 1
-        : 0;
-      resolve({
-        score: finalScore
-      });
+      try {
+        const s = score(question, session);
+        const finalScore = partialScoring.enabled(question, env || {})
+          ? s
+          : s === 1
+          ? 1
+          : 0;
+        resolve({
+          score: finalScore
+        });
+      } catch (e) {
+        reject(e);
+      }
     }
   });
 }
@@ -88,7 +92,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export function model(question, session, env) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const base = {};
 
     base.outcomes = [];
@@ -109,7 +113,9 @@ export function model(question, session, env) {
       targetLabel: question.answerAreaLabel,
       choiceLabel: question.choiceAreaLabel,
       showOrdering: question.numberedGuides,
-      allowSameChoiceInTargets: !(question.configure && question.configure.removeTileAfterPlacing)
+      allowSameChoiceInTargets: !(
+        question.configure && question.configure.removeTileAfterPlacing
+      )
     };
 
     base.configure = question.configure;
