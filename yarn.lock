@@ -2018,7 +2018,7 @@
     react-jss "^8.4.0"
     react-transition-group "^2.3.1"
 
-"@pie-ui/placement-ordering@^4.4.2", "@pie-ui/placement-ordering@^4.5.0":
+"@pie-ui/placement-ordering@^4.5.0":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@pie-ui/placement-ordering/-/placement-ordering-4.5.0.tgz#70587cb688c1f00a483cb42eaaafea45b4ebfa02"
   integrity sha512-ptePO+x1ACvYOeADStFh/z/YHC/F7JP+aqFa9kg+EQEErnYUxmlBZbPL9avzmurBl3M9LMgn+CuFk5czzcPD8g==
