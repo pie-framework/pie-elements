@@ -148,5 +148,20 @@
     "committerDate": "2019-04-09 18:14:32 +0100",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-controller@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "scoring change [ch440]",
+    "merge": null,
+    "header": "feat: scoring change [ch440]",
+    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTileAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
+    "footer": null,
+    "notes": [],
+    "hash": "42507f5182a5bb1466499f46922500bf9d6a8cd1",
+    "gitTags": "",
+    "committerDate": "2019-04-09 20:18:34 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@3.1.0"
   }
 ]
