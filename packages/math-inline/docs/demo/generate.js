@@ -2,9 +2,7 @@ exports.model = (id, element) => ({
   id,
   element,
   mode: 'advanced',
-  config: {
-    allowPartialScores: false
-  },
+  partialScoring: true,
   expression: 'y = ',
   question: 'What is the equation for a slope?',
   equationEditor: 'everything',

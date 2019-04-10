@@ -138,7 +138,7 @@ The configuration
 
 Properties of the `config` object:
 
-## `allowPartialScores` (boolean, required)
+## `partialScoring` (boolean, required)
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
