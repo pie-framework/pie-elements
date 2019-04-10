@@ -33,9 +33,6 @@ interface CorrectResponse {
     weight?: number;
 }
 
-/**
- * TODO ask Ed: Should these properties below belong to PlacementOrderingConfigure?
- */
 interface ConfigurePlacementOrdering {
     /** Indicates if the area to choice label has to be displayed
      * @default true
