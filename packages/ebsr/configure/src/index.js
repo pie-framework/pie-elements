@@ -25,13 +25,14 @@ export default class EbsrConfigure extends HTMLElement {
     super();
     defineMultipleChoice();
     this.onPartUpdated = e => {
+      const id = e.target.getAttribute('id');
       e.preventDefault();
       e.stopImmediatePropagation();
-      const key =
-        e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
-      this.handleUpdate(e, key);
+      if (id) {
+        const key = id === 'part-a-configure' ? 'partA' : 'partB';
+        this.handleUpdate(e, key);
+      }
     };
-
     this._model = EbsrConfigure.createDefaultModel();
   }
 
@@ -52,8 +53,9 @@ export default class EbsrConfigure extends HTMLElement {
 
   connectedCallback() {
     this._render();
-    this.partA.addEventListener(MODEL_UPDATED, this.onPartUpdated);
-    this.partB.addEventListener(MODEL_UPDATED, this.onPartUpdated);
+    this.addEventListener(MODEL_UPDATED, this.onPartUpdated);
+    // this.partA.addEventListener(MODEL_UPDATED, this.onPartUpdated);
+    // this.partB.addEventListener(MODEL_UPDATED, this.onPartUpdated);
   }
 
   disconnectedCallback() {
