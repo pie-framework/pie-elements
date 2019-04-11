@@ -1,42 +1,62 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 import defaults from './defaults';
 
 const log = debug('@pie-element:math-inline:controller');
 
-const getResponseCorrectness = (
-  model,
-  answerItem
-) => {
+function trimSpaces(str = '') {
+  return str.replace(/\\ /g, '').replace(/ /g, '');
+}
+
+const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
   const correctResponses = model.responses;
   const isAdvanced = model.mode === 'advanced';
 
   if (!answerItem || (isAdvanced && answerItem.length === 0)) {
-    return 'unanswered';
+    return {
+      correctness: 'unanswered',
+      score: '0%',
+      info: {}
+    };
   }
 
-  const correctAnswers = getCorrectAnswers(isAdvanced ? correctResponses : model.response, answerItem, isAdvanced);
+  const correctAnswers = getCorrectAnswers(
+    isAdvanced ? correctResponses : model.response,
+    answerItem,
+    isAdvanced,
+    model
+  );
+  const correctnessObject = {
+    correctness: 'incorrect',
+    score: '0%',
+    info: correctAnswers.info
+  };
 
-  if (!isAdvanced) {
-    if (correctAnswers.count === 0) {
-      return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
-    } else {
-      return  { correctness: 'correct', score: '100%', info: correctAnswers.info };
+  if (!isAdvanced && correctAnswers.count !== 0) {
+    correctnessObject.correctness = 'correct';
+    correctnessObject.score = '100%';
+  }
+
+  if (isAdvanced) {
+    if (correctResponses.length === correctAnswers.count) {
+      correctnessObject.correctness = 'correct';
+      correctnessObject.score = '100%';
+    } else if (partialScoringEnabled) {
+      correctnessObject.correctness = 'partially-correct';
+      correctnessObject.score = `${(
+        (correctAnswers.count * 100) /
+        correctResponses.length
+      ).toFixed(2)}%`;
     }
   }
 
-  if (correctResponses.length === correctAnswers.count) {
-    return  { correctness: 'correct', score: '100%', info: correctAnswers.info };
-  } else if (correctAnswers === 0) {
-    return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
-  }
-
-  return { correctness: 'incorrect', score: '0%', info: correctAnswers.info };
+  return correctnessObject;
 };
 
-function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
+function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced, model) {
   let correct = 0;
   const answerInfo = {};
 
@@ -44,19 +64,31 @@ function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
     correctResponseItem.forEach(correctResponse => {
       let answerCorrect = false;
       const correspondingAnswer = answerItem[correctResponse.id];
-      const acceptedValues = [correctResponse.answer].concat(Object.keys(correctResponse.alternates).map(alternateId =>
-        correctResponse.alternates[alternateId].answer));
+      const acceptedValues = [correctResponse.answer].concat(
+        Object.keys(correctResponse.alternates).map(
+          alternateId => correctResponse.alternates[alternateId].answer
+        )
+      );
 
       if (correspondingAnswer && correspondingAnswer.value) {
         if (correctResponse.validation === 'literal') {
           for (let i = 0; i < acceptedValues.length; i++) {
-            if (acceptedValues[i] === correspondingAnswer.value) {
+            if (
+              acceptedValues[i] ===
+              (correctResponse.allowSpaces
+                ? trimSpaces(correspondingAnswer.value)
+                : correspondingAnswer.value)
+            ) {
               answerCorrect = true;
               break;
             }
           }
         } else {
-          answerCorrect = areValuesEqual(correctResponse.answer, correspondingAnswer.value, { isLatex: true });
+          answerCorrect = areValuesEqual(
+            correctResponse.answer,
+            correspondingAnswer.value,
+            { isLatex: true, allowDecimals: correctResponse.allowDecimals }
+          );
         }
       }
 
@@ -69,8 +101,11 @@ function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
     });
   } else {
     let answerCorrect = false;
-    const acceptedValues = [correctResponseItem.answer].concat(Object.keys(correctResponseItem.alternates).map(alternateId =>
-      correctResponseItem.alternates[alternateId].answer));
+    const acceptedValues = [correctResponseItem.answer].concat(
+      Object.keys(correctResponseItem.alternates).map(
+        alternateId => correctResponseItem.alternates[alternateId].answer
+      )
+    );
 
     if (correctResponseItem.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
@@ -80,7 +115,9 @@ function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
         }
       }
     } else {
-      answerCorrect = areValuesEqual(correctResponseItem.answer, answerItem, { isLatex: true });
+      answerCorrect = areValuesEqual(correctResponseItem.answer, answerItem, {
+        isLatex: true
+      });
     }
 
     if (answerCorrect) {
@@ -92,15 +129,16 @@ function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
 
   return {
     info: answerInfo,
-    count: correct,
+    count: correct
   };
 }
 
-const getCorrectness = (question, env, session) => {
+const getCorrectness = (question, env, session, partialScoringEnabled) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.mode === 'advanced' ? session.answers : session.response
+      question.mode === 'advanced' ? session.answers : session.response,
+      partialScoringEnabled
     );
   }
 };
@@ -118,7 +156,13 @@ export function createDefaultModel(model = {}) {
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const correctness = getCorrectness(question, env, session);
+    const partialScoringEnabled = partialScoring.enabled(question, env);
+    const correctness = getCorrectness(
+      question,
+      env,
+      session,
+      partialScoringEnabled
+    );
     const correctResponse = {};
 
     const fb =

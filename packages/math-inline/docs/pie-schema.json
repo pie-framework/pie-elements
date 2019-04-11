@@ -354,20 +354,10 @@
         "validation"
       ]
     },
-    "config": {
-      "description": "The configuration",
-      "type": "object",
-      "properties": {
-        "allowPartialScores": {
-          "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
-          "type": "boolean",
-          "title": "allowPartialScores"
-        }
-      },
-      "required": [
-        "allowPartialScores"
-      ],
-      "title": "config"
+    "partialScoring": {
+      "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
+      "type": "boolean",
+      "title": "partialScoring"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",

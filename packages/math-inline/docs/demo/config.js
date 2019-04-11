@@ -6,9 +6,6 @@ module.exports = {
     {
       id: '1',
       mode: 'advanced',
-      config: {
-        allowPartialScores: false
-      },
       element: 'math-inline',
       expression: 'y = ',
       question: 'What is the equation for a slope?',
@@ -22,6 +19,7 @@ module.exports = {
         allowDecimals: true
       },
       responses: [],
+      partialScoring: true,
       feedback: {
         correct: {
           type: 'none',

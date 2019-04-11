@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer } from '@pie-lib/config-ui';
+import {InputCheckbox, InputContainer} from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -101,6 +101,15 @@ class GeneralConfigBlock extends React.Component {
       showKeypad: false
     };
   }
+
+  onPartialScoringChange = evt => {
+    const { model, onChange } = this.props;
+    const newModel = { ...model };
+
+    newModel.partialScoring = evt.target.checked;
+
+    onChange(newModel);
+  };
 
   onChange = name => evtOrValue => {
     const { model, onChange } = this.props;
@@ -266,6 +275,12 @@ class GeneralConfigBlock extends React.Component {
             <MenuItem value="advanced">Advanced Multi</MenuItem>
           </Select>
         </InputContainer>
+        <div className={classes.optionsCheckbox}>
+          <InputCheckbox
+              label="Allow Partial Scoring"
+              checked={model.partialScoring}
+              onChange={this.onPartialScoringChange}/>
+        </div>
         <InputContainer label="Item Stem" className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}

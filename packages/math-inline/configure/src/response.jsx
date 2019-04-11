@@ -240,6 +240,7 @@ class Response extends React.Component {
               keypadMode={mode}
               classNames={classNames}
               controlledKeypad
+              noDecimal={!allowDecimals}
               showKeypad={showKeypad.main}
               latex={answer || ''}
               onChange={this.onAnswerChange}
@@ -261,6 +262,7 @@ class Response extends React.Component {
                 keypadMode={mode}
                 showKeypad={showKeypad[alternateId] || false}
                 latex={alternates[alternateId].answer || ''}
+                noDecimal={!allowDecimals}
                 onChange={this.onAlternateAnswerChange(alternateId)}
                 onFocus={this.onAlternateFocus(alternateId)}
                 onDone={this.onAlternateDone(alternateId)}
@@ -274,16 +276,18 @@ class Response extends React.Component {
               </Button>
             ) || <div />}
             <div className={classes.checkboxContainer}>
-              <FormControlLabel
-                classes={{ root: classes.configLabel }}
-                label="Allow Decimals"
-                control={
-                  <Checkbox
-                    checked={allowDecimals}
-                    onChange={this.onConfigChanged('allowDecimals')}
-                  />
-                }
-              />
+              {validation === 'symbolic' && (
+                <FormControlLabel
+                  classes={{ root: classes.configLabel }}
+                  label="Allow Decimals"
+                  control={
+                    <Checkbox
+                      checked={allowDecimals}
+                      onChange={this.onConfigChanged('allowDecimals')}
+                    />
+                  }
+                />
+              )}
               {validation === 'literal' && (
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}

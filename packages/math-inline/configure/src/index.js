@@ -15,7 +15,7 @@ const log = debug('pie-elements:math-inline:configure');
 export default class MathInlineConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults,
-    ...model,
+    ...model
   });
 
   constructor() {
@@ -31,7 +31,7 @@ export default class MathInlineConfigure extends HTMLElement {
   onModelChanged(model) {
     this._model = model;
     log('[onModelChanged]: ', this._model);
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   /**
