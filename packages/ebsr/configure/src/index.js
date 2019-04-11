@@ -3,82 +3,78 @@ import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib'
 
 import defaults from './defaults';
 
-import debug from 'debug';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
-const log = debug('pie-elements:ebsr:configure');
+const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
 class EbsrMCConfigure extends MultipleChoiceConfigure {}
 
 const defineMultipleChoice = () => {
-  if (!customElements.get('ebsr-multiple-choice-configure')) {
-    customElements.define('ebsr-multiple-choice-configure', EbsrMCConfigure);
+  if (!customElements.get(MC_TAG_NAME)) {
+    customElements.define(MC_TAG_NAME, EbsrMCConfigure);
   }
 };
+
+defineMultipleChoice();
 
 export default class EbsrConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults,
-    ...model,
+    ...model
   });
 
   constructor() {
     super();
-    defineMultipleChoice();
-    this.onPartUpdated = e => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      const key =
-        e.target.getAttribute('id') === 'part-a-configure' ? 'partA' : 'partB';
-      this.handleUpdate(e, key);
-    };
-
     this._model = EbsrConfigure.createDefaultModel();
   }
 
-  handleUpdate(e, key) {
-    this._model[key] = e.update;
-    this.dispatchModelChanged();
-  }
+  onModelUpdated = e => {
+    if (e.target === this) {
+      return;
+    }
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const id = e.target.getAttribute('id');
+    if (id) {
+      this._model[`part${id.toUpperCase()}`] = e.update;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+    }
+  };
 
   set model(m) {
     this._model = m;
 
-    customElements.whenDefined('ebsr-multiple-choice-configure')
-      .then(() => {
-        this.partA.model = this._model.partA;
-        this.partB.model = this._model.partB;
-      });
+    customElements.whenDefined(MC_TAG_NAME).then(() => {
+      this.partA.model = this._model.partA;
+      this.partB.model = this._model.partB;
+      this.partA.configure = {
+        settingsPartialScoring: false,
+        settingsSelectChoiceMode: false
+      };
+    });
   }
 
   connectedCallback() {
+    this.addEventListener(MODEL_UPDATED, this.onModelUpdated);
     this._render();
-    this.partA.addEventListener(MODEL_UPDATED, this.onPartUpdated);
-    this.partB.addEventListener(MODEL_UPDATED, this.onPartUpdated);
   }
 
   disconnectedCallback() {
-    this.partA.removeEventListener(MODEL_UPDATED, this.onPartUpdated);
-    this.partB.removeEventListener(MODEL_UPDATED, this.onPartUpdated);
+    this.removeEventListener(MODEL_UPDATED, this.onModelUpdated);
   }
 
   get partA() {
-    return this.querySelector('#part-a-configure');
+    return this.querySelector(`${MC_TAG_NAME}#a`);
   }
 
   get partB() {
-    return this.querySelector('#part-b-configure');
-  }
-
-  dispatchModelChanged() {
-    log('[onModelChanged]: ', this._model);
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+    return this.querySelector(`${MC_TAG_NAME}#b`);
   }
 
   _render() {
     this.innerHTML = `
       <div>
-        <ebsr-multiple-choice-configure id="part-a-configure"></ebsr-multiple-choice-configure>
-        <ebsr-multiple-choice-configure id="part-b-configure"></ebsr-multiple-choice-configure>
+        <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
+        <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
       </div>
     `;
   }

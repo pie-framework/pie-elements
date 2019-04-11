@@ -75,7 +75,8 @@ describe('controller', () => {
     };
 
     returnsScoreOf('green', 'purple', 0); // both wrong
-    returnsScoreOf('yellow', 'purple', 1); // one correct
+    returnsScoreOf('green', 'orange', 0); // first wrong, second correct
+    returnsScoreOf('yellow', 'purple', 1); // first correct, second wrong
     returnsScoreOf('yellow', 'orange', 2); // both correct
 
     describe('partial scoring', () => {
@@ -89,7 +90,6 @@ describe('controller', () => {
           };
         };
 
-        turnPartialCorrectOn(PART_A);
         turnPartialCorrectOn(PART_B);
       });
 
@@ -100,10 +100,10 @@ describe('controller', () => {
         });
       };
 
-      returnsScoreOf({}, {}, 0.66);
-      returnsScoreOf({ value: ['yellow'] }, {}, 1);
-      returnsScoreOf({}, { value: ['orange'] }, 1);
-      returnsScoreOf({ value: ['yellow'] }, { value: ['orange'] }, 1.34);
+      returnsScoreOf({}, {}, 0);
+      returnsScoreOf({ value: ['yellow'] }, {}, 1.33);
+      returnsScoreOf({ value: ['yellow'] }, { value: ['orange'] }, 1.67);
+      returnsScoreOf({ value: ['yellow'] }, { value: ['orange', 'c'] }, 2);
     });
   });
 

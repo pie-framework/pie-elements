@@ -187,10 +187,12 @@ describe('index', () => {
     assertOutcomeError({ correctResponse: [] }, {}, {});
     assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['a'], 1);
     assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0.33);
+    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['c', 'a', 'b'], 0.33);
+    assertOutcome({ correctResponse: ['a', 'b'] }, ['c', 'a', 'b'], 0);
+    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0);
     assertOutcome(
       { partialScoring: true, correctResponse: ['a', 'b', 'c'] },
-      ['a', 'b'],
+      ['c', 'a', 'b'],
       0.33
     );
     assertOutcome(
@@ -200,7 +202,7 @@ describe('index', () => {
     );
     assertOutcome(
       { partialScoring: false, correctResponse: ['a', 'b', 'c'] },
-      ['a', 'b'],
+      ['c', 'a', 'b'],
       0.33,
       { partialScoring: true }
     );
