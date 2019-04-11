@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.6.2...@pie-element/math-inline@0.7.0) (2019-04-11)
+
+
+### Bug Fixes
+
+* minor adjustments ([2865349](https://github.com/pie-framework/pie-elements/commit/2865349))
+
+
+### Features
+
+* **math-inline:** decimal support and partial scoring ([84b1292](https://github.com/pie-framework/pie-elements/commit/84b1292))
+
+
+
+
+
 ## [0.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.6.1...@pie-element/math-inline@0.6.2) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/math-inline
