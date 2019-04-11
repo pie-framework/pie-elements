@@ -1,183 +1,148 @@
-import { maxScore, flattenCorrect, score } from '../scoring';
+import {
+  flattenCorrect,
+  score,
+  pairwiseCombinationScore,
+  illegalArgumentError
+} from '../scoring';
 import _ from 'lodash';
 
-describe('flattenCorrect', () => {
-  let correctResponseIds = ['c1', 'c2', 'c3', 'c4'];
-
-  describe('correctResponse is an array of identifiers', () => {
-    let question = {
-      correctResponse: correctResponseIds
-    };
-
-    it('returns correctResponse field value', () => {
-      expect(flattenCorrect(question)).toEqual(question.correctResponse);
+describe('pairwiseCombinationScore', () => {
+  const assertScore = (correctResponse, opts) => (answer, expectedScore) => {
+    it(`${expectedScore} for ${
+      typeof answer === 'string' ? answer : JSON.stringify(answer)
+    }`, () => {
+      const c = correctResponse.split('');
+      const a = typeof answer === 'string' ? answer.split('') : answer;
+      const result = pairwiseCombinationScore(c, a, opts);
+      expect(result).toEqual(expectedScore);
     });
+  };
 
+  describe('correct response: A', () => {
+    const assertA = assertScore('A');
+    assertA('A', 1);
+    assertA('B', 0);
+    assertA('C', 0);
+    assertA({ foo: true }, 0);
+    assertA([{ foo: true }, { bar: true }], 0);
+    assertA('', 0);
   });
 
-  describe('correctResponse contains weight definitions', () => {
-    let question = {
-      correctResponse: correctResponseIds.map((id) => {
-        return {
-          id: id,
-          weight: Math.random()
-        };
-      })
-    }
+  describe('correct response: AB', () => {
+    const assertAB = assertScore('AB');
+    assertAB('A', 0);
+    assertAB('B', 0);
+    assertAB('C', 0);
+    assertAB('', 0);
+    assertAB('AB', 1);
+    assertAB('BA', 0);
+    assertAB('AC', 0);
+  });
 
-    it('return correctResponse identifiers', () => {
-      expect(flattenCorrect(question)).toEqual(correctResponseIds);
+  describe('correct response: ABC', () => {
+    const assertABC = assertScore('ABC');
+    assertABC('', 0);
+    assertABC('A', 0);
+    assertABC('AA', 0);
+    assertABC('AB', 0);
+    assertABC('AAC', 0);
+    assertABC('AAB', 0);
+    assertABC('BAA', 0);
+    assertABC('ABA', 0);
+    assertABC('ABAB', 0);
+    assertABC('ABC', 1);
+  });
+
+  describe('correct response: AAB', () => {
+    it('throws an error because of duplicate in answer', () => {
+      expect(() => pairwiseCombinationScore(['A', 'A'], ['A', 'A'])).toThrow(
+        illegalArgumentError(['A', 'A'])
+      );
     });
   });
 
+  describe('correct response: ABC', () => {
+    const assertABC = assertScore('ABC');
+    assertABC('ABC', 1);
+    assertABC('BCA', 0.33);
+    assertABC('CAB', 0.33);
+    assertABC('CBA', 0);
+    assertABC('ACB', 0.67);
+    assertABC('A', 0);
+    assertABC('B', 0);
+    assertABC('C', 0);
+    assertABC('AB', 0);
+    assertABC('BC', 0);
+    assertABC('AC', 0);
+    assertABC('CA', 0);
+    assertABC('CB', 0);
+    assertABC('BA', 0);
+    assertABC('', 0);
+    assertABC('ABCD', 0);
+  });
+
+  describe('correct response: ABCD', () => {
+    const assertABCD = assertScore('ABCD');
+    assertABCD('ABCD', 1);
+    assertABCD('ABDC', 0.83);
+    assertABCD('ABC', 0);
+    assertABCD('CDAB', 0.33);
+    assertABCD('CDBA', 0.17);
+    assertABCD('DCBA', 0);
+    assertABCD('DCAB', 0.17);
+    assertABCD('ABAB', 0);
+    assertABCD('AB', 0);
+  });
+
+  describe('custom override - allowDuplicates: true, orderMustBeComplete: false', () => {
+    describe('correct response: AAB - dups, order incomplete', () => {
+      const assertAAB = assertScore('AAB', {
+        allowDuplicates: true,
+        orderMustBeComplete: false
+      });
+      assertAAB('', 0);
+      assertAAB('A', 0);
+      assertAAB('AA', 0.33);
+      assertAAB('AAC', 0.33);
+      assertAAB('AAB', 1);
+      assertAAB('BAA', 0.33);
+      assertAAB('ABA', 0.67);
+      assertAAB('ABAB', 0);
+    });
+  });
 });
 
+const correctResponse = ['c1', 'c2', 'c3', 'c4'];
 describe('score', () => {
-  let correctResponse = ['c1', 'c2', 'c3', 'c4'];
-
   let baseQuestion = {
     correctResponse: correctResponse
   };
-
-  describe('default scoring', () => {
-    let question = _.cloneDeep(baseQuestion);
-
-    describe('all correct', () => {
-      let session = {
-        value: _.cloneDeep(correctResponse)
-      };
-
-      it('should return 1', () => {
-        expect(score(question, session)).toEqual(1);
-      });
-
-    });
-
-    describe('some correct', () => {
-      let session = {
-        value: (() => {
-          let response = _.cloneDeep(correctResponse);
-          response[1] = undefined;
-          return response;
-        })()
-      };
-
-      it('should return 0', () => {
-        expect(score(question, session)).toEqual(0);
-      });
-
-    });
-
-    describe('none correct', () => {
-      let session = {
-        value: [null, null, null, null]
-      };
-
-      it('should return 0', () => {
-        expect(score(question, session)).toEqual(0);
-      });
-
-    });
-
-  });
-
   describe('partial scoring', () => {
     let question = _.merge(_.cloneDeep(baseQuestion), {
-      partialScoring: [
-        {
-          correctCount: 1,
-          weight: 0.2
-        }
-      ]
+      partialScoring: true
     });
 
-    let weightFor = (count) => {
-      return question.partialScoring.find(({ correctCount }) => count === correctCount).weight;
-    }
-
-    describe('all correct', () => {
-      let session = {
-        value: _.cloneDeep(correctResponse)
-      };
-
-      it('should return 1', () => {
-        expect(score(question, session)).toEqual(1);
+    const assertScore = (value, expectedScore) => {
+      it(`${expectedScore} for: ${value}`, () => {
+        const result = score(question, { value });
+        expect(result).toEqual(expectedScore);
       });
-
-    });
-
-    describe('some correct', () => {
-      let numberCorrect = 1;
-
-      let session = {
-        value: (() => {
-          let response = _.cloneDeep(correctResponse);
-          for (var i = 0; i < response.length - numberCorrect; i++) {
-            response[i] = undefined;
-          }
-          return response;
-        })()
-      };
-
-      it('should return corresponding weight * maxScore', () => {
-        expect(score(question, session)).toEqual(maxScore * weightFor(numberCorrect));
-      });
-
-    });
-
-    describe('none correct', () => {
-      let session = {
-        value: [null, null, null, null]
-      };
-
-      it('should return 0', () => {
-        expect(score(question, session)).toEqual(0);
-      });
-
-    });
-
+    };
+    assertScore([], 0);
+    assertScore(['c1'], 0);
+    assertScore(['c1', 'c2'], 0);
+    assertScore(['c1', 'c2', 'c3'], 0);
+    assertScore(['c1', 'c2', 'c3', 'c4'], 1);
   });
+});
+describe('flattenCorrect', () => {
+  describe('correctResponse is an array of identifiers', () => {
+    let question = {
+      correctResponse: correctResponse.map(v => ({ id: v }))
+    };
 
-  describe('weighted scoring', () => {
-    let question = _.merge(_.cloneDeep(baseQuestion), {
-      correctResponse: correctResponse.map((value, id) => {
-        return {
-          id: value,
-          weight: Math.random()
-        };
-      })
+    it('returns correctResponse field value', () => {
+      expect(flattenCorrect(question)).toEqual(correctResponse);
     });
-
-    describe('some correct', () => {
-      let session = {};
-
-      function sessionForCorrect(correct) {
-        return {
-          value: correctResponse.map(id => {
-            return correct.includes(id) ? id : null
-          })
-        };
-      }
-
-      it('should return 0', () => {
-        const correctChoices = ['c1', 'c3'];
-        let session = sessionForCorrect(correctChoices);
-        expect(score(question, session)).toEqual(0);
-      });
-
-    });
-
-    describe('none correct', () => {
-      let session = {
-        value: [null, null, null, null]
-      };
-
-      it('should return 0', () => {
-        expect(score(question, session)).toEqual(0);
-      });
-
-    });
-
   });
-
 });

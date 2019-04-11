@@ -29,5 +29,6 @@ export default {
     choiceLabel: 'choices: ',
     showOrdering: true
   },
-  prompt: 'Arrange the fruits alphabetically',
+  numberedGuides: true,
+  itemStem: 'Arrange the fruits alphabetically',
 };

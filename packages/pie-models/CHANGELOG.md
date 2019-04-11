@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.0.0...@pie-element/pie-models@1.0.1) (2019-04-10)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [1.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.4...@pie-element/pie-models@1.0.0) (2019-04-09)
+
+
+### Features
+
+* UI and model updates [ch423] ([b83c4b9](https://github.com/pie-framework/pie-elements/commit/b83c4b9))
+
+
+### BREAKING CHANGES
+
+* `moveOnDrag` is gone use `removeAllTilesAfterPlacing`.
+
+
+
+
+
 ## [0.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@0.5.3...@pie-element/pie-models@0.5.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/pie-models

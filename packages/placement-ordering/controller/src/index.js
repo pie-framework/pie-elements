@@ -3,11 +3,12 @@ import { flattenCorrect, score } from './scoring';
 import _ from 'lodash';
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-
+import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:placement-ordering-controller');
-
+export const questionError = () =>
+  new Error('Question is missing required array: correctResponse');
 export function outcome(question, session, env) {
   session.value = session.value || [];
   return new Promise((resolve, reject) => {
@@ -16,13 +17,21 @@ export function outcome(question, session, env) {
       !question.correctResponse ||
       _.isEmpty(question.correctResponse)
     ) {
-      reject(new Error('Question is missing required array: correctResponse'));
+      reject(questionError());
     } else {
-      resolve({
-        score: {
-          scaled: score(question, session)
-        }
-      });
+      try {
+        const s = score(question, session);
+        const finalScore = partialScoring.enabled(question, env || {})
+          ? s
+          : s === 1
+          ? 1
+          : 0;
+        resolve({
+          score: finalScore
+        });
+      } catch (e) {
+        reject(e);
+      }
     }
   });
 }
@@ -83,11 +92,12 @@ export function createDefaultModel(model = {}) {
 }
 
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const base = {};
 
     base.outcomes = [];
-    base.completeLength = question.correctResponse.length;
+
+    base.completeLength = (question.correctResponse || []).length;
 
     const choices = question.shuffle
       ? shuffle(session, question.choices)
@@ -96,14 +106,18 @@ export function model(question, session, env) {
 
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = question.prompt;
+    base.prompt = question.itemStem;
     base.config = {
       orientation: question.choiceAreaLayout || 'vertical',
-      includeTargets: question.placementType === 'placement',
+      includeTargets: question.placementArea,
       targetLabel: question.answerAreaLabel,
       choiceLabel: question.choiceAreaLabel,
-      showOrdering: question.showOrdering
+      showOrdering: question.numberedGuides,
+      allowSameChoiceInTargets: !(
+        question.configure && question.configure.removeTileAfterPlacing
+      )
     };
+
     base.configure = question.configure;
 
     base.disabled = env.mode !== 'gather';

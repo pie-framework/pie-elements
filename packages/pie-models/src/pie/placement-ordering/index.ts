@@ -3,7 +3,6 @@ import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
 
-
 interface Choice {
     /** The id of the choice */
     id: string;
@@ -35,57 +34,20 @@ interface CorrectResponse {
 }
 
 interface ConfigurePlacementOrdering {
-    /** Indicates if changing orientation is enabled */
-    enableOrientationChange?: boolean;
+    /** Indicates if the area to choice label has to be displayed
+     * @default true
+     */
+    editableChoiceLabel?: boolean;
 
-    /** Indicates if changing shuffle mode is enabled */
-    enableShuffleChange?: boolean;
+    /** Indicates if using images within choices should be enabled
+     * @default false
+     */
+    imagesEnabled?: boolean;
 
-    /** Indicates if changing numbered guide mode is enabled */
-    enableNumberedGuideChange?: boolean;
-
-    /** Indicates if changing placement area mode is enabled */
-    enablePlacementAreaChange?: boolean;
-
-    /** Indicates if changing prompt is enabled */
-    enablePromptChange?: boolean;
-
-    /** Indicates if changing choice label is enabled */
-    enableChoiceLabelChange?: boolean;
-
-    /** Indicates if changing the label for the choices is enabled */
-    enableChoicesLabelChange?: boolean;
-
-    /** Indicates if changing the remove tiles mode is enabled */
-    enableRemoveTiles?: boolean;
-
-    /** Indicates if feedback is enabled */
-    enableFeedback?: boolean;
-
-
-    /** The label for the orientation checkboxes */
-    orientationLabel?: string;
-
-    /** The label for the shuffle checkbox */
-    shuffleLabel?: string;
-
-    /** The label for the include placement area checkbox */
-    includePlacementAreaLabel?: string;
-
-    /** The label for the numbered guides checkbox */
-    numberedGuidesLabel?: string;
-
-    /** The label for the prompt input */
-    promptLabel?: string;
-
-    /** The label for the choice input */
-    choiceLabel?: string;
-
-    /** The label for the individual choice input */
-    choicesLabel?: string;
-
-    /** The label for the remove tiles switch */
-    removeTilesLabel?: string;
+    /** Indicates if the tiles should be removed after they are placed
+     * @default true
+     */
+    removeTilesAfterPlacing?: boolean;
 }
 
 /**
@@ -93,17 +55,23 @@ interface ConfigurePlacementOrdering {
 * @additionalProperties false
 */
 export interface PlacementOrderingPie extends PieModel {
-    /** Th epropmpt for the question */
-    prompt: string;
+    /** The prompt for the question */
+    itemStem?: string;
 
     /** The label for possible choices */
     choiceAreaLabel?: string;
 
+    /** The label for answer area if placement area is enabled */
+    answerAreaLabel?: string;
+
+    /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
+    placementArea?: boolean;
+
+    /** If placement type is placement, show ordering indicates if the boxes are numbered */
+    numberedGuides: boolean;
+
     /** The layout for displaying the choices */
     choiceAreaLayout: 'vertical' | 'horizontal';
-
-    /** The label for answer area if placement area is enabled */
-    answerAreaLabel?: string,
 
     /** Indicates if the choices can shuffle
      * @default false
@@ -116,25 +84,175 @@ export interface PlacementOrderingPie extends PieModel {
     /** Array of the correct responses in the correct order */
     correctResponse: CorrectResponse[];
 
-    /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
-    placementType?: 'none' | 'placement';
-
-    /** If placement type is placement, show ordering indicates if the boxes are numbered */
-    showOrdering: boolean;
-
-    /** The configuration for placement ordering pie */
-    configure: ConfigurePlacementOrdering;
-
     /** Feedback for student answer */
     feedback: ComplexFeedbackType;
 
     /** Indicates if partialScoring is enabled */
-    partialScoring?: boolean;
+    partialScoring: boolean;
 
+    /** The configuration for placement ordering pie */
+    configure: ConfigurePlacementOrdering;
 }
 
 /**
  * Config Object for @pie-elements/placement-ordering
  * @additionalProperties false
  */
-export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSettings {}
+export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSettings {
+    /**
+     * The label presented above the item stem input
+     * @default "Item Stem"
+     */
+    itemStemLabel?: string;
+
+    /**
+     * The label presented above the choice label input
+     * @default "Choice label"
+     */
+    choiceLabel?: string;
+
+    /**
+     * The label presented above the answer label input
+     * @default "Answer label"
+     */
+    answerLabel?: string;
+
+    /**
+     * The label presented in the settings panel for orientation
+     * @default "Orientation"
+     */
+    orientationLabel?: string;
+
+    /**
+     * The label presented in the settings panel for shuffle
+     * @default "Shuffle Choices"
+     */
+    shuffleLabel?: string;
+
+    /**
+     * The label presented in the settings panel for placement area
+     * @default "Placement Area"
+     */
+    placementAreaLabel?: string;
+
+    /**
+     * The label presented in the settings panel for numbered guides
+     * @default "Numbered Guides"
+     */
+    numberedGuidesLabel?: string;
+
+    /**
+     * The label presented in the settings panel for enable images
+     * @default "Enable Images"
+     */
+    enableImagesLabel?: string;
+
+    /**
+     * The label presented for choices
+     * @default "Choices"
+     */
+    choicesLabel?: string;
+
+    /**
+     * The label presented in the settings panel for removeTiles
+     * @default "Remove tiles after placing"
+     */
+    removeTilesLabel?: string;
+
+    /**
+     * The label presented in the settings panel for partial scoring
+     * @default "Partial Scoring"
+     */
+    partialScoringLabel?: string;
+
+    /**
+     * Indicates whether the author can modify the item stem
+     *
+     * @default true
+     */
+    settingsItemStemChange?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the choice label
+     *
+     * @default true
+     */
+    settingsChoiceLabel?: boolean;
+
+    /**
+     * Indicates whether changing choices labels are allowed
+     *
+     * @default true
+     */
+    settingsChoicesLabel?: boolean;
+
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the shuffle choices mode
+     *
+     * @default true
+     */
+    settingsShuffle?: boolean;
+
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the
+     * placement area mode
+     *
+     * @default true
+     */
+    settingsPlacementArea?: boolean;
+
+
+    /**
+     * Indicates whether the changing placement area label will be enabled
+     *
+     * @default true
+     */
+    settingsPlacementAreaLabel?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the
+     * numbered guides mode for placement area
+     *
+     * @default true
+     */
+    settingsNumberedGuides?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to add images to choices
+     *
+     * @default true
+     */
+    settingsEnableImages?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the
+     * remove tile after placing option
+     *
+     * @default false
+     */
+    settingsRemoveTileAfterPlacing?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to modify the orientation
+     *
+     * @default true
+     */
+    settingsOrientation?: boolean;
+
+    /**
+     * Indicates whether the settings panel will allow an author to use partial scoring
+     *
+     * @default true
+     */
+    settingsPartialScoring?: boolean;
+
+
+    /**
+     * Indicates whether feedback is enabled
+     *
+     * @default true
+     */
+    settingsFeedback?: boolean;
+}

@@ -108,5 +108,60 @@
     "committerDate": "2018-05-10 12:46:56 -0400",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "partial scoring logic updated to use pairwise combinations [ch440]",
+    "merge": null,
+    "header": "feat: partial scoring logic updated to use pairwise combinations [ch440]",
+    "body": "* `partialScoring`: [{correctCount: number, weight: number}] is gone\n* `partialScoring` is now a boolean (partialScoring defaults to true).\n* uses pairwise combinations to calculate the partial score",
+    "footer": "BREAKING CHANGE: `question.partialScoring` is no longer a set of rules\nwith weights. It's now a boolean.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`question.partialScoring` is no longer a set of rules\nwith weights. It's now a boolean."
+      }
+    ],
+    "hash": "2761b85341ddcd88c9cfdef06456acd0812213d0",
+    "gitTags": "",
+    "committerDate": "2019-04-09 18:17:42 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "UI and model updates [ch423]",
+    "merge": null,
+    "header": "feat: UI and model updates [ch423]",
+    "body": "* Updated design\n* Removed `moveOnDrag` for a choice individually\n*  added `removeTilesAfterPlacing` property on the entire list of choices.",
+    "footer": "BREAKING CHANGE: `moveOnDrag` is gone use `removeAllTilesAfterPlacing`.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`moveOnDrag` is gone use `removeAllTilesAfterPlacing`."
+      }
+    ],
+    "hash": "b83c4b9b87374ae46eff0a3657dc7b83b7da3d90",
+    "gitTags": "",
+    "committerDate": "2019-04-09 18:14:32 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "scoring change [ch440]",
+    "merge": null,
+    "header": "feat: scoring change [ch440]",
+    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTileAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
+    "footer": null,
+    "notes": [],
+    "hash": "42507f5182a5bb1466499f46922500bf9d6a8cd1",
+    "gitTags": "",
+    "committerDate": "2019-04-09 20:18:34 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@3.1.0"
   }
 ]

@@ -528,5 +528,20 @@
     "committerDate": "2019-03-30 09:14:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/select-text@3.9.7"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "partial scoring - use @pie-lib/controller-utils",
+    "merge": null,
+    "header": "feat: partial scoring - use @pie-lib/controller-utils",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "dac819f39c61fdb2d093609ab2d895b12372cac9",
+    "gitTags": "",
+    "committerDate": "2019-04-09 13:08:36 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@3.10.0"
   }
 ]

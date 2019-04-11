@@ -4,7 +4,6 @@ import Tab from '@material-ui/core/Tab';
 import Design from './design';
 import Help from './help';
 import React from 'react';
-import ScoringConfig from '@pie-lib/scoring-config';
 import { withDragContext } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -19,18 +18,18 @@ const styles = {
 
 class Main extends React.Component {
   static propTypes = {
-    initialModel: PropTypes.object,
-    onModelChange: PropTypes.func.isRequired,
+    model: PropTypes.object,
+    onModelChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.object
   };
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.state = {
-      index: 0,
-      model: props.initialModel
+      model: props.model,
+      index: 0
     };
 
     this.onTabIndexChange = (event, index) => {
@@ -38,24 +37,24 @@ class Main extends React.Component {
     };
 
     this.onPartialScoringChange = partialScoring => {
-      const { onModelChange } = this.props;
+      const { onModelChanged } = this.props;
       const model = cloneDeep(this.state.model);
       model.partialScoring = partialScoring;
       this.setState({ model }, () => {
-        onModelChange(this.state.model);
-      });
-    };
-
-    this.onModelChange = model => {
-      const { onModelChange } = this.props;
-      const resetSession =
-        model.placementType !== this.state.model.placementType ||
-        model.choices.length !== this.state.model.choices.length;
-      this.setState({ model }, () => {
-        onModelChange(this.state.model, resetSession);
+        onModelChanged(this.state.model);
       });
     };
   }
+
+  modelChanged = (reset) => {
+    this.props.onModelChanged(this.state.model, reset);
+  };
+
+  updateModel = (model, reset) => {
+    this.setState({ model }, () => {
+      this.modelChanged(reset);
+    });
+  };
 
   render() {
     const { classes, imageSupport } = this.props;
@@ -65,23 +64,16 @@ class Main extends React.Component {
       <div>
         <div className={classes.tabBar}>
           <Tabs onChange={this.onTabIndexChange} value={index}>
-            <Tab label="Design" />
-            <Tab label="Scoring" />
+            <Tab label="Design"/>
           </Tabs>
           <Help />
         </div>
         {index === 0 && (
           <Design
             model={model}
-            onModelChange={this.onModelChange}
+            onModelChanged={this.onModelChanged}
             imageSupport={imageSupport}
-          />
-        )}
-        {index === 1 && (
-          <ScoringConfig
-            partialScoring={!!model.partialScoring}
-            numberOfCorrectResponses={model.correctResponse.length}
-            onChange={this.onPartialScoringChange}
+            updateModel={this.updateModel}
           />
         )}
       </div>

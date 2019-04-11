@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@4.0.0...@pie-element/placement-ordering@4.1.0) (2019-04-10)
+
+
+### Features
+
+* scoring change [ch440] ([42507f5](https://github.com/pie-framework/pie-elements/commit/42507f5))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.7.5...@pie-element/placement-ordering@4.0.0) (2019-04-09)
+
+
+### Features
+
+* partial scoring logic updated to use pairwise combinations [ch440] ([2761b85](https://github.com/pie-framework/pie-elements/commit/2761b85))
+* UI and model updates [ch423] ([b83c4b9](https://github.com/pie-framework/pie-elements/commit/b83c4b9))
+
+
+### BREAKING CHANGES
+
+* `question.partialScoring` is no longer a set of rules
+with weights. It's now a boolean.
+* `moveOnDrag` is gone use `removeAllTilesAfterPlacing`.
+
+
+
+
+
 ## [3.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@3.7.4...@pie-element/placement-ordering@3.7.5) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/placement-ordering
