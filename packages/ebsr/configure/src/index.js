@@ -3,9 +3,7 @@ import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib'
 
 import defaults from './defaults';
 
-import debug from 'debug';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
-const log = debug('pie-elements:ebsr:configure');
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
 class EbsrMCConfigure extends MultipleChoiceConfigure {}
