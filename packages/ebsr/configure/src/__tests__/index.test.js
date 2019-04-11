@@ -71,7 +71,7 @@ describe('index', () => {
       partB: new HTMLElement()
     };
     el.querySelector = jest.fn(s => {
-      if (s === '#part-a-configure') {
+      if (s === `ebsr-multiple-choice-configure#a`) {
         return ebsr.partA;
       } else {
         return ebsr.partB;
@@ -88,7 +88,9 @@ describe('index', () => {
 
   const updateModel = (model, key) => {
     const event = new ModelUpdatedEvent(model, false);
-    el.handleUpdate(event, key);
+
+    el._model[key] = event.update;
+    el.dispatchEvent(new ModelUpdatedEvent(el._model, false));
   };
 
   const expectToMatchModel = (newModel, key) => {
