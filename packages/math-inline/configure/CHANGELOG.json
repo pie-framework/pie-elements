@@ -583,5 +583,35 @@
     "committerDate": "2019-04-04 10:08:31 +0100",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@0.4.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "minor adjustments",
+    "merge": null,
+    "header": "fix: minor adjustments",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2865349249bf8edb5753424d2cc745b9271cc3a3",
+    "gitTags": "",
+    "committerDate": "2019-04-10 16:53:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.5.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "decimal support and partial scoring",
+    "merge": null,
+    "header": "feat(math-inline): decimal support and partial scoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "84b12928291d814181dd652d1b48c22971f6e8d2",
+    "gitTags": "",
+    "committerDate": "2019-04-10 12:31:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@0.5.0"
   }
 ]
