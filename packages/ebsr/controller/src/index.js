@@ -116,7 +116,7 @@ export function outcome(config, session, env) {
       const { partA, partB } = value;
 
       const scoreA = getScore(config, partA, 'partA');
-      const scoreB = getScore(config, partB, 'partB');
+      const scoreB = scoreA ? getScore(config, partB, 'partB') : 0;
 
       const score = scoreA + scoreB;
 
