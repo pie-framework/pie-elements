@@ -47,6 +47,10 @@ export default class EbsrConfigure extends HTMLElement {
       .then(() => {
         this.partA.model = this._model.partA;
         this.partB.model = this._model.partB;
+        this.partA.configure = {
+          settingsPartialScoring: false,
+          settingsSelectChoiceMode: false
+        };
       });
   }
 
