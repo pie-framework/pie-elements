@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@4.1.1...@pie-element/placement-ordering@4.2.0) (2019-04-12)
+
+
+### Features
+
+* **scoring:** `orderMustBeComplete` defaults to false ([3b11755](https://github.com/pie-framework/pie-elements/commit/3b11755))
+
+
+
+
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@4.1.0...@pie-element/placement-ordering@4.1.1) (2019-04-11)
 
 **Note:** Version bump only for package @pie-element/placement-ordering
