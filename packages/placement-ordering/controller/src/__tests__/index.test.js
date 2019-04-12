@@ -167,7 +167,7 @@ describe('index', () => {
     });
   });
 
-  describe('outcome', () => {
+  describe.only('outcome', () => {
     const assertOutcome = (question, value, expectedScore, env) => {
       it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(
         question
@@ -189,7 +189,7 @@ describe('index', () => {
     assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['b'], 0);
     assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['c', 'a', 'b'], 0.33);
     assertOutcome({ correctResponse: ['a', 'b'] }, ['c', 'a', 'b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0);
+    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0.33);
     assertOutcome(
       { partialScoring: true, correctResponse: ['a', 'b', 'c'] },
       ['c', 'a', 'b'],
