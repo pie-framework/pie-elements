@@ -1,16 +1,29 @@
 import _ from 'lodash';
 import { combination } from 'js-combinatorics';
+import debug from 'debug';
+
+const log = debug('pie-elements:placement-ordering:controller');
+
 export const illegalArgumentError = answer =>
   new Error(
     `Cant score answer: ${answer} it has duplicates and allowDuplicates is false`
   );
 export const pairwiseCombinationScore = (correct, answer, opts) => {
-  opts = { allowDuplicates: false, orderMustBeComplete: true, ...opts };
+  opts = { allowDuplicates: false, orderMustBeComplete: false, ...opts };
   if (!opts.allowDuplicates && !_.isEqual(_.uniq(correct), correct)) {
     throw illegalArgumentError(answer);
   }
+
+  if (
+    opts.allowDuplicates === false &&
+    answer.length !== _.uniq(answer).length
+  ) {
+    return 0;
+  }
+
   answer = opts.allowDuplicates !== false ? answer : _.uniq(answer);
 
+  log('answer:', answer);
   if (!Array.isArray(correct) || correct.length === 0) {
     throw new Error('correct must be non empty an array');
   }

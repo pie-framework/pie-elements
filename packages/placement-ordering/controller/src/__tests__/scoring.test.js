@@ -39,20 +39,6 @@ describe('pairwiseCombinationScore', () => {
     assertAB('AC', 0);
   });
 
-  describe('correct response: ABC', () => {
-    const assertABC = assertScore('ABC');
-    assertABC('', 0);
-    assertABC('A', 0);
-    assertABC('AA', 0);
-    assertABC('AB', 0);
-    assertABC('AAC', 0);
-    assertABC('AAB', 0);
-    assertABC('BAA', 0);
-    assertABC('ABA', 0);
-    assertABC('ABAB', 0);
-    assertABC('ABC', 1);
-  });
-
   describe('correct response: AAB', () => {
     it('throws an error because of duplicate in answer', () => {
       expect(() => pairwiseCombinationScore(['A', 'A'], ['A', 'A'])).toThrow(
@@ -63,42 +49,56 @@ describe('pairwiseCombinationScore', () => {
 
   describe('correct response: ABC', () => {
     const assertABC = assertScore('ABC');
+    assertABC('', 0);
+    assertABC('A', 0);
+    assertABC('AA', 0);
+    assertABC('AB', 0.33);
+    assertABC('AC', 0.33);
+    assertABC('AAC', 0);
+    assertABC('AAB', 0);
+    assertABC('BAA', 0);
+    assertABC('ABA', 0);
+    assertABC('ABAB', 0);
+    assertABC('ABC', 1);
     assertABC('ABC', 1);
     assertABC('BCA', 0.33);
     assertABC('CAB', 0.33);
     assertABC('CBA', 0);
     assertABC('ACB', 0.67);
-    assertABC('A', 0);
     assertABC('B', 0);
     assertABC('C', 0);
-    assertABC('AB', 0);
-    assertABC('BC', 0);
-    assertABC('AC', 0);
+    assertABC('AB', 0.33);
+    assertABC('BC', 0.33);
+    assertABC('AC', 0.33);
     assertABC('CA', 0);
     assertABC('CB', 0);
     assertABC('BA', 0);
-    assertABC('', 0);
     assertABC('ABCD', 0);
+  });
+
+  describe('correct response: ABCD - order must be complete', () => {
+    const assertABCD = assertScore('ABCD', { orderMustBeComplete: true });
+    assertABCD('ABC', 0);
+    assertABCD('BCD', 0);
   });
 
   describe('correct response: ABCD', () => {
     const assertABCD = assertScore('ABCD');
     assertABCD('ABCD', 1);
     assertABCD('ABDC', 0.83);
-    assertABCD('ABC', 0);
+    assertABCD('ABC', 0.5);
     assertABCD('CDAB', 0.33);
     assertABCD('CDBA', 0.17);
     assertABCD('DCBA', 0);
     assertABCD('DCAB', 0.17);
     assertABCD('ABAB', 0);
-    assertABCD('AB', 0);
+    assertABCD('AB', 0.17);
   });
 
   describe('custom override - allowDuplicates: true, orderMustBeComplete: false', () => {
     describe('correct response: AAB - dups, order incomplete', () => {
       const assertAAB = assertScore('AAB', {
-        allowDuplicates: true,
-        orderMustBeComplete: false
+        allowDuplicates: true
       });
       assertAAB('', 0);
       assertAAB('A', 0);
@@ -130,8 +130,8 @@ describe('score', () => {
     };
     assertScore([], 0);
     assertScore(['c1'], 0);
-    assertScore(['c1', 'c2'], 0);
-    assertScore(['c1', 'c2', 'c3'], 0);
+    assertScore(['c1', 'c2'], 0.17);
+    assertScore(['c1', 'c2', 'c3'], 0.5);
     assertScore(['c1', 'c2', 'c3', 'c4'], 1);
   });
 });
