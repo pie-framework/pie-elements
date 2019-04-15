@@ -1,7 +1,7 @@
 export default {
-  answerAreaLabel: 'Answer Label goes here',
-  choiceAreaLabel: 'Choice Label goes here',
-  choiceAreaLayout: 'vertical',
+  answerLabel: 'Answer Label goes here',
+  choiceLabel: 'Choice Label goes here',
+  choicesOrientation: 'vertical',
   choices: [
     {
       id: 'c1',
@@ -9,28 +9,35 @@ export default {
     },
   ],
   configure: {
-    itemStemLabel: 'Item Stem',
-    choiceLabel: 'Choice label',
-    answerLabel: 'Answer label',
-    placementAreaLabel: 'Placement Area',
-    choicesLabel: 'Choices',
-    orientationLabel: 'Orientation',
-    shuffleLabel: 'Shuffle Choices',
-    numberedGuidesLabel: 'Numbered Guides',
-    enableImagesLabel: 'Enable Images',
-    removeTilesLabel: 'Remove tiles after placing',
-    partialScoringLabel: 'Partial Scoring',
+    labelItemStem: 'Item Stem',
+    labelChoice: 'Choice label',
+    labelAnswer: 'Answer label',
+    labelPlacementArea: 'Placement Area',
+    labelChoices: 'Choices',
+    labelOrientation: 'Orientation',
+    labelShuffle: 'Shuffle Choices',
+    labelNumberedGuides: 'Numbered Guides',
+    labelEnableImages: 'Enable Images',
+    labelRemoveTiles: 'Remove tiles after placing',
+    labelPartialScoring: 'Partial Scoring',
 
     // if item stem can be changed
-    settingsItemStemChange: true,
+    editableItemStem: true,
+    // if placement area label can be changed
+    editablePlacementAreaLabel: true,
+    // if choices labels can be changed
+    editableChoicesLabel: true,
+    // if choice label can be changed
+    editableChoiceLabel: false,
+    // if tiles should remove after they are placed
+    removeTileAfterPlacing: true,
+    // if images are enabled
+    imagesEnabled: false,
+
     // if choice label switch is displayed in settings panel
     settingsChoiceLabel: true,
-    // if placement area label can be changed
-    settingsPlacementAreaLabel: true,
     // if placement area switch is displayed in settings panel
     settingsPlacementArea: true,
-    // if choices labels can be changed
-    settingsChoicesLabel: true,
     // if changing orientation will be displayed in settings panel
     settingsOrientation: true,
     // is shuffle choices switch will be displayed in settings panel
@@ -45,13 +52,6 @@ export default {
     settingsPartialScoring: true,
     // if feedback settings can be changed
     settingsFeedback: true,
-
-    // if choice label can be changed
-    editableChoiceLabel: false,
-    // if tiles should remove after they are placed
-    removeTileAfterPlacing: true,
-    // if images are enabled
-    imagesEnabled: false
   },
   correctResponse: [
     {

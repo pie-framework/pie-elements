@@ -43,11 +43,11 @@ export class Design extends React.Component {
 
     this.onPromptChange = this.changeHandler('itemStem');
     this.onChoiceAreaLabelChange = this.changeHandler(
-      'choiceAreaLabel',
+      'choiceLabel',
       'target.value'
     );
     this.onAnswerAreaLabelChange = this.changeHandler(
-      'answerAreaLabel',
+      'answerLabel',
       'target.value'
     );
     this.onFeedbackChange = this.changeHandler('feedback');
@@ -66,14 +66,14 @@ export class Design extends React.Component {
     const { model, classes, imageSupport } = this.props;
     const {
       configure: {
-        itemStemLabel,
-        choiceLabel,
-        choicesLabel,
-        settingsItemStemChange,
-        settingsChoicesLabel,
+        labelItemStem,
+        labelChoice,
+        labelChoices,
+        editableItemStem,
+        editableChoicesLabel,
         settingsFeedback,
-        settingsPlacementAreaLabel,
-        answerLabel,
+        editablePlacementAreaLabel,
+        labelAnswer,
       },
     } = model;
 
@@ -84,9 +84,9 @@ export class Design extends React.Component {
         </div>
 
         {
-          settingsItemStemChange &&
+          editableItemStem &&
           <FormSection label="Ordering">
-            <InputContainer label={itemStemLabel && itemStemLabel.toUpperCase()} className={classes.promptHolder}>
+            <InputContainer label={labelItemStem && labelItemStem.toUpperCase()} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.itemStem}
@@ -101,20 +101,20 @@ export class Design extends React.Component {
           <div className={classes.row}>
             {
               model.configure.editableChoiceLabel && (
-                <InputContainer label={choiceLabel && choiceLabel.toUpperCase()} className={classes.promptHolder}>
+                <InputContainer label={labelChoice && labelChoice.toUpperCase()} className={classes.promptHolder}>
                   <EditableHtml
                     className={classes.prompt}
-                    markup={model.choiceAreaLabel}
+                    markup={model.choiceLabel}
                     onChange={this.onChoiceAreaLabelChange}
                   />
                 </InputContainer>
               )}
 
-            {(settingsPlacementAreaLabel && model.placementArea === true) && (
-              <InputContainer label={answerLabel && answerLabel.toUpperCase()} className={classes.promptHolder}>
+            {(editablePlacementAreaLabel && model.placementArea === true) && (
+              <InputContainer label={labelAnswer && labelAnswer.toUpperCase()} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
-                  markup={model.answerAreaLabel}
+                  markup={model.answerLabel}
                   onChange={this.onAnswerAreaLabelChange}
                 />
               </InputContainer>
@@ -122,8 +122,8 @@ export class Design extends React.Component {
           </div>
 
           {
-            settingsChoicesLabel &&
-            <InputContainer label={choicesLabel && choicesLabel.toUpperCase()} className={classes.promptHolder}>
+            editableChoicesLabel &&
+            <InputContainer label={labelChoices && labelChoices.toUpperCase()} className={classes.promptHolder}>
               <ChoiceEditor
                 correctResponse={model.correctResponse}
                 choices={model.choices}

@@ -29,14 +29,14 @@ const getSideMenuItems = (props) => {
       settingsOrientation,
       settingsPartialScoring,
 
-      choiceLabel,
-      shuffleLabel,
-      placementAreaLabel,
-      numberedGuidesLabel,
-      enableImagesLabel,
-      removeTilesLabel,
-      orientationLabel,
-      partialScoringLabel,
+      labelChoice,
+      labelShuffle,
+      labelPlacementArea,
+      labelNumberedGuides,
+      labelEnableImages,
+      labelRemoveTiles,
+      labelOrientation,
+      labelPartialScoring,
     }
   } = model;
 
@@ -52,7 +52,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={choiceLabel}
+        label={labelChoice}
         labelPlacement="start"
       />
     ),
@@ -68,7 +68,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={shuffleLabel}
+        label={labelShuffle}
         labelPlacement="start"
       />
     ),
@@ -84,7 +84,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={partialScoringLabel}
+        label={labelPartialScoring}
         labelPlacement="start"
       />
     ),
@@ -100,7 +100,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={placementAreaLabel}
+        label={labelPlacementArea}
         labelPlacement="start"
       />
     ),
@@ -116,7 +116,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={numberedGuidesLabel}
+        label={labelNumberedGuides}
         labelPlacement="start"
       />
     ),
@@ -132,7 +132,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={enableImagesLabel}
+        label={labelEnableImages}
         labelPlacement="start"
       />
     ),
@@ -148,7 +148,7 @@ const getSideMenuItems = (props) => {
             value="checkedA"
           />
         }
-        label={removeTilesLabel}
+        label={labelRemoveTiles}
         labelPlacement="start"
       />
     ),
@@ -156,11 +156,11 @@ const getSideMenuItems = (props) => {
     settingsOrientation && <ChoiceType
       style={{ width: '100%' }}
       key={5}
-      header={orientationLabel}
-      value={model.choiceAreaLayout}
+      header={labelOrientation}
+      value={model.choicesOrientation}
       onChange={value => updateModel({
         ...model,
-        choiceAreaLayout: value
+        choicesOrientation: value
       })}
     />,
   ];

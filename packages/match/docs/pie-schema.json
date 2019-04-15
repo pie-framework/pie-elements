@@ -73,7 +73,7 @@
       "type": "boolean",
       "title": "partialScoring"
     },
-    "partialScoringLabel": {
+    "labelPartialScoring": {
       "description": "Partial scoring label to be displayed",
       "type": "string",
       "title": "partialScoringLabel"

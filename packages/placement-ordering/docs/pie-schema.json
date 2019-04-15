@@ -156,12 +156,12 @@
           "type": "boolean",
           "title": "enableFeedback"
         },
-        "orientationLabel": {
+        "labelOrientation": {
           "description": "The label for the orientation checkboxes",
           "type": "string",
           "title": "orientationLabel"
         },
-        "shuffleLabel": {
+        "labelShuffle": {
           "description": "The label for the shuffle checkbox",
           "type": "string",
           "title": "shuffleLabel"
@@ -171,7 +171,7 @@
           "type": "string",
           "title": "includePlacementAreaLabel"
         },
-        "numberedGuidesLabel": {
+        "labelNumberedGuides": {
           "description": "The label for the numbered guides checkbox",
           "type": "string",
           "title": "numberedGuidesLabel"
@@ -186,12 +186,12 @@
           "type": "string",
           "title": "choiceLabel"
         },
-        "choicesLabel": {
+        "labelChoices": {
           "description": "The label for the individual choice input",
           "type": "string",
           "title": "choicesLabel"
         },
-        "removeTilesLabel": {
+        "labelRemoveTiles": {
           "description": "The label for the remove tiles switch",
           "type": "string",
           "title": "removeTilesLabel"
@@ -492,12 +492,12 @@
           "type": "boolean",
           "title": "enableFeedback"
         },
-        "orientationLabel": {
+        "labelOrientation": {
           "description": "The label for the orientation checkboxes",
           "type": "string",
           "title": "orientationLabel"
         },
-        "shuffleLabel": {
+        "labelShuffle": {
           "description": "The label for the shuffle checkbox",
           "type": "string",
           "title": "shuffleLabel"
@@ -507,7 +507,7 @@
           "type": "string",
           "title": "includePlacementAreaLabel"
         },
-        "numberedGuidesLabel": {
+        "labelNumberedGuides": {
           "description": "The label for the numbered guides checkbox",
           "type": "string",
           "title": "numberedGuidesLabel"
@@ -522,12 +522,12 @@
           "type": "string",
           "title": "choiceLabel"
         },
-        "choicesLabel": {
+        "labelChoices": {
           "description": "The label for the individual choice input",
           "type": "string",
           "title": "choicesLabel"
         },
-        "removeTilesLabel": {
+        "labelRemoveTiles": {
           "description": "The label for the remove tiles switch",
           "type": "string",
           "title": "removeTilesLabel"

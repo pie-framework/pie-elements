@@ -65,7 +65,7 @@ describe('Placement Ordering', () => {
     });
 
     it ('renders custom items', () => {
-      model.configure.settingsItemStemChange = false;
+      model.configure.editableItemStem = false;
       model.configure.settingsRemoveTileAfterPlacing = true;
 
       const wrapper = shallow(
@@ -143,7 +143,7 @@ describe('Placement Ordering', () => {
       });
 
       it('calls updateModel with updated choice area label', () => {
-        const modelPath = 'choiceAreaLabel';
+        const modelPath = 'choiceLabel';
         const valuePath = 'value';
         const value = 'Updated Choice Area Label';
 
@@ -156,7 +156,7 @@ describe('Placement Ordering', () => {
       });
 
       it('calls updateModel with updated answer area label', () => {
-        const modelPath = 'answerAreaLabel';
+        const modelPath = 'answerLabel';
         const valuePath = 'value';
         const value = 'Updated Answer Area Label';
 
@@ -202,7 +202,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          choiceAreaLabel: newChoiceAreaLabel
+          choiceLabel: newChoiceAreaLabel
         });
       });
     });
@@ -215,7 +215,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          answerAreaLabel: newAnswerAreaLabel
+          answerLabel: newAnswerAreaLabel
         });
       });
     });
@@ -284,7 +284,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          choiceAreaLayout: 'horizontal'
+          choicesOrientation: 'horizontal'
         });
       });
     });

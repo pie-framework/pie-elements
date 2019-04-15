@@ -26,7 +26,7 @@ export default {
   config: {
     orientation: 'vertical',
     targetLabel: 'Answer Area Label',
-    choiceLabel: 'choices: ',
+    labelChoice: 'choices: ',
     showOrdering: true
   },
   numberedGuides: true,

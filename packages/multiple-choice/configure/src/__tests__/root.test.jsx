@@ -46,7 +46,7 @@ const model = () => ({
     }
   ],
   partialScoring: false,
-  partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
+  labelPartialScoring: `Each correct response that is correctly checked and each incorrect response
           that is correctly unchecked will be worth 1 point.
           The maximum points is the total number of answer choices.`,
   configure: {
@@ -55,7 +55,7 @@ const model = () => ({
      */
     /*promptLabel : 'Item Stem',
     responseTypeLabel: 'Type of Answer',
-    choicesLabel: 'Answer Choice',
+    labelChoices: 'Answer Choice',
     addChoiceButtonLabel: 'Add New Choice',
     enableSelectChoiceMode: false,
     enableSelectResponseType: false,

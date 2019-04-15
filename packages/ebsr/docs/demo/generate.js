@@ -20,7 +20,7 @@ exports.model = (id, element) => ({
     ],
     keyMode: 'numbers',
     partialScoring: false,
-    partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
+    labelPartialScoring: `Each correct response that is correctly checked and each incorrect response
           that is correctly unchecked will be worth 1 point.
           The maximum points is the total number of answer choices.`,
     prompt: 'What color is the sky?',
@@ -50,7 +50,7 @@ exports.model = (id, element) => ({
     ],
     keyMode: 'numbers',
     partialScoring: false,
-    partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
+    labelPartialScoring: `Each correct response that is correctly checked and each incorrect response
           that is correctly unchecked will be worth 1 point.
           The maximum points is the total number of answer choices.`,
     prompt: 'What color do you get when you mix Red with your answer in Part 1?',

@@ -108,10 +108,10 @@ export function model(question, session, env) {
 
     base.prompt = question.itemStem;
     base.config = {
-      orientation: question.choiceAreaLayout || 'vertical',
+      orientation: question.choicesOrientation || 'vertical',
       includeTargets: question.placementArea,
-      targetLabel: question.answerAreaLabel,
-      choiceLabel: question.choiceAreaLabel,
+      targetLabel: question.answerLabel,
+      choiceLabel: question.choiceLabel,
       showOrdering: question.numberedGuides,
       allowSameChoiceInTargets: !(
         question.configure && question.configure.removeTileAfterPlacing
