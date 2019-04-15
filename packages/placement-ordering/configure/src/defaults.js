@@ -1,5 +1,5 @@
 export default {
-  answerLabel: 'Answer Label goes here',
+  targetLabel: 'Target Label goes here',
   choiceLabel: 'Choice Label goes here',
   choicesOrientation: 'vertical',
   choices: [
@@ -11,7 +11,7 @@ export default {
   configure: {
     labelItemStem: 'Item Stem',
     labelChoice: 'Choice label',
-    labelAnswer: 'Answer label',
+    labelTarget: 'Target label',
     labelPlacementArea: 'Placement Area',
     labelChoices: 'Choices',
     labelOrientation: 'Orientation',
@@ -58,8 +58,9 @@ export default {
       id: 'c1',
     },
   ],
-  itemStem: 'Question Prompt goes here',
+  itemStem: 'Item Stem goes here',
   placementArea: true,
   showOrdering: true,
   shuffle: false,
+  partialScoring: false
 };

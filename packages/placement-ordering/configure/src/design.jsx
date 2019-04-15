@@ -47,7 +47,7 @@ export class Design extends React.Component {
       'target.value'
     );
     this.onAnswerAreaLabelChange = this.changeHandler(
-      'answerLabel',
+      'targetLabel',
       'target.value'
     );
     this.onFeedbackChange = this.changeHandler('feedback');
@@ -73,7 +73,7 @@ export class Design extends React.Component {
         editableChoicesLabel,
         settingsFeedback,
         editablePlacementAreaLabel,
-        labelAnswer,
+        labelTarget,
       },
     } = model;
 
@@ -111,10 +111,10 @@ export class Design extends React.Component {
               )}
 
             {(editablePlacementAreaLabel && model.placementArea === true) && (
-              <InputContainer label={labelAnswer && labelAnswer.toUpperCase()} className={classes.promptHolder}>
+              <InputContainer label={labelTarget && labelTarget.toUpperCase()} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
-                  markup={model.answerLabel}
+                  markup={model.targetLabel}
                   onChange={this.onAnswerAreaLabelChange}
                 />
               </InputContainer>

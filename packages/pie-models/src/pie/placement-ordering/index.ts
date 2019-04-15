@@ -33,23 +33,6 @@ interface CorrectResponse {
     weight?: number;
 }
 
-interface ConfigurePlacementOrdering {
-    /** Indicates if the area to choice label has to be displayed
-     * @default true
-     */
-    editableChoiceLabel?: boolean;
-
-    /** Indicates if using images within choices should be enabled
-     * @default false
-     */
-    imagesEnabled?: boolean;
-
-    /** Indicates if the tiles should be removed after they are placed
-     * @default true
-     */
-    removeTilesAfterPlacing?: boolean;
-}
-
 /**
 * Model for the @pie-elements/placement-ordering
 * @additionalProperties false
@@ -59,10 +42,10 @@ export interface PlacementOrderingPie extends PieModel {
     itemStem?: string;
 
     /** The label for possible choices */
-    choiceAreaLabel?: string;
+    choiceLabel?: string;
 
     /** The label for answer area if placement area is enabled */
-    answerAreaLabel?: string;
+    targetLabel?: string;
 
     /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
     placementArea?: boolean;
@@ -89,9 +72,6 @@ export interface PlacementOrderingPie extends PieModel {
 
     /** Indicates if partialScoring is enabled */
     partialScoring: boolean;
-
-    /** The configuration for placement ordering pie */
-    configure: ConfigurePlacementOrdering;
 }
 
 /**
@@ -103,74 +83,67 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
      * The label presented above the item stem input
      * @default "Item Stem"
      */
-    itemStemLabel?: string;
+    labelItemStem?: string;
 
     /**
      * The label presented above the choice label input
      * @default "Choice label"
      */
-    choiceLabel?: string;
+    labelChoice?: string;
 
     /**
      * The label presented above the answer label input
      * @default "Answer label"
      */
-    answerLabel?: string;
+    labelAnswer?: string;
 
     /**
      * The label presented in the settings panel for orientation
      * @default "Orientation"
      */
-    orientationLabel?: string;
+    labelOrientation?: string;
 
     /**
      * The label presented in the settings panel for shuffle
      * @default "Shuffle Choices"
      */
-    shuffleLabel?: string;
+    labelShuffle?: string;
 
     /**
      * The label presented in the settings panel for placement area
      * @default "Placement Area"
      */
-    placementAreaLabel?: string;
+    labelPlacementArea?: string;
 
     /**
      * The label presented in the settings panel for numbered guides
      * @default "Numbered Guides"
      */
-    numberedGuidesLabel?: string;
+    labelNumberedGuides?: string;
 
     /**
      * The label presented in the settings panel for enable images
      * @default "Enable Images"
      */
-    enableImagesLabel?: string;
+    labelEnableImages?: string;
 
     /**
      * The label presented for choices
      * @default "Choices"
      */
-    choicesLabel?: string;
+    labelChoices?: string;
 
     /**
      * The label presented in the settings panel for removeTiles
      * @default "Remove tiles after placing"
      */
-    removeTilesLabel?: string;
+    labelRemoveTiles?: string;
 
     /**
      * The label presented in the settings panel for partial scoring
      * @default "Partial Scoring"
      */
-    partialScoringLabel?: string;
-
-    /**
-     * Indicates whether the author can modify the item stem
-     *
-     * @default true
-     */
-    settingsItemStemChange?: boolean;
+    labelPartialScoring?: string;
 
     /**
      * Indicates whether the settings panel will allow an author to modify the choice label
@@ -180,20 +153,11 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
     settingsChoiceLabel?: boolean;
 
     /**
-     * Indicates whether changing choices labels are allowed
-     *
-     * @default true
-     */
-    settingsChoicesLabel?: boolean;
-
-
-    /**
      * Indicates whether the settings panel will allow an author to modify the shuffle choices mode
      *
      * @default true
      */
     settingsShuffle?: boolean;
-
 
     /**
      * Indicates whether the settings panel will allow an author to modify the
@@ -202,14 +166,6 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
      * @default true
      */
     settingsPlacementArea?: boolean;
-
-
-    /**
-     * Indicates whether the changing placement area label will be enabled
-     *
-     * @default true
-     */
-    settingsPlacementAreaLabel?: boolean;
 
     /**
      * Indicates whether the settings panel will allow an author to modify the
@@ -248,11 +204,47 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
      */
     settingsPartialScoring?: boolean;
 
-
     /**
      * Indicates whether feedback is enabled
      *
      * @default true
      */
     settingsFeedback?: boolean;
+
+
+    /**
+     * Indicates whether the author can modify the item stem
+     *
+     * @default true
+     */
+    editableItemStem?: boolean;
+
+    /**
+     * Indicates whether changing choices labels are allowed
+     *
+     * @default true
+     */
+    editableChoicesLabel?: boolean;
+
+    /**
+     * Indicates whether the changing placement area label will be enabled
+     *
+     * @default true
+     */
+    editablePlacementAreaLabel?: boolean;
+
+    /** Indicates if the area to choice label has to be displayed
+     * @default true
+     */
+    editableChoiceLabel?: boolean;
+
+    /** Indicates if using images within choices should be enabled
+     * @default false
+     */
+    imagesEnabled?: boolean;
+
+    /** Indicates if the tiles should be removed after they are placed
+     * @default true
+     */
+    removeTilesAfterPlacing?: boolean;
 }

@@ -156,7 +156,7 @@ describe('Placement Ordering', () => {
       });
 
       it('calls updateModel with updated answer area label', () => {
-        const modelPath = 'answerLabel';
+        const modelPath = 'targetLabel';
         const valuePath = 'value';
         const value = 'Updated Answer Area Label';
 
@@ -215,7 +215,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          answerLabel: newAnswerAreaLabel
+          targetLabel: newAnswerAreaLabel
         });
       });
     });

@@ -110,7 +110,7 @@ export function model(question, session, env) {
     base.config = {
       orientation: question.choicesOrientation || 'vertical',
       includeTargets: question.placementArea,
-      targetLabel: question.answerLabel,
+      targetLabel: question.targetLabel,
       choiceLabel: question.choiceLabel,
       showOrdering: question.numberedGuides,
       allowSameChoiceInTargets: !(
