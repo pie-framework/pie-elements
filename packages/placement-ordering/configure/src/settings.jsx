@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ChoiceType } from './choice-type';
+import { settings } from '@pie-lib/config-ui';
 
 const updateConfigureProp = (model, configProperty) => ({
   ...model,
@@ -20,150 +21,48 @@ const getSideMenuItems = (props) => {
   const { model, updateModel } = props;
   const {
     configure: {
-      settingsChoiceLabel,
-      settingsShuffle,
-      settingsPlacementArea,
-      settingsNumberedGuides,
-      settingsEnableImages,
-      settingsRemoveTileAfterPlacing,
-      settingsOrientation,
-      settingsPartialScoring,
+      choiceLabel,
+      placementArea,
+      numberedGuides,
+      enableImages,
+      orientation,
+      removeTilesAfterPlacing,
+      partialScoring,
+      lockChoiceOrder,
 
-      labelChoice,
-      labelShuffle,
-      labelPlacementArea,
-      labelNumberedGuides,
-      labelEnableImages,
-      labelRemoveTiles,
-      labelOrientation,
-      labelPartialScoring,
+      teacherInstructions,
+      studentInstructions,
+      rationale,
+      scoringType,
     }
   } = model;
 
-  return [
-    settingsChoiceLabel && (
-      <FormControlLabel
-        key={0}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.configure.editableChoiceLabel}
-            onChange={() => updateModel(updateConfigureProp(model, 'editableChoiceLabel'))}
-            value="checkedA"
-          />
-        }
-        label={labelChoice}
-        labelPlacement="start"
-      />
-    ),
+  const { Panel, toggle, radio } = settings;
 
-    settingsShuffle && (
-      <FormControlLabel
-        key={6}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.shuffle}
-            onChange={() => updateModel(updateModelProp(model, 'shuffle'), true)}
-            value="checkedA"
-          />
-        }
-        label={labelShuffle}
-        labelPlacement="start"
-      />
-    ),
-
-    settingsPartialScoring && (
-      <FormControlLabel
-        key={7}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.partialScoring}
-            onChange={() => updateModel(updateModelProp(model, 'partialScoring'), true)}
-            value="checkedA"
-          />
-        }
-        label={labelPartialScoring}
-        labelPlacement="start"
-      />
-    ),
-
-    settingsPlacementArea && (
-      <FormControlLabel
-        key={1}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.placementArea}
-            onChange={() => updateModel(updateModelProp(model, 'placementArea'))}
-            value="checkedA"
-          />
-        }
-        label={labelPlacementArea}
-        labelPlacement="start"
-      />
-    ),
-
-    (settingsNumberedGuides && model.placementArea) && (
-      <FormControlLabel
-        key={2}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.numberedGuides}
-            onChange={() => updateModel(updateModelProp(model, 'numberedGuides'))}
-            value="checkedA"
-          />
-        }
-        label={labelNumberedGuides}
-        labelPlacement="start"
-      />
-    ),
-
-    settingsEnableImages && (
-      <FormControlLabel
-        key={3}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.configure.imagesEnabled}
-            onChange={() => updateModel(updateConfigureProp(model, 'imagesEnabled'))}
-            value="checkedA"
-          />
-        }
-        label={labelEnableImages}
-        labelPlacement="start"
-      />
-    ),
-
-    settingsRemoveTileAfterPlacing && (
-      <FormControlLabel
-        key={4}
-        style={{ justifyContent: 'flex-end', margin: 0, width: '33%' }}
-        control={
-          <Switch
-            checked={model.configure.removeTileAfterPlacing}
-            onChange={() => updateModel(updateConfigureProp(model, 'removeTileAfterPlacing'), true)}
-            value="checkedA"
-          />
-        }
-        label={labelRemoveTiles}
-        labelPlacement="start"
-      />
-    ),
-
-    settingsOrientation && <ChoiceType
-      style={{ width: '100%' }}
-      key={5}
-      header={labelOrientation}
-      value={model.choicesOrientation}
-      onChange={value => updateModel({
-        ...model,
-        choicesOrientation: value
-      })}
-    />,
-  ];
+  return (
+    <Panel
+      model={model}
+      onChange={model => updateModel(model)}
+      groups={{
+        'Item Type': {
+          'configure.choiceLabel.enabled': choiceLabel.settings && toggle(choiceLabel.label),
+          placementArea: placementArea.settings && toggle(placementArea.label),
+          numberedGuides: (numberedGuides.settings && model.placementArea) && toggle(numberedGuides.label),
+          enableImages: enableImages.settings && toggle(enableImages.label),
+          orientation: orientation.settings && radio(orientation.label, 'vertical', 'horizontal'),
+          removeTilesAfterPlacing: removeTilesAfterPlacing.settings && toggle(removeTilesAfterPlacing.label),
+          partialScoring: partialScoring.settings && toggle(partialScoring.label),
+        },
+        'Properties': {
+          'configure.teacherInstructions.enabled': teacherInstructions.settings && toggle(teacherInstructions.label),
+          'configure.studentInstructions.enabled': studentInstructions.settings && toggle(studentInstructions.label),
+          'configure.rationale.enabled': rationale.settings && toggle(rationale.label),
+          lockChoiceOrder: lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+          scoringType: scoringType.settings && radio(scoringType.label, 'auto', 'rubric'),
+        },
+      }}
+    />
+  );
 };
 
 export default getSideMenuItems;

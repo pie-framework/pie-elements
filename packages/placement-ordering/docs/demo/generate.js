@@ -1,7 +1,18 @@
 exports.model = (id, element) => ({
   id,
   element,
+
   itemStem: 'Arrange the fruits alphabetically',
+  choiceLabel: 'Choices',
+  enableImages: false,
+  targetLabel: 'Answers',
+  placementArea: true,
+  numberedGuides: false,
+  orientation: 'vertical',
+  removeTilesAfterPlacing: true,
+  partialScoring: false,
+  lockChoiceOrder: true,
+  scoringType: 'auto',
   choices: [
     {
       id: 'c1',
@@ -10,7 +21,7 @@ exports.model = (id, element) => ({
     {
       id: 'c2',
       label: 'Lemon',
-      shuffle: false,
+      lockChoiceOrder: true,
     },
     {
       id: 'c3',
@@ -21,12 +32,7 @@ exports.model = (id, element) => ({
       label: 'Pear',
     },
   ],
-  shuffle: false,
-  placementArea: true,
-  choicesOrientation: 'horizontal',
-  choiceLabel: 'Choices',
-  targetLabel: 'Answers',
-  showOrdering: true,
+  configure: {},
   feedback: {
     correct: {
       type: 'custom',
@@ -40,18 +46,5 @@ exports.model = (id, element) => ({
       type: 'custom',
       custom: 'nearly'
     }
-  },
-  configure: {
-    /**
-     * These are the configurable options
-     */
-    // editableItemStem: false,
-    // editablePlacementAreaLabel: false,
-    // editableChoicesLabel: true,
-    // editableChoiceLabel: true,
-    // removeTileAfterPlacing: false,
-    // imagesEnabled: true,
-  },
-  partialScoring: false,
-  numberedGuides: false,
+  }
 });

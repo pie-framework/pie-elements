@@ -55,6 +55,13 @@ function normalize(choices, shuffled) {
  * To allow the shuffle to be persisted.
  */
 function shuffle(session, choices) {
+  const { stash } = session;
+  const { shuffledOrder } = stash || {};
+
+  if (shuffledOrder && shuffledOrder.length !== choices.length) {
+    delete session.stash.shuffledOrder;
+  }
+
   const stashedShuffle = normalize(
     choices,
     session.stash && session.stash.shuffledOrder
@@ -66,16 +73,17 @@ function shuffle(session, choices) {
   } else {
     let result = _.cloneDeep(choices);
     for (var i = choices.length - 1; i >= 0; i--) {
-      if (choices[i].shuffle === false) {
+      if (choices[i].lockChoiceOrder === true) {
         result.splice(i, 1);
       }
     }
     let shuffled = _.shuffle(_.cloneDeep(result));
     choices.forEach((choice, index) => {
-      if (choice.shuffle === false) {
+      if (choice.lockChoiceOrder === true) {
         shuffled.splice(index, 0, choice);
       }
     });
+
     session.stash = session.stash || {};
     session.stash.shuffledOrder = shuffled.map(({ id }) => id);
     return shuffled;
@@ -99,23 +107,21 @@ export function model(question, session, env) {
 
     base.completeLength = (question.correctResponse || []).length;
 
-    const choices = question.shuffle
-      ? shuffle(session, question.choices)
-      : question.choices;
+    const choices = question.lockChoiceOrder
+      ? question.choices
+      : shuffle(session, question.choices);
     base.choices = choices;
 
     log('[model] removing tileSize for the moment.');
 
     base.prompt = question.itemStem;
     base.config = {
-      orientation: question.choicesOrientation || 'vertical',
+      orientation: question.orientation || 'vertical',
       includeTargets: question.placementArea,
       targetLabel: question.targetLabel,
       choiceLabel: question.choiceLabel,
       showOrdering: question.numberedGuides,
-      allowSameChoiceInTargets: !(
-        question.configure && question.configure.removeTileAfterPlacing
-      )
+      allowSameChoiceInTargets: !question.removeTilesAfterPlacing
     };
 
     base.configure = question.configure;

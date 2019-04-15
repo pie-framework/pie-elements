@@ -5,14 +5,14 @@ import { TwoChoice } from '@pie-lib/config-ui';
 export const ChoiceType = props => {
   let choiceProps = {
     header: props.header,
-    defaultSelected: 'vertical',
+    defaultSelected: props.value || 'vertical',
     value: props.value,
     onChange: props.onChange,
-    one: {
+    one: props.one || {
       label: 'Vertical',
       value: 'vertical'
     },
-    two: {
+    two: props.two || {
       label: 'Horizontal',
       value: 'horizontal'
     }
@@ -24,5 +24,7 @@ export const ChoiceType = props => {
 ChoiceType.propTypes = {
   header: PropTypes.string,
   value: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  one: PropTypes.object,
+  two: PropTypes.object,
 };

@@ -14,6 +14,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
 import getSideMenuItems from './settings';
+import { layout } from '@pie-lib/config-ui';
 
 const log = debug('@pie-element:placement-ordering:design');
 
@@ -66,27 +67,23 @@ export class Design extends React.Component {
     const { model, classes, imageSupport } = this.props;
     const {
       configure: {
-        labelItemStem,
-        labelChoice,
-        labelChoices,
-        editableItemStem,
-        editableChoicesLabel,
-        settingsFeedback,
-        editablePlacementAreaLabel,
-        labelTarget,
+        choiceLabel,
+        choices,
+        feedback,
+        targetLabel,
+        itemStem
       },
     } = model;
 
     return (
-      <div className={classes.design}>
-        <div className={classes.settings}>
-          {getSideMenuItems(this.props)}
-        </div>
-
+      <layout.ConfigLayout
+        settings={getSideMenuItems(this.props)}
+      >
         {
-          editableItemStem &&
+          itemStem.settings &&
           <FormSection label="Ordering">
-            <InputContainer label={labelItemStem && labelItemStem.toUpperCase()} className={classes.promptHolder}>
+            <InputContainer label={itemStem && itemStem.label && itemStem.label.toUpperCase()}
+                            className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.itemStem}
@@ -100,8 +97,9 @@ export class Design extends React.Component {
         <FormSection label="Define Choices">
           <div className={classes.row}>
             {
-              model.configure.editableChoiceLabel && (
-                <InputContainer label={labelChoice && labelChoice.toUpperCase()} className={classes.promptHolder}>
+              choiceLabel.enabled && (
+                <InputContainer label={choiceLabel && choiceLabel.label && choiceLabel.label.toUpperCase()}
+                                className={classes.promptHolder}>
                   <EditableHtml
                     className={classes.prompt}
                     markup={model.choiceLabel}
@@ -110,8 +108,9 @@ export class Design extends React.Component {
                 </InputContainer>
               )}
 
-            {(editablePlacementAreaLabel && model.placementArea === true) && (
-              <InputContainer label={labelTarget && labelTarget.toUpperCase()} className={classes.promptHolder}>
+            {(targetLabel.settings && model.placementArea) && (
+              <InputContainer label={targetLabel && targetLabel.label && targetLabel.label.toUpperCase()}
+                              className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.targetLabel}
@@ -122,14 +121,15 @@ export class Design extends React.Component {
           </div>
 
           {
-            editableChoicesLabel &&
-            <InputContainer label={labelChoices && labelChoices.toUpperCase()} className={classes.promptHolder}>
+            choices.settings &&
+            <InputContainer label={choices && choices.label && choices.label.toUpperCase()}
+                            className={classes.promptHolder}>
               <ChoiceEditor
                 correctResponse={model.correctResponse}
                 choices={model.choices}
                 onChange={this.onChoiceEditorChange}
                 imageSupport={imageSupport}
-                disableImages={model.configure && !model.configure.imagesEnabled}
+                disableImages={!model.enableImages}
               />
             </InputContainer>
           }
@@ -137,15 +137,14 @@ export class Design extends React.Component {
         </FormSection>
 
         {
-          settingsFeedback &&
+          feedback.settings &&
           <FeedbackConfig
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
             imageSupport={imageSupport}
           />
         }
-
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }
@@ -174,7 +173,9 @@ export default withStyles(theme => ({
     gridGap: '8px'
   },
   design: {
-    paddingTop: '10px'
+    paddingTop: '10px',
+    flexDirection: 'row',
+    display: 'flex'
   },
   langControls: {
     marginTop: '0px',
@@ -190,6 +191,7 @@ export default withStyles(theme => ({
   },
   settings: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    padding: '10px'
   }
 }))(Design);

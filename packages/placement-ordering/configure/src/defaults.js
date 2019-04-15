@@ -1,66 +1,94 @@
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure
+ */
+
 export default {
-  targetLabel: 'Target Label goes here',
   choiceLabel: 'Choice Label goes here',
-  choicesOrientation: 'vertical',
   choices: [
     {
       id: 'c1',
       label: 'Choice 1',
     },
   ],
-  configure: {
-    labelItemStem: 'Item Stem',
-    labelChoice: 'Choice label',
-    labelTarget: 'Target label',
-    labelPlacementArea: 'Placement Area',
-    labelChoices: 'Choices',
-    labelOrientation: 'Orientation',
-    labelShuffle: 'Shuffle Choices',
-    labelNumberedGuides: 'Numbered Guides',
-    labelEnableImages: 'Enable Images',
-    labelRemoveTiles: 'Remove tiles after placing',
-    labelPartialScoring: 'Partial Scoring',
-
-    // if item stem can be changed
-    editableItemStem: true,
-    // if placement area label can be changed
-    editablePlacementAreaLabel: true,
-    // if choices labels can be changed
-    editableChoicesLabel: true,
-    // if choice label can be changed
-    editableChoiceLabel: false,
-    // if tiles should remove after they are placed
-    removeTileAfterPlacing: true,
-    // if images are enabled
-    imagesEnabled: false,
-
-    // if choice label switch is displayed in settings panel
-    settingsChoiceLabel: true,
-    // if placement area switch is displayed in settings panel
-    settingsPlacementArea: true,
-    // if changing orientation will be displayed in settings panel
-    settingsOrientation: true,
-    // is shuffle choices switch will be displayed in settings panel
-    settingsShuffle: true,
-    // if numbered guides switch will be displayed in settings panel
-    settingsNumberedGuides: true,
-    // if enable images switch will be displayed in settings panel
-    settingsEnableImages: true,
-    // if remove tiles after placing switch will be displayed in settings panel
-    settingsRemoveTileAfterPlacing: false,
-    // if partial scoring switch will be displayed in settings panel
-    settingsPartialScoring: true,
-    // if feedback settings can be changed
-    settingsFeedback: true,
-  },
-  correctResponse: [
-    {
-      id: 'c1',
-    },
-  ],
+  enableImages: true,
   itemStem: 'Item Stem goes here',
+  lockChoiceOrder: true,
+  numberedGuides: true,
+  orientation: 'vertical',
+  partialScoring: true,
   placementArea: true,
-  showOrdering: true,
-  shuffle: false,
-  partialScoring: false
+  removeTilesAfterPlacing: true,
+  scoringType: 'auto',
+  targetLabel: 'Target Label goes here',
+
+  configure: {
+    choiceLabel: {
+      settings: true,
+      label: 'Choice label',
+      enabled: true,
+    },
+    choices: {
+      settings: true,
+      label: 'Choices',
+    },
+    enableImages: {
+      settings: true,
+      label: 'Enable Images',
+    },
+    feedback: {
+      settings: true,
+    },
+    itemStem: {
+      settings: true,
+      label: 'Item Stem'
+    },
+    lockChoiceOrder: {
+      settings: true,
+      label: 'Lock Choice Order'
+    },
+    numberedGuides: {
+      settings: true,
+      label: 'Numbered guides',
+    },
+    orientation: {
+      settings: true,
+      label: 'Orientation',
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Partial Scoring'
+    },
+    placementArea: {
+      settings: true,
+      label: 'Placement Area',
+    },
+    rationale: {
+      settings: false,
+      label: 'Rationale',
+      enabled: true,
+    },
+    removeTilesAfterPlacing: {
+      settings: false,
+      label: 'Remove Tiles after placing'
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type',
+    },
+    studentInstructions: {
+      settings: false,
+      label: 'Student Instructions',
+      enabled: true,
+    },
+    targetLabel: {
+      settings: true,
+      label: 'Target label',
+    },
+    teacherInstructions: {
+      settings: false,
+      label: 'Teacher Instructions',
+      enabled: true,
+    },
+  },
 };

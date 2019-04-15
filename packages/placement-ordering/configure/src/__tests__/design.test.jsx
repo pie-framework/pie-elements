@@ -65,8 +65,8 @@ describe('Placement Ordering', () => {
     });
 
     it ('renders custom items', () => {
-      model.configure.editableItemStem = false;
-      model.configure.settingsRemoveTileAfterPlacing = true;
+      model.configure.itemStem.settings = false;
+      model.configure.removeTilesAfterPlacing.settings = true;
 
       const wrapper = shallow(
         <Design
@@ -284,7 +284,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          choicesOrientation: 'horizontal'
+          orientation: 'horizontal'
         });
       });
     });

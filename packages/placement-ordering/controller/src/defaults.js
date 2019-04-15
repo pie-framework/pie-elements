@@ -3,7 +3,6 @@ export default {
     {
       id: 'c2',
       label: 'Lemon',
-      shuffle: false,
       moveOnDrag: true
     },
     {
