@@ -14,8 +14,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import defaultValues from '../defaults';
 
 jest.mock('@material-ui/core', () => ({
-  Input: props => (<div/>),
-  Button: props => (<div/>),
+  Input: props => <div/>,
+  Button: props => <div/>,
 }));
 
 jest.mock('@pie-lib/config-ui', () => ({

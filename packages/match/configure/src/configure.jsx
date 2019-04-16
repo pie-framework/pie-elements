@@ -225,7 +225,8 @@ const ConfigureMain = withStyles(styles)(Configure);
 class StateWrapper extends React.Component {
   static propTypes = {
     model: PropTypes.any,
-    onModelChanged: PropTypes.func
+    onModelChanged: PropTypes.func,
+    imageSupport: PropTypes.object
   };
 
   constructor(props) {
