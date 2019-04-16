@@ -1,21 +1,5 @@
 import React from 'react';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { ChoiceType } from './choice-type';
 import { settings } from '@pie-lib/config-ui';
-
-const updateConfigureProp = (model, configProperty) => ({
-  ...model,
-  configure: {
-    ...model.configure,
-    [configProperty]: !model.configure[configProperty]
-  }
-});
-
-const updateModelProp = (model, property) => ({
-  ...model,
-  [property]: !model[property]
-});
 
 const getSideMenuItems = (props) => {
   const { model, updateModel } = props;

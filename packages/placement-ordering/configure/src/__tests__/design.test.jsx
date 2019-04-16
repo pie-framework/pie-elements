@@ -3,24 +3,28 @@ import React from 'react';
 import _ from 'lodash';
 
 import {
-  TwoChoice,
   FeedbackConfig,
   FormSection,
-  InputCheckbox,
   InputContainer,
+  layout,
+  settings,
 } from '@pie-lib/config-ui';
 import { get, set } from 'nested-property';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Design } from '../design';
 import defaultValues from '../defaults';
-import { ChoiceType } from '../choice-type';
 
 jest.mock('@pie-lib/config-ui', () => ({
-  TwoChoice: props => (<div/>),
   FeedbackConfig: props => (<div/>),
   FormSection: props => (<div/>),
-  InputCheckbox: props => (<div/>),
   InputContainer: props => (<div/>),
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
+  },
+  settings: {
+    Panel: props => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
 }));
 
 jest.mock('nested-property', () => ({
@@ -268,24 +272,10 @@ describe('Placement Ordering', () => {
     });
 
     describe('onSettingsChange', () => {
-      it('calls update model when settings switches are toggled', () => {
-        const formControls = w.find(FormControlLabel);
+      it('calls update model when settings call onChange function', () => {
+        w.find('ConfigLayout').props().settings.props.onChange();
 
-        formControls.forEach(fC => {
-          fC.props().control.props.onChange(fC.props());
-
-          expect(updateModel).toBeCalled();
-        });
-      });
-
-      it('calls update model when orientation setting is changed', () => {
-        const choiceType = w.find(ChoiceType);
-        choiceType.props().onChange('horizontal');
-
-        expect(updateModel).toBeCalledWith({
-          ...model,
-          orientation: 'horizontal'
-        });
+        expect(updateModel).toBeCalled();
       });
     });
   })
