@@ -2,21 +2,22 @@ import {
   FeedbackConfig,
   FormSection,
   InputContainer,
+  settings,
+  layout
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import { withStyles } from '@material-ui/core/styles';
 
+import debug from 'debug';
+import cloneDeep from 'lodash/cloneDeep';
 import { get, set } from 'nested-property';
-
-import ChoiceEditor from './choice-editor';
 import PropTypes from 'prop-types';
 import React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
-import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
-import getSideMenuItems from './settings';
-import { layout } from '@pie-lib/config-ui';
+
+import ChoiceEditor from './choice-editor';
 
 const log = debug('@pie-element:placement-ordering:design');
+const { Panel, toggle, radio } = settings;
 
 export class Design extends React.Component {
   constructor(props) {
@@ -64,20 +65,68 @@ export class Design extends React.Component {
   }
 
   render() {
-    const { model, classes, imageSupport } = this.props;
+    const { model, classes, imageSupport, updateModel } = this.props;
     const {
       configure: {
         choiceLabel,
         choices,
         feedback,
         targetLabel,
-        itemStem
+        itemStem,
+
+        placementArea,
+        numberedGuides,
+        enableImages,
+        orientation,
+        removeTilesAfterPlacing,
+        partialScoring,
+        lockChoiceOrder,
+
+        teacherInstructions,
+        studentInstructions,
+        rationale,
+        scoringType,
       },
     } = model;
 
     return (
       <layout.ConfigLayout
-        settings={getSideMenuItems(this.props)}
+        settings={
+          <Panel
+            model={model}
+            onChange={model => updateModel(model)}
+            groups={{
+              'Item Type': {
+                'configure.choiceLabel.enabled': choiceLabel.settings &&
+                  toggle(choiceLabel.label),
+                placementArea: placementArea.settings &&
+                  toggle(placementArea.label),
+                numberedGuides: (numberedGuides.settings &&
+                  model.placementArea) && toggle(numberedGuides.label),
+                enableImages: enableImages.settings &&
+                  toggle(enableImages.label),
+                orientation: orientation.settings &&
+                  radio(orientation.label, 'vertical', 'horizontal'),
+                removeTilesAfterPlacing: removeTilesAfterPlacing.settings &&
+                  toggle(removeTilesAfterPlacing.label),
+                partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                  toggle(rationale.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label),
+                scoringType: scoringType.settings &&
+                  radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
+        }
       >
         {
           itemStem.settings &&
@@ -172,26 +221,4 @@ export default withStyles(theme => ({
     gridAutoColumns: '1fr',
     gridGap: '8px'
   },
-  design: {
-    paddingTop: '10px',
-    flexDirection: 'row',
-    display: 'flex'
-  },
-  langControls: {
-    marginTop: '0px',
-    marginBottom: '0px'
-  },
-  choices: {
-    marginTop: '20px',
-    marginBottom: '20px'
-  },
-  orientation: {
-    marginTop: '0px',
-    marginBottom: '0px'
-  },
-  settings: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    padding: '10px'
-  }
 }))(Design);
