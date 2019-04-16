@@ -25,10 +25,7 @@ describe('index', () => {
           if (_.isFunction(partialExpected)) {
             return partialExpected(result);
           } else {
-            expect(result).toMatchObject({
-              ...result,
-              ...partialExpected,
-            });
+            expect(result).toMatchObject(partialExpected);
           }
         }
       };
