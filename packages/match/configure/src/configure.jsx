@@ -195,7 +195,7 @@ class Configure extends React.Component {
           <div className={classes.tab}>
             <PartialScoringConfig
               partialScoring={model.partialScoring}
-              label={model.labelPartialScoring}
+              label={model.partialScoringLabel}
               onChange={this.onPartialScoringChange}
               />
           </div>

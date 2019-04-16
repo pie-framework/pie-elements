@@ -1,4 +1,5 @@
 export default {
+  choiceLabel: 'choices:',
   choices: [
     {
       id: 'c2',
@@ -22,12 +23,9 @@ export default {
     }
   ],
   completeLength: 4,
-  config: {
-    orientation: 'vertical',
-    targetLabel: 'Answer Area Label',
-    labelChoice: 'choices: ',
-    showOrdering: true
-  },
-  numberedGuides: true,
+  config: {},
   itemStem: 'Arrange the fruits alphabetically',
+  numberedGuides: true,
+  orientation: 'vertical',
+  targetLabel: 'Answer Area Label',
 };
