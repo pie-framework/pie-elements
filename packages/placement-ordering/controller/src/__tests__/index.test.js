@@ -25,7 +25,10 @@ describe('index', () => {
           if (_.isFunction(partialExpected)) {
             return partialExpected(result);
           } else {
-            expect(result).toMatchObject(partialExpected);
+            expect(result).toMatchObject({
+              ...result,
+              ...partialExpected,
+            });
           }
         }
       };
@@ -82,7 +85,7 @@ describe('index', () => {
           {},
           {},
           {
-            choices: [{ id: 'a', label: 'a' }, { id: 'b', label: 'b' }]
+            choices: [{ id: 'b', label: 'b' }, { id: 'a', label: 'a' }]
           }
         )
       );
