@@ -1,18 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig } from '@pie-lib/config-ui';
-import PartialScoringConfig from '@pie-lib/scoring-config';
-import SwipeableViews from 'react-swipeable-views';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import {
+  FeedbackConfig,
+  settings,
+  layout
+} from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
-import { withDragContext } from '@pie-lib/drag';
 
 const log = debug('@pie-element:match:configure');
+const { Panel, toggle, radio } = settings;
 
 const styles = theme => ({
   title: {
@@ -145,67 +145,82 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport } = this.props;
+    const { classes, model, imageSupport, onModelChanged } = this.props;
+    const {
+      configure: {
+        enableImages,
+        partialScoring,
+        teacherInstructions,
+        studentInstructions,
+        rationale,
+        lockChoiceOrder,
+        scoringType
+      }
+    } = model;
 
     log('[render] model', model);
 
+
     return (
-      <div>
-        <Tabs
-          value={this.state.activeTab}
-          onChange={this.onTabChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-        >
-          <Tab label="Design" />
-          <Tab disabled={!model.allowPartialScoring} label="Scoring" />
-        </Tabs>
-        <SwipeableViews
-          axis="x"
-          index={this.state.activeTab}
-          onChangeIndex={this.onChangeTabIndex}
-        >
-          <div className={classes.tab}>
-            <div className={classes.content}>
-              <Typography component="div" type="body1">
-                <span>
-                  In Choice Matrix, students associate choices in the first column with options in the adjacent rows.
-                  This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
-                </span>
-              </Typography>
-              <GeneralConfigBlock
-                model={model}
-                onResponseTypeChange={this.onResponseTypeChange}
-                onLayoutChange={this.onLayoutChange}
-              />
-              <AnswerConfigBlock
-                model={model}
-                imageSupport={imageSupport}
-                onChange={this.onChange}
-                onAddRow={this.onAddRow}
-                onDeleteRow={this.onDeleteRow}
-              />
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.onFeedbackChange}
-              />
-            </div>
-          </div>
-          <div className={classes.tab}>
-            <PartialScoringConfig
-              partialScoring={model.partialScoring}
-              label={model.partialScoringLabel}
-              onChange={this.onPartialScoringChange}
-              />
-          </div>
-        </SwipeableViews>
-      </div>
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={model => onModelChanged(model)}
+            groups={{
+              'Item Type': {
+                enableImages: enableImages.settings &&
+                toggle(enableImages.label),
+                partialScoring: partialScoring.settings &&
+                toggle(partialScoring.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                toggle(rationale.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                toggle(lockChoiceOrder.label),
+                scoringType: scoringType.settings &&
+                radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
+        }
+      >
+        <div className={classes.content}>
+          <Typography component="div" type="body1">
+            <span>
+              In Choice Matrix, students associate choices in the first column with options in the adjacent rows.
+              This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
+            </span>
+          </Typography>
+          <GeneralConfigBlock
+            model={model}
+            onResponseTypeChange={this.onResponseTypeChange}
+            onLayoutChange={this.onLayoutChange}
+          />
+          <AnswerConfigBlock
+            model={model}
+            imageSupport={imageSupport}
+            onChange={this.onChange}
+            onAddRow={this.onAddRow}
+            onDeleteRow={this.onDeleteRow}
+          />
+          <FeedbackConfig
+            feedback={model.feedback}
+            onChange={this.onFeedbackChange}
+          />
+        </div>
+
+      </layout.ConfigLayout>
     );
   }
 }
 
-const ConfigureMain = withDragContext(withStyles(styles)(Configure));
+const ConfigureMain = withStyles(styles)(Configure);
 
 class StateWrapper extends React.Component {
   static propTypes = {
@@ -230,6 +245,7 @@ class StateWrapper extends React.Component {
   render() {
     const { imageSupport } = this.props;
     const { model } = this.state;
+
     return <ConfigureMain imageSupport={imageSupport} model={model} onModelChanged={this.onModelChanged} />;
   }
 }

@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 /**
  * One row in the match list.
@@ -15,43 +16,111 @@ export interface MatchRow {
   values: boolean[];
 }
 
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure (to be moved when the functionality is defined)
+ */
+
 /**
 * Model for the @pie-elements/match Interaction
 * @additionalProperties false
 */
 export interface MatchPie extends PieModel {
+  /** Indicates if questions can contain images */
+  enableImages?: boolean;
 
-  /** The rows of choices to be presented.  */
-  rows: MatchRow[];
-  
-  /** Indicates if the order of the rows should be randomly sorted on render */
-  shuffled?: boolean;
-
-  /** The number of columns to be presented */
-  layout: number;
+  /** Feedback for student responses */
+  feedback?: ComplexFeedbackType
 
   /** Array of strings for column headers */
   headers: string[];
 
+  /** The number of columns to be presented */
+  layout: number;
 
-  /** Indicates if the conrol for responses should be single (radio) or multiple (checkbox) */
-  responseType: 'radio' | 'checkbox';
+  /** Indicates if the order of the rows should be randomly sorted on render */
+  lockChoiceOrder: number;
 
   /** Indicates if partial scoring should be used */
   partialScoring?: boolean;
 
-  /** Partial scoring label to be displayed */
-  partialScoringLabel?: string;
+  /** Indicates if the control for responses should be single (radio) or multiple (checkbox) */
+  responseType: 'radio' | 'checkbox';
 
-  /** Indicates that the item can use partial scoring */
-  allowPartialScoring?: boolean;
+  /** The rows of choices to be presented.  */
+  rows: MatchRow[];
 
-  /** Feedback for student responses */
-  feedback?: ComplexFeedbackType
+  /** Indicates if rationale is enabled */
+  rationale: boolean;
+
+  /** Indicates scoring type */
+  scoringType: 'auto' | 'rubric';
+
+  /** Indicates if student instructions are enabled */
+  studentInstructions: boolean;
+
+  /** Indicates if teacher instructions are enabled */
+  teacherInstructions: boolean;
 }
 
 /**
  * Config Object for @pie-elements/match
  * @additionalProperties false
  */
-export interface MatchConfigure extends PromptConfig, CommonConfigSettings {}
+export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
+  /**
+   * Configuration for enable images
+   */
+  enableImages: ConfigureProp;
+
+  /**
+   * Configuration for feedback
+   */
+  feedback: ConfigureProp;
+
+  /**
+   * Configuration for headers
+   */
+  headers: ConfigureProp;
+
+  /**
+   * Configuration for layout
+   */
+  layout: ConfigureProp;
+
+  /**
+   * Configuration for lock choice order
+   */
+  lockChoiceOrder: ConfigureProp;
+
+  /**
+   * Configuration for partial scoring
+   */
+  partialScoring: ConfigureProp;
+
+  /**
+   * Configuration for response type
+   */
+  responseType: ConfigureProp;
+
+
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
+
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
+
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
+}
