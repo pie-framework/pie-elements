@@ -96,7 +96,7 @@
       "type": "boolean",
       "title": "partialScoring"
     },
-    "labelPartialScoring": {
+    "partialScoringLabel": {
       "description": "The label for partial scoring",
       "type": "string",
       "title": "partialScoringLabel"
