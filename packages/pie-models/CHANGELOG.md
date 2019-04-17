@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.0.1...@pie-element/pie-models@1.1.0) (2019-04-17)
+
+
+### Bug Fixes
+
+* **placement-ordering:** Finished renaming model properties using naming conventions. ([d3d790a](https://github.com/pie-framework/pie-elements/commit/d3d790a))
+* **placement-ordering:** Finished renaming model properties using new established naming conventions and integrated settings panel. ([74578c6](https://github.com/pie-framework/pie-elements/commit/74578c6))
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+### Features
+
+* **match:** Renamed model and configure properties using naming conventions and integrated settings panel. ([34ff2b1](https://github.com/pie-framework/pie-elements/commit/34ff2b1))
+
+
+
+
+
 ## [1.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.0.0...@pie-element/pie-models@1.0.1) (2019-04-10)
 
 **Note:** Version bump only for package @pie-element/pie-models

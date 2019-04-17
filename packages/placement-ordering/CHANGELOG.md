@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@4.2.0...@pie-element/placement-ordering@4.2.1) (2019-04-17)
+
+
+### Bug Fixes
+
+* **placement-ordering:** Updated defaults values. ([fed695c](https://github.com/pie-framework/pie-elements/commit/fed695c))
+* Fixed test. ([5b2d7d4](https://github.com/pie-framework/pie-elements/commit/5b2d7d4))
+* Removed unnecessary file and refactored. ([d75bf38](https://github.com/pie-framework/pie-elements/commit/d75bf38))
+* Updated controller test. ([e9246e0](https://github.com/pie-framework/pie-elements/commit/e9246e0))
+* **placement-ordering:** Finished renaming model properties using naming conventions. ([d3d790a](https://github.com/pie-framework/pie-elements/commit/d3d790a))
+* **placement-ordering:** Finished renaming model properties using new established naming conventions and integrated settings panel. ([74578c6](https://github.com/pie-framework/pie-elements/commit/74578c6))
+* **placement-ordering:** Fixed tests after renaming model properties using naming conventions and using settings panel. ([de6735f](https://github.com/pie-framework/pie-elements/commit/de6735f))
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@4.1.1...@pie-element/placement-ordering@4.2.0) (2019-04-12)
 
 

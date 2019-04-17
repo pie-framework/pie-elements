@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.1...@pie-element/ebsr@1.2.2) (2019-04-17)
+
+
+### Bug Fixes
+
+* **package:** updated the version for the pie-ui/ebsr package ([de85db7](https://github.com/pie-framework/pie-elements/commit/de85db7))
+
+
+
+
+
 ## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.0...@pie-element/ebsr@1.2.1) (2019-04-12)
 
 **Note:** Version bump only for package @pie-element/ebsr

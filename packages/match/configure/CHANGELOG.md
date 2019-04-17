@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.7.3...@pie-element/match-configure@1.8.0) (2019-04-17)
+
+
+### Bug Fixes
+
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+### Features
+
+* **match:** Renamed model and configure properties using naming conventions and integrated settings panel. ([34ff2b1](https://github.com/pie-framework/pie-elements/commit/34ff2b1))
+
+
+
+
+
 ## [1.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@1.7.2...@pie-element/match-configure@1.7.3) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/match-configure

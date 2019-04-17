@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@1.2.4...@pie-element/match-controller@1.3.0) (2019-04-17)
+
+
+### Features
+
+* **match:** Renamed model and configure properties using naming conventions and integrated settings panel. ([34ff2b1](https://github.com/pie-framework/pie-elements/commit/34ff2b1))
+
+
+
+
+
 ## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@1.2.3...@pie-element/match-controller@1.2.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/match-controller
