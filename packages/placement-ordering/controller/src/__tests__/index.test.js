@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import * as controller from '../index';
 
-
 describe('index', () => {
   let base = o => {
     o = _.merge(
       {
         itemStem: 'hi',
         choices: [],
-        correctResponse: []
+        correctResponse: [],
+        lockChoiceOrder: true
       },
       o
     );
@@ -26,11 +26,7 @@ describe('index', () => {
           if (_.isFunction(partialExpected)) {
             return partialExpected(result);
           } else {
-            expect(
-              expect.objectContaining(result)
-            ).toMatchObject(
-              expect.objectContaining(partialExpected)
-            );
+            expect(result).toMatchObject(partialExpected);
           }
         }
       };
@@ -87,7 +83,7 @@ describe('index', () => {
           {},
           {},
           {
-            choices: [{ id: 'b', label: 'b' }, { id: 'a', label: 'a' }]
+            choices: [{ id: 'a', label: 'a' }, { id: 'b', label: 'b' }]
           }
         )
       );
