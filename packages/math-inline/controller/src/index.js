@@ -13,7 +13,7 @@ function trimSpaces(str = '') {
 
 const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
   const correctResponses = model.responses;
-  const isAdvanced = model.mode === 'advanced';
+  const isAdvanced = model.mode === 'Advanced Multi';
 
   if (!answerItem || (isAdvanced && answerItem.length === 0)) {
     return {
@@ -56,7 +56,7 @@ const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
   return correctnessObject;
 };
 
-function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced, model) {
+function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
   let correct = 0;
   const answerInfo = {};
 
@@ -137,7 +137,7 @@ const getCorrectness = (question, env, session, partialScoringEnabled) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.mode === 'advanced' ? session.answers : session.response,
+      question.mode === 'Advanced Multi' ? session.answers : session.response,
       partialScoringEnabled
     );
   }

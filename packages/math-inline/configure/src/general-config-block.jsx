@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import {InputCheckbox, InputContainer} from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -101,15 +101,6 @@ class GeneralConfigBlock extends React.Component {
       showKeypad: false
     };
   }
-
-  onPartialScoringChange = evt => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    newModel.partialScoring = evt.target.checked;
-
-    onChange(newModel);
-  };
 
   onChange = name => evtOrValue => {
     const { model, onChange } = this.props;
@@ -247,12 +238,12 @@ class GeneralConfigBlock extends React.Component {
     const { classes, model, imageSupport } = this.props;
     const { showKeypad } = this.state;
     const {
-      mode,
       question,
       expression,
       equationEditor,
       responses,
-      response
+      response,
+      responseType
     } = model;
 
     const classNames = {
@@ -265,22 +256,6 @@ class GeneralConfigBlock extends React.Component {
         ref={r => (this.root = r || this.root)}
         className={classes.container}
       >
-        <InputContainer label="Item Type" className={classes.selectContainer}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('mode')}
-            value={mode}
-          >
-            <MenuItem value="simple">Simple</MenuItem>
-            <MenuItem value="advanced">Advanced Multi</MenuItem>
-          </Select>
-        </InputContainer>
-        <div className={classes.optionsCheckbox}>
-          <InputCheckbox
-              label="Allow Partial Scoring"
-              checked={model.partialScoring}
-              onChange={this.onPartialScoringChange}/>
-        </div>
         <InputContainer label="Item Stem" className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
@@ -290,7 +265,7 @@ class GeneralConfigBlock extends React.Component {
             nonEmpty={false}
           />
         </InputContainer>
-        {mode === 'advanced' && (
+        {responseType === 'Advanced Multi' && (
           <div className={classes.inputContainer}>
             <InputLabel className={classes.templateTitle}>
               RESPONSE TEMPLATE
@@ -329,7 +304,7 @@ class GeneralConfigBlock extends React.Component {
             <MenuItem value={'everything'}>Everything</MenuItem>
           </Select>
         </InputContainer>
-        {mode === 'simple' && (
+        {responseType === 'Simple' && (
           <Response
             mode={equationEditor}
             defaultResponse
@@ -337,7 +312,7 @@ class GeneralConfigBlock extends React.Component {
             onResponseChange={this.onSimpleResponseChange}
           />
         )}
-        {mode === 'advanced' &&
+        {responseType === 'Advanced Multi' &&
           responses.map((response, idx) => (
             <Response
               key={response.id}

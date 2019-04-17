@@ -1,5 +1,5 @@
 export default {
-  mode: 'advanced',
+  mode: 'Advanced Multi',
   expression: 'y = ',
   question: 'What is the equation for a slope?',
   equationEditor: 'everything',

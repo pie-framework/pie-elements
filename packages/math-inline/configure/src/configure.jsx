@@ -1,12 +1,17 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { FeedbackConfig } from '@pie-lib/config-ui';
+import {
+  FeedbackConfig,
+  settings,
+  layout
+} from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
 
 const log = debug('@pie-element:math-inline:configure');
+const { Panel, toggle, radio } = settings;
 
 const styles = theme => ({
   title: {
@@ -39,30 +44,67 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport } = this.props;
-
+    const { classes, model, imageSupport, onModelChanged } = this.props;
+    const {
+      configure: {
+        responseType,
+        partialScoring,
+        teacherInstructions,
+        studentInstructions,
+        rationale,
+        scoringType
+      }
+    } = model;
     log('[render] model', model);
 
+
     return (
-      <div>
-        <div className={classes.content}>
-          <Typography component="div" type="body1">
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={model => onModelChanged(model)}
+            groups={{
+              'Item Type': {
+                responseType: responseType.settings &&
+                radio(responseType.label, 'Simple', 'Advanced Multi'),
+                partialScoring: partialScoring.settings &&
+                toggle(partialScoring.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                toggle(rationale.label),
+                scoringType: scoringType.settings &&
+                radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
+        }
+      >
+        <div>
+          <div className={classes.content}>
+            <Typography component="div" type="body1">
             <span>
               In Inline Math, students need to fill in the blank for an equation or a mathematical expression.
               This interaction allows for exactly one correct answer.
             </span>
-          </Typography>
-          <GeneralConfigBlock
-            imageSupport={imageSupport}
-            model={model}
-            onChange={this.onChange}
-          />
-          <FeedbackConfig
-            feedback={model.feedback}
-            onChange={this.onFeedbackChange}
-          />
+            </Typography>
+            <GeneralConfigBlock
+              imageSupport={imageSupport}
+              model={model}
+              onChange={this.onChange}
+            />
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.onFeedbackChange}
+            />
+          </div>
         </div>
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }
