@@ -11,13 +11,13 @@ export default {
       label: 'Choice 1',
     },
   ],
-  enableImages: true,
+  enableImages: false,
   itemStem: 'Item Stem goes here',
-  lockChoiceOrder: true,
-  numberedGuides: true,
+  lockChoiceOrder: false,
+  numberedGuides: false,
   orientation: 'vertical',
   partialScoring: true,
-  placementArea: true,
+  placementArea: false,
   removeTilesAfterPlacing: true,
   scoringType: 'auto',
   targetLabel: 'Target Label goes here',
@@ -26,7 +26,7 @@ export default {
     choiceLabel: {
       settings: true,
       label: 'Choice label',
-      enabled: true,
+      enabled: false,
     },
     choices: {
       settings: true,
@@ -88,7 +88,7 @@ export default {
     teacherInstructions: {
       settings: false,
       label: 'Teacher Instructions',
-      enabled: true,
+      enabled: false,
     },
   },
 };
