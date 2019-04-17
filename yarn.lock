@@ -1945,13 +1945,13 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/ebsr@^1.1.1":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.5.tgz#5ae5ad16b260e7ac0a17c17c3f8d285246369d1d"
-  integrity sha512-4unZFKikJUZKxB1ZrXXq5N4UnMA7oJJtYArTZ+YRJqnPbXx/hTxjQ1wCwyY0gUasRF7Z236SduKPBjxyhp4How==
+"@pie-ui/ebsr@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.8.tgz#17a6df926bd266f629549ff4534bdd0f426a3b80"
+  integrity sha512-l3yhKSv8GlqD0LDIC58ZNZnryQKHOoOTMpXaUvfc3fmTXhu0U8dFOlTEz8QeYBpUVE+pPQk0lgxYUNagITW3WA==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-ui/multiple-choice" "^4.7.8"
+    "@pie-ui/multiple-choice" "^4.7.10"
     classnames "^2.2.5"
     debug "^4.1.1"
 
@@ -2048,10 +2048,30 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.7.0", "@pie-ui/multiple-choice@^4.7.8":
+"@pie-ui/multiple-choice@^4.7.0":
   version "4.7.8"
   resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.8.tgz#4789a8b0a641a61722b79df20ab7ee85450b6e07"
   integrity sha512-ihuAU7kt3Ht69BXfw5mGRWlcyXq7vtIBVQ7uPMuVKHTcgk0n8mS1kTC9QAviit9PnQymncvmaqsBk88YHJY1YQ==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^7.11.9"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/math-rendering" "^1.2.1"
+    "@pie-lib/render-ui" "^4.3.1"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
+"@pie-ui/multiple-choice@^4.7.10":
+  version "4.7.10"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.10.tgz#cb3b923bf09ee9d7b15820352bebc8051fc953ec"
+  integrity sha512-QEsJhxnFO1J8vEU1U6Xcf9BU7sxxD5/j3BKHcJO9xICDvSjjAqM7wAJG9Qj2IyKHE3LnOUnMFVduvGIMizPLkg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/config-ui" "^7.11.9"
