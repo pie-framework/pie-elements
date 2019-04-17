@@ -86,7 +86,7 @@ const getOutComeScore = (question, env, answers) => {
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {

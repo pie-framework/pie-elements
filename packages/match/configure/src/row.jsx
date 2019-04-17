@@ -30,7 +30,8 @@ export class Row extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    enableImages: PropTypes.bool
   };
 
   static defaultProps = {};
