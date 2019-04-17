@@ -9,7 +9,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "Item Type": Object {
             "configure.choiceLabel.enabled": undefined,
             "enableImages": undefined,
-            "numberedGuides": undefined,
+            "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": undefined,
             "placementArea": undefined,
@@ -35,7 +35,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           ],
           "configure": Object {
             "choiceLabel": Object {
-              "enabled": true,
+              "enabled": false,
               "label": "Choice label",
               "settings": true,
             },
@@ -97,18 +97,18 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
               "settings": true,
             },
             "teacherInstructions": Object {
-              "enabled": true,
+              "enabled": false,
               "label": "Teacher Instructions",
               "settings": false,
             },
           },
-          "enableImages": true,
+          "enableImages": false,
           "itemStem": "Item Stem goes here",
-          "lockChoiceOrder": true,
-          "numberedGuides": true,
+          "lockChoiceOrder": false,
+          "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
-          "placementArea": true,
+          "placementArea": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "targetLabel": "Target Label goes here",
@@ -133,24 +133,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <FormSection
     label="Define Choices"
   >
-    <div>
-      <InputContainer
-        label="CHOICE LABEL"
-      >
-        <EditableHtml
-          markup="Choice Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-      <InputContainer
-        label="TARGET LABEL"
-      >
-        <EditableHtml
-          markup="Target Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-    </div>
+    <div />
     <InputContainer
       label="CHOICES"
     >
@@ -163,7 +146,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             },
           ]
         }
-        disableImages={false}
+        disableImages={true}
         onChange={[Function]}
       />
     </InputContainer>
@@ -183,7 +166,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "Item Type": Object {
             "configure.choiceLabel.enabled": undefined,
             "enableImages": undefined,
-            "numberedGuides": undefined,
+            "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": undefined,
             "placementArea": undefined,
@@ -209,7 +192,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           ],
           "configure": Object {
             "choiceLabel": Object {
-              "enabled": true,
+              "enabled": false,
               "label": "Choice label",
               "settings": true,
             },
@@ -271,18 +254,18 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
               "settings": true,
             },
             "teacherInstructions": Object {
-              "enabled": true,
+              "enabled": false,
               "label": "Teacher Instructions",
               "settings": false,
             },
           },
-          "enableImages": true,
+          "enableImages": false,
           "itemStem": "Item Stem goes here",
-          "lockChoiceOrder": true,
-          "numberedGuides": true,
+          "lockChoiceOrder": false,
+          "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
-          "placementArea": true,
+          "placementArea": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "targetLabel": "Target Label goes here",
@@ -295,24 +278,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   <FormSection
     label="Define Choices"
   >
-    <div>
-      <InputContainer
-        label="CHOICE LABEL"
-      >
-        <EditableHtml
-          markup="Choice Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-      <InputContainer
-        label="TARGET LABEL"
-      >
-        <EditableHtml
-          markup="Target Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-    </div>
+    <div />
     <InputContainer
       label="CHOICES"
     >
@@ -325,7 +291,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             },
           ]
         }
-        disableImages={false}
+        disableImages={true}
         onChange={[Function]}
       />
     </InputContainer>

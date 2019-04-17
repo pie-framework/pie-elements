@@ -53,7 +53,7 @@ export interface PlacementOrderingPie extends PieModel {
     correctResponse: CorrectResponse[];
 
     /** Indicates if the choices editor can use images */
-    enableImages: ConfigureItem;
+    enableImages: ConfigureProp;
 
     /** Feedback for student answer */
     feedback: ComplexFeedbackType;
@@ -96,7 +96,7 @@ export interface PlacementOrderingPie extends PieModel {
 }
 
 
-export interface ConfigureItem {
+export interface ConfigureProp {
     /**
      * Indicates if the item has to be displayed
      */
@@ -122,80 +122,80 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
     /**
      * Choice Label configuration
      */
-    choiceLabel?: ConfigureItem;
+    choiceLabel?: ConfigureProp;
 
     /**
      * Choices configuration
      */
-    choices?: ConfigureItem;
+    choices?: ConfigureProp;
 
     /**
      * Numbered Guides configuration
      */
-    enableImages?: ConfigureItem;
+    enableImages?: ConfigureProp;
 
     /**
      * Indicates whether feedback is enabled
      */
-    feedback?: ConfigureItem;
+    feedback?: ConfigureProp;
 
     /**
      * Item Stem configuration
      */
-    itemStem?: ConfigureItem;
+    itemStem?: ConfigureProp;
 
     /**
      * Lock Choice Order configuration
      */
-    lockChoiceOrder?: ConfigureItem;
+    lockChoiceOrder?: ConfigureProp;
 
     /**
      * Numbered Guides configuration
      */
-    numberedGuides?: ConfigureItem;
+    numberedGuides?: ConfigureProp;
 
     /**
      * Orientation configuration
      */
-    orientation?: ConfigureItem;
+    orientation?: ConfigureProp;
 
     /**
      * Partial Scoring configuration
      */
-    partialScoring?: ConfigureItem;
+    partialScoring?: ConfigureProp;
 
     /**
      * Placement Area configuration
      */
-    placementArea?: ConfigureItem;
+    placementArea?: ConfigureProp;
 
     /**
      * Rationale configuration
      */
-    rationale?: ConfigureItem;
+    rationale?: ConfigureProp;
 
     /**
      * Remove tiles after placing configuration
      */
-    removeTilesAfterPlacing?: ConfigureItem;
+    removeTilesAfterPlacing?: ConfigureProp;
 
     /**
      * Scoring Type configuration
      */
-    scoringType?: ConfigureItem;
+    scoringType?: ConfigureProp;
 
     /**
      * Student Instructions configuration
      */
-    studentInstructions?: ConfigureItem;
+    studentInstructions?: ConfigureProp;
 
     /**
      * Target Label configuration
      */
-    targetLabel?: ConfigureItem;
+    targetLabel?: ConfigureProp;
 
     /**
      * Teacher Instructions configuration
      */
-    teacherInstructions?: ConfigureItem;
+    teacherInstructions?: ConfigureProp;
 }

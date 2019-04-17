@@ -25,7 +25,9 @@ describe('index', () => {
           if (_.isFunction(partialExpected)) {
             return partialExpected(result);
           } else {
-            expect(result).toMatchObject(partialExpected);
+            expect(result).toMatchObject(
+              expect.objectContaining(partialExpected)
+            );
           }
         }
       };
