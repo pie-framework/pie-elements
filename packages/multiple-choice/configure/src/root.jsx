@@ -39,46 +39,9 @@ export default class Root extends React.Component {
     }
   }
 
-  onChoiceModeChanged = value => {
-    const { model } = this.state;
-
-    model.choiceMode = value;
-
-    if (value === 'radio') {
-      let correctFound = false;
-
-      model.choices = model.choices.map(c => {
-        if (correctFound) {
-          c.correct = false;
-          return c;
-        }
-
-        if (c.correct) {
-          correctFound = true;
-        }
-
-        return c;
-      });
-    }
-
-    this.updateModel(model, true);
-  };
-
   onRemoveChoice = index => {
     const { model } = this.state;
     model.choices.splice(index, 1);
-    this.updateModel(model);
-  };
-
-  onPartialScoringChanged = () => {
-    const { model } = this.state;
-    model.partialScoring = !model.partialScoring;
-    this.updateModel(model);
-  };
-
-  onLockChoiceOrderChanged = () => {
-    const { model } = this.state;
-    model.lockChoiceOrder = !model.lockChoiceOrder;
     this.updateModel(model);
   };
 
@@ -101,12 +64,6 @@ export default class Root extends React.Component {
         type: 'none'
       }
     });
-    this.updateModel(model);
-  };
-
-  onChoicePrefixChanged = value => {
-    const { model } = this.state;
-    model.choicePrefix = value;
     this.updateModel(model);
   };
 
@@ -134,14 +91,11 @@ export default class Root extends React.Component {
       configure: this.props.configure,
       disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
-      onChoiceModeChanged: this.onChoiceModeChanged,
-      onChoicePrefixChanged: this.onChoicePrefixChanged,
       onChoiceChanged: this.onChoiceChanged,
       onAddChoice: this.onAddChoice,
       onPromptChanged: this.onPromptChanged,
       onDefaultLangChanged: this.onDefaultLangChanged,
-      onPartialScoringChanged: this.onPartialScoringChanged,
-      onLockChoiceOrderChanged: this.onLockChoiceOrderChanged,
+      updateModel: this.updateModel,
       imageSupport: this.props.imageSupport
     };
 

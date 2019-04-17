@@ -3,6 +3,12 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp } from '../ConfigurationProp';
 
+
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure (to be moved when the functionality is defined)
+ */
+
 /**
 * Model for the Choice Interaction
 * @additionalProperties false
@@ -25,6 +31,18 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates that the item should use partial scoring */
   partialScoring: boolean;
+
+  /** Indicates if rationale is enabled */
+  rationale: boolean;
+
+  /** Indicates scoring type */
+  scoringType: 'auto' | 'rubric';
+
+  /** Indicates if student instructions are enabled */
+  studentInstructions: boolean;
+
+  /** Indicates if teacher instructions are enabled */
+  teacherInstructions: boolean;
 }
 
 
@@ -83,4 +101,24 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
    */
   partialScoring: ConfigureProp;
+
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
+
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
+
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }

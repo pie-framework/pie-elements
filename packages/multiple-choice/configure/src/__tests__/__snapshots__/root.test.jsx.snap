@@ -49,11 +49,8 @@ exports[`Root snapshot renders 1`] = `
   }
   onAddChoice={[Function]}
   onChoiceChanged={[Function]}
-  onChoiceModeChanged={[Function]}
-  onChoicePrefixChanged={[Function]}
-  onLockChoiceOrderChanged={[Function]}
-  onPartialScoringChanged={[Function]}
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
+  updateModel={[Function]}
 />
 `;
