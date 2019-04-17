@@ -168,7 +168,7 @@ describe('spec', () => {
       title: 'Question Text 4',
       values: [false, false]
     }],
-    shuffled: false,
+    lockChoiceOrder: false,
     partialScoring: [],
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],

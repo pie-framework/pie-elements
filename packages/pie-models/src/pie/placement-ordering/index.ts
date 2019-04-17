@@ -2,6 +2,7 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
     /** The id of the choice */
@@ -94,25 +95,6 @@ export interface PlacementOrderingPie extends PieModel {
     /** Indicates if teacher instructions are enabled */
     teacherInstructions: boolean;
 }
-
-
-export interface ConfigureProp {
-    /**
-     * Indicates if the item has to be displayed
-     */
-    settings?: boolean;
-
-    /**
-     * Indicates the label for the item
-     */
-    label?: string;
-
-    /**
-     * Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-     */
-    enabled?: boolean;
-}
-
 
 /**
  * Config Object for @pie-elements/placement-ordering

@@ -1712,7 +1712,7 @@
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
 
-"@pie-lib/editable-html@^7.0.4", "@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.0":
+"@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.0":
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.3.0.tgz#e0ee3293f678b79133562dc4f9dc26b2358d062c"
   integrity sha512-KXy2/gV00oX3rWGg7hbXvfWlWmpeFU1uYAdfNn7WtS2OAstOiQLzco5Czq7Uu9zXZjQEBfJAE/JwiDE63O+79g==

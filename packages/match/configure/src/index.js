@@ -7,16 +7,19 @@ import {
   InsertImageEvent
 } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
+import defaults from 'lodash/defaults';
 
-import defaults from './defaults';
+import defaultValues from './defaults';
 
 const log = debug('pie-elements:match:configure');
 
 export default class MatchConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
-    ...model,
-  });
+      ...defaultValues,
+      ...model,
+      configure: defaults(model.configure, defaultValues.configure),
+    }
+  );
 
   constructor() {
     super();

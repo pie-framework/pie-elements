@@ -30,7 +30,8 @@ export class Row extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    enableImages: PropTypes.bool
   };
 
   static defaultProps = {};
@@ -84,7 +85,8 @@ export class Row extends React.Component {
       isDragging,
       model,
       row,
-      idx
+      idx,
+      enableImages
     } = this.props;
     const opacity = isDragging ? 0 : 1;
 
@@ -109,6 +111,11 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
+              pluginProps={{
+                image: {
+                  disabled: !enableImages
+                }
+              }}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (

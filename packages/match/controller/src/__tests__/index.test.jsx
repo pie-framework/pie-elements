@@ -24,7 +24,7 @@ describe('model', () => {
       title: 'Question Text 4',
       values: [false, false]
     }],
-    shuffled: false,
+    lockChoiceOrder: true,
     partialScoring: false,
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],
@@ -130,7 +130,7 @@ describe('model', () => {
     it('does not return partially-correct for correctness when partial scores are not allowed', async () => {
       question = mkQuestion({
         ...defaultModel,
-        allowPartialScoring: false,
+        partialScoring: false,
       });
 
       session = {
@@ -150,8 +150,7 @@ describe('model', () => {
     it('returns partially-correct for correctness', async () => {
       question = mkQuestion({
         ...defaultModel,
-        allowPartialScoring: true,
-        partialScoring: true
+        partialScoring: true,
       });
 
       session = {
@@ -243,8 +242,8 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        allowPartialScoring: true,
-        partialScoring: true
+        partialScoring: true,
+
       });
 
       session = {
@@ -299,8 +298,7 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is not enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        allowPartialScoring: false,
-        partialScoring: false
+        partialScoring: false,
       });
 
       session = {
