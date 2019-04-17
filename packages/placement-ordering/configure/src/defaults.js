@@ -1,65 +1,94 @@
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure
+ */
+
 export default {
-  answerAreaLabel: 'Answer Label goes here',
-  choiceAreaLabel: 'Choice Label goes here',
-  choiceAreaLayout: 'vertical',
+  choiceLabel: 'Choice Label goes here',
   choices: [
     {
       id: 'c1',
       label: 'Choice 1',
     },
   ],
+  enableImages: false,
+  itemStem: 'Item Stem goes here',
+  lockChoiceOrder: false,
+  numberedGuides: false,
+  orientation: 'vertical',
+  partialScoring: true,
+  placementArea: false,
+  removeTilesAfterPlacing: true,
+  scoringType: 'auto',
+  targetLabel: 'Target Label goes here',
+
   configure: {
-    itemStemLabel: 'Item Stem',
-    choiceLabel: 'Choice label',
-    answerLabel: 'Answer label',
-    placementAreaLabel: 'Placement Area',
-    choicesLabel: 'Choices',
-    orientationLabel: 'Orientation',
-    shuffleLabel: 'Shuffle Choices',
-    numberedGuidesLabel: 'Numbered Guides',
-    enableImagesLabel: 'Enable Images',
-    removeTilesLabel: 'Remove tiles after placing',
-    partialScoringLabel: 'Partial Scoring',
-
-    // if item stem can be changed
-    settingsItemStemChange: true,
-    // if choice label switch is displayed in settings panel
-    settingsChoiceLabel: true,
-    // if placement area label can be changed
-    settingsPlacementAreaLabel: true,
-    // if placement area switch is displayed in settings panel
-    settingsPlacementArea: true,
-    // if choices labels can be changed
-    settingsChoicesLabel: true,
-    // if changing orientation will be displayed in settings panel
-    settingsOrientation: true,
-    // is shuffle choices switch will be displayed in settings panel
-    settingsShuffle: true,
-    // if numbered guides switch will be displayed in settings panel
-    settingsNumberedGuides: true,
-    // if enable images switch will be displayed in settings panel
-    settingsEnableImages: true,
-    // if remove tiles after placing switch will be displayed in settings panel
-    settingsRemoveTileAfterPlacing: false,
-    // if partial scoring switch will be displayed in settings panel
-    settingsPartialScoring: true,
-    // if feedback settings can be changed
-    settingsFeedback: true,
-
-    // if choice label can be changed
-    editableChoiceLabel: false,
-    // if tiles should remove after they are placed
-    removeTileAfterPlacing: true,
-    // if images are enabled
-    imagesEnabled: false
-  },
-  correctResponse: [
-    {
-      id: 'c1',
+    choiceLabel: {
+      settings: true,
+      label: 'Choice label',
+      enabled: false,
     },
-  ],
-  itemStem: 'Question Prompt goes here',
-  placementArea: true,
-  showOrdering: true,
-  shuffle: false,
+    choices: {
+      settings: true,
+      label: 'Choices',
+    },
+    enableImages: {
+      settings: true,
+      label: 'Enable Images',
+    },
+    feedback: {
+      settings: true,
+    },
+    itemStem: {
+      settings: true,
+      label: 'Item Stem'
+    },
+    lockChoiceOrder: {
+      settings: true,
+      label: 'Lock Choice Order'
+    },
+    numberedGuides: {
+      settings: true,
+      label: 'Numbered guides',
+    },
+    orientation: {
+      settings: true,
+      label: 'Orientation',
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Partial Scoring'
+    },
+    placementArea: {
+      settings: true,
+      label: 'Placement Area',
+    },
+    rationale: {
+      settings: false,
+      label: 'Rationale',
+      enabled: true,
+    },
+    removeTilesAfterPlacing: {
+      settings: false,
+      label: 'Remove Tiles after placing'
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type',
+    },
+    studentInstructions: {
+      settings: false,
+      label: 'Student Instructions',
+      enabled: true,
+    },
+    targetLabel: {
+      settings: true,
+      label: 'Target label',
+    },
+    teacherInstructions: {
+      settings: false,
+      label: 'Teacher Instructions',
+      enabled: false,
+    },
+  },
 };

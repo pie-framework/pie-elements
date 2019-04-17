@@ -410,7 +410,7 @@
     "subject": "scoring change [ch440]",
     "merge": null,
     "header": "feat: scoring change [ch440]",
-    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTileAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
+    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTilesAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
     "footer": null,
     "notes": [],
     "hash": "42507f5182a5bb1466499f46922500bf9d6a8cd1",
@@ -418,5 +418,20 @@
     "committerDate": "2019-04-09 20:18:34 +0100",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "scoring",
+    "subject": "`orderMustBeComplete` defaults to false",
+    "merge": null,
+    "header": "feat(scoring): `orderMustBeComplete` defaults to false",
+    "body": "> Note: this should really be a breaking change as it changes the\nresults of identical functions, but going to leave that as we haven't\ndone a full release yet.",
+    "footer": null,
+    "notes": [],
+    "hash": "3b11755acba7607c42187f2c78d99d792c77c961",
+    "gitTags": " (origin/fix/placement-scoring)",
+    "committerDate": "2019-04-12 11:27:47 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@4.2.0"
   }
 ]

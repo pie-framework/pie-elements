@@ -6,7 +6,7 @@ import { ComplexFeedbackType } from '../../Feedback';
 /**
  * One row in the match list.
  */
-interface MatchRow {
+export interface MatchRow {
   /** Identifier for a row */
   id: string | number;
   /** Title that will be displayed for the row */

@@ -49,7 +49,7 @@ export class Main extends React.Component {
         />
         <PartialScoring
           title={'Scoring'}
-          label={model.partialScoringLabel}
+          label={model.labelPartialScoring}
           partialScoring={model.partialScoring}
           onChange={this.changePartialScoring}
         />
