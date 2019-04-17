@@ -8,8 +8,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { InputCheckbox } from '@pie-lib/config-ui';
 import AddRow from './add-row';
 import Row from './row';
-import { swap } from '@pie-lib/drag';
+import { swap, withDragContext } from '@pie-lib/drag';
 import debug from 'debug';
+import lodash from 'lodash';
 
 const log = debug('pie-elements:match:configure');
 
@@ -94,13 +95,18 @@ class AnswerConfigBlock extends React.Component {
     onChange(newModel);
   };
 
-  onChange = (name, isBoolean) => event => {
+  onChange = (name, isBoolean) => ({ target }) => {
     const { model, onChange } = this.props;
-    const newModel = { ...model };
+    let value;
 
-    newModel[name] = isBoolean ? event.target.checked : event.target.value;
+    if (isBoolean) {
+      value = target.checked;
+    } else {
+      value = target.value;
+    }
 
-    onChange(newModel, name);
+    lodash.set(model, name, value);
+    onChange(model, name);
   };
 
   onHeaderChange = headerIndex => event => {
@@ -114,6 +120,13 @@ class AnswerConfigBlock extends React.Component {
 
   render() {
     const { classes, model, onAddRow, imageSupport } = this.props;
+    const {
+      configure: {
+        headers,
+        lockChoiceOrder,
+        partialScoring
+      }
+    } = model;
 
     return (
       <div className={classes.container}>
@@ -122,7 +135,7 @@ class AnswerConfigBlock extends React.Component {
         </Typography>
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
-            {model.headers.map((header, idx) => (
+            {headers.settings && model.headers.map((header, idx) => (
               <div key={idx} className={cx(classes.rowItem, { [classes.questionText]: idx === 0 })}>
                 <Input
                   type="text"
@@ -151,22 +164,28 @@ class AnswerConfigBlock extends React.Component {
               onChange={this.props.onChange}
               onMoveRow={this.moveRow}
               imageSupport={imageSupport}
+              enableImages={model.enableImages}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
           <div className={classes.checkboxContainer}>
-            <div className={classes.optionsCheckbox}>
-              <InputCheckbox
-                label="Shuffle Choices"
-                checked={!!model.shuffled}
-                onChange={this.onChange('shuffled', true)}/>
-            </div>
-            <div className={classes.optionsCheckbox}>
-              <InputCheckbox
-                label="Allow Partial Scoring"
-                checked={!!model.allowPartialScoring}
-                onChange={this.onChange('allowPartialScoring', true)}/>
-            </div>
+            {lockChoiceOrder.settings &&
+              <div className={classes.optionsCheckbox}>
+                <InputCheckbox
+                  label={lockChoiceOrder.label}
+                  checked={model.lockChoiceOrder}
+                  onChange={this.onChange('lockChoiceOrder', true)}/>
+              </div>
+            }
+            {
+              partialScoring.settings &&
+                <div className={classes.optionsCheckbox}>
+                  <InputCheckbox
+                    label={partialScoring.label}
+                    checked={model.partialScoring}
+                    onChange={this.onChange('partialScoring', true)}/>
+                </div>
+            }
           </div>
         </div>
       </div>
@@ -174,4 +193,4 @@ class AnswerConfigBlock extends React.Component {
   }
 }
 
-export default withStyles(styles)(AnswerConfigBlock);
+export default withDragContext(withStyles(styles)(AnswerConfigBlock));

@@ -1,132 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Placement Ordering snapshot renders all default items 1`] = `
-<div>
-  <div>
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="0"
-      label="Choice label"
-      labelPlacement="start"
-      style={
+<ConfigLayout
+  settings={
+    <Panel
+      groups={
         Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
+          "Item Type": Object {
+            "configure.choiceLabel.enabled": undefined,
+            "enableImages": undefined,
+            "numberedGuides": false,
+            "orientation": undefined,
+            "partialScoring": undefined,
+            "placementArea": undefined,
+            "removeTilesAfterPlacing": false,
+          },
+          "Properties": Object {
+            "configure.rationale.enabled": false,
+            "configure.studentInstructions.enabled": false,
+            "configure.teacherInstructions.enabled": false,
+            "lockChoiceOrder": undefined,
+            "scoringType": false,
+          },
         }
       }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="6"
-      label="Shuffle Choices"
-      labelPlacement="start"
-      style={
+      model={
         Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
+          "choiceLabel": "Choice Label goes here",
+          "choices": Array [
+            Object {
+              "id": "c1",
+              "label": "Choice 1",
+            },
+          ],
+          "configure": Object {
+            "choiceLabel": Object {
+              "enabled": false,
+              "label": "Choice label",
+              "settings": true,
+            },
+            "choices": Object {
+              "label": "Choices",
+              "settings": true,
+            },
+            "enableImages": Object {
+              "label": "Enable Images",
+              "settings": true,
+            },
+            "feedback": Object {
+              "settings": true,
+            },
+            "itemStem": Object {
+              "label": "Item Stem",
+              "settings": true,
+            },
+            "lockChoiceOrder": Object {
+              "label": "Lock Choice Order",
+              "settings": true,
+            },
+            "numberedGuides": Object {
+              "label": "Numbered guides",
+              "settings": true,
+            },
+            "orientation": Object {
+              "label": "Orientation",
+              "settings": true,
+            },
+            "partialScoring": Object {
+              "label": "Partial Scoring",
+              "settings": true,
+            },
+            "placementArea": Object {
+              "label": "Placement Area",
+              "settings": true,
+            },
+            "rationale": Object {
+              "enabled": true,
+              "label": "Rationale",
+              "settings": false,
+            },
+            "removeTilesAfterPlacing": Object {
+              "label": "Remove Tiles after placing",
+              "settings": false,
+            },
+            "scoringType": Object {
+              "label": "Scoring Type",
+              "settings": false,
+            },
+            "studentInstructions": Object {
+              "enabled": true,
+              "label": "Student Instructions",
+              "settings": false,
+            },
+            "targetLabel": Object {
+              "label": "Target label",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "enabled": false,
+              "label": "Teacher Instructions",
+              "settings": false,
+            },
+          },
+          "enableImages": false,
+          "itemStem": "Item Stem goes here",
+          "lockChoiceOrder": false,
+          "numberedGuides": false,
+          "orientation": "vertical",
+          "partialScoring": true,
+          "placementArea": false,
+          "removeTilesAfterPlacing": true,
+          "scoringType": "auto",
+          "targetLabel": "Target Label goes here",
         }
       }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="7"
-      label="Partial Scoring"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={true}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="1"
-      label="Placement Area"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="2"
-      label="Numbered Guides"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="3"
-      label="Enable Images"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <ChoiceType
-      header="Orientation"
-      key="5"
       onChange={[Function]}
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
-      value="vertical"
     />
-  </div>
+  }
+>
   <FormSection
     label="Ordering"
   >
@@ -134,7 +125,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       label="ITEM STEM"
     >
       <EditableHtml
-        markup="Question Prompt goes here"
+        markup="Item Stem goes here"
         onChange={[Function]}
       />
     </InputContainer>
@@ -142,16 +133,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <FormSection
     label="Define Choices"
   >
-    <div>
-      <InputContainer
-        label="ANSWER LABEL"
-      >
-        <EditableHtml
-          markup="Answer Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-    </div>
+    <div />
     <InputContainer
       label="CHOICES"
     >
@@ -164,13 +146,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             },
           ]
         }
-        correctResponse={
-          Array [
-            Object {
-              "id": "c1",
-            },
-          ]
-        }
         disableImages={true}
         onChange={[Function]}
       />
@@ -179,168 +154,131 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <FeedbackConfig
     onChange={[Function]}
   />
-</div>
+</ConfigLayout>
 `;
 
 exports[`Placement Ordering snapshot renders custom items 1`] = `
-<div>
-  <div>
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="0"
-      label="Choice label"
-      labelPlacement="start"
-      style={
+<ConfigLayout
+  settings={
+    <Panel
+      groups={
         Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
+          "Item Type": Object {
+            "configure.choiceLabel.enabled": undefined,
+            "enableImages": undefined,
+            "numberedGuides": false,
+            "orientation": undefined,
+            "partialScoring": undefined,
+            "placementArea": undefined,
+            "removeTilesAfterPlacing": undefined,
+          },
+          "Properties": Object {
+            "configure.rationale.enabled": false,
+            "configure.studentInstructions.enabled": false,
+            "configure.teacherInstructions.enabled": false,
+            "lockChoiceOrder": undefined,
+            "scoringType": false,
+          },
         }
       }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="6"
-      label="Shuffle Choices"
-      labelPlacement="start"
-      style={
+      model={
         Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
+          "choiceLabel": "Choice Label goes here",
+          "choices": Array [
+            Object {
+              "id": "c1",
+              "label": "Choice 1",
+            },
+          ],
+          "configure": Object {
+            "choiceLabel": Object {
+              "enabled": false,
+              "label": "Choice label",
+              "settings": true,
+            },
+            "choices": Object {
+              "label": "Choices",
+              "settings": true,
+            },
+            "enableImages": Object {
+              "label": "Enable Images",
+              "settings": true,
+            },
+            "feedback": Object {
+              "settings": true,
+            },
+            "itemStem": Object {
+              "label": "Item Stem",
+              "settings": false,
+            },
+            "lockChoiceOrder": Object {
+              "label": "Lock Choice Order",
+              "settings": true,
+            },
+            "numberedGuides": Object {
+              "label": "Numbered guides",
+              "settings": true,
+            },
+            "orientation": Object {
+              "label": "Orientation",
+              "settings": true,
+            },
+            "partialScoring": Object {
+              "label": "Partial Scoring",
+              "settings": true,
+            },
+            "placementArea": Object {
+              "label": "Placement Area",
+              "settings": true,
+            },
+            "rationale": Object {
+              "enabled": true,
+              "label": "Rationale",
+              "settings": false,
+            },
+            "removeTilesAfterPlacing": Object {
+              "label": "Remove Tiles after placing",
+              "settings": true,
+            },
+            "scoringType": Object {
+              "label": "Scoring Type",
+              "settings": false,
+            },
+            "studentInstructions": Object {
+              "enabled": true,
+              "label": "Student Instructions",
+              "settings": false,
+            },
+            "targetLabel": Object {
+              "label": "Target label",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "enabled": false,
+              "label": "Teacher Instructions",
+              "settings": false,
+            },
+          },
+          "enableImages": false,
+          "itemStem": "Item Stem goes here",
+          "lockChoiceOrder": false,
+          "numberedGuides": false,
+          "orientation": "vertical",
+          "partialScoring": true,
+          "placementArea": false,
+          "removeTilesAfterPlacing": true,
+          "scoringType": "auto",
+          "targetLabel": "Target Label goes here",
         }
       }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="7"
-      label="Partial Scoring"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={true}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="1"
-      label="Placement Area"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="2"
-      label="Numbered Guides"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={false}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="3"
-      label="Enable Images"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <WithStyles(WithFormControlContext(FormControlLabel))
-      control={
-        <WithStyles(Switch)
-          checked={true}
-          onChange={[Function]}
-          value="checkedA"
-        />
-      }
-      key="4"
-      label="Remove tiles after placing"
-      labelPlacement="start"
-      style={
-        Object {
-          "justifyContent": "flex-end",
-          "margin": 0,
-          "width": "33%",
-        }
-      }
-    />
-    <ChoiceType
-      header="Orientation"
-      key="5"
       onChange={[Function]}
-      style={
-        Object {
-          "width": "100%",
-        }
-      }
-      value="vertical"
     />
-  </div>
+  }
+>
   <FormSection
     label="Define Choices"
   >
-    <div>
-      <InputContainer
-        label="ANSWER LABEL"
-      >
-        <EditableHtml
-          markup="Answer Label goes here"
-          onChange={[Function]}
-        />
-      </InputContainer>
-    </div>
+    <div />
     <InputContainer
       label="CHOICES"
     >
@@ -353,13 +291,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             },
           ]
         }
-        correctResponse={
-          Array [
-            Object {
-              "id": "c1",
-            },
-          ]
-        }
         disableImages={true}
         onChange={[Function]}
       />
@@ -368,5 +299,5 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   <FeedbackConfig
     onChange={[Function]}
   />
-</div>
+</ConfigLayout>
 `;

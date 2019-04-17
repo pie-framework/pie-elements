@@ -70,7 +70,7 @@ export const flattenCorrect = question =>
 export const score = (question, session) => {
   const cr = flattenCorrect(question);
   const allowDuplicates =
-    (question.configure || {}).removeTileAfterPlacing !== false;
+    (question.configure && question.configure.removeTilesAfterPlacing) !== false;
 
   /**
    * We require this to be the case - locking

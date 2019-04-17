@@ -41,33 +41,47 @@ class GeneralConfigBlock extends React.Component {
 
   render() {
     const { classes, model } = this.props;
+    const {
+      configure: {
+        layout,
+        responseType
+      }
+    } = model;
 
     return (
       <div className={classes.container}>
         <div className={classes.input}>
-          <InputContainer label="Layout" className={classes.inputContainer}>
-            <Select
-              className={classes.select}
-              onChange={this.onChange('layout')}
-              value={model.layout}
+          {layout.settings &&
+            <InputContainer
+              label={layout.label}
+              className={classes.inputContainer}
             >
-              <MenuItem value={3}>3 Columns</MenuItem>
-              <MenuItem value={4}>4 Columns</MenuItem>
-              <MenuItem value={5}>5 Columns</MenuItem>
-            </Select>
-          </InputContainer>
+              <Select
+                className={classes.select}
+                onChange={this.onChange('layout')}
+                value={model.layout}
+              >
+                <MenuItem value={3}>3 Columns</MenuItem>
+                <MenuItem value={4}>4 Columns</MenuItem>
+                <MenuItem value={5}>5 Columns</MenuItem>
+              </Select>
+            </InputContainer>
+          }
         </div>
         <div className={classes.input}>
-          <InputContainer label="Response Type" className={classes.inputContainer}>
-            <Select
-              className={classes.select}
-              onChange={this.onChange('responseType')}
-              value={model.responseType}
-            >
-              <MenuItem value="radio">Radio - One Answer</MenuItem>
-              <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
-            </Select>
-          </InputContainer>
+          {
+            responseType.settings &&
+            <InputContainer label={responseType.label} className={classes.inputContainer}>
+              <Select
+                className={classes.select}
+                onChange={this.onChange('responseType')}
+                value={model.responseType}
+              >
+                <MenuItem value="radio">Radio - One Answer</MenuItem>
+                <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
+              </Select>
+            </InputContainer>
+          }
         </div>
       </div>
     );

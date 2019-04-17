@@ -174,7 +174,7 @@
     "footer": null,
     "notes": [],
     "hash": "3b11755acba7607c42187f2c78d99d792c77c961",
-    "gitTags": " (origin/fix/placement-scoring, origin/develop, origin/HEAD)",
+    "gitTags": " (origin/fix/placement-scoring)",
     "committerDate": "2019-04-12 11:27:47 +0100",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-controller@3.2.0"
