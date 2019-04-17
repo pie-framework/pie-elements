@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import * as controller from '../index';
 
+
 describe('index', () => {
   let base = o => {
     o = _.merge(
@@ -25,7 +26,9 @@ describe('index', () => {
           if (_.isFunction(partialExpected)) {
             return partialExpected(result);
           } else {
-            expect(result).toMatchObject(
+            expect(
+              expect.objectContaining(result)
+            ).toMatchObject(
               expect.objectContaining(partialExpected)
             );
           }
