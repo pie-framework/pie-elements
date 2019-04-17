@@ -5,9 +5,9 @@ import Root from '../root';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 const model = () => ({
-  prompt: 'Which of these northern European countries are EU members?',
+  itemStem: 'Which of these northern European countries are EU members?',
   choiceMode: 'checkbox',
-  keyMode: 'numbers',
+  choicePrefix: 'numbers',
   choices: [
     {
       correct: true,
@@ -46,9 +46,6 @@ const model = () => ({
     }
   ],
   partialScoring: false,
-  partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
-          that is correctly unchecked will be worth 1 point.
-          The maximum points is the total number of answer choices.`,
   configure: {
     /**
      * These are the configurable options
@@ -145,13 +142,13 @@ describe('Root', () => {
       });
     });
 
-    describe('onKeyModeChanged', () => {
-      it('changes keyMode', () => {
+    describe('onChoicePrefixChanged', () => {
+      it('changes choicePrefix', () => {
         w = wrapper();
-        w.instance().onKeyModeChanged('letters');
+        w.instance().onChoicePrefixChanged('letters');
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ keyMode: 'letters' }),
+          expect.objectContaining({ choicePrefix: 'letters' }),
           undefined
         );
       });

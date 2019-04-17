@@ -43,7 +43,7 @@ export function model(question, session, env) {
       prepareChoice(env.mode, defaultFeedback)
     );
 
-    if (question.shuffle) {
+    if (!question.lockChoiceOrder) {
       // eslint-disable-next-line no-console
       console.error(
         '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
@@ -54,10 +54,10 @@ export function model(question, session, env) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.prompt,
+      prompt: question.itemStem,
       choiceMode: question.choiceMode,
-      keyMode: question.keyMode,
-      shuffle: question.shuffle,
+      keyMode: question.choicePrefix,
+      shuffle: !question.lockChoiceOrder,
       choices,
 
       //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
@@ -96,19 +96,19 @@ const getScore = (config, session) => {
 /**
  *
  * The score is partial by default for checkbox mode, allOrNothing for radio mode.
- * To disable partial scoring for checkbox mode you either set config.partialScoring = false or env.partialScoring = false. the value in `env` will
- * override the value in `config`.
- * @param {Object} config - the main model
- * @param {boolean} config.partialScoring - is partial scoring enabled (if undefined set to to true)
+ * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring = false. the value in `env` will
+ * override the value in `model`.
+ * @param {Object} model - the main model
+ * @param {boolean} model.partialScoring - is partial scoring enabled (if undefined set to to true)
  * @param {*} session
  * @param {Object} env
- * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides `config.partialScoring`.
+ * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides `model.partialScoring`.
  */
-export function outcome(config, session, env) {
+export function outcome(model, session, env) {
   return new Promise(resolve => {
     const partialScoringEnabled =
-      partialScoring.enabled(config, env) && config.choiceMode !== 'radio';
-    const score = getScore(config, session);
+      partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
+    const score = getScore(model, session);
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }

@@ -15,32 +15,11 @@ import sensibleDefaults from './defaults';
 
 const log = debug('multiple-choice:configure');
 
-const defaultValues = {
-  promptLabel : 'Prompt',
-  addChoiceButtonLabel: 'Add a choice',
-  addChoice: true,
-  addFeedBack: true,
-  deleteChoice: true,
-  showPrompt: true,
-  answerChoiceCount: 0,
-  settingsSelectChoiceMode: true,
-  settingsSelectChoicePrefixes: true,
-  settingsSelectChoiceModeLabel: 'Response Type',
-  settingsChoicePrefixesLabel: 'Choice Labels',
-  settingsPartialScoring: true,
-  settingsConfigShuffle: true
-};
+const generateFormattedChoices = (choices, choiceCount = 4) => {
+  if (!choices || choices.length === 0) {
+    let formattedChoices = [];
 
-const prepareCustomizationObject = (configure, model) => {
-  const answerChoiceCount = configure.answerChoiceCount
-    ? configure.answerChoiceCount
-    : 4;
-  let formattedChoices = model.choices;
-
-  if (!formattedChoices || formattedChoices.length === 0) {
-    formattedChoices = [];
-
-    for (let i = 0; i < answerChoiceCount; i++) {
+    for (let i = 0; i < choiceCount; i++) {
       formattedChoices.push({
         value: '',
         label: '',
@@ -50,19 +29,28 @@ const prepareCustomizationObject = (configure, model) => {
         }
       });
     }
+
+    return formattedChoices;
   }
 
+  return choices;
+};
+
+const prepareCustomizationObject = (config, model) => {
+  const configure = defaults(config, sensibleDefaults.configure);
+
   return {
-    configure: defaults(configure, defaultValues),
+    configure,
     model: {
       ...model,
-      choices: formattedChoices
+      choices: generateFormattedChoices(model.choices, configure.answerChoiceCount)
     }
   };
 };
 
 export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
+    choices: generateFormattedChoices(model.choices),
     ...sensibleDefaults,
     ...model,
   });
@@ -70,7 +58,7 @@ export default class MultipleChoice extends HTMLElement {
   constructor() {
     super();
     this._model = MultipleChoice.createDefaultModel();
-    this._configure = defaultValues;
+    this._configure = sensibleDefaults.configure;
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 

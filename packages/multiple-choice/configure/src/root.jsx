@@ -76,9 +76,9 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onShuffleChanged = () => {
+  onLockChoiceOrderChanged = () => {
     const { model } = this.state;
-    model.shuffle = !model.shuffle;
+    model.lockChoiceOrder = !model.lockChoiceOrder;
     this.updateModel(model);
   };
 
@@ -104,9 +104,9 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onKeyModeChanged = value => {
+  onChoicePrefixChanged = value => {
     const { model } = this.state;
-    model.keyMode = value;
+    model.choicePrefix = value;
     this.updateModel(model);
   };
 
@@ -122,9 +122,9 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = itemStem => {
     const update = cloneDeep(this.state.model);
-    update.prompt = prompt;
+    update.itemStem = itemStem;
     this.updateModel(update);
   };
 
@@ -135,13 +135,13 @@ export default class Root extends React.Component {
       disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
       onChoiceModeChanged: this.onChoiceModeChanged,
-      onKeyModeChanged: this.onKeyModeChanged,
+      onChoicePrefixChanged: this.onChoicePrefixChanged,
       onChoiceChanged: this.onChoiceChanged,
       onAddChoice: this.onAddChoice,
       onPromptChanged: this.onPromptChanged,
       onDefaultLangChanged: this.onDefaultLangChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
-      onShuffleChanged: this.onShuffleChanged,
+      onLockChoiceOrderChanged: this.onLockChoiceOrderChanged,
       imageSupport: this.props.imageSupport
     };
 

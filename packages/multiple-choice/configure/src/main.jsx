@@ -36,32 +36,28 @@ const styles = theme => ({
 
 const getSideMenuItems = (props) => {
   const {
+    onChoicePrefixChanged,
     classes,
     model,
     configure,
     onChoiceModeChanged,
-    onKeyModeChanged,
     onPartialScoringChanged,
-    onShuffleChanged
+    onLockChoiceOrderChanged
   } = props;
   const {
-    settingsSelectChoiceModeLabel,
-    settingsChoicePrefixesLabel,
-    settingsSelectChoicePrefixes,
-    settingsSelectChoiceMode,
+    choiceMode,
+    choicePrefix,
     partialScoring,
-    shuffle,
-    settingsPartialScoring,
-    settingsConfigShuffle
+    lockChoiceOrder
   } = configure;
 
   return [
     {
       items: [
-        settingsSelectChoiceMode &&
-        <ChoiceType key={0} header={settingsSelectChoiceModeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
-        settingsSelectChoicePrefixes &&
-        <KeyType key={1} header={settingsChoicePrefixesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
+        choiceMode.settings &&
+        <ChoiceType key={0} header={choiceMode.label} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
+        choicePrefix.settings &&
+        <KeyType key={1} header={choicePrefix.label} value={model.choicePrefix} onChange={onChoicePrefixChanged}/>
       ]
     },
     {
@@ -69,34 +65,34 @@ const getSideMenuItems = (props) => {
     },
     {
       items: [
-        settingsPartialScoring && <FormControlLabel
+        partialScoring.settings && <FormControlLabel
           key={3}
           classes={{
             root: classes.switchElement
           }}
           control={
             <Switch
-              checked={partialScoring}
+              checked={model.partialScoring}
               onChange={onPartialScoringChanged}
               value="checkedA"
             />
           }
-          label="Allow Partial Scoring"
+          label={partialScoring.label}
           labelPlacement="start"
         />,
-        settingsConfigShuffle && <FormControlLabel
+        lockChoiceOrder.settings && <FormControlLabel
           key={4}
           classes={{
             root: classes.switchElement
           }}
           control={
             <Switch
-              checked={shuffle}
-              onChange={onShuffleChanged}
+              checked={model.lockChoiceOrder}
+              onChange={onLockChoiceOrderChanged}
               value="checkedA"
             />
           }
-          label="Allow Shuffle Choices"
+          label={lockChoiceOrder.label}
           labelPlacement="start"
         />
       ]
@@ -117,12 +113,10 @@ const Design = withStyles(styles)(props => {
     imageSupport
   } = props;
   const {
-    promptLabel,
-    addChoiceButtonLabel,
-    addChoice,
-    addFeedBack,
+    itemStem,
+    addChoiceButton,
+    feedback,
     deleteChoice,
-    showPrompt
   } = configure;
 
   return (
@@ -131,21 +125,26 @@ const Design = withStyles(styles)(props => {
         sideMenuItems={getSideMenuItems(props)}
         regularItems={
           <div>
-            <InputContainer label={promptLabel} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={onPromptChanged}
-                imageSupport={imageSupport}
-                nonEmpty={!showPrompt}
-                disableUnderline
-              />
-            </InputContainer>
+            {itemStem.settings &&
+              <InputContainer
+                label={itemStem.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.itemStem}
+                  onChange={onPromptChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={!itemStem.settings}
+                  disableUnderline
+                />
+              </InputContainer>
+            }
             {model.choices.map((choice, index) => (
               <ChoiceConfiguration
                 key={index}
                 index={index + 1}
-                useLetterOrdering={model.keyMode === 'letters'}
+                useLetterOrdering={model.choicePrefix === 'letters'}
                 className={classes.choiceConfiguration}
                 mode={model.choiceMode}
                 data={choice}
@@ -153,15 +152,15 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 onDelete={() => onRemoveChoice(index)}
                 onChange={c => onChoiceChanged(index, c)}
-                allowFeedBack={addFeedBack}
-                allowDelete={deleteChoice}
+                allowFeedBack={feedback.settings}
+                allowDelete={deleteChoice.settings}
               />
             ))}
             <br />
             {
-              addChoice &&
+              addChoiceButton.settings &&
               <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
-                {addChoiceButtonLabel}
+                {addChoiceButton.label}
               </Button>
             }
           </div>
