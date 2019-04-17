@@ -1,8 +1,4 @@
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
 import Design from './design';
-import Help from './help';
 import React from 'react';
 import { withDragContext } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';

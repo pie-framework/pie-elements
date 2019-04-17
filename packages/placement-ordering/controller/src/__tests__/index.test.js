@@ -7,7 +7,8 @@ describe('index', () => {
       {
         itemStem: 'hi',
         choices: [],
-        correctResponse: []
+        correctResponse: [],
+        lockChoiceOrder: true
       },
       o
     );
@@ -82,7 +83,7 @@ describe('index', () => {
           {},
           {},
           {
-            choices: [{ id: 'b', label: 'b' }, { id: 'a', label: 'a' }]
+            choices: [{ id: 'a', label: 'a' }, { id: 'b', label: 'b' }]
           }
         )
       );
