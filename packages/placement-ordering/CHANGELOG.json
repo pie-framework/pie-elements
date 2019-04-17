@@ -410,7 +410,7 @@
     "subject": "scoring change [ch440]",
     "merge": null,
     "header": "feat: scoring change [ch440]",
-    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTileAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
+    "body": "* by default duplicates are not allowed\n* this can be overridden by `question.configure.removeTilesAfterPlacing`\n* by default the answer must be 'complete' aka the length must match the\ncorrect response length.",
     "footer": null,
     "notes": [],
     "hash": "42507f5182a5bb1466499f46922500bf9d6a8cd1",

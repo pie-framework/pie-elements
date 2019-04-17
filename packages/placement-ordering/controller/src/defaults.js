@@ -1,9 +1,9 @@
 export default {
+  choiceLabel: 'choices:',
   choices: [
     {
       id: 'c2',
       label: 'Lemon',
-      shuffle: false,
       moveOnDrag: true
     },
     {
@@ -23,12 +23,9 @@ export default {
     }
   ],
   completeLength: 4,
-  config: {
-    orientation: 'vertical',
-    targetLabel: 'Answer Area Label',
-    choiceLabel: 'choices: ',
-    showOrdering: true
-  },
-  numberedGuides: true,
+  config: {},
   itemStem: 'Arrange the fruits alphabetically',
+  numberedGuides: true,
+  orientation: 'vertical',
+  targetLabel: 'Answer Area Label',
 };
