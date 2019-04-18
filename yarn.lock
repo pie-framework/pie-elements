@@ -1863,6 +1863,18 @@
     debug "^4.1.1"
     react-transition-group "^2.5.2"
 
+"@pie-lib/render-ui@^4.3.9":
+  version "4.3.9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.3.9.tgz#9b16f6a6427478d32fcc318c58a71f5bb8ba7e8e"
+  integrity sha512-E0BBP6QNLuadwSgzv5fqJCI1PcMxNMYAAWYfoIJDERvqvV/rjvFvv9cUwpcBWLSWVgyR5ymlu5NOHeooC2Ayew==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.3.8"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/scoring-config@^3.1.1", "@pie-lib/scoring-config@^3.2.16", "@pie-lib/scoring-config@^3.3.9":
   version "3.3.32"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.3.32.tgz#8d99fc67da0cc3a9b659c2b883414db5474f8ea5"
@@ -2048,10 +2060,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.7.0":
-  version "4.7.8"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.8.tgz#4789a8b0a641a61722b79df20ab7ee85450b6e07"
-  integrity sha512-ihuAU7kt3Ht69BXfw5mGRWlcyXq7vtIBVQ7uPMuVKHTcgk0n8mS1kTC9QAviit9PnQymncvmaqsBk88YHJY1YQ==
+"@pie-ui/multiple-choice@^4.7.10":
+  version "4.7.10"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.10.tgz#cb3b923bf09ee9d7b15820352bebc8051fc953ec"
+  integrity sha512-QEsJhxnFO1J8vEU1U6Xcf9BU7sxxD5/j3BKHcJO9xICDvSjjAqM7wAJG9Qj2IyKHE3LnOUnMFVduvGIMizPLkg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/config-ui" "^7.11.9"
@@ -2068,16 +2080,16 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/multiple-choice@^4.7.10":
-  version "4.7.10"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.10.tgz#cb3b923bf09ee9d7b15820352bebc8051fc953ec"
-  integrity sha512-QEsJhxnFO1J8vEU1U6Xcf9BU7sxxD5/j3BKHcJO9xICDvSjjAqM7wAJG9Qj2IyKHE3LnOUnMFVduvGIMizPLkg==
+"@pie-ui/multiple-choice@^4.7.11":
+  version "4.7.11"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.7.11.tgz#dfa20d96a4b40a21dd8c959f61c47d61079c3324"
+  integrity sha512-X+Dm8y9WZkqSGAjqQ13/ROekGCaGWwuF7fqqQI7y3Zt6aF+50S0tfYs60dWhG/P/ZIEwuO0SzZybQNlCMUXBxQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-lib/config-ui" "^7.11.9"
+    "@pie-lib/config-ui" "^9.0.1"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/math-rendering" "^1.2.1"
-    "@pie-lib/render-ui" "^4.3.1"
+    "@pie-lib/render-ui" "^4.3.9"
     classnames "^2.2.5"
     debug "^4.1.1"
     enzyme-to-json "^3.3.3"
