@@ -388,5 +388,20 @@
     "committerDate": "2019-04-10 16:40:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@1.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "package",
+    "subject": "updated the version for the pie-ui/ebsr package",
+    "merge": null,
+    "header": "fix(package): updated the version for the pie-ui/ebsr package",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "de85db791bd8773e0f4f80eb705b3f0a48e50070",
+    "gitTags": "",
+    "committerDate": "2019-04-16 08:26:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@1.2.2"
   }
 ]

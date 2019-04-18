@@ -50,16 +50,6 @@ const styles = theme => ({
     borderTop: '2px solid lightgray',
     width: '100%'
   },
-  checkboxContainer: {
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  optionsCheckbox: {
-    flex: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
-  },
   headerInput: {
     textAlign: 'center',
     maxWidth: '100px'
@@ -168,25 +158,6 @@ class AnswerConfigBlock extends React.Component {
             />
           ))}
           <AddRow onAddClick={onAddRow} />
-          <div className={classes.checkboxContainer}>
-            {lockChoiceOrder.settings &&
-              <div className={classes.optionsCheckbox}>
-                <InputCheckbox
-                  label={lockChoiceOrder.label}
-                  checked={model.lockChoiceOrder}
-                  onChange={this.onChange('lockChoiceOrder', true)}/>
-              </div>
-            }
-            {
-              partialScoring.settings &&
-                <div className={classes.optionsCheckbox}>
-                  <InputCheckbox
-                    label={partialScoring.label}
-                    checked={model.partialScoring}
-                    onChange={this.onChange('partialScoring', true)}/>
-                </div>
-            }
-          </div>
         </div>
       </div>
     );
