@@ -11,9 +11,9 @@ import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
 
 const getSideMenuItems = (props) => {
-  const { classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
+  const { model, classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
 
-  const { partialScoring, settingsPartialScoring, multipleCorrect, settingsMultipleCorrect } = configure;
+  const { settingsPartialScoring, settingsMultipleCorrect } = configure;
 
   return [
     {
@@ -25,7 +25,7 @@ const getSideMenuItems = (props) => {
           }}
           control={
             <Switch
-              checked={multipleCorrect}
+              checked={model.multipleCorrect}
               onChange={onMultipleCorrectChanged}
               value="checkedA"
             />
@@ -34,13 +34,13 @@ const getSideMenuItems = (props) => {
           labelPlacement="start"
         />,
         settingsPartialScoring && <FormControlLabel
-          key={3}
+          key={4}
           classes={{
             root: classes.switchElement
           }}
           control={
             <Switch
-              checked={partialScoring}
+              checked={model.partialScoring}
               onChange={onPartialScoringChanged}
               value="checkedA"
             />
@@ -60,16 +60,16 @@ class Design extends React.Component {
     this.state = {
       hotspotColor: 'rgba(137, 183, 244, 0.65)',
       hotspotList: [
-        "rgba(137, 183, 244, 0.65)",
-        "rgba(217, 30, 24, 0.65)",
-        "rgba(254, 241, 96, 0.65)"
+        'rgba(137, 183, 244, 0.65)',
+        'rgba(217, 30, 24, 0.65)',
+        'rgba(254, 241, 96, 0.65)'
       ],
       outlineColor: 'blue',
       outlineList: [
-        "blue",
-        "red",
-        "yellow"
-      ]
+        'blue',
+        'red',
+        'yellow'
+      ],
     }
   }
 
@@ -91,12 +91,7 @@ class Design extends React.Component {
 
   render() {
     const { props } = this;
-    const {
-      classes,
-      disableSidePanel,
-      model,
-      onPromptChanged,
-    } = props;
+    const { classes, disableSidePanel, model, onPromptChanged, onUpdateShapes, onImageUpload } = props;
     const { hotspotColor, outlineColor, hotspotList, outlineList } = this.state;
 
     return (
@@ -124,8 +119,13 @@ class Design extends React.Component {
               />
 
               <HotspotContainer
+                imageUrl={model.imageUrl}
+                multipleCorrect={model.multipleCorrect}
                 hotspotColor={hotspotColor}
                 outlineColor={outlineColor}
+                onUpdateShapes={onUpdateShapes}
+                onImageUpload={onImageUpload}
+                shapes={model.shapes}
               />
             </div>
           }

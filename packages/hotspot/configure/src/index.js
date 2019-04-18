@@ -16,8 +16,8 @@ import sensibleDefaults from './defaults';
 const log = debug('hotspot:configure');
 
 const defaultValues = {
-  settingsPartialScoring: true,
   settingsMultipleCorrect: true,
+  settingsPartialScoring: true
 };
 
 const prepareCustomizationObject = (configure, model) => {
@@ -71,10 +71,6 @@ export default class HotspotConfigure extends HTMLElement {
     this.dispatchModelUpdated(reset);
   }
 
-  /**
-   *
-   * @param {done, progress, file} handler
-   */
   insertImage(handler) {
     this.dispatchEvent(new InsertImageEvent(handler));
   }
@@ -86,14 +82,10 @@ export default class HotspotConfigure extends HTMLElement {
   _render() {
     log('_render');
     let element = React.createElement(Root, {
-      model: this._model,
       configure: this._configure,
       disableSidePanel: this._disableSidePanel,
-      onModelChanged: this.onModelChanged,
-      imageSupport: {
-        add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
-      }
+      model: this._model,
+      onModelChanged: this.onModelChanged
     });
     ReactDOM.render(element, this);
   }

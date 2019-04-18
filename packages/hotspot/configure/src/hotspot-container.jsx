@@ -10,8 +10,6 @@ class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageUrl: '',
-      shapes: [],
       maxImageWidth: 0,
       maxImageHeight: 0,
       dragEnabled: true,
@@ -29,12 +27,10 @@ class Container extends Component {
   }
 
   handleFileRead = (file) => {
+    const { onImageUpload } = this.props;
     const reader = new FileReader();
     reader.onloadend = () => {
-      this.setState({
-        file,
-        imageUrl: reader.result,
-      });
+      onImageUpload(reader.result);
     };
     reader.readAsDataURL(file)
   };
@@ -48,19 +44,20 @@ class Container extends Component {
   handleOnDrop = (ev) => {
     ev.preventDefault();
     const { items, files } = ev.dataTransfer;
+    const imageType = /image.*/;
 
     this.setState({ dropzoneActive: false });
 
     if (items) {
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].kind === 'file') {
-          const file = items[i].getAsFile();
+      if (items[0].kind === 'file') {
+        const file = items[0].getAsFile();
+        if (file.type.match(imageType)) {
           this.handleFileRead(file);
         }
       }
     } else {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[0];
+      const file = files[0];
+      if (file.type.match(imageType)) {
         this.handleFileRead(file);
       }
     }
@@ -80,23 +77,23 @@ class Container extends Component {
   };
 
   handleUndo = () => {
-    const { shapes } = this.state;
+    const { onUpdateShapes, shapes } = this.props;
 
     if (shapes.length) {
-      shapes.pop();
-      this.setState({
-        shapes,
-      })
+      const newShapes = shapes.slice(0, shapes.length - 1);
+      onUpdateShapes(newShapes);
     }
   };
 
-  handleClearAll = () => this.setState({ shapes: [] });
+  handleClearAll = () => {
+    const { onUpdateShapes, onImageUpload } = this.props;
+    onUpdateShapes([]);
+    // onImageUpload();
+  };
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
 
   handleDisableDrag = () => this.setState({ dragEnabled: false });
-
-  handleOnChangeShapes = shapes => this.setState({ shapes });
 
   handleInputClick = () => this.input.click();
 
@@ -106,8 +103,8 @@ class Container extends Component {
   };
 
   render() {
-    const { classes, hotspotColor, outlineColor } = this.props;
-    const { imageUrl, shapes, dropzoneActive, maxImageWidth, maxImageHeight, dragEnabled, showTooltip } = this.state;
+    const { classes, hotspotColor, outlineColor, multipleCorrect, imageUrl, onUpdateShapes, shapes } = this.props;
+    const { dropzoneActive, maxImageWidth, maxImageHeight, dragEnabled, showTooltip } = this.state;
 
     return (
       <div className={classes.base} >
@@ -141,7 +138,8 @@ class Container extends Component {
                 hotspotColor={hotspotColor}
                 maxImageHeight={maxImageHeight}
                 maxImageWidth={maxImageWidth}
-                onChangeShapes={this.handleOnChangeShapes}
+                multipleCorrect={multipleCorrect}
+                onUpdateShapes={onUpdateShapes}
                 outlineColor={outlineColor}
                 shapes={shapes}
               />
@@ -154,6 +152,7 @@ class Container extends Component {
                   onClick={this.handleInputClick}
                 />
                 <input
+                  accept="image/*"
                   className={classes.input}
                   onChange={this.handleUploadImage}
                   ref={ref => { this.input = ref; }}
@@ -189,6 +188,7 @@ class Container extends Component {
               onClick={this.handleInputClick}
             />
             <input
+              accept="image/*"
               className={classes.input}
               onChange={this.handleUploadImage}
               ref={ref => { this.input = ref; }}
@@ -277,8 +277,14 @@ const styles = theme => ({
 
 Container.propTypes = {
   classes: PropTypes.object.isRequired,
+  imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
-  hotspotList: PropTypes.string.isRequired
+  hotspotList: PropTypes.string.isRequired,
+  multipleCorrect: PropTypes.bool.isRequired,
+  onImageUpload: PropTypes.func.isRequired,
+  onUpdateShapes: PropTypes.func.isRequired,
+  outlineColor: PropTypes.string.isRequired,
+  shapes: PropTypes.shape([]).isRequired
 };
 
 export default withStyles(styles)(Container);

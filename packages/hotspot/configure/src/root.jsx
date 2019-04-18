@@ -1,19 +1,10 @@
 import Main from './main';
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
-import merge from 'lodash/merge';
 import PropTypes from 'prop-types';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
-export default class Root extends React.Component {
-  static propTypes = {
-    model: PropTypes.object.isRequired,
-    configure: PropTypes.object,
-    disableSidePanel: PropTypes.bool,
-    onModelChanged: PropTypes.func.isRequired,
-    imageSupport: PropTypes.object
-  };
-
+class Root extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +14,7 @@ export default class Root extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const { disableSidePanel } = props;
     const { disableSidePanel: oldDisableProp } = this.props;
 
@@ -34,40 +25,9 @@ export default class Root extends React.Component {
     }
   }
 
-  onChoiceModeChanged = value => {
-    const { model } = this.state;
-
-    model.choiceMode = value;
-
-    if (value === 'radio') {
-      let correctFound = false;
-
-      model.choices = model.choices.map(c => {
-        if (correctFound) {
-          c.correct = false;
-          return c;
-        }
-
-        if (c.correct) {
-          correctFound = true;
-        }
-
-        return c;
-      });
-    }
-
-    this.updateModel(model, true);
-  };
-
-  onRemoveChoice = index => {
+  onRemoveShape = index => {
     const { model } = this.state;
     model.choices.splice(index, 1);
-    this.updateModel(model);
-  };
-
-  onPartialScoringChanged = () => {
-    const { model } = this.state;
-    model.partialScoring = !model.partialScoring;
     this.updateModel(model);
   };
 
@@ -81,7 +41,7 @@ export default class Root extends React.Component {
     });
   };
 
-  onAddChoice = () => {
+  onCreateShape = () => {
     const { model } = this.state;
     model.choices.push({
       label: 'label',
@@ -93,22 +53,36 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onChoiceChanged = (index, choice) => {
-    const { model } = this.state;
-    if (choice.correct && model.choiceMode === 'radio') {
-      model.choices = model.choices.map(c => {
-        return merge({}, c, { correct: false });
-      });
-    }
-
-    model.choices.splice(index, 1, choice);
-    this.updateModel(model);
-  };
-
   onPromptChanged = prompt => {
     const update = cloneDeep(this.state.model);
     update.prompt = prompt;
     this.updateModel(update);
+  };
+
+  onPartialScoringChanged = () => {
+    const { model } = this.state;
+    model.partialScoring = !model.partialScoring;
+    this.updateModel(model);
+  };
+
+  onMultipleCorrectChanged = () => {
+    const { model } = this.state;
+    model.multipleCorrect = !model.multipleCorrect;
+    model.shapes = model.shapes.map(shape => ({ ...shape, correct: false }));
+    this.updateModel(model);
+  };
+
+  handleOnUpdateShapes = (shapes, mouseOver = false) => {
+    const { model } = this.state;
+    model.shapes = shapes;
+    this.updateModel(model);
+  };
+
+  handleOnImageUpload = imageUrl => {
+    const { model } = this.state;
+    model.imageUrl = imageUrl;
+
+    this.updateModel(model);
   };
 
   render() {
@@ -116,14 +90,24 @@ export default class Root extends React.Component {
       model: this.state.model,
       configure: this.props.configure,
       disableSidePanel: this.state.disableSidePanel,
-      onRemoveChoice: this.onRemoveChoice,
-      onChoiceChanged: this.onChoiceChanged,
-      onAddChoice: this.onAddChoice,
+      onRemoveShape: this.onRemoveShape,
+      onCreateShape: this.onCreateShape,
+      onImageUpload: this.handleOnImageUpload,
       onPromptChanged: this.onPromptChanged,
-      onDefaultLangChanged: this.onDefaultLangChanged,
-      imageSupport: this.props.imageSupport
+      onUpdateShapes: this.handleOnUpdateShapes,
+      onPartialScoringChanged: this.onPartialScoringChanged,
+      onMultipleCorrectChanged: this.onMultipleCorrectChanged,
     };
 
     return <Main {...props} />;
   }
 }
+
+Root.propTypes = {
+  configure: PropTypes.object,
+  disableSidePanel: PropTypes.bool,
+  model: PropTypes.object.isRequired,
+  onModelChanged: PropTypes.func.isRequired
+};
+
+export default Root;

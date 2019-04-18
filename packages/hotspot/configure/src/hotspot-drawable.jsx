@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from 'react-dom';
 import { Layer, Stage } from 'react-konva';
+import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
-import {withStyles} from "@material-ui/core/styles/index";
 
 class Drawable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      shapes: [],
       isDrawing: false,
       isDrawingMode: true,
+      stateShapes: false,
       dimensions: {
         height: 0,
         width: 0,
@@ -21,16 +20,15 @@ class Drawable extends React.Component {
   }
 
   handleClick = (e) => {
-    const { isDrawing, isDrawingMode } = this.state;
-    const { onChangeShapes } = this.props;
+    const { isDrawing, isDrawingMode, stateShapes } = this.state;
+    const { onUpdateShapes } = this.props;
 
     if (!isDrawingMode) {
       return;
     }
     if (isDrawing) {
-      this.setState({
-        isDrawing: !isDrawing
-      });
+      this.setState({ isDrawing: !isDrawing, stateShapes: false });
+      onUpdateShapes(stateShapes);
       return;
     }
 
@@ -42,22 +40,40 @@ class Drawable extends React.Component {
       y: e.evt.layerY
     });
 
-    this.setState({
-      isDrawing: true,
-      shapes: newShapes
-    });
-    onChangeShapes(newShapes);
+    this.setState({ isDrawing: true });
+    onUpdateShapes(newShapes);
   };
 
   handleOnRemove = (index) => {
-    this.setState({
-      shapes: this.props.shapes.filter((_, i) => i !== index)
-    });
+    const { shapes, onUpdateShapes } = this.props;
+    const newShapes = shapes.filter((_, i) => i !== index);
+    onUpdateShapes(newShapes);
+  };
+
+  handleOnSetAsCorrect = (index) => {
+    const { multipleCorrect, shapes, onUpdateShapes } = this.props;
+
+    let newShapes = [];
+
+    if (multipleCorrect) {
+      newShapes = shapes.map((_, i) => {
+        if (i === index) {
+          _.correct = true;
+        }
+        return _;
+      })
+    } else {
+      newShapes = shapes.map((_, i) => {
+        _.correct = i === index;
+        return _;
+      })
+    }
+    onUpdateShapes(newShapes);
   };
 
   handleMouseMove= (e) => {
     const { isDrawing, isDrawingMode } = this.state;
-    const { shapes, onChangeShapes } = this.props;
+    const { shapes } = this.props;
 
     if (!isDrawingMode) {
       return;
@@ -79,11 +95,8 @@ class Drawable extends React.Component {
         x: currShape.x,
         y: currShape.y
       };
-
-      this.setState({
-        shapes: newShapesList,
-      });
-      onChangeShapes(newShapesList);
+      // On mouse move don't trigger any event. Put the shapes on this state instead.
+      this.setState({ stateShapes: newShapesList });
     }
   };
 
@@ -98,7 +111,6 @@ class Drawable extends React.Component {
   };
 
   initialiseResize = () => {
-    console.log('This: ', this);
     window.addEventListener('mousemove', this.startResizing, false);
     window.addEventListener('mouseup', this.stopResizing, false);
   };
@@ -147,8 +159,9 @@ class Drawable extends React.Component {
   };
 
   render() {
-    const { dimensions: { height, width }, isDrawing, isDrawingMode } = this.state;
+    const { dimensions: { height, width }, isDrawing, isDrawingMode, stateShapes } = this.state;
     const { imageUrl, hotspotColor, outlineColor, classes, maxImageWidth, maxImageHeight, shapes } = this.props;
+    const shapesToUse = stateShapes || shapes;
 
     return (
       <div className={classes.base}>
@@ -174,8 +187,9 @@ class Drawable extends React.Component {
           width={width}
         >
           <Layer>
-            {shapes.map((shape, index) => (
+            {shapesToUse.map((shape, index) => (
               <Rectangle
+                correct={shape.correct}
                 isDrawing={isDrawing}
                 isDrawingMode={isDrawingMode}
                 height={shape.height}
@@ -183,6 +197,7 @@ class Drawable extends React.Component {
                 index={index}
                 key={index}
                 onRemove={this.handleOnRemove}
+                onClick={this.handleOnSetAsCorrect}
                 outlineColor={outlineColor}
                 width={shape.width}
                 x={shape.x}
@@ -234,7 +249,8 @@ Drawable.propTypes = {
   hotspotColor:PropTypes.string.isRequired,
   maxImageHeight:PropTypes.number.isRequired,
   maxImageWidth:PropTypes.number.isRequired,
-  onChangeShapes:PropTypes.func.isRequired,
+  multipleCorrect:PropTypes.bool.isRequired,
+  onUpdateShapes:PropTypes.func.isRequired,
   outlineColor:PropTypes.string.isRequired,
   shapes:PropTypes.shape([]).isRequired,
 };

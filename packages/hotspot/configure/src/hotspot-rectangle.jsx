@@ -7,27 +7,26 @@ class RectComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      correct: false,
       showRemove: false,
     };
   }
 
-  handleClick(e, value) {
-    const { width, height, isDrawing } = this.props;
+  handleClick = (e) => {
+    const { width, height, isDrawing, onClick, index } = this.props;
     if (width < 0 && height < 0 && isDrawing) {
       return;
     }
     e.cancelBubble = true;
-    this.setState({ correct: value });
-  }
+    onClick(index);
+  };
 
   handleMouseEnter = () => {
-    document.body.style.cursor = "pointer";
+    document.body.style.cursor = 'pointer';
     this.setState({ showRemove: true });
   };
 
   handleMouseLeave = () => {
-    document.body.style.cursor = "default";
+    document.body.style.cursor = 'default';
     this.setState({ showRemove: false });
   };
 
@@ -38,8 +37,7 @@ class RectComponent extends React.Component {
   };
 
   render() {
-    const { correct, showRemove } = this.state;
-    const { classes, hotspotColor, outlineColor, width, height } = this.props;
+    const { classes, hotspotColor, outlineColor, width, height, x, y, correct } = this.props;
 
     return (
       <Group>
@@ -48,14 +46,14 @@ class RectComponent extends React.Component {
           width={width}
           height={height}
           fill={hotspotColor}
-          onClick={(e) => this.handleClick(e, !correct)}
-          // draggable={true}
+          onClick={this.handleClick}
+          draggable={true}
           stroke={outlineColor}
           strokeWidth={correct ? 2 : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
-          x={this.props.x}
-          y={this.props.y}
+          x={x}
+          y={y}
         >
         </Rect>
         {/*<Text*/}
@@ -81,11 +79,17 @@ const styles = theme => ({
 
 RectComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  correct: PropTypes.bool.isRequired,
   isDrawing: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(RectComponent);
