@@ -1,37 +1,14 @@
 import React from 'react';
+import { ConfigLayout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
-import { ConfigLayout } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
+import EditableHtml from '@pie-lib/editable-html';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
-import Hotspot from './hotspot';
-
-const styles = theme => ({
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  },
-  design: {
-    paddingTop: theme.spacing.unit * 3
-  },
-  choiceConfiguration: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0
-  },
-  addButton: {
-    float: 'right'
-  }
-});
+import HotspotPalette from './hotspot-palette';
+import HotspotContainer from './hotspot-container';
 
 const getSideMenuItems = (props) => {
   const { classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
@@ -76,26 +53,113 @@ const getSideMenuItems = (props) => {
   ];
 };
 
-const Design = withStyles(styles)(props => {
-  const {
-    classes,
-    disableSidePanel,
-  } = props;
+class Design extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={classes.design}>
-      <ConfigLayout
-        sideMenuItems={getSideMenuItems(props)}
-        regularItems={
-          <div>
-            <Hotspot />
-          </div>
-        }
-        disableSidePanel={disableSidePanel}
-      />
-    </div>
-  );
+    this.state = {
+      hotspotColor: 'rgba(137, 183, 244, 0.65)',
+      hotspotList: [
+        "rgba(137, 183, 244, 0.65)",
+        "rgba(217, 30, 24, 0.65)",
+        "rgba(254, 241, 96, 0.65)"
+      ],
+      outlineColor: 'blue',
+      outlineList: [
+        "blue",
+        "red",
+        "yellow"
+      ]
+    }
+  }
+
+  handleColorChange(type, color) {
+    // const { model, onLayoutChange, onResponseTypeChange } = this.props;
+    // const newModel = { ...model };
+    //
+    // newModel[name] = event.target.value;
+    //
+    // if (name === 'hotspot') {
+    //   onLayoutChange(newModel[name]);
+    // } else {
+    //   onResponseTypeChange(newModel[name]);
+    // }
+    this.setState({
+      [`${type}Color`]: color
+    })
+  }
+
+  render() {
+    const { props } = this;
+    const {
+      classes,
+      disableSidePanel,
+      model,
+      onPromptChanged,
+    } = props;
+    const { hotspotColor, outlineColor, hotspotList, outlineList } = this.state;
+
+    return (
+      <div className={classes.design}>
+        <ConfigLayout
+          disableSidePanel={disableSidePanel}
+          sideMenuItems={getSideMenuItems(props)}
+          regularItems={
+            <div className={classes.regular}>
+              <InputContainer label="Item Stem" className={classes.promptContainer}>
+                <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
+              </InputContainer>
+
+              <Typography className={classes.subheader} variant="subheading">
+                Define Hotspot
+              </Typography>
+
+              <HotspotPalette
+                hotspotColor={hotspotColor}
+                hotspotList={hotspotList}
+                outlineColor={outlineColor}
+                outlineList={outlineList}
+                onHotspotColorChange={color => this.handleColorChange('hotspot', color)}
+                onOutlineColorChange={color => this.handleColorChange('outline', color)}
+              />
+
+              <HotspotContainer
+                hotspotColor={hotspotColor}
+                outlineColor={outlineColor}
+              />
+            </div>
+          }
+        />
+      </div>
+    );
+  }
+}
+
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    marginTop: theme.spacing.unit
+  },
+  design: {
+    marginTop: theme.spacing.unit * 3
+  },
+  promptContainer: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
+  regular: {
+    marginBottom: theme.spacing.unit * 3
+  },
+  subheader: {
+    marginTop: theme.spacing.unit * 4
+  },
+  switchElement: {
+    justifyContent: 'space-between',
+    margin: 0
+  }
 });
+
+const StyledDesign = withStyles(styles)(Design);
 
 export class Main extends React.Component {
   static propTypes = {
@@ -112,12 +176,12 @@ export class Main extends React.Component {
 
   render() {
     return (
-      <Design {...this.props} />
+      <StyledDesign {...this.props} />
     );
   }
 }
 
-const Styled = withStyles(styles)(Main);
+const MainStyled = withStyles(styles)(Main);
 
-export default Styled;
+export default MainStyled;
 

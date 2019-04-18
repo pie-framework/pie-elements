@@ -13,7 +13,7 @@ import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
 
-const log = debug('multiple-choice:configure');
+const log = debug('hotspot:configure');
 
 const defaultValues = {
   settingsPartialScoring: true,

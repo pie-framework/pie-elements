@@ -1,4 +1,5 @@
 export default {
+  prompt: 'Item label',
   partA: {
     choices: [
       {

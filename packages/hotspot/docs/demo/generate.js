@@ -1,6 +1,7 @@
 exports.model = (id, element) => ({
   id,
   element,
+  prompt: 'This is the question prompt',
   partA: {
     choiceMode: 'radio',
     choices: [
