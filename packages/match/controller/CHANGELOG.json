@@ -148,5 +148,20 @@
     "committerDate": "2018-06-20 16:22:04 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-controller@1.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "Renamed model and configure properties using naming conventions and integrated settings panel.",
+    "merge": null,
+    "header": "feat(match): Renamed model and configure properties using naming conventions and integrated settings panel.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "34ff2b1f422b8664a34513818ebbac441486ee45",
+    "gitTags": "",
+    "committerDate": "2019-04-16 14:45:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@1.3.0"
   }
 ]
