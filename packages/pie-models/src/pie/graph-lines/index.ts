@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 interface PartialScoringRule {
     /** Number of correct answers */
@@ -96,10 +97,11 @@ interface GraphLineModelConfig {
     showFeedback: boolean;
 }
 
-interface GraphLineModel {
-    /** Config for graph line model */
-    config: GraphLineModelConfig;
-}
+/**
+ * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
+ * rationale, scoringType, studentInstructions, teacherInstructions
+ * so there's no implementation (they are only added in model)
+ */
 
 /**
  * Model Object for @pie-elements/graph-lines
@@ -119,11 +121,72 @@ export interface GraphLinesPie extends PieModel {
     partialScoringRules?: PartialScoringRule[];
 
     /** Indicates the graph line model */
-    model: GraphLineModel;
+    graph: GraphLineModelConfig;
+
+    /** Indicates if arrows are enabled */
+    arrows: boolean;
+
+    /** Indicates if padding is enabled */
+    padding: boolean;
+
+    /** Indicates if labels are enabled */
+    labels: boolean;
+
+    /** Indicates if rationale is enabled */
+    rationale: boolean;
+
+    /** Indicates scoring type */
+    scoringType: 'auto' | 'rubric';
+
+    /** Indicates if student instructions are enabled */
+    studentInstructions: boolean;
+
+    /** Indicates if teacher instructions are enabled */
+    teacherInstructions: boolean;
 }
 
 /**
  * Config Object for @pie-elements/graph-lines
  * @additionalProperties false
  */
-export interface GraphLinesConfigure extends PromptConfig, CommonConfigSettings {}
+export interface GraphLinesConfigure extends PromptConfig, CommonConfigSettings {
+    /**
+     * Arrows configuration
+     */
+    arrows?: ConfigureProp;
+
+    /**
+     * Padding configuration
+     */
+    padding?: ConfigureProp;
+
+    /**
+     * Graph title configuration
+     */
+    graphTitle?: ConfigureProp;
+
+    /**
+     * Labels configuration
+     */
+    labels?: ConfigureProp;
+
+    /**
+     * Rationale configuration
+     */
+    rationale?: ConfigureProp;
+
+    /**
+     * Scoring Type configuration
+     */
+    scoringType?: ConfigureProp;
+
+    /**
+     * Student Instructions configuration
+     */
+    studentInstructions?: ConfigureProp;
+
+    /**
+     * Teacher Instructions configuration
+     */
+    teacherInstructions?: ConfigureProp;
+}
