@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
+import { ResponseTypes } from './utils';
 
 const log = debug('@pie-element:math-inline:configure');
 const { Panel, toggle, radio } = settings;
@@ -67,7 +68,7 @@ class Configure extends React.Component {
             groups={{
               'Item Type': {
                 responseType: responseType.settings &&
-                radio(responseType.label, 'Simple', 'Advanced Multi'),
+                radio(responseType.label, ResponseTypes.simple, ResponseTypes.advanced),
                 partialScoring: partialScoring.settings &&
                 toggle(partialScoring.label),
               },

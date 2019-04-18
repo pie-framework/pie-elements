@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
+import { ResponseTypes } from './utils';
 
 let registered = false;
 
@@ -265,7 +266,7 @@ class GeneralConfigBlock extends React.Component {
             nonEmpty={false}
           />
         </InputContainer>
-        {responseType === 'Advanced Multi' && (
+        {responseType === ResponseTypes.advanced && (
           <div className={classes.inputContainer}>
             <InputLabel className={classes.templateTitle}>
               RESPONSE TEMPLATE
@@ -304,7 +305,7 @@ class GeneralConfigBlock extends React.Component {
             <MenuItem value={'everything'}>Everything</MenuItem>
           </Select>
         </InputContainer>
-        {responseType === 'Simple' && (
+        {responseType === ResponseTypes.simple && (
           <Response
             mode={equationEditor}
             defaultResponse
@@ -312,7 +313,7 @@ class GeneralConfigBlock extends React.Component {
             onResponseChange={this.onSimpleResponseChange}
           />
         )}
-        {responseType === 'Advanced Multi' &&
+        {responseType === ResponseTypes.advanced &&
           responses.map((response, idx) => (
             <Response
               key={response.id}

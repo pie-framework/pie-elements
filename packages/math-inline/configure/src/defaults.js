@@ -1,10 +1,12 @@
+import { ResponseTypes } from './utils';
+
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure
  */
 
 export default {
-  responseType: 'Advanced Multi',
+  responseType: ResponseTypes.advanced,
   expression: 'y = ',
   question: 'What is the equation for a slope?',
   equationEditor: 'everything',
@@ -40,21 +42,21 @@ export default {
       label: 'Response type'
     },
     rationale: {
-      settings: true,
+      settings: false,
       label: 'Rationale',
       enabled: true,
     },
     scoringType: {
-      settings: true,
+      settings: false,
       label: 'Scoring Type',
     },
     studentInstructions: {
-      settings: true,
+      settings: false,
       label: 'Student Instructions',
       enabled: true,
     },
     teacherInstructions: {
-      settings: true,
+      settings: false,
       label: 'Teacher Instructions',
       enabled: true,
     },
