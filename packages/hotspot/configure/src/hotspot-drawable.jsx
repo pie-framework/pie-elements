@@ -58,7 +58,7 @@ class Drawable extends React.Component {
     if (multipleCorrect) {
       newShapes = shapes.map((_, i) => {
         if (i === index) {
-          _.correct = true;
+          _.correct = !_.correct;
         }
         return _;
       })
