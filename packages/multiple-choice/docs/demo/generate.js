@@ -1,9 +1,8 @@
 exports.model = (id, element) => ({
   id,
   element,
-  prompt: 'Which of these northern European countries are EU members?',
   choiceMode: 'checkbox',
-  keyMode: 'numbers',
+  choicePrefix: 'numbers',
   choices: [
     {
       correct: true,
@@ -41,9 +40,6 @@ exports.model = (id, element) => ({
       }
     }
   ],
-  partialScoring: false,
-  shuffle: false,
-  partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
-          that is correctly unchecked will be worth 1 point.
-          The maximum points is the total number of answer choices.`
+  itemStem: 'Which of these northern European countries are EU members?',
+  configure: {}
 });

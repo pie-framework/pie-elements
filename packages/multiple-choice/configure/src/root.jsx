@@ -39,46 +39,9 @@ export default class Root extends React.Component {
     }
   }
 
-  onChoiceModeChanged = value => {
-    const { model } = this.state;
-
-    model.choiceMode = value;
-
-    if (value === 'radio') {
-      let correctFound = false;
-
-      model.choices = model.choices.map(c => {
-        if (correctFound) {
-          c.correct = false;
-          return c;
-        }
-
-        if (c.correct) {
-          correctFound = true;
-        }
-
-        return c;
-      });
-    }
-
-    this.updateModel(model, true);
-  };
-
   onRemoveChoice = index => {
     const { model } = this.state;
     model.choices.splice(index, 1);
-    this.updateModel(model);
-  };
-
-  onPartialScoringChanged = () => {
-    const { model } = this.state;
-    model.partialScoring = !model.partialScoring;
-    this.updateModel(model);
-  };
-
-  onShuffleChanged = () => {
-    const { model } = this.state;
-    model.shuffle = !model.shuffle;
     this.updateModel(model);
   };
 
@@ -104,12 +67,6 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onKeyModeChanged = value => {
-    const { model } = this.state;
-    model.keyMode = value;
-    this.updateModel(model);
-  };
-
   onChoiceChanged = (index, choice) => {
     const { model } = this.state;
     if (choice.correct && model.choiceMode === 'radio') {
@@ -122,9 +79,9 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = itemStem => {
     const update = cloneDeep(this.state.model);
-    update.prompt = prompt;
+    update.itemStem = itemStem;
     this.updateModel(update);
   };
 
@@ -134,14 +91,11 @@ export default class Root extends React.Component {
       configure: this.props.configure,
       disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
-      onChoiceModeChanged: this.onChoiceModeChanged,
-      onKeyModeChanged: this.onKeyModeChanged,
       onChoiceChanged: this.onChoiceChanged,
       onAddChoice: this.onAddChoice,
       onPromptChanged: this.onPromptChanged,
       onDefaultLangChanged: this.onDefaultLangChanged,
-      onPartialScoringChanged: this.onPartialScoringChanged,
-      onShuffleChanged: this.onShuffleChanged,
+      updateModel: this.updateModel,
       imageSupport: this.props.imageSupport
     };
 
