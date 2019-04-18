@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { InputCheckbox, settings, FeedbackConfig } from '@pie-lib/config-ui';
+import { settings, FeedbackConfig } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
 import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
@@ -375,7 +375,6 @@ describe('AnswerConfigBlock', () => {
       component = wrapper();
 
       expect(component.find(Input).length).toBeGreaterThan(2);
-      expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
       expect(component.find(Button).length).toEqual(1);
     });
   });
