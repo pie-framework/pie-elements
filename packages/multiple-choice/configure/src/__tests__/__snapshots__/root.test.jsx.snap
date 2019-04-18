@@ -5,6 +5,7 @@ exports[`Root snapshot renders 1`] = `
   model={
     Object {
       "choiceMode": "checkbox",
+      "choicePrefix": "numbers",
       "choices": Array [
         Object {
           "correct": true,
@@ -42,21 +43,14 @@ exports[`Root snapshot renders 1`] = `
         },
       ],
       "configure": Object {},
-      "keyMode": "numbers",
+      "itemStem": "Which of these northern European countries are EU members?",
       "partialScoring": false,
-      "partialScoringLabel": "Each correct response that is correctly checked and each incorrect response
-          that is correctly unchecked will be worth 1 point.
-          The maximum points is the total number of answer choices.",
-      "prompt": "Which of these northern European countries are EU members?",
     }
   }
   onAddChoice={[Function]}
   onChoiceChanged={[Function]}
-  onChoiceModeChanged={[Function]}
-  onKeyModeChanged={[Function]}
-  onPartialScoringChanged={[Function]}
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
-  onShuffleChanged={[Function]}
+  updateModel={[Function]}
 />
 `;
