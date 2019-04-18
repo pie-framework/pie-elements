@@ -168,5 +168,35 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "multiple-choice",
+    "subject": "Integrated new settings panel. Updated tests.",
+    "merge": null,
+    "header": "feat(multiple-choice): Integrated new settings panel. Updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6387043a0d0c9176735ce1c23fee5eb4fdca44c6",
+    "gitTags": "",
+    "committerDate": "2019-04-17 08:53:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "multiple-choice",
+    "subject": "Refactored using new established naming convention and updated tests.",
+    "merge": null,
+    "header": "fix(multiple-choice): Refactored using new established naming convention and updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "78ffbaeb9cf4bbd4ef88a57addb9a1221089903c",
+    "gitTags": "",
+    "committerDate": "2019-04-17 06:50:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.2.0"
   }
 ]
