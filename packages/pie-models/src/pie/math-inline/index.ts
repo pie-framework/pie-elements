@@ -2,6 +2,7 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 interface Alternate {
     /** The id for the alternative response */
@@ -41,16 +42,23 @@ interface MathInlineResponse {
     allowDecimals?: boolean;
 }
 
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure (to be moved when the functionality is defined)
+ */
+
+
 /**
 * Model for the @pie-elements/math-inline
 * @additionalProperties false
 */
 export interface MathInlinePie extends PieModel {
+    /** Indicates the mode of the question*/
+    responseType: 'advanced' | 'simple';
+
     /** Indicates the question statement */
     question?: string;
 
-    /** Indicates the mode of the question*/
-    mode: 'advanced' | 'simple';
 
     /** Indicates the expression for advanced mode */
     expression: string;
@@ -76,14 +84,23 @@ export interface MathInlinePie extends PieModel {
      */
     defaultResponse?: MathInlineResponse;
 
-    /** The configuration */
-    config: {
-        /**
-         * Indicates if partial scoring is allowed.
-         * This property is not used yet.
-         */
-        allowPartialScores: boolean;
-    }
+    /**
+     * Indicates if partial scoring is allowed.
+     * This property is not used yet.
+     */
+    partialScoring: boolean;
+
+    /** Indicates if rationale is enabled */
+    rationale: boolean;
+
+    /** Indicates scoring type */
+    scoringType: 'auto' | 'rubric';
+
+    /** Indicates if student instructions are enabled */
+    studentInstructions: boolean;
+
+    /** Indicates if teacher instructions are enabled */
+    teacherInstructions: boolean;
 }
 
 
@@ -92,5 +109,33 @@ export interface MathInlinePie extends PieModel {
  * @additionalProperties false
  */
 export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings {
+    /**
+     * Configuration for response type
+     */
+    responseType?: ConfigureProp;
 
+    /**
+     * Configuration for partial scoring
+     */
+    partialScoring?: ConfigureProp;
+
+    /**
+     * Rationale configuration
+     */
+    rationale?: ConfigureProp;
+
+    /**
+     * Scoring Type configuration
+     */
+    scoringType?: ConfigureProp;
+
+    /**
+     * Student Instructions configuration
+     */
+    studentInstructions?: ConfigureProp;
+
+    /**
+     * Teacher Instructions configuration
+     */
+    teacherInstructions?: ConfigureProp;
 }

@@ -1651,7 +1651,7 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^7.11.29", "@pie-lib/config-ui@^7.11.31", "@pie-lib/config-ui@^7.11.32", "@pie-lib/config-ui@^7.11.9", "@pie-lib/config-ui@^7.6.7", "@pie-lib/config-ui@^7.8.0":
+"@pie-lib/config-ui@^7.11.29", "@pie-lib/config-ui@^7.11.32", "@pie-lib/config-ui@^7.11.9", "@pie-lib/config-ui@^7.6.7", "@pie-lib/config-ui@^7.8.0":
   version "7.11.32"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.32.tgz#ec41fffd7c3f128dafdf265d0ed21cb0795f2486"
   integrity sha512-/tRJNU9eq8m0gCf8QxVkozNTet2VDj4IzTVfjcSglzYh0x9bUiUoRYKNhkjGar/vahAWHli3vtgwaGt598EaYg==
