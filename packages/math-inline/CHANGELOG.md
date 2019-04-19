@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.7.1...@pie-element/math-inline@0.8.0) (2019-04-19)
+
+
+### Features
+
+* **math-inline:** Integrated settings panel. ([4d6c9dd](https://github.com/pie-framework/pie-elements/commit/4d6c9dd))
+
+
+
+
+
 ## [0.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@0.7.0...@pie-element/math-inline@0.7.1) (2019-04-12)
 
 **Note:** Version bump only for package @pie-element/math-inline
