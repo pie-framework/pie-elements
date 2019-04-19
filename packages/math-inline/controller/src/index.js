@@ -2,6 +2,7 @@ import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 import { partialScoring } from '@pie-lib/controller-utils';
+import { ResponseTypes } from './utils';
 
 import defaults from './defaults';
 
@@ -13,7 +14,7 @@ function trimSpaces(str = '') {
 
 const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
   const correctResponses = model.responses;
-  const isAdvanced = model.mode === 'advanced';
+  const isAdvanced = model.mode === ResponseTypes.advanced;
 
   if (!answerItem || (isAdvanced && answerItem.length === 0)) {
     return {
@@ -56,7 +57,7 @@ const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
   return correctnessObject;
 };
 
-function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced, model) {
+function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced) {
   let correct = 0;
   const answerInfo = {};
 
@@ -137,7 +138,7 @@ const getCorrectness = (question, env, session, partialScoringEnabled) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.mode === 'advanced' ? session.answers : session.response,
+      question.mode === ResponseTypes.advanced ? session.answers : session.response,
       partialScoringEnabled
     );
   }
