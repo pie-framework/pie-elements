@@ -673,5 +673,50 @@
     "committerDate": "2019-04-03 14:31:20 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@0.8.5"
+  },
+  {
+    "type": "feat",
+    "scope": "multiple-choice",
+    "subject": "Integrated new settings panel. Updated tests.",
+    "merge": null,
+    "header": "feat(multiple-choice): Integrated new settings panel. Updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6387043a0d0c9176735ce1c23fee5eb4fdca44c6",
+    "gitTags": "",
+    "committerDate": "2019-04-17 08:53:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@0.9.0"
+  },
+  {
+    "type": "fix",
+    "scope": "multiple-choice",
+    "subject": "Refactored using new established naming convention and updated tests.",
+    "merge": null,
+    "header": "fix(multiple-choice): Refactored using new established naming convention and updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "78ffbaeb9cf4bbd4ef88a57addb9a1221089903c",
+    "gitTags": "",
+    "committerDate": "2019-04-17 06:50:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@0.9.0"
+  },
+  {
+    "type": "fix",
+    "scope": "placement-ordering",
+    "subject": "renaming model properties with naming conventions.",
+    "merge": null,
+    "header": "fix(placement-ordering): renaming model properties with naming conventions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9d9be0154654c1c7c6866e3daa74d9e37523a567",
+    "gitTags": "",
+    "committerDate": "2019-04-15 11:43:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@0.9.0"
   }
 ]

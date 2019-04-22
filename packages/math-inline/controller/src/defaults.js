@@ -1,5 +1,7 @@
+import { ResponseTypes } from './utils';
+
 export default {
-  mode: 'Advanced Multi',
+  mode: ResponseTypes.advanced,
   expression: 'y = ',
   question: 'What is the equation for a slope?',
   equationEditor: 'everything',
