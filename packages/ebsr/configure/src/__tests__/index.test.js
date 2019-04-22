@@ -1,6 +1,8 @@
+import React from 'react';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import merge from 'lodash/merge';
+import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -12,6 +14,8 @@ jest.mock('@pie-lib/config-ui', () => ({
     radio: jest.fn()
   }
 }));
+
+jest.mock('@pie-element/multiple-choice/configure/lib', () => {});
 
 const PART_A = 'partA';
 const PART_B = 'partB';
