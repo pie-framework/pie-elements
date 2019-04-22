@@ -45,7 +45,8 @@ module.exports = {
           },
           validation: 'literal'
         }
-      ]
+      ],
+      responseType: 'Advanced Multi',
     }
   ]
 };
