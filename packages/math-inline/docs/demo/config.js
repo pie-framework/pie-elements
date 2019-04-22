@@ -6,7 +6,7 @@ module.exports = {
     {
       id: '1',
       element: 'math-inline',
-      mode: 'advanced',
+      mode: 'Advanced Multi',
       feedback: {
         correct: {
           default: 'Correct',
