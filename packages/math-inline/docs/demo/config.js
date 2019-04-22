@@ -6,7 +6,7 @@ module.exports = {
     {
       id: '1',
       element: 'math-inline',
-      mode: 'Advanced Multi',
+      responseType: 'Advanced Multi',
       feedback: {
         correct: {
           default: 'Correct',
@@ -45,8 +45,7 @@ module.exports = {
           },
           validation: 'literal'
         }
-      ],
-      responseType: 'Advanced Multi',
+      ]
     }
   ]
 };
