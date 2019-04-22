@@ -1,8 +1,4 @@
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
 import Design from './design';
-import Help from './help';
 import React from 'react';
 import { withDragContext } from '@pie-ui/placement-ordering';
 import { withStyles } from '@material-ui/core/styles';
@@ -57,26 +53,16 @@ class Main extends React.Component {
   };
 
   render() {
-    const { classes, imageSupport } = this.props;
-    const { index, model } = this.state;
+    const { imageSupport } = this.props;
+    const { model } = this.state;
 
     return (
-      <div>
-        <div className={classes.tabBar}>
-          <Tabs onChange={this.onTabIndexChange} value={index}>
-            <Tab label="Design"/>
-          </Tabs>
-          <Help />
-        </div>
-        {index === 0 && (
-          <Design
-            model={model}
-            onModelChanged={this.onModelChanged}
-            imageSupport={imageSupport}
-            updateModel={this.updateModel}
-          />
-        )}
-      </div>
+      <Design
+        model={model}
+        onModelChanged={this.onModelChanged}
+        imageSupport={imageSupport}
+        updateModel={this.updateModel}
+      />
     );
   }
 }

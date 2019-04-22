@@ -1,14 +1,19 @@
-import { flattenCorrect, score, pairwiseCombinationScore } from '../scoring';
+import {
+  flattenCorrect,
+  score,
+  pairwiseCombinationScore,
+  illegalArgumentError
+} from '../scoring';
 import _ from 'lodash';
 
 describe('pairwiseCombinationScore', () => {
-  const assertScore = correctResponse => (answer, expectedScore) => {
+  const assertScore = (correctResponse, opts) => (answer, expectedScore) => {
     it(`${expectedScore} for ${
       typeof answer === 'string' ? answer : JSON.stringify(answer)
     }`, () => {
       const c = correctResponse.split('');
       const a = typeof answer === 'string' ? answer.split('') : answer;
-      const result = pairwiseCombinationScore(c, a);
+      const result = pairwiseCombinationScore(c, a, opts);
       expect(result).toEqual(expectedScore);
     });
   };
@@ -35,25 +40,31 @@ describe('pairwiseCombinationScore', () => {
   });
 
   describe('correct response: AAB', () => {
-    const assertAAB = assertScore('AAB');
-    assertAAB('', 0);
-    assertAAB('A', 0);
-    assertAAB('AA', 0.33);
-    assertAAB('AAC', 0.33);
-    assertAAB('AAB', 1);
-    assertAAB('BAA', 0.33);
-    assertAAB('ABA', 0.67);
-    assertAAB('ABAB', 0);
+    it('throws an error because of duplicate in answer', () => {
+      expect(() => pairwiseCombinationScore(['A', 'A'], ['A', 'A'])).toThrow(
+        illegalArgumentError(['A', 'A'])
+      );
+    });
   });
 
   describe('correct response: ABC', () => {
     const assertABC = assertScore('ABC');
+    assertABC('', 0);
+    assertABC('A', 0);
+    assertABC('AA', 0);
+    assertABC('AB', 0.33);
+    assertABC('AC', 0.33);
+    assertABC('AAC', 0);
+    assertABC('AAB', 0);
+    assertABC('BAA', 0);
+    assertABC('ABA', 0);
+    assertABC('ABAB', 0);
+    assertABC('ABC', 1);
     assertABC('ABC', 1);
     assertABC('BCA', 0.33);
     assertABC('CAB', 0.33);
     assertABC('CBA', 0);
     assertABC('ACB', 0.67);
-    assertABC('A', 0);
     assertABC('B', 0);
     assertABC('C', 0);
     assertABC('AB', 0.33);
@@ -62,9 +73,15 @@ describe('pairwiseCombinationScore', () => {
     assertABC('CA', 0);
     assertABC('CB', 0);
     assertABC('BA', 0);
-    assertABC('', 0);
     assertABC('ABCD', 0);
   });
+
+  describe('correct response: ABCD - order must be complete', () => {
+    const assertABCD = assertScore('ABCD', { orderMustBeComplete: true });
+    assertABCD('ABC', 0);
+    assertABCD('BCD', 0);
+  });
+
   describe('correct response: ABCD', () => {
     const assertABCD = assertScore('ABCD');
     assertABCD('ABCD', 1);
@@ -74,7 +91,24 @@ describe('pairwiseCombinationScore', () => {
     assertABCD('CDBA', 0.17);
     assertABCD('DCBA', 0);
     assertABCD('DCAB', 0.17);
+    assertABCD('ABAB', 0);
     assertABCD('AB', 0.17);
+  });
+
+  describe('custom override - allowDuplicates: true, orderMustBeComplete: false', () => {
+    describe('correct response: AAB - dups, order incomplete', () => {
+      const assertAAB = assertScore('AAB', {
+        allowDuplicates: true
+      });
+      assertAAB('', 0);
+      assertAAB('A', 0);
+      assertAAB('AA', 0.33);
+      assertAAB('AAC', 0.33);
+      assertAAB('AAB', 1);
+      assertAAB('BAA', 0.33);
+      assertAAB('ABA', 0.67);
+      assertAAB('ABAB', 0);
+    });
   });
 });
 

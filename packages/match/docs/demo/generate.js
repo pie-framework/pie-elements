@@ -1,6 +1,26 @@
 exports.model = (id, element) => ({
   id,
   element,
+  enableImages: true,
+  feedback: {
+    correct: {
+      type: 'none',
+      default: 'Correct'
+    },
+    partial: {
+      type: 'none',
+      default: 'Nearly'
+    },
+    incorrect: {
+      type: 'none',
+      default: 'Incorrect'
+    }
+  },
+  headers: ['Column 1', 'Column 2', 'Column 3'],
+  layout: 3,
+  lockChoiceOrder: true,
+  partialScoring: false,
+  responseType: 'radio',
   rows: [
     {
       id: 1,
@@ -23,23 +43,5 @@ exports.model = (id, element) => ({
       values: [false, false]
     }
   ],
-  shuffled: false,
-  partialScoring: false,
-  layout: 3,
-  headers: ['Column 1', 'Column 2', 'Column 3'],
-  responseType: 'radio',
-  feedback: {
-    correct: {
-      type: 'none',
-      default: 'Correct'
-    },
-    partial: {
-      type: 'none',
-      default: 'Nearly'
-    },
-    incorrect: {
-      type: 'none',
-      default: 'Incorrect'
-    }
-  }
+  configure: {}
 });

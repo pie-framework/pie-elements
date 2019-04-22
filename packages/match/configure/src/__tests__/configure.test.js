@@ -2,20 +2,34 @@ import * as React from 'react';
 import Configure from '../configure';
 import AnswerConfigBlock from '../answer-config-block';
 import GeneralConfigBlock from '../general-config-block';
-import PartialScoringConfig from '@pie-lib/scoring-config';
-import SwipeableViews from 'react-swipeable-views';
 import Button from '@material-ui/core/Button';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { FeedbackConfig } from '@pie-lib/config-ui';
-import { InputCheckbox } from '@pie-lib/config-ui';
+import { settings, FeedbackConfig } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
 import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
 import cloneDeep from 'lodash/cloneDeep';
+import defaultValues from '../defaults';
+
+jest.mock('@material-ui/core', () => ({
+  Input: props => <div/>,
+  Button: props => <div/>,
+}));
+
+jest.mock('@pie-lib/config-ui', () => ({
+  FeedbackConfig: props => (<div/>),
+  InputCheckbox: props => (<div/>),
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
+  },
+  settings: {
+    Panel: props => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
 
 export const defaultProps = {
   model: {
@@ -43,7 +57,7 @@ export const defaultProps = {
         values: [false, false]
       }
     ],
-    shuffled: false,
+    lockChoiceOrder: true,
     partialScoring: [],
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],
@@ -61,7 +75,8 @@ export const defaultProps = {
         type: 'none',
         default: 'Incorrect'
       }
-    }
+    },
+    configure: defaultValues.configure
   }
 };
 const clonedDefaultProps = cloneDeep(defaultProps);
@@ -78,11 +93,7 @@ describe('Configure', () => {
     component = wrapper();
 
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
-    expect(component.find(PartialScoringConfig).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
-    expect(component.find(SwipeableViews).length).toEqual(1);
-    expect(component.find(Tabs).length).toEqual(1);
-    expect(component.find(Tab).length).toEqual(2);
   });
 
   it('updates responseType correctly', () => {
@@ -156,7 +167,7 @@ describe('Configure', () => {
           values: [true, false]
         }
       ],
-      shuffled: false,
+      lockChoiceOrder: true,
       partialScoring: [],
       layout: 3,
       headers: ['Column 1', 'Column 2', 'Column 3'],
@@ -174,7 +185,8 @@ describe('Configure', () => {
           type: 'none',
           default: 'Incorrect'
         }
-      }
+      },
+      configure: defaultValues.configure
     });
   });
 
@@ -363,7 +375,6 @@ describe('AnswerConfigBlock', () => {
       component = wrapper();
 
       expect(component.find(Input).length).toBeGreaterThan(2);
-      expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
       expect(component.find(Button).length).toEqual(1);
     });
   });

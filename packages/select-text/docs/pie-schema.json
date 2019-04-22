@@ -190,7 +190,7 @@
       "type": "boolean",
       "title": "partialScoring"
     },
-    "partialScoringLabel": {
+    "labelPartialScoring": {
       "description": "Partial scoring label",
       "type": "string",
       "title": "partialScoringLabel"

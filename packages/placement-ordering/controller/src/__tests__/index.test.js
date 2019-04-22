@@ -7,7 +7,8 @@ describe('index', () => {
       {
         itemStem: 'hi',
         choices: [],
-        correctResponse: []
+        correctResponse: [],
+        lockChoiceOrder: true
       },
       o
     );
@@ -127,41 +128,41 @@ describe('index', () => {
       );
     });
 
-    describe('shuffle', () => {
+    describe('lockChoiceOrder', () => {
       let model = {
         correctResponse: ['a', 'b'],
         itemStem: 'this is a prompt',
         choices: [
-          { label: 'one', id: '1', shuffle: false },
+          { label: 'one', id: '1', lockChoiceOrder: true },
           { label: 'two', id: '2' },
           { label: 'three', id: '3' }
         ],
-        shuffle: true
+        lockChoiceOrder: false
       };
 
       let session = {};
       let env = {};
 
-      it('does not shuffle choice marked "shuffle": false', () =>
+      it('does not shuffle choice marked "lockChoiceOrder": false', () =>
         controller.model(model, session, env).then(result => {
           expect(result.choices[0]).toEqual({
             label: 'one',
             id: '1',
-            shuffle: false
+            lockChoiceOrder: true
           });
         }));
 
-      it('shuffles choices not marked "shuffle": false', () =>
+      it('shuffles choices not marked "lockChoiceOrder": false', () =>
         controller.model(model, session, env).then(result => {
           expect(result.choices[1]).not.toEqual({
             label: 'one',
             id: '1',
-            shuffle: false
+            lockChoiceOrder: true
           });
           expect(result.choices[2]).not.toEqual({
             label: 'one',
             id: '1',
-            shuffle: false
+            lockChoiceOrder: true
           });
         }));
     });
@@ -187,10 +188,12 @@ describe('index', () => {
     assertOutcomeError({ correctResponse: [] }, {}, {});
     assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['a'], 1);
     assertOutcome({ partialScoring: true, correctResponse: ['a'] }, ['b'], 0);
+    assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['c', 'a', 'b'], 0.33);
+    assertOutcome({ correctResponse: ['a', 'b'] }, ['c', 'a', 'b'], 0);
     assertOutcome({ correctResponse: ['a', 'b', 'c'] }, ['a', 'b'], 0.33);
     assertOutcome(
       { partialScoring: true, correctResponse: ['a', 'b', 'c'] },
-      ['a', 'b'],
+      ['c', 'a', 'b'],
       0.33
     );
     assertOutcome(
@@ -200,7 +203,7 @@ describe('index', () => {
     );
     assertOutcome(
       { partialScoring: false, correctResponse: ['a', 'b', 'c'] },
-      ['a', 'b'],
+      ['c', 'a', 'b'],
       0.33,
       { partialScoring: true }
     );
