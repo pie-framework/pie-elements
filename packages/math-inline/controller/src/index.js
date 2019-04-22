@@ -13,7 +13,7 @@ function trimSpaces(str = '') {
 
 const getResponseCorrectness = (model, answerItem) => {
   const correctResponses = model.responses;
-  const isAdvanced = model.mode === ResponseTypes.advanced;
+  const isAdvanced = model.responseType === ResponseTypes.advanced;
 
   if (!answerItem) {
     return {
@@ -99,7 +99,7 @@ const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.mode === ResponseTypes.advanced ? session.completeAnswer || '': session.response
+      question.responseType === ResponseTypes.advanced ? session.completeAnswer || '': session.response
     );
   }
 };
