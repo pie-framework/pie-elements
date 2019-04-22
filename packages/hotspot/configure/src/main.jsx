@@ -53,52 +53,33 @@ const getSideMenuItems = (props) => {
   ];
 };
 
-class Design extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      hotspotColor: 'rgba(137, 183, 244, 0.65)',
-      hotspotList: [
-        'rgba(137, 183, 244, 0.65)',
-        'rgba(217, 30, 24, 0.65)',
-        'rgba(254, 241, 96, 0.65)'
-      ],
-      outlineColor: 'blue',
-      outlineList: [
-        'blue',
-        'red',
-        'yellow'
-      ],
-    }
-  }
-
+export class Main extends React.Component {
   handleColorChange(type, color) {
-    // const { model, onLayoutChange, onResponseTypeChange } = this.props;
-    // const newModel = { ...model };
+    const { onColorChanged } = this.props;
+    const cType = `${type}Color`;
+    onColorChanged(cType, color);
     //
-    // newModel[name] = event.target.value;
-    //
-    // if (name === 'hotspot') {
-    //   onLayoutChange(newModel[name]);
-    // } else {
-    //   onResponseTypeChange(newModel[name]);
-    // }
-    this.setState({
-      [`${type}Color`]: color
-    })
+    // this.setState({
+    //   [`${type}Color`]: color
+    // })
   }
 
   render() {
-    const { props } = this;
-    const { classes, disableSidePanel, model, onPromptChanged, onUpdateShapes, onImageUpload } = props;
-    const { hotspotColor, outlineColor, hotspotList, outlineList } = this.state;
+    const {
+      classes,
+      disableSidePanel,
+      model,
+      onImageUpload,
+      onPromptChanged,
+      onUpdateImageDimension,
+      onUpdateShapes
+    } = this.props;
 
     return (
       <div className={classes.design}>
         <ConfigLayout
           disableSidePanel={disableSidePanel}
-          sideMenuItems={getSideMenuItems(props)}
+          sideMenuItems={getSideMenuItems(this.props)}
           regularItems={
             <div className={classes.regular}>
               <InputContainer label="Item Stem" className={classes.promptContainer}>
@@ -110,19 +91,21 @@ class Design extends React.Component {
               </Typography>
 
               <HotspotPalette
-                hotspotColor={hotspotColor}
-                hotspotList={hotspotList}
-                outlineColor={outlineColor}
-                outlineList={outlineList}
+                hotspotColor={model.hotspotColor}
+                hotspotList={model.hotspotList}
+                outlineColor={model.outlineColor}
+                outlineList={model.outlineList}
                 onHotspotColorChange={color => this.handleColorChange('hotspot', color)}
                 onOutlineColorChange={color => this.handleColorChange('outline', color)}
               />
 
               <HotspotContainer
+                dimensions={model.dimensions}
                 imageUrl={model.imageUrl}
                 multipleCorrect={model.multipleCorrect}
-                hotspotColor={hotspotColor}
-                outlineColor={outlineColor}
+                hotspotColor={model.hotspotColor}
+                outlineColor={model.outlineColor}
+                onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={onUpdateShapes}
                 onImageUpload={onImageUpload}
                 shapes={model.shapes}
@@ -159,29 +142,17 @@ const styles = theme => ({
   }
 });
 
-const StyledDesign = withStyles(styles)(Design);
+Main.propTypes = {
+  classes: PropTypes.object.isRequired,
+  disableSidePanel: PropTypes.bool,
+  model: PropTypes.object.isRequired,
+  onImageUpload: PropTypes.func.isRequired,
+  onColorChanged: PropTypes.func.isRequired,
+  onPartialScoringChanged: PropTypes.func.isRequired,
+  onPromptChanged: PropTypes.func.isRequired,
+  onUpdateImageDimension: PropTypes.func.isRequired,
+  onUpdateShapes: PropTypes.func.isRequired,
+};
 
-export class Main extends React.Component {
-  static propTypes = {
-    model: PropTypes.object.isRequired,
-    disableSidePanel: PropTypes.bool,
-    onPromptChanged: PropTypes.func.isRequired,
-    onPartialScoringChanged: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
-    imageSupport: PropTypes.shape({
-      add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
-  };
-
-  render() {
-    return (
-      <StyledDesign {...this.props} />
-    );
-  }
-}
-
-const MainStyled = withStyles(styles)(Main);
-
-export default MainStyled;
+export default withStyles(styles)(Main);
 

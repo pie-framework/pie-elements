@@ -53,6 +53,12 @@ class Root extends React.Component {
     this.updateModel(model);
   };
 
+  onColorChanged = (colorType, color) => {
+    const { model } = this.state;
+    model[colorType] = color;
+    this.updateModel(model);
+  };
+
   onPromptChanged = prompt => {
     const update = cloneDeep(this.state.model);
     update.prompt = prompt;
@@ -72,6 +78,12 @@ class Root extends React.Component {
     this.updateModel(model);
   };
 
+  handleOnUpdateImageDimension = (dimensions) => {
+    const { model } = this.state;
+    model.dimensions = dimensions;
+    this.updateModel(model);
+  };
+
   handleOnUpdateShapes = (shapes, mouseOver = false) => {
     const { model } = this.state;
     model.shapes = shapes;
@@ -87,16 +99,18 @@ class Root extends React.Component {
 
   render() {
     const props = {
-      model: this.state.model,
       configure: this.props.configure,
       disableSidePanel: this.state.disableSidePanel,
-      onRemoveShape: this.onRemoveShape,
+      model: this.state.model,
+      onColorChanged: this.onColorChanged,
       onCreateShape: this.onCreateShape,
       onImageUpload: this.handleOnImageUpload,
-      onPromptChanged: this.onPromptChanged,
-      onUpdateShapes: this.handleOnUpdateShapes,
-      onPartialScoringChanged: this.onPartialScoringChanged,
       onMultipleCorrectChanged: this.onMultipleCorrectChanged,
+      onPartialScoringChanged: this.onPartialScoringChanged,
+      onPromptChanged: this.onPromptChanged,
+      onRemoveShape: this.onRemoveShape,
+      onUpdateImageDimension: this.handleOnUpdateImageDimension,
+      onUpdateShapes: this.handleOnUpdateShapes
     };
 
     return <Main {...props} />;

@@ -103,8 +103,23 @@ class Container extends Component {
   };
 
   render() {
-    const { classes, hotspotColor, outlineColor, multipleCorrect, imageUrl, onUpdateShapes, shapes } = this.props;
-    const { dropzoneActive, maxImageWidth, maxImageHeight, dragEnabled, showTooltip } = this.state;
+    const {
+      classes,
+      hotspotColor,
+      outlineColor,
+      multipleCorrect,
+      imageUrl,
+      onUpdateShapes,
+      shapes,
+      onUpdateImageDimension,
+    } = this.props;
+    const {
+      dropzoneActive,
+      maxImageWidth,
+      maxImageHeight,
+      dragEnabled,
+      showTooltip
+    } = this.state;
 
     return (
       <div className={classes.base} >
@@ -139,6 +154,7 @@ class Container extends Component {
                 maxImageHeight={maxImageHeight}
                 maxImageWidth={maxImageWidth}
                 multipleCorrect={multipleCorrect}
+                onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={onUpdateShapes}
                 outlineColor={outlineColor}
                 shapes={shapes}
@@ -282,6 +298,7 @@ Container.propTypes = {
   hotspotList: PropTypes.string.isRequired,
   multipleCorrect: PropTypes.bool.isRequired,
   onImageUpload: PropTypes.func.isRequired,
+  onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.shape([]).isRequired

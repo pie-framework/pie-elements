@@ -101,12 +101,17 @@ class Drawable extends React.Component {
   };
 
   handleOnImageLoad = ({ target: { offsetHeight, offsetWidth } }) => {
+    const { onUpdateImageDimension } = this.props;
     const resizeHandle = this.resize;
-    this.setState({
-      dimensions: {
-        height: offsetHeight,
-        width: offsetWidth
-      }});
+
+    const dimensions = {
+      height: offsetHeight,
+      width: offsetWidth
+    };
+
+    this.setState({ dimensions });
+    onUpdateImageDimension(dimensions);
+
     resizeHandle.addEventListener('mousedown', this.initialiseResize, false);
   };
 
@@ -152,8 +157,12 @@ class Drawable extends React.Component {
   }
 
   stopResizing = () => {
-    const { enableDrag } = this.props;
+    const { enableDrag, onUpdateImageDimension } = this.props;
+    const { dimensions } = this.state;
+
     enableDrag();
+    onUpdateImageDimension(dimensions);
+
     window.removeEventListener('mousemove', this.startResizing, false);
     window.removeEventListener('mouseup', this.stopResizing, false);
   };
@@ -237,22 +246,23 @@ const styles = theme => ({
     height: '10px',
     position: 'absolute',
     right: '-10px',
-    width: '10px',
+    width: '10px'
   }
 });
 
 Drawable.propTypes = {
   classes: PropTypes.object.isRequired,
-  disableDrag:PropTypes.func.isRequired,
-  enableDrag:PropTypes.func.isRequired,
-  imageUrl:PropTypes.string.isRequired,
-  hotspotColor:PropTypes.string.isRequired,
-  maxImageHeight:PropTypes.number.isRequired,
-  maxImageWidth:PropTypes.number.isRequired,
-  multipleCorrect:PropTypes.bool.isRequired,
-  onUpdateShapes:PropTypes.func.isRequired,
-  outlineColor:PropTypes.string.isRequired,
-  shapes:PropTypes.shape([]).isRequired,
+  disableDrag: PropTypes.func.isRequired,
+  enableDrag: PropTypes.func.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  hotspotColor: PropTypes.string.isRequired,
+  maxImageHeight: PropTypes.number.isRequired,
+  maxImageWidth: PropTypes.number.isRequired,
+  multipleCorrect: PropTypes.bool.isRequired,
+  onUpdateImageDimension: PropTypes.func.isRequired,
+  onUpdateShapes: PropTypes.func.isRequired,
+  outlineColor: PropTypes.string.isRequired,
+  shapes: PropTypes.shape([]).isRequired
 };
 
 export default withStyles(styles)(Drawable);

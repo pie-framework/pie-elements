@@ -9,4 +9,7 @@ export default {
       label: 'Choice One',
     },
   ],
+  imageUrl: '',
+  multipleCorrect: true,
+  partialScoring: false
 };
