@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer, ChoiceConfiguration, ConfigLayout } from '@pie-lib/config-ui';
+import {
+  InputContainer,
+  ChoiceConfiguration,
+  settings,
+  layout
+} from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { ChoiceType, KeyType } from './choice-type';
 import Button from '@material-ui/core/Button';
+
+const { Panel, toggle, radio } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -34,140 +38,106 @@ const styles = theme => ({
   }
 });
 
-const getSideMenuItems = (props) => {
-  const {
-    classes,
-    model,
-    configure,
-    onChoiceModeChanged,
-    onKeyModeChanged,
-    onPartialScoringChanged,
-    onShuffleChanged
-  } = props;
-  const {
-    settingsSelectChoiceModeLabel,
-    settingsChoicePrefixesLabel,
-    settingsSelectChoicePrefixes,
-    settingsSelectChoiceMode,
-    partialScoring,
-    shuffle,
-    settingsPartialScoring,
-    settingsConfigShuffle
-  } = configure;
-
-  return [
-    {
-      items: [
-        settingsSelectChoiceMode &&
-        <ChoiceType key={0} header={settingsSelectChoiceModeLabel} value={model.choiceMode} onChange={onChoiceModeChanged}/>,
-        settingsSelectChoicePrefixes &&
-        <KeyType key={1} header={settingsChoicePrefixesLabel} value={model.keyMode} onChange={onKeyModeChanged}/>
-      ]
-    },
-    {
-      items: []
-    },
-    {
-      items: [
-        settingsPartialScoring && <FormControlLabel
-          key={3}
-          classes={{
-            root: classes.switchElement
-          }}
-          control={
-            <Switch
-              checked={partialScoring}
-              onChange={onPartialScoringChanged}
-              value="checkedA"
-            />
-          }
-          label="Allow Partial Scoring"
-          labelPlacement="start"
-        />,
-        settingsConfigShuffle && <FormControlLabel
-          key={4}
-          classes={{
-            root: classes.switchElement
-          }}
-          control={
-            <Switch
-              checked={shuffle}
-              onChange={onShuffleChanged}
-              value="checkedA"
-            />
-          }
-          label="Allow Shuffle Choices"
-          labelPlacement="start"
-        />
-      ]
-    }
-  ];
-};
-
 const Design = withStyles(styles)(props => {
   const {
     classes,
     configure,
     model,
-    disableSidePanel,
     onPromptChanged,
     onChoiceChanged,
     onRemoveChoice,
     onAddChoice,
-    imageSupport
+    imageSupport,
+    onModelChanged
   } = props;
   const {
-    promptLabel,
-    addChoiceButtonLabel,
-    addChoice,
-    addFeedBack,
+    itemStem,
+    addChoiceButton,
+    feedback,
     deleteChoice,
-    showPrompt
+    choiceMode,
+    choicePrefix,
+    partialScoring,
+    lockChoiceOrder,
+    teacherInstructions = {},
+    studentInstructions = {},
+    rationale = {},
+    scoringType = {}
   } = configure;
 
   return (
     <div className={classes.design}>
-      <ConfigLayout
-        sideMenuItems={getSideMenuItems(props)}
-        regularItems={
-          <div>
-            <InputContainer label={promptLabel} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={onPromptChanged}
-                imageSupport={imageSupport}
-                nonEmpty={!showPrompt}
-                disableUnderline
-              />
-            </InputContainer>
-            {model.choices.map((choice, index) => (
-              <ChoiceConfiguration
-                key={index}
-                index={index + 1}
-                useLetterOrdering={model.keyMode === 'letters'}
-                className={classes.choiceConfiguration}
-                mode={model.choiceMode}
-                data={choice}
-                defaultFeedback={{}}
-                imageSupport={imageSupport}
-                onDelete={() => onRemoveChoice(index)}
-                onChange={c => onChoiceChanged(index, c)}
-                allowFeedBack={addFeedBack}
-                allowDelete={deleteChoice}
-              />
-            ))}
-            <br />
-            {
-              addChoice &&
-              <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
-                {addChoiceButtonLabel}
-              </Button>
-            }
-          </div>
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={onModelChanged}
+            groups={{
+              'Item Type': {
+                choiceMode: choiceMode.settings &&
+                radio(choiceMode.label, 'checkbox', 'radio'),
+                choicePrefix: choicePrefix.settings &&
+                radio(choicePrefix.label, 'numbers', 'letters'),
+                partialScoring: partialScoring.settings &&
+                toggle(partialScoring.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                toggle(rationale.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                toggle(lockChoiceOrder.label),
+                scoringType: scoringType.settings &&
+                radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
         }
-        disableSidePanel={disableSidePanel}
-      />
+      >
+        <div>
+          {itemStem.settings &&
+          <InputContainer
+            label={itemStem.label}
+            className={classes.promptHolder}
+          >
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.itemStem}
+              onChange={onPromptChanged}
+              imageSupport={imageSupport}
+              nonEmpty={!itemStem.settings}
+              disableUnderline
+            />
+          </InputContainer>
+          }
+          {model.choices.map((choice, index) => (
+            <ChoiceConfiguration
+              key={index}
+              index={index + 1}
+              useLetterOrdering={model.choicePrefix === 'letters'}
+              className={classes.choiceConfiguration}
+              mode={model.choiceMode}
+              data={choice}
+              defaultFeedback={{}}
+              imageSupport={imageSupport}
+              onDelete={() => onRemoveChoice(index)}
+              onChange={c => onChoiceChanged(index, c)}
+              allowFeedBack={feedback.settings}
+              allowDelete={deleteChoice.settings}
+            />
+          ))}
+          <br />
+          {
+            addChoiceButton.settings &&
+            <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
+              {addChoiceButton.label}
+            </Button>
+          }
+        </div>
+      </layout.ConfigLayout>
     </div>
   );
 });
@@ -177,7 +147,7 @@ export class Main extends React.Component {
     model: PropTypes.object.isRequired,
     disableSidePanel: PropTypes.bool,
     onPromptChanged: PropTypes.func.isRequired,
-    onPartialScoringChanged: PropTypes.func.isRequired,
+    updateModel: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -185,9 +155,41 @@ export class Main extends React.Component {
     })
   };
 
+  onModelChanged = (model, key) => {
+    const { updateModel } = this.props;
+
+    switch (key) {
+      case 'choiceMode': {
+        let value = model.choiceMode;
+
+        if (value === 'radio') {
+          let correctFound = false;
+
+          model.choices = model.choices.map(c => {
+            if (correctFound) {
+              c.correct = false;
+              return c;
+            }
+
+            if (c.correct) {
+              correctFound = true;
+            }
+
+            return c;
+          });
+        }
+        updateModel(model, true);
+        break;
+      }
+      default:
+        updateModel(model);
+        break;
+    }
+  }
+
   render() {
     return (
-      <Design {...this.props} />
+      <Design {...this.props} onModelChanged={this.onModelChanged} />
     );
   }
 }

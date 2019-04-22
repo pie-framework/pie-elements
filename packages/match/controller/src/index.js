@@ -9,7 +9,6 @@ const getResponseCorrectness = (
   model,
   answers
 ) => {
-  const allowPartialScores = model.allowPartialScoring;
   const partialScoring = model.partialScoring;
   const rows = model.rows;
 
@@ -24,7 +23,7 @@ const getResponseCorrectness = (
     return  'correct';
   } else if (correctAnswers === 0) {
     return 'incorrect';
-  } else if (allowPartialScores && partialScoring) {
+  } else if (partialScoring) {
     return 'partial';
   }
 
@@ -87,7 +86,7 @@ const getOutComeScore = (question, env, answers) => {
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -130,11 +129,15 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
-        config: question,
+        config: {
+          ...question,
+          shuffled: !question.lockChoiceOrder
+        },
         correctness: correctInfo,
         feedback,
         disabled: env.mode !== 'gather',
-        view: env.mode === 'view'
+        view: env.mode === 'view',
+
       };
 
       const out = Object.assign(base, {

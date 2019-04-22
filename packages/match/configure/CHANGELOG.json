@@ -343,5 +343,35 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/match-configure@1.7.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "Renamed model and configure properties using naming conventions and integrated settings panel.",
+    "merge": null,
+    "header": "feat(match): Renamed model and configure properties using naming conventions and integrated settings panel.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "34ff2b1f422b8664a34513818ebbac441486ee45",
+    "gitTags": "",
+    "committerDate": "2019-04-16 14:45:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@1.8.0"
+  },
+  {
+    "type": "fix",
+    "scope": "placement-ordering",
+    "subject": "renaming model properties with naming conventions.",
+    "merge": null,
+    "header": "fix(placement-ordering): renaming model properties with naming conventions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9d9be0154654c1c7c6866e3daa74d9e37523a567",
+    "gitTags": "",
+    "committerDate": "2019-04-15 11:43:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@1.8.0"
   }
 ]

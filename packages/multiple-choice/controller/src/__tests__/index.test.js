@@ -11,8 +11,8 @@ describe('controller', () => {
 
   beforeEach(() => {
     question = {
-      prompt: 'prompt',
-      keyMode: 'letters',
+      itemStem: 'itemStem',
+      choicePrefix: 'letters',
       choiceMode: 'radio',
       choices: [
         {
@@ -126,15 +126,15 @@ describe('controller', () => {
         expect(result.mode).toEqual('gather');
       });
 
-      it('returns prompt', () => {
-        expect(result.prompt).toEqual('prompt');
+      it('returns itemStem', () => {
+        expect(result.prompt).toEqual('itemStem');
       });
 
       it('returns choiceMode', () => {
         expect(result.choiceMode).toEqual('radio');
       });
 
-      it('returns keyMode', () => {
+      it('returns choicePrefix', () => {
         expect(result.keyMode).toEqual('letters');
       });
 
@@ -143,10 +143,12 @@ describe('controller', () => {
       });
 
       it('returns choices', () => {
-        expect(result.choices).toEqual([
-          { label: 'a', value: 'apple' },
-          { label: 'b', value: 'banana' }
-        ]);
+        expect(result.choices).toEqual(
+          expect.arrayContaining([
+            { label: 'a', value: 'apple' },
+            { label: 'b', value: 'banana' },
+          ])
+        );
       });
 
       it('does not return responseCorrect', () => {
@@ -176,10 +178,12 @@ describe('controller', () => {
       });
 
       it('returns choices w/ correct', () => {
-        expect(result.choices).toEqual([
-          { label: 'a', value: 'apple', correct: true, feedback: 'foo' },
-          { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect' }
-        ]);
+        expect(result.choices).toEqual(
+          expect.arrayContaining([
+            { label: 'a', value: 'apple', correct: true, feedback: 'foo' },
+            { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect' },
+          ])
+        );
       });
 
       it('returns is response correct', () => {

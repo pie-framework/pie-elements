@@ -2,12 +2,23 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import Root from '../root';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
+import { choiceUtils as utils, settings } from '@pie-lib/config-ui';
+
+jest.mock('@pie-lib/config-ui', () => ({
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
 
 const model = () => ({
-  prompt: 'Which of these northern European countries are EU members?',
+  itemStem: 'Which of these northern European countries are EU members?',
   choiceMode: 'checkbox',
-  keyMode: 'numbers',
+  choicePrefix: 'numbers',
   choices: [
     {
       correct: true,
@@ -46,29 +57,14 @@ const model = () => ({
     }
   ],
   partialScoring: false,
-  partialScoringLabel: `Each correct response that is correctly checked and each incorrect response
-          that is correctly unchecked will be worth 1 point.
-          The maximum points is the total number of answer choices.`,
-  configure: {
-    /**
-     * These are the configurable options
-     */
-    /*promptLabel : 'Item Stem',
-    responseTypeLabel: 'Type of Answer',
-    choicesLabel: 'Answer Choice',
-    addChoiceButtonLabel: 'Add New Choice',
-    enableSelectChoiceMode: false,
-    enableSelectResponseType: false,
-    enableAddChoice: false,
-    enableAddFeedBack: false,
-    enableDeleteChoice: false*/
-  }
+  configure: {}
 });
 
 describe('Root', () => {
   let w;
   let onModelChanged = jest.fn();
   let initialModel = model();
+  let modelCopy;
 
   const wrapper = extras => {
     const defaults = {
@@ -79,6 +75,10 @@ describe('Root', () => {
 
     return shallow(<Root {...props} />);
   };
+
+  beforeEach(() => {
+    modelCopy = model();
+  });
 
   describe('snapshot', () => {
     it('renders', () => {
@@ -91,7 +91,10 @@ describe('Root', () => {
     describe('onChoiceModeChanged', () => {
       it('resets the model', () => {
         w = wrapper();
-        w.instance().onChoiceModeChanged('radio');
+        w.instance().updateModel({
+          ...modelCopy,
+          choiceMode: 'radio'
+        }, true);
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ choiceMode: 'radio' }),
@@ -115,7 +118,10 @@ describe('Root', () => {
     describe('onPartialScoringChanged', () => {
       it('changes partial scoring value', () => {
         w = wrapper();
-        w.instance().onPartialScoringChanged(true);
+        w.instance().updateModel({
+          ...modelCopy,
+          partialScoring: true
+        });
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ partialScoring: true }),
@@ -145,13 +151,16 @@ describe('Root', () => {
       });
     });
 
-    describe('onKeyModeChanged', () => {
-      it('changes keyMode', () => {
+    describe('onChoicePrefixChanged', () => {
+      it('changes choicePrefix', () => {
         w = wrapper();
-        w.instance().onKeyModeChanged('letters');
+        w.instance().updateModel({
+          ...modelCopy,
+          choicePrefix: 'letters'
+        });
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ keyMode: 'letters' }),
+          expect.objectContaining({ choicePrefix: 'letters' }),
           undefined
         );
       });
@@ -194,7 +203,10 @@ describe('Root', () => {
         w = wrapper();
         instance = w.instance();
 
-        instance.onChoiceModeChanged('radio');
+        instance.updateModel({
+          ...modelCopy,
+          choiceMode: 'radio'
+        });
         instance.onChoiceChanged(1, choice);
 
         initialModel.choices.splice(1, 1, choice);

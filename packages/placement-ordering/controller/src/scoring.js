@@ -1,7 +1,29 @@
 import _ from 'lodash';
 import { combination } from 'js-combinatorics';
+import debug from 'debug';
 
-export const pairwiseCombinationScore = (correct, answer) => {
+const log = debug('pie-elements:placement-ordering:controller');
+
+export const illegalArgumentError = answer =>
+  new Error(
+    `Cant score answer: ${answer} it has duplicates and allowDuplicates is false`
+  );
+export const pairwiseCombinationScore = (correct, answer, opts) => {
+  opts = { allowDuplicates: false, orderMustBeComplete: false, ...opts };
+  if (!opts.allowDuplicates && !_.isEqual(_.uniq(correct), correct)) {
+    throw illegalArgumentError(answer);
+  }
+
+  if (
+    opts.allowDuplicates === false &&
+    answer.length !== _.uniq(answer).length
+  ) {
+    return 0;
+  }
+
+  answer = opts.allowDuplicates !== false ? answer : _.uniq(answer);
+
+  log('answer:', answer);
   if (!Array.isArray(correct) || correct.length === 0) {
     throw new Error('correct must be non empty an array');
   }
@@ -15,6 +37,10 @@ export const pairwiseCombinationScore = (correct, answer) => {
   }
 
   if (answer.length > correct.length) {
+    return 0;
+  }
+
+  if (correct.length !== answer.length && opts.orderMustBeComplete) {
     return 0;
   }
   const correctCombo = combination(correct, 2).toArray();
@@ -43,5 +69,14 @@ export const flattenCorrect = question =>
 
 export const score = (question, session) => {
   const cr = flattenCorrect(question);
-  return pairwiseCombinationScore(cr, session.value);
+  const allowDuplicates =
+    (question.configure && question.configure.removeTilesAfterPlacing) !== false;
+
+  /**
+   * We require this to be the case - locking
+   */
+  //const orderMustBeComplete = true;
+  return pairwiseCombinationScore(cr, session.value, {
+    allowDuplicates
+  });
 };

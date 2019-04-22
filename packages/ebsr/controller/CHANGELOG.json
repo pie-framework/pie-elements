@@ -103,5 +103,20 @@
     "committerDate": "2019-03-13 18:07:56 +0200",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "update scoring [ch1199]",
+    "merge": null,
+    "header": "feat: update scoring [ch1199]",
+    "body": "* first part can be only a single-correct MC\n* second part defaults to MC, but can be changed to MS\n* if the first part is incorrect, the score for the second one defaults to zero\n* if the first part is correct, the second is scored like a stand-alone MS item (including partial scoring)",
+    "footer": null,
+    "notes": [],
+    "hash": "72b9803aba84e42424162c9bc22568ca526212d6",
+    "gitTags": "",
+    "committerDate": "2019-04-10 16:40:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@1.2.0"
   }
 ]

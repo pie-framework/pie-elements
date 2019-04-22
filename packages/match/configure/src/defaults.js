@@ -1,4 +1,15 @@
+/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+ * functionalities are not defined yet - the value for those can belong to
+ * model or to configure
+ */
+
 export default {
+  enableImages: true,
+  headers: ['Column 1', 'Column 2', 'Column 3'],
+  layout: 3,
+  lockChoiceOrder: true,
+  partialScoring: false,
+  responseType: 'radio',
   rows: [
     {
       id: 1,
@@ -6,7 +17,52 @@ export default {
       values: [false, false]
     },
   ],
-  layout: 3,
-  headers: ['Column 1', 'Column 2', 'Column 3'],
-  responseType: 'radio',
+  scoringType: 'auto',
+  configure: {
+    enableImages: {
+      settings: true,
+      label: 'Enable Images',
+    },
+    feedback: {
+      settings: true
+    },
+    headers: {
+      settings: true
+    },
+    layout: {
+      settings: true,
+      label: 'Layout',
+    },
+    lockChoiceOrder: {
+      settings: true,
+      label: 'Lock Choice Order',
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Allow partial scoring',
+    },
+    responseType: {
+      settings: true,
+      label: 'Response Type',
+    },
+    rationale: {
+      settings: false,
+      label: 'Rationale',
+      enabled: true,
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type',
+    },
+    studentInstructions: {
+      settings: false,
+      label: 'Student Instructions',
+      enabled: true,
+    },
+    teacherInstructions: {
+      settings: false,
+      label: 'Teacher Instructions',
+      enabled: true,
+    },
+  }
 };

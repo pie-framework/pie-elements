@@ -543,5 +543,20 @@
     "committerDate": "2019-04-09 13:08:36 +0100",
     "isTagged": true,
     "tag": "@pie-element/select-text@3.10.0"
+  },
+  {
+    "type": "fix",
+    "scope": "placement-ordering",
+    "subject": "renaming model properties with naming conventions.",
+    "merge": null,
+    "header": "fix(placement-ordering): renaming model properties with naming conventions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9d9be0154654c1c7c6866e3daa74d9e37523a567",
+    "gitTags": "",
+    "committerDate": "2019-04-15 11:43:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@3.10.2"
   }
 ]

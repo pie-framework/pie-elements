@@ -2,20 +2,22 @@ import {
   FeedbackConfig,
   FormSection,
   InputContainer,
+  settings,
+  layout
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import { withStyles } from '@material-ui/core/styles';
 
+import debug from 'debug';
+import cloneDeep from 'lodash/cloneDeep';
 import { get, set } from 'nested-property';
-
-import ChoiceEditor from './choice-editor';
 import PropTypes from 'prop-types';
 import React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
-import debug from 'debug';
-import { withStyles } from '@material-ui/core/styles';
-import getSideMenuItems from './settings';
+
+import ChoiceEditor from './choice-editor';
 
 const log = debug('@pie-element:placement-ordering:design');
+const { Panel, toggle, radio } = settings;
 
 export class Design extends React.Component {
   constructor(props) {
@@ -43,11 +45,11 @@ export class Design extends React.Component {
 
     this.onPromptChange = this.changeHandler('itemStem');
     this.onChoiceAreaLabelChange = this.changeHandler(
-      'choiceAreaLabel',
+      'choiceLabel',
       'target.value'
     );
     this.onAnswerAreaLabelChange = this.changeHandler(
-      'answerAreaLabel',
+      'targetLabel',
       'target.value'
     );
     this.onFeedbackChange = this.changeHandler('feedback');
@@ -63,30 +65,74 @@ export class Design extends React.Component {
   }
 
   render() {
-    const { model, classes, imageSupport } = this.props;
+    const { model, classes, imageSupport, updateModel } = this.props;
     const {
       configure: {
-        itemStemLabel,
         choiceLabel,
-        choicesLabel,
-        settingsItemStemChange,
-        settingsChoicesLabel,
-        settingsFeedback,
-        settingsPlacementAreaLabel,
-        answerLabel,
+        choices,
+        feedback,
+        targetLabel,
+        itemStem,
+
+        placementArea,
+        numberedGuides,
+        enableImages,
+        orientation,
+        removeTilesAfterPlacing,
+        partialScoring,
+        lockChoiceOrder,
+
+        teacherInstructions,
+        studentInstructions,
+        rationale,
+        scoringType,
       },
     } = model;
 
     return (
-      <div className={classes.design}>
-        <div className={classes.settings}>
-          {getSideMenuItems(this.props)}
-        </div>
-
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={model => updateModel(model)}
+            groups={{
+              'Item Type': {
+                'configure.choiceLabel.enabled': choiceLabel.settings &&
+                  toggle(choiceLabel.label),
+                placementArea: placementArea.settings &&
+                  toggle(placementArea.label),
+                numberedGuides: (numberedGuides.settings &&
+                  model.placementArea) && toggle(numberedGuides.label),
+                enableImages: enableImages.settings &&
+                  toggle(enableImages.label),
+                orientation: orientation.settings &&
+                  radio(orientation.label, 'vertical', 'horizontal'),
+                removeTilesAfterPlacing: removeTilesAfterPlacing.settings &&
+                  toggle(removeTilesAfterPlacing.label),
+                partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                  toggle(rationale.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label),
+                scoringType: scoringType.settings &&
+                  radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
+        }
+      >
         {
-          settingsItemStemChange &&
+          itemStem.settings &&
           <FormSection label="Ordering">
-            <InputContainer label={itemStemLabel && itemStemLabel.toUpperCase()} className={classes.promptHolder}>
+            <InputContainer label={itemStem && itemStem.label && itemStem.label.toUpperCase()}
+                            className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
                 markup={model.itemStem}
@@ -100,21 +146,23 @@ export class Design extends React.Component {
         <FormSection label="Define Choices">
           <div className={classes.row}>
             {
-              model.configure.editableChoiceLabel && (
-                <InputContainer label={choiceLabel && choiceLabel.toUpperCase()} className={classes.promptHolder}>
+              choiceLabel.enabled && (
+                <InputContainer label={choiceLabel && choiceLabel.label && choiceLabel.label.toUpperCase()}
+                                className={classes.promptHolder}>
                   <EditableHtml
                     className={classes.prompt}
-                    markup={model.choiceAreaLabel}
+                    markup={model.choiceLabel}
                     onChange={this.onChoiceAreaLabelChange}
                   />
                 </InputContainer>
               )}
 
-            {(settingsPlacementAreaLabel && model.placementArea === true) && (
-              <InputContainer label={answerLabel && answerLabel.toUpperCase()} className={classes.promptHolder}>
+            {(targetLabel.settings && model.placementArea) && (
+              <InputContainer label={targetLabel && targetLabel.label && targetLabel.label.toUpperCase()}
+                              className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
-                  markup={model.answerAreaLabel}
+                  markup={model.targetLabel}
                   onChange={this.onAnswerAreaLabelChange}
                 />
               </InputContainer>
@@ -122,14 +170,15 @@ export class Design extends React.Component {
           </div>
 
           {
-            settingsChoicesLabel &&
-            <InputContainer label={choicesLabel && choicesLabel.toUpperCase()} className={classes.promptHolder}>
+            choices.settings &&
+            <InputContainer label={choices && choices.label && choices.label.toUpperCase()}
+                            className={classes.promptHolder}>
               <ChoiceEditor
                 correctResponse={model.correctResponse}
                 choices={model.choices}
                 onChange={this.onChoiceEditorChange}
                 imageSupport={imageSupport}
-                disableImages={model.configure && !model.configure.imagesEnabled}
+                disableImages={!model.enableImages}
               />
             </InputContainer>
           }
@@ -137,15 +186,14 @@ export class Design extends React.Component {
         </FormSection>
 
         {
-          settingsFeedback &&
+          feedback.settings &&
           <FeedbackConfig
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
             imageSupport={imageSupport}
           />
         }
-
-      </div>
+      </layout.ConfigLayout>
     );
   }
 }
@@ -173,23 +221,4 @@ export default withStyles(theme => ({
     gridAutoColumns: '1fr',
     gridGap: '8px'
   },
-  design: {
-    paddingTop: '10px'
-  },
-  langControls: {
-    marginTop: '0px',
-    marginBottom: '0px'
-  },
-  choices: {
-    marginTop: '20px',
-    marginBottom: '20px'
-  },
-  orientation: {
-    marginTop: '0px',
-    marginBottom: '0px'
-  },
-  settings: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  }
 }))(Design);

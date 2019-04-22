@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import isEqual from 'lodash/isEqual';
+import { ResponseTypes } from './utils';
 
 let registered = false;
 
@@ -304,12 +305,12 @@ class GeneralConfigBlock extends React.Component {
     const { classes, model, imageSupport } = this.props;
     const { showKeypad } = this.state;
     const {
-      mode,
       question,
       expression,
       equationEditor,
       responses,
-      response
+      response,
+      responseType
     } = model;
 
     const classNames = {
@@ -322,16 +323,6 @@ class GeneralConfigBlock extends React.Component {
         ref={r => (this.root = r || this.root)}
         className={classes.container}
       >
-        <InputContainer label="Item Type" className={classes.selectContainer}>
-          <Select
-            className={classes.select}
-            onChange={this.onChange('mode')}
-            value={mode}
-          >
-            <MenuItem value="simple">Simple</MenuItem>
-            <MenuItem value="advanced">Advanced Multi</MenuItem>
-          </Select>
-        </InputContainer>
         <InputContainer label="Item Stem" className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
@@ -341,7 +332,7 @@ class GeneralConfigBlock extends React.Component {
             nonEmpty={false}
           />
         </InputContainer>
-        {mode === 'advanced' && (
+        {responseType === ResponseTypes.advanced && (
           <div className={classes.inputContainer}>
             <InputLabel className={classes.templateTitle}>
               RESPONSE TEMPLATE
@@ -380,7 +371,7 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'everything'}>Everything</MenuItem>
             </Select>
           </InputContainer>
-          {mode === 'advanced' && (
+          {responseType === ResponseTypes.advanced && (
             <Button
               className={classes.addResponseButton}
               type="primary"
@@ -390,7 +381,7 @@ class GeneralConfigBlock extends React.Component {
             </Button>
           )}
         </div>
-        {mode === 'simple' && (
+        {responseType === ResponseTypes.simple && (
           <Response
             mode={equationEditor}
             defaultResponse
@@ -398,7 +389,7 @@ class GeneralConfigBlock extends React.Component {
             onResponseChange={this.onSimpleResponseChange}
           />
         )}
-        {mode === 'advanced' &&
+        {responseType === ResponseTypes.advanced &&
           responses.map((response, idx) => (
             <Response
               key={response.id}
