@@ -148,5 +148,20 @@
     "committerDate": "2019-04-10 12:31:51 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-inline-controller@1.4.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "Integrated settings panel.",
+    "merge": null,
+    "header": "feat(math-inline): Integrated settings panel.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d6c9dd7770e1c557e41116248512116de02089d",
+    "gitTags": "",
+    "committerDate": "2019-04-17 15:20:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-inline-controller@1.5.0"
   }
 ]

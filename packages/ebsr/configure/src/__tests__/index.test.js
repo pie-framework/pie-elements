@@ -2,6 +2,17 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import merge from 'lodash/merge';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 const PART_A = 'partA';
 const PART_B = 'partB';
 
