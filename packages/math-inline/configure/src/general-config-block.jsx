@@ -1,13 +1,15 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import {InputCheckbox, InputContainer} from '@pie-lib/config-ui';
+import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
+import isEqual from 'lodash/isEqual';
 
 let registered = false;
 
@@ -21,7 +23,18 @@ const styles = theme => ({
   templateTitle: {
     fontSize: '0.85rem'
   },
+  addResponseButton: {
+    border: '1px solid lightgrey',
+    float: 'right',
+    width: '150px'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
   selectContainer: {
+    flex: 'initial',
     width: '40%',
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
@@ -86,6 +99,29 @@ const styles = theme => ({
   }
 });
 
+const REGEX = /{{response}}/gm;
+const TEMPORARY_RESPONSE_FIELD = /\\%response\\%/gm;
+const ANSWER_BLOCK_REGEX = /\\embed\{answerBlock\}\[r\d*\]/g;
+
+function prepareForStatic(expression) {
+  if (expression) {
+    let answerBlocks = 1; // assume one at least
+
+    return expression.replace(
+      REGEX,
+      () => `\\embed{answerBlock}[r${answerBlocks++}]`
+    );
+  }
+}
+
+function prepareForModel(expression) {
+  if (expression) {
+    return expression
+      .replace(ANSWER_BLOCK_REGEX, () => '{{response}}')
+      .replace(TEMPORARY_RESPONSE_FIELD, () => '{{response}}');
+  }
+}
+
 class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -97,19 +133,25 @@ class GeneralConfigBlock extends React.Component {
   constructor(props) {
     super(props);
 
+    const responseAreas = {};
+
+    if (props.model && props.model.expression) {
+      let answerBlocks = 1; // assume one at least
+      // build out local state model using responses declared in expression
+
+      props.model.expression.replace(REGEX, () => {
+        responseAreas[`r${answerBlocks++}`] = {
+          value: ''
+        };
+      });
+    }
+
     this.state = {
-      showKeypad: false
+      showKeypad: false,
+      responseAreas,
+      responseIdCounter: Object.keys(responseAreas).length
     };
   }
-
-  onPartialScoringChange = evt => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    newModel.partialScoring = evt.target.checked;
-
-    onChange(newModel);
-  };
 
   onChange = name => evtOrValue => {
     const { model, onChange } = this.props;
@@ -121,38 +163,19 @@ class GeneralConfigBlock extends React.Component {
       newModel[name] = evtOrValue;
     }
 
-    onChange(newModel);
+    if (name === 'expression') {
+      newModel[name] = prepareForModel(evtOrValue);
+    }
 
-    setTimeout(this.checkAnswerBlocks, 0);
+    onChange(newModel);
   };
 
   onDone = () => {
     this.setState({ showKeypad: false });
-
-    setTimeout(this.checkAnswerBlocks, 0);
   };
 
   onFocus = () => {
     this.setState({ showKeypad: true });
-  };
-
-  onAnswerBlockAdd = answerBlockId => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    const response = {
-      id: answerBlockId,
-      validation: 'symbolic',
-      answer: '',
-      alternates: {},
-      allowSpaces: true,
-      allowDecimals: true
-    };
-
-    newModel.responses = newModel.responses.concat(response);
-    onChange(newModel);
-
-    setTimeout(this.handleAnswerBlockDomUpdate(), 0);
   };
 
   UNSAFE_componentWillMount() {
@@ -192,36 +215,72 @@ class GeneralConfigBlock extends React.Component {
   handleAnswerBlockDomUpdate = () => {
     const { model } = this.props;
 
-    if (this.root && model.responses.length) {
-      model.responses.forEach((response, idx) => {
-        const el = this.root.querySelector(`#${response.id}`);
-        const indexEl = this.root.querySelector(`#${response.id}Index`);
+    const responseAreas = {};
 
-        if (el) {
-          const MathQuill = require('@pie-framework/mathquill');
-          let MQ = MathQuill.getInterface(2);
-          el.textContent = response.answer;
-          MQ.StaticMath(el);
-          indexEl.textContent = `R${idx + 1}`;
-        }
+    if (model && model.expression) {
+      let answerBlocks = 1; // assume one at least
+      // build out local state model using responses declared in expression
+
+      model.expression.replace(REGEX, () => {
+        responseAreas[`r${answerBlocks++}`] = {
+          value: ''
+        };
       });
+    }
+
+    if (!isEqual(responseAreas, this.state.responseAreas)) {
+      this.setState(
+        {
+          showKeypad: false,
+          responseAreas
+        },
+        () => {
+          if (this.root && Object.keys(responseAreas).length) {
+            Object.keys(responseAreas).forEach((responseId, idx) => {
+              const el = this.root.querySelector(`#${responseId}`);
+              const indexEl = this.root.querySelector(`#${responseId}Index`);
+
+              if (el) {
+                const MathQuill = require('@pie-framework/mathquill');
+                let MQ = MathQuill.getInterface(2);
+                // We no longer have individual answers, so we cannot set text content of blocks
+                // el.textContent = response.answer;
+                MQ.StaticMath(el);
+                indexEl.textContent = `R${idx + 1}`;
+              }
+            });
+          }
+        }
+      );
     }
   };
 
-  checkAnswerBlocks = () => {
+  onAddResponse = () => {
     const { model, onChange } = this.props;
+    const { responseIdCounter } = this.state;
     const newModel = { ...model };
-    newModel.responses = [];
 
-    model.responses.forEach(response => {
-      const container = document.getElementById(response.id);
+    let newCounter = responseIdCounter;
 
-      if (container) {
-        newModel.responses = newModel.responses.concat(response);
-      }
-    });
+    while (model.responses.find(response => response.id === newCounter)) {
+      newCounter++;
+    }
 
+    const response = {
+      id: newCounter,
+      validation: 'symbolic',
+      answer: '',
+      alternates: {},
+      allowSpaces: true,
+      allowDecimals: true
+    };
+
+    newModel.responses = newModel.responses.concat(response);
     onChange(newModel);
+
+    this.setState({
+      responseIdCounter: response.id
+    });
   };
 
   onResponseChange = (response, index) => {
@@ -230,8 +289,6 @@ class GeneralConfigBlock extends React.Component {
 
     newModel.responses[index] = response;
     onChange(newModel);
-
-    this.handleAnswerBlockDomUpdate(response.id, index, response.answer);
   };
 
   onSimpleResponseChange = response => {
@@ -275,12 +332,6 @@ class GeneralConfigBlock extends React.Component {
             <MenuItem value="advanced">Advanced Multi</MenuItem>
           </Select>
         </InputContainer>
-        <div className={classes.optionsCheckbox}>
-          <InputCheckbox
-              label="Allow Partial Scoring"
-              checked={model.partialScoring}
-              onChange={this.onPartialScoringChange}/>
-        </div>
         <InputContainer label="Item Stem" className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
@@ -298,10 +349,9 @@ class GeneralConfigBlock extends React.Component {
             <MathToolbar
               classNames={classNames}
               allowAnswerBlock
-              onAnswerBlockAdd={this.onAnswerBlockAdd}
               controlledKeypad
               showKeypad={showKeypad}
-              latex={expression}
+              latex={prepareForStatic(expression)}
               keypadMode="everything"
               onChange={this.onChange('expression')}
               onFocus={this.onFocus}
@@ -310,25 +360,36 @@ class GeneralConfigBlock extends React.Component {
           </div>
         )}
         <h3>Define Correct Response</h3>
-        <InputContainer
-          label="Equation Editor"
-          className={classes.selectContainer}
-        >
-          <Select
-            className={classes.select}
-            onChange={this.onChange('equationEditor')}
-            value={equationEditor}
+        <div className={classes.flexContainer}>
+          <InputContainer
+            label="Equation Editor"
+            className={classes.selectContainer}
           >
-            <MenuItem value={1}>Grade 1 - 2</MenuItem>
-            <MenuItem value={3}>Grade 3 - 5</MenuItem>
-            <MenuItem value={6}>Grade 6 - 7</MenuItem>
-            <MenuItem value={8}>Grade 8 - HS</MenuItem>
-            <MenuItem value={'geometry'}>Geometry</MenuItem>
-            <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
-            <MenuItem value={'statistics'}>Statistics</MenuItem>
-            <MenuItem value={'everything'}>Everything</MenuItem>
-          </Select>
-        </InputContainer>
+            <Select
+              className={classes.select}
+              onChange={this.onChange('equationEditor')}
+              value={equationEditor}
+            >
+              <MenuItem value={1}>Grade 1 - 2</MenuItem>
+              <MenuItem value={3}>Grade 3 - 5</MenuItem>
+              <MenuItem value={6}>Grade 6 - 7</MenuItem>
+              <MenuItem value={8}>Grade 8 - HS</MenuItem>
+              <MenuItem value={'geometry'}>Geometry</MenuItem>
+              <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+              <MenuItem value={'statistics'}>Statistics</MenuItem>
+              <MenuItem value={'everything'}>Everything</MenuItem>
+            </Select>
+          </InputContainer>
+          {mode === 'advanced' && (
+            <Button
+              className={classes.addResponseButton}
+              type="primary"
+              onClick={this.onAddResponse}
+            >
+              + Response
+            </Button>
+          )}
+        </div>
         {mode === 'simple' && (
           <Response
             mode={equationEditor}

@@ -1,7 +1,6 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
-import { partialScoring } from '@pie-lib/controller-utils';
 
 import defaults from './defaults';
 
@@ -11,99 +10,69 @@ function trimSpaces(str = '') {
   return str.replace(/\\ /g, '').replace(/ /g, '');
 }
 
-const getResponseCorrectness = (model, answerItem, partialScoringEnabled) => {
+const getResponseCorrectness = (model, answerItem) => {
   const correctResponses = model.responses;
   const isAdvanced = model.mode === 'advanced';
 
-  if (!answerItem || (isAdvanced && answerItem.length === 0)) {
+  if (!answerItem) {
     return {
       correctness: 'unanswered',
       score: '0%',
-      info: {}
+      correct: false
     };
   }
 
-  const correctAnswers = getCorrectAnswers(
+  const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : model.response,
     answerItem,
-    isAdvanced,
-    model
+    isAdvanced
   );
   const correctnessObject = {
     correctness: 'incorrect',
     score: '0%',
-    info: correctAnswers.info
+    correct: false
   };
 
-  if (!isAdvanced && correctAnswers.count !== 0) {
+  if (isAnswerCorrect) {
     correctnessObject.correctness = 'correct';
     correctnessObject.score = '100%';
-  }
-
-  if (isAdvanced) {
-    if (correctResponses.length === correctAnswers.count) {
-      correctnessObject.correctness = 'correct';
-      correctnessObject.score = '100%';
-    } else if (partialScoringEnabled) {
-      correctnessObject.correctness = 'partially-correct';
-      correctnessObject.score = `${(
-        (correctAnswers.count * 100) /
-        correctResponses.length
-      ).toFixed(2)}%`;
-    }
+    correctnessObject.correct = true;
   }
 
   return correctnessObject;
 };
 
-function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced, model) {
-  let correct = 0;
-  const answerInfo = {};
+function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
+  let answerCorrect = false;
 
   if (isAdvanced) {
     correctResponseItem.forEach(correctResponse => {
-      let answerCorrect = false;
-      const correspondingAnswer = answerItem[correctResponse.id];
+
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates).map(
-          alternateId => correctResponse.alternates[alternateId].answer
+          alternateId => correctResponse.alternates[alternateId]
         )
       );
 
-      if (correspondingAnswer && correspondingAnswer.value) {
-        if (correctResponse.validation === 'literal') {
-          for (let i = 0; i < acceptedValues.length; i++) {
-            if (
-              acceptedValues[i] ===
-              (correctResponse.allowSpaces
-                ? trimSpaces(correspondingAnswer.value)
-                : correspondingAnswer.value)
-            ) {
-              answerCorrect = true;
-              break;
-            }
+      if (correctResponse.validation === 'literal') {
+        for (let i = 0; i < acceptedValues.length; i++) {
+          if (acceptedValues[i] === (correctResponse.allowSpaces ? trimSpaces(answerItem) : answerItem)) {
+            answerCorrect = true;
+            break;
           }
-        } else {
-          answerCorrect = areValuesEqual(
-            correctResponse.answer,
-            correspondingAnswer.value,
-            { isLatex: true, allowDecimals: correctResponse.allowDecimals }
-          );
         }
-      }
-
-      if (answerCorrect) {
-        answerInfo[correctResponse.id] = true;
-        correct++;
       } else {
-        answerInfo[correctResponse.id] = false;
+        answerCorrect = areValuesEqual(
+          correctResponse.answer,
+          answerItem,
+          { isLatex: true, allowDecimals: correctResponse.allowDecimals }
+        );
       }
     });
   } else {
-    let answerCorrect = false;
     const acceptedValues = [correctResponseItem.answer].concat(
       Object.keys(correctResponseItem.alternates).map(
-        alternateId => correctResponseItem.alternates[alternateId].answer
+        alternateId => correctResponseItem.alternates[alternateId]
       )
     );
 
@@ -116,29 +85,20 @@ function getCorrectAnswers(correctResponseItem, answerItem, isAdvanced, model) {
       }
     } else {
       answerCorrect = areValuesEqual(correctResponseItem.answer, answerItem, {
-        isLatex: true
+        isLatex: true,
+        allowDecimals: correctResponseItem.allowDecimals
       });
     }
-
-    if (answerCorrect) {
-      correct++;
-    }
-
-    answerInfo.defaultResponse = answerCorrect;
   }
 
-  return {
-    info: answerInfo,
-    count: correct
-  };
+  return answerCorrect;
 }
 
-const getCorrectness = (question, env, session, partialScoringEnabled) => {
+const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.mode === 'advanced' ? session.answers : session.response,
-      partialScoringEnabled
+      question.mode === 'advanced' ? session.completeAnswer || '': session.response
     );
   }
 };
@@ -156,12 +116,10 @@ export function createDefaultModel(model = {}) {
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(question, env);
     const correctness = getCorrectness(
       question,
       env,
-      session,
-      partialScoringEnabled
+      session
     );
     const correctResponse = {};
 
