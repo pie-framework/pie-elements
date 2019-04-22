@@ -1,6 +1,8 @@
+import React from 'react';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import merge from 'lodash/merge';
+import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -12,6 +14,11 @@ jest.mock('@pie-lib/config-ui', () => ({
     radio: jest.fn()
   }
 }));
+
+jest.mock(
+  '@pie-element/multiple-choice/configure/lib',
+  () => class MockConfigure {}
+);
 
 const PART_A = 'partA';
 const PART_B = 'partB';
@@ -91,7 +98,7 @@ describe('index', () => {
     el.model = model;
   });
 
-  const shouldHaveModel = (key) => {
+  const shouldHaveModel = key => {
     it(`${key} should have set the model`, () => {
       expect(ebsr[key].model).toEqual(model[key]);
     });
@@ -108,7 +115,7 @@ describe('index', () => {
     expect(newModel).toEqual(model[key]);
   };
 
-  const resetsModel = (key) => {
+  const resetsModel = key => {
     it(`${key} resets the model`, () => {
       const newModel = {
         ...model[key],
@@ -120,7 +127,7 @@ describe('index', () => {
     });
   };
 
-  const changesPartialScoring = (key) => {
+  const changesPartialScoring = key => {
     it(`${key} changes partial scoring value`, () => {
       const newModel = {
         ...model[key],
@@ -132,7 +139,7 @@ describe('index', () => {
     });
   };
 
-  const addsChoice = (key) => {
+  const addsChoice = key => {
     it(`${key} adds a choice`, () => {
       const newModel = {
         ...model[key],
@@ -140,7 +147,10 @@ describe('index', () => {
           ...model[key].choices,
           {
             label: 'label',
-            value: utils.firstAvailableIndex(model[key].choices.map(c => c.value), 0),
+            value: utils.firstAvailableIndex(
+              model[key].choices.map(c => c.value),
+              0
+            ),
             feedback: {
               type: 'none'
             }
@@ -153,7 +163,7 @@ describe('index', () => {
     });
   };
 
-  const removesChoice = (key) => {
+  const removesChoice = key => {
     it(`${key} removes choice`, () => {
       const newModel = {
         ...model[key],
@@ -165,7 +175,7 @@ describe('index', () => {
     });
   };
 
-  const changesKeyMode = (key) => {
+  const changesKeyMode = key => {
     it(`${key} changes keyMode`, () => {
       const newModel = {
         ...model[key],
@@ -181,7 +191,7 @@ describe('index', () => {
     const choice = {
       correct: true,
       value,
-      label: (value) => value.charAt(0).toUpperCase() + value.slice(1),
+      label: value => value.charAt(0).toUpperCase() + value.slice(1),
       feedback: {
         type: 'none',
         value: ''
@@ -191,7 +201,7 @@ describe('index', () => {
     it(`${key} changes choice`, () => {
       const newModel = {
         ...model[key],
-        choiceMode: 'checkbox',
+        choiceMode: 'checkbox'
       };
 
       newModel.choices.splice(1, 1, choice);
@@ -205,7 +215,9 @@ describe('index', () => {
         ...model[key],
         choiceMode: 'radio',
         choices: [
-          ...model[key].choices.map(c => {return merge({}, c, { correct: false })}),
+          ...model[key].choices.map(c => {
+            return merge({}, c, { correct: false });
+          })
         ]
       };
 
@@ -248,6 +260,6 @@ describe('index', () => {
     describe('onChoiceChanged', () => {
       changesChoice(PART_A, 'green');
       changesChoice(PART_B, 'purple');
-    })
-  })
+    });
+  });
 });
