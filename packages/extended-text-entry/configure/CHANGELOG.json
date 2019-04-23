@@ -323,5 +323,20 @@
     "committerDate": "2019-03-26 17:29:37 +0200",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-configure@2.3.5"
+  },
+  {
+    "type": "feat",
+    "scope": "extended-text-entry",
+    "subject": "Updated model structure with new established structure, integrated settings panel and updated tests.",
+    "merge": null,
+    "header": "feat(extended-text-entry): Updated model structure with new established structure, integrated settings panel and updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "cdb29e41d8e6ea550f70fb4c719f3f18afffbed9",
+    "gitTags": "",
+    "committerDate": "2019-04-18 09:03:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@2.4.0"
   }
 ]
