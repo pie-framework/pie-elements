@@ -1,14 +1,17 @@
 import React from 'react';
 import {
   NumberTextField,
-  InputCheckbox,
   FeedbackSelector,
-  InputContainer
+  InputContainer,
+  settings,
+  layout
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
+
+const { Panel, toggle } = settings;
 
 const defaultFeedback = {
   type: 'default',
@@ -49,12 +52,6 @@ export class Main extends React.Component {
     return out;
   }
 
-  toggleMath = event => {
-    const { onChange } = this.props;
-    const model = this.applyUpdate({ showMathInput: event.target.checked });
-    onChange(model);
-  };
-
   changeFeedback = feedback => {
     const { model, onChange } = this.props;
     const update = { ...model, feedback };
@@ -62,55 +59,89 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes } = this.props;
+    const { model, classes, onChange } = this.props;
+    const {
+      configure: {
+        equationEditor,
+        multipleParts,
+        teacherInstructions,
+        studentInstructions,
+        mathInput,
+        width,
+        height
+      },
+    } = model;
+
     return (
-      <div>
-        <Typography className={classes.header} variant="subheading">
-          Display
-        </Typography>
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={model => onChange(model)}
+            groups={{
+              'Item Type': {
+                mathInput: mathInput.settings && toggle(mathInput.label),
+                'configure.equationEditor.enabled': equationEditor.settings &&
+                toggle(equationEditor.label),
+                'configure.multipleParts.enabled': multipleParts.settings &&
+                toggle(multipleParts.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
+              },
+            }}
+          />
+        }
+      >
+        <div>
+          <Typography className={classes.header} variant="subheading">
+            Display
+          </Typography>
 
-        <NumberTextField
-          label="Width (px)"
-          disabled={!this.state.setDimensions}
-          value={parseInt(model.width)}
-          min={100}
-          max={500}
-          onChange={this.changeWidth}
-          showErrorWhenOutsideRange
-          className={classes.field}
-        />
-        <NumberTextField
-          label="Height (px)"
-          disabled={!this.state.setDimensions}
-          value={parseInt(model.height)}
-          min={100}
-          max={500}
-          onChange={this.changeHeight}
-          showErrorWhenOutsideRange
-          className={classes.field}
-        />
+          {width.settings &&
+            <NumberTextField
+              label={width.label}
+              disabled={!this.state.setDimensions}
+              value={parseInt(model.width)}
+              min={100}
+              max={500}
+              onChange={this.changeWidth}
+              showErrorWhenOutsideRange
+              className={classes.field}
+            />
+          }
+          {
+            height.settings &&
+              <NumberTextField
+                label={height.label}
+                disabled={!this.state.setDimensions}
+                value={parseInt(model.height)}
+                min={100}
+                max={500}
+                onChange={this.changeHeight}
+                showErrorWhenOutsideRange
+                className={classes.field}
+              />
+          }
+          <br />
+          <InputContainer label="Prompt" className={classes.promptContainer}>
+            <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />
+          </InputContainer>
 
-        <br />
-        <InputCheckbox
-          label={'Student responses can include math notation'}
-          onChange={this.toggleMath}
-          checked={!!model.showMathInput}
-        />
-        <br />
-        <InputContainer label="Prompt" className={classes.promptContainer}>
-          <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />
-        </InputContainer>
+          <Typography className={classes.header} variant="subheading">
+            Feedback
+          </Typography>
 
-        <Typography className={classes.header} variant="subheading">
-          Feedback
-        </Typography>
-
-        <FeedbackSelector
-          label="When submitted, show"
-          feedback={model.feedback || defaultFeedback}
-          onChange={this.changeFeedback}
-        />
-      </div>
+          <FeedbackSelector
+            label="When submitted, show"
+            feedback={model.feedback || defaultFeedback}
+            onChange={this.changeFeedback}
+          />
+        </div>
+      </layout.ConfigLayout>
     );
   }
 }
