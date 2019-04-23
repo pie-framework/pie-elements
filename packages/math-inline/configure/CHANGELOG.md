@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.6.0...@pie-element/math-inline-configure@1.0.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* **math-inline:** centralized variables for interaction modes ([5afa51a](https://github.com/pie-framework/pie-elements/commit/5afa51a))
+
+
+### Features
+
+* **math-inline:** formulaV2 support for controller and relevant config panel adjustments ([168f0d5](https://github.com/pie-framework/pie-elements/commit/168f0d5))
+
+
+### BREAKING CHANGES
+
+* **math-inline:** controller validation schema is now using formulaV2 approach, resulting interface is changed and partial scoring is no longer supported
+
+
+
+
+
 # [0.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@0.5.1...@pie-element/math-inline-configure@0.6.0) (2019-04-19)
 
 

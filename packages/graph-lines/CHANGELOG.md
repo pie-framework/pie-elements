@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.4.4...@pie-element/graph-lines@1.5.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* updated @pie-ui/graph-lines version. ([de44d16](https://github.com/pie-framework/pie-elements/commit/de44d16))
+
+
+### Features
+
+* **graph-lines:** Updated model structure with new established structure (a part of it), integrated settings panel and updated tests. ([a0c624f](https://github.com/pie-framework/pie-elements/commit/a0c624f))
+
+
+
+
+
 ## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.4.3...@pie-element/graph-lines@1.4.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/graph-lines

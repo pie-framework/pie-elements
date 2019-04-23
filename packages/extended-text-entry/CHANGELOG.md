@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.6...@pie-element/extended-text-entry@3.10.0) (2019-04-23)
+
+
+### Features
+
+* **extended-text-entry:** Updated model structure with new established structure, integrated settings panel and updated tests. ([cdb29e4](https://github.com/pie-framework/pie-elements/commit/cdb29e4))
+
+
+
+
+
 ## [3.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.9.5...@pie-element/extended-text-entry@3.9.6) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
