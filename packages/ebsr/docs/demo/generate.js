@@ -47,12 +47,9 @@ exports.model = (id, element) => ({
         label: 'Green',
       },
     ],
-    keyMode: 'numbers',
     choicePrefix: 'numbers',
     partialScoring: false,
-    // TODO itemStem has to be replaced in multiple-choice with prompt. Until then, we keep both to keep ebsr working
     prompt: 'What color do you get when you mix Red with your answer in Part 1?',
-    itemStem: 'What color do you get when you mix Red with your answer in Part 1?',
     shuffle: false,
   },
 });

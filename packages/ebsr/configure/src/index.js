@@ -47,14 +47,12 @@ export default class EbsrConfigure extends HTMLElement {
       this.partA.model = this._model.partA;
       this.partB.model = this._model.partB;
       this.partA.configure = {
-        choiceMode: {
-          settings: false,
-          label: 'Response Type'
-        },
-        partialScoring: {
-          settings: false,
-          label: 'Allow Partial Scoring',
-        },
+        ...defaults.partA.configure,
+        ...this.partA.configure,
+      };
+      this.partB.configure = {
+        ...defaults.partB.configure,
+        ...this.partB.configure,
       };
     });
   }

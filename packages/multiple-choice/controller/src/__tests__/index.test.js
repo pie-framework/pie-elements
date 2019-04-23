@@ -11,7 +11,7 @@ describe('controller', () => {
 
   beforeEach(() => {
     question = {
-      itemStem: 'itemStem',
+      prompt: 'prompt',
       choicePrefix: 'letters',
       choiceMode: 'radio',
       choices: [
@@ -126,8 +126,8 @@ describe('controller', () => {
         expect(result.mode).toEqual('gather');
       });
 
-      it('returns itemStem', () => {
-        expect(result.prompt).toEqual('itemStem');
+      it('returns prompt', () => {
+        expect(result.prompt).toEqual('prompt');
       });
 
       it('returns choiceMode', () => {

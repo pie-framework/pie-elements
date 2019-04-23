@@ -79,9 +79,9 @@ export default class Root extends React.Component {
     this.updateModel(model);
   };
 
-  onPromptChanged = itemStem => {
+  onPromptChanged = prompt => {
     const update = cloneDeep(this.state.model);
-    update.itemStem = itemStem;
+    update.prompt = prompt;
     this.updateModel(update);
   };
 
