@@ -2,12 +2,30 @@ import * as React from 'react';
 import Configure from '../configure';
 import GeneralConfigBlock from '../general-config-block';
 import PartialScoringConfig from '@pie-lib/scoring-config';
-import SwipeableViews from 'react-swipeable-views';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
-import { FeedbackConfig } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
+
+import {
+  FeedbackConfig,
+  layout,
+  settings,
+} from '@pie-lib/config-ui';
+
+import defaultValues from '../defaults';
+
+jest.mock('@pie-lib/config-ui', () => ({
+  InputContainer: props => <div>{props.children}</div>,
+  InputCheckbox: props => <div>{props.children}</div>,
+  FeedbackConfig: props => <div>{props.children}</div>,
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
+  },
+  settings: {
+    Panel: props => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
 
 const defaultProps = {
   model: {
@@ -30,38 +48,37 @@ const defaultProps = {
         default: 'Incorrect'
       }
     },
-    model: {
-      config: {
-        lines: [{
-          label: 'Line One',
-          correctLine: '3x+2',
-          initialView: '3x+3'
-        }],
-        graphTitle: '',
-        graphWidth: 500,
-        graphHeight: 500,
-        domainLabel: '',
-        domainMin: -10,
-        domainMax: 10,
-        domainStepValue: 1,
-        domainSnapValue: 1,
-        domainLabelFrequency: 1,
-        domainGraphPadding: 50,
-        rangeLabel: '',
-        rangeMin: -10,
-        rangeMax: 10,
-        rangeStepValue: 1,
-        rangeSnapValue: 1,
-        rangeLabelFrequency: 1,
-        rangeGraphPadding: 50,
-        sigfigs: -1,
-        showCoordinates: false,
-        showPointLabels: true,
-        showInputs: true,
-        showAxisLabels: true,
-        showFeedback: true
-      }
-    }
+    graph: {
+      lines: [{
+        label: 'Line One',
+        correctLine: '3x+2',
+        initialView: '3x+3'
+      }],
+      graphTitle: '',
+      graphWidth: 500,
+      graphHeight: 500,
+      domainLabel: '',
+      domainMin: -10,
+      domainMax: 10,
+      domainStepValue: 1,
+      domainSnapValue: 1,
+      domainLabelFrequency: 1,
+      domainGraphPadding: 50,
+      rangeLabel: '',
+      rangeMin: -10,
+      rangeMax: 10,
+      rangeStepValue: 1,
+      rangeSnapValue: 1,
+      rangeLabelFrequency: 1,
+      rangeGraphPadding: 50,
+      sigfigs: -1,
+      showCoordinates: false,
+      showPointLabels: true,
+      showInputs: true,
+      showAxisLabels: true,
+      showFeedback: true
+    },
+    configure: defaultValues.configure
   }
 };
 
@@ -78,9 +95,6 @@ describe('Configure', () => {
     expect(component.find(GeneralConfigBlock).length).toEqual(1);
     expect(component.find(PartialScoringConfig).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
-    expect(component.find(SwipeableViews).length).toEqual(1);
-    expect(component.find(Tabs).length).toEqual(1);
-    expect(component.find(Tab).length).toEqual(2);
   });
 
   it('restores default model correctly', () => {
@@ -102,18 +116,15 @@ describe('Configure', () => {
       multiple: true,
       model: {
         ...defaultProps.model,
-        model: {
-          ...defaultProps.model.model,
-          config: {
-            ...defaultProps.model.config,
-            lines: [{
-              from: { x: 0, y: 0 },
-              to: { x: 1, y: 1 },
-            }, {
-              from: { x: -2, y: -2 },
-              to: { x: 3, y: 4 },
-            }]
-          }
+        graph: {
+          lines: [{
+            from: { x: 0, y: 0 },
+            to: { x: 1, y: 1 },
+          }, {
+            from: { x: -2, y: -2 },
+            to: { x: 3, y: 4 },
+          }]
+
         }
       }
     });
@@ -122,7 +133,7 @@ describe('Configure', () => {
 
     expect(onModelChanged).toBeCalledWith({
       ...defaultProps.model,
-      model: { config: { lines: [{ 'from': { 'x': 0, 'y': 0 }, 'to': { 'x': 1, 'y': 1 } }] } },
+      graph: { lines: [{ 'from': { 'x': 0, 'y': 0 }, 'to': { 'x': 1, 'y': 1 } }] },
     });
   });
 
@@ -134,20 +145,17 @@ describe('Configure', () => {
 
     expect(onModelChanged).toBeCalledWith(expect.objectContaining({
       ...defaultProps.model,
-      model: {
-        ...defaultProps.model.model,
-        config: {
-          ...defaultProps.model.model.config,
-          lines: [{
-            correctLine: '3x+2',
-            initialView: '3x+3',
-            label: 'Line One' },
+      graph: {
+        ...defaultProps.model.graph,
+        lines: [{
+          correctLine: '3x+2',
+          initialView: '3x+3',
+          label: 'Line One' },
           {
             correctLine: '',
             initialView: '',
             label: ''
-          }],
-        }
+          }]
       },
     }));
   });
@@ -160,7 +168,7 @@ describe('GeneralConfigBlock', () => {
 
   beforeEach(() => {
     props = {
-      config: defaultProps.model.model.config,
+      config: defaultProps.model.graph,
       onChange: jest.fn(),
       onMultipleToggle: jest.fn(),
       multiple: false,
@@ -175,7 +183,7 @@ describe('GeneralConfigBlock', () => {
     expect(component.find(InputCheckbox).length).toBeGreaterThan(1);
     expect(component.find(InputContainer).length).toBeGreaterThan(3);
 
-    component = wrapper({ config: { ...props.config, exhibitOnly: true } });
+    component = wrapper({ graph: { ...props.graph, exhibitOnly: true } });
 
     expect(component.find(InputCheckbox).length).toEqual(2);
     expect(component.find(InputContainer).length).toBeGreaterThan(2);

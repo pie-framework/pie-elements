@@ -43,18 +43,18 @@ export function toComponentModel(m) {
 
   newModel.range = {};
   newModel.domain = {};
-  newModel.config = m.model.config;
+  newModel.config = m.graph;
 
   Object.keys(rangeModelMap).forEach(key => {
-    newModel.range[rangeModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.range[rangeModelMap[key]] = oldModelCopy.graph[key];
   });
 
   Object.keys(domainModelMap).forEach(key => {
-    newModel.domain[domainModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.domain[domainModelMap[key]] = oldModelCopy.graph[key];
   });
 
-  Object.keys(oldModelCopy.model.config).forEach(key => {
-    newModel[modelMap[key] || key] = m.model.config[key];
+  Object.keys(oldModelCopy.graph).forEach(key => {
+    newModel[modelMap[key] || key] = m.graph[key];
   });
 
   return newModel;

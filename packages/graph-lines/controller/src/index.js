@@ -10,7 +10,7 @@ const getResponseCorrectness = (
   model,
   partialScores
 ) => {
-  const allowPartialScores = model.config.allowPartialScoring;
+  const allowPartialScores = model.configure.allowPartialScoring;
   const correctExpressions = correctResponse.map(line => utils.expression(line.from, line.to));
   let correctAnswers = 0;
 
@@ -49,11 +49,11 @@ const getResponseCorrectness = (
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { model, partialScoring } = question;
+    const { partialScoring, graph } = question;
 
     const correctResponse = [];
 
-    model.config.lines.forEach(line => {
+    graph.lines.forEach(line => {
       const lineExpression = utils.expressionFromDescriptor(line.correctLine);
       const points = utils.pointsFromExpression(lineExpression);
 
@@ -72,7 +72,7 @@ export function model(question, session, env) {
         return getResponseCorrectness(
           correctResponse,
           session.lines,
-          model,
+          question,
           partialScoring
         );
       }
@@ -92,9 +92,10 @@ export function model(question, session, env) {
       };
 
       const out = Object.assign(base, {
-        model,
+        graph,
         correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
       });
+
       log('out: ', out);
       resolve(out);
     });
