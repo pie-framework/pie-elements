@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Design from './design';
-import { Tabs } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 
