@@ -1,12 +1,12 @@
 {
   "name": "@pie-element/ebsr-configure",
   "private": true,
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "",
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
-    "@pie-element/multiple-choice": "^2.12.1",
+    "@pie-element/multiple-choice": "^2.12.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^9.0.2",
     "lodash": "^4.17.10"

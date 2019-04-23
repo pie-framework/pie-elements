@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.5...@pie-element/categorize@2.13.6) (2019-04-23)
+
+
+### Bug Fixes
+
+* **calculator:** Updated @pie-lib/config-ui version. ([#177](https://github.com/pie-framework/pie-elements/issues/177)) ([6a56ff0](https://github.com/pie-framework/pie-elements/commit/6a56ff0))
+
+
+
+
+
 ## [2.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.4...@pie-element/categorize@2.13.5) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/categorize

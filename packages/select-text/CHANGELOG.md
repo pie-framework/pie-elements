@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.3...@pie-element/select-text@3.10.4) (2019-04-23)
+
+
+### Bug Fixes
+
+* **calculator:** Updated @pie-lib/config-ui version. ([#177](https://github.com/pie-framework/pie-elements/issues/177)) ([6a56ff0](https://github.com/pie-framework/pie-elements/commit/6a56ff0))
+
+
+
+
+
 ## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.2...@pie-element/select-text@3.10.3) (2019-04-18)
 
 **Note:** Version bump only for package @pie-element/select-text

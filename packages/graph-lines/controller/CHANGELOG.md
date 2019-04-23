@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines-controller@1.1.0...@pie-element/graph-lines-controller@1.1.1) (2019-04-23)
+
+**Note:** Version bump only for package @pie-element/graph-lines-controller
+
+
+
+
+
 # [1.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines-controller@1.0.5...@pie-element/graph-lines-controller@1.1.0) (2019-04-23)
 
 
