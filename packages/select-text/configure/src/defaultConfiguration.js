@@ -15,21 +15,62 @@ export default {
   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   tokens: tokens(),
   configure: {
-    contentLabel: 'Content',
-    highlightChoicesLabel: 'Highlight choices',
-    tokensLabel: 'Tokens',
-    setCorrectAnswersLabel: 'Set correct answers',
-    modeLabel: 'Mode',
-    availableSelectionsLabel: 'Selections Available',
-    correctAnswersLabel: 'Correct Answers',
-    selectionCountLabel: 'Selection count',
-    enableContentChange: true,
-    enableHighlightChoices: true,
-    enableTokensChange: true,
-    showMode: true,
-    showSelections: true,
-    showCorrectAnswersNumber: true,
-    showSelectionCount: true,
-    enableFeedback: true
+    selectionCount: {
+      settings: true,
+      label: 'Selection count',
+    },
+    correctAnswer: {
+      settings: true,
+      label: 'Correct Answers',
+    },
+    selections: {
+      settings: true,
+      label: 'Selections Available',
+    },
+    highlightChoices: {
+      settings: true,
+      label: 'Highlight choices',
+    },
+    rationale: {
+      settings: false,
+      label: 'Rationale',
+      enabled: true,
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type',
+    },
+    studentInstructions: {
+      settings: false,
+      label: 'Student Instructions',
+      enabled: true,
+    },
+    teacherInstructions: {
+      settings: false,
+      label: 'Teacher Instructions',
+      enabled: false,
+    },
+    prompt: {
+      label: 'Prompt'
+    },
+    text: {
+      settings: true,
+      label: 'Content'
+    },
+    tokens: {
+      settings: true,
+      label: 'Tokens'
+    },
+    feedback: {
+      settings: true
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Allow Partial Scoring',
+    },
+    mode: {
+      settings: true,
+      label: 'Mode'
+    },
   }
 };
