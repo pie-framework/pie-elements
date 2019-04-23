@@ -28,7 +28,7 @@ export default {
       label: 'Choice 4One',
     },
   ],
-  itemStem: 'Question Prompt goes here',
+  prompt: 'Question Prompt goes here',
   lockChoiceOrder: true,
   partialScoring: true,
   scoringType: 'auto',
@@ -52,7 +52,7 @@ export default {
     feedback: {
       settings: true,
     },
-    itemStem: {
+    prompt: {
       settings: true,
       label: 'Prompt'
     },

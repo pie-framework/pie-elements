@@ -1,3 +1,16 @@
+const defaultConfigure = {
+  sequentialChoiceLabels: {
+    settings: true,
+    label: 'Sequential Choice Labels',
+    enabled: false
+  },
+  partLabels: {
+    settings: true,
+    label: 'Part Labels',
+    enabled: false
+  }
+};
+
 export default {
   partA: {
     choices: [
@@ -7,6 +20,17 @@ export default {
       }
     ],
     prompt: 'prompt a',
+    configure: {
+      ...defaultConfigure,
+      choiceMode: {
+        settings: false,
+        label: 'Response Type'
+      },
+      partialScoring: {
+        settings: false,
+        label: 'Allow Partial Scoring',
+      },
+    }
   },
   partB: {
     choices: [
@@ -16,5 +40,6 @@ export default {
       },
     ],
     prompt: 'prompt b',
+    configure: defaultConfigure
   },
 };

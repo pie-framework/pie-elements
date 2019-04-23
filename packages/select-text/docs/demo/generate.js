@@ -57,29 +57,7 @@ const base = extras =>
       text:
         'Rachel cut out 8 stars in 6 minutes. Lovelle cut out 6 stars in 4 minutes. Rachel cut out 4 more stars than Lovelle. Lovelle and Rachel cut the same number of stars in 6 minutes.',
       tokens: tokens(),
-      configure: {
-        /**
-         * These are the configurable options
-         */
-        /*
-        promptLabel: 'Item Stem',
-        contentLabel : 'Contents',
-        highlightChoicesLabel: 'Type of Answer',
-        tokensLabel: 'Tokens',
-        setCorrectAnswersLabel: 'Set correct answers',
-        modeLabel: '',
-        availableSelectionsLabel: '',
-        correctAnswersLabel: '',
-        selectionCountLabel: '',
-        enableContentChange: false,
-        enableHighlightChoices: false,
-        enableTokensChange: false,
-        showMode: false,
-        showSelections: false,
-        showCorrectAnswersNumber: false,
-        showSelectionCount: false,
-        enableFeedback: false*/
-      }
+      configure: {}
     },
     extras
   );

@@ -51,7 +51,7 @@ const Design = withStyles(styles)(props => {
     onModelChanged
   } = props;
   const {
-    itemStem,
+    prompt,
     addChoiceButton,
     feedback,
     deleteChoice,
@@ -62,7 +62,9 @@ const Design = withStyles(styles)(props => {
     teacherInstructions = {},
     studentInstructions = {},
     rationale = {},
-    scoringType = {}
+    scoringType = {},
+    sequentialChoiceLabels = {},
+    partLabels = {},
   } = configure;
 
   return (
@@ -74,8 +76,12 @@ const Design = withStyles(styles)(props => {
             onChange={onModelChanged}
             groups={{
               'Item Type': {
+                'configure.partLabels.enabled': partLabels.settings &&
+                toggle(partLabels.label),
                 choiceMode: choiceMode.settings &&
                 radio(choiceMode.label, 'checkbox', 'radio'),
+                'configure.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                toggle(sequentialChoiceLabels.label),
                 choicePrefix: choicePrefix.settings &&
                 radio(choicePrefix.label, 'numbers', 'letters'),
                 partialScoring: partialScoring.settings &&
@@ -98,17 +104,17 @@ const Design = withStyles(styles)(props => {
         }
       >
         <div>
-          {itemStem.settings &&
+          {prompt.settings &&
           <InputContainer
-            label={itemStem.label}
+            label={prompt.label}
             className={classes.promptHolder}
           >
             <EditableHtml
               className={classes.prompt}
-              markup={model.itemStem}
+              markup={model.prompt}
               onChange={onPromptChanged}
               imageSupport={imageSupport}
-              nonEmpty={!itemStem.settings}
+              nonEmpty={!prompt.settings}
               disableUnderline
             />
           </InputContainer>

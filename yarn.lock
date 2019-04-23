@@ -1651,7 +1651,7 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^7.6.7", "@pie-lib/config-ui@^7.8.0":
+"@pie-lib/config-ui@^7.6.7":
   version "7.11.34"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.34.tgz#0aa926da7970fb3dcf1ce7cff8c497677e5cf1a7"
   integrity sha512-ai3JZiuGe6VDt5Km+06dca1BlBVl6PFObFHdpFaKUTYJHi12UYiwAZf3bThRW+9VyjVzjQY6eV/c6O2RZh1cTw==
@@ -1915,7 +1915,7 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/ebsr@^1.1.8":
+"@pie-ui/ebsr@^1.1.11":
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.11.tgz#696948c44e9ac415233cd1c373151f3fe2b242a0"
   integrity sha512-6MG9mXb9S/nhtz15z/gBKoUVEZo1jYu5Xsujt+1/h+fuz4cjzew6pTb5xTPOfj48kmSu2VZuxHKQUcCbFreWuQ==

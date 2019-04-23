@@ -1,20 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main snapshot renders 1`] = `
-<Component>
-  <WithStyles(Design)
-    model={
-      Object {
-        "tokens": Array [],
-      }
+<WithStyles(Design)
+  model={
+    Object {
+      "tokens": Array [],
     }
-    onChange={[MockFunction]}
-    onPromptChanged={[Function]}
-    title="Design"
-  />
-  <Component
-    onChange={[Function]}
-    title="Scoring"
-  />
-</Component>
+  }
+  onChange={[MockFunction]}
+  onPromptChanged={[Function]}
+  title="Design"
+/>
 `;

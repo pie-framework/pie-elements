@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 interface TextToken {
   /** The token text */
@@ -14,59 +15,6 @@ interface TextToken {
   correct?: boolean;
 }
 
-interface SelectTextPieConfigure {
-  /**  The question prompt or item stem */
-  promptLabel?: string,
-
-  /** Indicates if the content can change */
-  enableContentChange?: boolean,
-
-  /** Content label */
-  contentLabel?: string,
-
-  /** Indicates if the choices are highlighted  */
-  enableHighlightChoices?: boolean,
-
-  /** Label for highlight choices checkbox */
-  highlightChoicesLabel?: string,
-
-  /** Indicates if tokens are changeable */
-  enableTokensChange?: boolean,
-
-  /** Label for the tokens */
-  tokensLabel?: string,
-
-  /** Indicates if feedback is enabled */
-  enableFeedback?: boolean;
-
-  /** Label for Set Correct Answers switch */
-  setCorrectAnswersLabel?: string,
-
-  /** Indicates if the selected mode of the text tokens is displayed */
-  showMode?: boolean,
-
-  /** Label to display the selected mode of the text tokens */
-  modeLabel?: string,
-
-  /** Indicates if the available selections number is displayed */
-  showSelections?: boolean,
-
-  /** Label to display the number of available selections */
-  availableSelectionsLabel?: string,
-
-  /** Indicates if the correct answers number is displayed */
-  showCorrectAnswersNumber?: boolean,
-
-  /** Label to display the number of correct answers*/
-  correctAnswersLabel?: string,
-
-  /** Indicates if selection count is displayed */
-  showSelectionCount?: boolean,
-
-  /** Label for selection count */
-  selectionCountLabel?: string,
-}
-
 /**
  * Pie Model Object for @pie-elements/select-text
  * @title  @pie-elements/select-text
@@ -74,28 +22,6 @@ interface SelectTextPieConfigure {
  * @additionalProperties false
  */
 export interface SelectTextPie extends PieModel {
-
-  /** The user prompt/item stem */
-  prompt?: string;
-
-  /** The passage of text from which user may select responses */
-  text: string;
-
-  /**
-   * Indicates if the parts of text that are choosable, should be highligned when presented to student. 
-   * @default false 
-   */
-  highlightChoices?: boolean;
-
-  /** Feedback for student responses */
-  feedback?: ComplexFeedbackType;
-
-  /** Indicates if partial scoring should be used */
-  partialScoring?: boolean;
-
-  /** Partial scoring label */
-  partialScoringLabel?: string;
-
   /** The maximum number of token selections a user can make when responding */
   maxSelections: number;
 
@@ -106,11 +32,38 @@ export interface SelectTextPie extends PieModel {
    */
   mode?: 'sentence' | 'word' | 'paragraph';
 
+  /** Indicates if partial scoring should be used */
+  partialScoring?: boolean;
+
+  /** Feedback for student responses */
+  feedback?: ComplexFeedbackType;
+
   /** The selectable text tokens in the main text content */
   tokens: TextToken[];
 
-  /** */
-  configure: SelectTextPieConfigure;
+  /** The passage of text from which user may select responses */
+  text: string;
+
+  /** The user prompt/item stem */
+  prompt?: string;
+
+  /**
+   * Indicates if the parts of text that are choosable, should be highligned when presented to student.
+   * @default false
+   */
+  highlightChoices?: boolean;
+
+  /** Indicates if rationale is enabled */
+  rationale: boolean;
+
+  /** Indicates scoring type */
+  scoringType: 'auto' | 'rubric';
+
+  /** Indicates if student instructions are enabled */
+  studentInstructions: boolean;
+
+  /** Indicates if teacher instructions are enabled */
+  teacherInstructions: boolean;
 }
 
 
@@ -122,5 +75,70 @@ export interface SelectTextPie extends PieModel {
  * @additionalProperties false
  */
 export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings {
+  /**
+   * Selection Count configuration
+   */
+  selectionCount: ConfigureProp;
+
+  /**
+   * Selections configuration
+   */
+  selections: ConfigureProp;
+
+
+  /**
+   * Mode configuration
+   */
+  mode: ConfigureProp;
+
+  /**
+   * Partial Scoring configuration
+   */
+  partialScoring: ConfigureProp;
+
+  /**
+   * Feedback configuration
+   */
+  feedback: ConfigureProp;
+
+  /**
+   * Tokens configuration
+   */
+  tokens: ConfigureProp;
+
+  /**
+   * Text Content configuration
+   */
+  text: ConfigureProp;
+
+  /**
+   * Prompt configuration
+   */
+  prompt: ConfigureProp;
+
+  /**
+   * Highlight Choices configuration
+   */
+  highlightChoices: ConfigureProp;
+
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
+
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
+
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }
 
