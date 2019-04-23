@@ -43,8 +43,8 @@ exports[`Root snapshot renders 1`] = `
         },
       ],
       "configure": Object {},
-      "itemStem": "Which of these northern European countries are EU members?",
       "partialScoring": false,
+      "prompt": "Which of these northern European countries are EU members?",
     }
   }
   onAddChoice={[Function]}

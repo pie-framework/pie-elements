@@ -238,5 +238,35 @@
     "committerDate": "2018-05-21 14:58:41 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines@1.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "updated @pie-ui/graph-lines version.",
+    "merge": null,
+    "header": "fix: updated @pie-ui/graph-lines version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "de44d16cdbee7040ecb4b893e025da3c7e0a6bcf",
+    "gitTags": " (origin/andreea/ch1097/update-current-interactions-with-settings-graphing)",
+    "committerDate": "2019-04-23 12:28:31 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@1.5.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graph-lines",
+    "subject": "Updated model structure with new established structure (a part of it), integrated settings panel and updated tests.",
+    "merge": null,
+    "header": "feat(graph-lines): Updated model structure with new established structure (a part of it), integrated settings panel and updated tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a0c624fcf4dcd59864b324379eed39a962c4239a",
+    "gitTags": "",
+    "committerDate": "2019-04-18 16:36:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@1.5.0"
   }
 ]

@@ -44,7 +44,7 @@ const model = {
         }
       }
     ],
-    keyMode: 'numbers',
+    choicePrefix: 'numbers',
     prompt: `prompt ${PART_A}`
   },
   partB: {
@@ -67,7 +67,7 @@ const model = {
         }
       }
     ],
-    keyMode: 'numbers',
+    choicePrefix: 'numbers',
     prompt: `prompt ${PART_B}`
   }
 };
@@ -175,11 +175,11 @@ describe('index', () => {
     });
   };
 
-  const changesKeyMode = key => {
-    it(`${key} changes keyMode`, () => {
+  const changesChoicePrefix = key => {
+    it(`${key} changes choicePrefix`, () => {
       const newModel = {
         ...model[key],
-        keyMode: 'letters'
+        choicePrefix: 'letters'
       };
 
       updateModel(newModel, key);
@@ -253,8 +253,8 @@ describe('index', () => {
     });
 
     describe('onKeyModeChanged', () => {
-      changesKeyMode(PART_A);
-      changesKeyMode(PART_B);
+      changesChoicePrefix(PART_A);
+      changesChoicePrefix(PART_B);
     });
 
     describe('onChoiceChanged', () => {
