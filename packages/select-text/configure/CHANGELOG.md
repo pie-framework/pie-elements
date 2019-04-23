@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.9...@pie-element/select-text-configure@2.5.10) (2019-04-18)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [2.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.8...@pie-element/select-text-configure@2.5.9) (2019-04-17)
+
+
+### Bug Fixes
+
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+
+
+
 ## [2.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.7...@pie-element/select-text-configure@2.5.8) (2019-04-09)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

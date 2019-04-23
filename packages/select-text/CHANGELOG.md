@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.2...@pie-element/select-text@3.10.3) (2019-04-18)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.1...@pie-element/select-text@3.10.2) (2019-04-17)
+
+
+### Bug Fixes
+
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+
+
+
 ## [3.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.0...@pie-element/select-text@3.10.1) (2019-04-09)
 
 **Note:** Version bump only for package @pie-element/select-text

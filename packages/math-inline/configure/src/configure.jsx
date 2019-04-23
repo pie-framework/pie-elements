@@ -49,7 +49,6 @@ class Configure extends React.Component {
     const {
       configure: {
         responseType,
-        partialScoring,
         teacherInstructions,
         studentInstructions,
         rationale,
@@ -68,9 +67,7 @@ class Configure extends React.Component {
             groups={{
               'Item Type': {
                 responseType: responseType.settings &&
-                radio(responseType.label, ResponseTypes.simple, ResponseTypes.advanced),
-                partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
+                radio(responseType.label, ResponseTypes.simple, ResponseTypes.advanced)
               },
               'Properties': {
                 'configure.teacherInstructions.enabled': teacherInstructions.settings &&

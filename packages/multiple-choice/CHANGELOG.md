@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.11.2...@pie-element/multiple-choice@2.12.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **multiple-choice:** Refactored using new established naming convention and updated tests. ([78ffbae](https://github.com/pie-framework/pie-elements/commit/78ffbae))
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+### Features
+
+* Updated @pie-ui/multiple-choice version. ([93dbd6a](https://github.com/pie-framework/pie-elements/commit/93dbd6a))
+* **multiple-choice:** Integrated new settings panel. Updated tests. ([6387043](https://github.com/pie-framework/pie-elements/commit/6387043))
+
+
+
+
+
 ## [2.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.11.1...@pie-element/multiple-choice@2.11.2) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

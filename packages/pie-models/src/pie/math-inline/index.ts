@@ -54,7 +54,7 @@ interface MathInlineResponse {
 */
 export interface MathInlinePie extends PieModel {
     /** Indicates the mode of the question*/
-    responseType: 'advanced' | 'simple';
+    responseType: 'Advanced Multi' | 'Simple';
 
     /** Indicates the question statement */
     question?: string;

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.8.6...@pie-element/multiple-choice-configure@0.9.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **multiple-choice:** Refactored using new established naming convention and updated tests. ([78ffbae](https://github.com/pie-framework/pie-elements/commit/78ffbae))
+* **placement-ordering:** renaming model properties with naming conventions. ([9d9be01](https://github.com/pie-framework/pie-elements/commit/9d9be01))
+
+
+### Features
+
+* **multiple-choice:** Integrated new settings panel. Updated tests. ([6387043](https://github.com/pie-framework/pie-elements/commit/6387043))
+
+
+
+
+
 ## [0.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.8.5...@pie-element/multiple-choice-configure@0.8.6) (2019-04-08)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure
