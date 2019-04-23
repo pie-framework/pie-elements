@@ -1,16 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ChartConfig from '@pie-lib/charting-config';
-import { FeedbackConfig } from '@pie-lib/config-ui';
+import {
+  FeedbackConfig,
+  settings,
+  layout
+} from '@pie-lib/config-ui';
 import PartialScoringConfig from '@pie-lib/scoring-config';
-import SwipeableViews from 'react-swipeable-views';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
 
+const { Panel, toggle, radio } = settings;
 const log = debug('@pie-element:graph-lines:configure');
 
 const styles = theme => ({
@@ -54,8 +56,8 @@ class Configure extends React.Component {
     this.props.onModelChanged(JSON.parse(JSON.stringify(this.defaults)));
   };
 
-  onChange = (config) => {
-    this.props.model.model.config = { ...config };
+  onChange = graph => {
+    this.props.model.graph = { ...graph };
 
     this.props.onModelChanged(this.props.model);
   };
@@ -68,12 +70,12 @@ class Configure extends React.Component {
 
   onAddLine = () => {
     const { model } = this.props;
-    const newConfig = {
-      ...model.model.config,
-      lines: model.model.config.lines.concat({ initialView: '', correctLine: '', label: '' })
+    const newGraph = {
+      ...model.graph,
+      lines: model.graph.lines.concat({ initialView: '', correctLine: '', label: '' })
     };
 
-    this.onChange(newConfig);
+    this.onChange(newGraph);
   };
 
   onMultipleToggle = event => {
@@ -81,8 +83,8 @@ class Configure extends React.Component {
 
     model.multiple = event.target.checked;
 
-    if (!model.multiple && model.model.config.lines.length > 1) {
-      model.model.config.lines.length = 1;
+    if (!model.multiple && model.graph.lines.length > 1) {
+      model.graph.lines.length = 1;
     }
 
     onModelChanged(model);
@@ -99,65 +101,86 @@ class Configure extends React.Component {
 
   render() {
     const { classes, model } = this.props;
-    const config = model.model.config;
+    const config = model.graph;
+
+    const {
+      configure: {
+        arrows,
+        graphTitle,
+        padding,
+        labels,
+
+        rationale,
+        scoringType,
+        studentInstructions,
+        teacherInstructions,
+      }
+    } = model;
 
     log('[render] model', model);
 
+
     return (
-      <div>
-        <Tabs
-          value={this.state.activeTab}
-          onChange={this.onTabChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-        >
-          <Tab label="Design" />
-          <Tab disabled={!model.multiple} label="Scoring" />
-        </Tabs>
-        <SwipeableViews
-          axis="x"
-          index={this.state.activeTab}
-          onChangeIndex={this.onChangeTabIndex}
-        >
-          <div className={classes.tab}>
-            <div className={classes.content}>
-              <Typography component="div" type="body1">
+      <layout.ConfigLayout
+        settings={
+          <Panel
+            model={model}
+            onChange={this.props.onModelChanged}
+            groups={{
+              'Item Type': {
+                arrows: arrows.settings && toggle(arrows.label),
+                'configure.graphTitle.enabled': graphTitle.settings &&
+                toggle(graphTitle.label),
+                padding: padding.settings && toggle(padding.label),
+                labels: labels.settings && toggle(labels.label),
+              },
+              'Properties': {
+                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                'configure.rationale.enabled': rationale.settings &&
+                toggle(rationale.label),
+                scoringType: scoringType.settings &&
+                radio(scoringType.label, 'auto', 'rubric'),
+              },
+            }}
+          />
+        }
+      >
+        <div className={classes.content}>
+          <Typography component="div" type="body1">
                 <span>
                   This interaction asks a student to draw a line that meets specific criteria.
                   The student will draw the line by clicking on two points on the graph.
                 </span>
-                <h2>Lines</h2>
-                <span>Line equations must be in y=mx+b form. Only whole number coordinates can be plotted.</span>
-              </Typography>
-              <GeneralConfigBlock
-                onMultipleToggle={this.onMultipleToggle}
-                onAddLine={this.onAddLine}
-                multiple={model.multiple}
-                config={config}
-                onChange={this.onChange}
-              />
-              <ChartConfig
-                config={config}
-                onChange={this.onChange}
-                resetToDefaults={this.resetToDefaults}
-              />
-              <FeedbackConfig
-                allowPartial={false}
-                feedback={model.feedback}
-                onChange={this.onFeedbackChange}
-              />
-            </div>
-          </div>
-          <div className={classes.tab}>
-            <PartialScoringConfig
-              numberOfCorrectResponses={config.lines.length}
-              partialScoring={!!model.partialScoring}
-              onChange={this.onPartialScoringChange}
-              />
-          </div>
-        </SwipeableViews>
-      </div>
+            <h2>Lines</h2>
+            <span>Line equations must be in y=mx+b form. Only whole number coordinates can be plotted.</span>
+          </Typography>
+          <GeneralConfigBlock
+            onMultipleToggle={this.onMultipleToggle}
+            onAddLine={this.onAddLine}
+            multiple={model.multiple}
+            config={config}
+            onChange={this.onChange}
+          />
+          <ChartConfig
+            config={config}
+            onChange={this.onChange}
+            resetToDefaults={this.resetToDefaults}
+          />
+          <FeedbackConfig
+            allowPartial={false}
+            feedback={model.feedback}
+            onChange={this.onFeedbackChange}
+          />
+        </div>
+        <PartialScoringConfig
+          numberOfCorrectResponses={config.lines.length}
+          partialScoring={!!model.partialScoring}
+          onChange={this.onPartialScoringChange}
+        />
+      </layout.ConfigLayout>
     );
   }
 }

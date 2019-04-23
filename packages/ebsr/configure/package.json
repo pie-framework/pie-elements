@@ -6,9 +6,9 @@
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
-    "@pie-element/multiple-choice": "^2.12.0",
+    "@pie-element/multiple-choice": "^2.12.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^7.11.9",
+    "@pie-lib/config-ui": "^9.0.2",
     "lodash": "^4.17.10"
   },
   "license": "ISC"

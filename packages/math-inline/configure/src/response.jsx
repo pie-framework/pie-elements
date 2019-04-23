@@ -134,7 +134,7 @@ class Response extends React.Component {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
-    newResponse.alternates[alternateId].answer = answer;
+    newResponse.alternates[alternateId] = answer;
 
     onResponseChange(newResponse, index);
   };
@@ -148,7 +148,7 @@ class Response extends React.Component {
       newResponse.alternates = {}
     }
 
-    newResponse.alternates[alternateIdCounter] = { id: alternateIdCounter, answer: '' };
+    newResponse.alternates[alternateIdCounter] = '';
 
     onResponseChange(newResponse, index);
 
@@ -164,6 +164,13 @@ class Response extends React.Component {
     delete newResponse.alternates[alternateId];
 
     onResponseChange(newResponse, index);
+
+    this.setState(state => ({
+      showKeypad: {
+        ...state.showKeypad,
+        openCount: !state.showKeypad[alternateId] ? state.showKeypad.openCount : state.showKeypad.openCount - 1
+      }
+    }));
   };
 
   onDone = () => {
@@ -261,7 +268,7 @@ class Response extends React.Component {
                 controlledKeypad
                 keypadMode={mode}
                 showKeypad={showKeypad[alternateId] || false}
-                latex={alternates[alternateId].answer || ''}
+                latex={alternates[alternateId] || ''}
                 noDecimal={!allowDecimals}
                 onChange={this.onAlternateAnswerChange(alternateId)}
                 onFocus={this.onAlternateFocus(alternateId)}
