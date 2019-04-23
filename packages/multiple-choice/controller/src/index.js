@@ -54,7 +54,7 @@ export function model(question, session, env) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.itemStem,
+      prompt: question.prompt,
       choiceMode: question.choiceMode,
       keyMode: question.choicePrefix,
       shuffle: !question.lockChoiceOrder,

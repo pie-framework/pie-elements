@@ -16,7 +16,7 @@ jest.mock('@pie-lib/config-ui', () => ({
 }));
 
 const model = () => ({
-  itemStem: 'Which of these northern European countries are EU members?',
+  prompt: 'Which of these northern European countries are EU members?',
   choiceMode: 'checkbox',
   choicePrefix: 'numbers',
   choices: [
