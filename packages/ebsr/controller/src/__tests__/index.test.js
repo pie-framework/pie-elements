@@ -33,7 +33,7 @@ describe('controller', () => {
             }
           },
         ],
-        keyMode: 'numbers',
+        choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
       },
       partB: {
@@ -56,7 +56,7 @@ describe('controller', () => {
             }
           },
         ],
-        keyMode: 'numbers',
+        choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
       }
     };
@@ -138,8 +138,8 @@ describe('controller', () => {
       };
 
       const returnsKeyMode = (part) => {
-        it(`returns ${part} keyMode`, () => {
-          expect(result[part].keyMode).toEqual('numbers');
+        it(`returns ${part} choicePrefix`, () => {
+          expect(result[part].choicePrefix).toEqual('numbers');
         });
       };
 
@@ -157,10 +157,11 @@ describe('controller', () => {
 
       const returnsChoices = (part, value1, value2) => {
         it(`returns ${part} choices`, () => {
-          expect(result[part].choices).toEqual([
-            { value: value1, label: capitalize(value1) },
-            { value: value2, label: capitalize(value2) }
-          ]);
+          expect(result[part].choices).toEqual(
+            expect.arrayContaining([
+              { value: value1, label: capitalize(value1) },
+              { value: value2, label: capitalize(value2) }
+            ]));
         });
       };
 
@@ -206,10 +207,12 @@ describe('controller', () => {
 
       const returnsChoicesWCorrect = (part, value1, value2) => {
         it(`returns ${part} choices w/ correct`, () => {
-          expect(result[part].choices).toEqual([
-            { value: value1, label: capitalize(value1), correct: true, feedback: 'foo' },
-            { value: value2, label: capitalize(value2), correct: false, feedback: 'Incorrect' }
-          ]);
+          expect(result[part].choices).toEqual(
+
+            expect.arrayContaining([
+              { value: value1, label: capitalize(value1), correct: true, feedback: 'foo' },
+              { value: value2, label: capitalize(value2), correct: false, feedback: 'Incorrect' }
+            ]));
         });
       };
 

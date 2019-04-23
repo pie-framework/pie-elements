@@ -36,7 +36,7 @@ const parsePart = (part, key, session, env) => {
     prepareChoice(env.mode, defaultFeedback)
   );
 
-  if (part.shuffle) {
+  if (!part.lockChoiceOrder) {
     choices = shuffle(choices);
   }
 
@@ -56,17 +56,12 @@ const parsePart = (part, key, session, env) => {
 
 export function model(question, session, env) {
   return new Promise((resolve, reject) => {
-    const partA = parsePart(question.partA, 'partA', session, env);
-    const partB = parsePart(question.partB, 'partB', session, env);
-
-    const out = {
+    resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      partA,
-      partB,
-    };
-
-    resolve(out);
+      partA: parsePart(question.partA, 'partA', session, env),
+      partB: parsePart(question.partB, 'partB', session, env),
+    });
   });
 }
 
