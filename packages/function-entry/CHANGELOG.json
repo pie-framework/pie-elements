@@ -438,5 +438,20 @@
     "committerDate": "2019-03-15 15:25:07 -0400",
     "isTagged": true,
     "tag": "@pie-element/function-entry@3.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": "calculator",
+    "subject": "Updated @pie-lib/config-ui version. (#177)",
+    "merge": null,
+    "header": "fix(calculator): Updated @pie-lib/config-ui version. (#177)",
+    "body": "fix(categorize): Updated @pie-lib/config-ui version.\nfix(function-entry): Updated @pie-lib/config-ui version.\nfix(inline-choice): Updated @pie-lib/config-ui version.\nfix(number-line): Updated @pie-lib/config-ui version.\nfix(point-intercept): Updated @pie-lib/config-ui version.\nfix(ruler): Updated @pie-lib/config-ui version.\nfix(select-text): Updated @pie-lib/config-ui version.\nfix(text-entry): Updated @pie-lib/config-ui version.",
+    "footer": null,
+    "notes": [],
+    "hash": "6a56ff0588b46f065e3b3e536fce6189aa43673e",
+    "gitTags": "",
+    "committerDate": "2019-04-23 09:12:02 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/function-entry@3.4.4"
   }
 ]
