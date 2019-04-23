@@ -2072,15 +2072,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graph-lines@^1.1.2":
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-1.1.9.tgz#059af76091be802ea429a856fe9e460d34e13ad9"
-  integrity sha512-zysTWM9lMEf3XpUiZ0HSoDqZC3zrRJ6ljh3tmp3wMaQ5X4l15BtpOhlG7DL3wzoDXPIES9PjdQIQ+0FleRiUFQ==
+"@pie-ui/graph-lines@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.0.0.tgz#d8a0bad1a518c062d0288b53ebf69dee791602b6"
+  integrity sha512-O1Ut6t48uVigx6BmhX50X2rbpBYTIOzc+UeeUkf/zgvz7bhxyU7HqCCrnBAOcoTUBwxBfBWFmYrhS4mkUzfkeQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/charting" "^2.3.1"
-    "@pie-lib/config-ui" "^7.11.9"
+    "@pie-lib/config-ui" "^9.0.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/render-ui" "^4.3.1"
     classnames "^2.2.5"
