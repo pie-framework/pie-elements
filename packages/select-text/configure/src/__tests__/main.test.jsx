@@ -1,6 +1,22 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Main } from '../main';
+import {
+  layout,
+  settings,
+} from '@pie-lib/config-ui';
+
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
+  },
+  settings: {
+    Panel: props => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 
 describe('main', () => {
   let w;
@@ -18,15 +34,5 @@ describe('main', () => {
     });
   });
 
-  describe('logic', () => {
-    describe('changePartialScoring', () => {
-      it('calls onChange', () => {
-        w.instance().changePartialScoring(true);
-        expect(onChange).toBeCalledWith({
-          ...getModel(),
-          partialScoring: true
-        });
-      });
-    });
-  });
+  describe('logic', () => {});
 });
