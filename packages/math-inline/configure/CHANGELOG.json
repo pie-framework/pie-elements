@@ -628,5 +628,55 @@
     "committerDate": "2019-04-17 15:20:09 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@0.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "centralized variables for interaction modes",
+    "merge": null,
+    "header": "fix(math-inline): centralized variables for interaction modes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5afa51acf8a9bfe32c602e3194d143e13237d1e2",
+    "gitTags": "",
+    "committerDate": "2019-04-22 13:22:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@1.0.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "Updated config-ui version.",
+    "merge": null,
+    "header": "Fix: Updated config-ui version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "69cd143fbb07a6073a96f05a2e83c67bf840cc4d",
+    "gitTags": "",
+    "committerDate": "2019-04-22 12:17:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@1.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "formulaV2 support for controller and relevant config panel adjustments",
+    "merge": null,
+    "header": "feat(math-inline): formulaV2 support for controller and relevant config panel adjustments",
+    "body": null,
+    "footer": "BREAKING CHANGE: controller validation schema is now using formulaV2 approach, resulting interface is changed and partial scoring is no longer supported",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "controller validation schema is now using formulaV2 approach, resulting interface is changed and partial scoring is no longer supported"
+      }
+    ],
+    "hash": "168f0d587dfd67ff0be12abd7347079a6d3f3126",
+    "gitTags": "",
+    "committerDate": "2019-04-22 11:33:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@1.0.0"
   }
 ]

@@ -943,5 +943,100 @@
     "committerDate": "2019-04-17 15:20:09 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@0.8.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "update math-inline model",
+    "merge": null,
+    "header": "chore: update math-inline model",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d99f73cc013ebb1591b79601f07224986b97b142",
+    "gitTags": "",
+    "committerDate": "2019-04-22 14:45:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "Updated pie-model.",
+    "merge": null,
+    "header": "Fix: Updated pie-model.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d9190bed2ddc154baf99ff488aabed0d89619bf",
+    "gitTags": "",
+    "committerDate": "2019-04-22 14:36:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "Updated 'mode' with 'responseType'.",
+    "merge": null,
+    "header": "Fix: Updated 'mode' with 'responseType'.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9fb848e427383ae87d09c54d94839ce8882db2fb",
+    "gitTags": "",
+    "committerDate": "2019-04-22 13:49:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "centralized variables for interaction modes",
+    "merge": null,
+    "header": "fix(math-inline): centralized variables for interaction modes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5afa51acf8a9bfe32c602e3194d143e13237d1e2",
+    "gitTags": "",
+    "committerDate": "2019-04-22 13:22:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "Updated config-ui version.",
+    "merge": null,
+    "header": "Fix: Updated config-ui version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "69cd143fbb07a6073a96f05a2e83c67bf840cc4d",
+    "gitTags": "",
+    "committerDate": "2019-04-22 12:17:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "formulaV2 support for controller and relevant config panel adjustments",
+    "merge": null,
+    "header": "feat(math-inline): formulaV2 support for controller and relevant config panel adjustments",
+    "body": null,
+    "footer": "BREAKING CHANGE: controller validation schema is now using formulaV2 approach, resulting interface is changed and partial scoring is no longer supported",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "controller validation schema is now using formulaV2 approach, resulting interface is changed and partial scoring is no longer supported"
+      }
+    ],
+    "hash": "168f0d587dfd67ff0be12abd7347079a6d3f3126",
+    "gitTags": "",
+    "committerDate": "2019-04-22 11:33:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.0"
   }
 ]

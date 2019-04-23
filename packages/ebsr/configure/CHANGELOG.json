@@ -283,5 +283,20 @@
     "committerDate": "2019-04-10 16:40:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@1.2.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "Updated config-ui version.",
+    "merge": null,
+    "header": "Fix: Updated config-ui version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4db3d8aab44801d28ea05f16300a45a02c29c216",
+    "gitTags": "",
+    "committerDate": "2019-04-22 12:36:52 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@1.2.4"
   }
 ]
