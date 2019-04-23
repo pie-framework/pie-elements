@@ -2,10 +2,28 @@ import React from 'react';
 import { Main } from '../main';
 import { shallow } from 'enzyme';
 
+import {
+  layout,
+  settings,
+} from '@pie-lib/config-ui';
+
+import defaults from '../defaults';
+
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
+  },
+  settings: {
+    Panel: props => <div onChange={props.onChange} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 describe('Render Main Component', () => {
   let wrapper, instance, onChange;
+  let model = defaults;
 
-  let model = {};
   beforeEach(() => {
     onChange = jest.fn();
     wrapper = shallow(

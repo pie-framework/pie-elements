@@ -7,7 +7,7 @@ const q = extras =>
       feedback: { type: 'default', default: 'this is default feedback' },
       width: '500px',
       height: '100px',
-      showMathInput: false
+      mathInput: false
     },
     extras
   );

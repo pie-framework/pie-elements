@@ -1,58 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render Main Component Match Snapshot 1`] = `
-<div>
-  <WithStyles(Typography)
-    variant="subheading"
-  >
-    Display
-  </WithStyles(Typography)>
-  <Component
-    disabled={false}
-    label="Width (px)"
-    max={500}
-    min={100}
-    onChange={[Function]}
-    showErrorWhenOutsideRange={true}
-    value={NaN}
-  />
-  <Component
-    disabled={false}
-    label="Height (px)"
-    max={500}
-    min={100}
-    onChange={[Function]}
-    showErrorWhenOutsideRange={true}
-    value={NaN}
-  />
-  <br />
-  <Component
-    checked={false}
-    label="Student responses can include math notation"
-    onChange={[Function]}
-  />
-  <br />
-  <Component
-    label="Prompt"
-  >
-    <EditableHtml
+<ConfigLayout
+  settings={
+    <Panel
+      groups={
+        Object {
+          "Item Type": Object {
+            "configure.equationEditor.enabled": false,
+            "configure.multipleParts.enabled": false,
+            "mathInput": undefined,
+          },
+          "Properties": Object {
+            "configure.studentInstructions.enabled": false,
+            "configure.teacherInstructions.enabled": false,
+          },
+        }
+      }
+      model={
+        Object {
+          "configure": Object {
+            "equationEditor": Object {
+              "enabled": false,
+              "label": "Equation Editor",
+              "settings": false,
+            },
+            "height": Object {
+              "label": "Height (px)",
+              "settings": true,
+            },
+            "mathInput": Object {
+              "enabled": false,
+              "label": "Student response can include math notation",
+              "settings": true,
+            },
+            "multipleParts": Object {
+              "enabled": false,
+              "label": "Multiple Parts",
+              "settings": false,
+            },
+            "studentInstructions": Object {
+              "enabled": true,
+              "label": "Student Instructions",
+              "settings": false,
+            },
+            "teacherInstructions": Object {
+              "enabled": false,
+              "label": "Teacher Instructions",
+              "settings": false,
+            },
+            "width": Object {
+              "label": "Width (px)",
+              "settings": true,
+            },
+          },
+          "height": 100,
+          "mathInput": false,
+          "prompt": "This is the question prompt",
+          "width": 500,
+        }
+      }
       onChange={[Function]}
     />
-  </Component>
-  <WithStyles(Typography)
-    variant="subheading"
-  >
-    Feedback
-  </WithStyles(Typography)>
-  <Component
-    feedback={
-      Object {
-        "default": "Your answer has been submitted",
-        "type": "default",
+  }
+>
+  <div>
+    <WithStyles(Typography)
+      variant="subheading"
+    >
+      Display
+    </WithStyles(Typography)>
+    <Component
+      disabled={false}
+      label="Width (px)"
+      max={500}
+      min={100}
+      onChange={[Function]}
+      showErrorWhenOutsideRange={true}
+      value={500}
+    />
+    <Component
+      disabled={false}
+      label="Height (px)"
+      max={500}
+      min={100}
+      onChange={[Function]}
+      showErrorWhenOutsideRange={true}
+      value={100}
+    />
+    <br />
+    <Component
+      label="Prompt"
+    >
+      <EditableHtml
+        markup="This is the question prompt"
+        onChange={[Function]}
+      />
+    </Component>
+    <WithStyles(Typography)
+      variant="subheading"
+    >
+      Feedback
+    </WithStyles(Typography)>
+    <Component
+      feedback={
+        Object {
+          "default": "Your answer has been submitted",
+          "type": "default",
+        }
       }
-    }
-    label="When submitted, show"
-    onChange={[Function]}
-  />
-</div>
+      label="When submitted, show"
+      onChange={[Function]}
+    />
+  </div>
+</ConfigLayout>
 `;
