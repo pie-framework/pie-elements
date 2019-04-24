@@ -2,7 +2,6 @@
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure
  */
-
 export default {
   model: {
     choiceMode: 'checkbox',

@@ -59,7 +59,6 @@ export default class MultipleChoice extends HTMLElement {
     super();
     this._model = MultipleChoice.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
-
     this.onModelChanged = this.onModelChanged.bind(this);
 
     // todo how will generate.js look like and how will the configuration be sent?
