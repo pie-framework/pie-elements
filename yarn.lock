@@ -1651,6 +1651,21 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
+"@pie-lib/config-ui@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.0.0.tgz#1f31619bdd13a12b44fe7fc5c132a635242c3e3b"
+  integrity sha512-+wxEpkRofHeCXpV0WyoNegOWZBy3qIDD43UHx9oScogSGKTywoUwGhIwtzvyzw7ENQYwgjziX+nlZPN/H9ypRw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^7.3.7"
+    "@pie-lib/icons" "^2.3.8"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-measure "^2.2.2"
+
 "@pie-lib/config-ui@^7.6.7":
   version "7.11.34"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.34.tgz#0aa926da7970fb3dcf1ce7cff8c497677e5cf1a7"
@@ -1721,6 +1736,36 @@
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-rendering" "^1.2.9"
     "@pie-lib/math-toolbar" "^0.11.4"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.3.7":
+  version "7.3.7"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.3.7.tgz#808c97fe9d7d3751d77dfaa5781f137aeea6f292"
+  integrity sha512-Mw5ed+KEJLiUBIugQDP15caHAwU/dQVxTlfbE+MadrUFzlQLRxgZz7gi7u8sZ4uq2KWHuxx9KnDx3Y/ZEb9K4Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-rendering" "^1.2.9"
+    "@pie-lib/math-toolbar" "^1.0.1"
     change-case "^3.0.2"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -1813,6 +1858,18 @@
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-0.11.4.tgz#2d4bf8d3fbaf859dad4bd4d6fd3b25fed485ace4"
   integrity sha512-Ni0YFX7D34KuW/HO1KL6YoSh6Ti2frhgn04r9B32YNj4MQAiCFgTL6p8uzvG2hv4ye9VlihVUmbsjWEwBZfOMA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.0.0"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+
+"@pie-lib/math-toolbar@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.0.1.tgz#08cdc2f1ed727f2102f6f15b2f0141524c15d34c"
+  integrity sha512-VrUq3vs4o1wM206YDnO0myWyLhCRHIyHe/Pous62wDUS1lc/rMv/hLYtXTLRj1lnakvZHAwFtJejIUhwStP8tg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
