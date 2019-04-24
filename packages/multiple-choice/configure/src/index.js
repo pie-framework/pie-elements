@@ -59,15 +59,29 @@ export default class MultipleChoice extends HTMLElement {
     super();
     this._model = MultipleChoice.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
+
     this.onModelChanged = this.onModelChanged.bind(this);
+
+    // todo how will generate.js look like and how will the configuration be sent?
+    setTimeout(() => {
+      const el = document.querySelector('multiple-choice-configure');
+
+      el.configuration = {
+        addChoiceButton: {
+          settings: true,
+          label: 'Add Choice',
+        },
+      };
+    });
   }
 
   set model(s) {
     this._model = MultipleChoice.createDefaultModel(s);
+
     this._render();
   }
 
-  set configure(c) {
+  set configuration(c) {
     const info = prepareCustomizationObject(c, this._model);
 
     this.onModelChanged(info.model);
