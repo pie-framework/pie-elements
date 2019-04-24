@@ -47,11 +47,15 @@ jest.mock('nested-property', () => ({
 
 describe('Placement Ordering', () => {
   let updateModel;
+  let onConfigurationChanged;
   let model;
+  let configuration;
 
   beforeEach(() => {
     updateModel = jest.fn();
-    model = _.cloneDeep(defaultValues);
+    onConfigurationChanged = jest.fn();
+    model = _.cloneDeep(defaultValues.model);
+    configuration = _.cloneDeep(defaultValues.configuration);
   });
 
   describe('snapshot', () => {
@@ -59,6 +63,7 @@ describe('Placement Ordering', () => {
       const wrapper = shallow(
         <Design
           model={model}
+          configuration={configuration}
           classes={{}}
           className={'foo'}
           updateModel={updateModel}
@@ -69,12 +74,13 @@ describe('Placement Ordering', () => {
     });
 
     it ('renders custom items', () => {
-      model.configure.prompt.settings = false;
-      model.configure.removeTilesAfterPlacing.settings = true;
+      configuration.prompt.settings = false;
+      configuration.removeTilesAfterPlacing.settings = true;
 
       const wrapper = shallow(
         <Design
           model={model}
+          configuration={configuration}
           classes={{}}
           className={'foo'}
           updateModel={updateModel}
@@ -95,7 +101,9 @@ describe('Placement Ordering', () => {
           classes: {},
           className: 'className',
           updateModel,
-          model
+          onConfigurationChanged,
+          model,
+          configuration
         };
         const props = { ...defaults, ...extras };
 
@@ -272,11 +280,18 @@ describe('Placement Ordering', () => {
     });
 
     describe('onSettingsChange', () => {
-      it('calls update model when settings call onChange function', () => {
-        w.find('ConfigLayout').props().settings.props.onChange();
+      it('calls update model when settings call onChangeModel function', () => {
+        w.find('ConfigLayout').props().settings.props.onChangeModel();
 
         expect(updateModel).toBeCalled();
       });
+
+      it('calls onConfigurationChanged when settings call onChangeConfiguration function', () => {
+        w.find('ConfigLayout').props().settings.props.onChangeConfiguration();
+
+        expect(onConfigurationChanged).toBeCalled();
+      });
+
     });
   })
 });

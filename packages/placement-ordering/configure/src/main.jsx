@@ -53,12 +53,14 @@ class Main extends React.Component {
   };
 
   render() {
-    const { imageSupport } = this.props;
+    const { imageSupport, configuration, onConfigurationChanged } = this.props;
     const { model } = this.state;
 
     return (
       <Design
         model={model}
+        configuration={configuration}
+        onConfigurationChanged={onConfigurationChanged}
         onModelChanged={this.onModelChanged}
         imageSupport={imageSupport}
         updateModel={this.updateModel}

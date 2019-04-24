@@ -65,40 +65,40 @@ export class Design extends React.Component {
   }
 
   render() {
-    const { model, classes, imageSupport, updateModel } = this.props;
+    const { model, classes, imageSupport, updateModel, configuration, onConfigurationChanged } = this.props;
     const {
-      configure: {
-        choiceLabel,
-        choices,
-        feedback,
-        targetLabel,
-        prompt,
+      choiceLabel,
+      choices,
+      feedback,
+      targetLabel,
+      prompt,
 
-        placementArea,
-        numberedGuides,
-        enableImages,
-        orientation,
-        removeTilesAfterPlacing,
-        partialScoring,
-        lockChoiceOrder,
+      placementArea,
+      numberedGuides,
+      enableImages,
+      orientation,
+      removeTilesAfterPlacing,
+      partialScoring,
+      lockChoiceOrder,
 
-        teacherInstructions,
-        studentInstructions,
-        rationale,
-        scoringType,
-      },
-    } = model;
+      teacherInstructions,
+      studentInstructions,
+      rationale,
+      scoringType,
+    } = configuration;
 
     return (
       <layout.ConfigLayout
         settings={
           <Panel
             model={model}
-            onChange={model => updateModel(model)}
+            configuration={configuration}
+            onChangeModel={(model, key) => updateModel(model)}
+            onChangeConfiguration={(configuration, key) => onConfigurationChanged(configuration, true)}
             groups={{
               'Item Type': {
-                'configure.choiceLabel.enabled': choiceLabel.settings &&
-                  toggle(choiceLabel.label),
+                'choiceLabel.enabled': choiceLabel.settings &&
+                  toggle(choiceLabel.label, true),
                 placementArea: placementArea.settings &&
                   toggle(placementArea.label),
                 numberedGuides: (numberedGuides.settings &&
@@ -106,23 +106,23 @@ export class Design extends React.Component {
                 enableImages: enableImages.settings &&
                   toggle(enableImages.label),
                 orientation: orientation.settings &&
-                  radio(orientation.label, 'vertical', 'horizontal'),
+                  radio(orientation.label, ['vertical', 'horizontal']),
                 removeTilesAfterPlacing: removeTilesAfterPlacing.settings &&
                   toggle(removeTilesAfterPlacing.label),
                 partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                  toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                  toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                  toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                  toggle(rationale.label, true),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
-                  radio(scoringType.label, 'auto', 'rubric'),
+                  radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />

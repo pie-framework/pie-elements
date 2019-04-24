@@ -10,6 +10,12 @@ import ReactDOM from 'react-dom';
 import defaultValues from './defaults';
 import defaults from 'lodash/defaults';
 
+const prepareCustomizationObject = (config, model) => {
+  const configuration = defaults(config, defaultValues.configuration);
+
+  return { configuration, model };
+};
+
 /**
  * assuming that the correct response will be set via ui, not via config,
  * correctResponse (if not set) will be initialized with choices default order
@@ -20,9 +26,8 @@ export default class PlacementOrdering extends HTMLElement {
     let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
 
     const defaultModel = {
-      ...defaultValues,
+      ...defaultValues.model,
       ...model,
-      configure: defaults(model.configure, defaultValues.configure),
     };
 
     if (correctResponse) {
@@ -35,10 +40,26 @@ export default class PlacementOrdering extends HTMLElement {
   constructor() {
     super();
     this._model = PlacementOrdering.createDefaultModel();
+    this._configuration = defaultValues.configuration;
     this.onModelChanged = (model, resetSession) => {
       this._model = model;
       this.dispatchUpdate(resetSession);
     };
+
+    this.onConfigurationChanged = (configuration) => {
+      this._configuration = prepareCustomizationObject(configuration).configuration;
+      this._rerender();
+    };
+
+
+    // todo how will generate.js look like and how will the configuration be sent?
+    setTimeout(() => {
+      const el = document.querySelector('placement-ordering-configure');
+
+      el.configuration = {
+        test: 'Test'
+      };
+    });
 
     this.insertImage = handler => {
       this.dispatchEvent(new InsertImageEvent(handler));
@@ -58,10 +79,20 @@ export default class PlacementOrdering extends HTMLElement {
     this._rerender();
   }
 
+  set configuration(c) {
+    const info = prepareCustomizationObject(c, this._model);
+
+    this.onModelChanged(info.model);
+    this._configuration = info.configuration;
+    this._rerender();
+  }
+
   _rerender() {
     let element = React.createElement(Main, {
       model: this._model,
+      configuration: this._configuration,
       onModelChanged: this.onModelChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
       imageSupport: {
         add: this.insertImage,
         delete: this.deleteImage
