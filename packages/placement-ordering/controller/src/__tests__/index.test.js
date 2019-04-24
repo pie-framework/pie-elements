@@ -5,7 +5,7 @@ describe('index', () => {
   let base = o => {
     o = _.merge(
       {
-        itemStem: 'hi',
+        prompt: 'hi',
         choices: [],
         correctResponse: [],
         lockChoiceOrder: true
@@ -131,7 +131,7 @@ describe('index', () => {
     describe('lockChoiceOrder', () => {
       let model = {
         correctResponse: ['a', 'b'],
-        itemStem: 'this is a prompt',
+        prompt: 'this is a prompt',
         choices: [
           { label: 'one', id: '1', lockChoiceOrder: true },
           { label: 'two', id: '2' },

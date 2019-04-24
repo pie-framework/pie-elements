@@ -12,7 +12,7 @@ export default {
     },
   ],
   enableImages: false,
-  itemStem: 'Item Stem goes here',
+  prompt: 'Item Stem goes here',
   lockChoiceOrder: false,
   numberedGuides: false,
   orientation: 'vertical',
@@ -39,7 +39,7 @@ export default {
     feedback: {
       settings: true,
     },
-    itemStem: {
+    prompt: {
       settings: true,
       label: 'Item Stem'
     },
