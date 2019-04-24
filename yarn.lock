@@ -1985,6 +1985,23 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
+"@pie-ui/match-list@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.1.0.tgz#c39e301b788901a477c2d4e450d8372fb455d171"
+  integrity sha512-2Yh20bNMGo4fSR0FmZEFfIW/20DGjIpkzK603VhXw15ewET8hCT/jDS7zEiDyuTb5hin746N/Ky6Mg7ZCiurSA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/drag" "^1.1.12"
+    "@pie-lib/render-ui" "^4.3.1"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
 "@pie-ui/match@^1.2.2":
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-1.2.11.tgz#b97f7bffa3d2725c959fc90fd83ab4627eb8140f"
