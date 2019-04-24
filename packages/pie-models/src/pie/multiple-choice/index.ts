@@ -24,7 +24,7 @@ export interface MultipleChoicePie extends PieModel {
   choices: Choice[];
 
   /**  The question prompt or item stem */
-  itemStem?: string;
+  prompt?: string;
 
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
@@ -90,7 +90,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Configuration for item stem
    */
-  itemStem?: ConfigureProp;
+  prompt?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling

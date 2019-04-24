@@ -50,10 +50,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "feedback": Object {
               "settings": true,
             },
-            "itemStem": Object {
-              "label": "Item Stem",
-              "settings": true,
-            },
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
@@ -72,6 +68,10 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             },
             "placementArea": Object {
               "label": "Placement Area",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Item Stem",
               "settings": true,
             },
             "rationale": Object {
@@ -103,12 +103,12 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             },
           },
           "enableImages": false,
-          "itemStem": "Item Stem goes here",
           "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
+          "prompt": "Item Stem goes here",
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "targetLabel": "Target Label goes here",
@@ -207,10 +207,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "feedback": Object {
               "settings": true,
             },
-            "itemStem": Object {
-              "label": "Item Stem",
-              "settings": false,
-            },
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
@@ -230,6 +226,10 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "placementArea": Object {
               "label": "Placement Area",
               "settings": true,
+            },
+            "prompt": Object {
+              "label": "Item Stem",
+              "settings": false,
             },
             "rationale": Object {
               "enabled": true,
@@ -260,12 +260,12 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             },
           },
           "enableImages": false,
-          "itemStem": "Item Stem goes here",
           "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
           "placementArea": false,
+          "prompt": "Item Stem goes here",
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "targetLabel": "Target Label goes here",

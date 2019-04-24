@@ -69,7 +69,7 @@ describe('Placement Ordering', () => {
     });
 
     it ('renders custom items', () => {
-      model.configure.itemStem.settings = false;
+      model.configure.prompt.settings = false;
       model.configure.removeTilesAfterPlacing.settings = true;
 
       const wrapper = shallow(
@@ -109,7 +109,7 @@ describe('Placement Ordering', () => {
       beforeEach(() => {
         modelFn = jest.fn().mockReturnValue({
           ...model,
-          itemStem: 'Updated Item Stem'
+          prompt: 'Updated Item Stem'
         });
 
         w.instance().applyUpdate(modelFn);
@@ -118,7 +118,7 @@ describe('Placement Ordering', () => {
       it('calls updateModel with updated item stem value', () => {
         expect(updateModel).toHaveBeenCalledWith({
           ...model,
-          itemStem: 'Updated Item Stem'
+          prompt: 'Updated Item Stem'
         });
       });
     });
@@ -135,7 +135,7 @@ describe('Placement Ordering', () => {
       });
 
       it('calls updateModel with updated item stem', () => {
-        const modelPath = 'itemStem';
+        const modelPath = 'prompt';
         const value = 'Updated Choice Area Label';
 
         change(modelPath, undefined, value);
@@ -193,7 +193,7 @@ describe('Placement Ordering', () => {
 
         expect(updateModel).toBeCalledWith({
           ...model,
-          itemStem: newItemStem
+          prompt: newItemStem
         });
       });
     });

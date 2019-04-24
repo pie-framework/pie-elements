@@ -24,7 +24,7 @@ export default {
   ],
   completeLength: 4,
   config: {},
-  itemStem: 'Arrange the fruits alphabetically',
+  prompt: 'Arrange the fruits alphabetically',
   numberedGuides: true,
   orientation: 'vertical',
   targetLabel: 'Answer Area Label',

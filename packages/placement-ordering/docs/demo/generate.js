@@ -36,7 +36,7 @@ exports.model = (id, element) => ({
       custom: 'nearly'
     }
   },
-  itemStem: 'Arrange the fruits alphabetically',
+  prompt: 'Arrange the fruits alphabetically',
   lockChoiceOrder: false,
   numberedGuides: false,
   orientation: 'vertical',

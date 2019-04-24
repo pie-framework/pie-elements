@@ -22,7 +22,6 @@ exports.model = (id, element) => ({
     choicePrefix: 'numbers',
     partialScoring: false,
     prompt: 'What color is the sky?',
-    itemStem: 'What color is the sky?',
     shuffle: false,
     showCorrect: false,
   },

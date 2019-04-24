@@ -60,7 +60,7 @@ export interface PlacementOrderingPie extends PieModel {
     feedback: ComplexFeedbackType;
 
     /** The item stem for the question */
-    itemStem?: string;
+    prompt?: string;
 
     /** Indicates if the choices can lockChoiceOrder */
     lockChoiceOrder: boolean;
@@ -124,7 +124,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
     /**
      * Item Stem configuration
      */
-    itemStem?: ConfigureProp;
+    prompt?: ConfigureProp;
 
     /**
      * Lock Choice Order configuration

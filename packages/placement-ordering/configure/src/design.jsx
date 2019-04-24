@@ -43,7 +43,7 @@ export class Design extends React.Component {
       };
     };
 
-    this.onPromptChange = this.changeHandler('itemStem');
+    this.onPromptChange = this.changeHandler('prompt');
     this.onChoiceAreaLabelChange = this.changeHandler(
       'choiceLabel',
       'target.value'
@@ -72,7 +72,7 @@ export class Design extends React.Component {
         choices,
         feedback,
         targetLabel,
-        itemStem,
+        prompt,
 
         placementArea,
         numberedGuides,
@@ -129,13 +129,13 @@ export class Design extends React.Component {
         }
       >
         {
-          itemStem.settings &&
+          prompt.settings &&
           <FormSection label="Ordering">
-            <InputContainer label={itemStem && itemStem.label && itemStem.label.toUpperCase()}
+            <InputContainer label={prompt && prompt.label && prompt.label.toUpperCase()}
                             className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
-                markup={model.itemStem}
+                markup={model.prompt}
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
               />
