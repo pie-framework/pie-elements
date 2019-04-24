@@ -41,14 +41,15 @@ const styles = theme => ({
 const Design = withStyles(styles)(props => {
   const {
     classes,
-    configuration,
     model,
+    configuration,
     onPromptChanged,
     onChoiceChanged,
     onRemoveChoice,
     onAddChoice,
     imageSupport,
-    onModelChanged
+    onModelChanged,
+    onConfigurationChanged
   } = props;
   const {
     prompt,
@@ -73,31 +74,33 @@ const Design = withStyles(styles)(props => {
         settings={
           <Panel
             model={model}
-            onChange={onModelChanged}
+            configuration={configuration}
+            onChangeModel={onModelChanged}
+            onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
-                'configuration.partLabels.enabled': partLabels.settings &&
-                toggle(partLabels.label),
+                'partLabels.enabled': partLabels.settings &&
+                toggle(partLabels.label, true),
                 choiceMode: choiceMode.settings &&
-                radio(choiceMode.label, 'checkbox', 'radio'),
-                'configuration.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                toggle(sequentialChoiceLabels.label),
+                radio(choiceMode.label, ['checkbox', 'radio']),
+                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                toggle(sequentialChoiceLabels.label, true),
                 choicePrefix: choicePrefix.settings &&
-                radio(choicePrefix.label, 'numbers', 'letters'),
+                radio(choicePrefix.label, ['numbers', 'letters']),
                 partialScoring: partialScoring.settings &&
                 toggle(partialScoring.label),
               },
               'Properties': {
-                'configuration.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configuration.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configuration.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                 toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />
@@ -154,6 +157,7 @@ export class Main extends React.Component {
     disableSidePanel: PropTypes.bool,
     onPromptChanged: PropTypes.func.isRequired,
     updateModel: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -191,7 +195,7 @@ export class Main extends React.Component {
         updateModel(model);
         break;
     }
-  }
+  };
 
   render() {
     return (

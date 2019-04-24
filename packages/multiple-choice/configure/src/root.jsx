@@ -12,6 +12,7 @@ export default class Root extends React.Component {
     configuration: PropTypes.object,
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.object
   };
 
@@ -89,13 +90,14 @@ export default class Root extends React.Component {
     const props = {
       model: this.state.model,
       configuration: this.props.configuration,
+      updateModel: this.updateModel,
+      onConfigurationChanged: this.props.onConfigurationChanged,
       disableSidePanel: this.state.disableSidePanel,
       onRemoveChoice: this.onRemoveChoice,
       onChoiceChanged: this.onChoiceChanged,
       onAddChoice: this.onAddChoice,
       onPromptChanged: this.onPromptChanged,
       onDefaultLangChanged: this.onDefaultLangChanged,
-      updateModel: this.updateModel,
       imageSupport: this.props.imageSupport
     };
 
