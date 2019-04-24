@@ -37,13 +37,13 @@ const generateFormattedChoices = (choices, choiceCount = 4) => {
 };
 
 const prepareCustomizationObject = (config, model) => {
-  const configure = defaults(config, sensibleDefaults.configure);
+  const configuration = defaults(config, sensibleDefaults.configuration);
 
   return {
-    configure,
+    configuration,
     model: {
       ...model,
-      choices: generateFormattedChoices(model.choices, configure.answerChoiceCount)
+      choices: generateFormattedChoices(model.choices, configuration.answerChoiceCount)
     }
   };
 };
@@ -58,7 +58,7 @@ export default class MultipleChoice extends HTMLElement {
   constructor() {
     super();
     this._model = MultipleChoice.createDefaultModel();
-    this._configure = sensibleDefaults.configure;
+    this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
@@ -71,7 +71,7 @@ export default class MultipleChoice extends HTMLElement {
     const info = prepareCustomizationObject(c, this._model);
 
     this.onModelChanged(info.model);
-    this._configure = info.configure;
+    this._configuration = info.configuration;
     this._render();
   }
 
@@ -107,7 +107,7 @@ export default class MultipleChoice extends HTMLElement {
     log('_render');
     let element = React.createElement(Root, {
       model: this._model,
-      configure: this._configure,
+      configuration: this._configuration,
       disableSidePanel: this._disableSidePanel,
       onModelChanged: this.onModelChanged,
       imageSupport: {

@@ -41,7 +41,7 @@ const styles = theme => ({
 const Design = withStyles(styles)(props => {
   const {
     classes,
-    configure,
+    configuration,
     model,
     onPromptChanged,
     onChoiceChanged,
@@ -65,7 +65,7 @@ const Design = withStyles(styles)(props => {
     scoringType = {},
     sequentialChoiceLabels = {},
     partLabels = {},
-  } = configure;
+  } = configuration;
 
   return (
     <div className={classes.design}>
@@ -76,11 +76,11 @@ const Design = withStyles(styles)(props => {
             onChange={onModelChanged}
             groups={{
               'Item Type': {
-                'configure.partLabels.enabled': partLabels.settings &&
+                'configuration.partLabels.enabled': partLabels.settings &&
                 toggle(partLabels.label),
                 choiceMode: choiceMode.settings &&
                 radio(choiceMode.label, 'checkbox', 'radio'),
-                'configure.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                'configuration.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
                 toggle(sequentialChoiceLabels.label),
                 choicePrefix: choicePrefix.settings &&
                 radio(choicePrefix.label, 'numbers', 'letters'),
@@ -88,11 +88,11 @@ const Design = withStyles(styles)(props => {
                 toggle(partialScoring.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
+                'configuration.teacherInstructions.enabled': teacherInstructions.settings &&
                 toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                'configuration.studentInstructions.enabled': studentInstructions.settings &&
                 toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
+                'configuration.rationale.enabled': rationale.settings &&
                 toggle(rationale.label),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                 toggle(lockChoiceOrder.label),

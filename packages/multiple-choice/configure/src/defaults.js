@@ -32,7 +32,7 @@ export default {
   lockChoiceOrder: true,
   partialScoring: true,
   scoringType: 'auto',
-  configure: {
+  configuration: {
     answerChoiceCount: 4,
     addChoiceButton: {
       settings: true,

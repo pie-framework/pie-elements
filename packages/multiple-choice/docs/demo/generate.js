@@ -41,5 +41,5 @@ exports.model = (id, element) => ({
     }
   ],
   prompt: 'Which of these northern European countries are EU members?',
-  configure: {}
+  configuration: {}
 });
