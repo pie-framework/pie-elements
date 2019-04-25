@@ -45,6 +45,11 @@ module.exports = {
           },
           validation: 'literal'
         }
+      ],
+      customKeys: [
+        '\\left(\\right)',
+        '\\frac{}{}',
+        'x\\frac{}{}'
       ]
     }
   ]
