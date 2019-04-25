@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.11...@pie-element/select-text-configure@2.5.12) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 ## [2.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.10...@pie-element/select-text-configure@2.5.11) (2019-04-23)
 
 
