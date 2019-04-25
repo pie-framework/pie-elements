@@ -13,7 +13,7 @@
     "@pie-lib/config-ui": "^10.0.0",
     "@pie-lib/math-evaluator": "^0.3.9",
     "@pie-lib/math-input": "^5.3.1",
-    "@pie-lib/math-toolbar": "^0.10.1",
+    "@pie-lib/math-toolbar": "^1.0.1",
     "classnames": "^2.2.5",
     "debug": "^3.1.0",
     "prop-types": "^15.6.2",
