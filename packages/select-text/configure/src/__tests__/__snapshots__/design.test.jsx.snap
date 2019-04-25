@@ -81,7 +81,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "tokens": Array [],
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >
@@ -216,7 +216,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "tokens": Array [],
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >
@@ -343,7 +343,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "tokens": Array [],
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >
