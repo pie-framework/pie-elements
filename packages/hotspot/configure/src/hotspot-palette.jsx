@@ -21,7 +21,7 @@ class Palette extends React.Component {
     const { classes, hotspotColor, outlineColor, hotspotList, outlineList } = this.props;
 
     return (
-      <div className={classes.container}>
+      <div className={classes.base}>
         <InputContainer label="Hot Spot" className={classes.input}>
           <Select
             className={classes.select}
@@ -40,6 +40,7 @@ class Palette extends React.Component {
             ))}
           </Select>
         </InputContainer>
+
         <InputContainer label="Response Outline" className={classes.input}>
           <Select
             className={classes.select}
@@ -64,7 +65,7 @@ class Palette extends React.Component {
 }
 
 const styles = theme => ({
-  container: {
+  base: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex'
   },

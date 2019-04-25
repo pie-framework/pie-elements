@@ -12,7 +12,6 @@ import HotspotContainer from './hotspot-container';
 
 const getSideMenuItems = (props) => {
   const { model, classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
-
   const { settingsPartialScoring, settingsMultipleCorrect } = configure;
 
   return [
@@ -20,9 +19,7 @@ const getSideMenuItems = (props) => {
       items: [
         settingsMultipleCorrect && <FormControlLabel
           key={3}
-          classes={{
-            root: classes.switchElement
-          }}
+          classes={{ root: classes.switchElement }}
           control={
             <Switch
               checked={model.multipleCorrect}
@@ -35,9 +32,7 @@ const getSideMenuItems = (props) => {
         />,
         settingsPartialScoring && <FormControlLabel
           key={4}
-          classes={{
-            root: classes.switchElement
-          }}
+          classes={{ root: classes.switchElement }}
           control={
             <Switch
               checked={model.partialScoring}
@@ -47,21 +42,17 @@ const getSideMenuItems = (props) => {
           }
           label="Allow Partial Scoring"
           labelPlacement="start"
-        />,
+        />
       ]
     }
   ];
 };
 
-export class Main extends React.Component {
+class Main extends React.Component {
   handleColorChange(type, color) {
     const { onColorChanged } = this.props;
     const cType = `${type}Color`;
     onColorChanged(cType, color);
-    //
-    // this.setState({
-    //   [`${type}Color`]: color
-    // })
   }
 
   render() {
@@ -76,17 +67,17 @@ export class Main extends React.Component {
     } = this.props;
 
     return (
-      <div className={classes.design}>
+      <div className={classes.base}>
         <ConfigLayout
           disableSidePanel={disableSidePanel}
           sideMenuItems={getSideMenuItems(this.props)}
           regularItems={
             <div className={classes.regular}>
-              <InputContainer label="Item Stem" className={classes.promptContainer}>
+              <InputContainer label="Item Stem" className={classes.prompt}>
                 <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
               </InputContainer>
 
-              <Typography className={classes.subheader} variant="subheading">
+              <Typography className={classes.label} variant="subheading">
                 Define Hotspot
               </Typography>
 
@@ -119,22 +110,22 @@ export class Main extends React.Component {
 }
 
 const styles = theme => ({
+  base: {
+    marginTop: theme.spacing.unit * 3
+  },
   container: {
     display: 'flex',
     marginTop: theme.spacing.unit
   },
-  design: {
-    marginTop: theme.spacing.unit * 3
+  label: {
+    marginTop: theme.spacing.unit * 4
   },
-  promptContainer: {
+  prompt: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
   },
   regular: {
     marginBottom: theme.spacing.unit * 3
-  },
-  subheader: {
-    marginTop: theme.spacing.unit * 4
   },
   switchElement: {
     justifyContent: 'space-between',
@@ -144,6 +135,7 @@ const styles = theme => ({
 
 Main.propTypes = {
   classes: PropTypes.object.isRequired,
+  configure: PropTypes.object,
   disableSidePanel: PropTypes.bool,
   model: PropTypes.object.isRequired,
   onImageUpload: PropTypes.func.isRequired,
@@ -151,8 +143,7 @@ Main.propTypes = {
   onPartialScoringChanged: PropTypes.func.isRequired,
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
-  onUpdateShapes: PropTypes.func.isRequired,
+  onUpdateShapes: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Main);
-

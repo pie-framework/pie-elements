@@ -2,15 +2,14 @@ import isEqual from 'lodash/isEqual';
 
 export const getCorrectResponse = (choices) => choices
   .filter(c => c.correct)
-  .map(c => c.value)
+  .map(c => ({ id: c.id }))
   .sort();
 
-export const isResponseCorrect = (question, key, session) => {
-  let correctResponse = getCorrectResponse(question.choices);
+export const isResponseCorrect = (question, session) => {
+  let correctResponse = getCorrectResponse(question.shapes);
 
-  if (session.value) {
-    return isEqual((session.value[key].value || []).sort(), correctResponse);
+  if (session.answers.length) {
+    return isEqual((session.answers || []).sort(), correctResponse);
   }
-
   return false;
 };

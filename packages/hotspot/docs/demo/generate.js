@@ -8,7 +8,7 @@ exports.model = (id, element) => ({
   partialScoring: false,
   dimensions: {
     height: 0,
-    width: 0,
+    width: 0
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   hotspotList: [

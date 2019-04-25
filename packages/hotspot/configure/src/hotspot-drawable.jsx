@@ -5,12 +5,15 @@ import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
 
+const generateUniqueId = () =>
+  Math.random().toString(36).substring(2)
+  + (new Date()).getTime().toString(36);
+
 class Drawable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isDrawing: false,
-      isDrawingMode: true,
       stateShapes: false,
       dimensions: {
         height: 0,
@@ -19,21 +22,21 @@ class Drawable extends React.Component {
     }
   }
 
-  handleClick = (e) => {
-    const { isDrawing, isDrawingMode, stateShapes } = this.state;
+  handleOnStageClick = (e) => {
+    const { isDrawing, stateShapes } = this.state;
     const { onUpdateShapes } = this.props;
 
-    if (!isDrawingMode) {
-      return;
-    }
+    // If we're drawing a shape, a click finishes the drawing and sends the new shapes to HOC
     if (isDrawing) {
       this.setState({ isDrawing: !isDrawing, stateShapes: false });
       onUpdateShapes(stateShapes);
       return;
     }
 
+    // Otherwise, add a new rectangle at the mouse position with 0 width and height
     const newShapes = this.props.shapes.slice();
     newShapes.push({
+      id: generateUniqueId(),
       height: 0,
       width: 0,
       x: e.evt.layerX,
@@ -44,40 +47,47 @@ class Drawable extends React.Component {
     onUpdateShapes(newShapes);
   };
 
-  handleOnRemove = (index) => {
-    const { shapes, onUpdateShapes } = this.props;
-    const newShapes = shapes.filter((_, i) => i !== index);
-    onUpdateShapes(newShapes);
-  };
-
-  handleOnSetAsCorrect = (index) => {
+  handleOnSetAsCorrect = (id) => {
     const { multipleCorrect, shapes, onUpdateShapes } = this.props;
-
     let newShapes = [];
 
     if (multipleCorrect) {
-      newShapes = shapes.map((_, i) => {
-        if (i === index) {
-          _.correct = !_.correct;
+      newShapes = shapes.map(shape => {
+        if (shape.id === id) {
+          shape.correct = !shape.correct;
         }
-        return _;
+        return shape;
       })
     } else {
-      newShapes = shapes.map((_, i) => {
-        _.correct = i === index;
-        return _;
+      newShapes = shapes.map(shape => {
+        shape.correct = shape.id === id;
+        return shape;
       })
     }
+
+    onUpdateShapes(newShapes);
+  };
+
+  handleOnDragEnd = (id, { x, y }) => {
+    const { shapes, onUpdateShapes } = this.props;
+
+    const newShapes = shapes.map(shape => {
+      if (shape.id === id) {
+        return {
+          ...shape,
+          x,
+          y,
+        }
+      }
+      return shape;
+    });
+
     onUpdateShapes(newShapes);
   };
 
   handleMouseMove= (e) => {
-    const { isDrawing, isDrawingMode } = this.state;
+    const { isDrawing } = this.state;
     const { shapes } = this.props;
-
-    if (!isDrawingMode) {
-      return;
-    }
 
     if (isDrawing) {
       const mouseX = e.evt.layerX;
@@ -90,6 +100,7 @@ class Drawable extends React.Component {
 
       const newShapesList = shapes.slice();
       newShapesList[currShapeIndex] = {
+        id: currShape.id,
         height: newHeight,
         width: newWidth,
         x: currShape.x,
@@ -124,8 +135,6 @@ class Drawable extends React.Component {
     const box = this.image;
     const { maxImageHeight, maxImageWidth, disableDrag } = this.props;
 
-    disableDrag();
-
     const bounds = e.target.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
@@ -140,11 +149,14 @@ class Drawable extends React.Component {
 
       this.setState({ dimensions:{ height: y, width: x }});
     }
+
+    disableDrag();
   };
 
   checkIfResizeValid(x, y) {
     const { shapes } = this.state;
     let drawable = true;
+
     // Do not allow resizing over the hotspots
     shapes && shapes.forEach(shape => {
       const right = shape.x + shape.width + 5;
@@ -168,8 +180,20 @@ class Drawable extends React.Component {
   };
 
   render() {
-    const { dimensions: { height, width }, isDrawing, isDrawingMode, stateShapes } = this.state;
-    const { imageUrl, hotspotColor, outlineColor, classes, maxImageWidth, maxImageHeight, shapes } = this.props;
+    const {
+      classes,
+      imageUrl,
+      hotspotColor,
+      maxImageHeight,
+      maxImageWidth,
+      outlineColor,
+      shapes
+    } = this.props;
+    const {
+      stateShapes,
+      dimensions: { height, width },
+      isDrawing
+    } = this.state;
     const shapesToUse = stateShapes || shapes;
 
     return (
@@ -191,7 +215,7 @@ class Drawable extends React.Component {
         <Stage
           className={classes.stage}
           height={height}
-          onClick={this.handleClick}
+          onClick={this.handleOnStageClick}
           onContentMouseMove={this.handleMouseMove}
           width={width}
         >
@@ -200,13 +224,12 @@ class Drawable extends React.Component {
               <Rectangle
                 correct={shape.correct}
                 isDrawing={isDrawing}
-                isDrawingMode={isDrawingMode}
                 height={shape.height}
                 hotspotColor={hotspotColor}
-                index={index}
+                id={shape.id}
                 key={index}
-                onRemove={this.handleOnRemove}
                 onClick={this.handleOnSetAsCorrect}
+                onDragEnd={this.handleOnDragEnd}
                 outlineColor={outlineColor}
                 width={shape.width}
                 x={shape.x}
@@ -220,14 +243,9 @@ class Drawable extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = () => ({
   base: {
     position: 'relative'
-  },
-  stage: {
-    left: 0,
-    top: 0,
-    position: 'absolute'
   },
   image: {
     alignItems: 'center',
@@ -247,6 +265,11 @@ const styles = theme => ({
     position: 'absolute',
     right: '-10px',
     width: '10px'
+  },
+  stage: {
+    left: 0,
+    top: 0,
+    position: 'absolute'
   }
 });
 

@@ -1,65 +1,39 @@
 import debug from 'debug';
-import shuffle from 'lodash/shuffle';
 import defaults from './defaults';
 import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:hotspot:controller');
 
-const prepareChoice = (mode, defaultFeedback) => choice => {
-  const out = {
-    label: choice.label,
-    value: choice.value
-  };
-
-  if (mode === 'evaluate') {
-    out.correct = !!choice.correct;
-
-    const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
-
-    if (feedbackType === 'default') {
-      out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
-    } else if (feedbackType === 'custom') {
-      out.feedback = choice.feedback.value;
-    }
-  }
-
-  return out;
-};
-
-const parsePart = (part, key, session, env) => {
-  const defaultFeedback = Object.assign(
-    { correct: 'Correct', incorrect: 'Incorrect' },
-    part.defaultFeedback
-  );
-
-  let choices = part.choices.map(
-    prepareChoice(env.mode, defaultFeedback)
-  );
-
-  if (part.shuffle) {
-    choices = shuffle(choices);
-  }
-
-  return {
-    ...part,
-    choices,
-    disabled: env.mode !== 'gather',
-    complete: {
-      min: part.choices.filter(c => c.correct).length
-    },
-    responseCorrect:
-      env.mode === 'evaluate'
-        ? isResponseCorrect(part, key, session)
-        : undefined
-  }
-};
-
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
+  const {
+    imageUrl,
+    dimensions,
+    hotspotColor,
+    maxImageHeight,
+    maxImageWidth,
+    multipleCorrect,
+    outlineColor,
+    prompt,
+    shapes
+  } = question;
+
+  return new Promise(resolve => {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      question: question
+      dimensions,
+      imageUrl,
+      outlineColor,
+      hotspotColor,
+      maxImageHeight,
+      maxImageWidth,
+      multipleCorrect,
+      prompt,
+      shapes,
+      responseCorrect:
+        env.mode === 'evaluate'
+          ? isResponseCorrect(question, session)
+          : undefined
     };
 
     resolve(out);
@@ -74,49 +48,33 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-const isCorrect = c => c.correct === true;
+const getScore = (config, session) => {
+  const { answers } = session;
+  const { partialScoring, shapes } = config;
 
-const getScore = (config, part, key) => {
-  let score;
-
-  const maxScore = config[key].choices.length;
-  const chosen = c => !!(part.value || []).find(v => v === c.value);
-  const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
-  const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
-  const correctCount = config[key].choices.reduce((total, choice) => {
-    if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
-      return total - 1;
-    } else {
-      return total;
-    }
-  }, config[key].choices.length);
-
-  if (!config[key].partialScoring && correctCount < maxScore) {
-    score = 0;
-  } else {
-    const scoreString = ( correctCount / config[key].choices.length ).toFixed(2);
-
-    score = parseFloat( scoreString );
+  if (!partialScoring) {
+    return isResponseCorrect(config, session) ? 1 : 0;
   }
 
-  return score;
+  let correctAnswers = 0;
+
+  shapes.forEach(shape => {
+    const selected = answers.filter(answer => answer.id === shape.id)[0];
+    const correctlySelected = shape.correct && selected;
+    const correctlyUnselected = !shape.correct && !selected;
+
+    if (correctlySelected || correctlyUnselected) {
+      correctAnswers += 1;
+    }
+  });
+
+  return (correctAnswers / shapes.length).toFixed(2);
 };
 
-export function outcome(config, session, env) {
-  return new Promise((resolve, reject) => {
+export function outcome(config, session) {
+  return new Promise(resolve => {
     log('outcome...');
-
-    const { value } = session;
-
-    if (value) {
-      const { partA, partB } = value;
-
-      const scoreA = getScore(config, partA, 'partA');
-      const scoreB = getScore(config, partB, 'partB');
-
-      const score = scoreA + scoreB;
-
-      resolve({ score, scoreA, scoreB });
-    }
+    const score = getScore(config, session);
+    resolve({ score });
   });
 }

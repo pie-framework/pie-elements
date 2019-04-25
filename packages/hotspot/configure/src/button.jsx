@@ -32,7 +32,7 @@ RawButton.defaultProps = {
   onClick: () => {}
 };
 
-const styles = theme => ({
+const styles = () => ({
   addButton: {
     marginLeft: 8
   }

@@ -4,40 +4,43 @@ import { Rect, Group } from 'react-konva';
 import { withStyles } from '@material-ui/core/styles/index';
 
 class RectComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showRemove: false,
-    };
-  }
-
   handleClick = (e) => {
-    const { width, height, isDrawing, onClick, index } = this.props;
+    const { width, height, isDrawing, onClick, id } = this.props;
     if (width < 0 && height < 0 && isDrawing) {
       return;
     }
     e.cancelBubble = true;
-    onClick(index);
+    onClick(id);
   };
 
   handleMouseEnter = () => {
     document.body.style.cursor = 'pointer';
-    this.setState({ showRemove: true });
   };
 
   handleMouseLeave = () => {
     document.body.style.cursor = 'default';
-    this.setState({ showRemove: false });
   };
 
-  handleRemoveClick = (e) => {
-    e.cancelBubble = true;
-    const { index, onRemove } = this.props;
-    onRemove(index);
+  handleOnDragEnd = (e) => {
+    const { onDragEnd, id } = this.props;
+
+    onDragEnd(id, {
+      x: e.target.x(),
+      y: e.target.y()
+    })
   };
 
   render() {
-    const { classes, hotspotColor, outlineColor, width, height, x, y, correct } = this.props;
+    const {
+      classes,
+      correct,
+      height,
+      hotspotColor,
+      outlineColor,
+      width,
+      x,
+      y
+    } = this.props;
 
     return (
       <Group>
@@ -47,33 +50,24 @@ class RectComponent extends React.Component {
           height={height}
           fill={hotspotColor}
           onClick={this.handleClick}
-          draggable={true}
+          draggable
           stroke={outlineColor}
           strokeWidth={correct ? 2 : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
+          onDragEnd={this.handleOnDragEnd}
           x={x}
           y={y}
-        >
-        </Rect>
-        {/*<Text*/}
-        {/*x={this.props.x}*/}
-        {/*y={this.props.y}*/}
-        {/*text="rm"*/}
-        {/*onClick={this.handleRemoveClick}*/}
-        {/*onMouseEnter={this.handleMouseEnter}*/}
-        {/*onMouseLeave={this.handleMouseLeave}*/}
-        {/*/>*/}
+        />
       </Group>
     );
   }
 }
 
-const styles = theme => ({
+const styles = () => ({
   base: {
     cursor: 'pointer',
-    opacity: 0.5,
-    position: 'relative'
+    opacity: 0.5
   },
 });
 
@@ -81,11 +75,11 @@ RectComponent.propTypes = {
   classes: PropTypes.object.isRequired,
   correct: PropTypes.bool.isRequired,
   isDrawing: PropTypes.bool.isRequired,
-  index: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
+  onDragEnd: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,

@@ -1,23 +1,19 @@
 export default {
-  prompt: 'Item label',
-  partA: {
-    choices: [
-      {
-        value: 'a',
-        label: 'label a',
-      }
-    ],
-    prompt: 'prompt a',
-    disabled: false,
+  prompt: 'This is the question prompt',
+  imageUrl: '',
+  shapes: [],
+  multipleCorrect: true,
+  partialScoring: false,
+  dimensions: {
+    height: 0,
+    width: 0
   },
-  partB: {
-    choices: [
-      {
-        value: 'b',
-        label: 'label b',
-      },
-    ],
-    prompt: 'prompt b',
-    disabled: false,
-  },
+  hotspotColor: 'rgba(137, 183, 244, 0.65)',
+  hotspotList: [
+    'rgba(137, 183, 244, 0.65)'
+  ],
+  outlineColor: 'blue',
+  outlineList: [
+    'blue'
+  ]
 };

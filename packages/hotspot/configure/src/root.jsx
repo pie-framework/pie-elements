@@ -2,7 +2,6 @@ import Main from './main';
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import PropTypes from 'prop-types';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 class Root extends React.Component {
   constructor(props) {
@@ -25,31 +24,19 @@ class Root extends React.Component {
     }
   }
 
-  onRemoveShape = index => {
-    const { model } = this.state;
-    model.choices.splice(index, 1);
-    this.updateModel(model);
-  };
-
-  modelChanged = (reset) => {
-    this.props.onModelChanged(this.state.model, reset);
-  };
-
   updateModel = (model, reset) => {
     this.setState({ model }, () => {
       this.modelChanged(reset);
     });
   };
 
-  onCreateShape = () => {
+  modelChanged = (reset) => {
+    this.props.onModelChanged(this.state.model, reset);
+  };
+
+  onRemoveShape = index => {
     const { model } = this.state;
-    model.choices.push({
-      label: 'label',
-      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
-      feedback: {
-        type: 'none'
-      }
-    });
+    model.choices.splice(index, 1);
     this.updateModel(model);
   };
 
@@ -84,7 +71,7 @@ class Root extends React.Component {
     this.updateModel(model);
   };
 
-  handleOnUpdateShapes = (shapes, mouseOver = false) => {
+  handleOnUpdateShapes = (shapes) => {
     const { model } = this.state;
     model.shapes = shapes;
     this.updateModel(model);
@@ -93,7 +80,6 @@ class Root extends React.Component {
   handleOnImageUpload = imageUrl => {
     const { model } = this.state;
     model.imageUrl = imageUrl;
-
     this.updateModel(model);
   };
 
@@ -103,7 +89,6 @@ class Root extends React.Component {
       disableSidePanel: this.state.disableSidePanel,
       model: this.state.model,
       onColorChanged: this.onColorChanged,
-      onCreateShape: this.onCreateShape,
       onImageUpload: this.handleOnImageUpload,
       onMultipleCorrectChanged: this.onMultipleCorrectChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,

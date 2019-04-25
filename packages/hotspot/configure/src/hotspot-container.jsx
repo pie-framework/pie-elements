@@ -6,20 +6,24 @@ import Help from '@material-ui/icons/Help';
 import Drawable from './hotspot-drawable';
 import Button from './button';
 
+const isImage = (file) => {
+  const imageType = /image.*/;
+  return file.type.match(imageType);
+};
+
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
       maxImageWidth: 0,
       maxImageHeight: 0,
-      dragEnabled: true,
+      dragEnabled: true
     }
   }
 
   componentDidMount() {
     const positionInfo = this.imageSection.getBoundingClientRect();
     const { height, width } = positionInfo;
-
     this.setState({
       maxImageWidth: width - 20,
       maxImageHeight: height - 20
@@ -41,39 +45,36 @@ class Container extends Component {
     this.handleFileRead(file);
   };
 
-  handleOnDrop = (ev) => {
-    ev.preventDefault();
-    const { items, files } = ev.dataTransfer;
-    const imageType = /image.*/;
+  enableDropzone = () => this.setState({ dropzoneActive: true });
+  disableDropzone = () => this.setState({ dropzoneActive: false });
 
-    this.setState({ dropzoneActive: false });
+  handleOnDrop = (e) => {
+    e.preventDefault();
+    const { items, files } = e.dataTransfer;
 
-    if (items) {
-      if (items[0].kind === 'file') {
-        const file = items[0].getAsFile();
-        if (file.type.match(imageType)) {
-          this.handleFileRead(file);
-        }
-      }
-    } else {
-      const file = files[0];
-      if (file.type.match(imageType)) {
+    if (items && items[0].kind === 'file') {
+      const file = items[0].getAsFile();
+      if (isImage(file)) {
         this.handleFileRead(file);
       }
+    } else if (isImage(files[0])) {
+      this.handleFileRead(files[0]);
     }
+    this.disableDropzone();
   };
 
-  handleOnDragOver = (ev) => {
-    ev.preventDefault();
+  handleOnDragOver = (e) => {
+    e.preventDefault();
     const { dropzoneActive } = this.state;
+
     if (!dropzoneActive) {
-      this.setState({ dropzoneActive: true })
+      this.enableDropzone();
     }
   };
 
-  handleOnDragExit = (ev) => {
-    ev.preventDefault();
-    this.setState({ dropzoneActive: false })
+  handleOnDragExit = (e) => {
+    e.preventDefault();
+    this.disableDropzone();
   };
 
   handleUndo = () => {
@@ -86,15 +87,12 @@ class Container extends Component {
   };
 
   handleClearAll = () => {
-    const { onUpdateShapes, onImageUpload } = this.props;
+    const { onUpdateShapes } = this.props;
     onUpdateShapes([]);
-    // onImageUpload();
   };
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
-
   handleDisableDrag = () => this.setState({ dragEnabled: false });
-
   handleInputClick = () => this.input.click();
 
   toggleTooltip = () => {
@@ -102,22 +100,42 @@ class Container extends Component {
     this.setState({ showTooltip: !showTooltip })
   };
 
+  renderUploadControl(label) {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <Button
+          label={label}
+          onClick={this.handleInputClick}
+        />
+        <input
+          accept="image/*"
+          className={classes.input}
+          onChange={this.handleUploadImage}
+          ref={ref => { this.input = ref; }}
+          type="file"
+        />
+      </div>
+    )
+  }
+
   render() {
     const {
       classes,
       hotspotColor,
-      outlineColor,
-      multipleCorrect,
       imageUrl,
-      onUpdateShapes,
-      shapes,
+      multipleCorrect,
       onUpdateImageDimension,
+      onUpdateShapes,
+      outlineColor,
+      shapes
     } = this.props;
     const {
       dropzoneActive,
-      maxImageWidth,
-      maxImageHeight,
       dragEnabled,
+      maxImageHeight,
+      maxImageWidth,
       showTooltip
     } = this.state;
 
@@ -144,7 +162,7 @@ class Container extends Component {
             />
           </div>
 
-          <div ref={ref => { this.imageSection = ref; }} className={classes.drawableSection}>
+          <div ref={ref => { this.imageSection = ref; }} className={classes.drawableHeight}>
             {imageUrl ? (
               <Drawable
                 disableDrag={this.handleDisableDrag}
@@ -160,20 +178,10 @@ class Container extends Component {
                 shapes={shapes}
               />
             ) : (
-              <div className={`${classes.drawableSection} ${classes.centered}`}>
-                <label>Drag and drop, copy paste, or upload image from computer</label>
+              <div className={`${classes.drawableHeight} ${classes.centered}`}>
+                <label>Drag and drop or upload image from computer</label>
                 <br />
-                <Button
-                  label="Upload Image"
-                  onClick={this.handleInputClick}
-                />
-                <input
-                  accept="image/*"
-                  className={classes.input}
-                  onChange={this.handleUploadImage}
-                  ref={ref => { this.input = ref; }}
-                  type="file"
-                />
+                {this.renderUploadControl('Upload Image')}
               </div>
             )}
           </div>
@@ -183,7 +191,7 @@ class Container extends Component {
               {showTooltip ? (
                 <div className={classes.tooltipContent}>
                   <label>
-                    Click and move on your image to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
+                    Click, move mouse and click again to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
                   </label>
                   <div className={classes.tooltipArrow} />
                 </div>
@@ -198,18 +206,8 @@ class Container extends Component {
         </div>
 
         {imageUrl ? (
-          <div className={classes.replaceButton}>
-            <Button
-              label="Replace Image"
-              onClick={this.handleInputClick}
-            />
-            <input
-              accept="image/*"
-              className={classes.input}
-              onChange={this.handleUploadImage}
-              ref={ref => { this.input = ref; }}
-              type="file"
-            />
+          <div className={classes.replace}>
+            {this.renderUploadControl('Replace Image')}
           </div>
         ) : null}
       </div>
@@ -233,10 +231,25 @@ const styles = theme => ({
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'center'
+  },
+  drawableHeight: {
+    minHeight: 350
+  },
+  icon: {
+    '&:hover': {
+      color: '#333131',
+      cursor: 'help'
+    },
+    color: '#C1C1C1',
+    padding: '5px 9px'
   },
   input: {
     display: 'none'
+  },
+  replace: {
+    marginLeft: 0,
+    marginTop: 16
   },
   toolbar: {
     backgroundColor: '#ECEDF1',
@@ -244,22 +257,12 @@ const styles = theme => ({
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     display: 'flex',
-    padding: '12px 8px',
-    justifyContent: 'flex-end'
-  },
-  icon: {
-    '&:hover': {
-      color: '#333131',
-    },
-    color: '#C1C1C1',
-    padding: '5px 9px'
-  },
-  drawableSection: {
-    minHeight: 350
+    justifyContent: 'flex-end',
+    padding: '12px 8px'
   },
   tooltip: {
-    textAlign: 'right',
-    position: 'relative'
+    position: 'relative',
+    textAlign: 'right'
   },
   tooltipContent: {
     background: '#333131',
@@ -268,8 +271,8 @@ const styles = theme => ({
     fontSize: '14px',
     lineHeight: '18px',
     marginTop: '-70px',
-    position: 'absolute',
     padding: '7px 16px',
+    position: 'absolute',
     right: '5px',
     textAlign: 'left',
     width: '300px'
@@ -284,10 +287,6 @@ const styles = theme => ({
     marginTop: '2px',
     position: 'absolute',
     right: '5px'
-  },
-  replaceButton: {
-    marginLeft: 0,
-    marginTop: 16
   }
 });
 
@@ -295,7 +294,6 @@ Container.propTypes = {
   classes: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
-  hotspotList: PropTypes.string.isRequired,
   multipleCorrect: PropTypes.bool.isRequired,
   onImageUpload: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,

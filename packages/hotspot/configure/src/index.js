@@ -8,7 +8,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './root';
 import debug from 'debug';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
@@ -30,7 +29,7 @@ const prepareCustomizationObject = (configure, model) => {
 };
 
 export default class HotspotConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => utils.normalizeChoices({
+  static createDefaultModel = (model = {}) => ({
     ...sensibleDefaults,
     ...model,
   });
