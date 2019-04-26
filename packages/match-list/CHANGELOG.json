@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "type": "feat",
+    "scope": "match-list",
+    "subject": "updated the ui version",
+    "merge": null,
+    "header": "feat(match-list): updated the ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "67f6be16f8784df7783e1af799a18506418397cb",
+    "gitTags": "",
+    "committerDate": "2019-04-25 05:58:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match-list",
+    "subject": "added an empty configure for the match-list element",
+    "merge": null,
+    "header": "feat(match-list): added an empty configure for the match-list element",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "362d2e3176264664b9440a3504d5540ee4173425",
+    "gitTags": " (origin/feat/empty-match-list)",
+    "committerDate": "2019-04-24 17:43:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.1.0"
+  }
+]

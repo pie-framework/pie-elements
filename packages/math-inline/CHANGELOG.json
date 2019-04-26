@@ -1038,5 +1038,20 @@
     "committerDate": "2019-04-22 11:33:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@1.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "math-inline dependency bumps (#179)",
+    "merge": null,
+    "header": "chore: math-inline dependency bumps (#179)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "10f89e936b92cf30503ae5d936eb401e5dbe2808",
+    "gitTags": "",
+    "committerDate": "2019-04-24 08:52:49 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@1.0.2"
   }
 ]
