@@ -105,7 +105,7 @@ export class Design extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={model => onChange(model)}
+            onChangeModel={model => onChange(model)}
             groups={{
               'Item Type': {
                 highlightChoices: highlightChoices.settings &&
@@ -119,7 +119,7 @@ export class Design extends React.Component {
                 'configure.rationale.enabled': rationale.settings &&
                 toggle(rationale.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />

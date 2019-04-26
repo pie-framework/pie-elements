@@ -114,7 +114,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "targetLabel": "Target Label goes here",
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >
@@ -271,7 +271,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "targetLabel": "Target Label goes here",
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >

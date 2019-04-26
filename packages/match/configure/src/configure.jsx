@@ -166,7 +166,7 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={model => onModelChanged(model)}
+            onChangeModel={model => onModelChanged(model)}
             groups={{
               'Item Type': {
                 enableImages: enableImages.settings &&
@@ -184,7 +184,7 @@ class Configure extends React.Component {
                 lockChoiceOrder: lockChoiceOrder.settings &&
                 toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />
