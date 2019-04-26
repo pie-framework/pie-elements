@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@2.0.4...@pie-element/placement-ordering-configure@2.0.5) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([b18b889](https://github.com/pie-framework/pie-elements/commit/b18b889))
+
+
+
+
+
 ## [2.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@2.0.3...@pie-element/placement-ordering-configure@2.0.4) (2019-04-25)
 
 

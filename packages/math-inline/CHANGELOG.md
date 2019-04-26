@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@1.0.2...@pie-element/math-inline@1.0.3) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui & @pie-ui/math-inline. ([6f0459d](https://github.com/pie-framework/pie-elements/commit/6f0459d))
+
+
+
+
+
 ## [1.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@1.0.1...@pie-element/math-inline@1.0.2) (2019-04-25)
 
 **Note:** Version bump only for package @pie-element/math-inline
