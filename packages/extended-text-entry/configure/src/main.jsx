@@ -77,7 +77,7 @@ export class Main extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={model => onChange(model)}
+            onChangeModel={model => onChange(model)}
             groups={{
               'Item Type': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
