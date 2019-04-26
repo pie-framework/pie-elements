@@ -693,5 +693,20 @@
     "committerDate": "2019-04-24 08:52:49 -0400",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@1.0.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui & @pie-ui/math-inline.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui & @pie-ui/math-inline.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6f0459d3276f8a86f30a7b985c699e73a455e720",
+    "gitTags": "",
+    "committerDate": "2019-04-25 15:25:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@1.0.3"
   }
 ]

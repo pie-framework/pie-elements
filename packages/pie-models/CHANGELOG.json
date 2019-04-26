@@ -273,5 +273,20 @@
     "committerDate": "2019-04-24 06:19:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@1.4.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "minimal passage rendering pie (no authoring) (#185)",
+    "merge": null,
+    "header": "feat: minimal passage rendering pie (no authoring) (#185)",
+    "body": "* feat: minimal passage rendering pie (no authoring)\n\n* bump pie-ui version",
+    "footer": null,
+    "notes": [],
+    "hash": "87e5c4a72721ea75b27646fcba8af1e3ae0ef2f4",
+    "gitTags": "",
+    "committerDate": "2019-04-26 15:14:00 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.5.0"
   }
 ]

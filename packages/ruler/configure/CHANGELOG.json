@@ -228,5 +228,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/ruler-configure@2.2.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e40344b21330914a2f0aa8a31d0cc819cbad903c",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:18:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ruler-configure@2.2.6"
   }
 ]
