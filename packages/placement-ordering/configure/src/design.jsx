@@ -94,7 +94,7 @@ export class Design extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={model => updateModel(model)}
+            onChangeModel={model => updateModel(model)}
             groups={{
               'Item Type': {
                 'configure.choiceLabel.enabled': choiceLabel.settings &&
@@ -106,7 +106,7 @@ export class Design extends React.Component {
                 enableImages: enableImages.settings &&
                   toggle(enableImages.label),
                 orientation: orientation.settings &&
-                  radio(orientation.label, 'vertical', 'horizontal'),
+                  radio(orientation.label, ['vertical', 'horizontal']),
                 removeTilesAfterPlacing: removeTilesAfterPlacing.settings &&
                   toggle(removeTilesAfterPlacing.label),
                 partialScoring: partialScoring.settings &&
@@ -122,7 +122,7 @@ export class Design extends React.Component {
                 lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
-                  radio(scoringType.label, 'auto', 'rubric'),
+                  radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />

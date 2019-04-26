@@ -60,7 +60,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "width": 500,
         }
       }
-      onChange={[Function]}
+      onChangeModel={[Function]}
     />
   }
 >

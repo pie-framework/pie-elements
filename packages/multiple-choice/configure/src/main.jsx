@@ -64,7 +64,7 @@ const Design = withStyles(styles)(props => {
     rationale = {},
     scoringType = {},
     sequentialChoiceLabels = {},
-    partLabels = {},
+    partLabels = {}
   } = configure;
 
   return (
@@ -73,52 +73,58 @@ const Design = withStyles(styles)(props => {
         settings={
           <Panel
             model={model}
-            onChange={onModelChanged}
+            onChangeModel={onModelChanged}
             groups={{
               'Item Type': {
-                'configure.partLabels.enabled': partLabels.settings &&
-                toggle(partLabels.label),
-                choiceMode: choiceMode.settings &&
-                radio(choiceMode.label, 'checkbox', 'radio'),
-                'configure.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                toggle(sequentialChoiceLabels.label),
-                choicePrefix: choicePrefix.settings &&
-                radio(choicePrefix.label, 'numbers', 'letters'),
-                partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
+                'configure.partLabels.enabled':
+                  partLabels.settings && toggle(partLabels.label),
+                choiceMode:
+                  choiceMode.settings &&
+                  radio(choiceMode.label, ['checkbox', 'radio']),
+                'configure.sequentialChoiceLabels.enabled':
+                  sequentialChoiceLabels.settings &&
+                  toggle(sequentialChoiceLabels.label),
+                choicePrefix:
+                  choicePrefix.settings &&
+                  radio(choicePrefix.label, ['numbers', 'letters']),
+                partialScoring:
+                  partialScoring.settings && toggle(partialScoring.label)
               },
-              'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
-              },
+              Properties: {
+                'configure.teacherInstructions.enabled':
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                'configure.studentInstructions.enabled':
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                'configure.rationale.enabled':
+                  rationale.settings && toggle(rationale.label),
+                lockChoiceOrder:
+                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric'])
+              }
             }}
           />
         }
       >
         <div>
-          {prompt.settings &&
-          <InputContainer
-            label={prompt.label}
-            className={classes.promptHolder}
-          >
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
-              imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
-              disableUnderline
-            />
-          </InputContainer>
-          }
+          {prompt.settings && (
+            <InputContainer
+              label={prompt.label}
+              className={classes.promptHolder}
+            >
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={onPromptChanged}
+                imageSupport={imageSupport}
+                nonEmpty={!prompt.settings}
+                disableUnderline
+              />
+            </InputContainer>
+          )}
           {model.choices.map((choice, index) => (
             <ChoiceConfiguration
               key={index}
@@ -136,12 +142,16 @@ const Design = withStyles(styles)(props => {
             />
           ))}
           <br />
-          {
-            addChoiceButton.settings &&
-            <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
+          {addChoiceButton.settings && (
+            <Button
+              className={classes.addButton}
+              variant="contained"
+              color="primary"
+              onClick={onAddChoice}
+            >
               {addChoiceButton.label}
             </Button>
-          }
+          )}
         </div>
       </layout.ConfigLayout>
     </div>
@@ -180,7 +190,6 @@ export class Main extends React.Component {
             if (c.correct) {
               correctFound = true;
             }
-
             return c;
           });
         }
@@ -191,16 +200,13 @@ export class Main extends React.Component {
         updateModel(model);
         break;
     }
-  }
+  };
 
   render() {
-    return (
-      <Design {...this.props} onModelChanged={this.onModelChanged} />
-    );
+    return <Design {...this.props} onModelChanged={this.onModelChanged} />;
   }
 }
 
 const Styled = withStyles(styles)(Main);
 
 export default Styled;
-

@@ -273,7 +273,7 @@ describe('Placement Ordering', () => {
 
     describe('onSettingsChange', () => {
       it('calls update model when settings call onChange function', () => {
-        w.find('ConfigLayout').props().settings.props.onChange();
+        w.find('ConfigLayout').props().settings.props.onChangeModel();
 
         expect(updateModel).toBeCalled();
       });
