@@ -573,5 +573,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/select-text@3.10.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "afcebaf6932991ef12eb44be063913e0276f5188",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:22:05 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@3.10.6"
   }
 ]

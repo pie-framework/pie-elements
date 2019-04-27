@@ -433,5 +433,20 @@
     "committerDate": "2019-04-24 06:19:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@1.2.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a1d06b61b828c119d32326e4f3e447450156dbcf",
+    "gitTags": "",
+    "committerDate": "2019-04-25 15:09:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@1.2.7"
   }
 ]

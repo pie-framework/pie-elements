@@ -718,5 +718,20 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@0.9.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "49bb68b6ec8b45c548e8c6907aaa2c047d4867d1",
+    "gitTags": "",
+    "committerDate": "2019-04-25 14:32:45 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@0.9.3"
   }
 ]

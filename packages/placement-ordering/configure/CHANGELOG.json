@@ -433,5 +433,20 @@
     "committerDate": "2019-04-24 06:19:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-configure@2.0.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b18b8894a957c218bae66a501ab472ed15ee164c",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:12:40 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-configure@2.0.5"
   }
 ]

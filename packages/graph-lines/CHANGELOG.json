@@ -268,5 +268,35 @@
     "committerDate": "2019-04-18 16:36:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines@1.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated @pie-ui/graph-lies version.",
+    "merge": null,
+    "header": "fix: Updated @pie-ui/graph-lies version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "de55ffe67f32c55eb0c7d8578065e471a11949c1",
+    "gitTags": " (origin/fix/updated-config-ui-version)",
+    "committerDate": "2019-04-25 17:12:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@1.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f77fd52faaf7584e69b831c2bafada904d46ffe8",
+    "gitTags": "",
+    "committerDate": "2019-04-25 14:49:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@1.5.2"
   }
 ]

@@ -748,5 +748,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/categorize@2.13.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c9674333a2ba1a457eba29fa43a46be8adf1e7cb",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:00:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@2.13.8"
   }
 ]
