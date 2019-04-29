@@ -1,6 +1,3 @@
-NOTE: teacherInstructions, studentInstructions, rationale & scoringType
-functionalities are not defined yet - the value for those can belong to
-model or to configure (to be moved when the functionality is defined)
 Model for the @pie-elements/match-list Interaction
 
 The schema defines the following properties:
@@ -31,7 +28,7 @@ Id for the correct answer for this question prompt
 
 # `answers` (array, required)
 
-The question prompts that are going to be displayed.
+The answer rows that are going to be displayed.
 
 The object is an array with all elements of the type `object`.
 
@@ -39,15 +36,11 @@ The array object has the following properties:
 
 ## `id` (string,number, required)
 
-Identifier for a question prompt
+Identifier for an answer row
 
 ## `title` (string, required)
 
-Text that will be displayed in the question prompt row
-
-## `relatedAnswer` (string,number, required)
-
-Id for the correct answer for this question prompt
+Text that will be displayed in the answer row
 
 # `shuffled` (boolean)
 
@@ -84,3 +77,17 @@ Text that will be displayed in the question prompt row
 ### `relatedAnswer` (string,number, required)
 
 Id for the correct answer for this question prompt
+
+## `Answer` (object)
+
+Multiple answers
+
+Properties of the `Answer` object:
+
+### `id` (string,number, required)
+
+Identifier for an answer row
+
+### `title` (string, required)
+
+Text that will be displayed in the answer row

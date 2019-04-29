@@ -14,10 +14,15 @@ export interface Prompt {
   relatedAnswer: string | number;
 }
 
-/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
- * functionalities are not defined yet - the value for those can belong to
- * model or to configure (to be moved when the functionality is defined)
+/**
+ * Multiple answers
  */
+export interface Answer {
+  /** Identifier for an answer row */
+  id: string | number;
+  /** Text that will be displayed in the answer row */
+  title: string;
+}
 
 /**
 * Model for the @pie-elements/match-list Interaction
@@ -30,8 +35,8 @@ export interface MatchListPie extends PieModel {
   /** The question prompts that are going to be displayed.  */
   prompts: Prompt[];
 
-  /** The question prompts that are going to be displayed.  */
-  answers: Prompt[];
+  /** The answer rows that are going to be displayed.  */
+  answers: Answer[];
 
   /** Indicates if answers should be shuffled or not */
   shuffled?: boolean;

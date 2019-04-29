@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/match-list Interaction",
+  "description": "Model for the @pie-elements/match-list Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -47,15 +47,15 @@
       "title": "prompts"
     },
     "answers": {
-      "description": "The question prompts that are going to be displayed.",
+      "description": "The answer rows that are going to be displayed.",
       "type": "array",
       "items": {
-        "description": "Multiple question prompts",
-        "title": "Prompt",
+        "description": "Multiple answers",
+        "title": "Answer",
         "type": "object",
         "properties": {
           "id": {
-            "description": "Identifier for a question prompt",
+            "description": "Identifier for an answer row",
             "type": [
               "string",
               "number"
@@ -63,22 +63,13 @@
             "title": "id"
           },
           "title": {
-            "description": "Text that will be displayed in the question prompt row",
+            "description": "Text that will be displayed in the answer row",
             "type": "string",
             "title": "title"
-          },
-          "relatedAnswer": {
-            "description": "Id for the correct answer for this question prompt",
-            "type": [
-              "string",
-              "number"
-            ],
-            "title": "relatedAnswer"
           }
         },
         "required": [
           "id",
-          "relatedAnswer",
           "title"
         ]
       },
@@ -137,6 +128,30 @@
       "required": [
         "id",
         "relatedAnswer",
+        "title"
+      ]
+    },
+    "Answer": {
+      "description": "Multiple answers",
+      "title": "Answer",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for an answer row",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "id"
+        },
+        "title": {
+          "description": "Text that will be displayed in the answer row",
+          "type": "string",
+          "title": "title"
+        }
+      },
+      "required": [
+        "id",
         "title"
       ]
     }
