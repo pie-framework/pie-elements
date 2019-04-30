@@ -1,8 +1,23 @@
 import debug from 'debug';
+import isEqual from 'lodash/isEqual';
 import defaults from './defaults';
-import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:hotspot:controller');
+
+const getCorrectResponse = (choices) => choices
+  .filter(c => c.correct)
+  .map(c => ({ id: c.id }))
+  .sort();
+
+const isResponseCorrect = (question, session) => {
+  let correctResponse = getCorrectResponse(question.shapes);
+
+  if (session.answers.length) {
+    return isEqual((session.answers || []).sort(), correctResponse);
+  }
+  return false;
+};
+
 
 export function model(question, session, env) {
   const {
@@ -68,13 +83,17 @@ const getScore = (config, session) => {
     }
   });
 
-  return (correctAnswers / shapes.length).toFixed(2);
+  const str = (correctAnswers / shapes.length).toFixed(2);
+  return parseFloat(str);
 };
 
 export function outcome(config, session) {
   return new Promise(resolve => {
     log('outcome...');
-    const score = getScore(config, session);
-    resolve({ score });
+
+    if (session.answers) {
+      const score = getScore(config, session);
+      resolve({ score });
+    }
   });
 }
