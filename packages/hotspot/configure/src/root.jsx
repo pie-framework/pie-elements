@@ -36,7 +36,7 @@ class Root extends React.Component {
 
   onRemoveShape = index => {
     const { model } = this.state;
-    model.choices.splice(index, 1);
+    model.shapes.splice(index, 1);
     this.updateModel(model);
   };
 
@@ -65,19 +65,19 @@ class Root extends React.Component {
     this.updateModel(model);
   };
 
-  handleOnUpdateImageDimension = (dimensions) => {
+  onUpdateImageDimension = (dimensions) => {
     const { model } = this.state;
     model.dimensions = dimensions;
     this.updateModel(model);
   };
 
-  handleOnUpdateShapes = (shapes) => {
+  onUpdateShapes = (shapes) => {
     const { model } = this.state;
     model.shapes = shapes;
     this.updateModel(model);
   };
 
-  handleOnImageUpload = imageUrl => {
+  onImageUpload = imageUrl => {
     const { model } = this.state;
     model.imageUrl = imageUrl;
     this.updateModel(model);
@@ -89,13 +89,13 @@ class Root extends React.Component {
       disableSidePanel: this.state.disableSidePanel,
       model: this.state.model,
       onColorChanged: this.onColorChanged,
-      onImageUpload: this.handleOnImageUpload,
+      onImageUpload: this.onImageUpload,
       onMultipleCorrectChanged: this.onMultipleCorrectChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
-      onUpdateImageDimension: this.handleOnUpdateImageDimension,
-      onUpdateShapes: this.handleOnUpdateShapes
+      onUpdateImageDimension: this.onUpdateImageDimension,
+      onUpdateShapes: this.onUpdateShapes
     };
 
     return <Main {...props} />;
