@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`==== Hotspot Root snapshot renders 1`] = `
+exports[`Root snapshot renders 1`] = `
 <WithStyles(Main)
   model={
     Object {
