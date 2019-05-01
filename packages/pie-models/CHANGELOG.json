@@ -288,5 +288,20 @@
     "committerDate": "2019-04-26 15:14:00 -0400",
     "isTagged": true,
     "tag": "@pie-element/pie-models@1.5.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match-list",
+    "subject": "generated json schemas for the pie-model an configure (#186)",
+    "merge": null,
+    "header": "feat(match-list): generated json schemas for the pie-model an configure (#186)",
+    "body": "* feat(match-list): generated json schemas for the pie-model an configure\n\n* feat(match-list): fixed an issue with the match-list schema json",
+    "footer": null,
+    "notes": [],
+    "hash": "e460871ceb3e2356d7991d37657fcd666170072d",
+    "gitTags": " (origin/develop, origin/HEAD)",
+    "committerDate": "2019-04-29 13:53:51 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.6.0"
   }
 ]
