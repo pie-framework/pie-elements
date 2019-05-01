@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.5...@pie-element/number-line@3.4.6) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([12d8170](https://github.com/pie-framework/pie-elements/commit/12d8170))
+
+
+
+
+
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.4...@pie-element/number-line@3.4.5) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.3...@pie-element/number-line@3.4.4) (2019-04-23)
 
 
