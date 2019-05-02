@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.5.0...@pie-element/pie-models@1.6.0) (2019-05-01)
+
+
+### Features
+
+* **match-list:** generated json schemas for the pie-model an configure ([#186](https://github.com/pie-framework/pie-elements/issues/186)) ([e460871](https://github.com/pie-framework/pie-elements/commit/e460871))
+
+
+
+
+
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.4.2...@pie-element/pie-models@1.5.0) (2019-04-26)
+
+
+### Features
+
+* minimal passage rendering pie (no authoring) ([#185](https://github.com/pie-framework/pie-elements/issues/185)) ([87e5c4a](https://github.com/pie-framework/pie-elements/commit/87e5c4a))
+
+
+
+
+
+## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.4.1...@pie-element/pie-models@1.4.2) (2019-04-25)
+
+
+### Bug Fixes
+
+* **ebsr:** revert `itemStem` to `prompt`. ([107f398](https://github.com/pie-framework/pie-elements/commit/107f398))
+
+
+
+
+
 ## [1.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.4.0...@pie-element/pie-models@1.4.1) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/pie-models
