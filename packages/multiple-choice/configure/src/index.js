@@ -6,7 +6,7 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root';
+import Main from './main';
 import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
@@ -90,6 +90,7 @@ export default class MultipleChoice extends HTMLElement {
 
   onModelChanged(m, reset) {
     this._model = m;
+    this._render();
     this.dispatchModelUpdated(reset);
   }
 
@@ -109,7 +110,7 @@ export default class MultipleChoice extends HTMLElement {
 
   _render() {
     log('_render');
-    let element = React.createElement(Root, {
+    let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,

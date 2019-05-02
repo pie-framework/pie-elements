@@ -69,7 +69,6 @@ export function model(question, session, env) {
           ? isResponseCorrect(question, session)
           : undefined
     };
-    console.log('out', out);
 
     resolve(out);
   });
