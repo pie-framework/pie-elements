@@ -1866,6 +1866,18 @@
     debug "^4.1.1"
     keycode "^2.2.0"
 
+"@pie-lib/math-toolbar@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.0.1.tgz#08cdc2f1ed727f2102f6f15b2f0141524c15d34c"
+  integrity sha512-VrUq3vs4o1wM206YDnO0myWyLhCRHIyHe/Pous62wDUS1lc/rMv/hLYtXTLRj1lnakvZHAwFtJejIUhwStP8tg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.0.0"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+
 "@pie-lib/render-ui@^4.3.1", "@pie-lib/render-ui@^4.3.8", "@pie-lib/render-ui@^4.3.9":
   version "4.3.9"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.3.9.tgz#9b16f6a6427478d32fcc318c58a71f5bb8ba7e8e"
