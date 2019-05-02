@@ -1,6 +1,6 @@
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure
+ * model or to configuration
  */
 
 export default {
