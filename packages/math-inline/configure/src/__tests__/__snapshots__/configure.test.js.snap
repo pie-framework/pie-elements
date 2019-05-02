@@ -265,6 +265,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       controlledKeypad={true}
       keypadMode="everything"
       latex="\\\\embed{answerBlock}[r1] = \\\\embed{answerBlock}[r2] \\\\text{eggs}"
+      noDecimal={false}
       onAnswerBlockAdd={[Function]}
       onChange={[Function]}
       onDone={[Function]}
