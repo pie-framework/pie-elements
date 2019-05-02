@@ -63,11 +63,11 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={model => onModelChanged(model)}
+            onChangeModel={model => onModelChanged(model)}
             groups={{
               'Item Type': {
                 responseType: responseType.settings &&
-                radio(responseType.label, ResponseTypes.simple, ResponseTypes.advanced)
+                radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
               },
               'Properties': {
                 'configure.teacherInstructions.enabled': teacherInstructions.settings &&
@@ -77,7 +77,7 @@ class Configure extends React.Component {
                 'configure.rationale.enabled': rationale.settings &&
                 toggle(rationale.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />

@@ -74,21 +74,24 @@ const Design = withStyles(styles)(props => {
         settings={
           <Panel
             model={model}
-            configuration={configuration}
             onChangeModel={onModelChanged}
+            configuration={configuration}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
+                'configure.partLabels.enabled':
+                  partLabels.settings && toggle(partLabels.label),
+                choiceMode:
+                  choiceMode.settings &&
+                  radio(choiceMode.label, ['checkbox', 'radio']),
+                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                  toggle(sequentialChoiceLabels.label, true),
+                choicePrefix: choicePrefix.settings &&
+                  radio(choicePrefix.label, ['numbers', 'letters']),
+                partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
                 'partLabels.enabled': partLabels.settings &&
                 toggle(partLabels.label, true),
-                choiceMode: choiceMode.settings &&
-                radio(choiceMode.label, ['checkbox', 'radio']),
-                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                toggle(sequentialChoiceLabels.label, true),
-                choicePrefix: choicePrefix.settings &&
-                radio(choicePrefix.label, ['numbers', 'letters']),
-                partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -107,21 +110,21 @@ const Design = withStyles(styles)(props => {
         }
       >
         <div>
-          {prompt.settings &&
-          <InputContainer
-            label={prompt.label}
-            className={classes.promptHolder}
-          >
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
-              imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
-              disableUnderline
-            />
-          </InputContainer>
-          }
+          {prompt.settings && (
+            <InputContainer
+              label={prompt.label}
+              className={classes.promptHolder}
+            >
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={onPromptChanged}
+                imageSupport={imageSupport}
+                nonEmpty={!prompt.settings}
+                disableUnderline
+              />
+            </InputContainer>
+          )}
           {model.choices.map((choice, index) => (
             <ChoiceConfiguration
               key={index}
@@ -139,12 +142,16 @@ const Design = withStyles(styles)(props => {
             />
           ))}
           <br />
-          {
-            addChoiceButton.settings &&
-            <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
+          {addChoiceButton.settings && (
+            <Button
+              className={classes.addButton}
+              variant="contained"
+              color="primary"
+              onClick={onAddChoice}
+            >
               {addChoiceButton.label}
             </Button>
-          }
+          )}
         </div>
       </layout.ConfigLayout>
     </div>
@@ -184,7 +191,6 @@ export class Main extends React.Component {
             if (c.correct) {
               correctFound = true;
             }
-
             return c;
           });
         }
@@ -198,13 +204,10 @@ export class Main extends React.Component {
   };
 
   render() {
-    return (
-      <Design {...this.props} onModelChanged={this.onModelChanged} />
-    );
+    return <Design {...this.props} onModelChanged={this.onModelChanged} />;
   }
 }
 
 const Styled = withStyles(styles)(Main);
 
 export default Styled;
-

@@ -553,5 +553,35 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@4.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": "ebsr",
+    "subject": "revert `itemStem` to `prompt`.",
+    "merge": null,
+    "header": "fix(ebsr): revert `itemStem` to `prompt`.",
+    "body": "fix(multiple-choice): revert `itemStem` to `prompt`.\nfix(placement-ordering): revert `itemStem` to `prompt`.",
+    "footer": null,
+    "notes": [],
+    "hash": "107f3988029baf164f702a1079dfeb2fd192302a",
+    "gitTags": "",
+    "committerDate": "2019-04-24 06:19:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@4.2.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b18b8894a957c218bae66a501ab472ed15ee164c",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:12:40 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@4.2.4"
   }
 ]

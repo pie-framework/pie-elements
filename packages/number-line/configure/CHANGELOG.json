@@ -198,5 +198,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/number-line-configure@2.2.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12d8170f71bfc9d271621ca0219c2375071d6295",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:10:31 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-configure@2.2.6"
   }
 ]

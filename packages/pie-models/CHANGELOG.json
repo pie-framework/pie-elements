@@ -258,5 +258,35 @@
     "committerDate": "2019-04-18 09:03:28 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@1.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": "ebsr",
+    "subject": "revert `itemStem` to `prompt`.",
+    "merge": null,
+    "header": "fix(ebsr): revert `itemStem` to `prompt`.",
+    "body": "fix(multiple-choice): revert `itemStem` to `prompt`.\nfix(placement-ordering): revert `itemStem` to `prompt`.",
+    "footer": null,
+    "notes": [],
+    "hash": "107f3988029baf164f702a1079dfeb2fd192302a",
+    "gitTags": "",
+    "committerDate": "2019-04-24 06:19:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.4.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "minimal passage rendering pie (no authoring) (#185)",
+    "merge": null,
+    "header": "feat: minimal passage rendering pie (no authoring) (#185)",
+    "body": "* feat: minimal passage rendering pie (no authoring)\n\n* bump pie-ui version",
+    "footer": null,
+    "notes": [],
+    "hash": "87e5c4a72721ea75b27646fcba8af1e3ae0ef2f4",
+    "gitTags": "",
+    "committerDate": "2019-04-26 15:14:00 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@1.5.0"
   }
 ]

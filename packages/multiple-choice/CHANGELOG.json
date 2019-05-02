@@ -973,5 +973,35 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@2.12.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated @pie-ui/multiple-choice version.",
+    "merge": null,
+    "header": "fix: Updated @pie-ui/multiple-choice version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0eb901a09ccc61b19511a124ee20b35d91e824da",
+    "gitTags": "",
+    "committerDate": "2019-04-25 17:10:21 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@2.12.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "49bb68b6ec8b45c548e8c6907aaa2c047d4867d1",
+    "gitTags": "",
+    "committerDate": "2019-04-25 14:32:45 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@2.12.3"
   }
 ]

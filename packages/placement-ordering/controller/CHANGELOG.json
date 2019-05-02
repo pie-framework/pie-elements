@@ -253,5 +253,20 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-controller@3.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": "ebsr",
+    "subject": "revert `itemStem` to `prompt`.",
+    "merge": null,
+    "header": "fix(ebsr): revert `itemStem` to `prompt`.",
+    "body": "fix(multiple-choice): revert `itemStem` to `prompt`.\nfix(placement-ordering): revert `itemStem` to `prompt`.",
+    "footer": null,
+    "notes": [],
+    "hash": "107f3988029baf164f702a1079dfeb2fd192302a",
+    "gitTags": "",
+    "committerDate": "2019-04-24 06:19:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@3.2.3"
   }
 ]

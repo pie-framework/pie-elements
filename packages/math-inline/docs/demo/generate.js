@@ -1,7 +1,7 @@
 exports.model = (id, element) => ({
   id,
   element,
-  mode: 'advanced',
+  responseType: 'Advanced Multi',
   feedback: {
     correct: {
       default: 'Correct',
@@ -40,5 +40,10 @@ exports.model = (id, element) => ({
       },
       validation: 'literal'
     }
+  ],
+  customKeys: [
+    '\\left(\\right)',
+    '\\frac{}{}',
+    'x\\frac{}{}'
   ]
 });

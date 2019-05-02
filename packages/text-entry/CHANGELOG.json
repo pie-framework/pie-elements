@@ -333,5 +333,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/text-entry@3.5.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "357ebb00a02d9eb377f0180c5bf1f775bc2dfc06",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:24:59 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/text-entry@3.5.6"
   }
 ]

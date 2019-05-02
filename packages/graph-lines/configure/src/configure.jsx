@@ -125,7 +125,7 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
-            onChange={this.props.onModelChanged}
+            onChangeModel={this.props.onModelChanged}
             groups={{
               'Item Type': {
                 arrows: arrows.settings && toggle(arrows.label),
@@ -142,7 +142,7 @@ class Configure extends React.Component {
                 'configure.rationale.enabled': rationale.settings &&
                 toggle(rationale.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />

@@ -1,0 +1,34 @@
+{
+  "description": "Model for the @pie-elements/passage",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "title": {
+      "description": "The title of the passage",
+      "type": "string",
+      "title": "title"
+    },
+    "content": {
+      "description": "The content of the passage",
+      "type": "string",
+      "title": "content"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "content",
+    "element",
+    "id",
+    "title"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
