@@ -238,5 +238,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-choice-configure@1.3.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "92fe51a9b6c2e0c9a6260100eca43ea36a0847a9",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:03:14 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-choice-configure@1.3.6"
   }
 ]

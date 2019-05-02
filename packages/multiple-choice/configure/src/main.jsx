@@ -5,10 +5,11 @@ import {
   InputContainer,
   ChoiceConfiguration,
   settings,
-  layout
+  layout, choiceUtils as utils
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import merge from 'lodash/merge';
 
 const { Panel, toggle, radio } = settings;
 
@@ -41,14 +42,15 @@ const styles = theme => ({
 const Design = withStyles(styles)(props => {
   const {
     classes,
-    configuration,
     model,
+    configuration,
     onPromptChanged,
     onChoiceChanged,
     onRemoveChoice,
     onAddChoice,
     imageSupport,
-    onModelChanged
+    onChangeModel,
+    onConfigurationChanged
   } = props;
   const {
     prompt,
@@ -73,52 +75,55 @@ const Design = withStyles(styles)(props => {
         settings={
           <Panel
             model={model}
-            onChange={onModelChanged}
+            onChangeModel={onChangeModel}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
-                'configuration.partLabels.enabled': partLabels.settings &&
-                toggle(partLabels.label),
-                choiceMode: choiceMode.settings &&
-                radio(choiceMode.label, 'checkbox', 'radio'),
-                'configuration.sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                toggle(sequentialChoiceLabels.label),
+                'partLabels.enabled': partLabels.settings &&
+                  toggle(partLabels.label, true),
+                choiceMode:
+                  choiceMode.settings &&
+                  radio(choiceMode.label, ['checkbox', 'radio']),
+                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                  toggle(sequentialChoiceLabels.label, true),
                 choicePrefix: choicePrefix.settings &&
-                radio(choicePrefix.label, 'numbers', 'letters'),
+                  radio(choicePrefix.label, ['numbers', 'letters']),
                 partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
+                  toggle(partialScoring.label),
               },
               'Properties': {
-                'configuration.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configuration.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configuration.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                 toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, 'auto', 'rubric'),
+                radio(scoringType.label, ['auto', 'rubric']),
               },
             }}
           />
         }
       >
         <div>
-          {prompt.settings &&
-          <InputContainer
-            label={prompt.label}
-            className={classes.promptHolder}
-          >
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={onPromptChanged}
-              imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
-              disableUnderline
-            />
-          </InputContainer>
-          }
+          {prompt.settings && (
+            <InputContainer
+              label={prompt.label}
+              className={classes.promptHolder}
+            >
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={onPromptChanged}
+                imageSupport={imageSupport}
+                nonEmpty={!prompt.settings}
+                disableUnderline
+              />
+            </InputContainer>
+          )}
           {model.choices.map((choice, index) => (
             <ChoiceConfiguration
               key={index}
@@ -136,12 +141,16 @@ const Design = withStyles(styles)(props => {
             />
           ))}
           <br />
-          {
-            addChoiceButton.settings &&
-            <Button className={classes.addButton} variant="contained" color="primary" onClick={onAddChoice}>
+          {addChoiceButton.settings && (
+            <Button
+              className={classes.addButton}
+              variant="contained"
+              color="primary"
+              onClick={onAddChoice}
+            >
               {addChoiceButton.label}
             </Button>
-          }
+          )}
         </div>
       </layout.ConfigLayout>
     </div>
@@ -152,8 +161,8 @@ export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     disableSidePanel: PropTypes.bool,
-    onPromptChanged: PropTypes.func.isRequired,
-    updateModel: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -161,8 +170,48 @@ export class Main extends React.Component {
     })
   };
 
+  onRemoveChoice = index => {
+    const { model } = this.props;
+
+    model.choices.splice(index, 1);
+    this.props.onModelChanged(model);
+  };
+
+  onAddChoice = () => {
+    const { model } = this.props;
+    model.choices.push({
+      label: 'label',
+      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
+      feedback: {
+        type: 'none'
+      }
+    });
+
+    this.props.onModelChanged(model);
+  };
+
+  onChoiceChanged = (index, choice) => {
+    const { model } = this.props;
+
+    if (choice.correct && model.choiceMode === 'radio') {
+      model.choices = model.choices.map(c => {
+        return merge({}, c, { correct: false });
+      });
+    }
+
+    model.choices.splice(index, 1, choice);
+    this.props.onModelChanged(model);
+  };
+
+  onPromptChanged = prompt => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      prompt
+    });
+  };
+
   onModelChanged = (model, key) => {
-    const { updateModel } = this.props;
+    const { onModelChanged } = this.props;
 
     switch (key) {
       case 'choiceMode': {
@@ -180,27 +229,31 @@ export class Main extends React.Component {
             if (c.correct) {
               correctFound = true;
             }
-
             return c;
           });
         }
-        updateModel(model, true);
+        onModelChanged(model, true);
         break;
       }
       default:
-        updateModel(model);
+        onModelChanged(model);
         break;
     }
-  }
+  };
 
   render() {
     return (
-      <Design {...this.props} onModelChanged={this.onModelChanged} />
-    );
+      <Design
+        {...this.props}
+        onChangeModel={this.onModelChanged}
+        onRemoveChoice={this.onRemoveChoice}
+        onChoiceChanged={this.onChoiceChanged}
+        onAddChoice={this.onAddChoice}
+        onPromptChanged={this.onPromptChanged}
+      />);
   }
 }
 
 const Styled = withStyles(styles)(Main);
 
 export default Styled;
-

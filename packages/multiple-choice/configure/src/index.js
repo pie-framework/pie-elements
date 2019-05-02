@@ -6,7 +6,7 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root';
+import Main from './main';
 import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
@@ -51,7 +51,7 @@ const prepareCustomizationObject = (config, model) => {
 export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
     choices: generateFormattedChoices(model.choices),
-    ...sensibleDefaults,
+    ...sensibleDefaults.model,
     ...model,
   });
 
@@ -60,18 +60,7 @@ export default class MultipleChoice extends HTMLElement {
     this._model = MultipleChoice.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
-
-    // todo how will generate.js look like and how will the configuration be sent?
-    setTimeout(() => {
-      const el = document.querySelector('multiple-choice-configure');
-
-      el.configuration = {
-        addChoiceButton: {
-          settings: true,
-          label: 'Add Choice',
-        },
-      };
-    });
+    this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(s) {
@@ -101,13 +90,16 @@ export default class MultipleChoice extends HTMLElement {
 
   onModelChanged(m, reset) {
     this._model = m;
+    this._render();
     this.dispatchModelUpdated(reset);
   }
 
-  /**
-   *
-   * @param {done, progress, file} handler
-   */
+  onConfigurationChanged(c) {
+    this._configuration = prepareCustomizationObject(c, this._model).configuration;
+    this._render();
+  }
+
+  /** @param {done, progress, file} handler */
   insertImage(handler) {
     this.dispatchEvent(new InsertImageEvent(handler));
   }
@@ -118,11 +110,12 @@ export default class MultipleChoice extends HTMLElement {
 
   _render() {
     log('_render');
-    let element = React.createElement(Root, {
+    let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,
-      disableSidePanel: this._disableSidePanel,
       onModelChanged: this.onModelChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
+      disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
         delete: this.onDeleteImage.bind(this)

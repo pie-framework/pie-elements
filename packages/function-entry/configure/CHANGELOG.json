@@ -273,5 +273,20 @@
     "committerDate": "2019-04-23 09:12:02 -0400",
     "isTagged": true,
     "tag": "@pie-element/function-entry-configure@2.2.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ecf15ed8a6913ca1505fb9ebccac3f12b4782d0b",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:02:03 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/function-entry-configure@2.2.6"
   }
 ]

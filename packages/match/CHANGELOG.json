@@ -553,5 +553,20 @@
     "committerDate": "2019-04-15 11:43:37 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@1.12.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib/config-ui.",
+    "merge": null,
+    "header": "fix: Updated with new version of @pie-lib/config-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1844d4f1206c413a997575355ed94b98af1bb18b",
+    "gitTags": "",
+    "committerDate": "2019-04-25 11:05:49 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@1.12.2"
   }
 ]

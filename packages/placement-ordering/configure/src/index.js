@@ -4,7 +4,7 @@ import {
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 
-import Main from './main';
+import Main from './design';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import defaultValues from './defaults';
@@ -24,7 +24,6 @@ export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const mapChoicesToReturnCorrectResponse = choices => choices && choices.map(ch => ({ id: ch.id }));
     let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
-
     const defaultModel = {
       ...defaultValues.model,
       ...model,
@@ -39,10 +38,13 @@ export default class PlacementOrdering extends HTMLElement {
 
   constructor() {
     super();
+
     this._model = PlacementOrdering.createDefaultModel();
     this._configuration = defaultValues.configuration;
+
     this.onModelChanged = (model, resetSession) => {
       this._model = model;
+      this._rerender();
       this.dispatchUpdate(resetSession);
     };
 
@@ -50,16 +52,6 @@ export default class PlacementOrdering extends HTMLElement {
       this._configuration = prepareCustomizationObject(configuration).configuration;
       this._rerender();
     };
-
-
-    // todo how will generate.js look like and how will the configuration be sent?
-    setTimeout(() => {
-      const el = document.querySelector('placement-ordering-configure');
-
-      el.configuration = {
-        test: 'Test'
-      };
-    });
 
     this.insertImage = handler => {
       this.dispatchEvent(new InsertImageEvent(handler));
