@@ -299,7 +299,7 @@
     "footer": null,
     "notes": [],
     "hash": "e460871ceb3e2356d7991d37657fcd666170072d",
-    "gitTags": " (origin/develop, origin/HEAD)",
+    "gitTags": "",
     "committerDate": "2019-04-29 13:53:51 -0400",
     "isTagged": true,
     "tag": "@pie-element/pie-models@1.6.0"
