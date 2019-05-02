@@ -50,8 +50,5 @@
     "packages/*",
     "packages/*/configure",
     "packages/*/controller"
-  ],
-  "dependencies": {
-    "prettier": "^1.17.0"
-  }
+  ]
 }
