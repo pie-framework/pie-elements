@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.7...@pie-element/point-intercept-configure@1.2.8) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.6...@pie-element/point-intercept-configure@1.2.7) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([47fe7d5](https://github.com/pie-framework/pie-elements/commit/47fe7d5))
+
+
+
+
+
+## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.5...@pie-element/point-intercept-configure@1.2.6) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.4...@pie-element/point-intercept-configure@1.2.5) (2019-04-23)
 
 

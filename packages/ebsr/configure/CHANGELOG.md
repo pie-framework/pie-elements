@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@1.2.6...@pie-element/ebsr-configure@1.2.7) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@1.2.5...@pie-element/ebsr-configure@1.2.6) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([a1d06b6](https://github.com/pie-framework/pie-elements/commit/a1d06b6))
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@1.2.4...@pie-element/ebsr-configure@1.2.5) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

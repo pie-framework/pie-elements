@@ -1666,7 +1666,7 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/config-ui@^7.6.7":
+"@pie-lib/config-ui@^7.11.9", "@pie-lib/config-ui@^7.6.7":
   version "7.11.34"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.34.tgz#0aa926da7970fb3dcf1ce7cff8c497677e5cf1a7"
   integrity sha512-ai3JZiuGe6VDt5Km+06dca1BlBVl6PFObFHdpFaKUTYJHi12UYiwAZf3bThRW+9VyjVzjQY6eV/c6O2RZh1cTw==
@@ -1846,30 +1846,6 @@
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-0.11.4.tgz#2d4bf8d3fbaf859dad4bd4d6fd3b25fed485ace4"
   integrity sha512-Ni0YFX7D34KuW/HO1KL6YoSh6Ti2frhgn04r9B32YNj4MQAiCFgTL6p8uzvG2hv4ye9VlihVUmbsjWEwBZfOMA==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/math-input" "^6.0.0"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    keycode "^2.2.0"
-
-"@pie-lib/math-toolbar@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.0.1.tgz#08cdc2f1ed727f2102f6f15b2f0141524c15d34c"
-  integrity sha512-VrUq3vs4o1wM206YDnO0myWyLhCRHIyHe/Pous62wDUS1lc/rMv/hLYtXTLRj1lnakvZHAwFtJejIUhwStP8tg==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/math-input" "^6.0.0"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    keycode "^2.2.0"
-
-"@pie-lib/math-toolbar@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.0.1.tgz#08cdc2f1ed727f2102f6f15b2f0141524c15d34c"
-  integrity sha512-VrUq3vs4o1wM206YDnO0myWyLhCRHIyHe/Pous62wDUS1lc/rMv/hLYtXTLRj1lnakvZHAwFtJejIUhwStP8tg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -7762,6 +7738,11 @@ kleur@^2.0.1:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-2.0.2.tgz#b704f4944d95e255d038f0cb05fb8a602c55a300"
   integrity sha512-77XF9iTllATmG9lSlIv0qdQ2BQ/h9t0bJllHlbvsQ0zUWfU7Yi0S8L5JXzPZgkefIiajLmBJJ4BsMJmqcf7oxQ==
 
+konva@^3.2.4:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-3.2.5.tgz#85311fb28d84582839ae061d9476b690ee50205e"
+  integrity sha512-oMtNKczi0jz6kd9rpxqZWOVQqdJDBxEbjMdbZuUH1DttPQ0HKMuGcayk5PJX7YEVmg3N2ZYqzMAObE6itFS9Qg==
+
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -9639,6 +9620,14 @@ react-jss@^8.1.0, react-jss@^8.4.0, react-jss@^8.6.1:
     prop-types "^15.6.0"
     theming "^1.3.0"
 
+react-konva@^16.8.6:
+  version "16.8.6"
+  resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-16.8.6.tgz#0fe7ef2b6c75eeeec71ba9ca9db1829b5889293c"
+  integrity sha512-6KRIqHyJuTTMuAehDIXvw+ZrtEj2aMc2fwolhmFlg1HBzH4PJimsMByTcEx292Afh9d38TcHdjXP1C58qqDOlg==
+  dependencies:
+    react-reconciler "^0.20.4"
+    scheduler "^0.13.6"
+
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
@@ -9673,6 +9662,16 @@ react-portal@^4.2.0:
   integrity sha512-Zf+vGQ/VEAb5XAy+muKEn48yhdCNYPZaB1BWg1xc8sAZWD8pXTgPtQT4ihBdmWzsfCq8p8/kqf0GWydSBqc+Eg==
   dependencies:
     prop-types "^15.5.8"
+
+react-reconciler@^0.20.4:
+  version "0.20.4"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.20.4.tgz#3da6a95841592f849cb4edd3d38676c86fd920b2"
+  integrity sha512-kxERc4H32zV2lXMg/iMiwQHOtyqf15qojvkcZ5Ja2CPkjVohHw9k70pdDBwrnQhLVetUJBSYyqU3yqrlVTOajA==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.6"
 
 react-swipeable-views-core@^0.12.17:
   version "0.12.17"
@@ -9726,7 +9725,7 @@ react-transition-group@^2.2.1, react-transition-group@^2.3.1, react-transition-g
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.4.0, react@^16.8.1:
+react@^16.4.0, react@^16.8.1, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==

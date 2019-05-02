@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.5.2...@pie-element/graph-lines@1.5.3) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/graph-lines
+
+
+
+
+
+## [1.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.5.1...@pie-element/graph-lines@1.5.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated @pie-ui/graph-lies version. ([de55ffe](https://github.com/pie-framework/pie-elements/commit/de55ffe))
+* Updated with new version of @pie-lib/config-ui. ([f77fd52](https://github.com/pie-framework/pie-elements/commit/f77fd52))
+
+
+
+
+
 ## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.5.0...@pie-element/graph-lines@1.5.1) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/graph-lines

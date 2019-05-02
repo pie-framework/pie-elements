@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.6...@pie-element/select-text@3.10.7) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [3.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.5...@pie-element/select-text@3.10.6) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([afcebaf](https://github.com/pie-framework/pie-elements/commit/afcebaf))
+
+
+
+
+
+## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.4...@pie-element/select-text@3.10.5) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
 ## [3.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.3...@pie-element/select-text@3.10.4) (2019-04-23)
 
 

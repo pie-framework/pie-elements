@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.2...@pie-element/match@1.12.3) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [1.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.1...@pie-element/match@1.12.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([1844d4f](https://github.com/pie-framework/pie-elements/commit/1844d4f))
+
+
+
+
+
 ## [1.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.0...@pie-element/match@1.12.1) (2019-04-18)
 
 **Note:** Version bump only for package @pie-element/match
