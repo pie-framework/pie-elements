@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/number-line-configure",
   "private": true,
-  "version": "2.2.7",
+  "version": "2.2.8",
   "main": "lib/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
