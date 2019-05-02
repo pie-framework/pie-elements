@@ -61,6 +61,9 @@ class Root extends React.Component {
   onMultipleCorrectChanged = () => {
     const { model } = this.state;
     model.multipleCorrect = !model.multipleCorrect;
+    if (!model.multipleCorrect) {
+      model.partialScoring = false;
+    }
     model.shapes = model.shapes.map(shape => ({ ...shape, correct: false }));
     this.updateModel(model);
   };

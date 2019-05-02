@@ -14,6 +14,9 @@ const getSideMenuItems = (props) => {
   const { model, classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
   const { settingsPartialScoring, settingsMultipleCorrect } = configure;
 
+  const partialScoringDisabled = !model.multipleCorrect;
+  const partialScoringChecked = partialScoringDisabled ? false : model.partialScoring;
+
   return [
     {
       items: [
@@ -35,7 +38,8 @@ const getSideMenuItems = (props) => {
           classes={{ root: classes.switchElement }}
           control={
             <Switch
-              checked={model.partialScoring}
+              disabled={partialScoringDisabled}
+              checked={partialScoringChecked}
               onChange={onPartialScoringChanged}
               value="checkedA"
             />
