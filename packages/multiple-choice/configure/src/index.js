@@ -6,7 +6,7 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main';
+import Root from './root';
 import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
@@ -37,13 +37,13 @@ const generateFormattedChoices = (choices, choiceCount = 4) => {
 };
 
 const prepareCustomizationObject = (config, model) => {
-  const configuration = defaults(config, sensibleDefaults.configuration);
+  const configure = defaults(config, sensibleDefaults.configure);
 
   return {
-    configuration,
+    configure,
     model: {
       ...model,
-      choices: generateFormattedChoices(model.choices, configuration.answerChoiceCount)
+      choices: generateFormattedChoices(model.choices, configure.answerChoiceCount)
     }
   };
 };
@@ -51,29 +51,27 @@ const prepareCustomizationObject = (config, model) => {
 export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
     choices: generateFormattedChoices(model.choices),
-    ...sensibleDefaults.model,
+    ...sensibleDefaults,
     ...model,
   });
 
   constructor() {
     super();
     this._model = MultipleChoice.createDefaultModel();
-    this._configuration = sensibleDefaults.configuration;
+    this._configure = sensibleDefaults.configure;
     this.onModelChanged = this.onModelChanged.bind(this);
-    this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(s) {
     this._model = MultipleChoice.createDefaultModel(s);
-
     this._render();
   }
 
-  set configuration(c) {
+  set configure(c) {
     const info = prepareCustomizationObject(c, this._model);
 
     this.onModelChanged(info.model);
-    this._configuration = info.configuration;
+    this._configure = info.configure;
     this._render();
   }
 
@@ -90,16 +88,13 @@ export default class MultipleChoice extends HTMLElement {
 
   onModelChanged(m, reset) {
     this._model = m;
-    this._render();
     this.dispatchModelUpdated(reset);
   }
 
-  onConfigurationChanged(c) {
-    this._configuration = prepareCustomizationObject(c, this._model).configuration;
-    this._render();
-  }
-
-  /** @param {done, progress, file} handler */
+  /**
+   *
+   * @param {done, progress, file} handler
+   */
   insertImage(handler) {
     this.dispatchEvent(new InsertImageEvent(handler));
   }
@@ -110,12 +105,11 @@ export default class MultipleChoice extends HTMLElement {
 
   _render() {
     log('_render');
-    let element = React.createElement(Main, {
+    let element = React.createElement(Root, {
       model: this._model,
-      configuration: this._configuration,
-      onModelChanged: this.onModelChanged,
-      onConfigurationChanged: this.onConfigurationChanged,
+      configure: this._configure,
       disableSidePanel: this._disableSidePanel,
+      onModelChanged: this.onModelChanged,
       imageSupport: {
         add: this.insertImage.bind(this),
         delete: this.onDeleteImage.bind(this)
