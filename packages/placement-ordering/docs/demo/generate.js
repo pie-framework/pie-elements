@@ -44,5 +44,4 @@ exports.model = (id, element) => ({
   placementArea: false,
   scoringType: 'auto',
   targetLabel: 'Answers',
-  configure: {},
 });
