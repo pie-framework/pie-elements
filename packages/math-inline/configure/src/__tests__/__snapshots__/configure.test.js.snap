@@ -244,6 +244,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
 </math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>"
       nonEmpty={false}
       onChange={[Function]}
+      onFocus={[Function]}
     />
   </InputContainer>
   <div
