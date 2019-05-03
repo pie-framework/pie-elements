@@ -1440,7 +1440,7 @@
     recompose "^0.28.0"
     warning "^4.0.1"
 
-"@material-ui/core@^3.8.3", "@material-ui/core@^3.9.2":
+"@material-ui/core@^3.8.3", "@material-ui/core@^3.9.2", "@material-ui/core@^3.9.3":
   version "3.9.3"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.9.3.tgz#d378c1f4beb18df9a534ca7258c2c33fb8e0e51f"
   integrity sha512-REIj62+zEvTgI/C//YL4fZxrCVIySygmpZglsu/Nl5jPqy3CDjZv1F9ubBYorHqmRgeVPh64EghMMWqk4egmfg==
@@ -1727,6 +1727,17 @@
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
 
+"@pie-lib/drag@^1.1.13":
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.13.tgz#8d2929b712d6bce6a8597913eff1e9d499e177e9"
+  integrity sha512-JGBYvrTh7bKr+SXzMsBLegp2RAuWa9oBmJzY+tIWiFb1uPKrUS3SooxZlwhhZkTjp5p/+dW5dOJXGx4WUiZlDQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    react-dnd "^7.0.2"
+    react-dnd-html5-backend "^7.0.2"
+
 "@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.3.5":
   version "7.3.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.3.5.tgz#18681fded13dcd541f63c2b2d5647ebaf45dd7fc"
@@ -1799,6 +1810,23 @@
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.6.2"
+
+"@pie-lib/mask-markup@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.0.0.tgz#cbcb130785e656d344b0af1f7a80bedf82594eeb"
+  integrity sha512-dE5facAgsqmtzQSb7EvdlEK4qK2sSAvtXlHJoT+nR384pO720nFm2oLY0ZwZmCADi4bQch9Y2tiW8LKjKVItsw==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@pie-lib/drag" "^1.1.13"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    react "^16.8.6"
+    react-dnd "^7.0.2"
+    react-dnd-html5-backend "^7.0.2"
+    slate "^0.36.2"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
 
 "@pie-lib/math-evaluator@^0.3.9":
   version "0.3.9"
@@ -2024,6 +2052,20 @@
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/icons" "^2.3.1"
     "@pie-lib/render-ui" "^4.3.1"
+    classnames "^2.2.5"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
+"@pie-ui/inline-dropdown@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.0.1.tgz#eef3acd025eb53e3ed4472f9702aa8d3d3f386b1"
+  integrity sha512-fhz7bTLBkpKF4HhmWNlogswI8EZ3Y5cMv6e621t/N7KQzoAD0jin6FDy8sBRU+CnNEX4hGil8yaq9Qc7wNzW3g==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/mask-markup" "^1.0.0"
     classnames "^2.2.5"
     lodash "^4.17.10"
     prop-types "^15.6.1"
