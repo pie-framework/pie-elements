@@ -179,6 +179,10 @@ class GeneralConfigBlock extends React.Component {
     this.setState({ showKeypad: true });
   };
 
+  onQuestionFocus = () => {
+    this.setState({ showKeypad: false });
+  };
+
   UNSAFE_componentWillMount() {
     const { classes } = this.props;
 
@@ -325,8 +329,9 @@ class GeneralConfigBlock extends React.Component {
       >
         <InputContainer label="Item Stem" className={classes.promptHolder}>
           <EditableHtml
+            onFocus={this.onQuestionFocus}
             className={classes.prompt}
-            markup={question}
+            markup={question || ''}
             onChange={this.onChange('question')}
             imageSupport={imageSupport}
             nonEmpty={false}
@@ -342,7 +347,7 @@ class GeneralConfigBlock extends React.Component {
               allowAnswerBlock
               controlledKeypad
               showKeypad={showKeypad}
-              latex={prepareForStatic(expression)}
+              latex={prepareForStatic(expression) || ''}
               keypadMode="everything"
               onChange={this.onChange('expression')}
               onFocus={this.onFocus}
