@@ -708,5 +708,20 @@
     "committerDate": "2019-04-25 15:25:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@1.0.3"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "vital null checks and onFocus for editable-html",
+    "merge": null,
+    "header": "fix(math-inline): vital null checks and onFocus for editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0ebeaa426129c32eba069b91361be0e87f1faeb6",
+    "gitTags": "",
+    "committerDate": "2019-05-03 13:42:03 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@1.0.7"
   }
 ]

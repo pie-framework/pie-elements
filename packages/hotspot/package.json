@@ -1,0 +1,14 @@
+{
+  "name": "@pie-element/hotspot",
+  "version": "1.0.1",
+  "description": "",
+  "repository": "pie-framework/pie-elements",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pie": {
+    "element": "@pie-ui/hotspot"
+  },
+  "author": "pie framework developers",
+  "license": "ISC"
+}
