@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "type": "feat",
+    "scope": "inline-dropdown",
+    "subject": "added pie-lib/controller-utils to the dependency list",
+    "merge": null,
+    "header": "feat(inline-dropdown): added pie-lib/controller-utils to the dependency list",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4a5b99fa70147b5e295683053b148da6659388d3",
+    "gitTags": "",
+    "committerDate": "2019-05-03 10:28:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "inline-dropdown",
+    "subject": "implemented the inline-dropdown element and controller",
+    "merge": null,
+    "header": "feat(inline-dropdown): implemented the inline-dropdown element and controller",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7e5786fa5e298756032c7c6d75aa8d53211d574f",
+    "gitTags": "",
+    "committerDate": "2019-05-02 17:22:47 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.1.0"
+  }
+]
