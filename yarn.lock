@@ -1651,14 +1651,14 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^10.0.0", "@pie-lib/config-ui@^10.1.0":
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.1.0.tgz#6d0eea492180cdfd252db68a02f0bc2c369941fa"
-  integrity sha512-TndXY5z6r4AgZi1rQpEyr+K4QHjrGk64EcLx9eoIs2p/VkfjZTHrV0RS5sqkBSBS2jwz05p3ws1HekpCBWEoDQ==
+"@pie-lib/config-ui@^10.0.0", "@pie-lib/config-ui@^10.1.1":
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.1.1.tgz#fd78d53837f405e20d0000bfd6183d76251afe22"
+  integrity sha512-pVGniwhRNLSLiFK47U+AwufRR9Qqg/O0MI4FuJWr3UOtdqsRoACdpHJ1Zfc+HGYjHIklbgEmK0vdqUbOqLSZPQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.4.0"
+    "@pie-lib/editable-html" "^7.4.1"
     "@pie-lib/icons" "^2.3.8"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -1712,10 +1712,10 @@
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
 
-"@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.4.0.tgz#0728e4a10e8475af65b0130b0ea9baa5c07c8da2"
-  integrity sha512-aJQgN/4eoaNljdIVJJzDZXnuuCJ4eUkvMQP78wqk95DGKr8Z/SpbYoe9E04oMKkQx4lMy564bL/UP9t/190LlA==
+"@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.4.1":
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.4.1.tgz#87f46f7727bbfcab658ec06358615422919c0c60"
+  integrity sha512-/dhcWAn+KzRP+T+AXeuVkussrvPv31n4T4DE5Drg7zrAF9KSLXp7vwFiif1AHXWj30xnUjohaqx+NXJ7k4KTYA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -1755,15 +1755,16 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.0.0.tgz#cbcb130785e656d344b0af1f7a80bedf82594eeb"
-  integrity sha512-dE5facAgsqmtzQSb7EvdlEK4qK2sSAvtXlHJoT+nR384pO720nFm2oLY0ZwZmCADi4bQch9Y2tiW8LKjKVItsw==
+"@pie-lib/mask-markup@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.0.1.tgz#42892de2a377781a3f19edadd2d79eb39cef7170"
+  integrity sha512-F4xF+Khp/TVgfQyr141ZXL8EjGe/aGlah2ayfCxDIlqpIE4koWN+Iiw+p8ShpdCXGrrd+95METkLhd7Wb5nl/g==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.13"
     classnames "^2.2.6"
     debug "^4.1.1"
+    immutable ">=3.8.1"
     react "^16.8.6"
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
@@ -1839,13 +1840,13 @@
     react-transition-group "^2.5.2"
 
 "@pie-lib/scoring-config@^3.1.1", "@pie-lib/scoring-config@^3.2.16", "@pie-lib/scoring-config@^3.3.9":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.4.0.tgz#00024f7452c4643f419bb514ff670839119b1aae"
-  integrity sha512-QQgO8HICXvGRvglOzd+9OE0POFIX7F1E6MPev70zCiX9dSfnkfh6iqoqI9HQQ+7PzJXkpUKNeNdipbfzz65n8Q==
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.4.1.tgz#d0af58373cf3adda7c518a9d18d8e676314db643"
+  integrity sha512-XNHW5q8qoYigcuNIYaHKd1GwkaMjmM/XloElEdouUTErsJecSKqTvcuMZx/Co+wpUqcKEJoIVEZ3umAhmSrhEA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^10.1.0"
+    "@pie-lib/config-ui" "^10.1.1"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -1990,14 +1991,14 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/inline-dropdown@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.0.1.tgz#eef3acd025eb53e3ed4472f9702aa8d3d3f386b1"
-  integrity sha512-fhz7bTLBkpKF4HhmWNlogswI8EZ3Y5cMv6e621t/N7KQzoAD0jin6FDy8sBRU+CnNEX4hGil8yaq9Qc7wNzW3g==
+"@pie-ui/inline-dropdown@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.0.2.tgz#c36d8bcb5415bd969a4d53d1d40d9997e18e4c51"
+  integrity sha512-e1BK1Ld+Bh6iDbHgWAkbC8ElOfZkhX2Ml6bgv/7gVLxsHlCeoG0TPHu1cwUQBB/fIKZmnaXRnX/cUlxPOTCBBQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/mask-markup" "^1.0.0"
+    "@pie-lib/mask-markup" "^1.0.1"
     classnames "^2.2.5"
     lodash "^4.17.10"
     prop-types "^15.6.1"
@@ -2005,9 +2006,9 @@
     react-dom "^16.8.1"
 
 "@pie-ui/match-list@^1.1.1":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.1.3.tgz#767383e059e5f8083cc22c8dec6ccf75fd4c0ca3"
-  integrity sha512-jycg8XZbTt203ZRj0WEL+I8BoVHcjihp6NusuvwSOfgQreCpyBulN9+jTI0usiV0QkY/AEeFWD8N4omzISexbw==
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.1.4.tgz#f7ac09a669a97ffd96b0108b1bb60c7ae9c16470"
+  integrity sha512-4odP2T9F+UHZqyLi6Vm6UE4qMLmqsNdmleDGurWsxJzR8ih8Znhc/3dDddpliZsp7zLYA/ahGg6xMvb/Si5I6A==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
@@ -6174,6 +6175,11 @@ ignore@^3.3.3, ignore@^3.3.5:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
   integrity sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
 
+immutable@>=3.8.1:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+  integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
+
 immutable@^4.0.0-rc.12:
   version "4.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
@@ -9625,7 +9631,7 @@ react-measure@^2.2.2:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
 
-react-number-format@PieElements/react-number-format#feature/bad-input:
+"react-number-format@github:PieElements/react-number-format#feature/bad-input":
   version "3.2.0"
   resolved "https://codeload.github.com/PieElements/react-number-format/tar.gz/ca13da7e71b4aeba759365fc0b08536185749123"
   dependencies:
