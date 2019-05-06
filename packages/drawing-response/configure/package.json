@@ -1,0 +1,16 @@
+{
+  "name": "@pie-element/drawing-response-configure",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "",
+  "dependencies": {
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "debug": "^3.1.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
+  },
+  "license": "ISC"
+}
