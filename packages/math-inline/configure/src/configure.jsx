@@ -29,8 +29,10 @@ const styles = theme => ({
 class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
+    onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.object
   };
 
@@ -45,16 +47,14 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged } = this.props;
+    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      configure: {
-        responseType,
-        teacherInstructions,
-        studentInstructions,
-        rationale,
-        scoringType
-      }
-    } = model;
+      responseType,
+      teacherInstructions,
+      studentInstructions,
+      rationale,
+      scoringType
+    } = configuration;
     log('[render] model', model);
 
 
@@ -63,19 +63,21 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
+            configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Item Type': {
                 responseType: responseType.settings &&
                 radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },
@@ -107,40 +109,4 @@ class Configure extends React.Component {
   }
 }
 
-const ConfigureMain = withStyles(styles)(Configure);
-
-class StateWrapper extends React.Component {
-  static propTypes = {
-    model: PropTypes.any,
-    imageSupport: PropTypes.object,
-    onModelChanged: PropTypes.func
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      model: props.model
-    };
-
-    this.onModelChanged = m => {
-      this.setState({ model: m }, () => {
-        this.props.onModelChanged(this.state.model);
-      });
-    };
-  }
-
-  render() {
-    const { imageSupport } = this.props;
-    const { model } = this.state;
-    return (
-      <ConfigureMain
-        model={model}
-        imageSupport={imageSupport}
-        onModelChanged={this.onModelChanged}
-      />
-    );
-  }
-}
-
-export default StateWrapper;
+export default withStyles(styles)(Configure);
