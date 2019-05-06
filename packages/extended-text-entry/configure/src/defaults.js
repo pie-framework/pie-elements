@@ -20,7 +20,7 @@ export default {
       label: 'Student response can include math notation',
       enabled: false,
     },
-    multipleParts: {
+    multiple: {
       settings: false,
       label: 'Multiple Parts',
       enabled: false,
