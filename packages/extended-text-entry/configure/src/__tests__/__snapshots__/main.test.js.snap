@@ -19,41 +19,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
       }
       model={
         Object {
-          "configure": Object {
-            "equationEditor": Object {
-              "enabled": false,
-              "label": "Equation Editor",
-              "settings": false,
-            },
-            "height": Object {
-              "label": "Height (px)",
-              "settings": true,
-            },
-            "mathInput": Object {
-              "enabled": false,
-              "label": "Student response can include math notation",
-              "settings": true,
-            },
-            "multipleParts": Object {
-              "enabled": false,
-              "label": "Multiple Parts",
-              "settings": false,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-            "width": Object {
-              "label": "Width (px)",
-              "settings": true,
-            },
-          },
           "height": 100,
           "mathInput": false,
           "prompt": "This is the question prompt",

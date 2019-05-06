@@ -1,9 +1,11 @@
 export default {
-  height: 100,
-  prompt: 'This is the question prompt',
-  mathInput: false,
-  width: 500,
-  configure: {
+  model: {
+    height: 100,
+    prompt: 'This is the question prompt',
+    mathInput: false,
+    width: 500,
+  },
+  configuration: {
     equationEditor: {
       settings: false,
       label: 'Equation Editor',

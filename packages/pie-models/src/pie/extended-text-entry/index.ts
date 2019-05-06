@@ -69,7 +69,7 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   height?: ConfigureProp;
 
   /**
-   * Multiple Parts configuration
+   * Math Input configuration
    */
   mathInput?: ConfigureProp;
 
