@@ -2029,10 +2029,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^1.2.2":
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-1.2.13.tgz#6b7c680b866528ff53957fb5f6ea0728c2617c5b"
-  integrity sha512-Ffu6GOK0aJ/+wR7QXSJKKjQb0FtgacQJXAQ1sMI83TwXsf2zvddItQAJ/0JyPNvQhtdPSxY+rv4/Hh9HETIV0Q==
+"@pie-ui/match@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.0.0.tgz#3110ebccf27fe9cfe7940601942f809c9833fd8f"
+  integrity sha512-iPn9icMGLIszWrK6DadGbDcIoqjYrvRtLlWqnrYM58JaQywHiTQRoGpl85SN7b9SI5+3qukWMFzFrWzw/AJptA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"

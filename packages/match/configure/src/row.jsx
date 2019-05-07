@@ -53,7 +53,7 @@ export class Row extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    if (model.responseType === 'radio') {
+    if (model.choiceMode === 'radio') {
       for (let i = 0; i < newModel.rows[rowIndex].values.length; i++) {
         newModel.rows[rowIndex].values[i] = false;
       }
@@ -120,7 +120,7 @@ export class Row extends React.Component {
           </div>
           {row.values.map((rowValue, rowIdx) => (
             <div key={rowIdx} className={classes.rowItem}>
-              {model.responseType === 'radio' ? (
+              {model.choiceMode === 'radio' ? (
                 <Radio
                   onChange={this.onRowValueChange(idx, rowIdx)}
                   checked={rowValue === true}
