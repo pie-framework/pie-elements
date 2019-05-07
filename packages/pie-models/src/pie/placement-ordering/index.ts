@@ -36,7 +36,7 @@ export interface CorrectResponse {
 
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure (to be moved when the functionality is defined)
+ * model or to configuration (to be moved when the functionality is defined)
  */
 
 /**

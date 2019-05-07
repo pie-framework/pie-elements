@@ -46,13 +46,13 @@ export default class EbsrConfigure extends HTMLElement {
     customElements.whenDefined(MC_TAG_NAME).then(() => {
       this.partA.model = this._model.partA;
       this.partB.model = this._model.partB;
-      this.partA.configure = {
-        ...defaults.partA.configure,
-        ...this.partA.configure,
+      this.partA.configuration = {
+        ...defaults.partA.configuration,
+        ...this.partA.configuration,
       };
-      this.partB.configure = {
-        ...defaults.partB.configure,
-        ...this.partB.configure,
+      this.partB.configuration = {
+        ...defaults.partB.configuration,
+        ...this.partB.configuration,
       };
     });
   }

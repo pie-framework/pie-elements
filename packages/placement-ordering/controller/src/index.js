@@ -124,8 +124,6 @@ export function model(question, session, env) {
       allowSameChoiceInTargets: !question.removeTilesAfterPlacing
     };
 
-    base.configure = question.configure;
-
     base.disabled = env.mode !== 'gather';
 
     if (env.mode === 'evaluate') {
