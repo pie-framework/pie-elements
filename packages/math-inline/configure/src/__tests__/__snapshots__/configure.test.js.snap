@@ -2,19 +2,53 @@
 
 exports[`Configure renders correctly with snapshot 1`] = `
 <div>
-  <div>
-    <div
-      className="Configure-content-2"
-    >
-      <WithStyles(Typography)
-        component="div"
-        type="body1"
-      >
-        <span>
-          In Inline Math, students need to fill in the blank for an equation or a mathematical expression. This interaction allows for exactly one correct answer.
-        </span>
-      </WithStyles(Typography)>
-      <WithStyles(GeneralConfigBlock)
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "rationale": Object {
+              "enabled": true,
+              "label": "Rationale",
+              "settings": false,
+            },
+            "responseType": Object {
+              "label": "Response type",
+              "settings": true,
+            },
+            "scoringType": Object {
+              "label": "Scoring Type",
+              "settings": false,
+            },
+            "studentInstructions": Object {
+              "enabled": true,
+              "label": "Student Instructions",
+              "settings": false,
+            },
+            "teacherInstructions": Object {
+              "enabled": true,
+              "label": "Teacher Instructions",
+              "settings": false,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Item Type": Object {
+              "responseType": undefined,
+            },
+            "Properties": Object {
+              "rationale.enabled": false,
+              "scoringType": false,
+              "studentInstructions.enabled": false,
+              "teacherInstructions.enabled": false,
+            },
+          }
+        }
         model={
           Object {
             "configure": undefined,
@@ -70,29 +104,103 @@ exports[`Configure renders correctly with snapshot 1`] = `
             ],
           }
         }
-        onChange={[Function]}
+        onChangeConfiguration={[Function]}
+        onChangeModel={[Function]}
       />
-      <FeedbackConfig
-        feedback={
-          Object {
-            "correct": Object {
-              "default": "Correct",
-              "type": "none",
-            },
-            "incorrect": Object {
-              "default": "Incorrect",
-              "type": "none",
-            },
-            "partial": Object {
-              "default": "Nearly",
-              "type": "none",
-            },
+    }
+  >
+    <div>
+      <div
+        className="Configure-content-2"
+      >
+        <WithStyles(Typography)
+          component="div"
+          type="body1"
+        >
+          <span>
+            In Inline Math, students need to fill in the blank for an equation or a mathematical expression. This interaction allows for exactly one correct answer.
+          </span>
+        </WithStyles(Typography)>
+        <WithStyles(GeneralConfigBlock)
+          model={
+            Object {
+              "configure": undefined,
+              "customKeys": Array [
+                "\\\\left(\\\\right)",
+                "\\\\frac{}{}",
+                "x\\\\frac{}{}",
+              ],
+              "element": "math-inline",
+              "equationEditor": "3",
+              "expression": "{{response}} = {{response}} \\\\text{eggs}",
+              "feedback": Object {
+                "correct": Object {
+                  "default": "Correct",
+                  "type": "none",
+                },
+                "incorrect": Object {
+                  "default": "Incorrect",
+                  "type": "none",
+                },
+                "partial": Object {
+                  "default": "Nearly",
+                  "type": "none",
+                },
+              },
+              "id": "1",
+              "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
+ <mrow>
+  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
+ </mrow>
+</math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>",
+              "response": Object {
+                "alternates": Object {
+                  "1": "6=72\\\\div12\\\\text{eggs}",
+                  "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+                  "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+                },
+                "answer": "72\\\\div12=6\\\\text{eggs}",
+                "validation": "literal",
+              },
+              "responseType": "Advanced Multi",
+              "responses": Array [
+                Object {
+                  "alternates": Object {
+                    "1": "6=72\\\\div12\\\\text{eggs}",
+                    "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+                    "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+                  },
+                  "answer": "72\\\\div12=6\\\\text{eggs}",
+                  "id": "1",
+                  "validation": "literal",
+                },
+              ],
+            }
           }
-        }
-        onChange={[Function]}
-      />
+          onChange={[Function]}
+        />
+        <FeedbackConfig
+          feedback={
+            Object {
+              "correct": Object {
+                "default": "Correct",
+                "type": "none",
+              },
+              "incorrect": Object {
+                "default": "Incorrect",
+                "type": "none",
+              },
+              "partial": Object {
+                "default": "Nearly",
+                "type": "none",
+              },
+            }
+          }
+          onChange={[Function]}
+        />
+      </div>
     </div>
-  </div>
+  </ConfigLayout>
 </div>
 `;
 
