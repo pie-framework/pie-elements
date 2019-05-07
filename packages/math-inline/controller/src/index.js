@@ -99,7 +99,7 @@ const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.responseType === ResponseTypes.advanced ? session.completeAnswer || '': session.response
+      question.responseType === ResponseTypes.advanced ? session.completeAnswer || '' : session.response
     );
   }
 };

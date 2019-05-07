@@ -1,0 +1,361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Configure renders correctly with snapshot 1`] = `
+<ConfigLayout
+  settings={
+    <Panel
+      groups={
+        Object {
+          "Item Type": Object {
+            "responseType": undefined,
+          },
+          "Properties": Object {
+            "configure.rationale.enabled": false,
+            "configure.studentInstructions.enabled": false,
+            "configure.teacherInstructions.enabled": false,
+            "scoringType": false,
+          },
+        }
+      }
+      model={
+        Object {
+          "configure": Object {
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "rationale": Object {
+              "enabled": true,
+              "label": "Rationale",
+              "settings": false,
+            },
+            "responseType": Object {
+              "label": "Response type",
+              "settings": true,
+            },
+            "scoringType": Object {
+              "label": "Scoring Type",
+              "settings": false,
+            },
+            "studentInstructions": Object {
+              "enabled": true,
+              "label": "Student Instructions",
+              "settings": false,
+            },
+            "teacherInstructions": Object {
+              "enabled": true,
+              "label": "Teacher Instructions",
+              "settings": false,
+            },
+          },
+          "customKeys": Array [
+            "\\\\left(\\\\right)",
+            "\\\\frac{}{}",
+            "x\\\\frac{}{}",
+          ],
+          "element": "math-inline",
+          "equationEditor": "3",
+          "expression": "{{response}} = {{response}} \\\\text{eggs}",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
+          "id": "1",
+          "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
+ <mrow>
+  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
+ </mrow>
+</math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>",
+          "response": Object {
+            "alternates": Object {
+              "1": "6=72\\\\div12\\\\text{eggs}",
+              "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+              "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+            },
+            "answer": "72\\\\div12=6\\\\text{eggs}",
+            "validation": "literal",
+          },
+          "responseType": "Advanced Multi",
+          "responses": Array [
+            Object {
+              "alternates": Object {
+                "1": "6=72\\\\div12\\\\text{eggs}",
+                "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+                "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+              },
+              "answer": "72\\\\div12=6\\\\text{eggs}",
+              "id": "1",
+              "validation": "literal",
+            },
+          ],
+        }
+      }
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <div>
+    <div
+      className="Configure-content-2"
+    >
+      <WithStyles(Typography)
+        component="div"
+        type="body1"
+      >
+        <span>
+          In Inline Math, students need to fill in the blank for an equation or a mathematical expression. This interaction allows for exactly one correct answer.
+        </span>
+      </WithStyles(Typography)>
+      <WithStyles(GeneralConfigBlock)
+        model={
+          Object {
+            "configure": Object {
+              "partialScoring": Object {
+                "label": "Allow Partial Scoring",
+                "settings": true,
+              },
+              "rationale": Object {
+                "enabled": true,
+                "label": "Rationale",
+                "settings": false,
+              },
+              "responseType": Object {
+                "label": "Response type",
+                "settings": true,
+              },
+              "scoringType": Object {
+                "label": "Scoring Type",
+                "settings": false,
+              },
+              "studentInstructions": Object {
+                "enabled": true,
+                "label": "Student Instructions",
+                "settings": false,
+              },
+              "teacherInstructions": Object {
+                "enabled": true,
+                "label": "Teacher Instructions",
+                "settings": false,
+              },
+            },
+            "customKeys": Array [
+              "\\\\left(\\\\right)",
+              "\\\\frac{}{}",
+              "x\\\\frac{}{}",
+            ],
+            "element": "math-inline",
+            "equationEditor": "3",
+            "expression": "{{response}} = {{response}} \\\\text{eggs}",
+            "feedback": Object {
+              "correct": Object {
+                "default": "Correct",
+                "type": "none",
+              },
+              "incorrect": Object {
+                "default": "Incorrect",
+                "type": "none",
+              },
+              "partial": Object {
+                "default": "Nearly",
+                "type": "none",
+              },
+            },
+            "id": "1",
+            "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
+ <mrow>
+  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
+ </mrow>
+</math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>",
+            "response": Object {
+              "alternates": Object {
+                "1": "6=72\\\\div12\\\\text{eggs}",
+                "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+                "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+              },
+              "answer": "72\\\\div12=6\\\\text{eggs}",
+              "validation": "literal",
+            },
+            "responseType": "Advanced Multi",
+            "responses": Array [
+              Object {
+                "alternates": Object {
+                  "1": "6=72\\\\div12\\\\text{eggs}",
+                  "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+                  "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+                },
+                "answer": "72\\\\div12=6\\\\text{eggs}",
+                "id": "1",
+                "validation": "literal",
+              },
+            ],
+          }
+        }
+        onChange={[Function]}
+      />
+      <FeedbackConfig
+        feedback={
+          Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          }
+        }
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+</ConfigLayout>
+`;
+
+exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
+<div
+  className="GeneralConfigBlock-container-3"
+>
+  <InputContainer
+    className="GeneralConfigBlock-promptHolder-10"
+    label="Item Stem"
+  >
+    <EditableHtml
+      className="GeneralConfigBlock-prompt-11"
+      imageSupport={Object {}}
+      markup="<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
+ <mrow>
+  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
+ </mrow>
+</math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>"
+      nonEmpty={false}
+      onChange={[Function]}
+      onFocus={[Function]}
+    />
+  </InputContainer>
+  <div
+    className="GeneralConfigBlock-inputContainer-8"
+  >
+    <WithStyles(WithFormControlContext(InputLabel))
+      className="GeneralConfigBlock-templateTitle-4"
+    >
+      RESPONSE TEMPLATE
+    </WithStyles(WithFormControlContext(InputLabel))>
+    <MathToolbar
+      additionalKeys={Array []}
+      allowAnswerBlock={true}
+      classNames={
+        Object {
+          "editor": "GeneralConfigBlock-responseEditor-9",
+          "mathToolbar": undefined,
+        }
+      }
+      controlledKeypad={true}
+      keypadMode="everything"
+      latex="\\\\embed{answerBlock}[r1] = \\\\embed{answerBlock}[r2] \\\\text{eggs}"
+      noDecimal={false}
+      onAnswerBlockAdd={[Function]}
+      onChange={[Function]}
+      onDone={[Function]}
+      onFocus={[Function]}
+      showKeypad={false}
+    />
+  </div>
+  <h3>
+    Define Correct Response
+  </h3>
+  <div
+    className="GeneralConfigBlock-flexContainer-6"
+  >
+    <InputContainer
+      className="GeneralConfigBlock-selectContainer-7"
+      label="Equation Editor"
+    >
+      <WithStyles(WithFormControlContext(Select))
+        onChange={[Function]}
+        value="3"
+      >
+        <WithStyles(MenuItem)
+          value={1}
+        >
+          Grade 1 - 2
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value={3}
+        >
+          Grade 3 - 5
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value={6}
+        >
+          Grade 6 - 7
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value={8}
+        >
+          Grade 8 - HS
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="geometry"
+        >
+          Geometry
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="advanced-algebra"
+        >
+          Advanced Algebra
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="statistics"
+        >
+          Statistics
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="everything"
+        >
+          Everything
+        </WithStyles(MenuItem)>
+      </WithStyles(WithFormControlContext(Select))>
+    </InputContainer>
+    <WithStyles(Button)
+      className="GeneralConfigBlock-addResponseButton-5"
+      onClick={[Function]}
+      type="primary"
+    >
+      + Response
+    </WithStyles(Button)>
+  </div>
+  <WithStyles(Response)
+    index={0}
+    key="1"
+    mode="3"
+    onResponseChange={[Function]}
+    response={
+      Object {
+        "alternates": Object {
+          "1": "6=72\\\\div12\\\\text{eggs}",
+          "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
+          "3": "6=\\\\frac{72}{12}\\\\text{eggs}",
+        },
+        "answer": "72\\\\div12=6\\\\text{eggs}",
+        "id": "1",
+        "validation": "literal",
+      }
+    }
+  />
+</div>
+`;
