@@ -213,5 +213,20 @@
     "committerDate": "2019-04-22 11:33:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@2.0.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "math-inline tests and small model updates",
+    "merge": null,
+    "header": "chore: math-inline tests and small model updates",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "68ac02762edac433fc752de4030eb61c70331b50",
+    "gitTags": "",
+    "committerDate": "2019-05-01 15:32:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@2.0.2"
   }
 ]
