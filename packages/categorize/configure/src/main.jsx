@@ -11,20 +11,20 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     model: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.object
   };
 
   static defaultProps = {};
 
   changeScoring = scoring => {
-    const { onChange, model } = this.props;
+    const { onModelChanged, model } = this.props;
     model.scoring = scoring;
-    onChange(model);
+    onModelChanged(model);
   };
 
   render() {
-    const { classes, className, model, onChange } = this.props;
+    const { classes, className, model, onModelChanged } = this.props;
 
     if (!model.scoring) {
       model.scoring = {
@@ -46,7 +46,7 @@ export class Main extends React.Component {
             imageSupport={this.props.imageSupport}
             title="Design"
             model={model}
-            onChange={onChange}
+            onChange={onModelChanged}
           />
           <Scoring
             title="Scoring"
@@ -64,41 +64,4 @@ const styles = theme => ({
   main: {}
 });
 
-const StyledMain = withStyles(styles)(Main);
-
-class Stateful extends React.Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    model: PropTypes.object.isRequired,
-    imageSupport: PropTypes.object
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      model: props.model
-    };
-  }
-
-  componentWillReceiveProps(props) {
-    this.setState({ model: props.model });
-  }
-
-  onChange = model => {
-    this.setState({ model }, () => {
-      this.props.onChange(this.state.model);
-    });
-  };
-
-  render() {
-    return (
-      <StyledMain
-        imageSupport={this.props.imageSupport}
-        model={this.state.model}
-        onChange={this.onChange}
-      />
-    );
-  }
-}
-
-export default Stateful;
+export default withStyles(styles)(Main);
