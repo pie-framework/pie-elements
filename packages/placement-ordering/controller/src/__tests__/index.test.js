@@ -168,7 +168,7 @@ describe('index', () => {
     });
   });
 
-  describe.only('outcome', () => {
+  describe('outcome', () => {
     const assertOutcome = (question, value, expectedScore, env) => {
       it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(
         question
