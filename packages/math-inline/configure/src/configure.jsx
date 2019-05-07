@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-class Configure extends React.Component {
+export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,

@@ -89,7 +89,8 @@ const defaultProps = {
       'x\\frac{}{}'
     ],
     configure: defaultValues.configure
-  }
+  },
+  configuration: defaultValues.configuration
 };
 
 describe('Configure', () => {
@@ -123,6 +124,7 @@ describe('GeneralConfigBlock', () => {
   beforeEach(() => {
     props = {
       model: defaultProps.model,
+      configuration: defaultValues.configuration,
       onChange: jest.fn(),
       imageSupport: {}
     };
