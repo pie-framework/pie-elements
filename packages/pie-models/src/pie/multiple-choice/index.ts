@@ -6,20 +6,20 @@ import { ConfigureProp } from '../ConfigurationProp';
 
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure (to be moved when the functionality is defined)
+ * model or to configuration (to be moved when the functionality is defined)
  */
 
 /**
-* Model for the Choice Interaction
-* @additionalProperties false
-*/
+ * Model for the Choice Interaction
+ * @additionalProperties false
+ */
 export interface MultipleChoicePie extends PieModel {
   /** Indicates the choices are single or multiple selection */
   choiceMode?: 'checkbox' | 'radio';
 
   /** What key should be displayed before choices. If undefined no  key will be displayed.  */
   choicePrefix?: 'letters' | 'numbers';
-  
+
   /** The choice options for the question */
   choices: Choice[];
 
@@ -88,7 +88,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   feedback?: ConfigureProp;
 
   /**
-   * Configuration for item stem
+   * Configuration for the prompt
    */
   prompt?: ConfigureProp;
 
