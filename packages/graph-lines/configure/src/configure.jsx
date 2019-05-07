@@ -173,17 +173,17 @@ export class Configure extends React.Component {
             onChange={this.onChange}
             resetToDefaults={this.resetToDefaults}
           />
+          <PartialScoringConfig
+            numberOfCorrectResponses={config.lines.length}
+            partialScoring={!!model.partialScoring}
+            onChange={this.onPartialScoringChange}
+          />
           <FeedbackConfig
             allowPartial={false}
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
           />
         </div>
-        <PartialScoringConfig
-          numberOfCorrectResponses={config.lines.length}
-          partialScoring={!!model.partialScoring}
-          onChange={this.onPartialScoringChange}
-        />
       </layout.ConfigLayout>
     );
   }
