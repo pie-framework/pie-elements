@@ -4,10 +4,81 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
 <ConfigLayout
   settings={
     <Panel
+      configuration={
+        Object {
+          "choiceLabel": Object {
+            "enabled": true,
+            "label": "Choice label",
+            "settings": true,
+          },
+          "choices": Object {
+            "label": "Choices",
+            "settings": true,
+          },
+          "enableImages": Object {
+            "label": "Enable Images",
+            "settings": true,
+          },
+          "feedback": Object {
+            "settings": true,
+          },
+          "lockChoiceOrder": Object {
+            "label": "Lock Choice Order",
+            "settings": true,
+          },
+          "numberedGuides": Object {
+            "label": "Numbered guides",
+            "settings": true,
+          },
+          "orientation": Object {
+            "label": "Orientation",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Partial Scoring",
+            "settings": true,
+          },
+          "placementArea": Object {
+            "label": "Placement Area",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Item Stem",
+            "settings": true,
+          },
+          "rationale": Object {
+            "enabled": true,
+            "label": "Rationale",
+            "settings": false,
+          },
+          "removeTilesAfterPlacing": Object {
+            "label": "Remove Tiles after placing",
+            "settings": false,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "targetLabel": Object {
+            "label": "Target label",
+            "settings": true,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+        }
+      }
       groups={
         Object {
           "Item Type": Object {
-            "configure.choiceLabel.enabled": undefined,
+            "choiceLabel.enabled": undefined,
             "enableImages": undefined,
             "numberedGuides": false,
             "orientation": undefined,
@@ -16,11 +87,11 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "removeTilesAfterPlacing": false,
           },
           "Properties": Object {
-            "configure.rationale.enabled": false,
-            "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
             "lockChoiceOrder": undefined,
+            "rationale.enabled": false,
             "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
           },
         }
       }
@@ -33,75 +104,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
               "label": "Choice 1",
             },
           ],
-          "configure": Object {
-            "choiceLabel": Object {
-              "enabled": false,
-              "label": "Choice label",
-              "settings": true,
-            },
-            "choices": Object {
-              "label": "Choices",
-              "settings": true,
-            },
-            "enableImages": Object {
-              "label": "Enable Images",
-              "settings": true,
-            },
-            "feedback": Object {
-              "settings": true,
-            },
-            "lockChoiceOrder": Object {
-              "label": "Lock Choice Order",
-              "settings": true,
-            },
-            "numberedGuides": Object {
-              "label": "Numbered guides",
-              "settings": true,
-            },
-            "orientation": Object {
-              "label": "Orientation",
-              "settings": true,
-            },
-            "partialScoring": Object {
-              "label": "Partial Scoring",
-              "settings": true,
-            },
-            "placementArea": Object {
-              "label": "Placement Area",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Item Stem",
-              "settings": true,
-            },
-            "rationale": Object {
-              "enabled": true,
-              "label": "Rationale",
-              "settings": false,
-            },
-            "removeTilesAfterPlacing": Object {
-              "label": "Remove Tiles after placing",
-              "settings": false,
-            },
-            "scoringType": Object {
-              "label": "Scoring Type",
-              "settings": false,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "targetLabel": Object {
-              "label": "Target label",
-              "settings": true,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-          },
           "enableImages": false,
           "lockChoiceOrder": false,
           "numberedGuides": false,
@@ -114,6 +116,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "targetLabel": "Target Label goes here",
         }
       }
+      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
@@ -133,7 +136,16 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   <FormSection
     label="Define Choices"
   >
-    <div />
+    <div>
+      <InputContainer
+        label="CHOICE LABEL"
+      >
+        <EditableHtml
+          markup="Choice Label goes here"
+          onChange={[Function]}
+        />
+      </InputContainer>
+    </div>
     <InputContainer
       label="CHOICES"
     >
@@ -161,10 +173,81 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
 <ConfigLayout
   settings={
     <Panel
+      configuration={
+        Object {
+          "choiceLabel": Object {
+            "enabled": true,
+            "label": "Choice label",
+            "settings": true,
+          },
+          "choices": Object {
+            "label": "Choices",
+            "settings": true,
+          },
+          "enableImages": Object {
+            "label": "Enable Images",
+            "settings": true,
+          },
+          "feedback": Object {
+            "settings": true,
+          },
+          "lockChoiceOrder": Object {
+            "label": "Lock Choice Order",
+            "settings": true,
+          },
+          "numberedGuides": Object {
+            "label": "Numbered guides",
+            "settings": true,
+          },
+          "orientation": Object {
+            "label": "Orientation",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Partial Scoring",
+            "settings": true,
+          },
+          "placementArea": Object {
+            "label": "Placement Area",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Item Stem",
+            "settings": false,
+          },
+          "rationale": Object {
+            "enabled": true,
+            "label": "Rationale",
+            "settings": false,
+          },
+          "removeTilesAfterPlacing": Object {
+            "label": "Remove Tiles after placing",
+            "settings": true,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "targetLabel": Object {
+            "label": "Target label",
+            "settings": true,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+        }
+      }
       groups={
         Object {
           "Item Type": Object {
-            "configure.choiceLabel.enabled": undefined,
+            "choiceLabel.enabled": undefined,
             "enableImages": undefined,
             "numberedGuides": false,
             "orientation": undefined,
@@ -173,11 +256,11 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "removeTilesAfterPlacing": undefined,
           },
           "Properties": Object {
-            "configure.rationale.enabled": false,
-            "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
             "lockChoiceOrder": undefined,
+            "rationale.enabled": false,
             "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
           },
         }
       }
@@ -190,75 +273,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
               "label": "Choice 1",
             },
           ],
-          "configure": Object {
-            "choiceLabel": Object {
-              "enabled": false,
-              "label": "Choice label",
-              "settings": true,
-            },
-            "choices": Object {
-              "label": "Choices",
-              "settings": true,
-            },
-            "enableImages": Object {
-              "label": "Enable Images",
-              "settings": true,
-            },
-            "feedback": Object {
-              "settings": true,
-            },
-            "lockChoiceOrder": Object {
-              "label": "Lock Choice Order",
-              "settings": true,
-            },
-            "numberedGuides": Object {
-              "label": "Numbered guides",
-              "settings": true,
-            },
-            "orientation": Object {
-              "label": "Orientation",
-              "settings": true,
-            },
-            "partialScoring": Object {
-              "label": "Partial Scoring",
-              "settings": true,
-            },
-            "placementArea": Object {
-              "label": "Placement Area",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Item Stem",
-              "settings": false,
-            },
-            "rationale": Object {
-              "enabled": true,
-              "label": "Rationale",
-              "settings": false,
-            },
-            "removeTilesAfterPlacing": Object {
-              "label": "Remove Tiles after placing",
-              "settings": true,
-            },
-            "scoringType": Object {
-              "label": "Scoring Type",
-              "settings": false,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "targetLabel": Object {
-              "label": "Target label",
-              "settings": true,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-          },
           "enableImages": false,
           "lockChoiceOrder": false,
           "numberedGuides": false,
@@ -271,6 +285,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "targetLabel": "Target Label goes here",
         }
       }
+      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
@@ -278,7 +293,16 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   <FormSection
     label="Define Choices"
   >
-    <div />
+    <div>
+      <InputContainer
+        label="CHOICE LABEL"
+      >
+        <EditableHtml
+          markup="Choice Label goes here"
+          onChange={[Function]}
+        />
+      </InputContainer>
+    </div>
     <InputContainer
       label="CHOICES"
     >

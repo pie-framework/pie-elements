@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-class Configure extends React.Component {
+export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
@@ -59,52 +59,54 @@ class Configure extends React.Component {
 
 
     return (
-      <layout.ConfigLayout
-        settings={
-          <Panel
-            model={model}
-            configuration={configuration}
-            onChangeModel={model => onModelChanged(model)}
-            onChangeConfiguration={config => onConfigurationChanged(config)}
-            groups={{
-              'Item Type': {
-                responseType: responseType.settings &&
-                radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
-              },
-              'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label, true),
-                'rationale.enabled': rationale.settings &&
-                toggle(rationale.label, true),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, ['auto', 'rubric']),
-              },
-            }}
-          />
-        }
-      >
-        <div>
-          <div className={classes.content}>
-            <Typography component="div" type="body1">
+      <div>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              configuration={configuration}
+              onChangeModel={model => onModelChanged(model)}
+              onChangeConfiguration={config => onConfigurationChanged(config)}
+              groups={{
+                'Item Type': {
+                  responseType: responseType.settings &&
+                    radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
+                },
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
+                  'studentInstructions.enabled': studentInstructions.settings &&
+                    toggle(studentInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true),
+                  scoringType: scoringType.settings &&
+                    radio(scoringType.label, ['auto', 'rubric']),
+                },
+              }}
+            />
+          }
+        >
+          <div>
+            <div className={classes.content}>
+              <Typography component="div" type="body1">
             <span>
               In Inline Math, students need to fill in the blank for an equation or a mathematical expression.
               This interaction allows for exactly one correct answer.
             </span>
-            </Typography>
-            <GeneralConfigBlock
-              imageSupport={imageSupport}
-              model={model}
-              onChange={this.onChange}
-            />
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.onFeedbackChange}
-            />
+              </Typography>
+              <GeneralConfigBlock
+                imageSupport={imageSupport}
+                model={model}
+                onChange={this.onChange}
+              />
+              <FeedbackConfig
+                feedback={model.feedback}
+                onChange={this.onFeedbackChange}
+              />
+            </div>
           </div>
-        </div>
-      </layout.ConfigLayout>
+        </layout.ConfigLayout>
+      </div>
     );
   }
 }
