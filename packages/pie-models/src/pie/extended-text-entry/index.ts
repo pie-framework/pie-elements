@@ -35,7 +35,7 @@ export interface ExtendedTextEntryPie extends PieModel {
   mathInput: boolean;
 
   /** Indicates if multiple parts are enabled */
-  multipleParts: boolean;
+  multiple: boolean;
 
   /** The question prompt */
   prompt?: string;
@@ -69,14 +69,14 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   height?: ConfigureProp;
 
   /**
-   * Multiple Parts configuration
+   * Math Input configuration
    */
   mathInput?: ConfigureProp;
 
   /**
    * Multiple Parts configuration
    */
-  multipleParts?: ConfigureProp;
+  multiple?: ConfigureProp;
 
   /**
    * Student Instructions configuration
