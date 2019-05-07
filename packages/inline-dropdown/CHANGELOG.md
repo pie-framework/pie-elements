@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.1.0...@pie-element/inline-dropdown@1.2.0) (2019-05-07)
+
+
+### Features
+
+* **inline-dropdown:** updated ui version and yarn lock ([eef4d40](https://github.com/pie-framework/pie-elements/commit/eef4d40))
+
+
+
+
+
 # 1.1.0 (2019-05-03)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.12.6...@pie-element/multiple-choice@3.0.0) (2019-05-07)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. ([8031454](https://github.com/pie-framework/pie-elements/commit/8031454))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration` instead.
+
+
+
+
+
 ## [2.12.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@2.12.5...@pie-element/multiple-choice@2.12.6) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
