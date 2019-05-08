@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.11...@pie-element/point-intercept-configure@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Renamed `model.model.config` with `model.graph`. Removed unnecessary use of state(StateWrapper in configure.jsx). ([a107813](https://github.com/pie-framework/pie-elements/commit/a107813))
+
+
+### BREAKING CHANGES
+
+* `model.model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.
+
+
+
+
+
 ## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.10...@pie-element/point-intercept-configure@1.2.11) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/point-intercept-configure
