@@ -10,7 +10,7 @@ const log = debug('pie-elements:text-entry:configure');
 
 export default class TextEntryConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
+    ...defaults.model,
     ...model,
   });
 
