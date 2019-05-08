@@ -22,7 +22,8 @@ jest.mock('@pie-lib/config-ui', () => ({
 
 describe('Render Main Component', () => {
   let wrapper, instance, onChange;
-  let model = defaults;
+  let model = defaults.model;
+  let configuration = defaults.configuration;
 
   beforeEach(() => {
     onChange = jest.fn();
@@ -30,7 +31,8 @@ describe('Render Main Component', () => {
       <Main
         classes={{}}
         model={model}
-        onChange={onChange}
+        configuration={configuration}
+        onModelChanged={onChange}
         handleBoxResize={() => {}}
       />
     );
@@ -43,14 +45,13 @@ describe('Render Main Component', () => {
   });
 
   describe('logic', () => {
-    it('changeWidth calls onChange', () => {
+    it('changeWidth calls onModelChanged', () => {
       instance.changeWidth({}, 10);
       expect(onChange).toBeCalledWith(expect.objectContaining({ width: 10 }));
     });
 
-    it('changeHeight call onChange', () => {
+    it('changeHeight call onModelChanged', () => {
       instance.changeHeight({}, 10);
-      console.log(onChange.mock.calls[0]);
       expect(onChange).toBeCalledWith(expect.objectContaining({ height: 10 }));
     });
   });

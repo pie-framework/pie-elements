@@ -22,6 +22,7 @@ class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     onResponseTypeChange: PropTypes.func.isRequired,
     onLayoutChange: PropTypes.func.isRequired
   };
@@ -40,13 +41,11 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { classes, model, configuration } = this.props;
     const {
-      configure: {
-        layout,
-        responseType
-      }
-    } = model;
+      layout,
+      choiceMode
+    } = configuration;
 
     return (
       <div className={classes.container}>
@@ -70,12 +69,12 @@ class GeneralConfigBlock extends React.Component {
         </div>
         <div className={classes.input}>
           {
-            responseType.settings &&
-            <InputContainer label={responseType.label} className={classes.inputContainer}>
+            choiceMode.settings &&
+            <InputContainer label={choiceMode.label} className={classes.inputContainer}>
               <Select
                 className={classes.select}
-                onChange={this.onChange('responseType')}
-                value={model.responseType}
+                onChange={this.onChange('choiceMode')}
+                value={model.choiceMode}
               >
                 <MenuItem value="radio">Radio - One Answer</MenuItem>
                 <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>

@@ -1,7 +1,7 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root';
+import Main from './main';
 
 import defaults from './defaults';
 
@@ -14,13 +14,14 @@ const csToUi = cs => {};
 const uiToCs = ui => {};
 export default class ExtendedTextEntry extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
+    ...defaults.model,
     ...model,
   });
 
   constructor() {
     super();
     this._model = ExtendedTextEntry.createDefaultModel();
+    this._configuration = defaults.configuration;
   }
 
   set model(m) {
@@ -28,16 +29,29 @@ export default class ExtendedTextEntry extends HTMLElement {
     this.render();
   }
 
-  change(m) {
+  set configuration(c) {
+    this._configuration = c;
+    this.render();
+  }
+
+  onModelChanged(m) {
     this._model = m;
+    this.render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+  }
+
+  onConfigurationChanged(c) {
+    this._configuration = c;
+    this.render();
   }
 
   render() {
     if (this._model) {
-      const element = React.createElement(Root, {
+      const element = React.createElement(Main, {
         model: this._model,
-        onChange: this.change.bind(this)
+        configuration: this._configuration,
+        onModelChanged: this.onModelChanged.bind(this),
+        onConfigurationChanged: this.onConfigurationChanged.bind(this)
       });
       ReactDOM.render(element, this);
     }

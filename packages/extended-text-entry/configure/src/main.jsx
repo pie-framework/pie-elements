@@ -20,8 +20,10 @@ const defaultFeedback = {
 
 export class Main extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
   };
 
@@ -35,15 +37,15 @@ export class Main extends React.Component {
   }
 
   change = key => (event, v) => {
-    const { onChange } = this.props;
+    const { onModelChanged } = this.props;
     const model = this.applyUpdate({ [key]: v });
-    onChange(model);
+    onModelChanged(model);
   };
 
   onPromptChange = markup => {
-    const { onChange } = this.props;
+    const { onModelChanged } = this.props;
     const model = this.applyUpdate({ prompt: markup });
-    onChange(model);
+    onModelChanged(model);
   };
 
   applyUpdate(update) {
@@ -53,38 +55,38 @@ export class Main extends React.Component {
   }
 
   changeFeedback = feedback => {
-    const { model, onChange } = this.props;
+    const { model, onModelChanged } = this.props;
     const update = { ...model, feedback };
-    onChange(update);
+    onModelChanged(update);
   };
 
   render() {
-    const { model, classes, onChange } = this.props;
+    const { model, classes, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      configure: {
-        equationEditor,
-        multipleParts,
-        teacherInstructions,
-        studentInstructions,
-        mathInput,
-        width,
-        height
-      },
-    } = model;
+      equationEditor,
+      multiple,
+      teacherInstructions,
+      studentInstructions,
+      mathInput,
+      width,
+      height
+    } = configuration;
 
     return (
       <layout.ConfigLayout
         settings={
           <Panel
             model={model}
-            onChangeModel={model => onChange(model)}
+            configuration={configuration}
+            onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Item Type': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
-                'configure.equationEditor.enabled': equationEditor.settings &&
-                toggle(equationEditor.label),
-                'configure.multipleParts.enabled': multipleParts.settings &&
-                toggle(multipleParts.label),
+                'equationEditor.enabled': equationEditor.settings &&
+                toggle(equationEditor.label, true),
+                'multiple.enabled': multiple.settings &&
+                toggle(multiple.label, true),
               },
               'Properties': {
                 'configure.teacherInstructions.enabled': teacherInstructions.settings &&

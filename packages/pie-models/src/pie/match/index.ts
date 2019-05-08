@@ -45,7 +45,7 @@ export interface MatchPie extends PieModel {
   partialScoring?: boolean;
 
   /** Indicates if the control for responses should be single (radio) or multiple (checkbox) */
-  responseType: 'radio' | 'checkbox';
+  choiceMode: 'radio' | 'checkbox';
 
   /** The rows of choices to be presented.  */
   rows: MatchRow[];
@@ -99,9 +99,9 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   partialScoring: ConfigureProp;
 
   /**
-   * Configuration for response type
+   * Configuration for choice mode
    */
-  responseType: ConfigureProp;
+  choiceMode: ConfigureProp;
 
 
   /**

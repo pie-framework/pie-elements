@@ -1,32 +1,33 @@
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure
+ * model or to configuration
  */
 
 export default {
-  choiceLabel: 'Choice Label goes here',
-  choices: [
-    {
-      id: 'c1',
-      label: 'Choice 1',
-    },
-  ],
-  enableImages: false,
-  prompt: 'Item Stem goes here',
-  lockChoiceOrder: false,
-  numberedGuides: false,
-  orientation: 'vertical',
-  partialScoring: true,
-  placementArea: false,
-  removeTilesAfterPlacing: true,
-  scoringType: 'auto',
-  targetLabel: 'Target Label goes here',
-
-  configure: {
+  model: {
+    choiceLabel: 'Choice Label goes here',
+    choices: [
+      {
+        id: 'c1',
+        label: 'Choice 1',
+      },
+    ],
+    enableImages: false,
+    prompt: 'Item Stem goes here',
+    lockChoiceOrder: false,
+    numberedGuides: false,
+    orientation: 'vertical',
+    partialScoring: true,
+    placementArea: false,
+    removeTilesAfterPlacing: true,
+    scoringType: 'auto',
+    targetLabel: 'Target Label goes here',
+  },
+  configuration: {
     choiceLabel: {
       settings: true,
       label: 'Choice label',
-      enabled: false,
+      enabled: true,
     },
     choices: {
       settings: true,
@@ -90,5 +91,5 @@ export default {
       label: 'Teacher Instructions',
       enabled: false,
     },
-  },
+  }
 };
