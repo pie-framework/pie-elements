@@ -778,5 +778,25 @@
     "committerDate": "2019-04-24 06:44:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@0.9.5"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "80314545a33d99560bd546c55053a048414f39e2",
+    "gitTags": "",
+    "committerDate": "2019-05-02 16:14:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.0.0"
   }
 ]

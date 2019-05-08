@@ -47,7 +47,7 @@ const styles = theme => ({
   },
 });
 
-class GeneralConfigBlock extends React.Component {
+export class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,

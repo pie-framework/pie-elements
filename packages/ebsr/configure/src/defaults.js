@@ -1,11 +1,11 @@
 const defaultConfigure = {
   sequentialChoiceLabels: {
-    settings: true,
+    settings: false,
     label: 'Sequential Choice Labels',
     enabled: false
   },
   partLabels: {
-    settings: true,
+    settings: false,
     label: 'Part Labels',
     enabled: false
   }
@@ -20,7 +20,7 @@ export default {
       }
     ],
     prompt: 'prompt a',
-    configure: {
+    configuration: {
       ...defaultConfigure,
       choiceMode: {
         settings: false,
@@ -40,6 +40,6 @@ export default {
       },
     ],
     prompt: 'prompt b',
-    configure: defaultConfigure
+    configuration: defaultConfigure
   },
 };

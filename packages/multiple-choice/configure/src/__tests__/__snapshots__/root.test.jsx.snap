@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Root snapshot renders 1`] = `
-<WithStyles(Main)
+exports[`Main snapshot renders 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
   model={
     Object {
       "choiceMode": "checkbox",
@@ -48,9 +49,11 @@ exports[`Root snapshot renders 1`] = `
     }
   }
   onAddChoice={[Function]}
+  onChangeModel={[Function]}
   onChoiceChanged={[Function]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
-  updateModel={[Function]}
 />
 `;
