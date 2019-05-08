@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Root snapshot renders 1`] = `
+exports[`Root === HOTSPOT snapshot renders 1`] = `
 <WithStyles(Main)
   model={
     Object {
@@ -39,13 +39,5 @@ exports[`Root snapshot renders 1`] = `
       ],
     }
   }
-  onColorChanged={[Function]}
-  onImageUpload={[Function]}
-  onMultipleCorrectChanged={[Function]}
-  onPartialScoringChanged={[Function]}
-  onPromptChanged={[Function]}
-  onRemoveShape={[Function]}
-  onUpdateImageDimension={[Function]}
-  onUpdateShapes={[Function]}
 />
 `;

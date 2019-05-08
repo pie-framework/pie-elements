@@ -83,7 +83,7 @@ export default class HotspotConfigure extends HTMLElement {
   onPromptChanged = prompt => {
     const { _model } = this;
     const update = cloneDeep(_model);
-    _model.prompt = prompt;
+    update.prompt = prompt;
     this.onModelChanged(update);
   };
 
