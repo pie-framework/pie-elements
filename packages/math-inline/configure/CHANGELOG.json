@@ -798,5 +798,25 @@
     "committerDate": "2019-05-01 15:32:04 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@1.0.8"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (StateWrapper in configure.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (StateWrapper in configure.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: configure is removed, use configuration instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "configure is removed, use configuration instead."
+      }
+    ],
+    "hash": "cfe9eddfabb51fe17fbf0b8893bb2e42d2500683",
+    "gitTags": "",
+    "committerDate": "2019-05-06 15:28:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.0.0"
   }
 ]
