@@ -16,37 +16,35 @@ describe('model', () => {
       incorrectFeedbackType: 'none',
       incorrectFeedbackValue: ''
     },
-    model: {
-      config: {
-        graphTitle: '',
-        graphWidth: 500,
-        graphHeight: 500,
-        maxPoints: '',
-        labelsType: 'present',
-        pointLabels: ['A', 'B', 'C', 'D'],
-        domainLabel: '',
-        domainMin: -10,
-        domainMax: 10,
-        domainStepValue: 1,
-        domainSnapValue: 1,
-        domainLabelFrequency: 1,
-        domainGraphPadding: 50,
-        rangeLabel: '',
-        rangeMin: -10,
-        rangeMax: 10,
-        rangeStepValue: 1,
-        rangeSnapValue: 1,
-        rangeLabelFrequency: 1,
-        rangeGraphPadding: 50,
-        sigfigs: -1,
-        allowPartialScoring: false,
-        pointsMustMatchLabels: false,
-        showCoordinates: false,
-        showPointLabels: true,
-        showInputs: true,
-        showAxisLabels: true,
-        showFeedback: true
-      }
+    graph: {
+      graphTitle: '',
+      graphWidth: 500,
+      graphHeight: 500,
+      maxPoints: '',
+      labelsType: 'present',
+      pointLabels: ['A', 'B', 'C', 'D'],
+      domainLabel: '',
+      domainMin: -10,
+      domainMax: 10,
+      domainStepValue: 1,
+      domainSnapValue: 1,
+      domainLabelFrequency: 1,
+      domainGraphPadding: 50,
+      rangeLabel: '',
+      rangeMin: -10,
+      rangeMax: 10,
+      rangeStepValue: 1,
+      rangeSnapValue: 1,
+      rangeLabelFrequency: 1,
+      rangeGraphPadding: 50,
+      sigfigs: -1,
+      allowPartialScoring: false,
+      pointsMustMatchLabels: false,
+      showCoordinates: false,
+      showPointLabels: true,
+      showInputs: true,
+      showAxisLabels: true,
+      showFeedback: true
     }
   };
 
@@ -143,13 +141,10 @@ describe('model', () => {
     it('does not return partially-correct for correctness when partial scores are not allowed', async () => {
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: false,
-            pointsMustMatchLabels: false
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: false,
+          pointsMustMatchLabels: false
         }
       });
 
@@ -166,13 +161,10 @@ describe('model', () => {
     it('returns partially-correct for correctness when labels must not match', async () => {
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: true,
-            pointsMustMatchLabels: false
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: true,
+          pointsMustMatchLabels: false
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
@@ -247,13 +239,10 @@ describe('model', () => {
     it('returns partially-correct for correctness when labels must match', async () => {
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: true,
-            pointsMustMatchLabels: true
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: true,
+          pointsMustMatchLabels: true
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
@@ -342,13 +331,10 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: true,
-            pointsMustMatchLabels: true
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: true,
+          pointsMustMatchLabels: true
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
@@ -373,13 +359,10 @@ describe('model', () => {
 
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: true,
-            pointsMustMatchLabels: false
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: true,
+          pointsMustMatchLabels: false
         },
         partialScoring: [
           { numberOfCorrect: 1, scorePercentage: 50 },
@@ -412,13 +395,10 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is not enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: false,
-            pointsMustMatchLabels: true
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: false,
+          pointsMustMatchLabels: true
         }
       });
 
@@ -438,13 +418,10 @@ describe('model', () => {
 
       question = mkQuestion({
         ...defaultModel,
-        model: {
-          ...defaultModel.model,
-          config: {
-            ...defaultModel.model.config,
-            allowPartialScoring: false,
-            pointsMustMatchLabels: false
-          }
+        graph: {
+          ...defaultModel.graph,
+          allowPartialScoring: false,
+          pointsMustMatchLabels: false
         }
       });
 
