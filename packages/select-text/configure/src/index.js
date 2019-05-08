@@ -65,7 +65,7 @@ export default class SelectTextConfigure extends HTMLElement {
         model: this._model,
         configuration: this._configuration,
         onModelChanged: this.modelChanged.bind(this),
-        onConfigurationChanged: this.modelChanged.bind(this),
+        onConfigurationChanged: this.onConfigurationChanged.bind(this),
         imageSupport: {
           add: this.insertImage.bind(this),
           delete: this.onDeleteImage.bind(this)
