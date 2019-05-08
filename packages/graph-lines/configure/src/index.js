@@ -11,15 +11,15 @@ const log = debug('pie-elements:graph-lines:configure');
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaultValues,
+    ...defaultValues.model,
     ...model,
-    configure: defaults(defaultValues.configure, model.configure),
     graph: defaults(defaultValues.graph, model.graph),
   });
 
   constructor() {
     super();
     this._model = GraphLinesConfigure.createDefaultModel();
+    this._configuration = defaultValues.configuration;
   }
 
   set model(m) {
@@ -27,17 +27,30 @@ export default class GraphLinesConfigure extends HTMLElement {
     this._render();
   }
 
+  set configuration(c) {
+    this._configuration = c;
+    this._render();
+  }
+
   onModelChanged(model) {
     this._model = model;
+    this._render();
     log('[onModelChanged]: ', this._model);
     this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+  }
+
+  onConfigurationChanged(config) {
+    this._configuration = config;
+    this._render();
   }
 
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
         onModelChanged: this.onModelChanged.bind(this),
-        model: this._model
+        onConfigurationChanged: this.onConfigurationChanged.bind(this),
+        model: this._model,
+        configuration: this._configuration
       });
       ReactDOM.render(el, this);
     }
