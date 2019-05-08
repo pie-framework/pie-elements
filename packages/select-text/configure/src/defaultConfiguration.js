@@ -8,7 +8,6 @@ const tokens = () => [
 
 export default {
   model: {
-
     highlightChoices: false,
     partialScoring: false,
     maxSelections: 2,
@@ -16,6 +15,7 @@ export default {
     prompt: 'Question Prompt goes here',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     tokens: tokens(),
+    scoringType: 'auto'
   },
   configuration: {
     selectionCount: {
