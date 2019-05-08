@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@2.0.0...@pie-element/pie-models@3.0.0) (2019-05-08)
+
+
+### Bug Fixes
+
+* Renamed `multipleParts` with `multiple` for consistency. ([3685700](https://github.com/pie-framework/pie-elements/commit/3685700))
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (main.jsx) and updated tests. ([4262f6b](https://github.com/pie-framework/pie-elements/commit/4262f6b))
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (root.jsx) and updated tests. ([8f3ef1d](https://github.com/pie-framework/pie-elements/commit/8f3ef1d))
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (StateWrapper in configure.jsx) and updated tests. Updated `responseType` with `choiceMode` for consistency. ([dddd128](https://github.com/pie-framework/pie-elements/commit/dddd128))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+* `model.configure` is removed, use `configuration` instead.
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@1.6.2...@pie-element/pie-models@2.0.0) (2019-05-07)
 
 
