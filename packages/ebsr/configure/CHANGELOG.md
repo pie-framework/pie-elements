@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@1.2.10...@pie-element/ebsr-configure@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. ([011f7f8](https://github.com/pie-framework/pie-elements/commit/011f7f8))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration`
+
+
+
+
+
 ## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@1.2.9...@pie-element/ebsr-configure@1.2.10) (2019-05-07)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure
