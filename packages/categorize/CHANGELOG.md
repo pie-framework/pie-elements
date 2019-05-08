@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.11...@pie-element/categorize@2.13.12) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [2.13.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.10...@pie-element/categorize@2.13.11) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [2.13.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.9...@pie-element/categorize@2.13.10) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/categorize

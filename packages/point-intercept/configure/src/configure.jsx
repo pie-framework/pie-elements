@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-class Configure extends React.Component {
+export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
     classes: PropTypes.object,
@@ -55,12 +55,12 @@ class Configure extends React.Component {
   };
 
   onModelConfigChange = name => event => {
-    this.props.model.model.config[name] = event.target.checked;
+    this.props.model.graph[name] = event.target.checked;
     this.props.onModelChanged(this.props.model);
   };
 
-  onChange = (config, fieldName) => {
-    const newValue = parseInt(config[fieldName], 10);
+  onChange = (graph, fieldName) => {
+    const newValue = parseInt(graph[fieldName], 10);
     const points = this.props.model.correctResponse;
     const newPoints = [];
 
@@ -105,13 +105,13 @@ class Configure extends React.Component {
     });
 
     this.props.model.correctResponse = newPoints;
-    this.props.model.model.config = { ...config };
+    this.props.model.graph = { ...graph };
     this.props.onModelChanged(this.props.model);
   };
 
   onPointLabelChange = index => event => {
-    const config = this.props.model.model.config;
-    config.pointLabels[index] = event.target.value;
+    const graph = this.props.model.graph;
+    graph.pointLabels[index] = event.target.value;
     this.props.onModelChanged(this.props.model);
   };
 
@@ -133,7 +133,7 @@ class Configure extends React.Component {
 
   addPoint = () => {
     this.props.model.correctResponse.push('0,0');
-    this.props.model.model.config.pointLabels.push('');
+    this.props.model.graph.pointLabels.push('');
     this.props.onModelChanged(this.props.model);
   };
 
@@ -144,11 +144,11 @@ class Configure extends React.Component {
   };
 
   onMaxPointsChange = event => {
-    const config = this.props.model.model.config;
+    const graph = this.props.model.graph;
     const newValue = parseInt(event.target.value, 10);
 
     if (!isNaN(newValue)) {
-      config.maxPoints = newValue;
+      graph.maxPoints = newValue;
 
       this.props.onModelChanged(this.props.model);
     }
@@ -177,7 +177,7 @@ class Configure extends React.Component {
 
   render() {
     const { classes, model } = this.props;
-    const config = model.model.config;
+    const { graph } = model;
 
     log('[render] model', model);
 
@@ -191,7 +191,7 @@ class Configure extends React.Component {
           variant="fullWidth"
         >
           <Tab label="Design" />
-          <Tab disabled={!config.allowPartialScoring} label="Scoring" />
+          <Tab disabled={!graph.allowPartialScoring} label="Scoring" />
         </Tabs>
         <SwipeableViews
           axis="x"
@@ -207,7 +207,7 @@ class Configure extends React.Component {
               <h2>Points</h2>
             </Typography>
             <GeneralConfigBlock
-              config={config}
+              config={graph}
               onToggleWithLabels={this.onToggleWithLabels}
               onModelConfigChange={this.onModelConfigChange}
               withLabels={this.state.withLabels}
@@ -215,7 +215,7 @@ class Configure extends React.Component {
             <PointConfig
               withLabels={this.state.withLabels}
               model={model}
-              config={config}
+              config={graph}
               addPoint={this.addPoint}
               onMaxPointsChange={this.onMaxPointsChange}
               deletePoint={this.deletePoint}
@@ -223,7 +223,7 @@ class Configure extends React.Component {
               onPointLabelChange={this.onPointLabelChange}
             />
             <ChartConfig
-              config={config}
+              config={graph}
               onChange={this.onChange}
               resetToDefaults={this.resetToDefaults}
             />
@@ -245,32 +245,4 @@ class Configure extends React.Component {
   }
 }
 
-const ConfigureMain = withStyles(styles)(Configure);
-
-class StateWrapper extends React.Component {
-  static propTypes = {
-    model: PropTypes.any,
-    onModelChanged: PropTypes.func
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      model: props.model
-    };
-
-    this.onModelChanged = m => {
-      this.setState({ model: m }, () => {
-        this.props.onModelChanged(this.state.model);
-      });
-    };
-  }
-
-  render() {
-    const { model } = this.state;
-    return <ConfigureMain model={model} onModelChanged={this.onModelChanged} />;
-  }
-}
-
-export default StateWrapper;
+export default withStyles(styles)(Configure);

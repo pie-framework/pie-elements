@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.5...@pie-element/match@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (StateWrapper in configure.jsx) and updated tests. Updated `responseType` with `choiceMode` for consistency. ([dddd128](https://github.com/pie-framework/pie-elements/commit/dddd128))
+* Updated with new version of @pie-ui/match. ([a015f53](https://github.com/pie-framework/pie-elements/commit/a015f53))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
+## [1.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.4...@pie-element/match@1.12.5) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 ## [1.12.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@1.12.3...@pie-element/match@1.12.4) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/match

@@ -28,5 +28,20 @@
     "committerDate": "2019-05-02 17:22:47 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "inline-dropdown",
+    "subject": "updated ui version and yarn lock",
+    "merge": null,
+    "header": "feat(inline-dropdown): updated ui version and yarn lock",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "eef4d4069207041897a077492618b990e75c506b",
+    "gitTags": " (origin/feat/inline-drop-ui-version-bump)",
+    "committerDate": "2019-05-03 13:59:01 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.2.0"
   }
 ]

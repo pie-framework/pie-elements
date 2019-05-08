@@ -313,5 +313,25 @@
     "committerDate": "2019-04-25 15:09:09 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@1.2.6"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `configure` is removed, use `configuration`",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`configure` is removed, use `configuration`"
+      }
+    ],
+    "hash": "011f7f8a168d240820835bd8624066c64a0f986c",
+    "gitTags": "",
+    "committerDate": "2019-05-07 17:16:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@2.0.0"
   }
 ]

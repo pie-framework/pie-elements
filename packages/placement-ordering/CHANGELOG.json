@@ -583,5 +583,25 @@
     "committerDate": "2019-04-25 11:12:40 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@4.2.4"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (main.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (main.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "4262f6bc82f9e67eb67dc283fe244eb1315a6baa",
+    "gitTags": "",
+    "committerDate": "2019-05-02 16:41:21 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@5.0.0"
   }
 ]

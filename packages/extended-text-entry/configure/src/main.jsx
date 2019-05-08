@@ -61,10 +61,10 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { model, classes, onModelChanged, configuration } = this.props;
+    const { model, classes, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
       equationEditor,
-      multipleParts,
+      multiple,
       teacherInstructions,
       studentInstructions,
       mathInput,
@@ -77,14 +77,16 @@ export class Main extends React.Component {
         settings={
           <Panel
             model={model}
+            configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Item Type': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
-                'configure.equationEditor.enabled': equationEditor.settings &&
-                toggle(equationEditor.label),
-                'configure.multipleParts.enabled': multipleParts.settings &&
-                toggle(multipleParts.label),
+                'equationEditor.enabled': equationEditor.settings &&
+                toggle(equationEditor.label, true),
+                'multiple.enabled': multiple.settings &&
+                toggle(multiple.label, true),
               },
               'Properties': {
                 'configure.teacherInstructions.enabled': teacherInstructions.settings &&
