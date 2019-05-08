@@ -170,6 +170,7 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
+            configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
