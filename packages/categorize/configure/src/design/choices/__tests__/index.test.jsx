@@ -6,7 +6,7 @@ import defaults from '../../../defaults';
 
 describe('choices', () => {
   let onModelChanged = jest.fn();
-  let model = defaults;
+  let model = defaults.model;
   let onConfigChange;
   let onAdd;
   let onDelete;

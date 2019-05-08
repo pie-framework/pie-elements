@@ -13,7 +13,7 @@ describe('config', () => {
   beforeEach(() => {
     onModelChanged = jest.fn();
     allChoicesHaveCount = jest.fn();
-    config = defaults;
+    config = defaults.model;
   });
   const wrapper = extras => {
     const props = { classes: {}, onModelChanged, allChoicesHaveCount, config, ...extras };

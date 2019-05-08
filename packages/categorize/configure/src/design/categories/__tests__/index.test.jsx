@@ -7,7 +7,7 @@ import defaultValues from '../../../defaults';
 describe('Categories', () => {
   let w;
   let onModelChanged = jest.fn();
-  let model = defaultValues;
+  let model = defaultValues.model;
 
   const wrapper = extras => {
     const defaults = {

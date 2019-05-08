@@ -11,7 +11,7 @@ import defaults from './defaults';
 
 export default class CategorizeConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
+    ...defaults.model,
     ...model,
   });
 
