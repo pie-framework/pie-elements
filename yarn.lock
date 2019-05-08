@@ -1972,10 +1972,10 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^0.9.0":
-  version "0.9.10"
-  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-0.9.10.tgz#cbcbc8fe68e6e459397144cb7d2e30fb040b0ba3"
-  integrity sha512-96tXpalSomBidg5NLXiIfKUIs5zgqzrAKx5peifI1Y+20IjUAg7Uby+V4tMJ6nYNeM9RDCwEwfFmYE+DtHO8Yg==
+"@pie-ui/categorize@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.0.0.tgz#991af1238769885d630d4f2c41f40857a7350b7e"
+  integrity sha512-XRDQKz/xOrwtaM3q5xUBstoNGgUDUyOsr5je7bSTdRkcajCyCDD2+xbLuHumGUD8o+gUIXfvWwYOA2ns+jymhQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
