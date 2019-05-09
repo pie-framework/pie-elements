@@ -2075,10 +2075,10 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^4.2.2":
-  version "4.2.12"
-  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-4.2.12.tgz#2adaffea89ca8ddd8fd3d976fbe5c05f4a8526fb"
-  integrity sha512-cvehqxDvj2qvQZMG62G/GSCt6BOHd5PJxWB7TS4hfjBpQSjUV+oMHk5kWWRTnniz41sYC6LMT4/2Ii71VgDoTA==
+"@pie-ui/number-line@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-5.0.0.tgz#49538bdfaeec25b6a7373456d2923091e4ce23b4"
+  integrity sha512-4pfnLGOqsidSMpzY6Jy2dlIvakcpD1Qun3S/6s5/wA/fmljIsMQ6oOIO8TcvKMUmSNY/ShrJrSwVgGG9PX+p9Q==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
