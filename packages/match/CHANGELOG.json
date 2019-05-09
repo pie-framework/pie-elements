@@ -568,5 +568,40 @@
     "committerDate": "2019-04-25 11:05:49 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@1.12.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-ui/match.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-ui/match.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a015f53d47d641198f92aa7aec1770e9f1672e05",
+    "gitTags": "",
+    "committerDate": "2019-05-07 17:33:06 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (StateWrapper in configure.jsx) and updated tests. Updated `responseType` with `choiceMode` for consistency.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (StateWrapper in configure.jsx) and updated tests. Updated `responseType` with `choiceMode` for consistency.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "dddd128411033ca4e4f4d2f94f9989ab8e36e35f",
+    "gitTags": "",
+    "committerDate": "2019-05-04 11:37:30 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.0.0"
   }
 ]

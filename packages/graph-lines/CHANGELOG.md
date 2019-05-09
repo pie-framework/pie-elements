@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.5.5...@pie-element/graph-lines@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (StateWrapper in configure.jsx) and updated tests. ([10ac441](https://github.com/pie-framework/pie-elements/commit/10ac441))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
 ## [1.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@1.5.4...@pie-element/graph-lines@1.5.5) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/graph-lines
