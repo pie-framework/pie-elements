@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from "../root";
 
 const model = () => ({
   prompt: 'This is the question prompt',
@@ -59,16 +58,13 @@ describe('index', () => {
     el.onModelChanged = onModelChanged;
   });
 
-  describe('=== HOTSPOT set model', () => {
+  describe('set model', () => {
     it('calls ReactDOM.render', () => {
-      //TODO: expect.anything() -> a more accurate object def
-      expect(ReactDOM.render).toHaveBeenCalledWith(React.createElement('Root', {
-        toEqual
-      }), el);
+      expect(ReactDOM.render).toHaveBeenCalled();
     });
   });
 
-  describe('=== HOTSPOT logic', () => {
+  describe('logic', () => {
     describe('onMultipleCorrectChanged', () => {
       it('resets the model', () => {
         el.onMultipleCorrectChanged();
