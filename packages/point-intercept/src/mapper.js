@@ -44,7 +44,7 @@ export function toSessionPoints(points = [], oldModel) {
   return points.map((point, idx) => {
     const [x, y] = point.split(',');
 
-    return { x: parseInt(x, 10), y: parseInt(y, 10), label: oldModel.model.config.pointLabels[idx] };
+    return { x: parseInt(x, 10), y: parseInt(y, 10), label: oldModel.graph.pointLabels[idx] };
   });
 }
 
@@ -68,22 +68,22 @@ export function toComponentModel(m) {
 
   newModel.range = {};
   newModel.domain = {};
-  newModel.config = m.model.config;
+  newModel.graph = m.graph;
 
   if (m.correctResponse) {
     newModel.correctResponse = toSessionPoints(m.correctResponse, m);
   }
 
   Object.keys(rangeModelMap).forEach(key => {
-    newModel.range[rangeModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.range[rangeModelMap[key]] = oldModelCopy.graph[key];
   });
 
   Object.keys(domainModelMap).forEach(key => {
-    newModel.domain[domainModelMap[key]] = oldModelCopy.model.config[key];
+    newModel.domain[domainModelMap[key]] = oldModelCopy.graph[key];
   });
 
-  Object.keys(oldModelCopy.model.config).forEach(key => {
-    newModel[modelMap[key] || key] = m.model.config[key];
+  Object.keys(oldModelCopy.graph).forEach(key => {
+    newModel[modelMap[key] || key] = m.graph[key];
   });
 
   return newModel;

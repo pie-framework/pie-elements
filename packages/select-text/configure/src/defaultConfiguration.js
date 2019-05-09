@@ -7,14 +7,17 @@ const tokens = () => [
 ];
 
 export default {
-  highlightChoices: false,
-  partialScoring: false,
-  maxSelections: 2,
-  mode: 'sentence',
-  prompt: 'Question Prompt goes here',
-  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  tokens: tokens(),
-  configure: {
+  model: {
+    highlightChoices: false,
+    partialScoring: false,
+    maxSelections: 2,
+    mode: 'sentence',
+    prompt: 'Question Prompt goes here',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    tokens: tokens(),
+    scoringType: 'auto'
+  },
+  configuration: {
     selectionCount: {
       settings: true,
       label: 'Selection count',

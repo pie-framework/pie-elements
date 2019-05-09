@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Configure from '../configure';
+import { shallow } from 'enzyme';
+import { Configure } from '../configure';
 import GeneralConfigBlock from '../general-config-block';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import Input from '@material-ui/core/Input';
@@ -13,6 +14,7 @@ import AddControl from '../add-point';
 import { shallowChild } from '@pie-lib/test-utils';
 
 const defaultProps = {
+  classes: {},
   model: {
     id: '1',
     element: 'point-intercept',
@@ -28,87 +30,84 @@ const defaultProps = {
       incorrectFeedbackType: 'none',
       incorrectFeedbackValue: ''
     },
-    model: {
-      config: {
-        graphTitle: '',
-        graphWidth: 500,
-        graphHeight: 500,
-        maxPoints: '',
-        labelsType: 'present',
-        pointLabels: ['A', 'B', 'C', 'D'],
-        domainLabel: '',
-        domainMin: -10,
-        domainMax: 10,
-        domainStepValue: 1,
-        domainSnapValue: 1,
-        domainLabelFrequency: 1,
-        domainGraphPadding: 50,
-        rangeLabel: '',
-        rangeMin: -10,
-        rangeMax: 10,
-        rangeStepValue: 1,
-        rangeSnapValue: 1,
-        rangeLabelFrequency: 1,
-        rangeGraphPadding: 50,
-        sigfigs: -1,
-        allowPartialScoring: false,
-        pointsMustMatchLabels: false,
-        showCoordinates: false,
-        showPointLabels: true,
-        showInputs: true,
-        showAxisLabels: true,
-        showFeedback: true
-      }
+    graph: {
+      graphTitle: '',
+      graphWidth: 500,
+      graphHeight: 500,
+      maxPoints: '',
+      labelsType: 'present',
+      pointLabels: ['A', 'B', 'C', 'D'],
+      domainLabel: '',
+      domainMin: -10,
+      domainMax: 10,
+      domainStepValue: 1,
+      domainSnapValue: 1,
+      domainLabelFrequency: 1,
+      domainGraphPadding: 50,
+      rangeLabel: '',
+      rangeMin: -10,
+      rangeMax: 10,
+      rangeStepValue: 1,
+      rangeSnapValue: 1,
+      rangeLabelFrequency: 1,
+      rangeGraphPadding: 50,
+      sigfigs: -1,
+      allowPartialScoring: false,
+      pointsMustMatchLabels: false,
+      showCoordinates: false,
+      showPointLabels: true,
+      showInputs: true,
+      showAxisLabels: true,
+      showFeedback: true
     }
   }
 };
 
+
 describe('Configure', () => {
-  let wrapper;
+  describe('design', () => {
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallowChild(Configure, defaultProps, 2);
-  });
-
-  it('renders correctly', () => {
-    const component = wrapper();
-
-    expect(component.find(GeneralConfigBlock).length).toEqual(1);
-    expect(component.find(PointConfig).length).toEqual(1);
-    expect(component.find(PartialScoringConfig).length).toEqual(1);
-    expect(component.find(FeedbackConfig).length).toEqual(1);
-  });
-
-  it('restores default model correctly', () => {
-    const onModelChanged = jest.fn();
-    const component = wrapper({ onModelChanged });
-
-    component.setProps({
-      ...defaultProps,
-      model: { ...defaultProps.model, correctResponse: ['0,0'] }
+    beforeEach(() => {
+      wrapper = shallowChild(Configure, defaultProps, 2);
     });
 
-    component.instance().resetToDefaults();
+    it('renders correctly', () => {
+      const component = wrapper();
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining(defaultProps.model)
-    );
+      expect(component.find(GeneralConfigBlock).length).toEqual(1);
+      expect(component.find(PointConfig).length).toEqual(1);
+      expect(component.find(PartialScoringConfig).length).toEqual(1);
+      expect(component.find(FeedbackConfig).length).toEqual(1);
+    });
   });
 
-  xit('updates grid parameter min/max values accordingly', () => {
-    const onModelChanged = jest.fn();
-    const component = wrapper({ onModelChanged });
+  describe('logic', () => {
+    let wrapper;
 
-    component.instance().onGridParameterChange('domainMin')({
-      target: { value: 3 }
+    beforeEach(() => {
+      wrapper = props => {
+        const configureProps = { ...defaultProps, ...props };
+
+        return shallow(<Configure { ...configureProps } />)
+      };
     });
 
-    expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({
-        ...defaultProps.model,
-        correctResponse: ['3,0', '3,1', '3,2', '3,3']
-      })
-    );
+    it('restores default model correctly', () => {
+      const onModelChanged = jest.fn();
+      const component = wrapper({ onModelChanged });
+
+      component.setProps({
+        ...defaultProps,
+        model: { ...defaultProps.model, correctResponse: ['0,0'] }
+      });
+
+      component.instance().resetToDefaults();
+
+      expect(onModelChanged).toBeCalledWith(
+        expect.objectContaining(defaultProps.model)
+      );
+    });
   });
 });
 
@@ -118,7 +117,7 @@ describe('GeneralConfigBlock', () => {
 
   beforeEach(() => {
     props = {
-      config: defaultProps.model.model.config,
+      config: defaultProps.model.graph,
       onToggleWithLabels: jest.fn(),
       onModelConfigChange: jest.fn()
     };
@@ -141,7 +140,7 @@ describe('PointConfig', () => {
   beforeEach(() => {
     props = {
       model: defaultProps.model,
-      config: defaultProps.model.model.config,
+      config: defaultProps.model.graph,
       addPoint: jest.fn(),
       onMaxPointsChange: jest.fn(),
       deletePoint: jest.fn(),

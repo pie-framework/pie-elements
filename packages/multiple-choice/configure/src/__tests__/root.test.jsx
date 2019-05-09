@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import Root from '../root';
-import { choiceUtils as utils, settings } from '@pie-lib/config-ui';
+import { Main } from '../main';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -60,25 +60,23 @@ const model = () => ({
   configure: {}
 });
 
-describe('Root', () => {
+describe('Main', () => {
   let w;
   let onModelChanged = jest.fn();
+  let onConfigurationChanged = jest.fn();
   let initialModel = model();
-  let modelCopy;
 
   const wrapper = extras => {
     const defaults = {
       onModelChanged,
+      onConfigurationChanged,
+      classes: {},
       model: model()
     };
     const props = { ...defaults, ...extras };
 
-    return shallow(<Root {...props} />);
+    return shallow(<Main {...props} />);
   };
-
-  beforeEach(() => {
-    modelCopy = model();
-  });
 
   describe('snapshot', () => {
     it('renders', () => {
@@ -88,55 +86,27 @@ describe('Root', () => {
   });
 
   describe('logic', () => {
-    describe('onChoiceModeChanged', () => {
-      it('resets the model', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          ...modelCopy,
-          choiceMode: 'radio'
-        }, true);
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choiceMode: 'radio' }),
-          true
-        );
-      });
+    beforeEach(() => {
+      w = wrapper();
     });
-
     describe('onRemoveChoice', () => {
       it('removes choice', () => {
-        w = wrapper();
         w.instance().onRemoveChoice(0);
 
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choices: initialModel.choices.slice(1) }),
-          undefined
-        );
-      });
-    });
-
-    describe('onPartialScoringChanged', () => {
-      it('changes partial scoring value', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          ...modelCopy,
-          partialScoring: true
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          choices: initialModel.choices.slice(1)
         });
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ partialScoring: true }),
-          undefined
-        );
       });
     });
 
     describe('onAddChoice', () => {
       it('adds a choice', () => {
-        w = wrapper();
         w.instance().onAddChoice();
 
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choices: [
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          choices: [
             ...initialModel.choices,
             {
               label: 'label',
@@ -145,132 +115,116 @@ describe('Root', () => {
                 type: 'none'
               }
             }
-          ] }),
-          undefined
-        );
-      });
-    });
-
-    describe('onChoicePrefixChanged', () => {
-      it('changes choicePrefix', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          ...modelCopy,
-          choicePrefix: 'letters'
+          ]
         });
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choicePrefix: 'letters' }),
-          undefined
-        );
       });
     });
 
     describe('onChoiceChanged', () => {
-      it('changes choice', () => {
-        let choice = {
-          correct: true,
-          value: 'iceland',
-          label: 'Iceland',
-          feedback: {
-            type: 'none',
-            value: ''
-          }
-        };
+      describe('checkbox', () => {
+        it('changes choice (there are 2 true values)', () => {
+          const newChoices = [ ...model().choices ];
+          let choice = {
+            correct: true,
+            value: 'iceland',
+            label: 'Iceland',
+            feedback: {
+              type: 'none',
+              value: ''
+            }
+          };
 
-        w = wrapper();
-        w.instance().onChoiceChanged(1, choice);
-        initialModel.choices.splice(1, 1, choice);
+          w.instance().onChoiceChanged(1, choice);
 
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choices: initialModel.choices }),
-          undefined
-        );
+          newChoices[1].correct = true;
+
+          expect(onModelChanged).toBeCalledWith({
+            ...initialModel,
+            choices: newChoices
+          });
+        });
       });
 
-      it('changes choice and makes incorrect all other choices', () => {
-        let choice = {
-          correct: true,
-          value: 'iceland',
-          label: 'Iceland',
-          feedback: {
-            type: 'none',
-            value: ''
-          }
-        };
-        let instance;
-
-        w = wrapper();
-        instance = w.instance();
-
-        instance.updateModel({
-          ...modelCopy,
-          choiceMode: 'radio'
-        });
-        instance.onChoiceChanged(1, choice);
-
-        initialModel.choices.splice(1, 1, choice);
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ choices: [
-            {
-              correct: false,
-              value: 'sweden',
-              label: 'Sweden',
-              feedback: {
-                type: 'none',
-                value: ''
-              }
-            },
-            {
-              correct: true,
-              value: 'iceland',
-              label: 'Iceland',
-              feedback: {
-                type: 'none',
-                value: ''
-              }
-            },
-            {
-              correct: false,
-              value: 'norway',
-              label: 'Norway',
-              feedback: {
-                type: 'none',
-                value:
-                  ''
-              }
-            },
-            {
-              correct: false,
-              value: 'finland',
-              label: 'Finland',
-              feedback: {
-                type: 'none',
-                value: ''
-              }
+      describe('radio', () => {
+        it('changes choice (there is only one true value)', () => {
+          let choice = {
+            correct: true,
+            value: 'iceland',
+            label: 'Iceland',
+            feedback: {
+              type: 'none',
+              value: ''
             }
-          ] }),
-          undefined
+          };
+
+          const newModel = { ...initialModel, choiceMode: 'radio', choices: initialModel.choices.slice(0, 2) };
+          w = wrapper({ model: newModel });
+
+
+          w.instance().onChoiceChanged(1, choice);
+
+          expect(onModelChanged).toBeCalledWith({
+            ...newModel,
+            choices: [
+              {
+                correct: false,
+                value: 'sweden',
+                label: 'Sweden',
+                feedback: {
+                  type: 'none',
+                  value: ''
+                }
+              },
+              {
+                correct: true,
+                value: 'iceland',
+                label: 'Iceland',
+                feedback: {
+                  type: 'none',
+                  value: ''
+                }
+              },
+            ]
+          });
+        });
+      });
+    });
+
+    describe('onPromptChanged', () => {
+      it('changes prompt', () => {
+        w.instance().onPromptChanged('New Prompt');
+
+        expect(onModelChanged).toBeCalledWith({
+            ...initialModel,
+            prompt: 'New Prompt'
+          }
         );
       });
     });
 
-    describe('onChoiceModelChanged', () => {
-      it('resets the model', () => {
-        w = wrapper();
-        const updatedModel = w.state('model');
+    describe('onModelChanged', () => {
+      it('changes choice and makes incorrect all other choices', () => {
+        w.instance().onModelChanged({
+            ...initialModel,
+            choiceMode: 'radio'
+          },
+          'choiceMode'
+        );
 
-        updatedModel.choices.forEach(c => {
-          c.correct = !c.correct;
+        const expectedChoices = model().choices;
+
+        expectedChoices.forEach((eC, index) => {
+          eC.correct = index === 0;
         });
 
-        w.setProps({ model: updatedModel });
-        w.update();
-
-        expect(w.state('model')).toEqual(updatedModel);
+        expect(onModelChanged).toBeCalledWith({
+            ...initialModel,
+            choiceMode: 'radio',
+            choices: expectedChoices
+          },
+          true
+        );
       });
     });
   });
 });
-

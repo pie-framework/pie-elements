@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@3.2.7...@pie-element/placement-ordering-controller@4.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (main.jsx) and updated tests. ([4262f6b](https://github.com/pie-framework/pie-elements/commit/4262f6b))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
+## [3.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@3.2.6...@pie-element/placement-ordering-controller@3.2.7) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-controller
+
+
+
+
+
 ## [3.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@3.2.5...@pie-element/placement-ordering-controller@3.2.6) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

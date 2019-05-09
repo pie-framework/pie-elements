@@ -1,24 +1,26 @@
 /** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure
+ * model or to configuration
  */
 
 export default {
-  enableImages: true,
-  headers: ['Column 1', 'Column 2', 'Column 3'],
-  layout: 3,
-  lockChoiceOrder: true,
-  partialScoring: false,
-  responseType: 'radio',
-  rows: [
-    {
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false]
-    },
-  ],
-  scoringType: 'auto',
-  configure: {
+  model: {
+    enableImages: true,
+    headers: ['Column 1', 'Column 2', 'Column 3'],
+    layout: 3,
+    lockChoiceOrder: true,
+    partialScoring: false,
+    choiceMode: 'radio',
+    rows: [
+      {
+        id: 1,
+        title: 'Question Text 1',
+        values: [false, false]
+      },
+    ],
+    scoringType: 'auto',
+  },
+  configuration: {
     enableImages: {
       settings: true,
       label: 'Enable Images',
@@ -41,7 +43,7 @@ export default {
       settings: true,
       label: 'Allow partial scoring',
     },
-    responseType: {
+    choiceMode: {
       settings: true,
       label: 'Response Type',
     },

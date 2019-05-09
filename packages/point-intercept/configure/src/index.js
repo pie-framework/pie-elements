@@ -19,6 +19,7 @@ export default class PointInterceptConfigure extends HTMLElement {
   onModelChanged(model) {
     this._model = model;
     log('[onModelChanged]: ', this._model);
+    this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 

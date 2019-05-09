@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Configure from '../configure';
+import { Config } from '../configure';
 import AnswerConfigBlock from '../answer-config-block';
 import GeneralConfigBlock from '../general-config-block';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { settings, FeedbackConfig } from '@pie-lib/config-ui';
+import { FeedbackConfig } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
 import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
@@ -61,7 +61,7 @@ export const defaultProps = {
     partialScoring: [],
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],
-    responseType: 'radio',
+    choiceMode: 'radio',
     feedback: {
       correct: {
         type: 'none',
@@ -76,8 +76,8 @@ export const defaultProps = {
         default: 'Incorrect'
       }
     },
-    configure: defaultValues.configure
-  }
+  },
+  configuration: defaultValues.configuration
 };
 const clonedDefaultProps = cloneDeep(defaultProps);
 
@@ -86,7 +86,14 @@ describe('Configure', () => {
   let component;
 
   beforeEach(() => {
-    wrapper = shallowChild(Configure, defaultProps, 2);
+    wrapper = props => {
+      const configProps = {
+        ...defaultProps,
+        ...props
+      };
+
+      return shallow(<Config { ...configProps } />);
+    };
   });
 
   it('renders correctly', () => {
@@ -96,8 +103,9 @@ describe('Configure', () => {
     expect(component.find(FeedbackConfig).length).toEqual(1);
   });
 
-  it('updates responseType correctly', () => {
+  it('updates choiceMode correctly', () => {
     let onModelChanged = jest.fn();
+
     component = wrapper({
       onModelChanged
     });
@@ -105,7 +113,7 @@ describe('Configure', () => {
     component.instance().onResponseTypeChange('checkbox');
 
     expect(onModelChanged).toBeCalledWith(
-      expect.objectContaining({ responseType: 'checkbox' })
+      expect.objectContaining({ choiceMode: 'checkbox' })
     );
 
     onModelChanged = jest.fn();
@@ -114,7 +122,7 @@ describe('Configure', () => {
       onModelChanged,
       model: {
         ...defaultProps.model,
-        responseType: 'checkbox',
+        choiceMode: 'checkbox',
         rows: [
           {
             id: 1,
@@ -171,7 +179,7 @@ describe('Configure', () => {
       partialScoring: [],
       layout: 3,
       headers: ['Column 1', 'Column 2', 'Column 3'],
-      responseType: 'radio',
+      choiceMode: 'radio',
       feedback: {
         correct: {
           type: 'none',
@@ -186,7 +194,6 @@ describe('Configure', () => {
           default: 'Incorrect'
         }
       },
-      configure: defaultValues.configure
     });
   });
 
@@ -333,6 +340,7 @@ describe('GeneralConfigBlock', () => {
   beforeEach(() => {
     props = {
       model: defaultProps.model,
+      configuration: defaultProps.configuration,
       onResponseTypeChange: jest.fn(),
       onLayoutChange: jest.fn()
     };
@@ -361,6 +369,7 @@ describe('AnswerConfigBlock', () => {
     props = {
       classes: styles,
       model: clonedDefaultProps.model,
+      configuration: defaultProps.configuration,
       onChange: onChange,
       onAddRow: jest.fn(),
       onDeleteRow: jest.fn()

@@ -29,12 +29,18 @@ const styles = theme => ({
 class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
+    onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     })
+  };
+
+  static defaultProps = {
+    classes: {}
   };
 
   constructor(props) {
@@ -119,12 +125,12 @@ class Configure extends React.Component {
     this.onChange(newModel);
   };
 
-  onResponseTypeChange = (newResponseType) => {
+  onResponseTypeChange = newChoiceMode => {
     const { model } = this.props;
     const newModel = { ...model };
 
     // if we're switching to radio and we have more than one true, reset
-    if (newResponseType === 'radio') {
+    if (newChoiceMode === 'radio') {
       newModel.rows.forEach(row => {
         const trueCount = row.values.reduce((total, current) => current === true ? total + 1 : total);
 
@@ -134,7 +140,7 @@ class Configure extends React.Component {
       })
     }
 
-    newModel.responseType = newResponseType;
+    newModel.choiceMode = newChoiceMode;
 
     this.onChange(newModel);
   };
@@ -145,18 +151,16 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged } = this.props;
+    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      configure: {
-        enableImages,
-        partialScoring,
-        teacherInstructions,
-        studentInstructions,
-        rationale,
-        lockChoiceOrder,
-        scoringType
-      }
-    } = model;
+      enableImages,
+      partialScoring,
+      teacherInstructions,
+      studentInstructions,
+      rationale,
+      lockChoiceOrder,
+      scoringType
+    } = configuration;
 
     log('[render] model', model);
 
@@ -166,7 +170,9 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
+            configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Item Type': {
                 enableImages: enableImages.settings &&
@@ -175,12 +181,12 @@ class Configure extends React.Component {
                 toggle(partialScoring.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                 toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
@@ -199,11 +205,13 @@ class Configure extends React.Component {
           </Typography>
           <GeneralConfigBlock
             model={model}
+            configuration={configuration}
             onResponseTypeChange={this.onResponseTypeChange}
             onLayoutChange={this.onLayoutChange}
           />
           <AnswerConfigBlock
             model={model}
+            configuration={configuration}
             imageSupport={imageSupport}
             onChange={this.onChange}
             onAddRow={this.onAddRow}
@@ -220,35 +228,6 @@ class Configure extends React.Component {
   }
 }
 
-const ConfigureMain = withStyles(styles)(Configure);
+export const Config = Configure;
 
-class StateWrapper extends React.Component {
-  static propTypes = {
-    model: PropTypes.any,
-    onModelChanged: PropTypes.func,
-    imageSupport: PropTypes.object
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      model: props.model
-    };
-
-    this.onModelChanged = m => {
-      this.setState({ model: m }, () => {
-        this.props.onModelChanged(this.state.model);
-      });
-    };
-  }
-
-  render() {
-    const { imageSupport } = this.props;
-    const { model } = this.state;
-
-    return <ConfigureMain imageSupport={imageSupport} model={model} onModelChanged={this.onModelChanged} />;
-  }
-}
-
-export default StateWrapper;
+export default withStyles(styles)(Configure);
