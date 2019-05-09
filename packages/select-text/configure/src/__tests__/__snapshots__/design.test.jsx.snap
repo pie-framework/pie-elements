@@ -4,95 +4,96 @@ exports[`design snapshot renders all items except feedback 1`] = `
 <ConfigLayout
   settings={
     <Panel
+      configuration={
+        Object {
+          "correctAnswer": Object {
+            "label": "Correct Answers",
+            "settings": true,
+          },
+          "feedback": Object {
+            "settings": false,
+          },
+          "highlightChoices": Object {
+            "label": "Highlight choices",
+            "settings": true,
+          },
+          "mode": Object {
+            "label": "Mode",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+          },
+          "rationale": Object {
+            "enabled": true,
+            "label": "Rationale",
+            "settings": false,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "selectionCount": Object {
+            "label": "Selection count",
+            "settings": true,
+          },
+          "selections": Object {
+            "label": "Selections Available",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+          "text": Object {
+            "label": "Content",
+            "settings": true,
+          },
+          "tokens": Object {
+            "label": "Tokens",
+            "settings": true,
+          },
+        }
+      }
       groups={
         Object {
           "Item Type": Object {
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "configure.rationale.enabled": false,
-            "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
+            "rationale.enabled": false,
             "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
           },
         }
       }
       model={
         Object {
-          "configure": Object {
-            "correctAnswer": Object {
-              "label": "Correct Answers",
-              "settings": true,
-            },
-            "feedback": Object {
-              "settings": false,
-            },
-            "highlightChoices": Object {
-              "label": "Highlight choices",
-              "settings": true,
-            },
-            "mode": Object {
-              "label": "Mode",
-              "settings": true,
-            },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Prompt",
-            },
-            "rationale": Object {
-              "enabled": true,
-              "label": "Rationale",
-              "settings": false,
-            },
-            "scoringType": Object {
-              "label": "Scoring Type",
-              "settings": false,
-            },
-            "selectionCount": Object {
-              "label": "Selection count",
-              "settings": true,
-            },
-            "selections": Object {
-              "label": "Selections Available",
-              "settings": true,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-            "text": Object {
-              "label": "Content",
-              "settings": true,
-            },
-            "tokens": Object {
-              "label": "Tokens",
-              "settings": true,
-            },
-          },
           "tokens": Array [],
         }
       }
+      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
 >
-  <div
-    className="foo"
-  >
+  <div>
     <Component
       label="Prompt"
     >
       <EditableHtml
-        onChange={[MockFunction]}
+        onChange={[Function]}
       />
     </Component>
     <TextField
@@ -139,95 +140,96 @@ exports[`design snapshot renders all items except the content input 1`] = `
 <ConfigLayout
   settings={
     <Panel
+      configuration={
+        Object {
+          "correctAnswer": Object {
+            "label": "Correct Answers",
+            "settings": true,
+          },
+          "feedback": Object {
+            "settings": false,
+          },
+          "highlightChoices": Object {
+            "label": "Highlight choices",
+            "settings": true,
+          },
+          "mode": Object {
+            "label": "Mode",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+          },
+          "rationale": Object {
+            "enabled": true,
+            "label": "Rationale",
+            "settings": false,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "selectionCount": Object {
+            "label": "Selection count",
+            "settings": true,
+          },
+          "selections": Object {
+            "label": "Selections Available",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+          "text": Object {
+            "label": "Content",
+            "settings": false,
+          },
+          "tokens": Object {
+            "label": "Tokens",
+            "settings": true,
+          },
+        }
+      }
       groups={
         Object {
           "Item Type": Object {
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "configure.rationale.enabled": false,
-            "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
+            "rationale.enabled": false,
             "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
           },
         }
       }
       model={
         Object {
-          "configure": Object {
-            "correctAnswer": Object {
-              "label": "Correct Answers",
-              "settings": true,
-            },
-            "feedback": Object {
-              "settings": false,
-            },
-            "highlightChoices": Object {
-              "label": "Highlight choices",
-              "settings": true,
-            },
-            "mode": Object {
-              "label": "Mode",
-              "settings": true,
-            },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Prompt",
-            },
-            "rationale": Object {
-              "enabled": true,
-              "label": "Rationale",
-              "settings": false,
-            },
-            "scoringType": Object {
-              "label": "Scoring Type",
-              "settings": false,
-            },
-            "selectionCount": Object {
-              "label": "Selection count",
-              "settings": true,
-            },
-            "selections": Object {
-              "label": "Selections Available",
-              "settings": true,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-            "text": Object {
-              "label": "Content",
-              "settings": false,
-            },
-            "tokens": Object {
-              "label": "Tokens",
-              "settings": true,
-            },
-          },
           "tokens": Array [],
         }
       }
+      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
 >
-  <div
-    className="foo"
-  >
+  <div>
     <Component
       label="Prompt"
     >
       <EditableHtml
-        onChange={[MockFunction]}
+        onChange={[Function]}
       />
     </Component>
     <Component
@@ -266,95 +268,96 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 <ConfigLayout
   settings={
     <Panel
+      configuration={
+        Object {
+          "correctAnswer": Object {
+            "label": "Correct Answers",
+            "settings": true,
+          },
+          "feedback": Object {
+            "settings": true,
+          },
+          "highlightChoices": Object {
+            "label": "Highlight choices",
+            "settings": true,
+          },
+          "mode": Object {
+            "label": "Mode",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": true,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+          },
+          "rationale": Object {
+            "enabled": true,
+            "label": "Rationale",
+            "settings": false,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "selectionCount": Object {
+            "label": "Selection count",
+            "settings": true,
+          },
+          "selections": Object {
+            "label": "Selections Available",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+          "text": Object {
+            "label": "Content",
+            "settings": true,
+          },
+          "tokens": Object {
+            "label": "Tokens",
+            "settings": true,
+          },
+        }
+      }
       groups={
         Object {
           "Item Type": Object {
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "configure.rationale.enabled": false,
-            "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
+            "rationale.enabled": false,
             "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
           },
         }
       }
       model={
         Object {
-          "configure": Object {
-            "correctAnswer": Object {
-              "label": "Correct Answers",
-              "settings": true,
-            },
-            "feedback": Object {
-              "settings": true,
-            },
-            "highlightChoices": Object {
-              "label": "Highlight choices",
-              "settings": true,
-            },
-            "mode": Object {
-              "label": "Mode",
-              "settings": true,
-            },
-            "partialScoring": Object {
-              "label": "Allow Partial Scoring",
-              "settings": true,
-            },
-            "prompt": Object {
-              "label": "Prompt",
-            },
-            "rationale": Object {
-              "enabled": true,
-              "label": "Rationale",
-              "settings": false,
-            },
-            "scoringType": Object {
-              "label": "Scoring Type",
-              "settings": false,
-            },
-            "selectionCount": Object {
-              "label": "Selection count",
-              "settings": true,
-            },
-            "selections": Object {
-              "label": "Selections Available",
-              "settings": true,
-            },
-            "studentInstructions": Object {
-              "enabled": true,
-              "label": "Student Instructions",
-              "settings": false,
-            },
-            "teacherInstructions": Object {
-              "enabled": false,
-              "label": "Teacher Instructions",
-              "settings": false,
-            },
-            "text": Object {
-              "label": "Content",
-              "settings": true,
-            },
-            "tokens": Object {
-              "label": "Tokens",
-              "settings": true,
-            },
-          },
           "tokens": Array [],
         }
       }
+      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
 >
-  <div
-    className="foo"
-  >
+  <div>
     <Component
       label="Prompt"
     >
       <EditableHtml
-        onChange={[MockFunction]}
+        onChange={[Function]}
       />
     </Component>
     <TextField
