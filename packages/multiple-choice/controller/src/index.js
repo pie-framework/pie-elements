@@ -6,8 +6,12 @@ import { partialScoring } from '@pie-lib/controller-utils';
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
+
+  // if (role === 'instructor') {
+  out.rationale = choice.rationale;
+  // }
 
   if (mode === 'evaluate') {
     out.correct = !!choice.correct;

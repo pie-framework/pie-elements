@@ -11,7 +11,8 @@ exports.model = (id, element) => ({
       feedback: {
         type: 'none',
         value: ''
-      }
+      },
+      rationale: 'Rationale for Sweden'
     },
     {
       value: 'iceland',
@@ -19,7 +20,8 @@ exports.model = (id, element) => ({
       feedback: {
         type: 'none',
         value: ''
-      }
+      },
+      rationale: 'Rationale for Iceland'
     },
     {
       value: 'norway',
@@ -28,7 +30,8 @@ exports.model = (id, element) => ({
         type: 'none',
         value:
           ''
-      }
+      },
+      rationale: 'Rationale for Norway'
     },
     {
       correct: true,
@@ -37,7 +40,8 @@ exports.model = (id, element) => ({
       feedback: {
         type: 'none',
         value: ''
-      }
+      },
+      rationale: 'Rationale for Finland'
     }
   ],
   prompt: 'Which of these northern European countries are EU members?',
