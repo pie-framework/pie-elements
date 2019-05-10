@@ -17,6 +17,7 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-konva": "^16.8.6"
   },
   "license": "ISC"
