@@ -44,30 +44,6 @@ enum ChoicesPosition {
   right = 'right'
 }
 
-interface ChoicesConfig {
-  /**
-   * @default 2
-   */
-  columns: number;
-
-  /**
-   * Indicates where the choices should be presented in relation to the categories.
-   */
-  position: ChoicesPosition;
-
-  /** Label to be displayed for the choices */
-  label: string;
-
-  /** Should the choices be shuffled */
-  shuffle: boolean;
-
-  /**
-   * Indicates if the choice, after it is dragged into a category, should be removed from the choices
-   * area or should remain in place.
-   */
-  removeafterplacing: boolean;
-}
-
 interface PartialScoringCategoryRule {
   /**
    *  Indicates the number of correct answers
@@ -141,20 +117,6 @@ interface ScoringConfig {
   partial?: PartialScoringConfig;
 }
 
-interface CategoriesConfig {
-  /** 
-   * The number of columns in which to present the categories
-   * @default 2
-   */
-  columns?: number
-
-   /** 
-   * The number of rows in which to present the categories
-   * @default 1
-   */
-  rows?: number
-}
-
 /**
  * Pie Model Object for @pie-elements/categorize
  * @additionalProperties false
@@ -164,14 +126,40 @@ export interface CategorizePie extends PieModel {
   /** The available choices */
   choices: CategoryChoice[];
 
+  /**
+   * The number of columns in which to present the choices
+   * @default 2
+   */
+  choicesPerRow?: number;
+
+  /**
+   * The number of columns in which to present the categories
+   * @default 2
+   */
+  categoriesPerRow?: number;
+
+  /**
+   * Indicates where the choices should be presented in relation to the categories.
+   */
+  choicesPosition: ChoicesPosition;
+
+  /** Label to be displayed for the choices */
+  choicesLabel: string;
+
+  /** Should the choices be shuffled or not */
+  lockChoiceOrder: boolean;
+
+  /**
+   * Indicates if the choice, after it is dragged into a category, should be removed from the choices
+   * area or should remain in place.
+   */
+  removeTilesAfterPlacing: boolean;
+
   /** The categories in which choices may be placed */
   categories: Category[];
   
   /** The defintion of the correct response to the question */
   correctResponse: CategoryCorrectResponse[];
-
-  /** Configuration options for the presentataion of the interaction */
-  config: {choices:ChoicesConfig, categories: CategoriesConfig}
 
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;

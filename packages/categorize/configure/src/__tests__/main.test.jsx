@@ -11,12 +11,12 @@ const model = () => ({
 
 describe('Main', () => {
   let w;
-  let onChange = jest.fn();
+  let onModelChanged = jest.fn();
   const wrapper = extras => {
     const defaults = {
       classes: {},
       className: 'className',
-      onChange,
+      onModelChanged,
       model: model()
     };
     const props = { ...defaults, ...extras };
@@ -35,7 +35,7 @@ describe('Main', () => {
     describe('changeScoring', () => {
       w = wrapper();
       w.instance().changeScoring({ update: true });
-      expect(onChange).toBeCalledWith(
+      expect(onModelChanged).toBeCalledWith(
         expect.objectContaining({ scoring: { update: true } })
       );
     });

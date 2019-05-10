@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import classNames from 'classnames';
 import Category from './category';
 import Header from '../header';
+import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
 
 export class Categories extends React.Component {
   static propTypes = {
@@ -14,51 +16,93 @@ export class Categories extends React.Component {
     }),
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
-    columns: PropTypes.number.isRequired,
-    onColumnsChange: PropTypes.func.isRequired,
     categories: PropTypes.array,
-    onChange: PropTypes.func.isRequired,
-    onDeleteChoice: PropTypes.func.isRequired,
-    onAddChoice: PropTypes.func.isRequired,
-    onAdd: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onModelChanged: PropTypes.func,
+    model: PropTypes.object.isRequired
   };
 
-  static defaultProps = {
-    columns: 2
+  changeCategoryColumns = event => {
+    const numberValue = parseInt(event.target.value, 10);
+
+    if (numberValue && numberValue >= 1 && numberValue <= 4) {
+      this.props.onModelChanged({ categoriesPerRow: numberValue });
+    }
   };
 
-  changeCategory = c => {
-    const { onChange, categories } = this.props;
+  add = () => {
+    const { model } = this.props;
+    const id = utils.firstAvailableIndex(model.categories.map(a => a.id), 0);
+    const data = { id, label: 'Category ' + id };
 
+    this.props.onModelChanged({ categories: model.categories.concat([data]) });
+  };
+
+  delete = category => {
+    const { model, onModelChanged } = this.props;
+    const index = model.categories.findIndex(a => a.id === category.id);
+
+    if (index !== -1) {
+      model.categories.splice(index, 1);
+      model.correctResponse = removeCategory(
+        category.id,
+        model.correctResponse
+      );
+      onModelChanged(model);
+    }
+  };
+
+  change = c => {
+    const { categories } = this.props;
     const index = categories.findIndex(a => a.id === c.id);
+
     if (index !== -1) {
       categories.splice(index, 1, c);
-      onChange(categories);
+      this.props.onModelChanged({ categories });
     }
+  };
+
+  addChoiceToCategory = (choice, categoryId) => {
+    const { model, onModelChanged } = this.props;
+    const correctResponse = moveChoiceToCategory(
+      choice.id,
+      undefined,
+      categoryId,
+      0,
+      model.correctResponse
+    );
+
+    onModelChanged({ correctResponse });
+  };
+
+  deleteChoiceFromCategory = (category, choice, choiceIndex) => {
+    const { model, onModelChanged } = this.props;
+    const correctResponse = removeChoiceFromCategory(
+      choice.id,
+      category.id,
+      choiceIndex,
+      model.correctResponse
+    );
+
+    onModelChanged({ correctResponse });
   };
 
   render() {
     const {
-      columns,
+      model,
       classes,
       className,
-      onColumnsChange,
-      onDeleteChoice,
       categories,
-      onAdd,
-      onDelete,
-      onAddChoice,
       imageSupport
     } = this.props;
+    const { categoriesPerRow } = model;
 
     const holderStyle = {
-      gridTemplateColumns: `repeat(${columns}, 1fr)`
+      gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
 
     return (
       <div className={classNames(classes.categories, className)}>
-        <Header label="Categories" buttonLabel="ADD A CATEGORY" onAdd={onAdd} />
+        <Header label="Categories" buttonLabel="ADD A CATEGORY" onAdd={this.add} />
         <div className={classes.row}>
           <TextField
             label="Categories per row"
@@ -67,8 +111,8 @@ export class Categories extends React.Component {
               min: 1,
               max: 4
             }}
-            value={columns}
-            onChange={onColumnsChange}
+            value={categoriesPerRow}
+            onChange={this.changeCategoryColumns}
           />
         </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
@@ -77,12 +121,12 @@ export class Categories extends React.Component {
               key={index}
               imageSupport={imageSupport}
               category={category}
-              onChange={this.changeCategory}
-              onDelete={() => onDelete(category)}
+              onChange={this.change}
+              onDelete={() => this.delete(category)}
+              onAddChoice={this.addChoiceToCategory}
               onDeleteChoice={(choice, choiceIndex) =>
-                onDeleteChoice(category, choice, choiceIndex)
+                this.deleteChoiceFromCategory(category, choice, choiceIndex)
               }
-              onAddChoice={onAddChoice}
             />
           ))}
         </div>

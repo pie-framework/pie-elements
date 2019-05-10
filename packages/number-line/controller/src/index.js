@@ -146,7 +146,7 @@ export function normalize(question) {
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     const out = {
-      config: {
+      graph: {
         ...defaults,
         ...model
       },
@@ -163,8 +163,8 @@ export function model(question, session, env) {
   }
 
   return new Promise((resolve, reject) => {
-    const { config } = question;
-    if (config) {
+    const { graph } = question;
+    if (graph) {
       const evaluateMode = env.mode === 'evaluate';
 
       const correctResponse = cloneDeep(question.correctResponse);
@@ -173,7 +173,7 @@ export function model(question, session, env) {
         getCorrected(session ? session.answer || [] : [], correctResponse);
       const correctness = evaluateMode && getCorrectness(corrected);
 
-      const { exhibitOnly } = config;
+      const { exhibitOnly } = graph;
 
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
 
@@ -183,7 +183,8 @@ export function model(question, session, env) {
 
       fb.then(feedbackMessage => {
         const out = {
-          config,
+          config: graph,
+          graph,
           disabled,
           corrected,
           correctResponse:
@@ -202,7 +203,7 @@ export function model(question, session, env) {
         resolve(omitBy(out, v => !v));
       });
     } else {
-      reject(new Error('config is undefined'));
+      reject(new Error('graph is undefined'));
     }
   });
 }

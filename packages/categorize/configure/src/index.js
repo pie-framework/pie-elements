@@ -11,7 +11,7 @@ import defaults from './defaults';
 
 export default class CategorizeConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
+    ...defaults.model,
     ...model,
   });
 
@@ -25,9 +25,10 @@ export default class CategorizeConfigure extends HTMLElement {
     this.render();
   }
 
-  onChange(m) {
+  onModelChanged(m) {
     this._model = m;
 
+    this.render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
   }
 
@@ -48,7 +49,7 @@ export default class CategorizeConfigure extends HTMLElement {
   render() {
     const el = React.createElement(Main, {
       model: this._model,
-      onChange: this.onChange.bind(this),
+      onModelChanged: this.onModelChanged.bind(this),
       imageSupport: {
         add: this.insertImage.bind(this),
         delete: this.onDeleteImage.bind(this)

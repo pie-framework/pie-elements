@@ -36,7 +36,7 @@ exports.model = (id, element) => ({
       scorePercentage: 35
     }
   ],
-  config: {
+  graph: {
     width: 500,
     height: 400,
     domain: [-5, 5],
