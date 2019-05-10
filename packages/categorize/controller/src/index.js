@@ -60,14 +60,12 @@ export const model = (question, session, env) =>
           choices: question.choices,
           categories: question.categories,
           disabled: env.mode !== 'gather',
-          config: question.config || {
-            choices: {
-              columns: 2
-            },
-            categories: {
-              columns: 2
-            }
-          }
+          choicesPerRow: question.choicesPerRow || 2,
+          choicesLabel: question.choicesLabel || '',
+          choicesPosition: question.choicesPosition,
+          removeTilesAfterPlacing: question.removeTilesAfterPlacing,
+          lockChoiceOrder: question.lockChoiceOrder,
+          categoriesPerRow: question.categoriesPerRow || 2,
         };
 
         out.correctResponse =
