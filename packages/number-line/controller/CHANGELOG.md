@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@2.1.4...@pie-element/number-line-controller@3.0.0) (2019-05-10)
+
+
+### Features
+
+* Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`. ([6548972](https://github.com/pie-framework/pie-elements/commit/6548972))
+
+
+### BREAKING CHANGES
+
+* `model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.
+
+
+
+
+
 ## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@2.1.3...@pie-element/number-line-controller@2.1.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

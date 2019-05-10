@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@1.2.4...@pie-element/categorize-controller@2.0.0) (2019-05-10)
+
+
+### Features
+
+* **categorize:** Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`. ([5922f85](https://github.com/pie-framework/pie-elements/commit/5922f85))
+
+
+### BREAKING CHANGES
+
+* **categorize:** `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.
+
+
+
+
+
 ## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@1.2.3...@pie-element/categorize-controller@1.2.4) (2019-03-18)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.10...@pie-element/select-text@4.0.0) (2019-05-10)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests. ([b6f4593](https://github.com/pie-framework/pie-elements/commit/b6f4593))
+
+
+### BREAKING CHANGES
+
+* configure is removed, use configuration instead.
+
+
+
+
+
 ## [3.10.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@3.10.9...@pie-element/select-text@3.10.10) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/select-text
