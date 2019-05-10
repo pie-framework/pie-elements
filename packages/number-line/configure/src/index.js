@@ -13,6 +13,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   constructor() {
     super();
     this._model = NumberLineConfigReactElement.createDefaultModel();
+    this._configuration = defaults.configuration;
   }
 
   set model(s) {
@@ -121,9 +122,23 @@ export default class NumberLineConfigReactElement extends HTMLElement {
     this._rerender();
   }
 
+  onPromptChanged = prompt => {
+    this._model.prompt = prompt;
+    let detail = {
+      update: this._model,
+    };
+
+    this.dispatchEvent(
+      new CustomEvent('model.updated', { bubbles: true, detail })
+    );
+
+    this._rerender();
+  };
+
   _rerender() {
     let element = React.createElement(Main, {
       model: this._model,
+      configuration: this._configuration,
       onDomainChange: this.onDomainChanged.bind(this),
       onMinorTicksChanged: this.onMinorTicksChanged.bind(this),
       onTickFrequencyChange: this.onTickFrequencyChange.bind(this),
@@ -132,7 +147,8 @@ export default class NumberLineConfigReactElement extends HTMLElement {
       onCorrectResponseChange: this.onCorrectResponseChange.bind(this),
       onInitialElementsChange: this.onInitialElementsChange.bind(this),
       onAvailableTypesChange: this.onAvailableTypesChange.bind(this),
-      onFeedbackChange: this.onFeedbackChange.bind(this)
+      onFeedbackChange: this.onFeedbackChange.bind(this),
+      onPromptChanged: this.onPromptChanged.bind(this),
     });
     ReactDOM.render(element, this);
   }
