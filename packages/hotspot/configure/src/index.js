@@ -1,15 +1,12 @@
-import {
-  DeleteImageEvent,
-  InsertImageEvent,
-  ModelUpdatedEvent
-} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root';
 import debug from 'debug';
+import cloneDeep from 'lodash/cloneDeep';
 import defaults from 'lodash/defaults';
 
+import Root from './root';
 import sensibleDefaults from './defaults';
 
 const log = debug('hotspot:configure');
@@ -68,15 +65,61 @@ export default class HotspotConfigure extends HTMLElement {
   onModelChanged(m, reset) {
     this._model = m;
     this.dispatchModelUpdated(reset);
+    this._render();
   }
 
-  insertImage(handler) {
-    this.dispatchEvent(new InsertImageEvent(handler));
-  }
+  onRemoveShape = index => {
+    const { _model } = this;
+    _model.shapes.splice(index, 1);
+    this.onModelChanged(_model);
+  };
 
-  onDeleteImage(src, done) {
-    this.dispatchEvent(new DeleteImageEvent(src, done));
-  }
+  onColorChanged = (colorType, color) => {
+    const { _model } = this;
+    _model[colorType] = color;
+    this.onModelChanged(_model);
+  };
+
+  onPromptChanged = prompt => {
+    const { _model } = this;
+    const update = cloneDeep(_model);
+    update.prompt = prompt;
+    this.onModelChanged(update);
+  };
+
+  onPartialScoringChanged = () => {
+    const { _model } = this;
+    _model.partialScoring = !_model.partialScoring;
+    this.onModelChanged(_model);
+  };
+
+  onMultipleCorrectChanged = () => {
+    const { _model } = this;
+    _model.multipleCorrect = !_model.multipleCorrect;
+    if (!_model.multipleCorrect) {
+      _model.partialScoring = false;
+    }
+    _model.shapes = _model.shapes.map(shape => ({ ...shape, correct: false }));
+    this.onModelChanged(_model);
+  };
+
+  onUpdateImageDimension = (dimensions) => {
+    const { _model } = this;
+    _model.dimensions = dimensions;
+    this.onModelChanged(_model);
+  };
+
+  onUpdateShapes = (shapes) => {
+    const { _model } = this;
+    _model.shapes = shapes;
+    this.onModelChanged(_model);
+  };
+
+  onImageUpload = imageUrl => {
+    const { _model } = this;
+    _model.imageUrl = imageUrl;
+    this.onModelChanged(_model);
+  };
 
   _render() {
     log('_render');
@@ -84,7 +127,14 @@ export default class HotspotConfigure extends HTMLElement {
       configure: this._configure,
       disableSidePanel: this._disableSidePanel,
       model: this._model,
-      onModelChanged: this.onModelChanged
+      onColorChanged: this.onColorChanged,
+      onImageUpload: this.onImageUpload,
+      onMultipleCorrectChanged: this.onMultipleCorrectChanged,
+      onPartialScoringChanged: this.onPartialScoringChanged,
+      onPromptChanged: this.onPromptChanged,
+      onRemoveShape: this.onRemoveShape,
+      onUpdateImageDimension: this.onUpdateImageDimension,
+      onUpdateShapes: this.onUpdateShapes
     });
     ReactDOM.render(element, this);
   }

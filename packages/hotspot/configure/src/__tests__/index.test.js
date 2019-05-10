@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-
-import Root from '../root';
+import ReactDOM from 'react-dom';
 
 const model = () => ({
   prompt: 'This is the question prompt',
@@ -39,161 +38,131 @@ const model = () => ({
   partialScoring: false
 });
 
-describe('Root', () => {
-  let w;
+jest.mock('react-dom', () => ({
+  render: jest.fn()
+}));
+
+describe('index', () => {
+  let Def;
+  let el;
   let onModelChanged = jest.fn();
   let initialModel = model();
-  let modelCopy;
 
-  const wrapper = extras => {
-    const defaults = {
-      onModelChanged,
-      model: model()
-    };
-    const props = { ...defaults, ...extras };
-
-    return shallow(<Root {...props} />);
-  };
-
-  beforeEach(() => {
-    modelCopy = model();
+  beforeAll(() => {
+    Def = require('../index').default;
   });
 
-  describe('snapshot', () => {
-    it('renders', () => {
-      w = wrapper();
-      expect(w).toMatchSnapshot();
+  beforeEach(() => {
+    el = new Def();
+    el.model = initialModel;
+    el.onModelChanged = onModelChanged;
+  });
+
+  describe('set model', () => {
+    it('calls ReactDOM.render', () => {
+      expect(ReactDOM.render).toHaveBeenCalled();
     });
   });
 
   describe('logic', () => {
     describe('onMultipleCorrectChanged', () => {
       it('resets the model', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          ...modelCopy,
-          multipleCorrect: false
-        }, true);
+        el.onMultipleCorrectChanged();
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ multipleCorrect: false }),
-          true
         );
       });
     });
 
     describe('onPartialScoringChanged', () => {
       it('changes partial scoring value', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          ...modelCopy,
-          partialScoring: true
-        });
+        el.onPartialScoringChanged();
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ partialScoring: true }),
-          undefined
         );
       });
     });
 
     describe('undoShape', () => {
       it('removes the latest shape', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          shapes: initialModel.shapes.slice(1)
-        });
+        const shapes = initialModel.shapes;
+        const newShapes = shapes.slice(0, shapes.length - 1);
+        el.onUpdateShapes(newShapes);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: initialModel.shapes.slice(1) }),
-          undefined
+          expect.objectContaining({ shapes: newShapes }),
         );
       });
     });
 
     describe('clearAllShapes', () => {
       it('removes all shapes', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          shapes: []
-        });
+        el.onUpdateShapes([]);
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ shapes: [] }),
-          undefined
         );
       });
     });
 
     describe('onPromptChanged', () => {
       it('changes the prompt', () => {
-        w = wrapper();
-        w.instance().updateModel({
-          prompt: 'This is the second question prompt'
-        });
+        const newPrompt = 'This is the second question prompt';
+        el.onPromptChanged(newPrompt);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ prompt: 'This is the second question prompt' }),
-          undefined
+          expect.objectContaining({ prompt: newPrompt }),
         );
       });
     });
 
     describe('onColorChanged', () => {
       it('changes hotspot color', () => {
-        w = wrapper();
-        w.instance().onColorChanged('hotspotColor', 'red');
+        el.onColorChanged('hotspotColor', 'red');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ hotspotColor: 'red' }),
-          undefined
         );
       });
 
       it('changes outline color', () => {
-        w = wrapper();
-        w.instance().onColorChanged('outlineColor', 'lightred');
+        el.onColorChanged('outlineColor', 'lightred');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ outlineColor: 'lightred' }),
-          undefined
         );
       });
     });
 
     describe('onImageUpload', () => {
       it('uploads an image', () => {
-        w = wrapper();
-        w.instance().onImageUpload('https://picsum.photos/id/102/200/300');
+        el.onImageUpload('https://picsum.photos/id/102/200/300');
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ imageUrl: 'https://picsum.photos/id/102/200/300' }),
-          undefined
         );
       });
     });
 
     describe('onUpdateImageDimensions', () => {
       it('changes the image dimensions', () => {
-        w = wrapper();
-        w.instance().onUpdateImageDimension({ height: 400, width: 400 });
+        el.onUpdateImageDimension({height: 400, width: 400});
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ dimensions: { height: 400, width: 400 } }),
-          undefined
+          expect.objectContaining({dimensions: {height: 400, width: 400}})
         );
       });
     });
 
     describe('onUpdateShapes', () => {
       it('changes the shapes', () => {
-        w = wrapper();
-        const shapes = [ ...initialModel.shapes, { id: '2' }];
-        w.instance().onUpdateShapes(shapes);
+        const shapes = [...initialModel.shapes, {id: '2'}];
+        el.onUpdateShapes(shapes);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes }),
-          undefined
+          expect.objectContaining({shapes})
         );
       });
     });
