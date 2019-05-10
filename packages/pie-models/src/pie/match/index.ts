@@ -47,6 +47,9 @@ export interface MatchPie extends PieModel {
   /** Indicates if the control for responses should be single (radio) or multiple (checkbox) */
   choiceMode: 'radio' | 'checkbox';
 
+  /**  The question prompt or item stem */
+  prompt?: string;
+
   /** The rows of choices to be presented.  */
   rows: MatchRow[];
 
@@ -103,6 +106,10 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
    */
   choiceMode: ConfigureProp;
 
+  /**
+   * Configuration for the prompt
+   */
+  prompt?: ConfigureProp;
 
   /**
    * Rationale configuration
