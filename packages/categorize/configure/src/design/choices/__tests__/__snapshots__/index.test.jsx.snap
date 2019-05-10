@@ -7,17 +7,79 @@ exports[`choices snapshot renders 1`] = `
   <WithStyles(Header)
     buttonLabel="ADD A CHOICE"
     label="Choices"
-    onAdd={[MockFunction]}
+    onAdd={[Function]}
   />
   <WithStyles(Config)
+    allChoicesHaveCount={[Function]}
     categoryCountIsOne={false}
     config={
       Object {
-        "columns": 2,
+        "categories": Array [
+          Object {
+            "choices": Array [],
+            "id": "0",
+            "label": "Category 0",
+          },
+        ],
+        "categoriesPerRow": 2,
+        "choices": Array [],
+        "choicesLabel": "",
+        "choicesPerRow": 2,
+        "choicesPosition": "below",
+        "correctResponse": Array [],
+        "lockChoiceOrder": true,
+        "removeTilesAfterPlacing": false,
       }
     }
-    onChange={[MockFunction]}
-    onToggleCategoryCount={[Function]}
+    onModelChanged={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "choices": Array [
+                Object {
+                  "content": "Choice 0",
+                  "id": "0",
+                },
+                Object {
+                  "content": "Choice 1",
+                  "id": "1",
+                },
+              ],
+            },
+          ],
+          Array [
+            Object {
+              "categories": Array [
+                Object {
+                  "choices": Array [],
+                  "id": "0",
+                  "label": "Category 0",
+                },
+              ],
+              "categoriesPerRow": 2,
+              "choices": Array [],
+              "choicesLabel": "",
+              "choicesPerRow": 2,
+              "choicesPosition": "below",
+              "correctResponse": Array [],
+              "lockChoiceOrder": true,
+              "removeTilesAfterPlacing": false,
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
   />
   <div
     style={
@@ -29,8 +91,8 @@ exports[`choices snapshot renders 1`] = `
     <DragSource(WithStyles(Choice))
       choice={
         Object {
-          "content": "content",
-          "id": "1",
+          "content": "Choice 0",
+          "id": "0",
         }
       }
       key="0"
