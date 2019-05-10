@@ -10,7 +10,7 @@ const question = {
       domainPosition: 1
     }
   ],
-  config: {
+  graph: {
     domain: [0, 1]
   },
   feedback: {
@@ -114,7 +114,7 @@ describe('controller', () => {
   describe('model', () => {
     const assertModel = (msg, question, session, env, expected) => {
       question = _.merge(question, {
-        config: {}
+        graph: {}
       });
       session = _.merge(session, {});
       env = _.merge(env, {});
@@ -142,7 +142,7 @@ describe('controller', () => {
       {},
       {},
       {
-        config: {},
+        graph: {},
         disabled: true,
         colorContrast: 'black_on_white'
       }
@@ -162,7 +162,7 @@ describe('controller', () => {
       assertModel(
         'disabled is true if exhibitOnly is true',
         {
-          config: {
+          graph: {
             exhibitOnly: true
           }
         },
@@ -174,14 +174,14 @@ describe('controller', () => {
       );
     });
 
-    describe('config', () => {
+    describe('graph', () => {
       assertModel(
-        'config is returned',
-        { config: { domain: [0, 1] } },
+        'graph is returned',
+        { graph: { domain: [0, 1] } },
         {},
         {},
         {
-          config: {
+          graph: {
             domain: [0, 1]
           }
         }
