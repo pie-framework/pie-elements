@@ -174,14 +174,9 @@ describe('controller', () => {
     it('adds default config', async () => {
       const result = await model(question, {}, { mode: 'gather' });
       expect(result).toMatchObject({
-        config: {
-          choices: {
-            columns: 2
-          },
-          categories: {
-            columns: 2
-          }
-        }
+        choicesPerRow: 2,
+        categoriesPerRow: 2,
+        choicesLabel: '',
       });
     });
   });

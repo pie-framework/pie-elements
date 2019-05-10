@@ -34,21 +34,13 @@ const positionOptions = [
   }
 ];
 
-const withDefaults = o => ({
-  label: '',
-  columns: 2,
-  position: 'above',
-  shuffle: false,
-  ...o
-});
 export class Config extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     config: PropTypes.object,
-    onChange: PropTypes.func.isRequired,
     categoryCountIsOne: PropTypes.bool,
-    onToggleCategoryCount: PropTypes.func
+    onModelChanged: PropTypes.func,
   };
 
   static defaultProps = {};
@@ -57,31 +49,38 @@ export class Config extends React.Component {
     anchorEl: null
   };
 
-  changeColumns = event => {
-    const numberValue = parseInt(event.target.value, 10);
+  toggleRemoveAllTiles = () => {
+    const { config, onModelChanged } = this.props;
+
+    const allAtOne = this.props.allChoicesHaveCount(1);
+    const update = config.choices.map(c => {
+      c.categoryCount = allAtOne ? 0 : 1;
+      return c;
+    });
+
+    onModelChanged({ choices: update });
+  };
+
+  changeColumns = ({ target }) => {
+    const { onModelChanged } = this.props;
+    const numberValue = parseInt(target.value, 10);
 
     if (numberValue && numberValue >= 1 && numberValue <= 4) {
-      this.apply(config => (config.columns = numberValue));
+      onModelChanged({ choicesPerRow: numberValue });
     }
   };
 
-  apply = fn => {
-    const { onChange } = this.props;
-    const config = withDefaults(this.props.config);
-    fn(config);
-    onChange(config);
-  };
-
-  changeLabel = event => {
-    this.apply(config => (config.label = event.target.value));
+  changeLabel = ({ target }) => {
+    this.props.onModelChanged({ choicesLabel: target.value });
   };
 
   toggleShuffle = () => {
-    this.apply(config => (config.shuffle = !config.shuffle));
+    this.props.onModelChanged({ lockChoiceOrder: !this.props.config.lockChoiceOrder });
   };
 
   changePosition = position => {
-    this.apply(config => (config.position = position.value));
+    this.props.onModelChanged({ choicesPosition: position.value });
+
     this.setState({ anchorEl: null });
   };
 
@@ -103,13 +102,11 @@ export class Config extends React.Component {
       classes,
       className,
       categoryCountIsOne,
-      onToggleCategoryCount
+      config,
     } = this.props;
 
-    const config = withDefaults(this.props.config);
-
     const positionOption =
-      positionOptions.find(option => option.value === config.position) ||
+      positionOptions.find(option => option.value === config.choicesPosition) ||
       positionOption[1];
 
     return (
@@ -122,18 +119,18 @@ export class Config extends React.Component {
               min: 1,
               max: 4
             }}
-            value={config.columns}
-            onChange={this.changeColumns}
+            value={config.choicesPerRow}
+            onChange={(this.changeColumns)}
           />
           <InputCheckbox
             label={'Remove all tiles after placing'}
             checked={categoryCountIsOne}
-            onChange={onToggleCategoryCount}
+            onChange={this.toggleRemoveAllTiles}
           />
           <InputCheckbox
             className={classes.shuffleCheckbox}
-            label={'Shuffle'}
-            value={config.shuffle}
+            label={'Lock Choice Order'}
+            value={config.lockChoiceOrder}
             onChange={this.toggleShuffle}
           />
         </div>
@@ -145,7 +142,7 @@ export class Config extends React.Component {
               shrink: true
             }}
             label="Label"
-            value={config.label}
+            value={config.choicesLabel}
             onChange={this.changeLabel}
           />
           <List component="nav">
@@ -169,7 +166,7 @@ export class Config extends React.Component {
             {positionOptions.map(option => (
               <MenuItem
                 key={option.value}
-                selected={option.value === config.position}
+                selected={option.value === config.choicesPosition}
                 onClick={() => this.changePosition(option)}
               >
                 {option.label}

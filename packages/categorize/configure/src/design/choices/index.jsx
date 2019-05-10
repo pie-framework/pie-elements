@@ -7,17 +7,16 @@ import Choice from './choice';
 import Header from '../header';
 import every from 'lodash/every';
 import Config from './config';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
+import { removeAllChoices } from '@pie-lib/categorize';
 
 export class Choices extends React.Component {
   static propTypes = {
-    config: PropTypes.object.isRequired,
-    onConfigChange: PropTypes.func.isRequired,
+    model: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choices: PropTypes.array.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onAdd: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
@@ -26,23 +25,12 @@ export class Choices extends React.Component {
 
   static defaultProps = {};
 
-  toggleRemoveAllTiles = () => {
-    const { choices, onChange } = this.props;
-
-    const allAtOne = this.allChoicesHaveCount(1);
-    const update = choices.map(c => {
-      c.categoryCount = allAtOne ? 0 : 1;
-      return c;
-    });
-    onChange(update);
-  };
-
   changeChoice = choice => {
-    const { choices, onChange } = this.props;
+    const { choices, onModelChanged } = this.props;
     const index = choices.findIndex(h => h.id === choice.id);
     if (index !== -1) {
       choices.splice(index, 1, choice);
-      onChange(choices);
+      onModelChanged({ choices });
     }
   };
 
@@ -51,31 +39,51 @@ export class Choices extends React.Component {
     return every(choices, c => c.categoryCount === count);
   };
 
+  addChoice = () => {
+    const { onModelChanged, model } = this.props;
+
+    const id = utils.firstAvailableIndex(model.choices.map(a => a.id), 0);
+    const data = { id, content: 'Choice ' + id };
+
+    onModelChanged({ choices: model.choices.concat([data]) });
+  };
+
+  deleteChoice = choice => {
+    const { model, onModelChanged } = this.props;
+    const index = model.choices.findIndex(a => a.id === choice.id);
+    if (index !== -1) {
+      model.choices.splice(index, 1);
+      model.correctResponse = removeAllChoices(
+        choice.id,
+        model.correctResponse
+      );
+      onModelChanged(model);
+    }
+  };
+
   render() {
     const {
       classes,
       className,
       choices,
-      onAdd,
-      onDelete,
-      config,
-      onConfigChange,
-      imageSupport
+      model,
+      imageSupport,
+      onModelChanged
     } = this.props;
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
-
     const choiceHolderStyle = {
-      gridTemplateColumns: `repeat(${config.columns}, 1fr)`
+      gridTemplateColumns: `repeat(${model.choicesPerRow}, 1fr)`
     };
+
     return (
       <div className={classNames(classes.choices, className)}>
-        <Header label="Choices" buttonLabel="ADD A CHOICE" onAdd={onAdd} />
+        <Header label="Choices" buttonLabel="ADD A CHOICE" onAdd={this.addChoice} />
         <Config
-          config={config}
-          onChange={onConfigChange}
+          config={model}
           categoryCountIsOne={categoryCountIsOne}
-          onToggleCategoryCount={this.toggleRemoveAllTiles}
+          onModelChanged={onModelChanged}
+          allChoicesHaveCount={this.allChoicesHaveCount}
         />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
           {choices.map((h, index) => (
@@ -85,7 +93,7 @@ export class Choices extends React.Component {
               key={index}
               imageSupport={imageSupport}
               onChange={this.changeChoice}
-              onDelete={() => onDelete(h)}
+              onDelete={() => this.deleteChoice(h)}
             />
           ))}
         </div>
