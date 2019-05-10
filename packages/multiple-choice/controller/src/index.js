@@ -10,7 +10,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   };
 
   // if (role === 'instructor') {
-  out.rationale = choice.rationale;
+  //  out.rationale = choice.rationale;
   // }
 
   if (mode === 'evaluate') {
