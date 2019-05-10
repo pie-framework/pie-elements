@@ -23,10 +23,22 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
   },
+  rationaleHolder: {
+    width: '70%',
+  },
+  rationale: {
+    paddingTop: theme.spacing.unit * 2,
+  },
   design: {
     paddingTop: theme.spacing.unit * 3
   },
+  choiceConfigurationHolder: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   choiceConfiguration: {
+    width: '100%',
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
   },
@@ -125,20 +137,41 @@ const Design = withStyles(styles)(props => {
             </InputContainer>
           )}
           {model.choices.map((choice, index) => (
-            <ChoiceConfiguration
-              key={index}
-              index={index + 1}
-              useLetterOrdering={model.choicePrefix === 'letters'}
-              className={classes.choiceConfiguration}
-              mode={model.choiceMode}
-              data={choice}
-              defaultFeedback={{}}
-              imageSupport={imageSupport}
-              onDelete={() => onRemoveChoice(index)}
-              onChange={c => onChoiceChanged(index, c)}
-              allowFeedBack={feedback.settings}
-              allowDelete={deleteChoice.settings}
-            />
+            <div
+              key={`choice-${index}`}
+              className={classes.choiceConfigurationHolder}
+            >
+              <ChoiceConfiguration
+                key={index}
+                index={index + 1}
+                useLetterOrdering={model.choicePrefix === 'letters'}
+                className={classes.choiceConfiguration}
+                mode={model.choiceMode}
+                data={choice}
+                defaultFeedback={{}}
+                imageSupport={imageSupport}
+                onDelete={() => onRemoveChoice(index)}
+                onChange={c => onChoiceChanged(index, c)}
+                allowFeedBack={feedback.settings}
+                allowDelete={deleteChoice.settings}
+              />
+              {rationale.enabled && (
+                <InputContainer
+                  key={`rationale-${index}`}
+                  label={rationale.label}
+                  className={classes.rationaleHolder}
+                >
+                  <EditableHtml
+                    className={classes.rationale}
+                    markup={choice.rationale || ''}
+                    onChange={c => onChoiceChanged(index, {
+                      ...choice,
+                      rationale: c
+                    })}
+                  />
+                </InputContainer>)
+              }
+            </div>
           ))}
           <br />
           {addChoiceButton.settings && (

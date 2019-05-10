@@ -12,7 +12,6 @@ exports.model = (id, element) => ({
         type: 'none',
         value: ''
       },
-      rationale: 'Rationale for Sweden'
     },
     {
       value: 'iceland',
