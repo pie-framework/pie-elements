@@ -59,10 +59,14 @@ export class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired,
     onMultipleToggle: PropTypes.func.isRequired,
     multiple: PropTypes.bool.isRequired,
-    configuration: PropTypes.object.isRequired,
+    configuration: PropTypes.object,
     rationale: PropTypes.string,
     imageSupport: PropTypes.object,
     onRationaleChange: PropTypes.func
+  };
+
+  static defaultProps = {
+    configuration: {}
   };
 
   onChange = (name, isBoolean) => event => {
