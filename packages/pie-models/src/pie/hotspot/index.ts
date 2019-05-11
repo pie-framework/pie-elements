@@ -2,6 +2,7 @@ import { Shape }  from '../../Shape';
 import { Dimension }  from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
+import { ConfigureProp } from '../ConfigurationProp';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -56,4 +57,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
      * @default true
      */
     settingsPartialScoring?:  boolean;
+
+    /** Configuration for rationale */
+    rationale?: ConfigureProp;
 }
