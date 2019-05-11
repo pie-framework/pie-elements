@@ -93,5 +93,25 @@
     "committerDate": "2018-05-10 12:13:31 -0400",
     "isTagged": true,
     "tag": "@pie-element/number-line-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`.",
+    "merge": null,
+    "header": "feat: Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.config` will not be used anymore. Use `model.graph` instead, to configure the graph."
+      }
+    ],
+    "hash": "6548972f0d7d3a6afabd422b27959fdaa02e5e14",
+    "gitTags": "",
+    "committerDate": "2019-05-08 15:12:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@3.0.0"
   }
 ]

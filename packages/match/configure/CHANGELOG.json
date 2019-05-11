@@ -408,5 +408,20 @@
     "committerDate": "2019-05-04 11:37:30 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-configure@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "match",
+    "subject": "added configuration.",
+    "merge": null,
+    "header": "fix(match): added configuration.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "04ee24598534d08334b8745beb34130af7cb1554",
+    "gitTags": "",
+    "committerDate": "2019-05-08 13:20:52 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@2.0.2"
   }
 ]

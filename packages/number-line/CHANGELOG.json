@@ -318,5 +318,40 @@
     "committerDate": "2019-04-25 11:10:31 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line@3.4.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated pie-ui/categories version.",
+    "merge": null,
+    "header": "fix: Updated pie-ui/categories version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "99b0996427895b090313850c9e2e5d0d9d73d357",
+    "gitTags": "",
+    "committerDate": "2019-05-09 07:35:33 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`.",
+    "merge": null,
+    "header": "feat: Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.config` will not be used anymore. Use `model.graph` instead, to configure the graph."
+      }
+    ],
+    "hash": "6548972f0d7d3a6afabd422b27959fdaa02e5e14",
+    "gitTags": "",
+    "committerDate": "2019-05-08 15:12:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@4.0.0"
   }
 ]
