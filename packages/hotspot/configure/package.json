@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/hotspot-configure",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "lib/index.js",
   "author": "",
@@ -17,6 +17,7 @@
     "lodash": "^4.17.10",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-konva": "^16.8.6"
   },
   "license": "ISC"

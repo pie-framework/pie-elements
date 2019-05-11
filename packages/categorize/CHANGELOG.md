@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@3.0.0...@pie-element/categorize@3.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.12...@pie-element/categorize@3.0.0) (2019-05-10)
+
+
+### Bug Fixes
+
+* Updated pie-ui/categories version. ([a4386c8](https://github.com/pie-framework/pie-elements/commit/a4386c8))
+
+
+### Features
+
+* Transformed defaults into an object that has model and configuration property. ([ceb074c](https://github.com/pie-framework/pie-elements/commit/ceb074c))
+* **categorize:** Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`. ([5922f85](https://github.com/pie-framework/pie-elements/commit/5922f85))
+
+
+### BREAKING CHANGES
+
+* **categorize:** `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.
+
+
+
+
+
 ## [2.13.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@2.13.11...@pie-element/categorize@2.13.12) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/categorize
