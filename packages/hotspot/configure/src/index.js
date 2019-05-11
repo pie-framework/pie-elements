@@ -13,7 +13,12 @@ const log = debug('hotspot:configure');
 
 const defaultValues = {
   settingsMultipleCorrect: true,
-  settingsPartialScoring: true
+  settingsPartialScoring: true,
+  rationale: {
+    settings: true,
+    label: 'Rationale',
+    enabled: false
+  }
 };
 
 const prepareCustomizationObject = (configure, model) => {
@@ -93,6 +98,19 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  onRationaleChanged = rationale => {
+    this.onModelChanged({
+      ...this._model,
+      rationale
+    });
+  };
+
+  onConfigurationChanged = (key, value) => {
+    this._configure[key] = value;
+
+    this._render();
+  };
+
   onMultipleCorrectChanged = () => {
     const { _model } = this;
     _model.multipleCorrect = !_model.multipleCorrect;
@@ -131,6 +149,8 @@ export default class HotspotConfigure extends HTMLElement {
       onImageUpload: this.onImageUpload,
       onMultipleCorrectChanged: this.onMultipleCorrectChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
+      onRationaleChanged: this.onRationaleChanged.bind(this),
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,

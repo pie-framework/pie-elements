@@ -15,5 +15,6 @@ export default {
   outlineColor: 'blue',
   outlineList: [
     'blue'
-  ]
+  ],
+  rationale: 'Rationale goes here.'
 };
