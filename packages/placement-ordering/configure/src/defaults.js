@@ -22,6 +22,7 @@ export default {
     removeTilesAfterPlacing: true,
     scoringType: 'auto',
     targetLabel: 'Target Label goes here',
+    rationale: 'Here goes rationale'
   },
   configuration: {
     choiceLabel: {
@@ -65,9 +66,9 @@ export default {
       label: 'Placement Area',
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     removeTilesAfterPlacing: {
       settings: false,

@@ -34,7 +34,7 @@ export interface CorrectResponse {
     weight?: number;
 }
 
-/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+/** NOTE: teacherInstructions, studentInstructions & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configuration (to be moved when the functionality is defined)
  */
@@ -77,8 +77,8 @@ export interface PlacementOrderingPie extends PieModel {
     /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
     placementArea?: boolean;
 
-    /** Indicates if rationale is enabled */
-    rationale: boolean;
+    /** Indicates correct answer rationale */
+    rationale: string;
 
     /** Indicates if each choice will be removed from choices after becoming a target */
     removeTilesAfterPlacing?: boolean;

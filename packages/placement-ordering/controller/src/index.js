@@ -126,6 +126,10 @@ export function model(question, session, env) {
 
     base.disabled = env.mode !== 'gather';
 
+    // if (role === 'instructor') {
+    //  base.rationale = question.rationale;
+    // }
+
     if (env.mode === 'evaluate') {
       base.outcomes = _.map(session.value, function(c, idx) {
         return {
