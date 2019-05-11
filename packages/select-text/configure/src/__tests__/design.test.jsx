@@ -19,6 +19,7 @@ describe('design', () => {
   let w;
   let onChange;
   let onPromptChanged;
+  let onRationaleChanged;
 
   const getModel = () => ({
     tokens: [],
@@ -26,6 +27,7 @@ describe('design', () => {
   beforeEach(() => {
     onChange = jest.fn();
     onPromptChanged = jest.fn();
+    onRationaleChanged = jest.fn();
     w = shallow(
       <Design
         model={getModel()}
@@ -34,6 +36,7 @@ describe('design', () => {
         className={'foo'}
         onModelChanged={onChange}
         onPromptChanged={onPromptChanged}
+        onRationaleChanged={onRationaleChanged}
       />
     );
   });
@@ -56,6 +59,7 @@ describe('design', () => {
           className={'foo'}
           onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
         />
       );
 
@@ -75,6 +79,7 @@ describe('design', () => {
           className={'foo'}
           onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
         />
       );
 
@@ -146,6 +151,14 @@ describe('design', () => {
         prompt: 'New Prompt'
       }));
     });
+
+    describe('changeRationale', () => {
+      assert('onRationaleChanged', ['New Rationale'], m => ({
+        ...m,
+        rationale: 'New Rationale'
+      }));
+    });
+
 
   });
 });
