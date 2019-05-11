@@ -1,4 +1,8 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -139,6 +143,14 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
@@ -154,7 +166,11 @@ export default class HotspotConfigure extends HTMLElement {
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
-      onUpdateShapes: this.onUpdateShapes
+      onUpdateShapes: this.onUpdateShapes,
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this)
+      }
     });
     ReactDOM.render(element, this);
   }

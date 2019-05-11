@@ -92,7 +92,8 @@ class Root extends React.Component {
       onRationaleChanged,
       onUpdateImageDimension,
       onUpdateShapes,
-      configure
+      configure,
+      imageSupport
     } = this.props;
     const { rationale = {} } = configure;
 
@@ -109,7 +110,7 @@ class Root extends React.Component {
 
               {rationale.enabled && (
                 <InputContainer label={rationale.label} className={classes.prompt}>
-                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged}/>
+                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
                 </InputContainer>
               )}
 
@@ -174,6 +175,10 @@ Root.propTypes = {
   configure: PropTypes.object,
   disableSidePanel: PropTypes.bool,
   model: PropTypes.object.isRequired,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func
+  }),
   onImageUpload: PropTypes.func.isRequired,
   onColorChanged: PropTypes.func.isRequired,
   onPartialScoringChanged: PropTypes.func.isRequired,
