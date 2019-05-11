@@ -7,7 +7,7 @@ exports[`Categories snapshot renders 1`] = `
   <WithStyles(Header)
     buttonLabel="ADD A CATEGORY"
     label="Categories"
-    onAdd={[MockFunction]}
+    onAdd={[Function]}
   />
   <div
     className="row"
@@ -20,7 +20,7 @@ exports[`Categories snapshot renders 1`] = `
         }
       }
       label="Categories per row"
-      onChange={[MockFunction]}
+      onChange={[Function]}
       required={false}
       select={false}
       type="number"
@@ -45,7 +45,7 @@ exports[`Categories snapshot renders 1`] = `
         }
       }
       key="0"
-      onAddChoice={[MockFunction]}
+      onAddChoice={[Function]}
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}

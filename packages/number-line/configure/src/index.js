@@ -6,7 +6,7 @@ import defaults from './defaults';
 
 export default class NumberLineConfigReactElement extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...defaults,
+    ...defaults.model,
     ...model,
   });
 
@@ -21,7 +21,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onDomainChanged(domain) {
-    this._model.config.domain = domain;
+    this._model.graph.domain = domain;
     let detail = {
       update: this._model
     };
@@ -32,7 +32,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onTickFrequencyChange(event, value) {
-    this._model.config.tickFrequency = parseInt(value, 10);
+    this._model.graph.tickFrequency = parseInt(value, 10);
     let detail = {
       update: this._model
     };
@@ -43,7 +43,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onMinorTicksChanged(event, value) {
-    this._model.config.showMinorTicks = value;
+    this._model.graph.showMinorTicks = value;
     let detail = {
       update: this._model
     };
@@ -54,7 +54,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onSnapPerTickChange(event, value) {
-    this._model.config.snapPerTick = parseInt(value, 10);
+    this._model.graph.snapPerTick = parseInt(value, 10);
     let detail = {
       update: this._model
     };
@@ -64,8 +64,8 @@ export default class NumberLineConfigReactElement extends HTMLElement {
     this._rerender();
   }
 
-  onConfigChange(config) {
-    this._model.config = config;
+  onConfigChange(graph) {
+    this._model.graph = graph;
     let detail = {
       update: this._model
     };
@@ -87,7 +87,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onInitialElementsChange(initialElements) {
-    this._model.config.initialElements = initialElements;
+    this._model.graph.initialElements = initialElements;
     let detail = {
       update: this._model,
       reset: true
@@ -99,7 +99,7 @@ export default class NumberLineConfigReactElement extends HTMLElement {
   }
 
   onAvailableTypesChange(availableTypes) {
-    this._model.config.availableTypes = availableTypes;
+    this._model.graph.availableTypes = availableTypes;
     let detail = {
       update: this._model,
       reset: true

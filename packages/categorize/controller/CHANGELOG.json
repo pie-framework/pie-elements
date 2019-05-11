@@ -103,5 +103,25 @@
     "committerDate": "2018-05-22 14:42:10 -0400",
     "isTagged": true,
     "tag": "@pie-element/categorize-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "merge": null,
+    "header": "feat(categorize): Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead."
+      }
+    ],
+    "hash": "5922f855312550e25018affa5bcc5f4c116dc47a",
+    "gitTags": "",
+    "committerDate": "2019-05-07 13:47:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-controller@2.0.0"
   }
 ]

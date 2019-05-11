@@ -22,11 +22,12 @@ exports[`config snapshot renders 1`] = `
     />
     <Component
       label="Remove all tiles after placing"
+      onChange={[Function]}
     />
     <Component
-      label="Shuffle"
+      label="Lock Choice Order"
       onChange={[Function]}
-      value={false}
+      value={true}
     />
   </div>
   <div>
@@ -53,7 +54,7 @@ exports[`config snapshot renders 1`] = `
       >
         <WithStyles(ListItemText)
           primary="Choices Position"
-          secondary="Choices will be shown above categories"
+          secondary="Choices will be shown below categories"
         />
       </WithStyles(ListItem)>
     </WithStyles(List)>
@@ -66,14 +67,14 @@ exports[`config snapshot renders 1`] = `
       <WithStyles(MenuItem)
         key="above"
         onClick={[Function]}
-        selected={true}
+        selected={false}
       >
         Above
       </WithStyles(MenuItem)>
       <WithStyles(MenuItem)
         key="below"
         onClick={[Function]}
-        selected={false}
+        selected={true}
       >
         Below
       </WithStyles(MenuItem)>
