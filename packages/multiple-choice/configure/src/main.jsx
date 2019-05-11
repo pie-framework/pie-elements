@@ -168,6 +168,7 @@ const Design = withStyles(styles)(props => {
                       ...choice,
                       rationale: c
                     })}
+                    imageSupport={imageSupport}
                   />
                 </InputContainer>)
               }
