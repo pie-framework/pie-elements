@@ -29,7 +29,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -93,14 +93,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
       label="Prompt"
     >
       <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
-    <Component
-      label="Rationale"
-    >
-      <EditableHtml
-        markup=""
         onChange={[Function]}
       />
     </Component>
@@ -173,7 +165,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -237,14 +229,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
       label="Prompt"
     >
       <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
-    <Component
-      label="Rationale"
-    >
-      <EditableHtml
-        markup=""
         onChange={[Function]}
       />
     </Component>
@@ -309,7 +293,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -373,14 +357,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       label="Prompt"
     >
       <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
-    <Component
-      label="Rationale"
-    >
-      <EditableHtml
-        markup=""
         onChange={[Function]}
       />
     </Component>
