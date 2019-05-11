@@ -12,7 +12,7 @@ export interface Choice {
 
   /** student feedback for this choice, only shown in evaluate mode */
   feedback?: Feedback;
-  
+
   /** Rationale for the Choice */
   rationale?: string;
 }
