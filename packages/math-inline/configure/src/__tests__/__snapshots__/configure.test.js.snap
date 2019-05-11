@@ -12,9 +12,9 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "settings": true,
             },
             "rationale": Object {
-              "enabled": true,
+              "enabled": false,
               "label": "Rationale",
-              "settings": false,
+              "settings": true,
             },
             "responseType": Object {
               "label": "Response type",
@@ -42,7 +42,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "responseType": undefined,
             },
             "Properties": Object {
-              "rationale.enabled": false,
+              "rationale.enabled": undefined,
               "scoringType": false,
               "studentInstructions.enabled": false,
               "teacherInstructions.enabled": false,
@@ -122,6 +122,37 @@ exports[`Configure renders correctly with snapshot 1`] = `
           </span>
         </WithStyles(Typography)>
         <WithStyles(GeneralConfigBlock)
+          configuration={
+            Object {
+              "partialScoring": Object {
+                "label": "Allow Partial Scoring",
+                "settings": true,
+              },
+              "rationale": Object {
+                "enabled": false,
+                "label": "Rationale",
+                "settings": true,
+              },
+              "responseType": Object {
+                "label": "Response type",
+                "settings": true,
+              },
+              "scoringType": Object {
+                "label": "Scoring Type",
+                "settings": false,
+              },
+              "studentInstructions": Object {
+                "enabled": true,
+                "label": "Student Instructions",
+                "settings": false,
+              },
+              "teacherInstructions": Object {
+                "enabled": true,
+                "label": "Teacher Instructions",
+                "settings": false,
+              },
+            }
+          }
           model={
             Object {
               "configure": undefined,

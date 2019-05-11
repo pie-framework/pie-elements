@@ -141,6 +141,11 @@ export function model(question, session, env) {
       const out = Object.assign(base, {
         correctResponse
       });
+
+      // if (role === 'instructor') {
+      //   out.rationale = question.rationale;
+      // }
+
       log('out: ', out);
       resolve(out);
     });
