@@ -1976,6 +1976,20 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
+"@pie-ui/hotspot@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.0.4.tgz#ff91ec1f3052bd607831739dc00a2c5dff2cc6b9"
+  integrity sha512-7ZbIL7irdbS9cB+8FptdDIZIwwtrH5EsyyObCaxc524uC8fUSLIzOWkCcXygSzKk9nScEsK6xW+N/ChIwV/0qg==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/math-rendering" "^1.2.9"
+    konva "^3.2.5"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-konva "^16.8.6"
+
 "@pie-ui/inline-choice@^5.3.0":
   version "5.3.7"
   resolved "https://registry.yarnpkg.com/@pie-ui/inline-choice/-/inline-choice-5.3.7.tgz#fc6e0caa01b61a8bb9ea61f991053fb60d4749f0"
@@ -7711,7 +7725,7 @@ kleur@^2.0.1:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-2.0.2.tgz#b704f4944d95e255d038f0cb05fb8a602c55a300"
   integrity sha512-77XF9iTllATmG9lSlIv0qdQ2BQ/h9t0bJllHlbvsQ0zUWfU7Yi0S8L5JXzPZgkefIiajLmBJJ4BsMJmqcf7oxQ==
 
-konva@^3.2.4:
+konva@^3.2.4, konva@^3.2.5:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/konva/-/konva-3.2.6.tgz#06c595544cd27a99256c8eb45a7abbd3be1a31d4"
   integrity sha512-Sq+MkK8PC/ZKX2T5S+7SH0O7oL+ah0F+M4l+s5LcxBvDXMMkk9FA09KS9N5HAGItwJhJfp5dwiLbh30VoqKL0A==
@@ -9544,7 +9558,7 @@ react-dnd@^7.0.2:
     invariant "^2.1.0"
     shallowequal "^1.1.0"
 
-react-dom@^16.4.0, react-dom@^16.8.1:
+react-dom@^16.4.0, react-dom@^16.8.1, react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   integrity sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
