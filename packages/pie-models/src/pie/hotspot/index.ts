@@ -38,6 +38,9 @@ export interface HotspotPie extends PieModel {
 
   /**  The outline hotspot color options  */
   outlineList?: string[];
+
+  /** Indicates the value for rationale */
+  rationale?: string;
 }
 
 
