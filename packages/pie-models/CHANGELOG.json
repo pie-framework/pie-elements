@@ -463,5 +463,20 @@
     "committerDate": "2019-05-10 12:49:54 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(math-inline): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7a4f9d4647b3230e4b06af809189fdbbdd711365",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:18:47 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.3.0"
   }
 ]
