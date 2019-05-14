@@ -42,5 +42,6 @@ exports.model = (id, element) => ({
       title: 'Question Text 4',
       values: [false, false]
     }
-  ]
+  ],
+  prompt: 'Select correct answers.',
 });

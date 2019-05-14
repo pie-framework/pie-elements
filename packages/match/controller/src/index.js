@@ -129,6 +129,7 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
+        prompt: question.prompt,
         config: {
           ...question,
           shuffled: !question.lockChoiceOrder
@@ -137,7 +138,6 @@ export function model(question, session, env) {
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
-
       };
 
       const out = Object.assign(base, {
