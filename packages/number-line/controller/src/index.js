@@ -183,7 +183,7 @@ export function model(question, session, env) {
 
       fb.then(feedbackMessage => {
         const out = {
-          config: graph,
+          prompt: question.prompt,
           graph,
           disabled,
           corrected,
