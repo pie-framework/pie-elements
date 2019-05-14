@@ -142,9 +142,11 @@ export function model(question, session, env) {
         correctResponse
       });
 
-      // if (role === 'instructor') {
-      //   out.rationale = question.rationale;
-      // }
+      if (env.role === 'instructor') {
+        out.rationale = question.rationale;
+      } else {
+        out.rationale = null;
+      }
 
       log('out: ', out);
       resolve(out);
