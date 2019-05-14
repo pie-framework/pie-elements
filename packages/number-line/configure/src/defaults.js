@@ -1,5 +1,6 @@
 export default {
   model: {
+    prompt: 'Question Prompt goes here.',
     correctResponse: [],
     graph: {
       domain: [-5, 5],
@@ -21,5 +22,10 @@ export default {
       }
     }
   },
-  configuration: {}
+  configuration: {
+    prompt: {
+      settings: true,
+      label: 'Prompt'
+    }
+  }
 };
