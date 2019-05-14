@@ -142,7 +142,7 @@ export function model(question, session, env) {
         correctResponse
       });
 
-      if (env.role === 'instructor') {
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
         out.rationale = question.rationale;
       } else {
         out.rationale = null;
