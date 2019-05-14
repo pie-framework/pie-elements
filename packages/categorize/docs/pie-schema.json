@@ -42,6 +42,43 @@
       },
       "title": "choices"
     },
+    "choicesPerRow": {
+      "description": "The number of columns in which to present the choices",
+      "default": 2,
+      "type": "number",
+      "title": "choicesPerRow"
+    },
+    "categoriesPerRow": {
+      "description": "The number of columns in which to present the categories",
+      "default": 2,
+      "type": "number",
+      "title": "categoriesPerRow"
+    },
+    "choicesPosition": {
+      "title": "ChoicesPosition",
+      "enum": [
+        "above",
+        "below",
+        "left",
+        "right"
+      ],
+      "type": "string"
+    },
+    "choicesLabel": {
+      "description": "Label to be displayed for the choices",
+      "type": "string",
+      "title": "choicesLabel"
+    },
+    "lockChoiceOrder": {
+      "description": "Should the choices be shuffled or not",
+      "type": "boolean",
+      "title": "lockChoiceOrder"
+    },
+    "removeTilesAfterPlacing": {
+      "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
+      "type": "boolean",
+      "title": "removeTilesAfterPlacing"
+    },
     "categories": {
       "description": "The categories in which choices may be placed",
       "type": "array",
@@ -134,78 +171,6 @@
         ]
       },
       "title": "correctResponse"
-    },
-    "config": {
-      "description": "Configuration options for the presentataion of the interaction",
-      "type": "object",
-      "properties": {
-        "choices": {
-          "title": "ChoicesConfig",
-          "type": "object",
-          "properties": {
-            "columns": {
-              "default": 2,
-              "type": "number",
-              "title": "columns"
-            },
-            "position": {
-              "title": "ChoicesPosition",
-              "enum": [
-                "above",
-                "below",
-                "left",
-                "right"
-              ],
-              "type": "string"
-            },
-            "label": {
-              "description": "Label to be displayed for the choices",
-              "type": "string",
-              "title": "label"
-            },
-            "shuffle": {
-              "description": "Should the choices be shuffled",
-              "type": "boolean",
-              "title": "shuffle"
-            },
-            "removeafterplacing": {
-              "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
-              "type": "boolean",
-              "title": "removeafterplacing"
-            }
-          },
-          "required": [
-            "columns",
-            "label",
-            "position",
-            "removeafterplacing",
-            "shuffle"
-          ]
-        },
-        "categories": {
-          "title": "CategoriesConfig",
-          "type": "object",
-          "properties": {
-            "columns": {
-              "description": "The number of columns in which to present the categories",
-              "default": 2,
-              "type": "number",
-              "title": "columns"
-            },
-            "rows": {
-              "description": "The number of rows in which to present the categories",
-              "default": 1,
-              "type": "number",
-              "title": "rows"
-            }
-          }
-        }
-      },
-      "required": [
-        "categories",
-        "choices"
-      ],
-      "title": "config"
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -538,10 +503,13 @@
   "required": [
     "categories",
     "choices",
-    "config",
+    "choicesLabel",
+    "choicesPosition",
     "correctResponse",
     "element",
-    "id"
+    "id",
+    "lockChoiceOrder",
+    "removeTilesAfterPlacing"
   ],
   "definitions": {
     "CategoryChoice": {
@@ -577,6 +545,16 @@
         "content",
         "id"
       ]
+    },
+    "ChoicesPosition": {
+      "title": "ChoicesPosition",
+      "enum": [
+        "above",
+        "below",
+        "left",
+        "right"
+      ],
+      "type": "string"
     },
     "Category": {
       "title": "Category",
@@ -660,77 +638,6 @@
         "category",
         "choices"
       ]
-    },
-    "ChoicesConfig": {
-      "title": "ChoicesConfig",
-      "type": "object",
-      "properties": {
-        "columns": {
-          "default": 2,
-          "type": "number",
-          "title": "columns"
-        },
-        "position": {
-          "title": "ChoicesPosition",
-          "enum": [
-            "above",
-            "below",
-            "left",
-            "right"
-          ],
-          "type": "string"
-        },
-        "label": {
-          "description": "Label to be displayed for the choices",
-          "type": "string",
-          "title": "label"
-        },
-        "shuffle": {
-          "description": "Should the choices be shuffled",
-          "type": "boolean",
-          "title": "shuffle"
-        },
-        "removeafterplacing": {
-          "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
-          "type": "boolean",
-          "title": "removeafterplacing"
-        }
-      },
-      "required": [
-        "columns",
-        "label",
-        "position",
-        "removeafterplacing",
-        "shuffle"
-      ]
-    },
-    "ChoicesPosition": {
-      "title": "ChoicesPosition",
-      "enum": [
-        "above",
-        "below",
-        "left",
-        "right"
-      ],
-      "type": "string"
-    },
-    "CategoriesConfig": {
-      "title": "CategoriesConfig",
-      "type": "object",
-      "properties": {
-        "columns": {
-          "description": "The number of columns in which to present the categories",
-          "default": 2,
-          "type": "number",
-          "title": "columns"
-        },
-        "rows": {
-          "description": "The number of rows in which to present the categories",
-          "default": 1,
-          "type": "number",
-          "title": "rows"
-        }
-      }
     },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",

@@ -1,33 +1,13 @@
+NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+functionalities are not defined yet - the value for those can belong to
+model or to configuration (to be moved when the functionality is defined)
 Model for the @pie-elements/placement-ordering
 
 The schema defines the following properties:
 
-# `prompt` (string, required)
-
-Th epropmpt for the question
-
-# `choiceAreaLabel` (string)
+# `choiceLabel` (string)
 
 The label for possible choices
-
-# `choiceAreaLayout` (string, enum, required)
-
-The layout for displaying the choices
-
-This element must be one of the following enum values:
-
-* `horizontal`
-* `vertical`
-
-# `answerAreaLabel` (string)
-
-The label for answer area if placement area is enabled
-
-# `shuffle` (boolean, required)
-
-Indicates if the choices can shuffle
-
-Default: `false`
 
 # `choices` (array, required)
 
@@ -51,10 +31,10 @@ Indicates if choice will be removed after is placed into a placement area
 
 Default: `false`
 
-## `shuffle` (boolean)
+## `lockChoiceOrder` (boolean)
 
-If the entire array of choices can shuffle, each choice itself
-has this property to indicate if it should shuffle
+If the entire array of choices can lockChoiceOrder, each choice itself
+has this property to indicate if it should lockChoiceOrder
 
 Default: `true`
 
@@ -75,90 +55,21 @@ The id of the correct response
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
 
-# `placementType` (string, enum)
+# `enableImages` (object, required)
 
-Indicates if the items can be replaced with each other or if they can be placed inside other boxes
+Properties of the `enableImages` object:
 
-This element must be one of the following enum values:
+## `settings` (boolean)
 
-* `none`
-* `placement`
+Indicates if the item has to be displayed
 
-# `showOrdering` (boolean, required)
+## `label` (string)
 
-If placement type is placement, show ordering indicates if the boxes are numbered
+Indicates the label for the item
 
-# `configure` (object, required)
+## `enabled` (boolean)
 
-Properties of the `configure` object:
-
-## `enableOrientationChange` (boolean)
-
-Indicates if changing orientation is enabled
-
-## `enableShuffleChange` (boolean)
-
-Indicates if changing shuffle mode is enabled
-
-## `enableNumberedGuideChange` (boolean)
-
-Indicates if changing numbered guide mode is enabled
-
-## `enablePlacementAreaChange` (boolean)
-
-Indicates if changing placement area mode is enabled
-
-## `enablePromptChange` (boolean)
-
-Indicates if changing prompt is enabled
-
-## `enableChoiceLabelChange` (boolean)
-
-Indicates if changing choice label is enabled
-
-## `enableChoicesLabelChange` (boolean)
-
-Indicates if changing the label for the choices is enabled
-
-## `enableRemoveTiles` (boolean)
-
-Indicates if changing the remove tiles mode is enabled
-
-## `enableFeedback` (boolean)
-
-Indicates if feedback is enabled
-
-## `orientationLabel` (string)
-
-The label for the orientation checkboxes
-
-## `shuffleLabel` (string)
-
-The label for the shuffle checkbox
-
-## `includePlacementAreaLabel` (string)
-
-The label for the include placement area checkbox
-
-## `numberedGuidesLabel` (string)
-
-The label for the numbered guides checkbox
-
-## `promptLabel` (string)
-
-The label for the prompt input
-
-## `choiceLabel` (string)
-
-The label for the choice input
-
-## `choicesLabel` (string)
-
-The label for the individual choice input
-
-## `removeTilesLabel` (string)
-
-The label for the remove tiles switch
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 # `feedback` (object, required)
 
@@ -176,9 +87,63 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
-# `partialScoring` (boolean)
+# `prompt` (string)
+
+The item stem for the question
+
+# `lockChoiceOrder` (boolean, required)
+
+Indicates if the choices can lockChoiceOrder
+
+# `numberedGuides` (boolean, required)
+
+If placement type is placement; show ordering indicates if the boxes are numbered
+
+# `orientation` (string, enum, required)
+
+The layout for displaying the choices
+
+This element must be one of the following enum values:
+
+* `horizontal`
+* `vertical`
+
+# `partialScoring` (boolean, required)
 
 Indicates if partialScoring is enabled
+
+# `placementArea` (boolean)
+
+Indicates if the items can be replaced with each other or if they can be placed inside other boxes
+
+# `rationale` (boolean, required)
+
+Indicates if rationale is enabled
+
+# `removeTilesAfterPlacing` (boolean)
+
+Indicates if each choice will be removed from choices after becoming a target
+
+# `scoringType` (string, enum, required)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `auto`
+* `rubric`
+
+# `studentInstructions` (boolean, required)
+
+Indicates if student instructions are enabled
+
+# `targetLabel` (string)
+
+The label for answer area if placement area is enabled
+
+# `teacherInstructions` (boolean, required)
+
+Indicates if teacher instructions are enabled
 
 # `id` (string, required)
 
@@ -193,6 +158,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `Choice` (object)
 
@@ -212,10 +193,10 @@ Indicates if choice will be removed after is placed into a placement area
 
 Default: `false`
 
-### `shuffle` (boolean)
+### `lockChoiceOrder` (boolean)
 
-If the entire array of choices can shuffle, each choice itself
-has this property to indicate if it should shuffle
+If the entire array of choices can lockChoiceOrder, each choice itself
+has this property to indicate if it should lockChoiceOrder
 
 Default: `true`
 
@@ -231,78 +212,6 @@ The id of the correct response
 
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
-
-## `ConfigurePlacementOrdering` (object)
-
-Properties of the `ConfigurePlacementOrdering` object:
-
-### `enableOrientationChange` (boolean)
-
-Indicates if changing orientation is enabled
-
-### `enableShuffleChange` (boolean)
-
-Indicates if changing shuffle mode is enabled
-
-### `enableNumberedGuideChange` (boolean)
-
-Indicates if changing numbered guide mode is enabled
-
-### `enablePlacementAreaChange` (boolean)
-
-Indicates if changing placement area mode is enabled
-
-### `enablePromptChange` (boolean)
-
-Indicates if changing prompt is enabled
-
-### `enableChoiceLabelChange` (boolean)
-
-Indicates if changing choice label is enabled
-
-### `enableChoicesLabelChange` (boolean)
-
-Indicates if changing the label for the choices is enabled
-
-### `enableRemoveTiles` (boolean)
-
-Indicates if changing the remove tiles mode is enabled
-
-### `enableFeedback` (boolean)
-
-Indicates if feedback is enabled
-
-### `orientationLabel` (string)
-
-The label for the orientation checkboxes
-
-### `shuffleLabel` (string)
-
-The label for the shuffle checkbox
-
-### `includePlacementAreaLabel` (string)
-
-The label for the include placement area checkbox
-
-### `numberedGuidesLabel` (string)
-
-The label for the numbered guides checkbox
-
-### `promptLabel` (string)
-
-The label for the prompt input
-
-### `choiceLabel` (string)
-
-The label for the choice input
-
-### `choicesLabel` (string)
-
-The label for the individual choice input
-
-### `removeTilesLabel` (string)
-
-The label for the remove tiles switch
 
 ## `ComplexFeedbackType` (object)
 

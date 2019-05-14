@@ -3,25 +3,6 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "addChoice": {
-      "description": "Whether config view will show a button that allows an author to add more choices",
-      "default": true,
-      "type": "boolean",
-      "title": "addChoice"
-    },
-    "addChoiceButtonLabel": {
-      "description": "The label shown on the add choice button",
-      "maxLength": 50,
-      "default": "Add New Choice",
-      "type": "string",
-      "title": "addChoiceButtonLabel"
-    },
-    "addFeedBack": {
-      "description": "Show fields that allow author to edit content / messages that student role user would see if item \nis in evaluate mode",
-      "default": true,
-      "type": "boolean",
-      "title": "addFeedBack"
-    },
     "answerChoiceCount": {
       "description": "The number of empty choices to show in config view if no choice model is provided",
       "minimum": 1,
@@ -29,47 +10,257 @@
       "type": "number",
       "title": "answerChoiceCount"
     },
+    "addChoiceButton": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "choiceMode": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "choicePrefix": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "deleteChoice": {
-      "description": "Allow choices to be deleted by author",
-      "default": true,
-      "type": "boolean",
-      "title": "deleteChoice"
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsSelectChoiceMode": {
-      "description": "Indicates whether the settings panel will allow an author to modify the choice \nmode (radio / checkboxes) for single or multi-choice questions",
-      "default": true,
-      "type": "boolean",
-      "title": "settingsSelectChoiceMode"
+    "feedback": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsSelectChoiceModeLabel": {
-      "description": "The label presented above the `settingsSelectChoiceMode` setting",
-      "default": "Choice Mode",
-      "type": "string",
-      "title": "settingsSelectChoiceModeLabel"
+    "prompt": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsSelectChoicePrefixes": {
-      "description": "Indicates whether the settings panel will allow the author to chose prefixes to be prepended to \nchoices, the author may choose `letters`, `numbers` or `none`",
-      "default": true,
-      "type": "boolean",
-      "title": "settingsSelectChoicePrefixes"
+    "lockChoiceOrder": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsChoicePrefixesLabel": {
-      "description": "The label for the `settingsSelectChoicePrefixes` section in the settings panel",
-      "default": "Choice Prefixes",
-      "type": "string",
-      "title": "settingsChoicePrefixesLabel"
+    "partialScoring": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsPartialScoring": {
-      "description": "Indicates whether the settings panel wil allow the author to modify settings for partial scoring",
-      "default": true,
-      "type": "boolean",
-      "title": "settingsPartialScoring"
+    "rationale": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
-    "settingsConfigShuffle": {
-      "description": "Indicates whether the settings panel will allow author to control choice shuffling",
-      "default": true,
-      "type": "boolean",
-      "title": "settingsConfigShuffle"
+    "scoringType": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "studentInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "teacherInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
@@ -82,6 +273,35 @@
       "default": "Item Stemm",
       "type": "string",
       "title": "promptLabel"
+    }
+  },
+  "required": [
+    "choiceMode",
+    "choicePrefix",
+    "lockChoiceOrder",
+    "partialScoring"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

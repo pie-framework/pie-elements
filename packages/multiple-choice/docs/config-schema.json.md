@@ -2,25 +2,6 @@ Config Object for @pie-elements/multiple-choice
 
 The schema defines the following properties:
 
-# `addChoice` (boolean)
-
-Whether config view will show a button that allows an author to add more choices
-
-Default: `true`
-
-# `addChoiceButtonLabel` (string)
-
-The label shown on the add choice button
-
-Default: `"Add New Choice"`
-
-# `addFeedBack` (boolean)
-
-Show fields that allow author to edit content / messages that student role user would see if item 
-is in evaluate mode
-
-Default: `true`
-
 # `answerChoiceCount` (number)
 
 The number of empty choices to show in config view if no choice model is provided
@@ -31,49 +12,197 @@ Additional restrictions:
 
 * Minimum: `1`
 
-# `deleteChoice` (boolean)
+# `addChoiceButton` (object)
 
-Allow choices to be deleted by author
+Properties of the `addChoiceButton` object:
 
-Default: `true`
+## `settings` (boolean)
 
-# `settingsSelectChoiceMode` (boolean)
+Indicates if the item has to be displayed
 
-Indicates whether the settings panel will allow an author to modify the choice 
-mode (radio / checkboxes) for single or multi-choice questions
+## `label` (string)
 
-Default: `true`
+Indicates the label for the item
 
-# `settingsSelectChoiceModeLabel` (string)
+## `enabled` (boolean)
 
-The label presented above the `settingsSelectChoiceMode` setting
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-Default: `"Choice Mode"`
+# `choiceMode` (object, required)
 
-# `settingsSelectChoicePrefixes` (boolean)
+Properties of the `choiceMode` object:
 
-Indicates whether the settings panel will allow the author to chose prefixes to be prepended to 
-choices, the author may choose `letters`, `numbers` or `none`
+## `settings` (boolean)
 
-Default: `true`
+Indicates if the item has to be displayed
 
-# `settingsChoicePrefixesLabel` (string)
+## `label` (string)
 
-The label for the `settingsSelectChoicePrefixes` section in the settings panel
+Indicates the label for the item
 
-Default: `"Choice Prefixes"`
+## `enabled` (boolean)
 
-# `settingsPartialScoring` (boolean)
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-Indicates whether the settings panel wil allow the author to modify settings for partial scoring
+# `choicePrefix` (object, required)
 
-Default: `true`
+Properties of the `choicePrefix` object:
 
-# `settingsConfigShuffle` (boolean)
+## `settings` (boolean)
 
-Indicates whether the settings panel will allow author to control choice shuffling
+Indicates if the item has to be displayed
 
-Default: `true`
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `deleteChoice` (object)
+
+Properties of the `deleteChoice` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `feedback` (object)
+
+Properties of the `feedback` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `prompt` (object)
+
+Properties of the `prompt` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `lockChoiceOrder` (object, required)
+
+Properties of the `lockChoiceOrder` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `partialScoring` (object, required)
+
+Properties of the `partialScoring` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `rationale` (object)
+
+Properties of the `rationale` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `scoringType` (object)
+
+Properties of the `scoringType` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `studentInstructions` (object)
+
+Properties of the `studentInstructions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `teacherInstructions` (object)
+
+Properties of the `teacherInstructions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 # `showPrompt` (boolean)
 
@@ -86,3 +215,25 @@ Default: `true`
 The label for the item stem/prompt field
 
 Default: `"Item Stemm"`
+
+---
+
+# Sub Schemas
+
+The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)

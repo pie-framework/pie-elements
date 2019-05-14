@@ -1,3 +1,6 @@
+NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
+rationale, scoringType, studentInstructions, teacherInstructions
+so there's no implementation (they are only added in model)
 Model Object for @pie-elements/graph-lines
 
 The schema defines the following properties:
@@ -42,15 +45,11 @@ Number of correct answers
 
 Score percentage for partial scoring
 
-# `model` (object, required)
+# `graph` (object, required)
 
-Properties of the `model` object:
+Properties of the `graph` object:
 
-## `config` (object, required)
-
-Properties of the `config` object:
-
-### `lines` (array, required)
+## `lines` (array, required)
 
 The lines that should appear on the graph
 
@@ -58,107 +57,140 @@ The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
 
-#### `label` (string, required)
+### `label` (string, required)
 
 Label for the line
 
-#### `correctLine` (string, required)
+### `correctLine` (string, required)
 
 Correct line equation
 
-#### `initialView` (string, required)
+### `initialView` (string, required)
 
 Initial view for the line
 
-### `graphTitle` (string, required)
+## `graphTitle` (string, required)
 
 Indicates the title for the graph
 
-### `graphWidth` (number, required)
+## `graphWidth` (number, required)
 
 Indicated the width for the graph
 
-### `graphHeight` (number, required)
+## `graphHeight` (number, required)
 
 Indicates the height for the graph
 
-### `domainLabel` (string, required)
+## `domainLabel` (string, required)
 
 Indicates the domain label for the graph
 
-### `domainMin` (number, required)
+## `domainMin` (number, required)
 
 Indicates the left limit (for the x axis)
 
-### `domainMax` (number, required)
+## `domainMax` (number, required)
 
 Indicates the right limit (for the x axis)
 
-### `domainStepValue` (number, required)
+## `domainStepValue` (number, required)
 
 Indicates step value (for the x axis)
 
-### `domainSnapValue` (number, required)
+## `domainSnapValue` (number, required)
 
 Indicates snap value (for the x axis)
 
-### `domainLabelFrequency` (number, required)
+## `domainLabelFrequency` (number, required)
 
 Indicates domain label frequency (for the x axis)
 
-### `domainGraphPadding` (number, required)
+## `domainGraphPadding` (number, required)
 
 Indicates domain graph padding (for the x axis)
 
-### `rangeLabel` (string, required)
+## `rangeLabel` (string, required)
 
 Indicates the range label for the graph
 
-### `rangeMin` (number, required)
+## `rangeMin` (number, required)
 
 Indicates the bottom limit (for the y axis)
 
-### `rangeMax` (number, required)
+## `rangeMax` (number, required)
 
 Indicates the top limit (for the y axis)
 
-### `rangeStepValue` (number, required)
+## `rangeStepValue` (number, required)
 
 Indicates step value (for the y axis)
 
-### `rangeSnapValue` (number, required)
+## `rangeSnapValue` (number, required)
 
 Indicates snap value (for the y axis)
 
-### `rangeLabelFrequency` (number, required)
+## `rangeLabelFrequency` (number, required)
 
 Indicates range label frequency (for the y axis)
 
-### `rangeGraphPadding` (number, required)
+## `rangeGraphPadding` (number, required)
 
 Indicates range graph padding (for the y axis)
 
-### `sigfigs` (number, required)
+## `sigfigs` (number, required)
 
-### `showCoordinates` (boolean, required)
+## `showCoordinates` (boolean, required)
 
 Indicates if coordinates should be displayed
 
-### `showPointLabels` (boolean, required)
+## `showPointLabels` (boolean, required)
 
 Indicates if point labels should be displayed
 
-### `showInputs` (boolean, required)
+## `showInputs` (boolean, required)
 
 Indicates if inputs should be displayed
 
-### `showAxisLabels` (boolean, required)
+## `showAxisLabels` (boolean, required)
 
 Indicates if axis labels should be displayed
 
-### `showFeedback` (boolean, required)
+## `showFeedback` (boolean, required)
 
 Indicates if feedback should be displayed
+
+# `arrows` (boolean, required)
+
+Indicates if arrows are enabled
+
+# `padding` (boolean, required)
+
+Indicates if padding is enabled
+
+# `labels` (boolean, required)
+
+Indicates if labels are enabled
+
+# `rationale` (boolean, required)
+
+Indicates if rationale is enabled
+
+# `scoringType` (string, enum, required)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `auto`
+* `rubric`
+
+# `studentInstructions` (boolean, required)
+
+Indicates if student instructions are enabled
+
+# `teacherInstructions` (boolean, required)
+
+Indicates if teacher instructions are enabled
 
 # `id` (string, required)
 
@@ -173,6 +205,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `ComplexFeedbackType` (object)
 
@@ -234,124 +282,6 @@ Number of correct answers
 ### `scorePercentage` (number, required)
 
 Score percentage for partial scoring
-
-## `GraphLineModel` (object)
-
-Properties of the `GraphLineModel` object:
-
-### `config` (object, required)
-
-Properties of the `config` object:
-
-#### `lines` (array, required)
-
-The lines that should appear on the graph
-
-The object is an array with all elements of the type `object`.
-
-The array object has the following properties:
-
-##### `label` (string, required)
-
-Label for the line
-
-##### `correctLine` (string, required)
-
-Correct line equation
-
-##### `initialView` (string, required)
-
-Initial view for the line
-
-#### `graphTitle` (string, required)
-
-Indicates the title for the graph
-
-#### `graphWidth` (number, required)
-
-Indicated the width for the graph
-
-#### `graphHeight` (number, required)
-
-Indicates the height for the graph
-
-#### `domainLabel` (string, required)
-
-Indicates the domain label for the graph
-
-#### `domainMin` (number, required)
-
-Indicates the left limit (for the x axis)
-
-#### `domainMax` (number, required)
-
-Indicates the right limit (for the x axis)
-
-#### `domainStepValue` (number, required)
-
-Indicates step value (for the x axis)
-
-#### `domainSnapValue` (number, required)
-
-Indicates snap value (for the x axis)
-
-#### `domainLabelFrequency` (number, required)
-
-Indicates domain label frequency (for the x axis)
-
-#### `domainGraphPadding` (number, required)
-
-Indicates domain graph padding (for the x axis)
-
-#### `rangeLabel` (string, required)
-
-Indicates the range label for the graph
-
-#### `rangeMin` (number, required)
-
-Indicates the bottom limit (for the y axis)
-
-#### `rangeMax` (number, required)
-
-Indicates the top limit (for the y axis)
-
-#### `rangeStepValue` (number, required)
-
-Indicates step value (for the y axis)
-
-#### `rangeSnapValue` (number, required)
-
-Indicates snap value (for the y axis)
-
-#### `rangeLabelFrequency` (number, required)
-
-Indicates range label frequency (for the y axis)
-
-#### `rangeGraphPadding` (number, required)
-
-Indicates range graph padding (for the y axis)
-
-#### `sigfigs` (number, required)
-
-#### `showCoordinates` (boolean, required)
-
-Indicates if coordinates should be displayed
-
-#### `showPointLabels` (boolean, required)
-
-Indicates if point labels should be displayed
-
-#### `showInputs` (boolean, required)
-
-Indicates if inputs should be displayed
-
-#### `showAxisLabels` (boolean, required)
-
-Indicates if axis labels should be displayed
-
-#### `showFeedback` (boolean, required)
-
-Indicates if feedback should be displayed
 
 ## `GraphLineModelConfig` (object)
 

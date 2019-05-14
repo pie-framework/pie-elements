@@ -177,192 +177,182 @@
       },
       "title": "correctResponse"
     },
-    "model": {
-      "description": "The configuration for the model",
+    "graph": {
+      "title": "GraphLineModelConfig",
       "type": "object",
       "properties": {
-        "config": {
-          "title": "GraphLineModelConfig",
-          "type": "object",
-          "properties": {
-            "graphTitle": {
-              "description": "Indicates the title for the graph",
-              "type": "string",
-              "title": "graphTitle"
-            },
-            "graphWidth": {
-              "description": "Indicated the width for the graph",
-              "type": "number",
-              "title": "graphWidth"
-            },
-            "graphHeight": {
-              "description": "Indicates the height for the graph",
-              "type": "number",
-              "title": "graphHeight"
-            },
-            "domainLabel": {
-              "description": "Indicates the domain label for the graph",
-              "type": "string",
-              "title": "domainLabel"
-            },
-            "domainMin": {
-              "description": "Indicates the left limit (for the x axis)",
-              "type": "number",
-              "title": "domainMin"
-            },
-            "domainMax": {
-              "description": "Indicates the right limit (for the x axis)",
-              "type": "number",
-              "title": "domainMax"
-            },
-            "domainStepValue": {
-              "description": "Indicates step value (for the x axis)",
-              "type": "number",
-              "title": "domainStepValue"
-            },
-            "domainSnapValue": {
-              "description": "Indicates snap value (for the x axis)",
-              "type": "number",
-              "title": "domainSnapValue"
-            },
-            "domainLabelFrequency": {
-              "description": "Indicates domain label frequency (for the x axis)",
-              "type": "number",
-              "title": "domainLabelFrequency"
-            },
-            "domainGraphPadding": {
-              "description": "Indicates domain graph padding (for the x axis)",
-              "type": "number",
-              "title": "domainGraphPadding"
-            },
-            "rangeLabel": {
-              "description": "Indicates the range label for the graph",
-              "type": "string",
-              "title": "rangeLabel"
-            },
-            "rangeMin": {
-              "description": "Indicates the bottom limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMin"
-            },
-            "rangeMax": {
-              "description": "Indicates the top limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMax"
-            },
-            "rangeStepValue": {
-              "description": "Indicates step value (for the y axis)",
-              "type": "number",
-              "title": "rangeStepValue"
-            },
-            "rangeSnapValue": {
-              "description": "Indicates snap value (for the y axis)",
-              "type": "number",
-              "title": "rangeSnapValue"
-            },
-            "rangeLabelFrequency": {
-              "description": "Indicates range label frequency (for the y axis)",
-              "type": "number",
-              "title": "rangeLabelFrequency"
-            },
-            "rangeGraphPadding": {
-              "description": "Indicates range graph padding (for the y axis)",
-              "type": "number",
-              "title": "rangeGraphPadding"
-            },
-            "sigfigs": {
-              "type": "number",
-              "title": "sigfigs"
-            },
-            "showCoordinates": {
-              "description": "Indicates if coordinates should be displayed",
-              "type": "boolean",
-              "title": "showCoordinates"
-            },
-            "showPointLabels": {
-              "description": "Indicates if point labels should be displayed",
-              "type": "boolean",
-              "title": "showPointLabels"
-            },
-            "showInputs": {
-              "description": "Indicates if inputs should be displayed",
-              "type": "boolean",
-              "title": "showInputs"
-            },
-            "showAxisLabels": {
-              "description": "Indicates if axis labels should be displayed",
-              "type": "boolean",
-              "title": "showAxisLabels"
-            },
-            "showFeedback": {
-              "description": "Indicates if feedback should be displayed",
-              "type": "boolean",
-              "title": "showFeedback"
-            },
-            "maxPoints": {
-              "description": "Indicates the maximum number of points that the student can select",
-              "type": [
-                "string",
-                "number"
-              ],
-              "title": "maxPoints"
-            },
-            "pointLabels": {
-              "description": "The array with point labels",
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "title": "pointLabels"
-            },
-            "allowPartialScoring": {
-              "description": "Indicates if partial scoring is enabled",
-              "type": "boolean",
-              "title": "allowPartialScoring"
-            },
-            "pointsMustMatchLabels": {
-              "description": "Indicates if points must match labels at the evaluation time",
-              "type": "boolean",
-              "title": "pointsMustMatchLabels"
-            },
-            "labelsType": {
-              "description": "TODO add description",
-              "type": "string",
-              "title": "labelsType"
-            }
+        "graphTitle": {
+          "description": "Indicates the title for the graph",
+          "type": "string",
+          "title": "graphTitle"
+        },
+        "graphWidth": {
+          "description": "Indicated the width for the graph",
+          "type": "number",
+          "title": "graphWidth"
+        },
+        "graphHeight": {
+          "description": "Indicates the height for the graph",
+          "type": "number",
+          "title": "graphHeight"
+        },
+        "domainLabel": {
+          "description": "Indicates the domain label for the graph",
+          "type": "string",
+          "title": "domainLabel"
+        },
+        "domainMin": {
+          "description": "Indicates the left limit (for the x axis)",
+          "type": "number",
+          "title": "domainMin"
+        },
+        "domainMax": {
+          "description": "Indicates the right limit (for the x axis)",
+          "type": "number",
+          "title": "domainMax"
+        },
+        "domainStepValue": {
+          "description": "Indicates step value (for the x axis)",
+          "type": "number",
+          "title": "domainStepValue"
+        },
+        "domainSnapValue": {
+          "description": "Indicates snap value (for the x axis)",
+          "type": "number",
+          "title": "domainSnapValue"
+        },
+        "domainLabelFrequency": {
+          "description": "Indicates domain label frequency (for the x axis)",
+          "type": "number",
+          "title": "domainLabelFrequency"
+        },
+        "domainGraphPadding": {
+          "description": "Indicates domain graph padding (for the x axis)",
+          "type": "number",
+          "title": "domainGraphPadding"
+        },
+        "rangeLabel": {
+          "description": "Indicates the range label for the graph",
+          "type": "string",
+          "title": "rangeLabel"
+        },
+        "rangeMin": {
+          "description": "Indicates the bottom limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMin"
+        },
+        "rangeMax": {
+          "description": "Indicates the top limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMax"
+        },
+        "rangeStepValue": {
+          "description": "Indicates step value (for the y axis)",
+          "type": "number",
+          "title": "rangeStepValue"
+        },
+        "rangeSnapValue": {
+          "description": "Indicates snap value (for the y axis)",
+          "type": "number",
+          "title": "rangeSnapValue"
+        },
+        "rangeLabelFrequency": {
+          "description": "Indicates range label frequency (for the y axis)",
+          "type": "number",
+          "title": "rangeLabelFrequency"
+        },
+        "rangeGraphPadding": {
+          "description": "Indicates range graph padding (for the y axis)",
+          "type": "number",
+          "title": "rangeGraphPadding"
+        },
+        "sigfigs": {
+          "type": "number",
+          "title": "sigfigs"
+        },
+        "showCoordinates": {
+          "description": "Indicates if coordinates should be displayed",
+          "type": "boolean",
+          "title": "showCoordinates"
+        },
+        "showPointLabels": {
+          "description": "Indicates if point labels should be displayed",
+          "type": "boolean",
+          "title": "showPointLabels"
+        },
+        "showInputs": {
+          "description": "Indicates if inputs should be displayed",
+          "type": "boolean",
+          "title": "showInputs"
+        },
+        "showAxisLabels": {
+          "description": "Indicates if axis labels should be displayed",
+          "type": "boolean",
+          "title": "showAxisLabels"
+        },
+        "showFeedback": {
+          "description": "Indicates if feedback should be displayed",
+          "type": "boolean",
+          "title": "showFeedback"
+        },
+        "maxPoints": {
+          "description": "Indicates the maximum number of points that the student can select",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "maxPoints"
+        },
+        "pointLabels": {
+          "description": "The array with point labels",
+          "type": "array",
+          "items": {
+            "type": "string"
           },
-          "required": [
-            "domainGraphPadding",
-            "domainLabel",
-            "domainLabelFrequency",
-            "domainMax",
-            "domainMin",
-            "domainSnapValue",
-            "domainStepValue",
-            "graphHeight",
-            "graphTitle",
-            "graphWidth",
-            "pointLabels",
-            "rangeGraphPadding",
-            "rangeLabel",
-            "rangeLabelFrequency",
-            "rangeMax",
-            "rangeMin",
-            "rangeSnapValue",
-            "rangeStepValue",
-            "showAxisLabels",
-            "showCoordinates",
-            "showFeedback",
-            "showInputs",
-            "showPointLabels",
-            "sigfigs"
-          ]
+          "title": "pointLabels"
+        },
+        "allowPartialScoring": {
+          "description": "Indicates if partial scoring is enabled",
+          "type": "boolean",
+          "title": "allowPartialScoring"
+        },
+        "pointsMustMatchLabels": {
+          "description": "Indicates if points must match labels at the evaluation time",
+          "type": "boolean",
+          "title": "pointsMustMatchLabels"
+        },
+        "labelsType": {
+          "description": "TODO add description",
+          "type": "string",
+          "title": "labelsType"
         }
       },
       "required": [
-        "config"
-      ],
-      "title": "model"
+        "domainGraphPadding",
+        "domainLabel",
+        "domainLabelFrequency",
+        "domainMax",
+        "domainMin",
+        "domainSnapValue",
+        "domainStepValue",
+        "graphHeight",
+        "graphTitle",
+        "graphWidth",
+        "pointLabels",
+        "rangeGraphPadding",
+        "rangeLabel",
+        "rangeLabelFrequency",
+        "rangeMax",
+        "rangeMin",
+        "rangeSnapValue",
+        "rangeStepValue",
+        "showAxisLabels",
+        "showCoordinates",
+        "showFeedback",
+        "showInputs",
+        "showPointLabels",
+        "sigfigs"
+      ]
     },
     "partialScoring": {
       "description": "The array of partial scoring rules",
@@ -404,8 +394,8 @@
     "correctResponse",
     "element",
     "feedback",
+    "graph",
     "id",
-    "model",
     "partialScoring"
   ],
   "definitions": {

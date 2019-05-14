@@ -22,6 +22,40 @@ The xhtml content for the choice
 
 ## `correctResponseCount` (string,number)
 
+# `choicesPerRow` (number)
+
+The number of columns in which to present the choices
+
+Default: `2`
+
+# `categoriesPerRow` (number)
+
+The number of columns in which to present the categories
+
+Default: `2`
+
+# `choicesPosition` (string, enum, required)
+
+This element must be one of the following enum values:
+
+* `above`
+* `below`
+* `left`
+* `right`
+
+# `choicesLabel` (string, required)
+
+Label to be displayed for the choices
+
+# `lockChoiceOrder` (boolean, required)
+
+Should the choices be shuffled or not
+
+# `removeTilesAfterPlacing` (boolean, required)
+
+Indicates if the choice, after it is dragged into a category, should be removed from the choices
+area or should remain in place.
+
 # `categories` (array, required)
 
 The categories in which choices may be placed
@@ -75,58 +109,6 @@ The identifier for the category
 Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
-
-# `config` (object, required)
-
-Configuration options for the presentataion of the interaction
-
-Properties of the `config` object:
-
-## `choices` (object, required)
-
-Properties of the `choices` object:
-
-### `columns` (number, required)
-
-Default: `2`
-
-### `position` (string, enum, required)
-
-This element must be one of the following enum values:
-
-* `above`
-* `below`
-* `left`
-* `right`
-
-### `label` (string, required)
-
-Label to be displayed for the choices
-
-### `shuffle` (boolean, required)
-
-Should the choices be shuffled
-
-### `removeafterplacing` (boolean, required)
-
-Indicates if the choice, after it is dragged into a category, should be removed from the choices
-area or should remain in place.
-
-## `categories` (object, required)
-
-Properties of the `categories` object:
-
-### `columns` (number)
-
-The number of columns in which to present the categories
-
-Default: `2`
-
-### `rows` (number)
-
-The number of rows in which to present the categories
-
-Default: `1`
 
 # `feedback` (object)
 
@@ -218,6 +200,8 @@ The xhtml content for the choice
 
 ### `correctResponseCount` (string,number)
 
+## `ChoicesPosition` (string)
+
 ## `Category` (object)
 
 Properties of the `Category` object:
@@ -263,54 +247,6 @@ The identifier for the category
 Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
-
-## `ChoicesConfig` (object)
-
-Properties of the `ChoicesConfig` object:
-
-### `columns` (number, required)
-
-Default: `2`
-
-### `position` (string, enum, required)
-
-This element must be one of the following enum values:
-
-* `above`
-* `below`
-* `left`
-* `right`
-
-### `label` (string, required)
-
-Label to be displayed for the choices
-
-### `shuffle` (boolean, required)
-
-Should the choices be shuffled
-
-### `removeafterplacing` (boolean, required)
-
-Indicates if the choice, after it is dragged into a category, should be removed from the choices
-area or should remain in place.
-
-## `ChoicesPosition` (string)
-
-## `CategoriesConfig` (object)
-
-Properties of the `CategoriesConfig` object:
-
-### `columns` (number)
-
-The number of columns in which to present the categories
-
-Default: `2`
-
-### `rows` (number)
-
-The number of rows in which to present the categories
-
-Default: `1`
 
 ## `ComplexFeedbackType` (object)
 

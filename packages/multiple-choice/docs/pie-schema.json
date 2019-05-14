@@ -1,8 +1,26 @@
 {
-  "description": "Model for the Choice Interaction",
+  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the Choice Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "choiceMode": {
+      "description": "Indicates the choices are single or multiple selection",
+      "enum": [
+        "checkbox",
+        "radio"
+      ],
+      "type": "string",
+      "title": "choiceMode"
+    },
+    "choicePrefix": {
+      "description": "What key should be displayed before choices. If undefined no  key will be displayed.",
+      "enum": [
+        "letters",
+        "numbers"
+      ],
+      "type": "string",
+      "title": "choicePrefix"
+    },
     "choices": {
       "description": "The choice options for the question",
       "type": "array",
@@ -68,38 +86,39 @@
       "type": "string",
       "title": "prompt"
     },
-    "keyMode": {
-      "description": "What key should be displayed before choices. If undefined no  key will be displayed.",
-      "enum": [
-        "letters",
-        "numbers"
-      ],
-      "type": "string",
-      "title": "keyMode"
-    },
-    "choiceMode": {
-      "description": "Indicates the choices are single or multiple selection",
-      "enum": [
-        "checkbox",
-        "radio"
-      ],
-      "type": "string",
-      "title": "choiceMode"
-    },
-    "shuffle": {
-      "description": "Indicates the order of choices should be randdomly ordered when presented to user",
+    "lockChoiceOrder": {
+      "description": "Indicates the order of choices should be randomly ordered when presented to user",
       "type": "boolean",
-      "title": "shuffle"
+      "title": "lockChoiceOrder"
     },
     "partialScoring": {
       "description": "Indicates that the item should use partial scoring",
       "type": "boolean",
       "title": "partialScoring"
     },
-    "partialScoringLabel": {
-      "description": "The label for partial scoring",
+    "rationale": {
+      "description": "Indicates if rationale is enabled",
+      "type": "boolean",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "auto",
+        "rubric"
+      ],
       "type": "string",
-      "title": "partialScoringLabel"
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -116,9 +135,34 @@
     "choices",
     "element",
     "id",
-    "partialScoring"
+    "partialScoring",
+    "rationale",
+    "scoringType",
+    "studentInstructions",
+    "teacherInstructions"
   ],
   "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "Choice": {
       "title": "Choice",
       "type": "object",

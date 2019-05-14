@@ -1,87 +1,12 @@
 {
-  "description": "Model for the @pie-elements/match Interaction",
+  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/match Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "rows": {
-      "description": "The rows of choices to be presented.",
-      "type": "array",
-      "items": {
-        "description": "One row in the match list.",
-        "title": "MatchRow",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "Identifier for a row",
-            "type": [
-              "string",
-              "number"
-            ],
-            "title": "id"
-          },
-          "title": {
-            "description": "Title that will be displayed for the row",
-            "type": "string",
-            "title": "title"
-          },
-          "values": {
-            "description": "Array of boolean values indicating which columns are selected in the row",
-            "type": "array",
-            "items": {
-              "type": "boolean"
-            },
-            "title": "values"
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "values"
-        ]
-      },
-      "title": "rows"
-    },
-    "shuffled": {
-      "description": "Indicates if the order of the rows should be randomly sorted on render",
+    "enableImages": {
+      "description": "Indicates if questions can contain images",
       "type": "boolean",
-      "title": "shuffled"
-    },
-    "layout": {
-      "description": "The number of columns to be presented",
-      "type": "number",
-      "title": "layout"
-    },
-    "headers": {
-      "description": "Array of strings for column headers",
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "title": "headers"
-    },
-    "responseType": {
-      "description": "Indicates if the conrol for responses should be single (radio) or multiple (checkbox)",
-      "enum": [
-        "checkbox",
-        "radio"
-      ],
-      "type": "string",
-      "title": "responseType"
-    },
-    "partialScoring": {
-      "description": "Indicates if partial scoring should be used",
-      "type": "boolean",
-      "title": "partialScoring"
-    },
-    "partialScoringLabel": {
-      "description": "Partial scoring label to be displayed",
-      "type": "string",
-      "title": "partialScoringLabel"
-    },
-    "allowPartialScoring": {
-      "description": "Indicates that the item can use partial scoring",
-      "type": "boolean",
-      "title": "allowPartialScoring"
+      "title": "enableImages"
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -249,6 +174,105 @@
         "incorrect"
       ]
     },
+    "headers": {
+      "description": "Array of strings for column headers",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "headers"
+    },
+    "layout": {
+      "description": "The number of columns to be presented",
+      "type": "number",
+      "title": "layout"
+    },
+    "lockChoiceOrder": {
+      "description": "Indicates if the order of the rows should be randomly sorted on render",
+      "type": "number",
+      "title": "lockChoiceOrder"
+    },
+    "partialScoring": {
+      "description": "Indicates if partial scoring should be used",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "choiceMode": {
+      "description": "Indicates if the control for responses should be single (radio) or multiple (checkbox)",
+      "enum": [
+        "checkbox",
+        "radio"
+      ],
+      "type": "string",
+      "title": "choiceMode"
+    },
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
+    "rows": {
+      "description": "The rows of choices to be presented.",
+      "type": "array",
+      "items": {
+        "description": "One row in the match list.",
+        "title": "MatchRow",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identifier for a row",
+            "type": [
+              "string",
+              "number"
+            ],
+            "title": "id"
+          },
+          "title": {
+            "description": "Title that will be displayed for the row",
+            "type": "string",
+            "title": "title"
+          },
+          "values": {
+            "description": "Array of boolean values indicating which columns are selected in the row",
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            },
+            "title": "values"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "values"
+        ]
+      },
+      "title": "rows"
+    },
+    "rationale": {
+      "description": "Indicates if rationale is enabled",
+      "type": "boolean",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "auto",
+        "rubric"
+      ],
+      "type": "string",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -261,46 +285,39 @@
     }
   },
   "required": [
+    "choiceMode",
     "element",
     "headers",
     "id",
     "layout",
-    "responseType",
-    "rows"
+    "lockChoiceOrder",
+    "rationale",
+    "rows",
+    "scoringType",
+    "studentInstructions",
+    "teacherInstructions"
   ],
   "definitions": {
-    "MatchRow": {
-      "description": "One row in the match list.",
-      "title": "MatchRow",
+    "ConfigureProp": {
+      "title": "ConfigureProp",
       "type": "object",
       "properties": {
-        "id": {
-          "description": "Identifier for a row",
-          "type": [
-            "string",
-            "number"
-          ],
-          "title": "id"
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
         },
-        "title": {
-          "description": "Title that will be displayed for the row",
+        "label": {
+          "description": "Indicates the label for the item",
           "type": "string",
-          "title": "title"
+          "title": "label"
         },
-        "values": {
-          "description": "Array of boolean values indicating which columns are selected in the row",
-          "type": "array",
-          "items": {
-            "type": "boolean"
-          },
-          "title": "values"
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
         }
-      },
-      "required": [
-        "id",
-        "title",
-        "values"
-      ]
+      }
     },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
@@ -512,6 +529,39 @@
       "required": [
         "custom",
         "type"
+      ]
+    },
+    "MatchRow": {
+      "description": "One row in the match list.",
+      "title": "MatchRow",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Identifier for a row",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "id"
+        },
+        "title": {
+          "description": "Title that will be displayed for the row",
+          "type": "string",
+          "title": "title"
+        },
+        "values": {
+          "description": "Array of boolean values indicating which columns are selected in the row",
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          },
+          "title": "values"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "values"
       ]
     }
   },

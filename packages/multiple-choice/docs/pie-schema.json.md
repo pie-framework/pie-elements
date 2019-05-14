@@ -1,6 +1,27 @@
+NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+functionalities are not defined yet - the value for those can belong to
+model or to configuration (to be moved when the functionality is defined)
 Model for the Choice Interaction
 
 The schema defines the following properties:
+
+# `choiceMode` (string, enum)
+
+Indicates the choices are single or multiple selection
+
+This element must be one of the following enum values:
+
+* `checkbox`
+* `radio`
+
+# `choicePrefix` (string, enum)
+
+What key should be displayed before choices. If undefined no  key will be displayed.
+
+This element must be one of the following enum values:
+
+* `letters`
+* `numbers`
 
 # `choices` (array, required)
 
@@ -52,35 +73,34 @@ Custom value for feedback
 
 The question prompt or item stem
 
-# `keyMode` (string, enum)
+# `lockChoiceOrder` (boolean)
 
-What key should be displayed before choices. If undefined no  key will be displayed.
-
-This element must be one of the following enum values:
-
-* `letters`
-* `numbers`
-
-# `choiceMode` (string, enum)
-
-Indicates the choices are single or multiple selection
-
-This element must be one of the following enum values:
-
-* `checkbox`
-* `radio`
-
-# `shuffle` (boolean)
-
-Indicates the order of choices should be randdomly ordered when presented to user
+Indicates the order of choices should be randomly ordered when presented to user
 
 # `partialScoring` (boolean, required)
 
 Indicates that the item should use partial scoring
 
-# `partialScoringLabel` (string)
+# `rationale` (boolean, required)
 
-The label for partial scoring
+Indicates if rationale is enabled
+
+# `scoringType` (string, enum, required)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `auto`
+* `rubric`
+
+# `studentInstructions` (boolean, required)
+
+Indicates if student instructions are enabled
+
+# `teacherInstructions` (boolean, required)
+
+Indicates if teacher instructions are enabled
 
 # `id` (string, required)
 
@@ -95,6 +115,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `Choice` (object)
 
