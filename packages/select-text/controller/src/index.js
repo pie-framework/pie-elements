@@ -109,9 +109,11 @@ export const model = (question, session, env) => {
           env.mode === 'evaluate' ? correctness !== 'correct' : undefined
       };
 
-      // if (role === 'instructor') {
-      //  out.rationale = question.rationale;
-      // }
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = question.rationale;
+      } else {
+        out.rationale = null;
+      }
 
       resolve(out);
     });

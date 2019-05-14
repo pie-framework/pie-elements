@@ -16,7 +16,6 @@ export default {
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     tokens: tokens(),
     scoringType: 'auto',
-    rationale: 'Rationale goes here.'
   },
   configuration: {
     selectionCount: {
