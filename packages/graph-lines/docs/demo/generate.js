@@ -4,6 +4,7 @@ exports.model = (id, element) => ({
   multiple: false,
   partialScoring: false,
   partialScoringRules: [],
+  rationale: 'Rationale goes here',
   feedback: {
     correct: {
       type: 'none',

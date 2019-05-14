@@ -96,9 +96,11 @@ export function model(question, session, env) {
         correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
       });
 
-      // if (role === 'instructor') {
-      //  out.rationale = question.rationale;
-      // }
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = question.rationale;
+      } else {
+        out.rationale = null;
+      }
 
       log('out: ', out);
       resolve(out);
