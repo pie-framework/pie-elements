@@ -5,12 +5,15 @@ import {PieModel} from '../../PieModel';
 * @additionalProperties false
 */
 export interface PassagePie extends PieModel {
+    passages: Passage[];
+}
+
+export interface Passage {
     /** The title of the passage */
     title: string;
 
     /** The content of the passage */
-    content: string;
- 
+    text: string;
 }
 
 /**
