@@ -3,15 +3,29 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
-    "title": {
-      "description": "The title of the passage",
-      "type": "string",
-      "title": "title"
-    },
-    "content": {
-      "description": "The content of the passage",
-      "type": "string",
-      "title": "content"
+    "passages": {
+      "type": "array",
+      "items": {
+        "title": "Passage",
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "The title of the passage",
+            "type": "string",
+            "title": "title"
+          },
+          "text": {
+            "description": "The content of the passage",
+            "type": "string",
+            "title": "text"
+          }
+        },
+        "required": [
+          "text",
+          "title"
+        ]
+      },
+      "title": "passages"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -25,10 +39,31 @@
     }
   },
   "required": [
-    "content",
     "element",
     "id",
-    "title"
+    "passages"
   ],
+  "definitions": {
+    "Passage": {
+      "title": "Passage",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "The title of the passage",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "The content of the passage",
+          "type": "string",
+          "title": "text"
+        }
+      },
+      "required": [
+        "text",
+        "title"
+      ]
+    }
+  },
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

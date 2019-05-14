@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.1.0...@pie-element/number-line@4.1.1) (2019-05-14)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.0.1...@pie-element/number-line@4.1.0) (2019-05-14)
+
+
+### Features
+
+* **number-line:** added prompt support. ([324824c](https://github.com/pie-framework/pie-elements/commit/324824c))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.0.0...@pie-element/number-line@4.0.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/number-line

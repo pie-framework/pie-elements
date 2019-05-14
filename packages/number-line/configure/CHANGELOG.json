@@ -248,5 +248,20 @@
     "committerDate": "2019-05-08 15:12:28 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line-configure@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "number-line",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(number-line): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324824c38780df036066ca60a6a75cc3717987e4",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:50:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-configure@3.1.0"
   }
 ]
