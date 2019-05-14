@@ -4,37 +4,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
-import defaults from 'lodash/defaults';
 
 import Root from './root';
 import sensibleDefaults from './defaults';
 
 const log = debug('hotspot:configure');
 
-const defaultValues = {
-  settingsMultipleCorrect: true,
-  settingsPartialScoring: true
-};
-
-const prepareCustomizationObject = (configure, model) => {
-  return {
-    configure: defaults(configure, defaultValues),
-    model: {
-      ...model,
-    }
-  };
-};
-
 export default class HotspotConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults,
+    ...sensibleDefaults.model,
     ...model,
   });
 
   constructor() {
     super();
     this._model = HotspotConfigure.createDefaultModel();
-    this._configure = defaultValues;
+    this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
@@ -43,11 +28,8 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
-  set configure(c) {
-    const info = prepareCustomizationObject(c, this._model);
-
-    this.onModelChanged(info.model);
-    this._configure = info.configure;
+  set configuration(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -65,6 +47,11 @@ export default class HotspotConfigure extends HTMLElement {
   onModelChanged(m, reset) {
     this._model = m;
     this.dispatchModelUpdated(reset);
+    this._render();
+  }
+
+  onConfigurationChanged(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -124,17 +111,17 @@ export default class HotspotConfigure extends HTMLElement {
   _render() {
     log('_render');
     let element = React.createElement(Root, {
-      configure: this._configure,
+      configuration: this._configuration,
       disableSidePanel: this._disableSidePanel,
       model: this._model,
       onColorChanged: this.onColorChanged,
       onImageUpload: this.onImageUpload,
-      onMultipleCorrectChanged: this.onMultipleCorrectChanged,
-      onPartialScoringChanged: this.onPartialScoringChanged,
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
-      onUpdateShapes: this.onUpdateShapes
+      onUpdateShapes: this.onUpdateShapes,
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
+      onModelChanged: this.onModelChanged
     });
     ReactDOM.render(element, this);
   }

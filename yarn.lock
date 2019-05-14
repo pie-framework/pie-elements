@@ -1666,7 +1666,7 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/config-ui@^7.11.9", "@pie-lib/config-ui@^7.6.7":
+"@pie-lib/config-ui@^7.6.7":
   version "7.11.34"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-7.11.34.tgz#0aa926da7970fb3dcf1ce7cff8c497677e5cf1a7"
   integrity sha512-ai3JZiuGe6VDt5Km+06dca1BlBVl6PFObFHdpFaKUTYJHi12UYiwAZf3bThRW+9VyjVzjQY6eV/c6O2RZh1cTw==

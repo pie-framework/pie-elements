@@ -2,6 +2,17 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 const model = () => ({
   prompt: 'This is the question prompt',
   imageUrl: '',
