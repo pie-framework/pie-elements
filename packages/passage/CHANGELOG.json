@@ -15,6 +15,21 @@
     "tag": "@pie-element/passage@1.1.0"
   },
   {
+    "type": "fix",
+    "scope": null,
+    "subject": "doc name",
+    "merge": null,
+    "header": "fix: doc name",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "40ee7d51b70993aa7df25470c5f5669ee2424efb",
+    "gitTags": " (develop)",
+    "committerDate": "2019-05-13 15:27:21 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/passage@1.2.0"
+  },
+  {
     "type": "feat",
     "scope": null,
     "subject": "support paired passages (#216)",
