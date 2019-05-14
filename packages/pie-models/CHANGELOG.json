@@ -433,5 +433,35 @@
     "committerDate": "2019-05-13 09:57:42 -0400",
     "isTagged": true,
     "tag": "@pie-element/pie-models@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "number-line",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(number-line): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324824c38780df036066ca60a6a75cc3717987e4",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:50:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(match): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5f692de5feb5af98c71776de780c877f22ab48c",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:49:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
   }
 ]
