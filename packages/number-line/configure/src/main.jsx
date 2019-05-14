@@ -1,6 +1,6 @@
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { Checkbox, FeedbackConfig } from '@pie-lib/config-ui';
+import { Checkbox, FeedbackConfig, InputContainer } from '@pie-lib/config-ui';
 import NumberTextField from './number-text-field';
 
 import {
@@ -19,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
+import EditableHtml from '@pie-lib/editable-html';
 
 const {
   lineIsSwitched,
@@ -27,7 +28,7 @@ const {
   toSessionFormat
 } = dataConverter;
 
-const styles = {
+const styles = theme => ({
   row: {
     display: 'flex'
   },
@@ -39,8 +40,17 @@ const styles = {
   },
   pointTypeChooser: {
     margin: '20px 0'
-  }
-};
+  },
+  promptHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
+});
 
 const defaultConfig = {
   domain: [0, 5],
@@ -71,6 +81,7 @@ class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     onConfigChange: PropTypes.func.isRequired,
     onCorrectResponseChange: PropTypes.func.isRequired,
     onInitialElementsChange: PropTypes.func.isRequired,
@@ -79,7 +90,8 @@ class Main extends React.Component {
     onFeedbackChange: PropTypes.func.isRequired,
     onSnapPerTickChange: PropTypes.func.isRequired,
     onMinorTicksChanged: PropTypes.func.isRequired,
-    onTickFrequencyChange: PropTypes.func.isRequired
+    onTickFrequencyChange: PropTypes.func.isRequired,
+    onPromptChanged: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -192,9 +204,10 @@ class Main extends React.Component {
   }
 
   render() {
-    const { classes, onDomainChange, model } = this.props;
+    const { classes, onDomainChange, model, onPromptChanged, configuration } = this.props;
 
     const { graph } = model;
+    const { prompt } = configuration;
     const numberFieldStyle = {
       width: '50px',
       margin: '0 10px'
@@ -211,6 +224,22 @@ class Main extends React.Component {
           In this interaction, students plot points, line segments or rays on a
           number line.
         </p>
+
+        {prompt.settings && (
+          <InputContainer
+            label={prompt.label}
+            className={classes.promptHolder}
+          >
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={onPromptChanged}
+              nonEmpty={!prompt.settings}
+              disableUnderline
+            />
+          </InputContainer>
+        )}
+
         <Card>
           <CardContent>
             <Typography type="headline">Number Line Attributes</Typography>

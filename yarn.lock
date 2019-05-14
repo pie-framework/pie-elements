@@ -2109,12 +2109,16 @@
     react-jss "^8.4.0"
     react-transition-group "^2.3.1"
 
-"@pie-ui/passage@^1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/passage/-/passage-1.1.1.tgz#7d35263879cbe5f3707e5b7960981c7794cfa510"
-  integrity sha512-86FDGpKf1SRNDRhpcYOwDgTiFc3rnb4nwX8qIDhVp4rS7fls9so2ExF3n48pEhH1qeG429ngLpCUtgZ5OBnUGA==
+"@pie-ui/passage@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/passage/-/passage-1.2.0.tgz#3a5f1b061d2bc41650d0cfa75785b50f8c51b96f"
+  integrity sha512-5RDEC/kUdvOK/5wgb918OWvnHJbuML+NBMl7Qi8qb/iRZWa0+2UPo+EhOM7SNez2Hl6tWxobAoTxocH9SrZ22A==
   dependencies:
+    "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
 
 "@pie-ui/placement-ordering@^4.5.0":
   version "4.6.4"

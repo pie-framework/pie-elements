@@ -36,6 +36,7 @@ exports.model = (id, element) => ({
       scorePercentage: 35
     }
   ],
+  prompt: 'Set correct answer.',
   graph: {
     width: 500,
     height: 400,

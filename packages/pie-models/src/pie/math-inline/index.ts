@@ -90,8 +90,8 @@ export interface MathInlinePie extends PieModel {
      */
     partialScoring: boolean;
 
-    /** Indicates if rationale is enabled */
-    rationale: boolean;
+    /** Indicates the value for rationale */
+    rationale: string;
 
     /** Indicates scoring type */
     scoringType: 'auto' | 'rubric';
