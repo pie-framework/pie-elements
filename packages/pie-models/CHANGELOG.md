@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.0.1...@pie-element/pie-models@4.1.0) (2019-05-13)
+
+
+### Features
+
+* support paired passages ([#216](https://github.com/pie-framework/pie-elements/issues/216)) ([c036a92](https://github.com/pie-framework/pie-elements/commit/c036a92))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.0.0...@pie-element/pie-models@4.0.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/pie-models
