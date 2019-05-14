@@ -5,7 +5,8 @@ import { DefaultFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
 
-/** NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
+/**
+ * NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
  * NOTE2: mathInput does not have a functionality as well

@@ -42,7 +42,8 @@ interface MathInlineResponse {
     allowDecimals?: boolean;
 }
 
-/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+/**
+ * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
  */
