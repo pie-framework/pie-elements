@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.2.0...@pie-element/pie-models@4.3.0) (2019-05-14)
+
+
+### Features
+
+* **math-inline:** added rationale support. ([7a4f9d4](https://github.com/pie-framework/pie-elements/commit/7a4f9d4))
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.1.0...@pie-element/pie-models@4.2.0) (2019-05-14)
 
 
