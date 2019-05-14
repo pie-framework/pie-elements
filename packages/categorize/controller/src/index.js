@@ -70,9 +70,11 @@ export const model = (question, session, env) =>
         out.correctResponse =
           env.mode === 'evaluate' ? question.correctResponse : undefined;
 
-        // if (role === 'instructor') {
-        //   out.rationale = question.rationale;
-        // }
+        if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+          out.rationale = question.rationale;
+        } else {
+          out.rationale = null;
+        }
 
         resolve(out);
       });
