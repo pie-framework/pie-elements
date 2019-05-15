@@ -53,8 +53,8 @@ export interface MatchPie extends PieModel {
   /** The rows of choices to be presented.  */
   rows: MatchRow[];
 
-  /** Indicates if rationale is enabled */
-  rationale: boolean;
+  /** Indicates value for rationale */
+  rationale: string;
 
   /** Indicates scoring type */
   scoringType: 'auto' | 'rubric';
