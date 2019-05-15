@@ -22,7 +22,6 @@ export default {
     removeTilesAfterPlacing: true,
     scoringType: 'auto',
     targetLabel: 'Target Label goes here',
-    rationale: 'Here goes rationale'
   },
   configuration: {
     choiceLabel: {
