@@ -118,6 +118,17 @@ describe('index', () => {
       });
     });
 
+    describe('onRationaleChanged', () => {
+      it('changes the rationale', () => {
+        const newRationale = 'New Rationale';
+        el.onRationaleChanged(newRationale);
+
+        expect(onModelChanged).toBeCalledWith(
+          expect.objectContaining({ rationale: newRationale }),
+        );
+      });
+    });
+
     describe('onColorChanged', () => {
       it('changes hotspot color', () => {
         el.onColorChanged('hotspotColor', 'red');

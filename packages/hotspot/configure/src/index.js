@@ -1,4 +1,8 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,7 +17,12 @@ const log = debug('hotspot:configure');
 
 const defaultValues = {
   settingsMultipleCorrect: true,
-  settingsPartialScoring: true
+  settingsPartialScoring: true,
+  rationale: {
+    settings: true,
+    label: 'Rationale',
+    enabled: false
+  }
 };
 
 const prepareCustomizationObject = (configure, model) => {
@@ -93,6 +102,19 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  onRationaleChanged = rationale => {
+    this.onModelChanged({
+      ...this._model,
+      rationale
+    });
+  };
+
+  onConfigurationChanged = (key, value) => {
+    this._configure[key] = value;
+
+    this._render();
+  };
+
   onMultipleCorrectChanged = () => {
     const { _model } = this;
     _model.multipleCorrect = !_model.multipleCorrect;
@@ -121,6 +143,14 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
@@ -131,10 +161,16 @@ export default class HotspotConfigure extends HTMLElement {
       onImageUpload: this.onImageUpload,
       onMultipleCorrectChanged: this.onMultipleCorrectChanged,
       onPartialScoringChanged: this.onPartialScoringChanged,
+      onRationaleChanged: this.onRationaleChanged.bind(this),
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
-      onUpdateShapes: this.onUpdateShapes
+      onUpdateShapes: this.onUpdateShapes,
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this)
+      }
     });
     ReactDOM.render(element, this);
   }

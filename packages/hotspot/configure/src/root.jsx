@@ -11,8 +11,15 @@ import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
 
 const getSideMenuItems = (props) => {
-  const { model, classes, configure, onPartialScoringChanged, onMultipleCorrectChanged } = props;
-  const { settingsPartialScoring, settingsMultipleCorrect } = configure;
+  const {
+    model,
+    classes,
+    configure,
+    onPartialScoringChanged,
+    onMultipleCorrectChanged,
+    onConfigurationChanged
+  } = props;
+  const { settingsPartialScoring, settingsMultipleCorrect, rationale } = configure;
 
   const partialScoringDisabled = !model.multipleCorrect;
   const partialScoringChecked = partialScoringDisabled ? false : model.partialScoring;
@@ -46,6 +53,22 @@ const getSideMenuItems = (props) => {
           }
           label="Allow Partial Scoring"
           labelPlacement="start"
+        />,
+        rationale.settings && <FormControlLabel
+          key={5}
+          classes={{ root: classes.switchElement }}
+          control={
+            <Switch
+              checked={rationale.enabled}
+              onChange={() => onConfigurationChanged('rationale', {
+                ...rationale,
+                enabled: !rationale.enabled
+              })}
+              value="checkedA"
+            />
+          }
+          label={rationale.label}
+          labelPlacement="start"
         />
       ]
     }
@@ -66,9 +89,13 @@ class Root extends React.Component {
       model,
       onImageUpload,
       onPromptChanged,
+      onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes
+      onUpdateShapes,
+      configure,
+      imageSupport
     } = this.props;
+    const { rationale = {} } = configure;
 
     return (
       <div className={classes.base}>
@@ -80,6 +107,12 @@ class Root extends React.Component {
               <InputContainer label="Item Stem" className={classes.prompt}>
                 <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
               </InputContainer>
+
+              {rationale.enabled && (
+                <InputContainer label={rationale.label} className={classes.prompt}>
+                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
+                </InputContainer>
+              )}
 
               <Typography className={classes.label} variant="subheading">
                 Define Hotspot
@@ -142,12 +175,18 @@ Root.propTypes = {
   configure: PropTypes.object,
   disableSidePanel: PropTypes.bool,
   model: PropTypes.object.isRequired,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func
+  }),
   onImageUpload: PropTypes.func.isRequired,
   onColorChanged: PropTypes.func.isRequired,
   onPartialScoringChanged: PropTypes.func.isRequired,
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
-  onUpdateShapes: PropTypes.func.isRequired
+  onUpdateShapes: PropTypes.func.isRequired,
+  onRationaleChanged: PropTypes.func.isRequired,
+  onConfigurationChanged: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Root);

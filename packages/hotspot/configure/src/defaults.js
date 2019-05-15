@@ -15,5 +15,5 @@ export default {
   outlineColor: 'blue',
   outlineList: [
     'blue'
-  ]
+  ],
 };
