@@ -161,6 +161,19 @@ describe('Configure', () => {
       },
     }));
   });
+
+  it('updates rationale', () => {
+    const onModelChanged = jest.fn();
+    const component = wrapper({ onModelChanged });
+
+    component.instance().onRationaleChange('New Rationale');
+
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+      ...defaultProps.model,
+      rationale: 'New Rationale',
+    }));
+  });
+
 });
 
 describe('GeneralConfigBlock', () => {
@@ -172,6 +185,7 @@ describe('GeneralConfigBlock', () => {
     props = {
       classes: {},
       config: defaultProps.model.graph,
+      configuration: defaultProps.configuration,
       onModelChanged: jest.fn(),
       onMultipleToggle: jest.fn(),
       multiple: false,

@@ -32,6 +32,7 @@ export class Configure extends React.Component {
     onModelChanged: PropTypes.func,
     onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
+    imageSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
   };
@@ -66,6 +67,15 @@ export class Configure extends React.Component {
     this.props.model.graph = { ...graph };
 
     this.props.onModelChanged(this.props.model);
+  };
+
+  onRationaleChange = rationale => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({
+      ...model,
+      rationale
+    });
   };
 
   onFeedbackChange = feedback => {
@@ -106,7 +116,14 @@ export class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, configuration, onConfigurationChanged, onModelChanged } = this.props;
+    const {
+      classes,
+      model,
+      configuration,
+      onConfigurationChanged,
+      onModelChanged,
+      imageSupport
+    } = this.props;
     const config = model.graph;
 
     const {
@@ -164,9 +181,13 @@ export class Configure extends React.Component {
           <GeneralConfigBlock
             onMultipleToggle={this.onMultipleToggle}
             onAddLine={this.onAddLine}
+            onRationaleChange={this.onRationaleChange}
             multiple={model.multiple}
             config={config}
+            configuration={configuration}
+            rationale={model.rationale}
             onChange={this.onChange}
+            imageSupport={imageSupport}
           />
           <ChartConfig
             config={config}
