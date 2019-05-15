@@ -1839,6 +1839,18 @@
     debug "^4.1.1"
     react-transition-group "^2.5.2"
 
+"@pie-lib/render-ui@^4.3.12":
+  version "4.3.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.3.13.tgz#a616d60c359f91aaee7196e9ef344bb70a21dc59"
+  integrity sha512-6QRBuowfeCQibWseX2mznItZEf49/6VGK7UUIwdeSwxLSLhLC2cHkM4z01rZcuX2aTNXTBo4DUXSgcu+fOPAuQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.3.8"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/scoring-config@^3.1.1", "@pie-lib/scoring-config@^3.2.16", "@pie-lib/scoring-config@^3.3.9":
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.4.4.tgz#e33b8fcf67c286df6ad77200c88ae60c2655394f"
@@ -1904,10 +1916,10 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.0.1.tgz#018aaa49ee9557509ef2824192fba7cda191d0c4"
-  integrity sha512-bf+p/bd3GxsDQxiPRKMg0FXA/ykP9W1BvMg/nuU6J8nEzlqPBvJgh5nrJW41CqYclHloZdBUn+Q6L7GaqpWzZw==
+"@pie-ui/categorize@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.1.0.tgz#3233b2a959c1eb95896e1b1fec6268330126c76d"
+  integrity sha512-eBTqI2zRS0k+eodHyPtxe396nqCsg503laAX+xcjRTvdb/BVnqxukY6b+fuhpA2o55lAsajp390SilBXGxyPpw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -1915,7 +1927,7 @@
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/drag" "^1.1.12"
     "@pie-lib/math-rendering" "^1.2.1"
-    "@pie-lib/render-ui" "^4.3.1"
+    "@pie-lib/render-ui" "^4.3.12"
     classnames "^2.2.5"
     debug "^4.1.1"
     prop-types "^15.6.1"
