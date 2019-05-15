@@ -50,16 +50,14 @@ export interface HotspotPie extends PieModel {
  */
 export interface MultipleChoiceConfigure extends PromptConfig {
     /**
-     * Indicates whether the settings panel wil allow the author to modify settings for multiple correct answers
-     * @default true
+     * Configuration for multiple correct
      */
-    settingsMultipleCorrect?: boolean;
+    multipleCorrect?: ConfigureProp;
 
     /**
-     * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-     * @default true
+     * Configuration for partial scoring
      */
-    settingsPartialScoring?:  boolean;
+    partialScoring?:  ConfigureProp;
 
     /** Configuration for rationale */
     rationale?: ConfigureProp;
