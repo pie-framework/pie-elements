@@ -16,5 +16,4 @@ export default {
   outlineList: [
     'blue'
   ],
-  rationale: 'Rationale goes here.'
 };
