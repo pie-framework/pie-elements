@@ -29,9 +29,9 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
-            "settings": false,
+            "settings": true,
           },
           "scoringType": Object {
             "label": "Scoring Type",
@@ -71,7 +71,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "rationale.enabled": false,
+            "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
@@ -165,9 +165,9 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
-            "settings": false,
+            "settings": true,
           },
           "scoringType": Object {
             "label": "Scoring Type",
@@ -207,7 +207,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "rationale.enabled": false,
+            "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
@@ -293,9 +293,9 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
-            "settings": false,
+            "settings": true,
           },
           "scoringType": Object {
             "label": "Scoring Type",
@@ -335,7 +335,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "highlightChoices": undefined,
           },
           "Properties": Object {
-            "rationale.enabled": false,
+            "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,

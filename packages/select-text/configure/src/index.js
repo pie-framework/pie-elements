@@ -43,7 +43,7 @@ export default class SelectTextConfigure extends HTMLElement {
   }
 
   onConfigurationChanged(c) {
-    this.configuration = c;
+    this._configuration = c;
     this.render();
   }
 
