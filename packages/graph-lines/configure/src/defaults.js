@@ -30,9 +30,9 @@ export default {
       enabled: true
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,
