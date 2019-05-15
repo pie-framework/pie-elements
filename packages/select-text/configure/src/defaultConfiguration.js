@@ -15,7 +15,7 @@ export default {
     prompt: 'Question Prompt goes here',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     tokens: tokens(),
-    scoringType: 'auto'
+    scoringType: 'auto',
   },
   configuration: {
     selectionCount: {
@@ -35,9 +35,9 @@ export default {
       label: 'Highlight choices',
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,

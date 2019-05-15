@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {PieModel} from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
+import { ConfigureProp } from '../ConfigurationProp';
 
 interface CategoryChoice {
   /** Identifier for the choice */
@@ -42,79 +43,6 @@ enum ChoicesPosition {
   below = 'below',
   left = 'left',
   right = 'right'
-}
-
-interface PartialScoringCategoryRule {
-  /**
-   *  Indicates the number of correct answers
-   */
-  count: number;
-
-  /**
-   *  Indicates the percentage for partial scoring
-   */
-  percent: number;
-}
-
-
-interface PartialScoringRule {
-  /**
-   * The id of the category
-   */
-  category: string;
-
-  /**
-   * Array of rules for partial scoring for the category
-   */
-  rules: PartialScoringCategoryRule[];
-}
-
-interface PartialScoringConfig {
-  /**
-   *  Indicates if partial scoring is enabled
-   */
-  enabled: boolean;
-
-  /**
-   * Array of rules for partial scoring
-   */
-  rules?: [PartialScoringRule]
-}
-
-interface WeightingConfigRule {
-  /**
-   *  The id of the category
-   */
-  category: string;
-
-  /**
-   * The value of weighting
-   */
-  points: number;
-}
-
-interface WeightingConfig {
-  /**
-   *  Indicates if weighting is enabled
-   */
-  enabled: boolean;
-
-  /**
-   * Array of rules for weighting
-   */
-  rules?: WeightingConfigRule[]
-}
-
-interface ScoringConfig {
-  /**
-   * The configuration for weighting
-   */
-  weighting?: WeightingConfig;
-
-  /**
-   * The configuration for partial scoring
-   */
-  partial?: PartialScoringConfig;
 }
 
 /**
@@ -164,8 +92,8 @@ export interface CategorizePie extends PieModel {
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;
 
-  /** Scoring configuration */
-  scoring?: ScoringConfig
+  /** Indicates the value for rationale */
+  rationale?: string;
 }
 
 /**
@@ -173,5 +101,25 @@ export interface CategorizePie extends PieModel {
  * @additionalProperties false
  */
 export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
+
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
+
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
+
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }
 

@@ -66,9 +66,9 @@ export default {
       label: 'Allow Partial Scoring',
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,

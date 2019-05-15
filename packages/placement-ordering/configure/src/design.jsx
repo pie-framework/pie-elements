@@ -45,6 +45,7 @@ export class Design extends React.Component {
     };
 
     this.onPromptChange = this.changeHandler('prompt');
+    this.onRationaleChange = this.changeHandler('rationale');
     this.onChoiceAreaLabelChange = this.changeHandler(
       'choiceLabel',
       'target.value'
@@ -84,7 +85,7 @@ export class Design extends React.Component {
 
       teacherInstructions,
       studentInstructions,
-      rationale,
+      rationale = {},
       scoringType,
     } = configuration;
 
@@ -141,6 +142,17 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
               />
             </InputContainer>
+            {rationale.enabled && (
+              <InputContainer label={rationale.label}
+                              className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChange}
+                  imageSupport={imageSupport}
+                />
+              </InputContainer>
+            )}
           </FormSection>
         }
 

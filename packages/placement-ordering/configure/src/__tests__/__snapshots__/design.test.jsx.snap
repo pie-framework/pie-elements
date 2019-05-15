@@ -47,9 +47,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
-            "settings": false,
+            "settings": true,
           },
           "removeTilesAfterPlacing": Object {
             "label": "Remove Tiles after placing",
@@ -88,7 +88,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "Properties": Object {
             "lockChoiceOrder": undefined,
-            "rationale.enabled": false,
+            "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
@@ -216,9 +216,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": false,
           },
           "rationale": Object {
-            "enabled": true,
+            "enabled": false,
             "label": "Rationale",
-            "settings": false,
+            "settings": true,
           },
           "removeTilesAfterPlacing": Object {
             "label": "Remove Tiles after placing",
@@ -257,7 +257,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "Properties": Object {
             "lockChoiceOrder": undefined,
-            "rationale.enabled": false,
+            "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,

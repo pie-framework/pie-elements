@@ -20,6 +20,31 @@ export default {
       },
     ],
     correctResponse: [],
+    partialScoring: true
   },
-  configuration: {}
+  configuration: {
+    partialScoring: {
+      settings: true,
+      label: 'Allow Partial Scoring',
+    },
+    rationale: {
+      settings: true,
+      label: 'Rationale',
+      enabled: false,
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type',
+    },
+    studentInstructions: {
+      settings: false,
+      label: 'Student Instructions',
+      enabled: true,
+    },
+    teacherInstructions: {
+      settings: false,
+      label: 'Teacher Instructions',
+      enabled: true,
+    },
+  }
 };

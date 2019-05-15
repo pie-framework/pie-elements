@@ -23,8 +23,10 @@ const log = debug('@pie-element:select-text:configure');
 export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
@@ -80,6 +82,15 @@ export class Design extends React.Component {
 
     update.prompt = prompt;
     onModelChanged(update);
+  };
+
+  onRationaleChanged = rationale => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({
+      ...model,
+      rationale
+    });
   };
 
   render() {
@@ -142,6 +153,17 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
             />
           </InputContainer>
+
+          {rationale.enabled && (
+            <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.rationale || ''}
+                onChange={this.onRationaleChanged}
+                imageSupport={imageSupport}
+              />
+            </InputContainer>
+          )}
 
           {
             text.settings &&

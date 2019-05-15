@@ -201,6 +201,20 @@ describe('Placement Ordering', () => {
       });
     });
 
+    describe('onRationaleChange', () => {
+      it('calls update model when prompt changes', () => {
+        let newRationale = 'New Rationale';
+
+        w.instance().onRationaleChange(newRationale);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...model,
+          rationale: newRationale
+        });
+      });
+    });
+
+
     describe('onChoiceAreaLabelChange', () => {
       it('calls update model when choice area label changes', () => {
         let newChoiceAreaLabel = 'New Choice Area Label';
