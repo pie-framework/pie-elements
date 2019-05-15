@@ -2019,10 +2019,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match-list@^1.1.1":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.1.7.tgz#12ae245255a491ac735f7764881c7921e5c55405"
-  integrity sha512-N57bAIxHePY4LIWw/Hr+myuX8IhUV1CCf5B6eDv18K+SzEdxjz3dv7m9bgCZ/tUaT1bz0jXVTVkmOH9YvtAL/g==
+"@pie-ui/match-list@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.1.8.tgz#d9126834252148956dbc3f11cb5e19ea0a85737f"
+  integrity sha512-q/PpRYQcMctBVeRWIuXNaPWO5BKP04d/3Q8r8VOEtaNMYABLzFH4xcnnsRCN/Ybkq/ORJJgFMdtR0S8Bfy2m1g==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
