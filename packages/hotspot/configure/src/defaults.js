@@ -27,5 +27,10 @@ export default {
       settings: true,
       label: 'Allow Partial Scoring'
     },
+    rationale: {
+      settings: true,
+      label: 'Rationale',
+      enabled: false
+    }
   }
 };

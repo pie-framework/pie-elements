@@ -1,4 +1,8 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -80,6 +84,19 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  onRationaleChanged = rationale => {
+    this.onModelChanged({
+      ...this._model,
+      rationale
+    });
+  };
+
+  onConfigurationChanged = c => {
+    this._configuration = c;
+
+    this._render();
+  };
+
   onMultipleCorrectChanged = () => {
     const { _model } = this;
     _model.multipleCorrect = !_model.multipleCorrect;
@@ -108,6 +125,14 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
@@ -116,11 +141,16 @@ export default class HotspotConfigure extends HTMLElement {
       model: this._model,
       onColorChanged: this.onColorChanged,
       onImageUpload: this.onImageUpload,
+      onRationaleChanged: this.onRationaleChanged.bind(this),
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this)
+      },
       onUpdateShapes: this.onUpdateShapes,
-      onConfigurationChanged: this.onConfigurationChanged.bind(this),
       onModelChanged: this.onModelChanged
     });
     ReactDOM.render(element, this);

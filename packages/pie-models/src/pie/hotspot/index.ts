@@ -38,6 +38,9 @@ export interface HotspotPie extends PieModel {
 
   /**  The outline hotspot color options  */
   outlineList?: string[];
+
+  /** Indicates the value for rationale */
+  rationale?: string;
 }
 
 
@@ -55,4 +58,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
      * Configuration for partial scoring
      */
     partialScoring?:  ConfigureProp;
+
+    /** Configuration for rationale */
+    rationale?: ConfigureProp;
 }

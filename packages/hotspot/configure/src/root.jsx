@@ -23,18 +23,21 @@ class Root extends React.Component {
       model,
       onImageUpload,
       onPromptChanged,
+      onRationaleChanged,
       onUpdateImageDimension,
       onUpdateShapes,
 
 
       configuration,
       onModelChanged,
-      onConfigurationChanged
+      onConfigurationChanged,
+      imageSupport
     } = this.props;
     const {
       multipleCorrect,
       partialScoring
     } = configuration;
+    const { rationale = {} } = configuration;
 
     return (
       <div className={classes.base}>
@@ -51,6 +54,8 @@ class Root extends React.Component {
                     toggle(multipleCorrect.label),
                   partialScoring: partialScoring.settings &&
                     toggle(partialScoring.label),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true),
                 },
                 'Properties': {}
               }}
@@ -65,6 +70,15 @@ class Root extends React.Component {
             <Typography className={classes.label} variant="subheading">
               Define Hotspot
             </Typography>
+              {rationale.enabled && (
+                <InputContainer label={rationale.label} className={classes.prompt}>
+                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
+                </InputContainer>
+              )}
+
+              <Typography className={classes.label} variant="subheading">
+                Define Hotspot
+              </Typography>
 
             <HotspotPalette
               hotspotColor={model.hotspotColor}
@@ -122,12 +136,17 @@ Root.propTypes = {
   configuration: PropTypes.object,
   disableSidePanel: PropTypes.bool,
   model: PropTypes.object.isRequired,
+  imageSupport: PropTypes.shape({
+    add: PropTypes.func,
+    delete: PropTypes.func
+  }),
   onImageUpload: PropTypes.func.isRequired,
   onColorChanged: PropTypes.func.isRequired,
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
   onModelChanged: PropTypes.func.isRequired,
+  onRationaleChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired,
 };
 
