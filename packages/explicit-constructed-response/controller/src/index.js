@@ -1,4 +1,4 @@
-import shuffle from 'lodash/shuffle';
+import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
@@ -12,12 +12,12 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   };
 
   if (mode === 'evaluate') {
-    out.correct = !!choice.correct;
+    out.correct = true;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
 
     if (feedbackType === 'default') {
-      out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
+      out.feedback = defaultFeedback['correct'];
     } else if (feedbackType === 'custom') {
       out.feedback = choice.feedback.value;
     }
@@ -40,23 +40,10 @@ export function model(question, session, env) {
       return obj;
     }, {});
 
-    if (!question.lockChoiceOrder) {
-      // eslint-disable-next-line no-console
-      console.error(
-        '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
-      );
-      choices = reduce(question.choices, (obj, area, key) => {
-        obj[key] = shuffle(area);
-
-        return obj;
-      }, {});
-    }
-
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       prompt: question.prompt,
-      shuffle: !question.lockChoiceOrder,
       markup: question.markup,
       choices,
 
@@ -70,16 +57,13 @@ export function model(question, session, env) {
   });
 }
 
-const isCorrect = c => c.correct === true;
-
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
 
   const correctCount = reduce(config.choices, (total, respArea, key) => {
     const chosenValue = session.value[key];
-    const correctChoice = find(respArea, c => isCorrect(c));
 
-    if (correctChoice.value !== chosenValue) {
+    if (isEmpty(chosenValue) || !find(respArea, c => c.label.trim() === chosenValue.trim())) {
       return total - 1;
     }
 
@@ -106,6 +90,7 @@ const getScore = (config, session) => {
 export function outcome(model, session, env) {
   return new Promise(resolve => {
     const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    // const partialScoringEnabled = true;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
