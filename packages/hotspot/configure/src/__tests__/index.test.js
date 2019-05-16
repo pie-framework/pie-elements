@@ -76,22 +76,19 @@ describe('index', () => {
   });
 
   describe('logic', () => {
-    describe('onMultipleCorrectChanged', () => {
-      it('resets the model', () => {
-        el.onMultipleCorrectChanged();
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ multipleCorrect: false }),
-        );
-      });
-    });
-
-    describe('onPartialScoringChanged', () => {
+    describe('onModelChangedByConfig', () => {
       it('changes partial scoring value', () => {
-        el.onPartialScoringChanged();
+        el.onModelChangedByConfig({ ...initialModel, partialScoring: true });
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ partialScoring: true }),
+        );
+      });
+      it('changes multiple correct value', () => {
+        el.onModelChangedByConfig({ ...initialModel, multipleCorrect: false });
+
+        expect(onModelChanged).toBeCalledWith(
+          expect.objectContaining({ multipleCorrect: false }),
         );
       });
     });
