@@ -20,18 +20,16 @@ class Root extends React.Component {
   render() {
     const {
       classes,
+      configuration,
       model,
+      imageSupport,
+      onConfigurationChanged,
       onImageUpload,
+      onModelChangedByConfig,
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
       onUpdateShapes,
-
-
-      configuration,
-      onModelChanged,
-      onConfigurationChanged,
-      imageSupport
     } = this.props;
     const {
       multipleCorrect,
@@ -45,7 +43,7 @@ class Root extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={onModelChanged}
+              onChangeModel={onModelChangedByConfig}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
@@ -67,18 +65,15 @@ class Root extends React.Component {
               <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
             </InputContainer>
 
+            {rationale.enabled && (
+              <InputContainer label={rationale.label} className={classes.prompt}>
+                <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
+              </InputContainer>
+            )}
+
             <Typography className={classes.label} variant="subheading">
               Define Hotspot
             </Typography>
-              {rationale.enabled && (
-                <InputContainer label={rationale.label} className={classes.prompt}>
-                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
-                </InputContainer>
-              )}
-
-              <Typography className={classes.label} variant="subheading">
-                Define Hotspot
-              </Typography>
 
             <HotspotPalette
               hotspotColor={model.hotspotColor}
@@ -145,7 +140,7 @@ Root.propTypes = {
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
-  onModelChanged: PropTypes.func.isRequired,
+  onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired,
 };
