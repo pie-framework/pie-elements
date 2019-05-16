@@ -18,10 +18,16 @@ export default class CategorizeConfigure extends HTMLElement {
   constructor() {
     super();
     this._model = CategorizeConfigure.createDefaultModel();
+    this._configuration = defaults.configuration;
   }
 
   set model(m) {
     this._model = CategorizeConfigure.createDefaultModel(m);
+    this.render();
+  }
+
+  set configuration(c) {
+    this._configuration = c;
     this.render();
   }
 
@@ -30,6 +36,11 @@ export default class CategorizeConfigure extends HTMLElement {
 
     this.render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+  }
+
+  onConfigurationChanged(c) {
+    this._configuration = c;
+    this.render();
   }
 
   connectedCallback() {}
@@ -49,7 +60,9 @@ export default class CategorizeConfigure extends HTMLElement {
   render() {
     const el = React.createElement(Main, {
       model: this._model,
+      configuration: this._configuration,
       onModelChanged: this.onModelChanged.bind(this),
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
       imageSupport: {
         add: this.insertImage.bind(this),
         delete: this.onDeleteImage.bind(this)

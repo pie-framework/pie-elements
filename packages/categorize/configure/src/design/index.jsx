@@ -10,14 +10,19 @@ import { buildCategories } from './builder';
 import debug from 'debug';
 import { uid, withDragContext } from '@pie-lib/drag';
 import {
-  FeedbackConfig
+  FeedbackConfig,
+  InputContainer,
+  layout,
+  settings,
 } from '@pie-lib/config-ui';
 
 import {
   countInAnswer,
   ensureNoExtraChoicesInAnswer
 } from '@pie-lib/categorize';
+import EditableHtml from '@pie-lib/editable-html';
 
+const { Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
 
 const log = debug('@pie-element:categorize:configure:design');
@@ -69,6 +74,15 @@ export class Design extends React.Component {
     onChange(updatedModel);
   };
 
+  changeRationale = rationale => {
+    const { model, onChange } = this.props;
+
+    onChange({
+      ...model,
+      rationale
+    });
+  };
+
   changeFeedback = feedback => {
     this.updateModel({ feedback });
   };
@@ -80,7 +94,15 @@ export class Design extends React.Component {
   };
 
   render() {
-    const { classes, className, model, imageSupport } = this.props;
+    const { classes, className, model, imageSupport, configuration, onChange, onConfigurationChanged } = this.props;
+    const {
+      partialScoring = {},
+      lockChoiceOrder = {},
+      teacherInstructions = {},
+      studentInstructions = {},
+      rationale = {},
+      scoringType = {},
+    } = configuration || {};
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
@@ -98,29 +120,70 @@ export class Design extends React.Component {
 
     return (
       <IdProvider value={this.uid}>
-        <div className={classNames(classes.design, className)}>
-          <Typography className={classes.text}>
-            In Categorize, students may drag &amp; drop answer tiles to the
-            appropriate category area(s).
-          </Typography>
-          <Categories
-            imageSupport={imageSupport}
-            model={model}
-            categories={categories}
-            onModelChanged={this.updateModel}
-          />
-          <Divider />
-          <Choices
-            imageSupport={imageSupport}
-            choices={choices}
-            model={model}
-            onModelChanged={this.updateModel}
-          />
-          <FeedbackConfig
-            feedback={model.feedback}
-            onChange={this.changeFeedback}
-          />
-        </div>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onChange}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                'Item Type': {
+                  partialScoring: partialScoring.settings &&
+                    toggle(partialScoring.label),
+                },
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
+                  'studentInstructions.enabled': studentInstructions.settings &&
+                    toggle(studentInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true),
+                  lockChoiceOrder: lockChoiceOrder.settings &&
+                    toggle(lockChoiceOrder.label),
+                  scoringType: scoringType.settings &&
+                    radio(scoringType.label, ['auto', 'rubric']),
+                },
+              }}
+            />
+          }
+        >
+          <div className={classNames(classes.design, className)}>
+            <Typography className={classes.text}>
+              In Categorize, students may drag &amp; drop answer tiles to the
+              appropriate category area(s).
+            </Typography>
+
+            {rationale.enabled && (
+              <InputContainer label={rationale.label} className={classes.rationaleHolder}>
+                <EditableHtml
+                  className={classes.rationale}
+                  markup={model.rationale || ''}
+                  onChange={this.changeRationale}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+            <Categories
+              imageSupport={imageSupport}
+              model={model}
+              categories={categories}
+              onModelChanged={this.updateModel}
+            />
+            <Divider />
+            <Choices
+              imageSupport={imageSupport}
+              choices={choices}
+              model={model}
+              onModelChanged={this.updateModel}
+            />
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.changeFeedback}
+            />
+          </div>
+        </layout.ConfigLayout>
       </IdProvider>
     );
   }
@@ -134,7 +197,17 @@ const styles = theme => ({
   design: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
-  }
+  },
+  rationaleHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  rationale: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%',
+    maxWidth: '600px'
+  },
 });
 
 export default withDragContext(withStyles(styles)(Design));

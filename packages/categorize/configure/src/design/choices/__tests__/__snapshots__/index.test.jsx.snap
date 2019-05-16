@@ -28,6 +28,7 @@ exports[`choices snapshot renders 1`] = `
         "choicesPosition": "below",
         "correctResponse": Array [],
         "lockChoiceOrder": true,
+        "partialScoring": true,
         "removeTilesAfterPlacing": false,
       }
     }
@@ -64,6 +65,7 @@ exports[`choices snapshot renders 1`] = `
               "choicesPosition": "below",
               "correctResponse": Array [],
               "lockChoiceOrder": true,
+              "partialScoring": true,
               "removeTilesAfterPlacing": false,
             },
           ],

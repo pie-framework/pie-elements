@@ -99,7 +99,7 @@ interface GraphLineModelConfig {
 
 /**
  * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
- * rationale, scoringType, studentInstructions, teacherInstructions
+ * scoringType, studentInstructions, teacherInstructions
  * so there's no implementation (they are only added in model)
  */
 
@@ -132,8 +132,8 @@ export interface GraphLinesPie extends PieModel {
     /** Indicates if labels are enabled */
     labels: boolean;
 
-    /** Indicates if rationale is enabled */
-    rationale: boolean;
+    /** Indicates rationale for the answer */
+    rationale: string;
 
     /** Indicates scoring type */
     scoringType: 'auto' | 'rubric';
