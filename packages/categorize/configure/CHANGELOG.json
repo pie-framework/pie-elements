@@ -633,5 +633,25 @@
     "committerDate": "2019-05-07 13:47:57 +0300",
     "isTagged": true,
     "tag": "@pie-element/categorize-configure@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "merge": null,
+    "header": "feat(categorize): Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `scoring` with `partial` and `weighting` is not supported anymore.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`scoring` with `partial` and `weighting` is not supported anymore."
+      }
+    ],
+    "hash": "6e5a1bf61b71d246d7202198cbbc8fe075f858d4",
+    "gitTags": "",
+    "committerDate": "2019-05-13 18:37:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-configure@3.0.0"
   }
 ]

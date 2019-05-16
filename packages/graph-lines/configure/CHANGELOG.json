@@ -213,5 +213,20 @@
     "committerDate": "2019-05-06 14:58:50 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines-configure@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graph-lines",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(graph-lines): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ff0286c2f3993c59d8801114002a815573ede1e",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:49:12 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines-configure@2.1.0"
   }
 ]
