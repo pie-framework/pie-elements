@@ -53,8 +53,8 @@ export interface SelectTextPie extends PieModel {
    */
   highlightChoices?: boolean;
 
-  /** Indicates if rationale is enabled */
-  rationale: boolean;
+  /** Indicates rationale for correct answer */
+  rationale: string;
 
   /** Indicates scoring type */
   scoringType: 'auto' | 'rubric';

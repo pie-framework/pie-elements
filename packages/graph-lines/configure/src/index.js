@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
 import defaultValues from './defaults';
@@ -44,13 +44,25 @@ export default class GraphLinesConfigure extends HTMLElement {
     this._render();
   }
 
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
         onModelChanged: this.onModelChanged.bind(this),
         onConfigurationChanged: this.onConfigurationChanged.bind(this),
         model: this._model,
-        configuration: this._configuration
+        configuration: this._configuration,
+        imageSupport: {
+          add: this.insertImage.bind(this),
+          delete: this.onDeleteImage.bind(this)
+        }
       });
       ReactDOM.render(el, this);
     }

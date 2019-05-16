@@ -10,6 +10,20 @@ const model = extras => ({
   ...extras
 });
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: props => <div {...props} />
+  },
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 describe('Design', () => {
   let w;
   let onChange = jest.fn();

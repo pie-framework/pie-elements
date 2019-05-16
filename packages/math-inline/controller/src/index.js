@@ -141,6 +141,13 @@ export function model(question, session, env) {
       const out = Object.assign(base, {
         correctResponse
       });
+
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        out.rationale = question.rationale;
+      } else {
+        out.rationale = null;
+      }
+
       log('out: ', out);
       resolve(out);
     });

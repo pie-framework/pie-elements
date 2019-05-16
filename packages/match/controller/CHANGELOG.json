@@ -183,5 +183,20 @@
     "committerDate": "2019-05-04 11:37:30 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(match): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5f692de5feb5af98c71776de780c877f22ab48c",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:49:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@2.1.0"
   }
 ]
