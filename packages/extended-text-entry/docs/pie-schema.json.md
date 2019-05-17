@@ -49,7 +49,7 @@ The question prompt
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 

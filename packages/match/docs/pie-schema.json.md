@@ -25,13 +25,13 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
-# `headers` (array)
+# `headers` (array, required)
 
 Array of strings for column headers
 
 The object is an array with all elements of the type `string`.
 
-# `layout` (number)
+# `layout` (number, required)
 
 The number of columns to be presented
 
@@ -56,7 +56,7 @@ This element must be one of the following enum values:
 
 The question prompt or item stem
 
-# `rows` (array)
+# `rows` (array, required)
 
 The rows of choices to be presented.
 

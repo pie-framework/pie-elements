@@ -34,10 +34,10 @@ export interface MatchPie extends PieModel {
   feedback?: ComplexFeedbackType;
 
   /** Array of strings for column headers */
-  headers?: string[];
+  headers: string[];
 
   /** The number of columns to be presented */
-  layout?: number;
+  layout: number;
 
   /** Indicates if the order of the rows should be randomly sorted on render */
   lockChoiceOrder?: boolean;
@@ -52,7 +52,7 @@ export interface MatchPie extends PieModel {
   prompt: string;
 
   /** The rows of choices to be presented.  */
-  rows?: MatchRow[];
+  rows: MatchRow[];
 
   /** Indicates value for rationale */
   rationale?: string;

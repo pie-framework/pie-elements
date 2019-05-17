@@ -286,8 +286,11 @@
   },
   "required": [
     "element",
+    "headers",
     "id",
-    "prompt"
+    "layout",
+    "prompt",
+    "rows"
   ],
   "definitions": {
     "ConfigureProp": {

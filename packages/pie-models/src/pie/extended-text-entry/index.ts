@@ -45,7 +45,7 @@ export interface ExtendedTextEntryPie extends PieModel {
   studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
-  teacherInstructions: boolean;
+  teacherInstructions?: boolean;
 
   /**
    * Width the editor should take. USE CSS-style definition.
