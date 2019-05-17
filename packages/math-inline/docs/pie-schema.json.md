@@ -97,7 +97,7 @@ Indicates if decimals are allowed
 
 # `responses` (array, required)
 
-Array of all correct responses
+Array of all correct responses if responseType is Advanced Multi
 
 The object is an array with all elements of the type `object`.
 

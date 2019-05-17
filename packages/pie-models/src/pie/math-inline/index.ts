@@ -75,10 +75,10 @@ export interface MathInlinePie extends PieModel {
     /** Feedback configuration for the responses */
     feedback?: ComplexFeedbackType;
 
-    /** Correct response */
+    /** Correct response if responseType is simple */
     response: MathInlineResponse;
 
-    /** Array of all correct responses */
+    /** Array of all correct responses if responseType is Advanced Multi */
     responses: MathInlineResponse[];
 
     /**

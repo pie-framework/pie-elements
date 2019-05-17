@@ -277,7 +277,7 @@
       ]
     },
     "responses": {
-      "description": "Array of all correct responses",
+      "description": "Array of all correct responses if responseType is Advanced Multi",
       "type": "array",
       "items": {
         "title": "MathInlineResponse",
