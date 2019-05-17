@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.5.4...@pie-element/multiple-choice-controller@1.6.0) (2019-05-16)
+
+
+### Features
+
+* added rationale support ([3c1edf3](https://github.com/pie-framework/pie-elements/commit/3c1edf3))
+* added rationale support. ([1ddc137](https://github.com/pie-framework/pie-elements/commit/1ddc137))
+
+
+
+
+
 ## [1.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.5.3...@pie-element/multiple-choice-controller@1.5.4) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

@@ -20,23 +20,18 @@ class Root extends React.Component {
   render() {
     const {
       classes,
+      configuration,
       model,
+      imageSupport,
+      onConfigurationChanged,
       onImageUpload,
+      onModelChangedByConfig,
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes,
-
-
-      configuration,
-      onModelChanged,
-      onConfigurationChanged,
-      imageSupport
+      onUpdateShapes
     } = this.props;
-    const {
-      multipleCorrect,
-      partialScoring
-    } = configuration;
+    const { multipleCorrect, partialScoring } = configuration;
     const { rationale = {} } = configuration;
 
     return (
@@ -45,45 +40,56 @@ class Root extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={onModelChanged}
+              onChangeModel={onModelChangedByConfig}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Item Type': {
-                  multipleCorrect: multipleCorrect.settings &&
-                    toggle(multipleCorrect.label),
-                  partialScoring: partialScoring.settings &&
-                    toggle(partialScoring.label),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
+                  multipleCorrect:
+                    multipleCorrect.settings && toggle(multipleCorrect.label),
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  'rationale.enabled':
+                    rationale.settings && toggle(rationale.label, true)
                 },
-                'Properties': {}
+                Properties: {}
               }}
             />
           }
         >
           <div className={classes.regular}>
             <InputContainer label="Item Stem" className={classes.prompt}>
-              <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
+              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
             </InputContainer>
 
-              {rationale.enabled && (
-                <InputContainer label={rationale.label} className={classes.prompt}>
-                  <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
-                </InputContainer>
-              )}
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.prompt}
+              >
+                <EditableHtml
+                  markup={model.rationale || ''}
+                  onChange={onRationaleChanged}
+                  imageSupport={imageSupport}
+                />
+              </InputContainer>
+            )}
 
-              <Typography className={classes.label} variant="subheading">
-                Define Hotspot
-              </Typography>
+            <Typography className={classes.label} variant="subheading">
+              Define Hotspot
+            </Typography>
 
             <HotspotPalette
               hotspotColor={model.hotspotColor}
               hotspotList={model.hotspotList}
               outlineColor={model.outlineColor}
               outlineList={model.outlineList}
-              onHotspotColorChange={color => this.handleColorChange('hotspot', color)}
-              onOutlineColorChange={color => this.handleColorChange('outline', color)}
+              onHotspotColorChange={color =>
+                this.handleColorChange('hotspot', color)
+              }
+              onOutlineColorChange={color =>
+                this.handleColorChange('outline', color)
+              }
             />
 
             <HotspotContainer
@@ -142,9 +148,9 @@ Root.propTypes = {
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
-  onModelChanged: PropTypes.func.isRequired,
+  onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
-  onConfigurationChanged: PropTypes.func.isRequired,
+  onConfigurationChanged: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Root);

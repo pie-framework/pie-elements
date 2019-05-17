@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.3.0...@pie-element/pie-models@5.0.0) (2019-05-16)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. ([#225](https://github.com/pie-framework/pie-elements/issues/225)) ([380cdf9](https://github.com/pie-framework/pie-elements/commit/380cdf9))
+* **categorize:** Integrated settings panel. Added support for rationale. Removed scoring panel. ([6e5a1bf](https://github.com/pie-framework/pie-elements/commit/6e5a1bf))
+* **graph-lines:** added rationale support. ([2ff0286](https://github.com/pie-framework/pie-elements/commit/2ff0286))
+* **placement-ordering:** added rationale support. ([d6df005](https://github.com/pie-framework/pie-elements/commit/d6df005))
+* **select-text:** added rationale support. ([c2aa2f9](https://github.com/pie-framework/pie-elements/commit/c2aa2f9))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration` instead.
+* **categorize:** `scoring` with `partial` and `weighting` is not supported anymore.
+
+
+
+
+
 # [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@4.2.0...@pie-element/pie-models@4.3.0) (2019-05-14)
 
 
