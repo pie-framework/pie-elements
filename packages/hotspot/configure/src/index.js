@@ -54,10 +54,18 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
-  onConfigurationChanged(c) {
+  onModelChangedByConfig = (m, type) => {
+    const _model = m;
+    if (type === 'multipleCorrect') {
+      _model.shapes = _model.shapes.map(shape => ({ ...shape, correct: false }));
+    }
+    this.onModelChanged(_model);
+  };
+
+  onConfigurationChanged = (c) => {
     this._configuration = c;
     this._render();
-  }
+  };
 
   onRemoveShape = index => {
     const { _model } = this;
@@ -78,23 +86,11 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(update);
   };
 
-  onPartialScoringChanged = () => {
-    const { _model } = this;
-    _model.partialScoring = !_model.partialScoring;
-    this.onModelChanged(_model);
-  };
-
   onRationaleChanged = rationale => {
     this.onModelChanged({
       ...this._model,
       rationale
     });
-  };
-
-  onConfigurationChanged = c => {
-    this._configuration = c;
-
-    this._render();
   };
 
   onMultipleCorrectChanged = () => {
@@ -125,13 +121,13 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
-  insertImage(handler) {
+  insertImage = (handler) => {
     this.dispatchEvent(new InsertImageEvent(handler));
-  }
+  };
 
-  onDeleteImage(src, done) {
+  onDeleteImage = (src, done) => {
     this.dispatchEvent(new DeleteImageEvent(src, done));
-  }
+  };
 
   _render() {
     log('_render');
@@ -141,17 +137,17 @@ export default class HotspotConfigure extends HTMLElement {
       model: this._model,
       onColorChanged: this.onColorChanged,
       onImageUpload: this.onImageUpload,
-      onRationaleChanged: this.onRationaleChanged.bind(this),
-      onConfigurationChanged: this.onConfigurationChanged.bind(this),
+      onRationaleChanged: this.onRationaleChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
       imageSupport: {
-        add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
+        add: this.insertImage,
+        delete: this.onDeleteImage
       },
       onUpdateShapes: this.onUpdateShapes,
-      onModelChanged: this.onModelChanged
+      onModelChangedByConfig: this.onModelChangedByConfig
     });
     ReactDOM.render(element, this);
   }

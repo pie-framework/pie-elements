@@ -69,31 +69,34 @@ export interface CategorizePie extends PieModel {
   /**
    * Indicates where the choices should be presented in relation to the categories.
    */
-  choicesPosition: ChoicesPosition;
+  choicesPosition?: ChoicesPosition;
 
   /** Label to be displayed for the choices */
-  choicesLabel: string;
+  choicesLabel?: string;
 
   /** Should the choices be shuffled or not */
-  lockChoiceOrder: boolean;
+  lockChoiceOrder?: boolean;
 
   /**
    * Indicates if the choice, after it is dragged into a category, should be removed from the choices
    * area or should remain in place.
    */
-  removeTilesAfterPlacing: boolean;
+  removeTilesAfterPlacing?: boolean;
 
   /** The categories in which choices may be placed */
   categories: Category[];
   
   /** The defintion of the correct response to the question */
-  correctResponse: CategoryCorrectResponse[];
+  correctResponse?: CategoryCorrectResponse[];
 
   /** Feedback configuration */
   feedback?: ComplexFeedbackType;
 
   /** Indicates the value for rationale */
   rationale?: string;
+
+  /** Indicates if partial scoring is enabled */
+  partialScoring?: boolean;
 }
 
 /**
@@ -101,6 +104,10 @@ export interface CategorizePie extends PieModel {
  * @additionalProperties false
  */
 export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
+  /**
+   * Partial Scoring configuration
+   */
+  partialScoring?: ConfigureProp;
 
   /**
    * Rationale configuration
