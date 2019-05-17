@@ -4,63 +4,162 @@ exports[`Design snapshot renders 1`] = `
 <mockConstructor
   value="1"
 >
-  <div
-    className="design className"
-  >
-    <WithStyles(Typography)
-      className="text"
-    >
-      In Categorize, students may drag & drop answer tiles to the appropriate category area(s).
-    </WithStyles(Typography)>
-    <WithStyles(Categories)
-      categories={
-        Array [
+  <ConfigLayout
+    settings={
+      <Panel
+        groups={
           Object {
+            "Item Type": Object {
+              "partialScoring": undefined,
+            },
+            "Properties": Object {
+              "lockChoiceOrder": undefined,
+              "rationale.enabled": undefined,
+              "scoringType": undefined,
+              "studentInstructions.enabled": undefined,
+              "teacherInstructions.enabled": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "categories": Array [
+              Object {
+                "choices": Array [
+                  Object {
+                    "content": "content",
+                    "id": "1",
+                  },
+                ],
+                "id": "1",
+                "label": "Category Title",
+              },
+            ],
             "choices": Array [
               Object {
                 "content": "content",
+                "correctResponseCount": 1,
                 "id": "1",
               },
             ],
-            "id": "1",
-            "label": "Category Title",
-          },
-        ]
-      }
-      columns={2}
-      onAdd={[Function]}
-      onAddChoice={[Function]}
-      onChange={[Function]}
-      onColumnsChange={[Function]}
-      onDelete={[Function]}
-      onDeleteChoice={[Function]}
-    />
-    <WithStyles(Component) />
-    <WithStyles(Choices)
-      choices={
-        Array [
-          Object {
-            "content": "content",
-            "correctResponseCount": 1,
-            "id": "1",
-          },
-        ]
-      }
-      config={
-        Object {
-          "columns": 2,
-          "label": "",
+            "correctResponse": Array [
+              Object {
+                "category": "1",
+                "choices": Array [
+                  "1",
+                ],
+              },
+            ],
+          }
         }
-      }
-      onAdd={[Function]}
-      onChange={[Function]}
-      onConfigChange={[Function]}
-      onDelete={[Function]}
-      shuffle={false}
-    />
-    <Component
-      onChange={[Function]}
-    />
-  </div>
+        onChangeModel={[MockFunction]}
+      />
+    }
+  >
+    <div
+      className="design className"
+    >
+      <WithStyles(Typography)
+        className="text"
+      >
+        In Categorize, students may drag & drop answer tiles to the appropriate category area(s).
+      </WithStyles(Typography)>
+      <WithStyles(Categories)
+        categories={
+          Array [
+            Object {
+              "choices": Array [
+                Object {
+                  "content": "content",
+                  "id": "1",
+                },
+              ],
+              "id": "1",
+              "label": "Category Title",
+            },
+          ]
+        }
+        model={
+          Object {
+            "categories": Array [
+              Object {
+                "choices": Array [
+                  Object {
+                    "content": "content",
+                    "id": "1",
+                  },
+                ],
+                "id": "1",
+                "label": "Category Title",
+              },
+            ],
+            "choices": Array [
+              Object {
+                "content": "content",
+                "correctResponseCount": 1,
+                "id": "1",
+              },
+            ],
+            "correctResponse": Array [
+              Object {
+                "category": "1",
+                "choices": Array [
+                  "1",
+                ],
+              },
+            ],
+          }
+        }
+        onModelChanged={[Function]}
+      />
+      <WithStyles(Component) />
+      <WithStyles(Choices)
+        choices={
+          Array [
+            Object {
+              "content": "content",
+              "correctResponseCount": 1,
+              "id": "1",
+            },
+          ]
+        }
+        model={
+          Object {
+            "categories": Array [
+              Object {
+                "choices": Array [
+                  Object {
+                    "content": "content",
+                    "id": "1",
+                  },
+                ],
+                "id": "1",
+                "label": "Category Title",
+              },
+            ],
+            "choices": Array [
+              Object {
+                "content": "content",
+                "correctResponseCount": 1,
+                "id": "1",
+              },
+            ],
+            "correctResponse": Array [
+              Object {
+                "category": "1",
+                "choices": Array [
+                  "1",
+                ],
+              },
+            ],
+          }
+        }
+        onModelChanged={[Function]}
+      />
+      <Component
+        onChange={[Function]}
+      />
+    </div>
+  </ConfigLayout>
 </mockConstructor>
 `;

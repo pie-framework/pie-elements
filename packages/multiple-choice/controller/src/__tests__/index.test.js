@@ -145,8 +145,8 @@ describe('controller', () => {
       it('returns choices', () => {
         expect(result.choices).toEqual(
           expect.arrayContaining([
-            { label: 'a', value: 'apple' },
-            { label: 'b', value: 'banana' },
+            { label: 'a', value: 'apple', rationale: null },
+            { label: 'b', value: 'banana', rationale: null },
           ])
         );
       });
@@ -180,8 +180,8 @@ describe('controller', () => {
       it('returns choices w/ correct', () => {
         expect(result.choices).toEqual(
           expect.arrayContaining([
-            { label: 'a', value: 'apple', correct: true, feedback: 'foo' },
-            { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect' },
+            { label: 'a', value: 'apple', correct: true, feedback: 'foo', rationale: null },
+            { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect', rationale: null },
           ])
         );
       });

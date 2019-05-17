@@ -408,5 +408,35 @@
     "committerDate": "2019-05-04 11:37:30 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-configure@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "match",
+    "subject": "added configuration.",
+    "merge": null,
+    "header": "fix(match): added configuration.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "04ee24598534d08334b8745beb34130af7cb1554",
+    "gitTags": "",
+    "committerDate": "2019-05-08 13:20:52 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@2.0.2"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(match): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5f692de5feb5af98c71776de780c877f22ab48c",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:49:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@2.1.0"
   }
 ]

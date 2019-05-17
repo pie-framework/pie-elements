@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.0.1...@pie-element/math-inline-configure@2.1.0) (2019-05-14)
+
+
+### Features
+
+* Sending rationale for `instructor` mode. ([e297e50](https://github.com/pie-framework/pie-elements/commit/e297e50))
+* **math-inline:** added rationale support. ([7a4f9d4](https://github.com/pie-framework/pie-elements/commit/7a4f9d4))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.0.0...@pie-element/math-inline-configure@2.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@1.0.9...@pie-element/math-inline-configure@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed configure with configuration. Removed usage of state (StateWrapper in configure.jsx) and updated tests. ([cfe9edd](https://github.com/pie-framework/pie-elements/commit/cfe9edd))
+
+
+### BREAKING CHANGES
+
+* configure is removed, use configuration instead.
+
+
+
+
+
 ## [1.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@1.0.8...@pie-element/math-inline-configure@1.0.9) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

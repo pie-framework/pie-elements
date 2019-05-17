@@ -398,5 +398,85 @@
     "committerDate": "2019-05-02 16:41:21 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "merge": null,
+    "header": "feat(categorize): Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead."
+      }
+    ],
+    "hash": "5922f855312550e25018affa5bcc5f4c116dc47a",
+    "gitTags": "",
+    "committerDate": "2019-05-07 13:47:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "support paired passages (#216)",
+    "merge": null,
+    "header": "feat: support paired passages (#216)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c036a92902e4c6b5ee59d4db6cf0e343b47f0b18",
+    "gitTags": "",
+    "committerDate": "2019-05-13 09:57:42 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "number-line",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(number-line): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324824c38780df036066ca60a6a75cc3717987e4",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:50:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(match): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5f692de5feb5af98c71776de780c877f22ab48c",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:49:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(math-inline): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7a4f9d4647b3230e4b06af809189fdbbdd711365",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:18:47 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.3.0"
   }
 ]

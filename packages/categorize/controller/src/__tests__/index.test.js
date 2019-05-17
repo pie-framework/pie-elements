@@ -1,4 +1,4 @@
-import { model, outcome, getCorrectness } from '../index';
+import { model, outcome, getCorrectness, getScore } from '../index';
 import { buildState, score } from '@pie-lib/categorize';
 
 const categorize = require('@pie-lib/categorize');
@@ -10,7 +10,6 @@ const choices = () => [{ id: '1', content: 'Foo' }, { id: '2', content: 'Bar' }]
 describe('controller', () => {
   let question;
   let result;
-  const scoreSpy = jest.spyOn(categorize, 'score');
   const buildStateSpy = jest.spyOn(categorize, 'buildState');
 
   beforeEach(() => {
@@ -18,22 +17,6 @@ describe('controller', () => {
       categories: categories(),
       choices: choices(),
       correctResponse: [{ category: '1', choices: ['1', '2'] }],
-      scoring: {
-        weighting: {
-          enabled: true,
-          rules: [{ category: '1', points: 1 }, { category: '2', points: 1 }]
-        },
-        partial: {
-          enabled: true,
-          rules: [
-            {
-              category: '1',
-              rules: [{ count: 1, percent: 50 }, { count: 2, percent: 100 }]
-            },
-            { category: '2', rules: [] }
-          ]
-        }
-      }
     };
   });
 
@@ -59,10 +42,6 @@ describe('controller', () => {
 
       it('calls buildState ', () => {
         expect(buildStateSpy).toBeCalled();
-      });
-
-      it('calls score ', () => {
-        expect(scoreSpy).toHaveBeenCalled();
       });
 
       it('resolves incorrect', () => {
@@ -135,9 +114,6 @@ describe('controller', () => {
       it('calls buildState ', () => {
         expect(buildStateSpy).toBeCalled();
       });
-      it('calls score ', () => {
-        expect(scoreSpy).toHaveBeenCalled();
-      });
     });
   });
 
@@ -174,15 +150,28 @@ describe('controller', () => {
     it('adds default config', async () => {
       const result = await model(question, {}, { mode: 'gather' });
       expect(result).toMatchObject({
-        config: {
-          choices: {
-            columns: 2
-          },
-          categories: {
-            columns: 2
-          }
-        }
+        choicesPerRow: 2,
+        categoriesPerRow: 2,
+        choicesLabel: '',
       });
+    });
+  });
+
+  describe('getScore', () => {
+    it('returns correct result', () => {
+      expect(getScore(
+        { id: '0' },
+        [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
+        ['0', '1', '3'],
+        ['0', '2']
+      )).toEqual(0.25);
+
+      expect(getScore(
+        { id: '0' },
+        [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
+        ['0'],
+        ['0', '2']
+      )).toEqual(0.75);
     });
   });
 });

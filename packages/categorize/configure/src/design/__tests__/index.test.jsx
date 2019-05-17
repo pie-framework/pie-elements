@@ -10,6 +10,20 @@ const model = extras => ({
   ...extras
 });
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: props => <div {...props} />
+  },
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 describe('Design', () => {
   let w;
   let onChange = jest.fn();
@@ -58,86 +72,6 @@ describe('Design', () => {
         expect(onChange).toBeCalledWith(expect.objectContaining(expected));
       });
     };
-
-    describe('changeCategoryColumns', () => {
-      const config = { config: { categories: { columns: 4 } } };
-      callsOnChange('changeCategoryColumns', { target: { value: 4 } }, config);
-    });
-
-    describe('changeCategories', () => {
-      callsOnChange('changeCategories', [{ id: '10' }], {
-        categories: [{ id: '10' }]
-      });
-    });
-
-    describe('changeChoices', () => {
-      describe('with multiple choices in correctResponse', () => {
-        const extras = {
-          model: {
-            ...model(),
-            choices: [{ id: '10', categoryCount: 0 }],
-            correctResponse: [{ category: '1', choices: ['10', '10'] }]
-          }
-        };
-        callsOnChange(
-          wrapper(extras),
-          'changeChoices',
-          [{ id: '10', categoryCount: 1 }],
-          {
-            choices: [{ id: '10', categoryCount: 1 }],
-            categories: [{ id: '1', label: 'Category Title' }],
-            correctResponse: [{ category: '1', choices: ['10'] }]
-          }
-        );
-      });
-    });
-
-    describe('deleteChoice', () => {
-      callsOnChange('deleteChoice', { id: '1' }, { choices: [] });
-    });
-
-    describe('addChoice', () => {
-      callsOnChange(wrapper(), 'addChoice', {
-        choices: [
-          { id: '1', content: 'content', categoryCount: undefined },
-          { id: '1', content: 'Choice 1', categoryCount: undefined }
-        ]
-      });
-    });
-
-    describe('deleteCategory', () => {
-      callsOnChange('deleteCategory', { id: '1' }, { categories: [] });
-    });
-
-    describe('addCategory', () => {
-      callsOnChange(
-        wrapper({ model: { ...model(), categories: [] } }),
-        'addCategory',
-        {
-          categories: [{ id: '1', label: 'Category 1' }]
-        }
-      );
-    });
-
-    describe('addChoiceToCategory', () => {
-      callsOnChange('addChoiceToCategory', { id: '2', content: 'foo' }, '1', {
-        correctResponse: [{ category: '1', choices: ['1', '2'] }]
-      });
-    });
-
-    describe('deleteChoiceFromCategory', () => {
-      callsOnChange('deleteChoiceFromCategory', { id: '1' }, { id: '1' }, 0, {
-        correctResponse: [{ category: '1', choices: [] }]
-      });
-    });
-
-    describe('changeChoicesConfig', () => {
-      callsOnChange(
-        'changeChoicesConfig',
-        { columns: 10 },
-        { config: { choices: { columns: 10 } } }
-      );
-    });
 
     describe('changeFeedback', () => {
       callsOnChange(

@@ -3,8 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   FeedbackConfig,
   settings,
-  layout
+  layout,
+  InputContainer
 } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
@@ -23,7 +25,15 @@ const styles = theme => ({
   },
   content: {
     marginTop: theme.spacing.unit * 2
-  }
+  },
+  promptHolder: {
+    width: '100%',
+    paddingTop: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
 });
 
 class Configure extends React.Component {
@@ -150,6 +160,13 @@ class Configure extends React.Component {
     this.props.onModelChanged(this.props.model);
   };
 
+  onPromptChanged = prompt => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      prompt
+    });
+  };
+
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
@@ -159,7 +176,8 @@ class Configure extends React.Component {
       studentInstructions,
       rationale,
       lockChoiceOrder,
-      scoringType
+      scoringType,
+      prompt
     } = configuration;
 
     log('[render] model', model);
@@ -170,6 +188,7 @@ class Configure extends React.Component {
         settings={
           <Panel
             model={model}
+            configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
@@ -202,6 +221,21 @@ class Configure extends React.Component {
               This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
             </span>
           </Typography>
+          {prompt.settings && (
+            <InputContainer
+              label={prompt.label}
+              className={classes.promptHolder}
+            >
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+                nonEmpty={!prompt.settings}
+                disableUnderline
+              />
+            </InputContainer>
+          )}
           <GeneralConfigBlock
             model={model}
             configuration={configuration}

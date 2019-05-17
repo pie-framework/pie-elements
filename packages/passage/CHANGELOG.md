@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.1...@pie-element/passage@1.2.2) (2019-05-14)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.0...@pie-element/passage@1.2.1) (2019-05-14)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.4...@pie-element/passage@1.2.0) (2019-05-13)
+
+
+### Bug Fixes
+
+* doc name ([40ee7d5](https://github.com/pie-framework/pie-elements/commit/40ee7d5))
+
+
+### Features
+
+* support paired passages ([#216](https://github.com/pie-framework/pie-elements/issues/216)) ([c036a92](https://github.com/pie-framework/pie-elements/commit/c036a92))
+
+
+
+
+
 ## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.1.3...@pie-element/passage@1.1.4) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/passage

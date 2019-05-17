@@ -3,6 +3,20 @@ import React from 'react';
 
 import { Main } from '../main';
 
+jest.mock('@pie-lib/config-ui', () => ({
+  layout: {
+    ConfigLayout: props => <div {...props} />
+  },
+  choiceUtils: {
+    firstAvailableIndex: jest.fn()
+  },
+  settings: {
+    Panel: props => <div {...props} />,
+    toggle: jest.fn(),
+    radio: jest.fn()
+  }
+}));
+
 const model = () => ({
   correctResponse: [],
   choices: [],
@@ -11,12 +25,12 @@ const model = () => ({
 
 describe('Main', () => {
   let w;
-  let onChange = jest.fn();
+  let onModelChanged = jest.fn();
   const wrapper = extras => {
     const defaults = {
       classes: {},
       className: 'className',
-      onChange,
+      onModelChanged,
       model: model()
     };
     const props = { ...defaults, ...extras };
@@ -28,16 +42,6 @@ describe('Main', () => {
     it('renders', () => {
       w = wrapper();
       expect(w).toMatchSnapshot();
-    });
-  });
-
-  describe('logic', () => {
-    describe('changeScoring', () => {
-      w = wrapper();
-      w.instance().changeScoring({ update: true });
-      expect(onChange).toBeCalledWith(
-        expect.objectContaining({ scoring: { update: true } })
-      );
     });
   });
 });

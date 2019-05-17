@@ -588,5 +588,25 @@
     "committerDate": "2019-04-25 11:22:05 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text@3.10.6"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: configure is removed, use configuration instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "configure is removed, use configuration instead."
+      }
+    ],
+    "hash": "b6f4593faa7306464285fa27cc39b42f4fa3413d",
+    "gitTags": "",
+    "committerDate": "2019-05-06 15:51:55 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@4.0.0"
   }
 ]

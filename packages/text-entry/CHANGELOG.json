@@ -348,5 +348,20 @@
     "committerDate": "2019-04-25 11:24:59 +0300",
     "isTagged": true,
     "tag": "@pie-element/text-entry@3.5.6"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Transformed defaults into an object that has model and configuration property.",
+    "merge": null,
+    "header": "feat: Transformed defaults into an object that has model and configuration property.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d8bedeb387aa42e1d9e1e450a430c90c2a6f81d",
+    "gitTags": "",
+    "committerDate": "2019-05-08 16:33:18 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/text-entry@3.6.0"
   }
 ]

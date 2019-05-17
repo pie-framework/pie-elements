@@ -65,9 +65,9 @@ export default {
       label: 'Placement Area',
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     removeTilesAfterPlacing: {
       settings: false,
