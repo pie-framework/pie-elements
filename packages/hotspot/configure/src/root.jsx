@@ -67,9 +67,6 @@ class Root extends React.Component {
               <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
             </InputContainer>
 
-            <Typography className={classes.label} variant="subheading">
-              Define Hotspot
-            </Typography>
               {rationale.enabled && (
                 <InputContainer label={rationale.label} className={classes.prompt}>
                   <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
