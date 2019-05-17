@@ -468,5 +468,20 @@
     "committerDate": "2019-05-02 16:41:21 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-configure@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "placement-ordering",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(placement-ordering): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6df005db8ba935e4a3dcddb57af6dbf4717b9ed",
+    "gitTags": "",
+    "committerDate": "2019-05-11 15:07:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-configure@3.1.0"
   }
 ]

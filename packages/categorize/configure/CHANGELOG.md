@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.1...@pie-element/categorize-configure@3.0.0) (2019-05-16)
+
+
+### Features
+
+* **categorize:** Integrated settings panel. Added support for rationale. Removed scoring panel. ([6e5a1bf](https://github.com/pie-framework/pie-elements/commit/6e5a1bf))
+
+
+### BREAKING CHANGES
+
+* **categorize:** `scoring` with `partial` and `weighting` is not supported anymore.
+
+
+
+
+
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.0...@pie-element/categorize-configure@2.0.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

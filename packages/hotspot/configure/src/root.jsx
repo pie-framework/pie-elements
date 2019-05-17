@@ -29,12 +29,9 @@ class Root extends React.Component {
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes,
+      onUpdateShapes
     } = this.props;
-    const {
-      multipleCorrect,
-      partialScoring
-    } = configuration;
+    const { multipleCorrect, partialScoring } = configuration;
     const { rationale = {} } = configuration;
 
     return (
@@ -48,26 +45,33 @@ class Root extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Item Type': {
-                  multipleCorrect: multipleCorrect.settings &&
-                    toggle(multipleCorrect.label),
-                  partialScoring: partialScoring.settings &&
-                    toggle(partialScoring.label),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
+                  multipleCorrect:
+                    multipleCorrect.settings && toggle(multipleCorrect.label),
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  'rationale.enabled':
+                    rationale.settings && toggle(rationale.label, true)
                 },
-                'Properties': {}
+                Properties: {}
               }}
             />
           }
         >
           <div className={classes.regular}>
             <InputContainer label="Item Stem" className={classes.prompt}>
-              <EditableHtml markup={model.prompt} onChange={onPromptChanged}/>
+              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
             </InputContainer>
 
             {rationale.enabled && (
-              <InputContainer label={rationale.label} className={classes.prompt}>
-                <EditableHtml markup={model.rationale || ''} onChange={onRationaleChanged} imageSupport={imageSupport}/>
+              <InputContainer
+                label={rationale.label}
+                className={classes.prompt}
+              >
+                <EditableHtml
+                  markup={model.rationale || ''}
+                  onChange={onRationaleChanged}
+                  imageSupport={imageSupport}
+                />
               </InputContainer>
             )}
 
@@ -80,8 +84,12 @@ class Root extends React.Component {
               hotspotList={model.hotspotList}
               outlineColor={model.outlineColor}
               outlineList={model.outlineList}
-              onHotspotColorChange={color => this.handleColorChange('hotspot', color)}
-              onOutlineColorChange={color => this.handleColorChange('outline', color)}
+              onHotspotColorChange={color =>
+                this.handleColorChange('hotspot', color)
+              }
+              onOutlineColorChange={color =>
+                this.handleColorChange('outline', color)
+              }
             />
 
             <HotspotContainer
@@ -142,7 +150,7 @@ Root.propTypes = {
   onUpdateShapes: PropTypes.func.isRequired,
   onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
-  onConfigurationChanged: PropTypes.func.isRequired,
+  onConfigurationChanged: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Root);

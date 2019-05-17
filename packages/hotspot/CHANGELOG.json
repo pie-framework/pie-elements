@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "update hotspot docs",
+    "merge": null,
+    "header": "chore: update hotspot docs",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7689b5bac5f6990085b76eea19172614a56d967a",
+    "gitTags": "",
+    "committerDate": "2019-05-15 14:10:09 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. (#225)",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. (#225)",
+    "body": null,
+    "footer": "BREAKING CHANGE: `configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "380cdf9165fae6cc0e5f6940ab5ce6df25288206",
+    "gitTags": "",
+    "committerDate": "2019-05-15 13:04:28 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "merge": null,
+    "header": "feat: Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a1eb6f493d725f11c81a564e1576050fe37a2f93",
+    "gitTags": "",
+    "committerDate": "2019-05-14 14:54:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "hotspot",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(hotspot): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f60039aa487c5324195b9ca914f7156404f45b1d",
+    "gitTags": "",
+    "committerDate": "2019-05-11 17:44:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.0.0"
+  }
+]
