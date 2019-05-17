@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@1.0.5...@pie-element/hotspot-configure@2.0.0) (2019-05-16)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. ([#225](https://github.com/pie-framework/pie-elements/issues/225)) ([380cdf9](https://github.com/pie-framework/pie-elements/commit/380cdf9))
+* **hotspot:** added rationale support. ([f60039a](https://github.com/pie-framework/pie-elements/commit/f60039a))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration` instead.
+
+
+
+
+
 ## [1.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@1.0.4...@pie-element/hotspot-configure@1.0.5) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

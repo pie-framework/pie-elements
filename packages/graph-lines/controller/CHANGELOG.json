@@ -88,5 +88,35 @@
     "committerDate": "2019-04-18 16:36:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "merge": null,
+    "header": "feat: Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "213098f5bdc0227b07b0adf046ebaf19960069be",
+    "gitTags": "",
+    "committerDate": "2019-05-14 13:57:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines-controller@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graph-lines",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(graph-lines): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ff0286c2f3993c59d8801114002a815573ede1e",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:49:12 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines-controller@1.2.0"
   }
 ]

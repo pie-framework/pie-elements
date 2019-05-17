@@ -288,5 +288,35 @@
     "committerDate": "2019-05-02 16:41:21 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-controller@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "merge": null,
+    "header": "feat: Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ea90849b6b056562123713e4e4723160905be1f4",
+    "gitTags": "",
+    "committerDate": "2019-05-14 14:39:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "placement-ordering",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(placement-ordering): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6df005db8ba935e4a3dcddb57af6dbf4717b9ed",
+    "gitTags": "",
+    "committerDate": "2019-05-11 15:07:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-controller@4.1.0"
   }
 ]
