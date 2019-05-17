@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.0.1...@pie-element/select-text-configure@3.1.0) (2019-05-16)
+
+
+### Features
+
+* Sending rationale for `instructor` role only in 'view' or 'evaluate' mode. ([5100df2](https://github.com/pie-framework/pie-elements/commit/5100df2))
+* **select-text:** added rationale support. ([c2aa2f9](https://github.com/pie-framework/pie-elements/commit/c2aa2f9))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.0.0...@pie-element/select-text-configure@3.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.17...@pie-element/select-text-configure@3.0.0) (2019-05-10)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests. ([b6f4593](https://github.com/pie-framework/pie-elements/commit/b6f4593))
+
+
+### BREAKING CHANGES
+
+* configure is removed, use configuration instead.
+
+
+
+
+
+## [2.5.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.16...@pie-element/select-text-configure@2.5.17) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [2.5.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.15...@pie-element/select-text-configure@2.5.16) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 ## [2.5.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@2.5.14...@pie-element/select-text-configure@2.5.15) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

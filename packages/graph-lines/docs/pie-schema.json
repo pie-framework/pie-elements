@@ -1,5 +1,5 @@
 {
-  "description": "Model Object for @pie-elements/graph-lines",
+  "description": "NOTE: There's no functionality described for arrows, padding, labels, graphTitle,\nscoringType, studentInstructions, teacherInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graph-lines",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -179,216 +179,221 @@
       "type": "boolean",
       "title": "partialScoring"
     },
-    "partialScoringRules": {
-      "description": "Indicates partial scoring rules",
-      "type": "array",
-      "items": {
-        "title": "PartialScoringRule",
-        "type": "object",
-        "properties": {
-          "numberOfCorrect": {
-            "description": "Number of correct answers",
-            "type": "number",
-            "title": "numberOfCorrect"
-          },
-          "scorePercentage": {
-            "description": "Score percentage for partial scoring",
-            "type": "number",
-            "title": "scorePercentage"
-          }
-        },
-        "required": [
-          "numberOfCorrect",
-          "scorePercentage"
-        ]
-      },
-      "title": "partialScoringRules"
-    },
-    "model": {
-      "title": "GraphLineModel",
+    "graph": {
+      "title": "GraphLineModelConfig",
       "type": "object",
       "properties": {
-        "config": {
-          "title": "GraphLineModelConfig",
-          "type": "object",
-          "properties": {
-            "lines": {
-              "description": "The lines that should appear on the graph",
-              "type": "array",
-              "items": {
-                "title": "GraphLine",
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "description": "Label for the line",
-                    "type": "string",
-                    "title": "label"
-                  },
-                  "correctLine": {
-                    "description": "Correct line equation",
-                    "type": "string",
-                    "title": "correctLine"
-                  },
-                  "initialView": {
-                    "description": "Initial view for the line",
-                    "type": "string",
-                    "title": "initialView"
-                  }
-                },
-                "required": [
-                  "correctLine",
-                  "initialView",
-                  "label"
-                ]
+        "lines": {
+          "description": "The lines that should appear on the graph",
+          "type": "array",
+          "items": {
+            "title": "GraphLine",
+            "type": "object",
+            "properties": {
+              "label": {
+                "description": "Label for the line",
+                "type": "string",
+                "title": "label"
               },
-              "title": "lines"
+              "correctLine": {
+                "description": "Correct line equation",
+                "type": "string",
+                "title": "correctLine"
+              },
+              "initialView": {
+                "description": "Initial view for the line",
+                "type": "string",
+                "title": "initialView"
+              }
             },
-            "graphTitle": {
-              "description": "Indicates the title for the graph",
-              "type": "string",
-              "title": "graphTitle"
-            },
-            "graphWidth": {
-              "description": "Indicated the width for the graph",
-              "type": "number",
-              "title": "graphWidth"
-            },
-            "graphHeight": {
-              "description": "Indicates the height for the graph",
-              "type": "number",
-              "title": "graphHeight"
-            },
-            "domainLabel": {
-              "description": "Indicates the domain label for the graph",
-              "type": "string",
-              "title": "domainLabel"
-            },
-            "domainMin": {
-              "description": "Indicates the left limit (for the x axis)",
-              "type": "number",
-              "title": "domainMin"
-            },
-            "domainMax": {
-              "description": "Indicates the right limit (for the x axis)",
-              "type": "number",
-              "title": "domainMax"
-            },
-            "domainStepValue": {
-              "description": "Indicates step value (for the x axis)",
-              "type": "number",
-              "title": "domainStepValue"
-            },
-            "domainSnapValue": {
-              "description": "Indicates snap value (for the x axis)",
-              "type": "number",
-              "title": "domainSnapValue"
-            },
-            "domainLabelFrequency": {
-              "description": "Indicates domain label frequency (for the x axis)",
-              "type": "number",
-              "title": "domainLabelFrequency"
-            },
-            "domainGraphPadding": {
-              "description": "Indicates domain graph padding (for the x axis)",
-              "type": "number",
-              "title": "domainGraphPadding"
-            },
-            "rangeLabel": {
-              "description": "Indicates the range label for the graph",
-              "type": "string",
-              "title": "rangeLabel"
-            },
-            "rangeMin": {
-              "description": "Indicates the bottom limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMin"
-            },
-            "rangeMax": {
-              "description": "Indicates the top limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMax"
-            },
-            "rangeStepValue": {
-              "description": "Indicates step value (for the y axis)",
-              "type": "number",
-              "title": "rangeStepValue"
-            },
-            "rangeSnapValue": {
-              "description": "Indicates snap value (for the y axis)",
-              "type": "number",
-              "title": "rangeSnapValue"
-            },
-            "rangeLabelFrequency": {
-              "description": "Indicates range label frequency (for the y axis)",
-              "type": "number",
-              "title": "rangeLabelFrequency"
-            },
-            "rangeGraphPadding": {
-              "description": "Indicates range graph padding (for the y axis)",
-              "type": "number",
-              "title": "rangeGraphPadding"
-            },
-            "sigfigs": {
-              "type": "number",
-              "title": "sigfigs"
-            },
-            "showCoordinates": {
-              "description": "Indicates if coordinates should be displayed",
-              "type": "boolean",
-              "title": "showCoordinates"
-            },
-            "showPointLabels": {
-              "description": "Indicates if point labels should be displayed",
-              "type": "boolean",
-              "title": "showPointLabels"
-            },
-            "showInputs": {
-              "description": "Indicates if inputs should be displayed",
-              "type": "boolean",
-              "title": "showInputs"
-            },
-            "showAxisLabels": {
-              "description": "Indicates if axis labels should be displayed",
-              "type": "boolean",
-              "title": "showAxisLabels"
-            },
-            "showFeedback": {
-              "description": "Indicates if feedback should be displayed",
-              "type": "boolean",
-              "title": "showFeedback"
-            }
+            "required": [
+              "correctLine",
+              "initialView",
+              "label"
+            ]
           },
-          "required": [
-            "domainGraphPadding",
-            "domainLabel",
-            "domainLabelFrequency",
-            "domainMax",
-            "domainMin",
-            "domainSnapValue",
-            "domainStepValue",
-            "graphHeight",
-            "graphTitle",
-            "graphWidth",
-            "lines",
-            "rangeGraphPadding",
-            "rangeLabel",
-            "rangeLabelFrequency",
-            "rangeMax",
-            "rangeMin",
-            "rangeSnapValue",
-            "rangeStepValue",
-            "showAxisLabels",
-            "showCoordinates",
-            "showFeedback",
-            "showInputs",
-            "showPointLabels",
-            "sigfigs"
-          ]
+          "title": "lines"
+        },
+        "graphTitle": {
+          "description": "Indicates the title for the graph",
+          "type": "string",
+          "title": "graphTitle"
+        },
+        "graphWidth": {
+          "description": "Indicated the width for the graph",
+          "type": "number",
+          "title": "graphWidth"
+        },
+        "graphHeight": {
+          "description": "Indicates the height for the graph",
+          "type": "number",
+          "title": "graphHeight"
+        },
+        "domainLabel": {
+          "description": "Indicates the domain label for the graph",
+          "type": "string",
+          "title": "domainLabel"
+        },
+        "domainMin": {
+          "description": "Indicates the left limit (for the x axis)",
+          "type": "number",
+          "title": "domainMin"
+        },
+        "domainMax": {
+          "description": "Indicates the right limit (for the x axis)",
+          "type": "number",
+          "title": "domainMax"
+        },
+        "domainStepValue": {
+          "description": "Indicates step value (for the x axis)",
+          "type": "number",
+          "title": "domainStepValue"
+        },
+        "domainSnapValue": {
+          "description": "Indicates snap value (for the x axis)",
+          "type": "number",
+          "title": "domainSnapValue"
+        },
+        "domainLabelFrequency": {
+          "description": "Indicates domain label frequency (for the x axis)",
+          "type": "number",
+          "title": "domainLabelFrequency"
+        },
+        "domainGraphPadding": {
+          "description": "Indicates domain graph padding (for the x axis)",
+          "type": "number",
+          "title": "domainGraphPadding"
+        },
+        "rangeLabel": {
+          "description": "Indicates the range label for the graph",
+          "type": "string",
+          "title": "rangeLabel"
+        },
+        "rangeMin": {
+          "description": "Indicates the bottom limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMin"
+        },
+        "rangeMax": {
+          "description": "Indicates the top limit (for the y axis)",
+          "type": "number",
+          "title": "rangeMax"
+        },
+        "rangeStepValue": {
+          "description": "Indicates step value (for the y axis)",
+          "type": "number",
+          "title": "rangeStepValue"
+        },
+        "rangeSnapValue": {
+          "description": "Indicates snap value (for the y axis)",
+          "type": "number",
+          "title": "rangeSnapValue"
+        },
+        "rangeLabelFrequency": {
+          "description": "Indicates range label frequency (for the y axis)",
+          "type": "number",
+          "title": "rangeLabelFrequency"
+        },
+        "rangeGraphPadding": {
+          "description": "Indicates range graph padding (for the y axis)",
+          "type": "number",
+          "title": "rangeGraphPadding"
+        },
+        "sigfigs": {
+          "type": "number",
+          "title": "sigfigs"
+        },
+        "showCoordinates": {
+          "description": "Indicates if coordinates should be displayed",
+          "type": "boolean",
+          "title": "showCoordinates"
+        },
+        "showPointLabels": {
+          "description": "Indicates if point labels should be displayed",
+          "type": "boolean",
+          "title": "showPointLabels"
+        },
+        "showInputs": {
+          "description": "Indicates if inputs should be displayed",
+          "type": "boolean",
+          "title": "showInputs"
+        },
+        "showAxisLabels": {
+          "description": "Indicates if axis labels should be displayed",
+          "type": "boolean",
+          "title": "showAxisLabels"
+        },
+        "showFeedback": {
+          "description": "Indicates if feedback should be displayed",
+          "type": "boolean",
+          "title": "showFeedback"
         }
       },
       "required": [
-        "config"
+        "domainGraphPadding",
+        "domainLabel",
+        "domainLabelFrequency",
+        "domainMax",
+        "domainMin",
+        "domainSnapValue",
+        "domainStepValue",
+        "graphHeight",
+        "graphTitle",
+        "graphWidth",
+        "lines",
+        "rangeGraphPadding",
+        "rangeLabel",
+        "rangeLabelFrequency",
+        "rangeMax",
+        "rangeMin",
+        "rangeSnapValue",
+        "rangeStepValue",
+        "showAxisLabels",
+        "showCoordinates",
+        "showFeedback",
+        "showInputs",
+        "showPointLabels",
+        "sigfigs"
       ]
+    },
+    "arrows": {
+      "description": "Indicates if arrows are enabled",
+      "type": "boolean",
+      "title": "arrows"
+    },
+    "padding": {
+      "description": "Indicates if padding is enabled",
+      "type": "boolean",
+      "title": "padding"
+    },
+    "labels": {
+      "description": "Indicates if labels are enabled",
+      "type": "boolean",
+      "title": "labels"
+    },
+    "rationale": {
+      "description": "Indicates rationale for the answer",
+      "type": "string",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "auto",
+        "rubric"
+      ],
+      "type": "string",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -403,10 +408,32 @@
   },
   "required": [
     "element",
+    "graph",
     "id",
-    "model"
+    "multiple"
   ],
   "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
       "type": "object",
@@ -617,212 +644,6 @@
       "required": [
         "custom",
         "type"
-      ]
-    },
-    "PartialScoringRule": {
-      "title": "PartialScoringRule",
-      "type": "object",
-      "properties": {
-        "numberOfCorrect": {
-          "description": "Number of correct answers",
-          "type": "number",
-          "title": "numberOfCorrect"
-        },
-        "scorePercentage": {
-          "description": "Score percentage for partial scoring",
-          "type": "number",
-          "title": "scorePercentage"
-        }
-      },
-      "required": [
-        "numberOfCorrect",
-        "scorePercentage"
-      ]
-    },
-    "GraphLineModel": {
-      "title": "GraphLineModel",
-      "type": "object",
-      "properties": {
-        "config": {
-          "title": "GraphLineModelConfig",
-          "type": "object",
-          "properties": {
-            "lines": {
-              "description": "The lines that should appear on the graph",
-              "type": "array",
-              "items": {
-                "title": "GraphLine",
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "description": "Label for the line",
-                    "type": "string",
-                    "title": "label"
-                  },
-                  "correctLine": {
-                    "description": "Correct line equation",
-                    "type": "string",
-                    "title": "correctLine"
-                  },
-                  "initialView": {
-                    "description": "Initial view for the line",
-                    "type": "string",
-                    "title": "initialView"
-                  }
-                },
-                "required": [
-                  "correctLine",
-                  "initialView",
-                  "label"
-                ]
-              },
-              "title": "lines"
-            },
-            "graphTitle": {
-              "description": "Indicates the title for the graph",
-              "type": "string",
-              "title": "graphTitle"
-            },
-            "graphWidth": {
-              "description": "Indicated the width for the graph",
-              "type": "number",
-              "title": "graphWidth"
-            },
-            "graphHeight": {
-              "description": "Indicates the height for the graph",
-              "type": "number",
-              "title": "graphHeight"
-            },
-            "domainLabel": {
-              "description": "Indicates the domain label for the graph",
-              "type": "string",
-              "title": "domainLabel"
-            },
-            "domainMin": {
-              "description": "Indicates the left limit (for the x axis)",
-              "type": "number",
-              "title": "domainMin"
-            },
-            "domainMax": {
-              "description": "Indicates the right limit (for the x axis)",
-              "type": "number",
-              "title": "domainMax"
-            },
-            "domainStepValue": {
-              "description": "Indicates step value (for the x axis)",
-              "type": "number",
-              "title": "domainStepValue"
-            },
-            "domainSnapValue": {
-              "description": "Indicates snap value (for the x axis)",
-              "type": "number",
-              "title": "domainSnapValue"
-            },
-            "domainLabelFrequency": {
-              "description": "Indicates domain label frequency (for the x axis)",
-              "type": "number",
-              "title": "domainLabelFrequency"
-            },
-            "domainGraphPadding": {
-              "description": "Indicates domain graph padding (for the x axis)",
-              "type": "number",
-              "title": "domainGraphPadding"
-            },
-            "rangeLabel": {
-              "description": "Indicates the range label for the graph",
-              "type": "string",
-              "title": "rangeLabel"
-            },
-            "rangeMin": {
-              "description": "Indicates the bottom limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMin"
-            },
-            "rangeMax": {
-              "description": "Indicates the top limit (for the y axis)",
-              "type": "number",
-              "title": "rangeMax"
-            },
-            "rangeStepValue": {
-              "description": "Indicates step value (for the y axis)",
-              "type": "number",
-              "title": "rangeStepValue"
-            },
-            "rangeSnapValue": {
-              "description": "Indicates snap value (for the y axis)",
-              "type": "number",
-              "title": "rangeSnapValue"
-            },
-            "rangeLabelFrequency": {
-              "description": "Indicates range label frequency (for the y axis)",
-              "type": "number",
-              "title": "rangeLabelFrequency"
-            },
-            "rangeGraphPadding": {
-              "description": "Indicates range graph padding (for the y axis)",
-              "type": "number",
-              "title": "rangeGraphPadding"
-            },
-            "sigfigs": {
-              "type": "number",
-              "title": "sigfigs"
-            },
-            "showCoordinates": {
-              "description": "Indicates if coordinates should be displayed",
-              "type": "boolean",
-              "title": "showCoordinates"
-            },
-            "showPointLabels": {
-              "description": "Indicates if point labels should be displayed",
-              "type": "boolean",
-              "title": "showPointLabels"
-            },
-            "showInputs": {
-              "description": "Indicates if inputs should be displayed",
-              "type": "boolean",
-              "title": "showInputs"
-            },
-            "showAxisLabels": {
-              "description": "Indicates if axis labels should be displayed",
-              "type": "boolean",
-              "title": "showAxisLabels"
-            },
-            "showFeedback": {
-              "description": "Indicates if feedback should be displayed",
-              "type": "boolean",
-              "title": "showFeedback"
-            }
-          },
-          "required": [
-            "domainGraphPadding",
-            "domainLabel",
-            "domainLabelFrequency",
-            "domainMax",
-            "domainMin",
-            "domainSnapValue",
-            "domainStepValue",
-            "graphHeight",
-            "graphTitle",
-            "graphWidth",
-            "lines",
-            "rangeGraphPadding",
-            "rangeLabel",
-            "rangeLabelFrequency",
-            "rangeMax",
-            "rangeMin",
-            "rangeSnapValue",
-            "rangeStepValue",
-            "showAxisLabels",
-            "showCoordinates",
-            "showFeedback",
-            "showInputs",
-            "showPointLabels",
-            "sigfigs"
-          ]
-        }
-      },
-      "required": [
-        "config"
       ]
     },
     "GraphLineModelConfig": {

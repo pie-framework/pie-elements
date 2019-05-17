@@ -53,11 +53,11 @@ const base = extras =>
       partialScoring: false,
       maxSelections: 2,
       mode: 'sentence',
+      rationale: 'Rationale goes here.',
       prompt: 'What sentences contain the character 6 in them?',
       text:
         'Rachel cut out 8 stars in 6 minutes. Lovelle cut out 6 stars in 4 minutes. Rachel cut out 4 more stars than Lovelle. Lovelle and Rachel cut the same number of stars in 6 minutes.',
       tokens: tokens(),
-      configure: {}
     },
     extras
   );
@@ -86,7 +86,6 @@ const mathSample = extras => {
       prompt: 'What sentences contain the character 6 in them?',
       text: mathSampleText,
       tokens: mathSampleTokens,
-      configure: {}
     },
     extras
   );
@@ -122,6 +121,7 @@ exports.htmlSample = (id, element) => {
     prompt: "<p>Select the <span class=\"relative-emphasis\">one</span> phrase below that suggests that in the future, Keith may interpret this moment differently.</p>",
     maxSelections: 2,
     mode: 'sentence',
+    rationale: 'Rationale goes here.',
     tokens: [
       {
         correct: false,
@@ -148,6 +148,5 @@ exports.htmlSample = (id, element) => {
         text: "<span class=\"lrn_token\">he was an astronaut and they were welcoming him aboard the space station</span>"
       }
     ],
-    configure: {}
   });
 };

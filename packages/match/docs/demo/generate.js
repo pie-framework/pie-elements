@@ -20,7 +20,7 @@ exports.model = (id, element) => ({
   layout: 3,
   lockChoiceOrder: true,
   partialScoring: false,
-  responseType: 'radio',
+  choiceMode: 'radio',
   rows: [
     {
       id: 1,
@@ -43,5 +43,5 @@ exports.model = (id, element) => ({
       values: [false, false]
     }
   ],
-  configure: {}
+  prompt: 'Select correct answers.',
 });

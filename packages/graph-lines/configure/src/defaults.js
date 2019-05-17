@@ -5,11 +5,12 @@
  */
 
 export default {
-  scoringType: 'auto',
-  arrows: true,
-  padding: true,
-
-  configure: {
+  model: {
+    scoringType: 'auto',
+    arrows: true,
+    padding: true,
+  },
+  configuration: {
     arrows: {
       settings: false,
       label: 'Include arrows',
@@ -29,9 +30,9 @@ export default {
       enabled: true
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,
@@ -47,5 +48,5 @@ export default {
       label: 'Teacher Instructions',
       enabled: false,
     },
-  },
+  }
 };

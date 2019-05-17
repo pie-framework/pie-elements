@@ -1,6 +1,6 @@
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import { Checkbox, FeedbackConfig } from '@pie-lib/config-ui';
+import { Checkbox, FeedbackConfig, InputContainer } from '@pie-lib/config-ui';
 import NumberTextField from './number-text-field';
 
 import {
@@ -19,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
+import EditableHtml from '@pie-lib/editable-html';
 
 const {
   lineIsSwitched,
@@ -27,7 +28,7 @@ const {
   toSessionFormat
 } = dataConverter;
 
-const styles = {
+const styles = theme => ({
   row: {
     display: 'flex'
   },
@@ -39,8 +40,17 @@ const styles = {
   },
   pointTypeChooser: {
     margin: '20px 0'
-  }
-};
+  },
+  promptHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
+});
 
 const defaultConfig = {
   domain: [0, 5],
@@ -71,6 +81,7 @@ class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     onConfigChange: PropTypes.func.isRequired,
     onCorrectResponseChange: PropTypes.func.isRequired,
     onInitialElementsChange: PropTypes.func.isRequired,
@@ -79,7 +90,8 @@ class Main extends React.Component {
     onFeedbackChange: PropTypes.func.isRequired,
     onSnapPerTickChange: PropTypes.func.isRequired,
     onMinorTicksChanged: PropTypes.func.isRequired,
-    onTickFrequencyChange: PropTypes.func.isRequired
+    onTickFrequencyChange: PropTypes.func.isRequired,
+    onPromptChanged: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -97,8 +109,8 @@ class Main extends React.Component {
   }
 
   getDomain() {
-    let config = this.props.model.config;
-    let domainArray = config.domain;
+    let graph = this.props.model.graph;
+    let domainArray = graph.domain;
     return {
       min: domainArray[0],
       max: domainArray[1]
@@ -106,21 +118,21 @@ class Main extends React.Component {
   }
 
   setDefaults() {
-    this.props.model.config = _.cloneDeep(defaultConfig);
-    this.props.onConfigChange(this.props.model.config);
+    this.props.model.graph = _.cloneDeep(defaultConfig);
+    this.props.onConfigChange(this.props.model.graph);
   }
 
   getTicks() {
-    let config = this.props.model.config;
+    let graph = this.props.model.graph;
     return {
-      major: config.tickFrequency || 2,
-      minor: config.showMinorTicks ? config.snapPerTick || 0 : 0
+      major: graph.tickFrequency || 2,
+      minor: graph.showMinorTicks ? graph.snapPerTick || 0 : 0
     };
   }
 
   exhibitChanged(event, value) {
-    this.props.model.config.exhibitOnly = value;
-    this.props.onConfigChange(this.props.model.config);
+    this.props.model.graph.exhibitOnly = value;
+    this.props.onConfigChange(this.props.model.graph);
   }
 
   moveCorrectResponse(index, el, position) {
@@ -137,8 +149,8 @@ class Main extends React.Component {
     let update = toSessionFormat(
       el.type === 'line' && lineIsSwitched(el) ? switchGraphLine(el) : el
     );
-    this.props.model.config.initialElements[index] = update;
-    this.props.onInitialElementsChange(this.props.model.config.initialElements);
+    this.props.model.graph.initialElements[index] = update;
+    this.props.onInitialElementsChange(this.props.model.graph.initialElements);
   }
 
   availableTypesChange(availableTypes) {
@@ -173,12 +185,12 @@ class Main extends React.Component {
   }
 
   deleteInitialView(indices) {
-    this.props.model.config.initialElements = this.props.model.config.initialElements.filter(
+    this.props.model.graph.initialElements = this.props.model.graph.initialElements.filter(
       (v, index) => {
         return !indices.some(d => d === index);
       }
     );
-    this.props.onInitialElementsChange(this.props.model.config.initialElements);
+    this.props.onInitialElementsChange(this.props.model.graph.initialElements);
   }
 
   addCorrectResponse(data) {
@@ -187,14 +199,15 @@ class Main extends React.Component {
   }
 
   addInitialView(data) {
-    this.props.model.config.initialElements.push(toSessionFormat(data));
-    this.props.onCorrectResponseChange(this.props.model.config.initialElements);
+    this.props.model.graph.initialElements.push(toSessionFormat(data));
+    this.props.onCorrectResponseChange(this.props.model.graph.initialElements);
   }
 
   render() {
-    const { classes, onDomainChange, model } = this.props;
+    const { classes, onDomainChange, model, onPromptChanged, configuration } = this.props;
 
-    const { config } = model;
+    const { graph } = model;
+    const { prompt } = configuration;
     const numberFieldStyle = {
       width: '50px',
       margin: '0 10px'
@@ -203,7 +216,7 @@ class Main extends React.Component {
     let noOp = () => {};
 
     let correctResponse = cloneDeep(model.correctResponse).map(toGraphFormat);
-    let initialView = cloneDeep(config.initialElements).map(toGraphFormat);
+    let initialView = cloneDeep(graph.initialElements).map(toGraphFormat);
 
     return (
       <div className={classes.root}>
@@ -211,6 +224,22 @@ class Main extends React.Component {
           In this interaction, students plot points, line segments or rays on a
           number line.
         </p>
+
+        {prompt.settings && (
+          <InputContainer
+            label={prompt.label}
+            className={classes.promptHolder}
+          >
+            <EditableHtml
+              className={classes.prompt}
+              markup={model.prompt}
+              onChange={onPromptChanged}
+              nonEmpty={!prompt.settings}
+              disableUnderline
+            />
+          </InputContainer>
+        )}
+
         <Card>
           <CardContent>
             <Typography type="headline">Number Line Attributes</Typography>
@@ -235,11 +264,11 @@ class Main extends React.Component {
               onToggleElement={noOp}
               onDeselectElements={noOp}
             />
-            <Domain domain={config.domain} onChange={onDomainChange} />
+            <Domain domain={graph.domain} onChange={onDomainChange} />
             <div>
               Number of Ticks:
               <NumberTextField
-                value={config.tickFrequency}
+                value={graph.tickFrequency}
                 name="numberOfTicks"
                 min={2}
                 style={numberFieldStyle}
@@ -250,20 +279,20 @@ class Main extends React.Component {
               <div className={classes.row}>
                 <div
                   className={classNames(classes.minorTicks, {
-                    [classes.hide]: !config.showMinorTicks
+                    [classes.hide]: !graph.showMinorTicks
                   })}
                 >
                   Minor Tick Frequency:
                   <NumberTextField
                     name="snapPerTick"
                     style={numberFieldStyle}
-                    value={config.snapPerTick}
+                    value={graph.snapPerTick}
                     max={12}
                     onChange={this.props.onSnapPerTickChange.bind(this)}
                   />
                 </div>
                 <Checkbox
-                  checked={config.showMinorTicks}
+                  checked={graph.showMinorTicks}
                   label={'Show'}
                   onChange={this.props.onMinorTicksChanged.bind(this)}
                   value={'showMinorTicks'}
@@ -277,7 +306,7 @@ class Main extends React.Component {
         </Card>
         <br />
 
-        {!config.exhibitOnly && (
+        {!graph.exhibitOnly && (
           <Card>
             <CardContent>
               <Typography type="headline">Correct Response</Typography>
@@ -311,7 +340,7 @@ class Main extends React.Component {
               <div className={classes.pointTypeChooser}>
                 <PointConfig
                   onSelectionChange={this.availableTypesChange}
-                  selection={config.availableTypes}
+                  selection={graph.availableTypes}
                 />
               </div>
             </CardContent>
@@ -342,14 +371,14 @@ class Main extends React.Component {
             />
             <Checkbox
               label="Make exhibit"
-              checked={config.exhibitOnly}
+              checked={graph.exhibitOnly}
               onChange={this.exhibitChanged}
               value={'exhibitOnly'}
             />
           </CardContent>
         </Card>
 
-        {!config.exhibitOnly && (
+        {!graph.exhibitOnly && (
           <React.Fragment>
             <br />
             <FeedbackConfig

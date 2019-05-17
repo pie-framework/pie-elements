@@ -99,7 +99,7 @@ interface GraphLineModelConfig {
 
 /**
  * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
- * rationale, scoringType, studentInstructions, teacherInstructions
+ * scoringType, studentInstructions, teacherInstructions
  * so there's no implementation (they are only added in model)
  */
 
@@ -112,37 +112,34 @@ export interface GraphLinesPie extends PieModel {
     feedback?: ComplexFeedbackType;
 
     /** Indicates if the graph can have multiple lines */
-    multiple?: boolean;
+    multiple: boolean;
 
     /** Indicates if partial scoring rules is enabled */
     partialScoring?: boolean;
-
-    /** Indicates partial scoring rules */
-    partialScoringRules?: PartialScoringRule[];
 
     /** Indicates the graph line model */
     graph: GraphLineModelConfig;
 
     /** Indicates if arrows are enabled */
-    arrows: boolean;
+    arrows?: boolean;
 
     /** Indicates if padding is enabled */
-    padding: boolean;
+    padding?: boolean;
 
     /** Indicates if labels are enabled */
-    labels: boolean;
+    labels?: boolean;
 
-    /** Indicates if rationale is enabled */
-    rationale: boolean;
+    /** Indicates rationale for the answer */
+    rationale?: string;
 
     /** Indicates scoring type */
-    scoringType: 'auto' | 'rubric';
+    scoringType?: 'auto' | 'rubric';
 
     /** Indicates if student instructions are enabled */
-    studentInstructions: boolean;
+    studentInstructions?: boolean;
 
     /** Indicates if teacher instructions are enabled */
-    teacherInstructions: boolean;
+    teacherInstructions?: boolean;
 }
 
 /**

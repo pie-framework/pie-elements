@@ -306,7 +306,7 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport } = this.props;
+    const { classes, model, imageSupport, configuration } = this.props;
     const { showKeypad } = this.state;
     const {
       question,
@@ -314,8 +314,12 @@ class GeneralConfigBlock extends React.Component {
       equationEditor,
       responses,
       response,
-      responseType
+      responseType,
+      rationale
     } = model;
+    const {
+      rationale: cRationale
+    } = configuration;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -337,6 +341,17 @@ class GeneralConfigBlock extends React.Component {
             nonEmpty={false}
           />
         </InputContainer>
+        {cRationale.enabled && (
+          <InputContainer label={cRationale.label} className={classes.promptHolder}>
+            <EditableHtml
+              className={classes.prompt}
+              markup={rationale || ''}
+              onChange={this.onChange('rationale')}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+            />
+          </InputContainer>
+        )}
         {responseType === ResponseTypes.advanced && (
           <div className={classes.inputContainer}>
             <InputLabel className={classes.templateTitle}>

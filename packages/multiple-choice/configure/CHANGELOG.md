@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.0.1...@pie-element/multiple-choice-configure@1.1.0) (2019-05-16)
+
+
+### Features
+
+* added rationale support. ([1ddc137](https://github.com/pie-framework/pie-elements/commit/1ddc137))
+* added support for rationale. ([9c206b0](https://github.com/pie-framework/pie-elements/commit/9c206b0))
+
+
+
+
+
+## [1.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.0.0...@pie-element/multiple-choice-configure@1.0.1) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [1.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.9.6...@pie-element/multiple-choice-configure@1.0.0) (2019-05-07)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. ([8031454](https://github.com/pie-framework/pie-elements/commit/8031454))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration` instead.
+
+
+
+
+
+## [0.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.9.5...@pie-element/multiple-choice-configure@0.9.6) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
 ## [0.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@0.9.4...@pie-element/multiple-choice-configure@0.9.5) (2019-05-02)
 
 

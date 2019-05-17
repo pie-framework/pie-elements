@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.1.0...@pie-element/number-line@4.1.1) (2019-05-14)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.0.1...@pie-element/number-line@4.1.0) (2019-05-14)
+
+
+### Features
+
+* **number-line:** added prompt support. ([324824c](https://github.com/pie-framework/pie-elements/commit/324824c))
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.0.0...@pie-element/number-line@4.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.10...@pie-element/number-line@4.0.0) (2019-05-10)
+
+
+### Bug Fixes
+
+* Updated pie-ui/categories version. ([99b0996](https://github.com/pie-framework/pie-elements/commit/99b0996))
+
+
+### Features
+
+* Transformed defaults into an object that has model and configuration property. Renamed `model.config` with `model.graph`. ([6548972](https://github.com/pie-framework/pie-elements/commit/6548972))
+
+
+### BREAKING CHANGES
+
+* `model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.
+
+
+
+
+
+## [3.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.9...@pie-element/number-line@3.4.10) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [3.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.8...@pie-element/number-line@3.4.9) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [3.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@3.4.7...@pie-element/number-line@3.4.8) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/number-line

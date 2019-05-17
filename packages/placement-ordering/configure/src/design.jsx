@@ -7,6 +7,7 @@ import {
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
+import { withDragContext } from '@pie-ui/placement-ordering';
 
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
@@ -24,10 +25,10 @@ export class Design extends React.Component {
     super(props);
 
     this.applyUpdate = modelFn => {
-      const { model, updateModel } = this.props;
+      const { model, onModelChanged } = this.props;
       const update = modelFn(cloneDeep(model));
 
-      updateModel(update);
+      onModelChanged(update);
     };
 
     this.changeHandler = (modelPath, valuePath) => {
@@ -44,6 +45,7 @@ export class Design extends React.Component {
     };
 
     this.onPromptChange = this.changeHandler('prompt');
+    this.onRationaleChange = this.changeHandler('rationale');
     this.onChoiceAreaLabelChange = this.changeHandler(
       'choiceLabel',
       'target.value'
@@ -55,50 +57,50 @@ export class Design extends React.Component {
     this.onFeedbackChange = this.changeHandler('feedback');
 
     this.onChoiceEditorChange = (choices, correctResponse) => {
-      const { model, updateModel } = this.props;
+      const { model, onModelChanged } = this.props;
       const update = cloneDeep(model);
 
       update.choices = choices;
       update.correctResponse = correctResponse;
-      updateModel(update);
+      onModelChanged(update);
     };
   }
 
   render() {
-    const { model, classes, imageSupport, updateModel } = this.props;
+    const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      configure: {
-        choiceLabel,
-        choices,
-        feedback,
-        targetLabel,
-        prompt,
+      choiceLabel,
+      choices,
+      feedback,
+      targetLabel,
+      prompt,
 
-        placementArea,
-        numberedGuides,
-        enableImages,
-        orientation,
-        removeTilesAfterPlacing,
-        partialScoring,
-        lockChoiceOrder,
+      placementArea,
+      numberedGuides,
+      enableImages,
+      orientation,
+      removeTilesAfterPlacing,
+      partialScoring,
+      lockChoiceOrder,
 
-        teacherInstructions,
-        studentInstructions,
-        rationale,
-        scoringType,
-      },
-    } = model;
+      teacherInstructions,
+      studentInstructions,
+      rationale = {},
+      scoringType,
+    } = configuration;
 
     return (
       <layout.ConfigLayout
         settings={
           <Panel
             model={model}
-            onChangeModel={model => updateModel(model)}
+            configuration={configuration}
+            onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
             groups={{
               'Item Type': {
-                'configure.choiceLabel.enabled': choiceLabel.settings &&
-                  toggle(choiceLabel.label),
+                'choiceLabel.enabled': choiceLabel.settings &&
+                  toggle(choiceLabel.label, true),
                 placementArea: placementArea.settings &&
                   toggle(placementArea.label),
                 numberedGuides: (numberedGuides.settings &&
@@ -113,12 +115,12 @@ export class Design extends React.Component {
                   toggle(partialScoring.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                  toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                  toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                  toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                  toggle(rationale.label, true),
                 lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
@@ -140,6 +142,17 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
               />
             </InputContainer>
+            {rationale.enabled && (
+              <InputContainer label={rationale.label}
+                              className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChange}
+                  imageSupport={imageSupport}
+                />
+              </InputContainer>
+            )}
           </FormSection>
         }
 
@@ -198,14 +211,21 @@ export class Design extends React.Component {
   }
 }
 
+Design.defaultProps = {
+  onModelChanged: () => {},
+  onConfigurationChanged: () => {},
+};
+
 Design.propTypes = {
   model: PropTypes.object.isRequired,
-  updateModel: PropTypes.func,
+  configuration: PropTypes.object.isRequired,
+  onModelChanged: PropTypes.func,
+  onConfigurationChanged: PropTypes.func,
   classes: PropTypes.object.isRequired,
   imageSupport: PropTypes.object
 };
 
-export default withStyles(theme => ({
+export default withDragContext(withStyles(theme => ({
   promptHolder: {
     width: '100%',
     paddingTop: '12px',
@@ -221,4 +241,4 @@ export default withStyles(theme => ({
     gridAutoColumns: '1fr',
     gridGap: '8px'
   },
-}))(Design);
+}))(Design));

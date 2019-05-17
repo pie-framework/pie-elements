@@ -1,20 +1,3 @@
-const choices = () => [
-  {
-    id: '1',
-    content: '! Choice 1 <span data-latex="">\\(\\frac{2}{1}\\)</span>'
-  },
-  {
-    id: '2',
-    content: 'Choice 2 <span data-latex="">\\(\\frac{3}{1}\\)</span>'
-  },
-  { id: '3', content: 'Choice 3' },
-  { id: '4', content: 'Choice 4' }
-];
-const categories = () => [
-  { id: '1', label: 'Category 1' },
-  { id: '2', label: 'Category 2' }
-];
-
 exports.model = (id, element) => ({
   id,
   element,
@@ -88,7 +71,6 @@ exports.model = (id, element) => ({
       'choices': [
         '0',
         '3',
-        '5'
       ]
     },
     {
@@ -96,20 +78,7 @@ exports.model = (id, element) => ({
       'choices': [
         '4',
         '1',
-        '2'
       ]
     }
   ],
-  'config': {
-    'choices': {
-      'columns': 2,
-      'position': 'below',
-      'label': '',
-      'shuffle': false,
-      'removeafterplacing': false
-    },
-    'categories': {
-      'columns': 2
-    }
-  }
 });

@@ -778,5 +778,55 @@
     "committerDate": "2019-04-24 06:44:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@0.9.5"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "80314545a33d99560bd546c55053a048414f39e2",
+    "gitTags": "",
+    "committerDate": "2019-05-02 16:14:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added support for rationale.",
+    "merge": null,
+    "header": "feat: added support for rationale.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9c206b09e4358050549372ea0b90d4d69b15af51",
+    "gitTags": "",
+    "committerDate": "2019-05-10 13:36:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat: added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1ddc13742d8a585befca50702889c8c8fa47ad6c",
+    "gitTags": "",
+    "committerDate": "2019-05-09 16:57:00 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.1.0"
   }
 ]

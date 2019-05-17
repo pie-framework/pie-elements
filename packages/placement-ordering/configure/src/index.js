@@ -4,11 +4,17 @@ import {
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 
-import Main from './main';
+import Main from './design';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import defaultValues from './defaults';
 import defaults from 'lodash/defaults';
+
+const prepareCustomizationObject = (config, model) => {
+  const configuration = defaults(config, defaultValues.configuration);
+
+  return { configuration, model };
+};
 
 /**
  * assuming that the correct response will be set via ui, not via config,
@@ -18,11 +24,9 @@ export default class PlacementOrdering extends HTMLElement {
   static createDefaultModel = (model = {}) => {
     const mapChoicesToReturnCorrectResponse = choices => choices && choices.map(ch => ({ id: ch.id }));
     let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
-
     const defaultModel = {
-      ...defaultValues,
+      ...defaultValues.model,
       ...model,
-      configure: defaults(model.configure, defaultValues.configure),
     };
 
     if (correctResponse) {
@@ -34,10 +38,19 @@ export default class PlacementOrdering extends HTMLElement {
 
   constructor() {
     super();
+
     this._model = PlacementOrdering.createDefaultModel();
+    this._configuration = defaultValues.configuration;
+
     this.onModelChanged = (model, resetSession) => {
       this._model = model;
+      this._rerender();
       this.dispatchUpdate(resetSession);
+    };
+
+    this.onConfigurationChanged = (configuration) => {
+      this._configuration = prepareCustomizationObject(configuration).configuration;
+      this._rerender();
     };
 
     this.insertImage = handler => {
@@ -58,10 +71,20 @@ export default class PlacementOrdering extends HTMLElement {
     this._rerender();
   }
 
+  set configuration(c) {
+    const info = prepareCustomizationObject(c, this._model);
+
+    this.onModelChanged(info.model);
+    this._configuration = info.configuration;
+    this._rerender();
+  }
+
   _rerender() {
     let element = React.createElement(Main, {
       model: this._model,
+      configuration: this._configuration,
       onModelChanged: this.onModelChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
       imageSupport: {
         add: this.insertImage,
         delete: this.deleteImage

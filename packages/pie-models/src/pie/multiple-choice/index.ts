@@ -4,22 +4,23 @@ import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp } from '../ConfigurationProp';
 
 
-/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+/**
+ * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
- * model or to configure (to be moved when the functionality is defined)
+ * model or to configuration (to be moved when the functionality is defined)
  */
 
 /**
-* Model for the Choice Interaction
-* @additionalProperties false
-*/
+ * Model for the Choice Interaction
+ * @additionalProperties false
+ */
 export interface MultipleChoicePie extends PieModel {
   /** Indicates the choices are single or multiple selection */
   choiceMode?: 'checkbox' | 'radio';
 
   /** What key should be displayed before choices. If undefined no  key will be displayed.  */
   choicePrefix?: 'letters' | 'numbers';
-  
+
   /** The choice options for the question */
   choices: Choice[];
 
@@ -30,19 +31,16 @@ export interface MultipleChoicePie extends PieModel {
   lockChoiceOrder?: boolean;
 
   /** Indicates that the item should use partial scoring */
-  partialScoring: boolean;
-
-  /** Indicates if rationale is enabled */
-  rationale: boolean;
+  partialScoring?: boolean;
 
   /** Indicates scoring type */
-  scoringType: 'auto' | 'rubric';
+  scoringType?: 'auto' | 'rubric';
 
   /** Indicates if student instructions are enabled */
-  studentInstructions: boolean;
+  studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
-  teacherInstructions: boolean;
+  teacherInstructions?: boolean;
 }
 
 
@@ -67,13 +65,13 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Indicates whether the settings panel will allow an author to modify the choice
    * mode (radio / checkboxes) for single or multi-choice questions
    */
-  choiceMode: ConfigureProp;
+  choiceMode?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow the author to chose prefixes to be prepended to
    * choices, the author may choose `letters`, `numbers` or `none`
    */
-  choicePrefix: ConfigureProp;
+  choicePrefix?: ConfigureProp;
 
   /**
    * Allow choices to be deleted by author
@@ -88,19 +86,19 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   feedback?: ConfigureProp;
 
   /**
-   * Configuration for item stem
+   * Configuration for the prompt
    */
   prompt?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling
    */
-  lockChoiceOrder: ConfigureProp;
+  lockChoiceOrder?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
    */
-  partialScoring: ConfigureProp;
+  partialScoring?: ConfigureProp;
 
   /**
    * Rationale configuration

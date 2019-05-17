@@ -27,11 +27,18 @@ const styles = theme => ({
   }
 });
 
-class Configure extends React.Component {
+export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
+    onConfigurationChanged: PropTypes.func,
     classes: PropTypes.object,
-    model: PropTypes.object.isRequired
+    imageSupport: PropTypes.object,
+    model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
+  };
+
+  static defaultProps = {
+    classes: {}
   };
 
   constructor(props) {
@@ -60,6 +67,15 @@ class Configure extends React.Component {
     this.props.model.graph = { ...graph };
 
     this.props.onModelChanged(this.props.model);
+  };
+
+  onRationaleChange = rationale => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({
+      ...model,
+      rationale
+    });
   };
 
   onFeedbackChange = feedback => {
@@ -100,47 +116,52 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const {
+      classes,
+      model,
+      configuration,
+      onConfigurationChanged,
+      onModelChanged,
+      imageSupport
+    } = this.props;
     const config = model.graph;
 
     const {
-      configure: {
-        arrows,
-        graphTitle,
-        padding,
-        labels,
+      arrows,
+      graphTitle,
+      padding,
+      labels,
 
-        rationale,
-        scoringType,
-        studentInstructions,
-        teacherInstructions,
-      }
-    } = model;
-
+      rationale,
+      scoringType,
+      studentInstructions,
+      teacherInstructions,
+    } = configuration;
     log('[render] model', model);
-
 
     return (
       <layout.ConfigLayout
         settings={
           <Panel
             model={model}
-            onChangeModel={this.props.onModelChanged}
+            configuration={configuration}
+            onChangeModel={onModelChanged}
+            onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
                 arrows: arrows.settings && toggle(arrows.label),
-                'configure.graphTitle.enabled': graphTitle.settings &&
-                toggle(graphTitle.label),
+                'graphTitle.enabled': graphTitle.settings &&
+                toggle(graphTitle.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },
@@ -160,14 +181,23 @@ class Configure extends React.Component {
           <GeneralConfigBlock
             onMultipleToggle={this.onMultipleToggle}
             onAddLine={this.onAddLine}
+            onRationaleChange={this.onRationaleChange}
             multiple={model.multiple}
             config={config}
+            configuration={configuration}
+            rationale={model.rationale}
             onChange={this.onChange}
+            imageSupport={imageSupport}
           />
           <ChartConfig
             config={config}
             onChange={this.onChange}
             resetToDefaults={this.resetToDefaults}
+          />
+          <PartialScoringConfig
+            numberOfCorrectResponses={config.lines.length}
+            partialScoring={!!model.partialScoring}
+            onChange={this.onPartialScoringChange}
           />
           <FeedbackConfig
             allowPartial={false}
@@ -175,42 +205,9 @@ class Configure extends React.Component {
             onChange={this.onFeedbackChange}
           />
         </div>
-        <PartialScoringConfig
-          numberOfCorrectResponses={config.lines.length}
-          partialScoring={!!model.partialScoring}
-          onChange={this.onPartialScoringChange}
-        />
       </layout.ConfigLayout>
     );
   }
 }
 
-const ConfigureMain = withStyles(styles)(Configure);
-
-class StateWrapper extends React.Component {
-  static propTypes = {
-    model: PropTypes.any,
-    onModelChanged: PropTypes.func
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      model: props.model
-    };
-
-    this.onModelChanged = m => {
-      this.setState({ model: m }, () => {
-        this.props.onModelChanged(this.state.model);
-      });
-    };
-  }
-
-  render() {
-    const { model } = this.state;
-    return <ConfigureMain model={model} onModelChanged={this.onModelChanged} />;
-  }
-}
-
-export default StateWrapper;
+export default withStyles(styles)(Configure);

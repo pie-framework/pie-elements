@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.0...@pie-element/text-entry@3.6.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.5.10...@pie-element/text-entry@3.6.0) (2019-05-08)
+
+
+### Features
+
+* Transformed defaults into an object that has model and configuration property. ([4d8bede](https://github.com/pie-framework/pie-elements/commit/4d8bede))
+
+
+
+
+
+## [3.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.5.9...@pie-element/text-entry@3.5.10) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.5.8...@pie-element/text-entry@3.5.9) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
 ## [3.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.5.7...@pie-element/text-entry@3.5.8) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/text-entry

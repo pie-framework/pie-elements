@@ -10,20 +10,19 @@ import { buildCategories } from './builder';
 import debug from 'debug';
 import { uid, withDragContext } from '@pie-lib/drag';
 import {
-  FeedbackConfig
+  FeedbackConfig,
+  InputContainer,
+  layout,
+  settings,
 } from '@pie-lib/config-ui';
 
 import {
-  removeAllChoices,
-  removeCategory,
-  moveChoiceToCategory,
-  removeChoiceFromCategory,
   countInAnswer,
   ensureNoExtraChoicesInAnswer
 } from '@pie-lib/categorize';
+import EditableHtml from '@pie-lib/editable-html';
 
-import { choiceUtils as utils } from '@pie-lib/config-ui';
-
+const { Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
 
 const log = debug('@pie-element:categorize:configure:design');
@@ -46,135 +45,46 @@ export class Design extends React.Component {
     this.uid = props.uid || uid.generateId();
   }
 
-  apply = applyFn => {
+  updateModel = props => {
     const { model, onChange } = this.props;
 
-    applyFn(model);
+    const updatedModel = {
+      ...model,
+      ...props
+    };
 
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
-    model.correctResponse = ensureNoExtraChoicesInAnswer(
-      model.correctResponse || [],
-      model.choices
+    updatedModel.correctResponse = ensureNoExtraChoicesInAnswer(
+      updatedModel.correctResponse || [],
+      updatedModel.choices
     );
+
     //clean categories
-    model.categories = model.categories.map(c => ({
+    updatedModel.categories = updatedModel.categories.map(c => ({
       id: c.id,
       label: c.label
     }));
 
-    model.choices = model.choices.map(h => ({
+    updatedModel.choices = updatedModel.choices.map(h => ({
       id: h.id,
       content: h.content,
       categoryCount: h.categoryCount
     }));
-    onChange(model);
+
+    onChange(updatedModel);
+  };
+
+  changeRationale = rationale => {
+    const { model, onChange } = this.props;
+
+    onChange({
+      ...model,
+      rationale
+    });
   };
 
   changeFeedback = feedback => {
-    this.apply(model => (model.feedback = feedback));
-  };
-
-  changeCategoryColumns = event => {
-    const numberValue = parseInt(event.target.value, 10);
-
-    if (numberValue && numberValue >= 1 && numberValue <= 4) {
-      this.apply(model => {
-        model.config = model.config || {};
-        model.config.categories = model.config.categories || { columns: 2 };
-        model.config.categories.columns = numberValue;
-      });
-    }
-  };
-
-  changeCategories = categories => {
-    this.apply(model => (model.categories = categories));
-  };
-
-  changeChoices = choices => {
-    log('[changeChoices]', choices);
-    this.apply(model => (model.choices = choices));
-  };
-
-  addCategory = () => {
-    this.add('categories', id => ({ id, label: 'Category ' + id }));
-  };
-
-  addChoice = () => {
-    this.add('choices', id => ({ id, content: 'Choice ' + id }));
-  };
-
-  add = (name, build) => {
-    this.apply(model => {
-      log('name: ', name, model, utils);
-      const id = utils.firstAvailableIndex(model[name].map(a => a.id), 0);
-      const data = build(id);
-      model[name] = model[name].concat([data]);
-    });
-  };
-
-  deleteChoice = choice => {
-    log('[deleteChoice] category: ', choice);
-    const { model, onChange } = this.props;
-    const index = model.choices.findIndex(a => a.id === choice.id);
-    if (index !== -1) {
-      model.choices.splice(index, 1);
-      model.correctResponse = removeAllChoices(
-        choice.id,
-        model.correctResponse
-      );
-      onChange(model);
-    }
-  };
-
-  deleteCategory = category => {
-    log('[deleteCategory] category: ', category);
-    const { model, onChange } = this.props;
-    const index = model.categories.findIndex(a => a.id === category.id);
-    if (index !== -1) {
-      model.categories.splice(index, 1);
-      model.correctResponse = removeCategory(
-        category.id,
-        model.correctResponse
-      );
-      log('correctResponse:', model.correctResponse);
-      onChange(model);
-    }
-  };
-
-  addChoiceToCategory = (choice, categoryId) => {
-    log('[addChoiceToCategory]', choice, categoryId);
-
-    const { model, onChange } = this.props;
-    model.correctResponse = moveChoiceToCategory(
-      choice.id,
-      undefined,
-      categoryId,
-      0,
-      model.correctResponse
-    );
-
-    onChange(model);
-  };
-
-  deleteChoiceFromCategory = (category, choice, choiceIndex) => {
-    this.apply(model => {
-      log(
-        '[deleteChoiceFromCategory]: ',
-        choice,
-        'from',
-        category,
-        choiceIndex,
-        model.correctResponse
-      );
-      const correctResponse = removeChoiceFromCategory(
-        choice.id,
-        category.id,
-        choiceIndex,
-        model.correctResponse
-      );
-      log('correctResponse: ', correctResponse);
-      model.correctResponse = correctResponse;
-    });
+    this.updateModel({ feedback });
   };
 
   countChoiceInCorrectResponse = choice => {
@@ -183,18 +93,18 @@ export class Design extends React.Component {
     return out;
   };
 
-  changeChoicesConfig = config => {
-    const { model, onChange } = this.props;
-    model.config = model.config || {};
-    model.config.choices = config;
-    onChange(model);
-  };
-
   render() {
-    const { classes, className, model, imageSupport } = this.props;
+    const { classes, className, model, imageSupport, configuration, onChange, onConfigurationChanged } = this.props;
+    const {
+      partialScoring = {},
+      lockChoiceOrder = {},
+      teacherInstructions = {},
+      studentInstructions = {},
+      rationale = {},
+      scoringType = {},
+    } = configuration || {};
 
     const config = model.config || {};
-    config.categories = config.categories || { columns: 2 };
     config.choices = config.choices || { label: '', columns: 2 };
 
     const categories = buildCategories(
@@ -208,43 +118,72 @@ export class Design extends React.Component {
       return c;
     });
 
-    const { shuffle } = (config && config.choices) || {};
-
     return (
       <IdProvider value={this.uid}>
-        <div className={classNames(classes.design, className)}>
-          <Typography className={classes.text}>
-            In Categorize, students may drag &amp; drop answer tiles to the
-            appropriate category area(s).
-          </Typography>
-          <Categories
-            imageSupport={imageSupport}
-            categories={categories}
-            columns={config.categories.columns}
-            onColumnsChange={this.changeCategoryColumns}
-            onChange={this.changeCategories}
-            onDeleteChoice={this.deleteChoiceFromCategory}
-            onAddChoice={this.addChoiceToCategory}
-            onAdd={this.addCategory}
-            onDelete={this.deleteCategory}
-          />
-          <Divider />
-          <Choices
-            imageSupport={imageSupport}
-            choices={choices}
-            config={config.choices}
-            onConfigChange={this.changeChoicesConfig}
-            onChange={this.changeChoices}
-            shuffle={!!shuffle}
-            onShuffleChange={this.toggleShuffle}
-            onAdd={this.addChoice}
-            onDelete={this.deleteChoice}
-          />
-          <FeedbackConfig
-            feedback={model.feedback}
-            onChange={this.changeFeedback}
-          />
-        </div>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onChange}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                'Item Type': {
+                  partialScoring: partialScoring.settings &&
+                    toggle(partialScoring.label),
+                },
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
+                  'studentInstructions.enabled': studentInstructions.settings &&
+                    toggle(studentInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true),
+                  lockChoiceOrder: lockChoiceOrder.settings &&
+                    toggle(lockChoiceOrder.label),
+                  scoringType: scoringType.settings &&
+                    radio(scoringType.label, ['auto', 'rubric']),
+                },
+              }}
+            />
+          }
+        >
+          <div className={classNames(classes.design, className)}>
+            <Typography className={classes.text}>
+              In Categorize, students may drag &amp; drop answer tiles to the
+              appropriate category area(s).
+            </Typography>
+
+            {rationale.enabled && (
+              <InputContainer label={rationale.label} className={classes.rationaleHolder}>
+                <EditableHtml
+                  className={classes.rationale}
+                  markup={model.rationale || ''}
+                  onChange={this.changeRationale}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+            <Categories
+              imageSupport={imageSupport}
+              model={model}
+              categories={categories}
+              onModelChanged={this.updateModel}
+            />
+            <Divider />
+            <Choices
+              imageSupport={imageSupport}
+              choices={choices}
+              model={model}
+              onModelChanged={this.updateModel}
+            />
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.changeFeedback}
+            />
+          </div>
+        </layout.ConfigLayout>
       </IdProvider>
     );
   }
@@ -258,7 +197,17 @@ const styles = theme => ({
   design: {
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
-  }
+  },
+  rationaleHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
+  },
+  rationale: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%',
+    maxWidth: '600px'
+  },
 });
 
 export default withDragContext(withStyles(styles)(Design));

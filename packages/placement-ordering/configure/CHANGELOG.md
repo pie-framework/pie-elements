@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.0.1...@pie-element/placement-ordering-configure@3.1.0) (2019-05-16)
+
+
+### Features
+
+* **placement-ordering:** added rationale support. ([d6df005](https://github.com/pie-framework/pie-elements/commit/d6df005))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.0.0...@pie-element/placement-ordering-configure@3.0.1) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-configure
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@2.0.8...@pie-element/placement-ordering-configure@3.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (main.jsx) and updated tests. ([4262f6b](https://github.com/pie-framework/pie-elements/commit/4262f6b))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
+## [2.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@2.0.7...@pie-element/placement-ordering-configure@2.0.8) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-configure
+
+
+
+
+
 ## [2.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@2.0.6...@pie-element/placement-ordering-configure@2.0.7) (2019-05-02)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure

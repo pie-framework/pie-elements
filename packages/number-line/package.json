@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/number-line",
-  "version": "3.4.8",
+  "version": "4.1.1",
   "repository": "pie-framework/pie-elements",
   "description": "",
   "publishConfig": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@pie-lib/feedback": "^0.4.1",
-    "@pie-ui/number-line": "^4.2.2"
+    "@pie-ui/number-line": "^5.0.0"
   },
   "pie": {
     "element": "@pie-ui/number-line"

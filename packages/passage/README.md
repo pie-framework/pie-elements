@@ -1,3 +1,3 @@
-# Passage
+# @pie-element/passage
 
 Renders passage content.

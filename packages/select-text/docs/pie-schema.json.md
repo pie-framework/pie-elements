@@ -2,19 +2,25 @@ Pie Model Object for @pie-elements/select-text
 
 The schema defines the following properties:
 
-# `prompt` (string)
+# `maxSelections` (number)
 
-The user prompt/item stem
+The maximum number of token selections a user can make when responding
 
-# `text` (string, required)
+# `mode` (string, enum)
 
-The passage of text from which user may select responses
+The selected mode for tokenizing the text.
+This is only used in the config UI to present the mode by which text has been tokenized for selection.
+If importing an item, only set this property it the text tokens are strictly parsed by of these methods.
 
-# `highlightChoices` (boolean)
+This element must be one of the following enum values:
 
-Indicates if the parts of text that are choosable, should be highligned when presented to student.
+* `paragraph`
+* `sentence`
+* `word`
 
-Default: `false`
+# `partialScoring` (boolean)
+
+Indicates if partial scoring should be used
 
 # `feedback` (object)
 
@@ -31,30 +37,6 @@ Indicates the configuration for feedback when answer is incorrect
 ## `partial`
 
 Indicates the configuration for feedback when answer is partially correct
-
-# `partialScoring` (boolean)
-
-Indicates if partial scoring should be used
-
-# `partialScoringLabel` (string)
-
-Partial scoring label
-
-# `maxSelections` (number, required)
-
-The maximum number of token selections a user can make when responding
-
-# `mode` (string, enum)
-
-The selected mode for tokenizing the text.
-This is only used in the config UI to present the mode by which text has been tokenized for selection.
-If importing an item, only set this property it the text tokens are strictly parsed by of these methods.
-
-This element must be one of the following enum values:
-
-* `paragraph`
-* `sentence`
-* `word`
 
 # `tokens` (array, required)
 
@@ -80,77 +62,40 @@ The end point in the main text for this token
 
 Is selected does the token represent a correct response
 
-# `configure` (object, required)
+# `text` (string, required)
 
-Properties of the `configure` object:
+The passage of text from which user may select responses
 
-## `promptLabel` (string)
+# `prompt` (string, required)
 
-The question prompt or item stem
+The user prompt/item stem
 
-## `enableContentChange` (boolean)
+# `highlightChoices` (boolean)
 
-Indicates if the content can change
+Indicates if the parts of text that are choosable, should be highligned when presented to student.
 
-## `contentLabel` (string)
+Default: `false`
 
-Content label
+# `rationale` (string)
 
-## `enableHighlightChoices` (boolean)
+Indicates rationale for correct answer
 
-Indicates if the choices are highlighted
+# `scoringType` (string, enum)
 
-## `highlightChoicesLabel` (string)
+Indicates scoring type
 
-Label for highlight choices checkbox
+This element must be one of the following enum values:
 
-## `enableTokensChange` (boolean)
+* `auto`
+* `rubric`
 
-Indicates if tokens are changeable
+# `studentInstructions` (boolean)
 
-## `tokensLabel` (string)
+Indicates if student instructions are enabled
 
-Label for the tokens
+# `teacherInstructions` (boolean)
 
-## `enableFeedback` (boolean)
-
-Indicates if feedback is enabled
-
-## `setCorrectAnswersLabel` (string)
-
-Label for Set Correct Answers switch
-
-## `showMode` (boolean)
-
-Indicates if the selected mode of the text tokens is displayed
-
-## `modeLabel` (string)
-
-Label to display the selected mode of the text tokens
-
-## `showSelections` (boolean)
-
-Indicates if the available selections number is displayed
-
-## `availableSelectionsLabel` (string)
-
-Label to display the number of available selections
-
-## `showCorrectAnswersNumber` (boolean)
-
-Indicates if the correct answers number is displayed
-
-## `correctAnswersLabel` (string)
-
-Label to display the number of correct answers
-
-## `showSelectionCount` (boolean)
-
-Indicates if selection count is displayed
-
-## `selectionCountLabel` (string)
-
-Label for selection count
+Indicates if teacher instructions are enabled
 
 # `id` (string, required)
 
@@ -165,6 +110,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `ComplexFeedbackType` (object)
 
@@ -234,75 +195,3 @@ The end point in the main text for this token
 ### `correct` (boolean)
 
 Is selected does the token represent a correct response
-
-## `SelectTextPieConfigure` (object)
-
-Properties of the `SelectTextPieConfigure` object:
-
-### `promptLabel` (string)
-
-The question prompt or item stem
-
-### `enableContentChange` (boolean)
-
-Indicates if the content can change
-
-### `contentLabel` (string)
-
-Content label
-
-### `enableHighlightChoices` (boolean)
-
-Indicates if the choices are highlighted
-
-### `highlightChoicesLabel` (string)
-
-Label for highlight choices checkbox
-
-### `enableTokensChange` (boolean)
-
-Indicates if tokens are changeable
-
-### `tokensLabel` (string)
-
-Label for the tokens
-
-### `enableFeedback` (boolean)
-
-Indicates if feedback is enabled
-
-### `setCorrectAnswersLabel` (string)
-
-Label for Set Correct Answers switch
-
-### `showMode` (boolean)
-
-Indicates if the selected mode of the text tokens is displayed
-
-### `modeLabel` (string)
-
-Label to display the selected mode of the text tokens
-
-### `showSelections` (boolean)
-
-Indicates if the available selections number is displayed
-
-### `availableSelectionsLabel` (string)
-
-Label to display the number of available selections
-
-### `showCorrectAnswersNumber` (boolean)
-
-Indicates if the correct answers number is displayed
-
-### `correctAnswersLabel` (string)
-
-Label to display the number of correct answers
-
-### `showSelectionCount` (boolean)
-
-Indicates if selection count is displayed
-
-### `selectionCountLabel` (string)
-
-Label for selection count

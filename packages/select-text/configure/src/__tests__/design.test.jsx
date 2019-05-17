@@ -2,17 +2,13 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Design } from '../design';
 import defaultValues from '../defaultConfiguration';
-import {
-  layout,
-  settings,
-} from '@pie-lib/config-ui';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {
     ConfigLayout: props => <div>{props.children}</div>
   },
   settings: {
-    Panel: props => <div onChange={props.onChange} />,
+    Panel: props => <div oChangeModel={props.onChange} />,
     toggle: jest.fn(),
     radio: jest.fn()
   }
@@ -23,21 +19,24 @@ describe('design', () => {
   let w;
   let onChange;
   let onPromptChanged;
+  let onRationaleChanged;
 
   const getModel = () => ({
     tokens: [],
-    configure: defaultValues.configure
   });
   beforeEach(() => {
     onChange = jest.fn();
     onPromptChanged = jest.fn();
+    onRationaleChanged = jest.fn();
     w = shallow(
       <Design
         model={getModel()}
+        configuration={defaultValues.configuration}
         classes={{}}
         className={'foo'}
-        onChange={onChange}
+        onModelChanged={onChange}
         onPromptChanged={onPromptChanged}
+        onRationaleChanged={onRationaleChanged}
       />
     );
   });
@@ -48,17 +47,19 @@ describe('design', () => {
     });
 
     it('renders all items except feedback', () => {
-      const defaultModel = getModel();
+      const defaultConfiguration = defaultValues.configuration;
 
-      defaultModel.configure.feedback.settings = false;
+      defaultConfiguration.feedback.settings = false;
 
       const wrapper = shallow(
         <Design
           model={getModel()}
+          configuration={defaultConfiguration}
           classes={{}}
           className={'foo'}
-          onChange={onChange}
+          onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
         />
       );
 
@@ -66,17 +67,19 @@ describe('design', () => {
     });
 
     it('renders all items except the content input', () => {
-      const defaultModel = getModel();
+      const defaultConfiguration = defaultValues.configuration;
 
-      defaultModel.configure.text.settings = false;
+      defaultConfiguration.text.settings = false;
 
       const wrapper = shallow(
         <Design
           model={getModel()}
+          configuration={defaultConfiguration}
           classes={{}}
           className={'foo'}
-          onChange={onChange}
+          onModelChanged={onChange}
           onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
         />
       );
 
@@ -141,5 +144,21 @@ describe('design', () => {
         partialScoring: true
       }));
     });
+
+    describe('changePrompt', () => {
+      assert('onPromptChanged', ['New Prompt'], m => ({
+        ...m,
+        prompt: 'New Prompt'
+      }));
+    });
+
+    describe('changeRationale', () => {
+      assert('onRationaleChanged', ['New Rationale'], m => ({
+        ...m,
+        rationale: 'New Rationale'
+      }));
+    });
+
+
   });
 });

@@ -1,12 +1,12 @@
 {
   "name": "@pie-element/number-line-configure",
   "private": true,
-  "version": "2.2.8",
+  "version": "3.1.1",
   "main": "lib/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-lib/config-ui": "^10.0.0",
-    "@pie-ui/number-line": "^4.2.2",
+    "@pie-ui/number-line": "^5.0.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   }

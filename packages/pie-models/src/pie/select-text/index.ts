@@ -23,7 +23,7 @@ interface TextToken {
  */
 export interface SelectTextPie extends PieModel {
   /** The maximum number of token selections a user can make when responding */
-  maxSelections: number;
+  maxSelections?: number;
 
   /**
    * The selected mode for tokenizing the text.
@@ -45,7 +45,7 @@ export interface SelectTextPie extends PieModel {
   text: string;
 
   /** The user prompt/item stem */
-  prompt?: string;
+  prompt: string;
 
   /**
    * Indicates if the parts of text that are choosable, should be highligned when presented to student.
@@ -53,17 +53,17 @@ export interface SelectTextPie extends PieModel {
    */
   highlightChoices?: boolean;
 
-  /** Indicates if rationale is enabled */
-  rationale: boolean;
+  /** Indicates rationale for correct answer */
+  rationale?: string;
 
   /** Indicates scoring type */
-  scoringType: 'auto' | 'rubric';
+  scoringType?: 'auto' | 'rubric';
 
   /** Indicates if student instructions are enabled */
-  studentInstructions: boolean;
+  studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
-  teacherInstructions: boolean;
+  teacherInstructions?: boolean;
 }
 
 
@@ -78,48 +78,48 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
   /**
    * Selection Count configuration
    */
-  selectionCount: ConfigureProp;
+  selectionCount?: ConfigureProp;
 
   /**
    * Selections configuration
    */
-  selections: ConfigureProp;
+  selections?: ConfigureProp;
 
 
   /**
    * Mode configuration
    */
-  mode: ConfigureProp;
+  mode?: ConfigureProp;
 
   /**
    * Partial Scoring configuration
    */
-  partialScoring: ConfigureProp;
+  partialScoring?: ConfigureProp;
 
   /**
    * Feedback configuration
    */
-  feedback: ConfigureProp;
+  feedback?: ConfigureProp;
 
   /**
    * Tokens configuration
    */
-  tokens: ConfigureProp;
+  tokens?: ConfigureProp;
 
   /**
    * Text Content configuration
    */
-  text: ConfigureProp;
+  text?: ConfigureProp;
 
   /**
    * Prompt configuration
    */
-  prompt: ConfigureProp;
+  prompt?: ConfigureProp;
 
   /**
    * Highlight Choices configuration
    */
-  highlightChoices: ConfigureProp;
+  highlightChoices?: ConfigureProp;
 
   /**
    * Rationale configuration
