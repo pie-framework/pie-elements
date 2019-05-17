@@ -53,9 +53,9 @@ export default {
       label: 'Prompt'
     },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,

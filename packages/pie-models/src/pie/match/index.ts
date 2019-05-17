@@ -1,6 +1,6 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
@@ -23,9 +23,9 @@ export interface MatchRow {
  */
 
 /**
-* Model for the @pie-elements/match Interaction
-* @additionalProperties false
-*/
+ * Model for the @pie-elements/match Interaction
+ * @additionalProperties false
+ */
 export interface MatchPie extends PieModel {
   /** Indicates if questions can contain images */
   enableImages?: boolean;
@@ -55,7 +55,8 @@ export interface MatchPie extends PieModel {
   rows: MatchRow[];
 
   /** Indicates value for rationale */
-  rationale?: string;
+
+  rationale: string;
 
   /** Indicates scoring type */
   scoringType?: 'auto' | 'rubric';

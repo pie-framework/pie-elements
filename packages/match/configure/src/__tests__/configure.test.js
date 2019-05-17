@@ -192,6 +192,20 @@ describe('Configure', () => {
     );
   });
 
+  it('updates rationale correctly', () => {
+    let onModelChanged = jest.fn();
+
+    component = wrapper({
+      onModelChanged
+    });
+
+    component.instance().onRationaleChanged('New Rationale');
+
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({ rationale: 'New Rationale' })
+    );
+  });
+
   it('adds a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({

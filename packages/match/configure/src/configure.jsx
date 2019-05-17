@@ -167,6 +167,13 @@ class Configure extends React.Component {
     });
   };
 
+  onRationaleChanged = rationale => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      rationale
+    });
+  };
+
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
@@ -174,10 +181,10 @@ class Configure extends React.Component {
       partialScoring,
       teacherInstructions,
       studentInstructions,
-      rationale,
+      rationale = {},
       lockChoiceOrder,
       scoringType,
-      prompt
+      prompt,
     } = configuration;
 
     log('[render] model', model);
@@ -233,6 +240,17 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={!prompt.settings}
                 disableUnderline
+              />
+            </InputContainer>
+          )}
+          {rationale.enabled && (
+            <InputContainer label={rationale.label}
+                            className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.rationale || ''}
+                onChange={this.onRationaleChanged}
+                imageSupport={imageSupport}
               />
             </InputContainer>
           )}
