@@ -241,8 +241,8 @@
       "title": "highlightChoices"
     },
     "rationale": {
-      "description": "Indicates if rationale is enabled",
-      "type": "boolean",
+      "description": "Indicates rationale for correct answer",
+      "type": "string",
       "title": "rationale"
     },
     "scoringType": {
@@ -278,11 +278,7 @@
   "required": [
     "element",
     "id",
-    "maxSelections",
-    "rationale",
-    "scoringType",
-    "studentInstructions",
-    "teacherInstructions",
+    "prompt",
     "text",
     "tokens"
   ],

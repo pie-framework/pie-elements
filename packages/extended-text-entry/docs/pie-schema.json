@@ -80,11 +80,7 @@
   },
   "required": [
     "element",
-    "equationEditor",
     "id",
-    "mathInput",
-    "multiple",
-    "studentInstructions",
     "teacherInstructions"
   ],
   "definitions": {

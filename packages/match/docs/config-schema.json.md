@@ -2,7 +2,7 @@ Config Object for @pie-elements/match
 
 The schema defines the following properties:
 
-# `enableImages` (object, required)
+# `enableImages` (object)
 
 Properties of the `enableImages` object:
 
@@ -18,7 +18,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `feedback` (object, required)
+# `feedback` (object)
 
 Properties of the `feedback` object:
 
@@ -34,7 +34,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `headers` (object, required)
+# `headers` (object)
 
 Properties of the `headers` object:
 
@@ -50,7 +50,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `layout` (object, required)
+# `layout` (object)
 
 Properties of the `layout` object:
 
@@ -66,7 +66,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `lockChoiceOrder` (object, required)
+# `lockChoiceOrder` (object)
 
 Properties of the `lockChoiceOrder` object:
 
@@ -82,7 +82,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `partialScoring` (object, required)
+# `partialScoring` (object)
 
 Properties of the `partialScoring` object:
 
@@ -98,7 +98,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `choiceMode` (object, required)
+# `choiceMode` (object)
 
 Properties of the `choiceMode` object:
 

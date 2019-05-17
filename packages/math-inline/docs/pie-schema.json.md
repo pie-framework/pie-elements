@@ -5,7 +5,7 @@ Model for the @pie-elements/math-inline
 
 The schema defines the following properties:
 
-# `responseType` (string, enum, required)
+# `responseType` (string, enum)
 
 Indicates the mode of the question
 
@@ -22,7 +22,7 @@ Indicates the question statement
 
 Indicates the expression for advanced mode
 
-# `equationEditor` (, enum, required)
+# `equationEditor`
 
 Indicates what type of editor should be displayed for all the possible responses
 1 for Grade 1 - 2
@@ -43,7 +43,7 @@ This element must be one of the following enum values:
 
 Default: `"- everything"`
 
-# `feedback` (object, required)
+# `feedback` (object)
 
 Properties of the `feedback` object:
 
@@ -58,6 +58,42 @@ Indicates the configuration for feedback when answer is incorrect
 ## `partial`
 
 Indicates the configuration for feedback when answer is partially correct
+
+# `response` (object, required)
+
+Properties of the `response` object:
+
+## `id` (string,number, required)
+
+The id of the response
+
+## `validation` (string, enum, required)
+
+Indicates what type of validation should be applied on the response
+
+This element must be one of the following enum values:
+
+* `literal`
+* `symbolic`
+
+Default: `"is symbolic"`
+
+## `answer` (string, required)
+
+The answer for the question
+
+## `alternates` (object, required)
+
+For validation type = literal, alternates represents
+an object with some alternatives for the correct answers
+
+## `allowSpaces` (boolean)
+
+Indicates if spaces are allowed
+
+## `allowDecimals` (boolean)
+
+Indicates if decimals are allowed
 
 # `responses` (array, required)
 
@@ -135,16 +171,16 @@ Indicates if spaces are allowed
 
 Indicates if decimals are allowed
 
-# `partialScoring` (boolean, required)
+# `partialScoring` (boolean)
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
 
-# `rationale` (string, required)
+# `rationale` (string)
 
 Indicates the value for rationale
 
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -153,13 +189,19 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
+
+# `customKeys` (array)
+
+Extra buttons defined by user
+
+The object is an array with all elements of the type `string`.
 
 # `id` (string, required)
 

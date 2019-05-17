@@ -1,4 +1,4 @@
-NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+NOTE: teacherInstructions, studentInstructions & scoringType
 functionalities are not defined yet - the value for those can belong to
 model or to configuration (to be moved when the functionality is defined)
 Model for the @pie-elements/placement-ordering
@@ -38,7 +38,7 @@ has this property to indicate if it should lockChoiceOrder
 
 Default: `true`
 
-# `correctResponse` (array, required)
+# `correctResponse` (array)
 
 Array of the correct responses in the correct order
 
@@ -55,23 +55,11 @@ The id of the correct response
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
 
-# `enableImages` (object, required)
+# `enableImages` (boolean)
 
-Properties of the `enableImages` object:
+Indicates if the choices editor can use images
 
-## `settings` (boolean)
-
-Indicates if the item has to be displayed
-
-## `label` (string)
-
-Indicates the label for the item
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-
-# `feedback` (object, required)
+# `feedback` (object)
 
 Properties of the `feedback` object:
 
@@ -91,15 +79,15 @@ Indicates the configuration for feedback when answer is partially correct
 
 The item stem for the question
 
-# `lockChoiceOrder` (boolean, required)
+# `lockChoiceOrder` (boolean)
 
 Indicates if the choices can lockChoiceOrder
 
-# `numberedGuides` (boolean, required)
+# `numberedGuides` (boolean)
 
 If placement type is placement; show ordering indicates if the boxes are numbered
 
-# `orientation` (string, enum, required)
+# `orientation` (string, enum)
 
 The layout for displaying the choices
 
@@ -108,7 +96,7 @@ This element must be one of the following enum values:
 * `horizontal`
 * `vertical`
 
-# `partialScoring` (boolean, required)
+# `partialScoring` (boolean)
 
 Indicates if partialScoring is enabled
 
@@ -116,15 +104,15 @@ Indicates if partialScoring is enabled
 
 Indicates if the items can be replaced with each other or if they can be placed inside other boxes
 
-# `rationale` (boolean, required)
+# `rationale` (string)
 
-Indicates if rationale is enabled
+Indicates correct answer rationale
 
 # `removeTilesAfterPlacing` (boolean)
 
 Indicates if each choice will be removed from choices after becoming a target
 
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -133,7 +121,7 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
@@ -141,7 +129,7 @@ Indicates if student instructions are enabled
 
 The label for answer area if placement area is enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 

@@ -2,7 +2,7 @@ Config Object for @pie-elements/select-text
 
 The schema defines the following properties:
 
-# `selectionCount` (object, required)
+# `selectionCount` (object)
 
 Properties of the `selectionCount` object:
 
@@ -18,7 +18,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `selections` (object, required)
+# `selections` (object)
 
 Properties of the `selections` object:
 
@@ -34,7 +34,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `mode` (object, required)
+# `mode` (object)
 
 Properties of the `mode` object:
 
@@ -50,7 +50,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `partialScoring` (object, required)
+# `partialScoring` (object)
 
 Properties of the `partialScoring` object:
 
@@ -66,7 +66,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `feedback` (object, required)
+# `feedback` (object)
 
 Properties of the `feedback` object:
 
@@ -82,7 +82,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `tokens` (object, required)
+# `tokens` (object)
 
 Properties of the `tokens` object:
 
@@ -98,7 +98,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `text` (object, required)
+# `text` (object)
 
 Properties of the `text` object:
 
@@ -114,7 +114,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `prompt` (object, required)
+# `prompt` (object)
 
 Properties of the `prompt` object:
 
@@ -130,7 +130,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `highlightChoices` (object, required)
+# `highlightChoices` (object)
 
 Properties of the `highlightChoices` object:
 

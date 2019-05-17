@@ -275,12 +275,6 @@
       "title": "promptLabel"
     }
   },
-  "required": [
-    "choiceMode",
-    "choicePrefix",
-    "lockChoiceOrder",
-    "partialScoring"
-  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",

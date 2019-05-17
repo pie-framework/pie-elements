@@ -28,7 +28,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `choiceMode` (object, required)
+# `choiceMode` (object)
 
 Properties of the `choiceMode` object:
 
@@ -44,7 +44,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `choicePrefix` (object, required)
+# `choicePrefix` (object)
 
 Properties of the `choicePrefix` object:
 
@@ -108,7 +108,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `lockChoiceOrder` (object, required)
+# `lockChoiceOrder` (object)
 
 Properties of the `lockChoiceOrder` object:
 
@@ -124,7 +124,7 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `partialScoring` (object, required)
+# `partialScoring` (object)
 
 Properties of the `partialScoring` object:
 

@@ -69,6 +69,10 @@ Value for feedback
 
 Custom value for feedback
 
+## `rationale` (string)
+
+Rationale for the Choice
+
 # `prompt` (string)
 
 The question prompt or item stem
@@ -77,15 +81,11 @@ The question prompt or item stem
 
 Indicates the order of choices should be randomly ordered when presented to user
 
-# `partialScoring` (boolean, required)
+# `partialScoring` (boolean)
 
 Indicates that the item should use partial scoring
 
-# `rationale` (boolean, required)
-
-Indicates if rationale is enabled
-
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -94,11 +94,11 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 
@@ -173,6 +173,10 @@ Value for feedback
 #### `custom` (string)
 
 Custom value for feedback
+
+### `rationale` (string)
+
+Rationale for the Choice
 
 ## `Feedback` (object)
 

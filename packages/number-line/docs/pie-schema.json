@@ -342,7 +342,7 @@
       },
       "title": "partialScoring"
     },
-    "config": {
+    "graph": {
       "title": "NumberLineDomainConfiguration",
       "type": "object",
       "properties": {
@@ -675,9 +675,9 @@
   },
   "required": [
     "allowPartialScoring",
-    "config",
     "correctResponse",
     "element",
+    "graph",
     "id",
     "partialScoring"
   ],

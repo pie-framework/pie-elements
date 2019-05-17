@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/placement-ordering",
+  "description": "NOTE: teacherInstructions, studentInstructions & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/placement-ordering",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -69,25 +69,9 @@
       "title": "correctResponse"
     },
     "enableImages": {
-      "title": "ConfigureProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item",
-          "type": "string",
-          "title": "label"
-        },
-        "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
-          "type": "boolean",
-          "title": "enabled"
-        }
-      }
+      "description": "Indicates if the choices editor can use images",
+      "type": "boolean",
+      "title": "enableImages"
     },
     "feedback": {
       "title": "ComplexFeedbackType",
@@ -290,8 +274,8 @@
       "title": "placementArea"
     },
     "rationale": {
-      "description": "Indicates if rationale is enabled",
-      "type": "boolean",
+      "description": "Indicates correct answer rationale",
+      "type": "string",
       "title": "rationale"
     },
     "removeTilesAfterPlacing": {
@@ -336,19 +320,8 @@
   },
   "required": [
     "choices",
-    "correctResponse",
     "element",
-    "enableImages",
-    "feedback",
-    "id",
-    "lockChoiceOrder",
-    "numberedGuides",
-    "orientation",
-    "partialScoring",
-    "rationale",
-    "scoringType",
-    "studentInstructions",
-    "teacherInstructions"
+    "id"
   ],
   "definitions": {
     "ConfigureProp": {

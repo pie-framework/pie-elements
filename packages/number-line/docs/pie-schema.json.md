@@ -42,9 +42,9 @@ Number of correct answers
 
 The percentage for partial scoring
 
-# `config` (object, required)
+# `graph` (object, required)
 
-Properties of the `config` object:
+Properties of the `graph` object:
 
 ## `width` (number, required)
 

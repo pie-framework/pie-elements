@@ -189,7 +189,7 @@
     },
     "lockChoiceOrder": {
       "description": "Indicates if the order of the rows should be randomly sorted on render",
-      "type": "number",
+      "type": "boolean",
       "title": "lockChoiceOrder"
     },
     "partialScoring": {
@@ -250,8 +250,8 @@
       "title": "rows"
     },
     "rationale": {
-      "description": "Indicates if rationale is enabled",
-      "type": "boolean",
+      "description": "Indicates value for rationale",
+      "type": "string",
       "title": "rationale"
     },
     "scoringType": {
@@ -285,17 +285,9 @@
     }
   },
   "required": [
-    "choiceMode",
     "element",
-    "headers",
     "id",
-    "layout",
-    "lockChoiceOrder",
-    "rationale",
-    "rows",
-    "scoringType",
-    "studentInstructions",
-    "teacherInstructions"
+    "prompt"
   ],
   "definitions": {
     "ConfigureProp": {

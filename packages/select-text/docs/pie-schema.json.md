@@ -2,7 +2,7 @@ Pie Model Object for @pie-elements/select-text
 
 The schema defines the following properties:
 
-# `maxSelections` (number, required)
+# `maxSelections` (number)
 
 The maximum number of token selections a user can make when responding
 
@@ -66,7 +66,7 @@ Is selected does the token represent a correct response
 
 The passage of text from which user may select responses
 
-# `prompt` (string)
+# `prompt` (string, required)
 
 The user prompt/item stem
 
@@ -76,11 +76,11 @@ Indicates if the parts of text that are choosable, should be highligned when pre
 
 Default: `false`
 
-# `rationale` (boolean, required)
+# `rationale` (string)
 
-Indicates if rationale is enabled
+Indicates rationale for correct answer
 
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -89,11 +89,11 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 

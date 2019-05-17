@@ -31,40 +31,40 @@ export interface MatchPie extends PieModel {
   enableImages?: boolean;
 
   /** Feedback for student responses */
-  feedback?: ComplexFeedbackType
+  feedback?: ComplexFeedbackType;
 
   /** Array of strings for column headers */
-  headers: string[];
+  headers?: string[];
 
   /** The number of columns to be presented */
-  layout: number;
+  layout?: number;
 
   /** Indicates if the order of the rows should be randomly sorted on render */
-  lockChoiceOrder: number;
+  lockChoiceOrder?: boolean;
 
   /** Indicates if partial scoring should be used */
   partialScoring?: boolean;
 
   /** Indicates if the control for responses should be single (radio) or multiple (checkbox) */
-  choiceMode: 'radio' | 'checkbox';
+  choiceMode?: 'radio' | 'checkbox';
 
   /**  The question prompt or item stem */
-  prompt?: string;
+  prompt: string;
 
   /** The rows of choices to be presented.  */
-  rows: MatchRow[];
+  rows?: MatchRow[];
 
-  /** Indicates if rationale is enabled */
-  rationale: boolean;
+  /** Indicates value for rationale */
+  rationale?: string;
 
   /** Indicates scoring type */
-  scoringType: 'auto' | 'rubric';
+  scoringType?: 'auto' | 'rubric';
 
   /** Indicates if student instructions are enabled */
-  studentInstructions: boolean;
+  studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
-  teacherInstructions: boolean;
+  teacherInstructions?: boolean;
 }
 
 /**
@@ -75,37 +75,37 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   /**
    * Configuration for enable images
    */
-  enableImages: ConfigureProp;
+  enableImages?: ConfigureProp;
 
   /**
    * Configuration for feedback
    */
-  feedback: ConfigureProp;
+  feedback?: ConfigureProp;
 
   /**
    * Configuration for headers
    */
-  headers: ConfigureProp;
+  headers?: ConfigureProp;
 
   /**
    * Configuration for layout
    */
-  layout: ConfigureProp;
+  layout?: ConfigureProp;
 
   /**
    * Configuration for lock choice order
    */
-  lockChoiceOrder: ConfigureProp;
+  lockChoiceOrder?: ConfigureProp;
 
   /**
    * Configuration for partial scoring
    */
-  partialScoring: ConfigureProp;
+  partialScoring?: ConfigureProp;
 
   /**
    * Configuration for choice mode
    */
-  choiceMode: ConfigureProp;
+  choiceMode?: ConfigureProp;
 
   /**
    * Configuration for the prompt

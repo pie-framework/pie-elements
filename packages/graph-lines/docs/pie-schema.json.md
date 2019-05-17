@@ -1,5 +1,5 @@
 NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
-rationale, scoringType, studentInstructions, teacherInstructions
+scoringType, studentInstructions, teacherInstructions
 so there's no implementation (they are only added in model)
 Model Object for @pie-elements/graph-lines
 
@@ -21,29 +21,13 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
-# `multiple` (boolean)
+# `multiple` (boolean, required)
 
 Indicates if the graph can have multiple lines
 
 # `partialScoring` (boolean)
 
 Indicates if partial scoring rules is enabled
-
-# `partialScoringRules` (array)
-
-Indicates partial scoring rules
-
-The object is an array with all elements of the type `object`.
-
-The array object has the following properties:
-
-## `numberOfCorrect` (number, required)
-
-Number of correct answers
-
-## `scorePercentage` (number, required)
-
-Score percentage for partial scoring
 
 # `graph` (object, required)
 
@@ -159,23 +143,23 @@ Indicates if axis labels should be displayed
 
 Indicates if feedback should be displayed
 
-# `arrows` (boolean, required)
+# `arrows` (boolean)
 
 Indicates if arrows are enabled
 
-# `padding` (boolean, required)
+# `padding` (boolean)
 
 Indicates if padding is enabled
 
-# `labels` (boolean, required)
+# `labels` (boolean)
 
 Indicates if labels are enabled
 
-# `rationale` (boolean, required)
+# `rationale` (string)
 
-Indicates if rationale is enabled
+Indicates rationale for the answer
 
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -184,11 +168,11 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 
@@ -270,18 +254,6 @@ This element must be one of the following enum values:
 ### `custom` (string, required)
 
 Indicates the feedback custom value
-
-## `PartialScoringRule` (object)
-
-Properties of the `PartialScoringRule` object:
-
-### `numberOfCorrect` (number, required)
-
-Number of correct answers
-
-### `scorePercentage` (number, required)
-
-Score percentage for partial scoring
 
 ## `GraphLineModelConfig` (object)
 

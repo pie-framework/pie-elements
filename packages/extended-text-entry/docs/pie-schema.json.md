@@ -6,7 +6,7 @@ Model for the @pie-elements/extended-text-entry Interaction
 
 The schema defines the following properties:
 
-# `equationEditor` (boolean, required)
+# `equationEditor` (boolean)
 
 Indicates if equation editor is enabled
 
@@ -31,13 +31,13 @@ Indicates the feedback value
 
 Height the editor should take. USE CSS-style definition.
 
-# `mathInput` (boolean, required)
+# `mathInput` (boolean)
 
 Whether a control to allow insertion of math forumulas should be displayed
 
 Default: `false`
 
-# `multiple` (boolean, required)
+# `multiple` (boolean)
 
 Indicates if multiple parts are enabled
 
@@ -45,7 +45,7 @@ Indicates if multiple parts are enabled
 
 The question prompt
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 

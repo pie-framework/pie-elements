@@ -295,17 +295,6 @@
       "title": "settingsPartialScoring"
     }
   },
-  "required": [
-    "feedback",
-    "highlightChoices",
-    "mode",
-    "partialScoring",
-    "prompt",
-    "selectionCount",
-    "selections",
-    "text",
-    "tokens"
-  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",

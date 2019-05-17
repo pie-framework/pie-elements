@@ -18,7 +18,7 @@ import { ConfigureProp } from '../ConfigurationProp';
 */
 export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if equation editor is enabled */
-  equationEditor: boolean;
+  equationEditor?: boolean;
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
@@ -33,16 +33,16 @@ export interface ExtendedTextEntryPie extends PieModel {
    * Whether a control to allow insertion of math forumulas should be displayed
    * @default false
    */
-  mathInput: boolean;
+  mathInput?: boolean;
 
   /** Indicates if multiple parts are enabled */
-  multiple: boolean;
+  multiple?: boolean;
 
   /** The question prompt */
   prompt?: string;
 
   /** Indicates if student instructions are enabled */
-  studentInstructions: boolean;
+  studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
   teacherInstructions: boolean;

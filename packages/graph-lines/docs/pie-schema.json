@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: There's no functionality described for arrows, padding, labels, graphTitle,\nrationale, scoringType, studentInstructions, teacherInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graph-lines",
+  "description": "NOTE: There's no functionality described for arrows, padding, labels, graphTitle,\nscoringType, studentInstructions, teacherInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graph-lines",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -178,31 +178,6 @@
       "description": "Indicates if partial scoring rules is enabled",
       "type": "boolean",
       "title": "partialScoring"
-    },
-    "partialScoringRules": {
-      "description": "Indicates partial scoring rules",
-      "type": "array",
-      "items": {
-        "title": "PartialScoringRule",
-        "type": "object",
-        "properties": {
-          "numberOfCorrect": {
-            "description": "Number of correct answers",
-            "type": "number",
-            "title": "numberOfCorrect"
-          },
-          "scorePercentage": {
-            "description": "Score percentage for partial scoring",
-            "type": "number",
-            "title": "scorePercentage"
-          }
-        },
-        "required": [
-          "numberOfCorrect",
-          "scorePercentage"
-        ]
-      },
-      "title": "partialScoringRules"
     },
     "graph": {
       "title": "GraphLineModelConfig",
@@ -397,8 +372,8 @@
       "title": "labels"
     },
     "rationale": {
-      "description": "Indicates if rationale is enabled",
-      "type": "boolean",
+      "description": "Indicates rationale for the answer",
+      "type": "string",
       "title": "rationale"
     },
     "scoringType": {
@@ -432,16 +407,10 @@
     }
   },
   "required": [
-    "arrows",
     "element",
     "graph",
     "id",
-    "labels",
-    "padding",
-    "rationale",
-    "scoringType",
-    "studentInstructions",
-    "teacherInstructions"
+    "multiple"
   ],
   "definitions": {
     "ConfigureProp": {
@@ -675,26 +644,6 @@
       "required": [
         "custom",
         "type"
-      ]
-    },
-    "PartialScoringRule": {
-      "title": "PartialScoringRule",
-      "type": "object",
-      "properties": {
-        "numberOfCorrect": {
-          "description": "Number of correct answers",
-          "type": "number",
-          "title": "numberOfCorrect"
-        },
-        "scorePercentage": {
-          "description": "Score percentage for partial scoring",
-          "type": "number",
-          "title": "scorePercentage"
-        }
-      },
-      "required": [
-        "numberOfCorrect",
-        "scorePercentage"
       ]
     },
     "GraphLineModelConfig": {

@@ -72,6 +72,11 @@
             "required": [
               "type"
             ]
+          },
+          "rationale": {
+            "description": "Rationale for the Choice",
+            "type": "string",
+            "title": "rationale"
           }
         },
         "required": [
@@ -95,11 +100,6 @@
       "description": "Indicates that the item should use partial scoring",
       "type": "boolean",
       "title": "partialScoring"
-    },
-    "rationale": {
-      "description": "Indicates if rationale is enabled",
-      "type": "boolean",
-      "title": "rationale"
     },
     "scoringType": {
       "description": "Indicates scoring type",
@@ -134,12 +134,7 @@
   "required": [
     "choices",
     "element",
-    "id",
-    "partialScoring",
-    "rationale",
-    "scoringType",
-    "studentInstructions",
-    "teacherInstructions"
+    "id"
   ],
   "definitions": {
     "ConfigureProp": {
@@ -211,6 +206,11 @@
           "required": [
             "type"
           ]
+        },
+        "rationale": {
+          "description": "Rationale for the Choice",
+          "type": "string",
+          "title": "rationale"
         }
       },
       "required": [

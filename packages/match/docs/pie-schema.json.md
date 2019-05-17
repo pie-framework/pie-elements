@@ -25,17 +25,17 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
-# `headers` (array, required)
+# `headers` (array)
 
 Array of strings for column headers
 
 The object is an array with all elements of the type `string`.
 
-# `layout` (number, required)
+# `layout` (number)
 
 The number of columns to be presented
 
-# `lockChoiceOrder` (number, required)
+# `lockChoiceOrder` (boolean)
 
 Indicates if the order of the rows should be randomly sorted on render
 
@@ -43,7 +43,7 @@ Indicates if the order of the rows should be randomly sorted on render
 
 Indicates if partial scoring should be used
 
-# `choiceMode` (string, enum, required)
+# `choiceMode` (string, enum)
 
 Indicates if the control for responses should be single (radio) or multiple (checkbox)
 
@@ -52,11 +52,11 @@ This element must be one of the following enum values:
 * `checkbox`
 * `radio`
 
-# `prompt` (string)
+# `prompt` (string, required)
 
 The question prompt or item stem
 
-# `rows` (array, required)
+# `rows` (array)
 
 The rows of choices to be presented.
 
@@ -78,11 +78,11 @@ Array of boolean values indicating which columns are selected in the row
 
 The object is an array with all elements of the type `boolean`.
 
-# `rationale` (boolean, required)
+# `rationale` (string)
 
-Indicates if rationale is enabled
+Indicates value for rationale
 
-# `scoringType` (string, enum, required)
+# `scoringType` (string, enum)
 
 Indicates scoring type
 
@@ -91,11 +91,11 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (boolean)
 
 Indicates if student instructions are enabled
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (boolean)
 
 Indicates if teacher instructions are enabled
 

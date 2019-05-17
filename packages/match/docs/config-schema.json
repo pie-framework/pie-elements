@@ -274,15 +274,6 @@
       "title": "settingsPartialScoring"
     }
   },
-  "required": [
-    "choiceMode",
-    "enableImages",
-    "feedback",
-    "headers",
-    "layout",
-    "lockChoiceOrder",
-    "partialScoring"
-  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",

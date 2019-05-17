@@ -64,6 +64,11 @@
             "required": [
               "type"
             ]
+          },
+          "rationale": {
+            "description": "Rationale for the Choice",
+            "type": "string",
+            "title": "rationale"
           }
         },
         "required": [
@@ -143,6 +148,11 @@
           "required": [
             "type"
           ]
+        },
+        "rationale": {
+          "description": "Rationale for the Choice",
+          "type": "string",
+          "title": "rationale"
         }
       },
       "required": [
