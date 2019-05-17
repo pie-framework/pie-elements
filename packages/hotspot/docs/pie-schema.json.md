@@ -86,6 +86,10 @@ The outline hotspot color options
 
 The object is an array with all elements of the type `string`.
 
+# `rationale` (string)
+
+Indicates the value for rationale
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

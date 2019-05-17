@@ -342,7 +342,7 @@
       },
       "title": "partialScoring"
     },
-    "config": {
+    "graph": {
       "title": "NumberLineDomainConfiguration",
       "type": "object",
       "properties": {
@@ -657,6 +657,11 @@
         "width"
       ]
     },
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -670,13 +675,34 @@
   },
   "required": [
     "allowPartialScoring",
-    "config",
     "correctResponse",
     "element",
+    "graph",
     "id",
     "partialScoring"
   ],
   "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
       "type": "object",

@@ -1,21 +1,21 @@
 {
-  "description": "Model for the @pie-elements/math-inline",
+  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/math-inline",
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "responseType": {
+      "description": "Indicates the mode of the question",
+      "enum": [
+        "Advanced Multi",
+        "Simple"
+      ],
+      "type": "string",
+      "title": "responseType"
+    },
     "question": {
       "description": "Indicates the question statement",
       "type": "string",
       "title": "question"
-    },
-    "mode": {
-      "description": "Indicates the mode of the question",
-      "enum": [
-        "advanced",
-        "simple"
-      ],
-      "type": "string",
-      "title": "mode"
     },
     "expression": {
       "description": "Indicates the expression for advanced mode",
@@ -203,8 +203,81 @@
         "incorrect"
       ]
     },
+    "response": {
+      "title": "MathInlineResponse",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "The id of the response",
+          "type": [
+            "string",
+            "number"
+          ],
+          "title": "id"
+        },
+        "validation": {
+          "description": "Indicates what type of validation should be applied on the response",
+          "default": "is symbolic",
+          "enum": [
+            "literal",
+            "symbolic"
+          ],
+          "type": "string",
+          "title": "validation"
+        },
+        "answer": {
+          "description": "The answer for the question",
+          "type": "string",
+          "title": "answer"
+        },
+        "alternates": {
+          "description": "For validation type = literal, alternates represents\nan object with some alternatives for the correct answers",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[0-9]+$": {
+              "title": "Alternate",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The id for the alternative response",
+                  "type": "number",
+                  "title": "id"
+                },
+                "answer": {
+                  "description": "The value for the alternative response",
+                  "type": "string",
+                  "title": "answer"
+                }
+              },
+              "required": [
+                "answer",
+                "id"
+              ]
+            }
+          },
+          "title": "alternates"
+        },
+        "allowSpaces": {
+          "description": "Indicates if spaces are allowed",
+          "type": "boolean",
+          "title": "allowSpaces"
+        },
+        "allowDecimals": {
+          "description": "Indicates if decimals are allowed",
+          "type": "boolean",
+          "title": "allowDecimals"
+        }
+      },
+      "required": [
+        "alternates",
+        "answer",
+        "id",
+        "validation"
+      ]
+    },
     "responses": {
-      "description": "Array of all correct responses",
+      "description": "Array of all correct responses if responseType is Advanced Multi",
       "type": "array",
       "items": {
         "title": "MathInlineResponse",
@@ -359,6 +432,38 @@
       "type": "boolean",
       "title": "partialScoring"
     },
+    "rationale": {
+      "description": "Indicates the value for rationale",
+      "type": "string",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "auto",
+        "rubric"
+      ],
+      "type": "string",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "customKeys": {
+      "description": "Extra buttons defined by user",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "customKeys"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -371,16 +476,34 @@
     }
   },
   "required": [
-    "config",
     "element",
-    "equationEditor",
     "expression",
-    "feedback",
     "id",
-    "mode",
+    "response",
     "responses"
   ],
   "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "ComplexFeedbackType": {
       "title": "ComplexFeedbackType",
       "type": "object",
