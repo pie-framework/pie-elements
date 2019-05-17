@@ -10,7 +10,6 @@
   "license": "ISC",
   "main": "lib/index.js",
   "dependencies": {
-    "debug": "^4.1.1",
-    "lodash": "^4.17.11"
+    "debug": "^4.1.1"
   }
 }

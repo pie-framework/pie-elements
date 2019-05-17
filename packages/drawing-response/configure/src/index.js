@@ -1,52 +1,39 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './root';
 import debug from 'debug';
-import defaults from 'lodash/defaults';
+import cloneDeep from 'lodash/cloneDeep';
 
+import Root from './root';
 import sensibleDefaults from './defaults';
 
-const log = debug('drawing-response:configure');
+const log = debug('hotspot:configure');
 
-const defaultValues = {
-  settingsMultipleCorrect: true,
-  settingsPartialScoring: true
-};
-
-const prepareCustomizationObject = (configure, model) => {
-  return {
-    configure: defaults(configure, defaultValues),
-    model: {
-      ...model,
-    }
-  };
-};
-
-export default class DrawingResponseConfigure extends HTMLElement {
+export default class DrawableResponseConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults,
+    ...sensibleDefaults.model,
     ...model,
   });
 
   constructor() {
     super();
-    this._model = DrawingResponseConfigure.createDefaultModel();
-    this._configure = defaultValues;
+    this._model = DrawableResponseConfigure.createDefaultModel();
+    this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
   set model(s) {
-    this._model = DrawingResponseConfigure.createDefaultModel(s);
+    this._model = DrawableResponseConfigure.createDefaultModel(s);
     this._render();
   }
 
-  set configure(c) {
-    const info = prepareCustomizationObject(c, this._model);
-
-    this.onModelChanged(info.model);
-    this._configure = info.configure;
+  set configuration(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -61,18 +48,68 @@ export default class DrawingResponseConfigure extends HTMLElement {
     this.dispatchEvent(new ModelUpdatedEvent(this._model, resetValue));
   }
 
-  onModelChanged(m, reset) {
+  onModelChanged = (m, reset) => {
     this._model = m;
     this.dispatchModelUpdated(reset);
-  }
+    this._render();
+  };
+
+  onConfigurationChanged = (c) => {
+    this._configuration = c;
+    this._render();
+  };
+
+  onPromptChanged = prompt => {
+    const { _model } = this;
+    const update = cloneDeep(_model);
+    update.prompt = prompt;
+    this.onModelChanged(update);
+  };
+
+  onRationaleChanged = rationale => {
+    this.onModelChanged({
+      ...this._model,
+      rationale
+    });
+  };
+
+  onUpdateImageDimension = (dimensions) => {
+    console.log('Dimensions: ', dimensions);
+    const { _model } = this;
+    _model.imageDimensions = dimensions;
+    this.onModelChanged(_model);
+  };
+
+  onImageUpload = imageUrl => {
+    const { _model } = this;
+    _model.imageUrl = imageUrl;
+    this.onModelChanged(_model);
+  };
+
+  insertImage = (handler) => {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  };
+
+  onDeleteImage = (src, done) => {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  };
 
   _render() {
     log('_render');
     let element = React.createElement(Root, {
-      configure: this._configure,
+      configuration: this._configuration,
       disableSidePanel: this._disableSidePanel,
+      imageSupport: {
+        add: this.insertImage,
+        delete: this.onDeleteImage
+      },
       model: this._model,
-      onModelChanged: this.onModelChanged
+      onConfigurationChanged: this.onConfigurationChanged,
+      onImageUpload: this.onImageUpload,
+      onModelChangedByConfig: this.onModelChanged,
+      onPromptChanged: this.onPromptChanged,
+      onRationaleChanged: this.onRationaleChanged,
+      onUpdateImageDimension: this.onUpdateImageDimension
     });
     ReactDOM.render(element, this);
   }
