@@ -5,6 +5,12 @@ jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
 }));
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  partialScoring: {
+    enabled: config => config.partialScoring
+  }
+}));
+
 describe('controller', () => {
   let result, question, session, env;
 
