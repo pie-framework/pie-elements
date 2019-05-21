@@ -159,8 +159,8 @@ describe('controller', () => {
         it(`returns ${part} choices`, () => {
           expect(result[part].choices).toEqual(
             expect.arrayContaining([
-              { value: value1, label: capitalize(value1) },
-              { value: value2, label: capitalize(value2) }
+              { value: value1, label: capitalize(value1), rationale: null },
+              { value: value2, label: capitalize(value2), rationale: null }
             ]));
         });
       };
@@ -210,8 +210,8 @@ describe('controller', () => {
           expect(result[part].choices).toEqual(
 
             expect.arrayContaining([
-              { value: value1, label: capitalize(value1), correct: true, feedback: 'foo' },
-              { value: value2, label: capitalize(value2), correct: false, feedback: 'Incorrect' }
+              { value: value1, label: capitalize(value1), correct: true, feedback: 'foo', rationale: null },
+              { value: value2, label: capitalize(value2), correct: false, feedback: 'Incorrect', rationale: null }
             ]));
         });
       };
