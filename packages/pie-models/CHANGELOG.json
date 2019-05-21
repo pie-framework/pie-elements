@@ -563,5 +563,20 @@
     "committerDate": "2019-05-11 14:49:12 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@5.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated pie-schema and config-schema.",
+    "merge": null,
+    "header": "fix: Updated pie-schema and config-schema.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4493698acef49c8c28c8b755a24b4a0181693bf6",
+    "gitTags": "",
+    "committerDate": "2019-05-14 16:22:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.1"
   }
 ]
