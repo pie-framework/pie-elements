@@ -223,5 +223,35 @@
     "committerDate": "2019-04-17 06:50:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@1.5.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added rationale support",
+    "merge": null,
+    "header": "feat: added rationale support",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3c1edf3da6101d62f3cd4d06dc22c64ca2560205",
+    "gitTags": "",
+    "committerDate": "2019-05-14 16:45:35 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@1.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat: added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1ddc13742d8a585befca50702889c8c8fa47ad6c",
+    "gitTags": "",
+    "committerDate": "2019-05-09 16:57:00 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@1.6.0"
   }
 ]

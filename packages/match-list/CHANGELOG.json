@@ -28,5 +28,35 @@
     "committerDate": "2019-04-24 17:43:53 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-list@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match-list",
+    "subject": "generated json schemas for the pie-model an configure (#186)",
+    "merge": null,
+    "header": "feat(match-list): generated json schemas for the pie-model an configure (#186)",
+    "body": "* feat(match-list): generated json schemas for the pie-model an configure\n\n* feat(match-list): fixed an issue with the match-list schema json",
+    "footer": null,
+    "notes": [],
+    "hash": "e460871ceb3e2356d7991d37657fcd666170072d",
+    "gitTags": "",
+    "committerDate": "2019-04-29 13:53:51 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated version of pie-ui/match-list. (#231)",
+    "merge": null,
+    "header": "fix: Updated version of pie-ui/match-list. (#231)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a7f1db1d562bde2d481c5c829c51f68553237aaa",
+    "gitTags": "",
+    "committerDate": "2019-05-15 10:00:02 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.2.4"
   }
 ]

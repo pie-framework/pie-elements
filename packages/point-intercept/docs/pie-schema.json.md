@@ -24,125 +24,119 @@ Array of strings (each string should have this form: x,y)
 
 The object is an array with all elements of the type `string`.
 
-# `model` (object, required)
+# `graph` (object, required)
 
-The configuration for the model
+Properties of the `graph` object:
 
-Properties of the `model` object:
-
-## `config` (object, required)
-
-Properties of the `config` object:
-
-### `graphTitle` (string, required)
+## `graphTitle` (string, required)
 
 Indicates the title for the graph
 
-### `graphWidth` (number, required)
+## `graphWidth` (number, required)
 
 Indicated the width for the graph
 
-### `graphHeight` (number, required)
+## `graphHeight` (number, required)
 
 Indicates the height for the graph
 
-### `domainLabel` (string, required)
+## `domainLabel` (string, required)
 
 Indicates the domain label for the graph
 
-### `domainMin` (number, required)
+## `domainMin` (number, required)
 
 Indicates the left limit (for the x axis)
 
-### `domainMax` (number, required)
+## `domainMax` (number, required)
 
 Indicates the right limit (for the x axis)
 
-### `domainStepValue` (number, required)
+## `domainStepValue` (number, required)
 
 Indicates step value (for the x axis)
 
-### `domainSnapValue` (number, required)
+## `domainSnapValue` (number, required)
 
 Indicates snap value (for the x axis)
 
-### `domainLabelFrequency` (number, required)
+## `domainLabelFrequency` (number, required)
 
 Indicates domain label frequency (for the x axis)
 
-### `domainGraphPadding` (number, required)
+## `domainGraphPadding` (number, required)
 
 Indicates domain graph padding (for the x axis)
 
-### `rangeLabel` (string, required)
+## `rangeLabel` (string, required)
 
 Indicates the range label for the graph
 
-### `rangeMin` (number, required)
+## `rangeMin` (number, required)
 
 Indicates the bottom limit (for the y axis)
 
-### `rangeMax` (number, required)
+## `rangeMax` (number, required)
 
 Indicates the top limit (for the y axis)
 
-### `rangeStepValue` (number, required)
+## `rangeStepValue` (number, required)
 
 Indicates step value (for the y axis)
 
-### `rangeSnapValue` (number, required)
+## `rangeSnapValue` (number, required)
 
 Indicates snap value (for the y axis)
 
-### `rangeLabelFrequency` (number, required)
+## `rangeLabelFrequency` (number, required)
 
 Indicates range label frequency (for the y axis)
 
-### `rangeGraphPadding` (number, required)
+## `rangeGraphPadding` (number, required)
 
 Indicates range graph padding (for the y axis)
 
-### `sigfigs` (number, required)
+## `sigfigs` (number, required)
 
-### `showCoordinates` (boolean, required)
+## `showCoordinates` (boolean, required)
 
 Indicates if coordinates should be displayed
 
-### `showPointLabels` (boolean, required)
+## `showPointLabels` (boolean, required)
 
 Indicates if point labels should be displayed
 
-### `showInputs` (boolean, required)
+## `showInputs` (boolean, required)
 
 Indicates if inputs should be displayed
 
-### `showAxisLabels` (boolean, required)
+## `showAxisLabels` (boolean, required)
 
 Indicates if axis labels should be displayed
 
-### `showFeedback` (boolean, required)
+## `showFeedback` (boolean, required)
 
 Indicates if feedback should be displayed
 
-### `maxPoints` (string,number)
+## `maxPoints` (string,number)
 
 Indicates the maximum number of points that the student can select
 
-### `pointLabels` (array, required)
+## `pointLabels` (array, required)
 
 The array with point labels
 
 The object is an array with all elements of the type `string`.
 
-### `allowPartialScoring` (boolean)
+## `allowPartialScoring` (boolean)
 
 Indicates if partial scoring is enabled
 
-### `pointsMustMatchLabels` (boolean)
+## `pointsMustMatchLabels` (boolean)
 
 Indicates if points must match labels at the evaluation time
 
-### `labelsType` (string)
+## `labelsType` (string)
 
 TODO add description
 

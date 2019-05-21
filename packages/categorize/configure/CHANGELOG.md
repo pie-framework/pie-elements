@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.1...@pie-element/categorize-configure@3.0.0) (2019-05-16)
+
+
+### Features
+
+* **categorize:** Integrated settings panel. Added support for rationale. Removed scoring panel. ([6e5a1bf](https://github.com/pie-framework/pie-elements/commit/6e5a1bf))
+
+
+### BREAKING CHANGES
+
+* **categorize:** `scoring` with `partial` and `weighting` is not supported anymore.
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@2.0.0...@pie-element/categorize-configure@2.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.12...@pie-element/categorize-configure@2.0.0) (2019-05-10)
+
+
+### Features
+
+* Transformed defaults into an object that has model and configuration property. ([ceb074c](https://github.com/pie-framework/pie-elements/commit/ceb074c))
+* **categorize:** Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`. ([5922f85](https://github.com/pie-framework/pie-elements/commit/5922f85))
+
+
+### BREAKING CHANGES
+
+* **categorize:** `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.
+
+
+
+
+
+## [1.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.11...@pie-element/categorize-configure@1.6.12) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [1.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.10...@pie-element/categorize-configure@1.6.11) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [1.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.9...@pie-element/categorize-configure@1.6.10) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [1.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.8...@pie-element/categorize-configure@1.6.9) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [1.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.7...@pie-element/categorize-configure@1.6.8) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([c967433](https://github.com/pie-framework/pie-elements/commit/c967433))
+
+
+
+
+
+## [1.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.6...@pie-element/categorize-configure@1.6.7) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
 ## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@1.6.5...@pie-element/categorize-configure@1.6.6) (2019-04-23)
 
 

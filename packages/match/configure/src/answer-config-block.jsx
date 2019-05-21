@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { InputCheckbox } from '@pie-lib/config-ui';
 import AddRow from './add-row';
 import Row from './row';
 import { swap, withDragContext } from '@pie-lib/drag';
@@ -60,6 +59,7 @@ class AnswerConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onDeleteRow: PropTypes.func.isRequired,
     onAddRow: PropTypes.func.isRequired,
@@ -109,14 +109,8 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, onAddRow, imageSupport } = this.props;
-    const {
-      configure: {
-        headers,
-        lockChoiceOrder,
-        partialScoring
-      }
-    } = model;
+    const { classes, model, onAddRow, imageSupport, configuration } = this.props;
+    const { headers } = configuration;
 
     return (
       <div className={classes.container}>

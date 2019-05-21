@@ -3,6 +3,27 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "prompt": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -20,6 +41,29 @@
       "default": true,
       "type": "boolean",
       "title": "settingsPartialScoring"
+    }
+  },
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

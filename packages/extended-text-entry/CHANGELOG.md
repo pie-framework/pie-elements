@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.0...@pie-element/extended-text-entry@4.0.1) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.5...@pie-element/extended-text-entry@4.0.0) (2019-05-08)
+
+
+### Bug Fixes
+
+* Renamed `multipleParts` with `multiple` for consistency. ([3685700](https://github.com/pie-framework/pie-elements/commit/3685700))
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Removed `model.configure` and added a separate property called `configuration` instead. Removed usage of state (root.jsx) and updated tests. ([8f3ef1d](https://github.com/pie-framework/pie-elements/commit/8f3ef1d))
+
+
+### BREAKING CHANGES
+
+* `model.configure` is removed, use `configuration` instead.
+
+
+
+
+
+## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.4...@pie-element/extended-text-entry@3.10.5) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [3.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.3...@pie-element/extended-text-entry@3.10.4) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.2...@pie-element/extended-text-entry@3.10.3) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.1...@pie-element/extended-text-entry@3.10.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([108b8f4](https://github.com/pie-framework/pie-elements/commit/108b8f4))
+
+
+
+
+
 ## [3.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@3.10.0...@pie-element/extended-text-entry@3.10.1) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@2.0.0...@pie-element/point-intercept-configure@2.0.1) (2019-05-10)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.11...@pie-element/point-intercept-configure@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Renamed `model.model.config` with `model.graph`. Removed unnecessary use of state(StateWrapper in configure.jsx). ([a107813](https://github.com/pie-framework/pie-elements/commit/a107813))
+
+
+### BREAKING CHANGES
+
+* `model.model.config` will not be used anymore. Use `model.graph` instead, to configure the graph.
+
+
+
+
+
+## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.10...@pie-element/point-intercept-configure@1.2.11) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.9...@pie-element/point-intercept-configure@1.2.10) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.8...@pie-element/point-intercept-configure@1.2.9) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.7...@pie-element/point-intercept-configure@1.2.8) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
+## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.6...@pie-element/point-intercept-configure@1.2.7) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([47fe7d5](https://github.com/pie-framework/pie-elements/commit/47fe7d5))
+
+
+
+
+
+## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.5...@pie-element/point-intercept-configure@1.2.6) (2019-04-25)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@1.2.4...@pie-element/point-intercept-configure@1.2.5) (2019-04-23)
 
 

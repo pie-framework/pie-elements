@@ -23,10 +23,10 @@ const log = debug('@pie-element:select-text:configure');
 export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    className: PropTypes.string,
-    onPromptChanged: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
@@ -59,10 +59,10 @@ export class Design extends React.Component {
   };
 
   apply = fn => {
-    const { onChange, model } = this.props;
+    const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
     fn(update);
-    onChange(update);
+    onModelChanged(update);
   };
 
   changeFeedback = feedback => {
@@ -70,15 +70,32 @@ export class Design extends React.Component {
   };
 
   changePartialScoring = partialScoring => {
-    const { onChange, model } = this.props;
+    const { onModelChanged, model } = this.props;
     const update = cloneDeep(model);
     update.partialScoring = partialScoring;
-    onChange(update);
+    onModelChanged(update);
+  };
+
+  onPromptChanged = prompt => {
+    const { onModelChanged, model } = this.props;
+    const update = cloneDeep(model);
+
+    update.prompt = prompt;
+    onModelChanged(update);
+  };
+
+  onRationaleChanged = rationale => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({
+      ...model,
+      rationale
+    });
   };
 
   render() {
-    const { model, classes, className, onPromptChanged, imageSupport, onChange } = this.props;
-    const { configure : {
+    const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const {
       prompt,
       text,
       tokens,
@@ -95,7 +112,7 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {},
       highlightChoices = {}
-    }} = model;
+    } = configuration;
 
     log('[render] maxSelections:', model.maxSelections);
 
@@ -105,19 +122,21 @@ export class Design extends React.Component {
         settings={
           <Panel
             model={model}
-            onChangeModel={model => onChange(model)}
+            configuration={configuration}
+            onChangeModel={model => onModelChanged(model)}
+            onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Item Type': {
                 highlightChoices: highlightChoices.settings &&
                 toggle(highlightChoices.label),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
-                'configure.rationale.enabled': rationale.settings &&
-                toggle(rationale.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                toggle(rationale.label, true),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },
@@ -125,15 +144,26 @@ export class Design extends React.Component {
           />
         }
       >
-        <div className={className}>
+        <div className={classes.container}>
           <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}
               markup={model.prompt}
-              onChange={onPromptChanged}
+              onChange={this.onPromptChanged}
               imageSupport={imageSupport}
             />
           </InputContainer>
+
+          {rationale.enabled && (
+            <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.rationale || ''}
+                onChange={this.onRationaleChanged}
+                imageSupport={imageSupport}
+              />
+            </InputContainer>
+          )}
 
           {
             text.settings &&
@@ -219,6 +249,9 @@ export class Design extends React.Component {
   }
 }
 export default withStyles(theme => ({
+  container: {
+    paddingTop: theme.spacing.unit
+  },
   tokenizerContainer: {
     paddingRight: 0,
     marginRight: 0,

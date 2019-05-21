@@ -1,16 +1,14 @@
 import * as React from 'react';
-import Configure from '../configure';
-import GeneralConfigBlock from '../general-config-block';
+import { shallow } from 'enzyme';
+
+import { Configure } from '../configure';
+import StyledGeneralConfigBlock, { GeneralConfigBlock } from '../general-config-block';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
-import { shallowChild } from '@pie-lib/test-utils';
 
 import {
   FeedbackConfig,
-  layout,
-  settings,
 } from '@pie-lib/config-ui';
-
 import defaultValues from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -78,21 +76,25 @@ const defaultProps = {
       showAxisLabels: true,
       showFeedback: true
     },
-    configure: defaultValues.configure
-  }
+  },
+  configuration: defaultValues.configuration,
 };
 
 describe('Configure', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowChild(Configure, defaultProps, 2);
+    wrapper = props => {
+      const configureProps = { ...defaultProps, ...props };
+
+      return shallow(<Configure { ...configureProps } />);
+    };
   });
 
   it('renders correctly', () => {
     const component = wrapper();
 
-    expect(component.find(GeneralConfigBlock).length).toEqual(1);
+    expect(component.find(StyledGeneralConfigBlock).length).toEqual(1);
     expect(component.find(PartialScoringConfig).length).toEqual(1);
     expect(component.find(FeedbackConfig).length).toEqual(1);
   });
@@ -159,6 +161,19 @@ describe('Configure', () => {
       },
     }));
   });
+
+  it('updates rationale', () => {
+    const onModelChanged = jest.fn();
+    const component = wrapper({ onModelChanged });
+
+    component.instance().onRationaleChange('New Rationale');
+
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+      ...defaultProps.model,
+      rationale: 'New Rationale',
+    }));
+  });
+
 });
 
 describe('GeneralConfigBlock', () => {
@@ -168,13 +183,19 @@ describe('GeneralConfigBlock', () => {
 
   beforeEach(() => {
     props = {
+      classes: {},
       config: defaultProps.model.graph,
-      onChange: jest.fn(),
+      configuration: defaultProps.configuration,
+      onModelChanged: jest.fn(),
       onMultipleToggle: jest.fn(),
       multiple: false,
     };
 
-    wrapper = shallowChild(GeneralConfigBlock, props, 1);
+    wrapper = newProps => {
+      const configureProps = { ...props, newProps };
+
+      return shallow(<GeneralConfigBlock { ...configureProps } />);
+    };
   });
 
   it('renders correctly', () => {

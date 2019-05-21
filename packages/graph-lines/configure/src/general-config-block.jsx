@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import AddLineButton from './add-line';
 import { withStyles } from '@material-ui/core/styles';
+import EditableHtml from '@pie-lib/editable-html';
 
 const styles = theme => ({
   container: {
@@ -32,6 +33,9 @@ const styles = theme => ({
   input: {
     width: '90%'
   },
+  rationale: {
+    paddingTop: theme.spacing.unit * 2,
+  },
   equationLabel: {
     marginRight: theme.spacing.unit
   },
@@ -47,7 +51,7 @@ const styles = theme => ({
   },
 });
 
-class GeneralConfigBlock extends React.Component {
+export class GeneralConfigBlock extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,
@@ -55,6 +59,14 @@ class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired,
     onMultipleToggle: PropTypes.func.isRequired,
     multiple: PropTypes.bool.isRequired,
+    configuration: PropTypes.object,
+    rationale: PropTypes.string,
+    imageSupport: PropTypes.object,
+    onRationaleChange: PropTypes.func
+  };
+
+  static defaultProps = {
+    configuration: {}
   };
 
   onChange = (name, isBoolean) => event => {
@@ -76,7 +88,18 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, config, multiple, onAddLine, onMultipleToggle } = this.props;
+    const {
+      classes,
+      config,
+      multiple,
+      onAddLine,
+      onMultipleToggle,
+      configuration,
+      rationale,
+      imageSupport,
+      onRationaleChange
+    } = this.props;
+    const { rationale: cRationale } = configuration || {};
 
     return (
       <div className={classes.container}>
@@ -139,6 +162,18 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('exhibitOnly', true)}/>
           </div>
         </div>
+        {cRationale.enabled && (
+          <InputContainer
+            label={cRationale.label || 'Rationale'}
+          >
+            <EditableHtml
+              className={classes.rationale}
+              markup={rationale || ''}
+              onChange={onRationaleChange}
+              imageSupport={imageSupport}
+            />
+          </InputContainer>)
+        }
       </div>
     );
   }

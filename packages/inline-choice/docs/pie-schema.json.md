@@ -56,6 +56,10 @@ Value for feedback
 
 Custom value for feedback
 
+## `rationale` (string)
+
+Rationale for the Choice
+
 # `prompt` (string)
 
 The question prompt or item stem
@@ -115,6 +119,10 @@ Value for feedback
 #### `custom` (string)
 
 Custom value for feedback
+
+### `rationale` (string)
+
+Rationale for the Choice
 
 ## `Feedback` (object)
 

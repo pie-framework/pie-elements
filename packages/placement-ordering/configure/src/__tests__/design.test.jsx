@@ -2,13 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import _ from 'lodash';
 
-import {
-  FeedbackConfig,
-  FormSection,
-  InputContainer,
-  layout,
-  settings,
-} from '@pie-lib/config-ui';
 import { get, set } from 'nested-property';
 import { Design } from '../design';
 import defaultValues from '../defaults';
@@ -46,12 +39,16 @@ jest.mock('nested-property', () => ({
 }));
 
 describe('Placement Ordering', () => {
-  let updateModel;
+  let onModelChanged;
+  let onConfigurationChanged;
   let model;
+  let configuration;
 
   beforeEach(() => {
-    updateModel = jest.fn();
-    model = _.cloneDeep(defaultValues);
+    onModelChanged = jest.fn();
+    onConfigurationChanged = jest.fn();
+    model = _.cloneDeep(defaultValues.model);
+    configuration = _.cloneDeep(defaultValues.configuration);
   });
 
   describe('snapshot', () => {
@@ -59,9 +56,11 @@ describe('Placement Ordering', () => {
       const wrapper = shallow(
         <Design
           model={model}
+          configuration={configuration}
           classes={{}}
           className={'foo'}
-          updateModel={updateModel}
+          onModelChanged={onModelChanged}
+          onConfigurationChanged={onConfigurationChanged}
         />
       );
 
@@ -69,15 +68,17 @@ describe('Placement Ordering', () => {
     });
 
     it ('renders custom items', () => {
-      model.configure.prompt.settings = false;
-      model.configure.removeTilesAfterPlacing.settings = true;
+      configuration.prompt.settings = false;
+      configuration.removeTilesAfterPlacing.settings = true;
 
       const wrapper = shallow(
         <Design
           model={model}
+          configuration={configuration}
           classes={{}}
           className={'foo'}
-          updateModel={updateModel}
+          onModelChanged={onModelChanged}
+          onConfigurationChanged={onConfigurationChanged}
         />
       );
 
@@ -94,8 +95,10 @@ describe('Placement Ordering', () => {
         const defaults = {
           classes: {},
           className: 'className',
-          updateModel,
-          model
+          onModelChanged,
+          onConfigurationChanged,
+          model,
+          configuration
         };
         const props = { ...defaults, ...extras };
 
@@ -104,7 +107,7 @@ describe('Placement Ordering', () => {
 
       w = wrapper();
     });
-    
+
     describe('applyUpdate', () => {
       beforeEach(() => {
         modelFn = jest.fn().mockReturnValue({
@@ -115,8 +118,8 @@ describe('Placement Ordering', () => {
         w.instance().applyUpdate(modelFn);
       });
 
-      it('calls updateModel with updated item stem value', () => {
-        expect(updateModel).toHaveBeenCalledWith({
+      it('calls onModelChanged with updated item stem value', () => {
+        expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
           prompt: 'Updated Item Stem'
         });
@@ -134,51 +137,51 @@ describe('Placement Ordering', () => {
         }
       });
 
-      it('calls updateModel with updated item stem', () => {
+      it('calls onModelChanged with updated item stem', () => {
         const modelPath = 'prompt';
         const value = 'Updated Choice Area Label';
 
         change(modelPath, undefined, value);
 
-        expect(updateModel).toHaveBeenCalledWith({
+        expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
           [modelPath]: value
         });
       });
 
-      it('calls updateModel with updated choice area label', () => {
+      it('calls onModelChanged with updated choice area label', () => {
         const modelPath = 'choiceLabel';
         const valuePath = 'value';
         const value = 'Updated Choice Area Label';
 
         change(modelPath, valuePath, { value });
 
-        expect(updateModel).toHaveBeenCalledWith({
+        expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
           [modelPath]: value
         });
       });
 
-      it('calls updateModel with updated answer area label', () => {
+      it('calls onModelChanged with updated answer area label', () => {
         const modelPath = 'targetLabel';
         const valuePath = 'value';
         const value = 'Updated Answer Area Label';
 
         change(modelPath, valuePath, { value });
 
-        expect(updateModel).toHaveBeenCalledWith({
+        expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
           [modelPath]: value
         });
       });
 
-      it('calls updateModel with updated feedback', () => {
+      it('calls onModelChanged with updated feedback', () => {
         const modelPath = 'feedback';
         const value = {};
 
         change(modelPath, undefined, value);
 
-        expect(updateModel).toHaveBeenCalledWith({
+        expect(onModelChanged).toHaveBeenCalledWith({
           ...model,
           [modelPath]: value
         });
@@ -191,12 +194,26 @@ describe('Placement Ordering', () => {
 
         w.instance().onPromptChange(newItemStem);
 
-        expect(updateModel).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith({
           ...model,
           prompt: newItemStem
         });
       });
     });
+
+    describe('onRationaleChange', () => {
+      it('calls update model when prompt changes', () => {
+        let newRationale = 'New Rationale';
+
+        w.instance().onRationaleChange(newRationale);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...model,
+          rationale: newRationale
+        });
+      });
+    });
+
 
     describe('onChoiceAreaLabelChange', () => {
       it('calls update model when choice area label changes', () => {
@@ -204,7 +221,7 @@ describe('Placement Ordering', () => {
 
         w.instance().onChoiceAreaLabelChange(newChoiceAreaLabel);
 
-        expect(updateModel).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith({
           ...model,
           choiceLabel: newChoiceAreaLabel
         });
@@ -217,7 +234,7 @@ describe('Placement Ordering', () => {
 
         w.instance().onAnswerAreaLabelChange(newAnswerAreaLabel);
 
-        expect(updateModel).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith({
           ...model,
           targetLabel: newAnswerAreaLabel
         });
@@ -243,7 +260,7 @@ describe('Placement Ordering', () => {
 
         w.instance().onFeedbackChange(newFeedback);
 
-        expect(updateModel).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith({
           ...model,
           feedback: newFeedback
         });
@@ -263,7 +280,7 @@ describe('Placement Ordering', () => {
 
         w.instance().onChoiceEditorChange(choices, correctResponse);
 
-        expect(updateModel).toBeCalledWith({
+        expect(onModelChanged).toBeCalledWith({
           ...model,
           choices,
           correctResponse
@@ -272,14 +289,18 @@ describe('Placement Ordering', () => {
     });
 
     describe('onSettingsChange', () => {
-      it('calls update model when settings call onChange function', () => {
+      it('calls update model when settings call onChangeModel function', () => {
         w.find('ConfigLayout').props().settings.props.onChangeModel();
 
-        expect(updateModel).toBeCalled();
+        expect(onModelChanged).toBeCalled();
       });
+
+      it('calls onConfigurationChanged when settings call onChangeConfiguration function', () => {
+        w.find('ConfigLayout').props().settings.props.onChangeConfiguration();
+
+        expect(onConfigurationChanged).toBeCalled();
+      });
+
     });
   })
 });
-
-
-

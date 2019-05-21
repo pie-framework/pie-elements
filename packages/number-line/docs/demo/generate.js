@@ -36,7 +36,8 @@ exports.model = (id, element) => ({
       scorePercentage: 35
     }
   ],
-  config: {
+  prompt: 'Set correct answer.',
+  graph: {
     width: 500,
     height: 400,
     domain: [-5, 5],

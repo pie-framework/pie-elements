@@ -5,10 +5,11 @@ import {
   InputContainer,
   ChoiceConfiguration,
   settings,
-  layout
+  layout, choiceUtils as utils
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import merge from 'lodash/merge';
 
 const { Panel, toggle, radio } = settings;
 
@@ -22,10 +23,22 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
   },
+  rationaleHolder: {
+    width: '70%',
+  },
+  rationale: {
+    paddingTop: theme.spacing.unit * 2,
+  },
   design: {
     paddingTop: theme.spacing.unit * 3
   },
+  choiceConfigurationHolder: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   choiceConfiguration: {
+    width: '100%',
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
   },
@@ -41,14 +54,15 @@ const styles = theme => ({
 const Design = withStyles(styles)(props => {
   const {
     classes,
-    configure,
     model,
+    configuration,
     onPromptChanged,
     onChoiceChanged,
     onRemoveChoice,
     onAddChoice,
     imageSupport,
-    onModelChanged
+    onChangeModel,
+    onConfigurationChanged
   } = props;
   const {
     prompt,
@@ -64,8 +78,8 @@ const Design = withStyles(styles)(props => {
     rationale = {},
     scoringType = {},
     sequentialChoiceLabels = {},
-    partLabels = {}
-  } = configure;
+    partLabels = {},
+  } = configuration;
 
   return (
     <div className={classes.design}>
@@ -73,38 +87,35 @@ const Design = withStyles(styles)(props => {
         settings={
           <Panel
             model={model}
-            onChangeModel={onModelChanged}
+            onChangeModel={onChangeModel}
+            configuration={configuration}
+            onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
-                'configure.partLabels.enabled':
-                  partLabels.settings && toggle(partLabels.label),
+                'partLabels.enabled': partLabels.settings &&
+                  toggle(partLabels.label, true),
                 choiceMode:
                   choiceMode.settings &&
                   radio(choiceMode.label, ['checkbox', 'radio']),
-                'configure.sequentialChoiceLabels.enabled':
-                  sequentialChoiceLabels.settings &&
-                  toggle(sequentialChoiceLabels.label),
-                choicePrefix:
-                  choicePrefix.settings &&
+                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                  toggle(sequentialChoiceLabels.label, true),
+                choicePrefix: choicePrefix.settings &&
                   radio(choicePrefix.label, ['numbers', 'letters']),
-                partialScoring:
-                  partialScoring.settings && toggle(partialScoring.label)
+                partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
               },
-              Properties: {
-                'configure.teacherInstructions.enabled':
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                'configure.studentInstructions.enabled':
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label),
-                'configure.rationale.enabled':
-                  rationale.settings && toggle(rationale.label),
-                lockChoiceOrder:
-                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                scoringType:
-                  scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric'])
-              }
+              'Properties': {
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                  toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled': studentInstructions.settings &&
+                  toggle(studentInstructions.label, true),
+                'rationale.enabled': rationale.settings &&
+                  toggle(rationale.label, true),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label),
+                scoringType: scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric']),
+              },
             }}
           />
         }
@@ -126,20 +137,42 @@ const Design = withStyles(styles)(props => {
             </InputContainer>
           )}
           {model.choices.map((choice, index) => (
-            <ChoiceConfiguration
-              key={index}
-              index={index + 1}
-              useLetterOrdering={model.choicePrefix === 'letters'}
-              className={classes.choiceConfiguration}
-              mode={model.choiceMode}
-              data={choice}
-              defaultFeedback={{}}
-              imageSupport={imageSupport}
-              onDelete={() => onRemoveChoice(index)}
-              onChange={c => onChoiceChanged(index, c)}
-              allowFeedBack={feedback.settings}
-              allowDelete={deleteChoice.settings}
-            />
+            <div
+              key={`choice-${index}`}
+              className={classes.choiceConfigurationHolder}
+            >
+              <ChoiceConfiguration
+                key={index}
+                index={index + 1}
+                useLetterOrdering={model.choicePrefix === 'letters'}
+                className={classes.choiceConfiguration}
+                mode={model.choiceMode}
+                data={choice}
+                defaultFeedback={{}}
+                imageSupport={imageSupport}
+                onDelete={() => onRemoveChoice(index)}
+                onChange={c => onChoiceChanged(index, c)}
+                allowFeedBack={feedback.settings}
+                allowDelete={deleteChoice.settings}
+              />
+              {rationale.enabled && (
+                <InputContainer
+                  key={`rationale-${index}`}
+                  label={rationale.label}
+                  className={classes.rationaleHolder}
+                >
+                  <EditableHtml
+                    className={classes.rationale}
+                    markup={choice.rationale || ''}
+                    onChange={c => onChoiceChanged(index, {
+                      ...choice,
+                      rationale: c
+                    })}
+                    imageSupport={imageSupport}
+                  />
+                </InputContainer>)
+              }
+            </div>
           ))}
           <br />
           {addChoiceButton.settings && (
@@ -162,8 +195,8 @@ export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     disableSidePanel: PropTypes.bool,
-    onPromptChanged: PropTypes.func.isRequired,
-    updateModel: PropTypes.func.isRequired,
+    onModelChanged: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
@@ -171,8 +204,48 @@ export class Main extends React.Component {
     })
   };
 
+  onRemoveChoice = index => {
+    const { model } = this.props;
+
+    model.choices.splice(index, 1);
+    this.props.onModelChanged(model);
+  };
+
+  onAddChoice = () => {
+    const { model } = this.props;
+    model.choices.push({
+      label: 'label',
+      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
+      feedback: {
+        type: 'none'
+      }
+    });
+
+    this.props.onModelChanged(model);
+  };
+
+  onChoiceChanged = (index, choice) => {
+    const { model } = this.props;
+
+    if (choice.correct && model.choiceMode === 'radio') {
+      model.choices = model.choices.map(c => {
+        return merge({}, c, { correct: false });
+      });
+    }
+
+    model.choices.splice(index, 1, choice);
+    this.props.onModelChanged(model);
+  };
+
+  onPromptChanged = prompt => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      prompt
+    });
+  };
+
   onModelChanged = (model, key) => {
-    const { updateModel } = this.props;
+    const { onModelChanged } = this.props;
 
     switch (key) {
       case 'choiceMode': {
@@ -193,17 +266,25 @@ export class Main extends React.Component {
             return c;
           });
         }
-        updateModel(model, true);
+        onModelChanged(model, true);
         break;
       }
       default:
-        updateModel(model);
+        onModelChanged(model);
         break;
     }
   };
 
   render() {
-    return <Design {...this.props} onModelChanged={this.onModelChanged} />;
+    return (
+      <Design
+        {...this.props}
+        onChangeModel={this.onModelChanged}
+        onRemoveChoice={this.onRemoveChoice}
+        onChoiceChanged={this.onChoiceChanged}
+        onAddChoice={this.onAddChoice}
+        onPromptChanged={this.onPromptChanged}
+      />);
   }
 }
 

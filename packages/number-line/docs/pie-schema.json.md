@@ -42,9 +42,9 @@ Number of correct answers
 
 The percentage for partial scoring
 
-# `config` (object, required)
+# `graph` (object, required)
 
-Properties of the `config` object:
+Properties of the `graph` object:
 
 ## `width` (number, required)
 
@@ -153,6 +153,10 @@ Indicates if ray with empty point and positive direction is available
 
 Array that returns responses
 
+# `prompt` (string)
+
+The question prompt or item stem
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -166,6 +170,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `ComplexFeedbackType` (object)
 

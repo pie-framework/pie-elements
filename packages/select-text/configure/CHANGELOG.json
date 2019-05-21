@@ -393,5 +393,55 @@
     "committerDate": "2019-04-25 11:22:05 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text-configure@2.5.13"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests.",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed configure with configuration. Removed usage of state (main.jsx) and updated tests.",
+    "body": null,
+    "footer": "BREAKING CHANGE: configure is removed, use configuration instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "configure is removed, use configuration instead."
+      }
+    ],
+    "hash": "b6f4593faa7306464285fa27cc39b42f4fa3413d",
+    "gitTags": "",
+    "committerDate": "2019-05-06 15:51:55 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "merge": null,
+    "header": "feat: Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5100df2de329f4b1eb0e2eb6a0210f9e6f6645fd",
+    "gitTags": "",
+    "committerDate": "2019-05-14 15:07:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "select-text",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(select-text): added rationale support.",
+    "body": "fix(select-text): fixed onConfigurationChanged.",
+    "footer": null,
+    "notes": [],
+    "hash": "c2aa2f990b7d1a592dc0304e7688a36d37774e16",
+    "gitTags": "",
+    "committerDate": "2019-05-11 18:24:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.1.0"
   }
 ]

@@ -5,7 +5,8 @@ import { DefaultFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
 
-/** NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
+/**
+ * NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
  * NOTE2: mathInput does not have a functionality as well
@@ -17,7 +18,7 @@ import { ConfigureProp } from '../ConfigurationProp';
 */
 export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if equation editor is enabled */
-  equationEditor: boolean;
+  equationEditor?: boolean;
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
@@ -32,19 +33,19 @@ export interface ExtendedTextEntryPie extends PieModel {
    * Whether a control to allow insertion of math forumulas should be displayed
    * @default false
    */
-  mathInput: boolean;
+  mathInput?: boolean;
 
   /** Indicates if multiple parts are enabled */
-  multipleParts: boolean;
+  multiple?: boolean;
 
   /** The question prompt */
   prompt?: string;
 
   /** Indicates if student instructions are enabled */
-  studentInstructions: boolean;
+  studentInstructions?: boolean;
 
   /** Indicates if teacher instructions are enabled */
-  teacherInstructions: boolean;
+  teacherInstructions?: boolean;
 
   /**
    * Width the editor should take. USE CSS-style definition.
@@ -69,14 +70,14 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   height?: ConfigureProp;
 
   /**
-   * Multiple Parts configuration
+   * Math Input configuration
    */
   mathInput?: ConfigureProp;
 
   /**
    * Multiple Parts configuration
    */
-  multipleParts?: ConfigureProp;
+  multiple?: ConfigureProp;
 
   /**
    * Student Instructions configuration

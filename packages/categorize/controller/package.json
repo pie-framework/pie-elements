@@ -6,7 +6,7 @@
     "@pie-lib/feedback": "^0.4.1",
     "debug": "^3.1.0"
   },
-  "version": "1.2.4",
+  "version": "3.0.0",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.0.0...@pie-element/ebsr@2.0.1) (2019-05-08)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.10...@pie-element/ebsr@2.0.0) (2019-05-08)
+
+
+### Features
+
+* Updated with new version of [@pie-lib-config-ui](https://github.com/pie-lib-config-ui). Renamed `configure` with `configuration`. ([011f7f8](https://github.com/pie-framework/pie-elements/commit/011f7f8))
+
+
+### BREAKING CHANGES
+
+* `configure` is removed, use `configuration`
+
+
+
+
+
+## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.9...@pie-element/ebsr@1.2.10) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [1.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.8...@pie-element/ebsr@1.2.9) (2019-05-02)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.7...@pie-element/ebsr@1.2.8) (2019-05-01)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.6...@pie-element/ebsr@1.2.7) (2019-04-26)
+
+
+### Bug Fixes
+
+* Updated with new version of @pie-lib/config-ui. ([a1d06b6](https://github.com/pie-framework/pie-elements/commit/a1d06b6))
+
+
+
+
+
+## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.5...@pie-element/ebsr@1.2.6) (2019-04-25)
+
+
+### Bug Fixes
+
+* **ebsr:** revert `itemStem` to `prompt`. ([107f398](https://github.com/pie-framework/pie-elements/commit/107f398))
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@1.2.4...@pie-element/ebsr@1.2.5) (2019-04-23)
 
 **Note:** Version bump only for package @pie-element/ebsr

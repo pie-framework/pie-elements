@@ -6,11 +6,11 @@ const log = debug('@pie-element:point-intercept:controller');
 const getResponseCorrectness = (
   correctResponseWithLabels,
   points,
-  model,
+  graph,
   partialScores
 ) => {
-  const allowPartialScores = model.config.allowPartialScoring;
-  const pointsMustMatchLabels = model.config.pointsMustMatchLabels;
+  const allowPartialScores = graph.allowPartialScoring;
+  const pointsMustMatchLabels = graph.pointsMustMatchLabels;
 
   let correctAnswers = 0;
 
@@ -55,7 +55,7 @@ const getResponseCorrectness = (
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { model, correctResponse, partialScoring } = question;
+    const { graph, correctResponse, partialScoring } = question;
 
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
@@ -72,14 +72,14 @@ export function model(question, session, env) {
           return {
             x: parseInt(x, 10),
             y: parseInt(y, 10),
-            label: model.config.pointLabels[idx]
+            label: graph.pointLabels[idx]
           };
         });
 
         return getResponseCorrectness(
           correctResponseWithLabels,
           session.points,
-          model,
+          graph,
           partialScoring
         );
       }
@@ -99,7 +99,7 @@ export function model(question, session, env) {
       };
 
       const out = Object.assign(base, {
-        model,
+        graph,
         correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
       });
       resolve(out);

@@ -763,5 +763,90 @@
     "committerDate": "2019-04-25 11:00:10 +0300",
     "isTagged": true,
     "tag": "@pie-element/categorize@2.13.8"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated pie-ui/categories version.",
+    "merge": null,
+    "header": "fix: Updated pie-ui/categories version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a4386c8bdc7503c0654590c107f9cf82f92d8cb5",
+    "gitTags": "",
+    "committerDate": "2019-05-08 18:56:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Transformed defaults into an object that has model and configuration property.",
+    "merge": null,
+    "header": "feat: Transformed defaults into an object that has model and configuration property.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ceb074c94d007dc8f9d494f894f8397d02a5d561",
+    "gitTags": "",
+    "committerDate": "2019-05-08 14:47:37 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "merge": null,
+    "header": "feat(categorize): Updated with new version of @pie-lib-config-ui. Removed `model.config` and instead added new props directly on model: `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing`.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`model.config` is removed, use `choicesPerRow`, `categoriesPerRow`, `choicesPosition`, `choicesLabel`, `lockChoiceOrder`, `removeTilesAfterPlacing` on model instead."
+      }
+    ],
+    "hash": "5922f855312550e25018affa5bcc5f4c116dc47a",
+    "gitTags": "",
+    "committerDate": "2019-05-07 13:47:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@3.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "merge": null,
+    "header": "feat: Sending rationale for `instructor` role only in 'view' or 'evaluate' mode.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f29d759f71f8a969954894fe96c138c15a89911d",
+    "gitTags": "",
+    "committerDate": "2019-05-14 15:44:22 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "merge": null,
+    "header": "feat(categorize): Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `scoring` with `partial` and `weighting` is not supported anymore.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`scoring` with `partial` and `weighting` is not supported anymore."
+      }
+    ],
+    "hash": "6e5a1bf61b71d246d7202198cbbc8fe075f858d4",
+    "gitTags": "",
+    "committerDate": "2019-05-13 18:37:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@4.0.0"
   }
 ]

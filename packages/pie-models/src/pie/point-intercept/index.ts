@@ -110,10 +110,8 @@ export interface PointInterceptPie extends PieModel {
     correctResponse: string[];
 
     /** The configuration for the model */
-    model: {
-        config: GraphLineModelConfig;
-    }
-
+    graph: GraphLineModelConfig;
+    
     /** The array of partial scoring rules */
     partialScoring: PartialScoringRule[];
 
