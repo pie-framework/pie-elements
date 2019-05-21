@@ -76,6 +76,7 @@ export const defaultProps = {
         default: 'Incorrect'
       }
     },
+    prompt: 'Prompt'
   },
   configuration: defaultValues.configuration
 };
@@ -151,8 +152,7 @@ describe('Configure', () => {
     component.instance().onResponseTypeChange('radio');
 
     expect(onModelChanged).toBeCalledWith({
-      id: '1',
-      element: 'match-element',
+      ...defaultProps.model,
       rows: [
         {
           id: 1,
@@ -175,26 +175,35 @@ describe('Configure', () => {
           values: [true, false]
         }
       ],
-      lockChoiceOrder: true,
-      partialScoring: [],
-      layout: 3,
-      headers: ['Column 1', 'Column 2', 'Column 3'],
-      choiceMode: 'radio',
-      feedback: {
-        correct: {
-          type: 'none',
-          default: 'Correct'
-        },
-        partial: {
-          type: 'none',
-          default: 'Nearly'
-        },
-        incorrect: {
-          type: 'none',
-          default: 'Incorrect'
-        }
-      },
     });
+  });
+
+  it('updates prompt correctly', () => {
+    let onModelChanged = jest.fn();
+
+    component = wrapper({
+      onModelChanged
+    });
+
+    component.instance().onPromptChanged('New Prompt');
+
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({ prompt: 'New Prompt' })
+    );
+  });
+
+  it('updates rationale correctly', () => {
+    let onModelChanged = jest.fn();
+
+    component = wrapper({
+      onModelChanged
+    });
+
+    component.instance().onRationaleChanged('New Rationale');
+
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({ rationale: 'New Rationale' })
+    );
   });
 
   it('adds a row correctly', () => {

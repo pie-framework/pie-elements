@@ -1,25 +1,28 @@
+NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+functionalities are not defined yet - the value for those can belong to
+model or to configure (to be moved when the functionality is defined)
 Model for the @pie-elements/math-inline
 
 The schema defines the following properties:
 
-# `question` (string)
-
-Indicates the question statement
-
-# `mode` (string, enum, required)
+# `responseType` (string, enum)
 
 Indicates the mode of the question
 
 This element must be one of the following enum values:
 
-* `advanced`
-* `simple`
+* `Advanced Multi`
+* `Simple`
+
+# `question` (string)
+
+Indicates the question statement
 
 # `expression` (string, required)
 
 Indicates the expression for advanced mode
 
-# `equationEditor` (, enum, required)
+# `equationEditor`
 
 Indicates what type of editor should be displayed for all the possible responses
 1 for Grade 1 - 2
@@ -40,7 +43,7 @@ This element must be one of the following enum values:
 
 Default: `"- everything"`
 
-# `feedback` (object, required)
+# `feedback` (object)
 
 Properties of the `feedback` object:
 
@@ -56,9 +59,45 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
+# `response` (object, required)
+
+Properties of the `response` object:
+
+## `id` (string,number, required)
+
+The id of the response
+
+## `validation` (string, enum, required)
+
+Indicates what type of validation should be applied on the response
+
+This element must be one of the following enum values:
+
+* `literal`
+* `symbolic`
+
+Default: `"is symbolic"`
+
+## `answer` (string, required)
+
+The answer for the question
+
+## `alternates` (object, required)
+
+For validation type = literal, alternates represents
+an object with some alternatives for the correct answers
+
+## `allowSpaces` (boolean)
+
+Indicates if spaces are allowed
+
+## `allowDecimals` (boolean)
+
+Indicates if decimals are allowed
+
 # `responses` (array, required)
 
-Array of all correct responses
+Array of all correct responses if responseType is Advanced Multi
 
 The object is an array with all elements of the type `object`.
 
@@ -132,16 +171,37 @@ Indicates if spaces are allowed
 
 Indicates if decimals are allowed
 
-# `config` (object, required)
-
-The configuration
-
-Properties of the `config` object:
-
-## `partialScoring` (boolean, required)
+# `partialScoring` (boolean)
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
+
+# `rationale` (string)
+
+Indicates the value for rationale
+
+# `scoringType` (string, enum)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `auto`
+* `rubric`
+
+# `studentInstructions` (boolean)
+
+Indicates if student instructions are enabled
+
+# `teacherInstructions` (boolean)
+
+Indicates if teacher instructions are enabled
+
+# `customKeys` (array)
+
+Extra buttons defined by user
+
+The object is an array with all elements of the type `string`.
 
 # `id` (string, required)
 
@@ -156,6 +216,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `ComplexFeedbackType` (object)
 

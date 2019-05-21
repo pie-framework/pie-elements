@@ -2,6 +2,7 @@ import { Shape }  from '../../Shape';
 import { Dimension }  from '../../Dimension';
 import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
+import { ConfigureProp } from '../ConfigurationProp';
 
 /**
  * Model for the @pie-elements/hotspot Interaction
@@ -37,6 +38,9 @@ export interface HotspotPie extends PieModel {
 
   /**  The outline hotspot color options  */
   outlineList?: string[];
+
+  /** Indicates the value for rationale */
+  rationale?: string;
 }
 
 
@@ -46,14 +50,15 @@ export interface HotspotPie extends PieModel {
  */
 export interface MultipleChoiceConfigure extends PromptConfig {
     /**
-     * Indicates whether the settings panel wil allow the author to modify settings for multiple correct answers
-     * @default true
+     * Configuration for multiple correct
      */
-    settingsMultipleCorrect?: boolean;
+    multipleCorrect?: ConfigureProp;
 
     /**
-     * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-     * @default true
+     * Configuration for partial scoring
      */
-    settingsPartialScoring?:  boolean;
+    partialScoring?:  ConfigureProp;
+
+    /** Configuration for rationale */
+    rationale?: ConfigureProp;
 }

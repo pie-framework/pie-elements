@@ -42,7 +42,8 @@ interface MathInlineResponse {
     allowDecimals?: boolean;
 }
 
-/** NOTE: teacherInstructions, studentInstructions, rationale & scoringType
+/**
+ * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
  */
@@ -54,11 +55,10 @@ interface MathInlineResponse {
 */
 export interface MathInlinePie extends PieModel {
     /** Indicates the mode of the question*/
-    responseType: 'Advanced Multi' | 'Simple';
+    responseType?: 'Advanced Multi' | 'Simple';
 
     /** Indicates the question statement */
     question?: string;
-
 
     /** Indicates the expression for advanced mode */
     expression: string;
@@ -70,12 +70,15 @@ export interface MathInlinePie extends PieModel {
      * 8 for Grade 8 - HS
      * @default - everything
      */
-    equationEditor: 'geometry' | 'advanced-algebra' | 'statistics' | 'everything' | 1 | 3 | 6 | 8;
+    equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'everything' | 1 | 3 | 6 | 8;
 
     /** Feedback configuration for the responses */
-    feedback: ComplexFeedbackType;
+    feedback?: ComplexFeedbackType;
 
-    /** Array of all correct responses */
+    /** Correct response if responseType is simple */
+    response: MathInlineResponse;
+
+    /** Array of all correct responses if responseType is Advanced Multi */
     responses: MathInlineResponse[];
 
     /**
@@ -88,19 +91,22 @@ export interface MathInlinePie extends PieModel {
      * Indicates if partial scoring is allowed.
      * This property is not used yet.
      */
-    partialScoring: boolean;
+    partialScoring?: boolean;
 
-    /** Indicates if rationale is enabled */
-    rationale: boolean;
+    /** Indicates the value for rationale */
+    rationale?: string;
 
     /** Indicates scoring type */
-    scoringType: 'auto' | 'rubric';
+    scoringType?: 'auto' | 'rubric';
 
     /** Indicates if student instructions are enabled */
-    studentInstructions: boolean;
+    studentInstructions?: boolean;
 
     /** Indicates if teacher instructions are enabled */
-    teacherInstructions: boolean;
+    teacherInstructions?: boolean;
+
+    /** Extra buttons defined by user */
+    customKeys?: string[];
 }
 
 

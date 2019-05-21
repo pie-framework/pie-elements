@@ -51,6 +51,12 @@ export function model(question, session, env) {
           : undefined
     };
 
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.rationale = question.rationale;
+    } else {
+      out.rationale = null;
+    }
+
     resolve(out);
   });
 }

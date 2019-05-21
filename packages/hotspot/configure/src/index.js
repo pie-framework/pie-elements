@@ -1,40 +1,29 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent,
+} from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
-import defaults from 'lodash/defaults';
 
 import Root from './root';
 import sensibleDefaults from './defaults';
 
 const log = debug('hotspot:configure');
 
-const defaultValues = {
-  settingsMultipleCorrect: true,
-  settingsPartialScoring: true
-};
-
-const prepareCustomizationObject = (configure, model) => {
-  return {
-    configure: defaults(configure, defaultValues),
-    model: {
-      ...model,
-    }
-  };
-};
-
 export default class HotspotConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults,
+    ...sensibleDefaults.model,
     ...model,
   });
 
   constructor() {
     super();
     this._model = HotspotConfigure.createDefaultModel();
-    this._configure = defaultValues;
+    this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
   }
 
@@ -43,11 +32,8 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
-  set configure(c) {
-    const info = prepareCustomizationObject(c, this._model);
-
-    this.onModelChanged(info.model);
-    this._configure = info.configure;
+  set configuration(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -68,6 +54,19 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
+  onModelChangedByConfig = (m, type) => {
+    const _model = m;
+    if (type === 'multipleCorrect') {
+      _model.shapes = _model.shapes.map(shape => ({ ...shape, correct: false }));
+    }
+    this.onModelChanged(_model);
+  };
+
+  onConfigurationChanged = (c) => {
+    this._configuration = c;
+    this._render();
+  };
+
   onRemoveShape = index => {
     const { _model } = this;
     _model.shapes.splice(index, 1);
@@ -87,10 +86,11 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(update);
   };
 
-  onPartialScoringChanged = () => {
-    const { _model } = this;
-    _model.partialScoring = !_model.partialScoring;
-    this.onModelChanged(_model);
+  onRationaleChanged = rationale => {
+    this.onModelChanged({
+      ...this._model,
+      rationale
+    });
   };
 
   onMultipleCorrectChanged = () => {
@@ -121,20 +121,33 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
+  insertImage = (handler) => {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  };
+
+  onDeleteImage = (src, done) => {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  };
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
-      configure: this._configure,
+      configuration: this._configuration,
       disableSidePanel: this._disableSidePanel,
       model: this._model,
       onColorChanged: this.onColorChanged,
       onImageUpload: this.onImageUpload,
-      onMultipleCorrectChanged: this.onMultipleCorrectChanged,
-      onPartialScoringChanged: this.onPartialScoringChanged,
+      onRationaleChanged: this.onRationaleChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
       onPromptChanged: this.onPromptChanged,
       onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
-      onUpdateShapes: this.onUpdateShapes
+      imageSupport: {
+        add: this.insertImage,
+        delete: this.onDeleteImage
+      },
+      onUpdateShapes: this.onUpdateShapes,
+      onModelChangedByConfig: this.onModelChangedByConfig
     });
     ReactDOM.render(element, this);
   }

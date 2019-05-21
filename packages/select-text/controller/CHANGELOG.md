@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.4.1...@pie-element/select-text-controller@2.5.0) (2019-05-16)
+
+
+### Features
+
+* Sending rationale for `instructor` role only in 'view' or 'evaluate' mode. ([5100df2](https://github.com/pie-framework/pie-elements/commit/5100df2))
+* **select-text:** added rationale support. ([c2aa2f9](https://github.com/pie-framework/pie-elements/commit/c2aa2f9))
+
+
+
+
+
 ## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.4.0...@pie-element/select-text-controller@2.4.1) (2019-04-09)
 
 **Note:** Version bump only for package @pie-element/select-text-controller

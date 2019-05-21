@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.1.0...@pie-element/math-inline-controller@2.1.1) (2019-05-16)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.0.3...@pie-element/math-inline-controller@2.1.0) (2019-05-14)
+
+
+### Features
+
+* Sending rationale for `instructor` mode. ([e297e50](https://github.com/pie-framework/pie-elements/commit/e297e50))
+* Sending rationale for `instructor` role only in 'view' or 'evaluate' mode. ([75c941c](https://github.com/pie-framework/pie-elements/commit/75c941c))
+* **math-inline:** added rationale support. ([7a4f9d4](https://github.com/pie-framework/pie-elements/commit/7a4f9d4))
+
+
+
+
+
 ## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.0.2...@pie-element/math-inline-controller@2.0.3) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

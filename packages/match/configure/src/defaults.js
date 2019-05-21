@@ -20,6 +20,7 @@ export default {
     ],
     scoringType: 'auto',
   },
+  prompt: 'Prompt goes here',
   configuration: {
     enableImages: {
       settings: true,
@@ -47,10 +48,14 @@ export default {
       settings: true,
       label: 'Response Type',
     },
+    prompt: {
+      settings: true,
+      label: 'Prompt'
+    },
     rationale: {
-      settings: false,
+      settings: true,
       label: 'Rationale',
-      enabled: true,
+      enabled: false,
     },
     scoringType: {
       settings: false,

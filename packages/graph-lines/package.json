@@ -1,80 +1,19 @@
 {
-  "disabled": false,
-  "mode": "gather",
-  "prompt": "<div>Use the dropdowns to complete the sentence</div>",
-  "shuffle": true,
-  "markup": "<div><p>The  {{0}}  jumped  {{1}}  the  {{2}} <br><br>Test  {{3}} </p></div>",
-  "choices": {
-    "0": [
-      {
-        "label": "cow",
-        "value": "0",
-        "correct": true
-      },
-      {
-        "label": "dog",
-        "value": "1",
-        "correct": false
-      },
-      {
-        "label": "cat",
-        "value": "2",
-        "correct": false
-      }
-    ],
-    "1": [
-      {
-        "label": "over",
-        "value": "0",
-        "correct": true
-      },
-      {
-        "label": "under",
-        "value": "1",
-        "correct": false
-      },
-      {
-        "label": "across",
-        "value": "2",
-        "correct": false
-      }
-    ],
-    "2": [
-      {
-        "label": "moon",
-        "value": "0",
-        "correct": true
-      },
-      {
-        "label": "sun",
-        "value": "2",
-        "correct": false
-      },
-      {
-        "label": "house",
-        "value": "3",
-        "correct": false
-      }
-    ],
-    "3": [
-      {
-        "label": "Default Option 1",
-        "value": "0",
-        "correct": false
-      },
-      {
-        "label": "Default Option 2",
-        "value": "1",
-        "correct": false
-      },
-      {
-        "label": "<span data-latex=\"\" data-raw=\"\\sqrt{4}\">\\(\\sqrt{4}\\)</span>",
-        "value": "2",
-        "correct": true
-      }
-    ]
+  "name": "@pie-element/graph-lines",
+  "publishConfig": {
+    "access": "public"
   },
-  "slateMarkup": "<div><p>The <span data-type=\"select\" data-correct-id=\"0\"><span data-type=\"menu_item\" data-id=\"0\">cow </span><span data-type=\"menu_item\" data-id=\"1\">dog </span><span data-type=\"menu_item\" data-id=\"2\">cat </span></span> jumped <span data-type=\"select\" data-correct-id=\"0\"><span data-type=\"menu_item\" data-id=\"0\">over </span><span data-type=\"menu_item\" data-id=\"1\">under </span><span data-type=\"menu_item\" data-id=\"2\">across </span></span> the <span data-type=\"select\" data-correct-id=\"0\"><span data-type=\"menu_item\" data-id=\"0\">moon </span><span data-type=\"menu_item\" data-id=\"2\">sun</span><span data-type=\"menu_item\" data-id=\"3\">house </span></span><br/><br/>Test <span data-type=\"select\" data-correct-id=\"2\"><span data-type=\"menu_item\" data-id=\"0\" data-is-default=\"true\">Default Option 1</span><span data-type=\"menu_item\" data-id=\"1\" data-is-default=\"true\">Default Option 2</span><span data-type=\"menu_item\" data-id=\"2\"><span data-latex=\"\" data-raw=\"\\sqrt{4}\">\\(\\sqrt{4}\\)</span> </span></span>d</p></div>",
-  "id": "1",
-  "element": "inline-dropdown"
+  "repository": "pie-framework/pie-elements",
+  "version": "2.1.0",
+  "main": "lib/index.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/graph-lines": "^2.0.5"
+  },
+  "author": "",
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

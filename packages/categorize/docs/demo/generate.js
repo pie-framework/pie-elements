@@ -71,7 +71,6 @@ exports.model = (id, element) => ({
       'choices': [
         '0',
         '3',
-        '5'
       ]
     },
     {
@@ -79,7 +78,6 @@ exports.model = (id, element) => ({
       'choices': [
         '4',
         '1',
-        '2'
       ]
     }
   ],

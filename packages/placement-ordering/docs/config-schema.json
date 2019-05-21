@@ -3,6 +3,342 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "choiceLabel": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "choices": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "enableImages": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "feedback": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "prompt": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "lockChoiceOrder": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "numberedGuides": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "orientation": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "partialScoring": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "placementArea": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "rationale": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "removeTilesAfterPlacing": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "scoringType": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "studentInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "targetLabel": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "teacherInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
@@ -20,6 +356,29 @@
       "default": true,
       "type": "boolean",
       "title": "settingsPartialScoring"
+    }
+  },
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

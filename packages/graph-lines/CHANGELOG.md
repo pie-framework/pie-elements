@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.0.1...@pie-element/graph-lines@2.1.0) (2019-05-16)
+
+
+### Features
+
+* Sending rationale for `instructor` role only in 'view' or 'evaluate' mode. ([213098f](https://github.com/pie-framework/pie-elements/commit/213098f))
+* **graph-lines:** added rationale support. ([2ff0286](https://github.com/pie-framework/pie-elements/commit/2ff0286))
+
+
+
+
+
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.0.0...@pie-element/graph-lines@2.0.1) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/graph-lines

@@ -1,0 +1,213 @@
+{
+  "description": "Model for the @pie-elements/hotspot Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
+    "imageUrl": {
+      "description": "The image over which hotspots will be drawn",
+      "type": "string",
+      "title": "imageUrl"
+    },
+    "shapes": {
+      "description": "The shapes/hotspots of the question",
+      "type": "array",
+      "items": {
+        "title": "Shape",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "the id of the shape",
+            "type": "string",
+            "title": "id"
+          },
+          "correct": {
+            "description": "indicates if the shape is correct",
+            "type": "boolean",
+            "title": "correct"
+          },
+          "height": {
+            "description": "the height of the shape",
+            "type": "number",
+            "title": "height"
+          },
+          "width": {
+            "description": "the width of the shape",
+            "type": "number",
+            "title": "width"
+          },
+          "x": {
+            "description": "the x position of the shape",
+            "type": "number",
+            "title": "x"
+          },
+          "y": {
+            "description": "the y position of the shape",
+            "type": "number",
+            "title": "y"
+          }
+        },
+        "required": [
+          "height",
+          "width",
+          "x",
+          "y"
+        ]
+      },
+      "title": "shapes"
+    },
+    "multipleCorrect": {
+      "description": "Indicates if the item supports multiple correct answers",
+      "type": "boolean",
+      "title": "multipleCorrect"
+    },
+    "partialScoring": {
+      "description": "Indicates if the item should use partial scoring",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "dimensions": {
+      "description": "The dimensions of the drawable section",
+      "type": "array",
+      "items": {
+        "title": "Dimension",
+        "type": "object",
+        "properties": {
+          "height": {
+            "description": "the height of the section",
+            "type": "number",
+            "title": "height"
+          },
+          "width": {
+            "description": "the width of the section",
+            "type": "number",
+            "title": "width"
+          }
+        },
+        "required": [
+          "height",
+          "width"
+        ]
+      },
+      "title": "dimensions"
+    },
+    "hotspotColor": {
+      "description": "The color that fills the hotspot",
+      "type": "string",
+      "title": "hotspotColor"
+    },
+    "hotspotList": {
+      "description": "The filling hotspot color options",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "hotspotList"
+    },
+    "outlineColor": {
+      "description": "The outline color of the hotspot",
+      "type": "string",
+      "title": "outlineColor"
+    },
+    "outlineList": {
+      "description": "The outline hotspot color options",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "outlineList"
+    },
+    "rationale": {
+      "description": "Indicates the value for rationale",
+      "type": "string",
+      "title": "rationale"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "dimensions",
+    "element",
+    "id",
+    "multipleCorrect",
+    "partialScoring",
+    "shapes"
+  ],
+  "definitions": {
+    "Shape": {
+      "title": "Shape",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "the id of the shape",
+          "type": "string",
+          "title": "id"
+        },
+        "correct": {
+          "description": "indicates if the shape is correct",
+          "type": "boolean",
+          "title": "correct"
+        },
+        "height": {
+          "description": "the height of the shape",
+          "type": "number",
+          "title": "height"
+        },
+        "width": {
+          "description": "the width of the shape",
+          "type": "number",
+          "title": "width"
+        },
+        "x": {
+          "description": "the x position of the shape",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "the y position of the shape",
+          "type": "number",
+          "title": "y"
+        }
+      },
+      "required": [
+        "height",
+        "width",
+        "x",
+        "y"
+      ]
+    },
+    "Dimension": {
+      "title": "Dimension",
+      "type": "object",
+      "properties": {
+        "height": {
+          "description": "the height of the section",
+          "type": "number",
+          "title": "height"
+        },
+        "width": {
+          "description": "the width of the section",
+          "type": "number",
+          "title": "width"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

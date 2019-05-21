@@ -2,6 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import {ComplexFeedbackType} from '../../Feedback';
+import {ConfigureProp} from '../ConfigurationProp';
 
 interface ResponseDefault {
     /** Indicates the response type */
@@ -132,11 +133,19 @@ export interface NumberLinePie extends PieModel {
     partialScoring: PartialScoringRule[];
 
     /** Configuration for the domain */
-    config: NumberLineDomainConfiguration;
+    graph: NumberLineDomainConfiguration;
+
+    /**  The question prompt or item stem */
+    prompt?: string;
 }
 
 /**
  * Config Object for @pie-elements/number-line
  * @additionalProperties false
  */
-export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {}
+export interface NumberLineConfigure extends PromptConfig, CommonConfigSettings {
+    /**
+     * Configuration for the prompt
+     */
+    prompt?: ConfigureProp;
+}

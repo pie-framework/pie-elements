@@ -4,67 +4,16 @@ exports[`Main snapshot renders 1`] = `
 <div
   className="className"
 >
-  <Component>
-    <WithStyles(Design)
-      model={
-        Object {
-          "categories": Array [],
-          "choices": Array [],
-          "correctResponse": Array [],
-          "scoring": Object {
-            "partial": Object {
-              "enabled": false,
-              "rules": Array [],
-            },
-            "weighting": Object {
-              "enabled": false,
-              "rules": Array [],
-            },
-          },
-        }
+  <WithStyles(Design)
+    model={
+      Object {
+        "categories": Array [],
+        "choices": Array [],
+        "correctResponse": Array [],
       }
-      onChange={
-        [MockFunction] {
-          "calls": Array [
-            Array [
-              Object {
-                "categories": Array [],
-                "choices": Array [],
-                "correctResponse": Array [],
-                "scoring": Object {
-                  "update": true,
-                },
-              },
-            ],
-          ],
-          "results": Array [
-            Object {
-              "isThrow": false,
-              "value": undefined,
-            },
-          ],
-        }
-      }
-      title="Design"
-    />
-    <WithStyles(Scoring)
-      categories={Array []}
-      correctResponse={Array []}
-      onChange={[Function]}
-      scoring={
-        Object {
-          "partial": Object {
-            "enabled": false,
-            "rules": Array [],
-          },
-          "weighting": Object {
-            "enabled": false,
-            "rules": Array [],
-          },
-        }
-      }
-      title="Scoring"
-    />
-  </Component>
+    }
+    onChange={[MockFunction]}
+    title="Design"
+  />
 </div>
 `;

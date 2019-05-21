@@ -1,6 +1,14 @@
+NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
+functionalities are not defined yet - the value for those can belong to
+model or to configure (to be moved when the functionality is defined)
+NOTE2: mathInput does not have a functionality as well
 Model for the @pie-elements/extended-text-entry Interaction
 
 The schema defines the following properties:
+
+# `equationEditor` (boolean)
+
+Indicates if equation editor is enabled
 
 # `feedback` (object)
 
@@ -19,23 +27,35 @@ This element must be one of the following enum values:
 
 Indicates the feedback value
 
-# `width` (string)
-
-Width the editor should take. USE CSS-style definition.
-
 # `height` (string)
 
 Height the editor should take. USE CSS-style definition.
+
+# `mathInput` (boolean)
+
+Whether a control to allow insertion of math forumulas should be displayed
+
+Default: `false`
+
+# `multiple` (boolean)
+
+Indicates if multiple parts are enabled
 
 # `prompt` (string)
 
 The question prompt
 
-# `showMathInput` (boolean, required)
+# `studentInstructions` (boolean)
 
-Whether a control to allow insertion of math forumulas should be displayed
+Indicates if student instructions are enabled
 
-Default: `false`
+# `teacherInstructions` (boolean)
+
+Indicates if teacher instructions are enabled
+
+# `width` (string)
+
+Width the editor should take. USE CSS-style definition.
 
 # `id` (string, required)
 
@@ -50,6 +70,22 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+### `label` (string)
+
+Indicates the label for the item
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
 ## `DefaultFeedbackType` (object)
 

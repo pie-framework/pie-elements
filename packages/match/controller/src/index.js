@@ -129,6 +129,7 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
+        prompt: question.prompt,
         config: {
           ...question,
           shuffled: !question.lockChoiceOrder
@@ -137,8 +138,13 @@ export function model(question, session, env) {
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view',
-
       };
+
+      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        base.rationale = question.rationale;
+      } else {
+        base.rationale = null;
+      }
 
       const out = Object.assign(base, {
         correctResponse

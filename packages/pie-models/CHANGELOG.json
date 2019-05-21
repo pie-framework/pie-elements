@@ -418,5 +418,150 @@
     "committerDate": "2019-05-07 13:47:57 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "support paired passages (#216)",
+    "merge": null,
+    "header": "feat: support paired passages (#216)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c036a92902e4c6b5ee59d4db6cf0e343b47f0b18",
+    "gitTags": "",
+    "committerDate": "2019-05-13 09:57:42 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "number-line",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(number-line): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324824c38780df036066ca60a6a75cc3717987e4",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:50:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "added prompt support.",
+    "merge": null,
+    "header": "feat(match): added prompt support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5f692de5feb5af98c71776de780c877f22ab48c",
+    "gitTags": "",
+    "committerDate": "2019-05-10 12:49:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(math-inline): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7a4f9d4647b3230e4b06af809189fdbbdd711365",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:18:47 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@4.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. (#225)",
+    "merge": null,
+    "header": "feat: Updated with new version of @pie-lib-config-ui. Renamed `configure` with `configuration`. Removed usage of state (root.jsx) and updated tests. (#225)",
+    "body": null,
+    "footer": "BREAKING CHANGE: `configure` is removed, use `configuration` instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`configure` is removed, use `configuration` instead."
+      }
+    ],
+    "hash": "380cdf9165fae6cc0e5f6940ab5ce6df25288206",
+    "gitTags": "",
+    "committerDate": "2019-05-15 13:04:28 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "categorize",
+    "subject": "Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "merge": null,
+    "header": "feat(categorize): Integrated settings panel. Added support for rationale. Removed scoring panel.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `scoring` with `partial` and `weighting` is not supported anymore.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`scoring` with `partial` and `weighting` is not supported anymore."
+      }
+    ],
+    "hash": "6e5a1bf61b71d246d7202198cbbc8fe075f858d4",
+    "gitTags": "",
+    "committerDate": "2019-05-13 18:37:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "select-text",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(select-text): added rationale support.",
+    "body": "fix(select-text): fixed onConfigurationChanged.",
+    "footer": null,
+    "notes": [],
+    "hash": "c2aa2f990b7d1a592dc0304e7688a36d37774e16",
+    "gitTags": "",
+    "committerDate": "2019-05-11 18:24:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "placement-ordering",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(placement-ordering): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6df005db8ba935e4a3dcddb57af6dbf4717b9ed",
+    "gitTags": "",
+    "committerDate": "2019-05-11 15:07:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graph-lines",
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat(graph-lines): added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ff0286c2f3993c59d8801114002a815573ede1e",
+    "gitTags": "",
+    "committerDate": "2019-05-11 14:49:12 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.0.0"
   }
 ]
