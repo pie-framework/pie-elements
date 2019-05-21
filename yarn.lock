@@ -1773,10 +1773,10 @@
     slate-prop-types "^0.4.38"
     slate-react "^0.14.3"
 
-"@pie-lib/math-evaluator@^0.3.9":
-  version "0.3.9"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.3.9.tgz#8e8b45c985be31884d5f5606a5aaac8e907e30bd"
-  integrity sha512-vlj/H09DbYxrWPNAw4XF+yFpw8Ukkix6j1AF+YFHQlKeyzmrzBW/L9I+cynNe5/0LVejIvtCZRdVnXW9TVa8IQ==
+"@pie-lib/math-evaluator@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.5.0.tgz#0aee2924906b53ebb1f0554b0ede84b5fe693e42"
+  integrity sha512-PiydwspfkBU9ae3EZkFOHkOiMCc7LTJdY35D4WTrpbDyvS03Njtjn79r3QsDO1o6TMCIV3v7d5zsY2DqzUoE3Q==
   dependencies:
     jsesc "^2.5.2"
     math-expressions "^2.0.0-alpha1"
