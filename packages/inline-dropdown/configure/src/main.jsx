@@ -109,24 +109,22 @@ export class Main extends React.Component {
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
-            <InputContainer
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                activePlugins={ALL_PLUGINS}
-                toolbarOpts={{
-                  position: 'top',
-                  alwaysVisible: true
-                }}
-                responseAreaType="inline-dropdown"
-                className={classes.markup}
-                markup={model.slateMarkup}
-                onChange={this.onMarkupChanged}
-                imageSupport={imageSupport}
-                nonEmpty={!prompt.settings}
-                disableUnderline
-              />
-            </InputContainer>
+            <EditableHtml
+              activePlugins={ALL_PLUGINS}
+              toolbarOpts={{
+                position: 'top',
+                alwaysVisible: true
+              }}
+              responseAreaProps={{
+                type: 'inline-dropdown'
+              }}
+              className={classes.markup}
+              markup={model.slateMarkup}
+              onChange={this.onMarkupChanged}
+              imageSupport={imageSupport}
+              nonEmpty={!prompt.settings}
+              disableUnderline
+            />
           </div>
         </layout.ConfigLayout>
       </div>

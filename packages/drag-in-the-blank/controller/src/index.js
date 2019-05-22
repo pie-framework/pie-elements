@@ -1,51 +1,16 @@
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import find from 'lodash/find';
 import { isResponseCorrect } from './utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
-const prepareChoice = (mode, defaultFeedback) => choice => {
-  const out = {
-    label: choice.label,
-    value: choice.value
-  };
-
-  if (mode === 'evaluate') {
-    out.correct = true;
-
-    const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
-
-    if (feedbackType === 'default') {
-      out.feedback = defaultFeedback['correct'];
-    } else if (feedbackType === 'custom') {
-      out.feedback = choice.feedback.value;
-    }
-  }
-
-  return out;
-};
-
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const defaultFeedback = Object.assign(
-      { correct: 'Correct', incorrect: 'Incorrect' },
-      question.defaultFeedback
-    );
-    const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
-
-    let choices = reduce(question.choices, (obj, area, key) => {
-      obj[key] = map(area, preparChoiceFn);
-
-      return obj;
-    }, {});
-
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       prompt: question.prompt,
       markup: question.markup,
-      choices,
+      choices: question.choices,
+      correctResponse: question.correctResponse,
 
       responseCorrect:
         env.mode === 'evaluate'
@@ -58,12 +23,13 @@ export function model(question, session, env) {
 }
 
 const getScore = (config, session) => {
-  const maxScore = Object.keys(config.choices).length;
+  const maxScore = Object.keys(config.correctResponse).length;
 
-  const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key];
+  const correctCount = reduce(config.choices, (total, choice, key) => {
+    const chosenValue = session.value && session.value[key];
+    const correctValue = config.correctResponse[key];
 
-    if (isEmpty(chosenValue) || !find(respArea, c => c.label.trim() === chosenValue.trim())) {
+    if (correctValue !== chosenValue) {
       return total - 1;
     }
 
@@ -89,8 +55,8 @@ const getScore = (config, session) => {
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
-    // const partialScoringEnabled = true;
+    // const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = true;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

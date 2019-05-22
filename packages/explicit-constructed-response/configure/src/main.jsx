@@ -7,7 +7,7 @@ import {
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import AlternateResponses from './alternatResponses';
+import AlternateResponses from './alternateResponses';
 
 const styles = theme => ({
   promptHolder: {
@@ -77,6 +77,13 @@ export class Main extends React.Component {
     });
   };
 
+  onResponsesChanged = choices => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      choices
+    });
+  };
+
   render() {
     const {
       classes,
@@ -110,29 +117,28 @@ export class Main extends React.Component {
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
-            <InputContainer
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                activePlugins={ALL_PLUGINS}
-                toolbarOpts={{
-                  position: 'top',
-                  alwaysVisible: true
-                }}
-                responseAreaType="explicit-constructed-response"
-                className={classes.markup}
-                markup={model.slateMarkup}
-                onChange={this.onMarkupChanged}
-                imageSupport={imageSupport}
-                nonEmpty={!prompt.settings}
-                disableUnderline
-              />
-            </InputContainer>
+            <EditableHtml
+              activePlugins={ALL_PLUGINS}
+              toolbarOpts={{
+                position: 'top',
+                alwaysVisible: true
+              }}
+              responseAreaProps={{
+                type: 'explicit-constructed-response'
+              }}
+              className={classes.markup}
+              markup={model.slateMarkup}
+              onChange={this.onMarkupChanged}
+              imageSupport={imageSupport}
+              nonEmpty={!prompt.settings}
+              disableUnderline
+            />
             <Typography className={classes.text}>
               Define Alternates
             </Typography>
             <AlternateResponses
               model={model}
+              onChange={this.onResponsesChanged}
             />
           </div>
         </layout.ConfigLayout>

@@ -1,16 +1,3 @@
-/*const slateMarkup = createElementFromHTML(`
-<div>
-    <p>
-        The
-        <span data-type="explicit_constructed_response">cow</span>
-        jumped
-        <span data-type="explicit_constructed_response">over</span>
-        the
-        <span data-type="explicit_constructed_response">moon</span>
-    </p>
-</div>
-`);*/
-
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
@@ -22,29 +9,46 @@ const createElementFromHTML = htmlString => {
 
 export const processMarkup = markup => {
   const slateMarkup = createElementFromHTML(markup);
-  const choices = {};
+  const choices = [];
   let index = 0;
 
-  slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
-    const innerHTML = s.innerHTML && s.innerHTML.replace(/&nbsp;/g, ' ').trim();
+  slateMarkup.querySelectorAll('[data-type="drag_in_the_blank"]').forEach(s => {
+    const value = s.dataset.value && s.dataset.value.replace(/&nbsp;/g, ' ').trim();
 
-    choices[index] = [{
-      label: innerHTML,
-      value: '0'
-    }];
-    s.replaceWith(` {{${index++}}} `);
+    if (value) {
+      choices.push({
+        value,
+        id: s.dataset.id
+      });
+    }
+
+    s.replaceWith(value ? ` {{${index++}}} ` : '');
   });
 
   return {
     markup: slateMarkup.outerHTML,
-    choices: choices
+    choices: choices,
+    correctResponse: choices.reduce((obj, c, index) => {
+      if (c.value) {
+        obj[index] = c.id;
+      }
+
+      return obj;
+    }, {})
   };
 };
 
 const REGEX = /\{\{(\d?)\}\}/g;
 
-export const createSlateMarkup = (markup, choices) => {
+export const createSlateMarkup = (markup, choices, correctResponse) => {
   return markup.replace(REGEX, (match, g) => {
-    return `<span data-type="explicit_constructed_response">${choices[g][0].label}</span>`;
+    const correctId = correctResponse[g];
+    const correctChoice = choices.find(c => c.id === correctId);
+
+    if (!correctChoice.value) {
+      return '';
+    }
+
+    return `<span data-type="drag_in_the_blank" data-id="${correctChoice.id}" data-value="${correctChoice.value}"></span>`;
   });
 };

@@ -8,7 +8,7 @@ import { partialScoring } from '@pie-lib/controller-utils';
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
-    value: choice.value
+    id: choice.id
   };
 
   if (mode === 'evaluate') {
@@ -57,13 +57,23 @@ export function model(question, session, env) {
   });
 }
 
+const prepareVal = html => {
+  const tmp = document.createElement('DIV');
+
+  tmp.innerHTML = html;
+
+  const value = tmp.textContent || tmp.innerText || '';
+
+  return value.trim();
+};
+
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
 
   const correctCount = reduce(config.choices, (total, respArea, key) => {
     const chosenValue = session.value[key];
 
-    if (isEmpty(chosenValue) || !find(respArea, c => c.label.trim() === chosenValue.trim())) {
+    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
       return total - 1;
     }
 
@@ -89,8 +99,8 @@ const getScore = (config, session) => {
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
-    // const partialScoringEnabled = true;
+    // const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = true;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

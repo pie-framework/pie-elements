@@ -1,4 +1,4 @@
-const choice = (l, v) => ({ label: l, value: v });
+const choice = (v, id) => ({ value: v, id });
 
 const markup = '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>';
 
@@ -7,10 +7,20 @@ exports.model = (id, element) => ({
   element,
   disabled: false,
   markup: markup,
-  choices: {
-    0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
-    1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
-    2: [choice('moon', '0'), choice('satellite', '1')]
+  choices: [
+    choice('cow', '0'),
+    choice('over', '1'),
+    choice('moon', '2'),
+    choice('cattle', '3'),
+    choice('calf', '4'),
+    choice('past', '5'),
+    choice('beyond', '6'),
+    choice('satellite', '7')
+  ],
+  correctResponse: {
+    0: '0',
+    1: '1',
+    2: '2'
   },
   prompt: 'Use the dropdowns to complete the sentence'
 });

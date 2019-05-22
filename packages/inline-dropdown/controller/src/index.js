@@ -105,7 +105,8 @@ const getScore = (config, session) => {
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    // const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = true;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

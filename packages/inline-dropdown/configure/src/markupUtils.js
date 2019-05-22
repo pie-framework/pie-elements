@@ -1,28 +1,3 @@
-/*const slateMarkup = createElementFromHTML(`
-<div>
-    <p>
-        The
-        <span data-type="select" data-correct-id="0">
-            <span data-type="menu_item" data-id="0">cow </span>
-            <span data-type="menu_item" data-id="1">dog </span>
-            <span data-type="menu_item" data-id="2">cat </span>
-        </span>
-        jumped
-        <span data-type="select" data-correct-id="0">
-            <span data-type="menu_item" data-id="0">over </span>
-            <span data-type="menu_item" data-id="1">under </span>
-            <span data-type="menu_item" data-id="2">across </span>
-        </span>
-        the
-        <span data-type="select" data-correct-id="0">
-            <span data-type="menu_item" data-id="0">moon </span>
-            <span data-type="menu_item" data-id="2" data-is-default="true">sun</span>
-            <span data-type="menu_item" data-id="3">house </span>
-        </span>
-    </p>
-</div>
-`);*/
-
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 

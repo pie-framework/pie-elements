@@ -1,16 +1,3 @@
-/*const slateMarkup = createElementFromHTML(`
-<div>
-    <p>
-        The
-        <span data-type="explicit_constructed_response">cow</span>
-        jumped
-        <span data-type="explicit_constructed_response">over</span>
-        the
-        <span data-type="explicit_constructed_response">moon</span>
-    </p>
-</div>
-`);*/
-
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
@@ -30,7 +17,7 @@ export const processMarkup = markup => {
 
     choices[index] = [{
       label: innerHTML,
-      value: '0'
+      id: '0'
     }];
     s.replaceWith(` {{${index++}}} `);
   });

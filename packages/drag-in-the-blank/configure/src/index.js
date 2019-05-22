@@ -9,8 +9,6 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
-import cloneDeep from 'lodash/cloneDeep';
-import reduce from 'lodash/reduce';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils'
@@ -19,33 +17,19 @@ const log = debug('multiple-choice:configure');
 
 export default class DragInTheBlank extends HTMLElement {
   static prepareModel = (model = {}) => {
-    const defaultModel = sensibleDefaults.model;
-    const slateMarkup = model.slateMarkup || createSlateMarkup(defaultModel.markup, defaultModel.choices);
-    const processedMarkup = processMarkup(slateMarkup);
     const joinedObj = {
       ...sensibleDefaults.model,
-      ...model,
+      ...model
     };
-    const newChoices = reduce(processedMarkup.choices, (obj, respArea, key) => {
-      const oldRespArea = joinedObj.choices[key];
-
-      obj[key] = !oldRespArea ? respArea : oldRespArea.reduce((acc, c, index) => {
-        if (index === 0) {
-          return acc;
-        }
-
-        acc.push(c);
-        return acc;
-      }, cloneDeep(respArea));
-
-      return obj;
-    }, {});
+    const slateMarkup = model.slateMarkup ||
+      createSlateMarkup(joinedObj.markup, joinedObj.choices, joinedObj.correctResponse);
+    const processedMarkup = processMarkup(slateMarkup);
 
     return {
       ...joinedObj,
       slateMarkup,
       markup: processedMarkup.markup,
-      choices: newChoices
+      correctResponse: processedMarkup.correctResponse
     };
   };
 
