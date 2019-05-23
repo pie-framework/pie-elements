@@ -43,5 +43,20 @@
     "committerDate": "2019-05-03 13:59:01 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.2.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "bump patch version",
+    "merge": null,
+    "header": "chore: bump patch version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "50e4dd8745733856f957dadf8b8a06f57daebcae",
+    "gitTags": "",
+    "committerDate": "2019-05-23 15:18:12 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.2.4"
   }
 ]
