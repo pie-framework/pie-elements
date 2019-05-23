@@ -1,8 +1,13 @@
 {
-  "description": "Model for the @pie-elements/extended-text-entry Interaction",
+  "description": "NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nNOTE2: mathInput does not have a functionality as well\nModel for the @pie-elements/extended-text-entry Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "equationEditor": {
+      "description": "Indicates if equation editor is enabled",
+      "type": "boolean",
+      "title": "equationEditor"
+    },
     "feedback": {
       "title": "DefaultFeedbackType",
       "type": "object",
@@ -26,26 +31,41 @@
         "type"
       ]
     },
-    "width": {
-      "description": "Width the editor should take. USE CSS-style definition.",
-      "type": "string",
-      "title": "width"
-    },
     "height": {
       "description": "Height the editor should take. USE CSS-style definition.",
       "type": "string",
       "title": "height"
+    },
+    "mathInput": {
+      "description": "Whether a control to allow insertion of math forumulas should be displayed",
+      "default": false,
+      "type": "boolean",
+      "title": "mathInput"
+    },
+    "multiple": {
+      "description": "Indicates if multiple parts are enabled",
+      "type": "boolean",
+      "title": "multiple"
     },
     "prompt": {
       "description": "The question prompt",
       "type": "string",
       "title": "prompt"
     },
-    "showMathInput": {
-      "description": "Whether a control to allow insertion of math forumulas should be displayed",
-      "default": false,
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
       "type": "boolean",
-      "title": "showMathInput"
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "width": {
+      "description": "Width the editor should take. USE CSS-style definition.",
+      "type": "string",
+      "title": "width"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -60,10 +80,30 @@
   },
   "required": [
     "element",
-    "id",
-    "showMathInput"
+    "id"
   ],
   "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
       "type": "object",

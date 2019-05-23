@@ -133,7 +133,7 @@ export interface NumberLinePie extends PieModel {
     partialScoring: PartialScoringRule[];
 
     /** Configuration for the domain */
-    config: NumberLineDomainConfiguration;
+    graph: NumberLineDomainConfiguration;
 
     /**  The question prompt or item stem */
     prompt?: string;

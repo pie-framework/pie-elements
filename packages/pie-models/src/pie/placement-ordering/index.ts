@@ -51,49 +51,49 @@ export interface PlacementOrderingPie extends PieModel {
     choices: Choice[];
 
     /** Array of the correct responses in the correct order */
-    correctResponse: CorrectResponse[];
+    correctResponse?: CorrectResponse[];
 
     /** Indicates if the choices editor can use images */
-    enableImages: ConfigureProp;
+    enableImages?: boolean;
 
     /** Feedback for student answer */
-    feedback: ComplexFeedbackType;
+    feedback?: ComplexFeedbackType;
 
     /** The item stem for the question */
     prompt?: string;
 
     /** Indicates if the choices can lockChoiceOrder */
-    lockChoiceOrder: boolean;
+    lockChoiceOrder?: boolean;
 
     /** If placement type is placement; show ordering indicates if the boxes are numbered */
-    numberedGuides: boolean;
+    numberedGuides?: boolean;
 
     /** The layout for displaying the choices */
-    orientation: 'vertical' | 'horizontal';
+    orientation?: 'vertical' | 'horizontal';
 
     /** Indicates if partialScoring is enabled */
-    partialScoring: boolean;
+    partialScoring?: boolean;
 
     /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
     placementArea?: boolean;
 
     /** Indicates correct answer rationale */
-    rationale: string;
+    rationale?: string;
 
     /** Indicates if each choice will be removed from choices after becoming a target */
     removeTilesAfterPlacing?: boolean;
 
     /** Indicates scoring type */
-    scoringType: 'auto' | 'rubric';
+    scoringType?: 'auto' | 'rubric';
 
     /** Indicates if student instructions are enabled */
-    studentInstructions: boolean;
+    studentInstructions?: boolean;
 
     /** The label for answer area if placement area is enabled */
     targetLabel?: string;
 
     /** Indicates if teacher instructions are enabled */
-    teacherInstructions: boolean;
+    teacherInstructions?: boolean;
 }
 
 /**
