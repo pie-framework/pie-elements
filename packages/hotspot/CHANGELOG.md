@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.0.0...@pie-element/hotspot@2.0.1) (2019-05-21)
+
+
+### Bug Fixes
+
+* Handle the way model is changed from config layout [ch1621] ([2f979d0](https://github.com/pie-framework/pie-elements/commit/2f979d0))
+* make partial scoring work [ch1621] ([313b602](https://github.com/pie-framework/pie-elements/commit/313b602))
+* Updated pie-schema and config-schema. ([4493698](https://github.com/pie-framework/pie-elements/commit/4493698))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@1.0.5...@pie-element/hotspot@2.0.0) (2019-05-16)
 
 

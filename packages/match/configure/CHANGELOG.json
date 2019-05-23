@@ -438,5 +438,20 @@
     "committerDate": "2019-05-10 12:49:54 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-configure@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat: added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e88056eb0c7362db2c2f44dc846fb1333901641b",
+    "gitTags": "",
+    "committerDate": "2019-05-15 17:54:45 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@2.2.0"
   }
 ]

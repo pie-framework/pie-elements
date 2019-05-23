@@ -1238,5 +1238,50 @@
     "committerDate": "2019-05-11 14:18:47 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.1.0"
+  },
+  {
+    "type": "chore",
+    "scope": "math-inline",
+    "subject": "bump dependency versions",
+    "merge": null,
+    "header": "chore(math-inline): bump dependency versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2447f5e1d6193da36c69a61eb5bbf50715b06b7f",
+    "gitTags": "",
+    "committerDate": "2019-05-21 12:19:56 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "no longer show response index, until we support individual correctness",
+    "merge": null,
+    "header": "fix(math-inline): no longer show response index, until we support individual correctness",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "02ba999cd924d3f19165064ade7b34c43430b7bb",
+    "gitTags": "",
+    "committerDate": "2019-05-20 12:13:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated pie-schema and config-schema.",
+    "merge": null,
+    "header": "fix: Updated pie-schema and config-schema.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e5528008841624dd4da1d16fc14da09ca74f007e",
+    "gitTags": "",
+    "committerDate": "2019-05-14 16:14:26 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.1.2"
   }
 ]
