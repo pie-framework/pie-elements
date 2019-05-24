@@ -1,0 +1,11 @@
+{
+  "name": "@pie-element/rubric",
+  "version": "1.0.0",
+  "description": "Rubric Scoring Interaction",
+  "repository": "pie-framework/pie-elements",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "pie framework developers",
+  "license": "ISC"
+}
