@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.1.1...@pie-element/match-configure@2.2.0) (2019-05-21)
+
+
+### Features
+
+* added rationale support. ([e88056e](https://github.com/pie-framework/pie-elements/commit/e88056e))
+
+
+
+
+
 ## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.1.0...@pie-element/match-configure@2.1.1) (2019-05-14)
 
 **Note:** Version bump only for package @pie-element/match-configure
