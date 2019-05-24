@@ -348,5 +348,20 @@
     "committerDate": "2019-05-11 14:49:12 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines@2.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated pie-schema and config-schema.",
+    "merge": null,
+    "header": "fix: Updated pie-schema and config-schema.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e5528008841624dd4da1d16fc14da09ca74f007e",
+    "gitTags": "",
+    "committerDate": "2019-05-14 16:14:26 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@2.1.1"
   }
 ]
