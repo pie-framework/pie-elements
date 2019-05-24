@@ -32,6 +32,7 @@ export function model(question, session, env) {
     maxImageWidth,
     multipleCorrect,
     outlineColor,
+    partialScoring,
     prompt,
     shapes
   } = question;
@@ -47,6 +48,7 @@ export function model(question, session, env) {
       maxImageHeight,
       maxImageWidth,
       multipleCorrect,
+      partialScoring,
       prompt,
       shapes,
       responseCorrect:
