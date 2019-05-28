@@ -1,8 +1,9 @@
 {
-  "name": "@pie-element/rubric",
+  "name": "@pie-element/rubric-configure",
+  "private": true,
   "version": "1.0.0",
   "description": "Rubric authoring view",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "author": "Pie Framework Authors",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
