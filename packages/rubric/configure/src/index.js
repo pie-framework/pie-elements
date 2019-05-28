@@ -1,16 +1,11 @@
-import {
-  ModelUpdatedEvent,
-
-} from '@pie-framework/pie-configure-events';
+import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Authoring } from '@pie-lib/rubric';
 import debug from 'debug';
 
-
 export default class RubricElement extends HTMLElement {
-
-
   constructor() {
     super();
     debug.log('constructor called');
@@ -32,9 +27,11 @@ export default class RubricElement extends HTMLElement {
   }
 
   _render() {
-    return  (
-      <Authoring value={this._model} onChange={this.onModelChanged} />
-    );
-    
+    if (this._model) {
+      const el = (
+        <Authoring value={this._model} onChange={this.onModelChanged} />
+      );
+      ReactDOM.render(el, this);
+    }
   }
 }
