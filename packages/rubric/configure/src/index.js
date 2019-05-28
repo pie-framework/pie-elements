@@ -4,8 +4,7 @@ import {
 } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Rubric from '@pie-lib/rubric';
+import { Authoring } from '@pie-lib/rubric';
 import debug from 'debug';
 
 
@@ -33,12 +32,9 @@ export default class RubricElement extends HTMLElement {
   }
 
   _render() {
-    if (this._model) {
-      const element = React.createElement(Rubric, {
-        model: this._model,
-        onChange: this.onModelChanged
-      });
-      ReactDOM.render(element, this);
-    }
+    return  (
+      <Authoring value={this._model} onChange={this.onModelChanged} />
+    );
+    
   }
 }
