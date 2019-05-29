@@ -3,5 +3,5 @@ exports.model = (id, element) => ({
   element,
   points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
   maxPoints: 4,
-  excludeZero: true
+  excludeZero: false
 });
