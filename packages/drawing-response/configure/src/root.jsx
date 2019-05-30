@@ -78,7 +78,6 @@ class Root extends React.Component {
                   hotspotColor={model.hotspotColor}
                   outlineColor={model.outlineColor}
                   onUpdateImageDimension={onUpdateImageDimension}
-                  onUpdateShapes={onUpdateShapes}
                   onImageUpload={onImageUpload}
                   shapes={model.shapes}
                 />
@@ -118,7 +117,6 @@ Root.propTypes = {
   onImageUpload: PropTypes.func.isRequired,
   onPromptChanged: PropTypes.func.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
-  onUpdateShapes: PropTypes.func.isRequired,
   onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired
