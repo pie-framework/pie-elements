@@ -22,10 +22,9 @@ class Root extends React.Component {
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes
     } = this.props;
     const { backgroundImage, rationale = {} } = configuration;
-
+    
     return (
       <div className={classes.base}>
         <layout.ConfigLayout
@@ -37,8 +36,8 @@ class Root extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Item Type': {
-                  backgroundImage:
-                  backgroundImage.settings && toggle(backgroundImage.label),
+                  'backgroundImage.enabled':
+                  backgroundImage.settings && toggle(backgroundImage.label, true),
                   'rationale.enabled':
                   rationale.settings && toggle(rationale.label, true)
                 },
@@ -65,7 +64,7 @@ class Root extends React.Component {
               </InputContainer>
             )}
 
-            {backgroundImage.settings && (
+            {backgroundImage.enabled && (
               <div>
                 <Typography className={classes.label} variant="subheading">
                   Define Background Image

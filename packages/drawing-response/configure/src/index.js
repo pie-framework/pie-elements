@@ -55,6 +55,9 @@ export default class DrawableResponseConfigure extends HTMLElement {
   };
 
   onConfigurationChanged = (c) => {
+    if (!c.backgroundImage.enabled) {
+      this.onImageUpload('');
+    }
     this._configuration = c;
     this._render();
   };
@@ -74,7 +77,6 @@ export default class DrawableResponseConfigure extends HTMLElement {
   };
 
   onUpdateImageDimension = (dimensions) => {
-    console.log('Dimensions: ', dimensions);
     const { _model } = this;
     _model.imageDimensions = dimensions;
     this.onModelChanged(_model);

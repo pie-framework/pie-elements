@@ -9,6 +9,7 @@ export default {
     backgroundImage: {
       settings: true,
       label: 'Background Image',
+      enabled: true
     },
     rationale: {
       settings: true,
