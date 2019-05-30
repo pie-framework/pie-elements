@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 
 export const RubricType = PropTypes.shape({
-  maxPoints: PropTypes.number.isRequired,
+  maxPoints: PropTypes.number,
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string)
 });
@@ -39,28 +39,31 @@ class Rubric extends React.Component {
 
   render() {
     const { value, classes } = this.props;
-    const points = value.points;
-    return (
-      <div className={classes.root}>
-        <Link href={this.dudUrl} onClick={this.toggleRubric}>
-        {this.state.linkPrefix} Rubric
-        </Link>
-        <Collapse in={this.state.rubricOpen} timeout="auto">
-          <List component="nav">
-            {points.map((desc,index) => (
-                  <ListItem key={index}>
-                    <ListItemText className={classes.rubricCol} primary={`${index} PTS`} />
-                    <ListItemText 
-                      primary={<div dangerouslySetInnerHTML={{ __html: desc }}/>}
-                    />
-                  </ListItem>
-                ))}
-          </List>
-        </Collapse>
+    if (value && value.points) {
+      const points = value.points;  
+      return (
+        <div className={classes.root}>
+          <Link href={this.dudUrl} onClick={this.toggleRubric}>
+          {this.state.linkPrefix} Rubric
+          </Link>
+          <Collapse in={this.state.rubricOpen} timeout="auto">
+            <List component="nav">
+              {points.map((desc,index) => (
+                    <ListItem key={index}>
+                      <ListItemText className={classes.rubricCol} primary={`${index} PTS`} />
+                      <ListItemText 
+                        primary={<div dangerouslySetInnerHTML={{ __html: desc }}/>}
+                      />
+                    </ListItem>
+                  ))}
+            </List>
+          </Collapse>
 
-    </div>
-     
-    )
+      </div>
+      )
+    } else {
+      return null;
+    } 
   }
 }
 
