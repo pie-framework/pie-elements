@@ -1,0 +1,8 @@
+{
+  "name": "@pie-element/rubric-controller",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  }
+}
