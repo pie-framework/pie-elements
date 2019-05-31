@@ -267,6 +267,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     <MathToolbar
       additionalKeys={Array []}
       allowAnswerBlock={true}
+      autoFocus={false}
       classNames={
         Object {
           "editor": "GeneralConfigBlock-responseEditor-9",

@@ -1283,5 +1283,20 @@
     "committerDate": "2019-05-14 16:14:26 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.1.2"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "add outcome function to controller",
+    "merge": null,
+    "header": "feat(math-inline): add outcome function to controller",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ce6b1bb1d2160dad8f6dcc4beb0ca655fa6f10bd",
+    "gitTags": "",
+    "committerDate": "2019-05-22 12:23:24 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.2.0"
   }
 ]
