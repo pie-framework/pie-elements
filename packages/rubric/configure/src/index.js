@@ -19,6 +19,7 @@ export default class RubricElement extends HTMLElement {
 
   onModelChanged(m) {
     this._model = m;
+    this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 

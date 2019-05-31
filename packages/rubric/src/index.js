@@ -1,10 +1,6 @@
-import {
-  ModelUpdatedEvent,
-
-} from '@pie-framework/pie-configure-events';
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import Rubric from './main';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import debug from 'debug';
 
 
@@ -23,7 +19,7 @@ export default class RubricRender extends HTMLElement {
 
   onModelChanged(m) {
     this._model = m;
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+    this._render();
   }
 
   connectedCallback() {
@@ -31,6 +27,11 @@ export default class RubricRender extends HTMLElement {
   }
 
   _render() {
-    this.innerHTML = `hello world`;
+    if (this._model) {
+      const el = (
+        <Rubric value={this._model}/>
+      );
+      ReactDOM.render(el, this);
+    }
   }
 }
