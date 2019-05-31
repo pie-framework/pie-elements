@@ -16,18 +16,21 @@ jest.mock('@pie-lib/config-ui', () => ({
 const model = () => ({
   prompt: 'This is the question prompt',
   imageUrl: '',
-  shapes: [
-    {
-      id: '1',
-      correct: true
-    },
-    {
-      id: '2'
-    },
-    {
-      id: '3'
-    }
-  ],
+  shapes: {
+    rectangles: [
+      {
+        id: '1',
+        correct: true
+      },
+      {
+        id: '2'
+      },
+      {
+        id: '3'
+      }
+    ],
+    polygons: []
+  },
   dimensions: {
     height: 0,
     width: 0
@@ -95,12 +98,12 @@ describe('index', () => {
 
     describe('undoShape', () => {
       it('removes the latest shape', () => {
-        const shapes = initialModel.shapes;
+        const shapes = initialModel.shapes.rectangles;
         const newShapes = shapes.slice(0, shapes.length - 1);
         el.onUpdateShapes(newShapes);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: newShapes }),
+          expect.objectContaining({ shapes: { polygons: [], rectangles: newShapes } }),
         );
       });
     });
@@ -110,7 +113,7 @@ describe('index', () => {
         el.onUpdateShapes([]);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: [] }),
+          expect.objectContaining({ shapes: { polygons: [], rectangles: [] } }),
         );
       });
     });
@@ -177,11 +180,11 @@ describe('index', () => {
 
     describe('onUpdateShapes', () => {
       it('changes the shapes', () => {
-        const shapes = [...initialModel.shapes, {id: '2'}];
+        const shapes = [...initialModel.shapes.rectangles, { id: '2' }];
         el.onUpdateShapes(shapes);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({shapes})
+          expect.objectContaining({ shapes: { polygons: [], rectangles: shapes } }),
         );
       });
     });
