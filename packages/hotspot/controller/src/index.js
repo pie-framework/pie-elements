@@ -12,7 +12,9 @@ const getCorrectResponse = (choices) => choices
   .sort();
 
 const isResponseCorrect = (question, session) => {
-  let correctResponse = getCorrectResponse(question.shapes);
+  const { shapes: { rectangles, polygons } } = question;
+  const choices = [...rectangles, ...polygons];
+  let correctResponse = getCorrectResponse(choices);
 
   if (session.answers.length) {
     return isEqual((session.answers || []).sort(), correctResponse);
@@ -77,7 +79,7 @@ export const createDefaultModel = (model = {}) =>
 
 const getScore = (config, session, env) => {
   const { answers } = session;
-  const { shapes } = config;
+  const { shapes: { rectangles, polygons } } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
   if (!partialScoringEnabled) {
@@ -86,7 +88,11 @@ const getScore = (config, session, env) => {
 
   let correctAnswers = 0;
 
-  shapes.forEach(shape => {
+  console.log('Rectangles: ', rectangles);
+  console.log('polygons: ', polygons);
+
+  const choices = [...rectangles, ...polygons];
+  choices.forEach(shape => {
     const selected = answers.filter(answer => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;
     const correctlyUnselected = !shape.correct && !selected;
@@ -96,7 +102,7 @@ const getScore = (config, session, env) => {
     }
   });
 
-  const str = (correctAnswers / shapes.length).toFixed(2);
+  const str = (correctAnswers / choices.length).toFixed(2);
   return parseFloat(str);
 };
 
