@@ -16,7 +16,7 @@ export interface HotspotPie extends PieModel {
   imageUrl?: string;
 
   /** The shapes/hotspots of the question */
-  shapes: Shape[];
+  shapes: Shape;
 
   /**  Indicates if the item supports multiple correct answers */
   multipleCorrect: boolean;
