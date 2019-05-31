@@ -28,5 +28,20 @@
     "committerDate": "2019-05-11 17:44:54 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "make partial scoring work [ch1621]",
+    "merge": null,
+    "header": "fix: make partial scoring work [ch1621]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "313b602bdab0f68b66d47bc05a5ec7b946989654",
+    "gitTags": "",
+    "committerDate": "2019-05-21 17:34:36 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@1.1.1"
   }
 ]

@@ -115,6 +115,26 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const outcome = (question, session, env) => {
+  return new Promise((resolve) => {
+    if (env.mode !== 'evaluate') {
+      resolve({ score: undefined, completed: undefined });
+    } else {
+      const correctness = getCorrectness(
+        question,
+        env,
+        session
+      );
+
+      const out = {
+        score: correctness.score,
+      };
+
+      resolve(out);
+    }
+  });
+};
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(

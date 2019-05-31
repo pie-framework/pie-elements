@@ -33,5 +33,20 @@
     "committerDate": "2019-05-11 17:44:54 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Handle the way model is changed from config layout [ch1621]",
+    "merge": null,
+    "header": "fix: Handle the way model is changed from config layout [ch1621]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f979d05a14aec53066ee1a099783e7efc388563",
+    "gitTags": "",
+    "committerDate": "2019-05-16 20:51:05 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.0.1"
   }
 ]

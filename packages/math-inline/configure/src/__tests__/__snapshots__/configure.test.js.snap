@@ -265,7 +265,6 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       RESPONSE TEMPLATE
     </WithStyles(WithFormControlContext(InputLabel))>
     <MathToolbar
-      additionalKeys={Array []}
       allowAnswerBlock={true}
       classNames={
         Object {

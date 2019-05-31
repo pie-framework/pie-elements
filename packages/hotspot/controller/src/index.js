@@ -1,5 +1,7 @@
 import debug from 'debug';
 import isEqual from 'lodash/isEqual';
+import { partialScoring } from '@pie-lib/controller-utils';
+
 import defaults from './defaults';
 
 const log = debug('pie-elements:hotspot:controller');
@@ -14,6 +16,8 @@ const isResponseCorrect = (question, session) => {
 
   if (session.answers.length) {
     return isEqual((session.answers || []).sort(), correctResponse);
+  } else if (!correctResponse.length) {
+    return true;
   }
   return false;
 };
@@ -28,6 +32,7 @@ export function model(question, session, env) {
     maxImageWidth,
     multipleCorrect,
     outlineColor,
+    partialScoring,
     prompt,
     shapes
   } = question;
@@ -43,6 +48,7 @@ export function model(question, session, env) {
       maxImageHeight,
       maxImageWidth,
       multipleCorrect,
+      partialScoring,
       prompt,
       shapes,
       responseCorrect:
@@ -69,11 +75,12 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-const getScore = (config, session) => {
+const getScore = (config, session, env) => {
   const { answers } = session;
-  const { partialScoring, shapes } = config;
+  const { shapes } = config;
+  const partialScoringEnabled = partialScoring.enabled(config, env);
 
-  if (!partialScoring) {
+  if (!partialScoringEnabled) {
     return isResponseCorrect(config, session) ? 1 : 0;
   }
 
@@ -93,12 +100,12 @@ const getScore = (config, session) => {
   return parseFloat(str);
 };
 
-export function outcome(config, session) {
+export function outcome(config, session, env) {
   return new Promise(resolve => {
     log('outcome...');
 
     if (session.answers) {
-      const score = getScore(config, session);
+      const score = getScore(config, session, env);
       resolve({ score });
     }
   });

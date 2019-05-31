@@ -118,5 +118,20 @@
     "committerDate": "2019-04-10 16:40:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added rationale support.",
+    "merge": null,
+    "header": "feat: added rationale support.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3311b332667d0d293d4b2df088278862bafc1821",
+    "gitTags": "",
+    "committerDate": "2019-05-20 11:54:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@1.3.0"
   }
 ]
