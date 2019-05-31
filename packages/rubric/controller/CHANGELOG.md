@@ -5,4 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.0.1 (2019-05-31)
 
-**Note:** Version bump only for package @pie-element/drawing-response
+**Note:** Version bump only for package @pie-element/rubric-controller
