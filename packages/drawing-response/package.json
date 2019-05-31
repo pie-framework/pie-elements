@@ -1,0 +1,14 @@
+{
+  "name": "@pie-element/drawing-response",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "pie-framework/pie-elements",
+  "publishConfig": {
+    "access": "public"
+  },
+  "pie": {
+    "element": "@pie-ui/drawing-response"
+  },
+  "author": "pie framework developers",
+  "license": "ISC"
+}
