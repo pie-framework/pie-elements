@@ -3,7 +3,60 @@ exports.model = (id, element) => ({
   element,
   prompt: 'This is the question prompt',
   imageUrl: '',
-  shapes: [],
+  shapes: {
+    rectangles: [],
+    polygons: [{
+      correct: true,
+      id: 'polygon1',
+      points: [
+        {
+          x: 23,
+          y: 20
+        },
+        {
+          x: 23,
+          y: 160
+        },
+        {
+          x: 70,
+          y: 93
+        },
+        {
+          x: 150,
+          y: 109
+        },
+        {
+          x: 170,
+          y: 139
+        },
+        {
+          x: 150,
+          y: 93
+        }
+      ]
+    }, {
+      correct: false,
+      id: 'polygon2',
+      points: [
+        {
+          x: 26,
+          y: 172
+        },
+        {
+          x: 153,
+          y: 136
+        },
+        {
+          x: 140,
+          y: 188
+        },
+        {
+          x: 111,
+          y: 188
+        },
+      ]
+    }]
+  },
   multipleCorrect: true,
   partialScoring: false,
   dimensions: {
