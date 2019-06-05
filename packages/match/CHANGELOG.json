@@ -663,5 +663,35 @@
     "committerDate": "2019-05-14 16:14:26 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.2.0"
+  },
+  {
+    "type": "chore",
+    "scope": "latest-version",
+    "subject": "pushing to release",
+    "merge": null,
+    "header": "chore(latest-version): pushing to release",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "64030ba2c7c18d20381b6a0f5caaff19f1e5e959",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-06 01:31:17 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.2.2"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the versions",
+    "merge": null,
+    "header": "chore(version): bumped the versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12b141d884c66a15d23c8cbb34be820a422d7332",
+    "gitTags": " (origin/feat/mask-markup-elements)",
+    "committerDate": "2019-06-06 01:15:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.2.2"
   }
 ]
