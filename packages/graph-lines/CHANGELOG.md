@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.1.2...@pie-element/graph-lines@2.2.0) (2019-06-05)
+
+
+### Features
+
+* **mask-markup-elements:** most of the work for the 3 new elements: inline-dropdown, explicit-constructed-response and drag-in-the-blank ([67f3c3d](https://github.com/pie-framework/pie-elements/commit/67f3c3d))
+
+
+
+
+
 ## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.1.1...@pie-element/graph-lines@2.1.2) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/graph-lines

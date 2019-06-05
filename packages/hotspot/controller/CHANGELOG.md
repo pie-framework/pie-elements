@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.1.3...@pie-element/hotspot-controller@1.2.0) (2019-06-05)
+
+
+### Features
+
+* add support for polygons  ([#246](https://github.com/pie-framework/pie-elements/issues/246)) ([871c5a6](https://github.com/pie-framework/pie-elements/commit/871c5a6))
+
+
+
+
+
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.1.2...@pie-element/hotspot-controller@1.1.3) (2019-05-24)
 
 **Note:** Version bump only for package @pie-element/hotspot-controller
