@@ -74,28 +74,33 @@ export class AlternateResponses extends React.Component {
   };
 
   onChoiceChanged = (choice, key) => {
-    if (choice && prepareVal(choice.label) !== '') {
-      const { onChange } = this.props;
-      const { choices } = this.state;
-      const sectionChoices = choices[key];
-      const newChoices = (sectionChoices || []).map(c => {
-        if (c.id === choice.id) {
-          return choice;
-        }
+    const { onChange } = this.props;
+    const { choices } = this.state;
+    const sectionChoices = (choices[key] || []);
 
-        return c;
-      });
-      const isNew = !newChoices.find(c => c.id === choice.id);
+    const isNew = !sectionChoices.find(c => c.id === choice.id);
 
-      if (isNew) {
-        newChoices.push(choice);
+    const newChoices = sectionChoices.reduce((arr, c) => {
+      const newVal = c.id === choice.id ? choice : c;
+      const isEmpty = newVal && prepareVal(newVal.label) === '';
+
+      if (isEmpty) {
+        return arr;
       }
 
-      onChange({
-        ...choices,
-        [key]: newChoices
-      });
+      arr.push(newVal);
+
+      return arr;
+    }, []);
+
+    if (isNew) {
+      newChoices.push(choice);
     }
+
+    onChange({
+      ...choices,
+      [key]: newChoices
+    });
   };
 
   onSectionSelect = (choice, key) => {
@@ -103,10 +108,12 @@ export class AlternateResponses extends React.Component {
     const { choices, values } = this.state;
 
     if (choices[key] && choices[key].length > 1) {
-      onChange({
-        ...choices,
-        [key]: [choices[key][0]]
-      });
+      if (!choice) {
+        onChange({
+          ...choices,
+          [key]: [choices[key][0]]
+        });
+      }
     } else {
       this.setState({
         choices: {

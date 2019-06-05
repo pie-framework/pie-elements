@@ -78,8 +78,11 @@ const getScore = (config, session) => {
   const correctCount = reduce(config.choices, (total, respArea, key) => {
     const chosenValue = session.value[key];
     const correctChoice = find(respArea, c => isCorrect(c));
+    const correctAlternate = config.alternateResponse &&
+      config.alternateResponse[key] &&
+      find(config.alternateResponse[key], id => id === chosenValue);
 
-    if (correctChoice.value !== chosenValue) {
+    if (correctChoice.value !== chosenValue && !correctAlternate) {
       return total - 1;
     }
 

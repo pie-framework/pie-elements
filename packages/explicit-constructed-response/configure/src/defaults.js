@@ -4,7 +4,7 @@ export default {
     mode: 'gather',
     prompt: 'Use the inputs to complete the sentence',
     shuffle: true,
-    markup: '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>',
+    markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
     choices: {
       0: [
         {

@@ -11,5 +11,8 @@ exports.model = (id, element) => ({
     1: [choice('over ', '0', true), choice('under ', '1'), choice('across ', '2')],
     2: [choice('moon ', '0', true), choice('sun ', '1'), choice('house ', '2')]
   },
+  alternateResponse: {
+    2: ['3']
+  },
   prompt: 'Use the dropdowns to complete the sentence'
 });

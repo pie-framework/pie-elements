@@ -1,5 +1,6 @@
 import React from 'react';
 import MoreVert from '@material-ui/icons/MoreVert';
+import Delete from '@material-ui/icons/Delete';
 import { DragSource } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -22,7 +23,7 @@ export const BlankContent = withStyles(theme => ({
   },
   disabled: {}
 }))(props => {
-  const { connectDragSource, choice, onClick } = props;
+  const { connectDragSource, choice, onClick, onRemoveChoice } = props;
 
   return connectDragSource(
     <div
@@ -37,7 +38,7 @@ export const BlankContent = withStyles(theme => ({
         borderRadius: '3px',
         overflow: 'hidden',
         position: 'relative',
-        padding: '8px 8px 8px 35px'
+        padding: '8px 35px 8px 35px'
       }}
       onClick={onClick}
     >
@@ -54,6 +55,16 @@ export const BlankContent = withStyles(theme => ({
         dangerouslySetInnerHTML={{
           __html: choice.value
         }}
+      />
+      <Delete
+        style={{
+          position: 'absolute',
+          top: '6px',
+          right: '0',
+          color: '#9B9B9B',
+          zIndex: 2
+        }}
+        onMouseDown={onRemoveChoice}
       />
     </div>
   );

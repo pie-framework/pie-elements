@@ -3,8 +3,7 @@ const createElementFromHTML = htmlString => {
 
   div.innerHTML = htmlString.trim();
 
-  // Change this to div.childNodes to support multiple top-level nodes
-  return div.firstChild;
+  return div;
 };
 
 export const processMarkup = markup => {
@@ -23,7 +22,7 @@ export const processMarkup = markup => {
   });
 
   return {
-    markup: slateMarkup.outerHTML,
+    markup: slateMarkup.innerHTML,
     choices: choices
   };
 };

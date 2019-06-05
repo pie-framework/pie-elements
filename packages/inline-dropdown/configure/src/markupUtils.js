@@ -3,8 +3,7 @@ const createElementFromHTML = htmlString => {
 
   div.innerHTML = htmlString.trim();
 
-  // Change this to div.childNodes to support multiple top-level nodes
-  return div.firstChild;
+  return div;
 };
 
 export const processMarkup = markup => {
@@ -14,7 +13,6 @@ export const processMarkup = markup => {
 
   const getMenuItem = (el, correctId) => {
     const innerHTML = el.innerHTML && el.innerHTML.replace(/&nbsp;/g, ' ').trim();
-    // const innerHTML = el.textContent && el.textContent.replace(/&nbsp;/g, ' ').trim();
 
     return {
       label: innerHTML,
@@ -35,7 +33,7 @@ export const processMarkup = markup => {
   });
 
   return {
-    markup: slateMarkup.outerHTML,
+    markup: slateMarkup.innerHTML,
     choices: choices
   };
 };

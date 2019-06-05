@@ -4,8 +4,10 @@ import isEqual from 'lodash/isEqual';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
+import Delete from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -19,6 +21,13 @@ const styles = theme => ({
       width: '100%'
     }
   },
+  choice: {
+    flex: '1',
+    marginRight: '20px'
+  },
+  deleteBtn: {
+    fill: 'gray'
+  },
   selectContainer: {
     alignItems: 'center',
     display: 'flex',
@@ -26,6 +35,32 @@ const styles = theme => ({
     width: '100%'
   }
 });
+
+const Choice = ({ classes, markup, onChange, onDelete }) => {
+  return (
+    <div
+      style={{
+        alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-between'
+      }}
+    >
+      <EditableHtml
+        className={classes.choice}
+        markup={markup}
+        onChange={onChange}
+        disableUnderline
+      />
+      <IconButton
+        aria-label="delete"
+        className={classes.deleteBtn}
+        onClick={onDelete}
+      >
+        <Delete />
+      </IconButton>
+    </div>
+  )
+};
 
 export class AlternateSection extends React.Component {
   static propTypes = {
@@ -87,6 +122,15 @@ export class AlternateSection extends React.Component {
     });
   };
 
+  onRemoveChoice = choice => {
+    const { choiceChanged } = this.props;
+
+    choiceChanged({
+      ...choice,
+      label: ''
+    });
+  };
+
   render() {
     const {
       classes,
@@ -131,11 +175,12 @@ export class AlternateSection extends React.Component {
           {
             choices &&
             choices.map((c, index) => index > 0 && (
-              <EditableHtml
+              <Choice
                 key={index}
-                className={classes.prompt}
+                classes={classes}
                 markup={c.label}
                 onChange={val => this.onChoiceChanged(c, val)}
+                onDelete={() => this.onRemoveChoice(c)}
                 disableUnderline
               />
             ))

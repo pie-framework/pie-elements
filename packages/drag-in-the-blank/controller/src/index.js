@@ -4,14 +4,21 @@ import { partialScoring } from '@pie-lib/controller-utils';
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const out = {
-      disabled: env.mode !== 'gather',
-      mode: env.mode,
-      prompt: question.prompt,
-      markup: question.markup,
-      choices: question.choices,
-      correctResponse: question.correctResponse,
+    const feedback = env.mode !== 'evaluate'
+      ? {}
+      : question.choices.reduce((obj, c) => {
+        if (session.value && question.correctResponse[c.id]) {
+          obj[c.id] = session.value[c.id] === question.correctResponse[c.id];
+        }
 
+        return obj;
+      }, {});
+
+    const out = {
+      ...question,
+      feedback,
+      mode: env.mode,
+      disabled: env.mode !== 'gather',
       responseCorrect:
         env.mode === 'evaluate'
           ? isResponseCorrect(question, session)

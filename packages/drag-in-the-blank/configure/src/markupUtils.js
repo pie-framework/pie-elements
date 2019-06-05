@@ -3,8 +3,7 @@ const createElementFromHTML = htmlString => {
 
   div.innerHTML = htmlString.trim();
 
-  // Change this to div.childNodes to support multiple top-level nodes
-  return div.firstChild;
+  return div;
 };
 
 export const processMarkup = markup => {
@@ -26,7 +25,7 @@ export const processMarkup = markup => {
   });
 
   return {
-    markup: slateMarkup.outerHTML,
+    markup: slateMarkup.innerHTML,
     choices: choices,
     correctResponse: choices.reduce((obj, c, index) => {
       if (c.value) {
@@ -41,6 +40,8 @@ export const processMarkup = markup => {
 const REGEX = /\{\{(\d?)\}\}/g;
 
 export const createSlateMarkup = (markup, choices, correctResponse) => {
+  let index = 0;
+
   return markup.replace(REGEX, (match, g) => {
     const correctId = correctResponse[g];
     const correctChoice = choices.find(c => c.id === correctId);
@@ -49,6 +50,6 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
       return '';
     }
 
-    return `<span data-type="drag_in_the_blank" data-id="${correctChoice.id}" data-value="${correctChoice.value}"></span>`;
+    return `<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${correctChoice.value}"></span>`;
   });
 };

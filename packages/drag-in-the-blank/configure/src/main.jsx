@@ -127,7 +127,7 @@ export class Main extends React.Component {
               responseAreaProps={{
                 type: 'drag-in-the-blank',
                 options: {
-                  duplicates: false
+                  duplicates: model.duplicates
                 }
               }}
               className={classes.markup}
@@ -137,12 +137,9 @@ export class Main extends React.Component {
               nonEmpty={!prompt.settings}
               disableUnderline
             />
-            <Typography className={classes.text}>
-              Define Alternates
-            </Typography>
             <Choices
               model={model}
-              duplicates={false}
+              duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
             />
           </div>

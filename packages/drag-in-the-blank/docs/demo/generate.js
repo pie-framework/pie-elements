@@ -22,5 +22,6 @@ exports.model = (id, element) => ({
     1: '1',
     2: '2'
   },
+  duplicates: false,
   prompt: 'Use the dropdowns to complete the sentence'
 });

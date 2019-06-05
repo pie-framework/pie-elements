@@ -39,11 +39,13 @@ export default {
         id: '7'
       }
     ],
+    choicesPosition: 'below',
     correctResponse: {
       0: '0',
       1: '1',
       2: '2'
-    }
+    },
+    duplicates: true
   },
   configuration: {
     prompt: {

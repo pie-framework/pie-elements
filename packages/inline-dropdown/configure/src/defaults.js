@@ -57,7 +57,10 @@ export default {
           correct: false
         }
       ]
-    }
+    },
+    alternateResponse: {
+      2: ['3']
+    },
   },
   configuration: {
     prompt: {
