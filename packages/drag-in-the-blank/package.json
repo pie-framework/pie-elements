@@ -1,0 +1,21 @@
+{
+  "name": "@pie-element/drag-in-the-blank",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/drag-in-the-blank": "^1.2.1"
+  },
+  "pie": {
+    "element": "@pie-ui/drag-in-the-blank"
+  },
+  "author": "",
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+}

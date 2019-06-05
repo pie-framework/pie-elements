@@ -75,12 +75,14 @@ const isCorrect = c => c.correct === true;
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
 
-  const chosen = c => !!find(session.value, v => v === c.value);
+  const correctCount = reduce(config.choices, (total, respArea, key) => {
+    const chosenValue = session.value[key];
+    const correctChoice = find(respArea, c => isCorrect(c));
+    const correctAlternate = config.alternateResponse &&
+      config.alternateResponse[key] &&
+      find(config.alternateResponse[key], id => id === chosenValue);
 
-  const correctCount = reduce(config.choices, (total, choice) => {
-    const correctChoice = find(choice, isCorrect);
-
-    if (!chosen(correctChoice)) {
+    if (correctChoice.value !== chosenValue && !correctAlternate) {
       return total - 1;
     }
 
@@ -106,7 +108,8 @@ const getScore = (config, session) => {
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    // const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = true;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
