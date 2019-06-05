@@ -2,7 +2,10 @@ export default {
   model: {
     prompt: 'This is the question prompt',
     imageUrl: '',
-    shapes: [],
+    shapes: {
+      rectangles: [],
+      polygons: []
+    },
     multipleCorrect: true,
     partialScoring: false,
     dimensions: {

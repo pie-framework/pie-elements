@@ -5,6 +5,12 @@ jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
 }));
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  partialScoring: {
+    enabled: config => config.partialScoring
+  }
+}));
+
 describe('controller', () => {
   let result, question, session, env;
 
@@ -18,18 +24,26 @@ describe('controller', () => {
       },
       outlineColor: 'blue',
       hotspotColor: 'lightblue',
-      shapes: [
-        {
-          id: '1',
-          correct: true
-        },
-        {
-          id: '2',
-        },
-        {
-          id: '3',
-        }
-      ],
+      shapes: {
+        rectangles: [
+          {
+            id: '1',
+            correct: true
+          },
+          {
+            id: '2',
+          },
+          {
+            id: '3',
+          }
+        ],
+        polygons: [
+          {
+            id: '4',
+            correct: true
+          }
+        ]
+      },
       multipleCorrect: true,
       partialScoring: false
     };
@@ -47,51 +61,55 @@ describe('controller', () => {
     it('returns score of 1', async () => {
       const result = await outcome(
         question,
-        { answers: [{ id: '1' }] }
+        { answers: [{ id: '1' }, { id: '4' }] }
       );
       expect(result.score).toEqual(1);
     });
 
     describe('partial scoring', () => {
       beforeEach(() => {
-        const shapes = question.shapes.concat({
-          id: '4',
+        const rectangles = question.shapes.rectangles.concat({
+          id: '5',
           correct: true
         });
         question = {
           ...question,
           partialScoring: true,
-          shapes
+          shapes: {
+            ...question.shapes,
+            rectangles
+          }
         };
       });
-      it('returns a score of 0.25', async () => {
+      it('returns a score of 0.2', async () => {
+        console.log('Outcome question: ', question);
         const result = await outcome(
           question,
           { answers: [{ id: '2' }] }
         );
-        expect(result.score).toEqual(0.25);
+        expect(result.score).toEqual(0.2);
       });
 
-      it('returns a score of 0.5', async () => {
+      it('returns a score of 0.4', async () => {
         const result = await outcome(
           question,
-          { answers: [{ id: '2' }, { id: '4' }] }
+          { answers: [{ id: '2' }, { id: '5' }] }
         );
-        expect(result.score).toEqual(0.5);
+        expect(result.score).toEqual(0.4);
       });
 
-      it('returns a score of 0.75', async () => {
+      it('returns a score of 0.6', async () => {
         const result = await outcome(
           question,
-          { answers: [{ id: '4' }] }
+          { answers: [{ id: '5' }] }
         );
-        expect(result.score).toEqual(0.75);
+        expect(result.score).toEqual(0.6);
       });
 
       it('returns a score of 1', async () => {
         const result = await outcome(
           question,
-          { answers: [{ id: '1' }, { id: '4' }] }
+          { answers: [{ id: '1' }, { id: '4' }, { id: '5' }] }
         );
         expect(result.score).toEqual(1);
       });
@@ -135,11 +153,16 @@ describe('controller', () => {
       });
 
       it('returns shapes', () => {
-        expect(result.shapes).toEqual(
+        expect(result.shapes.rectangles).toEqual(
           expect.arrayContaining([
             { id: '1', correct: true },
             { id: '2' },
             { id: '3' }
+          ])
+        );
+        expect(result.shapes.polygons).toEqual(
+          expect.arrayContaining([
+            { id: '4', correct: true }
           ])
         );
       });
@@ -171,11 +194,16 @@ describe('controller', () => {
       });
 
       it('returns choices w/ correct', () => {
-        expect(result.shapes).toEqual(
+        expect(result.shapes.rectangles).toEqual(
           expect.arrayContaining([
             { id: '1', correct: true },
             { id: '2' },
             { id: '3' }
+          ])
+        );
+        expect(result.shapes.polygons).toEqual(
+          expect.arrayContaining([
+            { id: '4', correct: true }
           ])
         );
       });

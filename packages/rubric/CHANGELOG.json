@@ -1,0 +1,17 @@
+[
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "rubric interaction",
+    "merge": null,
+    "header": "feat: rubric interaction",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3cc2b6c45f137939c38681c82fb60724c6b4955c",
+    "gitTags": "",
+    "committerDate": "2019-05-29 17:32:36 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/rubric@1.1.0"
+  }
+]

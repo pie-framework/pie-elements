@@ -6,7 +6,9 @@ export const getCorrectResponse = (choices) => choices
   .sort();
 
 export const isResponseCorrect = (question, session) => {
-  const correctResponse = getCorrectResponse(question.shapes);
+  const { shapes: { rectangles, polygons } } = question;
+  const choices = [...rectangles, polygons];
+  const correctResponse = getCorrectResponse(choices);
 
   if (session.answers.length) {
     return isEqual((session.answers || []).sort(), correctResponse);

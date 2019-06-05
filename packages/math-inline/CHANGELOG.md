@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.1.1...@pie-element/math-inline@2.1.2) (2019-05-21)
+
+
+### Bug Fixes
+
+* **math-inline:** no longer show response index, until we support individual correctness ([02ba999](https://github.com/pie-framework/pie-elements/commit/02ba999))
+* Updated pie-schema and config-schema. ([e552800](https://github.com/pie-framework/pie-elements/commit/e552800))
+
+
+
+
+
 ## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.1.0...@pie-element/math-inline@2.1.1) (2019-05-16)
 
 **Note:** Version bump only for package @pie-element/math-inline

@@ -101,7 +101,7 @@ class Root extends React.Component {
               onUpdateImageDimension={onUpdateImageDimension}
               onUpdateShapes={onUpdateShapes}
               onImageUpload={onImageUpload}
-              shapes={model.shapes}
+              shapes={model.shapes.rectangles}
             />
           </div>
         </layout.ConfigLayout>

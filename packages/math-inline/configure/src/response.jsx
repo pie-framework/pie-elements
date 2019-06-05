@@ -13,6 +13,9 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 
+// TODO once we support individual response correctness, we need to remove this constant
+const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
+
 const styles = theme => ({
   responseContainer: {
     marginTop: theme.spacing.unit * 2,
@@ -216,7 +219,7 @@ class Response extends React.Component {
   render() {
     const { classes, mode, defaultResponse, index, response } = this.props;
     const { showKeypad } = this.state;
-    const { validation, answer, alternates, allowDecimals, allowSpaces } = response;
+    const { validation, answer, alternates, allowDecimals = false, allowSpaces } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor
@@ -229,7 +232,7 @@ class Response extends React.Component {
       <Card className={classes.responseContainer} style={styles}>
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
-            <Typography className={classes.title} component="h2">Response {defaultResponse ? '' : index + 1}</Typography>
+            <Typography className={classes.title} component="h2">Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}</Typography>
             <InputContainer label="Validation" className={classes.selectContainer}>
               <Select
                 className={classes.select}
@@ -286,7 +289,7 @@ class Response extends React.Component {
               {validation === 'symbolic' && (
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}
-                  label="Allow Decimals"
+                  label="Allow Thousands Separators (Commas)"
                   control={
                     <Checkbox
                       checked={allowDecimals}
