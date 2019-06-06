@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.2...@pie-element/text-entry-configure@2.3.3) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
 ## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.1...@pie-element/text-entry-configure@2.3.2) (2019-06-05)
 
 **Note:** Version bump only for package @pie-element/text-entry-configure
