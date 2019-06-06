@@ -1,0 +1,22 @@
+{
+  "name": "@pie-element/graph-lines-configure",
+  "private": true,
+  "version": "2.1.1",
+  "description": "",
+  "main": "lib/index.js",
+  "author": "",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/config-ui": "^10.0.0",
+    "@pie-lib/editable-html": "^7.2.0",
+    "classnames": "^2.2.5",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "license": "ISC"
+}

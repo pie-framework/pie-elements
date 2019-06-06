@@ -290,6 +290,7 @@
     "id",
     "layout",
     "prompt",
+    "rationale",
     "rows"
   ],
   "definitions": {

@@ -9,6 +9,7 @@ export { ExtendedTextEntryPie, ExtendedTextEntryConfigure } from './pie/extended
 export { SelectTextPie, SelectTextConfigure } from './pie/select-text';
 export { FunctionEntryPie, FunctionEntryConfigure } from './pie/function-entry';
 export { GraphLinesPie, GraphLinesConfigure } from './pie/graph-lines';
+export { GraphingPie, GraphingConfigure } from './pie/graphing';
 export { NumberLinePie, NumberLineConfigure } from './pie/number-line';
 export { MathInlinePie, MathInlineConfigure } from './pie/math-inline';
 export { PlacementOrderingPie, PlacementOrderingConfigure } from './pie/placement-ordering';
