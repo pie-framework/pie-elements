@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the versions",
+    "merge": null,
+    "header": "chore(version): bumped the versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12b141d884c66a15d23c8cbb34be820a422d7332",
+    "gitTags": " (origin/feat/mask-markup-elements)",
+    "committerDate": "2019-06-06 01:15:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "most of the work for the 3 new elements: inline-dropdown, explicit-constructed-response and drag-in-the-blank",
+    "merge": null,
+    "header": "feat(mask-markup-elements): most of the work for the 3 new elements: inline-dropdown, explicit-constructed-response and drag-in-the-blank",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "67f3c3d21019b89fb2924abfabdb19531d3f6168",
+    "gitTags": "",
+    "committerDate": "2019-05-16 15:55:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.1.0"
+  }
+]
