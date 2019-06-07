@@ -73,5 +73,20 @@
     "committerDate": "2019-05-31 14:03:05 -0400",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "add support for polygons  (#246)",
+    "merge": null,
+    "header": "feat: add support for polygons  (#246)",
+    "body": "* feat: add controller support for polygons\n\n* add tests for polygon\n\n* update Hotspot model",
+    "footer": null,
+    "notes": [],
+    "hash": "871c5a6f033f36b2d172140cbbc0f71d59c8f969",
+    "gitTags": "",
+    "committerDate": "2019-05-31 14:03:05 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@1.2.0"
   }
 ]
