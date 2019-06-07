@@ -2,7 +2,7 @@
   "name": "@pie-element/categorize-configure",
   "private": true,
   "main": "lib/index.js",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "",
   "scripts": {},
   "author": "pie framework developers",

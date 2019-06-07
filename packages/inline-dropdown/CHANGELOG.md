@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.3.1...@pie-element/inline-dropdown@1.4.0) (2019-06-07)
+
+
+### Features
+
+* **mask-markup-elements:** enabled partial scoring for the 3 elements and added a controller to the match-list ([41e210e](https://github.com/pie-framework/pie-elements/commit/41e210e))
+
+
+
+
+
 ## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.3.0...@pie-element/inline-dropdown@1.3.1) (2019-06-06)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

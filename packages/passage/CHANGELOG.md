@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.7...@pie-element/passage@1.2.8) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
 ## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.6...@pie-element/passage@1.2.7) (2019-06-06)
 
 **Note:** Version bump only for package @pie-element/passage
