@@ -513,5 +513,20 @@
     "committerDate": "2019-06-06 01:15:50 +0300",
     "isTagged": true,
     "tag": "@pie-element/match-configure@2.2.2"
+  },
+  {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3bb9f402d900f3a0349537dfd01ce558c526cb55",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-07 23:29:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-configure@2.2.4"
   }
 ]
