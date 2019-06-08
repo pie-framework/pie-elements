@@ -88,9 +88,6 @@ const getScore = (config, session, env) => {
 
   let correctAnswers = 0;
 
-  console.log('Rectangles: ', rectangles);
-  console.log('polygons: ', polygons);
-
   const choices = [...rectangles, ...polygons];
   choices.forEach(shape => {
     const selected = answers.filter(answer => answer.id === shape.id)[0];
