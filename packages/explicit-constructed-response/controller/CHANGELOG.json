@@ -28,5 +28,20 @@
     "committerDate": "2019-05-16 15:55:08 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "enabled partial scoring for the 3 elements and added a controller to the match-list",
+    "merge": null,
+    "header": "feat(mask-markup-elements): enabled partial scoring for the 3 elements and added a controller to the match-list",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "41e210ebc6d761041efb1d632a1879f35b1487a1",
+    "gitTags": "",
+    "committerDate": "2019-06-07 23:05:19 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.2.0"
   }
 ]
