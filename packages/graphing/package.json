@@ -1,17 +1,16 @@
 {
-  "name": "@pie-element/graph-lines",
+  "name": "@pie-element/graphing",
   "publishConfig": {
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.1.1",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/graph-lines": "^2.0.5"
   },
   "author": "",
   "license": "ISC",

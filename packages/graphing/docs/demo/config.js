@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'graph-lines': '../..'
+    'graphing': '../..'
   },
-  models: [model('1', 'graph-lines')]
+  models: [model('1', 'graphing')]
 };
