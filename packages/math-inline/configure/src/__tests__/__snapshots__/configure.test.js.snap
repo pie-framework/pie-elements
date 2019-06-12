@@ -265,9 +265,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       RESPONSE TEMPLATE
     </WithStyles(WithFormControlContext(InputLabel))>
     <MathToolbar
-      additionalKeys={Array []}
       allowAnswerBlock={true}
-      autoFocus={false}
       classNames={
         Object {
           "editor": "GeneralConfigBlock-responseEditor-9",
@@ -277,8 +275,6 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       controlledKeypad={true}
       keypadMode="everything"
       latex="\\\\embed{answerBlock}[r1] = \\\\embed{answerBlock}[r2] \\\\text{eggs}"
-      noDecimal={false}
-      onAnswerBlockAdd={[Function]}
       onChange={[Function]}
       onDone={[Function]}
       onFocus={[Function]}
