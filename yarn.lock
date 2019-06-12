@@ -1690,6 +1690,13 @@
   dependencies:
     jquery "^3.3.1"
 
+"@pie-framework/mathquill@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-0.11.0.tgz#a0a56945e593dbf5e812039eb2bb9b658ea7c2df"
+  integrity sha512-SCWZHaIf3edl4kYxxfjkYJpb15x43ShKE+ZmtaVaBYDMG5g6rnKk3BPpr0xU1ATspQfZVdkQoBgpCm0orDJKQw==
+  dependencies:
+    jquery "^3.3.1"
+
 "@pie-framework/pie-configure-events@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.2.0.tgz#b1a8dea620ac120fe768e4d6a624f40090d3f153"
