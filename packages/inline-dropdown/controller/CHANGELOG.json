@@ -118,5 +118,20 @@
     "committerDate": "2019-06-07 23:05:19 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-controller@1.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": "correct-responses",
+    "subject": "updated elements with showing correct responses when needed",
+    "merge": null,
+    "header": "feat(correct-responses): updated elements with showing correct responses when needed",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8ea0d12d4dd3cb1c847a6643ec57668bcd62bc51",
+    "gitTags": "",
+    "committerDate": "2019-06-12 19:51:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-controller@1.4.0"
   }
 ]
