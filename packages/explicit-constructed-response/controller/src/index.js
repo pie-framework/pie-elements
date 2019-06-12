@@ -26,6 +26,18 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
+const getFeedback = (answers, choices, key) => {
+  const correctAnswer = choices[0];
+
+  const answer = answers[key];
+
+  if (prepareVal(correctAnswer.label) === prepareVal(answer)) {
+    return 'correct';
+  }
+
+  return 'incorrect';
+};
+
 export function model(question, session, env) {
   return new Promise(resolve => {
     const defaultFeedback = Object.assign(
@@ -39,6 +51,11 @@ export function model(question, session, env) {
 
       return obj;
     }, {});
+    const feedback = env.mode === 'evaluate' ? reduce(question.choices, (obj, area, key) => {
+      obj[key] = getFeedback(session.value, area, key);
+
+      return obj;
+    }, {}) : {};
 
     const out = {
       disabled: env.mode !== 'gather',
@@ -46,6 +63,7 @@ export function model(question, session, env) {
       prompt: question.prompt,
       markup: question.markup,
       choices,
+      feedback,
 
       responseCorrect:
         env.mode === 'evaluate'
@@ -82,7 +100,7 @@ const getScore = (config, session) => {
 
   const str = (correctCount / maxScore).toFixed(2);
 
-  return parseFloat(str, 10);
+  return parseFloat(str);
 };
 
 /**
