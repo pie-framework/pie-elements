@@ -5,25 +5,29 @@ import find from 'lodash/find';
 import { isResponseCorrect } from './utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
-const prepareChoice = (mode, defaultFeedback) => choice => {
-  const out = {
+const prepareChoice = () => (key, choice) => {
+  return {
     label: choice.label,
     value: choice.value
   };
+};
 
-  if (mode === 'evaluate') {
-    out.correct = !!choice.correct;
+const getFeedback = (answers, alternateResponses, choices, key) => {
+  const correctAnswers = alternateResponses[key] || [];
 
-    const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
-
-    if (feedbackType === 'default') {
-      out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
-    } else if (feedbackType === 'custom') {
-      out.feedback = choice.feedback.value;
+  choices.forEach(choice => {
+    if (choice.correct) {
+      correctAnswers.push(choice.value);
     }
+  });
+
+  const answer = answers[key];
+
+  if (correctAnswers.indexOf(answer) >= 0) {
+    return 'correct';
   }
 
-  return out;
+  return 'incorrect';
 };
 
 export function model(question, session, env) {
@@ -35,10 +39,15 @@ export function model(question, session, env) {
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
     let choices = reduce(question.choices, (obj, area, key) => {
-      obj[key] = map(area, preparChoiceFn);
+      obj[key] = map(area, (choice) => preparChoiceFn(key, choice));
 
       return obj;
     }, {});
+    const feedback = env.mode === 'evaluate' ? reduce(question.choices, (obj, area, key) => {
+      obj[key] = getFeedback(session.value, question.alternateResponse, area, key);
+
+      return obj;
+    }, {}) : {};
 
     if (!question.lockChoiceOrder) {
       // eslint-disable-next-line no-console
@@ -59,6 +68,7 @@ export function model(question, session, env) {
       shuffle: !question.lockChoiceOrder,
       markup: question.markup,
       choices,
+      feedback,
 
       responseCorrect:
         env.mode === 'evaluate'

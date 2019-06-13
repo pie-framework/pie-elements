@@ -1,5 +1,10 @@
 import React from 'react';
-import { settings, layout, InputContainer } from '@pie-lib/config-ui';
+import {
+  settings,
+  layout,
+  InputContainer,
+  NumberTextField
+} from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +21,15 @@ class Root extends React.Component {
     const cType = `${type}Color`;
     onColorChanged(cType, color);
   }
+
+  handleOnUpdateImageDimensions = (value, type) => {
+    const { model: { dimensions }, onUpdateImageDimension } = this.props;
+    const newDimensions = {
+      ...dimensions,
+      [type]: value
+    };
+    onUpdateImageDimension(newDimensions);
+  };
 
   render() {
     const {
@@ -103,6 +117,35 @@ class Root extends React.Component {
               onImageUpload={onImageUpload}
               shapes={model.shapes.rectangles}
             />
+
+            {model.imageUrl && (
+              <div>
+                <Typography className={classes.label} variant="subheading">
+                  Image Dimensions
+                </Typography>
+
+                <div className={classes.dimensions}>
+                  <NumberTextField
+                    key="hotspot-manual-width"
+                    label="Width"
+                    value={model.dimensions.width}
+                    min={0}
+                    onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'width')}
+                    showErrorWhenOutsideRange
+                    className={classes.field}
+                  />
+                  <NumberTextField
+                    key="hotspot-manual-height"
+                    label="Height"
+                    value={model.dimensions.height}
+                    min={0}
+                    onChange={(e, value) => this.handleOnUpdateImageDimensions(value, 'height')}
+                    showErrorWhenOutsideRange
+                    className={classes.field}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </layout.ConfigLayout>
       </div>
@@ -117,6 +160,13 @@ const styles = theme => ({
   container: {
     display: 'flex',
     marginTop: theme.spacing.unit
+  },
+  dimensions: {
+    display: 'flex'
+  },
+  field: {
+    flex: 1,
+    width: '90%'
   },
   label: {
     marginTop: theme.spacing.unit * 4

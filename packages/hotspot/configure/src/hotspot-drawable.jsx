@@ -133,17 +133,16 @@ class Drawable extends React.Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { maxImageHeight, maxImageWidth, disableDrag } = this.props;
+    const { disableDrag } = this.props;
 
     const bounds = e.target.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
 
     const resizeValid = this.checkIfResizeValid(x, y);
-    const fitsContainer = y < maxImageHeight && x < maxImageWidth;
     const hasMinimumWidth = x > 150 && y > 150;
 
-    if (fitsContainer && resizeValid && hasMinimumWidth) {
+    if (resizeValid && hasMinimumWidth) {
       box.style.width = `${x}px`;
       box.style.height = `${y}px`;
 
@@ -183,41 +182,39 @@ class Drawable extends React.Component {
     const {
       classes,
       imageUrl,
+      dimensions: { height, width },
       hotspotColor,
-      maxImageHeight,
-      maxImageWidth,
       outlineColor,
       shapes
     } = this.props;
     const {
       stateShapes,
-      dimensions: { height, width },
-      isDrawing
+      isDrawing,
+      dimensions: { height: heightFromState, width: widthFromState }
     } = this.state;
     const shapesToUse = stateShapes || shapes;
 
     return (
       <div className={classes.base}>
-        {imageUrl ? (
+        {imageUrl && (
           <div className={classes.imageContainer}>
             <img
               className={classes.image}
-              height="auto"
               onLoad={this.handleOnImageLoad}
               ref={ref => { this.image = ref; }}
               src={imageUrl}
-              style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight }}
+              {...height && width ? { style: { height, width } } : { }}
             />
             <div ref={ref => { this.resize = ref; }} className={classes.resize} />
           </div>
-        ) : null}
+        )}
 
         <Stage
           className={classes.stage}
-          height={height}
+          height={heightFromState || height}
           onClick={this.handleOnStageClick}
           onContentMouseMove={this.handleMouseMove}
-          width={width}
+          width={widthFromState || width}
         >
           <Layer>
             {shapesToUse.map((shape, index) => (
@@ -276,11 +273,10 @@ const styles = () => ({
 Drawable.propTypes = {
   classes: PropTypes.object.isRequired,
   disableDrag: PropTypes.func.isRequired,
+  dimensions: PropTypes.object.isRequired,
   enableDrag: PropTypes.func.isRequired,
   imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
-  maxImageHeight: PropTypes.number.isRequired,
-  maxImageWidth: PropTypes.number.isRequired,
   multipleCorrect: PropTypes.bool.isRequired,
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
