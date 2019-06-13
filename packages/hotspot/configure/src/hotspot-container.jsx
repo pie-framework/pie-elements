@@ -5,6 +5,7 @@ import Help from '@material-ui/icons/Help';
 
 import Drawable from './hotspot-drawable';
 import Button from './button';
+import UploadControl from './upload-control';
 
 const isImage = (file) => {
   const imageType = /image.*/;
@@ -15,19 +16,8 @@ class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxImageWidth: 0,
-      maxImageHeight: 0,
       dragEnabled: true
     }
-  }
-
-  componentDidMount() {
-    const positionInfo = this.imageSection.getBoundingClientRect();
-    const { height, width } = positionInfo;
-    this.setState({
-      maxImageWidth: width - 20,
-      maxImageHeight: height - 20
-    })
   }
 
   handleFileRead = (file) => {
@@ -100,29 +90,10 @@ class Container extends Component {
     this.setState({ showTooltip: !showTooltip })
   };
 
-  renderUploadControl(label) {
-    const { classes } = this.props;
-
-    return (
-      <div>
-        <Button
-          label={label}
-          onClick={this.handleInputClick}
-        />
-        <input
-          accept="image/*"
-          className={classes.input}
-          onChange={this.handleUploadImage}
-          ref={ref => { this.input = ref; }}
-          type="file"
-        />
-      </div>
-    )
-  }
-
   render() {
     const {
       classes,
+      dimensions,
       hotspotColor,
       imageUrl,
       multipleCorrect,
@@ -134,8 +105,6 @@ class Container extends Component {
     const {
       dropzoneActive,
       dragEnabled,
-      maxImageHeight,
-      maxImageWidth,
       showTooltip
     } = this.state;
 
@@ -150,6 +119,16 @@ class Container extends Component {
              } : {}}
         >
           <div className={classes.toolbar}>
+            {imageUrl && (
+                <UploadControl
+                  classNameButton={classes.replaceButton}
+                  classNameSection={classes.replaceSection}
+                  label="Replace Image"
+                  onInputClick={this.handleInputClick}
+                  onUploadImage={this.handleUploadImage}
+                  setRef={(ref) => { this.input = ref; }}
+                />
+            )}
             <Button
               disabled={!shapes.length}
               onClick={this.handleUndo}
@@ -165,12 +144,11 @@ class Container extends Component {
           <div ref={ref => { this.imageSection = ref; }} className={classes.drawableHeight}>
             {imageUrl ? (
               <Drawable
+                dimensions={dimensions}
                 disableDrag={this.handleDisableDrag}
                 enableDrag={this.handleEnableDrag}
                 imageUrl={imageUrl}
                 hotspotColor={hotspotColor}
-                maxImageHeight={maxImageHeight}
-                maxImageWidth={maxImageWidth}
                 multipleCorrect={multipleCorrect}
                 onUpdateImageDimension={onUpdateImageDimension}
                 onUpdateShapes={onUpdateShapes}
@@ -181,35 +159,34 @@ class Container extends Component {
               <div className={`${classes.drawableHeight} ${classes.centered}`}>
                 <label>Drag and drop or upload image from computer</label>
                 <br />
-                {this.renderUploadControl('Upload Image')}
+                <UploadControl
+                  label="Upload Image"
+                  onInputClick={this.handleInputClick}
+                  onUploadImage={this.handleUploadImage}
+                  setRef={(ref) => { this.input = ref; }}
+                />
               </div>
             )}
           </div>
 
-          {imageUrl ? (
+          {imageUrl && (
             <div className={classes.tooltip}>
-              {showTooltip ? (
+              {showTooltip && (
                 <div className={classes.tooltipContent}>
                   <label>
                     Click, move mouse and click again to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
                   </label>
                   <div className={classes.tooltipArrow} />
                 </div>
-              ) : null}
+              )}
               <Help
                 className={classes.icon}
                 onMouseOut={this.toggleTooltip}
                 onMouseOver={this.toggleTooltip}
               />
             </div>
-          ) : null}
+          )}
         </div>
-
-        {imageUrl ? (
-          <div className={classes.replace}>
-            {this.renderUploadControl('Replace Image')}
-          </div>
-        ) : null}
       </div>
 
     );
@@ -244,12 +221,11 @@ const styles = theme => ({
     color: '#C1C1C1',
     padding: '5px 9px'
   },
-  input: {
-    display: 'none'
-  },
-  replace: {
+  replaceButton: {
     marginLeft: 0,
-    marginTop: 16
+  },
+  replaceSection: {
+    marginRight: 'auto'
   },
   toolbar: {
     backgroundColor: '#ECEDF1',
@@ -292,6 +268,7 @@ const styles = theme => ({
 
 Container.propTypes = {
   classes: PropTypes.object.isRequired,
+  dimensions: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   multipleCorrect: PropTypes.bool.isRequired,
