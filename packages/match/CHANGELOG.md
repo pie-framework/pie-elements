@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.5...@pie-element/match@2.3.0) (2019-06-13)
+
+
+### Features
+
+* **ui:** updated the ui ([2baa579](https://github.com/pie-framework/pie-elements/commit/2baa579))
+
+
+
+
+
 ## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.4...@pie-element/match@2.2.5) (2019-06-12)
 
 **Note:** Version bump only for package @pie-element/match

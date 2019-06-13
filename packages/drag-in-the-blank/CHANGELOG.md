@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.3.0...@pie-element/drag-in-the-blank@1.4.0) (2019-06-13)
+
+
+### Features
+
+* **ui:** updated the ui ([2baa579](https://github.com/pie-framework/pie-elements/commit/2baa579))
+
+
+
+
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.2.0...@pie-element/drag-in-the-blank@1.3.0) (2019-06-12)
 
 
