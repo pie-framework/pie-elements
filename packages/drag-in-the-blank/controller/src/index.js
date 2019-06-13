@@ -6,9 +6,9 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const feedback = env.mode !== 'evaluate'
       ? {}
-      : question.choices.reduce((obj, c) => {
-        if (session.value && question.correctResponse[c.id]) {
-          obj[c.id] = session.value[c.id] === question.correctResponse[c.id];
+      : reduce(question.correctResponse, (obj, c, key) => {
+        if (session.value && question.correctResponse[c]) {
+          obj[key] = session.value[c] === question.correctResponse[c];
         }
 
         return obj;
