@@ -253,5 +253,20 @@
     "committerDate": "2019-06-12 19:51:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.5.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merged",
+    "subject": "merged develop",
+    "merge": null,
+    "header": "chore(merged): merged develop",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1a9f4653ce6ede22bcda0538bde1f0e09bd69dc4",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-13 16:26:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.5.1"
   }
 ]

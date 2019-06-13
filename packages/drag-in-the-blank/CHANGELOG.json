@@ -118,5 +118,35 @@
     "committerDate": "2019-06-12 19:51:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@1.3.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merged",
+    "subject": "merged develop",
+    "merge": null,
+    "header": "chore(merged): merged develop",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1a9f4653ce6ede22bcda0538bde1f0e09bd69dc4",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-13 16:26:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@1.4.0"
+  },
+  {
+    "type": "feat",
+    "scope": "ui",
+    "subject": "updated the ui",
+    "merge": null,
+    "header": "feat(ui): updated the ui",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2baa5795a4e46e01d260c87a7197600abbde4a33",
+    "gitTags": "",
+    "committerDate": "2019-06-13 16:19:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@1.4.0"
   }
 ]

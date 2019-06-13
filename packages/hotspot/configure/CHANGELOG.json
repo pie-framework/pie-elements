@@ -153,5 +153,35 @@
     "committerDate": "2019-06-07 23:29:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@2.1.2"
+  },
+  {
+    "type": "chore",
+    "scope": "merged",
+    "subject": "merged develop",
+    "merge": null,
+    "header": "chore(merged): merged develop",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1a9f4653ce6ede22bcda0538bde1f0e09bd69dc4",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-13 16:26:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "implement rendering support for legacy content with correct answers defined as polygon [ch1616]",
+    "merge": null,
+    "header": "feat: implement rendering support for legacy content with correct answers defined as polygon [ch1616]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d4b84e5d01caa600c27bab06ae11c827f3197992",
+    "gitTags": "",
+    "committerDate": "2019-06-12 17:31:35 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.2.0"
   }
 ]
