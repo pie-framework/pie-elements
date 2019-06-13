@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 import React from 'react';
 import { pointChooser } from '@pie-ui/number-line';
 import { withStyles } from '@material-ui/core/styles';
-
+import PropTypes from 'prop-types';
 const { Point } = pointChooser;
 
 const styles = {
@@ -12,6 +12,11 @@ const styles = {
 };
 
 class PointConfig extends React.Component {
+  static propTypes = {
+    onSelectionChange: PropTypes.func,
+    selection: PropTypes.object,
+    classes: PropTypes.object
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -20,28 +25,25 @@ class PointConfig extends React.Component {
   }
 
   toggle(point) {
-    this.state.selection[point] = !this.state.selection[point];
-    this._stateUpdate();
+    const update = { ...this.state.selection };
+    update[point] = !update[point];
+    this._stateUpdate(update);
   }
 
   toggleAll(value) {
-    let display = PointConfig.types.reduce((acc, point) => {
+    const display = [...PointConfig.types].reduce((acc, point) => {
       acc[point] = value;
+
       return acc;
     }, {});
-    this.state.selection = display;
-    this._stateUpdate();
+
+    this._stateUpdate(display);
   }
 
-  _stateUpdate() {
-    this.setState(
-      {
-        selection: this.state.selection
-      },
-      () => {
-        this.props.onSelectionChange(this.state.selection);
-      }
-    );
+  _stateUpdate(selection) {
+    this.setState({ selection }, () => {
+      this.props.onSelectionChange(this.state.selection);
+    });
   }
 
   active(point) {
@@ -51,7 +53,7 @@ class PointConfig extends React.Component {
   render() {
     const { classes } = this.props;
 
-    const icons = PointConfig.types.map((point, key) => {
+    const icons = PointConfig.types.map(point => {
       return (
         <Point
           iconKey={point.toLowerCase()}
@@ -66,10 +68,18 @@ class PointConfig extends React.Component {
       <div>
         <div>{icons}</div>
         <div className={classes.displayToggles}>
-          <Button variant="contained" onClick={this.toggleAll.bind(this, true)}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={this.toggleAll.bind(this, true)}
+          >
             Display All
           </Button>
-          <Button variant="contained" onClick={this.toggleAll.bind(this, false)}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={this.toggleAll.bind(this, false)}
+          >
             None
           </Button>
         </div>
@@ -80,7 +90,6 @@ class PointConfig extends React.Component {
 
 PointConfig.types = [
   'PF',
-  'PE',
   'LFF',
   'LEF',
   'LFE',

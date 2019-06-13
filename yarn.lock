@@ -2352,7 +2352,7 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^5.0.0", "@pie-ui/number-line@^5.1.2":
+"@pie-ui/number-line@^5.0.0":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-5.1.2.tgz#a3c896467556363944b8158e6cad015de851ebf6"
   integrity sha512-twbcb/bTjIx2PRD2ANOY3rpvpWOg3GRxtDafUXyPSl1Cq7uJeM1+WUpqKxqZ1AahKv4KZ9ygTkyBAWpPpMsd6w==
@@ -2368,6 +2368,27 @@
     react "^16.8.1"
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
+    react-jss "^8.4.0"
+    react-transition-group "^2.3.1"
+
+"@pie-ui/number-line@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-6.0.1.tgz#d8cc22021e541601f0c9035052d2a1ce47abbe32"
+  integrity sha512-isPk9VfViqU6RF/992m+0x6AMaLhFLqbeG/AeNo/6NIEd5rWh+UxCswIk2i2XIKd8cawP2+xEylGrFRuVx9r5Q==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/icons" "^2.3.1"
+    classnames "^2.2.5"
+    d3-scale "^2.0.0"
+    d3-selection "^1.4.0"
+    decimal.js-light "^2.5.0"
+    lodash "^4.17.10"
+    mathjs "^5.4.1"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-draggable "^3.3.0"
     react-jss "^8.4.0"
     react-transition-group "^2.3.1"
 
@@ -4817,7 +4838,7 @@ d3-scale@^2.0.0:
     d3-time "1"
     d3-time-format "2"
 
-d3-selection@^1.3.0:
+d3-selection@^1.3.0, d3-selection@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.4.0.tgz#ab9ac1e664cf967ebf1b479cc07e28ce9908c474"
   integrity sha512-EYVwBxQGEjLCKF2pJ4+yrErskDnz5v403qvAid96cNdCMr8rmCYfY5RGzWz24mdIbxmDf6/4EAH+K9xperD5jg==
@@ -4924,6 +4945,11 @@ decamelize@^1.1.0, decamelize@^1.1.1, decamelize@^1.1.2, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+
+decimal.js-light@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/decimal.js-light/-/decimal.js-light-2.5.0.tgz#ca7faf504c799326df94b0ab920424fdfc125348"
+  integrity sha512-b3VJCbd2hwUpeRGG3Toob+CRo8W22xplipNhP3tN7TSVB/cyMX71P1vM2Xjc9H74uV6dS2hDDmo/rHq8L87Upg==
 
 decimal.js@10.2.0, decimal.js@^10.0.0:
   version "10.2.0"
@@ -9961,7 +9987,7 @@ react-dom@^16.4.0, react-dom@^16.8.1, react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-draggable@^3.0.5:
+react-draggable@^3.0.5, react-draggable@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.0.tgz#2ed7ea3f92e7d742d747f9e6324860606cd4d997"
   integrity sha512-U7/jD0tAW4T0S7DCPK0kkKLyL0z61sC/eqU+NUfDjnq+JtBKaYKDHpsK2wazctiA4alEzCXUnzkREoxppOySVw==
