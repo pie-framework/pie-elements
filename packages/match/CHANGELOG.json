@@ -678,5 +678,20 @@
     "committerDate": "2019-06-06 01:15:50 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.2.2"
+  },
+  {
+    "type": "feat",
+    "scope": "ui",
+    "subject": "updated the ui",
+    "merge": null,
+    "header": "feat(ui): updated the ui",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2baa5795a4e46e01d260c87a7197600abbde4a33",
+    "gitTags": "",
+    "committerDate": "2019-06-13 16:19:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.3.0"
   }
 ]
