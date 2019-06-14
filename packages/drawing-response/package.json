@@ -6,6 +6,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@pie-ui/drawing-response": "^1.2.4"
+  },
   "pie": {
     "element": "@pie-ui/drawing-response"
   },
