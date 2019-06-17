@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.3.1...@pie-element/match-list@1.4.0) (2019-06-13)
+
+
+### Features
+
+* **ui:** updated the ui ([2baa579](https://github.com/pie-framework/pie-elements/commit/2baa579))
+
+
+
+
+
+## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.3.0...@pie-element/match-list@1.3.1) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.2.8...@pie-element/match-list@1.3.0) (2019-06-07)
+
+
+### Features
+
+* **mask-markup-elements:** enabled partial scoring for the 3 elements and added a controller to the match-list ([41e210e](https://github.com/pie-framework/pie-elements/commit/41e210e))
+* **tests:** removed match-list tests ([27af296](https://github.com/pie-framework/pie-elements/commit/27af296))
+
+
+
+
+
+## [1.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.2.7...@pie-element/match-list@1.2.8) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.2.6...@pie-element/match-list@1.2.7) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
 ## [1.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.2.5...@pie-element/match-list@1.2.6) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/match-list

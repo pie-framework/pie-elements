@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.1.2...@pie-element/pie-models@5.1.3) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.1.1...@pie-element/pie-models@5.1.2) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.1.0...@pie-element/pie-models@5.1.1) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.0.2...@pie-element/pie-models@5.1.0) (2019-06-05)
+
+
+### Features
+
+* **mask-markup-elements:** major changes to all 3 elements ([039a33e](https://github.com/pie-framework/pie-elements/commit/039a33e))
+* add support for polygons  ([#246](https://github.com/pie-framework/pie-elements/issues/246)) ([871c5a6](https://github.com/pie-framework/pie-elements/commit/871c5a6))
+
+
+
+
+
 ## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.0.1...@pie-element/pie-models@5.0.2) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/pie-models
