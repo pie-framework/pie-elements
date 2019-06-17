@@ -878,5 +878,50 @@
     "committerDate": "2019-05-20 12:13:51 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.1.2"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the versions",
+    "merge": null,
+    "header": "chore(version): bumped the versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12b141d884c66a15d23c8cbb34be820a422d7332",
+    "gitTags": " (origin/feat/mask-markup-elements)",
+    "committerDate": "2019-06-06 01:15:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.1.5"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "fix test",
+    "merge": null,
+    "header": "chore: fix test",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6d415ae0bc1e78fab0efc8c3b4b6d1ad701de39b",
+    "gitTags": " (origin/chore/mathquill-v-bump)",
+    "committerDate": "2019-06-12 17:50:29 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.1.9"
+  },
+  {
+    "type": "chore",
+    "scope": "math-inline",
+    "subject": "bump mathquill dependency version",
+    "merge": null,
+    "header": "chore(math-inline): bump mathquill dependency version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a4196935512fe6378080d31d2b21cc0343867b12",
+    "gitTags": "",
+    "committerDate": "2019-06-12 19:06:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.1.9"
   }
 ]

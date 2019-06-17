@@ -48,5 +48,50 @@
     "committerDate": "2019-05-16 20:51:05 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@2.0.1"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the versions",
+    "merge": null,
+    "header": "chore(version): bumped the versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12b141d884c66a15d23c8cbb34be820a422d7332",
+    "gitTags": " (origin/feat/mask-markup-elements)",
+    "committerDate": "2019-06-06 01:15:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "add support for polygons  (#246)",
+    "merge": null,
+    "header": "feat: add support for polygons  (#246)",
+    "body": "* feat: add controller support for polygons\n\n* add tests for polygon\n\n* update Hotspot model",
+    "footer": null,
+    "notes": [],
+    "hash": "871c5a6f033f36b2d172140cbbc0f71d59c8f969",
+    "gitTags": "",
+    "committerDate": "2019-05-31 14:03:05 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "implement rendering support for legacy content with correct answers defined as polygon [ch1616]",
+    "merge": null,
+    "header": "feat: implement rendering support for legacy content with correct answers defined as polygon [ch1616]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d4b84e5d01caa600c27bab06ae11c827f3197992",
+    "gitTags": "",
+    "committerDate": "2019-06-12 17:31:35 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.2.0"
   }
 ]

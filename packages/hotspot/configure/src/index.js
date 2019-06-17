@@ -57,7 +57,7 @@ export default class HotspotConfigure extends HTMLElement {
   onModelChangedByConfig = (m, type) => {
     const _model = m;
     if (type === 'multipleCorrect') {
-      _model.shapes = _model.shapes.map(shape => ({ ...shape, correct: false }));
+      _model.shapes.rectangles = _model.shapes.rectangles.map(shape => ({ ...shape, correct: false }));
     }
     this.onModelChanged(_model);
   };
@@ -69,7 +69,7 @@ export default class HotspotConfigure extends HTMLElement {
 
   onRemoveShape = index => {
     const { _model } = this;
-    _model.shapes.splice(index, 1);
+    _model.shapes.rectangles.splice(index, 1);
     this.onModelChanged(_model);
   };
 
@@ -99,7 +99,7 @@ export default class HotspotConfigure extends HTMLElement {
     if (!_model.multipleCorrect) {
       _model.partialScoring = false;
     }
-    _model.shapes = _model.shapes.map(shape => ({ ...shape, correct: false }));
+    _model.shapes.rectangles = _model.shapes.rectangles.map(shape => ({ ...shape, correct: false }));
     this.onModelChanged(_model);
   };
 
@@ -111,7 +111,7 @@ export default class HotspotConfigure extends HTMLElement {
 
   onUpdateShapes = (shapes) => {
     const { _model } = this;
-    _model.shapes = shapes;
+    _model.shapes.rectangles = shapes;
     this.onModelChanged(_model);
   };
 

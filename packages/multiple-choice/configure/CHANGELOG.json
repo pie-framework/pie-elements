@@ -828,5 +828,20 @@
     "committerDate": "2019-05-09 16:57:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@1.1.0"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the versions",
+    "merge": null,
+    "header": "chore(version): bumped the versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12b141d884c66a15d23c8cbb34be820a422d7332",
+    "gitTags": " (origin/feat/mask-markup-elements)",
+    "committerDate": "2019-06-06 01:15:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.1.3"
   }
 ]

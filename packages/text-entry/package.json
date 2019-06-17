@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/text-entry",
   "repository": "pie-framework/pie-elements",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "description": "",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/text-entry": "^3.5.0"
+    "@pie-ui/text-entry": "^3.5.9"
   },
   "pie": {
     "element": "@pie-ui/text-entry"

@@ -1,0 +1,16 @@
+{
+  "name": "@pie-element/rubric-configure",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Rubric authoring view",
+  "main": "lib/index.js",
+  "author": "Pie Framework Authors",
+  "dependencies": {
+    "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/rubric": "latest",
+    "debug": "^4.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "license": "ISC"
+}
