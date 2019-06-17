@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.2.1...@pie-element/math-inline-controller@2.2.2) (2019-06-17)
+
+
+### Bug Fixes
+
+* **math-inline:** validation logic fix for allowSpaces ([2951657](https://github.com/pie-framework/pie-elements/commit/2951657))
+
+
+
+
+
 ## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.2.0...@pie-element/math-inline-controller@2.2.1) (2019-05-31)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller
