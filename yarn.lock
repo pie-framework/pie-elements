@@ -10025,7 +10025,7 @@ react-measure@^2.2.2:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
 
-"react-number-format@github:PieElements/react-number-format#feature/bad-input":
+react-number-format@PieElements/react-number-format#feature/bad-input:
   version "3.2.0"
   resolved "https://codeload.github.com/PieElements/react-number-format/tar.gz/ca13da7e71b4aeba759365fc0b08536185749123"
   dependencies:
