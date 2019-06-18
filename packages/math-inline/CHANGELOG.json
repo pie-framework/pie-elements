@@ -1343,5 +1343,35 @@
     "committerDate": "2019-06-12 19:06:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.2.6"
+  },
+  {
+    "type": "chore",
+    "scope": "math-inline",
+    "subject": "unit test for allow spaces in controller",
+    "merge": null,
+    "header": "chore(math-inline): unit test for allow spaces in controller",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4132aa351006d92d544ffbec07423213581ce047",
+    "gitTags": "",
+    "committerDate": "2019-06-13 14:56:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.2.7"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "validation logic fix for allowSpaces",
+    "merge": null,
+    "header": "fix(math-inline): validation logic fix for allowSpaces",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2951657615cc2b40b02c7ee616156c968bfbd846",
+    "gitTags": "",
+    "committerDate": "2019-06-12 19:23:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.2.7"
   }
 ]
