@@ -44,11 +44,16 @@ exports[`Categories snapshot renders 1`] = `
           "label": "foo",
         }
       }
-      key="0"
       onAddChoice={[Function]}
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}
+    />
+    <WithStyles(Component)
+      categoriesPerRow={2}
+      markup=""
+      onChange={[Function]}
+      rowIndex={0}
     />
   </div>
 </div>
