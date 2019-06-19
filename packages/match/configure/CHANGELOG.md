@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.5...@pie-element/match-configure@2.2.6) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.4...@pie-element/match-configure@2.2.5) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.3...@pie-element/match-configure@2.2.4) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.2...@pie-element/match-configure@2.2.3) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.1...@pie-element/match-configure@2.2.2) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.2.0...@pie-element/match-configure@2.2.1) (2019-05-23)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.1.1...@pie-element/match-configure@2.2.0) (2019-05-21)
 
 

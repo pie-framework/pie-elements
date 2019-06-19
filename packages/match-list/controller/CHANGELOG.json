@@ -1,0 +1,47 @@
+[
+  {
+    "type": "feat",
+    "scope": "tests",
+    "subject": "removed match-list tests",
+    "merge": null,
+    "header": "feat(tests): removed match-list tests",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "27af29678ea4d141a835e4bd643e6b4428884072",
+    "gitTags": " (origin/feat/match-list-controller)",
+    "committerDate": "2019-06-07 23:12:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-list-controller@1.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "enabled partial scoring for the 3 elements and added a controller to the match-list",
+    "merge": null,
+    "header": "feat(mask-markup-elements): enabled partial scoring for the 3 elements and added a controller to the match-list",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "41e210ebc6d761041efb1d632a1879f35b1487a1",
+    "gitTags": "",
+    "committerDate": "2019-06-07 23:05:19 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-list-controller@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "add controller-utils to deps",
+    "merge": null,
+    "header": "fix: add controller-utils to deps",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "754e40b6e8d6bfb2f0087d7b07b2cf04f119a077",
+    "gitTags": " (origin/develop, origin/HEAD)",
+    "committerDate": "2019-06-18 15:27:39 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/match-list-controller@1.1.3"
+  }
+]

@@ -7,11 +7,7 @@ import Response from '../response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import EditableHtml from '@pie-lib/editable-html';
 
-import {
-  FeedbackConfig,
-  layout,
-  settings,
-} from '@pie-lib/config-ui';
+import { FeedbackConfig, layout, settings } from '@pie-lib/config-ui';
 
 import defaultValues from '../defaults';
 
@@ -29,7 +25,9 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
-const Mathquill = require('@pie-framework/mathquill');
+jest.mock('@pie-lib/math-toolbar', () => ({
+  MathToolbar: () => <div />
+}));
 
 jest.mock('@pie-framework/mathquill', () => ({
   StaticMath: jest.fn().mockReturnValue({
@@ -38,6 +36,7 @@ jest.mock('@pie-framework/mathquill', () => ({
   registerEmbed: jest.fn(),
   getInterface: jest.fn().mockReturnThis()
 }));
+const Mathquill = require('@pie-framework/mathquill');
 
 const defaultProps = {
   model: {
@@ -83,11 +82,7 @@ const defaultProps = {
         validation: 'literal'
       }
     ],
-    customKeys: [
-      '\\left(\\right)',
-      '\\frac{}{}',
-      'x\\frac{}{}'
-    ],
+    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
     configure: defaultValues.configure
   },
   configuration: defaultValues.configuration
@@ -160,7 +155,7 @@ describe('GeneralConfigBlock', () => {
     const component = wrapper({
       ...props,
       onChange,
-      responseType: 'Simple',
+      responseType: 'Simple'
     });
 
     component.instance().onSimpleResponseChange({ answer: 'something' });
@@ -184,10 +179,12 @@ describe('GeneralConfigBlock', () => {
 
     expect(onChange).toBeCalledWith({
       ...props.model,
-      responses: [{
-        id: 'r1',
-        answer: 'something'
-      }]
+      responses: [
+        {
+          id: 'r1',
+          answer: 'something'
+        }
+      ]
     });
   });
 
@@ -199,7 +196,7 @@ describe('GeneralConfigBlock', () => {
       responseIdCounter: 2,
       responseAreas: {
         r1: {
-          value: '',
+          value: ''
         },
         r2: {
           value: ''
@@ -220,7 +217,7 @@ describe('GeneralConfigBlock', () => {
       responseIdCounter: 3,
       responseAreas: {
         r1: {
-          value: '',
+          value: ''
         },
         r2: {
           value: ''

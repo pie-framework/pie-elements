@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.6...@pie-element/text-entry@3.6.7) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.5...@pie-element/text-entry@3.6.6) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.4...@pie-element/text-entry@3.6.5) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.3...@pie-element/text-entry@3.6.4) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.1...@pie-element/text-entry@3.6.3) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.6.0...@pie-element/text-entry@3.6.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/text-entry

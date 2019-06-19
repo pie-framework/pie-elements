@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ruler",
-  "version": "3.4.10",
+  "version": "3.4.14",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/ruler": "^2.2.2"
+    "@pie-ui/ruler": "^2.2.9"
   },
   "pie": {
     "element": "@pie-ui/ruler"

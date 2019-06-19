@@ -6,7 +6,7 @@ describe('model', () => {
 
   const defaultModel = {
     ...defaultValues,
-    id: 1,
+    id: 1
   };
 
   const mkQuestion = model => model || defaultModel;
@@ -109,7 +109,30 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
+    });
 
+    it('returns correct for correctness if allowSpaces is true', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responses: [
+          {
+            allowSpaces: true,
+            answer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}',
+            id: '1',
+            alternates: {},
+            validation: 'literal'
+          }
+        ]
+      });
+      session = {
+        completeAnswer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
     });
   });
 
@@ -140,7 +163,6 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('incorrect');
       expect(result.correctness.score).toEqual('0%');
-
     });
   });
 });

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.14...@pie-element/inline-choice-configure@1.3.15) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
+## [1.3.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.13...@pie-element/inline-choice-configure@1.3.14) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
+## [1.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.12...@pie-element/inline-choice-configure@1.3.13) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
+## [1.3.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.11...@pie-element/inline-choice-configure@1.3.12) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
+## [1.3.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.10...@pie-element/inline-choice-configure@1.3.11) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
 ## [1.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.3.9...@pie-element/inline-choice-configure@1.3.10) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/inline-choice-configure
