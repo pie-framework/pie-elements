@@ -893,5 +893,20 @@
     "committerDate": "2019-06-13 16:19:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/categorize@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "extras",
+    "subject": "added row labels support and alternate responses",
+    "merge": null,
+    "header": "feat(extras): added row labels support and alternate responses",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "280028fd6d09efd73a0a30dad7b3c88ebd896c8e",
+    "gitTags": " (origin/andreilakatos/ch814/row-titles-categorize)",
+    "committerDate": "2019-06-19 09:05:29 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@4.2.0"
   }
 ]
