@@ -58,7 +58,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
       if (correctResponse.validation === 'literal') {
         for (let i = 0; i < acceptedValues.length; i++) {
           if (correctResponse.allowSpaces) {
-            if (acceptedValues[i] === trimSpaces(answerItem) || acceptedValues[i] === answerItem) {
+            if (acceptedValues[i] === trimSpaces(answerItem) || acceptedValues[i] === answerItem || (trimSpaces(acceptedValues[i]) === trimSpaces(answerItem))) {
               answerCorrect = true;
               break;
             }
