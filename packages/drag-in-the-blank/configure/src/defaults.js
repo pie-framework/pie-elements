@@ -51,6 +51,18 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt'
+    },
+    duplicates: {
+      settings: true,
+      label: 'Duplicates'
+    },
+    lockChoiceOrder: {
+      settings: true,
+      label: 'Lock Choice Order'
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Partial Scoring'
     }
   }
 };

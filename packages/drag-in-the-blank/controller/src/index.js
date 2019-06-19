@@ -1,6 +1,5 @@
 import reduce from 'lodash/reduce';
 import { isResponseCorrect } from './utils';
-import { partialScoring } from '@pie-lib/controller-utils';
 
 export function model(question, session, env) {
   return new Promise(resolve => {
@@ -45,19 +44,22 @@ export function model(question, session, env) {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.correctResponse).length;
+  const allCorrectResponses = reduce(config.correctResponse || {}, (obj, val, key) => {
+    obj[key] = [val];
 
-  const correctCount = reduce(config.choices, (total, choice, key) => {
-    const chosenValue = session.value && session.value[key];
-    const correctValue = config.correctResponse[key];
-
-    if (correctValue === chosenValue) {
-      return total;
+    if (config.alternateResponses && config.alternateResponses[key]) {
+      obj[key] = [
+        ...obj[key],
+        ...config.alternateResponses[key]
+      ];
     }
 
-    const { alternateResponses: altResp } = config;
-    const hasAltResponse = altResp && altResp[key];
+    return obj;
+  }, {});
+  const correctCount = reduce(allCorrectResponses, (total, correctResponse, key) => {
+    const choice = session.value[key];
 
-    if (hasAltResponse && altResp[key].indexOf(chosenValue) >= 0) {
+    if (correctResponse.indexOf(choice) >= 0) {
       return total;
     }
 
@@ -81,9 +83,9 @@ const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session, env) {
+export function outcome(model, session) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
