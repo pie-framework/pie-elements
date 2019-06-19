@@ -110,6 +110,12 @@ Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
 
+## `alternateResponse` (array, required)
+
+Array of alternatives correct choices
+
+The object is an array with all elements of the type `array`.
+
 # `feedback` (object)
 
 Properties of the `feedback` object:
@@ -227,6 +233,12 @@ The identifier for the category
 Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
+
+### `alternateResponse` (array, required)
+
+Array of alternatives correct choices
+
+The object is an array with all elements of the type `array`.
 
 ## `ComplexFeedbackType` (object)
 
