@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.2.0...@pie-element/pie-models@5.2.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* **scoring-and-feedback:** fixed scoring and added alternate responses ([dd0bb02](https://github.com/pie-framework/pie-elements/commit/dd0bb02))
+
+
+
+
+
 # [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.1.4...@pie-element/pie-models@5.2.0) (2019-06-19)
 
 
