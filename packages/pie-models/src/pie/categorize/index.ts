@@ -39,7 +39,7 @@ interface CategoryCorrectResponse {
   choices: string[];
 
   /** Array of alternatives correct choices */
-  alternateResponse: AlternateResponse[];
+  alternateResponses?: AlternateResponse[];
 
 }
 

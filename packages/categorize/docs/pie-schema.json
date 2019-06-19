@@ -164,7 +164,7 @@
             },
             "title": "choices"
           },
-          "alternateResponse": {
+          "alternateResponses": {
             "description": "Array of alternatives correct choices",
             "type": "array",
             "items": {
@@ -173,11 +173,10 @@
                 "type": "string"
               }
             },
-            "title": "alternateResponse"
+            "title": "alternateResponses"
           }
         },
         "required": [
-          "alternateResponse",
           "category",
           "choices"
         ]
@@ -520,7 +519,7 @@
           },
           "title": "choices"
         },
-        "alternateResponse": {
+        "alternateResponses": {
           "description": "Array of alternatives correct choices",
           "type": "array",
           "items": {
@@ -529,11 +528,10 @@
               "type": "string"
             }
           },
-          "title": "alternateResponse"
+          "title": "alternateResponses"
         }
       },
       "required": [
-        "alternateResponse",
         "category",
         "choices"
       ]
