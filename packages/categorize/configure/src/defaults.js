@@ -19,6 +19,7 @@ export default {
         choices: []
       },
     ],
+    rowLabels: [''],
     correctResponse: [],
     partialScoring: true
   },

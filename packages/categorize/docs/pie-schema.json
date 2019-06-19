@@ -163,9 +163,21 @@
               "type": "string"
             },
             "title": "choices"
+          },
+          "alternateResponse": {
+            "description": "Array of alternatives correct choices",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "title": "alternateResponse"
           }
         },
         "required": [
+          "alternateResponse",
           "category",
           "choices"
         ]
@@ -507,9 +519,21 @@
             "type": "string"
           },
           "title": "choices"
+        },
+        "alternateResponse": {
+          "description": "Array of alternatives correct choices",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": "alternateResponse"
         }
       },
       "required": [
+        "alternateResponse",
         "category",
         "choices"
       ]

@@ -30,6 +30,9 @@ exports[`choices snapshot renders 1`] = `
         "lockChoiceOrder": true,
         "partialScoring": true,
         "removeTilesAfterPlacing": false,
+        "rowLabels": Array [
+          "",
+        ],
       }
     }
     onModelChanged={
@@ -67,6 +70,9 @@ exports[`choices snapshot renders 1`] = `
               "lockChoiceOrder": true,
               "partialScoring": true,
               "removeTilesAfterPlacing": false,
+              "rowLabels": Array [
+                "",
+              ],
             },
           ],
         ],

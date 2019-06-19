@@ -2,11 +2,61 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
+import Typography from '@material-ui/core/Typography';
+import { choiceUtils as utils, InputContainer } from '@pie-lib/config-ui';
+import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Category from './category';
 import Header from '../header';
 import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+
+const styles = theme => ({
+  categories: {
+    marginBottom: theme.spacing.unit
+  },
+  categoriesHolder: {
+    display: 'grid',
+    gridRowGap: `${theme.spacing.unit}px`,
+    gridColumnGap: `${theme.spacing.unit}px`
+  },
+  row: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridColumnGap: `${theme.spacing.unit}px`,
+    alignItems: 'baseline',
+    width: '100%',
+    marginTop: theme.spacing.unit,
+    marginBottom: 2 * theme.spacing.unit
+  },
+  rowLabel: {
+    gridColumn: '1/3'
+  },
+  rowLabelHolder: {
+    width: '100%'
+  }
+});
+
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange }) => {
+  return (
+    <div
+      style={{
+        gridColumn: `1/${categoriesPerRow + 1}`,
+        width: '100%'
+      }}
+    >
+      <Typography className={classes.text}>
+        Row Label
+      </Typography>
+      <EditableHtml
+        className={classes.rowLabelHolder}
+        markup={markup}
+        onChange={onChange}
+        imageSupport={imageSupport}
+        nonEmpty={false}
+      />
+    </div>
+  );
+});
 
 export class Categories extends React.Component {
   static propTypes = {
@@ -31,10 +81,20 @@ export class Categories extends React.Component {
 
   add = () => {
     const { model } = this.props;
+    const { categoriesPerRow } = model;
     const id = utils.firstAvailableIndex(model.categories.map(a => a.id), 0);
     const data = { id, label: 'Category ' + id };
+    const addRowLabel = (model.categories.length) % categoriesPerRow === 0;
+    const rowLabels = [...model.rowLabels];
 
-    this.props.onModelChanged({ categories: model.categories.concat([data]) });
+    if (addRowLabel) {
+      rowLabels.push('');
+    }
+
+    this.props.onModelChanged({
+      rowLabels,
+      categories: model.categories.concat([data])
+    });
   };
 
   delete = category => {
@@ -86,6 +146,22 @@ export class Categories extends React.Component {
     onModelChanged({ correctResponse });
   };
 
+  changeRowLabel = (val, index) => {
+    const { model } = this.props;
+    const { rowLabels } = model;
+    const newRowLabels = [...rowLabels];
+
+    if (newRowLabels.length < index) {
+      newRowLabels.push(val);
+    } else {
+      newRowLabels[index] = val;
+    }
+
+    this.props.onModelChanged({
+      rowLabels: newRowLabels
+    });
+  };
+
   render() {
     const {
       model,
@@ -94,11 +170,12 @@ export class Categories extends React.Component {
       categories,
       imageSupport
     } = this.props;
-    const { categoriesPerRow } = model;
+    const { categoriesPerRow, rowLabels } = model;
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
+    const lastRowLabelIndex = parseInt((categories.length - 1) / categoriesPerRow);
 
     return (
       <div className={classNames(classes.categories, className)}>
@@ -116,43 +193,49 @@ export class Categories extends React.Component {
           />
         </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
-          {categories.map((category, index) => (
-            <Category
-              key={index}
-              imageSupport={imageSupport}
-              category={category}
-              onChange={this.change}
-              onDelete={() => this.delete(category)}
-              onAddChoice={this.addChoiceToCategory}
-              onDeleteChoice={(choice, choiceIndex) =>
-                this.deleteChoiceFromCategory(category, choice, choiceIndex)
-              }
-            />
-          ))}
+          {categories.map((category, index) => {
+            const hasRowLabel = index > 1 && index % categoriesPerRow === 0;
+            const rowIndex = parseInt(index / (categoriesPerRow + 1));
+
+            return (
+              <React.Fragment
+                key={index}
+              >
+                {
+                  hasRowLabel && (
+                    <RowLabel
+                      categoriesPerRow={categoriesPerRow}
+                      rowIndex={rowIndex}
+                      markup={rowLabels[rowIndex] || ''}
+                      onChange={(val) => this.changeRowLabel(val, rowIndex)}
+                      imageSupport={imageSupport}
+                    />
+                  )
+                }
+                <Category
+                  imageSupport={imageSupport}
+                  category={category}
+                  onChange={this.change}
+                  onDelete={() => this.delete(category)}
+                  onAddChoice={this.addChoiceToCategory}
+                  onDeleteChoice={(choice, choiceIndex) =>
+                    this.deleteChoiceFromCategory(category, choice, choiceIndex)
+                  }
+                />
+              </React.Fragment>
+            );
+          })}
+          <RowLabel
+            categoriesPerRow={categoriesPerRow}
+            rowIndex={lastRowLabelIndex}
+            markup={rowLabels[lastRowLabelIndex] || ''}
+            onChange={(val) => this.changeRowLabel(val, lastRowLabelIndex)}
+            imageSupport={imageSupport}
+          />
         </div>
       </div>
     );
   }
 }
-
-const styles = theme => ({
-  categories: {
-    marginBottom: theme.spacing.unit
-  },
-  categoriesHolder: {
-    display: 'grid',
-    gridRowGap: `${theme.spacing.unit}px`,
-    gridColumnGap: `${theme.spacing.unit}px`
-  },
-  row: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridColumnGap: `${theme.spacing.unit}px`,
-    alignItems: 'baseline',
-    width: '100%',
-    marginTop: theme.spacing.unit,
-    marginBottom: 2 * theme.spacing.unit
-  }
-});
 
 export default withStyles(styles)(Categories);

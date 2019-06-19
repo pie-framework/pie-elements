@@ -1,3 +1,4 @@
+import forEach from 'lodash/forEach';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import defaults from './defaults';
@@ -65,6 +66,7 @@ export const model = (question, session, env) =>
           removeTilesAfterPlacing: question.removeTilesAfterPlacing,
           lockChoiceOrder: question.lockChoiceOrder,
           categoriesPerRow: question.categoriesPerRow || 2,
+          rowLabels: question.rowLabels
         };
 
         out.correctResponse =
@@ -110,16 +112,31 @@ const getTotalScore = (question, session) => {
     const response = correctResponse.find(cR => cR.category === category.id) || {};
     const sessionAnswers = session.answers || [];
     const answers = sessionAnswers.find(a => a.category === category.id) || {};
-
-    return total + getScore(
+    let choiceScore = getScore(
       category,
       question.choices,
       response.choices || [],
       answers.choices || []
     );
+
+    forEach((response.alternateResponses || []), (choices) => {
+      const currentScore = getScore(
+        category,
+        question.choices,
+        choices || [],
+        answers.choices || []
+      );
+
+      if (currentScore >= choiceScore) {
+        choiceScore = currentScore;
+      }
+    });
+
+    return total + choiceScore;
   }, 0);
 
   const str = (correctCount / categories.length).toFixed(2);
+
   return parseFloat(str, 10);
 };
 
