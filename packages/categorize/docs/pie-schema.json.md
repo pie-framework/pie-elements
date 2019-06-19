@@ -110,7 +110,7 @@ Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
 
-## `alternateResponse` (array, required)
+## `alternateResponses` (array)
 
 Array of alternatives correct choices
 
@@ -234,7 +234,7 @@ Array of identifiers for the choices that belong in this category
 
 The object is an array with all elements of the type `string`.
 
-### `alternateResponse` (array, required)
+### `alternateResponses` (array)
 
 Array of alternatives correct choices
 

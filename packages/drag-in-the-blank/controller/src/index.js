@@ -4,15 +4,29 @@ import { partialScoring } from '@pie-lib/controller-utils';
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const feedback = env.mode !== 'evaluate'
-      ? {}
-      : reduce(question.correctResponse, (obj, c, key) => {
-        if (session.value && question.correctResponse[c]) {
-          obj[key] = session.value[c] === question.correctResponse[c];
+    let feedback = {};
+
+    if (env.mode === 'evaluate') {
+      const allCorrectResponses = reduce(question.correctResponse, (obj, val, key) => {
+        obj[key] = [val];
+
+        if (question.alternateResponses[key]) {
+          obj[key] = [
+            ...obj[key],
+            ...question.alternateResponses[key]
+          ];
         }
 
         return obj;
       }, {});
+      feedback = reduce(allCorrectResponses, (obj, correctResponse, key) => {
+        const choice = session.value[key];
+
+        obj[key] = correctResponse.indexOf(choice) >= 0;
+
+        return obj;
+      }, {});
+    }
 
     const out = {
       ...question,
@@ -36,11 +50,18 @@ const getScore = (config, session) => {
     const chosenValue = session.value && session.value[key];
     const correctValue = config.correctResponse[key];
 
-    if (correctValue !== chosenValue) {
-      return total - 1;
+    if (correctValue === chosenValue) {
+      return total;
     }
 
-    return total;
+    const { alternateResponses: altResp } = config;
+    const hasAltResponse = altResp && altResp[key];
+
+    if (hasAltResponse && altResp[key].indexOf(chosenValue) >= 0) {
+      return total;
+    }
+
+    return total - 1;
   }, maxScore);
 
   const str = (correctCount / maxScore).toFixed(2);

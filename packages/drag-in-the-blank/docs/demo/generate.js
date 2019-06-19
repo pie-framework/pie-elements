@@ -17,6 +17,9 @@ exports.model = (id, element) => ({
     2: '1',
     3: '0'
   },
+  alternateResponses: {
+    0: ['1']
+  },
   choicesPosition: 'left',
   duplicates: true,
   prompt: 'Use the dropdowns to complete the sentence',
