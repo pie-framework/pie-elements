@@ -133,5 +133,35 @@
     "committerDate": "2019-06-12 19:51:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": "general",
+    "subject": "fixed some general issues",
+    "merge": null,
+    "header": "fix(general): fixed some general issues",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "29a8bd3beab50358d1aa4bf4bfbdbed03fe5afab",
+    "gitTags": "",
+    "committerDate": "2019-06-19 17:57:41 -0500",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.5.4"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "add missing docs (#255)",
+    "merge": null,
+    "header": "chore: add missing docs (#255)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "054257a1255bb219c32ffd587461395d6396a57e",
+    "gitTags": "",
+    "committerDate": "2019-06-19 14:20:15 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.5.4"
   }
 ]
