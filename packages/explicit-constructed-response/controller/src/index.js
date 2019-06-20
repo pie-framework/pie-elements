@@ -27,11 +27,10 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
 };
 
 const getFeedback = (answers, choices, key) => {
-  const correctAnswer = choices[0];
-
   const answer = answers[key];
+  const result = find(choices, c => prepareVal(c.label) === prepareVal(answer));
 
-  if (prepareVal(correctAnswer.label) === prepareVal(answer)) {
+  if (result) {
     return 'correct';
   }
 
@@ -51,11 +50,15 @@ export function model(question, session, env) {
 
       return obj;
     }, {});
-    const feedback = env.mode === 'evaluate' ? reduce(question.choices, (obj, area, key) => {
-      obj[key] = getFeedback(session.value, area, key);
+    let feedback = {};
 
-      return obj;
-    }, {}) : {};
+    if (env.mode === 'evaluate') {
+      feedback = reduce(question.choices, (obj, area, key) => {
+        obj[key] = getFeedback(session.value, area, key);
+
+        return obj;
+      }, {});
+    }
 
     const out = {
       disabled: env.mode !== 'gather',

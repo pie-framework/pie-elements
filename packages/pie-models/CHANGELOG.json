@@ -685,18 +685,33 @@
     "tag": "@pie-element/pie-models@5.1.0"
   },
   {
-    "type": "chore",
-    "scope": "merge",
-    "subject": "merged develop into master",
+    "type": "feat",
+    "scope": "extras",
+    "subject": "added row labels support and alternate responses",
     "merge": null,
-    "header": "chore(merge): merged develop into master",
+    "header": "feat(extras): added row labels support and alternate responses",
     "body": null,
     "footer": null,
     "notes": [],
-    "hash": "3bb9f402d900f3a0349537dfd01ce558c526cb55",
-    "gitTags": " (develop)",
-    "committerDate": "2019-06-07 23:29:44 +0300",
+    "hash": "280028fd6d09efd73a0a30dad7b3c88ebd896c8e",
+    "gitTags": " (origin/andreilakatos/ch814/row-titles-categorize)",
+    "committerDate": "2019-06-19 09:05:29 +0200",
     "isTagged": true,
-    "tag": "@pie-element/pie-models@5.1.2"
+    "tag": "@pie-element/pie-models@5.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "scoring-and-feedback",
+    "subject": "fixed scoring and added alternate responses",
+    "merge": null,
+    "header": "fix(scoring-and-feedback): fixed scoring and added alternate responses",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "dd0bb02495ac7c755cea8f9d85c07bec71879658",
+    "gitTags": "",
+    "committerDate": "2019-06-19 10:16:41 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.2.1"
   }
 ]

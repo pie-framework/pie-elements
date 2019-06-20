@@ -46,7 +46,8 @@ describe('Categories', () => {
       w.instance().add();
 
       expect(onModelChanged).toBeCalledWith({
-        categories: expect.arrayContaining([{ id: '1', label: 'Category 1' }])
+        categories: expect.arrayContaining([{ id: '1', label: 'Category 1' }]),
+        rowLabels: ['']
       });
     });
 
