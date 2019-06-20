@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.2.1...@pie-element/categorize@4.2.2) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [4.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.2.0...@pie-element/categorize@4.2.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* **scoring-and-feedback:** fixed scoring and added alternate responses ([dd0bb02](https://github.com/pie-framework/pie-elements/commit/dd0bb02))
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.1.2...@pie-element/categorize@4.2.0) (2019-06-19)
+
+
+### Features
+
+* **extras:** added row labels support and alternate responses ([280028f](https://github.com/pie-framework/pie-elements/commit/280028f))
+
+
+
+
+
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.1.1...@pie-element/categorize@4.1.2) (2019-06-18)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.1.0...@pie-element/categorize@4.1.1) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/categorize

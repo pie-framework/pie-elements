@@ -1840,10 +1840,17 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
+<<<<<<< HEAD
 "@pie-lib/config-ui@^10.0.0", "@pie-lib/config-ui@^10.3.1", "@pie-lib/config-ui@^10.4.3":
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.4.3.tgz#5178c0c0481c013ce529b50639abb07439ba1a11"
   integrity sha512-oMLQwG7VZTv2mex1TnrTFrkpdBzoo6Yq8HFBV7U5V7NoewyeFtK166qi+dFOEKSpQJ9YH3MgZbZx16H7OeJ2oA==
+=======
+"@pie-lib/config-ui@^10.0.0", "@pie-lib/config-ui@^10.3.1", "@pie-lib/config-ui@^10.4.2":
+  version "10.4.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.4.2.tgz#1950ef9f1f4a1d6f78db93b800698c2acf5b5c06"
+  integrity sha512-dFUxZS92zg9yjVuEQHn1N5zdsVek4qq1efufoMGUlv3XDzXHNxTWlHWXpsdAdn+Lwzrly7mRSpkwEd0qOI221Q==
+>>>>>>> c2dd3e9da4d1946d568f9ae95a22c149cc4f0499
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -1947,9 +1954,15 @@
     prop-types "^15.6.2"
 
 "@pie-lib/mask-markup@^1.2.4":
+<<<<<<< HEAD
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.2.5.tgz#36e415f4d376461016e83d22cad6a28c47c75d5b"
   integrity sha512-5orRKqvnPpGRj6RVOJeM3+bqM6x/MGzvGGyIlLhUcM5G7+zrZ6fkcZAqaN2yfLe+anmX9RxF6ORUYkVIkrxTxQ==
+=======
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.2.4.tgz#127a5fc880330b2898dcc71a538169848367444d"
+  integrity sha512-m38hVT3l/gbz8l46DTwcr5WG7DzrU3CQ3aG+pB9Y8dGgBrTuJMA5YPWvTcrivi4HLEm9rIIyGce47rD0MVpgdQ==
+>>>>>>> c2dd3e9da4d1946d568f9ae95a22c149cc4f0499
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.17"
@@ -2046,6 +2059,7 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.8.6"
 
+<<<<<<< HEAD
 "@pie-lib/scoring-config@^3.4.13", "@pie-lib/scoring-config@^3.5.2":
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.3.tgz#a7909a9432697b0833e6258c6ad2b56731a548f2"
@@ -2054,6 +2068,16 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/config-ui" "^10.4.3"
+=======
+"@pie-lib/scoring-config@^3.4.13":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.2.tgz#f607ecb2dc3700e1dcd9c923887f406c01c6b7fc"
+  integrity sha512-FxvpCUFuSYljZr2+6t+q8HlglMl0N6ZfUMhIyCL9DGv/ptSWu451dWltVVNVltDG9lxXaAT0zkGoZb0ZNxM1Hg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/config-ui" "^10.4.2"
+>>>>>>> c2dd3e9da4d1946d568f9ae95a22c149cc4f0499
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -5244,9 +5268,15 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.164, electron-to-chromium@^1.3.47:
+<<<<<<< HEAD
   version "1.3.166"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.166.tgz#99d267514f4b92339788172400bc527545deb75b"
   integrity sha512-7XwtJz81H/PBnkmQ/07oVPOGTkBZs6ibZN8OqXNUrxjRPzR0Xj+MFcMmRZEXGilEg1Pm+97V8BZVI63qnBX1hQ==
+=======
+  version "1.3.165"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.165.tgz#51864c9e3c9bd9e1c020b9493fddcc0f49888e3a"
+  integrity sha512-iIS8axR524EAnvUtWUNnREnYjQrS0zUvutIKYgTVuN3MzcjrV31EuJYKw7DGOtFO9DQw+JiXeaVDPQWMskG1wQ==
+>>>>>>> c2dd3e9da4d1946d568f9ae95a22c149cc4f0499
 
 encodeurl@~1.0.2:
   version "1.0.2"
