@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer,
-  layout
+  layout,
+  settings
 } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Choices from './choices';
+const { toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -64,6 +66,13 @@ export class Main extends React.Component {
     })
   };
 
+  onModelChange = newVal => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      ...newVal
+    });
+  };
+
   onPromptChanged = prompt => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -90,15 +99,39 @@ export class Main extends React.Component {
       classes,
       model,
       configuration,
+      onConfigurationChanged,
       imageSupport
     } = this.props;
     const {
-      prompt
+      duplicates,
+      prompt,
+      partialScoring,
+      lockChoiceOrder
     } = configuration;
 
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              configuration={configuration}
+              onChangeModel={model => this.onModelChange(model)}
+              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              groups={{
+                'Item Type': {
+                  partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
+                  duplicates: duplicates.settings && toggle(duplicates.label)
+                },
+                'Properties': {
+                  lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label)
+                },
+              }}
+            />
+          }
+        >
           <div>
             {prompt.settings && (
               <InputContainer

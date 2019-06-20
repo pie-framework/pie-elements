@@ -18,6 +18,8 @@ export interface CorrectResponse {
   [index: number]: string;
 }
 
+type AlternateResponse = string[];
+
 enum ChoicesPosition {
   above = 'above',
   below = 'below',
@@ -45,6 +47,9 @@ export interface DragInTheBlankPie extends PieModel {
 
     /** Object containing the correct answer for each response area */
     correctResponse: CorrectResponse;
+
+    /** Array of alternatives correct choices */
+    alternateResponses?: AlternateResponse[];
 
     /** Indicates if duplicates are enabled */
     duplicates?: boolean;

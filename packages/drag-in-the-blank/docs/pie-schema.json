@@ -1,0 +1,184 @@
+{
+  "description": "NOTE: teacherInstructions, studentInstructions, rationale & rubric\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/drag-in-the-blank",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "choices": {
+      "description": "Array of all the available choices",
+      "type": "array",
+      "items": {
+        "title": "Choice",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The value for the choice",
+            "type": "string",
+            "title": "value"
+          },
+          "label": {
+            "description": "The label of the choice",
+            "type": "string",
+            "title": "label"
+          },
+          "correct": {
+            "description": "Indicates if choice is correct",
+            "type": "boolean",
+            "title": "correct"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "title": "choices"
+    },
+    "choicesPosition": {
+      "title": "ChoicesPosition",
+      "enum": [
+        "above",
+        "below",
+        "left",
+        "right"
+      ],
+      "type": "string"
+    },
+    "correctResponse": {
+      "description": "Object containing the correct answer for each response area",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string"
+        }
+      },
+      "title": "correctResponse"
+    },
+    "alternateResponses": {
+      "description": "Array of alternatives correct choices",
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "title": "alternateResponses"
+    },
+    "duplicates": {
+      "description": "Indicates if duplicates are enabled",
+      "type": "boolean",
+      "title": "duplicates"
+    },
+    "markup": {
+      "description": "The markup for the pie-ui element",
+      "type": "string",
+      "title": "markup"
+    },
+    "prompt": {
+      "description": "The item stem for the question",
+      "type": "string",
+      "title": "prompt"
+    },
+    "rationale": {
+      "description": "Indicates correct answer rationale",
+      "type": "string",
+      "title": "rationale"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "rubric": {
+      "description": "Indicates value for rubric",
+      "type": "string",
+      "title": "rubric"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "choices",
+    "correctResponse",
+    "element",
+    "id",
+    "markup",
+    "rationale",
+    "rubric",
+    "studentInstructions",
+    "teacherInstructions"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "Choice": {
+      "title": "Choice",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "The value for the choice",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "The label of the choice",
+          "type": "string",
+          "title": "label"
+        },
+        "correct": {
+          "description": "Indicates if choice is correct",
+          "type": "boolean",
+          "title": "correct"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
+    },
+    "ChoicesPosition": {
+      "title": "ChoicesPosition",
+      "enum": [
+        "above",
+        "below",
+        "left",
+        "right"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
