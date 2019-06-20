@@ -22,7 +22,7 @@ export default class GraphLinesConfigure extends HTMLElement {
     this._configuration = defaultValues.configuration;
 
     // TODO delete this
-    document.querySelector('catalog-demo').shadowRoot.querySelector('demo-pane[title="preview"]').style.display = 'none';
+    // document.querySelector('catalog-demo').shadowRoot.querySelector('demo-pane[title="preview"]').style.display = 'none';
   }
 
   set model(m) {

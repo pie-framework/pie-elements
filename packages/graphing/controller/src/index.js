@@ -1,136 +1,117 @@
 import debug from 'debug';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lineUtils as utils } from '@pie-lib/charting';
 
+import lodash from 'lodash';
+import isEqual from 'lodash/isEqual';
 const log = debug('@pie-element:graphing:controller');
-
-const getResponseCorrectness = (
-  correctResponse,
-  lines,
-  model,
-  partialScores
-) => {
-  const allowPartialScores = model.configure.allowPartialScoring;
-  const correctExpressions = correctResponse.map(line => utils.expression(line.from, line.to));
-  let correctAnswers = 0;
-
-  if (!lines || lines.length === 0) {
-    return {
-      correctness: 'empty',
-      score: 0
-    };
-  }
-
-  lines.forEach(line => {
-    const isCorrectAnswer = correctExpressions.find(correctExpression => correctExpression.equals(line.expression || utils.expression(line.from, line.to)));
-
-    if (isCorrectAnswer) {
-      correctAnswers += 1;
-    }
-  });
-
-  if (correctExpressions.length === correctAnswers) {
-    return { correctness: 'correct', score: '100%' };
-  } else if (correctAnswers === 0) {
-    return { correctness: 'incorrect', score: '0%' };
-  } else if (allowPartialScores && partialScores && partialScores.length) {
-    return {
-      correctness: 'partial',
-      score: `${(
-        partialScores.find(
-          partialScore => partialScore.numberOfCorrect === correctAnswers
-        ) || {}
-      ).scorePercentage || 0}%`
-    };
-  }
-
-  return { correctness: 'incorrect', score: '0%' };
-};
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { partialScoring, graph } = question;
+    const {
+      backgroundMarks,
+      answers,
+      domain,
+      prompt,
+      range,
+      rationale,
+      title,
+      xAxisLabel,
+      yAxisLabel,
+      displayedTools
+    } = question;
 
-    const correctResponse = [];
+    const correctInfo = { correctness: 'incorrect', score: '0%' };
 
-    // Added because pie-ui was crashing
-    graph.lines = [
-      {
-        label: 'Line One',
-        correctLine: '3x+2',
-        initialView: '3x+3'
-      }
-    ];
-    graph.title = 'Title';
-    graph.domain = {
-      min: -5,
-      max: 10,
-      stepValue: 1,
-      snapValue: 1,
-      padding: 0
+    const base = {
+      correctness: correctInfo,
+      disabled: env.mode !== 'gather',
+      backgroundMarks,
+      domain,
+      prompt,
+      range,
+      rationale,
+      title,
+      xAxisLabel,
+      yAxisLabel,
+      displayedTools,
     };
-    graph.range = {
-      min: -5,
-      max: 10,
-      stepValue: 1,
-      snapValue: 1,
-      padding: 0
-    };
-    graph.width = 400;
-    graph.height = 400;
-    // Added because pie-ui was crashing
 
-    graph && graph.lines && graph.lines.forEach(line => {
-      const lineExpression = utils.expressionFromDescriptor(line.correctLine);
-      const points = utils.pointsFromExpression(lineExpression);
-
-      correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
+    const out = Object.assign(base, {
+      correctResponse: env.mode === 'evaluate' ? answers : undefined
     });
+    let correctnessMarks = {};
 
-    const getCorrectness = () => {
-      if (env.mode === 'evaluate') {
-        if (!session.lines || session.lines.length === 0) {
-          return {
-            correctness: 'unanswered',
-            score: '0%'
-          };
-        }
 
-        return getResponseCorrectness(
-          correctResponse,
-          session.lines,
-          question,
-          partialScoring
-        );
-      }
-    };
+    if (env.mode === 'evaluate') {
+      Object.keys(question.answers).map(answer => {
+        const response = question.answers[answer];
+        const marks = response.marks;
+        correctnessMarks[answer] = [];
 
-    const correctInfo = getCorrectness();
-    const fb =
-      env.mode === 'evaluate'
-        ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
-        : Promise.resolve(undefined);
+        session.answers.forEach(sessAnswer => {
+          let index;
 
-    fb.then(feedback => {
-      const base = {
-        correctness: correctInfo,
-        feedback,
-        disabled: env.mode !== 'gather'
-      };
+          switch (sessAnswer.type) {
+            case 'point':
+              index = marks.find(mark => isEqual(mark.x, sessAnswer.x) && isEqual(mark.y, sessAnswer.y));
+              break;
+            case 'segment':
+            case 'line':
+              index = marks.find(mark => ((isEqual(mark.from, sessAnswer.from) && isEqual(mark.to, sessAnswer.to)) || ((isEqual(mark.to, sessAnswer.from) && isEqual(mark.from, sessAnswer.to)))))
+              break;
+            case 'ray':
+            case 'vector':
+              index = marks.find(mark => ((isEqual(mark.from, sessAnswer.from) && isEqual(mark.to, sessAnswer.to))));
+              break;
+            case 'polygon':
+              const polygons = marks.filter(mark => mark.type === 'polygon');
 
-      const out = Object.assign(base, {
-        graph,
-        correctResponse: env.mode === 'evaluate' ? correctResponse : undefined
+              polygons.forEach(poly => {
+                const sessAnswerPoints = lodash.uniqWith(sessAnswer.points, isEqual);
+                const withoutDuplicates = lodash.uniqWith(poly.points, isEqual);
+                const sB = lodash.orderBy(sessAnswerPoints, 'x');
+                const sD = lodash.orderBy(withoutDuplicates, 'x');
+
+                index = isEqual(sD, sB);
+              });
+              break;
+            case 'circle':
+              index = marks.filter(mark => {
+                const equalRootAndEdge = isEqual(mark.edge, sessAnswer.edge) && isEqual(mark.root, sessAnswer.root);
+                const equalRAndRoot = isEqual(mark.root, sessAnswer.root) && isEqual(Math.abs(mark.edge.x - mark.root.x), Math.abs(sessAnswer.edge.x - sessAnswer.root.x));
+
+                if (equalRootAndEdge || equalRAndRoot) {
+                    return mark;
+                } else {
+                  return null;
+                }
+              });
+              break;
+            case 'sine':
+            case 'parabola':
+              index = marks.find(mark => ((isEqual(mark.edge, sessAnswer.edge) && isEqual(mark.root, sessAnswer.root))));
+              break;
+            default: break;
+          }
+
+          if (index) {
+            correctnessMarks[answer].push({ ...sessAnswer, correctness: 'correct' });
+          } else {
+            correctnessMarks[answer].push({ ...sessAnswer, correctness: 'incorrect' });
+          }
+        });
       });
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.rationale = question.rationale;
-      } else {
-        out.rationale = null;
-      }
+      console.log(correctnessMarks);
+      out.correctMarks = correctnessMarks;
+    }
 
-      log('out: ', out);
-      resolve(out);
-    });
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.rationale = question.rationale;
+    } else {
+      out.rationale = null;
+    }
+
+    log('out: ', out);
+    resolve(out);
   });
 }

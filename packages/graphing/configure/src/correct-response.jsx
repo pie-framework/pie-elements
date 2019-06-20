@@ -65,7 +65,6 @@ export class CorrectResponse extends React.Component {
       { name: 'line', component: tools.line(), selected: true },
       { name: 'sine', component: tools.sine(), selected: true },
       { name: 'parabola', component: tools.parabola(), selected: true },
-      { name: 'label', component: tools.label(), selected: true }
     ];
 
     const selectedTools = allTools.filter(t => t.selected);
@@ -78,8 +77,8 @@ export class CorrectResponse extends React.Component {
         graphTitle: false,
         coordinatesOnHover: false,
         size: {
-          width: 600,
-          height: 300
+          width: 400,
+          height: 400
         }
       },
     };
@@ -92,11 +91,18 @@ export class CorrectResponse extends React.Component {
     this.props.onChange(model);
   };
 
+  changeDisplayedTools = (displayedTools) => {
+    const { model } = this.props;
+    model.displayedTools = displayedTools;
+
+    this.props.onChange(model);
+  };
+
   render() {
     const { classes, model } = this.props;
     const { allTools, currentTool, settings } = this.state;
+    const tools = allTools.map(t => t.component);
     const selectedTools = allTools.filter(t => t.selected).map(t => t.component);
-    console.log('model=', model);
 
     return (
       <div>
@@ -123,6 +129,8 @@ export class CorrectResponse extends React.Component {
                     this.setState({
                       allTools: nextAllTools,
                       currentTool: (currentTool.name === tool.name && tool.selected) ? nextAllTools[0] : currentTool
+                    }, () => {
+                      this.changeDisplayedTools(selectedTools);
                     });
                   }}
                 >
@@ -150,7 +158,8 @@ export class CorrectResponse extends React.Component {
                 marks={model.answers[mark].marks}
                 backgroundMarks={model.backgroundMarks}
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
-                tools={selectedTools}
+                tools={tools}
+                displayedTools={selectedTools}
                 currentTool={currentTool && currentTool.component}
                 defaultTool={selectedTools && selectedTools[0] && selectedTools[0].type}
               />

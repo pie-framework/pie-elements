@@ -5,12 +5,15 @@
   },
   "repository": "pie-framework/pie-elements",
   "version": "1.0.0",
-  "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@pie-ui/graphing": "file:../../pie-ui/packages/graphing"
+  },
+  "pie": {
+    "element": "@pie-ui/graphing"
   },
   "author": "",
   "license": "ISC",

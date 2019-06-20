@@ -2,7 +2,7 @@ const { model } = require('./generate');
 
 module.exports = {
   elements: {
-    'graphing': '../..'
+    'graphing-element': '../..'
   },
-  models: [model('1', 'graphing')]
+  models: [model('1', 'graphing-element')]
 };
