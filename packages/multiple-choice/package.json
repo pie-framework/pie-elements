@@ -6,7 +6,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/multiple-choice": "^4.9.2"
+    "@pie-ui/multiple-choice": "^4.10.0"
   },
   "pie": {
     "element": "@pie-ui/multiple-choice"

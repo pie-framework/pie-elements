@@ -8,6 +8,11 @@ import {
 } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Choices from './choices';
 const { toggle, Panel } = settings;
@@ -52,6 +57,29 @@ const styles = theme => ({
   }
 });
 
+const positionOptions = [
+  {
+    label: 'Above',
+    value: 'above',
+    secondaryText: 'Choices will be shown above categories'
+  },
+  {
+    label: 'Below',
+    value: 'below',
+    secondaryText: 'Choices will be shown below categories'
+  },
+  {
+    label: 'Left',
+    value: 'left',
+    secondaryText: 'Choices will be shown to the left of the categories'
+  },
+  {
+    label: 'Right',
+    value: 'right',
+    secondaryText: 'Choices will be shown to the right of the categories'
+  }
+];
+
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -65,6 +93,8 @@ export class Main extends React.Component {
       delete: PropTypes.func.isRequired
     })
   };
+
+  state = {};
 
   onModelChange = newVal => {
     this.props.onModelChanged({
@@ -94,7 +124,18 @@ export class Main extends React.Component {
     });
   };
 
+  changePosition = position => {
+    this.props.onModelChanged({ choicesPosition: position.value });
+
+    this.setState({ anchorEl: null });
+  };
+
+  handleClickPosition = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
   render() {
+    const { anchorEl } = this.state;
     const {
       classes,
       model,
@@ -108,6 +149,7 @@ export class Main extends React.Component {
       partialScoring,
       lockChoiceOrder
     } = configuration;
+    const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
 
     return (
       <div className={classes.design}>
@@ -175,6 +217,34 @@ export class Main extends React.Component {
               duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
             />
+            <List component="nav">
+              <ListItem
+                button
+                aria-haspopup="true"
+                onClick={this.handleClickPosition}
+              >
+                <ListItemText
+                  primary="Choices Position"
+                  secondary={positionOption.secondaryText}
+                />
+              </ListItem>
+            </List>
+            <Menu
+              id="lock-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={this.handleClose}
+            >
+              {positionOptions.map(option => (
+                <MenuItem
+                  key={option.value}
+                  selected={option.value === model.choicesPosition}
+                  onClick={() => this.changePosition(option)}
+                >
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Menu>
           </div>
         </layout.ConfigLayout>
       </div>
