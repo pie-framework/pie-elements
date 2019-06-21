@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.0.6...@pie-element/extended-text-entry-configure@3.1.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
 ## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.0.5...@pie-element/extended-text-entry-configure@3.0.6) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

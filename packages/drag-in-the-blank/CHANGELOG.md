@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.4.5...@pie-element/drag-in-the-blank@1.5.0) (2019-06-21)
+
+
+### Features
+
+* **general:** added choice position select to ditb, fixed ecr markup processing ([9376dac](https://github.com/pie-framework/pie-elements/commit/9376dac))
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
 ## [1.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.4.4...@pie-element/drag-in-the-blank@1.4.5) (2019-06-20)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

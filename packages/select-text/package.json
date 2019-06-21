@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.1.8",
+  "version": "4.2.0",
   "description": "",
   "dependencies": {
     "@pie-ui/select-text": "^1.6.2"
