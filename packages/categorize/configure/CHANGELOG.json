@@ -758,5 +758,20 @@
     "committerDate": "2019-06-19 09:05:29 +0200",
     "isTagged": true,
     "tag": "@pie-element/categorize-configure@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-configure@3.2.0"
   }
 ]

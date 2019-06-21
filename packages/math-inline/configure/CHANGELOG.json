@@ -998,5 +998,20 @@
     "committerDate": "2019-06-12 19:06:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.1.9"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.2.0"
   }
 ]
