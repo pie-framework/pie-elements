@@ -29,13 +29,6 @@ exports.model = (id, element) => ({
       custom: '<h1>Incorrect</h1>'
     }
   },
-  allowPartialScoring: true,
-  partialScoring: [
-    {
-      numberOfCorrect: 1,
-      scorePercentage: 35
-    }
-  ],
   prompt: 'Set correct answer.',
   graph: {
     title: 'This is the title <span data-latex="">\\frac{1}{2}</span>',
@@ -66,7 +59,6 @@ exports.model = (id, element) => ({
     exhibitOnly: false,
     availableTypes: {
       PF: true,
-      PE: true,
       LFF: true,
       LEF: true,
       LFE: true,
