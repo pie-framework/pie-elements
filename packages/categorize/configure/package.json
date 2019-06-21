@@ -12,7 +12,7 @@
     "@material-ui/icons": "^3.0.1",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/categorize": "^0.4.1",
-    "@pie-lib/config-ui": "^10.3.0",
+    "@pie-lib/config-ui": "^10.5.0",
     "@pie-lib/drag": "^1.1.1",
     "@pie-lib/editable-html": "^7.6.0",
     "@pie-lib/math-rendering": "^1.0.0",
