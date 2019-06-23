@@ -124,16 +124,6 @@ class Main extends React.Component {
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired
-    // onConfigChange: PropTypes.func.isRequired,
-    // onCorrectResponseChange: PropTypes.func.isRequired,
-    // onInitialElementsChange: PropTypes.func.isRequired,
-    // onAvailableTypesChange: PropTypes.func.isRequired,
-    // onDomainChange: PropTypes.func.isRequired,
-    // onFeedbackChange: PropTypes.func.isRequired,
-    // onSnapPerTickChange: PropTypes.func.isRequired,
-    // onMinorTicksChanged: PropTypes.func.isRequired,
-    // onTickFrequencyChange: PropTypes.func.isRequired,
-    // onPromptChanged: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -210,10 +200,8 @@ class Main extends React.Component {
     );
     const initialElements = [...this.props.model.graph.initialElements];
     initialElements[index] = update;
-    //this.props.model.graph.initialElements[index] = update;
     const graph = { ...model.graph, initialElements };
     onChange({ graph });
-    // this.props.onInitialElementsChange(this.props.model.graph.initialElements);
   }
 
   availableTypesChange(availableTypes) {
@@ -223,7 +211,6 @@ class Main extends React.Component {
     });
     const graph = { ...model.graph, availableTypes };
     onChange({ graph });
-    // this.props.onAvailableTypesChange(availableTypes);
   }
 
   deleteCorrectResponse(indices) {
@@ -232,7 +219,6 @@ class Main extends React.Component {
       return !indices.some(d => d === index);
     });
     onChange({ correctResponse });
-    // this.props.onCorrectResponseChange(this.props.model.correctResponse);
   }
 
   deleteInitialView(indices) {
@@ -246,9 +232,8 @@ class Main extends React.Component {
 
   addCorrectResponse(data) {
     const { model, onChange } = this.props;
-    const correctResponse = [...model.correctResponse].push(
-      toSessionFormat(data)
-    );
+    const correctResponse = [...model.correctResponse];
+    correctResponse.push(toSessionFormat(data));
     onChange({ correctResponse });
   }
 
@@ -257,9 +242,7 @@ class Main extends React.Component {
     const graph = { ...model.graph };
     graph.initialElements = graph.initialElements || [];
     graph.initialElements.push(toSessionFormat(data));
-    // this.props.model.graph.initialElements.push(toSessionFormat(data));
     onChange({ graph });
-    // this.props.onCorrectResponseChange(this.props.model.graph.initialElements);
   }
 
   render() {
@@ -274,7 +257,10 @@ class Main extends React.Component {
     const { graph } = model;
     const { prompt } = configuration;
 
-    const correctResponse = cloneDeep(model.correctResponse).map(toGraphFormat);
+    console.log('model');
+    const correctResponse = cloneDeep(model.correctResponse || []).map(
+      toGraphFormat
+    );
     const initialView = cloneDeep(graph.initialElements).map(toGraphFormat);
 
     return (
