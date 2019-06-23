@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.2.4...@pie-element/pie-models@5.3.0) (2019-06-23)
+
+
+### Features
+
+* update documentation for number-line ([f7f1be8](https://github.com/pie-framework/pie-elements/commit/f7f1be8))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.2.3...@pie-element/pie-models@5.2.4) (2019-06-21)
 
 **Note:** Version bump only for package @pie-element/pie-models

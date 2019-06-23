@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.2.0...@pie-element/number-line@5.0.0) (2019-06-23)
+
+
+### Bug Fixes
+
+* add to correct response` ([4ca8f1a](https://github.com/pie-framework/pie-elements/commit/4ca8f1a))
+
+
+### Features
+
+* number line updates ([f4dbf3d](https://github.com/pie-framework/pie-elements/commit/f4dbf3d))
+
+
+### BREAKING CHANGES
+
+* `domain` is now `{min:number,max:number}`, `ticks:
+{minor:number, major:number}` added.
+
+
+
+
+
 # [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@4.1.8...@pie-element/number-line@4.2.0) (2019-06-21)
 
 

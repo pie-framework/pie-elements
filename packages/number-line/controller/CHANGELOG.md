@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@3.1.1...@pie-element/number-line-controller@4.0.0) (2019-06-23)
+
+
+### Features
+
+* number line updates ([f4dbf3d](https://github.com/pie-framework/pie-elements/commit/f4dbf3d))
+
+
+### BREAKING CHANGES
+
+* `domain` is now `{min:number,max:number}`, `ticks:
+{minor:number, major:number}` added.
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@3.1.0...@pie-element/number-line-controller@3.1.1) (2019-05-14)
 
 **Note:** Version bump only for package @pie-element/number-line-controller
