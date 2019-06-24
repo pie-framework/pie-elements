@@ -2352,25 +2352,6 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^5.0.0":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-5.1.2.tgz#a3c896467556363944b8158e6cad015de851ebf6"
-  integrity sha512-twbcb/bTjIx2PRD2ANOY3rpvpWOg3GRxtDafUXyPSl1Cq7uJeM1+WUpqKxqZ1AahKv4KZ9ygTkyBAWpPpMsd6w==
-  dependencies:
-    "@material-ui/core" "^3.9.2"
-    "@pie-lib/correct-answer-toggle" "^2.1.2"
-    "@pie-lib/icons" "^2.3.1"
-    classnames "^2.2.5"
-    d3-scale "^2.0.0"
-    d3-selection "^1.3.0"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-    react-draggable "^3.0.5"
-    react-jss "^8.4.0"
-    react-transition-group "^2.3.1"
-
 "@pie-ui/number-line@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-6.0.1.tgz#d8cc22021e541601f0c9035052d2a1ce47abbe32"
@@ -2383,6 +2364,27 @@
     d3-scale "^2.0.0"
     d3-selection "^1.4.0"
     decimal.js-light "^2.5.0"
+    lodash "^4.17.10"
+    mathjs "^5.4.1"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-draggable "^3.3.0"
+    react-jss "^8.4.0"
+    react-transition-group "^2.3.1"
+
+"@pie-ui/number-line@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.0.tgz#5905e4e106a847a77dcc6e7343357eaffb0ecf7e"
+  integrity sha512-HAEtKDCOBogtCoa6vW9I+7zWabFlJqjltQgmvjJ5gg1Z1g9l1KnV21GzpgN4bCp/BpAt5jHMY6sNeXa+EtGXUA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/icons" "^2.3.1"
+    "@pie-lib/math-rendering" "^1.3.1"
+    classnames "^2.2.5"
+    d3-scale "^2.0.0"
+    d3-selection "^1.4.0"
     lodash "^4.17.10"
     mathjs "^5.4.1"
     prop-types "^15.6.1"
