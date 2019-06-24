@@ -27,35 +27,38 @@ exports[`main snapshot renders 1`] = `
         onChange={[Function]}
         size={
           Object {
-            "arrows": Object {
-              "left": true,
-              "right": true,
+            "correctResponse": Array [],
+            "graph": Object {
+              "arrows": Object {
+                "left": true,
+                "right": true,
+              },
+              "availableTypes": Object {
+                "LEE": true,
+                "LEF": true,
+                "LFE": true,
+                "LFF": true,
+                "PF": true,
+                "REN": true,
+                "REP": true,
+                "RFN": true,
+                "RFP": true,
+              },
+              "domain": Object {
+                "max": 5,
+                "min": -5,
+              },
+              "exhibitOnly": false,
+              "height": 400,
+              "initialElements": Array [],
+              "initialType": "PF",
+              "maxNumberOfPoints": 20,
+              "ticks": Object {
+                "major": 2,
+                "minor": 1,
+              },
+              "width": 500,
             },
-            "availableTypes": Object {
-              "LEE": true,
-              "LEF": true,
-              "LFE": true,
-              "LFF": true,
-              "PF": true,
-              "REN": true,
-              "REP": true,
-              "RFN": true,
-              "RFP": true,
-            },
-            "domain": Object {
-              "max": 5,
-              "min": -5,
-            },
-            "exhibitOnly": false,
-            "height": 400,
-            "initialElements": Array [],
-            "initialType": "PF",
-            "maxNumberOfPoints": 20,
-            "ticks": Object {
-              "major": 2,
-              "minor": 1,
-            },
-            "width": 500,
           }
         }
       />
@@ -64,12 +67,6 @@ exports[`main snapshot renders 1`] = `
       label="Domain"
     >
       <Domain
-        domain={
-          Object {
-            "max": 5,
-            "min": -5,
-          }
-        }
         onChange={[Function]}
       />
     </FormSection>
@@ -79,31 +76,13 @@ exports[`main snapshot renders 1`] = `
       label="Ticks"
     >
       <WithStyles(Ticks)
-        domain={
-          Object {
-            "max": 5,
-            "min": -5,
-          }
-        }
         onChange={[Function]}
-        ticks={
-          Object {
-            "major": 2,
-            "minor": 1,
-          }
-        }
       />
     </FormSection>
     <FormSection
       label="Arrows"
     >
       <WithStyles(Arrows)
-        arrows={
-          Object {
-            "left": true,
-            "right": true,
-          }
-        }
         onChange={[Function]}
       />
     </FormSection>
@@ -124,7 +103,6 @@ exports[`main snapshot renders 1`] = `
       max={20}
       min={1}
       onChange={[Function]}
-      value={20}
     />
   </FormSection>
   <WithStyles(Button)
@@ -154,6 +132,75 @@ exports[`main snapshot renders 1`] = `
           "correctResponse": undefined,
           "feedback": undefined,
           "graph": Object {
+            "correctResponse": Array [],
+            "graph": Object {
+              "arrows": Object {
+                "left": true,
+                "right": true,
+              },
+              "availableTypes": Object {
+                "LEE": true,
+                "LEF": true,
+                "LFE": true,
+                "LFF": true,
+                "PF": true,
+                "REN": true,
+                "REP": true,
+                "RFN": true,
+                "RFP": true,
+              },
+              "domain": Object {
+                "max": 5,
+                "min": -5,
+              },
+              "exhibitOnly": false,
+              "height": 400,
+              "initialElements": Array [],
+              "initialType": "PF",
+              "maxNumberOfPoints": 20,
+              "ticks": Object {
+                "major": 2,
+                "minor": 1,
+              },
+              "width": 500,
+            },
+            "title": undefined,
+          },
+          "prompt": undefined,
+        }
+      }
+      onAddElement={[Function]}
+      onDeleteElements={[Function]}
+      onMoveElement={[Function]}
+    />
+    <WithStyles(CardBar)
+      header="Available Types"
+      mini={true}
+    >
+      Click on the input options to be displayed to the students. All inputs will display by default.
+    </WithStyles(CardBar)>
+    <div>
+      <WithStyles(PointConfig)
+        onSelectionChange={[Function]}
+      />
+    </div>
+  </div>
+  <WithStyles(CardBar)
+    header="Initial view/Make Exhibit"
+  >
+    Use this number line to set a starting point, line segment or ray. This is optional. 
+    <br />
+    This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
+  </WithStyles(CardBar)>
+  <Jss(NumberLine)
+    answer={Array []}
+    model={
+      Object {
+        "correctResponse": undefined,
+        "feedback": undefined,
+        "graph": Object {
+          "correctResponse": Array [],
+          "graph": Object {
             "arrows": Object {
               "left": true,
               "right": true,
@@ -182,85 +229,9 @@ exports[`main snapshot renders 1`] = `
               "major": 2,
               "minor": 1,
             },
-            "title": undefined,
             "width": 500,
           },
-          "prompt": undefined,
-        }
-      }
-      onAddElement={[Function]}
-      onDeleteElements={[Function]}
-      onMoveElement={[Function]}
-    />
-    <WithStyles(CardBar)
-      header="Available Types"
-      mini={true}
-    >
-      Click on the input options to be displayed to the students. All inputs will display by default.
-    </WithStyles(CardBar)>
-    <div>
-      <WithStyles(PointConfig)
-        onSelectionChange={[Function]}
-        selection={
-          Object {
-            "LEE": true,
-            "LEF": true,
-            "LFE": true,
-            "LFF": true,
-            "PF": true,
-            "REN": true,
-            "REP": true,
-            "RFN": true,
-            "RFP": true,
-          }
-        }
-      />
-    </div>
-  </div>
-  <WithStyles(CardBar)
-    header="Initial view/Make Exhibit"
-  >
-    Use this number line to set a starting point, line segment or ray. This is optional. 
-    <br />
-    This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
-  </WithStyles(CardBar)>
-  <Jss(NumberLine)
-    answer={Array []}
-    model={
-      Object {
-        "correctResponse": undefined,
-        "feedback": undefined,
-        "graph": Object {
-          "arrows": Object {
-            "left": true,
-            "right": true,
-          },
-          "availableTypes": Object {
-            "LEE": true,
-            "LEF": true,
-            "LFE": true,
-            "LFF": true,
-            "PF": true,
-            "REN": true,
-            "REP": true,
-            "RFN": true,
-            "RFP": true,
-          },
-          "domain": Object {
-            "max": 5,
-            "min": -5,
-          },
-          "exhibitOnly": false,
-          "height": 400,
-          "initialElements": Array [],
-          "initialType": "PF",
-          "maxNumberOfPoints": 20,
-          "ticks": Object {
-            "major": 2,
-            "minor": 1,
-          },
           "title": undefined,
-          "width": 500,
         },
         "prompt": undefined,
       }
@@ -270,7 +241,6 @@ exports[`main snapshot renders 1`] = `
     onMoveElement={[Function]}
   />
   <InputCheckbox
-    checked={false}
     label="Make exhibit"
     onChange={[Function]}
     value="exhibitOnly"

@@ -94,10 +94,6 @@ export class Main extends React.Component {
     onChange: PropTypes.func.isRequired
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   graphChange = o => {
     const { onChange } = this.props;
     const graph = { ...this.props.model.graph, ...o };
@@ -131,7 +127,7 @@ export class Main extends React.Component {
   changeArrows = arrows => this.graphChange({ arrows });
 
   setDefaults = () => {
-    this.props.onChange({ graph: cloneDeep(defaultModel) });
+    this.props.onChange({ graph: cloneDeep(defaultModel.graph) });
   };
 
   exhibitChanged = (event, value) => {
@@ -212,7 +208,11 @@ export class Main extends React.Component {
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
     );
-    const initialView = cloneDeep(graph.initialElements).map(toGraphFormat);
+
+    console.log('graph:', graph);
+    const initialView = cloneDeep(graph.initialElements || []).map(
+      toGraphFormat
+    );
 
     return (
       <div className={classes.root}>

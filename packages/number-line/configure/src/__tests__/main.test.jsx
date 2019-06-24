@@ -27,7 +27,7 @@ describe('main', () => {
     const props = { ...defaults, ...extras };
     return shallow(<Main {...props} />);
   };
-  describe('snapshot', () => {
+  describe.only('snapshot', () => {
     it('renders', () => {
       w = wrapper();
       expect(w).toMatchSnapshot();
