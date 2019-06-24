@@ -180,11 +180,11 @@ export class Configure extends React.Component {
             </InputContainer>)
           }
 
-          <GraphingConfig
-            config={config}
-            model={model}
-            onChange={this.props.onModelChanged}
-          />
+          {/*<GraphingConfig*/}
+          {/*  config={config}*/}
+          {/*  model={model}*/}
+          {/*  onChange={this.props.onModelChanged}*/}
+          {/*/>*/}
 
           <CorrectResponse
             config={config}
