@@ -373,5 +373,20 @@
     "committerDate": "2019-06-21 15:57:35 +0100",
     "isTagged": true,
     "tag": "@pie-element/number-line-configure@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "update pie-ui/number-line",
+    "merge": null,
+    "header": "feat: update pie-ui/number-line",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "54da4d70d306fa5dc89fc52876b333a7b37e493d",
+    "gitTags": "",
+    "committerDate": "2019-06-24 11:06:21 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-configure@4.1.0"
   }
 ]
