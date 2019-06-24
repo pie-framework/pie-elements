@@ -1,4 +1,4 @@
-import { InputCheckbox, FeedbackConfig } from '@pie-lib/config-ui';
+import { InputCheckbox, FeedbackConfig, FormSection } from '@pie-lib/config-ui';
 import NumberTextField from './number-text-field';
 import CardBar from './card-bar';
 import {
@@ -7,7 +7,6 @@ import {
   tickUtils
 } from '@pie-ui/number-line';
 import Size from './size';
-import * as _ from 'lodash';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Domain from './domain';
@@ -17,8 +16,8 @@ import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
-import { FormSection } from '@pie-lib/config-ui';
 import Ticks from './ticks';
+import { model as defaultModel } from './defaults';
 
 const trimModel = model => ({
   ...model,
@@ -73,37 +72,6 @@ const styles = theme => ({
   }
 });
 
-const defaultConfig = {
-  domain: { min: 0, max: 5 },
-  ticks: {
-    minor: 1,
-    major: 2
-  },
-  arrows: {
-    left: true,
-    right: true
-  },
-  maxNumberOfPoints: 20,
-  width: 500,
-  height: 400,
-  showMinorTicks: true,
-  tickLabelOverrides: [],
-  initialType: 'PF',
-  exhibitOnly: false,
-  availableTypes: {
-    PF: true,
-    LFF: true,
-    LEF: true,
-    LFE: true,
-    LEE: true,
-    RFN: true,
-    RFP: true,
-    REN: true,
-    REP: true
-  },
-  initialElements: []
-};
-
 export const toPointType = response => {
   function rest(response) {
     if (response.pointType) {
@@ -118,7 +86,7 @@ export const toPointType = response => {
   return `${response.type[0]}${rest(response)}`.toUpperCase();
 };
 
-class Main extends React.Component {
+export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
@@ -128,16 +96,6 @@ class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    this.setDefaults = this.setDefaults.bind(this);
-    this.moveCorrectResponse = this.moveCorrectResponse.bind(this);
-    this.deleteCorrectResponse = this.deleteCorrectResponse.bind(this);
-    this.addCorrectResponse = this.addCorrectResponse.bind(this);
-    this.availableTypesChange = this.availableTypesChange.bind(this);
-
-    this.moveInitialView = this.moveInitialView.bind(this);
-    this.addInitialView = this.addInitialView.bind(this);
-    this.deleteInitialView = this.deleteInitialView.bind(this);
-    this.exhibitChanged = this.exhibitChanged.bind(this);
   }
 
   graphChange = o => {
@@ -172,16 +130,16 @@ class Main extends React.Component {
 
   changeArrows = arrows => this.graphChange({ arrows });
 
-  setDefaults() {
-    this.props.onChange({ graph: _.cloneDeep(defaultConfig) });
-  }
+  setDefaults = () => {
+    this.props.onChange({ graph: cloneDeep(defaultModel) });
+  };
 
-  exhibitChanged(event, value) {
+  exhibitChanged = (event, value) => {
     const graph = { ...this.props.model.graph, exhibitOnly: value };
     this.props.onChange({ graph });
-  }
+  };
 
-  moveCorrectResponse(index, el, position) {
+  moveCorrectResponse = (index, el, position) => {
     const { onChange, model } = this.props;
     el.position = position;
     const update = toSessionFormat(
@@ -190,9 +148,9 @@ class Main extends React.Component {
     const correctResponse = [...model.correctResponse];
     correctResponse[index] = update;
     onChange({ correctResponse });
-  }
+  };
 
-  moveInitialView(index, el, position) {
+  moveInitialView = (index, el, position) => {
     const { model, onChange } = this.props;
     el.position = position;
     const update = toSessionFormat(
@@ -202,62 +160,55 @@ class Main extends React.Component {
     initialElements[index] = update;
     const graph = { ...model.graph, initialElements };
     onChange({ graph });
-  }
+  };
 
-  availableTypesChange(availableTypes) {
+  availableTypesChange = availableTypes => {
     const { model, onChange } = this.props;
     new Set(model.correctResponse.map(toPointType)).forEach(pointType => {
       availableTypes[pointType] = true;
     });
     const graph = { ...model.graph, availableTypes };
     onChange({ graph });
-  }
+  };
 
-  deleteCorrectResponse(indices) {
+  deleteCorrectResponse = indices => {
     const { model, onChange } = this.props;
     const correctResponse = model.correctResponse.filter((v, index) => {
       return !indices.some(d => d === index);
     });
     onChange({ correctResponse });
-  }
+  };
 
-  deleteInitialView(indices) {
+  deleteInitialView = indices => {
     const { model, onChange } = this.props;
     const initialElements = model.graph.initialElements.filter((v, index) => {
       return !indices.some(d => d === index);
     });
     const graph = { ...model.graph, initialElements };
     onChange({ graph });
-  }
+  };
 
-  addCorrectResponse(data) {
+  addCorrectResponse = data => {
     const { model, onChange } = this.props;
     const correctResponse = [...model.correctResponse];
     correctResponse.push(toSessionFormat(data));
     onChange({ correctResponse });
-  }
+  };
 
-  addInitialView(data) {
+  addInitialView = data => {
     const { onChange, model } = this.props;
     const graph = { ...model.graph };
     graph.initialElements = graph.initialElements || [];
     graph.initialElements.push(toSessionFormat(data));
     onChange({ graph });
-  }
+  };
 
   render() {
-    const {
-      classes,
-      // onDomainChange,
-      model,
-      onChange,
-      configuration
-    } = this.props;
+    const { classes, model, onChange, configuration } = this.props;
 
     const { graph } = model;
     const { prompt } = configuration;
 
-    console.log('model');
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
     );
