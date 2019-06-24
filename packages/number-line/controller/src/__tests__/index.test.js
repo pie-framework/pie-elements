@@ -2,16 +2,22 @@ import _ from 'lodash';
 import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
 
-const question = {
+const mkQuestion = extras => ({
   correctResponse: [
     {
       type: 'point',
       pointType: 'full',
-      domainPosition: 1
+      position: 1
+    },
+    {
+      type: 'ray',
+      direction: 'left',
+      position: 1,
+      pointType: 'empty'
     }
   ],
   graph: {
-    domain: [0, 1]
+    domain: { min: 0, max: 1 }
   },
   feedback: {
     correct: {
@@ -23,99 +29,73 @@ const question = {
     partial: {
       type: 'default'
     }
-  }
-};
+  },
+  ...extras
+});
 
 const correctSession = {
-  answer: question.correctResponse
+  answer: mkQuestion().correctResponse
 };
 
 const incorrectSession = {
-  answer: [{ type: 'point', pointType: 'empty', domainPosition: 1 }]
+  answer: [{ type: 'point', pointType: 'empty', position: 2 }]
+};
+const partiallyCorrect = {
+  answer: [mkQuestion().correctResponse[0]]
 };
 
 const mode = m => ({ mode: m });
 
 describe('controller', () => {
   describe('outcome', () => {
-    it('returns score of 1.0 for correct answer', () => {
-      return controller.outcome(question, correctSession).then(o => {
-        expect(o).toEqual({
-          score: {
-            scaled: 1.0
-          }
-        });
+    const assertOutcome = (label, question, session, env, expected) => {
+      it(label, async () => {
+        const result = await controller.outcome(question, session, env);
+        expect(result).toMatchObject(expected);
       });
-    });
+    };
 
-    it('returns score of 0.0 for incorrect answer', () => {
-      return controller.outcome(question, incorrectSession).then(o => {
-        expect(o).toEqual({
-          score: {
-            scaled: 0.0
-          }
-        });
-      });
-    });
-
-    it('returns score of 0.0 for incorrect answer that also has correct answer', () => {
-      const s = _.cloneDeep(incorrectSession);
-      s.answer = s.answer.concat(correctSession.answer);
-      return controller.outcome(question, s).then(o => {
-        expect(o).toEqual({
-          score: {
-            scaled: 0.0
-          }
-        });
-      });
-    });
-
-    it('returns score of -1 for an unanswered answer', () => {
-      const s = _.cloneDeep(incorrectSession);
-      s.answer = [];
-      return controller.outcome(question, s).then(o => {
-        expect(o).toEqual({
-          score: {
-            scaled: -1.0
-          }
-        });
-      });
-    });
-
-    describe('with partial scoring', () => {
-      it('returns a partial score', () => {
-        const q = _.cloneDeep(question);
-
-        q.partialScoring = [
-          {
-            numberOfCorrect: 1,
-            scorePercentage: 21
-          }
-        ];
-
-        q.allowPartialScoring = true;
-        q.correctResponse.push({
-          type: 'point',
-          domainPosition: 2,
-          pointType: 'full'
-        });
-
-        return controller.outcome(q, correctSession).then(o => {
-          expect(o).toEqual({
-            score: {
-              scaled: 0.21
-            }
-          });
-        });
-      });
-    });
+    assertOutcome('correct', mkQuestion(), correctSession, {}, { score: 1 });
+    assertOutcome(
+      'incorrect',
+      mkQuestion(),
+      incorrectSession,
+      {},
+      { score: 0 }
+    );
+    assertOutcome(
+      'partial on by default',
+      mkQuestion(),
+      partiallyCorrect,
+      {},
+      { score: 0.5 }
+    );
+    assertOutcome(
+      'partial disabled in env',
+      mkQuestion(),
+      partiallyCorrect,
+      { partialScoring: false },
+      { score: 0 }
+    );
+    assertOutcome(
+      'partial disabled in model',
+      mkQuestion({ partialScoring: false }),
+      partiallyCorrect,
+      {},
+      { score: 0.0 }
+    );
+    assertOutcome(
+      'partial enabled in model',
+      mkQuestion({ partialScoring: true }),
+      partiallyCorrect,
+      {},
+      { score: 0.5 }
+    );
   });
 
   describe('model', () => {
     const assertModel = (msg, question, session, env, expected) => {
-      question = _.merge(question, {
-        graph: {}
-      });
+      question = mkQuestion(question);
       session = _.merge(session, {});
       env = _.merge(env, {});
 
@@ -130,7 +110,6 @@ describe('controller', () => {
             }
           })
           .catch(e => {
-            console.log(e);
             throw new Error('Create Model spec error');
           });
       });
@@ -177,12 +156,12 @@ describe('controller', () => {
     describe('graph', () => {
       assertModel(
         'graph is returned',
-        { graph: { domain: [0, 1] } },
+        { graph: { domain: { min: -1, max: 1 } } },
         {},
         {},
         {
           graph: {
-            domain: [0, 1]
+            domain: { min: -1, max: 1 }
           }
         }
       );
@@ -191,12 +170,12 @@ describe('controller', () => {
     describe('corrected', () => {
       assertModel(
         'corrected.correct has answer index 0',
-        question,
+        {},
         correctSession,
         { mode: 'evaluate' },
         {
           corrected: {
-            correct: [0],
+            correct: [0, 1],
             incorrect: [],
             notInAnswer: []
           }
@@ -205,7 +184,7 @@ describe('controller', () => {
 
       assertModel(
         'corrected.incorrect has answer index 0',
-        question,
+        {},
         incorrectSession,
         { mode: 'evaluate' },
         {
@@ -220,7 +199,7 @@ describe('controller', () => {
     describe('correctResponse', () => {
       assertModel(
         'correctResponse is empty if correct',
-        question,
+        {},
         correctSession,
         mode('evaluate'),
         o => expect(o.correctResponse).toBe(undefined)
@@ -228,16 +207,16 @@ describe('controller', () => {
 
       assertModel(
         'correctResponse is not empty if correct',
-        question,
+        {},
         incorrectSession,
         mode('evaluate'),
-        { correctResponse: question.correctResponse }
+        { correctResponse: mkQuestion().correctResponse }
       );
     });
 
     describe('feedback', () => {
       const assertFeedback = (s, fbType) => {
-        assertModel(fbType, question, s, mode('evaluate'), {
+        assertModel(fbType, {}, s, mode('evaluate'), {
           feedback: {
             type: fbType,
             message: defaults[fbType].default
@@ -253,7 +232,7 @@ describe('controller', () => {
       const assertDefault = c => {
         assertModel(
           `returns ${c}`,
-          question,
+          mkQuestion,
           {},
           { accessibility: { colorContrast: c } },
           {

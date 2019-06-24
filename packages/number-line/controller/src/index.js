@@ -5,6 +5,7 @@ import isEqual from 'lodash/isEqual';
 import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 import defaults from './defaults';
 
@@ -27,7 +28,28 @@ const getPartialScore = (corrected, ps) => {
   }
 };
 
-export function outcome(question, session) {
+const accumulateAnswer = correctResponse => (total, answer) => {
+  const isCorrectResponse = correctResponse.some(cr => isEqual(cr, answer));
+  return total + (isCorrectResponse ? 1 : 0);
+};
+/**
+ */
+export function outcome(model, session, env) {
+  return new Promise(resolve => {
+    const partialScoringEnabled = partialScoring.enabled(model, env);
+
+    const numCorrect = (session.answer || []).reduce(
+      accumulateAnswer(model.correctResponse),
+      0
+    );
+
+    const total = model.correctResponse.length;
+    const score = numCorrect / total;
+    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+  });
+}
+
+export function getScore(question, session) {
   session.answer = session.answer || [];
 
   return new Promise(resolve => {
@@ -56,19 +78,14 @@ export function outcome(question, session) {
   });
 }
 
-const getCorrected = (answer, correctResponse) => {
-  const matches = a => {
-    return v => {
-      return isEqual(a, v);
-    };
-  };
+const matches = a => v => isEqual(a, v);
 
+const getCorrected = (answer, correctResponse) => {
   return answer.reduce(
     (acc, a, index) => {
       const { correct, incorrect, notInAnswer } = acc;
 
       const match = find(notInAnswer, matches(a));
-
       if (match) {
         correct.push(index);
         notInAnswer.splice(notInAnswer.indexOf(match), 1);
@@ -150,7 +167,7 @@ export function createDefaultModel(model = {}) {
         ...defaults,
         ...model
       },
-      colorContrast: 'black_on_white',
+      colorContrast: 'black_on_white'
     };
 
     resolve(omitBy(out, v => !v));

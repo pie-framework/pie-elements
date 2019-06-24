@@ -30,6 +30,10 @@ export const processMarkup = markup => {
 const REGEX = /\{\{(\d?)\}\}/g;
 
 export const createSlateMarkup = (markup, choices) => {
+  if (!markup) {
+    return '';
+  }
+
   return markup.replace(REGEX, (match, g) => {
     return `<span data-type="explicit_constructed_response">${choices[g][0].label}</span>`;
   });

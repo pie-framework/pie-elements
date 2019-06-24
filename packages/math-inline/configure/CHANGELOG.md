@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.12...@pie-element/math-inline-configure@2.2.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.11...@pie-element/math-inline-configure@2.1.12) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.10...@pie-element/math-inline-configure@2.1.11) (2019-06-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.9...@pie-element/math-inline-configure@2.1.10) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.8...@pie-element/math-inline-configure@2.1.9) (2019-06-13)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.7...@pie-element/math-inline-configure@2.1.8) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.6...@pie-element/math-inline-configure@2.1.7) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.5...@pie-element/math-inline-configure@2.1.6) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.4...@pie-element/math-inline-configure@2.1.5) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.3...@pie-element/math-inline-configure@2.1.4) (2019-05-31)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.2...@pie-element/math-inline-configure@2.1.3) (2019-05-23)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
 ## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.1.1...@pie-element/math-inline-configure@2.1.2) (2019-05-21)
 
 

@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.8...@pie-element/extended-text-entry@4.1.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [4.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.7...@pie-element/extended-text-entry@4.0.8) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.6...@pie-element/extended-text-entry@4.0.7) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.5...@pie-element/extended-text-entry@4.0.6) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.4...@pie-element/extended-text-entry@4.0.5) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.3...@pie-element/extended-text-entry@4.0.4) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.2...@pie-element/extended-text-entry@4.0.3) (2019-05-23)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
 ## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.0.1...@pie-element/extended-text-entry@4.0.2) (2019-05-21)
 
 

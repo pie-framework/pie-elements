@@ -1,0 +1,142 @@
+{
+  "description": "NOTE: teacherInstructions, studentInstructions, rationale, rubric & autoScoring\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/explicit-constructed-response",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "choices": {
+      "description": "* Object with all the available choices for each response area.\n* Keys need to be integers from 0 to n - 1 (where n is the number of areas)",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "array",
+          "items": {
+            "title": "Choice",
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "The value for the choice",
+                "type": "string",
+                "title": "value"
+              },
+              "label": {
+                "description": "The label of the choice",
+                "type": "string",
+                "title": "label"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ]
+          }
+        }
+      },
+      "title": "choices"
+    },
+    "markup": {
+      "description": "The markup for the pie-ui element",
+      "type": "string",
+      "title": "markup"
+    },
+    "prompt": {
+      "description": "The item stem for the question",
+      "type": "string",
+      "title": "prompt"
+    },
+    "rationale": {
+      "description": "Indicates correct answer rationale",
+      "type": "string",
+      "title": "rationale"
+    },
+    "autoScoring": {
+      "description": "Indicates auto scoring type",
+      "enum": [
+        "allOrNothing",
+        "partial"
+      ],
+      "type": "string",
+      "title": "autoScoring"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "rubric": {
+      "description": "Indicates value for rubric",
+      "type": "string",
+      "title": "rubric"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "autoScoring",
+    "choices",
+    "element",
+    "id",
+    "markup",
+    "rationale",
+    "rubric",
+    "studentInstructions",
+    "teacherInstructions"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "Choice": {
+      "title": "Choice",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "The value for the choice",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "The label of the choice",
+          "type": "string",
+          "title": "label"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer,
-  layout
+  layout,
+  settings
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+const { toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -62,18 +64,19 @@ export class Main extends React.Component {
     })
   };
 
-  onPromptChanged = prompt => {
+  onModelChange = newVal => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      ...newVal
     });
   };
 
+  onPromptChanged = prompt => {
+    this.onModelChange({ prompt });
+  };
+
   onMarkupChanged = slateMarkup => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      slateMarkup
-    });
+    this.onModelChange({ slateMarkup });
   };
 
   render() {
@@ -81,15 +84,37 @@ export class Main extends React.Component {
       classes,
       model,
       configuration,
+      onConfigurationChanged,
       imageSupport
     } = this.props;
     const {
-      prompt
+      prompt,
+      partialScoring,
+      lockChoiceOrder,
     } = configuration;
 
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              configuration={configuration}
+              onChangeModel={model => this.onModelChange(model)}
+              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              groups={{
+                'Item Type': {
+                  partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
+                },
+                'Properties': {
+                  lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label)
+                },
+              }}
+            />
+          }
+        >
           <div>
             {prompt.settings && (
               <InputContainer

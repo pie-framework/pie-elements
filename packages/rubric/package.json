@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/rubric",
-  "version": "1.0.1",
+  "version": "1.1.4",
   "main": "lib/index.js",
   "description": "Rubric Scoring Interaction",
   "repository": "pie-framework/pie-elements",
@@ -10,7 +10,6 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "prop-types": "^15.7.2"
-
   },
   "author": "pie framework developers",
   "license": "ISC"

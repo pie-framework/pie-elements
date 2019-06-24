@@ -43,5 +43,50 @@
     "committerDate": "2019-05-16 15:55:08 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@1.1.0"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "bumped the packages that depend on the editable-html",
+    "merge": null,
+    "header": "chore(version): bumped the packages that depend on the editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "00eb12e58c01b50dde8e4d1a179c879e2f3216fc",
+    "gitTags": " (develop)",
+    "committerDate": "2019-06-06 13:16:05 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@1.1.1"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "added choice position select to ditb, fixed ecr markup processing",
+    "merge": null,
+    "header": "feat(general): added choice position select to ditb, fixed ecr markup processing",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9376dac3e73e13bd2032a5cc4a33d388ce1cc10b",
+    "gitTags": "",
+    "committerDate": "2019-06-20 08:37:40 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@1.2.0"
   }
 ]
