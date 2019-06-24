@@ -473,5 +473,40 @@
     "committerDate": "2019-06-20 22:32:48 -0400",
     "isTagged": true,
     "tag": "@pie-element/number-line@4.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "add to correct response`",
+    "merge": null,
+    "header": "fix: add to correct response`",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4ca8f1a46eca1eb312f58a80b1972c47f9a1f6ab",
+    "gitTags": "",
+    "committerDate": "2019-06-23 22:59:15 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "number line updates",
+    "merge": null,
+    "header": "feat: number line updates",
+    "body": null,
+    "footer": "BREAKING CHANGE: `domain` is now `{min:number,max:number}`, `ticks:\n{minor:number, major:number}` added.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`domain` is now `{min:number,max:number}`, `ticks:\n{minor:number, major:number}` added."
+      }
+    ],
+    "hash": "f4dbf3d0a1b8f56e4d789109b8dea596fecc0f13",
+    "gitTags": "",
+    "committerDate": "2019-06-21 15:57:35 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.0.0"
   }
 ]

@@ -128,5 +128,25 @@
     "committerDate": "2019-05-10 12:50:58 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line-controller@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "number line updates",
+    "merge": null,
+    "header": "feat: number line updates",
+    "body": null,
+    "footer": "BREAKING CHANGE: `domain` is now `{min:number,max:number}`, `ticks:\n{minor:number, major:number}` added.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`domain` is now `{min:number,max:number}`, `ticks:\n{minor:number, major:number}` added."
+      }
+    ],
+    "hash": "f4dbf3d0a1b8f56e4d789109b8dea596fecc0f13",
+    "gitTags": "",
+    "committerDate": "2019-06-21 15:57:35 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@4.0.0"
   }
 ]
