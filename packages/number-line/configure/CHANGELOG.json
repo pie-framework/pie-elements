@@ -388,5 +388,35 @@
     "committerDate": "2019-06-24 11:06:21 +0100",
     "isTagged": true,
     "tag": "@pie-element/number-line-configure@4.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "set graph prop as default model",
+    "merge": null,
+    "header": "fix: set graph prop as default model",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "63b0bf26a8478aaacbca894a012226fd5818af3b",
+    "gitTags": " (origin/develop, origin/HEAD, develop)",
+    "committerDate": "2019-06-24 11:36:08 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-configure@4.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-ui/number-line to ^7.1.0",
+    "merge": null,
+    "header": "fix: bump @pie-ui/number-line to ^7.1.0",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "81b49b35253a9983e473f7228edb47de419a7f49",
+    "gitTags": "",
+    "committerDate": "2019-06-24 11:25:22 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-configure@4.1.1"
   }
 ]
