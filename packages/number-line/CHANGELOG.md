@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.1.0...@pie-element/number-line@5.1.1) (2019-06-24)
+
+
+### Bug Fixes
+
+* bump @pie-ui/number-line to ^7.1.0 ([81b49b3](https://github.com/pie-framework/pie-elements/commit/81b49b3))
+* set graph prop as default model ([63b0bf2](https://github.com/pie-framework/pie-elements/commit/63b0bf2))
+
+
+
+
+
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.0.0...@pie-element/number-line@5.1.0) (2019-06-24)
 
 
