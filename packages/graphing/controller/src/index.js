@@ -11,7 +11,13 @@ const log = debug('@pie-element:graphing:controller');
 
 const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
-  return isEqual(A.x, B.x) && isEqual(A.y, B.y);
+  let equalLabel = true;
+
+  if (A.label || B.label) {
+    equalLabel = isEqual(A.label, B.label);
+  }
+
+  return isEqual(A.x, B.x) && isEqual(A.y, B.y) && equalLabel;
 };
 
 const equalSegment = (A, B, C, D) => {
@@ -45,8 +51,8 @@ const equalRay = (A, B, C, D) => {
 const equalPolygon = (pointsA, pointsB) => {
   const sessAnswerPoints = lodash.uniqWith(pointsA, isEqual);
   const withoutDuplicates = lodash.uniqWith(pointsB, isEqual);
-  const sB = lodash.orderBy(sessAnswerPoints, 'x');
-  const sD = lodash.orderBy(withoutDuplicates, 'x');
+  const sB = lodash.orderBy(sessAnswerPoints, ['x','y'], ['asc', 'asc']);
+  const sD = lodash.orderBy(withoutDuplicates, ['x','y'], ['asc', 'asc']);
 
   return isEqual(sD, sB);
 };
@@ -118,7 +124,19 @@ const equalParabola = (A, B, C, D) => {
   return (dif.length === 0 || nDif.length === 0) && min === minMark && max === maxMark;
 };
 
-const mappedIsEqual = {
+const initializeGraphMap = () => ({
+  point: [],
+  segment: [],
+  line: [],
+  ray: [],
+  vector: [],
+  polygon: [],
+  circle: [],
+  sine: [],
+  parabola: []
+});
+
+const mapForIsEqual = {
   point: (sessAnswer, mark) => equalPoint(sessAnswer, mark),
   segment: (sessAnswer, mark) => equalSegment(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
   line: (sessAnswer, mark) => equalLine(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
@@ -131,24 +149,134 @@ const mappedIsEqual = {
 };
 
 const eliminateDuplicates = (marks) => {
-  const mappedMarks = {
-    point: [],
-    segment: [],
-    line: [],
-    ray: [],
-    vector: [],
-    polygon: [],
-    circle: [],
-    sine: [],
-    parabola: []
-  };
+  const mappedMarks = initializeGraphMap();
   marks.forEach(mark => mappedMarks[mark.type].push(mark));
 
   Object.keys(mappedMarks).forEach(key => {
-    mappedMarks[key] = lodash.uniqWith(mappedMarks[key], mappedIsEqual[key]);
+    mappedMarks[key] = lodash.uniqWith(mappedMarks[key], mapForIsEqual[key]);
   });
 
   return mappedMarks;
+};
+
+const unMapMarks = (marks) => Object.values(marks).reduce((a, b) => ([...a, ...b]));
+
+const dichotomous = (answers, marksWithCorrectnessValue) => {
+  let correctAnswer = false;
+  let correctMarks = Object.values(marksWithCorrectnessValue)[0];
+
+  Object.keys(answers).map(answerKey => {
+    // number of correct marks for this answer
+    const noDuplicatesMappedMarks = unMapMarks(eliminateDuplicates(answers[answerKey].marks));
+    // number of selected marks
+    const correctAnswers = unMapMarks(marksWithCorrectnessValue[answerKey]);
+
+    // check if number of marks are equal and if all are correct
+    if (noDuplicatesMappedMarks.length === correctAnswers.length  && correctAnswers.length === correctAnswers.filter(cm => cm.correctness === 'correct').length) {
+      correctAnswer = answerKey;
+      correctMarks = marksWithCorrectnessValue[answerKey];
+    }
+  });
+
+  return {
+    correctMarks: unMapMarks(correctMarks),
+    score: correctAnswer ? '100%' : '0%',
+    correctAnswer
+  };
+};
+
+const partial = (answers, marksWithCorrectnessValue) => {
+  let correctAnswer = false;
+  let correctMarks = Object.values(marksWithCorrectnessValue)[0];
+  let bestScore;
+
+  Object.keys(answers).map(answerKey => {
+    const noDuplicatesMappedMarks = eliminateDuplicates(answers[answerKey].marks);
+    let allCorrectScore = unMapMarks(noDuplicatesMappedMarks).length;
+    let score = 0;
+    let calculatedTools = 0;
+
+    Object.keys(marksWithCorrectnessValue[answerKey]).forEach(correctMarkKey => {
+      marksWithCorrectnessValue[answerKey][correctMarkKey].forEach(cM => {
+        calculatedTools += 1;
+        if (cM.correctness === 'incorrect') {
+          score = calculatedTools > allCorrectScore ? score - 1 : score;
+        } else {
+          score += 1;
+        }
+      });
+    });
+
+    if (!bestScore || score / allCorrectScore >= bestScore) {
+      bestScore = score / allCorrectScore;
+      correctMarks = marksWithCorrectnessValue[answerKey];
+      correctAnswer = answerKey;
+    }
+  });
+
+  return {
+    correctMarks: unMapMarks(correctMarks),
+    score: bestScore,
+    correctAnswer
+  };
+};
+
+const getScore = (question, session) => {
+  const { dichotomousScoring, partialScoring, answers } = question;
+
+  // student's answers without DUPLICATES having the mapped form
+  const noDuplicatesMappedSessionAnswers = eliminateDuplicates(session.answers);
+  let marksWithCorrectnessValue = {};
+
+  // answers contains all possible answers (correctResponse and alternates);
+  // answerKey: correctAnswer, alternate1, alternate2...
+  // we iterate the possible answers and set in marksWithCorrectnessValue
+  Object.keys(answers).map(answerKey => {
+
+    const { marks } = answers[answerKey];
+    marksWithCorrectnessValue[answerKey] = initializeGraphMap();
+
+    // possible response (correctAnswer, alternate1, ...) without DUPLICATES
+    const noDuplicatesMappedMarks = eliminateDuplicates(marks);
+
+    // check each response that student selected and set the correctness value
+    Object.keys(noDuplicatesMappedSessionAnswers).map(key => {
+      if (key === 'polygon') {
+        noDuplicatesMappedSessionAnswers[key].forEach(sessAnswer => {
+          let index;
+
+          noDuplicatesMappedMarks[key].forEach(poly => {
+            index = equalPolygon(sessAnswer.points, poly.points);
+          });
+
+          if (index) {
+            marksWithCorrectnessValue[answerKey][key].push({ ...sessAnswer, correctness: 'correct' });
+          } else {
+            marksWithCorrectnessValue[answerKey][key].push({ ...sessAnswer, correctness: 'incorrect' });
+          }
+        });
+      } else {
+        noDuplicatesMappedSessionAnswers[key].forEach(sessAnswer => {
+          let index = noDuplicatesMappedMarks[key].find(mark => mapForIsEqual[key](sessAnswer, mark));
+
+          if (index) {
+            marksWithCorrectnessValue[answerKey][key].push({ ...sessAnswer, correctness: 'correct' });
+          } else {
+            marksWithCorrectnessValue[answerKey][key].push({ ...sessAnswer, correctness: 'incorrect' });
+          }
+        });
+      }
+    });
+  });
+
+  if (dichotomousScoring) {
+    return dichotomous(answers, marksWithCorrectnessValue);
+  }
+
+
+  if (partialScoring) {
+    return partial(answers, marksWithCorrectnessValue);
+  }
 };
 
 export function model(question, session, env) {
@@ -185,50 +313,16 @@ export function model(question, session, env) {
     const out = Object.assign(base, {
       correctResponse: env.mode === 'evaluate' ? answers : undefined
     });
-    let correctnessMarks = {};
-
 
     if (env.mode === 'evaluate') {
-      Object.keys(question.answers).map(answer => {
-        const response = question.answers[answer];
-        const marks = response.marks;
-        correctnessMarks[answer] = [];
-
-        // object that contains each mark in his particular section, without duplicates
-        const noDuplicatesMappedMarks = eliminateDuplicates(marks);
-        const noDuplicatesMappedSessionAnswers = eliminateDuplicates(session.answers);
-
-        Object.keys(noDuplicatesMappedSessionAnswers).map(key => {
-          if (key === 'polygon') {
-            noDuplicatesMappedSessionAnswers[key].forEach(sessAnswer => {
-              let index;
-
-              noDuplicatesMappedMarks[key].forEach(poly => {
-                index = equalPolygon(sessAnswer.points, poly.points);
-              });
-
-              if (index) {
-                correctnessMarks[answer].push({ ...sessAnswer, correctness: 'correct' });
-              } else {
-                correctnessMarks[answer].push({ ...sessAnswer, correctness: 'incorrect' });
-              }
-            });
-          } else {
-            noDuplicatesMappedSessionAnswers[key].forEach(sessAnswer => {
-              let index = noDuplicatesMappedMarks[key].find(mark => mappedIsEqual[key](sessAnswer, mark));
-
-              if (index) {
-                correctnessMarks[answer].push({ ...sessAnswer, correctness: 'correct' });
-              } else {
-                correctnessMarks[answer].push({ ...sessAnswer, correctness: 'incorrect' });
-              }
-            });
-          }
-        });
-      });
-
-      console.log(correctnessMarks);
-      out.correctMarks = correctnessMarks;
+      // tODO
+      const result = getScore({
+        ...question,
+        dichotomousScoring: true,
+        partialScoring: false
+      }, session);
+      console.log('\nresult=', result);
+      out.correctMarks = result.correctMarks;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
