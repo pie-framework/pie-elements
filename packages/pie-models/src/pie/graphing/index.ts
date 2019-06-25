@@ -159,6 +159,11 @@ export interface GraphingPie extends PieModel {
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
     /**
+     * Authoring configuration
+     */
+    authoring?: ConfigureProp;
+
+    /**
      * Arrows configuration
      */
     arrows?: ConfigureProp;

@@ -43,6 +43,9 @@ export default {
     yAxisLabel: 'y',
   },
   configuration: {
+    authoring: {
+      enabled: false
+    },
     arrows: {
       settings: false,
       label: 'Include arrows',

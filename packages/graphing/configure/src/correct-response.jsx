@@ -128,9 +128,9 @@ export class CorrectResponse extends React.Component {
 
                     this.setState({
                       allTools: nextAllTools,
-                      currentTool: (currentTool.name === tool.name && tool.selected) ? nextAllTools[0] : currentTool
+                      currentTool: (currentTool.name === tool.name && tool.selected) ? currentTool : nextAllTools.find(nextTool => nextTool.selected === true)
                     }, () => {
-                      this.changeDisplayedTools(selectedTools);
+                      this.changeDisplayedTools(nextAllTools.filter(t => t.selected).map(t => t.component));
                     });
                   }}
                 >

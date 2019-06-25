@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
-import TextField from '@material-ui/core/TextField';
+import { TextField } from '@material-ui/core';
 
 import { get, set } from 'lodash';
 import Typography from '@material-ui/core/Typography';
@@ -53,8 +53,7 @@ export class GraphingConfig extends React.Component {
       tools.ray(),
       tools.line(),
       tools.sine(),
-      tools.parabola(),
-      tools.label()
+      tools.parabola()
     ];
     this.state = {
       currentTool: toolsArr[2],
@@ -65,8 +64,8 @@ export class GraphingConfig extends React.Component {
         graphTitle: false,
         coordinatesOnHover: false,
         size: {
-          width: 600,
-          height: 300
+          width: 400,
+          height: 400
         }
       },
     };
@@ -109,7 +108,7 @@ export class GraphingConfig extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { classes, model, authoringEnabled } = this.props;
     const { settings } = this.state;
 
     const Column = ({ columnKey, axis }) => {
@@ -176,7 +175,8 @@ export class GraphingConfig extends React.Component {
                 }
 
                 return (
-                  <NumberTextField
+                  <TextField
+                    type="number"
                     key={input.key}
                     label={input.label.toUpperCase()}
                     onChange={(event, value) => this.onChangeInputValue(input.key, value)}
@@ -196,10 +196,14 @@ export class GraphingConfig extends React.Component {
         Define Graph Attributes
 
         <div className={classes.container}>
-          <div className={classnames(classes.column, classes.settings)} key="settings">
-            <Column columnKey="domain" axis="x"/>
-            <Column columnKey="range" axis="y"/>
-          </div>
+          {
+            authoringEnabled && (
+              <div className={classnames(classes.column, classes.settings)} key="settings">
+                <Column columnKey="domain" axis="x"/>
+                <Column columnKey="range" axis="y"/>
+              </div>
+            )
+          }
 
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
