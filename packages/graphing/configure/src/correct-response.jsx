@@ -67,10 +67,8 @@ export class CorrectResponse extends React.Component {
       { name: 'parabola', component: tools.parabola(), selected: true },
     ];
 
-    const selectedTools = allTools.filter(t => t.selected);
     this.state = {
       allTools,
-      currentTool: selectedTools && selectedTools[0],
       settings: {
         includeArrows: true,
         labels: true,
@@ -100,7 +98,7 @@ export class CorrectResponse extends React.Component {
 
   render() {
     const { classes, model } = this.props;
-    const { allTools, currentTool, settings } = this.state;
+    const { allTools, settings } = this.state;
     const tools = allTools.map(t => t.component);
     const selectedTools = allTools.filter(t => t.selected).map(t => t.component);
 
@@ -128,7 +126,6 @@ export class CorrectResponse extends React.Component {
 
                     this.setState({
                       allTools: nextAllTools,
-                      currentTool: (currentTool.name === tool.name && tool.selected) ? currentTool : nextAllTools.find(nextTool => nextTool.selected === true)
                     }, () => {
                       this.changeDisplayedTools(nextAllTools.filter(t => t.selected).map(t => t.component));
                     });
@@ -160,7 +157,7 @@ export class CorrectResponse extends React.Component {
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
                 tools={tools}
                 displayedTools={selectedTools}
-                currentTool={currentTool && currentTool.component}
+                currentTool={selectedTools && selectedTools[0]}
                 defaultTool={selectedTools && selectedTools[0] && selectedTools[0].type}
               />
             </div>
