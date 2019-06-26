@@ -150,7 +150,10 @@ const mapForIsEqual = {
 
 const eliminateDuplicates = (marks) => {
   const mappedMarks = initializeGraphMap();
-  marks.forEach(mark => mappedMarks[mark.type].push(mark));
+
+  if (marks) {
+    marks.forEach(mark => mappedMarks[mark.type].push(mark));
+  }
 
   Object.keys(mappedMarks).forEach(toolType => {
     mappedMarks[toolType] = lodash.uniqWith(mappedMarks[toolType], mapForIsEqual[toolType]);
@@ -233,6 +236,10 @@ const getScore = (question, session) => {
   // student's answers without DUPLICATES having the mapped form
   const sessionAnswersMappedNoDuplicates = eliminateDuplicates(session.answers);
   let marksWithCorrectnessValue = {};
+
+  if (!answers) {
+    return {};
+  }
 
   // answers contains all possible answers (correctResponse and alternates);
   // answerKey: correctAnswer, alternate1, alternate2...

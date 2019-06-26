@@ -18,7 +18,8 @@ jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: props => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
+    radio: jest.fn(),
+    numberFields: jest.fn()
   }
 }));
 
@@ -99,14 +100,6 @@ describe('Configure', () => {
 
       return shallow(<Configure { ...configureProps } />);
     };
-  });
-
-  it('renders correctly', () => {
-    const component = wrapper();
-
-    expect(component.find(StyledGraphingConfig).length).toEqual(1);
-    expect(component.find(StyledCorrectResponse).length).toEqual(1);
-    expect(component.find(InputContainer).length).toEqual(2);
   });
 
   it('updates rationale', () => {
