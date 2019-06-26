@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@1.3.5...@pie-element/explicit-constructed-response-controller@1.3.6) (2019-06-26)
+
+
+### Bug Fixes
+
+* **rendering:** made sure all the items are rendered properly [c1935] ([61a85ab](https://github.com/pie-framework/pie-elements/commit/61a85ab))
+
+
+
+
+
 ## [1.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@1.3.4...@pie-element/explicit-constructed-response-controller@1.3.5) (2019-06-21)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-controller

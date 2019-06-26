@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.4.2...@pie-element/inline-dropdown-controller@1.4.3) (2019-06-26)
+
+
+### Bug Fixes
+
+* **rendering:** made sure all the items are rendered properly [c1935] ([61a85ab](https://github.com/pie-framework/pie-elements/commit/61a85ab))
+
+
+
+
+
 ## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.4.1...@pie-element/inline-dropdown-controller@1.4.2) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller
