@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.1...@pie-element/categorize-controller@3.1.2) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
+
+
+
+
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.0...@pie-element/categorize-controller@3.1.1) (2019-06-19)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.0.2...@pie-element/categorize-controller@3.1.0) (2019-06-19)
+
+
+### Features
+
+* **extras:** added row labels support and alternate responses ([280028f](https://github.com/pie-framework/pie-elements/commit/280028f))
+
+
+
+
+
 ## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.0.1...@pie-element/categorize-controller@3.0.2) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

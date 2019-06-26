@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main snapshot renders 1`] = `
+<div>
+  <p>
+    In this interaction, students plot points, line segments or rays on a number line.
+  </p>
+  <FormSection
+    label="Prompt"
+  >
+    <EditableHtml
+      disableUnderline={true}
+      nonEmpty={false}
+      onChange={[Function]}
+    />
+  </FormSection>
+  <WithStyles(CardBar)
+    header="Attributes"
+  >
+    Set up the number line by entering the domain and number of tick marks to display. Labels on the number line can be edited or removed by clicking on the label.
+  </WithStyles(CardBar)>
+  <div>
+    <FormSection
+      label="Size"
+    >
+      <WithStyles(Size)
+        onChange={[Function]}
+        size={
+          Object {
+            "correctResponse": Array [],
+            "graph": Object {
+              "arrows": Object {
+                "left": true,
+                "right": true,
+              },
+              "availableTypes": Object {
+                "LEE": true,
+                "LEF": true,
+                "LFE": true,
+                "LFF": true,
+                "PF": true,
+                "REN": true,
+                "REP": true,
+                "RFN": true,
+                "RFP": true,
+              },
+              "domain": Object {
+                "max": 5,
+                "min": -5,
+              },
+              "exhibitOnly": false,
+              "height": 400,
+              "initialElements": Array [],
+              "initialType": "PF",
+              "maxNumberOfPoints": 20,
+              "ticks": Object {
+                "major": 2,
+                "minor": 1,
+              },
+              "width": 500,
+            },
+          }
+        }
+      />
+    </FormSection>
+    <FormSection
+      label="Domain"
+    >
+      <Domain
+        onChange={[Function]}
+      />
+    </FormSection>
+  </div>
+  <div>
+    <FormSection
+      label="Ticks"
+    >
+      <WithStyles(Ticks)
+        onChange={[Function]}
+      />
+    </FormSection>
+    <FormSection
+      label="Arrows"
+    >
+      <WithStyles(Arrows)
+        onChange={[Function]}
+      />
+    </FormSection>
+  </div>
+  <FormSection
+    label="Title"
+  >
+    <EditableHtml
+      markup=""
+      onChange={[Function]}
+    />
+  </FormSection>
+  <FormSection
+    label="Limits"
+  >
+    <WithStyles(NumberTextField)
+      label="Max No of Elements"
+      max={20}
+      min={1}
+      onChange={[Function]}
+    />
+  </FormSection>
+  <WithStyles(Button)
+    color="primary"
+    mini={true}
+    onClick={[Function]}
+    variant="outlined"
+  >
+    Reset to default values
+  </WithStyles(Button)>
+  <br />
+  <br />
+  <div>
+    <WithStyles(CardBar)
+      header="Correct Response"
+    >
+      Select answer type and place it on the number line. Intersecting points, line segments and/or rays will appear above the number line.
+       
+      <i>
+        Note: A maximum of 20 points, line segments or rays may be plotted.
+      </i>
+    </WithStyles(CardBar)>
+    <Jss(NumberLine)
+      answer={Array []}
+      model={
+        Object {
+          "correctResponse": undefined,
+          "feedback": undefined,
+          "graph": Object {
+            "correctResponse": Array [],
+            "graph": Object {
+              "arrows": Object {
+                "left": true,
+                "right": true,
+              },
+              "availableTypes": Object {
+                "LEE": true,
+                "LEF": true,
+                "LFE": true,
+                "LFF": true,
+                "PF": true,
+                "REN": true,
+                "REP": true,
+                "RFN": true,
+                "RFP": true,
+              },
+              "domain": Object {
+                "max": 5,
+                "min": -5,
+              },
+              "exhibitOnly": false,
+              "height": 400,
+              "initialElements": Array [],
+              "initialType": "PF",
+              "maxNumberOfPoints": 20,
+              "ticks": Object {
+                "major": 2,
+                "minor": 1,
+              },
+              "width": 500,
+            },
+            "title": undefined,
+          },
+          "prompt": undefined,
+        }
+      }
+      onAddElement={[Function]}
+      onDeleteElements={[Function]}
+      onMoveElement={[Function]}
+    />
+    <WithStyles(CardBar)
+      header="Available Types"
+      mini={true}
+    >
+      Click on the input options to be displayed to the students. All inputs will display by default.
+    </WithStyles(CardBar)>
+    <div>
+      <WithStyles(PointConfig)
+        onSelectionChange={[Function]}
+      />
+    </div>
+  </div>
+  <WithStyles(CardBar)
+    header="Initial view/Make Exhibit"
+  >
+    Use this number line to set a starting point, line segment or ray. This is optional. 
+    <br />
+    This number line may also be used to make an exhibit number line, which can not be manipulated by a student.
+  </WithStyles(CardBar)>
+  <Jss(NumberLine)
+    answer={Array []}
+    model={
+      Object {
+        "correctResponse": undefined,
+        "feedback": undefined,
+        "graph": Object {
+          "correctResponse": Array [],
+          "graph": Object {
+            "arrows": Object {
+              "left": true,
+              "right": true,
+            },
+            "availableTypes": Object {
+              "LEE": true,
+              "LEF": true,
+              "LFE": true,
+              "LFF": true,
+              "PF": true,
+              "REN": true,
+              "REP": true,
+              "RFN": true,
+              "RFP": true,
+            },
+            "domain": Object {
+              "max": 5,
+              "min": -5,
+            },
+            "exhibitOnly": false,
+            "height": 400,
+            "initialElements": Array [],
+            "initialType": "PF",
+            "maxNumberOfPoints": 20,
+            "ticks": Object {
+              "major": 2,
+              "minor": 1,
+            },
+            "width": 500,
+          },
+          "title": undefined,
+        },
+        "prompt": undefined,
+      }
+    }
+    onAddElement={[Function]}
+    onDeleteElements={[Function]}
+    onMoveElement={[Function]}
+  />
+  <InputCheckbox
+    label="Make exhibit"
+    onChange={[Function]}
+    value="exhibitOnly"
+  />
+  <br />
+  <FeedbackConfig
+    onChange={[Function]}
+  />
+</div>
+`;

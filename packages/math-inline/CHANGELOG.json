@@ -12,7 +12,7 @@
     "gitTags": "",
     "committerDate": "2019-06-13 16:26:43 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.6"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -27,7 +27,7 @@
     "gitTags": "",
     "committerDate": "2019-06-13 14:56:38 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.7"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -42,7 +42,7 @@
     "gitTags": " (origin/chore/mathquill-v-bump)",
     "committerDate": "2019-06-12 17:50:29 +0100",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.6"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "fix",
@@ -57,7 +57,7 @@
     "gitTags": "",
     "committerDate": "2019-06-12 19:23:02 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.7"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -72,7 +72,7 @@
     "gitTags": "",
     "committerDate": "2019-06-12 19:06:02 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.6"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -87,7 +87,7 @@
     "gitTags": "",
     "committerDate": "2019-06-07 23:29:44 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.4"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -102,7 +102,7 @@
     "gitTags": "",
     "committerDate": "2019-06-06 13:16:05 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.3"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -117,7 +117,7 @@
     "gitTags": "",
     "committerDate": "2019-06-06 01:31:17 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.2"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "chore",
@@ -132,7 +132,7 @@
     "gitTags": " (origin/feat/mask-markup-elements)",
     "committerDate": "2019-06-06 01:15:50 +0300",
     "isTagged": true,
-    "tag": "@pie-element/math-inline@2.2.2"
+    "tag": "@pie-element/math-inline@2.2.10"
   },
   {
     "type": "feat",
@@ -1433,5 +1433,20 @@
     "committerDate": "2018-11-26 13:51:45 +0200",
     "isTagged": true,
     "tag": "@pie-element/math-inline@0.0.2"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.3.0"
   }
 ]

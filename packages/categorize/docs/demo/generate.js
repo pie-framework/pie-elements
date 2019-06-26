@@ -65,6 +65,7 @@ exports.model = (id, element) => ({
       ]
     }
   ],
+  rowLabels: [''],
   'correctResponse': [
     {
       'category': '0',
@@ -78,6 +79,12 @@ exports.model = (id, element) => ({
       'choices': [
         '4',
         '1',
+      ],
+      alternateResponses: [
+        [
+          '2',
+          '3'
+        ]
       ]
     }
   ],

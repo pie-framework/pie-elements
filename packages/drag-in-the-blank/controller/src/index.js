@@ -1,18 +1,31 @@
 import reduce from 'lodash/reduce';
 import { isResponseCorrect } from './utils';
-import { partialScoring } from '@pie-lib/controller-utils';
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const feedback = env.mode !== 'evaluate'
-      ? {}
-      : reduce(question.correctResponse, (obj, c, key) => {
-        if (session.value && question.correctResponse[c]) {
-          obj[key] = session.value[c] === question.correctResponse[c];
+    let feedback = {};
+
+    if (env.mode === 'evaluate') {
+      const allCorrectResponses = reduce(question.correctResponse, (obj, val, key) => {
+        obj[key] = [val];
+
+        if (question.alternateResponses[key]) {
+          obj[key] = [
+            ...obj[key],
+            ...question.alternateResponses[key]
+          ];
         }
 
         return obj;
       }, {});
+      feedback = reduce(allCorrectResponses, (obj, correctResponse, key) => {
+        const choice = session.value[key];
+
+        obj[key] = correctResponse.indexOf(choice) >= 0;
+
+        return obj;
+      }, {});
+    }
 
     const out = {
       ...question,
@@ -31,16 +44,26 @@ export function model(question, session, env) {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.correctResponse).length;
+  const allCorrectResponses = reduce(config.correctResponse || {}, (obj, val, key) => {
+    obj[key] = [val];
 
-  const correctCount = reduce(config.choices, (total, choice, key) => {
-    const chosenValue = session.value && session.value[key];
-    const correctValue = config.correctResponse[key];
-
-    if (correctValue !== chosenValue) {
-      return total - 1;
+    if (config.alternateResponses && config.alternateResponses[key]) {
+      obj[key] = [
+        ...obj[key],
+        ...config.alternateResponses[key]
+      ];
     }
 
-    return total;
+    return obj;
+  }, {});
+  const correctCount = reduce(allCorrectResponses, (total, correctResponse, key) => {
+    const choice = session.value[key];
+
+    if (correctResponse.indexOf(choice) >= 0) {
+      return total;
+    }
+
+    return total - 1;
   }, maxScore);
 
   const str = (correctCount / maxScore).toFixed(2);
@@ -60,9 +83,9 @@ const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session, env) {
+export function outcome(model, session) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

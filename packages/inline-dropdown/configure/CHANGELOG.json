@@ -58,5 +58,50 @@
     "committerDate": "2019-06-06 13:16:05 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@1.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": "general",
+    "subject": "fixed some general issues",
+    "merge": null,
+    "header": "fix(general): fixed some general issues",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "29a8bd3beab50358d1aa4bf4bfbdbed03fe5afab",
+    "gitTags": "",
+    "committerDate": "2019-06-19 17:57:41 -0500",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@1.1.4"
+  },
+  {
+    "type": "fix",
+    "scope": "general",
+    "subject": "fixed some general issues",
+    "merge": null,
+    "header": "fix(general): fixed some general issues",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "29a8bd3beab50358d1aa4bf4bfbdbed03fe5afab",
+    "gitTags": "",
+    "committerDate": "2019-06-19 17:57:41 -0500",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@1.1.4"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@1.2.0"
   }
 ]

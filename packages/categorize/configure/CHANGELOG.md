@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.2.0...@pie-element/categorize-configure@3.2.1) (2019-06-23)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.2...@pie-element/categorize-configure@3.2.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.1...@pie-element/categorize-configure@3.1.2) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.1.0...@pie-element/categorize-configure@3.1.1) (2019-06-19)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.7...@pie-element/categorize-configure@3.1.0) (2019-06-19)
+
+
+### Features
+
+* **extras:** added row labels support and alternate responses ([280028f](https://github.com/pie-framework/pie-elements/commit/280028f))
+
+
+
+
+
 ## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.0.6...@pie-element/categorize-configure@3.0.7) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

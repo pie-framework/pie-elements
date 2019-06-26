@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@2.3.0...@pie-element/hotspot-configure@2.3.1) (2019-06-23)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@2.2.3...@pie-element/hotspot-configure@2.3.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@2.2.2...@pie-element/hotspot-configure@2.2.3) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 ## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@2.2.1...@pie-element/hotspot-configure@2.2.2) (2019-06-18)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.6.0...@pie-element/inline-dropdown@1.6.1) (2019-06-23)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.5.5...@pie-element/inline-dropdown@1.6.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [1.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.5.4...@pie-element/inline-dropdown@1.5.5) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.5.3...@pie-element/inline-dropdown@1.5.4) (2019-06-20)
+
+
+### Bug Fixes
+
+* **general:** fixed some general issues ([29a8bd3](https://github.com/pie-framework/pie-elements/commit/29a8bd3))
+
+
+
+
+
 ## [1.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.5.2...@pie-element/inline-dropdown@1.5.3) (2019-06-18)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

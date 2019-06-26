@@ -19,13 +19,12 @@ const log = debug('multiple-choice:configure');
 
 export default class ExplicitConstructedResponse extends HTMLElement {
   static prepareModel = (model = {}) => {
-    const defaultModel = sensibleDefaults.model;
-    const slateMarkup = model.slateMarkup || createSlateMarkup(defaultModel.markup, defaultModel.choices);
-    const processedMarkup = processMarkup(slateMarkup);
     const joinedObj = {
       ...sensibleDefaults.model,
       ...model,
     };
+    const slateMarkup = joinedObj.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices);
+    const processedMarkup = processMarkup(slateMarkup);
     const newChoices = reduce(processedMarkup.choices, (obj, respArea, key) => {
       const oldRespArea = joinedObj.choices[key];
 

@@ -3,12 +3,19 @@ import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer,
-  layout
+  layout,
+  settings
 } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Choices from './choices';
+const { toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -50,6 +57,29 @@ const styles = theme => ({
   }
 });
 
+const positionOptions = [
+  {
+    label: 'Above',
+    value: 'above',
+    secondaryText: 'Choices will be shown above categories'
+  },
+  {
+    label: 'Below',
+    value: 'below',
+    secondaryText: 'Choices will be shown below categories'
+  },
+  {
+    label: 'Left',
+    value: 'left',
+    secondaryText: 'Choices will be shown to the left of the categories'
+  },
+  {
+    label: 'Right',
+    value: 'right',
+    secondaryText: 'Choices will be shown to the right of the categories'
+  }
+];
+
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -62,6 +92,15 @@ export class Main extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     })
+  };
+
+  state = {};
+
+  onModelChange = newVal => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      ...newVal
+    });
   };
 
   onPromptChanged = prompt => {
@@ -85,20 +124,56 @@ export class Main extends React.Component {
     });
   };
 
+  changePosition = position => {
+    this.props.onModelChanged({ choicesPosition: position.value });
+
+    this.setState({ anchorEl: null });
+  };
+
+  handleClickPosition = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
   render() {
+    const { anchorEl } = this.state;
     const {
       classes,
       model,
       configuration,
+      onConfigurationChanged,
       imageSupport
     } = this.props;
     const {
-      prompt
+      duplicates,
+      prompt,
+      partialScoring,
+      lockChoiceOrder
     } = configuration;
+    const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
 
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              configuration={configuration}
+              onChangeModel={model => this.onModelChange(model)}
+              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              groups={{
+                'Item Type': {
+                  partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label),
+                  duplicates: duplicates.settings && toggle(duplicates.label)
+                },
+                'Properties': {
+                  lockChoiceOrder: lockChoiceOrder.settings &&
+                  toggle(lockChoiceOrder.label)
+                },
+              }}
+            />
+          }
+        >
           <div>
             {prompt.settings && (
               <InputContainer
@@ -142,6 +217,34 @@ export class Main extends React.Component {
               duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
             />
+            <List component="nav">
+              <ListItem
+                button
+                aria-haspopup="true"
+                onClick={this.handleClickPosition}
+              >
+                <ListItemText
+                  primary="Choices Position"
+                  secondary={positionOption.secondaryText}
+                />
+              </ListItem>
+            </List>
+            <Menu
+              id="lock-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={this.handleClose}
+            >
+              {positionOptions.map(option => (
+                <MenuItem
+                  key={option.value}
+                  selected={option.value === model.choicesPosition}
+                  onClick={() => this.changePosition(option)}
+                >
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Menu>
           </div>
         </layout.ConfigLayout>
       </div>

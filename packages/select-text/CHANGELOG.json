@@ -728,5 +728,50 @@
     "committerDate": "2019-06-07 23:29:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text@4.1.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump config-ui to 10.4.3",
+    "merge": null,
+    "header": "fix: bump config-ui to 10.4.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "101d6a7725770f7c767c0d8660b8d6658f9ad423",
+    "gitTags": "",
+    "committerDate": "2019-06-20 09:32:15 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@4.1.8"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump config-ui to 10.4.3",
+    "merge": null,
+    "header": "fix: bump config-ui to 10.4.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "101d6a7725770f7c767c0d8660b8d6658f9ad423",
+    "gitTags": "",
+    "committerDate": "2019-06-20 09:32:15 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@4.1.8"
+  },
+  {
+    "type": "feat",
+    "scope": "general",
+    "subject": "updated all the packages that have the config-ui as a dependency",
+    "merge": null,
+    "header": "feat(general): updated all the packages that have the config-ui as a dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "44061deecae6d18cdbf6f5fb524f3d3094ccd354",
+    "gitTags": "",
+    "committerDate": "2019-06-20 22:32:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/select-text@4.2.0"
   }
 ]

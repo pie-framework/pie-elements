@@ -148,7 +148,7 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
-"@babel/helper-module-imports@^7.0.0", "@babel/helper-module-imports@^7.0.0-beta.49":
+"@babel/helper-module-imports@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.0.0.tgz#96081b7111e486da4d2cd971ad1a4fe216cc2e3d"
   integrity sha512-aP/hlLq01DWNEiDg4Jn23i+CXxW/owM4WpDLFUbpjxe4NS3BhLVZQ5i7E0ZrxuQ/vwekIeciyamgB1UIYxxM6A==
@@ -780,7 +780,7 @@
     globals "^11.1.0"
     lodash "^4.17.11"
 
-"@babel/types@^7.0.0", "@babel/types@^7.0.0-beta.49", "@babel/types@^7.2.0", "@babel/types@^7.3.0", "@babel/types@^7.4.4":
+"@babel/types@^7.0.0", "@babel/types@^7.2.0", "@babel/types@^7.3.0", "@babel/types@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.4.4.tgz#8db9e9a629bb7c29370009b4b779ed93fe57d5f0"
   integrity sha512-dOllgYdnEFOebhkKCjzSVFqw/PmmB8pH6RGOWkY4GsboQNd47b1fBThBSwlHAq9alF9vc1M3+6oqR47R50L0tQ==
@@ -1686,11 +1686,11 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@octokit/endpoint@^5.1.0":
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/@octokit/endpoint/-/endpoint-5.1.7.tgz#cfbd473a6adf5fea747520972e1af676406f7c26"
-  integrity sha512-MfsXHx9z9EPxLYSf7PYuzWvVZTotx+/QTFk7UMp4Fv83k3QrvmovEjP0pl141g+Uq/w9CcDuuXhsiq4X3oxVsA==
+  version "5.1.8"
+  resolved "https://registry.yarnpkg.com/@octokit/endpoint/-/endpoint-5.1.8.tgz#5c8c204aece0eb6f030df1e97a11b8096ba198b8"
+  integrity sha512-BVVNVVeVGySIF6nvoaO6AaickboZr7A1O6z1wmnMRslewi6O+KILSp0ZsXbkgLnP8V8pa7WM9+wSYYczIUBm5w==
   dependencies:
-    deepmerge "3.2.1"
+    deepmerge "3.3.0"
     is-plain-object "^3.0.0"
     universal-user-agent "^2.1.0"
     url-template "^2.0.8"
@@ -1807,9 +1807,9 @@
     lodash "^4.17.10"
 
 "@pie-lib/categorize@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.6.0.tgz#22a9b4cf52879829233e827eef5e82f1243f483c"
-  integrity sha512-WRMbZxBHB4Pw5mhTSgcpNFN1eHbLiAC6Ce6ElhfWINSBvOQNJLKw7urqp3SNWKQScWThvAS90cRDYSnMwxKjjA==
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/categorize/-/categorize-0.6.1.tgz#3d056a437eec9d4ad5f34f5d34e8cc670f1c0c6c"
+  integrity sha512-zPH3kB23lliL7K+pTzVU68e1zRm2ue6HbGi3Vjf5Q5T7ImkH0CG38zJo/dcLu8K7ATdeuVibdqToyrqOC+U0ZA==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -1840,10 +1840,10 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^10.0.0", "@pie-lib/config-ui@^10.3.1", "@pie-lib/config-ui@^10.4.2":
-  version "10.4.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.4.2.tgz#1950ef9f1f4a1d6f78db93b800698c2acf5b5c06"
-  integrity sha512-dFUxZS92zg9yjVuEQHn1N5zdsVek4qq1efufoMGUlv3XDzXHNxTWlHWXpsdAdn+Lwzrly7mRSpkwEd0qOI221Q==
+"@pie-lib/config-ui@^10.3.1", "@pie-lib/config-ui@^10.5.0":
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.5.0.tgz#e580aada0e90d54f18c372a6d430698f6266815c"
+  integrity sha512-w3hr7/Du8aCmaEjI3m8GT+r3s/NWllJHPw7K12YAiA3foleLNqPdt4ynKGrpgjCWmoleHShCv5krD+UDDbXr+g==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -1901,7 +1901,7 @@
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
 
-"@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.6.1", "@pie-lib/editable-html@^7.7.1":
+"@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.6.1", "@pie-lib/editable-html@^7.7.1":
   version "7.7.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.7.1.tgz#7c2344685855c7411cdb3444ce5938528324aa30"
   integrity sha512-lwHFWHJJ40W1xR26DHeovft7gE//ewuotRhy+ygRSOowtecVEFnCrvRE9JoCk6yo7nHD9/eK1iiUXBBiqVGlCg==
@@ -1938,33 +1938,6 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.4.9.tgz#5f335cc25ee1ed6fad83af11cdfb43dec688565c"
   integrity sha512-a2iM9yxyXMs/epZhsBtys9/EVplis9UVTv+pCAgHKX46oYP+mOipSOZwrS5O1xmVxeKnYF6JUMcwcqSxF7qu9Q==
 
-"@pie-lib/graphing@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-0.3.0.tgz#d3e4a71bcf77ccbc877bd6ca3aae2d772806456a"
-  integrity sha512-wITo3c9BeO6EGa8FVuEp5UBuuQmjhjH4qxSdkbcHuMKD4Kq1i/dp9+pOwqerXJ+1WHReJP9senMCStoAascW8g==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/plot" "^0.2.1"
-    "@vx/axis" "^0.0.189"
-    "@vx/clip-path" "^0.0.189"
-    "@vx/event" "^0.0.189"
-    "@vx/grid" "^0.0.189"
-    "@vx/point" "^0.0.189"
-    "@vx/shape" "^0.0.189"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.3.0"
-    react-input-autosize "^2.2.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
 "@pie-lib/icons@^2.3.1", "@pie-lib/icons@^2.3.8", "@pie-lib/icons@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.4.1.tgz#f0d2a6008cbd651603bd8b1e7e4538df26123cfd"
@@ -1973,10 +1946,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.2.2":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.2.3.tgz#9d08395907b07d4cb7a34280ae35f2f91548bf04"
-  integrity sha512-9g3bgF8DV29GPM+STSXyQgnIH27OrQOqEF/2BedI2c6rrJ8H3szJDD33dOl7tKn13b36+xjjL/RsHH4b8+xZTA==
+"@pie-lib/mask-markup@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.3.0.tgz#e5850baf583712030cd9a19d1cc5b827d40262b2"
+  integrity sha512-QFDCxBR4sMsDTay1m+obEXkjeKQw8Elnhn+l4kTG/KfiTraRin13Hg3D2XxYcv0XUhZBSou/OYtNzNWC+Vkolw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.17"
@@ -2046,30 +2019,6 @@
     debug "^4.1.1"
     keycode "^2.2.0"
 
-"@pie-lib/plot@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-0.2.1.tgz#83602675c7a0de89e2c88fb7e189d50c8e311d0b"
-  integrity sha512-eNVl9NEaC0mnLqElzQFDOthw6RegLQPy9chVulMt4FqqShuGWUzyzCzEMrxvBSwwqy8sm/MJbJEguuZTiMiOiQ==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@vx/axis" "^0.0.183"
-    "@vx/event" "^0.0.182"
-    "@vx/grid" "^0.0.183"
-    "@vx/point" "^0.0.182"
-    "@vx/shape" "^0.0.183"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.1.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
 "@pie-lib/render-ui@^4.3.1", "@pie-lib/render-ui@^4.3.11", "@pie-lib/render-ui@^4.3.12":
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.4.1.tgz#bb2199eda8ddc17dd2b59a7a8580f0ebe9b9c3fd"
@@ -2097,14 +2046,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.8.6"
 
-"@pie-lib/scoring-config@^3.4.13":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.2.tgz#f607ecb2dc3700e1dcd9c923887f406c01c6b7fc"
-  integrity sha512-FxvpCUFuSYljZr2+6t+q8HlglMl0N6ZfUMhIyCL9DGv/ptSWu451dWltVVNVltDG9lxXaAT0zkGoZb0ZNxM1Hg==
+"@pie-lib/scoring-config@^3.5.4":
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.4.tgz#9a37afd88e4e1ba59835cc71146aa985fedf2fc8"
+  integrity sha512-p/73k1BW7lpXZkY/WUvVmBbQYvGpuWtthxial+FkSrcHdeWUPsDfllxPPGK2Z0H4IGWHqmcnb4UYfSQLyo3qfg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^10.4.2"
+    "@pie-lib/config-ui" "^10.5.0"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2119,7 +2068,7 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.0.3.tgz#9bef3bfb236af4cda24e9ed6446794d9615175a0"
   integrity sha512-oZ5XTtdy7NiFdN9M9fRSwc56M3CgNC1YFH9P9BryuBT39GlMyWTABz/neCzBc/TGhVylfMVuGo0LJOA0IkwUOw==
 
-"@pie-lib/text-select@^1.2.2", "@pie-lib/text-select@^1.4.10":
+"@pie-lib/text-select@^1.4.10", "@pie-lib/text-select@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.5.1.tgz#3fcd5da3a1ce1441605ae1ed8d6365bce696e446"
   integrity sha512-+QURpPLHN2ucbUyW897T/KzeIM2RFkjgxuNCDzdCnHy+YJUuSsc3rHYPPJK9t/UcStBWmASaaVwsIN3+Qwo+IQ==
@@ -2162,10 +2111,10 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^1.2.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.3.0.tgz#4fe2061fc5fa300ae9db7f0b81705cd58261e084"
-  integrity sha512-XIH27rj1OP83ItiJu6bYnqvE1fw9dWd/2lwvj5t4neHImVtYuql+SEGBGOwKpyeZCqXUroOxtm3Z/NjThXcfig==
+"@pie-ui/categorize@^1.3.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.3.1.tgz#2b2a17bcde4c04d65c0d1654d1ac03aa0e691e81"
+  integrity sha512-qPREHJTgKMpB9r9ZVf2yYhEZ3ueRc2YWcoEQ/WMGXzkpbdH5jmESu5Nckn0kEQTzRB/isiYS7x3nONgJWAE+HA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2179,15 +2128,15 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drag-in-the-blank@^1.3.0":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.3.2.tgz#b7ab23ffaa5bc117ec3f0aad7af670d5c1867525"
-  integrity sha512-2bu3SFCwTmZ4yYd2GthWgVrfUC8CuukttpmqZiI7iLUv+gCeFJT7jQmxMlfsyAstLEnkjENVegLFP7XNye4cvQ==
+"@pie-ui/drag-in-the-blank@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.5.0.tgz#c4294521b3302c1d78d4b84860c92f55d83d64ab"
+  integrity sha512-PyQ/rDmziofCS13kmx1PKePRjc3s03OrDKBNrjU/ejjPrPZh/vwm4C0FoRfHQqH1DzM8Z9GtF3iwZwro3BOzbA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
-    "@pie-lib/mask-markup" "^1.2.2"
+    "@pie-lib/mask-markup" "^1.3.0"
     "@pie-lib/math-rendering" "^1.2.1"
     classnames "^2.2.5"
     lodash "^4.17.10"
@@ -2195,16 +2144,16 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.2.4.tgz#2ae95ac995f05d0805864c9ebbf556dfa51cbd39"
-  integrity sha512-2x92MTYHLkHI66hX5vhW8qkEOa6FpWInTjIGpLG2Zaego+/AQYlICGmozAugc2a2omkcBzBjBJIwHdx3bOMvNA==
+"@pie-ui/drawing-response@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.3.0.tgz#4376b388e48421743fe579f9d55cfa93470296ca"
+  integrity sha512-WLSTRS3qB5yYGckpR5xDcAqE+voPTGwo/HQEsD5PPRXuSf48ICWDyXZ8xrMBzitbjvqvST5U78Wijca3WjHuXg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@mdi/js" "^3.6.95"
     "@mdi/react" "^1.1.1"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/config-ui" "^10.3.1"
+    "@pie-lib/config-ui" "^10.5.0"
     "@pie-lib/math-rendering" "^1.2.9"
     classnames "^2.2.6"
     enzyme-to-json "^3.3.5"
@@ -2215,25 +2164,25 @@
     react-dom "^16.8.1"
     react-konva "^16.8.7-2"
 
-"@pie-ui/ebsr@^1.1.19":
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.20.tgz#f1c5ff72aa20e790598e2b085efc23dc49544891"
-  integrity sha512-tYEVyaXWs5jEUSXwCdnPb5u1AJKp4Q/vdzEvAnaZ2ErHQFUIDoQwHvzA+Se/h/1woJpdzjuX2DcufTwb39748w==
+"@pie-ui/ebsr@^1.1.21":
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.21.tgz#1de3c8c5307360b14942ecfe46d348ce4c9831c0"
+  integrity sha512-d0Q+sIvd2UmiVbOj3pGhjIndY1VuRZFkwhIGbTIc6uuQy59ARNFd+rqudap+8sintjBg6Yxt01OJxz1aHMOiUw==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-ui/multiple-choice" "^4.9.3"
+    "@pie-ui/multiple-choice" "^4.10.0"
     classnames "^2.2.5"
     debug "^4.1.1"
 
-"@pie-ui/explicit-constructed-response@^1.2.0":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.2.2.tgz#9e754ce0215a5a2be5529ca7afacc26f1ec732dc"
-  integrity sha512-qcRXNHWz+cX5rMjWxFbxyO7lAHRhH+qYYsoaaP0w4vxKm0drBvJhK58W9tNk349HZFMZvTEc/+KgI/KNkZW0tg==
+"@pie-ui/explicit-constructed-response@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.4.0.tgz#6e3aa3a140914d3f5d507ef992414e486d7b4d0f"
+  integrity sha512-IvbG7G83hIrY7m5FIKL5WYKK2s0OjMgr2cJYCnr9QqV7RxEWPlGia1/xAgLhBicR1wiQlAQ1RCZMzmbM8g58Iw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
-    "@pie-lib/mask-markup" "^1.2.2"
+    "@pie-lib/mask-markup" "^1.3.0"
     "@pie-lib/math-rendering" "^1.2.1"
     classnames "^2.2.5"
     lodash "^4.17.10"
@@ -2270,26 +2219,17 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graph-lines@^2.1.2":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.1.3.tgz#07ce81c5d8fb1dfa538aa17a058b8d3b989e085b"
-  integrity sha512-AECSEwrXN45+W7Vr9ihu1pKbI4pN1inpAgXrJtPk6maUDzfTE5ZHqgNe8fSzHbZGHKKiC5kjbyW3x0Km4uTdzQ==
+"@pie-ui/graph-lines@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.2.0.tgz#4c804bb8a729197a27c888925599ca86e8e04e27"
+  integrity sha512-jgu+6vnkEwu2MuzpQJ6BSoCUbueFPjGj3ucb/ZWPhOIeNWOdHP/SBtEojgOxnWAFU1scO1FJPv9edDTf8PUjGA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/charting" "^2.3.1"
-    "@pie-lib/config-ui" "^10.3.1"
+    "@pie-lib/config-ui" "^10.5.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/render-ui" "^4.3.12"
-    classnames "^2.2.5"
-    debug "^4.1.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-
-"@pie-ui/graphing@file:../pie-ui/packages/graphing":
-  version "2.0.5"
-  dependencies:
-    "@material-ui/core" "^3.9.2"
     classnames "^2.2.5"
     debug "^4.1.1"
     react "^16.8.1"
@@ -2325,15 +2265,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/inline-dropdown@^1.3.0":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.3.2.tgz#7fa871adcec05295de5dc37883cfa50c120d3bb9"
-  integrity sha512-hZZ/M/a/eXIBs7e3OsORPkJFdeq9k1HtKr+YCv81TA97AUHSE5RHyxe/nrAJAUXFp+h+hF0CZuuyIQ4Il5tTwg==
+"@pie-ui/inline-dropdown@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.5.0.tgz#e0adec596dcbe7891d92216d0705ff545a5125a0"
+  integrity sha512-MNs66Y4v6jqbvbFFvBDnlAmifSFndG3aiphNn5rn7HiyjHIVyKBexdWYlHOwh4h4LXvP9TMPOt3JixJKOH8idg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
-    "@pie-lib/mask-markup" "^1.2.2"
+    "@pie-lib/mask-markup" "^1.3.0"
     "@pie-lib/math-rendering" "^1.2.1"
     classnames "^2.2.5"
     lodash "^4.17.10"
@@ -2392,13 +2332,13 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.9.2", "@pie-ui/multiple-choice@^4.9.3":
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.9.3.tgz#fdce8d424121306cc311d97d5ca2317499f1139a"
-  integrity sha512-7QrMPEw2wSf6yR1ffMONESD75I1TsvP/sz4IiHM/e8WB+5snGX6czLIyeMFA4o13Kzl3hNmxtLJz2GbNVOI3OQ==
+"@pie-ui/multiple-choice@^4.10.0":
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.10.0.tgz#a0cbb35f10b97673584f550659d9505054d7aa56"
+  integrity sha512-QGnjKeNMnN9V9rNAG7Fu0gAODdgvmBbl9kRBFQkcg1GoUpJMsnTGZjK9Bo9RaRz7VpHl6Au+zvYiotFNeRdU/g==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-lib/config-ui" "^10.3.1"
+    "@pie-lib/config-ui" "^10.5.0"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/math-rendering" "^1.2.1"
     "@pie-lib/render-ui" "^4.3.12"
@@ -2412,22 +2352,24 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^5.0.0", "@pie-ui/number-line@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-5.1.2.tgz#a3c896467556363944b8158e6cad015de851ebf6"
-  integrity sha512-twbcb/bTjIx2PRD2ANOY3rpvpWOg3GRxtDafUXyPSl1Cq7uJeM1+WUpqKxqZ1AahKv4KZ9ygTkyBAWpPpMsd6w==
+"@pie-ui/number-line@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.1.tgz#d6c596cd4dbc6b5efe443906077e32dbf11fe079"
+  integrity sha512-+lYW0wH/YVLgIf7AkMgmwbDnsgqAByLkMJcB6ntqKCIJRtHC96nBDTHyvZODi3bLfav2KbzGiNlIyzIe2EKPCA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/icons" "^2.3.1"
+    "@pie-lib/math-rendering" "^1.3.1"
     classnames "^2.2.5"
     d3-scale "^2.0.0"
-    d3-selection "^1.3.0"
+    d3-selection "^1.4.0"
     lodash "^4.17.10"
+    mathjs "^5.4.1"
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"
-    react-draggable "^3.0.5"
+    react-draggable "^3.3.0"
     react-jss "^8.4.0"
     react-transition-group "^2.3.1"
 
@@ -2640,9 +2582,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "16.8.20"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.20.tgz#4f633ecbd0a4d56d0ccc50fff6f9321bbcd7d583"
-  integrity sha512-ZLmI+ubSJpfUIlQuULDDrdyuFQORBuGOvNnMue8HeA0GVrAJbWtZQhcBvnBPNRBI/GrfSfrKPFhthzC2SLEtLQ==
+  version "16.8.22"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.22.tgz#7f18bf5ea0c1cad73c46b6b1c804a3ce0eec6d54"
+  integrity sha512-C3O1yVqk4sUXqWyx0wlys76eQfhrQhiDhDlHBrjER76lR2S2Agiid/KpOU9oCqj1dISStscz7xXz1Cg8+sCQeA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -2666,71 +2608,12 @@
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-"@vx/axis@^0.0.183":
-  version "0.0.183"
-  resolved "https://registry.yarnpkg.com/@vx/axis/-/axis-0.0.183.tgz#20da1a331922a8a9f7c477c649f3c190471749b4"
-  integrity sha512-07fvZGOcSLP8qfn78/NzIW2Giy3/QKXI7AamwtOe3CbtyXxM0PtsVwAoiNusvUHZVEDg1VqtG2jbvnBlPu9Bjg==
-  dependencies:
-    "@vx/group" "0.0.183"
-    "@vx/point" "0.0.182"
-    "@vx/shape" "0.0.183"
-    "@vx/text" "0.0.183"
-    classnames "^2.2.5"
-    prop-types "^15.6.0"
-
-"@vx/axis@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/axis/-/axis-0.0.189.tgz#001538b002b5bfa12ca9ce2a37fedf89008e7835"
-  integrity sha512-8voCWTYLsvlRapWzm4WiedAI8kfj7UbHKGnpAcZrQN1Kgn5QE1ZFM0B7D/dj+SAYlMpAb/2nCgYV+OhdVkhcMg==
-  dependencies:
-    "@vx/group" "0.0.189"
-    "@vx/point" "0.0.189"
-    "@vx/shape" "0.0.189"
-    "@vx/text" "0.0.189"
-    classnames "^2.2.5"
-    prop-types "^15.6.0"
-
-"@vx/clip-path@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/clip-path/-/clip-path-0.0.189.tgz#c482bc5f02169109a8f6687bb20c1f8f326fded7"
-  integrity sha512-P/xtwINTEwBWKNZwttHieeGKTukNADx0hNzEcpsNt2EU/6ax7niTjsZOLNPcNV080StL4GCuLevrc3rMdJP+Ew==
-  dependencies:
-    prop-types "^15.5.10"
-
 "@vx/curve@0.0.153":
   version "0.0.153"
   resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.153.tgz#6829c3454f9ec16b7e6925aecbad5a1e3c8b3169"
   integrity sha512-llaI1Lcbsj0cUHOiN1D5QJp4bDOqQl8+cymDkQvY8u/miaSJTB4H/PsSzOWVBKGHAkwiXmeS7ug837iXDIDhjA==
   dependencies:
     d3-shape "^1.0.6"
-
-"@vx/curve@0.0.182":
-  version "0.0.182"
-  resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.182.tgz#55487fe71fb00ccc2299437e76b2c68b88c37c7f"
-  integrity sha512-tpuRMx/zs1mvSPUuxynN/7Kj4Mqf94vCdmUvO9LdnrgL5kgFpNgyYN9e0mZyfetbS+FDhBrtR9GC7d6vD36NrA==
-  dependencies:
-    d3-shape "^1.0.6"
-
-"@vx/curve@0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.189.tgz#0d1961a7dca69b65cdc1d5d325c75290e905771f"
-  integrity sha512-wD4OhvlcURIDjnWvaGurWqMEseqUoI4Y3vtDXS7c4VmdhkX5O4y6PVQaTkg2I417jMkOz6kU+Xc50AzB0tJoqw==
-  dependencies:
-    d3-shape "^1.0.6"
-
-"@vx/event@^0.0.182":
-  version "0.0.182"
-  resolved "https://registry.yarnpkg.com/@vx/event/-/event-0.0.182.tgz#b5b20a4e14fcd383511ef7a318ca0a10e6da8140"
-  integrity sha512-kEnBfcyuSep3QdlpQjMRE4jSCcEC1xIcnIFkDGuTWLutlUgIP//o5VbeHIW4xLcOhLe4BjuMuPgmUNZB5nL5Cw==
-  dependencies:
-    "@vx/point" "0.0.182"
-
-"@vx/event@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/event/-/event-0.0.189.tgz#5838f3cf64cc9ab20e71532431708fc68f61ebb9"
-  integrity sha512-xfKVE42yIw7yyfHWri8Tk3G9fYEJ4UMtKo+oDF+thaYY2daNbu9FV8WpYEA61g6L/byZiQ+9QziDO+qnwINVQw==
-  dependencies:
-    "@vx/point" "0.0.189"
 
 "@vx/grid@^0.0.160":
   version "0.0.160"
@@ -2742,28 +2625,6 @@
     "@vx/shape" "^0.0.160"
     classnames "^2.2.5"
 
-"@vx/grid@^0.0.183":
-  version "0.0.183"
-  resolved "https://registry.yarnpkg.com/@vx/grid/-/grid-0.0.183.tgz#7d45c75e639f213ce11a42592a584e3daaafccda"
-  integrity sha512-E7y1BW22ppj5C8LTDNuxsApIPJDToUets7vqccf29qRAU3nFcAaijUnR9li4+6I2ONhx49LTV+vqKr0gjpIyHg==
-  dependencies:
-    "@vx/group" "0.0.183"
-    "@vx/point" "0.0.182"
-    "@vx/shape" "0.0.183"
-    classnames "^2.2.5"
-    prop-types "^15.6.2"
-
-"@vx/grid@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/grid/-/grid-0.0.189.tgz#9a8ca87b7fc9ee2a1243904648fb55f9cf702ada"
-  integrity sha512-kBqp/y6g6GNBmXgNReyYF7/Z7dSEHbHKw/2eelQgbtzE1E8FjTSaQfWdZ2IT5tOePA8hh7REizcjHyWTnAa1fg==
-  dependencies:
-    "@vx/group" "0.0.189"
-    "@vx/point" "0.0.189"
-    "@vx/shape" "0.0.189"
-    classnames "^2.2.5"
-    prop-types "^15.6.2"
-
 "@vx/group@0.0.153":
   version "0.0.153"
   resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.153.tgz#4ec2ce37cf31b0f0b3d46dd8ee6b0eaf7e763bc6"
@@ -2771,62 +2632,10 @@
   dependencies:
     classnames "^2.2.5"
 
-"@vx/group@0.0.183":
-  version "0.0.183"
-  resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.183.tgz#15c8b14c5cadbe5f76c3ddcab8c5698cae24b443"
-  integrity sha512-iD2tDL8sl6HjZsMn+kkBjRb29px7qlHF8o6MQ3VbzVjUp+WZEYvA/s1bkqvn3q9tPtFAMBG+YWp9oSnkMdfpYQ==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.6.2"
-
-"@vx/group@0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/group/-/group-0.0.189.tgz#030787b66ad5a48ec612ecc0e7df3fcfeb7b894c"
-  integrity sha512-qZCdAK/A/AjyycZT8cjFQDJb9l5eDkMYfYXdGDFLn60w1aW5skMkPZ7YyWqg1U6BLcibPWu7uFVjS1MoUCUHUg==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.6.2"
-
 "@vx/point@0.0.153", "@vx/point@^0.0.153":
   version "0.0.153"
   resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.153.tgz#c0623f72804026a5afe7e1602bb27cd7b0847afc"
   integrity sha512-eAFFt25Wi+GAjHImLBop1oV7mXNE5mB/zi+OsQJxcRM1C5xc2TWs1OFUZpxuQ71DeGkUCIVM6YvAMD740MWniA==
-
-"@vx/point@0.0.182", "@vx/point@^0.0.182":
-  version "0.0.182"
-  resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.182.tgz#72abfa6ae923cf9bad23d9dd51709b2f31d81bf8"
-  integrity sha512-ZWDFVL5+RQXDSY6a5DZDRAoTFUmz0nxqUJidIHP9kDN1MGwoX43yaG7Ss1iJxe5a7Np5XGB2sm3xvmgZvf4a6g==
-
-"@vx/point@0.0.189", "@vx/point@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.189.tgz#2a52824dd3e7a1e74188c2ee9407aeee2a2a7a10"
-  integrity sha512-OZW05k6Kozta1QAP3T5dEFO0OQH8ppf/dnOnF2DnTJQ4W7a+ctLVJQ0kBDbsWG2xB+sOiMjvccfMOZZKb5JnvA==
-
-"@vx/shape@0.0.183", "@vx/shape@^0.0.183":
-  version "0.0.183"
-  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.183.tgz#1001590586d90abf7769bc7459af49daf4c4d4ed"
-  integrity sha512-+CoyLds/JJX/6KONz6tLBSQx8HluTDCQZectSMpXnLLTZPvOzPGMYqS3GqtkC8leWlggh33RCWPVJoCAePFiNQ==
-  dependencies:
-    "@vx/curve" "0.0.182"
-    "@vx/group" "0.0.183"
-    "@vx/point" "0.0.182"
-    classnames "^2.2.5"
-    d3-path "^1.0.5"
-    d3-shape "^1.2.0"
-    prop-types "^15.5.10"
-
-"@vx/shape@0.0.189", "@vx/shape@^0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.189.tgz#9031fe9fd95dac229b06ff1a67167290981ec6c5"
-  integrity sha512-fvI6utOvhUKl9I9lvGUyYwMaTvg5EH2WlI+r3klPFK7GrruKQIaQShXzX/FLhDZD85KscIEBK2UiNLZ7jd2VYw==
-  dependencies:
-    "@vx/curve" "0.0.189"
-    "@vx/group" "0.0.189"
-    "@vx/point" "0.0.189"
-    classnames "^2.2.5"
-    d3-path "^1.0.5"
-    d3-shape "^1.2.0"
-    prop-types "^15.5.10"
 
 "@vx/shape@^0.0.160":
   version "0.0.160"
@@ -2848,28 +2657,6 @@
   dependencies:
     classnames "^2.2.5"
     lodash "^4.17.4"
-    reduce-css-calc "^1.3.0"
-
-"@vx/text@0.0.183":
-  version "0.0.183"
-  resolved "https://registry.yarnpkg.com/@vx/text/-/text-0.0.183.tgz#8bed9eef00eee169158dd0a0a5ee5cd3374c4db3"
-  integrity sha512-SM97C6I2Oy3FdbjM0zb2oZ8xgPskQE3r0FdGHZgq6Dk1b3lYwuW3KqdXn598BRl3iL9jfSyR6vFN9z6NV0FFww==
-  dependencies:
-    "@babel/core" "^7.0.0"
-    babel-plugin-lodash "^3.3.2"
-    classnames "^2.2.5"
-    lodash "^4.17.4"
-    prop-types "^15.6.2"
-    reduce-css-calc "^1.3.0"
-
-"@vx/text@0.0.189":
-  version "0.0.189"
-  resolved "https://registry.yarnpkg.com/@vx/text/-/text-0.0.189.tgz#20239234a3902ea76ff6bfa59a6d21d741171aad"
-  integrity sha512-icWrpkBTFETdxLhIQ76s+ADuK0NUXdQqSbxov7iqNRawAIsSL8gkEmtmC6G6EqrXFmq09iHi/azm3XCQYDyFmg==
-  dependencies:
-    classnames "^2.2.5"
-    lodash "^4.17.4"
-    prop-types "^15.6.2"
     reduce-css-calc "^1.3.0"
 
 "@yarnpkg/lockfile@^1.1.0":
@@ -3539,17 +3326,6 @@ babel-plugin-jest-hoist@^23.2.0:
   version "23.2.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.2.0.tgz#e61fae05a1ca8801aadee57a6d66b8cefaf44167"
   integrity sha1-5h+uBaHKiAGq3uV6bWa4zvr0QWc=
-
-babel-plugin-lodash@^3.3.2:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-lodash/-/babel-plugin-lodash-3.3.4.tgz#4f6844358a1340baed182adbeffa8df9967bc196"
-  integrity sha512-yDZLjK7TCkWl1gpBeBGmuaDIFhZKmkoL+Cu2MUUjv5VxUZx/z7tBGBCBcQs5RI1Bkz5LLmNdjx7paOyQtMovyg==
-  dependencies:
-    "@babel/helper-module-imports" "^7.0.0-beta.49"
-    "@babel/types" "^7.0.0-beta.49"
-    glob "^7.1.1"
-    lodash "^4.17.10"
-    require-package-name "^2.0.1"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -5031,7 +4807,7 @@ d3-path@1, d3-path@^1.0.5:
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
   integrity sha512-q0cW1RpvA5c5ma2rch62mX8AYaiLX0+bdaSM2wxSU9tXjU4DNvkx9qiUvjkuWCj3p22UO/hlPivujqMiR9PDzA==
 
-d3-scale@^2.0.0, d3-scale@^2.1.2:
+d3-scale@^2.0.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-2.2.2.tgz#4e880e0b2745acaaddd3ede26a9e908a9e17b81f"
   integrity sha512-LbeEvGgIb8UMcAa0EATLNX0lelKWGYDQiPdHj+gLblGVhGLyNbaCn3EvrJf0A3Y/uOOU5aD6MTh5ZFCdEwGiCw==
@@ -5043,7 +4819,7 @@ d3-scale@^2.0.0, d3-scale@^2.1.2:
     d3-time "1"
     d3-time-format "2"
 
-d3-selection@^1.3.0, d3-selection@^1.3.2:
+d3-selection@^1.3.0, d3-selection@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.4.0.tgz#ab9ac1e664cf967ebf1b479cc07e28ce9908c474"
   integrity sha512-EYVwBxQGEjLCKF2pJ4+yrErskDnz5v403qvAid96cNdCMr8rmCYfY5RGzWz24mdIbxmDf6/4EAH+K9xperD5jg==
@@ -5181,10 +4957,10 @@ deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
-deepmerge@3.2.1, deepmerge@^3.0.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.2.1.tgz#76a1f47854bcfcd66ee9a948d110540a8e12b261"
-  integrity sha512-+hbDSzTqEW0fWgnlKksg7XAOtT+ddZS5lHZJ6f6MdixRs9wQy+50fm1uUCVb1IkvjLUYX/SfFO021ZNwriURTw==
+deepmerge@3.3.0, deepmerge@^3.0.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
+  integrity sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA==
 
 deepmerge@^2.0.1:
   version "2.2.1"
@@ -5470,9 +5246,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.164, electron-to-chromium@^1.3.47:
-  version "1.3.165"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.165.tgz#51864c9e3c9bd9e1c020b9493fddcc0f49888e3a"
-  integrity sha512-iIS8axR524EAnvUtWUNnREnYjQrS0zUvutIKYgTVuN3MzcjrV31EuJYKw7DGOtFO9DQw+JiXeaVDPQWMskG1wQ==
+  version "1.3.166"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.166.tgz#99d267514f4b92339788172400bc527545deb75b"
+  integrity sha512-7XwtJz81H/PBnkmQ/07oVPOGTkBZs6ibZN8OqXNUrxjRPzR0Xj+MFcMmRZEXGilEg1Pm+97V8BZVI63qnBX1hQ==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -6755,15 +6531,20 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
-  integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 inherits@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
   integrity sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=
+
+inherits@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+  integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.2, ini@^1.3.4, ini@~1.3.0:
   version "1.3.5"
@@ -6805,9 +6586,9 @@ inquirer@^3.0.6:
     through "^2.3.6"
 
 inquirer@^6.2.0:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.3.1.tgz#7a413b5e7950811013a3db491c61d1f3b776e8e7"
-  integrity sha512-MmL624rfkFt4TG9y/Jvmt8vdmOo836U7Y0Hxr2aFk3RelZEGX4Igk0KabWrcaaZaTv9uzglOqWh1Vly+FAWAXA==
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.4.0.tgz#6f9284047c4e48b76b169e46b3ae3b2171ce30a2"
+  integrity sha512-O3qJQ+fU/AI1K2y5/RjqefMEQTdJQf6sPTvyRA1bx6D634ADxcu97u6YOUciIeU2OWIuvpUsQs6Wx3Fdi3eFaQ==
   dependencies:
     ansi-escapes "^3.2.0"
     chalk "^2.4.2"
@@ -9894,9 +9675,9 @@ private@^0.1.6, private@^0.1.8:
   integrity sha512-VvivMrbvd2nKkiG38qjULzlc+4Vx4wm/whI9pQD35YrARNnhxeiRktSOhSukRLFNlzg6Br/cJPet5J/u19r/mg==
 
 process-nextick-args@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
-  integrity sha512-MtEC1TqN0EU5nephaJ4rAtThHtC86dNN9qCuEhtshvpVBkAW5ZO7BASN9REnF9eoXGcRub+pFuKEpOHE+HbEMw==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
+  integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
 progress@^2.0.0:
   version "2.0.3"
@@ -9992,9 +9773,9 @@ pseudomap@^1.0.2:
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
 
 psl@^1.1.24, psl@^1.1.28:
-  version "1.1.32"
-  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.32.tgz#3f132717cf2f9c169724b2b6caf373cf694198db"
-  integrity sha512-MHACAkHpihU/REGGPLj4sEfc/XKW2bheigvHO1dUqjaKigMp1C8+WLQYRGgeKFMsw5PMfegZcaN8IDXK/cD0+g==
+  version "1.1.33"
+  resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.33.tgz#5533d9384ca7aab86425198e10e8053ebfeab661"
+  integrity sha512-LTDP2uSrsc7XCb5lO7A8BI1qYxRe/8EqlRvMeEl6rsnYAqDOl8xHR+8lSAIVfrNaSAlTPTNOCgNjWcoUL3AZsw==
 
 pump@^2.0.0:
   version "2.0.1"
@@ -10182,7 +9963,7 @@ react-dom@^16.4.0, react-dom@^16.8.1, react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-draggable@^3.0.5, react-draggable@^3.1.1, react-draggable@^3.3.0:
+react-draggable@^3.0.5, react-draggable@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.0.tgz#2ed7ea3f92e7d742d747f9e6324860606cd4d997"
   integrity sha512-U7/jD0tAW4T0S7DCPK0kkKLyL0z61sC/eqU+NUfDjnq+JtBKaYKDHpsK2wazctiA4alEzCXUnzkREoxppOySVw==
@@ -10204,14 +9985,7 @@ react-immutable-proptypes@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-immutable-proptypes/-/react-immutable-proptypes-2.1.0.tgz#023d6f39bb15c97c071e9e60d00d136eac5fa0b4"
   integrity sha1-Aj1vObsVyXwHHp5g0A0TbqxfoLQ=
 
-react-input-autosize@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-input-autosize/-/react-input-autosize-2.2.1.tgz#ec428fa15b1592994fb5f9aa15bb1eb6baf420f8"
-  integrity sha512-3+K4CD13iE4lQQ2WlF8PuV5htfmTRLH6MDnfndHM6LuBRszuXnuyIfE7nhSKt8AzRBZ50bu0sAhkNMeS5pxQQA==
-  dependencies:
-    prop-types "^15.5.8"
-
-react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2, react-is@^16.8.6:
+react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
@@ -10287,18 +10061,6 @@ react-reconciler@^0.20.4:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
-
-react-redux@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-6.0.1.tgz#0d423e2c1cb10ada87293d47e7de7c329623ba4d"
-  integrity sha512-T52I52Kxhbqy/6TEfBv85rQSDz6+Y28V/pf52vDWs1YRXG19mcFOGfHnY2HsNFHyhP+ST34Aih98fvt6tqwVcQ==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    hoist-non-react-statics "^3.3.0"
-    invariant "^2.2.4"
-    loose-envify "^1.4.0"
-    prop-types "^15.7.2"
-    react-is "^16.8.2"
 
 react-redux@^7.0.3:
   version "7.1.0"
@@ -10549,11 +10311,6 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-undo@beta:
-  version "1.0.0-beta9-9-7"
-  resolved "https://registry.yarnpkg.com/redux-undo/-/redux-undo-1.0.0-beta9-9-7.tgz#fe3baa1b271423d7ddbbfc3a82c71b029a2db8ba"
-  integrity sha1-/juqGycUI9fdu/w6gscbApotuLo=
-
 redux@*, redux@^4.0.0, redux@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
@@ -10763,11 +10520,6 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
   integrity sha1-l/cXtp1IeE9fUmpsWqj/3aBVpNE=
-
-require-package-name@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/require-package-name/-/require-package-name-2.0.1.tgz#c11e97276b65b8e2923f75dabf5fb2ef0c3841b9"
-  integrity sha1-wR6XJ2tluOKSP3Xav1+y7ww4Qbk=
 
 require-uncached@^1.0.3:
   version "1.0.3"
