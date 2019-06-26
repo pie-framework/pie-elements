@@ -1,16 +1,17 @@
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 
-export const isResponseCorrect = (question, session) => {
-  if (!question || !session || !session.value) {
-    return false;
-  }
+export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) => {
+  return reduce(correctResponse || {}, (obj, val, key) => {
+    obj[key] = [val];
 
-  return reduce(question.choices, (acc, area, key) => {
-    if (!find(area, c => c === session.value[key])) {
-      return false;
+    if (alternateResponses && alternateResponses[key]) {
+      obj[key] = [
+        ...obj[key],
+        ...alternateResponses[key]
+      ];
     }
 
-    return acc;
-  }, true);
+    return obj;
+  }, {});
 };

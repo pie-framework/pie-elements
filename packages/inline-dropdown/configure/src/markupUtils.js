@@ -7,12 +7,17 @@ const createElementFromHTML = htmlString => {
 };
 
 export const processMarkup = markup => {
-  const slateMarkup = createElementFromHTML(markup);
+  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const slateMarkup = createElementFromHTML(newMarkup);
   const choices = {};
   let index = 0;
 
   const getMenuItem = (el, correctId) => {
-    const innerHTML = el.innerHTML && el.innerHTML.replace(/&nbsp;/g, ' ').trim();
+    let innerHTML = el.innerHTML && el.innerHTML.replace(/&nbsp;/g, ' ').trim();
+
+    if (!innerHTML) {
+      innerHTML = '';
+    }
 
     return {
       label: innerHTML,
@@ -38,18 +43,26 @@ export const processMarkup = markup => {
   };
 };
 
-const REGEX = /\{\{(\d?)\}\}/g;
+const REGEX = /\{\{(\d+)\}\}/g;
 
 export const createSlateMarkup = (markup, choices) => {
+  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   const createMenuItem = (id, val) => `<span data-type="menu_item" data-id="${id}">${val}</span>`;
   const createSelect = choices => {
-    const correctChoice = choices.find(c => c.correct);
+    let correctChoice = choices.find(c => c.correct);
     const menuItems = choices.map(c => createMenuItem(c.value, c.label));
+
+    if (!correctChoice || !correctChoice.value) {
+      correctChoice = {
+        id: '',
+        value: ''
+      };
+    }
 
     return `<span data-type="inline_dropdown" data-correct-id="${correctChoice.value}">${menuItems.join('')}</span>`;
   };
 
-  return markup.replace(REGEX, (match, g) => {
+  return newMarkup.replace(REGEX, (match, g) => {
     return createSelect(choices[g]);
   });
 };

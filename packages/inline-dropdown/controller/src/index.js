@@ -2,7 +2,6 @@ import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
-import { isResponseCorrect } from './utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const prepareChoice = () => (key, choice) => {
@@ -13,7 +12,7 @@ const prepareChoice = () => (key, choice) => {
 };
 
 const getFeedback = (answers, alternateResponses, choices, key) => {
-  const correctAnswers = alternateResponses[key] || [];
+  const correctAnswers = (alternateResponses && alternateResponses[key]) || [];
 
   choices.forEach(choice => {
     if (choice.correct) {
@@ -72,7 +71,7 @@ export function model(question, session, env) {
 
       responseCorrect:
         env.mode === 'evaluate'
-          ? isResponseCorrect(question, session)
+          ? getScore(question, session) === 1
           : undefined,
     };
 
@@ -86,7 +85,7 @@ const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
 
   const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key];
+    const chosenValue = session.value[key] || '';
     const correctChoice = find(respArea, c => isCorrect(c));
     const correctAlternate = config.alternateResponse &&
       config.alternateResponse[key] &&

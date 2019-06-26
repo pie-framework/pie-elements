@@ -1,8 +1,6 @@
-import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
-import { isResponseCorrect } from './utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -70,7 +68,7 @@ export function model(question, session, env) {
 
       responseCorrect:
         env.mode === 'evaluate'
-          ? isResponseCorrect(question, session)
+          ? getScore(question, session) === 1
           : undefined,
     };
 
@@ -92,9 +90,9 @@ const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
 
   const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key];
+    const chosenValue = session.value[key] || '';
 
-    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
+    if (!find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
       return total - 1;
     }
 
