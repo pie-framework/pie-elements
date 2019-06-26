@@ -433,5 +433,20 @@
     "committerDate": "2019-06-20 22:32:48 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-choice@2.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": "settings-panel",
+    "subject": "updated the settings panel design and changes needed for [ch2242]",
+    "merge": null,
+    "header": "feat(settings-panel): updated the settings panel design and changes needed for [ch2242]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d830e57b32bd09ac8cc02c7a12d75d988d9df21c",
+    "gitTags": "",
+    "committerDate": "2019-06-25 23:42:15 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-choice@2.7.0"
   }
 ]
