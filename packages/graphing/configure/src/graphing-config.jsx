@@ -56,7 +56,7 @@ export class GraphingConfig extends React.Component {
       tools.parabola()
     ];
     this.state = {
-      currentTool: toolsArr[2],
+      currentTool: toolsArr[0],
       tools: toolsArr,
       settings: {
         includeArrows: true,

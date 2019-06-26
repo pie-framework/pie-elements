@@ -132,7 +132,7 @@ export interface GraphingPie extends PieModel {
     rationale?: string;
 
     /** Indicates scoring type */
-    scoringType?: 'auto' | 'rubric';
+    scoringType?: 'dichotomous' | 'partial scoring';
 
     /** Indicates if student instructions are enabled */
     studentInstructions?: boolean;

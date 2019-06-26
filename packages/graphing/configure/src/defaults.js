@@ -6,7 +6,7 @@
 
 export default {
   model: {
-    scoringType: 'auto',
+    scoringType: 'dichotomous',
     arrows: true,
     padding: true,
     prompt: 'Here goes item stem.',
@@ -44,6 +44,8 @@ export default {
   },
   configuration: {
     authoring: {
+      settings: false,
+      label: 'Allow authoring',
       enabled: false
     },
     arrows: {
@@ -74,7 +76,7 @@ export default {
       enabled: false,
     },
     scoringType: {
-      settings: false,
+      settings: true,
       label: 'Scoring Type',
     },
     studentInstructions: {

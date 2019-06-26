@@ -94,7 +94,8 @@ export class Configure extends React.Component {
       studentInstructions,
       teacherInstructions,
 
-      prompt = {}
+      prompt = {},
+      authoring
     } = configuration;
     log('[render] model', model);
 
@@ -129,6 +130,8 @@ export class Configure extends React.Component {
                 })
               },
               'Properties': {
+                'authoring.enabled': authoring.settings &&
+                  toggle(authoring.label, true),
                 'teacherInstructions.enabled': teacherInstructions.settings &&
                 toggle(teacherInstructions.label, true),
                 'studentInstructions.enabled': studentInstructions.settings &&
@@ -136,7 +139,7 @@ export class Configure extends React.Component {
                 'rationale.enabled': rationale.settings &&
                 toggle(rationale.label, true),
                 scoringType: scoringType.settings &&
-                radio(scoringType.label, ['auto', 'rubric']),
+                radio(scoringType.label, ['dichotomous', 'partial scoring']),
               },
             }}
           />

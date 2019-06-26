@@ -164,6 +164,7 @@ const unMapMarks = (marks) => Object.values(marks).reduce((a, b) => ([...a, ...b
 const dichotomous = (answers, marksWithCorrectnessValue) => {
   let correctAnswer = Object.keys(marksWithCorrectnessValue)[0];
   let correctMarks = Object.values(marksWithCorrectnessValue)[0];
+  let score = '0%';
 
   Object.keys(answers).map(answerKey => {
     // correct marks for this answer
@@ -175,6 +176,7 @@ const dichotomous = (answers, marksWithCorrectnessValue) => {
     if (marksArrayNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.length &&
       marksArrayWithCorrectnessNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.filter(
         cm => cm.correctness === 'correct').length) {
+      score = '100%';
       correctAnswer = answerKey;
       correctMarks = marksWithCorrectnessValue[answerKey];
     }
@@ -182,7 +184,7 @@ const dichotomous = (answers, marksWithCorrectnessValue) => {
 
   return {
     correctMarks: unMapMarks(correctMarks),
-    score: correctAnswer ? '100%' : '0%',
+    score,
     correctAnswer
   };
 };
@@ -216,15 +218,17 @@ const partial = (answers, marksWithCorrectnessValue) => {
     }
   });
 
+  bestScore = (bestScore < 0 ? 0 : bestScore) * 100;
+
   return {
     correctMarks: unMapMarks(correctMarks),
-    score: bestScore,
+    score: `${bestScore.toFixed(2)}%`,
     correctAnswer
   };
 };
 
 const getScore = (question, session) => {
-  const { dichotomousScoring, partialScoring, answers } = question;
+  const { answers } = question;
 
   // student's answers without DUPLICATES having the mapped form
   const sessionAnswersMappedNoDuplicates = eliminateDuplicates(session.answers);
@@ -269,12 +273,9 @@ const getScore = (question, session) => {
     });
   });
 
-  if (dichotomousScoring) {
+  if (question.scoringType === 'dichotomous') {
     return dichotomous(answers, marksWithCorrectnessValue);
-  }
-
-
-  if (partialScoring) {
+  } else {
     return partial(answers, marksWithCorrectnessValue);
   }
 };
@@ -315,13 +316,11 @@ export function model(question, session, env) {
     });
 
     if (env.mode === 'evaluate') {
-      // tODO
-      const result = getScore({
-        ...question,
-        dichotomousScoring: true,
-        partialScoring: false
-      }, session);
+      const result = getScore(question, session);
+
       out.correctMarks = result.correctMarks;
+      out.correctAnswer = result.correctAnswer;
+      out.score = result.score;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
