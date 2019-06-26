@@ -290,18 +290,16 @@ class Response extends React.Component {
               </Button>
             ) || <div />}
             <div className={classes.checkboxContainer}>
-              {validation === 'symbolic' && (
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Thousands Separators (Commas)"
-                  control={
-                    <Checkbox
-                      checked={allowDecimals}
-                      onChange={this.onConfigChanged('allowDecimals')}
-                    />
-                  }
-                />
-              )}
+              <FormControlLabel
+                classes={{ root: classes.configLabel }}
+                label="Allow Thousands Separators (Commas)"
+                control={
+                  <Checkbox
+                    checked={allowDecimals}
+                    onChange={this.onConfigChanged('allowDecimals')}
+                  />
+                }
+              />
               {validation === 'literal' && (
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}
