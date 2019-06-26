@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.0.3...@pie-element/number-line-controller@4.1.0) (2019-06-26)
+
+
+### Features
+
+* add deductions to outcome calculation ([f2a3782](https://github.com/pie-framework/pie-elements/commit/f2a3782))
+
+
+
+
+
 ## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.0.2...@pie-element/number-line-controller@4.0.3) (2019-06-25)
 
 **Note:** Version bump only for package @pie-element/number-line-controller
