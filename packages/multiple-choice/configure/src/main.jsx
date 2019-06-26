@@ -91,7 +91,7 @@ const Design = withStyles(styles)(props => {
             configuration={configuration}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': {
+              'Settings': {
                 'partLabels.enabled': partLabels.settings &&
                   toggle(partLabels.label, true),
                 choiceMode:
@@ -103,6 +103,8 @@ const Design = withStyles(styles)(props => {
                   radio(choicePrefix.label, ['numbers', 'letters']),
                 partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                toggle(lockChoiceOrder.label)
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -111,8 +113,6 @@ const Design = withStyles(styles)(props => {
                   toggle(studentInstructions.label, true),
                 'rationale.enabled': rationale.settings &&
                   toggle(rationale.label, true),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric']),
               },

@@ -148,7 +148,7 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Item Type': {
+              'Settings': {
                 arrows: arrows.settings && toggle(arrows.label),
                 'graphTitle.enabled': graphTitle.settings &&
                 toggle(graphTitle.label, true),

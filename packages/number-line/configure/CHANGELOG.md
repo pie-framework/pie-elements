@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.1.0...@pie-element/number-line-configure@4.1.1) (2019-06-24)
+
+
+### Bug Fixes
+
+* bump @pie-ui/number-line to ^7.1.0 ([81b49b3](https://github.com/pie-framework/pie-elements/commit/81b49b3))
+* set graph prop as default model ([63b0bf2](https://github.com/pie-framework/pie-elements/commit/63b0bf2))
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.0.0...@pie-element/number-line-configure@4.1.0) (2019-06-24)
+
+
+### Features
+
+* update pie-ui/number-line ([54da4d7](https://github.com/pie-framework/pie-elements/commit/54da4d7))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@3.2.0...@pie-element/number-line-configure@4.0.0) (2019-06-23)
+
+
+### Bug Fixes
+
+* add to correct response` ([4ca8f1a](https://github.com/pie-framework/pie-elements/commit/4ca8f1a))
+
+
+### Features
+
+* number line updates ([f4dbf3d](https://github.com/pie-framework/pie-elements/commit/f4dbf3d))
+
+
+### BREAKING CHANGES
+
+* `domain` is now `{min:number,max:number}`, `ticks:
+{minor:number, major:number}` added.
+
+
+
+
+
 # [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@3.1.6...@pie-element/number-line-configure@3.2.0) (2019-06-21)
 
 

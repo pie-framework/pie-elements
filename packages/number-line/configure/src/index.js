@@ -2,9 +2,9 @@ import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
-import defaults from './defaults';
+import * as defaults from './defaults';
 
-export default class NumberLineConfigReactElement extends HTMLElement {
+export default class NumberLine extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults.model,
     ...model
@@ -12,12 +12,12 @@ export default class NumberLineConfigReactElement extends HTMLElement {
 
   constructor() {
     super();
-    this._model = NumberLineConfigReactElement.createDefaultModel();
+    this._model = NumberLine.createDefaultModel();
     this._configuration = defaults.configuration;
   }
 
   set model(s) {
-    this._model = NumberLineConfigReactElement.createDefaultModel(s);
+    this._model = NumberLine.createDefaultModel(s);
     this._rerender();
   }
 
