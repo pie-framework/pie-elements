@@ -10,14 +10,11 @@ export default {
     arrows: true,
     padding: true,
     prompt: 'Here goes item stem.',
-
     title: '',
-
     graph: {
       domain: 600,
       range: 600
     },
-
     domain: {
       min: -10,
       max: 10,

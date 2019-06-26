@@ -99,8 +99,8 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `auto`
-* `rubric`
+* `dichotomous`
+* `partial scoring`
 
 # `studentInstructions` (boolean)
 

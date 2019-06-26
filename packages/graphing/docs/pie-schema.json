@@ -137,8 +137,8 @@
     "scoringType": {
       "description": "Indicates scoring type",
       "enum": [
-        "auto",
-        "rubric"
+        "dichotomous",
+        "partial scoring"
       ],
       "type": "string",
       "title": "scoringType"

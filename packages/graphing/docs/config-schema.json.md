@@ -2,6 +2,22 @@ Config Object for @pie-elements/graphing
 
 The schema defines the following properties:
 
+# `authoring` (object)
+
+Properties of the `authoring` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
 # `arrows` (object)
 
 Properties of the `arrows` object:
