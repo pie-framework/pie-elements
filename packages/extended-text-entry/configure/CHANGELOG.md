@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.1.1...@pie-element/extended-text-entry-configure@3.2.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.1.0...@pie-element/extended-text-entry-configure@3.1.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

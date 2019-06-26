@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.5.1...@pie-element/drag-in-the-blank@1.6.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.5.0...@pie-element/drag-in-the-blank@1.5.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank
