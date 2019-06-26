@@ -81,7 +81,7 @@ export class Main extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
-              'Item Type': {
+              'Settings': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
                 'equationEditor.enabled': equationEditor.settings &&
                 toggle(equationEditor.label, true),

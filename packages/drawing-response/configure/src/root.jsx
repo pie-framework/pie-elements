@@ -35,7 +35,7 @@ class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                'Item Type': {
+                'Settings': {
                   'backgroundImage.enabled':
                   backgroundImage.settings && toggle(backgroundImage.label, true),
                   'rationale.enabled':

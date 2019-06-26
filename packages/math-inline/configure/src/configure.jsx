@@ -68,7 +68,7 @@ export class Configure extends React.Component {
               onChangeModel={model => onModelChanged(model)}
               onChangeConfiguration={config => onConfigurationChanged(config)}
               groups={{
-                'Item Type': {
+                'Settings': {
                   responseType: responseType.settings &&
                     radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
                 },

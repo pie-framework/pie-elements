@@ -58,7 +58,7 @@ class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                'Item Type': {
+                'Settings': {
                   multipleCorrect:
                     multipleCorrect.settings && toggle(multipleCorrect.label),
                   partialScoring:
