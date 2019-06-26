@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.1.2...@pie-element/number-line@5.2.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
+## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.1.1...@pie-element/number-line@5.1.2) (2019-06-25)
+
+
+### Bug Fixes
+
+* bump @pie-ui/number-line ([379cfbb](https://github.com/pie-framework/pie-elements/commit/379cfbb))
+
+
+
+
+
 ## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.1.0...@pie-element/number-line@5.1.1) (2019-06-24)
 
 

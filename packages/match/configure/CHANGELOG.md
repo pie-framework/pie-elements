@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.3.1...@pie-element/match-configure@2.4.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.3.0...@pie-element/match-configure@2.3.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/match-configure

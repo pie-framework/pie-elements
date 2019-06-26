@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.6.1...@pie-element/inline-choice@2.7.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.6.0...@pie-element/inline-choice@2.6.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/inline-choice
