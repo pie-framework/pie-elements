@@ -77,21 +77,21 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
+          "Properties": Object {
+            "rationale.enabled": undefined,
+            "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
+            "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": undefined,
             "placementArea": undefined,
             "removeTilesAfterPlacing": false,
-          },
-          "Properties": Object {
-            "lockChoiceOrder": undefined,
-            "rationale.enabled": undefined,
-            "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": false,
           },
         }
       }
@@ -246,21 +246,21 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
+          "Properties": Object {
+            "rationale.enabled": undefined,
+            "scoringType": false,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
+            "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": undefined,
             "placementArea": undefined,
             "removeTilesAfterPlacing": undefined,
-          },
-          "Properties": Object {
-            "lockChoiceOrder": undefined,
-            "rationale.enabled": undefined,
-            "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": false,
           },
         }
       }

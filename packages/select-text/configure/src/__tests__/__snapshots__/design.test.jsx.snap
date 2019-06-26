@@ -67,14 +67,14 @@ exports[`design snapshot renders all items except feedback 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "highlightChoices": undefined,
-          },
           "Properties": Object {
             "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
+            "highlightChoices": undefined,
           },
         }
       }
@@ -203,14 +203,14 @@ exports[`design snapshot renders all items except the content input 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "highlightChoices": undefined,
-          },
           "Properties": Object {
             "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
+            "highlightChoices": undefined,
           },
         }
       }
@@ -331,14 +331,14 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "highlightChoices": undefined,
-          },
           "Properties": Object {
             "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
             "teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
+            "highlightChoices": undefined,
           },
         }
       }

@@ -126,7 +126,7 @@ export class Design extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
-              'Item Type': {
+              'Settings': {
                 highlightChoices: highlightChoices.settings &&
                 toggle(highlightChoices.label),
               },

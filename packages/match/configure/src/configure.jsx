@@ -199,11 +199,13 @@ class Configure extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
-              'Item Type': {
+              'Settings': {
                 enableImages: enableImages.settings &&
                 toggle(enableImages.label),
                 partialScoring: partialScoring.settings &&
                 toggle(partialScoring.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                toggle(lockChoiceOrder.label)
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -212,8 +214,6 @@ class Configure extends React.Component {
                 toggle(studentInstructions.label, true),
                 'rationale.enabled': rationale.settings &&
                 toggle(rationale.label, true),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },

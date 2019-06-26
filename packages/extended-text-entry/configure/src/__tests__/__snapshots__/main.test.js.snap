@@ -43,14 +43,14 @@ exports[`Render Main Component Match Snapshot 1`] = `
       }
       groups={
         Object {
-          "Item Type": Object {
-            "equationEditor.enabled": false,
-            "mathInput": undefined,
-            "multiple.enabled": false,
-          },
           "Properties": Object {
             "configure.studentInstructions.enabled": false,
             "configure.teacherInstructions.enabled": false,
+          },
+          "Settings": Object {
+            "equationEditor.enabled": false,
+            "mathInput": undefined,
+            "multiple.enabled": false,
           },
         }
       }
