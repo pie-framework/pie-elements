@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.6...@pie-element/text-entry-configure@2.4.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.5...@pie-element/text-entry-configure@2.3.6) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
+## [2.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.4...@pie-element/text-entry-configure@2.3.5) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
+## [2.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.3...@pie-element/text-entry-configure@2.3.4) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
+## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.2...@pie-element/text-entry-configure@2.3.3) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.1...@pie-element/text-entry-configure@2.3.2) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/text-entry-configure
+
+
+
+
+
 ## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry-configure@2.3.0...@pie-element/text-entry-configure@2.3.1) (2019-05-10)
 
 **Note:** Version bump only for package @pie-element/text-entry-configure

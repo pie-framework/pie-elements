@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.15...@pie-element/function-entry-configure@2.3.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.2.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.14...@pie-element/function-entry-configure@2.2.15) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/function-entry-configure
+
+
+
+
+
+## [2.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.13...@pie-element/function-entry-configure@2.2.14) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/function-entry-configure
+
+
+
+
+
+## [2.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.12...@pie-element/function-entry-configure@2.2.13) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/function-entry-configure
+
+
+
+
+
+## [2.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.11...@pie-element/function-entry-configure@2.2.12) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/function-entry-configure
+
+
+
+
+
+## [2.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.10...@pie-element/function-entry-configure@2.2.11) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/function-entry-configure
+
+
+
+
+
 ## [2.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry-configure@2.2.9...@pie-element/function-entry-configure@2.2.10) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/function-entry-configure

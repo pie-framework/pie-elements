@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.10...@pie-element/math-inline@2.3.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.9...@pie-element/math-inline@2.2.10) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.8...@pie-element/math-inline@2.2.9) (2019-06-19)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.7...@pie-element/math-inline@2.2.8) (2019-06-18)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.6...@pie-element/math-inline@2.2.7) (2019-06-17)
+
+
+### Bug Fixes
+
+* **math-inline:** validation logic fix for allowSpaces ([2951657](https://github.com/pie-framework/pie-elements/commit/2951657))
+
+
+
+
+
+## [2.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.5...@pie-element/math-inline@2.2.6) (2019-06-13)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.4...@pie-element/math-inline@2.2.5) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.3...@pie-element/math-inline@2.2.4) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.2...@pie-element/math-inline@2.2.3) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.1...@pie-element/math-inline@2.2.2) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.2.0...@pie-element/math-inline@2.2.1) (2019-05-31)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.1.3...@pie-element/math-inline@2.2.0) (2019-05-24)
+
+
+### Features
+
+* **math-inline:** add outcome function to controller ([ce6b1bb](https://github.com/pie-framework/pie-elements/commit/ce6b1bb))
+
+
+
+
+
+## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.1.2...@pie-element/math-inline@2.1.3) (2019-05-23)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
 ## [2.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.1.1...@pie-element/math-inline@2.1.2) (2019-05-21)
 
 

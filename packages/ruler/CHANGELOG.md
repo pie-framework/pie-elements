@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.4.14...@pie-element/ruler@3.5.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [3.4.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.4.13...@pie-element/ruler@3.4.14) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/ruler
+
+
+
+
+
+## [3.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.4.12...@pie-element/ruler@3.4.13) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/ruler
+
+
+
+
+
+## [3.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.4.10...@pie-element/ruler@3.4.12) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/ruler
+
+
+
+
+
 ## [3.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.4.9...@pie-element/ruler@3.4.10) (2019-05-08)
 
 **Note:** Version bump only for package @pie-element/ruler

@@ -163,6 +163,17 @@
               "type": "string"
             },
             "title": "choices"
+          },
+          "alternateResponses": {
+            "description": "Array of alternatives correct choices",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "title": "alternateResponses"
           }
         },
         "required": [
@@ -507,6 +518,17 @@
             "type": "string"
           },
           "title": "choices"
+        },
+        "alternateResponses": {
+          "description": "Array of alternatives correct choices",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": "alternateResponses"
         }
       },
       "required": [

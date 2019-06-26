@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.3.3...@pie-element/match@2.4.0) (2019-06-21)
+
+
+### Features
+
+* **general:** updated all the packages that have the config-ui as a dependency ([44061de](https://github.com/pie-framework/pie-elements/commit/44061de))
+
+
+
+
+
+## [2.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.3.2...@pie-element/match@2.3.3) (2019-06-20)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.3.1...@pie-element/match@2.3.2) (2019-06-18)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.3.0...@pie-element/match@2.3.1) (2019-06-17)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.5...@pie-element/match@2.3.0) (2019-06-13)
+
+
+### Features
+
+* **ui:** updated the ui ([2baa579](https://github.com/pie-framework/pie-elements/commit/2baa579))
+
+
+
+
+
+## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.4...@pie-element/match@2.2.5) (2019-06-12)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.3...@pie-element/match@2.2.4) (2019-06-07)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.2...@pie-element/match@2.2.3) (2019-06-06)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.1...@pie-element/match@2.2.2) (2019-06-05)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.2.0...@pie-element/match@2.2.1) (2019-05-23)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 # [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.1.1...@pie-element/match@2.2.0) (2019-05-21)
 
 

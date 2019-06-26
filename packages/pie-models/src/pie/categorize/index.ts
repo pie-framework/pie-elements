@@ -29,12 +29,17 @@ interface Category {
     choices: CategoryChoice[];
 }
 
+type AlternateResponse = string[];
+
 interface CategoryCorrectResponse {
   /** The identifier for the category */
   category: string;
 
   /** Array of identifiers for the choices that belong in this category */
   choices: string[];
+
+  /** Array of alternatives correct choices */
+  alternateResponses?: AlternateResponse[];
 
 }
 
