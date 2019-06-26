@@ -9,7 +9,7 @@ const { sinY, buildDataPoints, getAmplitudeAndFreq, FREQ_DIVIDER, parabolaFromTw
 
 const log = debug('@pie-element:graphing:controller');
 
-const equalPoint = (A, B) => {
+export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
   let equalLabel = true;
 
@@ -20,22 +20,22 @@ const equalPoint = (A, B) => {
   return isEqual(A.x, B.x) && isEqual(A.y, B.y) && equalLabel;
 };
 
-const equalSegment = (A, B, C, D) => {
+export const equalSegment = (A, B, C, D) => {
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
   return ((isEqual(A, C) && isEqual(B, D)) || ((isEqual(B, C) && isEqual(A, D))));
 };
 
-const equalVector = (A, B, C, D) => {
+export const equalVector = (A, B, C, D) => {
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
   return ((isEqual(A, C) && isEqual(B, D)));
 };
 
-const equalLine = (A, B, C, D) => {
+export const equalLine = (A, B, C, D) => {
   // (y2 - y1)/(x2 - x1) = (y4 - y3)/(x4 - x3);
   return (((B.y - A.y) / (B.x - A.x)) === ((D.y - C.y) / (D.x - C.x)));
 };
 
-const equalRay = (A, B, C, D) => {
+export const equalRay = (A, B, C, D) => {
   // line & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
   return ((
         (B.y - A.y) / (B.x - A.x)
@@ -48,7 +48,7 @@ const equalRay = (A, B, C, D) => {
     );
 };
 
-const equalPolygon = (pointsA, pointsB) => {
+export const equalPolygon = (pointsA, pointsB) => {
   const sessAnswerPoints = lodash.uniqWith(pointsA, isEqual);
   const withoutDuplicates = lodash.uniqWith(pointsB, isEqual);
   const sB = lodash.orderBy(sessAnswerPoints, ['x','y'], ['asc', 'asc']);
@@ -57,18 +57,16 @@ const equalPolygon = (pointsA, pointsB) => {
   return isEqual(sD, sB);
 };
 
-const equalCircle = (A, B, C, D) => {
+export const equalCircle = (A, B, C, D) => {
   const equalRootAndEdge = isEqual(D, B) && isEqual(C, A);
-  const equalRAndRoot = isEqual(C, A) && isEqual(Math.abs(D.x - C.x), Math.abs(B.x - A.x));
+  const rAB = Math.sqrt(((B.x - A.x) ** 2) + ((B.y - A.y) ** 2));
+  const rCD = Math.sqrt(((D.x - C.x) ** 2) + ((D.y - C.y) ** 2));
+  const equalRAndRoot = isEqual(C, A) && isEqual(rAB, rCD);
 
-  if (equalRootAndEdge || equalRAndRoot) {
-    return { C, D };
-  } else {
-    return null;
-  }
+  return equalRootAndEdge || equalRAndRoot;
 };
 
-const equalSine = (A, B, C, D) => {
+export const equalSine = (A, B, C, D) => {
   const getPoints = (root, edge) => {
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
     const interval = freq / FREQ_DIVIDER;
@@ -95,7 +93,7 @@ const equalSine = (A, B, C, D) => {
   return dif.length === 0 || nDif.length === 0;
 };
 
-const equalParabola = (A, B, C, D) => {
+export const equalParabola = (A, B, C, D) => {
   const min = A.x < B.x ? A.x + (A.x - B.x) : B.x;
   const max = A.x < B.x ? B.x : A.x + (A.x - B.x);
   const minMark = C.x < D.x ? C.x + (C.x - D.x) : D.x;
@@ -148,7 +146,7 @@ const mapForIsEqual = {
   parabola: (sessAnswer, mark) => equalParabola(sessAnswer.root, sessAnswer.edge, mark.root, mark.edge),
 };
 
-const eliminateDuplicates = (marks) => {
+export const eliminateDuplicates = (marks) => {
   const mappedMarks = initializeGraphMap();
 
   if (marks) {
