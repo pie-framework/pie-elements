@@ -6,38 +6,53 @@
 
 export default {
   model: {
-    scoringType: 'dichotomous',
-    arrows: true,
-    padding: true,
-    prompt: 'Here goes item stem.',
-    title: '',
-    graph: {
-      domain: 600,
-      range: 600
+    answers: {
+      a1: {
+        name: 'A1',
+        marks: [
+          { x: 1, y: 1, type: 'point' },
+          { x: 2, y: 2, type: 'point' },
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+        ],
+      },
+      a2: {
+        name: 'A2',
+        marks: [
+          { x: 1, y: 1, type: 'point' },
+          { x: 2, y: 2, type: 'point' },
+          { x: 3, y: 3, type: 'point' },
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+        ],
+      }
     },
+    arrows: true,
+    backgroundMarks: [],
     domain: {
       min: -10,
       max: 10,
       padding: 0,
       step: 1,
-      labelStep: 1
+      labelStep: 1,
+      axisLabel: 'x'
     },
+    graph: {
+      width: 480,
+      height: 480
+    },
+    labels: null,
+    padding: true,
+    prompt: 'Here goes item stem!',
     range: {
       min: -5,
       max: 5,
       padding: 0,
       step: 1,
-      labelStep: 1
+      labelStep: 1,
+      axisLabel: 'y'
     },
-    backgroundMarks: [],
-    answers: {
-      correctAnswer: {
-        name: 'Correct Answer',
-        marks: []
-      }
-    },
-    xAxisLabel: 'x',
-    yAxisLabel: 'y',
+    rationale: 'Rationale goes here!',
+    scoringType: 'partial scoring',
+    title: '',
   },
   configuration: {
     authoring: {
@@ -52,11 +67,6 @@ export default {
     padding: {
       settings: false,
       label: 'Padding',
-    },
-    graphTitle: {
-      settings: false,
-      label: 'Graph Title',
-      enabled: true
     },
     labels: {
       settings: false,
@@ -85,6 +95,11 @@ export default {
       settings: false,
       label: 'Teacher Instructions',
       enabled: false,
+    },
+    title: {
+      settings: false,
+      label: 'Graph Title',
+      enabled: true
     },
   }
 };

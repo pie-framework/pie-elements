@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
 
-import { get, set } from 'lodash';
+import { set } from 'lodash';
 
 const styles = theme => ({
   column: {
@@ -67,38 +67,26 @@ export class CorrectResponse extends React.Component {
       { name: 'parabola', component: tools.parabola(), selected: true },
     ];
 
-    this.state = {
-      allTools,
-      settings: {
-        includeArrows: true,
-        labels: true,
-        graphTitle: false,
-        coordinatesOnHover: false,
-        size: {
-          width: 400,
-          height: 400
-        }
-      },
-    };
+    this.state = { allTools };
   }
 
   changeMarks = (key, marks) => {
-    const { model } = this.props;
+    const { model, onChange } = this.props;
 
     set(model, `answers.${key}.marks`, marks);
-    this.props.onChange(model);
+    onChange(model);
   };
 
   changeDisplayedTools = (displayedTools) => {
-    const { model } = this.props;
+    const { model, onChange } = this.props;
     model.displayedTools = displayedTools;
 
-    this.props.onChange(model);
+    onChange(model);
   };
 
   render() {
-    const { classes, model } = this.props;
-    const { allTools, settings } = this.state;
+    const { classes, model, onChange } = this.props;
+    const { allTools } = this.state;
     const tools = allTools.map(t => t.component);
     const selectedTools = allTools.filter(t => t.selected).map(t => t.component);
 
@@ -144,14 +132,14 @@ export class CorrectResponse extends React.Component {
               <p>{model.answers[mark].name}</p>
 
               <Graph
-                size={settings.size}
+                size={{
+                  width: model.graph && model.graph.width,
+                  height: model.graph && model.graph.height
+                }}
                 domain={model.domain}
                 range={model.range}
                 title={model.title}
-                axesSettings={{
-                  includeArrows: settings.includeArrows
-                }}
-                labels={settings.labels && model.labels}
+                labels={model.labels}
                 marks={model.answers[mark].marks}
                 backgroundMarks={model.backgroundMarks}
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
@@ -171,7 +159,7 @@ export class CorrectResponse extends React.Component {
                   marks: []
                 }
               );
-              this.props.onChange(model);
+              onChange(model);
             }}
           >
             ADD ALTERNATE

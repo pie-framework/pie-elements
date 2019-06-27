@@ -1,5 +1,6 @@
 import debug from 'debug';
 
+import cloneDeep from 'lodash/cloneDeep';
 import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
 import { tools } from '@pie-lib/graphing';
@@ -160,12 +161,11 @@ export const eliminateDuplicates = (marks) => {
   return mappedMarks;
 };
 
-const unMapMarks = (marks) => Object.values(marks).reduce((a, b) => ([...a, ...b]));
+export const unMapMarks = (marks) => Object.values(marks).reduce((a, b) => ([...a, ...b]));
 
-const dichotomous = (answers, marksWithCorrectnessValue) => {
-  let correctAnswer = Object.keys(marksWithCorrectnessValue)[0];
+export const dichotomous = (answers, marksWithCorrectnessValue) => {
   let correctMarks = Object.values(marksWithCorrectnessValue)[0];
-  let score = '0%';
+  let score = 0;
 
   Object.keys(answers).map(answerKey => {
     // correct marks for this answer
@@ -177,23 +177,21 @@ const dichotomous = (answers, marksWithCorrectnessValue) => {
     if (marksArrayNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.length &&
       marksArrayWithCorrectnessNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.filter(
         cm => cm.correctness === 'correct').length) {
-      score = '100%';
-      correctAnswer = answerKey;
+      score = 1;
       correctMarks = marksWithCorrectnessValue[answerKey];
     }
   });
 
   return {
     correctMarks: unMapMarks(correctMarks),
-    score,
-    correctAnswer
+    score
   };
 };
 
-const partial = (answers, marksWithCorrectnessValue) => {
-  let correctAnswer = Object.keys(marksWithCorrectnessValue)[0];
+export const partial = (answers, marksWithCorrectnessValue) => {
   let correctMarks = Object.values(marksWithCorrectnessValue)[0];
   let bestScore = 0;
+
 
   Object.keys(answers).map(answerKey => {
     const marksArrayNoDuplicates = eliminateDuplicates(answers[answerKey].marks);
@@ -205,34 +203,30 @@ const partial = (answers, marksWithCorrectnessValue) => {
       marksWithCorrectnessValue[answerKey][correctMarkKey].forEach(cM => {
         scoredToolsCount += 1;
         if (cM.correctness === 'incorrect') {
-          score = scoredToolsCount > allCorrectScore ? score - 1 : score;
+          score -= scoredToolsCount > allCorrectScore ? 1 : 0;
         } else {
-          score += 1;
+          score += scoredToolsCount <= allCorrectScore ? 1 : 0;
         }
       });
     });
 
-    if (!bestScore || score / allCorrectScore >= bestScore) {
+    if (!bestScore || (score / allCorrectScore >= bestScore)) {
       bestScore = score / allCorrectScore;
       correctMarks = marksWithCorrectnessValue[answerKey];
-      correctAnswer = answerKey;
     }
   });
 
-  bestScore = (bestScore < 0 ? 0 : bestScore) * 100;
-
   return {
     correctMarks: unMapMarks(correctMarks),
-    score: `${bestScore.toFixed(2)}%`,
-    correctAnswer
+    score: parseFloat(bestScore.toFixed(2))
   };
 };
 
-const getScore = (question, session) => {
+export const getScore = (question, session) => {
   const { answers } = question;
 
   // student's answers without DUPLICATES having the mapped form
-  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(session.answers);
+  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session.answers));
   let marksWithCorrectnessValue = {};
 
   if (!answers) {
@@ -273,7 +267,7 @@ const getScore = (question, session) => {
           sessAnswer.correctness = 'incorrect';
         }
 
-        marksWithCorrectnessValue[answerKey][toolType].push(sessAnswer);
+        marksWithCorrectnessValue[answerKey][toolType].push(cloneDeep(sessAnswer));
       });
     });
   });
@@ -289,15 +283,16 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const {
       backgroundMarks,
-      answers,
       domain,
       prompt,
       range,
       rationale,
       title,
+      labels,
       xAxisLabel,
       yAxisLabel,
-      displayedTools
+      displayedTools,
+      graph
     } = question;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -311,30 +306,33 @@ export function model(question, session, env) {
       range,
       rationale,
       title,
+      labels,
       xAxisLabel,
       yAxisLabel,
       displayedTools,
+      graph
     };
-
-    const out = Object.assign(base, {
-      correctResponse: env.mode === 'evaluate' ? answers : undefined
-    });
 
     if (env.mode === 'evaluate') {
       const result = getScore(question, session);
 
-      out.correctMarks = result.correctMarks;
-      out.correctAnswer = result.correctAnswer;
-      out.score = result.score;
+      base.correctMarks = result.correctMarks;
+      base.score = result.score;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = question.rationale;
+      base.rationale = question.rationale;
     } else {
-      out.rationale = null;
+      base.rationale = null;
     }
 
-    log('out: ', out);
-    resolve(out);
+    log('base: ', base);
+    resolve(base);
+  });
+}
+
+export function outcome(model, session) {
+  return new Promise(resolve => {
+    resolve({ score: getScore(model, session).score });
   });
 }

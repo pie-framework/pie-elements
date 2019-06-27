@@ -5,24 +5,16 @@ import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-fram
 import debug from 'debug';
 
 import defaultValues from './defaults';
-import defaults from 'lodash/defaults';
 
 const log = debug('pie-elements:graphing:configure');
 
 export default class GraphLinesConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaultValues.model,
-    ...model,
-    graph: defaults(defaultValues.graph, model.graph),
-  });
+  static createDefaultModel = (model = {}) => ({ ...defaultValues.model, ...model });
 
   constructor() {
     super();
     this._model = GraphLinesConfigure.createDefaultModel();
     this._configuration = defaultValues.configuration;
-
-    // TODO delete this
-    // document.querySelector('catalog-demo').shadowRoot.querySelector('demo-pane[title="preview"]').style.display = 'none';
   }
 
   set model(m) {

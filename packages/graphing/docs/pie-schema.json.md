@@ -5,123 +5,6 @@ Model Object for @pie-elements/graphing
 
 The schema defines the following properties:
 
-# `graph` (object, required)
-
-Properties of the `graph` object:
-
-## `domain` (number, required)
-
-Width for graph representation
-
-## `range` (number, required)
-
-Height for graph representation
-
-# `domain` (object, required)
-
-Properties of the `domain` object:
-
-## `min` (number, required)
-
-Min value
-
-## `max` (number, required)
-
-Max value
-
-## `padding` (number, required)
-
-Padding value
-
-## `step` (number, required)
-
-Step value
-
-## `labelStep` (number, required)
-
-Label step value
-
-# `range` (object, required)
-
-Properties of the `range` object:
-
-## `min` (number, required)
-
-Min value
-
-## `max` (number, required)
-
-Max value
-
-## `padding` (number, required)
-
-Padding value
-
-## `step` (number, required)
-
-Step value
-
-## `labelStep` (number, required)
-
-Label step value
-
-# `xAxisLabel` (string, required)
-
-Indicates label for x axis
-
-# `yAxisLabel` (string, required)
-
-Indicates label for y axis
-
-# `arrows` (boolean)
-
-Indicates if arrows are enabled
-
-# `padding` (boolean)
-
-Indicates if padding is enabled
-
-# `labels` (boolean)
-
-Indicates if labels are enabled
-
-# `prompt` (string)
-
-Indicates prompt value
-
-# `rationale` (string)
-
-Indicates rationale for the answer
-
-# `scoringType` (string, enum)
-
-Indicates scoring type
-
-This element must be one of the following enum values:
-
-* `dichotomous`
-* `partial scoring`
-
-# `studentInstructions` (boolean)
-
-Indicates if student instructions are enabled
-
-# `teacherInstructions` (boolean)
-
-Indicates if teacher instructions are enabled
-
-# `title` (string)
-
-Indicates graph title
-
-# `backgroundMarks` (array, required)
-
-Indicates marks that have to be displayed in background
-
-Additional restrictions:
-
-* Minimum items: `1`
-
 # `answers` (object, required)
 
 Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex
@@ -160,6 +43,139 @@ Additional restrictions:
 
 * Minimum items: `1`
 
+# `arrows` (boolean)
+
+Indicates if arrows are enabled
+
+# `backgroundMarks` (array, required)
+
+Indicates marks that have to be displayed in background
+
+Additional restrictions:
+
+* Minimum items: `1`
+
+# `domain` (object, required)
+
+Properties of the `domain` object:
+
+## `min` (number, required)
+
+Min value
+
+## `max` (number, required)
+
+Max value
+
+## `padding` (number, required)
+
+Padding value
+
+## `step` (number, required)
+
+Step value
+
+## `labelStep` (number, required)
+
+Label step value
+
+## `axisLabel` (string, required)
+
+Axis Label
+
+# `graph` (object, required)
+
+Properties of the `graph` object:
+
+## `width` (number, required)
+
+Width for graph representation
+
+## `height` (number, required)
+
+Height for graph representation
+
+# `labels` (object)
+
+Properties of the `labels` object:
+
+## `top` (string, required)
+
+Label for top side of the graph
+
+## `bottom` (string, required)
+
+Label for bottom side of the graph
+
+## `left` (string, required)
+
+Label for left side of the graph
+
+## `right` (string, required)
+
+Label for right side of the graph
+
+# `padding` (boolean)
+
+Indicates if padding is enabled
+
+# `prompt` (string)
+
+Indicates prompt value
+
+# `range` (object, required)
+
+Properties of the `range` object:
+
+## `min` (number, required)
+
+Min value
+
+## `max` (number, required)
+
+Max value
+
+## `padding` (number, required)
+
+Padding value
+
+## `step` (number, required)
+
+Step value
+
+## `labelStep` (number, required)
+
+Label step value
+
+## `axisLabel` (string, required)
+
+Axis Label
+
+# `rationale` (string)
+
+Indicates rationale for the answer
+
+# `scoringType` (string, enum)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `dichotomous`
+* `partial scoring`
+
+# `studentInstructions` (boolean)
+
+Indicates if student instructions are enabled
+
+# `teacherInstructions` (boolean)
+
+Indicates if teacher instructions are enabled
+
+# `title` (string)
+
+Indicates graph title
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -190,41 +206,21 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-## `Graph` (object)
+## `Answer` (object)
 
-Properties of the `Graph` object:
+Properties of the `Answer` object:
 
-### `domain` (number, required)
+### `name` (string, required)
 
-Width for graph representation
+Indicates name of answer
 
-### `range` (number, required)
+### `marks` (array, required)
 
-Height for graph representation
+Indicates marks for the answer
 
-## `GraphSettings` (object)
+Additional restrictions:
 
-Properties of the `GraphSettings` object:
-
-### `min` (number, required)
-
-Min value
-
-### `max` (number, required)
-
-Max value
-
-### `padding` (number, required)
-
-Padding value
-
-### `step` (number, required)
-
-Step value
-
-### `labelStep` (number, required)
-
-Label step value
+* Minimum items: `1`
 
 ## `Mark` (object)
 
@@ -362,18 +358,62 @@ Indicates x coordinate
 
 Indicates y coordinate
 
-## `Answer` (object)
+## `GraphSettings` (object)
 
-Properties of the `Answer` object:
+Properties of the `GraphSettings` object:
 
-### `name` (string, required)
+### `min` (number, required)
 
-Indicates name of answer
+Min value
 
-### `marks` (array, required)
+### `max` (number, required)
 
-Indicates marks for the answer
+Max value
 
-Additional restrictions:
+### `padding` (number, required)
 
-* Minimum items: `1`
+Padding value
+
+### `step` (number, required)
+
+Step value
+
+### `labelStep` (number, required)
+
+Label step value
+
+### `axisLabel` (string, required)
+
+Axis Label
+
+## `Graph` (object)
+
+Properties of the `Graph` object:
+
+### `width` (number, required)
+
+Width for graph representation
+
+### `height` (number, required)
+
+Height for graph representation
+
+## `Labels` (object)
+
+Properties of the `Labels` object:
+
+### `top` (string, required)
+
+Label for top side of the graph
+
+### `bottom` (string, required)
+
+Label for bottom side of the graph
+
+### `left` (string, required)
+
+Label for left side of the graph
+
+### `right` (string, required)
+
+Label for right side of the graph

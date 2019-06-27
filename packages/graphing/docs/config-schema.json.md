@@ -50,22 +50,6 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `graphTitle` (object)
-
-Properties of the `graphTitle` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed
-
-## `label` (string)
-
-Indicates the label for the item
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-
 # `labels` (object)
 
 Properties of the `labels` object:
@@ -82,9 +66,9 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `rationale` (object)
+# `prompt` (object)
 
-Properties of the `rationale` object:
+Properties of the `prompt` object:
 
 ## `settings` (boolean)
 
@@ -98,9 +82,9 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `prompt` (object)
+# `rationale` (object)
 
-Properties of the `prompt` object:
+Properties of the `rationale` object:
 
 ## `settings` (boolean)
 
@@ -149,6 +133,22 @@ Indicates the value of the item if it affects config-ui (eg.: if item is a switc
 # `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed
+
+## `label` (string)
+
+Indicates the label for the item
+
+## `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+
+# `title` (object)
+
+Properties of the `title` object:
 
 ## `settings` (boolean)
 

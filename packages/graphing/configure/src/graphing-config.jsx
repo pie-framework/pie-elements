@@ -39,7 +39,8 @@ export class GraphingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    authoringEnabled: PropTypes.bool
   };
 
   constructor(props) {
@@ -57,17 +58,7 @@ export class GraphingConfig extends React.Component {
     ];
     this.state = {
       currentTool: toolsArr[0],
-      tools: toolsArr,
-      settings: {
-        includeArrows: true,
-        labels: true,
-        graphTitle: false,
-        coordinatesOnHover: false,
-        size: {
-          width: 400,
-          height: 400
-        }
-      },
+      tools: toolsArr
     };
   }
 
@@ -79,14 +70,14 @@ export class GraphingConfig extends React.Component {
   };
 
   renderInput = (key, label, className) => {
-    const { classes } = this.props;
+    const { classes, model } = this.props;
 
     return (
       <NumberTextField
         key={key}
         label={label.toUpperCase()}
         onChange={(event, value) => this.onChangeInputValue(key, value)}
-        value={get(this.props.model, key)}
+        value={get(model, key)}
         className={className || classes.input}
       />
     )
@@ -109,7 +100,7 @@ export class GraphingConfig extends React.Component {
 
   render() {
     const { classes, model, authoringEnabled } = this.props;
-    const { settings } = this.state;
+    const { tools, currentTool }  = this.state;
 
     const Column = ({ columnKey, axis }) => {
       const rows = [{
@@ -212,20 +203,20 @@ export class GraphingConfig extends React.Component {
 
             <Graph
               key="graphing-config"
-              size={settings.size}
+              size={{
+                width: model.graph && model.graph.width,
+                height: model.graph && model.graph.height
+              }}
               domain={model.domain}
               range={model.range}
               title={model.title}
-              axesSettings={{
-                includeArrows: settings.includeArrows
-              }}
-              labels={settings.labels && model.labels}
+              labels={model.labels}
               marks={model.backgroundMarks}
               backgroundMarks={[]}
               onChangeMarks={this.changeBackgroundMarks}
-              tools={this.state.tools}
-              currentTool={this.state.currentTool}
-              defaultTool={this.state.tools[0].type}
+              tools={tools}
+              currentTool={currentTool}
+              defaultTool={tools[0].type}
             />
           </div>
 

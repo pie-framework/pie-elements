@@ -2,11 +2,9 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { Configure } from '../configure';
-import StyledGraphingConfig, { GraphingConfig } from '../graphing-config';
-import StyledCorrectResponse, { CorrectResponse } from '../correct-response';
-import { InputContainer } from '@pie-lib/config-ui';
+import { GraphingConfig } from '../graphing-config';
+import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
-import { GraphContainer , tools } from '@pie-lib/graphing';
 
 jest.mock('@pie-lib/config-ui', () => ({
   InputContainer: props => <div>{props.children}</div>,
@@ -39,91 +37,47 @@ jest.mock('@pie-lib/graphing', () => ({
   }
 }));
 
-const defaultProps = {
-  model: {
-    id: '1',
-    element: 'graphing',
-    minimumWidth: 500,
-    multiple: false,
-    partialScoring: [],
-    feedback: {
-      correct: {
-        type: 'none',
-        default: 'Correct'
-      },
-      partial: {
-        type: 'none',
-        default: 'Nearly'
-      },
-      incorrect: {
-        type: 'none',
-        default: 'Incorrect'
-      }
-    },
-    graph: {
-      domain: 600,
-      range: 600
-    },
-    domain: {
-      min: -10,
-      max: 10,
-      padding: 0,
-      step: 1,
-      labelStep: 1
-    },
-    range: {
-      min: -5,
-      max: 5,
-      padding: 0,
-      step: 1,
-      labelStep: 1
-    },
-    backgroundMarks: [],
-    marks: {
-      correctAnswer: {
-        name: 'Correct Answer',
-        marks: []
-      }
-    },
-    xAxisLabel: 'x',
-    yAxisLabel: 'y',
-  },
-  configuration: defaultValues.configuration,
-};
-
 describe('Configure', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = props => {
-      const configureProps = { ...defaultProps, ...props };
+      const configureProps = { ...defaultValues, ...props };
 
       return shallow(<Configure { ...configureProps } />);
     };
   });
 
-  it('updates rationale', () => {
-    const onModelChanged = jest.fn();
-    const component = wrapper({ onModelChanged });
-
-    component.instance().onRationaleChange('New Rationale');
-
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      ...defaultProps.model,
-      rationale: 'New Rationale',
-    }));
+  describe('renders', () => {
+    it('snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
   });
 
-  it('updates prompt', () => {
-    const onModelChanged = jest.fn();
-    const component = wrapper({ onModelChanged });
+  describe('logic', () => {
+    it('updates rationale', () => {
+      const onModelChanged = jest.fn();
+      const component = wrapper({ onModelChanged });
 
-    component.instance().onPromptChange('New Prompt');
+      component.instance().onRationaleChange('New Rationale');
 
-    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
-      ...defaultProps.model,
-      prompt: 'New Prompt',
-    }));
+      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+        ...defaultValues.model,
+        rationale: 'New Rationale',
+      }));
+    });
+
+    it('updates prompt', () => {
+      const onModelChanged = jest.fn();
+      const component = wrapper({ onModelChanged });
+
+      component.instance().onPromptChange('New Prompt');
+
+      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+        ...defaultValues.model,
+        prompt: 'New Prompt',
+      }));
+    });
   });
 });
 
@@ -144,6 +98,40 @@ describe('GraphingConfig', () => {
       return shallow(<GraphingConfig { ...configureProps } />);
     };
   });
+
+  describe('renders', () => {
+    it('snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
+  });
+
+  describe('logic', () => {
+    it('changeBackgroundMarks calls onChange', () => {
+      const component = wrapper();
+      const bM = [{ x: 1, y: 1, type: 'point'}];
+
+      component.instance().changeBackgroundMarks(bM);
+
+      expect(component.instance().props.onChange).toBeCalledWith({
+        ...defaultValues.model,
+        backgroundMarks: bM
+      });
+    });
+
+    it('onChangeInputValue calls onChange', () => {
+      const component = wrapper();
+      component.instance().onChangeInputValue('domain.min', 20);
+
+      expect(component.instance().props.model.domain.min).toEqual(20);
+      expect(component.instance().props.onChange).toHaveBeenCalledWith({
+        ...defaultValues.model,
+        domain: {
+          ...defaultValues.model.domain,
+          min: 20
+        }
+      })
+    });
+  });
 });
 
 
@@ -163,6 +151,42 @@ describe('CorrectResponse', () => {
 
       return shallow(<CorrectResponse { ...configureProps } />);
     };
+  });
+
+  describe('renders', () => {
+    it('snapshot', () => {
+      expect(wrapper).toMatchSnapshot();
+    })
+  });
+
+  describe('logic', () => {
+    it('changeMarks calls onChange', () => {
+      const component = wrapper();
+      const marks = [{ x: 1, y: 1, type: 'point'}];
+
+      component.instance().changeMarks('alternateTest', marks);
+
+      expect(component.instance().props.onChange).toBeCalledWith({
+        ...defaultValues.model,
+        answers: {
+          ...defaultValues.model.answers,
+          alternateTest: {
+            marks
+          }
+        }
+      });
+    });
+
+    it('changeDisplayedTools calls onChange', () => {
+      const component = wrapper();
+      component.instance().changeDisplayedTools([]);
+
+      expect(component.instance().props.model.displayedTools).toEqual([]);
+      expect(component.instance().props.onChange).toHaveBeenCalledWith({
+        ...defaultValues.model,
+        displayedTools: []
+      })
+    });
   });
 });
 

@@ -44,9 +44,7 @@ export class Configure extends React.Component {
     configuration: PropTypes.object.isRequired,
   };
 
-  static defaultProps = {
-    classes: {}
-  };
+  static defaultProps = { classes: {} };
 
   constructor(props) {
     super(props);
@@ -57,19 +55,13 @@ export class Configure extends React.Component {
   onRationaleChange = rationale => {
     const { onModelChanged, model } = this.props;
 
-    onModelChanged({
-      ...model,
-      rationale
-    });
+    onModelChanged({ ...model, rationale });
   };
 
   onPromptChange = prompt => {
     const { onModelChanged, model } = this.props;
 
-    onModelChanged({
-      ...model,
-      prompt
-    });
+    onModelChanged({ ...model, prompt });
   };
 
   render() {
@@ -85,7 +77,7 @@ export class Configure extends React.Component {
 
     const {
       arrows,
-      graphTitle,
+      title,
       padding,
       labels,
 
@@ -110,8 +102,8 @@ export class Configure extends React.Component {
             groups={{
               'Item Type': {
                 arrows: arrows.settings && toggle(arrows.label),
-                'graphTitle.enabled': graphTitle.settings &&
-                toggle(graphTitle.label, true),
+                'title.enabled': title.settings &&
+                toggle(title.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),
                 graph: numberFields('Graph Display Size', {

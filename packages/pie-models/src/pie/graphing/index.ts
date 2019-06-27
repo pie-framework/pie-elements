@@ -5,10 +5,10 @@ import { ConfigureProp } from '../ConfigurationProp';
 
 interface Graph {
     /** Width for graph representation */
-    domain: number;
+    width: number;
 
     /** Height for graph representation */
-    range: number;
+    height: number;
 }
 
 interface GraphSettings {
@@ -26,6 +26,9 @@ interface GraphSettings {
 
     /** Label step value */
     labelStep: number;
+
+    /** Axis Label */
+    axisLabel: string;
 }
 
 interface Point {
@@ -89,6 +92,19 @@ interface Answer {
     marks: [Mark];
 }
 
+interface Labels {
+    /** Label for top side of the graph */
+    top: string;
+
+    /** Label for bottom side of the graph */
+    bottom: string;
+
+    /** Label for left side of the graph */
+    left: string;
+
+    /** Label for right side of the graph */
+    right: string;
+}
 
 /**
  * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
@@ -101,32 +117,35 @@ interface Answer {
  * @additionalProperties false
  */
 export interface GraphingPie extends PieModel {
-    /** Indicates the graph line model */
-    graph: Graph;
-
-    /** Indicates domain settings for the graph */
-    domain: GraphSettings;
-
-    /** Indicates range settings for the graph */
-    range: GraphSettings;
-
-    /** Indicates label for x axis */
-    xAxisLabel: string;
-
-    /** Indicates label for y axis */
-    yAxisLabel: string;
+    /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
+    answers: {
+        correctAnswer: Answer,
+        alternate1: Answer
+    };
 
     /** Indicates if arrows are enabled */
     arrows?: boolean;
 
+    /** Indicates marks that have to be displayed in background */
+    backgroundMarks: [Mark];
+
+    /** Indicates domain settings for the graph */
+    domain: GraphSettings;
+
+    /** Indicates the graph line model */
+    graph: Graph;
+
+    /** Indicates labels */
+    labels?: Labels;
+
     /** Indicates if padding is enabled */
     padding?: boolean;
 
-    /** Indicates if labels are enabled */
-    labels?: boolean;
-
     /** Indicates prompt value */
     prompt?: string;
+
+    /** Indicates range settings for the graph */
+    range: GraphSettings;
 
     /** Indicates rationale for the answer */
     rationale?: string;
@@ -142,15 +161,6 @@ export interface GraphingPie extends PieModel {
 
     /** Indicates graph title */
     title?: string;
-
-    /** Indicates marks that have to be displayed in background */
-    backgroundMarks: [Mark];
-
-    /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
-    answers: {
-        correctAnswer: Answer,
-        alternate1: Answer
-    }
 }
 
 /**
@@ -174,24 +184,19 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
     padding?: ConfigureProp;
 
     /**
-     * Graph title configuration
-     */
-    graphTitle?: ConfigureProp;
-
-    /**
      * Labels configuration
      */
     labels?: ConfigureProp;
 
     /**
-     * Prompt configuration
-     */
-    rationale?: ConfigureProp;
-
-    /**
      * Rationale configuration
      */
     prompt?: ConfigureProp;
+
+    /**
+     * Prompt configuration
+     */
+    rationale?: ConfigureProp;
 
     /**
      * Scoring Type configuration
@@ -207,4 +212,9 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
      * Teacher Instructions configuration
      */
     teacherInstructions?: ConfigureProp;
+
+    /**
+     * Graph title configuration
+     */
+    title?: ConfigureProp;
 }
