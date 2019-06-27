@@ -3,6 +3,7 @@ export { MultipleChoicePie, MultipleChoiceConfigure }  from './pie/multiple-choi
 export { CategorizePie, CategorizeConfigure } from './pie/categorize';
 export { CalculatorPie } from './pie/calculator';
 export { DragInTheBlankPie, DragInTheBlankConfigure } from './pie/drag-in-the-blank';
+export { DrawingResponsePie, DrawingResponseConfigure } from './pie/drawing-response';
 export { EbsrPie, EbsrConfigure } from './pie/ebsr';
 export { ExplicitConstructedResponsePie, ExplicitConstructedResponseConfigure } from './pie/explicit-constructed-response';
 export { MatchPie, MatchConfigure } from './pie/match';
