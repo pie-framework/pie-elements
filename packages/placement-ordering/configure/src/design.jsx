@@ -98,7 +98,7 @@ export class Design extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
             groups={{
-              'Item Type': {
+              'Settings': {
                 'choiceLabel.enabled': choiceLabel.settings &&
                   toggle(choiceLabel.label, true),
                 placementArea: placementArea.settings &&
@@ -113,6 +113,8 @@ export class Design extends React.Component {
                   toggle(removeTilesAfterPlacing.label),
                 partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
+                lockChoiceOrder: lockChoiceOrder.settings &&
+                toggle(lockChoiceOrder.label)
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -121,8 +123,6 @@ export class Design extends React.Component {
                   toggle(studentInstructions.label, true),
                 'rationale.enabled': rationale.settings &&
                   toggle(rationale.label, true),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label),
                 scoringType: scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric']),
               },

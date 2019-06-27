@@ -38,14 +38,14 @@ exports[`Configure renders correctly with snapshot 1`] = `
         }
         groups={
           Object {
-            "Item Type": Object {
-              "responseType": undefined,
-            },
             "Properties": Object {
               "rationale.enabled": undefined,
               "scoringType": false,
               "studentInstructions.enabled": false,
               "teacherInstructions.enabled": false,
+            },
+            "Settings": Object {
+              "responseType": undefined,
             },
           }
         }

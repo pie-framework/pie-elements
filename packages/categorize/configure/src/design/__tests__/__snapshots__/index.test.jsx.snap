@@ -9,15 +9,15 @@ exports[`Design snapshot renders 1`] = `
       <Panel
         groups={
           Object {
-            "Item Type": Object {
-              "partialScoring": undefined,
-            },
             "Properties": Object {
-              "lockChoiceOrder": undefined,
               "rationale.enabled": undefined,
               "scoringType": undefined,
               "studentInstructions.enabled": undefined,
               "teacherInstructions.enabled": undefined,
+            },
+            "Settings": Object {
+              "lockChoiceOrder": undefined,
+              "partialScoring": undefined,
             },
           }
         }

@@ -55,6 +55,19 @@ describe('controller', () => {
       });
     };
 
+    assertOutcome(
+      'with deductions',
+      mkQuestion(),
+      {
+        answer: [
+          ...mkQuestion().correctResponse,
+          { type: 'point', pointType: 'full', position: -3.3 }
+        ]
+      },
+      {},
+      { score: 0.5 }
+    );
+
     assertOutcome('correct', mkQuestion(), correctSession, {}, { score: 1 });
     assertOutcome(
       'incorrect',

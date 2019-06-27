@@ -7,12 +7,17 @@ const createElementFromHTML = htmlString => {
 };
 
 export const processMarkup = markup => {
-  const slateMarkup = createElementFromHTML(markup);
+  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const slateMarkup = createElementFromHTML(newMarkup);
   const choices = {};
   let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
-    const innerHTML = s.innerHTML && s.innerHTML.replace(/&nbsp;/g, ' ').trim();
+    let innerHTML = s.innerHTML && s.innerHTML.replace(/&nbsp;/g, ' ').trim();
+
+    if (innerHTML) {
+      innerHTML = '';
+    }
 
     choices[index] = [{
       label: innerHTML,
@@ -27,14 +32,18 @@ export const processMarkup = markup => {
   };
 };
 
-const REGEX = /\{\{(\d?)\}\}/g;
+const REGEX = /\{\{(\d+)\}\}/g;
 
 export const createSlateMarkup = (markup, choices) => {
   if (!markup) {
     return '';
   }
 
-  return markup.replace(REGEX, (match, g) => {
-    return `<span data-type="explicit_constructed_response">${choices[g][0].label}</span>`;
+  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+
+  return newMarkup.replace(REGEX, (match, g) => {
+    const label = choices[g][0].label || '';
+
+    return `<span data-type="explicit_constructed_response">${label}</span>`;
   });
 };

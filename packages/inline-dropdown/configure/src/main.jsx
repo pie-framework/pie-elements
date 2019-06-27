@@ -103,14 +103,13 @@ export class Main extends React.Component {
               onChangeModel={model => this.onModelChange(model)}
               onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
               groups={{
-                'Item Type': {
+                'Settings': {
                   partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
-                },
-                'Properties': {
                   lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label)
                 },
+                'Properties': {},
               }}
             />
           }

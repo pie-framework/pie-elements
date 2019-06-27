@@ -1,25 +1,15 @@
 import reduce from 'lodash/reduce';
-import { isResponseCorrect } from './utils';
+import { getAllCorrectResponses } from './utils';
 
 export function model(question, session, env) {
   return new Promise(resolve => {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const allCorrectResponses = reduce(question.correctResponse, (obj, val, key) => {
-        obj[key] = [val];
+      const allCorrectResponses = getAllCorrectResponses(question);
 
-        if (question.alternateResponses[key]) {
-          obj[key] = [
-            ...obj[key],
-            ...question.alternateResponses[key]
-          ];
-        }
-
-        return obj;
-      }, {});
       feedback = reduce(allCorrectResponses, (obj, correctResponse, key) => {
-        const choice = session.value[key];
+        const choice = session.value[key] || '';
 
         obj[key] = correctResponse.indexOf(choice) >= 0;
 
@@ -34,7 +24,7 @@ export function model(question, session, env) {
       disabled: env.mode !== 'gather',
       responseCorrect:
         env.mode === 'evaluate'
-          ? isResponseCorrect(question, session)
+          ? getScore(question, session) === 1
           : undefined,
     };
 
@@ -44,20 +34,9 @@ export function model(question, session, env) {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.correctResponse).length;
-  const allCorrectResponses = reduce(config.correctResponse || {}, (obj, val, key) => {
-    obj[key] = [val];
-
-    if (config.alternateResponses && config.alternateResponses[key]) {
-      obj[key] = [
-        ...obj[key],
-        ...config.alternateResponses[key]
-      ];
-    }
-
-    return obj;
-  }, {});
+  const allCorrectResponses = getAllCorrectResponses(config);
   const correctCount = reduce(allCorrectResponses, (total, correctResponse, key) => {
-    const choice = session.value[key];
+    const choice = session.value[key] || '';
 
     if (correctResponse.indexOf(choice) >= 0) {
       return total;

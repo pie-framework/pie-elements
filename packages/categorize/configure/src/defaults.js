@@ -24,6 +24,10 @@ export default {
     partialScoring: true
   },
   configuration: {
+    lockChoiceOrder: {
+      settings: false,
+      label: 'Lock Choice Order'
+    },
     partialScoring: {
       settings: true,
       label: 'Allow Partial Scoring',
