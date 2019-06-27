@@ -75,62 +75,9 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {
-            "a1": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
+            "correctAnswer": Object {
+              "marks": Array [],
               "name": "A1",
-            },
-            "a2": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "type": "point",
-                  "x": 3,
-                  "y": 3,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
-              "name": "A2",
             },
           },
           "arrows": true,
@@ -196,62 +143,9 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {
-            "a1": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
+            "correctAnswer": Object {
+              "marks": Array [],
               "name": "A1",
-            },
-            "a2": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "type": "point",
-                  "x": 3,
-                  "y": 3,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
-              "name": "A2",
             },
           },
           "arrows": true,
@@ -295,62 +189,9 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {
-            "a1": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
+            "correctAnswer": Object {
+              "marks": Array [],
               "name": "A1",
-            },
-            "a2": Object {
-              "marks": Array [
-                Object {
-                  "type": "point",
-                  "x": 1,
-                  "y": 1,
-                },
-                Object {
-                  "type": "point",
-                  "x": 2,
-                  "y": 2,
-                },
-                Object {
-                  "type": "point",
-                  "x": 3,
-                  "y": 3,
-                },
-                Object {
-                  "from": Object {
-                    "x": 1,
-                    "y": 1,
-                  },
-                  "to": Object {
-                    "x": 2,
-                    "y": 2,
-                  },
-                  "type": "segment",
-                },
-              ],
-              "name": "A2",
             },
           },
           "arrows": true,
@@ -494,128 +335,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
           }
         }
         labels={null}
-        marks={
-          Array [
-            Object {
-              "type": "point",
-              "x": 1,
-              "y": 1,
-            },
-            Object {
-              "type": "point",
-              "x": 2,
-              "y": 2,
-            },
-            Object {
-              "from": Object {
-                "x": 1,
-                "y": 1,
-              },
-              "to": Object {
-                "x": 2,
-                "y": 2,
-              },
-              "type": "segment",
-            },
-          ]
-        }
-        onChangeMarks={[Function]}
-        range={
-          Object {
-            "axisLabel": "y",
-            "labelStep": 1,
-            "max": 5,
-            "min": -5,
-            "padding": 0,
-            "step": 1,
-          }
-        }
-        size={
-          Object {
-            "height": 480,
-            "width": 480,
-          }
-        }
-        title=""
-        tools={
-          Array [
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-          ]
-        }
-      />
-    </div>
-    <div
-      key="correct-response-graph-A2"
-    >
-      <p>
-        A2
-      </p>
-      <GraphContainer
-        backgroundMarks={Array []}
-        currentTool={<div />}
-        defaultTool="div"
-        displayedTools={
-          Array [
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-          ]
-        }
-        domain={
-          Object {
-            "axisLabel": "x",
-            "labelStep": 1,
-            "max": 10,
-            "min": 20,
-            "padding": 0,
-            "step": 1,
-          }
-        }
-        labels={null}
-        marks={
-          Array [
-            Object {
-              "type": "point",
-              "x": 1,
-              "y": 1,
-            },
-            Object {
-              "type": "point",
-              "x": 2,
-              "y": 2,
-            },
-            Object {
-              "type": "point",
-              "x": 3,
-              "y": 3,
-            },
-            Object {
-              "from": Object {
-                "x": 1,
-                "y": 1,
-              },
-              "to": Object {
-                "x": 2,
-                "y": 2,
-              },
-              "type": "segment",
-            },
-          ]
-        }
+        marks={Array []}
         onChangeMarks={[Function]}
         range={
           Object {

@@ -7,23 +7,10 @@
 export default {
   model: {
     answers: {
-      a1: {
-        name: 'A1',
-        marks: [
-          { x: 1, y: 1, type: 'point' },
-          { x: 2, y: 2, type: 'point' },
-          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-        ],
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [],
       },
-      a2: {
-        name: 'A2',
-        marks: [
-          { x: 1, y: 1, type: 'point' },
-          { x: 2, y: 2, type: 'point' },
-          { x: 3, y: 3, type: 'point' },
-          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-        ],
-      }
     },
     arrows: true,
     backgroundMarks: [],
