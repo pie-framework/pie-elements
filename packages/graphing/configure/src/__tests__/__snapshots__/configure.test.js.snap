@@ -1,7 +1,728 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Configure renders snapshot 1`] = `[Function]`;
+exports[`Configure renders snapshot 1`] = `
+<ConfigLayout
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "arrows": Object {
+            "label": "Include arrows",
+            "settings": false,
+          },
+          "authoring": Object {
+            "enabled": false,
+            "label": "Allow authoring",
+            "settings": false,
+          },
+          "labels": Object {
+            "enabled": true,
+            "label": "Labels",
+            "settings": false,
+          },
+          "padding": Object {
+            "label": "Padding",
+            "settings": false,
+          },
+          "prompt": Object {
+            "label": "Item Stem",
+            "settings": true,
+          },
+          "rationale": Object {
+            "enabled": false,
+            "label": "Rationale",
+            "settings": true,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": false,
+          },
+          "title": Object {
+            "enabled": true,
+            "label": "Graph Title",
+            "settings": false,
+          },
+        }
+      }
+      groups={
+        Object {
+          "Item Type": Object {
+            "arrows": false,
+            "graph": undefined,
+            "labels": false,
+            "padding": false,
+            "title.enabled": false,
+          },
+          "Properties": Object {
+            "authoring.enabled": false,
+            "rationale.enabled": undefined,
+            "scoringType": undefined,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": false,
+          },
+        }
+      }
+      model={
+        Object {
+          "answers": Object {
+            "a1": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A1",
+            },
+            "a2": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "type": "point",
+                  "x": 3,
+                  "y": 3,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A2",
+            },
+          },
+          "arrows": true,
+          "backgroundMarks": Array [],
+          "domain": Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "labels": null,
+          "padding": true,
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "",
+        }
+      }
+    />
+  }
+>
+  <div>
+    <WithStyles(Typography)
+      component="div"
+      type="body1"
+    >
+      <span>
+        This interaction asks a student to draw a line that meets specific criteria. The student will draw the line by clicking on two points on the graph.
+      </span>
+    </WithStyles(Typography)>
+    <InputContainer
+      label="Item Stem"
+    >
+      <EditableHtml
+        disableUnderline={true}
+        markup="Here goes item stem!"
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <WithStyles(GraphingConfig)
+      authoringEnabled={false}
+      config={
+        Object {
+          "height": 480,
+          "width": 480,
+        }
+      }
+      model={
+        Object {
+          "answers": Object {
+            "a1": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A1",
+            },
+            "a2": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "type": "point",
+                  "x": 3,
+                  "y": 3,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A2",
+            },
+          },
+          "arrows": true,
+          "backgroundMarks": Array [],
+          "domain": Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "labels": null,
+          "padding": true,
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "",
+        }
+      }
+    />
+    <WithStyles(CorrectResponse)
+      config={
+        Object {
+          "height": 480,
+          "width": 480,
+        }
+      }
+      model={
+        Object {
+          "answers": Object {
+            "a1": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A1",
+            },
+            "a2": Object {
+              "marks": Array [
+                Object {
+                  "type": "point",
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "type": "point",
+                  "x": 2,
+                  "y": 2,
+                },
+                Object {
+                  "type": "point",
+                  "x": 3,
+                  "y": 3,
+                },
+                Object {
+                  "from": Object {
+                    "x": 1,
+                    "y": 1,
+                  },
+                  "to": Object {
+                    "x": 2,
+                    "y": 2,
+                  },
+                  "type": "segment",
+                },
+              ],
+              "name": "A2",
+            },
+          },
+          "arrows": true,
+          "backgroundMarks": Array [],
+          "domain": Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
+            "step": 1,
+          },
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "labels": null,
+          "padding": true,
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "",
+        }
+      }
+    />
+  </div>
+</ConfigLayout>
+`;
 
-exports[`CorrectResponse renders snapshot 1`] = `[Function]`;
+exports[`CorrectResponse renders snapshot 1`] = `
+<div>
+  Define Correct Response
+  <div>
+    GRAPHING TOOLS
+    <div>
+      <div
+        className=""
+        key="point"
+        onClick={[Function]}
+      >
+        point
+      </div>
+      <div
+        className=""
+        key="circle"
+        onClick={[Function]}
+      >
+        circle
+      </div>
+      <div
+        className=""
+        key="polygon"
+        onClick={[Function]}
+      >
+        polygon
+      </div>
+      <div
+        className=""
+        key="segment"
+        onClick={[Function]}
+      >
+        segment
+      </div>
+      <div
+        className=""
+        key="vector"
+        onClick={[Function]}
+      >
+        vector
+      </div>
+      <div
+        className=""
+        key="ray"
+        onClick={[Function]}
+      >
+        ray
+      </div>
+      <div
+        className=""
+        key="line"
+        onClick={[Function]}
+      >
+        line
+      </div>
+      <div
+        className=""
+        key="sine"
+        onClick={[Function]}
+      >
+        sine
+      </div>
+      <div
+        className=""
+        key="parabola"
+        onClick={[Function]}
+      >
+        parabola
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      key="correct-response-graph-A1"
+    >
+      <p>
+        A1
+      </p>
+      <GraphContainer
+        backgroundMarks={Array []}
+        currentTool={<div />}
+        defaultTool="div"
+        displayedTools={
+          Array [
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+          ]
+        }
+        domain={
+          Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": 20,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        labels={null}
+        marks={
+          Array [
+            Object {
+              "type": "point",
+              "x": 1,
+              "y": 1,
+            },
+            Object {
+              "type": "point",
+              "x": 2,
+              "y": 2,
+            },
+            Object {
+              "from": Object {
+                "x": 1,
+                "y": 1,
+              },
+              "to": Object {
+                "x": 2,
+                "y": 2,
+              },
+              "type": "segment",
+            },
+          ]
+        }
+        onChangeMarks={[Function]}
+        range={
+          Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        size={
+          Object {
+            "height": 480,
+            "width": 480,
+          }
+        }
+        title=""
+        tools={
+          Array [
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+          ]
+        }
+      />
+    </div>
+    <div
+      key="correct-response-graph-A2"
+    >
+      <p>
+        A2
+      </p>
+      <GraphContainer
+        backgroundMarks={Array []}
+        currentTool={<div />}
+        defaultTool="div"
+        displayedTools={
+          Array [
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+          ]
+        }
+        domain={
+          Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": 20,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        labels={null}
+        marks={
+          Array [
+            Object {
+              "type": "point",
+              "x": 1,
+              "y": 1,
+            },
+            Object {
+              "type": "point",
+              "x": 2,
+              "y": 2,
+            },
+            Object {
+              "type": "point",
+              "x": 3,
+              "y": 3,
+            },
+            Object {
+              "from": Object {
+                "x": 1,
+                "y": 1,
+              },
+              "to": Object {
+                "x": 2,
+                "y": 2,
+              },
+              "type": "segment",
+            },
+          ]
+        }
+        onChangeMarks={[Function]}
+        range={
+          Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        size={
+          Object {
+            "height": 480,
+            "width": 480,
+          }
+        }
+        title=""
+        tools={
+          Array [
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+          ]
+        }
+      />
+    </div>
+    <div
+      onClick={[Function]}
+    >
+      ADD ALTERNATE
+    </div>
+  </div>
+</div>
+`;
 
-exports[`GraphingConfig renders snapshot 1`] = `[Function]`;
+exports[`GraphingConfig renders snapshot 1`] = `
+<div>
+  Define Graph Attributes
+  <div>
+    <div
+      key="graph"
+    >
+      <WithStyles(Typography)
+        component="div"
+        type="body1"
+      >
+        <span>
+          Use the tools below to set background shapes
+        </span>
+      </WithStyles(Typography)>
+      <GraphContainer
+        backgroundMarks={Array []}
+        currentTool={<div />}
+        defaultTool="div"
+        domain={
+          Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 10,
+            "min": -10,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        key="graphing-config"
+        labels={null}
+        marks={Array []}
+        onChangeMarks={[Function]}
+        range={
+          Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "padding": 0,
+            "step": 1,
+          }
+        }
+        size={
+          Object {
+            "height": 480,
+            "width": 480,
+          }
+        }
+        title=""
+        tools={
+          Array [
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+            <div />,
+          ]
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -50,7 +50,7 @@ describe('Configure', () => {
 
   describe('renders', () => {
     it('snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper()).toMatchSnapshot();
     })
   });
 
@@ -101,7 +101,7 @@ describe('GraphingConfig', () => {
 
   describe('renders', () => {
     it('snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper()).toMatchSnapshot();
     })
   });
 
@@ -155,7 +155,7 @@ describe('CorrectResponse', () => {
 
   describe('renders', () => {
     it('snapshot', () => {
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper()).toMatchSnapshot();
     })
   });
 
