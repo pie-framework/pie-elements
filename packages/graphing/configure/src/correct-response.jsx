@@ -56,22 +56,23 @@ export class CorrectResponse extends React.Component {
     super(props);
 
     const allTools = [
-      { name: 'point', Component: tools.point(), display: true },
-      { name: 'circle', Component: tools.circle(), display: true },
-      { name: 'polygon', Component: tools.polygon(), display: true },
-      { name: 'segment', Component: tools.segment(), display: true },
-      { name: 'vector', Component: tools.vector(), display: true },
-      { name: 'ray', Component: tools.ray(), display: true },
-      { name: 'line', Component: tools.line(), display: true },
-      { name: 'sine', Component: tools.sine(), display: true },
-      { name: 'parabola', Component: tools.parabola(), display: true },
+      tools.point(),
+      tools.circle(),
+      tools.polygon(),
+      tools.segment(),
+      tools.vector(),
+      tools.ray(),
+      tools.line(),
+      tools.sine(),
+      tools.parabola()
     ];
 
+    allTools.forEach(t => (t.toolbar = true));
     this.state = { allTools };
   }
 
   componentDidMount() {
-    this.changeDisplayedTools(this.state.allTools);
+    this.changeModelTools(this.state.allTools);
   }
 
   changeMarks = (key, marks) => {
@@ -81,7 +82,7 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
-  changeDisplayedTools = (tools) => {
+  changeModelTools = (tools) => {
     const { model, onChange } = this.props;
     model.tools = tools;
 
@@ -103,20 +104,20 @@ export class CorrectResponse extends React.Component {
             {allTools.map(tool => {
               return (
                 <div
-                  key={tool.name}
-                  className={classnames(classes.availableTool, tool.display && classes.selectedTool)}
+                  key={tool.type}
+                  className={classnames(classes.availableTool, tool.toolbar && classes.selectedTool)}
                   onClick={() => {
                     const newTools = allTools.map(t => {
-                      if (t.name === tool.name) {
-                        t.display = !t.display;
+                      if (t.type === tool.type) {
+                        t.toolbar = !t.toolbar;
                       }
                       return t;
                     });
                     this.setState({ allTools: newTools});
-                    this.changeDisplayedTools(newTools);
+                    this.changeModelTools(newTools);
                   }}
                 >
-                  {tool.name}
+                  {tool.type.toUpperCase()}
                 </div>
               )
             })}
@@ -141,7 +142,7 @@ export class CorrectResponse extends React.Component {
                 backgroundMarks={model.backgroundMarks}
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
                 tools={allTools}
-                currentTool={allTools[0].Component}
+                currentTool={allTools[0].Component.type}
                 defaultTool={allTools && allTools[0].type}
               />
             </div>

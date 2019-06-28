@@ -177,9 +177,9 @@ describe('CorrectResponse', () => {
       });
     });
 
-    it('changeDisplayedTools calls onChange', () => {
+    it('changeModelTools calls onChange', () => {
       const component = wrapper();
-      component.instance().changeDisplayedTools([]);
+      component.instance().changeModelTools([]);
 
       expect(component.instance().props.model.tools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
