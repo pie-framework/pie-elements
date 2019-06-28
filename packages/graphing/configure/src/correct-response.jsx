@@ -68,11 +68,14 @@ export class CorrectResponse extends React.Component {
     ];
 
     allTools.forEach(t => (t.toolbar = true));
-    this.state = { allTools };
+    this.state = {
+      allTools,
+      toolbarTools: allTools.reduce((a, b) => [...a, b.type], [])
+    };
   }
 
   componentDidMount() {
-    this.changeModelTools(this.state.allTools);
+    this.changeToolbarTools(this.state.toolbarTools);
   }
 
   changeMarks = (key, marks) => {
@@ -82,16 +85,25 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
-  changeModelTools = (tools) => {
+  changeToolbarTools = (toolbarTools) => {
     const { model, onChange } = this.props;
-    model.tools = tools;
+    model.toolbarTools = toolbarTools;
 
     onChange(model);
   };
 
   render() {
     const { classes, model, onChange } = this.props;
-    const { allTools } = this.state;
+    const { allTools, toolbarTools } = this.state;
+    const tools = allTools.map(tool => {
+      if (toolbarTools.find(t => t === tool.type)) {
+        tool.toolbar = true;
+      } else {
+        tool.toolbar = false;
+      }
+
+      return tool;
+    });
 
     return (
       <div>
@@ -101,20 +113,30 @@ export class CorrectResponse extends React.Component {
           GRAPHING TOOLS
 
           <div className={classes.availableTools}>
-            {allTools.map(tool => {
+            {tools.map(tool => {
+              const selected = toolbarTools.find(t => t === tool.type);
+
               return (
                 <div
                   key={tool.type}
-                  className={classnames(classes.availableTool, tool.toolbar && classes.selectedTool)}
+                  className={classnames(classes.availableTool, selected && classes.selectedTool)}
                   onClick={() => {
-                    const newTools = allTools.map(t => {
-                      if (t.type === tool.type) {
-                        t.toolbar = !t.toolbar;
-                      }
-                      return t;
+                    const inToolbarTools = toolbarTools.findIndex(t => tool.type === t);
+                    let newToolbarTools = [];
+
+                    if (inToolbarTools >= 0) {
+                      newToolbarTools = [
+                        ...toolbarTools.slice(0, inToolbarTools),
+                        ...toolbarTools.slice(inToolbarTools + 1)
+                      ];
+                    } else {
+                      newToolbarTools = [ ...toolbarTools, tool.type ]
+                    }
+
+                    this.setState({
+                      toolbarTools: newToolbarTools,
                     });
-                    this.setState({ allTools: newTools});
-                    this.changeModelTools(newTools);
+                    this.changeToolbarTools(newToolbarTools);
                   }}
                 >
                   {tool.type.toUpperCase()}
@@ -141,9 +163,9 @@ export class CorrectResponse extends React.Component {
                 marks={model.answers[mark].marks}
                 backgroundMarks={model.backgroundMarks}
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
-                tools={allTools}
-                currentTool={allTools[0].Component.type}
-                defaultTool={allTools && allTools[0].type}
+                tools={tools}
+                currentTool={tools[0].Component.type}
+                defaultTool={tools && tools[0].type}
               />
             </div>
           ))}

@@ -177,14 +177,14 @@ describe('CorrectResponse', () => {
       });
     });
 
-    it('changeModelTools calls onChange', () => {
+    it('changeToolbarTools calls onChange', () => {
       const component = wrapper();
-      component.instance().changeModelTools([]);
+      component.instance().changeToolbarTools([]);
 
-      expect(component.instance().props.model.tools).toEqual([]);
+      expect(component.instance().props.model.toolbarTools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
         ...defaultValues.model,
-        tools: []
+        toolbarTools: []
       })
     });
   });

@@ -641,7 +641,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'dichotomous' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
@@ -659,7 +659,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'partial' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
@@ -679,7 +679,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'dichotomous' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
@@ -699,7 +699,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'partial' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
@@ -722,7 +722,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'dichotomous' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 4, y: 4, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
@@ -740,7 +740,7 @@ describe('getScore', () => {
   assert(
     { ...question, scoringType: 'partial' },
     {
-      answers: [
+      answer: [
         { x: 1, y: 1, type: 'point' },
         { x: 4, y: 4, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }

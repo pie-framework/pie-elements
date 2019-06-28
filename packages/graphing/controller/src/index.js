@@ -226,7 +226,7 @@ export const getScore = (question, session) => {
   const { answers } = question;
 
   // student's answers without DUPLICATES having the mapped form
-  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session.answers));
+  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session.answer));
   let marksWithCorrectnessValue = {};
 
   if (!answers) {
@@ -292,7 +292,8 @@ export function model(question, session, env) {
       xAxisLabel,
       yAxisLabel,
       tools,
-      graph
+      graph,
+      toolbarTools
     } = question;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -310,7 +311,8 @@ export function model(question, session, env) {
       xAxisLabel,
       yAxisLabel,
       tools,
-      graph
+      size: graph,
+      toolbarTools
     };
 
     if (env.mode === 'evaluate') {
