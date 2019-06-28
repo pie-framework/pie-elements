@@ -56,18 +56,22 @@ export class CorrectResponse extends React.Component {
     super(props);
 
     const allTools = [
-      { name: 'point', component: tools.point(), selected: true },
-      { name: 'circle', component: tools.circle(), selected: true },
-      { name: 'polygon', component: tools.polygon(), selected: true },
-      { name: 'segment', component: tools.segment(), selected: true },
-      { name: 'vector', component: tools.vector(), selected: true },
-      { name: 'ray', component: tools.ray(), selected: true },
-      { name: 'line', component: tools.line(), selected: true },
-      { name: 'sine', component: tools.sine(), selected: true },
-      { name: 'parabola', component: tools.parabola(), selected: true },
+      { name: 'point', Component: tools.point(), display: true },
+      { name: 'circle', Component: tools.circle(), display: true },
+      { name: 'polygon', Component: tools.polygon(), display: true },
+      { name: 'segment', Component: tools.segment(), display: true },
+      { name: 'vector', Component: tools.vector(), display: true },
+      { name: 'ray', Component: tools.ray(), display: true },
+      { name: 'line', Component: tools.line(), display: true },
+      { name: 'sine', Component: tools.sine(), display: true },
+      { name: 'parabola', Component: tools.parabola(), display: true },
     ];
 
     this.state = { allTools };
+  }
+
+  componentDidMount() {
+    this.changeDisplayedTools(this.state.allTools);
   }
 
   changeMarks = (key, marks) => {
@@ -77,9 +81,9 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
-  changeDisplayedTools = (displayedTools) => {
+  changeDisplayedTools = (tools) => {
     const { model, onChange } = this.props;
-    model.displayedTools = displayedTools;
+    model.tools = tools;
 
     onChange(model);
   };
@@ -87,8 +91,6 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model, onChange } = this.props;
     const { allTools } = this.state;
-    const tools = allTools.map(t => t.component);
-    const selectedTools = allTools.filter(t => t.selected).map(t => t.component);
 
     return (
       <div>
@@ -102,21 +104,16 @@ export class CorrectResponse extends React.Component {
               return (
                 <div
                   key={tool.name}
-                  className={classnames(classes.availableTool, tool.selected && classes.selectedTool)}
+                  className={classnames(classes.availableTool, tool.display && classes.selectedTool)}
                   onClick={() => {
-                    const nextAllTools = allTools.map(t => {
-                      if (tool.name === t.name) {
-                        t.selected = !tool.selected
+                    const newTools = allTools.map(t => {
+                      if (t.name === tool.name) {
+                        t.display = !t.display;
                       }
-
                       return t;
                     });
-
-                    this.setState({
-                      allTools: nextAllTools,
-                    }, () => {
-                      this.changeDisplayedTools(nextAllTools.filter(t => t.selected).map(t => t.component));
-                    });
+                    this.setState({ allTools: newTools});
+                    this.changeDisplayedTools(newTools);
                   }}
                 >
                   {tool.name}
@@ -143,10 +140,9 @@ export class CorrectResponse extends React.Component {
                 marks={model.answers[mark].marks}
                 backgroundMarks={model.backgroundMarks}
                 onChangeMarks={marks => this.changeMarks(mark, marks)}
-                tools={tools}
-                displayedTools={selectedTools}
-                currentTool={selectedTools && selectedTools[0]}
-                defaultTool={selectedTools && selectedTools[0] && selectedTools[0].type}
+                tools={allTools}
+                currentTool={allTools[0].Component}
+                defaultTool={allTools && allTools[0].type}
               />
             </div>
           ))}

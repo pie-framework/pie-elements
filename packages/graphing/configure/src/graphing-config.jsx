@@ -46,15 +46,15 @@ export class GraphingConfig extends React.Component {
   constructor(props) {
     super(props);
     const toolsArr = [
-      tools.point(),
-      tools.circle(),
-      tools.polygon(),
-      tools.segment(),
-      tools.vector(),
-      tools.ray(),
-      tools.line(),
-      tools.sine(),
-      tools.parabola()
+      { name: 'point', Component: tools.point(), display: true },
+      { name: 'circle', Component: tools.circle(), display: true },
+      { name: 'polygon', Component: tools.polygon(), display: true },
+      { name: 'segment', Component: tools.segment(), display: true },
+      { name: 'vector', Component: tools.vector(), display: true },
+      { name: 'ray', Component: tools.ray(), display: true },
+      { name: 'line', Component: tools.line(), display: true },
+      { name: 'sine', Component: tools.sine(), display: true },
+      { name: 'parabola', Component: tools.parabola(), display: true },
     ];
     this.state = {
       currentTool: toolsArr[0],

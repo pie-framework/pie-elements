@@ -291,7 +291,7 @@ export function model(question, session, env) {
       labels,
       xAxisLabel,
       yAxisLabel,
-      displayedTools,
+      tools,
       graph
     } = question;
 
@@ -309,15 +309,14 @@ export function model(question, session, env) {
       labels,
       xAxisLabel,
       yAxisLabel,
-      displayedTools,
+      tools,
       graph
     };
 
     if (env.mode === 'evaluate') {
       const result = getScore(question, session);
 
-      base.correctMarks = result.correctMarks;
-      base.score = result.score;
+      base.marks = result.correctMarks;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

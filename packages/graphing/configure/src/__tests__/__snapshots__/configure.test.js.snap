@@ -77,7 +77,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {
             "correctAnswer": Object {
               "marks": Array [],
-              "name": "A1",
+              "name": "Correct Answer",
             },
           },
           "arrows": true,
@@ -145,7 +145,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {
             "correctAnswer": Object {
               "marks": Array [],
-              "name": "A1",
+              "name": "Correct Answer",
             },
           },
           "arrows": true,
@@ -191,7 +191,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {
             "correctAnswer": Object {
               "marks": Array [],
-              "name": "A1",
+              "name": "Correct Answer",
             },
           },
           "arrows": true,
@@ -302,28 +302,14 @@ exports[`CorrectResponse renders snapshot 1`] = `
   </div>
   <div>
     <div
-      key="correct-response-graph-A1"
+      key="correct-response-graph-Correct Answer"
     >
       <p>
-        A1
+        Correct Answer
       </p>
       <GraphContainer
         backgroundMarks={Array []}
         currentTool={<div />}
-        defaultTool="div"
-        displayedTools={
-          Array [
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-          ]
-        }
         domain={
           Object {
             "axisLabel": "x",
@@ -356,15 +342,51 @@ exports[`CorrectResponse renders snapshot 1`] = `
         title=""
         tools={
           Array [
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "point",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "circle",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "polygon",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "segment",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "vector",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "ray",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "line",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "sine",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "parabola",
+            },
           ]
         }
       />
@@ -395,8 +417,13 @@ exports[`GraphingConfig renders snapshot 1`] = `
       </WithStyles(Typography)>
       <GraphContainer
         backgroundMarks={Array []}
-        currentTool={<div />}
-        defaultTool="div"
+        currentTool={
+          Object {
+            "Component": <div />,
+            "display": true,
+            "name": "point",
+          }
+        }
         domain={
           Object {
             "axisLabel": "x",
@@ -430,15 +457,51 @@ exports[`GraphingConfig renders snapshot 1`] = `
         title=""
         tools={
           Array [
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
-            <div />,
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "point",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "circle",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "polygon",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "segment",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "vector",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "ray",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "line",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "sine",
+            },
+            Object {
+              "Component": <div />,
+              "display": true,
+              "name": "parabola",
+            },
           ]
         }
       />

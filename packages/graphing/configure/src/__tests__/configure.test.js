@@ -181,10 +181,10 @@ describe('CorrectResponse', () => {
       const component = wrapper();
       component.instance().changeDisplayedTools([]);
 
-      expect(component.instance().props.model.displayedTools).toEqual([]);
+      expect(component.instance().props.model.tools).toEqual([]);
       expect(component.instance().props.onChange).toHaveBeenCalledWith({
         ...defaultValues.model,
-        displayedTools: []
+        tools: []
       })
     });
   });
