@@ -318,7 +318,7 @@ export function model(question, session, env) {
     if (env.mode === 'evaluate') {
       const result = getScore(question, session);
 
-      base.correctMarks = result.correctMarks;
+      base.answersCorrected = result.correctMarks;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
