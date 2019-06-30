@@ -21,7 +21,7 @@ export default {
     ],
     rowLabels: [''],
     correctResponse: [],
-    partialScoring: true
+    partialScoring: true,
   },
   configuration: {
     lockChoiceOrder: {
