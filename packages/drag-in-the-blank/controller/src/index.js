@@ -27,6 +27,11 @@ export function model(question, session, env) {
           ? getScore(question, session) === 1
           : undefined,
     };
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.teacherInstructions = question.teacherInstructions;
+    } else {
+      out.teacherInstructions = null;
+    }
 
     resolve(out);
   });
