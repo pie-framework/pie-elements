@@ -55,6 +55,11 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt'
-    }
+    },
+    teacherInstructions: {
+      settings: true,
+      label: 'Teacher Instructions',
+      enabled: true,
+    },
   }
 };

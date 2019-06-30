@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer,
-  layout
+  layout, settings
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import AlternateResponses from './alternateResponses';
+
+const { Panel, toggle } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -84,20 +86,48 @@ export class Main extends React.Component {
     });
   };
 
+
+  onTeacherInstructionsChanged = teacherInstructions => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      teacherInstructions
+    });
+  };
+
   render() {
     const {
       classes,
       model,
       configuration,
-      imageSupport
+      imageSupport,
+      onModelChanged,
+      onConfigurationChanged
     } = this.props;
     const {
-      prompt
+      prompt,
+      teacherInstructions = {}
     } = configuration;
 
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onModelChanged}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
+                },
+              }}
+            />
+          }
+        >
           <div>
             {prompt.settings && (
               <InputContainer
@@ -111,6 +141,17 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={!prompt.settings}
                   disableUnderline
+                />
+              </InputContainer>
+            )}
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
                 />
               </InputContainer>
             )}
