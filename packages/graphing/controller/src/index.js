@@ -305,7 +305,6 @@ export function model(question, session, env) {
       domain,
       prompt,
       range,
-      rationale,
       title,
       labels,
       xAxisLabel,
