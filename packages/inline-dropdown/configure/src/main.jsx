@@ -75,6 +75,10 @@ export class Main extends React.Component {
     this.onModelChange({ prompt });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.onModelChange({ teacherInstructions });
+  };
+
   onMarkupChanged = slateMarkup => {
     this.onModelChange({ slateMarkup });
   };
@@ -91,6 +95,7 @@ export class Main extends React.Component {
       prompt,
       partialScoring,
       lockChoiceOrder,
+      teacherInstructions = {}
     } = configuration;
 
     return (
@@ -109,7 +114,10 @@ export class Main extends React.Component {
                   lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label)
                 },
-                'Properties': {},
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true)
+                },
               }}
             />
           }
@@ -130,6 +138,19 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
+
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>

@@ -75,5 +75,10 @@ export default {
       settings: true,
       label: 'Partial Scoring'
     },
+    teacherInstructions: {
+      settings: true,
+      label: 'Teacher Instructions',
+      enabled: true
+    }
   }
 };

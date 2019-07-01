@@ -60,6 +60,12 @@ export function model(question, session, env) {
       }, {});
     }
 
+    let teacherInstructions = null;
+
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      teacherInstructions = question.teacherInstructions;
+    }
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -73,6 +79,7 @@ export function model(question, session, env) {
         env.mode === 'evaluate'
           ? getScore(question, session) === 1
           : undefined,
+      teacherInstructions
     };
 
     resolve(out);
