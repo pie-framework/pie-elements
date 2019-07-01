@@ -109,6 +109,17 @@ describe('Configure', () => {
 
     expect(component).toMatchSnapshot();
   });
+
+  it('changeTeacherInstructions calls onModelChange', () => {
+    const onModelChanged = jest.fn();
+    const component = wrapper({ ...props, onModelChanged });
+
+    component.instance().changeTeacherInstructions('Teacher Instructions');
+
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+      teacherInstructions: 'Teacher Instructions'
+    }));
+  });
 });
 
 describe('GeneralConfigBlock', () => {
