@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -72,6 +73,9 @@ const styles = theme => ({
     display: 'inline-flex',
     border: '2px solid grey'
   },
+  blockContainerGeneric: {
+    margin: theme.spacing.unit / 2
+  },
   blockResponse: {
     flex: 2,
     color: 'grey',
@@ -82,6 +86,9 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     borderRight: '2px solid grey'
+  },
+  blockResponseGeneric: {
+    borderRight: 0
   },
   blockMath: {
     color: '#bdbdbd',
@@ -192,13 +199,20 @@ class GeneralConfigBlock extends React.Component {
 
       if (!registered) {
         MQ.registerEmbed('answerBlock', data => {
+          // not used until we implement individual answer tracking
+          // const individualAnswerBlock = `<div class="${classes.blockContainer}">
+          //     <div class="${classes.blockResponse}" id="${data}Index">R</div>
+          //     <div class="${classes.blockMath}">
+          //        <span id="${data}"></span>
+          //      </div>
+          //   </div>`;
+
+          const genericAnswerBlock = `<div class="${cx(classes.blockContainer, classes.blockContainerGeneric)}">
+                <div class="${cx(classes.blockResponse, classes.blockResponseGeneric)}" id="${data}Index">Response</div>
+              </div>`;
+
           return {
-            htmlString: `<div class="${classes.blockContainer}">
-                <div class="${classes.blockResponse}" id="${data}Index">R</div>
-                <div class="${classes.blockMath}">
-                  <span id="${data}"></span>
-                </div>
-              </div>`,
+            htmlString: genericAnswerBlock,
             text: () => 'text',
             latex: () => `\\embed{answerBlock}[${data}]`
           };
