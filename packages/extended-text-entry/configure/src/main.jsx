@@ -24,6 +24,7 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     configuration: PropTypes.object.isRequired,
+    imageSupport: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
   };
 
