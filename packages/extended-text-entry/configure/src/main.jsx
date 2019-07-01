@@ -60,12 +60,18 @@ export class Main extends React.Component {
     onModelChanged(update);
   };
 
+  changeTeacherInstructions = teacherInstructions => {
+    const { model, onModelChanged } = this.props;
+    const update = { ...model, teacherInstructions };
+    onModelChanged(update);
+  };
+
   render() {
-    const { model, classes, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport } = this.props;
     const {
       equationEditor,
       multiple,
-      teacherInstructions,
+      teacherInstructions = {},
       studentInstructions,
       mathInput,
       width,
@@ -89,8 +95,8 @@ export class Main extends React.Component {
                 toggle(multiple.label, true),
               },
               'Properties': {
-                'configure.teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
                 'configure.studentInstructions.enabled': studentInstructions.settings &&
                 toggle(studentInstructions.label),
               },
@@ -102,6 +108,18 @@ export class Main extends React.Component {
           <Typography className={classes.header} variant="subheading">
             Display
           </Typography>
+
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={this.changeTeacherInstructions}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
 
           {width.settings &&
             <NumberTextField
