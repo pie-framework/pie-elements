@@ -118,5 +118,35 @@
     "committerDate": "2019-06-20 08:37:40 -0400",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-configure@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "settings-panel",
+    "subject": "updated the settings panel design and changes needed for [ch2242]",
+    "merge": null,
+    "header": "feat(settings-panel): updated the settings panel design and changes needed for [ch2242]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d830e57b32bd09ac8cc02c7a12d75d988d9df21c",
+    "gitTags": "",
+    "committerDate": "2019-06-25 23:42:15 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-configure@1.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "made sure all the items are rendered properly [c1935]",
+    "merge": null,
+    "header": "fix(rendering): made sure all the items are rendered properly [c1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "61a85ab4a03713abb029b5323ce683cd1534eb1a",
+    "gitTags": " (origin/andreilakatos/ch1935/item-rendering-issue)",
+    "committerDate": "2019-06-26 13:02:43 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-configure@1.3.2"
   }
 ]

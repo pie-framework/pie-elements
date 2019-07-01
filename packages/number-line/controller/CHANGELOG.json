@@ -148,5 +148,20 @@
     "committerDate": "2019-06-21 15:57:35 +0100",
     "isTagged": true,
     "tag": "@pie-element/number-line-controller@4.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "add deductions to outcome calculation",
+    "merge": null,
+    "header": "feat: add deductions to outcome calculation",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f2a378297d888c3f4e7b752e946ec9dd3e70ea7d",
+    "gitTags": "",
+    "committerDate": "2019-06-26 10:24:01 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@4.1.0"
   }
 ]
