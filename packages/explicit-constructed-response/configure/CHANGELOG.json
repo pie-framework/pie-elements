@@ -133,5 +133,20 @@
     "committerDate": "2019-07-02 13:38:48 -0400",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@1.4.0"
+  },
+  {
+    "type": "chore",
+    "scope": "editable-html",
+    "subject": "version bumped the necessary packages",
+    "merge": null,
+    "header": "chore(editable-html): version bumped the necessary packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3c7caf6a1f8dc120ca23ab93258a90a593bbeb65",
+    "gitTags": "",
+    "committerDate": "2019-07-02 15:13:55 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@1.4.1"
   }
 ]
