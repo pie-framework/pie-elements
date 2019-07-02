@@ -1938,37 +1938,10 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.4.9.tgz#5f335cc25ee1ed6fad83af11cdfb43dec688565c"
   integrity sha512-a2iM9yxyXMs/epZhsBtys9/EVplis9UVTv+pCAgHKX46oYP+mOipSOZwrS5O1xmVxeKnYF6JUMcwcqSxF7qu9Q==
 
-"@pie-lib/graphing@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-0.3.0.tgz#d3e4a71bcf77ccbc877bd6ca3aae2d772806456a"
-  integrity sha512-wITo3c9BeO6EGa8FVuEp5UBuuQmjhjH4qxSdkbcHuMKD4Kq1i/dp9+pOwqerXJ+1WHReJP9senMCStoAascW8g==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/plot" "^0.2.1"
-    "@vx/axis" "^0.0.189"
-    "@vx/clip-path" "^0.0.189"
-    "@vx/event" "^0.0.189"
-    "@vx/grid" "^0.0.189"
-    "@vx/point" "^0.0.189"
-    "@vx/shape" "^0.0.189"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.3.0"
-    react-input-autosize "^2.2.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
-"@pie-lib/graphing@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-1.0.1.tgz#36a39ba1cc9be6d6e6f9fa43bbaca0910e13b57c"
-  integrity sha512-jqGmu3IyfRxkDnbfx+xnRjP0fZ/n/pc7W0ZOc/39FSNAJj/vpo3uLJLcYWKbNYg8SGuMvRdMNlV5vE7GLhk6xQ==
+"@pie-lib/graphing@^1.0.1", "@pie-lib/graphing@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-1.0.2.tgz#9367d4b06493a6de1d435c29c2f7a49bebaa5181"
+  integrity sha512-lJlDwkslc1K12yGScD3e0xirxBTESR/EkqKs20vVxZqiByswiSHFu5gGNzdEKXPj8cN7l29ct19KQK4wINFfCw==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2072,30 +2045,6 @@
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
-
-"@pie-lib/plot@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-0.2.1.tgz#83602675c7a0de89e2c88fb7e189d50c8e311d0b"
-  integrity sha512-eNVl9NEaC0mnLqElzQFDOthw6RegLQPy9chVulMt4FqqShuGWUzyzCzEMrxvBSwwqy8sm/MJbJEguuZTiMiOiQ==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@vx/axis" "^0.0.183"
-    "@vx/event" "^0.0.182"
-    "@vx/grid" "^0.0.183"
-    "@vx/point" "^0.0.182"
-    "@vx/shape" "^0.0.183"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.1.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
 
 "@pie-lib/plot@^0.2.2":
   version "0.2.2"
@@ -2337,11 +2286,14 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@file:../pie-ui/packages/graphing":
-  version "2.1.1"
+"@pie-ui/graphing@^2.1.2":
+  version "2.1.2-next.102"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.1.2-next.102.tgz#ec445c01ff52fde3fd05579860d2f722b8fe6de7"
+  integrity sha512-jkdQe0G5kkgotaaMfdDRj1S3z1KW9Y+8W+QeeFJOuzFSePw43f/LYP+cWRwue4ArJv5PVOpYD2PN8nXsb4Gx1A==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/graphing" "^1.0.1"
+    "@pie-lib/render-ui" "^4.3.12"
     classnames "^2.2.5"
     debug "^4.1.1"
     react "^16.8.1"
