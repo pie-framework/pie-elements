@@ -3,10 +3,7 @@ import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
 import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
-import { tools } from '@pie-lib/graphing';
-
-const { utils } = tools;
-const { sinY, buildDataPoints, getAmplitudeAndFreq, FREQ_DIVIDER, parabolaFromTwoPoints } = utils;
+import { sinY, buildDataPoints, getAmplitudeAndFreq, FREQ_DIVIDER, parabolaFromTwoPoints } from '@pie-lib/graphing-utils';
 
 const log = debug('@pie-element:graphing:controller');
 

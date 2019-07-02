@@ -10,7 +10,7 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.4.2",
     "@pie-lib/editable-html": "^7.2.0",
-    "@pie-lib/graphing": "^1.0.2",
+    "@pie-lib/graphing": "^1.0.4",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",

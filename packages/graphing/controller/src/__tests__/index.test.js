@@ -14,22 +14,18 @@ import {
   partial,
   getScore
 } from '../index';
-import { tools } from '@pie-lib/graphing';
 
-jest.mock('@pie-lib/graphing', () => ({
-  tools: {
-    utils: {
-      sinY: jest.fn(),
-      buildDataPoints: (min, max, root, edge) => ([min, root, edge, max]),
-      getAmplitudeAndFreq: () => ({
-        amplitude: 0,
-        freq: 1
-      }),
-      parabolaFromTwoPoints: jest.fn(),
-      FREQ_DIVIDER: 0
-    }
+jest.mock('@pie-lib/graphing-utils', () => ({
+    sinY: jest.fn(),
+    buildDataPoints: (min, max, root, edge) => ([min, root, edge, max]),
+    getAmplitudeAndFreq: () => ({
+      amplitude: 0,
+      freq: 1
+    }),
+    parabolaFromTwoPoints: jest.fn(),
+    FREQ_DIVIDER: 0
   }
-}));
+));
 
 describe('controller', () => {
 });
