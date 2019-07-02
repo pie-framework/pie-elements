@@ -128,8 +128,10 @@ export function model(question, session, env) {
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
       base.rationale = question.rationale;
+      base.teacherInstructions = question.teacherInstructions;
     } else {
       base.rationale = null;
+      base.teacherInstructions = null;
     }
 
     if (env.mode === 'evaluate') {
