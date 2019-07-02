@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer,
-  layout
+  layout,
+  settings
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+const { toggle, Panel } = settings;
+
+import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 
 const styles = theme => ({
@@ -49,6 +53,14 @@ const styles = theme => ({
   }
 });
 
+const createElementFromHTML = htmlString => {
+  const div = document.createElement('div');
+
+  div.innerHTML = htmlString.trim();
+
+  return div;
+};
+
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -62,6 +74,16 @@ export class Main extends React.Component {
       delete: PropTypes.func.isRequired
     })
   };
+
+  state = {};
+
+  componentDidMount() {
+    const { model: { slateMarkup } } = this.props;
+
+    this.setState({
+      markup: slateMarkup
+    })
+  }
 
   onPromptChanged = prompt => {
     this.props.onModelChanged({
@@ -84,20 +106,79 @@ export class Main extends React.Component {
     });
   };
 
+  onChangeResponse = (index, newVal) => {
+    const { model: { choices } } = this.props;
+
+    if (!choices[index]) {
+      choices[index] = [{ label: '', id: '0' }];
+    }
+
+    choices[index][0].label = newVal || '';
+
+    this.props.onModelChanged({
+      ...this.props.model,
+      choices
+    });
+  };
+
+  onChange = markup => {
+    const domMarkup = createElementFromHTML(markup);
+    const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
+
+    const allChoices = {};
+
+    allRespAreas.forEach(el => {
+      allChoices[el.dataset.index] = el.dataset.value || '';
+    });
+
+    allRespAreas.forEach((el, index) => {
+      el.dataset.index = index;
+    });
+
+    this.props.onModelChanged({
+      ...this.props.model,
+      slateMarkup: domMarkup.innerHTML
+    });
+  };
+
+  onModelChange = newVal => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      ...newVal
+    });
+  };
+
   render() {
     const {
       classes,
       model,
       configuration,
+      onConfigurationChanged,
       imageSupport
     } = this.props;
     const {
-      prompt
+      prompt,
+      partialScoring
     } = configuration;
 
     return (
       <div className={classes.design}>
-        <layout.ConfigLayout>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              configuration={configuration}
+              onChangeModel={model => this.onModelChange(model)}
+              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              groups={{
+                'Settings': {
+                  partialScoring: partialScoring.settings &&
+                  toggle(partialScoring.label)
+                }
+              }}
+            />
+          }
+        >
           <div>
             {prompt.settings && (
               <InputContainer
@@ -124,14 +205,31 @@ export class Main extends React.Component {
                 alwaysVisible: true
               }}
               responseAreaProps={{
-                type: 'explicit-constructed-response'
+                type: 'explicit-constructed-response',
+                options: {
+                  duplicates: true,
+                },
+                respAreaToolbar: (node, value, onToolbarDone) => {
+                  const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+
+                  return () => (
+                    <ECRToolbar
+                      onChangeResponse={newVal => this.onChangeResponse(node.data.get('index'), newVal)}
+                      node={node}
+                      value={value}
+                      onToolbarDone={onToolbarDone}
+                      correctChoice={correctChoice}
+                    />
+                  );
+                }
               }}
-              className={classes.markup}
               markup={model.slateMarkup}
-              onChange={this.onMarkupChanged}
+              onChange={this.onChange}
+              onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
-              disableUnderline
+              onBlur={this.onBlur}
+              disabled={false}
+              highlightShape={false}
             />
             <Typography className={classes.text}>
               Define Alternates

@@ -12,7 +12,9 @@ exports.model = (id, element) => ({
     2: [choice('moon ', '0', true), choice('sun ', '1'), choice('house ', '2')]
   },
   alternateResponse: {
-    2: ['3']
+    0: ['1'],
+    1: ['1'],
+    2: ['2']
   },
   prompt: 'Use the dropdowns to complete the sentence'
 });

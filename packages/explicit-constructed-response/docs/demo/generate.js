@@ -10,8 +10,7 @@ exports.model = (id, element) => ({
   choices: {
     0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
     1: [choice('over', '0'), choice('past', '1'), choice('beyond', '2')],
-    2: [choice('moon', '0')],
-    3: [choice('bun', '0')],
+    2: [choice('moon', '0')]
   },
   prompt: 'Use the dropdowns to complete the sentence'
 });
