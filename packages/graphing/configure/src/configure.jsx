@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
+import { tools } from '@pie-lib/graphing';
 
 const { Panel, toggle, radio, numberFields } = settings;
 const log = debug('@pie-element:graphing:configure');
@@ -34,6 +35,18 @@ const styles = theme => ({
   },
 });
 
+const toolsArr = [
+  tools.point(),
+  tools.circle(),
+  tools.polygon(),
+  tools.segment(),
+  tools.vector(),
+  tools.ray(),
+  tools.line(),
+  tools.sine(),
+  tools.parabola()
+];
+
 export class Configure extends React.Component {
   static propTypes = {
     onModelChanged: PropTypes.func,
@@ -45,12 +58,6 @@ export class Configure extends React.Component {
   };
 
   static defaultProps = { classes: {} };
-
-  constructor(props) {
-    super(props);
-
-    this.defaults = JSON.parse(JSON.stringify(props.model));
-  }
 
   onRationaleChange = rationale => {
     const { onModelChanged, model } = this.props;
@@ -180,12 +187,14 @@ export class Configure extends React.Component {
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
+            tools={toolsArr}
           />
 
           <CorrectResponse
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
+            tools={toolsArr}
           />
         </div>
       </layout.ConfigLayout>

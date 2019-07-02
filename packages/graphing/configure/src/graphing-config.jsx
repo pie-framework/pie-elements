@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
 import { TextField } from '@material-ui/core';
+import cloneDeep from 'lodash/cloneDeep';
 
 import { get, set } from 'lodash';
 import Typography from '@material-ui/core/Typography';
@@ -45,21 +46,11 @@ export class GraphingConfig extends React.Component {
 
   constructor(props) {
     super(props);
-    const toolsArr = [
-      tools.point(),
-      tools.circle(),
-      tools.polygon(),
-      tools.segment(),
-      tools.vector(),
-      tools.ray(),
-      tools.line(),
-      tools.sine(),
-      tools.parabola()
-    ];
+    const toolsArr = cloneDeep(props.tools);
     toolsArr.forEach(t => (t.toolbar = true));
 
     this.state = {
-      currentTool: toolsArr[0].type,
+      currentTool: toolsArr.length && toolsArr[0].type,
       tools: toolsArr
     };
   }
@@ -218,7 +209,7 @@ export class GraphingConfig extends React.Component {
               onChangeMarks={this.changeBackgroundMarks}
               tools={tools}
               currentTool={currentTool}
-              defaultTool={tools[0].type}
+              defaultTool={tools.length && tools[0].type}
             />
           </div>
 

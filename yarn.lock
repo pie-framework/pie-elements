@@ -2286,7 +2286,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.1.2":
+"@pie-ui/graphing@^2.1.2-next.102":
   version "2.1.2-next.102"
   resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.1.2-next.102.tgz#ec445c01ff52fde3fd05579860d2f722b8fe6de7"
   integrity sha512-jkdQe0G5kkgotaaMfdDRj1S3z1KW9Y+8W+QeeFJOuzFSePw43f/LYP+cWRwue4ArJv5PVOpYD2PN8nXsb4Gx1A==

@@ -24,16 +24,42 @@ jest.mock('@pie-lib/config-ui', () => ({
 jest.mock('@pie-lib/graphing', () => ({
   GraphContainer: props => <div>{props.children}</div>,
   tools: {
-    point: () => <div />,
-    circle: () => <div />,
-    polygon: () => <div />,
-    segment: () => <div />,
-    vector: () => <div />,
-    ray: () => <div />,
-    line: () => <div />,
-    sine: () => <div />,
-    parabola: () => <div />,
-    label: () => <div />,
+    point: () => ({
+      Component: () => <div />,
+      type: 'point'
+    }),
+    circle: () => ({
+      Component: () => <div />,
+      type: 'circle'
+    }),
+    polygon: () => ({
+      Component: () => <div />,
+      type: 'polygon'
+    }),
+    segment: () => ({
+      Component: () => <div />,
+      type: 'segment'
+    }),
+    vector: () => ({
+      Component: () => <div />,
+      type: 'vector'
+    }),
+    ray: () => ({
+      Component: () => <div />,
+      type: 'ray'
+    }),
+    line: () => ({
+      Component: () => <div />,
+      type: 'line'
+    }),
+    sine: () => ({
+      Component: () => <div />,
+      type: 'sine'
+    }),
+    parabola: () => ({
+      Component: () => <div />,
+      type: 'parabola'
+    }),
   }
 }));
 
@@ -90,6 +116,7 @@ describe('GraphingConfig', () => {
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
+      tools: []
     };
 
     wrapper = newProps => {
@@ -144,6 +171,7 @@ describe('CorrectResponse', () => {
       classes: {},
       model: defaultValues.model,
       onChange: jest.fn(),
+      tools: []
     };
 
     wrapper = newProps => {
