@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.3.2...@pie-element/drag-in-the-blank-configure@1.4.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
 ## [1.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.3.1...@pie-element/drag-in-the-blank-configure@1.3.2) (2019-06-26)
 
 

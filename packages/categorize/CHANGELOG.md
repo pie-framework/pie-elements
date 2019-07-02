@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.4.1...@pie-element/categorize@4.5.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
 ## [4.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.4.0...@pie-element/categorize@4.4.1) (2019-06-26)
 
 **Note:** Version bump only for package @pie-element/categorize

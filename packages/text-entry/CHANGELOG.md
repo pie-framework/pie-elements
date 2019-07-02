@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.8.1...@pie-element/text-entry@3.9.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
 ## [3.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.8.0...@pie-element/text-entry@3.8.1) (2019-06-26)
 
 **Note:** Version bump only for package @pie-element/text-entry

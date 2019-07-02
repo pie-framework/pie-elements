@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.2.1...@pie-element/drawing-response@1.3.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
 ## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.2.0...@pie-element/drawing-response@1.2.1) (2019-06-26)
 
 **Note:** Version bump only for package @pie-element/drawing-response

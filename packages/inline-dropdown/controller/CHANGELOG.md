@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.4.3...@pie-element/inline-dropdown-controller@1.5.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
 ## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.4.2...@pie-element/inline-dropdown-controller@1.4.3) (2019-06-26)
 
 
