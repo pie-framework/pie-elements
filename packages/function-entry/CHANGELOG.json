@@ -558,5 +558,20 @@
     "committerDate": "2019-06-25 23:42:15 -0400",
     "isTagged": true,
     "tag": "@pie-element/function-entry@3.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "refactored the elements and version bumped the necessary files",
+    "merge": null,
+    "header": "feat(mask-markup-elements): refactored the elements and version bumped the necessary files",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f8f77c02e44afd90e491a371d86d3d4093eb41e5",
+    "gitTags": "",
+    "committerDate": "2019-07-02 13:38:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/function-entry@3.7.0"
   }
 ]

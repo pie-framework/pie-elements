@@ -1028,5 +1028,50 @@
     "committerDate": "2019-06-25 23:42:15 -0400",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "refactored the elements and version bumped the necessary files",
+    "merge": null,
+    "header": "feat(mask-markup-elements): refactored the elements and version bumped the necessary files",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f8f77c02e44afd90e491a371d86d3d4093eb41e5",
+    "gitTags": "",
+    "committerDate": "2019-07-02 13:38:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.4.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "allowing decimals in response is valid for literal validation too",
+    "merge": null,
+    "header": "feat(math-inline): allowing decimals in response is valid for literal validation too",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4c178409f57beedbb91fd20e5139c516ae607407",
+    "gitTags": "",
+    "committerDate": "2019-06-26 11:22:22 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "interaction fixes, controller logic adjustment and small styling changes",
+    "merge": null,
+    "header": "fix(math-inline): interaction fixes, controller logic adjustment and small styling changes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "40a1dc10b6c884744fdeafbf34f332533c6568fc",
+    "gitTags": "",
+    "committerDate": "2019-06-19 11:11:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.4.0"
   }
 ]

@@ -133,5 +133,20 @@
     "committerDate": "2019-06-26 13:02:43 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@1.3.2"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "refactored the elements and version bumped the necessary files",
+    "merge": null,
+    "header": "feat(mask-markup-elements): refactored the elements and version bumped the necessary files",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f8f77c02e44afd90e491a371d86d3d4093eb41e5",
+    "gitTags": "",
+    "committerDate": "2019-07-02 13:38:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@1.4.0"
   }
 ]
