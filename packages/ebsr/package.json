@@ -10,7 +10,7 @@
     "element": "@pie-ui/ebsr"
   },
   "dependencies": {
-    "@pie-ui/ebsr": "^1.1.26"
+    "@pie-ui/ebsr": "^1.1.28"
   },
   "author": "pie framework developers",
   "license": "ISC"
