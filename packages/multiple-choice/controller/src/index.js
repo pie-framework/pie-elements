@@ -76,6 +76,12 @@ export function model(question, session, env) {
           : undefined
     };
 
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.teacherInstructions = question.teacherInstructions;
+    } else {
+      out.teacherInstructions = null;
+    }
+
     resolve(out);
   });
 }
