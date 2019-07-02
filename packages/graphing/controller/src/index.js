@@ -18,31 +18,33 @@ export const equalPoint = (A, B) => {
   return isEqual(A.x, B.x) && isEqual(A.y, B.y) && equalLabel;
 };
 
-export const equalSegment = (A, B, C, D) => {
+export const equalSegment = (segment1, segment2) => {
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
-  return ((isEqual(A, C) && isEqual(B, D)) || ((isEqual(B, C) && isEqual(A, D))));
+  return ((isEqual(segment1.from, segment2.from) && isEqual(segment1.to, segment2.to)) ||
+    ((isEqual(segment1.to, segment2.from) && isEqual(segment1.from, segment2.to))));
 };
 
-export const equalVector = (A, B, C, D) => {
+export const equalVector = (vector1, vector2) => {
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
-  return ((isEqual(A, C) && isEqual(B, D)));
+  return ((isEqual(vector1.from, vector2.from) && isEqual(vector1.to, vector2.to)));
 };
 
-export const equalLine = (A, B, C, D) => {
+export const equalLine = (line1, line2) => {
   // (y2 - y1)/(x2 - x1) = (y4 - y3)/(x4 - x3);
-  return (((B.y - A.y) / (B.x - A.x)) === ((D.y - C.y) / (D.x - C.x)));
+  return (((line1.to.y - line1.from.y) / (line1.to.x - line1.from.x)) === ((line2.to.y - line2.from.y) / (line2.to.x - line2.from.x)));
 };
 
-export const equalRay = (A, B, C, D) => {
+export const equalRay = (ray1, ray2) => {
   // line & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
+
   return ((
-        (B.y - A.y) / (B.x - A.x)
+        (ray1.to.y - ray1.from.y) / (ray1.to.x - ray1.from.x)
       ) === (
-      (D.y - C.y) / (D.x - C.x))
-    ) && (A.x === C.x && A.y === C.y) &&
+      (ray2.to.y - ray2.from.y) / (ray2.to.x - ray2.from.x))
+    ) && (ray1.from.x === ray2.from.x && ray1.from.y === ray2.from.y) &&
     (
-      Math.atan2(B.y - A.y, B.x - A.x) * 180 / Math.PI ===
-      Math.atan2(D.y - C.y, D.x - C.x) * 180 / Math.PI
+      Math.atan2(ray1.to.y - ray1.from.y, ray1.to.x - ray1.from.x) * 180 / Math.PI ===
+      Math.atan2(ray2.to.y - ray2.from.y, ray2.to.x - ray2.from.x) * 180 / Math.PI
     );
 };
 
@@ -55,17 +57,17 @@ export const equalPolygon = (pointsA, pointsB) => {
   return isEqual(sD, sB);
 };
 
-export const equalCircle = (A, B, C, D) => {
-  const equalRootAndEdge = isEqual(D, B) && isEqual(C, A);
-  const rAB = Math.sqrt(((B.x - A.x) ** 2) + ((B.y - A.y) ** 2));
-  const rCD = Math.sqrt(((D.x - C.x) ** 2) + ((D.y - C.y) ** 2));
-  const equalRAndRoot = isEqual(C, A) && isEqual(rAB, rCD);
+export const equalCircle = (c1, c2) => {
+  const equalRootAndEdge = isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
+  const rAB = Math.sqrt(((c1.edge.x - c1.root.x) ** 2) + ((c1.edge.y - c1.root.y) ** 2));
+  const rCD = Math.sqrt(((c2.edge.x - c2.root.x) ** 2) + ((c2.edge.y - c2.root.y) ** 2));
+  const equalRAndRoot = isEqual(c2.root, c1.root) && isEqual(rAB, rCD);
 
   return equalRootAndEdge || equalRAndRoot;
 };
 
-export const equalSine = (A, B, C, D) => {
-  const getPoints = (root, edge) => {
+export const equalSine = (sine1, sine2) => {
+  const getPoints = ({ root, edge }) => {
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
     const interval = freq / FREQ_DIVIDER;
     const t = root.x + (root.x - edge.x);
@@ -83,21 +85,21 @@ export const equalSine = (A, B, C, D) => {
     return bp.filter(bpp => bpp.x < max && bpp.x > min).map(bpp => bpp.y);
   };
 
-  const studentAnswerBpY = getPoints(A, B);
-  const correctAnswerBpY = getPoints(C, D);
+  const studentAnswerBpY = getPoints(sine1);
+  const correctAnswerBpY = getPoints(sine2);
   const nDif = lodash.differenceWith(studentAnswerBpY.map(s => -s).reverse(), correctAnswerBpY, isEqual);
   const dif = lodash.differenceWith(studentAnswerBpY, correctAnswerBpY, isEqual);
 
   return dif.length === 0 || nDif.length === 0;
 };
 
-export const equalParabola = (A, B, C, D) => {
-  const min = A.x < B.x ? A.x + (A.x - B.x) : B.x;
-  const max = A.x < B.x ? B.x : A.x + (A.x - B.x);
-  const minMark = C.x < D.x ? C.x + (C.x - D.x) : D.x;
-  const maxMark = C.x < D.x ? D.x : C.x + (C.x - D.x);
+export const equalParabola = (p1, p2) => {
+  const min = p1.root.x < p1.edge.x ? p1.root.x + (p1.root.x - p1.edge.x) : p1.edge.x;
+  const max = p1.root.x < p1.edge.x ? p1.edge.x : p1.root.x + (p1.root.x - p1.edge.x);
+  const minMark = p2.root.x < p2.edge.x ? p2.root.x + (p2.root.x - p2.edge.x) : p2.edge.x;
+  const maxMark = p2.root.x < p2.edge.x ? p2.edge.x : p2.root.x + (p2.root.x - p2.edge.x);
 
-  const getPoints = (root, edge) => {
+  const getPoints = ({ root, edge }) => {
     const interval = 1;
     let bp = buildDataPoints(
       min,
@@ -111,8 +113,8 @@ export const equalParabola = (A, B, C, D) => {
     return bp.map(bpp => bpp.y);
   };
 
-  const studentAnswerBpY = getPoints(A, B);
-  const correctAnswerBpY = getPoints(C, D);
+  const studentAnswerBpY = getPoints(p1);
+  const correctAnswerBpY = getPoints(p2);
 
   const nDif = lodash.differenceWith(studentAnswerBpY.reverse(), correctAnswerBpY, isEqual);
   const dif = lodash.differenceWith(studentAnswerBpY, correctAnswerBpY, isEqual);
@@ -134,14 +136,14 @@ const initializeGraphMap = () => ({
 
 const mapForIsEqual = {
   point: (sessAnswer, mark) => equalPoint(sessAnswer, mark),
-  segment: (sessAnswer, mark) => equalSegment(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
-  line: (sessAnswer, mark) => equalLine(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
-  vector: (sessAnswer, mark) => equalVector(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
-  ray: (sessAnswer, mark) => equalRay(sessAnswer.from, sessAnswer.to, mark.from, mark.to),
+  segment: (sessAnswer, mark) => equalSegment(sessAnswer, mark),
+  line: (sessAnswer, mark) => equalLine(sessAnswer, mark),
+  vector: (sessAnswer, mark) => equalVector(sessAnswer, mark),
+  ray: (sessAnswer, mark) => equalRay(sessAnswer, mark),
   polygon: (sessAnswer, poly) => equalPolygon(sessAnswer.points, poly.points),
-  circle: (sessAnswer, mark) => equalCircle(sessAnswer.root, sessAnswer.edge, mark.root, mark.edge),
-  sine: (sessAnswer, mark) => equalSine(sessAnswer.root, sessAnswer.edge, mark.root, mark.edge),
-  parabola: (sessAnswer, mark) => equalParabola(sessAnswer.root, sessAnswer.edge, mark.root, mark.edge),
+  circle: (sessAnswer, mark) => equalCircle(sessAnswer, mark),
+  sine: (sessAnswer, mark) => equalSine(sessAnswer, mark),
+  parabola: (sessAnswer, mark) => equalParabola(sessAnswer, mark),
 };
 
 export const eliminateDuplicates = (marks) => {
