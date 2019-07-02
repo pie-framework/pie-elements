@@ -55,6 +55,10 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt'
+    },
+    partialScoring: {
+      settings: true,
+      label: 'Partial Scoring'
     }
   }
 };
