@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
 
 import defaults from './defaults';
@@ -17,11 +17,17 @@ export default class TextEntryConfigure extends HTMLElement {
   constructor() {
     super();
     this._model = TextEntryConfigure.createDefaultModel();
+    this._configuration = defaults.configuration;
   }
 
   set model(m) {
     this._model = TextEntryConfigure.createDefaultModel(m);
     this._render();
+  }
+
+  set configuration(c) {
+    this._configuration = c;
+    this.render();
   }
 
   onModelChanged(model) {
@@ -30,11 +36,30 @@ export default class TextEntryConfigure extends HTMLElement {
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
+  onConfigurationChanged(c) {
+    this._configuration = c;
+    this.render();
+  }
+
+  /**
+   *
+   * @param {done, progress, file} handler
+   */
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
         onModelChanged: this.onModelChanged.bind(this),
-        model: this._model
+        onConfigurationChanged: this.onConfigurationChanged.bind(this),
+        model: this._model,
+        configuration: this._configuration,
       });
       ReactDOM.render(el, this);
     }
