@@ -5,32 +5,30 @@ const markup = '<table class=\\"lrn_width_auto table table-bordered table-stripe
 exports.model = (id, element) => ({
   id,
   element,
-  disabled: false,
-  markup: markup,
-  choices: [
+  "disabled": false,
+  "mode": "gather",
+  "prompt": "<p>Solve the equation below.</p>",
+  "shuffle": true,
+  "markup": "{{0}} + {{1}} = 15",
+  "choices": [
     {
-      id: '0',
-      value: 'Equivalent'
+      "id": "0",
+      "value": "<div>6</div>"
+    },
+    {
+      "id": "1",
+      "value": "<div>9</div>"
     }
   ],
-  correctResponse: {
-    0: '-1',
-    1: '-1',
-    2: '-1',
-    3: '0',
-    4: '-1',
-    5: '-1',
-    6: '-1',
-    7: '-1',
-    8: '-1',
-    9: '-1',
-    10: '0',
-    11: '-1',
-    12: '-1',
-    13: '0',
-    14: '-1'
+  "choicesPosition": "below",
+  "correctResponse": {
+    "0": "0",
+    "1": "1"
   },
-  prompt: '<p>Drag and drop the word Equivalent into the correct box for each equivalent fraction.</p>',
-  choicesPosition: 'below',
+  "duplicates": true,
+  "alternateResponses" : [
+    ["1"],
+    ["0"]
+  ],
   rationale: '<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>',
 });

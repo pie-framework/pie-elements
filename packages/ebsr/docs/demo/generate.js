@@ -18,12 +18,9 @@ exports.model = (id, element) => ({
         label: 'Blue',
       },
     ],
-    keyMode: 'numbers',
     choicePrefix: 'numbers',
     partialScoring: false,
-    prompt: 'What color is the sky?',
-    shuffle: false,
-    showCorrect: false,
+    prompt: 'What color is the sky?'
   },
   partB: {
     choiceMode: 'radio',
@@ -48,7 +45,6 @@ exports.model = (id, element) => ({
     ],
     choicePrefix: 'numbers',
     partialScoring: false,
-    prompt: 'What color do you get when you mix Red with your answer in Part 1?',
-    shuffle: false,
+    prompt: 'What color do you get when you mix Red with your answer in Part 1?'
   },
 });

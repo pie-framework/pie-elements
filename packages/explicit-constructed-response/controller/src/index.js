@@ -24,11 +24,8 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-const getFeedback = (answers, choices, key) => {
-  const answer = answers[key];
-  const result = find(choices, c => prepareVal(c.label) === prepareVal(answer));
-
-  if (result) {
+const getFeedback = (value) => {
+  if (value) {
     return 'correct';
   }
 
@@ -51,11 +48,33 @@ export function model(question, session, env) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      feedback = reduce(question.choices, (obj, area, key) => {
-        obj[key] = getFeedback(session.value, area, key);
+      const respAreaLength = Object.keys(question.choices).length;
+      let correctResponses = 0;
 
-        return obj;
-      }, {});
+      for (let i = 0; i < respAreaLength; i++) {
+        const result = reduce(question.choices, (obj, choices, key) => {
+          const answer = session.value[key] || '';
+          const val = (choices[i] && choices[i].label) || '';
+          const isCorrect = val === answer;
+
+          obj.feedback[key] = getFeedback(isCorrect);
+
+          if (isCorrect) {
+            obj.correctResponses += 1;
+          }
+
+          return obj;
+        }, { correctResponses: 0, feedback: {} });
+
+        if (result.correctResponses > correctResponses) {
+          correctResponses = result.correctResponses;
+          feedback = result.feedback;
+        }
+
+        if (result.correctResponses === respAreaLength) {
+          break;
+        }
+      }
     }
 
     const out = {
@@ -88,16 +107,28 @@ const prepareVal = html => {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
+  let correctCount = 0;
 
-  const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key] || '';
+  for (let i = 0; i < maxScore; i++) {
+    const result = reduce(config.choices, (total, choices, key) => {
+      const answer = session.value[key] || '';
+      const val = (choices[i] && choices[i].label) || '';
 
-    if (!find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
+      if (val === answer) {
+        return total;
+      }
+
       return total - 1;
+    }, maxScore);
+
+    if (result > correctCount) {
+      correctCount = result;
     }
 
-    return total;
-  }, maxScore);
+    if (result === maxScore) {
+      break;
+    }
+  }
 
   const str = (correctCount / maxScore).toFixed(2);
 
@@ -116,9 +147,9 @@ const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session, env) {
+export function outcome(model, session) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

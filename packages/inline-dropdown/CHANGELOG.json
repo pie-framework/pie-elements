@@ -253,5 +253,50 @@
     "committerDate": "2019-06-25 23:42:15 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "made sure all the items are rendered properly [c1935]",
+    "merge": null,
+    "header": "fix(rendering): made sure all the items are rendered properly [c1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "61a85ab4a03713abb029b5323ce683cd1534eb1a",
+    "gitTags": " (origin/andreilakatos/ch1935/item-rendering-issue)",
+    "committerDate": "2019-06-26 13:02:43 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.7.2"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "refactored the elements and version bumped the necessary files",
+    "merge": null,
+    "header": "feat(mask-markup-elements): refactored the elements and version bumped the necessary files",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f8f77c02e44afd90e491a371d86d3d4093eb41e5",
+    "gitTags": "",
+    "committerDate": "2019-07-02 13:38:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.8.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "downgrade console.error calls to TODO (#261)",
+    "merge": null,
+    "header": "chore: downgrade console.error calls to TODO (#261)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "623e43fb29db0f2dc3c88a8711476689ea8e3969",
+    "gitTags": "",
+    "committerDate": "2019-07-01 18:02:20 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.8.0"
   }
 ]
