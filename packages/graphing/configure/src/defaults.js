@@ -6,11 +6,22 @@
 
 export default {
   model: {
+    toolbarTools: [
+      'point',
+      'circle',
+      'polygon',
+      'segment',
+      'ray',
+      'vector',
+      'line',
+      'sine',
+      'parabola'
+    ],
     answers: {
       correctAnswer: {
         name: 'Correct Answer',
-        marks: [],
-      },
+        marks: []
+      }
     },
     arrows: true,
     backgroundMarks: [],
@@ -39,7 +50,7 @@ export default {
     },
     rationale: 'Rationale goes here!',
     scoringType: 'partial scoring',
-    title: '',
+    title: ''
   },
   configuration: {
     authoring: {
@@ -49,11 +60,11 @@ export default {
     },
     arrows: {
       settings: false,
-      label: 'Include arrows',
+      label: 'Include arrows'
     },
     padding: {
       settings: false,
-      label: 'Padding',
+      label: 'Padding'
     },
     labels: {
       settings: false,
@@ -62,31 +73,31 @@ export default {
     },
     prompt: {
       settings: true,
-      label: 'Item Stem',
+      label: 'Item Stem'
     },
     rationale: {
       settings: true,
       label: 'Rationale',
-      enabled: false,
+      enabled: false
     },
     scoringType: {
       settings: true,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
       label: 'Student Instructions',
-      enabled: true,
+      enabled: true
     },
     teacherInstructions: {
       settings: false,
       label: 'Teacher Instructions',
-      enabled: false,
+      enabled: false
     },
     title: {
       settings: false,
       label: 'Graph Title',
       enabled: true
-    },
+    }
   }
 };
