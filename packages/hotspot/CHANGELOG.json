@@ -303,5 +303,20 @@
     "committerDate": "2019-07-02 15:13:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/hotspot@2.5.1"
+  },
+  {
+    "type": "feat",
+    "scope": "graphing",
+    "subject": "Started creating pie-element/graphing",
+    "merge": null,
+    "header": "feat(graphing): Started creating pie-element/graphing",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "220b4f370a78d5b7f8c962abf91955bcec27ef18",
+    "gitTags": "",
+    "committerDate": "2019-06-10 17:53:19 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.6.0"
   }
 ]
