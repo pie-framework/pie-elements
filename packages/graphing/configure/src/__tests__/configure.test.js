@@ -104,6 +104,18 @@ describe('Configure', () => {
         prompt: 'New Prompt',
       }));
     });
+
+    it('updates teacher instructions', () => {
+      const onModelChanged = jest.fn();
+      const component = wrapper({ onModelChanged });
+
+      component.instance().onTeacherInstructionsChange('New Teacher Instructions');
+
+      expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+        ...defaultValues.model,
+        teacherInstructions: 'New Teacher Instructions',
+      }));
+    });
   });
 });
 
