@@ -71,7 +71,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "teacherInstructions": Object {
             "enabled": false,
             "label": "Teacher Instructions",
-            "settings": false,
+            "settings": true,
           },
         }
       }
@@ -81,7 +81,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": false,
+            "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
             "choiceLabel.enabled": undefined,
@@ -240,7 +240,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "teacherInstructions": Object {
             "enabled": false,
             "label": "Teacher Instructions",
-            "settings": false,
+            "settings": true,
           },
         }
       }
@@ -250,7 +250,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "rationale.enabled": undefined,
             "scoringType": false,
             "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": false,
+            "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
             "choiceLabel.enabled": undefined,

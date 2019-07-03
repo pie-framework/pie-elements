@@ -167,6 +167,13 @@ class Configure extends React.Component {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      teacherInstructions
+    });
+  };
+
   onRationaleChanged = rationale => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -179,7 +186,7 @@ class Configure extends React.Component {
     const {
       enableImages,
       partialScoring,
-      teacherInstructions,
+      teacherInstructions = {},
       studentInstructions,
       rationale = {},
       lockChoiceOrder,
@@ -228,6 +235,19 @@ class Configure extends React.Component {
               This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
             </span>
           </Typography>
+
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={this.onTeacherInstructionsChanged}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
+
           {prompt.settings && (
             <InputContainer
               label={prompt.label}
@@ -243,6 +263,7 @@ class Configure extends React.Component {
               />
             </InputContainer>
           )}
+
           {rationale.enabled && (
             <InputContainer label={rationale.label}
                             className={classes.promptHolder}>

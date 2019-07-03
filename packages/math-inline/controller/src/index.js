@@ -200,8 +200,10 @@ export function model(question, session, env) {
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
         out.rationale = question.rationale;
+        out.teacherInstructions = question.teacherInstructions;
       } else {
         out.rationale = null;
+        out.teacherInstructions = null;
       }
 
       log('out: ', out);

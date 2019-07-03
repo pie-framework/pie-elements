@@ -141,9 +141,11 @@ export function model(question, session, env) {
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        base.teacherInstructions = question.teacherInstructions;
         base.rationale = question.rationale;
       } else {
         base.rationale = null;
+        base.teacherInstructions = null;
       }
 
       const out = Object.assign(base, {

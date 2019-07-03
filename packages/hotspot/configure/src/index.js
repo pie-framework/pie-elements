@@ -93,6 +93,13 @@ export default class HotspotConfigure extends HTMLElement {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.onModelChanged({
+      ...this._model,
+      teacherInstructions
+    });
+  };
+
   onMultipleCorrectChanged = () => {
     const { _model } = this;
     _model.multipleCorrect = !_model.multipleCorrect;
@@ -147,7 +154,8 @@ export default class HotspotConfigure extends HTMLElement {
         delete: this.onDeleteImage
       },
       onUpdateShapes: this.onUpdateShapes,
-      onModelChangedByConfig: this.onModelChangedByConfig
+      onModelChangedByConfig: this.onModelChangedByConfig,
+      onTeacherInstructionsChanged: this.onTeacherInstructionsChanged,
     });
     ReactDOM.render(element, this);
   }

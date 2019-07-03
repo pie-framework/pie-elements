@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
-  InputContainer,
-  layout,
-  settings
+  InputContainer, layout, settings
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -106,6 +104,15 @@ export class Main extends React.Component {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      teacherInstructions
+    });
+  };
+
   onChangeResponse = (index, newVal) => {
     const { model: { choices } } = this.props;
 
@@ -158,7 +165,8 @@ export class Main extends React.Component {
     } = this.props;
     const {
       prompt,
-      partialScoring
+      partialScoring,
+      teacherInstructions = {}
     } = configuration;
 
     return (
@@ -174,12 +182,27 @@ export class Main extends React.Component {
                 'Settings': {
                   partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label)
+                },
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
                 }
               }}
             />
           }
         >
           <div>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
             {prompt.settings && (
               <InputContainer
                 label={prompt.label}

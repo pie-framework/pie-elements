@@ -206,6 +206,21 @@ describe('Configure', () => {
     );
   });
 
+  it('updates teacher instructions correctly', () => {
+    let onModelChanged = jest.fn();
+
+    component = wrapper({
+      onModelChanged
+    });
+
+    component.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+
+    expect(onModelChanged).toBeCalledWith(
+      expect.objectContaining({ teacherInstructions: 'New Teacher Instructions' })
+    );
+  });
+
+
   it('adds a row correctly', () => {
     let onModelChanged = jest.fn();
     component = wrapper({

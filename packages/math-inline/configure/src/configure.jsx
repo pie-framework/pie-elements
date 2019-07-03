@@ -3,11 +3,13 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   FeedbackConfig,
   settings,
-  layout
+  layout,
+  InputContainer,
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
+import EditableHtml from '@pie-lib/editable-html';
 import GeneralConfigBlock from './general-config-block';
 import { ResponseTypes } from './utils';
 
@@ -23,7 +25,15 @@ const styles = theme => ({
   },
   content: {
     marginTop: theme.spacing.unit * 2
-  }
+  },
+  promptHolder: {
+    width: '100%',
+    paddingTop: theme.spacing.unit * 2
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
 });
 
 export class Configure extends React.Component {
@@ -40,6 +50,13 @@ export class Configure extends React.Component {
     this.props.onModelChanged(model);
   };
 
+  changeTeacherInstructions = teacherInstructions => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      teacherInstructions
+    });
+  };
+
   onFeedbackChange = feedback => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
@@ -50,7 +67,7 @@ export class Configure extends React.Component {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
       responseType,
-      teacherInstructions,
+      teacherInstructions = {},
       studentInstructions,
       rationale,
       scoringType
@@ -94,6 +111,19 @@ export class Configure extends React.Component {
               This interaction allows for exactly one correct answer.
             </span>
               </Typography>
+
+              {teacherInstructions.enabled && (
+                <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                  <EditableHtml
+                    className={classes.prompt}
+                    markup={model.teacherInstructions || ''}
+                    onChange={this.changeTeacherInstructions}
+                    imageSupport={imageSupport}
+                    nonEmpty={false}
+                  />
+                </InputContainer>
+              )}
+
               <GeneralConfigBlock
                 imageSupport={imageSupport}
                 model={model}

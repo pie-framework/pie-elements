@@ -11,6 +11,7 @@ import { renderMath } from '@pie-lib/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
+import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -115,10 +116,18 @@ export class Main extends React.Component {
   }
 
   componentWillReceiveProps(nProps) {
+    const newState = {};
+
     if (!isEqual(nProps.model.choices, this.props.model.choices)) {
-      this.setState({
-        respAreaChoices: cloneDeep(nProps.model.choices)
-      });
+      newState.respAreaChoices = cloneDeep(nProps.model.choices);
+    }
+
+    if (!isEqual(nProps.model.slateMarkup, this.props.model.slateMarkup)) {
+      newState.markup = nProps.model.slateMarkup;
+    }
+
+    if (!isEmpty(newState)) {
+      this.setState(newState);
     }
   }
 
@@ -138,6 +147,10 @@ export class Main extends React.Component {
 
   onPromptChanged = prompt => {
     this.onModelChange({ prompt });
+  };
+
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.onModelChange({ teacherInstructions });
   };
 
   onMarkupChanged = slateMarkup => {
@@ -192,9 +205,7 @@ export class Main extends React.Component {
               dialog: {
                 open: false
               }
-            }, () => {
-              this.onModelChange({ choices: newRespAreaChoices, slateMarkup: domMarkup.innerHTML });
-            });
+            }, () => this.onModelChange({ choices: newRespAreaChoices, slateMarkup: domMarkup.innerHTML }));
           },
           onCancel: () => {
             this.setState({
@@ -249,7 +260,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { dialog } = this.state;
+    const { dialog, markup } = this.state;
     const {
       classes,
       model,
@@ -261,6 +272,7 @@ export class Main extends React.Component {
       prompt,
       partialScoring,
       lockChoiceOrder,
+      teacherInstructions = {}
     } = configuration;
 
     return (
@@ -279,12 +291,27 @@ export class Main extends React.Component {
                   lockChoiceOrder: lockChoiceOrder.settings &&
                   toggle(lockChoiceOrder.label)
                 },
-                'Properties': {},
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true)
+                },
               }}
             />
           }
         >
           <div>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+
             {prompt.settings && (
               <InputContainer
                 label={prompt.label}
@@ -300,6 +327,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
+
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
@@ -310,7 +338,6 @@ export class Main extends React.Component {
               onOk={dialog.onOk}
             />
             <EditableHtml
-              autoFocus={true}
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{
                 position: 'top',
@@ -337,7 +364,7 @@ export class Main extends React.Component {
                   );
                 }
               }}
-              markup={model.slateMarkup}
+              markup={markup}
               onChange={this.onChange}
               onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}

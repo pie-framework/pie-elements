@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Configure from '../configure';
+import Configure, { Configure as ConfigureNotStyled } from '../configure';
 import GeneralConfigBlock from '../general-config-block';
 import { InputContainer, InputCheckbox } from '@pie-lib/config-ui';
 import { shallowChild } from '@pie-lib/test-utils';
 import Response from '../response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import EditableHtml from '@pie-lib/editable-html';
+import { shallow } from 'enzyme';
 
 import { FeedbackConfig, layout, settings } from '@pie-lib/config-ui';
 
@@ -108,6 +109,21 @@ describe('Configure', () => {
     component = wrapper();
 
     expect(component).toMatchSnapshot();
+  });
+
+  it('changeTeacherInstructions calls onModelChange', () => {
+    const onModelChanged = jest.fn();
+    const component = shallow(<ConfigureNotStyled
+      onModelChanged={onModelChanged}
+      classes={{}}
+      {...defaultValues }
+    />);
+
+    component.instance().changeTeacherInstructions('Teacher Instructions');
+
+    expect(onModelChanged).toBeCalledWith(expect.objectContaining({
+      teacherInstructions: 'Teacher Instructions'
+    }));
   });
 });
 

@@ -83,6 +83,15 @@ export class Design extends React.Component {
     });
   };
 
+  changeTeacherInstructions = teacherInstructions => {
+    const { model, onChange } = this.props;
+
+    onChange({
+      ...model,
+      teacherInstructions
+    });
+  };
+
   changeFeedback = feedback => {
     this.updateModel({ feedback });
   };
@@ -154,10 +163,22 @@ export class Design extends React.Component {
               appropriate category area(s).
             </Typography>
 
-            {rationale.enabled && (
-              <InputContainer label={rationale.label} className={classes.rationaleHolder}>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
                 <EditableHtml
-                  className={classes.rationale}
+                  className={classes.input}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.changeTeacherInstructions}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+
+            {rationale.enabled && (
+              <InputContainer label={rationale.label} className={classes.inputHolder}>
+                <EditableHtml
+                  className={classes.input}
                   markup={model.rationale || ''}
                   onChange={this.changeRationale}
                   imageSupport={imageSupport}
@@ -198,12 +219,12 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit
   },
-  rationaleHolder: {
+  inputHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
   },
-  rationale: {
+  input: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     maxWidth: '600px'

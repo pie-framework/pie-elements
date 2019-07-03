@@ -31,9 +31,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
+            "enabled": true,
             "label": "Teacher Instructions",
-            "settings": false,
+            "settings": true,
           },
           "width": Object {
             "label": "Width (px)",
@@ -45,7 +45,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Object {
           "Properties": Object {
             "configure.studentInstructions.enabled": false,
-            "configure.teacherInstructions.enabled": false,
+            "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
             "equationEditor.enabled": false,
@@ -73,6 +73,15 @@ exports[`Render Main Component Match Snapshot 1`] = `
     >
       Display
     </WithStyles(Typography)>
+    <Component
+      label="Teacher Instructions"
+    >
+      <EditableHtml
+        markup=""
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </Component>
     <Component
       disabled={false}
       label="Width (px)"

@@ -22,8 +22,9 @@ class Root extends React.Component {
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
+      onTeacherInstructionsChanged
     } = this.props;
-    const { backgroundImage, rationale = {} } = configuration;
+    const { backgroundImage, rationale = {}, teacherInstructions = {} } = configuration;
     
     return (
       <div className={classes.base}>
@@ -39,7 +40,9 @@ class Root extends React.Component {
                   'backgroundImage.enabled':
                   backgroundImage.settings && toggle(backgroundImage.label, true),
                   'rationale.enabled':
-                  rationale.settings && toggle(rationale.label, true)
+                  rationale.settings && toggle(rationale.label, true),
+                  'teacherInstructions.enabled':
+                    teacherInstructions.settings && toggle(teacherInstructions.label, true)
                 },
                 Properties: {}
               }}
@@ -47,6 +50,17 @@ class Root extends React.Component {
           }
         >
           <div className={classes.regular}>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
+                <EditableHtml
+                  markup={model.teacherInstructions || ''}
+                  onChange={onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+
             <InputContainer label="Item Stem" className={classes.prompt}>
               <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
             </InputContainer>
@@ -118,7 +132,8 @@ Root.propTypes = {
   onUpdateImageDimension: PropTypes.func.isRequired,
   onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
-  onConfigurationChanged: PropTypes.func.isRequired
+  onConfigurationChanged: PropTypes.func.isRequired,
+  onTeacherInstructionsChanged: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Root);

@@ -62,7 +62,8 @@ const Design = withStyles(styles)(props => {
     onAddChoice,
     imageSupport,
     onChangeModel,
-    onConfigurationChanged
+    onConfigurationChanged,
+    onTeacherInstructionsChanged
   } = props;
   const {
     prompt,
@@ -121,6 +122,19 @@ const Design = withStyles(styles)(props => {
         }
       >
         <div>
+
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={onTeacherInstructionsChanged}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
+
           {prompt.settings && (
             <InputContainer
               label={prompt.label}
@@ -244,6 +258,13 @@ export class Main extends React.Component {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      teacherInstructions
+    });
+  };
+
   onModelChanged = (model, key) => {
     const { onModelChanged } = this.props;
 
@@ -284,6 +305,7 @@ export class Main extends React.Component {
         onChoiceChanged={this.onChoiceChanged}
         onAddChoice={this.onAddChoice}
         onPromptChanged={this.onPromptChanged}
+        onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
       />);
   }
 }
