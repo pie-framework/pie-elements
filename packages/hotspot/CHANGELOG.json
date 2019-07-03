@@ -318,5 +318,35 @@
     "committerDate": "2019-06-10 17:53:19 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot@2.6.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e34547d6fdd4ff27a1ed15789d52d294b4630c91",
+    "gitTags": " (develop)",
+    "committerDate": "2019-07-03 16:05:09 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.6.2"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "version bumped the editable-html dependent packages",
+    "merge": null,
+    "header": "chore(version): version bumped the editable-html dependent packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "19961d346e8596064bad27156e0cf5a03afc3889",
+    "gitTags": "",
+    "committerDate": "2019-07-03 15:57:58 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.6.2"
   }
 ]

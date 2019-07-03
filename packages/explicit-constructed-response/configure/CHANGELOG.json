@@ -148,5 +148,20 @@
     "committerDate": "2019-07-02 15:13:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@1.4.1"
+  },
+  {
+    "type": "chore",
+    "scope": "version",
+    "subject": "version bumped the editable-html dependent packages",
+    "merge": null,
+    "header": "chore(version): version bumped the editable-html dependent packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "19961d346e8596064bad27156e0cf5a03afc3889",
+    "gitTags": "",
+    "committerDate": "2019-07-03 15:57:58 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@1.4.3"
   }
 ]
