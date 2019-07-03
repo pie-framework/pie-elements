@@ -50,10 +50,6 @@ class Root extends React.Component {
           }
         >
           <div className={classes.regular}>
-            <InputContainer label="Item Stem" className={classes.prompt}>
-              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
-            </InputContainer>
-
             {teacherInstructions.enabled && (
               <InputContainer label={teacherInstructions.label} className={classes.prompt}>
                 <EditableHtml
@@ -64,6 +60,10 @@ class Root extends React.Component {
                 />
               </InputContainer>
             )}
+
+            <InputContainer label="Item Stem" className={classes.prompt}>
+              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
+            </InputContainer>
 
             {rationale.enabled && (
               <InputContainer
