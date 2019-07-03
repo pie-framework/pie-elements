@@ -71,6 +71,12 @@ export class Configure extends React.Component {
     onModelChanged({ ...model, prompt });
   };
 
+  onTeacherInstructionsChange = teacherInstructions => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({ ...model, teacherInstructions });
+  };
+
   render() {
     const {
       classes,
@@ -154,6 +160,18 @@ export class Configure extends React.Component {
               on the graph.
             </span>
           </Typography>
+
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={this.onTeacherInstructionsChange}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
 
           {prompt.settings && (
             <InputContainer
