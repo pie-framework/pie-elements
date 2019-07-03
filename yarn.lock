@@ -2296,12 +2296,13 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.2.1.tgz#c17442d815d4efe41f744b76798e7e6ab7f37f85"
-  integrity sha512-TP/2xkJyUiRvILyWMis6YUgNHYmVjxqqDAnzB2UyKotpLJnf8mLSlZX6kW+DZ64qUM/qk54LGfUiAqufVX0p7Q==
+"@pie-ui/graphing@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.2.2.tgz#d89df4a860a667ecc37252278cebe7ebcb018d92"
+  integrity sha512-zjjsu9IiTHR+lYTrlDMCb4e/xS4xAwfQbIjb5nY3FgEHzdjYiY7PDuAmMEzbMsdrYV7h1eSvWxUKwlWmpEOK1Q==
   dependencies:
     "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/graphing" "^1.0.1"
     "@pie-lib/render-ui" "^4.3.12"
     classnames "^2.2.5"
