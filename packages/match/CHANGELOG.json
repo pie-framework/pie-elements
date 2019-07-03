@@ -828,5 +828,20 @@
     "committerDate": "2019-07-02 15:13:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/match@2.6.1"
+  },
+  {
+    "type": "feat",
+    "scope": "graphing",
+    "subject": "Added graphing element.",
+    "merge": null,
+    "header": "feat(graphing): Added graphing element.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "80be31b2693b3d875c225f97a800453954ffd65b",
+    "gitTags": "",
+    "committerDate": "2019-06-06 16:40:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.7.0"
   }
 ]
