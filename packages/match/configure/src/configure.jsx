@@ -235,6 +235,19 @@ class Configure extends React.Component {
               This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
             </span>
           </Typography>
+
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={this.onTeacherInstructionsChanged}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
+
           {prompt.settings && (
             <InputContainer
               label={prompt.label}
@@ -247,18 +260,6 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={!prompt.settings}
                 disableUnderline
-              />
-            </InputContainer>
-          )}
-
-          {teacherInstructions.enabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={this.onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
               />
             </InputContainer>
           )}
