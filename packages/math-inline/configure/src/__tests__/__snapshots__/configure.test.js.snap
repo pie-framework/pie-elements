@@ -32,7 +32,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             "teacherInstructions": Object {
               "enabled": true,
               "label": "Teacher Instructions",
-              "settings": false,
+              "settings": true,
             },
           }
         }
@@ -42,7 +42,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "rationale.enabled": undefined,
               "scoringType": false,
               "studentInstructions.enabled": false,
-              "teacherInstructions.enabled": false,
+              "teacherInstructions.enabled": undefined,
             },
             "Settings": Object {
               "responseType": undefined,
@@ -121,6 +121,17 @@ exports[`Configure renders correctly with snapshot 1`] = `
             In Inline Math, students need to fill in the blank for an equation or a mathematical expression. This interaction allows for exactly one correct answer.
           </span>
         </WithStyles(Typography)>
+        <InputContainer
+          className="Configure-promptHolder-3"
+          label="Teacher Instructions"
+        >
+          <EditableHtml
+            className="Configure-prompt-4"
+            markup=""
+            nonEmpty={false}
+            onChange={[Function]}
+          />
+        </InputContainer>
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
@@ -149,7 +160,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "teacherInstructions": Object {
                 "enabled": true,
                 "label": "Teacher Instructions",
-                "settings": false,
+                "settings": true,
               },
             }
           }
@@ -237,14 +248,14 @@ exports[`Configure renders correctly with snapshot 1`] = `
 
 exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
 <div
-  className="GeneralConfigBlock-container-3"
+  className="GeneralConfigBlock-container-5"
 >
   <InputContainer
-    className="GeneralConfigBlock-promptHolder-10"
+    className="GeneralConfigBlock-promptHolder-12"
     label="Item Stem"
   >
     <EditableHtml
-      className="GeneralConfigBlock-prompt-11"
+      className="GeneralConfigBlock-prompt-13"
       imageSupport={Object {}}
       markup="<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
  <mrow>
@@ -257,10 +268,10 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     />
   </InputContainer>
   <div
-    className="GeneralConfigBlock-inputContainer-8"
+    className="GeneralConfigBlock-inputContainer-10"
   >
     <WithStyles(WithFormControlContext(InputLabel))
-      className="GeneralConfigBlock-templateTitle-4"
+      className="GeneralConfigBlock-templateTitle-6"
     >
       RESPONSE TEMPLATE
     </WithStyles(WithFormControlContext(InputLabel))>
@@ -268,7 +279,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       allowAnswerBlock={true}
       classNames={
         Object {
-          "editor": "GeneralConfigBlock-responseEditor-9",
+          "editor": "GeneralConfigBlock-responseEditor-11",
           "mathToolbar": undefined,
         }
       }
@@ -285,10 +296,10 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     Define Correct Response
   </h3>
   <div
-    className="GeneralConfigBlock-flexContainer-6"
+    className="GeneralConfigBlock-flexContainer-8"
   >
     <InputContainer
-      className="GeneralConfigBlock-selectContainer-7"
+      className="GeneralConfigBlock-selectContainer-9"
       label="Equation Editor"
     >
       <WithStyles(WithFormControlContext(Select))
@@ -338,7 +349,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       </WithStyles(WithFormControlContext(Select))>
     </InputContainer>
     <WithStyles(Button)
-      className="GeneralConfigBlock-addResponseButton-5"
+      className="GeneralConfigBlock-addResponseButton-7"
       onClick={[Function]}
       type="primary"
     >

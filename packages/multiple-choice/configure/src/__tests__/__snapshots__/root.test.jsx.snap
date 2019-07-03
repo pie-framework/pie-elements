@@ -55,5 +55,6 @@ exports[`Main snapshot renders 1`] = `
   onModelChanged={[MockFunction]}
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
+  onTeacherInstructionsChanged={[Function]}
 />
 `;

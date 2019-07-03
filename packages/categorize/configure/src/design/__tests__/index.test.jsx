@@ -73,6 +73,14 @@ describe('Design', () => {
       });
     };
 
+    describe('changeTeacherInstructions', () => {
+      it('calls onChange', () => {
+        w.instance().changeTeacherInstructions('Teacher Instructions Updated.');
+
+        expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ teacherInstructions: 'Teacher Instructions Updated.' }))
+      });
+    });
+
     describe('changeFeedback', () => {
       callsOnChange(
         'changeFeedback',

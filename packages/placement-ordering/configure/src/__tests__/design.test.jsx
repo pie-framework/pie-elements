@@ -149,6 +149,18 @@ describe('Placement Ordering', () => {
         });
       });
 
+      it('calls onModelChanged with updated item stem', () => {
+        const modelPath = 'teacherInstructions';
+        const value = 'Updated Choice Area Label';
+
+        change(modelPath, undefined, value);
+
+        expect(onModelChanged).toHaveBeenCalledWith({
+          ...model,
+          [modelPath]: value
+        });
+      });
+
       it('calls onModelChanged with updated choice area label', () => {
         const modelPath = 'choiceLabel';
         const valuePath = 'value';

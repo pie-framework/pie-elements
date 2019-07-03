@@ -152,6 +152,14 @@ describe('design', () => {
       }));
     });
 
+    describe('changeTeacherInstructions', () => {
+      assert('onTeacherInstructionsChanged', ['New Teacher Instructions'], m => ({
+        ...m,
+        teacherInstructions: 'New Teacher Instructions'
+      }));
+    });
+
+
     describe('changeRationale', () => {
       assert('onRationaleChanged', ['New Rationale'], m => ({
         ...m,

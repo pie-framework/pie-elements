@@ -1,4 +1,8 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import {
+  ModelUpdatedEvent,
+  DeleteImageEvent,
+  InsertImageEvent
+} from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './main';
@@ -45,13 +49,30 @@ export default class ExtendedTextEntry extends HTMLElement {
     this.render();
   }
 
+
+  /**
+   *
+   * @param {done, progress, file} handler
+   */
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   render() {
     if (this._model) {
       const element = React.createElement(Main, {
         model: this._model,
         configuration: this._configuration,
         onModelChanged: this.onModelChanged.bind(this),
-        onConfigurationChanged: this.onConfigurationChanged.bind(this)
+        onConfigurationChanged: this.onConfigurationChanged.bind(this),
+        imageSupport: {
+          add: this.insertImage.bind(this),
+          delete: this.onDeleteImage.bind(this)
+        }
       });
       ReactDOM.render(element, this);
     }

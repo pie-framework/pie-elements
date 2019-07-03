@@ -17,5 +17,11 @@ export default {
     allowDecimal: false,
     allowThousandsSeparator: false
   },
-  configuration: {}
+  configuration: {
+    teacherInstructions: {
+      settings: true,
+      label: 'Teacher Instructions',
+      enabled: true
+    },
+  }
 };

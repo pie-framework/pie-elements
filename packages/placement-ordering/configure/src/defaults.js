@@ -87,7 +87,7 @@ export default {
       label: 'Target label',
     },
     teacherInstructions: {
-      settings: false,
+      settings: true,
       label: 'Teacher Instructions',
       enabled: false,
     },

@@ -80,7 +80,7 @@ export default {
       enabled: true,
     },
     teacherInstructions: {
-      settings: false,
+      settings: true,
       label: 'Teacher Instructions',
       enabled: true,
     },

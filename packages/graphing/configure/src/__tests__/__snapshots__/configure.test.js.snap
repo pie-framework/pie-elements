@@ -45,7 +45,7 @@ exports[`Configure renders snapshot 1`] = `
           "teacherInstructions": Object {
             "enabled": false,
             "label": "Teacher Instructions",
-            "settings": false,
+            "settings": true,
           },
           "title": Object {
             "enabled": true,
@@ -68,7 +68,7 @@ exports[`Configure renders snapshot 1`] = `
             "rationale.enabled": undefined,
             "scoringType": undefined,
             "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": false,
+            "teacherInstructions.enabled": undefined,
           },
         }
       }

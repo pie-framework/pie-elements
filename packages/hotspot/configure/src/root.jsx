@@ -43,9 +43,10 @@ class Root extends React.Component {
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes
+      onUpdateShapes,
+      onTeacherInstructionsChanged
     } = this.props;
-    const { multipleCorrect, partialScoring } = configuration;
+    const { multipleCorrect, partialScoring, teacherInstructions = {} } = configuration;
     const { rationale = {} } = configuration;
 
     return (
@@ -66,12 +67,26 @@ class Root extends React.Component {
                   'rationale.enabled':
                     rationale.settings && toggle(rationale.label, true)
                 },
-                Properties: {}
+                Properties: {
+                  'teacherInstructions.enabled':
+                    teacherInstructions.settings && toggle(teacherInstructions.label, true)
+                }
               }}
             />
           }
         >
           <div className={classes.regular}>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
+                <EditableHtml
+                  markup={model.teacherInstructions || ''}
+                  onChange={onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
+
             <InputContainer label="Item Stem" className={classes.prompt}>
               <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
             </InputContainer>
@@ -200,7 +215,8 @@ Root.propTypes = {
   onUpdateShapes: PropTypes.func.isRequired,
   onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
-  onConfigurationChanged: PropTypes.func.isRequired
+  onConfigurationChanged: PropTypes.func.isRequired,
+  onTeacherInstructionsChanged: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(Root);

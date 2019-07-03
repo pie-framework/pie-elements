@@ -13,7 +13,7 @@ export const model = {
     maxNumberOfPoints: 20,
     width: 500,
     height: 400,
-    initialType: "PF",
+    initialType: 'PF',
     exhibitOnly: false,
     availableTypes: {
       PF: true,
@@ -33,6 +33,6 @@ export const model = {
 export const configuration = {
   prompt: {
     settings: true,
-    label: "Prompt"
+    label: 'Prompt'
   }
 };

@@ -110,6 +110,13 @@ export class Main extends React.Component {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      teacherInstructions
+    });
+  };
+
   onMarkupChanged = slateMarkup => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -147,7 +154,8 @@ export class Main extends React.Component {
       duplicates,
       prompt,
       partialScoring,
-      lockChoiceOrder
+      lockChoiceOrder,
+      teacherInstructions = {}
     } = configuration;
     const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
 
@@ -166,7 +174,8 @@ export class Main extends React.Component {
                   toggle(partialScoring.label),
                   duplicates: duplicates.settings && toggle(duplicates.label),
                   lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label)
+                  toggle(lockChoiceOrder.label),
+                  'teacherInstructions.enabled': teacherInstructions.settings && toggle(teacherInstructions.label, true)
                 },
                 'Properties': {}
               }}
@@ -174,6 +183,17 @@ export class Main extends React.Component {
           }
         >
           <div>
+            {teacherInstructions.enabled && (
+              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.teacherInstructions || ''}
+                  onChange={this.onTeacherInstructionsChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
             {prompt.settings && (
               <InputContainer
                 label={prompt.label}
