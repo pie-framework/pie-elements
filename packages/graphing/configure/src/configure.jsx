@@ -32,7 +32,7 @@ const styles = theme => ({
   prompt: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
-  },
+  }
 });
 
 const toolsArr = [
@@ -54,7 +54,7 @@ export class Configure extends React.Component {
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired
   };
 
   static defaultProps = { classes: {} };
@@ -78,7 +78,7 @@ export class Configure extends React.Component {
       configuration,
       onConfigurationChanged,
       onModelChanged,
-      imageSupport,
+      imageSupport
     } = this.props;
     const config = model.graph;
 
@@ -109,8 +109,7 @@ export class Configure extends React.Component {
             groups={{
               'Item Type': {
                 arrows: arrows.settings && toggle(arrows.label),
-                'title.enabled': title.settings &&
-                toggle(title.label, true),
+                'title.enabled': title.settings && toggle(title.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),
                 graph: numberFields('Graph Display Size', {
@@ -125,21 +124,24 @@ export class Configure extends React.Component {
                     suffix: 'px',
                     min: 400,
                     max: 700
-                  },
+                  }
                 })
               },
-              'Properties': {
-                'authoring.enabled': authoring.settings &&
-                  toggle(authoring.label, true),
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label, true),
-                'rationale.enabled': rationale.settings &&
-                toggle(rationale.label, true),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, ['dichotomous', 'partial scoring']),
-              },
+              Properties: {
+                'authoring.enabled':
+                  authoring.settings && toggle(authoring.label, true),
+                'teacherInstructions.enabled':
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label, true),
+                'studentInstructions.enabled':
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label, true),
+                'rationale.enabled':
+                  rationale.settings && toggle(rationale.label, true),
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['dichotomous', 'partial scoring'])
+              }
             }}
           />
         }
@@ -147,8 +149,9 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a line that meets specific criteria.
-              The student will draw the line by clicking on two points on the graph.
+              This interaction asks a student to draw a line that meets specific
+              criteria. The student will draw the line by clicking on two points
+              on the graph.
             </span>
           </Typography>
 
@@ -179,11 +182,13 @@ export class Configure extends React.Component {
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
               />
-            </InputContainer>)
-          }
+            </InputContainer>
+          )}
 
           <GraphingConfig
-            authoringEnabled={configuration.authoring && configuration.authoring.enabled}
+            authoringEnabled={
+              configuration.authoring && configuration.authoring.enabled
+            }
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
