@@ -108,6 +108,17 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
           "title": "",
+          "toolbarTools": Array [
+            "point",
+            "circle",
+            "polygon",
+            "segment",
+            "ray",
+            "vector",
+            "line",
+            "sine",
+            "parabola",
+          ],
         }
       }
     />
@@ -176,6 +187,17 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
           "title": "",
+          "toolbarTools": Array [
+            "point",
+            "circle",
+            "polygon",
+            "segment",
+            "ray",
+            "vector",
+            "line",
+            "sine",
+            "parabola",
+          ],
         }
       }
       tools={
@@ -262,6 +284,17 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
           "title": "",
+          "toolbarTools": Array [
+            "point",
+            "circle",
+            "polygon",
+            "segment",
+            "ray",
+            "vector",
+            "line",
+            "sine",
+            "parabola",
+          ],
         }
       }
       tools={
