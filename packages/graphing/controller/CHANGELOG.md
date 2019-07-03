@@ -10,9 +10,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * Finished tests, updated element, updated pie-model and schemas. ([a43ef92](https://github.com/pie-framework/pie-elements/commit/a43ef92))
 * Started adding tests. ([ed65922](https://github.com/pie-framework/pie-elements/commit/ed65922))
-* Updated pie-schemas. ([5e17a8a](https://github.com/pie-framework/pie-elements/commit/5e17a8a))
 * **graphing:** Added graphing element. ([80be31b](https://github.com/pie-framework/pie-elements/commit/80be31b))
-* **graphing:** Change currentTool ([602dfc2](https://github.com/pie-framework/pie-elements/commit/602dfc2))
 * **graphing:** Continued on scoring calculation, refactored. ([9a88086](https://github.com/pie-framework/pie-elements/commit/9a88086))
 * **graphing:** Continued on scoring calculation. ([ba10cb5](https://github.com/pie-framework/pie-elements/commit/ba10cb5))
 * **graphing:** Finished graphing. ([e122d77](https://github.com/pie-framework/pie-elements/commit/e122d77))

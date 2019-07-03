@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.6.1...@pie-element/match@2.7.0) (2019-07-03)
+
+
+### Features
+
+* **graphing:** Added graphing element. ([80be31b](https://github.com/pie-framework/pie-elements/commit/80be31b))
+
+
+
+
+
 ## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.6.0...@pie-element/match@2.6.1) (2019-07-02)
 
 **Note:** Version bump only for package @pie-element/match
