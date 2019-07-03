@@ -1,19 +1,26 @@
-import isEqual from 'lodash/isEqual';
-import reduce from 'lodash/reduce';
-import find from 'lodash/find';
+import forEach from 'lodash/forEach';
 
-export const isResponseCorrect = (question, session) => {
-  if (!question || !session || !session.value) {
-    return false;
-  }
+export const getAllCorrectResponses = ({ choices, alternateResponse }) => {
+  const correctAnswers = {};
 
-  let correctResponse = reduce(question.choices, (acc, area, key) => {
-    const correctChoice = find(area, c => c.correct);
+  forEach(choices, (respArea, key) => {
+    if (!correctAnswers[key]) {
+      correctAnswers[key] = [];
+    }
 
-    acc[key] = correctChoice.value;
+    respArea.forEach(choice => {
+      if (choice.correct) {
+        correctAnswers[key].push(choice.value);
 
-    return acc;
-  }, {});
+        if (alternateResponse[key]) {
+          correctAnswers[key] = [
+            ...correctAnswers[key],
+            ...alternateResponse[key]
+          ]
+        }
+      }
+    })
+  });
 
-  return isEqual((session.value || {}), correctResponse);
+  return correctAnswers;
 };

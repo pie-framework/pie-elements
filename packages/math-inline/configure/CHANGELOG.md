@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.4.1...@pie-element/math-inline-configure@2.4.2) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.4.0...@pie-element/math-inline-configure@2.4.1) (2019-07-02)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.3.1...@pie-element/math-inline-configure@2.4.0) (2019-07-02)
+
+
+### Bug Fixes
+
+* **math-inline:** interaction fixes, controller logic adjustment and small styling changes ([40a1dc1](https://github.com/pie-framework/pie-elements/commit/40a1dc1))
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+* **math-inline:** allowing decimals in response is valid for literal validation too ([4c17840](https://github.com/pie-framework/pie-elements/commit/4c17840))
+
+
+
+
+
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.3.0...@pie-element/math-inline-configure@2.3.1) (2019-06-26)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.2.1...@pie-element/math-inline-configure@2.3.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.2.0...@pie-element/math-inline-configure@2.2.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

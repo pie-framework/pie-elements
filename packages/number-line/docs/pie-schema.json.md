@@ -22,29 +22,21 @@ Indicates the configuration for feedback when answer is partially correct
 
 Array that returns responses
 
-# `allowPartialScoring` (boolean, required)
+# `partialScoring` (boolean, required)
 
 Indicates if partial scoring is enabled
-
-# `partialScoring` (array, required)
-
-Partial scoring rules
-
-The object is an array with all elements of the type `object`.
-
-The array object has the following properties:
-
-## `numberOfCorrect` (number, required)
-
-Number of correct answers
-
-## `scorePercentage` (number, required)
-
-The percentage for partial scoring
 
 # `graph` (object, required)
 
 Properties of the `graph` object:
+
+## `arrows` (object, required)
+
+Properties of the `arrows` object:
+
+### `left` (boolean, required)
+
+### `right` (boolean, required)
 
 ## `width` (number, required)
 
@@ -54,33 +46,37 @@ Indicates domain representation width
 
 Indicates domain representation height
 
-## `domain` (array, required)
+## `domain` (object, required)
 
-Domain limits
+Properties of the `domain` object:
 
-Additional restrictions:
+### `min` (number, required)
 
-* Minimum items: `2`
+### `max` (number, required)
 
 ## `maxNumberOfPoints` (number, required)
 
 Indicates the maximum number of correct response values
 
-## `tickFrequency` (number, required)
+## `tick` (object, required)
 
-Indicates number of ticks on the domain representation
+Properties of the `tick` object:
 
-## `showMinorTicks` (boolean, required)
+### `minor` (number, required)
 
-Indicates if minor ticks should be displayed
+smallest tick
 
-## `snapPerTick` (number, required)
+### `major` (number, required)
 
-The number of minor ticks between the ticks
+larger tick - has labels
 
 ## `tickLabelOverrides` (array, required)
 
 The object is an array with all elements of the type `string`.
+
+## `title` (string)
+
+the title under the graph
 
 ## `exhibitOnly` (boolean, required)
 
@@ -96,7 +92,6 @@ This element must be one of the following enum values:
 * `LEF`
 * `LFE`
 * `LFF`
-* `PE`
 * `PF`
 * `REN`
 * `REP`
@@ -112,10 +107,6 @@ Properties of the `availableTypes` object:
 ### `PF` (boolean, required)
 
 Indicates if full point is available
-
-### `PE` (boolean, required)
-
-Indicates if empty point is available
 
 ### `LFF` (boolean, required)
 
@@ -339,21 +330,17 @@ This element must be one of the following enum values:
 
 Indicates response domain position
 
-## `PartialScoringRule` (object)
-
-Properties of the `PartialScoringRule` object:
-
-### `numberOfCorrect` (number, required)
-
-Number of correct answers
-
-### `scorePercentage` (number, required)
-
-The percentage for partial scoring
-
 ## `NumberLineDomainConfiguration` (object)
 
 Properties of the `NumberLineDomainConfiguration` object:
+
+### `arrows` (object, required)
+
+Properties of the `arrows` object:
+
+#### `left` (boolean, required)
+
+#### `right` (boolean, required)
 
 ### `width` (number, required)
 
@@ -363,33 +350,37 @@ Indicates domain representation width
 
 Indicates domain representation height
 
-### `domain` (array, required)
+### `domain` (object, required)
 
-Domain limits
+Properties of the `domain` object:
 
-Additional restrictions:
+#### `min` (number, required)
 
-* Minimum items: `2`
+#### `max` (number, required)
 
 ### `maxNumberOfPoints` (number, required)
 
 Indicates the maximum number of correct response values
 
-### `tickFrequency` (number, required)
+### `tick` (object, required)
 
-Indicates number of ticks on the domain representation
+Properties of the `tick` object:
 
-### `showMinorTicks` (boolean, required)
+#### `minor` (number, required)
 
-Indicates if minor ticks should be displayed
+smallest tick
 
-### `snapPerTick` (number, required)
+#### `major` (number, required)
 
-The number of minor ticks between the ticks
+larger tick - has labels
 
 ### `tickLabelOverrides` (array, required)
 
 The object is an array with all elements of the type `string`.
+
+### `title` (string)
+
+the title under the graph
 
 ### `exhibitOnly` (boolean, required)
 
@@ -405,7 +396,6 @@ This element must be one of the following enum values:
 * `LEF`
 * `LFE`
 * `LFF`
-* `PE`
 * `PF`
 * `REN`
 * `REP`
@@ -421,10 +411,6 @@ Properties of the `availableTypes` object:
 #### `PF` (boolean, required)
 
 Indicates if full point is available
-
-#### `PE` (boolean, required)
-
-Indicates if empty point is available
 
 #### `LFF` (boolean, required)
 
@@ -461,3 +447,31 @@ Indicates if ray with empty point and positive direction is available
 ### `initialElements` (object, required)
 
 Array that returns responses
+
+## `Arrows` (object)
+
+Properties of the `Arrows` object:
+
+### `left` (boolean, required)
+
+### `right` (boolean, required)
+
+## `Domain` (object)
+
+Properties of the `Domain` object:
+
+### `min` (number, required)
+
+### `max` (number, required)
+
+## `Ticks` (object)
+
+Properties of the `Ticks` object:
+
+### `minor` (number, required)
+
+smallest tick
+
+### `major` (number, required)
+
+larger tick - has labels

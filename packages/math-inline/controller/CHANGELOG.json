@@ -318,5 +318,35 @@
     "committerDate": "2019-06-12 19:23:02 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@2.2.2"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "allowing decimals in response is valid for literal validation too",
+    "merge": null,
+    "header": "feat(math-inline): allowing decimals in response is valid for literal validation too",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4c178409f57beedbb91fd20e5139c516ae607407",
+    "gitTags": "",
+    "committerDate": "2019-06-26 11:22:22 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@2.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "interaction fixes, controller logic adjustment and small styling changes",
+    "merge": null,
+    "header": "fix(math-inline): interaction fixes, controller logic adjustment and small styling changes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "40a1dc10b6c884744fdeafbf34f332533c6568fc",
+    "gitTags": "",
+    "committerDate": "2019-06-19 11:11:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@2.3.0"
   }
 ]

@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.4.1...@pie-element/ebsr@2.4.2) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.4.0...@pie-element/ebsr@2.4.1) (2019-07-02)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.3.1...@pie-element/ebsr@2.4.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.3.0...@pie-element/ebsr@2.3.1) (2019-06-26)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.2.1...@pie-element/ebsr@2.3.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.2.0...@pie-element/ebsr@2.2.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/ebsr

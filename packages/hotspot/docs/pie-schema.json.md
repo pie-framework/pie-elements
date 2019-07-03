@@ -10,37 +10,73 @@ The question prompt or item stem
 
 The image over which hotspots will be drawn
 
-# `shapes` (array, required)
+# `shapes` (object, required)
 
-The shapes/hotspots of the question
+Properties of the `shapes` object:
+
+## `rectangles` (array, required)
+
+the rectangles of the shape
 
 The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
 
-## `id` (string)
+### `id` (string)
 
-the id of the shape
+the id of the rectangle
 
-## `correct` (boolean)
+### `correct` (boolean)
 
-indicates if the shape is correct
+indicates if the rectangle is correct
 
-## `height` (number, required)
+### `height` (number, required)
 
-the height of the shape
+the height of the rectangle
 
-## `width` (number, required)
+### `width` (number, required)
 
-the width of the shape
+the width of the rectangle
 
-## `x` (number, required)
+### `x` (number, required)
 
-the x position of the shape
+the x position of the rectangle
 
-## `y` (number, required)
+### `y` (number, required)
 
-the y position of the shape
+the y position of the rectangle
+
+## `polygons` (array, required)
+
+the polygons of the shape
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+### `id` (string)
+
+the id of the polygon
+
+### `correct` (boolean)
+
+indicates if the polygon is correct
+
+### `points` (array, required)
+
+the points of the polygon
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `x` (number, required)
+
+the x position
+
+#### `y` (number, required)
+
+the y position
 
 # `multipleCorrect` (boolean, required)
 
@@ -108,29 +144,137 @@ The schema defines the following additional types:
 
 Properties of the `Shape` object:
 
+### `rectangles` (array, required)
+
+the rectangles of the shape
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `id` (string)
+
+the id of the rectangle
+
+#### `correct` (boolean)
+
+indicates if the rectangle is correct
+
+#### `height` (number, required)
+
+the height of the rectangle
+
+#### `width` (number, required)
+
+the width of the rectangle
+
+#### `x` (number, required)
+
+the x position of the rectangle
+
+#### `y` (number, required)
+
+the y position of the rectangle
+
+### `polygons` (array, required)
+
+the polygons of the shape
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `id` (string)
+
+the id of the polygon
+
+#### `correct` (boolean)
+
+indicates if the polygon is correct
+
+#### `points` (array, required)
+
+the points of the polygon
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+##### `x` (number, required)
+
+the x position
+
+##### `y` (number, required)
+
+the y position
+
+## `Rectangle` (object)
+
+Properties of the `Rectangle` object:
+
 ### `id` (string)
 
-the id of the shape
+the id of the rectangle
 
 ### `correct` (boolean)
 
-indicates if the shape is correct
+indicates if the rectangle is correct
 
 ### `height` (number, required)
 
-the height of the shape
+the height of the rectangle
 
 ### `width` (number, required)
 
-the width of the shape
+the width of the rectangle
 
 ### `x` (number, required)
 
-the x position of the shape
+the x position of the rectangle
 
 ### `y` (number, required)
 
-the y position of the shape
+the y position of the rectangle
+
+## `Polygon` (object)
+
+Properties of the `Polygon` object:
+
+### `id` (string)
+
+the id of the polygon
+
+### `correct` (boolean)
+
+indicates if the polygon is correct
+
+### `points` (array, required)
+
+the points of the polygon
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+#### `x` (number, required)
+
+the x position
+
+#### `y` (number, required)
+
+the y position
+
+## `Point` (object)
+
+Properties of the `Point` object:
+
+### `x` (number, required)
+
+the x position
+
+### `y` (number, required)
+
+the y position
 
 ## `Dimension` (object)
 

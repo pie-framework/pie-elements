@@ -78,7 +78,7 @@ Array of boolean values indicating which columns are selected in the row
 
 The object is an array with all elements of the type `boolean`.
 
-# `rationale` (string)
+# `rationale` (string, required)
 
 Indicates value for rationale
 

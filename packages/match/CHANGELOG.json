@@ -798,5 +798,50 @@
     "committerDate": "2019-06-25 23:42:15 -0400",
     "isTagged": true,
     "tag": "@pie-element/match@2.5.0"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup-elements",
+    "subject": "refactored the elements and version bumped the necessary files",
+    "merge": null,
+    "header": "feat(mask-markup-elements): refactored the elements and version bumped the necessary files",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f8f77c02e44afd90e491a371d86d3d4093eb41e5",
+    "gitTags": "",
+    "committerDate": "2019-07-02 13:38:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.6.0"
+  },
+  {
+    "type": "chore",
+    "scope": "editable-html",
+    "subject": "version bumped the necessary packages",
+    "merge": null,
+    "header": "chore(editable-html): version bumped the necessary packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3c7caf6a1f8dc120ca23ab93258a90a593bbeb65",
+    "gitTags": "",
+    "committerDate": "2019-07-02 15:13:55 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.6.1"
+  },
+  {
+    "type": "feat",
+    "scope": "graphing",
+    "subject": "Added graphing element.",
+    "merge": null,
+    "header": "feat(graphing): Added graphing element.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "80be31b2693b3d875c225f97a800453954ffd65b",
+    "gitTags": "",
+    "committerDate": "2019-06-06 16:40:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.7.0"
   }
 ]

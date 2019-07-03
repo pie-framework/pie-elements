@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import EditableHtml from '@pie-lib/editable-html';
-import { InputContainer } from '@pie-lib/config-ui';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
@@ -45,9 +44,9 @@ const Choice = ({ classes, markup, onChange, onDelete }) => {
         justifyContent: 'space-between'
       }}
     >
-      <EditableHtml
+      <OutlinedInput
         className={classes.choice}
-        markup={markup}
+        value={markup}
         onChange={onChange}
         disableUnderline
       />
@@ -113,12 +112,12 @@ export class AlternateSection extends React.Component {
     }
   };
 
-  onChoiceChanged = (choice, newVal) => {
+  onChoiceChanged = (choice, e) => {
     const { choiceChanged } = this.props;
 
     choiceChanged({
       ...choice,
-      label: newVal
+      label: e.target.value
     });
   };
 

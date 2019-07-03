@@ -50,10 +50,8 @@ export function model(question, session, env) {
     );
 
     if (!question.lockChoiceOrder) {
-      // eslint-disable-next-line no-console
-      console.error(
-        '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
-      );
+      // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
+
       choices = shuffle(choices);
     }
 

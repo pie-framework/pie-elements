@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.7.1...@pie-element/drag-in-the-blank@1.7.2) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.7.0...@pie-element/drag-in-the-blank@1.7.1) (2019-07-02)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.6.2...@pie-element/drag-in-the-blank@1.7.0) (2019-07-02)
+
+
+### Features
+
+* **mask-markup-elements:** refactored the elements and version bumped the necessary files ([f8f77c0](https://github.com/pie-framework/pie-elements/commit/f8f77c0))
+
+
+
+
+
+## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.6.1...@pie-element/drag-in-the-blank@1.6.2) (2019-06-26)
+
+
+### Bug Fixes
+
+* **rendering:** made sure all the items are rendered properly [c1935] ([61a85ab](https://github.com/pie-framework/pie-elements/commit/61a85ab))
+
+
+
+
+
+## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.6.0...@pie-element/drag-in-the-blank@1.6.1) (2019-06-26)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.5.1...@pie-element/drag-in-the-blank@1.6.0) (2019-06-26)
+
+
+### Features
+
+* **settings-panel:** updated the settings panel design and changes needed for [ch2242] ([d830e57](https://github.com/pie-framework/pie-elements/commit/d830e57))
+
+
+
+
+
 ## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.5.0...@pie-element/drag-in-the-blank@1.5.1) (2019-06-23)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

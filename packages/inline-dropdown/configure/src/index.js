@@ -17,15 +17,18 @@ const log = debug('multiple-choice:configure');
 
 export default class InlineDropdown extends HTMLElement {
   static prepareModel = (model = {}) => {
-    const defaultModel = sensibleDefaults.model;
-    const slateMarkup = model.slateMarkup || createSlateMarkup(defaultModel.markup, defaultModel.choices);
-    const processedMarkup = processMarkup(slateMarkup);
+    const currModal = {
+      ...sensibleDefaults.model,
+      ...model
+    };
+    const slateMarkup = model.slateMarkup || createSlateMarkup(currModal.markup, currModal.choices);
+    const markup = processMarkup(slateMarkup);
 
     return {
-      ...sensibleDefaults.model,
-      ...model,
-      ...processedMarkup,
-      slateMarkup
+      ...currModal,
+      slateMarkup,
+      markup
+      /*...processedMarkup,*/
     };
   };
 

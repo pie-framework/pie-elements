@@ -25,26 +25,11 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     };
     const slateMarkup = joinedObj.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices);
     const processedMarkup = processMarkup(slateMarkup);
-    const newChoices = reduce(processedMarkup.choices, (obj, respArea, key) => {
-      const oldRespArea = joinedObj.choices[key];
-
-      obj[key] = !oldRespArea ? respArea : oldRespArea.reduce((acc, c, index) => {
-        if (index === 0) {
-          return acc;
-        }
-
-        acc.push(c);
-        return acc;
-      }, cloneDeep(respArea));
-
-      return obj;
-    }, {});
 
     return {
       ...joinedObj,
       slateMarkup,
-      markup: processedMarkup.markup,
-      choices: newChoices
+      markup: processedMarkup
     };
   };
 
