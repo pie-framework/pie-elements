@@ -14,51 +14,110 @@
       "title": "imageUrl"
     },
     "shapes": {
-      "description": "The shapes/hotspots of the question",
-      "type": "array",
-      "items": {
-        "title": "Shape",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "the id of the shape",
-            "type": "string",
-            "title": "id"
+      "title": "Shape",
+      "type": "object",
+      "properties": {
+        "rectangles": {
+          "description": "the rectangles of the shape",
+          "type": "array",
+          "items": {
+            "title": "Rectangle",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "the id of the rectangle",
+                "type": "string",
+                "title": "id"
+              },
+              "correct": {
+                "description": "indicates if the rectangle is correct",
+                "type": "boolean",
+                "title": "correct"
+              },
+              "height": {
+                "description": "the height of the rectangle",
+                "type": "number",
+                "title": "height"
+              },
+              "width": {
+                "description": "the width of the rectangle",
+                "type": "number",
+                "title": "width"
+              },
+              "x": {
+                "description": "the x position of the rectangle",
+                "type": "number",
+                "title": "x"
+              },
+              "y": {
+                "description": "the y position of the rectangle",
+                "type": "number",
+                "title": "y"
+              }
+            },
+            "required": [
+              "height",
+              "width",
+              "x",
+              "y"
+            ]
           },
-          "correct": {
-            "description": "indicates if the shape is correct",
-            "type": "boolean",
-            "title": "correct"
-          },
-          "height": {
-            "description": "the height of the shape",
-            "type": "number",
-            "title": "height"
-          },
-          "width": {
-            "description": "the width of the shape",
-            "type": "number",
-            "title": "width"
-          },
-          "x": {
-            "description": "the x position of the shape",
-            "type": "number",
-            "title": "x"
-          },
-          "y": {
-            "description": "the y position of the shape",
-            "type": "number",
-            "title": "y"
-          }
+          "title": "rectangles"
         },
-        "required": [
-          "height",
-          "width",
-          "x",
-          "y"
-        ]
+        "polygons": {
+          "description": "the polygons of the shape",
+          "type": "array",
+          "items": {
+            "title": "Polygon",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "the id of the polygon",
+                "type": "string",
+                "title": "id"
+              },
+              "correct": {
+                "description": "indicates if the polygon is correct",
+                "type": "boolean",
+                "title": "correct"
+              },
+              "points": {
+                "description": "the points of the polygon",
+                "type": "array",
+                "items": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "the x position",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "the y position",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "title": "points"
+              }
+            },
+            "required": [
+              "points"
+            ]
+          },
+          "title": "polygons"
+        }
       },
-      "title": "shapes"
+      "required": [
+        "polygons",
+        "rectangles"
+      ]
     },
     "multipleCorrect": {
       "description": "Indicates if the item supports multiple correct answers",
@@ -150,33 +209,139 @@
       "title": "Shape",
       "type": "object",
       "properties": {
+        "rectangles": {
+          "description": "the rectangles of the shape",
+          "type": "array",
+          "items": {
+            "title": "Rectangle",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "the id of the rectangle",
+                "type": "string",
+                "title": "id"
+              },
+              "correct": {
+                "description": "indicates if the rectangle is correct",
+                "type": "boolean",
+                "title": "correct"
+              },
+              "height": {
+                "description": "the height of the rectangle",
+                "type": "number",
+                "title": "height"
+              },
+              "width": {
+                "description": "the width of the rectangle",
+                "type": "number",
+                "title": "width"
+              },
+              "x": {
+                "description": "the x position of the rectangle",
+                "type": "number",
+                "title": "x"
+              },
+              "y": {
+                "description": "the y position of the rectangle",
+                "type": "number",
+                "title": "y"
+              }
+            },
+            "required": [
+              "height",
+              "width",
+              "x",
+              "y"
+            ]
+          },
+          "title": "rectangles"
+        },
+        "polygons": {
+          "description": "the polygons of the shape",
+          "type": "array",
+          "items": {
+            "title": "Polygon",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "the id of the polygon",
+                "type": "string",
+                "title": "id"
+              },
+              "correct": {
+                "description": "indicates if the polygon is correct",
+                "type": "boolean",
+                "title": "correct"
+              },
+              "points": {
+                "description": "the points of the polygon",
+                "type": "array",
+                "items": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "the x position",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "the y position",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "title": "points"
+              }
+            },
+            "required": [
+              "points"
+            ]
+          },
+          "title": "polygons"
+        }
+      },
+      "required": [
+        "polygons",
+        "rectangles"
+      ]
+    },
+    "Rectangle": {
+      "title": "Rectangle",
+      "type": "object",
+      "properties": {
         "id": {
-          "description": "the id of the shape",
+          "description": "the id of the rectangle",
           "type": "string",
           "title": "id"
         },
         "correct": {
-          "description": "indicates if the shape is correct",
+          "description": "indicates if the rectangle is correct",
           "type": "boolean",
           "title": "correct"
         },
         "height": {
-          "description": "the height of the shape",
+          "description": "the height of the rectangle",
           "type": "number",
           "title": "height"
         },
         "width": {
-          "description": "the width of the shape",
+          "description": "the width of the rectangle",
           "type": "number",
           "title": "width"
         },
         "x": {
-          "description": "the x position of the shape",
+          "description": "the x position of the rectangle",
           "type": "number",
           "title": "x"
         },
         "y": {
-          "description": "the y position of the shape",
+          "description": "the y position of the rectangle",
           "type": "number",
           "title": "y"
         }
@@ -184,6 +349,70 @@
       "required": [
         "height",
         "width",
+        "x",
+        "y"
+      ]
+    },
+    "Polygon": {
+      "title": "Polygon",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "the id of the polygon",
+          "type": "string",
+          "title": "id"
+        },
+        "correct": {
+          "description": "indicates if the polygon is correct",
+          "type": "boolean",
+          "title": "correct"
+        },
+        "points": {
+          "description": "the points of the polygon",
+          "type": "array",
+          "items": {
+            "title": "Point",
+            "type": "object",
+            "properties": {
+              "x": {
+                "description": "the x position",
+                "type": "number",
+                "title": "x"
+              },
+              "y": {
+                "description": "the y position",
+                "type": "number",
+                "title": "y"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ]
+          },
+          "title": "points"
+        }
+      },
+      "required": [
+        "points"
+      ]
+    },
+    "Point": {
+      "title": "Point",
+      "type": "object",
+      "properties": {
+        "x": {
+          "description": "the x position",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "the y position",
+          "type": "number",
+          "title": "y"
+        }
+      },
+      "required": [
         "x",
         "y"
       ]
