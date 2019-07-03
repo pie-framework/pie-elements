@@ -178,5 +178,20 @@
     "committerDate": "2019-06-06 16:40:08 +0300",
     "isTagged": true,
     "tag": "@pie-element/graphing@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump graphing ui for build error (#264)",
+    "merge": null,
+    "header": "fix: bump graphing ui for build error (#264)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "641c49323f2ebeccf9f0e417372336bfd680b1fe",
+    "gitTags": " (origin/develop, origin/HEAD)",
+    "committerDate": "2019-07-03 11:38:37 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@1.1.1"
   }
 ]
