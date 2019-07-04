@@ -12,6 +12,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Choice from './choice';
 import { withStyles } from '@material-ui/core/styles';
 
+window.renMath = renderMath;
+
 const styles = theme => ({
   design: {
     marginTop: theme.spacing.unit * 2
@@ -181,7 +183,7 @@ export class Choices extends React.Component {
     const { model: { choices: oldChoices } } = this.props;
     const { choices } = this.state;
 
-    if (choices.length && choices[choices.length - 1].value !== '') {
+    if (!choices.length || (choices.length && choices[choices.length - 1].value !== '')) {
       this.setState({
         choices: [
           ...choices,
@@ -195,11 +197,14 @@ export class Choices extends React.Component {
   };
 
   handleChoiceDropped = id => {
+    const { duplicates } = this.props;
     const { choices } = this.state;
 
-    this.setState({
-      choices: choices.filter(c => c.id !== id)
-    });
+    if (!duplicates) {
+      this.setState({
+        choices: choices.filter(c => c.id !== id)
+      });
+    }
   };
 
   handleChoiceRemove = id => {

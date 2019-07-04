@@ -5,30 +5,44 @@ const markup = '<table class=\\"lrn_width_auto table table-bordered table-stripe
 exports.model = (id, element) => ({
   id,
   element,
-  'disabled': false,
-  'mode': 'gather',
-  'prompt': '<p>Solve the equation below.</p>',
-  'shuffle': true,
-  'markup': '{{0}} + {{1}} = 15',
-  'choices': [
+  "duplicates": true,
+  "markup": "<div>Julie can use the equation <math><mrow> <mn>5<\/mn><mfrac> <mn>1<\/mn> <mn>5<\/mn> <\/mfrac> <\/mrow><\/math> {{0}} <math><mrow> <mfrac> <mn>2<\/mn> <mn>3<\/mn> <\/mfrac> <\/mrow><\/math> or the equation <math><mrow> <mfrac> <mrow> <mn>26<\/mn> <\/mrow> <mn>5<\/mn> <\/mfrac> <\/mrow><\/math> {{1}} <math><mrow> <mfrac> <mn>2<\/mn> <mn>3<\/mn> <\/mfrac> <\/mrow><\/math> to find the distance she runs each day. Julie runs {{2}} miles each day.&#160;</div>",
+  "correctResponse": {
+    "0": "0",
+    "1": "0",
+    "2": "5"
+  },
+  "choices": [
     {
-      'id': '0',
-      'value': '<div>6</div>'
+      "id": "0",
+      "value": "<math><mo>&#215;<\/mo><\/math>"
     },
     {
-      'id': '1',
-      'value': '<div>9</div>'
+      "id": "1",
+      "value": "<math><mo>&#247;<\/mo><\/math>"
+    },
+    {
+      "id": "2",
+      "value": "<math><mo>+<\/mo><\/math>"
+    },
+    {
+      "id": "3",
+      "value": "<math><mo>&#8722;<\/mo><\/math>"
+    },
+    {
+      "id": "4",
+      "value": "<math><mrow> <mn>7<\/mn><mfrac> <mn>8<\/mn> <mrow> <mn>10<\/mn> <\/mrow> <\/mfrac> <\/mrow><\/math>"
+    },
+    {
+      "id": "5",
+      "value": "<math><mrow> <mn>3<\/mn><mfrac> <mn>7<\/mn> <mrow> <mn>15<\/mn> <\/mrow> <\/mfrac> <\/mrow><\/math>"
+    },
+    {
+      "id": "6",
+      "value": "<math><mrow> <mn>4<\/mn><mfrac> <mrow> <mn>13<\/mn> <\/mrow> <mrow> <mn>15<\/mn> <\/mrow> <\/mfrac> <\/mrow><\/math>"
     }
   ],
-  'choicesPosition': 'below',
-  'correctResponse': {
-    '0': '0',
-    '1': '1'
-  },
-  'duplicates': true,
-  'alternateResponses' : [
-    ['1'],
-    ['0']
-  ],
-  rationale: '<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>',
+  "prompt": "<p>Vanessa runs <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n <mrow>\n  <mn>5<\/mn><mfrac>\n   <mn>1<\/mn>\n   <mn>5<\/mn>\n  <\/mfrac>\n  \n <\/mrow>\n<\/math> miles every day.&#160;Julie runs <math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n <mrow>\n  <mfrac>\n   <mn>2<\/mn>\n   <mn>3<\/mn>\n  <\/mfrac>\n  \n <\/mrow>\n<\/math> of that distance. Julie wants to know the distance she runs&#160;each day. Drag and drop the responses below to make each statement true.<\/p>",
+  "choicesPosition": "below",
+  "rationale": "<p>A correct response is shown below:<\/p><p>Julie can use the equation <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow> <mn>5<\/mn><mfrac> <mn>1<\/mn> <mn>5<\/mn> <\/mfrac> <mo>&#215;<\/mo><mfrac> <mn>2<\/mn> <mn>3<\/mn> <\/mfrac> <\/mrow><\/math> or the equation <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow> <mfrac> <mrow> <mn>26<\/mn> <\/mrow> <mn>5<\/mn> <\/mfrac> <mo>&#215;<\/mo><mfrac> <mn>2<\/mn> <mn>3<\/mn> <\/mfrac> <\/mrow><\/math><b> <\/b>to find the distance she runs each day. Julie runs <math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow> <mn>3<\/mn><mfrac> <mn>7<\/mn> <mrow> <mn>15<\/mn> <\/mrow> <\/mfrac> <\/mrow><\/math> miles each day.<\/p>",
 });
