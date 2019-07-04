@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@1.2.3...@pie-element/drawing-response-configure@1.2.4) (2019-07-04)
+
+
+### Bug Fixes
+
+* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
+
+
+
+
+
 ## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-configure@1.2.2...@pie-element/drawing-response-configure@1.2.3) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/drawing-response-configure
