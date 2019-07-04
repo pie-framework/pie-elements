@@ -57,5 +57,6 @@ exports.model = (id, element) => ({
       ]
     }
   },
-  partialScoring: false
+  partialScoring: false,
+  shuffle: true
 });
