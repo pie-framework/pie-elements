@@ -8,6 +8,7 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
+    "debug": "^4.1.1",
     "@pie-lib/feedback": "^0.4.1",
     "@pie-lib/graphing-utils": "^1.1.0"
   },
