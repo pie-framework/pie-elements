@@ -5,6 +5,20 @@ import { DefaultFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
 
+interface Dimensions {
+  /**
+   * Width the editor should take. USE CSS-style definition.
+   * @TJS-examples ["500px", "100%"]
+   */
+  width?: string;
+
+  /**
+   * Height the editor should take. USE CSS-style definition.
+   * @TJS-examples ["500px", "100%"]
+   */
+  height?: string;
+}
+
 /**
  * NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
  * functionalities are not defined yet - the value for those can belong to
@@ -22,12 +36,6 @@ export interface ExtendedTextEntryPie extends PieModel {
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
-
-  /**
-   * Height the editor should take. USE CSS-style definition.
-   * @TJS-examples ["500px", "100%"]
-   */
-  height?: string;
 
   /**
    * Whether a control to allow insertion of math forumulas should be displayed
@@ -48,10 +56,9 @@ export interface ExtendedTextEntryPie extends PieModel {
   teacherInstructions?: boolean;
 
   /**
-   * Width the editor should take. USE CSS-style definition.
-   * @TJS-examples ["500px", "100%"]
+   * Dimensions the editor should take
    */
-  width?: string;
+  dimensions: Dimensions;
 }
 
 /**
@@ -63,11 +70,6 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
    * Equation Editor configuration
    */
   equationEditor?: ConfigureProp;
-
-  /**
-   * Height configuration
-   */
-  height?: ConfigureProp;
 
   /**
    * Math Input configuration
@@ -90,8 +92,8 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Width configuration
+   * Dimensions configuration
    */
-  width?: ConfigureProp;
+  dimensions?: ConfigureProp;
 
 }

@@ -27,10 +27,6 @@ This element must be one of the following enum values:
 
 Indicates the feedback value
 
-# `height` (string)
-
-Height the editor should take. USE CSS-style definition.
-
 # `mathInput` (boolean)
 
 Whether a control to allow insertion of math forumulas should be displayed
@@ -53,9 +49,17 @@ Indicates if student instructions are enabled
 
 Indicates if teacher instructions are enabled
 
-# `width` (string)
+# `dimensions` (object, required)
+
+Properties of the `dimensions` object:
+
+## `width` (string)
 
 Width the editor should take. USE CSS-style definition.
+
+## `height` (string)
+
+Height the editor should take. USE CSS-style definition.
 
 # `id` (string, required)
 
@@ -103,3 +107,15 @@ This element must be one of the following enum values:
 ### `default` (string)
 
 Indicates the feedback value
+
+## `Dimensions` (object)
+
+Properties of the `Dimensions` object:
+
+### `width` (string)
+
+Width the editor should take. USE CSS-style definition.
+
+### `height` (string)
+
+Height the editor should take. USE CSS-style definition.

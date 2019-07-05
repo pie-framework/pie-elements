@@ -31,11 +31,6 @@
         "type"
       ]
     },
-    "height": {
-      "description": "Height the editor should take. USE CSS-style definition.",
-      "type": "string",
-      "title": "height"
-    },
     "mathInput": {
       "description": "Whether a control to allow insertion of math forumulas should be displayed",
       "default": false,
@@ -62,10 +57,21 @@
       "type": "boolean",
       "title": "teacherInstructions"
     },
-    "width": {
-      "description": "Width the editor should take. USE CSS-style definition.",
-      "type": "string",
-      "title": "width"
+    "dimensions": {
+      "title": "Dimensions",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "height"
+        }
+      }
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -79,6 +85,7 @@
     }
   },
   "required": [
+    "dimensions",
     "element",
     "id"
   ],
@@ -126,6 +133,22 @@
       "required": [
         "type"
       ]
+    },
+    "Dimensions": {
+      "title": "Dimensions",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "height"
+        }
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"

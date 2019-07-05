@@ -29,11 +29,11 @@ export async function model(model, session, env) {
 
   return fb.then(feedback => ({
     prompt: model.prompt,
-    width: model.width,
-    height: model.height,
+    dimensions: model.dimensions,
     disabled: env.mode !== 'gather',
     feedback,
-    teacherInstructions
+    teacherInstructions,
+    mathInput: model.mathInput
   }));
 }
 

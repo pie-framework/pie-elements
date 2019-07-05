@@ -6,14 +6,14 @@ exports[`Render Main Component Match Snapshot 1`] = `
     <Panel
       configuration={
         Object {
+          "dimensions": Object {
+            "label": "Text-Entry Display Size",
+            "settings": true,
+          },
           "equationEditor": Object {
             "enabled": false,
             "label": "Equation Editor",
             "settings": false,
-          },
-          "height": Object {
-            "label": "Height (px)",
-            "settings": true,
           },
           "mathInput": Object {
             "enabled": false,
@@ -35,20 +35,17 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Teacher Instructions",
             "settings": true,
           },
-          "width": Object {
-            "label": "Width (px)",
-            "settings": true,
-          },
         }
       }
       groups={
         Object {
           "Properties": Object {
             "configure.studentInstructions.enabled": false,
+            "dimensions": undefined,
+            "equationEditor": false,
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
-            "equationEditor.enabled": false,
             "mathInput": undefined,
             "multiple.enabled": false,
           },
@@ -56,10 +53,12 @@ exports[`Render Main Component Match Snapshot 1`] = `
       }
       model={
         Object {
-          "height": 100,
+          "dimensions": Object {
+            "height": 100,
+            "width": 500,
+          },
           "mathInput": false,
           "prompt": "This is the question prompt",
-          "width": 500,
         }
       }
       onChangeConfiguration={[Function]}
@@ -82,24 +81,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
         onChange={[Function]}
       />
     </Component>
-    <Component
-      disabled={false}
-      label="Width (px)"
-      max={500}
-      min={100}
-      onChange={[Function]}
-      showErrorWhenOutsideRange={true}
-      value={500}
-    />
-    <Component
-      disabled={false}
-      label="Height (px)"
-      max={500}
-      min={100}
-      onChange={[Function]}
-      showErrorWhenOutsideRange={true}
-      value={100}
-    />
     <br />
     <Component
       label="Prompt"
