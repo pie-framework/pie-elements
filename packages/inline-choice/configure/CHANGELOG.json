@@ -388,5 +388,20 @@
     "committerDate": "2019-07-03 15:57:58 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-choice-configure@1.6.3"
+  },
+  {
+    "type": "fix",
+    "scope": "template-els",
+    "subject": "fixed some ditb issues",
+    "merge": null,
+    "header": "fix(template-els): fixed some ditb issues",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9133840e48a263b2cf49ce4db9c4310743efffe0",
+    "gitTags": "",
+    "committerDate": "2019-07-04 11:45:23 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/inline-choice-configure@1.6.4"
   }
 ]
