@@ -163,5 +163,20 @@
     "committerDate": "2019-07-03 16:05:09 -0400",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@1.1.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added the possibility to use toolbarTools in order to decide if \"label\" should be displayed.",
+    "merge": null,
+    "header": "feat: Added the possibility to use toolbarTools in order to decide if \"label\" should be displayed.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "57f81f0cd1330fb374d76675dd6f933f3e131a75",
+    "gitTags": "",
+    "committerDate": "2019-07-03 22:44:41 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@1.2.0"
   }
 ]
