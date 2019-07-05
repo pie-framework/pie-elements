@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.1.3...@pie-element/graphing-configure@1.2.0) (2019-07-05)
+
+
+### Features
+
+* Added the possibility to use toolbarTools in order to decide if "label" should be displayed. ([57f81f0](https://github.com/pie-framework/pie-elements/commit/57f81f0))
+
+
+
+
+
 ## [1.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.1.2...@pie-element/graphing-configure@1.1.3) (2019-07-04)
 
 **Note:** Version bump only for package @pie-element/graphing-configure
