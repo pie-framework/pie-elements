@@ -54,5 +54,10 @@ describe('Render Main Component', () => {
       instance.changeHeight({}, 10);
       expect(onChange).toBeCalledWith(expect.objectContaining({ height: 10 }));
     });
+
+    it('changeTeacherInstructions calls onModelChanged', () => {
+      instance.changeTeacherInstructions('Teacher Instructions');
+      expect(onChange).toBeCalledWith(expect.objectContaining({ teacherInstructions: 'Teacher Instructions' }));
+    });
   });
 });

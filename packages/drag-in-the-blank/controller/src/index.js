@@ -7,14 +7,31 @@ export function model(question, session, env) {
 
     if (env.mode === 'evaluate') {
       const allCorrectResponses = getAllCorrectResponses(question);
+      const respAreaLength = Object.keys(allCorrectResponses).length;
+      let correctResponses = 0;
 
-      feedback = reduce(allCorrectResponses, (obj, correctResponse, key) => {
-        const choice = session.value[key] || '';
+      for (let i = 0; i < respAreaLength; i++) {
+        const result = reduce(allCorrectResponses, (obj, choices, key) => {
+          const answer = session.value[key] || '';
 
-        obj[key] = correctResponse.indexOf(choice) >= 0;
+          obj.feedback[key] = choices[i] === answer;
 
-        return obj;
-      }, {});
+          if (obj.feedback[key]) {
+            obj.correctResponses += 1;
+          }
+
+          return obj;
+        }, { correctResponses: 0, feedback: {} });
+
+        if (result.correctResponses > correctResponses) {
+          correctResponses = result.correctResponses;
+          feedback = result.feedback;
+        }
+
+        if (result.correctResponses === respAreaLength) {
+          break;
+        }
+      }
     }
 
     const out = {
@@ -27,6 +44,11 @@ export function model(question, session, env) {
           ? getScore(question, session) === 1
           : undefined,
     };
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      out.teacherInstructions = question.teacherInstructions;
+    } else {
+      out.teacherInstructions = null;
+    }
 
     resolve(out);
   });
@@ -35,19 +57,31 @@ export function model(question, session, env) {
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.correctResponse).length;
   const allCorrectResponses = getAllCorrectResponses(config);
-  const correctCount = reduce(allCorrectResponses, (total, correctResponse, key) => {
-    const choice = session.value[key] || '';
+  let correctCount = 0;
 
-    if (correctResponse.indexOf(choice) >= 0) {
-      return total;
+  for (let i = 0; i < maxScore; i++) {
+    const result = reduce(allCorrectResponses, (total, choices, key) => {
+      const answer = session.value[key] || '';
+
+      if (choices[i] === answer) {
+        return total;
+      }
+
+      return total - 1;
+    }, maxScore);
+
+    if (result > correctCount) {
+      correctCount = result;
     }
 
-    return total - 1;
-  }, maxScore);
+    if (result === maxScore) {
+      break;
+    }
+  }
 
   const str = (correctCount / maxScore).toFixed(2);
 
-  return parseFloat(str, 10);
+  return parseFloat(str);
 };
 
 /**

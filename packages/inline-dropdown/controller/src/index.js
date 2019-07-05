@@ -1,8 +1,8 @@
 import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import find from 'lodash/find';
-import { partialScoring } from '@pie-lib/controller-utils';
+
+import { getAllCorrectResponses } from './utils';
 
 const prepareChoice = () => (key, choice) => {
   return {
@@ -11,18 +11,8 @@ const prepareChoice = () => (key, choice) => {
   };
 };
 
-const getFeedback = (answers, alternateResponses, choices, key) => {
-  const correctAnswers = (alternateResponses && alternateResponses[key]) || [];
-
-  choices.forEach(choice => {
-    if (choice.correct) {
-      correctAnswers.push(choice.value);
-    }
-  });
-
-  const answer = answers[key];
-
-  if (correctAnswers.indexOf(answer) >= 0) {
+const getFeedback = (correct) => {
+  if (correct) {
     return 'correct';
   }
 
@@ -42,22 +32,54 @@ export function model(question, session, env) {
 
       return obj;
     }, {});
-    const feedback = env.mode === 'evaluate' ? reduce(question.choices, (obj, area, key) => {
-      obj[key] = getFeedback(session.value, question.alternateResponse, area, key);
 
-      return obj;
-    }, {}) : {};
+    let feedback = {};
+
+    if (env.mode === 'evaluate') {
+      const allCorrectResponses = getAllCorrectResponses(question);
+      const respAreaLength = Object.keys(allCorrectResponses).length;
+      let correctResponses = 0;
+
+      for (let i = 0; i < respAreaLength; i++) {
+        const result = reduce(allCorrectResponses, (obj, choices, key) => {
+          const answer = session.value[key] || '';
+          const correctChoice = choices[i] || '';
+          const isCorrect = correctChoice === answer;
+
+          obj.feedback[key] = getFeedback(isCorrect);
+
+          if (isCorrect) {
+            obj.correctResponses += 1;
+          }
+
+          return obj;
+        }, { correctResponses: 0, feedback: {} });
+
+        if (result.correctResponses > correctResponses) {
+          correctResponses = result.correctResponses;
+          feedback = result.feedback;
+        }
+
+        if (result.correctResponses === respAreaLength) {
+          break;
+        }
+      }
+    }
 
     if (!question.lockChoiceOrder) {
-      // eslint-disable-next-line no-console
-      console.error(
-        '!!! Warning - shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices'
-      );
+      // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
+
       choices = reduce(question.choices, (obj, area, key) => {
         obj[key] = shuffle(area);
 
         return obj;
       }, {});
+    }
+
+    let teacherInstructions = null;
+
+    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      teacherInstructions = question.teacherInstructions;
     }
 
     const out = {
@@ -73,34 +95,42 @@ export function model(question, session, env) {
         env.mode === 'evaluate'
           ? getScore(question, session) === 1
           : undefined,
+      teacherInstructions
     };
 
     resolve(out);
   });
 }
 
-const isCorrect = c => c.correct === true;
-
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
+  const allCorrectResponses = getAllCorrectResponses(config);
+  let correctCount = 0;
 
-  const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key] || '';
-    const correctChoice = find(respArea, c => isCorrect(c));
-    const correctAlternate = config.alternateResponse &&
-      config.alternateResponse[key] &&
-      find(config.alternateResponse[key], id => id === chosenValue);
+  for (let i = 0; i < maxScore; i++) {
+    const result = reduce(allCorrectResponses, (total, choices, key) => {
+      const answer = session.value[key] || '';
+      const correctChoice = choices[i] || '';
 
-    if (correctChoice.value !== chosenValue && !correctAlternate) {
+      if (correctChoice === answer) {
+        return total;
+      }
+
       return total - 1;
+    }, maxScore);
+
+    if (result > correctCount) {
+      correctCount = result;
     }
 
-    return total;
-  }, maxScore);
+    if (result === maxScore) {
+      break;
+    }
+  }
 
   const str = (correctCount / maxScore).toFixed(2);
 
-  return parseFloat(str, 10);
+  return parseFloat(str);
 };
 
 /**
@@ -115,9 +145,9 @@ const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session, env) {
+export function outcome(model, session) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env, false);
+    const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });

@@ -202,6 +202,18 @@ describe('Main', () => {
       });
     });
 
+    describe('onTeacherInstructionsChanged', () => {
+      it('changes teacher instructions', () => {
+        w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
+
+        expect(onModelChanged).toBeCalledWith({
+            ...initialModel,
+            teacherInstructions: 'New Teacher Instructions'
+          }
+        );
+      });
+    });
+
     describe('onModelChanged', () => {
       it('changes choice and makes incorrect all other choices', () => {
         w.instance().onModelChanged({

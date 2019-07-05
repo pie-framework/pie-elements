@@ -1,0 +1,21 @@
+{
+  "name": "@pie-element/graphing",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "1.1.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/graphing": "^2.2.3"
+  },
+  "pie": {
+    "element": "@pie-ui/graphing"
+  },
+  "author": "",
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+}

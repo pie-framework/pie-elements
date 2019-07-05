@@ -1,5 +1,5 @@
+import cloneDeep from 'lodash/cloneDeep';
 import reduce from 'lodash/reduce';
-import find from 'lodash/find';
 
 export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) => {
   return reduce(correctResponse || {}, (obj, val, key) => {
@@ -8,7 +8,7 @@ export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) 
     if (alternateResponses && alternateResponses[key]) {
       obj[key] = [
         ...obj[key],
-        ...alternateResponses[key]
+        ...cloneDeep(alternateResponses[key])
       ];
     }
 

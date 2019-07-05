@@ -34,6 +34,11 @@ export default {
       settings: true,
       label: 'Rationale',
       enabled: false
+    },
+    teacherInstructions: {
+      settings: true,
+      label: 'Teacher Instructions',
+      enabled: true
     }
   }
 };

@@ -76,6 +76,13 @@ export default class DrawableResponseConfigure extends HTMLElement {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    this.onModelChanged({
+      ...this._model,
+      teacherInstructions
+    });
+  };
+
   onUpdateImageDimension = (dimensions) => {
     const { _model } = this;
     _model.imageDimensions = dimensions;
@@ -111,7 +118,8 @@ export default class DrawableResponseConfigure extends HTMLElement {
       onModelChangedByConfig: this.onModelChanged,
       onPromptChanged: this.onPromptChanged,
       onRationaleChanged: this.onRationaleChanged,
-      onUpdateImageDimension: this.onUpdateImageDimension
+      onUpdateImageDimension: this.onUpdateImageDimension,
+      onTeacherInstructionsChanged: this.onTeacherInstructionsChanged
     });
     ReactDOM.render(element, this);
   }

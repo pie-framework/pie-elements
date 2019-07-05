@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/hotspot",
-  "version": "2.3.1",
+  "version": "2.6.1",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/hotspot": "^1.2.2"
+    "@pie-ui/hotspot": "^1.2.3"
   },
   "pie": {
     "element": "@pie-ui/hotspot"

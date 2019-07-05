@@ -84,6 +84,14 @@ export class Design extends React.Component {
     onModelChanged(update);
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    const { onModelChanged, model } = this.props;
+    const update = cloneDeep(model);
+
+    update.teacherInstructions = teacherInstructions;
+    onModelChanged(update);
+  };
+
   onRationaleChanged = rationale => {
     const { onModelChanged, model } = this.props;
 
@@ -145,6 +153,18 @@ export class Design extends React.Component {
         }
       >
         <div className={classes.container}>
+          {teacherInstructions.enabled && (
+            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.teacherInstructions || ''}
+                onChange={this.onTeacherInstructionsChanged}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
+
           <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
             <EditableHtml
               className={classes.prompt}

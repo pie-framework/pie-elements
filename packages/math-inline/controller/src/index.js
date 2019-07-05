@@ -6,9 +6,16 @@ import { ResponseTypes } from './utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:math-inline:controller');
+const decimalRegex = /\.|,/g;
+const decimalCommaRegex = /,/g;
+const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
 
 function trimSpaces(str = '') {
   return str.replace(/\\ /g, '').replace(/ /g, '');
+}
+
+function containsDecimal(expression = '') {
+  return expression.match(decimalRegex);
 }
 
 const getResponseCorrectness = (model, answerItem) => {
@@ -48,7 +55,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
   if (isAdvanced) {
     correctResponseItem.forEach(correctResponse => {
-
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates).map(
           alternateId => correctResponse.alternates[alternateId]
@@ -57,22 +63,50 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
       if (correctResponse.validation === 'literal') {
         for (let i = 0; i < acceptedValues.length; i++) {
+          let answerValueToUse = answerItem;
+          let acceptedValueToUse = acceptedValues[i];
+
+          if (correctResponse.allowDecimals) {
+            if (
+              containsDecimal(answerValueToUse) &&
+              decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+            ) {
+              answerValueToUse = answerValueToUse.replace(
+                decimalCommaRegex,
+                ''
+              );
+            }
+
+            if (
+              containsDecimal(acceptedValueToUse) &&
+              decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+            ) {
+              acceptedValueToUse = acceptedValueToUse.replace(
+                decimalCommaRegex,
+                ''
+              );
+            }
+          }
+
           if (correctResponse.allowSpaces) {
-            if (acceptedValues[i] === trimSpaces(answerItem) || acceptedValues[i] === answerItem) {
+            if (
+              acceptedValueToUse === trimSpaces(answerValueToUse) ||
+              acceptedValueToUse === answerValueToUse ||
+              trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
+            ) {
               answerCorrect = true;
               break;
             }
-          } else if (acceptedValues[i] === answerItem) {
+          } else if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
             break;
           }
         }
       } else {
-        answerCorrect = areValuesEqual(
-          correctResponse.answer,
-          answerItem,
-          { isLatex: true, allowDecimals: correctResponse.allowDecimals }
-        );
+        answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
+          isLatex: true,
+          allowDecimals: correctResponse.allowDecimals
+        });
       }
     });
   } else {
@@ -104,7 +138,9 @@ const getCorrectness = (question, env, session) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
-      question.responseType === ResponseTypes.advanced ? session.completeAnswer || '' : session.response
+      question.responseType === ResponseTypes.advanced
+        ? session.completeAnswer || ''
+        : session.response
     );
   }
 };
@@ -121,18 +157,14 @@ export function createDefaultModel(model = {}) {
 }
 
 export const outcome = (question, session, env) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      const correctness = getCorrectness(
-        question,
-        env,
-        session
-      );
+      const correctness = getCorrectness(question, env, session);
 
       const out = {
-        score: correctness.score,
+        score: correctness.score
       };
 
       resolve(out);
@@ -142,11 +174,7 @@ export const outcome = (question, session, env) => {
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const correctness = getCorrectness(
-      question,
-      env,
-      session
-    );
+    const correctness = getCorrectness(question, env, session);
     const correctResponse = {};
 
     const fb =
@@ -167,10 +195,15 @@ export function model(question, session, env) {
         correctResponse
       });
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      if (
+        env.role === 'instructor' &&
+        (env.mode === 'view' || env.mode === 'evaluate')
+      ) {
         out.rationale = question.rationale;
+        out.teacherInstructions = question.teacherInstructions;
       } else {
         out.rationale = null;
+        out.teacherInstructions = null;
       }
 
       log('out: ', out);

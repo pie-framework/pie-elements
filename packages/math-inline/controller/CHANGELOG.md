@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.3.0...@pie-element/math-inline-controller@2.3.1) (2019-07-02)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.2.4...@pie-element/math-inline-controller@2.3.0) (2019-07-02)
+
+
+### Bug Fixes
+
+* **math-inline:** interaction fixes, controller logic adjustment and small styling changes ([40a1dc1](https://github.com/pie-framework/pie-elements/commit/40a1dc1))
+
+
+### Features
+
+* **math-inline:** allowing decimals in response is valid for literal validation too ([4c17840](https://github.com/pie-framework/pie-elements/commit/4c17840))
+
+
+
+
+
 ## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.2.3...@pie-element/math-inline-controller@2.2.4) (2019-06-20)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

@@ -140,6 +140,17 @@ describe('index', () => {
       });
     });
 
+    describe('onTeacherInstructionsChanged', () => {
+      it('changes the teacherInstructions', () => {
+        const newTeacherInstructions = 'New Teacher Instructions';
+        el.onTeacherInstructionsChanged(newTeacherInstructions);
+
+        expect(onModelChanged).toBeCalledWith(
+          expect.objectContaining({ teacherInstructions: newTeacherInstructions }),
+        );
+      });
+    });
+
     describe('onColorChanged', () => {
       it('changes hotspot color', () => {
         el.onColorChanged('hotspotColor', 'red');

@@ -48,11 +48,14 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 'auto',
+    width: '100%',
     minWidth: '500px',
     maxWidth: '900px',
     height: 'auto',
     minHeight: '40px'
+  },
+  mathToolbar: {
+    width: '100%'
   },
   configPanel: {
     display: 'flex',
@@ -222,7 +225,8 @@ class Response extends React.Component {
     const { validation, answer, alternates, allowDecimals = false, allowSpaces } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
-      editor: classes.responseEditor
+      editor: classes.responseEditor,
+      mathToolbar: classes.mathToolbar,
     };
     const styles = {
       minHeight: `${showKeypad.openCount > 0 ? 430 : 230}px`
@@ -286,18 +290,16 @@ class Response extends React.Component {
               </Button>
             ) || <div />}
             <div className={classes.checkboxContainer}>
-              {validation === 'symbolic' && (
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Thousands Separators (Commas)"
-                  control={
-                    <Checkbox
-                      checked={allowDecimals}
-                      onChange={this.onConfigChanged('allowDecimals')}
-                    />
-                  }
-                />
-              )}
+              <FormControlLabel
+                classes={{ root: classes.configLabel }}
+                label="Allow Thousands Separators (Commas)"
+                control={
+                  <Checkbox
+                    checked={allowDecimals}
+                    onChange={this.onConfigChanged('allowDecimals')}
+                  />
+                }
+              />
               {validation === 'literal' && (
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}

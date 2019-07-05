@@ -1,3 +1,5 @@
+import escape from 'lodash/escape';
+
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
@@ -9,27 +11,13 @@ const createElementFromHTML = htmlString => {
 export const processMarkup = markup => {
   const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   const slateMarkup = createElementFromHTML(newMarkup);
-  const choices = {};
   let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
-    let innerHTML = s.innerHTML && s.innerHTML.replace(/&nbsp;/g, ' ').trim();
-
-    if (innerHTML) {
-      innerHTML = '';
-    }
-
-    choices[index] = [{
-      label: innerHTML,
-      id: '0'
-    }];
     s.replaceWith(` {{${index++}}} `);
   });
 
-  return {
-    markup: slateMarkup.innerHTML,
-    choices: choices
-  };
+  return slateMarkup.innerHTML;
 };
 
 const REGEX = /\{\{(\d+)\}\}/g;
@@ -44,6 +32,6 @@ export const createSlateMarkup = (markup, choices) => {
   return newMarkup.replace(REGEX, (match, g) => {
     const label = choices[g][0].label || '';
 
-    return `<span data-type="explicit_constructed_response">${label}</span>`;
+    return `<span data-type="explicit_constructed_response" data-index="${g}" data-value="${escape(label)}"></span>`;
   });
 };

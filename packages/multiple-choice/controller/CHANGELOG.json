@@ -253,5 +253,20 @@
     "committerDate": "2019-05-09 16:57:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@1.6.0"
+  },
+  {
+    "type": "chore",
+    "scope": null,
+    "subject": "downgrade console.error calls to TODO (#261)",
+    "merge": null,
+    "header": "chore: downgrade console.error calls to TODO (#261)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "623e43fb29db0f2dc3c88a8711476689ea8e3969",
+    "gitTags": "",
+    "committerDate": "2019-07-01 18:02:20 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@1.6.3"
   }
 ]

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "2.2.1",
+  "version": "2.4.3",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -10,7 +10,7 @@
     "element": "@pie-ui/ebsr"
   },
   "dependencies": {
-    "@pie-ui/ebsr": "^1.1.21"
+    "@pie-ui/ebsr": "^1.1.31"
   },
   "author": "pie framework developers",
   "license": "ISC"

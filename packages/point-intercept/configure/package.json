@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/point-intercept-configure",
   "private": true,
-  "version": "2.1.1",
+  "version": "2.3.2",
   "description": "",
   "main": "lib/index.js",
   "author": "",
@@ -11,7 +11,7 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/charting": "^2.3.2",
     "@pie-lib/charting-config": "^0.3.0",
-    "@pie-lib/config-ui": "^10.7.0",
+    "@pie-lib/config-ui": "^10.7.7",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
