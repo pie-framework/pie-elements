@@ -64,7 +64,12 @@ export const BlankContent = withStyles(theme => ({
           color: '#9B9B9B',
           zIndex: 2
         }}
-        onMouseDown={onRemoveChoice}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          onRemoveChoice(e);
+        }}
       />
     </div>
   );

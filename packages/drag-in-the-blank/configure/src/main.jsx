@@ -132,7 +132,10 @@ export class Main extends React.Component {
   };
 
   changePosition = position => {
-    this.props.onModelChanged({ choicesPosition: position.value });
+    this.props.onModelChanged({
+      ...this.props.model,
+      choicesPosition: position.value
+    });
 
     this.setState({ anchorEl: null });
   };
