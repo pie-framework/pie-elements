@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.9.3...@pie-element/text-entry@3.9.4) (2019-07-04)
+
+
+### Bug Fixes
+
+* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
+
+
+
+
+
+## [3.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.9.2...@pie-element/text-entry@3.9.3) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
 ## [3.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.9.1...@pie-element/text-entry@3.9.2) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/text-entry

@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/function-entry-configure",
   "private": true,
-  "version": "2.5.2",
+  "version": "2.5.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {

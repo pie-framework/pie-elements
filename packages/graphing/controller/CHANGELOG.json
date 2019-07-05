@@ -148,5 +148,20 @@
     "committerDate": "2019-06-06 16:40:08 +0300",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@1.1.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e34547d6fdd4ff27a1ed15789d52d294b4630c91",
+    "gitTags": " (develop)",
+    "committerDate": "2019-07-03 16:05:09 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@1.1.2"
   }
 ]
