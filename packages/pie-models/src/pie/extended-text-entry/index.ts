@@ -20,10 +20,9 @@ interface Dimensions {
 }
 
 /**
- * NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
+ * NOTE: studentInstructions & multipleParts
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
- * NOTE2: mathInput does not have a functionality as well
  */
 
 /**
@@ -31,8 +30,13 @@ interface Dimensions {
 * @additionalProperties false
 */
 export interface ExtendedTextEntryPie extends PieModel {
+  /**
+   * Dimensions the editor should take
+   */
+  dimensions: Dimensions;
+
   /** Indicates if equation editor is enabled */
-  equationEditor?: boolean;
+  equationEditor?: 'everything' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
@@ -54,11 +58,6 @@ export interface ExtendedTextEntryPie extends PieModel {
 
   /** Indicates if teacher instructions are enabled */
   teacherInstructions?: boolean;
-
-  /**
-   * Dimensions the editor should take
-   */
-  dimensions: Dimensions;
 }
 
 /**

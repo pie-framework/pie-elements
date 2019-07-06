@@ -27,13 +27,33 @@ export async function model(model, session, env) {
     teacherInstructions = model.teacherInstructions;
   }
 
+  let equationEditor = model.equationEditor || 'everything';
+
+  switch (model.equationEditor) {
+    case 'Grade 1 - 2':
+      equationEditor = 1;
+      break;
+    case 'Grade 3 - 5':
+      equationEditor = 3;
+      break;
+    case 'Grade 6 - 7':
+      equationEditor = 6;
+      break;
+    case 'Grade 8 - HS':
+      equationEditor = 8;
+      break;
+    default:
+      break;
+  }
+
   return fb.then(feedback => ({
     prompt: model.prompt,
     dimensions: model.dimensions,
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
-    mathInput: model.mathInput
+    mathInput: model.mathInput,
+    equationEditor
   }));
 }
 

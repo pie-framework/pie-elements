@@ -1921,6 +1921,17 @@
     react-dnd "^7.0.2"
     react-dnd-html5-backend "^7.0.2"
 
+"@pie-lib/drag@^1.1.19":
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.19.tgz#cb7955f5ecf7c92b393d742c0715e02929a5aed9"
+  integrity sha512-7m4O6qnwIwcXO7X2x85KPuSUz1qGEREenZJuqExbvZTD1xH4W79Ds2rcZ9+3L13bks0oNZ4XP+hMYKdvIJqtAA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    react-dnd "^7.0.2"
+    react-dnd-html5-backend "^7.0.2"
+
 "@pie-lib/editable-html@^7.2.0", "@pie-lib/editable-html@^7.3.2", "@pie-lib/editable-html@^7.7.3", "@pie-lib/editable-html@^7.7.8":
   version "7.7.8"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.7.8.tgz#488c65c32f4e8fdf6f912db96cc2608282242109"
@@ -1932,6 +1943,70 @@
     "@pie-lib/drag" "^1.1.18"
     "@pie-lib/math-rendering" "^1.3.2"
     "@pie-lib/math-toolbar" "^1.4.3"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.8.0":
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.8.0.tgz#63d2dbff8e7825fcf489ccba4cf75083b3cf19a2"
+  integrity sha512-b3TiyOZOfVrEDOfx7JR3LrmlU/DfHMVZYj+TXMU43/EPXOgLon2O66STmSsI6ulANS5Q709rkskawZ7QHaEuzQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.19"
+    "@pie-lib/math-rendering" "^1.3.3"
+    "@pie-lib/math-toolbar" "^1.4.4"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.9.0":
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.9.0.tgz#1c51c37acd164fe31574b102f6139bc7f3815f96"
+  integrity sha512-bR4I/AdbpwRc3pD/LD5M4zRlFGppbJli7vJ6+9ZSeww67P/6vYyMB4FsOaTiIFWODqjwe62B8ny+m7twJ6lutg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.19"
+    "@pie-lib/math-rendering" "^1.3.3"
+    "@pie-lib/math-toolbar" "^1.4.4"
     change-case "^3.0.2"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -2055,10 +2130,31 @@
     lodash "^4.17.11"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.3.tgz#afaee5f0635f1f979c49ff495e9c31bab59489b2"
+  integrity sha512-0jucQh7fGfkiaqo+mS87clG8f7wFaWYg9f6pX5YuHk+sBgxuJSfMv4kvpEpYHR2ScY7kWlAK2HgUBwZe2X3kag==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^0.10.3"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-rendering@^1.0.0", "@pie-lib/math-rendering@^1.2.1", "@pie-lib/math-rendering@^1.2.9", "@pie-lib/math-rendering@^1.3.1", "@pie-lib/math-rendering@^1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-1.3.2.tgz#8b45ad2613cf658b1f88cc24e26ee5d2e62f6882"
   integrity sha512-z1sf8VOr+g6+7IvcuIjCE3CaxNTWVhNnUaLzYWfqTgL9C+6+IB+s8us0X/h0qqHyoqVeWELp/RzSm+MUp0CIew==
+  dependencies:
+    debug "^4.1.1"
+    mathjax3 "^3.0.0-beta.4"
+    prop-types "^15.6.2"
+
+"@pie-lib/math-rendering@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-1.3.3.tgz#c8ab8669907cf70679e184e030e4d1d60a0d9dfe"
+  integrity sha512-9W5bmfGDOs2zPZaKaMLAeXvd1FJnNe7ep92te0Cg/E54VW79vqDZbiFS/RTDwUTaCYWOtJjHrEJk3odVXlLzWQ==
   dependencies:
     debug "^4.1.1"
     mathjax3 "^3.0.0-beta.4"
@@ -2072,6 +2168,18 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-input" "^6.3.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+
+"@pie-lib/math-toolbar@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.4.4.tgz#5acda6dd0007e811b8fc3f323f7c930e3fb2f060"
+  integrity sha512-2KF75Noq97FTkmU3YM5Ykn2+VR2SnFouTuVka2JE+m9JHcdzKoeIlV0xNhHX7b01bo4mu7pjzUeD5Nh1bT0odg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.3.3"
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
@@ -2274,15 +2382,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^2.5.10":
-  version "2.5.10"
-  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-2.5.10.tgz#968b78e51b3d24d79ccd679ec7bf62c95d2930c6"
-  integrity sha512-2Qz7t/UNsxzV2jFXQNLTzKBxkipBhCH+knxj9ADOYRh/wtlywjiDKwo4PgusAWeyDfkAimqECKgdpB7rV9h+Iw==
+"@pie-ui/extended-text-entry@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.0.0.tgz#2be2d5af849654d0fc82f9506e8604cd8a1f0438"
+  integrity sha512-KQ1INdB38nwAVFgcwcF7fv4VtnUKRVho3xH2z8ityS7RTNFo+06cRNnX64o/lILmW+1DeRv1IkmOTySI9rAGFQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/editable-html" "^7.7.8"
+    "@pie-lib/editable-html" "^7.9.0"
     "@pie-lib/render-ui" "^4.3.1"
     debug "^4.1.1"
     lodash.throttle "^4.1.1"

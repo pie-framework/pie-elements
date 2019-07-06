@@ -71,7 +71,8 @@ export class Main extends React.Component {
       teacherInstructions = {},
       studentInstructions,
       mathInput,
-      dimensions
+      dimensions,
+      equationEditor
     } = configuration;
 
     return (
@@ -107,7 +108,7 @@ export class Main extends React.Component {
                     max: 500
                   }
                 }),
-                equationEditor: model.mathInput && dropdown('Equation Editor', [
+                equationEditor: equationEditor.enabled && model.mathInput && dropdown(equationEditor.label, [
                   'Grade 1 - 2',
                   'Grade 3 - 5',
                   'Grade 6 - 7',

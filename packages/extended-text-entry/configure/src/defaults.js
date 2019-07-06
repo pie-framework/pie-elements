@@ -6,6 +6,7 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
+    equationEditor: 'everything'
   },
   configuration: {
     dimensions: {
@@ -15,7 +16,7 @@ export default {
     equationEditor: {
       settings: false,
       label: 'Equation Editor',
-      enabled: false,
+      enabled: true,
     },
     mathInput: {
       settings: true,
