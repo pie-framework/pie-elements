@@ -1,5 +1,4 @@
-NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
-scoringType, studentInstructions, teacherInstructions
+NOTE: There's no functionality described for studentInstructions
 so there's no implementation (they are only added in model)
 Model Object for @pie-elements/graphing
 
@@ -175,6 +174,14 @@ Indicates if teacher instructions are enabled
 # `title` (string)
 
 Indicates graph title
+
+# `toolbarTools` (array)
+
+Indicates the tools that have to be displayed in toolbar
+
+Additional restrictions:
+
+* Minimum items: `1`
 
 # `id` (string, required)
 
