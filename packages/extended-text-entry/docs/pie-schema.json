@@ -1,11 +1,37 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nNOTE2: mathInput does not have a functionality as well\nModel for the @pie-elements/extended-text-entry Interaction",
+  "description": "NOTE: studentInstructions & multipleParts\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/extended-text-entry Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "dimensions": {
+      "title": "Dimensions",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "height"
+        }
+      }
+    },
     "equationEditor": {
       "description": "Indicates if equation editor is enabled",
-      "type": "boolean",
+      "enum": [
+        "Grade 1 - 2",
+        "Grade 3 - 5",
+        "Grade 6 - 7",
+        "Grade 8 - HS",
+        "advanced-algebra",
+        "everything",
+        "geometry",
+        "statistics"
+      ],
+      "type": "string",
       "title": "equationEditor"
     },
     "feedback": {
@@ -57,22 +83,6 @@
       "type": "boolean",
       "title": "teacherInstructions"
     },
-    "dimensions": {
-      "title": "Dimensions",
-      "type": "object",
-      "properties": {
-        "width": {
-          "description": "Width the editor should take. USE CSS-style definition.",
-          "type": "string",
-          "title": "width"
-        },
-        "height": {
-          "description": "Height the editor should take. USE CSS-style definition.",
-          "type": "string",
-          "title": "height"
-        }
-      }
-    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -111,6 +121,22 @@
         }
       }
     },
+    "Dimensions": {
+      "title": "Dimensions",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height the editor should take. USE CSS-style definition.",
+          "type": "string",
+          "title": "height"
+        }
+      }
+    },
     "DefaultFeedbackType": {
       "title": "DefaultFeedbackType",
       "type": "object",
@@ -133,22 +159,6 @@
       "required": [
         "type"
       ]
-    },
-    "Dimensions": {
-      "title": "Dimensions",
-      "type": "object",
-      "properties": {
-        "width": {
-          "description": "Width the editor should take. USE CSS-style definition.",
-          "type": "string",
-          "title": "width"
-        },
-        "height": {
-          "description": "Height the editor should take. USE CSS-style definition.",
-          "type": "string",
-          "title": "height"
-        }
-      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
