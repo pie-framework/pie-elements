@@ -268,5 +268,20 @@
     "committerDate": "2019-07-03 22:44:41 -0400",
     "isTagged": true,
     "tag": "@pie-element/graphing@1.2.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8d0ef794ac40e1051fe9cd6f196edc7bd009f0ad",
+    "gitTags": " (develop)",
+    "committerDate": "2019-07-05 23:25:06 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@1.2.1"
   }
 ]
