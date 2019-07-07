@@ -688,5 +688,20 @@
     "committerDate": "2019-07-07 14:16:34 -0400",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.4.6"
+  },
+  {
+    "type": "chore",
+    "scope": "config-ui",
+    "subject": "bumped dependent packages",
+    "merge": null,
+    "header": "chore(config-ui): bumped dependent packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "645756c242868cf21e36a73227b355affb5f957a",
+    "gitTags": "",
+    "committerDate": "2019-07-07 15:44:44 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.4.7"
   }
 ]
