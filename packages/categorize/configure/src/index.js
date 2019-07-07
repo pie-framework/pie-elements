@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent
 } from '@pie-framework/pie-configure-events';
+
+import Main from './main';
 
 import defaults from './defaults';
 
@@ -13,6 +14,7 @@ export default class CategorizeConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults.model,
     ...model,
+    allowFeedback: defaults.configuration.feedback.enabled
   });
 
   constructor() {
@@ -40,6 +42,13 @@ export default class CategorizeConfigure extends HTMLElement {
 
   onConfigurationChanged(c) {
     this._configuration = c;
+
+    if (this._model) {
+      this._model.allowFeedback = (c.feedback || {}).enabled;
+
+      this.onModelChanged(this._model);
+    }
+
     this.render();
   }
 

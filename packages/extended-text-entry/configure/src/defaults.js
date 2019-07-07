@@ -11,6 +11,11 @@ export default {
       label: 'Equation Editor',
       enabled: false,
     },
+    feedback: {
+      settings: true,
+      label: 'Feedback',
+      enabled: true
+    },
     height: {
       settings: true,
       label: 'Height (px)',

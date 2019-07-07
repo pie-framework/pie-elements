@@ -72,6 +72,7 @@ export class Main extends React.Component {
     const {
       equationEditor,
       multiple,
+      feedback,
       teacherInstructions = {},
       studentInstructions,
       mathInput,
@@ -94,6 +95,7 @@ export class Main extends React.Component {
                 toggle(equationEditor.label, true),
                 'multiple.enabled': multiple.settings &&
                 toggle(multiple.label, true),
+                'feedback.enabled': feedback.settings && toggle(feedback.label, true),
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -152,15 +154,21 @@ export class Main extends React.Component {
             <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />
           </InputContainer>
 
-          <Typography className={classes.header} variant="subheading">
-            Feedback
-          </Typography>
+          {
+            feedback.enabled && (
+              <React.Fragment>
+                <Typography className={classes.header} variant="subheading">
+                  Feedback
+                </Typography>
 
-          <FeedbackSelector
-            label="When submitted, show"
-            feedback={model.feedback || defaultFeedback}
-            onChange={this.changeFeedback}
-          />
+                <FeedbackSelector
+                  label="When submitted, show"
+                  feedback={model.feedback || defaultFeedback}
+                  onChange={this.changeFeedback}
+                />
+              </React.Fragment>
+            )
+          }
         </div>
       </layout.ConfigLayout>
     );

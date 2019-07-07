@@ -24,6 +24,11 @@ export default {
     partialScoring: true,
   },
   configuration: {
+    feedback: {
+      settings: true,
+      label: 'Feedback',
+      enabled: true
+    },
     lockChoiceOrder: {
       settings: false,
       label: 'Lock Choice Order'

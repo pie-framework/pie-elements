@@ -16,6 +16,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructions.enabled": undefined,
             },
             "Settings": Object {
+              "feedback.enabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,
             },
@@ -155,9 +156,6 @@ exports[`Design snapshot renders 1`] = `
           }
         }
         onModelChanged={[Function]}
-      />
-      <Component
-        onChange={[Function]}
       />
     </div>
   </ConfigLayout>

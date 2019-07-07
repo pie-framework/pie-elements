@@ -66,6 +66,7 @@ export class Configure extends React.Component {
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
+      feedback = {},
       responseType,
       teacherInstructions = {},
       studentInstructions,
@@ -87,7 +88,9 @@ export class Configure extends React.Component {
               groups={{
                 'Settings': {
                   responseType: responseType.settings &&
-                    radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced])
+                    radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
+                  'feedback.enabled': feedback.settings &&
+                    toggle(feedback.label, true)
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -130,10 +133,14 @@ export class Configure extends React.Component {
                 configuration={configuration}
                 onChange={this.onChange}
               />
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.onFeedbackChange}
-              />
+              {
+                feedback.enabled && (
+                  <FeedbackConfig
+                    feedback={model.feedback}
+                    onChange={this.onFeedbackChange}
+                  />
+                )
+              }
             </div>
           </div>
         </layout.ConfigLayout>
