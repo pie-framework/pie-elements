@@ -7,6 +7,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <Panel
         configuration={
           Object {
+            "feedback": Object {
+              "enabled": true,
+              "label": "Feedback",
+              "settings": true,
+            },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": true,
@@ -45,6 +50,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "teacherInstructions.enabled": undefined,
             },
             "Settings": Object {
+              "feedback.enabled": undefined,
               "responseType": undefined,
             },
           }
@@ -135,6 +141,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
+              "feedback": Object {
+                "enabled": true,
+                "label": "Feedback",
+                "settings": true,
+              },
               "partialScoring": Object {
                 "label": "Allow Partial Scoring",
                 "settings": true,

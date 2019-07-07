@@ -11,6 +11,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Equation Editor",
             "settings": false,
           },
+          "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
+            "settings": true,
+          },
           "height": Object {
             "label": "Height (px)",
             "settings": true,
@@ -49,6 +54,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           },
           "Settings": Object {
             "equationEditor.enabled": false,
+            "feedback.enabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
           },

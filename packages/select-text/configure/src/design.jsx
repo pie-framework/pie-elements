@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
+import debounce from 'lodash/debounce';
 import { Tokenizer } from '@pie-lib/text-select';
 import {
   InputContainer,
@@ -35,11 +36,40 @@ export class Design extends React.Component {
 
   static defaultProps = {};
 
-  changeText = event => {
+  constructor(props) {
+    super(props);
+
+    const { model } = this.props;
+
+    this.state = {
+      text: model ? model.text : ''
+    };
+  }
+
+  UNSAFE_componentWillReceiveProps(nProps) {
+    const { model } = nProps;
+
+    if (model && model.text) {
+      this.setState({
+        text: model.text
+      });
+    }
+  }
+
+  updateText = debounce(val => {
     this.apply(u => {
-      u.text = event.target.value;
+      u.text = val;
       u.tokens = [];
     });
+  }, 200);
+
+  changeText = event => {
+    const value = event.target.value;
+
+    this.setState({
+      text: value
+    });
+    this.updateText(value);
   };
 
   changeTokens = (tokens, mode) => {
@@ -102,6 +132,7 @@ export class Design extends React.Component {
   };
 
   render() {
+    const { text: textValue } = this.state;
     const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
       prompt,
@@ -132,11 +163,13 @@ export class Design extends React.Component {
             model={model}
             configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
-            onChangeConfiguration={config => onConfigurationChanged(config)}
+            onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Settings': {
                 highlightChoices: highlightChoices.settings &&
                 toggle(highlightChoices.label),
+                'feedback.enabled': feedback.settings &&
+                toggle(feedback.label, true),
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -191,7 +224,7 @@ export class Design extends React.Component {
               label={text.label}
               className={classes.input}
               multiline
-              value={model.text}
+              value={textValue}
               onChange={this.changeText}
             />
           }
@@ -256,11 +289,12 @@ export class Design extends React.Component {
             />
           }
           {
-            feedback.settings &&
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.changeFeedback}
-            />
+            feedback.enabled && (
+              <FeedbackConfig
+                feedback={model.feedback}
+                onChange={this.changeFeedback}
+              />
+            )
           }
 
         </div>
