@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
@@ -7,6 +8,7 @@ import {
   settings
 } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -95,6 +97,13 @@ export class Main extends React.Component {
   };
 
   state = {};
+
+  componentDidUpdate() {
+    // eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
 
   onModelChange = newVal => {
     this.props.onModelChanged({
