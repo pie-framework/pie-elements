@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.5.0...@pie-element/match-list@1.5.1) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.4.4...@pie-element/match-list@1.5.0) (2019-07-06)
 
 

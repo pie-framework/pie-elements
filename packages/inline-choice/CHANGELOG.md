@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.8.5...@pie-element/inline-choice@2.8.6) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
 ## [2.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.8.4...@pie-element/inline-choice@2.8.5) (2019-07-05)
 
 **Note:** Version bump only for package @pie-element/inline-choice
