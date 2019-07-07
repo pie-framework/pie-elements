@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.6...@pie-element/categorize-configure@3.4.7) (2019-07-07)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
 ## [3.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.4.5...@pie-element/categorize-configure@3.4.6) (2019-07-07)
 
 
