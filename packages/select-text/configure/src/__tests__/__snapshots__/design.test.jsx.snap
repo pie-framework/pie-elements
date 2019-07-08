@@ -11,6 +11,8 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": true,
           },
           "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
             "settings": false,
           },
           "highlightChoices": Object {
@@ -74,6 +76,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
+            "feedback.enabled": false,
             "highlightChoices": undefined,
           },
         }
@@ -83,7 +86,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "tokens": Array [],
         }
       }
-      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
@@ -132,6 +134,9 @@ exports[`design snapshot renders all items except feedback 1`] = `
       onChange={[Function]}
       title="Scoring"
     />
+    <Component
+      onChange={[Function]}
+    />
   </div>
 </ConfigLayout>
 `;
@@ -147,6 +152,8 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": true,
           },
           "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
             "settings": false,
           },
           "highlightChoices": Object {
@@ -210,6 +217,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
+            "feedback.enabled": false,
             "highlightChoices": undefined,
           },
         }
@@ -219,7 +227,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "tokens": Array [],
         }
       }
-      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }
@@ -260,6 +267,9 @@ exports[`design snapshot renders all items except the content input 1`] = `
       onChange={[Function]}
       title="Scoring"
     />
+    <Component
+      onChange={[Function]}
+    />
   </div>
 </ConfigLayout>
 `;
@@ -275,6 +285,8 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": true,
           },
           "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
             "settings": true,
           },
           "highlightChoices": Object {
@@ -338,6 +350,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
+            "feedback.enabled": undefined,
             "highlightChoices": undefined,
           },
         }
@@ -347,7 +360,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "tokens": Array [],
         }
       }
-      onChangeConfiguration={[Function]}
       onChangeModel={[Function]}
     />
   }

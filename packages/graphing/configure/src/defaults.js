@@ -15,7 +15,8 @@ export default {
       'vector',
       'line',
       'sine',
-      'parabola'
+      'parabola',
+      'label'
     ],
     answers: {
       correctAnswer: {

@@ -8,7 +8,8 @@ describe('index', () => {
         prompt: 'hi',
         choices: [],
         correctResponse: [],
-        lockChoiceOrder: true
+        lockChoiceOrder: true,
+        allowFeedback: true
       },
       o
     );

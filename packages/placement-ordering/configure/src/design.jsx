@@ -115,7 +115,9 @@ export class Design extends React.Component {
                 partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
                 lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label)
+                toggle(lockChoiceOrder.label),
+                'feedback.enabled': feedback.settings &&
+                toggle(feedback.label, true)
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -212,7 +214,7 @@ export class Design extends React.Component {
         </FormSection>
 
         {
-          feedback.settings &&
+          feedback.enabled &&
           <FeedbackConfig
             feedback={model.feedback}
             onChange={this.onFeedbackChange}

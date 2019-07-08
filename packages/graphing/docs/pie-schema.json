@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: There's no functionality described for arrows, padding, labels, graphTitle,\nscoringType, studentInstructions, teacherInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graphing",
+  "description": "NOTE: There's no functionality described for studentInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graphing",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -1631,6 +1631,48 @@
       "description": "Indicates graph title",
       "type": "string",
       "title": "title"
+    },
+    "toolbarTools": {
+      "description": "Indicates the tools that have to be displayed in toolbar",
+      "type": "array",
+      "items": [
+        {
+          "enum": [
+            "circle",
+            "label",
+            "line",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector"
+          ],
+          "type": "string"
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "enum": [
+              "circle",
+              "label",
+              "line",
+              "parabola",
+              "point",
+              "polygon",
+              "ray",
+              "segment",
+              "sine",
+              "vector"
+            ],
+            "type": "string"
+          }
+        ]
+      },
+      "title": "toolbarTools"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",

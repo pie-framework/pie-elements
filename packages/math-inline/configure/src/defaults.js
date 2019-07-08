@@ -58,6 +58,11 @@ export default {
     scoringType: 'auto',
   },
   configuration: {
+    feedback: {
+      settings: true,
+      label: 'Feedback',
+      enabled: true
+    },
     responseType: {
       settings: true,
       label: 'Response type'

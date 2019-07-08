@@ -3,7 +3,7 @@ import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { partialScoring } from '@pie-lib/controller-utils';
 
-const prepareChoice = (env, defaultFeedback) => choice => {
+const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
     value: choice.value
@@ -15,7 +15,7 @@ const prepareChoice = (env, defaultFeedback) => choice => {
     out.rationale = null;
   }
 
-  if (env.mode === 'evaluate') {
+  if (env.mode === 'evaluate' && model.allowFeedback) {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
@@ -46,7 +46,7 @@ export function model(question, session, env) {
       question.defaultFeedback
     );
     let choices = question.choices.map(
-      prepareChoice(env, defaultFeedback)
+      prepareChoice(question, env, defaultFeedback)
     );
 
     if (!question.lockChoiceOrder) {

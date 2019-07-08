@@ -118,6 +118,7 @@ exports[`Configure renders snapshot 1`] = `
             "line",
             "sine",
             "parabola",
+            "label",
           ],
         }
       }
@@ -197,6 +198,7 @@ exports[`Configure renders snapshot 1`] = `
             "line",
             "sine",
             "parabola",
+            "label",
           ],
         }
       }
@@ -294,6 +296,7 @@ exports[`Configure renders snapshot 1`] = `
             "line",
             "sine",
             "parabola",
+            "label",
           ],
         }
       }
@@ -347,7 +350,15 @@ exports[`CorrectResponse renders snapshot 1`] = `
   Define Correct Response
   <div>
     GRAPHING TOOLS
-    <div />
+    <div>
+      <div
+        className=""
+        key="label"
+        onClick={[Function]}
+      >
+        LABEL
+      </div>
+    </div>
   </div>
   <div>
     <div
@@ -370,6 +381,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
             "step": 1,
           }
         }
+        hideLabel={false}
         labels={null}
         marks={Array []}
         onChangeMarks={[Function]}
