@@ -20,6 +20,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
             "settings": true,
           },
           "lockChoiceOrder": Object {
@@ -86,6 +88,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
+            "feedback.enabled": undefined,
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
@@ -189,6 +192,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
             "settings": true,
           },
           "lockChoiceOrder": Object {
@@ -255,6 +260,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
+            "feedback.enabled": undefined,
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,

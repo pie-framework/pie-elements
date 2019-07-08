@@ -39,6 +39,8 @@ export default {
     },
     feedback: {
       settings: true,
+      label: 'Feedback',
+      enabled: true
     },
     prompt: {
       settings: true,

@@ -65,7 +65,9 @@ export default {
       label: 'Tokens'
     },
     feedback: {
-      settings: true
+      settings: true,
+      label: 'Feedback',
+      enabled: true
     },
     partialScoring: {
       settings: true,

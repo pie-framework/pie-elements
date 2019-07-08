@@ -134,7 +134,7 @@ export function model(question, session, env) {
       base.teacherInstructions = null;
     }
 
-    if (env.mode === 'evaluate') {
+    if (env.mode === 'evaluate' && question.allowFeedback) {
       base.outcomes = _.map(session.value, function(c, idx) {
         return {
           id: c,
