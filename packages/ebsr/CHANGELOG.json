@@ -708,5 +708,20 @@
     "committerDate": "2019-07-09 13:38:59 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@2.4.8"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "pass root configuration to each element",
+    "merge": null,
+    "header": "Fix: pass root configuration to each element",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "15767d580319ef773493e3814c0bd6783ed171c4",
+    "gitTags": "",
+    "committerDate": "2019-07-08 18:40:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.4.9"
   }
 ]

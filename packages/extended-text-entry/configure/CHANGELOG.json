@@ -583,5 +583,35 @@
     "committerDate": "2019-07-09 13:38:59 +0300",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-configure@3.3.8"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added a dropdown in settings panel with Equation Editor Types if mathInput is true.",
+    "merge": null,
+    "header": "feat: Added a dropdown in settings panel with Equation Editor Types if mathInput is true.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324c3d9a3b12ed9924d8d1a7e535419f1f6a9131",
+    "gitTags": "",
+    "committerDate": "2019-07-05 23:35:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@3.4.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests.",
+    "merge": null,
+    "header": "feat: Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "fd65b2294f25f3d56732f7f7e5e8c640bc518120",
+    "gitTags": "",
+    "committerDate": "2019-07-05 00:35:14 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@3.4.0"
   }
 ]
