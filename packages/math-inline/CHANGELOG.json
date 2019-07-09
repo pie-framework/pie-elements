@@ -1598,5 +1598,20 @@
     "committerDate": "2019-07-07 15:44:44 -0400",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.5.7"
+  },
+  {
+    "type": "chore",
+    "scope": "editable-html",
+    "subject": "version bumped some dependant packages",
+    "merge": null,
+    "header": "chore(editable-html): version bumped some dependant packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a4fbf3e8e7841ecae4f034328f9481a1f69ae3df",
+    "gitTags": "",
+    "committerDate": "2019-07-09 13:38:59 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.5.8"
   }
 ]
