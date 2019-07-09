@@ -18,6 +18,11 @@ export default {
       label: 'Equation Editor',
       enabled: true,
     },
+    feedback: {
+      settings: true,
+      label: 'Feedback',
+      enabled: true
+    },
     mathInput: {
       settings: true,
       label: 'Student response can include math notation',

@@ -27,7 +27,9 @@ export default {
       label: 'Enable Images',
     },
     feedback: {
-      settings: true
+      settings: true,
+      label: 'Feedback',
+      enabled: true,
     },
     headers: {
       settings: true

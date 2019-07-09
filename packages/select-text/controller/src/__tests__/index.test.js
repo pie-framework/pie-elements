@@ -75,6 +75,7 @@ describe('getCorrectness', () => {
 });
 
 const q = extras => ({
+  allowFeedback: true,
   highlightChoices: true,
   maxSelections: 10,
   tokens: [

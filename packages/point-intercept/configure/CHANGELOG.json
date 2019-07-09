@@ -588,5 +588,35 @@
     "committerDate": "2019-07-04 11:45:23 -0400",
     "isTagged": true,
     "tag": "@pie-element/point-intercept-configure@2.3.4"
+  },
+  {
+    "type": "fix",
+    "scope": "editable-html",
+    "subject": "fixed lots of stuff regarding the editable-html",
+    "merge": null,
+    "header": "fix(editable-html): fixed lots of stuff regarding the editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12c112917e0b5065ec35efdbdc276703602a6c68",
+    "gitTags": " (origin/andrei/fixes)",
+    "committerDate": "2019-07-07 14:16:34 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/point-intercept-configure@2.3.6"
+  },
+  {
+    "type": "chore",
+    "scope": "config-ui",
+    "subject": "bumped dependent packages",
+    "merge": null,
+    "header": "chore(config-ui): bumped dependent packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "645756c242868cf21e36a73227b355affb5f957a",
+    "gitTags": "",
+    "committerDate": "2019-07-07 15:44:44 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/point-intercept-configure@2.3.7"
   }
 ]

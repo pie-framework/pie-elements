@@ -178,7 +178,7 @@ export function model(question, session, env) {
     const correctResponse = {};
 
     const fb =
-      env.mode === 'evaluate'
+      env.mode === 'evaluate' && question.allowFeedback
         ? getFeedbackForCorrectness(correctness, question.feedback)
         : Promise.resolve(undefined);
 

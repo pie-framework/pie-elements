@@ -15,6 +15,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Equation Editor",
             "settings": false,
           },
+          "feedback": Object {
+            "enabled": true,
+            "label": "Feedback",
+            "settings": true,
+          },
           "mathInput": Object {
             "enabled": false,
             "label": "Student response can include math notation",
@@ -46,6 +51,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
+            "feedback.enabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
           },

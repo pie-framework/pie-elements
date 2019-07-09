@@ -238,5 +238,35 @@
     "committerDate": "2019-06-18 15:27:39 +0100",
     "isTagged": true,
     "tag": "@pie-element/match-list@1.4.2"
+  },
+  {
+    "type": "feat",
+    "scope": "rendering",
+    "subject": "updated pie-ui version",
+    "merge": null,
+    "header": "feat(rendering): updated pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "990f7a9eb140f1bc8b4155c7112e4f6dd8a896d8",
+    "gitTags": "",
+    "committerDate": "2019-07-05 23:17:25 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": "editable-html",
+    "subject": "fixed lots of stuff regarding the editable-html",
+    "merge": null,
+    "header": "fix(editable-html): fixed lots of stuff regarding the editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12c112917e0b5065ec35efdbdc276703602a6c68",
+    "gitTags": " (origin/andrei/fixes)",
+    "committerDate": "2019-07-07 14:16:34 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.5.1"
   }
 ]
