@@ -248,7 +248,6 @@ export class Main extends React.Component {
               }}
               markup={model.slateMarkup}
               onChange={this.onChange}
-              onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}
               disabled={false}
