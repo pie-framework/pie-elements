@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 import { withStyles } from '@material-ui/core/styles';
 
 class MenuItemComp extends React.Component {
@@ -72,6 +73,14 @@ const findSlateNode = key => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
+const createElementFromHTML = htmlString => {
+  const div = document.createElement('div');
+
+  div.innerHTML = (htmlString || '').trim();
+
+  return div;
+};
+
 class RespAreaToolbar extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -129,14 +138,19 @@ class RespAreaToolbar extends React.Component {
     this.setState({ respAreaMarkup });
   };
 
-  onTemporaryChange = tempValue => {
-    this.setState({ tempValue });
+  onAddChoice = () => {
+    if (this.editorRef) {
+      this.editorRef.finishEditing();
+    }
   };
 
-  onAddChoice = value => {
+  onDone = (val) => {
     const { node, onAddChoice } = this.props;
+    const onlyText = createElementFromHTML(val).textContent;
 
-    onAddChoice(node.data.get('index'), value);
+    if (!isEmpty(onlyText)) {
+      onAddChoice(node.data.get('index'), val);
+    }
   };
 
   onSelectChoice = (newValue, index) => {
@@ -156,7 +170,7 @@ class RespAreaToolbar extends React.Component {
   onRemoveChoice = (val, index) => {
     const { node, value, onToolbarDone, onRemoveChoice } = this.props;
 
-    if (_.isEqual(val, node.data.get('value'))) {
+    if (isEqual(val, node.data.get('value'))) {
       const update = { ...node.data.toJSON(), value: null };
       const change = value.change().setNodeByKey(node.key, { data: update });
 
@@ -168,7 +182,7 @@ class RespAreaToolbar extends React.Component {
 
   render() {
     const { classes, onDone, choices } = this.props;
-    const { respAreaMarkup, toolbarStyle, tempValue } = this.state;
+    const { respAreaMarkup, toolbarStyle } = this.state;
 
     if (!toolbarStyle) {
       return null;
@@ -183,6 +197,11 @@ class RespAreaToolbar extends React.Component {
       >
         <div className={classes.itemBuilder}>
           <EditableHtml
+            ref={ref => {
+              if (ref) {
+                this.editorRef = ref;
+              }
+            }}
             autoFocus={true}
             autoSave
             className={classes.respArea}
@@ -192,8 +211,7 @@ class RespAreaToolbar extends React.Component {
             }}
             markup={respAreaMarkup}
             onChange={this.onRespAreaChange}
-            onTemporaryChange={this.onTemporaryChange}
-            onDone={onDone}
+            onDone={this.onDone}
             placeholder="Add Choice"
           />
           <i
@@ -207,7 +225,7 @@ class RespAreaToolbar extends React.Component {
               transform: 'translate(0, -50%)'
             }}
             contentEditable={false}
-            onMouseDown={() => this.onAddChoice(tempValue)}
+            onMouseDown={() => this.onAddChoice()}
           >
             +
           </i>

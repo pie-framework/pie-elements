@@ -109,7 +109,7 @@ describe('Main', () => {
           choices: [
             ...initialModel.choices,
             {
-              label: 'label',
+              label: '',
               value: utils.firstAvailableIndex(initialModel.choices.map(c => c.value), 0),
               feedback: {
                 type: 'none'

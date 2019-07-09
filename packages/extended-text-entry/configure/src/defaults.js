@@ -1,24 +1,27 @@
 export default {
   model: {
-    height: 100,
+    dimensions: {
+      height: 100,
+      width: 500
+    },
     prompt: 'This is the question prompt',
     mathInput: false,
-    width: 500,
+    equationEditor: 'everything'
   },
   configuration: {
+    dimensions: {
+      settings: true,
+      label: 'Text-Entry Display Size'
+    },
     equationEditor: {
       settings: false,
       label: 'Equation Editor',
-      enabled: false,
+      enabled: true,
     },
     feedback: {
       settings: true,
       label: 'Feedback',
       enabled: true
-    },
-    height: {
-      settings: true,
-      label: 'Height (px)',
     },
     mathInput: {
       settings: true,
@@ -39,10 +42,6 @@ export default {
       settings: true,
       label: 'Teacher Instructions',
       enabled: true,
-    },
-    width: {
-      settings: true,
-      label: 'Width (px)',
     },
   }
 };

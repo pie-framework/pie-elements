@@ -231,7 +231,7 @@ export class Main extends React.Component {
   onAddChoice = () => {
     const { model } = this.props;
     model.choices.push({
-      label: 'label',
+      label: '',
       value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
       feedback: {
         type: 'none'
