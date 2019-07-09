@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  NumberTextField,
   FeedbackSelector,
   InputContainer,
   settings,
@@ -11,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
 
-const { Panel, toggle } = settings;
+const { Panel, toggle, numberFields, dropdown } = settings;
 
 const defaultFeedback = {
   type: 'default',
@@ -33,8 +32,6 @@ export class Main extends React.Component {
     this.state = {
       setDimensions: true
     };
-    this.changeWidth = this.change('width');
-    this.changeHeight = this.change('height');
   }
 
   change = key => (event, v) => {
@@ -70,14 +67,13 @@ export class Main extends React.Component {
   render() {
     const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport } = this.props;
     const {
-      equationEditor,
       multiple,
       feedback,
       teacherInstructions = {},
       studentInstructions,
       mathInput,
-      width,
-      height
+      dimensions,
+      equationEditor
     } = configuration;
 
     return (
@@ -91,8 +87,6 @@ export class Main extends React.Component {
             groups={{
               'Settings': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
-                'equationEditor.enabled': equationEditor.settings &&
-                toggle(equationEditor.label, true),
                 'multiple.enabled': multiple.settings &&
                 toggle(multiple.label, true),
                 'feedback.enabled': feedback.settings && toggle(feedback.label, true),
@@ -102,6 +96,30 @@ export class Main extends React.Component {
                 toggle(teacherInstructions.label, true),
                 'configure.studentInstructions.enabled': studentInstructions.settings &&
                 toggle(studentInstructions.label),
+                dimensions: numberFields(dimensions.label, {
+                  width: {
+                    label: 'Width (px)',
+                    suffix: 'px',
+                    min: 100,
+                    max: 500
+                  },
+                  height: {
+                    label: 'Height (px)',
+                    suffix: 'px',
+                    min: 100,
+                    max: 500
+                  }
+                }),
+                equationEditor: equationEditor.enabled && model.mathInput && dropdown(equationEditor.label, [
+                  'Grade 1 - 2',
+                  'Grade 3 - 5',
+                  'Grade 6 - 7',
+                  'Grade 8 - HS',
+                  'geometry',
+                  'advanced-algebra',
+                  'statistics',
+                  'everything'
+                ])
               },
             }}
           />
@@ -124,31 +142,6 @@ export class Main extends React.Component {
             </InputContainer>
           )}
 
-          {width.settings &&
-            <NumberTextField
-              label={width.label}
-              disabled={!this.state.setDimensions}
-              value={parseInt(model.width)}
-              min={100}
-              max={500}
-              onChange={this.changeWidth}
-              showErrorWhenOutsideRange
-              className={classes.field}
-            />
-          }
-          {
-            height.settings &&
-              <NumberTextField
-                label={height.label}
-                disabled={!this.state.setDimensions}
-                value={parseInt(model.height)}
-                min={100}
-                max={500}
-                onChange={this.changeHeight}
-                showErrorWhenOutsideRange
-                className={classes.field}
-              />
-          }
           <br />
           <InputContainer label="Prompt" className={classes.promptContainer}>
             <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />

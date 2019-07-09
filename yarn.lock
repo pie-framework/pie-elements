@@ -1860,7 +1860,7 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^10.4.2", "@pie-lib/config-ui@^10.7.15":
+"@pie-lib/config-ui@^10.4.2", "@pie-lib/config-ui@^10.7.15", "@pie-lib/config-ui@^10.7.7":
   version "10.7.15"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.7.15.tgz#51266a80fcc0507d7bd97c0b3e6e1e22c9999491"
   integrity sha512-Z6zsZTJFsB+4E43Q8KCP/oBgL4fVxezfomuJIzCg4bQHtgcAsECsoMxAlHhr2fd0q/836f7htRUtgqTuPhISJA==
