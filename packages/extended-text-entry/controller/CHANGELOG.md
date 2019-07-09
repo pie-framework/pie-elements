@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.2.5...@pie-element/extended-text-entry-controller@2.3.0) (2019-07-09)
+
+
+### Features
+
+* Added a dropdown in settings panel with Equation Editor Types if mathInput is true. ([324c3d9](https://github.com/pie-framework/pie-elements/commit/324c3d9))
+* Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests. ([fd65b22](https://github.com/pie-framework/pie-elements/commit/fd65b22))
+
+
+
+
+
 ## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@2.2.4...@pie-element/extended-text-entry-controller@2.2.5) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

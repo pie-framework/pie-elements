@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.0.3...@pie-element/image-cloze-association@1.1.0) (2019-07-09)
+
+
+### Features
+
+* Added configuration, settings panel and support for teacher instructions. ([b54170b](https://github.com/pie-framework/pie-elements/commit/b54170b))
+
+
+
+
+
 ## [1.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.0.2...@pie-element/image-cloze-association@1.0.3) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association
