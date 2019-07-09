@@ -206,7 +206,7 @@ class RespAreaToolbar extends React.Component {
             autoSave
             className={classes.respArea}
             toolbarOpts={{
-              position: 'bottom',
+              position: 'top',
               alwaysVisible: false
             }}
             markup={respAreaMarkup}
