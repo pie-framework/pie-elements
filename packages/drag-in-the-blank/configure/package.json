@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/drag-in-the-blank-configure",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "private": true,
   "main": "lib/index.js",
   "dependencies": {

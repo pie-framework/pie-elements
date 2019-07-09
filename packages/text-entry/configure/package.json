@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/text-entry-configure",
   "private": true,
-  "version": "2.6.7",
+  "version": "2.6.8",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest"
