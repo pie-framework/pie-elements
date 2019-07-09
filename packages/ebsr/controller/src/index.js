@@ -61,12 +61,12 @@ const parsePart = (part, key, session, env) => {
 };
 
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
       partA: parsePart(question.partA, 'partA', session, env),
-      partB: parsePart(question.partB, 'partB', session, env),
+      partB: parsePart(question.partB, 'partB', session, env)
     });
   });
 }
