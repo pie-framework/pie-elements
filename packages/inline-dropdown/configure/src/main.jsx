@@ -221,10 +221,6 @@ export class Main extends React.Component {
     }
   };
 
-  onTemporaryChange = tempValue => {
-    this.setState({ tempValue });
-  };
-
   onAddChoice = (index, label) => {
     const { respAreaChoices } = this.state;
 
@@ -366,7 +362,6 @@ export class Main extends React.Component {
               }}
               markup={markup}
               onChange={this.onChange}
-              onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}
               disabled={false}
