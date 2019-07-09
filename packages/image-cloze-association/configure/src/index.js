@@ -1,4 +1,4 @@
-import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
+import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,10 +19,16 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
     super();
     this._model = ImageClozeAssociationConfigure.createDefaultModel();
     this.onModelChanged = this.onModelChanged.bind(this);
+    this._configuration = sensibleDefaults.configuration;
   }
 
   set model(s) {
     this._model = ImageClozeAssociationConfigure.createDefaultModel(s);
+    this._render();
+  }
+
+  set configuration(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -43,11 +49,35 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
     this._render();
   }
 
+  onConfigurationChanged(config) {
+    this._configuration = config;
+    this._render();
+  }
+
+  /**
+   *
+   * @param {done, progress, file} handler
+   */
+  insertImage(handler) {
+    this.dispatchEvent(new InsertImageEvent(handler));
+  }
+
+  onDeleteImage(src, done) {
+    this.dispatchEvent(new DeleteImageEvent(src, done));
+  }
+
   _render() {
     log('_render');
     let element = React.createElement(Root, {
       disableSidePanel: this._disableSidePanel,
-      model: this._model
+      model: this._model,
+      configuration: this._configuration,
+      onModelChanged: this.onModelChanged.bind(this),
+      onConfigurationChanged: this.onConfigurationChanged.bind(this),
+      imageSupport: {
+        add: this.insertImage.bind(this),
+        delete: this.onDeleteImage.bind(this)
+      }
     });
     ReactDOM.render(element, this);
   }
