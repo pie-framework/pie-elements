@@ -55,6 +55,12 @@ The id of the correct response
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
 
+# `alternateResponses` (array, required)
+
+Array that contains the correct alternate responses
+
+The object is an array with all elements of the type `string`.
+
 # `enableImages` (boolean)
 
 Indicates if the choices editor can use images

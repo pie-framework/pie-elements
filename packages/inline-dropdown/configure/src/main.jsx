@@ -360,7 +360,7 @@ export class Main extends React.Component {
                   );
                 }
               }}
-              markup={markup}
+              markup={markup || ''}
               onChange={this.onChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}

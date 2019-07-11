@@ -53,6 +53,9 @@ export interface PlacementOrderingPie extends PieModel {
     /** Array of the correct responses in the correct order */
     correctResponse?: CorrectResponse[];
 
+    /** Array that contains the correct alternate responses */
+    alternateResponses: string[];
+
     /** Indicates if the choices editor can use images */
     enableImages?: boolean;
 

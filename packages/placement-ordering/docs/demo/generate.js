@@ -21,6 +21,9 @@ exports.model = (id, element) => ({
       label: 'Pear',
     },
   ],
+  alternateResponses : [
+    ['c4', 'c3', 'c2', 'c1']
+  ],
   enableImages: false,
   feedback: {
     correct: {

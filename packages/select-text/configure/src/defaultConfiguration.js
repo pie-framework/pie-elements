@@ -1,8 +1,8 @@
 const tokens = () => [
   {
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    text: '',
     start: 0,
-    end: 55,
+    end: 0,
   },
 ];
 
@@ -13,7 +13,7 @@ export default {
     maxSelections: 2,
     mode: 'sentence',
     prompt: 'Question Prompt goes here',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    text: '',
     tokens: tokens(),
     scoringType: 'auto',
   },

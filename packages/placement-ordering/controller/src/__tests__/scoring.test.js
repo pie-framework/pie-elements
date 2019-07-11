@@ -113,10 +113,14 @@ describe('pairwiseCombinationScore', () => {
 });
 
 const correctResponse = ['c1', 'c2', 'c3', 'c4'];
+const alternateResponses = [['c4', 'c3', 'c2', 'c1']];
+
 describe('score', () => {
   let baseQuestion = {
-    correctResponse: correctResponse
+    correctResponse: correctResponse,
+    alternateResponses: alternateResponses
   };
+
   describe('partial scoring', () => {
     let question = _.merge(_.cloneDeep(baseQuestion), {
       partialScoring: true
@@ -125,15 +129,26 @@ describe('score', () => {
     const assertScore = (value, expectedScore) => {
       it(`${expectedScore} for: ${value}`, () => {
         const result = score(question, { value });
+
         expect(result).toEqual(expectedScore);
       });
     };
+
+    // Main Correct Responses
     assertScore([], 0);
     assertScore(['c1'], 0);
     assertScore(['c1', 'c2'], 0.17);
     assertScore(['c1', 'c2', 'c3'], 0.5);
     assertScore(['c1', 'c2', 'c3', 'c4'], 1);
+
+    // Alternate Correct Responses
+    assertScore([], 0);
+    assertScore(['c4'], 0);
+    assertScore(['c4', 'c3'], 0.17);
+    assertScore(['c4', 'c3', 'c2'], 0.5);
+    assertScore(['c4', 'c3', 'c2', 'c1'], 1);
   });
+
 });
 describe('flattenCorrect', () => {
   describe('correctResponse is an array of identifiers', () => {

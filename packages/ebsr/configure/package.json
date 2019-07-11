@@ -8,7 +8,7 @@
   "dependencies": {
     "@pie-element/multiple-choice": "^3.4.9",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.7.15",
+    "@pie-lib/config-ui": "^10.7.16",
     "lodash": "^4.17.10"
   },
   "license": "ISC"
