@@ -180,8 +180,16 @@ class RespAreaToolbar extends React.Component {
     onRemoveChoice(index);
   };
 
+  onKeyDown = event => {
+    if (event.key === 'Enter') {
+      this.onAddChoice();
+      // Cancelling event
+      return false;
+    }
+  };
+
   render() {
-    const { classes, onDone, choices } = this.props;
+    const { classes, choices } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
     if (!toolbarStyle) {
@@ -207,9 +215,11 @@ class RespAreaToolbar extends React.Component {
             className={classes.respArea}
             toolbarOpts={{
               position: 'top',
-              alwaysVisible: false
+              alwaysVisible: false,
+              showDone: false
             }}
             markup={respAreaMarkup}
+            onKeyDown={this.onKeyDown}
             onChange={this.onRespAreaChange}
             onDone={this.onDone}
             placeholder="Add Choice"

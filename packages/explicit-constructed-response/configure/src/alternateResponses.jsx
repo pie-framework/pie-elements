@@ -3,26 +3,12 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import { withStyles } from '@material-ui/core/styles';
+
 import AlternateSection from './alternateSection';
-
-const styles = theme => ({
-});
-
-const prepareVal = html => {
-  const tmp = document.createElement('DIV');
-
-  tmp.innerHTML = html;
-
-  const value = tmp.textContent || tmp.innerText || '';
-
-  return value.trim();
-};
 
 export class AlternateResponses extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired
   };
 
@@ -61,7 +47,7 @@ export class AlternateResponses extends React.Component {
       if (c.length === 1 && !valueKey) {
         arr.push({
           label: c[0].label,
-          id: key
+          value: key
         });
       }
 
@@ -78,15 +64,10 @@ export class AlternateResponses extends React.Component {
     const { choices } = this.state;
     const sectionChoices = (choices[key] || []);
 
-    const isNew = !sectionChoices.find(c => c.id === choice.id);
+    const isNew = !sectionChoices.find(c => c.value === choice.value);
 
     const newChoices = sectionChoices.reduce((arr, c) => {
-      const newVal = c.id === choice.id ? choice : c;
-      const isEmpty = newVal && prepareVal(newVal.label) === '';
-
-      if (isEmpty) {
-        return arr;
-      }
+      const newVal = c.value === choice.value ? choice : c;
 
       arr.push(newVal);
 
@@ -100,6 +81,27 @@ export class AlternateResponses extends React.Component {
     onChange({
       ...choices,
       [key]: newChoices
+    });
+  };
+
+  onChoiceRemoved = (value, section) => {
+    const { onChange } = this.props;
+    const { choices } = this.state;
+    const sectionChoices = (choices[section] || []);
+
+    const newChoices = sectionChoices.reduce((arr, c) => {
+      if (c.value === value) {
+        return arr;
+      }
+
+      arr.push(c);
+
+      return arr;
+    }, []);
+
+    onChange({
+      ...choices,
+      [section]: newChoices
     });
   };
 
@@ -122,7 +124,7 @@ export class AlternateResponses extends React.Component {
             ...choices[key],
             {
               label: '',
-              id: '1'
+              value: '1'
             }
           ]
         },
@@ -135,11 +137,10 @@ export class AlternateResponses extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { choices } = this.state;
 
     return (
-      <div className={classes.design}>
+      <div>
         {map(choices, (c, key) => {
           if (c.length > 1) {
             const selected = this.state.values[key];
@@ -147,9 +148,10 @@ export class AlternateResponses extends React.Component {
             return (
               <AlternateSection
                 key={key}
-                value={selected && selected.id}
+                value={selected && selected.value}
                 onSelect={choice => this.onSectionSelect(choice, key)}
                 choiceChanged={choice => this.onChoiceChanged(choice, key)}
+                choiceRemoved={value => this.onChoiceRemoved(value, key)}
                 selectChoices={[selected]}
                 choices={c}
               />
@@ -161,8 +163,9 @@ export class AlternateResponses extends React.Component {
           Object.keys(this.state.values).length !== Object.keys(choices).length &&
           <AlternateSection
             value=""
-            onSelect={choice => this.onSectionSelect(choice, choice.id)}
+            onSelect={choice => this.onSectionSelect(choice, choice.value)}
             choiceChanged={choice => this.onChoiceChanged(choice)}
+            choiceRemoved={value => this.onChoiceRemoved(value)}
             selectChoices={this.getRemainingChoices()}
           />
         }
@@ -171,6 +174,4 @@ export class AlternateResponses extends React.Component {
   }
 }
 
-const Styled = withStyles(styles)(AlternateResponses);
-
-export default Styled;
+export default AlternateResponses;

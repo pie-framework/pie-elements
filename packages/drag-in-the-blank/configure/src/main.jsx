@@ -16,7 +16,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
+
 import Choices from './choices';
+import { processMarkup, createSlateMarkup } from './markupUtils';
 const { toggle, Panel } = settings;
 
 const styles = theme => ({
@@ -134,8 +136,12 @@ export class Main extends React.Component {
   };
 
   onResponsesChanged = choices => {
+    const { model: { correctResponse, markup } } = this.props;
+    const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
+
     this.props.onModelChanged({
       ...this.props.model,
+      slateMarkup,
       choices
     });
   };
