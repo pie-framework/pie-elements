@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.4.0...@pie-element/extended-text-entry@4.5.0) (2019-07-11)
+
+
+### Bug Fixes
+
+* **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([05885fb](https://github.com/pie-framework/pie-elements/commit/05885fb))
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
 # [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.3.8...@pie-element/extended-text-entry@4.4.0) (2019-07-09)
 
 

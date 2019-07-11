@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.6.9...@pie-element/explicit-constructed-response@1.7.0) (2019-07-11)
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
 ## [1.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.6.8...@pie-element/explicit-constructed-response@1.6.9) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

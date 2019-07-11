@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.4.9...@pie-element/select-text@4.5.0) (2019-07-11)
+
+
+### Bug Fixes
+
+* use empty defaults for select text, not lorem ([#272](https://github.com/pie-framework/pie-elements/issues/272)) ([ec1c89f](https://github.com/pie-framework/pie-elements/commit/ec1c89f))
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
 ## [4.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.4.8...@pie-element/select-text@4.4.9) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/select-text

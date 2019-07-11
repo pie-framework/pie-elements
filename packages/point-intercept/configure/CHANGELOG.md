@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@2.3.9...@pie-element/point-intercept-configure@2.4.0) (2019-07-11)
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
 ## [2.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@2.3.8...@pie-element/point-intercept-configure@2.3.9) (2019-07-09)
 
 **Note:** Version bump only for package @pie-element/point-intercept-configure
