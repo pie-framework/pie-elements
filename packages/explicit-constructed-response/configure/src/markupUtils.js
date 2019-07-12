@@ -14,7 +14,7 @@ export const processMarkup = markup => {
   let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
-    s.replaceWith(` {{${index++}}} `);
+    s.replaceWith(`{{${index++}}}`);
   });
 
   return slateMarkup.innerHTML;

@@ -31,7 +31,6 @@ export const BlankContent = withStyles(theme => ({
         display: 'inline-flex',
         minWidth: '178px',
         minHeight: '36px',
-        height: '36px',
         background: '#FFF',
         border: '1px solid #C0C3CF',
         boxSizing: 'border-box',

@@ -28,5 +28,20 @@
     "committerDate": "2019-07-09 00:10:49 +0300",
     "isTagged": true,
     "tag": "@pie-element/image-cloze-association@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "implemented rendering for math elements [ch1915], [ch1935]",
+    "merge": null,
+    "header": "fix(rendering): implemented rendering for math elements [ch1915], [ch1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f3584200654e098c7b4cc4b312813efac09e7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-12 15:45:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.1.3"
   }
 ]

@@ -783,5 +783,35 @@
     "committerDate": "2019-07-09 13:38:59 +0300",
     "isTagged": true,
     "tag": "@pie-element/point-intercept@4.3.8"
+  },
+  {
+    "type": "feat",
+    "scope": "template-elements",
+    "subject": "updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527]",
+    "merge": null,
+    "header": "feat(template-elements): updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a87febe2518ada7ee433b0b39895c26c15737ac4",
+    "gitTags": "",
+    "committerDate": "2019-07-11 16:57:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/point-intercept@4.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "implemented rendering for math elements [ch1915], [ch1935]",
+    "merge": null,
+    "header": "fix(rendering): implemented rendering for math elements [ch1915], [ch1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f3584200654e098c7b4cc4b312813efac09e7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-12 15:45:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/point-intercept@4.4.2"
   }
 ]
