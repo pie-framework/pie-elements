@@ -399,7 +399,7 @@
     "footer": null,
     "notes": [],
     "hash": "2f3584200654e098c7b4cc4b312813efac09e7a9",
-    "gitTags": " (origin/develop, origin/HEAD)",
+    "gitTags": "",
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@1.7.2"
