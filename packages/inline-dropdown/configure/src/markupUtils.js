@@ -14,7 +14,7 @@ export const processMarkup = markup => {
   let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="inline_dropdown"]').forEach(s => {
-    s.replaceWith(` {{${index++}}} `);
+    s.replaceWith(`{{${index++}}}`);
   });
 
   return slateMarkup.innerHTML;
@@ -22,30 +22,8 @@ export const processMarkup = markup => {
 
 const REGEX = /\{\{(\d+)\}\}/g;
 
-/*export const createSlateMarkup = (markup, choices) => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
-  const createMenuItem = (id, val) => `<span data-type="menu_item" data-id="${id}">${val}</span>`;
-  const createSelect = choices => {
-    let correctChoice = choices.find(c => c.correct);
-    const menuItems = choices.map(c => createMenuItem(c.value, c.label));
-
-    if (!correctChoice || !correctChoice.value) {
-      correctChoice = {
-        id: '',
-        value: ''
-      };
-    }
-
-    return `<span data-type="inline_dropdown" data-correct-id="${correctChoice.value}">${menuItems.join('')}</span>`;
-  };
-
-  return newMarkup.replace(REGEX, (match, g) => {
-    return createSelect(choices[g]);
-  });
-};*/
 export const createSlateMarkup = (markup, choices) => {
   const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
-  const createMenuItem = (id, val) => `<span data-type="menu_item" data-id="${id}">${val}</span>`;
   const createSelect = index => {
     let correctChoice = choices[index].find(c => c.correct);
 
