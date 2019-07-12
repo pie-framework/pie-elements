@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.10...@pie-element/passage@1.2.11) (2019-07-12)
+
+
+### Bug Fixes
+
+* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
+
+
+
+
+
 ## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.9...@pie-element/passage@1.2.10) (2019-06-17)
 
 **Note:** Version bump only for package @pie-element/passage

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.8.1...@pie-element/drag-in-the-blank@1.8.2) (2019-07-12)
+
+
+### Bug Fixes
+
+* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
+
+
+
+
+
 ## [1.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.8.0...@pie-element/drag-in-the-blank@1.8.1) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank
