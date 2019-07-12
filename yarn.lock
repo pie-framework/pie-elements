@@ -2384,6 +2384,20 @@
     react-dom "^16.8.1"
     react-konva "^16.8.6"
 
+"@pie-ui/image-cloze-association@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.1.1.tgz#708c79548bfd7749392a50cd86974f8eb465064a"
+  integrity sha512-waRU0yyvTCuZfpTdP5ZOUswde3NMHXC6KHaH9SaweYMBWQz5f0VOib0ry7vPuu5QUZ+MSFWPh9OUmVv6nLhLAQ==
+  dependencies:
+    "@material-ui/core" "^3.9.3"
+    "@material-ui/icons" "^3.0.1"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/drag" "^1.1.13"
+    "@pie-lib/math-rendering" "^1.2.9"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+
 "@pie-ui/inline-choice@^5.3.7":
   version "5.3.7"
   resolved "https://registry.yarnpkg.com/@pie-ui/inline-choice/-/inline-choice-5.3.7.tgz#fc6e0caa01b61a8bb9ea61f991053fb60d4749f0"
