@@ -29,7 +29,7 @@ describe('model', () => {
     allowFeedback: true,
     layout: 3,
     headers: ['Column 1', 'Column 2', 'Column 3'],
-    choiceMode: 'radio',
+    choiceMode: 'checkbox',
     feedback: {
       correct: {
         type: 'none',
@@ -148,7 +148,28 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('0%');
     });
 
-    it('returns partially-correct for correctness', async () => {
+    it('does not return partially-correct for correctness when partial scores are allowed for radios', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        choiceMode: 'radio',
+      });
+
+      session = {
+        answers: {
+          1: [true, false],
+          2: [true, false],
+          3: [true, false],
+          4: [true, false],
+        }
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('incorrect');
+      expect(result.correctness.score).toEqual('0%');
+    });
+
+    it('returns partially-correct for checkbox correctness', async () => {
       question = mkQuestion({
         ...defaultModel,
         partialScoring: true,
@@ -238,6 +259,53 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('partial');
       expect(result.correctness.score).toEqual('50%');
+    });
+
+    it('returns partially-correct for radio correctness', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        rows: [{
+          id: 1,
+          title: 'Question Text 1',
+          values: [true, false, false]
+        }, {
+          id: 2,
+          title: 'Question Text 2',
+          values: [false, false, true]
+        }, {
+          id: 3,
+          title: 'Question Text 3',
+          values: [true, false, false]
+        }],
+        choiceMode: 'radio',
+        partialScoring: true
+      });
+
+      session = {
+        answers: {
+          1: [true, false, false],
+          2: [false, true, false],
+          3: [false, true, false]
+        }
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('partial');
+      expect(result.correctness.score).toEqual('33%');
+
+      session = {
+        answers: {
+          1: [true, false, false],
+          2: [false, false, true],
+          3: [false, true, false]
+        }
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('partial');
+      expect(result.correctness.score).toEqual('67%');
     });
 
     it('returns correct for correctness when partial correctness is enabled', async () => {
