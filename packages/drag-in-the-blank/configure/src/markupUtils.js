@@ -1,3 +1,5 @@
+import escape from 'lodash/escape';
+
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
@@ -24,7 +26,7 @@ export const processMarkup = markup => {
       id: s.dataset.id
     });
 
-    s.replaceWith(` {{${index++}}} `);
+    s.replaceWith(`{{${index++}}}`);
   });
 
   return {
@@ -55,6 +57,6 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
       };
     }
 
-    return `<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${correctChoice.value}"></span>`;
+    return `<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${escape(correctChoice.value)}"></span>`;
   });
 };
