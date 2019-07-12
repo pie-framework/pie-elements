@@ -238,5 +238,20 @@
     "committerDate": "2019-07-07 14:16:34 -0400",
     "isTagged": true,
     "tag": "@pie-element/graphing@1.2.2"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "implemented rendering for math elements [ch1915], [ch1935]",
+    "merge": null,
+    "header": "fix(rendering): implemented rendering for math elements [ch1915], [ch1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f3584200654e098c7b4cc4b312813efac09e7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-12 15:45:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@1.2.5"
   }
 ]
