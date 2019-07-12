@@ -463,5 +463,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.2"
+  },
+  {
+    "type": "fix",
+    "scope": "package",
+    "subject": "updated ui packages",
+    "merge": null,
+    "header": "fix(package): updated ui packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6684253b29dd9a7ab5e956c64075aff952998a1",
+    "gitTags": "",
+    "committerDate": "2019-07-12 16:47:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.3"
   }
 ]
