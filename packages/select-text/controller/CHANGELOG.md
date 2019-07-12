@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.6...@pie-element/select-text-controller@2.5.7) (2019-07-12)
+
+
+### Bug Fixes
+
+* model is ok if selectedTokens is null in evaluate mode ([464de49](https://github.com/pie-framework/pie-elements/commit/464de49))
+
+
+
+
+
 ## [2.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.5...@pie-element/select-text-controller@2.5.6) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/select-text-controller
