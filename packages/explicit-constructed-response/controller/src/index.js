@@ -24,7 +24,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-const getFeedback = (value) => {
+const getFeedback = value => {
   if (value) {
     return 'correct';
   }
@@ -38,13 +38,21 @@ export function model(question, session, env) {
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
     );
+
+    session = session || { value: {} };
+    session.value = session.value || {};
+
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
-    let choices = reduce(question.choices, (obj, area, key) => {
-      obj[key] = map(area, preparChoiceFn);
+    let choices = reduce(
+      question.choices,
+      (obj, area, key) => {
+        obj[key] = map(area, preparChoiceFn);
 
-      return obj;
-    }, {});
+        return obj;
+      },
+      {}
+    );
     let feedback = {};
 
     if (env.mode === 'evaluate') {
@@ -52,19 +60,23 @@ export function model(question, session, env) {
       let correctResponses = 0;
 
       for (let i = 0; i < respAreaLength; i++) {
-        const result = reduce(question.choices, (obj, choices, key) => {
-          const answer = session.value[key] || '';
-          const val = (choices[i] && choices[i].label) || '';
-          const isCorrect = val === answer;
+        const result = reduce(
+          question.choices,
+          (obj, choices, key) => {
+            const answer = session.value[key] || '';
+            const val = (choices[i] && choices[i].label) || '';
+            const isCorrect = val === answer;
 
-          obj.feedback[key] = getFeedback(isCorrect);
+            obj.feedback[key] = getFeedback(isCorrect);
 
-          if (isCorrect) {
-            obj.correctResponses += 1;
-          }
+            if (isCorrect) {
+              obj.correctResponses += 1;
+            }
 
-          return obj;
-        }, { correctResponses: 0, feedback: {} });
+            return obj;
+          },
+          { correctResponses: 0, feedback: {} }
+        );
 
         if (result.correctResponses > correctResponses) {
           correctResponses = result.correctResponses;
@@ -86,12 +98,13 @@ export function model(question, session, env) {
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(question, session) === 1
-          : undefined,
+        env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined
     };
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
       out.teacherInstructions = question.teacherInstructions;
     } else {
       out.teacherInstructions = null;
@@ -116,16 +129,20 @@ const getScore = (config, session) => {
   let correctCount = 0;
 
   for (let i = 0; i < maxScore; i++) {
-    const result = reduce(config.choices, (total, choices, key) => {
-      const answer = session.value[key] || '';
-      const val = (choices[i] && choices[i].label) || '';
+    const result = reduce(
+      config.choices,
+      (total, choices, key) => {
+        const answer = session.value[key] || '';
+        const val = (choices[i] && choices[i].label) || '';
 
-      if (val === answer) {
-        return total;
-      }
+        if (val === answer) {
+          return total;
+        }
 
-      return total - 1;
-    }, maxScore);
+        return total - 1;
+      },
+      maxScore
+    );
 
     if (result > correctCount) {
       correctCount = result;
