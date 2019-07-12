@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@2.4.2...@pie-element/point-intercept-configure@2.4.3) (2019-07-12)
+
+**Note:** Version bump only for package @pie-element/point-intercept-configure
+
+
+
+
+
 ## [2.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept-configure@2.4.1...@pie-element/point-intercept-configure@2.4.2) (2019-07-12)
 
 
