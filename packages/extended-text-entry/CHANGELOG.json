@@ -928,5 +928,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry@4.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch2363 focus issue bump config ui (#274)",
+    "merge": null,
+    "header": "fix: ch2363 focus issue bump config ui (#274)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1cf773d5d5b456d2455304369395c2be3d3c4873",
+    "gitTags": "",
+    "committerDate": "2019-07-13 12:07:08 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@4.5.4"
   }
 ]
