@@ -30,22 +30,6 @@ const styles = theme => ({
   }
 });
 
-const Overlay = withStyles({
-  root: {
-    position: 'fixed',
-    bottom: '0',
-    left: '0',
-    right: '0',
-    top: '0',
-    zIndex: '99'
-  }
-})(({ classes, ...rest }) => (
-  <div
-    className={classes.root}
-    {...rest}
-  />
-));
-
 const prepareVal = html => {
   const tmp = document.createElement('DIV');
 
@@ -56,20 +40,6 @@ const prepareVal = html => {
   return value.trim();
 };
 
-export const InfoDialog = ({ open, onClose, title }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogActions>
-      <Button onClick={() => onClose(true)} color="primary">
-        OK
-      </Button>
-      <Button onClick={() => onClose(false)} color="primary">
-        Cancel
-      </Button>
-    </DialogActions>
-  </Dialog>
-);
-
 export class Choices extends React.Component {
   static propTypes = {
     duplicates: PropTypes.bool,
@@ -78,9 +48,7 @@ export class Choices extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
-  state = {
-    dialogOpen: false
-  };
+  state = {};
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.updateChoicesIfNeeded(nextProps);
@@ -216,7 +184,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { choices, dialogOpen, focusedEl, hiddenChoices } = this.state;
+    const { choices, focusedEl, hiddenChoices } = this.state;
     const {
       classes,
       duplicates
@@ -232,22 +200,6 @@ export class Choices extends React.Component {
         >
           Add Choice
         </Button>
-        <InfoDialog
-          open={dialogOpen}
-          title="Are you sure you want to discard changes?"
-          onClose={ok => this.setState({
-            dialogOpen: false,
-            focusedEl: ok ? undefined : this.state.focusedEl
-          })}
-        />
-        {
-          focusedEl &&
-          <Overlay
-            onMouseDown={() => this.setState({
-              dialogOpen: true
-            })}
-          />
-        }
         <div
           className={classes.altChoices}
         >

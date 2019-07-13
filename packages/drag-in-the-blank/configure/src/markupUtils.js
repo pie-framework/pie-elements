@@ -1,4 +1,5 @@
 import escape from 'lodash/escape';
+import isUndefined from 'lodash/isUndefined';
 
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
@@ -33,7 +34,7 @@ export const processMarkup = markup => {
     markup: slateMarkup.innerHTML,
     choices: choices,
     correctResponse: choices.reduce((obj, c, index) => {
-      obj[index] = c.id;
+      obj[index] = !isUndefined(c.id) && c.id || '';
 
       return obj;
     }, {})
