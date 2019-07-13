@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.6...@pie-element/inline-dropdown@1.9.7) (2019-07-13)
+
+
+### Bug Fixes
+
+* **template-areas:** fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802] ([1fbce9d](https://github.com/pie-framework/pie-elements/commit/1fbce9d))
+
+
+
+
+
 ## [1.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.5...@pie-element/inline-dropdown@1.9.6) (2019-07-13)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

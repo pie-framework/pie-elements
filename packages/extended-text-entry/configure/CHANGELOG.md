@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.5.3...@pie-element/extended-text-entry-configure@3.5.4) (2019-07-13)
+
+
+### Bug Fixes
+
+* ch2363 focus issue bump config ui ([#274](https://github.com/pie-framework/pie-elements/issues/274)) ([1cf773d](https://github.com/pie-framework/pie-elements/commit/1cf773d))
+
+
+
+
+
 ## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.5.2...@pie-element/extended-text-entry-configure@3.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure
