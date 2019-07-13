@@ -178,5 +178,20 @@
     "committerDate": "2019-07-02 13:38:48 -0400",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-controller@1.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "evaluate mode works if session empty",
+    "merge": null,
+    "header": "fix: evaluate mode works if session empty",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4fe917bee92fc03826586708adc8a66423b346cc",
+    "gitTags": "",
+    "committerDate": "2019-07-12 20:26:57 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.4.4"
   }
 ]

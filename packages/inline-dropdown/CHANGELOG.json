@@ -478,5 +478,20 @@
     "committerDate": "2019-07-12 16:47:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "model is ok if session is empty and alternateResponses is null",
+    "merge": null,
+    "header": "fix: model is ok if session is empty and alternateResponses is null",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "39aeeceec770181c514aa08db5d7e30fbd844091",
+    "gitTags": "",
+    "committerDate": "2019-07-12 20:36:57 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.5"
   }
 ]
