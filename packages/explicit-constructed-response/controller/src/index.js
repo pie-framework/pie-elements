@@ -1,6 +1,7 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
+import isEmpty from 'lodash/isEmpty';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -56,37 +57,14 @@ export function model(question, session, env) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const respAreaLength = Object.keys(question.choices).length;
-      let correctResponses = 0;
+      feedback = reduce(question.choices, (obj, respArea, key) => {
+        const chosenValue = session.value[key];
+        const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
 
-      for (let i = 0; i < respAreaLength; i++) {
-        const result = reduce(
-          question.choices,
-          (obj, choices, key) => {
-            const answer = session.value[key] || '';
-            const val = (choices[i] && choices[i].label) || '';
-            const isCorrect = val === answer;
+        obj[key] = getFeedback(val);
 
-            obj.feedback[key] = getFeedback(isCorrect);
-
-            if (isCorrect) {
-              obj.correctResponses += 1;
-            }
-
-            return obj;
-          },
-          { correctResponses: 0, feedback: {} }
-        );
-
-        if (result.correctResponses > correctResponses) {
-          correctResponses = result.correctResponses;
-          feedback = result.feedback;
-        }
-
-        if (result.correctResponses === respAreaLength) {
-          break;
-        }
-      }
+        return obj;
+      }, {});
     }
 
     const out = {
@@ -126,32 +104,15 @@ const prepareVal = html => {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
-  let correctCount = 0;
+  const correctCount = reduce(config.choices, (total, respArea, key) => {
+    const chosenValue = session.value[key];
 
-  for (let i = 0; i < maxScore; i++) {
-    const result = reduce(
-      config.choices,
-      (total, choices, key) => {
-        const answer = session.value[key] || '';
-        const val = (choices[i] && choices[i].label) || '';
-
-        if (val === answer) {
-          return total;
-        }
-
-        return total - 1;
-      },
-      maxScore
-    );
-
-    if (result > correctCount) {
-      correctCount = result;
+    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
+      return total - 1;
     }
 
-    if (result === maxScore) {
-      break;
-    }
-  }
+    return total;
+  }, maxScore);
 
   const str = (correctCount / maxScore).toFixed(2);
 

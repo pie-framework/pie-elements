@@ -234,7 +234,7 @@ export class Main extends React.Component {
       correct: false
     });
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onRemoveChoice = (respIndex, index) => {
@@ -242,7 +242,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex].splice(index, 1);
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onSelectChoice = (respIndex, selectedIndex) => {
@@ -250,9 +250,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({ ...ch, correct: index === selectedIndex }));
 
-    this.setState({
-      respAreaChoices
-    });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   render() {
