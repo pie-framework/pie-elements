@@ -216,7 +216,8 @@ class RespAreaToolbar extends React.Component {
             toolbarOpts={{
               position: 'top',
               alwaysVisible: false,
-              showDone: false
+              showDone: false,
+              doneOn: 'custom'
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
