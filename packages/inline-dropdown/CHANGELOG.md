@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.7...@pie-element/inline-dropdown@1.9.8) (2019-07-15)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
 ## [1.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.6...@pie-element/inline-dropdown@1.9.7) (2019-07-13)
 
 
