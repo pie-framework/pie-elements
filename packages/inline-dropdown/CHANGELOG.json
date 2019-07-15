@@ -504,7 +504,7 @@
     "footer": null,
     "notes": [],
     "hash": "1fbce9d1bbe2022612adc86790f8d193cc2b5cff",
-    "gitTags": " (origin/develop, origin/HEAD)",
+    "gitTags": "",
     "committerDate": "2019-07-13 21:48:38 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.7"
