@@ -106,9 +106,22 @@ interface Labels {
     right: string;
 }
 
+enum Tool {
+    point = 'point',
+    circle = 'circle',
+    polygon = 'polygon',
+    segment = 'segment',
+    ray = 'ray',
+    vector = 'vector',
+    line = 'line',
+    sine = 'sine',
+    parabola = 'parabola',
+    label = 'label'
+}
+
+
 /**
- * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
- * scoringType, studentInstructions, teacherInstructions
+ * NOTE: There's no functionality described for studentInstructions
  * so there's no implementation (they are only added in model)
  */
 
@@ -161,6 +174,9 @@ export interface GraphingPie extends PieModel {
 
     /** Indicates graph title */
     title?: string;
+
+    /** Indicates the tools that have to be displayed in toolbar */
+    toolbarTools?: [Tool]
 }
 
 /**

@@ -48,6 +48,7 @@ const Choice = ({ classes, markup, onChange, onDelete }) => {
         className={classes.choice}
         value={markup}
         onChange={onChange}
+        labelWidth={0}
         disableUnderline
       />
       <IconButton
@@ -68,6 +69,7 @@ export class AlternateSection extends React.Component {
     classes: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
+    choiceRemoved: PropTypes.func.isRequired,
     value: PropTypes.string
   };
 
@@ -93,7 +95,7 @@ export class AlternateSection extends React.Component {
     const { onSelect, selectChoices } = this.props;
     const { value } = e.target;
 
-    onSelect(selectChoices.find(c => c.id === value));
+    onSelect(selectChoices.find(c => c.value === value));
   };
 
   onAddChoice = () => {
@@ -104,7 +106,7 @@ export class AlternateSection extends React.Component {
         choices: [
           ...choices,
           {
-            id: `${choices.length}`,
+            value: `${choices.length}`,
             label: ''
           }
         ]
@@ -122,12 +124,9 @@ export class AlternateSection extends React.Component {
   };
 
   onRemoveChoice = choice => {
-    const { choiceChanged } = this.props;
+    const { choiceRemoved } = this.props;
 
-    choiceChanged({
-      ...choice,
-      label: ''
-    });
+    choiceRemoved(choice.value);
   };
 
   render() {
@@ -147,14 +146,14 @@ export class AlternateSection extends React.Component {
             className={classes.select}
             displayEmpty
             onChange={this.handleSelect}
-            value={value}
+            value={value || ''}
           >
             <MenuItem value="">
               <em>
                 {value ? 'Remove selection' : 'Select a response'}
               </em>
             </MenuItem>
-            {selectChoices.map((c, index) => <MenuItem key={index} value={c.id}>{c.label}</MenuItem>)}
+            {selectChoices.map((c, index) => <MenuItem key={index} value={c.value}>{c.label}</MenuItem>)}
           </Select>
           {
             choices && choices.length > 0 &&
@@ -180,7 +179,6 @@ export class AlternateSection extends React.Component {
                 markup={c.label}
                 onChange={val => this.onChoiceChanged(c, val)}
                 onDelete={() => this.onRemoveChoice(c)}
-                disableUnderline
               />
             ))
           }

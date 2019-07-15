@@ -20,6 +20,7 @@ export default class ExtendedTextEntry extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults.model,
     ...model,
+    allowFeedback: defaults.configuration.feedback.enabled
   });
 
   constructor() {
@@ -46,6 +47,13 @@ export default class ExtendedTextEntry extends HTMLElement {
 
   onConfigurationChanged(c) {
     this._configuration = c;
+
+    if (this._model) {
+      this._model.allowFeedback = (c.feedback || {}).enabled;
+
+      this.onModelChanged(this._model);
+    }
+
     this.render();
   }
 

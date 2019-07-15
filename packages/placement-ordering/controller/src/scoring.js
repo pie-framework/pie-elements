@@ -10,6 +10,7 @@ export const illegalArgumentError = answer =>
   );
 export const pairwiseCombinationScore = (correct, answer, opts) => {
   opts = { allowDuplicates: false, orderMustBeComplete: false, ...opts };
+
   if (!opts.allowDuplicates && !_.isEqual(_.uniq(correct), correct)) {
     throw illegalArgumentError(answer);
   }
@@ -43,14 +44,20 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
   if (correct.length !== answer.length && opts.orderMustBeComplete) {
     return 0;
   }
+
   const correctCombo = combination(correct, 2).toArray();
   const answerCombo = combination(answer, 2).toArray();
+
   const diff = _.differenceWith(answerCombo, correctCombo, _.isEqual);
+
   const comboLengthDiff = correctCombo.length - answerCombo.length;
+
   const total = correctCombo.length;
   const actual = total - diff.length - comboLengthDiff;
+
   const n = (actual / total).toFixed(2);
-  return parseFloat(n, 10);
+
+  return parseFloat(n);
 };
 
 /**
@@ -61,6 +68,15 @@ export const flattenCorrect = question =>
   question.correctResponse.map(r => (r && r.id ? r.id : r));
 
 /**
+ * Returns all correct responses for this question
+ * @param question - array
+ */
+export const getAllCorrectResponses = question => [
+  flattenCorrect(question),
+  ...(question.alternateResponses || [])
+];
+
+/**
  * Returns the score for a session. If weighted scoring is present in the correctResponse
  * field for the question, this will be used. If partial scoring is present in the question
  * model, this will be used. Otherwise the default scoring mechanism (0 for any incorrect, 1
@@ -68,7 +84,7 @@ export const flattenCorrect = question =>
  */
 
 export const score = (question, session) => {
-  const cr = flattenCorrect(question);
+  const allCorrectResponse = getAllCorrectResponses(question);
   const allowDuplicates =
     (question.configure && question.configure.removeTilesAfterPlacing) !== false;
 
@@ -76,7 +92,18 @@ export const score = (question, session) => {
    * We require this to be the case - locking
    */
   //const orderMustBeComplete = true;
-  return pairwiseCombinationScore(cr, session.value, {
-    allowDuplicates
+
+  let bestScore = 0;
+
+  allCorrectResponse.forEach((cr) => {
+    const currentScore = pairwiseCombinationScore(cr, session.value, {
+      allowDuplicates
+    });
+
+    if (currentScore >= bestScore) {
+      bestScore = currentScore;
+    }
   });
+
+  return bestScore;
 };

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cloneDeep from 'lodash/cloneDeep';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer, layout, settings
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-const { toggle, Panel } = settings;
 
+const { toggle, Panel } = settings;
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 
@@ -117,7 +118,7 @@ export class Main extends React.Component {
     const { model: { choices } } = this.props;
 
     if (!choices[index]) {
-      choices[index] = [{ label: '', id: '0' }];
+      choices[index] = [{ label: '', value: '0' }];
     }
 
     choices[index][0].label = newVal || '';
@@ -129,21 +130,29 @@ export class Main extends React.Component {
   };
 
   onChange = markup => {
+    const { model: { choices } } = this.props;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
 
     const allChoices = {};
 
-    allRespAreas.forEach(el => {
-      allChoices[el.dataset.index] = el.dataset.value || '';
-    });
-
     allRespAreas.forEach((el, index) => {
       el.dataset.index = index;
     });
 
+    allRespAreas.forEach((el, index) => {
+      const newChoices = cloneDeep(Object.values(choices)[index]);
+
+      newChoices[0] = {
+        label: el.dataset.value || '',
+        value: '0'
+      };
+      allChoices[el.dataset.index] = newChoices;
+    });
+
     this.props.onModelChanged({
       ...this.props.model,
+      choices: allChoices,
       slateMarkup: domMarkup.innerHTML
     });
   };
@@ -233,6 +242,7 @@ export class Main extends React.Component {
                   duplicates: true,
                 },
                 respAreaToolbar: (node, value, onToolbarDone) => {
+                  const { model } = this.props;
                   const correctChoice = (model.choices[node.data.get('index')] || [])[0];
 
                   return () => (
@@ -248,7 +258,6 @@ export class Main extends React.Component {
               }}
               markup={model.slateMarkup}
               onChange={this.onChange}
-              onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}
               disabled={false}

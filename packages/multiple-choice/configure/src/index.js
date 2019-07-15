@@ -1,13 +1,13 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import debug from 'debug';
 import {
   DeleteImageEvent,
   InsertImageEvent,
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Main from './main';
-import debug from 'debug';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
@@ -53,6 +53,7 @@ export default class MultipleChoice extends HTMLElement {
     choices: generateFormattedChoices(model.choices),
     ...sensibleDefaults.model,
     ...model,
+    allowFeedback: sensibleDefaults.configuration.feedback.enabled
   });
 
   constructor() {
@@ -96,6 +97,13 @@ export default class MultipleChoice extends HTMLElement {
 
   onConfigurationChanged(c) {
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
+
+    if (this._model) {
+      this._model.allowFeedback = (c.feedback || {}).enabled;
+
+      this.onModelChanged(this._model);
+    }
+
     this._render();
   }
 

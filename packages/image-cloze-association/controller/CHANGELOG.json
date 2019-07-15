@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added configuration, settings panel and support for teacher instructions.",
+    "merge": null,
+    "header": "feat: Added configuration, settings panel and support for teacher instructions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b54170b24e397aa4fefd5eaa9a831c23455be7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-09 00:10:49 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association-controller@1.1.0"
+  }
+]

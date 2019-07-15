@@ -203,5 +203,50 @@
     "committerDate": "2019-04-18 09:03:28 +0300",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-controller@2.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "editable-html",
+    "subject": "fixed lots of stuff regarding the editable-html",
+    "merge": null,
+    "header": "fix(editable-html): fixed lots of stuff regarding the editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12c112917e0b5065ec35efdbdc276703602a6c68",
+    "gitTags": " (origin/andrei/fixes)",
+    "committerDate": "2019-07-07 14:16:34 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-controller@2.2.4"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added a dropdown in settings panel with Equation Editor Types if mathInput is true.",
+    "merge": null,
+    "header": "feat: Added a dropdown in settings panel with Equation Editor Types if mathInput is true.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "324c3d9a3b12ed9924d8d1a7e535419f1f6a9131",
+    "gitTags": "",
+    "committerDate": "2019-07-05 23:35:48 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-controller@2.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests.",
+    "merge": null,
+    "header": "feat: Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "fd65b2294f25f3d56732f7f7e5e8c640bc518120",
+    "gitTags": "",
+    "committerDate": "2019-07-05 00:35:14 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-controller@2.3.0"
   }
 ]

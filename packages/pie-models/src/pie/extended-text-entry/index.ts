@@ -5,11 +5,24 @@ import { DefaultFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
 
+interface Dimensions {
+  /**
+   * Width the editor should take. USE CSS-style definition.
+   * @TJS-examples ["500px", "100%"]
+   */
+  width?: string;
+
+  /**
+   * Height the editor should take. USE CSS-style definition.
+   * @TJS-examples ["500px", "100%"]
+   */
+  height?: string;
+}
+
 /**
- * NOTE: teacherInstructions, studentInstructions, equationEditor & multipleParts
+ * NOTE: studentInstructions & multipleParts
  * functionalities are not defined yet - the value for those can belong to
  * model or to configure (to be moved when the functionality is defined)
- * NOTE2: mathInput does not have a functionality as well
  */
 
 /**
@@ -17,17 +30,16 @@ import { ConfigureProp } from '../ConfigurationProp';
 * @additionalProperties false
 */
 export interface ExtendedTextEntryPie extends PieModel {
+  /**
+   * Dimensions the editor should take
+   */
+  dimensions: Dimensions;
+
   /** Indicates if equation editor is enabled */
-  equationEditor?: boolean;
+  equationEditor?: 'everything' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
-
-  /**
-   * Height the editor should take. USE CSS-style definition.
-   * @TJS-examples ["500px", "100%"]
-   */
-  height?: string;
 
   /**
    * Whether a control to allow insertion of math forumulas should be displayed
@@ -46,12 +58,6 @@ export interface ExtendedTextEntryPie extends PieModel {
 
   /** Indicates if teacher instructions are enabled */
   teacherInstructions?: boolean;
-
-  /**
-   * Width the editor should take. USE CSS-style definition.
-   * @TJS-examples ["500px", "100%"]
-   */
-  width?: string;
 }
 
 /**
@@ -63,11 +69,6 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
    * Equation Editor configuration
    */
   equationEditor?: ConfigureProp;
-
-  /**
-   * Height configuration
-   */
-  height?: ConfigureProp;
 
   /**
    * Math Input configuration
@@ -90,8 +91,8 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Width configuration
+   * Dimensions configuration
    */
-  width?: ConfigureProp;
+  dimensions?: ConfigureProp;
 
 }

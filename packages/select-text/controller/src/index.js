@@ -80,6 +80,8 @@ export function createDefaultModel(model = {}) {
 }
 
 export const model = (question, session, env) => {
+  session = session || { selectedToken: [] };
+  session.selectedTokens = session.selectedTokens || [];
   return new Promise(resolve => {
     log('[model]', 'question: ', question);
     log('[model]', 'session: ', session);
@@ -91,7 +93,7 @@ export const model = (question, session, env) => {
         : undefined;
 
     const fb =
-      env.mode === 'evaluate'
+      env.mode === 'evaluate' && question.allowFeedback
         ? getFeedbackForCorrectness(correctness, question.feedback)
         : Promise.resolve(undefined);
 
@@ -109,7 +111,10 @@ export const model = (question, session, env) => {
           env.mode === 'evaluate' ? correctness !== 'correct' : undefined
       };
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      if (
+        env.role === 'instructor' &&
+        (env.mode === 'view' || env.mode === 'evaluate')
+      ) {
         out.rationale = question.rationale;
         out.teacherInstructions = question.teacherInstructions;
       } else {

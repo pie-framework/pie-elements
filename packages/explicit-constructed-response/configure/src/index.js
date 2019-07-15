@@ -9,8 +9,6 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import debug from 'debug';
 import defaults from 'lodash/defaults';
-import cloneDeep from 'lodash/cloneDeep';
-import reduce from 'lodash/reduce';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils'

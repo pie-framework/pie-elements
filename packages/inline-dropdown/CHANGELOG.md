@@ -3,6 +3,115 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.2...@pie-element/inline-dropdown@1.9.3) (2019-07-12)
+
+
+### Bug Fixes
+
+* **package:** updated ui packages ([d668425](https://github.com/pie-framework/pie-elements/commit/d668425))
+
+
+
+
+
+## [1.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.1...@pie-element/inline-dropdown@1.9.2) (2019-07-12)
+
+
+### Bug Fixes
+
+* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
+
+
+
+
+
+## [1.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.0...@pie-element/inline-dropdown@1.9.1) (2019-07-12)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.9...@pie-element/inline-dropdown@1.9.0) (2019-07-11)
+
+
+### Bug Fixes
+
+* **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([05885fb](https://github.com/pie-framework/pie-elements/commit/05885fb))
+* **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([81c94b4](https://github.com/pie-framework/pie-elements/commit/81c94b4))
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
+## [1.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.8...@pie-element/inline-dropdown@1.8.9) (2019-07-09)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.7...@pie-element/inline-dropdown@1.8.8) (2019-07-09)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.6...@pie-element/inline-dropdown@1.8.7) (2019-07-07)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.5...@pie-element/inline-dropdown@1.8.6) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
+## [1.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.4...@pie-element/inline-dropdown@1.8.5) (2019-07-05)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.3...@pie-element/inline-dropdown@1.8.4) (2019-07-04)
+
+
+### Bug Fixes
+
+* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
+
+
+
+
+
+## [1.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.2...@pie-element/inline-dropdown@1.8.3) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
 ## [1.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.8.1...@pie-element/inline-dropdown@1.8.2) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

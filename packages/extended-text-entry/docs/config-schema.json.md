@@ -18,22 +18,6 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `height` (object)
-
-Properties of the `height` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed
-
-## `label` (string)
-
-Indicates the label for the item
-
-## `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-
 # `mathInput` (object)
 
 Properties of the `mathInput` object:
@@ -98,9 +82,9 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-# `width` (object)
+# `dimensions` (object)
 
-Properties of the `width` object:
+Properties of the `dimensions` object:
 
 ## `settings` (boolean)
 

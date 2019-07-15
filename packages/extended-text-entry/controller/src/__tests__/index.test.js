@@ -38,7 +38,7 @@ describe('controller', () => {
     describe('feedback', () => {
       assert('none for gather', q(), s(), e(), { feedback: undefined });
       assert('none for view', q(), s(), e('view'), { feedback: undefined });
-      assert('none for gather', q(), s(), e('evaluate'), {
+      assert('some for evaluate', q({ allowFeedback: true }), s(), e('evaluate'), {
         feedback: q().feedback.default
       });
     });

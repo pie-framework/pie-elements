@@ -75,6 +75,7 @@ describe('getCorrectness', () => {
 });
 
 const q = extras => ({
+  allowFeedback: true,
   highlightChoices: true,
   maxSelections: 10,
   tokens: [
@@ -261,5 +262,84 @@ describe('model', () => {
         expect(r.tokens.filter(t => t.correct === undefined).length).toEqual(0);
       }
     );
+  });
+
+  describe('edge cases', () => {
+    it(' is ok if missing fields', async () => {
+      const d = {
+        element: 'select-text-element',
+        highlightChoices: true,
+        maxSelections: 0,
+        prompt:
+          '<p>\n  <strong>Hazle “clic” en la oración que mejor describe la idea principal del pasaje.</strong>\n</p>\n<p>\n  &nbsp;\n</p>',
+        scoringType: 'auto',
+        teacherInstructions: true,
+        studentInstructions: false,
+        partialScoring: false,
+        text:
+          '<span>Estaba muy enojado.</span><span>-Pedro,¿cómo pudiste hacer eso?</span><span>¡No debes usar cosas ajenas sin preguntar primero!</span><span>De pronto me sentí terrible.</span><span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span><span>Mi mamá me miró de una forma muy extraña.</span><span>Ella podía ver que yo sabía lo que había hecho.</span>',
+        id: '2414982',
+        mode: 'sentence',
+        feedback: {
+          correct: {
+            default: 'Correct',
+            type: 'none'
+          },
+          incorrect: {
+            default: 'Incorrect',
+            type: 'none'
+          }
+        },
+        tokens: [
+          {
+            start: 0,
+            correct: false,
+            end: 32,
+            text: '<span>Estaba muy enojado.</span>'
+          },
+          {
+            end: 90,
+            text: '<span>-Pedro,¿cómo pudiste hacer eso?</span>',
+            start: 32,
+            correct: false
+          },
+          {
+            start: 90,
+            correct: true,
+            end: 159,
+            text:
+              '<span>¡No debes usar cosas ajenas sin preguntar primero!</span>'
+          },
+          {
+            start: 159,
+            correct: false,
+            end: 207,
+            text: '<span>De pronto me sentí terrible.</span>'
+          },
+          {
+            text:
+              '<span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span>',
+            start: 207,
+            correct: false,
+            end: 305
+          },
+          {
+            start: 305,
+            correct: false,
+            end: 380,
+            text: '<span>Mi mamá me miró de una forma muy extraña.</span>'
+          },
+          {
+            start: 380,
+            correct: false,
+            end: 461,
+            text: '<span>Ella podía ver que yo sabía lo que había hecho.</span>'
+          }
+        ]
+      };
+
+      const result = await model(d, {}, { mode: 'evaluate' });
+      expect(result).toBeDefined();
+    });
   });
 });

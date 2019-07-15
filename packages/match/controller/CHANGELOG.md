@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.4...@pie-element/match-controller@2.2.5) (2019-07-07)
+
+**Note:** Version bump only for package @pie-element/match-controller
+
+
+
+
+
+## [2.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.3...@pie-element/match-controller@2.2.4) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
+## [2.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.2...@pie-element/match-controller@2.2.3) (2019-07-05)
+
+**Note:** Version bump only for package @pie-element/match-controller
+
+
+
+
+
+## [2.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.1...@pie-element/match-controller@2.2.2) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/match-controller
+
+
+
+
+
 ## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.0...@pie-element/match-controller@2.2.1) (2019-05-23)
 
 **Note:** Version bump only for package @pie-element/match-controller

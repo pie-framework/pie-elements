@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.5...@pie-element/categorize-controller@3.1.6) (2019-07-07)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
+
+
+
+
+## [3.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.4...@pie-element/categorize-controller@3.1.5) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.3...@pie-element/categorize-controller@3.1.4) (2019-07-05)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
+
+
+
+
+## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.2...@pie-element/categorize-controller@3.1.3) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/categorize-controller
+
+
+
+
+
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.1...@pie-element/categorize-controller@3.1.2) (2019-06-20)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

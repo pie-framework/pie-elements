@@ -14,6 +14,7 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
+jest.useFakeTimers();
 
 describe('design', () => {
   let w;
@@ -90,9 +91,13 @@ describe('design', () => {
   describe('logic', () => {
     const assert = (fn, args, expected) => {
       const e = expected(getModel());
+
       it(`${fn} ${JSON.stringify(args)} => ${JSON.stringify(e)}`, () => {
         const instance = w.instance();
         instance[fn].apply(instance, args);
+
+        jest.runAllTimers();
+
         expect(onChange).toBeCalledWith(e);
       });
     };

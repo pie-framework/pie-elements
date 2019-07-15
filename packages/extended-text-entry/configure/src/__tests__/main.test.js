@@ -16,7 +16,9 @@ jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: props => <div onChange={props.onChange} />,
     toggle: jest.fn(),
-    radio: jest.fn()
+    radio: jest.fn(),
+    numberFields: jest.fn(),
+    dropdown: jest.fn()
   }
 }));
 
@@ -45,16 +47,6 @@ describe('Render Main Component', () => {
   });
 
   describe('logic', () => {
-    it('changeWidth calls onModelChanged', () => {
-      instance.changeWidth({}, 10);
-      expect(onChange).toBeCalledWith(expect.objectContaining({ width: 10 }));
-    });
-
-    it('changeHeight call onModelChanged', () => {
-      instance.changeHeight({}, 10);
-      expect(onChange).toBeCalledWith(expect.objectContaining({ height: 10 }));
-    });
-
     it('changeTeacherInstructions calls onModelChanged', () => {
       instance.changeTeacherInstructions('Teacher Instructions');
       expect(onChange).toBeCalledWith(expect.objectContaining({ teacherInstructions: 'Teacher Instructions' }));

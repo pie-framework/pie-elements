@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.5.1...@pie-element/pie-models@5.5.2) (2019-07-12)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.5.0...@pie-element/pie-models@5.5.1) (2019-07-11)
+
+
+### Bug Fixes
+
+* **behaviour:** added alternate scoring for placement-ordering [ch1304], rendered math in extended-text-entry [ch1016], moved the toolbar above the editor for [ch2493] ([81c94b4](https://github.com/pie-framework/pie-elements/commit/81c94b4))
+
+
+
+
+
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.4.2...@pie-element/pie-models@5.5.0) (2019-07-09)
+
+
+### Features
+
+* Added a dropdown in settings panel with Equation Editor Types if mathInput is true. ([324c3d9](https://github.com/pie-framework/pie-elements/commit/324c3d9))
+* Used mathInput value in order to hide/display math option in pie-ui/extended-text-entry. Moved width & height to settings panel. Added a dropdown in settings panel with Equation Editor Types if mathInput is true (functionality for it is WIP). Updated pie-models, pie-schemas & tests. ([fd65b22](https://github.com/pie-framework/pie-elements/commit/fd65b22))
+
+
+
+
+
+## [5.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.4.1...@pie-element/pie-models@5.4.2) (2019-07-05)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [5.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.4.0...@pie-element/pie-models@5.4.1) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.3.5...@pie-element/pie-models@5.4.0) (2019-07-03)
 
 

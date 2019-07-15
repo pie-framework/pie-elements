@@ -91,6 +91,7 @@ export class CorrectResponse extends React.Component {
       tool.toolbar = toolbarTools.some(t => t === tool.type);
       return tool;
     });
+    const showLabel = toolbarTools && toolbarTools.some(t => t === 'label');
 
     return (
       <div>
@@ -114,6 +115,16 @@ export class CorrectResponse extends React.Component {
                 </div>
               );
             })}
+            <div
+              key="label"
+              className={classnames(
+                classes.availableTool,
+                showLabel && classes.selectedTool
+              )}
+              onClick={() => this.toggleToolBarTool({ type: 'label' })}
+            >
+              LABEL
+            </div>
           </div>
         </div>
         <div className={classes.container}>
@@ -136,6 +147,7 @@ export class CorrectResponse extends React.Component {
                 tools={tools}
                 currentTool={tools.length && tools[0].Component.type}
                 defaultTool={tools.length && tools[0].type}
+                hideLabel={!showLabel}
               />
             </div>
           ))}

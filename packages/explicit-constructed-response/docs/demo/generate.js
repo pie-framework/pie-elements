@@ -1,4 +1,4 @@
-const choice = (l, v) => ({ label: l, id: v });
+const choice = (l, v) => ({ label: l, value: v });
 
 const markup = '<p>The {{0}} jumped {{1}} the {{2}}</p>';
 

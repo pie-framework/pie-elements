@@ -105,7 +105,9 @@ const Design = withStyles(styles)(props => {
                 partialScoring: partialScoring.settings &&
                   toggle(partialScoring.label),
                 lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label)
+                toggle(lockChoiceOrder.label),
+                'feedback.enabled': feedback.settings &&
+                toggle(feedback.label, true)
               },
               'Properties': {
                 'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -166,8 +168,9 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 onDelete={() => onRemoveChoice(index)}
                 onChange={c => onChoiceChanged(index, c)}
-                allowFeedBack={feedback.settings}
+                allowFeedBack={feedback.enabled}
                 allowDelete={deleteChoice.settings}
+                noLabels
               />
               {rationale.enabled && (
                 <InputContainer
@@ -228,7 +231,7 @@ export class Main extends React.Component {
   onAddChoice = () => {
     const { model } = this.props;
     model.choices.push({
-      label: 'label',
+      label: '',
       value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
       feedback: {
         type: 'none'

@@ -80,6 +80,7 @@ class ECRToolbar extends React.Component {
       >
         <OutlinedInput
           autoFocus
+          labelWidth={0}
           classes={{
             input: classes.input
           }}

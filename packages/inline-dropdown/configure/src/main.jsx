@@ -221,10 +221,6 @@ export class Main extends React.Component {
     }
   };
 
-  onTemporaryChange = tempValue => {
-    this.setState({ tempValue });
-  };
-
   onAddChoice = (index, label) => {
     const { respAreaChoices } = this.state;
 
@@ -238,7 +234,7 @@ export class Main extends React.Component {
       correct: false
     });
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onRemoveChoice = (respIndex, index) => {
@@ -246,7 +242,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex].splice(index, 1);
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onSelectChoice = (respIndex, selectedIndex) => {
@@ -254,9 +250,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({ ...ch, correct: index === selectedIndex }));
 
-    this.setState({
-      respAreaChoices
-    });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   render() {
@@ -364,9 +358,8 @@ export class Main extends React.Component {
                   );
                 }
               }}
-              markup={markup}
+              markup={markup || ''}
               onChange={this.onChange}
-              onTemporaryChange={this.onTemporaryChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}
               disabled={false}

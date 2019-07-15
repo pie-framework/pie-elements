@@ -13,6 +13,7 @@ export default class SelectTextConfigure extends HTMLElement {
     return {
       ...defaultValues.model,
       ...model,
+      allowFeedback: defaultValues.configuration.feedback.enabled
     };
   };
 
@@ -44,6 +45,13 @@ export default class SelectTextConfigure extends HTMLElement {
 
   onConfigurationChanged(c) {
     this._configuration = c;
+
+    if (this._model) {
+      this._model.allowFeedback = (c.feedback || {}).enabled;
+
+      this.dispatchEvent(new ModelUpdatedEvent(this._model), false);
+    }
+
     this.render();
   }
 

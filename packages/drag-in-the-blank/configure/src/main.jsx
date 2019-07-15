@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
@@ -7,6 +8,7 @@ import {
   settings
 } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
+import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -14,7 +16,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
+
 import Choices from './choices';
+import { processMarkup, createSlateMarkup } from './markupUtils';
 const { toggle, Panel } = settings;
 
 const styles = theme => ({
@@ -96,6 +100,13 @@ export class Main extends React.Component {
 
   state = {};
 
+  componentDidUpdate() {
+    // eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
+  }
+
   onModelChange = newVal => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -125,8 +136,12 @@ export class Main extends React.Component {
   };
 
   onResponsesChanged = choices => {
+    const { model: { correctResponse, markup } } = this.props;
+    const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
+
     this.props.onModelChanged({
       ...this.props.model,
+      slateMarkup,
       choices
     });
   };

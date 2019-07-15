@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.1.0",
+  "version": "1.2.6",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/graphing": "^2.2.3"
+    "@pie-ui/graphing": "^2.3.3"
   },
   "pie": {
     "element": "@pie-ui/graphing"

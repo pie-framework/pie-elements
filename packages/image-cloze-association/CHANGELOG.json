@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "type": "fix",
+    "scope": "editable-html",
+    "subject": "fixed lots of stuff regarding the editable-html",
+    "merge": null,
+    "header": "fix(editable-html): fixed lots of stuff regarding the editable-html",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "12c112917e0b5065ec35efdbdc276703602a6c68",
+    "gitTags": " (origin/andrei/fixes)",
+    "committerDate": "2019-07-07 14:16:34 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.0.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added configuration, settings panel and support for teacher instructions.",
+    "merge": null,
+    "header": "feat: Added configuration, settings panel and support for teacher instructions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b54170b24e397aa4fefd5eaa9a831c23455be7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-09 00:10:49 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": "rendering",
+    "subject": "implemented rendering for math elements [ch1915], [ch1935]",
+    "merge": null,
+    "header": "fix(rendering): implemented rendering for math elements [ch1915], [ch1935]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f3584200654e098c7b4cc4b312813efac09e7a9",
+    "gitTags": "",
+    "committerDate": "2019-07-12 15:45:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.1.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "add dependency",
+    "merge": null,
+    "header": "fix: add dependency",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "41d1b243ef791104f36bf093255925e984af7570",
+    "gitTags": "",
+    "committerDate": "2019-07-12 15:32:14 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.1.5"
+  }
+]

@@ -133,5 +133,20 @@
     "committerDate": "2019-05-20 11:54:50 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@1.3.0"
+  },
+  {
+    "type": "Fix",
+    "scope": null,
+    "subject": "pass root configuration to each element",
+    "merge": null,
+    "header": "Fix: pass root configuration to each element",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "15767d580319ef773493e3814c0bd6783ed171c4",
+    "gitTags": "",
+    "committerDate": "2019-07-08 18:40:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@1.3.2"
   }
 ]

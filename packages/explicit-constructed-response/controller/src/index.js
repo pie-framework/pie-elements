@@ -1,6 +1,7 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
+import isEmpty from 'lodash/isEmpty';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -24,7 +25,7 @@ const prepareChoice = (mode, defaultFeedback) => choice => {
   return out;
 };
 
-const getFeedback = (value) => {
+const getFeedback = value => {
   if (value) {
     return 'correct';
   }
@@ -38,43 +39,32 @@ export function model(question, session, env) {
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
     );
+
+    session = session || { value: {} };
+    session.value = session.value || {};
+
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
-    let choices = reduce(question.choices, (obj, area, key) => {
-      obj[key] = map(area, preparChoiceFn);
+    let choices = reduce(
+      question.choices,
+      (obj, area, key) => {
+        obj[key] = map(area, preparChoiceFn);
 
-      return obj;
-    }, {});
+        return obj;
+      },
+      {}
+    );
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const respAreaLength = Object.keys(question.choices).length;
-      let correctResponses = 0;
+      feedback = reduce(question.choices, (obj, respArea, key) => {
+        const chosenValue = session.value[key];
+        const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
 
-      for (let i = 0; i < respAreaLength; i++) {
-        const result = reduce(question.choices, (obj, choices, key) => {
-          const answer = session.value[key] || '';
-          const val = (choices[i] && choices[i].label) || '';
-          const isCorrect = val === answer;
+        obj[key] = getFeedback(val);
 
-          obj.feedback[key] = getFeedback(isCorrect);
-
-          if (isCorrect) {
-            obj.correctResponses += 1;
-          }
-
-          return obj;
-        }, { correctResponses: 0, feedback: {} });
-
-        if (result.correctResponses > correctResponses) {
-          correctResponses = result.correctResponses;
-          feedback = result.feedback;
-        }
-
-        if (result.correctResponses === respAreaLength) {
-          break;
-        }
-      }
+        return obj;
+      }, {});
     }
 
     const out = {
@@ -86,12 +76,13 @@ export function model(question, session, env) {
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(question, session) === 1
-          : undefined,
+        env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined
     };
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
       out.teacherInstructions = question.teacherInstructions;
     } else {
       out.teacherInstructions = null;
@@ -113,28 +104,15 @@ const prepareVal = html => {
 
 const getScore = (config, session) => {
   const maxScore = Object.keys(config.choices).length;
-  let correctCount = 0;
+  const correctCount = reduce(config.choices, (total, respArea, key) => {
+    const chosenValue = session.value[key];
 
-  for (let i = 0; i < maxScore; i++) {
-    const result = reduce(config.choices, (total, choices, key) => {
-      const answer = session.value[key] || '';
-      const val = (choices[i] && choices[i].label) || '';
-
-      if (val === answer) {
-        return total;
-      }
-
+    if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
       return total - 1;
-    }, maxScore);
-
-    if (result > correctCount) {
-      correctCount = result;
     }
 
-    if (result === maxScore) {
-      break;
-    }
-  }
+    return total;
+  }, maxScore);
 
   const str = (correctCount / maxScore).toFixed(2);
 

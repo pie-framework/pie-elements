@@ -111,6 +111,7 @@ export class Design extends React.Component {
       studentInstructions = {},
       rationale = {},
       scoringType = {},
+      feedback = {}
     } = configuration || {};
 
     const config = model.config || {};
@@ -141,7 +142,8 @@ export class Design extends React.Component {
                   partialScoring: partialScoring.settings &&
                     toggle(partialScoring.label),
                   lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label)
+                  toggle(lockChoiceOrder.label),
+                  'feedback.enabled': feedback.settings && toggle(feedback.label, true),
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -199,10 +201,15 @@ export class Design extends React.Component {
               model={model}
               onModelChanged={this.updateModel}
             />
-            <FeedbackConfig
-              feedback={model.feedback}
-              onChange={this.changeFeedback}
-            />
+
+            {
+              feedback.enabled && (
+                <FeedbackConfig
+                  feedback={model.feedback}
+                  onChange={this.changeFeedback}
+                />
+              )
+            }
           </div>
         </layout.ConfigLayout>
       </IdProvider>

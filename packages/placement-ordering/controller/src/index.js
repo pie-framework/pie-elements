@@ -1,4 +1,4 @@
-import { flattenCorrect, score } from './scoring';
+import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
 import debug from 'debug';
@@ -66,18 +66,22 @@ function shuffle(session, choices) {
     choices,
     session.stash && session.stash.shuffledOrder
   );
+
   if (stashedShuffle) {
     return stashedShuffle.map(choiceId => {
       return choices.find(c => c.id === choiceId);
     });
   } else {
     let result = _.cloneDeep(choices);
+
     for (var i = choices.length - 1; i >= 0; i--) {
       if (choices[i].lockChoiceOrder === true) {
         result.splice(i, 1);
       }
     }
+
     let shuffled = _.shuffle(_.cloneDeep(result));
+
     choices.forEach((choice, index) => {
       if (choice.lockChoiceOrder === true) {
         shuffled.splice(index, 0, choice);
@@ -86,6 +90,7 @@ function shuffle(session, choices) {
 
     session.stash = session.stash || {};
     session.stash.shuffledOrder = shuffled.map(({ id }) => id);
+
     return shuffled;
   }
 }
@@ -110,6 +115,7 @@ export function model(question, session, env) {
     const choices = question.lockChoiceOrder
       ? question.choices
       : shuffle(session, question.choices);
+
     base.choices = choices;
 
     log('[model] removing tileSize for the moment.');
@@ -134,20 +140,43 @@ export function model(question, session, env) {
       base.teacherInstructions = null;
     }
 
-    if (env.mode === 'evaluate') {
+    if (env.mode === 'evaluate' && question.allowFeedback) {
+      const allCorrectResponses = getAllCorrectResponses(question);
+
+      const bestSetOfResponses = allCorrectResponses.reduce((info, cr) => {
+        const currentScore = _.reduce(session.value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+
+        if (currentScore > info.score) {
+          return {
+            arr: cr,
+            score: currentScore
+          };
+        }
+
+        return info;
+      }, { arr: [], score: 0 });
+
       base.outcomes = _.map(session.value, function(c, idx) {
         return {
           id: c,
-          outcome: flattenCorrect(question)[idx] === c ? 'correct' : 'incorrect'
+          outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect'
         };
       });
-      var allCorrect = _.isEqual(flattenCorrect(question), session.value);
+
+      const allCorrect = allCorrectResponses.reduce((correct, cr) => {
+        if (_.isEqual(cr, session.value)) {
+          return true;
+        }
+
+        return correct;
+      }, false);
 
       base.correctness = allCorrect ? 'correct' : 'incorrect';
 
       if (!allCorrect) {
         base.correctResponse = flattenCorrect(question);
       }
+
       getFeedbackForCorrectness(base.correctness, question.feedback).then(
         feedback => {
           base.feedback = feedback;

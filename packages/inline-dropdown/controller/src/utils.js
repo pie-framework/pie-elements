@@ -1,6 +1,7 @@
 import forEach from 'lodash/forEach';
 
 export const getAllCorrectResponses = ({ choices, alternateResponse }) => {
+  alternateResponse = alternateResponse || {};
   const correctAnswers = {};
 
   forEach(choices, (respArea, key) => {
@@ -16,10 +17,10 @@ export const getAllCorrectResponses = ({ choices, alternateResponse }) => {
           correctAnswers[key] = [
             ...correctAnswers[key],
             ...alternateResponse[key]
-          ]
+          ];
         }
       }
-    })
+    });
   });
 
   return correctAnswers;

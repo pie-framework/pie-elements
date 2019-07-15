@@ -14,6 +14,7 @@ describe('controller', () => {
       prompt: 'prompt',
       choicePrefix: 'letters',
       choiceMode: 'radio',
+      allowFeedback: true,
       choices: [
         {
           label: 'a',

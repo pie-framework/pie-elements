@@ -68,6 +68,14 @@
       },
       "title": "correctResponse"
     },
+    "alternateResponses": {
+      "description": "Array that contains the correct alternate responses",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "alternateResponses"
+    },
     "enableImages": {
       "description": "Indicates if the choices editor can use images",
       "type": "boolean",
@@ -319,6 +327,7 @@
     }
   },
   "required": [
+    "alternateResponses",
     "choices",
     "element",
     "id"
