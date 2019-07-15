@@ -91,6 +91,13 @@ export class Main extends React.Component {
     });
   };
 
+  onRationaleChanged = rationale => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      rationale
+    });
+  };
+
   onMarkupChanged = slateMarkup => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -175,6 +182,7 @@ export class Main extends React.Component {
     const {
       prompt,
       partialScoring,
+      rationale = {},
       teacherInstructions = {}
     } = configuration;
 
@@ -194,7 +202,9 @@ export class Main extends React.Component {
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true),
+                  toggle(teacherInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                  toggle(rationale.label, true)
                 }
               }}
             />
@@ -224,6 +234,19 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={!prompt.settings}
                   disableUnderline
+                />
+              </InputContainer>
+            )}
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChanged}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}

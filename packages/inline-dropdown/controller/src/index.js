@@ -91,11 +91,13 @@ export function model(question, session, env) {
     }
 
     let teacherInstructions = null;
+    let rationale = null;
 
     if (
-      env.role === 'instructor' &&
+      // env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
     ) {
+      rationale = question.rationale;
       teacherInstructions = question.teacherInstructions;
     }
 
@@ -110,6 +112,7 @@ export function model(question, session, env) {
 
       responseCorrect:
         env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined,
+      rationale,
       teacherInstructions
     };
 

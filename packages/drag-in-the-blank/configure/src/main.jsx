@@ -121,6 +121,13 @@ export class Main extends React.Component {
     });
   };
 
+  onRationaleChanged = rationale => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      rationale
+    });
+  };
+
   onTeacherInstructionsChanged = teacherInstructions => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -173,6 +180,7 @@ export class Main extends React.Component {
       prompt,
       partialScoring,
       lockChoiceOrder,
+      rationale = {},
       teacherInstructions = {}
     } = configuration;
     const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
@@ -192,10 +200,14 @@ export class Main extends React.Component {
                   toggle(partialScoring.label),
                   duplicates: duplicates.settings && toggle(duplicates.label),
                   lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label),
-                  'teacherInstructions.enabled': teacherInstructions.settings && toggle(teacherInstructions.label, true)
+                  toggle(lockChoiceOrder.label)
                 },
-                'Properties': {}
+                'Properties': {
+                  'teacherInstructions.enabled': teacherInstructions.settings &&
+                    toggle(teacherInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true)
+                }
               }}
             />
           }
@@ -224,6 +236,19 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={!prompt.settings}
                   disableUnderline
+                />
+              </InputContainer>
+            )}
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChanged}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}
