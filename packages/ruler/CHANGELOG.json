@@ -483,5 +483,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/ruler@3.8.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ruler version",
+    "merge": null,
+    "header": "fix: bump ruler version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d49f9b13e6be9e61649d4469f676f202a61b577b",
+    "gitTags": "",
+    "committerDate": "2019-07-15 11:55:38 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/ruler@3.8.5"
   }
 ]
