@@ -60,6 +60,11 @@ export default {
       settings: true,
       label: 'Partial Scoring'
     },
+    rationale: {
+      settings: true,
+      label: 'Rationale',
+      enabled: false,
+    },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
