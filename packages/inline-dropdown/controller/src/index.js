@@ -11,7 +11,7 @@ const prepareChoice = () => (key, choice) => {
   };
 };
 
-const getFeedback = (correct) => {
+const getFeedback = correct => {
   if (correct) {
     return 'correct';
   }
@@ -20,6 +20,8 @@ const getFeedback = (correct) => {
 };
 
 export function model(question, session, env) {
+  session = session || { value: {} };
+  session.value = session.value || {};
   return new Promise(resolve => {
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
@@ -27,11 +29,15 @@ export function model(question, session, env) {
     );
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
-    let choices = reduce(question.choices, (obj, area, key) => {
-      obj[key] = map(area, (choice) => preparChoiceFn(key, choice));
+    let choices = reduce(
+      question.choices,
+      (obj, area, key) => {
+        obj[key] = map(area, choice => preparChoiceFn(key, choice));
 
-      return obj;
-    }, {});
+        return obj;
+      },
+      {}
+    );
 
     let feedback = {};
 
@@ -41,19 +47,23 @@ export function model(question, session, env) {
       let correctResponses = 0;
 
       for (let i = 0; i < respAreaLength; i++) {
-        const result = reduce(allCorrectResponses, (obj, choices, key) => {
-          const answer = session.value[key] || '';
-          const correctChoice = choices[i] || '';
-          const isCorrect = correctChoice === answer;
+        const result = reduce(
+          allCorrectResponses,
+          (obj, choices, key) => {
+            const answer = session.value[key] || '';
+            const correctChoice = choices[i] || '';
+            const isCorrect = correctChoice === answer;
 
-          obj.feedback[key] = getFeedback(isCorrect);
+            obj.feedback[key] = getFeedback(isCorrect);
 
-          if (isCorrect) {
-            obj.correctResponses += 1;
-          }
+            if (isCorrect) {
+              obj.correctResponses += 1;
+            }
 
-          return obj;
-        }, { correctResponses: 0, feedback: {} });
+            return obj;
+          },
+          { correctResponses: 0, feedback: {} }
+        );
 
         if (result.correctResponses > correctResponses) {
           correctResponses = result.correctResponses;
@@ -69,16 +79,25 @@ export function model(question, session, env) {
     if (!question.lockChoiceOrder) {
       // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
 
-      choices = reduce(question.choices, (obj, area, key) => {
-        obj[key] = shuffle(area);
+      choices = reduce(
+        question.choices,
+        (obj, area, key) => {
+          obj[key] = shuffle(area);
 
-        return obj;
-      }, {});
+          return obj;
+        },
+        {}
+      );
     }
 
     let teacherInstructions = null;
+    let rationale = null;
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    if (
+      // env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
+      rationale = question.rationale;
       teacherInstructions = question.teacherInstructions;
     }
 
@@ -92,9 +111,8 @@ export function model(question, session, env) {
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate'
-          ? getScore(question, session) === 1
-          : undefined,
+        env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined,
+      rationale,
       teacherInstructions
     };
 
@@ -108,16 +126,20 @@ const getScore = (config, session) => {
   let correctCount = 0;
 
   for (let i = 0; i < maxScore; i++) {
-    const result = reduce(allCorrectResponses, (total, choices, key) => {
-      const answer = session.value[key] || '';
-      const correctChoice = choices[i] || '';
+    const result = reduce(
+      allCorrectResponses,
+      (total, choices, key) => {
+        const answer = session.value[key] || '';
+        const correctChoice = choices[i] || '';
 
-      if (correctChoice === answer) {
-        return total;
-      }
+        if (correctChoice === answer) {
+          return total;
+        }
 
-      return total - 1;
-    }, maxScore);
+        return total - 1;
+      },
+      maxScore
+    );
 
     if (result > correctCount) {
       correctCount = result;

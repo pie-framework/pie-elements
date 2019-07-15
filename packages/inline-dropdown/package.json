@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.8.4",
+  "version": "1.9.3",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/inline-dropdown": "^1.6.7"
+    "@pie-ui/inline-dropdown": "^1.6.8"
   },
   "pie": {
     "element": "@pie-ui/inline-dropdown"

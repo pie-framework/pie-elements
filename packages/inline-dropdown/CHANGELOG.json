@@ -463,5 +463,50 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.2"
+  },
+  {
+    "type": "fix",
+    "scope": "package",
+    "subject": "updated ui packages",
+    "merge": null,
+    "header": "fix(package): updated ui packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6684253b29dd9a7ab5e956c64075aff952998a1",
+    "gitTags": "",
+    "committerDate": "2019-07-12 16:47:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "model is ok if session is empty and alternateResponses is null",
+    "merge": null,
+    "header": "fix: model is ok if session is empty and alternateResponses is null",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "39aeeceec770181c514aa08db5d7e30fbd844091",
+    "gitTags": "",
+    "committerDate": "2019-07-12 20:36:57 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.5"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "merge": null,
+    "header": "fix(template-areas): fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1fbce9d1bbe2022612adc86790f8d193cc2b5cff",
+    "gitTags": "",
+    "committerDate": "2019-07-13 21:48:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.7"
   }
 ]

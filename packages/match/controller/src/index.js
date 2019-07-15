@@ -1,5 +1,6 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import _ from 'lodash';
 
 import defaults from './defaults';
 
@@ -11,13 +12,16 @@ const getResponseCorrectness = (
 ) => {
   const partialScoring = model.partialScoring;
   const rows = model.rows;
+  const checkboxMode = model.choiceMode === 'checkbox';
 
   if (!answers || Object.keys(answers).length === 0) {
     return 'unanswered';
   }
 
   const totalCorrectAnswers = getTotalCorrect(model);
-  const correctAnswers = getCorrectSelected(rows, answers);
+  const correctAnswers = checkboxMode
+    ? getCorrectCheckboxes(rows, answers)
+    : getCorrectRadios(rows, answers);
 
   if (totalCorrectAnswers === correctAnswers) {
     return  'correct';
@@ -39,7 +43,7 @@ const getCorrectness = (question, env, answers) => {
   }
 };
 
-const getCorrectSelected = (rows, answers) => {
+const getCorrectCheckboxes = (rows, answers) => {
   let correctAnswers = 0;
 
   rows.forEach(row => {
@@ -57,12 +61,29 @@ const getCorrectSelected = (rows, answers) => {
   return correctAnswers;
 };
 
+const getCorrectRadios = (rows, answers) => {
+  let correctAnswers = 0;
+
+  rows.forEach(row => {
+    if (_.isEqual(row.values, answers[row.id])) {
+      correctAnswers += 1;
+    }
+  });
+
+  return correctAnswers;
+};
+
 const getTotalCorrect = (question) => {
-  return (question.rows.length || 0) * (question.layout - 1);
+  const checkboxMode = question.choiceMode === 'checkbox';
+  const matchingTable = checkboxMode ? (question.layout - 1) : 1;
+  return (question.rows.length || 0) * matchingTable;
 };
 
 const getPartialScore = (question, answers) => {
-  const count = getCorrectSelected(question.rows, answers);
+  const checkboxMode = question.choiceMode === 'checkbox';
+  const count = checkboxMode
+    ? getCorrectCheckboxes(question.rows, answers)
+    : getCorrectRadios(question.rows, answers);
   const totalCorrect = getTotalCorrect(question);
 
   return parseFloat((count / totalCorrect).toFixed(2));

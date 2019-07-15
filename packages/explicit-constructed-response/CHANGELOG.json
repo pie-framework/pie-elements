@@ -403,5 +403,50 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@1.7.2"
+  },
+  {
+    "type": "fix",
+    "scope": "package",
+    "subject": "updated ui packages",
+    "merge": null,
+    "header": "fix(package): updated ui packages",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d6684253b29dd9a7ab5e956c64075aff952998a1",
+    "gitTags": "",
+    "committerDate": "2019-07-12 16:47:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "evaluate mode works if session empty",
+    "merge": null,
+    "header": "fix: evaluate mode works if session empty",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4fe917bee92fc03826586708adc8a66423b346cc",
+    "gitTags": "",
+    "committerDate": "2019-07-12 20:26:57 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.5"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "merge": null,
+    "header": "fix(template-areas): fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1fbce9d1bbe2022612adc86790f8d193cc2b5cff",
+    "gitTags": "",
+    "committerDate": "2019-07-13 21:48:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.7"
   }
 ]

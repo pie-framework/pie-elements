@@ -283,5 +283,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@1.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "merge": null,
+    "header": "fix(template-areas): fixed the remaining issues with the inline-dropdown and ecr [ch2797], [ch2802]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1fbce9d1bbe2022612adc86790f8d193cc2b5cff",
+    "gitTags": "",
+    "committerDate": "2019-07-13 21:48:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@1.5.5"
   }
 ]

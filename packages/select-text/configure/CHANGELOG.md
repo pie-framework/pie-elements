@@ -3,6 +3,111 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.5.2...@pie-element/select-text-configure@3.5.3) (2019-07-12)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [3.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.5.1...@pie-element/select-text-configure@3.5.2) (2019-07-12)
+
+
+### Bug Fixes
+
+* **rendering:** implemented rendering for math elements [ch1915], [ch1935] ([2f35842](https://github.com/pie-framework/pie-elements/commit/2f35842))
+
+
+
+
+
+## [3.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.5.0...@pie-element/select-text-configure@3.5.1) (2019-07-12)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.9...@pie-element/select-text-configure@3.5.0) (2019-07-11)
+
+
+### Bug Fixes
+
+* use empty defaults for select text, not lorem ([#272](https://github.com/pie-framework/pie-elements/issues/272)) ([ec1c89f](https://github.com/pie-framework/pie-elements/commit/ec1c89f))
+
+
+### Features
+
+* **template-elements:** updated the dependent packages that use editable-html and fixed [ch2564], [ch2565], [ch2538], [ch2489], [ch2557], [ch2593], [ch2490], [ch2527] ([a87febe](https://github.com/pie-framework/pie-elements/commit/a87febe))
+
+
+
+
+
+## [3.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.8...@pie-element/select-text-configure@3.4.9) (2019-07-09)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [3.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.7...@pie-element/select-text-configure@3.4.8) (2019-07-09)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [3.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.6...@pie-element/select-text-configure@3.4.7) (2019-07-07)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [3.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.5...@pie-element/select-text-configure@3.4.6) (2019-07-07)
+
+
+### Bug Fixes
+
+* **editable-html:** fixed lots of stuff regarding the editable-html ([12c1129](https://github.com/pie-framework/pie-elements/commit/12c1129))
+
+
+
+
+
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.4...@pie-element/select-text-configure@3.4.5) (2019-07-05)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.3...@pie-element/select-text-configure@3.4.4) (2019-07-04)
+
+
+### Bug Fixes
+
+* **template-els:** fixed some ditb issues ([9133840](https://github.com/pie-framework/pie-elements/commit/9133840))
+
+
+
+
+
+## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.2...@pie-element/select-text-configure@3.4.3) (2019-07-03)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 ## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.4.1...@pie-element/select-text-configure@3.4.2) (2019-07-03)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

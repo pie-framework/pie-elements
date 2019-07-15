@@ -150,6 +150,21 @@
     "tag": "@pie-element/graphing-controller@1.1.0"
   },
   {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e34547d6fdd4ff27a1ed15789d52d294b4630c91",
+    "gitTags": " (develop)",
+    "committerDate": "2019-07-03 16:05:09 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@1.1.2"
+  },
+  {
     "type": "feat",
     "scope": null,
     "subject": "Added the possibility to use toolbarTools in order to decide if \"label\" should be displayed.",
@@ -163,5 +178,35 @@
     "committerDate": "2019-07-03 22:44:41 -0400",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added the possibility to use toolbarTools in order to decide if \"label\" should be displayed.",
+    "merge": null,
+    "header": "feat: Added the possibility to use toolbarTools in order to decide if \"label\" should be displayed.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "57f81f0cd1330fb374d76675dd6f933f3e131a75",
+    "gitTags": "",
+    "committerDate": "2019-07-03 22:44:41 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@1.2.0"
+  },
+  {
+    "type": "chore",
+    "scope": "merge",
+    "subject": "merged develop into master",
+    "merge": null,
+    "header": "chore(merge): merged develop into master",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8d0ef794ac40e1051fe9cd6f196edc7bd009f0ad",
+    "gitTags": " (develop)",
+    "committerDate": "2019-07-05 23:25:06 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@1.2.1"
   }
 ]

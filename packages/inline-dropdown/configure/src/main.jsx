@@ -149,6 +149,10 @@ export class Main extends React.Component {
     this.onModelChange({ prompt });
   };
 
+  onRationaleChanged = rationale => {
+    this.onModelChange({ rationale });
+  };
+
   onTeacherInstructionsChanged = teacherInstructions => {
     this.onModelChange({ teacherInstructions });
   };
@@ -234,7 +238,7 @@ export class Main extends React.Component {
       correct: false
     });
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onRemoveChoice = (respIndex, index) => {
@@ -242,7 +246,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex].splice(index, 1);
 
-    this.setState({ respAreaChoices });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   onSelectChoice = (respIndex, selectedIndex) => {
@@ -250,9 +254,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({ ...ch, correct: index === selectedIndex }));
 
-    this.setState({
-      respAreaChoices
-    });
+    this.onModelChange({ choices: respAreaChoices });
   };
 
   render() {
@@ -268,6 +270,7 @@ export class Main extends React.Component {
       prompt,
       partialScoring,
       lockChoiceOrder,
+      rationale = {},
       teacherInstructions = {}
     } = configuration;
 
@@ -289,7 +292,9 @@ export class Main extends React.Component {
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true)
+                    toggle(teacherInstructions.label, true),
+                  'rationale.enabled': rationale.settings &&
+                    toggle(rationale.label, true),
                 },
               }}
             />
@@ -320,6 +325,20 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={!prompt.settings}
                   disableUnderline
+                />
+              </InputContainer>
+            )}
+
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChanged}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}
