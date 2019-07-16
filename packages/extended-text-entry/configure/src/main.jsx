@@ -87,15 +87,16 @@ export class Main extends React.Component {
             groups={{
               'Settings': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
-                'multiple.enabled': multiple.settings &&
-                toggle(multiple.label, true),
-                'feedback.enabled': feedback.settings && toggle(feedback.label, true),
-              },
-              'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label),
+                equationEditor: equationEditor.enabled && model.mathInput && dropdown(equationEditor.label, [
+                  'Grade 1 - 2',
+                  'Grade 3 - 5',
+                  'Grade 6 - 7',
+                  'Grade 8 - HS',
+                  'geometry',
+                  'advanced-algebra',
+                  'statistics',
+                  'everything'
+                ]),
                 dimensions: numberFields(dimensions.label, {
                   width: {
                     label: 'Width (px)',
@@ -110,16 +111,15 @@ export class Main extends React.Component {
                     max: 500
                   }
                 }),
-                equationEditor: equationEditor.enabled && model.mathInput && dropdown(equationEditor.label, [
-                  'Grade 1 - 2',
-                  'Grade 3 - 5',
-                  'Grade 6 - 7',
-                  'Grade 8 - HS',
-                  'geometry',
-                  'advanced-algebra',
-                  'statistics',
-                  'everything'
-                ])
+                'multiple.enabled': multiple.settings &&
+                toggle(multiple.label, true),
+                'feedback.enabled': feedback.settings && toggle(feedback.label, true),
+              },
+              'Properties': {
+                'teacherInstructions.enabled': teacherInstructions.settings &&
+                toggle(teacherInstructions.label, true),
+                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                toggle(studentInstructions.label),
               },
             }}
           />

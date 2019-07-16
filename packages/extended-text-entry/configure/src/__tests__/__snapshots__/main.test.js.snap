@@ -46,11 +46,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
         Object {
           "Properties": Object {
             "configure.studentInstructions.enabled": false,
-            "dimensions": undefined,
-            "equationEditor": false,
             "teacherInstructions.enabled": undefined,
           },
           "Settings": Object {
+            "dimensions": undefined,
+            "equationEditor": false,
             "feedback.enabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
