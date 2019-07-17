@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.5...@pie-element/match-controller@2.2.6) (2019-07-17)
+
+
+### Bug Fixes
+
+* calculate correct scoring for radios ([0bc12b6](https://github.com/pie-framework/pie-elements/commit/0bc12b6))
+
+
+
+
+
 ## [2.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.4...@pie-element/match-controller@2.2.5) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/match-controller

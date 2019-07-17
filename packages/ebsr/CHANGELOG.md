@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.5.3...@pie-element/ebsr@2.6.0) (2019-07-17)
+
+
+### Bug Fixes
+
+* **template-areas:** fixed ebsr not disabling issue in controller when it should [ch2192] ([b43fa51](https://github.com/pie-framework/pie-elements/commit/b43fa51))
+* **template-areas:** fixed ebsr not disabling issue in controller when it should [ch2192] ([6195b95](https://github.com/pie-framework/pie-elements/commit/6195b95))
+
+
+### Features
+
+* support configuration ([23cdb93](https://github.com/pie-framework/pie-elements/commit/23cdb93))
+
+
+
+
+
 ## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.5.2...@pie-element/ebsr@2.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/ebsr

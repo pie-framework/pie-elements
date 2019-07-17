@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.3.3...@pie-element/ebsr-controller@1.3.4) (2019-07-17)
+
+
+### Bug Fixes
+
+* **template-areas:** fixed ebsr not disabling issue in controller when it should [ch2192] ([b43fa51](https://github.com/pie-framework/pie-elements/commit/b43fa51))
+* **template-areas:** fixed ebsr not disabling issue in controller when it should [ch2192] ([6195b95](https://github.com/pie-framework/pie-elements/commit/6195b95))
+
+
+
+
+
 ## [1.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.3.2...@pie-element/ebsr-controller@1.3.3) (2019-07-11)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller

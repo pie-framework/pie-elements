@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.3...@pie-element/placement-ordering@5.5.5) (2019-07-17)
+
+
+### Bug Fixes
+
+* **template-areas:** fixed ebsr not disabling issue in controller when it should [ch2192] ([b43fa51](https://github.com/pie-framework/pie-elements/commit/b43fa51))
+
+
+
+
+
 ## [5.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.2...@pie-element/placement-ordering@5.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/placement-ordering
