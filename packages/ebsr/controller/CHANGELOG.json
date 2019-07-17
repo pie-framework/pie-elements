@@ -148,5 +148,35 @@
     "committerDate": "2019-07-08 18:40:57 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@1.3.2"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "merge": null,
+    "header": "fix(template-areas): fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b43fa51f68dbd07dda33975c542d02ece6b650c9",
+    "gitTags": "",
+    "committerDate": "2019-07-16 15:34:01 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@1.3.4"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "merge": null,
+    "header": "fix(template-areas): fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6195b95fd6912c6e6de126c79bc41b0cd1fb2428",
+    "gitTags": "",
+    "committerDate": "2019-07-16 15:27:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@1.3.4"
   }
 ]

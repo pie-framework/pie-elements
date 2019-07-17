@@ -448,5 +448,20 @@
     "committerDate": "2019-07-13 21:48:38 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@1.7.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "support rationale",
+    "merge": null,
+    "header": "fix: support rationale",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "36e3376e08cd061b9cf38e1bc0c2ea743b028897",
+    "gitTags": "",
+    "committerDate": "2019-07-15 18:39:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.9"
   }
 ]

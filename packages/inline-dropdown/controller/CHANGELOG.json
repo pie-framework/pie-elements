@@ -223,5 +223,20 @@
     "committerDate": "2019-07-12 20:36:57 +0100",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-controller@1.5.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "support rationale",
+    "merge": null,
+    "header": "fix: support rationale",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "025b37acd6d1602b3558f25e049c2f5eefd67de4",
+    "gitTags": "",
+    "committerDate": "2019-07-15 19:07:02 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-controller@1.5.6"
   }
 ]

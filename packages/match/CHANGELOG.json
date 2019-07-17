@@ -963,5 +963,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.8.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "calculate correct scoring for radios",
+    "merge": null,
+    "header": "fix: calculate correct scoring for radios",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0bc12b6561de54db96f3a53938cc58041232cbf3",
+    "gitTags": "",
+    "committerDate": "2019-07-12 19:02:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.8.4"
   }
 ]

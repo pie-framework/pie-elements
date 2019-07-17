@@ -933,5 +933,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@5.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "merge": null,
+    "header": "fix(template-areas): fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b43fa51f68dbd07dda33975c542d02ece6b650c9",
+    "gitTags": "",
+    "committerDate": "2019-07-16 15:34:01 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@5.5.5"
   }
 ]

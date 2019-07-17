@@ -403,5 +403,20 @@
     "committerDate": "2019-07-12 16:47:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@1.8.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "support rationale",
+    "merge": null,
+    "header": "fix: support rationale",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "22d2b035db5a91d28bff796b5ddadf10a0b2d990",
+    "gitTags": "",
+    "committerDate": "2019-07-15 18:55:06 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@1.8.7"
   }
 ]

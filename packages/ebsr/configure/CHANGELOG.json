@@ -573,5 +573,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@2.4.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "support configuration",
+    "merge": null,
+    "header": "feat: support configuration",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "23cdb930e2375684d006b637ba363bf16173f5a9",
+    "gitTags": "",
+    "committerDate": "2019-07-10 19:07:17 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@2.5.0"
   }
 ]

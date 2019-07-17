@@ -738,5 +738,50 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@2.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "merge": null,
+    "header": "fix(template-areas): fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b43fa51f68dbd07dda33975c542d02ece6b650c9",
+    "gitTags": "",
+    "committerDate": "2019-07-16 15:34:01 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": "template-areas",
+    "subject": "fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "merge": null,
+    "header": "fix(template-areas): fixed ebsr not disabling issue in controller when it should [ch2192]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6195b95fd6912c6e6de126c79bc41b0cd1fb2428",
+    "gitTags": "",
+    "committerDate": "2019-07-16 15:27:58 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "support configuration",
+    "merge": null,
+    "header": "feat: support configuration",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "23cdb930e2375684d006b637ba363bf16173f5a9",
+    "gitTags": "",
+    "committerDate": "2019-07-10 19:07:17 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.6.0"
   }
 ]
