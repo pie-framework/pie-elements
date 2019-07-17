@@ -5,7 +5,7 @@ import { isResponseCorrect } from './utils';
 
 const log = debug('pie-elements:ebsr:controller');
 
-const prepareChoice = (env, defaultFeedback) => choice => {
+const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
     value: choice.value
@@ -17,7 +17,7 @@ const prepareChoice = (env, defaultFeedback) => choice => {
     out.rationale = null;
   }
 
-  if (env.mode === 'evaluate') {
+  if (env.mode === 'evaluate' && model.allowFeedback) {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
@@ -39,7 +39,7 @@ const parsePart = (part, key, session, env) => {
   );
 
   let choices = part.choices.map(
-    prepareChoice(env, defaultFeedback)
+    prepareChoice(part, env, defaultFeedback)
   );
 
   if (!part.lockChoiceOrder) {
