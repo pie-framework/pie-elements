@@ -100,10 +100,10 @@ export default class EbsrConfigure extends HTMLElement {
       const info = prepareCustomizationObject(c, this._model);
 
       this.partA.configuration = {
-        ...info._configuration,
+        ...info.configuration,
         ...partADesignConfiguration
       };
-      this.partB.configuration = info._configuration;
+      this.partB.configuration = info.configuration;
       this._configuration = info.configuration;
     });
   }
