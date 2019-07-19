@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.0...@pie-element/ebsr@2.6.1) (2019-07-19)
+
+
+### Bug Fixes
+
+* config settings ([9035c0c](https://github.com/pie-framework/pie-elements/commit/9035c0c))
+
+
+
+
+
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.5.3...@pie-element/ebsr@2.6.0) (2019-07-17)
 
 
