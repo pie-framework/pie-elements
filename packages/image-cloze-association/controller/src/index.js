@@ -15,7 +15,7 @@ export function model(question, session, env) {
       ...questionCamelized,
       responseCorrect:
         env.mode === 'evaluate'
-          ? isResponseCorrect(questionCamelized, session)
+          ? isDefaultOrAltResponseCorrect(questionCamelized, session)
           : undefined,
     };
 
@@ -30,21 +30,36 @@ export function model(question, session, env) {
   });
 }
 
-const isResponseCorrect = (question, session) => {
-  const { validation: { validResponse } } = question;
+const isResponseCorrect = (responses, session) => {
   let isCorrect = true;
   let totalValidResponses = 0;
 
-  validResponse.value.forEach(value => totalValidResponses += value.length);
+  responses.forEach(value => totalValidResponses += value.length);
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach(answer => {
-      if (!validResponse.value[answer.containerIndex].includes(answer.value)) {
+      if (!responses[answer.containerIndex].includes(answer.value)) {
         isCorrect = false;
       }
     });
   } else {
     isCorrect = false;
+  }
+  return isCorrect;
+};
+
+const isDefaultOrAltResponseCorrect = (question, session) => {
+  const { validation: { validResponse: { value }, altResponses } } = question;
+
+  let isCorrect = isResponseCorrect(value, session);
+
+  // Look for correct answers in alternate responses.
+  if (!isCorrect && (altResponses && altResponses.length)) {
+    altResponses.forEach(altResponse => {
+      if (isResponseCorrect(altResponse.value, session)) {
+        isCorrect = true;
+      }
+    })
   }
   return isCorrect;
 };
@@ -80,11 +95,11 @@ const getPartialScore = (question, session) => {
   return parseFloat(str);
 };
 
-const getScore = (config, session, env) => {
+const getScore = (config, session) => {
   const { partialScoring } = config;
+  const correct = isDefaultOrAltResponseCorrect(config, session);
 
-  const score = getPartialScore(config, session);
-  return partialScoring ? score : score === 1 ? 1 : 0;
+  return partialScoring ? getPartialScore(config, session) : (correct ? 1 : 0);
 };
 
 export function outcome(config, session, env) {

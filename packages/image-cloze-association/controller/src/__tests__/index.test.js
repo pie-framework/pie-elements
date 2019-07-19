@@ -76,13 +76,148 @@ describe('controller', () => {
       expect(result.score).toEqual(1);
     });
 
+    describe('alternate correct answers', () => {
+      describe('handles one option', async () => {
+        it('returns score of 1', async () => {
+          const result = await outcome(
+            {
+              ...question,
+              validation: {
+                ...question.validation,
+                alt_responses: [{
+                  score: 1,
+                  value: [
+                    [rhomb],
+                    [square],
+                    [trapeze],
+                    [hexagon]
+                  ]
+                }]
+              }
+            },
+            { answers: [
+                { value: rhomb, containerIndex: 0 },
+                { value: square, containerIndex: 1 },
+                { value: trapeze, containerIndex: 2 },
+                { value: hexagon, containerIndex: 3 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(1);
+        });
+
+        it('returns score of 0', async () => {
+          const result = await outcome(
+            {
+              ...question,
+              validation: {
+                ...question.validation,
+                alt_responses: [{
+                  score: 1,
+                  value: [
+                    [rhomb],
+                    [square],
+                    [trapeze],
+                    [hexagon]
+                  ]
+                }]
+              }
+            },
+            { answers: [
+                { value: rhomb, containerIndex: 3 },
+                { value: square, containerIndex: 1 },
+                { value: trapeze, containerIndex: 2 },
+                { value: hexagon, containerIndex: 0 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0);
+        });
+      });
+
+      describe('handles multiple options', async () => {
+        it('returns score of 1', async () => {
+          const result = await outcome(
+            {
+              ...question,
+              validation: {
+                ...question.validation,
+                alt_responses: [{
+                  score: 1,
+                  value: [
+                    [square],
+                    [rhomb],
+                    [hexagon],
+                    [trapeze]
+                  ]
+                }, {
+                  score: 1,
+                  value: [
+                    [rhomb],
+                    [square],
+                    [trapeze],
+                    [hexagon]
+                  ]
+                }]
+              }
+            },
+            { answers: [
+                { value: rhomb, containerIndex: 0 },
+                { value: square, containerIndex: 1 },
+                { value: trapeze, containerIndex: 2 },
+                { value: hexagon, containerIndex: 3 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(1);
+        });
+
+        it('returns score of 0', async () => {
+          const result = await outcome(
+            {
+              ...question,
+              validation: {
+                ...question.validation,
+                alt_responses: [{
+                  score: 1,
+                  value: [
+                    [square],
+                    [rhomb],
+                    [hexagon],
+                    [trapeze]
+                  ]
+                }, {
+                  score: 1,
+                  value: [
+                    [rhomb],
+                    [square],
+                    [trapeze],
+                    [hexagon]
+                  ]
+                }]
+              }
+            },
+            { answers: [
+                { value: rhomb, containerIndex: 3 },
+                { value: square, containerIndex: 1 },
+                { value: trapeze, containerIndex: 2 },
+                { value: hexagon, containerIndex: 0 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0);
+        });
+      });
+    });
+
     describe('partial scoring', () => {
       beforeEach(() => {
         question = {
           ...question,
-          partialScoring: true,
+          partialScoring: true
         };
       });
+
       it('returns a score of 0.2', async () => {
         const result = await outcome(
           question,
