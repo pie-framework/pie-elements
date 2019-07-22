@@ -111,6 +111,52 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
+    it('returns correct for correctness even with hyphen vs minus sign', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        expression: '{{response}}',
+        responses: [
+          {
+            id: '1',
+            answer: '8-4',
+            alternates: {
+              '1': '4−2',
+            },
+            validation: 'literal'
+          }
+        ],
+      });
+
+      env = { mode: 'evaluate' };
+
+      session = { completeAnswer: '4-2' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = { completeAnswer: '4−2' };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = { completeAnswer: '8-4' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = { completeAnswer: '8−4' };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+    });
+
     it('returns correct for correctness if allowSpaces is true', async () => {
       question = mkQuestion({
         ...defaultModel,
