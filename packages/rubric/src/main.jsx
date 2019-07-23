@@ -50,7 +50,7 @@ class Rubric extends React.Component {
             <List component="nav">
               {points.map((desc,index) => (
                     <ListItem key={index}>
-                      <ListItemText className={classes.rubricCol} primary={`${index} PTS`} />
+                      <ListItemText className={classes.rubricCol} primary={`${value.excludeZero ? index + 1 : index} PTS`} />
                       <ListItemText 
                         primary={<div dangerouslySetInnerHTML={{ __html: desc }}/>}
                       />
