@@ -45,8 +45,8 @@ export default {
       min: -5,
       max: 5,
       padding: 0,
-      step: 1,
-      labelStep: 1,
+      step: 0.5,
+      labelStep: 1.5,
       axisLabel: 'y'
     },
     rationale: 'Rationale goes here!',
