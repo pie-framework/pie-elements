@@ -2037,7 +2037,7 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/feedback/-/feedback-0.4.9.tgz#5f335cc25ee1ed6fad83af11cdfb43dec688565c"
   integrity sha512-a2iM9yxyXMs/epZhsBtys9/EVplis9UVTv+pCAgHKX46oYP+mOipSOZwrS5O1xmVxeKnYF6JUMcwcqSxF7qu9Q==
 
-"@pie-lib/graphing-utils@^1.1.0", "@pie-lib/graphing-utils@^1.1.2":
+"@pie-lib/graphing-utils@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing-utils/-/graphing-utils-1.1.2.tgz#a83ac53bff99ccad52105ca775a39f7093a7ec10"
   integrity sha512-JIJEDPWo5krTFMpkrgML4oaUjjk7eQIa5/qjiLvtZc6zUsGqX8NSlmlhqhGYbMSTxLFulkDHMiigPHLy7mlIRA==
@@ -2046,7 +2046,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^1.0.1", "@pie-lib/graphing@^1.0.4":
+"@pie-lib/graphing@^1.0.1":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-1.2.0.tgz#d3df7d1016c373453dd6477e7acb5e20725bcb7b"
   integrity sha512-5OU/Z9AVjjTCBBfsQILtW7vRwk1mNc28eBmn4FN0zj4odQ+rk/n9f98RVTM2/RBJfN2bzx2/uA9sHHLlwL74KA==
@@ -2055,6 +2055,34 @@
     "@material-ui/core" "^3.8.3"
     "@pie-lib/graphing-utils" "^1.1.2"
     "@pie-lib/plot" "^1.1.4"
+    "@vx/axis" "^0.0.189"
+    "@vx/clip-path" "^0.0.189"
+    "@vx/event" "^0.0.189"
+    "@vx/grid" "^0.0.189"
+    "@vx/point" "^0.0.189"
+    "@vx/shape" "^0.0.189"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    react "^16.8.6"
+    react-draggable "^3.3.0"
+    react-input-autosize "^2.2.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
+"@pie-lib/graphing@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-1.2.2.tgz#a50779abd5f180b74bf27f0478a19483f66e64cf"
+  integrity sha512-Sc+9pszD374u9qVRX36vU0l+B/m4AeoPVogfaOxSDNVudvAJ6kcIquYUFL59CsvZPVDH2XpdVkutRS8CRVUuGQ==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/graphing-utils" "^1.1.2"
+    "@pie-lib/plot" "^1.2.1"
     "@vx/axis" "^0.0.189"
     "@vx/clip-path" "^0.0.189"
     "@vx/event" "^0.0.189"
@@ -2161,6 +2189,30 @@
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-1.1.4.tgz#c694949fd903f5ebb180af990128bee4f673d144"
   integrity sha512-6NCznAkHTYrVlmOfxpgyS0MndWSdiXqNQeZlJx4LDlsWcITlLDzsQOLWC28zZ7joyqB/XLfCKGMCJsLRm/4k1Q==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@vx/axis" "^0.0.183"
+    "@vx/event" "^0.0.182"
+    "@vx/grid" "^0.0.183"
+    "@vx/point" "^0.0.182"
+    "@vx/shape" "^0.0.183"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    react "^16.8.6"
+    react-draggable "^3.1.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
+"@pie-lib/plot@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-1.2.1.tgz#ace8844e520f02516addaf4ceaee46e9023974c4"
+  integrity sha512-VQatSE3yLW1m8inizQOcJI9PCnXa2sV7ImdJ4dWuzoaWh0z1nQqFDzLK/IzkBv/ut+RpuAxJZ++fkNpQDIJL8w==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2401,10 +2453,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.3.3.tgz#43d3ab1398f29ddb44f96786ab4dc78b0c96ee2e"
-  integrity sha512-GeoSQYtwtLZZrWGmzCvyWNsqPItJE8CG7Ij13kFsPkq6c7xn7955MU2RGGvDdPcidwwGdHHqT0xPZY2x0WHCOQ==
+"@pie-ui/graphing@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.3.4.tgz#ff5c81d80b3bc98f3618cccf477107b5d6c20fb5"
+  integrity sha512-CI8KxcDo7wAwMk8wGPZzwjlzdG+huSKX3zN8EZA/F+fRxW8WVmPOkL9/tvSF32ioRSo5nWLGZpDjeiKIe8uQIQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -8686,6 +8738,11 @@ lodash@^4.1.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12
   version "4.17.14"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
+
+lodash@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
 loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
