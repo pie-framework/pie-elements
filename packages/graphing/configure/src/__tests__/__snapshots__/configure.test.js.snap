@@ -99,11 +99,11 @@ exports[`Configure renders snapshot 1`] = `
           "prompt": "Here goes item stem!",
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1,
+            "labelStep": 1.5,
             "max": 5,
             "min": -5,
             "padding": 0,
-            "step": 1,
+            "step": 0.5,
           },
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
@@ -179,11 +179,11 @@ exports[`Configure renders snapshot 1`] = `
           "prompt": "Here goes item stem!",
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1,
+            "labelStep": 1.5,
             "max": 5,
             "min": -5,
             "padding": 0,
-            "step": 1,
+            "step": 0.5,
           },
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
@@ -277,11 +277,11 @@ exports[`Configure renders snapshot 1`] = `
           "prompt": "Here goes item stem!",
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1,
+            "labelStep": 1.5,
             "max": 5,
             "min": -5,
             "padding": 0,
-            "step": 1,
+            "step": 0.5,
           },
           "rationale": "Rationale goes here!",
           "scoringType": "partial scoring",
@@ -388,11 +388,11 @@ exports[`CorrectResponse renders snapshot 1`] = `
         range={
           Object {
             "axisLabel": "y",
-            "labelStep": 1,
+            "labelStep": 1.5,
             "max": 5,
             "min": -5,
             "padding": 0,
-            "step": 1,
+            "step": 0.5,
           }
         }
         size={
@@ -450,11 +450,11 @@ exports[`GraphingConfig renders snapshot 1`] = `
         range={
           Object {
             "axisLabel": "y",
-            "labelStep": 1,
+            "labelStep": 1.5,
             "max": 5,
             "min": -5,
             "padding": 0,
-            "step": 1,
+            "step": 0.5,
           }
         }
         size={

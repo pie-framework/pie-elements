@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@pie-lib/feedback": "^0.4.1",
-    "@pie-lib/graphing-utils": "^1.1.0",
+    "@pie-lib/graphing-utils": "^1.1.2",
     "debug": "^4.1.1"
   },
   "devDependencies": {
