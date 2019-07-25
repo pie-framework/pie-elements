@@ -588,5 +588,20 @@
     "committerDate": "2019-07-10 19:07:17 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@2.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "config settings",
+    "merge": null,
+    "header": "fix: config settings",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9035c0c7d5c418548b8cebd2fdc9b7be492fbbb3",
+    "gitTags": "",
+    "committerDate": "2019-07-18 17:04:03 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@2.5.1"
   }
 ]
