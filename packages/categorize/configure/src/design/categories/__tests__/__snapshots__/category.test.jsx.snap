@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`category snapshot renders 1`] = `
+exports[`category snapshot renders with default props 1`] = `
 <WithStyles(Card)
   className="className"
 >
@@ -20,5 +20,17 @@ exports[`category snapshot renders 1`] = `
       onClick={[MockFunction]}
     />
   </WithStyles(CardActions)>
+</WithStyles(Card)>
+`;
+
+exports[`category snapshot renders without some components if no handlers are provided 1`] = `
+<WithStyles(Card)
+  className="className"
+>
+  <DropTarget(WithStyles(DroppablePlaceHolder))
+    categoryId="1"
+    onDeleteChoice={[MockFunction]}
+    onDropChoice={[MockFunction]}
+  />
 </WithStyles(Card)>
 `;

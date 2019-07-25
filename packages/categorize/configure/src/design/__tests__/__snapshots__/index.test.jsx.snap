@@ -26,12 +26,6 @@ exports[`Design snapshot renders 1`] = `
           Object {
             "categories": Array [
               Object {
-                "choices": Array [
-                  Object {
-                    "content": "content",
-                    "id": "1",
-                  },
-                ],
                 "id": "1",
                 "label": "Category Title",
               },
@@ -84,12 +78,6 @@ exports[`Design snapshot renders 1`] = `
           Object {
             "categories": Array [
               Object {
-                "choices": Array [
-                  Object {
-                    "content": "content",
-                    "id": "1",
-                  },
-                ],
                 "id": "1",
                 "label": "Category Title",
               },
@@ -113,6 +101,11 @@ exports[`Design snapshot renders 1`] = `
         }
         onModelChanged={[Function]}
       />
+      <WithStyles(Header)
+        buttonLabel="ADD AN ALTERNATE RESPONSE"
+        label="Alternate Responses"
+        onAdd={[Function]}
+      />
       <WithStyles(Component) />
       <WithStyles(Choices)
         choices={
@@ -128,12 +121,6 @@ exports[`Design snapshot renders 1`] = `
           Object {
             "categories": Array [
               Object {
-                "choices": Array [
-                  Object {
-                    "content": "content",
-                    "id": "1",
-                  },
-                ],
                 "id": "1",
                 "label": "Category Title",
               },

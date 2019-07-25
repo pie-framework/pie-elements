@@ -14,8 +14,8 @@ export class Category extends React.Component {
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     category: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
     onDeleteChoice: PropTypes.func,
     onAddChoice: PropTypes.func,
     imageSupport: PropTypes.shape({
@@ -37,6 +37,7 @@ export class Category extends React.Component {
       category,
       classes,
       className,
+      onChange,
       onDelete,
       onDeleteChoice,
       onAddChoice,
@@ -45,12 +46,16 @@ export class Category extends React.Component {
 
     return (
       <Card className={classNames(classes.category, className)}>
-        <InputHeader
-          label={category.label}
-          onChange={this.changeLabel}
-          onDelete={onDelete}
-          imageSupport={imageSupport}
-        />
+        {
+          onChange && (
+            <InputHeader
+              label={category.label}
+              onChange={this.changeLabel}
+              onDelete={onDelete}
+              imageSupport={imageSupport}
+            />
+          )
+        }
         <PlaceHolder
           className={classes.placeHolder}
           choices={category.choices}
@@ -58,9 +63,13 @@ export class Category extends React.Component {
           onDropChoice={onAddChoice}
           categoryId={category.id}
         />
-        <CardActions className={classes.actions}>
-          <DeleteButton label={'delete'} onClick={onDelete} />
-        </CardActions>
+        {
+          onDelete && (
+            <CardActions className={classes.actions}>
+              <DeleteButton label={'delete'} onClick={onDelete} />
+            </CardActions>
+          )
+        }
       </Card>
     );
   }

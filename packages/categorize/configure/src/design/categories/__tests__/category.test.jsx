@@ -26,11 +26,22 @@ describe('category', () => {
     const props = { ...defaults, ...extras };
     return shallow(<Category {...props} />);
   };
+
   describe('snapshot', () => {
-    it('renders', () => {
+
+    it('renders with default props', () => {
       w = wrapper();
       expect(w).toMatchSnapshot();
     });
+
+    it('renders without some components if no handlers are provided', () => {
+      w = wrapper({
+        onChange: undefined,
+        onDelete: undefined
+      });
+      expect(w).toMatchSnapshot();
+    });
+
   });
 
   describe('logic', () => {
