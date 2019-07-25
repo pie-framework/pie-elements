@@ -11,7 +11,7 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.7.20",
     "@pie-lib/editable-html": "^7.10.9",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

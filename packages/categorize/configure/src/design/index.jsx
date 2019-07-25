@@ -3,29 +3,32 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
-import Categories from './categories';
-import Choices from './choices';
-import { Divider } from './buttons';
-import { buildCategories } from './builder';
-import debug from 'debug';
-import { uid, withDragContext } from '@pie-lib/drag';
 import {
   FeedbackConfig,
   InputContainer,
   layout,
   settings,
 } from '@pie-lib/config-ui';
-
 import {
   countInAnswer,
   ensureNoExtraChoicesInAnswer
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
+import { uid, withDragContext } from '@pie-lib/drag';
+import debug from 'debug';
+
+import Categories from './categories';
+import AlternateResponses from './categories/alternateResponses';
+import Choices from './choices';
+import { Divider } from './buttons';
+import {
+  buildAlternateResponses,
+  buildCategories
+} from './builder';
+import Header from './header';
 
 const { Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
-
-const log = debug('@pie-element:categorize:configure:design');
 
 export class Design extends React.Component {
   static propTypes = {
@@ -96,6 +99,31 @@ export class Design extends React.Component {
     this.updateModel({ feedback });
   };
 
+  onAddAlternateResponse = () => {
+    const { model: { correctResponse } } = this.props;
+
+    this.updateModel({
+      correctResponse: (correctResponse || []).map(cr => ({
+        ...cr,
+        alternateResponses: [
+          ...(cr.alternateResponses || []),
+          []
+        ]
+      }))
+    });
+  };
+
+  onRemoveAlternateResponse = (index) => {
+    const { model: { correctResponse } } = this.props;
+
+    this.updateModel({
+      correctResponse: (correctResponse || []).map((cr) => ({
+        ...cr,
+        alternateResponses: (cr.alternateResponses || []).filter((alt, altIndex) => altIndex !== index)
+      }))
+    });
+  };
+
   countChoiceInCorrectResponse = choice => {
     const { model } = this.props;
     const out = countInAnswer(choice.id, model.correctResponse);
@@ -118,6 +146,12 @@ export class Design extends React.Component {
     config.choices = config.choices || { label: '', columns: 2 };
 
     const categories = buildCategories(
+      model.categories || [],
+      model.choices || [],
+      model.correctResponse || []
+    );
+
+    const alternateResponses = buildAlternateResponses(
       model.categories || [],
       model.choices || [],
       model.correctResponse || []
@@ -188,12 +222,45 @@ export class Design extends React.Component {
                 />
               </InputContainer>
             )}
+
             <Categories
               imageSupport={imageSupport}
               model={model}
               categories={categories}
               onModelChanged={this.updateModel}
             />
+
+            <Header
+              className={classes.alternatesHeader}
+              label="Alternate Responses"
+              buttonLabel="ADD AN ALTERNATE RESPONSE"
+              onAdd={this.onAddAlternateResponse}
+            />
+
+            {
+              alternateResponses.map((categoriesList, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Header
+                      className={classes.alternatesHeader}
+                      label="Alternate Response"
+                      buttonLabel="REMOVE ALTERNATE RESPONSE"
+                      onAdd={() => this.onRemoveAlternateResponse(index)}
+                    />
+
+                    <AlternateResponses
+                      altIndex={index}
+                      imageSupport={imageSupport}
+                      model={model}
+                      categories={categoriesList}
+                      onModelChanged={this.updateModel}
+                    />
+
+                  </React.Fragment>
+                )
+              })
+            }
+
             <Divider />
             <Choices
               imageSupport={imageSupport}
@@ -218,6 +285,10 @@ export class Design extends React.Component {
 }
 
 const styles = theme => ({
+  alternatesHeader: {
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
+  },
   text: {
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
@@ -236,6 +307,9 @@ const styles = theme => ({
     width: '100%',
     maxWidth: '600px'
   },
+  title: {
+    marginBottom: '30px'
+  }
 });
 
 export default withDragContext(withStyles(styles)(Design));

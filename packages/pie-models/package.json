@@ -29,7 +29,7 @@
     "fs-extra": "^7.0.1",
     "json-schema-deref-sync": "^0.7.0",
     "json-schema-to-markdown": "^1.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
     "typescript-json-schema": "^0.34.0",

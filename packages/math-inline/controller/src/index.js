@@ -14,6 +14,12 @@ function trimSpaces(str = '') {
   return str.replace(/\\ /g, '').replace(/ /g, '');
 }
 
+function processAnswerItem(answerItem = '') {
+  // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
+  // further processing is to be added here if needed
+  return answerItem.replace('−', '-');
+}
+
 function containsDecimal(expression = '') {
   return expression.match(decimalRegex);
 }
@@ -63,8 +69,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
       if (correctResponse.validation === 'literal') {
         for (let i = 0; i < acceptedValues.length; i++) {
-          let answerValueToUse = answerItem;
-          let acceptedValueToUse = acceptedValues[i];
+          let answerValueToUse = processAnswerItem(answerItem);
+          let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
           if (correctResponse.allowDecimals) {
             if (

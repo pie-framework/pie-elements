@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlternateResponses snapshot renders 1`] = `
+<div
+  className="categories className"
+>
+  <div
+    className="categoriesHolder"
+    style={
+      Object {
+        "gridTemplateColumns": "repeat(2, 1fr)",
+      }
+    }
+  >
+    <WithStyles(Category)
+      category={
+        Object {
+          "choices": Array [],
+          "id": "1",
+          "label": "foo",
+        }
+      }
+      key="0"
+      onAddChoice={[Function]}
+      onDeleteChoice={[Function]}
+    />
+  </div>
+</div>
+`;
