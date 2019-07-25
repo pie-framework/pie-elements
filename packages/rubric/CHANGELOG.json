@@ -43,5 +43,20 @@
     "committerDate": "2019-06-07 23:29:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/rubric@1.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "exlude zeros handled in renderiing",
+    "merge": null,
+    "header": "fix: exlude zeros handled in renderiing",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ca8b34e67483c6e320077a6ca186f00f4852531e",
+    "gitTags": " (origin/ch2903/rubric-exclude-zeros-checkbox-not-functional)",
+    "committerDate": "2019-07-23 16:53:50 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/rubric@1.1.8"
   }
 ]

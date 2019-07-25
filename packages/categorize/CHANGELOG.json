@@ -1193,5 +1193,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/categorize@4.6.2"
+  },
+  {
+    "type": "fix",
+    "scope": "categories",
+    "subject": "implemented alternate responses for authoring in the categorize element [ch1255]",
+    "merge": null,
+    "header": "fix(categories): implemented alternate responses for authoring in the categorize element [ch1255]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d2ca06779a18ac0682a4f854246bc1bd2ad9aa4",
+    "gitTags": "",
+    "committerDate": "2019-07-25 09:46:42 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@4.6.4"
   }
 ]
