@@ -7,7 +7,7 @@ import {
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
-import { withDragContext } from '@pie-ui/placement-ordering';
+import { withDragContext } from '@pie-lib/drag';
 
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
