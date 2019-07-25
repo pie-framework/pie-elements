@@ -2188,7 +2188,7 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^1.3.8":
+"@pie-ui/categorize@^1.3.9":
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.3.9.tgz#fa4586aaf3e089118d89971d717b5e6bf283767a"
   integrity sha512-rjx4w9z3aDEL+ULABUteOphUGXtQjuu+FDW5COGip2FwsWrocyG+HEbvndf/YuNyWP4eRk4YRxNbJ2H/gqojAg==
@@ -2205,7 +2205,7 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drag-in-the-blank@^1.6.8":
+"@pie-ui/drag-in-the-blank@^1.6.11":
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.6.11.tgz#21a2659d563ff39cd006ae52dd805599da7346e2"
   integrity sha512-KwlMvv+l1Sn9FQsG2MeWQQJvF7GR31BtcCebw1zsRv8Xh7+nGcHZ4gZaKJXlq9tVB4X68zmhMTx2npokTe0zMQ==
@@ -2222,7 +2222,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.3.22":
+"@pie-ui/drawing-response@^1.3.25":
   version "1.3.25"
   resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.3.25.tgz#4ddf779a705fbfec4567ecdd2a5c6e657b1ab72e"
   integrity sha512-eo6bYiP47V24UA//M48+1CkRRrS5QhEhe0dhaQre6gBf5NK8z7DxUgshbmFvnMxr+mgWKKP0ULGEmLXFfdXB0g==
@@ -2243,7 +2243,7 @@
     react-dom "^16.8.1"
     react-konva "^16.8.7-2"
 
-"@pie-ui/ebsr@^1.1.41":
+"@pie-ui/ebsr@^1.1.44":
   version "1.1.44"
   resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.44.tgz#ec333fb41aac42fac8a2c917368653cf05068e0a"
   integrity sha512-pwwGmtezXuIRwg+xtxUpbiZVGUmHoDvV5DRPp+IdQKzn82XuzLOXrQWY1zhqKxI9Qwrobj6nnoHxGDJYgXfikw==
@@ -2253,7 +2253,7 @@
     classnames "^2.2.5"
     debug "^4.1.1"
 
-"@pie-ui/explicit-constructed-response@^1.5.8":
+"@pie-ui/explicit-constructed-response@^1.5.11":
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.5.11.tgz#148d6309c9b9ba1af6a8b545d8891440198980c8"
   integrity sha512-qnSJ+qM7Dge00nm/uFCM9/hUIF8sHbuDclbV7oQwCtZ91p4wXxUe9dJ4OeZGRpFaK9qYg2v+q7HHR0d2quj+Tg==
@@ -2270,7 +2270,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^3.1.5":
+"@pie-ui/extended-text-entry@^3.1.8":
   version "3.1.8"
   resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.1.8.tgz#9f341d377cbf9fecfa2bfa5f68ff86b474de89ee"
   integrity sha512-8BsYX7WOb8ltAP1AEFybSjlywXazju0FhkmySbs7G9tUMBRxpwX6R2XujW8BJONRJZ4uviDgr5DLZwSXjb7CZg==
@@ -2300,7 +2300,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graph-lines@^2.2.22":
+"@pie-ui/graph-lines@^2.2.25":
   version "2.2.25"
   resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.2.25.tgz#4a7a6d62b6baca4942770f2b77d7e57b57e8bd1d"
   integrity sha512-4MQZVJggu7wjxADUQqEpz/pDYg4an4Ray+lWYoUy44IPpr9hiCNd4awn3ze4Bdh5izzxIvmbum085I0zA42R8g==
@@ -2316,7 +2316,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.3.4":
+"@pie-ui/graphing@^2.3.5":
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.3.5.tgz#2eeecec2fdd30939aaf530a6c6b118f7c70818d6"
   integrity sha512-L8Vdz1AKhV8yCJK2rKKqqsPPwvef2+gZAHGvmYvyZ1LtcajQl1cacBq2qYpsoNNLUzed1znjtQyi5IM7JOjVOw==
@@ -2345,7 +2345,7 @@
     react-dom "^16.8.1"
     react-konva "^16.8.6"
 
-"@pie-ui/image-cloze-association@^1.1.1":
+"@pie-ui/image-cloze-association@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.1.4.tgz#1b975d66bafd10224da7d03b3236775e079b51f5"
   integrity sha512-CYt5PmlZVy7lbhtqmLkcPj2J98NLAQPKxguboHCWCKcL0LoE230XBZ7Rpc08BDrvh+s5mgAZHcSBGHjXS4kInA==
@@ -2374,7 +2374,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/inline-dropdown@^1.6.8":
+"@pie-ui/inline-dropdown@^1.6.11":
   version "1.6.11"
   resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.6.11.tgz#13f4f60e51049507c61d573516a172e31bad5bcf"
   integrity sha512-jj82mHAVT8hM0SOvY57+pe53hvcTVylMql/Jlq+U7SzHSItKQESTsW6A8lNR43+BtfnYoHZAOtxb+cr2YlK5FA==
@@ -2391,7 +2391,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match-list@^1.4.1":
+"@pie-ui/match-list@^1.4.3":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.4.3.tgz#b6c30f38a68dc79eeb697c62dbfec564c62250a2"
   integrity sha512-Zfvro8f66YVNwKdBzYt7qbJ/5Z2vD/DTaWS4vvBeQR0OPtLFZJ8A5tiLHmw14+tWN0hMMGGw3Tt3LRByp/Io9Q==
@@ -2442,7 +2442,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.10.23", "@pie-ui/multiple-choice@^4.10.26":
+"@pie-ui/multiple-choice@^4.10.26":
   version "4.10.26"
   resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.10.26.tgz#31c286825d73a2700203e22438f096ad53e867ba"
   integrity sha512-K9kzsoSCAxHYydQzGKsu6vI5SlYVv2YDbVvLjKJhsG+Qz4A9z4Swq89Pwrbcho50+qYONwTH7LoDp5TiMWQHNQ==
@@ -2494,7 +2494,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/placement-ordering@^4.7.3":
+"@pie-ui/placement-ordering@^4.7.5":
   version "4.7.5"
   resolved "https://registry.yarnpkg.com/@pie-ui/placement-ordering/-/placement-ordering-4.7.5.tgz#1e75d7967670254a791276602561be8ac1cac118"
   integrity sha512-tB51Jrmyfy52Lsq9N519xpVRou4d6zvjfNzYcEhkUO6WfVddZVLngnCJlE6z0qhWpFs/YDHOtC9knvHs0B7QwA==
@@ -10438,7 +10438,7 @@ react-measure@^2.2.2:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
 
-"react-number-format@github:PieElements/react-number-format#feature/bad-input":
+react-number-format@PieElements/react-number-format#feature/bad-input:
   version "3.2.0"
   resolved "https://codeload.github.com/PieElements/react-number-format/tar.gz/ca13da7e71b4aeba759365fc0b08536185749123"
   dependencies:
