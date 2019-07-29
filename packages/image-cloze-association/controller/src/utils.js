@@ -1,15 +1,17 @@
-const getAllCorrectAnswers = (answers, validResponses) =>
+const getAllCorrectness = (answers, responses) =>
   answers.map(answer => ({
     ...answer,
-    isCorrect: validResponses[answer.containerIndex].includes(answer.value)
+    isCorrect: responses[answer.containerIndex].includes(answer.value)
   }));
 
-export const getNumberOfDuplicates = (answers, validResponses) => {
-  const allCorrect = getAllCorrectAnswers(answers, validResponses);
-  let finalAnswers = allCorrect;
+const getValidAnswer = (answer, response) =>
+  response[answer.containerIndex].filter(res => res === answer.value);
 
-  allCorrect.forEach((answer1) => {
-    const valuesToParse = allCorrect.filter(answer2 =>
+export const getAllUniqueCorrectness = (answers, validResponses) => {
+  let allCorrectness = getAllCorrectness(answers, validResponses);
+
+  answers.forEach((answer1) => {
+    const valuesToParse = answers.filter(answer2 =>
       (answer2.value === answer1.value) && (answer2.containerIndex === answer1.containerIndex));
 
     if (valuesToParse.length > 1) {
@@ -17,13 +19,13 @@ export const getNumberOfDuplicates = (answers, validResponses) => {
       valuesToParse.shift();
       // mark duplicates as incorrect
       valuesToParse.forEach((value, index) => {
-        finalAnswers = finalAnswers.map(finalAnswer => {
+        allCorrectness = allCorrectness.map(finalAnswer => {
           if (finalAnswer.id === value.id) {
-            const finalAnswerValues =
-              validResponses[finalAnswer.containerIndex].filter(validResponse => validResponse === finalAnswer.value);
+            let valid = getValidAnswer(finalAnswer, validResponses);
+
             return {
               ...finalAnswer,
-              duplicate: finalAnswer.isCorrect && finalAnswerValues.length <= index + 1
+              isCorrect: valid.length > index + 1
             }
           }
           return finalAnswer;
@@ -31,5 +33,5 @@ export const getNumberOfDuplicates = (answers, validResponses) => {
       });
     }
   });
-  return finalAnswers.filter(a => a.duplicate === true).length;
+  return allCorrectness;
 };

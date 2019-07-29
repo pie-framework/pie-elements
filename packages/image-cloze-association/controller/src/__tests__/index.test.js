@@ -287,6 +287,92 @@ describe('controller', () => {
         );
         expect(result.score).toEqual(1);
       });
+
+      describe('duplicates', () => {
+        it('for 2 correct of 5 minus one deduction returns a score of 0.2', async () => {
+          const result = await outcome(
+            question,
+            {
+              answers: [
+                { value: rhomb, containerIndex: 0, id: 1 },
+                { value: rhomb, containerIndex: 0, id: 2 },
+                { value: rhomb, containerIndex: 1, id: 3 },
+                { value: rhomb, containerIndex: 1, id: 4 },
+                { value: rhomb, containerIndex: 1, id: 5 },
+                { value: rhomb, containerIndex: 1, id: 6 }  // extra object
+              ]
+            }
+          );
+          expect(result.score).toEqual(0.2);
+        });
+
+        it('for 2 correct of 5 returns a score of 0.6', async () => {
+          const result = await outcome(
+            question,
+            {
+              answers: [
+                { value: rhomb, containerIndex: 0, id: 1 },
+                { value: rhomb, containerIndex: 0, id: 2 },
+                { value: rhomb, containerIndex: 1, id: 3 },
+                { value: rhomb, containerIndex: 1, id: 4 },
+                { value: rhomb, containerIndex: 1, id: 5 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0.4);
+        });
+
+
+        it('for 4 correct of 5 minus one deduction returns a score of 0.6', async () => {
+          const result = await outcome(
+            question,
+            {
+              answers: [
+                { value: rhomb, containerIndex: 0, id: 1 },
+                { value: rhomb, containerIndex: 0, id: 2 },
+                { value: rhomb, containerIndex: 0, id: 3 }, // extra object
+                { value: rhomb, containerIndex: 1, id: 4 },
+                { value: square, containerIndex: 1, id: 5 },
+                { value: trapeze, containerIndex: 1, id: 6 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0.6);
+        });
+
+        it('for 5 correct of 5 minus one deduction returns a score of 0.8', async () => {
+          const result = await outcome(
+            question,
+            {
+              answers: [
+                { value: rhomb, containerIndex: 0, id: 1 },
+                { value: square, containerIndex: 0, id: 2 },
+                { value: rhomb, containerIndex: 0, id: 3 }, // extra object
+                { value: rhomb, containerIndex: 1, id: 4 },
+                { value: square, containerIndex: 1, id: 5 },
+                { value: trapeze, containerIndex: 1, id: 6 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0.8);
+        });
+
+        it('for 4 correct of 5 returns a score of 0.8', async () => {
+          const result = await outcome(
+            question,
+            {
+              answers: [
+                { value: rhomb, containerIndex: 0, id: 1 },
+                { value: rhomb, containerIndex: 0, id: 2 },
+                { value: rhomb, containerIndex: 1, id: 3 },
+                { value: square, containerIndex: 1, id: 4 },
+                { value: trapeze, containerIndex: 1, id: 5 }
+              ]
+            }
+          );
+          expect(result.score).toEqual(0.8);
+        });
+      });
     });
 
     describe('model', () => {
