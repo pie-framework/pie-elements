@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.4...@pie-element/categorize-configure@3.5.5) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [3.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.3...@pie-element/categorize-configure@3.5.4) (2019-07-25)
+
+
+### Bug Fixes
+
+* **categories:** implemented alternate responses for authoring in the categorize element [ch1255] ([4d2ca06](https://github.com/pie-framework/pie-elements/commit/4d2ca06))
+
+
+
+
+
 ## [3.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.2...@pie-element/categorize-configure@3.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

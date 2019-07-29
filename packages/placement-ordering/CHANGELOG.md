@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.7...@pie-element/placement-ordering@5.5.8) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [5.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.6...@pie-element/placement-ordering@5.5.7) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [5.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.5...@pie-element/placement-ordering@5.5.6) (2019-07-19)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
 ## [5.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@5.5.3...@pie-element/placement-ordering@5.5.5) (2019-07-17)
 
 

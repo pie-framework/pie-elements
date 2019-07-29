@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.11...@pie-element/explicit-constructed-response@1.7.12) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [1.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.10...@pie-element/explicit-constructed-response@1.7.11) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.9...@pie-element/explicit-constructed-response@1.7.10) (2019-07-19)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 ## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.8...@pie-element/explicit-constructed-response@1.7.9) (2019-07-17)
 
 
