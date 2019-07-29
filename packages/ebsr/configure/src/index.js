@@ -85,13 +85,11 @@ export default class EbsrConfigure extends HTMLElement {
         ...this._configuration,
         ...partADesignConfiguration
       };
-      this.partA.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partA');
 
       this.partB.model = this._model.partB;
       this.partB.configuration = {
         ...this._configuration,
       };
-      this.partB.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partB');
     });
   }
 
