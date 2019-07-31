@@ -2345,16 +2345,17 @@
     react-dom "^16.8.1"
     react-konva "^16.8.6"
 
-"@pie-ui/image-cloze-association@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.1.4.tgz#1b975d66bafd10224da7d03b3236775e079b51f5"
-  integrity sha512-CYt5PmlZVy7lbhtqmLkcPj2J98NLAQPKxguboHCWCKcL0LoE230XBZ7Rpc08BDrvh+s5mgAZHcSBGHjXS4kInA==
+"@pie-ui/image-cloze-association@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.2.1.tgz#af437ee7b32dd8c0f8d332e5217b759e02c42662"
+  integrity sha512-JWDD+jGPQrjO+RmwfsO2v4EYvOBhYVxIeZTWMxk9pK11EFSONBIAJAz1NdZWTPQ7bEZJ7xMpLwTIveJSjfhdxA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.1"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/drag" "^1.1.21"
     "@pie-lib/math-rendering" "^1.2.9"
+    "@pie-lib/render-ui" "^4.3.12"
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"
@@ -2466,6 +2467,27 @@
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.3.tgz#ae6fb11252eb26b4e1c492ef1f6190a9e514744a"
   integrity sha512-dy83ESu2vksWfpZ8pY4VS35bNSK3NCFIgn2yQp1FpLNI7BcfD8wPlmeuf42ayTV865Lw+T29rTd0/mygbqXVjA==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/correct-answer-toggle" "^2.1.2"
+    "@pie-lib/icons" "^2.3.1"
+    "@pie-lib/math-rendering" "^1.3.1"
+    classnames "^2.2.5"
+    d3-scale "^2.0.0"
+    d3-selection "^1.4.0"
+    lodash "^4.17.10"
+    mathjs "^5.4.1"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-draggable "^3.3.0"
+    react-jss "^8.4.0"
+    react-transition-group "^2.3.1"
+
+"@pie-ui/number-line@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.4.tgz#303ae9d693ad50909f0b1de29cd1847844b08b20"
+  integrity sha512-VvAeZ6h8sCuRZGoOrMdglUvEJQWikhbU/QJFXZk3G70YFsf1p6ZEaKYpDeGS7Fxv7hM1LLe561evYPDDOP1Svw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
