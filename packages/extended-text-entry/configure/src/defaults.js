@@ -38,6 +38,11 @@ export default {
       label: 'Student Instructions',
       enabled: true,
     },
+    prompt: {
+      settings: true,
+      label: 'Prompt',
+      enabled: true,
+    },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
