@@ -30,6 +30,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Multiple Parts",
             "settings": false,
           },
+          "prompt": Object {
+            "enabled": true,
+            "label": "Prompt",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "enabled": true,
             "label": "Student Instructions",
@@ -54,6 +59,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "feedback.enabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
+            "prompt.enabled": undefined,
           },
         }
       }
@@ -94,6 +100,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
     >
       <EditableHtml
         markup="This is the question prompt"
+        nonEmpty={false}
         onChange={[Function]}
       />
     </Component>
