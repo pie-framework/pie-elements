@@ -2188,7 +2188,7 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^1.3.9":
+"@pie-ui/categorize@^1.3.10":
   version "1.3.10"
   resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.3.10.tgz#d85fff6f208a8687cc02c6bf23b7552311fa4fb3"
   integrity sha512-WcJv54pu5lIEdHaKChUcRsv+EOivkpxHgYeIfzDkOQ1BpahspNjLnL9t77AO88fLTxKVr3snmo8nY73FqfNe+Q==
@@ -2205,10 +2205,10 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drag-in-the-blank@^1.6.11":
-  version "1.6.12"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.6.12.tgz#293bb0979a5d7ae344c7bfb414a8c31299af29d7"
-  integrity sha512-dklfrmnENwyaqxIU3d0sf0QECihYNWwAwUZFGDc9Do0StfDzsoB055lbbq63vnSNTlAInpCH3mZLjI73T3QkEA==
+"@pie-ui/drag-in-the-blank@^1.6.14":
+  version "1.6.14"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.6.14.tgz#1a2059c5463ecf39ce0436ab7a426b3af9639aee"
+  integrity sha512-q4RBxeKFGsvK/xHNtnzuNLHrx3IeIKahFsfIUnakpnKzGReBB1j6a4noVBij5E+jAytdIuHOH0qhxfK5Lk8QAQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2222,7 +2222,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.3.25":
+"@pie-ui/drawing-response@^1.3.26":
   version "1.3.26"
   resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.3.26.tgz#63b47cb7159bcd74e5d56df1aed8b9f03572bd5b"
   integrity sha512-xBIZOmZ4lIRhumI24XMKUIpeImTmjrL+IuQq0YXHfOYSVwbp/Fytsy7VXmXNWYSyeC7fgRnhslsR+pWmmuwkMg==
@@ -2243,7 +2243,7 @@
     react-dom "^16.8.1"
     react-konva "^16.8.7-2"
 
-"@pie-ui/ebsr@^1.1.44":
+"@pie-ui/ebsr@^1.1.45":
   version "1.1.45"
   resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.45.tgz#2110ee31ed733b89733eb9e86b131bb80360c6b5"
   integrity sha512-7sz07xdPg5MWvN90hhfcxqcYkv7AVUUPjE2Jpm2aOEPgvIz7lzxtF7PBG8qRfLI5tp7qXrIr5bDJNtgrIybtWw==
@@ -2253,7 +2253,7 @@
     classnames "^2.2.5"
     debug "^4.1.1"
 
-"@pie-ui/explicit-constructed-response@^1.5.11":
+"@pie-ui/explicit-constructed-response@^1.5.12":
   version "1.5.12"
   resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.5.12.tgz#082b731bcaef6c05244fe8cc7685545e00799a86"
   integrity sha512-2vUbQFqkvg5SF0KGyYXJQTIAh1KJ6woRKNllxkuFDoYrAPnuq+DBU8SFZ6d9sm5I8mxdULUrI58jMRghU2uGDQ==
@@ -2270,7 +2270,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^3.1.8":
+"@pie-ui/extended-text-entry@^3.1.9":
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.1.9.tgz#3ee70d9bdd4b6ba7e69a8075828c51b0bf86f939"
   integrity sha512-OHEfpKd72GIUXAdZItfbFtHU6e4GoKgju3e4ihKvFU1UVLNJRNjX3od8qTvFdPLvCt3EsgWz+s7Coh0ZA14qGw==
@@ -2300,7 +2300,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graph-lines@^2.2.25":
+"@pie-ui/graph-lines@^2.2.26":
   version "2.2.26"
   resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.2.26.tgz#7d06b49eb05107d9252dcb2f61ed79efc4bb8084"
   integrity sha512-Hm2PGxpdG6eKEU/PePmSRHqjK/Foxee9JmRjIxoa9+Ms6bIUXECeextM184x30X5Fvy3YcbcTHDaIaytkzoGRw==
@@ -2316,7 +2316,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.3.5":
+"@pie-ui/graphing@^2.3.8":
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.3.8.tgz#dcf58d1ae237e67114acf2fc6f098c2ab1148257"
   integrity sha512-5UwWs5CVh5BZk6W9s63hFBhzcy8gGYk+yvWhz/12WFFkaXdsdtVo/YcpcJZcCHB/e1j2+sAEgIejtOliWZlH5g==
@@ -2346,7 +2346,7 @@
     react-dom "^16.8.1"
     react-konva "^16.8.6"
 
-"@pie-ui/image-cloze-association@^1.1.4":
+"@pie-ui/image-cloze-association@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.2.1.tgz#af437ee7b32dd8c0f8d332e5217b759e02c42662"
   integrity sha512-JWDD+jGPQrjO+RmwfsO2v4EYvOBhYVxIeZTWMxk9pK11EFSONBIAJAz1NdZWTPQ7bEZJ7xMpLwTIveJSjfhdxA==
@@ -2376,7 +2376,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/inline-dropdown@^1.6.11":
+"@pie-ui/inline-dropdown@^1.6.12":
   version "1.6.12"
   resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.6.12.tgz#1ec36baf3524c75bb53d0f3f7379da6df29f98e0"
   integrity sha512-Pk1caa5a1aQw/h//UWTs5sEBviKb5kfh5P4PZNGBp15SGBzLgKy76ypWHwB3PnqJap2jkLcJ7eP1nGdgS/2HdA==
@@ -2393,7 +2393,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match-list@^1.4.3":
+"@pie-ui/match-list@^1.4.4":
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.4.4.tgz#f2d7bda4884a035931c017915dc294ac08250939"
   integrity sha512-zy/SfkL5NqxIQgBWmiJhcbMs0x9m1jFT4rF+9dkieaWLEl6WNmr4Tr1CkWy0ubgRaJHeviFoIIynEzMdCUw7DQ==
@@ -2410,10 +2410,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.3.tgz#d20f764ad443d57ad1cd0cf47e52ce09a7170606"
-  integrity sha512-sDLqh6LkIqC1GRoag4d03rcyV6D1yi3R8C6EbEYuwmVIQI47w9pAlR/bGHsrjuAgjoYM16TWkojp1lTseWkiug==
+"@pie-ui/match@^2.3.5":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.5.tgz#c8acc125bbb86b1bbe70a3dd68a9906463b56eb2"
+  integrity sha512-GS3cceS0nCElRYvAw7YzuGRoP4NhGZnO27V+inkvn2qGVePrVEEblMnj7QRXmWc0jBBgUiCqV4SVaodrbGIKwg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
@@ -2444,7 +2444,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.10.26", "@pie-ui/multiple-choice@^4.10.27":
+"@pie-ui/multiple-choice@^4.10.27":
   version "4.10.27"
   resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.10.27.tgz#3f96348c51adabb62434e43527be4af62aa84b4b"
   integrity sha512-PAvBpLOfUBs9/loCZfXxFaR+HOo8QgZ8AdBrXLWVT7oSeWIUmPoFt1/jmbs0IU+P0Y87rb6UKuX5hjavwTmZGw==
@@ -2464,10 +2464,10 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^7.1.3":
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.4.tgz#303ae9d693ad50909f0b1de29cd1847844b08b20"
-  integrity sha512-VvAeZ6h8sCuRZGoOrMdglUvEJQWikhbU/QJFXZk3G70YFsf1p6ZEaKYpDeGS7Fxv7hM1LLe561evYPDDOP1Svw==
+"@pie-ui/number-line@^7.1.5":
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.5.tgz#588bdeefd8b8de0e39aec6cd82e4caa163ebc301"
+  integrity sha512-bNcjIBQ/Az8u7w/Z0s35Gy8x0nq0ENOllmAd+TX88VHgO44ehb+SkL1wfU5FHCkfeazP9DMiP/TPOwFtXktWiw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
@@ -2496,7 +2496,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/placement-ordering@^4.7.5":
+"@pie-ui/placement-ordering@^4.7.6":
   version "4.7.6"
   resolved "https://registry.yarnpkg.com/@pie-ui/placement-ordering/-/placement-ordering-4.7.6.tgz#8777b1309744640ca25604a99789f939d032d4d6"
   integrity sha512-79kkZN9m8g49XOpeCQz2JM5etHwDFMGmSwf6161wm0JnqcNpwjGpHi5c0BVYq1eAjsopjHzSi7TOgaKnPEAHXg==
@@ -10416,7 +10416,7 @@ react-measure@^2.2.2:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.0"
 
-"react-number-format@github:PieElements/react-number-format#feature/bad-input":
+react-number-format@PieElements/react-number-format#feature/bad-input:
   version "3.2.0"
   resolved "https://codeload.github.com/PieElements/react-number-format/tar.gz/ca13da7e71b4aeba759365fc0b08536185749123"
   dependencies:
