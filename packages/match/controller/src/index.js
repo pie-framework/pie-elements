@@ -150,6 +150,7 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
+        allowFeedback: question.allowFeedback,
         prompt: question.prompt,
         config: {
           ...question,
