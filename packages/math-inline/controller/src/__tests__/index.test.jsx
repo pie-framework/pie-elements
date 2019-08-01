@@ -1,4 +1,4 @@
-import { model } from '../index';
+import { model, outcome } from '../index';
 import defaultValues from '../defaults';
 
 describe('model', () => {
@@ -120,11 +120,11 @@ describe('model', () => {
             id: '1',
             answer: '8-4',
             alternates: {
-              '1': '4−2',
+              '1': '4−2'
             },
             validation: 'literal'
           }
-        ],
+        ]
       });
 
       env = { mode: 'evaluate' };
@@ -154,7 +154,6 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-
     });
 
     it('returns correct for correctness if allowSpaces is true', async () => {
@@ -210,5 +209,44 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('incorrect');
       expect(result.correctness.score).toEqual('0%');
     });
+  });
+});
+
+describe('outcome - support', () => {
+  it.only('??', async () => {
+    const model = {
+      equationEditor: 'geometry',
+      responses: [
+        {
+          alternates: {
+            '1': '170-4x'
+          },
+          answer: 'y=-4x+170',
+          validation: 'literal',
+          id: '1',
+          allowSpaces: true
+        }
+      ],
+      id: '4028e4a247efbc8d01480984cb002b97',
+      element: 'math-inline',
+      question:
+        '<p>The interior angles of a triangle have measures of <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msup> <mrow> <mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo></mrow> <mo>°</mo> </msup> </mrow> </math> , <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msup> <mrow> <mo stretchy="false">(</mo><mn>2</mn><mi>x</mi><mo stretchy="false">)</mo></mrow> <mo>°</mo> </msup> </mrow> </math> , and <math xmlns="http://www.w3.org/1998/Math/MathML"> <mrow> <msup> <mrow> <mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>10</mn><mo stretchy="false">)</mo></mrow> <mo>°</mo> </msup> </mrow> </math> .</p><p>What is the value of <math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>y</mi> </math> in terms of <math xmlns="http://www.w3.org/1998/Math/MathML"> <mi>x</mi> </math> ?&nbsp;</p><p>Use the on-screen keyboard to type the correct equation in the box.&nbsp;</p>',
+      responseType: 'Advanced Multi',
+      expression: '{{response}}',
+      rationale:
+        '<p>The sum of the measures of the interior angles of any triangle is 180°. Given this property, it must be that (<span class="variable">x</span> + <span class="variable">y</span>) + (2<span class="variable">x</span>) + (<span class="variable">x</span> + 10) = 180. Simplifying, this is equivalent to 4<span class="variable">x</span> + <span class="variable">y</span> + 10 = 180 or <span class="variable">y</span> = 170&nbsp;– 4<span class="variable">x</span>.&nbsp;</p>'
+    };
+    const session = {
+      id: '4028e4a247efbc8d01480984cb002b97',
+      answers: {
+        r1: {
+          value: '170-4x'
+        }
+      },
+      completeAnswer: '170-4x'
+    };
+    const env = { mode: 'evaluate' };
+    const result = await outcome(model, session, env);
+    expect(result).toEqual({ score: 1 });
   });
 });
