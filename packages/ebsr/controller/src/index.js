@@ -125,3 +125,40 @@ export function outcome(config, session, env) {
     }
   });
 }
+
+const returnPartCorrect = (choices) => {
+  let answers = [];
+
+  choices.forEach(i => {
+    const { correct, value } = i;
+    if (correct) {
+      answers.push(value);
+    }
+  });
+  return answers;
+};
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { partA, partB } = question;
+
+      const partACorrect = returnPartCorrect(partA.choices);
+      const partBCorrect = returnPartCorrect(partB.choices);
+
+      resolve({
+        value: {
+          partA: {
+            id: 'partA',
+            value: partACorrect,
+          },
+          partB: {
+            id: 'partB',
+            value: partBCorrect
+          }
+        },
+        id: '1'
+      });
+    }
+  });
+};
