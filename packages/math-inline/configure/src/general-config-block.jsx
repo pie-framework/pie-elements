@@ -186,7 +186,7 @@ class GeneralConfigBlock extends React.Component {
     this.setState({ showKeypad: true });
   };
 
-  onQuestionFocus = () => {
+  onPromptFocus = () => {
     this.setState({ showKeypad: false });
   };
 
@@ -207,8 +207,14 @@ class GeneralConfigBlock extends React.Component {
           //      </div>
           //   </div>`;
 
-          const genericAnswerBlock = `<div class="${cx(classes.blockContainer, classes.blockContainerGeneric)}">
-                <div class="${cx(classes.blockResponse, classes.blockResponseGeneric)}" id="${data}Index">Response</div>
+          const genericAnswerBlock = `<div class="${cx(
+            classes.blockContainer,
+            classes.blockContainerGeneric
+          )}">
+                <div class="${cx(
+                  classes.blockResponse,
+                  classes.blockResponseGeneric
+                )}" id="${data}Index">Response</div>
               </div>`;
 
           return {
@@ -323,7 +329,7 @@ class GeneralConfigBlock extends React.Component {
     const { classes, model, imageSupport, configuration } = this.props;
     const { showKeypad } = this.state;
     const {
-      question,
+      prompt,
       expression,
       equationEditor,
       responses,
@@ -331,9 +337,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale
     } = model;
-    const {
-      rationale: cRationale
-    } = configuration;
+    const { prompt: cPrompt = {}, rationale: cRationale } = configuration;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -345,18 +349,23 @@ class GeneralConfigBlock extends React.Component {
         ref={r => (this.root = r || this.root)}
         className={classes.container}
       >
-        <InputContainer label="Item Stem" className={classes.promptHolder}>
-          <EditableHtml
-            onFocus={this.onQuestionFocus}
-            className={classes.prompt}
-            markup={question || ''}
-            onChange={this.onChange('question')}
-            imageSupport={imageSupport}
-            nonEmpty={false}
-          />
-        </InputContainer>
+        {cPrompt.enabled && (
+          <InputContainer label="Prompt" className={classes.promptHolder}>
+            <EditableHtml
+              onFocus={this.onPromptFocus}
+              className={classes.prompt}
+              markup={prompt || ''}
+              onChange={this.onChange('prompt')}
+              imageSupport={imageSupport}
+              nonEmpty={false}
+            />
+          </InputContainer>
+        )}
         {cRationale.enabled && (
-          <InputContainer label={cRationale.label} className={classes.promptHolder}>
+          <InputContainer
+            label={cRationale.label}
+            className={classes.promptHolder}
+          >
             <EditableHtml
               className={classes.prompt}
               markup={rationale || ''}

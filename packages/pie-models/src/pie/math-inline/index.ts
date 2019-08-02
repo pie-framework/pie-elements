@@ -57,8 +57,8 @@ export interface MathInlinePie extends PieModel {
     /** Indicates the mode of the question*/
     responseType?: 'Advanced Multi' | 'Simple';
 
-    /** Indicates the question statement */
-    question?: string;
+    /** The item stem for the question */
+    prompt?: string;
 
     /** Indicates the expression for advanced mode */
     expression: string;
