@@ -748,5 +748,35 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.5.2"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "merge": null,
+    "header": "fix(elements): fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "eb227241ba3bc52d7bf7a313f4f85b69e9203e85",
+    "gitTags": "",
+    "committerDate": "2019-08-01 12:43:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.5.8"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "version bump @pie-ui/number-line@7.1.4",
+    "merge": null,
+    "header": "fix: version bump @pie-ui/number-line@7.1.4",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "fe9cc6cb38327e5026c5836a20c9ae2c2b680f7d",
+    "gitTags": "",
+    "committerDate": "2019-07-30 18:33:23 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.5.8"
   }
 ]

@@ -1193,5 +1193,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.5.2"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "question becomes prompt and gets treated universally",
+    "merge": null,
+    "header": "feat(math-inline): question becomes prompt and gets treated universally",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "91cbbe1cfe6f1ac93db2d612380a38d2ca816315",
+    "gitTags": "",
+    "committerDate": "2019-07-30 19:10:21 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.6.0"
   }
 ]

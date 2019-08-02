@@ -348,5 +348,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@2.6.2"
+  },
+  {
+    "type": "feat",
+    "scope": "hotspot",
+    "subject": "universal prompt treatment",
+    "merge": null,
+    "header": "feat(hotspot): universal prompt treatment",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a86bdc3717ef70df416c75392c69f1a163c46f5f",
+    "gitTags": "",
+    "committerDate": "2019-07-31 12:43:18 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@2.7.0"
   }
 ]
