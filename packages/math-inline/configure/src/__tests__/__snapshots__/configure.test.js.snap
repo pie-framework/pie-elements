@@ -16,6 +16,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "label": "Allow Partial Scoring",
               "settings": true,
             },
+            "prompt": Object {
+              "enabled": true,
+              "label": "Prompt",
+              "settings": true,
+            },
             "rationale": Object {
               "enabled": false,
               "label": "Rationale",
@@ -51,6 +56,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
             "Settings": Object {
               "feedback.enabled": undefined,
+              "prompt.enabled": undefined,
               "responseType": undefined,
             },
           }
@@ -148,6 +154,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
               },
               "partialScoring": Object {
                 "label": "Allow Partial Scoring",
+                "settings": true,
+              },
+              "prompt": Object {
+                "enabled": true,
+                "label": "Prompt",
                 "settings": true,
               },
               "rationale": Object {
@@ -263,16 +274,12 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
 >
   <InputContainer
     className="GeneralConfigBlock-promptHolder-12"
-    label="Item Stem"
+    label="Prompt"
   >
     <EditableHtml
       className="GeneralConfigBlock-prompt-13"
       imageSupport={Object {}}
-      markup="<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
- <mrow>
-  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
- </mrow>
-</math> </span></p><p>What <span class=\\"relative-emphasis\\">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>"
+      markup=""
       nonEmpty={false}
       onChange={[Function]}
       onFocus={[Function]}

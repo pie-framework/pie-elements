@@ -71,6 +71,7 @@ export class Configure extends React.Component {
       teacherInstructions = {},
       studentInstructions,
       rationale,
+      prompt = {},
       scoringType
     } = configuration;
     log('[render] model', model);
@@ -90,7 +91,9 @@ export class Configure extends React.Component {
                   responseType: responseType.settings &&
                     radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
                   'feedback.enabled': feedback.settings &&
-                    toggle(feedback.label, true)
+                    toggle(feedback.label, true),
+                  'prompt.enabled': prompt.settings &&
+                    toggle(prompt.label, true)
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
