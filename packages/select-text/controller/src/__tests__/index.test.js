@@ -154,6 +154,28 @@ describe('outcome', () => {
       score: 0.5
     }
   );
+  assert(
+    'score 0 for partially-correct and partialScoring config with deduction',
+    q({
+      partialScoring: true
+    }),
+    s({ selectedTokens: [...q().tokens, { start: 3, end: 4, text: '0' }] }),
+    e({ mode: 'evaluate' }),
+    {
+      score: 0
+    }
+  );
+  assert(
+    'score 0.50 for partially-correct and partialScoring config with deduction',
+    q({
+      partialScoring: true
+    }),
+    s({ selectedTokens: q().tokens }),
+    e({ mode: 'evaluate' }),
+    {
+      score: 0.5
+    }
+  );
 });
 
 describe('model', () => {
