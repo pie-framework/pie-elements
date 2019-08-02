@@ -113,6 +113,8 @@ export class Design extends React.Component {
     });
   };
 
+  onPromptChanged = prompt => this.updateModel({ prompt });
+
   onRemoveAlternateResponse = (index) => {
     const { model: { correctResponse } } = this.props;
 
@@ -139,7 +141,8 @@ export class Design extends React.Component {
       studentInstructions = {},
       rationale = {},
       scoringType = {},
-      feedback = {}
+      feedback = {},
+      prompt = {}
     } = configuration || {};
 
     const config = model.config || {};
@@ -198,6 +201,22 @@ export class Design extends React.Component {
               In Categorize, students may drag &amp; drop answer tiles to the
               appropriate category area(s).
             </Typography>
+
+            {prompt.settings && (
+              <InputContainer
+                label={prompt.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.prompt}
+                  onChange={this.onPromptChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={!prompt.settings}
+                  disableUnderline
+                />
+              </InputContainer>
+            )}
 
             {teacherInstructions.enabled && (
               <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
@@ -306,6 +325,15 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     maxWidth: '600px'
+  },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+    width: '100%'
+  },
+  promptHolder: {
+    width: '100%',
+    paddingBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   title: {
     marginBottom: '30px'

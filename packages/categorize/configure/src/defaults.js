@@ -37,6 +37,10 @@ export default {
       settings: true,
       label: 'Allow Partial Scoring',
     },
+    prompt: {
+      settings: true,
+      label: 'Prompt'
+    },
     rationale: {
       settings: true,
       label: 'Rationale',

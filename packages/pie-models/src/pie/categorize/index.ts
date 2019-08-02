@@ -82,6 +82,9 @@ export interface CategorizePie extends PieModel {
   /** Should the choices be shuffled or not */
   lockChoiceOrder?: boolean;
 
+  /**  The question prompt or item stem */
+  prompt: string;
+
   /**
    * Indicates if the choice, after it is dragged into a category, should be removed from the choices
    * area or should remain in place.
