@@ -1,6 +1,7 @@
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 import defaults from 'lodash/defaults';
+import cloneDeep from 'lodash/cloneDeep';
 
 import sensibleDefaults from './defaults';
 
@@ -47,6 +48,7 @@ export default class EbsrConfigure extends HTMLElement {
     super();
     this._model = EbsrConfigure.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
+    this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   onModelUpdated = e => {
@@ -71,24 +73,29 @@ export default class EbsrConfigure extends HTMLElement {
 
     if (this._model) {
       this._model[part].allowFeedback = (c.feedback || {}).enabled;
+
       this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
     }
-    this._render();
   }
 
   set model(m) {
     this._model = m;
 
+    this.partA.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partA');
+    this.partB.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partB');
+
     customElements.whenDefined(MC_TAG_NAME).then(() => {
       this.partA.model = this._model.partA;
+
       this.partA.configuration = {
-        ...this._configuration,
+        ...cloneDeep(this._configuration),
         ...partADesignConfiguration
       };
 
       this.partB.model = this._model.partB;
+
       this.partB.configuration = {
-        ...this._configuration,
+        ...cloneDeep(this._configuration)
       };
     });
   }

@@ -74,6 +74,11 @@
       "type": "boolean",
       "title": "lockChoiceOrder"
     },
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
     "removeTilesAfterPlacing": {
       "description": "Indicates if the choice, after it is dragged into a category, should be removed from the choices\narea or should remain in place.",
       "type": "boolean",
@@ -374,7 +379,8 @@
     "categories",
     "choices",
     "element",
-    "id"
+    "id",
+    "prompt"
   ],
   "definitions": {
     "ConfigureProp": {

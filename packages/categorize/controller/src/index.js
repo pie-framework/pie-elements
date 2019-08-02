@@ -57,6 +57,7 @@ export const model = (question, session, env) =>
         const out = {
           correctness,
           feedback,
+          prompt: question.prompt,
           choices: question.choices,
           categories: question.categories,
           disabled: env.mode !== 'gather',

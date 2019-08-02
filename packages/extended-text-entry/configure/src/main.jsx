@@ -70,6 +70,7 @@ export class Main extends React.Component {
       multiple,
       feedback,
       teacherInstructions = {},
+      prompt = {},
       studentInstructions,
       mathInput,
       dimensions,
@@ -113,6 +114,8 @@ export class Main extends React.Component {
                 }),
                 'multiple.enabled': multiple.settings &&
                 toggle(multiple.label, true),
+                'prompt.enabled': prompt.settings &&
+                toggle(prompt.label, true),
                 'feedback.enabled': feedback.settings && toggle(feedback.label, true),
               },
               'Properties': {
@@ -143,9 +146,18 @@ export class Main extends React.Component {
           )}
 
           <br />
-          <InputContainer label="Prompt" className={classes.promptContainer}>
-            <EditableHtml markup={model.prompt} onChange={this.onPromptChange} />
-          </InputContainer>
+
+          {prompt.enabled && (
+            <InputContainer label={prompt.label} className={classes.promptContainer}>
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt || ''}
+                onChange={this.onPromptChange}
+                imageSupport={imageSupport}
+                nonEmpty={false}
+              />
+            </InputContainer>
+          )}
 
           {
             feedback.enabled && (

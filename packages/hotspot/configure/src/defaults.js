@@ -35,6 +35,11 @@ export default {
       label: 'Rationale',
       enabled: false
     },
+    prompt: {
+      settings: true,
+      label: 'Prompt',
+      enabled: true
+    },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
