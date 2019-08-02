@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.7.5...@pie-element/hotspot@2.8.0) (2019-08-02)
+
+
+### Features
+
+* **hotspot:** universal prompt treatment ([a86bdc3](https://github.com/pie-framework/pie-elements/commit/a86bdc3))
+
+
+
+
+
 ## [2.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.7.4...@pie-element/hotspot@2.7.5) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/hotspot

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.5.7...@pie-element/select-text@4.5.8) (2019-08-02)
+
+
+### Bug Fixes
+
+* apply scoring deductions ([0d7587d](https://github.com/pie-framework/pie-elements/commit/0d7587d))
+
+
+
+
+
 ## [4.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.5.6...@pie-element/select-text@4.5.7) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/select-text

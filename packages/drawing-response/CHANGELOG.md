@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.5...@pie-element/drawing-response@1.4.6) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+
+
+
+
+
 ## [1.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.4...@pie-element/drawing-response@1.4.5) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/drawing-response

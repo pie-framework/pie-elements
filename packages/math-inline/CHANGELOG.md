@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.6.5...@pie-element/math-inline@2.7.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **math-inline:** controller outcome function output adjusted to 0-1 ([1897473](https://github.com/pie-framework/pie-elements/commit/1897473))
+
+
+### Features
+
+* **math-inline:** question becomes prompt and gets treated universally ([91cbbe1](https://github.com/pie-framework/pie-elements/commit/91cbbe1))
+
+
+
+
+
 ## [2.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.6.4...@pie-element/math-inline@2.6.5) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/math-inline

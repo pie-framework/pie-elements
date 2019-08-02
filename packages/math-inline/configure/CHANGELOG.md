@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.5.4...@pie-element/math-inline-configure@2.6.0) (2019-08-02)
+
+
+### Features
+
+* **math-inline:** question becomes prompt and gets treated universally ([91cbbe1](https://github.com/pie-framework/pie-elements/commit/91cbbe1))
+
+
+
+
+
 ## [2.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.5.3...@pie-element/math-inline-configure@2.5.4) (2019-07-25)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure
