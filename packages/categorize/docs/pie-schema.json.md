@@ -51,6 +51,10 @@ Label to be displayed for the choices
 
 Should the choices be shuffled or not
 
+# `prompt` (string, required)
+
+The question prompt or item stem
+
 # `removeTilesAfterPlacing` (boolean)
 
 Indicates if the choice, after it is dragged into a category, should be removed from the choices
