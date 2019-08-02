@@ -24,14 +24,14 @@ function containsDecimal(expression = '') {
   return expression.match(decimalRegex);
 }
 
-const getResponseCorrectness = (model, answerItem) => {
+const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
   const isAdvanced = model.responseType === ResponseTypes.advanced;
 
   if (!answerItem) {
     return {
       correctness: 'unanswered',
-      score: '0%',
+      score: isOutcome ? 0 : '0%',
       correct: false
     };
   }
@@ -43,13 +43,13 @@ const getResponseCorrectness = (model, answerItem) => {
   );
   const correctnessObject = {
     correctness: 'incorrect',
-    score: '0%',
+    score: isOutcome ? 0 : '0%',
     correct: false
   };
 
   if (isAnswerCorrect) {
     correctnessObject.correctness = 'correct';
-    correctnessObject.score = '100%';
+    correctnessObject.score = isOutcome ? 1 : '100%';
     correctnessObject.correct = true;
   }
 
@@ -140,13 +140,14 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
   return answerCorrect;
 }
 
-const getCorrectness = (question, env, session) => {
+const getCorrectness = (question, env, session, isOutcome) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
       question.responseType === ResponseTypes.advanced
         ? session.completeAnswer || ''
-        : session.response
+        : session.response,
+      isOutcome
     );
   }
 };
@@ -167,7 +168,7 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      const correctness = getCorrectness(question, env, session);
+      const correctness = getCorrectness(question, env, session, true);
 
       const out = {
         score: correctness.score
