@@ -1,0 +1,2548 @@
+{
+  "description": "NOTE: There's no functionality described for studentInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graphing",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "answers": {
+      "description": "Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex",
+      "type": "object",
+      "properties": {
+        "correctAnswer": {
+          "title": "Answer",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Indicates name of answer",
+              "type": "string",
+              "title": "name"
+            },
+            "marks": {
+              "description": "Indicates marks for the answer",
+              "type": "array",
+              "items": [
+                {
+                  "title": "Mark",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "description": "Indicates type of mark",
+                      "enum": [
+                        "circle",
+                        "line",
+                        "parabola",
+                        "point",
+                        "polygon",
+                        "ray",
+                        "segment",
+                        "sine",
+                        "vector"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "showLabel": {
+                      "description": "Indicates if label should be visible",
+                      "type": "boolean",
+                      "title": "showLabel"
+                    },
+                    "label": {
+                      "description": "Indicates label value for mark",
+                      "type": "string",
+                      "title": "label"
+                    },
+                    "building": {
+                      "description": "Indicates if mark is in build process",
+                      "type": "boolean",
+                      "title": "building"
+                    },
+                    "x": {
+                      "description": "Indicates x coordinate if type is point",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate if type is point",
+                      "type": "number",
+                      "title": "y"
+                    },
+                    "from": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "to": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "center": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "outerPoint": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "closed": {
+                      "description": "Indicates if mark is closed if type is polygon, sine",
+                      "type": "boolean",
+                      "title": "closed"
+                    },
+                    "points": {
+                      "description": "Indicates all mark's points if type is polygon",
+                      "type": "array",
+                      "items": [
+                        {
+                          "title": "Point",
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "description": "Indicates x coordinate",
+                              "type": "number",
+                              "title": "x"
+                            },
+                            "y": {
+                              "description": "Indicates y coordinate",
+                              "type": "number",
+                              "title": "y"
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y"
+                          ]
+                        }
+                      ],
+                      "minItems": 1,
+                      "additionalItems": {
+                        "anyOf": [
+                          {
+                            "title": "Point",
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "description": "Indicates x coordinate",
+                                "type": "number",
+                                "title": "x"
+                              },
+                              "y": {
+                                "description": "Indicates y coordinate",
+                                "type": "number",
+                                "title": "y"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y"
+                            ]
+                          }
+                        ]
+                      },
+                      "title": "points"
+                    },
+                    "root": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "edge": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "building",
+                    "type"
+                  ]
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "anyOf": [
+                  {
+                    "title": "Mark",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Indicates type of mark",
+                        "enum": [
+                          "circle",
+                          "line",
+                          "parabola",
+                          "point",
+                          "polygon",
+                          "ray",
+                          "segment",
+                          "sine",
+                          "vector"
+                        ],
+                        "type": "string",
+                        "title": "type"
+                      },
+                      "showLabel": {
+                        "description": "Indicates if label should be visible",
+                        "type": "boolean",
+                        "title": "showLabel"
+                      },
+                      "label": {
+                        "description": "Indicates label value for mark",
+                        "type": "string",
+                        "title": "label"
+                      },
+                      "building": {
+                        "description": "Indicates if mark is in build process",
+                        "type": "boolean",
+                        "title": "building"
+                      },
+                      "x": {
+                        "description": "Indicates x coordinate if type is point",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate if type is point",
+                        "type": "number",
+                        "title": "y"
+                      },
+                      "from": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "to": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "center": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "outerPoint": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "closed": {
+                        "description": "Indicates if mark is closed if type is polygon, sine",
+                        "type": "boolean",
+                        "title": "closed"
+                      },
+                      "points": {
+                        "description": "Indicates all mark's points if type is polygon",
+                        "type": "array",
+                        "items": [
+                          {
+                            "title": "Point",
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "description": "Indicates x coordinate",
+                                "type": "number",
+                                "title": "x"
+                              },
+                              "y": {
+                                "description": "Indicates y coordinate",
+                                "type": "number",
+                                "title": "y"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y"
+                            ]
+                          }
+                        ],
+                        "minItems": 1,
+                        "additionalItems": {
+                          "anyOf": [
+                            {
+                              "title": "Point",
+                              "type": "object",
+                              "properties": {
+                                "x": {
+                                  "description": "Indicates x coordinate",
+                                  "type": "number",
+                                  "title": "x"
+                                },
+                                "y": {
+                                  "description": "Indicates y coordinate",
+                                  "type": "number",
+                                  "title": "y"
+                                }
+                              },
+                              "required": [
+                                "x",
+                                "y"
+                              ]
+                            }
+                          ]
+                        },
+                        "title": "points"
+                      },
+                      "root": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "edge": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "building",
+                      "type"
+                    ]
+                  }
+                ]
+              },
+              "title": "marks"
+            }
+          },
+          "required": [
+            "marks",
+            "name"
+          ]
+        },
+        "alternate1": {
+          "title": "Answer",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Indicates name of answer",
+              "type": "string",
+              "title": "name"
+            },
+            "marks": {
+              "description": "Indicates marks for the answer",
+              "type": "array",
+              "items": [
+                {
+                  "title": "Mark",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "description": "Indicates type of mark",
+                      "enum": [
+                        "circle",
+                        "line",
+                        "parabola",
+                        "point",
+                        "polygon",
+                        "ray",
+                        "segment",
+                        "sine",
+                        "vector"
+                      ],
+                      "type": "string",
+                      "title": "type"
+                    },
+                    "showLabel": {
+                      "description": "Indicates if label should be visible",
+                      "type": "boolean",
+                      "title": "showLabel"
+                    },
+                    "label": {
+                      "description": "Indicates label value for mark",
+                      "type": "string",
+                      "title": "label"
+                    },
+                    "building": {
+                      "description": "Indicates if mark is in build process",
+                      "type": "boolean",
+                      "title": "building"
+                    },
+                    "x": {
+                      "description": "Indicates x coordinate if type is point",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate if type is point",
+                      "type": "number",
+                      "title": "y"
+                    },
+                    "from": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "to": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "center": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "outerPoint": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "closed": {
+                      "description": "Indicates if mark is closed if type is polygon, sine",
+                      "type": "boolean",
+                      "title": "closed"
+                    },
+                    "points": {
+                      "description": "Indicates all mark's points if type is polygon",
+                      "type": "array",
+                      "items": [
+                        {
+                          "title": "Point",
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "description": "Indicates x coordinate",
+                              "type": "number",
+                              "title": "x"
+                            },
+                            "y": {
+                              "description": "Indicates y coordinate",
+                              "type": "number",
+                              "title": "y"
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y"
+                          ]
+                        }
+                      ],
+                      "minItems": 1,
+                      "additionalItems": {
+                        "anyOf": [
+                          {
+                            "title": "Point",
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "description": "Indicates x coordinate",
+                                "type": "number",
+                                "title": "x"
+                              },
+                              "y": {
+                                "description": "Indicates y coordinate",
+                                "type": "number",
+                                "title": "y"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y"
+                            ]
+                          }
+                        ]
+                      },
+                      "title": "points"
+                    },
+                    "root": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    },
+                    "edge": {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "building",
+                    "type"
+                  ]
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "anyOf": [
+                  {
+                    "title": "Mark",
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "description": "Indicates type of mark",
+                        "enum": [
+                          "circle",
+                          "line",
+                          "parabola",
+                          "point",
+                          "polygon",
+                          "ray",
+                          "segment",
+                          "sine",
+                          "vector"
+                        ],
+                        "type": "string",
+                        "title": "type"
+                      },
+                      "showLabel": {
+                        "description": "Indicates if label should be visible",
+                        "type": "boolean",
+                        "title": "showLabel"
+                      },
+                      "label": {
+                        "description": "Indicates label value for mark",
+                        "type": "string",
+                        "title": "label"
+                      },
+                      "building": {
+                        "description": "Indicates if mark is in build process",
+                        "type": "boolean",
+                        "title": "building"
+                      },
+                      "x": {
+                        "description": "Indicates x coordinate if type is point",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate if type is point",
+                        "type": "number",
+                        "title": "y"
+                      },
+                      "from": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "to": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "center": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "outerPoint": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "closed": {
+                        "description": "Indicates if mark is closed if type is polygon, sine",
+                        "type": "boolean",
+                        "title": "closed"
+                      },
+                      "points": {
+                        "description": "Indicates all mark's points if type is polygon",
+                        "type": "array",
+                        "items": [
+                          {
+                            "title": "Point",
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "description": "Indicates x coordinate",
+                                "type": "number",
+                                "title": "x"
+                              },
+                              "y": {
+                                "description": "Indicates y coordinate",
+                                "type": "number",
+                                "title": "y"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y"
+                            ]
+                          }
+                        ],
+                        "minItems": 1,
+                        "additionalItems": {
+                          "anyOf": [
+                            {
+                              "title": "Point",
+                              "type": "object",
+                              "properties": {
+                                "x": {
+                                  "description": "Indicates x coordinate",
+                                  "type": "number",
+                                  "title": "x"
+                                },
+                                "y": {
+                                  "description": "Indicates y coordinate",
+                                  "type": "number",
+                                  "title": "y"
+                                }
+                              },
+                              "required": [
+                                "x",
+                                "y"
+                              ]
+                            }
+                          ]
+                        },
+                        "title": "points"
+                      },
+                      "root": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      },
+                      "edge": {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "building",
+                      "type"
+                    ]
+                  }
+                ]
+              },
+              "title": "marks"
+            }
+          },
+          "required": [
+            "marks",
+            "name"
+          ]
+        }
+      },
+      "required": [
+        "alternate1",
+        "correctAnswer"
+      ],
+      "title": "answers"
+    },
+    "arrows": {
+      "description": "Indicates if arrows are enabled",
+      "type": "boolean",
+      "title": "arrows"
+    },
+    "backgroundMarks": {
+      "description": "Indicates marks that have to be displayed in background",
+      "type": "array",
+      "items": [
+        {
+          "title": "Mark",
+          "type": "object",
+          "properties": {
+            "type": {
+              "description": "Indicates type of mark",
+              "enum": [
+                "circle",
+                "line",
+                "parabola",
+                "point",
+                "polygon",
+                "ray",
+                "segment",
+                "sine",
+                "vector"
+              ],
+              "type": "string",
+              "title": "type"
+            },
+            "showLabel": {
+              "description": "Indicates if label should be visible",
+              "type": "boolean",
+              "title": "showLabel"
+            },
+            "label": {
+              "description": "Indicates label value for mark",
+              "type": "string",
+              "title": "label"
+            },
+            "building": {
+              "description": "Indicates if mark is in build process",
+              "type": "boolean",
+              "title": "building"
+            },
+            "x": {
+              "description": "Indicates x coordinate if type is point",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate if type is point",
+              "type": "number",
+              "title": "y"
+            },
+            "from": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "to": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "center": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "outerPoint": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "closed": {
+              "description": "Indicates if mark is closed if type is polygon, sine",
+              "type": "boolean",
+              "title": "closed"
+            },
+            "points": {
+              "description": "Indicates all mark's points if type is polygon",
+              "type": "array",
+              "items": [
+                {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                }
+              ],
+              "minItems": 1,
+              "additionalItems": {
+                "anyOf": [
+                  {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  }
+                ]
+              },
+              "title": "points"
+            },
+            "root": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "edge": {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            }
+          },
+          "required": [
+            "building",
+            "type"
+          ]
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "title": "Mark",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Indicates type of mark",
+                "enum": [
+                  "circle",
+                  "line",
+                  "parabola",
+                  "point",
+                  "polygon",
+                  "ray",
+                  "segment",
+                  "sine",
+                  "vector"
+                ],
+                "type": "string",
+                "title": "type"
+              },
+              "showLabel": {
+                "description": "Indicates if label should be visible",
+                "type": "boolean",
+                "title": "showLabel"
+              },
+              "label": {
+                "description": "Indicates label value for mark",
+                "type": "string",
+                "title": "label"
+              },
+              "building": {
+                "description": "Indicates if mark is in build process",
+                "type": "boolean",
+                "title": "building"
+              },
+              "x": {
+                "description": "Indicates x coordinate if type is point",
+                "type": "number",
+                "title": "x"
+              },
+              "y": {
+                "description": "Indicates y coordinate if type is point",
+                "type": "number",
+                "title": "y"
+              },
+              "from": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              },
+              "to": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              },
+              "center": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              },
+              "outerPoint": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              },
+              "closed": {
+                "description": "Indicates if mark is closed if type is polygon, sine",
+                "type": "boolean",
+                "title": "closed"
+              },
+              "points": {
+                "description": "Indicates all mark's points if type is polygon",
+                "type": "array",
+                "items": [
+                  {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  }
+                ],
+                "minItems": 1,
+                "additionalItems": {
+                  "anyOf": [
+                    {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    }
+                  ]
+                },
+                "title": "points"
+              },
+              "root": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              },
+              "edge": {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              }
+            },
+            "required": [
+              "building",
+              "type"
+            ]
+          }
+        ]
+      },
+      "title": "backgroundMarks"
+    },
+    "domain": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "graph": {
+      "title": "Graph",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for graph representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for graph representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "labels": {
+      "title": "Labels",
+      "type": "object",
+      "properties": {
+        "top": {
+          "description": "Label for top side of the graph",
+          "type": "string",
+          "title": "top"
+        },
+        "bottom": {
+          "description": "Label for bottom side of the graph",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Label for left side of the graph",
+          "type": "string",
+          "title": "left"
+        },
+        "right": {
+          "description": "Label for right side of the graph",
+          "type": "string",
+          "title": "right"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ]
+    },
+    "padding": {
+      "description": "Indicates if padding is enabled",
+      "type": "boolean",
+      "title": "padding"
+    },
+    "prompt": {
+      "description": "Indicates prompt value",
+      "type": "string",
+      "title": "prompt"
+    },
+    "range": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "rationale": {
+      "description": "Indicates rationale for the answer",
+      "type": "string",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "dichotomous",
+        "partial scoring"
+      ],
+      "type": "string",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "title": {
+      "description": "Indicates graph title",
+      "type": "string",
+      "title": "title"
+    },
+    "toolbarTools": {
+      "description": "Indicates the tools that have to be displayed in toolbar",
+      "type": "array",
+      "items": [
+        {
+          "enum": [
+            "circle",
+            "label",
+            "line",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector"
+          ],
+          "type": "string"
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "enum": [
+              "circle",
+              "label",
+              "line",
+              "parabola",
+              "point",
+              "polygon",
+              "ray",
+              "segment",
+              "sine",
+              "vector"
+            ],
+            "type": "string"
+          }
+        ]
+      },
+      "title": "toolbarTools"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "answers",
+    "backgroundMarks",
+    "domain",
+    "element",
+    "graph",
+    "id",
+    "range"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "Answer": {
+      "title": "Answer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Indicates name of answer",
+          "type": "string",
+          "title": "name"
+        },
+        "marks": {
+          "description": "Indicates marks for the answer",
+          "type": "array",
+          "items": [
+            {
+              "title": "Mark",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "description": "Indicates type of mark",
+                  "enum": [
+                    "circle",
+                    "line",
+                    "parabola",
+                    "point",
+                    "polygon",
+                    "ray",
+                    "segment",
+                    "sine",
+                    "vector"
+                  ],
+                  "type": "string",
+                  "title": "type"
+                },
+                "showLabel": {
+                  "description": "Indicates if label should be visible",
+                  "type": "boolean",
+                  "title": "showLabel"
+                },
+                "label": {
+                  "description": "Indicates label value for mark",
+                  "type": "string",
+                  "title": "label"
+                },
+                "building": {
+                  "description": "Indicates if mark is in build process",
+                  "type": "boolean",
+                  "title": "building"
+                },
+                "x": {
+                  "description": "Indicates x coordinate if type is point",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate if type is point",
+                  "type": "number",
+                  "title": "y"
+                },
+                "from": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "to": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "center": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "outerPoint": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "closed": {
+                  "description": "Indicates if mark is closed if type is polygon, sine",
+                  "type": "boolean",
+                  "title": "closed"
+                },
+                "points": {
+                  "description": "Indicates all mark's points if type is polygon",
+                  "type": "array",
+                  "items": [
+                    {
+                      "title": "Point",
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "description": "Indicates x coordinate",
+                          "type": "number",
+                          "title": "x"
+                        },
+                        "y": {
+                          "description": "Indicates y coordinate",
+                          "type": "number",
+                          "title": "y"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y"
+                      ]
+                    }
+                  ],
+                  "minItems": 1,
+                  "additionalItems": {
+                    "anyOf": [
+                      {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "points"
+                },
+                "root": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                },
+                "edge": {
+                  "title": "Point",
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "description": "Indicates x coordinate",
+                      "type": "number",
+                      "title": "x"
+                    },
+                    "y": {
+                      "description": "Indicates y coordinate",
+                      "type": "number",
+                      "title": "y"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ]
+                }
+              },
+              "required": [
+                "building",
+                "type"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "title": "Mark",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "Indicates type of mark",
+                    "enum": [
+                      "circle",
+                      "line",
+                      "parabola",
+                      "point",
+                      "polygon",
+                      "ray",
+                      "segment",
+                      "sine",
+                      "vector"
+                    ],
+                    "type": "string",
+                    "title": "type"
+                  },
+                  "showLabel": {
+                    "description": "Indicates if label should be visible",
+                    "type": "boolean",
+                    "title": "showLabel"
+                  },
+                  "label": {
+                    "description": "Indicates label value for mark",
+                    "type": "string",
+                    "title": "label"
+                  },
+                  "building": {
+                    "description": "Indicates if mark is in build process",
+                    "type": "boolean",
+                    "title": "building"
+                  },
+                  "x": {
+                    "description": "Indicates x coordinate if type is point",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate if type is point",
+                    "type": "number",
+                    "title": "y"
+                  },
+                  "from": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  },
+                  "to": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  },
+                  "center": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  },
+                  "outerPoint": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  },
+                  "closed": {
+                    "description": "Indicates if mark is closed if type is polygon, sine",
+                    "type": "boolean",
+                    "title": "closed"
+                  },
+                  "points": {
+                    "description": "Indicates all mark's points if type is polygon",
+                    "type": "array",
+                    "items": [
+                      {
+                        "title": "Point",
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "description": "Indicates x coordinate",
+                            "type": "number",
+                            "title": "x"
+                          },
+                          "y": {
+                            "description": "Indicates y coordinate",
+                            "type": "number",
+                            "title": "y"
+                          }
+                        },
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                      }
+                    ],
+                    "minItems": 1,
+                    "additionalItems": {
+                      "anyOf": [
+                        {
+                          "title": "Point",
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "description": "Indicates x coordinate",
+                              "type": "number",
+                              "title": "x"
+                            },
+                            "y": {
+                              "description": "Indicates y coordinate",
+                              "type": "number",
+                              "title": "y"
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y"
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "points"
+                  },
+                  "root": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  },
+                  "edge": {
+                    "title": "Point",
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "description": "Indicates x coordinate",
+                        "type": "number",
+                        "title": "x"
+                      },
+                      "y": {
+                        "description": "Indicates y coordinate",
+                        "type": "number",
+                        "title": "y"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ]
+                  }
+                },
+                "required": [
+                  "building",
+                  "type"
+                ]
+              }
+            ]
+          },
+          "title": "marks"
+        }
+      },
+      "required": [
+        "marks",
+        "name"
+      ]
+    },
+    "Mark": {
+      "title": "Mark",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Indicates type of mark",
+          "enum": [
+            "circle",
+            "line",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector"
+          ],
+          "type": "string",
+          "title": "type"
+        },
+        "showLabel": {
+          "description": "Indicates if label should be visible",
+          "type": "boolean",
+          "title": "showLabel"
+        },
+        "label": {
+          "description": "Indicates label value for mark",
+          "type": "string",
+          "title": "label"
+        },
+        "building": {
+          "description": "Indicates if mark is in build process",
+          "type": "boolean",
+          "title": "building"
+        },
+        "x": {
+          "description": "Indicates x coordinate if type is point",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "Indicates y coordinate if type is point",
+          "type": "number",
+          "title": "y"
+        },
+        "from": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "to": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "center": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "outerPoint": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "closed": {
+          "description": "Indicates if mark is closed if type is polygon, sine",
+          "type": "boolean",
+          "title": "closed"
+        },
+        "points": {
+          "description": "Indicates all mark's points if type is polygon",
+          "type": "array",
+          "items": [
+            {
+              "title": "Point",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "description": "Indicates x coordinate",
+                  "type": "number",
+                  "title": "x"
+                },
+                "y": {
+                  "description": "Indicates y coordinate",
+                  "type": "number",
+                  "title": "y"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "title": "Point",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "description": "Indicates x coordinate",
+                    "type": "number",
+                    "title": "x"
+                  },
+                  "y": {
+                    "description": "Indicates y coordinate",
+                    "type": "number",
+                    "title": "y"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ]
+              }
+            ]
+          },
+          "title": "points"
+        },
+        "root": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        },
+        "edge": {
+          "title": "Point",
+          "type": "object",
+          "properties": {
+            "x": {
+              "description": "Indicates x coordinate",
+              "type": "number",
+              "title": "x"
+            },
+            "y": {
+              "description": "Indicates y coordinate",
+              "type": "number",
+              "title": "y"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        }
+      },
+      "required": [
+        "building",
+        "type"
+      ]
+    },
+    "Point": {
+      "title": "Point",
+      "type": "object",
+      "properties": {
+        "x": {
+          "description": "Indicates x coordinate",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "Indicates y coordinate",
+          "type": "number",
+          "title": "y"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ]
+    },
+    "GraphSettings": {
+      "title": "GraphSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "padding": {
+          "description": "Padding value",
+          "type": "number",
+          "title": "padding"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "padding",
+        "step"
+      ]
+    },
+    "Graph": {
+      "title": "Graph",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for graph representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for graph representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "Labels": {
+      "title": "Labels",
+      "type": "object",
+      "properties": {
+        "top": {
+          "description": "Label for top side of the graph",
+          "type": "string",
+          "title": "top"
+        },
+        "bottom": {
+          "description": "Label for bottom side of the graph",
+          "type": "string",
+          "title": "bottom"
+        },
+        "left": {
+          "description": "Label for left side of the graph",
+          "type": "string",
+          "title": "left"
+        },
+        "right": {
+          "description": "Label for right side of the graph",
+          "type": "string",
+          "title": "right"
+        }
+      },
+      "required": [
+        "bottom",
+        "left",
+        "right",
+        "top"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
