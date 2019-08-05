@@ -106,3 +106,14 @@ export function outcome(model, session) {
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      resolve({
+        value: question.correctResponse,
+        id: '1'
+      });
+    }
+  });
+};
