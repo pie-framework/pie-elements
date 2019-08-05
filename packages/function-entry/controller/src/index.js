@@ -62,3 +62,16 @@ export function model(question, session, env) {
     });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { equation } = question;
+
+      resolve({
+        id: '1',
+        value: equation
+      });
+    }
+  });
+};
