@@ -1,18 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { chartTypes } from '@pie-lib/charting';
-
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
+
 import ChartingConfig from './charting-config';
 import CorrectResponse from './correct-response';
 import ChartType from './chart-type';
 
-const { Panel, toggle, radio, numberFields } = settings;
 const log = debug('@pie-element:graphing:configure');
+const { Panel, toggle, radio, numberFields } = settings;
 
 const styles = theme => ({
   title: {
@@ -57,29 +57,13 @@ export class Configure extends React.Component {
 
   static defaultProps = { classes: {} };
 
-  onRationaleChange = rationale => {
-    const { onModelChanged, model } = this.props;
+  onRationaleChange = rationale => this.props.onModelChanged({ ...this.props.model, rationale });
 
-    onModelChanged({ ...model, rationale });
-  };
+  onPromptChange = prompt => this.props.onModelChanged({ ...this.props.model, prompt });
 
-  onPromptChange = prompt => {
-    const { onModelChanged, model } = this.props;
+  onTeacherInstructionsChange = teacherInstructions => this.props.onModelChanged({ ...this.props.model, teacherInstructions });
 
-    onModelChanged({ ...model, prompt });
-  };
-
-  onTeacherInstructionsChange = teacherInstructions => {
-    const { onModelChanged, model } = this.props;
-
-    onModelChanged({ ...model, teacherInstructions });
-  };
-
-  onChartTypeChange = chartType => {
-    const { onModelChanged, model } = this.props;
-
-    onModelChanged({ ...model, chartType });
-  };
+  onChartTypeChange = chartType => this.props.onModelChanged({ ...this.props.model, chartType });
 
   render() {
     const {
@@ -90,21 +74,16 @@ export class Configure extends React.Component {
       onModelChanged,
       imageSupport
     } = this.props;
-    const config = model.graph;
-
+    log('[render] model', model);
+    const { graph } = model;
     const {
       title,
-      labels,
-
       rationale,
       scoringType,
       studentInstructions,
       teacherInstructions,
-
       prompt = {},
-      authoring
     } = configuration;
-    log('[render] model', model);
 
     return (
       <layout.ConfigLayout
@@ -117,7 +96,6 @@ export class Configure extends React.Component {
             groups={{
               'Item Type': {
                 'title.enabled': title.settings && toggle(title.label, true),
-                labels: labels.settings && toggle(labels.label),
                 graph: numberFields('Graph Display Size', {
                   domain: {
                     label: 'Domain',
@@ -134,8 +112,6 @@ export class Configure extends React.Component {
                 })
               },
               Properties: {
-                'authoring.enabled':
-                  authoring.settings && toggle(authoring.label, true),
                 'teacherInstructions.enabled':
                   teacherInstructions.settings &&
                   toggle(teacherInstructions.label, true),
@@ -146,7 +122,7 @@ export class Configure extends React.Component {
                   rationale.settings && toggle(rationale.label, true),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['dichotomous', 'partial scoring'])
+                  radio(scoringType.label, ['all or nothing', 'partial scoring'])
               }
             }}
           />
@@ -155,9 +131,9 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a line that meets specific
-              criteria. The student will draw the line by clicking on two points
-              on the graph.
+              This interaction asks a student to draw a chart that meets specific criteria.
+              The student will draw a category on the chart by clicking Add Category
+              and dragging the top part of the category.
             </span>
           </Typography>
 
@@ -209,19 +185,16 @@ export class Configure extends React.Component {
           />
 
           <ChartingConfig
-            authoringEnabled={
-              configuration.authoring && configuration.authoring.enabled
-            }
-            config={config}
+            config={graph}
             model={model}
-            onChange={this.props.onModelChanged}
+            onChange={onModelChanged}
             charts={charts}
           />
 
           <CorrectResponse
-            config={config}
+            config={graph}
             model={model}
-            onChange={this.props.onModelChanged}
+            onChange={onModelChanged}
             charts={charts}
           />
         </div>

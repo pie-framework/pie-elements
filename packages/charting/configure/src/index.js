@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Configure from './configure';
 import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
-
+import Configure from './configure';
 import defaultValues from './defaults';
 
 const log = debug('pie-elements:graphing:configure');

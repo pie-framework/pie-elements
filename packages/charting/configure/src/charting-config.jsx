@@ -22,13 +22,10 @@ export class ChartingConfig extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    authoringEnabled: PropTypes.bool
+    charts: PropTypes.array
   };
 
-  changeData = data => {
-    const model = { ...this.props.model, data };
-    this.props.onChange(model);
-  };
+  changeData = data => this.props.onChange({ ...this.props.model, data });
 
   render() {
     const { classes, model, charts } = this.props;
@@ -52,8 +49,8 @@ export class ChartingConfig extends React.Component {
               data={model.data}
               title={model.title}
               onDataChange={this.changeData}
-              editCategoryEnabled={model.editCategoryEnabled}
-              addCategoryEnabled={model.addCategoryEnabled}
+              editCategoryEnabled={true}
+              addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
           </div>

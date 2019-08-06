@@ -1,5 +1,5 @@
 /**
- * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
+ * NOTE: There's no functionality described for graphTitle,
  * rationale, scoringType, studentInstructions, teacherInstructions
  * so there's no implementation (they are only added in model)
  */
@@ -16,24 +16,38 @@ const createCategory = (label, value) => ({
 
 export default {
   model: {
-    answers: {},
-    backgroundMarks: [],
-    graph: {
-      width: 480,
-      height: 480
-    },
-    labels: null,
-    prompt: 'Here goes item stem!',
-    rationale: 'Rationale goes here!',
-    scoringType: 'partial scoring',
-
-
+    addCategoryEnabled: true,
+    categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
-    title: 'This is a chart!',
+    correctAnswer: {
+      name: 'Correct Response',
+      data: [
+        { ...createCategory('Apples', 5), interactive: false },
+        createCategory('Grapes', 3),
+        createCategory('Lemons', 0)
+      ],
+      editCategoryEnabled: true,
+      addCategoryEnabled: true
+    },
+    data: [
+      { ...createCategory('Apples', 5), interactive: false },
+      createCategory('Grapes', 3),
+      createCategory('Lemons', 0),
+      // createCategory('Plums', 2),
+      // createCategory('Peaches', 1),
+      // createCategory('Melons', 4)
+    ],
     domain: {
       label: 'Fruits',
       axisLabel: 'X'
     },
+    editCategoryEnabled: true,
+    graph: {
+      width: 480,
+      height: 480
+    },
+    prompt: 'Here goes item stem!',
+    rationale: 'Rationale goes here!',
     range: {
       label: 'Amount',
       max: 5.5,
@@ -41,24 +55,10 @@ export default {
       labelStep: 1,
       axisLabel: 'Y'
     },
-    data: [
-      { ...createCategory('Apples', 5), interactive: false },
-      createCategory('Grapes', 3),
-      createCategory('Lemons', 0),
-      createCategory('Plums', 2),
-      createCategory('Peaches', 1),
-      createCategory('Melons', 4)
-    ],
-    editCategoryEnabled: true,
-    addCategoryEnabled: true,
-    categoryDefaultLabel: 'Category'
+    scoringType: 'partial scoring',
+    title: 'This is a chart!',
   },
   configuration: {
-    labels: {
-      settings: false,
-      label: 'Labels',
-      enabled: true
-    },
     prompt: {
       settings: true,
       label: 'Item Stem'
