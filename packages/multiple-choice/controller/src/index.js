@@ -122,3 +122,24 @@ export function outcome(model, session, env) {
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { choices } = question;
+      const value = [];
+
+      choices.forEach(c => {
+        if (c.correct) {
+          value.push(c.value);
+        }
+      });
+
+      resolve({
+        id: '1',
+        value
+      });
+    }
+  });
+};
+
