@@ -52,8 +52,12 @@ const getCorrectCount = (tokens, selected) =>
   getCorrectSelected(tokens, selected).length;
 
 const getPartialScore = (question, session, totalCorrect) => {
-  const count = getCorrectCount(question.tokens, session.selectedTokens);
-  return parseFloat((count / totalCorrect.length).toFixed(2));
+  const correctCount = getCorrectCount(question.tokens, session.selectedTokens);
+  const incorrectCount = session.selectedTokens.length - correctCount;
+  const count = correctCount - incorrectCount;
+  const positiveCount = count < 0 ? 0 : count;
+
+  return parseFloat((positiveCount / totalCorrect.length).toFixed(2));
 };
 
 export const outcome = (question, session, env) =>

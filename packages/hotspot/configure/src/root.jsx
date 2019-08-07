@@ -46,7 +46,7 @@ class Root extends React.Component {
       onUpdateShapes,
       onTeacherInstructionsChanged
     } = this.props;
-    const { multipleCorrect, partialScoring, teacherInstructions = {} } = configuration;
+    const { multipleCorrect, partialScoring, prompt = {}, teacherInstructions = {} } = configuration;
     const { rationale = {} } = configuration;
 
     return (
@@ -64,6 +64,8 @@ class Root extends React.Component {
                     multipleCorrect.settings && toggle(multipleCorrect.label),
                   partialScoring:
                     partialScoring.settings && toggle(partialScoring.label),
+                  'prompt.enabled':
+                    prompt.settings && toggle(prompt.label, true),
                   'rationale.enabled':
                     rationale.settings && toggle(rationale.label, true)
                 },
@@ -86,10 +88,16 @@ class Root extends React.Component {
                 />
               </InputContainer>
             )}
-
-            <InputContainer label="Item Stem" className={classes.prompt}>
-              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
-            </InputContainer>
+            {prompt.enabled && (
+              <InputContainer label={prompt.label} className={classes.prompt}>
+                <EditableHtml
+                  markup={model.prompt || ''}
+                  onChange={onPromptChanged}
+                  imageSupport={imageSupport}
+                  nonEmpty={false}
+                />
+              </InputContainer>
+            )}
 
             {rationale.enabled && (
               <InputContainer
