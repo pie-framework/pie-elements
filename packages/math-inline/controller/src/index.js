@@ -217,3 +217,22 @@ export function model(question, session, env) {
     });
   });
 }
+
+// This method supports simple equations only, eg: 3x + 1 = 4
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { response: { answer } } = question;
+      const equalIndex = answer.indexOf('=');
+
+      resolve({
+        answers: {
+          r1: { value: answer.substring(0, equalIndex) },
+          r2: { value: answer.substring(equalIndex, answer.length) }
+        },
+        completeAnswer: answer,
+        id: '1'
+      });
+    }
+  });
+};
