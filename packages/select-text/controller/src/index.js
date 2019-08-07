@@ -126,3 +126,17 @@ export const model = (question, session, env) => {
     });
   });
 };
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { tokens } = question;
+      const selectedTokens = tokens.filter(t => t.correct);
+
+      resolve({
+        id: '1',
+        selectedTokens
+      });
+    }
+  });
+};
