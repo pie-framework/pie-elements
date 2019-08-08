@@ -97,14 +97,14 @@ export class Configure extends React.Component {
               'Item Type': {
                 'title.enabled': title.settings && toggle(title.label, true),
                 graph: numberFields('Graph Display Size', {
-                  domain: {
-                    label: 'Domain',
+                  width: {
+                    label: 'Width',
                     suffix: 'px',
                     min: 400,
                     max: 700
                   },
-                  range: {
-                    label: 'Range',
+                  height: {
+                    label: 'Height',
                     suffix: 'px',
                     min: 400,
                     max: 700

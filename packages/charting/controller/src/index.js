@@ -4,72 +4,99 @@ const log = debug('@pie-element:graphing:controller');
 
 const lowerCase = string => (string || '').toLowerCase();
 
+const checkLabelsEquality = (givenAnswerLabel, correctAnswerLabel) =>
+  lowerCase(givenAnswerLabel) === lowerCase(correctAnswerLabel);
+
+const setCorrectness = answers => {
+  return answers.map(answer => ({
+    ...answer,
+    correctness: {
+      value: 'incorrect',
+      label: 'incorrect'
+    }
+  }));
+};
+
 export const getScore = (question, session) => {
   const { correctAnswer, data: initialData, scoringType, editCategoryEnabled } = question;
 
   const { data: correctAnswers } = correctAnswer || {};
   const defaultAnswers = filterCategories(initialData, editCategoryEnabled);
-  const answers = (session && session.answer) || defaultAnswers;
+  const answers = setCorrectness((session && session.answer) || defaultAnswers);
 
   let result = 0;
 
   if (scoringType === 'partial scoring') {
+    // if score type is "partial scoring"
+    // maxScore is calculated based on the correct response
+    // score is calculated based on the given response
     let maxScore = 0;
     let score = 0;
 
+    const scoreForLabelAndValueEditable = (answer, corrAnswer) => {
+      const { value, label } = answer;
+
+      maxScore += 2;
+
+      if (value === corrAnswer.value) {
+        score += 1;
+        answer.correctness.value = 'correct';
+      }
+
+      if (checkLabelsEquality(label, corrAnswer.label)) {
+        score += 1;
+        answer.correctness.label = 'correct';
+      }
+    };
+
+    // if given answer has more categories than the correct answers, the "extra" will be ignored
     correctAnswers.forEach((corrAnswer, index) => {
       const defaultAnswer = defaultAnswers[index];
       const answer = answers[index];
 
-      // daca userul a dat un raspuns
+      // if there is a corresponding category at the same position in the given answer
       if (answer) {
-        const { value, label } = answer;
-
-        // daca raspunsul a fost un raspuns initial
+        // if there is a corresponding category at the same position in the default answer
         if (defaultAnswer) {
-          // daca labelul raspunsului initial nu putea fi editat
+          // if category's label (in default answer) was not editable
+          // it means that this category values only one point (only the value can be changed)
           if (!defaultAnswer.editable && answer.interactive) {
             maxScore += 1;
 
-            if (value === corrAnswer.value) {
+            if (answer.value === corrAnswer.value) {
               score += 1;
+              answer.correctness.value = 'correct';
             }
-            // daca si labelul si valoarea raspunsului initial puteau fi editate
-          } else if (defaultAnswer.editable && answer.interactive) {
-            maxScore += 2;
+            answer.correctness.label = 'correct';
 
-            if (value === corrAnswer.value) {
-              score += 1;
-            }
-            if (lowerCase(label) === lowerCase(corrAnswer.label)) {
-              score += 1;
-            }
+            // if category's label (in default answer) was editable
+            // it means that this category values 2 points (both label and value can be changed)
+          } else if (defaultAnswer.editable && answer.interactive) {
+            scoreForLabelAndValueEditable(answer, corrAnswer);
+          } else if (!answer.interactive) {
+            answer.correctness.value = 'correct';
+            answer.correctness.label = 'correct';
           }
         } else {
-          // daca raspunsul a fost adaugat de user
-          maxScore += 2;
-
-          if (value === corrAnswer.value) {
-            score += 1;
-          }
-          if (lowerCase(label) === lowerCase(corrAnswer.label)) {
-            score += 1;
-          }
+          // if there is not a corresponding category at the same position in the default answer
+          scoreForLabelAndValueEditable(answer, corrAnswer);
         }
       } else {
-        // daca userul nu a dat niciun raspuns
+        // if there is not a corresponding category at the same position in the given answer
+        // it means that the given answer has less categories than the correct answer
         maxScore += 2;
       }
     });
 
-    console.log('\nmaxScore', maxScore);
-    console.log('score', score);
-    console.log('result', score / maxScore);
     result = score / maxScore;
   } else {
+    // if scoring type is "all or nothing"
+    // the length on correct answers and length of given answer have to match
     result = correctAnswers.length === answers.length ? 1 : 0;
 
     if (result) {
+      // if there is at least one difference between the correct answer and the given answer
+      // the result will be incorrect
       correctAnswers.forEach((corrAnswer, index) => {
         const { value, label } = answers[index];
 
@@ -80,7 +107,10 @@ export const getScore = (question, session) => {
     }
   }
 
-  return result;
+  return {
+    score: result.toFixed(2),
+    answers
+  };
 };
 
 const filterCategories = (categories, editable) => {
@@ -105,7 +135,6 @@ export function model(question, session, env) {
       prompt,
       range,
       rationale,
-      scoringType,
       title
     } = question;
 
@@ -128,11 +157,8 @@ export function model(question, session, env) {
       disabled: env.mode !== 'gather',
     };
 
-    console.log('scoringType', scoringType);
-    console.log('session', session);
-
     if (env.mode === 'evaluate') {
-      const result = getScore(question, session);
+      // const result = getScore(question, session).score;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
@@ -150,6 +176,6 @@ export function model(question, session, env) {
 
 export function outcome(model, session) {
   return new Promise(resolve => {
-    resolve({ score: getScore(model, session) });
+    resolve({ score: getScore(model, session).score });
   });
 }
