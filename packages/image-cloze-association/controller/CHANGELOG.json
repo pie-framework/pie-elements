@@ -13,5 +13,35 @@
     "committerDate": "2019-07-09 00:10:49 +0300",
     "isTagged": true,
     "tag": "@pie-element/image-cloze-association-controller@1.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "calculate correct partial when comes to duplicates and extra answers",
+    "merge": null,
+    "header": "fix: calculate correct partial when comes to duplicates and extra answers",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a8b1677e48929c4027b090361f1200fffaca212b",
+    "gitTags": " (origin/sergiulucaci/ch1955/partial-scoring-fix)",
+    "committerDate": "2019-07-29 16:44:59 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association-controller@1.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "support alternate correct answers",
+    "merge": null,
+    "header": "feat: support alternate correct answers",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "03b5ce0ad1db77ebfb86a0c3dcb0aaf02a0bbf5a",
+    "gitTags": " (origin/sergiulucaci/ch1955/ica-alternate-correct-answers)",
+    "committerDate": "2019-07-26 16:09:36 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association-controller@1.2.0"
   }
 ]

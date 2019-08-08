@@ -943,5 +943,35 @@
     "committerDate": "2019-07-13 12:07:08 -0400",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry@4.5.4"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "merge": null,
+    "header": "fix(elements): fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "eb227241ba3bc52d7bf7a313f4f85b69e9203e85",
+    "gitTags": "",
+    "committerDate": "2019-08-01 12:43:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@4.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": "extended-text-entry",
+    "subject": "universal prompt treatment",
+    "merge": null,
+    "header": "feat(extended-text-entry): universal prompt treatment",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a9031c38339a8bb5ffb154a541e8993ca9574eb6",
+    "gitTags": "",
+    "committerDate": "2019-07-31 12:53:24 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@4.6.0"
   }
 ]

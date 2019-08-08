@@ -378,5 +378,20 @@
     "committerDate": "2019-07-22 13:10:16 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@2.3.6"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "controller outcome function output adjusted to 0-1",
+    "merge": null,
+    "header": "fix(math-inline): controller outcome function output adjusted to 0-1",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "18974738e803c4731322b5f90302630199931f9b",
+    "gitTags": "",
+    "committerDate": "2019-08-02 08:03:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@2.3.8"
   }
 ]

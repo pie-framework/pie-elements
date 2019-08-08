@@ -1854,40 +1854,14 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/charting@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-4.2.0.tgz#30e64d57002ac83991744caa28bfd71c7737ba02"
-  integrity sha512-/ygZiU8XyEWYwdu2TXqm02aY8JHuNYLbEO4c5ULjvXS44T54CpgJ+2XoQv5ZiBaHlkh645NpALttk/G1OWmitA==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/plot" "^1.3.0"
-    "@vx/axis" "^0.0.183"
-    "@vx/event" "^0.0.182"
-    "@vx/grid" "^0.0.183"
-    "@vx/point" "^0.0.182"
-    "@vx/scale" "^0.0.182"
-    "@vx/shape" "^0.0.183"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.1.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
-"@pie-lib/config-ui@^10.7.25":
-  version "10.7.25"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.7.25.tgz#c35129fad3cc1481629e22f98165c49178a1cbb4"
-  integrity sha512-5/5yggzAUi/Bo//d7NlNYlunP6I27tm044qcmh/UTa7sMWKKVF9iHDBgy6+ZfU5AqFApOxN9oqQVwvvENKtyhw==
+"@pie-lib/config-ui@^10.7.26":
+  version "10.7.26"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.7.26.tgz#1f8a853e72cf33dfe1200e42f43a7554228d4130"
+  integrity sha512-zhJRjoCwfTgLJuezukhCaXKG6yiEeti3dKMbsRcY2XkTljRSpYlwwausB8VQPopEulGcID4VsMqYJejEvpm0mg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.10.16"
+    "@pie-lib/editable-html" "^7.10.17"
     "@pie-lib/icons" "^2.4.4"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -1941,7 +1915,39 @@
     react-dnd "^9.3.2"
     react-dnd-html5-backend "^9.3.2"
 
-"@pie-lib/editable-html@^7.10.16", "@pie-lib/editable-html@^7.3.2":
+"@pie-lib/editable-html@^7.10.17":
+  version "7.10.17"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.17.tgz#05c7feb7768f0911a9fe9a2118109d90f46b418d"
+  integrity sha512-gT4jjFC4+qB/DdYT1b9apWU0qcLEgcEKJBvA0wRZJjrGnAEYL0lJM22sQiiDnZQ3JrLrL33uXxmb/nsL6tbtZw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.21"
+    "@pie-lib/math-rendering" "^1.3.4"
+    "@pie-lib/math-toolbar" "^1.4.5"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.3.2":
   version "7.10.16"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.16.tgz#2c1e1392eb6d5e14eaac1057ce2c1a42d57f22e6"
   integrity sha512-T0dpHgZMmrlS0X+ILVgu9NKTlmsd2qHi2ziQt66+yq2qvRDXcX4+VzDePzQWfaqsQAQ96Fj+UFz3fG9ysipFKA==
@@ -2122,30 +2128,6 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/plot@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-1.3.0.tgz#79a3b26d29a281046265516e80fd49b295938d58"
-  integrity sha512-oD8XioSwxzd3hyHxjrGWDoBLA81h4L/nuLzLEWc8sv38K4Ac1FNqpAFE0B59Q3dk+MMkTU7aetjtCqf0da1dlA==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@vx/axis" "^0.0.183"
-    "@vx/event" "^0.0.182"
-    "@vx/grid" "^0.0.183"
-    "@vx/point" "^0.0.182"
-    "@vx/shape" "^0.0.183"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.6"
-    react-draggable "^3.1.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
 "@pie-lib/render-ui@^4.3.1", "@pie-lib/render-ui@^4.3.11", "@pie-lib/render-ui@^4.3.12", "@pie-lib/render-ui@^4.4.1":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.4.4.tgz#2143bcf91d58a328695bc3c3c7f8c2b094533093"
@@ -2158,14 +2140,14 @@
     debug "^4.1.1"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.2.25":
-  version "0.2.27"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.27.tgz#2f3ab89600393189cd21d19d66604d64dce1ac36"
-  integrity sha512-uMKBAbz8fUCPaWCxHGUMoe+fbg4uA85VV56a3o3lMd9f7eQLbCm3L/giVrY4G2h8uPwgaEdyPvYJbLj9NqT5Sw==
+"@pie-lib/rubric@^0.2.28":
+  version "0.2.28"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.28.tgz#46cb2ccf20ceab6115fb533211dbf15c49a505f6"
+  integrity sha512-ZtplFbsCoUjxaD5bv7r8h8tBwt2iUATOvXsnmTry/+C67d7gULzI56d87Ce9kuGv5l/TfSSbmxEqCPM6zUHLJw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.10.16"
+    "@pie-lib/editable-html" "^7.10.17"
     debug "^4.1.1"
     lodash "^4.17.11"
     prop-types "^15.7.2"
@@ -2173,14 +2155,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.8.6"
 
-"@pie-lib/scoring-config@^3.5.25":
-  version "3.5.31"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.31.tgz#3f5500f24193a873b4f5c80744edffaa0e53fc69"
-  integrity sha512-LhkdeMup6GGIAoPFtep+DgxLkpgKBjhNPJNNy2CJ74JLRcHAMnEYCIAvN1sjNCOAuWKaQeA7ZQxFRBqJWBP/MQ==
+"@pie-lib/scoring-config@^3.5.32":
+  version "3.5.32"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.32.tgz#7f8a727486902ecf84641383dab783ed552cc32e"
+  integrity sha512-xDlqZ+wUSN4EJ8XN7TDVUnhKlS4ZnHvsHhaJ1fHMgGensdaXOmgl6Z6R4KkViPX65pOMceS0q2wpTOqdnlGFdA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^10.7.25"
+    "@pie-lib/config-ui" "^10.7.26"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2255,23 +2237,10 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/charting@file:../pie-ui/packages/charting":
-  version "0.0.1"
-  dependencies:
-    "@material-ui/core" "^3.9.2"
-    "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/charting" "^4.2.0"
-    "@pie-lib/math-rendering" "^1.3.4"
-    "@pie-lib/render-ui" "^4.3.12"
-    classnames "^2.2.5"
-    debug "^4.1.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-
-"@pie-ui/drag-in-the-blank@^1.6.14":
-  version "1.6.14"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.6.14.tgz#1a2059c5463ecf39ce0436ab7a426b3af9639aee"
-  integrity sha512-q4RBxeKFGsvK/xHNtnzuNLHrx3IeIKahFsfIUnakpnKzGReBB1j6a4noVBij5E+jAytdIuHOH0qhxfK5Lk8QAQ==
+"@pie-ui/drag-in-the-blank@^1.6.15":
+  version "1.6.15"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.6.15.tgz#abb58d2a521885c7fd71e30c28f1baa05cbcc704"
+  integrity sha512-87sm5Bzf4DiZVFSBDCfLF+X6Di1PFor0q1QVzoEON/Fh4HL4buwSGc0qk2HiFnSyf4p2e/H508MmSpXps9+IyA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2285,16 +2254,16 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.3.26":
-  version "1.3.26"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.3.26.tgz#63b47cb7159bcd74e5d56df1aed8b9f03572bd5b"
-  integrity sha512-xBIZOmZ4lIRhumI24XMKUIpeImTmjrL+IuQq0YXHfOYSVwbp/Fytsy7VXmXNWYSyeC7fgRnhslsR+pWmmuwkMg==
+"@pie-ui/drawing-response@^1.3.28":
+  version "1.3.28"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.3.28.tgz#3b7409947248844822fd325e5ecbde1e7e86c5f6"
+  integrity sha512-2WHsr0c+t9sGjYLUHkZnPlcBlEsHHsjzRiUtSrB80UzU0H5wx20y/5Jv4Lod5+S/mhwHs9KZYieSrvEO59F7Zg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@mdi/js" "^3.6.95"
     "@mdi/react" "^1.1.1"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/config-ui" "^10.7.25"
+    "@pie-lib/config-ui" "^10.7.26"
     "@pie-lib/math-rendering" "^1.2.9"
     "@pie-lib/render-ui" "^4.3.12"
     classnames "^2.2.6"
@@ -2306,13 +2275,13 @@
     react-dom "^16.8.1"
     react-konva "^16.8.7-2"
 
-"@pie-ui/ebsr@^1.1.45":
-  version "1.1.45"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.45.tgz#2110ee31ed733b89733eb9e86b131bb80360c6b5"
-  integrity sha512-7sz07xdPg5MWvN90hhfcxqcYkv7AVUUPjE2Jpm2aOEPgvIz7lzxtF7PBG8qRfLI5tp7qXrIr5bDJNtgrIybtWw==
+"@pie-ui/ebsr@^1.1.46":
+  version "1.1.46"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.1.46.tgz#020b41a38d815b232ebe9073c4b2d47b839f7d4f"
+  integrity sha512-TKqcN88N0kGZqBBjezsDBtCiirVc4aYHi9rxtye0aVQFiVfFHpYU4cAuJooJHojBoLtQIzHZhoytdvb4B00hAg==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-ui/multiple-choice" "^4.10.27"
+    "@pie-ui/multiple-choice" "^4.10.29"
     classnames "^2.2.5"
     debug "^4.1.1"
 
@@ -2333,15 +2302,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^3.1.9":
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.1.9.tgz#3ee70d9bdd4b6ba7e69a8075828c51b0bf86f939"
-  integrity sha512-OHEfpKd72GIUXAdZItfbFtHU6e4GoKgju3e4ihKvFU1UVLNJRNjX3od8qTvFdPLvCt3EsgWz+s7Coh0ZA14qGw==
+"@pie-ui/extended-text-entry@^3.1.11":
+  version "3.1.11"
+  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.1.11.tgz#e58715262d45508c30d113179999e44807b624c7"
+  integrity sha512-msLpyxAEh8WWwqF59uhPa6kKrc7ON3Eg0FBGY5g2fIsfW2WQXdScdRmaQD8bNythRtQVrb0hv3BkWmfW6sKpuA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/editable-html" "^7.10.16"
+    "@pie-lib/editable-html" "^7.10.17"
     "@pie-lib/math-rendering" "^1.2.1"
     "@pie-lib/render-ui" "^4.3.1"
     debug "^4.1.1"
@@ -2363,15 +2332,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graph-lines@^2.2.26":
-  version "2.2.26"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.2.26.tgz#7d06b49eb05107d9252dcb2f61ed79efc4bb8084"
-  integrity sha512-Hm2PGxpdG6eKEU/PePmSRHqjK/Foxee9JmRjIxoa9+Ms6bIUXECeextM184x30X5Fvy3YcbcTHDaIaytkzoGRw==
+"@pie-ui/graph-lines@^2.2.28":
+  version "2.2.28"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graph-lines/-/graph-lines-2.2.28.tgz#222a155164016a3154906e1203edf71e65622c25"
+  integrity sha512-1b6LMd13deXuSJldk/yL9dbDGxPXI1Kd/rJeqgVJTgisIIih1IRXGHUlO4ZTGysxo11fseW/gTnH/jOZm6I2Tg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/charting" "^2.3.1"
-    "@pie-lib/config-ui" "^10.7.25"
+    "@pie-lib/config-ui" "^10.7.26"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/render-ui" "^4.3.12"
     classnames "^2.2.5"
@@ -2473,10 +2442,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.3.5":
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.5.tgz#c8acc125bbb86b1bbe70a3dd68a9906463b56eb2"
-  integrity sha512-GS3cceS0nCElRYvAw7YzuGRoP4NhGZnO27V+inkvn2qGVePrVEEblMnj7QRXmWc0jBBgUiCqV4SVaodrbGIKwg==
+"@pie-ui/match@^2.3.6":
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.6.tgz#d7f6f8cc75ae1cb971201875b8c40e44d6040dd1"
+  integrity sha512-BWi0D36QC0sckRXQJm1JlI5x7BXINYJaZlDkkungTE3UrrHS18FtdFlhQT6MV2pgIzEjBd7H/R1gvFP1lyIdKg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
@@ -2488,10 +2457,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^2.3.8":
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-2.3.8.tgz#b701938965ee02c0f3761094f70f6e5ec248dbb3"
-  integrity sha512-8kP6XzcJm2/vSXOrYCIZaiP3ZnksAO1pKRwCR1txUZC0D2QyYEAMRlOgBcxptEilk+f3R+31xgY6KugZRC6+Yw==
+"@pie-ui/math-inline@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-2.4.1.tgz#52756bbdb54e61046ca7c81ca4863fc98bdcb26e"
+  integrity sha512-bpxDMlBkYudR+jkswC1DqHuSUetbImCTEJxHtRx02vaVD1HwarGmieI/VWfRlRNAo7KCV/298w2XJZyLbHhN5w==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^0.11.0"
@@ -2507,13 +2476,13 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.10.27":
-  version "4.10.27"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.10.27.tgz#3f96348c51adabb62434e43527be4af62aa84b4b"
-  integrity sha512-PAvBpLOfUBs9/loCZfXxFaR+HOo8QgZ8AdBrXLWVT7oSeWIUmPoFt1/jmbs0IU+P0Y87rb6UKuX5hjavwTmZGw==
+"@pie-ui/multiple-choice@^4.10.29":
+  version "4.10.29"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.10.29.tgz#6b4d5a56d1294b9bf49bcf278e8962ac1a27ad85"
+  integrity sha512-rZowaXhWW3eBbAIGuVfz8fl/EKgbZW8W2uU92kSIWrF4BBbPcy3p6+gJh169Dd90BXys9vRK4PvfjDyqfONZ7g==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-lib/config-ui" "^10.7.25"
+    "@pie-lib/config-ui" "^10.7.26"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
     "@pie-lib/math-rendering" "^1.2.1"
     "@pie-lib/render-ui" "^4.3.12"
@@ -2527,10 +2496,10 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/number-line@^7.1.5":
-  version "7.1.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.5.tgz#588bdeefd8b8de0e39aec6cd82e4caa163ebc301"
-  integrity sha512-bNcjIBQ/Az8u7w/Z0s35Gy8x0nq0ENOllmAd+TX88VHgO44ehb+SkL1wfU5FHCkfeazP9DMiP/TPOwFtXktWiw==
+"@pie-ui/number-line@^7.1.6":
+  version "7.1.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.6.tgz#9a6d5c0c4d3145d8d2b6809e5fad0d1c97d894b2"
+  integrity sha512-Zn5s+VsJwRaa2Z1dsPXT4l+XNO6F8O1hm4EAp3zhQ6SAcrxS9+gHl4met4GD69ZRX2uT+L282MHBYqT7zR1jRw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.1.2"
@@ -2935,13 +2904,6 @@
   version "0.0.189"
   resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.189.tgz#2a52824dd3e7a1e74188c2ee9407aeee2a2a7a10"
   integrity sha512-OZW05k6Kozta1QAP3T5dEFO0OQH8ppf/dnOnF2DnTJQ4W7a+ctLVJQ0kBDbsWG2xB+sOiMjvccfMOZZKb5JnvA==
-
-"@vx/scale@^0.0.182":
-  version "0.0.182"
-  resolved "https://registry.yarnpkg.com/@vx/scale/-/scale-0.0.182.tgz#22f4423c7188cc8be0b6dbfe9db3e1544d639a98"
-  integrity sha512-QFNWElBUscZD40SZoBOJtzqNU9fS5RAZypvYYJE1mipcEMLXLa8MExpeu/VushAbkSBz2B3T6K9myBL0QYi2xQ==
-  dependencies:
-    d3-scale "^2.0.0"
 
 "@vx/shape@0.0.183", "@vx/shape@^0.0.183":
   version "0.0.183"

@@ -658,5 +658,20 @@
     "committerDate": "2019-07-13 12:07:08 -0400",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry-configure@3.5.4"
+  },
+  {
+    "type": "feat",
+    "scope": "extended-text-entry",
+    "subject": "universal prompt treatment",
+    "merge": null,
+    "header": "feat(extended-text-entry): universal prompt treatment",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a9031c38339a8bb5ffb154a541e8993ca9574eb6",
+    "gitTags": "",
+    "committerDate": "2019-07-31 12:53:24 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry-configure@3.6.0"
   }
 ]
