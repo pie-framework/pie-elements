@@ -243,5 +243,20 @@
     "committerDate": "2019-07-12 20:41:37 +0100",
     "isTagged": true,
     "tag": "@pie-element/select-text-controller@2.5.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "apply scoring deductions",
+    "merge": null,
+    "header": "fix: apply scoring deductions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0d7587dc4fb0683ff6b14d90aedc1cf946761f7d",
+    "gitTags": "",
+    "committerDate": "2019-07-30 18:11:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-controller@2.5.10"
   }
 ]

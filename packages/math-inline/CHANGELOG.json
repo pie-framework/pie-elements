@@ -1658,5 +1658,35 @@
     "committerDate": "2019-07-22 13:10:16 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.6.4"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "controller outcome function output adjusted to 0-1",
+    "merge": null,
+    "header": "fix(math-inline): controller outcome function output adjusted to 0-1",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "18974738e803c4731322b5f90302630199931f9b",
+    "gitTags": "",
+    "committerDate": "2019-08-02 08:03:20 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.7.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "question becomes prompt and gets treated universally",
+    "merge": null,
+    "header": "feat(math-inline): question becomes prompt and gets treated universally",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "91cbbe1cfe6f1ac93db2d612380a38d2ca816315",
+    "gitTags": "",
+    "committerDate": "2019-07-30 19:10:21 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.7.0"
   }
 ]

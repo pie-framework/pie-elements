@@ -878,5 +878,35 @@
     "committerDate": "2019-07-09 17:33:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@5.5.1"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "merge": null,
+    "header": "fix(elements): fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "eb227241ba3bc52d7bf7a313f4f85b69e9203e85",
+    "gitTags": "",
+    "committerDate": "2019-08-01 12:43:53 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": "math-inline",
+    "subject": "question becomes prompt and gets treated universally",
+    "merge": null,
+    "header": "feat(math-inline): question becomes prompt and gets treated universally",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "91cbbe1cfe6f1ac93db2d612380a38d2ca816315",
+    "gitTags": "",
+    "committerDate": "2019-07-30 19:10:21 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.6.0"
   }
 ]
