@@ -47,6 +47,35 @@ const partiallyCorrect = {
 const mode = m => ({ mode: m });
 
 describe('controller', () => {
+  describe('closeTo', () => {
+    const assertCloseTo = (a, b, isClose, precision) => {
+      precision = precision || 0.00001;
+      it(`${a} <-> ${b}, ${precision} = ${isClose}`, () => {
+        expect(controller.closeTo(a, b, precision)).toEqual(isClose);
+      });
+    };
+
+    assertCloseTo(1, 1, true);
+    assertCloseTo(1, 1.000000001, true);
+    assertCloseTo(1, 1.0000000000000000000000000000001, true);
+    assertCloseTo(1, 2, false);
+    assertCloseTo(1.1, 1, true, 0);
+    assertCloseTo(1.1, 1, false, 1);
+    assertCloseTo(1.088, 1.083, false, 2);
+    assertCloseTo(1.088, 1.084, true, 2);
+    assertCloseTo(1.088, 1.087, true, 2);
+    assertCloseTo(1.088, 1.092, true, 2);
+    assertCloseTo(1.088, 1.093, true, 2);
+    assertCloseTo(1.088, 1.094, false, 2);
+    assertCloseTo(1.11, 1.14, true, 1);
+    assertCloseTo(1.11, 1.08, true, 1);
+    assertCloseTo(1.1, 1, false, 2);
+    assertCloseTo(1, 1.1, true, 0.1);
+    assertCloseTo(1, 1.1, true, 0.6);
+    assertCloseTo(1, 1.1, true, 0.2);
+    assertCloseTo(1, 1.1, false, 1);
+  });
+
   describe('outcome', () => {
     const assertOutcome = (label, question, session, env, expected) => {
       it(label, async () => {
@@ -54,6 +83,32 @@ describe('controller', () => {
         expect(result).toMatchObject(expected);
       });
     };
+
+    describe('with many decimal places', () => {
+      it('handles numbers close to each other', async () => {
+        const q = {
+          correctResponse: [
+            {
+              pointType: 'full',
+              type: 'point',
+              domainPosition: 0.41666664999999997
+            }
+          ]
+        };
+        const s = {
+          answer: [
+            {
+              pointType: 'full',
+              type: 'point',
+              domainPosition: 0.4166666666666667
+            }
+          ]
+        };
+        const e = { mode: 'evaluate' };
+        const result = await controller.outcome(q, s, e);
+        expect(result).toEqual({ score: 1 });
+      });
+    });
 
     assertOutcome(
       'with deductions',
