@@ -4,25 +4,23 @@ const log = debug('@pie-element:graphing:controller');
 
 const lowerCase = string => (string || '').toLowerCase();
 
-const checkLabelsEquality = (givenAnswerLabel, correctAnswerLabel) =>
+export const checkLabelsEquality = (givenAnswerLabel, correctAnswerLabel) =>
   lowerCase(givenAnswerLabel) === lowerCase(correctAnswerLabel);
 
-const setCorrectness = answers => {
-  return answers.map(answer => ({
-    ...answer,
-    correctness: {
-      value: 'incorrect',
-      label: 'incorrect'
-    }
-  }));
-};
+export const setCorrectness = (answers, partialScoring) => answers ? answers.map(answer => ({
+  ...answer,
+  correctness: {
+    value: partialScoring ? 'incorrect' : 'correct',
+    label: partialScoring ? 'incorrect' : 'correct'
+  }
+})) : [];
 
 export const getScore = (question, session) => {
-  const { correctAnswer, data: initialData, scoringType, editCategoryEnabled } = question;
+  const { correctAnswer, data: initialData = [], scoringType, editCategoryEnabled } = question;
 
-  const { data: correctAnswers } = correctAnswer || {};
+  const { data: correctAnswers = [] } = correctAnswer || {};
   const defaultAnswers = filterCategories(initialData, editCategoryEnabled);
-  const answers = setCorrectness((session && session.answer) || defaultAnswers);
+  let answers = setCorrectness((session && session.answer) || defaultAnswers, scoringType === 'partial scoring');
 
   let result = 0;
 
@@ -100,27 +98,35 @@ export const getScore = (question, session) => {
       correctAnswers.forEach((corrAnswer, index) => {
         const { value, label } = answers[index];
 
-        if (value !== corrAnswer.value || lowerCase(label) !== lowerCase(corrAnswer.label)) {
+        if (value !== corrAnswer.value) {
           result = 0;
+          answers[index].correctness.value = 'incorrect';
+        }
+        if (lowerCase(label) !== lowerCase(corrAnswer.label)) {
+          result = 0;
+          answers[index].correctness.label = 'incorrect';
         }
       });
+    } else {
+      answers = [
+        ...answers.slice(0, correctAnswers.length),
+        ...setCorrectness(answers.slice(correctAnswers.length), true)
+      ];
     }
   }
 
   return {
-    score: result.toFixed(2),
+    score: parseFloat(result.toFixed(2)),
     answers
   };
 };
 
-const filterCategories = (categories, editable) => {
-  return categories.map(category => ({
-    ...category,
-    deletable: false,
-    editable,
-    initial: true
-  }));
-};
+export const filterCategories = (categories, editable) => categories ? categories.map(category => ({
+  ...category,
+  deletable: false,
+  editable,
+  initial: true
+})) : [];
 
 export function model(question, session, env) {
   return new Promise(resolve => {
