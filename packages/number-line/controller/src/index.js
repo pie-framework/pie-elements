@@ -58,7 +58,6 @@ export function getScore(question, session) {
       cloneDeep(question.correctResponse)
     );
 
-    console.log('corrected:', corrected);
     const correctness = getCorrectness(corrected);
 
     if (correctness === 'correct') {
