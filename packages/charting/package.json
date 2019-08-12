@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/charting": "file:./../../pie-ui/packages/charting"
+    "@pie-ui/charting": "^0.1.0"
   },
   "pie": {
     "element": "@pie-ui/charting"

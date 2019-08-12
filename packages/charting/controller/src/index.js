@@ -163,8 +163,9 @@ export function model(question, session, env) {
       disabled: env.mode !== 'gather',
     };
 
-    if (env.mode === 'evaluate') {
-      // const result = getScore(question, session).score;
+    if (env.mode === 'evaluate' || env.mode === 'view') {
+      base.correctedAnswer = filterCategories(getScore(question, session).answers, false);
+      base.addCategoryEnabled = false;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
