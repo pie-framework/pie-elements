@@ -33,37 +33,9 @@ exports[`ChartingConfig renders snapshot 1`] = `
         addCategoryEnabled={true}
         categoryDefaultLabel="Category"
         chartType="lineCross"
-        data={
-          Array [
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": false,
-              "label": "Apples",
-              "value": 5,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Grapes",
-              "value": 3,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Lemons",
-              "value": 0,
-            },
-          ]
-        }
+        data={Array []}
         domain={
           Object {
-            "axisLabel": "X",
             "label": "Fruits",
           }
         }
@@ -71,7 +43,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
         onDataChange={[Function]}
         range={
           Object {
-            "axisLabel": "Y",
             "label": "Amount",
             "labelStep": 1,
             "max": 5.5,
@@ -146,65 +117,9 @@ exports[`Configure renders snapshot 1`] = `
           "addCategoryEnabled": true,
           "categoryDefaultLabel": "Category",
           "chartType": "lineCross",
-          "correctAnswer": Object {
-            "addCategoryEnabled": true,
-            "data": Array [
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": false,
-                "label": "Apples",
-                "value": 5,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Grapes",
-                "value": 3,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Lemons",
-                "value": 0,
-              },
-            ],
-            "editCategoryEnabled": true,
-            "name": "Correct Response",
-          },
-          "data": Array [
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": false,
-              "label": "Apples",
-              "value": 5,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Grapes",
-              "value": 3,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Lemons",
-              "value": 0,
-            },
-          ],
+          "correctAnswer": Object {},
+          "data": Array [],
           "domain": Object {
-            "axisLabel": "X",
             "label": "Fruits",
           },
           "editCategoryEnabled": true,
@@ -214,7 +129,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "prompt": "Here goes item stem!",
           "range": Object {
-            "axisLabel": "Y",
             "label": "Amount",
             "labelStep": 1,
             "max": 5.5,
@@ -291,65 +205,9 @@ exports[`Configure renders snapshot 1`] = `
           "addCategoryEnabled": true,
           "categoryDefaultLabel": "Category",
           "chartType": "lineCross",
-          "correctAnswer": Object {
-            "addCategoryEnabled": true,
-            "data": Array [
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": false,
-                "label": "Apples",
-                "value": 5,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Grapes",
-                "value": 3,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Lemons",
-                "value": 0,
-              },
-            ],
-            "editCategoryEnabled": true,
-            "name": "Correct Response",
-          },
-          "data": Array [
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": false,
-              "label": "Apples",
-              "value": 5,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Grapes",
-              "value": 3,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Lemons",
-              "value": 0,
-            },
-          ],
+          "correctAnswer": Object {},
+          "data": Array [],
           "domain": Object {
-            "axisLabel": "X",
             "label": "Fruits",
           },
           "editCategoryEnabled": true,
@@ -359,7 +217,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "prompt": "Here goes item stem!",
           "range": Object {
-            "axisLabel": "Y",
             "label": "Amount",
             "labelStep": 1,
             "max": 5.5,
@@ -411,65 +268,9 @@ exports[`Configure renders snapshot 1`] = `
           "addCategoryEnabled": true,
           "categoryDefaultLabel": "Category",
           "chartType": "lineCross",
-          "correctAnswer": Object {
-            "addCategoryEnabled": true,
-            "data": Array [
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": false,
-                "label": "Apples",
-                "value": 5,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Grapes",
-                "value": 3,
-              },
-              Object {
-                "deletable": true,
-                "editable": true,
-                "initial": true,
-                "interactive": true,
-                "label": "Lemons",
-                "value": 0,
-              },
-            ],
-            "editCategoryEnabled": true,
-            "name": "Correct Response",
-          },
-          "data": Array [
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": false,
-              "label": "Apples",
-              "value": 5,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Grapes",
-              "value": 3,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Lemons",
-              "value": 0,
-            },
-          ],
+          "correctAnswer": Object {},
+          "data": Array [],
           "domain": Object {
-            "axisLabel": "X",
             "label": "Fruits",
           },
           "editCategoryEnabled": true,
@@ -479,7 +280,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "prompt": "Here goes item stem!",
           "range": Object {
-            "axisLabel": "Y",
             "label": "Amount",
             "labelStep": 1,
             "max": 5.5,
@@ -500,46 +300,15 @@ exports[`CorrectResponse renders snapshot 1`] = `
   Define Correct Response
   <div>
     <div
-      key="correct-response-graph-Correct Response"
+      key="correct-response-graph-undefined"
     >
-      <p>
-        Correct Response
-      </p>
+      <p />
       <Chart
         addCategoryEnabled={true}
         categoryDefaultLabel="Category"
         chartType="lineCross"
-        data={
-          Array [
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": false,
-              "label": "Apples",
-              "value": 5,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Grapes",
-              "value": 3,
-            },
-            Object {
-              "deletable": true,
-              "editable": true,
-              "initial": true,
-              "interactive": true,
-              "label": "Lemons",
-              "value": 0,
-            },
-          ]
-        }
         domain={
           Object {
-            "axisLabel": "X",
             "label": "Fruits",
           }
         }
@@ -547,7 +316,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
         onDataChange={[Function]}
         range={
           Object {
-            "axisLabel": "Y",
             "label": "Amount",
             "labelStep": 1,
             "max": 5.5,
