@@ -1,0 +1,350 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChartType renders snapshot 1`] = `
+<Component
+  classes={
+    Object {
+      "chartType": "Component-chartType-2",
+      "chartTypeLabel": "Component-chartTypeLabel-3",
+      "formControl": "Component-formControl-1",
+    }
+  }
+  onChange={[MockFunction]}
+  value="bar"
+/>
+`;
+
+exports[`ChartingConfig renders snapshot 1`] = `
+<div>
+  Define Graph Attributes
+  <div>
+    <div
+      key="graph"
+    >
+      <WithStyles(Typography)
+        component="div"
+        type="body1"
+      >
+        <span>
+          Use the tools below to set background shapes
+        </span>
+      </WithStyles(Typography)>
+      <Chart
+        addCategoryEnabled={true}
+        categoryDefaultLabel="Category"
+        chartType="lineCross"
+        data={Array []}
+        domain={
+          Object {
+            "label": "Fruits",
+          }
+        }
+        editCategoryEnabled={true}
+        onDataChange={[Function]}
+        range={
+          Object {
+            "label": "Amount",
+            "labelStep": 1,
+            "max": 5.5,
+            "min": 0,
+          }
+        }
+        size={
+          Object {
+            "height": 480,
+            "width": 480,
+          }
+        }
+        title="This is a chart!"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Configure renders snapshot 1`] = `
+<ConfigLayout
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "prompt": Object {
+            "label": "Item Stem",
+            "settings": true,
+          },
+          "rationale": Object {
+            "enabled": false,
+            "label": "Rationale",
+            "settings": true,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "enabled": true,
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "enabled": false,
+            "label": "Teacher Instructions",
+            "settings": true,
+          },
+          "title": Object {
+            "enabled": true,
+            "label": "Graph Title",
+            "settings": false,
+          },
+        }
+      }
+      groups={
+        Object {
+          "Item Type": Object {
+            "graph": undefined,
+            "title.enabled": false,
+          },
+          "Properties": Object {
+            "rationale.enabled": undefined,
+            "scoringType": undefined,
+            "studentInstructions.enabled": false,
+            "teacherInstructions.enabled": undefined,
+          },
+        }
+      }
+      model={
+        Object {
+          "addCategoryEnabled": true,
+          "categoryDefaultLabel": "Category",
+          "chartType": "lineCross",
+          "correctAnswer": Object {},
+          "data": Array [],
+          "domain": Object {
+            "label": "Fruits",
+          },
+          "editCategoryEnabled": true,
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "label": "Amount",
+            "labelStep": 1,
+            "max": 5.5,
+            "min": 0,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "This is a chart!",
+        }
+      }
+    />
+  }
+>
+  <div>
+    <WithStyles(Typography)
+      component="div"
+      type="body1"
+    >
+      <span>
+        This interaction asks a student to draw a chart that meets specific criteria. The student will draw a category on the chart by clicking Add Category and dragging the top part of the category.
+      </span>
+    </WithStyles(Typography)>
+    <InputContainer
+      label="Item Stem"
+    >
+      <EditableHtml
+        disableUnderline={true}
+        markup="Here goes item stem!"
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <WithStyles(Component)
+      onChange={[Function]}
+      value="lineCross"
+    />
+    <WithStyles(ChartingConfig)
+      charts={
+        Array [
+          Object {
+            "Component": [Function],
+            "type": "bar",
+          },
+          Object {
+            "Component": [Function],
+            "type": "histogram",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineDot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineCross",
+          },
+          Object {
+            "Component": [Function],
+            "type": "dotPlot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "linePlot",
+          },
+        ]
+      }
+      config={
+        Object {
+          "height": 480,
+          "width": 480,
+        }
+      }
+      model={
+        Object {
+          "addCategoryEnabled": true,
+          "categoryDefaultLabel": "Category",
+          "chartType": "lineCross",
+          "correctAnswer": Object {},
+          "data": Array [],
+          "domain": Object {
+            "label": "Fruits",
+          },
+          "editCategoryEnabled": true,
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "label": "Amount",
+            "labelStep": 1,
+            "max": 5.5,
+            "min": 0,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "This is a chart!",
+        }
+      }
+    />
+    <WithStyles(CorrectResponse)
+      charts={
+        Array [
+          Object {
+            "Component": [Function],
+            "type": "bar",
+          },
+          Object {
+            "Component": [Function],
+            "type": "histogram",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineDot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineCross",
+          },
+          Object {
+            "Component": [Function],
+            "type": "dotPlot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "linePlot",
+          },
+        ]
+      }
+      config={
+        Object {
+          "height": 480,
+          "width": 480,
+        }
+      }
+      model={
+        Object {
+          "addCategoryEnabled": true,
+          "categoryDefaultLabel": "Category",
+          "chartType": "lineCross",
+          "correctAnswer": Object {},
+          "data": Array [],
+          "domain": Object {
+            "label": "Fruits",
+          },
+          "editCategoryEnabled": true,
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "prompt": "Here goes item stem!",
+          "range": Object {
+            "label": "Amount",
+            "labelStep": 1,
+            "max": 5.5,
+            "min": 0,
+          },
+          "rationale": "Rationale goes here!",
+          "scoringType": "partial scoring",
+          "title": "This is a chart!",
+        }
+      }
+    />
+  </div>
+</ConfigLayout>
+`;
+
+exports[`CorrectResponse renders snapshot 1`] = `
+<div>
+  Define Correct Response
+  <div>
+    <div
+      key="correct-response-graph-undefined"
+    >
+      <p />
+      <Chart
+        addCategoryEnabled={true}
+        categoryDefaultLabel="Category"
+        chartType="lineCross"
+        domain={
+          Object {
+            "label": "Fruits",
+          }
+        }
+        editCategoryEnabled={true}
+        onDataChange={[Function]}
+        range={
+          Object {
+            "label": "Amount",
+            "labelStep": 1,
+            "max": 5.5,
+            "min": 0,
+          }
+        }
+        size={
+          Object {
+            "height": 480,
+            "width": 480,
+          }
+        }
+        title="This is a chart!"
+      />
+      <div>
+        <WithStyles(Checkbox)
+          checked={true}
+          onChange={[Function]}
+        />
+        Student can edit category labels
+      </div>
+      <div>
+        <WithStyles(Checkbox)
+          checked={true}
+          onChange={[Function]}
+        />
+        Student can add/remove category labels
+      </div>
+    </div>
+  </div>
+</div>
+`;

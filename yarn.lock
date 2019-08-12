@@ -1854,7 +1854,33 @@
     react-draggable "^3.0.5"
     react-jss "^8.4.0"
 
-"@pie-lib/config-ui@^10.7.26":
+"@pie-lib/charting@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-4.2.0.tgz#30e64d57002ac83991744caa28bfd71c7737ba02"
+  integrity sha512-/ygZiU8XyEWYwdu2TXqm02aY8JHuNYLbEO4c5ULjvXS44T54CpgJ+2XoQv5ZiBaHlkh645NpALttk/G1OWmitA==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/plot" "^1.3.0"
+    "@vx/axis" "^0.0.183"
+    "@vx/event" "^0.0.182"
+    "@vx/grid" "^0.0.183"
+    "@vx/point" "^0.0.182"
+    "@vx/scale" "^0.0.182"
+    "@vx/shape" "^0.0.183"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    react "^16.8.6"
+    react-draggable "^3.1.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
+"@pie-lib/config-ui@^10.7.25", "@pie-lib/config-ui@^10.7.26":
   version "10.7.26"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.7.26.tgz#1f8a853e72cf33dfe1200e42f43a7554228d4130"
   integrity sha512-zhJRjoCwfTgLJuezukhCaXKG6yiEeti3dKMbsRcY2XkTljRSpYlwwausB8VQPopEulGcID4VsMqYJejEvpm0mg==
@@ -1915,7 +1941,7 @@
     react-dnd "^9.3.2"
     react-dnd-html5-backend "^9.3.2"
 
-"@pie-lib/editable-html@^7.10.17":
+"@pie-lib/editable-html@^7.10.16", "@pie-lib/editable-html@^7.10.17":
   version "7.10.17"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.17.tgz#05c7feb7768f0911a9fe9a2118109d90f46b418d"
   integrity sha512-gT4jjFC4+qB/DdYT1b9apWU0qcLEgcEKJBvA0wRZJjrGnAEYL0lJM22sQiiDnZQ3JrLrL33uXxmb/nsL6tbtZw==
@@ -2128,6 +2154,30 @@
     redux "^4.0.1"
     redux-undo beta
 
+"@pie-lib/plot@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/plot/-/plot-1.3.0.tgz#79a3b26d29a281046265516e80fd49b295938d58"
+  integrity sha512-oD8XioSwxzd3hyHxjrGWDoBLA81h4L/nuLzLEWc8sv38K4Ac1FNqpAFE0B59Q3dk+MMkTU7aetjtCqf0da1dlA==
+  dependencies:
+    "@mapbox/point-geometry" "^0.1.0"
+    "@material-ui/core" "^3.8.3"
+    "@vx/axis" "^0.0.183"
+    "@vx/event" "^0.0.182"
+    "@vx/grid" "^0.0.183"
+    "@vx/point" "^0.0.182"
+    "@vx/shape" "^0.0.183"
+    classnames "^2.2.6"
+    d3-scale "^2.1.2"
+    d3-selection "^1.3.2"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
+    react "^16.8.6"
+    react-draggable "^3.1.1"
+    react-redux "^6.0.0"
+    redux "^4.0.1"
+    redux-undo beta
+
 "@pie-lib/render-ui@^4.3.1", "@pie-lib/render-ui@^4.3.11", "@pie-lib/render-ui@^4.3.12", "@pie-lib/render-ui@^4.4.1":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.4.4.tgz#2143bcf91d58a328695bc3c3c7f8c2b094533093"
@@ -2235,6 +2285,22 @@
     classnames "^2.2.5"
     debug "^4.1.1"
     prop-types "^15.6.1"
+    react-dom "^16.8.1"
+
+"@pie-ui/charting@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/charting/-/charting-0.1.0.tgz#18e4a05f3b4152bd99ff96fce6a12e045e1048a5"
+  integrity sha512-Qu8AqrMkDFQe9vjaGPVXU464cO4VpjOl/joL1dzBehGh6la0dLeS7SOdyGrtZ+/4UYa1ZJrFjoOJek3CHsPe7w==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
+    "@pie-lib/charting" "^4.2.0"
+    "@pie-lib/math-rendering" "^1.3.4"
+    "@pie-lib/render-ui" "^4.3.12"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    lodash "^4.17.15"
+    react "^16.8.1"
     react-dom "^16.8.1"
 
 "@pie-ui/drag-in-the-blank@^1.6.15":
@@ -2904,6 +2970,13 @@
   version "0.0.189"
   resolved "https://registry.yarnpkg.com/@vx/point/-/point-0.0.189.tgz#2a52824dd3e7a1e74188c2ee9407aeee2a2a7a10"
   integrity sha512-OZW05k6Kozta1QAP3T5dEFO0OQH8ppf/dnOnF2DnTJQ4W7a+ctLVJQ0kBDbsWG2xB+sOiMjvccfMOZZKb5JnvA==
+
+"@vx/scale@^0.0.182":
+  version "0.0.182"
+  resolved "https://registry.yarnpkg.com/@vx/scale/-/scale-0.0.182.tgz#22f4423c7188cc8be0b6dbfe9db3e1544d639a98"
+  integrity sha512-QFNWElBUscZD40SZoBOJtzqNU9fS5RAZypvYYJE1mipcEMLXLa8MExpeu/VushAbkSBz2B3T6K9myBL0QYi2xQ==
+  dependencies:
+    d3-scale "^2.0.0"
 
 "@vx/shape@0.0.183", "@vx/shape@^0.0.183":
   version "0.0.183"
