@@ -19,27 +19,10 @@ export default {
     addCategoryEnabled: true,
     categoryDefaultLabel: 'Category',
     chartType: 'lineCross',
-    correctAnswer: {
-      name: 'Correct Response',
-      data: [
-        { ...createCategory('Apples', 5), interactive: false },
-        createCategory('Grapes', 3),
-        createCategory('Lemons', 0)
-      ],
-      editCategoryEnabled: true,
-      addCategoryEnabled: true
-    },
-    data: [
-      { ...createCategory('Apples', 5), interactive: false },
-      createCategory('Grapes', 3),
-      createCategory('Lemons', 0),
-      // createCategory('Plums', 2),
-      // createCategory('Peaches', 1),
-      // createCategory('Melons', 4)
-    ],
+    correctAnswer: {},
+    data: [],
     domain: {
       label: 'Fruits',
-      axisLabel: 'X'
     },
     editCategoryEnabled: true,
     graph: {
@@ -53,7 +36,6 @@ export default {
       max: 5.5,
       min: 0,
       labelStep: 1,
-      axisLabel: 'Y'
     },
     scoringType: 'partial scoring',
     title: 'This is a chart!',

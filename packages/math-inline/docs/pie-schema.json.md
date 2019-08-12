@@ -14,9 +14,9 @@ This element must be one of the following enum values:
 * `Advanced Multi`
 * `Simple`
 
-# `question` (string)
+# `prompt` (string)
 
-Indicates the question statement
+The item stem for the question
 
 # `expression` (string, required)
 

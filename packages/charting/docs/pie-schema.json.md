@@ -1,24 +1,35 @@
 NOTE: There's no functionality described for studentInstructions
 so there's no implementation (they are only added in model)
-Model Object for @pie-elements/graphing
+Model Object for @pie-elements/charting
 
 The schema defines the following properties:
 
-# `answers` (object, required)
+# `addCategoryEnabled` (object, required)
 
-Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex
+# `categoryDefaultLabel` (object, required)
 
-Properties of the `answers` object:
+Allows manipulation and formatting of text strings and determination and location of substrings within strings.
 
-## `correctAnswer` (object, required)
+# `chartType` (string, enum, required)
+
+This element must be one of the following enum values:
+
+* `bar`
+* `dorPlot`
+* `histogram`
+* `lineCross`
+* `lineDot`
+* `linePlot`
+
+# `correctAnswer` (object, required)
 
 Properties of the `correctAnswer` object:
 
-### `name` (string, required)
+## `name` (string, required)
 
 Indicates name of answer
 
-### `marks` (array, required)
+## `data` (array, required)
 
 Indicates marks for the answer
 
@@ -26,29 +37,9 @@ Additional restrictions:
 
 * Minimum items: `1`
 
-## `alternate1` (object, required)
+# `data` (array, required)
 
-Properties of the `alternate1` object:
-
-### `name` (string, required)
-
-Indicates name of answer
-
-### `marks` (array, required)
-
-Indicates marks for the answer
-
-Additional restrictions:
-
-* Minimum items: `1`
-
-# `arrows` (boolean)
-
-Indicates if arrows are enabled
-
-# `backgroundMarks` (array, required)
-
-Indicates marks that have to be displayed in background
+Indicates default categories for the answer
 
 Additional restrictions:
 
@@ -66,10 +57,6 @@ Min value
 
 Max value
 
-## `padding` (number, required)
-
-Padding value
-
 ## `step` (number, required)
 
 Step value
@@ -82,41 +69,19 @@ Label step value
 
 Axis Label
 
+# `editCategoryEnabled` (object, required)
+
 # `graph` (object, required)
 
 Properties of the `graph` object:
 
 ## `width` (number, required)
 
-Width for graph representation
+Width for chart representation
 
 ## `height` (number, required)
 
-Height for graph representation
-
-# `labels` (object)
-
-Properties of the `labels` object:
-
-## `top` (string, required)
-
-Label for top side of the graph
-
-## `bottom` (string, required)
-
-Label for bottom side of the graph
-
-## `left` (string, required)
-
-Label for left side of the graph
-
-## `right` (string, required)
-
-Label for right side of the graph
-
-# `padding` (boolean)
-
-Indicates if padding is enabled
+Height for chart representation
 
 # `prompt` (string)
 
@@ -133,10 +98,6 @@ Min value
 ## `max` (number, required)
 
 Max value
-
-## `padding` (number, required)
-
-Padding value
 
 ## `step` (number, required)
 
@@ -160,7 +121,7 @@ Indicates scoring type
 
 This element must be one of the following enum values:
 
-* `dichotomous`
+* `all or nothing`
 * `partial scoring`
 
 # `studentInstructions` (boolean)
@@ -173,15 +134,7 @@ Indicates if teacher instructions are enabled
 
 # `title` (string)
 
-Indicates graph title
-
-# `toolbarTools` (array)
-
-Indicates the tools that have to be displayed in toolbar
-
-Additional restrictions:
-
-* Minimum items: `1`
+Indicates chart title
 
 # `id` (string, required)
 
@@ -213,6 +166,8 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
+## `Boolean` (object)
+
 ## `Answer` (object)
 
 Properties of the `Answer` object:
@@ -221,7 +176,7 @@ Properties of the `Answer` object:
 
 Indicates name of answer
 
-### `marks` (array, required)
+### `data` (array, required)
 
 Indicates marks for the answer
 
@@ -229,145 +184,57 @@ Additional restrictions:
 
 * Minimum items: `1`
 
-## `Mark` (object)
+## `Category` (object)
 
-Properties of the `Mark` object:
+Properties of the `Category` object:
 
-### `type` (string, enum, required)
+### `label` (string, required)
 
-Indicates type of mark
+Indicates category label
+
+### `value` (number, required)
+
+Indicates category value
+
+### `initial` (boolean, required)
+
+Indicates if category is default category
+
+### `interactive` (boolean, required)
+
+Indicates if category label & value are interactive
+
+### `editable` (boolean, required)
+
+Indicates if category label is editable
+
+### `deletable` (boolean, required)
+
+Indicates if category is deletable
+
+### `correctness` (object, required)
+
+Indicates correctness for a category
+
+Properties of the `correctness` object:
+
+#### `value` (string, enum, required)
 
 This element must be one of the following enum values:
 
-* `circle`
-* `line`
-* `parabola`
-* `point`
-* `polygon`
-* `ray`
-* `segment`
-* `sine`
-* `vector`
+* `correct`
+* `incorrect`
 
-### `showLabel` (boolean)
+#### `label` (string, enum, required)
 
-Indicates if label should be visible
+This element must be one of the following enum values:
 
-### `label` (string)
+* `correct`
+* `incorrect`
 
-Indicates label value for mark
+## `ChartSettings` (object)
 
-### `building` (boolean, required)
-
-Indicates if mark is in build process
-
-### `x` (number)
-
-Indicates x coordinate if type is point
-
-### `y` (number)
-
-Indicates y coordinate if type is point
-
-### `from` (object)
-
-Properties of the `from` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `to` (object)
-
-Properties of the `to` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `center` (object)
-
-Properties of the `center` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `outerPoint` (object)
-
-Properties of the `outerPoint` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `closed` (boolean)
-
-Indicates if mark is closed if type is polygon, sine
-
-### `points` (array)
-
-Indicates all mark's points if type is polygon
-
-Additional restrictions:
-
-* Minimum items: `1`
-
-### `root` (object)
-
-Properties of the `root` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-### `edge` (object)
-
-Properties of the `edge` object:
-
-#### `x` (number, required)
-
-Indicates x coordinate
-
-#### `y` (number, required)
-
-Indicates y coordinate
-
-## `Point` (object)
-
-Properties of the `Point` object:
-
-### `x` (number, required)
-
-Indicates x coordinate
-
-### `y` (number, required)
-
-Indicates y coordinate
-
-## `GraphSettings` (object)
-
-Properties of the `GraphSettings` object:
+Properties of the `ChartSettings` object:
 
 ### `min` (number, required)
 
@@ -376,10 +243,6 @@ Min value
 ### `max` (number, required)
 
 Max value
-
-### `padding` (number, required)
-
-Padding value
 
 ### `step` (number, required)
 
@@ -393,34 +256,14 @@ Label step value
 
 Axis Label
 
-## `Graph` (object)
+## `Chart` (object)
 
-Properties of the `Graph` object:
+Properties of the `Chart` object:
 
 ### `width` (number, required)
 
-Width for graph representation
+Width for chart representation
 
 ### `height` (number, required)
 
-Height for graph representation
-
-## `Labels` (object)
-
-Properties of the `Labels` object:
-
-### `top` (string, required)
-
-Label for top side of the graph
-
-### `bottom` (string, required)
-
-Label for bottom side of the graph
-
-### `left` (string, required)
-
-Label for left side of the graph
-
-### `right` (string, required)
-
-Label for right side of the graph
+Height for chart representation

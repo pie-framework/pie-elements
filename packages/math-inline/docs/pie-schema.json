@@ -12,10 +12,10 @@
       "type": "string",
       "title": "responseType"
     },
-    "question": {
-      "description": "Indicates the question statement",
+    "prompt": {
+      "description": "The item stem for the question",
       "type": "string",
-      "title": "question"
+      "title": "prompt"
     },
     "expression": {
       "description": "Indicates the expression for advanced mode",
