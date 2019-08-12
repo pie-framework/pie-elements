@@ -156,3 +156,16 @@ export const outcome = (question, session, env) => {
     });
   }
 };
+
+export const createCorrectResponseSession = (question, env) => {
+  if (env.mode !== 'evaluate' && env.role === 'instructor') {
+    const { correctResponse } = question;
+
+    return new Promise(resolve => {
+      resolve({
+        answers: correctResponse,
+        id: 1
+      })
+    });
+  }
+};

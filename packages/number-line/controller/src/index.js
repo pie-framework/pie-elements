@@ -239,3 +239,16 @@ export function model(question, session, env) {
     }
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctResponse: answer } = question;
+
+      resolve({
+        answer,
+        id: '1'
+      });
+    }
+  });
+};

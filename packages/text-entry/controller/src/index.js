@@ -69,3 +69,17 @@ export function model(question, session, env) {
     });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctResponses: { values } } = question;
+      const value = values[0];
+
+      resolve({
+        id: '1',
+        value
+      });
+    }
+  });
+};

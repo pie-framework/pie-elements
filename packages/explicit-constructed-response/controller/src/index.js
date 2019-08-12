@@ -141,3 +141,21 @@ export function outcome(model, session) {
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { choices } = question;
+      const value = {};
+
+      Object.keys(choices).forEach((key, i) => {
+        value[i] = choices[key][0].label;
+      });
+
+      resolve({
+        id: '1',
+        value
+      });
+    }
+  });
+};
