@@ -73,7 +73,7 @@ export default {
     },
     partialScoring: {
       settings: true,
-      label: 'Partial Scoring'
+      label: 'Allow Partial Scoring'
     },
     rationale: {
       settings: true,
