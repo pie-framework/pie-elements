@@ -1,7 +1,15 @@
+/* eslint-disable no-console */
 import shuffle from 'lodash/shuffle';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { partialScoring } from '@pie-lib/controller-utils';
+import compact from 'lodash/compact';
+
+const lg = n => console[n].bind(console, '[multiple-choice]');
+const debug = lg('debug');
+const log = lg('log');
+const warn = lg('warn');
+const error = lg('error');
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
@@ -9,7 +17,10 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     value: choice.value
   };
 
-  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+  if (
+    env.role === 'instructor' &&
+    (env.mode === 'view' || env.mode === 'evaluate')
+  ) {
     out.rationale = choice.rationale;
   } else {
     out.rationale = null;
@@ -38,50 +49,87 @@ export function createDefaultModel(model = {}) {
     });
   });
 }
+const getShuffledChoices = async (choices, session, updateSession) => {
+  log('updateSession type: ', typeof updateSession);
+  log('session: ', session);
+  if (session.shuffledValues) {
+    debug('use shuffledValues to sort the choices...', session.shuffledValues);
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
-    const defaultFeedback = Object.assign(
-      { correct: 'Correct', incorrect: 'Incorrect' },
-      question.defaultFeedback
+    return compact(
+      session.shuffledValues.map(v => choices.find(c => c.value === v))
     );
-    let choices = question.choices.map(
-      prepareChoice(question, env, defaultFeedback)
-    );
+  } else {
+    const shuffledChoices = shuffle(choices);
 
-    if (!question.lockChoiceOrder) {
-      // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
+    log('try to save shuffledValues to session...', session.shuffledValues);
+    if (updateSession && typeof updateSession === 'function') {
+      try {
+        //session.id refers to the id of the element within a session
 
-      choices = shuffle(choices);
-    }
-
-    const out = {
-      disabled: env.mode !== 'gather',
-      mode: env.mode,
-      prompt: question.prompt,
-      choiceMode: question.choiceMode,
-      keyMode: question.choicePrefix,
-      shuffle: !question.lockChoiceOrder,
-      choices,
-
-      //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
-      complete: {
-        min: question.choices.filter(c => c.correct).length
-      },
-      responseCorrect:
-        env.mode === 'evaluate'
-          ? isResponseCorrect(question, session)
-          : undefined
-    };
-
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = question.teacherInstructions;
+        console.log('call updateSession... ', session.id, session.element);
+        await updateSession(session.id, session.element, {
+          shuffledValues: shuffledChoices.map(c => c.value)
+        });
+      } catch (e) {
+        warn('unable to save shuffled order for choices');
+        error(e);
+      }
     } else {
-      out.teacherInstructions = null;
+      warn('unable to save shuffled choices, shuffle will happen every time.');
     }
+    //save this shuffle to the session for later retrieval
+    return shuffledChoices;
+  }
+};
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export async function model(question, session, env, updateSession) {
+  const defaultFeedback = Object.assign(
+    { correct: 'Correct', incorrect: 'Incorrect' },
+    question.defaultFeedback
+  );
 
-    resolve(out);
-  });
+  let choices = question.choices.map(
+    prepareChoice(question, env, defaultFeedback)
+  );
+
+  if (!question.lockChoiceOrder) {
+    choices = await getShuffledChoices(choices, session, updateSession);
+  }
+
+  const out = {
+    disabled: env.mode !== 'gather',
+    mode: env.mode,
+    prompt: question.prompt,
+    choiceMode: question.choiceMode,
+    keyMode: question.choicePrefix,
+    shuffle: !question.lockChoiceOrder,
+    choices,
+
+    //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
+    complete: {
+      min: question.choices.filter(c => c.correct).length
+    },
+    responseCorrect:
+      env.mode === 'evaluate' ? isResponseCorrect(question, session) : undefined
+  };
+
+  if (
+    env.role === 'instructor' &&
+    (env.mode === 'view' || env.mode === 'evaluate')
+  ) {
+    out.teacherInstructions = question.teacherInstructions;
+  } else {
+    out.teacherInstructions = null;
+  }
+
+  return out;
+  // });
 }
 
 const isCorrect = c => c.correct === true;
@@ -142,4 +190,3 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
-
