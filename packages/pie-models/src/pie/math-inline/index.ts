@@ -116,6 +116,11 @@ export interface MathInlinePie extends PieModel {
  */
 export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings {
     /**
+     * Configuration for prompt
+     */
+    prompt?: ConfigureProp;
+
+    /**
      * Configuration for response type
      */
     responseType?: ConfigureProp;
