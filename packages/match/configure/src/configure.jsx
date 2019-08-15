@@ -184,14 +184,14 @@ class Configure extends React.Component {
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      enableImages,
-      partialScoring,
+      enableImages = {},
+      partialScoring = {},
       teacherInstructions = {},
-      studentInstructions,
+      studentInstructions = {},
       rationale = {},
-      lockChoiceOrder,
-      scoringType,
-      prompt,
+      lockChoiceOrder = {},
+      scoringType = {},
+      prompt = {},
       feedback = {}
     } = configuration || {};
 

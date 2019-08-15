@@ -43,9 +43,9 @@ class GeneralConfigBlock extends React.Component {
   render() {
     const { classes, model, configuration } = this.props;
     const {
-      layout,
-      choiceMode
-    } = configuration;
+      layout = {},
+      choiceMode = {}
+    } = configuration || {};
 
     return (
       <div className={classes.container}>
