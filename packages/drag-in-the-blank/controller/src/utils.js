@@ -3,22 +3,15 @@ import reduce from 'lodash/reduce';
 
 export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) => {
   return reduce(correctResponse || {}, (obj, val, key) => {
-    obj.possibleResponses[key] = [val];
+    obj[key] = [val];
 
     if (alternateResponses && alternateResponses[key]) {
-      obj.possibleResponses[key] = [
-        ...obj.possibleResponses[key],
+      obj[key] = [
+        ...obj[key],
         ...cloneDeep(alternateResponses[key])
       ];
     }
 
-    if (obj.numberOfPossibleResponses === undefined || obj.numberOfPossibleResponses > obj.possibleResponses[key].length) {
-      obj.numberOfPossibleResponses = obj.possibleResponses[key].length;
-    }
-
     return obj;
-  }, {
-    possibleResponses: {},
-    numberOfPossibleResponses: undefined
-  });
+  }, {});
 };
