@@ -24,7 +24,7 @@ class Root extends React.Component {
       onUpdateImageDimension,
       onTeacherInstructionsChanged
     } = this.props;
-    const { backgroundImage, rationale = {}, teacherInstructions = {} } = configuration;
+    const { backgroundImage = {}, rationale = {}, teacherInstructions = {} } = configuration || {};
     
     return (
       <div className={classes.base}>
