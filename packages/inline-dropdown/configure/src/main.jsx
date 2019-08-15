@@ -267,12 +267,12 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      prompt,
-      partialScoring,
-      lockChoiceOrder,
-      rationale = {},
+      prompt = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
+      rationale = {} = {},
       teacherInstructions = {}
-    } = configuration;
+    } = configuration || {};
 
     return (
       <div className={classes.design}>
