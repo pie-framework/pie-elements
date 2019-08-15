@@ -6,13 +6,14 @@ export function model(question, session, env) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const allCorrectResponses = getAllCorrectResponses(question);
-      const respAreaLength = Object.keys(allCorrectResponses).length;
-      let correctResponses = 0;
+      const responses = getAllCorrectResponses(question);
+      const allCorrectResponses = responses.possibleResponses;
+      const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
+      let correctResponses = undefined;
 
-      for (let i = 0; i < respAreaLength; i++) {
+      for (let i = 0; i < numberOfPossibleResponses; i++) {
         const result = reduce(allCorrectResponses, (obj, choices, key) => {
-          const answer = session.value[key] || '';
+          const answer = (session.value && session.value[key]) || '';
 
           obj.feedback[key] = choices[i] === answer;
 
@@ -23,12 +24,12 @@ export function model(question, session, env) {
           return obj;
         }, { correctResponses: 0, feedback: {} });
 
-        if (result.correctResponses > correctResponses) {
+        if (correctResponses === undefined || result.correctResponses > correctResponses) {
           correctResponses = result.correctResponses;
           feedback = result.feedback;
         }
 
-        if (result.correctResponses === respAreaLength) {
+        if (result.correctResponses === numberOfPossibleResponses) {
           break;
         }
       }
@@ -57,13 +58,15 @@ export function model(question, session, env) {
 }
 
 const getScore = (config, session) => {
+  const responses = getAllCorrectResponses(config);
+  const allCorrectResponses = responses.possibleResponses;
   const maxScore = Object.keys(config.correctResponse).length;
-  const allCorrectResponses = getAllCorrectResponses(config);
+  const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
   let correctCount = 0;
 
-  for (let i = 0; i < maxScore; i++) {
+  for (let i = 0; i < numberOfPossibleResponses; i++) {
     const result = reduce(allCorrectResponses, (total, choices, key) => {
-      const answer = session.value[key] || '';
+      const answer = (session.value && session.value[key]) || '';
 
       if (choices[i] === answer) {
         return total;
