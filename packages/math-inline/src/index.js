@@ -2,16 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Component } from '@pie-ui/math-inline';
 import debug from 'debug';
+import defaults from '../configure/src/defaults';
 
 const log = debug('pie-elements:math-inline');
 
 export default class MathInline extends HTMLElement {
   constructor() {
     super();
+    this._configuration = defaults.configuration;
   }
 
   set model(m) {
     this._model = m;
+    this._render();
+  }
+
+  set configuration(c) {
+    this._configuration = c;
     this._render();
   }
 
@@ -36,6 +43,7 @@ export default class MathInline extends HTMLElement {
 
     const props = {
       model: this._model,
+      configuration: this._configuration,
       session: this._session,
       onSessionChange: this.sessionChanged.bind(this)
     };

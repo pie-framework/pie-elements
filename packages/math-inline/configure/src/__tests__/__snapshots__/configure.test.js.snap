@@ -125,14 +125,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <div
         className="Configure-content-2"
       >
-        <WithStyles(Typography)
-          component="div"
-          type="body1"
-        >
-          <span>
-            In Inline Math, students need to fill in the blank for an equation or a mathematical expression. This interaction allows for exactly one correct answer.
-          </span>
-        </WithStyles(Typography)>
         <InputContainer
           className="Configure-promptHolder-3"
           label="Teacher Instructions"
