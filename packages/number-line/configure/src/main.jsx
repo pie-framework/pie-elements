@@ -203,7 +203,7 @@ export class Main extends React.Component {
     const { classes, model, onChange, configuration } = this.props;
 
     const { graph } = model;
-    const { prompt } = configuration;
+    const { prompt = {} } = configuration || {};
 
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
