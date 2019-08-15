@@ -7,31 +7,17 @@ export function model(question, session, env) {
 
     if (env.mode === 'evaluate') {
       const allCorrectResponses = getAllCorrectResponses(question);
-      const respAreaLength = Object.keys(allCorrectResponses).length;
-      let correctResponses = 0;
 
-      for (let i = 0; i < respAreaLength; i++) {
-        const result = reduce(allCorrectResponses, (obj, choices, key) => {
-          const answer = session.value[key] || '';
+      const result = reduce(allCorrectResponses, (obj, choices, key) => {
+        const answer = (session.value && session.value[key]) || '';
 
-          obj.feedback[key] = choices[i] === answer;
+        obj.feedback[key] = choices[0] === answer;
 
-          if (obj.feedback[key]) {
-            obj.correctResponses += 1;
-          }
+        return obj;
+      }, { feedback: {} });
 
-          return obj;
-        }, { correctResponses: 0, feedback: {} });
+      feedback = result.feedback;
 
-        if (result.correctResponses > correctResponses) {
-          correctResponses = result.correctResponses;
-          feedback = result.feedback;
-        }
-
-        if (result.correctResponses === respAreaLength) {
-          break;
-        }
-      }
     }
 
     const out = {
@@ -63,7 +49,7 @@ const getScore = (config, session) => {
 
   for (let i = 0; i < maxScore; i++) {
     const result = reduce(allCorrectResponses, (total, choices, key) => {
-      const answer = session.value[key] || '';
+      const answer = (session.value && session.value[key]) || '';
 
       if (choices[i] === answer) {
         return total;
