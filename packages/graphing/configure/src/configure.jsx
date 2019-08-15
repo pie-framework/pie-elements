@@ -89,19 +89,17 @@ export class Configure extends React.Component {
     const config = model.graph;
 
     const {
-      arrows,
-      title,
-      padding,
-      labels,
-
-      rationale,
-      scoringType,
-      studentInstructions,
-      teacherInstructions,
-
+      arrows = {},
+      title = {},
+      padding = {},
+      labels = {},
+      rationale = {},
+      scoringType = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       prompt = {},
-      authoring
-    } = configuration;
+      authoring = {}
+    } = configuration || {};
     log('[render] model', model);
 
     return (
@@ -204,9 +202,7 @@ export class Configure extends React.Component {
           )}
 
           <GraphingConfig
-            authoringEnabled={
-              configuration.authoring && configuration.authoring.enabled
-            }
+            authoringEnabled={authoring && authoring.enabled}
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
