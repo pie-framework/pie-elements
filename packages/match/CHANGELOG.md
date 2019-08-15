@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.7...@pie-element/match@2.8.8) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [2.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.6...@pie-element/match@2.8.7) (2019-08-02)
 
 

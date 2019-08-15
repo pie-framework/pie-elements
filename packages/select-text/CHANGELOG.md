@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.5.8...@pie-element/select-text@4.5.9) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [4.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@4.5.7...@pie-element/select-text@4.5.8) (2019-08-02)
 
 

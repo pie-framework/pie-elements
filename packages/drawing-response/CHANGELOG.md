@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.6...@pie-element/drawing-response@1.4.7) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [1.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.5...@pie-element/drawing-response@1.4.6) (2019-08-02)
 
 

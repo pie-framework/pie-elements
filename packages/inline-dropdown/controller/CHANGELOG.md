@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.5.9...@pie-element/inline-dropdown-controller@1.5.10) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** fixed the outcome functions for the element [ch3150] ([f0989a4](https://github.com/pie-framework/pie-elements/commit/f0989a4))
+
+
+
+
+
 ## [1.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.5.8...@pie-element/inline-dropdown-controller@1.5.9) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller

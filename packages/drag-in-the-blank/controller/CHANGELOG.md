@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.4.7...@pie-element/drag-in-the-blank-controller@1.4.8) (2019-08-15)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-controller
+
+
+
+
+
 ## [1.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.4.6...@pie-element/drag-in-the-blank-controller@1.4.7) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-controller

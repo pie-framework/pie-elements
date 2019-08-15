@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@1.7.5...@pie-element/calculator-configure@1.7.6) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [1.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@1.7.4...@pie-element/calculator-configure@1.7.5) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/calculator-configure

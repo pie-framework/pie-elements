@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.8...@pie-element/match-controller@2.2.9) (2019-08-15)
+
+**Note:** Version bump only for package @pie-element/match-controller
+
+
+
+
+
 ## [2.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.7...@pie-element/match-controller@2.2.8) (2019-08-02)
 
 

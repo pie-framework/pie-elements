@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.6.0...@pie-element/pie-models@5.7.0) (2019-08-15)
+
+
+### Bug Fixes
+
+* Removed dummy prompt. Updated pie model and config schema. Initialized configuration. ([19b2d36](https://github.com/pie-framework/pie-elements/commit/19b2d36))
+
+
+### Features
+
+* Added pie-model. ([30e7c46](https://github.com/pie-framework/pie-elements/commit/30e7c46))
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.5.3...@pie-element/pie-models@5.6.0) (2019-08-02)
 
 

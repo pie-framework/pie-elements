@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.6.0...@pie-element/math-inline-configure@2.6.1) (2019-08-15)
+
+
+### Bug Fixes
+
+* Removed dummy prompt. Updated pie model and config schema. Initialized configuration. ([19b2d36](https://github.com/pie-framework/pie-elements/commit/19b2d36))
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.5.4...@pie-element/math-inline-configure@2.6.0) (2019-08-02)
 
 

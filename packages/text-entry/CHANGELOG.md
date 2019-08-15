@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.10.5...@pie-element/text-entry@3.10.6) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.10.4...@pie-element/text-entry@3.10.5) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/text-entry

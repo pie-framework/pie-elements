@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.3...@pie-element/number-line-controller@4.1.4) (2019-08-15)
+
+
+### Bug Fixes
+
+* numbers should be compared using 'closeTo' logic, for decmial support ([0d78034](https://github.com/pie-framework/pie-elements/commit/0d78034))
+
+
+
+
+
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.2...@pie-element/number-line-controller@4.1.3) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.13...@pie-element/explicit-constructed-response@1.7.14) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
 ## [1.7.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.12...@pie-element/explicit-constructed-response@1.7.13) (2019-08-02)
 
 

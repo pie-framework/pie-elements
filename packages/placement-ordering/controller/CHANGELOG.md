@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.1.10...@pie-element/placement-ordering-controller@4.1.11) (2019-08-15)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-controller
+
+
+
+
+
 ## [4.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.1.9...@pie-element/placement-ordering-controller@4.1.10) (2019-08-02)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller
