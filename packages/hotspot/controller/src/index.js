@@ -115,3 +115,34 @@ export function outcome(config, session, env) {
     }
   });
 }
+
+const returnShapesCorrect = (shapes) => {
+  let answers = [];
+
+  shapes.forEach(i => {
+    const { correct, id } = i;
+    if (correct) {
+      answers.push({ id });
+    }
+  });
+  return answers;
+};
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { shapes: { rectangles, polygons } } = question;
+
+      const rectangleCorrect = returnShapesCorrect(rectangles);
+      const polygonsCorrect = returnShapesCorrect(polygons);
+
+      resolve({
+        answers: [
+          ...rectangleCorrect,
+          ...polygonsCorrect
+        ],
+        id: '1'
+      });
+    }
+  });
+};

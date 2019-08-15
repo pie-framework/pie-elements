@@ -337,3 +337,16 @@ export function outcome(model, session) {
     resolve({ score: getScore(model, session).score });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { answers: { correctAnswer: { marks } } } = question;
+
+      resolve({
+        answer: marks,
+        id: '1'
+      });
+    }
+  });
+};

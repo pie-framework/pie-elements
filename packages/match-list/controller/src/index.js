@@ -147,3 +147,24 @@ export function model(question, session, env) {
     });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { prompts, answers } = question;
+      const value = {};
+
+      prompts.forEach(p => {
+        if (answers.filter(a => a.id === p.relatedAnswer).length) {
+          value[p.id] = p.relatedAnswer;
+        }
+      });
+
+      resolve({
+        value,
+        id: '1'
+      });
+    }
+  });
+};
+

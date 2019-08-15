@@ -60,7 +60,7 @@ export default {
     },
     partialScoring: {
       settings: true,
-      label: 'Partial Scoring'
+      label: 'Allow Partial Scoring'
     },
     placementArea: {
       settings: true,

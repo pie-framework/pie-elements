@@ -2,6 +2,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
+import isEqualWith from 'lodash/isEqualWith';
 import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
@@ -29,7 +30,7 @@ const getPartialScore = (corrected, ps) => {
 };
 
 const accumulateAnswer = correctResponse => (total, answer) => {
-  const isCorrectResponse = correctResponse.some(cr => isEqual(cr, answer));
+  const isCorrectResponse = correctResponse.some(cr => matches(cr)(answer));
   return total + (isCorrectResponse ? 1 : -1);
 };
 /**
@@ -56,6 +57,7 @@ export function getScore(question, session) {
       session.answer,
       cloneDeep(question.correctResponse)
     );
+
     const correctness = getCorrectness(corrected);
 
     if (correctness === 'correct') {
@@ -77,7 +79,21 @@ export function getScore(question, session) {
   });
 }
 
-const matches = a => v => isEqual(a, v);
+export const closeTo = (a, b, precision) => {
+  precision = precision || 5;
+  const expectedDiff = Math.pow(10, -precision) / 2;
+  const receivedDiff = Math.abs(a - b);
+  const close = receivedDiff <= expectedDiff;
+  return close;
+};
+
+const matches = a => v => {
+  return isEqualWith(a, v, (v, ov) => {
+    if (typeof v === 'number' && typeof ov === 'number') {
+      return closeTo(v, ov, 0.000000001);
+    }
+  });
+};
 
 const getCorrected = (answer, correctResponse) => {
   return answer.reduce(
@@ -223,3 +239,16 @@ export function model(question, session, env) {
     }
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctResponse: answer } = question;
+
+      resolve({
+        answer,
+        id: '1'
+      });
+    }
+  });
+};

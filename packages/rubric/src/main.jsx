@@ -37,10 +37,18 @@ class Rubric extends React.Component {
     this.setState({linkPrefix: (this.state.rubricOpen ? 'Show' : 'Hide')});
   }
 
+  shouldRenderPoint = (index, value) => {
+    if (!value.excludeZero) {
+      return true;
+    } else {
+      return index !== 0;
+    }
+  };
+
   render() {
     const { value, classes } = this.props;
     if (value && value.points) {
-      const points = value.points;  
+      const points = value.points;
       return (
         <div className={classes.root}>
           <Link href={this.dudUrl} onClick={this.toggleRubric}>
@@ -48,10 +56,10 @@ class Rubric extends React.Component {
           </Link>
           <Collapse in={this.state.rubricOpen} timeout="auto">
             <List component="nav">
-              {points.map((desc,index) => (
+              {points.map((desc,index) => this.shouldRenderPoint(index, value) && (
                     <ListItem key={index}>
-                      <ListItemText className={classes.rubricCol} primary={`${value.excludeZero ? index + 1 : index} PTS`} />
-                      <ListItemText 
+                      <ListItemText className={classes.rubricCol} primary={`${index} PTS`} />
+                      <ListItemText
                         primary={<div dangerouslySetInnerHTML={{ __html: desc }}/>}
                       />
                     </ListItem>
@@ -63,7 +71,7 @@ class Rubric extends React.Component {
       )
     } else {
       return null;
-    } 
+    }
   }
 }
 

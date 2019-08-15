@@ -106,3 +106,26 @@ export function model(question, session, env) {
     });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctResponse, graph: { pointLabels } } = question;
+      const points = [];
+
+      pointLabels.forEach((p, i) => {
+        const c = correctResponse[i].split(',');
+        points.push({
+          x: c[0],
+          y: c[1],
+          label: p
+        })
+      });
+
+      resolve({
+        id: '1',
+        points
+      });
+    }
+  });
+};

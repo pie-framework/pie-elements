@@ -111,13 +111,6 @@ export class Configure extends React.Component {
         >
           <div>
             <div className={classes.content}>
-              <Typography component="div" type="body1">
-            <span>
-              In Inline Math, students need to fill in the blank for an equation or a mathematical expression.
-              This interaction allows for exactly one correct answer.
-            </span>
-              </Typography>
-
               {teacherInstructions.enabled && (
                 <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                   <EditableHtml

@@ -11,7 +11,8 @@ describe('rubric viewer', () => {
     const props = {value: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
       maxPoints: 4,
-      excludeZero: false
+      excludeZero: false,
+      ...extras
     }};
 
     return mount(<Rubric {...props} />);
@@ -29,6 +30,18 @@ describe('rubric viewer', () => {
       const w = wrapper();
       w.find(Link).simulate('click');
       expect(w).toMatchSnapshot();
+    });
+  });
+
+  describe('exclude zeros', () => {
+    it('renders correctly with exluded zeroes', () => {
+      let w = wrapper({ excludeZero: true });
+      w.find(Link).simulate('click');
+      expect(w.find('li').length).toEqual(3);
+
+      w = wrapper({ excludeZero: false });
+      w.find(Link).simulate('click');
+      expect(w.find('li').length).toEqual(4);
     });
   });
 

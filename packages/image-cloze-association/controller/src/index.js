@@ -132,3 +132,26 @@ export function outcome(config, session, env) {
     }
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+    const { validation: { valid_response: { value } } } = question;
+    const answers = [];
+
+    value.forEach((container, i) => {
+      container.forEach(v => {
+        answers.push({
+          value: v,
+          containerIndex: i
+        });
+      });
+    });
+
+    resolve({
+      answers,
+      id: '1'
+    });
+    }
+  });
+};

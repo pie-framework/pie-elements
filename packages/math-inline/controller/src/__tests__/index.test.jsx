@@ -1,8 +1,8 @@
-import { model } from '../index';
+import { model, outcome } from '../index';
 import defaultValues from '../defaults';
 
 describe('model', () => {
-  let result, question, session, env;
+  let result, question, session, env, outcomeResult;
 
   const defaultModel = {
     ...defaultValues,
@@ -67,6 +67,7 @@ describe('model', () => {
       session = {};
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
+      outcomeResult = await outcome(question, session, env);
     });
 
     it('returns disabled:true', () => {
@@ -79,6 +80,10 @@ describe('model', () => {
         correctness: 'unanswered',
         score: '0%'
       });
+    });
+
+    it('returns empty for correctness in outcome function', () => {
+      expect(outcomeResult.score).toEqual(0);
     });
   });
 
@@ -109,6 +114,21 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
+    });
+
+    it('returns correct for correctness in outcome', async () => {
+      question = mkQuestion();
+      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
+      env = { mode: 'evaluate' };
+      outcomeResult = await outcome(question, session, env);
+
+      expect(outcomeResult.score).toEqual(1);
+
+      session = { completeAnswer: '\\frac{72}{12}=6\\text{eggs}' };
+
+      outcomeResult = await outcome(question, session, env);
+
+      expect(outcomeResult.score).toEqual(1);
     });
 
     it('returns correct for correctness even with hyphen vs minus sign', async () => {
@@ -187,7 +207,7 @@ describe('model', () => {
       env = { mode: 'evaluate' };
     });
 
-    it('returns correct for correctness', async () => {
+    it('returns incorrect for correctness', async () => {
       question = mkQuestion();
       session = { completeAnswer: '2\\div12=6\\text{eggs}' };
       env = { mode: 'evaluate' };
@@ -209,6 +229,21 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('incorrect');
       expect(result.correctness.score).toEqual('0%');
+    });
+
+    it('returns incorrect for correctness in outcome', async () => {
+      question = mkQuestion();
+      session = { completeAnswer: '2\\div12=6\\text{eggs}' };
+      env = { mode: 'evaluate' };
+      outcomeResult = await outcome(question, session, env);
+
+      expect(outcomeResult.score).toEqual(0);
+
+      session = { completeAnswer: '\\frac{752}{12}=6\\text{eggs}' };
+
+      result = await outcome(question, session, env);
+
+      expect(outcomeResult.score).toEqual(0);
     });
   });
 });

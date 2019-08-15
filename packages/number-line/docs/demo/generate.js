@@ -1,4 +1,4 @@
-exports.model = (id, element) => ({
+exports.oldModel = (id, element) => ({
   id,
   element,
   correctResponse: [
@@ -69,4 +69,38 @@ exports.model = (id, element) => ({
       REP: true
     }
   }
+});
+
+exports.model = (id, element) => ({
+  correctResponse: [
+    {
+      pointType: 'full',
+      type: 'point',
+      domainPosition: 0.41666664999999997
+    }
+  ],
+  graph: {
+    maxNumberOfPoints: 1,
+    ticks: {
+      major: 0.08333333,
+      minor: 0.08333333
+    },
+    domain: {
+      min: 0,
+      max: 1
+    },
+    width: 500,
+    tickLabelOverrides: ['1/6', '1/3', '1/2', '2/3', '5/6'],
+    initialElements: [],
+    initialType: 'PF',
+    availableTypes: {
+      PF: true
+    },
+    height: 300,
+    title: '<div></div>'
+  },
+  id,
+  prompt:
+    '<div>Part B:<br/><br/>On the number line, plot the probability that a card selected at random from the set of cards will have a rhombus or a rectangle.</div>',
+  element
 });

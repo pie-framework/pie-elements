@@ -1,0 +1,847 @@
+{
+  "description": "NOTE: There's no functionality described for studentInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/charting",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "addCategoryEnabled": {
+      "title": "Boolean",
+      "type": "object"
+    },
+    "categoryDefaultLabel": {
+      "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string"
+        }
+      },
+      "title": "categoryDefaultLabel"
+    },
+    "chartType": {
+      "enum": [
+        "bar",
+        "dorPlot",
+        "histogram",
+        "lineCross",
+        "lineDot",
+        "linePlot"
+      ],
+      "type": "string",
+      "title": "chartType"
+    },
+    "correctAnswer": {
+      "title": "Answer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Indicates name of answer",
+          "type": "string",
+          "title": "name"
+        },
+        "data": {
+          "description": "Indicates marks for the answer",
+          "type": "array",
+          "items": [
+            {
+              "title": "Category",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "description": "Indicates category label",
+                  "type": "string",
+                  "title": "label"
+                },
+                "value": {
+                  "description": "Indicates category value",
+                  "type": "number",
+                  "title": "value"
+                },
+                "initial": {
+                  "description": "Indicates if category is default category",
+                  "type": "boolean",
+                  "title": "initial"
+                },
+                "interactive": {
+                  "description": "Indicates if category label & value are interactive",
+                  "type": "boolean",
+                  "title": "interactive"
+                },
+                "editable": {
+                  "description": "Indicates if category label is editable",
+                  "type": "boolean",
+                  "title": "editable"
+                },
+                "deletable": {
+                  "description": "Indicates if category is deletable",
+                  "type": "boolean",
+                  "title": "deletable"
+                },
+                "correctness": {
+                  "description": "Indicates correctness for a category",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "enum": [
+                        "correct",
+                        "incorrect"
+                      ],
+                      "type": "string",
+                      "title": "value"
+                    },
+                    "label": {
+                      "enum": [
+                        "correct",
+                        "incorrect"
+                      ],
+                      "type": "string",
+                      "title": "label"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "value"
+                  ],
+                  "title": "correctness"
+                }
+              },
+              "required": [
+                "correctness",
+                "deletable",
+                "editable",
+                "initial",
+                "interactive",
+                "label",
+                "value"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "title": "Category",
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "description": "Indicates category label",
+                    "type": "string",
+                    "title": "label"
+                  },
+                  "value": {
+                    "description": "Indicates category value",
+                    "type": "number",
+                    "title": "value"
+                  },
+                  "initial": {
+                    "description": "Indicates if category is default category",
+                    "type": "boolean",
+                    "title": "initial"
+                  },
+                  "interactive": {
+                    "description": "Indicates if category label & value are interactive",
+                    "type": "boolean",
+                    "title": "interactive"
+                  },
+                  "editable": {
+                    "description": "Indicates if category label is editable",
+                    "type": "boolean",
+                    "title": "editable"
+                  },
+                  "deletable": {
+                    "description": "Indicates if category is deletable",
+                    "type": "boolean",
+                    "title": "deletable"
+                  },
+                  "correctness": {
+                    "description": "Indicates correctness for a category",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "enum": [
+                          "correct",
+                          "incorrect"
+                        ],
+                        "type": "string",
+                        "title": "value"
+                      },
+                      "label": {
+                        "enum": [
+                          "correct",
+                          "incorrect"
+                        ],
+                        "type": "string",
+                        "title": "label"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "value"
+                    ],
+                    "title": "correctness"
+                  }
+                },
+                "required": [
+                  "correctness",
+                  "deletable",
+                  "editable",
+                  "initial",
+                  "interactive",
+                  "label",
+                  "value"
+                ]
+              }
+            ]
+          },
+          "title": "data"
+        }
+      },
+      "required": [
+        "data",
+        "name"
+      ]
+    },
+    "data": {
+      "description": "Indicates default categories for the answer",
+      "type": "array",
+      "items": [
+        {
+          "title": "Category",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates category label",
+              "type": "string",
+              "title": "label"
+            },
+            "value": {
+              "description": "Indicates category value",
+              "type": "number",
+              "title": "value"
+            },
+            "initial": {
+              "description": "Indicates if category is default category",
+              "type": "boolean",
+              "title": "initial"
+            },
+            "interactive": {
+              "description": "Indicates if category label & value are interactive",
+              "type": "boolean",
+              "title": "interactive"
+            },
+            "editable": {
+              "description": "Indicates if category label is editable",
+              "type": "boolean",
+              "title": "editable"
+            },
+            "deletable": {
+              "description": "Indicates if category is deletable",
+              "type": "boolean",
+              "title": "deletable"
+            },
+            "correctness": {
+              "description": "Indicates correctness for a category",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "enum": [
+                    "correct",
+                    "incorrect"
+                  ],
+                  "type": "string",
+                  "title": "value"
+                },
+                "label": {
+                  "enum": [
+                    "correct",
+                    "incorrect"
+                  ],
+                  "type": "string",
+                  "title": "label"
+                }
+              },
+              "required": [
+                "label",
+                "value"
+              ],
+              "title": "correctness"
+            }
+          },
+          "required": [
+            "correctness",
+            "deletable",
+            "editable",
+            "initial",
+            "interactive",
+            "label",
+            "value"
+          ]
+        }
+      ],
+      "minItems": 1,
+      "additionalItems": {
+        "anyOf": [
+          {
+            "title": "Category",
+            "type": "object",
+            "properties": {
+              "label": {
+                "description": "Indicates category label",
+                "type": "string",
+                "title": "label"
+              },
+              "value": {
+                "description": "Indicates category value",
+                "type": "number",
+                "title": "value"
+              },
+              "initial": {
+                "description": "Indicates if category is default category",
+                "type": "boolean",
+                "title": "initial"
+              },
+              "interactive": {
+                "description": "Indicates if category label & value are interactive",
+                "type": "boolean",
+                "title": "interactive"
+              },
+              "editable": {
+                "description": "Indicates if category label is editable",
+                "type": "boolean",
+                "title": "editable"
+              },
+              "deletable": {
+                "description": "Indicates if category is deletable",
+                "type": "boolean",
+                "title": "deletable"
+              },
+              "correctness": {
+                "description": "Indicates correctness for a category",
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "enum": [
+                      "correct",
+                      "incorrect"
+                    ],
+                    "type": "string",
+                    "title": "value"
+                  },
+                  "label": {
+                    "enum": [
+                      "correct",
+                      "incorrect"
+                    ],
+                    "type": "string",
+                    "title": "label"
+                  }
+                },
+                "required": [
+                  "label",
+                  "value"
+                ],
+                "title": "correctness"
+              }
+            },
+            "required": [
+              "correctness",
+              "deletable",
+              "editable",
+              "initial",
+              "interactive",
+              "label",
+              "value"
+            ]
+          }
+        ]
+      },
+      "title": "data"
+    },
+    "domain": {
+      "title": "ChartSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "step"
+      ]
+    },
+    "editCategoryEnabled": {
+      "title": "Boolean",
+      "type": "object"
+    },
+    "graph": {
+      "title": "Chart",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for chart representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for chart representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    },
+    "prompt": {
+      "description": "Indicates prompt value",
+      "type": "string",
+      "title": "prompt"
+    },
+    "range": {
+      "title": "ChartSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "step"
+      ]
+    },
+    "rationale": {
+      "description": "Indicates rationale for the answer",
+      "type": "string",
+      "title": "rationale"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "all or nothing",
+        "partial scoring"
+      ],
+      "type": "string",
+      "title": "scoringType"
+    },
+    "studentInstructions": {
+      "description": "Indicates if student instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructions"
+    },
+    "teacherInstructions": {
+      "description": "Indicates if teacher instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructions"
+    },
+    "title": {
+      "description": "Indicates chart title",
+      "type": "string",
+      "title": "title"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "addCategoryEnabled",
+    "categoryDefaultLabel",
+    "chartType",
+    "correctAnswer",
+    "data",
+    "domain",
+    "editCategoryEnabled",
+    "element",
+    "graph",
+    "id",
+    "range"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "type": "boolean",
+          "title": "enabled"
+        }
+      }
+    },
+    "Boolean": {
+      "title": "Boolean",
+      "type": "object"
+    },
+    "Answer": {
+      "title": "Answer",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Indicates name of answer",
+          "type": "string",
+          "title": "name"
+        },
+        "data": {
+          "description": "Indicates marks for the answer",
+          "type": "array",
+          "items": [
+            {
+              "title": "Category",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "description": "Indicates category label",
+                  "type": "string",
+                  "title": "label"
+                },
+                "value": {
+                  "description": "Indicates category value",
+                  "type": "number",
+                  "title": "value"
+                },
+                "initial": {
+                  "description": "Indicates if category is default category",
+                  "type": "boolean",
+                  "title": "initial"
+                },
+                "interactive": {
+                  "description": "Indicates if category label & value are interactive",
+                  "type": "boolean",
+                  "title": "interactive"
+                },
+                "editable": {
+                  "description": "Indicates if category label is editable",
+                  "type": "boolean",
+                  "title": "editable"
+                },
+                "deletable": {
+                  "description": "Indicates if category is deletable",
+                  "type": "boolean",
+                  "title": "deletable"
+                },
+                "correctness": {
+                  "description": "Indicates correctness for a category",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "enum": [
+                        "correct",
+                        "incorrect"
+                      ],
+                      "type": "string",
+                      "title": "value"
+                    },
+                    "label": {
+                      "enum": [
+                        "correct",
+                        "incorrect"
+                      ],
+                      "type": "string",
+                      "title": "label"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "value"
+                  ],
+                  "title": "correctness"
+                }
+              },
+              "required": [
+                "correctness",
+                "deletable",
+                "editable",
+                "initial",
+                "interactive",
+                "label",
+                "value"
+              ]
+            }
+          ],
+          "minItems": 1,
+          "additionalItems": {
+            "anyOf": [
+              {
+                "title": "Category",
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "description": "Indicates category label",
+                    "type": "string",
+                    "title": "label"
+                  },
+                  "value": {
+                    "description": "Indicates category value",
+                    "type": "number",
+                    "title": "value"
+                  },
+                  "initial": {
+                    "description": "Indicates if category is default category",
+                    "type": "boolean",
+                    "title": "initial"
+                  },
+                  "interactive": {
+                    "description": "Indicates if category label & value are interactive",
+                    "type": "boolean",
+                    "title": "interactive"
+                  },
+                  "editable": {
+                    "description": "Indicates if category label is editable",
+                    "type": "boolean",
+                    "title": "editable"
+                  },
+                  "deletable": {
+                    "description": "Indicates if category is deletable",
+                    "type": "boolean",
+                    "title": "deletable"
+                  },
+                  "correctness": {
+                    "description": "Indicates correctness for a category",
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "enum": [
+                          "correct",
+                          "incorrect"
+                        ],
+                        "type": "string",
+                        "title": "value"
+                      },
+                      "label": {
+                        "enum": [
+                          "correct",
+                          "incorrect"
+                        ],
+                        "type": "string",
+                        "title": "label"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "value"
+                    ],
+                    "title": "correctness"
+                  }
+                },
+                "required": [
+                  "correctness",
+                  "deletable",
+                  "editable",
+                  "initial",
+                  "interactive",
+                  "label",
+                  "value"
+                ]
+              }
+            ]
+          },
+          "title": "data"
+        }
+      },
+      "required": [
+        "data",
+        "name"
+      ]
+    },
+    "Category": {
+      "title": "Category",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates category label",
+          "type": "string",
+          "title": "label"
+        },
+        "value": {
+          "description": "Indicates category value",
+          "type": "number",
+          "title": "value"
+        },
+        "initial": {
+          "description": "Indicates if category is default category",
+          "type": "boolean",
+          "title": "initial"
+        },
+        "interactive": {
+          "description": "Indicates if category label & value are interactive",
+          "type": "boolean",
+          "title": "interactive"
+        },
+        "editable": {
+          "description": "Indicates if category label is editable",
+          "type": "boolean",
+          "title": "editable"
+        },
+        "deletable": {
+          "description": "Indicates if category is deletable",
+          "type": "boolean",
+          "title": "deletable"
+        },
+        "correctness": {
+          "description": "Indicates correctness for a category",
+          "type": "object",
+          "properties": {
+            "value": {
+              "enum": [
+                "correct",
+                "incorrect"
+              ],
+              "type": "string",
+              "title": "value"
+            },
+            "label": {
+              "enum": [
+                "correct",
+                "incorrect"
+              ],
+              "type": "string",
+              "title": "label"
+            }
+          },
+          "required": [
+            "label",
+            "value"
+          ],
+          "title": "correctness"
+        }
+      },
+      "required": [
+        "correctness",
+        "deletable",
+        "editable",
+        "initial",
+        "interactive",
+        "label",
+        "value"
+      ]
+    },
+    "ChartSettings": {
+      "title": "ChartSettings",
+      "type": "object",
+      "properties": {
+        "min": {
+          "description": "Min value",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Max value",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Step value",
+          "type": "number",
+          "title": "step"
+        },
+        "labelStep": {
+          "description": "Label step value",
+          "type": "number",
+          "title": "labelStep"
+        },
+        "axisLabel": {
+          "description": "Axis Label",
+          "type": "string",
+          "title": "axisLabel"
+        }
+      },
+      "required": [
+        "axisLabel",
+        "labelStep",
+        "max",
+        "min",
+        "step"
+      ]
+    },
+    "Chart": {
+      "title": "Chart",
+      "type": "object",
+      "properties": {
+        "width": {
+          "description": "Width for chart representation",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "Height for chart representation",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "required": [
+        "height",
+        "width"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

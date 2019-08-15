@@ -44,7 +44,7 @@ export default {
     },
     partialScoring: {
       settings: true,
-      label: 'Allow partial scoring',
+      label: 'Allow Partial Scoring',
     },
     choiceMode: {
       settings: true,

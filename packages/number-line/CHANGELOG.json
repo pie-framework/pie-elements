@@ -763,20 +763,5 @@
     "committerDate": "2019-08-01 12:43:53 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.5.8"
-  },
-  {
-    "type": "fix",
-    "scope": null,
-    "subject": "version bump @pie-ui/number-line@7.1.4",
-    "merge": null,
-    "header": "fix: version bump @pie-ui/number-line@7.1.4",
-    "body": null,
-    "footer": null,
-    "notes": [],
-    "hash": "fe9cc6cb38327e5026c5836a20c9ae2c2b680f7d",
-    "gitTags": "",
-    "committerDate": "2019-07-30 18:33:23 +0100",
-    "isTagged": true,
-    "tag": "@pie-element/number-line@5.5.8"
   }
 ]

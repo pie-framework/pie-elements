@@ -52,7 +52,7 @@ export function model(question, session, env) {
           (obj, choices, key) => {
             const answer = session.value[key] || '';
             const correctChoice = choices[i] || '';
-            const isCorrect = correctChoice === answer;
+            const isCorrect = answer && correctChoice && correctChoice === answer;
 
             obj.feedback[key] = getFeedback(isCorrect);
 
@@ -65,7 +65,7 @@ export function model(question, session, env) {
           { correctResponses: 0, feedback: {} }
         );
 
-        if (result.correctResponses > correctResponses) {
+        if (result.correctResponses >= correctResponses) {
           correctResponses = result.correctResponses;
           feedback = result.feedback;
         }
@@ -132,7 +132,7 @@ const getScore = (config, session) => {
         const answer = session.value[key] || '';
         const correctChoice = choices[i] || '';
 
-        if (correctChoice === answer) {
+        if (correctChoice && answer && correctChoice === answer) {
           return total;
         }
 
@@ -175,3 +175,21 @@ export function outcome(model, session) {
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { choices } = question;
+      const value = {};
+
+      Object.keys(choices).forEach((key, i) => {
+        value[i] = choices[key].filter(c => c.correct)[0].value;
+      });
+
+      resolve({
+        id: '1',
+        value
+      });
+    }
+  });
+};
