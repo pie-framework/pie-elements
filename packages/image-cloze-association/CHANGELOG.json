@@ -118,5 +118,35 @@
     "committerDate": "2019-07-26 16:09:36 +0300",
     "isTagged": true,
     "tag": "@pie-element/image-cloze-association@1.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "target new @pie-ui/image-cloze-association@1.2.0",
+    "merge": null,
+    "header": "fix: target new @pie-ui/image-cloze-association@1.2.0",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a48a43543328c8dee50ba41633c98b477833b6ca",
+    "gitTags": "",
+    "committerDate": "2019-07-29 20:00:59 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association@1.2.0"
   }
 ]

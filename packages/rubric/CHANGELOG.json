@@ -58,5 +58,35 @@
     "committerDate": "2019-07-23 16:53:50 -0400",
     "isTagged": true,
     "tag": "@pie-element/rubric@1.1.8"
+  },
+  {
+    "type": "fix",
+    "scope": "rubric",
+    "subject": "fix exclude zeroes number of points",
+    "merge": null,
+    "header": "fix(rubric): fix exclude zeroes number of points",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "96237349c9c4559a431dbeedff35c6cd50271046",
+    "gitTags": " (origin/fix/rubric-exclude-zeroes)",
+    "committerDate": "2019-08-13 17:06:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/rubric@1.1.11"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/rubric@1.1.11"
   }
 ]
