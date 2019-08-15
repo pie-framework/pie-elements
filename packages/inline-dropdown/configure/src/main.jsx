@@ -115,7 +115,7 @@ export class Main extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nProps) {
+  UNSAFE_componentWillReceiveProps(nProps) {
     const newState = {};
 
     if (!isEqual(nProps.model.choices, this.props.model.choices)) {
@@ -270,7 +270,7 @@ export class Main extends React.Component {
       prompt = {},
       partialScoring = {},
       lockChoiceOrder = {},
-      rationale = {} = {},
+      rationale = {},
       teacherInstructions = {}
     } = configuration || {};
 
