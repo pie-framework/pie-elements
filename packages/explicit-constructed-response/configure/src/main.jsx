@@ -180,11 +180,11 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      prompt,
-      partialScoring,
+      prompt = {},
+      partialScoring = {},
       rationale = {},
       teacherInstructions = {}
-    } = configuration;
+    } = configuration || {};
 
     return (
       <div className={classes.design}>

@@ -176,13 +176,13 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      duplicates,
-      prompt,
-      partialScoring,
-      lockChoiceOrder,
+      duplicates = {},
+      prompt = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
       rationale = {},
       teacherInstructions = {}
-    } = configuration;
+    } = configuration || {};
     const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
 
     return (

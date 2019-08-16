@@ -67,15 +67,15 @@ export class Main extends React.Component {
   render() {
     const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport } = this.props;
     const {
-      multiple,
-      feedback,
+      multiple = {},
+      feedback = {},
       teacherInstructions = {},
       prompt = {},
-      studentInstructions,
-      mathInput,
-      dimensions,
-      equationEditor
-    } = configuration;
+      studentInstructions = {},
+      mathInput = {},
+      dimensions = {},
+      equationEditor = {}
+    } = configuration || {};
 
     return (
       <layout.ConfigLayout

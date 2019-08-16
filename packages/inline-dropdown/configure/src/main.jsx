@@ -115,7 +115,7 @@ export class Main extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nProps) {
+  UNSAFE_componentWillReceiveProps(nProps) {
     const newState = {};
 
     if (!isEqual(nProps.model.choices, this.props.model.choices)) {
@@ -267,12 +267,12 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      prompt,
-      partialScoring,
-      lockChoiceOrder,
+      prompt = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
       rationale = {},
       teacherInstructions = {}
-    } = configuration;
+    } = configuration || {};
 
     return (
       <div className={classes.design}>

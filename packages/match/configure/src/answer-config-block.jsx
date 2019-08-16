@@ -110,7 +110,7 @@ class AnswerConfigBlock extends React.Component {
 
   render() {
     const { classes, model, onAddRow, imageSupport, configuration } = this.props;
-    const { headers } = configuration;
+    const { headers = {} } = configuration || {};
 
     return (
       <div className={classes.container}>

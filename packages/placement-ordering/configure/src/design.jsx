@@ -70,25 +70,25 @@ export class Design extends React.Component {
   render() {
     const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      choiceLabel,
-      choices,
-      feedback,
-      targetLabel,
-      prompt,
+      choiceLabel = {},
+      choices = {},
+      feedback = {},
+      targetLabel = {},
+      prompt = {},
 
-      placementArea,
-      numberedGuides,
-      enableImages,
-      orientation,
-      removeTilesAfterPlacing,
-      partialScoring,
-      lockChoiceOrder,
+      placementArea = {},
+      numberedGuides = {},
+      enableImages = {},
+      orientation = {},
+      removeTilesAfterPlacing = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
 
-      teacherInstructions,
-      studentInstructions,
+      teacherInstructions = {},
+      studentInstructions = {},
       rationale = {},
-      scoringType,
-    } = configuration;
+      scoringType = {}
+    } = configuration || {};
 
     return (
       <layout.ConfigLayout
