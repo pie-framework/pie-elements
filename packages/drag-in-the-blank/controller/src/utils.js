@@ -12,7 +12,10 @@ export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) 
       ];
     }
 
-    if (obj.numberOfPossibleResponses === undefined || obj.numberOfPossibleResponses > obj.possibleResponses[key].length) {
+    if (
+      (obj.numberOfPossibleResponses === undefined) ||
+      (obj.numberOfPossibleResponses > obj.possibleResponses[key].length)
+    ) {
       obj.numberOfPossibleResponses = obj.possibleResponses[key].length;
     }
 
