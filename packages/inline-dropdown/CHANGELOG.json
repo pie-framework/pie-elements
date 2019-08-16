@@ -538,5 +538,35 @@
     "committerDate": "2019-08-01 12:43:53 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.13"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "fixed the outcome functions for the element [ch3150]",
+    "merge": null,
+    "header": "fix(elements): fixed the outcome functions for the element [ch3150]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f0989a4e4cfb5fbf8d2b42354bcead17f195645e",
+    "gitTags": "",
+    "committerDate": "2019-08-09 14:04:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.14"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.9.14"
   }
 ]

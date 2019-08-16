@@ -763,5 +763,35 @@
     "committerDate": "2019-08-01 12:43:53 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.5.8"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "numbers should be compared using 'closeTo' logic, for decmial support",
+    "merge": null,
+    "header": "fix: numbers should be compared using 'closeTo' logic, for decmial support",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0d78034df6085750f66baf94da247ef60bcf9f6d",
+    "gitTags": "",
+    "committerDate": "2019-08-08 18:36:53 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.5.9"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.5.9"
   }
 ]

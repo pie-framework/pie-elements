@@ -453,5 +453,20 @@
     "committerDate": "2019-07-31 12:43:18 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot@2.8.0"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.8.1"
   }
 ]

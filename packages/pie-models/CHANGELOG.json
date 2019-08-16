@@ -908,5 +908,35 @@
     "committerDate": "2019-07-30 19:10:21 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@5.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed dummy prompt. Updated pie model and config schema. Initialized configuration.",
+    "merge": null,
+    "header": "fix: Removed dummy prompt. Updated pie model and config schema. Initialized configuration.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "19b2d36a5e8ec37ea8712f8ede21a1187730f3a6",
+    "gitTags": "",
+    "committerDate": "2019-08-14 15:27:34 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.7.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added pie-model.",
+    "merge": null,
+    "header": "feat: Added pie-model.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "30e7c462eede028aaeab0eded7d470a9554b7613",
+    "gitTags": "",
+    "committerDate": "2019-08-12 11:37:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@5.7.0"
   }
 ]

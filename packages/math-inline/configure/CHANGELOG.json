@@ -1208,5 +1208,35 @@
     "committerDate": "2019-07-30 19:10:21 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed dummy prompt. Updated pie model and config schema. Initialized configuration.",
+    "merge": null,
+    "header": "fix: Removed dummy prompt. Updated pie model and config schema. Initialized configuration.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "19b2d36a5e8ec37ea8712f8ede21a1187730f3a6",
+    "gitTags": "",
+    "committerDate": "2019-08-14 15:27:34 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.6.1"
+  },
+  {
+    "type": "fix",
+    "scope": "elements",
+    "subject": "version bumped the editable-html packages [ch1738]",
+    "merge": null,
+    "header": "fix(elements): version bumped the editable-html packages [ch1738]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "949222a6a3af39cf8b81a885a81e5c6f3c6a28a0",
+    "gitTags": "",
+    "committerDate": "2019-08-08 08:40:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.6.1"
   }
 ]
