@@ -9,7 +9,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/extended-text-entry": "^3.1.11"
+    "@pie-ui/extended-text-entry": "^3.1.13"
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
