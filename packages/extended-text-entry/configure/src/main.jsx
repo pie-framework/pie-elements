@@ -129,10 +129,7 @@ export class Main extends React.Component {
         }
       >
         <div>
-          <Typography className={classes.header} variant="subheading">
-            Display
-          </Typography>
-
+          
           {teacherInstructions.enabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
               <EditableHtml
