@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.8.9...@pie-element/ruler@3.8.10) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+
+
+
+
+
 ## [3.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.8.8...@pie-element/ruler@3.8.9) (2019-08-15)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.9...@pie-element/number-line@5.5.10) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([279a32a](https://github.com/pie-framework/pie-elements/commit/279a32a))
+
+
+
+
+
 ## [5.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.8...@pie-element/number-line@5.5.9) (2019-08-15)
 
 

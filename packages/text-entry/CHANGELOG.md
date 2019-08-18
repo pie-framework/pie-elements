@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.10.6...@pie-element/text-entry@3.10.7) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+
+
+
+
+
 ## [3.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.10.5...@pie-element/text-entry@3.10.6) (2019-08-15)
 
 

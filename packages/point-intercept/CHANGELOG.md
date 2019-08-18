@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@4.4.6...@pie-element/point-intercept@4.4.7) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+
+
+
+
+
 ## [4.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@4.4.5...@pie-element/point-intercept@4.4.6) (2019-08-15)
 
 

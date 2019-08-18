@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.2.1...@pie-element/image-cloze-association@1.2.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([105bd49](https://github.com/pie-framework/pie-elements/commit/105bd49))
+
+
+
+
+
 ## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.2.0...@pie-element/image-cloze-association@1.2.1) (2019-08-15)
 
 

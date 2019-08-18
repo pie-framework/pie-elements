@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.8...@pie-element/match@2.8.9) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([6072224](https://github.com/pie-framework/pie-elements/commit/6072224))
+
+
+
+
+
 ## [2.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.7...@pie-element/match@2.8.8) (2019-08-15)
 
 

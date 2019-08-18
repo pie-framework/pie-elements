@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.12...@pie-element/inline-dropdown-configure@1.5.13) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([31221f1](https://github.com/pie-framework/pie-elements/commit/31221f1))
+
+
+
+
+
 ## [1.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.11...@pie-element/inline-dropdown-configure@1.5.12) (2019-08-15)
 
 

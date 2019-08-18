@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.10...@pie-element/drag-in-the-blank-configure@1.5.11) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([bed077f](https://github.com/pie-framework/pie-elements/commit/bed077f))
+
+
+
+
+
 ## [1.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.9...@pie-element/drag-in-the-blank-configure@1.5.10) (2019-08-15)
 
 

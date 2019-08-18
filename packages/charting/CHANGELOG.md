@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@0.1.0...@pie-element/charting@0.1.1) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([efa677f](https://github.com/pie-framework/pie-elements/commit/efa677f))
+
+
+
+
+
 # 0.1.0 (2019-08-15)
 
 

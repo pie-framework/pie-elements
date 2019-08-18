@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.14...@pie-element/explicit-constructed-response@1.7.15) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([3f76791](https://github.com/pie-framework/pie-elements/commit/3f76791))
+
+
+
+
+
 ## [1.7.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.13...@pie-element/explicit-constructed-response@1.7.14) (2019-08-15)
 
 

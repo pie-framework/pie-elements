@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.5...@pie-element/ebsr-configure@2.5.6) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+
+
+
+
+
 ## [2.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.4...@pie-element/ebsr-configure@2.5.5) (2019-08-15)
 
 

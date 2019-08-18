@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.5.7...@pie-element/placement-ordering-configure@3.5.8) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([e65d4c3](https://github.com/pie-framework/pie-elements/commit/e65d4c3))
+
+
+
+
+
 ## [3.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.5.6...@pie-element/placement-ordering-configure@3.5.7) (2019-08-15)
 
 
