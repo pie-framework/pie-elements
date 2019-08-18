@@ -1733,5 +1733,35 @@
     "committerDate": "2019-08-08 08:40:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline@2.8.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages [ch3365]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages [ch3365]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7cbf25ac92040a16621d5699e232c38575f6c36c",
+    "gitTags": "",
+    "committerDate": "2019-08-16 23:04:42 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "set default values to configuration properties",
+    "merge": null,
+    "header": "fix: set default values to configuration properties",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3cdd88988a8e2ff17e27ac27bb65e9e4f11eb053",
+    "gitTags": "",
+    "committerDate": "2019-08-15 13:58:41 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@2.8.1"
   }
 ]

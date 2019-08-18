@@ -723,5 +723,20 @@
     "committerDate": "2019-08-08 08:40:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/function-entry@3.8.6"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages [ch3365]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages [ch3365]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7cbf25ac92040a16621d5699e232c38575f6c36c",
+    "gitTags": "",
+    "committerDate": "2019-08-16 23:04:42 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/function-entry@3.8.7"
   }
 ]
