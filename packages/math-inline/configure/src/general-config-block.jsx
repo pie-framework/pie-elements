@@ -337,7 +337,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale
     } = model;
-    const { prompt: cPrompt = {}, rationale: cRationale } = configuration;
+    const { prompt: cPrompt = {}, rationale: cRationale = {} } = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,

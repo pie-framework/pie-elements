@@ -67,13 +67,13 @@ export class Configure extends React.Component {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
       feedback = {},
-      responseType,
+      responseType = {},
       teacherInstructions = {},
-      studentInstructions,
-      rationale,
+      studentInstructions = {},
+      rationale = {},
       prompt = {},
-      scoringType
-    } = configuration;
+      scoringType = {}
+    } = configuration || {};
     log('[render] model', model);
 
 
