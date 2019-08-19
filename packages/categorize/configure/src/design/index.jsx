@@ -197,10 +197,6 @@ export class Design extends React.Component {
           }
         >
           <div className={classNames(classes.design, className)}>
-            <Typography className={classes.text}>
-              In Categorize, students may drag &amp; drop answer tiles to the
-              appropriate category area(s).
-            </Typography>
 
             {prompt.settings && (
               <InputContainer
