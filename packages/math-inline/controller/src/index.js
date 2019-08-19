@@ -183,6 +183,15 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(question, env, session);
     const correctResponse = {};
+    const isAdvanced = question.responseType === ResponseTypes.advanced;
+    let { response, responses, ...config } = question;
+
+    if (isAdvanced) {
+      config.responses = responses;
+    } else {
+      config.response = response;
+      config.responses = [];
+    }
 
     const fb =
       env.mode === 'evaluate' && question.allowFeedback
@@ -191,7 +200,7 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
-        config: question,
+        config,
         correctness,
         feedback,
         disabled: env.mode !== 'gather',
