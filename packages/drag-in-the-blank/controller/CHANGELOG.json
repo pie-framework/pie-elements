@@ -193,5 +193,20 @@
     "committerDate": "2019-07-15 18:55:06 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-controller@1.4.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "feedback not set correctly if there's no correct response or no response at all.",
+    "merge": null,
+    "header": "fix: feedback not set correctly if there's no correct response or no response at all.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "69a88990601cc1cebecf1a127acc7a01ffc9f2d3",
+    "gitTags": "",
+    "committerDate": "2019-08-15 18:15:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-controller@1.4.9"
   }
 ]

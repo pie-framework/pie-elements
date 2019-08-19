@@ -493,5 +493,35 @@
     "committerDate": "2019-08-08 08:40:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@1.7.14"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages [ch3365]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages [ch3365]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7cbf25ac92040a16621d5699e232c38575f6c36c",
+    "gitTags": "",
+    "committerDate": "2019-08-16 23:04:42 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.15"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "set default values to configuration properties",
+    "merge": null,
+    "header": "fix: set default values to configuration properties",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3f767918625163170517eb11c6359e3f9af1e7dc",
+    "gitTags": "",
+    "committerDate": "2019-08-15 13:56:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@1.7.15"
   }
 ]

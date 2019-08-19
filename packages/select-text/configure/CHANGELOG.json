@@ -743,5 +743,35 @@
     "committerDate": "2019-08-08 08:40:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text-configure@3.5.7"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages [ch3365]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages [ch3365]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7cbf25ac92040a16621d5699e232c38575f6c36c",
+    "gitTags": "",
+    "committerDate": "2019-08-16 23:04:42 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.5.8"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "set default values to configuration properties",
+    "merge": null,
+    "header": "fix: set default values to configuration properties",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "88332aa9e9193b8806cf52207d0615985a1540a1",
+    "gitTags": "",
+    "committerDate": "2019-08-15 13:59:48 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.5.8"
   }
 ]
