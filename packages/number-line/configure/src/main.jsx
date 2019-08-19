@@ -216,10 +216,6 @@ export class Main extends React.Component {
 
     return (
       <div className={classes.root}>
-        <p>
-          In this interaction, students plot points, line segments or rays on a
-          number line.
-        </p>
 
         {prompt.settings && (
           <FormSection label={prompt.label}>
