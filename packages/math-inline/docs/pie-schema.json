@@ -203,81 +203,8 @@
         "incorrect"
       ]
     },
-    "response": {
-      "title": "MathInlineResponse",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "The id of the response",
-          "type": [
-            "string",
-            "number"
-          ],
-          "title": "id"
-        },
-        "validation": {
-          "description": "Indicates what type of validation should be applied on the response",
-          "default": "is symbolic",
-          "enum": [
-            "literal",
-            "symbolic"
-          ],
-          "type": "string",
-          "title": "validation"
-        },
-        "answer": {
-          "description": "The answer for the question",
-          "type": "string",
-          "title": "answer"
-        },
-        "alternates": {
-          "description": "For validation type = literal, alternates represents\nan object with some alternatives for the correct answers",
-          "type": "object",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^[0-9]+$": {
-              "title": "Alternate",
-              "type": "object",
-              "properties": {
-                "id": {
-                  "description": "The id for the alternative response",
-                  "type": "number",
-                  "title": "id"
-                },
-                "answer": {
-                  "description": "The value for the alternative response",
-                  "type": "string",
-                  "title": "answer"
-                }
-              },
-              "required": [
-                "answer",
-                "id"
-              ]
-            }
-          },
-          "title": "alternates"
-        },
-        "allowSpaces": {
-          "description": "Indicates if spaces are allowed",
-          "type": "boolean",
-          "title": "allowSpaces"
-        },
-        "allowDecimals": {
-          "description": "Indicates if decimals are allowed",
-          "type": "boolean",
-          "title": "allowDecimals"
-        }
-      },
-      "required": [
-        "alternates",
-        "answer",
-        "id",
-        "validation"
-      ]
-    },
     "responses": {
-      "description": "Array of all correct responses if responseType is Advanced Multi",
+      "description": "Array of all correct responses; if responseType is Simple, only first element in array is used",
       "type": "array",
       "items": {
         "title": "MathInlineResponse",
@@ -479,7 +406,6 @@
     "element",
     "expression",
     "id",
-    "response",
     "responses"
   ],
   "definitions": {
