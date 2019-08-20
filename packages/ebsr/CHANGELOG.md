@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.4...@pie-element/ebsr@2.6.5) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [2.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.3...@pie-element/ebsr@2.6.4) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+* settings should work as expected ([4679761](https://github.com/pie-framework/pie-elements/commit/4679761))
+
+
+
+
+
+## [2.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.2...@pie-element/ebsr@2.6.3) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [2.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.1...@pie-element/ebsr@2.6.2) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.0...@pie-element/ebsr@2.6.1) (2019-07-19)
+
+
+### Bug Fixes
+
+* config settings ([9035c0c](https://github.com/pie-framework/pie-elements/commit/9035c0c))
+
+
+
+
+
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.5.3...@pie-element/ebsr@2.6.0) (2019-07-17)
 
 

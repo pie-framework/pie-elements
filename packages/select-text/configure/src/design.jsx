@@ -135,23 +135,21 @@ export class Design extends React.Component {
     const { text: textValue } = this.state;
     const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      prompt,
-      text,
-      tokens,
-      mode,
-      feedback,
-      partialScoring,
-      selections,
-      selectionCount,
-
-      correctAnswer,
-
+      prompt = {},
+      text = {},
+      tokens = {},
+      mode = {},
+      feedback = {},
+      partialScoring = {},
+      selections = {},
+      selectionCount = {},
+      correctAnswer = {},
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
       scoringType = {},
       highlightChoices = {}
-    } = configuration;
+    } = configuration || {};
 
     log('[render] maxSelections:', model.maxSelections);
 

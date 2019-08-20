@@ -80,11 +80,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
   }
 >
   <div>
-    <WithStyles(Typography)
-      variant="subheading"
-    >
-      Display
-    </WithStyles(Typography)>
     <Component
       label="Teacher Instructions"
     >

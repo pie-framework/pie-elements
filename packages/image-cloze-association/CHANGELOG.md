@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.2.0...@pie-element/image-cloze-association@1.2.1) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.1.10...@pie-element/image-cloze-association@1.2.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+* calculate correct partial when comes to duplicates and extra answers ([a8b1677](https://github.com/pie-framework/pie-elements/commit/a8b1677))
+* target new @pie-ui/image-cloze-association@1.2.0 ([a48a435](https://github.com/pie-framework/pie-elements/commit/a48a435))
+
+
+### Features
+
+* support alternate correct answers ([03b5ce0](https://github.com/pie-framework/pie-elements/commit/03b5ce0))
+
+
+
+
+
+## [1.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.1.9...@pie-element/image-cloze-association@1.1.10) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [1.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.1.8...@pie-element/image-cloze-association@1.1.9) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
 ## [1.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.1.7...@pie-element/image-cloze-association@1.1.8) (2019-07-17)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

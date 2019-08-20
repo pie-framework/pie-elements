@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.6...@pie-element/image-cloze-association-configure@1.1.7) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [1.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.5...@pie-element/image-cloze-association-configure@1.1.6) (2019-08-02)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association-configure
+
+
+
+
+
+## [1.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.4...@pie-element/image-cloze-association-configure@1.1.5) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association-configure
+
+
+
+
+
 ## [1.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.3...@pie-element/image-cloze-association-configure@1.1.4) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-configure

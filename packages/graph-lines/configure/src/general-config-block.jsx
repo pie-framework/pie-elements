@@ -99,7 +99,7 @@ export class GeneralConfigBlock extends React.Component {
       imageSupport,
       onRationaleChange
     } = this.props;
-    const { rationale: cRationale } = configuration || {};
+    const { rationale: cRationale = {} } = configuration || {};
 
     return (
       <div className={classes.container}>

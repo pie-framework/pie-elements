@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.5...@pie-element/function-entry@3.8.6) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [3.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.4...@pie-element/function-entry@3.8.5) (2019-08-02)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
+## [3.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.3...@pie-element/function-entry@3.8.4) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
 ## [3.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.2...@pie-element/function-entry@3.8.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/function-entry

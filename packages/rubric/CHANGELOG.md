@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.10...@pie-element/rubric@1.1.11) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+* **rubric:** fix exclude zeroes number of points ([9623734](https://github.com/pie-framework/pie-elements/commit/9623734))
+
+
+
+
+
+## [1.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.9...@pie-element/rubric@1.1.10) (2019-08-02)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.8...@pie-element/rubric@1.1.9) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.7...@pie-element/rubric@1.1.8) (2019-07-25)
+
+
+### Bug Fixes
+
+* exlude zeros handled in renderiing ([ca8b34e](https://github.com/pie-framework/pie-elements/commit/ca8b34e))
+
+
+
+
+
 ## [1.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.4...@pie-element/rubric@1.1.7) (2019-07-17)
 
 **Note:** Version bump only for package @pie-element/rubric

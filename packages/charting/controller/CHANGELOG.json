@@ -1,1 +1,77 @@
-[]
+[
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Send corrected answer when 'evaluate' or 'view' mode is enabled.",
+    "merge": null,
+    "header": "feat: Send corrected answer when 'evaluate' or 'view' mode is enabled.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d540568da38713034f2855606de503a040115c9c",
+    "gitTags": "",
+    "committerDate": "2019-08-12 10:58:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@0.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "charting",
+    "subject": "Updated Scoring.",
+    "merge": null,
+    "header": "feat(charting): Updated Scoring.",
+    "body": "Continued adding tests.",
+    "footer": null,
+    "notes": [],
+    "hash": "e2ccf0425b185a9b1f44ae8df2c974c383005bc8",
+    "gitTags": "",
+    "committerDate": "2019-08-08 16:53:16 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@0.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "charting",
+    "subject": "Scoring.",
+    "merge": null,
+    "header": "feat(charting): Scoring.",
+    "body": "Started adding tests.",
+    "footer": null,
+    "notes": [],
+    "hash": "b3b97e3e2edabbbd48de090842bfdbd20754e94f",
+    "gitTags": "",
+    "committerDate": "2019-08-08 11:35:16 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@0.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "charting",
+    "subject": "Scoring.",
+    "merge": null,
+    "header": "feat(charting): Scoring.",
+    "body": "WIP",
+    "footer": null,
+    "notes": [],
+    "hash": "6088c4281444d6d81a5c38b53c706cb00cc4ea9a",
+    "gitTags": "",
+    "committerDate": "2019-08-06 18:08:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@0.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "charting",
+    "subject": "Added charting package and started implementation (render charts, select chart type, define correct answer). (WIP)",
+    "merge": null,
+    "header": "feat(charting): Added charting package and started implementation (render charts, select chart type, define correct answer). (WIP)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "75efd7237627399be24ba6b4a559b41b0455c6a1",
+    "gitTags": "",
+    "committerDate": "2019-08-05 17:42:06 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@0.1.0"
+  }
+]
