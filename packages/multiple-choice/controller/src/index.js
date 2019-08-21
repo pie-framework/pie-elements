@@ -45,9 +45,13 @@ export function model(question, session, env) {
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
     );
-    let choices = question.choices.map(
-      prepareChoice(question, env, defaultFeedback)
-    );
+    let choices = [];
+
+    if (question.choices) {
+      choices = question.choices.map(
+        prepareChoice(question, env, defaultFeedback)
+      );
+    }
 
     if (!question.lockChoiceOrder) {
       // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
@@ -66,7 +70,7 @@ export function model(question, session, env) {
 
       //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
       complete: {
-        min: question.choices.filter(c => c.correct).length
+        min: question.choices ? question.choices.filter(c => c.correct).length : 0
       },
       responseCorrect:
         env.mode === 'evaluate'
