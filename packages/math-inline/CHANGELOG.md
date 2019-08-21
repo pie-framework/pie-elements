@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.8.2...@pie-element/math-inline@3.0.0) (2019-08-21)
+
+
+### Bug Fixes
+
+* Fixed Add Alternate when default alternates were defined. Send 'response' if response type is 'simple', send 'responses' if response type is 'advance multi' to ui. ([609a0d7](https://github.com/pie-framework/pie-elements/commit/609a0d7))
+* Removed unnecessary response property from the model. ([b0a0f3d](https://github.com/pie-framework/pie-elements/commit/b0a0f3d))
+* Updated pie-ui version. ([33d0889](https://github.com/pie-framework/pie-elements/commit/33d0889))
+
+
+### BREAKING CHANGES
+
+* `response` was removed from model, use responses instead.
+
+
+
+
+
 ## [2.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.8.1...@pie-element/math-inline@2.8.2) (2019-08-21)
 
 

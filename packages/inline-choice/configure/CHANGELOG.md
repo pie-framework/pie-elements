@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.7.9...@pie-element/inline-choice-configure@1.7.10) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/inline-choice-configure
+
+
+
+
+
 ## [1.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-configure@1.7.8...@pie-element/inline-choice-configure@1.7.9) (2019-08-21)
 
 
