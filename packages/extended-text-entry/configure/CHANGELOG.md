@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.6.2...@pie-element/extended-text-entry-configure@3.6.3) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [3.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.6.1...@pie-element/extended-text-entry-configure@3.6.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* remove 'Display' redundant text ([bc2ff8b](https://github.com/pie-framework/pie-elements/commit/bc2ff8b))
+* set default values to configuration properties ([70b06e1](https://github.com/pie-framework/pie-elements/commit/70b06e1))
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@3.6.0...@pie-element/extended-text-entry-configure@3.6.1) (2019-08-15)
 
 
