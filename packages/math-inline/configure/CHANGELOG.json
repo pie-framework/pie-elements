@@ -1268,5 +1268,20 @@
     "committerDate": "2019-08-15 13:58:41 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.6.2"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "33e3287a735cec9aed893f697a1933ff0c077042",
+    "gitTags": "",
+    "committerDate": "2019-08-19 19:37:56 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.6.3"
   }
 ]
