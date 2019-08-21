@@ -2374,10 +2374,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/hotspot@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.2.5.tgz#1f87b1edaf0ebb6fb6433a5bb7acc1d93ab98d2b"
-  integrity sha512-3udvDQ2Uu4+MB10uvsFD94t+Q3DiIeIRaaiMo/1Na8l47VMzmFVQw1d+mMXMr6b/PT0MHcPGOpXRNmOqL/LQGg==
+"@pie-ui/hotspot@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.2.6.tgz#8f949937f0809231b67f96b5b799172e5f64abe5"
+  integrity sha512-ULZAgW9UMSzYZdYAvQ3ZGnKQJ6FViU1YptgTvxTWQClvNBmvlIyyuSt1brNyaS/+whV+yz54dqL6bSgjYsta2Q==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2387,7 +2387,7 @@
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"
-    react-konva "^16.8.6"
+    react-konva "^16.8.7-2"
 
 "@pie-ui/image-cloze-association@^1.2.3":
   version "1.2.3"
@@ -2468,10 +2468,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-2.4.3.tgz#fbacafd1e23b046d47f33a19f6775ce81b38b122"
-  integrity sha512-pFqWMNWNvSIg2Pc6hKlGGOKTLkZPrJopZ0TWbbGbXCq0hFrHdv6/BKWn8YuelnfQm6rd817I9EpJHeQr3fiVEw==
+"@pie-ui/math-inline@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.0.tgz#0707fe2cc001c4ce1fcda89b38e8a991c41ab4cd"
+  integrity sha512-YH4xV+CYVUbcHYZ6LF4GUR3W3toDhv0aYckudrsdfS6RYz4vcICZ3+Ct3BCUrkm/ZyQFpFhfXLnCDKCriuKREw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^0.11.0"
@@ -10491,14 +10491,6 @@ react-jss@^8.1.0, react-jss@^8.4.0, react-jss@^8.6.1:
     jss-preset-default "^4.3.0"
     prop-types "^15.6.0"
     theming "^1.3.0"
-
-react-konva@^16.8.6:
-  version "16.8.6"
-  resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-16.8.6.tgz#0fe7ef2b6c75eeeec71ba9ca9db1829b5889293c"
-  integrity sha512-6KRIqHyJuTTMuAehDIXvw+ZrtEj2aMc2fwolhmFlg1HBzH4PJimsMByTcEx292Afh9d38TcHdjXP1C58qqDOlg==
-  dependencies:
-    react-reconciler "^0.20.4"
-    scheduler "^0.13.6"
 
 react-konva@^16.8.7-2:
   version "16.8.7-4"
