@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/index.js",
   "dependencies": {
-    "@pie-lib/feedback": "^0.4.1",
+    "@pie-lib/feedback": "^0.4.9",
     "debug": "^3.1.0"
   }
 }
