@@ -54,11 +54,6 @@ exports[`Design snapshot renders 1`] = `
     <div
       className="design className"
     >
-      <WithStyles(Typography)
-        className="text"
-      >
-        In Categorize, students may drag & drop answer tiles to the appropriate category area(s).
-      </WithStyles(Typography)>
       <WithStyles(Categories)
         categories={
           Array [
