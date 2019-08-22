@@ -44,7 +44,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   }
 
   const isAnswerCorrect = getIsAnswerCorrect(
-    isAdvanced ? correctResponses : model.response,
+    isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem,
     isAdvanced
   );
@@ -66,16 +66,16 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
   let answerCorrect = false;
 
-  if (isAdvanced) {
-    correctResponseItem.forEach(correctResponse => {
-      const acceptedValues = [correctResponse.answer].concat(
-        Object.keys(correctResponse.alternates).map(
-          alternateId => correctResponse.alternates[alternateId]
-        )
-      );
+  correctResponseItem.forEach(correctResponse => {
+    const acceptedValues = [correctResponse.answer].concat(
+      Object.keys(correctResponse.alternates).map(
+        alternateId => correctResponse.alternates[alternateId]
+      )
+    );
 
-      if (correctResponse.validation === 'literal') {
-        for (let i = 0; i < acceptedValues.length; i++) {
+    if (correctResponse.validation === 'literal') {
+      for (let i = 0; i < acceptedValues.length; i++) {
+        if (isAdvanced) {
           let answerValueToUse = processAnswerItem(answerItem);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
@@ -114,35 +114,20 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
             answerCorrect = true;
             break;
           }
-        }
-      } else {
-        answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
-          isLatex: true,
-          allowDecimals: correctResponse.allowDecimals
-        });
-      }
-    });
-  } else {
-    const acceptedValues = [correctResponseItem.answer].concat(
-      Object.keys(correctResponseItem.alternates).map(
-        alternateId => correctResponseItem.alternates[alternateId]
-      )
-    );
-
-    if (correctResponseItem.validation === 'literal') {
-      for (let i = 0; i < acceptedValues.length; i++) {
-        if (acceptedValues[i] === answerItem) {
-          answerCorrect = true;
-          break;
+        } else {
+          if (acceptedValues[i] === answerItem) {
+            answerCorrect = true;
+            break;
+          }
         }
       }
     } else {
-      answerCorrect = areValuesEqual(correctResponseItem.answer, answerItem, {
+      answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
         isLatex: true,
-        allowDecimals: correctResponseItem.allowDecimals
+        allowDecimals: correctResponse.allowDecimals
       });
     }
-  }
+  });
 
   return answerCorrect;
 }
@@ -190,6 +175,13 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const correctness = getCorrectness(question, env, session);
     const correctResponse = {};
+    const { responses, ...config } = question;
+
+    if (config.responseType === ResponseTypes.simple) {
+      config.responses = responses.slice(0, 1);
+    } else {
+      config.responses = responses;
+    }
 
     const fb =
       env.mode === 'evaluate' && question.allowFeedback
@@ -198,7 +190,7 @@ export function model(question, session, env) {
 
     fb.then(feedback => {
       const base = {
-        config: question,
+        config,
         correctness,
         feedback,
         disabled: env.mode !== 'gather',

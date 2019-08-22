@@ -81,22 +81,29 @@ export default class EbsrConfigure extends HTMLElement {
   set model(m) {
     this._model = m;
 
-    this.partA.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partA');
-    this.partB.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partB');
+    if (this.partA) {
+      this.partA.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partA');
+    }
+
+    if (this.partB) {
+      this.partB.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partB');
+    }
 
     customElements.whenDefined(MC_TAG_NAME).then(() => {
-      this.partA.model = this._model.partA;
+      if (this.partA) {
+        this.partA.model = this._model.partA;
+        this.partA.configuration = {
+          ...cloneDeep(this._configuration),
+          ...partADesignConfiguration
+        };
+      }
 
-      this.partA.configuration = {
-        ...cloneDeep(this._configuration),
-        ...partADesignConfiguration
-      };
-
-      this.partB.model = this._model.partB;
-
-      this.partB.configuration = {
-        ...cloneDeep(this._configuration)
-      };
+      if (this.partB) {
+        this.partB.model = this._model.partB;
+        this.partB.configuration = {
+          ...cloneDeep(this._configuration)
+        };
+      }
     });
   }
 
@@ -104,11 +111,17 @@ export default class EbsrConfigure extends HTMLElement {
     customElements.whenDefined(MC_TAG_NAME).then(() => {
       const info = prepareCustomizationObject(c, this._model);
 
-      this.partA.configuration = {
-        ...info.configuration,
-        ...partADesignConfiguration
-      };
-      this.partB.configuration = info.configuration;
+      if (this.partA) {
+        this.partA.configuration = {
+          ...info.configuration,
+          ...partADesignConfiguration
+        };
+      }
+
+      if (this.partB) {
+        this.partB.configuration = info.configuration;
+      }
+
       this._configuration = info.configuration;
     });
   }

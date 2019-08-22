@@ -135,6 +135,7 @@ class GeneralConfigBlock extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     imageSupport: PropTypes.object,
+    configuration: PropTypes.object,
     onChange: PropTypes.func.isRequired
   };
 
@@ -316,15 +317,6 @@ class GeneralConfigBlock extends React.Component {
     onChange(newModel);
   };
 
-  onSimpleResponseChange = response => {
-    const { model, onChange } = this.props;
-    const newModel = { ...model };
-
-    newModel.response = response;
-
-    onChange(newModel);
-  };
-
   render() {
     const { classes, model, imageSupport, configuration } = this.props;
     const { showKeypad } = this.state;
@@ -333,7 +325,6 @@ class GeneralConfigBlock extends React.Component {
       expression,
       equationEditor,
       responses,
-      response,
       responseType,
       rationale
     } = model;
@@ -343,6 +334,8 @@ class GeneralConfigBlock extends React.Component {
       editor: classes.responseEditor,
       mathToolbar: classes.mathToolbar
     };
+
+    const responsesToUse = responseType === ResponseTypes.advanced ? responses : responses.slice(0, 1);
 
     return (
       <div
@@ -424,24 +417,16 @@ class GeneralConfigBlock extends React.Component {
             </Button>
           )}
         </div>
-        {responseType === ResponseTypes.simple && (
+        {responsesToUse.map((response, idx) => (
           <Response
+            key={response.id}
             mode={equationEditor}
-            defaultResponse
             response={response}
-            onResponseChange={this.onSimpleResponseChange}
+            defaultResponse={responseType === ResponseTypes.simple}
+            onResponseChange={this.onResponseChange}
+            index={idx}
           />
-        )}
-        {responseType === ResponseTypes.advanced &&
-          responses.map((response, idx) => (
-            <Response
-              key={response.id}
-              mode={equationEditor}
-              response={response}
-              onResponseChange={this.onResponseChange}
-              index={idx}
-            />
-          ))}
+        ))}
       </div>
     );
   }
