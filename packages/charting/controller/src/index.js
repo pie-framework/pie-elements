@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:graphing:controller');
 
@@ -86,7 +87,7 @@ export const getScore = (question, session) => {
       }
     });
 
-    result = score / maxScore;
+    result = maxScore ? score / maxScore : 0;
   } else {
     // if scoring type is "all or nothing"
     // the length on correct answers and length of given answer have to match
@@ -183,6 +184,9 @@ export function model(question, session, env) {
 
 export function outcome(model, session) {
   return new Promise(resolve => {
-    resolve({ score: getScore(model, session).score });
+    resolve({
+      score: getScore(model, session).score,
+      empty: !session || isEmpty(session)
+    });
   });
 }

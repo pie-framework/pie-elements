@@ -1,4 +1,4 @@
-import { model, outcome, getCorrectness, getScore } from '../index';
+import { model, outcome, getCorrectness, getScore, getTotalScore } from '../index';
 import { buildState, score } from '@pie-lib/categorize';
 
 const categorize = require('@pie-lib/categorize');
@@ -44,6 +44,36 @@ describe('controller', () => {
         expect(buildStateSpy).toBeCalled();
       });
 
+      it('resolves incorrect if session undefined', () => {
+        expect(getCorrectness(
+          question,
+          undefined,
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('incorrect');
+      });
+
+      it('resolves incorrect if session is null', () => {
+        expect(getCorrectness(
+          question,
+          null,
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('incorrect');
+      });
+
+      it('resolves incorrect if session is empty', () => {
+        expect(getCorrectness(
+          question,
+          {},
+          {
+            mode: 'evaluate'
+          }
+        )).resolves.toEqual('incorrect');
+      });
+
       it('resolves incorrect', () => {
         expect(getCorrectness(
           question,
@@ -73,7 +103,7 @@ describe('controller', () => {
 
       it('resolves partially-correct', () => {
         expect(getCorrectness(
-          question,
+          { ...question, partialScoring: true },
           {
             answers: [
               {
@@ -111,8 +141,29 @@ describe('controller', () => {
       beforeEach(() => {
         outcome(question, {}, { mode: 'evaluate' });
       });
+
       it('calls buildState ', () => {
         expect(buildStateSpy).toBeCalled();
+      });
+
+      it ('returns empty: false when session is defined', async () => {
+        expect(await outcome(question, { id: 1 }, { mode: 'evaluate' }))
+          .toEqual({ score: 0, empty: false });
+      });
+
+      it ('returns empty: true when session undefined', async () => {
+        expect(await outcome(question, undefined, { mode: 'evaluate' }))
+          .toEqual({ score: 0, empty: true});
+      });
+
+      it ('returns empty: true when session null', async () => {
+        expect(await outcome(question, null, { mode: 'evaluate' }))
+          .toEqual({ score: 0, empty: true});
+      });
+
+      it ('returns empty: true when session empty', async () => {
+        expect(await outcome(question, {}, { mode: 'evaluate' }))
+          .toEqual({ score: 0, empty: true});
       });
     });
   });
@@ -174,4 +225,19 @@ describe('controller', () => {
       )).toEqual(0.75);
     });
   });
+
+  describe('getTotalScore', () => {
+    it('returns 0 if session is undefined', () => {
+      expect(getTotalScore(question, undefined)).toEqual(0);
+    });
+
+    it('returns 0 if session is null', () => {
+      expect(getTotalScore(question, null)).toEqual(0);
+    });
+
+    it('returns 0 if session is empty', () => {
+      expect(getTotalScore(question, {})).toEqual(0);
+    });
+  });
+
 });
