@@ -61,7 +61,7 @@ export class CorrectResponse extends React.Component {
               domain={model.domain}
               range={model.range}
               charts={charts}
-              data={model.correctAnswer.data}
+              data={model.correctAnswer.data || []}
               title={model.title}
               onDataChange={(data) => this.changeData(data)}
               editCategoryEnabled={true}

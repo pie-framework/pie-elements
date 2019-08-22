@@ -46,8 +46,13 @@ class Root extends React.Component {
       onUpdateShapes,
       onTeacherInstructionsChanged
     } = this.props;
-    const { multipleCorrect, partialScoring, prompt = {}, teacherInstructions = {} } = configuration;
-    const { rationale = {} } = configuration;
+    const {
+      multipleCorrect = {},
+      partialScoring = {},
+      prompt = {},
+      teacherInstructions = {},
+      rationale = {}
+    } = configuration || {};
 
     return (
       <div className={classes.base}>

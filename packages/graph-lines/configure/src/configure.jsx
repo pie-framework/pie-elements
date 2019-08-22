@@ -127,16 +127,16 @@ export class Configure extends React.Component {
     const config = model.graph;
 
     const {
-      arrows,
-      graphTitle,
-      padding,
-      labels,
+      arrows = {},
+      graphTitle = {},
+      padding = {},
+      labels = {},
 
-      rationale,
-      scoringType,
-      studentInstructions,
-      teacherInstructions,
-    } = configuration;
+      rationale = {},
+      scoringType = {},
+      studentInstructions = {},
+      teacherInstructions = {},
+    } = configuration || {};
     log('[render] model', model);
 
     return (

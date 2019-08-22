@@ -66,21 +66,21 @@ const Design = withStyles(styles)(props => {
     onTeacherInstructionsChanged
   } = props;
   const {
-    prompt,
-    addChoiceButton,
-    feedback,
-    deleteChoice,
-    choiceMode,
-    choicePrefix,
-    partialScoring,
-    lockChoiceOrder,
+    prompt = {},
+    addChoiceButton = {},
+    feedback = {},
+    deleteChoice = {},
+    choiceMode = {},
+    choicePrefix = {},
+    partialScoring = {},
+    lockChoiceOrder = {},
     teacherInstructions = {},
     studentInstructions = {},
     rationale = {},
     scoringType = {},
     sequentialChoiceLabels = {},
     partLabels = {},
-  } = configuration;
+  } = configuration || {};
 
   return (
     <div className={classes.design}>

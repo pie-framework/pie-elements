@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.6.0...@pie-element/extended-text-entry@4.6.1) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.8...@pie-element/extended-text-entry@4.6.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+
+
+### Features
+
+* **extended-text-entry:** universal prompt treatment ([a9031c3](https://github.com/pie-framework/pie-elements/commit/a9031c3))
+
+
+
+
+
+## [4.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.7...@pie-element/extended-text-entry@4.5.8) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
+## [4.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.6...@pie-element/extended-text-entry@4.5.7) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry
+
+
+
+
+
 ## [4.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@4.5.5...@pie-element/extended-text-entry@4.5.6) (2019-07-17)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

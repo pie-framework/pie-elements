@@ -77,13 +77,13 @@ export class Configure extends React.Component {
     log('[render] model', model);
     const { graph } = model;
     const {
-      title,
-      rationale,
-      scoringType,
-      studentInstructions,
-      teacherInstructions,
+      title = {},
+      rationale = {},
+      scoringType = {},
+      studentInstructions = {},
+      teacherInstructions = {},
       prompt = {},
-    } = configuration;
+    } = configuration || {};
 
     return (
       <layout.ConfigLayout

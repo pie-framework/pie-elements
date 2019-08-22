@@ -184,14 +184,14 @@ class Configure extends React.Component {
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
-      enableImages,
-      partialScoring,
+      enableImages = {},
+      partialScoring = {},
       teacherInstructions = {},
-      studentInstructions,
+      studentInstructions = {},
       rationale = {},
-      lockChoiceOrder,
-      scoringType,
-      prompt,
+      lockChoiceOrder = {},
+      scoringType = {},
+      prompt = {},
       feedback = {}
     } = configuration || {};
 
@@ -232,12 +232,6 @@ class Configure extends React.Component {
         }
       >
         <div className={classes.content}>
-          <Typography component="div" type="body1">
-            <span>
-              In Choice Matrix, students associate choices in the first column with options in the adjacent rows.
-              This interaction allows for either one or more correct answers. Setting more than one answer as correct allows for partial credit <i>(see the Scoring tab)</i>.
-            </span>
-          </Typography>
 
           {teacherInstructions.enabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>

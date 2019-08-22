@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Choices from './choices';
 import { processMarkup, createSlateMarkup } from './markupUtils';
-const { toggle, Panel } = settings;
+const { dropdown, toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -60,29 +60,6 @@ const styles = theme => ({
     color: '#495B8F'
   }
 });
-
-const positionOptions = [
-  {
-    label: 'Above',
-    value: 'above',
-    secondaryText: 'Choices will be shown above categories'
-  },
-  {
-    label: 'Below',
-    value: 'below',
-    secondaryText: 'Choices will be shown below categories'
-  },
-  {
-    label: 'Left',
-    value: 'left',
-    secondaryText: 'Choices will be shown to the left of the categories'
-  },
-  {
-    label: 'Right',
-    value: 'right',
-    secondaryText: 'Choices will be shown to the right of the categories'
-  }
-];
 
 export class Main extends React.Component {
   static propTypes = {
@@ -153,21 +130,7 @@ export class Main extends React.Component {
     });
   };
 
-  changePosition = position => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      choicesPosition: position.value
-    });
-
-    this.setState({ anchorEl: null });
-  };
-
-  handleClickPosition = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
   render() {
-    const { anchorEl } = this.state;
     const {
       classes,
       model,
@@ -176,14 +139,14 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      duplicates,
-      prompt,
-      partialScoring,
-      lockChoiceOrder,
+      duplicates = {},
+      prompt = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
       rationale = {},
-      teacherInstructions = {}
-    } = configuration;
-    const positionOption = positionOptions.find(option => option.value === model.choicesPosition);
+      teacherInstructions = {},
+      choicesPosition = {}
+    } = configuration || {};
 
     return (
       <div className={classes.design}>
@@ -200,7 +163,13 @@ export class Main extends React.Component {
                   toggle(partialScoring.label),
                   duplicates: duplicates.settings && toggle(duplicates.label),
                   lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label)
+                  toggle(lockChoiceOrder.label),
+                  choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, [
+                    'above',
+                    'below',
+                    'left',
+                    'right'
+                  ])
                 },
                 'Properties': {
                   'teacherInstructions.enabled': teacherInstructions.settings &&
@@ -239,19 +208,6 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            {rationale.enabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
-                />
-              </InputContainer>
-            )}
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
@@ -279,34 +235,19 @@ export class Main extends React.Component {
               duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
             />
-            <List component="nav">
-              <ListItem
-                button
-                aria-haspopup="true"
-                onClick={this.handleClickPosition}
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
               >
-                <ListItemText
-                  primary="Choices Position"
-                  secondary={positionOption.secondaryText}
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChanged}
+                  imageSupport={imageSupport}
                 />
-              </ListItem>
-            </List>
-            <Menu
-              id="lock-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              {positionOptions.map(option => (
-                <MenuItem
-                  key={option.value}
-                  selected={option.value === model.choicesPosition}
-                  onClick={() => this.changePosition(option)}
-                >
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Menu>
+              </InputContainer>
+            )}
           </div>
         </layout.ConfigLayout>
       </div>

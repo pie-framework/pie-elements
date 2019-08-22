@@ -163,5 +163,20 @@
     "committerDate": "2019-06-26 10:24:01 +0100",
     "isTagged": true,
     "tag": "@pie-element/number-line-controller@4.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "numbers should be compared using 'closeTo' logic, for decmial support",
+    "merge": null,
+    "header": "fix: numbers should be compared using 'closeTo' logic, for decmial support",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0d78034df6085750f66baf94da247ef60bcf9f6d",
+    "gitTags": "",
+    "committerDate": "2019-08-08 18:36:53 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@4.1.4"
   }
 ]

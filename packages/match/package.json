@@ -4,14 +4,14 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.8.4",
+  "version": "2.8.8",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/match": "^2.3.6"
+    "@pie-ui/match": "^2.3.8"
   },
   "pie": {
     "element": "@pie-ui/match"

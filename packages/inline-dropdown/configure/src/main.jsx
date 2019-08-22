@@ -28,12 +28,20 @@ const InfoDialog = ({ open, onCancel, onOk, title }) => (
   <Dialog open={open}>
     <DialogTitle>{title}</DialogTitle>
     <DialogActions>
-      <Button onClick={onOk} color="primary">
-        OK
-      </Button>
-      <Button onClick={onCancel} color="primary">
-        Cancel
-      </Button>
+      {
+        onOk && (
+          <Button onClick={onOk} color="primary">
+            OK
+          </Button>
+        )
+      }
+      {
+        onCancel && (
+          <Button onClick={onCancel} color="primary">
+            Cancel
+          </Button>
+        )
+      }
     </DialogActions>
   </Dialog>
 );
@@ -49,11 +57,11 @@ const styles = theme => ({
     width: '100%'
   },
   markup: {
-    minHeight: '235px',
+    minHeight: '100px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '235px'
+      minHeight: '100px'
     }
   },
   design: {
@@ -86,6 +94,16 @@ const createElementFromHTML = htmlString => {
   return div;
 };
 
+const prepareVal = html => {
+  const tmp = document.createElement('DIV');
+
+  tmp.innerHTML = html;
+
+  const value = tmp.textContent || tmp.innerText || '';
+
+  return value.trim();
+};
+
 export class Main extends React.Component {
   static propTypes = {
     configuration: PropTypes.object.isRequired,
@@ -115,7 +133,7 @@ export class Main extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nProps) {
+  UNSAFE_componentWillReceiveProps(nProps) {
     const newState = {};
 
     if (!isEqual(nProps.model.choices, this.props.model.choices)) {
@@ -232,6 +250,24 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
+    if ((respAreaChoices[index] || []).find(r => prepareVal(r.label) === prepareVal(label))) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: 'Duplicate answers are not allowed.',
+          onOk: () => {
+            this.setState({
+              dialog: {
+                open: false
+              }
+            });
+          }
+        }
+      });
+
+      return ;
+    }
+
     respAreaChoices[index].push({
       label,
       value: `${respAreaChoices[index].length}`,
@@ -267,12 +303,12 @@ export class Main extends React.Component {
       imageSupport
     } = this.props;
     const {
-      prompt,
-      partialScoring,
-      lockChoiceOrder,
+      prompt = {},
+      partialScoring = {},
+      lockChoiceOrder = {},
       rationale = {},
       teacherInstructions = {}
-    } = configuration;
+    } = configuration || {};
 
     return (
       <div className={classes.design}>
@@ -379,6 +415,7 @@ export class Main extends React.Component {
                   );
                 }
               }}
+              className={classes.markup}
               markup={markup || ''}
               onChange={this.onChange}
               imageSupport={imageSupport}

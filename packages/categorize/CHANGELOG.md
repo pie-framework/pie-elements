@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.6...@pie-element/categorize@4.6.7) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [4.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.5...@pie-element/categorize@4.6.6) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+
+
+
+
+
+## [4.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.4...@pie-element/categorize@4.6.5) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+## [4.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.3...@pie-element/categorize@4.6.4) (2019-07-25)
+
+
+### Bug Fixes
+
+* **categories:** implemented alternate responses for authoring in the categorize element [ch1255] ([4d2ca06](https://github.com/pie-framework/pie-elements/commit/4d2ca06))
+
+
+
+
+
 ## [4.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.2...@pie-element/categorize@4.6.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/categorize

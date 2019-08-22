@@ -20,7 +20,7 @@ export class Root extends React.Component {
 
   render() {
     const { classes, model, configuration, onModelChanged, onConfigurationChanged, imageSupport } = this.props;
-    const { teacherInstructions } = configuration || {};
+    const { teacherInstructions = {} } = configuration || {};
 
     return (
       <layout.ConfigLayout

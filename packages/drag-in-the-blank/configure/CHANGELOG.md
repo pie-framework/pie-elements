@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.9...@pie-element/drag-in-the-blank-configure@1.5.10) (2019-08-15)
+
+
+### Bug Fixes
+
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [1.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.8...@pie-element/drag-in-the-blank-configure@1.5.9) (2019-08-02)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [1.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.7...@pie-element/drag-in-the-blank-configure@1.5.8) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [1.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.6...@pie-element/drag-in-the-blank-configure@1.5.7) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [1.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.5...@pie-element/drag-in-the-blank-configure@1.5.6) (2019-07-19)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
 ## [1.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.5.4...@pie-element/drag-in-the-blank-configure@1.5.5) (2019-07-17)
 
 

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.10...@pie-element/multiple-choice-controller@1.6.11) (2019-08-15)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-controller
+
+
+
+
+
+## [1.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.9...@pie-element/multiple-choice-controller@1.6.10) (2019-08-02)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-controller
+
+
+
+
+
+## [1.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.8...@pie-element/multiple-choice-controller@1.6.9) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-controller
+
+
+
+
+
 ## [1.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.7...@pie-element/multiple-choice-controller@1.6.8) (2019-07-07)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

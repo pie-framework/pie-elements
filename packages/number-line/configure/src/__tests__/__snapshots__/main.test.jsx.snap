@@ -2,9 +2,6 @@
 
 exports[`main snapshot renders 1`] = `
 <div>
-  <p>
-    In this interaction, students plot points, line segments or rays on a number line.
-  </p>
   <FormSection
     label="Prompt"
   >

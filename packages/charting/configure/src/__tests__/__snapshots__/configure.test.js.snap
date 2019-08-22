@@ -307,6 +307,7 @@ exports[`CorrectResponse renders snapshot 1`] = `
         addCategoryEnabled={true}
         categoryDefaultLabel="Category"
         chartType="lineCross"
+        data={Array []}
         domain={
           Object {
             "label": "Fruits",

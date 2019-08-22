@@ -4,14 +4,14 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "2.6.3",
+  "version": "2.8.0",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^2.4.1"
+    "@pie-ui/math-inline": "^3.0.1"
   },
   "pie": {
     "element": "@pie-ui/math-inline"

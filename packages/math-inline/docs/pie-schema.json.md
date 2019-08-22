@@ -59,45 +59,9 @@ Indicates the configuration for feedback when answer is incorrect
 
 Indicates the configuration for feedback when answer is partially correct
 
-# `response` (object, required)
-
-Properties of the `response` object:
-
-## `id` (string,number, required)
-
-The id of the response
-
-## `validation` (string, enum, required)
-
-Indicates what type of validation should be applied on the response
-
-This element must be one of the following enum values:
-
-* `literal`
-* `symbolic`
-
-Default: `"is symbolic"`
-
-## `answer` (string, required)
-
-The answer for the question
-
-## `alternates` (object, required)
-
-For validation type = literal, alternates represents
-an object with some alternatives for the correct answers
-
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
-
-## `allowDecimals` (boolean)
-
-Indicates if decimals are allowed
-
 # `responses` (array, required)
 
-Array of all correct responses if responseType is Advanced Multi
+Array of all correct responses; if responseType is Simple, only first element in array is used
 
 The object is an array with all elements of the type `object`.
 

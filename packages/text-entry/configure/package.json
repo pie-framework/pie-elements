@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/text-entry-configure",
   "private": true,
-  "version": "2.7.3",
+  "version": "2.7.6",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest"
@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.7.26",
-    "@pie-lib/editable-html": "^7.10.17",
+    "@pie-lib/config-ui": "^10.7.32",
+    "@pie-lib/editable-html": "^7.10.23",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

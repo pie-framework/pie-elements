@@ -1,14 +1,14 @@
 {
   "name": "@pie-element/image-cloze-association-configure",
   "private": true,
-  "version": "1.1.4",
+  "version": "1.1.7",
   "description": "",
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.7.26",
+    "@pie-lib/config-ui": "^10.7.32",
     "debug": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

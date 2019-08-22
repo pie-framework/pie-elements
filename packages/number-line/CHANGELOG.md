@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.8...@pie-element/number-line@5.5.9) (2019-08-15)
+
+
+### Bug Fixes
+
+* numbers should be compared using 'closeTo' logic, for decmial support ([0d78034](https://github.com/pie-framework/pie-elements/commit/0d78034))
+* **elements:** version bumped the editable-html packages [ch1738] ([949222a](https://github.com/pie-framework/pie-elements/commit/949222a))
+
+
+
+
+
+## [5.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.5...@pie-element/number-line@5.5.8) (2019-08-02)
+
+
+### Bug Fixes
+
+* **elements:** fixed some feedback config issues and the prompt issue on categorize [ch2192], [ch1770] ([eb22724](https://github.com/pie-framework/pie-elements/commit/eb22724))
+* version bump @pie-ui/number-line@7.1.4 ([fe9cc6c](https://github.com/pie-framework/pie-elements/commit/fe9cc6c))
+
+
+
+
+
+## [5.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.4...@pie-element/number-line@5.5.5) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.3...@pie-element/number-line@5.5.4) (2019-07-25)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [5.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.2...@pie-element/number-line@5.5.3) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/number-line

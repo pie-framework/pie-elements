@@ -75,10 +75,7 @@ export interface MathInlinePie extends PieModel {
     /** Feedback configuration for the responses */
     feedback?: ComplexFeedbackType;
 
-    /** Correct response if responseType is simple */
-    response: MathInlineResponse;
-
-    /** Array of all correct responses if responseType is Advanced Multi */
+    /** Array of all correct responses; if responseType is Simple, only first element in array is used */
     responses: MathInlineResponse[];
 
     /**
@@ -115,6 +112,11 @@ export interface MathInlinePie extends PieModel {
  * @additionalProperties false
  */
 export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings {
+    /**
+     * Configuration for prompt
+     */
+    prompt?: ConfigureProp;
+
     /**
      * Configuration for response type
      */
