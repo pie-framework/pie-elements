@@ -81,7 +81,7 @@ const getShuffledChoices = async (choices, session, updateSession) => {
   }
 };
 
-export async function model(question, session, env) {
+export async function model(question, session, env, updateSession) {
   const defaultFeedback = Object.assign(
     { correct: 'Correct', incorrect: 'Incorrect' },
     question.defaultFeedback
