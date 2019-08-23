@@ -107,6 +107,17 @@ describe('controller', () => {
       returnsScoreOf({ value: ['yellow'] }, { value: ['orange'] }, 1.67);
       returnsScoreOf({ value: ['yellow'] }, { value: ['orange', 'c'] }, 2);
     });
+
+    const returnsScoreWhen = (session) => {
+      it(`returns empty: true if session is ${JSON.stringify(session)}`, async () => {
+        const result = await outcome(question, session, { mode: 'gather' });
+        expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true });
+      });
+    };
+
+    returnsScoreWhen(undefined);
+    returnsScoreWhen(null);
+    returnsScoreWhen({});
   });
 
   describe('model', () => {

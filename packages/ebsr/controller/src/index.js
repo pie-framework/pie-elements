@@ -99,9 +99,11 @@ const getScore = (config, part, key) => {
   if (!config[key].partialScoring && correctCount < maxScore) {
     score = 0;
   } else {
-    const scoreString = ( correctCount / config[key].choices.length ).toFixed(2);
+    const { choices } = (config && config[key]) || {};
+    const choicesLength = choices && choices.length;
+    const scoreString = choicesLength ? (correctCount / choicesLength).toFixed(2) : 0;
 
-    score = parseFloat( scoreString );
+    score = parseFloat(scoreString);
   }
 
   return score;
@@ -109,9 +111,11 @@ const getScore = (config, part, key) => {
 
 export function outcome(config, session, env) {
   return new Promise((resolve, reject) => {
-    log('outcome...');
+    const { value } = session || {};
 
-    const { value } = session;
+    if (!session || !value) {
+      resolve({ score: 0, scoreA: 0, scoreB: 0, empty: true });
+    }
 
     if (value) {
       const { partA, partB } = value;

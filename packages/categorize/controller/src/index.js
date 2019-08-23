@@ -107,7 +107,7 @@ export const getScore = (category, choices, correctResponse, sessionChoices) => 
   }, choices.length);
 
   const str = (correctCount / maxScore).toFixed(2);
-  return parseFloat(str, 10);
+  return parseFloat(str);
 };
 
 export const getTotalScore = (question, session) => {
