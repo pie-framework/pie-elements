@@ -663,5 +663,35 @@
     "committerDate": "2019-08-16 23:04:42 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@2.5.6"
+  },
+  {
+    "type": "fix",
+    "scope": "ebsr",
+    "subject": "fixed ebsr [ch3200]",
+    "merge": null,
+    "header": "fix(ebsr): fixed ebsr [ch3200]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b4e915c439c2b417be904a5ab0f7fb681d4c2c99",
+    "gitTags": "",
+    "committerDate": "2019-08-21 10:15:41 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@2.5.7"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "33e3287a735cec9aed893f697a1933ff0c077042",
+    "gitTags": "",
+    "committerDate": "2019-08-19 19:37:56 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@2.5.7"
   }
 ]

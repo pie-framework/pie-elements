@@ -6,9 +6,6 @@ import { renderMath } from '@pie-lib/math-rendering';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
 import Choice from './choice';
 import { withStyles } from '@material-ui/core/styles';
 

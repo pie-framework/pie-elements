@@ -367,6 +367,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     </WithStyles(Button)>
   </div>
   <WithStyles(Response)
+    defaultResponse={false}
     index={0}
     key="1"
     mode="3"

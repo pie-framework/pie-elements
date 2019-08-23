@@ -1268,5 +1268,55 @@
     "committerDate": "2019-08-15 13:58:41 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@2.6.2"
+  },
+  {
+    "type": "fix",
+    "scope": "math-rendering",
+    "subject": "updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "merge": null,
+    "header": "fix(math-rendering): updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "33e3287a735cec9aed893f697a1933ff0c077042",
+    "gitTags": "",
+    "committerDate": "2019-08-19 19:37:56 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@2.6.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed unnecessary response property from the model.",
+    "merge": null,
+    "header": "fix: Removed unnecessary response property from the model.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `response` was removed from model, use responses instead.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`response` was removed from model, use responses instead."
+      }
+    ],
+    "hash": "b0a0f3d7961843dd1137ba6a5f72e3923d8755f4",
+    "gitTags": "",
+    "committerDate": "2019-08-20 12:20:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@3.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Fixed Add Alternate when default alternates were defined. Send 'response' if response type is 'simple', send 'responses' if response type is 'advance multi' to ui.",
+    "merge": null,
+    "header": "fix: Fixed Add Alternate when default alternates were defined. Send 'response' if response type is 'simple', send 'responses' if response type is 'advance multi' to ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "609a0d7a60cf38e5272cfc6c71260b1c704e5e43",
+    "gitTags": "",
+    "committerDate": "2019-08-19 09:15:35 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@3.0.0"
   }
 ]

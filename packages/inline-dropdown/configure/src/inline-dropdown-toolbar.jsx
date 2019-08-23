@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import { renderMath } from '@pie-lib/math-rendering';
+import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
-import { withStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
 
 class MenuItemComp extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    correct: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
     onRemoveChoice: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired
@@ -25,10 +27,10 @@ class MenuItemComp extends React.Component {
   };
 
   render() {
-    const { classes, onClick, value } = this.props;
+    const { classes, correct, onClick, value } = this.props;
 
     return (
-      <div className={classes.wrapper} onClick={onClick}>
+      <div className={classnames(classes.wrapper, { [classes.correct]: correct })} onClick={onClick}>
         <div
           className={classes.valueHolder}
           dangerouslySetInnerHTML={{
@@ -53,6 +55,9 @@ const MenuItem = withStyles({
     lineHeight: '30px',
     padding: '10px 25px 10px 10px',
     position: 'relative'
+  },
+  correct: {
+    background: '#C4DCFA'
   },
   removeIcon: {
     cursor: 'pointer',
@@ -243,12 +248,13 @@ class RespAreaToolbar extends React.Component {
         </div>
         {choices && (
           <div className={classes.choicesHolder}>
-            {choices.map(({ label }, index) => (
+            {choices.map(({ label, correct }, index) => (
               <MenuItem
                 key={index}
                 onClick={() => this.onSelectChoice(label, index)}
                 onRemoveChoice={() => this.onRemoveChoice(label, index)}
                 value={label}
+                correct={correct}
               />
             ))}
           </div>
@@ -260,7 +266,10 @@ class RespAreaToolbar extends React.Component {
 
 const StyledRespAreaToolbar = withStyles({
   respArea: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    '& [data-slate-editor="true"]': {
+      minHeight: 'initial !important'
+    }
   },
   choicesHolder: {
     display: 'flex',
