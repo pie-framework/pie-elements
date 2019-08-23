@@ -48,6 +48,10 @@ export default {
     duplicates: true
   },
   configuration: {
+    choicesPosition: {
+      settings: true,
+      label: 'Choices Position'
+    },
     prompt: {
       settings: true,
       label: 'Prompt'

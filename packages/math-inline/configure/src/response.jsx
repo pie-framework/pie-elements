@@ -100,8 +100,11 @@ class Response extends React.Component {
   constructor(props) {
     super(props);
 
+    const { response: { alternates } = {} } = props || {};
+    const alternatesLength = Object.keys(alternates || {}).length;
+
     this.state = {
-      alternateIdCounter: 1,
+      alternateIdCounter: alternatesLength + 1,
       showKeypad: {
         openCount: 0,
         main: false

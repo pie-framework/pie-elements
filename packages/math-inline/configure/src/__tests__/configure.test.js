@@ -166,24 +166,6 @@ describe('GeneralConfigBlock', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('updates simple model correctly', () => {
-    const onChange = jest.fn();
-    const component = wrapper({
-      ...props,
-      onChange,
-      responseType: 'Simple'
-    });
-
-    component.instance().onSimpleResponseChange({ answer: 'something' });
-
-    expect(onChange).toBeCalledWith({
-      ...props.model,
-      response: {
-        answer: 'something'
-      }
-    });
-  });
-
   it('updates advanced model correctly', () => {
     const onChange = jest.fn();
     const component = wrapper({

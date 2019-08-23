@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
+import isEmpty from 'lodash/isEmpty';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 import {
   InputContainer, layout, settings
@@ -23,11 +24,11 @@ const styles = theme => ({
     width: '100%'
   },
   markup: {
-    minHeight: '235px',
+    minHeight: '100px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '235px'
+      minHeight: '100px'
     }
   },
   design: {
@@ -45,10 +46,11 @@ const styles = theme => ({
     float: 'right'
   },
   text: {
+    color: '#495B8F',
     fontFamily: 'Cerebri Sans',
     fontSize: '16px',
     lineHeight: '19px',
-    color: '#495B8F'
+    marginTop: theme.spacing.unit * 4
   }
 });
 
@@ -237,19 +239,6 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            {rationale.enabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.promptHolder}
-              >
-                <EditableHtml
-                  className={classes.prompt}
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
-                />
-              </InputContainer>
-            )}
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
@@ -279,6 +268,7 @@ export class Main extends React.Component {
                   );
                 }
               }}
+              className={classes.markup}
               markup={model.slateMarkup}
               onChange={this.onChange}
               imageSupport={imageSupport}
@@ -286,13 +276,30 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
             />
-            <Typography className={classes.text}>
-              Define Alternates
-            </Typography>
+            {
+              !isEmpty(model.choices) && (
+                <Typography className={classes.text}>
+                  Define Alternates
+                </Typography>
+              )
+            }
             <AlternateResponses
               model={model}
               onChange={this.onResponsesChanged}
             />
+            {rationale.enabled && (
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.rationale || ''}
+                  onChange={this.onRationaleChanged}
+                  imageSupport={imageSupport}
+                />
+              </InputContainer>
+            )}
           </div>
         </layout.ConfigLayout>
       </div>
