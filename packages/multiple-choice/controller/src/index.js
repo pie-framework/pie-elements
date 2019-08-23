@@ -81,6 +81,13 @@ const getShuffledChoices = async (choices, session, updateSession) => {
   }
 };
 
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
 export async function model(question, session, env, updateSession) {
   const defaultFeedback = Object.assign(
     { correct: 'Correct', incorrect: 'Incorrect' },
