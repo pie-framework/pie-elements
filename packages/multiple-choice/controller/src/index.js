@@ -49,6 +49,7 @@ export function createDefaultModel(model = {}) {
     });
   });
 }
+
 const getShuffledChoices = async (choices, session, updateSession) => {
   log('updateSession type: ', typeof updateSession);
   log('session: ', session);
@@ -61,15 +62,13 @@ const getShuffledChoices = async (choices, session, updateSession) => {
   } else {
     const shuffledChoices = shuffle(choices);
 
-    log('try to save shuffledValues to session...', session.shuffledValues);
     if (updateSession && typeof updateSession === 'function') {
       try {
-        //session.id refers to the id of the element within a session
-
+        //Note: session.id refers to the id of the element within a session
+        const shuffledValues = shuffledChoices.map(c => c.value);
+        log('try to save shuffledValues to session...', shuffledValues);
         console.log('call updateSession... ', session.id, session.element);
-        await updateSession(session.id, session.element, {
-          shuffledValues: shuffledChoices.map(c => c.value)
-        });
+        await updateSession(session.id, session.element, { shuffledValues });
       } catch (e) {
         warn('unable to save shuffled order for choices');
         error(e);
