@@ -138,6 +138,16 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
+    it('returns correct for correctness with text nodes too', async () => {
+      question = mkQuestion();
+      session = { completeAnswer: '72\\div12=6eggs' };
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+
     it('returns correct for correctness in outcome', async () => {
       question = mkQuestion();
       session = { completeAnswer: '72\\div12=6\\text{eggs}' };
