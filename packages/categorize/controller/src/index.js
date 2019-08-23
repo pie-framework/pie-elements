@@ -1,10 +1,16 @@
 import forEach from 'lodash/forEach';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import defaults from './defaults';
-import debug from 'debug';
+import shuffle from 'lodash/shuffle';
+import compact from 'lodash/compact';
 
-const log = debug('@pie-element:categorize:controller');
+import defaults from './defaults';
+
+const lg = n => console[n].bind(console, '[multiple-choice]');
+const debug = lg('debug');
+const log = lg('log');
+const warn = lg('warn');
+const error = lg('error');
 
 export { score };
 
@@ -43,22 +49,63 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-export const model = (question, session, env) =>
+const getShuffledChoices = async (choices, session, updateSession) => {
+  log('updateSession type: ', typeof updateSession);
+  log('session: ', session);
+  if (session.shuffledValues) {
+    debug('use shuffledValues to sort the choices...', session.shuffledValues);
+
+    return compact(
+      session.shuffledValues.map(v => choices.find(c => c.id === v))
+    );
+  } else {
+    const shuffledChoices = shuffle(choices);
+
+    if (updateSession && typeof updateSession === 'function') {
+      try {
+        const shuffledValues = shuffledChoices.map(c => c.id);
+        log('try to save shuffledValues to session...', shuffledValues);
+        console.log('call updateSession... ', session.id, session.element);
+        await updateSession(session.id, session.element, { shuffledValues });
+      } catch (e) {
+        warn('unable to save shuffled order for choices');
+        error(e);
+      }
+    } else {
+      warn('unable to save shuffled choices, shuffle will happen every time.');
+    }
+    return shuffledChoices;
+  }
+};
+
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export const model = (question, session, env, updateSession) =>
   new Promise(resolve => {
     const correctPromise = getCorrectness(question, session, env);
 
-    correctPromise.then(correctness => {
+    correctPromise.then(async correctness => {
       const fb =
         env.mode === 'evaluate' && question.allowFeedback
           ? getFeedbackForCorrectness(correctness, question.feedback)
           : Promise.resolve(undefined);
+
+      let choices = question.choices;
+      if (!question.lockChoiceOrder) {
+        choices = await getShuffledChoices(choices, session, updateSession);
+      }
 
       fb.then(feedback => {
         const out = {
           correctness,
           feedback,
           prompt: question.prompt,
-          choices: question.choices,
+          choices,
           categories: question.categories,
           disabled: env.mode !== 'gather',
           choicesPerRow: question.choicesPerRow || 2,
@@ -73,7 +120,10 @@ export const model = (question, session, env) =>
         out.correctResponse =
           env.mode === 'evaluate' ? question.correctResponse : undefined;
 
-        if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        if (
+          env.role === 'instructor' &&
+          (env.mode === 'view' || env.mode === 'evaluate')
+        ) {
           out.rationale = question.rationale;
           out.teacherInstructions = question.teacherInstructions;
         } else {
