@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 import { camelizeKeys } from 'humps';
 import { getAllUniqueCorrectness } from './utils';
 
@@ -29,9 +30,13 @@ export function model(question, session, env) {
   });
 }
 
-const isResponseCorrect = (responses, session) => {
+export const isResponseCorrect = (responses, session) => {
   let isCorrect = true;
   let totalValidResponses = 0;
+
+  if (!session || isEmpty(session)) {
+    return false;
+  }
 
   responses.forEach(value => totalValidResponses += value.length);
 
@@ -59,7 +64,7 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
       if (isResponseCorrect(altResponse.value, session)) {
         isCorrect = true;
       }
-    })
+    });
   }
   return isCorrect;
 };
@@ -77,10 +82,14 @@ const getDeductionPerContainer = (containerIndex, answers, valid) => {
   return [];
 };
 
-const getPartialScore = (question, session) => {
+export const getPartialScore = (question, session) => {
   const { validation: { validResponse }, maxResponsePerZone, responseContainers } = question;
   let correctAnswers = 0;
   let possibleResponses = 0;
+
+  if (!session || isEmpty(session)) {
+    return 0;
+  }
 
   validResponse.value.forEach(value => possibleResponses += value.length);
 
@@ -124,6 +133,10 @@ const getScore = (config, session) => {
 export function outcome(config, session, env) {
   return new Promise(resolve => {
     log('outcome...');
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     const configCamelized = camelizeKeys(config);
 
     if (session.answers || []) {
