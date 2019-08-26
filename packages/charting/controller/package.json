@@ -8,7 +8,7 @@
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/feedback": "^0.4.1",
+    "@pie-lib/feedback": "^0.4.9",
     "debug": "^4.1.1",
     "lodash": "^4.17.15"
   },

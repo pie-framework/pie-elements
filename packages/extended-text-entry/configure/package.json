@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.7.30",
-    "@pie-lib/editable-html": "^7.10.21",
+    "@pie-lib/config-ui": "^10.7.32",
+    "@pie-lib/editable-html": "^7.10.23",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",

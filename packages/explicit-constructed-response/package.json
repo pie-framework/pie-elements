@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.7.17",
+  "version": "1.7.16",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/explicit-constructed-response": "^1.5.18"
+    "@pie-ui/explicit-constructed-response": "^1.5.20"
   },
   "pie": {
     "element": "@pie-ui/explicit-constructed-response"
