@@ -3,7 +3,7 @@ import _ from 'lodash';
 import shuffle from 'lodash/shuffle';
 import compact from 'lodash/compact';
 
-const lg = n => console[n].bind(console, '[multiple-choice]');
+const lg = n => console[n].bind(console, '[match]');
 const debug = lg('debug');
 const log = lg('log');
 const warn = lg('warn');

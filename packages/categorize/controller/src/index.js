@@ -6,7 +6,7 @@ import compact from 'lodash/compact';
 
 import defaults from './defaults';
 
-const lg = n => console[n].bind(console, '[multiple-choice]');
+const lg = n => console[n].bind(console, '[categorize]');
 const debug = lg('debug');
 const log = lg('log');
 const warn = lg('warn');

@@ -6,7 +6,7 @@ import compact from 'lodash/compact';
 import shuffle from 'lodash/shuffle';
 import { partialScoring } from '@pie-lib/controller-utils';
 
-const lg = n => console[n].bind(console, '[multiple-choice]');
+const lg = n => console[n].bind(console, '[explicit-constructed-response]');
 const debug = lg('debug');
 const log = lg('log');
 const warn = lg('warn');

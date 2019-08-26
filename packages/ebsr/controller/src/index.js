@@ -3,7 +3,7 @@ import defaults from './defaults';
 import { isResponseCorrect } from './utils';
 import compact from 'lodash/compact';
 
-const lg = n => console[n].bind(console, '[ebsr:controller]');
+const lg = n => console[n].bind(console, '[ebsr]');
 const debug = lg('debug');
 const log = lg('log');
 const warn = lg('warn');
