@@ -1,10 +1,15 @@
-import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import _ from 'lodash';
+import shuffle from 'lodash/shuffle';
+import compact from 'lodash/compact';
+
+const lg = n => console[n].bind(console, '[multiple-choice]');
+const debug = lg('debug');
+const log = lg('log');
+const warn = lg('warn');
+const error = lg('error');
 
 import defaults from './defaults';
-
-const log = debug('@pie-element:graph-lines:controller');
 
 const getResponseCorrectness = (
   model,
@@ -129,8 +134,46 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
+const getShuffledChoices = async (choices, session, updateSession) => {
+  log('updateSession type: ', typeof updateSession);
+  log('session: ', session);
+  if (session.shuffledValues) {
+    debug('use shuffledValues to sort the choices...', session.shuffledValues);
+
+    return compact(
+      session.shuffledValues.map(id => choices.find(c => c.id === id))
+    );
+  } else {
+    const shuffledChoices = shuffle(choices);
+
+    if (updateSession && typeof updateSession === 'function') {
+      try {
+        //Note: session.id refers to the id of the element within a session
+        const shuffledValues = shuffledChoices.map(c => c.id);
+        log('try to save shuffledValues to session...', shuffledValues);
+        console.log('call updateSession... ', session.id, session.element);
+        await updateSession(session.id, session.element, { shuffledValues });
+      } catch (e) {
+        warn('unable to save shuffled order for choices');
+        error(e);
+      }
+    } else {
+      warn('unable to save shuffled choices, shuffle will happen every time.');
+    }
+    //save this shuffle to the session for later retrieval
+    return shuffledChoices;
+  }
+};
+
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
+  return new Promise(async resolve => {
     const correctness = getCorrectness(question, env, session.answers);
     const correctResponse = {};
     const score =  `${getOutComeScore(question, env, session.answers) * 100}%`;
@@ -138,6 +181,11 @@ export function model(question, session, env) {
       score,
       correctness
     };
+
+
+    if (!question.lockChoiceOrder) {
+      question.rows = await getShuffledChoices(question.rows, session, updateSession);
+    }
 
     question.rows.forEach(row => {
       correctResponse[row.id] = row.values;
