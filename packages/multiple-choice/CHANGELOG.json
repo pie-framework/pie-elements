@@ -1488,5 +1488,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@3.5.10"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "null choices were throwing 'choices.map is not a function' error.",
+    "merge": null,
+    "header": "fix: null choices were throwing 'choices.map is not a function' error.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "54d0c8ccc7594665b7a8736d2497119f5d8c2533",
+    "gitTags": "",
+    "committerDate": "2019-08-21 13:55:48 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@3.6.1"
   }
 ]
