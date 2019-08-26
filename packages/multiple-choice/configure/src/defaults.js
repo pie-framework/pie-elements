@@ -6,28 +6,7 @@ export default {
   model: {
     choiceMode: 'checkbox',
     choicePrefix: 'numbers',
-    choices: [
-      {
-        correct: true,
-        value: 'choice1',
-        label: 'Choice One',
-      },
-      {
-        correct: true,
-        value: 'choice2',
-        label: 'Choice 2One',
-      },
-      {
-        correct: true,
-        value: 'choice3',
-        label: 'Choice 3One',
-      },
-      {
-        correct: true,
-        value: 'choice4',
-        label: 'Choice 4One',
-      },
-    ],
+    choices: [],
     prompt: 'Question Prompt goes here',
     lockChoiceOrder: true,
     partialScoring: true,

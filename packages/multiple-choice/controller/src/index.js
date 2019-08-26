@@ -80,6 +80,7 @@ const getShuffledChoices = async (choices, session, updateSession) => {
     return shuffledChoices;
   }
 };
+
 /**
  *
  * @param {*} question
@@ -92,10 +93,13 @@ export async function model(question, session, env, updateSession) {
     { correct: 'Correct', incorrect: 'Incorrect' },
     question.defaultFeedback
   );
+  let choices = [];
 
-  let choices = question.choices.map(
-    prepareChoice(question, env, defaultFeedback)
-  );
+  if (question.choices) {
+    choices = question.choices.map(
+      prepareChoice(question, env, defaultFeedback)
+    );
+  }
 
   if (!question.lockChoiceOrder) {
     choices = await getShuffledChoices(choices, session, updateSession);
@@ -112,23 +116,19 @@ export async function model(question, session, env, updateSession) {
 
     //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
     complete: {
-      min: question.choices.filter(c => c.correct).length
+      min: question.choices ? question.choices.filter(c => c.correct).length : 0
     },
     responseCorrect:
       env.mode === 'evaluate' ? isResponseCorrect(question, session) : undefined
   };
 
-  if (
-    env.role === 'instructor' &&
-    (env.mode === 'view' || env.mode === 'evaluate')
-  ) {
+  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
     out.teacherInstructions = question.teacherInstructions;
   } else {
     out.teacherInstructions = null;
   }
 
   return out;
-  // });
 }
 
 const isCorrect = c => c.correct === true;
