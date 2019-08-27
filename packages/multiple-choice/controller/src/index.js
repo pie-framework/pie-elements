@@ -1,4 +1,5 @@
 import shuffle from 'lodash/shuffle';
+import isEmpty from 'lodash/isEmpty';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
 import { partialScoring } from '@pie-lib/controller-utils';
@@ -86,7 +87,11 @@ export function model(question, session, env) {
 
 const isCorrect = c => c.correct === true;
 
-const getScore = (config, session) => {
+export const getScore = (config, session) => {
+  if (!session || isEmpty(session)) {
+    return 0;
+  }
+
   const maxScore = config.choices.length;
   const chosen = c => !!(session.value || []).find(v => v === c.value);
   const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
@@ -99,8 +104,8 @@ const getScore = (config, session) => {
     }
   }, config.choices.length);
 
-  const str = (correctCount / maxScore).toFixed(2);
-  return parseFloat(str, 10);
+  const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
+  return parseFloat(str);
 };
 
 /**
@@ -109,17 +114,19 @@ const getScore = (config, session) => {
  * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring = false. the value in `env` will
  * override the value in `model`.
  * @param {Object} model - the main model
- * @param {boolean} model.partialScoring - is partial scoring enabled (if undefined set to to true)
  * @param {*} session
  * @param {Object} env
- * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides `model.partialScoring`.
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled =
-      partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
-    const score = getScore(model, session);
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    } else {
+      const partialScoringEnabled =
+        partialScoring.enabled(model, env) && model.choiceMode !== 'radio';
+      const score = getScore(model, session);
+      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    }
   });
 }
 
