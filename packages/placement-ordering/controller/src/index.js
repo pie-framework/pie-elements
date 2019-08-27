@@ -9,9 +9,13 @@ import defaults from './defaults';
 const log = debug('@pie-element:placement-ordering-controller');
 export const questionError = () =>
   new Error('Question is missing required array: correctResponse');
+
 export function outcome(question, session, env) {
-  session.value = session.value || [];
   return new Promise((resolve, reject) => {
+    if (!session || _.isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     if (
       !question ||
       !question.correctResponse ||
@@ -55,16 +59,16 @@ function normalize(choices, shuffled) {
  * To allow the shuffle to be persisted.
  */
 function shuffle(session, choices) {
-  const { stash } = session;
+  let { stash } = session || {};
   const { shuffledOrder } = stash || {};
 
-  if (shuffledOrder && shuffledOrder.length !== choices.length) {
-    delete session.stash.shuffledOrder;
+  if (shuffledOrder && shuffledOrder.length !== choices.length && stash) {
+    delete stash.shuffledOrder;
   }
 
   const stashedShuffle = normalize(
     choices,
-    session.stash && session.stash.shuffledOrder
+    stash && stash.shuffledOrder
   );
 
   if (stashedShuffle) {
@@ -88,8 +92,11 @@ function shuffle(session, choices) {
       }
     });
 
-    session.stash = session.stash || {};
-    session.stash.shuffledOrder = shuffled.map(({ id }) => id);
+    if (!stash) {
+      stash = {};
+    }
+
+    stash.shuffledOrder = shuffled.map(({ id }) => id);
 
     return shuffled;
   }
@@ -141,10 +148,11 @@ export function model(question, session, env) {
     }
 
     if (env.mode === 'evaluate' && question.allowFeedback) {
+      const value = (session && session.value) || [];
       const allCorrectResponses = getAllCorrectResponses(question);
 
       const bestSetOfResponses = allCorrectResponses.reduce((info, cr) => {
-        const currentScore = _.reduce(session.value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+        const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
 
         if (currentScore > info.score) {
           return {
@@ -156,7 +164,7 @@ export function model(question, session, env) {
         return info;
       }, { arr: [], score: 0 });
 
-      base.outcomes = _.map(session.value, function(c, idx) {
+      base.outcomes = _.map(value, function(c, idx) {
         return {
           id: c,
           outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect'
@@ -164,7 +172,7 @@ export function model(question, session, env) {
       });
 
       const allCorrect = allCorrectResponses.reduce((correct, cr) => {
-        if (_.isEqual(cr, session.value)) {
+        if (_.isEqual(cr, value)) {
           return true;
         }
 

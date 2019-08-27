@@ -1,52 +1,52 @@
-import { model } from '../index';
+import { model, outcome, getCorrectness } from '../index';
 import { defaults as feedbackDefaults } from '@pie-lib/feedback';
+
+const defaultModel = {
+  minimumWidth: 500,
+  correctResponse: ['0,0', '1,1', '2,2', '3,3'],
+  partialScoring: [],
+  feedback: {
+    correctFeedbackType: 'none',
+    correctFeedbackValue: '',
+    partialFeedbackType: 'none',
+    partialFeedbackValue: '',
+    incorrectFeedbackType: 'none',
+    incorrectFeedbackValue: ''
+  },
+  graph: {
+    graphTitle: '',
+    graphWidth: 500,
+    graphHeight: 500,
+    maxPoints: '',
+    labelsType: 'present',
+    pointLabels: ['A', 'B', 'C', 'D'],
+    domainLabel: '',
+    domainMin: -10,
+    domainMax: 10,
+    domainStepValue: 1,
+    domainSnapValue: 1,
+    domainLabelFrequency: 1,
+    domainGraphPadding: 50,
+    rangeLabel: '',
+    rangeMin: -10,
+    rangeMax: 10,
+    rangeStepValue: 1,
+    rangeSnapValue: 1,
+    rangeLabelFrequency: 1,
+    rangeGraphPadding: 50,
+    sigfigs: -1,
+    allowPartialScoring: false,
+    pointsMustMatchLabels: false,
+    showCoordinates: false,
+    showPointLabels: true,
+    showInputs: true,
+    showAxisLabels: true,
+    showFeedback: true
+  }
+};
 
 describe('model', () => {
   let result, question, session, env;
-
-  const defaultModel = {
-    minimumWidth: 500,
-    correctResponse: ['0,0', '1,1', '2,2', '3,3'],
-    partialScoring: [],
-    feedback: {
-      correctFeedbackType: 'none',
-      correctFeedbackValue: '',
-      partialFeedbackType: 'none',
-      partialFeedbackValue: '',
-      incorrectFeedbackType: 'none',
-      incorrectFeedbackValue: ''
-    },
-    graph: {
-      graphTitle: '',
-      graphWidth: 500,
-      graphHeight: 500,
-      maxPoints: '',
-      labelsType: 'present',
-      pointLabels: ['A', 'B', 'C', 'D'],
-      domainLabel: '',
-      domainMin: -10,
-      domainMax: 10,
-      domainStepValue: 1,
-      domainSnapValue: 1,
-      domainLabelFrequency: 1,
-      domainGraphPadding: 50,
-      rangeLabel: '',
-      rangeMin: -10,
-      rangeMax: 10,
-      rangeStepValue: 1,
-      rangeSnapValue: 1,
-      rangeLabelFrequency: 1,
-      rangeGraphPadding: 50,
-      sigfigs: -1,
-      allowPartialScoring: false,
-      pointsMustMatchLabels: false,
-      showCoordinates: false,
-      showPointLabels: true,
-      showInputs: true,
-      showAxisLabels: true,
-      showFeedback: true
-    }
-  };
 
   const mkQuestion = model => model || defaultModel;
 
@@ -440,4 +440,30 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
   });
+});
+
+describe('outcome', () => {
+  const assertOutcome = session => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+      const o = await outcome(defaultModel, session, { mode: 'evaluate' });
+      expect(o).toEqual({ score: '0%', empty: true });
+    });
+  };
+
+  assertOutcome(undefined);
+  assertOutcome(null);
+  assertOutcome({});
+});
+
+describe('getCorrectness', () => {
+  const assetCorrectness = session => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, () => {
+      const c = getCorrectness(defaultModel, session, { mode: 'evaluate' });
+      expect(c).toEqual({ score: '0%', correctness: 'unanswered' });
+    });
+  };
+
+  assetCorrectness(undefined);
+  assetCorrectness(null);
+  assetCorrectness({});
 });

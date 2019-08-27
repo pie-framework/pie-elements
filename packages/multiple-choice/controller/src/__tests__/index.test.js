@@ -1,6 +1,5 @@
-import { model, outcome, scoreFromRule, partialScoring } from '../index';
+import { model, outcome, getScore } from '../index';
 import { isResponseCorrect } from '../utils';
-import _ from 'lodash';
 
 jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
@@ -97,7 +96,7 @@ describe('controller', () => {
           };
         });
         it('returns a score of 0.33', async () => {
-          const result = await outcome(question, {}, {});
+          const result = await outcome(question, { value: [] }, { mode: 'evaluate '});
           expect(result.score).toEqual(0.33);
         });
 
@@ -111,6 +110,18 @@ describe('controller', () => {
         });
       });
     });
+
+    const returnsOutcome = session => {
+      it(`returns score: 0 and empty: true if session is ${stringify(session)}`, async () => {
+        const o = await outcome(question, session, { mode: 'evaluate' });
+
+        expect(o).toEqual({ score: 0, empty: true });
+      });
+    };
+
+    returnsOutcome(undefined);
+    returnsOutcome(null);
+    returnsOutcome({});
   });
 
   describe('model', () => {
@@ -216,6 +227,32 @@ describe('controller', () => {
       it('returns is response correct', () => {
         expect(result.responseCorrect).toEqual(false);
       });
+
+      const returnsCorrectness = sess => {
+        it(`returns responseCorrect: false if session is ${stringify(sess)}`, async () => {
+          const o = await model(question, sess, env);
+
+          expect(o.responseCorrect).toEqual(false);
+        });
+      };
+
+      returnsCorrectness(undefined);
+      returnsCorrectness(null);
+      returnsCorrectness({});
     });
+  });
+
+  describe('getScore', () => {
+    const returnsScore = sess => {
+      it(`returns score: 0 if session is ${stringify(sess)}`,  () => {
+        const score = getScore(question, sess);
+
+        expect(score).toEqual(0);
+      });
+    };
+
+    returnsScore(undefined);
+    returnsScore(null);
+    returnsScore({});
   });
 });

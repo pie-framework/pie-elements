@@ -3,6 +3,7 @@ import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
 import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 import { sinY, buildDataPoints, getAmplitudeAndFreq, FREQ_DIVIDER, parabolaFromTwoPoints } from '@pie-lib/graphing-utils';
 
 const log = debug('@pie-element:graphing:controller');
@@ -225,7 +226,7 @@ export const getScore = (question, session) => {
   const { answers } = question;
 
   // student's answers without DUPLICATES having the mapped form
-  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session.answer));
+  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session && session.answer));
   let marksWithCorrectnessValue = {};
 
   if (!answers) {
@@ -334,6 +335,10 @@ export function model(question, session, env) {
 
 export function outcome(model, session) {
   return new Promise(resolve => {
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     resolve({ score: getScore(model, session).score });
   });
 }

@@ -1,6 +1,7 @@
 import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
+import isEmpty from 'lodash/isEmpty';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -20,8 +21,8 @@ const getFeedback = correct => {
 };
 
 export function model(question, session, env) {
-  session = session || { value: {} };
-  session.value = session.value || {};
+  const { value = {} } = session || {};
+
   return new Promise(resolve => {
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
@@ -50,7 +51,7 @@ export function model(question, session, env) {
         const result = reduce(
           allCorrectResponses,
           (obj, choices, key) => {
-            const answer = session.value[key] || '';
+            const answer = (value && value[key]) || '';
             const correctChoice = choices[i] || '';
             const isCorrect = answer && correctChoice && correctChoice === answer;
 
@@ -120,8 +121,9 @@ export function model(question, session, env) {
   });
 }
 
-const getScore = (config, session) => {
-  const maxScore = Object.keys(config.choices).length;
+export const getScore = (config, session) => {
+  const { value = {} } = session || {};
+  const maxScore = config && config.choices ? Object.keys(config.choices).length : 0;
   const allCorrectResponses = getAllCorrectResponses(config);
   let correctCount = 0;
 
@@ -129,7 +131,7 @@ const getScore = (config, session) => {
     const result = reduce(
       allCorrectResponses,
       (total, choices, key) => {
-        const answer = session.value[key] || '';
+        const answer = (value && value[key]) || '';
         const correctChoice = choices[i] || '';
 
         if (correctChoice && answer && correctChoice === answer) {
@@ -169,6 +171,10 @@ const getScore = (config, session) => {
  */
 export function outcome(model, session) {
   return new Promise(resolve => {
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 

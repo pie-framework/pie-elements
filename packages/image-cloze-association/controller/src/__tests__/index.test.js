@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, getPartialScore, isResponseCorrect } from '../index';
 
 jest.mock('../utils', () => ({
   ...(jest.requireActual('../utils.js')),
@@ -53,6 +53,17 @@ describe('controller', () => {
   });
 
   describe('outcome', () => {
+    const returnOutcome = session => {
+      it(`returns score of 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+        const result = await outcome(question, session);
+        expect(result).toEqual({ score: 0, empty: true });
+      });
+    };
+
+    returnOutcome(undefined);
+    returnOutcome(null);
+    returnOutcome({});
+
     it('returns score of 0', async () => {
       const result = await outcome(
         question,
@@ -209,257 +220,131 @@ describe('controller', () => {
         });
       });
     });
+  });
 
-    describe('partial scoring', () => {
-      beforeEach(() => {
-        question = {
-          ...question,
-          partialScoring: true
-        };
+  describe('model', () => {
+    describe('mode: gather', () => {
+      beforeEach(async () => {
+        session = {};
+        env = { mode: 'gather' };
+        result = await model(question, session, env);
       });
 
-      it('returns a score of 0.2', async () => {
-        const result = await outcome(
-          question,
-          {
-            answers: [
-              { value: rhomb, containerIndex: 0 }
+      it('returns disabled', () => {
+        expect(result.disabled).toEqual(false);
+      });
+
+      it('returns mode', () => {
+        expect(result.mode).toEqual('gather');
+      });
+
+      it('returns prompt', () => {
+        expect(result.prompt).toEqual('prompt');
+      });
+
+      it('returns image', () => {
+        expect(result.image).toEqual({
+          src: '',
+          width: 0,
+          scale: false,
+          height: 0
+        });
+      });
+
+      it('returns validation', () => {
+        expect(result.validation).toEqual({
+          validResponse: {
+            score: 1,
+            value: [
+              [rhomb, square],
+              [rhomb, square, trapeze]
             ]
           }
-        );
-        expect(result.score).toEqual(0.2);
+        });
       });
 
-      it('returns a score of 0.4', async () => {
-        const result = await outcome(
-          question,
-          {
-            answers: [
-              { value: rhomb, containerIndex: 0 },
-              { value: square, containerIndex: 1 }
-            ]
-          }
-        );
-        expect(result.score).toEqual(0.4);
+      it('returns responseContainers', () => {
+        expect(result.responseContainers).toEqual([
+          responseContainer1,
+          responseContainer2
+        ]);
       });
 
-      it('returns a score of 0.6', async () => {
-        const result = await outcome(
-          question,
-          {
-            answers: [
-              { value: rhomb, containerIndex: 0 },
-              { value: square, containerIndex: 1 },
-              { value: rhomb, containerIndex: 1 }
-            ]
-          }
-        );
-        expect(result.score).toEqual(0.6);
+      it('returns duplicateResponses', () => {
+        expect(result.duplicateResponses).toEqual(true);
       });
 
-      it('returns a score of 0.8', async () => {
-        const result = await outcome(
-          question,
-          {
-            answers: [
-              { value: rhomb, containerIndex: 0 },
-              { value: square, containerIndex: 0 },
-              { value: rhomb, containerIndex: 1 },
-              { value: square, containerIndex: 1 }
-            ]
-          }
-        );
-        expect(result.score).toEqual(0.8);
+      it('returns maxResponsePerZone', () => {
+        expect(result.maxResponsePerZone).toEqual(5);
       });
 
-      it('returns a score of 1', async () => {
-        const result = await outcome(
-          question,
-          {
-            answers: [
-              { value: rhomb, containerIndex: 0 },
-              { value: square, containerIndex: 0 },
-              { value: rhomb, containerIndex: 1 },
-              { value: square, containerIndex: 1 },
-              { value: trapeze, containerIndex: 1 }
-            ]
-          }
-        );
-        expect(result.score).toEqual(1);
-      });
-
-      describe('duplicates', () => {
-        it('for 2 correct of 5 minus one deduction returns a score of 0.2', async () => {
-          const result = await outcome(
-            question,
-            {
-              answers: [
-                { value: rhomb, containerIndex: 0, id: 1 },
-                { value: rhomb, containerIndex: 0, id: 2 },
-                { value: rhomb, containerIndex: 1, id: 3 },
-                { value: rhomb, containerIndex: 1, id: 4 },
-                { value: rhomb, containerIndex: 1, id: 5 },
-                { value: rhomb, containerIndex: 1, id: 6 }  // extra object
-              ]
-            }
-          );
-          expect(result.score).toEqual(0.2);
-        });
-
-        it('for 2 correct of 5 returns a score of 0.6', async () => {
-          const result = await outcome(
-            question,
-            {
-              answers: [
-                { value: rhomb, containerIndex: 0, id: 1 },
-                { value: rhomb, containerIndex: 0, id: 2 },
-                { value: rhomb, containerIndex: 1, id: 3 },
-                { value: rhomb, containerIndex: 1, id: 4 },
-                { value: rhomb, containerIndex: 1, id: 5 }
-              ]
-            }
-          );
-          expect(result.score).toEqual(0.4);
-        });
-
-
-        it('for 4 correct of 5 minus one deduction returns a score of 0.6', async () => {
-          const result = await outcome(
-            question,
-            {
-              answers: [
-                { value: rhomb, containerIndex: 0, id: 1 },
-                { value: rhomb, containerIndex: 0, id: 2 },
-                { value: rhomb, containerIndex: 0, id: 3 }, // extra object
-                { value: rhomb, containerIndex: 1, id: 4 },
-                { value: square, containerIndex: 1, id: 5 },
-                { value: trapeze, containerIndex: 1, id: 6 }
-              ]
-            }
-          );
-          expect(result.score).toEqual(0.6);
-        });
-
-        it('for 5 correct of 5 minus one deduction returns a score of 0.8', async () => {
-          const result = await outcome(
-            question,
-            {
-              answers: [
-                { value: rhomb, containerIndex: 0, id: 1 },
-                { value: square, containerIndex: 0, id: 2 },
-                { value: rhomb, containerIndex: 0, id: 3 }, // extra object
-                { value: rhomb, containerIndex: 1, id: 4 },
-                { value: square, containerIndex: 1, id: 5 },
-                { value: trapeze, containerIndex: 1, id: 6 }
-              ]
-            }
-          );
-          expect(result.score).toEqual(0.8);
-        });
-
-        it('for 4 correct of 5 returns a score of 0.8', async () => {
-          const result = await outcome(
-            question,
-            {
-              answers: [
-                { value: rhomb, containerIndex: 0, id: 1 },
-                { value: rhomb, containerIndex: 0, id: 2 },
-                { value: rhomb, containerIndex: 1, id: 3 },
-                { value: square, containerIndex: 1, id: 4 },
-                { value: trapeze, containerIndex: 1, id: 5 }
-              ]
-            }
-          );
-          expect(result.score).toEqual(0.8);
-        });
+      it('does not return responseCorrect', () => {
+        expect(result.responseCorrect).toBe(undefined);
       });
     });
 
-    describe('model', () => {
-      describe('mode: gather', () => {
-        beforeEach(async () => {
-          session = {};
-          env = { mode: 'gather' };
-          result = await model(question, session, env);
-        });
-
-        it('returns disabled', () => {
-          expect(result.disabled).toEqual(false);
-        });
-
-        it('returns mode', () => {
-          expect(result.mode).toEqual('gather');
-        });
-
-        it('returns prompt', () => {
-          expect(result.prompt).toEqual('prompt');
-        });
-
-        it('returns image', () => {
-          expect(result.image).toEqual({
-            src: '',
-            width: 0,
-            scale: false,
-            height: 0
-          });
-        });
-
-        it('returns validation', () => {
-          expect(result.validation).toEqual({
-            validResponse: {
-              score: 1,
-              value: [
-                [rhomb, square],
-                [rhomb, square, trapeze]
-              ]
-            }
-          });
-        });
-
-        it('returns responseContainers', () => {
-          expect(result.responseContainers).toEqual([
-            responseContainer1,
-            responseContainer2
-          ]);
-        });
-
-        it('returns duplicateResponses', () => {
-          expect(result.duplicateResponses).toEqual(true);
-        });
-
-        it('returns maxResponsePerZone', () => {
-          expect(result.maxResponsePerZone).toEqual(5);
-        });
-
-        it('does not return responseCorrect', () => {
-          expect(result.responseCorrect).toBe(undefined);
-        });
+    describe('mode: view', () => {
+      beforeEach(async () => {
+        session = {};
+        env = { mode: 'view' };
+        result = await model(question, session, env);
       });
 
-      describe('mode: view', () => {
-        beforeEach(async () => {
-          session = {};
-          env = { mode: 'view' };
-          result = await model(question, session, env);
-        });
-
-        it('returns disabled', () => {
-          expect(result.disabled).toEqual(true);
-        });
-      });
-
-      describe('mode: evaluate', () => {
-        beforeEach(async () => {
-          session = { answers: [] };
-          env = { mode: 'evaluate' };
-          result = await model(question, session, env);
-          return result;
-        });
-
-        it('returns is response correct', () => {
-          expect(result.responseCorrect).toEqual(false);
-        });
+      it('returns disabled', () => {
+        expect(result.disabled).toEqual(true);
       });
     });
+
+    describe('mode: evaluate', () => {
+      beforeEach(async () => {
+        session = { answers: [] };
+        env = { mode: 'evaluate' };
+        result = await model(question, session, env);
+        return result;
+      });
+
+      it('returns is response correct', () => {
+        expect(result.responseCorrect).toEqual(false);
+      });
+
+      const returnModel = sess => {
+        it(`returns responseCorrect: false if session is ${JSON.stringify(sess)}`, async () => {
+          const result = await model(question, sess, env = { mode: 'evaluate' });
+          expect(result).toEqual(expect.objectContaining({
+            responseCorrect: false
+          }));
+        });
+      };
+
+      returnModel(undefined);
+      returnModel(null);
+      returnModel({});
+    });
+  });
+
+  describe('getPartialScore', () => {
+    const returnPartialScore = sess => {
+      it(`returns score of 0 if session is ${JSON.stringify(sess)}`, () => {
+        const result = getPartialScore(question, sess);
+        expect(result).toEqual(0);
+      });
+    };
+
+    returnPartialScore(undefined);
+    returnPartialScore(null);
+    returnPartialScore({});
+  });
+
+  describe('isResponseCorrect', () => {
+    const returnIsResponseCorrect = sess => {
+      it(`returns score of 0 if session is ${JSON.stringify(sess)}`, () => {
+        const result = isResponseCorrect([], sess);
+        expect(result).toEqual(false);
+      });
+    };
+
+    returnIsResponseCorrect(undefined);
+    returnIsResponseCorrect(null);
+    returnIsResponseCorrect({});
   });
 });
