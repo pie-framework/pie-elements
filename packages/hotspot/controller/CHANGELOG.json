@@ -133,5 +133,20 @@
     "committerDate": "2019-06-12 17:31:35 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@1.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Session null/empty check",
+    "merge": null,
+    "header": "feat: Session null/empty check",
+    "body": "Check for each interaction if: has outcome function, outcome function returns { score: 0, empty: true } if session null/empty/undefined, everywhere where session is used we handle if session is null/empty/undefined and test each function that uses session. [ebsr, explicit-constructed-response, function-entry, hotspot]",
+    "footer": null,
+    "notes": [],
+    "hash": "0538211b44e793dc34ff385226ee7278cc042384",
+    "gitTags": "",
+    "committerDate": "2019-08-23 11:07:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@1.4.0"
   }
 ]

@@ -208,5 +208,20 @@
     "committerDate": "2019-08-15 18:15:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-controller@1.4.9"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Session null/empty check",
+    "merge": null,
+    "header": "feat: Session null/empty check",
+    "body": "Check for each interaction if: has outcome function, outcome function returns { score: 0, empty: true } if session null/empty/undefined, everywhere where session is used we handle if session is null/empty/undefined and test each function that uses session. [categorize + fixed not partial scoring, charting, drag-in-the-blank]",
+    "footer": null,
+    "notes": [],
+    "hash": "33569a4a262083f112162ddf1401189818156112",
+    "gitTags": "",
+    "committerDate": "2019-08-22 10:53:14 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-controller@1.5.0"
   }
 ]

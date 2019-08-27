@@ -888,5 +888,35 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@2.6.7"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "return max in 'outcome'",
+    "merge": null,
+    "header": "feat: return max in 'outcome'",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1a006fa48e31a1f10068f890e6376f8a5a172ff5",
+    "gitTags": "",
+    "committerDate": "2019-08-26 14:03:30 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.7.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Session null/empty check",
+    "merge": null,
+    "header": "feat: Session null/empty check",
+    "body": "Check for each interaction if: has outcome function, outcome function returns { score: 0, empty: true } if session null/empty/undefined, everywhere where session is used we handle if session is null/empty/undefined and test each function that uses session. [ebsr, explicit-constructed-response, function-entry, hotspot]",
+    "footer": null,
+    "notes": [],
+    "hash": "0538211b44e793dc34ff385226ee7278cc042384",
+    "gitTags": "",
+    "committerDate": "2019-08-23 11:07:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@2.7.0"
   }
 ]
