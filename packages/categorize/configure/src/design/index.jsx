@@ -205,7 +205,7 @@ export class Design extends React.Component {
               >
                 <EditableHtml
                   className={classes.prompt}
-                  markup={model.prompt}
+                  markup={model.prompt || ''}
                   onChange={this.onPromptChanged}
                   imageSupport={imageSupport}
                   nonEmpty={!prompt.settings}

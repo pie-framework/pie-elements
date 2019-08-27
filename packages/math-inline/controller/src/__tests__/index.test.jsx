@@ -1,36 +1,35 @@
 import { model, outcome } from '../index';
-import defaultValues from '../defaults';
+
+const defaultModel = {
+  responseType: 'Advanced Multi',
+  equationEditor: '3',
+  expression: '{{response}} = {{response}} \\text{eggs}',
+  prompt:
+    '<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class="equation-block"><math xmlns="http://www.w3.org/1998/Math/MathML" >\n <mrow>\n  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>\n </mrow>\n</math> </span></p><p>What <span class="relative-emphasis">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>',
+  responses: [
+    {
+      id: '1',
+      answer: '72\\div12=6\\text{eggs}',
+      alternates: {
+        '1': '6=72\\div12\\text{eggs}',
+        '2': '\\frac{72}{12}=6\\text{eggs}',
+        '3': '6=\\frac{72}{12}\\text{eggs}'
+      },
+      validation: 'literal'
+    }
+  ],
+  customKeys: [
+    '\\left(\\right)',
+    '\\frac{}{}',
+    'x\\frac{}{}'
+  ],
+  id: 1
+};
+
+const mkQuestion = model => model || defaultModel;
 
 describe('model', () => {
   let result, question, session, env, outcomeResult;
-
-  const defaultModel = {
-    responseType: 'Advanced Multi',
-    equationEditor: '3',
-    expression: '{{response}} = {{response}} \\text{eggs}',
-    prompt:
-      '<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class="equation-block"><math xmlns="http://www.w3.org/1998/Math/MathML" >\n <mrow>\n  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>\n </mrow>\n</math> </span></p><p>What <span class="relative-emphasis">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>',
-    responses: [
-      {
-        id: '1',
-        answer: '72\\div12=6\\text{eggs}',
-        alternates: {
-          '1': '6=72\\div12\\text{eggs}',
-          '2': '\\frac{72}{12}=6\\text{eggs}',
-          '3': '6=\\frac{72}{12}\\text{eggs}'
-        },
-        validation: 'literal'
-      }
-    ],
-    customKeys: [
-      '\\left(\\right)',
-      '\\frac{}{}',
-      'x\\frac{}{}'
-    ],
-    id: 1
-  };
-
-  const mkQuestion = model => model || defaultModel;
 
   describe('gather', () => {
     beforeEach(async () => {
@@ -88,7 +87,6 @@ describe('model', () => {
       session = {};
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
-      outcomeResult = await outcome(question, session, env);
     });
 
     it('returns disabled:true', () => {
@@ -101,10 +99,6 @@ describe('model', () => {
         correctness: 'unanswered',
         score: '0%'
       });
-    });
-
-    it('returns empty for correctness in outcome function', () => {
-      expect(outcomeResult.score).toEqual(0);
     });
   });
 
@@ -146,21 +140,6 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-    });
-
-    it('returns correct for correctness in outcome', async () => {
-      question = mkQuestion();
-      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
-      env = { mode: 'evaluate' };
-      outcomeResult = await outcome(question, session, env);
-
-      expect(outcomeResult.score).toEqual(1);
-
-      session = { completeAnswer: '\\frac{72}{12}=6\\text{eggs}' };
-
-      outcomeResult = await outcome(question, session, env);
-
-      expect(outcomeResult.score).toEqual(1);
     });
 
     it('returns correct for correctness even with hyphen vs minus sign', async () => {
@@ -262,20 +241,49 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('incorrect');
       expect(result.correctness.score).toEqual('0%');
     });
-
-    it('returns incorrect for correctness in outcome', async () => {
-      question = mkQuestion();
-      session = { completeAnswer: '2\\div12=6\\text{eggs}' };
-      env = { mode: 'evaluate' };
-      outcomeResult = await outcome(question, session, env);
-
-      expect(outcomeResult.score).toEqual(0);
-
-      session = { completeAnswer: '\\frac{752}{12}=6\\text{eggs}' };
-
-      result = await outcome(question, session, env);
-
-      expect(outcomeResult.score).toEqual(0);
-    });
   });
+});
+
+describe('outcome', () => {
+  let result;
+  const question = mkQuestion();
+  const env = { mode: 'evaluate' };
+
+  it('returns correct for correctness in outcome', async () => {
+    let session = { completeAnswer: '72\\div12=6\\text{eggs}' };
+    let outcomeResult = await outcome(question, session, env);
+
+    expect(outcomeResult.score).toEqual(1);
+
+    session = { completeAnswer: '\\frac{72}{12}=6\\text{eggs}' };
+
+    outcomeResult = await outcome(question, session, env);
+
+    expect(outcomeResult.score).toEqual(1);
+  });
+
+  it('returns incorrect for correctness in outcome', async () => {
+    let session = { completeAnswer: '2\\div12=6\\text{eggs}' };
+    let outcomeResult = await outcome(question, session, env);
+
+    expect(outcomeResult.score).toEqual(0);
+
+    session = { completeAnswer: '\\frac{752}{12}=6\\text{eggs}' };
+
+    result = await outcome(question, session, env);
+
+    expect(outcomeResult.score).toEqual(0);
+  });
+
+  const returnOutcome = session => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+      let outcomeResult = await outcome(question, session, env);
+
+      expect(outcomeResult).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  returnOutcome(undefined);
+  returnOutcome(null);
+  returnOutcome({});
 });

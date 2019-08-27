@@ -428,5 +428,20 @@
     "committerDate": "2019-08-19 09:15:35 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@3.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "text nodes should not matter in literal evaluation",
+    "merge": null,
+    "header": "fix(math-inline): text nodes should not matter in literal evaluation",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a7e574ad8cfa91726d716b85f69939f869b022c5",
+    "gitTags": "",
+    "committerDate": "2019-08-22 13:02:50 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@3.0.1"
   }
 ]

@@ -245,6 +245,24 @@ describe('getScore all or nothing', () => {
       )
     }
   );
+
+  assertGetScore(
+    'session is undefined',
+    undefined,
+    { score: 0, answers: [] }
+  );
+
+  assertGetScore(
+    'session is null',
+    null,
+    { score: 0, answers: [] }
+  );
+
+  assertGetScore(
+    'session is empty',
+    {},
+    { score: 0, answers: [] }
+  );
 });
 
 describe('getScore partial scoring - editable - interactive', () => {

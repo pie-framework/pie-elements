@@ -1,29 +1,12 @@
 import debug from 'debug';
-import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 import { partialScoring } from '@pie-lib/controller-utils';
+
+import { isResponseCorrect } from './utils';
 
 import defaults from './defaults';
 
 const log = debug('pie-elements:hotspot:controller');
-
-const getCorrectResponse = (choices) => choices
-  .filter(c => c.correct)
-  .map(c => ({ id: c.id }))
-  .sort();
-
-const isResponseCorrect = (question, session) => {
-  const { shapes: { rectangles, polygons } } = question;
-  const choices = [...rectangles, ...polygons];
-  let correctResponse = getCorrectResponse(choices);
-
-  if (session.answers.length) {
-    return isEqual((session.answers || []).sort(), correctResponse);
-  } else if (!correctResponse.length) {
-    return true;
-  }
-  return false;
-};
-
 
 export function model(question, session, env) {
   const {
@@ -76,7 +59,7 @@ export const createDefaultModel = (model = {}) =>
   });
 
 const getScore = (config, session, env) => {
-  const { answers } = session;
+  const { answers } = session || {};
   const { shapes: { rectangles, polygons } } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
@@ -88,7 +71,7 @@ const getScore = (config, session, env) => {
 
   const choices = [...rectangles, ...polygons];
   choices.forEach(shape => {
-    const selected = answers.filter(answer => answer.id === shape.id)[0];
+    const selected = answers && answers.filter(answer => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;
     const correctlyUnselected = !shape.correct && !selected;
 
@@ -104,6 +87,10 @@ const getScore = (config, session, env) => {
 export function outcome(config, session, env) {
   return new Promise(resolve => {
     log('outcome...');
+
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
 
     if (session.answers) {
       const score = getScore(config, session, env);

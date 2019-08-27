@@ -1,4 +1,5 @@
 import forEach from 'lodash/forEach';
+import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import defaults from './defaults';
@@ -9,12 +10,12 @@ const log = debug('@pie-element:categorize:controller');
 export { score };
 
 export const getCorrectness = (question, session, env) => {
-  return new Promise(resolve => {
+    return new Promise(resolve => {
     if (env.mode === 'evaluate') {
       const state = buildState(
         question.categories,
         question.choices,
-        session.answers,
+        (session && session.answers) || [],
         question.correctResponse
       );
       log('state: ', state);
@@ -45,6 +46,7 @@ export const createDefaultModel = (model = {}) =>
 
 export const model = (question, session, env) =>
   new Promise(resolve => {
+    
     const correctPromise = getCorrectness(question, session, env);
 
     correctPromise.then(correctness => {
@@ -88,10 +90,10 @@ export const model = (question, session, env) =>
 
 const isCorrect = (correctResponse, c) => correctResponse.find(cR => cR === c);
 
-export const getScore = (category, choices, correctResponse, session) => {
+export const getScore = (category, choices, correctResponse, sessionChoices) => {
   const maxScore = choices.length;
 
-  const chosen = choiceId => !!(session || []).find(v => v === choiceId);
+  const chosen = choiceId => !!(sessionChoices || []).find(v => v === choiceId);
 
   const correctAndNotChosen = c => isCorrect(correctResponse, c) && !chosen(c);
   const incorrectAndChosen = c => !isCorrect(correctResponse, c) && chosen(c);
@@ -105,15 +107,14 @@ export const getScore = (category, choices, correctResponse, session) => {
   }, choices.length);
 
   const str = (correctCount / maxScore).toFixed(2);
-  return parseFloat(str, 10);
+  return parseFloat(str);
 };
 
-const getTotalScore = (question, session) => {
+export const getTotalScore = (question, session) => {
   const { categories, correctResponse } = question;
-
   const correctCount = categories.reduce((total, category) => {
     const response = correctResponse.find(cR => cR.category === category.id) || {};
-    const sessionAnswers = session.answers || [];
+    const sessionAnswers = (session && session.answers) || [];
     const answers = sessionAnswers.find(a => a.category === category.id) || {};
     let choiceScore = getScore(
       category,
@@ -138,20 +139,22 @@ const getTotalScore = (question, session) => {
     return total + choiceScore;
   }, 0);
 
-  const str = (correctCount / categories.length).toFixed(2);
+  const categoriesLength = categories.length;
+  const str = categoriesLength ? (correctCount / categoriesLength).toFixed(2) : 0;
 
-  return parseFloat(str, 10);
+  return question.partialScoring ? parseFloat(str) : parseInt(str, 10);
 };
 
 export const outcome = (question, session, env) => {
-  if (env.mode !== 'evaluate') {
+    if (env.mode !== 'evaluate') {
     return Promise.reject(
       new Error('Can not call outcome when mode is not evaluate')
     );
   } else {
     return new Promise(resolve => {
       resolve({
-        score: question.partialScoring ? getTotalScore(question, session) : 0,
+        score: getTotalScore(question, session),
+        empty: !session || isEmpty(session)
       });
     });
   }
@@ -165,7 +168,7 @@ export const createCorrectResponseSession = (question, env) => {
       resolve({
         answers: correctResponse,
         id: 1
-      })
+      });
     });
   }
 };

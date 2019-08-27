@@ -84,6 +84,12 @@ export const getAllCorrectResponses = question => [
  */
 
 export const score = (question, session) => {
+  const { value } = session || {};
+
+  if (!value) {
+    return 0;
+  }
+
   const allCorrectResponse = getAllCorrectResponses(question);
   const allowDuplicates =
     (question.configure && question.configure.removeTilesAfterPlacing) !== false;
@@ -96,7 +102,7 @@ export const score = (question, session) => {
   let bestScore = 0;
 
   allCorrectResponse.forEach((cr) => {
-    const currentScore = pairwiseCombinationScore(cr, session.value, {
+    const currentScore = pairwiseCombinationScore(cr, value, {
       allowDuplicates
     });
 

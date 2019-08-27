@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 import { ResponseTypes } from './utils';
@@ -137,8 +138,8 @@ const getCorrectness = (question, env, session, isOutcome) => {
     return getResponseCorrectness(
       question,
       question.responseType === ResponseTypes.advanced
-        ? session.completeAnswer || ''
-        : session.response,
+        ? (session && session.completeAnswer) || ''
+        : (session && session.response),
       isOutcome
     );
   }
@@ -160,13 +161,13 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      const correctness = getCorrectness(question, env, session, true);
+      if (!session || isEmpty(session)) {
+        resolve({ score: 0, empty: true });
+      } else {
+        const correctness = getCorrectness(question, env, session, true);
 
-      const out = {
-        score: correctness.score
-      };
-
-      resolve(out);
+        resolve({ score: correctness.score });
+      }
     }
   });
 };

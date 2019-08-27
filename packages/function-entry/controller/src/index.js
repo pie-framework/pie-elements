@@ -31,7 +31,7 @@ export function model(question, session, env) {
 
     const getCorrectness = () => {
       if (env.mode === 'evaluate') {
-        if (!session.value) {
+        if (!session || !session.value) {
           return 'empty';
         }
 
@@ -42,7 +42,6 @@ export function model(question, session, env) {
     };
 
     const correctness = getCorrectness();
-
     const fb =
       env.mode === 'evaluate'
         ? getFeedbackForCorrectness(correctness, feedback)
@@ -75,3 +74,28 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+/**
+ *
+ * The score is partial by default for checkbox mode, allOrNothing for radio mode.
+ * To disable partial scoring for checkbox mode you either set model.partialScoring = false or env.partialScoring =
+ * false. the value in `env` will override the value in `model`.
+ * @param {Object} model - the main model
+ * @param {boolean} model.partialScoring - is partial scoring enabled (if undefined set to to true)
+ * @param {*} session
+ * @param {Object} env
+ * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
+ *   `model.partialScoring`.
+ */
+export function outcome(model, session, env) {
+  return new Promise(resolve => {
+    if (env.mode === 'evaluate') {
+      if (!session || !session.value) {
+        resolve({ score: 0, empty: true });
+      }
+
+      resolve({ score: isResponseCorrect(model && model.equation, session.value) ? 1 : 0 });
+    }
+  });
+}
+

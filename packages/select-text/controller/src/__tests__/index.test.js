@@ -1,4 +1,4 @@
-import { getCorrectness, model, outcome } from '../index';
+import { getPartialScore, getCorrectness, model, outcome } from '../index';
 import isFunction from 'lodash/isFunction';
 
 const token = (start, end, text, correct) => ({ start, end, text, correct });
@@ -112,6 +112,10 @@ const assertFn = fn => (label, question, session, env, expected) => {
 describe('outcome', () => {
   const assert = assertFn(outcome);
 
+  assert('score: 0 and empty: true if session is undefined', q(), undefined, e(), { score: 0, empty: true });
+  assert('score: 0 and empty: true if session is null', q(), null, e(), { score: 0, empty: true });
+  assert('score: 0 and empty: true if session is {}', q(), {}, e(), { score: 0, empty: true });
+
   assert('score undefined for gather', q(), s(), e(), { score: undefined });
   assert('score undefined for view', q(), s(), e({ mode: 'view' }), {
     score: undefined
@@ -217,6 +221,19 @@ describe('model', () => {
       correctness: undefined,
       incorrect: undefined
     });
+
+    assert('correctness undefined in view', q(), undefined, e({ mode: 'evaluate' }), {
+      correctness: 'incorrect',
+    });
+
+    assert('correctness undefined in view', q(), null, e({ mode: 'evaluate' }), {
+      correctness: 'incorrect',
+    });
+
+    assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
+      correctness: 'incorrect',
+    });
+
   });
 
   describe('feedback', () => {

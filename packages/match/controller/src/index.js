@@ -34,7 +34,7 @@ const getResponseCorrectness = (
   return 'incorrect';
 };
 
-const getCorrectness = (question, env, answers) => {
+const getCorrectness = (question, env, answers = {}) => {
   if (env.mode === 'evaluate') {
     return getResponseCorrectness(
       question,
@@ -89,7 +89,7 @@ const getPartialScore = (question, answers) => {
   return parseFloat((count / totalCorrect).toFixed(2));
 };
 
-const getOutComeScore = (question, env, answers) => {
+const getOutComeScore = (question, env, answers = {}) => {
   const correctness = getCorrectness(
     question,
     env,
@@ -111,6 +111,10 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
+      if (!session || _.isEmpty(session)) {
+        resolve({ score: 0, empty: true });
+      }
+
       const out = {
         score: getOutComeScore(question, env, session.answers)
       };
@@ -131,9 +135,17 @@ export function createDefaultModel(model = {}) {
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const correctness = getCorrectness(question, env, session.answers);
+    let correctness, score;
+
+    if ((!session || _.isEmpty(session)) && env.mode === 'evaluate') {
+      correctness = 'unanswered';
+      score = '0%';
+    } else {
+      correctness = getCorrectness(question, env, session && session.answers);
+      score =  `${getOutComeScore(question, env, session && session.answers) * 100}%`;
+    }
+
     const correctResponse = {};
-    const score =  `${getOutComeScore(question, env, session.answers) * 100}%`;
     const correctInfo = {
       score,
       correctness

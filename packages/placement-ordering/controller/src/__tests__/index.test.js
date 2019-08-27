@@ -194,6 +194,20 @@ describe('index', () => {
           });
         }));
     });
+
+    describe('session not set', () => {
+      const assertModelCorrectness = session => {
+        it(`returns correctness: incorrect of session is ${JSON.stringify(session)}`, async () => {
+          const m = await controller.model(
+            base({ correctResponse: ['a', 'b'] }), session, { mode: 'evaluate' });
+          expect(m.correctness).toEqual('incorrect')
+        });
+      };
+
+      assertModelCorrectness(undefined);
+      assertModelCorrectness(null);
+      assertModelCorrectness({});
+    });
   });
 
   describe('outcome', () => {
@@ -211,10 +225,19 @@ describe('index', () => {
           controller.questionError()
         ));
     };
+    const assertOutcomeSessionNotset = (session) => {
+      it(`return score: 0 and empty: true if session is ${JSON.stringify(session)}`, () =>
+        expect(controller.outcome({}, session, { mode: 'evaluate' }))
+          .resolves.toEqual({ score: 0, empty: true }));
+    };
 
-    assertOutcomeError(null, {}, {});
-    assertOutcomeError({}, {}, {});
-    assertOutcomeError({ correctResponse: [] }, {}, {});
+    assertOutcomeError(null, { value: [] }, {});
+    assertOutcomeError({}, { value: [] }, {});
+    assertOutcomeError({ correctResponse: [] }, { value: [] }, {});
+
+    assertOutcomeSessionNotset(undefined);
+    assertOutcomeSessionNotset(null);
+    assertOutcomeSessionNotset({});
 
     // Main Correct Response
     assertOutcome({ partialScoring: true, correctResponse: ['a'], alternateResponses: [['c']] }, ['a'], 1);

@@ -12,7 +12,8 @@ import {
   unMapMarks,
   dichotomous,
   partial,
-  getScore
+  getScore,
+  outcome
 } from '../index';
 
 jest.mock('@pie-lib/graphing-utils', () => ({
@@ -614,6 +615,13 @@ describe('getScore', () => {
       expect(result).toEqual(expected);
     });
   };
+  const assertSessionNotSet = (question, session) => {
+    it(`returns score: 0 if session is ${JSON.stringify(session)}`, () => {
+      const result = getScore(question, session);
+
+      expect(result.score).toEqual(0);
+    });
+  };
 
   const answers = {
     a1: {
@@ -633,6 +641,10 @@ describe('getScore', () => {
     }
   };
   const question = { answers };
+
+  assertSessionNotSet(question, undefined);
+  assertSessionNotSet(question, null);
+  assertSessionNotSet(question, {});
 
   assert(
     { ...question, scoringType: 'dichotomous' },
@@ -750,4 +762,18 @@ describe('getScore', () => {
       score: 0.67
     }
   );
+});
+
+describe('outcome', () => {
+  const assertOutcome = session => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+      const o = await outcome({}, session, { mode: 'evaluate '});
+
+      expect(o).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  assertOutcome(undefined);
+  assertOutcome(null);
+  assertOutcome({});
 });

@@ -9,18 +9,20 @@ export const getAllCorrectResponses = ({ choices, alternateResponse }) => {
       correctAnswers[key] = [];
     }
 
-    respArea.forEach(choice => {
-      if (choice.correct) {
-        correctAnswers[key].push(choice.value);
+    if (respArea) {
+      respArea.forEach(choice => {
+        if (choice.correct) {
+          correctAnswers[key].push(choice.value);
 
-        if (alternateResponse[key]) {
-          correctAnswers[key] = [
-            ...correctAnswers[key],
-            ...alternateResponse[key]
-          ];
+          if (alternateResponse[key]) {
+            correctAnswers[key] = [
+              ...correctAnswers[key],
+              ...alternateResponse[key]
+            ];
+          }
         }
-      }
-    });
+      });
+    }
   });
 
   return correctAnswers;
