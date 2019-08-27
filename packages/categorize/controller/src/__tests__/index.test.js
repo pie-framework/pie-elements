@@ -44,35 +44,16 @@ describe('controller', () => {
         expect(buildStateSpy).toBeCalled();
       });
 
-      it('resolves incorrect if session undefined', () => {
-        expect(getCorrectness(
-          question,
-          undefined,
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('incorrect');
-      });
+      const returnCorrectness = session => {
+        it(`resolves incorrect if session is ${JSON.stringify(session)}`, () => {
+          expect(getCorrectness(question, session, { mode: 'evaluate' }))
+            .resolves.toEqual('incorrect');
+        });
+      };
 
-      it('resolves incorrect if session is null', () => {
-        expect(getCorrectness(
-          question,
-          null,
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('incorrect');
-      });
-
-      it('resolves incorrect if session is empty', () => {
-        expect(getCorrectness(
-          question,
-          {},
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('incorrect');
-      });
+      returnCorrectness(undefined);
+      returnCorrectness(null);
+      returnCorrectness({});
 
       it('resolves incorrect', () => {
         expect(getCorrectness(
@@ -146,24 +127,21 @@ describe('controller', () => {
         expect(buildStateSpy).toBeCalled();
       });
 
+
+      const returnOutcome = session => {
+        it(`returns empty: true if session is ${JSON.stringify(session)}`, () => {
+          expect(getCorrectness(question, session, { mode: 'evaluate' }))
+            .resolves.toEqual('incorrect');
+        });
+      };
+
+      returnOutcome(undefined);
+      returnOutcome(null);
+      returnOutcome({});
+
       it ('returns empty: false when session is defined', async () => {
         expect(await outcome(question, { id: 1 }, { mode: 'evaluate' }))
           .toEqual({ score: 0, empty: false });
-      });
-
-      it ('returns empty: true when session undefined', async () => {
-        expect(await outcome(question, undefined, { mode: 'evaluate' }))
-          .toEqual({ score: 0, empty: true});
-      });
-
-      it ('returns empty: true when session null', async () => {
-        expect(await outcome(question, null, { mode: 'evaluate' }))
-          .toEqual({ score: 0, empty: true});
-      });
-
-      it ('returns empty: true when session empty', async () => {
-        expect(await outcome(question, {}, { mode: 'evaluate' }))
-          .toEqual({ score: 0, empty: true});
       });
     });
   });
@@ -227,17 +205,15 @@ describe('controller', () => {
   });
 
   describe('getTotalScore', () => {
-    it('returns 0 if session is undefined', () => {
-      expect(getTotalScore(question, undefined)).toEqual(0);
-    });
+    const returnScore = session => {
+      it(`returns 0 if session is ${JSON.stringify(session)}`, () => {
+        expect(getCorrectness(question, session, { mode: 'evaluate' }))
+          .resolves.toEqual('incorrect');
+      });
+    };
 
-    it('returns 0 if session is null', () => {
-      expect(getTotalScore(question, null)).toEqual(0);
-    });
-
-    it('returns 0 if session is empty', () => {
-      expect(getTotalScore(question, {})).toEqual(0);
-    });
+    returnScore(undefined);
+    returnScore(null);
+    returnScore({});
   });
-
 });

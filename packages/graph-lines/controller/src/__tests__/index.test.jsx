@@ -57,7 +57,7 @@ const defaultModel = {
 
 const mkQuestion = model => model || defaultModel;
 
-xdescribe('model', () => {
+describe('model', () => {
   let result, question, session, env;
 
   describe('gather', () => {
@@ -406,7 +406,7 @@ xdescribe('model', () => {
   });
 });
 
-xdescribe('outcome', () => {
+describe('outcome', () => {
   const assertOutcome = session => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
       const model = mkQuestion();
