@@ -341,7 +341,6 @@ describe('controller', () => {
       const assertModel = sess => {
         it(`returns feedback unknown if session is ${JSON.stringify(sess)}`, async () => {
           const m = await controller.model(mkQuestion(), sess, { mode: 'evaluate' });
-          console.log('defaults', defaults.incorrect);
           expect(m).toMatchObject({
             feedback: { type: 'unanswered', message: defaults.unanswered.default }});
         });

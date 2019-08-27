@@ -426,7 +426,8 @@ describe('getCorrectness', () => {
     it(`returns score: 0 and correctness: unanswered if session is ${JSON.stringify(session)}`, () => {
       const model = mkQuestion();
 
-      expect(getCorrectness(model, session, { mode: 'evaluate'})).toEqual({ score: '0%', correctness: 'unanswered' });
+      expect(getCorrectness(model, session, { mode: 'evaluate'}))
+        .toEqual({ score: '0%', correctness: 'unanswered' });
     });
   };
 
