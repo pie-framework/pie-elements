@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.9...@pie-element/function-entry@3.8.10) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
 ## [3.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.8...@pie-element/function-entry@3.8.9) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/function-entry

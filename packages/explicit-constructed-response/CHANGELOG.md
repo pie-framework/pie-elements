@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.17...@pie-element/explicit-constructed-response@1.8.0) (2019-08-26)
+
+
+### Features
+
+* **mask-markup:** made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521] ([d0a343b](https://github.com/pie-framework/pie-elements/commit/d0a343b))
+
+
+
+
+
 ## [1.7.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.7.16...@pie-element/explicit-constructed-response@1.7.17) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

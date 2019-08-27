@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@3.0.0...@pie-element/math-inline@3.0.1) (2019-08-26)
+
+
+### Bug Fixes
+
+* **math-inline:** text nodes should not matter in literal evaluation ([a7e574a](https://github.com/pie-framework/pie-elements/commit/a7e574a))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@2.8.2...@pie-element/math-inline@3.0.0) (2019-08-21)
 
 

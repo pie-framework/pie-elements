@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.8.15...@pie-element/drag-in-the-blank@1.9.0) (2019-08-26)
+
+
+### Features
+
+* **mask-markup:** made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521] ([d0a343b](https://github.com/pie-framework/pie-elements/commit/d0a343b))
+
+
+
+
+
 ## [1.8.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.8.14...@pie-element/drag-in-the-blank@1.8.15) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.11...@pie-element/match@2.8.12) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
 ## [2.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.10...@pie-element/match@2.8.11) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/match
