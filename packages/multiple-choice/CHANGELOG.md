@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.6.1...@pie-element/multiple-choice@3.7.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.5.11...@pie-element/multiple-choice@3.6.1) (2019-08-26)
 
 

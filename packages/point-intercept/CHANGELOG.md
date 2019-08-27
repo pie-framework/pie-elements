@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@4.4.9...@pie-element/point-intercept@4.5.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
 ## [4.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/point-intercept@4.4.8...@pie-element/point-intercept@4.4.9) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/point-intercept

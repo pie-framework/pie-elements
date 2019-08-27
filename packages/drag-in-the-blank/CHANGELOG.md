@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.9.0...@pie-element/drag-in-the-blank@1.10.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([33569a4](https://github.com/pie-framework/pie-elements/commit/33569a4))
+
+
+
+
+
 # [1.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.8.15...@pie-element/drag-in-the-blank@1.9.0) (2019-08-26)
 
 

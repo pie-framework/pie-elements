@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.5.13...@pie-element/inline-dropdown-controller@1.6.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([35c2cab](https://github.com/pie-framework/pie-elements/commit/35c2cab))
+
+
+
+
+
 ## [1.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.5.12...@pie-element/inline-dropdown-controller@1.5.13) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller

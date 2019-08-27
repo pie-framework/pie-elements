@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.11...@pie-element/categorize@4.7.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+* Session null/empty check ([33569a4](https://github.com/pie-framework/pie-elements/commit/33569a4))
+
+
+
+
+
 ## [4.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.10...@pie-element/categorize@4.6.11) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/categorize

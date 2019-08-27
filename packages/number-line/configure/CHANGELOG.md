@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.4.10...@pie-element/number-line-configure@4.5.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
 ## [4.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.4.9...@pie-element/number-line-configure@4.4.10) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/number-line-configure

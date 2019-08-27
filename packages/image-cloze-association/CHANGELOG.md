@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.2.5...@pie-element/image-cloze-association@1.3.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([35c2cab](https://github.com/pie-framework/pie-elements/commit/35c2cab))
+
+
+
+
+
 ## [1.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@1.2.4...@pie-element/image-cloze-association@1.2.5) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

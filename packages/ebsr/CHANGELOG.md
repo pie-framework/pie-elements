@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.9...@pie-element/ebsr@2.7.0) (2019-08-27)
+
+
+### Features
+
+* return max in 'outcome' ([1a006fa](https://github.com/pie-framework/pie-elements/commit/1a006fa))
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
 ## [2.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.8...@pie-element/ebsr@2.6.9) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/ebsr

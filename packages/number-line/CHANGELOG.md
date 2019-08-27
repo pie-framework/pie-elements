@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.13...@pie-element/number-line@5.6.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
 ## [5.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.12...@pie-element/number-line@5.5.13) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/number-line

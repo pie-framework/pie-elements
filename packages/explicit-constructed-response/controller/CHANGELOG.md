@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@1.4.13...@pie-element/explicit-constructed-response-controller@1.5.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
 ## [1.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@1.4.12...@pie-element/explicit-constructed-response-controller@1.4.13) (2019-08-26)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-controller

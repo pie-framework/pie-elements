@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.3.7...@pie-element/ebsr-controller@1.4.0) (2019-08-27)
+
+
+### Features
+
+* return max in 'outcome' ([1a006fa](https://github.com/pie-framework/pie-elements/commit/1a006fa))
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
 ## [1.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.3.6...@pie-element/ebsr-controller@1.3.7) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller
