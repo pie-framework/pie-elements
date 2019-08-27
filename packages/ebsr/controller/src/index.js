@@ -11,7 +11,10 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     value: choice.value
   };
 
-  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+  if (
+    env.role === 'instructor' &&
+    (env.mode === 'view' || env.mode === 'evaluate')
+  ) {
     out.rationale = choice.rationale;
   } else {
     out.rationale = null;
@@ -38,9 +41,9 @@ const parsePart = (part, key, session, env) => {
     part.defaultFeedback
   );
 
-  let choices = part.choices.map(
-    prepareChoice(part, env, defaultFeedback)
-  );
+  let choices = part.choices
+    ? part.choices.map(prepareChoice(part, env, defaultFeedback))
+    : [];
 
   if (!part.lockChoiceOrder) {
     choices = shuffle(choices);
@@ -57,11 +60,11 @@ const parsePart = (part, key, session, env) => {
       env.mode === 'evaluate'
         ? isResponseCorrect(part, key, session)
         : undefined
-  }
+  };
 };
 
 export function model(question, session, env) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -75,8 +78,8 @@ export const createDefaultModel = (model = {}) =>
   new Promise(resolve => {
     resolve({
       ...defaults,
-      ...model,
-    })
+      ...model
+    });
   });
 
 const isCorrect = c => c.correct === true;
@@ -125,12 +128,12 @@ export function outcome(config, session, env) {
 
       const score = scoreA + scoreB;
 
-      resolve({ score, scoreA, scoreB });
+      resolve({ score, scoreA, scoreB, max: 2 });
     }
   });
 }
 
-const returnPartCorrect = (choices) => {
+const returnPartCorrect = choices => {
   let answers = [];
 
   choices.forEach(i => {
@@ -154,7 +157,7 @@ export const createCorrectResponseSession = (question, env) => {
         value: {
           partA: {
             id: 'partA',
-            value: partACorrect,
+            value: partACorrect
           },
           partB: {
             id: 'partB',

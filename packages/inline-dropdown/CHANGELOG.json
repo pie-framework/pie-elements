@@ -613,5 +613,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.9.16"
+  },
+  {
+    "type": "feat",
+    "scope": "mask-markup",
+    "subject": "made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521]",
+    "merge": null,
+    "header": "feat(mask-markup): made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d0a343b93a68672fc9dd3673d1b50e335ee53f61",
+    "gitTags": "",
+    "committerDate": "2019-08-22 09:18:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.10.0"
   }
 ]

@@ -28,12 +28,20 @@ const InfoDialog = ({ open, onCancel, onOk, title }) => (
   <Dialog open={open}>
     <DialogTitle>{title}</DialogTitle>
     <DialogActions>
-      <Button onClick={onOk} color="primary">
-        OK
-      </Button>
-      <Button onClick={onCancel} color="primary">
-        Cancel
-      </Button>
+      {
+        onOk && (
+          <Button onClick={onOk} color="primary">
+            OK
+          </Button>
+        )
+      }
+      {
+        onCancel && (
+          <Button onClick={onCancel} color="primary">
+            Cancel
+          </Button>
+        )
+      }
     </DialogActions>
   </Dialog>
 );
@@ -49,11 +57,11 @@ const styles = theme => ({
     width: '100%'
   },
   markup: {
-    minHeight: '235px',
+    minHeight: '100px',
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
     '& [data-slate-editor="true"]': {
-      minHeight: '235px'
+      minHeight: '100px'
     }
   },
   design: {
@@ -84,6 +92,16 @@ const createElementFromHTML = htmlString => {
   div.innerHTML = htmlString.trim();
 
   return div;
+};
+
+const prepareVal = html => {
+  const tmp = document.createElement('DIV');
+
+  tmp.innerHTML = html;
+
+  const value = tmp.textContent || tmp.innerText || '';
+
+  return value.trim();
 };
 
 export class Main extends React.Component {
@@ -230,6 +248,24 @@ export class Main extends React.Component {
 
     if (!respAreaChoices[index]) {
       respAreaChoices[index] = [];
+    }
+
+    if ((respAreaChoices[index] || []).find(r => prepareVal(r.label) === prepareVal(label))) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: 'Duplicate answers are not allowed.',
+          onOk: () => {
+            this.setState({
+              dialog: {
+                open: false
+              }
+            });
+          }
+        }
+      });
+
+      return ;
     }
 
     respAreaChoices[index].push({
@@ -379,6 +415,7 @@ export class Main extends React.Component {
                   );
                 }
               }}
+              className={classes.markup}
               markup={markup || ''}
               onChange={this.onChange}
               imageSupport={imageSupport}

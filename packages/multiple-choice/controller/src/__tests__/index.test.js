@@ -10,6 +10,8 @@ describe('controller', () => {
 
   beforeEach(() => {
     question = {
+      id: '1',
+      element: 'multiple-choice',
       prompt: 'prompt',
       choicePrefix: 'letters',
       choiceMode: 'radio',
@@ -158,13 +160,25 @@ describe('controller', () => {
         expect(result.choices).toEqual(
           expect.arrayContaining([
             { label: 'a', value: 'apple', rationale: null },
-            { label: 'b', value: 'banana', rationale: null },
+            { label: 'b', value: 'banana', rationale: null }
           ])
         );
       });
 
       it('does not return responseCorrect', () => {
         expect(result.responseCorrect).toBe(undefined);
+      });
+    });
+
+    describe('model - with updateSession', () => {
+      it('calls updateSession', async () => {
+        session = { id: '1', element: 'multiple-choice' };
+        env = { mode: 'gather' };
+        const updateSession = jest.fn().mockResolvedValue();
+        await model(question, session, env, updateSession);
+        expect(updateSession).toHaveBeenCalledWith('1', 'multiple-choice', {
+          shuffledValues: expect.arrayContaining(['apple', 'banana'])
+        });
       });
     });
 
@@ -192,8 +206,20 @@ describe('controller', () => {
       it('returns choices w/ correct', () => {
         expect(result.choices).toEqual(
           expect.arrayContaining([
-            { label: 'a', value: 'apple', correct: true, feedback: 'foo', rationale: null },
-            { label: 'b', value: 'banana', correct: false, feedback: 'Incorrect', rationale: null },
+            {
+              label: 'a',
+              value: 'apple',
+              correct: true,
+              feedback: 'foo',
+              rationale: null
+            },
+            {
+              label: 'b',
+              value: 'banana',
+              correct: false,
+              feedback: 'Incorrect',
+              rationale: null
+            }
           ])
         );
       });

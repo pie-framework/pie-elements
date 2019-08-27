@@ -9,6 +9,7 @@ import defaults from './defaults';
 const log = debug('@pie-element:math-inline:controller');
 const decimalRegex = /\.|,/g;
 const decimalCommaRegex = /,/g;
+const textRegex = /\\text\{([^{}]+)\}/g;
 const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
 
 function trimSpaces(str = '') {
@@ -18,7 +19,13 @@ function trimSpaces(str = '') {
 function processAnswerItem(answerItem = '') {
   // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
   // further processing is to be added here if needed
-  return answerItem.replace('−', '-');
+  let newAnswerItem = answerItem.replace('−', '-');
+
+  // also ignore text nodes, just swap out with content
+
+  newAnswerItem = newAnswerItem.replace(textRegex, '$1');
+
+  return newAnswerItem;
 }
 
 function containsDecimal(expression = '') {
