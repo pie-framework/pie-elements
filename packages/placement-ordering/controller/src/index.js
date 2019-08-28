@@ -2,17 +2,12 @@ import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
-import shuffle from 'lodash/shuffle';
-import compact from 'lodash/compact';
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
 import defaults from './defaults';
 
 const lg = n => console[n].bind(console, '[placement-ordering]');
-const debug = lg('debug');
 const log = lg('log');
-const warn = lg('warn');
-const error = lg('error');
 
 export const questionError = () =>
   new Error('Question is missing required array: correctResponse');
@@ -53,37 +48,6 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-const getShuffledChoices = async (choices, session, updateSession) => {
-  log('updateSession type: ', typeof updateSession);
-  log('session: ', session);
-  if (session.shuffledValues) {
-    debug('use shuffledValues to sort the choices...', session.shuffledValues);
-
-    return compact(
-      session.shuffledValues.map(id => choices.find(c => c.value === id))
-    );
-  } else {
-    const shuffledChoices = shuffle(choices);
-
-    if (updateSession && typeof updateSession === 'function') {
-      try {
-        //Note: session.id refers to the id of the element within a session
-        const shuffledValues = shuffledChoices.map(c => c.id);
-        log('try to save shuffledValues to session...', shuffledValues);
-        console.log('call updateSession... ', session.id, session.element);
-        await updateSession(session.id, session.element, { shuffledValues });
-      } catch (e) {
-        warn('unable to save shuffled order for choices');
-        error(e);
-      }
-    } else {
-      warn('unable to save shuffled choices, shuffle will happen every time.');
-    }
-    //save this shuffle to the session for later retrieval
-    return shuffledChoices;
-  }
-};
-
 /**
  *
  * @param {*} question
@@ -101,7 +65,7 @@ export function model(question, session, env, updateSession) {
 
     let choices = question.choices;
     if (!question.lockChoiceOrder) {
-      choices = await getShuffledChoices(choices, session, updateSession);
+      choices = await getShuffledChoices(choices, session, updateSession, 'label');
     }
 
     base.choices = choices;
