@@ -2,20 +2,12 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import compact from 'lodash/compact';
-import shuffle from 'lodash/shuffle';
-import { partialScoring } from '@pie-lib/controller-utils';
-
-const lg = n => console[n].bind(console, '[explicit-constructed-response]');
-const debug = lg('debug');
-const log = lg('log');
-const warn = lg('warn');
-const error = lg('error');
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
-    id: choice.id
+    value: choice.value
   };
 
   if (mode === 'evaluate') {
@@ -39,38 +31,6 @@ const getFeedback = value => {
   }
 
   return 'incorrect';
-};
-
-
-const getShuffledChoices = async (choices, session, updateSession) => {
-  log('updateSession type: ', typeof updateSession);
-  log('session: ', session);
-  if (session.shuffledValues) {
-    debug('use shuffledValues to sort the choices...', session.shuffledValues);
-
-    return compact(
-      session.shuffledValues.map(l => choices.find(c => c.label === l))
-    );
-  } else {
-    const shuffledChoices = shuffle(choices);
-
-    if (updateSession && typeof updateSession === 'function') {
-      try {
-        //Note: session.id refers to the id of the element within a session
-        const shuffledValues = shuffledChoices.map(c => c.label);
-        log('try to save shuffledValues to session...', shuffledValues);
-        console.log('call updateSession... ', session.id, session.element);
-        await updateSession(session.id, session.element, { shuffledValues });
-      } catch (e) {
-        warn('unable to save shuffled order for choices');
-        error(e);
-      }
-    } else {
-      warn('unable to save shuffled choices, shuffle will happen every time.');
-    }
-    //save this shuffle to the session for later retrieval
-    return shuffledChoices;
-  }
 };
 
 /**
@@ -116,7 +76,7 @@ export function model(question, session, env, updateSession) {
 
     if (!question.lockChoiceOrder) {
       Object.keys(choices).forEach(async key => {
-        choices[key] = await getShuffledChoices(choices[key], session, updateSession);
+        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
       });
     }
 

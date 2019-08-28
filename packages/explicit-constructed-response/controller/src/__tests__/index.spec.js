@@ -31,7 +31,7 @@ describe('edge cases', () => {
       const updateSession = jest.fn().mockResolvedValue();
       await model(d, session, env, updateSession);
       expect(updateSession).toHaveBeenCalledWith('1', 'explicit-constructed-response', {
-        shuffledValues: expect.arrayContaining(['A', 'B'])
+        shuffledValues: expect.arrayContaining(['0', '1'])
       });
     });
   });
