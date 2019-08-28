@@ -107,11 +107,11 @@ export interface ChartingPie extends PieModel {
     /** Indicates scoring type */
     scoringType?: 'all or nothing' | 'partial scoring';
 
-    /** Indicates if student instructions are enabled */
-    studentInstructions?: boolean;
+    /** Indicates student instructions */
+    studentInstructions?: string;
 
-    /** Indicates if teacher instructions are enabled */
-    teacherInstructions?: boolean;
+    /** Indicates teacher instructions */
+    teacherInstructions?: string;
 
     /** Indicates chart title */
     title?: string;

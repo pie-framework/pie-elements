@@ -74,13 +74,13 @@
       "title": "prompt"
     },
     "studentInstructions": {
-      "description": "Indicates if student instructions are enabled",
-      "type": "boolean",
+      "description": "Indicates student instructions",
+      "type": "string",
       "title": "studentInstructions"
     },
     "teacherInstructions": {
-      "description": "Indicates if teacher instructions are enabled",
-      "type": "boolean",
+      "description": "Indicates teacher instructions",
+      "type": "string",
       "title": "teacherInstructions"
     },
     "id": {

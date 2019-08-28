@@ -53,11 +53,11 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** The question prompt */
   prompt?: string;
 
-  /** Indicates if student instructions are enabled */
-  studentInstructions?: boolean;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-  /** Indicates if teacher instructions are enabled */
-  teacherInstructions?: boolean;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 }
 
 /**
