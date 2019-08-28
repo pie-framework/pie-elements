@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 
 import defaults from './defaults';
 
@@ -15,34 +16,36 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+const getResult = (question, session) => {
+  if (!session || !session.value) {
+    return { correct: false, nothingSubmitted: true, feedback: undefined };
+  }
+
+  const c = question.choices.find(c => c.value === session.value);
+
+  log('[getResult] c: ', c);
+  const correct = c && !!c.correct;
+
+  const feedback = (() => {
+    if (!c || !c.feedback) {
+      return undefined;
+    }
+
+    const fb = c.feedback || {};
+
+    if (fb.type === 'custom') {
+      return fb.value;
+    } else {
+      return correct ? 'Correct' : 'Incorrect';
+    }
+  })();
+
+  return { correct, feedback };
+};
+
+
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const getResult = () => {
-      if (!session || !session.value) {
-        return { correct: false, nothingSubmitted: true, feedback: undefined };
-      }
-
-      const c = question.choices.find(c => c.value === session.value);
-
-      log('[getResult] c: ', c);
-      const correct = c && !!c.correct;
-
-      const feedback = (() => {
-        if (!c || !c.feedback) {
-          return undefined;
-        }
-
-        const fb = c.feedback || {};
-
-        if (fb.type === 'custom') {
-          return fb.value;
-        } else {
-          return correct ? 'Correct' : 'Incorrect';
-        }
-      })();
-
-      return { correct, feedback };
-    };
 
     const choices = question.choices.map(c => ({
       label: c.label,
@@ -52,10 +55,23 @@ export function model(question, session, env) {
     resolve({
       choices,
       disabled: env.mode !== 'gather',
-      result: env.mode === 'evaluate' ? getResult() : undefined
+      result: env.mode === 'evaluate' ? getResult(question, session) : undefined
     });
   });
 }
+
+export function outcome(question, session, env) {
+  return new Promise(resolve => {
+    log('outcome...');
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
+    const result = getResult(question, session);
+    resolve({ score: result.correct ? 1 : 0 });
+  });
+}
+
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {

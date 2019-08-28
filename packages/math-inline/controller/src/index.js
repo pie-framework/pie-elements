@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 import { ResponseTypes } from './utils';
@@ -8,6 +9,7 @@ import defaults from './defaults';
 const log = debug('@pie-element:math-inline:controller');
 const decimalRegex = /\.|,/g;
 const decimalCommaRegex = /,/g;
+const textRegex = /\\text\{([^{}]+)\}/g;
 const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
 
 function trimSpaces(str = '') {
@@ -17,7 +19,13 @@ function trimSpaces(str = '') {
 function processAnswerItem(answerItem = '') {
   // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
   // further processing is to be added here if needed
-  return answerItem.replace('−', '-');
+  let newAnswerItem = answerItem.replace('−', '-');
+
+  // also ignore text nodes, just swap out with content
+
+  newAnswerItem = newAnswerItem.replace(textRegex, '$1');
+
+  return newAnswerItem;
 }
 
 function containsDecimal(expression = '') {
@@ -130,8 +138,8 @@ const getCorrectness = (question, env, session, isOutcome) => {
     return getResponseCorrectness(
       question,
       question.responseType === ResponseTypes.advanced
-        ? session.completeAnswer || ''
-        : session.response,
+        ? (session && session.completeAnswer) || ''
+        : (session && session.response),
       isOutcome
     );
   }
@@ -153,13 +161,13 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      const correctness = getCorrectness(question, env, session, true);
+      if (!session || isEmpty(session)) {
+        resolve({ score: 0, empty: true });
+      } else {
+        const correctness = getCorrectness(question, env, session, true);
 
-      const out = {
-        score: correctness.score
-      };
-
-      resolve(out);
+        resolve({ score: correctness.score });
+      }
     }
   });
 };

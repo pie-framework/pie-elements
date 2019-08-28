@@ -209,7 +209,6 @@ export class Main extends React.Component {
       toGraphFormat
     );
 
-    console.log('graph:', graph);
     const initialView = cloneDeep(graph.initialElements || []).map(
       toGraphFormat
     );

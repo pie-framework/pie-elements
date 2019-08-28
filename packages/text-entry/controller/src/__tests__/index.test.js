@@ -1,29 +1,29 @@
-import { model } from '../index';
+import { model, outcome, getCorrectness } from '../index';
+
+const mkQuestion = () => ({
+  correctResponses: {
+    values: ['a']
+  },
+  feedback: {
+    correct: {
+      type: 'default'
+    },
+    partial: {
+      type: 'custom',
+      custom: 'foo'
+    },
+    incorrect: {
+      type: 'custom',
+      custom: 'foo'
+    }
+  },
+  partialResponses: {
+    values: ['aa']
+  }
+});
 
 describe('model', () => {
   let result, question, session, env;
-
-  const mkQuestion = () => ({
-    correctResponses: {
-      values: ['a']
-    },
-    feedback: {
-      correct: {
-        type: 'default'
-      },
-      partial: {
-        type: 'custom',
-        custom: 'foo'
-      },
-      incorrect: {
-        type: 'custom',
-        custom: 'foo'
-      }
-    },
-    partialResponses: {
-      values: ['aa']
-    }
-  });
 
   describe('gather', () => {
     beforeEach(async () => {
@@ -115,4 +115,30 @@ describe('model', () => {
       expect(result.feedback).toEqual('foo');
     });
   });
+});
+
+describe('outcome', () => {
+  const assertOutcome = session => {
+    it(`returns score: 0, empty: true if session is ${JSON.stringify(session)}`, async () => {
+      const o = await outcome(mkQuestion(), session, { mode: 'evaluate' });
+      expect(o).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  assertOutcome(undefined);
+  assertOutcome(null);
+  assertOutcome({});
+});
+
+describe('getCorrectness', () => {
+  const assertCorrectness = session => {
+    it(`returns score: 0, empty: true if session is ${JSON.stringify(session)}`, () => {
+      const o = getCorrectness(mkQuestion(), session, { mode: 'evaluate' });
+      expect(o).toEqual('empty');
+    });
+  };
+
+  assertCorrectness(undefined);
+  assertCorrectness(null);
+  assertCorrectness({});
 });

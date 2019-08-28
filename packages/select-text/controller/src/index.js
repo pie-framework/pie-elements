@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
@@ -51,17 +52,27 @@ const getCorrectSelected = (tokens, selected) => {
 const getCorrectCount = (tokens, selected) =>
   getCorrectSelected(tokens, selected).length;
 
-const getPartialScore = (question, session, totalCorrect) => {
+export const getPartialScore = (question, session, totalCorrect) => {
+  if (!session || isEmpty(session)) {
+    return 0;
+  }
+
   const correctCount = getCorrectCount(question.tokens, session.selectedTokens);
   const incorrectCount = session.selectedTokens.length - correctCount;
   const count = correctCount - incorrectCount;
   const positiveCount = count < 0 ? 0 : count;
 
-  return parseFloat((positiveCount / totalCorrect.length).toFixed(2));
+  return totalCorrect.length
+    ? parseFloat((positiveCount / totalCorrect.length).toFixed(2))
+    : 0;
 };
 
 export const outcome = (question, session, env) =>
   new Promise(resolve => {
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {

@@ -1,4 +1,5 @@
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 
 export const getCorrectResponse = (choices) => choices
   .filter(c => c.correct)
@@ -7,11 +8,17 @@ export const getCorrectResponse = (choices) => choices
 
 export const isResponseCorrect = (question, session) => {
   const { shapes: { rectangles, polygons } } = question;
-  const choices = [...rectangles, polygons];
-  const correctResponse = getCorrectResponse(choices);
+  const choices = [...rectangles, ...polygons];
+  let correctResponse = getCorrectResponse(choices);
+
+  if (!session || isEmpty(session)) {
+    return false;
+  }
 
   if (session.answers.length) {
     return isEqual((session.answers || []).sort(), correctResponse);
+  } else if (!correctResponse.length) {
+    return true;
   }
   return false;
 };

@@ -1,50 +1,63 @@
-import { model } from '../index';
+import { model, outcome } from '../index';
 import { defaults as feedbackDefaults } from '@pie-lib/feedback';
+
+const defaultModel = {
+  id: '1',
+  element: 'match-element',
+  rows: [{
+    id: 1,
+    title: 'Question Text 1',
+    values: [false, false]
+  }, {
+    id: 2,
+    title: 'Question Text 2',
+    values: [false, false]
+  }, {
+    id: 3,
+    title: 'Question Text 3',
+    values: [false, false]
+  }, {
+    id: 4,
+    title: 'Question Text 4',
+    values: [false, false]
+  }],
+  lockChoiceOrder: true,
+  partialScoring: false,
+  allowFeedback: true,
+  layout: 3,
+  headers: ['Column 1', 'Column 2', 'Column 3'],
+  choiceMode: 'checkbox',
+  feedback: {
+    correct: {
+      type: 'none',
+      default: 'Correct'
+    },
+    partial: {
+      type: 'none',
+      default: 'Nearly'
+    },
+    incorrect: {
+      type: 'none',
+      default: 'Incorrect'
+    }
+  },
+};
+
+describe('outcome', () => {
+  const returnCorrectness = sess => {
+    it(`returns empty: true and score: 0 if session is ${JSON.stringify(sess)}`, async () => {
+      const result = await outcome(defaultModel, sess, { mode: 'evaluate' });
+      expect(result).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  returnCorrectness(undefined);
+  returnCorrectness(null);
+  returnCorrectness({});
+});
 
 describe('model', () => {
   let result, question, session, env;
-
-  const defaultModel = {
-    id: '1',
-    element: 'match-element',
-    rows: [{
-      id: 1,
-      title: 'Question Text 1',
-      values: [false, false]
-    }, {
-      id: 2,
-      title: 'Question Text 2',
-      values: [false, false]
-    }, {
-      id: 3,
-      title: 'Question Text 3',
-      values: [false, false]
-    }, {
-      id: 4,
-      title: 'Question Text 4',
-      values: [false, false]
-    }],
-    lockChoiceOrder: true,
-    partialScoring: false,
-    allowFeedback: true,
-    layout: 3,
-    headers: ['Column 1', 'Column 2', 'Column 3'],
-    choiceMode: 'checkbox',
-    feedback: {
-      correct: {
-        type: 'none',
-        default: 'Correct'
-      },
-      partial: {
-        type: 'none',
-        default: 'Nearly'
-      },
-      incorrect: {
-        type: 'none',
-        default: 'Incorrect'
-      }
-    },
-  };
 
   const mkQuestion = model => model || defaultModel;
 
@@ -121,6 +134,20 @@ describe('model', () => {
     it('returns default for feedback', async () => {
       expect(result.feedback).toEqual(feedbackDefaults.unanswered.default);
     });
+
+    const returnCorrectness = sess => {
+      it(`returns unanswered for correctness and 0 for score if session is ${JSON.stringify(sess)}`, async () => {
+        result = await model(question, sess, env);
+        expect(result.correctness).toEqual({
+          correctness: 'unanswered',
+          score: '0%'
+        });
+      });
+    };
+
+    returnCorrectness(undefined);
+    returnCorrectness(null);
+    returnCorrectness({});
   });
 
   describe('evaluate - partially correct', () => {

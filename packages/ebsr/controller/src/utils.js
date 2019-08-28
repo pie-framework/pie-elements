@@ -1,6 +1,6 @@
 import isEqual from 'lodash/isEqual';
 
-export const getCorrectResponse = (choices) => choices
+export const getCorrectResponse = (choices) => choices && choices
   .filter(c => c.correct)
   .map(c => c.value)
   .sort();
@@ -8,7 +8,7 @@ export const getCorrectResponse = (choices) => choices
 export const isResponseCorrect = (question, key, session) => {
   let correctResponse = getCorrectResponse(question.choices);
 
-  if (session.value) {
+  if (session && session.value) {
     return isEqual((session.value[key].value || []).sort(), correctResponse);
   }
 

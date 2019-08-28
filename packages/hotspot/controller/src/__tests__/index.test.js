@@ -1,9 +1,5 @@
-import { model, outcome, scoreFromRule, partialScoring } from '../index';
+import { model, outcome } from '../index';
 import { isResponseCorrect } from '../utils';
-
-jest.mock('../utils', () => ({
-  isResponseCorrect: jest.fn()
-}));
 
 jest.mock('@pie-lib/controller-utils', () => ({
   partialScoring: {
@@ -82,7 +78,6 @@ describe('controller', () => {
         };
       });
       it('returns a score of 0.2', async () => {
-        console.log('Outcome question: ', question);
         const result = await outcome(
           question,
           { answers: [{ id: '2' }] }
@@ -114,6 +109,17 @@ describe('controller', () => {
         expect(result.score).toEqual(1);
       });
     });
+
+    const returnOutcome = session => {
+      it(`returns empty: true when session is ${JSON.stringify(session)}`, async () => {
+        const result = await outcome(question, session);
+        expect(result).toEqual({ score: 0, empty: true });
+      });
+    };
+
+    returnOutcome(undefined);
+    returnOutcome(null);
+    returnOutcome({});
   });
 
   describe('model', () => {
@@ -188,7 +194,6 @@ describe('controller', () => {
       beforeEach(async () => {
         session = { answers: [] };
         env = { mode: 'evaluate' };
-        isResponseCorrect.mockReturnValue(false);
         result = await model(question, session, env);
         return result;
       });
@@ -212,5 +217,17 @@ describe('controller', () => {
         expect(result.responseCorrect).toEqual(false);
       });
     });
+  });
+
+  describe('isResponseCorrect', () => {
+    const returnIsResponseCorect = session => {
+      it(`response is not correct if session is ${JSON.stringify(session)}`, () => {
+        expect(isResponseCorrect(question, session)).toEqual(false);
+      });
+    };
+
+    returnIsResponseCorect(undefined);
+    returnIsResponseCorect(null);
+    returnIsResponseCorect({});
   });
 });

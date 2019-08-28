@@ -1,6 +1,7 @@
 import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { lineUtils as utils } from '@pie-lib/charting';
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('@pie-element:graph-lines:controller');
 
@@ -47,9 +48,38 @@ const getResponseCorrectness = (
   return { correctness: 'incorrect', score: '0%' };
 };
 
+export const getCorrectness = (question, session, env) => {
+  const { partialScoring, graph } = question;
+  const correctResponse = [];
+
+  if (env.mode === 'evaluate') {
+    if (!session || !session.lines || session.lines.length === 0) {
+      return {
+        correctness: 'unanswered',
+        score: '0%'
+      };
+    }
+
+    graph.lines.forEach(line => {
+      const lineExpression = utils.expressionFromDescriptor(line.correctLine);
+      const points = utils.pointsFromExpression(lineExpression);
+
+      correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
+    });
+
+    return getResponseCorrectness(
+      correctResponse,
+      session.lines,
+      question,
+      partialScoring
+    );
+  }
+};
+
+
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { partialScoring, graph } = question;
+    const { graph } = question;
 
     const correctResponse = [];
 
@@ -60,25 +90,7 @@ export function model(question, session, env) {
       correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
     });
 
-    const getCorrectness = () => {
-      if (env.mode === 'evaluate') {
-        if (!session.lines || session.lines.length === 0) {
-          return {
-            correctness: 'unanswered',
-            score: '0%'
-          };
-        }
-
-        return getResponseCorrectness(
-          correctResponse,
-          session.lines,
-          question,
-          partialScoring
-        );
-      }
-    };
-
-    const correctInfo = getCorrectness();
+    const correctInfo = getCorrectness(question, session, env);
     const fb =
       env.mode === 'evaluate'
         ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
@@ -105,5 +117,15 @@ export function model(question, session, env) {
       log('out: ', out);
       resolve(out);
     });
+  });
+}
+
+export function outcome(model, session) {
+  return new Promise(resolve => {
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
+    resolve({ score: getCorrectness(model, session).score });
   });
 }

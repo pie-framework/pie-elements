@@ -134,6 +134,18 @@ describe('score', () => {
       });
     };
 
+    const assertScoreSessionNotSet = (session) => {
+      it(`returns 0 if session is: ${JSON.stringify(session)}`, () => {
+        const result = score(question, session);
+
+        expect(result).toEqual(0);
+      });
+    };
+
+    assertScoreSessionNotSet(undefined);
+    assertScoreSessionNotSet(null);
+    assertScoreSessionNotSet({});
+
     // Main Correct Responses
     assertScore([], 0);
     assertScore(['c1'], 0);

@@ -1,4 +1,5 @@
 import debug from 'debug';
+import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 
 const log = debug('@pie-element:text-entry:controller');
@@ -18,9 +19,9 @@ const inResponses = (responses, value) => {
   return processedValues.indexOf(v) !== -1;
 };
 
-const getCorrectness = (question, session, env) => {
+export const getCorrectness = (question, session, env) => {
   if (env.mode === 'evaluate') {
-    if (!session.value) {
+    if (!session || !session.value) {
       return 'empty';
     }
 
@@ -69,6 +70,21 @@ export function model(question, session, env) {
     });
   });
 }
+
+export const outcome = (question, session, env) =>
+  new Promise(resolve => {
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
+    if (env.mode !== 'evaluate') {
+      resolve({ score: undefined, completed: undefined });
+    } else {
+      const correctness = getCorrectness(question, session, env);
+
+      resolve({ score: correctness === 'correct' ? 1 : 0 });
+    }
+  });
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
