@@ -1,16 +1,12 @@
 import forEach from 'lodash/forEach';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import shuffle from 'lodash/shuffle';
-import compact from 'lodash/compact';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 import defaults from './defaults';
+import debug from 'debug';
 
-const lg = n => console[n].bind(console, '[categorize]');
-const debug = lg('debug');
-const log = lg('log');
-const warn = lg('warn');
-const error = lg('error');
+const log = debug('@pie-element:categorize:controller');
 
 export { score };
 
@@ -49,35 +45,6 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-const getShuffledChoices = async (choices, session, updateSession) => {
-  log('updateSession type: ', typeof updateSession);
-  log('session: ', session);
-  if (session.shuffledValues) {
-    debug('use shuffledValues to sort the choices...', session.shuffledValues);
-
-    return compact(
-      session.shuffledValues.map(v => choices.find(c => c.id === v))
-    );
-  } else {
-    const shuffledChoices = shuffle(choices);
-
-    if (updateSession && typeof updateSession === 'function') {
-      try {
-        const shuffledValues = shuffledChoices.map(c => c.id);
-        log('try to save shuffledValues to session...', shuffledValues);
-        console.log('call updateSession... ', session.id, session.element);
-        await updateSession(session.id, session.element, { shuffledValues });
-      } catch (e) {
-        warn('unable to save shuffled order for choices');
-        error(e);
-      }
-    } else {
-      warn('unable to save shuffled choices, shuffle will happen every time.');
-    }
-    return shuffledChoices;
-  }
-};
-
 /**
  *
  * @param {*} question
@@ -97,7 +64,7 @@ export const model = (question, session, env, updateSession) =>
 
       let choices = question.choices;
       if (!question.lockChoiceOrder) {
-        choices = await getShuffledChoices(choices, session, updateSession);
+        choices = await getShuffledChoices(choices, session, updateSession, 'id');
       }
 
       fb.then(feedback => {
