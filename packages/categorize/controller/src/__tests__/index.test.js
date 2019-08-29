@@ -17,7 +17,7 @@ describe('controller', () => {
       categories: categories(),
       choices: choices(),
       correctResponse: [{ category: '1', choices: ['1', '2'] }],
-      lockChoiceOrder: true,
+      lockChoiceOrder: true
     };
   });
 
