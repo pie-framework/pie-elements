@@ -37,44 +37,51 @@ const accumulateAnswer = correctResponse => (total, answer) => {
  */
 export function outcome(model, session, env) {
   return new Promise(resolve => {
-    const partialScoringEnabled = partialScoring.enabled(model, env);
-
-    const numCorrect = (session.answer || []).reduce(
-      accumulateAnswer(model.correctResponse),
-      0
-    );
-    const total = model.correctResponse.length;
-    const score = numCorrect < 0 ? 0 : numCorrect / total;
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    if (!session || isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    } else {
+      const partialScoringEnabled = partialScoring.enabled(model, env);
+      const numCorrect = (session.answer || []).reduce(
+        accumulateAnswer(model.correctResponse),
+        0
+      );
+      const total = model.correctResponse.length;
+      const score = numCorrect < 0 ? 0 : numCorrect / total;
+      resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    }
   });
 }
 
 export function getScore(question, session) {
-  session.answer = session.answer || [];
-
   return new Promise(resolve => {
-    const corrected = getCorrected(
-      session.answer,
-      cloneDeep(question.correctResponse)
-    );
-
-    const correctness = getCorrectness(corrected);
-
-    if (correctness === 'correct') {
-      resolve(score(1.0));
-    } else if (correctness === 'incorrect') {
-      resolve(score(0.0));
-    } else if (correctness === 'partial') {
-      const { allowPartialScoring, partialScoring } = question;
-      const ps = (partialScoring || []).filter(o => !isEmpty(o));
-      const canDoPartialScoring = allowPartialScoring && ps.length > 0;
-      if (canDoPartialScoring) {
-        resolve(score(getPartialScore(corrected, ps)));
-      } else {
-        resolve(score(0.0));
-      }
+    if (!session || isEmpty(session)) {
+      resolve({ score: { scaled: 0 } })
     } else {
-      resolve({ score: { scaled: -1 } });
+      session.answer = session.answer || [];
+
+      const corrected = getCorrected(
+        session.answer,
+        cloneDeep(question.correctResponse)
+      );
+
+      const correctness = getCorrectness(corrected);
+
+      if (correctness === 'correct') {
+        resolve(score(1.0));
+      } else if (correctness === 'incorrect') {
+        resolve(score(0.0));
+      } else if (correctness === 'partial') {
+        const { allowPartialScoring, partialScoring } = question;
+        const ps = (partialScoring || []).filter(o => !isEmpty(o));
+        const canDoPartialScoring = allowPartialScoring && ps.length > 0;
+        if (canDoPartialScoring) {
+          resolve(score(getPartialScore(corrected, ps)));
+        } else {
+          resolve(score(0.0));
+        }
+      } else {
+        resolve({ score: { scaled: -1 } });
+      }
     }
   });
 }

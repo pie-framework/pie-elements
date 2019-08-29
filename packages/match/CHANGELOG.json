@@ -1053,5 +1053,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.8.10"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Session null/empty check.",
+    "merge": null,
+    "header": "feat: Session null/empty check.",
+    "body": "Check for each interaction if: has outcome function, outcome function returns { score: 0, empty: true } if session null/empty/undefined, everywhere where session is used we handle if session is null/empty/undefined and test each function that uses session. [match-list, match, math-inline, multiple-choice, number-line, placement-ordering, point-intercept, select-text, text-entry]",
+    "footer": null,
+    "notes": [],
+    "hash": "f24dc8bfe6761d0c7bacf674f5ec30068bfd03d8",
+    "gitTags": "",
+    "committerDate": "2019-08-27 09:02:11 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.9.0"
   }
 ]

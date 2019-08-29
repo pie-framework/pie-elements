@@ -643,5 +643,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-choice@2.9.9"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Session null/empty check.",
+    "merge": null,
+    "header": "feat: Session null/empty check.",
+    "body": "Check for each interaction if: has outcome function, outcome function returns { score: 0, empty: true } if session null/empty/undefined, everywhere where session is used we handle if session is null/empty/undefined and test each function that uses session. [image-cloze-association, inline-choice, inline-dropdown]",
+    "footer": null,
+    "notes": [],
+    "hash": "35c2cab1f174e1ede63e9b68ae6c955d7ee12b82",
+    "gitTags": "",
+    "committerDate": "2019-08-25 15:44:31 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-choice@2.10.0"
   }
 ]

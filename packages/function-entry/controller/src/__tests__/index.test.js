@@ -1,20 +1,20 @@
-import { model } from '../index';
+import { model, outcome } from '../index';
+
+const mkQuestion = () => ({
+  equation: '3x+2',
+  feedback: {
+    correct: {
+      type: 'default'
+    },
+    incorrect: {
+      type: 'custom',
+      custom: 'foo'
+    }
+  }
+});
 
 describe('model', () => {
   let result, question, session, env;
-
-  const mkQuestion = () => ({
-    equation: '3x+2',
-    feedback: {
-      correct: {
-        type: 'default'
-      },
-      incorrect: {
-        type: 'custom',
-        custom: 'foo'
-      }
-    }
-  });
 
   describe('gather', () => {
     beforeEach(async () => {
@@ -122,4 +122,43 @@ describe('model', () => {
       expect(result.correctness).toEqual('incorrect');
     });
   });
+
+  describe('evaluate - session not defined', () => {
+    const question = mkQuestion();
+    const env = { mode: 'evaluate' };
+
+    const returnsOutput = session => {
+      it(`empty when session is ${JSON.stringify(session)}`, async () => {
+        const m = await model(question, session, env);
+        expect(m.correctness).toEqual('empty');
+      });
+    };
+
+    returnsOutput(undefined);
+    returnsOutput(null);
+    returnsOutput({});
+  });
 });
+
+describe('outcome', () => {
+  const question = mkQuestion();
+  const env = { mode: 'evaluate' };
+
+  const returnsOutput = session => {
+    it(`score: 0 when session is ${JSON.stringify(session)}`, async () => {
+      const m = await outcome(question, session, env);
+      expect(m).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  returnsOutput(undefined);
+  returnsOutput(null);
+  returnsOutput({});
+
+  it('score: 1 when session is defined', async () => {
+    const m = await outcome(question, { value: '3+3x+2-3' }, env);
+    expect(m).toEqual({ score: 1 });
+  });
+
+});
+

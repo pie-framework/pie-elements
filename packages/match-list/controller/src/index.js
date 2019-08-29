@@ -1,6 +1,6 @@
-import { partialScoring } from '@pie-lib/controller-utils';
+import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
 const lg = n => console[n].bind(console, '[match-list]');
 const log = lg('log');
@@ -41,7 +41,7 @@ const getCorrectness = (question, env, answers) => {
   }
 };
 
-const getCorrectSelected = (prompts, answers) => {
+const getCorrectSelected = (prompts = [], answers) => {
   let correctAnswers = 0;
 
   prompts.forEach(p => {
@@ -54,11 +54,11 @@ const getCorrectSelected = (prompts, answers) => {
 };
 
 const getTotalCorrect = (question) => {
-  return question.prompts.length;
+  return (question && question.prompts) ? question.prompts.length : 0;
 };
 
 const getPartialScore = (question, answers) => {
-  const count = getCorrectSelected(question.prompts, answers);
+  const count = getCorrectSelected(question && question.prompts, answers);
   const totalCorrect = getTotalCorrect(question);
 
   return parseFloat((count / totalCorrect).toFixed(2));
@@ -86,11 +86,15 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      const out = {
-        score: getOutComeScore(question, env, session.value)
-      };
+      if (!session || isEmpty(session)) {
+        resolve({ score: 0, empty: true });
+      } else {
+        const out = {
+          score: getOutComeScore(question, env, session.value)
+        };
 
-      resolve(out);
+        resolve(out);
+      }
     }
   });
 };
@@ -113,9 +117,9 @@ export function createDefaultModel(model = {}) {
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
-    const correctness = getCorrectness(question, env, session.value);
+    const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
-    const score =  `${getOutComeScore(question, env, session.value) * 100}%`;
+    const score =  `${getOutComeScore(question, env, session && session.value) * 100}%`;
     const correctInfo = {
       score,
       correctness
@@ -126,9 +130,11 @@ export function model(question, session, env, updateSession) {
       question.answers = await getShuffledChoices(question.answers, session, updateSession, 'id');
     }
 
-    question.prompts.forEach(prompt => {
-      correctResponse[prompt.id] = prompt.relatedAnswer;
-    });
+    if (question && question.prompts) {
+      question.prompts.forEach(prompt => {
+        correctResponse[prompt.id] = prompt.relatedAnswer;
+      });
+    }
 
     const fb =
       env.mode === 'evaluate'

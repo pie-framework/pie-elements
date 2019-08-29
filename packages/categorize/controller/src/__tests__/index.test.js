@@ -1,4 +1,4 @@
-import { model, outcome, getCorrectness, getScore } from '../index';
+import { model, outcome, getCorrectness, getScore, getTotalScore } from '../index';
 import { buildState, score } from '@pie-lib/categorize';
 
 const categorize = require('@pie-lib/categorize');
@@ -66,6 +66,17 @@ describe('controller', () => {
         expect(buildStateSpy).toBeCalled();
       });
 
+      const returnCorrectness = session => {
+        it(`resolves incorrect if session is ${JSON.stringify(session)}`, () => {
+          expect(getCorrectness(question, session, { mode: 'evaluate' }))
+            .resolves.toEqual('incorrect');
+        });
+      };
+
+      returnCorrectness(undefined);
+      returnCorrectness(null);
+      returnCorrectness({});
+
       it('resolves incorrect', () => {
         expect(getCorrectness(
           question,
@@ -95,7 +106,7 @@ describe('controller', () => {
 
       it('resolves partially-correct', () => {
         expect(getCorrectness(
-          question,
+          { ...question, partialScoring: true },
           {
             answers: [
               {
@@ -133,8 +144,26 @@ describe('controller', () => {
       beforeEach(() => {
         outcome(question, {}, { mode: 'evaluate' });
       });
+
       it('calls buildState ', () => {
         expect(buildStateSpy).toBeCalled();
+      });
+
+
+      const returnOutcome = session => {
+        it(`returns empty: true if session is ${JSON.stringify(session)}`, () => {
+          expect(getCorrectness(question, session, { mode: 'evaluate' }))
+            .resolves.toEqual('incorrect');
+        });
+      };
+
+      returnOutcome(undefined);
+      returnOutcome(null);
+      returnOutcome({});
+
+      it ('returns empty: false when session is defined', async () => {
+        expect(await outcome(question, { id: 1 }, { mode: 'evaluate' }))
+          .toEqual({ score: 0, empty: false });
       });
     });
   });
@@ -195,5 +224,18 @@ describe('controller', () => {
         ['0', '2']
       )).toEqual(0.75);
     });
+  });
+
+  describe('getTotalScore', () => {
+    const returnScore = session => {
+      it(`returns 0 if session is ${JSON.stringify(session)}`, () => {
+        expect(getCorrectness(question, session, { mode: 'evaluate' }))
+          .resolves.toEqual('incorrect');
+      });
+    };
+
+    returnScore(undefined);
+    returnScore(null);
+    returnScore({});
   });
 });

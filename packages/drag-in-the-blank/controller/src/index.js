@@ -1,4 +1,5 @@
 import reduce from 'lodash/reduce';
+import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses } from './utils';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
@@ -14,14 +15,15 @@ export function model(question, session, env, updateSession) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const responses = getAllCorrectResponses(question);
+      const responses = getAllCorrectResponses(question) || {};
       const allCorrectResponses = responses.possibleResponses;
       const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
       let correctResponses = undefined;
+      const { value } = session || {};
 
       for (let i = 0; i < numberOfPossibleResponses; i++) {
         const result = reduce(allCorrectResponses, (obj, choices, key) => {
-          const answer = (session.value && session.value[key]) || '';
+          const answer = (value && value[key]) || '';
 
           obj.feedback[key] = choices[i] === answer;
 
@@ -74,16 +76,17 @@ export function model(question, session, env, updateSession) {
   });
 }
 
-const getScore = (config, session) => {
+export const getScore = (config, session) => {
   const responses = getAllCorrectResponses(config);
   const allCorrectResponses = responses.possibleResponses;
   const maxScore = Object.keys(config.correctResponse).length;
   const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
   let correctCount = 0;
+  const { value } = session || {};
 
   for (let i = 0; i < numberOfPossibleResponses; i++) {
     const result = reduce(allCorrectResponses, (total, choices, key) => {
-      const answer = (session.value && session.value[key]) || '';
+      const answer = (value && value[key]) || '';
 
       if (choices[i] === answer) {
         return total;
@@ -101,7 +104,7 @@ const getScore = (config, session) => {
     }
   }
 
-  const str = (correctCount / maxScore).toFixed(2);
+  const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
 
   return parseFloat(str);
 };
@@ -123,7 +126,10 @@ export function outcome(model, session) {
     const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    resolve({
+      score: partialScoringEnabled ? score : score === 1 ? 1 : 0,
+      empty: !session || isEmpty(session)
+    });
   });
 }
 

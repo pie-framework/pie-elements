@@ -1,64 +1,64 @@
-import { model } from '../index';
+import { model, getCorrectness, outcome } from '../index';
 import { defaults as feedbackDefaults } from '@pie-lib/feedback';
 import defaultValues from '../defaults';
 
+const defaultModel = {
+  id: '1',
+  element: 'graph-lines',
+  minimumWidth: 500,
+  multiple: false,
+  partialScoring: [],
+  feedback: {
+    correct: {
+      type: 'none',
+      default: 'Correct'
+    },
+    partial: {
+      type: 'none',
+      default: 'Nearly'
+    },
+    incorrect: {
+      type: 'none',
+      default: 'Incorrect'
+    }
+  },
+  configure: defaultValues.configure,
+  graph: {
+    lines: [{
+      label: 'Line One',
+      correctLine: '3x+2',
+      initialView: '3x+3'
+    }],
+    graphTitle: '',
+    graphWidth: 500,
+    graphHeight: 500,
+    domainLabel: '',
+    domainMin: -10,
+    domainMax: 10,
+    domainStepValue: 1,
+    domainSnapValue: 1,
+    domainLabelFrequency: 1,
+    domainGraphPadding: 50,
+    rangeLabel: '',
+    rangeMin: -10,
+    rangeMax: 10,
+    rangeStepValue: 1,
+    rangeSnapValue: 1,
+    rangeLabelFrequency: 1,
+    rangeGraphPadding: 50,
+    sigfigs: -1,
+    showCoordinates: false,
+    showPointLabels: true,
+    showInputs: true,
+    showAxisLabels: true,
+    showFeedback: true
+  }
+};
+
+const mkQuestion = model => model || defaultModel;
+
 describe('model', () => {
   let result, question, session, env;
-
-  const defaultModel = {
-    id: '1',
-    element: 'graph-lines',
-    minimumWidth: 500,
-    multiple: false,
-    partialScoring: [],
-    feedback: {
-      correct: {
-        type: 'none',
-        default: 'Correct'
-      },
-      partial: {
-        type: 'none',
-        default: 'Nearly'
-      },
-      incorrect: {
-        type: 'none',
-        default: 'Incorrect'
-      }
-    },
-    configure: defaultValues.configure,
-    graph: {
-      lines: [{
-        label: 'Line One',
-        correctLine: '3x+2',
-        initialView: '3x+3'
-      }],
-      graphTitle: '',
-      graphWidth: 500,
-      graphHeight: 500,
-      domainLabel: '',
-      domainMin: -10,
-      domainMax: 10,
-      domainStepValue: 1,
-      domainSnapValue: 1,
-      domainLabelFrequency: 1,
-      domainGraphPadding: 50,
-      rangeLabel: '',
-      rangeMin: -10,
-      rangeMax: 10,
-      rangeStepValue: 1,
-      rangeSnapValue: 1,
-      rangeLabelFrequency: 1,
-      rangeGraphPadding: 50,
-      sigfigs: -1,
-      showCoordinates: false,
-      showPointLabels: true,
-      showInputs: true,
-      showAxisLabels: true,
-      showFeedback: true
-    }
-  };
-
-  const mkQuestion = model => model || defaultModel;
 
   describe('gather', () => {
     beforeEach(async () => {
@@ -404,4 +404,34 @@ describe('model', () => {
 
     });
   });
+});
+
+describe('outcome', () => {
+  const assertOutcome = session => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+      const model = mkQuestion();
+      const o = await outcome(model, session, { mode: 'evaluate '});
+
+      expect(o).toEqual({ score: 0, empty: true });
+    });
+  };
+
+  assertOutcome(undefined);
+  assertOutcome(null);
+  assertOutcome({});
+});
+
+describe('getCorrectness', () => {
+  const assertCorrectness = session => {
+    it(`returns score: 0 and correctness: unanswered if session is ${JSON.stringify(session)}`, () => {
+      const model = mkQuestion();
+
+      expect(getCorrectness(model, session, { mode: 'evaluate'}))
+        .toEqual({ score: '0%', correctness: 'unanswered' });
+    });
+  };
+
+  assertCorrectness(undefined);
+  assertCorrectness(null);
+  assertCorrectness({});
 });

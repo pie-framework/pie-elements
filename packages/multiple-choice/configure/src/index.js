@@ -15,7 +15,7 @@ import sensibleDefaults from './defaults';
 
 const log = debug('multiple-choice:configure');
 
-const generateFormattedChoices = (choices, choiceCount = 4) => {
+const generateFormattedChoices = (choices, choiceCount = 0) => {
   if (!choices || choices.length === 0) {
     let formattedChoices = [];
 
@@ -50,9 +50,9 @@ const prepareCustomizationObject = (config, model) => {
 
 export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
-    choices: generateFormattedChoices(model.choices),
     ...sensibleDefaults.model,
     ...model,
+    choices: generateFormattedChoices(model.choices),
     allowFeedback: sensibleDefaults.configuration.feedback.enabled
   });
 

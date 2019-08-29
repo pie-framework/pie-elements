@@ -159,6 +159,30 @@ describe('controller', () => {
       {},
       { score: 0.5 }
     );
+
+    assertOutcome(
+      'returns score: 0 and empty: true if session is undefined',
+      mkQuestion({ partialScoring: true }),
+      undefined,
+      { mode: 'evaluate' },
+      { score: 0, empty: true }
+    );
+
+    assertOutcome(
+      'returns score: 0 and empty: true if session is null',
+      mkQuestion({ partialScoring: false }),
+      null,
+      { mode: 'evaluate' },
+      { score: 0, empty: true }
+    );
+
+    assertOutcome(
+      'returns score: 0 and empty: true if session is {}',
+      mkQuestion({ partialScoring: true }),
+      {},
+      { mode: 'evaluate' },
+      { score: 0, empty: true }
+    );
   });
 
   describe('model', () => {
@@ -311,6 +335,20 @@ describe('controller', () => {
       assertDefault('black_on_white');
       assertDefault('white_on_black');
       assertDefault('black_on_rose');
+    });
+
+    describe('session not set', () => {
+      const assertModel = sess => {
+        it(`returns feedback unknown if session is ${JSON.stringify(sess)}`, async () => {
+          const m = await controller.model(mkQuestion(), sess, { mode: 'evaluate' });
+          expect(m).toMatchObject({
+            feedback: { type: 'unanswered', message: defaults.unanswered.default }});
+        });
+      };
+
+      assertModel(undefined);
+      assertModel(null);
+      assertModel({});
     });
   });
 });

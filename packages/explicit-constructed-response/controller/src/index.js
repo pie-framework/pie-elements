@@ -2,7 +2,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
@@ -47,8 +47,7 @@ export function model(question, session, env, updateSession) {
       question.defaultFeedback
     );
 
-    session = session || { value: {} };
-    session.value = session.value || {};
+    const { value = {} } = session || {};
 
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
@@ -65,7 +64,7 @@ export function model(question, session, env, updateSession) {
 
     if (env.mode === 'evaluate') {
       feedback = reduce(question.choices, (obj, respArea, key) => {
-        const chosenValue = session.value[key];
+        const chosenValue = value && value[key];
         const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
 
         obj[key] = getFeedback(val);
@@ -117,10 +116,16 @@ const prepareVal = html => {
   return value.trim();
 };
 
-const getScore = (config, session) => {
+export const getScore = (config, session) => {
+  const { value } = session || {};
+
+  if (!session || isEmpty(session) || !value) {
+    return 0;
+  }
+
   const maxScore = Object.keys(config.choices).length;
   const correctCount = reduce(config.choices, (total, respArea, key) => {
-    const chosenValue = session.value[key];
+    const chosenValue = value && value[key];
 
     if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
       return total - 1;
@@ -129,7 +134,7 @@ const getScore = (config, session) => {
     return total;
   }, maxScore);
 
-  const str = (correctCount / maxScore).toFixed(2);
+  const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
 
   return parseFloat(str);
 };
@@ -151,7 +156,7 @@ export function outcome(model, session) {
     const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: isEmpty(session) });
   });
 }
 

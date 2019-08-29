@@ -13,8 +13,11 @@ export const questionError = () =>
   new Error('Question is missing required array: correctResponse');
 
 export function outcome(question, session, env) {
-  session.value = session.value || [];
   return new Promise((resolve, reject) => {
+    if (!session || _.isEmpty(session)) {
+      resolve({ score: 0, empty: true });
+    }
+
     if (
       !question ||
       !question.correctResponse ||
@@ -93,10 +96,11 @@ export function model(question, session, env, updateSession) {
     }
 
     if (env.mode === 'evaluate' && question.allowFeedback) {
+      const value = (session && session.value) || [];
       const allCorrectResponses = getAllCorrectResponses(question);
 
       const bestSetOfResponses = allCorrectResponses.reduce((info, cr) => {
-        const currentScore = _.reduce(session.value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+        const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
 
         if (currentScore > info.score) {
           return {
@@ -108,7 +112,7 @@ export function model(question, session, env, updateSession) {
         return info;
       }, { arr: [], score: 0 });
 
-      base.outcomes = _.map(session.value, function(c, idx) {
+      base.outcomes = _.map(value, function(c, idx) {
         return {
           id: c,
           outcome: bestSetOfResponses.arr[idx] === c ? 'correct' : 'incorrect'
@@ -116,7 +120,7 @@ export function model(question, session, env, updateSession) {
       });
 
       const allCorrect = allCorrectResponses.reduce((correct, cr) => {
-        if (_.isEqual(cr, session.value)) {
+        if (_.isEqual(cr, value)) {
           return true;
         }
 
