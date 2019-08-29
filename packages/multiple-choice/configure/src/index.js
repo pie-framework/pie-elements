@@ -21,7 +21,7 @@ const generateFormattedChoices = (choices, choiceCount = 0) => {
 
     for (let i = 0; i < choiceCount; i++) {
       formattedChoices.push({
-        value: '',
+        value: i,
         label: '',
         feedback: {
           type: 'none',
