@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@3.0.1...@pie-element/math-inline-controller@3.1.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@3.0.0...@pie-element/math-inline-controller@3.0.1) (2019-08-26)
+
+
+### Bug Fixes
+
+* **math-inline:** text nodes should not matter in literal evaluation ([a7e574a](https://github.com/pie-framework/pie-elements/commit/a7e574a))
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.3.9...@pie-element/math-inline-controller@3.0.0) (2019-08-21)
+
+
+### Bug Fixes
+
+* Fixed Add Alternate when default alternates were defined. Send 'response' if response type is 'simple', send 'responses' if response type is 'advance multi' to ui. ([609a0d7](https://github.com/pie-framework/pie-elements/commit/609a0d7))
+* Removed unnecessary response property from the model. ([b0a0f3d](https://github.com/pie-framework/pie-elements/commit/b0a0f3d))
+
+
+### BREAKING CHANGES
+
+* `response` was removed from model, use responses instead.
+
+
+
+
+
 ## [2.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@2.3.8...@pie-element/math-inline-controller@2.3.9) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

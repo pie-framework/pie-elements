@@ -85,7 +85,7 @@ const styles = theme => ({
 Palette.propTypes = {
   classes: PropTypes.object.isRequired,
   hotspotColor: PropTypes.string.isRequired,
-  hotspotList: PropTypes.string.isRequired,
+  hotspotList: PropTypes.shape([]).isRequired,
   onHotspotColorChange: PropTypes.func.isRequired,
   onOutlineColorChange: PropTypes.func.isRequired,
   outlineColor: PropTypes.shape([]).isRequired,

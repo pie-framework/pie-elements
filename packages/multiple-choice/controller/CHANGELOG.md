@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.12...@pie-element/multiple-choice-controller@1.7.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [1.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.11...@pie-element/multiple-choice-controller@1.6.12) (2019-08-26)
+
+
+### Bug Fixes
+
+* null choices were throwing 'choices.map is not a function' error. ([54d0c8c](https://github.com/pie-framework/pie-elements/commit/54d0c8c))
+
+
+
+
+
 ## [1.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.10...@pie-element/multiple-choice-controller@1.6.11) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.6.0...@pie-element/inline-dropdown-configure@1.6.1) (2019-08-27)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.15...@pie-element/inline-dropdown-configure@1.6.0) (2019-08-26)
+
+
+### Features
+
+* **mask-markup:** made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521] ([d0a343b](https://github.com/pie-framework/pie-elements/commit/d0a343b))
+
+
+
+
+
+## [1.5.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.14...@pie-element/inline-dropdown-configure@1.5.15) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+## [1.5.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.13...@pie-element/inline-dropdown-configure@1.5.14) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [1.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.12...@pie-element/inline-dropdown-configure@1.5.13) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([31221f1](https://github.com/pie-framework/pie-elements/commit/31221f1))
+
+
+
+
+
 ## [1.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.5.11...@pie-element/inline-dropdown-configure@1.5.12) (2019-08-15)
 
 

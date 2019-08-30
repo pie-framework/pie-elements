@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.10.0...@pie-element/inline-dropdown@1.11.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([35c2cab](https://github.com/pie-framework/pie-elements/commit/35c2cab))
+
+
+
+
+
+# [1.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.17...@pie-element/inline-dropdown@1.10.0) (2019-08-26)
+
+
+### Features
+
+* **mask-markup:** made some fixes for mask markup elements: [ch1897], [ch2974], [ch2991], [ch2984], [ch2988], [ch2987], [ch2521] ([d0a343b](https://github.com/pie-framework/pie-elements/commit/d0a343b))
+
+
+
+
+
+## [1.9.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.16...@pie-element/inline-dropdown@1.9.17) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [1.9.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.15...@pie-element/inline-dropdown@1.9.16) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [1.9.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.14...@pie-element/inline-dropdown@1.9.15) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([31221f1](https://github.com/pie-framework/pie-elements/commit/31221f1))
+
+
+
+
+
 ## [1.9.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.9.13...@pie-element/inline-dropdown@1.9.14) (2019-08-15)
 
 
