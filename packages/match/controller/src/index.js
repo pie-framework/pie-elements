@@ -1,10 +1,11 @@
-import debug from 'debug';
-import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import _ from 'lodash';
+import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
+
+const lg = n => console[n].bind(console, '[match]');
+const log = lg('log');
 
 import defaults from './defaults';
-
-const log = debug('@pie-element:graph-lines:controller');
 
 const getResponseCorrectness = (
   model,
@@ -133,8 +134,15 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
+  return new Promise(async resolve => {
     let correctness, score;
 
     if ((!session || _.isEmpty(session)) && env.mode === 'evaluate') {
@@ -150,6 +158,10 @@ export function model(question, session, env) {
       score,
       correctness
     };
+
+    if (!question.lockChoiceOrder) {
+      question.rows = await getShuffledChoices(question.rows, session, updateSession, 'id');
+    }
 
     question.rows.forEach(row => {
       correctResponse[row.id] = row.values;

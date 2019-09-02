@@ -2,6 +2,8 @@ import forEach from 'lodash/forEach';
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
+
 import defaults from './defaults';
 import debug from 'debug';
 
@@ -44,23 +46,35 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-export const model = (question, session, env) =>
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export const model = (question, session, env, updateSession) =>
   new Promise(resolve => {
     
     const correctPromise = getCorrectness(question, session, env);
 
-    correctPromise.then(correctness => {
+    correctPromise.then(async correctness => {
       const fb =
         env.mode === 'evaluate' && question.allowFeedback
           ? getFeedbackForCorrectness(correctness, question.feedback)
           : Promise.resolve(undefined);
+
+      let choices = question.choices;
+      if (!question.lockChoiceOrder) {
+        choices = await getShuffledChoices(choices, session, updateSession, 'id');
+      }
 
       fb.then(feedback => {
         const out = {
           correctness,
           feedback,
           prompt: question.prompt,
-          choices: question.choices,
+          choices,
           categories: question.categories,
           disabled: env.mode !== 'gather',
           choicesPerRow: question.choicesPerRow || 2,
@@ -75,7 +89,10 @@ export const model = (question, session, env) =>
         out.correctResponse =
           env.mode === 'evaluate' ? question.correctResponse : undefined;
 
-        if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+        if (
+          env.role === 'instructor' &&
+          (env.mode === 'view' || env.mode === 'evaluate')
+        ) {
           out.rationale = question.rationale;
           out.teacherInstructions = question.teacherInstructions;
         } else {

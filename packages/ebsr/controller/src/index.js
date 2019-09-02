@@ -1,9 +1,11 @@
-import debug from 'debug';
 import shuffle from 'lodash/shuffle';
 import defaults from './defaults';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
+
 import { isResponseCorrect } from './utils';
 
-const log = debug('pie-elements:ebsr:controller');
+const lg = n => console[n].bind(console, '[ebsr]');
+const log = lg('log');
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
@@ -63,7 +65,22 @@ const parsePart = (part, key, session, env) => {
   };
 };
 
-export function model(question, session, env) {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export async function model(question, session, env, updateSession) {
+  if (!question.partA.lockChoiceOrder) {
+    question.partA.choices = await getShuffledChoices(question.partA.choices, session, updateSession, 'value');
+  }
+
+  if (!question.partB.lockChoiceOrder) {
+    question.partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
+  }
+
   return new Promise(resolve => {
     resolve({
       disabled: env.mode !== 'gather',

@@ -1,12 +1,14 @@
 import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
-import debug from 'debug';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+
 import defaults from './defaults';
 
-const log = debug('@pie-element:placement-ordering-controller');
+const lg = n => console[n].bind(console, '[placement-ordering]');
+const log = lg('log');
+
 export const questionError = () =>
   new Error('Question is missing required array: correctResponse');
 
@@ -40,68 +42,6 @@ export function outcome(question, session, env) {
   });
 }
 
-/**
- * remove any ids from the stashed shuffle that arent in choices
- * @param {*} choices
- * @param {*} shuffled
- */
-function normalize(choices, shuffled) {
-  return (
-    shuffled && shuffled.filter(s => choices.findIndex(c => c.id === s) !== -1)
-  );
-}
-
-/**
- * If there is a shuffled order stored in the session, restore it. Otherwise shuffle
- * all choices which do not have their shuffle property explicitly set to false.
- *
- * TODO: need to add a method to `model`: `saveSession: (session) => Promise<session>`
- * To allow the shuffle to be persisted.
- */
-function shuffle(session, choices) {
-  let { stash } = session || {};
-  const { shuffledOrder } = stash || {};
-
-  if (shuffledOrder && shuffledOrder.length !== choices.length && stash) {
-    delete stash.shuffledOrder;
-  }
-
-  const stashedShuffle = normalize(
-    choices,
-    stash && stash.shuffledOrder
-  );
-
-  if (stashedShuffle) {
-    return stashedShuffle.map(choiceId => {
-      return choices.find(c => c.id === choiceId);
-    });
-  } else {
-    let result = _.cloneDeep(choices);
-
-    for (var i = choices.length - 1; i >= 0; i--) {
-      if (choices[i].lockChoiceOrder === true) {
-        result.splice(i, 1);
-      }
-    }
-
-    let shuffled = _.shuffle(_.cloneDeep(result));
-
-    choices.forEach((choice, index) => {
-      if (choice.lockChoiceOrder === true) {
-        shuffled.splice(index, 0, choice);
-      }
-    });
-
-    if (!stash) {
-      stash = {};
-    }
-
-    stash.shuffledOrder = shuffled.map(({ id }) => id);
-
-    return shuffled;
-  }
-}
-
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     resolve({
@@ -111,17 +51,25 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
+  return new Promise(async resolve => {
     const base = {};
 
     base.outcomes = [];
 
     base.completeLength = (question.correctResponse || []).length;
 
-    const choices = question.lockChoiceOrder
-      ? question.choices
-      : shuffle(session, question.choices);
+    let choices = question.choices;
+    if (!question.lockChoiceOrder) {
+      choices = await getShuffledChoices(choices, session, updateSession, 'label');
+    }
 
     base.choices = choices;
 

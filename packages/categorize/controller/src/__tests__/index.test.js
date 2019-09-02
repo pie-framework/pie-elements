@@ -17,6 +17,7 @@ describe('controller', () => {
       categories: categories(),
       choices: choices(),
       correctResponse: [{ category: '1', choices: ['1', '2'] }],
+      lockChoiceOrder: true
     };
   });
 
@@ -24,6 +25,27 @@ describe('controller', () => {
     describe('mode: gather', () => {
       it('resolves undefined', () => {
         expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+      });
+    });
+
+    describe('model - with updateSession', () => {
+      it('calls updateSession', async () => {
+        const session = { id: '1', element: 'categorize-element' };
+        const env = { mode: 'gather' };
+        const updateSession = jest.fn().mockResolvedValue();
+        await model({
+            id: '1',
+            element: 'categorize-element',
+            ...question,
+            lockChoiceOrder: false,
+          },
+          session,
+          env,
+          updateSession
+        );
+        expect(updateSession).toHaveBeenCalledWith('1', 'categorize-element', {
+          shuffledValues: expect.arrayContaining(['1', '2'])
+        });
       });
     });
 

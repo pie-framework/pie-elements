@@ -1,9 +1,17 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses } from './utils';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
+  return new Promise(async resolve => {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
@@ -37,8 +45,14 @@ export function model(question, session, env) {
       }
     }
 
+    let choices = question.choices;
+    if (!question.lockChoiceOrder) {
+      choices = await getShuffledChoices(choices, session, updateSession, 'id');
+    }
+
     const out = {
       ...question,
+      choices,
       feedback,
       mode: env.mode,
       disabled: env.mode !== 'gather',
@@ -47,7 +61,10 @@ export function model(question, session, env) {
           ? getScore(question, session) === 1
           : undefined,
     };
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
       out.rationale = question.rationale;
       out.teacherInstructions = question.teacherInstructions;
     } else {

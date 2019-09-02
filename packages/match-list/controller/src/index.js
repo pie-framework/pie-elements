@@ -1,10 +1,11 @@
-import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+
+const lg = n => console[n].bind(console, '[match-list]');
+const log = lg('log');
 
 import defaults from './defaults';
-
-const log = debug('@pie-element:graph-lines:controller');
 
 const getResponseCorrectness = (
   model,
@@ -107,8 +108,15 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-export function model(question, session, env) {
-  return new Promise(resolve => {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
+  return new Promise(async resolve => {
     const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
     const score =  `${getOutComeScore(question, env, session && session.value) * 100}%`;
@@ -116,6 +124,11 @@ export function model(question, session, env) {
       score,
       correctness
     };
+
+    if (!question.lockChoiceOrder) {
+      question.prompts = await getShuffledChoices(question.prompts, session, updateSession, 'id');
+      question.answers = await getShuffledChoices(question.answers, session, updateSession, 'id');
+    }
 
     if (question && question.prompts) {
       question.prompts.forEach(prompt => {
