@@ -29,13 +29,13 @@ the height of the section
 
 the width of the section
 
-# `studentInstructions` (boolean)
+# `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
-# `teacherInstructions` (boolean)
+# `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 # `id` (string, required)
 

@@ -63,11 +63,11 @@ export interface DragInTheBlankPie extends PieModel {
     /** Indicates correct answer rationale */
     rationale: string;
 
-    /** Indicates if student instructions are enabled */
-    studentInstructions: boolean;
+    /** Indicates student instructions */
+    studentInstructions?: string;
 
-    /** Indicates if teacher instructions are enabled */
-    teacherInstructions: boolean;
+    /** Indicates teacher instructions */
+    teacherInstructions?: string;
 
     /** Indicates value for rubric */
     rubric: string;

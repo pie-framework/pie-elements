@@ -43,11 +43,11 @@ export interface ExplicitConstructedResponsePie extends PieModel {
     /** Indicates auto scoring type */
     autoScoring: 'allOrNothing' | 'partial';
 
-    /** Indicates if student instructions are enabled */
-    studentInstructions: boolean;
+    /** Indicates student instructions */
+    studentInstructions?: string;
 
-    /** Indicates if teacher instructions are enabled */
-    teacherInstructions: boolean;
+    /** Indicates teacher instructions */
+    teacherInstructions?: string;
 
     /** Indicates value for rubric */
     rubric: string;
