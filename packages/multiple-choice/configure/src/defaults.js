@@ -13,7 +13,7 @@ export default {
     scoringType: 'auto',
   },
   configuration: {
-    answerChoiceCount: 4,
+    answerChoiceCount: 0,
     addChoiceButton: {
       settings: true,
       label: 'Add a Choice',
