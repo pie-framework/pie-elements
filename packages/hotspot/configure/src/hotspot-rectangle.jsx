@@ -73,9 +73,9 @@ const styles = () => ({
 
 RectComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  correct: PropTypes.bool.isRequired,
+  correct: PropTypes.bool,
   isDrawing: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   hotspotColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -84,6 +84,10 @@ RectComponent.propTypes = {
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired
+};
+
+RectComponent.defaultProps = {
+  correct: false,
 };
 
 export default withStyles(styles)(RectComponent);
