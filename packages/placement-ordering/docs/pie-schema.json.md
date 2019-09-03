@@ -127,17 +127,17 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-# `studentInstructions` (boolean)
+# `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
 # `targetLabel` (string)
 
 The label for answer area if placement area is enabled
 
-# `teacherInstructions` (boolean)
+# `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 # `id` (string, required)
 

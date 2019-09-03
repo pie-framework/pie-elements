@@ -90,6 +90,26 @@ describe('model', () => {
       result = await model(question, session, env);
     });
 
+    describe('model - with updateSession', () => {
+      it('calls updateSession', async () => {
+        session = { id: '1', element: 'match-element' };
+        env = { mode: 'gather' };
+        const updateSession = jest.fn().mockResolvedValue();
+        await model(
+          {
+            ...question,
+            lockChoiceOrder: false
+          },
+          session,
+          env,
+          updateSession
+        );
+        expect(updateSession).toHaveBeenCalledWith('1', 'match-element', {
+          shuffledValues: expect.arrayContaining([1, 2, 3, 4])
+        });
+      });
+    });
+
     it('returns disabled:true', () => {
       expect(result.disabled).toEqual(true);
     });

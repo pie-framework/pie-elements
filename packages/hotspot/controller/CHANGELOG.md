@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.3.10...@pie-element/hotspot-controller@1.4.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
+## [1.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.3.9...@pie-element/hotspot-controller@1.3.10) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
+## [1.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.3.8...@pie-element/hotspot-controller@1.3.9) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
 ## [1.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.3.7...@pie-element/hotspot-controller@1.3.8) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/hotspot-controller

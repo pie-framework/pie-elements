@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.10...@pie-element/function-entry@3.9.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
+## [3.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.9...@pie-element/function-entry@3.8.10) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
+## [3.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.8...@pie-element/function-entry@3.8.9) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
+## [3.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.7...@pie-element/function-entry@3.8.8) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [3.8.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.6...@pie-element/function-entry@3.8.7) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+
+
+
+
+
 ## [3.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.8.5...@pie-element/function-entry@3.8.6) (2019-08-15)
 
 

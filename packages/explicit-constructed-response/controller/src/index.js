@@ -2,11 +2,12 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
-    id: choice.id
+    value: choice.value
   };
 
   if (mode === 'evaluate') {
@@ -32,7 +33,14 @@ const getFeedback = value => {
   return 'incorrect';
 };
 
-export function model(question, session, env) {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
   return new Promise(resolve => {
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
@@ -63,6 +71,12 @@ export function model(question, session, env) {
 
         return obj;
       }, {});
+    }
+
+    if (!question.lockChoiceOrder) {
+      Object.keys(choices).forEach(async key => {
+        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
+      });
     }
 
     const out = {

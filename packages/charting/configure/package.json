@@ -1,16 +1,16 @@
 {
   "name": "@pie-element/charting-configure",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "",
   "main": "lib/index.js",
   "author": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
+    "@pie-lib/charting": "^4.2.3",
     "@pie-lib/config-ui": "^10.7.32",
     "@pie-lib/editable-html": "^7.10.23",
-    "@pie-lib/charting": "^4.2.3",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",

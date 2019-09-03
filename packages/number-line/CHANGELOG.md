@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.13...@pie-element/number-line@5.6.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [5.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.12...@pie-element/number-line@5.5.13) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.11...@pie-element/number-line@5.5.12) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.10...@pie-element/number-line@5.5.11) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [5.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.9...@pie-element/number-line@5.5.10) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([279a32a](https://github.com/pie-framework/pie-elements/commit/279a32a))
+
+
+
+
+
 ## [5.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.8...@pie-element/number-line@5.5.9) (2019-08-15)
 
 

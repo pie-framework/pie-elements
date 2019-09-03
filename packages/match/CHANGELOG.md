@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.12...@pie-element/match@2.9.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [2.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.11...@pie-element/match@2.8.12) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.10...@pie-element/match@2.8.11) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [2.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.9...@pie-element/match@2.8.10) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [2.8.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.8...@pie-element/match@2.8.9) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([6072224](https://github.com/pie-framework/pie-elements/commit/6072224))
+
+
+
+
+
 ## [2.8.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.7...@pie-element/match@2.8.8) (2019-08-15)
 
 

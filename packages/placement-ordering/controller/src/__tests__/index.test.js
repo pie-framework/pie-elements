@@ -156,43 +156,20 @@ describe('index', () => {
 
     });
 
-    describe('lockChoiceOrder', () => {
-      let model = {
-        correctResponse: ['a', 'b'],
-        prompt: 'this is a prompt',
-        choices: [
-          { label: 'one', id: '1', lockChoiceOrder: true },
-          { label: 'two', id: '2' },
-          { label: 'three', id: '3' }
-        ],
-        lockChoiceOrder: false
-      };
-
-      let session = {};
-      let env = {};
-
-      it('does not shuffle choice marked "lockChoiceOrder": false', () =>
-        controller.model(model, session, env).then(result => {
-          expect(result.choices[0]).toEqual({
-            label: 'one',
-            id: '1',
-            lockChoiceOrder: true
-          });
-        }));
-
-      it('shuffles choices not marked "lockChoiceOrder": false', () =>
-        controller.model(model, session, env).then(result => {
-          expect(result.choices[1]).not.toEqual({
-            label: 'one',
-            id: '1',
-            lockChoiceOrder: true
-          });
-          expect(result.choices[2]).not.toEqual({
-            label: 'one',
-            id: '1',
-            lockChoiceOrder: true
-          });
-        }));
+    describe('model - with updateSession', () => {
+      it('calls updateSession', async () => {
+        const session = { id: '1', element: 'placement-ordering' };
+        const env = { mode: 'gather' };
+        const question = base({
+          choices: [{ label: 'a', id: 'a' }, { label: 'b', id: 'b' }, { label: 'c', id: 'c' }],
+          lockChoiceOrder: false
+        });
+        const updateSession = jest.fn().mockResolvedValue();
+        await controller.model(question, session, env, updateSession);
+        expect(updateSession).toHaveBeenCalledWith('1', 'placement-ordering', {
+          shuffledValues: expect.arrayContaining(['a', 'b', 'c'])
+        });
+      });
     });
 
     describe('session not set', () => {

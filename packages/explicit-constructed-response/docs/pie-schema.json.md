@@ -31,13 +31,13 @@ This element must be one of the following enum values:
 * `allOrNothing`
 * `partial`
 
-# `studentInstructions` (boolean, required)
+# `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
-# `teacherInstructions` (boolean, required)
+# `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 # `rubric` (string, required)
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.10...@pie-element/match-controller@2.3.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [2.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.9...@pie-element/match-controller@2.2.10) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/match-controller
+
+
+
+
+
 ## [2.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.8...@pie-element/match-controller@2.2.9) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/match-controller

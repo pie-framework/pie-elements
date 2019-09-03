@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.13...@pie-element/graphing-configure@1.2.14) (2019-08-27)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.12...@pie-element/graphing-configure@1.2.13) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.11...@pie-element/graphing-configure@1.2.12) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [1.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.10...@pie-element/graphing-configure@1.2.11) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [1.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.9...@pie-element/graphing-configure@1.2.10) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([4c6d95d](https://github.com/pie-framework/pie-elements/commit/4c6d95d))
+
+
+
+
+
 ## [1.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.8...@pie-element/graphing-configure@1.2.9) (2019-08-15)
 
 

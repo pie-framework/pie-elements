@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.1.12...@pie-element/placement-ordering-controller@4.2.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [4.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.1.11...@pie-element/placement-ordering-controller@4.1.12) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-controller
+
+
+
+
+
 ## [4.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.1.10...@pie-element/placement-ordering-controller@4.1.11) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

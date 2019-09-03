@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@3.0.1...@pie-element/math-inline-configure@3.0.2) (2019-08-27)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@3.0.0...@pie-element/math-inline-configure@3.0.1) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.6.3...@pie-element/math-inline-configure@3.0.0) (2019-08-21)
+
+
+### Bug Fixes
+
+* Fixed Add Alternate when default alternates were defined. Send 'response' if response type is 'simple', send 'responses' if response type is 'advance multi' to ui. ([609a0d7](https://github.com/pie-framework/pie-elements/commit/609a0d7))
+* Removed unnecessary response property from the model. ([b0a0f3d](https://github.com/pie-framework/pie-elements/commit/b0a0f3d))
+
+
+### BREAKING CHANGES
+
+* `response` was removed from model, use responses instead.
+
+
+
+
+
+## [2.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.6.2...@pie-element/math-inline-configure@2.6.3) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [2.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.6.1...@pie-element/math-inline-configure@2.6.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([3cdd889](https://github.com/pie-framework/pie-elements/commit/3cdd889))
+
+
+
+
+
 ## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@2.6.0...@pie-element/math-inline-configure@2.6.1) (2019-08-15)
 
 

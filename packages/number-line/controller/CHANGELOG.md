@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.7...@pie-element/number-line-controller@4.2.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [4.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.6...@pie-element/number-line-controller@4.1.7) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/number-line-controller
+
+
+
+
+
+## [4.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.5...@pie-element/number-line-controller@4.1.6) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/number-line-controller
+
+
+
+
+
+## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.4...@pie-element/number-line-controller@4.1.5) (2019-08-18)
+
+**Note:** Version bump only for package @pie-element/number-line-controller
+
+
+
+
+
 ## [4.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.1.3...@pie-element/number-line-controller@4.1.4) (2019-08-15)
 
 

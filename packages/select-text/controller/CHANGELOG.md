@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.12...@pie-element/select-text-controller@2.6.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check. ([f24dc8b](https://github.com/pie-framework/pie-elements/commit/f24dc8b))
+
+
+
+
+
+## [2.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.11...@pie-element/select-text-controller@2.5.12) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
 ## [2.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.10...@pie-element/select-text-controller@2.5.11) (2019-08-15)
 
 **Note:** Version bump only for package @pie-element/select-text-controller

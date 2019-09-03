@@ -36,11 +36,11 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates scoring type */
   scoringType?: 'auto' | 'rubric';
 
-  /** Indicates if student instructions are enabled */
-  studentInstructions?: boolean;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-  /** Indicates if teacher instructions are enabled */
-  teacherInstructions?: boolean;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 }
 
 

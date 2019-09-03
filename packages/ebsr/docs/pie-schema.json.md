@@ -64,13 +64,13 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-## `studentInstructions` (boolean)
+## `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
-## `teacherInstructions` (boolean)
+## `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 # `partB` (object, required)
 
@@ -131,13 +131,13 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-## `studentInstructions` (boolean)
+## `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
-## `teacherInstructions` (boolean)
+## `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 # `id` (string, required)
 
@@ -228,13 +228,13 @@ This element must be one of the following enum values:
 * `auto`
 * `rubric`
 
-### `studentInstructions` (boolean)
+### `studentInstructions` (string)
 
-Indicates if student instructions are enabled
+Indicates student instructions
 
-### `teacherInstructions` (boolean)
+### `teacherInstructions` (string)
 
-Indicates if teacher instructions are enabled
+Indicates teacher instructions
 
 ## `Choice` (object)
 

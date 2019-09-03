@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.5...@pie-element/hotspot@2.9.0) (2019-08-27)
+
+
+### Features
+
+* Session null/empty check ([0538211](https://github.com/pie-framework/pie-elements/commit/0538211))
+
+
+
+
+
+## [2.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.4...@pie-element/hotspot@2.8.5) (2019-08-26)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [2.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.3...@pie-element/hotspot@2.8.4) (2019-08-21)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [2.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.2...@pie-element/hotspot@2.8.3) (2019-08-21)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages for math rendering and for editable-html [ch3365], [ch1530] ([33e3287](https://github.com/pie-framework/pie-elements/commit/33e3287))
+
+
+
+
+
+## [2.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.1...@pie-element/hotspot@2.8.2) (2019-08-18)
+
+
+### Bug Fixes
+
+* **math-rendering:** updated all dependent packages [ch3365] ([7cbf25a](https://github.com/pie-framework/pie-elements/commit/7cbf25a))
+* set default values to configuration properties ([b5f84bb](https://github.com/pie-framework/pie-elements/commit/b5f84bb))
+
+
+
+
+
 ## [2.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.0...@pie-element/hotspot@2.8.1) (2019-08-15)
 
 

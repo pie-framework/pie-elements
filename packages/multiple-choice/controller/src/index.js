@@ -1,16 +1,8 @@
 /* eslint-disable no-console */
-import shuffle from 'lodash/shuffle';
 import isEmpty from 'lodash/isEmpty';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
-import { partialScoring } from '@pie-lib/controller-utils';
-import compact from 'lodash/compact';
-
-const lg = n => console[n].bind(console, '[multiple-choice]');
-const debug = lg('debug');
-const log = lg('log');
-const warn = lg('warn');
-const error = lg('error');
+import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
@@ -51,37 +43,6 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-const getShuffledChoices = async (choices, session, updateSession) => {
-  log('updateSession type: ', typeof updateSession);
-  log('session: ', session);
-  if (session && session.shuffledValues) {
-    debug('use shuffledValues to sort the choices...', session.shuffledValues);
-
-    return compact(
-      session.shuffledValues.map(v => choices.find(c => c.value === v))
-    );
-  } else {
-    const shuffledChoices = shuffle(choices);
-
-    if (updateSession && typeof updateSession === 'function') {
-      try {
-        //Note: session.id refers to the id of the element within a session
-        const shuffledValues = shuffledChoices.map(c => c.value);
-        log('try to save shuffledValues to session...', shuffledValues);
-        console.log('call updateSession... ', session.id, session.element);
-        await updateSession(session.id, session.element, { shuffledValues });
-      } catch (e) {
-        warn('unable to save shuffled order for choices');
-        error(e);
-      }
-    } else {
-      warn('unable to save shuffled choices, shuffle will happen every time.');
-    }
-    //save this shuffle to the session for later retrieval
-    return shuffledChoices;
-  }
-};
-
 /**
  *
  * @param {*} question
@@ -94,16 +55,13 @@ export async function model(question, session, env, updateSession) {
     { correct: 'Correct', incorrect: 'Incorrect' },
     question.defaultFeedback
   );
-  let choices = [];
 
-  if (question.choices) {
-    choices = question.choices.map(
-      prepareChoice(question, env, defaultFeedback)
-    );
-  }
+  let choices = question.choices.map(
+    prepareChoice(question, env, defaultFeedback)
+  );
 
   if (!question.lockChoiceOrder) {
-    choices = await getShuffledChoices(choices, session, updateSession);
+    choices = await getShuffledChoices(choices, session, updateSession, 'value');
   }
 
   const out = {

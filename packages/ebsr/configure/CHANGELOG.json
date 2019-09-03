@@ -674,7 +674,7 @@
     "footer": null,
     "notes": [],
     "hash": "b4e915c439c2b417be904a5ab0f7fb681d4c2c99",
-    "gitTags": "",
+    "gitTags": " (origin/develop, origin/HEAD)",
     "committerDate": "2019-08-21 10:15:41 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@2.5.7"

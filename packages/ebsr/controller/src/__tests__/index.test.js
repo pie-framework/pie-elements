@@ -197,6 +197,21 @@ describe('controller', () => {
       doesNotReturnCorrect(PART_B);
     });
 
+    describe('model - with updateSession', () => {
+      it('calls updateSession', async () => {
+        session = { id: '1', element: 'ebsr-element' };
+        env = { mode: 'gather' };
+        const updateSession = jest.fn().mockResolvedValue();
+        await model(question, session, env, updateSession);
+        expect(updateSession).toHaveBeenCalledWith('1', 'ebsr-element', {
+          shuffledValues: expect.arrayContaining(
+            ['yellow', 'green'],
+            ['orange', 'purple']
+          )
+        });
+      });
+    });
+
     describe('mode: view', () => {
       beforeEach(async () => {
         session = {};

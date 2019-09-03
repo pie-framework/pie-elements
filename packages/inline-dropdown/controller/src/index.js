@@ -2,6 +2,7 @@ import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
+import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -20,10 +21,16 @@ const getFeedback = correct => {
   return 'incorrect';
 };
 
-export function model(question, session, env) {
+/**
+ *
+ * @param {*} question
+ * @param {*} session
+ * @param {*} env
+ * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
+ */
+export function model(question, session, env, updateSession) {
   const { value = {} } = session || {};
-
-  return new Promise(resolve => {
+  return new Promise(async resolve => {
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
       question.defaultFeedback
@@ -78,17 +85,9 @@ export function model(question, session, env) {
     }
 
     if (!question.lockChoiceOrder) {
-      // TODO shuffling the model every time is bad, it should be stored in the session. see: https://app.clubhouse.io/keydatasystems/story/131/config-ui-support-shuffle-choices';
-
-      choices = reduce(
-        question.choices,
-        (obj, area, key) => {
-          obj[key] = shuffle(area);
-
-          return obj;
-        },
-        {}
-      );
+      Object.keys(choices).forEach(async key => {
+        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
+      });
     }
 
     let teacherInstructions = null;
