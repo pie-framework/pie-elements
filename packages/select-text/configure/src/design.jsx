@@ -164,6 +164,8 @@ export class Design extends React.Component {
             onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Settings': {
+                partialScoring: partialScoring.settings &&
+                toggle(partialScoring.label),
                 highlightChoices: highlightChoices.settings &&
                 toggle(highlightChoices.label),
                 'feedback.enabled': feedback.settings &&
@@ -277,15 +279,6 @@ export class Design extends React.Component {
             />
           }
 
-          {
-            partialScoring.settings &&
-            <PartialScoring
-              title={'Scoring'}
-              label={partialScoring.label}
-              partialScoring={model.partialScoring}
-              onChange={this.changePartialScoring}
-            />
-          }
           {
             feedback.enabled && (
               <FeedbackConfig
