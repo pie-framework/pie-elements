@@ -85,11 +85,11 @@ const styles = theme => ({
 Palette.propTypes = {
   classes: PropTypes.object.isRequired,
   hotspotColor: PropTypes.string.isRequired,
-  hotspotList: PropTypes.shape([]).isRequired,
+  hotspotList: PropTypes.array.isRequired,
   onHotspotColorChange: PropTypes.func.isRequired,
   onOutlineColorChange: PropTypes.func.isRequired,
-  outlineColor: PropTypes.shape([]).isRequired,
-  outlineList: PropTypes.shape([]).isRequired
+  outlineColor: PropTypes.string.isRequired,
+  outlineList: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Palette);

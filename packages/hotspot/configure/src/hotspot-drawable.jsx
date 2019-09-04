@@ -281,7 +281,7 @@ Drawable.propTypes = {
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  shapes: PropTypes.shape([]).isRequired
+  shapes: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Drawable);
