@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.11.0...@pie-element/inline-dropdown@1.12.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([e3b3dd1](https://github.com/pie-framework/pie-elements/commit/e3b3dd1))
+
+
+
+
+
 # [1.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@1.10.0...@pie-element/inline-dropdown@1.11.0) (2019-08-27)
 
 

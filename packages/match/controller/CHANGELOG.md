@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.3.0...@pie-element/match-controller@2.4.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([1be1876](https://github.com/pie-framework/pie-elements/commit/1be1876))
+
+
+
+
+
 # [2.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@2.2.10...@pie-element/match-controller@2.3.0) (2019-08-27)
 
 

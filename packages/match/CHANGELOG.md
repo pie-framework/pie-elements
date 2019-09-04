@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.9.0...@pie-element/match@2.10.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([1be1876](https://github.com/pie-framework/pie-elements/commit/1be1876))
+
+
+
+
+
 # [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@2.8.12...@pie-element/match@2.9.0) (2019-08-27)
 
 

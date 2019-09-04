@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.2.0...@pie-element/categorize-controller@3.3.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([0529485](https://github.com/pie-framework/pie-elements/commit/0529485))
+
+
+
+
+
 # [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@3.1.10...@pie-element/categorize-controller@3.2.0) (2019-08-27)
 
 

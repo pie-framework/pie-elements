@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.7.0...@pie-element/multiple-choice-controller@1.8.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([c82de88](https://github.com/pie-framework/pie-elements/commit/c82de88))
+
+
+
+
+
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.6.12...@pie-element/multiple-choice-controller@1.7.0) (2019-08-27)
 
 

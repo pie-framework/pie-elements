@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.2.0...@pie-element/match-list-controller@1.3.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([afe14dd](https://github.com/pie-framework/pie-elements/commit/afe14dd))
+
+
+
+
+
 # [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.1.7...@pie-element/match-list-controller@1.2.0) (2019-08-27)
 
 

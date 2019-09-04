@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.4.0...@pie-element/ebsr-controller@1.5.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([764c50f](https://github.com/pie-framework/pie-elements/commit/764c50f))
+
+
+
+
+
 # [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@1.3.7...@pie-element/ebsr-controller@1.4.0) (2019-08-27)
 
 

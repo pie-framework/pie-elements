@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.7.0...@pie-element/ebsr@2.8.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([764c50f](https://github.com/pie-framework/pie-elements/commit/764c50f))
+
+
+
+
+
 # [2.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.6.9...@pie-element/ebsr@2.7.0) (2019-08-27)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.9.0...@pie-element/hotspot@2.9.1) (2019-09-04)
+
+
+### Bug Fixes
+
+* **hotspot:** hotspotList prop type is array, not string ([#315](https://github.com/pie-framework/pie-elements/issues/315)) ([4280a99](https://github.com/pie-framework/pie-elements/commit/4280a99))
+
+
+
+
+
 # [2.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@2.8.5...@pie-element/hotspot@2.9.0) (2019-08-27)
 
 
