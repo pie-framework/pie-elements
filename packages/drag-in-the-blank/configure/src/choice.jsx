@@ -84,11 +84,6 @@ const tileSource = {
       value: props.choice,
       instanceId: props.instanceId
     };
-  },
-  endDrag(props, monitor) {
-    if (monitor.didDrop()) {
-      props.onChoiceDropped();
-    }
   }
 };
 
