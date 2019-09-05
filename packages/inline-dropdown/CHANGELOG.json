@@ -643,5 +643,35 @@
     "committerDate": "2019-08-25 15:44:31 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@1.11.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-lib/controller-utils",
+    "merge": null,
+    "header": "fix: bump pie-lib/controller-utils",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ba3de006afa1ddaa582a531779be766c9715f64c",
+    "gitTags": "",
+    "committerDate": "2019-08-30 23:15:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.12.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "make use of updateSession callback",
+    "merge": null,
+    "header": "feat: make use of updateSession callback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e3b3dd1e147571343c64a87ddb1be3f70c475284",
+    "gitTags": "",
+    "committerDate": "2019-08-26 16:52:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@1.12.0"
   }
 ]

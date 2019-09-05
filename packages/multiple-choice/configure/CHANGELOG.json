@@ -1158,5 +1158,20 @@
     "committerDate": "2019-08-21 13:55:48 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@1.5.12"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "prevent value=''",
+    "merge": null,
+    "header": "fix: prevent value=''",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "754372bee7be062723b308bfaa9ca89f4fd7ca6e",
+    "gitTags": "",
+    "committerDate": "2019-08-29 18:00:00 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.5.14"
   }
 ]
