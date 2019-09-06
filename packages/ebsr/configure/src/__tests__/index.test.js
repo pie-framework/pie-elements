@@ -84,6 +84,7 @@ describe('index', () => {
   beforeEach(() => {
     el = new Def();
     el.connectedCallback();
+    el.populatePart = jest.fn();
     ebsr = {
       partA: new HTMLElement(),
       partB: new HTMLElement()

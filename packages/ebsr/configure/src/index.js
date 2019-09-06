@@ -51,15 +51,15 @@ export default class EbsrConfigure extends HTMLElement {
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
-  populatePart(newConfig, id) {
+  populatePart(config, id) {
     const isFirst= id === 'a';
     const labelEl = document.getElementById(`${isFirst ? 'first' : 'second'}_label_config`);
     let labelVal;
 
-    if (newConfig.partLabels && !newConfig.partLabels.enabled) {
+    if (config.partLabels && !config.partLabels.enabled) {
       labelVal = ''
     } else {
-      const type = newConfig.partLabelType || 'Numbers';
+      const type = config.partLabelType || 'Numbers';
       const typeIsNumber = type === 'Numbers';
 
       if (isFirst) {
