@@ -51,6 +51,30 @@ export default class EbsrConfigure extends HTMLElement {
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
+  populatePart(newConfig, id) {
+    const isFirst= id === 'a';
+    const labelEl = document.getElementById(`${isFirst ? 'first' : 'second'}_label_config`);
+    let labelVal;
+
+    if (newConfig.partLabels && !newConfig.partLabels.enabled) {
+      labelVal = ''
+    } else {
+      const type = newConfig.partLabelType || 'Numbers';
+      const typeIsNumber = type === 'Numbers';
+
+      if (isFirst) {
+        labelVal = `Part ${typeIsNumber ? '1' : 'A'}`;
+      } else {
+        labelVal = `Part ${typeIsNumber ? '2' : 'B'}`;
+      }
+    }
+    if (this._model) {
+      this._model[`part${id.toUpperCase()}`].partLabel = labelVal;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+    }
+    labelEl.innerHTML = labelVal;
+  }
+
   onModelUpdated = e => {
     if (e.target === this) {
       return;
@@ -65,10 +89,12 @@ export default class EbsrConfigure extends HTMLElement {
   };
 
   onConfigurationChanged(c, part) {
+    const isPartA = part === 'partA';
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
+    this.populatePart(c, isPartA ? 'a' : 'b');
     this[part].configuration = {
       ...this._configuration,
-      ...part === 'partA' ? { ...partADesignConfiguration } : {},
+      ...isPartA === 'partA' ? { ...partADesignConfiguration } : {},
     };
 
     if (this._model) {
@@ -96,6 +122,7 @@ export default class EbsrConfigure extends HTMLElement {
           ...cloneDeep(this._configuration),
           ...partADesignConfiguration
         };
+        this.populatePart(this.partA._configuration, 'a');
       }
 
       if (this.partB) {
@@ -103,6 +130,7 @@ export default class EbsrConfigure extends HTMLElement {
         this.partB.configuration = {
           ...cloneDeep(this._configuration)
         };
+        this.populatePart(this.partB._configuration, 'b');
       }
     });
   }
@@ -146,7 +174,9 @@ export default class EbsrConfigure extends HTMLElement {
   _render() {
     this.innerHTML = `
       <div>
+        <p id="first_label_config"></p>
         <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
+        <p id="second_label_config"></p>
         <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
       </div>
     `;

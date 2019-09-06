@@ -53,7 +53,7 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
-      enabled: false,
+      enabled: true,
     },
     scoringType: {
       settings: false,
@@ -74,10 +74,11 @@ export default {
       label: 'Sequential Choice Labels',
       enabled: false
     },
+    partLabelType: 'Letters',
     partLabels: {
-      settings: false,
+      settings: true,
       label: 'Part Labels',
-      enabled: false
+      enabled: true
     }
   }
 };
