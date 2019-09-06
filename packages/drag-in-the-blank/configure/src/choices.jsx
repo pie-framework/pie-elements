@@ -6,6 +6,7 @@ import { renderMath } from '@pie-lib/math-rendering';
 import find from 'lodash/find';
 import Button from '@material-ui/core/Button';
 import Choice from './choice';
+import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
 
 window.renMath = renderMath;
@@ -49,7 +50,7 @@ export class Choices extends React.Component {
 
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
-    const { choices } = model;
+    const { choices, correctResponse, alternateResponses } = model;
     const newChoices = choices.map(c => {
       if (c.id === key) {
         return { ...c, value: val };
@@ -58,7 +59,31 @@ export class Choices extends React.Component {
       return c;
     });
 
-    onChange(newChoices);
+    if (choiceIsEmpty({ value: val })) {
+      let usedForResponse = false;
+
+      Object.keys(correctResponse).forEach(responseKey => {
+        if (correctResponse[responseKey] === key) {
+          usedForResponse = true;
+        }
+      });
+
+      Object.values(alternateResponses).forEach(alternate => {
+        if (alternate.indexOf(key) >= 0) {
+          usedForResponse = true;
+        }
+      });
+
+      if (usedForResponse) {
+        alert('Answer choices cannot be blank.');
+      } else {
+        const newChoicesWithoutTheEmptyOne = newChoices.filter(choice => !choiceIsEmpty(choice));
+
+        onChange(newChoicesWithoutTheEmptyOne);
+      }
+    } else {
+      onChange(newChoices);
+    }
   };
 
   onChoiceFocus = id => this.setState({
@@ -68,14 +93,18 @@ export class Choices extends React.Component {
   onAddChoice = () => {
     const { model: { choices: oldChoices }, onChange } = this.props;
 
-    onChange([
-        ...oldChoices,
-        {
-          id: `${oldChoices.length}`,
-          value: ''
-        }
-      ]
-    );
+    this.setState({
+      focusedEl: `${oldChoices.length}`
+    }, () => {
+      onChange([
+          ...oldChoices,
+          {
+            id: `${oldChoices.length}`,
+            value: ''
+          }
+        ]
+      );
+    });
   };
 
   handleChoiceRemove = id => {

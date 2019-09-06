@@ -61,3 +61,5 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
     return `<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${escape(correctChoice.value)}"></span>`;
   });
 };
+
+export const choiceIsEmpty = choice => choice && choice.value && (choice.value.trim() === '' || choice.value.replace(/<[^>]*>?/gm, '') === '');

@@ -25,3 +25,5 @@ export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) 
     numberOfPossibleResponses: undefined
   });
 };
+
+export const choiceIsEmpty = choice => choice && choice.value && (choice.value.trim() === '' || choice.value.replace(/<[^>]*>?/gm, '') === '');
