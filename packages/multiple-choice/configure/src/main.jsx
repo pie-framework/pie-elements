@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -95,6 +95,8 @@ const Design = withStyles(styles)(props => {
               'Settings': {
                 'partLabels.enabled': partLabels.settings &&
                   toggle(partLabels.label, true),
+                partLabelType: partLabels.enabled &&
+                  dropdown('', ['Numbers', 'Letters'], true),
                 choiceMode:
                   choiceMode.settings &&
                   radio(choiceMode.label, ['checkbox', 'radio']),
