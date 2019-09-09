@@ -1,6 +1,8 @@
 import escape from 'lodash/escape';
 import isUndefined from 'lodash/isUndefined';
 
+const replaceHtmlRegex = /<[^>]*>?/gm;
+
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
@@ -66,7 +68,7 @@ export const choiceIsEmpty = choice => {
   if (choice) {
     const { value = '' } = choice;
 
-    return value.trim() === '' || value.replace(/<[^>]*>?/gm, '') === '';
+    return value.trim() === '' || value.replace(replaceHtmlRegex, '') === '';
   }
 
   return false;
