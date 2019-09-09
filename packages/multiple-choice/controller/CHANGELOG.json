@@ -313,5 +313,35 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@1.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-lib/controller-utils",
+    "merge": null,
+    "header": "fix: bump pie-lib/controller-utils",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ba3de006afa1ddaa582a531779be766c9715f64c",
+    "gitTags": "",
+    "committerDate": "2019-08-30 23:15:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@1.8.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "make use of updateSession callback",
+    "merge": null,
+    "header": "feat: make use of updateSession callback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c82de8804012bf1755430187426685d6c3eda329",
+    "gitTags": "",
+    "committerDate": "2019-08-22 15:54:34 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@1.8.0"
   }
 ]

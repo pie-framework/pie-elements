@@ -78,6 +78,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "Settings": Object {
             "feedback.enabled": false,
             "highlightChoices": undefined,
+            "partialScoring": undefined,
           },
         }
       }
@@ -128,11 +129,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
       max={0}
       min={0}
       onChange={[Function]}
-    />
-    <Component
-      label="Allow Partial Scoring"
-      onChange={[Function]}
-      title="Scoring"
     />
     <Component
       onChange={[Function]}
@@ -219,6 +215,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "Settings": Object {
             "feedback.enabled": false,
             "highlightChoices": undefined,
+            "partialScoring": undefined,
           },
         }
       }
@@ -261,11 +258,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
       max={0}
       min={0}
       onChange={[Function]}
-    />
-    <Component
-      label="Allow Partial Scoring"
-      onChange={[Function]}
-      title="Scoring"
     />
     <Component
       onChange={[Function]}
@@ -352,6 +344,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "Settings": Object {
             "feedback.enabled": undefined,
             "highlightChoices": undefined,
+            "partialScoring": undefined,
           },
         }
       }
@@ -402,11 +395,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       max={0}
       min={0}
       onChange={[Function]}
-    />
-    <Component
-      label="Allow Partial Scoring"
-      onChange={[Function]}
-      title="Scoring"
     />
     <Component
       onChange={[Function]}
