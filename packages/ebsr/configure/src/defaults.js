@@ -1,21 +1,16 @@
 export default {
-  partA: {
-    choices: [
-      {
-        value: 'a',
-        label: 'label a',
-      }
-    ],
-    prompt: 'prompt a'
-  },
-  partB: {
-    choices: [
-      {
-        value: 'b',
-        label: 'label b',
-      },
-    ],
-    prompt: 'prompt b'
+  model: {
+    partLabelType: 'Letters',
+    partA: {
+      choices: [],
+      prompt: 'Prompt A',
+      choicePrefix: 'numbers'
+    },
+    partB: {
+      choices: [],
+      prompt: 'Prompt B',
+      choicePrefix: 'numbers'
+    },
   },
   configuration: {
     addChoiceButton: {
@@ -79,6 +74,7 @@ export default {
       settings: true,
       label: 'Part Labels',
       enabled: true
-    }
+    },
+    settingsPanelDisabled: true
   }
 };

@@ -80,132 +80,142 @@ const Design = withStyles(styles)(props => {
     scoringType = {},
     sequentialChoiceLabels = {},
     partLabels = {},
+    settingsPanelDisabled
   } = configuration || {};
+
+  const Content = (
+    <div>
+      {teacherInstructions.enabled && (
+        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.teacherInstructions || ''}
+            onChange={onTeacherInstructionsChanged}
+            imageSupport={imageSupport}
+            nonEmpty={false}
+          />
+        </InputContainer>
+      )}
+
+      {prompt.settings && (
+        <InputContainer
+          label={prompt.label}
+          className={classes.promptHolder}
+        >
+          <EditableHtml
+            className={classes.prompt}
+            markup={model.prompt}
+            onChange={onPromptChanged}
+            imageSupport={imageSupport}
+            nonEmpty={!prompt.settings}
+            disableUnderline
+          />
+        </InputContainer>
+      )}
+      {model.choices.map((choice, index) => (
+        <div
+          key={`choice-${index}`}
+          className={classes.choiceConfigurationHolder}
+        >
+          <ChoiceConfiguration
+            key={index}
+            index={index + 1}
+            useLetterOrdering={model.choicePrefix === 'letters'}
+            className={classes.choiceConfiguration}
+            mode={model.choiceMode}
+            data={choice}
+            defaultFeedback={{}}
+            imageSupport={imageSupport}
+            onDelete={() => onRemoveChoice(index)}
+            onChange={c => onChoiceChanged(index, c)}
+            allowFeedBack={feedback.enabled}
+            allowDelete={deleteChoice.settings}
+            noLabels
+          />
+          {rationale.enabled && (
+            <InputContainer
+              key={`rationale-${index}`}
+              label={rationale.label}
+              className={classes.rationaleHolder}
+            >
+              <EditableHtml
+                className={classes.rationale}
+                markup={choice.rationale || ''}
+                onChange={c => onChoiceChanged(index, {
+                  ...choice,
+                  rationale: c
+                })}
+                imageSupport={imageSupport}
+              />
+            </InputContainer>)
+          }
+        </div>
+      ))}
+      <br />
+      {addChoiceButton.settings && (
+        <Button
+          className={classes.addButton}
+          variant="contained"
+          color="primary"
+          onClick={onAddChoice}
+        >
+          {addChoiceButton.label}
+        </Button>
+      )}
+    </div>
+  );
 
   return (
     <div className={classes.design}>
-      <layout.ConfigLayout
-        settings={
-          <Panel
-            model={model}
-            onChangeModel={onChangeModel}
-            configuration={configuration}
-            onChangeConfiguration={onConfigurationChanged}
-            groups={{
-              'Settings': {
-                'partLabels.enabled': partLabels.settings &&
-                  toggle(partLabels.label, true),
-                partLabelType: partLabels.enabled &&
-                  dropdown('', ['Numbers', 'Letters'], true),
-                choiceMode:
-                  choiceMode.settings &&
-                  radio(choiceMode.label, ['checkbox', 'radio']),
-                'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                  toggle(sequentialChoiceLabels.label, true),
-                choicePrefix: choicePrefix.settings &&
-                  radio(choicePrefix.label, ['numbers', 'letters']),
-                partialScoring: partialScoring.settings &&
-                  toggle(partialScoring.label),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label),
-                'feedback.enabled': feedback.settings &&
-                toggle(feedback.label, true)
-              },
-              'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                  toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled': studentInstructions.settings &&
-                  toggle(studentInstructions.label, true),
-                'rationale.enabled': rationale.settings &&
-                  toggle(rationale.label, true),
-                scoringType: scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric']),
-              },
-            }}
-          />
-        }
-      >
-        <div>
-
-          {teacherInstructions.enabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.teacherInstructions || ''}
-                onChange={onTeacherInstructionsChanged}
-                imageSupport={imageSupport}
-                nonEmpty={false}
-              />
-            </InputContainer>
-          )}
-
-          {prompt.settings && (
-            <InputContainer
-              label={prompt.label}
-              className={classes.promptHolder}
-            >
-              <EditableHtml
-                className={classes.prompt}
-                markup={model.prompt}
-                onChange={onPromptChanged}
-                imageSupport={imageSupport}
-                nonEmpty={!prompt.settings}
-                disableUnderline
-              />
-            </InputContainer>
-          )}
-          {model.choices.map((choice, index) => (
-            <div
-              key={`choice-${index}`}
-              className={classes.choiceConfigurationHolder}
-            >
-              <ChoiceConfiguration
-                key={index}
-                index={index + 1}
-                useLetterOrdering={model.choicePrefix === 'letters'}
-                className={classes.choiceConfiguration}
-                mode={model.choiceMode}
-                data={choice}
-                defaultFeedback={{}}
-                imageSupport={imageSupport}
-                onDelete={() => onRemoveChoice(index)}
-                onChange={c => onChoiceChanged(index, c)}
-                allowFeedBack={feedback.enabled}
-                allowDelete={deleteChoice.settings}
-                noLabels
-              />
-              {rationale.enabled && (
-                <InputContainer
-                  key={`rationale-${index}`}
-                  label={rationale.label}
-                  className={classes.rationaleHolder}
-                >
-                  <EditableHtml
-                    className={classes.rationale}
-                    markup={choice.rationale || ''}
-                    onChange={c => onChoiceChanged(index, {
-                      ...choice,
-                      rationale: c
-                    })}
-                    imageSupport={imageSupport}
-                  />
-                </InputContainer>)
+      {
+        settingsPanelDisabled
+          ? Content
+          : (
+            <layout.ConfigLayout
+              settings={
+                <Panel
+                  model={model}
+                  onChangeModel={onChangeModel}
+                  configuration={configuration}
+                  onChangeConfiguration={onConfigurationChanged}
+                  groups={{
+                    'Settings': {
+                      'partLabels.enabled': partLabels.settings &&
+                        toggle(partLabels.label, true),
+                      partLabelType: partLabels.enabled &&
+                        dropdown('', ['Numbers', 'Letters'], true),
+                      choiceMode:
+                        choiceMode.settings &&
+                        radio(choiceMode.label, ['checkbox', 'radio']),
+                      'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
+                        toggle(sequentialChoiceLabels.label, true),
+                      choicePrefix: choicePrefix.settings &&
+                        radio(choicePrefix.label, ['numbers', 'letters']),
+                      partialScoring: partialScoring.settings &&
+                        toggle(partialScoring.label),
+                      lockChoiceOrder: lockChoiceOrder.settings &&
+                        toggle(lockChoiceOrder.label),
+                      'feedback.enabled': feedback.settings &&
+                        toggle(feedback.label, true)
+                    },
+                    'Properties': {
+                      'teacherInstructions.enabled': teacherInstructions.settings &&
+                        toggle(teacherInstructions.label, true),
+                      'studentInstructions.enabled': studentInstructions.settings &&
+                        toggle(studentInstructions.label, true),
+                      'rationale.enabled': rationale.settings &&
+                        toggle(rationale.label, true),
+                      scoringType: scoringType.settings &&
+                        radio(scoringType.label, ['auto', 'rubric']),
+                    },
+                  }}
+                />
               }
-            </div>
-          ))}
-          <br />
-          {addChoiceButton.settings && (
-            <Button
-              className={classes.addButton}
-              variant="contained"
-              color="primary"
-              onClick={onAddChoice}
             >
-              {addChoiceButton.label}
-            </Button>
-          )}
-        </div>
-      </layout.ConfigLayout>
+              {Content}
+            </layout.ConfigLayout>
+          )
+      }
     </div>
   );
 });

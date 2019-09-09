@@ -71,5 +71,6 @@ export default {
       label: 'Teacher Instructions',
       enabled: true,
     },
+    settingsPanelDisabled: false
   }
 };

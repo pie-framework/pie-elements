@@ -85,8 +85,14 @@ export async function model(question, session, env, updateSession) {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      partA: parsePart(question.partA, 'partA', session, env),
-      partB: parsePart(question.partB, 'partB', session, env)
+      partA: {
+        ...parsePart(question.partA, 'partA', session, env),
+        partLabelType: question.partLabelType
+      },
+      partB: {
+        ...parsePart(question.partB, 'partB', session, env),
+        partLabelType: question.partLabelType
+      }
     });
   });
 }

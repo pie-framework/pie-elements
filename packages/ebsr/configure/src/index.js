@@ -1,7 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 import defaults from 'lodash/defaults';
-import cloneDeep from 'lodash/cloneDeep';
+import Main from './main';
 
 import sensibleDefaults from './defaults';
 
@@ -20,28 +22,24 @@ defineMultipleChoice();
 
 const prepareCustomizationObject = (config, model) => {
   const configuration = defaults(config, sensibleDefaults.configuration);
+  configuration.settingsPanelDisabled = true;
 
   return {
     configuration,
     model
   };
 };
-// partA is designed to be single choice so partial scoring is not allowed.
-const partADesignConfiguration = {
-  choiceMode: {
-    settings: false,
-    label: 'Response Type'
-  },
-  partialScoring: {
-    settings: false,
-    label: 'Allow Partial Scoring'
-  }
-};
 
 export default class EbsrConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults,
-    ...model
+    partA: {
+      ...sensibleDefaults.model.partA,
+      ...model.partA
+    },
+    partB: {
+      ...sensibleDefaults.model.partB,
+      ...model.partB
+    },
   });
 
   constructor() {
@@ -49,30 +47,6 @@ export default class EbsrConfigure extends HTMLElement {
     this._model = EbsrConfigure.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
-  }
-
-  populatePart(config, id) {
-    const isFirst= id === 'a';
-    const labelEl = document.getElementById(`${isFirst ? 'first' : 'second'}_label_config`);
-    let labelVal;
-
-    if (config.partLabels && !config.partLabels.enabled) {
-      labelVal = ''
-    } else {
-      const type = config.partLabelType || 'Numbers';
-      const typeIsNumber = type === 'Numbers';
-
-      if (isFirst) {
-        labelVal = `Part ${typeIsNumber ? '1' : 'A'}`;
-      } else {
-        labelVal = `Part ${typeIsNumber ? '2' : 'B'}`;
-      }
-    }
-    if (this._model) {
-      this._model[`part${id.toUpperCase()}`].partLabel = labelVal;
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
-    }
-    labelEl.innerHTML = labelVal;
   }
 
   onModelUpdated = e => {
@@ -83,75 +57,33 @@ export default class EbsrConfigure extends HTMLElement {
     e.stopImmediatePropagation();
     const id = e.target.getAttribute('id');
     if (id) {
-      this._model[`part${id.toUpperCase()}`] = e.update;
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+      this._model[`part${id}`] = e.update;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
     }
   };
 
-  onConfigurationChanged(c, part) {
-    const isPartA = part === 'partA';
-    this._configuration = prepareCustomizationObject(c, this._model).configuration;
-    this.populatePart(c, isPartA ? 'a' : 'b');
-    this[part].configuration = {
-      ...this._configuration,
-      ...isPartA === 'partA' ? { ...partADesignConfiguration } : {},
-    };
-
-    if (this._model) {
-      this._model[part].allowFeedback = (c.feedback || {}).enabled;
-
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
-    }
-  }
-
   set model(m) {
     this._model = m;
-
-    if (this.partA) {
-      this.partA.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partA');
-    }
-
-    if (this.partB) {
-      this.partB.onConfigurationChanged = (c) => this.onConfigurationChanged(c, 'partB');
-    }
-
-    customElements.whenDefined(MC_TAG_NAME).then(() => {
-      if (this.partA) {
-        this.partA.model = this._model.partA;
-        this.partA.configuration = {
-          ...cloneDeep(this._configuration),
-          ...partADesignConfiguration
-        };
-        this.populatePart(this.partA._configuration, 'a');
-      }
-
-      if (this.partB) {
-        this.partB.model = this._model.partB;
-        this.partB.configuration = {
-          ...cloneDeep(this._configuration)
-        };
-        this.populatePart(this.partB._configuration, 'b');
-      }
-    });
+    this._render();
   }
 
+  onModelChanged = (m, reset) => {
+    this._model = m;
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
+    this._render();
+  };
+
   set configuration(c) {
-    customElements.whenDefined(MC_TAG_NAME).then(() => {
-      const info = prepareCustomizationObject(c, this._model);
+    const info = prepareCustomizationObject(c, this._model);
+    this._configuration = info.configuration;
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this._render();
+  }
 
-      if (this.partA) {
-        this.partA.configuration = {
-          ...info.configuration,
-          ...partADesignConfiguration
-        };
-      }
-
-      if (this.partB) {
-        this.partB.configuration = info.configuration;
-      }
-
-      this._configuration = info.configuration;
-    });
+  onConfigurationChanged(c, reset) {
+    this._configuration = prepareCustomizationObject(c, this._model).configuration;
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
+    this._render();
   }
 
   connectedCallback() {
@@ -163,22 +95,13 @@ export default class EbsrConfigure extends HTMLElement {
     this.removeEventListener(MODEL_UPDATED, this.onModelUpdated);
   }
 
-  get partA() {
-    return this.querySelector(`${MC_TAG_NAME}#a`);
-  }
-
-  get partB() {
-    return this.querySelector(`${MC_TAG_NAME}#b`);
-  }
-
   _render() {
-    this.innerHTML = `
-      <div>
-        <p id="first_label_config"></p>
-        <${MC_TAG_NAME} id="a"></${MC_TAG_NAME}>
-        <p id="second_label_config"></p>
-        <${MC_TAG_NAME} id="b"></${MC_TAG_NAME}>
-      </div>
-    `;
+    let element = React.createElement(Main, {
+      model: this._model,
+      configuration: this._configuration,
+      onModelChanged: this.onModelChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
+    });
+    ReactDOM.render(element, this);
   }
 }
