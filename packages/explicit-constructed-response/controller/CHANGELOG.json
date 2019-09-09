@@ -238,5 +238,35 @@
     "committerDate": "2019-08-23 11:07:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-controller@1.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-lib/controller-utils",
+    "merge": null,
+    "header": "fix: bump pie-lib/controller-utils",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ba3de006afa1ddaa582a531779be766c9715f64c",
+    "gitTags": "",
+    "committerDate": "2019-08-30 23:15:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "make use of updateSession callback",
+    "merge": null,
+    "header": "feat: make use of updateSession callback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e11bb0f2918aed45ce874b9a2a7b592a18bc3266",
+    "gitTags": "",
+    "committerDate": "2019-08-23 18:17:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@1.6.0"
   }
 ]
