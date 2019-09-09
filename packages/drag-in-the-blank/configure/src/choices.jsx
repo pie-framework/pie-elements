@@ -60,6 +60,7 @@ export class Choices extends React.Component {
     });
 
     if (choiceIsEmpty({ value: val })) {
+      // if the edited content is empty, its usage has to be searched in the correct response definitions
       let usedForResponse = false;
 
       Object.keys(correctResponse).forEach(responseKey => {
@@ -77,9 +78,14 @@ export class Choices extends React.Component {
       if (usedForResponse) {
         alert('Answer choices cannot be blank.');
       } else {
-        const newChoicesWithoutTheEmptyOne = newChoices.filter(choice => !choiceIsEmpty(choice));
+        if (!choiceIsEmpty({ value: prevValue })) {
+          // if the previous value was not empty, it means that the choice can be deleted
+          const newChoicesWithoutTheEmptyOne = newChoices.filter(choice => choice.id !== key);
 
-        onChange(newChoicesWithoutTheEmptyOne);
+          onChange(newChoicesWithoutTheEmptyOne);
+        } else {
+          onChange(newChoices);
+        }
       }
     } else {
       onChange(newChoices);

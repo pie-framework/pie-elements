@@ -62,4 +62,12 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
   });
 };
 
-export const choiceIsEmpty = choice => choice && choice.value && (choice.value.trim() === '' || choice.value.replace(/<[^>]*>?/gm, '') === '');
+export const choiceIsEmpty = choice => {
+  if (choice) {
+    const { value = '' } = choice;
+
+    return value.trim() === '' || value.replace(/<[^>]*>?/gm, '') === '';
+  }
+
+  return false;
+};
