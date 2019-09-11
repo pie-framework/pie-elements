@@ -1,13 +1,13 @@
 import cloneDeep from 'lodash/cloneDeep';
 
 const defaultConfig = {
-  choiceMode: {
-    settings: true,
-    label: 'Response Type'
-  },
   addChoiceButton: {
     settings: true,
     label: 'Add a Choice',
+  },
+  choiceMode: {
+    settings: true,
+    label: 'Response Type'
   },
   choicePrefix: {
     settings: true,
@@ -21,10 +21,6 @@ const defaultConfig = {
     label: 'Feedback',
     enabled: true
   },
-  prompt: {
-    settings: true,
-    label: 'Prompt'
-  },
   lockChoiceOrder: {
     settings: true,
     label: 'Lock Choice Order'
@@ -32,6 +28,10 @@ const defaultConfig = {
   partialScoring: {
     settings: true,
     label: 'Allow Partial Scoring',
+  },
+  prompt: {
+    settings: true,
+    label: 'Prompt'
   },
   rationale: {
     settings: true,
@@ -42,6 +42,11 @@ const defaultConfig = {
     settings: false,
     label: 'Scoring Type',
   },
+  sequentialChoiceLabels: {
+    settings: false,
+    label: 'Sequential Choice Labels',
+    enabled: false
+  },
   studentInstructions: {
     settings: false,
     label: 'Student Instructions',
@@ -51,11 +56,6 @@ const defaultConfig = {
     settings: true,
     label: 'Teacher Instructions',
     enabled: true,
-  },
-  sequentialChoiceLabels: {
-    settings: false,
-    label: 'Sequential Choice Labels',
-    enabled: false
   }
 };
 
@@ -64,14 +64,18 @@ export default {
     partLabels: true,
     partLabelType: 'Letters',
     partA: {
+      choiceMode: 'radio',
       choices: [],
+      choicePrefix: 'numbers',
+      partialScoring: false,
       prompt: 'Prompt A',
-      choicePrefix: 'numbers'
     },
     partB: {
+      choiceMode: 'radio',
       choices: [],
+      choicePrefix: 'numbers',
+      partialScoring: false,
       prompt: 'Prompt B',
-      choicePrefix: 'numbers'
     },
   },
   configuration: {

@@ -16,6 +16,7 @@ export interface Choice {
 export interface Part {
     /** Indicates the choices are single or multiple selection */
     choiceMode: 'checkbox' | 'radio';
+
     /** Array of all the available choices */
     choices: Choice[];
 
@@ -53,13 +54,20 @@ export interface EbsrPie extends PieModel {
 
     /** Second part of EBSR */
     partB: Part;
+
+    /** Indicates if part labels should be displayed */
+    partLabels: boolean;
+
+    /** Indicates what type should have part labels if they are enabled */
+    partLabelType: 'Letters' | 'Numbers';
 }
 
-/**
- * Config Object for @pie-elements/ebsr
- * @additionalProperties false
- */
-export interface EbsrConfigure extends PromptConfig {
+interface PartConfiguration {
+    /**
+     * Indicates whether the Add Choice Button should be displayed
+     */
+    addChoiceButton?: ConfigureProp;
+
     /**
      * Indicates whether the settings panel will allow an author to modify the choice
      * mode (radio / checkboxes) for single or multi-choice questions
@@ -67,19 +75,44 @@ export interface EbsrConfigure extends PromptConfig {
     choiceMode?: ConfigureProp;
 
     /**
+     * Indicates whether the Choice Prefix setting should be displayed
+     */
+    choicePrefix?: ConfigureProp;
+
+    /**
+     * Indicates whether the Delete choice option should be displayed
+     */
+    deleteChoice?: ConfigureProp;
+
+    /**
+     * Indicates whether feedback should be displayed
+     */
+    feedback?: ConfigureProp;
+
+    /**
+     * Indicates whether the lock choice order option should be displayed
+     */
+    lockChoiceOrder?: ConfigureProp;
+
+    /**
      * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
      */
     partialScoring?: ConfigureProp;
 
     /**
-     * Part labels
+     * Indicates whether the Edit prompt input should be displayed
      */
-    partLabels?: ConfigureProp;
+    prompt?: ConfigureProp;
 
     /**
      * Rationale configuration
      */
     rationale?: ConfigureProp;
+
+    /**
+     * Indicates whether the Scoring type option should be displayed
+     */
+    scoringType?: ConfigureProp;
 
     /**
      * Indicates whether the choice labels have a sequential order
@@ -95,4 +128,25 @@ export interface EbsrConfigure extends PromptConfig {
      * Teacher Instructions configuration
      */
     teacherInstructions?: ConfigureProp;
+}
+
+/**
+ * Config Object for @pie-elements/ebsr
+ * @additionalProperties false
+ */
+export interface EbsrConfigure extends PromptConfig {
+    /**
+     * Indicates configuration for part A
+     */
+    partA: PartConfiguration;
+
+    /**
+     * Indicates configuration for part B
+     */
+    partB: PartConfiguration;
+
+    /**
+     * Part labels (Configuration for both parts)
+     */
+    partLabels?: ConfigureProp;
 }
