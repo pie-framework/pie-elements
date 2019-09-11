@@ -1,53 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   settings,
   layout
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 
-const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
-
 const { Panel, toggle, radio, dropdown } = settings;
 
 const styles = theme => ({
-  promptHolder: {
-    width: '100%',
-    paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  },
-  rationaleHolder: {
-    width: '70%',
-  },
-  rationale: {
-    paddingTop: theme.spacing.unit * 2,
-  },
   design: {
     paddingTop: theme.spacing.unit * 3
-  },
-  choiceConfigurationHolder: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  choiceConfiguration: {
-    width: '100%',
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  switchElement: {
-    justifyContent: 'space-between',
-    margin: 0
-  },
-  addButton: {
-    float: 'right'
   }
 });
 
 export class Main extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object,
+    configuration: PropTypes.object,
+    model: PropTypes.object,
+    onModelChanged: PropTypes.func,
+    onConfigurationChanged: PropTypes.func
+  };
+
   static getDerivedStateFromProps(props, state) {
     return {
       ...state,
@@ -67,23 +42,36 @@ export class Main extends React.Component {
       onModelChanged,
       onConfigurationChanged,
     } = this.props;
-    const { partA, partB } = model;
+    const { partLabelType } = model;
+    const { partA, partB, ...generalConfiguration } = configuration;
     const {
-      feedback = {},
-      choiceMode = {},
-      choicePrefix = {},
-      partialScoring = {},
-      lockChoiceOrder = {},
-      teacherInstructions = {},
-      studentInstructions = {},
-      rationale = {},
-      scoringType = {},
-      sequentialChoiceLabels = {},
-      partLabels = {},
-      partLabelType
-    } = configuration || {};
+      feedback: feedbackA = {} ,
+      choiceMode: choiceModeA = {},
+      choicePrefix: choicePrefixA = {},
+      partialScoring: partialScoringA = {},
+      lockChoiceOrder: lockChoiceOrderA = {},
+      teacherInstructions: teacherInstructionsA = {},
+      studentInstructions: studentInstructionsA = {},
+      rationale: rationaleA = {},
+      scoringType: scoringTypeA = {},
+      sequentialChoiceLabels: sequentialChoiceLabelsA = {},
+    } = partA || {};
+    const {
+      feedback: feedbackB = {} ,
+      choiceMode: choiceModeB = {},
+      choicePrefix: choicePrefixB = {},
+      partialScoring: partialScoringB = {},
+      lockChoiceOrder: lockChoiceOrderB = {},
+      teacherInstructions: teacherInstructionsB = {},
+      studentInstructions: studentInstructionsB = {},
+      rationale: rationaleB = {},
+      scoringType: scoringTypeB = {},
+      sequentialChoiceLabels: sequentialChoiceLabelsB = {},
+    } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
+    const firstPart = `Part ${typeIsNumber ? '1' : 'A'}`;
+    const secondPart = `Part ${typeIsNumber ? '2' : 'B'}`;
 
     return (
       <div className={classes.design}>
@@ -95,71 +83,97 @@ export class Main extends React.Component {
               configuration={configuration}
               onChangeConfiguration={c => onConfigurationChanged(c, true)}
               groups={{
-                'Settings Part A': {
+                'Settings for both': {
+                  partLabels: generalConfiguration.partLabels.settings &&
+                    toggle(generalConfiguration.partLabels.label),
+                  partLabelType: model.partLabels &&
+                    dropdown('', ['Numbers', 'Letters'])
+                },
+                [`Settings ${firstPart}`]: {
                   'partA.choiceMode':
-                    choiceMode.settings &&
-                    radio(choiceMode.label, ['checkbox', 'radio']),
-                  'partA.choicePrefix': choicePrefix.settings &&
-                    radio(choicePrefix.label, ['numbers', 'letters']),
+                    choiceModeA.settings &&
+                    radio(choiceModeA.label, ['checkbox', 'radio']),
+                  'partA.choicePrefix': choicePrefixA.settings &&
+                    radio(choicePrefixA.label, ['numbers', 'letters']),
+                  'partA.partialScoring': partialScoringA.settings &&
+                    toggle(partialScoringA.label),
+                  'partA.lockChoiceOrder': lockChoiceOrderA.settings &&
+                    toggle(lockChoiceOrderA.label),
+                  'partA.scoringType': scoringTypeA.settings &&
+                    radio(scoringTypeA.label, ['auto', 'rubric'])
                 },
-                'Settings Part B': {
+                [`Properties ${firstPart}`]: {
+                  'partA.sequentialChoiceLabels.enabled': sequentialChoiceLabelsA.settings &&
+                    toggle(sequentialChoiceLabelsA.label, true),
+                  'partA.feedback.enabled': feedbackA.settings &&
+                    toggle(feedbackA.label, true),
+                  'partA.teacherInstructions.enabled': teacherInstructionsA.settings &&
+                    toggle(teacherInstructionsA.label, true),
+                  'partA.studentInstructions.enabled': studentInstructionsA.settings &&
+                    toggle(studentInstructionsA.label, true),
+                  'partA.rationale.enabled': rationaleA.settings &&
+                    toggle(rationaleA.label, true)
+                },
+                [`Settings ${secondPart}`]: {
                   'partB.choiceMode':
-                    choiceMode.settings &&
-                    radio(choiceMode.label, ['checkbox', 'radio']),
-                  'partB.choicePrefix': choicePrefix.settings &&
-                    radio(choicePrefix.label, ['numbers', 'letters']),
+                    choiceModeB.settings &&
+                    radio(choiceModeB.label, ['checkbox', 'radio']),
+                  'partB.choicePrefix': choicePrefixB.settings &&
+                    radio(choicePrefixB.label, ['numbers', 'letters']),
+                  'partB.partialScoring': partialScoringB.settings &&
+                    toggle(partialScoringB.label),
+                  'partB.lockChoiceOrder': lockChoiceOrderB.settings &&
+                    toggle(lockChoiceOrderB.label),
+                  'partA.scoringType': scoringTypeB.settings &&
+                    radio(scoringTypeB.label, ['auto', 'rubric'])
                 },
-                'Settings': {
-                  'partLabels.enabled': partLabels.settings &&
-                    toggle(partLabels.label, true),
-                  partLabelType: partLabels.enabled &&
-                    dropdown('', ['Numbers', 'Letters']),
-                  'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                    toggle(sequentialChoiceLabels.label, true),
-                  partialScoring: partialScoring.settings &&
-                    toggle(partialScoring.label),
-                  lockChoiceOrder: lockChoiceOrder.settings &&
-                    toggle(lockChoiceOrder.label),
-                  'feedback.enabled': feedback.settings &&
-                    toggle(feedback.label, true)
-                },
-                'Properties': {
-                  'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true),
-                  'studentInstructions.enabled': studentInstructions.settings &&
-                    toggle(studentInstructions.label, true),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
-                  scoringType: scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric']),
+                [`Properties ${secondPart}`]: {
+                  'partB.sequentialChoiceLabels.enabled': sequentialChoiceLabelsB.settings &&
+                    toggle(sequentialChoiceLabelsB.label, true),
+                  'partB.feedback.enabled': feedbackB.settings &&
+                    toggle(feedbackB.label, true),
+                  'partB.teacherInstructions.enabled': teacherInstructionsB.settings &&
+                    toggle(teacherInstructionsB.label, true),
+                  'partB.studentInstructions.enabled': studentInstructionsB.settings &&
+                    toggle(studentInstructionsB.label, true),
+                  'partB.rationale.enabled': rationaleB.settings &&
+                    toggle(rationaleB.label, true)
                 },
               }}
             />
           }
         >
           <div>
-            {partLabels.enabled && <p>{`Part ${typeIsNumber ? '1' : 'A'}`}</p>}
+            {model.partLabels && <p>{firstPart}</p>}
             <ebsr-multiple-choice-configure
               id="A"
               key="partA"
               ref={ref => {
                 if (ref) {
+                  // do not use destructuring to get model from state
                   this.partA = ref;
                   this.partA.model = this.state.model.partA;
-                  this.partA.configuration = configuration;
+                  this.partA.configuration = {
+                    ...partA,
+                    ...generalConfiguration
+                  };
                 }
               }}
             />
 
-            {partLabels.enabled && <p>{`Part ${typeIsNumber ? '2' : 'B'}`}</p>}
+            {model.partLabels && <p>{secondPart}</p>}
             <ebsr-multiple-choice-configure
               id="B"
               key="partB"
               ref={ref => {
                 if (ref) {
+                  // do not use destructuring to get model from state
                   this.partB = ref;
                   this.partB.model = this.state.model.partB;
-                  this.partB.configuration = configuration;
+                  this.partB.configuration = {
+                    ...partB,
+                    ...generalConfiguration
+                  };
                 }
               }}
             />

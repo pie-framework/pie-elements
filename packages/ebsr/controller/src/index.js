@@ -81,19 +81,22 @@ export async function model(question, session, env, updateSession) {
     question.partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
   }
 
+  if (question.partLabels) {
+    question.partA.partLabel = question.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
+    question.partB.partLabel = question.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+  } else {
+    question.partA.partLabel = undefined;
+    question.partB.partLabel = undefined;
+  }
+
   return new Promise(resolve => {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      partA: {
-        ...parsePart(question.partA, 'partA', session, env),
-        partLabelType: question.partLabelType
-      },
-      partB: {
-        ...parsePart(question.partB, 'partB', session, env),
-        partLabelType: question.partLabelType
-      }
-    });
+      partLabels: question.partLabels,
+      partLabelType: question.partLabelType,
+      partA: parsePart(question.partA, 'partA', session, env),
+      partB: parsePart(question.partB, 'partB', session, env)    });
   });
 }
 

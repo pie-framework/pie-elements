@@ -32,6 +32,8 @@ const prepareCustomizationObject = (config, model) => {
 
 export default class EbsrConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
+    ...sensibleDefaults.model,
+    ...model,
     partA: {
       ...sensibleDefaults.model.partA,
       ...model.partA
@@ -44,31 +46,21 @@ export default class EbsrConfigure extends HTMLElement {
 
   constructor() {
     super();
+
     this._model = EbsrConfigure.createDefaultModel();
     this._configuration = sensibleDefaults.configuration;
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
-  onModelUpdated = e => {
-    if (e.target === this) {
-      return;
-    }
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    const id = e.target.getAttribute('id');
-    if (id) {
-      this._model[`part${id}`] = e.update;
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
-    }
-  };
-
   set model(m) {
-    this._model = m;
+    this._model = { ...this._model, ...m };
+
     this._render();
   }
 
   onModelChanged = (m, reset) => {
     this._model = m;
+
     this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
     this._render();
   };
@@ -76,15 +68,33 @@ export default class EbsrConfigure extends HTMLElement {
   set configuration(c) {
     const info = prepareCustomizationObject(c, this._model);
     this._configuration = info.configuration;
+
     this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
     this._render();
   }
 
   onConfigurationChanged(c, reset) {
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
+
     this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
     this._render();
   }
+
+  onModelUpdated = e => {
+    if (e.target === this) {
+      return;
+    }
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    const id = e.target.getAttribute('id');
+
+    if (id) {
+      this._model[`part${id}`] = e.update;
+      this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    }
+  };
 
   connectedCallback() {
     this.addEventListener(MODEL_UPDATED, this.onModelUpdated);
