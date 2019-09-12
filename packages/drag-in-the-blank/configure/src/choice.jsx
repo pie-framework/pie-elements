@@ -3,6 +3,7 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
+import { choiceIsEmpty } from './markupUtils';
 
 const GripIcon = ({ style }) => {
   return (
@@ -76,6 +77,11 @@ export const BlankContent = withStyles(theme => ({
 
 const tileSource = {
   canDrag(props) {
+    if (choiceIsEmpty(props.choice)) {
+      alert('You need to define a value for an answer choice before it can be associated with a response area.');
+      return false;
+    }
+
     return !props.disabled;
   },
   beginDrag(props) {
@@ -84,11 +90,6 @@ const tileSource = {
       value: props.choice,
       instanceId: props.instanceId
     };
-  },
-  endDrag(props, monitor) {
-    if (monitor.didDrop()) {
-      props.onChoiceDropped();
-    }
   }
 };
 
