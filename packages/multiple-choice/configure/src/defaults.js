@@ -64,6 +64,6 @@ export default {
       settings: true,
       label: 'Teacher Instructions',
       enabled: true,
-    },
+    }
   }
 };
