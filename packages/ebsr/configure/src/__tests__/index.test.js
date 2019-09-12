@@ -72,6 +72,7 @@ const model = {
   }
 };
 
+// these tests are no longer proper for EBSR, since previously React was not used
 xdescribe('index', () => {
   let Def;
   let el;
