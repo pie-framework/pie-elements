@@ -42,12 +42,6 @@ export default {
       settings: true,
       label: 'Lock Choice Order'
     },
-    partLabelType: 'Numbers',
-    partLabels: {
-      settings: false,
-      label: 'Part Labels',
-      enabled: false
-    },
     partialScoring: {
       settings: true,
       label: 'Allow Partial Scoring',
@@ -70,7 +64,6 @@ export default {
       settings: true,
       label: 'Teacher Instructions',
       enabled: true,
-    },
-    settingsPanelDisabled: false
+    }
   }
 };

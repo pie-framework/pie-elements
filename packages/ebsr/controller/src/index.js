@@ -81,16 +81,16 @@ export async function model(question, session, env, updateSession) {
     question.partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
   }
 
-  if (question.partLabels) {
-    question.partA.partLabel = question.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    question.partB.partLabel = question.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
-  } else {
-    question.partA.partLabel = undefined;
-    question.partB.partLabel = undefined;
-  }
-
   const partA = parsePart(question.partA, 'partA', session, env);
   const partB = parsePart(question.partB, 'partB', session, env);
+
+  if (question.partLabels) {
+    partA.partLabel = question.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
+    partB.partLabel = question.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+  } else {
+    partA.partLabel = undefined;
+    partB.partLabel = undefined;
+  }
 
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
     partA.teacherInstructions = question.partA.teacherInstructions;
@@ -104,8 +104,6 @@ export async function model(question, session, env, updateSession) {
     resolve({
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      partLabels: question.partLabels,
-      partLabelType: question.partLabelType,
       partA,
       partB
     });
