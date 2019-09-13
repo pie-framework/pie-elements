@@ -1173,5 +1173,20 @@
     "committerDate": "2019-08-29 18:00:00 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@1.5.14"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added the possibility to disable Settings Panel (used for EBSR).",
+    "merge": null,
+    "header": "feat: Added the possibility to disable Settings Panel (used for EBSR).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0327953a8d741555e34b50b0957908ec7e692b6f",
+    "gitTags": "",
+    "committerDate": "2019-09-12 10:28:57 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.6.0"
   }
 ]
