@@ -1,83 +1,100 @@
-export default {
-  partA: {
-    choices: [
-      {
-        value: 'a',
-        label: 'label a',
-      }
-    ],
-    prompt: 'prompt a'
+import cloneDeep from 'lodash/cloneDeep';
+
+const defaultConfig = {
+  addChoiceButton: {
+    settings: true,
+    label: 'Add a Choice',
   },
-  partB: {
-    choices: [
-      {
-        value: 'b',
-        label: 'label b',
-      },
-    ],
-    prompt: 'prompt b'
+  choiceMode: {
+    settings: true,
+    label: 'Response Type'
+  },
+  choicePrefix: {
+    settings: true,
+    label: 'Choice Labels'
+  },
+  deleteChoice: {
+    settings: true,
+  },
+  feedback: {
+    settings: true,
+    label: 'Feedback',
+    enabled: true
+  },
+  lockChoiceOrder: {
+    settings: true,
+    label: 'Lock Choice Order'
+  },
+  partialScoring: {
+    settings: true,
+    label: 'Allow Partial Scoring',
+  },
+  prompt: {
+    settings: true,
+    label: 'Prompt'
+  },
+  rationale: {
+    settings: true,
+    label: 'Rationale',
+    enabled: true,
+  },
+  scoringType: {
+    settings: false,
+    label: 'Scoring Type',
+  },
+  sequentialChoiceLabels: {
+    settings: false,
+    label: 'Sequential Choice Labels',
+    enabled: false
+  },
+  studentInstructions: {
+    settings: false,
+    label: 'Student Instructions',
+    enabled: true,
+  },
+  teacherInstructions: {
+    settings: true,
+    label: 'Teacher Instructions',
+    enabled: true,
+  }
+};
+
+export default {
+  model: {
+    partLabels: true,
+    partLabelType: 'Letters',
+    partA: {
+      choiceMode: 'radio',
+      choices: [],
+      choicePrefix: 'numbers',
+      partialScoring: false,
+      prompt: 'Prompt A',
+    },
+    partB: {
+      choiceMode: 'radio',
+      choices: [],
+      choicePrefix: 'numbers',
+      partialScoring: false,
+      prompt: 'Prompt B',
+    },
   },
   configuration: {
-    addChoiceButton: {
-      settings: true,
-      label: 'Add a Choice',
+    partA: {
+      ...cloneDeep(defaultConfig),
+      choiceMode: {
+        settings: false,
+        label: 'Response Type'
+      },
+      partialScoring: {
+        settings: false,
+        label: 'Allow Partial Scoring',
+      }
     },
-    choiceMode: {
-      settings: true,
-      label: 'Response Type'
-    },
-    choicePrefix: {
-      settings: true,
-      label: 'Choice Labels'
-    },
-    deleteChoice: {
-      settings: true,
-    },
-    feedback: {
-      settings: true,
-      label: 'Feedback',
-      enabled: true
-    },
-    prompt: {
-      settings: true,
-      label: 'Prompt'
-    },
-    lockChoiceOrder: {
-      settings: true,
-      label: 'Lock Choice Order'
-    },
-    partialScoring: {
-      settings: true,
-      label: 'Allow Partial Scoring',
-    },
-    rationale: {
-      settings: true,
-      label: 'Rationale',
-      enabled: false,
-    },
-    scoringType: {
-      settings: false,
-      label: 'Scoring Type',
-    },
-    studentInstructions: {
-      settings: false,
-      label: 'Student Instructions',
-      enabled: true,
-    },
-    teacherInstructions: {
-      settings: true,
-      label: 'Teacher Instructions',
-      enabled: true,
-    },
-    sequentialChoiceLabels: {
-      settings: false,
-      label: 'Sequential Choice Labels',
-      enabled: false
-    },
+    partB: cloneDeep(defaultConfig),
     partLabels: {
-      settings: false,
-      label: 'Part Labels',
-      enabled: false
-    }
+      settings: true,
+      label: 'Part Labels'
+    },
+    settingsPanelDisabled: true
   }
 };

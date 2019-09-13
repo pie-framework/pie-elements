@@ -72,7 +72,8 @@ const model = {
   }
 };
 
-describe('index', () => {
+// these tests are no longer proper for EBSR, since previously React was not used
+xdescribe('index', () => {
   let Def;
   let el;
   let ebsr;
@@ -84,6 +85,7 @@ describe('index', () => {
   beforeEach(() => {
     el = new Def();
     el.connectedCallback();
+    el.populatePart = jest.fn();
     ebsr = {
       partA: new HTMLElement(),
       partB: new HTMLElement()
