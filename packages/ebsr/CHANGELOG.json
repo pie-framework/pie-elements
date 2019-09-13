@@ -998,5 +998,20 @@
     "committerDate": "2019-09-07 02:29:48 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@3.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Workaround for player, when trying to set config before the element was created",
+    "merge": null,
+    "header": "fix: Workaround for player, when trying to set config before the element was created",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ad1b717f1f619abe0b83cc344c1c202a5762a64",
+    "gitTags": "",
+    "committerDate": "2019-09-13 11:12:30 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@3.0.1"
   }
 ]
