@@ -177,7 +177,7 @@ export class Main extends React.Component {
                     toggle(studentInstructionsB.label, true),
                   'partB.rationale.enabled': rationaleB.settings &&
                     toggle(rationaleB.label, true)
-                },
+                }
               }}
             />
           }
@@ -188,7 +188,7 @@ export class Main extends React.Component {
               id="A-wrapper"
               ref={(ref) => {
                 if (ref && !ref.childElementCount) {
-                  ref.appendChild(this.partA)
+                  ref.appendChild(this.partA);
                 }
               }}
             />
@@ -198,7 +198,7 @@ export class Main extends React.Component {
               id="B-wrapper"
               ref={(ref) => {
                 if (ref && !ref.childElementCount) {
-                  ref.appendChild(this.partB)
+                  ref.appendChild(this.partB);
                 }
               }}
             />
