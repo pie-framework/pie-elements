@@ -1,6 +1,6 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import { getAllCorrectResponses } from './utils';
+import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 /**
@@ -45,7 +45,8 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    let choices = question.choices;
+    let choices = question.choices && question.choices.filter(choice => !choiceIsEmpty(choice));
+
     if (!question.lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }

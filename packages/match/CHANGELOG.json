@@ -1068,5 +1068,35 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.9.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-lib/controller-utils",
+    "merge": null,
+    "header": "fix: bump pie-lib/controller-utils",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ba3de006afa1ddaa582a531779be766c9715f64c",
+    "gitTags": "",
+    "committerDate": "2019-08-30 23:15:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.10.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "make use of updateSession callback",
+    "merge": null,
+    "header": "feat: make use of updateSession callback",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1be18764407217010f4e9d50df766140a576dff8",
+    "gitTags": "",
+    "committerDate": "2019-08-26 17:35:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@2.10.0"
   }
 ]

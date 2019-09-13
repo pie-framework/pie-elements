@@ -788,5 +788,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text-configure@3.5.9"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "move partial-scoring to settings panel",
+    "merge": null,
+    "header": "feat: move partial-scoring to settings panel",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "418011280b2368ffa955cc2890666fd1f83dd330",
+    "gitTags": "",
+    "committerDate": "2019-09-04 22:55:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@3.6.0"
   }
 ]

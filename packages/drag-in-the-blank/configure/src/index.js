@@ -44,7 +44,7 @@ export default class DragInTheBlank extends HTMLElement {
   set model(s) {
     const formModel = {
       ...s,
-      markup: `<span>${s.markup}</span>`
+      markup: `<span>${s.markup || sensibleDefaults.model.markup}</span>`
     };
 
     this._model = DragInTheBlank.prepareModel(formModel);

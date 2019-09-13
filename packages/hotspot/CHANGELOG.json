@@ -528,5 +528,20 @@
     "committerDate": "2019-08-23 11:07:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot@2.9.0"
+  },
+  {
+    "type": "fix",
+    "scope": "hotspot",
+    "subject": "hotspotList prop type is array, not string (#315)",
+    "merge": null,
+    "header": "fix(hotspot): hotspotList prop type is array, not string (#315)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4280a99a04bef043fd5267253e4bb115c70f2359",
+    "gitTags": "",
+    "committerDate": "2019-08-30 09:30:57 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@2.9.1"
   }
 ]
