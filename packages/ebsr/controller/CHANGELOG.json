@@ -238,5 +238,40 @@
     "committerDate": "2019-08-26 19:08:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@1.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "teacher instructions should be sent only for instructor",
+    "merge": null,
+    "header": "fix: teacher instructions should be sent only for instructor",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "977b80bc4b8eed8c87a60d427614e01b3371e442",
+    "gitTags": "",
+    "committerDate": "2019-09-13 08:41:33 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Separated the model and the configuration values in 3 categories: for partA, for partB and for both.",
+    "merge": null,
+    "header": "feat: Separated the model and the configuration values in 3 categories: for partA, for partB and for both.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `config` will contain `partA`, `partB` and global settings. `config.partA` and `config.partB` will contain individual settings. Same applies to `model`.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`config` will contain `partA`, `partB` and global settings. `config.partA` and `config.partB` will contain individual settings. Same applies to `model`."
+      }
+    ],
+    "hash": "36079ddedb2aec86caf5e6ae01f2ffbb70da68f8",
+    "gitTags": "",
+    "committerDate": "2019-09-13 08:40:01 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@2.0.0"
   }
 ]

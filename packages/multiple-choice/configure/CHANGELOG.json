@@ -1188,5 +1188,20 @@
     "committerDate": "2019-09-12 10:28:57 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-configure@1.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "add Part Labels feature (but will be used in EBSR context only)",
+    "merge": null,
+    "header": "feat: add Part Labels feature (but will be used in EBSR context only)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c3c066b5beb0107cde627f469fdb3b4c1a40efac",
+    "gitTags": "",
+    "committerDate": "2019-09-07 02:29:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@1.7.0"
   }
 ]

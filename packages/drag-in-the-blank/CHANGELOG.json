@@ -598,5 +598,20 @@
     "committerDate": "2019-08-23 17:43:52 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@1.11.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Prevent drag-in-the-blank crash if no alternate response is defined.",
+    "merge": null,
+    "header": "fix: Prevent drag-in-the-blank crash if no alternate response is defined.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "60e951a48250a4dfe13cf0f68030e1a820204fb6",
+    "gitTags": " (origin/fix/drag-in-the-blank-crash)",
+    "committerDate": "2019-09-13 09:11:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@1.11.3"
   }
 ]
