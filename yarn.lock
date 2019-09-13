@@ -1764,13 +1764,6 @@
     universal-user-agent "^3.0.0"
     url-template "^2.0.8"
 
-"@pie-element/multiple-choice@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-3.9.0.tgz#275f02cf525a38acc80d0d8c85a79a4de955a625"
-  integrity sha512-S5IXdxmO/xvOIRMee00a5yeJO7ORgkIZNC9kj6w/s2a7imLaDaA2STaIn/KqnKqM1I686EvT2+4xSOgK8t2eGQ==
-  dependencies:
-    "@pie-ui/multiple-choice" "^4.10.34"
-
 "@pie-framework/build-helper@^4.4.2":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-4.4.4.tgz#62be2c76da136652ba0e08ff284a79101075f83c"
