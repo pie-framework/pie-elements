@@ -51,29 +51,35 @@ export class Choices extends React.Component {
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
     const { choices, correctResponse, alternateResponses } = model;
-    const newChoices = choices.map(c => {
-      if (c.id === key) {
-        return { ...c, value: val };
-      }
+    const newChoices = choices
+      ? choices.map(c => {
+        if (c.id === key) {
+          return { ...c, value: val };
+        }
 
-      return c;
-    });
+        return c;
+      })
+      : [];
 
     if (choiceIsEmpty({ value: val })) {
       // if the edited content is empty, its usage has to be searched in the correct response definitions
       let usedForResponse = false;
 
-      Object.keys(correctResponse).forEach(responseKey => {
-        if (correctResponse[responseKey] === key) {
-          usedForResponse = true;
-        }
-      });
+      if (correctResponse) {
+        Object.keys(correctResponse).forEach(responseKey => {
+          if (correctResponse[responseKey] === key) {
+            usedForResponse = true;
+          }
+        });
+      }
 
-      Object.values(alternateResponses).forEach(alternate => {
-        if (alternate.indexOf(key) >= 0) {
-          usedForResponse = true;
-        }
-      });
+      if (alternateResponses) {
+        Object.values(alternateResponses).forEach(alternate => {
+          if (alternate.indexOf(key) >= 0) {
+            usedForResponse = true;
+          }
+        });
+      }
 
       if (usedForResponse) {
         alert('Answer choices cannot be blank.');
