@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@3.0.0...@pie-element/ebsr@3.0.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* Workaround for player, when trying to set config before the element was created ([2ad1b71](https://github.com/pie-framework/pie-elements/commit/2ad1b71))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.8.1...@pie-element/ebsr@3.0.0) (2019-09-13)
 
 
