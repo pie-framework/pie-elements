@@ -11,9 +11,6 @@ const { Panel, toggle, radio, dropdown } = settings;
 const styles = theme => ({
   design: {
     paddingTop: theme.spacing.unit * 3
-  },
-  hidden: {
-    display: 'none'
   }
 });
 
@@ -76,44 +73,8 @@ export class Main extends React.Component {
     const firstPart = `Part ${typeIsNumber ? '1' : 'A'}`;
     const secondPart = `Part ${typeIsNumber ? '2' : 'B'}`;
 
-    // the workaround with display: none and the references is needed because in the player, the config for
-    // multiple-choice is intended to be set before the element exists
     return (
       <div className={classes.design}>
-        <div className={classes.hidden}>
-          <ebsr-multiple-choice-configure
-            id="A"
-            key="partA"
-            ref={ref => {
-              if (ref) {
-                // do not use destructuring to get model from state
-                this.partA = ref;
-                this.partA.model = this.state.model.partA;
-                this.partA.configuration = {
-                  ...partA,
-                  ...generalConfiguration
-                };
-              }
-            }}
-          />
-        </div>
-        <div className={classes.hidden}>
-          <ebsr-multiple-choice-configure
-            id="B"
-            key="partB"
-            ref={ref => {
-              if (ref) {
-                // do not use destructuring to get model from state
-                this.partB = ref;
-                this.partB.model = this.state.model.partB;
-                this.partB.configuration = {
-                  ...partB,
-                  ...generalConfiguration
-                };
-              }
-            }}
-          />
-        </div>
         <layout.ConfigLayout
           settings={
             <Panel
@@ -184,21 +145,35 @@ export class Main extends React.Component {
         >
           <div>
             {model.partLabels && <p>{firstPart}</p>}
-            <div
-              id="A-wrapper"
-              ref={(ref) => {
-                if (ref && !ref.childElementCount) {
-                  ref.appendChild(this.partA);
+            <ebsr-multiple-choice-configure
+              id="A"
+              key="partA"
+              ref={ref => {
+                if (ref) {
+                  // do not use destructuring to get model from state
+                  this.partA = ref;
+                  this.partA.model = this.state.model.partA;
+                  this.partA.configuration = {
+                    ...partA,
+                    ...generalConfiguration
+                  };
                 }
               }}
             />
 
             {model.partLabels && <p>{secondPart}</p>}
-            <div
-              id="B-wrapper"
-              ref={(ref) => {
-                if (ref && !ref.childElementCount) {
-                  ref.appendChild(this.partB);
+            <ebsr-multiple-choice-configure
+              id="B"
+              key="partB"
+              ref={ref => {
+                if (ref) {
+                  // do not use destructuring to get model from state
+                  this.partB = ref;
+                  this.partB.model = this.state.model.partB;
+                  this.partB.configuration = {
+                    ...partB,
+                    ...generalConfiguration
+                  };
                 }
               }}
             />
