@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.15...@pie-element/multiple-choice-configure@1.6.0) (2019-09-13)
+
+
+### Features
+
+* Added the possibility to disable Settings Panel (used for EBSR). ([0327953](https://github.com/pie-framework/pie-elements/commit/0327953))
+
+
+
+
+
 ## [1.5.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.14...@pie-element/multiple-choice-configure@1.5.15) (2019-09-05)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure
