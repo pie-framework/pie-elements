@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.6.0...@pie-element/multiple-choice-configure@1.7.0) (2019-09-13)
+
+
+### Features
+
+* add Part Labels feature (but will be used in EBSR context only) ([c3c066b](https://github.com/pie-framework/pie-elements/commit/c3c066b))
+
+
+
+
+
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.15...@pie-element/multiple-choice-configure@1.6.0) (2019-09-13)
 
 

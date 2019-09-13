@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.9.0...@pie-element/multiple-choice@3.10.0) (2019-09-13)
+
+
+### Features
+
+* add Part Labels feature (but will be used in EBSR context only) ([c3c066b](https://github.com/pie-framework/pie-elements/commit/c3c066b))
+
+
+
+
+
 # [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.8.1...@pie-element/multiple-choice@3.9.0) (2019-09-13)
 
 

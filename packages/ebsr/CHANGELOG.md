@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.8.1...@pie-element/ebsr@3.0.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* teacher instructions should be sent only for instructor ([977b80b](https://github.com/pie-framework/pie-elements/commit/977b80b))
+
+
+### Features
+
+* add Part Labels feature ([a3a4b90](https://github.com/pie-framework/pie-elements/commit/a3a4b90))
+* Separated the model and the configuration values in 3 categories: for partA, for partB and for both. ([36079dd](https://github.com/pie-framework/pie-elements/commit/36079dd))
+
+
+### BREAKING CHANGES
+
+* `config` will contain `partA`, `partB` and global settings. `config.partA` and `config.partB` will contain individual settings. Same applies to `model`.
+
+
+
+
+
 ## [2.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@2.8.0...@pie-element/ebsr@2.8.1) (2019-09-05)
 
 **Note:** Version bump only for package @pie-element/ebsr
