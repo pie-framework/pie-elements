@@ -4,18 +4,13 @@
   "type": "object",
   "properties": {
     "addCategoryEnabled": {
-      "title": "Boolean",
-      "type": "object"
+      "description": "Indicates if user can add more categories",
+      "type": "boolean",
+      "title": "addCategoryEnabled"
     },
     "categoryDefaultLabel": {
-      "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
-      "type": "object",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[0-9]+$": {
-          "type": "string"
-        }
-      },
+      "description": "Indicates default value for a new category's label",
+      "type": "string",
       "title": "categoryDefaultLabel"
     },
     "chartType": {
@@ -396,8 +391,9 @@
       ]
     },
     "editCategoryEnabled": {
-      "title": "Boolean",
-      "type": "object"
+      "description": "Indicates if user can edit default categories",
+      "type": "boolean",
+      "title": "editCategoryEnabled"
     },
     "graph": {
       "title": "Chart",
@@ -554,10 +550,6 @@
           "title": "enabled"
         }
       }
-    },
-    "Boolean": {
-      "title": "Boolean",
-      "type": "object"
     },
     "Answer": {
       "title": "Answer",

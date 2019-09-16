@@ -4,11 +4,13 @@ Model Object for @pie-elements/charting
 
 The schema defines the following properties:
 
-# `addCategoryEnabled` (object, required)
+# `addCategoryEnabled` (boolean, required)
 
-# `categoryDefaultLabel` (object, required)
+Indicates if user can add more categories
 
-Allows manipulation and formatting of text strings and determination and location of substrings within strings.
+# `categoryDefaultLabel` (string, required)
+
+Indicates default value for a new category's label
 
 # `chartType` (string, enum, required)
 
@@ -69,7 +71,9 @@ Label step value
 
 Axis Label
 
-# `editCategoryEnabled` (object, required)
+# `editCategoryEnabled` (boolean, required)
+
+Indicates if user can edit default categories
 
 # `graph` (object, required)
 
@@ -177,8 +181,6 @@ Indicates the label for the item
 ### `enabled` (boolean)
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-
-## `Boolean` (object)
 
 ## `Answer` (object)
 
