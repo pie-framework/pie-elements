@@ -24,7 +24,9 @@ export async function model(model, session, env) {
   let teacherInstructions = null;
 
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    teacherInstructions = model.teacherInstructions;
+    teacherInstructions = model.teacherInstructionsEnabled ? model.teacherInstructions : null;
+  } else {
+    teacherInstructions = null;
   }
 
   let equationEditor = model.equationEditor || 'everything';
