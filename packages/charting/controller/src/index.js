@@ -170,8 +170,8 @@ export function model(question, session, env) {
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = question.rationale;
-      base.teacherInstructions = question.teacherInstructions;
+      base.rationale = question.rationaleEnabled ? question.rationale : null;
+      base.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
     } else {
       base.rationale = null;
       base.teacherInstructions = null;

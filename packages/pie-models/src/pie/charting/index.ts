@@ -73,12 +73,12 @@ interface Answer {
  */
 export interface ChartingPie extends PieModel {
     /** Indicates if user can add more categories */
-    addCategoryEnabled: Boolean;
+    addCategoryEnabled: boolean;
 
     /** Indicates default value for a new category's label */
-    categoryDefaultLabel: String;
+    categoryDefaultLabel: string;
 
-    chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot'
+    chartType: 'bar' | 'histogram' | 'lineCross' | 'lineDot' | 'dorPlot' | 'linePlot';
 
     /** Indicates marks that are set as answers; Note: alternates can be added having this form: alternateIndex */
     correctAnswer: Answer;
@@ -90,7 +90,7 @@ export interface ChartingPie extends PieModel {
     domain: ChartSettings;
 
     /** Indicates if user can edit default categories */
-    editCategoryEnabled: Boolean;
+    editCategoryEnabled: boolean;
 
     /** Indicates the chart line model */
     graph: Chart;
@@ -115,6 +115,15 @@ export interface ChartingPie extends PieModel {
 
     /** Indicates chart title */
     title?: string;
+
+    /** Indicates if Rationale are enabled */
+    rationaleEnabled: boolean;
+
+    /** Indicates if Student Instructions are enabled */
+    studentInstructionsEnabled: boolean;
+
+    /** Indicates if Teacher Instructions are enabled */
+    teacherInstructionsEnabled: boolean;
 }
 
 /**
