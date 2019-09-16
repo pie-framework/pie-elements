@@ -48,6 +48,21 @@
       "type": "string",
       "title": "teacherInstructions"
     },
+    "rationaleEnabled": {
+      "description": "Indicates if Rationale are enabled",
+      "type": "boolean",
+      "title": "rationaleEnabled"
+    },
+    "studentInstructionsEnabled": {
+      "description": "Indicates if Student Instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructionsEnabled"
+    },
+    "teacherInstructionsEnabled": {
+      "description": "Indicates if Teacher Instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructionsEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -62,7 +77,10 @@
   "required": [
     "element",
     "id",
-    "imageDimensions"
+    "imageDimensions",
+    "rationaleEnabled",
+    "studentInstructionsEnabled",
+    "teacherInstructionsEnabled"
   ],
   "definitions": {
     "ConfigureProp": {

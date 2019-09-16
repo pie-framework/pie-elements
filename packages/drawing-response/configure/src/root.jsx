@@ -25,7 +25,8 @@ class Root extends React.Component {
       onTeacherInstructionsChanged
     } = this.props;
     const { backgroundImage = {}, rationale = {}, teacherInstructions = {} } = configuration || {};
-    
+    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+
     return (
       <div className={classes.base}>
         <layout.ConfigLayout
@@ -39,10 +40,9 @@ class Root extends React.Component {
                 'Settings': {
                   'backgroundImage.enabled':
                   backgroundImage.settings && toggle(backgroundImage.label, true),
-                  'rationale.enabled':
-                  rationale.settings && toggle(rationale.label, true),
-                  'teacherInstructions.enabled':
-                    teacherInstructions.settings && toggle(teacherInstructions.label, true)
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings && toggle(teacherInstructions.label)
                 },
                 Properties: {}
               }}
@@ -50,7 +50,7 @@ class Root extends React.Component {
           }
         >
           <div className={classes.regular}>
-            {teacherInstructions.enabled && (
+            {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.prompt}>
                 <EditableHtml
                   markup={model.teacherInstructions || ''}
@@ -65,7 +65,7 @@ class Root extends React.Component {
               <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
             </InputContainer>
 
-            {rationale.enabled && (
+            {rationaleEnabled && (
               <InputContainer
                 label={rationale.label}
                 className={classes.prompt}
