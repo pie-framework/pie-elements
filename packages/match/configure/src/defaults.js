@@ -19,6 +19,9 @@ export default {
       },
     ],
     scoringType: 'auto',
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   prompt: 'Prompt goes here',
   configuration: {
@@ -57,7 +60,6 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
-      enabled: false,
     },
     scoringType: {
       settings: false,
@@ -66,12 +68,10 @@ export default {
     studentInstructions: {
       settings: false,
       label: 'Student Instructions',
-      enabled: true,
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-      enabled: true,
     },
   }
 };
