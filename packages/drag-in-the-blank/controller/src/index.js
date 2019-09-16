@@ -62,12 +62,13 @@ export function model(question, session, env, updateSession) {
           ? getScore(question, session) === 1
           : undefined,
     };
+
     if (
       env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
     ) {
-      out.rationale = question.rationale;
-      out.teacherInstructions = question.teacherInstructions;
+      out.rationale = question.rationaleEnabled ? question.rationale : null;
+      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;

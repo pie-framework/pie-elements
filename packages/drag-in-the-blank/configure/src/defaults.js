@@ -8,7 +8,10 @@ export default {
     choices: [],
     choicesPosition: 'below',
     correctResponse: {},
-    duplicates: true
+    duplicates: true,
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     choicesPosition: {
@@ -33,13 +36,11 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false,
+      label: 'Rationale'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: true
+      label: 'Teacher Instructions'
     }
   }
 };
