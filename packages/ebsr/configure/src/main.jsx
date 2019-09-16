@@ -152,7 +152,7 @@ export class Main extends React.Component {
                 if (ref) {
                   // do not use destructuring to get model from state
                   this.partA = ref;
-                  this.partA.model = this.state.model.partA;
+                  this.partA._model = this.state.model.partA;
                   this.partA.configuration = {
                     ...partA,
                     ...generalConfiguration
@@ -169,7 +169,7 @@ export class Main extends React.Component {
                 if (ref) {
                   // do not use destructuring to get model from state
                   this.partB = ref;
-                  this.partB.model = this.state.model.partB;
+                  this.partB._model = this.state.model.partB;
                   this.partB.configuration = {
                     ...partB,
                     ...generalConfiguration
