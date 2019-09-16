@@ -47,10 +47,6 @@ const parsePart = (part, key, session, env) => {
     ? part.choices.map(prepareChoice(part, env, defaultFeedback))
     : [];
 
-  if (!part.lockChoiceOrder) {
-    choices = shuffle(choices);
-  }
-
   return {
     ...part,
     choices,
@@ -73,16 +69,16 @@ const parsePart = (part, key, session, env) => {
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export async function model(question, session, env, updateSession) {
+  const partA = parsePart(question.partA, 'partA', session, env);
+  const partB = parsePart(question.partB, 'partB', session, env);
+
   if (!question.partA.lockChoiceOrder) {
-    question.partA.choices = await getShuffledChoices(question.partA.choices, session, updateSession, 'value');
+    partA.choices = await getShuffledChoices(question.partA.choices, session, updateSession, 'value');
   }
 
   if (!question.partB.lockChoiceOrder) {
-    question.partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
+    partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
   }
-
-  const partA = parsePart(question.partA, 'partA', session, env);
-  const partB = parsePart(question.partB, 'partB', session, env);
 
   if (question.partLabels) {
     partA.partLabel = question.partLabelType === 'Letters' ? 'Part A' : 'Part 1';

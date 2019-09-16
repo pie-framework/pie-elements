@@ -36,6 +36,7 @@ describe('controller', () => {
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
+        lockChoiceOrder: true
       },
       partB: {
         choiceMode: 'radio',
@@ -60,6 +61,7 @@ describe('controller', () => {
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
+        lockChoiceOrder: true
       }
     };
   });
@@ -202,7 +204,17 @@ describe('controller', () => {
         session = { id: '1', element: 'ebsr-element' };
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
-        await model(question, session, env, updateSession);
+        await model({
+          ...question,
+          partA: {
+            ...question.partA,
+            lockChoiceOrder: false
+          },
+          partB: {
+            ...question.partB,
+            lockChoiceOrder: false
+          }
+        }, session, env, updateSession);
         expect(updateSession).toHaveBeenCalledWith('1', 'ebsr-element', {
           shuffledValues: expect.arrayContaining(
             ['yellow', 'green'],
