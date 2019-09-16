@@ -10,10 +10,10 @@ exports[`Design snapshot renders 1`] = `
         groups={
           Object {
             "Properties": Object {
-              "rationale.enabled": undefined,
+              "rationaleEnabled": undefined,
               "scoringType": undefined,
-              "studentInstructions.enabled": undefined,
-              "teacherInstructions.enabled": undefined,
+              "studentInstructionsEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
               "feedback.enabled": undefined,
