@@ -136,7 +136,8 @@ class GeneralConfigBlock extends React.Component {
     model: PropTypes.object.isRequired,
     imageSupport: PropTypes.object,
     configuration: PropTypes.object,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    rationaleEnabled: PropTypes.boolean
   };
 
   constructor(props) {
@@ -318,7 +319,7 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, configuration } = this.props;
+    const { classes, model, imageSupport, configuration, rationaleEnabled } = this.props;
     const { showKeypad } = this.state;
     const {
       prompt,
@@ -354,7 +355,7 @@ class GeneralConfigBlock extends React.Component {
             />
           </InputContainer>
         )}
-        {cRationale.enabled && (
+        {rationaleEnabled && (
           <InputContainer
             label={cRationale.label}
             className={classes.promptHolder}
