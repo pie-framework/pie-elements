@@ -29,7 +29,6 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -38,12 +37,10 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -65,10 +62,10 @@ exports[`Configure renders snapshot 1`] = `
           },
           "Properties": Object {
             "authoring.enabled": false,
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": undefined,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
         }
       }
@@ -106,7 +103,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "",
           "toolbarTools": Array [
             "point",
@@ -186,7 +186,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "",
           "toolbarTools": Array [
             "point",
@@ -284,7 +287,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "",
           "toolbarTools": Array [
             "point",
