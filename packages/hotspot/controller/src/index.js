@@ -39,8 +39,8 @@ export function model(question, session, env) {
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = question.rationale;
-      out.teacherInstructions = question.teacherInstructions;
+      out.rationale = question.rationaleEnabled ? question.rationale : null;
+      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;

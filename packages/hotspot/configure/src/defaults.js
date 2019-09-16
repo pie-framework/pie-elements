@@ -19,7 +19,10 @@ export default {
     outlineColor: 'blue',
     outlineList: [
       'blue'
-    ]
+    ],
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     multipleCorrect: {
@@ -32,8 +35,7 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false
+      label: 'Rationale'
     },
     prompt: {
       settings: true,
@@ -42,8 +44,7 @@ export default {
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: true
+      label: 'Teacher Instructions'
     }
   }
 };
