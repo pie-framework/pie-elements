@@ -97,8 +97,11 @@ export function model(question, session, env, updateSession) {
       // env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
     ) {
-      rationale = question.rationale;
-      teacherInstructions = question.teacherInstructions;
+      rationale = question.rationaleEnabled ? question.rationale : null;
+      teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+    } else {
+      rationale = null;
+      teacherInstructions = null;
     }
 
     const out = {

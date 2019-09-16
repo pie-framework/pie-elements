@@ -309,6 +309,7 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {}
     } = configuration || {};
+    const { rationaleEnabled, teacherInstructionsEnabled } = model || {};
 
     return (
       <div className={classes.design}>
@@ -327,17 +328,16 @@ export class Main extends React.Component {
                   toggle(lockChoiceOrder.label)
                 },
                 'Properties': {
-                  'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
+                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
                 },
               }}
             />
           }
         >
           <div>
-            {teacherInstructions.enabled && (
+            {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                 <EditableHtml
                   className={classes.prompt}
@@ -365,7 +365,7 @@ export class Main extends React.Component {
               </InputContainer>
             )}
 
-            {rationale.enabled && (
+            {rationaleEnabled && (
               <InputContainer
                 label={rationale.label}
                 className={classes.promptHolder}
