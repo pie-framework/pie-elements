@@ -99,6 +99,18 @@ This element must be one of the following enum values:
 * `left`
 * `right`
 
+# `rationaleEnabled` (boolean, required)
+
+Indicates if Rationale are enabled
+
+# `studentInstructionsEnabled` (boolean, required)
+
+Indicates if Student Instructions are enabled
+
+# `teacherInstructionsEnabled` (boolean, required)
+
+Indicates if Teacher Instructions are enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
