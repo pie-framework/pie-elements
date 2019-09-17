@@ -51,7 +51,10 @@ export default {
     },
     rationale: 'Rationale goes here!',
     scoringType: 'partial scoring',
-    title: ''
+    title: '',
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     authoring: {
@@ -78,8 +81,7 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false
+      label: 'Rationale'
     },
     scoringType: {
       settings: true,
@@ -87,13 +89,11 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
-      enabled: true
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: false
+      label: 'Teacher Instructions'
     },
     title: {
       settings: false,

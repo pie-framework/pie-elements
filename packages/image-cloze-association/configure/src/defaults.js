@@ -1,10 +1,13 @@
 export default {
-  model: { },
+  model: {
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
+  },
   configuration: {
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: true
+      label: 'Teacher Instructions'
     }
   }
 };

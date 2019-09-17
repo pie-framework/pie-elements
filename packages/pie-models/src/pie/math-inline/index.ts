@@ -104,6 +104,15 @@ export interface MathInlinePie extends PieModel {
 
     /** Extra buttons defined by user */
     customKeys?: string[];
+
+    /** Indicates if Rationale are enabled */
+    rationaleEnabled: boolean;
+
+    /** Indicates if Student Instructions are enabled */
+    studentInstructionsEnabled: boolean;
+
+    /** Indicates if Teacher Instructions are enabled */
+    teacherInstructionsEnabled: boolean;
 }
 
 

@@ -144,6 +144,7 @@ export class Design extends React.Component {
       feedback = {},
       prompt = {}
     } = configuration || {};
+    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
@@ -183,12 +184,12 @@ export class Design extends React.Component {
                   'feedback.enabled': feedback.settings && toggle(feedback.label, true),
                 },
                 'Properties': {
-                  'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true),
-                  'studentInstructions.enabled': studentInstructions.settings &&
-                    toggle(studentInstructions.label, true),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
+                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  studentInstructionsEnabled: studentInstructions.settings &&
+                    toggle(studentInstructions.label),
+                  rationaleEnabled: rationale.settings &&
+                    toggle(rationale.label),
                   scoringType: scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
                 },
@@ -214,7 +215,7 @@ export class Design extends React.Component {
               </InputContainer>
             )}
 
-            {teacherInstructions.enabled && (
+            {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
                 <EditableHtml
                   className={classes.input}
@@ -226,7 +227,7 @@ export class Design extends React.Component {
               </InputContainer>
             )}
 
-            {rationale.enabled && (
+            {rationaleEnabled && (
               <InputContainer label={rationale.label} className={classes.inputHolder}>
                 <EditableHtml
                   className={classes.input}
@@ -241,7 +242,7 @@ export class Design extends React.Component {
             <Categories
               imageSupport={imageSupport}
               model={model}
-              categories={categories}
+              categories={categories || []}
               onModelChanged={this.updateModel}
             />
 

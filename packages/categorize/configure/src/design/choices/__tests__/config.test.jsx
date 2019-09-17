@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Config } from '../config';
-import defaults from '../../../defaults';
 
 
 describe('config', () => {
@@ -13,7 +12,30 @@ describe('config', () => {
   beforeEach(() => {
     onModelChanged = jest.fn();
     allChoicesHaveCount = jest.fn();
-    config = defaults.model;
+    config = {
+      choices: [
+        {
+          id: '0',
+          content: 'Choice 0'
+        },
+      ],
+      choicesPerRow: 2,
+      choicesPosition: 'below',
+      choicesLabel: '',
+      lockChoiceOrder: true,
+      removeTilesAfterPlacing: false,
+      categoriesPerRow: 2,
+      categories: [
+        {
+          id: '0',
+          label: 'Category 0',
+          choices: []
+        },
+      ],
+      rowLabels: [''],
+      correctResponse: [],
+      partialScoring: true,
+    };
   });
   const wrapper = extras => {
     const props = { classes: {}, onModelChanged, allChoicesHaveCount, config, ...extras };

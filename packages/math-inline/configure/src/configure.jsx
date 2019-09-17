@@ -75,7 +75,7 @@ export class Configure extends React.Component {
       scoringType = {}
     } = configuration || {};
     log('[render] model', model);
-
+    const { rationaleEnabled, teacherInstructionsEnabled } = model || {};
 
     return (
       <div>
@@ -96,12 +96,11 @@ export class Configure extends React.Component {
                     toggle(prompt.label, true)
                 },
                 'Properties': {
-                  'teacherInstructions.enabled': teacherInstructions.settings &&
-                    toggle(teacherInstructions.label, true),
-                  'studentInstructions.enabled': studentInstructions.settings &&
-                    toggle(studentInstructions.label, true),
-                  'rationale.enabled': rationale.settings &&
-                    toggle(rationale.label, true),
+                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  studentInstructionsEnabled: studentInstructions.settings &&
+                    toggle(studentInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
                   scoringType: scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
                 },
@@ -111,7 +110,7 @@ export class Configure extends React.Component {
         >
           <div>
             <div className={classes.content}>
-              {teacherInstructions.enabled && (
+              {teacherInstructionsEnabled && (
                 <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
                   <EditableHtml
                     className={classes.prompt}
@@ -128,6 +127,7 @@ export class Configure extends React.Component {
                 model={model}
                 configuration={configuration}
                 onChange={this.onChange}
+                rationaleEnabled={rationaleEnabled}
               />
               {
                 feedback.enabled && (

@@ -5,6 +5,9 @@ export default {
     height: 0,
     width: 0
   },
+  rationaleEnabled: false,
+  teacherInstructionsEnabled: false,
+  studentInstructionsEnabled: false,
   configuration: {
     backgroundImage: {
       settings: true,
@@ -13,13 +16,11 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false
+      label: 'Rationale'
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-      enabled: true,
     }
   }
 };

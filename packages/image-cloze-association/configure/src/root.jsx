@@ -32,15 +32,14 @@ export class Root extends React.Component {
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
               'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                  toggle(teacherInstructions.label, true),
+                teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
               },
             }}
           />
         }
       >
         <div className={classes.content}>
-          {teacherInstructions.enabled && (
+          {model && model.teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}

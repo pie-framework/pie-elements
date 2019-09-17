@@ -101,6 +101,7 @@ export class Configure extends React.Component {
       authoring = {}
     } = configuration || {};
     log('[render] model', model);
+    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
 
     return (
       <layout.ConfigLayout
@@ -134,14 +135,11 @@ export class Configure extends React.Component {
               Properties: {
                 'authoring.enabled':
                   authoring.settings && toggle(authoring.label, true),
-                'teacherInstructions.enabled':
-                  teacherInstructions.settings &&
-                  toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled':
-                  studentInstructions.settings &&
-                  toggle(studentInstructions.label, true),
-                'rationale.enabled':
-                  rationale.settings && toggle(rationale.label, true),
+                teacherInstructionsEnabled:
+                  teacherInstructions.settings && toggle(teacherInstructions.label),
+                studentInstructionsEnabled:
+                  studentInstructions.settings && toggle(studentInstructions.label),
+                rationaleEnabled: rationale.settings && toggle(rationale.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['dichotomous', 'partial scoring'])
@@ -159,7 +157,7 @@ export class Configure extends React.Component {
             </span>
           </Typography>
 
-          {teacherInstructions.enabled && (
+          {teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
@@ -187,7 +185,7 @@ export class Configure extends React.Component {
             </InputContainer>
           )}
 
-          {rationale.enabled && (
+          {rationaleEnabled && (
             <InputContainer
               label={rationale.label || 'Rationale'}
               className={classes.promptHolder}

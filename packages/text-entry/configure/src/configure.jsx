@@ -78,6 +78,7 @@ class Configure extends React.Component {
   render() {
     const { classes, model, configuration, imageSupport } = this.props;
     const { teacherInstructions = {} } = configuration || {};
+    const { teacherInstructionsEnabled } = model || {};
 
     // const feedbackConfig = modelToFeedbackConfig(model);
 
@@ -90,7 +91,7 @@ class Configure extends React.Component {
           compute), and the answer will be evaluated.
         </Typography>
 
-        {teacherInstructions.enabled && (
+        {teacherInstructionsEnabled && (
           <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
             <EditableHtml
               className={classes.input}

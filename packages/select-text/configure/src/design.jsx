@@ -150,6 +150,7 @@ export class Design extends React.Component {
       scoringType = {},
       highlightChoices = {}
     } = configuration || {};
+    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
 
     log('[render] maxSelections:', model.maxSelections);
 
@@ -172,12 +173,11 @@ export class Design extends React.Component {
                 toggle(feedback.label, true),
               },
               'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label, true),
-                'rationale.enabled': rationale.settings &&
-                toggle(rationale.label, true),
+                teacherInstructionsEnabled: teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                rationaleEnabled: rationale.settings && toggle(rationale.label),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },
@@ -186,7 +186,7 @@ export class Design extends React.Component {
         }
       >
         <div className={classes.container}>
-          {teacherInstructions.enabled && (
+          {teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}
@@ -207,7 +207,7 @@ export class Design extends React.Component {
             />
           </InputContainer>
 
-          {rationale.enabled && (
+          {rationaleEnabled && (
             <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
               <EditableHtml
                 className={classes.prompt}

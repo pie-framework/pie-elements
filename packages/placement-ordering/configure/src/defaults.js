@@ -22,6 +22,9 @@ export default {
     removeTilesAfterPlacing: true,
     scoringType: 'auto',
     targetLabel: 'Target Label goes here',
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     choiceLabel: {
@@ -69,7 +72,6 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
-      enabled: false,
     },
     removeTilesAfterPlacing: {
       settings: false,
@@ -82,7 +84,6 @@ export default {
     studentInstructions: {
       settings: false,
       label: 'Student Instructions',
-      enabled: true,
     },
     targetLabel: {
       settings: true,
@@ -91,7 +92,6 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-      enabled: false,
     },
   }
 };

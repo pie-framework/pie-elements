@@ -9,6 +9,9 @@ export default {
     scoringType: 'auto',
     arrows: true,
     padding: true,
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     arrows: {
@@ -31,8 +34,7 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false,
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
@@ -40,13 +42,11 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
-      enabled: true,
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: false,
-      label: 'Teacher Instructions',
-      enabled: false,
+      label: 'Teacher Instructions'
     },
   }
 };

@@ -1,27 +1,20 @@
 export default {
   model: {
-    choices: [
-      {
-        id: '0',
-        content: 'Choice 0'
-      },
-    ],
+    choices: [],
     choicesPerRow: 2,
     choicesPosition: 'below',
     choicesLabel: '',
     lockChoiceOrder: true,
     removeTilesAfterPlacing: false,
     categoriesPerRow: 2,
-    categories: [
-      {
-        id: '0',
-        label: 'Category 0',
-        choices: []
-      },
-    ],
-    rowLabels: [''],
+    categories: [],
+    alternates: [],
     correctResponse: [],
+    rowLabels: [''],
     partialScoring: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     feedback: {
@@ -43,8 +36,7 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false,
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
@@ -52,13 +44,11 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
-      enabled: true,
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: false,
+      label: 'Teacher Instructions'
     },
   }
 };

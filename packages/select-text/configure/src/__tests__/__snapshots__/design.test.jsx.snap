@@ -31,7 +31,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -48,12 +47,10 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": true,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -70,10 +67,10 @@ exports[`design snapshot renders all items except feedback 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedback.enabled": false,
@@ -168,7 +165,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -185,12 +181,10 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": true,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -207,10 +201,10 @@ exports[`design snapshot renders all items except the content input 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedback.enabled": false,
@@ -297,7 +291,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Prompt",
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -314,12 +307,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": true,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -336,10 +327,10 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "feedback.enabled": undefined,
