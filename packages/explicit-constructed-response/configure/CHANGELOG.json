@@ -343,5 +343,25 @@
     "committerDate": "2019-08-22 09:18:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@1.6.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "4fb4c5bf40a5c973af0dab4b2d6eb10225909ac4",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:16:32 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@2.0.0"
   }
 ]

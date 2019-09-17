@@ -938,5 +938,165 @@
     "committerDate": "2019-08-12 11:37:50 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@5.7.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "0ea695a795681c860757bf1b4849da20200abf42",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:19:14 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "e4b3fb128f148edd46e670760394347ac516d8eb",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:18:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "9238954fa611462ddd1397f9780fc1c3d08ecc6f",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:17:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "4fb4c5bf40a5c973af0dab4b2d6eb10225909ac4",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:16:32 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "ca54ff9c962de12e5bbfb478df6d36212825e0b2",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:15:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "0e74d85fb5e7cad0634d86a3c5e051181251e9a9",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:14:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "ddf464b394ae125f961da80e5c6d3b12030c9ac2",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:13:51 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "fa22befe8a42495e61f64a26544ffe9c973cb68a",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:12:33 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@6.0.0"
   }
 ]

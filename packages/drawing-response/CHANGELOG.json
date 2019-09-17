@@ -268,5 +268,25 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/drawing-response@1.4.9"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "merge": null,
+    "header": "feat: Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller.",
+    "body": null,
+    "footer": "BREAKING CHANGE: `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "`enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions."
+      }
+    ],
+    "hash": "ca54ff9c962de12e5bbfb478df6d36212825e0b2",
+    "gitTags": "",
+    "committerDate": "2019-09-16 19:15:38 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response@2.0.0"
   }
 ]
