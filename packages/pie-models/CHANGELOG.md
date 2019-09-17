@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.4...@pie-element/pie-models@6.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([9b3e532](https://github.com/pie-framework/pie-elements/commit/9b3e532))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([25e5d34](https://github.com/pie-framework/pie-elements/commit/25e5d34))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a53cc85](https://github.com/pie-framework/pie-elements/commit/a53cc85))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([220a051](https://github.com/pie-framework/pie-elements/commit/220a051))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([07b7da9](https://github.com/pie-framework/pie-elements/commit/07b7da9))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a4dbd30](https://github.com/pie-framework/pie-elements/commit/a4dbd30))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([0fc05af](https://github.com/pie-framework/pie-elements/commit/0fc05af))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([20b734e](https://github.com/pie-framework/pie-elements/commit/20b734e))
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0ea695a](https://github.com/pie-framework/pie-elements/commit/0ea695a))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([e4b3fb1](https://github.com/pie-framework/pie-elements/commit/e4b3fb1))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([9238954](https://github.com/pie-framework/pie-elements/commit/9238954))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([4fb4c5b](https://github.com/pie-framework/pie-elements/commit/4fb4c5b))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ca54ff9](https://github.com/pie-framework/pie-elements/commit/ca54ff9))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0e74d85](https://github.com/pie-framework/pie-elements/commit/0e74d85))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ddf464b](https://github.com/pie-framework/pie-elements/commit/ddf464b))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [5.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.3...@pie-element/pie-models@5.7.4) (2019-09-13)
 
 **Note:** Version bump only for package @pie-element/pie-models

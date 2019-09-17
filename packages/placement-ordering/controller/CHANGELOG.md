@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.3.1...@pie-element/placement-ordering-controller@5.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([220a051](https://github.com/pie-framework/pie-elements/commit/220a051))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@4.3.0...@pie-element/placement-ordering-controller@4.3.1) (2019-09-05)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

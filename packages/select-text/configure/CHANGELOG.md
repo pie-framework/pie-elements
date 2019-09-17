@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.6.1...@pie-element/select-text-configure@4.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a53cc85](https://github.com/pie-framework/pie-elements/commit/a53cc85))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@3.6.0...@pie-element/select-text-configure@3.6.1) (2019-09-13)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

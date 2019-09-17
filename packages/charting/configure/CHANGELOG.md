@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@0.1.5...@pie-element/charting-configure@1.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ddf464b](https://github.com/pie-framework/pie-elements/commit/ddf464b))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [0.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@0.1.4...@pie-element/charting-configure@0.1.5) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/charting-configure

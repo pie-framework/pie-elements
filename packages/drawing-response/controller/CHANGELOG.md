@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@1.0.4...@pie-element/drawing-response-controller@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ca54ff9](https://github.com/pie-framework/pie-elements/commit/ca54ff9))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [1.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@1.0.3...@pie-element/drawing-response-controller@1.0.4) (2019-07-05)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.11.4...@pie-element/drag-in-the-blank@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0e74d85](https://github.com/pie-framework/pie-elements/commit/0e74d85))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [1.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@1.11.3...@pie-element/drag-in-the-blank@1.11.4) (2019-09-13)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

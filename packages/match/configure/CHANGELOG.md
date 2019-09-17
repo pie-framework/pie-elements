@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.6.11...@pie-element/match-configure@3.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a4dbd30](https://github.com/pie-framework/pie-elements/commit/a4dbd30))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [2.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.6.10...@pie-element/match-configure@2.6.11) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/match-configure
