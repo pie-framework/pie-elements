@@ -17,7 +17,7 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     env.role === 'instructor' &&
     (env.mode === 'view' || env.mode === 'evaluate')
   ) {
-    out.rationale = choice.rationale;
+    out.rationale = model.rationaleEnabled ? choice.rationale : null;
   } else {
     out.rationale = null;
   }
@@ -73,11 +73,11 @@ export async function model(question, session, env, updateSession) {
   const partB = parsePart(question.partB, 'partB', session, env);
 
   if (!question.partA.lockChoiceOrder) {
-    partA.choices = await getShuffledChoices(question.partA.choices, session, updateSession, 'value');
+    partA.choices = await getShuffledChoices(partA.choices, session, updateSession, 'value');
   }
 
   if (!question.partB.lockChoiceOrder) {
-    partB.choices = await getShuffledChoices(question.partB.choices, session, updateSession, 'value');
+    partB.choices = await getShuffledChoices(partB.choices, session, updateSession, 'value');
   }
 
   if (question.partLabels) {
@@ -89,8 +89,8 @@ export async function model(question, session, env, updateSession) {
   }
 
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    partA.teacherInstructions = question.partA.teacherInstructions;
-    partB.teacherInstructions = question.partB.teacherInstructions;
+    partA.teacherInstructions = question.partA.teacherInstructionsEnabled ? question.partA.teacherInstructions : null;
+    partB.teacherInstructions = question.partB.teacherInstructionsEnabled ? question.partB.teacherInstructions : null;
   } else {
     partA.teacherInstructions = null;
     partB.teacherInstructions = null;

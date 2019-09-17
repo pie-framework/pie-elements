@@ -7,7 +7,7 @@
   "author": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-element/multiple-choice": "^3.9.0",
+    "@pie-element/multiple-choice": "^4.0.0",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.7.32",
     "lodash": "^4.17.15",
