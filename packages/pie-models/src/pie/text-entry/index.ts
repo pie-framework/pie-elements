@@ -52,6 +52,15 @@ export interface TextEntryPie extends PieModel {
 
     /** Indicates answer alignment */
     answerAlignment: 'left' | 'center' | 'right';
+
+    /** Indicates if Rationale are enabled */
+    rationaleEnabled: boolean;
+
+    /** Indicates if Student Instructions are enabled */
+    studentInstructionsEnabled: boolean;
+
+    /** Indicates if Teacher Instructions are enabled */
+    teacherInstructionsEnabled: boolean;
 }
 
 /**

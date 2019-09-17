@@ -82,17 +82,14 @@ exports[`Configure renders snapshot 1`] = `
             "settings": true,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
           "title": Object {
-            "enabled": true,
             "label": "Graph Title",
             "settings": false,
           },
@@ -105,10 +102,10 @@ exports[`Configure renders snapshot 1`] = `
             "title.enabled": false,
           },
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": undefined,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
         }
       }
@@ -135,7 +132,10 @@ exports[`Configure renders snapshot 1`] = `
             "min": 0,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "This is a chart!",
         }
       }
@@ -223,7 +223,10 @@ exports[`Configure renders snapshot 1`] = `
             "min": 0,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "This is a chart!",
         }
       }
@@ -286,7 +289,10 @@ exports[`Configure renders snapshot 1`] = `
             "min": 0,
           },
           "rationale": "Rationale goes here!",
+          "rationaleEnabled": false,
           "scoringType": "partial scoring",
+          "studentInstructionsEnabled": false,
+          "teacherInstructionsEnabled": false,
           "title": "This is a chart!",
         }
       }

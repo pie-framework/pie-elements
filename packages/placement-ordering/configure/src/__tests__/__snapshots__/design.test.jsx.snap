@@ -49,7 +49,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -62,7 +61,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": false,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
@@ -71,7 +69,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -80,10 +77,10 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "choiceLabel.enabled": undefined,
@@ -114,9 +111,12 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "partialScoring": true,
           "placementArea": false,
           "prompt": "Item Stem goes here",
+          "rationaleEnabled": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
+          "studentInstructionsEnabled": false,
           "targetLabel": "Target Label goes here",
+          "teacherInstructionsEnabled": false,
         }
       }
       onChangeConfiguration={[Function]}
@@ -221,7 +221,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": false,
           },
           "rationale": Object {
-            "enabled": false,
             "label": "Rationale",
             "settings": true,
           },
@@ -234,7 +233,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": false,
           },
           "studentInstructions": Object {
-            "enabled": true,
             "label": "Student Instructions",
             "settings": false,
           },
@@ -243,7 +241,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "settings": true,
           },
           "teacherInstructions": Object {
-            "enabled": false,
             "label": "Teacher Instructions",
             "settings": true,
           },
@@ -252,10 +249,10 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       groups={
         Object {
           "Properties": Object {
-            "rationale.enabled": undefined,
+            "rationaleEnabled": undefined,
             "scoringType": false,
-            "studentInstructions.enabled": false,
-            "teacherInstructions.enabled": undefined,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
             "choiceLabel.enabled": undefined,
@@ -286,9 +283,12 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "partialScoring": true,
           "placementArea": false,
           "prompt": "Item Stem goes here",
+          "rationaleEnabled": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
+          "studentInstructionsEnabled": false,
           "targetLabel": "Target Label goes here",
+          "teacherInstructionsEnabled": false,
         }
       }
       onChangeConfiguration={[Function]}

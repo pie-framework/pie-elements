@@ -22,7 +22,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "settings": true,
             },
             "rationale": Object {
-              "enabled": false,
               "label": "Rationale",
               "settings": true,
             },
@@ -35,12 +34,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "settings": false,
             },
             "studentInstructions": Object {
-              "enabled": true,
               "label": "Student Instructions",
               "settings": false,
             },
             "teacherInstructions": Object {
-              "enabled": true,
               "label": "Teacher Instructions",
               "settings": true,
             },
@@ -49,10 +46,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
         groups={
           Object {
             "Properties": Object {
-              "rationale.enabled": undefined,
+              "rationaleEnabled": undefined,
               "scoringType": false,
-              "studentInstructions.enabled": false,
-              "teacherInstructions.enabled": undefined,
+              "studentInstructionsEnabled": false,
+              "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
               "feedback.enabled": undefined,
@@ -125,17 +122,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <div
         className="Configure-content-2"
       >
-        <InputContainer
-          className="Configure-promptHolder-3"
-          label="Teacher Instructions"
-        >
-          <EditableHtml
-            className="Configure-prompt-4"
-            markup=""
-            nonEmpty={false}
-            onChange={[Function]}
-          />
-        </InputContainer>
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
@@ -154,7 +140,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "settings": true,
               },
               "rationale": Object {
-                "enabled": false,
                 "label": "Rationale",
                 "settings": true,
               },
@@ -167,12 +152,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "settings": false,
               },
               "studentInstructions": Object {
-                "enabled": true,
                 "label": "Student Instructions",
                 "settings": false,
               },
               "teacherInstructions": Object {
-                "enabled": true,
                 "label": "Teacher Instructions",
                 "settings": true,
               },

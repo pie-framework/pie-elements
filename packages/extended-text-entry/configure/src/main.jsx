@@ -76,6 +76,7 @@ export class Main extends React.Component {
       dimensions = {},
       equationEditor = {}
     } = configuration || {};
+    const { teacherInstructionsEnabled } = model || {};
 
     return (
       <layout.ConfigLayout
@@ -119,9 +120,9 @@ export class Main extends React.Component {
                 'feedback.enabled': feedback.settings && toggle(feedback.label, true),
               },
               'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'configure.studentInstructions.enabled': studentInstructions.settings &&
+                teacherInstructionsEnabled: teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings &&
                 toggle(studentInstructions.label),
               },
             }}
@@ -130,7 +131,7 @@ export class Main extends React.Component {
       >
         <div>
           
-          {teacherInstructions.enabled && (
+          {teacherInstructionsEnabled && (
             <InputContainer label={teacherInstructions.label} className={classes.promptContainer}>
               <EditableHtml
                 className={classes.prompt}

@@ -61,6 +61,9 @@ export default {
     alternateResponse: {
       2: ['3']
     },
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     prompt: {
@@ -78,12 +81,10 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
-      enabled: false,
     },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-      enabled: true
     }
   }
 };

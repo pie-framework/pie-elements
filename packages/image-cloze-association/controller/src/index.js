@@ -19,9 +19,8 @@ export function model(question, session, env) {
           : undefined,
     };
 
-
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = question.teacherInstructions;
+      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
     } else {
       out.teacherInstructions = null;
     }

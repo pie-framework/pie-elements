@@ -2,12 +2,34 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Categories } from '../index';
-import defaultValues from '../../../defaults';
 
 describe('Categories', () => {
   let w;
   let onModelChanged = jest.fn();
-  let model = defaultValues.model;
+  let model = {
+    choices: [
+      {
+        id: '0',
+        content: 'Choice 0'
+      },
+    ],
+    choicesPerRow: 2,
+    choicesPosition: 'below',
+    choicesLabel: '',
+    lockChoiceOrder: true,
+    removeTilesAfterPlacing: false,
+    categoriesPerRow: 2,
+    categories: [
+      {
+        id: '0',
+        label: 'Category 0',
+        choices: []
+      },
+    ],
+    rowLabels: [''],
+    correctResponse: [],
+    partialScoring: true,
+  };
 
   const wrapper = extras => {
     const defaults = {

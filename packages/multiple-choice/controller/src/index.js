@@ -14,7 +14,7 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     env.role === 'instructor' &&
     (env.mode === 'view' || env.mode === 'evaluate')
   ) {
-    out.rationale = choice.rationale;
+    out.rationale = model.rationaleEnabled ? choice.rationale : null;
   } else {
     out.rationale = null;
   }
@@ -82,7 +82,7 @@ export async function model(question, session, env, updateSession) {
   };
 
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    out.teacherInstructions = question.teacherInstructions;
+    out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
   } else {
     out.teacherInstructions = null;
   }

@@ -74,8 +74,8 @@ export const model = (question, session, env, updateSession) =>
           correctness,
           feedback,
           prompt: question.prompt,
-          choices,
-          categories: question.categories,
+          choices: choices || [],
+          categories: question.categories || [],
           disabled: env.mode !== 'gather',
           choicesPerRow: question.choicesPerRow || 2,
           choicesLabel: question.choicesLabel || '',
@@ -93,8 +93,8 @@ export const model = (question, session, env, updateSession) =>
           env.role === 'instructor' &&
           (env.mode === 'view' || env.mode === 'evaluate')
         ) {
-          out.rationale = question.rationale;
-          out.teacherInstructions = question.teacherInstructions;
+          out.rationale = question.rationaleEnabled ? question.rationale : null;
+          out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
         } else {
           out.rationale = null;
           out.teacherInstructions = null;

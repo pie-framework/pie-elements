@@ -177,6 +177,15 @@ export interface GraphingPie extends PieModel {
 
     /** Indicates the tools that have to be displayed in toolbar */
     toolbarTools?: [Tool]
+
+    /** Indicates if Rationale are enabled */
+    rationaleEnabled: boolean;
+
+    /** Indicates if Student Instructions are enabled */
+    studentInstructionsEnabled: boolean;
+
+    /** Indicates if Teacher Instructions are enabled */
+    teacherInstructionsEnabled: boolean;
 }
 
 /**

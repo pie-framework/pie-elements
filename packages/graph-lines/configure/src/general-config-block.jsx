@@ -62,7 +62,8 @@ export class GeneralConfigBlock extends React.Component {
     configuration: PropTypes.object,
     rationale: PropTypes.string,
     imageSupport: PropTypes.object,
-    onRationaleChange: PropTypes.func
+    onRationaleChange: PropTypes.func,
+    rationaleEnabled: PropTypes.bool
   };
 
   static defaultProps = {
@@ -97,7 +98,8 @@ export class GeneralConfigBlock extends React.Component {
       configuration,
       rationale,
       imageSupport,
-      onRationaleChange
+      onRationaleChange,
+      rationaleEnabled
     } = this.props;
     const { rationale: cRationale = {} } = configuration || {};
 
@@ -162,7 +164,7 @@ export class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('exhibitOnly', true)}/>
           </div>
         </div>
-        {cRationale.enabled && (
+        {rationaleEnabled && (
           <InputContainer
             label={cRationale.label || 'Rationale'}
           >

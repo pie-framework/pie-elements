@@ -20,9 +20,11 @@ export function model(question, session, env) {
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = question.teacherInstructions;
+      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      out.rationale = question.rationaleEnabled ? question.rationale : null;
     } else {
       out.teacherInstructions = null;
+      out.rationale = null;
     }
 
     resolve(out);

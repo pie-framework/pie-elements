@@ -81,10 +81,11 @@ const Design = withStyles(styles)(props => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled
   } = configuration || {};
+  const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
 
   const Content = (
     <div>
-      {teacherInstructions.enabled && (
+      {teacherInstructionsEnabled && (
         <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
@@ -131,7 +132,7 @@ const Design = withStyles(styles)(props => {
             allowDelete={deleteChoice.settings}
             noLabels
           />
-          {rationale.enabled && (
+          {rationaleEnabled && (
             <InputContainer
               key={`rationale-${index}`}
               label={rationale.label}
@@ -194,12 +195,11 @@ const Design = withStyles(styles)(props => {
                         toggle(feedback.label, true)
                     },
                     'Properties': {
-                      'teacherInstructions.enabled': teacherInstructions.settings &&
-                        toggle(teacherInstructions.label, true),
-                      'studentInstructions.enabled': studentInstructions.settings &&
-                        toggle(studentInstructions.label, true),
-                      'rationale.enabled': rationale.settings &&
-                        toggle(rationale.label, true),
+                      teacherInstructionsEnabled: teacherInstructions.settings &&
+                        toggle(teacherInstructions.label),
+                      studentInstructionsEnabled: studentInstructions.settings &&
+                        toggle(studentInstructions.label),
+                      rationaleEnabled: rationale.settings && toggle(rationale.label),
                       scoringType: scoringType.settings &&
                         radio(scoringType.label, ['auto', 'rubric']),
                     },

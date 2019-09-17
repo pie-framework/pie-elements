@@ -6,7 +6,10 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
-    equationEditor: 'everything'
+    equationEditor: 'everything',
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     dimensions: {
@@ -35,8 +38,7 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
-      enabled: true,
+      label: 'Student Instructions'
     },
     prompt: {
       settings: true,
@@ -45,8 +47,7 @@ export default {
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: true,
+      label: 'Teacher Instructions'
     },
   }
 };

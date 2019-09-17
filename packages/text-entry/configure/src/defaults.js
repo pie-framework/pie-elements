@@ -15,13 +15,15 @@ export default {
     answerAlignment: 'left',
     prompt: 'Question Prompt goes here',
     allowDecimal: false,
-    allowThousandsSeparator: false
+    allowThousandsSeparator: false,
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: false
   },
   configuration: {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions',
-      enabled: true
     },
   }
 };

@@ -39,6 +39,9 @@ export default {
     },
     scoringType: 'partial scoring',
     title: 'This is a chart!',
+    rationaleEnabled: false,
+    teacherInstructionsEnabled: false,
+    studentInstructionsEnabled: false
   },
   configuration: {
     prompt: {
@@ -56,18 +59,15 @@ export default {
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
-      enabled: true
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-      enabled: false
+      label: 'Teacher Instructions'
     },
     title: {
       settings: false,
-      label: 'Graph Title',
-      enabled: true
+      label: 'Graph Title'
     }
   }
 };

@@ -53,6 +53,7 @@ class Root extends React.Component {
       teacherInstructions = {},
       rationale = {}
     } = configuration || {};
+    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
 
     return (
       <div className={classes.base}>
@@ -71,19 +72,18 @@ class Root extends React.Component {
                     partialScoring.settings && toggle(partialScoring.label),
                   'prompt.enabled':
                     prompt.settings && toggle(prompt.label, true),
-                  'rationale.enabled':
-                    rationale.settings && toggle(rationale.label, true)
+                  rationaleEnabled: rationale.settings && toggle(rationale.label)
                 },
                 Properties: {
-                  'teacherInstructions.enabled':
-                    teacherInstructions.settings && toggle(teacherInstructions.label, true)
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings && toggle(teacherInstructions.label)
                 }
               }}
             />
           }
         >
           <div className={classes.regular}>
-            {teacherInstructions.enabled && (
+            {teacherInstructionsEnabled && (
               <InputContainer label={teacherInstructions.label} className={classes.prompt}>
                 <EditableHtml
                   markup={model.teacherInstructions || ''}
@@ -104,7 +104,7 @@ class Root extends React.Component {
               </InputContainer>
             )}
 
-            {rationale.enabled && (
+            {rationaleEnabled && (
               <InputContainer
                 label={rationale.label}
                 className={classes.prompt}

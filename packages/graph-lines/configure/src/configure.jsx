@@ -156,12 +156,11 @@ export class Configure extends React.Component {
                 labels: labels.settings && toggle(labels.label),
               },
               'Properties': {
-                'teacherInstructions.enabled': teacherInstructions.settings &&
-                toggle(teacherInstructions.label, true),
-                'studentInstructions.enabled': studentInstructions.settings &&
-                toggle(studentInstructions.label, true),
-                'rationale.enabled': rationale.settings &&
-                toggle(rationale.label, true),
+                teacherInstructionsEnabled: teacherInstructions.settings &&
+                toggle(teacherInstructions.label),
+                studentInstructionsEnabled: studentInstructions.settings &&
+                toggle(studentInstructions.label),
+                rationaleEnabled: rationale.settings && toggle(rationale.label),
                 scoringType: scoringType.settings &&
                 radio(scoringType.label, ['auto', 'rubric']),
               },
@@ -186,6 +185,7 @@ export class Configure extends React.Component {
             config={config}
             configuration={configuration}
             rationale={model.rationale}
+            rationaleEnabled={model && model.rationaleEnabled}
             onChange={this.onChange}
             imageSupport={imageSupport}
           />

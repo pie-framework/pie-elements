@@ -105,6 +105,15 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if partial scoring is enabled */
   partialScoring?: boolean;
+
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
+
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
+
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
 }
 
 /**
