@@ -31,16 +31,10 @@ const getFeedback = correct => {
 export function model(question, session, env, updateSession) {
   const { value = {} } = session || {};
   return new Promise(async resolve => {
-    const defaultFeedback = Object.assign(
-      { correct: 'Correct', incorrect: 'Incorrect' },
-      question.defaultFeedback
-    );
-    const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
-
     let choices = reduce(
       question.choices,
       (obj, area, key) => {
-        obj[key] = map(area, choice => preparChoiceFn(key, choice));
+        obj[key] = map(area, choice => choice);
 
         return obj;
       },
