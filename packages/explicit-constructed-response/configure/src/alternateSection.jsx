@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
+import max from 'lodash/max';
 
 const styles = theme => ({
   altChoices: {
@@ -84,7 +85,10 @@ export class AlternateSection extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
-    if (!this.state.choices || !isEqual(props.choices, this.props.choices)) {
+    if (!this.state.choices
+      || !isEqual(props.choices, this.state.choices)
+      || !isEqual(props.choices, this.props.choices)
+    ) {
       this.setState({
         choices: props.choices
       });
@@ -102,11 +106,13 @@ export class AlternateSection extends React.Component {
     const { choices } = this.state;
 
     if (choices.length && choices[choices.length - 1].label !== '') {
+      const value = max(choices.map(c => parseInt(c.value)).filter(id => !isNaN(id))) || 0;
+
       this.setState({
         choices: [
           ...choices,
           {
-            value: `${choices.length}`,
+            value: `${value + 1}`,
             label: ''
           }
         ]
