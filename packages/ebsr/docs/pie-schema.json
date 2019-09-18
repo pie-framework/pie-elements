@@ -83,13 +83,31 @@
           "description": "Indicates teacher instructions",
           "type": "string",
           "title": "teacherInstructions"
+        },
+        "rationaleEnabled": {
+          "description": "Indicates if Rationale are enabled",
+          "type": "boolean",
+          "title": "rationaleEnabled"
+        },
+        "studentInstructionsEnabled": {
+          "description": "Indicates if Student Instructions are enabled",
+          "type": "boolean",
+          "title": "studentInstructionsEnabled"
+        },
+        "teacherInstructionsEnabled": {
+          "description": "Indicates if Teacher Instructions are enabled",
+          "type": "boolean",
+          "title": "teacherInstructionsEnabled"
         }
       },
       "required": [
         "choiceMode",
         "choicePrefix",
         "choices",
-        "prompt"
+        "prompt",
+        "rationaleEnabled",
+        "studentInstructionsEnabled",
+        "teacherInstructionsEnabled"
       ]
     },
     "partB": {
@@ -172,13 +190,31 @@
           "description": "Indicates teacher instructions",
           "type": "string",
           "title": "teacherInstructions"
+        },
+        "rationaleEnabled": {
+          "description": "Indicates if Rationale are enabled",
+          "type": "boolean",
+          "title": "rationaleEnabled"
+        },
+        "studentInstructionsEnabled": {
+          "description": "Indicates if Student Instructions are enabled",
+          "type": "boolean",
+          "title": "studentInstructionsEnabled"
+        },
+        "teacherInstructionsEnabled": {
+          "description": "Indicates if Teacher Instructions are enabled",
+          "type": "boolean",
+          "title": "teacherInstructionsEnabled"
         }
       },
       "required": [
         "choiceMode",
         "choicePrefix",
         "choices",
-        "prompt"
+        "prompt",
+        "rationaleEnabled",
+        "studentInstructionsEnabled",
+        "teacherInstructionsEnabled"
       ]
     },
     "partLabels": {
@@ -595,13 +631,31 @@
           "description": "Indicates teacher instructions",
           "type": "string",
           "title": "teacherInstructions"
+        },
+        "rationaleEnabled": {
+          "description": "Indicates if Rationale are enabled",
+          "type": "boolean",
+          "title": "rationaleEnabled"
+        },
+        "studentInstructionsEnabled": {
+          "description": "Indicates if Student Instructions are enabled",
+          "type": "boolean",
+          "title": "studentInstructionsEnabled"
+        },
+        "teacherInstructionsEnabled": {
+          "description": "Indicates if Teacher Instructions are enabled",
+          "type": "boolean",
+          "title": "teacherInstructionsEnabled"
         }
       },
       "required": [
         "choiceMode",
         "choicePrefix",
         "choices",
-        "prompt"
+        "prompt",
+        "rationaleEnabled",
+        "studentInstructionsEnabled",
+        "teacherInstructionsEnabled"
       ]
     },
     "Choice": {
