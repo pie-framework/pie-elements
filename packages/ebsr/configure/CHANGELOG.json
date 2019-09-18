@@ -758,5 +758,20 @@
     "committerDate": "2019-09-13 11:12:30 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@3.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Shuffle choices only when sending them to pie-ui.",
+    "merge": null,
+    "header": "fix: Shuffle choices only when sending them to pie-ui.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e3240fb135deca3a306910a94947719c3caa907f",
+    "gitTags": "",
+    "committerDate": "2019-09-16 12:53:39 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@3.0.2"
   }
 ]
