@@ -35,7 +35,11 @@ export default class ExtendedTextEntry extends HTMLElement {
   }
 
   set configuration(c) {
-    this._configuration = c;
+    this._configuration = {
+      ...defaults.configuration,
+      ...c
+    };
+
     this.render();
   }
 
@@ -46,7 +50,10 @@ export default class ExtendedTextEntry extends HTMLElement {
   }
 
   onConfigurationChanged(c) {
-    this._configuration = c;
+    this._configuration = {
+      ...defaults.configuration,
+      ...c
+    };
 
     if (this._model) {
       this._model.allowFeedback = (c.feedback || {}).enabled;
