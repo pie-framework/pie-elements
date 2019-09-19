@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.0...@pie-element/ebsr-configure@4.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* Stop resetting the model. ([91af204](https://github.com/pie-framework/pie-elements/commit/91af204))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@3.0.3...@pie-element/ebsr-configure@4.0.0) (2019-09-19)
 
 
