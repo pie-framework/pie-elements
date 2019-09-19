@@ -1068,5 +1068,20 @@
     "committerDate": "2019-09-16 19:17:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/extended-text-entry@5.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Keep settings from defaults.configuration if they are not defined in the new configuration.",
+    "merge": null,
+    "header": "fix: Keep settings from defaults.configuration if they are not defined in the new configuration.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8245373fd0971fcd1332b018271aa9e4806b48ff",
+    "gitTags": " (origin/andreea/ch3564/item-authoring-prompt-text-box-not-displaying)",
+    "committerDate": "2019-09-19 11:09:03 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/extended-text-entry@5.0.2"
   }
 ]
