@@ -418,5 +418,20 @@
     "committerDate": "2019-09-18 08:52:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@2.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "variables pointing to the same address issue",
+    "merge": null,
+    "header": "fix: variables pointing to the same address issue",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "76cfd3080ba6d459974166972abeca6dc7b69dbe",
+    "gitTags": " (origin/andreea/ch4011/for-inline-dropdown-in-ibx-and-the-pie-api)",
+    "committerDate": "2019-09-19 09:47:24 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@2.0.2"
   }
 ]
