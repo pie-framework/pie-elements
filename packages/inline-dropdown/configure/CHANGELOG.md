@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@2.0.0...@pie-element/inline-dropdown-configure@2.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* Removed incorrect defaults, fixed bug (App crash at: remove options from a dropdown until you have only one option, save, click OK on the opened dialog) ([26410f2](https://github.com/pie-framework/pie-elements/commit/26410f2))
+* Removed usage of state.markup. Prevented crash for "Show Correct Answers" Toggle. ([8e66852](https://github.com/pie-framework/pie-elements/commit/8e66852))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@1.6.1...@pie-element/inline-dropdown-configure@2.0.0) (2019-09-17)
 
 

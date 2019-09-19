@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@6.0.0...@pie-element/pie-models@7.0.0) (2019-09-19)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([c0c58e3](https://github.com/pie-framework/pie-elements/commit/c0c58e3))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.4...@pie-element/pie-models@6.0.0) (2019-09-17)
 
 

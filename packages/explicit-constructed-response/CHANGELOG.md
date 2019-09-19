@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@2.0.0...@pie-element/explicit-constructed-response@2.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* State not updating at choice change + bug found when having 3 alternates, deleting the 2nd one and adding a new one ([#332](https://github.com/pie-framework/pie-elements/issues/332)) ([3da260f](https://github.com/pie-framework/pie-elements/commit/3da260f))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@1.10.1...@pie-element/explicit-constructed-response@2.0.0) (2019-09-17)
 
 

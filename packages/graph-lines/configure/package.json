@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graph-lines-configure",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "",
   "main": "lib/index.js",
   "author": "",
