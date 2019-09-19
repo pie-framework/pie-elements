@@ -23,7 +23,10 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
-    if (!this.state.choices || !isEqual(props.model.choices, this.props.model.choices)) {
+    if (!this.state.choices
+      || !isEqual(this.state.choices, props.model.choices)
+      || !isEqual(props.model.choices, this.props.model.choices)
+    ) {
       const { choices } = props.model;
 
       const selectedValues = reduce(choices, (obj, c, key) => {

@@ -43,7 +43,7 @@ const prepareCustomizationObject = (config, model) => {
     configuration,
     model: {
       ...model,
-      choices: generateFormattedChoices(model.choices, configuration.answerChoiceCount)
+      choices: generateFormattedChoices((model && model.choices) || [], configuration && configuration.answerChoiceCount)
     }
   };
 };
@@ -52,7 +52,7 @@ export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
     ...sensibleDefaults.model,
     ...model,
-    choices: generateFormattedChoices(model.choices),
+    choices: generateFormattedChoices((model && model.choices) || []),
     allowFeedback: sensibleDefaults.configuration.feedback.enabled
   });
 
