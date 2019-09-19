@@ -718,5 +718,20 @@
     "committerDate": "2019-09-19 09:47:24 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown@2.0.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "State not updating.",
+    "merge": null,
+    "header": "fix: State not updating.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1f1e6b4f29baf8b23dda3cf33a5bb2689dc49054",
+    "gitTags": " (origin/andreea/ch4011/for-inline-dropdown-in-ibx-and-the-pie-api-2)",
+    "committerDate": "2019-09-19 10:20:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown@2.0.3"
   }
 ]
