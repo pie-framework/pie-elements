@@ -133,7 +133,9 @@ export class Main extends React.Component {
   UNSAFE_componentWillReceiveProps(nProps) {
     const newState = {};
 
-    if (!isEqual(nProps.model.choices, this.props.model.choices)) {
+    if (!isEqual(nProps.model.choices, this.props.model.choices)
+      || (!isEqual(nProps.model.choices, this.state.respAreaChoices))
+    ) {
       newState.respAreaChoices = cloneDeep(nProps.model.choices);
     }
 
