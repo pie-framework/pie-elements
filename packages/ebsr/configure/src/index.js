@@ -67,10 +67,10 @@ export default class EbsrConfigure extends HTMLElement {
     this._render();
   }
 
-  onModelChanged = (m, reset) => {
+  onModelChanged = (m) => {
     this._model = m;
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
     this._render();
   };
 
@@ -78,14 +78,12 @@ export default class EbsrConfigure extends HTMLElement {
     const info = prepareCustomizationObject(c, this._model);
     this._configuration = info.configuration;
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
     this._render();
   }
 
-  onConfigurationChanged(c, reset) {
+  onConfigurationChanged(c) {
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, reset));
     this._render();
   }
 
