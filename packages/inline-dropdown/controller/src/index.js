@@ -1,17 +1,9 @@
-import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
-
-const prepareChoice = () => (key, choice) => {
-  return {
-    label: choice.label,
-    value: choice.value
-  };
-};
 
 const getFeedback = correct => {
   if (correct) {
