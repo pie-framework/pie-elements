@@ -11,10 +11,9 @@ const createElementFromHTML = htmlString => {
 export const processMarkup = markup => {
   const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   const slateMarkup = createElementFromHTML(newMarkup);
-  let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="inline_dropdown"]').forEach(s => {
-    s.replaceWith(`{{${index++}}}`);
+    s.replaceWith(`{{${s.dataset.index}}}`);
   });
 
   return slateMarkup.innerHTML;

@@ -125,12 +125,9 @@ export class Main extends React.Component {
   };
 
   componentDidMount() {
-    const { model: { choices, slateMarkup } } = this.props;
+    const { model: { choices } } = this.props;
 
-    this.setState({
-      markup: slateMarkup,
-      respAreaChoices: cloneDeep(choices)
-    })
+    this.setState({ respAreaChoices: cloneDeep(choices) })
   }
 
   UNSAFE_componentWillReceiveProps(nProps) {
@@ -138,10 +135,6 @@ export class Main extends React.Component {
 
     if (!isEqual(nProps.model.choices, this.props.model.choices)) {
       newState.respAreaChoices = cloneDeep(nProps.model.choices);
-    }
-
-    if (!isEqual(nProps.model.slateMarkup, this.props.model.slateMarkup)) {
-      newState.markup = nProps.model.slateMarkup;
     }
 
     if (!isEmpty(newState)) {
@@ -294,7 +287,7 @@ export class Main extends React.Component {
   };
 
   render() {
-    const { dialog, markup } = this.state;
+    const { dialog } = this.state;
     const {
       classes,
       model,
@@ -416,7 +409,7 @@ export class Main extends React.Component {
                 }
               }}
               className={classes.markup}
-              markup={markup || ''}
+              markup={model.slateMarkup || ''}
               onChange={this.onChange}
               imageSupport={imageSupport}
               onBlur={this.onBlur}
