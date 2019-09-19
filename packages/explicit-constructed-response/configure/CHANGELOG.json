@@ -363,5 +363,20 @@
     "committerDate": "2019-09-16 19:16:32 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@2.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "State not updating at choice change + bug found when having 3 alternates, deleting the 2nd one and adding a new one (#332)",
+    "merge": null,
+    "header": "fix: State not updating at choice change + bug found when having 3 alternates, deleting the 2nd one and adding a new one (#332)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3da260f93047d1fc14b0be3637023f28a04f89ef",
+    "gitTags": "",
+    "committerDate": "2019-09-18 07:28:19 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@2.0.1"
   }
 ]

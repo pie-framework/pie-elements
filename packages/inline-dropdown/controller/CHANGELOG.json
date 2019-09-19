@@ -298,5 +298,35 @@
     "committerDate": "2019-08-26 16:52:25 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-controller@1.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed incorrect defaults, fixed bug (App crash at: remove options from a dropdown until you have only one option, save, click OK on the opened dialog)",
+    "merge": null,
+    "header": "fix: Removed incorrect defaults, fixed bug (App crash at: remove options from a dropdown until you have only one option, save, click OK on the opened dialog)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "26410f2de695162cd507252a3aa33d6a1b2bc52d",
+    "gitTags": "",
+    "committerDate": "2019-09-18 10:15:00 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-controller@2.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed usage of state.markup. Prevented crash for \"Show Correct Answers\" Toggle.",
+    "merge": null,
+    "header": "fix: Removed usage of state.markup. Prevented crash for \"Show Correct Answers\" Toggle.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8e668529fc1272713f01bf0a468d8cea1c3fd4ec",
+    "gitTags": "",
+    "committerDate": "2019-09-18 08:52:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-controller@2.0.1"
   }
 ]
