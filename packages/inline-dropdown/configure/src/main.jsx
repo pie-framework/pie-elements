@@ -220,7 +220,7 @@ export class Main extends React.Component {
               dialog: {
                 open: false
               }
-            }, () => this.onModelChange({ choices: newRespAreaChoices, slateMarkup: domMarkup.innerHTML }));
+            }, () => this.onModelChange({ choices: cloneDeep(newRespAreaChoices), slateMarkup: domMarkup.innerHTML }));
           },
           onCancel: () => {
             this.setState({
@@ -232,7 +232,7 @@ export class Main extends React.Component {
         }
       });
     } else {
-      this.onModelChange({ choices: newRespAreaChoices, slateMarkup: domMarkup.innerHTML });
+      this.onModelChange({ choices: cloneDeep(newRespAreaChoices), slateMarkup: domMarkup.innerHTML });
     }
   };
 
@@ -267,7 +267,7 @@ export class Main extends React.Component {
       correct: false
     });
 
-    this.onModelChange({ choices: respAreaChoices });
+    this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
   onRemoveChoice = (respIndex, index) => {
@@ -275,7 +275,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex].splice(index, 1);
 
-    this.onModelChange({ choices: respAreaChoices });
+    this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
   onSelectChoice = (respIndex, selectedIndex) => {
@@ -283,7 +283,7 @@ export class Main extends React.Component {
 
     respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({ ...ch, correct: index === selectedIndex }));
 
-    this.onModelChange({ choices: respAreaChoices });
+    this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
 
   render() {
