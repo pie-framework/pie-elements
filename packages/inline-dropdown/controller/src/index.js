@@ -1,17 +1,9 @@
-import shuffle from 'lodash/shuffle';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
-
-const prepareChoice = () => (key, choice) => {
-  return {
-    label: choice.label,
-    value: choice.value
-  };
-};
 
 const getFeedback = correct => {
   if (correct) {
@@ -31,16 +23,10 @@ const getFeedback = correct => {
 export function model(question, session, env, updateSession) {
   const { value = {} } = session || {};
   return new Promise(async resolve => {
-    const defaultFeedback = Object.assign(
-      { correct: 'Correct', incorrect: 'Incorrect' },
-      question.defaultFeedback
-    );
-    const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
-
     let choices = reduce(
       question.choices,
       (obj, area, key) => {
-        obj[key] = map(area, choice => preparChoiceFn(key, choice));
+        obj[key] = map(area, choice => choice);
 
         return obj;
       },

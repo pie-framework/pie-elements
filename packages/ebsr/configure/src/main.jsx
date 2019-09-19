@@ -107,12 +107,11 @@ export class Main extends React.Component {
                     toggle(sequentialChoiceLabelsA.label, true),
                   'partA.feedback.enabled': feedbackA.settings &&
                     toggle(feedbackA.label, true),
-                  'partA.teacherInstructions.enabled': teacherInstructionsA.settings &&
-                    toggle(teacherInstructionsA.label, true),
-                  'partA.studentInstructions.enabled': studentInstructionsA.settings &&
-                    toggle(studentInstructionsA.label, true),
-                  'partA.rationale.enabled': rationaleA.settings &&
-                    toggle(rationaleA.label, true)
+                  'partA.teacherInstructionsEnabled': teacherInstructionsA.settings &&
+                    toggle(teacherInstructionsA.label),
+                  'partA.studentInstructionsEnabled': studentInstructionsA.settings &&
+                    toggle(studentInstructionsA.label),
+                  'partA.rationaleEnabled': rationaleA.settings && toggle(rationaleA.label)
                 },
                 [`Settings ${secondPart}`]: {
                   'partB.choiceMode':
@@ -132,12 +131,11 @@ export class Main extends React.Component {
                     toggle(sequentialChoiceLabelsB.label, true),
                   'partB.feedback.enabled': feedbackB.settings &&
                     toggle(feedbackB.label, true),
-                  'partB.teacherInstructions.enabled': teacherInstructionsB.settings &&
-                    toggle(teacherInstructionsB.label, true),
-                  'partB.studentInstructions.enabled': studentInstructionsB.settings &&
-                    toggle(studentInstructionsB.label, true),
-                  'partB.rationale.enabled': rationaleB.settings &&
-                    toggle(rationaleB.label, true)
+                  'partB.teacherInstructionsEnabled': teacherInstructionsB.settings &&
+                    toggle(teacherInstructionsB.label),
+                  'partB.studentInstructionsEnabled': studentInstructionsB.settings &&
+                    toggle(studentInstructionsB.label),
+                  'partB.rationaleEnabled': rationaleB.settings && toggle(rationaleB.label)
                 }
               }}
             />

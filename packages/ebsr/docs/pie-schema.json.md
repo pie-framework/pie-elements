@@ -72,6 +72,18 @@ Indicates student instructions
 
 Indicates teacher instructions
 
+## `rationaleEnabled` (boolean, required)
+
+Indicates if Rationale are enabled
+
+## `studentInstructionsEnabled` (boolean, required)
+
+Indicates if Student Instructions are enabled
+
+## `teacherInstructionsEnabled` (boolean, required)
+
+Indicates if Teacher Instructions are enabled
+
 # `partB` (object, required)
 
 Properties of the `partB` object:
@@ -138,6 +150,18 @@ Indicates student instructions
 ## `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+## `rationaleEnabled` (boolean, required)
+
+Indicates if Rationale are enabled
+
+## `studentInstructionsEnabled` (boolean, required)
+
+Indicates if Student Instructions are enabled
+
+## `teacherInstructionsEnabled` (boolean, required)
+
+Indicates if Teacher Instructions are enabled
 
 # `partLabels` (boolean, required)
 
@@ -460,6 +484,18 @@ Indicates student instructions
 ### `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+### `rationaleEnabled` (boolean, required)
+
+Indicates if Rationale are enabled
+
+### `studentInstructionsEnabled` (boolean, required)
+
+Indicates if Student Instructions are enabled
+
+### `teacherInstructionsEnabled` (boolean, required)
+
+Indicates if Teacher Instructions are enabled
 
 ## `Choice` (object)
 

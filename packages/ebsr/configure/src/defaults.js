@@ -35,8 +35,7 @@ const defaultConfig = {
   },
   rationale: {
     settings: true,
-    label: 'Rationale',
-    enabled: true,
+    label: 'Rationale'
   },
   scoringType: {
     settings: false,
@@ -49,13 +48,11 @@ const defaultConfig = {
   },
   studentInstructions: {
     settings: false,
-    label: 'Student Instructions',
-    enabled: true,
+    label: 'Student Instructions'
   },
   teacherInstructions: {
     settings: true,
-    label: 'Teacher Instructions',
-    enabled: true,
+    label: 'Teacher Instructions'
   }
 };
 
@@ -69,6 +66,9 @@ export default {
       choicePrefix: 'numbers',
       partialScoring: false,
       prompt: 'Prompt A',
+      rationaleEnabled: false,
+      teacherInstructionsEnabled: false,
+      studentInstructionsEnabled: false
     },
     partB: {
       choiceMode: 'radio',
@@ -76,6 +76,9 @@ export default {
       choicePrefix: 'numbers',
       partialScoring: false,
       prompt: 'Prompt B',
+      rationaleEnabled: false,
+      teacherInstructionsEnabled: false,
+      studentInstructionsEnabled: false
     },
   },
   configuration: {
