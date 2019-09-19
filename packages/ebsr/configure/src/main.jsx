@@ -79,9 +79,9 @@ export class Main extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={m => onModelChanged(m, true)}
+              onChangeModel={onModelChanged}
               configuration={configuration}
-              onChangeConfiguration={c => onConfigurationChanged(c, true)}
+              onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Settings for both': {
                   partLabels: generalConfiguration.partLabels.settings &&
