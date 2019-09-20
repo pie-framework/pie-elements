@@ -1028,5 +1028,20 @@
     "committerDate": "2019-09-16 12:53:39 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@3.0.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Stop resetting the model.",
+    "merge": null,
+    "header": "fix: Stop resetting the model.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "91af204215c5cdf296d2a9005ceee470bd83530b",
+    "gitTags": " (origin/andreea/ch3761/from-ibx-item-authoring-authoring-ebsr-item)",
+    "committerDate": "2019-09-19 20:22:49 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@4.0.1"
   }
 ]
