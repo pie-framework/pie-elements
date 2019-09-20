@@ -99,7 +99,7 @@ export default class EbsrConfigure extends HTMLElement {
 
     if (id) {
       this._model[`part${id}`] = e.update;
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+      this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
   };
 
