@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@3.0.0...@pie-element/hotspot-configure@3.1.0) (2019-09-24)
+
+
+### Features
+
+* **drawable:** fixed the not rendering item preview [ch3629] ([9c7b053](https://github.com/pie-framework/pie-elements/commit/9c7b053))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@2.7.8...@pie-element/hotspot-configure@3.0.0) (2019-09-17)
 
 
