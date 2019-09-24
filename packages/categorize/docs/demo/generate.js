@@ -1,6 +1,7 @@
 exports.model = (id, element) => ({
   id,
   element,
+  promptEnabled: true,
   'choices': [
     {
       'id': '0',

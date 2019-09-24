@@ -55,7 +55,7 @@ export const createDefaultModel = (model = {}) =>
  */
 export const model = (question, session, env, updateSession) =>
   new Promise(resolve => {
-    
+
     const correctPromise = getCorrectness(question, session, env);
 
     correctPromise.then(async correctness => {
@@ -73,7 +73,7 @@ export const model = (question, session, env, updateSession) =>
         const out = {
           correctness,
           feedback,
-          prompt: question.prompt,
+          prompt: question.promptEnabled ? question.prompt : null,
           choices: choices || [],
           categories: question.categories || [],
           disabled: env.mode !== 'gather',
