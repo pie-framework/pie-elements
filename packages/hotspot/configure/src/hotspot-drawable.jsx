@@ -99,6 +99,7 @@ class Drawable extends React.Component {
       const newHeight = mouseY - currShape.y;
 
       const newShapesList = shapes.slice();
+
       newShapesList[currShapeIndex] = {
         id: currShape.id,
         height: newHeight,
@@ -106,18 +107,22 @@ class Drawable extends React.Component {
         x: currShape.x,
         y: currShape.y
       };
+
       // On mouse move don't trigger any event. Put the shapes on this state instead.
       this.setState({ stateShapes: newShapesList });
     }
   };
 
-  handleOnImageLoad = ({ target: { offsetHeight, offsetWidth } }) => {
+  handleOnImageLoad = ({ target }) => {
     const { onUpdateImageDimension } = this.props;
     const resizeHandle = this.resize;
+    const elementStyle = getComputedStyle(target);
+    const newHeight = parseFloat(elementStyle.height);
+    const newWidth = parseFloat(elementStyle.width);
 
     const dimensions = {
-      height: offsetHeight,
-      width: offsetWidth
+      height: newHeight,
+      width: newWidth
     };
 
     this.setState({ dimensions });
