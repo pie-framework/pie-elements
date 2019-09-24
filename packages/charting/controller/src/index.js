@@ -140,6 +140,7 @@ export function model(question, session, env) {
       editCategoryEnabled,
       graph,
       prompt,
+      promptEnabled,
       range,
       rationale,
       title
@@ -155,7 +156,7 @@ export function model(question, session, env) {
       domain,
       editCategoryEnabled,
       graph,
-      prompt,
+      prompt: promptEnabled ? prompt : null,
       range,
       rationale,
       title,
