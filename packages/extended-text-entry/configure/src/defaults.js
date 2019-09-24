@@ -8,6 +8,7 @@ export default {
     mathInput: false,
     equationEditor: 'everything',
     rationaleEnabled: false,
+    promptEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },
@@ -42,8 +43,7 @@ export default {
     },
     prompt: {
       settings: true,
-      label: 'Prompt',
-      enabled: true,
+      label: 'Prompt'
     },
     teacherInstructions: {
       settings: true,
