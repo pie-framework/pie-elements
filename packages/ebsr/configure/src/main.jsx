@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  settings,
-  layout
-} from '@pie-lib/config-ui';
+import { settings, layout } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -41,33 +38,35 @@ export class Main extends React.Component {
       model,
       configuration,
       onModelChanged,
-      onConfigurationChanged,
+      onConfigurationChanged
     } = this.props;
     const { partLabelType } = model;
     const { partA, partB, ...generalConfiguration } = configuration;
     const {
-      feedback: feedbackA = {} ,
+      feedback: feedbackA = {},
       choiceMode: choiceModeA = {},
       choicePrefix: choicePrefixA = {},
       partialScoring: partialScoringA = {},
       lockChoiceOrder: lockChoiceOrderA = {},
+      prompt: promptA = {},
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
       rationale: rationaleA = {},
       scoringType: scoringTypeA = {},
-      sequentialChoiceLabels: sequentialChoiceLabelsA = {},
+      sequentialChoiceLabels: sequentialChoiceLabelsA = {}
     } = partA || {};
     const {
-      feedback: feedbackB = {} ,
+      feedback: feedbackB = {},
       choiceMode: choiceModeB = {},
       choicePrefix: choicePrefixB = {},
       partialScoring: partialScoringB = {},
       lockChoiceOrder: lockChoiceOrderB = {},
+      prompt: promptB = {},
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
       rationale: rationaleB = {},
       scoringType: scoringTypeB = {},
-      sequentialChoiceLabels: sequentialChoiceLabelsB = {},
+      sequentialChoiceLabels: sequentialChoiceLabelsB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
@@ -85,58 +84,75 @@ export class Main extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 'Settings for both': {
-                  partLabels: generalConfiguration.partLabels.settings &&
+                  partLabels:
+                    generalConfiguration.partLabels.settings &&
                     toggle(generalConfiguration.partLabels.label),
-                  partLabelType: model.partLabels &&
-                    dropdown('', ['Numbers', 'Letters'])
+                  partLabelType:
+                    model.partLabels && dropdown('', ['Numbers', 'Letters'])
                 },
                 [`Settings ${firstPart}`]: {
                   'partA.choiceMode':
                     choiceModeA.settings &&
                     radio(choiceModeA.label, ['checkbox', 'radio']),
-                  'partA.choicePrefix': choicePrefixA.settings &&
+                  'partA.choicePrefix':
+                    choicePrefixA.settings &&
                     radio(choicePrefixA.label, ['numbers', 'letters']),
-                  'partA.partialScoring': partialScoringA.settings &&
-                    toggle(partialScoringA.label),
-                  'partA.lockChoiceOrder': lockChoiceOrderA.settings &&
-                    toggle(lockChoiceOrderA.label),
-                  'partA.scoringType': scoringTypeA.settings &&
+                  'partA.partialScoring':
+                    partialScoringA.settings && toggle(partialScoringA.label),
+                  'partA.lockChoiceOrder':
+                    lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
+                  'partA.scoringType':
+                    scoringTypeA.settings &&
                     radio(scoringTypeA.label, ['auto', 'rubric'])
                 },
                 [`Properties ${firstPart}`]: {
-                  'partA.sequentialChoiceLabels.enabled': sequentialChoiceLabelsA.settings &&
+                  'partA.sequentialChoiceLabels.enabled':
+                    sequentialChoiceLabelsA.settings &&
                     toggle(sequentialChoiceLabelsA.label, true),
-                  'partA.feedback.enabled': feedbackA.settings &&
-                    toggle(feedbackA.label, true),
-                  'partA.teacherInstructionsEnabled': teacherInstructionsA.settings &&
+                  'partA.feedback.enabled':
+                    feedbackA.settings && toggle(feedbackA.label, true),
+                  'partA.promptEnabled':
+                    promptA.settings && toggle(promptA.label),
+                  'partA.teacherInstructionsEnabled':
+                    teacherInstructionsA.settings &&
                     toggle(teacherInstructionsA.label),
-                  'partA.studentInstructionsEnabled': studentInstructionsA.settings &&
+                  'partA.studentInstructionsEnabled':
+                    studentInstructionsA.settings &&
                     toggle(studentInstructionsA.label),
-                  'partA.rationaleEnabled': rationaleA.settings && toggle(rationaleA.label)
+                  'partA.rationaleEnabled':
+                    rationaleA.settings && toggle(rationaleA.label)
                 },
                 [`Settings ${secondPart}`]: {
                   'partB.choiceMode':
                     choiceModeB.settings &&
                     radio(choiceModeB.label, ['checkbox', 'radio']),
-                  'partB.choicePrefix': choicePrefixB.settings &&
+                  'partB.choicePrefix':
+                    choicePrefixB.settings &&
                     radio(choicePrefixB.label, ['numbers', 'letters']),
-                  'partB.partialScoring': partialScoringB.settings &&
-                    toggle(partialScoringB.label),
-                  'partB.lockChoiceOrder': lockChoiceOrderB.settings &&
-                    toggle(lockChoiceOrderB.label),
-                  'partA.scoringType': scoringTypeB.settings &&
+                  'partB.partialScoring':
+                    partialScoringB.settings && toggle(partialScoringB.label),
+                  'partB.lockChoiceOrder':
+                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
+                  'partA.scoringType':
+                    scoringTypeB.settings &&
                     radio(scoringTypeB.label, ['auto', 'rubric'])
                 },
                 [`Properties ${secondPart}`]: {
-                  'partB.sequentialChoiceLabels.enabled': sequentialChoiceLabelsB.settings &&
+                  'partB.sequentialChoiceLabels.enabled':
+                    sequentialChoiceLabelsB.settings &&
                     toggle(sequentialChoiceLabelsB.label, true),
-                  'partB.feedback.enabled': feedbackB.settings &&
-                    toggle(feedbackB.label, true),
-                  'partB.teacherInstructionsEnabled': teacherInstructionsB.settings &&
+                  'partB.feedback.enabled':
+                    feedbackB.settings && toggle(feedbackB.label, true),
+                  'partB.promptEnabled':
+                    promptB.settings && toggle(promptB.label),
+                  'partB.teacherInstructionsEnabled':
+                    teacherInstructionsB.settings &&
                     toggle(teacherInstructionsB.label),
-                  'partB.studentInstructionsEnabled': studentInstructionsB.settings &&
+                  'partB.studentInstructionsEnabled':
+                    studentInstructionsB.settings &&
                     toggle(studentInstructionsB.label),
-                  'partB.rationaleEnabled': rationaleB.settings && toggle(rationaleB.label)
+                  'partB.rationaleEnabled':
+                    rationaleB.settings && toggle(rationaleB.label)
                 }
               }}
             />

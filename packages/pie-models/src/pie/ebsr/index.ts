@@ -29,6 +29,9 @@ export interface Part {
     /**  The question prompt or item stem */
     prompt: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates scoring type */
     scoringType?: 'auto' | 'rubric';
 
