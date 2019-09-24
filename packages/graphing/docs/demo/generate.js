@@ -51,6 +51,7 @@ exports.model = (id, element) => ({
   labels: {top: 'top', left: 'left', bottom: 'bottom', right: 'right'},
   padding: true,
   prompt: 'Here goes item stem !!!!!!',
+  promptEnabled: true,
   range: {
     min: -5,
     max: 5,
