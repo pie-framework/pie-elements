@@ -17,6 +17,9 @@ export interface DrawingResponsePie extends PieModel {
     /**  The question prompt or item stem */
     prompt?: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /**  The image over which shapes, patterns and texts will be added */
     imageUrl?: string;
 
