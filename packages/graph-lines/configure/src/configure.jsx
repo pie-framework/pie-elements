@@ -1,11 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import ChartConfig from '@pie-lib/charting-config';
-import {
-  FeedbackConfig,
-  settings,
-  layout
-} from '@pie-lib/config-ui';
+import { FeedbackConfig, settings, layout } from '@pie-lib/config-ui';
 import PartialScoringConfig from '@pie-lib/scoring-config';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -34,7 +30,7 @@ export class Configure extends React.Component {
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -97,7 +93,11 @@ export class Configure extends React.Component {
     const { model } = this.props;
     const newGraph = {
       ...model.graph,
-      lines: model.graph.lines.concat({ initialView: '', correctLine: '', label: '' })
+      lines: model.graph.lines.concat({
+        initialView: '',
+        correctLine: '',
+        label: ''
+      })
     };
 
     this.onChange(newGraph);
@@ -145,7 +145,7 @@ export class Configure extends React.Component {
       prompt = {},
       scoringType = {},
       studentInstructions = {},
-      teacherInstructions = {},
+      teacherInstructions = {}
     } = configuration || {};
     log('[render] model', model);
 
@@ -158,36 +158,42 @@ export class Configure extends React.Component {
             onChangeModel={onModelChanged}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Settings': {
+              Settings: {
                 arrows: arrows.settings && toggle(arrows.label),
-                'graphTitle.enabled': graphTitle.settings &&
-                toggle(graphTitle.label, true),
+                'graphTitle.enabled':
+                  graphTitle.settings && toggle(graphTitle.label, true),
                 padding: padding.settings && toggle(padding.label),
-                labels: labels.settings && toggle(labels.label),
+                labels: labels.settings && toggle(labels.label)
               },
-              'Properties': {
-                teacherInstructionsEnabled: teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                promptEnabled: prompt.settings &&
-                  toggle(prompt.label),
-                studentInstructionsEnabled: studentInstructions.settings &&
-                toggle(studentInstructions.label),
+              Properties: {
+                teacherInstructionsEnabled:
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
+                studentInstructionsEnabled:
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, ['auto', 'rubric']),
-              },
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric'])
+              }
             }}
           />
         }
       >
         <div className={classes.content}>
           <Typography component="div" type="body1">
-                <span>
-                  This interaction asks a student to draw a line that meets specific criteria.
-                  The student will draw the line by clicking on two points on the graph.
-                </span>
+            <span>
+              This interaction asks a student to draw a line that meets specific
+              criteria. The student will draw the line by clicking on two points
+              on the graph.
+            </span>
             <h2>Lines</h2>
-            <span>Line equations must be in y=mx+b form. Only whole number coordinates can be plotted.</span>
+            <span>
+              Line equations must be in y=mx+b form. Only whole number
+              coordinates can be plotted.
+            </span>
           </Typography>
           <GeneralConfigBlock
             onMultipleToggle={this.onMultipleToggle}

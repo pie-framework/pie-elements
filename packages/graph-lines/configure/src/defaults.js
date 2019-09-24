@@ -17,11 +17,11 @@ export default {
   configuration: {
     arrows: {
       settings: false,
-      label: 'Include arrows',
+      label: 'Include arrows'
     },
     padding: {
       settings: false,
-      label: 'Padding',
+      label: 'Padding'
     },
     graphTitle: {
       settings: false,
@@ -43,7 +43,7 @@ export default {
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
@@ -52,6 +52,6 @@ export default {
     teacherInstructions: {
       settings: false,
       label: 'Teacher Instructions'
-    },
+    }
   }
 };

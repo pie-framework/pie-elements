@@ -34,10 +34,10 @@ const styles = theme => ({
     width: '90%'
   },
   prompt: {
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2
   },
   rationale: {
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2
   },
   equationLabel: {
     marginRight: theme.spacing.unit
@@ -51,7 +51,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
-  },
+  }
 });
 
 export class GeneralConfigBlock extends React.Component {
@@ -109,22 +109,21 @@ export class GeneralConfigBlock extends React.Component {
       promptEnabled,
       rationaleEnabled
     } = this.props;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {} } =
+      configuration || {};
 
     return (
       <div className={classes.container}>
         {promptEnabled && (
-          <InputContainer
-            label={cPrompt.label || 'Prompt'}
-          >
+          <InputContainer label={cPrompt.label || 'Prompt'}>
             <EditableHtml
               className={classes.prompt}
               markup={prompt || ''}
               onChange={onPromptChange}
               imageSupport={imageSupport}
             />
-          </InputContainer>)
-        }
+          </InputContainer>
+        )}
         {config.lines.map((line, idx) => (
           <div key={idx} className={classes.inputContainer}>
             <div className={classes.inputItem}>
@@ -138,22 +137,28 @@ export class GeneralConfigBlock extends React.Component {
                 />
               </InputContainer>
             </div>
-            {!config.exhibitOnly && <div className={classes.inputItem}>
-              <Typography type="body1">
-                <span className={classes.equationLabel}>y = </span>
-              </Typography>
-              <InputContainer label="Correct Line">
-                <Input
-                  type="text"
-                  className={classes.input}
-                  onChange={this.onLineChange(idx, 'correctLine')}
-                  value={line.correctLine || ''}
-                  placeholder="Enter Value"
-                />
-              </InputContainer>
-            </div>}
+            {!config.exhibitOnly && (
+              <div className={classes.inputItem}>
+                <Typography type="body1">
+                  <span className={classes.equationLabel}>y = </span>
+                </Typography>
+                <InputContainer label="Correct Line">
+                  <Input
+                    type="text"
+                    className={classes.input}
+                    onChange={this.onLineChange(idx, 'correctLine')}
+                    value={line.correctLine || ''}
+                    placeholder="Enter Value"
+                  />
+                </InputContainer>
+              </div>
+            )}
 
-            <div className={classnames(classes.inputItem, { [classes.exhibitOnly]: config.exhibitOnly })}>
+            <div
+              className={classnames(classes.inputItem, {
+                [classes.exhibitOnly]: config.exhibitOnly
+              })}
+            >
               <Typography type="body1">
                 <span className={classes.equationLabel}>y = </span>
               </Typography>
@@ -175,27 +180,27 @@ export class GeneralConfigBlock extends React.Component {
             <InputCheckbox
               label="Multiple Line Graph"
               checked={multiple}
-              onChange={onMultipleToggle}/>
+              onChange={onMultipleToggle}
+            />
           </div>
           <div className={classes.optionsCheckbox}>
             <InputCheckbox
               label="Make this graph an exhibit only"
               checked={config.exhibitOnly || false}
-              onChange={this.onChange('exhibitOnly', true)}/>
+              onChange={this.onChange('exhibitOnly', true)}
+            />
           </div>
         </div>
         {rationaleEnabled && (
-          <InputContainer
-            label={cRationale.label || 'Rationale'}
-          >
+          <InputContainer label={cRationale.label || 'Rationale'}>
             <EditableHtml
               className={classes.rationale}
               markup={rationale || ''}
               onChange={onRationaleChange}
               imageSupport={imageSupport}
             />
-          </InputContainer>)
-        }
+          </InputContainer>
+        )}
       </div>
     );
   }
