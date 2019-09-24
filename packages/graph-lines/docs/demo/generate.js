@@ -5,6 +5,8 @@ exports.model = (id, element) => ({
   partialScoring: false,
   partialScoringRules: [],
   rationale: 'Rationale goes here',
+  prompt: 'Prompt goes here',
+  promptEnabled: true,
   feedback: {
     correct: {
       type: 'none',

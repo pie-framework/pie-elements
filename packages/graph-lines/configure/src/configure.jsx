@@ -78,6 +78,15 @@ export class Configure extends React.Component {
     });
   };
 
+  onPromptChange = prompt => {
+    const { onModelChanged, model } = this.props;
+
+    onModelChanged({
+      ...model,
+      prompt
+    });
+  };
+
   onFeedbackChange = feedback => {
     const { model, onModelChanged } = this.props;
     model.feedback = feedback;
@@ -133,6 +142,7 @@ export class Configure extends React.Component {
       labels = {},
 
       rationale = {},
+      prompt = {},
       scoringType = {},
       studentInstructions = {},
       teacherInstructions = {},
@@ -158,6 +168,8 @@ export class Configure extends React.Component {
               'Properties': {
                 teacherInstructionsEnabled: teacherInstructions.settings &&
                 toggle(teacherInstructions.label),
+                promptEnabled: prompt.settings &&
+                  toggle(prompt.label),
                 studentInstructionsEnabled: studentInstructions.settings &&
                 toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
@@ -181,11 +193,13 @@ export class Configure extends React.Component {
             onMultipleToggle={this.onMultipleToggle}
             onAddLine={this.onAddLine}
             onRationaleChange={this.onRationaleChange}
+            onPromptChange={this.onPromptChange}
             multiple={model.multiple}
             config={config}
             configuration={configuration}
             rationale={model.rationale}
             rationaleEnabled={model && model.rationaleEnabled}
+            promptEnabled={model && model.promptEnabled}
             onChange={this.onChange}
             imageSupport={imageSupport}
           />

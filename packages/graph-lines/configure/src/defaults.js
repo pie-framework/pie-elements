@@ -9,6 +9,7 @@ export default {
     scoringType: 'auto',
     arrows: true,
     padding: true,
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -31,6 +32,10 @@ export default {
       settings: false,
       label: 'Labels',
       enabled: true
+    },
+    prompt: {
+      settings: true,
+      label: 'Prompt'
     },
     rationale: {
       settings: true,

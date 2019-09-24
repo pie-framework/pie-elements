@@ -33,6 +33,9 @@ const styles = theme => ({
   input: {
     width: '90%'
   },
+  prompt: {
+    paddingTop: theme.spacing.unit * 2,
+  },
   rationale: {
     paddingTop: theme.spacing.unit * 2,
   },
@@ -60,9 +63,11 @@ export class GeneralConfigBlock extends React.Component {
     onMultipleToggle: PropTypes.func.isRequired,
     multiple: PropTypes.bool.isRequired,
     configuration: PropTypes.object,
+    prompt: PropTypes.string,
     rationale: PropTypes.string,
     imageSupport: PropTypes.object,
     onRationaleChange: PropTypes.func,
+    promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool
   };
 
@@ -97,14 +102,29 @@ export class GeneralConfigBlock extends React.Component {
       onMultipleToggle,
       configuration,
       rationale,
+      prompt,
       imageSupport,
+      onPromptChange,
       onRationaleChange,
+      promptEnabled,
       rationaleEnabled
     } = this.props;
-    const { rationale: cRationale = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
 
     return (
       <div className={classes.container}>
+        {promptEnabled && (
+          <InputContainer
+            label={cPrompt.label || 'Prompt'}
+          >
+            <EditableHtml
+              className={classes.prompt}
+              markup={prompt || ''}
+              onChange={onPromptChange}
+              imageSupport={imageSupport}
+            />
+          </InputContainer>)
+        }
         {config.lines.map((line, idx) => (
           <div key={idx} className={classes.inputContainer}>
             <div className={classes.inputItem}>
