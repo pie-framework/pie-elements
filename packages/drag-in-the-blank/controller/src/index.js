@@ -53,6 +53,7 @@ export function model(question, session, env, updateSession) {
 
     const out = {
       ...question,
+      prompt: question.promptEnabled ? question.prompt : null,
       choices,
       feedback,
       mode: env.mode,

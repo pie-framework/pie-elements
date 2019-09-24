@@ -2,11 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import {
-  InputContainer,
-  layout,
-  settings
-} from '@pie-lib/config-ui';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
@@ -120,7 +116,9 @@ export class Main extends React.Component {
   };
 
   onResponsesChanged = choices => {
-    const { model: { correctResponse, markup } } = this.props;
+    const {
+      model: { correctResponse, markup }
+    } = this.props;
     const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
 
     this.props.onModelChanged({
@@ -147,10 +145,8 @@ export class Main extends React.Component {
       teacherInstructions = {},
       choicesPosition = {}
     } = configuration || {};
-    const {
-      rationaleEnabled,
-      teacherInstructionsEnabled
-    } = model || {};
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
+      model || {};
 
     return (
       <div className={classes.design}>
@@ -160,26 +156,32 @@ export class Main extends React.Component {
               model={model}
               configuration={configuration}
               onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              onChangeConfiguration={configuration =>
+                onConfigurationChanged(configuration, true)
+              }
               groups={{
-                'Settings': {
-                  partialScoring: partialScoring.settings &&
-                  toggle(partialScoring.label),
+                Settings: {
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
                   duplicates: duplicates.settings && toggle(duplicates.label),
-                  lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label),
-                  choicesPosition: choicesPosition.settings && dropdown(choicesPosition.label, [
-                    'above',
-                    'below',
-                    'left',
-                    'right'
-                  ])
+                  lockChoiceOrder:
+                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  choicesPosition:
+                    choicesPosition.settings &&
+                    dropdown(choicesPosition.label, [
+                      'above',
+                      'below',
+                      'left',
+                      'right'
+                    ])
                 },
-                'Properties': {
-                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                Properties: {
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings &&
                     toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings &&
-                    toggle(rationale.label)
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
                 }
               }}
             />
@@ -187,7 +189,10 @@ export class Main extends React.Component {
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <InputContainer
+                label={teacherInstructions.label}
+                className={classes.promptHolder}
+              >
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -197,7 +202,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            {prompt.settings && (
+            {prompt.settings && promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}
