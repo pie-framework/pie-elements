@@ -2284,10 +2284,10 @@
     react-dom "^16.8.1"
     react-konva "^16.9.0-0"
 
-"@pie-ui/ebsr@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.0.tgz#d6aa6772e6f7b3e196c296c77ad6e910f3ce434e"
-  integrity sha512-hzLjiNytQpPyY65fpFYHm8i3olLN3Y4yvuAo0nnLpnwAYx/vjBMtO0Ot4TJHOs7GjzquaIfOolQfl7q+Uyhf9A==
+"@pie-ui/ebsr@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.2.tgz#38b77ba398ac0e90a0454d17c69915ef25d1d412"
+  integrity sha512-jxDX1ydC+QLmnAuiLPsYwQ9ppwwuKiwvbJarF3jpGuNwLvEmf9N5Wm0pNKVRxqBcfwcgdWcxqgzR98kQKv9N9A==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-ui/multiple-choice" "^4.10.36"

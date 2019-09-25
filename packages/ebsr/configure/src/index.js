@@ -98,7 +98,10 @@ export default class EbsrConfigure extends HTMLElement {
     const id = e.target.getAttribute('id');
 
     if (id) {
-      this._model[`part${id}`] = e.update;
+      if (e.update) {
+        this._model[`part${id}`] = e.update;
+      }
+
       this.dispatchEvent(new ModelUpdatedEvent(this._model));
     }
   };

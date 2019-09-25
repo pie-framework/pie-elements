@@ -15,7 +15,7 @@ describe('controller', () => {
     question = {
       partA: {
         choiceMode: 'radio',
-        allowFeedback: true,
+        feedbackEnabled: true,
         choices: [
           {
             value: 'yellow',
@@ -40,7 +40,7 @@ describe('controller', () => {
       },
       partB: {
         choiceMode: 'radio',
-        allowFeedback: true,
+        feedbackEnabled: true,
         choices: [
           {
             value: 'orange',

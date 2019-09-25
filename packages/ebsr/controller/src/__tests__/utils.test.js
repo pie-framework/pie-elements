@@ -7,7 +7,7 @@ describe('isResponseCorrect', () => {
     question = {
       partA: {
         choiceMode: 'radio',
-        allowFeedback: true,
+        feedbackEnabled: true,
         choices: [
           {
             value: 'yellow',

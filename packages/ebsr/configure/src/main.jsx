@@ -106,8 +106,8 @@ export class Main extends React.Component {
                 [`Properties ${firstPart}`]: {
                   'partA.sequentialChoiceLabels.enabled': sequentialChoiceLabelsA.settings &&
                     toggle(sequentialChoiceLabelsA.label, true),
-                  'partA.feedback.enabled': feedbackA.settings &&
-                    toggle(feedbackA.label, true),
+                  'partA.feedbackEnabled': feedbackA.settings &&
+                    toggle(feedbackA.label),
                   'partA.teacherInstructionsEnabled': teacherInstructionsA.settings &&
                     toggle(teacherInstructionsA.label),
                   'partA.studentInstructionsEnabled': studentInstructionsA.settings &&
@@ -130,8 +130,8 @@ export class Main extends React.Component {
                 [`Properties ${secondPart}`]: {
                   'partB.sequentialChoiceLabels.enabled': sequentialChoiceLabelsB.settings &&
                     toggle(sequentialChoiceLabelsB.label, true),
-                  'partB.feedback.enabled': feedbackB.settings &&
-                    toggle(feedbackB.label, true),
+                  'partB.feedbackEnabled': feedbackB.settings &&
+                    toggle(feedbackB.label),
                   'partB.teacherInstructionsEnabled': teacherInstructionsB.settings &&
                     toggle(teacherInstructionsB.label),
                   'partB.studentInstructionsEnabled': studentInstructionsB.settings &&
