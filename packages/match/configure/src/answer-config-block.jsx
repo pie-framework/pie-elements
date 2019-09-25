@@ -32,7 +32,7 @@ const styles = theme => ({
   },
   deleteIcon: {
     flex: 0.5,
-    minWidth: '88px',
+    minWidth: '88px'
   },
   questionText: {
     flex: 2,
@@ -109,28 +109,41 @@ class AnswerConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, onAddRow, imageSupport, configuration } = this.props;
+    const {
+      classes,
+      model,
+      onAddRow,
+      imageSupport,
+      configuration
+    } = this.props;
     const { headers = {} } = configuration || {};
 
     return (
       <div className={classes.container}>
         <Typography type="body1" component="div">
-          Click on the labels to edit or remove. Set the correct answers by clicking each correct answer per row.
+          Click on the labels to edit or remove. Set the correct answers by
+          clicking each correct answer per row.
         </Typography>
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
-            {headers.settings && model.headers.map((header, idx) => (
-              <div key={idx} className={cx(classes.rowItem, { [classes.questionText]: idx === 0 })}>
-                <Input
-                  type="text"
-                  disableUnderline
-                  classes={idx === 0 ? null : { input: classes.headerInput}}
-                  onChange={this.onHeaderChange(idx)}
-                  value={header}
-                  placeholder="Enter Value"
-                />
-              </div>
-            ))}
+            {headers.settings &&
+              model.headers.map((header, idx) => (
+                <div
+                  key={idx}
+                  className={cx(classes.rowItem, {
+                    [classes.questionText]: idx === 0
+                  })}
+                >
+                  <Input
+                    type="text"
+                    disableUnderline
+                    classes={idx === 0 ? null : { input: classes.headerInput }}
+                    onChange={this.onHeaderChange(idx)}
+                    value={header}
+                    placeholder="Enter Value"
+                  />
+                </div>
+              ))}
             <div className={classes.deleteIcon}>
               <Button disabled>
                 <div />
