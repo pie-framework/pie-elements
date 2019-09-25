@@ -1098,5 +1098,20 @@
     "committerDate": "2019-09-16 19:12:33 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@6.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Do not use e.update if it is not defined. Added feedbackEnabled property on model.",
+    "merge": null,
+    "header": "fix: Do not use e.update if it is not defined. Added feedbackEnabled property on model.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f4c61114b4aa0d9d135650bce7e1be8a04634c28",
+    "gitTags": " (origin/abeendale/ch3549/from-ibx-ebsr-ibx-console-error-uncaught)",
+    "committerDate": "2019-09-24 11:28:10 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@7.0.1"
   }
 ]
