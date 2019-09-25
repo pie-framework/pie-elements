@@ -24,17 +24,6 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func
   };
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      ...state,
-      model: cloneDeep(props.model)
-    };
-  }
-
-  state = {
-    model: {}
-  };
-
   render() {
     const {
       classes,
@@ -149,9 +138,9 @@ export class Main extends React.Component {
               key="partA"
               ref={ref => {
                 if (ref) {
-                  // do not use destructuring to get model from state
+                  // do not use destructuring to get model from props
                   this.partA = ref;
-                  this.partA._model = cloneDeep(this.state.model.partA);
+                  this.partA._model = cloneDeep(this.props.model.partA);
                   this.partA.configuration = {
                     ...partA,
                     ...generalConfiguration
@@ -166,9 +155,9 @@ export class Main extends React.Component {
               key="partB"
               ref={ref => {
                 if (ref) {
-                  // do not use destructuring to get model from state
+                  // do not use destructuring to get model from props
                   this.partB = ref;
-                  this.partB._model = cloneDeep(this.state.model.partB);
+                  this.partB._model = cloneDeep(this.props.model.partB);
                   this.partB.configuration = {
                     ...partB,
                     ...generalConfiguration
