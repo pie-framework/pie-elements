@@ -99,7 +99,7 @@ describe('index', () => {
     describe('undoShape', () => {
       it('removes the latest shape', () => {
         const shapes = initialModel.shapes.rectangles;
-        const newShapes = shapes.slice(0, shapes.length - 1);
+        const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
         el.onUpdateShapes(newShapes);
 
         expect(onModelChanged).toBeCalledWith(
