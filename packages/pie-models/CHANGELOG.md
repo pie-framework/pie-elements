@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.0...@pie-element/pie-models@7.0.1) (2019-09-25)
+
+
+### Bug Fixes
+
+* Do not use e.update if it is not defined. Added feedbackEnabled property on model. ([f4c6111](https://github.com/pie-framework/pie-elements/commit/f4c6111))
+
+
+
+
+
 # [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@6.0.0...@pie-element/pie-models@7.0.0) (2019-09-19)
 
 
