@@ -31,6 +31,7 @@ export default {
     responses: [],
     customKeys: [],
     scoringType: 'auto',
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -38,8 +39,7 @@ export default {
   configuration: {
     prompt: {
       settings: true,
-      label: 'Prompt',
-      enabled: true,
+      label: 'Prompt'
     },
     feedback: {
       settings: true,
@@ -52,23 +52,23 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
+      label: 'Teacher Instructions'
     },
     partialScoring: {
       settings: true,
-      label: 'Allow Partial Scoring',
+      label: 'Allow Partial Scoring'
     }
   }
 };
