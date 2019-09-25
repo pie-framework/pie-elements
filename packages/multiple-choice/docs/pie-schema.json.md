@@ -77,6 +77,10 @@ Rationale for the Choice
 
 The question prompt or item stem
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices should be randomly ordered when presented to user

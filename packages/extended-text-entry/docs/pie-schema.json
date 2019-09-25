@@ -73,6 +73,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Indicates if the prompt is enabled",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "studentInstructions": {
       "description": "Indicates student instructions",
       "type": "string",
