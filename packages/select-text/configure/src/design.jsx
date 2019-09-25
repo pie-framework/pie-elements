@@ -133,7 +133,14 @@ export class Design extends React.Component {
 
   render() {
     const { text: textValue } = this.state;
-    const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const {
+      model,
+      classes,
+      imageSupport,
+      onModelChanged,
+      configuration,
+      onConfigurationChanged
+    } = this.props;
     const {
       prompt = {},
       text = {},
@@ -150,10 +157,10 @@ export class Design extends React.Component {
       scoringType = {},
       highlightChoices = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     log('[render] maxSelections:', model.maxSelections);
-
 
     return (
       <layout.ConfigLayout
@@ -164,30 +171,37 @@ export class Design extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={onConfigurationChanged}
             groups={{
-              'Settings': {
-                partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
-                highlightChoices: highlightChoices.settings &&
-                toggle(highlightChoices.label),
-                'feedback.enabled': feedback.settings &&
-                toggle(feedback.label, true),
+              Settings: {
+                partialScoring:
+                  partialScoring.settings && toggle(partialScoring.label),
+                highlightChoices:
+                  highlightChoices.settings && toggle(highlightChoices.label),
+                'feedback.enabled':
+                  feedback.settings && toggle(feedback.label, true)
               },
-              'Properties': {
-                teacherInstructionsEnabled: teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings &&
-                toggle(studentInstructions.label),
+              Properties: {
+                teacherInstructionsEnabled:
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                studentInstructionsEnabled:
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, ['auto', 'rubric']),
-              },
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric'])
+              }
             }}
           />
         }
       >
         <div className={classes.container}>
           {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <InputContainer
+              label={teacherInstructions.label}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -198,17 +212,25 @@ export class Design extends React.Component {
             </InputContainer>
           )}
 
-          <InputContainer label={prompt.label || ''} className={classes.promptHolder}>
-            <EditableHtml
-              className={classes.prompt}
-              markup={model.prompt}
-              onChange={this.onPromptChanged}
-              imageSupport={imageSupport}
-            />
-          </InputContainer>
+          {promptEnabled && (
+            <InputContainer
+              label={prompt.label || ''}
+              className={classes.promptHolder}
+            >
+              <EditableHtml
+                className={classes.prompt}
+                markup={model.prompt}
+                onChange={this.onPromptChanged}
+                imageSupport={imageSupport}
+              />
+            </InputContainer>
+          )}
 
           {rationaleEnabled && (
-            <InputContainer label={rationale.label || ''} className={classes.promptHolder}>
+            <InputContainer
+              label={rationale.label || ''}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}
@@ -218,8 +240,7 @@ export class Design extends React.Component {
             </InputContainer>
           )}
 
-          {
-            text.settings &&
+          {text.settings && (
             <TextField
               label={text.label}
               className={classes.input}
@@ -227,11 +248,13 @@ export class Design extends React.Component {
               value={textValue}
               onChange={this.changeText}
             />
-          }
+          )}
 
-          {
-            tokens.settings &&
-            <InputContainer label={tokens.label || ''} className={classes.tokenizerContainer}>
+          {tokens.settings && (
+            <InputContainer
+              label={tokens.label || ''}
+              className={classes.tokenizerContainer}
+            >
               <Tokenizer
                 className={classes.tokenizer}
                 text={model.text}
@@ -239,36 +262,32 @@ export class Design extends React.Component {
                 onChange={this.changeTokens}
               />
             </InputContainer>
-          }
+          )}
 
-          {
-            mode.settings &&
+          {mode.settings && (
             <Chip
               label={`${mode.label}: ${model.mode ? model.mode : 'None'}`}
               className={classes.chip}
             />
-          }
+          )}
 
-          {
-            selections.settings &&
+          {selections.settings && (
             <Chip
               label={`${selections.label}: ${model.tokens.length}`}
               className={classes.chip}
             />
-          }
+          )}
 
-          {
-            correctAnswer.settings &&
+          {correctAnswer.settings && (
             <Chip
               label={`${correctAnswer.label}: ${
                 model.tokens.filter(t => t.correct).length
-                }`}
+              }`}
               className={classes.chip}
             />
-          }
+          )}
 
-          {
-            selectionCount.settings &&
+          {selectionCount.settings && (
             <NumberTextField
               min={0}
               label={`${selectionCount.label} (0:any)`}
@@ -277,17 +296,14 @@ export class Design extends React.Component {
               onChange={this.changeMaxSelections}
               className={classes.numberField}
             />
-          }
+          )}
 
-          {
-            feedback.enabled && (
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.changeFeedback}
-              />
-            )
-          }
-
+          {feedback.enabled && (
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.changeFeedback}
+            />
+          )}
         </div>
       </layout.ConfigLayout>
     );
