@@ -40,6 +40,7 @@ exports.model = (id, element) => ({
     }
   },
   prompt: 'Arrange the fruits alphabetically',
+  promptEnabled: true,
   lockChoiceOrder: false,
   numberedGuides: false,
   orientation: 'vertical',
