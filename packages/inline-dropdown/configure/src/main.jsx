@@ -2,11 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import {
-  InputContainer,
-  layout,
-  settings
-} from '@pie-lib/config-ui';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
@@ -28,20 +24,16 @@ const InfoDialog = ({ open, onCancel, onOk, title }) => (
   <Dialog open={open}>
     <DialogTitle>{title}</DialogTitle>
     <DialogActions>
-      {
-        onOk && (
-          <Button onClick={onOk} color="primary">
-            OK
-          </Button>
-        )
-      }
-      {
-        onCancel && (
-          <Button onClick={onCancel} color="primary">
-            Cancel
-          </Button>
-        )
-      }
+      {onOk && (
+        <Button onClick={onOk} color="primary">
+          OK
+        </Button>
+      )}
+      {onCancel && (
+        <Button onClick={onCancel} color="primary">
+          Cancel
+        </Button>
+      )}
     </DialogActions>
   </Dialog>
 );
@@ -125,16 +117,19 @@ export class Main extends React.Component {
   };
 
   componentDidMount() {
-    const { model: { choices } } = this.props;
+    const {
+      model: { choices }
+    } = this.props;
 
-    this.setState({ respAreaChoices: cloneDeep(choices) })
+    this.setState({ respAreaChoices: cloneDeep(choices) });
   }
 
   UNSAFE_componentWillReceiveProps(nProps) {
     const newState = {};
 
-    if (!isEqual(nProps.model.choices, this.props.model.choices)
-      || (!isEqual(nProps.model.choices, this.state.respAreaChoices))
+    if (
+      !isEqual(nProps.model.choices, this.props.model.choices) ||
+      !isEqual(nProps.model.choices, this.state.respAreaChoices)
     ) {
       newState.respAreaChoices = cloneDeep(nProps.model.choices);
     }
@@ -177,7 +172,9 @@ export class Main extends React.Component {
   onChange = markup => {
     const { respAreaChoices } = this.state;
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll('[data-type="inline_dropdown"]');
+    const allRespAreas = domMarkup.querySelectorAll(
+      '[data-type="inline_dropdown"]'
+    );
 
     const allChoices = {};
 
@@ -207,7 +204,8 @@ export class Main extends React.Component {
         el.remove();
         shouldWarn = true;
       } else {
-        newRespAreaChoices[index] = existingRespAreaChoices[el.dataset.index] || [];
+        newRespAreaChoices[index] =
+          existingRespAreaChoices[el.dataset.index] || [];
         el.dataset.index = index;
       }
     });
@@ -216,13 +214,21 @@ export class Main extends React.Component {
       this.setState({
         dialog: {
           open: true,
-          message: 'Response areas with under 2 options or with no correct answers will be discarded',
+          message:
+            'Response areas with under 2 options or with no correct answers will be discarded',
           onOk: () => {
-            this.setState({
-              dialog: {
-                open: false
-              }
-            }, () => this.onModelChange({ choices: cloneDeep(newRespAreaChoices), slateMarkup: domMarkup.innerHTML }));
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              },
+              () =>
+                this.onModelChange({
+                  choices: cloneDeep(newRespAreaChoices),
+                  slateMarkup: domMarkup.innerHTML
+                })
+            );
           },
           onCancel: () => {
             this.setState({
@@ -234,7 +240,10 @@ export class Main extends React.Component {
         }
       });
     } else {
-      this.onModelChange({ choices: cloneDeep(newRespAreaChoices), slateMarkup: domMarkup.innerHTML });
+      this.onModelChange({
+        choices: cloneDeep(newRespAreaChoices),
+        slateMarkup: domMarkup.innerHTML
+      });
     }
   };
 
@@ -245,7 +254,11 @@ export class Main extends React.Component {
       respAreaChoices[index] = [];
     }
 
-    if ((respAreaChoices[index] || []).find(r => prepareVal(r.label) === prepareVal(label))) {
+    if (
+      (respAreaChoices[index] || []).find(
+        r => prepareVal(r.label) === prepareVal(label)
+      )
+    ) {
       this.setState({
         dialog: {
           open: true,
@@ -260,7 +273,7 @@ export class Main extends React.Component {
         }
       });
 
-      return ;
+      return;
     }
 
     respAreaChoices[index].push({
@@ -283,7 +296,9 @@ export class Main extends React.Component {
   onSelectChoice = (respIndex, selectedIndex) => {
     const { respAreaChoices } = this.state;
 
-    respAreaChoices[respIndex] = respAreaChoices[respIndex].map((ch, index) => ({ ...ch, correct: index === selectedIndex }));
+    respAreaChoices[respIndex] = respAreaChoices[respIndex].map(
+      (ch, index) => ({ ...ch, correct: index === selectedIndex })
+    );
 
     this.onModelChange({ choices: cloneDeep(respAreaChoices) });
   };
@@ -304,7 +319,8 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {}
     } = configuration || {};
-    const { rationaleEnabled, teacherInstructionsEnabled } = model || {};
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
+      model || {};
 
     return (
       <div className={classes.design}>
@@ -314,26 +330,34 @@ export class Main extends React.Component {
               model={model}
               configuration={configuration}
               onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              onChangeConfiguration={configuration =>
+                onConfigurationChanged(configuration, true)
+              }
               groups={{
-                'Settings': {
-                  partialScoring: partialScoring.settings &&
-                  toggle(partialScoring.label),
-                  lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label)
+                Settings: {
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  lockChoiceOrder:
+                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label)
                 },
-                'Properties': {
-                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                Properties: {
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings &&
                     toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
-                },
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
+                }
               }}
             />
           }
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <InputContainer
+                label={teacherInstructions.label}
+                className={classes.promptHolder}
+              >
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -344,7 +368,7 @@ export class Main extends React.Component {
               </InputContainer>
             )}
 
-            {prompt.settings && (
+            {prompt.settings && promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}
@@ -392,7 +416,7 @@ export class Main extends React.Component {
               responseAreaProps={{
                 type: 'inline-dropdown',
                 options: {
-                  duplicates: true,
+                  duplicates: true
                 },
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { respAreaChoices } = this.state;
@@ -400,8 +424,12 @@ export class Main extends React.Component {
                   return () => (
                     <InlineDropdownToolbar
                       onAddChoice={this.onAddChoice}
-                      onRemoveChoice={index => this.onRemoveChoice(node.data.get('index'), index)}
-                      onSelectChoice={index => this.onSelectChoice(node.data.get('index'), index)}
+                      onRemoveChoice={index =>
+                        this.onRemoveChoice(node.data.get('index'), index)
+                      }
+                      onSelectChoice={index =>
+                        this.onSelectChoice(node.data.get('index'), index)
+                      }
                       node={node}
                       value={value}
                       onToolbarDone={onToolbarDone}

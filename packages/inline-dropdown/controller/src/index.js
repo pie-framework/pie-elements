@@ -46,7 +46,8 @@ export function model(question, session, env, updateSession) {
           (obj, choices, key) => {
             const answer = (value && value[key]) || '';
             const correctChoice = choices[i] || '';
-            const isCorrect = answer && correctChoice && correctChoice === answer;
+            const isCorrect =
+              answer && correctChoice && correctChoice === answer;
 
             obj.feedback[key] = getFeedback(isCorrect);
 
@@ -72,7 +73,12 @@ export function model(question, session, env, updateSession) {
 
     if (!question.lockChoiceOrder) {
       Object.keys(choices).forEach(async key => {
-        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
+        choices[key] = await getShuffledChoices(
+          choices[key],
+          session,
+          updateSession,
+          'value'
+        );
       });
     }
 
@@ -81,10 +87,13 @@ export function model(question, session, env, updateSession) {
 
     if (
       // env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')
+      env.mode === 'view' ||
+      env.mode === 'evaluate'
     ) {
       rationale = question.rationaleEnabled ? question.rationale : null;
-      teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      teacherInstructions = question.teacherInstructionsEnabled
+        ? question.teacherInstructions
+        : null;
     } else {
       rationale = null;
       teacherInstructions = null;
@@ -93,7 +102,7 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.prompt,
+      prompt: question.promptEnabled ? question.prompt : null,
       shuffle: !question.lockChoiceOrder,
       markup: question.markup,
       choices,
@@ -111,7 +120,8 @@ export function model(question, session, env, updateSession) {
 
 export const getScore = (config, session) => {
   const { value = {} } = session || {};
-  const maxScore = config && config.choices ? Object.keys(config.choices).length : 0;
+  const maxScore =
+    config && config.choices ? Object.keys(config.choices).length : 0;
   const allCorrectResponses = getAllCorrectResponses(config);
   let correctCount = 0;
 
