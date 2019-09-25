@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@4.0.3...@pie-element/ebsr@4.0.4) (2019-09-25)
+
+
+### Bug Fixes
+
+* Remove unnecessary usage of state (which also causes an error). ([bf2c85d](https://github.com/pie-framework/pie-elements/commit/bf2c85d))
+
+
+
+
+
 ## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@4.0.2...@pie-element/ebsr@4.0.3) (2019-09-25)
 
 
