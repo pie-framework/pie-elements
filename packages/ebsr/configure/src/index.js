@@ -68,7 +68,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelChanged = (m) => {
-    this._model = m;
+    this._model = { ...this._model, ...m };
 
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
     this._render();
