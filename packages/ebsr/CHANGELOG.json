@@ -1058,5 +1058,20 @@
     "committerDate": "2019-09-24 11:28:10 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@4.0.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Remove unnecessary usage of state (which also causes an error).",
+    "merge": null,
+    "header": "fix: Remove unnecessary usage of state (which also causes an error).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "bf2c85d167cf834a6c0702522b5cdf3e5eb3ddd5",
+    "gitTags": " (origin/fix/ebsr-teacher-instructions-not-saved)",
+    "committerDate": "2019-09-25 10:39:48 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@4.0.4"
   }
 ]
