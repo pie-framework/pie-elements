@@ -76,6 +76,10 @@ Indicates student instructions
 
 Indicates teacher instructions
 
+## `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
+
 ## `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled
@@ -158,6 +162,10 @@ Indicates student instructions
 ## `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+## `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
 
 ## `rationaleEnabled` (boolean, required)
 
@@ -496,6 +504,10 @@ Indicates student instructions
 ### `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+### `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
 
 ### `rationaleEnabled` (boolean, required)
 

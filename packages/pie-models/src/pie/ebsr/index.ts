@@ -41,6 +41,9 @@ export interface Part {
     /** Indicates teacher instructions */
     teacherInstructions?: string;
 
+    /** Indicates if Feedback is enabled */
+    feedbackEnabled: boolean;
+
     /** Indicates if Rationale are enabled */
     rationaleEnabled: boolean;
 

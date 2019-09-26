@@ -21,17 +21,6 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func
   };
 
-  static getDerivedStateFromProps(props, state) {
-    return {
-      ...state,
-      model: cloneDeep(props.model)
-    };
-  }
-
-  state = {
-    model: {}
-  };
-
   render() {
     const {
       classes,
@@ -109,8 +98,8 @@ export class Main extends React.Component {
                   'partA.sequentialChoiceLabels.enabled':
                     sequentialChoiceLabelsA.settings &&
                     toggle(sequentialChoiceLabelsA.label, true),
-                  'partA.feedback.enabled':
-                    feedbackA.settings && toggle(feedbackA.label, true),
+                  'partA.feedbackEnabled':
+                    feedbackA.settings && toggle(feedbackA.label),
                   'partA.promptEnabled':
                     promptA.settings && toggle(promptA.label),
                   'partA.teacherInstructionsEnabled':
@@ -141,8 +130,8 @@ export class Main extends React.Component {
                   'partB.sequentialChoiceLabels.enabled':
                     sequentialChoiceLabelsB.settings &&
                     toggle(sequentialChoiceLabelsB.label, true),
-                  'partB.feedback.enabled':
-                    feedbackB.settings && toggle(feedbackB.label, true),
+                  'partB.feedbackEnabled':
+                    feedbackB.settings && toggle(feedbackB.label),
                   'partB.promptEnabled':
                     promptB.settings && toggle(promptB.label),
                   'partB.teacherInstructionsEnabled':
@@ -165,9 +154,9 @@ export class Main extends React.Component {
               key="partA"
               ref={ref => {
                 if (ref) {
-                  // do not use destructuring to get model from state
+                  // do not use destructuring to get model from props
                   this.partA = ref;
-                  this.partA._model = cloneDeep(this.state.model.partA);
+                  this.partA._model = cloneDeep(this.props.model.partA);
                   this.partA.configuration = {
                     ...partA,
                     ...generalConfiguration
@@ -182,9 +171,9 @@ export class Main extends React.Component {
               key="partB"
               ref={ref => {
                 if (ref) {
-                  // do not use destructuring to get model from state
+                  // do not use destructuring to get model from props
                   this.partB = ref;
-                  this.partB._model = cloneDeep(this.state.model.partB);
+                  this.partB._model = cloneDeep(this.props.model.partB);
                   this.partB.configuration = {
                     ...partB,
                     ...generalConfiguration

@@ -438,5 +438,20 @@
     "committerDate": "2019-08-30 09:30:57 -0400",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@2.7.7"
+  },
+  {
+    "type": "feat",
+    "scope": "drawable",
+    "subject": "fixed the not rendering item preview [ch3629]",
+    "merge": null,
+    "header": "feat(drawable): fixed the not rendering item preview [ch3629]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9c7b05360ffd7c17cfaec34f8bbf5f5385dafc95",
+    "gitTags": "",
+    "committerDate": "2019-09-23 12:34:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@3.1.0"
   }
 ]
