@@ -36,6 +36,7 @@ describe('controller', () => {
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
+        promptEnabled: true,
         lockChoiceOrder: true
       },
       partB: {
@@ -61,6 +62,7 @@ describe('controller', () => {
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
+        promptEnabled: true,
         lockChoiceOrder: true
       }
     };

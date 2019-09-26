@@ -19,6 +19,7 @@ exports[`Design snapshot renders 1`] = `
               "feedback.enabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,
+              "promptEnabled": undefined,
             },
           }
         }

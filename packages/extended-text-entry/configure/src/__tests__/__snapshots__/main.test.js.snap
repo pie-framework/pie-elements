@@ -31,7 +31,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "settings": false,
           },
           "prompt": Object {
-            "enabled": true,
             "label": "Prompt",
             "settings": true,
           },
@@ -57,7 +56,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "feedback.enabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
-            "prompt.enabled": undefined,
+            "promptEnabled": undefined,
           },
         }
       }
@@ -70,6 +69,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "equationEditor": "everything",
           "mathInput": false,
           "prompt": "This is the question prompt",
+          "promptEnabled": false,
           "rationaleEnabled": false,
           "studentInstructionsEnabled": false,
           "teacherInstructionsEnabled": false,
@@ -82,15 +82,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
 >
   <div>
     <br />
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        markup="This is the question prompt"
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </Component>
     <WithStyles(Typography)
       variant="subheading"
     >
