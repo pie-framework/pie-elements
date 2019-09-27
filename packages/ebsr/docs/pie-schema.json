@@ -487,27 +487,6 @@
             }
           }
         },
-        "sequentialChoiceLabels": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item",
-              "type": "string",
-              "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
-              "type": "boolean",
-              "title": "enabled"
-            }
-          }
-        },
         "studentInstructions": {
           "title": "ConfigureProp",
           "type": "object",

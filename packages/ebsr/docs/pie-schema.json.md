@@ -370,22 +370,6 @@ Indicates the label for the item
 
 Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
 
-### `sequentialChoiceLabels` (object)
-
-Properties of the `sequentialChoiceLabels` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed
-
-#### `label` (string)
-
-Indicates the label for the item
-
-#### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
-
 ### `studentInstructions` (object)
 
 Properties of the `studentInstructions` object:
