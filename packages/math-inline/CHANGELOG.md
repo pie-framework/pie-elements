@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@4.0.0...@pie-element/math-inline@4.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([c47fb9a](https://github.com/pie-framework/pie-elements/commit/c47fb9a))
+
+
+### Features
+
+* **math-inline:** model based prompt ([d7910e3](https://github.com/pie-framework/pie-elements/commit/d7910e3))
+
+
+
+
+
 # [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@3.1.1...@pie-element/math-inline@4.0.0) (2019-09-17)
 
 

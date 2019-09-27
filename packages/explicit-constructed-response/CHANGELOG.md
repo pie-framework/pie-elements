@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@2.0.2...@pie-element/explicit-constructed-response@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **explicit-constructed-response:** model based prompt ([9da37ac](https://github.com/pie-framework/pie-elements/commit/9da37ac))
+
+
+
+
+
 ## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@2.0.1...@pie-element/explicit-constructed-response@2.0.2) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

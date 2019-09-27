@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@2.0.0...@pie-element/hotspot-controller@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **hotspot:** model based prompt ([2ff380b](https://github.com/pie-framework/pie-elements/commit/2ff380b))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@1.4.1...@pie-element/hotspot-controller@2.0.0) (2019-09-17)
 
 

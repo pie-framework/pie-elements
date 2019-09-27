@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.4...@pie-element/ebsr-configure@4.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* removed unused config property. ([ad9aa80](https://github.com/pie-framework/pie-elements/commit/ad9aa80))
+
+
+### Features
+
+* **ebsr:** model based prompt ([b538d4e](https://github.com/pie-framework/pie-elements/commit/b538d4e))
+
+
+
+
+
 ## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.3...@pie-element/ebsr-configure@4.0.4) (2019-09-25)
 
 

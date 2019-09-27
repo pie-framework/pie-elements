@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@2.0.0...@pie-element/multiple-choice-controller@2.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel). ([494bf3a](https://github.com/pie-framework/pie-elements/commit/494bf3a))
+
+
+### Features
+
+* **multiple-choice:** model based prompt ([d90c1a1](https://github.com/pie-framework/pie-elements/commit/d90c1a1))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@1.8.1...@pie-element/multiple-choice-controller@2.0.0) (2019-09-17)
 
 

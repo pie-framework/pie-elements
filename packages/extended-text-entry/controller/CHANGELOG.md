@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@3.0.1...@pie-element/extended-text-entry-controller@3.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([839aa3c](https://github.com/pie-framework/pie-elements/commit/839aa3c))
+
+
+### Features
+
+* **extended-text-entry:** model based prompt ([f399425](https://github.com/pie-framework/pie-elements/commit/f399425))
+
+
+
+
+
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@3.0.0...@pie-element/extended-text-entry-controller@3.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

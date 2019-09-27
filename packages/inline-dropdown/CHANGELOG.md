@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@2.0.5...@pie-element/inline-dropdown@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **inline-dropdown:** model based prompt ([8d4be7f](https://github.com/pie-framework/pie-elements/commit/8d4be7f))
+
+
+
+
+
 ## [2.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@2.0.4...@pie-element/inline-dropdown@2.0.5) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

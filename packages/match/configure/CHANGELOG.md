@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@3.0.0...@pie-element/match-configure@3.1.0) (2019-09-27)
+
+
+### Features
+
+* **match:** model based prompt ([0f30502](https://github.com/pie-framework/pie-elements/commit/0f30502))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@2.6.11...@pie-element/match-configure@3.0.0) (2019-09-17)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@2.0.1...@pie-element/graphing-controller@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **graphing:** model based prompt ([7ca5f8f](https://github.com/pie-framework/pie-elements/commit/7ca5f8f))
+
+
+
+
+
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@2.0.0...@pie-element/graphing-controller@2.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/graphing-controller

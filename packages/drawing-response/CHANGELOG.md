@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@2.0.1...@pie-element/drawing-response@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **drawing-response:** model based prompt ([cb06b2a](https://github.com/pie-framework/pie-elements/commit/cb06b2a))
+
+
+
+
+
 ## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@2.0.0...@pie-element/drawing-response@2.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/drawing-response

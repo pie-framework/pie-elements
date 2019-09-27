@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.2...@pie-element/pie-models@7.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([90cc6aa](https://github.com/pie-framework/pie-elements/commit/90cc6aa))
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([c47fb9a](https://github.com/pie-framework/pie-elements/commit/c47fb9a))
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([839aa3c](https://github.com/pie-framework/pie-elements/commit/839aa3c))
+* Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel). ([494bf3a](https://github.com/pie-framework/pie-elements/commit/494bf3a))
+
+
+### Features
+
+* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
+* **charting:** model based prompt ([e648531](https://github.com/pie-framework/pie-elements/commit/e648531))
+* **drag-in-the-blank:** model based prompt ([a5c983e](https://github.com/pie-framework/pie-elements/commit/a5c983e))
+* **drawing-response:** model based prompt ([cb06b2a](https://github.com/pie-framework/pie-elements/commit/cb06b2a))
+* **ebsr:** model based prompt ([b538d4e](https://github.com/pie-framework/pie-elements/commit/b538d4e))
+* **explicit-constructed-response:** model based prompt ([9da37ac](https://github.com/pie-framework/pie-elements/commit/9da37ac))
+* **extended-text-entry:** model based prompt ([f399425](https://github.com/pie-framework/pie-elements/commit/f399425))
+* **graph-lines:** model based prompt ([0af4d9d](https://github.com/pie-framework/pie-elements/commit/0af4d9d))
+* **graphing:** model based prompt ([7ca5f8f](https://github.com/pie-framework/pie-elements/commit/7ca5f8f))
+* **hotspot:** model based prompt ([2ff380b](https://github.com/pie-framework/pie-elements/commit/2ff380b))
+* **inline-dropdown:** model based prompt ([8d4be7f](https://github.com/pie-framework/pie-elements/commit/8d4be7f))
+* **match:** model based prompt ([0f30502](https://github.com/pie-framework/pie-elements/commit/0f30502))
+* **math-inline:** model based prompt ([d7910e3](https://github.com/pie-framework/pie-elements/commit/d7910e3))
+* **multiple-choice:** model based prompt ([d90c1a1](https://github.com/pie-framework/pie-elements/commit/d90c1a1))
+* **placement-ordering:** model based prompt ([1d28127](https://github.com/pie-framework/pie-elements/commit/1d28127))
+* **select-text:** model based prompt ([40c8662](https://github.com/pie-framework/pie-elements/commit/40c8662))
+
+
+
+
+
 ## [7.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.1...@pie-element/pie-models@7.0.2) (2019-09-25)
 
 **Note:** Version bump only for package @pie-element/pie-models

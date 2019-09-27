@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@4.0.1...@pie-element/categorize-controller@4.1.0) (2019-09-27)
+
+
+### Features
+
+* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@4.0.0...@pie-element/categorize-controller@4.0.1) (2019-09-19)
 
 **Note:** Version bump only for package @pie-element/categorize-controller
