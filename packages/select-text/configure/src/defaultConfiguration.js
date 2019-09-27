@@ -16,6 +16,7 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
+    feedbackEnabled: false,
     rationaleEnabled: false,
     promptEnabled: false,
     teacherInstructionsEnabled: false,
@@ -68,8 +69,7 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     partialScoring: {
       settings: true,
