@@ -14,6 +14,7 @@ jest.mock('@pie-lib/config-ui', () => ({
 }));
 
 const model = () => ({
+  promptEnabled: true,
   prompt: 'This is the question prompt',
   imageUrl: '',
   imageDimensions: {

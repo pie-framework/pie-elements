@@ -9,6 +9,7 @@ export default {
     scoringType: 'auto',
     arrows: true,
     padding: true,
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -16,11 +17,11 @@ export default {
   configuration: {
     arrows: {
       settings: false,
-      label: 'Include arrows',
+      label: 'Include arrows'
     },
     padding: {
       settings: false,
-      label: 'Padding',
+      label: 'Padding'
     },
     graphTitle: {
       settings: false,
@@ -32,13 +33,17 @@ export default {
       label: 'Labels',
       enabled: true
     },
+    prompt: {
+      settings: true,
+      label: 'Prompt'
+    },
     rationale: {
       settings: true,
       label: 'Rationale'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
@@ -47,6 +52,6 @@ export default {
     teacherInstructions: {
       settings: false,
       label: 'Teacher Instructions'
-    },
+    }
   }
 };

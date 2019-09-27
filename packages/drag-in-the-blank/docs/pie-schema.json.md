@@ -56,6 +56,10 @@ The markup for the pie-ui element
 
 The item stem for the question
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `rationale` (string, required)
 
 Indicates correct answer rationale

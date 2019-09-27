@@ -10,6 +10,7 @@ export default {
     correctResponse: {},
     duplicates: true,
     rationaleEnabled: false,
+    promptEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },

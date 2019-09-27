@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import {
-  InputContainer, layout, settings
-} from '@pie-lib/config-ui';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -79,11 +77,13 @@ export class Main extends React.Component {
   state = {};
 
   componentDidMount() {
-    const { model: { slateMarkup } } = this.props;
+    const {
+      model: { slateMarkup }
+    } = this.props;
 
     this.setState({
       markup: slateMarkup
-    })
+    });
   }
 
   onPromptChanged = prompt => {
@@ -124,7 +124,9 @@ export class Main extends React.Component {
   };
 
   onChangeResponse = (index, newVal) => {
-    const { model: { choices } } = this.props;
+    const {
+      model: { choices }
+    } = this.props;
 
     if (!choices[index]) {
       choices[index] = [{ label: '', value: '0' }];
@@ -139,9 +141,13 @@ export class Main extends React.Component {
   };
 
   onChange = markup => {
-    const { model: { choices } } = this.props;
+    const {
+      model: { choices }
+    } = this.props;
     const domMarkup = createElementFromHTML(markup);
-    const allRespAreas = domMarkup.querySelectorAll('[data-type="explicit_constructed_response"]');
+    const allRespAreas = domMarkup.querySelectorAll(
+      '[data-type="explicit_constructed_response"]'
+    );
 
     const allChoices = {};
 
@@ -187,7 +193,8 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     return (
       <div className={classes.design}>
@@ -197,16 +204,21 @@ export class Main extends React.Component {
               model={model}
               configuration={configuration}
               onChangeModel={model => this.onModelChange(model)}
-              onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+              onChangeConfiguration={configuration =>
+                onConfigurationChanged(configuration, true)
+              }
               groups={{
-                'Settings': {
-                  partialScoring: partialScoring.settings &&
-                  toggle(partialScoring.label)
+                Settings: {
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label)
                 },
-                'Properties': {
-                  teacherInstructionsEnabled: teacherInstructions.settings &&
-                  toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label)
+                Properties: {
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
                 }
               }}
             />
@@ -214,7 +226,10 @@ export class Main extends React.Component {
         >
           <div>
             {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+              <InputContainer
+                label={teacherInstructions.label}
+                className={classes.promptHolder}
+              >
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
@@ -224,7 +239,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            {prompt.settings && (
+            {prompt.settings && promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}
@@ -251,15 +266,19 @@ export class Main extends React.Component {
               responseAreaProps={{
                 type: 'explicit-constructed-response',
                 options: {
-                  duplicates: true,
+                  duplicates: true
                 },
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { model } = this.props;
-                  const correctChoice = (model.choices[node.data.get('index')] || [])[0];
+                  const correctChoice = (model.choices[
+                    node.data.get('index')
+                  ] || [])[0];
 
                   return () => (
                     <ECRToolbar
-                      onChangeResponse={newVal => this.onChangeResponse(node.data.get('index'), newVal)}
+                      onChangeResponse={newVal =>
+                        this.onChangeResponse(node.data.get('index'), newVal)
+                      }
                       node={node}
                       value={value}
                       onToolbarDone={onToolbarDone}
@@ -276,13 +295,11 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
             />
-            {
-              !isEmpty(model.choices) && (
-                <Typography className={classes.text}>
-                  Define Alternates
-                </Typography>
-              )
-            }
+            {!isEmpty(model.choices) && (
+              <Typography className={classes.text}>
+                Define Alternates
+              </Typography>
+            )}
             <AlternateResponses
               model={model}
               onChange={this.onResponsesChanged}

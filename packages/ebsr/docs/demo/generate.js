@@ -20,7 +20,8 @@ exports.model = (id, element) => ({
     ],
     choicePrefix: 'numbers',
     partialScoring: false,
-    prompt: 'What color is the sky?'
+    prompt: 'What color is the sky?',
+    promptEnabled: true
   },
   partB: {
     choiceMode: 'radio',
@@ -45,6 +46,7 @@ exports.model = (id, element) => ({
     ],
     choicePrefix: 'numbers',
     partialScoring: false,
-    prompt: 'What color do you get when you mix Red with your answer in Part 1?'
+    prompt: 'What color do you get when you mix Red with your answer in Part 1?',
+    promptEnabled: true
   }
 });

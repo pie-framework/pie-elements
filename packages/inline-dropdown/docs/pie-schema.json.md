@@ -22,6 +22,10 @@ The markup for the pie-ui element
 
 The item stem for the question
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `lockChoiceOrder` (boolean, required)
 
 Indicates if the user can lock the order of the choices

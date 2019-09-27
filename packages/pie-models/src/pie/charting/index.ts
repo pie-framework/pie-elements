@@ -98,6 +98,9 @@ export interface ChartingPie extends PieModel {
     /** Indicates prompt value */
     prompt?: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates range settings for the chart */
     range: ChartSettings;
 

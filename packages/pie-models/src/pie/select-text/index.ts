@@ -47,6 +47,9 @@ export interface SelectTextPie extends PieModel {
   /** The user prompt/item stem */
   prompt: string;
 
+  /** Determines if prompt should show */
+  promptEnabled?: boolean;
+
   /**
    * Indicates if the parts of text that are choosable, should be highligned when presented to student.
    * @default false

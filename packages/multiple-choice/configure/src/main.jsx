@@ -5,7 +5,8 @@ import {
   InputContainer,
   ChoiceConfiguration,
   settings,
-  layout, choiceUtils as utils
+  layout,
+  choiceUtils as utils
 } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -24,10 +25,10 @@ const styles = theme => ({
     width: '100%'
   },
   rationaleHolder: {
-    width: '70%',
+    width: '70%'
   },
   rationale: {
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2
   },
   design: {
     paddingTop: theme.spacing.unit * 3
@@ -81,12 +82,20 @@ const Design = withStyles(styles)(props => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled
   } = configuration || {};
-  const { teacherInstructionsEnabled, rationaleEnabled, feedbackEnabled } = model || {};
+  const {
+    teacherInstructionsEnabled,
+    rationaleEnabled,
+    feedbackEnabled,
+    promptEnabled
+  } = model || {};
 
   const Content = (
     <div>
       {teacherInstructionsEnabled && (
-        <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+        <InputContainer
+          label={teacherInstructions.label}
+          className={classes.promptHolder}
+        >
           <EditableHtml
             className={classes.prompt}
             markup={model.teacherInstructions || ''}
@@ -97,11 +106,8 @@ const Design = withStyles(styles)(props => {
         </InputContainer>
       )}
 
-      {prompt.settings && (
-        <InputContainer
-          label={prompt.label}
-          className={classes.promptHolder}
-        >
+      {prompt.settings && promptEnabled && (
+        <InputContainer label={prompt.label} className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
             markup={model.prompt}
@@ -141,14 +147,16 @@ const Design = withStyles(styles)(props => {
               <EditableHtml
                 className={classes.rationale}
                 markup={choice.rationale || ''}
-                onChange={c => onChoiceChanged(index, {
-                  ...choice,
-                  rationale: c
-                })}
+                onChange={c =>
+                  onChoiceChanged(index, {
+                    ...choice,
+                    rationale: c
+                  })
+                }
                 imageSupport={imageSupport}
               />
-            </InputContainer>)
-          }
+            </InputContainer>
+          )}
         </div>
       ))}
       <br />
@@ -167,50 +175,54 @@ const Design = withStyles(styles)(props => {
 
   return (
     <div className={classes.design}>
-      {
-        settingsPanelDisabled
-          ? Content
-          : (
-            <layout.ConfigLayout
-              settings={
-                <Panel
-                  model={model}
-                  onChangeModel={onChangeModel}
-                  configuration={configuration}
-                  onChangeConfiguration={onConfigurationChanged}
-                  groups={{
-                    'Settings': {
-                      choiceMode:
-                        choiceMode.settings &&
-                        radio(choiceMode.label, ['checkbox', 'radio']),
-                      'sequentialChoiceLabels.enabled': sequentialChoiceLabels.settings &&
-                        toggle(sequentialChoiceLabels.label, true),
-                      choicePrefix: choicePrefix.settings &&
-                        radio(choicePrefix.label, ['numbers', 'letters']),
-                      partialScoring: partialScoring.settings &&
-                        toggle(partialScoring.label),
-                      lockChoiceOrder: lockChoiceOrder.settings &&
-                        toggle(lockChoiceOrder.label),
-                      feedbackEnabled: feedback.settings &&
-                        toggle(feedback.label)
-                    },
-                    'Properties': {
-                      teacherInstructionsEnabled: teacherInstructions.settings &&
-                        toggle(teacherInstructions.label),
-                      studentInstructionsEnabled: studentInstructions.settings &&
-                        toggle(studentInstructions.label),
-                      rationaleEnabled: rationale.settings && toggle(rationale.label),
-                      scoringType: scoringType.settings &&
-                        radio(scoringType.label, ['auto', 'rubric']),
-                    },
-                  }}
-                />
-              }
-            >
-              {Content}
-            </layout.ConfigLayout>
-          )
-      }
+      {settingsPanelDisabled ? (
+        Content
+      ) : (
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onChangeModel}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                Settings: {
+                  choiceMode:
+                    choiceMode.settings &&
+                    radio(choiceMode.label, ['checkbox', 'radio']),
+                  'sequentialChoiceLabels.enabled':
+                    sequentialChoiceLabels.settings &&
+                    toggle(sequentialChoiceLabels.label, true),
+                  choicePrefix:
+                    choicePrefix.settings &&
+                    radio(choicePrefix.label, ['numbers', 'letters']),
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  lockChoiceOrder:
+                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  feedbackEnabled: feedback.settings && toggle(feedback.label)
+                },
+                Properties: {
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  studentInstructionsEnabled:
+                    studentInstructions.settings &&
+                    toggle(studentInstructions.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
+                  scoringType:
+                    scoringType.settings &&
+                    radio(scoringType.label, ['auto', 'rubric'])
+                }
+              }}
+            />
+          }
+        >
+          {Content}
+        </layout.ConfigLayout>
+      )}
     </div>
   );
 });
@@ -316,7 +328,8 @@ export class Main extends React.Component {
         onAddChoice={this.onAddChoice}
         onPromptChanged={this.onPromptChanged}
         onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
-      />);
+      />
+    );
   }
 }
 

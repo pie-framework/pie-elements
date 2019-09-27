@@ -52,6 +52,7 @@ export default {
     rationale: 'Rationale goes here!',
     scoringType: 'partial scoring',
     title: '',
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false

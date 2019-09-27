@@ -213,6 +213,8 @@ export function model(question, session, env) {
         out.teacherInstructions = null;
       }
 
+      out.config.prompt = question.promptEnabled ? question.prompt : null;
+
       log('out: ', out);
       resolve(out);
     });
