@@ -137,7 +137,8 @@ class GeneralConfigBlock extends React.Component {
     imageSupport: PropTypes.object,
     configuration: PropTypes.object,
     onChange: PropTypes.func.isRequired,
-    rationaleEnabled: PropTypes.boolean
+    promptEnabled: PropTypes.bool,
+    rationaleEnabled: PropTypes.bool
   };
 
   constructor(props) {
@@ -319,7 +320,14 @@ class GeneralConfigBlock extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, configuration, rationaleEnabled } = this.props;
+    const {
+      classes,
+      model,
+      imageSupport,
+      configuration,
+      promptEnabled,
+      rationaleEnabled
+    } = this.props;
     const { showKeypad } = this.state;
     const {
       prompt,
@@ -329,21 +337,25 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale
     } = model;
-    const { prompt: cPrompt = {}, rationale: cRationale = {} } = configuration || {};
+    const { prompt: cPrompt = {}, rationale: cRationale = {} } =
+      configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
       mathToolbar: classes.mathToolbar
     };
 
-    const responsesToUse = responseType === ResponseTypes.advanced ? responses : responses.slice(0, 1);
+    const responsesToUse =
+      responseType === ResponseTypes.advanced
+        ? responses
+        : responses.slice(0, 1);
 
     return (
       <div
         ref={r => (this.root = r || this.root)}
         className={classes.container}
       >
-        {cPrompt.enabled && (
+        {cPrompt.settings && promptEnabled && (
           <InputContainer label="Prompt" className={classes.promptHolder}>
             <EditableHtml
               onFocus={this.onPromptFocus}

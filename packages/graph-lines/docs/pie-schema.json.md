@@ -155,6 +155,14 @@ Indicates if padding is enabled
 
 Indicates if labels are enabled
 
+# `prompt` (string)
+
+Indicates prompt
+
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `rationale` (string)
 
 Indicates rationale for the answer

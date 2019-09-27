@@ -75,7 +75,7 @@ export function model(question, session, env, updateSession) {
 
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = question.prompt;
+    base.prompt = question.promptEnabled ? question.prompt : null;
     base.config = {
       orientation: question.orientation || 'vertical',
       includeTargets: question.placementArea,

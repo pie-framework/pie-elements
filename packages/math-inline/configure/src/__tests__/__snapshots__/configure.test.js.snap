@@ -17,7 +17,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "settings": true,
             },
             "prompt": Object {
-              "enabled": true,
               "label": "Prompt",
               "settings": true,
             },
@@ -53,7 +52,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
             "Settings": Object {
               "feedback.enabled": undefined,
-              "prompt.enabled": undefined,
+              "promptEnabled": undefined,
               "responseType": undefined,
             },
           }
@@ -84,6 +83,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               },
             },
             "id": "1",
+            "promptEnabled": true,
             "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
  <mrow>
   <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
@@ -135,7 +135,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 "settings": true,
               },
               "prompt": Object {
-                "enabled": true,
                 "label": "Prompt",
                 "settings": true,
               },
@@ -187,6 +186,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
                 },
               },
               "id": "1",
+              "promptEnabled": true,
               "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
  <mrow>
   <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>
@@ -217,6 +217,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             }
           }
           onChange={[Function]}
+          promptEnabled={true}
         />
         <FeedbackConfig
           feedback={

@@ -51,6 +51,9 @@ export interface MatchPie extends PieModel {
   /**  The question prompt or item stem */
   prompt: string;
 
+  /** Determines if prompt should show */
+  promptEnabled?: boolean;
+
   /** The rows of choices to be presented.  */
   rows: MatchRow[];
 

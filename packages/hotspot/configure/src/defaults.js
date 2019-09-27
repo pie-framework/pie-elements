@@ -1,6 +1,7 @@
 export default {
   model: {
     prompt: 'This is the question prompt',
+    promptEnabled: false,
     imageUrl: '',
     shapes: {
       rectangles: [],
@@ -39,8 +40,7 @@ export default {
     },
     prompt: {
       settings: true,
-      label: 'Prompt',
-      enabled: true
+      label: 'Prompt'
     },
     teacherInstructions: {
       settings: true,

@@ -91,6 +91,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Determines if prompt should show",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "lockChoiceOrder": {
       "description": "Indicates the order of choices should be randomly ordered when presented to user",
       "type": "boolean",

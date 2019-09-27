@@ -12,6 +12,9 @@ export interface HotspotPie extends PieModel {
   /**  The question prompt or item stem */
   prompt?: string;
 
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
+
   /**  The image over which hotspots will be drawn */
   imageUrl?: string;
 
