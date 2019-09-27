@@ -8,6 +8,7 @@ export function model(question, session, env) {
     imageUrl,
     imageDimensions,
     prompt,
+    promptEnabled
   } = question;
 
   return new Promise(resolve => {
@@ -16,7 +17,7 @@ export function model(question, session, env) {
       mode: env.mode,
       imageDimensions,
       imageUrl,
-      prompt,
+      prompt: promptEnabled ? prompt : null,
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

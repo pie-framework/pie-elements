@@ -11,47 +11,48 @@ export default {
     lockChoiceOrder: true,
     partialScoring: false,
     choiceMode: 'radio',
+    prompt: 'Prompt goes here',
     rows: [
       {
         id: 1,
         title: 'Question Text 1',
         values: [false, false]
-      },
+      }
     ],
     scoringType: 'auto',
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },
-  prompt: 'Prompt goes here',
   configuration: {
     enableImages: {
       settings: true,
-      label: 'Enable Images',
+      label: 'Enable Images'
     },
     feedback: {
       settings: true,
       label: 'Feedback',
-      enabled: true,
+      enabled: true
     },
     headers: {
       settings: true
     },
     layout: {
       settings: true,
-      label: 'Layout',
+      label: 'Layout'
     },
     lockChoiceOrder: {
       settings: true,
-      label: 'Lock Choice Order',
+      label: 'Lock Choice Order'
     },
     partialScoring: {
       settings: true,
-      label: 'Allow Partial Scoring',
+      label: 'Allow Partial Scoring'
     },
     choiceMode: {
       settings: true,
-      label: 'Response Type',
+      label: 'Response Type'
     },
     prompt: {
       settings: true,
@@ -59,19 +60,19 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
-    },
+      label: 'Teacher Instructions'
+    }
   }
 };

@@ -6,6 +6,7 @@ describe('index', () => {
     o = _.merge(
       {
         prompt: 'hi',
+        promptEnabled: true,
         choices: [],
         correctResponse: [],
         lockChoiceOrder: true,

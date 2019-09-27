@@ -49,7 +49,7 @@ export async function model(model, session, env) {
   }
 
   return fb.then(feedback => ({
-    prompt: model.prompt,
+    prompt: model.promptEnabled ? model.prompt : null,
     dimensions: model.dimensions,
     disabled: env.mode !== 'gather',
     feedback,

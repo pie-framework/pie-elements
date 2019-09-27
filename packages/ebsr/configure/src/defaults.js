@@ -68,6 +68,7 @@ export default {
       prompt: 'Prompt A',
       rationaleEnabled: false,
       feedbackEnabled: false,
+      promptEnabled: false,
       teacherInstructionsEnabled: false,
       studentInstructionsEnabled: false
     },
@@ -78,6 +79,7 @@ export default {
       partialScoring: false,
       prompt: 'Prompt B',
       rationaleEnabled: false,
+      promptEnabled: false,
       feedbackEnabled: false,
       teacherInstructionsEnabled: false,
       studentInstructionsEnabled: false

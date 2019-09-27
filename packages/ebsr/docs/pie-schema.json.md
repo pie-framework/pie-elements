@@ -55,6 +55,10 @@ Indicates if partial scoring should be used
 
 The question prompt or item stem
 
+## `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 ## `scoringType` (string, enum)
 
 Indicates scoring type
@@ -137,6 +141,10 @@ Indicates if partial scoring should be used
 ## `prompt` (string, required)
 
 The question prompt or item stem
+
+## `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
 
 ## `scoringType` (string, enum)
 
@@ -489,6 +497,10 @@ Indicates if partial scoring should be used
 ### `prompt` (string, required)
 
 The question prompt or item stem
+
+### `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
 
 ### `scoringType` (string, enum)
 

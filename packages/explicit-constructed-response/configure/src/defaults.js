@@ -51,6 +51,7 @@ export default {
       ]
     },
     rationaleEnabled: false,
+    promptEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },

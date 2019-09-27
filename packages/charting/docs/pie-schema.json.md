@@ -91,6 +91,10 @@ Height for chart representation
 
 Indicates prompt value
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `range` (object, required)
 
 Properties of the `range` object:

@@ -70,6 +70,10 @@ The passage of text from which user may select responses
 
 The user prompt/item stem
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `highlightChoices` (boolean)
 
 Indicates if the parts of text that are choosable, should be highligned when presented to student.

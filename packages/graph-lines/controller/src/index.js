@@ -114,6 +114,8 @@ export function model(question, session, env) {
         out.rationale = null;
       }
 
+      out.prompt = question.promptEnabled ? question.prompt : null;
+
       log('out: ', out);
       resolve(out);
     });

@@ -6,6 +6,7 @@ describe('controller', () => {
   beforeEach(() => {
     question = {
       prompt: 'This is the question prompt',
+      promptEnabled: true,
       imageUrl: '',
       imageDimensions: {
         height: 0,

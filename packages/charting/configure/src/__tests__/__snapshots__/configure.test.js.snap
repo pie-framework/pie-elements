@@ -102,6 +102,7 @@ exports[`Configure renders snapshot 1`] = `
             "title.enabled": false,
           },
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": undefined,
             "studentInstructionsEnabled": false,
@@ -125,6 +126,7 @@ exports[`Configure renders snapshot 1`] = `
             "width": 480,
           },
           "prompt": "Here goes item stem!",
+          "promptEnabled": false,
           "range": Object {
             "label": "Amount",
             "labelStep": 1,
@@ -151,16 +153,6 @@ exports[`Configure renders snapshot 1`] = `
         This interaction asks a student to draw a chart that meets specific criteria. The student will draw a category on the chart by clicking Add Category and dragging the top part of the category.
       </span>
     </WithStyles(Typography)>
-    <InputContainer
-      label="Item Stem"
-    >
-      <EditableHtml
-        disableUnderline={true}
-        markup="Here goes item stem!"
-        nonEmpty={false}
-        onChange={[Function]}
-      />
-    </InputContainer>
     <WithStyles(Component)
       onChange={[Function]}
       value="lineCross"
@@ -216,6 +208,7 @@ exports[`Configure renders snapshot 1`] = `
             "width": 480,
           },
           "prompt": "Here goes item stem!",
+          "promptEnabled": false,
           "range": Object {
             "label": "Amount",
             "labelStep": 1,
@@ -282,6 +275,7 @@ exports[`Configure renders snapshot 1`] = `
             "width": 480,
           },
           "prompt": "Here goes item stem!",
+          "promptEnabled": false,
           "range": Object {
             "label": "Amount",
             "labelStep": 1,

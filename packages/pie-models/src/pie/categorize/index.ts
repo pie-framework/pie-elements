@@ -85,6 +85,9 @@ export interface CategorizePie extends PieModel {
   /**  The question prompt or item stem */
   prompt: string;
 
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
+
   /**
    * Indicates if the choice, after it is dragged into a category, should be removed from the choices
    * area or should remain in place.
@@ -93,7 +96,7 @@ export interface CategorizePie extends PieModel {
 
   /** The categories in which choices may be placed */
   categories: Category[];
-  
+
   /** The defintion of the correct response to the question */
   correctResponse?: CategoryCorrectResponse[];
 

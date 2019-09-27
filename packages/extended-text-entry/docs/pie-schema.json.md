@@ -63,6 +63,10 @@ Indicates if multiple parts are enabled
 
 The question prompt
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `studentInstructions` (string)
 
 Indicates student instructions

@@ -55,6 +55,10 @@ Should the choices be shuffled or not
 
 The question prompt or item stem
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `removeTilesAfterPlacing` (boolean)
 
 Indicates if the choice, after it is dragged into a category, should be removed from the choices

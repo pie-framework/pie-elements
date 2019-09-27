@@ -85,6 +85,10 @@ Indicates the configuration for feedback when answer is partially correct
 
 The item stem for the question
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `lockChoiceOrder` (boolean)
 
 Indicates if the choices can lockChoiceOrder

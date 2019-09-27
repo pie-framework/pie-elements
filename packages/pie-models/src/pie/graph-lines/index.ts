@@ -129,6 +129,12 @@ export interface GraphLinesPie extends PieModel {
     /** Indicates if labels are enabled */
     labels?: boolean;
 
+    /**  Indicates prompt */
+    prompt?: string;
+
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates rationale for the answer */
     rationale?: string;
 

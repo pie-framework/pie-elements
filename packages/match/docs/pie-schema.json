@@ -211,6 +211,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Determines if prompt should show",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "rows": {
       "description": "The rows of choices to be presented.",
       "type": "array",

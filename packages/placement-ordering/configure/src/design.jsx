@@ -45,7 +45,9 @@ export class Design extends React.Component {
     };
 
     this.onPromptChange = this.changeHandler('prompt');
-    this.onTeacherInstructionsChange = this.changeHandler('teacherInstructions');
+    this.onTeacherInstructionsChange = this.changeHandler(
+      'teacherInstructions'
+    );
     this.onRationaleChange = this.changeHandler('rationale');
     this.onChoiceAreaLabelChange = this.changeHandler(
       'choiceLabel',
@@ -68,7 +70,14 @@ export class Design extends React.Component {
   }
 
   render() {
-    const { model, classes, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const {
+      model,
+      classes,
+      imageSupport,
+      onModelChanged,
+      configuration,
+      onConfigurationChanged
+    } = this.props;
     const {
       choiceLabel = {},
       choices = {},
@@ -89,7 +98,8 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     return (
       <layout.ConfigLayout
@@ -98,44 +108,56 @@ export class Design extends React.Component {
             model={model}
             configuration={configuration}
             onChangeModel={model => onModelChanged(model)}
-            onChangeConfiguration={configuration => onConfigurationChanged(configuration, true)}
+            onChangeConfiguration={configuration =>
+              onConfigurationChanged(configuration, true)
+            }
             groups={{
-              'Settings': {
-                'choiceLabel.enabled': choiceLabel.settings &&
-                  toggle(choiceLabel.label, true),
-                placementArea: placementArea.settings &&
-                  toggle(placementArea.label),
-                numberedGuides: (numberedGuides.settings &&
-                  model.placementArea) && toggle(numberedGuides.label),
-                enableImages: enableImages.settings &&
-                  toggle(enableImages.label),
-                orientation: orientation.settings &&
+              Settings: {
+                'choiceLabel.enabled':
+                  choiceLabel.settings && toggle(choiceLabel.label, true),
+                placementArea:
+                  placementArea.settings && toggle(placementArea.label),
+                numberedGuides:
+                  numberedGuides.settings &&
+                  model.placementArea &&
+                  toggle(numberedGuides.label),
+                enableImages:
+                  enableImages.settings && toggle(enableImages.label),
+                orientation:
+                  orientation.settings &&
                   radio(orientation.label, ['vertical', 'horizontal']),
-                removeTilesAfterPlacing: removeTilesAfterPlacing.settings &&
+                removeTilesAfterPlacing:
+                  removeTilesAfterPlacing.settings &&
                   toggle(removeTilesAfterPlacing.label),
-                partialScoring: partialScoring.settings &&
-                  toggle(partialScoring.label),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label),
-                'feedback.enabled': feedback.settings &&
-                toggle(feedback.label, true)
+                partialScoring:
+                  partialScoring.settings && toggle(partialScoring.label),
+                lockChoiceOrder:
+                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                'feedback.enabled':
+                  feedback.settings && toggle(feedback.label, true)
               },
-              'Properties': {
-                teacherInstructionsEnabled: teacherInstructions.settings &&
+              Properties: {
+                teacherInstructionsEnabled:
+                  teacherInstructions.settings &&
                   toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings &&
+                studentInstructionsEnabled:
+                  studentInstructions.settings &&
                   toggle(studentInstructions.label),
-                rationaleEnabled: rationale.settings &&
-                  toggle(rationale.label),
-                scoringType: scoringType.settings &&
-                  radio(scoringType.label, ['auto', 'rubric']),
-              },
+                rationaleEnabled: rationale.settings && toggle(rationale.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric'])
+              }
             }}
           />
         }
       >
         {teacherInstructionsEnabled && (
-          <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+          <InputContainer
+            label={teacherInstructions.label}
+            className={classes.promptHolder}
+          >
             <EditableHtml
               className={classes.prompt}
               markup={model.teacherInstructions || ''}
@@ -146,11 +168,12 @@ export class Design extends React.Component {
           </InputContainer>
         )}
 
-        {
-          prompt.settings &&
+        {prompt.settings && promptEnabled && (
           <FormSection label="Ordering">
-            <InputContainer label={prompt && prompt.label && prompt.label.toUpperCase()}
-                            className={classes.promptHolder}>
+            <InputContainer
+              label={prompt && prompt.label && prompt.label.toUpperCase()}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.prompt}
@@ -159,8 +182,10 @@ export class Design extends React.Component {
               />
             </InputContainer>
             {rationaleEnabled && (
-              <InputContainer label={rationale.label}
-                              className={classes.promptHolder}>
+              <InputContainer
+                label={rationale.label}
+                className={classes.promptHolder}
+              >
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
@@ -170,25 +195,36 @@ export class Design extends React.Component {
               </InputContainer>
             )}
           </FormSection>
-        }
+        )}
 
         <FormSection label="Define Choices">
           <div className={classes.row}>
-            {
-              choiceLabel.enabled && (
-                <InputContainer label={choiceLabel && choiceLabel.label && choiceLabel.label.toUpperCase()}
-                                className={classes.promptHolder}>
-                  <EditableHtml
-                    className={classes.prompt}
-                    markup={model.choiceLabel}
-                    onChange={this.onChoiceAreaLabelChange}
-                  />
-                </InputContainer>
-              )}
+            {choiceLabel.enabled && (
+              <InputContainer
+                label={
+                  choiceLabel &&
+                  choiceLabel.label &&
+                  choiceLabel.label.toUpperCase()
+                }
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={model.choiceLabel}
+                  onChange={this.onChoiceAreaLabelChange}
+                />
+              </InputContainer>
+            )}
 
-            {(targetLabel.settings && model.placementArea) && (
-              <InputContainer label={targetLabel && targetLabel.label && targetLabel.label.toUpperCase()}
-                              className={classes.promptHolder}>
+            {targetLabel.settings && model.placementArea && (
+              <InputContainer
+                label={
+                  targetLabel &&
+                  targetLabel.label &&
+                  targetLabel.label.toUpperCase()
+                }
+                className={classes.promptHolder}
+              >
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.targetLabel}
@@ -198,10 +234,11 @@ export class Design extends React.Component {
             )}
           </div>
 
-          {
-            choices.settings &&
-            <InputContainer label={choices && choices.label && choices.label.toUpperCase()}
-                            className={classes.promptHolder}>
+          {choices.settings && (
+            <InputContainer
+              label={choices && choices.label && choices.label.toUpperCase()}
+              className={classes.promptHolder}
+            >
               <ChoiceEditor
                 correctResponse={model.correctResponse}
                 choices={model.choices}
@@ -210,18 +247,16 @@ export class Design extends React.Component {
                 disableImages={!model.enableImages}
               />
             </InputContainer>
-          }
-
+          )}
         </FormSection>
 
-        {
-          feedback.enabled &&
+        {feedback.enabled && (
           <FeedbackConfig
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
             imageSupport={imageSupport}
           />
-        }
+        )}
       </layout.ConfigLayout>
     );
   }
@@ -229,7 +264,7 @@ export class Design extends React.Component {
 
 Design.defaultProps = {
   onModelChanged: () => {},
-  onConfigurationChanged: () => {},
+  onConfigurationChanged: () => {}
 };
 
 Design.propTypes = {
@@ -241,20 +276,22 @@ Design.propTypes = {
   imageSupport: PropTypes.object
 };
 
-export default withDragContext(withStyles(theme => ({
-  promptHolder: {
-    width: '100%',
-    paddingTop: '12px',
-    marginTop: '24px'
-  },
-  prompt: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit
-  },
-  row: {
-    display: 'grid',
-    gridAutoFlow: 'column',
-    gridAutoColumns: '1fr',
-    gridGap: '8px'
-  },
-}))(Design));
+export default withDragContext(
+  withStyles(theme => ({
+    promptHolder: {
+      width: '100%',
+      paddingTop: '12px',
+      marginTop: '24px'
+    },
+    prompt: {
+      paddingTop: theme.spacing.unit * 2,
+      paddingBottom: theme.spacing.unit
+    },
+    row: {
+      display: 'grid',
+      gridAutoFlow: 'column',
+      gridAutoColumns: '1fr',
+      gridGap: '8px'
+    }
+  }))(Design)
+);

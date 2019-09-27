@@ -11,7 +11,7 @@ exports.model = (id, element) => ({
       feedback: {
         type: 'none',
         value: ''
-      },
+      }
     },
     {
       value: 'iceland',
@@ -27,8 +27,7 @@ exports.model = (id, element) => ({
       label: 'Norway',
       feedback: {
         type: 'none',
-        value:
-          ''
+        value: ''
       },
       rationale: 'Rationale for Norway'
     },
@@ -44,4 +43,5 @@ exports.model = (id, element) => ({
     }
   ],
   prompt: 'Which of these northern European countries are EU members?',
+  promptEnabled: true
 });

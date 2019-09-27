@@ -8,6 +8,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Indicates if the prompt is enabled",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "imageUrl": {
       "description": "The image over which hotspots will be drawn",
       "type": "string",

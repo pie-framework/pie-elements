@@ -6,6 +6,7 @@ export default {
     width: 0
   },
   rationaleEnabled: false,
+  promptEnabled: false,
   teacherInstructionsEnabled: false,
   studentInstructionsEnabled: false,
   configuration: {
@@ -17,6 +18,10 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale'
+    },
+    prompt: {
+      settings: true,
+      label: 'Prompt'
     },
     teacherInstructions: {
       settings: true,

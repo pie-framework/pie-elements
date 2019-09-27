@@ -18,6 +18,10 @@ This element must be one of the following enum values:
 
 The item stem for the question
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `expression` (string, required)
 
 Indicates the expression for advanced mode

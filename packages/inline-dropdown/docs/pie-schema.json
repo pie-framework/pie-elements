@@ -63,6 +63,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Determines if prompt should show",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "lockChoiceOrder": {
       "description": "Indicates if the user can lock the order of the choices",
       "type": "boolean",

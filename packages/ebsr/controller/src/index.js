@@ -96,6 +96,9 @@ export async function model(question, session, env, updateSession) {
     partB.teacherInstructions = null;
   }
 
+  partA.prompt = question.partA.promptEnabled ? question.partA.prompt : null;
+  partB.prompt = question.partB.promptEnabled ? question.partB.prompt : null;
+
   return new Promise(resolve => {
     resolve({
       disabled: env.mode !== 'gather',
