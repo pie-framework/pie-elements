@@ -378,5 +378,20 @@
     "committerDate": "2019-09-18 07:28:19 -0400",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@2.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": "explicit-constructed-response",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(explicit-constructed-response): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9da37ac0520657c132067d2e4ad5959298f8ae38",
+    "gitTags": "",
+    "committerDate": "2019-09-24 17:33:23 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@2.1.0"
   }
 ]

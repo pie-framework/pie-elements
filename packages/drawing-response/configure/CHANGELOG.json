@@ -243,5 +243,20 @@
     "committerDate": "2019-09-16 19:15:38 +0300",
     "isTagged": true,
     "tag": "@pie-element/drawing-response-configure@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "drawing-response",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(drawing-response): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "cb06b2aa395a8d4347c07e40f2b4bcb5f7a74530",
+    "gitTags": "",
+    "committerDate": "2019-09-24 16:56:36 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response-configure@2.1.0"
   }
 ]

@@ -123,5 +123,20 @@
     "committerDate": "2019-09-16 19:13:51 +0300",
     "isTagged": true,
     "tag": "@pie-element/charting-configure@1.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "charting",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(charting): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e6485312a2cd78e8dd3ce99145d93302af3b6010",
+    "gitTags": "",
+    "committerDate": "2019-09-24 16:16:43 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting-configure@1.1.0"
   }
 ]

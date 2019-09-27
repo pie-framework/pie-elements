@@ -1593,5 +1593,35 @@
     "committerDate": "2019-09-07 02:29:51 +0300",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@3.10.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel).",
+    "merge": null,
+    "header": "fix: Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "494bf3a471a90e704cbb5ffdb9f44a198646f276",
+    "gitTags": "",
+    "committerDate": "2019-09-27 09:22:59 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "multiple-choice",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(multiple-choice): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d90c1a1c83f1efb2c941016812f7296f90ba1e57",
+    "gitTags": "",
+    "committerDate": "2019-09-25 18:24:54 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@4.1.0"
   }
 ]
