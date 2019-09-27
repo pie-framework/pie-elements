@@ -8,7 +8,6 @@ import {
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GeneralConfigBlock from './general-config-block';
 import { ResponseTypes } from './utils';
@@ -75,7 +74,7 @@ export class Configure extends React.Component {
       scoringType = {}
     } = configuration || {};
     log('[render] model', model);
-    const { rationaleEnabled, teacherInstructionsEnabled } = model || {};
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
 
     return (
       <div>
@@ -90,10 +89,10 @@ export class Configure extends React.Component {
                 'Settings': {
                   responseType: responseType.settings &&
                     radio(responseType.label, [ResponseTypes.simple, ResponseTypes.advanced]),
-                  'feedback.enabled': feedback.settings &&
-                    toggle(feedback.label, true),
-                  'prompt.enabled': prompt.settings &&
-                    toggle(prompt.label, true)
+                  feedbackEnabled: feedback.settings &&
+                    toggle(feedback.label),
+                  'promptEnabled': prompt.settings &&
+                    toggle(prompt.label)
                 },
                 'Properties': {
                   teacherInstructionsEnabled: teacherInstructions.settings &&
@@ -128,9 +127,10 @@ export class Configure extends React.Component {
                 configuration={configuration}
                 onChange={this.onChange}
                 rationaleEnabled={rationaleEnabled}
+                promptEnabled={promptEnabled}
               />
               {
-                feedback.enabled && (
+                feedbackEnabled && (
                   <FeedbackConfig
                     feedback={model.feedback}
                     onChange={this.onFeedbackChange}

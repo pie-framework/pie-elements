@@ -18,8 +18,7 @@ const defaultConfig = {
   },
   feedback: {
     settings: true,
-    label: 'Feedback',
-    enabled: true
+    label: 'Feedback'
   },
   lockChoiceOrder: {
     settings: true,
@@ -40,11 +39,6 @@ const defaultConfig = {
   scoringType: {
     settings: false,
     label: 'Scoring Type',
-  },
-  sequentialChoiceLabels: {
-    settings: false,
-    label: 'Sequential Choice Labels',
-    enabled: false
   },
   studentInstructions: {
     settings: false,
@@ -68,6 +62,7 @@ export default {
       prompt: 'Prompt A',
       rationaleEnabled: false,
       feedbackEnabled: false,
+      promptEnabled: false,
       teacherInstructionsEnabled: false,
       studentInstructionsEnabled: false
     },
@@ -78,6 +73,7 @@ export default {
       partialScoring: false,
       prompt: 'Prompt B',
       rationaleEnabled: false,
+      promptEnabled: false,
       feedbackEnabled: false,
       teacherInstructionsEnabled: false,
       studentInstructionsEnabled: false

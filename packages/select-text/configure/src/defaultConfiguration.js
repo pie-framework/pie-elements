@@ -2,8 +2,8 @@ const tokens = () => [
   {
     text: '',
     start: 0,
-    end: 0,
-  },
+    end: 0
+  }
 ];
 
 export default {
@@ -16,45 +16,48 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
+    feedbackEnabled: false,
     rationaleEnabled: false,
+    promptEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },
   configuration: {
     selectionCount: {
       settings: true,
-      label: 'Selection count',
+      label: 'Selection count'
     },
     correctAnswer: {
       settings: true,
-      label: 'Correct Answers',
+      label: 'Correct Answers'
     },
     selections: {
       settings: true,
-      label: 'Selections Available',
+      label: 'Selections Available'
     },
     highlightChoices: {
       settings: true,
-      label: 'Highlight choices',
+      label: 'Highlight choices'
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
+      label: 'Teacher Instructions'
     },
     prompt: {
-      label: 'Prompt'
+      label: 'Prompt',
+      settings: true
     },
     text: {
       settings: true,
@@ -66,16 +69,15 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     partialScoring: {
       settings: true,
-      label: 'Allow Partial Scoring',
+      label: 'Allow Partial Scoring'
     },
     mode: {
       settings: true,
       label: 'Mode'
-    },
+    }
   }
 };

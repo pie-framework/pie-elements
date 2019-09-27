@@ -30,7 +30,6 @@ export function model(question, session, env) {
       hotspotColor,
       multipleCorrect,
       partialScoring,
-      prompt,
       shapes,
       responseCorrect:
         env.mode === 'evaluate'
@@ -45,6 +44,8 @@ export function model(question, session, env) {
       out.rationale = null;
       out.teacherInstructions = null;
     }
+
+    out.prompt = question.promptEnabled ? prompt : null;
 
     resolve(out);
   });

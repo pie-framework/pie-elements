@@ -9,6 +9,7 @@ exports.model = (id, element) => ({
   disabled: false,
   mode: 'gather',
   prompt: '<p>Solve the equation below.</p>',
+  promptEnabled: true,
   shuffle: true,
   choices: [
     choice('<div>6</div>', '0'),

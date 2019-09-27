@@ -42,6 +42,8 @@ const Mathquill = require('@pie-framework/mathquill');
 const defaultProps = {
   model: {
     id: '1',
+    promptEnabled: true,
+    feedbackEnabled: true,
     element: 'math-inline',
     responseType: 'Advanced Multi',
     feedback: {
@@ -135,6 +137,7 @@ describe('GeneralConfigBlock', () => {
   beforeEach(() => {
     props = {
       model: defaultProps.model,
+      promptEnabled: true,
       configuration: defaultValues.configuration,
       onChange: jest.fn(),
       imageSupport: {}

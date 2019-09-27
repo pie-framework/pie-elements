@@ -2,6 +2,7 @@ exports.model = (id, element) => ({
   id,
   element,
   prompt: 'This is the question prompt',
+  promptEnabled: true,
   imageUrl: '',
   shapes: {
     rectangles: [],

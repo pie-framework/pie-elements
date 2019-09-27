@@ -37,6 +37,9 @@ export interface ExplicitConstructedResponsePie extends PieModel {
     /** The item stem for the question */
     prompt?: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates correct answer rationale */
     rationale: string;
 

@@ -47,6 +47,9 @@ export interface InlineDropdownPie extends PieModel {
     /** The item stem for the question */
     prompt?: string;
 
+    /** Determines if prompt should show */
+    promptEnabled?: boolean;
+
     /** Indicates if the user can lock the order of the choices */
     lockChoiceOrder: boolean;
 

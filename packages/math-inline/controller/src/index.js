@@ -185,7 +185,7 @@ export function model(question, session, env) {
     }
 
     const fb =
-      env.mode === 'evaluate' && question.allowFeedback
+      env.mode === 'evaluate' && question.feedbackEnabled
         ? getFeedbackForCorrectness(correctness, question.feedback)
         : Promise.resolve(undefined);
 
@@ -212,6 +212,8 @@ export function model(question, session, env) {
         out.rationale = null;
         out.teacherInstructions = null;
       }
+
+      out.config.prompt = question.promptEnabled ? question.prompt : null;
 
       log('out: ', out);
       resolve(out);

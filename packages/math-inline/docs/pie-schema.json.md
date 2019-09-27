@@ -18,6 +18,10 @@ This element must be one of the following enum values:
 
 The item stem for the question
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `expression` (string, required)
 
 Indicates the expression for advanced mode
@@ -167,6 +171,10 @@ Extra buttons defined by user
 
 The object is an array with all elements of the type `string`.
 
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
+
 # `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled
@@ -199,15 +207,16 @@ Properties of the `ConfigureProp` object:
 
 ### `settings` (boolean)
 
-Indicates if the item has to be displayed
+Indicates if the item has to be displayed in the Settings Panel
 
 ### `label` (string)
 
-Indicates the label for the item
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ### `enabled` (boolean)
 
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ComplexFeedbackType` (object)
 

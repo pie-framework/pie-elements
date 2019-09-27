@@ -33,7 +33,7 @@ const styles = theme => ({
   prompt: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
-  },
+  }
 });
 
 class Configure extends React.Component {
@@ -81,7 +81,7 @@ class Configure extends React.Component {
     onModelChanged(model);
   };
 
-  onDeleteRow = (rowIndex) => {
+  onDeleteRow = rowIndex => {
     const { model } = this.props;
 
     const newModel = { ...model };
@@ -106,18 +106,18 @@ class Configure extends React.Component {
     this.onChange(newModel);
   };
 
-  onLayoutChange = (newLayout) => {
+  onLayoutChange = newLayout => {
     const { model } = this.props;
     const oldLayout = model.layout;
     const newModel = { ...model };
 
     if (newLayout > oldLayout) {
-      for (let i = 0; i < (newLayout - oldLayout); i++) {
+      for (let i = 0; i < newLayout - oldLayout; i++) {
         newModel.headers.push(`Column ${newModel.headers.length + 1}`);
       }
 
       newModel.rows.forEach(row => {
-        for (let i = 0; i < (newLayout - oldLayout); i++) {
+        for (let i = 0; i < newLayout - oldLayout; i++) {
           row.values.push(false);
         }
       });
@@ -127,7 +127,6 @@ class Configure extends React.Component {
       newModel.rows.forEach(row => {
         row.values.splice(newLayout - 1);
       });
-
     }
 
     newModel.layout = newLayout;
@@ -142,12 +141,14 @@ class Configure extends React.Component {
     // if we're switching to radio and we have more than one true, reset
     if (newChoiceMode === 'radio') {
       newModel.rows.forEach(row => {
-        const trueCount = row.values.reduce((total, current) => current === true ? total + 1 : total);
+        const trueCount = row.values.reduce((total, current) =>
+          current === true ? total + 1 : total
+        );
 
         if (trueCount > 1) {
-          row.values = new Array(model.layout - 1).fill(false)
+          row.values = new Array(model.layout - 1).fill(false);
         }
-      })
+      });
     }
 
     newModel.choiceMode = newChoiceMode;
@@ -182,7 +183,14 @@ class Configure extends React.Component {
   };
 
   render() {
-    const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
+    const {
+      classes,
+      model,
+      imageSupport,
+      onModelChanged,
+      configuration,
+      onConfigurationChanged
+    } = this.props;
     const {
       enableImages = {},
       partialScoring = {},
@@ -194,10 +202,10 @@ class Configure extends React.Component {
       prompt = {},
       feedback = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     log('[render] model', model);
-
 
     return (
       <layout.ConfigLayout
@@ -208,33 +216,39 @@ class Configure extends React.Component {
             onChangeModel={model => onModelChanged(model)}
             onChangeConfiguration={config => onConfigurationChanged(config)}
             groups={{
-              'Settings': {
-                enableImages: enableImages.settings &&
-                toggle(enableImages.label),
-                partialScoring: partialScoring.settings &&
-                toggle(partialScoring.label),
-                lockChoiceOrder: lockChoiceOrder.settings &&
-                toggle(lockChoiceOrder.label),
-                'feedback.enabled': feedback.settings &&
-                toggle(feedback.label, true),
+              Settings: {
+                enableImages:
+                  enableImages.settings && toggle(enableImages.label),
+                partialScoring:
+                  partialScoring.settings && toggle(partialScoring.label),
+                lockChoiceOrder:
+                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                'feedback.enabled':
+                  feedback.settings && toggle(feedback.label, true)
               },
-              'Properties': {
-                teacherInstructionsEnabled: teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
-                studentInstructionsEnabled: studentInstructions.settings &&
-                toggle(studentInstructions.label),
+              Properties: {
+                teacherInstructionsEnabled:
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
+                studentInstructionsEnabled:
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
-                scoringType: scoringType.settings &&
-                radio(scoringType.label, ['auto', 'rubric']),
-              },
+                scoringType:
+                  scoringType.settings &&
+                  radio(scoringType.label, ['auto', 'rubric'])
+              }
             }}
           />
         }
       >
         <div className={classes.content}>
-
           {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <InputContainer
+              label={teacherInstructions.label}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -245,7 +259,7 @@ class Configure extends React.Component {
             </InputContainer>
           )}
 
-          {prompt.settings && (
+          {prompt.settings && promptEnabled && (
             <InputContainer
               label={prompt.label}
               className={classes.promptHolder}
@@ -262,8 +276,10 @@ class Configure extends React.Component {
           )}
 
           {rationaleEnabled && (
-            <InputContainer label={rationale.label}
-                            className={classes.promptHolder}>
+            <InputContainer
+              label={rationale.label}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.rationale || ''}
@@ -286,16 +302,13 @@ class Configure extends React.Component {
             onAddRow={this.onAddRow}
             onDeleteRow={this.onDeleteRow}
           />
-          {
-            feedback.enabled && (
-              <FeedbackConfig
-                feedback={model.feedback}
-                onChange={this.onFeedbackChange}
-              />
-            )
-          }
+          {feedback.enabled && (
+            <FeedbackConfig
+              feedback={model.feedback}
+              onChange={this.onFeedbackChange}
+            />
+          )}
         </div>
-
       </layout.ConfigLayout>
     );
   }

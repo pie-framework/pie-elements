@@ -24,8 +24,10 @@ class Root extends React.Component {
       onUpdateImageDimension,
       onTeacherInstructionsChanged
     } = this.props;
-    const { backgroundImage = {}, rationale = {}, teacherInstructions = {} } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { backgroundImage = {}, rationale = {}, prompt = {}, teacherInstructions = {} } =
+      configuration || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     return (
       <div className={classes.base}>
@@ -37,12 +39,16 @@ class Root extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                'Settings': {
+                Settings: {
                   'backgroundImage.enabled':
-                  backgroundImage.settings && toggle(backgroundImage.label, true),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                    backgroundImage.settings &&
+                    toggle(backgroundImage.label, true),
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
                   teacherInstructionsEnabled:
-                    teacherInstructions.settings && toggle(teacherInstructions.label)
+                    teacherInstructions.settings &&
+                    toggle(teacherInstructions.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
                 },
                 Properties: {}
               }}
@@ -51,7 +57,10 @@ class Root extends React.Component {
         >
           <div className={classes.regular}>
             {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.prompt}>
+              <InputContainer
+                label={teacherInstructions.label}
+                className={classes.prompt}
+              >
                 <EditableHtml
                   markup={model.teacherInstructions || ''}
                   onChange={onTeacherInstructionsChanged}
@@ -61,9 +70,14 @@ class Root extends React.Component {
               </InputContainer>
             )}
 
-            <InputContainer label="Item Stem" className={classes.prompt}>
-              <EditableHtml markup={model.prompt} onChange={onPromptChanged} />
-            </InputContainer>
+            {promptEnabled && (
+              <InputContainer label="Item Stem" className={classes.prompt}>
+                <EditableHtml
+                  markup={model.prompt}
+                  onChange={onPromptChanged}
+                />
+              </InputContainer>
+            )}
 
             {rationaleEnabled && (
               <InputContainer
@@ -133,7 +147,7 @@ Root.propTypes = {
   onModelChangedByConfig: PropTypes.func.isRequired,
   onRationaleChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired,
-  onTeacherInstructionsChanged: PropTypes.func.isRequired,
+  onTeacherInstructionsChanged: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Root);

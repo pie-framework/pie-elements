@@ -27,6 +27,9 @@ export interface MultipleChoicePie extends PieModel {
   /**  The question prompt or item stem */
   prompt?: string;
 
+  /** Determines if prompt should show */
+  promptEnabled?: boolean;
+
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
 
@@ -41,6 +44,9 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates teacher instructions */
   teacherInstructions?: string;
+
+  /** Indicates if feedback is enabled */
+  feedbackEnabled: boolean;
 
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;

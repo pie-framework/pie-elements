@@ -13,6 +13,7 @@ describe('controller', () => {
   beforeEach(() => {
     question = {
       prompt: 'prompt',
+      promptEnabled: true,
       imageUrl: '',
       dimensions: {
         height: 0,

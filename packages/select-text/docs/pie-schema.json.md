@@ -70,6 +70,10 @@ The passage of text from which user may select responses
 
 The user prompt/item stem
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `highlightChoices` (boolean)
 
 Indicates if the parts of text that are choosable, should be highligned when presented to student.
@@ -96,6 +100,10 @@ Indicates student instructions
 # `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
 
 # `rationaleEnabled` (boolean, required)
 
@@ -129,15 +137,16 @@ Properties of the `ConfigureProp` object:
 
 ### `settings` (boolean)
 
-Indicates if the item has to be displayed
+Indicates if the item has to be displayed in the Settings Panel
 
 ### `label` (string)
 
-Indicates the label for the item
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ### `enabled` (boolean)
 
-Indicates the value of the item if it affects config-ui (eg.: if item is a switch)
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ComplexFeedbackType` (object)
 

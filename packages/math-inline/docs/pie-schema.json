@@ -17,6 +17,11 @@
       "type": "string",
       "title": "prompt"
     },
+    "promptEnabled": {
+      "description": "Determines if prompt should show",
+      "type": "boolean",
+      "title": "promptEnabled"
+    },
     "expression": {
       "description": "Indicates the expression for advanced mode",
       "type": "string",
@@ -391,6 +396,11 @@
       },
       "title": "customKeys"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -420,6 +430,7 @@
   "required": [
     "element",
     "expression",
+    "feedbackEnabled",
     "id",
     "rationaleEnabled",
     "responses",
@@ -432,17 +443,17 @@
       "type": "object",
       "properties": {
         "settings": {
-          "description": "Indicates if the item has to be displayed",
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
           "type": "boolean",
           "title": "settings"
         },
         "label": {
-          "description": "Indicates the label for the item",
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
         },
         "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui (eg.: if item is a switch)",
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
           "type": "boolean",
           "title": "enabled"
         }

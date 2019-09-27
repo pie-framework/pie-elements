@@ -29,6 +29,9 @@ export interface Part {
     /**  The question prompt or item stem */
     prompt: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates scoring type */
     scoringType?: 'auto' | 'rubric';
 
@@ -125,11 +128,6 @@ interface PartConfiguration {
      * Indicates whether the Scoring type option should be displayed
      */
     scoringType?: ConfigureProp;
-
-    /**
-     * Indicates whether the choice labels have a sequential order
-     */
-    sequentialChoiceLabels?: ConfigureProp;
 
     /**
      * Student Instructions configuration

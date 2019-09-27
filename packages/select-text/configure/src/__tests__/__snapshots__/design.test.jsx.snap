@@ -11,7 +11,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": false,
           },
@@ -29,6 +28,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -67,13 +67,14 @@ exports[`design snapshot renders all items except feedback 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": false,
+            "feedbackEnabled": false,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -89,13 +90,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <TextField
       label="Content"
       multiline={true}
@@ -125,9 +119,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
       label="Selection count (0:any)"
       max={0}
       min={0}
-      onChange={[Function]}
-    />
-    <Component
       onChange={[Function]}
     />
   </div>
@@ -145,7 +136,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": false,
           },
@@ -163,6 +153,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -201,13 +192,14 @@ exports[`design snapshot renders all items except the content input 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": false,
+            "feedbackEnabled": false,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -223,13 +215,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <Component
       label="Tokens"
     >
@@ -253,9 +238,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
       min={0}
       onChange={[Function]}
     />
-    <Component
-      onChange={[Function]}
-    />
   </div>
 </ConfigLayout>
 `;
@@ -271,7 +253,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": true,
           },
@@ -289,6 +270,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -327,13 +309,14 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": undefined,
+            "feedbackEnabled": undefined,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -349,13 +332,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <TextField
       label="Content"
       multiline={true}
@@ -385,9 +361,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       label="Selection count (0:any)"
       max={0}
       min={0}
-      onChange={[Function]}
-    />
-    <Component
       onChange={[Function]}
     />
   </div>

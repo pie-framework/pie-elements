@@ -13,9 +13,10 @@ describe('controller', () => {
       id: '1',
       element: 'multiple-choice',
       prompt: 'prompt',
+      promptEnabled: true,
       choicePrefix: 'letters',
       choiceMode: 'radio',
-      allowFeedback: true,
+      feedbackEnabled: true,
       choices: [
         {
           label: 'a',

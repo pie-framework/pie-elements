@@ -65,6 +65,9 @@ export interface PlacementOrderingPie extends PieModel {
     /** The item stem for the question */
     prompt?: string;
 
+    /** Determines if prompt should show */
+    promptEnabled?: boolean;
+
     /** Indicates if the choices can lockChoiceOrder */
     lockChoiceOrder?: boolean;
 

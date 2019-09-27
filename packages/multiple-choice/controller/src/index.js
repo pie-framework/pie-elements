@@ -19,7 +19,7 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     out.rationale = null;
   }
 
-  if (env.mode === 'evaluate' && model.allowFeedback) {
+  if (env.mode === 'evaluate' && model.feedbackEnabled) {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
@@ -61,17 +61,23 @@ export async function model(question, session, env, updateSession) {
   );
 
   if (!question.lockChoiceOrder) {
-    choices = await getShuffledChoices(choices, session, updateSession, 'value');
+    choices = await getShuffledChoices(
+      choices,
+      session,
+      updateSession,
+      'value'
+    );
   }
 
   const out = {
     disabled: env.mode !== 'gather',
     mode: env.mode,
-    prompt: question.prompt,
+    prompt: question.promptEnabled ? question.prompt : null,
     choiceMode: question.choiceMode,
     keyMode: question.choicePrefix,
     shuffle: !question.lockChoiceOrder,
     choices,
+    feedbackEnabled: question.feedbackEnabled,
 
     //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
     complete: {
@@ -81,8 +87,13 @@ export async function model(question, session, env, updateSession) {
       env.mode === 'evaluate' ? isResponseCorrect(question, session) : undefined
   };
 
-  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+  if (
+    env.role === 'instructor' &&
+    (env.mode === 'view' || env.mode === 'evaluate')
+  ) {
+    out.teacherInstructions = question.teacherInstructionsEnabled
+      ? question.teacherInstructions
+      : null;
   } else {
     out.teacherInstructions = null;
   }

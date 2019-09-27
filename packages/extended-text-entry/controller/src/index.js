@@ -17,7 +17,7 @@ export async function model(model, session, env) {
   log('[model]', model);
 
   const fb =
-    env.mode === 'evaluate' && model.allowFeedback
+    env.mode === 'evaluate' && model.feedbackEnabled
       ? getFeedback(model.feedback, 'Your answer has been submitted')
       : Promise.resolve(undefined);
 
@@ -49,7 +49,7 @@ export async function model(model, session, env) {
   }
 
   return fb.then(feedback => ({
-    prompt: model.prompt,
+    prompt: model.promptEnabled ? model.prompt : null,
     dimensions: model.dimensions,
     disabled: env.mode !== 'gather',
     feedback,

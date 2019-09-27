@@ -108,7 +108,7 @@ export const model = (question, session, env) => {
         : undefined;
 
     const fb =
-      env.mode === 'evaluate' && question.allowFeedback
+      env.mode === 'evaluate' && question.feedbackEnabled
         ? getFeedbackForCorrectness(correctness, question.feedback)
         : Promise.resolve(undefined);
 
@@ -116,7 +116,7 @@ export const model = (question, session, env) => {
       const out = {
         tokens,
         highlightChoices: question.highlightChoices,
-        prompt: question.prompt,
+        prompt: question.promptEnabled ? question.prompt : null,
         text: question.text,
         disabled: env.mode !== 'gather',
         maxSelections: question.maxSelections,

@@ -7,6 +7,7 @@ export default {
     markup: '',
     choices: {},
     alternateResponse: {},
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -26,11 +27,11 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
+      label: 'Rationale'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
+      label: 'Teacher Instructions'
     }
   }
 };

@@ -11,6 +11,8 @@ export default {
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',
+    feedbackEnabled: false,
+    promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -19,7 +21,7 @@ export default {
     answerChoiceCount: 0,
     addChoiceButton: {
       settings: true,
-      label: 'Add a Choice',
+      label: 'Add a Choice'
     },
     choiceMode: {
       settings: true,
@@ -30,12 +32,11 @@ export default {
       label: 'Choice Labels'
     },
     deleteChoice: {
-      settings: true,
+      settings: true
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     prompt: {
       settings: true,
@@ -47,23 +48,23 @@ export default {
     },
     partialScoring: {
       settings: true,
-      label: 'Allow Partial Scoring',
+      label: 'Allow Partial Scoring'
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
+      label: 'Rationale'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type',
+      label: 'Scoring Type'
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions',
+      label: 'Student Instructions'
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions',
+      label: 'Teacher Instructions'
     }
   }
 };
