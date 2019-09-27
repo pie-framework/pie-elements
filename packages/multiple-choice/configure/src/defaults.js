@@ -11,6 +11,7 @@ export default {
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',
+    feedbackEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
@@ -34,8 +35,7 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     prompt: {
       settings: true,

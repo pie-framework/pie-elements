@@ -42,6 +42,9 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates teacher instructions */
   teacherInstructions?: string;
 
+  /** Indicates if feedback is enabled */
+  feedbackEnabled: boolean;
+
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
