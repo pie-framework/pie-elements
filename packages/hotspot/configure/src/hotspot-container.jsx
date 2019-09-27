@@ -70,8 +70,8 @@ class Container extends Component {
   handleUndo = () => {
     const { onUpdateShapes, shapes } = this.props;
 
-    if (shapes.length) {
-      const newShapes = shapes.slice(0, shapes.length - 1);
+    if (shapes && shapes.length) {
+      const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
       onUpdateShapes(newShapes);
     }
   };
@@ -130,12 +130,12 @@ class Container extends Component {
                 />
             )}
             <Button
-              disabled={!shapes.length}
+              disabled={!(shapes && shapes.length)}
               onClick={this.handleUndo}
               label="Undo"
             />
             <Button
-              disabled={!shapes.length}
+              disabled={!(shapes && shapes.length)}
               onClick={this.handleClearAll}
               label="Clear all"
             />

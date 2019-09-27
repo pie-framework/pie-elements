@@ -9,6 +9,11 @@ const { Panel, toggle, radio, dropdown } = settings;
 const styles = theme => ({
   design: {
     paddingTop: theme.spacing.unit * 3
+  },
+  part: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '16px 0 32px'
   }
 });
 
@@ -148,39 +153,43 @@ export class Main extends React.Component {
           }
         >
           <div>
-            {model.partLabels && <p>{firstPart}</p>}
-            <ebsr-multiple-choice-configure
-              id="A"
-              key="partA"
-              ref={ref => {
-                if (ref) {
-                  // do not use destructuring to get model from props
-                  this.partA = ref;
-                  this.partA._model = cloneDeep(this.props.model.partA);
-                  this.partA.configuration = {
-                    ...partA,
-                    ...generalConfiguration
-                  };
-                }
-              }}
-            />
+            <div className={classes.part}>
+              {model.partLabels && <p>{firstPart}</p>}
+              <ebsr-multiple-choice-configure
+                id="A"
+                key="partA"
+                ref={ref => {
+                  if (ref) {
+                    // do not use destructuring to get model from props
+                    this.partA = ref;
+                    this.partA._model = cloneDeep(this.props.model.partA);
+                    this.partA.configuration = {
+                      ...partA,
+                      ...generalConfiguration
+                    };
+                  }
+                }}
+              />
+            </div>
 
-            {model.partLabels && <p>{secondPart}</p>}
-            <ebsr-multiple-choice-configure
-              id="B"
-              key="partB"
-              ref={ref => {
-                if (ref) {
-                  // do not use destructuring to get model from props
-                  this.partB = ref;
-                  this.partB._model = cloneDeep(this.props.model.partB);
-                  this.partB.configuration = {
-                    ...partB,
-                    ...generalConfiguration
-                  };
-                }
-              }}
-            />
+            <div className={classes.part}>
+              {model.partLabels && <p>{secondPart}</p>}
+              <ebsr-multiple-choice-configure
+                id="B"
+                key="partB"
+                ref={ref => {
+                  if (ref) {
+                    // do not use destructuring to get model from props
+                    this.partB = ref;
+                    this.partB._model = cloneDeep(this.props.model.partB);
+                    this.partB.configuration = {
+                      ...partB,
+                      ...generalConfiguration
+                    };
+                  }
+                }}
+              />
+            </div>
           </div>
         </layout.ConfigLayout>
       </div>
