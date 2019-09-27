@@ -157,8 +157,9 @@ export class Design extends React.Component {
       scoringType = {},
       highlightChoices = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled
+    } = model || {};
 
     log('[render] maxSelections:', model.maxSelections);
 
@@ -176,8 +177,8 @@ export class Design extends React.Component {
                   partialScoring.settings && toggle(partialScoring.label),
                 highlightChoices:
                   highlightChoices.settings && toggle(highlightChoices.label),
-                'feedback.enabled':
-                  feedback.settings && toggle(feedback.label, true)
+                feedbackEnabled:
+                  feedback.settings && toggle(feedback.label)
               },
               Properties: {
                 teacherInstructionsEnabled:
@@ -298,7 +299,7 @@ export class Design extends React.Component {
             />
           )}
 
-          {feedback.enabled && (
+          {feedbackEnabled && (
             <FeedbackConfig
               feedback={model.feedback}
               onChange={this.changeFeedback}

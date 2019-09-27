@@ -7,6 +7,7 @@ export default {
     prompt: 'This is the question prompt',
     mathInput: false,
     equationEditor: 'everything',
+    feedbackEnabled: false,
     rationaleEnabled: false,
     promptEnabled: false,
     teacherInstructionsEnabled: false,
@@ -24,8 +25,7 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     mathInput: {
       settings: true,

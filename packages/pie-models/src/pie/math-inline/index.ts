@@ -108,6 +108,9 @@ export interface MathInlinePie extends PieModel {
     /** Extra buttons defined by user */
     customKeys?: string[];
 
+    /** Indicates if Feedback is enabled */
+    feedbackEnabled: boolean;
+
     /** Indicates if Rationale are enabled */
     rationaleEnabled: boolean;
 

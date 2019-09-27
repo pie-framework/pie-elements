@@ -31,6 +31,7 @@ export default {
     responses: [],
     customKeys: [],
     scoringType: 'auto',
+    feedbackEnabled: false,
     promptEnabled: false,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
@@ -43,8 +44,7 @@ export default {
     },
     feedback: {
       settings: true,
-      label: 'Feedback',
-      enabled: true
+      label: 'Feedback'
     },
     responseType: {
       settings: true,

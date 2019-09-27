@@ -43,6 +43,7 @@ const defaultProps = {
   model: {
     id: '1',
     promptEnabled: true,
+    feedbackEnabled: true,
     element: 'math-inline',
     responseType: 'Advanced Multi',
     feedback: {

@@ -88,6 +88,11 @@
       "type": "string",
       "title": "teacherInstructions"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -117,6 +122,7 @@
   "required": [
     "dimensions",
     "element",
+    "feedbackEnabled",
     "id",
     "rationaleEnabled",
     "studentInstructionsEnabled",

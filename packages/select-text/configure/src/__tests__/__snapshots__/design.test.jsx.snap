@@ -11,7 +11,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": false,
           },
@@ -75,7 +74,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": false,
+            "feedbackEnabled": false,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -120,9 +119,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
       label="Selection count (0:any)"
       max={0}
       min={0}
-      onChange={[Function]}
-    />
-    <Component
       onChange={[Function]}
     />
   </div>
@@ -140,7 +136,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": false,
           },
@@ -204,7 +199,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": false,
+            "feedbackEnabled": false,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -243,9 +238,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
       min={0}
       onChange={[Function]}
     />
-    <Component
-      onChange={[Function]}
-    />
   </div>
 </ConfigLayout>
 `;
@@ -261,7 +253,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "settings": true,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": true,
           },
@@ -325,7 +316,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "feedback.enabled": undefined,
+            "feedbackEnabled": undefined,
             "highlightChoices": undefined,
             "partialScoring": undefined,
           },
@@ -370,9 +361,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       label="Selection count (0:any)"
       max={0}
       min={0}
-      onChange={[Function]}
-    />
-    <Component
       onChange={[Function]}
     />
   </div>

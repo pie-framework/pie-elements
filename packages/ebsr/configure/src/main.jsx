@@ -46,8 +46,7 @@ export class Main extends React.Component {
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
       rationale: rationaleA = {},
-      scoringType: scoringTypeA = {},
-      sequentialChoiceLabels: sequentialChoiceLabelsA = {}
+      scoringType: scoringTypeA = {}
     } = partA || {};
     const {
       feedback: feedbackB = {},
@@ -59,8 +58,7 @@ export class Main extends React.Component {
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
       rationale: rationaleB = {},
-      scoringType: scoringTypeB = {},
-      sequentialChoiceLabels: sequentialChoiceLabelsB = {}
+      scoringType: scoringTypeB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
@@ -100,11 +98,8 @@ export class Main extends React.Component {
                     radio(scoringTypeA.label, ['auto', 'rubric'])
                 },
                 [`Properties ${firstPart}`]: {
-                  'partA.sequentialChoiceLabels.enabled':
-                    sequentialChoiceLabelsA.settings &&
-                    toggle(sequentialChoiceLabelsA.label, true),
-                  'partA.feedbackEnabled':
-                    feedbackA.settings && toggle(feedbackA.label),
+                  'partA.feedbackEnabled': feedbackA.settings &&
+                    toggle(feedbackA.label),
                   'partA.promptEnabled':
                     promptA.settings && toggle(promptA.label),
                   'partA.teacherInstructionsEnabled':
@@ -132,9 +127,6 @@ export class Main extends React.Component {
                     radio(scoringTypeB.label, ['auto', 'rubric'])
                 },
                 [`Properties ${secondPart}`]: {
-                  'partB.sequentialChoiceLabels.enabled':
-                    sequentialChoiceLabelsB.settings &&
-                    toggle(sequentialChoiceLabelsB.label, true),
                   'partB.feedbackEnabled':
                     feedbackB.settings && toggle(feedbackB.label),
                   'partB.promptEnabled':

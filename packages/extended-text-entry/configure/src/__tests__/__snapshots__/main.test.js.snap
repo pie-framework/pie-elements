@@ -16,7 +16,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "settings": false,
           },
           "feedback": Object {
-            "enabled": true,
             "label": "Feedback",
             "settings": true,
           },
@@ -53,7 +52,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "Settings": Object {
             "dimensions": undefined,
             "equationEditor": false,
-            "feedback.enabled": undefined,
+            "feedbackEnabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
             "promptEnabled": undefined,
@@ -67,6 +66,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "width": 500,
           },
           "equationEditor": "everything",
+          "feedbackEnabled": false,
           "mathInput": false,
           "prompt": "This is the question prompt",
           "promptEnabled": false,
@@ -82,21 +82,6 @@ exports[`Render Main Component Match Snapshot 1`] = `
 >
   <div>
     <br />
-    <WithStyles(Typography)
-      variant="subheading"
-    >
-      Feedback
-    </WithStyles(Typography)>
-    <Component
-      feedback={
-        Object {
-          "default": "Your answer has been submitted",
-          "type": "default",
-        }
-      }
-      label="When submitted, show"
-      onChange={[Function]}
-    />
   </div>
 </ConfigLayout>
 `;
