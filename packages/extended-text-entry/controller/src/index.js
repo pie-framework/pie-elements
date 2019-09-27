@@ -17,7 +17,7 @@ export async function model(model, session, env) {
   log('[model]', model);
 
   const fb =
-    env.mode === 'evaluate' && model.allowFeedback
+    env.mode === 'evaluate' && model.feedbackEnabled
       ? getFeedback(model.feedback, 'Your answer has been submitted')
       : Promise.resolve(undefined);
 
