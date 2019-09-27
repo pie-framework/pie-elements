@@ -15,9 +15,9 @@ export const isResponseCorrect = (question, session) => {
     return false;
   }
 
-  if (session.answers.length) {
+  if (session.answers && session.answers.length) {
     return isEqual((session.answers || []).sort(), correctResponse);
-  } else if (!correctResponse.length) {
+  } else if (!(correctResponse && correctResponse.length)) {
     return true;
   }
   return false;
