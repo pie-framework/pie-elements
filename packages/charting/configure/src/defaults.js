@@ -30,6 +30,7 @@ export default {
       height: 480
     },
     prompt: 'Here goes item stem!',
+    promptEnabled: false,
     rationale: 'Rationale goes here!',
     range: {
       label: 'Amount',

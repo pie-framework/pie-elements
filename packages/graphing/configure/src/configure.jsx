@@ -101,7 +101,8 @@ export class Configure extends React.Component {
       authoring = {}
     } = configuration || {};
     log('[render] model', model);
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     return (
       <layout.ConfigLayout
@@ -136,9 +137,12 @@ export class Configure extends React.Component {
                 'authoring.enabled':
                   authoring.settings && toggle(authoring.label, true),
                 teacherInstructionsEnabled:
-                  teacherInstructions.settings && toggle(teacherInstructions.label),
+                  teacherInstructions.settings &&
+                  toggle(teacherInstructions.label),
                 studentInstructionsEnabled:
-                  studentInstructions.settings && toggle(studentInstructions.label),
+                  studentInstructions.settings &&
+                  toggle(studentInstructions.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
                 scoringType:
                   scoringType.settings &&
@@ -158,7 +162,10 @@ export class Configure extends React.Component {
           </Typography>
 
           {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <InputContainer
+              label={teacherInstructions.label}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
@@ -169,7 +176,7 @@ export class Configure extends React.Component {
             </InputContainer>
           )}
 
-          {prompt.settings && (
+          {prompt.settings && promptEnabled && (
             <InputContainer
               label={prompt.label}
               className={classes.promptHolder}

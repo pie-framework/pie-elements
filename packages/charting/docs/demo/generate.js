@@ -40,6 +40,7 @@ exports.model = (id, element) => ({
     height: 480
   },
   prompt: 'Here goes item stem!',
+  promptEnabled: true,
   rationale: 'Rationale goes here!',
   range: {
     label: 'Amount',

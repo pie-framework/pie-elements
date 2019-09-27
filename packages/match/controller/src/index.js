@@ -7,10 +7,7 @@ const log = lg('log');
 
 import defaults from './defaults';
 
-const getResponseCorrectness = (
-  model,
-  answers
-) => {
+const getResponseCorrectness = (model, answers) => {
   const partialScoring = model.partialScoring;
   const rows = model.rows;
   const checkboxMode = model.choiceMode === 'checkbox';
@@ -25,7 +22,7 @@ const getResponseCorrectness = (
     : getCorrectRadios(rows, answers);
 
   if (totalCorrectAnswers === correctAnswers) {
-    return  'correct';
+    return 'correct';
   } else if (correctAnswers === 0) {
     return 'incorrect';
   } else if (partialScoring) {
@@ -37,10 +34,7 @@ const getResponseCorrectness = (
 
 const getCorrectness = (question, env, answers = {}) => {
   if (env.mode === 'evaluate') {
-    return getResponseCorrectness(
-      question,
-      answers
-    );
+    return getResponseCorrectness(question, answers);
   }
 };
 
@@ -74,9 +68,9 @@ const getCorrectRadios = (rows, answers) => {
   return correctAnswers;
 };
 
-const getTotalCorrect = (question) => {
+const getTotalCorrect = question => {
   const checkboxMode = question.choiceMode === 'checkbox';
-  const matchingTable = checkboxMode ? (question.layout - 1) : 1;
+  const matchingTable = checkboxMode ? question.layout - 1 : 1;
   return (question.rows.length || 0) * matchingTable;
 };
 
@@ -91,24 +85,17 @@ const getPartialScore = (question, answers) => {
 };
 
 const getOutComeScore = (question, env, answers = {}) => {
-  const correctness = getCorrectness(
-    question,
-    env,
-    answers
-  );
+  const correctness = getCorrectness(question, env, answers);
 
-  return (
-    correctness === 'correct'
-      ? 1
-      : correctness === 'partial' &&
-      question.partialScoring
-      ? getPartialScore(question, answers)
-      : 0
-  );
+  return correctness === 'correct'
+    ? 1
+    : correctness === 'partial' && question.partialScoring
+    ? getPartialScore(question, answers)
+    : 0;
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -150,7 +137,8 @@ export function model(question, session, env, updateSession) {
       score = '0%';
     } else {
       correctness = getCorrectness(question, env, session && session.answers);
-      score =  `${getOutComeScore(question, env, session && session.answers) * 100}%`;
+      score = `${getOutComeScore(question, env, session && session.answers) *
+        100}%`;
     }
 
     const correctResponse = {};
@@ -160,7 +148,12 @@ export function model(question, session, env, updateSession) {
     };
 
     if (!question.lockChoiceOrder) {
-      question.rows = await getShuffledChoices(question.rows, session, updateSession, 'id');
+      question.rows = await getShuffledChoices(
+        question.rows,
+        session,
+        updateSession,
+        'id'
+      );
     }
 
     question.rows.forEach(row => {
@@ -175,7 +168,7 @@ export function model(question, session, env, updateSession) {
     fb.then(feedback => {
       const base = {
         allowFeedback: question.allowFeedback,
-        prompt: question.prompt,
+        prompt: question.promptEnabled ? question.prompt : null,
         config: {
           ...question,
           shuffled: !question.lockChoiceOrder
@@ -183,11 +176,16 @@ export function model(question, session, env, updateSession) {
         correctness: correctInfo,
         feedback,
         disabled: env.mode !== 'gather',
-        view: env.mode === 'view',
+        view: env.mode === 'view'
       };
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        base.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      if (
+        env.role === 'instructor' &&
+        (env.mode === 'view' || env.mode === 'evaluate')
+      ) {
+        base.teacherInstructions = question.teacherInstructionsEnabled
+          ? question.teacherInstructions
+          : null;
         base.rationale = question.rationaleEnabled ? question.rationale : null;
       } else {
         base.rationale = null;
@@ -220,4 +218,3 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
-

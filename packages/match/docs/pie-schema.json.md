@@ -56,6 +56,10 @@ This element must be one of the following enum values:
 
 The question prompt or item stem
 
+# `promptEnabled` (boolean)
+
+Determines if prompt should show
+
 # `rows` (array, required)
 
 The rows of choices to be presented.

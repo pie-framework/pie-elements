@@ -122,6 +122,10 @@ Indicates if padding is enabled
 
 Indicates prompt value
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `range` (object, required)
 
 Properties of the `range` object:

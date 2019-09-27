@@ -82,7 +82,7 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.prompt,
+      prompt: question.promptEnabled ? question.prompt : null,
       markup: question.markup,
       choices,
       feedback,

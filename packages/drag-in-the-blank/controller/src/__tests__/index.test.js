@@ -11,6 +11,7 @@ describe('controller', () => {
       id: '1',
       element: 'drag-in-the-blank',
       prompt: '<p>Solve the equation below.</p>',
+      promptEnabled: true,
       choicesPosition: 'below',
       correctResponse: {
         '0': '0',

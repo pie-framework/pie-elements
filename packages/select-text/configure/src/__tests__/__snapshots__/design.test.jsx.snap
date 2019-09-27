@@ -29,6 +29,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -67,6 +68,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
@@ -89,13 +91,6 @@ exports[`design snapshot renders all items except feedback 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <TextField
       label="Content"
       multiline={true}
@@ -163,6 +158,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -201,6 +197,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
@@ -223,13 +220,6 @@ exports[`design snapshot renders all items except the content input 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <Component
       label="Tokens"
     >
@@ -289,6 +279,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           },
           "prompt": Object {
             "label": "Prompt",
+            "settings": true,
           },
           "rationale": Object {
             "label": "Rationale",
@@ -327,6 +318,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
@@ -349,13 +341,6 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
   }
 >
   <div>
-    <Component
-      label="Prompt"
-    >
-      <EditableHtml
-        onChange={[Function]}
-      />
-    </Component>
     <TextField
       label="Content"
       multiline={true}

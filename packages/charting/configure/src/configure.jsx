@@ -84,7 +84,7 @@ export class Configure extends React.Component {
       teacherInstructions = {},
       prompt = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
 
     return (
       <layout.ConfigLayout
@@ -121,6 +121,8 @@ export class Configure extends React.Component {
                   toggle(studentInstructions.label),
                 rationaleEnabled:
                   rationale.settings && toggle(rationale.label),
+                promptEnabled:
+                  prompt.settings && toggle(prompt.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['all or nothing', 'partial scoring'])
@@ -150,7 +152,7 @@ export class Configure extends React.Component {
             </InputContainer>
           )}
 
-          {prompt.settings && (
+          {prompt.settings && promptEnabled && (
             <InputContainer
               label={prompt.label}
               className={classes.promptHolder}

@@ -157,6 +157,9 @@ export interface GraphingPie extends PieModel {
     /** Indicates prompt value */
     prompt?: string;
 
+    /**  Indicates if the prompt is enabled */
+    promptEnabled?: boolean;
+
     /** Indicates range settings for the graph */
     range: GraphSettings;
 

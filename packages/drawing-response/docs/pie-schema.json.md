@@ -9,6 +9,10 @@ The schema defines the following properties:
 
 The question prompt or item stem
 
+# `promptEnabled` (boolean)
+
+Indicates if the prompt is enabled
+
 # `imageUrl` (string)
 
 The image over which shapes, patterns and texts will be added

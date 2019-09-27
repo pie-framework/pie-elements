@@ -7,7 +7,7 @@ import {
   FeedbackConfig,
   InputContainer,
   layout,
-  settings,
+  settings
 } from '@pie-lib/config-ui';
 import {
   countInAnswer,
@@ -15,16 +15,12 @@ import {
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { uid, withDragContext } from '@pie-lib/drag';
-import debug from 'debug';
 
 import Categories from './categories';
 import AlternateResponses from './categories/alternateResponses';
 import Choices from './choices';
 import { Divider } from './buttons';
-import {
-  buildAlternateResponses,
-  buildCategories
-} from './builder';
+import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
 
 const { Panel, toggle, radio } = settings;
@@ -100,40 +96,51 @@ export class Design extends React.Component {
   };
 
   onAddAlternateResponse = () => {
-    const { model: { correctResponse } } = this.props;
+    const {
+      model: { correctResponse }
+    } = this.props;
 
     this.updateModel({
       correctResponse: (correctResponse || []).map(cr => ({
         ...cr,
-        alternateResponses: [
-          ...(cr.alternateResponses || []),
-          []
-        ]
+        alternateResponses: [...(cr.alternateResponses || []), []]
       }))
     });
   };
 
   onPromptChanged = prompt => this.updateModel({ prompt });
 
-  onRemoveAlternateResponse = (index) => {
-    const { model: { correctResponse } } = this.props;
+  onRemoveAlternateResponse = index => {
+    const {
+      model: { correctResponse }
+    } = this.props;
 
     this.updateModel({
-      correctResponse: (correctResponse || []).map((cr) => ({
+      correctResponse: (correctResponse || []).map(cr => ({
         ...cr,
-        alternateResponses: (cr.alternateResponses || []).filter((alt, altIndex) => altIndex !== index)
+        alternateResponses: (cr.alternateResponses || []).filter(
+          (alt, altIndex) => altIndex !== index
+        )
       }))
     });
   };
 
   countChoiceInCorrectResponse = choice => {
     const { model } = this.props;
-    const out = countInAnswer(choice.id, model.correctResponse);
-    return out;
+
+    return countInAnswer(choice.id, model.correctResponse);
   };
 
   render() {
-    const { classes, className, model, imageSupport, configuration, onChange, onConfigurationChanged } = this.props;
+    const {
+      classes,
+      className,
+      model,
+      imageSupport,
+      configuration,
+      onChange,
+      onConfigurationChanged
+    } = this.props;
     const {
       partialScoring = {},
       lockChoiceOrder = {},
@@ -144,7 +151,8 @@ export class Design extends React.Component {
       feedback = {},
       prompt = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+      model || {};
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
@@ -176,30 +184,34 @@ export class Design extends React.Component {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                'Settings': {
-                  partialScoring: partialScoring.settings &&
-                    toggle(partialScoring.label),
-                  lockChoiceOrder: lockChoiceOrder.settings &&
-                  toggle(lockChoiceOrder.label),
-                  'feedback.enabled': feedback.settings && toggle(feedback.label, true),
+                Settings: {
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  lockChoiceOrder:
+                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  'feedback.enabled':
+                    feedback.settings && toggle(feedback.label, true)
                 },
-                'Properties': {
-                  teacherInstructionsEnabled: teacherInstructions.settings &&
+                Properties: {
+                  teacherInstructionsEnabled:
+                    teacherInstructions.settings &&
                     toggle(teacherInstructions.label),
-                  studentInstructionsEnabled: studentInstructions.settings &&
+                  studentInstructionsEnabled:
+                    studentInstructions.settings &&
                     toggle(studentInstructions.label),
-                  rationaleEnabled: rationale.settings &&
-                    toggle(rationale.label),
-                  scoringType: scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric']),
-                },
+                  rationaleEnabled:
+                    rationale.settings && toggle(rationale.label),
+                  scoringType:
+                    scoringType.settings &&
+                    radio(scoringType.label, ['auto', 'rubric'])
+                }
               }}
             />
           }
         >
           <div className={classNames(classes.design, className)}>
-
-            {prompt.settings && (
+            {prompt.settings && promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}
@@ -216,7 +228,10 @@ export class Design extends React.Component {
             )}
 
             {teacherInstructionsEnabled && (
-              <InputContainer label={teacherInstructions.label} className={classes.inputHolder}>
+              <InputContainer
+                label={teacherInstructions.label}
+                className={classes.inputHolder}
+              >
                 <EditableHtml
                   className={classes.input}
                   markup={model.teacherInstructions || ''}
@@ -228,7 +243,10 @@ export class Design extends React.Component {
             )}
 
             {rationaleEnabled && (
-              <InputContainer label={rationale.label} className={classes.inputHolder}>
+              <InputContainer
+                label={rationale.label}
+                className={classes.inputHolder}
+              >
                 <EditableHtml
                   className={classes.input}
                   markup={model.rationale || ''}
@@ -253,29 +271,26 @@ export class Design extends React.Component {
               onAdd={this.onAddAlternateResponse}
             />
 
-            {
-              alternateResponses.map((categoriesList, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Header
-                      className={classes.alternatesHeader}
-                      label="Alternate Response"
-                      buttonLabel="REMOVE ALTERNATE RESPONSE"
-                      onAdd={() => this.onRemoveAlternateResponse(index)}
-                    />
+            {alternateResponses.map((categoriesList, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <Header
+                    className={classes.alternatesHeader}
+                    label="Alternate Response"
+                    buttonLabel="REMOVE ALTERNATE RESPONSE"
+                    onAdd={() => this.onRemoveAlternateResponse(index)}
+                  />
 
-                    <AlternateResponses
-                      altIndex={index}
-                      imageSupport={imageSupport}
-                      model={model}
-                      categories={categoriesList}
-                      onModelChanged={this.updateModel}
-                    />
-
-                  </React.Fragment>
-                )
-              })
-            }
+                  <AlternateResponses
+                    altIndex={index}
+                    imageSupport={imageSupport}
+                    model={model}
+                    categories={categoriesList}
+                    onModelChanged={this.updateModel}
+                  />
+                </React.Fragment>
+              );
+            })}
 
             <Divider />
             <Choices
@@ -285,14 +300,12 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
             />
 
-            {
-              feedback.enabled && (
-                <FeedbackConfig
-                  feedback={model.feedback}
-                  onChange={this.changeFeedback}
-                />
-              )
-            }
+            {feedback.enabled && (
+              <FeedbackConfig
+                feedback={model.feedback}
+                onChange={this.changeFeedback}
+              />
+            )}
           </div>
         </layout.ConfigLayout>
       </IdProvider>

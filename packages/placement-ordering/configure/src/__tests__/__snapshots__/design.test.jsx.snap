@@ -77,6 +77,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
@@ -111,6 +112,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "partialScoring": true,
           "placementArea": false,
           "prompt": "Item Stem goes here",
+          "promptEnabled": false,
           "rationaleEnabled": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
@@ -124,18 +126,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     />
   }
 >
-  <FormSection
-    label="Ordering"
-  >
-    <InputContainer
-      label="ITEM STEM"
-    >
-      <EditableHtml
-        markup="Item Stem goes here"
-        onChange={[Function]}
-      />
-    </InputContainer>
-  </FormSection>
   <FormSection
     label="Define Choices"
   >
@@ -249,6 +239,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       groups={
         Object {
           "Properties": Object {
+            "promptEnabled": false,
             "rationaleEnabled": undefined,
             "scoringType": false,
             "studentInstructionsEnabled": false,
@@ -283,6 +274,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "partialScoring": true,
           "placementArea": false,
           "prompt": "Item Stem goes here",
+          "promptEnabled": false,
           "rationaleEnabled": false,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
