@@ -396,6 +396,11 @@
       },
       "title": "customKeys"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -425,6 +430,7 @@
   "required": [
     "element",
     "expression",
+    "feedbackEnabled",
     "id",
     "rationaleEnabled",
     "responses",

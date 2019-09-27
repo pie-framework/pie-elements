@@ -171,6 +171,10 @@ Extra buttons defined by user
 
 The object is an array with all elements of the type `string`.
 
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
+
 # `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled

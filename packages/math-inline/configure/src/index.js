@@ -15,8 +15,7 @@ const log = debug('pie-elements:math-inline:configure');
 export default class MathInlineConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...defaults.model,
-    ...model,
-    allowFeedback: defaults.configuration.feedback.enabled
+    ...model
   });
 
   constructor() {
@@ -46,8 +45,6 @@ export default class MathInlineConfigure extends HTMLElement {
     this._configuration = c;
 
     if (this._model) {
-      this._model.allowFeedback = (c.feedback || {}).enabled;
-
       this.onModelChanged(this._model);
     }
 
