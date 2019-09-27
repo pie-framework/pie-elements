@@ -130,11 +130,6 @@ interface PartConfiguration {
     scoringType?: ConfigureProp;
 
     /**
-     * Indicates whether the choice labels have a sequential order
-     */
-    sequentialChoiceLabels?: ConfigureProp;
-
-    /**
      * Student Instructions configuration
      */
     studentInstructions?: ConfigureProp;
