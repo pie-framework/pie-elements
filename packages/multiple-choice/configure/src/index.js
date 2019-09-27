@@ -52,8 +52,7 @@ export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
     ...sensibleDefaults.model,
     ...model,
-    choices: generateFormattedChoices((model && model.choices) || []),
-    allowFeedback: sensibleDefaults.configuration.feedback.enabled
+    choices: generateFormattedChoices((model && model.choices) || [])
   });
 
   constructor() {
@@ -99,8 +98,6 @@ export default class MultipleChoice extends HTMLElement {
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
 
     if (this._model) {
-      this._model.allowFeedback = (c.feedback || {}).enabled;
-
       this.onModelChanged(this._model);
     }
 

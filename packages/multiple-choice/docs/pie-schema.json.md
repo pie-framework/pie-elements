@@ -106,6 +106,10 @@ Indicates student instructions
 
 Indicates teacher instructions
 
+# `feedbackEnabled` (boolean, required)
+
+Indicates if feedback is enabled
+
 # `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled

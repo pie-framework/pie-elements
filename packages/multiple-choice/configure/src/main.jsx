@@ -82,8 +82,12 @@ const Design = withStyles(styles)(props => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled
   } = configuration || {};
-  const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
-    model || {};
+  const {
+    teacherInstructionsEnabled,
+    rationaleEnabled,
+    feedbackEnabled,
+    promptEnabled
+  } = model || {};
 
   const Content = (
     <div>
@@ -130,7 +134,7 @@ const Design = withStyles(styles)(props => {
             imageSupport={imageSupport}
             onDelete={() => onRemoveChoice(index)}
             onChange={c => onChoiceChanged(index, c)}
-            allowFeedBack={feedback.enabled}
+            allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
           />
@@ -196,8 +200,7 @@ const Design = withStyles(styles)(props => {
                     partialScoring.settings && toggle(partialScoring.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  'feedback.enabled':
-                    feedback.settings && toggle(feedback.label, true)
+                  feedbackEnabled: feedback.settings && toggle(feedback.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
