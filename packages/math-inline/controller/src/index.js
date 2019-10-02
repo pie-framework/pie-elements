@@ -21,6 +21,8 @@ function processAnswerItem(answerItem = '') {
   // further processing is to be added here if needed
   let newAnswerItem = answerItem.replace('−', '-');
 
+  newAnswerItem = newAnswerItem.replace('\\cdot', '\\times');
+
   // also ignore text nodes, just swap out with content
 
   newAnswerItem = newAnswerItem.replace(textRegex, '$1');
