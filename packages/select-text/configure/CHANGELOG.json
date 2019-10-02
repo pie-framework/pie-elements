@@ -803,5 +803,35 @@
     "committerDate": "2019-09-04 22:55:09 +0300",
     "isTagged": true,
     "tag": "@pie-element/select-text-configure@3.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled).",
+    "merge": null,
+    "header": "fix: added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "90cc6aa61aa0e9b2fcfbb869143f8b50131b0e37",
+    "gitTags": "",
+    "committerDate": "2019-09-27 11:35:59 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "select-text",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(select-text): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "40c86629b66cc7ff369057e4c3e68c1a580702d3",
+    "gitTags": "",
+    "committerDate": "2019-09-25 19:39:27 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@4.1.0"
   }
 ]

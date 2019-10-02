@@ -448,5 +448,20 @@
     "committerDate": "2019-09-19 09:47:24 +0300",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@2.0.2"
+  },
+  {
+    "type": "feat",
+    "scope": "inline-dropdown",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(inline-dropdown): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8d4be7fca066e94ac396547782dbb36d89d0b873",
+    "gitTags": "",
+    "committerDate": "2019-09-25 17:38:12 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@2.1.0"
   }
 ]

@@ -1098,5 +1098,20 @@
     "committerDate": "2019-08-26 17:35:51 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@2.10.0"
+  },
+  {
+    "type": "feat",
+    "scope": "match",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(match): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0f30502e2be3a09b9a6d23fbf1c3da66556af728",
+    "gitTags": "",
+    "committerDate": "2019-09-25 17:57:19 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match@3.1.0"
   }
 ]

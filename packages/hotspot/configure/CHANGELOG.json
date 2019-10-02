@@ -453,5 +453,20 @@
     "committerDate": "2019-09-23 12:34:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "hotspot",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(hotspot): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ff380b42245fd8296374b43ede6814d9c22bb34",
+    "gitTags": "",
+    "committerDate": "2019-09-24 15:56:36 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@3.2.0"
   }
 ]

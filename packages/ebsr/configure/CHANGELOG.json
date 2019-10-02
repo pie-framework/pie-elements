@@ -818,5 +818,35 @@
     "committerDate": "2019-09-25 10:39:48 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-configure@4.0.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "removed unused config property.",
+    "merge": null,
+    "header": "fix: removed unused config property.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ad9aa80e8f2f2530f1d17580e700c22e386ae161",
+    "gitTags": "",
+    "committerDate": "2019-09-27 11:32:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "ebsr",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(ebsr): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b538d4e4a365c9f6e861297304f770dd1631d077",
+    "gitTags": "",
+    "committerDate": "2019-09-24 17:29:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-configure@4.1.0"
   }
 ]

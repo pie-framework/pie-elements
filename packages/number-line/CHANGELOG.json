@@ -913,5 +913,20 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.6.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-ui/number-line@^7.1.11",
+    "merge": null,
+    "header": "fix: bump @pie-ui/number-line@^7.1.11",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "11ca00a98ed33e70b69130a33cb4f9a1717b5802",
+    "gitTags": "",
+    "committerDate": "2019-09-26 12:13:23 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.6.2"
   }
 ]

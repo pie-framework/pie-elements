@@ -138,5 +138,20 @@
     "committerDate": "2019-09-16 19:18:29 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graph-lines",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(graph-lines): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0af4d9d43f439e4bc5fd8b06db3a455c7ef111b2",
+    "gitTags": "",
+    "committerDate": "2019-09-24 18:15:00 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines-controller@2.1.0"
   }
 ]
