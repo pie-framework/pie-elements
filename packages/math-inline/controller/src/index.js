@@ -76,7 +76,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
     if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
-        if (isAdvanced) {
           let answerValueToUse = processAnswerItem(answerItem);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
@@ -115,12 +114,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
             answerCorrect = true;
             break;
           }
-        } else {
-          if (acceptedValues[i] === answerItem) {
-            answerCorrect = true;
-            break;
-          }
-        }
       }
     } else {
       answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
