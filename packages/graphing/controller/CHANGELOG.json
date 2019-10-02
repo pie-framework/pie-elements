@@ -228,5 +228,20 @@
     "committerDate": "2019-09-16 19:19:14 +0300",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "graphing",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(graphing): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7ca5f8f812eb0ba57bff040644861fd0c71eb97d",
+    "gitTags": "",
+    "committerDate": "2019-09-24 18:26:08 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@2.1.0"
   }
 ]

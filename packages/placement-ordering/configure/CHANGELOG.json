@@ -798,5 +798,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-configure@3.5.9"
+  },
+  {
+    "type": "feat",
+    "scope": "placement-ordering",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(placement-ordering): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1d2812755d77906916aa9637c8c56652a0e3513a",
+    "gitTags": "",
+    "committerDate": "2019-09-25 19:45:47 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-configure@4.1.0"
   }
 ]

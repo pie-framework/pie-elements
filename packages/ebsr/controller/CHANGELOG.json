@@ -303,5 +303,20 @@
     "committerDate": "2019-09-24 11:28:10 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr-controller@3.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": "ebsr",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(ebsr): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b538d4e4a365c9f6e861297304f770dd1631d077",
+    "gitTags": "",
+    "committerDate": "2019-09-24 17:29:04 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr-controller@3.1.0"
   }
 ]

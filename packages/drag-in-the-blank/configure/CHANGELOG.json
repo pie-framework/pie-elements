@@ -423,5 +423,20 @@
     "committerDate": "2019-09-16 19:14:43 +0300",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-configure@2.0.0"
+  },
+  {
+    "type": "feat",
+    "scope": "drag-in-the-blank",
+    "subject": "model based prompt",
+    "merge": null,
+    "header": "feat(drag-in-the-blank): model based prompt",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a5c983e5c73b7e59b1a593da50a653e4e41054df",
+    "gitTags": "",
+    "committerDate": "2019-09-24 16:35:29 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-configure@2.1.0"
   }
 ]
