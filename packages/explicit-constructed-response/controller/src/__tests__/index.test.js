@@ -1,4 +1,4 @@
-import { model, getScore, outcome } from '../index';
+import { model, getScore, outcome, prepareVal } from '../index';
 
 const choice = (l, v) => ({ label: l, value: v });
 const choices = {
@@ -103,4 +103,17 @@ describe('outcome', () => {
   returnModel(undefined);
   returnModel(null);
   returnModel({});
+});
+
+describe('prepareVal', () => {
+
+  it('should return empty string on null or undefined', () => {
+    expect(prepareVal(null)).toEqual('');
+    expect(prepareVal(undefined)).toEqual('');
+  });
+
+  it('should remove html tags', () => {
+    expect(prepareVal('<div>Foo Bar</div>')).toEqual('Foo Bar');
+  });
+
 });

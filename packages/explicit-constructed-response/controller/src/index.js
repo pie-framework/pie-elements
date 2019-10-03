@@ -106,22 +106,8 @@ export function model(question, session, env, updateSession) {
   });
 }
 
-const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
-
 const getTextFromHTML = (html) => {
-  if (!html) {
-    return '';
-  }
-
-  if (isBrowser) {
-    const tmp = document.createElement('DIV');
-
-    tmp.innerHTML = html;
-
-    return tmp.textContent || tmp.innerText || '';
-  }
-
-  return html.replace(/<\/?[^>]+(>|$)/g, "");
+  return (html || '').replace(/<\/?[^>]+(>|$)/g, '');
 };
 
 export const prepareVal = html => {

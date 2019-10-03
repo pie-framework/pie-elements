@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Design } from '../design';
+import { Design, prepareText } from '../design';
 import defaultValues from '../defaultConfiguration';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -101,6 +101,23 @@ describe('design', () => {
         expect(onChange).toBeCalledWith(e);
       });
     };
+
+    describe('prepareText', () => {
+
+      it('should return empty text for null or undefined', () => {
+        expect(prepareText(null)).toEqual('');
+        expect(prepareText(undefined)).toEqual('');
+      });
+
+      it('should return string as is', () => {
+        expect(prepareText('This is a correct sentence.')).toEqual('This is a correct sentence.');
+      });
+
+      it('should return string with a space before the last character', () => {
+        expect(prepareText('This will be the correct sentence number 1.')).toEqual('This will be the correct sentence number 1 .');
+      });
+
+    });
 
     describe('changeText', () => {
       assert('changeText', [{ target: { value: 'foo' } }], m => ({
