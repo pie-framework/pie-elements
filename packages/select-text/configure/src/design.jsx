@@ -20,7 +20,8 @@ const { Panel, toggle, radio } = settings;
 
 const log = debug('@pie-element:select-text:configure');
 
-const prepareText = text => (text || '').replace(/( +.{1})\./g, '$1 .');
+// Making sure that one character words are not placed at the end of a sentence
+export const prepareText = text => (text || '').replace(/( +.{1})\./g, '$1 .');
 
 export class Design extends React.Component {
   static propTypes = {

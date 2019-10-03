@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "publishConfig": {
     "access": "public"
   },
