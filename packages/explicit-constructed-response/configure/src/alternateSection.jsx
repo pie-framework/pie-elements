@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';
@@ -36,32 +37,58 @@ const styles = theme => ({
   }
 });
 
-const Choice = ({ classes, markup, onChange, onDelete }) => {
-  return (
-    <div
-      style={{
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-between'
-      }}
-    >
-      <OutlinedInput
-        className={classes.choice}
-        value={markup}
-        onChange={onChange}
-        labelWidth={0}
-        disableUnderline
-      />
-      <IconButton
-        aria-label="delete"
-        className={classes.deleteBtn}
-        onClick={onDelete}
+class Choice extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object,
+    markup: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    value: PropTypes.string
+  };
+
+  state = {
+    value: this.props.markup
+  };
+
+  updateText = debounce(this.props.onChange, 300);
+
+  onChange = (e) => {
+    const { value } = e.target;
+
+    this.setState({ value });
+    this.updateText(value);
+  };
+
+  render() {
+    const { value } = this.state;
+    const { classes, onDelete } = this.props;
+
+    return (
+      <div
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
       >
-        <Delete />
-      </IconButton>
-    </div>
-  )
-};
+        <OutlinedInput
+          className={classes.choice}
+          value={value}
+          onChange={this.onChange}
+          labelWidth={0}
+          disableUnderline
+        />
+        <IconButton
+          aria-label="delete"
+          className={classes.deleteBtn}
+          onClick={onDelete}
+        >
+          <Delete />
+        </IconButton>
+      </div>
+    );
+  }
+}
 
 export class AlternateSection extends React.Component {
   static propTypes = {
@@ -120,12 +147,12 @@ export class AlternateSection extends React.Component {
     }
   };
 
-  onChoiceChanged = (choice, e) => {
+  onChoiceChanged = (choice, value) => {
     const { choiceChanged } = this.props;
 
     choiceChanged({
       ...choice,
-      label: e.target.value
+      label: value
     });
   };
 

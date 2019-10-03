@@ -15,11 +15,12 @@ import {
 import Chip from '@material-ui/core/Chip';
 import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
-import PartialScoring from '@pie-lib/scoring-config';
 
 const { Panel, toggle, radio } = settings;
 
 const log = debug('@pie-element:select-text:configure');
+
+const prepareText = text => (text || '').replace(/( +.{1})\./g, '$1 .');
 
 export class Design extends React.Component {
   static propTypes = {
@@ -42,7 +43,7 @@ export class Design extends React.Component {
     const { model } = this.props;
 
     this.state = {
-      text: model ? model.text : ''
+      text: model ? prepareText(model.text) : ''
     };
   }
 
@@ -65,11 +66,12 @@ export class Design extends React.Component {
 
   changeText = event => {
     const value = event.target.value;
+    const preparedText = prepareText(value);
 
     this.setState({
       text: value
     });
-    this.updateText(value);
+    this.updateText(preparedText);
   };
 
   changeTokens = (tokens, mode) => {
