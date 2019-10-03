@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/point-intercept-configure",
   "private": true,
-  "version": "2.4.10",
+  "version": "2.4.11",
   "description": "",
   "main": "lib/index.js",
   "author": "",
