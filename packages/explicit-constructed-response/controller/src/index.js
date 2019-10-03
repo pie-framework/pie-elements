@@ -106,12 +106,26 @@ export function model(question, session, env, updateSession) {
   });
 }
 
-const prepareVal = html => {
-  const tmp = document.createElement('DIV');
+const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
 
-  tmp.innerHTML = html;
+const getTextFromHTML = (html) => {
+  if (!html) {
+    return '';
+  }
 
-  const value = tmp.textContent || tmp.innerText || '';
+  if (isBrowser) {
+    const tmp = document.createElement('DIV');
+
+    tmp.innerHTML = html;
+
+    return tmp.textContent || tmp.innerText || '';
+  }
+
+  return html.replace(/<\/?[^>]+(>|$)/g, "");
+};
+
+export const prepareVal = html => {
+  const value = getTextFromHTML(html);
 
   return value.trim();
 };

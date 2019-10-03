@@ -112,7 +112,6 @@ describe('model', () => {
       session = { completeAnswer: '72\\div12=6\\text{eggs}' };
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
-      console.log(result);
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
@@ -188,6 +187,38 @@ describe('model', () => {
 
     });
 
+    it('returns correct for correctness in cdot vs times situations', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        expression: '{{response}}',
+        responses: [
+          {
+            id: '1',
+            answer: '8\\cdot4',
+            alternates: {
+              '1': '4\\times2',
+            },
+            validation: 'literal'
+          }
+        ],
+      });
+
+      env = { mode: 'evaluate' };
+
+      session = { completeAnswer: '8\\times4' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = { completeAnswer: '4\\cdot2' };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+
     it('returns correct for correctness if allowSpaces is true', async () => {
       question = mkQuestion({
         ...defaultModel,
@@ -203,6 +234,32 @@ describe('model', () => {
       });
       session = {
         completeAnswer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+
+    it('returns correct for correctness if allowSpaces is true in simple mode too', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responseType: 'Simple',
+        responses: [
+          {
+            allowSpaces: true,
+            allowDecimals: true,
+            answer: '3000',
+            id: '1',
+            alternates: {},
+            validation: 'literal'
+          }
+        ]
+      });
+      session = {
+        response: '3,000'
       };
 
       env = { mode: 'evaluate' };
