@@ -393,5 +393,20 @@
     "committerDate": "2019-09-24 17:33:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "alternateSection",
+    "subject": "removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387]",
+    "merge": null,
+    "header": "feat(alternateSection): removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "01dc1515fe32d5ef4567b3086a1480382087f672",
+    "gitTags": "",
+    "committerDate": "2019-10-03 14:24:41 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@2.2.0"
   }
 ]

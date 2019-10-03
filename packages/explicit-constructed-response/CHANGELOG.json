@@ -678,5 +678,35 @@
     "committerDate": "2019-10-03 10:53:44 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@2.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "alternateSection",
+    "subject": "removed isBrowser function [ch4599], debounced some session changes in ecr [ch4387] and fixed select-text issue [ch4385]",
+    "merge": null,
+    "header": "feat(alternateSection): removed isBrowser function [ch4599], debounced some session changes in ecr [ch4387] and fixed select-text issue [ch4385]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ab4478e10fc33aa3bbb604cae120f98d530ef5d7",
+    "gitTags": "",
+    "committerDate": "2019-10-03 14:46:28 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@2.3.0"
+  },
+  {
+    "type": "feat",
+    "scope": "alternateSection",
+    "subject": "removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387]",
+    "merge": null,
+    "header": "feat(alternateSection): removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "01dc1515fe32d5ef4567b3086a1480382087f672",
+    "gitTags": "",
+    "committerDate": "2019-10-03 14:24:41 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@2.3.0"
   }
 ]
