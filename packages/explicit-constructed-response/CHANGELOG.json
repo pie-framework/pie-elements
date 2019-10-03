@@ -648,5 +648,20 @@
     "committerDate": "2019-09-24 17:33:23 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@2.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "controller",
+    "subject": "made sure that prepareVal works on environments that are not dom based [ch4599]",
+    "merge": null,
+    "header": "feat(controller): made sure that prepareVal works on environments that are not dom based [ch4599]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c887e75c2389d1f2b1360d4ad805eecd3496f423",
+    "gitTags": "",
+    "committerDate": "2019-10-03 10:53:44 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@2.2.0"
   }
 ]

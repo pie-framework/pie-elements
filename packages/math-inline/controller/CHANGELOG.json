@@ -488,5 +488,35 @@
     "committerDate": "2019-09-25 18:16:18 +0300",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@4.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "cdot and times equivalence in evaluation fix (#348)",
+    "merge": null,
+    "header": "fix(math-inline): cdot and times equivalence in evaluation fix (#348)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "fb75a46a64ef8adc92a2b50a06197a1493fa62d5",
+    "gitTags": "",
+    "committerDate": "2019-10-02 09:25:55 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@4.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "simple mode literal evaluation fix for decimals and spaces (#349)",
+    "merge": null,
+    "header": "fix(math-inline): simple mode literal evaluation fix for decimals and spaces (#349)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5844d9f6fbba86ac7b7d0e1cb19855ff366fad9e",
+    "gitTags": "",
+    "committerDate": "2019-10-02 09:15:33 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@4.1.1"
   }
 ]
