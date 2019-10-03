@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@2.1.1...@pie-element/explicit-constructed-response-configure@2.2.0) (2019-10-03)
+
+
+### Features
+
+* **alternateSection:** removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387] ([01dc151](https://github.com/pie-framework/pie-elements/commit/01dc151))
+
+
+
+
+
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@2.1.0...@pie-element/explicit-constructed-response-configure@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@2.0.2...@pie-element/explicit-constructed-response-configure@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **explicit-constructed-response:** model based prompt ([9da37ac](https://github.com/pie-framework/pie-elements/commit/9da37ac))
+
+
+
+
+
+## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@2.0.1...@pie-element/explicit-constructed-response-configure@2.0.2) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@2.0.0...@pie-element/explicit-constructed-response-configure@2.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* State not updating at choice change + bug found when having 3 alternates, deleting the 2nd one and adding a new one ([#332](https://github.com/pie-framework/pie-elements/issues/332)) ([3da260f](https://github.com/pie-framework/pie-elements/commit/3da260f))
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@1.6.1...@pie-element/explicit-constructed-response-configure@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([4fb4c5b](https://github.com/pie-framework/pie-elements/commit/4fb4c5b))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@1.6.0...@pie-element/explicit-constructed-response-configure@1.6.1) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

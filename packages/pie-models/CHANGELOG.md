@@ -3,6 +3,145 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.1.0...@pie-element/pie-models@7.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [7.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.2...@pie-element/pie-models@7.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([90cc6aa](https://github.com/pie-framework/pie-elements/commit/90cc6aa))
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([c47fb9a](https://github.com/pie-framework/pie-elements/commit/c47fb9a))
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([839aa3c](https://github.com/pie-framework/pie-elements/commit/839aa3c))
+* Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel). ([494bf3a](https://github.com/pie-framework/pie-elements/commit/494bf3a))
+
+
+### Features
+
+* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
+* **charting:** model based prompt ([e648531](https://github.com/pie-framework/pie-elements/commit/e648531))
+* **drag-in-the-blank:** model based prompt ([a5c983e](https://github.com/pie-framework/pie-elements/commit/a5c983e))
+* **drawing-response:** model based prompt ([cb06b2a](https://github.com/pie-framework/pie-elements/commit/cb06b2a))
+* **ebsr:** model based prompt ([b538d4e](https://github.com/pie-framework/pie-elements/commit/b538d4e))
+* **explicit-constructed-response:** model based prompt ([9da37ac](https://github.com/pie-framework/pie-elements/commit/9da37ac))
+* **extended-text-entry:** model based prompt ([f399425](https://github.com/pie-framework/pie-elements/commit/f399425))
+* **graph-lines:** model based prompt ([0af4d9d](https://github.com/pie-framework/pie-elements/commit/0af4d9d))
+* **graphing:** model based prompt ([7ca5f8f](https://github.com/pie-framework/pie-elements/commit/7ca5f8f))
+* **hotspot:** model based prompt ([2ff380b](https://github.com/pie-framework/pie-elements/commit/2ff380b))
+* **inline-dropdown:** model based prompt ([8d4be7f](https://github.com/pie-framework/pie-elements/commit/8d4be7f))
+* **match:** model based prompt ([0f30502](https://github.com/pie-framework/pie-elements/commit/0f30502))
+* **math-inline:** model based prompt ([d7910e3](https://github.com/pie-framework/pie-elements/commit/d7910e3))
+* **multiple-choice:** model based prompt ([d90c1a1](https://github.com/pie-framework/pie-elements/commit/d90c1a1))
+* **placement-ordering:** model based prompt ([1d28127](https://github.com/pie-framework/pie-elements/commit/1d28127))
+* **select-text:** model based prompt ([40c8662](https://github.com/pie-framework/pie-elements/commit/40c8662))
+
+
+
+
+
+## [7.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.1...@pie-element/pie-models@7.0.2) (2019-09-25)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@7.0.0...@pie-element/pie-models@7.0.1) (2019-09-25)
+
+
+### Bug Fixes
+
+* Do not use e.update if it is not defined. Added feedbackEnabled property on model. ([f4c6111](https://github.com/pie-framework/pie-elements/commit/f4c6111))
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@6.0.0...@pie-element/pie-models@7.0.0) (2019-09-19)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([c0c58e3](https://github.com/pie-framework/pie-elements/commit/c0c58e3))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.4...@pie-element/pie-models@6.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([9b3e532](https://github.com/pie-framework/pie-elements/commit/9b3e532))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([25e5d34](https://github.com/pie-framework/pie-elements/commit/25e5d34))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a53cc85](https://github.com/pie-framework/pie-elements/commit/a53cc85))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([220a051](https://github.com/pie-framework/pie-elements/commit/220a051))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([07b7da9](https://github.com/pie-framework/pie-elements/commit/07b7da9))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a4dbd30](https://github.com/pie-framework/pie-elements/commit/a4dbd30))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([0fc05af](https://github.com/pie-framework/pie-elements/commit/0fc05af))
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([20b734e](https://github.com/pie-framework/pie-elements/commit/20b734e))
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0ea695a](https://github.com/pie-framework/pie-elements/commit/0ea695a))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([e4b3fb1](https://github.com/pie-framework/pie-elements/commit/e4b3fb1))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([9238954](https://github.com/pie-framework/pie-elements/commit/9238954))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([4fb4c5b](https://github.com/pie-framework/pie-elements/commit/4fb4c5b))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ca54ff9](https://github.com/pie-framework/pie-elements/commit/ca54ff9))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0e74d85](https://github.com/pie-framework/pie-elements/commit/0e74d85))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ddf464b](https://github.com/pie-framework/pie-elements/commit/ddf464b))
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [5.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.3...@pie-element/pie-models@5.7.4) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [5.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.2...@pie-element/pie-models@5.7.3) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
 ## [5.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@5.7.1...@pie-element/pie-models@5.7.2) (2019-08-21)
 
 **Note:** Version bump only for package @pie-element/pie-models

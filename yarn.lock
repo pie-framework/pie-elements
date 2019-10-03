@@ -1760,13 +1760,6 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@pie-element/multiple-choice@^4.0.0":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-4.1.1.tgz#c0a510801095c11c45ba1ec7ea0d17dc6f88684f"
-  integrity sha512-xSO0h+sxV4M4dwJ2IFyI+vLZ02OksCxWhsQlYx/p74EGiNg5zcR6w65fgamo/nOpwSAkW35bdJbISRuvOG4Gqw==
-  dependencies:
-    "@pie-ui/multiple-choice" "^4.11.2"
-
 "@pie-framework/build-helper@^4.4.2":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-4.4.4.tgz#62be2c76da136652ba0e08ff284a79101075f83c"
@@ -2489,7 +2482,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.11.2", "@pie-ui/multiple-choice@^4.11.3":
+"@pie-ui/multiple-choice@^4.11.3":
   version "4.11.3"
   resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.11.3.tgz#d54be876ffd29b69f4d6d744f4f8d81d8b615df4"
   integrity sha512-/9GBtXNUDeBZdWhCnGgYnOk8JMz046Wi1seF1c99zmDlY9fUjC8jFMJjeI7TQ5GRumNCTzZTWhfA/9XWKJsrkA==

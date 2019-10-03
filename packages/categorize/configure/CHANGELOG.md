@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.1.0...@pie-element/categorize-configure@4.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.0.1...@pie-element/categorize-configure@4.1.0) (2019-09-27)
+
+
+### Features
+
+* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@4.0.0...@pie-element/categorize-configure@4.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.6.1...@pie-element/categorize-configure@4.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [3.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.6.0...@pie-element/categorize-configure@3.6.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
 # [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@3.5.11...@pie-element/categorize-configure@3.6.0) (2019-08-27)
 
 

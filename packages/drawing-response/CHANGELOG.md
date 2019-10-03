@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@2.1.0...@pie-element/drawing-response@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@2.0.1...@pie-element/drawing-response@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **drawing-response:** model based prompt ([cb06b2a](https://github.com/pie-framework/pie-elements/commit/cb06b2a))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@2.0.0...@pie-element/drawing-response@2.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.13...@pie-element/drawing-response@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([ca54ff9](https://github.com/pie-framework/pie-elements/commit/ca54ff9))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [1.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.12...@pie-element/drawing-response@1.4.13) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
 ## [1.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@1.4.11...@pie-element/drawing-response@1.4.12) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/drawing-response

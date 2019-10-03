@@ -3,6 +3,169 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.1.1...@pie-element/ebsr-configure@4.1.2) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.1.0...@pie-element/ebsr-configure@4.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.4...@pie-element/ebsr-configure@4.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* removed unused config property. ([ad9aa80](https://github.com/pie-framework/pie-elements/commit/ad9aa80))
+
+
+### Features
+
+* **ebsr:** model based prompt ([b538d4e](https://github.com/pie-framework/pie-elements/commit/b538d4e))
+
+
+
+
+
+## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.3...@pie-element/ebsr-configure@4.0.4) (2019-09-25)
+
+
+### Bug Fixes
+
+* Remove unnecessary usage of state (which also causes an error). ([bf2c85d](https://github.com/pie-framework/pie-elements/commit/bf2c85d))
+
+
+
+
+
+## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.2...@pie-element/ebsr-configure@4.0.3) (2019-09-25)
+
+
+### Bug Fixes
+
+* Do not use e.update if it is not defined. Added feedbackEnabled property on model. ([f4c6111](https://github.com/pie-framework/pie-elements/commit/f4c6111))
+
+
+
+
+
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.1...@pie-element/ebsr-configure@4.0.2) (2019-09-20)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@4.0.0...@pie-element/ebsr-configure@4.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* Stop resetting the model. ([91af204](https://github.com/pie-framework/pie-elements/commit/91af204))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@3.0.3...@pie-element/ebsr-configure@4.0.0) (2019-09-19)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([c0c58e3](https://github.com/pie-framework/pie-elements/commit/c0c58e3))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@3.0.2...@pie-element/ebsr-configure@3.0.3) (2019-09-17)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@3.0.1...@pie-element/ebsr-configure@3.0.2) (2019-09-16)
+
+
+### Bug Fixes
+
+* Shuffle choices only when sending them to pie-ui. ([e3240fb](https://github.com/pie-framework/pie-elements/commit/e3240fb))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@3.0.0...@pie-element/ebsr-configure@3.0.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* Workaround for player, when trying to set config before the element was created ([2ad1b71](https://github.com/pie-framework/pie-elements/commit/2ad1b71))
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.13...@pie-element/ebsr-configure@3.0.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* teacher instructions should be sent only for instructor ([977b80b](https://github.com/pie-framework/pie-elements/commit/977b80b))
+
+
+### Features
+
+* add Part Labels feature ([a3a4b90](https://github.com/pie-framework/pie-elements/commit/a3a4b90))
+* Separated the model and the configuration values in 3 categories: for partA, for partB and for both. ([36079dd](https://github.com/pie-framework/pie-elements/commit/36079dd))
+
+
+### BREAKING CHANGES
+
+* `config` will contain `partA`, `partB` and global settings. `config.partA` and `config.partB` will contain individual settings. Same applies to `model`.
+
+
+
+
+
+## [2.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.12...@pie-element/ebsr-configure@2.5.13) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [2.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.11...@pie-element/ebsr-configure@2.5.12) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
+## [2.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.10...@pie-element/ebsr-configure@2.5.11) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/ebsr-configure
+
+
+
+
+
 ## [2.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@2.5.9...@pie-element/ebsr-configure@2.5.10) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

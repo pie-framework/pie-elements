@@ -3,6 +3,101 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@2.1.0...@pie-element/multiple-choice-configure@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@2.0.1...@pie-element/multiple-choice-configure@2.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel). ([494bf3a](https://github.com/pie-framework/pie-elements/commit/494bf3a))
+
+
+### Features
+
+* **multiple-choice:** model based prompt ([d90c1a1](https://github.com/pie-framework/pie-elements/commit/d90c1a1))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@2.0.0...@pie-element/multiple-choice-configure@2.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.7.1...@pie-element/multiple-choice-configure@2.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([9b3e532](https://github.com/pie-framework/pie-elements/commit/9b3e532))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.7.0...@pie-element/multiple-choice-configure@1.7.1) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.6.0...@pie-element/multiple-choice-configure@1.7.0) (2019-09-13)
+
+
+### Features
+
+* add Part Labels feature (but will be used in EBSR context only) ([c3c066b](https://github.com/pie-framework/pie-elements/commit/c3c066b))
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.15...@pie-element/multiple-choice-configure@1.6.0) (2019-09-13)
+
+
+### Features
+
+* Added the possibility to disable Settings Panel (used for EBSR). ([0327953](https://github.com/pie-framework/pie-elements/commit/0327953))
+
+
+
+
+
+## [1.5.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.14...@pie-element/multiple-choice-configure@1.5.15) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [1.5.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.13...@pie-element/multiple-choice-configure@1.5.14) (2019-09-04)
+
+
+### Bug Fixes
+
+* prevent value='' ([754372b](https://github.com/pie-framework/pie-elements/commit/754372b))
+
+
+
+
+
 ## [1.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@1.5.12...@pie-element/multiple-choice-configure@1.5.13) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure

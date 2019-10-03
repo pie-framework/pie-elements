@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@4.1.0...@pie-element/placement-ordering-configure@4.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-configure
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@4.0.0...@pie-element/placement-ordering-configure@4.1.0) (2019-09-27)
+
+
+### Features
+
+* **placement-ordering:** model based prompt ([1d28127](https://github.com/pie-framework/pie-elements/commit/1d28127))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.5.12...@pie-element/placement-ordering-configure@4.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([220a051](https://github.com/pie-framework/pie-elements/commit/220a051))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [3.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@3.5.11...@pie-element/placement-ordering-configure@3.5.12) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure

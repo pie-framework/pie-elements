@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-controller@1.3.0...@pie-element/inline-choice-controller@1.3.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/inline-choice-controller
+
+
+
+
+
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice-controller@1.2.5...@pie-element/inline-choice-controller@1.3.0) (2019-08-27)
 
 

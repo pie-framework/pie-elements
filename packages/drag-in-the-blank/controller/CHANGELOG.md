@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@2.1.0...@pie-element/drag-in-the-blank-controller@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-controller
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@2.0.1...@pie-element/drag-in-the-blank-controller@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **drag-in-the-blank:** model based prompt ([a5c983e](https://github.com/pie-framework/pie-elements/commit/a5c983e))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@2.0.0...@pie-element/drag-in-the-blank-controller@2.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-controller
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.6.2...@pie-element/drag-in-the-blank-controller@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0e74d85](https://github.com/pie-framework/pie-elements/commit/0e74d85))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.6.1...@pie-element/drag-in-the-blank-controller@1.6.2) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-controller
+
+
+
+
+
+## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.6.0...@pie-element/drag-in-the-blank-controller@1.6.1) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-controller
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.5.0...@pie-element/drag-in-the-blank-controller@1.6.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([85374dd](https://github.com/pie-framework/pie-elements/commit/85374dd))
+
+
+
+
+
 # [1.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@1.4.12...@pie-element/drag-in-the-blank-controller@1.5.0) (2019-08-27)
 
 

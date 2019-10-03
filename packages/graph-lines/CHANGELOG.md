@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@3.1.0...@pie-element/graph-lines@3.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/graph-lines
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@3.0.1...@pie-element/graph-lines@3.1.0) (2019-09-27)
+
+
+### Features
+
+* **graph-lines:** model based prompt ([0af4d9d](https://github.com/pie-framework/pie-elements/commit/0af4d9d))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@3.0.0...@pie-element/graph-lines@3.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/graph-lines
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.6.11...@pie-element/graph-lines@3.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([e4b3fb1](https://github.com/pie-framework/pie-elements/commit/e4b3fb1))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [2.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.6.10...@pie-element/graph-lines@2.6.11) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/graph-lines
+
+
+
+
+
 ## [2.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/graph-lines@2.6.9...@pie-element/graph-lines@2.6.10) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/graph-lines

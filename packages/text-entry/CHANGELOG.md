@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@4.0.0...@pie-element/text-entry@4.0.1) (2019-09-27)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.11.1...@pie-element/text-entry@4.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([25e5d34](https://github.com/pie-framework/pie-elements/commit/25e5d34))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [3.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.11.0...@pie-element/text-entry@3.11.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/text-entry
+
+
+
+
+
 # [3.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/text-entry@3.10.10...@pie-element/text-entry@3.11.0) (2019-08-27)
 
 

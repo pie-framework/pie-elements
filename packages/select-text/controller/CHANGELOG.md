@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@3.1.0...@pie-element/select-text-controller@3.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@3.0.0...@pie-element/select-text-controller@3.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([90cc6aa](https://github.com/pie-framework/pie-elements/commit/90cc6aa))
+
+
+### Features
+
+* **select-text:** model based prompt ([40c8662](https://github.com/pie-framework/pie-elements/commit/40c8662))
+
+
+
+
+
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.6.1...@pie-element/select-text-controller@3.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([a53cc85](https://github.com/pie-framework/pie-elements/commit/a53cc85))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [2.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.6.0...@pie-element/select-text-controller@2.6.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
 # [2.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@2.5.12...@pie-element/select-text-controller@2.6.0) (2019-08-27)
 
 

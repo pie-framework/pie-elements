@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.6.2...@pie-element/number-line@5.6.3) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.6.1...@pie-element/number-line@5.6.2) (2019-09-27)
+
+
+### Bug Fixes
+
+* bump @pie-ui/number-line@^7.1.11 ([11ca00a](https://github.com/pie-framework/pie-elements/commit/11ca00a))
+
+
+
+
+
+## [5.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.6.0...@pie-element/number-line@5.6.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.5.13...@pie-element/number-line@5.6.0) (2019-08-27)
 
 

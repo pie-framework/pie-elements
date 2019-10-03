@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@5.1.0...@pie-element/categorize@5.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@5.0.1...@pie-element/categorize@5.1.0) (2019-09-27)
+
+
+### Features
+
+* **categorize:** model based prompt ([a3c911d](https://github.com/pie-framework/pie-elements/commit/a3c911d))
+
+
+
+
+
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@5.0.0...@pie-element/categorize@5.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.8.1...@pie-element/categorize@5.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([fa22bef](https://github.com/pie-framework/pie-elements/commit/fa22bef))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.8.0...@pie-element/categorize@4.8.1) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.7.0...@pie-element/categorize@4.8.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([0529485](https://github.com/pie-framework/pie-elements/commit/0529485))
+
+
+
+
+
 # [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@4.6.11...@pie-element/categorize@4.7.0) (2019-08-27)
 
 

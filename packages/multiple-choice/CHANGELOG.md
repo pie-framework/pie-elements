@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@4.1.1...@pie-element/multiple-choice@4.2.0) (2019-10-03)
+
+
+### Features
+
+* **alternateSection:** removed isBrowser function [ch4599] and debounced some session changes in ecr [ch4387] ([01dc151](https://github.com/pie-framework/pie-elements/commit/01dc151))
+* **alternateSection:** removed isBrowser function [ch4599], debounced some session changes in ecr [ch4387] and fixed select-text issue [ch4385] ([ab4478e](https://github.com/pie-framework/pie-elements/commit/ab4478e))
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@4.1.0...@pie-element/multiple-choice@4.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@4.0.1...@pie-element/multiple-choice@4.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* Show Correct Answer was not working properly: replaced allowFeedback (used to send data to pie-ui) with feedbackEnabled (can be changed in settings panel). ([494bf3a](https://github.com/pie-framework/pie-elements/commit/494bf3a))
+
+
+### Features
+
+* **multiple-choice:** model based prompt ([d90c1a1](https://github.com/pie-framework/pie-elements/commit/d90c1a1))
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@4.0.0...@pie-element/multiple-choice@4.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.10.1...@pie-element/multiple-choice@4.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([9b3e532](https://github.com/pie-framework/pie-elements/commit/9b3e532))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [3.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.10.0...@pie-element/multiple-choice@3.10.1) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.9.0...@pie-element/multiple-choice@3.10.0) (2019-09-13)
+
+
+### Features
+
+* add Part Labels feature (but will be used in EBSR context only) ([c3c066b](https://github.com/pie-framework/pie-elements/commit/c3c066b))
+
+
+
+
+
+# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.8.1...@pie-element/multiple-choice@3.9.0) (2019-09-13)
+
+
+### Features
+
+* Added the possibility to disable Settings Panel (used for EBSR). ([0327953](https://github.com/pie-framework/pie-elements/commit/0327953))
+
+
+
+
+
+## [3.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.8.0...@pie-element/multiple-choice@3.8.1) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+# [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.7.0...@pie-element/multiple-choice@3.8.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+* prevent value='' ([754372b](https://github.com/pie-framework/pie-elements/commit/754372b))
+
+
+### Features
+
+* make use of updateSession callback ([c82de88](https://github.com/pie-framework/pie-elements/commit/c82de88))
+
+
+
+
+
 # [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@3.6.1...@pie-element/multiple-choice@3.7.0) (2019-08-27)
 
 

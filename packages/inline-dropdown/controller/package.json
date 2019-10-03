@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/inline-dropdown-controller",
   "private": true,
-  "version": "1.6.0",
+  "version": "2.1.1",
   "description": "",
   "main": "lib/index.js",
   "author": "",

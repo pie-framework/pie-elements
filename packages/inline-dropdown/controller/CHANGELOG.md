@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@2.1.0...@pie-element/inline-dropdown-controller@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-controller
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@2.0.2...@pie-element/inline-dropdown-controller@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **inline-dropdown:** model based prompt ([8d4be7f](https://github.com/pie-framework/pie-elements/commit/8d4be7f))
+
+
+
+
+
+## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@2.0.1...@pie-element/inline-dropdown-controller@2.0.2) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-controller
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@2.0.0...@pie-element/inline-dropdown-controller@2.0.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* Removed incorrect defaults, fixed bug (App crash at: remove options from a dropdown until you have only one option, save, click OK on the opened dialog) ([26410f2](https://github.com/pie-framework/pie-elements/commit/26410f2))
+* Removed usage of state.markup. Prevented crash for "Show Correct Answers" Toggle. ([8e66852](https://github.com/pie-framework/pie-elements/commit/8e66852))
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.7.1...@pie-element/inline-dropdown-controller@2.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([0fc05af](https://github.com/pie-framework/pie-elements/commit/0fc05af))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.7.0...@pie-element/inline-dropdown-controller@1.7.1) (2019-09-05)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-controller
+
+
+
+
+
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.6.0...@pie-element/inline-dropdown-controller@1.7.0) (2019-09-04)
+
+
+### Bug Fixes
+
+* bump pie-lib/controller-utils ([ba3de00](https://github.com/pie-framework/pie-elements/commit/ba3de00))
+
+
+### Features
+
+* make use of updateSession callback ([e3b3dd1](https://github.com/pie-framework/pie-elements/commit/e3b3dd1))
+
+
+
+
+
 # [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@1.5.13...@pie-element/inline-dropdown-controller@1.6.0) (2019-08-27)
 
 

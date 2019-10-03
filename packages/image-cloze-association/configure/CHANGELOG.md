@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@2.0.0...@pie-element/image-cloze-association-configure@2.0.1) (2019-09-27)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.12...@pie-element/image-cloze-association-configure@2.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([1e0ec3d](https://github.com/pie-framework/pie-elements/commit/1e0ec3d))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [1.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-configure@1.1.11...@pie-element/image-cloze-association-configure@1.1.12) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-configure

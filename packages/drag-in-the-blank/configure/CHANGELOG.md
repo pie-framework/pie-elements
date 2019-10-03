@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@2.1.0...@pie-element/drag-in-the-blank-configure@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@2.0.1...@pie-element/drag-in-the-blank-configure@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **drag-in-the-blank:** model based prompt ([a5c983e](https://github.com/pie-framework/pie-elements/commit/a5c983e))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@2.0.0...@pie-element/drag-in-the-blank-configure@2.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.6.4...@pie-element/drag-in-the-blank-configure@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0e74d85](https://github.com/pie-framework/pie-elements/commit/0e74d85))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.6.3...@pie-element/drag-in-the-blank-configure@1.6.4) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
+## [1.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.6.2...@pie-element/drag-in-the-blank-configure@1.6.3) (2019-09-13)
+
+
+### Bug Fixes
+
+* Prevent drag-in-the-blank crash if no alternate response is defined. ([60e951a](https://github.com/pie-framework/pie-elements/commit/60e951a))
+
+
+
+
+
+## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.6.1...@pie-element/drag-in-the-blank-configure@1.6.2) (2019-09-13)
+
+**Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
+
+
+
+
+
 ## [1.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@1.6.0...@pie-element/drag-in-the-blank-configure@1.6.1) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure

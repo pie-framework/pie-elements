@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@2.1.0...@pie-element/graphing-configure@2.1.1) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@2.0.1...@pie-element/graphing-configure@2.1.0) (2019-09-27)
+
+
+### Features
+
+* **graphing:** model based prompt ([7ca5f8f](https://github.com/pie-framework/pie-elements/commit/7ca5f8f))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@2.0.0...@pie-element/graphing-configure@2.0.1) (2019-09-19)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+# [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.14...@pie-element/graphing-configure@2.0.0) (2019-09-17)
+
+
+### Features
+
+* Moved rationale, teacherInstructions and student instructions enabled flag in model because it's needed in controller. ([0ea695a](https://github.com/pie-framework/pie-elements/commit/0ea695a))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
 ## [1.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@1.2.13...@pie-element/graphing-configure@1.2.14) (2019-08-27)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

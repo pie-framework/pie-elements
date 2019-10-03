@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@4.1.1...@pie-element/math-inline@4.1.2) (2019-10-03)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@4.1.0...@pie-element/math-inline@4.1.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* **math-inline:** cdot and times equivalence in evaluation fix ([#348](https://github.com/pie-framework/pie-elements/issues/348)) ([fb75a46](https://github.com/pie-framework/pie-elements/commit/fb75a46))
+* **math-inline:** simple mode literal evaluation fix for decimals and spaces ([#349](https://github.com/pie-framework/pie-elements/issues/349)) ([5844d9f](https://github.com/pie-framework/pie-elements/commit/5844d9f))
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@4.0.0...@pie-element/math-inline@4.1.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* added feedbackEnabled property to model, removed usage on config.feedback.enabled and removed usage of allowFeedback (replaced with feedbackEnabled). ([c47fb9a](https://github.com/pie-framework/pie-elements/commit/c47fb9a))
+
+
+### Features
+
+* **math-inline:** model based prompt ([d7910e3](https://github.com/pie-framework/pie-elements/commit/d7910e3))
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@3.1.1...@pie-element/math-inline@4.0.0) (2019-09-17)
+
+
+* Moved rationale, teacherInstructions and studentInstructions enabled flag in model because it's needed in controller. ([07b7da9](https://github.com/pie-framework/pie-elements/commit/07b7da9))
+
+
+### BREAKING CHANGES
+
+* `enabled` property from `configuration.rationale.enabled` moved to `model.rationaleEnabled`. Same applies to teacherInstructions/studentInstructions.
+
+
+
+
+
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@3.1.0...@pie-element/math-inline@3.1.1) (2019-09-04)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
 # [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@3.0.1...@pie-element/math-inline@3.1.0) (2019-08-27)
 
 
