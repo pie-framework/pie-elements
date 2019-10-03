@@ -95,7 +95,7 @@ exports[`Configure renders snapshot 1`] = `
           "labels": null,
           "padding": true,
           "prompt": "Here goes item stem!",
-          "promptEnabled": false,
+          "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
             "labelStep": 1.5,
@@ -136,6 +136,16 @@ exports[`Configure renders snapshot 1`] = `
         This interaction asks a student to draw a line that meets specific criteria. The student will draw the line by clicking on two points on the graph.
       </span>
     </WithStyles(Typography)>
+    <InputContainer
+      label="Item Stem"
+    >
+      <EditableHtml
+        disableUnderline={true}
+        markup="Here goes item stem!"
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </InputContainer>
     <WithStyles(GraphingConfig)
       authoringEnabled={false}
       config={
@@ -169,7 +179,7 @@ exports[`Configure renders snapshot 1`] = `
           "labels": null,
           "padding": true,
           "prompt": "Here goes item stem!",
-          "promptEnabled": false,
+          "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
             "labelStep": 1.5,
@@ -271,7 +281,7 @@ exports[`Configure renders snapshot 1`] = `
           "labels": null,
           "padding": true,
           "prompt": "Here goes item stem!",
-          "promptEnabled": false,
+          "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
             "labelStep": 1.5,
