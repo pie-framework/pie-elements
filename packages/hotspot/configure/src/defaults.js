@@ -1,7 +1,7 @@
 export default {
   model: {
     prompt: 'This is the question prompt',
-    promptEnabled: false,
+    promptEnabled: true,
     imageUrl: '',
     shapes: {
       rectangles: [],

@@ -23,7 +23,7 @@ export default {
     scoringType: 'auto',
     targetLabel: 'Target Label goes here',
     rationaleEnabled: false,
-    promptEnabled: false,
+    promptEnabled: true,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
   },

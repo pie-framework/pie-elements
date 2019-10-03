@@ -9,7 +9,7 @@ export default {
     scoringType: 'auto',
     arrows: true,
     padding: true,
-    promptEnabled: false,
+    promptEnabled: true,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false

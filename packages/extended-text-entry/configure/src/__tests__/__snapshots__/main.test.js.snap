@@ -69,7 +69,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "feedbackEnabled": false,
           "mathInput": false,
           "prompt": "This is the question prompt",
-          "promptEnabled": false,
+          "promptEnabled": true,
           "rationaleEnabled": false,
           "studentInstructionsEnabled": false,
           "teacherInstructionsEnabled": false,
@@ -82,6 +82,15 @@ exports[`Render Main Component Match Snapshot 1`] = `
 >
   <div>
     <br />
+    <Component
+      label="Prompt"
+    >
+      <EditableHtml
+        markup="This is the question prompt"
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </Component>
   </div>
 </ConfigLayout>
 `;

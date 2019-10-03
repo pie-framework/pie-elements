@@ -6,7 +6,7 @@ export default {
     width: 0
   },
   rationaleEnabled: false,
-  promptEnabled: false,
+  promptEnabled: true,
   teacherInstructionsEnabled: false,
   studentInstructionsEnabled: false,
   configuration: {

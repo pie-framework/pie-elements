@@ -32,7 +32,7 @@ export default {
     customKeys: [],
     scoringType: 'auto',
     feedbackEnabled: false,
-    promptEnabled: false,
+    promptEnabled: true,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false

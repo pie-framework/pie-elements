@@ -13,7 +13,7 @@ export default {
     rowLabels: [''],
     partialScoring: true,
     rationaleEnabled: true,
-    promptEnabled: false,
+    promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true
   },
