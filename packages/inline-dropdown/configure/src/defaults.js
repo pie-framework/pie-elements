@@ -7,7 +7,7 @@ export default {
     markup: '',
     choices: {},
     alternateResponse: {},
-    promptEnabled: false,
+    promptEnabled: true,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false

@@ -20,7 +20,7 @@ export default {
       }
     ],
     scoringType: 'auto',
-    promptEnabled: false,
+    promptEnabled: true,
     rationaleEnabled: false,
     teacherInstructionsEnabled: false,
     studentInstructionsEnabled: false
