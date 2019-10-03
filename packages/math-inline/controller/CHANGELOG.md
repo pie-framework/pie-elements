@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@4.1.0...@pie-element/math-inline-controller@4.1.1) (2019-10-03)
+
+
+### Bug Fixes
+
+* **math-inline:** cdot and times equivalence in evaluation fix ([#348](https://github.com/pie-framework/pie-elements/issues/348)) ([fb75a46](https://github.com/pie-framework/pie-elements/commit/fb75a46))
+* **math-inline:** simple mode literal evaluation fix for decimals and spaces ([#349](https://github.com/pie-framework/pie-elements/issues/349)) ([5844d9f](https://github.com/pie-framework/pie-elements/commit/5844d9f))
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@4.0.0...@pie-element/math-inline-controller@4.1.0) (2019-09-27)
 
 

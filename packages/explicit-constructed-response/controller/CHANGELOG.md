@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@2.1.0...@pie-element/explicit-constructed-response-controller@2.2.0) (2019-10-03)
+
+
+### Features
+
+* **controller:** made sure that prepareVal works on environments that are not dom based [ch4599] ([c887e75](https://github.com/pie-framework/pie-elements/commit/c887e75))
+
+
+
+
+
 # [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@2.0.1...@pie-element/explicit-constructed-response-controller@2.1.0) (2019-09-27)
 
 
