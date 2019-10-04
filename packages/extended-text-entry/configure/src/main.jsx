@@ -145,7 +145,7 @@ export class Main extends React.Component {
 
           <br />
 
-          {prompt.settings && promptEnabled && (
+          {promptEnabled && (
             <InputContainer label={prompt.label} className={classes.promptContainer}>
               <EditableHtml
                 className={classes.prompt}
