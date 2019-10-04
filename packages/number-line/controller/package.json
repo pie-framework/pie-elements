@@ -13,7 +13,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.1.2",
+    "@pie-lib/controller-utils": "^0.2.0",
     "@pie-lib/feedback": "^0.4.9",
     "lodash": "^4.17.15"
   },
