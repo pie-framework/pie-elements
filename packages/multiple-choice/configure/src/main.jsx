@@ -106,7 +106,7 @@ const Design = withStyles(styles)(props => {
         </InputContainer>
       )}
 
-      {prompt.settings && promptEnabled && (
+      {promptEnabled && (
         <InputContainer label={prompt.label} className={classes.promptHolder}>
           <EditableHtml
             className={classes.prompt}
