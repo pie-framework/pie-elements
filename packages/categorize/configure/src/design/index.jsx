@@ -211,7 +211,7 @@ export class Design extends React.Component {
           }
         >
           <div className={classNames(classes.design, className)}>
-            {prompt.settings && promptEnabled && (
+            {promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}

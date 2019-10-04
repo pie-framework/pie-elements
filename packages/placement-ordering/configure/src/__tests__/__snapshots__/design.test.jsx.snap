@@ -301,6 +301,18 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   }
 >
   <FormSection
+    label="Ordering"
+  >
+    <InputContainer
+      label="ITEM STEM"
+    >
+      <EditableHtml
+        markup="Item Stem goes here"
+        onChange={[Function]}
+      />
+    </InputContainer>
+  </FormSection>
+  <FormSection
     label="Define Choices"
   >
     <div>

@@ -259,7 +259,7 @@ class Configure extends React.Component {
             </InputContainer>
           )}
 
-          {prompt.settings && promptEnabled && (
+          {promptEnabled && (
             <InputContainer
               label={prompt.label}
               className={classes.promptHolder}

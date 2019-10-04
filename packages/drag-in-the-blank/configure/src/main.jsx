@@ -202,7 +202,7 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            {prompt.settings && promptEnabled && (
+            {promptEnabled && (
               <InputContainer
                 label={prompt.label}
                 className={classes.promptHolder}
