@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/inline-dropdown",
+  "description": "Model for the @pie-elements/inline-dropdown",
   "additionalProperties": false,
   "type": "object",
   "properties": {

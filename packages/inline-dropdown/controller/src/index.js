@@ -86,7 +86,7 @@ export function model(question, session, env, updateSession) {
     let rationale = null;
 
     if (
-      // env.role === 'instructor' &&
+      env.role === 'instructor' &&
       env.mode === 'view' ||
       env.mode === 'evaluate'
     ) {

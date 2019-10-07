@@ -43,6 +43,7 @@ export default class InlineDropdown extends HTMLElement {
   set model(s) {
     this._model = InlineDropdown.prepareModel(s);
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
