@@ -25,6 +25,7 @@ export default class ImageClozeAssociationConfigure extends HTMLElement {
   set model(s) {
     this._model = ImageClozeAssociationConfigure.createDefaultModel(s);
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
