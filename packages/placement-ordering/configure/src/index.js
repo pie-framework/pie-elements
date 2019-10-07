@@ -26,8 +26,7 @@ export default class PlacementOrdering extends HTMLElement {
     let correctResponse = model.correctResponse || mapChoicesToReturnCorrectResponse(model.choices);
     const defaultModel = {
       ...defaultValues.model,
-      ...model,
-      allowFeedback: defaultValues.configuration.feedback.enabled
+      ...model
     };
 
     if (correctResponse) {
@@ -52,10 +51,6 @@ export default class PlacementOrdering extends HTMLElement {
     this.onConfigurationChanged = (configuration) => {
       this._configuration = prepareCustomizationObject(configuration).configuration;
 
-      if (this._model) {
-        this._model.allowFeedback = (this._configuration.feedback || {}).enabled;
-      }
-
       this.onModelChanged(this._model);
       this._rerender();
     };
@@ -76,6 +71,7 @@ export default class PlacementOrdering extends HTMLElement {
   set model(s) {
     this._model = PlacementOrdering.createDefaultModel(s);
     this._rerender();
+    this.dispatchUpdate();
   }
 
   set configuration(c) {

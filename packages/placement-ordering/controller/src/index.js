@@ -95,7 +95,7 @@ export function model(question, session, env, updateSession) {
       base.teacherInstructions = null;
     }
 
-    if (env.mode === 'evaluate' && question.allowFeedback) {
+    if (env.mode === 'evaluate' && question.feedbackEnabled) {
       const value = (session && session.value) || [];
       const allCorrectResponses = getAllCorrectResponses(question);
 

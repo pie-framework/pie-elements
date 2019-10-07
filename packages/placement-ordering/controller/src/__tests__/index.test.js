@@ -10,7 +10,7 @@ describe('index', () => {
         choices: [],
         correctResponse: [],
         lockChoiceOrder: true,
-        allowFeedback: true
+        feedbackEnabled: true
       },
       o
     );

@@ -86,7 +86,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
-            "feedback.enabled": undefined,
+            "feedbackEnabled": undefined,
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
@@ -106,6 +106,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             },
           ],
           "enableImages": false,
+          "feedbackEnabled": true,
           "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
@@ -113,12 +114,12 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "placementArea": false,
           "prompt": "Item Stem goes here",
           "promptEnabled": true,
-          "rationaleEnabled": false,
+          "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
-          "studentInstructionsEnabled": false,
+          "studentInstructionsEnabled": true,
           "targetLabel": "Target Label goes here",
-          "teacherInstructionsEnabled": false,
+          "teacherInstructionsEnabled": true,
         }
       }
       onChangeConfiguration={[Function]}
@@ -126,6 +127,15 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     />
   }
 >
+  <InputContainer
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      markup=""
+      nonEmpty={false}
+      onChange={[Function]}
+    />
+  </InputContainer>
   <FormSection
     label="Ordering"
   >
@@ -134,6 +144,14 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     >
       <EditableHtml
         markup="Item Stem goes here"
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <InputContainer
+      label="Rationale"
+    >
+      <EditableHtml
+        markup=""
         onChange={[Function]}
       />
     </InputContainer>
@@ -260,7 +278,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "Settings": Object {
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
-            "feedback.enabled": undefined,
+            "feedbackEnabled": undefined,
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
@@ -280,6 +298,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             },
           ],
           "enableImages": false,
+          "feedbackEnabled": true,
           "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
@@ -287,12 +306,12 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "placementArea": false,
           "prompt": "Item Stem goes here",
           "promptEnabled": true,
-          "rationaleEnabled": false,
+          "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
-          "studentInstructionsEnabled": false,
+          "studentInstructionsEnabled": true,
           "targetLabel": "Target Label goes here",
-          "teacherInstructionsEnabled": false,
+          "teacherInstructionsEnabled": true,
         }
       }
       onChangeConfiguration={[Function]}
@@ -300,6 +319,15 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     />
   }
 >
+  <InputContainer
+    label="Teacher Instructions"
+  >
+    <EditableHtml
+      markup=""
+      nonEmpty={false}
+      onChange={[Function]}
+    />
+  </InputContainer>
   <FormSection
     label="Ordering"
   >
@@ -308,6 +336,14 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     >
       <EditableHtml
         markup="Item Stem goes here"
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <InputContainer
+      label="Rationale"
+    >
+      <EditableHtml
+        markup=""
         onChange={[Function]}
       />
     </InputContainer>

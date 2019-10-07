@@ -98,7 +98,7 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
       model || {};
 
     return (
@@ -133,8 +133,8 @@ export class Design extends React.Component {
                   partialScoring.settings && toggle(partialScoring.label),
                 lockChoiceOrder:
                   lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                'feedback.enabled':
-                  feedback.settings && toggle(feedback.label, true)
+                feedbackEnabled:
+                  feedback.settings && toggle(feedback.label)
               },
               Properties: {
                 teacherInstructionsEnabled:
@@ -250,7 +250,7 @@ export class Design extends React.Component {
           )}
         </FormSection>
 
-        {feedback.enabled && (
+        {feedbackEnabled && (
           <FeedbackConfig
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
