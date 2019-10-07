@@ -1,6 +1,3 @@
-NOTE: studentInstructions & multipleParts
-functionalities are not defined yet - the value for those can belong to
-model or to configure (to be moved when the functionality is defined)
 Model for the @pie-elements/extended-text-entry Interaction
 
 The schema defines the following properties:

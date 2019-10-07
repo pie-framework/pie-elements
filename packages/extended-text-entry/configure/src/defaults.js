@@ -7,11 +7,11 @@ export default {
     prompt: 'This is the question prompt',
     mathInput: false,
     equationEditor: 'everything',
-    feedbackEnabled: false,
-    rationaleEnabled: false,
+    feedbackEnabled: true,
+    rationaleEnabled: true,
     promptEnabled: true,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     dimensions: {

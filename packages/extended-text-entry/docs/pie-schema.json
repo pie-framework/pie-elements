@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: studentInstructions & multipleParts\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/extended-text-entry Interaction",
+  "description": "Model for the @pie-elements/extended-text-entry Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
