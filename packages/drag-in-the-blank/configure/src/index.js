@@ -49,6 +49,7 @@ export default class DragInTheBlank extends HTMLElement {
 
     this._model = DragInTheBlank.prepareModel(formModel);
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
