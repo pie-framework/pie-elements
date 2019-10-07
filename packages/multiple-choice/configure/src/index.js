@@ -67,6 +67,7 @@ export default class MultipleChoice extends HTMLElement {
     this._model = MultipleChoice.createDefaultModel(s);
 
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {

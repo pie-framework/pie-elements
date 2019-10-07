@@ -11,11 +11,11 @@ export default {
     lockChoiceOrder: true,
     partialScoring: true,
     scoringType: 'auto',
-    feedbackEnabled: false,
+    feedbackEnabled: true,
     promptEnabled: true,
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     answerChoiceCount: 0,
