@@ -53,9 +53,9 @@ export default {
     scoringType: 'partial scoring',
     title: '',
     promptEnabled: true,
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     authoring: {

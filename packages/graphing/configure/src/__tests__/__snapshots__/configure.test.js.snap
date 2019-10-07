@@ -105,10 +105,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
-          "rationaleEnabled": false,
+          "rationaleEnabled": true,
           "scoringType": "partial scoring",
-          "studentInstructionsEnabled": false,
-          "teacherInstructionsEnabled": false,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
           "title": "",
           "toolbarTools": Array [
             "point",
@@ -137,12 +137,29 @@ exports[`Configure renders snapshot 1`] = `
       </span>
     </WithStyles(Typography)>
     <InputContainer
+      label="Teacher Instructions"
+    >
+      <EditableHtml
+        markup=""
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <InputContainer
       label="Item Stem"
     >
       <EditableHtml
         disableUnderline={true}
         markup="Here goes item stem!"
         nonEmpty={false}
+        onChange={[Function]}
+      />
+    </InputContainer>
+    <InputContainer
+      label="Rationale"
+    >
+      <EditableHtml
+        markup="Rationale goes here!"
         onChange={[Function]}
       />
     </InputContainer>
@@ -189,10 +206,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
-          "rationaleEnabled": false,
+          "rationaleEnabled": true,
           "scoringType": "partial scoring",
-          "studentInstructionsEnabled": false,
-          "teacherInstructionsEnabled": false,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
           "title": "",
           "toolbarTools": Array [
             "point",
@@ -291,10 +308,10 @@ exports[`Configure renders snapshot 1`] = `
             "step": 0.5,
           },
           "rationale": "Rationale goes here!",
-          "rationaleEnabled": false,
+          "rationaleEnabled": true,
           "scoringType": "partial scoring",
-          "studentInstructionsEnabled": false,
-          "teacherInstructionsEnabled": false,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
           "title": "",
           "toolbarTools": Array [
             "point",
