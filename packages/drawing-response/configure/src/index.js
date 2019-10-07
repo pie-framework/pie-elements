@@ -30,6 +30,7 @@ export default class DrawableResponseConfigure extends HTMLElement {
   set model(s) {
     this._model = DrawableResponseConfigure.createDefaultModel(s);
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {

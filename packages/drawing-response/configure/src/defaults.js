@@ -1,14 +1,16 @@
 export default {
-  prompt: 'This is the question prompt',
-  imageUrl: '',
-  imageDimensions: {
-    height: 0,
-    width: 0
+  model: {
+    prompt: 'This is the question prompt',
+    imageUrl: '',
+    imageDimensions: {
+      height: 0,
+      width: 0
+    },
+    rationaleEnabled: true,
+    promptEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
   },
-  rationaleEnabled: false,
-  promptEnabled: true,
-  teacherInstructionsEnabled: false,
-  studentInstructionsEnabled: false,
   configuration: {
     backgroundImage: {
       settings: true,
