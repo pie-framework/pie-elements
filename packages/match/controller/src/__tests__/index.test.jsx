@@ -23,7 +23,7 @@ const defaultModel = {
   }],
   lockChoiceOrder: true,
   partialScoring: false,
-  allowFeedback: true,
+  feedbackEnabled: true,
   layout: 3,
   headers: ['Column 1', 'Column 2', 'Column 3'],
   choiceMode: 'checkbox',

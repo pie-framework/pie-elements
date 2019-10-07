@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configure (to be moved when the functionality is defined)\nModel for the @pie-elements/match Interaction",
+  "description": "Model for the @pie-elements/match Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -278,6 +278,11 @@
       "type": "string",
       "title": "teacherInstructions"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -306,6 +311,7 @@
   },
   "required": [
     "element",
+    "feedbackEnabled",
     "headers",
     "id",
     "layout",

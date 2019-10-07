@@ -76,6 +76,7 @@ export const defaultProps = {
         default: 'Incorrect'
       }
     },
+    feedbackEnabled: true,
     prompt: 'Prompt'
   },
   configuration: defaultValues.configuration

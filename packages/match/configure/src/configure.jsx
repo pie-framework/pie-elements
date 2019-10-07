@@ -202,7 +202,7 @@ class Configure extends React.Component {
       prompt = {},
       feedback = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
       model || {};
 
     log('[render] model', model);
@@ -223,8 +223,8 @@ class Configure extends React.Component {
                   partialScoring.settings && toggle(partialScoring.label),
                 lockChoiceOrder:
                   lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                'feedback.enabled':
-                  feedback.settings && toggle(feedback.label, true)
+                feedbackEnabled:
+                  feedback.settings && toggle(feedback.label)
               },
               Properties: {
                 teacherInstructionsEnabled:
@@ -302,7 +302,7 @@ class Configure extends React.Component {
             onAddRow={this.onAddRow}
             onDeleteRow={this.onDeleteRow}
           />
-          {feedback.enabled && (
+          {feedbackEnabled && (
             <FeedbackConfig
               feedback={model.feedback}
               onChange={this.onFeedbackChange}

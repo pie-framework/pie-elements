@@ -161,13 +161,13 @@ export function model(question, session, env, updateSession) {
     });
 
     const fb =
-      env.mode === 'evaluate' && question.allowFeedback
+      env.mode === 'evaluate' && question.feedbackEnabled
         ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
       const base = {
-        allowFeedback: question.allowFeedback,
+        allowFeedback: question.feedbackEnabled,
         prompt: question.promptEnabled ? question.prompt : null,
         config: {
           ...question,
