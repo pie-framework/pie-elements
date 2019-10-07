@@ -40,9 +40,9 @@ export default {
     },
     scoringType: 'partial scoring',
     title: 'This is a chart!',
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     prompt: {
@@ -51,8 +51,7 @@ export default {
     },
     rationale: {
       settings: true,
-      label: 'Rationale',
-      enabled: false
+      label: 'Rationale'
     },
     scoringType: {
       settings: true,
