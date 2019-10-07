@@ -369,6 +369,11 @@
       "type": "boolean",
       "title": "partialScoring"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "rationaleEnabled": {
       "description": "Indicates if Rationale are enabled",
       "type": "boolean",
@@ -399,6 +404,7 @@
     "categories",
     "choices",
     "element",
+    "feedbackEnabled",
     "id",
     "prompt",
     "rationaleEnabled",

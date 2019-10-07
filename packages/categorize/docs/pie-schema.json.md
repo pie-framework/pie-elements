@@ -148,6 +148,10 @@ Indicates the value for rationale
 
 Indicates if partial scoring is enabled
 
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
+
 # `rationaleEnabled` (boolean, required)
 
 Indicates if Rationale are enabled

@@ -16,7 +16,7 @@ exports[`Design snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
-              "feedback.enabled": undefined,
+              "feedbackEnabled": undefined,
               "lockChoiceOrder": undefined,
               "partialScoring": undefined,
               "promptEnabled": undefined,
