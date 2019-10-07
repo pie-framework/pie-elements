@@ -62,13 +62,36 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   set model(m) {
-    this._model = { ...this._model, ...m };
+    this._model = {
+      ...this._model,
+      ...m,
+      partA: {
+        ...this._model.partA,
+        ...m.partA,
+      },
+      partB: {
+        ...this._model.partB,
+        ...m.partB,
+      }
+    };
 
     this._render();
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   onModelChanged = (m) => {
-    this._model = { ...this._model, ...m };
+    this._model = {
+      ...this._model,
+      ...m,
+      partA: {
+        ...this._model.partA,
+        ...m.partA,
+      },
+      partB: {
+        ...this._model.partB,
+        ...m.partB,
+      }
+    };
 
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
     this._render();
