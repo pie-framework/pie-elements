@@ -16,11 +16,11 @@ export default {
     text: '',
     tokens: tokens(),
     scoringType: 'auto',
-    feedbackEnabled: false,
-    rationaleEnabled: false,
+    feedbackEnabled: true,
+    rationaleEnabled: true,
     promptEnabled: true,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     selectionCount: {
