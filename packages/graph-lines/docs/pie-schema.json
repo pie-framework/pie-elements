@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: There's no functionality described for arrows, padding, labels, graphTitle,\nscoringType, studentInstructions, teacherInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graph-lines",
+  "description": "Model Object for @pie-elements/graph-lines",
   "additionalProperties": false,
   "type": "object",
   "properties": {

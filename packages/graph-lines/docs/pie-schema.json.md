@@ -1,6 +1,3 @@
-NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
-scoringType, studentInstructions, teacherInstructions
-so there's no implementation (they are only added in model)
 Model Object for @pie-elements/graph-lines
 
 The schema defines the following properties:

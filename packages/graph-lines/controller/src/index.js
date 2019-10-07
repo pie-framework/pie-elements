@@ -48,7 +48,7 @@ const getResponseCorrectness = (
   return { correctness: 'incorrect', score: '0%' };
 };
 
-export const getCorrectness = (question, session, env) => {
+export const getCorrectness = (question, session, env = {}) => {
   const { partialScoring, graph } = question;
   const correctResponse = [];
 

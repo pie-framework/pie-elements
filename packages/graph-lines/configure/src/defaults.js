@@ -10,9 +10,9 @@ export default {
     arrows: true,
     padding: true,
     promptEnabled: true,
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     arrows: {
