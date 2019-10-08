@@ -1918,5 +1918,35 @@
     "committerDate": "2019-10-02 09:15:33 -0400",
     "isTagged": true,
     "tag": "@pie-element/math-inline@4.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "fix controller logic safety net - ch3905 (#356)",
+    "merge": null,
+    "header": "fix(math-inline): fix controller logic safety net - ch3905 (#356)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "bcd5272c426645d664a39da370e56f3431c312ff",
+    "gitTags": "",
+    "committerDate": "2019-10-08 09:40:41 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@5.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "fix symbolic evaluation with text nodes - ch4709",
+    "merge": null,
+    "header": "fix(math-inline): fix symbolic evaluation with text nodes - ch4709",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6aea32b93af66811ab4b7f6cfdae12659f91ff04",
+    "gitTags": " (origin/ch4709/math-inline-controller-unrecognized-latex)",
+    "committerDate": "2019-10-08 10:51:07 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline@5.0.0"
   }
 ]

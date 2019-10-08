@@ -573,5 +573,20 @@
     "committerDate": "2019-09-24 15:56:36 +0300",
     "isTagged": true,
     "tag": "@pie-element/hotspot@3.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": "hotspot",
+    "subject": "controller scoring function fix [ch3536]",
+    "merge": null,
+    "header": "fix(hotspot): controller scoring function fix [ch3536]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f5e6a1f42dac8177e6db29f9d32343e866339e3f",
+    "gitTags": "",
+    "committerDate": "2019-10-08 09:02:16 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot@4.0.0"
   }
 ]
