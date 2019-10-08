@@ -78,44 +78,44 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
     if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
-          let answerValueToUse = processAnswerItem(answerItem);
-          let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+        let answerValueToUse = processAnswerItem(answerItem);
+        let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
-          if (correctResponse.allowDecimals) {
-            if (
-              containsDecimal(answerValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
-            ) {
-              answerValueToUse = answerValueToUse.replace(
-                decimalCommaRegex,
-                ''
-              );
-            }
-
-            if (
-              containsDecimal(acceptedValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
-            ) {
-              acceptedValueToUse = acceptedValueToUse.replace(
-                decimalCommaRegex,
-                ''
-              );
-            }
+        if (correctResponse.allowDecimals) {
+          if (
+            containsDecimal(answerValueToUse) &&
+            decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+          ) {
+            answerValueToUse = answerValueToUse.replace(
+              decimalCommaRegex,
+              ''
+            );
           }
 
-          if (correctResponse.allowSpaces) {
-            if (
-              acceptedValueToUse === trimSpaces(answerValueToUse) ||
-              acceptedValueToUse === answerValueToUse ||
-              trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-            ) {
-              answerCorrect = true;
-              break;
-            }
-          } else if (acceptedValueToUse === answerValueToUse) {
+          if (
+            containsDecimal(acceptedValueToUse) &&
+            decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+          ) {
+            acceptedValueToUse = acceptedValueToUse.replace(
+              decimalCommaRegex,
+              ''
+            );
+          }
+        }
+
+        if (correctResponse.allowSpaces) {
+          if (
+            acceptedValueToUse === trimSpaces(answerValueToUse) ||
+            acceptedValueToUse === answerValueToUse ||
+            trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
+          ) {
             answerCorrect = true;
             break;
           }
+        } else if (acceptedValueToUse === answerValueToUse) {
+          answerCorrect = true;
+          break;
+        }
       }
     } else {
       answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
@@ -167,11 +167,21 @@ export const outcome = (question, session, env) => {
   });
 };
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const correctness = getCorrectness(question, env, session);
+    const normalizedQuestion = normalize(question);
+    const correctness = getCorrectness(normalizedQuestion, env, session);
     const correctResponse = {};
-    const { responses, ...config } = question;
+    const { responses, ...config } = normalizedQuestion;
 
     if (config.responseType === ResponseTypes.simple) {
       config.responses = responses.slice(0, 1);
@@ -180,8 +190,8 @@ export function model(question, session, env) {
     }
 
     const fb =
-      env.mode === 'evaluate' && question.feedbackEnabled
-        ? getFeedbackForCorrectness(correctness, question.feedback)
+      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
@@ -201,14 +211,14 @@ export function model(question, session, env) {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        out.rationale = question.rationaleEnabled ? question.rationale : null;
-        out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
       }
 
-      out.config.prompt = question.promptEnabled ? question.prompt : null;
+      out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
 
       log('out: ', out);
       resolve(out);
