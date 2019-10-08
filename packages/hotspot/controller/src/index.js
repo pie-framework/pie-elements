@@ -8,7 +8,16 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:hotspot:controller');
 
+export const normalize = question => ({
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export function model(question, session, env) {
+  const normalizedQuestion = normalize(question);
   const {
     imageUrl,
     dimensions,
@@ -18,7 +27,7 @@ export function model(question, session, env) {
     partialScoring,
     prompt,
     shapes
-  } = question;
+  } = normalizedQuestion;
 
   return new Promise(resolve => {
     const out = {
@@ -33,19 +42,19 @@ export function model(question, session, env) {
       shapes,
       responseCorrect:
         env.mode === 'evaluate'
-          ? isResponseCorrect(question, session)
+          ? isResponseCorrect(normalizedQuestion, session)
           : undefined
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = question.rationaleEnabled ? question.rationale : null;
-      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
     }
 
-    out.prompt = question.promptEnabled ? prompt : null;
+    out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
 
     resolve(out);
   });

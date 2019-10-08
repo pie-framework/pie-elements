@@ -30,7 +30,6 @@ export default class HotspotConfigure extends HTMLElement {
   set model(s) {
     this._model = HotspotConfigure.createDefaultModel(s);
     this._render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
