@@ -43,6 +43,15 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 /**
  *
  * @param {*} question
@@ -51,16 +60,17 @@ export function createDefaultModel(model = {}) {
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export async function model(question, session, env, updateSession) {
+  const normalizedQuestion = normalize(question);
   const defaultFeedback = Object.assign(
     { correct: 'Correct', incorrect: 'Incorrect' },
-    question.defaultFeedback
+    normalizedQuestion.defaultFeedback
   );
 
-  let choices = question.choices.map(
-    prepareChoice(question, env, defaultFeedback)
+  let choices = normalizedQuestion.choices.map(
+    prepareChoice(normalizedQuestion, env, defaultFeedback)
   );
 
-  if (!question.lockChoiceOrder) {
+  if (!normalizedQuestion.lockChoiceOrder) {
     choices = await getShuffledChoices(
       choices,
       session,
@@ -72,27 +82,27 @@ export async function model(question, session, env, updateSession) {
   const out = {
     disabled: env.mode !== 'gather',
     mode: env.mode,
-    prompt: question.promptEnabled ? question.prompt : null,
-    choiceMode: question.choiceMode,
-    keyMode: question.choicePrefix,
-    shuffle: !question.lockChoiceOrder,
+    prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+    choiceMode: normalizedQuestion.choiceMode,
+    keyMode: normalizedQuestion.choicePrefix,
+    shuffle: !normalizedQuestion.lockChoiceOrder,
     choices,
-    feedbackEnabled: question.feedbackEnabled,
+    feedbackEnabled: normalizedQuestion.feedbackEnabled,
 
     //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
     complete: {
-      min: question.choices ? question.choices.filter(c => c.correct).length : 0
+      min: normalizedQuestion.choices ? normalizedQuestion.choices.filter(c => c.correct).length : 0
     },
     responseCorrect:
-      env.mode === 'evaluate' ? isResponseCorrect(question, session) : undefined
+      env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined
   };
 
   if (
     env.role === 'instructor' &&
     (env.mode === 'view' || env.mode === 'evaluate')
   ) {
-    out.teacherInstructions = question.teacherInstructionsEnabled
-      ? question.teacherInstructions
+    out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+      ? normalizedQuestion.teacherInstructions
       : null;
   } else {
     out.teacherInstructions = null;
