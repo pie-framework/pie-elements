@@ -48,8 +48,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
-    answerItem,
-    isAdvanced
+    answerItem
   );
   const correctnessObject = {
     correctness: 'incorrect',
@@ -66,7 +65,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
+function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
   correctResponseItem.forEach(correctResponse => {
@@ -78,50 +77,51 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
 
     if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
-          let answerValueToUse = processAnswerItem(answerItem);
-          let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+        let answerValueToUse = processAnswerItem(answerItem);
+        let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
-          if (correctResponse.allowDecimals) {
-            if (
-              containsDecimal(answerValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
-            ) {
-              answerValueToUse = answerValueToUse.replace(
-                decimalCommaRegex,
-                ''
-              );
-            }
-
-            if (
-              containsDecimal(acceptedValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
-            ) {
-              acceptedValueToUse = acceptedValueToUse.replace(
-                decimalCommaRegex,
-                ''
-              );
-            }
+        if (correctResponse.allowDecimals) {
+          if (
+            containsDecimal(answerValueToUse) &&
+            decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+          ) {
+            answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
           }
 
-          if (correctResponse.allowSpaces) {
-            if (
-              acceptedValueToUse === trimSpaces(answerValueToUse) ||
-              acceptedValueToUse === answerValueToUse ||
-              trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-            ) {
-              answerCorrect = true;
-              break;
-            }
-          } else if (acceptedValueToUse === answerValueToUse) {
+          if (
+            containsDecimal(acceptedValueToUse) &&
+            decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+          ) {
+            acceptedValueToUse = acceptedValueToUse.replace(
+              decimalCommaRegex,
+              ''
+            );
+          }
+        }
+
+        if (correctResponse.allowSpaces) {
+          if (
+            acceptedValueToUse === trimSpaces(answerValueToUse) ||
+            acceptedValueToUse === answerValueToUse ||
+            trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
+          ) {
             answerCorrect = true;
             break;
           }
+        } else if (acceptedValueToUse === answerValueToUse) {
+          answerCorrect = true;
+          break;
+        }
       }
     } else {
-      answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
-        isLatex: true,
-        allowDecimals: correctResponse.allowDecimals
-      });
+      answerCorrect = areValuesEqual(
+        processAnswerItem(correctResponse.answer),
+        processAnswerItem(answerItem),
+        {
+          isLatex: true,
+          allowDecimals: correctResponse.allowDecimals
+        }
+      );
     }
   });
 
@@ -134,7 +134,7 @@ const getCorrectness = (question, env, session, isOutcome) => {
       question,
       question.responseType === ResponseTypes.advanced
         ? (session && session.completeAnswer) || ''
-        : (session && session.response),
+        : session && session.response,
       isOutcome
     );
   }
@@ -202,7 +202,9 @@ export function model(question, session, env) {
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
         out.rationale = question.rationaleEnabled ? question.rationale : null;
-        out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+        out.teacherInstructions = question.teacherInstructionsEnabled
+          ? question.teacherInstructions
+          : null;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
@@ -220,7 +222,9 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { response: { answer } } = question;
+      const {
+        response: { answer }
+      } = question;
       const equalIndex = answer.indexOf('=');
 
       resolve({
