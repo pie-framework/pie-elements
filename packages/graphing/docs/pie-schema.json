@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: There's no functionality described for studentInstructions\nso there's no implementation (they are only added in model)\nModel Object for @pie-elements/graphing",
+  "description": "Model Object for @pie-elements/graphing",
   "additionalProperties": false,
   "type": "object",
   "properties": {

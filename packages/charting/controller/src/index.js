@@ -16,6 +16,15 @@ export const setCorrectness = (answers, partialScoring) => answers ? answers.map
   }
 })) : [];
 
+
+export const normalize = question => ({
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export const getScore = (question, session) => {
   const { correctAnswer, data: initialData = [], scoringType, editCategoryEnabled } = question;
 
@@ -131,6 +140,7 @@ export const filterCategories = (categories, editable) => categories ? categorie
 
 export function model(question, session, env) {
   return new Promise(resolve => {
+    const normalizedQuestion = normalize(question);
     const {
       addCategoryEnabled,
       categoryDefaultLabel,
@@ -143,8 +153,10 @@ export function model(question, session, env) {
       promptEnabled,
       range,
       rationale,
-      title
-    } = question;
+      title,
+      rationaleEnabled,
+      teacherInstructionsEnabled
+    } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
@@ -166,13 +178,13 @@ export function model(question, session, env) {
     };
 
     if (env.mode === 'evaluate' || env.mode === 'view') {
-      base.correctedAnswer = filterCategories(getScore(question, session).answers, false);
+      base.correctedAnswer = filterCategories(getScore(normalizedQuestion, session).answers, false);
       base.addCategoryEnabled = false;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = question.rationaleEnabled ? question.rationale : null;
-      base.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      base.rationale = rationaleEnabled ? rationale : null;
+      base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     } else {
       base.rationale = null;
       base.teacherInstructions = null;

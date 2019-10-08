@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions, rationale & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the Choice Interaction",
+  "description": "Model for the Choice Interaction",
   "additionalProperties": false,
   "type": "object",
   "properties": {

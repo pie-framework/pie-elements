@@ -98,6 +98,9 @@ export interface PlacementOrderingPie extends PieModel {
     /** The label for answer area if placement area is enabled */
     targetLabel?: string;
 
+    /** Indicates if Feedback is enabled */
+    feedbackEnabled: boolean;
+
     /** Indicates teacher instructions */
     teacherInstructions?: string;
 

@@ -1,8 +1,8 @@
 export default {
   model: {
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     teacherInstructions: {

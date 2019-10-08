@@ -60,11 +60,13 @@ export default {
       choicePrefix: 'numbers',
       partialScoring: false,
       prompt: 'Prompt A',
-      rationaleEnabled: false,
-      feedbackEnabled: false,
+      rationaleEnabled: true,
+      feedbackEnabled: true,
       promptEnabled: true,
-      teacherInstructionsEnabled: false,
-      studentInstructionsEnabled: false
+      teacherInstructions: 'test',
+      rationale: 'test',
+      teacherInstructionsEnabled: true,
+      studentInstructionsEnabled: true
     },
     partB: {
       choiceMode: 'radio',
@@ -72,11 +74,11 @@ export default {
       choicePrefix: 'numbers',
       partialScoring: false,
       prompt: 'Prompt B',
-      rationaleEnabled: false,
+      rationaleEnabled: true,
       promptEnabled: true,
-      feedbackEnabled: false,
-      teacherInstructionsEnabled: false,
-      studentInstructionsEnabled: false
+      feedbackEnabled: true,
+      teacherInstructionsEnabled: true,
+      studentInstructionsEnabled: true
     },
   },
   configuration: {

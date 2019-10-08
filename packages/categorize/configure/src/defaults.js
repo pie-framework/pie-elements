@@ -12,6 +12,7 @@ export default {
     correctResponse: [],
     rowLabels: [''],
     partialScoring: true,
+    feedbackEnabled: true,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,

@@ -1,6 +1,3 @@
-NOTE: teacherInstructions, studentInstructions, rationale & rubric
-functionalities are not defined yet - the value for those can belong to
-model or to configuration (to be moved when the functionality is defined)
 Model for the EBSR Interaction
 
 The schema defines the following properties:

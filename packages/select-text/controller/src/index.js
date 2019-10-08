@@ -94,32 +94,42 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question
+});
+
 export const model = (question, session, env) => {
   session = session || { selectedToken: [] };
   session.selectedTokens = session.selectedTokens || [];
+  const normalizedQuestion = normalize(question);
   return new Promise(resolve => {
-    log('[model]', 'question: ', question);
+    log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(question.tokens, env.mode === 'evaluate');
+    const tokens = buildTokens(normalizedQuestion.tokens, env.mode === 'evaluate');
     log('tokens:', tokens);
     const correctness =
       env.mode === 'evaluate'
-        ? getCorrectness(question.tokens, session.selectedTokens)
+        ? getCorrectness(normalizedQuestion.tokens, session.selectedTokens)
         : undefined;
 
     const fb =
-      env.mode === 'evaluate' && question.feedbackEnabled
-        ? getFeedbackForCorrectness(correctness, question.feedback)
+      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
       const out = {
         tokens,
-        highlightChoices: question.highlightChoices,
-        prompt: question.promptEnabled ? question.prompt : null,
-        text: question.text,
+        highlightChoices: normalizedQuestion.highlightChoices,
+        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+        text: normalizedQuestion.text,
         disabled: env.mode !== 'gather',
-        maxSelections: question.maxSelections,
+        maxSelections: normalizedQuestion.maxSelections,
         correctness,
         feedback,
         incorrect:
@@ -130,8 +140,8 @@ export const model = (question, session, env) => {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        out.rationale = question.rationaleEnabled ? question.rationale : null;
-        out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;

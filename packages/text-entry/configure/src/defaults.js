@@ -16,9 +16,9 @@ export default {
     prompt: 'Question Prompt goes here',
     allowDecimal: false,
     allowThousandsSeparator: false,
-    rationaleEnabled: false,
+    rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: false
+    studentInstructionsEnabled: true
   },
   configuration: {
     teacherInstructions: {

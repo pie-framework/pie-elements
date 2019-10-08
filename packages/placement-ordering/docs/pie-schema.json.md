@@ -1,6 +1,3 @@
-NOTE: teacherInstructions, studentInstructions & scoringType
-functionalities are not defined yet - the value for those can belong to
-model or to configuration (to be moved when the functionality is defined)
 Model for the @pie-elements/placement-ordering
 
 The schema defines the following properties:
@@ -138,6 +135,10 @@ Indicates student instructions
 # `targetLabel` (string)
 
 The label for answer area if placement area is enabled
+
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
 
 # `teacherInstructions` (string)
 

@@ -21,9 +21,9 @@ export default {
     outlineList: [
       'blue'
     ],
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     multipleCorrect: {

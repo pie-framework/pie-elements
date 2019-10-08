@@ -48,7 +48,7 @@ const getResponseCorrectness = (
   return { correctness: 'incorrect', score: '0%' };
 };
 
-export const getCorrectness = (question, session, env) => {
+export const getCorrectness = (question, session, env = {}) => {
   const { partialScoring, graph } = question;
   const correctResponse = [];
 
@@ -76,10 +76,18 @@ export const getCorrectness = (question, session, env) => {
   }
 };
 
+export const normalize = question => ({
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
 
 export function model(question, session, env) {
   return new Promise(resolve => {
-    const { graph } = question;
+    const normalizedQuestion = normalize(question);
+    const { graph } = normalizedQuestion;
 
     const correctResponse = [];
 
@@ -90,10 +98,10 @@ export function model(question, session, env) {
       correctResponse.push(Object.assign({}, line, points, { expression: lineExpression }));
     });
 
-    const correctInfo = getCorrectness(question, session, env);
+    const correctInfo = getCorrectness(normalizedQuestion, session, env);
     const fb =
       env.mode === 'evaluate'
-        ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
+        ? getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
@@ -109,12 +117,12 @@ export function model(question, session, env) {
       });
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.rationale = question.rationaleEnabled ? question.rationale : null;
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
       } else {
         out.rationale = null;
       }
 
-      out.prompt = question.promptEnabled ? question.prompt : null;
+      out.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
 
       log('out: ', out);
       resolve(out);
@@ -128,6 +136,7 @@ export function outcome(model, session) {
       resolve({ score: 0, empty: true });
     }
 
-    resolve({ score: getCorrectness(model, session).score });
+    const correctness = getCorrectness(model, session);
+    resolve({ score: correctness ? correctness.score : 0 });
   });
 }

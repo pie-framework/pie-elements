@@ -51,6 +51,15 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const normalize = question => ({
+  rationaleEnabled: true,
+  feedbackEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question
+});
+
 /**
  *
  * @param {*} question
@@ -60,14 +69,14 @@ export function createDefaultModel(model = {}) {
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
+    const normalizedQuestion = normalize(question);
     const base = {};
+    let choices = normalizedQuestion.choices;
 
     base.outcomes = [];
+    base.completeLength = (normalizedQuestion.correctResponse || []).length;
 
-    base.completeLength = (question.correctResponse || []).length;
-
-    let choices = question.choices;
-    if (!question.lockChoiceOrder) {
+    if (!normalizedQuestion.lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'label');
     }
 
@@ -75,29 +84,29 @@ export function model(question, session, env, updateSession) {
 
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = question.promptEnabled ? question.prompt : null;
+    base.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
     base.config = {
-      orientation: question.orientation || 'vertical',
-      includeTargets: question.placementArea,
-      targetLabel: question.targetLabel,
-      choiceLabel: question.choiceLabel,
-      showOrdering: question.numberedGuides,
-      allowSameChoiceInTargets: !question.removeTilesAfterPlacing
+      orientation: normalizedQuestion.orientation || 'vertical',
+      includeTargets: normalizedQuestion.placementArea,
+      targetLabel: normalizedQuestion.targetLabel,
+      choiceLabel: normalizedQuestion.choiceLabel,
+      showOrdering: normalizedQuestion.numberedGuides,
+      allowSameChoiceInTargets: !normalizedQuestion.removeTilesAfterPlacing
     };
 
     base.disabled = env.mode !== 'gather';
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = question.rationaleEnabled ? question.rationale : null;
-      base.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
     } else {
       base.rationale = null;
       base.teacherInstructions = null;
     }
 
-    if (env.mode === 'evaluate' && question.allowFeedback) {
+    if (env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled) {
       const value = (session && session.value) || [];
-      const allCorrectResponses = getAllCorrectResponses(question);
+      const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
 
       const bestSetOfResponses = allCorrectResponses.reduce((info, cr) => {
         const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
@@ -130,10 +139,10 @@ export function model(question, session, env, updateSession) {
       base.correctness = allCorrect ? 'correct' : 'incorrect';
 
       if (!allCorrect) {
-        base.correctResponse = flattenCorrect(question);
+        base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
-      getFeedbackForCorrectness(base.correctness, question.feedback).then(
+      getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback).then(
         feedback => {
           base.feedback = feedback;
           resolve(base);

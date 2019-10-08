@@ -65,7 +65,9 @@ export const pairwiseCombinationScore = (correct, answer, opts) => {
  * correct response.
  */
 export const flattenCorrect = question =>
-  question.correctResponse.map(r => (r && r.id ? r.id : r));
+  question.correctResponse
+    ? question.correctResponse.map(r => (r && r.id ? r.id : r))
+    : [];
 
 /**
  * Returns all correct responses for this question

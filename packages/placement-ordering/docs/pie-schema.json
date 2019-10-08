@@ -1,5 +1,5 @@
 {
-  "description": "NOTE: teacherInstructions, studentInstructions & scoringType\nfunctionalities are not defined yet - the value for those can belong to\nmodel or to configuration (to be moved when the functionality is defined)\nModel for the @pie-elements/placement-ordering",
+  "description": "Model for the @pie-elements/placement-ordering",
   "additionalProperties": false,
   "type": "object",
   "properties": {
@@ -315,6 +315,11 @@
       "type": "string",
       "title": "targetLabel"
     },
+    "feedbackEnabled": {
+      "description": "Indicates if Feedback is enabled",
+      "type": "boolean",
+      "title": "feedbackEnabled"
+    },
     "teacherInstructions": {
       "description": "Indicates teacher instructions",
       "type": "string",
@@ -350,6 +355,7 @@
     "alternateResponses",
     "choices",
     "element",
+    "feedbackEnabled",
     "id",
     "rationaleEnabled",
     "studentInstructionsEnabled",

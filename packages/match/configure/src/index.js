@@ -14,8 +14,7 @@ const log = debug('pie-elements:match:configure');
 export default class MatchConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
       ...defaultValues.model,
-      ...model,
-      allowFeedback: defaultValues.configuration.feedback.enabled
+      ...model
     }
   );
 
@@ -44,13 +43,6 @@ export default class MatchConfigure extends HTMLElement {
 
   onConfigurationChanged(config) {
     this._configuration = config;
-
-    if (this._model) {
-      this._model.allowFeedback = (config.feedback || {}).enabled;
-
-      this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
-    }
-
     this._render();
   }
 

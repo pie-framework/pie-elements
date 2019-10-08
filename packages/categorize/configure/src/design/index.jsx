@@ -151,8 +151,12 @@ export class Design extends React.Component {
       feedback = {},
       prompt = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
-      model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      feedbackEnabled
+    } = model || {};
 
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
@@ -190,8 +194,8 @@ export class Design extends React.Component {
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  'feedback.enabled':
-                    feedback.settings && toggle(feedback.label, true)
+                  feedbackEnabled:
+                    feedback.settings && toggle(feedback.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -300,7 +304,7 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
             />
 
-            {feedback.enabled && (
+            {feedbackEnabled && (
               <FeedbackConfig
                 feedback={model.feedback}
                 onChange={this.changeFeedback}

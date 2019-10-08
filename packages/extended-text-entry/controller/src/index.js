@@ -1,4 +1,5 @@
 import debug from 'debug';
+
 const log = debug('@pie-element:extended-text-entry:controller');
 import { getFeedback } from '@pie-lib/feedback';
 
@@ -13,25 +14,35 @@ export async function createDefaultModel(model = {}) {
   };
 }
 
-export async function model(model, session, env) {
-  log('[model]', model);
+export const normalize = question => ({
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
+
+export async function model(question, session, env) {
+  log('[question]', question);
+  const normalizedQuestion = normalize(question);
 
   const fb =
-    env.mode === 'evaluate' && model.feedbackEnabled
-      ? getFeedback(model.feedback, 'Your answer has been submitted')
+    env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+      ? getFeedback(normalizedQuestion.feedback, 'Your answer has been submitted')
       : Promise.resolve(undefined);
 
   let teacherInstructions = null;
-
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    teacherInstructions = model.teacherInstructionsEnabled ? model.teacherInstructions : null;
+    teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
   } else {
     teacherInstructions = null;
   }
 
-  let equationEditor = model.equationEditor || 'everything';
+  let equationEditor = normalizedQuestion.equationEditor || 'everything';
 
-  switch (model.equationEditor) {
+  switch (normalizedQuestion.equationEditor) {
     case 'Grade 1 - 2':
       equationEditor = 1;
       break;
@@ -49,12 +60,12 @@ export async function model(model, session, env) {
   }
 
   return fb.then(feedback => ({
-    prompt: model.promptEnabled ? model.prompt : null,
-    dimensions: model.dimensions,
+    prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+    dimensions: normalizedQuestion.dimensions,
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
-    mathInput: model.mathInput,
+    mathInput: normalizedQuestion.mathInput,
     equationEditor
   }));
 }

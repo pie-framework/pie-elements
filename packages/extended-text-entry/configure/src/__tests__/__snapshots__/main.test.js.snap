@@ -66,13 +66,13 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "width": 500,
           },
           "equationEditor": "everything",
-          "feedbackEnabled": false,
+          "feedbackEnabled": true,
           "mathInput": false,
           "prompt": "This is the question prompt",
           "promptEnabled": true,
-          "rationaleEnabled": false,
-          "studentInstructionsEnabled": false,
-          "teacherInstructionsEnabled": false,
+          "rationaleEnabled": true,
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
         }
       }
       onChangeConfiguration={[Function]}
@@ -81,6 +81,15 @@ exports[`Render Main Component Match Snapshot 1`] = `
   }
 >
   <div>
+    <Component
+      label="Teacher Instructions"
+    >
+      <EditableHtml
+        markup=""
+        nonEmpty={false}
+        onChange={[Function]}
+      />
+    </Component>
     <br />
     <Component
       label="Prompt"
@@ -91,6 +100,21 @@ exports[`Render Main Component Match Snapshot 1`] = `
         onChange={[Function]}
       />
     </Component>
+    <WithStyles(Typography)
+      variant="subheading"
+    >
+      Feedback
+    </WithStyles(Typography)>
+    <Component
+      feedback={
+        Object {
+          "default": "Your answer has been submitted",
+          "type": "default",
+        }
+      }
+      label="When submitted, show"
+      onChange={[Function]}
+    />
   </div>
 </ConfigLayout>
 `;

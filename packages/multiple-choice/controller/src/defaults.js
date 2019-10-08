@@ -6,8 +6,8 @@ export default {
   lockChoiceOrder: true,
   partialScoring: true,
   scoringType: 'auto',
-  feedbackEnabled: false,
-  rationaleEnabled: false,
-  teacherInstructionsEnabled: false,
-  studentInstructionsEnabled: false
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true
 };

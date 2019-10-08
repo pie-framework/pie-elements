@@ -3,6 +3,14 @@ import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
+export const normalize = question => ({
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 /**
  *
  * @param {*} question
@@ -12,10 +20,11 @@ import { getShuffledChoices } from '@pie-lib/controller-utils';
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
+    const normalizedQuestion = normalize(question);
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const responses = getAllCorrectResponses(question) || {};
+      const responses = getAllCorrectResponses(normalizedQuestion) || {};
       const allCorrectResponses = responses.possibleResponses;
       const numberOfPossibleResponses = responses.numberOfPossibleResponses || 0;
       let correctResponses = undefined;
@@ -45,22 +54,22 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    let choices = question.choices && question.choices.filter(choice => !choiceIsEmpty(choice));
+    let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter(choice => !choiceIsEmpty(choice));
 
-    if (!question.lockChoiceOrder) {
+    if (!normalizedQuestion.lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
     const out = {
-      ...question,
-      prompt: question.promptEnabled ? question.prompt : null,
+      ...normalizedQuestion,
+      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
       choices,
       feedback,
       mode: env.mode,
       disabled: env.mode !== 'gather',
       responseCorrect:
         env.mode === 'evaluate'
-          ? getScore(question, session) === 1
+          ? getScore(normalizedQuestion, session) === 1
           : undefined,
     };
 
@@ -68,8 +77,8 @@ export function model(question, session, env, updateSession) {
       env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
     ) {
-      out.rationale = question.rationaleEnabled ? question.rationale : null;
-      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;

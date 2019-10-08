@@ -22,10 +22,11 @@ export default {
     removeTilesAfterPlacing: true,
     scoringType: 'auto',
     targetLabel: 'Target Label goes here',
-    rationaleEnabled: false,
+    rationaleEnabled: true,
+    feedbackEnabled: true,
     promptEnabled: true,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     choiceLabel: {

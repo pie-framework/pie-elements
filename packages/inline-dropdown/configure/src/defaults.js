@@ -8,9 +8,9 @@ export default {
     choices: {},
     alternateResponse: {},
     promptEnabled: true,
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     prompt: {

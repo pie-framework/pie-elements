@@ -50,10 +50,10 @@ export default {
         }
       ]
     },
-    rationaleEnabled: false,
+    rationaleEnabled: true,
     promptEnabled: true,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     prompt: {

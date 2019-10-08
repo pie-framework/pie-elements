@@ -1,6 +1,3 @@
-NOTE: teacherInstructions, studentInstructions, rationale & scoringType
-functionalities are not defined yet - the value for those can belong to
-model or to configure (to be moved when the functionality is defined)
 Model for the @pie-elements/match Interaction
 
 The schema defines the following properties:
@@ -102,6 +99,10 @@ Indicates student instructions
 # `teacherInstructions` (string)
 
 Indicates teacher instructions
+
+# `feedbackEnabled` (boolean, required)
+
+Indicates if Feedback is enabled
 
 # `rationaleEnabled` (boolean, required)
 

@@ -5,8 +5,16 @@ import { getAllUniqueCorrectness } from './utils';
 
 const log = debug('pie-elements:image-cloze-association:controller');
 
+export const normalize = question => ({
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export function model(question, session, env) {
-  const questionCamelized = camelizeKeys(question);
+  const questionNormalized = normalize(question);
+  const questionCamelized = camelizeKeys(questionNormalized);
 
   return new Promise(resolve => {
     const out = {
@@ -20,7 +28,7 @@ export function model(question, session, env) {
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      out.teacherInstructions = questionCamelized.teacherInstructionsEnabled ? questionCamelized.teacherInstructions : null;
     } else {
       out.teacherInstructions = null;
     }

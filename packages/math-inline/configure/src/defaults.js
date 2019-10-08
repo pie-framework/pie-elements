@@ -31,11 +31,11 @@ export default {
     responses: [],
     customKeys: [],
     scoringType: 'auto',
-    feedbackEnabled: false,
+    feedbackEnabled: true,
     promptEnabled: true,
-    rationaleEnabled: false,
-    teacherInstructionsEnabled: false,
-    studentInstructionsEnabled: false
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true
   },
   configuration: {
     prompt: {

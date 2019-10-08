@@ -1,5 +1,3 @@
-NOTE: There's no functionality described for studentInstructions
-so there's no implementation (they are only added in model)
 Model Object for @pie-elements/graphing
 
 The schema defines the following properties:
