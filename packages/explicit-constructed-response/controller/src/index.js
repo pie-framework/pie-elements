@@ -33,6 +33,14 @@ const getFeedback = value => {
   return 'incorrect';
 };
 
+export const normalize = question => ({
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 /**
  *
  * @param {*} question
@@ -42,9 +50,10 @@ const getFeedback = value => {
  */
 export function model(question, session, env, updateSession) {
   return new Promise(resolve => {
+    const normalizedQuestion = normalize(question);
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
-      question.defaultFeedback
+      normalizedQuestion.defaultFeedback
     );
 
     const { value = {} } = session || {};
@@ -52,7 +61,7 @@ export function model(question, session, env, updateSession) {
     const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
     let choices = reduce(
-      question.choices,
+      normalizedQuestion.choices,
       (obj, area, key) => {
         obj[key] = map(area, preparChoiceFn);
 
@@ -63,7 +72,7 @@ export function model(question, session, env, updateSession) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      feedback = reduce(question.choices, (obj, respArea, key) => {
+      feedback = reduce(normalizedQuestion.choices, (obj, respArea, key) => {
         const chosenValue = value && value[key];
         const val = !isEmpty(chosenValue) && find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue));
 
@@ -73,7 +82,7 @@ export function model(question, session, env, updateSession) {
       }, {});
     }
 
-    if (!question.lockChoiceOrder) {
+    if (!normalizedQuestion.lockChoiceOrder) {
       Object.keys(choices).forEach(async key => {
         choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
       });
@@ -82,21 +91,21 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.promptEnabled ? question.prompt : null,
-      markup: question.markup,
+      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+      markup: normalizedQuestion.markup,
       choices,
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined
+        env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };
 
     if (
       env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
     ) {
-      out.rationale = question.rationaleEnabled ? question.rationale : null;
-      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;

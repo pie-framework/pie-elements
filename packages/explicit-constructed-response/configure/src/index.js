@@ -42,7 +42,6 @@ export default class ExplicitConstructedResponse extends HTMLElement {
   set model(s) {
     this._model = ExplicitConstructedResponse.prepareModel(s);
     this._render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
