@@ -90,8 +90,8 @@ const getOutComeScore = (question, env, answers = {}) => {
   return correctness === 'correct'
     ? 1
     : correctness === 'partial' && question.partialScoring
-    ? getPartialScore(question, answers)
-    : 0;
+      ? getPartialScore(question, answers)
+      : 0;
 };
 
 export const outcome = (question, session, env) => {
@@ -121,6 +121,15 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 /**
  *
  * @param {*} question
@@ -130,15 +139,16 @@ export function createDefaultModel(model = {}) {
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
+    const normalizedQuestion = normalize(question);
     let correctness, score;
 
     if ((!session || _.isEmpty(session)) && env.mode === 'evaluate') {
       correctness = 'unanswered';
       score = '0%';
     } else {
-      correctness = getCorrectness(question, env, session && session.answers);
-      score = `${getOutComeScore(question, env, session && session.answers) *
-        100}%`;
+      correctness = getCorrectness(normalizedQuestion, env, session && session.answers);
+      score = `${getOutComeScore(normalizedQuestion, env, session && session.answers) *
+      100}%`;
     }
 
     const correctResponse = {};
@@ -147,31 +157,31 @@ export function model(question, session, env, updateSession) {
       correctness
     };
 
-    if (!question.lockChoiceOrder) {
-      question.rows = await getShuffledChoices(
-        question.rows,
+    if (!normalizedQuestion.lockChoiceOrder) {
+      normalizedQuestion.rows = await getShuffledChoices(
+        normalizedQuestion.rows,
         session,
         updateSession,
         'id'
       );
     }
 
-    question.rows.forEach(row => {
+    normalizedQuestion.rows.forEach(row => {
       correctResponse[row.id] = row.values;
     });
 
     const fb =
-      env.mode === 'evaluate' && question.feedbackEnabled
-        ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
+      env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
+        ? getFeedbackForCorrectness(correctInfo.correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
       const base = {
-        allowFeedback: question.feedbackEnabled,
-        prompt: question.promptEnabled ? question.prompt : null,
+        allowFeedback: normalizedQuestion.feedbackEnabled,
+        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         config: {
-          ...question,
-          shuffled: !question.lockChoiceOrder
+          ...normalizedQuestion,
+          shuffled: !normalizedQuestion.lockChoiceOrder
         },
         correctness: correctInfo,
         feedback,
@@ -183,10 +193,10 @@ export function model(question, session, env, updateSession) {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        base.teacherInstructions = question.teacherInstructionsEnabled
-          ? question.teacherInstructions
+        base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
           : null;
-        base.rationale = question.rationaleEnabled ? question.rationale : null;
+        base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
       } else {
         base.rationale = null;
         base.teacherInstructions = null;
