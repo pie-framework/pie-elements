@@ -48,8 +48,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
-    answerItem,
-    isAdvanced
+    answerItem
   );
   const correctnessObject = {
     correctness: 'incorrect',
@@ -66,7 +65,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
+function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
   correctResponseItem.forEach(correctResponse => {
@@ -86,10 +85,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
             containsDecimal(answerValueToUse) &&
             decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
           ) {
-            answerValueToUse = answerValueToUse.replace(
-              decimalCommaRegex,
-              ''
-            );
+            answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
           }
 
           if (
@@ -118,10 +114,14 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, isAdvanced) {
         }
       }
     } else {
-      answerCorrect = areValuesEqual(correctResponse.answer, answerItem, {
-        isLatex: true,
-        allowDecimals: correctResponse.allowDecimals
-      });
+      answerCorrect = areValuesEqual(
+        processAnswerItem(correctResponse.answer),
+        processAnswerItem(answerItem),
+        {
+          isLatex: true,
+          allowDecimals: correctResponse.allowDecimals
+        }
+      );
     }
   });
 
@@ -134,7 +134,7 @@ const getCorrectness = (question, env, session, isOutcome) => {
       question,
       question.responseType === ResponseTypes.advanced
         ? (session && session.completeAnswer) || ''
-        : (session && session.response),
+        : session && session.response,
       isOutcome
     );
   }
@@ -212,7 +212,9 @@ export function model(question, session, env) {
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
         out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
@@ -230,7 +232,9 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { response: { answer } } = question;
+      const {
+        response: { answer }
+      } = question;
       const equalIndex = answer.indexOf('=');
 
       resolve({

@@ -70,6 +70,11 @@ export const createDefaultModel = (model = {}) =>
 
 const getScore = (config, session, env) => {
   const { answers } = session || {};
+
+  if (!config.shapes || !config.shapes.rectangles) {
+    return 0;
+  }
+
   const { shapes: { rectangles, polygons } } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
