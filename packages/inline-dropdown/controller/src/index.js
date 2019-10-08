@@ -13,6 +13,14 @@ const getFeedback = correct => {
   return 'incorrect';
 };
 
+export const normalize = question => ({
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 /**
  *
  * @param {*} question
@@ -21,10 +29,11 @@ const getFeedback = correct => {
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  const { value = {} } = session || {};
   return new Promise(async resolve => {
+    const normalizedQuestion = normalize(question);
+    const { value = {} } = session || {};
     let choices = reduce(
-      question.choices,
+      normalizedQuestion.choices,
       (obj, area, key) => {
         obj[key] = map(area, choice => choice);
 
@@ -36,7 +45,7 @@ export function model(question, session, env, updateSession) {
     let feedback = {};
 
     if (env.mode === 'evaluate') {
-      const allCorrectResponses = getAllCorrectResponses(question);
+      const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
       const respAreaLength = Object.keys(allCorrectResponses).length;
       let correctResponses = 0;
 
@@ -71,7 +80,7 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    if (!question.lockChoiceOrder) {
+    if (!normalizedQuestion.lockChoiceOrder) {
       Object.keys(choices).forEach(async key => {
         choices[key] = await getShuffledChoices(
           choices[key],
@@ -85,14 +94,11 @@ export function model(question, session, env, updateSession) {
     let teacherInstructions = null;
     let rationale = null;
 
-    if (
-      env.role === 'instructor' &&
-      env.mode === 'view' ||
-      env.mode === 'evaluate'
-    ) {
-      rationale = question.rationaleEnabled ? question.rationale : null;
-      teacherInstructions = question.teacherInstructionsEnabled
-        ? question.teacherInstructions
+    if (env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')) {
+      rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
         : null;
     } else {
       rationale = null;
@@ -102,14 +108,14 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: question.promptEnabled ? question.prompt : null,
-      shuffle: !question.lockChoiceOrder,
-      markup: question.markup,
+      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+      shuffle: !normalizedQuestion.lockChoiceOrder,
+      markup: normalizedQuestion.markup,
       choices,
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate' ? getScore(question, session) === 1 : undefined,
+        env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
       rationale,
       teacherInstructions
     };
