@@ -57,6 +57,6 @@ All tests are run from the root of the repo.
 npm test
 ```
 
-## CI
+### CI
 
 We use circleci - see .circleci/config.yml
