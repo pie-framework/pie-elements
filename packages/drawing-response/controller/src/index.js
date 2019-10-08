@@ -3,13 +3,22 @@ import defaults from './defaults';
 
 const log = debug('pie-elements:drawing-response:controller');
 
+export const normalize = question => ({
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export function model(question, session, env) {
+  const normalizedQuestion = normalize(question);
   const {
     imageUrl,
     imageDimensions,
     prompt,
     promptEnabled
-  } = question;
+  } = normalizedQuestion;
 
   return new Promise(resolve => {
     const out = {
@@ -21,8 +30,8 @@ export function model(question, session, env) {
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
-      out.rationale = question.rationaleEnabled ? question.rationale : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
     } else {
       out.teacherInstructions = null;
       out.rationale = null;
