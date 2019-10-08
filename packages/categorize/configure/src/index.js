@@ -25,7 +25,6 @@ export default class CategorizeConfigure extends HTMLElement {
   set model(m) {
     this._model = CategorizeConfigure.createDefaultModel(m);
     this.render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {

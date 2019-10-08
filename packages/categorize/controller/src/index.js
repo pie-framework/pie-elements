@@ -12,7 +12,7 @@ const log = debug('@pie-element:categorize:controller');
 export { score };
 
 export const getCorrectness = (question, session, env) => {
-    return new Promise(resolve => {
+  return new Promise(resolve => {
     if (env.mode === 'evaluate') {
       const state = buildState(
         question.categories,
@@ -46,6 +46,15 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question
+});
+
 /**
  *
  * @param {*} question
@@ -55,17 +64,37 @@ export const createDefaultModel = (model = {}) =>
  */
 export const model = (question, session, env, updateSession) =>
   new Promise(resolve => {
+    const normalizedQuestion = normalize(question);
+    const correctPromise = getCorrectness(normalizedQuestion, session, env);
 
-    const correctPromise = getCorrectness(question, session, env);
+    const {
+      feedbackEnabled,
+      feedback,
+      lockChoiceOrder,
+      promptEnabled,
+      prompt,
+      categories,
+      choicesPerRow,
+      choicesLabel,
+      choicesPosition,
+      removeTilesAfterPlacing,
+      categoriesPerRow,
+      rowLabels,
+      correctResponse,
+      rationaleEnabled,
+      rationale,
+      teacherInstructionsEnabled,
+      teacherInstructions
+    } = normalizedQuestion;
+    let { choices } = normalizedQuestion;
 
     correctPromise.then(async correctness => {
       const fb =
-        env.mode === 'evaluate' && question.feedbackEnabled
-          ? getFeedbackForCorrectness(correctness, question.feedback)
+        env.mode === 'evaluate' && feedbackEnabled
+          ? getFeedbackForCorrectness(correctness, feedback)
           : Promise.resolve(undefined);
 
-      let choices = question.choices;
-      if (!question.lockChoiceOrder) {
+      if (!lockChoiceOrder) {
         choices = await getShuffledChoices(choices, session, updateSession, 'id');
       }
 
@@ -73,28 +102,28 @@ export const model = (question, session, env, updateSession) =>
         const out = {
           correctness,
           feedback,
-          prompt: question.promptEnabled ? question.prompt : null,
+          prompt: promptEnabled ? prompt : null,
           choices: choices || [],
-          categories: question.categories || [],
+          categories: categories || [],
           disabled: env.mode !== 'gather',
-          choicesPerRow: question.choicesPerRow || 2,
-          choicesLabel: question.choicesLabel || '',
-          choicesPosition: question.choicesPosition,
-          removeTilesAfterPlacing: question.removeTilesAfterPlacing,
-          lockChoiceOrder: question.lockChoiceOrder,
-          categoriesPerRow: question.categoriesPerRow || 2,
-          rowLabels: question.rowLabels
+          choicesPerRow: choicesPerRow || 2,
+          choicesLabel: choicesLabel || '',
+          choicesPosition,
+          removeTilesAfterPlacing,
+          lockChoiceOrder,
+          categoriesPerRow: categoriesPerRow || 2,
+          rowLabels
         };
 
         out.correctResponse =
-          env.mode === 'evaluate' ? question.correctResponse : undefined;
+          env.mode === 'evaluate' ? correctResponse : undefined;
 
         if (
           env.role === 'instructor' &&
           (env.mode === 'view' || env.mode === 'evaluate')
         ) {
-          out.rationale = question.rationaleEnabled ? question.rationale : null;
-          out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+          out.rationale = rationaleEnabled ? rationale : null;
+          out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
         } else {
           out.rationale = null;
           out.teacherInstructions = null;
@@ -163,7 +192,7 @@ export const getTotalScore = (question, session) => {
 };
 
 export const outcome = (question, session, env) => {
-    if (env.mode !== 'evaluate') {
+  if (env.mode !== 'evaluate') {
     return Promise.reject(
       new Error('Can not call outcome when mode is not evaluate')
     );
