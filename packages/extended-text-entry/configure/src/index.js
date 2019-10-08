@@ -31,7 +31,6 @@ export default class ExtendedTextEntry extends HTMLElement {
   set model(m) {
     this._model = ExtendedTextEntry.createDefaultModel(m);
     this.render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
