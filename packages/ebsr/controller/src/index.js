@@ -61,6 +61,26 @@ const parsePart = (part, key, session, env) => {
   };
 };
 
+export const normalize = question => ({
+  ...question,
+  partA: {
+    rationaleEnabled: true,
+    feedbackEnabled: true,
+    promptEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    ...question.partA
+  },
+  partB: {
+    rationaleEnabled: true,
+    promptEnabled: true,
+    feedbackEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    ...question.partB
+  },
+});
+
 /**
  *
  * @param {*} question
@@ -69,35 +89,36 @@ const parsePart = (part, key, session, env) => {
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export async function model(question, session, env, updateSession) {
-  const partA = parsePart(question.partA, 'partA', session, env);
-  const partB = parsePart(question.partB, 'partB', session, env);
+  const normalizedQuestion = normalize(question);
+  const partA = parsePart(normalizedQuestion.partA, 'partA', session, env);
+  const partB = parsePart(normalizedQuestion.partB, 'partB', session, env);
 
-  if (!question.partA.lockChoiceOrder) {
+  if (!normalizedQuestion.partA.lockChoiceOrder) {
     partA.choices = await getShuffledChoices(partA.choices, session, updateSession, 'value');
   }
 
-  if (!question.partB.lockChoiceOrder) {
+  if (!normalizedQuestion.partB.lockChoiceOrder) {
     partB.choices = await getShuffledChoices(partB.choices, session, updateSession, 'value');
   }
 
-  if (question.partLabels) {
-    partA.partLabel = question.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    partB.partLabel = question.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+  if (normalizedQuestion.partLabels) {
+    partA.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
+    partB.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;
   }
 
   if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    partA.teacherInstructions = question.partA.teacherInstructionsEnabled ? question.partA.teacherInstructions : null;
-    partB.teacherInstructions = question.partB.teacherInstructionsEnabled ? question.partB.teacherInstructions : null;
+    partA.teacherInstructions = normalizedQuestion.partA.teacherInstructionsEnabled ? normalizedQuestion.partA.teacherInstructions : null;
+    partB.teacherInstructions = normalizedQuestion.partB.teacherInstructionsEnabled ? normalizedQuestion.partB.teacherInstructions : null;
   } else {
     partA.teacherInstructions = null;
     partB.teacherInstructions = null;
   }
 
-  partA.prompt = question.partA.promptEnabled ? question.partA.prompt : null;
-  partB.prompt = question.partB.promptEnabled ? question.partB.prompt : null;
+  partA.prompt = normalizedQuestion.partA.promptEnabled ? normalizedQuestion.partA.prompt : null;
+  partB.prompt = normalizedQuestion.partB.promptEnabled ? normalizedQuestion.partB.prompt : null;
 
   return new Promise(resolve => {
     resolve({
