@@ -41,27 +41,37 @@ export const getCorrectness = (question, session, env) => {
   }
 };
 
+export const normalize = question => ({
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question
+});
+
 export function model(question, session, env) {
   return new Promise((resolve, reject) => {
-    const correctness = getCorrectness(question, session, env);
+    const normalizedQuestion = normalize(question);
+    const correctness = getCorrectness(normalizedQuestion, session, env);
 
-    getFeedbackForCorrectness(correctness, question.feedback).then(feedback => {
+    getFeedbackForCorrectness(correctness, normalizedQuestion.feedback).then(feedback => {
       const out = {
-        prompt: question.prompt,
+        prompt: normalizedQuestion.prompt,
         numbersOnlyWarning: undefined,
         colorContrast: 'black_on_white',
         correctness,
         feedback,
         disabled: env.mode !== 'gather',
-        answerBlankSize: question.answerBlankSize,
-        answerAlignment: question.answerAlignment,
-        allowDecimal: question.allowDecimal,
-        allowIntegersOnly: question.allowIntegersOnly,
-        allowThousandsSeparator: question.allowThousandsSeparator
+        answerBlankSize: normalizedQuestion.answerBlankSize,
+        answerAlignment: normalizedQuestion.answerAlignment,
+        allowDecimal: normalizedQuestion.allowDecimal,
+        allowIntegersOnly: normalizedQuestion.allowIntegersOnly,
+        allowThousandsSeparator: normalizedQuestion.allowThousandsSeparator
       };
 
       if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
       } else {
         out.teacherInstructions = null;
       }
