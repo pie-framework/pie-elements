@@ -4,7 +4,13 @@ import cloneDeep from 'lodash/cloneDeep';
 import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
-import { sinY, buildDataPoints, getAmplitudeAndFreq, FREQ_DIVIDER, parabolaFromTwoPoints } from '@pie-lib/graphing-utils';
+import {
+  sinY,
+  buildDataPoints,
+  getAmplitudeAndFreq,
+  FREQ_DIVIDER,
+  parabolaFromTwoPoints
+} from '@pie-lib/graphing-utils';
 
 const log = debug('@pie-element:graphing:controller');
 
@@ -52,8 +58,8 @@ export const equalRay = (ray1, ray2) => {
 export const equalPolygon = (pointsA, pointsB) => {
   const sessAnswerPoints = lodash.uniqWith(pointsA, isEqual);
   const withoutDuplicates = lodash.uniqWith(pointsB, isEqual);
-  const sB = lodash.orderBy(sessAnswerPoints, ['x','y'], ['asc', 'asc']);
-  const sD = lodash.orderBy(withoutDuplicates, ['x','y'], ['asc', 'asc']);
+  const sB = lodash.orderBy(sessAnswerPoints, ['x', 'y'], ['asc', 'asc']);
+  const sD = lodash.orderBy(withoutDuplicates, ['x', 'y'], ['asc', 'asc']);
 
   return isEqual(sD, sB);
 };
@@ -279,15 +285,23 @@ export const getScore = (question, session) => {
   }
 };
 
+export const normalize = question => ({
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...question,
+});
+
 export function model(question, session, env) {
   return new Promise(resolve => {
+    const normalizedQuestion = normalize(question);
     const {
       backgroundMarks,
       domain,
       prompt,
       promptEnabled,
       range,
-      rationale,
       title,
       labels,
       xAxisLabel,
@@ -295,7 +309,7 @@ export function model(question, session, env) {
       tools,
       graph,
       toolbarTools
-    } = question;
+    } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
@@ -316,14 +330,14 @@ export function model(question, session, env) {
     };
 
     if (env.mode === 'evaluate') {
-      const result = getScore(question, session);
+      const result = getScore(normalizedQuestion, session);
 
       base.answersCorrected = result.correctMarks;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = question.rationaleEnabled ? question.rationale : null;
-      base.teacherInstructions = question.teacherInstructionsEnabled ? question.teacherInstructions : null;
+      base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+      base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
     } else {
       base.rationale = null;
       base.teacherInstructions = null;

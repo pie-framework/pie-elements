@@ -20,7 +20,6 @@ export default class GraphLinesConfigure extends HTMLElement {
   set model(m) {
     this._model = GraphLinesConfigure.createDefaultModel(m);
     this._render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   set configuration(c) {
