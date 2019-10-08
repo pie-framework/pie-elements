@@ -70,7 +70,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
 
   correctResponseItem.forEach(correctResponse => {
     const acceptedValues = [correctResponse.answer].concat(
-      Object.keys(correctResponse.alternates).map(
+      Object.keys(correctResponse.alternates || {}).map(
         alternateId => correctResponse.alternates[alternateId]
       )
     );
