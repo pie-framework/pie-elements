@@ -2,6 +2,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
@@ -95,7 +96,6 @@ export function model(question, session, env, updateSession) {
       markup: normalizedQuestion.markup,
       choices,
       feedback,
-
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };
@@ -111,7 +111,9 @@ export function model(question, session, env, updateSession) {
       out.teacherInstructions = null;
     }
 
-    resolve(out);
+    const response = cloneDeep(out);
+
+    resolve(response);
   });
 }
 

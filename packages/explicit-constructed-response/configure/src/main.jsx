@@ -158,10 +158,13 @@ export class Main extends React.Component {
     allRespAreas.forEach((el, index) => {
       const newChoices = cloneDeep(Object.values(choices)[index]);
 
-      newChoices[0] = {
-        label: el.dataset.value || '',
-        value: '0'
-      };
+      if (newChoices) {
+        newChoices[0] = {
+          label: el.dataset.value || '',
+          value: '0'
+        };
+      }
+
       allChoices[el.dataset.index] = newChoices;
     });
 
