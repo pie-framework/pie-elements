@@ -2,8 +2,6 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
-import cloneDeep from 'lodash/cloneDeep';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
@@ -49,8 +47,23 @@ export const normalize = question => ({
  * @param {*} env
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
-  return new Promise(resolve => {
+export function model(question, session, env) {
+  return new Promise(async resolve => {
+    // this was added to treat an exception, when the model has choices without the "value" property
+    // like: { label: 'test' }
+    if (question.choices) {
+      Object.keys(question.choices).forEach(key => {
+        question.choices[key] = question.choices[key].map((item, index) => {
+          if (!item.value) {
+            console.error('Choice does not contain "value" property, which is required.');
+            return { value: `${index}`, ...item };
+          }
+
+          return item;
+        })
+      });
+    }
+
     const normalizedQuestion = normalize(question);
     const defaultFeedback = Object.assign(
       { correct: 'Correct', incorrect: 'Incorrect' },
@@ -83,12 +96,6 @@ export function model(question, session, env, updateSession) {
       }, {});
     }
 
-    if (!normalizedQuestion.lockChoiceOrder) {
-      Object.keys(choices).forEach(async key => {
-        choices[key] = await getShuffledChoices(choices[key], session, updateSession, 'value');
-      });
-    }
-
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -111,9 +118,7 @@ export function model(question, session, env, updateSession) {
       out.teacherInstructions = null;
     }
 
-    const response = cloneDeep(out);
-
-    resolve(response);
+    resolve(out);
   });
 }
 
