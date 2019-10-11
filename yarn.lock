@@ -1893,10 +1893,10 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/controller-utils@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.0.tgz#3886f5c9da1b9b338f73237c941a4e503960fce6"
-  integrity sha512-PoeCK8lOTWWb31qLh6xrvw0UfO9x3L8WBFdIvO4bwb2azUkLwjadhTWwxloRZJDmDCLipqD/WaNoxc//zyRd5g==
+"@pie-lib/controller-utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.1.tgz#40a58fe055ab09a0e22c73a97dd3444a1f52b69f"
+  integrity sha512-eKsA76bRX99KlfmeR/qnP/cuNL2tLJIcJ4bLgKM7meGbOInToadchGw5bLgkGEYfW6QFYTK1kG40/1xmX4wohQ==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
