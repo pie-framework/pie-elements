@@ -2,7 +2,7 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 export interface Choice {
     /** The id of the choice */
@@ -122,7 +122,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
     /**
      * Choice Label configuration
      */
-    choiceLabel?: ConfigureProp;
+    choiceLabel?: ConfigurePropWithEnabled;
 
     /**
      * Choices configuration

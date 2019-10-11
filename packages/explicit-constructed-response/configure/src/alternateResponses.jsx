@@ -30,7 +30,7 @@ export class AlternateResponses extends React.Component {
       const { choices } = props.model;
 
       const selectedValues = reduce(choices, (obj, c, key) => {
-        if (c.length > 1) {
+        if (c && c.length > 1) {
           obj[key] = c[0];
         }
 
@@ -47,7 +47,7 @@ export class AlternateResponses extends React.Component {
   getRemainingChoices = valueKey => {
     const { choices } = this.state;
     const result = reduce(choices, (arr, c, key) => {
-      if (c.length === 1 && !valueKey) {
+      if (c && c.length === 1 && !valueKey) {
         arr.push({
           label: c[0].label,
           value: key
@@ -145,7 +145,7 @@ export class AlternateResponses extends React.Component {
     return (
       <div>
         {map(choices, (c, key) => {
-          if (c.length > 1) {
+          if (c && c.length > 1) {
             const selected = this.state.values[key];
 
             return (

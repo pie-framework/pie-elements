@@ -1,5 +1,5 @@
 import {PieModel} from '../../PieModel';
-import {ConfigureProp} from '../ConfigurationProp';
+import {ConfigureProp, ConfigurePropWithEnabled} from '../ConfigurationProp';
 import {PromptConfig} from '../../PromptConfig';
 import {Dimension} from '../../Dimension';
 
@@ -50,7 +50,7 @@ export interface DrawingResponseConfigure extends PromptConfig {
     /**
      * Configuration for multiple correct
      */
-    backgroundImage?: ConfigureProp;
+    backgroundImage?: ConfigurePropWithEnabled;
 
     /**
      * Configuration for partial scoring
