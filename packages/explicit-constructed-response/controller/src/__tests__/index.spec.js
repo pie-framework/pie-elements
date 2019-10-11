@@ -23,16 +23,4 @@ describe('edge cases', () => {
     const result = model(d, {}, { mode: 'evaluate' });
     expect(result).toBeDefined();
   });
-
-  describe('model - with updateSession', () => {
-    it('calls updateSession', async () => {
-      const session = { id: '1', element: 'explicit-constructed-response' };
-      const env = { mode: 'gather' };
-      const updateSession = jest.fn().mockResolvedValue();
-      await model(d, session, env, updateSession);
-      expect(updateSession).toHaveBeenCalledWith('1', 'explicit-constructed-response', {
-        shuffledValues: expect.arrayContaining(['0', '1'])
-      });
-    });
-  });
 });

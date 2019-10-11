@@ -24,6 +24,21 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     const slateMarkup = joinedObj.slateMarkup || createSlateMarkup(joinedObj.markup, joinedObj.choices);
     const processedMarkup = processMarkup(slateMarkup);
 
+    // this was added to treat an exception, when the model has choices without the "value" property
+    // like: { label: 'test' }
+    if (joinedObj.choices) {
+      Object.keys(joinedObj.choices).forEach(key => {
+        joinedObj.choices[key] = joinedObj.choices[key].map((item, index) => {
+          if (!item.value) {
+            console.error('Choice does not contain "value" property, which is required.');
+            return { value: `${index}`, ...item };
+          }
+
+          return item;
+        })
+      });
+    }
+
     return {
       ...joinedObj,
       slateMarkup,
