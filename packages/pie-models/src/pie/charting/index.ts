@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Chart {
     /** Width for chart representation */
@@ -162,5 +162,5 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
     /**
      * Chart title configuration
      */
-    title?: ConfigureProp;
+    title?: ConfigurePropWithEnabled;
 }
