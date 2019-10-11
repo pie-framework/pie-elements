@@ -264,8 +264,8 @@ describe('controller', () => {
     });
 
     it('returns null env is student', async () => {
-      const noReselt = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
-      expect(noReselt).toBeNull();
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
     });
   });
 
