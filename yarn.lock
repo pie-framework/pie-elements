@@ -2438,10 +2438,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.3.tgz#2184f5ab1cad2854ddeb08d65e0cc0889d86c6a5"
-  integrity sha512-juMY4536wnL+wBPYvhcJGICTk3aizzJF/OyAgp7dtRF7TCzuWcLyOOQEm5K0mtYLQQ3Pl3Rc2VbujqJtgu3pLQ==
+"@pie-ui/math-inline@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.5.tgz#02b9962857339e89d264ffdf6cf04547aa6d5ea6"
+  integrity sha512-S3XcBDdPY6lC8zoT7fpXT7wDspTYCWEh+ggUIVQutyd019ebHhoNMUdxvJwWlnSrzKs/JpF7nbA0HAyV1Cp9Kg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^0.11.0"
