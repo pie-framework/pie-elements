@@ -290,11 +290,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -311,11 +306,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -332,11 +322,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -353,11 +338,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -374,11 +354,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -395,11 +370,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -416,11 +386,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -437,11 +402,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -458,11 +418,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -479,11 +434,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -500,11 +450,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         },
@@ -521,11 +466,6 @@
               "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
               "type": "string",
               "title": "label"
-            },
-            "enabled": {
-              "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-              "type": "boolean",
-              "title": "enabled"
             }
           }
         }
@@ -544,11 +484,6 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
-        },
-        "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
-          "type": "boolean",
-          "title": "enabled"
         }
       }
     },

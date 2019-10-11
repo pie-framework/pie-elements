@@ -1,7 +1,7 @@
 import {Choice}  from '../../Choice';
 import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 
 /**
@@ -134,4 +134,9 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Indicates if sequential choice labels configuration (currently not used)
+   */
+  sequentialChoiceLabels?: ConfigurePropWithEnabled
 }

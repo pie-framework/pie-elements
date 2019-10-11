@@ -1,7 +1,7 @@
 import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Graph {
     /** Width for graph representation */
@@ -199,7 +199,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
     /**
      * Authoring configuration
      */
-    authoring?: ConfigureProp;
+    authoring?: ConfigurePropWithEnabled;
 
     /**
      * Arrows configuration
@@ -244,5 +244,5 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
     /**
      * Graph title configuration
      */
-    title?: ConfigureProp;
+    title?: ConfigurePropWithEnabled;
 }

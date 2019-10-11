@@ -2,7 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { DefaultFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 
 interface Dimensions {
@@ -93,7 +93,7 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   /**
    * Multiple Parts configuration
    */
-  multiple?: ConfigureProp;
+  multiple?: ConfigurePropWithEnabled;
 
   /**
    * Student Instructions configuration

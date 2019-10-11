@@ -8,6 +8,18 @@ export interface ConfigureProp {
      * Indicates the label for the item that has to be displayed in the Settings Panel
      */
     label?: string;
+}
+
+export interface ConfigurePropWithEnabled {
+    /**
+     * Indicates if the item has to be displayed in the Settings Panel
+     */
+    settings?: boolean;
+
+    /**
+     * Indicates the label for the item that has to be displayed in the Settings Panel
+     */
+    label?: string;
 
     /**
      * Indicates the value of the item if it affects config-ui
