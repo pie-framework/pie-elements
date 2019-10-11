@@ -1,4 +1,4 @@
-import { model, outcome, getScore } from '../index';
+import { model, outcome, getScore, createCorrectResponseSession } from '../index';
 import { isResponseCorrect } from '../utils';
 
 jest.mock('../utils', () => ({
@@ -256,4 +256,18 @@ describe('controller', () => {
     returnsScore(null);
     returnsScore({});
   });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, { mode: 'gather', role: 'instructor' });
+      expect(sess).toEqual({"id": "1", "value": ["apple"]});
+    });
+
+    it('returns null env is student', async () => {
+      const noReselt = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noReselt).toBeNull();
+    });
+  });
+
+
 });
