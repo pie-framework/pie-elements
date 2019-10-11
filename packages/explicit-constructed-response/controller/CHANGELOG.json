@@ -363,5 +363,50 @@
     "committerDate": "2019-10-03 14:24:41 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-controller@2.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "merge": null,
+    "header": "fix: bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0a33d688d6d9e5f239daba982bfbdeebb10ba4ab",
+    "gitTags": "",
+    "committerDate": "2019-10-11 12:38:26 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@3.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "remove shuffling - redundant in this component [ch4723]",
+    "merge": null,
+    "header": "fix: remove shuffling - redundant in this component [ch4723]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b3423056dff2b7ecbe12383856627c71678b17dc",
+    "gitTags": "",
+    "committerDate": "2019-10-11 12:26:31 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@3.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "item details disappear if we click correct answer button [ch4723]",
+    "merge": null,
+    "header": "fix: item details disappear if we click correct answer button [ch4723]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8e401e6e941ef0cfd256065de11264429c0f415c",
+    "gitTags": "",
+    "committerDate": "2019-10-11 12:25:42 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@3.0.1"
   }
 ]
