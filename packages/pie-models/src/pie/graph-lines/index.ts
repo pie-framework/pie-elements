@@ -2,7 +2,7 @@ import {PromptConfig} from '../../PromptConfig';
 import {CommonConfigSettings} from '../../CommonConfigSettings';
 import {PieModel} from '../../PieModel';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface PartialScoringRule {
     /** Number of correct answers */
@@ -175,7 +175,7 @@ export interface GraphLinesConfigure extends PromptConfig, CommonConfigSettings 
     /**
      * Graph title configuration
      */
-    graphTitle?: ConfigureProp;
+    graphTitle?: ConfigurePropWithEnabled;
 
     /**
      * Labels configuration

@@ -64,9 +64,9 @@ The html Element tag name
 
 The schema defines the following additional types:
 
-## `ConfigureProp` (object)
+## `ConfigurePropWithEnabled` (object)
 
-Properties of the `ConfigureProp` object:
+Properties of the `ConfigurePropWithEnabled` object:
 
 ### `settings` (boolean)
 
@@ -80,6 +80,18 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+## `ConfigureProp` (object)
+
+Properties of the `ConfigureProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ## `Dimension` (object)
 
