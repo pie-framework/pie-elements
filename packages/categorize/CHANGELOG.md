@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.0.0...@pie-element/categorize@6.0.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.1 [ch4723] ([0a33d68](https://github.com/pie-framework/pie-elements/commit/0a33d68))
+* Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
+
+
+
+
+
 # [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@5.1.3...@pie-element/categorize@6.0.0) (2019-10-08)
 
 

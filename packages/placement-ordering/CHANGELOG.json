@@ -1083,5 +1083,35 @@
     "committerDate": "2019-09-25 19:45:47 +0300",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@6.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "merge": null,
+    "header": "fix: bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0a33d688d6d9e5f239daba982bfbdeebb10ba4ab",
+    "gitTags": "",
+    "committerDate": "2019-10-11 12:38:26 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@7.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated docs.",
+    "merge": null,
+    "header": "fix: Updated docs.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "378761951767284187b663c2a271a5d4917af654",
+    "gitTags": " (origin/fix/updated-docs)",
+    "committerDate": "2019-10-11 12:01:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@7.0.1"
   }
 ]
