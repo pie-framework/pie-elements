@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 import { defaults as feedbackDefaults } from '@pie-lib/feedback';
 
 const defaultModel = {
@@ -444,6 +444,26 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
 
+    });
+  });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(defaultModel, { mode: 'gather', role: 'instructor' });
+      expect(sess).toEqual({
+        answers: {
+          '1': [false, false],
+          '2': [false, false],
+          '3': [false, false],
+          '4': [false, false]
+        },
+        id: '1'
+      });
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(defaultModel, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
     });
   });
 });
