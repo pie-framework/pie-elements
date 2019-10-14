@@ -351,4 +351,17 @@ describe('controller', () => {
       assertModel({});
     });
   });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await controller.createCorrectResponseSession(mkQuestion(), { mode: 'gather', role: 'instructor' });
+      expect(sess).toEqual({...correctSession, ...{id: "1"}});
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await controller.createCorrectResponseSession(mkQuestion(), { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
+    });
+  });
+
 });
