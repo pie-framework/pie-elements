@@ -1,4 +1,4 @@
-import { model, outcome, getCorrectness, getScore, getTotalScore } from '../index';
+import { model, outcome, getCorrectness, getScore, getTotalScore, createCorrectResponseSession } from '../index';
 import { buildState, score } from '@pie-lib/categorize';
 
 const categorize = require('@pie-lib/categorize');
@@ -238,4 +238,28 @@ describe('controller', () => {
     returnScore(null);
     returnScore({});
   });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({
+        answers: [
+          {
+            category: '1',
+            choices: ['1', '2']
+          }
+        ],
+        id: 1
+      });
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
+    });
+  });
+  
 });
