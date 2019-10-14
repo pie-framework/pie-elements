@@ -367,6 +367,8 @@ export const createCorrectResponseSession = (question, env) => {
         answer: marks,
         id: '1'
       });
+    } else {
+      resolve(null);
     }
   });
 };
