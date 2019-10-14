@@ -1,4 +1,4 @@
-import { model, getScore, outcome, prepareVal } from '../index';
+import { model, getScore, outcome, prepareVal, createCorrectResponseSession } from '../index';
 
 const choice = (l, v) => ({ label: l, value: v });
 const choices = {
@@ -116,4 +116,25 @@ describe('prepareVal', () => {
     expect(prepareVal('<div>Foo Bar</div>')).toEqual('Foo Bar');
   });
 
+  describe('correct response', () => {
+    let question;
+    beforeEach(() => {
+      question = {
+        choices,
+      };
+    });
+
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({"id": "1", "value": {"0": "cow", "1": "over", "2": "moon"}});
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
+    });
+  });
 });
