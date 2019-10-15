@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/pie-models",
   "private": true,
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "This project contains documented typescript interfaces for generating schema documentation.",
   "main": "index.js",
   "files": [

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.0.1...@pie-element/hotspot-controller@3.0.2) (2019-10-15)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.2 [ch4859] ([cee7521](https://github.com/pie-framework/pie-elements/commit/cee7521))
+
+
+
+
+
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.0.0...@pie-element/hotspot-controller@3.0.1) (2019-10-11)
 
 

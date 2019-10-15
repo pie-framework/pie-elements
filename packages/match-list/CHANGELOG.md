@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.3...@pie-element/match-list@1.7.4) (2019-10-15)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.2 ([edae61c](https://github.com/pie-framework/pie-elements/commit/edae61c))
+
+
+
+
+
 ## [1.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.2...@pie-element/match-list@1.7.3) (2019-10-11)
 
 
