@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
+import max from 'lodash/max';
 import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
-
-const generateUniqueId = () =>
-  Math.random().toString(36).substring(2)
-  + (new Date()).getTime().toString(36);
 
 class Drawable extends React.Component {
   constructor(props) {
@@ -35,8 +32,10 @@ class Drawable extends React.Component {
 
     // Otherwise, add a new rectangle at the mouse position with 0 width and height
     const newShapes = this.props.shapes.slice();
+    const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
+
     newShapes.push({
-      id: generateUniqueId(),
+      id: `${value + 1}`,
       height: 0,
       width: 0,
       x: e.evt.layerX,
