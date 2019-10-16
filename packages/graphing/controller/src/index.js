@@ -361,7 +361,14 @@ export function outcome(model, session) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { answers: { correctAnswer: { marks } } } = question;
+      const { answers } = question;
+      let marks = [];
+
+      if (answers && Object.values(answers)) {
+        const firstCorrectAnswer = Object.values(answers)[0];
+
+        marks = firstCorrectAnswer ? firstCorrectAnswer.marks : [];
+      }
 
       resolve({
         answer: marks,
@@ -372,3 +379,4 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+

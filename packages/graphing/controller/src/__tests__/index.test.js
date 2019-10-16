@@ -13,7 +13,8 @@ import {
   dichotomous,
   partial,
   getScore,
-  outcome
+  outcome,
+  createCorrectResponseSession
 } from '../index';
 
 jest.mock('@pie-lib/graphing-utils', () => ({
@@ -166,7 +167,7 @@ describe('equalParabola', () => {
     });
   };
 
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 }}, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 }}, false);
+  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }, false);
   // TODO
 });
 
@@ -767,7 +768,7 @@ describe('getScore', () => {
 describe('outcome', () => {
   const assertOutcome = session => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
-      const o = await outcome({}, session, { mode: 'evaluate '});
+      const o = await outcome({}, session, { mode: 'evaluate ' });
 
       expect(o).toEqual({ score: 0, empty: true });
     });
@@ -776,4 +777,112 @@ describe('outcome', () => {
   assertOutcome(undefined);
   assertOutcome(null);
   assertOutcome({});
+});
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    toolbarTools: [
+      'point',
+      'circle',
+      'polygon',
+      'segment',
+      'ray',
+      'vector',
+      'line',
+      'sine',
+      'parabola',
+      'label'
+    ],
+    answers: {
+      alternate1: {
+        name: 'Alternate 1',
+        marks: [{
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+          {
+            type: 'point',
+            x: 3,
+            y: 3,
+            label: 'Point',
+            showLabel: true
+          }]
+      },
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      }
+    },
+    backgroundMarks: [],
+    prompt: 'Here goes item stem!',
+    rationale: 'Rationale goes here!',
+    scoringType: 'partial scoring',
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answer: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answer: [
+        {
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
+  });
 });
