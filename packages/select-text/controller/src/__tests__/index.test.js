@@ -1,4 +1,10 @@
-import { getPartialScore, getCorrectness, model, outcome } from '../index';
+import {
+  getPartialScore,
+  getCorrectness,
+  model,
+  outcome,
+  createCorrectResponseSession
+} from '../index';
 import isFunction from 'lodash/isFunction';
 
 const token = (start, end, text, correct) => ({ start, end, text, correct });
@@ -109,12 +115,48 @@ const assertFn = fn => (label, question, session, env, expected) => {
   );
 };
 
+describe('correct response', () => {
+  it('returns correct response if env is correct', async () => {
+    const sess = await createCorrectResponseSession(q(), {
+      mode: 'gather',
+      role: 'instructor'
+    });
+    expect(sess).toEqual({
+      id: '1',
+      selectedTokens: [
+        { correct: true, end: 1, start: 0, text: 'f' },
+        { correct: true, end: 3, start: 2, text: 'o' }
+      ]
+    });
+  });
+
+  it('returns null env is student', async () => {
+    const noResult = await createCorrectResponseSession(q(), {
+      mode: 'gather',
+      role: 'student'
+    });
+    expect(noResult).toBeNull();
+  });
+});
+
 describe('outcome', () => {
   const assert = assertFn(outcome);
 
-  assert('score: 0 and empty: true if session is undefined', q(), undefined, e(), { score: 0, empty: true });
-  assert('score: 0 and empty: true if session is null', q(), null, e(), { score: 0, empty: true });
-  assert('score: 0 and empty: true if session is {}', q(), {}, e(), { score: 0, empty: true });
+  assert(
+    'score: 0 and empty: true if session is undefined',
+    q(),
+    undefined,
+    e(),
+    { score: 0, empty: true }
+  );
+  assert('score: 0 and empty: true if session is null', q(), null, e(), {
+    score: 0,
+    empty: true
+  });
+  assert('score: 0 and empty: true if session is {}', q(), {}, e(), {
+    score: 0,
+    empty: true
+  });
 
   assert('score undefined for gather', q(), s(), e(), { score: undefined });
   assert('score undefined for view', q(), s(), e({ mode: 'view' }), {
@@ -222,18 +264,29 @@ describe('model', () => {
       incorrect: undefined
     });
 
-    assert('correctness undefined in view', q(), undefined, e({ mode: 'evaluate' }), {
-      correctness: 'incorrect',
-    });
+    assert(
+      'correctness undefined in view',
+      q(),
+      undefined,
+      e({ mode: 'evaluate' }),
+      {
+        correctness: 'incorrect'
+      }
+    );
 
-    assert('correctness undefined in view', q(), null, e({ mode: 'evaluate' }), {
-      correctness: 'incorrect',
-    });
+    assert(
+      'correctness undefined in view',
+      q(),
+      null,
+      e({ mode: 'evaluate' }),
+      {
+        correctness: 'incorrect'
+      }
+    );
 
     assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
-      correctness: 'incorrect',
+      correctness: 'incorrect'
     });
-
   });
 
   describe('feedback', () => {
