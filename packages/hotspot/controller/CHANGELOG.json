@@ -193,5 +193,20 @@
     "committerDate": "2019-10-11 12:38:26 +0100",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@3.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-lib/controller-utils@^0.2.2 [ch4859]",
+    "merge": null,
+    "header": "fix: bump @pie-lib/controller-utils@^0.2.2 [ch4859]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "cee752168f01eb3b5a8534acc4cfbae139607518",
+    "gitTags": "",
+    "committerDate": "2019-10-15 12:09:33 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@3.0.2"
   }
 ]

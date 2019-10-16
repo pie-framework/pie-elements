@@ -198,5 +198,20 @@
     "committerDate": "2019-10-11 12:01:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/charting@2.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "load session [ch4802]",
+    "merge": null,
+    "header": "fix: load session [ch4802]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ef229484216bdc2382d22f42b4f36fedf62bb567",
+    "gitTags": "",
+    "committerDate": "2019-10-15 10:34:11 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/charting@2.0.2"
   }
 ]
