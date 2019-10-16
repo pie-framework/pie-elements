@@ -110,7 +110,10 @@ export const model = (question, session, env) => {
   return new Promise(resolve => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
-    const tokens = buildTokens(normalizedQuestion.tokens, env.mode === 'evaluate');
+    const tokens = buildTokens(
+      normalizedQuestion.tokens,
+      env.mode === 'evaluate'
+    );
     log('tokens:', tokens);
     const correctness =
       env.mode === 'evaluate'
@@ -126,7 +129,9 @@ export const model = (question, session, env) => {
       const out = {
         tokens,
         highlightChoices: normalizedQuestion.highlightChoices,
-        prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+        prompt: normalizedQuestion.promptEnabled
+          ? normalizedQuestion.prompt
+          : null,
         text: normalizedQuestion.text,
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
@@ -140,8 +145,12 @@ export const model = (question, session, env) => {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+        out.rationale = normalizedQuestion.rationaleEnabled
+          ? normalizedQuestion.rationale
+          : null;
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+          ? normalizedQuestion.teacherInstructions
+          : null;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
@@ -162,6 +171,8 @@ export const createCorrectResponseSession = (question, env) => {
         id: '1',
         selectedTokens
       });
+    } else {
+      resolve(null);
     }
   });
 };

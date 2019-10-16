@@ -55,29 +55,36 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, session, env);
 
-    getFeedbackForCorrectness(correctness, normalizedQuestion.feedback).then(feedback => {
-      const out = {
-        prompt: normalizedQuestion.prompt,
-        numbersOnlyWarning: undefined,
-        colorContrast: 'black_on_white',
-        correctness,
-        feedback,
-        disabled: env.mode !== 'gather',
-        answerBlankSize: normalizedQuestion.answerBlankSize,
-        answerAlignment: normalizedQuestion.answerAlignment,
-        allowDecimal: normalizedQuestion.allowDecimal,
-        allowIntegersOnly: normalizedQuestion.allowIntegersOnly,
-        allowThousandsSeparator: normalizedQuestion.allowThousandsSeparator
-      };
+    getFeedbackForCorrectness(correctness, normalizedQuestion.feedback).then(
+      feedback => {
+        const out = {
+          prompt: normalizedQuestion.prompt,
+          numbersOnlyWarning: undefined,
+          colorContrast: 'black_on_white',
+          correctness,
+          feedback,
+          disabled: env.mode !== 'gather',
+          answerBlankSize: normalizedQuestion.answerBlankSize,
+          answerAlignment: normalizedQuestion.answerAlignment,
+          allowDecimal: normalizedQuestion.allowDecimal,
+          allowIntegersOnly: normalizedQuestion.allowIntegersOnly,
+          allowThousandsSeparator: normalizedQuestion.allowThousandsSeparator
+        };
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
-      } else {
-        out.teacherInstructions = null;
+        if (
+          env.role === 'instructor' &&
+          (env.mode === 'view' || env.mode === 'evaluate')
+        ) {
+          out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+            ? normalizedQuestion.teacherInstructions
+            : null;
+        } else {
+          out.teacherInstructions = null;
+        }
+
+        resolve(out);
       }
-
-      resolve(out);
-    });
+    );
   });
 }
 
@@ -99,13 +106,17 @@ export const outcome = (question, session, env) =>
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { correctResponses: { values } } = question;
+      const {
+        correctResponses: { values }
+      } = question;
       const value = values[0];
 
       resolve({
         id: '1',
         value
       });
+    } else {
+      resolve(null);
     }
   });
 };
