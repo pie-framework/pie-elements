@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.2...@pie-element/charting@2.0.3) (2019-10-16)
+
+
+### Bug Fixes
+
+* upgrade ui elements [ch4802] ([d93f7c1](https://github.com/pie-framework/pie-elements/commit/d93f7c1))
+
+
+
+
+
 ## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.1...@pie-element/charting@2.0.2) (2019-10-15)
 
 
