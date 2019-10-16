@@ -1,4 +1,4 @@
-import { model, outcome, getCorrectness } from '../index';
+import { model, outcome, getCorrectness, createCorrectResponseSession } from '../index';
 
 const mkQuestion = () => ({
   correctResponses: {
@@ -92,6 +92,21 @@ describe('model', () => {
 
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual('Correct');
+    });
+  });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({"id": "1", "value": "a" });
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
     });
   });
 
