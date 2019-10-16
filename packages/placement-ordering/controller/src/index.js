@@ -77,14 +77,21 @@ export function model(question, session, env, updateSession) {
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
 
     if (!normalizedQuestion.lockChoiceOrder) {
-      choices = await getShuffledChoices(choices, session, updateSession, 'label');
+      choices = await getShuffledChoices(
+        choices,
+        session,
+        updateSession,
+        'label'
+      );
     }
 
     base.choices = choices;
 
     log('[model] removing tileSize for the moment.');
 
-    base.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+    base.prompt = normalizedQuestion.promptEnabled
+      ? normalizedQuestion.prompt
+      : null;
     base.config = {
       orientation: normalizedQuestion.orientation || 'vertical',
       includeTargets: normalizedQuestion.placementArea,
@@ -96,9 +103,16 @@ export function model(question, session, env, updateSession) {
 
     base.disabled = env.mode !== 'gather';
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
+      base.rationale = normalizedQuestion.rationaleEnabled
+        ? normalizedQuestion.rationale
+        : null;
+      base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       base.rationale = null;
       base.teacherInstructions = null;
@@ -108,18 +122,25 @@ export function model(question, session, env, updateSession) {
       const value = (session && session.value) || [];
       const allCorrectResponses = getAllCorrectResponses(normalizedQuestion);
 
-      const bestSetOfResponses = allCorrectResponses.reduce((info, cr) => {
-        const currentScore = _.reduce(value, (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0), 0);
+      const bestSetOfResponses = allCorrectResponses.reduce(
+        (info, cr) => {
+          const currentScore = _.reduce(
+            value,
+            (acc, c, idx) => acc + (cr[idx] === c ? 1 : 0),
+            0
+          );
 
-        if (currentScore > info.score) {
-          return {
-            arr: cr,
-            score: currentScore
-          };
-        }
+          if (currentScore > info.score) {
+            return {
+              arr: cr,
+              score: currentScore
+            };
+          }
 
-        return info;
-      }, { arr: [], score: 0 });
+          return info;
+        },
+        { arr: [], score: 0 }
+      );
 
       base.outcomes = _.map(value, function(c, idx) {
         return {
@@ -142,12 +163,13 @@ export function model(question, session, env, updateSession) {
         base.correctResponse = flattenCorrect(normalizedQuestion);
       }
 
-      getFeedbackForCorrectness(base.correctness, normalizedQuestion.feedback).then(
-        feedback => {
-          base.feedback = feedback;
-          resolve(base);
-        }
-      );
+      getFeedbackForCorrectness(
+        base.correctness,
+        normalizedQuestion.feedback
+      ).then(feedback => {
+        base.feedback = feedback;
+        resolve(base);
+      });
     } else {
       resolve(base);
     }
@@ -164,6 +186,8 @@ export const createCorrectResponseSession = (question, env) => {
         id: '1',
         value
       });
+    } else {
+      resolve(null);
     }
   });
 };
