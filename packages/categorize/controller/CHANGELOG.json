@@ -328,5 +328,20 @@
     "committerDate": "2019-10-15 12:11:16 +0100",
     "isTagged": true,
     "tag": "@pie-element/categorize-controller@5.0.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch2766 fix unresolved promise (#366)",
+    "merge": null,
+    "header": "fix: ch2766 fix unresolved promise (#366)",
+    "body": "* fix:  resolve null when instructor is not role\n\n* chore: typo\n\n* chore: correct response resolve, match interaction\n\n* chore: correct response unresolved\n\n* chore: categorize resolve correct response\n\n* fix: createCorrectResponseSession unresolved promise\n\n* fix: createCorrectResponseSession resolve promise\n\n* fix: createCorrectResponseSession resolve promise\n\n* fix: ch2776 resolve  createCorrectResponse promise",
+    "footer": "* fix: Fixed createCorrectResponseSession and added tests for it. (#365)",
+    "notes": [],
+    "hash": "9057b7fd08e4f5b07e953a5acd053e1945df57f2",
+    "gitTags": " (origin/develop, origin/HEAD)",
+    "committerDate": "2019-10-16 15:50:55 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-controller@5.0.4"
   }
 ]
