@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.1...@pie-element/charting@2.0.2) (2019-10-15)
+
+
+### Bug Fixes
+
+* load session [ch4802] ([ef22948](https://github.com/pie-framework/pie-elements/commit/ef22948))
+
+
+
+
+
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.0...@pie-element/charting@2.0.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@1.1.3...@pie-element/charting@2.0.0) (2019-10-08)
 
 

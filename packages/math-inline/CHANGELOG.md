@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.1...@pie-element/math-inline@5.0.2) (2019-10-15)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.2 ([edae61c](https://github.com/pie-framework/pie-elements/commit/edae61c))
+
+
+
+
+
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.0...@pie-element/math-inline@5.0.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.1 [ch4723] ([0a33d68](https://github.com/pie-framework/pie-elements/commit/0a33d68))
+* bump @pie-ui/math-inline@^3.0.5 [ch4687] ([79d47e2](https://github.com/pie-framework/pie-elements/commit/79d47e2))
+* Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@4.1.5...@pie-element/math-inline@5.0.0) (2019-10-08)
 
 

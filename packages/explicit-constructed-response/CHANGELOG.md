@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.0.1...@pie-element/explicit-constructed-response@3.0.2) (2019-10-15)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.2 ([edae61c](https://github.com/pie-framework/pie-elements/commit/edae61c))
+
+
+
+
+
+## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.0.0...@pie-element/explicit-constructed-response@3.0.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* bump @pie-lib/controller-utils@^0.2.1 [ch4723] ([0a33d68](https://github.com/pie-framework/pie-elements/commit/0a33d68))
+* item details disappear if we click correct answer button [ch4723] ([8e401e6](https://github.com/pie-framework/pie-elements/commit/8e401e6))
+* remove shuffling - redundant in this component [ch4723] ([b342305](https://github.com/pie-framework/pie-elements/commit/b342305))
+* Updated docs. ([3787619](https://github.com/pie-framework/pie-elements/commit/3787619))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@2.3.3...@pie-element/explicit-constructed-response@3.0.0) (2019-10-08)
 
 
