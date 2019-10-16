@@ -193,5 +193,35 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/number-line-controller@4.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "merge": null,
+    "header": "fix: bump @pie-lib/controller-utils@^0.2.1 [ch4723]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0a33d688d6d9e5f239daba982bfbdeebb10ba4ab",
+    "gitTags": "",
+    "committerDate": "2019-10-11 12:38:26 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@4.2.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-lib/controller-utils@^0.2.2",
+    "merge": null,
+    "header": "fix: bump @pie-lib/controller-utils@^0.2.2",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "edae61cd4f686b2e1611cf0cad710112177fff2e",
+    "gitTags": "",
+    "committerDate": "2019-10-15 12:11:16 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line-controller@4.2.5"
   }
 ]

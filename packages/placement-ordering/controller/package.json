@@ -1,10 +1,10 @@
 {
   "name": "@pie-element/placement-ordering-controller",
-  "version": "6.0.0",
+  "version": "6.0.2",
   "private": true,
   "main": "lib/index.js",
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.2.1",
+    "@pie-lib/controller-utils": "^0.2.2",
     "@pie-lib/feedback": "^0.4.9",
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",

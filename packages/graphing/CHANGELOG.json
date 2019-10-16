@@ -363,5 +363,20 @@
     "committerDate": "2019-09-24 18:26:08 +0300",
     "isTagged": true,
     "tag": "@pie-element/graphing@2.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Updated docs.",
+    "merge": null,
+    "header": "fix: Updated docs.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "378761951767284187b663c2a271a5d4917af654",
+    "gitTags": " (origin/fix/updated-docs)",
+    "committerDate": "2019-10-11 12:01:13 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.0.1"
   }
 ]

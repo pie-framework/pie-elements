@@ -1893,10 +1893,10 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/controller-utils@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.1.tgz#40a58fe055ab09a0e22c73a97dd3444a1f52b69f"
-  integrity sha512-eKsA76bRX99KlfmeR/qnP/cuNL2tLJIcJ4bLgKM7meGbOInToadchGw5bLgkGEYfW6QFYTK1kG40/1xmX4wohQ==
+"@pie-lib/controller-utils@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.2.tgz#c940bfc91a225c4bda5ed8a46d9ebcec38222607"
+  integrity sha512-QaEprtkTxSh0CCdHunSPb40xFlKYwpPuYMcvlyD5Iepi/PZr39Kp/dDh76KadDLq6Nwgjc56qsinajqbiq8fpA==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2202,10 +2202,10 @@
     prop-types "^15.6.1"
     react-dom "^16.8.1"
 
-"@pie-ui/charting@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/charting/-/charting-0.2.5.tgz#3aa56ea997b0d184f446232a1d9fe86bae745d75"
-  integrity sha512-zzOR5s5j2R50c84vlyr2goT1xet8ubNQVaksqFEqnOvDRBsEXiy6jfEIswjB1O4P01b3TiIzOChprSDoraoJJA==
+"@pie-ui/charting@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/charting/-/charting-0.2.6.tgz#7e5130c420406fb9fbd4b7dd1deb6590b00a40ae"
+  integrity sha512-jnXwcCWq+bDVwuJ+uo8kJY0b/AMB0QQYJtjpPDrBUKdhxkgHJYGyWf/Ty+o9PNF9I0tmPZbrdoRwJnAgOQ2QFg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
@@ -2359,10 +2359,10 @@
     react-dom "^16.8.1"
     react-konva "^16.9.0-0"
 
-"@pie-ui/image-cloze-association@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.2.6.tgz#e0fd13e14ec7db9d6784130a43dea529c8e596ce"
-  integrity sha512-8GlW/6oqzVXa72lFIS/bbnfJ1G73fo9Y8HSrTvSPUAKbr62IPA+clZMVIKow69GlwYxTGZk6yAcbJ4A+XNTCaA==
+"@pie-ui/image-cloze-association@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@pie-ui/image-cloze-association/-/image-cloze-association-1.2.9.tgz#71d26762683294d03f2cf3480ea747f0349e98db"
+  integrity sha512-qN1QWsPurAjeAoAuFal44IU3Gv74efXrc5GJ5/QL30pdbINrc6FQm7GgzDvS29UXTQLqrETpTOxP3tzPnXLz1Q==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.1"
@@ -2423,10 +2423,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.3.8":
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.8.tgz#3a0a6b719f4b41323643fcf578cb475e4b17b14c"
-  integrity sha512-bRqOzODekRLTKX1GlaLooZ6peHIeSfq+fTNToq9NalVTDaXY39lZCNBgIZ4KRJVOfo/ghuzAbQmggWCQriLryQ==
+"@pie-ui/match@^2.3.9":
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.9.tgz#17a7c6a4e4171d60e38527da36a9bb936c9817e0"
+  integrity sha512-7A4fXqBzv7oHvNSiLyOkOtn9WfG0e8FiH5cs+O3VzvYrI7ns8V8a1ySzJ9A2/m4Uirj/MOe74hrG5TM1/A7GWg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.2.6"

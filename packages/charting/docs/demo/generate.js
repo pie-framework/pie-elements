@@ -4,7 +4,7 @@ exports.model = (id, element) => ({
 
   addCategoryEnabled: true,
   categoryDefaultLabel: 'Category',
-  chartType: 'lineCross',
+  chartType: 'bar',
   data: [
     {
       label: 'A',
