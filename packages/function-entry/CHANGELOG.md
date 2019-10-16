@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.9.4...@pie-element/function-entry@3.9.5) (2019-10-16)
+
+
+### Bug Fixes
+
+* ch2766 fix unresolved promise ([#366](https://github.com/pie-framework/pie-elements/issues/366)) ([9057b7f](https://github.com/pie-framework/pie-elements/commit/9057b7f)), closes [#365](https://github.com/pie-framework/pie-elements/issues/365)
+
+
+
+
+
 ## [3.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.9.3...@pie-element/function-entry@3.9.4) (2019-10-15)
 
 **Note:** Version bump only for package @pie-element/function-entry

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.5...@pie-element/match-list@1.7.6) (2019-10-16)
+
+
+### Bug Fixes
+
+* ch2766 fix unresolved promise ([#366](https://github.com/pie-framework/pie-elements/issues/366)) ([9057b7f](https://github.com/pie-framework/pie-elements/commit/9057b7f)), closes [#365](https://github.com/pie-framework/pie-elements/issues/365)
+
+
+
+
+
 ## [1.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.4...@pie-element/match-list@1.7.5) (2019-10-16)
 
 **Note:** Version bump only for package @pie-element/match-list

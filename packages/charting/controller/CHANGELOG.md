@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.0.0...@pie-element/charting-controller@2.0.1) (2019-10-16)
+
+
+### Bug Fixes
+
+* ch2766 fix unresolved promise ([#366](https://github.com/pie-framework/pie-elements/issues/366)) ([9057b7f](https://github.com/pie-framework/pie-elements/commit/9057b7f)), closes [#365](https://github.com/pie-framework/pie-elements/issues/365)
+
+
+
+
+
 # [2.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@1.1.2...@pie-element/charting-controller@2.0.0) (2019-10-08)
 
 
