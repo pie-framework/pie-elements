@@ -161,6 +161,7 @@ export function model(question, session, env, updateSession) {
       const out = Object.assign(base, {
         correctResponse
       });
+
       log('out: ', out);
       resolve(out);
     });
@@ -183,6 +184,8 @@ export const createCorrectResponseSession = (question, env) => {
         value,
         id: '1'
       });
+    } else {
+      resolve(null);
     }
   });
 };

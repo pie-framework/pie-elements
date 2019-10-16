@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 import { isResponseCorrect } from '../utils';
 
 jest.mock('@pie-lib/controller-utils', () => ({
@@ -231,4 +231,22 @@ describe('controller', () => {
     returnIsResponseCorect(null);
     returnIsResponseCorect({});
   });
+
+  describe('correct response', () => {
+  
+
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({"answers": [{"id": "1"}, {"id": "4"}], "id": "1"});
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
+    });
+  });
+
 });

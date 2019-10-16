@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 
 describe('model', () => {
   let result;
@@ -148,4 +148,72 @@ describe('outcome', () => {
   returnOutcome(null);
   returnOutcome({});
 });
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    choices: [
+      {
+        value: 'sweden',
+        label: 'Sweden'
+      },
+      {
+        value: 'iceland',
+        label: 'Iceland',
+        feedback: {
+          type: 'default'
+        }
+      },
+      {
+        correct: true,
+        value: 'norway',
+        label: 'Norway'
+      },
+      {
+        value: 'finland',
+        label: 'Finland',
+        feedback: {
+          type: 'custom',
+          value: 'Nokia was founded in Finland.'
+        }
+      }
+    ]
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      value: 'norway',
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      value: 'norway',
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
+  });
+});
+
 

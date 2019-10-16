@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 import { isResponseCorrect } from '../utils';
 
 const PART_A = 'partA';
@@ -271,5 +271,22 @@ describe('controller', () => {
       returnsIsResponseCorrect(PART_A);
       returnsIsResponseCorrect(PART_B);
     });
+
+    describe('correct response', () => {
+      it('returns correct response if env is correct', async () => {
+        const sess = await createCorrectResponseSession(question, {
+          mode: 'gather',
+          role: 'instructor'
+        });
+        expect(sess).toEqual({"id": "1", "value": {"partA": {"id": "partA", "value": ["yellow"]}, "partB": {"id": "partB", "value": ["orange"]}}});
+      });
+  
+      it('returns null env is student', async () => {
+        const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+        expect(noResult).toBeNull();
+      });
+    });
+
+
   });
 });

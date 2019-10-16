@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 
 const defaultModel = {
   responseType: 'Advanced Multi',
@@ -356,3 +356,74 @@ describe('outcome', () => {
   returnOutcome(null);
   returnOutcome({});
 });
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    responseType: 'Advanced Multi',
+    expression: '{{response}} = {{response}}',
+    prompt:
+      '<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class="equation-block"><math xmlns="http://www.w3.org/1998/Math/MathML" >\n <mrow>\n  <mn>12</mn><mo>&#x00D7;</mo><mo>&#x25A1;</mo><mo>=</mo><mn>72</mn>\n </mrow>\n</math> </span></p><p>What <span class="relative-emphasis">division</span> number sentence can be used to show how many eggs were in each basket?</p><p>Use the on-screen keyboard to type your number sentence and answer in the box.</p>',
+    responses: [
+      {
+        id: '1',
+        answer: '72\\div12=6',
+        alternates: {
+          '1': '6=72\\div12]',
+          '2': '\\frac{72}{12}=6',
+          '3': '6=\\frac{72}{12}'
+        },
+        validation: 'literal'
+      }
+    ],
+    customKeys: [
+      '\\left(\\right)',
+      '\\frac{}{}',
+      'x\\frac{}{}'
+    ]
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answers: {
+        r1: { value: '72\\div12' },
+        r2: { value: '6' }
+      },
+      completeAnswer: '72\\div12=6',
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answers: {
+        r1: { value: '72\\div12' },
+        r2: { value: '6' }
+      },
+      completeAnswer: '72\\div12=6',
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
+  });
+});
+

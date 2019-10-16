@@ -141,6 +141,8 @@ export const createCorrectResponseSession = (question, env) => {
         ],
         id: '1'
       });
+    } else {
+      resolve(null);
     }
   });
 };

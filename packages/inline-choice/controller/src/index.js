@@ -77,12 +77,14 @@ export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { choices } = question;
-      const value = choices.filter(c => c.correct)[0].value;
+      const correctChoice = choices && choices.find(c => c.correct);
 
       resolve({
         id: '1',
-        value
+        value: correctChoice && correctChoice.value
       });
+    } else {
+      resolve(null);
     }
   });
 };

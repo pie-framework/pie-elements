@@ -1,4 +1,4 @@
-import { model, getScore, outcome } from '../index';
+import { model, getScore, outcome, createCorrectResponseSession } from '../index';
 
 const choice = (v, id) => ({ value: v, id });
 
@@ -102,4 +102,20 @@ describe('controller', () => {
       expect(await outcome(question, {})).toEqual({ score: 0, empty: true });
     });
   });
+
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({"id": "1", "value": {"0": "0", "1": "1"}});
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      expect(noResult).toBeNull();
+    });
+  });
+
 });
