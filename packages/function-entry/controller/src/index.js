@@ -71,6 +71,8 @@ export const createCorrectResponseSession = (question, env) => {
         id: '1',
         value: equation
       });
+    } else {
+      resolve(null);
     }
   });
 };

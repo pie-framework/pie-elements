@@ -1,4 +1,4 @@
-import { model, outcome } from '../index';
+import { model, outcome, createCorrectResponseSession } from '../index';
 
 const prompt = (id, relatedAnswer) => ({
   id,
@@ -89,6 +89,60 @@ describe('controller', () => {
       returnOutcome(null);
       returnOutcome({});
     });
+  });
+});
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    prompt: 'Your prompt goes here',
+    prompts: [prompt(1, 1), prompt(3, 4), prompt(4, 3), prompt(2, 2)],
+    answers: [answer(1), answer(2), answer(3), answer(4), answer(5), answer(6)],
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      value: {
+        1: 1,
+        3: 4,
+        4: 3,
+        2: 2
+      },
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      value: {
+        1: 1,
+        3: 4,
+        4: 3,
+        2: 2
+      },
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
   });
 });
 

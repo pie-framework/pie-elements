@@ -192,14 +192,20 @@ export const createCorrectResponseSession = (question, env) => {
       const { choices } = question;
       const value = {};
 
-      Object.keys(choices).forEach((key, i) => {
-        value[i] = choices[key].filter(c => c.correct)[0].value;
-      });
+      if (choices) {
+        Object.keys(choices).forEach((key, i) => {
+          const correctChoices = choices[key] && choices[key].filter(c => c.correct);
+
+          value[i] = correctChoices && correctChoices[0].value;
+        });
+      }
 
       resolve({
         id: '1',
         value
       });
+    } else {
+      resolve(null);
     }
   });
 };

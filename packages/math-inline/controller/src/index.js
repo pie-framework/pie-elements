@@ -232,19 +232,20 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const {
-        response: { answer }
-      } = question;
-      const equalIndex = answer.indexOf('=');
+      const { responses } = question;
+      const { answer } = responses ? responses[0] : {};
+      const equalIndex = answer && answer.indexOf('=');
 
       resolve({
         answers: {
           r1: { value: answer.substring(0, equalIndex) },
-          r2: { value: answer.substring(equalIndex, answer.length) }
+          r2: { value: answer.substring(equalIndex + 1, answer.length) }
         },
         completeAnswer: answer,
         id: '1'
       });
+    } else {
+      resolve(null);
     }
   });
 };

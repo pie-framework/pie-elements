@@ -203,3 +203,18 @@ export function outcome(model, session) {
     });
   });
 }
+
+export const createCorrectResponseSession = (question, env) => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctAnswer } = question;
+
+      resolve({
+        answer: correctAnswer && correctAnswer.data,
+        id: '1'
+      });
+    } else {
+      return resolve(null);
+    }
+  });
+};

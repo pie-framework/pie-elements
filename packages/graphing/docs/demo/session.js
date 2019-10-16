@@ -3,8 +3,18 @@ module.exports = [
     id: '1',
     element: 'graphing',
     // answer: [
-    //   { type: 'point', x: 0, y: 0 },
-    //   { type: 'circle', edge: { x: 1, y: 2 }, root: { x: 2, y: 3 } },
+    //   {
+    //     type: 'segment',
+    //     from: { x: 0, y: 0 },
+    //     to: { x: 1, y: 1 },
+    //   },
+    //   {
+    //     type: 'point',
+    //     x: 3,
+    //     y: 3,
+    //     label: 'Point',
+    //     showLabel: true
+    //   }
     // ]
   },
 ];
