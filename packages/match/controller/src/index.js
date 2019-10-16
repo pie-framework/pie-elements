@@ -225,6 +225,8 @@ export const createCorrectResponseSession = (question, env) => {
         answers,
         id: '1'
       });
+    } else {
+      resolve(null);
     }
   });
 };

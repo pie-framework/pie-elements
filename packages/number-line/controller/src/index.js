@@ -256,6 +256,8 @@ export const createCorrectResponseSession = (question, env) => {
         answer,
         id: '1'
       });
+    } else  {
+      resolve(null);
     }
   });
 };

@@ -1,4 +1,4 @@
-import { model, outcome, getPartialScore, isResponseCorrect } from '../index';
+import { model, outcome, getPartialScore, isResponseCorrect, createCorrectResponseSession } from '../index';
 
 jest.mock('../utils', () => ({
   ...(jest.requireActual('../utils.js')),
@@ -346,5 +346,109 @@ describe('controller', () => {
     returnIsResponseCorrect(undefined);
     returnIsResponseCorrect(null);
     returnIsResponseCorrect({});
+  });
+});
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    prompt: 'This is the question prompt',
+    image: {
+      src: 'https://app.fluence.net/ia/image/6412223997a34018b15f8512bee6c04c',
+      width: 465,
+      scale: false,
+      height: 313
+    },
+    response_containers: [
+      {
+        pointer: undefined,
+        wordwrap: true,
+        x: 64.3,
+        width: '35.70%',
+        y: 1.6,
+        height: '23.64%',
+        aria_label: ''
+      },
+      {
+        pointer: 'undefined',
+        wordwrap: true,
+        x: 64.09,
+        width: '35.92%',
+        y: 39.62,
+        height: '23.32%',
+        aria_label: ''
+      }
+    ],
+    possible_responses: [
+      '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+      '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'
+    ],
+    validation: {
+      scoring_type: 'exactMatch',
+      valid_response: {
+        score: 1,
+        value: [
+          [
+            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'
+          ],
+          [
+            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>'
+          ]
+        ]
+      }
+    }
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answers: [
+        {
+          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          containerIndex: 0
+        },
+        {
+          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          containerIndex: 1
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answers: [
+        {
+          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          containerIndex: 0
+        },
+        {
+          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          containerIndex: 1
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
   });
 });

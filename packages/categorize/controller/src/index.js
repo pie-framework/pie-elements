@@ -205,16 +205,17 @@ export const outcome = (question, session, env) => {
     });
   }
 };
-
+  
 export const createCorrectResponseSession = (question, env) => {
-  if (env.mode !== 'evaluate' && env.role === 'instructor') {
-    const { correctResponse } = question;
-
-    return new Promise(resolve => {
+  return new Promise(resolve => {
+    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+      const { correctResponse } = question;
       resolve({
         answers: correctResponse,
         id: 1
       });
-    });
-  }
+    } else {
+      return resolve(null);
+    }
+  });
 };

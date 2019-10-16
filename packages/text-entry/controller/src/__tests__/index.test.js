@@ -1,4 +1,9 @@
-import { model, outcome, getCorrectness } from '../index';
+import {
+  model,
+  outcome,
+  getCorrectness,
+  createCorrectResponseSession
+} from '../index';
 
 const mkQuestion = () => ({
   correctResponses: {
@@ -95,6 +100,24 @@ describe('model', () => {
     });
   });
 
+  describe('correct response', () => {
+    it('returns correct response if env is correct', async () => {
+      const sess = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(sess).toEqual({ id: '1', value: 'a' });
+    });
+
+    it('returns null env is student', async () => {
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'student'
+      });
+      expect(noResult).toBeNull();
+    });
+  });
+
   describe('evaluate - partially correct', () => {
     beforeEach(async () => {
       question = mkQuestion();
@@ -119,7 +142,9 @@ describe('model', () => {
 
 describe('outcome', () => {
   const assertOutcome = session => {
-    it(`returns score: 0, empty: true if session is ${JSON.stringify(session)}`, async () => {
+    it(`returns score: 0, empty: true if session is ${JSON.stringify(
+      session
+    )}`, async () => {
       const o = await outcome(mkQuestion(), session, { mode: 'evaluate' });
       expect(o).toEqual({ score: 0, empty: true });
     });
@@ -132,7 +157,9 @@ describe('outcome', () => {
 
 describe('getCorrectness', () => {
   const assertCorrectness = session => {
-    it(`returns score: 0, empty: true if session is ${JSON.stringify(session)}`, () => {
+    it(`returns score: 0, empty: true if session is ${JSON.stringify(
+      session
+    )}`, () => {
       const o = getCorrectness(mkQuestion(), session, { mode: 'evaluate' });
       expect(o).toEqual('empty');
     });

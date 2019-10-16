@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as controller from '../index';
+import { createCorrectResponseSession } from '@pie-element/select-text-controller/src';
 
 describe('index', () => {
   let base = o => {
@@ -75,7 +76,11 @@ describe('index', () => {
       model = base({
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [['c', 'b', 'a']],
-        choices: [{ label: 'a', id: 'a' }, { label: 'b', id: 'b' }, { label: 'c', id: 'c' }]
+        choices: [
+          { label: 'a', id: 'a' },
+          { label: 'b', id: 'b' },
+          { label: 'c', id: 'c' }
+        ]
       });
 
       session = { value: ['a', 'b', 'c'] };
@@ -88,7 +93,11 @@ describe('index', () => {
           {},
           {},
           {
-            choices: [{ id: 'a', label: 'a' }, { id: 'b', label: 'b' }, { label: 'c', id: 'c' }]
+            choices: [
+              { id: 'a', label: 'a' },
+              { id: 'b', label: 'b' },
+              { label: 'c', id: 'c' }
+            ]
           }
         )
       );
@@ -154,7 +163,6 @@ describe('index', () => {
           correctResponse: ['a', 'b', 'c']
         })
       );
-
     });
 
     describe('model - with updateSession', () => {
@@ -162,7 +170,11 @@ describe('index', () => {
         const session = { id: '1', element: 'placement-ordering' };
         const env = { mode: 'gather' };
         const question = base({
-          choices: [{ label: 'a', id: 'a' }, { label: 'b', id: 'b' }, { label: 'c', id: 'c' }],
+          choices: [
+            { label: 'a', id: 'a' },
+            { label: 'b', id: 'b' },
+            { label: 'c', id: 'c' }
+          ],
           lockChoiceOrder: false
         });
         const updateSession = jest.fn().mockResolvedValue();
@@ -175,16 +187,49 @@ describe('index', () => {
 
     describe('session not set', () => {
       const assertModelCorrectness = session => {
-        it(`returns correctness: incorrect of session is ${JSON.stringify(session)}`, async () => {
+        it(`returns correctness: incorrect of session is ${JSON.stringify(
+          session
+        )}`, async () => {
           const m = await controller.model(
-            base({ correctResponse: ['a', 'b'] }), session, { mode: 'evaluate' });
-          expect(m.correctness).toEqual('incorrect')
+            base({ correctResponse: ['a', 'b'] }),
+            session,
+            { mode: 'evaluate' }
+          );
+          expect(m.correctness).toEqual('incorrect');
         });
       };
 
       assertModelCorrectness(undefined);
       assertModelCorrectness(null);
       assertModelCorrectness({});
+    });
+
+    describe('correct response', () => {
+      const model = base({
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['c', 'b', 'a']],
+        choices: [
+          { label: 'a', id: 'a' },
+          { label: 'b', id: 'b' },
+          { label: 'c', id: 'c' }
+        ]
+      });
+
+      it('returns correct response if env is correct', async () => {
+        const sess = await controller.createCorrectResponseSession(model, {
+          mode: 'gather',
+          role: 'instructor'
+        });
+        expect(sess).toEqual({ id: '1', value: ['a', 'b', 'c'] });
+      });
+
+      it('returns null env is student', async () => {
+        const noResult = await controller.createCorrectResponseSession(model, {
+          mode: 'gather',
+          role: 'student'
+        });
+        expect(noResult).toBeNull();
+      });
     });
   });
 
@@ -203,10 +248,13 @@ describe('index', () => {
           controller.questionError()
         ));
     };
-    const assertOutcomeSessionNotset = (session) => {
-      it(`return score: 0 and empty: true if session is ${JSON.stringify(session)}`, () =>
-        expect(controller.outcome({}, session, { mode: 'evaluate' }))
-          .resolves.toEqual({ score: 0, empty: true }));
+    const assertOutcomeSessionNotset = session => {
+      it(`return score: 0 and empty: true if session is ${JSON.stringify(
+        session
+      )}`, () =>
+        expect(
+          controller.outcome({}, session, { mode: 'evaluate' })
+        ).resolves.toEqual({ score: 0, empty: true }));
     };
 
     assertOutcomeError(null, { value: [] }, {});
@@ -218,46 +266,138 @@ describe('index', () => {
     assertOutcomeSessionNotset({});
 
     // Main Correct Response
-    assertOutcome({ partialScoring: true, correctResponse: ['a'], alternateResponses: [['c']] }, ['a'], 1);
-    assertOutcome({ partialScoring: true, correctResponse: ['a'], alternateResponses: [['c']] }, ['b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'], alternateResponses: [['b', 'c', 'a']] }, ['c', 'a', 'b'], 0.33);
-    assertOutcome({ correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] }, ['c', 'a', 'b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'c', 'b']] }, ['a', 'b'], 0.33);
     assertOutcome(
-      { partialScoring: true, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'b']] },
+      {
+        partialScoring: true,
+        correctResponse: ['a'],
+        alternateResponses: [['c']]
+      },
+      ['a'],
+      1
+    );
+    assertOutcome(
+      {
+        partialScoring: true,
+        correctResponse: ['a'],
+        alternateResponses: [['c']]
+      },
+      ['b'],
+      0
+    );
+    assertOutcome(
+      {
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['b', 'c', 'a']]
+      },
       ['c', 'a', 'b'],
       0.33
     );
     assertOutcome(
-      { partialScoring: false, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'c', 'b']] },
+      { correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] },
+      ['c', 'a', 'b'],
+      0
+    );
+    assertOutcome(
+      {
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'c', 'b']]
+      },
+      ['a', 'b'],
+      0.33
+    );
+    assertOutcome(
+      {
+        partialScoring: true,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'b']]
+      },
+      ['c', 'a', 'b'],
+      0.33
+    );
+    assertOutcome(
+      {
+        partialScoring: false,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'c', 'b']]
+      },
       ['a', 'b'],
       0
     );
     assertOutcome(
-      { partialScoring: false, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'b']] },
+      {
+        partialScoring: false,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'b']]
+      },
       ['c', 'a', 'b'],
       0.33,
       { partialScoring: true }
     );
 
     // Alternate Correct Response
-    assertOutcome({ partialScoring: true, correctResponse: ['a'], alternateResponses: [['c']] }, ['c'], 1);
-    assertOutcome({ partialScoring: true, correctResponse: ['a'], alternateResponses: [['c']] }, ['b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'], alternateResponses: [['c', 'b', 'a']] }, ['c', 'a', 'b'], 0.67);
-    assertOutcome({ correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] }, ['c', 'a', 'b'], 0);
-    assertOutcome({ correctResponse: ['a', 'b', 'c'], alternateResponses: [['c', 'b', 'a']] }, ['c', 'b'], 0.33);
     assertOutcome(
-      { partialScoring: true, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'c', 'b']] },
+      {
+        partialScoring: true,
+        correctResponse: ['a'],
+        alternateResponses: [['c']]
+      },
+      ['c'],
+      1
+    );
+    assertOutcome(
+      {
+        partialScoring: true,
+        correctResponse: ['a'],
+        alternateResponses: [['c']]
+      },
+      ['b'],
+      0
+    );
+    assertOutcome(
+      {
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['c', 'b', 'a']]
+      },
       ['c', 'a', 'b'],
       0.67
     );
     assertOutcome(
-      { partialScoring: false, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'c', 'b']] },
+      { correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] },
+      ['c', 'a', 'b'],
+      0
+    );
+    assertOutcome(
+      {
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['c', 'b', 'a']]
+      },
+      ['c', 'b'],
+      0.33
+    );
+    assertOutcome(
+      {
+        partialScoring: true,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'c', 'b']]
+      },
+      ['c', 'a', 'b'],
+      0.67
+    );
+    assertOutcome(
+      {
+        partialScoring: false,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'c', 'b']]
+      },
       ['a', 'b'],
       0
     );
     assertOutcome(
-      { partialScoring: false, correctResponse: ['a', 'b', 'c'], alternateResponses: [['a', 'c', 'b']] },
+      {
+        partialScoring: false,
+        correctResponse: ['a', 'b', 'c'],
+        alternateResponses: [['a', 'c', 'b']]
+      },
       ['c', 'a', 'b'],
       0.67,
       { partialScoring: true }

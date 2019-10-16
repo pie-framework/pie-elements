@@ -2,7 +2,8 @@ import {
   setCorrectness,
   checkLabelsEquality,
   filterCategories,
-  getScore
+  getScore,
+  createCorrectResponseSession
 } from '../index';
 
 describe('setCorrectness', () => {
@@ -11,12 +12,12 @@ describe('setCorrectness', () => {
       { value: 0, label: 'A' },
       { value: 1, label: 'B' },
       { value: 2, label: 'C' }
-      ], true);
+    ], true);
 
     expect(corectnessAnswers).toEqual([
-      { value: 0, label: 'A', correctness: { value: 'incorrect', label: 'incorrect' }},
-      { value: 1, label: 'B', correctness: { value: 'incorrect', label: 'incorrect' }},
-      { value: 2, label: 'C', correctness: { value: 'incorrect', label: 'incorrect' }}
+      { value: 0, label: 'A', correctness: { value: 'incorrect', label: 'incorrect' } },
+      { value: 1, label: 'B', correctness: { value: 'incorrect', label: 'incorrect' } },
+      { value: 2, label: 'C', correctness: { value: 'incorrect', label: 'incorrect' } }
     ]);
   });
 
@@ -25,12 +26,12 @@ describe('setCorrectness', () => {
       { value: 0, label: 'A' },
       { value: 1, label: 'B' },
       { value: 2, label: 'C' }
-      ]);
+    ]);
 
     expect(corectnessAnswers).toEqual([
-      { value: 0, label: 'A', correctness: { value: 'correct', label: 'correct' }},
-      { value: 1, label: 'B', correctness: { value: 'correct', label: 'correct' }},
-      { value: 2, label: 'C', correctness: { value: 'correct', label: 'correct' }}
+      { value: 0, label: 'A', correctness: { value: 'correct', label: 'correct' } },
+      { value: 1, label: 'B', correctness: { value: 'correct', label: 'correct' } },
+      { value: 2, label: 'C', correctness: { value: 'correct', label: 'correct' } }
     ]);
   });
 
@@ -788,3 +789,168 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     }
   );
 });
+
+describe('createCorrectResponseSession', () => {
+  const question = {
+    categoryDefaultLabel: 'Category',
+    chartType: 'lineCross',
+    correctAnswer: {
+      data: [
+        {
+          label: 'A',
+          value: 1,
+          initial: true,
+          interactive: false,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'B',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'C',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        },
+      ]
+    },
+    data: [
+      {
+        label: 'A',
+        value: 1,
+        initial: true,
+        interactive: false,
+        editable: true,
+        deletable: true
+      },
+      {
+        label: 'B',
+        value: 1,
+        initial: true,
+        interactive: true,
+        editable: true,
+        deletable: true
+      },
+      {
+        label: 'D',
+        value: 1,
+        initial: true,
+        interactive: true,
+        editable: true,
+        deletable: true
+      },
+    ],
+    domain: {
+      label: 'Fruits',
+    },
+    graph: {
+      width: 480,
+      height: 480
+    },
+    prompt: 'Here goes item stem!',
+    rationale: 'Rationale goes here!',
+    range: {
+      label: 'Amount',
+      max: 5.5,
+      min: 0,
+      labelStep: 1,
+    },
+    scoringType: 'partial scoring',
+    title: 'This is a chart!',
+  };
+
+  it('returns correct response if role is instructor and mode is gather', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answer: [
+        {
+          label: 'A',
+          value: 1,
+          initial: true,
+          interactive: false,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'B',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'C',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view', async () => {
+    const sess = await createCorrectResponseSession(question, {
+      mode: 'view',
+      role: 'instructor'
+    });
+
+    expect(sess).toEqual({
+      answer: [
+        {
+          label: 'A',
+          value: 1,
+          initial: true,
+          interactive: false,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'B',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        },
+        {
+          label: 'C',
+          value: 1,
+          initial: true,
+          interactive: true,
+          editable: true,
+          deletable: true
+        }
+      ],
+      id: '1'
+    });
+  });
+
+  it('returns null if mode is evaluate', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+
+    expect(noResult).toBeNull();
+  });
+
+  it('returns null if role is student', async () => {
+    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+
+    expect(noResult).toBeNull();
+  });
+});
+
