@@ -5,9 +5,6 @@ module.exports = [
     answers: [
       {
         id: '1'
-      },
-      {
-        id: '2'
       }
     ]
   }
