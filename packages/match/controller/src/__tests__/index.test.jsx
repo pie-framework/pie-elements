@@ -74,7 +74,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness.correctness).toEqual(undefined);
+      expect(result.correctness).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
@@ -115,7 +115,7 @@ describe('model', () => {
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness.correctness).toEqual(undefined);
+      expect(result.correctness).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {
