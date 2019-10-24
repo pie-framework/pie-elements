@@ -31,8 +31,9 @@ export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) 
 export const choiceIsEmpty = choice => {
   if (choice) {
     const { value = '' } = choice;
+    const withoutEmptyTags = value.replace(replaceHtmlRegex, '') || '';
 
-    return value.trim() === '' || value.replace(replaceHtmlRegex, '') === '';
+    return withoutEmptyTags.trim() === '';
   }
 
   return false;
