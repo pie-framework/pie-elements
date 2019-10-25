@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlternateSection snapshot renders 1`] = `
+<div>
+  <div>
+    <WithStyles(WithFormControlContext(Select))
+      displayEmpty={true}
+      onChange={[Function]}
+      value="cow"
+    >
+      <WithStyles(MenuItem)
+        value=""
+      >
+        <em>
+          Remove selection
+        </em>
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="0"
+        value="2"
+      >
+        moon
+      </WithStyles(MenuItem)>
+    </WithStyles(WithFormControlContext(Select))>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Add
+    </WithStyles(Button)>
+  </div>
+  <div>
+    <Choice
+      classes={Object {}}
+      key="1"
+      markup="cattle"
+      onChange={[Function]}
+      onDelete={[Function]}
+    />
+    <Choice
+      classes={Object {}}
+      key="2"
+      markup="calf"
+      onChange={[Function]}
+      onDelete={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`Choice snapshot renders 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <WithStyles(OutlinedInput)
+    disableUnderline={true}
+    labelWidth={0}
+    onChange={[Function]}
+    value="cow"
+  />
+  <WithStyles(IconButton)
+    aria-label="delete"
+    onClick={[MockFunction]}
+  >
+    <pure(DeleteIcon) />
+  </WithStyles(IconButton)>
+</div>
+`;

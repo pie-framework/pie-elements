@@ -37,7 +37,7 @@ const styles = theme => ({
   }
 });
 
-class Choice extends React.Component {
+export class Choice extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
     markup: PropTypes.string,

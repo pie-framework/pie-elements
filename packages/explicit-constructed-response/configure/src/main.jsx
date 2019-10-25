@@ -86,6 +86,13 @@ export class Main extends React.Component {
     });
   }
 
+  onModelChange = newVal => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      ...newVal
+    });
+  };
+
   onPromptChanged = prompt => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -100,6 +107,15 @@ export class Main extends React.Component {
     });
   };
 
+  onTeacherInstructionsChanged = teacherInstructions => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      teacherInstructions
+    });
+  };
+
   onMarkupChanged = slateMarkup => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -111,15 +127,6 @@ export class Main extends React.Component {
     this.props.onModelChanged({
       ...this.props.model,
       choices
-    });
-  };
-
-  onTeacherInstructionsChanged = teacherInstructions => {
-    const { model, onModelChanged } = this.props;
-
-    onModelChanged({
-      ...model,
-      teacherInstructions
     });
   };
 
@@ -172,13 +179,6 @@ export class Main extends React.Component {
       ...this.props.model,
       choices: allChoices,
       slateMarkup: domMarkup.innerHTML
-    });
-  };
-
-  onModelChange = newVal => {
-    this.props.onModelChanged({
-      ...this.props.model,
-      ...newVal
     });
   };
 

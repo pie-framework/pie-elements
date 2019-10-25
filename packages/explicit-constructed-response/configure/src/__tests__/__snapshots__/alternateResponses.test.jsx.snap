@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlternateResponses snapshot renders 1`] = `
+<div>
+  <WithStyles(AlternateSection)
+    choiceChanged={[Function]}
+    choiceRemoved={[Function]}
+    choices={
+      Array [
+        Object {
+          "label": "cow",
+          "value": "0",
+        },
+        Object {
+          "label": "cattle",
+          "value": "1",
+        },
+        Object {
+          "label": "calf",
+          "value": "2",
+        },
+      ]
+    }
+    key="0"
+    onSelect={[Function]}
+    selectChoices={
+      Array [
+        Object {
+          "label": "cow",
+          "value": "0",
+        },
+      ]
+    }
+    value="0"
+  />
+  <WithStyles(AlternateSection)
+    choiceChanged={[Function]}
+    choiceRemoved={[Function]}
+    choices={
+      Array [
+        Object {
+          "label": "over",
+          "value": "0",
+        },
+        Object {
+          "label": "past",
+          "value": "1",
+        },
+        Object {
+          "label": "beyond",
+          "value": "2",
+        },
+      ]
+    }
+    key="1"
+    onSelect={[Function]}
+    selectChoices={
+      Array [
+        Object {
+          "label": "over",
+          "value": "0",
+        },
+      ]
+    }
+    value="0"
+  />
+  <WithStyles(AlternateSection)
+    choiceChanged={[Function]}
+    choiceRemoved={[Function]}
+    onSelect={[Function]}
+    selectChoices={
+      Array [
+        Object {
+          "label": "moon",
+          "value": "2",
+        },
+      ]
+    }
+    value=""
+  />
+</div>
+`;
