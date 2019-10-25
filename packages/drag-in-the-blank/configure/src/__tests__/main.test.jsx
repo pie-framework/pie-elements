@@ -17,7 +17,8 @@ jest.mock('@pie-lib/config-ui', () => ({
   },
   layout: {
     ConfigLayout: props => <div>{props.children}</div>
-  }
+  },
+  InputContainer: props => <div>{props.children}</div>
 }));
 
 const model = {

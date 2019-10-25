@@ -97,7 +97,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
     }
   >
     <div>
-      <Component
+      <InputContainer
         label="Teacher Instructions"
       >
         <EditableHtml
@@ -105,8 +105,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           nonEmpty={false}
           onChange={[Function]}
         />
-      </Component>
-      <Component
+      </InputContainer>
+      <InputContainer
         label="Prompt"
       >
         <EditableHtml
@@ -115,7 +115,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           nonEmpty={false}
           onChange={[Function]}
         />
-      </Component>
+      </InputContainer>
       <WithStyles(Typography)>
         Define Template, Choices, and Correct Responses
       </WithStyles(Typography)>
@@ -182,14 +182,14 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
         onChange={[Function]}
       />
-      <Component
+      <InputContainer
         label="Rationale"
       >
         <EditableHtml
           markup="<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>"
           onChange={[Function]}
         />
-      </Component>
+      </InputContainer>
     </div>
   </ConfigLayout>
 </div>
