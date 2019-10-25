@@ -177,6 +177,73 @@ describe('controller', () => {
       }
     );
 
+    const assertViewStudent = (label, extra, session, expected) => {
+      it(`'mode: view, ${label}'`, async () => {
+        q = {
+          ...question,
+          choices: [
+            choice('<div>6</div>', '0'),
+            choice('<div>9</div>', '1'),
+            choice('', '2')
+          ],
+          teacherInstructions: 'Teacher Instructions',
+          rationale: 'Rationale',
+          ...extra
+        };
+        const result = await model(
+          q,
+          { id: '1', element: 'drag-in-the-blank', ...session },
+          { mode: 'view', role: 'student' },
+          jest.fn());
+
+        expect(result).toEqual({
+          ...q,
+          choices: expect.arrayContaining([
+            choice('<div>6</div>', '0'),
+            choice('<div>9</div>', '1')
+          ]),
+          mode: 'view',
+          disabled: true,
+          feedback: {},
+          responseCorrect: undefined,
+          ...expected
+        });
+      });
+    };
+
+    assertViewStudent(
+      ' + role: student, promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
+      {
+        promptEnabled: false,
+        rationaleEnabled: false,
+        teacherInstructionsEnabled: false,
+        studentInstructionsEnabled: false,
+      },
+      {},
+      {
+        prompt: null,
+        rationale: null,
+        teacherInstructions: null,
+        promptEnabled: false,
+        rationaleEnabled: false,
+        teacherInstructionsEnabled: false,
+        studentInstructionsEnabled: false
+      }
+    );
+
+    assertViewStudent(
+      ' + role: student, promptEnabled, rationaleEnabled and teacherInstructionsEnabled unset',
+      {},
+      {},
+      {
+        rationale: null,
+        teacherInstructions: null,
+        promptEnabled: true,
+        rationaleEnabled: true,
+        teacherInstructionsEnabled: true,
+        studentInstructionsEnabled: true
+      }
+    );
 
     const assertEvaluate = (label, extra, session, expected) => {
       it(`'mode: evaluate, ${label}'`, async () => {

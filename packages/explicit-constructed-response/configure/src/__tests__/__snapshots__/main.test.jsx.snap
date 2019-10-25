@@ -1,0 +1,384 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
+            "Settings": Object {
+              "partialScoring": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "label": "cow",
+                  "value": "0",
+                },
+                Object {
+                  "label": "cattle",
+                  "value": "1",
+                },
+                Object {
+                  "label": "calf",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "label": "over",
+                  "value": "0",
+                },
+                Object {
+                  "label": "past",
+                  "value": "1",
+                },
+                Object {
+                  "label": "beyond",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "label": "moon",
+                  "value": "0",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "mode": "gather",
+            "prompt": "Complete the sentence",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "shuffle": true,
+            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+          }
+        }
+        onChangeConfiguration={[Function]}
+        onChangeModel={[Function]}
+      />
+    }
+  >
+    <div>
+      <InputContainer
+        label="Teacher Instructions"
+      >
+        <EditableHtml
+          markup=""
+          nonEmpty={false}
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <InputContainer
+        label="Prompt"
+      >
+        <EditableHtml
+          disableUnderline={true}
+          markup="Complete the sentence"
+          nonEmpty={false}
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <WithStyles(Typography)>
+        Define Template, Choices, and Correct Responses
+      </WithStyles(Typography)>
+      <EditableHtml
+        disabled={false}
+        highlightShape={false}
+        markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
+        onChange={[Function]}
+        responseAreaProps={
+          Object {
+            "options": Object {
+              "duplicates": true,
+            },
+            "respAreaToolbar": [Function],
+            "type": "explicit-constructed-response",
+          }
+        }
+        toolbarOpts={
+          Object {
+            "alwaysVisible": true,
+            "position": "top",
+          }
+        }
+      />
+      <WithStyles(Typography)>
+        Define Alternates
+      </WithStyles(Typography)>
+      <AlternateResponses
+        model={
+          Object {
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "label": "cow",
+                  "value": "0",
+                },
+                Object {
+                  "label": "cattle",
+                  "value": "1",
+                },
+                Object {
+                  "label": "calf",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "label": "over",
+                  "value": "0",
+                },
+                Object {
+                  "label": "past",
+                  "value": "1",
+                },
+                Object {
+                  "label": "beyond",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "label": "moon",
+                  "value": "0",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "mode": "gather",
+            "prompt": "Complete the sentence",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "shuffle": true,
+            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+          }
+        }
+        onChange={[Function]}
+      />
+      <InputContainer
+        label="Rationale"
+      >
+        <EditableHtml
+          markup=""
+          onChange={[Function]}
+        />
+      </InputContainer>
+    </div>
+  </ConfigLayout>
+</div>
+`;
+
+exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
+            "Settings": Object {
+              "partialScoring": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "label": "cow",
+                  "value": "0",
+                },
+                Object {
+                  "label": "cattle",
+                  "value": "1",
+                },
+                Object {
+                  "label": "calf",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "label": "over",
+                  "value": "0",
+                },
+                Object {
+                  "label": "past",
+                  "value": "1",
+                },
+                Object {
+                  "label": "beyond",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "label": "moon",
+                  "value": "0",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "mode": "gather",
+            "prompt": "Complete the sentence",
+            "promptEnabled": false,
+            "rationaleEnabled": false,
+            "shuffle": true,
+            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": false,
+          }
+        }
+        onChangeConfiguration={[Function]}
+        onChangeModel={[Function]}
+      />
+    }
+  >
+    <div>
+      <WithStyles(Typography)>
+        Define Template, Choices, and Correct Responses
+      </WithStyles(Typography)>
+      <EditableHtml
+        disabled={false}
+        highlightShape={false}
+        markup="<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>"
+        onChange={[Function]}
+        responseAreaProps={
+          Object {
+            "options": Object {
+              "duplicates": true,
+            },
+            "respAreaToolbar": [Function],
+            "type": "explicit-constructed-response",
+          }
+        }
+        toolbarOpts={
+          Object {
+            "alwaysVisible": true,
+            "position": "top",
+          }
+        }
+      />
+      <WithStyles(Typography)>
+        Define Alternates
+      </WithStyles(Typography)>
+      <AlternateResponses
+        model={
+          Object {
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "label": "cow",
+                  "value": "0",
+                },
+                Object {
+                  "label": "cattle",
+                  "value": "1",
+                },
+                Object {
+                  "label": "calf",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "label": "over",
+                  "value": "0",
+                },
+                Object {
+                  "label": "past",
+                  "value": "1",
+                },
+                Object {
+                  "label": "beyond",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "label": "moon",
+                  "value": "0",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "mode": "gather",
+            "prompt": "Complete the sentence",
+            "promptEnabled": false,
+            "rationaleEnabled": false,
+            "shuffle": true,
+            "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": false,
+          }
+        }
+        onChange={[Function]}
+      />
+    </div>
+  </ConfigLayout>
+</div>
+`;

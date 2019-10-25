@@ -46,7 +46,8 @@ export class AlternateResponses extends React.Component {
 
   getRemainingChoices = valueKey => {
     const { choices } = this.state;
-    const result = reduce(choices, (arr, c, key) => {
+
+    return reduce(choices, (arr, c, key) => {
       if (c && c.length === 1 && !valueKey) {
         arr.push({
           label: c[0].label,
@@ -56,10 +57,6 @@ export class AlternateResponses extends React.Component {
 
       return arr;
     }, []);
-
-    console.log(result);
-
-    return result;
   };
 
   onChoiceChanged = (choice, key) => {

@@ -1,6 +1,6 @@
 import escape from 'lodash/escape';
 
-const createElementFromHTML = htmlString => {
+const createElementFromHTML = (htmlString = '') => {
   const div = document.createElement('div');
 
   div.innerHTML = htmlString.trim();
@@ -9,8 +9,8 @@ const createElementFromHTML = htmlString => {
 };
 
 export const processMarkup = markup => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
-  const slateMarkup = createElementFromHTML(newMarkup);
+  const newMarkup = markup && markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const slateMarkup = createElementFromHTML(newMarkup || '');
   let index = 0;
 
   slateMarkup.querySelectorAll('[data-type="explicit_constructed_response"]').forEach(s => {
