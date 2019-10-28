@@ -1,4 +1,6 @@
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 
@@ -60,7 +62,7 @@ const getCorrectRadios = (rows, answers) => {
   let correctAnswers = 0;
 
   rows.forEach(row => {
-    if (_.isEqual(row.values, answers[row.id])) {
+    if (isEqual(row.values, answers[row.id])) {
       correctAnswers += 1;
     }
   });
@@ -99,7 +101,7 @@ export const outcome = (question, session, env) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
-      if (!session || _.isEmpty(session)) {
+      if (!session || isEmpty(session)) {
         resolve({ score: 0, empty: true });
       }
 
@@ -139,10 +141,10 @@ export const normalize = question => ({
  */
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
-    const normalizedQuestion = normalize(question);
+    const normalizedQuestion = cloneDeep(normalize(question));
     let correctness, score;
 
-    if ((!session || _.isEmpty(session)) && env.mode === 'evaluate') {
+    if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
       correctness = 'unanswered';
       score = '0%';
     } else {
@@ -168,6 +170,10 @@ export function model(question, session, env, updateSession) {
 
     normalizedQuestion.rows.forEach(row => {
       correctResponse[row.id] = row.values;
+
+      if (env.mode !== 'evaluate') {
+        delete row.values;
+      }
     });
 
     const fb =
@@ -176,14 +182,13 @@ export function model(question, session, env, updateSession) {
         : Promise.resolve(undefined);
 
     fb.then(feedback => {
-      const base = {
+      const out = {
         allowFeedback: normalizedQuestion.feedbackEnabled,
         prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         config: {
           ...normalizedQuestion,
           shuffled: !normalizedQuestion.lockChoiceOrder
         },
-        correctness: correctInfo,
         feedback,
         disabled: env.mode !== 'gather',
         view: env.mode === 'view'
@@ -193,18 +198,22 @@ export function model(question, session, env, updateSession) {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        base.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
-        base.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
       } else {
-        base.rationale = null;
-        base.teacherInstructions = null;
+        out.rationale = null;
+        out.teacherInstructions = null;
       }
 
-      const out = Object.assign(base, {
-        correctResponse
-      });
+      if (env.mode === 'evaluate') {
+        Object.assign(out, {
+          correctResponse,
+          correctness: correctInfo,
+        });
+      }
+
       log('out: ', out);
       resolve(out);
     });
