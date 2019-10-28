@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders with teacher instructions, prompt and rationale even if not set 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "lockChoiceOrder": Object {
+              "label": "Lock Choice Order",
+              "settings": true,
+            },
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
+            "Settings": Object {
+              "lockChoiceOrder": undefined,
+              "partialScoring": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "alternateResponse": Object {
+              "2": Array [
+                "2",
+              ],
+            },
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "correct": true,
+                  "label": "cow ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "dog ",
+                  "value": "1",
+                },
+                Object {
+                  "correct": false,
+                  "label": "cat ",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "correct": true,
+                  "label": "over ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "under ",
+                  "value": "1",
+                },
+                Object {
+                  "correct": false,
+                  "label": "across ",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "correct": true,
+                  "label": "moon ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "sun",
+                  "value": "2",
+                },
+                Object {
+                  "correct": false,
+                  "label": "house ",
+                  "value": "3",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
+            "mode": "gather",
+            "prompt": "Use the dropdowns to complete the sentence",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "shuffle": true,
+            "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+          }
+        }
+        onChangeConfiguration={[Function]}
+        onChangeModel={[Function]}
+      />
+    }
+  >
+    <div>
+      <InputContainer
+        label="Teacher Instructions"
+      >
+        <EditableHtml
+          markup=""
+          nonEmpty={false}
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <InputContainer
+        label="Prompt"
+      >
+        <EditableHtml
+          disableUnderline={true}
+          markup="Use the dropdowns to complete the sentence"
+          nonEmpty={false}
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <InputContainer
+        label="Rationale"
+      >
+        <EditableHtml
+          markup=""
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <WithStyles(Typography)>
+        Define Template, Choices, and Correct Responses
+      </WithStyles(Typography)>
+      <InfoDialog
+        open={false}
+      />
+      <EditableHtml
+        disabled={false}
+        highlightShape={false}
+        markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+        onChange={[Function]}
+        responseAreaProps={
+          Object {
+            "options": Object {
+              "duplicates": true,
+            },
+            "respAreaToolbar": [Function],
+            "type": "inline-dropdown",
+          }
+        }
+        toolbarOpts={
+          Object {
+            "alwaysVisible": true,
+            "position": "top",
+          }
+        }
+      />
+    </div>
+  </ConfigLayout>
+</div>
+`;
+
+exports[`Main snapshot renders without teacher instructions, prompt and rationale 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "lockChoiceOrder": Object {
+              "label": "Lock Choice Order",
+              "settings": true,
+            },
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
+            "Settings": Object {
+              "lockChoiceOrder": undefined,
+              "partialScoring": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "alternateResponse": Object {
+              "2": Array [
+                "2",
+              ],
+            },
+            "choices": Object {
+              "0": Array [
+                Object {
+                  "correct": true,
+                  "label": "cow ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "dog ",
+                  "value": "1",
+                },
+                Object {
+                  "correct": false,
+                  "label": "cat ",
+                  "value": "2",
+                },
+              ],
+              "1": Array [
+                Object {
+                  "correct": true,
+                  "label": "over ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "under ",
+                  "value": "1",
+                },
+                Object {
+                  "correct": false,
+                  "label": "across ",
+                  "value": "2",
+                },
+              ],
+              "2": Array [
+                Object {
+                  "correct": true,
+                  "label": "moon ",
+                  "value": "0",
+                },
+                Object {
+                  "correct": false,
+                  "label": "sun",
+                  "value": "2",
+                },
+                Object {
+                  "correct": false,
+                  "label": "house ",
+                  "value": "3",
+                },
+              ],
+            },
+            "disabled": false,
+            "markup": "<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>",
+            "mode": "gather",
+            "prompt": "Use the dropdowns to complete the sentence",
+            "promptEnabled": false,
+            "rationaleEnabled": false,
+            "shuffle": true,
+            "slateMarkup": "<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": false,
+          }
+        }
+        onChangeConfiguration={[Function]}
+        onChangeModel={[Function]}
+      />
+    }
+  >
+    <div>
+      <WithStyles(Typography)>
+        Define Template, Choices, and Correct Responses
+      </WithStyles(Typography)>
+      <InfoDialog
+        open={false}
+      />
+      <EditableHtml
+        disabled={false}
+        highlightShape={false}
+        markup="<div><p>The <span data-type=\\"inline_dropdown\\" data-index=\\"0\\" data-value=\\"cow \\"></span> jumped <span data-type=\\"inline_dropdown\\" data-index=\\"1\\" data-value=\\"over \\"></span> the <span data-type=\\"inline_dropdown\\" data-index=\\"2\\" data-value=\\"moon \\"></span></p></div>"
+        onChange={[Function]}
+        responseAreaProps={
+          Object {
+            "options": Object {
+              "duplicates": true,
+            },
+            "respAreaToolbar": [Function],
+            "type": "inline-dropdown",
+          }
+        }
+        toolbarOpts={
+          Object {
+            "alwaysVisible": true,
+            "position": "top",
+          }
+        }
+      />
+    </div>
+  </ConfigLayout>
+</div>
+`;

@@ -17,6 +17,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
+import max from 'lodash/max';
 
 const { toggle, Panel } = settings;
 
@@ -230,13 +231,12 @@ export class Main extends React.Component {
                 })
             );
           },
-          onCancel: () => {
+          onCancel: () =>
             this.setState({
               dialog: {
                 open: false
               }
-            });
-          }
+            })
         }
       });
     } else {
@@ -276,9 +276,11 @@ export class Main extends React.Component {
       return;
     }
 
+    const value = (respAreaChoices[index] && max(respAreaChoices[index].map(c => parseInt(c.value)).filter(val => !isNaN(val)))) || 0;
+
     respAreaChoices[index].push({
       label,
-      value: `${respAreaChoices[index].length}`,
+      value: `${value + 1}`,
       correct: false
     });
 
