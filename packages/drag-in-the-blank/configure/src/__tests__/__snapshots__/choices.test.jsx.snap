@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Choices snapshot renders with duplicates 1`] = `
+<div>
+  <WithStyles(Button)
+    color="primary"
+    onClick={[Function]}
+    variant="contained"
+  >
+    Add Choice
+  </WithStyles(Button)>
+  <div>
+    <DragSource(WithStyles(Component))
+      choice={
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        }
+      }
+      duplicates={true}
+      key="0"
+      onClick={[Function]}
+      onRemoveChoice={[Function]}
+      targetId="0"
+    />
+    <DragSource(WithStyles(Component))
+      choice={
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        }
+      }
+      duplicates={true}
+      key="1"
+      onClick={[Function]}
+      onRemoveChoice={[Function]}
+      targetId="0"
+    />
+    <DragSource(WithStyles(Component))
+      choice={
+        Object {
+          "id": "2",
+          "value": "<div>12</div>",
+        }
+      }
+      duplicates={true}
+      key="2"
+      onClick={[Function]}
+      onRemoveChoice={[Function]}
+      targetId="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`Choices snapshot renders without duplicates 1`] = `
+<div>
+  <WithStyles(Button)
+    color="primary"
+    onClick={[Function]}
+    variant="contained"
+  >
+    Add Choice
+  </WithStyles(Button)>
+  <div>
+    <DragSource(WithStyles(Component))
+      choice={
+        Object {
+          "id": "2",
+          "value": "<div>12</div>",
+        }
+      }
+      duplicates={false}
+      key="0"
+      onClick={[Function]}
+      onRemoveChoice={[Function]}
+      targetId="0"
+    />
+  </div>
+</div>
+`;

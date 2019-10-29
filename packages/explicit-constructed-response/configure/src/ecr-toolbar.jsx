@@ -7,7 +7,7 @@ const findSlateNode = key => {
   return window.document.querySelector('[data-key="' + key + '"]');
 };
 
-class ECRToolbar extends React.Component {
+export class ECRToolbar extends React.Component {
   static propTypes = {
     correctChoice: PropTypes.object,
     classes: PropTypes.object,

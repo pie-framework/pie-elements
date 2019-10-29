@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ECRToolbar snapshot renders 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#E0E1E6",
+    }
+  }
+>
+  <WithStyles(OutlinedInput)
+    autoFocus={true}
+    classes={
+      Object {
+        "input": undefined,
+      }
+    }
+    labelWidth={0}
+    onBlur={[Function]}
+    onChange={[Function]}
+  />
+</div>
+`;

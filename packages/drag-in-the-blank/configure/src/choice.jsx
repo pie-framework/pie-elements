@@ -1,7 +1,7 @@
 import React from 'react';
 import MoreVert from '@material-ui/icons/MoreVert';
 import Delete from '@material-ui/icons/Delete';
-import { DragSource } from '@pie-lib/drag';
+import { DragSource } from 'react-dnd';
 import { withStyles } from '@material-ui/core/styles';
 import { choiceIsEmpty } from './markupUtils';
 
@@ -75,7 +75,7 @@ export const BlankContent = withStyles(theme => ({
   );
 });
 
-const tileSource = {
+export const tileSource = {
   canDrag(props) {
     if (choiceIsEmpty(props.choice)) {
       alert('You need to define a value for an answer choice before it can be associated with a response area.');

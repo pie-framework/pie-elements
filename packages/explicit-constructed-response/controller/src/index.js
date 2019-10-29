@@ -3,7 +3,7 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 
-const prepareChoice = (mode, defaultFeedback) => choice => {
+export const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
     value: choice.value

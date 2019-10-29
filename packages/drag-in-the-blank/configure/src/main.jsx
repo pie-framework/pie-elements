@@ -6,15 +6,10 @@ import { InputContainer, layout, settings } from '@pie-lib/config-ui';
 import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 
 import Choices from './choices';
-import { processMarkup, createSlateMarkup } from './markupUtils';
+import { createSlateMarkup } from './markupUtils';
 const { dropdown, toggle, Panel } = settings;
 
 const styles = theme => ({
