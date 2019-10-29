@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.0.4...@pie-element/match@4.1.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* upgrade @pie-ui/match@^2.3.10 [ch4390] ([a289e41](https://github.com/pie-framework/pie-elements/commit/a289e41))
+
+
+### Features
+
+* **controller:** added new tests [ch5020] ([8a43aa2](https://github.com/pie-framework/pie-elements/commit/8a43aa2))
+* **controller:** fixed tests [ch5020] ([eaca07a](https://github.com/pie-framework/pie-elements/commit/eaca07a))
+* **controller:** made sure controller is not divulging sensitive data when not in evaluate mode [ch5020] ([364acda](https://github.com/pie-framework/pie-elements/commit/364acda))
+
+
+
+
+
 ## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.0.3...@pie-element/match@4.0.4) (2019-10-16)
 
 

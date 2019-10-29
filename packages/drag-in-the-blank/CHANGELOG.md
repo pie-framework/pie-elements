@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.0.4...@pie-element/drag-in-the-blank@3.1.0) (2019-10-29)
+
+
+### Features
+
+* Added tests for get score, outcome, correctResponse, all correct responses and choice is empty functions. ([8095be9](https://github.com/pie-framework/pie-elements/commit/8095be9))
+* Added tests. ([21b7dad](https://github.com/pie-framework/pie-elements/commit/21b7dad))
+
+
+
+
+
 ## [3.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.0.3...@pie-element/drag-in-the-blank@3.0.4) (2019-10-16)
 
 

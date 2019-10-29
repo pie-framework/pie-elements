@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.0.0...@pie-element/drag-in-the-blank-configure@3.1.0) (2019-10-29)
+
+
+### Features
+
+* Added tests. ([21b7dad](https://github.com/pie-framework/pie-elements/commit/21b7dad))
+
+
+
+
+
 # [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@2.1.3...@pie-element/drag-in-the-blank-configure@3.0.0) (2019-10-08)
 
 
