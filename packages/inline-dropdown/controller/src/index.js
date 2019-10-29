@@ -182,7 +182,10 @@ export function outcome(model, session) {
     const partialScoringEnabled = model.partialScoring || false;
     const score = getScore(model, session);
 
-    resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
+    resolve({
+      score: partialScoringEnabled ? score : Math.floor(score),
+      empty: false
+    });
   });
 }
 
