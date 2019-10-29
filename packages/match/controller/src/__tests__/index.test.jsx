@@ -69,17 +69,30 @@ describe('model', () => {
       result = await model(question, session, env);
     });
 
+    it('returns a new object, without using the same reference', () => {
+      expect(result).not.toEqual(question);
+    });
+
     it('returns disabled:false', () => {
       expect(result.disabled).toEqual(false);
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness.correctness).toEqual(undefined);
+      expect(result.correctness).toEqual(undefined);
+    });
+
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
+
+    it('returns rows without correct values', () => {
+      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title}) => ({ id, title })));
+    });
+
   });
 
   describe('view', () => {
@@ -110,16 +123,28 @@ describe('model', () => {
       });
     });
 
+    it('returns a new object, without using the same reference', () => {
+      expect(result).not.toEqual(question);
+    });
+
     it('returns disabled:true', () => {
       expect(result.disabled).toEqual(true);
     });
 
     it('returns undefined for correctness ', () => {
-      expect(result.correctness.correctness).toEqual(undefined);
+      expect(result.correctness).toEqual(undefined);
+    });
+
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual(undefined);
+    });
+
+    it('returns rows without correct values', () => {
+      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title}) => ({ id, title })));
     });
   });
 
@@ -129,6 +154,10 @@ describe('model', () => {
       session = { answers: {} };
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
+    });
+
+    it('returns a new object, without using the same reference', () => {
+      expect(result).not.toEqual(question);
     });
 
     it('returns disabled:true', () => {
@@ -153,6 +182,10 @@ describe('model', () => {
 
     it('returns default for feedback', async () => {
       expect(result.feedback).toEqual(feedbackDefaults.unanswered.default);
+    });
+
+    it('returns rows with correct values', () => {
+      expect(result.config.rows).toEqual(defaultModel.rows);
     });
 
     const returnCorrectness = sess => {
