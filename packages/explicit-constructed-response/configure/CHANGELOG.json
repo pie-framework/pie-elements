@@ -438,5 +438,20 @@
     "committerDate": "2019-10-11 12:25:42 +0100",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@3.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added tests for configure.",
+    "merge": null,
+    "header": "feat: Added tests for configure.",
+    "body": "(WIP)",
+    "footer": null,
+    "notes": [],
+    "hash": "3c26889669ebe93eb17bdb481588c4cc6c23da3a",
+    "gitTags": "",
+    "committerDate": "2019-10-25 13:23:18 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-configure@3.1.0"
   }
 ]

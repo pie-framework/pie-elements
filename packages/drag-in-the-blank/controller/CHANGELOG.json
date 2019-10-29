@@ -333,5 +333,35 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-controller@3.0.4"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added tests for get score, outcome, correctResponse, all correct responses and choice is empty functions.",
+    "merge": null,
+    "header": "feat: Added tests for get score, outcome, correctResponse, all correct responses and choice is empty functions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8095be9bc07eec08b132d4b590f2a84c6b9c440e",
+    "gitTags": "",
+    "committerDate": "2019-10-24 21:46:17 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-controller@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "Added tests.",
+    "merge": null,
+    "header": "feat: Added tests.",
+    "body": "(WIP)",
+    "footer": null,
+    "notes": [],
+    "hash": "21b7dada9944f7908de545a52e495eb0ac41e82e",
+    "gitTags": "",
+    "committerDate": "2019-10-24 13:50:15 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-controller@3.1.0"
   }
 ]
