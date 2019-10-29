@@ -2423,10 +2423,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.3.9":
-  version "2.3.9"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.9.tgz#17a7c6a4e4171d60e38527da36a9bb936c9817e0"
-  integrity sha512-7A4fXqBzv7oHvNSiLyOkOtn9WfG0e8FiH5cs+O3VzvYrI7ns8V8a1ySzJ9A2/m4Uirj/MOe74hrG5TM1/A7GWg==
+"@pie-ui/match@^2.3.10":
+  version "2.3.10"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.10.tgz#357ac4fcf9006eae3ac10a460fec033c10fa184e"
+  integrity sha512-TK48jYyzAVGDY/iAQTldlT2WJOs8F5KZDEf4xcgUrQJC0vp5G/D6U47yUqRRyLFGw+1n5qYpYIHd/o2y2geDtg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
