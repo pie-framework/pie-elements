@@ -79,6 +79,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelChanged = (m) => {
+    console.log('onModelChanged', m);
     this._model = {
       ...this._model,
       ...m,
@@ -113,11 +114,12 @@ export default class EbsrConfigure extends HTMLElement {
     if (e.target === this) {
       return;
     }
+    console.log('onModelUpdated', e.update, e.target && e.target.getAttribute('id'));
 
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    const id = e.target.getAttribute('id');
+    const id = e.target && e.target.getAttribute('id');
 
     if (id) {
       if (e.update) {
@@ -138,6 +140,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   _render() {
+    console.log('render');
     let element = React.createElement(Main, {
       model: this._model,
       configuration: this._configuration,

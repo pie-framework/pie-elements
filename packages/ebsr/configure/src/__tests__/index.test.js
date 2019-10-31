@@ -1,8 +1,26 @@
 import React from 'react';
+import { mount } from 'enzyme';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import merge from 'lodash/merge';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
+import ReactDOM from 'react-dom';
+import defaults from '../defaults';
+import { Main } from '../main';
+
+jest.mock('react-dom', () => ({
+  render: jest.fn()
+}));
+
+jest.mock('@pie-framework/pie-configure-events', () => ({
+  ModelUpdatedEvent: (update) => {
+    return {
+      update,
+      preventDefault: jest.fn(),
+      stopImmediatePropagation: jest.fn()
+    }
+  }
+}));
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -11,7 +29,11 @@ jest.mock('@pie-lib/config-ui', () => ({
   settings: {
     Panel: props => <div {...props} />,
     toggle: jest.fn(),
-    radio: jest.fn()
+    radio: jest.fn(),
+    dropdown: jest.fn()
+  },
+  layout: {
+    ConfigLayout: props => <div>{props.children}</div>
   }
 }));
 
@@ -71,6 +93,150 @@ const model = {
     prompt: `prompt ${PART_B}`
   }
 };
+
+const createDefaultModel = (model = {}) => ({
+  ...defaults.model,
+  ...model,
+  partA: {
+    ...defaults.model.partA,
+    ...model.partA
+  },
+  partB: {
+    ...defaults.model.partB,
+    ...model.partB
+  },
+});
+
+describe('index', () => {
+  let Def;
+  let el;
+  let onModelChanged = jest.fn();
+  let onConfigurationChanged = jest.fn();
+  let main;
+
+  beforeAll(() => {
+    Def = require('../index').default;
+  });
+
+  beforeEach(() => {
+    el = new Def();
+    el.model = model;
+    el.onModelChanged = onModelChanged;
+    el.onConfigurationChanged = onConfigurationChanged;
+    el.connectedCallback();
+    el.dispatchEvent = el.onModelUpdated;
+
+    main = mount(<Main
+      classes={{}}
+      model={el._model}
+      configuration={defaults.configuration}
+      onConfigurationChanged={onConfigurationChanged}
+      onModelChanged={onModelChanged}
+    />);
+
+    // mock onModelChanged to dispatch a MODEL_UPDATED event (as multiple-choice does)
+    main.instance().partA.onModelChanged = (m) => {
+      const event = new ModelUpdatedEvent(m, false);
+
+      el.dispatchEvent({
+        ...event,
+        target: {
+          getAttribute: jest.fn().mockReturnValue('A')
+        }
+      });
+    };
+    main.instance().partB.onModelChanged = (m) => {
+      const event = new ModelUpdatedEvent(m, false);
+
+      el.dispatchEvent({
+        ...event,
+        target: {
+          getAttribute: jest.fn().mockReturnValue('B')
+        }
+      });
+    };
+  });
+
+  describe('set model', () => {
+    it('calls ReactDOM.render', () => {
+      el.model = model;
+
+      expect(ReactDOM.render).toHaveBeenCalled();
+      expect(el._model).toEqual(createDefaultModel(model));
+    });
+  });
+
+  describe('set configuration', () => {
+    it('calls ReactDOM.render', () => {
+      el.configuration = defaults.configuration;
+
+      expect(ReactDOM.render).toHaveBeenCalled();
+    });
+  });
+
+  const assetOnModelUpdated = (label, key, updatedPart, expected) => {
+    it(label, () => {
+      const event = new ModelUpdatedEvent(updatedPart, false);
+
+      el.dispatchEvent({
+        ...event,
+        target: {
+          getAttribute: jest.fn().mockReturnValue(key)
+        }
+      });
+
+      expect(ReactDOM.render).toBeCalled();
+      expect(el._model[`part${key}`]).toEqual(expected);
+    });
+  };
+
+  describe('onModelUpdated', () => {
+    assetOnModelUpdated(
+      'dispatching MODEL_UPDATED updates model.partA',
+      'A',
+      { updatedA: true },
+      { updatedA: true }
+      );
+    assetOnModelUpdated(
+      'dispatching MODEL_UPDATED updates model.partB',
+      'B',
+      { updatedB: true },
+      { updatedB: true });
+
+    assetOnModelUpdated(
+      'dispatching MODEL_UPDATED with update undefined does not update model.partA',
+      'A',
+      undefined,
+      createDefaultModel(model).partA);
+    assetOnModelUpdated(
+      'dispatching MODEL_UPDATED with update undefined does not update model.partB',
+      'B',
+      undefined,
+      createDefaultModel(model).partB);
+  });
+
+
+
+
+  const assetOnModelChanged = (label, key, updatedModel) => {
+    it(label, () => {
+      main.instance().props.onModelChanged({ test: 'a' });
+
+      expect(onModelChanged).toHaveBeenCalledWith({ test: 'a' });
+    });
+  };
+
+
+  const assetPartUpdate = (label, key, updatedModel) => {
+    it(label, () => {
+      main.instance().partA.onModelChanged({ test: 'ceva'});
+
+      console.log('assetPartUpdate');
+      expect(ReactDOM.render).toBeCalled();
+    });
+  };
+});
+
 
 // these tests are no longer proper for EBSR, since previously React was not used
 xdescribe('index', () => {
