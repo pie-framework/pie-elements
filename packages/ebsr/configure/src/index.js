@@ -117,7 +117,7 @@ export default class EbsrConfigure extends HTMLElement {
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    const id = e.target.getAttribute('id');
+    const id = e.target && e.target.getAttribute('id');
 
     if (id) {
       if (e.update) {
