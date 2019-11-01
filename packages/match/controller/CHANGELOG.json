@@ -363,5 +363,50 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/match-controller@4.0.4"
+  },
+  {
+    "type": "feat",
+    "scope": "controller",
+    "subject": "added new tests [ch5020]",
+    "merge": null,
+    "header": "feat(controller): added new tests [ch5020]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8a43aa2e402e3835a7c79e659852daf4f19200aa",
+    "gitTags": " (origin/ch5020/match-controller-return)",
+    "committerDate": "2019-10-24 14:50:33 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "controller",
+    "subject": "fixed tests [ch5020]",
+    "merge": null,
+    "header": "feat(controller): fixed tests [ch5020]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "eaca07a9ce89f99312bc42d5b4bf0dd9f514e96f",
+    "gitTags": "",
+    "committerDate": "2019-10-24 14:09:19 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@4.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "controller",
+    "subject": "made sure controller is not divulging sensitive data when not in evaluate mode [ch5020]",
+    "merge": null,
+    "header": "feat(controller): made sure controller is not divulging sensitive data when not in evaluate mode [ch5020]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "364acda6d058c41a305081a250bdddfbb6fdbb93",
+    "gitTags": "",
+    "committerDate": "2019-10-24 13:59:30 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@4.1.0"
   }
 ]
