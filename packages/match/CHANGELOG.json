@@ -1248,5 +1248,20 @@
     "committerDate": "2019-10-24 13:59:30 +0300",
     "isTagged": true,
     "tag": "@pie-element/match@4.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "use @pie-ui/match@^2.3.12 PIE-163",
+    "merge": null,
+    "header": "fix: use @pie-ui/match@^2.3.12 PIE-163",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "22a4359c9d0e0b32cbc953524ebde53b3b986daa",
+    "gitTags": " (develop)",
+    "committerDate": "2019-11-01 15:58:08 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/match@4.1.1"
   }
 ]

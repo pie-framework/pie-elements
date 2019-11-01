@@ -318,5 +318,20 @@
     "committerDate": "2019-10-11 12:01:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/drawing-response@3.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "upgrade @pie-ui/drawing-response@^1.5.0 [ch5017]",
+    "merge": null,
+    "header": "feat: upgrade @pie-ui/drawing-response@^1.5.0 [ch5017]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8953427f8cdfbb87078f4ecdcfbcc64f1da55e84",
+    "gitTags": " (origin/develop, origin/HEAD)",
+    "committerDate": "2019-11-01 10:54:21 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response@3.1.0"
   }
 ]
