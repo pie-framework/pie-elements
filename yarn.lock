@@ -2424,12 +2424,13 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.3.10":
-  version "2.3.10"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.10.tgz#357ac4fcf9006eae3ac10a460fec033c10fa184e"
-  integrity sha512-TK48jYyzAVGDY/iAQTldlT2WJOs8F5KZDEf4xcgUrQJC0vp5G/D6U47yUqRRyLFGw+1n5qYpYIHd/o2y2geDtg==
+"@pie-ui/match@^2.3.12":
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.3.12.tgz#6c5ce25e4dcbc3eef9b1ae3dcf99134cbbaa86a2"
+  integrity sha512-ZljftWMDDmAzSeAwSQFvYR3cbze+sKY9JqCGaqb65vLB+uCXQgEiWjgQLF2xWN7yCVkSGBx3cpAXiktRDNS2MQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
+    "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
     "@pie-lib/render-ui" "^4.4.5"
     classnames "^2.2.5"
