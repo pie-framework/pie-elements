@@ -63,8 +63,8 @@ export default {
       rationaleEnabled: true,
       feedbackEnabled: true,
       promptEnabled: true,
-      teacherInstructions: 'test',
-      rationale: 'test',
+      teacherInstructions: '',
+      rationale: '',
       teacherInstructionsEnabled: true,
       studentInstructionsEnabled: true
     },
@@ -77,6 +77,8 @@ export default {
       rationaleEnabled: true,
       promptEnabled: true,
       feedbackEnabled: true,
+      teacherInstructions: '',
+      rationale: '',
       teacherInstructionsEnabled: true,
       studentInstructionsEnabled: true
     },
