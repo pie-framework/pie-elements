@@ -3,6 +3,7 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import merge from 'lodash/merge';
 import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
+import EbsrConfigure from '../index';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -72,8 +73,27 @@ const model = {
   }
 };
 
-// these tests are no longer proper for EBSR, since previously React was not used
-xdescribe('index', () => {
+describe('EBSR Configure', () => {
+  describe('createDefaultModel', () => {
+    it('default-snapshot', () => {
+      const m = EbsrConfigure.createDefaultModel({});
+      expect(m).toMatchSnapshot();
+    });
+    it('with-overrides-snapshot', () => {
+      const m = EbsrConfigure.createDefaultModel({
+        partA: { rationale: 'foo', teacherInstructions: 'ti' }
+      });
+      expect(m).toMatchSnapshot();
+    });
+  });
+});
+
+/**
+ * TODO: these are the old tests written when ebsr didn't use custom elements.
+ * they are due a rewrite
+ */
+
+xdescribe('rewrite-needed:index', () => {
   let Def;
   let el;
   let ebsr;

@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep';
 const defaultConfig = {
   addChoiceButton: {
     settings: true,
-    label: 'Add a Choice',
+    label: 'Add a Choice'
   },
   choiceMode: {
     settings: true,
@@ -14,7 +14,7 @@ const defaultConfig = {
     label: 'Choice Labels'
   },
   deleteChoice: {
-    settings: true,
+    settings: true
   },
   feedback: {
     settings: true,
@@ -26,7 +26,7 @@ const defaultConfig = {
   },
   partialScoring: {
     settings: true,
-    label: 'Allow Partial Scoring',
+    label: 'Allow Partial Scoring'
   },
   prompt: {
     settings: true,
@@ -38,7 +38,7 @@ const defaultConfig = {
   },
   scoringType: {
     settings: false,
-    label: 'Scoring Type',
+    label: 'Scoring Type'
   },
   studentInstructions: {
     settings: false,
@@ -50,38 +50,28 @@ const defaultConfig = {
   }
 };
 
+const partModel = base => ({
+  choiceMode: 'radio',
+  choices: [],
+  choicePrefix: 'numbers',
+  partialScoring: false,
+  prompt: 'Prompt',
+  rationaleEnabled: true,
+  feedbackEnabled: true,
+  promptEnabled: true,
+  teacherInstructions: '',
+  rationale: '',
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
+  ...base
+});
+
 export default {
   model: {
     partLabels: true,
     partLabelType: 'Letters',
-    partA: {
-      choiceMode: 'radio',
-      choices: [],
-      choicePrefix: 'numbers',
-      partialScoring: false,
-      prompt: 'Prompt A',
-      rationaleEnabled: true,
-      feedbackEnabled: true,
-      promptEnabled: true,
-      teacherInstructions: '',
-      rationale: '',
-      teacherInstructionsEnabled: true,
-      studentInstructionsEnabled: true
-    },
-    partB: {
-      choiceMode: 'radio',
-      choices: [],
-      choicePrefix: 'numbers',
-      partialScoring: false,
-      prompt: 'Prompt B',
-      rationaleEnabled: true,
-      promptEnabled: true,
-      feedbackEnabled: true,
-      teacherInstructions: '',
-      rationale: '',
-      teacherInstructionsEnabled: true,
-      studentInstructionsEnabled: true
-    },
+    partA: partModel({ prompt: 'Prompt A' }),
+    partB: partModel({ prompt: 'Prompt B' })
   },
   configuration: {
     partA: {
@@ -92,7 +82,7 @@ export default {
       },
       partialScoring: {
         settings: false,
-        label: 'Allow Partial Scoring',
+        label: 'Allow Partial Scoring'
       }
     },
     partB: cloneDeep(defaultConfig),
