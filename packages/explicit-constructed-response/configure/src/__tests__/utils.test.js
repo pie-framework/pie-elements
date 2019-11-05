@@ -1,8 +1,8 @@
 import { processMarkup, createSlateMarkup } from '../markupUtils';
 
 describe('processMarkup', () => {
-  const assertProcessMarkup = (markup, expected) => {
-    it(`returns processed markup: ${expected}`, () => {
+  const assertProcessMarkup = (markup, expected, should) => {
+    it(should || `returns processed markup: ${expected}`, () => {
       expect(processMarkup(markup)).toEqual(expected);
     });
   };
@@ -30,6 +30,26 @@ describe('processMarkup', () => {
   assertProcessMarkup(
     null,
     '');
+
+  assertProcessMarkup(
+    '<div> \\tfoo\\nbar </div>',
+    '<div> foobar </div>',
+    'should remove \t, \n from the string');
+
+  assertProcessMarkup(
+    '<div> \"foobar\" </div>',
+    '<div> "foobar" </div>',
+    'should replace \" with " in the string');
+
+  assertProcessMarkup(
+    '<div> \/foobar </div>',
+    '<div> /foobar </div>',
+    'should replace \/ with / in the string');
+
+  assertProcessMarkup(
+    '<div> <br><br> </br> </div>',
+    '<div>   </div>',
+    'should remove <br> or </br> elements from the string');
 });
 
 describe('createSlateMarkup', () => {
@@ -39,8 +59,8 @@ describe('createSlateMarkup', () => {
     2: [{ label: 'moon', value: '0' }]
   };
 
-  const assertCreateSlateMarkup = (markup, expected) => {
-    it(`returns slate markup: ${expected}`, () => {
+  const assertCreateSlateMarkup = (markup, expected, should) => {
+    it(should || `returns slate markup: ${expected}`, () => {
       expect(createSlateMarkup(markup, choices)).toEqual(expected);
     });
   };
@@ -71,4 +91,24 @@ describe('createSlateMarkup', () => {
   assertCreateSlateMarkup(
     null,
     '');
+
+  assertCreateSlateMarkup(
+    '<div> \\tfoo\\nbar </div>',
+    '<div> foobar </div>',
+    'should remove \t, \n from the string');
+
+  assertCreateSlateMarkup(
+    '<div> \"foobar\" </div>',
+    '<div> "foobar" </div>',
+    'should replace \" with " in the string');
+
+  assertCreateSlateMarkup(
+    '<div> \/foobar </div>',
+    '<div> /foobar </div>',
+    'should replace \/ with / in the string');
+
+  assertCreateSlateMarkup(
+    '<div> <br><br> </br> </div>',
+    '<div>   </div>',
+    'should remove <br> or </br> elements from the string');
 });
