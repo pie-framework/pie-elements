@@ -225,6 +225,32 @@ describe('controller', () => {
         );
       });
 
+      it('returns choices w/ correct even if feedbackEnabled is false', async () => {
+        result = await model({
+          ...question,
+          feedbackEnabled: false
+        }, session, env, jest.fn());
+
+        expect(result.choices).toEqual(
+          expect.arrayContaining([
+            {
+              label: 'a',
+              value: 'apple',
+              correct: true,
+              feedback: 'foo',
+              rationale: null
+            },
+            {
+              label: 'b',
+              value: 'banana',
+              correct: false,
+              feedback: 'Incorrect',
+              rationale: null
+            }
+          ])
+        );
+      });
+
       it('returns is response correct', () => {
         expect(result.responseCorrect).toEqual(false);
       });
