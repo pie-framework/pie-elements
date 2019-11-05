@@ -19,7 +19,7 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     out.rationale = null;
   }
 
-  if (env.mode === 'evaluate' && model.feedbackEnabled) {
+  if (env.mode === 'evaluate') {
     out.correct = !!choice.correct;
 
     const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
@@ -44,7 +44,6 @@ export function createDefaultModel(model = {}) {
 }
 
 export const normalize = question => ({
-  feedbackEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
@@ -87,7 +86,6 @@ export async function model(question, session, env, updateSession) {
     keyMode: normalizedQuestion.choicePrefix,
     shuffle: !normalizedQuestion.lockChoiceOrder,
     choices,
-    feedbackEnabled: normalizedQuestion.feedbackEnabled,
 
     //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
     complete: {
