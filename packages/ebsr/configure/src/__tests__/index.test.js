@@ -5,18 +5,21 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import ReactDOM from 'react-dom';
 import defaults from '../defaults';
 import { Main } from '../main';
+import merge from 'lodash/merge';
+import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
+import EbsrConfigure from '../index';
 
 jest.mock('react-dom', () => ({
   render: jest.fn()
 }));
 
 jest.mock('@pie-framework/pie-configure-events', () => ({
-  ModelUpdatedEvent: (update) => {
+  ModelUpdatedEvent: update => {
     return {
       update,
       preventDefault: jest.fn(),
       stopImmediatePropagation: jest.fn()
-    }
+    };
   }
 }));
 
@@ -37,8 +40,7 @@ jest.mock('@pie-lib/config-ui', () => ({
 
 jest.mock(
   '@pie-element/multiple-choice/configure/lib',
-  () => class MockConfigure {
-  }
+  () => class MockConfigure {}
 );
 
 const PART_A = 'partA';
@@ -54,60 +56,57 @@ const createDefaultModel = (model, newModel = {}) => ({
   partB: {
     ...model.partB,
     ...newModel.partB
-  },
+  }
 });
 
-const model = createDefaultModel(
-  defaults.model,
-  {
-    partA: {
-      choiceMode: 'radio',
-      choices: [
-        {
-          value: 'yellow',
-          label: 'Yellow',
-          correct: true,
-          feedback: {
-            type: 'custom',
-            value: 'foo'
-          }
-        },
-        {
-          value: 'green',
-          label: 'Green',
-          feedback: {
-            type: 'default'
-          }
+const model = createDefaultModel(defaults.model, {
+  partA: {
+    choiceMode: 'radio',
+    choices: [
+      {
+        value: 'yellow',
+        label: 'Yellow',
+        correct: true,
+        feedback: {
+          type: 'custom',
+          value: 'foo'
         }
-      ],
-      choicePrefix: 'numbers',
-      prompt: `prompt ${PART_A}`
-    },
-    partB: {
-      choiceMode: 'radio',
-      choices: [
-        {
-          value: 'orange',
-          label: 'Orange',
-          correct: true,
-          feedback: {
-            type: 'custom',
-            value: 'foo'
-          }
-        },
-        {
-          value: 'purple',
-          label: 'Purple',
-          feedback: {
-            type: 'default'
-          }
+      },
+      {
+        value: 'green',
+        label: 'Green',
+        feedback: {
+          type: 'default'
         }
-      ],
-      choicePrefix: 'numbers',
-      prompt: `prompt ${PART_B}`
-    }
-  });
-
+      }
+    ],
+    choicePrefix: 'numbers',
+    prompt: `prompt ${PART_A}`
+  },
+  partB: {
+    choiceMode: 'radio',
+    choices: [
+      {
+        value: 'orange',
+        label: 'Orange',
+        correct: true,
+        feedback: {
+          type: 'custom',
+          value: 'foo'
+        }
+      },
+      {
+        value: 'purple',
+        label: 'Purple',
+        feedback: {
+          type: 'default'
+        }
+      }
+    ],
+    choicePrefix: 'numbers',
+    prompt: `prompt ${PART_B}`
+  }
+});
 
 describe('index', () => {
   let Def;
@@ -129,16 +128,18 @@ describe('index', () => {
     el.connectedCallback();
     el.dispatchEvent = el.onModelUpdated;
 
-    main = mount(<Main
-      classes={{}}
-      model={el._model}
-      configuration={defaults.configuration}
-      onConfigurationChanged={el.onConfigurationChanged}
-      onModelChanged={el.onModelChanged}
-    />);
+    main = mount(
+      <Main
+        classes={{}}
+        model={el._model}
+        configuration={defaults.configuration}
+        onConfigurationChanged={el.onConfigurationChanged}
+        onModelChanged={el.onModelChanged}
+      />
+    );
 
     // mock onModelChanged to dispatch a MODEL_UPDATED event (as multiple-choice does)
-    main.instance().partA.onModelChanged = (m) => {
+    main.instance().partA.onModelChanged = m => {
       const event = new ModelUpdatedEvent(m, false);
 
       el.dispatchEvent({
@@ -148,7 +149,7 @@ describe('index', () => {
         }
       });
     };
-    main.instance().partB.onModelChanged = (m) => {
+    main.instance().partB.onModelChanged = m => {
       const event = new ModelUpdatedEvent(m, false);
 
       el.dispatchEvent({
@@ -158,6 +159,19 @@ describe('index', () => {
         }
       });
     };
+  });
+
+  describe('createDefaultModel', () => {
+    it('default-snapshot', () => {
+      const m = EbsrConfigure.createDefaultModel({});
+      expect(m).toMatchSnapshot();
+    });
+    it('with-overrides-snapshot', () => {
+      const m = EbsrConfigure.createDefaultModel({
+        partA: { rationale: 'foo', teacherInstructions: 'ti' }
+      });
+      expect(m).toMatchSnapshot();
+    });
   });
 
   describe('set model', () => {
@@ -222,18 +236,21 @@ describe('index', () => {
       'dispatching MODEL_UPDATED updates model.partB',
       'B',
       { updatedB: true },
-      { updatedB: true });
+      { updatedB: true }
+    );
 
     assetOnModelUpdated(
       'dispatching MODEL_UPDATED with update undefined does not update model.partA',
       'A',
       undefined,
-      createDefaultModel(model).partA);
+      createDefaultModel(model).partA
+    );
     assetOnModelUpdated(
       'dispatching MODEL_UPDATED with update undefined does not update model.partB',
       'B',
       undefined,
-      createDefaultModel(model).partB);
+      createDefaultModel(model).partB
+    );
   });
 
   const assetPartUpdate = (label, key, updatedModel) => {
@@ -249,19 +266,23 @@ describe('index', () => {
     assetPartUpdate(
       'Dispatching Model Updated Event will update Teacher Instructions',
       'partA',
-      { ...model.partA, teacherInstructions: 'Part A Teacher Instructions' });
+      { ...model.partA, teacherInstructions: 'Part A Teacher Instructions' }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Teacher Instructions',
       'partB',
-      { ...model.partB, teacherInstructions: 'Part B Teacher Instructions' });
+      { ...model.partB, teacherInstructions: 'Part B Teacher Instructions' }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Prompt',
       'partA',
-      { ...model.partA, prompt: 'Prompt A' });
+      { ...model.partA, prompt: 'Prompt A' }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Prompt',
       'partB',
-      { ...model.partA, prompt: 'Prompt B' });
+      { ...model.partA, prompt: 'Prompt B' }
+    );
 
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - ADD CHOICE',
@@ -281,7 +302,8 @@ describe('index', () => {
             }
           }
         ]
-      });
+      }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - ADD CHOICE',
       'partB',
@@ -300,21 +322,24 @@ describe('index', () => {
             }
           }
         ]
-      });
+      }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - REMOVE CHOICE',
       'partA',
       {
         ...model.partA,
         choices: model.partA.choices.splice(0, 2)
-      });
+      }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - REMOVE CHOICE',
       'partB',
       {
         ...model.partB,
         choices: model.partB.choices.splice(0, 2)
-      });
+      }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - CHANGE CHOICE',
       'partA',
@@ -329,7 +354,8 @@ describe('index', () => {
             value: ''
           }
         })
-      });
+      }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices - CHANGE CHOICE',
       'partB',
@@ -344,16 +370,19 @@ describe('index', () => {
             value: ''
           }
         })
-      });
+      }
+    );
 
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices',
       'partA',
-      { ...model.partA, choices: [] });
+      { ...model.partA, choices: [] }
+    );
     assetPartUpdate(
       'Dispatching Model Updated Event will update Choices',
       'partB',
-      { ...model.partB, choices: [] });
+      { ...model.partB, choices: [] }
+    );
   });
 });
 
@@ -372,13 +401,15 @@ describe('main', () => {
     el.configuration = defaults.configuration;
     el.dispatchEvent = el.onModelUpdated;
 
-    main = mount(<Main
-      classes={{}}
-      model={el._model}
-      configuration={defaults.configuration}
-      onConfigurationChanged={el.onConfigurationChanged}
-      onModelChanged={el.onModelChanged}
-    />);
+    main = mount(
+      <Main
+        classes={{}}
+        model={el._model}
+        configuration={defaults.configuration}
+        onConfigurationChanged={el.onConfigurationChanged}
+        onModelChanged={el.onModelChanged}
+      />
+    );
   });
 
   const assertOnModelChanged = (label, updatedModel, expected) => {
@@ -397,119 +428,139 @@ describe('main', () => {
         partA: {
           choiceMode: 'checkbox'
         }
-      }, {
+      },
+      {
         ...model,
         partA: {
           choiceMode: 'checkbox'
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partA - choicePrefix',
       {
         partA: {
           choicePrefix: 'numbers'
         }
-      }, {
+      },
+      {
         ...model,
         partA: {
           choicePrefix: 'numbers'
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partA - partialScoring',
       {
         partA: {
           partialScoring: false
         }
-      }, {
+      },
+      {
         ...model,
         partA: {
           partialScoring: false
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partA - lockChoiceOrder',
       {
         partA: {
           lockChoiceOrder: true
         }
-      }, {
+      },
+      {
         ...model,
         partA: {
           lockChoiceOrder: true
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partA - scoringType',
       {
         partA: {
           scoringType: 'auto'
         }
-      }, {
+      },
+      {
         ...model,
         partA: {
           scoringType: 'auto'
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partB - checkbox',
       {
         partB: {
           choiceMode: 'checkbox'
         }
-      }, {
+      },
+      {
         ...model,
         partB: {
           choiceMode: 'checkbox'
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partB - choicePrefix',
       {
         partB: {
           choicePrefix: 'numbers'
         }
-      }, {
+      },
+      {
         ...model,
         partB: {
           choicePrefix: 'numbers'
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partB - partialScoring',
       {
         partB: {
           partialScoring: false
         }
-      }, {
+      },
+      {
         ...model,
         partB: {
           partialScoring: false
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partB - lockChoiceOrder',
       {
         partB: {
           lockChoiceOrder: true
         }
-      }, {
+      },
+      {
         ...model,
         partB: {
           lockChoiceOrder: true
         }
-      });
+      }
+    );
     assertOnModelChanged(
       'changes partB - scoringType',
       {
         partB: {
           scoringType: 'auto'
         }
-      }, {
+      },
+      {
         ...model,
         partB: {
           scoringType: 'auto'
         }
-      });
+      }
+    );
   });
 });

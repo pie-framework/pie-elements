@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EBSR Configure createDefaultModel default-snapshot 1`] = `
+Object {
+  "partA": Object {
+    "choiceMode": "radio",
+    "choicePrefix": "numbers",
+    "choices": Array [],
+    "feedbackEnabled": true,
+    "partialScoring": false,
+    "prompt": "Prompt A",
+    "promptEnabled": true,
+    "rationale": "",
+    "rationaleEnabled": true,
+    "studentInstructionsEnabled": true,
+    "teacherInstructions": "",
+    "teacherInstructionsEnabled": true,
+  },
+  "partB": Object {
+    "choiceMode": "radio",
+    "choicePrefix": "numbers",
+    "choices": Array [],
+    "feedbackEnabled": true,
+    "partialScoring": false,
+    "prompt": "Prompt B",
+    "promptEnabled": true,
+    "rationale": "",
+    "rationaleEnabled": true,
+    "studentInstructionsEnabled": true,
+    "teacherInstructions": "",
+    "teacherInstructionsEnabled": true,
+  },
+  "partLabelType": "Letters",
+  "partLabels": true,
+}
+`;
+
+exports[`EBSR Configure createDefaultModel with-overrides-snapshot 1`] = `
+Object {
+  "partA": Object {
+    "choiceMode": "radio",
+    "choicePrefix": "numbers",
+    "choices": Array [],
+    "feedbackEnabled": true,
+    "partialScoring": false,
+    "prompt": "Prompt A",
+    "promptEnabled": true,
+    "rationale": "foo",
+    "rationaleEnabled": true,
+    "studentInstructionsEnabled": true,
+    "teacherInstructions": "ti",
+    "teacherInstructionsEnabled": true,
+  },
+  "partB": Object {
+    "choiceMode": "radio",
+    "choicePrefix": "numbers",
+    "choices": Array [],
+    "feedbackEnabled": true,
+    "partialScoring": false,
+    "prompt": "Prompt B",
+    "promptEnabled": true,
+    "rationale": "",
+    "rationaleEnabled": true,
+    "studentInstructionsEnabled": true,
+    "teacherInstructions": "",
+    "teacherInstructionsEnabled": true,
+  },
+  "partLabelType": "Letters",
+  "partLabels": true,
+}
+`;
