@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EBSR Configure createDefaultModel default-snapshot 1`] = `
+exports[`index createDefaultModel default-snapshot 1`] = `
 Object {
   "partA": Object {
     "choiceMode": "radio",
@@ -35,7 +35,7 @@ Object {
 }
 `;
 
-exports[`EBSR Configure createDefaultModel with-overrides-snapshot 1`] = `
+exports[`index createDefaultModel with-overrides-snapshot 1`] = `
 Object {
   "partA": Object {
     "choiceMode": "radio",
