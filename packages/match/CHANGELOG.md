@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.0...@pie-element/match@4.1.1) (2019-11-01)
+
+
+### Bug Fixes
+
+* use @pie-ui/match@^2.3.12 PIE-163 ([22a4359](https://github.com/pie-framework/pie-elements/commit/22a4359))
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.0.4...@pie-element/match@4.1.0) (2019-10-29)
 
 

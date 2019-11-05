@@ -72,7 +72,7 @@ export default {
       label: 'Feedback'
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     },
     mode: {
