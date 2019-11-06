@@ -61,6 +61,5 @@ exports.model = (id, element) => ({
     axisLabel: 'y'
   },
   rationale: 'Rationale goes here',
-  scoringType: 'partial scoring',
   title: 'Graph title',
 });

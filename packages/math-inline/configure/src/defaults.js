@@ -67,7 +67,7 @@ export default {
       label: 'Teacher Instructions'
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     }
   }
