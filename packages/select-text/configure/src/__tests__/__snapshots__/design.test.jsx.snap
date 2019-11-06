@@ -24,7 +24,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           },
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
-            "settings": true,
+            "settings": false,
           },
           "prompt": Object {
             "label": "Prompt",
@@ -76,7 +76,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
-            "partialScoring": undefined,
+            "partialScoring": false,
           },
         }
       }
@@ -150,7 +150,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           },
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
-            "settings": true,
+            "settings": false,
           },
           "prompt": Object {
             "label": "Prompt",
@@ -202,7 +202,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
           "Settings": Object {
             "feedbackEnabled": false,
             "highlightChoices": undefined,
-            "partialScoring": undefined,
+            "partialScoring": false,
           },
         }
       }
@@ -267,7 +267,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           },
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
-            "settings": true,
+            "settings": false,
           },
           "prompt": Object {
             "label": "Prompt",
@@ -319,7 +319,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "Settings": Object {
             "feedbackEnabled": undefined,
             "highlightChoices": undefined,
-            "partialScoring": undefined,
+            "partialScoring": false,
           },
         }
       }

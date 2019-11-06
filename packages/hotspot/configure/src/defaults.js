@@ -31,7 +31,7 @@ export default {
       label: 'Multiple Correct Responses'
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     },
     rationale: {

@@ -76,6 +76,5 @@ exports.model = (id, element) => ({
     min: 0,
     labelStep: 1,
   },
-  scoringType: 'partial scoring',
   title: 'This is a chart!',
 });

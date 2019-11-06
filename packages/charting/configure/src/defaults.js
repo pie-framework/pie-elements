@@ -38,7 +38,7 @@ export default {
       min: 0,
       labelStep: 1,
     },
-    scoringType: 'partial scoring',
+    scoringType: 'all or nothing',
     title: 'This is a chart!',
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -54,7 +54,7 @@ export default {
       label: 'Rationale'
     },
     scoringType: {
-      settings: true,
+      settings: false,
       label: 'Scoring Type'
     },
     studentInstructions: {

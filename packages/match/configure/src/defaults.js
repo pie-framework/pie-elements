@@ -48,7 +48,7 @@ export default {
       label: 'Lock Choice Order'
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     },
     choiceMode: {

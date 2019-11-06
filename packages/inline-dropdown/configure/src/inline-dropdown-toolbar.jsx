@@ -86,7 +86,7 @@ const createElementFromHTML = htmlString => {
   return div;
 };
 
-class RespAreaToolbar extends React.Component {
+export class RespAreaToolbar extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
     node: PropTypes.object,

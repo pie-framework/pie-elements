@@ -61,7 +61,7 @@ export default {
       label: 'Prompt'
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     },
     rationale: {
