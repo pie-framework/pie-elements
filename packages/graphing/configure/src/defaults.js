@@ -50,7 +50,7 @@ export default {
       axisLabel: 'y'
     },
     rationale: 'Rationale goes here!',
-    scoringType: 'partial scoring',
+    scoringType: 'dichotomous',
     title: '',
     promptEnabled: true,
     rationaleEnabled: true,
@@ -85,7 +85,7 @@ export default {
       label: 'Rationale'
     },
     scoringType: {
-      settings: true,
+      settings: false,
       label: 'Scoring Type'
     },
     studentInstructions: {

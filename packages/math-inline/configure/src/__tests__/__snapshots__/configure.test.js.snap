@@ -13,7 +13,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
-              "settings": true,
+              "settings": false,
             },
             "prompt": Object {
               "label": "Prompt",
@@ -131,7 +131,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               },
               "partialScoring": Object {
                 "label": "Allow Partial Scoring",
-                "settings": true,
+                "settings": false,
               },
               "prompt": Object {
                 "label": "Prompt",
