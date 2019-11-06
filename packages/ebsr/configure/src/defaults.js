@@ -25,7 +25,7 @@ const defaultConfig = {
     label: 'Lock Choice Order'
   },
   partialScoring: {
-    settings: true,
+    settings: false,
     label: 'Allow Partial Scoring'
   },
   prompt: {

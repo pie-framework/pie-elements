@@ -64,7 +64,7 @@ export default {
       label: 'Orientation',
     },
     partialScoring: {
-      settings: true,
+      settings: false,
       label: 'Allow Partial Scoring'
     },
     placementArea: {

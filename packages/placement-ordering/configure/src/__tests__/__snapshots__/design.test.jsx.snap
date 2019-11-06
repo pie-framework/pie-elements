@@ -38,7 +38,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           },
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
-            "settings": true,
+            "settings": false,
           },
           "placementArea": Object {
             "label": "Placement Area",
@@ -90,7 +90,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
-            "partialScoring": undefined,
+            "partialScoring": false,
             "placementArea": undefined,
             "removeTilesAfterPlacing": false,
           },
@@ -230,7 +230,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           },
           "partialScoring": Object {
             "label": "Allow Partial Scoring",
-            "settings": true,
+            "settings": false,
           },
           "placementArea": Object {
             "label": "Placement Area",
@@ -282,7 +282,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
-            "partialScoring": undefined,
+            "partialScoring": false,
             "placementArea": undefined,
             "removeTilesAfterPlacing": undefined,
           },
