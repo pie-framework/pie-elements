@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.4...@pie-element/select-text@6.0.5) (2019-11-06)
+
+
+### Bug Fixes
+
+* **select-text:** disable partial scoring entirely for MVP ([9a3fce8](https://github.com/pie-framework/pie-elements/commit/9a3fce8))
+
+
+
+
+
 ## [6.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.3...@pie-element/select-text@6.0.4) (2019-10-16)
 
 **Note:** Version bump only for package @pie-element/select-text

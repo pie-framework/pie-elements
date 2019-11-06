@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.0.0...@pie-element/select-text-configure@5.0.1) (2019-11-06)
+
+
+### Bug Fixes
+
+* **select-text:** disable partial scoring entirely for MVP ([9a3fce8](https://github.com/pie-framework/pie-elements/commit/9a3fce8))
+
+
+
+
+
 # [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@4.2.1...@pie-element/select-text-configure@5.0.0) (2019-10-08)
 
 

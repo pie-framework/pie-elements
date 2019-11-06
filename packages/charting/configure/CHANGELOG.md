@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.0.2...@pie-element/charting-configure@2.0.3) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+
+
+
 ## [2.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.0.1...@pie-element/charting-configure@2.0.2) (2019-10-16)
 
 **Note:** Version bump only for package @pie-element/charting-configure

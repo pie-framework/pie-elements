@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.1...@pie-element/match@4.1.2) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+
+
+
 ## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.0...@pie-element/match@4.1.1) (2019-11-01)
 
 

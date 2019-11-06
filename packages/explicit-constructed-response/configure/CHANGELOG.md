@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.1.1...@pie-element/explicit-constructed-response-configure@3.2.0) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+### Features
+
+* **markupUtils:** added tests for the new and old functionality [PIE-110] ([ea90524](https://github.com/pie-framework/pie-elements/commit/ea90524))
+* **markupUtils:** removed brs from the markup [PIE-110] ([9595e9b](https://github.com/pie-framework/pie-elements/commit/9595e9b))
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.1.0...@pie-element/explicit-constructed-response-configure@3.1.1) (2019-11-01)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.5...@pie-element/inline-dropdown@3.0.6) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+
+
+
 ## [3.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.4...@pie-element/inline-dropdown@3.0.5) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

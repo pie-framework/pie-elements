@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.5...@pie-element/math-inline@5.0.6) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+* PIE-140 - upgrade @pie-ui/math-inline@^3.0.8 ([d522633](https://github.com/pie-framework/pie-elements/commit/d522633))
+
+
+
+
+
 ## [5.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.4...@pie-element/math-inline@5.0.5) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/math-inline

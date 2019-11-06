@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.4...@pie-element/placement-ordering@7.0.5) (2019-11-06)
+
+
+### Bug Fixes
+
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+
+
+
 ## [7.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.3...@pie-element/placement-ordering@7.0.4) (2019-10-16)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

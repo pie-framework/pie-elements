@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.0.5...@pie-element/multiple-choice@5.0.6) (2019-11-06)
+
+
+### Bug Fixes
+
+* feedbackEnabled should not be the property that decides whether the choice correctness is displayed or not. ([b69adfd](https://github.com/pie-framework/pie-elements/commit/b69adfd))
+* Hide Partial Scoring option from Settings Panel setting to false by default. ([1d0f617](https://github.com/pie-framework/pie-elements/commit/1d0f617))
+
+
+
+
+
 ## [5.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.0.4...@pie-element/multiple-choice@5.0.5) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
