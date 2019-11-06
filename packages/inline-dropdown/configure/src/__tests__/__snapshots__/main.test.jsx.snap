@@ -13,7 +13,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
-              "settings": true,
+              "settings": false,
             },
             "prompt": Object {
               "label": "Prompt",
@@ -38,7 +38,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "Settings": Object {
               "lockChoiceOrder": undefined,
-              "partialScoring": undefined,
+              "partialScoring": false,
             },
           }
         }
@@ -192,7 +192,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
-              "settings": true,
+              "settings": false,
             },
             "prompt": Object {
               "label": "Prompt",
@@ -217,7 +217,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "Settings": Object {
               "lockChoiceOrder": undefined,
-              "partialScoring": undefined,
+              "partialScoring": false,
             },
           }
         }
