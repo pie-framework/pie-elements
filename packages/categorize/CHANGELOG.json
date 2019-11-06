@@ -1423,5 +1423,20 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/categorize@6.0.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Hide Partial Scoring option from Settings Panel setting to false by default.",
+    "merge": null,
+    "header": "fix: Hide Partial Scoring option from Settings Panel setting to false by default.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1d0f617741d88756dd9861647981b1121e04963f",
+    "gitTags": "",
+    "committerDate": "2019-11-06 09:57:11 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@6.0.6"
   }
 ]

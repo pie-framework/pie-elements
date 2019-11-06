@@ -813,5 +813,50 @@
     "committerDate": "2019-10-25 13:23:18 +0300",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@3.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Hide Partial Scoring option from Settings Panel setting to false by default.",
+    "merge": null,
+    "header": "fix: Hide Partial Scoring option from Settings Panel setting to false by default.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1d0f617741d88756dd9861647981b1121e04963f",
+    "gitTags": "",
+    "committerDate": "2019-11-06 09:57:11 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "markupUtils",
+    "subject": "added tests for the new and old functionality [PIE-110]",
+    "merge": null,
+    "header": "feat(markupUtils): added tests for the new and old functionality [PIE-110]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ea90524f9599904faec4514d66f9d12851cf0045",
+    "gitTags": " (origin/PIE-110/br-causes-editable-html-break)",
+    "committerDate": "2019-11-05 12:24:52 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "markupUtils",
+    "subject": "removed brs from the markup [PIE-110]",
+    "merge": null,
+    "header": "feat(markupUtils): removed brs from the markup [PIE-110]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9595e9bceee31f37ab9d8c95415b776d0c19d39e",
+    "gitTags": "",
+    "committerDate": "2019-11-05 07:15:03 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.2.0"
   }
 ]

@@ -418,5 +418,20 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@3.0.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "feedbackEnabled should not be the property that decides whether the choice correctness is displayed or not.",
+    "merge": null,
+    "header": "fix: feedbackEnabled should not be the property that decides whether the choice correctness is displayed or not.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b69adfd687b185b39f030e5e5060d2219c8491d6",
+    "gitTags": "",
+    "committerDate": "2019-11-04 17:50:07 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@3.0.6"
   }
 ]
