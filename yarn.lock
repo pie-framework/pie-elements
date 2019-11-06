@@ -2511,17 +2511,17 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.5.tgz#02b9962857339e89d264ffdf6cf04547aa6d5ea6"
-  integrity sha512-S3XcBDdPY6lC8zoT7fpXT7wDspTYCWEh+ggUIVQutyd019ebHhoNMUdxvJwWlnSrzKs/JpF7nbA0HAyV1Cp9Kg==
+"@pie-ui/math-inline@^3.0.8":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.8.tgz#8c25205af702224232c44c0e8e643df5cb543155"
+  integrity sha512-RJbb3TJzq9bDF5MFlGQKTLo+vqAOTU+7xlbFEFCyt4/6+n+Uy8dlmpE+FCLfUCIWcJcvc1eOX1KiQTOYr1I6Bw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^0.11.0"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/math-input" "^6.3.5"
-    "@pie-lib/math-toolbar" "^1.4.7"
+    "@pie-lib/math-input" "^6.3.6"
+    "@pie-lib/math-toolbar" "^1.4.8"
     "@pie-lib/render-ui" "^4.4.5"
     classnames "^2.2.5"
     debug "^4.1.1"
