@@ -2053,10 +2053,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.5.0.tgz#e545299bbc25b6e46316d5e189947bb989795586"
-  integrity sha512-1tXnc8cKdA532NKvFtl2CaYTJi/uGfj2DYqs6xutOgUVnLI1Pb7rZpsDJX1ANPWQcrf47q0ViEU6gctnHwiKZw==
+"@pie-lib/mask-markup@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.5.3.tgz#88dfeb5d6471252ddac9ef3b4179d54c87e96aa3"
+  integrity sha512-+cqlpvhIcvnXB4TddJbvojB3UiW7Z5IUG06mJFfqsn65puzI+rG9qsCRpdjA5J+48fMMA6F7M9eYdLoA1Jyikg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.21"
@@ -2289,15 +2289,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drag-in-the-blank@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.7.3.tgz#e2da95bfd6229b98734bf91323a2338b5e68c0c6"
-  integrity sha512-wfZpQe+wNbuKTyQA6kDzMiUYL7qER9+d5GPFCPfKBw6P+FGep8V3DRi8fAHy7tjLf9cKdFS4l37H8TNYWIKTSQ==
+"@pie-ui/drag-in-the-blank@^1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drag-in-the-blank/-/drag-in-the-blank-1.7.6.tgz#947239933061a2b2b0bca4dd52a4c1ad508cf09f"
+  integrity sha512-/rxCrGZWBpLeYh5z1YYPhu/DYJeoXUzq28ZVWP5mPku5mDo6oUGtG8QN9Gfc5YFO49nP+umaye73xzdfUww+Rw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/mask-markup" "^1.5.0"
+    "@pie-lib/mask-markup" "^1.5.3"
     "@pie-lib/math-rendering" "^1.3.7"
     "@pie-lib/render-ui" "^4.4.5"
     classnames "^2.2.5"
@@ -2338,15 +2338,15 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-ui/explicit-constructed-response@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.7.1.tgz#2a91b025bae9d99d80a6a17b36abd5a84c554144"
-  integrity sha512-quCTKy6bZczgfG2Z8vZAjnH96Xi9me1WEJ0oiYGpO4HsHiuSE19rOjNeIHnogTydWN+XS+lv9N7yoh/h/vZNRQ==
+"@pie-ui/explicit-constructed-response@^1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/explicit-constructed-response/-/explicit-constructed-response-1.7.4.tgz#f247d866df5764c736ec4f58d517970364cff10e"
+  integrity sha512-Xus1UuFI9OCzgUrRHJIIZJBBiEybiYe+nLI+2Bux7utx6opbYISIqewnsXxRcALY6J8KCnHemL49PJGvT6tkTA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/mask-markup" "^1.5.0"
+    "@pie-lib/mask-markup" "^1.5.3"
     "@pie-lib/math-rendering" "^1.3.7"
     "@pie-lib/render-ui" "^4.4.5"
     classnames "^2.2.5"
@@ -2355,15 +2355,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.2.2.tgz#69a457efaa05be557df6c5100a82b43cff5efcb8"
-  integrity sha512-kXjfzl7xZbYKJJyGHUT6x++CKYtqFK6ZVp93VoZtcek6T0YfQaHICCjTNLPSo2/N/G4dGaCweizWsYQNn5wtlA==
+"@pie-ui/extended-text-entry@^3.2.8":
+  version "3.2.8"
+  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.2.8.tgz#658e930c9dceb809844d8f83bf9587df0713baf8"
+  integrity sha512-Tw0E7rQjuKE0m63Btx4KXmLbJSLRwGo+Xipj0UnX9O7yL99e9rwvB2UU4Y80ZptW8xuHBBELneW2kyb2AM4ERA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/editable-html" "^7.10.24"
+    "@pie-lib/editable-html" "^7.10.26"
     "@pie-lib/math-rendering" "^1.3.7"
     "@pie-lib/render-ui" "^4.4.5"
     debug "^4.1.1"
@@ -2461,15 +2461,15 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/inline-dropdown@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.7.3.tgz#876a7455e033a30d4019f6f2fc480e71dbe0a638"
-  integrity sha512-SrqwNPxHLIRYJVrGsCXRLXEuqRFoT407w6UDVkx67HDxuHMuWHc3Gc5NYLsjVStmn0HMlE1SjTBhvHMtp4zzVg==
+"@pie-ui/inline-dropdown@^1.7.6":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/@pie-ui/inline-dropdown/-/inline-dropdown-1.7.6.tgz#65aaf798081e34387f3c8918a806d9c8e807bd87"
+  integrity sha512-wf8ATkA3NJXzHZMqpCg7dYZyYCXjynJvpa58Fh1C6pMV7DNCz58e0BFqJL7gZN21wUDG5mgoNzDWCUv9XCILPQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/mask-markup" "^1.5.0"
+    "@pie-lib/mask-markup" "^1.5.3"
     "@pie-lib/math-rendering" "^1.3.7"
     "@pie-lib/render-ui" "^4.4.5"
     classnames "^2.2.5"
