@@ -34,23 +34,14 @@ export class Main extends React.Component {
     };
   }
 
-  change = key => (event, v) => {
-    const { onModelChanged } = this.props;
-    const model = this.applyUpdate({ [key]: v });
-    onModelChanged(model);
-  };
-
   onPromptChange = markup => {
-    const { onModelChanged } = this.props;
-    const model = this.applyUpdate({ prompt: markup });
-    onModelChanged(model);
-  };
+    const { onModelChanged, model } = this.props;
 
-  applyUpdate(update) {
-    const { model } = this.props;
-    const out = Object.assign({}, model, update);
-    return out;
-  }
+    onModelChanged({
+      ...model,
+      prompt: markup
+    });
+  };
 
   changeFeedback = feedback => {
     const { model, onModelChanged } = this.props;

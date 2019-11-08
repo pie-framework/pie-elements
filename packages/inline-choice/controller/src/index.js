@@ -16,7 +16,7 @@ export function createDefaultModel(model = {}) {
   });
 }
 
-const getResult = (question, session) => {
+export const getResult = (question, session) => {
   if (!session || !session.value) {
     return { correct: false, nothingSubmitted: true, feedback: undefined };
   }

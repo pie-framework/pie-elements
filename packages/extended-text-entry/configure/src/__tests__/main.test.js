@@ -2,11 +2,6 @@ import React from 'react';
 import { Main } from '../main';
 import { shallow } from 'enzyme';
 
-import {
-  layout,
-  settings,
-} from '@pie-lib/config-ui';
-
 import defaults from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -36,6 +31,7 @@ describe('Render Main Component', () => {
         configuration={configuration}
         onModelChanged={onChange}
         handleBoxResize={() => {}}
+        imageSupport={{}}
       />
     );
 
@@ -47,6 +43,16 @@ describe('Render Main Component', () => {
   });
 
   describe('logic', () => {
+    it('onPromptChange calls onModelChanged', () => {
+      instance.onPromptChange('New Prompt');
+      expect(onChange).toBeCalledWith(expect.objectContaining({ prompt: 'New Prompt' }));
+    });
+
+    it('changeFeedback calls onModelChanged', () => {
+      instance.changeFeedback({ type: 'custom', default: 'Default Feedback' });
+      expect(onChange).toBeCalledWith(expect.objectContaining({ feedback: { type: 'custom', default: 'Default Feedback' } }));
+    });
+
     it('changeTeacherInstructions calls onModelChanged', () => {
       instance.changeTeacherInstructions('Teacher Instructions');
       expect(onChange).toBeCalledWith(expect.objectContaining({ teacherInstructions: 'Teacher Instructions' }));
