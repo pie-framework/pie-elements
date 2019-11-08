@@ -70,7 +70,7 @@ export async function model(question, session, env) {
   }));
 }
 
-export async function outcome(question, session, env) {
+export async function outcome(/*question, session, env*/) {
   return {
     score: 0,
     completed: 'n/a',

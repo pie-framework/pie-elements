@@ -40,7 +40,7 @@ export class ChoicePreview extends React.Component {
     );
   }
 }
-const styles = theme => ({
+const styles = () => ({
   choicePreview: {
     position: 'relative'
   },

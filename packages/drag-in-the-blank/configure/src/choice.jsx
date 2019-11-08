@@ -4,6 +4,7 @@ import Delete from '@material-ui/icons/Delete';
 import { DragSource } from 'react-dnd';
 import { withStyles } from '@material-ui/core/styles';
 import { choiceIsEmpty } from './markupUtils';
+import PropTypes from 'prop-types';
 
 const GripIcon = ({ style }) => {
   return (
@@ -16,6 +17,10 @@ const GripIcon = ({ style }) => {
       <MoreVert />
     </span>
   );
+};
+
+GripIcon.propTypes = {
+  style: PropTypes.object,
 };
 
 export const BlankContent = withStyles(theme => ({

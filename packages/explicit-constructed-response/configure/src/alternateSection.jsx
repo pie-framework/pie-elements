@@ -11,7 +11,7 @@ import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
 
-const styles = theme => ({
+const styles = () => ({
   altChoices: {
     alignItems: 'flex-start',
     flexDirection: 'column',

@@ -38,6 +38,13 @@ const InfoDialog = ({ open, onCancel, onOk, title }) => (
   </Dialog>
 );
 
+InfoDialog.propTypes = {
+  open: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onOk: PropTypes.func,
+  title: PropTypes.string
+};
+
 const styles = theme => ({
   promptHolder: {
     width: '100%',

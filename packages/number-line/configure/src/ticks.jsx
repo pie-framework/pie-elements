@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import NumberTextField, { MiniField } from './number-text-field';
+import { MiniField } from './number-text-field';
 import { tickUtils } from '@pie-ui/number-line';
 import * as math from 'mathjs';
 export const Ticks = props => {

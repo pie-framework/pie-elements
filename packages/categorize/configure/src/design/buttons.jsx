@@ -42,7 +42,7 @@ const styles = theme => ({
 
 const AddButton = withStyles(styles)(RawAddButton);
 
-const DeleteButton = withStyles(theme => ({
+const DeleteButton = withStyles(() => ({
   deleteButton: {
     margin: 0,
     padding: 0

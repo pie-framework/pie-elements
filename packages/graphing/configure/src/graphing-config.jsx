@@ -3,7 +3,7 @@ import { NumberTextField } from '@pie-lib/config-ui';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
+import { GraphContainer as Graph } from '@pie-lib/graphing';
 import { TextField } from '@material-ui/core';
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -41,7 +41,8 @@ export class GraphingConfig extends React.Component {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    authoringEnabled: PropTypes.bool
+    authoringEnabled: PropTypes.bool,
+    tools: PropTypes.array
   };
 
   constructor(props) {

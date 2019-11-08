@@ -51,7 +51,10 @@ export class CorrectResponse extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     tools: PropTypes.arrayOf(
-      PropTypes.shape({ type: PropTypes.string.isRequired })
+      PropTypes.shape({
+        Component: PropTypes.shape({ type: PropTypes.string }),
+        type: PropTypes.string.isRequired
+      })
     )
   };
 

@@ -49,7 +49,7 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-export function outcome(config, session) {
+export function outcome(/*config, session*/) {
   return new Promise(resolve => {
     log('outcome...');
     resolve({

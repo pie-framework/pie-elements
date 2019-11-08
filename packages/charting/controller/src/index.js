@@ -155,6 +155,7 @@ export function model(question, session, env) {
       rationale,
       title,
       rationaleEnabled,
+      teacherInstructions,
       teacherInstructionsEnabled
     } = normalizedQuestion;
 

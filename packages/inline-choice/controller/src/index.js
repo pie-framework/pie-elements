@@ -60,7 +60,7 @@ export function model(question, session, env) {
   });
 }
 
-export function outcome(question, session, env) {
+export function outcome(question, session) {
   return new Promise(resolve => {
     log('outcome...');
     if (!session || isEmpty(session)) {

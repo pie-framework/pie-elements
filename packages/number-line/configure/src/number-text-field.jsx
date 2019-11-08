@@ -28,7 +28,7 @@ const styles = theme => ({
   }
 });
 
-const miniStyles = theme => ({
+const miniStyles = () => ({
   textField: {
     maxWidth: '100px'
   }

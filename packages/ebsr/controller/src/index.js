@@ -1,11 +1,6 @@
-import shuffle from 'lodash/shuffle';
 import defaults from './defaults';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
-
 import { isResponseCorrect } from './utils';
-
-const lg = n => console[n].bind(console, '[ebsr]');
-const log = lg('log');
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
@@ -168,8 +163,8 @@ const getScore = (config, part, key) => {
   return score;
 };
 
-export function outcome(config, session, env) {
-  return new Promise((resolve, reject) => {
+export function outcome(config, session) {
+  return new Promise((resolve) => {
     const { value } = session || {};
 
     if (!session || !value) {

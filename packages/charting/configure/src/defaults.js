@@ -5,14 +5,14 @@
  */
 
 
-const createCategory = (label, value) => ({
-  label,
-  value,
-  initial: true,
-  interactive: true,
-  editable: true,
-  deletable: true
-});
+// const createCategory = (label, value) => ({
+//   label,
+//   value,
+//   initial: true,
+//   interactive: true,
+//   editable: true,
+//   deletable: true
+// });
 
 export default {
   model: {
