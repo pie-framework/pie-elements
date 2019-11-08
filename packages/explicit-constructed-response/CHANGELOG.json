@@ -858,5 +858,20 @@
     "committerDate": "2019-11-05 07:15:03 +0200",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@3.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PIE-110 upgrade @pie-ui package/mask-markup",
+    "merge": null,
+    "header": "fix: PIE-110 upgrade @pie-ui package/mask-markup",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e9b692a63421b655b305dc8d354c95b91b2512e8",
+    "gitTags": "",
+    "committerDate": "2019-11-07 12:54:17 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.2.1"
   }
 ]

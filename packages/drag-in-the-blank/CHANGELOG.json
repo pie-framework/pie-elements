@@ -753,5 +753,35 @@
     "committerDate": "2019-11-06 09:57:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@3.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "version bump only - no changes",
+    "merge": null,
+    "header": "fix: version bump only - no changes",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "dc4c36063ab23c2950c9e992b240fcb20fa524f8",
+    "gitTags": " (origin/develop, origin/HEAD, develop)",
+    "committerDate": "2019-11-07 14:15:02 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.1.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PIE-110 upgrade @pie-ui package/mask-markup",
+    "merge": null,
+    "header": "fix: PIE-110 upgrade @pie-ui package/mask-markup",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e43deb059310f1d06b8698e65c81429740769803",
+    "gitTags": "",
+    "committerDate": "2019-11-07 12:54:35 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.1.4"
   }
 ]
