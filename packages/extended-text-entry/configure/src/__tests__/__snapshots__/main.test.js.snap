@@ -85,6 +85,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
       label="Teacher Instructions"
     >
       <EditableHtml
+        imageSupport={Object {}}
         markup=""
         nonEmpty={false}
         onChange={[Function]}
@@ -95,6 +96,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
       label="Prompt"
     >
       <EditableHtml
+        imageSupport={Object {}}
         markup="This is the question prompt"
         nonEmpty={false}
         onChange={[Function]}
