@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.2.0...@pie-element/explicit-constructed-response@3.2.1) (2019-11-08)
+
+
+### Bug Fixes
+
+* PIE-110 upgrade [@pie-ui](https://github.com/pie-ui) package/mask-markup ([e9b692a](https://github.com/pie-framework/pie-elements/commit/e9b692a))
+
+
+
+
+
 # [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.1.1...@pie-element/explicit-constructed-response@3.2.0) (2019-11-06)
 
 

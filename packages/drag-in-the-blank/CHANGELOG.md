@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.2...@pie-element/drag-in-the-blank@3.1.4) (2019-11-08)
+
+
+### Bug Fixes
+
+* PIE-110 upgrade [@pie-ui](https://github.com/pie-ui) package/mask-markup ([e43deb0](https://github.com/pie-framework/pie-elements/commit/e43deb0))
+* version bump only - no changes ([dc4c360](https://github.com/pie-framework/pie-elements/commit/dc4c360))
+
+
+
+
+
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.1...@pie-element/drag-in-the-blank@3.1.2) (2019-11-06)
 
 

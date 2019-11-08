@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.6...@pie-element/inline-dropdown@3.0.7) (2019-11-08)
+
+
+### Bug Fixes
+
+* PIE-110 upgrade [@pie-ui](https://github.com/pie-ui) package/mask-markup ([9c2cbff](https://github.com/pie-framework/pie-elements/commit/9c2cbff))
+
+
+
+
+
 ## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.5...@pie-element/inline-dropdown@3.0.6) (2019-11-06)
 
 
