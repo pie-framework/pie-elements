@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root snapshot renders 1`] = `
+<WithStyles(RawMain)
+  model={
+    Object {
+      "choiceLabel": "Select option ...",
+      "choices": Array [
+        Object {
+          "correct": true,
+          "label": "Sweden",
+          "value": "1",
+        },
+        Object {
+          "feedback": Object {
+            "type": "default",
+          },
+          "label": "Iceland",
+          "value": "2",
+        },
+        Object {
+          "label": "Norway",
+          "value": "4",
+        },
+        Object {
+          "feedback": Object {
+            "type": "custom",
+            "value": "Nokia was founded in Finland.",
+          },
+          "label": "Finland",
+          "value": "5",
+        },
+      ],
+      "defaultLang": "en-US",
+    }
+  }
+  onAddChoice={[Function]}
+  onChoiceChange={[Function]}
+  onPromptChange={[Function]}
+  onRemoveChoice={[Function]}
+/>
+`;

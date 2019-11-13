@@ -7,7 +7,6 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import cloneDeep from 'lodash/cloneDeep';
 
 import Root from './root';
 import sensibleDefaults from './defaults';
@@ -37,11 +36,6 @@ export default class DrawableResponseConfigure extends HTMLElement {
     this._render();
   }
 
-  set disableSidePanel(s) {
-    this._disableSidePanel = s;
-    this._render();
-  }
-
   dispatchModelUpdated(reset) {
     const resetValue = !!reset;
 
@@ -62,39 +56,6 @@ export default class DrawableResponseConfigure extends HTMLElement {
     this._render();
   };
 
-  onPromptChanged = prompt => {
-    const { _model } = this;
-    const update = cloneDeep(_model);
-    update.prompt = prompt;
-    this.onModelChanged(update);
-  };
-
-  onRationaleChanged = rationale => {
-    this.onModelChanged({
-      ...this._model,
-      rationale
-    });
-  };
-
-  onTeacherInstructionsChanged = teacherInstructions => {
-    this.onModelChanged({
-      ...this._model,
-      teacherInstructions
-    });
-  };
-
-  onUpdateImageDimension = (dimensions) => {
-    const { _model } = this;
-    _model.imageDimensions = dimensions;
-    this.onModelChanged(_model);
-  };
-
-  onImageUpload = imageUrl => {
-    const { _model } = this;
-    _model.imageUrl = imageUrl;
-    this.onModelChanged(_model);
-  };
-
   insertImage = (handler) => {
     this.dispatchEvent(new InsertImageEvent(handler));
   };
@@ -106,20 +67,14 @@ export default class DrawableResponseConfigure extends HTMLElement {
   _render() {
     log('_render');
     let element = React.createElement(Root, {
+      model: this._model,
       configuration: this._configuration,
-      disableSidePanel: this._disableSidePanel,
+      onModelChanged: this.onModelChanged,
+      onConfigurationChanged: this.onConfigurationChanged,
       imageSupport: {
         add: this.insertImage,
         delete: this.onDeleteImage
-      },
-      model: this._model,
-      onConfigurationChanged: this.onConfigurationChanged,
-      onImageUpload: this.onImageUpload,
-      onModelChangedByConfig: this.onModelChanged,
-      onPromptChanged: this.onPromptChanged,
-      onRationaleChanged: this.onRationaleChanged,
-      onUpdateImageDimension: this.onUpdateImageDimension,
-      onTeacherInstructionsChanged: this.onTeacherInstructionsChanged
+      }
     });
     ReactDOM.render(element, this);
   }

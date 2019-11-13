@@ -1,29 +1,120 @@
-import { model, outcome, createCorrectResponseSession } from '../index';
+import { model, outcome, createCorrectResponseSession, getResult } from '../index';
+
+let question = {
+  choices: [
+    {
+      value: 'a',
+      label: 'a',
+      correct: true,
+      feedback: {
+        type: 'custom',
+        value: 'hooray'
+      }
+    },
+    {
+      value: 'b',
+      label: 'b',
+      correct: false,
+      feedback: {
+        type: 'default'
+      }
+    }
+  ]
+};
+
+describe('getResult', () => {
+  it('returns correct: false if session is not defined', () => {
+    expect(getResult(question)).toEqual({ correct: false, feedback: undefined, nothingSubmitted: true });
+  });
+
+  it('returns correct: false if session is null', () => {
+    expect(getResult(question, null)).toEqual({ correct: false, feedback: undefined, nothingSubmitted: true });
+  });
+
+  it('returns correct: false if session is empty', () => {
+    expect(getResult(question, {})).toEqual({ correct: false, feedback: undefined, nothingSubmitted: true });
+  });
+
+  it('returns correct: true if response is correct', () => {
+    const result = getResult(question, { value: 'a' });
+
+    expect(result).toEqual({ correct: true, feedback: 'hooray' });
+  });
+
+  it('returns correct: false if response is not correct', () => {
+    const result = getResult(question, { value: 'b' });
+
+    expect(result).toEqual({ correct: false, feedback: 'Incorrect' });
+  });
+
+  it('returns feedback: Correct if response is correct', () => {
+    const result = getResult({
+      choices: [
+        {
+          value: 'a',
+          label: 'a',
+          correct: false,
+          feedback: {
+            type: 'custom',
+            value: 'hooray'
+          }
+        },
+        {
+          value: 'b',
+          label: 'b',
+          correct: true,
+          feedback: {
+            type: 'default'
+          }
+        }
+      ]
+    }, { value: 'b' });
+
+    expect(result).toEqual({ correct: true, feedback: 'Correct' });
+  });
+
+  it('returns feedback: Incorrect if response is not correct', () => {
+    const result = getResult(question, { value: 'b' });
+
+    expect(result).toEqual({ correct: false, feedback: 'Incorrect' });
+  });
+
+  it('returns custom feedback if feedback type is custom and response is correct', () => {
+    const result = getResult(question, { value: 'a' });
+
+    expect(result).toEqual({ correct: true, feedback: 'hooray' });
+  });
+
+  it('returns custom feedback if feedback type is custom and response is incorrect', () => {
+    const result = getResult({
+      choices: [
+        {
+          value: 'a',
+          label: 'a',
+          correct: false,
+          feedback: {
+            type: 'custom',
+            value: 'hooray'
+          }
+        },
+        {
+          value: 'b',
+          label: 'b',
+          correct: true,
+          feedback: {
+            type: 'default'
+          }
+        }
+      ]
+    }, { value: 'a' });
+
+    expect(result).toEqual({ correct: false, feedback: 'hooray' });
+  });
+});
+
 
 describe('model', () => {
   let result;
-
-  let question = {
-    choices: [
-      {
-        value: 'a',
-        label: 'a',
-        correct: true,
-        feedback: {
-          type: 'custom',
-          value: 'hooray'
-        }
-      },
-      {
-        value: 'b',
-        label: 'b',
-        correct: false,
-        feedback: {
-          type: 'default'
-        }
-      }
-    ]
-  };
 
   let session = {
     value: 'a'
@@ -215,5 +306,6 @@ describe('createCorrectResponseSession', () => {
     expect(noResult).toBeNull();
   });
 });
+
 
 

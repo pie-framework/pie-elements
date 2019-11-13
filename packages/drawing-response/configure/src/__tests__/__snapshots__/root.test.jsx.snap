@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root snapshot renders 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "backgroundImage": Object {
+              "enabled": true,
+              "label": "Background Image",
+              "settings": true,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {},
+            "Settings": Object {
+              "backgroundImage.enabled": undefined,
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "imageDimensions": Object {
+              "height": 100,
+              "width": 100,
+            },
+            "imageUrl": "",
+            "prompt": "Test Prompt",
+            "promptEnabled": true,
+          }
+        }
+        onChangeConfiguration={[MockFunction]}
+        onChangeModel={[MockFunction]}
+      />
+    }
+  >
+    <div>
+      <Component
+        label="Item Stem"
+      >
+        <EditableHtml
+          markup="Test Prompt"
+          onChange={[Function]}
+        />
+      </Component>
+      <div>
+        <WithStyles(Typography)
+          variant="subheading"
+        >
+          Define Background Image
+        </WithStyles(Typography)>
+        <WithStyles(ImageContainer)
+          imageUrl=""
+          onImageUpload={[Function]}
+          onUpdateImageDimension={[Function]}
+        />
+      </div>
+    </div>
+  </ConfigLayout>
+</div>
+`;

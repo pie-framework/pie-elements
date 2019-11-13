@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageContainer snapshot renders 1`] = `
+<div>
+  <div
+    className="undefined "
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+  >
+    <div>
+      <div>
+        <WithStyles(RawButton)
+          label="Replace Image"
+          onClick={[Function]}
+        />
+        <input
+          accept="image/*"
+          onChange={[Function]}
+          type="file"
+        />
+      </div>
+    </div>
+    <div>
+      <div>
+        <img
+          alt=""
+          height="auto"
+          onLoad={[Function]}
+          src="url"
+          style={
+            Object {
+              "maxHeight": 0,
+              "maxWidth": 0,
+            }
+          }
+        />
+        <div />
+      </div>
+    </div>
+  </div>
+</div>
+`;

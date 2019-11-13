@@ -6,10 +6,57 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 import ImageContainer from './image-container';
+import cloneDeep from 'lodash/cloneDeep';
 
 const { Panel, toggle } = settings;
 
-class Root extends React.Component {
+export class Root extends React.Component {
+  onPromptChanged = prompt => {
+    const { model, onModelChanged } = this.props;
+    const update = cloneDeep(model);
+
+    onModelChanged({
+      ...update,
+      prompt
+    });
+  };
+
+  onRationaleChanged = rationale => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      rationale
+    });
+  };
+
+  onTeacherInstructionsChanged = teacherInstructions => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      teacherInstructions
+    });
+  };
+
+  onUpdateImageDimension = (dimensions) => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      imageDimensions: dimensions
+    });
+  };
+
+  onImageUpload = imageUrl => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      imageUrl
+    });
+  };
+
   render() {
     const {
       classes,
@@ -17,12 +64,7 @@ class Root extends React.Component {
       model,
       imageSupport,
       onConfigurationChanged,
-      onImageUpload,
-      onModelChangedByConfig,
-      onPromptChanged,
-      onRationaleChanged,
-      onUpdateImageDimension,
-      onTeacherInstructionsChanged
+      onModelChanged
     } = this.props;
     const { backgroundImage = {}, rationale = {}, prompt = {}, teacherInstructions = {} } =
       configuration || {};
@@ -35,7 +77,7 @@ class Root extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={onModelChangedByConfig}
+              onChangeModel={onModelChanged}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
@@ -63,7 +105,7 @@ class Root extends React.Component {
               >
                 <EditableHtml
                   markup={model.teacherInstructions || ''}
-                  onChange={onTeacherInstructionsChanged}
+                  onChange={this.onTeacherInstructionsChanged}
                   imageSupport={imageSupport}
                   nonEmpty={false}
                 />
@@ -74,7 +116,7 @@ class Root extends React.Component {
               <InputContainer label="Item Stem" className={classes.prompt}>
                 <EditableHtml
                   markup={model.prompt}
-                  onChange={onPromptChanged}
+                  onChange={this.onPromptChanged}
                 />
               </InputContainer>
             )}
@@ -86,7 +128,7 @@ class Root extends React.Component {
               >
                 <EditableHtml
                   markup={model.rationale || ''}
-                  onChange={onRationaleChanged}
+                  onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
                 />
               </InputContainer>
@@ -99,14 +141,9 @@ class Root extends React.Component {
                 </Typography>
 
                 <ImageContainer
-                  imageDimensions={model.imageDimensions}
                   imageUrl={model.imageUrl}
-                  multipleCorrect={model.multipleCorrect}
-                  hotspotColor={model.hotspotColor}
-                  outlineColor={model.outlineColor}
-                  onUpdateImageDimension={onUpdateImageDimension}
-                  onImageUpload={onImageUpload}
-                  shapes={model.shapes}
+                  onUpdateImageDimension={this.onUpdateImageDimension}
+                  onImageUpload={this.onImageUpload}
                 />
               </div>
             )}
@@ -141,13 +178,8 @@ Root.propTypes = {
     add: PropTypes.func,
     delete: PropTypes.func
   }),
-  onImageUpload: PropTypes.func.isRequired,
-  onPromptChanged: PropTypes.func.isRequired,
-  onUpdateImageDimension: PropTypes.func.isRequired,
-  onModelChangedByConfig: PropTypes.func.isRequired,
-  onRationaleChanged: PropTypes.func.isRequired,
+  onModelChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired,
-  onTeacherInstructionsChanged: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Root);

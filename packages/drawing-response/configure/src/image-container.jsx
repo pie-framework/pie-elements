@@ -9,7 +9,7 @@ const isImage = (file) => {
   return file.type.match(imageType);
 };
 
-class ImageContainer extends Component {
+export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +21,14 @@ class ImageContainer extends Component {
   }
 
   componentDidMount() {
-    const positionInfo = this.imageSection.getBoundingClientRect();
-    const { height, width } = positionInfo;
-    this.setState({
-      maxImageWidth: width,
-      maxImageHeight: height
-    })
+    if (this.imageSection) {
+      const positionInfo = this.imageSection.getBoundingClientRect();
+      const { height, width } = positionInfo;
+      this.setState({
+        maxImageWidth: width,
+        maxImageHeight: height
+      });
+    }
   }
 
   handleFileRead = (file) => {
@@ -35,7 +37,7 @@ class ImageContainer extends Component {
     reader.onloadend = () => {
       onImageUpload(reader.result);
     };
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
   };
 
   handleUploadImage = (e) => {
@@ -45,6 +47,7 @@ class ImageContainer extends Component {
   };
 
   makeDropzoneActive= () => this.setState({ dropzoneActive: true });
+
   makeDropzoneInactive = () => this.setState({ dropzoneActive: false });
 
   handleOnDrop = (e) => {
@@ -59,6 +62,7 @@ class ImageContainer extends Component {
     } else if (isImage(files[0])) {
       this.handleFileRead(files[0]);
     }
+
     this.makeDropzoneInactive();
   };
 
@@ -188,6 +192,7 @@ class ImageContainer extends Component {
                   ref={ref => { this.image = ref; }}
                   src={imageUrl}
                   style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight }}
+                  alt=''
                 />
                 <div ref={ref => { this.resize = ref; }} className={classes.resize} />
               </div>

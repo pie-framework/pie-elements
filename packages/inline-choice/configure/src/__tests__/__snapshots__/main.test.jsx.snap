@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RawMain snapshot renders 1`] = `
+<div>
+  <WithStyles(Component)
+    choice={
+      Object {
+        "correct": true,
+        "label": "Sweden",
+        "value": "1",
+      }
+    }
+    key="0"
+    onChange={[Function]}
+    onDelete={[Function]}
+  />
+  <WithStyles(Component)
+    choice={
+      Object {
+        "feedback": Object {
+          "type": "default",
+        },
+        "label": "Iceland",
+        "value": "2",
+      }
+    }
+    key="1"
+    onChange={[Function]}
+    onDelete={[Function]}
+  />
+  <WithStyles(Component)
+    choice={
+      Object {
+        "label": "Norway",
+        "value": "4",
+      }
+    }
+    key="2"
+    onChange={[Function]}
+    onDelete={[Function]}
+  />
+  <WithStyles(Component)
+    choice={
+      Object {
+        "feedback": Object {
+          "type": "custom",
+          "value": "Nokia was founded in Finland.",
+        },
+        "label": "Finland",
+        "value": "5",
+      }
+    }
+    key="3"
+    onChange={[Function]}
+    onDelete={[Function]}
+  />
+  <WithStyles(Button)
+    color="primary"
+    onClick={[MockFunction]}
+  >
+    Add a choice
+  </WithStyles(Button)>
+</div>
+`;
