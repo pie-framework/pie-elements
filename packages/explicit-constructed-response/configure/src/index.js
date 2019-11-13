@@ -13,7 +13,7 @@ import defaults from 'lodash/defaults';
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils'
 
-const log = debug('multiple-choice:configure');
+const log = debug('explicit-constructed-response:configure');
 
 export default class ExplicitConstructedResponse extends HTMLElement {
   static prepareModel = (model = {}) => {
@@ -30,7 +30,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
       Object.keys(joinedObj.choices).forEach(key => {
         joinedObj.choices[key] = joinedObj.choices[key].map((item, index) => {
           if (!item.value) {
-            console.error('Choice does not contain "value" property, which is required.');
+            log('Choice does not contain "value" property, which is required.', item);
             return { value: `${index}`, ...item };
           }
 

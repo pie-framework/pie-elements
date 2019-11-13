@@ -7,13 +7,11 @@ import Link from '@material-ui/core/Link';
 import Collapse from '@material-ui/core/Collapse';
 import PropTypes from 'prop-types';
 
-
 export const RubricType = PropTypes.shape({
   maxPoints: PropTypes.number,
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string)
 });
-
 
 class Rubric extends React.Component {
   dudUrl = 'javascript:;';
@@ -30,11 +28,11 @@ class Rubric extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     value: RubricType
-  }
+  };
 
   toggleRubric() {
-    this.setState({rubricOpen: !this.state.rubricOpen});
-    this.setState({linkPrefix: (this.state.rubricOpen ? 'Show' : 'Hide')});
+    this.setState({ rubricOpen: !this.state.rubricOpen });
+    this.setState({ linkPrefix: this.state.rubricOpen ? 'Show' : 'Hide' });
   }
 
   shouldRenderPoint = (index, value) => {
@@ -52,34 +50,40 @@ class Rubric extends React.Component {
       return (
         <div className={classes.root}>
           <Link href={this.dudUrl} onClick={this.toggleRubric}>
-          {this.state.linkPrefix} Rubric
+            {this.state.linkPrefix} Rubric
           </Link>
           <Collapse in={this.state.rubricOpen} timeout="auto">
             <List component="nav">
-              {points.map((desc,index) => this.shouldRenderPoint(index, value) && (
+              {points.map(
+                (desc, index) =>
+                  this.shouldRenderPoint(index, value) && (
                     <ListItem key={index}>
-                      <ListItemText className={classes.rubricCol} primary={`${index} PTS`} />
                       <ListItemText
-                        primary={<div dangerouslySetInnerHTML={{ __html: desc }}/>}
+                        className={classes.rubricCol}
+                        primary={`${index} PTS`}
+                      />
+                      <ListItemText
+                        primary={
+                          <div dangerouslySetInnerHTML={{ __html: desc }} />
+                        }
                       />
                     </ListItem>
-                  ))}
+                  )
+              )}
             </List>
           </Collapse>
-
-      </div>
-      )
+        </div>
+      );
     } else {
       return null;
     }
   }
 }
 
-const styles = theme => ({
+const styles = () => ({
   rubricCol: {
     flex: '0 1 auto'
   }
 });
-
 
 export default withStyles(styles)(Rubric);

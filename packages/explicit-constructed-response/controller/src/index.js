@@ -2,6 +2,9 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
+import debug from 'debug';
+
+const log = debug('explicit-constructed-response:controller');
 
 export const prepareChoice = (mode, defaultFeedback) => choice => {
   const out = {
@@ -45,7 +48,6 @@ export const normalize = question => ({
  * @param {*} question
  * @param {*} session
  * @param {*} env
- * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env) {
   return new Promise(async resolve => {
@@ -55,7 +57,7 @@ export function model(question, session, env) {
       Object.keys(question.choices).forEach(key => {
         question.choices[key] = question.choices[key].map((item, index) => {
           if (!item.value) {
-            console.error('Choice does not contain "value" property, which is required.');
+            log('Choice does not contain "value" property, which is required.', item);
             return { value: `${index}`, ...item };
           }
 

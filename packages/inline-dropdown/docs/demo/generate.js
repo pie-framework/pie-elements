@@ -1,7 +1,3 @@
-const choice = (l, v, c) => ({ label: l, value: v, correct: !!c });
-
-const markup = '<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>';
-
 exports.model = (id, element) => ({
   id,
   element,

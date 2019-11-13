@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import { choiceUtils as utils, InputContainer } from '@pie-lib/config-ui';
+import { choiceUtils as utils } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
 import Category from './category';

@@ -1,8 +1,5 @@
-import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-
-const log = debug('@pie-element:point-intercept:controller');
 
 const getResponseCorrectness = (
   correctResponseWithLabels,

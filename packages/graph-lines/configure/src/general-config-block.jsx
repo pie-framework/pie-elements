@@ -59,6 +59,7 @@ export class GeneralConfigBlock extends React.Component {
     classes: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,
     onAddLine: PropTypes.func,
+    onPromptChange: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     onMultipleToggle: PropTypes.func.isRequired,
     multiple: PropTypes.bool.isRequired,

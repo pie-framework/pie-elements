@@ -1,8 +1,5 @@
-import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-
-const log = debug('@pie-element:text-entry:controller');
 
 const process = (v, ignoreCase, ignoreWhitespace) => {
   let out = v ? v.trim() : '';
@@ -51,7 +48,7 @@ export const normalize = question => ({
 });
 
 export function model(question, session, env) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, session, env);
 

@@ -5,8 +5,6 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 
 import defaults from './defaults';
 
-const Foo = 'foo';
-
 const defaultModel = () => ({
   model: {
     config: {

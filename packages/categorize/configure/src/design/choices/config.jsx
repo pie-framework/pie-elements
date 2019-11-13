@@ -40,7 +40,8 @@ export class Config extends React.Component {
     className: PropTypes.string,
     config: PropTypes.object,
     categoryCountIsOne: PropTypes.bool,
-    onModelChanged: PropTypes.func,
+    allChoicesHaveCount: PropTypes.func,
+    onModelChanged: PropTypes.func
   };
 
   static defaultProps = {};
@@ -75,7 +76,9 @@ export class Config extends React.Component {
   };
 
   toggleShuffle = () => {
-    this.props.onModelChanged({ lockChoiceOrder: !this.props.config.lockChoiceOrder });
+    this.props.onModelChanged({
+      lockChoiceOrder: !this.props.config.lockChoiceOrder
+    });
   };
 
   changePosition = position => {
@@ -98,12 +101,7 @@ export class Config extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const {
-      classes,
-      className,
-      categoryCountIsOne,
-      config,
-    } = this.props;
+    const { classes, className, categoryCountIsOne, config } = this.props;
 
     const positionOption =
       positionOptions.find(option => option.value === config.choicesPosition) ||
@@ -120,7 +118,7 @@ export class Config extends React.Component {
               max: 4
             }}
             value={config.choicesPerRow}
-            onChange={(this.changeColumns)}
+            onChange={this.changeColumns}
           />
           <InputCheckbox
             label={'Remove all tiles after placing'}

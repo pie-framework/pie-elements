@@ -166,7 +166,7 @@ export class Configure extends React.Component {
     });
   };
 
-  onPartialScoringChange = partialScoring => {
+  onPartialScoringChange = () => {
     this.props.model.partialScoring = this.props.model.partialScoring.map(partialScore => ({
       numberOfCorrect: partialScore.numberOfCorrect || '',
       scorePercentage: partialScore.scorePercentage || ''

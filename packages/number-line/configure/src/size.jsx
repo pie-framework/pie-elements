@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import NumberTextField, { MiniField } from './number-text-field';
+import { MiniField } from './number-text-field';
 
 const Size = props => {
   const { size, onChange } = props;
@@ -19,7 +19,7 @@ Size.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-const styles = theme => ({
+const styles = () => ({
   class: {}
 });
 export default withStyles(styles)(Size);

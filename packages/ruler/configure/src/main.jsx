@@ -118,7 +118,7 @@ export class Main extends React.Component {
   }
 }
 
-const Styled = withStyles(theme => ({
+const Styled = withStyles(() => ({
   opt: {
     display: 'flex'
   },

@@ -24,6 +24,7 @@ const CardBar = props => {
 
 CardBar.propTypes = {
   classes: PropTypes.object,
+  mini: PropTypes.bool,
   header: PropTypes.string,
   children: PropTypes.node
 };

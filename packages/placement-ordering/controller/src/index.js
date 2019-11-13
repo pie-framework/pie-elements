@@ -3,11 +3,11 @@ import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 import _ from 'lodash';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import debug from 'debug';
 
 import defaults from './defaults';
 
-const lg = n => console[n].bind(console, '[placement-ordering]');
-const log = lg('log');
+const log = debug('@pie-element:placement-ordering:controller');
 
 export const questionError = () =>
   new Error('Question is missing required array: correctResponse');

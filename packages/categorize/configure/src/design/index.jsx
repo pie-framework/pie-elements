@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import Typography from '@material-ui/core/Typography';
 import {
   FeedbackConfig,
   InputContainer,
@@ -29,7 +28,9 @@ const { Provider: IdProvider } = uid;
 export class Design extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    configuration: PropTypes.object,
     className: PropTypes.string,
+    onConfigurationChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     uid: PropTypes.string,

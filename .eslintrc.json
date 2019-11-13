@@ -11,6 +11,11 @@
     "node": false,
     "jest": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

@@ -52,7 +52,7 @@ export default class Stateful extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({ model: props.model });
   }
 

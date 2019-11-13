@@ -9,7 +9,6 @@ import {
 import EditableHtml from '@pie-lib/editable-html';
 import PropTypes from 'prop-types';
 import debug from 'debug';
-import Typography from '@material-ui/core/Typography';
 import GeneralConfigBlock from './general-config-block';
 import AnswerConfigBlock from './answer-config-block';
 
