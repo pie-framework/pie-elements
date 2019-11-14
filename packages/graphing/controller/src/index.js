@@ -157,7 +157,11 @@ export const eliminateDuplicates = (marks) => {
   const mappedMarks = initializeGraphMap();
 
   if (marks) {
-    marks.forEach(mark => mappedMarks[mark.type].push(mark));
+    marks.forEach(mark => {
+      if (mark && mark.type && mappedMarks[mark.type]) {
+        mappedMarks[mark.type].push(mark);
+      }
+    });
   }
 
   Object.keys(mappedMarks).forEach(toolType => {
@@ -273,7 +277,9 @@ export const getScore = (question, session) => {
           sessAnswer.correctness = 'incorrect';
         }
 
-        marksWithCorrectnessValue[answerKey][toolType].push(cloneDeep(sessAnswer));
+        if(answerKey && toolType && marksWithCorrectnessValue[answerKey] && marksWithCorrectnessValue[answerKey][toolType]) {
+          marksWithCorrectnessValue[answerKey][toolType].push(cloneDeep(sessAnswer));
+        }
       });
     });
   });
