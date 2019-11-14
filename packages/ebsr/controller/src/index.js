@@ -38,9 +38,7 @@ const parsePart = (part, key, session, env) => {
     part.defaultFeedback
   );
 
-  let choices = part.choices
-    ? part.choices.map(prepareChoice(part, env, defaultFeedback))
-    : [];
+  let choices = part.choices ? part.choices.map(prepareChoice(part, env, defaultFeedback)) : [];
 
   return {
     ...part,
@@ -50,9 +48,7 @@ const parsePart = (part, key, session, env) => {
       min: part.choices.filter(c => c.correct).length
     },
     responseCorrect:
-      env.mode === 'evaluate'
-        ? isResponseCorrect(part, key, session)
-        : undefined
+      env.mode === 'evaluate' ? isResponseCorrect(part, key, session) : undefined
   };
 };
 
@@ -89,11 +85,11 @@ export async function model(question, session, env, updateSession) {
   const partB = parsePart(normalizedQuestion.partB, 'partB', session, env);
 
   if (!normalizedQuestion.partA.lockChoiceOrder) {
-    partA.choices = await getShuffledChoices(partA.choices, session, updateSession, 'value');
+    partA.choices = await getShuffledChoices(partA.choices, session, updateSession, 'value', 'partA');
   }
 
   if (!normalizedQuestion.partB.lockChoiceOrder) {
-    partB.choices = await getShuffledChoices(partB.choices, session, updateSession, 'value');
+    partB.choices = await getShuffledChoices(partB.choices, session, updateSession, 'value', 'partB');
   }
 
   if (normalizedQuestion.partLabels) {
