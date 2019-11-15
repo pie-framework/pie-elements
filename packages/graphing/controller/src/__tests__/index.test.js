@@ -375,6 +375,110 @@ describe('eliminateDuplicates', () => {
     },
     'parabola'
   );
+
+  const assertInvalidMarks = (marks) => {
+    it(`returns proper result if marks are ${JSON.stringify(marks)}`, () => {
+      const result = eliminateDuplicates(undefined);
+
+      expect(result).toEqual({
+        point: [],
+        segment: [],
+        line: [],
+        ray: [],
+        vector: [],
+        polygon: [],
+        circle: [],
+        sine: [],
+        parabola: []
+      })
+    });
+  };
+
+  assertInvalidMarks(undefined);
+  assertInvalidMarks(null);
+  assertInvalidMarks({});
+
+  it('removes the marks that don\'t have a valid type', () => {
+    const result = eliminateDuplicates([
+      { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+      { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+      { type: 'typeThatDoesNotExist' }
+    ]);
+
+
+    expect(result).toEqual({
+      point: [],
+      segment: [],
+      line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
+        type: 'line',
+        from: { x: 0, y: 0 },
+        to: { x: 12, y: 1 }
+      }],
+      ray: [],
+      vector: [],
+      polygon: [],
+      circle: [],
+      sine: [],
+      parabola: []
+    })
+  });
+
+  it('removes the marks that don\'t have a type', () => {
+    const result = eliminateDuplicates([
+      { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+      { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+      { something: 'Something' }
+    ]);
+
+
+    expect(result).toEqual({
+      point: [],
+      segment: [],
+      line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
+        type: 'line',
+        from: { x: 0, y: 0 },
+        to: { x: 12, y: 1 }
+      }],
+      ray: [],
+      vector: [],
+      polygon: [],
+      circle: [],
+      sine: [],
+      parabola: []
+    })
+  });
+
+  // exceptions
+  const assertMarks = (mark) => {
+    it(`removes the ${JSON.stringify(mark)} marks`, () => {
+      const result = eliminateDuplicates([
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+        mark,
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } }
+      ]);
+
+
+      expect(result).toEqual({
+        point: [],
+        segment: [],
+        line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
+          type: 'line',
+          from: { x: 0, y: 0 },
+          to: { x: 12, y: 1 }
+        }],
+        ray: [],
+        vector: [],
+        polygon: [],
+        circle: [],
+        sine: [],
+        parabola: []
+      })
+    });
+  };
+
+  assertMarks(undefined);
+  assertMarks(null);
+  assertMarks({});
 });
 
 describe('unMapMarks', () => {
@@ -402,12 +506,24 @@ describe('unMapMarks', () => {
     point: [{ x: 1, y: 1, type: 'point' }],
     segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
   }, [{ x: 1, y: 1, type: 'point' }, { type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]);
+
+  const assertInvalidMarks = (marks) => {
+    it(`return empty array if marks are ${JSON.stringify(marks)}`, () => {
+      const result = unMapMarks(undefined);
+
+      expect(result).toEqual([]);
+    });
+  };
+
+  assertInvalidMarks(undefined);
+  assertInvalidMarks(null);
+  assertInvalidMarks({});
 });
 
 describe('dichotomous', () => {
-  const assert = (answers, marksWithCorrectnessValue, expected) => {
+  const assert = (answers, correctedMarks, expected) => {
     it('returns correct values', () => {
-      const result = dichotomous(answers, marksWithCorrectnessValue);
+      const result = dichotomous(answers, correctedMarks);
 
       expect(result).toEqual(expected);
     });
@@ -499,12 +615,87 @@ describe('dichotomous', () => {
       correctMarks: [],
       score: 0
     });
+
+  const assertInvalidAnswers = (answers) => {
+    it(`${JSON.stringify(answers)} answers`, () => {
+      const result = dichotomous(answers, {
+        correctAnswer: {
+          point: [{ type: 'point', x: 0, y: 0 }],
+          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          line: [],
+          ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+          vector: [],
+          polygon: [],
+          circle: [],
+          sine: [],
+          parabola: []
+        },
+        alternate1: {
+          point: [{ type: 'point', x: 0, y: 0 }],
+          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          line: [],
+          ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 2, y: 20 } }],
+          vector: [],
+          polygon: [],
+          circle: [],
+          sine: [],
+          parabola: []
+        }
+      });
+
+      expect(result).toEqual({
+        correctMarks: [
+          { type: 'point', x: 0, y: 0 },
+          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+        score: 0
+      })
+    });
+  };
+
+  assertInvalidAnswers(undefined);
+  assertInvalidAnswers(null);
+  assertInvalidAnswers({});
+
+
+  const assertInvalidMarksWithCorrectnessValues = (marks) => {
+    it(`${JSON.stringify(marks)} correctedMarks`, () => {
+      const result = dichotomous({
+        correctAnswer: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+          name: 'Correct Answer'
+        },
+        alternateAnswer1: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Alternate Answer 1'
+        }
+      }, marks);
+
+
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0
+      })
+    });
+  };
+
+  assertInvalidMarksWithCorrectnessValues(undefined);
+  assertInvalidMarksWithCorrectnessValues(null);
+  assertInvalidMarksWithCorrectnessValues({});
 });
 
 describe('partial', () => {
-  const assert = (answers, marksWithCorrectnessValue, expected) => {
+  const assert = (answers, correctedMarks, expected) => {
     it('returns correct values', () => {
-      const result = partial(answers, marksWithCorrectnessValue);
+      const result = partial(answers, correctedMarks);
 
       expect(result).toEqual(expected);
     });
@@ -606,6 +797,196 @@ describe('partial', () => {
       ],
       score: 0.75
     });
+
+  const assertInvalidAnswers = (answers) => {
+    it(`${JSON.stringify(answers)} answers`, () => {
+      const result = partial(answers, {
+        correctAnswer: {
+          point: [{ type: 'point', x: 0, y: 0 }],
+          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          line: [],
+          ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+          vector: [],
+          polygon: [],
+          circle: [],
+          sine: [],
+          parabola: []
+        },
+        alternate1: {
+          point: [{ type: 'point', x: 0, y: 0 }],
+          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          line: [],
+          ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 2, y: 20 } }],
+          vector: [],
+          polygon: [],
+          circle: [],
+          sine: [],
+          parabola: []
+        }
+      });
+
+      expect(result).toEqual({
+        correctMarks: [
+          { type: 'point', x: 0, y: 0 },
+          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+        score: 0
+      })
+    });
+  };
+
+  assertInvalidAnswers(undefined);
+  assertInvalidAnswers(null);
+  assertInvalidAnswers({});
+
+
+  const assertInvalidMarksWithCorrectnessValues = (marks) => {
+    it(`${JSON.stringify(marks)} correctedMarks`, () => {
+      const result = partial({
+        correctAnswer: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Correct Answer'
+        },
+        alternateAnswer1: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Alternate Answer 1'
+        }
+      }, marks);
+
+
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0
+      })
+    });
+  };
+
+  assertInvalidMarksWithCorrectnessValues(undefined);
+  assertInvalidMarksWithCorrectnessValues(null);
+  assertInvalidMarksWithCorrectnessValues({});
+
+  it('correctedMarks has invalid format', () => {
+    const result = partial({
+      correctAnswer: {
+        marks: [
+          { type: 'point', x: 0, y: 0 },
+          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+        ],
+        name: 'Correct Answer'
+      },
+      alternateAnswer1: {
+        marks: [
+          { type: 'point', x: 0, y: 0 },
+          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+        ],
+        name: 'Alternate Answer 1'
+      }
+    }, {
+      correctAnswer: {
+        point: [{ type: 'point', x: 0, y: 0 }],
+        segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+        line: [],
+        ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+        vector: [],
+        polygon: [],
+        circle: [],
+        sine: [],
+        parabola: []
+      },
+    });
+
+
+    expect(result).toEqual({
+      correctMarks: [
+        { type: 'point', x: 0, y: 0 },
+        { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+        { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+      ],
+      score: 1
+    })
+  });
+
+  const assertMarksSetInvalidFormat = (set) => {
+    it(`correctedMarks correctAnswer has invalid format: ${JSON.stringify(set)}`, () => {
+      const result = partial({
+        correctAnswer: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Correct Answer'
+        },
+        alternateAnswer1: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Alternate Answer 1'
+        }
+      }, {
+        correctAnswer: set,
+      });
+
+
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0
+      })
+    });
+  };
+
+  assertMarksSetInvalidFormat(undefined);
+  assertMarksSetInvalidFormat(null);
+  assertMarksSetInvalidFormat({});
+
+  const assertMarksSetPropertyInvalidFormat = (set) => {
+    it(`correctedMarks correctAnswer property has invalid format: ${JSON.stringify(set)}`, () => {
+      const result = partial({
+        correctAnswer: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Correct Answer'
+        },
+        alternateAnswer1: {
+          marks: [
+            { type: 'point', x: 0, y: 0 },
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+          ],
+          name: 'Alternate Answer 1'
+        }
+      }, {
+        correctAnswer: {
+          point: set
+        },
+      });
+
+
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0
+      })
+    });
+  };
+
+  assertMarksSetPropertyInvalidFormat(undefined);
+  assertMarksSetPropertyInvalidFormat(null);
+  assertMarksSetPropertyInvalidFormat({});
 });
 
 describe('getScore', () => {
@@ -763,6 +1144,47 @@ describe('getScore', () => {
       score: 0.67
     }
   );
+
+
+  const assertInvalidQuestionAnswers = answers => {
+    it(`question.answers = ${JSON.stringify(answers)}`, () => {
+      const result = getScore({ answers }, {});
+
+      expect(result).toEqual({});
+    });
+  };
+
+  assertInvalidQuestionAnswers(undefined);
+  assertInvalidQuestionAnswers(null);
+  assertInvalidQuestionAnswers({});
+
+  const assertInvalidQuestion = question => {
+    it(`question = ${JSON.stringify(question)}`, () => {
+      const result = getScore(question, {});
+
+      expect(result).toEqual({});
+    });
+  };
+
+  assertInvalidQuestion(undefined);
+  assertInvalidQuestion(null);
+  assertInvalidQuestion({});
+
+  const assertInvalidFormatQuestionAnswers = answers => {
+    it(`question.answers = ${JSON.stringify(answers)}`, () => {
+      const result = getScore({ answers }, {});
+
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0
+      });
+    });
+  };
+
+  assertInvalidFormatQuestionAnswers({
+    correctAnswer: undefined
+  });
+
 });
 
 describe('outcome', () => {
