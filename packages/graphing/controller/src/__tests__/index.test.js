@@ -390,7 +390,7 @@ describe('eliminateDuplicates', () => {
         circle: [],
         sine: [],
         parabola: []
-      })
+      });
     });
   };
 
@@ -420,7 +420,7 @@ describe('eliminateDuplicates', () => {
       circle: [],
       sine: [],
       parabola: []
-    })
+    });
   });
 
   it('removes the marks that don\'t have a type', () => {
@@ -434,18 +434,17 @@ describe('eliminateDuplicates', () => {
     expect(result).toEqual({
       point: [],
       segment: [],
-      line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
-        type: 'line',
-        from: { x: 0, y: 0 },
-        to: { x: 12, y: 1 }
-      }],
+      line: [
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } }
+      ],
       ray: [],
       vector: [],
       polygon: [],
       circle: [],
       sine: [],
       parabola: []
-    })
+    });
   });
 
   // exceptions
@@ -472,7 +471,7 @@ describe('eliminateDuplicates', () => {
         circle: [],
         sine: [],
         parabola: []
-      })
+      });
     });
   };
 
@@ -649,7 +648,7 @@ describe('dichotomous', () => {
           { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
           { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
         score: 0
-      })
+      });
     });
   };
 
@@ -666,7 +665,7 @@ describe('dichotomous', () => {
             { type: 'point', x: 0, y: 0 },
             { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
             { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-            ],
+          ],
           name: 'Correct Answer'
         },
         alternateAnswer1: {
@@ -683,7 +682,7 @@ describe('dichotomous', () => {
       expect(result).toEqual({
         correctMarks: [],
         score: 0
-      })
+      });
     });
   };
 
@@ -831,7 +830,7 @@ describe('partial', () => {
           { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
           { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
         score: 0
-      })
+      });
     });
   };
 
@@ -865,7 +864,7 @@ describe('partial', () => {
       expect(result).toEqual({
         correctMarks: [],
         score: 0
-      })
+      });
     });
   };
 
@@ -913,7 +912,7 @@ describe('partial', () => {
         { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
       ],
       score: 1
-    })
+    });
   });
 
   const assertMarksSetInvalidFormat = (set) => {
@@ -943,7 +942,7 @@ describe('partial', () => {
       expect(result).toEqual({
         correctMarks: [],
         score: 0
-      })
+      });
     });
   };
 
@@ -980,7 +979,7 @@ describe('partial', () => {
       expect(result).toEqual({
         correctMarks: [],
         score: 0
-      })
+      });
     });
   };
 
