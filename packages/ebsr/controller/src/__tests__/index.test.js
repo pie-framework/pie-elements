@@ -212,7 +212,7 @@ describe('controller', () => {
     });
 
     describe('model - with updateSession', () => {
-      it.only('calls updateSession', async () => {
+      it('calls updateSession', async () => {
         session = { id: '1', element: 'ebsr-element' };
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();

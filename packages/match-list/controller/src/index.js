@@ -7,11 +7,8 @@ const log = debug('@pie-element:match-list:controller');
 
 import defaults from './defaults';
 
-const getResponseCorrectness = (
-  model,
-  answers
-) => {
-  const partialScoring = true /*model.partialScoring*/;
+const getResponseCorrectness = (model, answers) => {
+  const partialScoring = true; /*model.partialScoring*/
   const prompts = model.prompts;
 
   if (!answers || Object.keys(answers).length === 0) {
@@ -22,7 +19,7 @@ const getResponseCorrectness = (
   const correctAnswers = getCorrectSelected(prompts, answers);
 
   if (totalCorrectAnswers === correctAnswers) {
-    return  'correct';
+    return 'correct';
   } else if (correctAnswers === 0) {
     return 'incorrect';
   } else if (partialScoring) {
@@ -34,10 +31,7 @@ const getResponseCorrectness = (
 
 const getCorrectness = (question, env, answers) => {
   if (env.mode === 'evaluate') {
-    return getResponseCorrectness(
-      question,
-      answers
-    );
+    return getResponseCorrectness(question, answers);
   }
 };
 
@@ -53,8 +47,8 @@ const getCorrectSelected = (prompts = [], answers) => {
   return correctAnswers;
 };
 
-const getTotalCorrect = (question) => {
-  return (question && question.prompts) ? question.prompts.length : 0;
+const getTotalCorrect = question => {
+  return question && question.prompts ? question.prompts.length : 0;
 };
 
 const getPartialScore = (question, answers) => {
@@ -65,24 +59,17 @@ const getPartialScore = (question, answers) => {
 };
 
 const getOutComeScore = (question, env, answers) => {
-  const correctness = getCorrectness(
-    question,
-    env,
-    answers
-  );
+  const correctness = getCorrectness(question, env, answers);
 
-  return (
-    correctness === 'correct'
-      ? 1
-      : correctness === 'partial' &&
-      true
-      ? getPartialScore(question, answers)
-      : 0
-  );
+  return correctness === 'correct'
+    ? 1
+    : correctness === 'partial' && true
+    ? getPartialScore(question, answers)
+    : 0;
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -119,19 +106,51 @@ export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
     const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
-    const score =  `${getOutComeScore(question, env, session && session.value) * 100}%`;
+    const score = `${getOutComeScore(question, env, session && session.value) *
+      100}%`;
     const correctInfo = {
       score,
       correctness
     };
 
+    const shuffledValues = {};
+    let prompts = question.prompts;
+    let answers = question.answers;
+
+    const us = part => (id, element, update) => {
+      return new Promise(resolve => {
+        shuffledValues[part] = update.shuffledValues;
+        resolve();
+      });
+    };
+
     if (!question.lockChoiceOrder) {
-      question.prompts = await getShuffledChoices(question.prompts, session, updateSession, 'id');
-      question.answers = await getShuffledChoices(question.answers, session, updateSession, 'id');
+      prompts = await getShuffledChoices(
+        prompts,
+        { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
+        us('prompts'),
+        'id'
+      );
+      answers = await getShuffledChoices(
+        answers,
+        { shuffledValues: ((session && session.shuffledValues) || {}).answers },
+        us('answers'),
+        'id'
+      );
     }
 
-    if (question && question.prompts) {
-      question.prompts.forEach(prompt => {
+    if (!isEmpty(shuffledValues)) {
+      if (updateSession && typeof updateSession === 'function') {
+        updateSession(session.id, session.element, {
+          shuffledValues
+        }).catch(e => {
+          console.error('update session failed', e);
+        });
+      }
+    }
+
+    if (question && prompts) {
+      prompts.forEach(prompt => {
         correctResponse[prompt.id] = prompt.relatedAnswer;
       });
     }
@@ -145,6 +164,8 @@ export function model(question, session, env, updateSession) {
       const base = {
         config: {
           ...question,
+          prompts,
+          answers,
           shuffled: !question.lockChoiceOrder
         },
         correctness: correctInfo,
@@ -152,7 +173,10 @@ export function model(question, session, env, updateSession) {
         mode: env.mode
       };
 
-      if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
+      if (
+        env.role === 'instructor' &&
+        (env.mode === 'view' || env.mode === 'evaluate')
+      ) {
         base.rationale = question.rationale;
       } else {
         base.rationale = null;
@@ -189,4 +213,3 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
-
