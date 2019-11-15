@@ -1,7 +1,7 @@
 import defaults from './defaults';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
-
+import _ from 'lodash';
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
@@ -73,7 +73,7 @@ export const normalize = question => ({
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     ...question.partB
-  },
+  }
 });
 
 /**
@@ -88,32 +88,73 @@ export async function model(question, session, env, updateSession) {
   const partA = parsePart(normalizedQuestion.partA, 'partA', session, env);
   const partB = parsePart(normalizedQuestion.partB, 'partB', session, env);
 
+  const shuffledValues = {};
+
+  const us = part => (id, element, update) =>
+    new Promise(resolve => {
+      shuffledValues[part] = update.shuffledValues;
+      resolve();
+    });
+
   if (!normalizedQuestion.partA.lockChoiceOrder) {
-    partA.choices = await getShuffledChoices(partA.choices, session, updateSession, 'value');
+    partA.choices = await getShuffledChoices(
+      partA.choices,
+      { shuffledValues: (session.shuffledValues || {}).partA },
+      us('partA'),
+      'value'
+    );
   }
 
   if (!normalizedQuestion.partB.lockChoiceOrder) {
-    partB.choices = await getShuffledChoices(partB.choices, session, updateSession, 'value');
+    partB.choices = await getShuffledChoices(
+      partB.choices,
+      { shuffledValues: (session.shuffledValues || {}).partB },
+      us('partB'),
+      'value'
+    );
+  }
+
+  if (!_.isEmpty(shuffledValues)) {
+    updateSession(session.id, session.element, {
+      shuffledValues
+    }).catch(e => {
+      console.error('update session failed', e);
+    });
   }
 
   if (normalizedQuestion.partLabels) {
-    partA.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
-    partB.partLabel = normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
+    partA.partLabel =
+      normalizedQuestion.partLabelType === 'Letters' ? 'Part A' : 'Part 1';
+    partB.partLabel =
+      normalizedQuestion.partLabelType === 'Letters' ? 'Part B' : 'Part 2';
   } else {
     partA.partLabel = undefined;
     partB.partLabel = undefined;
   }
 
-  if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-    partA.teacherInstructions = normalizedQuestion.partA.teacherInstructionsEnabled ? normalizedQuestion.partA.teacherInstructions : null;
-    partB.teacherInstructions = normalizedQuestion.partB.teacherInstructionsEnabled ? normalizedQuestion.partB.teacherInstructions : null;
+  if (
+    env.role === 'instructor' &&
+    (env.mode === 'view' || env.mode === 'evaluate')
+  ) {
+    partA.teacherInstructions = normalizedQuestion.partA
+      .teacherInstructionsEnabled
+      ? normalizedQuestion.partA.teacherInstructions
+      : null;
+    partB.teacherInstructions = normalizedQuestion.partB
+      .teacherInstructionsEnabled
+      ? normalizedQuestion.partB.teacherInstructions
+      : null;
   } else {
     partA.teacherInstructions = null;
     partB.teacherInstructions = null;
   }
 
-  partA.prompt = normalizedQuestion.partA.promptEnabled ? normalizedQuestion.partA.prompt : null;
-  partB.prompt = normalizedQuestion.partB.promptEnabled ? normalizedQuestion.partB.prompt : null;
+  partA.prompt = normalizedQuestion.partA.promptEnabled
+    ? normalizedQuestion.partA.prompt
+    : null;
+  partB.prompt = normalizedQuestion.partB.promptEnabled
+    ? normalizedQuestion.partB.prompt
+    : null;
 
   return new Promise(resolve => {
     resolve({
@@ -155,7 +196,9 @@ const getScore = (config, part, key) => {
   } else {
     const { choices } = (config && config[key]) || {};
     const choicesLength = choices && choices.length;
-    const scoreString = choicesLength ? (correctCount / choicesLength).toFixed(2) : 0;
+    const scoreString = choicesLength
+      ? (correctCount / choicesLength).toFixed(2)
+      : 0;
 
     score = parseFloat(scoreString);
   }
@@ -164,7 +207,7 @@ const getScore = (config, part, key) => {
 };
 
 export function outcome(config, session) {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const { value } = session || {};
 
     if (!session || !value) {

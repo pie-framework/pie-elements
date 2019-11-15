@@ -32,7 +32,7 @@ describe('controller', () => {
             feedback: {
               type: 'default'
             }
-          },
+          }
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
@@ -58,7 +58,7 @@ describe('controller', () => {
             feedback: {
               type: 'default'
             }
-          },
+          }
         ],
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
@@ -87,8 +87,11 @@ describe('controller', () => {
 
     describe('partial scoring', () => {
       beforeEach(() => {
-        const turnPartialCorrectOn = (part) => {
-          const choices = question[part].choices.concat({ value: 'c', correct: true });
+        const turnPartialCorrectOn = part => {
+          const choices = question[part].choices.concat({
+            value: 'c',
+            correct: true
+          });
           question[part] = {
             ...question[part],
             partialScoring: true,
@@ -101,7 +104,11 @@ describe('controller', () => {
 
       const returnsScoreOf = (value1, value2, score) => {
         it(`returns a score of ${score}`, async () => {
-          const result = await outcome(question, { value: { partA: value1, partB: value2 } }, {});
+          const result = await outcome(
+            question,
+            { value: { partA: value1, partB: value2 } },
+            {}
+          );
           expect(result.score).toBeCloseTo(score);
         });
       };
@@ -112,8 +119,10 @@ describe('controller', () => {
       returnsScoreOf({ value: ['yellow'] }, { value: ['orange', 'c'] }, 2);
     });
 
-    const returnsScoreWhen = (session) => {
-      it(`returns empty: true if session is ${JSON.stringify(session)}`, async () => {
+    const returnsScoreWhen = session => {
+      it(`returns empty: true if session is ${JSON.stringify(
+        session
+      )}`, async () => {
         const result = await outcome(question, session, { mode: 'gather' });
         expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true });
       });
@@ -125,7 +134,7 @@ describe('controller', () => {
   });
 
   describe('model', () => {
-    const capitalize = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+    const capitalize = value => value.charAt(0).toUpperCase() + value.slice(1);
 
     describe('mode: gather', () => {
       beforeEach(async () => {
@@ -142,31 +151,31 @@ describe('controller', () => {
         expect(result.mode).toEqual('gather');
       });
 
-      const returnsPrompt = (part) => {
+      const returnsPrompt = part => {
         it(`returns ${part} prompt`, () => {
           expect(result[part].prompt).toEqual(`prompt ${part}`);
         });
       };
 
-      const returnsChoiceMode = (part) => {
+      const returnsChoiceMode = part => {
         it(`returns ${part} choiceMode`, () => {
           expect(result[part].choiceMode).toEqual('radio');
         });
       };
 
-      const returnsKeyMode = (part) => {
+      const returnsKeyMode = part => {
         it(`returns ${part} choicePrefix`, () => {
           expect(result[part].choicePrefix).toEqual('numbers');
         });
       };
 
-      const returnsComplete = (part) => {
+      const returnsComplete = part => {
         it(`returns ${part} complete`, () => {
           expect(result[part].complete).toEqual({ min: 1 });
         });
       };
 
-      const doesNotReturnCorrect = (part) => {
+      const doesNotReturnCorrect = part => {
         it(`does not return ${part} responseCorrect`, () => {
           expect(result[part].responseCorrect).toBe(undefined);
         });
@@ -178,7 +187,8 @@ describe('controller', () => {
             expect.arrayContaining([
               { value: value1, label: capitalize(value1), rationale: null },
               { value: value2, label: capitalize(value2), rationale: null }
-            ]));
+            ])
+          );
         });
       };
 
@@ -202,26 +212,31 @@ describe('controller', () => {
     });
 
     describe('model - with updateSession', () => {
-      it('calls updateSession', async () => {
+      it.only('calls updateSession', async () => {
         session = { id: '1', element: 'ebsr-element' };
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
-        await model({
-          ...question,
-          partA: {
-            ...question.partA,
-            lockChoiceOrder: false
+        await model(
+          {
+            ...question,
+            partA: {
+              ...question.partA,
+              lockChoiceOrder: false
+            },
+            partB: {
+              ...question.partB,
+              lockChoiceOrder: false
+            }
           },
-          partB: {
-            ...question.partB,
-            lockChoiceOrder: false
-          }
-        }, session, env, updateSession);
+          session,
+          env,
+          updateSession
+        );
         expect(updateSession).toHaveBeenCalledWith('1', 'ebsr-element', {
-          shuffledValues: expect.arrayContaining(
-            ['yellow', 'green'],
-            ['orange', 'purple']
-          )
+          shuffledValues: {
+            partA: expect.arrayContaining(['yellow', 'green']),
+            partB: expect.arrayContaining(['orange', 'purple'])
+          }
         });
       });
     });
@@ -250,15 +265,27 @@ describe('controller', () => {
       const returnsChoicesWCorrect = (part, value1, value2) => {
         it(`returns ${part} choices w/ correct`, () => {
           expect(result[part].choices).toEqual(
-
             expect.arrayContaining([
-              { value: value1, label: capitalize(value1), correct: true, feedback: 'foo', rationale: null },
-              { value: value2, label: capitalize(value2), correct: false, feedback: 'Incorrect', rationale: null }
-            ]));
+              {
+                value: value1,
+                label: capitalize(value1),
+                correct: true,
+                feedback: 'foo',
+                rationale: null
+              },
+              {
+                value: value2,
+                label: capitalize(value2),
+                correct: false,
+                feedback: 'Incorrect',
+                rationale: null
+              }
+            ])
+          );
         });
       };
 
-      const returnsIsResponseCorrect = (part) => {
+      const returnsIsResponseCorrect = part => {
         it(`returns ${part} is response correct`, () => {
           expect(result[part].responseCorrect).toEqual(false);
         });
@@ -278,15 +305,22 @@ describe('controller', () => {
           mode: 'gather',
           role: 'instructor'
         });
-        expect(sess).toEqual({"id": "1", "value": {"partA": {"id": "partA", "value": ["yellow"]}, "partB": {"id": "partB", "value": ["orange"]}}});
+        expect(sess).toEqual({
+          id: '1',
+          value: {
+            partA: { id: 'partA', value: ['yellow'] },
+            partB: { id: 'partB', value: ['orange'] }
+          }
+        });
       });
-  
+
       it('returns null env is student', async () => {
-        const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+        const noResult = await createCorrectResponseSession(question, {
+          mode: 'gather',
+          role: 'student'
+        });
         expect(noResult).toBeNull();
       });
     });
-
-
   });
 });

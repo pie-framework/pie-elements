@@ -153,7 +153,6 @@ export function model(question, session, env) {
       promptEnabled,
       range,
       rationale,
-      teacherInstructions,
       title,
       rationaleEnabled,
       teacherInstructions,
