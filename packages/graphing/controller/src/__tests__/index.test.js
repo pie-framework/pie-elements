@@ -376,7 +376,7 @@ describe('eliminateDuplicates', () => {
     'parabola'
   );
 
-  const assertInvalidMarks = (marks) => {
+  const assertInvalidMarks = marks => {
     it(`returns proper result if marks are ${JSON.stringify(marks)}`, () => {
       const result = eliminateDuplicates(undefined);
 
@@ -448,7 +448,7 @@ describe('eliminateDuplicates', () => {
   });
 
   // exceptions
-  const assertMarks = (mark) => {
+  const assertMarks = mark => {
     it(`removes the ${JSON.stringify(mark)} marks`, () => {
       const result = eliminateDuplicates([
         { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
@@ -506,7 +506,7 @@ describe('unMapMarks', () => {
     segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
   }, [{ x: 1, y: 1, type: 'point' }, { type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]);
 
-  const assertInvalidMarks = (marks) => {
+  const assertInvalidMarks = marks => {
     it(`return empty array if marks are ${JSON.stringify(marks)}`, () => {
       const result = unMapMarks(undefined);
 
@@ -615,7 +615,7 @@ describe('dichotomous', () => {
       score: 0
     });
 
-  const assertInvalidAnswers = (answers) => {
+  const assertInvalidAnswers = answers => {
     it(`${JSON.stringify(answers)} answers`, () => {
       const result = dichotomous(answers, {
         correctAnswer: {
@@ -657,7 +657,7 @@ describe('dichotomous', () => {
   assertInvalidAnswers({});
 
 
-  const assertInvalidMarksWithCorrectnessValues = (marks) => {
+  const assertInvalidMarksWithCorrectnessValues = marks => {
     it(`${JSON.stringify(marks)} correctedMarks`, () => {
       const result = dichotomous({
         correctAnswer: {
@@ -797,7 +797,7 @@ describe('partial', () => {
       score: 0.75
     });
 
-  const assertInvalidAnswers = (answers) => {
+  const assertInvalidAnswers = answers => {
     it(`${JSON.stringify(answers)} answers`, () => {
       const result = partial(answers, {
         correctAnswer: {
@@ -839,7 +839,7 @@ describe('partial', () => {
   assertInvalidAnswers({});
 
 
-  const assertInvalidMarksWithCorrectnessValues = (marks) => {
+  const assertInvalidMarksWithCorrectnessValues = marks => {
     it(`${JSON.stringify(marks)} correctedMarks`, () => {
       const result = partial({
         correctAnswer: {
@@ -915,7 +915,7 @@ describe('partial', () => {
     });
   });
 
-  const assertMarksSetInvalidFormat = (set) => {
+  const assertMarksSetInvalidFormat = set => {
     it(`correctedMarks correctAnswer has invalid format: ${JSON.stringify(set)}`, () => {
       const result = partial({
         correctAnswer: {
@@ -950,7 +950,7 @@ describe('partial', () => {
   assertMarksSetInvalidFormat(null);
   assertMarksSetInvalidFormat({});
 
-  const assertMarksSetPropertyInvalidFormat = (set) => {
+  const assertMarksSetPropertyInvalidFormat = set => {
     it(`correctedMarks correctAnswer property has invalid format: ${JSON.stringify(set)}`, () => {
       const result = partial({
         correctAnswer: {
