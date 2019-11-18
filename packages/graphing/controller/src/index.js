@@ -157,7 +157,11 @@ export const eliminateDuplicates = (marks) => {
   const mappedMarks = initializeGraphMap();
 
   if (marks) {
-    marks.forEach(mark => mappedMarks[mark.type].push(mark));
+    marks.forEach(mark => {
+      if (mark && mark.type && mappedMarks[mark.type]) {
+        mappedMarks[mark.type].push(mark);
+      }
+    });
   }
 
   Object.keys(mappedMarks).forEach(toolType => {
@@ -167,24 +171,40 @@ export const eliminateDuplicates = (marks) => {
   return mappedMarks;
 };
 
-export const unMapMarks = (marks) => Object.values(marks).reduce((a, b) => ([...a, ...b]));
+export const unMapMarks = (marks) => {
+  const marksValues = Object.values(marks || {});
 
-export const dichotomous = (answers, marksWithCorrectnessValue) => {
-  let correctMarks = Object.values(marksWithCorrectnessValue)[0];
+  if (!marksValues.length) {
+    return [];
+  }
+
+  return marksValues.reduce((a, b) => ([...a, ...b]));
+};
+
+export const dichotomous = (answers, correctedMarks) => {
   let score = 0;
 
-  Object.keys(answers).map(answerKey => {
+  if (!correctedMarks || isEmpty(correctedMarks)) {
+    return {
+      correctMarks: [],
+      score
+    };
+  }
+
+  let correctMarks = Object.values(correctedMarks)[0];
+
+  Object.keys(answers || {}).map(answerKey => {
     // correct marks for this answer
-    const marksArrayNoDuplicates = unMapMarks(eliminateDuplicates(answers[answerKey].marks));
+    const marksArrayNoDuplicates = unMapMarks(eliminateDuplicates((answers[answerKey] || {}).marks));
     // selected marks
-    const marksArrayWithCorrectnessNoDuplicates = unMapMarks(marksWithCorrectnessValue[answerKey]);
+    const marksArrayWithCorrectnessNoDuplicates = unMapMarks(correctedMarks[answerKey]);
 
     // check if number of marks are equal and if all are correct
     if (marksArrayNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.length &&
       marksArrayWithCorrectnessNoDuplicates.length === marksArrayWithCorrectnessNoDuplicates.filter(
         cm => cm.correctness === 'correct').length) {
       score = 1;
-      correctMarks = marksWithCorrectnessValue[answerKey];
+      correctMarks = correctedMarks[answerKey];
     }
   });
 
@@ -194,31 +214,41 @@ export const dichotomous = (answers, marksWithCorrectnessValue) => {
   };
 };
 
-export const partial = (answers, marksWithCorrectnessValue) => {
-  let correctMarks = Object.values(marksWithCorrectnessValue)[0];
+export const partial = (answers, correctedMarks) => {
   let bestScore = 0;
 
+  if (!correctedMarks || isEmpty(correctedMarks)) {
+    return {
+      correctMarks: [],
+      score: 0
+    };
+  }
 
-  Object.keys(answers).map(answerKey => {
-    const marksArrayNoDuplicates = eliminateDuplicates(answers[answerKey].marks);
+  let correctMarks = Object.values(correctedMarks)[0];
+
+  Object.keys(answers || {}).map(answerKey => {
+    const marksArrayNoDuplicates = eliminateDuplicates((answers[answerKey] || {}).marks);
     let allCorrectScore = unMapMarks(marksArrayNoDuplicates).length;
     let score = 0;
     let scoredToolsCount = 0;
+    const currentMarksWithCorrectnessValue = correctedMarks[answerKey];
 
-    Object.keys(marksWithCorrectnessValue[answerKey]).forEach(correctMarkKey => {
-      marksWithCorrectnessValue[answerKey][correctMarkKey].forEach(cM => {
-        scoredToolsCount += 1;
-        if (cM.correctness === 'incorrect') {
-          score -= scoredToolsCount > allCorrectScore ? 1 : 0;
-        } else {
-          score += scoredToolsCount <= allCorrectScore ? 1 : 0;
-        }
-      });
+    Object.keys(currentMarksWithCorrectnessValue || {}).forEach(correctMarkKey => {
+      if (currentMarksWithCorrectnessValue[correctMarkKey] && currentMarksWithCorrectnessValue[correctMarkKey].length) {
+        currentMarksWithCorrectnessValue[correctMarkKey].forEach(cM => {
+          scoredToolsCount += 1;
+          if (cM.correctness === 'incorrect') {
+            score -= scoredToolsCount > allCorrectScore ? 1 : 0;
+          } else {
+            score += scoredToolsCount <= allCorrectScore ? 1 : 0;
+          }
+        });
+      }
     });
 
     if (!bestScore || (score / allCorrectScore >= bestScore)) {
-      bestScore = score / allCorrectScore;
-      correctMarks = marksWithCorrectnessValue[answerKey];
+      bestScore = allCorrectScore ? score / allCorrectScore : bestScore;
+      correctMarks = currentMarksWithCorrectnessValue;
     }
   });
 
@@ -229,59 +259,63 @@ export const partial = (answers, marksWithCorrectnessValue) => {
 };
 
 export const getScore = (question, session) => {
-  const { answers } = question;
+  // questionPossibleAnswers contains all possible answers (correct response and alternates);
+  const { answers: questionPossibleAnswers } = question || {};
 
   // student's answers without DUPLICATES having the mapped form
-  const sessionAnswersMappedNoDuplicates = eliminateDuplicates(cloneDeep(session && session.answer));
-  let marksWithCorrectnessValue = {};
+  const sessionAnswers = eliminateDuplicates(cloneDeep(session && session.answer));
+  let correctedMarks = {};
 
-  if (!answers) {
+  if (!questionPossibleAnswers || isEmpty(questionPossibleAnswers)) {
     return {};
   }
 
-  // answers contains all possible answers (correctResponse and alternates);
-  // answerKey: correctAnswer, alternate1, alternate2...
-  // we iterate the possible answers and set in marksWithCorrectnessValue
-  Object.keys(answers).map(answerKey => {
+  // we iterate the possible answers and set in correctedMarks
+  // answerKey can be: correctAnswer, alternate1, alternate2...
+  Object.keys(questionPossibleAnswers).map(answerKey => {
     // for each possible answer
-    const { marks } = answers[answerKey];
-    marksWithCorrectnessValue[answerKey] = initializeGraphMap();
-
+    const questionPossibleAnswer = questionPossibleAnswers[answerKey] || {};
+    const { marks } = questionPossibleAnswer;
     // possible response (correctAnswer, alternate1, ...) without DUPLICATES
-    const possibleAnswerMappedNoDuplicates = eliminateDuplicates(marks);
+    const possibleAnswerMarks = eliminateDuplicates(marks);
+
+    correctedMarks[answerKey] = initializeGraphMap();
 
     const elementExists = (sessAnswer, toolType) => {
       let index;
+      const possibleAnswerMarksToolType = (toolType && possibleAnswerMarks[toolType]) || [];
 
       if (toolType === 'polygon') {
-        possibleAnswerMappedNoDuplicates[toolType].forEach(poly => {
+        possibleAnswerMarksToolType.forEach(poly => {
           index = equalPolygon(sessAnswer.points, poly.points);
         });
       } else {
-        index = possibleAnswerMappedNoDuplicates[toolType].find(mark => mapForIsEqual[toolType](sessAnswer, mark));
+        index = possibleAnswerMarksToolType.find(mark => mapForIsEqual[toolType](sessAnswer, mark));
       }
 
       return index;
     };
 
     // check each response that student selected and set the correctness value
-    Object.keys(sessionAnswersMappedNoDuplicates).map(toolType => {
-      sessionAnswersMappedNoDuplicates[toolType].forEach(sessAnswer => {
+    Object.keys(sessionAnswers).map(toolType => {
+      sessionAnswers[toolType].forEach(sessAnswer => {
         if (elementExists(sessAnswer, toolType)) {
           sessAnswer.correctness = 'correct';
         } else {
           sessAnswer.correctness = 'incorrect';
         }
 
-        marksWithCorrectnessValue[answerKey][toolType].push(cloneDeep(sessAnswer));
+        if (answerKey && toolType && correctedMarks[answerKey] && correctedMarks[answerKey][toolType]) {
+          correctedMarks[answerKey][toolType].push(cloneDeep(sessAnswer));
+        }
       });
     });
   });
 
   if (question.scoringType === 'dichotomous') {
-    return dichotomous(answers, marksWithCorrectnessValue);
+    return dichotomous(questionPossibleAnswers, correctedMarks);
   } else {
-    return partial(answers, marksWithCorrectnessValue);
+    return partial(questionPossibleAnswers, correctedMarks);
   }
 };
 
