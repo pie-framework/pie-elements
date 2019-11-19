@@ -1,20 +1,26 @@
 module.exports = [
   {
     id: '1',
-    element: 'graphing',
-    // answer: [
-    //   {
-    //     type: 'segment',
-    //     from: { x: 0, y: 0 },
-    //     to: { x: 1, y: 1 },
-    //   },
-    //   {
-    //     type: 'point',
-    //     x: 3,
-    //     y: 3,
-    //     label: 'Point',
-    //     showLabel: true
-    //   }
-    // ]
-  },
+    element: 'graphing-element',
+    answer: [
+      {
+        y: 3,
+        x: 6,
+        type: 'point',
+        label: 'P'
+      },
+      {
+        x: -2,
+        type: 'point',
+        y: 7,
+        label: 'Q'
+      },
+      {
+        y: 0,
+        x: 2,
+        type: 'point',
+        label: 'R'
+      }
+    ]
+  }
 ];
