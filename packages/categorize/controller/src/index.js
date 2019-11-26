@@ -2,8 +2,7 @@ import forEach from 'lodash/forEach';
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
-
+import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 import debug from 'debug';
 
@@ -22,7 +21,7 @@ export const getCorrectness = (question, session, env) => {
       );
       log('state: ', state);
 
-      const scoreInfo = getTotalScore(question, session);
+      const scoreInfo = getTotalScore(question, session, env);
 
       if (scoreInfo === 1) {
         resolve('correct');
@@ -31,7 +30,6 @@ export const getCorrectness = (question, session, env) => {
       } else {
         resolve('partially-correct');
       }
-
     } else {
       resolve(undefined);
     }
@@ -42,8 +40,8 @@ export const createDefaultModel = (model = {}) =>
   new Promise(resolve => {
     resolve({
       ...defaults,
-      ...model,
-    })
+      ...model
+    });
   });
 
 export const normalize = question => ({
@@ -95,7 +93,12 @@ export const model = (question, session, env, updateSession) =>
           : Promise.resolve(undefined);
 
       if (!lockChoiceOrder) {
-        choices = await getShuffledChoices(choices, session, updateSession, 'id');
+        choices = await getShuffledChoices(
+          choices,
+          session,
+          updateSession,
+          'id'
+        );
       }
 
       fb.then(feedback => {
@@ -123,7 +126,9 @@ export const model = (question, session, env, updateSession) =>
           (env.mode === 'view' || env.mode === 'evaluate')
         ) {
           out.rationale = rationaleEnabled ? rationale : null;
-          out.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
+          out.teacherInstructions = teacherInstructionsEnabled
+            ? teacherInstructions
+            : null;
         } else {
           out.rationale = null;
           out.teacherInstructions = null;
@@ -136,7 +141,12 @@ export const model = (question, session, env, updateSession) =>
 
 const isCorrect = (correctResponse, c) => correctResponse.find(cR => cR === c);
 
-export const getScore = (category, choices, correctResponse, sessionChoices) => {
+export const getScore = (
+  category,
+  choices,
+  correctResponse,
+  sessionChoices
+) => {
   const maxScore = choices.length;
 
   const chosen = choiceId => !!(sessionChoices || []).find(v => v === choiceId);
@@ -156,10 +166,12 @@ export const getScore = (category, choices, correctResponse, sessionChoices) => 
   return parseFloat(str);
 };
 
-export const getTotalScore = (question, session) => {
+export const getTotalScore = (question, session, env) => {
   const { categories, correctResponse } = question;
+  question;
   const correctCount = categories.reduce((total, category) => {
-    const response = correctResponse.find(cR => cR.category === category.id) || {};
+    const response =
+      correctResponse.find(cR => cR.category === category.id) || {};
     const sessionAnswers = (session && session.answers) || [];
     const answers = sessionAnswers.find(a => a.category === category.id) || {};
     let choiceScore = getScore(
@@ -169,7 +181,7 @@ export const getTotalScore = (question, session) => {
       answers.choices || []
     );
 
-    forEach((response.alternateResponses || []), (choices) => {
+    forEach(response.alternateResponses || [], choices => {
       const currentScore = getScore(
         category,
         question.choices,
@@ -186,9 +198,11 @@ export const getTotalScore = (question, session) => {
   }, 0);
 
   const categoriesLength = categories.length;
-  const str = categoriesLength ? (correctCount / categoriesLength).toFixed(2) : 0;
-
-  return question.partialScoring ? parseFloat(str) : parseInt(str, 10);
+  const str = categoriesLength
+    ? (correctCount / categoriesLength).toFixed(2)
+    : 0;
+  const enabled = partialScoring.enabled(question, env);
+  return enabled ? parseFloat(str) : parseInt(str, 10);
 };
 
 export const outcome = (question, session, env) => {
@@ -199,13 +213,13 @@ export const outcome = (question, session, env) => {
   } else {
     return new Promise(resolve => {
       resolve({
-        score: getTotalScore(question, session),
+        score: getTotalScore(question, session, env),
         empty: !session || isEmpty(session)
       });
     });
   }
 };
-  
+
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
