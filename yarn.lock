@@ -1777,6 +1777,18 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
+"@pie-framework/math-expressions@2.0.0-alpha24":
+  version "2.0.0-alpha24"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.0.0-alpha24.tgz#4f0440872ac3a522b6d412ab81a5f55e116e03ed"
+  integrity sha512-qS2vRRIvlBsvoJw7QD/EpFE6llIe6ZQl1b+oXNNbwIWlIZ2jCHTCcuZVVZeXYGFWpagLrI4FTjxYnWyeYm+iJQ==
+  dependencies:
+    babel-cli "^6.26.0"
+    mathjs "^4.4.2"
+    number-theory "*"
+    numeric "*"
+    seedrandom "^3.0.5"
+    xml-parser "*"
+
 "@pie-framework/mathquill@^0.10.3":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-0.10.4.tgz#6725a1ab29381479d75439e97ad4934b86ed0991"
@@ -2081,6 +2093,15 @@
   dependencies:
     jsesc "^2.5.2"
     math-expressions "^2.0.0-alpha1"
+    mathjs "^5.4.1"
+
+"@pie-lib/math-evaluator@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.0.tgz#931636533fe45a7a175912a1c31d438e0f7e26e4"
+  integrity sha512-EGkbKciA+/TOGAsrXYS+pnR2uKRcwgx09yaS5L+oa4Eqs8ZnfvyKSQV0BnxQwMZRMOd0v6LTjxMhi9AgZ29pEg==
+  dependencies:
+    "@pie-framework/math-expressions" "2.0.0-alpha24"
+    jsesc "^2.5.2"
     mathjs "^5.4.1"
 
 "@pie-lib/math-input@^6.3.5":
@@ -11250,6 +11271,11 @@ seed-random@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/seed-random/-/seed-random-2.2.0.tgz#2a9b19e250a817099231a5b99a4daf80b7fbed54"
   integrity sha1-KpsZ4lCoFwmSMaW5mk2vgLf77VQ=
+
+seedrandom@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
+  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 selection-is-backward@^1.0.0:
   version "1.0.0"
