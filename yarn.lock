@@ -2197,10 +2197,10 @@
     debug "^4.1.1"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.2.38":
-  version "0.2.39"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.39.tgz#69100e93224ef06c94dbf57c868849373ec4a32a"
-  integrity sha512-OXM/AEK/VUaGol5zVPTe21+ynpa37AIUhBU5slAFZSFISE6xQkmqLcaKNvYFEr/qk8tUkCDJXbzlA/HYc3MJhg==
+"@pie-lib/rubric@^0.2.40":
+  version "0.2.40"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.40.tgz#9c97cfdab1a7494814b19baec1577581b031fcdc"
+  integrity sha512-npSSLjLX1jC4B3MqKlUjfoaACKvOpeXmsX38aQO0ialgIS5ggxG8zemlDtOLrlJv2ggRcOTQiBDnJbMNJXA29w==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
