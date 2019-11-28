@@ -451,4 +451,55 @@ describe('createCorrectResponseSession', () => {
 
     expect(noResult).toBeNull();
   });
+
+  describe('PIE-188', () => {
+    it('works', async () => {
+      const question = {
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        equationEditor: 'everything',
+        responses: [
+          {
+            alternates: {},
+            answer: '1530',
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true
+          }
+        ],
+        id: '1',
+        element: 'math-inline',
+        customKeys: [
+          '<',
+          '\\le',
+          '\\ge',
+          '>',
+          '\\frac{}{}',
+          'x^{}',
+          '\\left(\\right)'
+        ]
+      };
+      const session = {
+        id: '1',
+        answers: {
+          r1: {
+            value: '\\odot'
+          }
+        },
+        completeAnswer: '\\odot'
+      };
+      const env = { mode: 'evaluate' };
+
+      try {
+        await model(question, session, env);
+      } catch (e) {
+        console.error('>>');
+        console.log(e);
+        fail(e);
+      }
+      await expect(model(question, session, env)).resolves.toMatchObject({
+        correctness: { correct: false }
+      });
+    });
+  });
 });

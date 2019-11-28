@@ -114,6 +114,12 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         }
       }
     } else {
+      console.log(
+        'A:',
+        processAnswerItem(correctResponse.answer),
+        'B:',
+        processAnswerItem(answerItem)
+      );
       answerCorrect = areValuesEqual(
         processAnswerItem(correctResponse.answer),
         processAnswerItem(answerItem),
@@ -173,7 +179,7 @@ export const normalize = question => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question,
+  ...question
 });
 
 export function model(question, session, env) {
@@ -211,7 +217,9 @@ export function model(question, session, env) {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.rationale = normalizedQuestion.rationaleEnabled
+          ? normalizedQuestion.rationale
+          : null;
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -220,7 +228,9 @@ export function model(question, session, env) {
         out.teacherInstructions = null;
       }
 
-      out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+      out.config.prompt = normalizedQuestion.promptEnabled
+        ? normalizedQuestion.prompt
+        : null;
 
       log('out: ', out);
       resolve(out);
