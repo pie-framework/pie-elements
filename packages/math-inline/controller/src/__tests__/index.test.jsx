@@ -18,11 +18,7 @@ const defaultModel = {
       validation: 'literal'
     }
   ],
-  customKeys: [
-    '\\left(\\right)',
-    '\\frac{}{}',
-    'x\\frac{}{}'
-  ],
+  customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   id: 1
 };
 
@@ -141,7 +137,6 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
-
     it('returns correct for correctness with text nodes too in symbolic', async () => {
       question = mkQuestion();
       session = { completeAnswer: '72\\div12=6eggs' };
@@ -162,11 +157,11 @@ describe('model', () => {
             id: '1',
             answer: '8-4',
             alternates: {
-              '1': '4−2',
+              '1': '4−2'
             },
             validation: 'literal'
           }
-        ],
+        ]
       });
 
       env = { mode: 'evaluate' };
@@ -196,7 +191,6 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-
     });
 
     it('returns correct for correctness in cdot vs times situations', async () => {
@@ -208,11 +202,11 @@ describe('model', () => {
             id: '1',
             answer: '8\\cdot4',
             alternates: {
-              '1': '4\\times2',
+              '1': '4\\times2'
             },
             validation: 'literal'
           }
-        ],
+        ]
       });
 
       env = { mode: 'evaluate' };
@@ -345,7 +339,9 @@ describe('outcome', () => {
   });
 
   const returnOutcome = session => {
-    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(
+      session
+    )}`, async () => {
       let outcomeResult = await outcome(question, session, env);
 
       expect(outcomeResult).toEqual({ score: 0, empty: true });
@@ -375,11 +371,7 @@ describe('createCorrectResponseSession', () => {
         validation: 'literal'
       }
     ],
-    customKeys: [
-      '\\left(\\right)',
-      '\\frac{}{}',
-      'x\\frac{}{}'
-    ]
+    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}']
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
@@ -394,6 +386,7 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
+      response: '72\\div12=6',
       id: '1'
     });
   });
@@ -410,20 +403,52 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
+      response: '72\\div12=6',
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view and responseType is Simple', async () => {
+    const sess = await createCorrectResponseSession(
+      {
+        ...question,
+        responses: [
+          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
+        ],
+        responseType: 'Simple'
+      },
+      {
+        mode: 'view',
+        role: 'instructor'
+      }
+    );
+
+    expect(sess).toEqual({
+      answers: {
+        r1: { value: '' },
+        r2: { value: '\\frac{3}{4}' }
+      },
+      completeAnswer: '\\frac{3}{4}',
+      response: '\\frac{3}{4}',
       id: '1'
     });
   });
 
   it('returns null if mode is evaluate', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'evaluate',
+      role: 'instructor'
+    });
 
     expect(noResult).toBeNull();
   });
 
   it('returns null if role is student', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'student'
+    });
 
     expect(noResult).toBeNull();
   });
 });
-
