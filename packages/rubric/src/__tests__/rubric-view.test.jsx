@@ -3,17 +3,15 @@ import React from 'react';
 import Rubric from '../main';
 import Link from '@material-ui/core/Link';
 
-
 describe('rubric viewer', () => {
-
-
   const wrapper = extras => {
-    const props = {value: {
-      points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
-      maxPoints: 4,
-      excludeZero: false,
-      ...extras
-    }};
+    const props = {
+      value: {
+        points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
+        excludeZero: false,
+        ...extras
+      }
+    };
 
     return mount(<Rubric {...props} />);
   };
@@ -44,5 +42,4 @@ describe('rubric viewer', () => {
       expect(w.find('li').length).toEqual(4);
     });
   });
-
 });
