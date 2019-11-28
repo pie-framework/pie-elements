@@ -386,6 +386,7 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
+      response: '72\\div12=6',
       id: '1'
     });
   });
@@ -402,6 +403,33 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
+      response: '72\\div12=6',
+      id: '1'
+    });
+  });
+
+  it('returns correct response if role is instructor and mode is view and responseType is Simple', async () => {
+    const sess = await createCorrectResponseSession(
+      {
+        ...question,
+        responses: [
+          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
+        ],
+        responseType: 'Simple'
+      },
+      {
+        mode: 'view',
+        role: 'instructor'
+      }
+    );
+
+    expect(sess).toEqual({
+      answers: {
+        r1: { value: '' },
+        r2: { value: '\\frac{3}{4}' }
+      },
+      completeAnswer: '\\frac{3}{4}',
+      response: '\\frac{3}{4}',
       id: '1'
     });
   });

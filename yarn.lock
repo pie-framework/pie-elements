@@ -2096,9 +2096,9 @@
     mathjs "^5.4.1"
 
 "@pie-lib/math-evaluator@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.0.tgz#931636533fe45a7a175912a1c31d438e0f7e26e4"
-  integrity sha512-EGkbKciA+/TOGAsrXYS+pnR2uKRcwgx09yaS5L+oa4Eqs8ZnfvyKSQV0BnxQwMZRMOd0v6LTjxMhi9AgZ29pEg==
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.1.tgz#b801b23ed93c0330c1a8e49caac10ca64b29cfa7"
+  integrity sha512-S/fj8E438NH2oJqJgIfVyKsN87IjlXjy/L7TRBAIsP0q2kOsfXlG1VOFuQHTKOi+l9cu2qaG/h4I5uF8mHlydQ==
   dependencies:
     "@pie-framework/math-expressions" "2.0.0-alpha24"
     jsesc "^2.5.2"
