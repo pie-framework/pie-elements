@@ -17,6 +17,7 @@ import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
 
 const { Panel, toggle, radio } = settings;
+const htmlCodeRegex = /&#(\d+);/g;
 
 const log = debug('@pie-element:select-text:configure');
 
@@ -261,7 +262,7 @@ export class Design extends React.Component {
             >
               <Tokenizer
                 className={classes.tokenizer}
-                text={model.text}
+                text={model.text && model.text.replace(htmlCodeRegex, (match, dec) => String.fromCharCode(dec))}
                 tokens={model.tokens}
                 onChange={this.changeTokens}
               />

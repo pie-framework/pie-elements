@@ -287,6 +287,19 @@ describe('model', () => {
     assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
       correctness: 'incorrect'
     });
+
+    it('removes html entities from text', async () => {
+      const result = await model(
+        {
+          ...q(),
+          text: "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.<\/p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;<\/p>"
+        },
+        s(),
+        e()
+      );
+
+      expect(result.text).toEqual(`<p>“Lucy?? Are you using your time wisely to plan your project?!!!” Mr. Wilson asked.</p><p>Lucy looked a little confused at first. Ã Then she grinned and proudly stated, “Why, yes I am! I plan to make a bird feeder for that tree out our window!”</p>`);
+    });
   });
 
   describe('feedback', () => {
