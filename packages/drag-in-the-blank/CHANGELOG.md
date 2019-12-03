@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.4...@pie-element/drag-in-the-blank@3.1.5) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.2...@pie-element/drag-in-the-blank@3.1.4) (2019-11-08)
 
 

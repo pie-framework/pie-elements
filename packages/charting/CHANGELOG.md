@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.6...@pie-element/charting@2.0.7) (2019-12-03)
+
+
+### Bug Fixes
+
+* define teacherInstructions ([99855c1](https://github.com/pie-framework/pie-elements/commit/99855c1))
+
+
+
+
+
 ## [2.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.5...@pie-element/charting@2.0.6) (2019-11-06)
 
 

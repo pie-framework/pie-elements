@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@4.0.5...@pie-element/ebsr-controller@4.0.6) (2019-12-03)
+
+
+### Bug Fixes
+
+* minimize calls to `updateSession` ([11a9e9d](https://github.com/pie-framework/pie-elements/commit/11a9e9d))
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+* use getShuffledChoices correctly. ([f61683a](https://github.com/pie-framework/pie-elements/commit/f61683a))
+
+
+
+
+
 ## [4.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@4.0.4...@pie-element/ebsr-controller@4.0.5) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller

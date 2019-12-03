@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.0.6...@pie-element/inline-dropdown-controller@3.0.7) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.0.5...@pie-element/inline-dropdown-controller@3.0.6) (2019-11-06)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-controller
