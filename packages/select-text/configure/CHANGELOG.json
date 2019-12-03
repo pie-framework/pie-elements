@@ -878,5 +878,20 @@
     "committerDate": "2019-11-05 09:13:27 +0200",
     "isTagged": true,
     "tag": "@pie-element/select-text-configure@5.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Removed html entities from text in order to prevent having issues with tokens  offsets.",
+    "merge": null,
+    "header": "fix: Removed html entities from text in order to prevent having issues with tokens  offsets.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d5cb0ed8c26397d1a75bba8064b84b21f43defd",
+    "gitTags": " (origin/andreea/ch4210/select-text-token-alignment-issues-with-some)",
+    "committerDate": "2019-12-02 15:33:33 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-configure@5.0.2"
   }
 ]

@@ -258,5 +258,35 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@3.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Added multiple sanity checks.",
+    "merge": null,
+    "header": "fix: Added multiple sanity checks.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2a0d806d5d91380a5bbcfb8d2a9cb330ae81dcb0",
+    "gitTags": "",
+    "committerDate": "2019-11-15 14:49:04 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@3.0.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Added sanity checks.",
+    "merge": null,
+    "header": "fix: Added sanity checks.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5f9abb3d555015c551206862b3f26570c03f3df8",
+    "gitTags": "",
+    "committerDate": "2019-11-14 21:51:15 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@3.0.3"
   }
 ]
