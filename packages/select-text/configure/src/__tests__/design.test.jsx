@@ -47,6 +47,23 @@ describe('design', () => {
       expect(w).toMatchSnapshot();
     });
 
+    it('tokenizer renders without html entities', () => {
+      expect(shallow(
+        <Design
+          model={{
+            text: "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.<\/p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;<\/p>",
+            tokens: []
+          }}
+          configuration={defaultValues.configuration}
+          classes={{}}
+          className={'foo'}
+          onModelChanged={onChange}
+          onPromptChanged={onPromptChanged}
+          onRationaleChanged={onRationaleChanged}
+        />
+      )).toMatchSnapshot();
+    });
+
     it('renders all items except feedback', () => {
       const defaultConfiguration = defaultValues.configuration;
 
