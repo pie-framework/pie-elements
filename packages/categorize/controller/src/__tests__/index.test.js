@@ -1,11 +1,29 @@
-import { model, outcome, getCorrectness, getScore, getTotalScore, createCorrectResponseSession } from '../index';
+import {
+  model,
+  outcome,
+  getCorrectness,
+  getScore,
+  getTotalScore,
+  createCorrectResponseSession
+} from '../index';
 import { buildState, score } from '@pie-lib/categorize';
 
 const categorize = require('@pie-lib/categorize');
 
 const categories = () => [{ id: '1', label: 'One' }];
 
-const choices = () => [{ id: '1', content: 'Foo' }, { id: '2', content: 'Bar' }];
+const choices = () => [
+  { id: '1', content: 'Foo' },
+  { id: '2', content: 'Bar' }
+];
+
+const mkQuestion = extras => ({
+  categories: categories(),
+  choices: choices(),
+  correctResponse: [{ category: '1', choices: ['1', '2'] }],
+  lockChoiceOrder: true,
+  ...extras
+});
 
 describe('controller', () => {
   let question;
@@ -24,7 +42,9 @@ describe('controller', () => {
   describe('getCorrectness', () => {
     describe('mode: gather', () => {
       it('resolves undefined', () => {
-        expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+        expect(
+          getCorrectness(question, {}, { mode: 'gather' })
+        ).resolves.toEqual(undefined);
       });
     });
 
@@ -33,11 +53,12 @@ describe('controller', () => {
         const session = { id: '1', element: 'categorize-element' };
         const env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
-        await model({
+        await model(
+          {
             id: '1',
             element: 'categorize-element',
             ...question,
-            lockChoiceOrder: false,
+            lockChoiceOrder: false
           },
           session,
           env,
@@ -51,7 +72,9 @@ describe('controller', () => {
 
     describe('mode: view', () => {
       it('resolves undefined', () => {
-        expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+        expect(
+          getCorrectness(question, {}, { mode: 'gather' })
+        ).resolves.toEqual(undefined);
       });
     });
 
@@ -67,9 +90,12 @@ describe('controller', () => {
       });
 
       const returnCorrectness = session => {
-        it(`resolves incorrect if session is ${JSON.stringify(session)}`, () => {
-          expect(getCorrectness(question, session, { mode: 'evaluate' }))
-            .resolves.toEqual('incorrect');
+        it(`resolves incorrect if session is ${JSON.stringify(
+          session
+        )}`, () => {
+          expect(
+            getCorrectness(question, session, { mode: 'evaluate' })
+          ).resolves.toEqual('incorrect');
         });
       };
 
@@ -78,47 +104,53 @@ describe('controller', () => {
       returnCorrectness({});
 
       it('resolves incorrect', () => {
-        expect(getCorrectness(
-          question,
-          {},
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('incorrect');
+        expect(
+          getCorrectness(
+            question,
+            {},
+            {
+              mode: 'evaluate'
+            }
+          )
+        ).resolves.toEqual('incorrect');
       });
 
       it('resolves correct', () => {
-        expect(getCorrectness(
-          question,
-          {
-            answers: [
-              {
-                category: '1',
-                choices: ['1', '2']
-              }
-            ]
-          },
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('correct');
+        expect(
+          getCorrectness(
+            question,
+            {
+              answers: [
+                {
+                  category: '1',
+                  choices: ['1', '2']
+                }
+              ]
+            },
+            {
+              mode: 'evaluate'
+            }
+          )
+        ).resolves.toEqual('correct');
       });
 
       it('resolves partially-correct', () => {
-        expect(getCorrectness(
-          { ...question, partialScoring: true },
-          {
-            answers: [
-              {
-                category: '1',
-                choices: ['1']
-              }
-            ]
-          },
-          {
-            mode: 'evaluate'
-          }
-        )).resolves.toEqual('partially-correct');
+        expect(
+          getCorrectness(
+            { ...question, partialScoring: true },
+            {
+              answers: [
+                {
+                  category: '1',
+                  choices: ['1']
+                }
+              ]
+            },
+            {
+              mode: 'evaluate'
+            }
+          )
+        ).resolves.toEqual('partially-correct');
       });
     });
   });
@@ -149,23 +181,67 @@ describe('controller', () => {
         expect(buildStateSpy).toBeCalled();
       });
 
-
-      const returnOutcome = session => {
-        it(`returns empty: true if session is ${JSON.stringify(session)}`, () => {
-          expect(getCorrectness(question, session, { mode: 'evaluate' }))
-            .resolves.toEqual('incorrect');
+      const assertGetCorrectness = session => {
+        it(`returns empty: true if session is ${JSON.stringify(
+          session
+        )}`, () => {
+          expect(
+            getCorrectness(question, session, { mode: 'evaluate' })
+          ).resolves.toEqual('incorrect');
         });
       };
 
-      returnOutcome(undefined);
-      returnOutcome(null);
-      returnOutcome({});
+      assertGetCorrectness(undefined);
+      assertGetCorrectness(null);
+      assertGetCorrectness({});
 
-      it ('returns empty: false when session is defined', async () => {
-        expect(await outcome(question, { id: 1 }, { mode: 'evaluate' }))
-          .toEqual({ score: 0, empty: false });
+      it('returns empty: false when session is defined', async () => {
+        expect(
+          await outcome(question, { id: 1 }, { mode: 'evaluate' })
+        ).toEqual({ score: 0, empty: false });
       });
     });
+
+    const assertOutcome = (label, question, session, env, expected) => {
+      it(label, async () => {
+        const result = await outcome(
+          question,
+          { answers: [{ category: '1', choices: ['1'] }] },
+          env
+        );
+        expect(result).toEqual(expected);
+      });
+    };
+
+    assertOutcome(
+      'element.partialScoring = true',
+      mkQuestion({ partialScoring: true }),
+      {},
+      { mode: 'evaluate' },
+      { empty: false, score: 0.5 }
+    );
+    assertOutcome(
+      'element.partialScoring = false',
+      mkQuestion({ partialScoring: false }),
+      {},
+      { mode: 'evaluate' },
+      { empty: false, score: 0 }
+    );
+
+    assertOutcome(
+      'element.partialScoring = false, env.partialScoring = true',
+      mkQuestion({ partialScoring: false }),
+      {},
+      { mode: 'evaluate', partialScoring: true },
+      { empty: false, score: 0.5 }
+    );
+    assertOutcome(
+      'element.partialScoring = true,, env.partialScoring = false',
+      mkQuestion({ partialScoring: true }),
+      {},
+      { mode: 'evaluate', partialScoring: false },
+      { empty: false, score: 0 }
+    );
   });
 
   describe('model', () => {
@@ -203,34 +279,39 @@ describe('controller', () => {
       expect(result).toMatchObject({
         choicesPerRow: 2,
         categoriesPerRow: 2,
-        choicesLabel: '',
+        choicesLabel: ''
       });
     });
   });
 
   describe('getScore', () => {
     it('returns correct result', () => {
-      expect(getScore(
-        { id: '0' },
-        [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
-        ['0', '1', '3'],
-        ['0', '2']
-      )).toEqual(0.25);
+      expect(
+        getScore(
+          { id: '0' },
+          [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
+          ['0', '1', '3'],
+          ['0', '2']
+        )
+      ).toEqual(0.25);
 
-      expect(getScore(
-        { id: '0' },
-        [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
-        ['0'],
-        ['0', '2']
-      )).toEqual(0.75);
+      expect(
+        getScore(
+          { id: '0' },
+          [{ id: '0' }, { id: '1' }, { id: '2' }, { id: '3' }],
+          ['0'],
+          ['0', '2']
+        )
+      ).toEqual(0.75);
     });
   });
 
   describe('getTotalScore', () => {
     const returnScore = session => {
       it(`returns 0 if session is ${JSON.stringify(session)}`, () => {
-        expect(getCorrectness(question, session, { mode: 'evaluate' }))
-          .resolves.toEqual('incorrect');
+        expect(
+          getCorrectness(question, session, { mode: 'evaluate' })
+        ).resolves.toEqual('incorrect');
       });
     };
 
@@ -257,9 +338,11 @@ describe('controller', () => {
     });
 
     it('returns null env is student', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'student'
+      });
       expect(noResult).toBeNull();
     });
   });
-  
 });
