@@ -241,6 +241,30 @@ describe('controller', () => {
       });
     });
 
+    describe('model - without updateSession', () => {
+      it('does not throw error', async () => {
+        session = { id: '1', element: 'ebsr-element', shuffledValues: { partA: [], partB: []} };
+        env = { mode: 'gather' };
+
+        await model(
+          {
+            ...question,
+            partA: {
+              ...question.partA,
+              lockChoiceOrder: false
+            },
+            partB: {
+              ...question.partB,
+              lockChoiceOrder: false
+            }
+          },
+          session,
+          env
+        );
+      });
+    });
+
+
     describe('mode: view', () => {
       beforeEach(async () => {
         session = {};
