@@ -115,11 +115,13 @@ export async function model(question, session, env, updateSession) {
   }
 
   if (!_.isEmpty(shuffledValues)) {
-    updateSession(session.id, session.element, {
-      shuffledValues
-    }).catch(e => {
-      console.error('update session failed', e);
-    });
+    if (updateSession && typeof updateSession === 'function') {
+      updateSession(session.id, session.element, {
+        shuffledValues
+      }).catch(e => {
+        console.error('update session failed', e);
+      });
+    }
   }
 
   if (normalizedQuestion.partLabels) {
