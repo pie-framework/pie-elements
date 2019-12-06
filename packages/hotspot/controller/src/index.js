@@ -68,7 +68,7 @@ export const createDefaultModel = (model = {}) =>
     })
   });
 
-const getScore = (config, session, env) => {
+const getScore = (config, session, env = {}) => {
   const { answers } = session || {};
 
   if (!config.shapes || !config.shapes.rectangles) {
@@ -99,7 +99,7 @@ const getScore = (config, session, env) => {
   return parseFloat(str);
 };
 
-export function outcome(config, session, env) {
+export function outcome(config, session, env = {}) {
   return new Promise(resolve => {
     log('outcome...');
 
