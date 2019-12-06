@@ -241,27 +241,33 @@ describe('controller', () => {
       });
     });
 
-    describe('model - without updateSession', () => {
-      it('does not throw error', async () => {
-        session = { id: '1', element: 'ebsr-element', shuffledValues: { partA: [], partB: []} };
-        env = { mode: 'gather' };
+    describe('model - without valid updateSession', () => {
+      const assertModel = (updateSession) => {
+        it(`does not throw error if updateSession is ${updateSession}`, async () => {
+          session = { id: '1', element: 'ebsr-element', shuffledValues: { partA: [], partB: []} };
+          env = { mode: 'gather' };
 
-        await model(
-          {
-            ...question,
-            partA: {
-              ...question.partA,
-              lockChoiceOrder: false
+          await model(
+            {
+              ...question,
+              partA: {
+                ...question.partA,
+                lockChoiceOrder: false
+              },
+              partB: {
+                ...question.partB,
+                lockChoiceOrder: false
+              }
             },
-            partB: {
-              ...question.partB,
-              lockChoiceOrder: false
-            }
-          },
-          session,
-          env
-        );
-      });
+            session,
+            env
+          );
+        });
+      };
+
+      assertModel(undefined);
+      assertModel(null);
+      assertModel('text');
     });
 
 
