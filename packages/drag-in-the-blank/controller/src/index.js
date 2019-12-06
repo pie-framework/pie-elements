@@ -1,7 +1,7 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
+import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 
 export const normalize = question => ({
   rationaleEnabled: true,
@@ -133,9 +133,9 @@ export const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session) {
+export function outcome(model, session, env = {}) {
   return new Promise(resolve => {
-    const partialScoringEnabled = model.partialScoring || false;
+    const partialScoringEnabled = partialScoring.enabled(model, env);
     const score = getScore(model, session);
 
     resolve({

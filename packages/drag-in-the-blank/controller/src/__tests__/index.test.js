@@ -409,6 +409,34 @@ describe('controller', () => {
     });
   });
 
+  describe('getScore partialScoring test', () => {
+    const assertOutcome = (message, partialScoring, sessionValue, env, expected) => {
+      it(message, async () => {
+        const result = await outcome({
+            ...config,
+            partialScoring
+          },
+          { value: sessionValue },
+          env
+        );
+
+        expect(result).toEqual(expect.objectContaining(expected));
+      });
+    };
+
+    assertOutcome('element.partialScoring = true',
+      true, { 0: '1', 1: '1' }, { mode: 'evaluate' }, { score: 0.5 });
+
+    assertOutcome('element.partialScoring = false',
+      false, { 0: '3', 1: '4' }, { mode: 'evaluate' }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0.5 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = false',
+      true, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+  });
+
   describe('outcome', () => {
     const assertOutcome = (partialScoring, sessionValue, expected) => {
       it(`partial score ${partialScoring ? 'enabled' : ''}`, async () => {
