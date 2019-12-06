@@ -2,15 +2,15 @@ import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
+import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match:controller');
 
 import defaults from './defaults';
 
-const getResponseCorrectness = (model, answers) => {
-  const partialScoring = model.partialScoring;
+const getResponseCorrectness = (model, answers, env = {}) => {
+  const isPartialScoring = partialScoring.enabled(model, env);
   const rows = model.rows;
   const checkboxMode = model.choiceMode === 'checkbox';
 
@@ -27,7 +27,7 @@ const getResponseCorrectness = (model, answers) => {
     return 'correct';
   } else if (correctAnswers === 0) {
     return 'incorrect';
-  } else if (partialScoring) {
+  } else if (isPartialScoring) {
     return 'partial';
   }
 
@@ -36,7 +36,7 @@ const getResponseCorrectness = (model, answers) => {
 
 const getCorrectness = (question, env, answers = {}) => {
   if (env.mode === 'evaluate') {
-    return getResponseCorrectness(question, answers);
+    return getResponseCorrectness(question, answers, env);
   }
 };
 
@@ -88,10 +88,11 @@ const getPartialScore = (question, answers) => {
 
 const getOutComeScore = (question, env, answers = {}) => {
   const correctness = getCorrectness(question, env, answers);
+  const isPartialScoring = partialScoring.enabled(question, env);
 
   return correctness === 'correct'
     ? 1
-    : correctness === 'partial' && question.partialScoring
+    : correctness === 'partial' && isPartialScoring
       ? getPartialScore(question, answers)
       : 0;
 };
