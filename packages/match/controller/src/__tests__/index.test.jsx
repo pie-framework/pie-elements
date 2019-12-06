@@ -56,6 +56,34 @@ describe('outcome', () => {
   returnCorrectness({});
 });
 
+describe('outcome partialScoring test', () => {
+  const assertOutcome = (message, extra, sessionValue, env, expected) => {
+    it(message, async () => {
+      const result = await outcome({
+          ...defaultModel,
+          ...extra
+        },
+        sessionValue,
+        env
+      );
+
+      expect(result).toEqual(expect.objectContaining(expected));
+    });
+  };
+
+  assertOutcome('element.partialScoring = true',
+    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0.25 });
+
+  assertOutcome('element.partialScoring = false',
+    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0 });
+
+  assertOutcome('element.partialScoring = false, env.partialScoring = true',
+    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: true }, { score: 0.25 });
+
+  assertOutcome('element.partialScoring = true, env.partialScoring = false',
+    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+});
+
 describe('model', () => {
   let result, question, session, env;
 
