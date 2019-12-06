@@ -1777,18 +1777,6 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-expressions@2.0.0-alpha24":
-  version "2.0.0-alpha24"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.0.0-alpha24.tgz#4f0440872ac3a522b6d412ab81a5f55e116e03ed"
-  integrity sha512-qS2vRRIvlBsvoJw7QD/EpFE6llIe6ZQl1b+oXNNbwIWlIZ2jCHTCcuZVVZeXYGFWpagLrI4FTjxYnWyeYm+iJQ==
-  dependencies:
-    babel-cli "^6.26.0"
-    mathjs "^4.4.2"
-    number-theory "*"
-    numeric "*"
-    seedrandom "^3.0.5"
-    xml-parser "*"
-
 "@pie-framework/mathquill@^0.10.3":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-0.10.4.tgz#6725a1ab29381479d75439e97ad4934b86ed0991"
@@ -2095,15 +2083,6 @@
     math-expressions "^2.0.0-alpha1"
     mathjs "^5.4.1"
 
-"@pie-lib/math-evaluator@^0.6.0":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.1.tgz#b801b23ed93c0330c1a8e49caac10ca64b29cfa7"
-  integrity sha512-S/fj8E438NH2oJqJgIfVyKsN87IjlXjy/L7TRBAIsP0q2kOsfXlG1VOFuQHTKOi+l9cu2qaG/h4I5uF8mHlydQ==
-  dependencies:
-    "@pie-framework/math-expressions" "2.0.0-alpha24"
-    jsesc "^2.5.2"
-    mathjs "^5.4.1"
-
 "@pie-lib/math-input@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.5.tgz#0079b2c43c17810ee213255c573d4fa70228b6d4"
@@ -2197,10 +2176,10 @@
     debug "^4.1.1"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.2.40":
-  version "0.2.40"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.40.tgz#9c97cfdab1a7494814b19baec1577581b031fcdc"
-  integrity sha512-npSSLjLX1jC4B3MqKlUjfoaACKvOpeXmsX38aQO0ialgIS5ggxG8zemlDtOLrlJv2ggRcOTQiBDnJbMNJXA29w==
+"@pie-lib/rubric@^0.2.38":
+  version "0.2.39"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.2.39.tgz#69100e93224ef06c94dbf57c868849373ec4a32a"
+  integrity sha512-OXM/AEK/VUaGol5zVPTe21+ynpa37AIUhBU5slAFZSFISE6xQkmqLcaKNvYFEr/qk8tUkCDJXbzlA/HYc3MJhg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
@@ -11271,11 +11250,6 @@ seed-random@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/seed-random/-/seed-random-2.2.0.tgz#2a9b19e250a817099231a5b99a4daf80b7fbed54"
   integrity sha1-KpsZ4lCoFwmSMaW5mk2vgLf77VQ=
-
-seedrandom@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
-  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 selection-is-backward@^1.0.0:
   version "1.0.0"
