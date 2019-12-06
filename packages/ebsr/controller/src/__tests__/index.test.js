@@ -285,6 +285,44 @@ describe('controller', () => {
         });
       };
 
+      const returnsChoicesWCorrectFeedbackDisabled = (part, value1, value2) => {
+        // feedback enabled for partB and disabled for partA
+        it(`returns ${part} choices w/ correct even if feedbackEnabled is false`, async () => {
+          let res = await model({
+              ...question,
+              partA: {
+                ...question.partA,
+                feedbackEnabled: false
+              },
+              partB: {
+                ...question.partB,
+                feedbackEnabled: false
+              }
+            },
+            session,
+            env);
+
+          expect(result[part].choices).toEqual(
+            expect.arrayContaining([
+              {
+                value: value1,
+                label: capitalize(value1),
+                correct: true,
+                feedback: 'foo',
+                rationale: null
+              },
+              {
+                value: value2,
+                label: capitalize(value2),
+                correct: false,
+                feedback: 'Incorrect',
+                rationale: null
+              }
+            ])
+          );
+        });
+      };
+
       const returnsIsResponseCorrect = part => {
         it(`returns ${part} is response correct`, () => {
           expect(result[part].responseCorrect).toEqual(false);
@@ -294,6 +332,10 @@ describe('controller', () => {
       // Second param will be correct (yellow for A; orange for B)
       returnsChoicesWCorrect(PART_A, 'yellow', 'green');
       returnsChoicesWCorrect(PART_B, 'orange', 'purple');
+
+      // Second param will be correct (yellow for A; orange for B)
+      returnsChoicesWCorrectFeedbackDisabled(PART_A, 'yellow', 'green');
+      returnsChoicesWCorrectFeedbackDisabled(PART_B, 'orange', 'purple');
 
       returnsIsResponseCorrect(PART_A);
       returnsIsResponseCorrect(PART_B);
