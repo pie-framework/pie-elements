@@ -1,6 +1,8 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 
+import { partialScoring } from '@pie-lib/controller-utils';
+
 const log = debug('@pie-element:graphing:controller');
 
 const lowerCase = string => (string || '').toLowerCase();
@@ -25,16 +27,18 @@ export const normalize = question => ({
   ...question,
 });
 
-export const getScore = (question, session) => {
+export const getScore = (question, session, env = {}) => {
   const { correctAnswer, data: initialData = [], scoringType, editCategoryEnabled } = question;
 
+  const isPartialScoring = partialScoring.enabled(question, env, scoringType === 'partial scoring');
   const { data: correctAnswers = [] } = correctAnswer || {};
   const defaultAnswers = filterCategories(initialData, editCategoryEnabled);
-  let answers = setCorrectness((session && session.answer) || defaultAnswers, scoringType === 'partial scoring');
+
+  let answers = setCorrectness((session && session.answer) || defaultAnswers, isPartialScoring);
 
   let result = 0;
 
-  if (scoringType === 'partial scoring') {
+  if (isPartialScoring) {
     // if score type is "partial scoring"
     // maxScore is calculated based on the correct response
     // score is calculated based on the given response
@@ -179,7 +183,7 @@ export function model(question, session, env) {
     };
 
     if (env.mode === 'evaluate' || env.mode === 'view') {
-      base.correctedAnswer = filterCategories(getScore(normalizedQuestion, session).answers, false);
+      base.correctedAnswer = filterCategories(getScore(normalizedQuestion, session, env).answers, false);
       base.addCategoryEnabled = false;
     }
 
@@ -196,10 +200,10 @@ export function model(question, session, env) {
   });
 }
 
-export function outcome(model, session) {
+export function outcome(model, session, env) {
   return new Promise(resolve => {
     resolve({
-      score: getScore(model, session).score,
+      score: getScore(model, session, env).score,
       empty: !session || isEmpty(session)
     });
   });
