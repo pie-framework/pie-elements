@@ -1,5 +1,5 @@
 import defaults from './defaults';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
+import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
 import _ from 'lodash';
 const prepareChoice = (model, env, defaultFeedback) => choice => {
@@ -176,7 +176,7 @@ export const createDefaultModel = (model = {}) =>
 
 const isCorrect = c => c.correct === true;
 
-const getScore = (config, part, key) => {
+const getScore = (config, env, part, key) => {
   let score;
 
   const maxScore = config[key].choices.length;
@@ -191,7 +191,9 @@ const getScore = (config, part, key) => {
     }
   }, config[key].choices.length);
 
-  if (!config[key].partialScoring && correctCount < maxScore) {
+  const isPartialScoring = partialScoring.enabled(config[key], env);
+
+  if (!isPartialScoring && correctCount < maxScore) {
     score = 0;
   } else {
     const { choices } = (config && config[key]) || {};
@@ -206,7 +208,7 @@ const getScore = (config, part, key) => {
   return score;
 };
 
-export function outcome(config, session) {
+export function outcome(config, session, env) {
   return new Promise(resolve => {
     const { value } = session || {};
 
@@ -217,8 +219,8 @@ export function outcome(config, session) {
     if (value) {
       const { partA, partB } = value;
 
-      const scoreA = getScore(config, partA, 'partA');
-      const scoreB = scoreA ? getScore(config, partB, 'partB') : 0;
+      const scoreA = getScore(config, env, partA, 'partA');
+      const scoreB = scoreA ? getScore(config, env, partB, 'partB') : 0;
 
       const score = scoreA + scoreB;
 
