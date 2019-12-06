@@ -48,8 +48,58 @@ describe('controller', () => {
       response_containers: [responseContainer1, responseContainer2],
       duplicate_responses: true,
       max_response_per_zone: 5,
-      partial_scoring: false
+      partialScoring: false
     };
+  });
+
+  describe('outcome partialScoring test', () => {
+    const assertOutcome = (message, extra, sessionValue, env, expected) => {
+      it(message, async () => {
+        const result = await outcome({ ...question, ...extra }, sessionValue, env);
+
+        expect(result).toEqual(expect.objectContaining(expected));
+      });
+    };
+
+    assertOutcome('element.partialScoring = true',
+      { partialScoring: true }, { answers: [
+        { value: rhomb, containerIndex: 0 },
+        { value: square, containerIndex: 0 },
+        { value: rhomb, containerIndex: 1 },
+        { value: square, containerIndex: 1 },
+        { value: trapeze, containerIndex: 0 }
+      ]
+      }, { mode: 'evaluate' }, { score: 0.2 });
+
+    assertOutcome('element.partialScoring = false',
+      { partialScoring: false }, { answers: [
+        { value: rhomb, containerIndex: 0 },
+        { value: square, containerIndex: 0 },
+        { value: rhomb, containerIndex: 1 },
+        { value: square, containerIndex: 1 },
+        { value: trapeze, containerIndex: 0 }
+      ]
+      }, { mode: 'evaluate' }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false }, { answers: [
+        { value: rhomb, containerIndex: 0 },
+        { value: square, containerIndex: 0 },
+        { value: rhomb, containerIndex: 1 },
+        { value: square, containerIndex: 1 },
+        { value: trapeze, containerIndex: 0 }
+      ]
+      }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = false',
+      { partialScoring: true }, { answers: [
+        { value: rhomb, containerIndex: 0 },
+        { value: square, containerIndex: 0 },
+        { value: rhomb, containerIndex: 1 },
+        { value: square, containerIndex: 1 },
+        { value: trapeze, containerIndex: 0 }
+      ]
+      }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
   });
 
   describe('outcome', () => {
