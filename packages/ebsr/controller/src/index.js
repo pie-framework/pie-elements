@@ -2,6 +2,7 @@ import defaults from './defaults';
 import { getShuffledChoices } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
 import _ from 'lodash';
+
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
@@ -117,13 +118,11 @@ export async function model(question, session, env, updateSession) {
   }
 
   if (!_.isEmpty(shuffledValues)) {
-    if (updateSession) {
-      updateSession(session.id, session.element, {
-        shuffledValues
-      }).catch(e => {
-        console.error('update session failed', e);
-      });
-    }
+    updateSession(session.id, session.element, {
+      shuffledValues
+    }).catch(e => {
+      console.error('update session failed', e);
+    });
   }
 
   if (normalizedQuestion.partLabels) {
