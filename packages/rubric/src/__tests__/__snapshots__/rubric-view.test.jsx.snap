@@ -5,6 +5,7 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
   value={
     Object {
       "excludeZero": false,
+      "maxPoints": 4,
       "points": Array [
         "nothing right",
         "a teeny bit right",
@@ -23,6 +24,7 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
     value={
       Object {
         "excludeZero": false,
+        "maxPoints": 4,
         "points": Array [
           "nothing right",
           "a teeny bit right",
@@ -7884,6 +7886,7 @@ exports[`rubric viewer snapshot renders 1`] = `
   value={
     Object {
       "excludeZero": false,
+      "maxPoints": 4,
       "points": Array [
         "nothing right",
         "a teeny bit right",
@@ -7902,6 +7905,7 @@ exports[`rubric viewer snapshot renders 1`] = `
     value={
       Object {
         "excludeZero": false,
+        "maxPoints": 4,
         "points": Array [
           "nothing right",
           "a teeny bit right",

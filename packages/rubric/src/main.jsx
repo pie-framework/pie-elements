@@ -8,6 +8,7 @@ import Collapse from '@material-ui/core/Collapse';
 import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
+  maxPoints: PropTypes.number,
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string)
 });
