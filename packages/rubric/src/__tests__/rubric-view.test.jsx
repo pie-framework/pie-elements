@@ -10,7 +10,6 @@ describe('rubric viewer', () => {
   const wrapper = extras => {
     const props = {value: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
-      maxPoints: 4,
       excludeZero: false,
       ...extras
     }};

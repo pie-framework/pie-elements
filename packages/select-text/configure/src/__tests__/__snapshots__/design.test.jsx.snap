@@ -368,3 +368,131 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
   </div>
 </ConfigLayout>
 `;
+
+exports[`design snapshot tokenizer renders without html entities 1`] = `
+<ConfigLayout
+  settings={
+    <Panel
+      configuration={
+        Object {
+          "correctAnswer": Object {
+            "label": "Correct Answers",
+            "settings": true,
+          },
+          "feedback": Object {
+            "label": "Feedback",
+            "settings": true,
+          },
+          "highlightChoices": Object {
+            "label": "Highlight choices",
+            "settings": true,
+          },
+          "mode": Object {
+            "label": "Mode",
+            "settings": true,
+          },
+          "partialScoring": Object {
+            "label": "Allow Partial Scoring",
+            "settings": false,
+          },
+          "prompt": Object {
+            "label": "Prompt",
+            "settings": true,
+          },
+          "rationale": Object {
+            "label": "Rationale",
+            "settings": true,
+          },
+          "scoringType": Object {
+            "label": "Scoring Type",
+            "settings": false,
+          },
+          "selectionCount": Object {
+            "label": "Selection count",
+            "settings": true,
+          },
+          "selections": Object {
+            "label": "Selections Available",
+            "settings": true,
+          },
+          "studentInstructions": Object {
+            "label": "Student Instructions",
+            "settings": false,
+          },
+          "teacherInstructions": Object {
+            "label": "Teacher Instructions",
+            "settings": true,
+          },
+          "text": Object {
+            "label": "Content",
+            "settings": true,
+          },
+          "tokens": Object {
+            "label": "Tokens",
+            "settings": true,
+          },
+        }
+      }
+      groups={
+        Object {
+          "Properties": Object {
+            "promptEnabled": undefined,
+            "rationaleEnabled": undefined,
+            "scoringType": false,
+            "studentInstructionsEnabled": false,
+            "teacherInstructionsEnabled": undefined,
+          },
+          "Settings": Object {
+            "feedbackEnabled": undefined,
+            "highlightChoices": undefined,
+            "partialScoring": false,
+          },
+        }
+      }
+      model={
+        Object {
+          "text": "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>",
+          "tokens": Array [],
+        }
+      }
+      onChangeModel={[Function]}
+    />
+  }
+>
+  <div>
+    <TextField
+      label="Content"
+      multiline={true}
+      onChange={[Function]}
+      required={false}
+      select={false}
+      value="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
+      variant="standard"
+    />
+    <Component
+      label="Tokens"
+    >
+      <WithStyles(Tokenizer)
+        onChange={[Function]}
+        text="<p>“Lucy?? Are you using your time wisely to plan your project?!!!” Mr. Wilson asked.</p><p>Lucy looked a little confused at first. Ã Then she grinned and proudly stated, “Why, yes I am! I plan to make a bird feeder for that tree out our window!”</p>"
+        tokens={Array []}
+      />
+    </Component>
+    <WithStyles(Chip)
+      label="Mode: None"
+    />
+    <WithStyles(Chip)
+      label="Selections Available: 0"
+    />
+    <WithStyles(Chip)
+      label="Correct Answers: 0"
+    />
+    <Component
+      label="Selection count (0:any)"
+      max={0}
+      min={0}
+      onChange={[Function]}
+    />
+  </div>
+</ConfigLayout>
+`;
