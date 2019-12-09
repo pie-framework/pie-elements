@@ -169,7 +169,23 @@ describe('controller', () => {
     );
 
     assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = true',
+      'element.partA.partialScoring = true, element.partB.partialScoring = false',
+      { partialScoring: true }, { partialScoring: false },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0.67
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = false, element.partB.partialScoring = true',
+      { partialScoring: false }, { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = false, element.partB.partialScoring = false',
       {}, {},
       ['yellow'], ['orange'],
       { mode: 'evaluate' },
@@ -177,7 +193,7 @@ describe('controller', () => {
     );
 
     assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = true but env.partialScoring = true',
+      'element.partA.partialScoring = false, element.partB.partialScoring = false but env.partialScoring = true',
       {}, {},
       ['yellow'], ['orange'],
       { mode: 'evaluate', partialScoring: true },
@@ -187,6 +203,22 @@ describe('controller', () => {
     assertOutcome(
       'element.partA.partialScoring = true, element.partB.partialScoring = true but env.partialScoring = false',
       { partialScoring: true }, { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate', partialScoring: false },
+      0
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = true, element.partB.partialScoring = false but env.partialScoring = false',
+      { partialScoring: true }, { partialScoring: false },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate', partialScoring: false },
+      0
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = false, element.partB.partialScoring = true but env.partialScoring = false',
+      { partialScoring: false }, { partialScoring: true },
       ['yellow'], ['orange'],
       { mode: 'evaluate', partialScoring: false },
       0
