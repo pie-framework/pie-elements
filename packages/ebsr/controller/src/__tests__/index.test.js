@@ -241,6 +241,36 @@ describe('controller', () => {
       });
     });
 
+    describe('model - without valid updateSession', () => {
+      const assertModel = (updateSession) => {
+        it(`does not throw error if updateSession is ${updateSession}`, async () => {
+          session = { id: '1', element: 'ebsr-element', shuffledValues: { partA: [], partB: []} };
+          env = { mode: 'gather' };
+
+          await model(
+            {
+              ...question,
+              partA: {
+                ...question.partA,
+                lockChoiceOrder: false
+              },
+              partB: {
+                ...question.partB,
+                lockChoiceOrder: false
+              }
+            },
+            session,
+            env
+          );
+        });
+      };
+
+      assertModel(undefined);
+      assertModel(null);
+      assertModel('text');
+    });
+
+
     describe('mode: view', () => {
       beforeEach(async () => {
         session = {};
