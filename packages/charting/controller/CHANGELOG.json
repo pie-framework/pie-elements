@@ -138,5 +138,20 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/charting-controller@2.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "define teacherInstructions",
+    "merge": null,
+    "header": "fix: define teacherInstructions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "99855c18816c5795c1c2d09bda544681b3fe9a22",
+    "gitTags": "",
+    "committerDate": "2019-11-13 07:59:58 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@2.0.3"
   }
 ]
