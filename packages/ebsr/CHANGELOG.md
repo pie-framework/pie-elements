@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@5.0.8...@pie-element/ebsr@5.0.9) (2019-12-10)
+
+
+### Bug Fixes
+
+* Check if updateSession is a function before using it as one. ([dee4187](https://github.com/pie-framework/pie-elements/commit/dee4187))
+* pie-228: Item Authoring - Attach feedback to choice only if feedbackEnabled. ([c7417d8](https://github.com/pie-framework/pie-elements/commit/c7417d8))
+* pie-228: Item Authoring - Show correct answer functionality is wrong for the EBSR item (feedback does not have to be enabled in order to determine if an answer is correct or not). ([42a3aff](https://github.com/pie-framework/pie-elements/commit/42a3aff))
+
+
+
+
+
 ## [5.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@5.0.7...@pie-element/ebsr@5.0.8) (2019-12-03)
 
 
