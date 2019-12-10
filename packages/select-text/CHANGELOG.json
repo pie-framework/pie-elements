@@ -1204,7 +1204,7 @@
     "footer": null,
     "notes": [],
     "hash": "4d5cb0ed8c26397d1a75bba8064b84b21f43defd",
-    "gitTags": " (origin/andreea/ch4210/select-text-token-alignment-issues-with-some)",
+    "gitTags": "",
     "committerDate": "2019-12-02 15:33:33 +0200",
     "isTagged": true,
     "tag": "@pie-element/select-text@6.0.6"

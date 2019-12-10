@@ -1449,7 +1449,7 @@
     "footer": null,
     "notes": [],
     "hash": "e0727506674de4852b98db1e09fec8c7f3be3083",
-    "gitTags": " (origin/fix/PIE-200-partial-scoring)",
+    "gitTags": "",
     "committerDate": "2019-11-26 12:51:43 +0000",
     "isTagged": true,
     "tag": "@pie-element/categorize@6.0.7"
