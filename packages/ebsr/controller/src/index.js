@@ -181,34 +181,28 @@ export const createDefaultModel = (model = {}) =>
 
 const isCorrect = c => c.correct === true;
 
-const getScore = (config, part, key) => {
-  let score;
+const getScore = (config, sessionPart, key) => {
+  const { choices = [] } = (config && config[key]) || {};
+  const maxScore = choices.length;
+  const { value: sessionPartValue } = sessionPart || {};
 
-  const maxScore = config[key].choices.length;
-  const chosen = c => !!(part.value || []).find(v => v === c.value);
+  const chosen = c => !!(sessionPartValue || []).find(v => v === c.value);
   const correctAndNotChosen = c => isCorrect(c) && !chosen(c);
   const incorrectAndChosen = c => !isCorrect(c) && chosen(c);
-  const correctCount = config[key].choices.reduce((total, choice) => {
+  const correctChoices = choices.reduce((total, choice) => {
     if (correctAndNotChosen(choice) || incorrectAndChosen(choice)) {
       return total - 1;
     } else {
       return total;
     }
-  }, config[key].choices.length);
+  }, choices.length);
 
-  if (!config[key].partialScoring && correctCount < maxScore) {
-    score = 0;
-  } else {
-    const { choices } = (config && config[key]) || {};
-    const choicesLength = choices && choices.length;
-    const scoreString = choicesLength
-      ? (correctCount / choicesLength).toFixed(2)
-      : 0;
-
-    score = parseFloat(scoreString);
+  // determine score for a part
+  if (!config.partialScoring && correctChoices < maxScore) {
+    return 0;
   }
 
-  return score;
+  return parseFloat(maxScore ? (correctChoices / maxScore).toFixed(2) : 0);
 };
 
 export function outcome(config, session) {
@@ -220,14 +214,30 @@ export function outcome(config, session) {
     }
 
     if (value) {
-      const { partA, partB } = value;
+      const { partA, partB } = value || {};
 
       const scoreA = getScore(config, partA, 'partA');
-      const scoreB = scoreA ? getScore(config, partB, 'partB') : 0;
+      const scoreB = getScore(config, partB, 'partB');
 
-      const score = scoreA + scoreB;
-
-      resolve({ score, scoreA, scoreB, max: 2 });
+      if (!config.partialScoring) {
+        // The EBSR item is worth 1 point
+        // That point is awarded if and only if both parts are fully correct, otherwise no points are awarded
+        resolve({ score: (scoreA === 1 && scoreB === 1) ? 1 : 0, scoreA, scoreB, max: 1 });
+      } else {
+        // The EBSR item is worth 2 points
+        if (scoreA === 1) {
+          if (scoreB === 1) {
+            // If Part A and Part B are both correct, 2 points are awarded
+            resolve({ score: 2, scoreA, scoreB, max: 2 });
+          } else {
+            // If Part A is correct and part B is incorrect, 1 point is awarded
+            resolve({ score: 1, scoreA, scoreB, max: 2 });
+          }
+        } else {
+          // For all other combinations, no points are awarded
+          resolve({ score: 0, scoreA, scoreB, max: 2 });
+        }
+      }
     }
   });
 }

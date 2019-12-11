@@ -78,18 +78,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `partialScoring` (object)
-
-Properties of the `partialScoring` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ## `prompt` (object)
 
 Properties of the `prompt` object:
@@ -105,18 +93,6 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ## `rationale` (object)
 
 Properties of the `rationale` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `scoringType` (object)
-
-Properties of the `scoringType` object:
 
 ### `settings` (boolean)
 
@@ -226,18 +202,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `partialScoring` (object)
-
-Properties of the `partialScoring` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ## `prompt` (object)
 
 Properties of the `prompt` object:
@@ -253,18 +217,6 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ## `rationale` (object)
 
 Properties of the `rationale` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-## `scoringType` (object)
-
-Properties of the `scoringType` object:
 
 ### `settings` (boolean)
 
@@ -301,6 +253,30 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 # `partLabels` (object)
 
 Properties of the `partLabels` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `partialScoring` (object)
+
+Properties of the `partialScoring` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `scoringType` (object)
+
+Properties of the `scoringType` object:
 
 ## `settings` (boolean)
 
@@ -404,18 +380,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-### `partialScoring` (object)
-
-Properties of the `partialScoring` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-#### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ### `prompt` (object)
 
 Properties of the `prompt` object:
@@ -431,18 +395,6 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ### `rationale` (object)
 
 Properties of the `rationale` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-#### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `scoringType` (object)
-
-Properties of the `scoringType` object:
 
 #### `settings` (boolean)
 

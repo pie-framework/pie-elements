@@ -14,7 +14,7 @@ describe('controller', () => {
   beforeEach(() => {
     question = {
       partA: {
-        choiceMode: 'radio',
+        choiceMode: 'checkbox',
         feedbackEnabled: true,
         choices: [
           {
@@ -40,7 +40,7 @@ describe('controller', () => {
         lockChoiceOrder: true
       },
       partB: {
-        choiceMode: 'radio',
+        choiceMode: 'checkbox',
         feedbackEnabled: true,
         choices: [
           {
@@ -58,6 +58,10 @@ describe('controller', () => {
             feedback: {
               type: 'default'
             }
+          },
+          {
+            value: 'c',
+            correct: true
           }
         ],
         choicePrefix: 'numbers',
@@ -69,61 +73,49 @@ describe('controller', () => {
   });
 
   describe('outcome', () => {
-    const returnsScoreOf = (value1, value2, score) => {
-      it(`returns score of ${score}`, async () => {
-        const result = await outcome(
-          question,
-          { value: { partA: { value: [value1] }, partB: { value: [value2] } } },
-          { mode: 'gather' }
-        );
-        expect(result.score).toEqual(score);
-      });
-    };
-
-    returnsScoreOf('green', 'purple', 0); // both wrong
-    returnsScoreOf('green', 'orange', 0); // first wrong, second correct
-    returnsScoreOf('yellow', 'purple', 1); // first correct, second wrong
-    returnsScoreOf('yellow', 'orange', 2); // both correct
-
-    describe('partial scoring', () => {
-      beforeEach(() => {
-        const turnPartialCorrectOn = part => {
-          const choices = question[part].choices.concat({
-            value: 'c',
-            correct: true
-          });
-          question[part] = {
-            ...question[part],
-            partialScoring: true,
-            choices
-          };
-        };
-
-        turnPartialCorrectOn(PART_B);
-      });
-
-      const returnsScoreOf = (value1, value2, score) => {
-        it(`returns a score of ${score}`, async () => {
+    describe('dichotomous', () => {
+      const returnsScoreOf = (message, values1, values2, score) => {
+        it(`${message} => ${score}`, async () => {
           const result = await outcome(
-            question,
-            { value: { partA: value1, partB: value2 } },
-            {}
+            { ...question, partialScoring: false },
+            { value: { partA: { value: values1 }, partB: { value: values2 } } }
           );
-          expect(result.score).toBeCloseTo(score);
+          expect(result.score).toEqual(score);
+          expect(result.max).toEqual(1);
         });
       };
 
-      returnsScoreOf({}, {}, 0);
-      returnsScoreOf({ value: ['yellow'] }, {}, 1.33);
-      returnsScoreOf({ value: ['yellow'] }, { value: ['orange'] }, 1.67);
-      returnsScoreOf({ value: ['yellow'] }, { value: ['orange', 'c'] }, 2);
+      returnsScoreOf('both correct', ['yellow'], ['orange', 'c'], 1); // both correct
+      returnsScoreOf('both incorrect', ['green'], ['purple'], 0); // both wrong
+      returnsScoreOf('partA incorrect, partB correct', ['green'], ['orange', 'c'], 0); // first wrong, second correct
+      returnsScoreOf('partA correct, partB incorrect', ['yellow'], ['purple'], 0); // first correct, second wrong
+    });
+
+    describe('partial scoring', () => {
+      const returnsScoreOf = (message, values1, values2, score) => {
+        it(`${message} => ${score}`, async () => {
+          const result = await outcome(
+            { ...question, partialScoring: true },
+            { value: { partA: { value: values1 }, partB: { value: values2 } } }
+          );
+          expect(result.score).toBeCloseTo(score);
+          expect(result.max).toEqual(2);
+        });
+      };
+
+      returnsScoreOf('both correct', ['yellow'], ['orange', 'c'], 2);
+      returnsScoreOf('both incorrect', [], [], 0);
+      returnsScoreOf('partA correct, partB incorrect', ['yellow'], [], 1);
+      returnsScoreOf('partA correct, partB partially correct', ['yellow'], ['c'], 1);
+      returnsScoreOf('partA incorrect, partB correct', ['green'], ['orange', 'c'], 0);
+      returnsScoreOf('partA partially correct, partB correct', ['green', 'yellow'], ['orange', 'c'], 0);
     });
 
     const returnsScoreWhen = session => {
       it(`returns empty: true if session is ${JSON.stringify(
         session
       )}`, async () => {
-        const result = await outcome(question, session, { mode: 'gather' });
+        const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, scoreA: 0, scoreB: 0, empty: true });
       });
     };
@@ -159,7 +151,7 @@ describe('controller', () => {
 
       const returnsChoiceMode = part => {
         it(`returns ${part} choiceMode`, () => {
-          expect(result[part].choiceMode).toEqual('radio');
+          expect(result[part].choiceMode).toEqual('checkbox');
         });
       };
 
@@ -169,9 +161,9 @@ describe('controller', () => {
         });
       };
 
-      const returnsComplete = part => {
+      const returnsComplete = (part, min) => {
         it(`returns ${part} complete`, () => {
-          expect(result[part].complete).toEqual({ min: 1 });
+          expect(result[part].complete).toEqual({ min });
         });
       };
 
@@ -201,8 +193,8 @@ describe('controller', () => {
       returnsKeyMode(PART_A);
       returnsKeyMode(PART_B);
 
-      returnsComplete(PART_A);
-      returnsComplete(PART_B);
+      returnsComplete(PART_A, 1);
+      returnsComplete(PART_B, 2);
 
       returnsChoices(PART_A, 'yellow', 'green');
       returnsChoices(PART_B, 'orange', 'purple');
@@ -381,7 +373,7 @@ describe('controller', () => {
           id: '1',
           value: {
             partA: { id: 'partA', value: ['yellow'] },
-            partB: { id: 'partB', value: ['orange'] }
+            partB: { id: 'partB', value: ['orange', 'c'] }
           }
         });
       });

@@ -55,11 +55,6 @@
           "type": "string",
           "title": "choicePrefix"
         },
-        "partialScoring": {
-          "description": "Indicates if partial scoring should be used",
-          "type": "boolean",
-          "title": "partialScoring"
-        },
         "prompt": {
           "description": "The question prompt or item stem",
           "type": "string",
@@ -69,15 +64,6 @@
           "description": "Indicates if the prompt is enabled",
           "type": "boolean",
           "title": "promptEnabled"
-        },
-        "scoringType": {
-          "description": "Indicates scoring type",
-          "enum": [
-            "auto",
-            "rubric"
-          ],
-          "type": "string",
-          "title": "scoringType"
         },
         "studentInstructions": {
           "description": "Indicates student instructions",
@@ -173,11 +159,6 @@
           "type": "string",
           "title": "choicePrefix"
         },
-        "partialScoring": {
-          "description": "Indicates if partial scoring should be used",
-          "type": "boolean",
-          "title": "partialScoring"
-        },
         "prompt": {
           "description": "The question prompt or item stem",
           "type": "string",
@@ -187,15 +168,6 @@
           "description": "Indicates if the prompt is enabled",
           "type": "boolean",
           "title": "promptEnabled"
-        },
-        "scoringType": {
-          "description": "Indicates scoring type",
-          "enum": [
-            "auto",
-            "rubric"
-          ],
-          "type": "string",
-          "title": "scoringType"
         },
         "studentInstructions": {
           "description": "Indicates student instructions",
@@ -252,6 +224,20 @@
       ],
       "type": "string",
       "title": "partLabelType"
+    },
+    "partialScoring": {
+      "description": "Indicates if partial scoring should be used",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "scoringType": {
+      "description": "Indicates scoring type",
+      "enum": [
+        "auto",
+        "rubric"
+      ],
+      "type": "string",
+      "title": "scoringType"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
@@ -373,22 +359,6 @@
             }
           }
         },
-        "partialScoring": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
         "prompt": {
           "title": "ConfigureProp",
           "type": "object",
@@ -406,22 +376,6 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "scoringType": {
           "title": "ConfigureProp",
           "type": "object",
           "properties": {
@@ -539,11 +493,6 @@
           "type": "string",
           "title": "choicePrefix"
         },
-        "partialScoring": {
-          "description": "Indicates if partial scoring should be used",
-          "type": "boolean",
-          "title": "partialScoring"
-        },
         "prompt": {
           "description": "The question prompt or item stem",
           "type": "string",
@@ -553,15 +502,6 @@
           "description": "Indicates if the prompt is enabled",
           "type": "boolean",
           "title": "promptEnabled"
-        },
-        "scoringType": {
-          "description": "Indicates scoring type",
-          "enum": [
-            "auto",
-            "rubric"
-          ],
-          "type": "string",
-          "title": "scoringType"
         },
         "studentInstructions": {
           "description": "Indicates student instructions",
