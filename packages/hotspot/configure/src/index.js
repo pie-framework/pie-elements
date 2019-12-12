@@ -18,6 +18,9 @@ export default class HotspotConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => ({
     ...sensibleDefaults.model,
     ...model,
+    hotspotList: model.hotspotList || [model.hotspotColor] || sensibleDefaults.model.hotspotList,
+    outlineList: model.outlineList || [model.outlineColor] || sensibleDefaults.model.outlineList,
+    shapes: model.shapes || sensibleDefaults.model.shapes || {}
   });
 
   constructor() {
@@ -56,9 +59,14 @@ export default class HotspotConfigure extends HTMLElement {
 
   onModelChangedByConfig = (m, type) => {
     const _model = m;
+
     if (type === 'multipleCorrect') {
-      _model.shapes.rectangles = _model.shapes.rectangles.map(shape => ({ ...shape, correct: false }));
+      const { rectangles = [], polygons = [] } = _model.shapes || {};
+
+      _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
+      _model.shapes.polygons = polygons.map(shape => ({ ...shape, correct: false }));
     }
+
     this.onModelChanged(_model);
   };
 
@@ -67,22 +75,20 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   };
 
-  onRemoveShape = index => {
-    const { _model } = this;
-    _model.shapes.rectangles.splice(index, 1);
-    this.onModelChanged(_model);
-  };
-
   onColorChanged = (colorType, color) => {
     const { _model } = this;
+
     _model[colorType] = color;
+
     this.onModelChanged(_model);
   };
 
   onPromptChanged = prompt => {
     const { _model } = this;
     const update = cloneDeep(_model);
+
     update.prompt = prompt;
+
     this.onModelChanged(update);
   };
 
@@ -102,29 +108,42 @@ export default class HotspotConfigure extends HTMLElement {
 
   onMultipleCorrectChanged = () => {
     const { _model } = this;
+
     _model.multipleCorrect = !_model.multipleCorrect;
+
     if (!_model.multipleCorrect) {
       _model.partialScoring = false;
     }
-    _model.shapes.rectangles = _model.shapes.rectangles.map(shape => ({ ...shape, correct: false }));
+
+    const { rectangles = [], polygons = [] } = _model.shapes || {};
+
+    _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
+    _model.shapes.polygons = polygons.map(shape => ({ ...shape, correct: false }));
+
     this.onModelChanged(_model);
   };
 
   onUpdateImageDimension = (dimensions) => {
     const { _model } = this;
+
     _model.dimensions = dimensions;
+
     this.onModelChanged(_model);
   };
 
   onUpdateShapes = (shapes) => {
     const { _model } = this;
-    _model.shapes.rectangles = shapes;
+
+    _model.shapes = shapes;
+
     this.onModelChanged(_model);
   };
 
   onImageUpload = imageUrl => {
     const { _model } = this;
+
     _model.imageUrl = imageUrl;
+
     this.onModelChanged(_model);
   };
 
@@ -147,7 +166,6 @@ export default class HotspotConfigure extends HTMLElement {
       onRationaleChanged: this.onRationaleChanged,
       onConfigurationChanged: this.onConfigurationChanged,
       onPromptChanged: this.onPromptChanged,
-      onRemoveShape: this.onRemoveShape,
       onUpdateImageDimension: this.onUpdateImageDimension,
       imageSupport: {
         add: this.insertImage,
