@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HotspotContainer render renders 1`] = `
+<div>
+  <div
+    className="undefined "
+    onDragExit={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+  >
+    <div>
+      <WithStyles(UploadControl)
+        label="Replace Image"
+        onInputClick={[Function]}
+        onUploadImage={[Function]}
+        setRef={[Function]}
+      />
+      <WithStyles(RawButton)
+        disabled={false}
+        label="Undo"
+        onClick={[Function]}
+      />
+      <WithStyles(RawButton)
+        disabled={false}
+        label="Clear all"
+        onClick={[Function]}
+      />
+    </div>
+    <div>
+      <WithStyles(Drawable)
+        dimensions={
+          Object {
+            "height": 291,
+            "width": 410,
+          }
+        }
+        disableDrag={[Function]}
+        enableDrag={[Function]}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+        multipleCorrect={true}
+        onUpdateImageDimension={[MockFunction]}
+        onUpdateShapes={[Function]}
+        outlineColor="blue"
+        shapes={
+          Array [
+            Object {
+              "correct": true,
+              "height": 140,
+              "id": "0",
+              "type": "rectangles",
+              "width": 130,
+              "x": 1,
+              "y": 1,
+            },
+            Object {
+              "height": 140,
+              "id": "1",
+              "type": "rectangles",
+              "width": 130,
+              "x": 140,
+              "y": 1,
+            },
+            Object {
+              "height": 140,
+              "id": "2",
+              "type": "rectangles",
+              "width": 130,
+              "x": 280,
+              "y": 1,
+            },
+            Object {
+              "correct": true,
+              "id": "3",
+              "points": Array [
+                Object {
+                  "x": 1,
+                  "y": 148,
+                },
+                Object {
+                  "x": 1,
+                  "y": 288,
+                },
+                Object {
+                  "x": 129,
+                  "y": 288,
+                },
+                Object {
+                  "x": 129,
+                  "y": 148,
+                },
+              ],
+              "type": "polygons",
+            },
+            Object {
+              "correct": false,
+              "id": "4",
+              "points": Array [
+                Object {
+                  "x": 141,
+                  "y": 151,
+                },
+                Object {
+                  "x": 141,
+                  "y": 289,
+                },
+                Object {
+                  "x": 269,
+                  "y": 289,
+                },
+                Object {
+                  "x": 269,
+                  "y": 151,
+                },
+              ],
+              "type": "polygons",
+            },
+            Object {
+              "correct": false,
+              "id": "5",
+              "points": Array [
+                Object {
+                  "x": 279,
+                  "y": 150,
+                },
+                Object {
+                  "x": 279,
+                  "y": 289,
+                },
+                Object {
+                  "x": 407,
+                  "y": 289,
+                },
+                Object {
+                  "x": 407,
+                  "y": 150,
+                },
+              ],
+              "type": "polygons",
+            },
+          ]
+        }
+      />
+    </div>
+    <div>
+      <pure(HelpIcon)
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
