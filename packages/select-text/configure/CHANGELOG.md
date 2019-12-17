@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.0.1...@pie-element/select-text-configure@5.0.2) (2019-12-03)
+
+
+### Bug Fixes
+
+* Removed html entities from text in order to prevent having issues with tokens  offsets. ([4d5cb0e](https://github.com/pie-framework/pie-elements/commit/4d5cb0e))
+
+
+
+
+
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.0.0...@pie-element/select-text-configure@5.0.1) (2019-11-06)
 
 

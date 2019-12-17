@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.6...@pie-element/math-inline@5.0.7) (2019-12-03)
+
+
+### Bug Fixes
+
+* **math-inline:** fixes session preview function in controller for simple item types too ([26c2341](https://github.com/pie-framework/pie-elements/commit/26c2341))
+* PIE-188 - upgrade @pie-lib/math-evaluator@^0.6.0 ([f7d875e](https://github.com/pie-framework/pie-elements/commit/f7d875e))
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [5.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.5...@pie-element/math-inline@5.0.6) (2019-11-06)
 
 
