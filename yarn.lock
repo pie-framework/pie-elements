@@ -2137,6 +2137,14 @@
     mathjax3 "^3.0.0-beta.4"
     prop-types "^15.6.2"
 
+"@pie-lib/math-rendering@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-2.0.3.tgz#5e31855bdacf671e254cf76a9709e635b6222631"
+  integrity sha512-QM8XVt7pNoyJcmZ4MXjGpCMtzTwLr92G8nbdblYauDhnrJcHmW9+fBIuEw3ymZFoXYlaL/h31KH4ogtefLbExg==
+  dependencies:
+    debug "^4.1.1"
+    mathjax-full "^3.0.0"
+
 "@pie-lib/math-toolbar@^1.4.7":
   version "1.4.7"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.4.7.tgz#9898df133fffa164cc5882bf8a78b6433ea231db"
@@ -2193,6 +2201,19 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/icons" "^2.4.5"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    react-transition-group "^2.5.2"
+
+"@pie-lib/render-ui@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.5.2.tgz#bf606631f65469e2485f23e6d3c70092035ac29b"
+  integrity sha512-jD3sgA2kkyalQZe+s+FGCF0AYv5j+0jmA/QKIiSLH1BPVELcq6fvXX9Wni49uSM7vkZ2c6IMTtiHZ/elSsvkrA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.4.5"
+    "@pie-lib/math-rendering" "^2.0.3"
     classnames "^2.2.6"
     debug "^4.1.1"
     react-transition-group "^2.5.2"
@@ -5923,6 +5944,11 @@ eslint@^4.19.1:
     table "4.0.2"
     text-table "~0.2.0"
 
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
+
 espree@^3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
@@ -8938,6 +8964,15 @@ math-random@^1.0.1:
   resolved "https://registry.yarnpkg.com/math-random/-/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
   integrity sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==
 
+mathjax-full@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/mathjax-full/-/mathjax-full-3.0.0.tgz#a16c5bf4ae5ae6797fccfbd6dd11cc59052570f1"
+  integrity sha512-DvTUi2WvrACXZRjjzS0EbXY2ssRD23yuSMHVYZNbRuCA5zFZvu0MZWFy8QRvNYwJ44hJirJCNOCii0W0Q1R62A==
+  dependencies:
+    esm "^3.2.25"
+    mj-context-menu "^0.2.0"
+    speech-rule-engine "^3.0.0-beta.6"
+
 mathjax3@^3.0.0-beta.4:
   version "3.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/mathjax3/-/mathjax3-3.0.0-beta.4.tgz#e10ad04454e6a511b20c8e092439638dc3a62ea5"
@@ -11682,6 +11717,15 @@ speech-rule-engine@^2.4.0:
     wicked-good-xpath "*"
     xmldom-sre ">=0.1.31"
 
+speech-rule-engine@^3.0.0-beta.6:
+  version "3.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/speech-rule-engine/-/speech-rule-engine-3.0.0-beta.7.tgz#93c057419b5b937f37ad897e9fc5d00e573a1540"
+  integrity sha512-sCXSQ1hovgrxLYVp+t+PAY05Wl7hDe006cmy8k89Ez5YKpI7OYlwS2UWJWO6DyVXR08quhmUqraxsVS0H2doaQ==
+  dependencies:
+    commander "*"
+    wicked-good-xpath "*"
+    xmldom-sre "^0.1.31"
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -12765,7 +12809,7 @@ xmlchars@^2.1.1:
   resolved "https://registry.yarnpkg.com/xmlchars/-/xmlchars-2.2.0.tgz#060fe1bcb7f9c76fe2a17db86a9bc3ab894210cb"
   integrity sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==
 
-xmldom-sre@>=0.1.31:
+xmldom-sre@>=0.1.31, xmldom-sre@^0.1.31:
   version "0.1.31"
   resolved "https://registry.yarnpkg.com/xmldom-sre/-/xmldom-sre-0.1.31.tgz#10860d5bab2c603144597d04bf2c4980e98067f4"
   integrity sha512-f9s+fUkX04BxQf+7mMWAp5zk61pciie+fFLC9hX9UVvCeJQfNHRHXpeo5MPcR0EUf57PYLdt+ZO4f3Ipk2oZUw==
