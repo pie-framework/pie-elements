@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/placement-ordering": "^4.7.10"
+    "@pie-ui/placement-ordering": "^4.7.11"
   },
   "pie": {
     "element": "@pie-ui/placement-ordering"
