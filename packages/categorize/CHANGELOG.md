@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.0.7...@pie-element/categorize@6.1.0) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([9dc4695](https://github.com/pie-framework/pie-elements/commit/9dc4695))
+* bump render-ui@^4.5.3 ([996da64](https://github.com/pie-framework/pie-elements/commit/996da64))
+
+
+### Features
+
+* use HtmlAndMath from render-ui ([8c516c3](https://github.com/pie-framework/pie-elements/commit/8c516c3))
+
+
+
+
+
 ## [6.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.0.6...@pie-element/categorize@6.0.7) (2019-12-03)
 
 

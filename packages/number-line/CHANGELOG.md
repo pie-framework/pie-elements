@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.6.12...@pie-element/number-line@5.6.13) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([71e6010](https://github.com/pie-framework/pie-elements/commit/71e6010))
+
+
+
+
+
 ## [5.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.6.11...@pie-element/number-line@5.6.12) (2019-12-03)
 
 

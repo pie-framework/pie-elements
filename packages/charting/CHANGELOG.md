@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.7...@pie-element/charting@2.0.8) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([2f120b6](https://github.com/pie-framework/pie-elements/commit/2f120b6))
+
+
+
+
+
 ## [2.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.6...@pie-element/charting@2.0.7) (2019-12-03)
 
 
