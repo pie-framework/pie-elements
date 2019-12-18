@@ -9,7 +9,7 @@
   "description": "",
   "dependencies": {
     "@pie-lib/scoring-config": "^3.5.42",
-    "@pie-ui/point-intercept": "^1.2.13"
+    "@pie-ui/point-intercept": "^1.2.16"
   },
   "author": "pie framework developers",
   "license": "ISC",
