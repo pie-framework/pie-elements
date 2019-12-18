@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.0.2...@pie-element/placement-ordering-configure@5.0.3) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/placement-ordering-configure
+
+
+
+
+
 ## [5.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.0.1...@pie-element/placement-ordering-configure@5.0.2) (2019-12-18)
 
 

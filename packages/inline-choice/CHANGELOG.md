@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.10.8...@pie-element/inline-choice@2.10.9) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/inline-choice
+
+
+
+
+
 ## [2.10.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-choice@2.10.7...@pie-element/inline-choice@2.10.8) (2019-12-18)
 
 
