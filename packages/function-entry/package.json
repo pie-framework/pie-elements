@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/function-entry": "^3.2.10"
+    "@pie-ui/function-entry": "^3.2.11"
   },
   "pie": {
     "element": "@pie-ui/function-entry"
