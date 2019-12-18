@@ -6,12 +6,8 @@
 export default {
   model: {
     choiceLabel: 'Choice Label goes here',
-    choices: [
-      {
-        id: 'c1',
-        label: 'Choice 1',
-      },
-    ],
+    choices: [],
+    correctResponse: [],
     enableImages: false,
     prompt: 'Item Stem goes here',
     lockChoiceOrder: false,
