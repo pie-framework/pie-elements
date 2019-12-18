@@ -24,7 +24,7 @@ const REGEX = /\{\{(\d+)\}\}/g;
 export const createSlateMarkup = (markup, choices) => {
   const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   const createSelect = index => {
-    let correctChoice = choices[index].find(c => c.correct);
+    let correctChoice = choices[index] && choices[index].find(c => c.correct);
 
     if (!correctChoice || !correctChoice.value) {
       correctChoice = {
