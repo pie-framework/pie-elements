@@ -12,17 +12,31 @@ const isImage = (file) => {
   return file.type.match(imageType);
 };
 
-class Container extends Component {
+export class Container extends Component {
   constructor(props) {
     super(props);
+
+    const { shapes } = props;
+    const shapesKeys = Object.keys(shapes || {});
+
+
     this.state = {
-      dragEnabled: true
+      dragEnabled: true,
+      shapes: shapesKeys.length
+        ? shapesKeys.reduce((acc, currentShapeKey) =>
+            acc.concat(
+              shapes[currentShapeKey]
+                ? shapes[currentShapeKey].map(shape => ({ ...shape, type: currentShapeKey }))
+                : []),
+          [])
+        : []
     }
   }
 
   handleFileRead = (file) => {
     const { onImageUpload } = this.props;
     const reader = new FileReader();
+
     reader.onloadend = () => {
       onImageUpload(reader.result);
     };
@@ -67,18 +81,42 @@ class Container extends Component {
     this.disableDropzone();
   };
 
+  onUpdateShapes = newShapes => {
+    const { onUpdateShapes } = this.props;
+
+    this.setState({
+      shapes: newShapes
+    }, () => {
+      if (newShapes.length) {
+        const updatedShapes = newShapes.reduce((acc, { type, ...shapeProps}) => {
+          acc[type] = [...(acc[type] || []), shapeProps];
+          return acc;
+        }, {
+          rectangles: [],
+          polygons: []
+        });
+
+        onUpdateShapes(updatedShapes);
+      } else {
+        onUpdateShapes({
+          rectangles: [],
+          polygons: []
+        });
+      }
+    });
+  };
+
   handleUndo = () => {
-    const { onUpdateShapes, shapes } = this.props;
+    const { shapes } = this.state;
 
     if (shapes && shapes.length) {
       const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
-      onUpdateShapes(newShapes);
+      this.onUpdateShapes(newShapes);
     }
   };
 
   handleClearAll = () => {
-    const { onUpdateShapes } = this.props;
-    onUpdateShapes([]);
+    this.onUpdateShapes([]);
   };
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
@@ -98,36 +136,37 @@ class Container extends Component {
       imageUrl,
       multipleCorrect,
       onUpdateImageDimension,
-      onUpdateShapes,
-      outlineColor,
-      shapes
+      outlineColor
     } = this.props;
     const {
       dropzoneActive,
       dragEnabled,
       showTooltip
     } = this.state;
+    const { shapes } = this.state;
 
     return (
-      <div className={classes.base} >
+      <div className={classes.base}>
         <div className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
              {...dragEnabled ? {
                onDragExit: this.handleOnDragExit,
                onDragLeave: this.handleOnDragExit,
-               onDragOver: this.handleOnDragOver ,
+               onDragOver: this.handleOnDragOver,
                onDrop: this.handleOnDrop
              } : {}}
         >
           <div className={classes.toolbar}>
             {imageUrl && (
-                <UploadControl
-                  classNameButton={classes.replaceButton}
-                  classNameSection={classes.replaceSection}
-                  label="Replace Image"
-                  onInputClick={this.handleInputClick}
-                  onUploadImage={this.handleUploadImage}
-                  setRef={(ref) => { this.input = ref; }}
-                />
+              <UploadControl
+                classNameButton={classes.replaceButton}
+                classNameSection={classes.replaceSection}
+                label="Replace Image"
+                onInputClick={this.handleInputClick}
+                onUploadImage={this.handleUploadImage}
+                setRef={(ref) => {
+                  this.input = ref;
+                }}
+              />
             )}
             <Button
               disabled={!(shapes && shapes.length)}
@@ -141,32 +180,40 @@ class Container extends Component {
             />
           </div>
 
-          <div ref={ref => { this.imageSection = ref; }} className={classes.drawableHeight}>
-            {imageUrl ? (
-              <Drawable
-                dimensions={dimensions}
-                disableDrag={this.handleDisableDrag}
-                enableDrag={this.handleEnableDrag}
-                imageUrl={imageUrl}
-                hotspotColor={hotspotColor}
-                multipleCorrect={multipleCorrect}
-                onUpdateImageDimension={onUpdateImageDimension}
-                onUpdateShapes={onUpdateShapes}
-                outlineColor={outlineColor}
-                shapes={shapes}
-              />
-            ) : (
-              <div className={`${classes.drawableHeight} ${classes.centered}`}>
-                <label>Drag and drop or upload image from computer</label>
-                <br />
-                <UploadControl
-                  label="Upload Image"
-                  onInputClick={this.handleInputClick}
-                  onUploadImage={this.handleUploadImage}
-                  setRef={(ref) => { this.input = ref; }}
+          <div
+            ref={ref => {
+              this.imageSection = ref;
+            }}
+            className={classes.drawableHeight}>
+            {imageUrl
+              ? (
+                <Drawable
+                  dimensions={dimensions}
+                  disableDrag={this.handleDisableDrag}
+                  enableDrag={this.handleEnableDrag}
+                  imageUrl={imageUrl}
+                  hotspotColor={hotspotColor}
+                  multipleCorrect={multipleCorrect}
+                  onUpdateImageDimension={onUpdateImageDimension}
+                  onUpdateShapes={this.onUpdateShapes}
+                  outlineColor={outlineColor}
+                  shapes={shapes}
                 />
-              </div>
-            )}
+              )
+              : (
+                <div className={`${classes.drawableHeight} ${classes.centered}`}>
+                  <label>Drag and drop or upload image from computer</label>
+                  <br/>
+                  <UploadControl
+                    label="Upload Image"
+                    onInputClick={this.handleInputClick}
+                    onUploadImage={this.handleUploadImage}
+                    setRef={(ref) => {
+                      this.input = ref;
+                    }}
+                  />
+                </div>
+              )}
           </div>
 
           {imageUrl && (
@@ -174,9 +221,10 @@ class Container extends Component {
               {showTooltip && (
                 <div className={classes.tooltipContent}>
                   <label>
-                    Click, move mouse and click again to create a hotspot. Click the hotspot to mark correct. Click again to unmark.
+                    Click, move mouse and click again to create a hotspot. Click the hotspot to mark correct. Click
+                    again to unmark.
                   </label>
-                  <div className={classes.tooltipArrow} />
+                  <div className={classes.tooltipArrow}/>
                 </div>
               )}
               <Help
@@ -276,7 +324,10 @@ Container.propTypes = {
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  shapes: PropTypes.array.isRequired
+  shapes: PropTypes.shape({
+    rectangles: PropTypes.array,
+    polygons: PropTypes.array
+  }).isRequired
 };
 
 export default withStyles(styles)(Container);

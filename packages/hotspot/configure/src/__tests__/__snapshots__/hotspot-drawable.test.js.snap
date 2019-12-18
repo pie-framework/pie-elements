@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HotspotDrawable render renders 1`] = `
+<div>
+  <div>
+    <img
+      onLoad={[Function]}
+      src="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+      style={
+        Object {
+          "height": 291,
+          "width": 410,
+        }
+      }
+    />
+    <div />
+  </div>
+  <ForwardRef
+    height={291}
+    onClick={[Function]}
+    onContentMouseMove={[Function]}
+    width={410}
+  >
+    <Layer>
+      <WithStyles(RectComponent)
+        correct={true}
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="0"
+        isDrawing={false}
+        key="0"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        width={130}
+        x={1}
+        y={1}
+      />
+      <WithStyles(RectComponent)
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="1"
+        isDrawing={false}
+        key="1"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        width={130}
+        x={140}
+        y={1}
+      />
+      <WithStyles(RectComponent)
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="2"
+        isDrawing={false}
+        key="2"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        width={130}
+        x={280}
+        y={1}
+      />
+      <WithStyles(PolComponent)
+        correct={true}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="3"
+        isDrawing={false}
+        key="3"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 1,
+              "y": 148,
+            },
+            Object {
+              "x": 1,
+              "y": 288,
+            },
+            Object {
+              "x": 129,
+              "y": 288,
+            },
+            Object {
+              "x": 129,
+              "y": 148,
+            },
+          ]
+        }
+      />
+      <WithStyles(PolComponent)
+        correct={false}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="4"
+        isDrawing={false}
+        key="4"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 141,
+              "y": 151,
+            },
+            Object {
+              "x": 141,
+              "y": 289,
+            },
+            Object {
+              "x": 269,
+              "y": 289,
+            },
+            Object {
+              "x": 269,
+              "y": 151,
+            },
+          ]
+        }
+      />
+      <WithStyles(PolComponent)
+        correct={false}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="5"
+        isDrawing={false}
+        key="5"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 279,
+              "y": 150,
+            },
+            Object {
+              "x": 279,
+              "y": 289,
+            },
+            Object {
+              "x": 407,
+              "y": 289,
+            },
+            Object {
+              "x": 407,
+              "y": 150,
+            },
+          ]
+        }
+      />
+    </Layer>
+  </ForwardRef>
+</div>
+`;

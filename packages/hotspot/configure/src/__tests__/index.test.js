@@ -29,7 +29,13 @@ const model = () => ({
         id: '3'
       }
     ],
-    polygons: []
+    polygons: [
+      {
+        'points': [{ 'x': 1, 'y': 2 }, { 'y': 139, 'x': 1 }, { 'y': 139, 'x': 130 }, { 'x': 130, 'y': 2 }],
+        'correct': false,
+        'id': '0'
+      }
+    ]
   },
   dimensions: {
     height: 0,
@@ -100,17 +106,17 @@ describe('index', () => {
       it('removes the latest shape', () => {
         const shapes = initialModel.shapes.rectangles;
         const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
-        el.onUpdateShapes(newShapes);
+        el.onUpdateShapes({ polygons: initialModel.shapes.polygons, rectangles: newShapes });
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: { polygons: [], rectangles: newShapes } }),
+          expect.objectContaining({ shapes: { polygons: initialModel.shapes.polygons, rectangles: newShapes } }),
         );
       });
     });
 
     describe('clearAllShapes', () => {
       it('removes all shapes', () => {
-        el.onUpdateShapes([]);
+        el.onUpdateShapes({ polygons: [], rectangles: [] });
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ shapes: { polygons: [], rectangles: [] } }),
@@ -191,11 +197,11 @@ describe('index', () => {
 
     describe('onUpdateShapes', () => {
       it('changes the shapes', () => {
-        const shapes = [...initialModel.shapes.rectangles, { id: '2' }];
+        const shapes = { polygons: [], rectangles: [...initialModel.shapes.rectangles, { id: '2' }]};
         el.onUpdateShapes(shapes);
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: { polygons: [], rectangles: shapes } }),
+          expect.objectContaining({ shapes }),
         );
       });
     });
