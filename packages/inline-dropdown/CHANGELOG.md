@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.8...@pie-element/inline-dropdown@3.1.0) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([839c311](https://github.com/pie-framework/pie-elements/commit/839c311))
+
+
+### Features
+
+* bump to math-rendering@^2.0.3 ([b0af226](https://github.com/pie-framework/pie-elements/commit/b0af226))
+* **markup:** sanity checked the choices [ch5774] ([2a63751](https://github.com/pie-framework/pie-elements/commit/2a63751))
+
+
+
+
+
 ## [3.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.0.7...@pie-element/inline-dropdown@3.0.8) (2019-12-03)
 
 

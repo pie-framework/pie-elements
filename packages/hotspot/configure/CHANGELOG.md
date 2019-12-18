@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.0.2...@pie-element/hotspot-configure@4.1.0) (2019-12-18)
+
+
+### Features
+
+* added support for declared polygons (display them, possibility to mark/unmark as correct, possibility to drag/drop). ([85d0603](https://github.com/pie-framework/pie-elements/commit/85d0603))
+
+
+
+
+
 ## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.0.1...@pie-element/hotspot-configure@4.0.2) (2019-11-06)
 
 

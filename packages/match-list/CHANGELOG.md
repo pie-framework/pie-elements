@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.10...@pie-element/match-list@1.7.11) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([d10d3de](https://github.com/pie-framework/pie-elements/commit/d10d3de))
+* ch3813: Updated docs. ([b86ea00](https://github.com/pie-framework/pie-elements/commit/b86ea00))
+
+
+
+
+
 ## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.7...@pie-element/match-list@1.7.10) (2019-12-03)
 
 

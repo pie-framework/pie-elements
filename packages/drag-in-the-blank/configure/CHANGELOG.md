@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.1.3...@pie-element/drag-in-the-blank-configure@3.2.0) (2019-12-18)
+
+
+### Features
+
+* bump to math-rendering@^2.0.3 ([a50bedc](https://github.com/pie-framework/pie-elements/commit/a50bedc))
+
+
+
+
+
 ## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.1.2...@pie-element/drag-in-the-blank-configure@3.1.3) (2019-12-03)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure

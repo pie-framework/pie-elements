@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.5...@pie-element/drag-in-the-blank@3.2.0) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([766d166](https://github.com/pie-framework/pie-elements/commit/766d166))
+
+
+### Features
+
+* bump to math-rendering@^2.0.3 ([a50bedc](https://github.com/pie-framework/pie-elements/commit/a50bedc))
+
+
+
+
+
 ## [3.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.1.4...@pie-element/drag-in-the-blank@3.1.5) (2019-12-03)
 
 

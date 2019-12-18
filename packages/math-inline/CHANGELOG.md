@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.7...@pie-element/math-inline@5.0.8) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([31d2b48](https://github.com/pie-framework/pie-elements/commit/31d2b48))
+
+
+
+
+
 ## [5.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.6...@pie-element/math-inline@5.0.7) (2019-12-03)
 
 

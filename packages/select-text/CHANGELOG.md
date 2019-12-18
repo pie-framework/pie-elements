@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.6...@pie-element/select-text@6.0.7) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([3b78a19](https://github.com/pie-framework/pie-elements/commit/3b78a19))
+
+
+
+
+
 ## [6.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.5...@pie-element/select-text@6.0.6) (2019-12-03)
 
 
