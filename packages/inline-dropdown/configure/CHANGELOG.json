@@ -478,5 +478,35 @@
     "committerDate": "2019-11-06 09:57:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@3.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "bump to math-rendering@^2.0.3",
+    "merge": null,
+    "header": "feat: bump to math-rendering@^2.0.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b0af226bca75b80840e54a779a8cf5c7913943a0",
+    "gitTags": "",
+    "committerDate": "2019-12-17 19:11:33 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "markup",
+    "subject": "sanity checked the choices [ch5774]",
+    "merge": null,
+    "header": "feat(markup): sanity checked the choices [ch5774]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2a63751a4de8d3abe1ffb8544f7bd7366f3b0ca0",
+    "gitTags": "",
+    "committerDate": "2019-12-17 09:34:18 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@3.1.0"
   }
 ]

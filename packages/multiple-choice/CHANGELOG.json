@@ -1758,5 +1758,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@5.0.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "42e7db994a37d0aef129fa019455420fe3ae3675",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@5.0.8"
   }
 ]

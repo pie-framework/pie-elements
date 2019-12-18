@@ -333,5 +333,35 @@
     "committerDate": "2019-11-01 10:54:21 +0000",
     "isTagged": true,
     "tag": "@pie-element/drawing-response@3.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "88e991bc329dd2df986104c4d54cd5d623194f2c",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response@3.1.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch6084 - bump @pie-ui/drawing-response",
+    "merge": null,
+    "header": "fix: ch6084 - bump @pie-ui/drawing-response",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ca71006f88fc952f6042b514fbe64a2c43c1507b",
+    "gitTags": "",
+    "committerDate": "2019-12-11 11:22:37 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response@3.1.3"
   }
 ]

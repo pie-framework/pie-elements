@@ -468,5 +468,20 @@
     "committerDate": "2019-11-06 09:57:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank-configure@3.1.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "bump to math-rendering@^2.0.3",
+    "merge": null,
+    "header": "feat: bump to math-rendering@^2.0.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a50bedc8825318fbfcaad3f96d229ded5a8c8990",
+    "gitTags": "",
+    "committerDate": "2019-12-17 19:11:12 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank-configure@3.2.0"
   }
 ]

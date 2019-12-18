@@ -273,5 +273,20 @@
     "committerDate": "2019-11-13 07:59:58 +0200",
     "isTagged": true,
     "tag": "@pie-element/charting@2.0.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2f120b69a738c238b64eebf9e336f49dc2df1703",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/charting@2.0.8"
   }
 ]

@@ -888,5 +888,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@3.2.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "0520285fb1fc93859938ac5bbf085289e57e60a4",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.2.3"
   }
 ]

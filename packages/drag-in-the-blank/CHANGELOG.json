@@ -798,5 +798,35 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@3.1.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "766d166c82ee4cf75f52f305ab1b773b845b8fb5",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "bump to math-rendering@^2.0.3",
+    "merge": null,
+    "header": "feat: bump to math-rendering@^2.0.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a50bedc8825318fbfcaad3f96d229ded5a8c8990",
+    "gitTags": "",
+    "committerDate": "2019-12-17 19:11:12 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.2.0"
   }
 ]

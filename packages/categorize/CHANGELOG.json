@@ -1468,5 +1468,50 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/categorize@6.0.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9dc46955cbe6457c6614426056c5227ed0a9296e",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@6.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump render-ui@^4.5.3",
+    "merge": null,
+    "header": "fix: bump render-ui@^4.5.3",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "996da645890d4840408f741c977d9df7d366c9f5",
+    "gitTags": "",
+    "committerDate": "2019-12-18 11:52:42 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@6.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "use HtmlAndMath from render-ui",
+    "merge": null,
+    "header": "feat: use HtmlAndMath from render-ui",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8c516c3980b337944174bc97dfe8d20d3308a178",
+    "gitTags": "",
+    "committerDate": "2019-12-17 19:09:59 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/categorize@6.1.0"
   }
 ]

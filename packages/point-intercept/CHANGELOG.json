@@ -873,5 +873,20 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/point-intercept@4.5.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d0965a04b047ec3126c4c6701a0da03e21937c5a",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/point-intercept@4.5.7"
   }
 ]

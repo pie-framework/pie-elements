@@ -438,5 +438,20 @@
     "committerDate": "2019-11-14 21:51:15 +0200",
     "isTagged": true,
     "tag": "@pie-element/graphing@3.0.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "db7cbc3b0a9897e387f7a10ff3384c1ea1adedab",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.0.7"
   }
 ]

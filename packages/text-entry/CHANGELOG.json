@@ -663,5 +663,20 @@
     "committerDate": "2019-08-27 09:02:11 +0300",
     "isTagged": true,
     "tag": "@pie-element/text-entry@3.11.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a6c5ff12b672f025aa36f785078316b0d77d158e",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/text-entry@5.0.5"
   }
 ]

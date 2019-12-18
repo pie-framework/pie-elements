@@ -483,5 +483,20 @@
     "committerDate": "2019-11-06 09:57:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@4.0.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "added support for declared polygons (display them, possibility to mark/unmark as correct, possibility to drag/drop).",
+    "merge": null,
+    "header": "feat: added support for declared polygons (display them, possibility to mark/unmark as correct, possibility to drag/drop).",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "85d06039078128ccff7531c0f86297baf3b89e53",
+    "gitTags": "",
+    "committerDate": "2019-12-12 18:33:43 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@4.1.0"
   }
 ]

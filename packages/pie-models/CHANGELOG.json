@@ -1428,5 +1428,20 @@
     "committerDate": "2019-10-11 12:01:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/pie-models@8.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch3813: Updated docs.",
+    "merge": null,
+    "header": "fix: ch3813: Updated docs.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b86ea00bcf27c0582de737107d931551fcd1dd9f",
+    "gitTags": " (origin/andreea/ch3813/pie-does-not-correctly-handle-a-match-list)",
+    "committerDate": "2019-12-16 13:20:38 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@8.0.3"
   }
 ]

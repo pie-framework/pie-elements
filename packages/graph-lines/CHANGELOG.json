@@ -743,5 +743,20 @@
     "committerDate": "2019-10-11 12:01:13 +0300",
     "isTagged": true,
     "tag": "@pie-element/graph-lines@4.0.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9e6fd6e4b5a81d68f0175f0cf41bd210d2a33e07",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/graph-lines@4.0.5"
   }
 ]
