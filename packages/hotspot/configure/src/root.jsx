@@ -146,6 +146,7 @@ export class Root extends React.Component {
               onUpdateShapes={onUpdateShapes}
               onImageUpload={onImageUpload}
               shapes={model.shapes}
+              strokeWidth={model.strokeWidth}
             />
 
             {model.imageUrl && (

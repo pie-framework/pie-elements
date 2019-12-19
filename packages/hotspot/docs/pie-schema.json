@@ -200,6 +200,11 @@
       "type": "boolean",
       "title": "studentInstructionsEnabled"
     },
+    "strokeWidth": {
+      "description": "Indicates the width of the outline for a selection",
+      "type": "number",
+      "title": "strokeWidth"
+    },
     "teacherInstructionsEnabled": {
       "description": "Indicates if Teacher Instructions are enabled",
       "type": "boolean",
@@ -224,6 +229,7 @@
     "partialScoring",
     "rationaleEnabled",
     "shapes",
+    "strokeWidth",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

@@ -196,7 +196,8 @@ export class Drawable extends React.Component {
       dimensions: { height, width },
       hotspotColor,
       outlineColor,
-      shapes
+      shapes,
+      strokeWidth
     } = this.props;
     const {
       stateShapes,
@@ -250,6 +251,7 @@ export class Drawable extends React.Component {
                   x={shape.x}
                   y={shape.y}
                   points={shape.points}
+                  strokeWidth={strokeWidth}
                 />
               );
             })}
@@ -301,7 +303,8 @@ Drawable.propTypes = {
   onUpdateImageDimension: PropTypes.func.isRequired,
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
-  shapes: PropTypes.array.isRequired
+  shapes: PropTypes.array.isRequired,
+  strokeWidth: PropTypes.number
 };
 
 export default withStyles(styles)(Drawable);

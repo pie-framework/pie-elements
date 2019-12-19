@@ -141,6 +141,7 @@ exports[`HotspotContainer render renders 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
     </div>
     <div>

@@ -83,6 +83,7 @@ class PolComponent extends React.Component {
       correct,
       hotspotColor,
       outlineColor,
+      strokeWidth = 5
     } = this.props;
     const { points, x, y } = this.state;
 
@@ -96,7 +97,7 @@ class PolComponent extends React.Component {
           onClick={this.handleClick}
           draggable
           stroke={outlineColor}
-          strokeWidth={correct ? 2 : 0}
+          strokeWidth={correct ? strokeWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           onDragEnd={this.handleOnDragEnd}
@@ -127,7 +128,8 @@ PolComponent.propTypes = {
   points: PropTypes.arrayOf(PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number
-  })).isRequired
+  })).isRequired,
+  strokeWidth: PropTypes.number
 };
 
 PolComponent.defaultProps = {

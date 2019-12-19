@@ -136,7 +136,8 @@ export class Container extends Component {
       imageUrl,
       multipleCorrect,
       onUpdateImageDimension,
-      outlineColor
+      outlineColor,
+      strokeWidth
     } = this.props;
     const {
       dropzoneActive,
@@ -198,6 +199,7 @@ export class Container extends Component {
                   onUpdateShapes={this.onUpdateShapes}
                   outlineColor={outlineColor}
                   shapes={shapes}
+                  strokeWidth={strokeWidth}
                 />
               )
               : (
@@ -327,7 +329,12 @@ Container.propTypes = {
   shapes: PropTypes.shape({
     rectangles: PropTypes.array,
     polygons: PropTypes.array
-  }).isRequired
+  }).isRequired,
+  strokeWidth: PropTypes.number
 };
+Container.defaultProps = {
+  strokeWidth: 5
+};
+
 
 export default withStyles(styles)(Container);

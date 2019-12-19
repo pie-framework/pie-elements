@@ -97,6 +97,14 @@ describe('HotspotDrawable', () => {
   });
 
   describe('render', () => {
+    it('renders with default strokeWidth', () => {
+      expect(w()).toMatchSnapshot();
+    });
+
+    it('renders with given strokeWidth', () => {
+      expect(w({ strokeWidth: 10 })).toMatchSnapshot();
+    });
+
     it('renders', () => {
       expect(w()).toMatchSnapshot();
     });
