@@ -366,7 +366,7 @@ describe.only('literalMatch', () => {
   // assertLiteralMatch('12', '11', false);
   // assertLiteralMatch('11.0', '11', false, { allowDecimals: false });
   assertLiteralMatch('11.0', '11.0', true, { allowDecimals: true });
-  assertLiteralMatch('11.0', '11.0', true, { allowDecimals: false });
+  assertLiteralMatch('11', '11.0', true, { allowDecimals: false });
 });
 
 describe('outcome', () => {
