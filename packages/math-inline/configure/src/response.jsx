@@ -225,7 +225,7 @@ class Response extends React.Component {
   render() {
     const { classes, mode, defaultResponse, index, response } = this.props;
     const { showKeypad } = this.state;
-    const { validation, answer, alternates, allowDecimals = false, allowSpaces } = response;
+    const { validation, answer, alternates, allowDecimals = false, stringCheck = false, allowSpaces } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
@@ -315,6 +315,16 @@ class Response extends React.Component {
                   }
                 />
               )}
+              <FormControlLabel
+                classes={{ root: classes.configLabel }}
+                label="String-check based evaluation"
+                control={
+                  <Checkbox
+                    checked={stringCheck}
+                    onChange={this.onConfigChanged('stringCheck')}
+                  />
+                }
+              />
             </div>
           </div>
         </CardContent>

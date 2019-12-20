@@ -274,6 +274,78 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
     });
+
+    it('works for incorrect latex frac command too with stringCheck false', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        responses: [
+          {
+            alternates: {},
+            answer: '1\\frac14',
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true,
+            stringCheck: false
+          }
+        ]
+      });
+      session = {
+        completeAnswer: '1\\frac{1}{4}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = {
+        completeAnswer: '1\\frac1{4}'
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+
+    it('works for incorrect latex frac command too with stringCheck true', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        responses: [
+          {
+            alternates: {},
+            answer: '1\\frac14',
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true,
+            stringCheck: true
+          }
+        ]
+      });
+      session = {
+        completeAnswer: '1\\frac{1}{4}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = {
+        completeAnswer: '1\\frac1{4}'
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
   });
 
   describe('evaluate - incorrect', () => {
