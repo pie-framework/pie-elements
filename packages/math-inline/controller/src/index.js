@@ -16,6 +16,19 @@ function trimSpaces(str = '') {
   return str.replace(/\\ /g, '').replace(/ /g, '');
 }
 
+/**
+ * TODO:
+ *
+ * We have `stringCheck` which if true disabled 'literal' and 'symbolic' so really it should be a validation method. And if it is what's the difference between it and 'literal'?
+ *
+ * We should support a equivalence option per correct response like:
+ * responses: [ { answer: '..', validation: 'symbolic', alternates: [{ value: '..', validation: 'stringCompare'}, 'abc'] } ]
+ *
+ * if option is a string it is turned into an object w/ inherited opts.
+ *
+ * This would override any shared setting at the root.
+ */
+
 function processAnswerItem(answerItem = '') {
   // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
   // further processing is to be added here if needed
@@ -71,7 +84,7 @@ function stripForStringCompare(answer = '') {
   let stripped = answer;
 
   stripTargets.forEach(stripTarget => {
-    return stripped = stripped.replace(stripTarget, '');
+    return (stripped = stripped.replace(stripTarget, ''));
   });
 
   return stripped;
@@ -82,7 +95,9 @@ function handleStringBasedCheck(acceptedValues, answerItem) {
   let answerCorrect = false;
 
   for (let i = 0; i < acceptedValues.length; i++) {
-    let acceptedValueToUse = stripForStringCompare(processAnswerItem(acceptedValues[i]));
+    let acceptedValueToUse = stripForStringCompare(
+      processAnswerItem(acceptedValues[i])
+    );
 
     answerCorrect = answerValueToUse === acceptedValueToUse;
 
@@ -162,7 +177,12 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
           }
         );
       } catch (e) {
-        log('Parse failure when evaluating math', e, correctResponse, answerItem);
+        log(
+          'Parse failure when evaluating math',
+          e,
+          correctResponse,
+          answerItem
+        );
         // try to string check compare, last resort?
         // once invalid models have been weeded out, this'll get removed.
         answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
