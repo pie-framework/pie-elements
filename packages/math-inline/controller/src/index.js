@@ -37,6 +37,12 @@ function containsDecimal(expression = '') {
 export function literalMatch(match, answer, opts) {
   opts = opts || {};
   // console.log('LITERAL', match, answer);
+
+  if (!opts.allowDecimals && containsDecimal(answer)) {
+    // it has a decimal or comma in the answer so false no matter what.
+    return false;
+  }
+
   if (opts.allowDecimals) {
     if (
       containsDecimal(answer) &&

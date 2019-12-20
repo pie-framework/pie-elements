@@ -357,16 +357,17 @@ describe('6456 - outcome', () => {
   });
 });
 
-describe.only('literalMatch', () => {
-  const assertLiteralMatch = (a, b, expected, opts) => {
-    it(`${a} == ${b} = ${expected}`, () =>
-      expect(literalMatch(a, b, opts)).toEqual(expected));
+describe('literalMatch', () => {
+  const assertLiteralMatch = (match, answer, expected, opts) => {
+    it(`match: ${match} == answer: ${answer} = ${expected} | ${JSON.stringify(
+      opts
+    )}`, () => expect(literalMatch(match, answer, opts)).toEqual(expected));
   };
-  // assertLiteralMatch('11', '11', true);
-  // assertLiteralMatch('12', '11', false);
-  // assertLiteralMatch('11.0', '11', false, { allowDecimals: false });
+  assertLiteralMatch('11', '11', true);
+  assertLiteralMatch('12', '11', false);
+  assertLiteralMatch('11.0', '11', false, { allowDecimals: true });
   assertLiteralMatch('11.0', '11.0', true, { allowDecimals: true });
-  assertLiteralMatch('11', '11.0', true, { allowDecimals: false });
+  assertLiteralMatch('11.0', '11.0', false, { allowDecimals: false });
 });
 
 describe('outcome', () => {
