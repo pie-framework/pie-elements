@@ -51,6 +51,9 @@ export interface HotspotPie extends PieModel {
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
+  /** Indicates the width of the outline for a selection */
+  strokeWidth: number;
+
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 }

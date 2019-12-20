@@ -13,6 +13,7 @@ export const normalize = question => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  strokeWidth: 5,
   ...question,
 });
 
@@ -60,6 +61,7 @@ export function model(question, session, env) {
     }
 
     out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
+    out.strokeWidth = normalizedQuestion.strokeWidth;
 
     resolve(out);
   });

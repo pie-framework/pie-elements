@@ -138,6 +138,10 @@ Indicates if Rationale are enabled
 
 Indicates if Student Instructions are enabled
 
+# `strokeWidth` (number, required)
+
+Indicates the width of the outline for a selection
+
 # `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
