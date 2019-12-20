@@ -30,7 +30,8 @@ exports.model = (id, element) => ({
         '2': '\\frac{72}{12}=6',
         '3': '6=\\frac{72}{12}'
       },
-      validation: 'literal'
+      validation: 'literal',
+      stringCheck: false
     }
   ],
   customKeys: [

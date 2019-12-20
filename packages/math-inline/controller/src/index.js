@@ -65,6 +65,35 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
+const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g];
+
+function stripForStringCompare(answer = '') {
+  let stripped = answer;
+
+  stripTargets.forEach(stripTarget => {
+    return stripped = stripped.replace(stripTarget, '');
+  });
+
+  return stripped;
+}
+
+function handleStringBasedCheck(acceptedValues, answerItem) {
+  let answerValueToUse = stripForStringCompare(processAnswerItem(answerItem));
+  let answerCorrect = false;
+
+  for (let i = 0; i < acceptedValues.length; i++) {
+    let acceptedValueToUse = stripForStringCompare(processAnswerItem(acceptedValues[i]));
+
+    answerCorrect = answerValueToUse === acceptedValueToUse;
+
+    if (answerCorrect === true) {
+      break;
+    }
+  }
+
+  return answerCorrect;
+}
+
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
@@ -75,7 +104,9 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
       )
     );
 
-    if (correctResponse.validation === 'literal') {
+    if (correctResponse.stringCheck) {
+      answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
+    } else if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
         let answerValueToUse = processAnswerItem(answerItem);
         let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
@@ -120,14 +151,22 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         'B:',
         processAnswerItem(answerItem)
       );
-      answerCorrect = areValuesEqual(
-        processAnswerItem(correctResponse.answer),
-        processAnswerItem(answerItem),
-        {
-          isLatex: true,
-          allowDecimals: correctResponse.allowDecimals
-        }
-      );
+
+      try {
+        answerCorrect = areValuesEqual(
+          processAnswerItem(correctResponse.answer),
+          processAnswerItem(answerItem),
+          {
+            isLatex: true,
+            allowDecimals: correctResponse.allowDecimals
+          }
+        );
+      } catch (e) {
+        log('Parse failure when evaluating math', e, correctResponse, answerItem);
+        // try to string check compare, last resort?
+        // once invalid models have been weeded out, this'll get removed.
+        answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
+      }
     }
   });
 
