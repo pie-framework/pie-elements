@@ -1,4 +1,9 @@
-import { model, outcome, createCorrectResponseSession } from '../index';
+import {
+  model,
+  outcome,
+  createCorrectResponseSession,
+  literalMatch
+} from '../index';
 
 const defaultModel = {
   responseType: 'Advanced Multi',
@@ -305,6 +310,63 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('0%');
     });
   });
+});
+describe('6456 - outcome', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '-12.5',
+        id: '1',
+        alternates: { '1': '-12.5\\%' },
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12\\%' } },
+      completeAnswer: '-12\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12.5\\%' } },
+      completeAnswer: '-12.5\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
+
+describe.only('literalMatch', () => {
+  const assertLiteralMatch = (a, b, expected, opts) => {
+    it(`${a} == ${b} = ${expected}`, () =>
+      expect(literalMatch(a, b, opts)).toEqual(expected));
+  };
+  // assertLiteralMatch('11', '11', true);
+  // assertLiteralMatch('12', '11', false);
+  // assertLiteralMatch('11.0', '11', false, { allowDecimals: false });
+  assertLiteralMatch('11.0', '11.0', true, { allowDecimals: true });
+  assertLiteralMatch('11.0', '11.0', true, { allowDecimals: false });
 });
 
 describe('outcome', () => {

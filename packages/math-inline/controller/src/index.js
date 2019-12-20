@@ -34,6 +34,65 @@ function containsDecimal(expression = '') {
   return expression.match(decimalRegex);
 }
 
+export function literalMatch(match, answer, opts) {
+  opts = opts || {};
+  // console.log('LITERAL', match, answer);
+  if (opts.allowDecimals) {
+    if (
+      containsDecimal(answer) &&
+      decimalWithThousandSeparatorNumberRegex.test(answer)
+    ) {
+      answer = answer.replace(decimalCommaRegex, '');
+    }
+
+    if (
+      containsDecimal(match) &&
+      decimalWithThousandSeparatorNumberRegex.test(match)
+    ) {
+      match = match.replace(decimalCommaRegex, '');
+    }
+  }
+
+  if (opts.allowSpaces) {
+    if (
+      match === trimSpaces(answer) ||
+      match === answer ||
+      trimSpaces(match) === trimSpaces(answer)
+    ) {
+      return true;
+    }
+  }
+
+  console.log('A', match, 'B', answer);
+
+  return match === answer;
+}
+
+export function symbolicMatch(match, answer, opts) {
+  // console.log('SYMBOLIC - index: ', 'A:', match, 'B:', answer);
+  return areValuesEqual(match, answer, {
+    isLatex: true,
+    allowDecimals: opts.allowDecimals
+  });
+}
+
+function answerMatches(match, answer, opts) {
+  answer = processAnswerItem(answer);
+  match = processAnswerItem(match);
+
+  if (opts.validation === 'literal') {
+    return literalMatch(match, answer, opts);
+  } else {
+    return symbolicMatch(match, answer, opts);
+  }
+}
+
+function isAnswerCorrect(responses, answer) {
+  return responses.some(r => {
+    const allMatchers = [r.answer].concat(Object.values(r.alternates));
+    return allMatchers.some(m => answerMatches(m, answer, r));
+  });
+}
 const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
   const isAdvanced = model.responseType === ResponseTypes.advanced;
@@ -46,7 +105,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
-  const isAnswerCorrect = getIsAnswerCorrect(
+  const correct = isAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem
   );
@@ -56,7 +115,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     correct: false
   };
 
-  if (isAnswerCorrect) {
+  if (correct) {
     correctnessObject.correctness = 'correct';
     correctnessObject.score = isOutcome ? 1 : '100%';
     correctnessObject.correct = true;
@@ -65,74 +124,81 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-function getIsAnswerCorrect(correctResponseItem, answerItem) {
-  let answerCorrect = false;
+// function getIsAnswerCorrect(correctResponseItem, answerItem) {
+//   return correctResponsesMatchAnswer(correctResponseItem, answerItem);
+//   let answerCorrect = false;
 
-  correctResponseItem.forEach(correctResponse => {
-    const acceptedValues = [correctResponse.answer].concat(
-      Object.keys(correctResponse.alternates || {}).map(
-        alternateId => correctResponse.alternates[alternateId]
-      )
-    );
+//   correctResponseItem.forEach(correctResponse => {
+//     const acceptedValues = [correctResponse.answer].concat(
+//       Object.keys(correctResponse.alternates || {}).map(
+//         alternateId => correctResponse.alternates[alternateId]
+//       )
+//     );
 
-    if (correctResponse.validation === 'literal') {
-      for (let i = 0; i < acceptedValues.length; i++) {
-        let answerValueToUse = processAnswerItem(answerItem);
-        let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+//     console.log('acceptedValues:', acceptedValues);
 
-        if (correctResponse.allowDecimals) {
-          if (
-            containsDecimal(answerValueToUse) &&
-            decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
-          ) {
-            answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
-          }
+//     if (correctResponse.validation === 'literal') {
+//       for (let i = 0; i < acceptedValues.length; i++) {
+//         let answerValueToUse = processAnswerItem(answerItem);
+//         let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
-          if (
-            containsDecimal(acceptedValueToUse) &&
-            decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
-          ) {
-            acceptedValueToUse = acceptedValueToUse.replace(
-              decimalCommaRegex,
-              ''
-            );
-          }
-        }
+//         if (correctResponse.allowDecimals) {
+//           if (
+//             containsDecimal(answerValueToUse) &&
+//             decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+//           ) {
+//             answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
+//           }
 
-        if (correctResponse.allowSpaces) {
-          if (
-            acceptedValueToUse === trimSpaces(answerValueToUse) ||
-            acceptedValueToUse === answerValueToUse ||
-            trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-          ) {
-            answerCorrect = true;
-            break;
-          }
-        } else if (acceptedValueToUse === answerValueToUse) {
-          answerCorrect = true;
-          break;
-        }
-      }
-    } else {
-      console.log(
-        'A:',
-        processAnswerItem(correctResponse.answer),
-        'B:',
-        processAnswerItem(answerItem)
-      );
-      answerCorrect = areValuesEqual(
-        processAnswerItem(correctResponse.answer),
-        processAnswerItem(answerItem),
-        {
-          isLatex: true,
-          allowDecimals: correctResponse.allowDecimals
-        }
-      );
-    }
-  });
+//           if (
+//             containsDecimal(acceptedValueToUse) &&
+//             decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+//           ) {
+//             acceptedValueToUse = acceptedValueToUse.replace(
+//               decimalCommaRegex,
+//               ''
+//             );
+//           }
+//         }
 
-  return answerCorrect;
-}
+//         if (correctResponse.allowSpaces) {
+//           if (
+//             acceptedValueToUse === trimSpaces(answerValueToUse) ||
+//             acceptedValueToUse === answerValueToUse ||
+//             trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
+//           ) {
+//             answerCorrect = true;
+//             break;
+//           }
+//         } else if (acceptedValueToUse === answerValueToUse) {
+//           answerCorrect = true;
+//           break;
+//         }
+//       }
+//     } else {
+//       console.log(
+//         'index: ',
+//         i,
+//         'total:',
+//         acceptedValues.length,
+//         'A:',
+//         processAnswerItem(correctResponse.answer),
+//         'B:',
+//         processAnswerItem(answerItem)
+//       );
+//       answerCorrect = areValuesEqual(
+//         processAnswerItem(correctResponse.answer),
+//         processAnswerItem(answerItem),
+//         {
+//           isLatex: true,
+//           allowDecimals: correctResponse.allowDecimals
+//         }
+//       );
+//     }
+//   });
+
+//   return answerCorrect;
+// }
 
 const getCorrectness = (question, env, session, isOutcome) => {
   if (env.mode === 'evaluate') {
