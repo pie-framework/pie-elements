@@ -575,3 +575,49 @@ describe('createCorrectResponseSession', () => {
     });
   });
 });
+
+describe.only('6456 - outcome', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '-12.5',
+        id: '1',
+        alternates: { '1': '-12.5\\%' },
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12\\%' } },
+      completeAnswer: '-12\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12.5\\%' } },
+      completeAnswer: '-12.5\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
