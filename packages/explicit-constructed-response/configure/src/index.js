@@ -1,14 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import debug from 'debug';
+import defaults from 'lodash/defaults';
+import isArray from 'lodash/isArray';
 import {
   DeleteImageEvent,
   InsertImageEvent,
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Main from './main';
-import debug from 'debug';
-import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils'
@@ -28,14 +29,16 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     // like: { label: 'test' }
     if (joinedObj.choices) {
       Object.keys(joinedObj.choices).forEach(key => {
-        joinedObj.choices[key] = joinedObj.choices[key].map((item, index) => {
-          if (!item.value) {
-            log('Choice does not contain "value" property, which is required.', item);
-            return { value: `${index}`, ...item };
-          }
+        if (isArray(joinedObj.choices[key])) {
+          joinedObj.choices[key] = (joinedObj.choices[key] || []).map((item, index) => {
+            if (!item.value) {
+              log('Choice does not contain "value" property, which is required.', item);
+              return { value: `${index}`, ...item };
+            }
 
-          return item;
-        })
+            return item;
+          })
+        }
       });
     }
 
