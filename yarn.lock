@@ -1777,10 +1777,10 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-expressions@2.0.0-alpha24":
-  version "2.0.0-alpha24"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.0.0-alpha24.tgz#4f0440872ac3a522b6d412ab81a5f55e116e03ed"
-  integrity sha512-qS2vRRIvlBsvoJw7QD/EpFE6llIe6ZQl1b+oXNNbwIWlIZ2jCHTCcuZVVZeXYGFWpagLrI4FTjxYnWyeYm+iJQ==
+"@pie-framework/math-expressions@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.1.0.tgz#7e06a06f0440c0328644849133e39a78ebd3cedc"
+  integrity sha512-LUf3u0ka97Pk01RgmY101R3vV3JvU0Nm2/vdP2d+Yf0Elg7F6nst6LNmlNeayO7xa2EeX44QFeHdhq9ypyIVmQ==
   dependencies:
     babel-cli "^6.26.0"
     mathjs "^4.4.2"
@@ -2071,21 +2071,12 @@
     slate-react "^0.14.3"
     to-style "^1.3.3"
 
-"@pie-lib/math-evaluator@^0.5.7":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.5.7.tgz#bb89cabbd210d33c44e579557fca58397367bd87"
-  integrity sha512-YDyByTA4J6XaA8280CrR9ZmhhOX018br8GBTKobArBh2zoMCUiEUZVyCXvLA/IqZY0fJmZo6KGlYScSQ040MzQ==
+"@pie-lib/math-evaluator@^0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.5.tgz#b540baf4379764178d1ad8328594f12bef93d5eb"
+  integrity sha512-7LcZRmmzVT3UiJrAAWCuEBeE6kQriek7aRyEN68R5FpCqXh8FLuxnfbysjoWI40AeE6XC1xZhTxv7T2XfjxeaQ==
   dependencies:
-    jsesc "^2.5.2"
-    math-expressions "^2.0.0-alpha1"
-    mathjs "^5.4.1"
-
-"@pie-lib/math-evaluator@^0.6.0":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.1.tgz#b801b23ed93c0330c1a8e49caac10ca64b29cfa7"
-  integrity sha512-S/fj8E438NH2oJqJgIfVyKsN87IjlXjy/L7TRBAIsP0q2kOsfXlG1VOFuQHTKOi+l9cu2qaG/h4I5uF8mHlydQ==
-  dependencies:
-    "@pie-framework/math-expressions" "2.0.0-alpha24"
+    "@pie-framework/math-expressions" "2.1.0"
     jsesc "^2.5.2"
     mathjs "^5.4.1"
 
@@ -8915,17 +8906,6 @@ math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
   integrity sha1-3oGf282E3M2PrlnGrreWFbnSZqw=
-
-math-expressions@^2.0.0-alpha1:
-  version "2.0.0-alpha21"
-  resolved "https://registry.yarnpkg.com/math-expressions/-/math-expressions-2.0.0-alpha21.tgz#411ecca9835bd848ecd9ce4322cd7d2df6fa1968"
-  integrity sha512-wKkvbzSnGCFf9Hiw1Mn+DJe3c/bcKwup1tgyFRii9qkhwma/rzSEC2c8o+RA63/cqs0QhY0b8pI8u0t4OWZ5jA==
-  dependencies:
-    babel-cli "^6.26.0"
-    mathjs "^4.4.2"
-    number-theory "*"
-    numeric "*"
-    xml-parser "*"
 
 math-random@^1.0.1:
   version "1.0.4"
