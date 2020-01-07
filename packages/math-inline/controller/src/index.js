@@ -119,9 +119,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
       )
     );
 
-    if (correctResponse.stringCheck) {
-      answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
-    } else if (correctResponse.validation === 'literal') {
+    if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
         let answerValueToUse = processAnswerItem(answerItem);
         let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
