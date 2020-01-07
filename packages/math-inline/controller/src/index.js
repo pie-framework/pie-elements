@@ -29,7 +29,7 @@ function trimSpaces(str = '') {
  * This would override any shared setting at the root.
  */
 
-function processAnswerItem(answerItem = '') {
+function processAnswerItem(answerItem = '', isLiteral) {
   // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
   // further processing is to be added here if needed
   let newAnswerItem = answerItem.replace('−', '-');
@@ -40,7 +40,7 @@ function processAnswerItem(answerItem = '') {
 
   newAnswerItem = newAnswerItem.replace(textRegex, '$1');
 
-  return newAnswerItem;
+  return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
 
 function containsDecimal(expression = '') {
@@ -78,7 +78,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /\\left/g, /\\right/g];
+const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /left/g, /right/g];
 
 function stripForStringCompare(answer = '') {
   let stripped = answer;
@@ -91,13 +91,11 @@ function stripForStringCompare(answer = '') {
 }
 
 function handleStringBasedCheck(acceptedValues, answerItem) {
-  let answerValueToUse = stripForStringCompare(processAnswerItem(answerItem));
+  let answerValueToUse = processAnswerItem(answerItem, true);
   let answerCorrect = false;
 
   for (let i = 0; i < acceptedValues.length; i++) {
-    let acceptedValueToUse = stripForStringCompare(
-      processAnswerItem(acceptedValues[i])
-    );
+    let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
     answerCorrect = answerValueToUse === acceptedValueToUse;
 
@@ -121,8 +119,19 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
 
     if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
-        let answerValueToUse = processAnswerItem(answerItem);
-        let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+        let answerValueToUse = processAnswerItem(answerItem, true);
+        let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
+
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
+        console.log(answerValueToUse, acceptedValueToUse)
 
         if (correctResponse.allowDecimals) {
           if (
@@ -158,13 +167,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         }
       }
     } else {
-      console.log(
-        'A:',
-        processAnswerItem(correctResponse.answer),
-        'B:',
-        processAnswerItem(answerItem)
-      );
-
       try {
         answerCorrect = areValuesEqual(
           processAnswerItem(correctResponse.answer),

@@ -275,7 +275,7 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
-    it('works for incorrect latex frac command too with stringCheck false', async () => {
+    it('works for incorrect latex frac command too', async () => {
       question = mkQuestion({
         ...defaultModel,
         responseType: 'Advanced Multi',
@@ -286,8 +286,7 @@ describe('model', () => {
             answer: '1\\frac14',
             validation: 'symbolic',
             id: '1',
-            allowSpaces: true,
-            stringCheck: false
+            allowSpaces: true
           }
         ]
       });
@@ -310,42 +309,61 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
     });
+  });
 
-    it('works for incorrect latex frac command too with stringCheck true', async () => {
-      question = mkQuestion({
-        ...defaultModel,
-        responseType: 'Advanced Multi',
-        expression: '{{response}}',
-        responses: [
-          {
-            alternates: {},
-            answer: '1\\frac14',
-            validation: 'symbolic',
-            id: '1',
-            allowSpaces: true,
-            stringCheck: true
-          }
-        ]
-      });
-      session = {
-        completeAnswer: '1\\frac{1}{4}'
-      };
-
-      env = { mode: 'evaluate' };
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('correct');
-      expect(result.correctness.score).toEqual('100%');
-
-      session = {
-        completeAnswer: '1\\frac1{4}'
-      };
-
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('correct');
-      expect(result.correctness.score).toEqual('100%');
+  it('works for literal validation for incomplete latex command too', async () => {
+    question = mkQuestion({
+      ...defaultModel,
+      responseType: 'Advanced Multi',
+      expression: '{{response}}',
+      responses: [
+        {
+          alternates: { 1: 'p\\left(x\\right)' },
+          answer: '1\\frac14',
+          validation: 'literal',
+          id: '1',
+          allowSpaces: true
+        }
+      ]
     });
+    session = {
+      completeAnswer: '1\\frac{1}{4}'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: '1\\frac1{4}'
+    };
+
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: 'p(x)'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: 'p\\left(x\\right)'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
   });
 
   describe('evaluate - incorrect', () => {
