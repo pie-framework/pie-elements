@@ -48,6 +48,7 @@ export const normalize = question => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  choicePrefix: 'numbers',
   ...question,
 });
 

@@ -168,14 +168,21 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
       }
     } else {
       try {
-        answerCorrect = areValuesEqual(
-          processAnswerItem(correctResponse.answer),
-          processAnswerItem(answerItem),
-          {
-            isLatex: true,
-            allowDecimals: correctResponse.allowDecimals
+        for (let i = 0; i < acceptedValues.length; i++) {
+          // let answerValueToUse = processAnswerItem(answerItem);
+          // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+          answerCorrect = areValuesEqual(
+            processAnswerItem(acceptedValues[i]),
+            processAnswerItem(answerItem),
+            {
+              isLatex: true,
+              allowDecimals: correctResponse.allowDecimals
+            }
+          );
+          if (answerCorrect) {
+            break;
           }
-        );
+        }
       } catch (e) {
         log(
           'Parse failure when evaluating math',

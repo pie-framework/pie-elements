@@ -275,6 +275,42 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
+    describe('all responses are checked', () => {
+      beforeEach(() => {
+        question = mkQuestion({
+          ...defaultModel,
+          responses: [
+            {
+              answer: '0.5+3.5',
+              validation: 'symbolic',
+              alternates: ['2']
+            },
+            { answer: 'foo', validation: 'literal', allowSpaces: true, id: '1' }
+          ]
+        });
+      });
+
+      it('4 is correct - symbolic match answer', async () => {
+        result = await model(question, { completeAnswer: '4' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+
+      it('3 is incorrect - no match', async () => {
+        result = await model(question, { completeAnswer: '3' }, env);
+        expect(result.correctness.correctness).toEqual('incorrect');
+      });
+
+      it('2 is correct - symbolic match responses[0].alternates[0]', async () => {
+        result = await model(question, { completeAnswer: '2' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+
+      it('foo is correct - literal match response[1]', async () => {
+        result = await model(question, { completeAnswer: 'foo' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+    });
+
     it('works for incorrect latex frac command too', async () => {
       question = mkQuestion({
         ...defaultModel,
@@ -591,5 +627,51 @@ describe('createCorrectResponseSession', () => {
         correctness: { correct: false }
       });
     });
+  });
+});
+
+describe('6456 - outcome', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '-12.5',
+        id: '1',
+        alternates: { '1': '-12.5\\%' },
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12\\%' } },
+      completeAnswer: '-12\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12.5\\%' } },
+      completeAnswer: '-12.5\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
   });
 });
