@@ -78,7 +78,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g];
+const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /\\left/g, /\\right/g];
 
 function stripForStringCompare(answer = '') {
   let stripped = answer;
