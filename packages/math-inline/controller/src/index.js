@@ -122,17 +122,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         let answerValueToUse = processAnswerItem(answerItem, true);
         let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-        console.log(answerValueToUse, acceptedValueToUse)
-
         if (correctResponse.allowDecimals) {
           if (
             containsDecimal(answerValueToUse) &&
