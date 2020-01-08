@@ -2434,10 +2434,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/hotspot@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.3.4.tgz#c7fc61184f64c68a53b014b948917ee40e63244f"
-  integrity sha512-6U1ryLTLdS2QywxqwlGPzhCIH5zj7NFktO5LGgwa6lePl/Oy2VZqQRHBi3OwzgicE65WoNFifo+sX0r5td7Wew==
+"@pie-ui/hotspot@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.3.5.tgz#54f7a16fc0815f9d606056d2162551446ab1d668"
+  integrity sha512-Af3BqCLoqCN9EArPmflsGTVsv+pmkLrLXTlvYxE+YA59i3ZNZhQ0tH2001nfTCcTq+NXBxBx8mQtWxi6q4I70A==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-framework/pie-player-events" "^0.1.0"
