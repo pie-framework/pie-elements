@@ -129,7 +129,7 @@ describe('model', () => {
 
     it('returns correct for correctness with text nodes too', async () => {
       question = mkQuestion();
-      session = { completeAnswer: '72\\div12=6eggs' };
+      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
 
@@ -139,7 +139,7 @@ describe('model', () => {
 
     it('returns correct for correctness with text nodes too in symbolic', async () => {
       question = mkQuestion();
-      session = { completeAnswer: '72\\div12=6eggs' };
+      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
       question.responses[0].validation = 'symbolic';
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
@@ -668,6 +668,41 @@ describe('6456 - outcome', () => {
       id: '1',
       answers: { r1: { value: '-12.5\\%' } },
       completeAnswer: '-12.5\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
+
+
+describe('6371', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}\\ \\text{dollars}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '4\\times10^3\\ \\text{dollars}',
+        id: '1',
+        alternates: {},
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '4000\\ \\text{dollars}' } },
+      completeAnswer: '4000\\ \\text{dollars}'
     };
 
     const env = { mode: 'evaluate' };
