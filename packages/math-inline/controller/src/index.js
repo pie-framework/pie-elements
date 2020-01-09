@@ -36,9 +36,11 @@ function processAnswerItem(answerItem = '', isLiteral) {
 
   newAnswerItem = newAnswerItem.replace('\\cdot', '\\times');
 
-  // also ignore text nodes, just swap out with content
+  // also ignore text nodes, just swap out with empty string
 
-  newAnswerItem = newAnswerItem.replace(textRegex, '$1');
+  newAnswerItem = newAnswerItem.replace(textRegex, '');
+
+  newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
 
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
@@ -78,7 +80,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /left/g, /right/g];
+const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /left/g, /right/g, / /g];
 
 function stripForStringCompare(answer = '') {
   let stripped = answer;
@@ -160,6 +162,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         for (let i = 0; i < acceptedValues.length; i++) {
           // let answerValueToUse = processAnswerItem(answerItem);
           // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+
           answerCorrect = areValuesEqual(
             processAnswerItem(acceptedValues[i]),
             processAnswerItem(answerItem),
