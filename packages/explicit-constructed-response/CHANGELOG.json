@@ -903,5 +903,20 @@
     "committerDate": "2019-12-18 12:08:39 +0000",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response@3.2.3"
+  },
+  {
+    "type": "feat",
+    "scope": "choices",
+    "subject": "made sure choices is array [ch6652]",
+    "merge": null,
+    "header": "feat(choices): made sure choices is array [ch6652]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6eacdb0e072115f72bdfbd5f48382b0f29907e5c",
+    "gitTags": " (origin/ch6652/ecr-choices-not-array)",
+    "committerDate": "2019-12-24 13:55:02 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response@3.3.0"
   }
 ]

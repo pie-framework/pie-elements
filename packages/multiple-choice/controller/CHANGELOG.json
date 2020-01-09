@@ -448,5 +448,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@3.0.7"
+  },
+  {
+    "type": "feat",
+    "scope": "normalization",
+    "subject": "added a choicePrefix default value in case one is not given [ch6650]",
+    "merge": null,
+    "header": "feat(normalization): added a choicePrefix default value in case one is not given [ch6650]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "955ff4040a4d5acc24fd8d8335b3557226a22396",
+    "gitTags": " (origin/ch6650/multiple-choice-no-prefix)",
+    "committerDate": "2019-12-24 13:43:07 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@3.1.0"
   }
 ]
