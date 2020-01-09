@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.9...@pie-element/math-inline@5.1.0) (2020-01-09)
+
+
+### Bug Fixes
+
+* **math-inline:** fix text node stripping for evaluation logic - ch6371 ([d0558dd](https://github.com/pie-framework/pie-elements/commit/d0558dd))
+* **math-inline:** improve literal validation for latex [ch6453] ([2364bf3](https://github.com/pie-framework/pie-elements/commit/2364bf3))
+* **math-inline:** improve literal validation for latex parantheses ([f6076f4](https://github.com/pie-framework/pie-elements/commit/f6076f4))
+* bump @pie-lib/math-input@^6.3.7 ch5653 ([2cf4219](https://github.com/pie-framework/pie-elements/commit/2cf4219))
+* bump @pie-ui/math-inline@^3.0.12 ([62055c8](https://github.com/pie-framework/pie-elements/commit/62055c8))
+* bump @pie-ui/math-inline@^6.3.7 ch5653 ([704734b](https://github.com/pie-framework/pie-elements/commit/704734b))
+* ch6456 - handle % ([9e55a90](https://github.com/pie-framework/pie-elements/commit/9e55a90))
+* update math-input@6.3.8 ([b888aa1](https://github.com/pie-framework/pie-elements/commit/b888aa1))
+
+
+### Features
+
+* **math-inline:** remove stringCheck flag from authoring ([c1f244a](https://github.com/pie-framework/pie-elements/commit/c1f244a))
+* **math-inline:** remove stringCheck related logic from controller ([00823cf](https://github.com/pie-framework/pie-elements/commit/00823cf))
+* **math-inline:** string-based check for evaluation, invalid latex command support ([8238250](https://github.com/pie-framework/pie-elements/commit/8238250))
+
+
+
+
+
 ## [5.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.0.8...@pie-element/math-inline@5.0.9) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/math-inline

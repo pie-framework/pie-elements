@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.2.4...@pie-element/explicit-constructed-response@3.3.0) (2020-01-09)
+
+
+### Features
+
+* **choices:** made sure choices is array [ch6652] ([6eacdb0](https://github.com/pie-framework/pie-elements/commit/6eacdb0))
+
+
+
+
+
 ## [3.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.2.3...@pie-element/explicit-constructed-response@3.2.4) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

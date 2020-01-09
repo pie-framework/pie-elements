@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.0.1...@pie-element/math-inline-configure@5.1.0) (2020-01-09)
+
+
+### Bug Fixes
+
+* bump @pie-lib/math-input@^6.3.7 ch5653 ([2cf4219](https://github.com/pie-framework/pie-elements/commit/2cf4219))
+* ch6456 - handle % ([9e55a90](https://github.com/pie-framework/pie-elements/commit/9e55a90))
+* update math-input@6.3.8 ([b888aa1](https://github.com/pie-framework/pie-elements/commit/b888aa1))
+
+
+### Features
+
+* **math-inline:** remove stringCheck flag from authoring ([c1f244a](https://github.com/pie-framework/pie-elements/commit/c1f244a))
+* **math-inline:** string-based check for evaluation, invalid latex command support ([8238250](https://github.com/pie-framework/pie-elements/commit/8238250))
+
+
+
+
+
 ## [5.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.0.0...@pie-element/math-inline-configure@5.0.1) (2019-11-06)
 
 

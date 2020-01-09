@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.0.9...@pie-element/multiple-choice@5.1.0) (2020-01-09)
+
+
+### Features
+
+* **normalization:** added a choicePrefix default value in case one is not given [ch6650] ([955ff40](https://github.com/pie-framework/pie-elements/commit/955ff40))
+
+
+
+
+
 ## [5.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.0.8...@pie-element/multiple-choice@5.0.9) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
