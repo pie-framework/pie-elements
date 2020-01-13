@@ -42,6 +42,8 @@ function processAnswerItem(answerItem = '', isLiteral) {
 
   newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
 
+  newAnswerItem = newAnswerItem.replace('\\%', '').replace('\%', '').replace('%', '');
+
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
 
