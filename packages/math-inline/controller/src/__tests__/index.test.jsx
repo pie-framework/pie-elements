@@ -711,7 +711,7 @@ describe('6371', () => {
   });
 });
 
-describe.only('3826', () => {
+describe('3826', () => {
   const question = {
     equationEditor: 8,
     responseType: 'Advanced Multi',
