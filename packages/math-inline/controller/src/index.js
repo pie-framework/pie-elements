@@ -42,6 +42,9 @@ function processAnswerItem(answerItem = '', isLiteral) {
 
   newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
 
+  // eslint-disable-next-line no-useless-escape
+  newAnswerItem = newAnswerItem.replace('\\%', '').replace('\%', '').replace('%', '');
+
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
 

@@ -698,11 +698,45 @@ describe('6371', () => {
     element: 'math-inline'
   };
 
-  it('scores 0', async () => {
+  it('scores 1', async () => {
     const session = {
       id: '1',
       answers: { r1: { value: '4000\\ \\text{dollars}' } },
       completeAnswer: '4000\\ \\text{dollars}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
+
+describe('3826', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}\\ \\text{%}',
+    responses: [
+      {
+        id: '1',
+        answer: '84\%',
+        alternates: {},
+        validation: 'literal',
+        allowSpaces: true
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '84\\ \\text{%}' } },
+      completeAnswer: '84\\ \\text{%}'
     };
 
     const env = { mode: 'evaluate' };
