@@ -191,38 +191,6 @@ describe('controller', () => {
       { mode: 'evaluate' },
       0
     );
-
-    assertOutcome(
-      'element.partA.partialScoring = false, element.partB.partialScoring = false but env.partialScoring = true',
-      {}, {},
-      ['yellow'], ['orange'],
-      { mode: 'evaluate', partialScoring: true },
-      1.34
-    );
-
-    assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = true but env.partialScoring = false',
-      { partialScoring: true }, { partialScoring: true },
-      ['yellow'], ['orange'],
-      { mode: 'evaluate', partialScoring: false },
-      0
-    );
-
-    assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = false but env.partialScoring = false',
-      { partialScoring: true }, { partialScoring: false },
-      ['yellow'], ['orange'],
-      { mode: 'evaluate', partialScoring: false },
-      0
-    );
-
-    assertOutcome(
-      'element.partA.partialScoring = false, element.partB.partialScoring = true but env.partialScoring = false',
-      { partialScoring: false }, { partialScoring: true },
-      ['yellow'], ['orange'],
-      { mode: 'evaluate', partialScoring: false },
-      0
-    );
   });
 
   describe('outcome', () => {
