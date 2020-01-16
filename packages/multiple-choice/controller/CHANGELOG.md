@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.0.7...@pie-element/multiple-choice-controller@3.1.0) (2020-01-09)
+
+
+### Features
+
+* **normalization:** added a choicePrefix default value in case one is not given [ch6650] ([955ff40](https://github.com/pie-framework/pie-elements/commit/955ff40))
+
+
+
+
+
 ## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.0.6...@pie-element/multiple-choice-controller@3.0.7) (2019-12-03)
 
 

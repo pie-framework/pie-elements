@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.0.6...@pie-element/math-inline-controller@5.1.0) (2020-01-09)
+
+
+### Bug Fixes
+
+* **math-inline:** fix text node stripping for evaluation logic - ch6371 ([d0558dd](https://github.com/pie-framework/pie-elements/commit/d0558dd))
+* **math-inline:** improve literal validation for latex [ch6453] ([2364bf3](https://github.com/pie-framework/pie-elements/commit/2364bf3))
+* **math-inline:** improve literal validation for latex parantheses ([f6076f4](https://github.com/pie-framework/pie-elements/commit/f6076f4))
+* ch6456 - handle % ([9e55a90](https://github.com/pie-framework/pie-elements/commit/9e55a90))
+
+
+### Features
+
+* **math-inline:** remove stringCheck related logic from controller ([00823cf](https://github.com/pie-framework/pie-elements/commit/00823cf))
+* **math-inline:** string-based check for evaluation, invalid latex command support ([8238250](https://github.com/pie-framework/pie-elements/commit/8238250))
+
+
+
+
+
 ## [5.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.0.5...@pie-element/math-inline-controller@5.0.6) (2019-12-03)
 
 
