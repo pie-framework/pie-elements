@@ -18,7 +18,11 @@ const defaultModel = {
       validation: 'literal'
     }
   ],
-  customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
+  customKeys: [
+    '\\left(\\right)',
+    '\\frac{}{}',
+    'x\\frac{}{}'
+  ],
   id: 1
 };
 
@@ -497,7 +501,11 @@ describe('createCorrectResponseSession', () => {
         validation: 'literal'
       }
     ],
-    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}']
+    customKeys: [
+      '\\left(\\right)',
+      '\\frac{}{}',
+      'x\\frac{}{}'
+    ]
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
@@ -512,7 +520,6 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
-      response: '72\\div12=6',
       id: '1'
     });
   });
@@ -529,7 +536,6 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '6' }
       },
       completeAnswer: '72\\div12=6',
-      response: '72\\div12=6',
       id: '1'
     });
   });
@@ -555,7 +561,6 @@ describe('createCorrectResponseSession', () => {
         r2: { value: '\\frac{3}{4}' }
       },
       completeAnswer: '\\frac{3}{4}',
-      response: '\\frac{3}{4}',
       id: '1'
     });
   });

@@ -1,12 +1,6 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
 import { isResponseCorrect } from '../utils';
 
-jest.mock('@pie-lib/controller-utils', () => ({
-  partialScoring: {
-    enabled: config => config.partialScoring
-  }
-}));
-
 describe('controller', () => {
   let result, question, session, env;
 
@@ -44,6 +38,45 @@ describe('controller', () => {
       multipleCorrect: true,
       partialScoring: false
     };
+  });
+
+  describe('outcome partialScoring test', () => {
+    beforeEach(() => {
+      const rectangles = question.shapes.rectangles.concat({
+        id: '5',
+        correct: true
+      });
+      question = {
+        ...question,
+        shapes: {
+          ...question.shapes,
+          rectangles
+        }
+      };
+    });
+
+    const assertOutcome = (message, extra, sessionValue, env, expected) => {
+      it(message, async () => {
+        const result = await outcome(
+          {...question, ...extra},
+          sessionValue,
+          env
+        );
+        expect(result).toEqual(expect.objectContaining(expected));
+      });
+    };
+
+    assertOutcome('element.partialScoring = true',
+      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0.2 });
+
+    assertOutcome('element.partialScoring = false',
+      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = false',
+      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
   });
 
   describe('outcome', () => {

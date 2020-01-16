@@ -127,6 +127,70 @@ describe('controller', () => {
     });
   });
 
+  describe('outcome partialScoring test', () => {
+    const assertOutcome = (message, extra, sessionValue, env, expected) => {
+      it(message, async () => {
+        const result = await outcome({
+            ...question,
+            ...extra,
+            answers: [answer(1), answer(2), answer(3)]
+          },
+          sessionValue,
+          env
+        );
+
+        expect(result).toEqual(expect.objectContaining(expected));
+      });
+    };
+
+    assertOutcome('element.partialScoring = true',
+      { partialScoring: true },
+      {
+        value: {
+          1: 1,
+          2: 3
+        }
+      },
+      { mode: 'evaluate' }, { score: 0.5 });
+
+    assertOutcome('element.partialScoring = false',
+      { partialScoring: false },
+      {
+        value: {
+          1: 1,
+          2: 3
+        }
+      },
+      { mode: 'evaluate' }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false },
+      {
+        value: {
+          1: 1,
+          2: 3
+        }
+      },
+      {
+        mode: 'evaluate',
+        partialScoring: true
+      },
+      { score: 0.5 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = false',
+      { partialScoring: true },
+      {
+        value: {
+          1: 1,
+          2: 3
+        }
+      },
+      {
+        mode: 'evaluate',
+        partialScoring: false
+      }, { score: 0 });
+  });
+
   describe('outcome', () => {
     describe('mode: evaluate', () => {
       const returnOutcome = session => {

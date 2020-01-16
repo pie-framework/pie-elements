@@ -3,6 +3,7 @@ import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
 import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
+import filter from 'lodash/filter';
 import isEmpty from 'lodash/isEmpty';
 import {
   sinY,
@@ -11,6 +12,7 @@ import {
   FREQ_DIVIDER,
   parabolaFromTwoPoints
 } from '@pie-lib/graphing-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
 
@@ -258,16 +260,20 @@ export const partial = (answers, correctedMarks) => {
   };
 };
 
-export const getScore = (question, session) => {
+export const getScore = (question, session, env = {}) => {
   // questionPossibleAnswers contains all possible answers (correct response and alternates);
   const { answers: questionPossibleAnswers } = question || {};
 
   // student's answers without DUPLICATES having the mapped form
   const sessionAnswers = eliminateDuplicates(cloneDeep(session && session.answer));
   let correctedMarks = {};
+  const hasCorrectAnswer = filter(questionPossibleAnswers, prop => !isEmpty(prop)).length > 0;
 
-  if (!questionPossibleAnswers || isEmpty(questionPossibleAnswers)) {
-    return {};
+  if (!hasCorrectAnswer) {
+    return {
+      correctMarks: [],
+      score: 0
+    };
   }
 
   // we iterate the possible answers and set in correctedMarks
@@ -312,11 +318,18 @@ export const getScore = (question, session) => {
     });
   });
 
-  if (question.scoringType === 'dichotomous') {
-    return dichotomous(questionPossibleAnswers, correctedMarks);
-  } else {
+  const isPartialScoring = partialScoring.enabled(question, env, question.scoringType === 'partial scoring');
+
+  if (isPartialScoring) {
     return partial(questionPossibleAnswers, correctedMarks);
+  } else if (question.scoringType === 'dichotomous') {
+    return dichotomous(questionPossibleAnswers, correctedMarks);
   }
+
+  return {
+    correctMarks: [],
+    score: 0
+  };
 };
 
 export const normalize = question => ({
@@ -364,7 +377,7 @@ export function model(question, session, env) {
     };
 
     if (env.mode === 'evaluate') {
-      const result = getScore(normalizedQuestion, session);
+      const result = getScore(normalizedQuestion, session, env);
 
       base.answersCorrected = result.correctMarks;
     }
@@ -382,13 +395,13 @@ export function model(question, session, env) {
   });
 }
 
-export function outcome(model, session) {
+export function outcome(model, session, env = {}) {
   return new Promise(resolve => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }
 
-    resolve({ score: getScore(model, session).score });
+    resolve({ score: getScore(model, session, env).score });
   });
 }
 

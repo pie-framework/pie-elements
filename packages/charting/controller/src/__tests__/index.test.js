@@ -75,6 +75,93 @@ describe('filterCategories', () => {
   });
 });
 
+describe('getScore partialScoring test', () => {
+  const editCategoryEnabled = true;
+  const mkQuestion = extras => ({
+    scoringType: 'all or nothing',
+    correctAnswer: {
+      data: [
+        { label: 'A', value: 0 },
+        { label: 'B', value: 1 },
+        { label: 'C', value: 2 },
+      ]
+    },
+    data: [],
+    editCategoryEnabled,
+    ...extras
+  });
+
+  const assertGetScore = (message, question, session, env, expected) => {
+    it(message, () => {
+      expect(getScore(question, session, env)).toEqual(expect.objectContaining(expected));
+    });
+  };
+
+  assertGetScore(
+    'element.partialScoring = true',
+    mkQuestion({ scoringType: 'partial scoring' }),
+    {
+      answer: filterCategories(
+        [
+          { label: 'A', value: 0 },
+          { label: 'C', value: 2 },
+        ],
+        editCategoryEnabled
+      )
+    },
+    { mode: 'evaluate' },
+    { score: 0.33 }
+  );
+
+  assertGetScore(
+    'element.partialScoring = false',
+    mkQuestion(),
+    {
+      answer: filterCategories(
+        [
+          { label: 'A', value: 0 },
+          { label: 'C', value: 2 },
+        ],
+        editCategoryEnabled
+      )
+    },
+    { mode: 'evaluate' },
+    { score: 0 }
+  );
+
+  assertGetScore(
+    'element.partialScoring = false, env.partialScoring = true',
+    mkQuestion(),
+    {
+      answer: filterCategories(
+        [
+          { label: 'A', value: 0 },
+          { label: 'C', value: 2 },
+        ],
+        editCategoryEnabled
+      )
+    },
+    { mode: 'evaluate', partialScoring: true },
+    { score: 0.33 }
+  );
+
+  assertGetScore(
+    'element.partialScoring = true, env.partialScoring = false',
+    mkQuestion({ scoringType: 'partial scoring' }),
+    {
+      answer: filterCategories(
+        [
+          { label: 'A', value: 0 },
+          { label: 'C', value: 2 },
+        ],
+        editCategoryEnabled
+      )
+    },
+    { mode: 'evaluate', partialScoring: false },
+    { score: 0 }
+  );
+});
+
 describe('getScore all or nothing', () => {
   const scoringType = 'all or nothing';
   const editCategoryEnabled = true;

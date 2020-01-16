@@ -1,6 +1,8 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { camelizeKeys } from 'humps';
+import { partialScoring } from '@pie-lib/controller-utils';
+
 import { getAllUniqueCorrectness } from './utils';
 
 const log = debug('pie-elements:image-cloze-association:controller');
@@ -130,14 +132,14 @@ export const getPartialScore = (question, session) => {
   return parseFloat(str);
 };
 
-const getScore = (config, session) => {
-  const { partialScoring } = config;
+const getScore = (config, session, env = {}) => {
+  const isPartialScoring = partialScoring.enabled(config, env);
   const correct = isDefaultOrAltResponseCorrect(config, session);
 
-  return partialScoring ? getPartialScore(config, session) : (correct ? 1 : 0);
+  return isPartialScoring ? getPartialScore(config, session) : (correct ? 1 : 0);
 };
 
-export function outcome(config, session, env) {
+export function outcome(config, session, env = {}) {
   return new Promise(resolve => {
     log('outcome...');
     if (!session || isEmpty(session)) {

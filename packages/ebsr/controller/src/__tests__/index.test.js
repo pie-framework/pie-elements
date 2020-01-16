@@ -37,7 +37,8 @@ describe('controller', () => {
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
         promptEnabled: true,
-        lockChoiceOrder: true
+        lockChoiceOrder: true,
+        partialScoring: false
       },
       partB: {
         choiceMode: 'radio',
@@ -63,9 +64,133 @@ describe('controller', () => {
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
         promptEnabled: true,
-        lockChoiceOrder: true
+        lockChoiceOrder: true,
+        partialScoring: false
       }
     };
+  });
+
+  describe('outcome partialScoring test', () => {
+    const mkQuestion = (partAExtra, partBExtra) => ({
+      partA: {
+        choiceMode: 'radio',
+        feedbackEnabled: true,
+        choices: [
+          {
+            value: 'yellow',
+            label: 'Yellow',
+            correct: true,
+            feedback: {
+              type: 'custom',
+              value: 'foo'
+            }
+          },
+          {
+            value: 'blue',
+            label: 'Blue',
+            correct: true,
+            feedback: {
+              type: 'custom',
+              value: 'foo'
+            }
+          },
+          {
+            value: 'green',
+            label: 'Green',
+            feedback: {
+              type: 'default'
+            }
+          }
+        ],
+        choicePrefix: 'numbers',
+        prompt: `prompt ${PART_A}`,
+        promptEnabled: true,
+        lockChoiceOrder: true,
+        partialScoring: false,
+        ...partAExtra
+      },
+      partB: {
+        choiceMode: 'radio',
+        feedbackEnabled: true,
+        choices: [
+          {
+            value: 'orange',
+            label: 'Orange',
+            correct: true,
+            feedback: {
+              type: 'custom',
+              value: 'foo'
+            }
+          },
+          {
+            value: 'red',
+            label: 'Red',
+            correct: true,
+            feedback: {
+              type: 'custom',
+              value: 'foo'
+            }
+          },
+          {
+            value: 'purple',
+            label: 'Purple',
+            feedback: {
+              type: 'default'
+            }
+          }
+        ],
+        choicePrefix: 'numbers',
+        prompt: `prompt ${PART_B}`,
+        promptEnabled: true,
+        lockChoiceOrder: true,
+        partialScoring: false,
+        ...partBExtra
+      }
+    });
+
+    const assertOutcome = (message, extraA, extraB, value1, value2, env, expected) => {
+      it(message, async () => {
+        const question = mkQuestion(extraA, extraB);
+        const result = await outcome(
+          question,
+          { value: { partA: { value: value1 }, partB: { value: value2 } } },
+          env
+        );
+        expect(result.score).toEqual(expected);
+      });
+    };
+
+    assertOutcome(
+      'element.partA.partialScoring = true, element.partB.partialScoring = true',
+      { partialScoring: true }, { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      1.34
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = true, element.partB.partialScoring = false',
+      { partialScoring: true }, { partialScoring: false },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0.67
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = false, element.partB.partialScoring = true',
+      { partialScoring: false }, { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0
+    );
+
+    assertOutcome(
+      'element.partA.partialScoring = false, element.partB.partialScoring = false',
+      {}, {},
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0
+    );
   });
 
   describe('outcome', () => {

@@ -988,6 +988,67 @@ describe('partial', () => {
   assertMarksSetPropertyInvalidFormat({});
 });
 
+
+describe('getScore partialScoring test', () => {
+  const answers = {
+    a1: {
+      marks: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 2, y: 2, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ],
+    },
+    a2: {
+      marks: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 2, y: 2, type: 'point' },
+        { x: 3, y: 3, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ],
+    }
+  };
+  const question = { answers };
+  const assert = (message, extra, session, env, expected) => {
+    it(message, () => {
+      const result = getScore({ ...question, ...extra }, session, env);
+
+      expect(result).toEqual(expect.objectContaining(expected));
+    });
+  };
+
+  assert('element.partialScoring = true', { ...question, scoringType: 'partial scoring' }, {
+    answer: [
+      { x: 1, y: 1, type: 'point' },
+      { x: 4, y: 4, type: 'point' },
+      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+    ]
+  }, { mode: 'evaluate' }, { score: 0.67 });
+
+  assert('element.partialScoring = false', { ...question, scoringType: 'dichotomous' }, {
+    answer: [
+      { x: 1, y: 1, type: 'point' },
+      { x: 4, y: 4, type: 'point' },
+      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+    ]
+  }, { mode: 'evaluate' }, { score: 0 });
+
+  assert('element.partialScoring = false, env.partialScoring = true', { ...question, scoringType: 'dichotomous' }, {
+    answer: [
+      { x: 1, y: 1, type: 'point' },
+      { x: 4, y: 4, type: 'point' },
+      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+    ]
+  }, { mode: 'evaluate', partialScoring: true }, { score: 0.67 });
+
+  assert('element.partialScoring = true, env.partialScoring = false', { ...question, scoringType: 'partial scoring' }, {
+    answer: [
+      { x: 1, y: 1, type: 'point' },
+      { x: 4, y: 4, type: 'point' },
+      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+    ]
+  }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+});
+
 describe('getScore', () => {
   const assert = (question, session, expected) => {
     it('returns correct values', () => {
@@ -1046,7 +1107,7 @@ describe('getScore', () => {
     }
   );
   assert(
-    { ...question, scoringType: 'partial' },
+    { ...question, scoringType: 'partial scoring' },
     {
       answer: [
         { x: 1, y: 1, type: 'point' },
@@ -1086,7 +1147,7 @@ describe('getScore', () => {
     }
   );
   assert(
-    { ...question, scoringType: 'partial' },
+    { ...question, scoringType: 'partial scoring' },
     {
       answer: [
         { x: 1, y: 1, type: 'point' },
@@ -1126,7 +1187,7 @@ describe('getScore', () => {
     }
   );
   assert(
-    { ...question, scoringType: 'partial' },
+    { ...question, scoringType: 'partial scoring' },
     {
       answer: [
         { x: 1, y: 1, type: 'point' },
@@ -1144,12 +1205,14 @@ describe('getScore', () => {
     }
   );
 
-
   const assertInvalidQuestionAnswers = answers => {
     it(`question.answers = ${JSON.stringify(answers)}`, () => {
       const result = getScore({ answers }, {});
 
-      expect(result).toEqual({});
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0,
+      });
     });
   };
 
@@ -1161,7 +1224,10 @@ describe('getScore', () => {
     it(`question = ${JSON.stringify(question)}`, () => {
       const result = getScore(question, {});
 
-      expect(result).toEqual({});
+      expect(result).toEqual({
+        correctMarks: [],
+        score: 0,
+      });
     });
   };
 
@@ -1171,7 +1237,7 @@ describe('getScore', () => {
 
   const assertInvalidFormatQuestionAnswers = answers => {
     it(`question.answers = ${JSON.stringify(answers)}`, () => {
-      const result = getScore({ answers }, {});
+      const result = getScore({ ...question, answers, scoringType: 'dichotomous' }, {});
 
       expect(result).toEqual({
         correctMarks: [],

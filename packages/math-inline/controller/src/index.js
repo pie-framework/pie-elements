@@ -313,7 +313,6 @@ export const createCorrectResponseSession = (question, env) => {
           r2: { value: answer.substring(equalIndex + 1, answer.length) }
         },
         completeAnswer: answer,
-        response: answer, // used for simple mode
         id: '1'
       });
     } else {

@@ -3,6 +3,7 @@ import reduce from 'lodash/reduce';
 import find from 'lodash/find';
 import isEmpty from 'lodash/isEmpty';
 import debug from 'debug';
+import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('explicit-constructed-response:controller');
 
@@ -169,9 +170,9 @@ export const getScore = (config, session) => {
  * @param {boolean} env.partialScoring - is partial scoring enabled (if undefined default to true) This overrides
  *   `model.partialScoring`.
  */
-export function outcome(model, session) {
+export function outcome(model, session, env = {}) {
   return new Promise(resolve => {
-    const partialScoringEnabled = model.partialScoring || false;
+    const partialScoringEnabled = partialScoring.enabled(model, env);
     const score = getScore(model, session);
 
     resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0, empty: isEmpty(session) });
