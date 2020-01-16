@@ -408,5 +408,50 @@
     "committerDate": "2019-11-06 09:57:11 +0200",
     "isTagged": true,
     "tag": "@pie-element/graphing@3.0.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Added multiple sanity checks.",
+    "merge": null,
+    "header": "fix: Added multiple sanity checks.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2a0d806d5d91380a5bbcfb8d2a9cb330ae81dcb0",
+    "gitTags": "",
+    "committerDate": "2019-11-15 14:49:04 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.0.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Added sanity checks.",
+    "merge": null,
+    "header": "fix: Added sanity checks.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5f9abb3d555015c551206862b3f26570c03f3df8",
+    "gitTags": "",
+    "committerDate": "2019-11-14 21:51:15 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.0.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "db7cbc3b0a9897e387f7a10ff3384c1ea1adedab",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.0.7"
   }
 ]

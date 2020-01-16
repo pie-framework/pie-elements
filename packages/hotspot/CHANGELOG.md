@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.1.0...@pie-element/hotspot@4.1.2) (2019-12-18)
+
+
+### Bug Fixes
+
+* version bump only to avoid conflict ([519c0e2](https://github.com/pie-framework/pie-elements/commit/519c0e2))
+
+
+
+
+
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.0.7...@pie-element/hotspot@4.1.0) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([fb1153e](https://github.com/pie-framework/pie-elements/commit/fb1153e))
+
+
+### Features
+
+* added support for declared polygons (display them, possibility to mark/unmark as correct, possibility to drag/drop). ([85d0603](https://github.com/pie-framework/pie-elements/commit/85d0603))
+
+
+
+
+
+## [4.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.0.6...@pie-element/hotspot@4.0.7) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [4.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.0.5...@pie-element/hotspot@4.0.6) (2019-11-06)
 
 

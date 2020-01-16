@@ -133,7 +133,7 @@ describe('model', () => {
 
     it('returns correct for correctness with text nodes too', async () => {
       question = mkQuestion();
-      session = { completeAnswer: '72\\div12=6eggs' };
+      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
 
@@ -141,10 +141,9 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
-
     it('returns correct for correctness with text nodes too in symbolic', async () => {
       question = mkQuestion();
-      session = { completeAnswer: '72\\div12=6eggs' };
+      session = { completeAnswer: '72\\div12=6\\text{eggs}' };
       question.responses[0].validation = 'symbolic';
       env = { mode: 'evaluate' };
       result = await model(question, session, env);
@@ -162,11 +161,11 @@ describe('model', () => {
             id: '1',
             answer: '8-4',
             alternates: {
-              '1': '4−2',
+              '1': '4−2'
             },
             validation: 'literal'
           }
-        ],
+        ]
       });
 
       env = { mode: 'evaluate' };
@@ -196,7 +195,6 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-
     });
 
     it('returns correct for correctness in cdot vs times situations', async () => {
@@ -208,11 +206,11 @@ describe('model', () => {
             id: '1',
             answer: '8\\cdot4',
             alternates: {
-              '1': '4\\times2',
+              '1': '4\\times2'
             },
             validation: 'literal'
           }
-        ],
+        ]
       });
 
       env = { mode: 'evaluate' };
@@ -280,6 +278,132 @@ describe('model', () => {
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
     });
+
+    describe('all responses are checked', () => {
+      beforeEach(() => {
+        question = mkQuestion({
+          ...defaultModel,
+          responses: [
+            {
+              answer: '0.5+3.5',
+              validation: 'symbolic',
+              alternates: ['2']
+            },
+            { answer: 'foo', validation: 'literal', allowSpaces: true, id: '1' }
+          ]
+        });
+      });
+
+      it('4 is correct - symbolic match answer', async () => {
+        result = await model(question, { completeAnswer: '4' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+
+      it('3 is incorrect - no match', async () => {
+        result = await model(question, { completeAnswer: '3' }, env);
+        expect(result.correctness.correctness).toEqual('incorrect');
+      });
+
+      it('2 is correct - symbolic match responses[0].alternates[0]', async () => {
+        result = await model(question, { completeAnswer: '2' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+
+      it('foo is correct - literal match response[1]', async () => {
+        result = await model(question, { completeAnswer: 'foo' }, env);
+        expect(result.correctness.correctness).toEqual('correct');
+      });
+    });
+
+    it('works for incorrect latex frac command too', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        responses: [
+          {
+            alternates: {},
+            answer: '1\\frac14',
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true
+          }
+        ]
+      });
+      session = {
+        completeAnswer: '1\\frac{1}{4}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+
+      session = {
+        completeAnswer: '1\\frac1{4}'
+      };
+
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+  });
+
+  it('works for literal validation for incomplete latex command too', async () => {
+    question = mkQuestion({
+      ...defaultModel,
+      responseType: 'Advanced Multi',
+      expression: '{{response}}',
+      responses: [
+        {
+          alternates: { 1: 'p\\left(x\\right)' },
+          answer: '1\\frac14',
+          validation: 'literal',
+          id: '1',
+          allowSpaces: true
+        }
+      ]
+    });
+    session = {
+      completeAnswer: '1\\frac{1}{4}'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: '1\\frac1{4}'
+    };
+
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: 'p(x)'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
+
+    session = {
+      completeAnswer: 'p\\left(x\\right)'
+    };
+
+    env = { mode: 'evaluate' };
+    result = await model(question, session, env);
+
+    expect(result.correctness.correctness).toEqual('correct');
+    expect(result.correctness.score).toEqual('100%');
   });
 
   describe('evaluate - incorrect', () => {
@@ -345,7 +469,9 @@ describe('outcome', () => {
   });
 
   const returnOutcome = session => {
-    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(
+      session
+    )}`, async () => {
       let outcomeResult = await outcome(question, session, env);
 
       expect(outcomeResult).toEqual({ score: 0, empty: true });
@@ -414,16 +540,212 @@ describe('createCorrectResponseSession', () => {
     });
   });
 
+  it('returns correct response if role is instructor and mode is view and responseType is Simple', async () => {
+    const sess = await createCorrectResponseSession(
+      {
+        ...question,
+        responses: [
+          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
+        ],
+        responseType: 'Simple'
+      },
+      {
+        mode: 'view',
+        role: 'instructor'
+      }
+    );
+
+    expect(sess).toEqual({
+      answers: {
+        r1: { value: '' },
+        r2: { value: '\\frac{3}{4}' }
+      },
+      completeAnswer: '\\frac{3}{4}',
+      id: '1'
+    });
+  });
+
   it('returns null if mode is evaluate', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'evaluate',
+      role: 'instructor'
+    });
 
     expect(noResult).toBeNull();
   });
 
   it('returns null if role is student', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'student'
+    });
 
     expect(noResult).toBeNull();
   });
+
+  describe('PIE-188', () => {
+    it('works', async () => {
+      const question = {
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        equationEditor: 'everything',
+        responses: [
+          {
+            alternates: {},
+            answer: '1530',
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true
+          }
+        ],
+        id: '1',
+        element: 'math-inline',
+        customKeys: [
+          '<',
+          '\\le',
+          '\\ge',
+          '>',
+          '\\frac{}{}',
+          'x^{}',
+          '\\left(\\right)'
+        ]
+      };
+      const session = {
+        id: '1',
+        answers: {
+          r1: {
+            value: '\\odot'
+          }
+        },
+        completeAnswer: '\\odot'
+      };
+      const env = { mode: 'evaluate' };
+
+      try {
+        await model(question, session, env);
+      } catch (e) {
+        console.error('>>');
+        console.log(e);
+        fail(e);
+      }
+      await expect(model(question, session, env)).resolves.toMatchObject({
+        correctness: { correct: false }
+      });
+    });
+  });
 });
 
+describe('6456 - outcome', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '-12.5',
+        id: '1',
+        alternates: { '1': '-12.5\\%' },
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12\\%' } },
+      completeAnswer: '-12\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '-12.5\\%' } },
+      completeAnswer: '-12.5\\%'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
+
+
+describe('6371', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}\\ \\text{dollars}',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '4\\times10^3\\ \\text{dollars}',
+        id: '1',
+        alternates: {},
+        validation: 'symbolic'
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '4000\\ \\text{dollars}' } },
+      completeAnswer: '4000\\ \\text{dollars}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
+
+describe('3826', () => {
+  const question = {
+    equationEditor: 8,
+    responseType: 'Advanced Multi',
+    teacherInstructions: '',
+    expression: '{{response}}\\ \\text{%}',
+    responses: [
+      {
+        id: '1',
+        answer: '84\%',
+        alternates: {},
+        validation: 'literal',
+        allowSpaces: true
+      }
+    ],
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline'
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '84\\ \\text{%}' } },
+      completeAnswer: '84\\ \\text{%}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});

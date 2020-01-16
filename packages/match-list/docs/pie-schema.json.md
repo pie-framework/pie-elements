@@ -46,6 +46,10 @@ Text that will be displayed in the answer row
 
 Indicates if answers should be shuffled or not
 
+# `duplicates` (boolean)
+
+Indicates if duplicates are allowed
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

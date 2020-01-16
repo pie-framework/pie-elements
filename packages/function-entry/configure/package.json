@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/function-entry-configure",
   "private": true,
-  "version": "2.6.14",
+  "version": "2.6.16",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.7.36",
-    "@pie-ui/function-entry": "^3.2.10",
+    "@pie-ui/function-entry": "^3.2.11",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

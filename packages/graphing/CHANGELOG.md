@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.0.7...@pie-element/graphing@3.0.8) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/graphing
+
+
+
+
+
+## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.0.6...@pie-element/graphing@3.0.7) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([db7cbc3](https://github.com/pie-framework/pie-elements/commit/db7cbc3))
+
+
+
+
+
+## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.0.5...@pie-element/graphing@3.0.6) (2019-12-03)
+
+
+### Bug Fixes
+
+* Added multiple sanity checks. ([2a0d806](https://github.com/pie-framework/pie-elements/commit/2a0d806))
+* Added sanity checks. ([5f9abb3](https://github.com/pie-framework/pie-elements/commit/5f9abb3))
+
+
+
+
+
 ## [3.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.0.4...@pie-element/graphing@3.0.5) (2019-11-06)
 
 

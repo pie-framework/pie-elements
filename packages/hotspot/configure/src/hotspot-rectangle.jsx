@@ -39,7 +39,8 @@ class RectComponent extends React.Component {
       outlineColor,
       width,
       x,
-      y
+      y,
+      strokeWidth = 5
     } = this.props;
 
     return (
@@ -52,7 +53,7 @@ class RectComponent extends React.Component {
           onClick={this.handleClick}
           draggable
           stroke={outlineColor}
-          strokeWidth={correct ? 2 : 0}
+          strokeWidth={correct ? strokeWidth : 0}
           onMouseLeave={this.handleMouseLeave}
           onMouseEnter={this.handleMouseEnter}
           onDragEnd={this.handleOnDragEnd}
@@ -83,7 +84,8 @@ RectComponent.propTypes = {
   outlineColor: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired
+  y: PropTypes.number.isRequired,
+  strokeWidth: PropTypes.number
 };
 
 RectComponent.defaultProps = {

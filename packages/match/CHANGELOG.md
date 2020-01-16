@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.4...@pie-element/match@4.1.5) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/match
+
+
+
+
+
+## [4.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.3...@pie-element/match@4.1.4) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([8d9e4b4](https://github.com/pie-framework/pie-elements/commit/8d9e4b4))
+
+
+
+
+
+## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.2...@pie-element/match@4.1.3) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.1...@pie-element/match@4.1.2) (2019-11-06)
 
 

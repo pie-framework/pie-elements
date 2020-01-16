@@ -40,6 +40,9 @@ export interface MatchListPie extends PieModel {
 
   /** Indicates if answers should be shuffled or not */
   shuffled?: boolean;
+
+  /** Indicates if duplicates are allowed */
+  duplicates?: boolean;
 }
 
 /**

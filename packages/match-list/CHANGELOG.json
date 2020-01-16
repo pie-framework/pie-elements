@@ -373,5 +373,50 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/match-list@1.7.6"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PIE-201 -  store prompts and answers in session, fix",
+    "merge": null,
+    "header": "fix: PIE-201 -  store prompts and answers in session, fix",
+    "body": "controller-utils to use 0 as key",
+    "footer": null,
+    "notes": [],
+    "hash": "23802242e0bc647f929f6db4dfd4b03f0112f2fb",
+    "gitTags": "",
+    "committerDate": "2019-11-18 20:35:06 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.7.10"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d10d3decfcc4aa184a5ac649819e517fc3934571",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.7.11"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch3813: Updated docs.",
+    "merge": null,
+    "header": "fix: ch3813: Updated docs.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "b86ea00bcf27c0582de737107d931551fcd1dd9f",
+    "gitTags": " (origin/andreea/ch3813/pie-does-not-correctly-handle-a-match-list)",
+    "committerDate": "2019-12-16 13:20:38 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/match-list@1.7.11"
   }
 ]

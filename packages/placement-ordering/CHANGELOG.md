@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.7...@pie-element/placement-ordering@7.0.8) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.6...@pie-element/placement-ordering@7.0.7) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([ba09359](https://github.com/pie-framework/pie-elements/commit/ba09359))
+
+
+
+
+
+## [7.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.5...@pie-element/placement-ordering@7.0.6) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [7.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.0.4...@pie-element/placement-ordering@7.0.5) (2019-11-06)
 
 

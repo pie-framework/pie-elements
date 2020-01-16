@@ -988,5 +988,35 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.6.9"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PIE-201 -  store prompts and answers in session, fix",
+    "merge": null,
+    "header": "fix: PIE-201 -  store prompts and answers in session, fix",
+    "body": "controller-utils to use 0 as key",
+    "footer": null,
+    "notes": [],
+    "hash": "23802242e0bc647f929f6db4dfd4b03f0112f2fb",
+    "gitTags": "",
+    "committerDate": "2019-11-18 20:35:06 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.6.12"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "71e6010975a24100d7ee586440b05e70887389d3",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.6.13"
   }
 ]

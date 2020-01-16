@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.1.0...@pie-element/inline-dropdown-configure@3.1.1) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.0.2...@pie-element/inline-dropdown-configure@3.1.0) (2019-12-18)
+
+
+### Features
+
+* bump to math-rendering@^2.0.3 ([b0af226](https://github.com/pie-framework/pie-elements/commit/b0af226))
+* **markup:** sanity checked the choices [ch5774] ([2a63751](https://github.com/pie-framework/pie-elements/commit/2a63751))
+
+
+
+
+
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.0.1...@pie-element/inline-dropdown-configure@3.0.2) (2019-12-03)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.0.0...@pie-element/inline-dropdown-configure@3.0.1) (2019-11-06)
 
 

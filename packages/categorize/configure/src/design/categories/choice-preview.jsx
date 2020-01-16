@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { Choice } from '@pie-lib/drag';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
-import { HtmlAndMath } from '@pie-lib/math-rendering';
+import { HtmlAndMath } from '@pie-lib/render-ui';
 
 export class ChoicePreview extends React.Component {
   static propTypes = {

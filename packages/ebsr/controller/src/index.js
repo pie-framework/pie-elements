@@ -2,6 +2,7 @@ import defaults from './defaults';
 import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
 import _ from 'lodash';
+
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
     label: choice.label,
@@ -17,15 +18,17 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     out.rationale = null;
   }
 
-  if (env.mode === 'evaluate' && model.feedbackEnabled) {
+  if (env.mode === 'evaluate') {
     out.correct = !!choice.correct;
 
-    const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
+    if (model.feedbackEnabled) {
+      const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
 
-    if (feedbackType === 'default') {
-      out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
-    } else if (feedbackType === 'custom') {
-      out.feedback = choice.feedback.value;
+      if (feedbackType === 'default') {
+        out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
+      } else if (feedbackType === 'custom') {
+        out.feedback = choice.feedback.value;
+      }
     }
   }
 
@@ -115,11 +118,13 @@ export async function model(question, session, env, updateSession) {
   }
 
   if (!_.isEmpty(shuffledValues)) {
-    updateSession(session.id, session.element, {
-      shuffledValues
-    }).catch(e => {
-      console.error('update session failed', e);
-    });
+    if (updateSession && typeof updateSession === 'function') {
+      updateSession(session.id, session.element, {
+        shuffledValues
+      }).catch(e => {
+        console.error('update session failed', e);
+      });
+    }
   }
 
   if (normalizedQuestion.partLabels) {

@@ -16,18 +16,36 @@ function trimSpaces(str = '') {
   return str.replace(/\\ /g, '').replace(/ /g, '');
 }
 
-function processAnswerItem(answerItem = '') {
+/**
+ * TODO:
+ *
+ * We have `stringCheck` which if true disabled 'literal' and 'symbolic' so really it should be a validation method. And if it is what's the difference between it and 'literal'?
+ *
+ * We should support a equivalence option per correct response like:
+ * responses: [ { answer: '..', validation: 'symbolic', alternates: [{ value: '..', validation: 'stringCompare'}, 'abc'] } ]
+ *
+ * if option is a string it is turned into an object w/ inherited opts.
+ *
+ * This would override any shared setting at the root.
+ */
+
+function processAnswerItem(answerItem = '', isLiteral) {
   // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
   // further processing is to be added here if needed
   let newAnswerItem = answerItem.replace('−', '-');
 
   newAnswerItem = newAnswerItem.replace('\\cdot', '\\times');
 
-  // also ignore text nodes, just swap out with content
+  // also ignore text nodes, just swap out with empty string
 
-  newAnswerItem = newAnswerItem.replace(textRegex, '$1');
+  newAnswerItem = newAnswerItem.replace(textRegex, '');
 
-  return newAnswerItem;
+  newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
+
+  // eslint-disable-next-line no-useless-escape
+  newAnswerItem = newAnswerItem.replace('\\%', '').replace('\%', '').replace('%', '');
+
+  return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
 
 function containsDecimal(expression = '') {
@@ -65,6 +83,35 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
+const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /left/g, /right/g, / /g];
+
+function stripForStringCompare(answer = '') {
+  let stripped = answer;
+
+  stripTargets.forEach(stripTarget => {
+    return (stripped = stripped.replace(stripTarget, ''));
+  });
+
+  return stripped;
+}
+
+function handleStringBasedCheck(acceptedValues, answerItem) {
+  let answerValueToUse = processAnswerItem(answerItem, true);
+  let answerCorrect = false;
+
+  for (let i = 0; i < acceptedValues.length; i++) {
+    let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
+
+    answerCorrect = answerValueToUse === acceptedValueToUse;
+
+    if (answerCorrect === true) {
+      break;
+    }
+  }
+
+  return answerCorrect;
+}
+
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
@@ -77,8 +124,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
 
     if (correctResponse.validation === 'literal') {
       for (let i = 0; i < acceptedValues.length; i++) {
-        let answerValueToUse = processAnswerItem(answerItem);
-        let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+        let answerValueToUse = processAnswerItem(answerItem, true);
+        let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
         if (correctResponse.allowDecimals) {
           if (
@@ -114,14 +161,34 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         }
       }
     } else {
-      answerCorrect = areValuesEqual(
-        processAnswerItem(correctResponse.answer),
-        processAnswerItem(answerItem),
-        {
-          isLatex: true,
-          allowDecimals: correctResponse.allowDecimals
+      try {
+        for (let i = 0; i < acceptedValues.length; i++) {
+          // let answerValueToUse = processAnswerItem(answerItem);
+          // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+
+          answerCorrect = areValuesEqual(
+            processAnswerItem(acceptedValues[i]),
+            processAnswerItem(answerItem),
+            {
+              isLatex: true,
+              allowDecimals: correctResponse.allowDecimals
+            }
+          );
+          if (answerCorrect) {
+            break;
+          }
         }
-      );
+      } catch (e) {
+        log(
+          'Parse failure when evaluating math',
+          e,
+          correctResponse,
+          answerItem
+        );
+        // try to string check compare, last resort?
+        // once invalid models have been weeded out, this'll get removed.
+        answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
+      }
     }
   });
 
@@ -173,7 +240,7 @@ export const normalize = question => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question,
+  ...question
 });
 
 export function model(question, session, env) {
@@ -211,7 +278,9 @@ export function model(question, session, env) {
         env.role === 'instructor' &&
         (env.mode === 'view' || env.mode === 'evaluate')
       ) {
-        out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+        out.rationale = normalizedQuestion.rationaleEnabled
+          ? normalizedQuestion.rationale
+          : null;
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
@@ -220,7 +289,9 @@ export function model(question, session, env) {
         out.teacherInstructions = null;
       }
 
-      out.config.prompt = normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null;
+      out.config.prompt = normalizedQuestion.promptEnabled
+        ? normalizedQuestion.prompt
+        : null;
 
       log('out: ', out);
       resolve(out);

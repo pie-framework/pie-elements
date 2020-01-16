@@ -673,5 +673,20 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/inline-choice@2.10.4"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump pie-ui version",
+    "merge": null,
+    "header": "fix: bump pie-ui version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "8aff9461f1584af08a5a0c241e674c2d007408de",
+    "gitTags": "",
+    "committerDate": "2019-12-18 12:08:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/inline-choice@2.10.8"
   }
 ]

@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.8...@pie-element/charting@2.0.9) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/charting
+
+
+
+
+
+## [2.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.7...@pie-element/charting@2.0.8) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([2f120b6](https://github.com/pie-framework/pie-elements/commit/2f120b6))
+
+
+
+
+
+## [2.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.6...@pie-element/charting@2.0.7) (2019-12-03)
+
+
+### Bug Fixes
+
+* define teacherInstructions ([99855c1](https://github.com/pie-framework/pie-elements/commit/99855c1))
+
+
+
+
+
 ## [2.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.5...@pie-element/charting@2.0.6) (2019-11-06)
 
 

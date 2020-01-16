@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.0.5...@pie-element/categorize-controller@5.0.6) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-200 - use partialScoring logic from @pie-lib/controller-utils ([e072750](https://github.com/pie-framework/pie-elements/commit/e072750))
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [5.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.0.4...@pie-element/categorize-controller@5.0.5) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

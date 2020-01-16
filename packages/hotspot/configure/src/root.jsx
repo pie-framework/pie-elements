@@ -15,12 +15,13 @@ import HotspotContainer from './hotspot-container';
 
 const { Panel, toggle } = settings;
 
-class Root extends React.Component {
-  handleColorChange(type, color) {
+export class Root extends React.Component {
+  handleColorChange = (type, color) => {
     const { onColorChanged } = this.props;
     const cType = `${type}Color`;
+
     onColorChanged(cType, color);
-  }
+  };
 
   handleOnUpdateImageDimensions = (value, type) => {
     const { model: { dimensions }, onUpdateImageDimension } = this.props;
@@ -28,6 +29,7 @@ class Root extends React.Component {
       ...dimensions,
       [type]: value
     };
+
     onUpdateImageDimension(newDimensions);
   };
 
@@ -43,8 +45,8 @@ class Root extends React.Component {
       onPromptChanged,
       onRationaleChanged,
       onUpdateImageDimension,
-      onUpdateShapes,
-      onTeacherInstructionsChanged
+      onTeacherInstructionsChanged,
+      onUpdateShapes
     } = this.props;
     const {
       multipleCorrect = {},
@@ -143,7 +145,8 @@ class Root extends React.Component {
               onUpdateImageDimension={onUpdateImageDimension}
               onUpdateShapes={onUpdateShapes}
               onImageUpload={onImageUpload}
-              shapes={model.shapes.rectangles}
+              shapes={model.shapes}
+              strokeWidth={model.strokeWidth}
             />
 
             {model.imageUrl && (

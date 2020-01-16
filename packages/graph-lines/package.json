@@ -4,14 +4,14 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.0.3",
+  "version": "4.0.6",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/graph-lines": "^2.3.2"
+    "@pie-ui/graph-lines": "^2.3.7"
   },
   "author": "",
   "license": "ISC",

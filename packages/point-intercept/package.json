@@ -4,12 +4,12 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.5.5",
+  "version": "4.5.8",
   "main": "lib/index.js",
   "description": "",
   "dependencies": {
     "@pie-lib/scoring-config": "^3.5.42",
-    "@pie-ui/point-intercept": "^1.2.13"
+    "@pie-ui/point-intercept": "^1.2.16"
   },
   "author": "pie framework developers",
   "license": "ISC",

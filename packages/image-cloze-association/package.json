@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/image-cloze-association",
-  "version": "3.0.5",
+  "version": "3.0.7",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/image-cloze-association": "^1.2.9"
+    "@pie-ui/image-cloze-association": "^1.2.11"
   },
   "pie": {
     "element": "@pie-ui/image-cloze-association"

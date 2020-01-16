@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.9.8...@pie-element/function-entry@3.9.9) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/function-entry
+
+
+
+
+
+## [3.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.9.7...@pie-element/function-entry@3.9.8) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([040629f](https://github.com/pie-framework/pie-elements/commit/040629f))
+
+
+
+
+
 ## [3.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/function-entry@3.9.6...@pie-element/function-entry@3.9.7) (2019-11-06)
 
 **Note:** Version bump only for package @pie-element/function-entry

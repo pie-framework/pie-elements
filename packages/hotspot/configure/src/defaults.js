@@ -23,7 +23,8 @@ export default {
     ],
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    strokeWidth: 5
   },
   configuration: {
     multipleCorrect: {

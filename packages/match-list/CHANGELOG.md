@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.11...@pie-element/match-list@1.7.12) (2019-12-18)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.10...@pie-element/match-list@1.7.11) (2019-12-18)
+
+
+### Bug Fixes
+
+* bump pie-ui version ([d10d3de](https://github.com/pie-framework/pie-elements/commit/d10d3de))
+* ch3813: Updated docs. ([b86ea00](https://github.com/pie-framework/pie-elements/commit/b86ea00))
+
+
+
+
+
+## [1.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.7...@pie-element/match-list@1.7.10) (2019-12-03)
+
+
+### Bug Fixes
+
+* PIE-201 -  store prompts and answers in session, fix ([2380224](https://github.com/pie-framework/pie-elements/commit/2380224))
+
+
+
+
+
 ## [1.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.7.6...@pie-element/match-list@1.7.7) (2019-10-29)
 
 **Note:** Version bump only for package @pie-element/match-list

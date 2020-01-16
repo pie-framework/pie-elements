@@ -13,6 +13,7 @@ export const normalize = question => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  strokeWidth: 5,
   ...question,
 });
 
@@ -28,6 +29,7 @@ export function model(question, session, env) {
     prompt,
     shapes
   } = normalizedQuestion;
+  const { rectangles = [], polygons = [] } = shapes || {};
 
   return new Promise(resolve => {
     const out = {
@@ -39,7 +41,11 @@ export function model(question, session, env) {
       hotspotColor,
       multipleCorrect,
       partialScoring,
-      shapes,
+      shapes: {
+        ...shapes,
+        rectangles: rectangles || [],
+        polygons: polygons || []
+      },
       responseCorrect:
         env.mode === 'evaluate'
           ? isResponseCorrect(normalizedQuestion, session)
@@ -55,6 +61,7 @@ export function model(question, session, env) {
     }
 
     out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
+    out.strokeWidth = normalizedQuestion.strokeWidth;
 
     resolve(out);
   });
@@ -71,11 +78,11 @@ export const createDefaultModel = (model = {}) =>
 const getScore = (config, session, env = {}) => {
   const { answers } = session || {};
 
-  if (!config.shapes || !config.shapes.rectangles) {
+  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons)) {
     return 0;
   }
 
-  const { shapes: { rectangles, polygons } } = config;
+  const { shapes: { rectangles = [], polygons = [] } = {} } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
   if (!partialScoringEnabled) {
@@ -129,7 +136,7 @@ const returnShapesCorrect = (shapes) => {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { shapes: { rectangles, polygons } } = question;
+      const { shapes: { rectangles = [], polygons = {} } = {} } = question;
 
       const rectangleCorrect = returnShapesCorrect(rectangles);
       const polygonsCorrect = returnShapesCorrect(polygons);

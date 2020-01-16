@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/function-entry",
-  "version": "3.9.7",
+  "version": "3.9.9",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/function-entry": "^3.2.10"
+    "@pie-ui/function-entry": "^3.2.11"
   },
   "pie": {
     "element": "@pie-ui/function-entry"

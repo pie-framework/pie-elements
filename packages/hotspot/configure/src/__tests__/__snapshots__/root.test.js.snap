@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root render renders 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "multipleCorrect": Object {
+              "label": "Multiple Correct Responses",
+              "settings": true,
+            },
+            "partialScoring": Object {
+              "label": "Allow Partial Scoring",
+              "settings": false,
+            },
+            "prompt": Object {
+              "label": "Prompt",
+              "settings": true,
+            },
+            "rationale": Object {
+              "label": "Rationale",
+              "settings": true,
+            },
+            "teacherInstructions": Object {
+              "label": "Teacher Instructions",
+              "settings": true,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Properties": Object {
+              "teacherInstructionsEnabled": undefined,
+            },
+            "Settings": Object {
+              "multipleCorrect": undefined,
+              "partialScoring": false,
+              "promptEnabled": undefined,
+              "rationaleEnabled": undefined,
+            },
+          }
+        }
+        model={
+          Object {
+            "configure": Object {},
+            "dimensions": Object {
+              "height": 291,
+              "width": 410,
+            },
+            "hotspotColor": "rgba(137, 183, 244, 0.65)",
+            "hotspotList": Array [
+              "rgba(137, 183, 244, 0.65)",
+              "rgba(217, 30, 24, 0.65)",
+              "rgba(254, 241, 96, 0.65)",
+            ],
+            "imageUrl": "https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W",
+            "multipleCorrect": true,
+            "outlineColor": "blue",
+            "outlineList": Array [
+              "blue",
+              "red",
+              "yellow",
+            ],
+            "partialScoring": false,
+            "prompt": "This is the question prompt",
+            "shapes": Object {
+              "polygons": Array [
+                Object {
+                  "correct": true,
+                  "id": "3",
+                  "points": Array [
+                    Object {
+                      "x": 1,
+                      "y": 148,
+                    },
+                    Object {
+                      "x": 1,
+                      "y": 288,
+                    },
+                    Object {
+                      "x": 129,
+                      "y": 288,
+                    },
+                    Object {
+                      "x": 129,
+                      "y": 148,
+                    },
+                  ],
+                },
+                Object {
+                  "correct": false,
+                  "id": "4",
+                  "points": Array [
+                    Object {
+                      "x": 141,
+                      "y": 151,
+                    },
+                    Object {
+                      "x": 141,
+                      "y": 289,
+                    },
+                    Object {
+                      "x": 269,
+                      "y": 289,
+                    },
+                    Object {
+                      "x": 269,
+                      "y": 151,
+                    },
+                  ],
+                },
+                Object {
+                  "correct": false,
+                  "id": "5",
+                  "points": Array [
+                    Object {
+                      "x": 279,
+                      "y": 149.99999999999997,
+                    },
+                    Object {
+                      "x": 279,
+                      "y": 289,
+                    },
+                    Object {
+                      "x": 407,
+                      "y": 289,
+                    },
+                    Object {
+                      "x": 407,
+                      "y": 149.99999999999997,
+                    },
+                  ],
+                },
+              ],
+              "rectangles": Array [
+                Object {
+                  "correct": true,
+                  "height": 140,
+                  "id": "0",
+                  "width": 130,
+                  "x": 1,
+                  "y": 1,
+                },
+                Object {
+                  "height": 140,
+                  "id": "1",
+                  "width": 130,
+                  "x": 140,
+                  "y": 1,
+                },
+                Object {
+                  "height": 140,
+                  "id": "2",
+                  "width": 130,
+                  "x": 280,
+                  "y": 1,
+                },
+              ],
+            },
+          }
+        }
+        onChangeConfiguration={[MockFunction]}
+        onChangeModel={[MockFunction]}
+      />
+    }
+  >
+    <div>
+      <WithStyles(Typography)
+        variant="subheading"
+      >
+        Define Hotspot
+      </WithStyles(Typography)>
+      <WithStyles(Palette)
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        hotspotList={
+          Array [
+            "rgba(137, 183, 244, 0.65)",
+            "rgba(217, 30, 24, 0.65)",
+            "rgba(254, 241, 96, 0.65)",
+          ]
+        }
+        onHotspotColorChange={[Function]}
+        onOutlineColorChange={[Function]}
+        outlineColor="blue"
+        outlineList={
+          Array [
+            "blue",
+            "red",
+            "yellow",
+          ]
+        }
+      />
+      <WithStyles(Container)
+        dimensions={
+          Object {
+            "height": 291,
+            "width": 410,
+          }
+        }
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        imageUrl="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+        multipleCorrect={true}
+        onImageUpload={[MockFunction]}
+        onUpdateImageDimension={[MockFunction]}
+        onUpdateShapes={[MockFunction]}
+        outlineColor="blue"
+        shapes={
+          Object {
+            "polygons": Array [
+              Object {
+                "correct": true,
+                "id": "3",
+                "points": Array [
+                  Object {
+                    "x": 1,
+                    "y": 148,
+                  },
+                  Object {
+                    "x": 1,
+                    "y": 288,
+                  },
+                  Object {
+                    "x": 129,
+                    "y": 288,
+                  },
+                  Object {
+                    "x": 129,
+                    "y": 148,
+                  },
+                ],
+              },
+              Object {
+                "correct": false,
+                "id": "4",
+                "points": Array [
+                  Object {
+                    "x": 141,
+                    "y": 151,
+                  },
+                  Object {
+                    "x": 141,
+                    "y": 289,
+                  },
+                  Object {
+                    "x": 269,
+                    "y": 289,
+                  },
+                  Object {
+                    "x": 269,
+                    "y": 151,
+                  },
+                ],
+              },
+              Object {
+                "correct": false,
+                "id": "5",
+                "points": Array [
+                  Object {
+                    "x": 279,
+                    "y": 149.99999999999997,
+                  },
+                  Object {
+                    "x": 279,
+                    "y": 289,
+                  },
+                  Object {
+                    "x": 407,
+                    "y": 289,
+                  },
+                  Object {
+                    "x": 407,
+                    "y": 149.99999999999997,
+                  },
+                ],
+              },
+            ],
+            "rectangles": Array [
+              Object {
+                "correct": true,
+                "height": 140,
+                "id": "0",
+                "width": 130,
+                "x": 1,
+                "y": 1,
+              },
+              Object {
+                "height": 140,
+                "id": "1",
+                "width": 130,
+                "x": 140,
+                "y": 1,
+              },
+              Object {
+                "height": 140,
+                "id": "2",
+                "width": 130,
+                "x": 280,
+                "y": 1,
+              },
+            ],
+          }
+        }
+      />
+      <div>
+        <WithStyles(Typography)
+          variant="subheading"
+        >
+          Image Dimensions
+        </WithStyles(Typography)>
+        <div>
+          <Component
+            key="hotspot-manual-width"
+            label="Width"
+            min={0}
+            onChange={[Function]}
+            showErrorWhenOutsideRange={true}
+            value={410}
+          />
+          <Component
+            key="hotspot-manual-height"
+            label="Height"
+            min={0}
+            onChange={[Function]}
+            showErrorWhenOutsideRange={true}
+            value={291}
+          />
+        </div>
+      </div>
+    </div>
+  </ConfigLayout>
+</div>
+`;
