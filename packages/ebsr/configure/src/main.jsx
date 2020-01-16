@@ -35,30 +35,26 @@ export class Main extends React.Component {
       onConfigurationChanged
     } = this.props;
     const { partLabelType } = model;
-    const { partA, partB, ...generalConfiguration } = configuration;
+    const { partA, partB, partialScoring, scoringType, ...generalConfiguration } = configuration;
     const {
       feedback: feedbackA = {},
       choiceMode: choiceModeA = {},
       choicePrefix: choicePrefixA = {},
-      partialScoring: partialScoringA = {},
       lockChoiceOrder: lockChoiceOrderA = {},
       prompt: promptA = {},
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
-      rationale: rationaleA = {},
-      scoringType: scoringTypeA = {}
+      rationale: rationaleA = {}
     } = partA || {};
     const {
       feedback: feedbackB = {},
       choiceMode: choiceModeB = {},
       choicePrefix: choicePrefixB = {},
-      partialScoring: partialScoringB = {},
       lockChoiceOrder: lockChoiceOrderB = {},
       prompt: promptB = {},
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
-      rationale: rationaleB = {},
-      scoringType: scoringTypeB = {}
+      rationale: rationaleB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
@@ -80,7 +76,11 @@ export class Main extends React.Component {
                     generalConfiguration.partLabels.settings &&
                     toggle(generalConfiguration.partLabels.label),
                   partLabelType:
-                    model.partLabels && dropdown('', ['Numbers', 'Letters'])
+                    model.partLabels && dropdown('', ['Numbers', 'Letters']),
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  scoringType:
+                    scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
                 },
                 [`Settings ${firstPart}`]: {
                   'partA.choiceMode':
@@ -89,13 +89,8 @@ export class Main extends React.Component {
                   'partA.choicePrefix':
                     choicePrefixA.settings &&
                     radio(choicePrefixA.label, ['numbers', 'letters']),
-                  'partA.partialScoring':
-                    partialScoringA.settings && toggle(partialScoringA.label),
                   'partA.lockChoiceOrder':
                     lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
-                  'partA.scoringType':
-                    scoringTypeA.settings &&
-                    radio(scoringTypeA.label, ['auto', 'rubric'])
                 },
                 [`Properties ${firstPart}`]: {
                   'partA.feedbackEnabled': feedbackA.settings &&
@@ -118,13 +113,8 @@ export class Main extends React.Component {
                   'partB.choicePrefix':
                     choicePrefixB.settings &&
                     radio(choicePrefixB.label, ['numbers', 'letters']),
-                  'partB.partialScoring':
-                    partialScoringB.settings && toggle(partialScoringB.label),
                   'partB.lockChoiceOrder':
-                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
-                  'partA.scoringType':
-                    scoringTypeB.settings &&
-                    radio(scoringTypeB.label, ['auto', 'rubric'])
+                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label)
                 },
                 [`Properties ${secondPart}`]: {
                   'partB.feedbackEnabled':

@@ -103,22 +103,6 @@
             }
           }
         },
-        "partialScoring": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
         "prompt": {
           "title": "ConfigureProp",
           "type": "object",
@@ -136,22 +120,6 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "scoringType": {
           "title": "ConfigureProp",
           "type": "object",
           "properties": {
@@ -301,22 +269,6 @@
             }
           }
         },
-        "partialScoring": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
         "prompt": {
           "title": "ConfigureProp",
           "type": "object",
@@ -334,22 +286,6 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "scoringType": {
           "title": "ConfigureProp",
           "type": "object",
           "properties": {
@@ -400,6 +336,38 @@
       }
     },
     "partLabels": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "partialScoring": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "scoringType": {
       "title": "ConfigureProp",
       "type": "object",
       "properties": {
@@ -533,22 +501,6 @@
             }
           }
         },
-        "partialScoring": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
         "prompt": {
           "title": "ConfigureProp",
           "type": "object",
@@ -566,22 +518,6 @@
           }
         },
         "rationale": {
-          "title": "ConfigureProp",
-          "type": "object",
-          "properties": {
-            "settings": {
-              "description": "Indicates if the item has to be displayed in the Settings Panel",
-              "type": "boolean",
-              "title": "settings"
-            },
-            "label": {
-              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "scoringType": {
           "title": "ConfigureProp",
           "type": "object",
           "properties": {

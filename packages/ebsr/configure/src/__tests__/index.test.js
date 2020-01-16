@@ -5,8 +5,6 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import ReactDOM from 'react-dom';
 import defaults from '../defaults';
 import { Main } from '../main';
-import merge from 'lodash/merge';
-import MultipleChoiceConfigure from '@pie-element/multiple-choice/configure/lib';
 import EbsrConfigure from '../index';
 
 jest.mock('react-dom', () => ({
@@ -453,15 +451,11 @@ describe('main', () => {
     assertOnModelChanged(
       'changes partA - partialScoring',
       {
-        partA: {
-          partialScoring: false
-        }
+        partialScoring: false,
       },
       {
         ...model,
-        partA: {
-          partialScoring: false
-        }
+        partialScoring: false
       }
     );
     assertOnModelChanged(
@@ -481,15 +475,11 @@ describe('main', () => {
     assertOnModelChanged(
       'changes partA - scoringType',
       {
-        partA: {
-          scoringType: 'auto'
-        }
+        scoringType: 'auto'
       },
       {
         ...model,
-        partA: {
-          scoringType: 'auto'
-        }
+        scoringType: 'auto'
       }
     );
     assertOnModelChanged(
@@ -523,15 +513,11 @@ describe('main', () => {
     assertOnModelChanged(
       'changes partB - partialScoring',
       {
-        partB: {
-          partialScoring: false
-        }
+        partialScoring: false
       },
       {
         ...model,
-        partB: {
-          partialScoring: false
-        }
+        partialScoring: false
       }
     );
     assertOnModelChanged(
@@ -551,15 +537,11 @@ describe('main', () => {
     assertOnModelChanged(
       'changes partB - scoringType',
       {
-        partB: {
-          scoringType: 'auto'
-        }
+        scoringType: 'auto'
       },
       {
         ...model,
-        partB: {
-          scoringType: 'auto'
-        }
+        scoringType: 'auto'
       }
     );
   });

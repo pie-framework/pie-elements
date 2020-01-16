@@ -23,17 +23,11 @@ export interface Part {
     /** What key should be displayed before choices.  */
     choicePrefix: 'letters' | 'numbers';
 
-    /** Indicates if partial scoring should be used */
-    partialScoring?: boolean;
-
     /**  The question prompt or item stem */
     prompt: string;
 
     /**  Indicates if the prompt is enabled */
     promptEnabled?: boolean;
-
-    /** Indicates scoring type */
-    scoringType?: 'auto' | 'rubric';
 
     /** Indicates student instructions */
     studentInstructions?: string;
@@ -75,6 +69,12 @@ export interface EbsrPie extends PieModel {
 
     /** Indicates what type should have part labels if they are enabled */
     partLabelType: 'Letters' | 'Numbers';
+
+    /** Indicates if partial scoring should be used */
+    partialScoring?: boolean;
+
+    /** Indicates scoring type */
+    scoringType?: 'auto' | 'rubric';
 }
 
 interface PartConfiguration {
@@ -110,11 +110,6 @@ interface PartConfiguration {
     lockChoiceOrder?: ConfigureProp;
 
     /**
-     * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-     */
-    partialScoring?: ConfigureProp;
-
-    /**
      * Indicates whether the Edit prompt input should be displayed
      */
     prompt?: ConfigureProp;
@@ -123,11 +118,6 @@ interface PartConfiguration {
      * Rationale configuration
      */
     rationale?: ConfigureProp;
-
-    /**
-     * Indicates whether the Scoring type option should be displayed
-     */
-    scoringType?: ConfigureProp;
 
     /**
      * Student Instructions configuration
@@ -159,4 +149,14 @@ export interface EbsrConfigure extends PromptConfig {
      * Part labels (Configuration for both parts)
      */
     partLabels?: ConfigureProp;
+
+    /**
+     * Indicates whether the settings panel wil allow the author to modify settings for partial scoring
+     */
+    partialScoring?: ConfigureProp;
+
+    /**
+     * Indicates whether the Scoring type option should be displayed
+     */
+    scoringType?: ConfigureProp;
 }

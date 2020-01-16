@@ -7,7 +7,6 @@ Object {
     "choicePrefix": "numbers",
     "choices": Array [],
     "feedbackEnabled": true,
-    "partialScoring": false,
     "prompt": "Prompt A",
     "promptEnabled": true,
     "rationale": "",
@@ -21,7 +20,6 @@ Object {
     "choicePrefix": "numbers",
     "choices": Array [],
     "feedbackEnabled": true,
-    "partialScoring": false,
     "prompt": "Prompt B",
     "promptEnabled": true,
     "rationale": "",
@@ -32,6 +30,7 @@ Object {
   },
   "partLabelType": "Letters",
   "partLabels": true,
+  "partialScoring": false,
 }
 `;
 
@@ -42,7 +41,6 @@ Object {
     "choicePrefix": "numbers",
     "choices": Array [],
     "feedbackEnabled": true,
-    "partialScoring": false,
     "prompt": "Prompt A",
     "promptEnabled": true,
     "rationale": "foo",
@@ -56,7 +54,6 @@ Object {
     "choicePrefix": "numbers",
     "choices": Array [],
     "feedbackEnabled": true,
-    "partialScoring": false,
     "prompt": "Prompt B",
     "promptEnabled": true,
     "rationale": "",
@@ -67,5 +64,6 @@ Object {
   },
   "partLabelType": "Letters",
   "partLabels": true,
+  "partialScoring": false,
 }
 `;

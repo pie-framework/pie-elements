@@ -44,10 +44,6 @@ This element must be one of the following enum values:
 * `letters`
 * `numbers`
 
-## `partialScoring` (boolean)
-
-Indicates if partial scoring should be used
-
 ## `prompt` (string, required)
 
 The question prompt or item stem
@@ -55,15 +51,6 @@ The question prompt or item stem
 ## `promptEnabled` (boolean)
 
 Indicates if the prompt is enabled
-
-## `scoringType` (string, enum)
-
-Indicates scoring type
-
-This element must be one of the following enum values:
-
-* `auto`
-* `rubric`
 
 ## `studentInstructions` (string)
 
@@ -131,10 +118,6 @@ This element must be one of the following enum values:
 * `letters`
 * `numbers`
 
-## `partialScoring` (boolean)
-
-Indicates if partial scoring should be used
-
 ## `prompt` (string, required)
 
 The question prompt or item stem
@@ -142,15 +125,6 @@ The question prompt or item stem
 ## `promptEnabled` (boolean)
 
 Indicates if the prompt is enabled
-
-## `scoringType` (string, enum)
-
-Indicates scoring type
-
-This element must be one of the following enum values:
-
-* `auto`
-* `rubric`
 
 ## `studentInstructions` (string)
 
@@ -188,6 +162,19 @@ This element must be one of the following enum values:
 
 * `Letters`
 * `Numbers`
+
+# `partialScoring` (boolean)
+
+Indicates if partial scoring should be used
+
+# `scoringType` (string, enum)
+
+Indicates scoring type
+
+This element must be one of the following enum values:
+
+* `auto`
+* `rubric`
 
 # `id` (string, required)
 
@@ -279,18 +266,6 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-### `partialScoring` (object)
-
-Properties of the `partialScoring` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-#### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
 ### `prompt` (object)
 
 Properties of the `prompt` object:
@@ -306,18 +281,6 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ### `rationale` (object)
 
 Properties of the `rationale` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-#### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `scoringType` (object)
-
-Properties of the `scoringType` object:
 
 #### `settings` (boolean)
 
@@ -405,10 +368,6 @@ This element must be one of the following enum values:
 * `letters`
 * `numbers`
 
-### `partialScoring` (boolean)
-
-Indicates if partial scoring should be used
-
 ### `prompt` (string, required)
 
 The question prompt or item stem
@@ -416,15 +375,6 @@ The question prompt or item stem
 ### `promptEnabled` (boolean)
 
 Indicates if the prompt is enabled
-
-### `scoringType` (string, enum)
-
-Indicates scoring type
-
-This element must be one of the following enum values:
-
-* `auto`
-* `rubric`
 
 ### `studentInstructions` (string)
 

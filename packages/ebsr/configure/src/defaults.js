@@ -24,10 +24,6 @@ const defaultConfig = {
     settings: true,
     label: 'Lock Choice Order'
   },
-  partialScoring: {
-    settings: false,
-    label: 'Allow Partial Scoring'
-  },
   prompt: {
     settings: true,
     label: 'Prompt'
@@ -35,10 +31,6 @@ const defaultConfig = {
   rationale: {
     settings: true,
     label: 'Rationale'
-  },
-  scoringType: {
-    settings: false,
-    label: 'Scoring Type'
   },
   studentInstructions: {
     settings: false,
@@ -54,7 +46,6 @@ const partModel = base => ({
   choiceMode: 'radio',
   choices: [],
   choicePrefix: 'numbers',
-  partialScoring: false,
   prompt: 'Prompt',
   rationaleEnabled: true,
   feedbackEnabled: true,
@@ -70,19 +61,24 @@ export default {
   model: {
     partLabels: true,
     partLabelType: 'Letters',
+    partialScoring: false,
     partA: partModel({ prompt: 'Prompt A' }),
     partB: partModel({ prompt: 'Prompt B' })
   },
   configuration: {
+    partialScoring: {
+      settings: false,
+      label: 'Allow Partial Scoring'
+    },
+    scoringType: {
+      settings: false,
+      label: 'Scoring Type'
+    },
     partA: {
       ...cloneDeep(defaultConfig),
       choiceMode: {
         settings: false,
         label: 'Response Type'
-      },
-      partialScoring: {
-        settings: false,
-        label: 'Allow Partial Scoring'
       }
     },
     partB: cloneDeep(defaultConfig),
