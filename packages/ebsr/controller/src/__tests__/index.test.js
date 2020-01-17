@@ -75,7 +75,7 @@ describe('controller', () => {
   });
 
   describe('outcome partialScoring test', () => {
-    const mkQuestion = (partAExtra, partBExtra) => ({
+    const mkQuestion = extra => ({
       partA: {
         choiceMode: 'radio',
         feedbackEnabled: true,
@@ -109,9 +109,7 @@ describe('controller', () => {
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_A}`,
         promptEnabled: true,
-        lockChoiceOrder: true,
-        partialScoring: false,
-        ...partAExtra
+        lockChoiceOrder: true
       },
       partB: {
         choiceMode: 'radio',
@@ -146,54 +144,122 @@ describe('controller', () => {
         choicePrefix: 'numbers',
         prompt: `prompt ${PART_B}`,
         promptEnabled: true,
-        lockChoiceOrder: true,
-        partialScoring: false,
-        ...partBExtra
-      }
+        lockChoiceOrder: true
+      },
+      partialScoring: false,
+      ...extra
     });
 
-    const assertOutcome = (message, extraA, extraB, value1, value2, env, expected) => {
+    const assertOutcome = (message, extra, value1, value2, env, expected, expectedMax) => {
       it(message, async () => {
-        const question = mkQuestion(extraA, extraB);
+        const question = mkQuestion(extra);
         const result = await outcome(
           question,
           { value: { partA: { value: value1 }, partB: { value: value2 } } },
           env
         );
         expect(result.score).toEqual(expected);
+        expect(result.max).toEqual(expectedMax);
       });
     };
 
     assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = true',
-      { partialScoring: true }, { partialScoring: true },
-      ['yellow'], ['orange'],
+      'element.partialScoring = true, partA correct, partB correct',
+      { partialScoring: true },
+      ['yellow', 'blue'], ['orange', 'red'],
       { mode: 'evaluate' },
-      1.34
+      2,
+      2
     );
 
     assertOutcome(
-      'element.partA.partialScoring = true, element.partB.partialScoring = false',
-      { partialScoring: true }, { partialScoring: false },
-      ['yellow'], ['orange'],
+      'element.partialScoring = true, partA correct, partB partially correct',
+      { partialScoring: true },
+      ['yellow', 'blue'], ['orange'],
       { mode: 'evaluate' },
-      0.67
+      1,
+      2
     );
 
     assertOutcome(
-      'element.partA.partialScoring = false, element.partB.partialScoring = true',
-      { partialScoring: false }, { partialScoring: true },
-      ['yellow'], ['orange'],
+      'element.partialScoring = true, partA correct, partB incorrect',
+      { partialScoring: true },
+      ['yellow', 'blue'], [],
       { mode: 'evaluate' },
-      0
+      1,
+      2
     );
 
     assertOutcome(
-      'element.partA.partialScoring = false, element.partB.partialScoring = false',
-      {}, {},
+      'element.partialScoring = true, partA incorrect, partB correct',
+      { partialScoring: true },
+      [], ['orange', 'red'],
+      { mode: 'evaluate' },
+      0,
+      2
+    );
+
+    assertOutcome(
+      'element.partialScoring = true, partA partially correct, partB partially correct',
+      { partialScoring: true },
       ['yellow'], ['orange'],
       { mode: 'evaluate' },
-      0
+      0,
+      2
+    );
+
+    assertOutcome(
+      'element.partialScoring = true, partA incorrect, partB partially correct',
+      { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0,
+      2
+    );
+
+    assertOutcome(
+      'element.partialScoring = true, partA incorrect, partB incorrect',
+      { partialScoring: true },
+      ['yellow'], ['orange'],
+      { mode: 'evaluate' },
+      0,
+      2
+    );
+
+    assertOutcome(
+      'element.partialScoring = false, partA correct, partB correct',
+      { partialScoring: false },
+      ['yellow', 'blue'], ['orange', 'red'],
+      { mode: 'evaluate' },
+      1,
+      1
+    );
+
+    assertOutcome(
+      'element.partialScoring = false, partA incorrect, partB correct',
+      { partialScoring: false },
+      ['yellow'], ['orange', 'red'],
+      { mode: 'evaluate' },
+      0,
+      1
+    );
+
+    assertOutcome(
+      'element.partialScoring = false, partA correct, partB incorrect',
+      { partialScoring: false },
+      ['yellow', 'blue'], ['orange'],
+      { mode: 'evaluate' },
+      0,
+      1
+    );
+
+    assertOutcome(
+      'element.partialScoring = false, partA incorrect, partB incorrect',
+      { partialScoring: false },
+      [], [],
+      { mode: 'evaluate' },
+      0,
+      1
     );
   });
 
