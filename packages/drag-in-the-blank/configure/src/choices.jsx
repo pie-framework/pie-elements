@@ -134,7 +134,7 @@ export class Choices extends React.Component {
       model: { choices, correctResponse }
     } = this.props;
 
-    const visibleChoices = choices && choices.filter(choice => duplicates || (!duplicates && !find(correctResponse, v => v === choice.id)));
+    const visibleChoices = choices && choices.filter(choice => duplicates || (!duplicates && find(correctResponse, v => v === choice.id)));
 
     return (
       <div className={classes.design}>

@@ -66,12 +66,25 @@ exports[`Choices snapshot renders without duplicates 1`] = `
     <DragSource(WithStyles(Component))
       choice={
         Object {
-          "id": "2",
-          "value": "<div>12</div>",
+          "id": "0",
+          "value": "<div>6</div>",
         }
       }
       duplicates={false}
       key="0"
+      onClick={[Function]}
+      onRemoveChoice={[Function]}
+      targetId="0"
+    />
+    <DragSource(WithStyles(Component))
+      choice={
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        }
+      }
+      duplicates={false}
+      key="1"
       onClick={[Function]}
       onRemoveChoice={[Function]}
       targetId="0"

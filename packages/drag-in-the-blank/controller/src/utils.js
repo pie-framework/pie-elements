@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep';
 import reduce from 'lodash/reduce';
 
-const replaceHtmlRegex = /<[^>]*>?/gm;
+const replaceHtmlRegex = /<(?!img)[^>]*>?/gm;
 
 export const getAllCorrectResponses = ({ correctResponse, alternateResponses }) => {
   return reduce(correctResponse || {}, (obj, val, key) => {

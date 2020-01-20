@@ -9,7 +9,7 @@ const createElementFromHTML = (htmlString = '') => {
 };
 
 export const processMarkup = markup => {
-  const newMarkup = (markup || '').replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = (markup || '').replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   // <br> causes an infinite normalizing in editable-html for some reason
   const removedBrMarkup = newMarkup.replace(/(<br>)|(<\/br>)/g, '');
   const slateMarkup = createElementFromHTML(removedBrMarkup || '');
@@ -30,7 +30,7 @@ export const createSlateMarkup = (markup, choices) => {
   }
 
   // <br> causes an infinite normalizing in editable-html for some reason
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = markup.replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
   const removedBrMarkup = newMarkup.replace(/(<br>)|(<\/br>)/g, '');
 
   return removedBrMarkup.replace(REGEX, (match, g) => {
