@@ -151,3 +151,21 @@ exports.htmlSample = (id, element) => {
     ],
   });
 };
+
+exports.htmlAscii = (id, element) => ({
+    id,
+    element,
+    highlightChoices: true,
+    prompt: 'Select the parts that have references for Lucy',
+    text: '<p>&#8220;Lucy? Are you using your time wisely to plan your project?&#8221; Mr. Wilson asked.</p><p>&nbsp;Lucy looked a little confused at first.</p>',
+    tokens: [{
+      start: 10,
+      end: 68,
+      text: 'Lucy? Are you using your time wisely to plan your project?'
+    }, {
+      start: 106,
+      end: 145,
+      text: 'Lucy looked a little confused at first.'
+    }]
+  }
+);

@@ -369,7 +369,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
 </ConfigLayout>
 `;
 
-exports[`design snapshot tokenizer renders without html entities 1`] = `
+exports[`design snapshot tokenizer renders with html entities 1`] = `
 <ConfigLayout
   settings={
     <Panel
@@ -474,7 +474,7 @@ exports[`design snapshot tokenizer renders without html entities 1`] = `
     >
       <WithStyles(Tokenizer)
         onChange={[Function]}
-        text="<p>“Lucy?? Are you using your time wisely to plan your project?!!!” Mr. Wilson asked.</p><p>Lucy looked a little confused at first. Ã Then she grinned and proudly stated, “Why, yes I am! I plan to make a bird feeder for that tree out our window!”</p>"
+        text="<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>"
         tokens={Array []}
       />
     </Component>
