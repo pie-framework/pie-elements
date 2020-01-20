@@ -7,6 +7,8 @@ import defaults from './defaults';
 const log = debug('@pie-element:select-text:controller');
 
 const buildTokens = (tokens, evaluateMode) => {
+  tokens = tokens || [];
+
   return tokens.map(t =>
     Object.assign(
       {},
