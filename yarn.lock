@@ -2324,10 +2324,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.2.tgz#bbf43265de4ce0957c1d9f4bb81c5f0d8aa6ce65"
-  integrity sha512-He3MF3RVh9mmMI3eO1zM+zcPP/ynyPJz6OzTxEBDF9fvhLcpKeIwjcKemUaniCiDJk9ICcL5Rs7SzbbLtSN+qA==
+"@pie-ui/drawing-response@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.3.tgz#aa40ddb53be9321de509fcd2f5ea0aaea03545bf"
+  integrity sha512-ipFjm6SC89uo5vR9rAp1MsyOFo9fd/EkIDZAV8izT611rpeI29IrvrGe8nRI43P+Q+vq/n/xxGQ64zEVB0gqBg==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@mdi/js" "^3.6.95"
