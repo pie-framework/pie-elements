@@ -47,7 +47,7 @@ describe('design', () => {
       expect(w).toMatchSnapshot();
     });
 
-    it('tokenizer renders without html entities', () => {
+    it('tokenizer renders with html entities', () => {
       expect(shallow(
         <Design
           model={{

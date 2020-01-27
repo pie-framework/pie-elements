@@ -5,9 +5,10 @@ import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 const log = debug('@pie-element:select-text:controller');
-const htmlCodeRegex = /&#(\d+);/g;
 
 const buildTokens = (tokens, evaluateMode) => {
+  tokens = tokens || [];
+
   return tokens.map(t =>
     Object.assign(
       {},
@@ -133,7 +134,7 @@ export const model = (question, session, env) => {
         prompt: normalizedQuestion.promptEnabled
           ? normalizedQuestion.prompt
           : null,
-        text: normalizedQuestion.text && normalizedQuestion.text.replace(htmlCodeRegex, (match, dec) => String.fromCharCode(dec)),
+        text: normalizedQuestion.text,
         disabled: env.mode !== 'gather',
         maxSelections: normalizedQuestion.maxSelections,
         correctness,
