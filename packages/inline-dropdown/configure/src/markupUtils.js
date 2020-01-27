@@ -1,6 +1,8 @@
 import escape from 'lodash/escape';
 
-const createElementFromHTML = htmlString => {
+export const removeUnwantedCharacters = markup => markup.replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+
+export const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
   div.innerHTML = htmlString.trim();
@@ -9,7 +11,7 @@ const createElementFromHTML = htmlString => {
 };
 
 export const processMarkup = markup => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = removeUnwantedCharacters(markup);
   const slateMarkup = createElementFromHTML(newMarkup);
 
   slateMarkup.querySelectorAll('[data-type="inline_dropdown"]').forEach(s => {
@@ -22,7 +24,7 @@ export const processMarkup = markup => {
 const REGEX = /\{\{(\d+)\}\}/g;
 
 export const createSlateMarkup = (markup, choices) => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = removeUnwantedCharacters(markup);
   const createSelect = index => {
     let correctChoice = choices[index] && choices[index].find(c => c.correct);
 

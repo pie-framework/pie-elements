@@ -1,9 +1,7 @@
 import escape from 'lodash/escape';
 import isUndefined from 'lodash/isUndefined';
 
-const replaceHtmlRegex = /<[^>]*>?/gm;
-
-const createElementFromHTML = htmlString => {
+export const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
   div.innerHTML = htmlString.trim();
@@ -11,8 +9,10 @@ const createElementFromHTML = htmlString => {
   return div;
 };
 
+export const removeUnwantedCharacters = markup => markup.replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+
 export const processMarkup = markup => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = removeUnwantedCharacters(markup);
   const slateMarkup = createElementFromHTML(newMarkup);
   const choices = [];
   let index = 0;
@@ -46,7 +46,7 @@ export const processMarkup = markup => {
 const REGEX = /\{\{(\d+)\}\}/g;
 
 export const createSlateMarkup = (markup, choices, correctResponse) => {
-  const newMarkup = markup.replace(/(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+  const newMarkup = removeUnwantedCharacters(markup);
   let index = 0;
 
   return newMarkup.replace(REGEX, (match, g) => {
@@ -67,8 +67,17 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
 export const choiceIsEmpty = choice => {
   if (choice) {
     const { value = '' } = choice;
+    const domEl = createElementFromHTML(value);
 
-    return value.trim() === '' || value.replace(replaceHtmlRegex, '') === '';
+    Array.from(domEl.querySelectorAll('*')).forEach((domEl) => {
+      if (domEl.tagName !== 'IMG' && domEl.childNodes.length === 0) {
+        domEl.remove();
+      }
+    });
+
+    const newString = domEl.innerHTML.trim();
+
+    return newString === '';
   }
 
   return false;
