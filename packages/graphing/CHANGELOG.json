@@ -453,5 +453,20 @@
     "committerDate": "2019-12-18 12:08:39 +0000",
     "isTagged": true,
     "tag": "@pie-element/graphing@3.0.7"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 - add partialSCoring",
+    "merge": null,
+    "header": "feat: PIE-200 - add partialSCoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "472338eb90600b4506d2225991d09741b15e6562",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:05 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/graphing@3.1.0"
   }
 ]

@@ -73,5 +73,20 @@
     "committerDate": "2019-10-16 15:50:55 -0400",
     "isTagged": true,
     "tag": "@pie-element/image-cloze-association-controller@3.0.1"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 - add partialScoring",
+    "merge": null,
+    "header": "feat: PIE-200 - add partialScoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4eb0b47230359f35513fc852ee95cd6845c4d156",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:05 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/image-cloze-association-controller@3.1.0"
   }
 ]

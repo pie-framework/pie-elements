@@ -118,5 +118,20 @@
     "committerDate": "2019-08-19 19:37:56 +0300",
     "isTagged": true,
     "tag": "@pie-element/rubric@1.1.13"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 - partialScoring - NEEDS VERIFICATION",
+    "merge": null,
+    "header": "feat: PIE-200 - partialScoring - NEEDS VERIFICATION",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "30e396948f87c82a7b0d65d80a7f6ab7d68c2f76",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:22 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/rubric@1.2.0"
   }
 ]

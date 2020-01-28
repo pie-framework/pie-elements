@@ -453,5 +453,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-controller@3.0.6"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 add partialScoring",
+    "merge": null,
+    "header": "feat: PIE-200 add partialScoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5378cf655e676d30571c040f4ac0d2aeed3c83fa",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:05 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/explicit-constructed-response-controller@3.1.0"
   }
 ]

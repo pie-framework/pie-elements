@@ -508,5 +508,35 @@
     "committerDate": "2019-12-17 09:34:18 +0200",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-configure@3.1.0"
+  },
+  {
+    "type": "feat",
+    "scope": "test",
+    "subject": "added tests [ch5684]",
+    "merge": null,
+    "header": "feat(test): added tests [ch5684]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "097dc1366d4200c370125310b5e55f3471a7eb37",
+    "gitTags": " (origin/andrei/ch5684/drag-in-the-blank-image-in-choices)",
+    "committerDate": "2020-01-22 20:14:03 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@3.2.0"
+  },
+  {
+    "type": "feat",
+    "scope": "choices",
+    "subject": "handled html tags in choices to allow images [ch5684]",
+    "merge": null,
+    "header": "feat(choices): handled html tags in choices to allow images [ch5684]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "39b774972cc3928cd288acdf92d13892192cab45",
+    "gitTags": "",
+    "committerDate": "2020-01-20 09:47:44 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-configure@3.2.0"
   }
 ]

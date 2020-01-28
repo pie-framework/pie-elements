@@ -423,5 +423,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/match-controller@4.1.2"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 - add partialScoring",
+    "merge": null,
+    "header": "feat: PIE-200 - add partialScoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "22143100a83eb1550002f29cb1cefa5420c47efa",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:05 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/match-controller@4.2.0"
   }
 ]

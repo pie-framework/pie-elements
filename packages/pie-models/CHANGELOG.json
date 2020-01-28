@@ -1458,5 +1458,25 @@
     "committerDate": "2019-12-19 12:17:00 +0200",
     "isTagged": true,
     "tag": "@pie-element/pie-models@8.0.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch6025: fix for Dichotomous scoring type: EBSR should be scored as 1/1 if both parts are correct, and as 0/1 if either part is wrong.",
+    "merge": null,
+    "header": "fix: ch6025: fix for Dichotomous scoring type: EBSR should be scored as 1/1 if both parts are correct, and as 0/1 if either part is wrong.",
+    "body": null,
+    "footer": "BREAKING CHANGE: replaced `model.partA.partialScoring` and `model.partB.partialScoring` with `model.partialScoring`, replaced `model.partA.scoringType` and `model.partB.scoringType` with `model.scoringType`, replaced `configuration.partA.partialScoring` and `configuration.partB.partialScoring` with `configuration.partialScoring`, replaced `configuration.partA.scoringType` and `configuration.partB.scoringType` with `configuration.scoringType`\nfeat: ch4719: Scoring settings for EBSR are not correct (partial scoring).\n\nUpdated docs.",
+    "notes": [
+      {
+        "title": "BREAKING CHANGE",
+        "text": "replaced `model.partA.partialScoring` and `model.partB.partialScoring` with `model.partialScoring`, replaced `model.partA.scoringType` and `model.partB.scoringType` with `model.scoringType`, replaced `configuration.partA.partialScoring` and `configuration.partB.partialScoring` with `configuration.partialScoring`, replaced `configuration.partA.scoringType` and `configuration.partB.scoringType` with `configuration.scoringType`\nfeat: ch4719: Scoring settings for EBSR are not correct (partial scoring).\n\nUpdated docs."
+      }
+    ],
+    "hash": "98ae34d9ecfb8c3342d31402aed36951c76565fc",
+    "gitTags": " (origin/andreea/ch6025/ebsr-dichotomous-scoring-isn-t-working)",
+    "committerDate": "2019-12-11 12:04:04 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@9.0.0"
   }
 ]
