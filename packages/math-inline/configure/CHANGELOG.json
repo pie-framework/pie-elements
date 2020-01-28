@@ -1438,5 +1438,35 @@
     "committerDate": "2019-12-18 20:12:25 +0000",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@5.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump math-evaluator@0.6.7",
+    "merge": null,
+    "header": "fix: bump math-evaluator@0.6.7",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "ab954a61fec58e1da31a43eaa053a1ae6734704a",
+    "gitTags": "",
+    "committerDate": "2020-01-28 11:30:22 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@5.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump math-evaluator@^0.6.6 [ch7119]",
+    "merge": null,
+    "header": "fix: bump math-evaluator@^0.6.6 [ch7119]",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c0ed2a92b9a60f122cc95a855b9d809404381a33",
+    "gitTags": "",
+    "committerDate": "2020-01-27 11:20:25 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@5.1.1"
   }
 ]

@@ -403,5 +403,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/inline-dropdown-controller@3.0.7"
+  },
+  {
+    "type": "feat",
+    "scope": null,
+    "subject": "PIE-200 - add partialScoring",
+    "merge": null,
+    "header": "feat: PIE-200 - add partialScoring",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "f00934319f4997be598d1873855d8df863ee7df4",
+    "gitTags": "",
+    "committerDate": "2019-12-06 12:22:05 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/inline-dropdown-controller@3.1.0"
   }
 ]

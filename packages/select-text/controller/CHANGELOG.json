@@ -363,5 +363,20 @@
     "committerDate": "2019-11-18 20:35:06 +0000",
     "isTagged": true,
     "tag": "@pie-element/select-text-controller@4.0.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "html does not need to be removed on front-end (this was a fix for one issue, but it causes other issues); the main issue will be fixed on back-end (don't parse the html when loading an item to prevent token start & end issues)",
+    "merge": null,
+    "header": "fix: html does not need to be removed on front-end (this was a fix for one issue, but it causes other issues); the main issue will be fixed on back-end (don't parse the html when loading an item to prevent token start & end issues)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "73b97b739a739d0d214c6bac3e2207cc10ab275d",
+    "gitTags": "",
+    "committerDate": "2020-01-20 08:49:48 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/select-text-controller@4.0.6"
   }
 ]
