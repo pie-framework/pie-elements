@@ -2071,10 +2071,10 @@
     slate-react "^0.14.3"
     to-style "^1.3.3"
 
-"@pie-lib/math-evaluator@^0.6.6":
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.6.tgz#159f06a10ddd756cbaf6537be530487fae5a986f"
-  integrity sha512-2+5cPEYtCO9BYfI8KXWckZPA+PV8tF+7W0NOxQ+QiI1M1d7EXIX3UzQ8G1aU72xCF1XsUwJ7rUaoPNM47r9jVA==
+"@pie-lib/math-evaluator@^0.6.7":
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.7.tgz#cc257c2fc2057d24400fc45e8949516043c602e6"
+  integrity sha512-1dUdkB+fSMU75tDo2KnFiJaefewzHJA5lX5d+pTKSVX3LcH7opl2WTdM7rbmCvK1gjPE+AX1LnPI41Kh/cI69w==
   dependencies:
     "@pie-framework/math-expressions" "2.2.0"
     jsesc "^2.5.2"
