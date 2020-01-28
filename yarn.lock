@@ -1777,10 +1777,10 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-expressions@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.1.0.tgz#7e06a06f0440c0328644849133e39a78ebd3cedc"
-  integrity sha512-LUf3u0ka97Pk01RgmY101R3vV3JvU0Nm2/vdP2d+Yf0Elg7F6nst6LNmlNeayO7xa2EeX44QFeHdhq9ypyIVmQ==
+"@pie-framework/math-expressions@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-expressions/-/math-expressions-2.2.0.tgz#6e6dc16d8cb6a9ab6ee85df1937f47e87dda57c2"
+  integrity sha512-ZZDF+f2gkE2JCMbvZIxFFjU3+hqQyLQ2gzGea+JUwHC0A8vTSllOFa0Wr8QfntHLMLm5ciQ21dWe8NamygD1MQ==
   dependencies:
     babel-cli "^6.26.0"
     mathjs "^4.4.2"
@@ -2071,12 +2071,12 @@
     slate-react "^0.14.3"
     to-style "^1.3.3"
 
-"@pie-lib/math-evaluator@^0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.5.tgz#b540baf4379764178d1ad8328594f12bef93d5eb"
-  integrity sha512-7LcZRmmzVT3UiJrAAWCuEBeE6kQriek7aRyEN68R5FpCqXh8FLuxnfbysjoWI40AeE6XC1xZhTxv7T2XfjxeaQ==
+"@pie-lib/math-evaluator@^0.6.6":
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.6.tgz#159f06a10ddd756cbaf6537be530487fae5a986f"
+  integrity sha512-2+5cPEYtCO9BYfI8KXWckZPA+PV8tF+7W0NOxQ+QiI1M1d7EXIX3UzQ8G1aU72xCF1XsUwJ7rUaoPNM47r9jVA==
   dependencies:
-    "@pie-framework/math-expressions" "2.1.0"
+    "@pie-framework/math-expressions" "2.2.0"
     jsesc "^2.5.2"
     mathjs "^5.4.1"
 
