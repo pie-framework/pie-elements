@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@4.0.7...@pie-element/ebsr-controller@5.0.0) (2020-01-28)
+
+
+### Bug Fixes
+
+* ch6025: fix for Dichotomous scoring type: EBSR should be scored as 1/1 if both parts are correct, and as 0/1 if either part is wrong. ([98ae34d](https://github.com/pie-framework/pie-elements/commit/98ae34d))
+
+
+### Features
+
+* PIE-200 add partialScoring ([49f4cb5](https://github.com/pie-framework/pie-elements/commit/49f4cb5))
+
+
+### BREAKING CHANGES
+
+* replaced `model.partA.partialScoring` and `model.partB.partialScoring` with `model.partialScoring`, replaced `model.partA.scoringType` and `model.partB.scoringType` with `model.scoringType`, replaced `configuration.partA.partialScoring` and `configuration.partB.partialScoring` with `configuration.partialScoring`, replaced `configuration.partA.scoringType` and `configuration.partB.scoringType` with `configuration.scoringType`
+feat: ch4719: Scoring settings for EBSR are not correct (partial scoring).
+
+Updated docs.
+
+
+
+
+
 ## [4.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@4.0.6...@pie-element/ebsr-controller@4.0.7) (2019-12-10)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.9...@pie-element/charting@2.1.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([9b52d16](https://github.com/pie-framework/pie-elements/commit/9b52d16))
+
+
+
+
+
 ## [2.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.0.8...@pie-element/charting@2.0.9) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/charting

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.5...@pie-element/match@4.2.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([2214310](https://github.com/pie-framework/pie-elements/commit/2214310))
+
+
+
+
+
 ## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.1.4...@pie-element/match@4.1.5) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/match

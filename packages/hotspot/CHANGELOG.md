@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.1.3...@pie-element/hotspot@4.2.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([483e9b2](https://github.com/pie-framework/pie-elements/commit/483e9b2))
+
+
+
+
+
 ## [4.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.1.2...@pie-element/hotspot@4.1.3) (2020-01-09)
 
 

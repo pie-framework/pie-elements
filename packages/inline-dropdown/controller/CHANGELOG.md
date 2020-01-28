@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.0.7...@pie-element/inline-dropdown-controller@3.1.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([f009343](https://github.com/pie-framework/pie-elements/commit/f009343))
+
+
+
+
+
 ## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-controller@3.0.6...@pie-element/inline-dropdown-controller@3.0.7) (2019-12-03)
 
 

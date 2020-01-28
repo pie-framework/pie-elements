@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@5.0.10...@pie-element/ebsr-configure@6.0.0) (2020-01-28)
+
+
+### Bug Fixes
+
+* ch6025: fix for Dichotomous scoring type: EBSR should be scored as 1/1 if both parts are correct, and as 0/1 if either part is wrong. ([98ae34d](https://github.com/pie-framework/pie-elements/commit/98ae34d))
+
+
+### BREAKING CHANGES
+
+* replaced `model.partA.partialScoring` and `model.partB.partialScoring` with `model.partialScoring`, replaced `model.partA.scoringType` and `model.partB.scoringType` with `model.scoringType`, replaced `configuration.partA.partialScoring` and `configuration.partB.partialScoring` with `configuration.partialScoring`, replaced `configuration.partA.scoringType` and `configuration.partB.scoringType` with `configuration.scoringType`
+feat: ch4719: Scoring settings for EBSR are not correct (partial scoring).
+
+Updated docs.
+
+
+
+
+
 ## [5.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@5.0.9...@pie-element/ebsr-configure@5.0.10) (2020-01-09)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

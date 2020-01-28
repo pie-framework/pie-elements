@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@3.1.2...@pie-element/drag-in-the-blank-controller@3.2.0) (2020-01-28)
+
+
+### Features
+
+* **choices:** handled html tags in choices to allow images [ch5684] ([39b7749](https://github.com/pie-framework/pie-elements/commit/39b7749))
+* PIE-200 - add partialScoring ([b26ffcd](https://github.com/pie-framework/pie-elements/commit/b26ffcd))
+
+
+
+
+
 ## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-controller@3.1.1...@pie-element/drag-in-the-blank-controller@3.1.2) (2019-12-03)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.0.6...@pie-element/explicit-constructed-response-controller@3.1.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 add partialScoring ([5378cf6](https://github.com/pie-framework/pie-elements/commit/5378cf6))
+
+
+
+
+
 ## [3.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.0.5...@pie-element/explicit-constructed-response-controller@3.0.6) (2019-12-03)
 
 
