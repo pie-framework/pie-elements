@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.20...@pie-element/rubric@1.2.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - partialScoring - NEEDS VERIFICATION ([30e3969](https://github.com/pie-framework/pie-elements/commit/30e3969))
+
+
+
+
+
 ## [1.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.1.19...@pie-element/rubric@1.1.20) (2019-12-03)
 
 **Note:** Version bump only for package @pie-element/rubric

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.8...@pie-element/select-text@6.0.9) (2020-01-28)
+
+
+### Bug Fixes
+
+* html does not need to be removed on front-end (this was a fix for one issue, but it causes other issues); the main issue will be fixed on back-end (don't parse the html when loading an item to prevent token start & end issues) ([73b97b7](https://github.com/pie-framework/pie-elements/commit/73b97b7))
+
+
+
+
+
 ## [6.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.7...@pie-element/select-text@6.0.8) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/select-text

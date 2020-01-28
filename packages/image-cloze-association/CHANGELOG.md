@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.0.7...@pie-element/image-cloze-association@3.1.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([4eb0b47](https://github.com/pie-framework/pie-elements/commit/4eb0b47))
+
+
+
+
+
 ## [3.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.0.6...@pie-element/image-cloze-association@3.0.7) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

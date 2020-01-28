@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.3.0...@pie-element/explicit-constructed-response-configure@3.4.0) (2020-01-28)
+
+
+### Features
+
+* **choices:** handled html tags in choices to allow images [ch5684] ([39b7749](https://github.com/pie-framework/pie-elements/commit/39b7749))
+* **test:** added tests [ch5684] ([097dc13](https://github.com/pie-framework/pie-elements/commit/097dc13))
+
+
+
+
+
 # [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.2.1...@pie-element/explicit-constructed-response-configure@3.3.0) (2020-01-09)
 
 

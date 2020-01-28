@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.3.8...@pie-element/match-list-controller@1.4.0) (2020-01-28)
+
+
+### Features
+
+* PIE-200 - add partialScoring ([c3cb93b](https://github.com/pie-framework/pie-elements/commit/c3cb93b))
+
+
+
+
+
 ## [1.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.3.7...@pie-element/match-list-controller@1.3.8) (2019-12-03)
 
 

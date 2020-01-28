@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.0.5...@pie-element/select-text-controller@4.0.6) (2020-01-28)
+
+
+### Bug Fixes
+
+* html does not need to be removed on front-end (this was a fix for one issue, but it causes other issues); the main issue will be fixed on back-end (don't parse the html when loading an item to prevent token start & end issues) ([73b97b7](https://github.com/pie-framework/pie-elements/commit/73b97b7))
+
+
+
+
+
 ## [4.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.0.4...@pie-element/select-text-controller@4.0.5) (2019-12-03)
 
 

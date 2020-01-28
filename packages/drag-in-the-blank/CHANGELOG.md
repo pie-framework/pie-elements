@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.2.1...@pie-element/drag-in-the-blank@3.3.0) (2020-01-28)
+
+
+### Features
+
+* **choices:** handled html tags in choices to allow images [ch5684] ([39b7749](https://github.com/pie-framework/pie-elements/commit/39b7749))
+* **test:** added tests [ch5684] ([097dc13](https://github.com/pie-framework/pie-elements/commit/097dc13))
+* PIE-200 - add partialScoring ([b26ffcd](https://github.com/pie-framework/pie-elements/commit/b26ffcd))
+
+
+
+
+
 ## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.2.0...@pie-element/drag-in-the-blank@3.2.1) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

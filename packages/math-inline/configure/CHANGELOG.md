@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.1.0...@pie-element/math-inline-configure@5.1.1) (2020-01-28)
+
+
+### Bug Fixes
+
+* bump math-evaluator@^0.6.6 [ch7119] ([c0ed2a9](https://github.com/pie-framework/pie-elements/commit/c0ed2a9))
+* bump math-evaluator@0.6.7 ([ab954a6](https://github.com/pie-framework/pie-elements/commit/ab954a6))
+
+
+
+
+
 # [5.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.0.1...@pie-element/math-inline-configure@5.1.0) (2020-01-09)
 
 

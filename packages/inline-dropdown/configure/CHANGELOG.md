@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.1.1...@pie-element/inline-dropdown-configure@3.2.0) (2020-01-28)
+
+
+### Features
+
+* **choices:** handled html tags in choices to allow images [ch5684] ([39b7749](https://github.com/pie-framework/pie-elements/commit/39b7749))
+* **test:** added tests [ch5684] ([097dc13](https://github.com/pie-framework/pie-elements/commit/097dc13))
+
+
+
+
+
 ## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.1.0...@pie-element/inline-dropdown-configure@3.1.1) (2019-12-18)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-configure
