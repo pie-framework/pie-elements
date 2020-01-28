@@ -33,9 +33,5 @@ exports.model = (id, element) => ({
       validation: 'literal'
     }
   ],
-  customKeys: [
-    '\\left(\\right)',
-    '\\frac{}{}',
-    'x\\frac{}{}'
-  ]
+  customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}']
 });

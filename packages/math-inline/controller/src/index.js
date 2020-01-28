@@ -43,7 +43,10 @@ function processAnswerItem(answerItem = '', isLiteral) {
   newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
 
   // eslint-disable-next-line no-useless-escape
-  newAnswerItem = newAnswerItem.replace('\\%', '').replace('\%', '').replace('%', '');
+  newAnswerItem = newAnswerItem
+    .replace('\\%', '')
+    .replace('%', '')
+    .replace('%', '');
 
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
@@ -83,7 +86,18 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [/{/g, /}/g, /\[/g, /]/g, /\\ /g, /\\/g, /\\s/g, /left/g, /right/g, / /g];
+const stripTargets = [
+  /{/g,
+  /}/g,
+  /\[/g,
+  /]/g,
+  /\\ /g,
+  /\\/g,
+  /\\s/g,
+  /left/g,
+  /right/g,
+  / /g
+];
 
 function stripForStringCompare(answer = '') {
   let stripped = answer;
@@ -299,24 +313,56 @@ export function model(question, session, env) {
   });
 }
 
-// This method supports simple equations only, eg: 3x + 1 = 4
-export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
-    if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { responses } = question;
-      const { answer } = responses ? responses[0] : {};
-      const equalIndex = answer && answer.indexOf('=');
+const escape = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
-      resolve({
-        answers: {
-          r1: { value: answer.substring(0, equalIndex) },
-          r2: { value: answer.substring(equalIndex + 1, answer.length) }
-        },
-        completeAnswer: answer,
-        id: '1'
-      });
-    } else {
-      resolve(null);
+export const createCorrectResponseSession = (question, env) => {
+  if (env.mode === 'evaluate' || env.role !== 'instructor') {
+    // eslint-disable-next-line no-console
+    console.error(
+      'can not create correct response session if mode is evaluate or role is not instructor'
+    );
+
+    return Promise.resolve(null);
+  }
+
+  return new Promise((resolve, reject) => {
+    const { responses } = question;
+    const { answer } = responses ? responses[0] : {};
+    const e = question.expression;
+    const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
+
+    const o = escape(e).split(RESPONSE_TOKEN);
+
+    const to = o.map(t => {
+      if (t === '') {
+        return '';
+      } else {
+        const out = t.replace(/\s+/g, (a, b, c) => {
+          return '\\s*';
+        });
+        return out;
+      }
+    });
+
+    const tt = to.join('(.*)');
+
+    const m = answer.match(new RegExp(tt));
+
+    const count = o.length - 1;
+    if (!m) {
+      reject(new Error(`can not find match: ${o} in ${answer}`));
+      return;
     }
+
+    m.shift();
+    const answers = {};
+    for (var i = 0; i < count; i++) {
+      answers[`r${i + 1}`] = { value: m[i].trim() };
+    }
+    resolve({
+      answers,
+      completeAnswer: answer,
+      id: question.id
+    });
   });
 };
