@@ -534,7 +534,7 @@ describe('createCorrectResponseSession', () => {
   });
 
   const val = value => ({ value });
-  describe.only.each`
+  describe.each`
     expression                                      | cr                                | expected
     ${'{{  response}}'}                             | ${'1'}                            | ${{ r1: val('1') }}
     ${'{{response}} = {{response}}'}                | ${'1 = 1'}                        | ${{ r1: val('1'), r2: val('1') }}
@@ -557,8 +557,8 @@ describe('createCorrectResponseSession', () => {
         crs = await createCorrectResponseSession(q, env);
       } catch (e) {
         console.error(e);
+        fail(e);
       }
-      console.log('crs:', crs);
     });
 
     it(`${JSON.stringify(expected)} correct answers`, () => {
@@ -575,7 +575,8 @@ describe('createCorrectResponseSession', () => {
 
     expect(sess).toMatchObject({
       answers: {
-        r1: { value: answer }
+        r1: val('72\\div12'),
+        r2: val('6')
       },
       completeAnswer: answer,
       id: '1'
@@ -586,6 +587,7 @@ describe('createCorrectResponseSession', () => {
     const sess = await createCorrectResponseSession(
       {
         ...question,
+        expression: '{{response}}',
         responses: [
           { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
         ],
