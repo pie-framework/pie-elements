@@ -326,43 +326,47 @@ export const createCorrectResponseSession = (question, env) => {
   }
 
   return new Promise((resolve, reject) => {
-    const { responses } = question;
-    const { answer } = responses ? responses[0] : {};
-    const e = question.expression;
-    const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
+    try {
+      const { responses } = question;
+      const { answer } = responses ? responses[0] : {};
+      const e = question.expression;
+      const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
 
-    const o = escape(e).split(RESPONSE_TOKEN);
+      const o = escape(e).split(RESPONSE_TOKEN);
 
-    const to = o.map(t => {
-      if (t === '') {
-        return '';
-      } else {
-        const out = t.replace(/\s+/g, (a, b, c) => {
-          return '\\s*';
-        });
-        return out;
+      const to = o.map(t => {
+        if (t === '') {
+          return '';
+        } else {
+          const out = t.replace(/\s+/g, () => {
+            return '\\s*';
+          });
+          return out;
+        }
+      });
+
+      const tt = to.join('(.*)');
+
+      const m = answer.match(new RegExp(tt));
+
+      const count = o.length - 1;
+      if (!m) {
+        reject(new Error(`can not find match: ${o} in ${answer}`));
+        return;
       }
-    });
 
-    const tt = to.join('(.*)');
-
-    const m = answer.match(new RegExp(tt));
-
-    const count = o.length - 1;
-    if (!m) {
-      reject(new Error(`can not find match: ${o} in ${answer}`));
-      return;
+      m.shift();
+      const answers = {};
+      for (var i = 0; i < count; i++) {
+        answers[`r${i + 1}`] = { value: m[i].trim() };
+      }
+      resolve({
+        answers,
+        completeAnswer: answer,
+        id: question.id
+      });
+    } catch (e) {
+      reject(e);
     }
-
-    m.shift();
-    const answers = {};
-    for (var i = 0; i < count; i++) {
-      answers[`r${i + 1}`] = { value: m[i].trim() };
-    }
-    resolve({
-      answers,
-      completeAnswer: answer,
-      id: question.id
-    });
   });
 };
