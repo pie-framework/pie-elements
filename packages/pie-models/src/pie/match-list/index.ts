@@ -38,7 +38,7 @@ export interface MatchListPie extends PieModel {
   /** The answer rows that are going to be displayed.  */
   answers: Answer[];
 
-  /** Indicates if answers should be locked in order according to the model or if they should be shuffled
+  /** Indicates if answers should be locked in order according to the model or if they should be shuffed
    * true - order is respected according to model
    * false - order is shuffled */
   lockChoiceOrder?: boolean;
