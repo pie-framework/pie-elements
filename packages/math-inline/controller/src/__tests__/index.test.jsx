@@ -18,11 +18,7 @@ const defaultModel = {
       validation: 'literal'
     }
   ],
-  customKeys: [
-    '\\left(\\right)',
-    '\\frac{}{}',
-    'x\\frac{}{}'
-  ],
+  customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   id: 1
 };
 
@@ -484,7 +480,9 @@ describe('outcome', () => {
 });
 
 describe('createCorrectResponseSession', () => {
+  const answer = '72\\div12=6';
   const question = {
+    id: '1',
     responseType: 'Advanced Multi',
     expression: '{{response}} = {{response}}',
     prompt:
@@ -492,7 +490,7 @@ describe('createCorrectResponseSession', () => {
     responses: [
       {
         id: '1',
-        answer: '72\\div12=6',
+        answer,
         alternates: {
           '1': '6=72\\div12]',
           '2': '\\frac{72}{12}=6',
@@ -501,41 +499,86 @@ describe('createCorrectResponseSession', () => {
         validation: 'literal'
       }
     ],
-    customKeys: [
-      '\\left(\\right)',
-      '\\frac{}{}',
-      'x\\frac{}{}'
-    ]
+    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}']
   };
 
-  it('returns correct response if role is instructor and mode is gather', async () => {
-    const sess = await createCorrectResponseSession(question, {
-      mode: 'gather',
-      role: 'instructor'
-    });
+  describe('7165', () => {
+    it('returns whole answer', async () => {
+      const question = {
+        element: 'math-inline',
+        responseType: 'Advanced Multi',
+        expression: '{{response}}',
+        responses: [
+          {
+            alternates: {},
+            answer: '2\\times7',
+            validation: 'literal',
+            id: '1',
+            allowSpaces: true
+          }
+        ],
+        id: '1'
+      };
 
-    expect(sess).toEqual({
-      answers: {
-        r1: { value: '72\\div12' },
-        r2: { value: '6' }
-      },
-      completeAnswer: '72\\div12=6',
-      id: '1'
+      const ca = question.responses[0].answer;
+      const cs = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+      expect(cs).toMatchObject({
+        id: '1',
+        completeAnswer: ca,
+        answers: { r1: { value: ca } }
+      });
     });
   });
 
-  it('returns correct response if role is instructor and mode is view', async () => {
-    const sess = await createCorrectResponseSession(question, {
-      mode: 'view',
-      role: 'instructor'
+  const val = value => ({ value });
+  describe.each`
+    expression                                      | cr                                | expected
+    ${'{{  response}}'}                             | ${'1'}                            | ${{ r1: val('1') }}
+    ${'{{response}} = {{response}}'}                | ${'1 = 1'}                        | ${{ r1: val('1'), r2: val('1') }}
+    ${'{{response}} + {{response}} = {{response}}'} | ${'1 + 2 = 3'}                    | ${{ r1: val('1'), r2: val('2'), r3: val('3') }}
+    ${'{{response}} = {{response}}'}                | ${'\\frac{2}{3} + 2 = \\sqrt{9}'} | ${{ r1: val('\\frac{2}{3} + 2'), r2: val('\\sqrt{9}') }}
+    ${'{{response}} = {{response}}'}                | ${'72\\div12=6'}                  | ${{ r1: val('72\\div12'), r2: val('6') }}
+    ${'{{response}} = {{response}}'}                | ${'72\\div12  =  6'}              | ${{ r1: val('72\\div12'), r2: val('6') }}
+    ${'{{response}} = {{response}} / {{response}}'} | ${'72\\div12  =  6/2'}            | ${{ r1: val('72\\div12'), r2: val('6'), r3: val('2') }}
+  `('$expression + $cr', ({ expression, cr, expected }) => {
+    let crs;
+    let env;
+    let q;
+    beforeEach(async () => {
+      try {
+        env = { mode: 'gather', role: 'instructor' };
+        q = {
+          expression,
+          responses: [{ answer: cr }]
+        };
+        crs = await createCorrectResponseSession(q, env);
+      } catch (e) {
+        console.error(e);
+        fail(e);
+      }
     });
 
-    expect(sess).toEqual({
+    it(`${JSON.stringify(expected)} correct answers`, () => {
+      expect(crs.answers).toEqual(expected);
+    });
+  });
+
+  it.each`
+    mode        | role
+    ${'gather'} | ${'instructor'}
+    ${'view'}   | ${'instructor'}
+  `('returns correctResponse for $mode + $role', async ({ mode, role }) => {
+    const sess = await createCorrectResponseSession(question, { mode, role });
+
+    expect(sess).toMatchObject({
       answers: {
-        r1: { value: '72\\div12' },
-        r2: { value: '6' }
+        r1: val('72\\div12'),
+        r2: val('6')
       },
-      completeAnswer: '72\\div12=6',
+      completeAnswer: answer,
       id: '1'
     });
   });
@@ -544,6 +587,7 @@ describe('createCorrectResponseSession', () => {
     const sess = await createCorrectResponseSession(
       {
         ...question,
+        expression: '{{response}}',
         responses: [
           { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
         ],
@@ -555,10 +599,9 @@ describe('createCorrectResponseSession', () => {
       }
     );
 
-    expect(sess).toEqual({
+    expect(sess).toMatchObject({
       answers: {
-        r1: { value: '' },
-        r2: { value: '\\frac{3}{4}' }
+        r1: { value: '\\frac{3}{4}' }
       },
       completeAnswer: '\\frac{3}{4}',
       id: '1'
@@ -681,7 +724,6 @@ describe('6456 - outcome', () => {
   });
 });
 
-
 describe('6371', () => {
   const question = {
     equationEditor: 8,
@@ -725,7 +767,7 @@ describe('3826', () => {
     responses: [
       {
         id: '1',
-        answer: '84\%',
+        answer: '84%',
         alternates: {},
         validation: 'literal',
         allowSpaces: true
