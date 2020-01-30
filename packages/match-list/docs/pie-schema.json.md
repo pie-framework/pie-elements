@@ -42,9 +42,11 @@ Identifier for an answer row
 
 Text that will be displayed in the answer row
 
-# `shuffled` (boolean)
+# `lockChoiceOrder` (boolean)
 
-Indicates if answers should be shuffled or not
+Indicates if answers should be locked in order according to the model or if they should be shuffed
+true - order is respected according to model
+false - order is shuffled
 
 # `duplicates` (boolean)
 

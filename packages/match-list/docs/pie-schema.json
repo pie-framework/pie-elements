@@ -75,10 +75,10 @@
       },
       "title": "answers"
     },
-    "shuffled": {
-      "description": "Indicates if answers should be shuffled or not",
+    "lockChoiceOrder": {
+      "description": "Indicates if answers should be locked in order according to the model or if they should be shuffed\ntrue - order is respected according to model\nfalse - order is shuffled",
       "type": "boolean",
-      "title": "shuffled"
+      "title": "lockChoiceOrder"
     },
     "duplicates": {
       "description": "Indicates if duplicates are allowed",
