@@ -18,23 +18,23 @@ import {
 } from '../index';
 
 jest.mock('@pie-lib/graphing-utils', () => ({
-    sinY: jest.fn(),
-    buildDataPoints: (min, max, root, edge) => ([min, root, edge, max]),
-    getAmplitudeAndFreq: () => ({
-      amplitude: 0,
-      freq: 1
-    }),
-    parabolaFromTwoPoints: jest.fn(),
-    FREQ_DIVIDER: 0
-  }
-));
+  sinY: jest.fn(),
+  buildDataPoints: (min, max, root, edge) => [min, root, edge, max],
+  getAmplitudeAndFreq: () => ({
+    amplitude: 0,
+    freq: 1
+  }),
+  parabolaFromTwoPoints: jest.fn(),
+  FREQ_DIVIDER: 0
+}));
 
-describe('controller', () => {
-});
+describe('controller', () => {});
 
 describe('equalPoint', () => {
   const assert = (pointA, pointB, expected) => {
-    it(`${pointA.x},${pointA.y} & ${pointB.x},${pointB.y} ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`${pointA.x},${pointA.y} & ${pointB.x},${pointB.y} ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalPoint(pointA, pointB);
 
       expect(result).toEqual(expected);
@@ -47,63 +47,129 @@ describe('equalPoint', () => {
 
 describe('equalSegment', () => {
   const assert = (s1, s2, expected) => {
-    it(`[(${s1.from.x},${s1.from.y}), (${s1.to.x},${s1.to.y})], [(${s2.from.x},${s2.from.y}), (${s2.to.x},${s2.to.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${s1.from.x},${s1.from.y}), (${s1.to.x},${s1.to.y})], [(${
+      s2.from.x
+    },${s2.from.y}), (${s2.to.x},${s2.to.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalSegment(s1, s2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 10, y: 0 }, to: { x: 1, y: 0 } }, false);
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 10, y: 0 }, to: { x: 1, y: 0 } },
+    false
+  );
 });
 
 describe('equalVector', () => {
   const assert = (v1, v2, expected) => {
-    it(`[(${v1.from.x},${v1.from.y}), (${v1.to.x},${v1.to.y})], [(${v2.from.x},${v2.from.y}), (${v2.to.x},${v2.to.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${v1.from.x},${v1.from.y}), (${v1.to.x},${v1.to.y})], [(${
+      v2.from.x
+    },${v2.from.y}), (${v2.to.x},${v2.to.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalVector(v1, v2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } }, false);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 10, y: 0 }, to: { x: 1, y: 0 } }, false);
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } },
+    false
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 10, y: 0 }, to: { x: 1, y: 0 } },
+    false
+  );
 });
 
 describe('equalLine', () => {
   const assert = (l1, l2, expected) => {
-    it(`[(${l1.from.x},${l1.from.y}), (${l1.to.x},${l1.to.y})], [(${l2.from.x},${l2.from.y}), (${l2.to.x},${l2.to.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${l1.from.x},${l1.from.y}), (${l1.to.x},${l1.to.y})], [(${
+      l2.from.x
+    },${l2.from.y}), (${l2.to.x},${l2.to.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalLine(l1, l2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 3, y: 0 }, to: { x: 1, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 10, y: 10 }, to: { x: 1, y: 0 } }, false);
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 3, y: 0 }, to: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 10, y: 10 }, to: { x: 1, y: 0 } },
+    false
+  );
 });
 
 describe('equalRay', () => {
   const assert = (r1, r2, expected) => {
-    it(`[(${r1.from.x},${r1.from.y}), (${r1.to.x},${r1.to.y})], [(${r2.from.x},${r2.from.y}), (${r2.to.x},${r2.to.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${r1.from.x},${r1.from.y}), (${r1.to.x},${r1.to.y})], [(${
+      r2.from.x
+    },${r2.from.y}), (${r2.to.x},${r2.to.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalRay(r1, r2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 0, y: 0 }, to: { x: 10, y: 0 } }, true);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 3, y: 0 }, to: { x: 1, y: 0 } }, false);
-  assert({ from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, { from: { x: 10, y: 10 }, to: { x: 1, y: 0 } }, false);
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 10, y: 0 } },
+    true
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 3, y: 0 }, to: { x: 1, y: 0 } },
+    false
+  );
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 10, y: 10 }, to: { x: 1, y: 0 } },
+    false
+  );
 });
 
 describe('equalPolygon', () => {
   const assert = (pointsA, pointsB, expected) => {
-    it(`[${pointsA.forEach(p => `(${p.x}, ${p.y})`)}], [${pointsB.forEach(p => `(${p.x}, ${p.y})`)}] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[${pointsA.forEach(p => `(${p.x}, ${p.y})`)}], [${pointsB.forEach(
+      p => `(${p.x}, ${p.y})`
+    )}] ${expected ? 'are' : 'are not'} equal`, () => {
       const result = equalPolygon(pointsA, pointsB);
 
       expect(result).toEqual(expected);
@@ -111,63 +177,131 @@ describe('equalPolygon', () => {
   };
 
   assert(
-    [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 }],
-    [{ x: 1, y: 1 }, { x: 0, y: 0 }, { x: 2, y: 2 }],
+    [
+      { x: 0, y: 0 },
+      { x: 1, y: 1 },
+      { x: 2, y: 2 }
+    ],
+    [
+      { x: 1, y: 1 },
+      { x: 0, y: 0 },
+      { x: 2, y: 2 }
+    ],
     true
   );
 
   assert(
-    [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 }],
-    [{ x: 1, y: 1 }, { x: 0, y: 0 }, { x: 2, y: 2 }, { x: 0, y: 0 }, { x: 2, y: 2 }],
+    [
+      { x: 0, y: 0 },
+      { x: 1, y: 1 },
+      { x: 2, y: 2 }
+    ],
+    [
+      { x: 1, y: 1 },
+      { x: 0, y: 0 },
+      { x: 2, y: 2 },
+      { x: 0, y: 0 },
+      { x: 2, y: 2 }
+    ],
     true
   );
 
   assert(
-    [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 }],
-    [{ x: 1, y: 1 }, { x: 0, y: 0 }, { x: 2, y: 2 }, { x: 3, y: 0 }, { x: 2, y: 2 }],
+    [
+      { x: 0, y: 0 },
+      { x: 1, y: 1 },
+      { x: 2, y: 2 }
+    ],
+    [
+      { x: 1, y: 1 },
+      { x: 0, y: 0 },
+      { x: 2, y: 2 },
+      { x: 3, y: 0 },
+      { x: 2, y: 2 }
+    ],
     false
   );
 });
 
 describe('equalCircle', () => {
   const assert = (c1, c2, expected) => {
-    it(`[(${c1.root.x},${c1.root.y}), (${c1.edge.x},${c1.edge.y})], [(${c2.root.x},${c2.root.y}), (${c2.edge.x},${c2.edge.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${c1.root.x},${c1.root.y}), (${c1.edge.x},${c1.edge.y})], [(${
+      c2.root.x
+    },${c2.root.y}), (${c2.edge.x},${c2.edge.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalCircle(c1, c2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, true);
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, { root: { x: 0, y: 0 }, edge: { x: -1, y: 0 } }, true);
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, { root: { x: 0, y: 0 }, edge: { x: 0, y: -1 } }, true);
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, { root: { x: 0, y: 0 }, edge: { x: 0, y: 1 } }, true);
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } }, { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, false);
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    { root: { x: 0, y: 0 }, edge: { x: -1, y: 0 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    { root: { x: 0, y: 0 }, edge: { x: 0, y: -1 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    { root: { x: 0, y: 0 }, edge: { x: 0, y: 1 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 0 } },
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    false
+  );
 });
 
 describe('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
-    it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${sine1.edge.y})], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${sine2.edge.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
+      sine1.edge.y
+    })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
+      sine2.edge.y
+    })] ${expected ? 'are' : 'are not'} equal`, () => {
       const result = equalSine(sine1, sine2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }, true);
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
+    true
+  );
   // TODO
 });
 
 describe('equalParabola', () => {
   const assert = (p1, p2, expected) => {
-    it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${p2.root.x},${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${
+      p2.root.x
+    },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalParabola(p1, p2);
 
       expect(result).toEqual(expected);
     });
   };
 
-  assert({ root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }, false);
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
+    false
+  );
   // TODO
 });
 
@@ -181,7 +315,10 @@ describe('eliminateDuplicates', () => {
   };
 
   assert(
-    [{ type: 'point', x: 0, y: 0 }, { type: 'point', x: 0, y: 0 }],
+    [
+      { type: 'point', x: 0, y: 0 },
+      { type: 'point', x: 0, y: 0 }
+    ],
     {
       point: [{ type: 'point', x: 0, y: 0 }],
       segment: [],
@@ -197,11 +334,14 @@ describe('eliminateDuplicates', () => {
   );
 
   assert(
-    [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }, {
-      type: 'segment',
-      to: { x: 0, y: 0 },
-      from: { x: 1, y: 1 }
-    }],
+    [
+      { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+      {
+        type: 'segment',
+        to: { x: 0, y: 0 },
+        from: { x: 1, y: 1 }
+      }
+    ],
     {
       point: [],
       segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
@@ -227,11 +367,14 @@ describe('eliminateDuplicates', () => {
       segment: [],
       line: [],
       ray: [],
-      vector: [{ type: 'vector', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }, {
-        type: 'vector',
-        from: { x: 0, y: 0 },
-        to: { x: 12, y: 1 }
-      }],
+      vector: [
+        { type: 'vector', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+        {
+          type: 'vector',
+          from: { x: 0, y: 0 },
+          to: { x: 12, y: 1 }
+        }
+      ],
       polygon: [],
       circle: [],
       sine: [],
@@ -249,11 +392,14 @@ describe('eliminateDuplicates', () => {
     {
       point: [],
       segment: [],
-      line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
-        type: 'line',
-        from: { x: 0, y: 0 },
-        to: { x: 12, y: 1 }
-      }],
+      line: [
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+        {
+          type: 'line',
+          from: { x: 0, y: 0 },
+          to: { x: 12, y: 1 }
+        }
+      ],
       ray: [],
       vector: [],
       polygon: [],
@@ -274,11 +420,14 @@ describe('eliminateDuplicates', () => {
       point: [],
       segment: [],
       line: [],
-      ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }, {
-        type: 'ray',
-        from: { x: 0, y: 0 },
-        to: { x: 12, y: 0 }
-      }],
+      ray: [
+        { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } },
+        {
+          type: 'ray',
+          from: { x: 0, y: 0 },
+          to: { x: 12, y: 0 }
+        }
+      ],
       vector: [],
       polygon: [],
       circle: [],
@@ -290,9 +439,32 @@ describe('eliminateDuplicates', () => {
 
   assert(
     [
-      { type: 'polygon', points: [{ x: 1, y: 0 }, { x: 1, y: 1 }, { x: 1, y: 2 }] },
-      { type: 'polygon', points: [{ x: 1, y: 0 }, { x: 1, y: 0 }, { x: 1, y: 1 }, { x: 1, y: 1 }, { x: 1, y: 2 }] },
-      { type: 'polygon', points: [{ x: 1, y: 0 }, { x: 1, y: 0 }, { x: 1, y: 0 }] }
+      {
+        type: 'polygon',
+        points: [
+          { x: 1, y: 0 },
+          { x: 1, y: 1 },
+          { x: 1, y: 2 }
+        ]
+      },
+      {
+        type: 'polygon',
+        points: [
+          { x: 1, y: 0 },
+          { x: 1, y: 0 },
+          { x: 1, y: 1 },
+          { x: 1, y: 1 },
+          { x: 1, y: 2 }
+        ]
+      },
+      {
+        type: 'polygon',
+        points: [
+          { x: 1, y: 0 },
+          { x: 1, y: 0 },
+          { x: 1, y: 0 }
+        ]
+      }
     ],
     {
       point: [],
@@ -300,10 +472,24 @@ describe('eliminateDuplicates', () => {
       line: [],
       ray: [],
       vector: [],
-      polygon: [{ type: 'polygon', points: [{ x: 1, y: 0 }, { x: 1, y: 1 }, { x: 1, y: 2 }] }, {
-        type: 'polygon',
-        points: [{ x: 1, y: 0 }, { x: 1, y: 0 }, { x: 1, y: 0 }]
-      }],
+      polygon: [
+        {
+          type: 'polygon',
+          points: [
+            { x: 1, y: 0 },
+            { x: 1, y: 1 },
+            { x: 1, y: 2 }
+          ]
+        },
+        {
+          type: 'polygon',
+          points: [
+            { x: 1, y: 0 },
+            { x: 1, y: 0 },
+            { x: 1, y: 0 }
+          ]
+        }
+      ],
       circle: [],
       sine: [],
       parabola: []
@@ -336,7 +522,7 @@ describe('eliminateDuplicates', () => {
     [
       { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
       { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
-      { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: 1 } },
+      { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: 1 } }
     ],
     {
       point: [],
@@ -356,7 +542,7 @@ describe('eliminateDuplicates', () => {
   assert(
     [
       { type: 'parabola', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-      { type: 'parabola', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
+      { type: 'parabola', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }
     ],
     {
       point: [],
@@ -367,11 +553,14 @@ describe('eliminateDuplicates', () => {
       polygon: [],
       circle: [],
       sine: [],
-      parabola: [{ type: 'parabola', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }, {
-        type: 'parabola',
-        root: { x: 2, y: 0 },
-        edge: { x: 1, y: 1 }
-      }]
+      parabola: [
+        { type: 'parabola', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+        {
+          type: 'parabola',
+          root: { x: 2, y: 0 },
+          edge: { x: 1, y: 1 }
+        }
+      ]
     },
     'parabola'
   );
@@ -398,22 +587,24 @@ describe('eliminateDuplicates', () => {
   assertInvalidMarks(null);
   assertInvalidMarks({});
 
-  it('removes the marks that don\'t have a valid type', () => {
+  it("removes the marks that don't have a valid type", () => {
     const result = eliminateDuplicates([
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
       { type: 'typeThatDoesNotExist' }
     ]);
 
-
     expect(result).toEqual({
       point: [],
       segment: [],
-      line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
-        type: 'line',
-        from: { x: 0, y: 0 },
-        to: { x: 12, y: 1 }
-      }],
+      line: [
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+        {
+          type: 'line',
+          from: { x: 0, y: 0 },
+          to: { x: 12, y: 1 }
+        }
+      ],
       ray: [],
       vector: [],
       polygon: [],
@@ -423,13 +614,12 @@ describe('eliminateDuplicates', () => {
     });
   });
 
-  it('removes the marks that don\'t have a type', () => {
+  it("removes the marks that don't have a type", () => {
     const result = eliminateDuplicates([
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
       { something: 'Something' }
     ]);
-
 
     expect(result).toEqual({
       point: [],
@@ -456,15 +646,17 @@ describe('eliminateDuplicates', () => {
         { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } }
       ]);
 
-
       expect(result).toEqual({
         point: [],
         segment: [],
-        line: [{ type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } }, {
-          type: 'line',
-          from: { x: 0, y: 0 },
-          to: { x: 12, y: 1 }
-        }],
+        line: [
+          { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+          {
+            type: 'line',
+            from: { x: 0, y: 0 },
+            to: { x: 12, y: 1 }
+          }
+        ],
         ray: [],
         vector: [],
         polygon: [],
@@ -489,22 +681,41 @@ describe('unMapMarks', () => {
     });
   };
 
-  assert({
-    point: [{ x: 1, y: 1, type: 'point' }, { x: 2, y: 2, type: 'point' }],
-    segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
-  }, [{ x: 1, y: 1, type: 'point' }, { x: 2, y: 2, type: 'point' }, {
-    type: 'segment',
-    from: { x: 1, y: 1 },
-    to: { x: 1, y: 1 }
-  }]);
-  assert({
-    point: [{ x: 1, y: 1, type: 'point' }],
-    segment: []
-  }, [{ x: 1, y: 1, type: 'point' }]);
-  assert({
-    point: [{ x: 1, y: 1, type: 'point' }],
-    segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
-  }, [{ x: 1, y: 1, type: 'point' }, { type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]);
+  assert(
+    {
+      point: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 2, y: 2, type: 'point' }
+      ],
+      segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
+    },
+    [
+      { x: 1, y: 1, type: 'point' },
+      { x: 2, y: 2, type: 'point' },
+      {
+        type: 'segment',
+        from: { x: 1, y: 1 },
+        to: { x: 1, y: 1 }
+      }
+    ]
+  );
+  assert(
+    {
+      point: [{ x: 1, y: 1, type: 'point' }],
+      segment: []
+    },
+    [{ x: 1, y: 1, type: 'point' }]
+  );
+  assert(
+    {
+      point: [{ x: 1, y: 1, type: 'point' }],
+      segment: [{ type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }]
+    },
+    [
+      { x: 1, y: 1, type: 'point' },
+      { type: 'segment', from: { x: 1, y: 1 }, to: { x: 1, y: 1 } }
+    ]
+  );
 
   const assertInvalidMarks = marks => {
     it(`return empty array if marks are ${JSON.stringify(marks)}`, () => {
@@ -534,7 +745,7 @@ describe('dichotomous', () => {
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     },
     a2: {
       marks: [
@@ -542,7 +753,7 @@ describe('dichotomous', () => {
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     }
   };
 
@@ -550,27 +761,45 @@ describe('dichotomous', () => {
     answers,
     {
       a1: {
-        point: [{ x: 1, y: 1, correctness: 'correct' }, { x: 2, y: 2, correctness: 'correct' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+        point: [
+          { x: 1, y: 1, correctness: 'correct' },
+          { x: 2, y: 2, correctness: 'correct' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       },
       a2: {
-        point: [{ x: 1, y: 1, correctness: 'correct' }, { x: 2, y: 2, correctness: 'correct' }, {
-          x: 3,
-          y: 3,
-          correctness: 'incorrect'
-        }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+        point: [
+          { x: 1, y: 1, correctness: 'correct' },
+          { x: 2, y: 2, correctness: 'correct' },
+          {
+            x: 3,
+            y: 3,
+            correctness: 'incorrect'
+          }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       }
     },
     {
-      correctMarks: [{ x: 1, y: 1, correctness: 'correct' }, { x: 2, y: 2, correctness: 'correct' }, {
-        from: {
-          x: 1,
-          y: 1
-        }, to: { x: 2, y: 2 }, correctness: 'correct'
-      }],
+      correctMarks: [
+        { x: 1, y: 1, correctness: 'correct' },
+        { x: 2, y: 2, correctness: 'correct' },
+        {
+          from: {
+            x: 1,
+            y: 1
+          },
+          to: { x: 2, y: 2 },
+          correctness: 'correct'
+        }
+      ],
       score: 1
-    });
+    }
+  );
   assert(
     answers,
     {
@@ -578,8 +807,11 @@ describe('dichotomous', () => {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 3, y: 3, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 3, y: 3, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       },
       a2: {
         point: [],
@@ -594,7 +826,8 @@ describe('dichotomous', () => {
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
       ],
       score: 0
-    });
+    }
+  );
   assert(
     answers,
     {
@@ -606,21 +839,27 @@ describe('dichotomous', () => {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 3, y: 3, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
-      },
+          { x: 3, y: 3, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
+      }
     },
     {
       correctMarks: [],
       score: 0
-    });
+    }
+  );
 
   const assertInvalidAnswers = answers => {
     it(`${JSON.stringify(answers)} answers`, () => {
       const result = dichotomous(answers, {
         correctAnswer: {
           point: [{ type: 'point', x: 0, y: 0 }],
-          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          segment: [
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+          ],
           line: [],
           ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
           vector: [],
@@ -631,7 +870,9 @@ describe('dichotomous', () => {
         },
         alternate1: {
           point: [{ type: 'point', x: 0, y: 0 }],
-          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          segment: [
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+          ],
           line: [],
           ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 2, y: 20 } }],
           vector: [],
@@ -646,7 +887,8 @@ describe('dichotomous', () => {
         correctMarks: [
           { type: 'point', x: 0, y: 0 },
           { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+        ],
         score: 0
       });
     });
@@ -656,28 +898,29 @@ describe('dichotomous', () => {
   assertInvalidAnswers(null);
   assertInvalidAnswers({});
 
-
   const assertInvalidMarksWithCorrectnessValues = marks => {
     it(`${JSON.stringify(marks)} correctedMarks`, () => {
-      const result = dichotomous({
-        correctAnswer: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Correct Answer'
+      const result = dichotomous(
+        {
+          correctAnswer: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Correct Answer'
+          },
+          alternateAnswer1: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Alternate Answer 1'
+          }
         },
-        alternateAnswer1: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Alternate Answer 1'
-        }
-      }, marks);
-
+        marks
+      );
 
       expect(result).toEqual({
         correctMarks: [],
@@ -706,7 +949,7 @@ describe('partial', () => {
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     },
     a2: {
       marks: [
@@ -714,7 +957,7 @@ describe('partial', () => {
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     }
   };
 
@@ -722,24 +965,34 @@ describe('partial', () => {
     answers,
     {
       a1: {
-        point: [{ x: 1, y: 1, correctness: 'correct' }, { x: 2, y: 2, correctness: 'correct' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+        point: [
+          { x: 1, y: 1, correctness: 'correct' },
+          { x: 2, y: 2, correctness: 'correct' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       },
       a2: {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 3, y: 3, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 3, y: 3, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       }
     },
     {
       correctMarks: [
         { x: 1, y: 1, correctness: 'correct' },
         { x: 2, y: 2, correctness: 'correct' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }],
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+      ],
       score: 1
-    });
+    }
+  );
 
   assert(
     answers,
@@ -748,15 +1001,21 @@ describe('partial', () => {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 3, y: 3, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 3, y: 3, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       },
       a2: {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 3, y: 3, correctness: 'correct' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 3, y: 3, correctness: 'correct' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       }
     },
     {
@@ -767,7 +1026,8 @@ describe('partial', () => {
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
       ],
       score: 1
-    });
+    }
+  );
 
   assert(
     answers,
@@ -776,15 +1036,21 @@ describe('partial', () => {
         point: [
           { x: 0, y: 0, correctness: 'incorrect' },
           { x: 4, y: 4, correctness: 'incorrect' },
-          { x: 3, y: 3, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 3, y: 3, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       },
       a2: {
         point: [
           { x: 1, y: 1, correctness: 'correct' },
           { x: 2, y: 2, correctness: 'correct' },
-          { x: 4, y: 4, correctness: 'incorrect' }],
-        segment: [{ from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }]
+          { x: 4, y: 4, correctness: 'incorrect' }
+        ],
+        segment: [
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
+        ]
       }
     },
     {
@@ -795,14 +1061,17 @@ describe('partial', () => {
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, correctness: 'correct' }
       ],
       score: 0.75
-    });
+    }
+  );
 
   const assertInvalidAnswers = answers => {
     it(`${JSON.stringify(answers)} answers`, () => {
       const result = partial(answers, {
         correctAnswer: {
           point: [{ type: 'point', x: 0, y: 0 }],
-          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          segment: [
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+          ],
           line: [],
           ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
           vector: [],
@@ -813,7 +1082,9 @@ describe('partial', () => {
         },
         alternate1: {
           point: [{ type: 'point', x: 0, y: 0 }],
-          segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
+          segment: [
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+          ],
           line: [],
           ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 2, y: 20 } }],
           vector: [],
@@ -828,7 +1099,8 @@ describe('partial', () => {
         correctMarks: [
           { type: 'point', x: 0, y: 0 },
           { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+        ],
         score: 0
       });
     });
@@ -838,28 +1110,29 @@ describe('partial', () => {
   assertInvalidAnswers(null);
   assertInvalidAnswers({});
 
-
   const assertInvalidMarksWithCorrectnessValues = marks => {
     it(`${JSON.stringify(marks)} correctedMarks`, () => {
-      const result = partial({
-        correctAnswer: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Correct Answer'
+      const result = partial(
+        {
+          correctAnswer: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Correct Answer'
+          },
+          alternateAnswer1: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Alternate Answer 1'
+          }
         },
-        alternateAnswer1: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Alternate Answer 1'
-        }
-      }, marks);
-
+        marks
+      );
 
       expect(result).toEqual({
         correctMarks: [],
@@ -873,51 +1146,8 @@ describe('partial', () => {
   assertInvalidMarksWithCorrectnessValues({});
 
   it('correctedMarks has invalid format', () => {
-    const result = partial({
-      correctAnswer: {
-        marks: [
-          { type: 'point', x: 0, y: 0 },
-          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-        ],
-        name: 'Correct Answer'
-      },
-      alternateAnswer1: {
-        marks: [
-          { type: 'point', x: 0, y: 0 },
-          { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-          { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-        ],
-        name: 'Alternate Answer 1'
-      }
-    }, {
-      correctAnswer: {
-        point: [{ type: 'point', x: 0, y: 0 }],
-        segment: [{ type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }],
-        line: [],
-        ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
-        vector: [],
-        polygon: [],
-        circle: [],
-        sine: [],
-        parabola: []
-      },
-    });
-
-
-    expect(result).toEqual({
-      correctMarks: [
-        { type: 'point', x: 0, y: 0 },
-        { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-        { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-      ],
-      score: 1
-    });
-  });
-
-  const assertMarksSetInvalidFormat = set => {
-    it(`correctedMarks correctAnswer has invalid format: ${JSON.stringify(set)}`, () => {
-      const result = partial({
+    const result = partial(
+      {
         correctAnswer: {
           marks: [
             { type: 'point', x: 0, y: 0 },
@@ -934,10 +1164,61 @@ describe('partial', () => {
           ],
           name: 'Alternate Answer 1'
         }
-      }, {
-        correctAnswer: set,
-      });
+      },
+      {
+        correctAnswer: {
+          point: [{ type: 'point', x: 0, y: 0 }],
+          segment: [
+            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }
+          ],
+          line: [],
+          ray: [{ type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }],
+          vector: [],
+          polygon: [],
+          circle: [],
+          sine: [],
+          parabola: []
+        }
+      }
+    );
 
+    expect(result).toEqual({
+      correctMarks: [
+        { type: 'point', x: 0, y: 0 },
+        { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+        { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+      ],
+      score: 1
+    });
+  });
+
+  const assertMarksSetInvalidFormat = set => {
+    it(`correctedMarks correctAnswer has invalid format: ${JSON.stringify(
+      set
+    )}`, () => {
+      const result = partial(
+        {
+          correctAnswer: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Correct Answer'
+          },
+          alternateAnswer1: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Alternate Answer 1'
+          }
+        },
+        {
+          correctAnswer: set
+        }
+      );
 
       expect(result).toEqual({
         correctMarks: [],
@@ -951,30 +1232,34 @@ describe('partial', () => {
   assertMarksSetInvalidFormat({});
 
   const assertMarksSetPropertyInvalidFormat = set => {
-    it(`correctedMarks correctAnswer property has invalid format: ${JSON.stringify(set)}`, () => {
-      const result = partial({
-        correctAnswer: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Correct Answer'
+    it(`correctedMarks correctAnswer property has invalid format: ${JSON.stringify(
+      set
+    )}`, () => {
+      const result = partial(
+        {
+          correctAnswer: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Correct Answer'
+          },
+          alternateAnswer1: {
+            marks: [
+              { type: 'point', x: 0, y: 0 },
+              { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
+              { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
+            ],
+            name: 'Alternate Answer 1'
+          }
         },
-        alternateAnswer1: {
-          marks: [
-            { type: 'point', x: 0, y: 0 },
-            { type: 'segment', from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-            { type: 'ray', from: { x: 0, y: 0 }, to: { x: 1, y: 10 } }
-          ],
-          name: 'Alternate Answer 1'
+        {
+          correctAnswer: {
+            point: set
+          }
         }
-      }, {
-        correctAnswer: {
-          point: set
-        },
-      });
-
+      );
 
       expect(result).toEqual({
         correctMarks: [],
@@ -988,7 +1273,6 @@ describe('partial', () => {
   assertMarksSetPropertyInvalidFormat({});
 });
 
-
 describe('getScore partialScoring test', () => {
   const answers = {
     a1: {
@@ -996,7 +1280,7 @@ describe('getScore partialScoring test', () => {
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     },
     a2: {
       marks: [
@@ -1004,7 +1288,7 @@ describe('getScore partialScoring test', () => {
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     }
   };
   const question = { answers };
@@ -1016,37 +1300,61 @@ describe('getScore partialScoring test', () => {
     });
   };
 
-  assert('element.partialScoring = true', { ...question, scoringType: 'partial scoring' }, {
-    answer: [
-      { x: 1, y: 1, type: 'point' },
-      { x: 4, y: 4, type: 'point' },
-      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-    ]
-  }, { mode: 'evaluate' }, { score: 0.67 });
+  assert(
+    'element.partialScoring = true',
+    { ...question, scoringType: 'partial scoring' },
+    {
+      answer: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 4, y: 4, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ]
+    },
+    { mode: 'evaluate' },
+    { score: 0.67 }
+  );
 
-  assert('element.partialScoring = false', { ...question, scoringType: 'dichotomous' }, {
-    answer: [
-      { x: 1, y: 1, type: 'point' },
-      { x: 4, y: 4, type: 'point' },
-      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-    ]
-  }, { mode: 'evaluate' }, { score: 0 });
+  assert(
+    'element.partialScoring = false',
+    { ...question, scoringType: 'dichotomous' },
+    {
+      answer: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 4, y: 4, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ]
+    },
+    { mode: 'evaluate' },
+    { score: 0 }
+  );
 
-  assert('element.partialScoring = false, env.partialScoring = true', { ...question, scoringType: 'dichotomous' }, {
-    answer: [
-      { x: 1, y: 1, type: 'point' },
-      { x: 4, y: 4, type: 'point' },
-      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-    ]
-  }, { mode: 'evaluate', partialScoring: true }, { score: 0.67 });
+  assert(
+    'element.partialScoring = false, env.partialScoring = true',
+    { ...question, scoringType: 'dichotomous' },
+    {
+      answer: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 4, y: 4, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ]
+    },
+    { mode: 'evaluate', partialScoring: true },
+    { score: 0 }
+  );
 
-  assert('element.partialScoring = true, env.partialScoring = false', { ...question, scoringType: 'partial scoring' }, {
-    answer: [
-      { x: 1, y: 1, type: 'point' },
-      { x: 4, y: 4, type: 'point' },
-      { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-    ]
-  }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+  assert(
+    'element.partialScoring = true, env.partialScoring = false',
+    { ...question, scoringType: 'partial scoring' },
+    {
+      answer: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 4, y: 4, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ]
+    },
+    { mode: 'evaluate', partialScoring: false },
+    { score: 0 }
+  );
 });
 
 describe('getScore', () => {
@@ -1071,7 +1379,7 @@ describe('getScore', () => {
         { x: 1, y: 1, type: 'point' },
         { x: 2, y: 2, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     },
     a2: {
       marks: [
@@ -1079,7 +1387,7 @@ describe('getScore', () => {
         { x: 2, y: 2, type: 'point' },
         { x: 3, y: 3, type: 'point' },
         { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
-      ],
+      ]
     }
   };
   const question = { answers };
@@ -1101,7 +1409,12 @@ describe('getScore', () => {
       correctMarks: [
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 2, y: 2, type: 'point', correctness: 'correct' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 1
     }
@@ -1119,12 +1432,16 @@ describe('getScore', () => {
       correctMarks: [
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 2, y: 2, type: 'point', correctness: 'correct' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 1
     }
   );
-
 
   assert(
     { ...question, scoringType: 'dichotomous' },
@@ -1141,7 +1458,12 @@ describe('getScore', () => {
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 2, y: 2, type: 'point', correctness: 'correct' },
         { x: 3, y: 3, type: 'point', correctness: 'correct' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 1
     }
@@ -1161,12 +1483,16 @@ describe('getScore', () => {
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 2, y: 2, type: 'point', correctness: 'correct' },
         { x: 3, y: 3, type: 'point', correctness: 'correct' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 1
     }
   );
-
 
   assert(
     { ...question, scoringType: 'dichotomous' },
@@ -1181,7 +1507,12 @@ describe('getScore', () => {
       correctMarks: [
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 0
     }
@@ -1199,7 +1530,12 @@ describe('getScore', () => {
       correctMarks: [
         { x: 1, y: 1, type: 'point', correctness: 'correct' },
         { x: 4, y: 4, type: 'point', correctness: 'incorrect' },
-        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment', correctness: 'correct' }
+        {
+          from: { x: 1, y: 1 },
+          to: { x: 2, y: 2 },
+          type: 'segment',
+          correctness: 'correct'
+        }
       ],
       score: 0.67
     }
@@ -1211,7 +1547,7 @@ describe('getScore', () => {
 
       expect(result).toEqual({
         correctMarks: [],
-        score: 0,
+        score: 0
       });
     });
   };
@@ -1226,7 +1562,7 @@ describe('getScore', () => {
 
       expect(result).toEqual({
         correctMarks: [],
-        score: 0,
+        score: 0
       });
     });
   };
@@ -1237,7 +1573,10 @@ describe('getScore', () => {
 
   const assertInvalidFormatQuestionAnswers = answers => {
     it(`question.answers = ${JSON.stringify(answers)}`, () => {
-      const result = getScore({ ...question, answers, scoringType: 'dichotomous' }, {});
+      const result = getScore(
+        { ...question, answers, scoringType: 'dichotomous' },
+        {}
+      );
 
       expect(result).toEqual({
         correctMarks: [],
@@ -1249,12 +1588,13 @@ describe('getScore', () => {
   assertInvalidFormatQuestionAnswers({
     correctAnswer: undefined
   });
-
 });
 
 describe('outcome', () => {
   const assertOutcome = session => {
-    it(`returns score: 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+    it(`returns score: 0 and empty: true if session is ${JSON.stringify(
+      session
+    )}`, async () => {
       const o = await outcome({}, session, { mode: 'evaluate ' });
 
       expect(o).toEqual({ score: 0, empty: true });
@@ -1283,32 +1623,36 @@ describe('createCorrectResponseSession', () => {
     answers: {
       alternate1: {
         name: 'Alternate 1',
-        marks: [{
-          type: 'segment',
-          from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
-        },
+        marks: [
+          {
+            type: 'segment',
+            from: { x: 0, y: 0 },
+            to: { x: 1, y: 1 }
+          },
           {
             type: 'point',
             x: 3,
             y: 3,
             label: 'Point',
             showLabel: true
-          }]
+          }
+        ]
       },
       correctAnswer: {
         name: 'Correct Answer',
-        marks: [{
-          type: 'point',
-          x: 0,
-          y: 0
-        }]
+        marks: [
+          {
+            type: 'point',
+            x: 0,
+            y: 0
+          }
+        ]
       }
     },
     backgroundMarks: [],
     prompt: 'Here goes item stem!',
     rationale: 'Rationale goes here!',
-    scoringType: 'partial scoring',
+    scoringType: 'partial scoring'
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
@@ -1322,7 +1666,7 @@ describe('createCorrectResponseSession', () => {
         {
           type: 'segment',
           from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
+          to: { x: 1, y: 1 }
         },
         {
           type: 'point',
@@ -1347,7 +1691,7 @@ describe('createCorrectResponseSession', () => {
         {
           type: 'segment',
           from: { x: 0, y: 0 },
-          to: { x: 1, y: 1 },
+          to: { x: 1, y: 1 }
         },
         {
           type: 'point',
@@ -1362,13 +1706,19 @@ describe('createCorrectResponseSession', () => {
   });
 
   it('returns null if mode is evaluate', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'evaluate',
+      role: 'instructor'
+    });
 
     expect(noResult).toBeNull();
   });
 
   it('returns null if role is student', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'student'
+    });
 
     expect(noResult).toBeNull();
   });
