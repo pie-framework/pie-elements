@@ -564,6 +564,9 @@ describe('createCorrectResponseSession', () => {
     it(`${JSON.stringify(expected)} correct answers`, () => {
       expect(crs.answers).toEqual(expected);
     });
+    it(`${JSON.stringify(expected)} - no 'response' prop`, () => {
+      expect(crs.response).not.toBeDefined();
+    });
   });
 
   it.each`
