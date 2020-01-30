@@ -1913,6 +1913,14 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
+"@pie-lib/controller-utils@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.5.tgz#69575caaec5b74b84d246174fb0eb30c89781907"
+  integrity sha512-cmBCpbB+bw1Op7TEqAiCQvflwwRc7kRec4OMc/kOWPaolEYz3BWPykNMc7z5R/Bvx7TxettuCx3hBl3a9zhQIg==
+  dependencies:
+    debug "^4.1.1"
+    lodash "^4.17.11"
+
 "@pie-lib/correct-answer-toggle@^2.1.2", "@pie-lib/correct-answer-toggle@^2.2.6":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.2.6.tgz#bd27b74b3b8d208e7bf799f2a7d4605da62d801f"
@@ -2324,10 +2332,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.6.3":
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.3.tgz#aa40ddb53be9321de509fcd2f5ea0aaea03545bf"
-  integrity sha512-ipFjm6SC89uo5vR9rAp1MsyOFo9fd/EkIDZAV8izT611rpeI29IrvrGe8nRI43P+Q+vq/n/xxGQ64zEVB0gqBg==
+"@pie-ui/drawing-response@^1.6.4":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.4.tgz#a85b81aa954a2e831fe992a46a589eec13cb52e3"
+  integrity sha512-z6N4ph5B+fxSwEH6HLOwmxdW/50ChP4rmmyXtHLaIO74Skyg22qUzVPo3GKQEW56YJX3JMMt95fhfh1TLiE8ZQ==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@mdi/js" "^3.6.95"
