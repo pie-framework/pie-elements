@@ -600,9 +600,7 @@ describe('createCorrectResponseSession', () => {
     );
 
     expect(sess).toMatchObject({
-      answers: {
-        r1: { value: '\\frac{3}{4}' }
-      },
+      response: '\\frac{3}{4}',
       completeAnswer: '\\frac{3}{4}',
       id: '1'
     });

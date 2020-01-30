@@ -315,17 +315,19 @@ export function model(question, session, env) {
 
 const escape = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
-export const createCorrectResponseSession = (question, env) => {
-  if (env.mode === 'evaluate' || env.role !== 'instructor') {
-    // eslint-disable-next-line no-console
-    console.error(
-      'can not create correct response session if mode is evaluate or role is not instructor'
-    );
+const simpleSessionResponse = question =>
+  new Promise(resolve => {
+    const { responses } = question;
+    const { answer } = responses ? responses[0] : {};
+    resolve({
+      id: question.id,
+      response: answer,
+      completeAnswer: answer
+    });
+  });
 
-    return Promise.resolve(null);
-  }
-
-  return new Promise((resolve, reject) => {
+const advancedSessionResponse = question =>
+  new Promise((resolve, reject) => {
     try {
       const { responses } = question;
       const { answer } = responses ? responses[0] : {};
@@ -369,4 +371,20 @@ export const createCorrectResponseSession = (question, env) => {
       reject(e);
     }
   });
+
+export const createCorrectResponseSession = (question, env) => {
+  if (env.mode === 'evaluate' || env.role !== 'instructor') {
+    // eslint-disable-next-line no-console
+    console.error(
+      'can not create correct response session if mode is evaluate or role is not instructor'
+    );
+
+    return Promise.resolve(null);
+  }
+
+  if ((question.responseType || '').toLowerCase() === 'simple') {
+    return simpleSessionResponse(question, env);
+  } else {
+    return advancedSessionResponse(question, env);
+  }
 };
