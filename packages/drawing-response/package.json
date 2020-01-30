@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/drawing-response": "^1.6.3"
+    "@pie-ui/drawing-response": "^1.6.4"
   },
   "pie": {
     "element": "@pie-ui/drawing-response"
