@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@9.0.1...@pie-element/pie-models@9.0.2) (2020-01-30)
+
+
+### Bug Fixes
+
+* **docs:** fix match-list shuffle related property config ([917da64](https://github.com/pie-framework/pie-elements/commit/917da64))
+
+
+
+
+
 ## [9.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@9.0.0...@pie-element/pie-models@9.0.1) (2020-01-28)
 
 **Note:** Version bump only for package @pie-element/pie-models

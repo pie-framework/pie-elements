@@ -378,5 +378,20 @@
     "committerDate": "2020-01-21 12:03:50 +0000",
     "isTagged": true,
     "tag": "@pie-element/drawing-response@3.1.5"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump drawing-response@^1.6.4 ch6084",
+    "merge": null,
+    "header": "fix: bump drawing-response@^1.6.4 ch6084",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "54bf3c0e8ebab739eb7d2b0c3676967e3eccfd7d",
+    "gitTags": "",
+    "committerDate": "2020-01-29 21:25:18 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/drawing-response@3.1.7"
   }
 ]

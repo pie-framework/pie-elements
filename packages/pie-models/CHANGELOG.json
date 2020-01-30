@@ -1478,5 +1478,20 @@
     "committerDate": "2019-12-11 12:04:04 +0200",
     "isTagged": true,
     "tag": "@pie-element/pie-models@9.0.0"
+  },
+  {
+    "type": "fix",
+    "scope": "docs",
+    "subject": "fix match-list shuffle related property config",
+    "merge": null,
+    "header": "fix(docs): fix match-list shuffle related property config",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "917da640ec0969a1c2e89d0f644ba2001be813f7",
+    "gitTags": "",
+    "committerDate": "2020-01-29 16:05:13 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/pie-models@9.0.2"
   }
 ]
