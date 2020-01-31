@@ -2381,10 +2381,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/extended-text-entry@^3.2.9":
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.2.9.tgz#97c471f06ef6a7f1ffff97271ab304896ed3b4d5"
-  integrity sha512-EoyD6o8st+Q9LJz/id+0F2WGzHNO+7jtQiYcdCH2JK9Qtj166BD6zdDB6tKj7Dlf9mgOp/fsCF+BQG8J+FXZfA==
+"@pie-ui/extended-text-entry@^3.2.10":
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/@pie-ui/extended-text-entry/-/extended-text-entry-3.2.10.tgz#02f42a7ba9af635979d335d72e5bebc66950c500"
+  integrity sha512-CShWsXhouursnf0hS9Pbw2hiZlhYP2w+2PUhwm3evvSZz0jwkyuR4PKRB0HOpo9/H5lKs66fn26jpsjRseV4MQ==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
