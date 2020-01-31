@@ -833,5 +833,20 @@
     "committerDate": "2020-01-29 11:04:16 +0000",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@5.2.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "fix logic ch7195",
+    "merge": null,
+    "header": "fix: fix logic ch7195",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5fa1333b0aa5365624b7e3b816f4a10f66c598b1",
+    "gitTags": "",
+    "committerDate": "2020-01-30 16:26:36 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@5.2.3"
   }
 ]
