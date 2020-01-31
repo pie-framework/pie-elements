@@ -2124,6 +2124,18 @@
     lodash "^4.17.11"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^6.3.9":
+  version "6.3.9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.9.tgz#f5abe3c2c2742b4c0d2d53953c934d81842c2dd9"
+  integrity sha512-IWmmn1j6/X8FCy/em4gl2optDmFPdCW64xQZSE5TghCqwLtP8FS7Xb4aKh8W9NIq8Mru7BxPTrRWr4emxdBJsw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^0.10.3"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-rendering@^1.3.7":
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-1.3.7.tgz#4ce8ee1a935351d08298f7647bede9e968cd46ea"
@@ -2332,10 +2344,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/drawing-response@^1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.4.tgz#a85b81aa954a2e831fe992a46a589eec13cb52e3"
-  integrity sha512-z6N4ph5B+fxSwEH6HLOwmxdW/50ChP4rmmyXtHLaIO74Skyg22qUzVPo3GKQEW56YJX3JMMt95fhfh1TLiE8ZQ==
+"@pie-ui/drawing-response@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@pie-ui/drawing-response/-/drawing-response-1.6.5.tgz#ee1ccae8d3b3cb1c4020f6e8cf129d792f55c50d"
+  integrity sha512-kImPbl+uJ6LlUg0xQuJi+4qmogFBx258TrZ+QB2zksyOTEtmRBm43eyajXnvXzgv9O8MC2gJFBWsviROvOkjrw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@mdi/js" "^3.6.95"
@@ -2540,16 +2552,16 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.0.12":
-  version "3.0.12"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.12.tgz#df20b65e8ec5ad3ca5682dd932fa92f4d514ccb5"
-  integrity sha512-PNYDijsonYv4op1dnf9Rr3OiHQfdQ5wQrFvvp4Q6mDwlMdSgF6P/Go/KXaN+TfnSn/XWtZk13xpotSxNa8Y4Qw==
+"@pie-ui/math-inline@^3.0.14":
+  version "3.0.14"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.14.tgz#eb74702764e3668aa294ad3df1b91e556883e64e"
+  integrity sha512-0RsmldXfnYddBMDs6Pogqvn9mLQ0JylYORPSzt80uIR+IDF1MhGBZj7oqwWVbhTzWDkWntgxK8AczED4pOsHYg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^0.11.0"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/math-input" "^6.3.8"
+    "@pie-lib/math-input" "^6.3.9"
     "@pie-lib/math-toolbar" "^1.4.8"
     "@pie-lib/render-ui" "^4.5.3"
     classnames "^2.2.5"
