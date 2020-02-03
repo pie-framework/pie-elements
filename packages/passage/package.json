@@ -9,7 +9,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/passage": "^1.2.8"
+    "@pie-ui/passage": "^1.3.0"
   },
   "pie": {
     "element": "@pie-ui/passage"
