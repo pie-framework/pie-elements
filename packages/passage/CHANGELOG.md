@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.12...@pie-element/passage@1.2.13) (2020-02-03)
+
+
+### Bug Fixes
+
+* update passage@^1.3.0 ([c6baa50](https://github.com/pie-framework/pie-elements/commit/c6baa50))
+
+
+
+
+
 ## [1.2.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.11...@pie-element/passage@1.2.12) (2019-07-12)
 
 **Note:** Version bump only for package @pie-element/passage
