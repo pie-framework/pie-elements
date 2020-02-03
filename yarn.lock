@@ -2612,10 +2612,10 @@
     react-jss "^8.4.0"
     react-transition-group "^2.3.1"
 
-"@pie-ui/passage@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@pie-ui/passage/-/passage-1.2.7.tgz#89ce15585b9f645fb5ed796c8bbd3f2ff0fab6bf"
-  integrity sha512-2QHDNeaZ0c/XMVt9t/sud7eRcaHWcCbPvETaamf1eEImay7va5tBrwjmou4cqbl4Dk1EVH1gtXIHrkeeJ/Gt4w==
+"@pie-ui/passage@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@pie-ui/passage/-/passage-1.2.8.tgz#49b0e4eb25bb4097d67b37c8b30db72a6d5b34ed"
+  integrity sha512-toSCwtTZtnAmCO5jMaIIB1fFG3XLpw+FZxlRQaMuvw7OTIMFE3c1nsgu0glKicalD2gmfcPdX+dkBR5HbSlmPg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
