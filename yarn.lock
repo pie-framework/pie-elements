@@ -1976,6 +1976,38 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
+"@pie-lib/editable-html@^7.10.39":
+  version "7.10.39"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.39.tgz#41763fde823bdb98b008d42e8649e9f27864fd97"
+  integrity sha512-F0BQC+jRscd+bo13DLyFYTjzAcaZ+qM7NMIWNek3WlZqI/jttXtmpjbLOScZzFHtnTycoRQGORZ2U1F8J8tWTA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.21"
+    "@pie-lib/math-rendering" "^2.1.0"
+    "@pie-lib/math-toolbar" "^1.4.15"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
 "@pie-lib/editable-html@^7.3.2":
   version "7.10.24"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.24.tgz#d13d9e0dd7836c5d80c06050d5514ba8865a358d"
@@ -2088,6 +2120,18 @@
     jsesc "^2.5.2"
     mathjs "^5.4.1"
 
+"@pie-lib/math-input@^6.3.10":
+  version "6.3.10"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.10.tgz#d58746d6a8342cf5f6405a2117aba20a3bf3ef9a"
+  integrity sha512-WHbGvEZYqRTfn/G5Chim1pEXVwOyJAnJPOO2ZqiSUpgOSBiTdx1AcTWBhYwsIkhO4qkPi0JN0Wxv68pGLfLyIw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^0.10.3"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-input@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.5.tgz#0079b2c43c17810ee213255c573d4fa70228b6d4"
@@ -2140,6 +2184,18 @@
   dependencies:
     debug "^4.1.1"
     mathjax-full "^3.0.0"
+
+"@pie-lib/math-toolbar@^1.4.15":
+  version "1.4.15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.4.15.tgz#95c44d828e9e8078b76a45f5d74fffe3370f21b8"
+  integrity sha512-sl1gvdf8PQ+Akbo4VKjO6gFehz46dTK3qYHSoP4lGNzAuZf/DYz8WgygmH/lxG3nC6vyRpTB5a5qaFqPtIYm2Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.3.10"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
 
 "@pie-lib/math-toolbar@^1.4.7":
   version "1.4.7"
