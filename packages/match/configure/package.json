@@ -11,7 +11,7 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.7.36",
     "@pie-lib/drag": "^1.1.21",
-    "@pie-lib/editable-html": "^7.10.26",
+    "@pie-lib/editable-html": "^7.10.39",
     "@pie-lib/scoring-config": "^3.5.42",
     "classnames": "^2.2.5",
     "debug": "^3.1.0",
