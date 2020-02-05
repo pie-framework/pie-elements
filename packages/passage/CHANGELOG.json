@@ -118,5 +118,20 @@
     "committerDate": "2019-07-12 15:45:27 +0300",
     "isTagged": true,
     "tag": "@pie-element/passage@1.2.11"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "update passage@^1.3.0",
+    "merge": null,
+    "header": "fix: update passage@^1.3.0",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "c6baa50abf7e00c92034686990041f38be422eee",
+    "gitTags": " (origin/andreea/ch6219/in-dna-ot-when-a-pair-of-passages-for-an-2)",
+    "committerDate": "2020-02-03 09:33:01 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/passage@1.2.13"
   }
 ]
