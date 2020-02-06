@@ -50,6 +50,10 @@ describe('model', () => {
     it('returns undefined for feedback', () => {
       expect(result.feedback).toEqual(undefined);
     });
+
+    it('returns empty array for responses', () => {
+      expect(result.config.responses).toEqual([]);
+    });
   });
 
   describe('view', () => {
@@ -74,6 +78,10 @@ describe('model', () => {
 
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual(undefined);
+    });
+
+    it('returns empty array for responses', () => {
+      expect(result.config.responses).toEqual([]);
     });
   });
 
