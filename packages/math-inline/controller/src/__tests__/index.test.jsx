@@ -43,12 +43,16 @@ describe('model', () => {
       expect(result.correctness).toEqual(undefined);
     });
 
-    it('returns empty object for correctResponse ', () => {
-      expect(result.correctResponse).toEqual({});
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
       expect(result.feedback).toEqual(undefined);
+    });
+
+    it('returns empty array for responses', () => {
+      expect(result.config.responses).toEqual([]);
     });
   });
 
@@ -68,12 +72,16 @@ describe('model', () => {
       expect(result.correctness).toEqual(undefined);
     });
 
-    it('returns empty object for correctResponse ', () => {
-      expect(result.correctResponse).toEqual({});
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {
       expect(result.feedback).toEqual(undefined);
+    });
+
+    it('returns empty array for responses', () => {
+      expect(result.config.responses).toEqual([]);
     });
   });
 
