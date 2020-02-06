@@ -43,8 +43,8 @@ describe('model', () => {
       expect(result.correctness).toEqual(undefined);
     });
 
-    it('returns empty object for correctResponse ', () => {
-      expect(result.correctResponse).toEqual({});
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns undefined for feedback', () => {
@@ -68,8 +68,8 @@ describe('model', () => {
       expect(result.correctness).toEqual(undefined);
     });
 
-    it('returns empty object for correctResponse ', () => {
-      expect(result.correctResponse).toEqual({});
+    it('returns undefined for correctResponse ', () => {
+      expect(result.correctResponse).toEqual(undefined);
     });
 
     it('returns default correct for feedback', () => {

@@ -284,9 +284,17 @@ export function model(question, session, env) {
         view: env.mode === 'view'
       };
 
-      const out = Object.assign(base, {
-        correctResponse
-      });
+      let out;
+
+      if (env.mode === 'evaluate') {
+        out = Object.assign(base, {
+          correctResponse
+        });
+      } else {
+        out = base;
+
+        out.config.responses = [];
+      }
 
       if (
         env.role === 'instructor' &&
