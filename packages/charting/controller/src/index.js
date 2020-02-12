@@ -160,7 +160,8 @@ export function model(question, session, env) {
       title,
       rationaleEnabled,
       teacherInstructions,
-      teacherInstructionsEnabled
+      teacherInstructionsEnabled,
+      correctAnswer
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -185,6 +186,10 @@ export function model(question, session, env) {
     if (env.mode === 'evaluate' || env.mode === 'view') {
       base.correctedAnswer = filterCategories(getScore(normalizedQuestion, session, env).answers, false);
       base.addCategoryEnabled = false;
+    }
+
+    if (env.mode === 'evaluate') {
+      base.correctAnswer = correctAnswer;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
