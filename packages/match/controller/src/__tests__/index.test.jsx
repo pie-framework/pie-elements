@@ -4,23 +4,28 @@ import { defaults as feedbackDefaults } from '@pie-lib/feedback';
 const defaultModel = {
   id: '1',
   element: 'match-element',
-  rows: [{
-    id: 1,
-    title: 'Question Text 1',
-    values: [false, false]
-  }, {
-    id: 2,
-    title: 'Question Text 2',
-    values: [false, false]
-  }, {
-    id: 3,
-    title: 'Question Text 3',
-    values: [false, false]
-  }, {
-    id: 4,
-    title: 'Question Text 4',
-    values: [false, false]
-  }],
+  rows: [
+    {
+      id: 1,
+      title: 'Question Text 1',
+      values: [false, false]
+    },
+    {
+      id: 2,
+      title: 'Question Text 2',
+      values: [false, false]
+    },
+    {
+      id: 3,
+      title: 'Question Text 3',
+      values: [false, false]
+    },
+    {
+      id: 4,
+      title: 'Question Text 4',
+      values: [false, false]
+    }
+  ],
   lockChoiceOrder: true,
   partialScoring: false,
   feedbackEnabled: true,
@@ -40,12 +45,14 @@ const defaultModel = {
       type: 'none',
       default: 'Incorrect'
     }
-  },
+  }
 };
 
 describe('outcome', () => {
   const returnCorrectness = sess => {
-    it(`returns empty: true and score: 0 if session is ${JSON.stringify(sess)}`, async () => {
+    it(`returns empty: true and score: 0 if session is ${JSON.stringify(
+      sess
+    )}`, async () => {
       const result = await outcome(defaultModel, sess, { mode: 'evaluate' });
       expect(result).toEqual({ score: 0, empty: true });
     });
@@ -56,32 +63,29 @@ describe('outcome', () => {
   returnCorrectness({});
 });
 
-describe('outcome partialScoring test', () => {
-  const assertOutcome = (message, extra, sessionValue, env, expected) => {
-    it(message, async () => {
-      const result = await outcome({
-          ...defaultModel,
-          ...extra
-        },
+describe('outcome partialScoring', () => {
+  it.each`
+    model        | env          | score
+    ${undefined} | ${undefined} | ${0.25}
+    ${true}      | ${undefined} | ${0.25}
+    ${undefined} | ${true}      | ${0.25}
+    ${false}     | ${true}      | ${0}
+    ${true}      | ${false}     | ${0}
+    ${false}     | ${undefined} | ${0}
+    ${undefined} | ${false}     | ${0}
+    ${false}     | ${false}     | ${0}
+  `(
+    'model: $model, env: $env => score: $score',
+    async ({ model, env, score }) => {
+      const sessionValue = { answers: { 1: [false, false] } };
+      const result = await outcome(
+        { ...defaultModel, partialScoring: model },
         sessionValue,
-        env
+        { mode: 'evaluate', partialScoring: env }
       );
-
-      expect(result).toEqual(expect.objectContaining(expected));
-    });
-  };
-
-  assertOutcome('element.partialScoring = true',
-    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0.25 });
-
-  assertOutcome('element.partialScoring = false',
-    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0 });
-
-  assertOutcome('element.partialScoring = false, env.partialScoring = true',
-    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: true }, { score: 0.25 });
-
-  assertOutcome('element.partialScoring = true, env.partialScoring = false',
-    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+      expect(result).toEqual(expect.objectContaining({ score }));
+    }
+  );
 });
 
 describe('model', () => {
@@ -118,9 +122,10 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title}) => ({ id, title })));
+      expect(result.config.rows).toEqual(
+        defaultModel.rows.map(({ id, title }) => ({ id, title }))
+      );
     });
-
   });
 
   describe('view', () => {
@@ -172,7 +177,9 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual(defaultModel.rows.map(({ id, title}) => ({ id, title })));
+      expect(result.config.rows).toEqual(
+        defaultModel.rows.map(({ id, title }) => ({ id, title }))
+      );
     });
   });
 
@@ -217,7 +224,9 @@ describe('model', () => {
     });
 
     const returnCorrectness = sess => {
-      it(`returns unanswered for correctness and 0 for score if session is ${JSON.stringify(sess)}`, async () => {
+      it(`returns unanswered for correctness and 0 for score if session is ${JSON.stringify(
+        sess
+      )}`, async () => {
         result = await model(question, sess, env);
         expect(result.correctness).toEqual({
           correctness: 'unanswered',
@@ -239,7 +248,7 @@ describe('model', () => {
     it('does not return partially-correct for correctness when partial scores are not allowed', async () => {
       question = mkQuestion({
         ...defaultModel,
-        partialScoring: false,
+        partialScoring: false
       });
 
       session = {
@@ -259,7 +268,7 @@ describe('model', () => {
     it('does not return partially-correct for correctness when partial scores are allowed for radios', async () => {
       question = mkQuestion({
         ...defaultModel,
-        choiceMode: 'radio',
+        choiceMode: 'radio'
       });
 
       session = {
@@ -267,7 +276,7 @@ describe('model', () => {
           1: [true, false],
           2: [true, false],
           3: [true, false],
-          4: [true, false],
+          4: [true, false]
         }
       };
 
@@ -280,7 +289,7 @@ describe('model', () => {
     it('returns partially-correct for checkbox correctness', async () => {
       question = mkQuestion({
         ...defaultModel,
-        partialScoring: true,
+        partialScoring: true
       });
 
       session = {
@@ -372,19 +381,23 @@ describe('model', () => {
     it('returns partially-correct for radio correctness', async () => {
       question = mkQuestion({
         ...defaultModel,
-        rows: [{
-          id: 1,
-          title: 'Question Text 1',
-          values: [true, false, false]
-        }, {
-          id: 2,
-          title: 'Question Text 2',
-          values: [false, false, true]
-        }, {
-          id: 3,
-          title: 'Question Text 3',
-          values: [true, false, false]
-        }],
+        rows: [
+          {
+            id: 1,
+            title: 'Question Text 1',
+            values: [true, false, false]
+          },
+          {
+            id: 2,
+            title: 'Question Text 2',
+            values: [false, false, true]
+          },
+          {
+            id: 3,
+            title: 'Question Text 3',
+            values: [true, false, false]
+          }
+        ],
         choiceMode: 'radio',
         partialScoring: true
       });
@@ -419,8 +432,7 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        partialScoring: true,
-
+        partialScoring: true
       });
 
       session = {
@@ -475,7 +487,7 @@ describe('model', () => {
     it('returns correct for correctness when partial correctness is not enabled', async () => {
       question = mkQuestion({
         ...defaultModel,
-        partialScoring: false,
+        partialScoring: false
       });
 
       session = {
@@ -504,13 +516,15 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
-
     });
   });
 
   describe('correct response', () => {
     it('returns correct response if env is correct', async () => {
-      const sess = await createCorrectResponseSession(defaultModel, { mode: 'gather', role: 'instructor' });
+      const sess = await createCorrectResponseSession(defaultModel, {
+        mode: 'gather',
+        role: 'instructor'
+      });
       expect(sess).toEqual({
         answers: {
           '1': [false, false],
@@ -523,7 +537,10 @@ describe('model', () => {
     });
 
     it('returns null env is student', async () => {
-      const noResult = await createCorrectResponseSession(defaultModel, { mode: 'gather', role: 'student' });
+      const noResult = await createCorrectResponseSession(defaultModel, {
+        mode: 'gather',
+        role: 'student'
+      });
       expect(noResult).toBeNull();
     });
   });

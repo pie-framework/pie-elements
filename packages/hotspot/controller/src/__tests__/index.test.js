@@ -22,10 +22,10 @@ describe('controller', () => {
             correct: true
           },
           {
-            id: '2',
+            id: '2'
           },
           {
-            id: '3',
+            id: '3'
           }
         ],
         polygons: [
@@ -40,7 +40,7 @@ describe('controller', () => {
     };
   });
 
-  describe('outcome partialScoring test', () => {
+  describe('partialScoring', () => {
     beforeEach(() => {
       const rectangles = question.shapes.rectangles.concat({
         id: '5',
@@ -55,44 +55,41 @@ describe('controller', () => {
       };
     });
 
-    const assertOutcome = (message, extra, sessionValue, env, expected) => {
-      it(message, async () => {
+    it.each`
+      model        | env          | score
+      ${undefined} | ${undefined} | ${0.2}
+      ${true}      | ${undefined} | ${0.2}
+      ${undefined} | ${true}      | ${0.2}
+      ${false}     | ${true}      | ${0}
+      ${true}      | ${false}     | ${0}
+      ${false}     | ${undefined} | ${0}
+      ${undefined} | ${false}     | ${0}
+      ${false}     | ${false}     | ${0}
+    `(
+      'model: $model, env: $env => score: $score',
+      async ({ model, env, score }) => {
+        // expect(true).toBe(false);
+        const sessionValue = { answers: [{ id: '2' }] };
         const result = await outcome(
-          {...question, ...extra},
+          { ...question, partialScoring: model },
           sessionValue,
-          env
+          { mode: 'evaluate', partialScoring: env }
         );
-        expect(result).toEqual(expect.objectContaining(expected));
-      });
-    };
-
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0.2 });
-
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0 });
-
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
-
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+        expect(result).toEqual(expect.objectContaining({ score }));
+      }
+    );
   });
 
   describe('outcome', () => {
     it('returns score of 0', async () => {
-      const result = await outcome(
-        question,
-        { answers: [{ id: '2' }] }
-      );
+      const result = await outcome(question, { answers: [{ id: '2' }] });
       expect(result.score).toEqual(0);
     });
 
     it('returns score of 1', async () => {
-      const result = await outcome(
-        question,
-        { answers: [{ id: '1' }, { id: '4' }] }
-      );
+      const result = await outcome(question, {
+        answers: [{ id: '1' }, { id: '4' }]
+      });
       expect(result.score).toEqual(1);
     });
 
@@ -112,40 +109,34 @@ describe('controller', () => {
         };
       });
       it('returns a score of 0.2', async () => {
-        const result = await outcome(
-          question,
-          { answers: [{ id: '2' }] }
-        );
+        const result = await outcome(question, { answers: [{ id: '2' }] });
         expect(result.score).toEqual(0.2);
       });
 
       it('returns a score of 0.4', async () => {
-        const result = await outcome(
-          question,
-          { answers: [{ id: '2' }, { id: '5' }] }
-        );
+        const result = await outcome(question, {
+          answers: [{ id: '2' }, { id: '5' }]
+        });
         expect(result.score).toEqual(0.4);
       });
 
       it('returns a score of 0.6', async () => {
-        const result = await outcome(
-          question,
-          { answers: [{ id: '5' }] }
-        );
+        const result = await outcome(question, { answers: [{ id: '5' }] });
         expect(result.score).toEqual(0.6);
       });
 
       it('returns a score of 1', async () => {
-        const result = await outcome(
-          question,
-          { answers: [{ id: '1' }, { id: '4' }, { id: '5' }] }
-        );
+        const result = await outcome(question, {
+          answers: [{ id: '1' }, { id: '4' }, { id: '5' }]
+        });
         expect(result.score).toEqual(1);
       });
     });
 
     const returnOutcome = session => {
-      it(`returns empty: true when session is ${JSON.stringify(session)}`, async () => {
+      it(`returns empty: true when session is ${JSON.stringify(
+        session
+      )}`, async () => {
         const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, empty: true });
       });
@@ -201,9 +192,7 @@ describe('controller', () => {
           ])
         );
         expect(result.shapes.polygons).toEqual(
-          expect.arrayContaining([
-            { id: '4', correct: true }
-          ])
+          expect.arrayContaining([{ id: '4', correct: true }])
         );
       });
 
@@ -241,9 +230,7 @@ describe('controller', () => {
           ])
         );
         expect(result.shapes.polygons).toEqual(
-          expect.arrayContaining([
-            { id: '4', correct: true }
-          ])
+          expect.arrayContaining([{ id: '4', correct: true }])
         );
       });
 
@@ -255,7 +242,9 @@ describe('controller', () => {
 
   describe('isResponseCorrect', () => {
     const returnIsResponseCorect = session => {
-      it(`response is not correct if session is ${JSON.stringify(session)}`, () => {
+      it(`response is not correct if session is ${JSON.stringify(
+        session
+      )}`, () => {
         expect(isResponseCorrect(question, session)).toEqual(false);
       });
     };
@@ -266,20 +255,20 @@ describe('controller', () => {
   });
 
   describe('correct response', () => {
-  
-
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(question, {
         mode: 'gather',
         role: 'instructor'
       });
-      expect(sess).toEqual({"answers": [{"id": "1"}, {"id": "4"}], "id": "1"});
+      expect(sess).toEqual({ answers: [{ id: '1' }, { id: '4' }], id: '1' });
     });
 
     it('returns null env is student', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'student'
+      });
       expect(noResult).toBeNull();
     });
   });
-
 });

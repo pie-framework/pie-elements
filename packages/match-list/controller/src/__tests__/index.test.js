@@ -127,68 +127,35 @@ describe('controller', () => {
     });
   });
 
-  describe('outcome partialScoring test', () => {
-    const assertOutcome = (message, extra, sessionValue, env, expected) => {
-      it(message, async () => {
-        const result = await outcome({
-            ...question,
-            ...extra,
-            answers: [answer(1), answer(2), answer(3)]
-          },
+  describe('outcome partialScoring', () => {
+    it.each`
+      model        | env          | score
+      ${undefined} | ${undefined} | ${0.5}
+      ${true}      | ${undefined} | ${0.5}
+      ${undefined} | ${true}      | ${0.5}
+      ${false}     | ${true}      | ${0}
+      ${true}      | ${false}     | ${0}
+      ${false}     | ${undefined} | ${0}
+      ${undefined} | ${false}     | ${0}
+      ${false}     | ${false}     | ${0}
+    `(
+      'model: $model, env: $env => score: $score',
+      async ({ model, env, score }) => {
+        const sessionValue = {
+          value: {
+            1: 1,
+            2: 3
+          }
+        };
+
+        const result = await outcome(
+          { ...question, partialScoring: model },
           sessionValue,
-          env
+          { mode: 'evaluate', partialScoring: env }
         );
-
-        expect(result).toEqual(expect.objectContaining(expected));
-      });
-    };
-
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true },
-      {
-        value: {
-          1: 1,
-          2: 3
-        }
-      },
-      { mode: 'evaluate' }, { score: 0.5 });
-
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false },
-      {
-        value: {
-          1: 1,
-          2: 3
-        }
-      },
-      { mode: 'evaluate' }, { score: 0 });
-
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false },
-      {
-        value: {
-          1: 1,
-          2: 3
-        }
-      },
-      {
-        mode: 'evaluate',
-        partialScoring: true
-      },
-      { score: 0.5 });
-
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      { partialScoring: true },
-      {
-        value: {
-          1: 1,
-          2: 3
-        }
-      },
-      {
-        mode: 'evaluate',
-        partialScoring: false
-      }, { score: 0 });
+        expect(result).toEqual(expect.objectContaining({ score }));
+      }
+    );
   });
 
   describe('outcome', () => {

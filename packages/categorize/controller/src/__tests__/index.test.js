@@ -202,45 +202,27 @@ describe('controller', () => {
       });
     });
 
-    const assertOutcome = (label, question, session, env, expected) => {
-      it(label, async () => {
+    it.each`
+      model        | env          | score
+      ${undefined} | ${undefined} | ${0.5}
+      ${true}      | ${undefined} | ${0.5}
+      ${undefined} | ${true}      | ${0.5}
+      ${false}     | ${true}      | ${0}
+      ${true}      | ${false}     | ${0}
+      ${false}     | ${undefined} | ${0}
+      ${undefined} | ${false}     | ${0}
+      ${false}     | ${false}     | ${0}
+    `(
+      'model: $model, env: $env => score: $score',
+      async ({ model, env, score }) => {
+        const sessionValue = { answers: [{ category: '1', choices: ['1'] }] };
         const result = await outcome(
-          question,
-          { answers: [{ category: '1', choices: ['1'] }] },
-          env
+          { ...question, partialScoring: model },
+          sessionValue,
+          { mode: 'evaluate', partialScoring: env }
         );
-        expect(result).toEqual(expected);
-      });
-    };
-
-    assertOutcome(
-      'element.partialScoring = true',
-      mkQuestion({ partialScoring: true }),
-      {},
-      { mode: 'evaluate' },
-      { empty: false, score: 0.5 }
-    );
-    assertOutcome(
-      'element.partialScoring = false',
-      mkQuestion({ partialScoring: false }),
-      {},
-      { mode: 'evaluate' },
-      { empty: false, score: 0 }
-    );
-
-    assertOutcome(
-      'element.partialScoring = false, env.partialScoring = true',
-      mkQuestion({ partialScoring: false }),
-      {},
-      { mode: 'evaluate', partialScoring: true },
-      { empty: false, score: 0.5 }
-    );
-    assertOutcome(
-      'element.partialScoring = true,, env.partialScoring = false',
-      mkQuestion({ partialScoring: true }),
-      {},
-      { mode: 'evaluate', partialScoring: false },
-      { empty: false, score: 0 }
+        expect(result).toEqual(expect.objectContaining({ score }));
+      }
     );
   });
 

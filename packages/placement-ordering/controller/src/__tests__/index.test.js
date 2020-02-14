@@ -325,7 +325,7 @@ describe('index', () => {
     );
     assertOutcome(
       {
-        partialScoring: false,
+        partialScoring: undefined,
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [['a', 'b']]
       },
@@ -355,6 +355,7 @@ describe('index', () => {
     );
     assertOutcome(
       {
+        partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [['c', 'b', 'a']]
       },
@@ -394,7 +395,7 @@ describe('index', () => {
     );
     assertOutcome(
       {
-        partialScoring: false,
+        partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
         alternateResponses: [['a', 'c', 'b']]
       },

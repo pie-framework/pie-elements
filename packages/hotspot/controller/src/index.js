@@ -14,7 +14,7 @@ export const normalize = question => ({
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
   strokeWidth: 5,
-  ...question,
+  ...question
 });
 
 export function model(question, session, env) {
@@ -52,9 +52,16 @@ export function model(question, session, env) {
           : undefined
     };
 
-    if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
-      out.rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
-      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled ? normalizedQuestion.teacherInstructions : null;
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
+      out.rationale = normalizedQuestion.rationaleEnabled
+        ? normalizedQuestion.rationale
+        : null;
+      out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
+        ? normalizedQuestion.teacherInstructions
+        : null;
     } else {
       out.rationale = null;
       out.teacherInstructions = null;
@@ -71,20 +78,22 @@ export const createDefaultModel = (model = {}) =>
   new Promise(resolve => {
     resolve({
       ...defaults,
-      ...model,
-    })
+      ...model
+    });
   });
 
 const getScore = (config, session, env = {}) => {
   const { answers } = session || {};
 
-  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons)) {
+  if (
+    !config.shapes ||
+    (!config.shapes.rectangles && !config.shapes.polygons)
+  ) {
     return 0;
   }
 
   const { shapes: { rectangles = [], polygons = [] } = {} } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
-
   if (!partialScoringEnabled) {
     return isResponseCorrect(config, session) ? 1 : 0;
   }
@@ -93,7 +102,8 @@ const getScore = (config, session, env = {}) => {
 
   const choices = [...rectangles, ...polygons];
   choices.forEach(shape => {
-    const selected = answers && answers.filter(answer => answer.id === shape.id)[0];
+    const selected =
+      answers && answers.filter(answer => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;
     const correctlyUnselected = !shape.correct && !selected;
 
@@ -121,7 +131,7 @@ export function outcome(config, session, env = {}) {
   });
 }
 
-const returnShapesCorrect = (shapes) => {
+const returnShapesCorrect = shapes => {
   let answers = [];
 
   shapes.forEach(i => {
@@ -142,10 +152,7 @@ export const createCorrectResponseSession = (question, env) => {
       const polygonsCorrect = returnShapesCorrect(polygons);
 
       resolve({
-        answers: [
-          ...rectangleCorrect,
-          ...polygonsCorrect
-        ],
+        answers: [...rectangleCorrect, ...polygonsCorrect],
         id: '1'
       });
     } else {

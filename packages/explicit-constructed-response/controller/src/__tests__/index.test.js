@@ -26,28 +26,30 @@ describe('controller', () => {
     let q;
 
     it('output when session is defined', async () => {
-      const m = await model(question,
+      const m = await model(
+        question,
         { value: { 0: 'cow', 1: 'over', 2: 'moon' } },
         { mode: 'evaluate' }
       );
 
-      expect(m).toEqual(expect.objectContaining({
-        feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
-        responseCorrect: true
-      }))
+      expect(m).toEqual(
+        expect.objectContaining({
+          feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
+          responseCorrect: true
+        })
+      );
     });
 
-    const returnModel = (session) => {
+    const returnModel = session => {
       it(`output when session is ${JSON.stringify(session)}`, async () => {
-        const m = await model(question,
-          session,
-          { mode: 'evaluate' }
-        );
+        const m = await model(question, session, { mode: 'evaluate' });
 
-        expect(m).toEqual(expect.objectContaining({
-          feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
-          responseCorrect: false
-        }))
+        expect(m).toEqual(
+          expect.objectContaining({
+            feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
+            responseCorrect: false
+          })
+        );
       });
     };
 
@@ -63,10 +65,15 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        const result = await model(q, {
-          id: '1',
-          element: 'explicit-constructed-response', ...session
-        }, { mode: 'gather' });
+        const result = await model(
+          q,
+          {
+            id: '1',
+            element: 'explicit-constructed-response',
+            ...session
+          },
+          { mode: 'gather' }
+        );
 
         expect(result).toEqual({
           ...question,
@@ -86,7 +93,8 @@ describe('controller', () => {
       {
         rationale: null,
         teacherInstructions: null
-      });
+      }
+    );
 
     assertGather(
       'promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
@@ -94,14 +102,15 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
         prompt: null,
         rationale: null,
         teacherInstructions: null
-      });
+      }
+    );
 
     const assertView = (label, extra, session, expected) => {
       it(`'mode: view, ${label}'`, async () => {
@@ -114,7 +123,8 @@ describe('controller', () => {
         const result = await model(
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'view', role: 'instructor' });
+          { mode: 'view', role: 'instructor' }
+        );
 
         expect(result).toEqual({
           ...question,
@@ -133,7 +143,7 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
@@ -149,7 +159,7 @@ describe('controller', () => {
       {},
       {
         teacherInstructions: 'Teacher Instructions',
-        rationale: 'Rationale',
+        rationale: 'Rationale'
       }
     );
 
@@ -164,7 +174,8 @@ describe('controller', () => {
         const result = await model(
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'view', role: 'student' });
+          { mode: 'view', role: 'student' }
+        );
 
         expect(result).toEqual({
           ...question,
@@ -183,7 +194,7 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
@@ -214,7 +225,8 @@ describe('controller', () => {
         const result = await model(
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'evaluate', role: 'instructor' });
+          { mode: 'evaluate', role: 'instructor' }
+        );
 
         expect(result).toEqual({
           ...question,
@@ -225,7 +237,7 @@ describe('controller', () => {
           choices: {
             0: [
               { label: 'cow', value: '0', correct: true },
-              { label: 'cattle', value: '1' , correct: true},
+              { label: 'cattle', value: '1', correct: true },
               { label: 'calf', value: '2', correct: true }
             ],
             1: [
@@ -252,14 +264,15 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
-        responseCorrect: true,
+        responseCorrect: true
       }
     );
 
     assertEvaluate(
       '- partially correct answer',
       {},
-      { value: {
+      {
+        value: {
           0: 'cow',
           1: 'over',
           2: 'sun'
@@ -267,14 +280,15 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
 
     assertEvaluate(
       '- partially correct answer using alternates',
       {},
-      { value: {
+      {
+        value: {
           0: 'calf',
           1: 'over',
           2: 'sun'
@@ -282,14 +296,15 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
 
     assertEvaluate(
       '- incorrect answer',
       {},
-      { value: {
+      {
+        value: {
           0: 'han',
           1: 'above',
           2: 'chicken'
@@ -297,7 +312,7 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
   });
@@ -325,7 +340,7 @@ describe('controller', () => {
     assertScore({ value: { 0: 'cat', 1: 'under', 2: 'moon' } }, 0.33);
     assertScore({ value: { 0: 'cat', 1: 'under', 2: 'sun' } }, 0);
 
-    const returnScore = (session) => {
+    const returnScore = session => {
       it(`score = 0 when session is ${JSON.stringify(session)}`, () => {
         expect(getScore(question, session)).toEqual(0);
       });
@@ -336,44 +351,36 @@ describe('controller', () => {
     returnScore({});
   });
 
-  describe('outcome partialScoring test', () => {
-    const assertOutcome = (message, extra, sessionValue, env, expected) => {
-      it(message, async () => {
-        const result = await outcome({
-            ...question,
-            ...extra
-          },
+  describe('outcome partialScoring', () => {
+    it.each`
+      model        | env          | score
+      ${undefined} | ${undefined} | ${0.67}
+      ${true}      | ${undefined} | ${0.67}
+      ${undefined} | ${true}      | ${0.67}
+      ${false}     | ${true}      | ${0}
+      ${true}      | ${false}     | ${0}
+      ${false}     | ${undefined} | ${0}
+      ${undefined} | ${false}     | ${0}
+      ${false}     | ${false}     | ${0}
+    `(
+      'model: $model, env: $env => score: $score',
+      async ({ model, env, score }) => {
+        const sessionValue = { value: { 0: 'calf', 1: 'under', 2: 'moon' } };
+        const result = await outcome(
+          { ...question, partialScoring: model },
           sessionValue,
-          env
+          { mode: 'evaluate', partialScoring: env }
         );
-
-        expect(result).toEqual(expect.objectContaining(expected));
-      });
-    };
-
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0.67 });
-
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0 });
-
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
-        mode: 'evaluate',
-        partialScoring: true
-      }, { score: 0.67 });
-
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
-        mode: 'evaluate',
-        partialScoring: false
-      }, { score: 0 });
+        expect(result).toEqual(expect.objectContaining({ score }));
+      }
+    );
   });
 
   describe('outcome', () => {
     const assertOutcome = (partialScoring, sessionValue, expected) => {
       it(`partial score ${partialScoring ? 'enabled' : ''}`, async () => {
-        const result = await outcome({
+        const result = await outcome(
+          {
             ...question,
             partialScoring
           },
@@ -384,37 +391,133 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome(true, { value: { 0: 'cow', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'cattle', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'calf', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'cow', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'cattle', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'calf', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'cow', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'cattle', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'calf', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(true, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { score: 0.67, empty: false });
-    assertOutcome(true, { value: { 0: 'cat', 1: 'under', 2: 'moon' } }, { score: 0.33, empty: false });
-    assertOutcome(true, { value: { 0: 'cat', 1: 'under', 2: 'sun' } }, { score: 0, empty: false });
+    assertOutcome(
+      true,
+      { value: { 0: 'cow', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cattle', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'calf', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cow', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cattle', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'calf', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cow', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cattle', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'calf', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      { score: 0.67, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cat', 1: 'under', 2: 'moon' } },
+      { score: 0.33, empty: false }
+    );
+    assertOutcome(
+      true,
+      { value: { 0: 'cat', 1: 'under', 2: 'sun' } },
+      { score: 0, empty: false }
+    );
 
-    assertOutcome(false, { value: { 0: 'cow', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'cattle', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'calf', 1: 'over', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'cow', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'cattle', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'calf', 1: 'past', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'cow', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'cattle', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'calf', 1: 'beyond', 2: 'moon' } }, { score: 1, empty: false });
-    assertOutcome(false, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { score: 0, empty: false });
-    assertOutcome(false, { value: { 0: 'cat', 1: 'under', 2: 'moon' } }, { score: 0, empty: false });
-    assertOutcome(false, { value: { 0: 'cat', 1: 'under', 2: 'sun' } }, { score: 0, empty: false });
+    assertOutcome(
+      false,
+      { value: { 0: 'cow', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cattle', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'calf', 1: 'over', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cow', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cattle', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'calf', 1: 'past', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cow', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cattle', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'calf', 1: 'beyond', 2: 'moon' } },
+      { score: 1, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'calf', 1: 'under', 2: 'moon' } },
+      { score: 0, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cat', 1: 'under', 2: 'moon' } },
+      { score: 0, empty: false }
+    );
+    assertOutcome(
+      false,
+      { value: { 0: 'cat', 1: 'under', 2: 'sun' } },
+      { score: 0, empty: false }
+    );
 
-    const returnModel = (session) => {
+    const returnModel = session => {
       it(`empty: true when session is ${JSON.stringify(session)}`, async () => {
         const m = await outcome(question, session);
 
-        expect(m).toEqual(expect.objectContaining({ score: 0, empty: true }))
+        expect(m).toEqual(expect.objectContaining({ score: 0, empty: true }));
       });
     };
 
@@ -437,7 +540,7 @@ describe('controller', () => {
       let question;
       beforeEach(() => {
         question = {
-          choices,
+          choices
         };
       });
 
@@ -446,11 +549,17 @@ describe('controller', () => {
           mode: 'gather',
           role: 'instructor'
         });
-        expect(sess).toEqual({ 'id': '1', 'value': { '0': 'cow', '1': 'over', '2': 'moon' } });
+        expect(sess).toEqual({
+          id: '1',
+          value: { '0': 'cow', '1': 'over', '2': 'moon' }
+        });
       });
 
       it('returns null env is student', async () => {
-        const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+        const noResult = await createCorrectResponseSession(question, {
+          mode: 'gather',
+          role: 'student'
+        });
         expect(noResult).toBeNull();
       });
     });
@@ -463,7 +572,10 @@ describe('controller', () => {
         role: 'instructor'
       });
 
-      expect(sess).toEqual({ 'id': '1', 'value': { 0: 'cow', 1: 'over', 2: 'moon' } });
+      expect(sess).toEqual({
+        id: '1',
+        value: { 0: 'cow', 1: 'over', 2: 'moon' }
+      });
     });
 
     it('returns correct response if role is instructor and mode is view', async () => {
@@ -472,28 +584,38 @@ describe('controller', () => {
         role: 'instructor'
       });
 
-      expect(sess).toEqual({ 'id': '1', 'value': { 0: 'cow', 1: 'over', 2: 'moon' } });
+      expect(sess).toEqual({
+        id: '1',
+        value: { 0: 'cow', 1: 'over', 2: 'moon' }
+      });
     });
 
     it('returns null if mode is evaluate', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'evaluate',
+        role: 'instructor'
+      });
 
       expect(noResult).toBeNull();
     });
 
     it('returns null if role is student', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'student'
+      });
 
       expect(noResult).toBeNull();
     });
-
   });
 
   describe('prepareChoice', () => {
     const assertPrepareChoice = (env, defaultFeedback, choice, expected) => {
       const preparChoiceFn = prepareChoice(env.mode, defaultFeedback);
 
-      it(`prepare choices in ${env.mode} mode: ${JSON.stringify(choice)} -> ${JSON.stringify(expected)}`, () => {
+      it(`prepare choices in ${env.mode} mode: ${JSON.stringify(
+        choice
+      )} -> ${JSON.stringify(expected)}`, () => {
         expect(preparChoiceFn(choice)).toEqual(expected);
       });
     };
@@ -501,43 +623,72 @@ describe('controller', () => {
     assertPrepareChoice(
       { mode: 'gather' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
+      { value: '0', label: 'cow' },
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'view' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
+      { value: '0', label: 'cow' },
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow'},
+      { value: '0', label: 'cow' },
       { value: '0', label: 'cow', correct: true }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'default' }},
+      { value: '0', label: 'cow', feedback: { type: 'default' } },
       { value: '0', label: 'cow', correct: true, feedback: 'Correct' }
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'custom' }},
+      { value: '0', label: 'cow', feedback: { type: 'custom' } },
       { value: '0', label: 'cow', correct: true, feedback: undefined }
     );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
-      { value: '0', label: 'cow', feedback: { type: 'custom', value: 'Custom Feedback' }},
+      {
+        value: '0',
+        label: 'cow',
+        feedback: { type: 'custom', value: 'Custom Feedback' }
+      },
       { value: '0', label: 'cow', correct: true, feedback: 'Custom Feedback' }
     );
+  });
+});
+
+// const choice = (l, v) => ({ label: l, value: v });
+
+const d = {
+  prompt: '',
+  teacherInstructions: true,
+  studentInstructions: false,
+  choices: {
+    0: [choice('A', '0'), choice('B', '1')]
+  },
+  markup:
+    '<p>\n  <strong>Esta cuadrícula de coordenadas representa el diseño del salón de matemáticas de Valerie. Cada unidad en la cuadricula representa 1 pie cuadrado.&nbsp;</strong>\n</p>\n<p>\n  <strong>* El escritorio de Valeria se encuentra en (-3,-4)</strong>\n</p>\n<p>\n  <strong>* El escritorio de la maestra se encuentra en (5,-4)</strong>\n</p>\n<p>\n  <strong>* El cuarto de materiales se encuentra&nbsp; en (-3,-7)</strong>\n</p>\n<p>\n  <strong><img src="https://storage.googleapis.com/pie-staging-221718-assets/image/180d28b2-0376-428e-b415-de96e158b7e7" alt=""></strong>\n</p>\n<p>\n  &nbsp;\n</p>\n<p>\n  <strong>Anota la distancia, en pies, desde el escritorio de Valerie al cuarto de materiales.</strong>\n</p>\n<p>\n  {{0}} <strong>pies</strong>\n</p>',
+  id: '2422330',
+  rubric: '',
+  element: 'explicit-constructed-response-element',
+  autoScoring: 'partial',
+  rationale: ''
+};
+
+describe('edge cases', () => {
+  it('does not throw an error if the session has no value', async () => {
+    const result = model(d, {}, { mode: 'evaluate' });
+    expect(result).toBeDefined();
   });
 });

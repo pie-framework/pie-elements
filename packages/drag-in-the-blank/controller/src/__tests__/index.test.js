@@ -1,12 +1,18 @@
-import { model, getScore, outcome, createCorrectResponseSession } from '../index';
+import {
+  model,
+  getScore,
+  outcome,
+  createCorrectResponseSession
+} from '../index';
 import { getAllCorrectResponses, choiceIsEmpty } from '../utils';
 
 const choice = (v, id) => ({ value: v, id });
 
 describe('controller', () => {
-  let question, session, env;
+  let updateSession, question, session, env;
 
   beforeEach(() => {
+    updateSession = jest.fn().mockResolvedValue();
     question = {
       id: '1',
       element: 'drag-in-the-blank',
@@ -17,10 +23,7 @@ describe('controller', () => {
         '1': '1'
       },
       duplicates: true,
-      alternateResponses : [
-        ['1'],
-        ['0']
-      ]
+      alternateResponses: [['1'], ['0']]
     };
   });
 
@@ -31,13 +34,11 @@ describe('controller', () => {
       it('calls updateSession', async () => {
         session = { id: '1', element: 'drag-in-the-blank' };
         env = { mode: 'gather' };
-        const updateSession = jest.fn().mockResolvedValue();
-        await model({
-          ...question,
-          choices: [
-            choice('<div>6</div>', '0'),
-            choice('<div>9</div>', '1')
-          ]},
+        await model(
+          {
+            ...question,
+            choices: [choice('<div>6</div>', '0'), choice('<div>9</div>', '1')]
+          },
           session,
           env,
           updateSession
@@ -61,7 +62,12 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        const result = await model(q, { id: '1', element: 'drag-in-the-blank', ...session }, { mode: 'gather' }, jest.fn());
+        const result = await model(
+          q,
+          { id: '1', element: 'drag-in-the-blank', ...session },
+          { mode: 'gather' },
+          updateSession
+        );
 
         expect(result).toEqual({
           ...q,
@@ -90,7 +96,8 @@ describe('controller', () => {
         rationaleEnabled: true,
         teacherInstructionsEnabled: true,
         studentInstructionsEnabled: true
-      });
+      }
+    );
 
     assertGather(
       'promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
@@ -98,7 +105,7 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
@@ -109,7 +116,8 @@ describe('controller', () => {
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false
-      });
+      }
+    );
 
     const assertView = (label, extra, session, expected) => {
       it(`'mode: view, ${label}'`, async () => {
@@ -128,7 +136,8 @@ describe('controller', () => {
           q,
           { id: '1', element: 'drag-in-the-blank', ...session },
           { mode: 'view', role: 'instructor' },
-          jest.fn());
+          updateSession
+        );
 
         expect(result).toEqual({
           ...q,
@@ -151,7 +160,7 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
@@ -194,7 +203,8 @@ describe('controller', () => {
           q,
           { id: '1', element: 'drag-in-the-blank', ...session },
           { mode: 'view', role: 'student' },
-          jest.fn());
+          updateSession
+        );
 
         expect(result).toEqual({
           ...q,
@@ -217,7 +227,7 @@ describe('controller', () => {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
-        studentInstructionsEnabled: false,
+        studentInstructionsEnabled: false
       },
       {},
       {
@@ -262,7 +272,8 @@ describe('controller', () => {
           q,
           { id: '1', element: 'drag-in-the-blank', ...session },
           { mode: 'evaluate', role: 'instructor' },
-          jest.fn());
+          updateSession
+        );
 
         expect(result).toEqual({
           ...q,
@@ -287,7 +298,7 @@ describe('controller', () => {
       { value: { 0: '1', 1: '0' } },
       {
         feedback: { 0: true, 1: true },
-        responseCorrect: true,
+        responseCorrect: true
       }
     );
 
@@ -297,7 +308,7 @@ describe('controller', () => {
       { value: { 0: '1', 1: '1' } },
       {
         feedback: { 0: false, 1: true },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
 
@@ -307,7 +318,7 @@ describe('controller', () => {
       { value: { 0: '2', 1: '0' } },
       {
         feedback: { 0: false, 1: true },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
 
@@ -317,35 +328,51 @@ describe('controller', () => {
       { value: { 0: '2', 1: '2' } },
       {
         feedback: { 0: false, 1: false },
-        responseCorrect: false,
+        responseCorrect: false
       }
     );
 
     it('returns expected model when session is undefined', async () => {
-      const m = await model(question, undefined, { mode: 'evaluate' }, jest.fn());
+      const m = await model(
+        question,
+        undefined,
+        { mode: 'evaluate' },
+        updateSession
+      );
 
-      expect(m).toEqual(expect.objectContaining({
-        ...question,
-        responseCorrect: false,
-      }));
+      expect(m).toEqual(
+        expect.objectContaining({
+          ...question,
+          responseCorrect: false
+        })
+      );
     });
 
     it('returns expected model when session is null', async () => {
-      const m = await model(question, null, { mode: 'evaluate' }, jest.fn());
+      const m = await model(
+        question,
+        null,
+        { mode: 'evaluate' },
+        updateSession
+      );
 
-      expect(m).toEqual(expect.objectContaining({
-        ...question,
-        responseCorrect: false,
-      }));
+      expect(m).toEqual(
+        expect.objectContaining({
+          ...question,
+          responseCorrect: false
+        })
+      );
     });
 
     it('returns expected model when session is empty', async () => {
-      const m = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+      const m = await model(question, {}, { mode: 'evaluate' }, updateSession);
 
-      expect(m).toEqual(expect.objectContaining({
-        ...question,
-        responseCorrect: false,
-      }));
+      expect(m).toEqual(
+        expect.objectContaining({
+          ...question,
+          responseCorrect: false
+        })
+      );
     });
   });
 
@@ -361,16 +388,16 @@ describe('controller', () => {
       choice('<div>7</div>', '7'),
       choice('<div>8</div>', '8'),
       choice('<div>10</div>', '9'),
-      choice('<div>11</div>', '10'),
+      choice('<div>11</div>', '10')
     ],
     correctResponse: {
       '0': '0',
       '1': '1'
     },
-    alternateResponses : [
+    alternateResponses: [
       ['1', '5', '10', '6', '9', '7', '8'],
       ['0', '10', '5', '9', '6', '8', '7']
-    ],
+    ]
   };
 
   describe('get score', () => {
@@ -382,25 +409,25 @@ describe('controller', () => {
       });
     };
 
-    assertScore({ value: { 0: '1', 1: '0' }}, 1);
-    assertScore({ value: { 0: '0', 1: '1' }}, 1);
-    assertScore({ value: { 0: '5', 1: '10' }}, 1);
-    assertScore({ value: { 0: '10', 1: '5' }}, 1);
-    assertScore({ value: { 0: '6', 1: '9' }}, 1);
-    assertScore({ value: { 0: '9', 1: '6' }}, 1);
-    assertScore({ value: { 0: '8', 1: '7' }}, 1);
-    assertScore({ value: { 0: '7', 1: '8' }}, 1);
-    assertScore({ value: { 0: '1', 1: '1' }}, 0.5);
-    assertScore({ value: { 0: '7', 1: '7' }}, 0.5);
-    assertScore({ value: { 0: '8', 1: '8' }}, 0.5);
-    assertScore({ value: { 0: '2', 1: '3' }}, 0);
-    assertScore({ value: { 0: '3', 1: '4' }}, 0);
+    assertScore({ value: { 0: '1', 1: '0' } }, 1);
+    assertScore({ value: { 0: '0', 1: '1' } }, 1);
+    assertScore({ value: { 0: '5', 1: '10' } }, 1);
+    assertScore({ value: { 0: '10', 1: '5' } }, 1);
+    assertScore({ value: { 0: '6', 1: '9' } }, 1);
+    assertScore({ value: { 0: '9', 1: '6' } }, 1);
+    assertScore({ value: { 0: '8', 1: '7' } }, 1);
+    assertScore({ value: { 0: '7', 1: '8' } }, 1);
+    assertScore({ value: { 0: '1', 1: '1' } }, 0.5);
+    assertScore({ value: { 0: '7', 1: '7' } }, 0.5);
+    assertScore({ value: { 0: '8', 1: '8' } }, 0.5);
+    assertScore({ value: { 0: '2', 1: '3' } }, 0);
+    assertScore({ value: { 0: '3', 1: '4' } }, 0);
 
     it('returns expected score when session is undefined', () => {
       expect(getScore(question, undefined)).toEqual(0);
     });
 
-    it('returns expected score when session is null',  () => {
+    it('returns expected score when session is null', () => {
       expect(getScore(question, null)).toEqual(0);
     });
 
@@ -409,10 +436,17 @@ describe('controller', () => {
     });
   });
 
-  describe('getScore partialScoring test', () => {
-    const assertOutcome = (message, partialScoring, sessionValue, env, expected) => {
+  describe('getScore partialScoring', () => {
+    const assertOutcome = (
+      message,
+      partialScoring,
+      sessionValue,
+      env,
+      expected
+    ) => {
       it(message, async () => {
-        const result = await outcome({
+        const result = await outcome(
+          {
             ...config,
             partialScoring
           },
@@ -424,54 +458,61 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      true, { 0: '1', 1: '1' }, { mode: 'evaluate' }, { score: 0.5 });
-
-    assertOutcome('element.partialScoring = false',
-      false, { 0: '3', 1: '4' }, { mode: 'evaluate' }, { score: 0 });
-
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0.5 });
-
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      true, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+    it.each`
+      model        | env          | score
+      ${undefined} | ${undefined} | ${0.5}
+      ${true}      | ${undefined} | ${0.5}
+      ${undefined} | ${true}      | ${0.5}
+      ${false}     | ${true}      | ${0}
+      ${true}      | ${false}     | ${0}
+      ${false}     | ${undefined} | ${0}
+      ${undefined} | ${false}     | ${0}
+      ${false}     | ${false}     | ${0}
+    `(
+      'model: $model, env: $env => score: $score',
+      async ({ model, env, score }) => {
+        const sessionValue = { value: { 0: '1', 1: '1' } };
+        const result = await outcome(
+          { ...question, partialScoring: model },
+          sessionValue,
+          { mode: 'evaluate', partialScoring: env }
+        );
+        expect(result).toEqual(expect.objectContaining({ score }));
+      }
+    );
   });
 
   describe('outcome', () => {
-    const assertOutcome = (partialScoring, sessionValue, expected) => {
-      it(`partial score ${partialScoring ? 'enabled' : ''}`, async () => {
-        const result = await outcome({
-            ...config,
-            partialScoring
-          },
-          { value: sessionValue }
-        );
-
-        expect(result).toEqual(expected);
+    describe.each`
+      value                  | score
+      ${{ 0: '1', 1: '0' }}  | ${1}
+      ${{ 0: '5', 1: '10' }} | ${1}
+      ${{ 0: '10', 1: '5' }} | ${1}
+      ${{ 0: '7', 1: '5' }}  | ${0.5}
+      ${{ 0: '3', 1: '4' }}  | ${0}
+      ${{ 0: '2', 1: '3' }}  | ${0}
+    `('$value => $score', async ({ value, score }) => {
+      let e, d;
+      const disabledScore = score === 1 ? 1 : 0;
+      beforeEach(async () => {
+        e = await outcome({ ...config, partialScoring: true }, { value });
+        d = await outcome({ ...config, partialScoring: false }, { value });
       });
-    };
 
-    assertOutcome(true, { 0: '1', 1: '0' }, { score: 1, empty: false });
-    assertOutcome(true, { 0: '1', 1: '1' }, { score: 0.5, empty: false });
-    assertOutcome(true, { 0: '5', 1: '10' }, { score: 1, empty: false });
-    assertOutcome(true, { 0: '10', 1: '5' }, { score: 1, empty: false });
-    assertOutcome(true, { 0: '7', 1: '7' }, { score: 0.5, empty: false });
-    assertOutcome(true, { 0: '3', 1: '4' }, { score: 0, empty: false });
-    assertOutcome(true, { 0: '2', 1: '3' }, { score: 0, empty: false });
-
-    assertOutcome(false, { 0: '1', 1: '0' }, { score: 1, empty: false });
-    assertOutcome(false, { 0: '1', 1: '1' }, { score: 0, empty: false });
-    assertOutcome(false, { 0: '5', 1: '10' }, { score: 1, empty: false });
-    assertOutcome(false, { 0: '10', 1: '5' }, { score: 1, empty: false });
-    assertOutcome(false, { 0: '7', 1: '7' }, { score: 0, empty: false });
-    assertOutcome(false, { 0: '3', 1: '4' }, { score: 0, empty: false });
-    assertOutcome(false, { 0: '2', 1: '3' }, { score: 0, empty: false });
-
-    it('returns expected outcome when session is undefined', async () => {
-      expect(await outcome(question, undefined)).toEqual({ score: 0, empty: true });
+      it(`partialScoring enabled - score: ${score}`, () =>
+        expect(e).toMatchObject({ score }));
+      it(`partialScoring disabled - score: ${disabledScore}`, () =>
+        expect(d).toMatchObject({ score: disabledScore }));
     });
 
-    it('returns expected outcome when session is null',  async () => {
+    it('returns expected outcome when session is undefined', async () => {
+      expect(await outcome(question, undefined)).toEqual({
+        score: 0,
+        empty: true
+      });
+    });
+
+    it('returns expected outcome when session is null', async () => {
       expect(await outcome(question, null)).toEqual({ score: 0, empty: true });
     });
 
@@ -487,7 +528,7 @@ describe('controller', () => {
         role: 'instructor'
       });
 
-      expect(sess).toEqual({"id": "1", "value": {"0": "0", "1": "1"}});
+      expect(sess).toEqual({ id: '1', value: { '0': '0', '1': '1' } });
     });
 
     it('returns correct response if role is instructor and mode is view', async () => {
@@ -496,21 +537,26 @@ describe('controller', () => {
         role: 'instructor'
       });
 
-      expect(sess).toEqual({"id": "1", "value": {"0": "0", "1": "1"}});
+      expect(sess).toEqual({ id: '1', value: { '0': '0', '1': '1' } });
     });
 
     it('returns null if mode is evaluate', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'evaluate',
+        role: 'instructor'
+      });
 
       expect(noResult).toBeNull();
     });
 
     it('returns null if role is student', async () => {
-      const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+      const noResult = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'student'
+      });
 
       expect(noResult).toBeNull();
     });
-
   });
 
   describe('get all correct responses', () => {
@@ -530,66 +576,81 @@ describe('controller', () => {
       }
     });
 
-    assertCorrectResponses({
-      ...config,
-      alternateResponses : [
-        ['1', '5', '10', '6', '9', '7', '8'],
-        ['0', '10', '5', '9', '6']
-      ],
-    }, {
-      numberOfPossibleResponses: 6,
-      possibleResponses: {
-        '0': ['0', '1', '5', '10', '6', '9', '7', '8'],
-        '1': ['1', '0', '10', '5', '9', '6']
+    assertCorrectResponses(
+      {
+        ...config,
+        alternateResponses: [
+          ['1', '5', '10', '6', '9', '7', '8'],
+          ['0', '10', '5', '9', '6']
+        ]
+      },
+      {
+        numberOfPossibleResponses: 6,
+        possibleResponses: {
+          '0': ['0', '1', '5', '10', '6', '9', '7', '8'],
+          '1': ['1', '0', '10', '5', '9', '6']
+        }
       }
-    });
+    );
 
-    assertCorrectResponses({
-      ...config,
-      alternateResponses : [
-        ['1', '5', '10', '6', '9'],
-        ['0', '10', '5', '9', '6', '8', '7']
-      ],
-    }, {
-      numberOfPossibleResponses: 6,
-      possibleResponses: {
-        '0': ['0', '1', '5', '10', '6', '9'],
-        '1': ['1', '0', '10', '5', '9', '6', '8', '7']
+    assertCorrectResponses(
+      {
+        ...config,
+        alternateResponses: [
+          ['1', '5', '10', '6', '9'],
+          ['0', '10', '5', '9', '6', '8', '7']
+        ]
+      },
+      {
+        numberOfPossibleResponses: 6,
+        possibleResponses: {
+          '0': ['0', '1', '5', '10', '6', '9'],
+          '1': ['1', '0', '10', '5', '9', '6', '8', '7']
+        }
       }
-    });
+    );
 
-    assertCorrectResponses({
-      ...config,
-      alternateResponses : [],
-    }, {
-      numberOfPossibleResponses: 1,
-      possibleResponses: {
-        '0': ['0'],
-        '1': ['1']
+    assertCorrectResponses(
+      {
+        ...config,
+        alternateResponses: []
+      },
+      {
+        numberOfPossibleResponses: 1,
+        possibleResponses: {
+          '0': ['0'],
+          '1': ['1']
+        }
       }
-    });
+    );
 
-    assertCorrectResponses({
-      ...config,
-      alternateResponses : null,
-    }, {
-      numberOfPossibleResponses: 1,
-      possibleResponses: {
-        '0': ['0'],
-        '1': ['1']
+    assertCorrectResponses(
+      {
+        ...config,
+        alternateResponses: null
+      },
+      {
+        numberOfPossibleResponses: 1,
+        possibleResponses: {
+          '0': ['0'],
+          '1': ['1']
+        }
       }
-    });
+    );
 
-    assertCorrectResponses({
-      ...config,
-      alternateResponses : undefined,
-    }, {
-      numberOfPossibleResponses: 1,
-      possibleResponses: {
-        '0': ['0'],
-        '1': ['1']
+    assertCorrectResponses(
+      {
+        ...config,
+        alternateResponses: undefined
+      },
+      {
+        numberOfPossibleResponses: 1,
+        possibleResponses: {
+          '0': ['0'],
+          '1': ['1']
+        }
       }
-    });
+    );
   });
 
   describe('choice is empty', () => {
@@ -602,13 +663,20 @@ describe('controller', () => {
     assertChoiceIsEmpty({ value: '' }, true);
     assertChoiceIsEmpty({ value: '    ' }, true);
     assertChoiceIsEmpty({ value: '<div></div>' }, true);
-    assertChoiceIsEmpty({ value: '' +
-        '' +
-        '' }, true);
+    assertChoiceIsEmpty({ value: '' + '' + '' }, true);
     assertChoiceIsEmpty({ value: '<div><div></div><span></span></div>' }, true);
-    assertChoiceIsEmpty({ value: '<div><div></div>  <span></span></div>' }, true);
-    assertChoiceIsEmpty({ value: '<div><div></div><span>.</span></div>' }, false);
-    assertChoiceIsEmpty({ value: 'I<div><div></div><span></span></div>' }, false);
+    assertChoiceIsEmpty(
+      { value: '<div><div></div>  <span></span></div>' },
+      true
+    );
+    assertChoiceIsEmpty(
+      { value: '<div><div></div><span>.</span></div>' },
+      false
+    );
+    assertChoiceIsEmpty(
+      { value: 'I<div><div></div><span></span></div>' },
+      false
+    );
     assertChoiceIsEmpty({ value: 'Test' }, false);
   });
 });
