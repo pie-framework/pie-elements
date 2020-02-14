@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^3.0.14"
+    "@pie-ui/math-inline": "^3.0.15"
   },
   "pie": {
     "element": "@pie-ui/math-inline"
