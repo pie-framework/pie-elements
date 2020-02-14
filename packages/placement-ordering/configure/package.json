@@ -16,7 +16,7 @@
     "nested-property": "^0.0.7",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
-    "react-dnd": "^9.3.2",
+    "react-dnd": "^10.0.2",
     "react-dom": "^16.8.1"
   }
 }
