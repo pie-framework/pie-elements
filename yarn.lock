@@ -1944,6 +1944,17 @@
     react-dnd "^9.3.2"
     react-dnd-html5-backend "^9.3.2"
 
+"@pie-lib/drag@^1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.23.tgz#0a77fed67d7915027be12eb08ab094dec5b1e7c6"
+  integrity sha512-1hZ4OzzX7GMXrnITH2XMhqgHtgs5zLem1ak1eYZD0clXDI4XjacYStJFnHsW4mRYwV0+7ttDezSwAlHTvfDlJg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    react-dnd "^10.0.2"
+    react-dnd-html5-backend "^10.0.2"
+
 "@pie-lib/editable-html@^7.10.26", "@pie-lib/editable-html@^7.10.27":
   version "7.10.27"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.27.tgz#f69eafc44930332a77503c26bea30e4015f1d8cb"
@@ -1987,6 +1998,38 @@
     "@pie-lib/drag" "^1.1.21"
     "@pie-lib/math-rendering" "^2.1.0"
     "@pie-lib/math-toolbar" "^1.4.15"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.10.41":
+  version "7.10.41"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.10.41.tgz#0a025bf94657f4fb59c08597b3074f969b261c4b"
+  integrity sha512-ezFWpyOcFhiPxpZp0xFkdYzVei5SiwZljVItvr3TcXkc0cZypkcU7i3R2AIDTArup5pjfXf2ECEO9iWIFC9d2Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.23"
+    "@pie-lib/math-rendering" "^2.1.0"
+    "@pie-lib/math-toolbar" "^1.4.16"
     change-case "^3.0.2"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -2132,6 +2175,18 @@
     lodash "^4.17.11"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^6.3.11":
+  version "6.3.11"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.11.tgz#24e78635003054f7ed19e51ace44edb085219587"
+  integrity sha512-KepVfbVXI3EhJXeK5OHn6CiaZr9ImUhepr2OdJ0GZ2MJw8pOq+Oz/XWAeLe1aZIb1a8fQP2mlN3B7YfUqTtH+Q==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^0.10.3"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-input@^6.3.5":
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.5.tgz#0079b2c43c17810ee213255c573d4fa70228b6d4"
@@ -2193,6 +2248,18 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-input" "^6.3.10"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    keycode "^2.2.0"
+
+"@pie-lib/math-toolbar@^1.4.16":
+  version "1.4.16"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.4.16.tgz#dbf5b06144afa9f8ac9e4939af130e582e9cf2ad"
+  integrity sha512-eHjaccchc7syjC0Sv/YpTuSwlu3KptNr/hNbZhOrabJhrvExtRtIfsH4Olc+6xmtWFa82wFv7Pm4bWHxZMBsaA==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/math-input" "^6.3.11"
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
@@ -2753,6 +2820,21 @@
     react-dom "^16.8.1"
     react-number-format PieElements/react-number-format#feature/bad-input
     react-transition-group "^2.3.1"
+
+"@react-dnd/asap@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@react-dnd/asap/-/asap-4.0.0.tgz#b300eeed83e9801f51bd66b0337c9a6f04548651"
+  integrity sha512-0XhqJSc6pPoNnf8DhdsPHtUhRzZALVzYMTzRwV4VI6DJNJ/5xxfL9OQUwb8IH5/2x7lSf7nAZrnzUD+16VyOVQ==
+
+"@react-dnd/invariant@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@react-dnd/invariant/-/invariant-2.0.0.tgz#09d2e81cd39e0e767d7da62df9325860f24e517e"
+  integrity sha512-xL4RCQBCBDJ+GRwKTFhGUW8GXa4yoDfJrPbLblc3U09ciS+9ZJXJ3Qrcs/x2IODOdIE5kQxvMmE2UKyqUictUw==
+
+"@react-dnd/shallowequal@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@react-dnd/shallowequal/-/shallowequal-2.0.0.tgz#a3031eb54129f2c66b2753f8404266ec7bf67f0a"
+  integrity sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==
 
 "@tbranyen/jsdom@^13.0.0":
   version "13.0.0"
@@ -5558,6 +5640,15 @@ discontinuous-range@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
   integrity sha1-44Mx8IRLukm5qctxx3FYWqsbxlo=
+
+dnd-core@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-10.0.2.tgz#051dc119682ea1185622f954667670d3d5f6a574"
+  integrity sha512-PrxEjxF0+6Y1n1n1Z9hSWZ1tvnDXv9syL+BccV1r1RC08uWNsyetf8AnWmUF3NgYPwy0HKQJwTqGkZK+1NlaFA==
+  dependencies:
+    "@react-dnd/asap" "^4.0.0"
+    "@react-dnd/invariant" "^2.0.0"
+    redux "^4.0.4"
 
 dnd-core@^9.4.0:
   version "9.4.0"
@@ -10519,12 +10610,29 @@ react-beautiful-dnd@^11.0.2:
     tiny-invariant "^1.0.4"
     use-memo-one "^1.1.0"
 
+react-dnd-html5-backend@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-10.0.2.tgz#15cb9d2b923f43576a136df854e288cb5969784c"
+  integrity sha512-ny17gUdInZ6PIGXdzfwPhoztRdNVVvjoJMdG80hkDBamJBeUPuNF2Wv4D3uoQJLjXssX1+i9PhBqc7EpogClwQ==
+  dependencies:
+    dnd-core "^10.0.2"
+
 react-dnd-html5-backend@^9.3.2:
   version "9.4.0"
   resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-9.4.0.tgz#5b1d192f57d103298657cde1fe0eabdbf2726311"
   integrity sha512-gehPwLp505F6RoFkQiDX7Q4mbpbyfyT0TbIoZop/m4vkBw6yUE/QLrnxBQdNpDPSwL/9XkZxxd/PrbeMCQ+WrQ==
   dependencies:
     dnd-core "^9.4.0"
+
+react-dnd@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-10.0.2.tgz#a6ad8eb3d9f2c573031f7ce05012e5c767a0b1fc"
+  integrity sha512-SC2Ymvntynhoqtf5zaFhZscm9xenCoMofilxPdlwUlaelAzmbl9fw82C4ZJ//+lNm3kWAKXjGDZg2/aWjKEAtg==
+  dependencies:
+    "@react-dnd/shallowequal" "^2.0.0"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    dnd-core "^10.0.2"
+    hoist-non-react-statics "^3.3.0"
 
 react-dnd@^9.3.2:
   version "9.4.0"
