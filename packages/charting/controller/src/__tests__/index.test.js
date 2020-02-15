@@ -3,7 +3,9 @@ import {
   checkLabelsEquality,
   filterCategories,
   getScore,
-  createCorrectResponseSession
+  createCorrectResponseSession,
+  outcome,
+  model
 } from '../index';
 
 describe('setCorrectness', () => {
@@ -1041,3 +1043,140 @@ describe('createCorrectResponseSession', () => {
   });
 });
 
+describe('outcome', () => {
+  const session = {
+    "answer": [
+      {
+        "interactive": true,
+        "deletable": false,
+        "initial": true,
+        "value": 3,
+        "label": "Three"
+      },
+      {
+        "deletable": false,
+        "initial": true,
+        "value": 2,
+        "label": "Four",
+        "interactive": true
+      },
+      {
+        "value": 4,
+        "label": "Five",
+        "interactive": true,
+        "deletable": false,
+        "initial": true
+      },
+      {
+        "interactive": true,
+        "editable": true,
+        "deletable": true,
+        "value": 0.25,
+        "label": "six"
+      },
+      {
+        "deletable": true,
+        "value": 1,
+        "label": "seven",
+        "interactive": true,
+        "editable": true
+      },
+      {
+        "interactive": true,
+        "editable": true,
+        "deletable": true,
+        "value": 1,
+        "label": "eight"
+      }
+    ],
+    "id": "4028e4a24e6f8eaf014ed1b0833635d3"
+  };
+  const question = {
+    "addCategoryEnabled": true,
+    "chartType": "bar",
+    "data": [
+      {
+        "interactive": true,
+        "value": 3,
+        "label": "Three",
+        "deletable": false,
+        "initial": true
+      },
+      {
+        "interactive": true,
+        "value": 0,
+        "label": "Four",
+        "deletable": false,
+        "initial": true
+      },
+      {
+        "interactive": true,
+        "value": 0,
+        "label": "Five",
+        "deletable": false,
+        "initial": true
+      }
+    ],
+    "correctAnswer": {
+      "data": [
+        {
+          "value": 3,
+          "label": "Three"
+        },
+        {
+          "value": 2,
+          "label": "Four"
+        },
+        {
+          "value": 4,
+          "label": "Five"
+        },
+        {
+          "value": 0,
+          "label": "Six"
+        },
+        {
+          "value": 1,
+          "label": "Seven"
+        },
+        {
+          "value": 1,
+          "label": "Eight"
+        }
+      ]
+    },
+    "domain": {
+      "label": "Number of Letters"
+    },
+    "graph": {
+      "height": 500,
+      "width": 500
+    },
+    "prompt": "<p>Ms. Byrd shows her third grade students how to make a bar graph. She uses the number of letters in some of her students&#39; first names. The students&#39; names she uses for the bar graph are shown below.</p><p><img alt=\"image 2eade8e8a2fa445dae432c417e8a2731\" id=\"2eade8e8a2fa445dae432c417e8a2731\" src=\"https://storage.googleapis.com/pie-prod-221718-assets/image/cf2c334e-340c-4523-9a47-cb835fddfefe\"></p><p>Ms. Byrd starts the bar graph by writing some of the labels.&#160;Finish the bar graph below by dragging the bars to show the correct number of first name letters of all the students and adding labels as needed.</p><p></p><p></p><p></p>",
+    "range": {
+      "label": "Number of Students",
+      "max": 6,
+      "labelStep": 0.25,
+      "step": 0.25,
+      "min": 0
+    },
+    "rationale": null,
+    "title": "Number of Letters in First Name",
+    "disabled": false,
+    "teacherInstructions": null,
+  };
+
+  it.each`
+      mode          |       partialScoring        |       expected
+      ${'evaluate'} |       ${true}               |       ${0.89}
+      ${'evaluate'} |       ${false}              |       ${0}
+      ${'gather'}   |       ${true}               |       ${0}
+    `('mode ${mode}, partialScoring ${partialScoring} => $expected', async ({ mode, partialScoring, expected }) => {
+    const env = { mode, partialScoring };
+
+    const mod =  await model(question, session, env);
+    const result = await outcome(mod, session, env);
+
+    expect(result.score).toEqual(expected);
+  });
+});
