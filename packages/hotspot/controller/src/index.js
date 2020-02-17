@@ -72,7 +72,7 @@ export const createDefaultModel = (model = {}) =>
     resolve({
       ...defaults,
       ...model,
-    })
+    });
   });
 
 const getScore = (config, session, env = {}) => {
@@ -92,6 +92,7 @@ const getScore = (config, session, env = {}) => {
   let correctAnswers = 0;
 
   const choices = [...rectangles, ...polygons];
+
   choices.forEach(shape => {
     const selected = answers && answers.filter(answer => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;

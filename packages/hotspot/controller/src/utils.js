@@ -3,22 +3,25 @@ import isEmpty from 'lodash/isEmpty';
 
 export const getCorrectResponse = (choices) => choices
   .filter(c => c.correct)
-  .map(c => ({ id: c.id }))
+  .map(c => c.id)
   .sort();
 
 export const isResponseCorrect = (question, session) => {
   const { shapes: { rectangles, polygons } } = question;
   const choices = [...rectangles, ...polygons];
-  let correctResponse = getCorrectResponse(choices);
+  let correctResponseIds = getCorrectResponse(choices);
 
   if (!session || isEmpty(session)) {
     return false;
   }
 
   if (session.answers && session.answers.length) {
-    return isEqual((session.answers || []).sort(), correctResponse);
-  } else if (!(correctResponse && correctResponse.length)) {
+    let answerIds = (session.answers || []).map(a => a.id);
+
+    return isEqual(answerIds.sort(), correctResponseIds);
+  } else if (!(correctResponseIds && correctResponseIds.length)) {
     return true;
   }
+
   return false;
 };
