@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.2.3...@pie-element/math-inline-controller@5.2.4) (2020-02-18)
+
+
+### Bug Fixes
+
+* **math-inline:** no responses on controller object unless mode is evaluate ([195a6ce](https://github.com/pie-framework/pie-elements/commit/195a6ce))
+
+
+
+
+
 ## [5.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.2.2...@pie-element/math-inline-controller@5.2.3) (2020-01-31)
 
 

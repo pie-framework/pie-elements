@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.3...@pie-element/hotspot@4.2.4) (2020-02-18)
+
+
+### Bug Fixes
+
+* ch7555: selecting answers in a different order was not working (Hot spot scoring problem in IBX (legacy content with multiple correct answers)) ([6ffd5a3](https://github.com/pie-framework/pie-elements/commit/6ffd5a3))
+
+
+
+
+
 ## [4.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.2...@pie-element/hotspot@4.2.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/hotspot
