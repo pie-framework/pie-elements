@@ -118,16 +118,145 @@ describe('equalLine', () => {
     });
   };
 
+  // Y axis 0
+  // A(0, 0), B(1, 0); AB & BA
+  // same segment, 2 points in common
   assert(
     { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
     { from: { x: 1, y: 0 }, to: { x: 0, y: 0 } },
     true
   );
+  // A(0, 0), B(1, 0), C(3, 0); AB & CB
+  // same line, only one point in common
   assert(
     { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
     { from: { x: 3, y: 0 }, to: { x: 1, y: 0 } },
     true
   );
+  // A(0, 0), B(1, 0), C(30, 0), D(10, 0); AB & CD
+  // same line, no point in common
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 30, y: 0 }, to: { x: 10, y: 0 } },
+    true
+  );
+  // parallel lines on Y axis
+  // A(-4, 0), B(1, 0), C(-1, -1), D(10, -1)
+  assert(
+    { from: { x: -4, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: -1, y: -1 }, to: { x: 10, y: -1 } },
+    false
+  );
+
+  // X axis 0
+  // A(0, 0), B(0, 1); AB & BA
+  // same segment, 2 points in common
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 0, y: 1 } },
+    { from: { x: 0, y: 1 }, to: { x: 0, y: 0 } },
+    true
+  );
+  // A(0, 0), B(0, 1), C(0, -10); AB & BC
+  // same line, only one point in common
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 0, y: 1 } },
+    { from: { x: 0, y: 1 }, to: { x: 0, y: -10 } },
+    true
+  );
+  // A(0, 0), B(0, 1), C(0, -20), D(0, -10); AB & CD
+  // same line, no point in common
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 0, y: 1 } },
+    { from: { x: 0, y: -20 }, to: { x: 0, y: -10 } },
+    true
+  );
+  // parallel lines on X axis
+  // A(-1, 2), B(-1, -70), C(10, -10), D(10, 134)
+  assert(
+    { from: { x: -1, y: 2 }, to: { x: -1, y: 70 } },
+    { from: { x: 10, y: -10 }, to: { x: 10, y: 134 } },
+    false
+  );
+
+
+  // A(-10, -10), B(-6, 9), C(10, -10), D(10, 134)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: -6, y: 9 } },
+    { from: { x: 10, y: -10 }, to: { x: 10, y: 134 } },
+    false
+  );
+
+  // A(-10, -10), B(-6, 9), C(10, 10), D(6, -9)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: -6, y: 9 } },
+    { from: { x: 10, y: 10 }, to: { x: 6, y: -9 } },
+    false
+  );
+
+  // A(-10, -10), B(-6, 9), C(-6, 9), D(-2, 28)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: -6, y: 9 } },
+    { from: { x: -6, y: 9 }, to: { x: -2, y: 28 } },
+    true
+  );
+
+  // A(-10, -10), B(-6, 9), C(-4, 18.5), D(-2, 28)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: -6, y: 9 } },
+    { from: { x: -4, y: 18.5 }, to: { x: -2, y: 28 } },
+    true
+  );
+
+  // A(-10, -10), B(-6, 9), C(-4, 18.5), D(-2, 28)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: -6, y: 9 } },
+    { from: { x: -2, y: 28 }, to: { x: -4, y: 18.5 } },
+    true
+  );
+
+
+  // A(0, 0), B(1, 0), C(12, 0), D(12, 1); AB & AC
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 12, y: 0 } },
+    true
+  );
+
+  // A(0, 0), B(1, 0), C(12, 0), D(12, 1); AB & AD
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+    false
+  );
+
+  // A(0, 0), B(1, 0), C(12, 0), D(12, 1); AC & AD
+  assert(
+    { from: { x: 0, y: 0 }, to: { x: 12, y: 0 } },
+    { from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+    false
+  );
+
+  // A(-10, -10), B(0, 0), C(20, 20), D(11, 11)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: 0, y: 0 } },
+    { from: { x: 20, y: 20 }, to: { x: 11, y: 11 } },
+    true
+  );
+
+  // A(-10, -10), B(0, 0), C(-1, -1), D(22, 22)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: 0, y: 0 } },
+    { from: { x: -1, y: -1 }, to: { x: 22, y: 22 } },
+    true
+  );
+
+  // A(-10, -10), B(0, 0), C(-1, -1), D(22, 22)
+  assert(
+    { from: { x: -10, y: -10 }, to: { x: 0, y: 0 } },
+    { from: { x: -1, y: 0 }, to: { x: 22, y: 23 } },
+    false
+  );
+
   assert(
     { from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
     { from: { x: 10, y: 10 }, to: { x: 1, y: 0 } },
@@ -385,20 +514,38 @@ describe('eliminateDuplicates', () => {
 
   assert(
     [
+      // A = B, D = E = F, G = H => B, E, F, H are eliminated
+      // A
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
+      // B
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 0 } },
-      { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } }
+      // C
+      { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+      // D
+      { type: 'line', from: { x: 0, y: 1 }, to: { x: 12, y: 1 } },
+      // E
+      { type: 'line', from: { x: 20, y: 1 }, to: { x: 19, y: 1 } },
+      // F
+      { type: 'line', from: { x: -10, y: 1 }, to: { x: -12, y: 1 } },
+      // G
+      { type: 'line', from: { x: 0, y: -1 }, to: { x: 0, y: 1 } },
+      // H
+      { type: 'line', from: { x: 0, y: 10 }, to: { x: 0, y: 9 } },
+      // I
+      { type: 'line', from: { x: -1, y: 10 }, to: { x: -1, y: 9 } },
+      // J
+      { type: 'line', from: { x: -2, y: 10 }, to: { x: -2, y: 9 } },
     ],
     {
       point: [],
       segment: [],
       line: [
         { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
-        {
-          type: 'line',
-          from: { x: 0, y: 0 },
-          to: { x: 12, y: 1 }
-        }
+        { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
+        { type: 'line', from: { x: 0, y: 1 }, to: { x: 12, y: 1 } },
+        { type: 'line', from: { x: 0, y: -1 }, to: { x: 0, y: 1 } },
+        { type: 'line', from: { x: -1, y: 10 }, to: { x: -1, y: 9 } },
+        { type: 'line', from: { x: -2, y: 10 }, to: { x: -2, y: 9 } },
       ],
       ray: [],
       vector: [],
