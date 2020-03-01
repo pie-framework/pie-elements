@@ -88,10 +88,18 @@ describe('controller', () => {
       expect(result.score).toEqual(0);
     });
 
-    it('returns score of 1', async () => {
+    it('returns score of 1 (partialScoring: false, answers in order)', async () => {
       const result = await outcome(
         question,
         { answers: [{ id: '1' }, { id: '4' }] }
+      );
+      expect(result.score).toEqual(1);
+    });
+
+    it('returns score of 1 (partialScoring: false, answers not in order)', async () => {
+      const result = await outcome(
+        question,
+        { answers: [{ id: '4' }, { id: '1' }] }
       );
       expect(result.score).toEqual(1);
     });
@@ -126,6 +134,15 @@ describe('controller', () => {
         );
         expect(result.score).toEqual(0.4);
       });
+
+      it('returns a score of 0.4, even if answers are not in order', async () => {
+        const result = await outcome(
+          question,
+          { answers: [{ id: '5' }, { id: '2' }] }
+        );
+        expect(result.score).toEqual(0.4);
+      });
+
 
       it('returns a score of 0.6', async () => {
         const result = await outcome(
