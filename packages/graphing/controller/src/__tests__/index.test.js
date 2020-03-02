@@ -387,7 +387,7 @@ describe('equalCircle', () => {
   );
 });
 
-describe.only('equalSine', () => {
+describe('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
     it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
       sine1.edge.y
@@ -750,7 +750,29 @@ describe('eliminateDuplicates', () => {
     [
       { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
       { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
-      { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: 1 } }
+      { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: 1 } },
+      { type: 'sine', root: { x: 1, y: 0 }, edge: { x: 1, y: 1 } },
+      { type: 'sine', root: { x: 20, y: 0 }, edge: { x: 21, y: 1 } },
+      { type: 'sine', root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
+      { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 0, y: 0 } },
+      { type: 'sine', root: { x: 0, y: 1 }, edge: { x: 1, y: 1 } },
+      { type: 'sine', root: { x: 24, y: 1 }, edge: { x: 25, y: 1 } },
+
+      { type: 'sine', root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+      { type: 'sine', root: { x: -0.6, y: 0 }, edge: { x: -0.9, y: -1.2 } },
+      { type: 'sine', root: { x: -2.4, y: 0 }, edge: { x: -2.7, y: 1.2 } },
+      { type: 'sine', root: { x: -2.4, y: 0 }, edge: { x: -2.1, y: -1.2 } },
+      { type: 'sine', root: { x: 0, y: 0 }, edge: { x: -0.3, y: 1.2 } },
+      { type: 'sine', root: { x: 3, y: 0 }, edge: { x: 3.3, y: 1.2 } },
+      { type: 'sine', root: { x: 3, y: 0 }, edge: { x: 2.7, y: -1.2 } },
+      { type: 'sine', root: { x: 0.9, y: 1.2 }, edge: { x: 0.6, y: 0 } },
+      { type: 'sine', root: { x: 0.6, y: 0 }, edge: { x: 0.6, y: 0 } },
+
+      { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+      { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: -2 } },
+      { type: 'sine', root: { x: -10, y: 0 }, edge: { x: -11, y: 2 } },
+      { type: 'sine', root: { x: -10, y: 0 }, edge: { x: -9, y: -2 } },
+      { type: 'sine', root: { x: -10, y: 0 }, edge: { x: -9, y: 2 } },
     ],
     {
       point: [],
@@ -760,7 +782,19 @@ describe('eliminateDuplicates', () => {
       vector: [],
       polygon: [],
       circle: [],
-      sine: [{ type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } }],
+      sine: [
+        { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+        { type: 'sine', root: { x: 2, y: 0 }, edge: { x: 3, y: 1 } },
+        { type: 'sine', root: { x: 1, y: 0 }, edge: { x: 1, y: 1 } },
+        { type: 'sine', root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
+        { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 0, y: 0 } },
+        { type: 'sine', root: { x: 0, y: 1 }, edge: { x: 1, y: 1 } },
+        { type: 'sine', root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+        { type: 'sine', root: { x: 0.9, y: 1.2 }, edge: { x: 0.6, y: 0 } },
+        { type: 'sine', root: { x: 0.6, y: 0 }, edge: { x: 0.6, y: 0 } },
+        { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+        { type: 'sine', root: { x: -10, y: 0 }, edge: { x: -9, y: 2 } }
+      ],
       parabola: []
     },
     'sine'

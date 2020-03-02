@@ -166,9 +166,6 @@ export const equalSine = (sine1, sine2) => {
     edgeAboveZeroX: edgeAboveZeroX1,
     edgeAboveZeroY: edgeAboveZeroY1
   } = studentAnswerBpY;
-
-  console.log('\n\nstudentAnswerBpY ', sine1, 'amplitude', amplitude1, 'freq: ',freq1, 'min: ',min1, 'max: ',max1, 'edgeAboveZeroX:', edgeAboveZeroX1, 'edgeAboveZeroY', edgeAboveZeroY1);
-
   const {
     amplitude: amplitude2,
     freq: freq2,
@@ -177,8 +174,6 @@ export const equalSine = (sine1, sine2) => {
     edgeAboveZeroX: edgeAboveZeroX2,
     edgeAboveZeroY: edgeAboveZeroY2
   } = correctAnswerBpY;
-
-  console.log('correctAnswerBpY', sine2,' amplitude2', amplitude2, 'freq: ',freq2, 'min: ',min2, 'max: ',max2, 'edgeAboveZeroX:', edgeAboveZeroX2, 'edgeAboveZeroY', edgeAboveZeroY2);
 
   return (Math.abs(amplitude1) === Math.abs(amplitude2) &&
     Math.abs(freq1) === Math.abs(freq2) &&
