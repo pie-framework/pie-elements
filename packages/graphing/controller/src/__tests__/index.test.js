@@ -1,4 +1,9 @@
 import {
+  buildDataPoints,
+  getAmplitudeAndFreq,
+  parabolaFromTwoPoints
+} from '@pie-lib/graphing-utils';
+import {
   equalPoint,
   equalSegment,
   equalVector,
@@ -17,24 +22,14 @@ import {
   createCorrectResponseSession
 } from '../index';
 
-jest.mock('@pie-lib/graphing-utils', () => ({
-  sinY: jest.fn(),
-  buildDataPoints: (min, max, root, edge) => [min, root, edge, max],
-  getAmplitudeAndFreq: () => ({
-    amplitude: 0,
-    freq: 1
-  }),
-  parabolaFromTwoPoints: jest.fn(),
-  FREQ_DIVIDER: 0
-}));
-
-describe('controller', () => {});
+describe('controller', () => {
+});
 
 describe('equalPoint', () => {
   const assert = (pointA, pointB, expected) => {
     it(`${pointA.x},${pointA.y} & ${pointB.x},${pointB.y} ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalPoint(pointA, pointB);
 
       expect(result).toEqual(expected);
@@ -49,9 +44,9 @@ describe('equalSegment', () => {
   const assert = (s1, s2, expected) => {
     it(`[(${s1.from.x},${s1.from.y}), (${s1.to.x},${s1.to.y})], [(${
       s2.from.x
-    },${s2.from.y}), (${s2.to.x},${s2.to.y})] ${
+      },${s2.from.y}), (${s2.to.x},${s2.to.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalSegment(s1, s2);
 
       expect(result).toEqual(expected);
@@ -79,9 +74,9 @@ describe('equalVector', () => {
   const assert = (v1, v2, expected) => {
     it(`[(${v1.from.x},${v1.from.y}), (${v1.to.x},${v1.to.y})], [(${
       v2.from.x
-    },${v2.from.y}), (${v2.to.x},${v2.to.y})] ${
+      },${v2.from.y}), (${v2.to.x},${v2.to.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalVector(v1, v2);
 
       expect(result).toEqual(expected);
@@ -109,9 +104,9 @@ describe('equalLine', () => {
   const assert = (l1, l2, expected) => {
     it(`[(${l1.from.x},${l1.from.y}), (${l1.to.x},${l1.to.y})], [(${
       l2.from.x
-    },${l2.from.y}), (${l2.to.x},${l2.to.y})] ${
+      },${l2.from.y}), (${l2.to.x},${l2.to.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalLine(l1, l2);
 
       expect(result).toEqual(expected);
@@ -268,9 +263,9 @@ describe('equalRay', () => {
   const assert = (r1, r2, expected) => {
     it(`[(${r1.from.x},${r1.from.y}), (${r1.to.x},${r1.to.y})], [(${
       r2.from.x
-    },${r2.from.y}), (${r2.to.x},${r2.to.y})] ${
+      },${r2.from.y}), (${r2.to.x},${r2.to.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalRay(r1, r2);
 
       expect(result).toEqual(expected);
@@ -356,9 +351,9 @@ describe('equalCircle', () => {
   const assert = (c1, c2, expected) => {
     it(`[(${c1.root.x},${c1.root.y}), (${c1.edge.x},${c1.edge.y})], [(${
       c2.root.x
-    },${c2.root.y}), (${c2.edge.x},${c2.edge.y})] ${
+      },${c2.root.y}), (${c2.edge.x},${c2.edge.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalCircle(c1, c2);
 
       expect(result).toEqual(expected);
@@ -392,13 +387,13 @@ describe('equalCircle', () => {
   );
 });
 
-describe('equalSine', () => {
+describe.only('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
     it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
       sine1.edge.y
-    })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
+      })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
       sine2.edge.y
-    })] ${expected ? 'are' : 'are not'} equal`, () => {
+      })] ${expected ? 'are' : 'are not'} equal`, () => {
       const result = equalSine(sine1, sine2);
 
       expect(result).toEqual(expected);
@@ -410,16 +405,102 @@ describe('equalSine', () => {
     { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
     true
   );
-  // TODO
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    { root: { x: 1, y: 0 }, edge: { x: 1, y: 1 } },
+    false
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    { root: { x: 20, y: 0 }, edge: { x: 21, y: 1 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
+    { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
+    false
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 0, y: 0 } },
+    { root: { x: 21, y: 0 }, edge: { x: 21, y: 1 } },
+    false
+  );
+  assert(
+    { root: { x: 0, y: 1 }, edge: { x: 1, y: 1 } },
+    { root: { x: 24, y: 1 }, edge: { x: 25, y: 1 } },
+    true
+  );
+
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: -0.6, y: 0 }, edge: { x: -0.9, y: -1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: -2.4, y: 0 }, edge: { x: -2.7, y: 1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: -2.4, y: 0 }, edge: { x: -2.1, y: -1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: 0, y: 0 }, edge: { x: -0.3, y: 1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: 3, y: 0 }, edge: { x: 3.3, y: 1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: 3, y: 0 }, edge: { x: 2.7, y: -1.2 } },
+    true
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: 0.9, y: 1.2 }, edge: { x: 0.6, y: 0 } },
+    false
+  );
+  assert(
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.9, y: 1.2 } },
+    { root: { x: 0.6, y: 0 }, edge: { x: 0.6, y: 0 } },
+    false
+  );
+
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+    { root: { x: 2, y: 0 }, edge: { x: 3, y: -2 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+    { root: { x: -10, y: 0 }, edge: { x: -11, y: 2 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+    { root: { x: -10, y: 0 }, edge: { x: -9, y: 2 } },
+    false
+  );
+  assert(
+    { root: { x: 0, y: 0 }, edge: { x: 1, y: 2 } },
+    { root: { x: -10, y: 0 }, edge: { x: -9, y: -2 } },
+    true
+  );
 });
 
 describe('equalParabola', () => {
   const assert = (p1, p2, expected) => {
     it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${
       p2.root.x
-    },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
+      },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
+      } equal`, () => {
       const result = equalParabola(p1, p2);
 
       expect(result).toEqual(expected);
@@ -734,7 +815,7 @@ describe('eliminateDuplicates', () => {
   assertInvalidMarks(null);
   assertInvalidMarks({});
 
-  it("removes the marks that don't have a valid type", () => {
+  it('removes the marks that don\'t have a valid type', () => {
     const result = eliminateDuplicates([
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },
@@ -761,7 +842,7 @@ describe('eliminateDuplicates', () => {
     });
   });
 
-  it("removes the marks that don't have a type", () => {
+  it('removes the marks that don\'t have a type', () => {
     const result = eliminateDuplicates([
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 1, y: 0 } },
       { type: 'line', from: { x: 0, y: 0 }, to: { x: 12, y: 1 } },

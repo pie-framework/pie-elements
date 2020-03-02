@@ -5,16 +5,16 @@ import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 import isEmpty from 'lodash/isEmpty';
+import { Decimal } from 'decimal.js';
 import {
-  sinY,
   buildDataPoints,
   getAmplitudeAndFreq,
-  FREQ_DIVIDER,
   parabolaFromTwoPoints
 } from '@pie-lib/graphing-utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
+const DecimalCustom = Decimal.clone({ precision: 5, rounding: 4 });
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
@@ -65,19 +65,19 @@ export const equalLine = (line1, line2) => {
   const proportions = [];
 
   if (a2 !== 0) {
-    proportions.push(a1 / a2);
+    proportions.push(new DecimalCustom(a1 / a2).toSignificantDigits().valueOf());
   } else if (a1 !== a2) {
     return false;
   }
 
   if (b2 !== 0) {
-    proportions.push(b1 / b2);
+    proportions.push(new DecimalCustom(b1 / b2).toSignificantDigits().valueOf());
   } else if (b1 !== b2) {
     return false;
   }
 
   if (c2 !== 0) {
-    proportions.push(c1 / c2);
+    proportions.push(new DecimalCustom(c1 / c2).toSignificantDigits().valueOf());
   } else if (c1 !== c2) {
     return false;
   }
@@ -129,32 +129,63 @@ export const equalSine = (sine1, sine2) => {
     const tXRoot = Math.abs(root.x - edge.x);
     // the distance on x axis between 2 edges for sine wave (min & max)
     const tX = tXRoot * 2;
-    // the edge placed east side of root on the max limit
-    let edgeAboveZero = edge.x < root.x ? root.x + tXRoot : edge.x;
+    // the first edge placed east side of root
+    let edgeAboveZeroX = edge.x;
+    let edgeAboveZeroY = edge.y;
 
-    // if edge less then 0, find out the appropriate edge on max limit placed east side of zero (0)
-    while (edgeAboveZero < 0) {
-      edgeAboveZero = edgeAboveZero + tX;
+    // if edge less then 0, find out the appropriate edge placed east side of zero (0)
+    while (edgeAboveZeroX < 0 && tX !== 0) {
+      edgeAboveZeroX = edgeAboveZeroX + tX;
+      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
+    }
+
+    // if edge more then 0, find out the appropriate edge placed east side of zero (0)
+    while (edgeAboveZeroX - tX > 0 && tX !== 0) {
+      edgeAboveZeroX = edgeAboveZeroX - tX;
+      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
     }
 
     return {
-      amplitude,
-      freq,
-      min: edge.y < root.y ? edge.y : edge.y - tY,
-      max: edge.y < root.y ? edge.y + tY : edge.y,
-      // the distance between closest edge and point 0 on axis X
-      rootDiff: Math.abs(edgeAboveZero / tX - Math.floor(edgeAboveZero / tX))
+      amplitude: new DecimalCustom(amplitude).toSignificantDigits().valueOf(),
+      freq: new DecimalCustom(freq).toSignificantDigits().valueOf(),
+      min: new DecimalCustom(edge.y < root.y ? edge.y : edge.y - tY).toSignificantDigits().valueOf(),
+      max: new DecimalCustom(edge.y < root.y ? edge.y + tY : edge.y).toSignificantDigits().valueOf(),
+      edgeAboveZeroX: new DecimalCustom(edgeAboveZeroX).toSignificantDigits().valueOf(),
+      edgeAboveZeroY: new DecimalCustom(edgeAboveZeroY).toSignificantDigits().valueOf()
     };
   };
 
   const studentAnswerBpY = getPoints(sine1);
   const correctAnswerBpY = getPoints(sine2);
 
-  const { amplitude: amplitude1, freq: freq1, min: min1, max: max1, rootDiff: rootDiff1 } = studentAnswerBpY;
-  const { amplitude: amplitude2, freq: freq2, min: min2, max: max2, rootDiff: rootDiff2 } = correctAnswerBpY;
+  const {
+    amplitude: amplitude1,
+    freq: freq1,
+    min: min1,
+    max: max1,
+    edgeAboveZeroX: edgeAboveZeroX1,
+    edgeAboveZeroY: edgeAboveZeroY1
+  } = studentAnswerBpY;
 
+  console.log('\n\nstudentAnswerBpY ', sine1, 'amplitude', amplitude1, 'freq: ',freq1, 'min: ',min1, 'max: ',max1, 'edgeAboveZeroX:', edgeAboveZeroX1, 'edgeAboveZeroY', edgeAboveZeroY1);
 
-  return (Math.abs(amplitude1) === Math.abs(amplitude2) && Math.abs(freq1) === Math.abs(freq2) && min1 === min2 && max1 === max2 && rootDiff1 === rootDiff2);
+  const {
+    amplitude: amplitude2,
+    freq: freq2,
+    min: min2,
+    max: max2,
+    edgeAboveZeroX: edgeAboveZeroX2,
+    edgeAboveZeroY: edgeAboveZeroY2
+  } = correctAnswerBpY;
+
+  console.log('correctAnswerBpY', sine2,' amplitude2', amplitude2, 'freq: ',freq2, 'min: ',min2, 'max: ',max2, 'edgeAboveZeroX:', edgeAboveZeroX2, 'edgeAboveZeroY', edgeAboveZeroY2);
+
+  return (Math.abs(amplitude1) === Math.abs(amplitude2) &&
+    Math.abs(freq1) === Math.abs(freq2) &&
+    min1 === min2 && max1 === max2 &&
+    edgeAboveZeroX1 === edgeAboveZeroX2 &&
+    edgeAboveZeroY1 === edgeAboveZeroY2);
+    // rootDiff1 === rootDiff2);
 };
 
 export const equalParabola = (p1, p2) => {
