@@ -142,6 +142,32 @@ describe('HotspotDrawable', () => {
       wrapper.instance().state.isDrawing = true;
       wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
 
+      wrapper.instance().handleOnStageClick({
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      });
+
+      expect(onUpdateShapes).toHaveBeenCalledWith([...initialModel.shapes.slice(0, 2)]);
+
+      // at this point, state.stateShapes is false, so we don't want to update shapes with false (onUpdateShapes)
+      expect(wrapper.instance().state.stateShapes).toEqual(false);
+
+      wrapper.instance().handleOnStageClick({
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      });
+
+      expect(onUpdateShapes).not.toBeCalledWith(false);
+    });
+
+    it('handleOnStageClick isDrawing = true', () => {
+      wrapper.instance().state.isDrawing = true;
+      wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
+
       wrapper.instance().handleOnStageClick({});
 
       expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2))

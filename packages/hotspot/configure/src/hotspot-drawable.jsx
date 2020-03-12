@@ -28,7 +28,11 @@ export class Drawable extends React.Component {
     // If we're drawing a shape, a click finishes the drawing and sends the new shapes to HOC
     if (isDrawing) {
       this.setState({ isDrawing: !isDrawing, stateShapes: false, isDrawingShapeId: undefined });
-      onUpdateShapes(stateShapes);
+
+      if (stateShapes) {
+        onUpdateShapes(stateShapes);
+      }
+
       return;
     }
 
