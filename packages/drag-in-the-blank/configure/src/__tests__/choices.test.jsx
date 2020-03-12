@@ -2,8 +2,8 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Choices } from '../choices';
-import sensibleDefaults from "../defaults";
-import { createSlateMarkup, processMarkup } from "../markupUtils";
+import sensibleDefaults from '../defaults';
+import { createSlateMarkup, processMarkup } from '../markupUtils';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
@@ -76,7 +76,7 @@ describe('Choices', () => {
     };
     const props = { ...defaults };
 
-    return shallow(<Choices {...props} />, {disableLifecycleMethods: true});
+    return shallow(<Choices {...props} />, { disableLifecycleMethods: true });
   };
 
   describe('snapshot', () => {
@@ -109,7 +109,8 @@ describe('Choices', () => {
       it('does not remove a choice if its new value is empty, but is used in correct response', () => {
         const jsdomAlert = window.alert;  // remember the jsdom alert
 
-        window.alert = () => {};
+        window.alert = () => {
+        };
 
         w.instance().onChoiceChanged('<div>9</div>', '', '1');
 
@@ -121,7 +122,8 @@ describe('Choices', () => {
       it('does not remove a choice if its new value is empty, but is used in alternate response', () => {
         const jsdomAlert = window.alert;  // remember the jsdom alert
 
-        window.alert = () => {};
+        window.alert = () => {
+        };
 
         wrapper({ markup: '{{0}}' })
           .instance().onChoiceChanged('<div>9</div>', '', '1');
@@ -134,7 +136,8 @@ describe('Choices', () => {
       it('does not remove a choice if its new value is empty, but the old value was empty as well (at focusing a new choice without editing)', () => {
         const jsdomAlert = window.alert;  // remember the jsdom alert
 
-        window.alert = () => {};
+        window.alert = () => {
+        };
 
         wrapper({ markup: '{{0}}' })
           .instance().onChoiceChanged('', '', '1');
@@ -170,7 +173,7 @@ describe('Choices', () => {
 
         expect(onChange).toBeCalledWith([
           ...model.choices,
-          { id: '3', value: ''}
+          { id: '3', value: '' }
         ]);
       });
     });
@@ -184,6 +187,89 @@ describe('Choices', () => {
           { value: '<div>12</div>', id: '2' }
         ]);
       });
+    });
+
+    describe('getVisibleChoices', () => {
+      it('choices are null => returns []', () => {
+        const visibleChoices = wrapper({ model: { choices: null } }).instance().getVisibleChoices();
+
+        expect(visibleChoices).toEqual([]);
+      });
+
+      it('duplicates = true', () => {
+        const choices = [
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>9</div>', id: '1' },
+          { value: '<div>12</div>', id: '2' },
+        ];
+        const visibleChoices = wrapper({
+          model: {
+            duplicates: true,
+            choices: choices,
+            correctResponse: {
+              '0': '0',
+              '1': '1'
+            },
+          }
+        }).instance().getVisibleChoices();
+
+        expect(visibleChoices).toEqual(choices);
+      });
+
+      it('duplicates = false', () => {
+        const choices = [
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>9</div>', id: '1' },
+          { value: '<div>12</div>', id: '2' },
+        ];
+        const visibleChoices = wrapper({
+          duplicates: false,
+          model: {
+            choices: choices,
+            correctResponse: {
+              '0': '0',
+              '1': '1'
+            },
+          }
+        }).instance().getVisibleChoices();
+
+        expect(visibleChoices).toEqual([{ value: '<div>12</div>', id: '2' }]);
+      });
+
+      it('duplicates = false, empty correctResponse', () => {
+        const choices = [
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>9</div>', id: '1' },
+          { value: '<div>12</div>', id: '2' },
+        ];
+        const visibleChoices = wrapper({
+          duplicates: false,
+          model: {
+            choices: choices,
+            correctResponse: {},
+          }
+        }).instance().getVisibleChoices();
+
+        expect(visibleChoices).toEqual(choices);
+      });
+
+      it('duplicates = false, correctResponse = null', () => {
+        const choices = [
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>9</div>', id: '1' },
+          { value: '<div>12</div>', id: '2' },
+        ];
+        const visibleChoices = wrapper({
+          duplicates: false,
+          model: {
+            choices: choices,
+            correctResponse: null,
+          }
+        }).instance().getVisibleChoices();
+
+        expect(visibleChoices).toEqual(choices);
+      });
+
     });
   });
 });
