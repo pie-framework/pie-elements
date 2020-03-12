@@ -7,9 +7,8 @@ import filter from 'lodash/filter';
 import isEmpty from 'lodash/isEmpty';
 import { Decimal } from 'decimal.js';
 import {
-  buildDataPoints,
   getAmplitudeAndFreq,
-  parabolaFromTwoPoints
+  pointsToABC
 } from '@pie-lib/graphing-utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -184,32 +183,21 @@ export const equalSine = (sine1, sine2) => {
 };
 
 export const equalParabola = (p1, p2) => {
-  const min = p1.root.x < p1.edge.x ? p1.root.x + (p1.root.x - p1.edge.x) : p1.edge.x;
-  const max = p1.root.x < p1.edge.x ? p1.edge.x : p1.root.x + (p1.root.x - p1.edge.x);
-  const minMark = p2.root.x < p2.edge.x ? p2.root.x + (p2.root.x - p2.edge.x) : p2.edge.x;
-  const maxMark = p2.root.x < p2.edge.x ? p2.edge.x : p2.root.x + (p2.root.x - p2.edge.x);
+  const { edge: edgeP1, root: rootP1 } = p1;
+  const { edge: edgeP2, root: rootP2 } = p2;
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
 
-  const getPoints = ({ root, edge }) => {
-    const interval = 1;
-    let bp = buildDataPoints(
-      min,
-      max,
-      root,
-      edge,
-      interval,
-      parabolaFromTwoPoints(root, edge)
-    );
+  const p1mirrorEdge = { x: rootP1.x - (p1edge.x - rootP1.x), y: p1edge.y };
+  const p2mirrorEdge = { x: rootP2.x - (p2edge.x - rootP2.x), y: p2edge.y };
 
-    return bp.map(bpp => bpp.y);
-  };
+  const { a: a1, b: b1 , c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
+  const { a: a2, b: b2 , c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
 
-  const studentAnswerBpY = getPoints(p1);
-  const correctAnswerBpY = getPoints(p2);
+  // sometimes numbers have this form: 1.00000000002 because of calculations, we have to round them
+  const round = number => Math.round(number * 10000) / 10000;
 
-  const nDif = lodash.differenceWith(studentAnswerBpY.reverse(), correctAnswerBpY, isEqual);
-  const dif = lodash.differenceWith(studentAnswerBpY, correctAnswerBpY, isEqual);
-
-  return (dif.length === 0 || nDif.length === 0) && min === minMark && max === maxMark;
+  return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
 };
 
 const initializeGraphMap = () => ({
