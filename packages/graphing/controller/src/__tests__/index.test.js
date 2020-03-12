@@ -512,7 +512,144 @@ describe('equalParabola', () => {
     { root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
     false
   );
-  // TODO
+
+  // a * x^2 + b * x + c
+
+  // a = 8, b = 4, c = 2
+  assert(
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
+    { root: { x: -0.25, y: 1.5 }, edge: { x: -0.75, y: 3.5 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
+    { root: { x: -0.25, y: 1.5 }, edge: { x: -1, y: 6 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 1, y: 14 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 0.25, y: 3.5 } },
+    { root: { x: -0.25, y: 1.5 }, edge: { x: 1.25, y: -19.5 } },
+    false
+  );
+
+  // a = -8, b = -4, c = -2
+  assert(
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
+    { root: { x: -0.25, y: -1.5 }, edge: { x: -0.75, y: -3.5 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
+    { root: { x: -0.25, y: -1.5 }, edge: { x: -1, y: -6 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 1, y: -14 } },
+    true
+  );
+  assert(
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 0.25, y: -3.5 } },
+    { root: { x: -0.25, y: -1.5 }, edge: { x: 1.25, y: 19.5 } },
+    false
+  );
+
+  // a = 10, b = 0, c = -2
+  assert(
+    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
+    { root: { x: 0, y: -2 }, edge: { x: -0.5, y: 0.5 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
+    { root: { x: 0, y: -2 }, edge: { x: -1, y: 8 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
+    { root: { x: 0, y: -2 }, edge: { x: 1, y: 8 } },
+    true
+  );
+  assert(
+    { root: { x: 0, y: -2 }, edge: { x: 0.5, y: 0.5 } },
+    { root: { x: 0, y: -2 }, edge: { x: 3, y: 89 } },
+    false
+  );
+
+  // a = 10, b = -10, c = 0
+  assert(
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: -2.5 }, edge: { x: -1, y: 20 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 1.25, y: 3.125 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: -2.5 }, edge: { x: 3, y: 0 } },
+    false
+  );
+
+  // a = -4, b = 4, c = 0
+  assert(
+    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: 1 }, edge: { x: 1, y: 0 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: 1 }, edge: { x: -0.5, y: -3 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: 1 }, edge: { x: 1.5, y: -3 } },
+    true
+  );
+  assert(
+    { root: { x: 0.5, y: 1 }, edge: { x: 0, y: 0 } },
+    { root: { x: 0.5, y: 1 }, edge: { x: 3, y: 0 } },
+    false
+  );
+
+  // a = -6, b = 4.5, c = 13.9
+  assert(
+    { root: { x: -3 / 8, y: 27 / 32 }, edge: { x: -0.75, y: 0 } },
+    { root: { x: -3 / 8, y: 27 / 32 }, edge: { x: 0, y: 0 } },
+    true
+  );
+
+  // a = -1, b = -9, c = 3
+  assert(
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: (Math.sqrt(93) / 2) - 4.5, y: 0 } },
+    true
+  );
+
+  assert(
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.31 } },
+    true
+  );
+
+  assert(
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
+    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.3000009 } },
+    false
+  );
 });
 
 describe('eliminateDuplicates', () => {
@@ -745,7 +882,6 @@ describe('eliminateDuplicates', () => {
     'circle'
   );
 
-  // TODO
   assert(
     [
       { type: 'sine', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
@@ -804,7 +940,18 @@ describe('eliminateDuplicates', () => {
   assert(
     [
       { type: 'parabola', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-      { type: 'parabola', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } }
+      { type: 'parabola', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
+      // a = -1, b = 4, c = 3
+      { type: 'parabola', root: { x: 2, y: 7 }, edge: { x: 2 + Math.sqrt(7), y: 0 } },
+      { type: 'parabola', root: { x: 2, y: 7 }, edge: { x: 2 - Math.sqrt(7), y: 0 } },
+      { type: 'parabola', root: { x: 2, y: 7 }, edge: { x: 2 - Math.sqrt(57), y: -50 } },
+      { type: 'parabola', root: { x: 2, y: 7 }, edge: { x: 2 - Math.sqrt(57), y: -50 } },
+      // a = 5, b = 5, c = 0
+      { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: 10, y: 550 } },
+      { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: -1, y: 0 } },
+      { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: 0, y: 0 } },
+      { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: -2, y: 10 } },
+      { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: 1, y: 10 } },
     ],
     {
       point: [],
@@ -817,11 +964,9 @@ describe('eliminateDuplicates', () => {
       sine: [],
       parabola: [
         { type: 'parabola', root: { x: 0, y: 0 }, edge: { x: 1, y: 1 } },
-        {
-          type: 'parabola',
-          root: { x: 2, y: 0 },
-          edge: { x: 1, y: 1 }
-        }
+        { type: 'parabola', root: { x: 2, y: 0 }, edge: { x: 1, y: 1 } },
+        { type: 'parabola', root: { x: 2, y: 7 }, edge: { x: 2 + Math.sqrt(7), y: 0 } },
+        { type: 'parabola', root: { x: -0.5, y: -1.25 }, edge: { x: 10, y: 550 } },
       ]
     },
     'parabola'

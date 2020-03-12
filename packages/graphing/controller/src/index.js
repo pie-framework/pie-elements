@@ -194,7 +194,10 @@ export const equalParabola = (p1, p2) => {
   const { a: a1, b: b1 , c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
   const { a: a2, b: b2 , c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
 
-  return Math.round(a1 * 10000) / 10000 === Math.round(a2 * 10000) / 10000 && Math.round(b1 * 10000) / 10000 === Math.round(b2 * 10000) / 10000 && Math.round(c1 * 10000) / 10000 === Math.round(c2 * 10000) / 10000;
+  // sometimes numbers have this form: 1.00000000002 because of calculations, we have to round them
+  const round = number => Math.round(number * 10000) / 10000;
+
+  return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
 };
 
 const initializeGraphMap = () => ({
