@@ -64,15 +64,11 @@ Properties of the `tick` object:
 
 ### `minor` (number, required)
 
-smallest tick
+smallest tick - These ticks don't have labels.
 
 ### `major` (number, required)
 
-larger tick - has labels
-
-## `tickLabelOverrides` (array, required)
-
-The object is an array with all elements of the type `string`.
+larger tick - These ticks have labels.
 
 ## `title` (string)
 
@@ -364,15 +360,11 @@ Properties of the `tick` object:
 
 #### `minor` (number, required)
 
-smallest tick
+smallest tick - These ticks don't have labels.
 
 #### `major` (number, required)
 
-larger tick - has labels
-
-### `tickLabelOverrides` (array, required)
-
-The object is an array with all elements of the type `string`.
+larger tick - These ticks have labels.
 
 ### `title` (string)
 
@@ -466,8 +458,8 @@ Properties of the `Ticks` object:
 
 ### `minor` (number, required)
 
-smallest tick
+smallest tick - These ticks don't have labels.
 
 ### `major` (number, required)
 
-larger tick - has labels
+larger tick - These ticks have labels.

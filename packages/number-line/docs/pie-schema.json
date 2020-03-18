@@ -377,12 +377,12 @@
           "type": "object",
           "properties": {
             "minor": {
-              "description": "smallest tick",
+              "description": "smallest tick - These ticks don't have labels.",
               "type": "number",
               "title": "minor"
             },
             "major": {
-              "description": "larger tick - has labels",
+              "description": "larger tick - These ticks have labels.",
               "type": "number",
               "title": "major"
             }
@@ -391,13 +391,6 @@
             "major",
             "minor"
           ]
-        },
-        "tickLabelOverrides": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "tickLabelOverrides"
         },
         "title": {
           "description": "the title under the graph",
@@ -642,7 +635,6 @@
         "initialType",
         "maxNumberOfPoints",
         "tick",
-        "tickLabelOverrides",
         "width"
       ]
     },
@@ -1089,12 +1081,12 @@
           "type": "object",
           "properties": {
             "minor": {
-              "description": "smallest tick",
+              "description": "smallest tick - These ticks don't have labels.",
               "type": "number",
               "title": "minor"
             },
             "major": {
-              "description": "larger tick - has labels",
+              "description": "larger tick - These ticks have labels.",
               "type": "number",
               "title": "major"
             }
@@ -1103,13 +1095,6 @@
             "major",
             "minor"
           ]
-        },
-        "tickLabelOverrides": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "tickLabelOverrides"
         },
         "title": {
           "description": "the title under the graph",
@@ -1354,7 +1339,6 @@
         "initialType",
         "maxNumberOfPoints",
         "tick",
-        "tickLabelOverrides",
         "width"
       ]
     },
@@ -1399,12 +1383,12 @@
       "type": "object",
       "properties": {
         "minor": {
-          "description": "smallest tick",
+          "description": "smallest tick - These ticks don't have labels.",
           "type": "number",
           "title": "minor"
         },
         "major": {
-          "description": "larger tick - has labels",
+          "description": "larger tick - These ticks have labels.",
           "type": "number",
           "title": "major"
         }
