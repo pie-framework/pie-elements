@@ -11,8 +11,7 @@
     "@pie-lib/controller-utils": "^0.2.5",
     "@pie-lib/feedback": "^0.4.9",
     "@pie-lib/graphing-utils": "^1.1.2",
-    "debug": "^4.1.1",
-    "decimal.js": "10.2.0"
+    "debug": "^4.1.1"
   },
   "devDependencies": {
     "babel-jest": "^22.4.0",

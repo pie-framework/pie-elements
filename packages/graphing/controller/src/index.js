@@ -5,7 +5,6 @@ import lodash from 'lodash';
 import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 import isEmpty from 'lodash/isEmpty';
-import { Decimal } from 'decimal.js';
 import {
   getAmplitudeAndFreq,
   pointsToABC
@@ -13,7 +12,6 @@ import {
 import { partialScoring } from '@pie-lib/controller-utils';
 
 const log = debug('@pie-element:graphing:controller');
-const DecimalCustom = Decimal.clone({ precision: 5, rounding: 4 });
 
 export const equalPoint = (A, B) => {
   // x1 = x2 & y1 = y2
@@ -50,6 +48,8 @@ const returnLineEquationCoefficients = line => {
   };
 };
 
+const getSignificantDecimals = number => Math.round(number * 10000) / 10000;
+
 export const equalLine = (line1, line2) => {
   // line equation: ax + by + c = 0
   // 2 lines are equal if a1/a2 = b1/b2 = c1/c2, where a, b, c are the coefficients in line equation
@@ -64,19 +64,19 @@ export const equalLine = (line1, line2) => {
   const proportions = [];
 
   if (a2 !== 0) {
-    proportions.push(new DecimalCustom(a1 / a2).toSignificantDigits().valueOf());
+    proportions.push(getSignificantDecimals((a1 / a2)));
   } else if (a1 !== a2) {
     return false;
   }
 
   if (b2 !== 0) {
-    proportions.push(new DecimalCustom(b1 / b2).toSignificantDigits().valueOf());
+    proportions.push(getSignificantDecimals((b1 / b2)));
   } else if (b1 !== b2) {
     return false;
   }
 
   if (c2 !== 0) {
-    proportions.push(new DecimalCustom(c1 / c2).toSignificantDigits().valueOf());
+    proportions.push(getSignificantDecimals(c1 / c2));
   } else if (c1 !== c2) {
     return false;
   }
@@ -145,12 +145,12 @@ export const equalSine = (sine1, sine2) => {
     }
 
     return {
-      amplitude: new DecimalCustom(amplitude).toSignificantDigits().valueOf(),
-      freq: new DecimalCustom(freq).toSignificantDigits().valueOf(),
-      min: new DecimalCustom(edge.y < root.y ? edge.y : edge.y - tY).toSignificantDigits().valueOf(),
-      max: new DecimalCustom(edge.y < root.y ? edge.y + tY : edge.y).toSignificantDigits().valueOf(),
-      edgeAboveZeroX: new DecimalCustom(edgeAboveZeroX).toSignificantDigits().valueOf(),
-      edgeAboveZeroY: new DecimalCustom(edgeAboveZeroY).toSignificantDigits().valueOf()
+      amplitude: getSignificantDecimals(amplitude),
+      freq: getSignificantDecimals(freq),
+      min: getSignificantDecimals(edge.y < root.y ? edge.y : edge.y - tY),
+      max: getSignificantDecimals(edge.y < root.y ? edge.y + tY : edge.y),
+      edgeAboveZeroX: getSignificantDecimals(edgeAboveZeroX),
+      edgeAboveZeroY: getSignificantDecimals(edgeAboveZeroY)
     };
   };
 
