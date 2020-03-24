@@ -1,6 +1,11 @@
+const path = require('path');
 module.exports = {
   pkg: {
-    type: 'pie-package'
+    type: 'pie-package',
+    // eslint-disable-next-line no-undef
+    root: path.resolve(__dirname, '../packages'),
+    output: '$pkg/module/index.js',
+    extensions: {}
   },
   packages: ['@pie-element/number-line']
 };
