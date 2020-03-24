@@ -3,6 +3,7 @@
   "private": true,
   "version": "4.5.7",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
