@@ -107,7 +107,16 @@ module.exports = {
     type: 'pie-package',
     // eslint-disable-next-line no-undef
     root: path.resolve(__dirname, '../packages'),
-    output: '$pkg/module/index.js',
+    output: (name, version, type) => {
+      return path.resolve(
+        // eslint-disable-next-line no-undef
+        __dirname,
+        '../packages',
+        name.replace('@pie-element/', ''),
+        'module',
+        `${type}.js`
+      );
+    },
     extensions: { commonJs }
   },
   packages: ['@pie-element/number-line'],
@@ -121,6 +130,11 @@ module.exports = {
       extensions: {
         commonJs
       },
+      repository: 'pie-framework/pie-elements',
+      modules: [
+        /** make use if the pie-ui shared lib */
+        { name: '@pie-ui/shared-lib', version: '^2.0.0' }
+      ],
       /**
        * Ideally namespace imports would be the default import method.
        * But this can cause problems if a library does the following:
