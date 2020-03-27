@@ -2145,7 +2145,7 @@
     jsesc "^2.5.2"
     mathjs "^5.4.1"
 
-"@pie-lib/math-input@^6.3.10", "@pie-lib/math-input@^6.3.11", "@pie-lib/math-input@^6.3.5", "@pie-lib/math-input@^6.4.1":
+"@pie-lib/math-input@^6.3.10", "@pie-lib/math-input@^6.3.11", "@pie-lib/math-input@^6.4.1":
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.4.1.tgz#50fa59e06e2f4ad4035b317a8ded5714a9655c26"
   integrity sha512-DZUEvX28AXQjfX56U9LEKj8FLOy0ZLZbkkQwqRpStoe4kuiVE50LqvvI5I7WRHCyOOmYWCyli/1EJ3Uoy47oSQ==
@@ -2218,18 +2218,6 @@
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/math-input" "^6.4.1"
-    classnames "^2.2.6"
-    debug "^4.1.1"
-    keycode "^2.2.0"
-
-"@pie-lib/math-toolbar@^1.4.7":
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.4.7.tgz#9898df133fffa164cc5882bf8a78b6433ea231db"
-  integrity sha512-eR/sMNMmZMoOFsNknmJ3Xt9gqpQAqu5ZxomcaZ8XK3502vURTm+cXKXD344xh1nRNZk6X1vYaLS6uAfZT/r0Ww==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-lib/math-input" "^6.3.5"
     classnames "^2.2.6"
     debug "^4.1.1"
     keycode "^2.2.0"
