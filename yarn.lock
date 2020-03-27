@@ -2819,10 +2819,10 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@pslb/pslb@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-2.1.0.tgz#db2ab0b6abf25decc7eafa460a5b9be206d6954a"
-  integrity sha512-2dZlHM0EH49CHjRgURRyxZLQ3rbfJHYVcyVZVKlHP2IC+we52P8cp6Ps5hvskXt8BBVJRG7LyTWXREcaejVGjg==
+"@pslb/pslb@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-2.1.2.tgz#705ce0ce25c4582234d5e14694e1243d8664b0e4"
+  integrity sha512-wICX6601n3gch2HsIv7LDfcTHS/2gq8eOSQPcBMjLPpvdT+seRMjheKWJVcAaBuJTjqDV8c9kRauSdAHu3x7QA==
   dependencies:
     "@pslb/plugin-commonjs" "^11.0.3"
     "@pslb/rollup-plugin-dll" "^2.0.0"
