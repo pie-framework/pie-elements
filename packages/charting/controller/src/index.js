@@ -161,7 +161,9 @@ export function model(question, session, env) {
       rationaleEnabled,
       teacherInstructions,
       teacherInstructionsEnabled,
-      correctAnswer
+      correctAnswer,
+      partialScoring,
+      scoringType
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -181,6 +183,8 @@ export function model(question, session, env) {
       size: graph,
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
+      partialScoring,
+      scoringType
     };
 
     if (env.mode === 'evaluate' || env.mode === 'view') {

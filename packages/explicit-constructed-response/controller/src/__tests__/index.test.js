@@ -351,8 +351,8 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0.67 });
+    // if model.partialScoring = false
+    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
 
     assertOutcome('element.partialScoring = false',
       { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0 });
@@ -361,7 +361,14 @@ describe('controller', () => {
       { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
         mode: 'evaluate',
         partialScoring: true
-      }, { score: 0.67 });
+      }, { score: 0 });
+
+    // else if model.partialScoring = true || undefined
+    //  - if env.partialScoring = false, use dichotomous scoring
+    //  - else if env.partialScoring = true, use partial scoring
+
+    assertOutcome('element.partialScoring = true',
+      { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, { mode: 'evaluate' }, { score: 0.67 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {

@@ -234,6 +234,7 @@ describe('index', () => {
   });
 
   describe('outcome', () => {
+
     const assertOutcome = (question, value, expectedScore, env) => {
       it(`${expectedScore} when answer: ${value} and question: ${JSON.stringify(
         question
@@ -264,6 +265,12 @@ describe('index', () => {
     assertOutcomeSessionNotset(undefined);
     assertOutcomeSessionNotset(null);
     assertOutcomeSessionNotset({});
+
+    // if model.partialScoring = false
+    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
+    // else if model.partialScoring = true || undefined
+    //  - if env.partialScoring = false, use dichotomous scoring
+    //  - else if env.partialScoring = true, use partial scoring
 
     // Main Correct Response
     assertOutcome(
@@ -330,7 +337,7 @@ describe('index', () => {
         alternateResponses: [['a', 'b']]
       },
       ['c', 'a', 'b'],
-      0.33,
+      0,
       { partialScoring: true }
     );
 
@@ -399,7 +406,7 @@ describe('index', () => {
         alternateResponses: [['a', 'c', 'b']]
       },
       ['c', 'a', 'b'],
-      0.67,
+      0,
       { partialScoring: true }
     );
   });

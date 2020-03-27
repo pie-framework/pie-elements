@@ -389,17 +389,35 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate' }, { score: 0.67 });
+    // if model.partialScoring = false
+    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
 
     assertOutcome('element.partialScoring = false',
       { partialScoring: false }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate' }, { score: 0 });
 
     assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: true }, { score: 0.67 });
+      { partialScoring: false }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
+
+    // else if model.partialScoring = true || undefined
+    //  - if env.partialScoring = false, use dichotomous scoring
+    //  - else if env.partialScoring = true, use partial scoring
+
+    // true
+    assertOutcome('element.partialScoring = true, env.partialScoring = true',
+      { partialScoring: true }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: true }, { score: 0.67 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = undefined',
+      { partialScoring: true }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate' }, { score: 0.67 });
+
+    // undefined
+    assertOutcome('element.partialScoring = undefined, env.partialScoring = true',
+      { partialScoring: undefined }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: true }, { score: 0.67 });
+
+    assertOutcome('element.partialScoring = undefined, env.partialScoring = false',
+      { partialScoring: undefined }, { value: { 0: '0', 1: '0', 2: '1' } }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
   });
 
   describe('outcome', () => {

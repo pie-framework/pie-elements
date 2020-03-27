@@ -61,6 +61,32 @@ describe('controller', () => {
       });
     };
 
+    // if model.partialScoring = false
+    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
+    assertOutcome('element.partialScoring = false',
+      { partialScoring: false }, { answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: square, containerIndex: 0 },
+          { value: rhomb, containerIndex: 1 },
+          { value: square, containerIndex: 1 },
+          { value: trapeze, containerIndex: 0 }
+        ]
+      }, { mode: 'evaluate' }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false }, { answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: square, containerIndex: 0 },
+          { value: rhomb, containerIndex: 1 },
+          { value: square, containerIndex: 1 },
+          { value: trapeze, containerIndex: 0 }
+        ]
+      }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
+
+    // else if model.partialScoring = true || undefined
+    //  - if env.partialScoring = false, use dichotomous scoring
+    //  - else if env.partialScoring = true, use partial scoring
+
     assertOutcome('element.partialScoring = true',
       { partialScoring: true }, { answers: [
         { value: rhomb, containerIndex: 0 },
@@ -70,26 +96,6 @@ describe('controller', () => {
         { value: trapeze, containerIndex: 0 }
       ]
       }, { mode: 'evaluate' }, { score: 0.2 });
-
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false }, { answers: [
-        { value: rhomb, containerIndex: 0 },
-        { value: square, containerIndex: 0 },
-        { value: rhomb, containerIndex: 1 },
-        { value: square, containerIndex: 1 },
-        { value: trapeze, containerIndex: 0 }
-      ]
-      }, { mode: 'evaluate' }, { score: 0 });
-
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { answers: [
-        { value: rhomb, containerIndex: 0 },
-        { value: square, containerIndex: 0 },
-        { value: rhomb, containerIndex: 1 },
-        { value: square, containerIndex: 1 },
-        { value: trapeze, containerIndex: 0 }
-      ]
-      }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { answers: [

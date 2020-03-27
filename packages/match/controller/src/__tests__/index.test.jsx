@@ -71,14 +71,21 @@ describe('outcome partialScoring test', () => {
     });
   };
 
-  assertOutcome('element.partialScoring = true',
-    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0.25 });
-
+  // if model.partialScoring = false
+  //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
   assertOutcome('element.partialScoring = false',
     { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0 });
 
   assertOutcome('element.partialScoring = false, env.partialScoring = true',
-    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: true }, { score: 0.25 });
+    { partialScoring: false }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
+
+
+  // else if model.partialScoring = true || undefined
+  //  - if env.partialScoring = false, use dichotomous scoring
+  //  - else if env.partialScoring = true, use partial scoring
+
+  assertOutcome('element.partialScoring = true',
+    { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate' }, { score: 0.25 });
 
   assertOutcome('element.partialScoring = true, env.partialScoring = false',
     { partialScoring: true }, { answers: { 1: [false, false] } }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
