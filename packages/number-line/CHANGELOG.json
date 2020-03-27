@@ -1018,5 +1018,35 @@
     "committerDate": "2019-12-18 12:08:39 +0000",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.6.13"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump config-ui",
+    "merge": null,
+    "header": "fix: bump config-ui",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a70f987335e37c55c401c49e45f35512a19b9ee9",
+    "gitTags": "",
+    "committerDate": "2020-02-15 20:45:33 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.6.15"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "add missing editable-html dep",
+    "merge": null,
+    "header": "fix: add missing editable-html dep",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "53dd82d8e7f6a33633e8d7ffd5e4c67663ef111a",
+    "gitTags": "",
+    "committerDate": "2020-02-15 20:43:31 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.6.15"
   }
 ]

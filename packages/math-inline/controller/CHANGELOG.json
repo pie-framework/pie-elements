@@ -848,5 +848,20 @@
     "committerDate": "2020-01-30 16:26:36 +0000",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@5.2.3"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "no responses on controller object unless mode is evaluate",
+    "merge": null,
+    "header": "fix(math-inline): no responses on controller object unless mode is evaluate",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "195a6cee4535bab1680686480711622eabba0956",
+    "gitTags": "",
+    "committerDate": "2020-02-06 15:31:22 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@5.2.4"
   }
 ]
