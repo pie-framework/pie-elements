@@ -108,6 +108,10 @@ describe('HotspotDrawable', () => {
     it('renders', () => {
       expect(w()).toMatchSnapshot();
     });
+
+    it('snapshot with padding having a size accordingly to strokeWidth', () => {
+      expect(w({ strokeWidth: 100 })).toMatchSnapshot();
+    })
   });
 
   describe('logic', () => {

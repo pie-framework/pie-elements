@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HotspotDrawable render renders 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "padding": NaN,
+    }
+  }
+>
   <div>
     <img
       onLoad={[Function]}
@@ -16,10 +22,12 @@ exports[`HotspotDrawable render renders 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={291}
+    height={NaN}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={410}
+    width={NaN}
+    x={NaN}
+    y={NaN}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -158,7 +166,13 @@ exports[`HotspotDrawable render renders 1`] = `
 `;
 
 exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "padding": NaN,
+    }
+  }
+>
   <div>
     <img
       onLoad={[Function]}
@@ -173,10 +187,12 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={291}
+    height={NaN}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={410}
+    width={NaN}
+    x={NaN}
+    y={NaN}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -315,7 +331,13 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
 `;
 
 exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "padding": 5,
+    }
+  }
+>
   <div>
     <img
       onLoad={[Function]}
@@ -330,10 +352,12 @@ exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={291}
+    height={301}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={410}
+    width={420}
+    x={5}
+    y={5}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -471,6 +495,177 @@ exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
           ]
         }
         strokeWidth={10}
+      />
+    </Layer>
+  </ForwardRef>
+</div>
+`;
+
+exports[`HotspotDrawable render snapshot with padding having a size accordingly to strokeWidth 1`] = `
+<div
+  style={
+    Object {
+      "padding": 50,
+    }
+  }
+>
+  <div>
+    <img
+      onLoad={[Function]}
+      src="https://cdn.fluence.net/image/0240eb1455ce4c4bb6180232347b6aef_W"
+      style={
+        Object {
+          "height": 291,
+          "width": 410,
+        }
+      }
+    />
+    <div />
+  </div>
+  <ForwardRef
+    height={391}
+    onClick={[Function]}
+    onContentMouseMove={[Function]}
+    width={510}
+    x={50}
+    y={50}
+  >
+    <Layer>
+      <WithStyles(RectComponent)
+        correct={true}
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="0"
+        isDrawing={false}
+        key="0"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        strokeWidth={100}
+        width={130}
+        x={1}
+        y={1}
+      />
+      <WithStyles(RectComponent)
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="1"
+        isDrawing={false}
+        key="1"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        strokeWidth={100}
+        width={130}
+        x={140}
+        y={1}
+      />
+      <WithStyles(RectComponent)
+        height={140}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="2"
+        isDrawing={false}
+        key="2"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        strokeWidth={100}
+        width={130}
+        x={280}
+        y={1}
+      />
+      <WithStyles(PolComponent)
+        correct={true}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="3"
+        isDrawing={false}
+        key="3"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 1,
+              "y": 148,
+            },
+            Object {
+              "x": 1,
+              "y": 288,
+            },
+            Object {
+              "x": 129,
+              "y": 288,
+            },
+            Object {
+              "x": 129,
+              "y": 148,
+            },
+          ]
+        }
+        strokeWidth={100}
+      />
+      <WithStyles(PolComponent)
+        correct={false}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="4"
+        isDrawing={false}
+        key="4"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 141,
+              "y": 151,
+            },
+            Object {
+              "x": 141,
+              "y": 289,
+            },
+            Object {
+              "x": 269,
+              "y": 289,
+            },
+            Object {
+              "x": 269,
+              "y": 151,
+            },
+          ]
+        }
+        strokeWidth={100}
+      />
+      <WithStyles(PolComponent)
+        correct={false}
+        hotspotColor="rgba(137, 183, 244, 0.65)"
+        id="5"
+        isDrawing={false}
+        key="5"
+        onClick={[Function]}
+        onDragEnd={[Function]}
+        outlineColor="blue"
+        points={
+          Array [
+            Object {
+              "x": 279,
+              "y": 150,
+            },
+            Object {
+              "x": 279,
+              "y": 289,
+            },
+            Object {
+              "x": 407,
+              "y": 289,
+            },
+            Object {
+              "x": 407,
+              "y": 150,
+            },
+          ]
+        }
+        strokeWidth={100}
       />
     </Layer>
   </ForwardRef>
