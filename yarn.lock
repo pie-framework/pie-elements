@@ -1784,13 +1784,6 @@
   dependencies:
     jquery "^3.3.1"
 
-"@pie-framework/mathquill@^0.11.0":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-0.11.1.tgz#98269092337387c4887f216b2f827be4b0e19a7c"
-  integrity sha512-rXFkRO7h+OJoYJjFySA9C7YdOFdcUkm2iDD/s9niwU2ElAn/K93cjCqDxAsGU3Cd/NSNSERw3/weTswxERuRTA==
-  dependencies:
-    jquery "^3.3.1"
-
 "@pie-framework/mathquill@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@pie-framework/mathquill/-/mathquill-1.1.0.tgz#282375c8a49f1ad194832abdb8782b3936801186"
@@ -2168,18 +2161,6 @@
   version "6.3.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.6.tgz#92064c0f6789ba36bd2e778dd362330729da6014"
   integrity sha512-aOCfG6FhRtiHdpoTTG2oWKQWW2ShrVOfX76v9+VISC9Pfpg7EG4bWN5XVtGPLsLldYapqTDRZ99/Su8fGDe62w==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@material-ui/icons" "^3.0.2"
-    "@pie-framework/mathquill" "^0.10.3"
-    debug "^4.1.1"
-    lodash "^4.17.11"
-    react-portal "^4.2.0"
-
-"@pie-lib/math-input@^6.3.9":
-  version "6.3.9"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.3.9.tgz#f5abe3c2c2742b4c0d2d53953c934d81842c2dd9"
-  integrity sha512-IWmmn1j6/X8FCy/em4gl2optDmFPdCW64xQZSE5TghCqwLtP8FS7Xb4aKh8W9NIq8Mru7BxPTrRWr4emxdBJsw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2638,18 +2619,18 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.0.14":
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.14.tgz#eb74702764e3668aa294ad3df1b91e556883e64e"
-  integrity sha512-0RsmldXfnYddBMDs6Pogqvn9mLQ0JylYORPSzt80uIR+IDF1MhGBZj7oqwWVbhTzWDkWntgxK8AczED4pOsHYg==
+"@pie-ui/math-inline@^3.0.29":
+  version "3.0.29"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.29.tgz#666706386823b729f5ffd269cc21c2f3442be143"
+  integrity sha512-VNc1982tvUocDTioSURZVll/cNkXA63zW4E3h1lTCoEJFS8upgIhN/abww5fxrfrkR/yR/UuDMzXEpeL+1ur4w==
   dependencies:
     "@material-ui/core" "^3.9.2"
-    "@pie-framework/mathquill" "^0.11.0"
+    "@pie-framework/mathquill" "^1.1.0"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.6"
-    "@pie-lib/math-input" "^6.3.9"
+    "@pie-lib/math-input" "^6.3.10"
     "@pie-lib/math-toolbar" "^1.4.8"
-    "@pie-lib/render-ui" "^4.5.3"
+    "@pie-lib/render-ui" "^4.7.1"
     classnames "^2.2.5"
     debug "^4.1.1"
     lodash "^4.17.10"
