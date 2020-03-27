@@ -45,8 +45,7 @@ class ElementsCommands extends Commands {
     super(root, args, getElementPackages);
   }
 
-
-  beforePublish(){
+  beforePublish() {
     return this.commit(['yarn.lock'], '[ci skip] commit yarn.lock');
   }
 
@@ -60,15 +59,23 @@ class ElementsCommands extends Commands {
     );
   }
 
+  sharedBuild() {
+    return this.runCmd(
+      `yarn pslb --config pslb/pslb.config.js --publishLibs --token ${args.token} --cleanLibs`
+    );
+  }
+
+  build() {
+    return super.build().then(() => this.sharedBuild());
+  }
+
   babel() {
     return Promise.all(
       getElementPackages(join(this.projectRoot, 'packages'))
         .filter(p => pathExistsSync(join(p.dir, 'src')))
         .map(p => {
           const cwd = resolve(__dirname, '..', p.dir);
-          const cmd = `${
-            this.p.babel
-          } --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
+          const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
           return this.runCmd(cmd, { cwd });
         })
     );
