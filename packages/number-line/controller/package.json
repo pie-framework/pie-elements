@@ -9,6 +9,7 @@
   ],
   "repository": "pie-framework/pie-elements",
   "main": "lib/index.js",
+  "module" : "src/index.js",
   "publishConfig": {
     "access": "public"
   },
