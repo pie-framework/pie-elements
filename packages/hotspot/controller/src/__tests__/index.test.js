@@ -66,17 +66,41 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0.2 });
+    // if model.partialScoring = false
+    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
+    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
 
-    assertOutcome('element.partialScoring = false',
+    assertOutcome('element.partialScoring = false, env.partialScoring = false',
+      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+
+    assertOutcome('element.partialScoring = false, env.partialScoring = undefined',
       { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0 });
 
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+    // else if model.partialScoring = true || undefined
+    //  - if env.partialScoring = false, use dichotomous scoring
+    //  - else if env.partialScoring = true || env.partialScoring = undefined, use partial scoring
+
+    // true
+    assertOutcome('element.partialScoring = true, env.partialScoring = true',
+      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+
+    assertOutcome('element.partialScoring = true, env.partialScoring = undefined',
+      { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0.2 });
+
+    // undefined
+    assertOutcome('element.partialScoring = undefined, env.partialScoring = true',
+      { partialScoring: undefined }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+
+    assertOutcome('element.partialScoring = undefined, env.partialScoring = false',
+      { partialScoring: undefined }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+
+    assertOutcome('element.partialScoring = undefined, env.partialScoring = undefined',
+      { partialScoring: undefined }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0.2 });
+
   });
 
   describe('outcome', () => {
