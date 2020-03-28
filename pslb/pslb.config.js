@@ -132,8 +132,9 @@ module.exports = {
       },
       repository: 'pie-framework/pie-elements',
       modules: [
-        /** make use if the pie-ui shared lib */
-        { name: '@pie-ui/shared-lib', version: '^2.0.0' }
+        /** make use of the pie-ui shared lib */
+        { name: '@pie-ui/shared-lib', version: '^2.0.0' },
+        { name: '@pie-ui/shared-math-edit', version: '^1.0.0' }
       ],
       /**
        * Ideally namespace imports would be the default import method.
