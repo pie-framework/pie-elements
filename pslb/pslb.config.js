@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs-extra');
+const _ = require('lodash');
 
 const reactIsExports = [
   'AsyncMode',
@@ -102,7 +104,38 @@ const commonJs = {
   }
 };
 
+/** Pslb will only support pie packages that have a configure and controller subpkg */
+const listPackages = () => {
+  // eslint-disable-next-line no-undef
+  const root = path.resolve(__dirname, '..', 'packages');
+  const files = fs.readdirSync(root);
+
+  return _.compact(
+    files
+      .filter(f => !f.includes('@'))
+      .map(f => {
+        try {
+          const rootPkg = fs.readJsonSync(path.join(root, f, 'package.json'));
+          const configPkg = fs.readJsonSync(
+            path.join(root, f, 'configure/package.json')
+          );
+          const controllerPkg = fs.readJsonSync(
+            path.join(root, f, 'controller/package.json')
+          );
+          if (!configPkg.module || !controllerPkg.module) {
+            return;
+          }
+          return rootPkg.name;
+        } catch (e) {
+          console.warn(`error for: ${f}`);
+          return;
+        }
+      })
+  );
+};
+
 module.exports = {
+  packages: listPackages(),
   pkg: {
     type: 'pie-package',
     // eslint-disable-next-line no-undef
@@ -119,7 +152,6 @@ module.exports = {
     },
     extensions: { commonJs }
   },
-  packages: ['@pie-element/number-line'],
   libs: [
     {
       name: '@pie-element/shared-config',
@@ -151,7 +183,7 @@ module.exports = {
        * @see rollup/plugin-commonjs/ too
        */
       imports: {
-        defaults: [],
+        default: ['@pie-lib/editable-html'],
         namespace: ['@pie-framework/pie-configure-events', '@pie-lib/config-ui']
       }
     }

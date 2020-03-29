@@ -12,5 +12,6 @@
   },
   "author": "",
   "license": "ISC",
-  "main": "lib/index.js"
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

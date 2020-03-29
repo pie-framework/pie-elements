@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@pie-lib/controller-utils": "^0.2.3",
     "debug": "^4.1.1",

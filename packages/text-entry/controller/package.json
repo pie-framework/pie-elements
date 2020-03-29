@@ -6,6 +6,7 @@
   "author": "",
   "license": "ISC",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@pie-lib/feedback": "^0.4.9",
     "debug": "^3.1.0"

@@ -4,6 +4,7 @@
   "version": "4.0.9",
   "description": "",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@pie-lib/controller-utils": "^0.2.3",
     "@pie-lib/feedback": "^0.4.9",

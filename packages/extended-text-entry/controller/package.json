@@ -4,6 +4,7 @@
   "version": "4.0.1",
   "description": "",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@pie-lib/feedback": "^0.4.9"
   },

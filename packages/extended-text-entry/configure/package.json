@@ -4,6 +4,7 @@
   "version": "5.0.2",
   "description": "",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {

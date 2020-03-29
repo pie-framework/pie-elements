@@ -4,6 +4,7 @@
   "version": "1.7.16",
   "description": "",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "author": "Mukesh Sharma",
   "license": "ISC",
   "dependencies": {
