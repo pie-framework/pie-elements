@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HotspotDrawable render renders 1`] = `
-<div
-  style={
-    Object {
-      "padding": NaN,
-    }
-  }
->
+<div>
   <div>
     <img
       onLoad={[Function]}
@@ -164,13 +158,7 @@ exports[`HotspotDrawable render renders 1`] = `
 `;
 
 exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
-<div
-  style={
-    Object {
-      "padding": NaN,
-    }
-  }
->
+<div>
   <div>
     <img
       onLoad={[Function]}
@@ -327,13 +315,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
 `;
 
 exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
-<div
-  style={
-    Object {
-      "padding": 5,
-    }
-  }
->
+<div>
   <div>
     <img
       onLoad={[Function]}

@@ -218,10 +218,7 @@ export class Drawable extends React.Component {
     const shapesToUse = stateShapes || shapes;
 
     return (
-      <div
-        className={classes.base}
-        style={{ padding: strokeWidth / 2 }}
-      >
+      <div className={classes.base}>
         {imageUrl && (
           <div className={classes.imageContainer}>
             <img
