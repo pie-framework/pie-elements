@@ -283,5 +283,20 @@
     "committerDate": "2019-12-06 12:22:05 +0000",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@3.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch7555: selecting answers in a different order was not working (Hot spot scoring problem in IBX (legacy content with multiple correct answers))",
+    "merge": null,
+    "header": "fix: ch7555: selecting answers in a different order was not working (Hot spot scoring problem in IBX (legacy content with multiple correct answers))",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "6ffd5a3f583fb5e658bfcb6d96ca5f9da192efea",
+    "gitTags": "",
+    "committerDate": "2020-02-17 08:48:15 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@3.2.4"
   }
 ]

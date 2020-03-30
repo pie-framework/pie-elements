@@ -11,4 +11,5 @@ node_modules
 .npmrc
 NEXT.CHANGELOG.md
 NEXT.CHANGELOG.json
-
+packages/shared-*
+packages/**/module
