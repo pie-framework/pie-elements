@@ -46,6 +46,11 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    preserveAspectRatio: {
+      settings: false,
+      enabled: true,
+      label: 'Preserve aspect ratio'
     }
   }
 };

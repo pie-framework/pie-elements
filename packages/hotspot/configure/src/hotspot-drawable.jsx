@@ -150,11 +150,18 @@ export class Drawable extends React.Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { disableDrag } = this.props;
+    const { disableDrag, preserveAspectRatioEnabled } = this.props;
+    const { dimensions } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
+    let x = e.clientX - bounds.left;
+    let y = e.clientY - bounds.top;
+
+    if (preserveAspectRatioEnabled) {
+      const imageAspectRatio = dimensions.width / dimensions.height;
+
+      y = x / imageAspectRatio;
+    }
 
     const resizeValid = this.checkIfResizeValid(x, y);
     const hasMinimumWidth = x > 150 && y > 150;
@@ -315,7 +322,8 @@ Drawable.propTypes = {
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.array.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  preserveAspectRatioEnabled: PropTypes.bool
 };
 
 export default withStyles(styles)(Drawable);
