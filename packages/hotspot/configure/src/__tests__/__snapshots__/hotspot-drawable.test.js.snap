@@ -22,12 +22,10 @@ exports[`HotspotDrawable render renders 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={NaN}
+    height={291}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={NaN}
-    x={NaN}
-    y={NaN}
+    width={410}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -187,12 +185,10 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={NaN}
+    height={291}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={NaN}
-    x={NaN}
-    y={NaN}
+    width={410}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -352,12 +348,10 @@ exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={301}
+    height={291}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={420}
-    x={5}
-    y={5}
+    width={410}
   >
     <Layer>
       <WithStyles(RectComponent)

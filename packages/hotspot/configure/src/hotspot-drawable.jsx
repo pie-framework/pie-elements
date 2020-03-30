@@ -241,10 +241,8 @@ export class Drawable extends React.Component {
 
         <Stage
           className={classes.stage}
-          height={(heightFromState || height) + strokeWidth}
-          width={(widthFromState || width) + strokeWidth}
-          x={strokeWidth / 2}
-          y={strokeWidth / 2}
+          height={heightFromState || height}
+          width={widthFromState || width}
           onClick={this.handleOnStageClick}
           onContentMouseMove={this.handleMouseMove}
         >
