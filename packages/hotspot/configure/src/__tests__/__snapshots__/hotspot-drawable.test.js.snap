@@ -4,7 +4,7 @@ exports[`HotspotDrawable render renders 1`] = `
 <div
   style={
     Object {
-      "padding": NaN,
+      "padding": 2.5,
     }
   }
 >
@@ -22,12 +22,12 @@ exports[`HotspotDrawable render renders 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={NaN}
+    height={296}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={NaN}
-    x={NaN}
-    y={NaN}
+    width={415}
+    x={2.5}
+    y={2.5}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -40,6 +40,7 @@ exports[`HotspotDrawable render renders 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={1}
         y={1}
@@ -53,6 +54,7 @@ exports[`HotspotDrawable render renders 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={140}
         y={1}
@@ -66,6 +68,7 @@ exports[`HotspotDrawable render renders 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={280}
         y={1}
@@ -99,6 +102,7 @@ exports[`HotspotDrawable render renders 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
       <WithStyles(PolComponent)
         correct={false}
@@ -129,6 +133,7 @@ exports[`HotspotDrawable render renders 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
       <WithStyles(PolComponent)
         correct={false}
@@ -159,6 +164,7 @@ exports[`HotspotDrawable render renders 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
     </Layer>
   </ForwardRef>
@@ -169,7 +175,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
 <div
   style={
     Object {
-      "padding": NaN,
+      "padding": 2.5,
     }
   }
 >
@@ -187,12 +193,12 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
     <div />
   </div>
   <ForwardRef
-    height={NaN}
+    height={296}
     onClick={[Function]}
     onContentMouseMove={[Function]}
-    width={NaN}
-    x={NaN}
-    y={NaN}
+    width={415}
+    x={2.5}
+    y={2.5}
   >
     <Layer>
       <WithStyles(RectComponent)
@@ -205,6 +211,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={1}
         y={1}
@@ -218,6 +225,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={140}
         y={1}
@@ -231,6 +239,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
         onClick={[Function]}
         onDragEnd={[Function]}
         outlineColor="blue"
+        strokeWidth={5}
         width={130}
         x={280}
         y={1}
@@ -264,6 +273,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
       <WithStyles(PolComponent)
         correct={false}
@@ -294,6 +304,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
       <WithStyles(PolComponent)
         correct={false}
@@ -324,6 +335,7 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
             },
           ]
         }
+        strokeWidth={5}
       />
     </Layer>
   </ForwardRef>
