@@ -33,11 +33,11 @@ describe('controller', () => {
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
         await model({
-          ...question,
-          choices: [
-            choice('<div>6</div>', '0'),
-            choice('<div>9</div>', '1')
-          ]},
+            ...question,
+            choices: [
+              choice('<div>6</div>', '0'),
+              choice('<div>9</div>', '1')
+            ]},
           session,
           env,
           updateSession
@@ -424,20 +424,14 @@ describe('controller', () => {
       });
     };
 
-    // if model.partialScoring = false
-    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
+    assertOutcome('element.partialScoring = true',
+      true, { 0: '1', 1: '1' }, { mode: 'evaluate' }, { score: 0.5 });
+
     assertOutcome('element.partialScoring = false',
       false, { 0: '3', 1: '4' }, { mode: 'evaluate' }, { score: 0 });
 
     assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
-
-    // else if model.partialScoring = true || undefined
-    //  - if env.partialScoring = false, use dichotomous scoring
-    //  - else if env.partialScoring = true, use partial scoring
-    assertOutcome('element.partialScoring = true',
-      true, { 0: '1', 1: '1' }, { mode: 'evaluate' }, { score: 0.5 });
-
+      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0.5 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       true, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: false }, { score: 0 });

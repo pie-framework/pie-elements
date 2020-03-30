@@ -213,9 +213,13 @@ describe('controller', () => {
       });
     };
 
-    // if model.partialScoring = false
-    //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
-
+    assertOutcome(
+      'element.partialScoring = true',
+      mkQuestion({ partialScoring: true }),
+      {},
+      { mode: 'evaluate' },
+      { empty: false, score: 0.5 }
+    );
     assertOutcome(
       'element.partialScoring = false',
       mkQuestion({ partialScoring: false }),
@@ -229,18 +233,6 @@ describe('controller', () => {
       mkQuestion({ partialScoring: false }),
       {},
       { mode: 'evaluate', partialScoring: true },
-      { empty: false, score: 0 }
-    );
-
-    // else if model.partialScoring = true || undefined
-    //  - if env.partialScoring = false, use dichotomous scoring
-    //  - else if env.partialScoring = true, use partial scoring
-
-    assertOutcome(
-      'element.partialScoring = true',
-      mkQuestion({ partialScoring: true }),
-      {},
-      { mode: 'evaluate' },
       { empty: false, score: 0.5 }
     );
     assertOutcome(

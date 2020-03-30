@@ -144,7 +144,7 @@ describe('getScore partialScoring test', () => {
       )
     },
     { mode: 'evaluate', partialScoring: true },
-    { score: 0 }
+    { score: 0.33 }
   );
 
   assertGetScore(
@@ -1166,34 +1166,15 @@ describe('outcome', () => {
     "teacherInstructions": null,
   };
 
-  // if model.partialScoring = false
-  //  - if env.partialScoring = false || env.partialScoring = true => use dichotomous scoring
-  it.each`
-      mode          |       partialScoring        |       expected
-      ${'evaluate'} |       ${true}               |       ${0}
-      ${'evaluate'} |       ${false}              |       ${0}
-      ${'gather'}   |       ${true}               |       ${0}
-    `('mode $mode, partialScoring $partialScoring => $expected', async ({ mode, partialScoring, expected }) => {
-    const env = { mode, partialScoring };
-
-    const mod =  await model(question, session, env);
-    const result = await outcome(mod, session, env);
-
-    expect(result.score).toEqual(expected);
-  });
-
-
-  // else if model.partialScoring = true || undefined
-  //  - if env.partialScoring = false, use dichotomous scoring
-  //  - else if env.partialScoring = true, use partial scoring
   it.each`
       mode          |       partialScoring        |       expected
       ${'evaluate'} |       ${true}               |       ${0.89}
       ${'evaluate'} |       ${false}              |       ${0}
-    `('mode $mode, partialScoring $partialScoring => $expected', async ({ mode, partialScoring, expected }) => {
+      ${'gather'}   |       ${true}               |       ${0}
+    `('mode ${mode}, partialScoring ${partialScoring} => $expected', async ({ mode, partialScoring, expected }) => {
     const env = { mode, partialScoring };
 
-    const mod =  await model({ ...question, partialScoring: true, scoringType: 'partial scoring' }, session, env);
+    const mod =  await model(question, session, env);
     const result = await outcome(mod, session, env);
 
     expect(result.score).toEqual(expected);
