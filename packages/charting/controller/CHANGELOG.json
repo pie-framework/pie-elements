@@ -168,5 +168,20 @@
     "committerDate": "2019-12-06 12:21:53 +0000",
     "isTagged": true,
     "tag": "@pie-element/charting-controller@2.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch3979: use correctAnswer in evaluate mode (Partial credit scoring is not working for Charting items)",
+    "merge": null,
+    "header": "fix: ch3979: use correctAnswer in evaluate mode (Partial credit scoring is not working for Charting items)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a2d21caddc4b9305d50161f932629d99a780870b",
+    "gitTags": "",
+    "committerDate": "2020-02-12 09:58:21 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/charting-controller@2.1.4"
   }
 ]

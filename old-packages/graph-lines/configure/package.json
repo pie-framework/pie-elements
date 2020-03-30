@@ -1,7 +1,7 @@
 {
-  "name": "@pie-element/point-intercept-configure",
+  "name": "@pie-element/graph-lines-configure",
   "private": true,
-  "version": "2.4.13",
+  "version": "4.0.2",
   "description": "",
   "main": "lib/index.js",
   "author": "",
@@ -11,12 +11,17 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/charting": "^2.3.2",
     "@pie-lib/charting-config": "^0.3.0",
-    "@pie-lib/config-ui": "^10.7.36",
+    "@pie-lib/config-ui": "^10.8.1",
+    "@pie-lib/editable-html": "^7.10.39",
+    "@pie-lib/scoring-config": "^3.5.42",
+    "classnames": "^2.2.5",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-swipeable-views": "^0.12.17"
   },
-  "license": "ISC",
-  "gitHead": "a53e5e851a76da9c1d1a919b277ca0c4c8a8bff2"
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "license": "ISC"
 }
