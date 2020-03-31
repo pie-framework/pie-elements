@@ -133,5 +133,35 @@
     "committerDate": "2020-02-03 09:33:01 +0000",
     "isTagged": true,
     "tag": "@pie-element/passage@1.2.13"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui versions",
+    "merge": null,
+    "header": "fix: bump ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5b9d99fe59c304bdd173c9336503eb558900d2a2",
+    "gitTags": "",
+    "committerDate": "2020-03-31 19:25:13 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/passage@1.2.14"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch6126: updated version",
+    "merge": null,
+    "header": "fix: ch6126: updated version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d11b59d538c33bf2737e8ddd6131ee4e3da35b1",
+    "gitTags": " (origin/andreea/ch6126/in-ibx-ot-passage-text-is-too-small)",
+    "committerDate": "2020-03-18 12:52:54 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/passage@1.2.14"
   }
 ]
