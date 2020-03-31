@@ -107,6 +107,16 @@ const commonJs = {
   }
 };
 
+const blacklist = [
+  'placement-ordering',
+  'math-inline',
+  'rubric',
+  'match-list',
+  'passage',
+  'protractor',
+  'ruler',
+  'image-cloze-association'
+];
 /** Pslb will only support pie packages that have a configure and controller subpkg */
 const listPackages = () => {
   // eslint-disable-next-line no-undef
@@ -116,6 +126,7 @@ const listPackages = () => {
   return _.compact(
     files
       .filter(f => !f.includes('@'))
+      .filter(f => !blacklist.includes(f))
       .map(f => {
         try {
           const rootPkg = fs.readJsonSync(path.join(root, f, 'package.json'));

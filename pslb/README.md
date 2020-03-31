@@ -1,4 +1,4 @@
-- [ ] - image cloze association no export
+- [ ] - image cloze association x not exported ....
 - [ ] - graphing odd drag issue (no from?)
 - [ ] - match-list, passage, protractror, ruler - no configure
 - [ ] - rubric - root el pie
