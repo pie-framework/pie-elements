@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/inline-dropdown": "^1.7.8"
+    "@pie-ui/inline-dropdown": "^1.8.14"
   },
   "pie": {
     "element": "@pie-ui/inline-dropdown"

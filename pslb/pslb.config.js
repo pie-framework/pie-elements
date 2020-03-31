@@ -60,6 +60,23 @@ const konva = [
   'Stage'
 ];
 
+const immutable = [
+  'Map',
+  'Set',
+  'List',
+  'Iterable',
+  'Seq',
+  'Collection',
+  'OrderedMap',
+  'Stack',
+  'OrderedSet',
+  'Record',
+  'Range',
+  'Repeat',
+  'is',
+  'fromJS'
+];
+
 const commonJs = {
   namedExports: {
     'node_modules/react-konva/lib/ReactKonva.js': konva,
@@ -85,22 +102,8 @@ const commonJs = {
     'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
     'node_modules/react-dom/index.js': ['findDOMNode'],
     'node_modules/esrever/esrever.js': ['reverse'],
-    'node_modules/immutable/dist/immutable.js': [
-      'Map',
-      'Set',
-      'List',
-      'Iterable',
-      'Seq',
-      'Collection',
-      'OrderedMap',
-      'Stack',
-      'OrderedSet',
-      'Record',
-      'Range',
-      'Repeat',
-      'is',
-      'fromJS'
-    ]
+    'node_modules/slate-plain-serializer/node_modules/immutable/dist/immutable.js': immutable,
+    'node_modules/immutable/dist/immutable.js': immutable
   }
 };
 
@@ -128,7 +131,6 @@ const listPackages = () => {
           return rootPkg.name;
         } catch (e) {
           console.warn(`error for: ${f}`);
-          return;
         }
       })
   );
@@ -165,8 +167,8 @@ module.exports = {
       repository: 'pie-framework/pie-elements',
       modules: [
         /** make use of the pie-ui shared lib */
-        { name: '@pie-ui/shared-lib', version: '^2.0.0' },
-        { name: '@pie-ui/shared-math-edit', version: '^1.0.0' }
+        { name: '@pie-ui/shared-lib', version: '^2.5.0' },
+        { name: '@pie-ui/shared-math-edit', version: '^1.5.0' }
       ],
       /**
        * Ideally namespace imports would be the default import method.

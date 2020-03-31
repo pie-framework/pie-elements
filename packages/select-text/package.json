@@ -7,7 +7,7 @@
   "version": "6.0.12",
   "description": "",
   "dependencies": {
-    "@pie-ui/select-text": "^1.6.8"
+    "@pie-ui/select-text": "^1.6.23"
   },
   "pie": {
     "element": "@pie-ui/select-text"
