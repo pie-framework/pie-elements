@@ -47,7 +47,7 @@ jobs:
       - restore_cache: *restore_cache
       - run: yarn install
       - save_cache: *save_cache
-      - run: scripts/build release --next 
+      - run: scripts/build release --next --token $NPM_TOKEN
   release:
     <<: *defaults
     steps:
@@ -56,7 +56,7 @@ jobs:
       - restore_cache: *restore_cache
       - run: yarn install
       - save_cache: *save_cache
-      - run: scripts/build release
+      - run: scripts/build release --token $NPM_TOKEN
 
 workflows:
   version: 2
@@ -93,10 +93,10 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: '0 0 * * *'
           filters:
             branches:
               only:
                 - develop
     jobs:
-      - build 
+      - build
