@@ -19,7 +19,8 @@ import {
   partial,
   getScore,
   outcome,
-  createCorrectResponseSession
+  createCorrectResponseSession,
+  model
 } from '../index';
 
 describe('controller', () => {
@@ -1998,19 +1999,228 @@ describe('getScore', () => {
 });
 
 describe('outcome', () => {
-  const assertOutcome = session => {
-    it(`returns score: 0 and empty: true if session is ${JSON.stringify(
+  // if model.scoringType = 'all or nothing'
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || env.partialScoring = undefined    => dichotomous
+  // else model.scoringType = 'partial scoring' || model.scoringType = undefined
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || model.partialScoring = undefined  => partial-credit scoring
+
+  it.each`
+      mode          |       partialScoring        |   scoringType          |       expected
+      ${'evaluate'} |       ${false}              |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${undefined}          |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${false}              |  ${'partial scoring'}  |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'partial scoring'}  |       ${0.67}
+      ${'evaluate'} |       ${undefined}          |  ${'partial scoring'}  |       ${0.67}
+      ${'evaluate'} |       ${false}              |  ${undefined}          |       ${0}
+      ${'evaluate'} |       ${true}               |  ${undefined}          |       ${0.67}
+      ${'evaluate'} |       ${undefined}          |  ${undefined}          |       ${0.67}
+      ${'gather'}   |       ${false}              |  ${'partial scoring'}  |       ${0}
+      ${'gather'}   |       ${true}               |  ${'partial scoring'}  |       ${0}
+      ${'gather'}   |       ${undefined}          |  ${'partial scoring'}  |       ${0}
+    `('env.mode $mode, env.partialScoring $partialScoring, model.scoringType $scoringType => $expected', async ({ mode, partialScoring, scoringType, expected }) => {
+    const env = { mode, partialScoring };
+    const answers = {
+      a1: {
+        marks: [
+          { x: 1, y: 1, type: 'point' },
+          { x: 2, y: 2, type: 'point' },
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+        ]
+      },
+      a2: {
+        marks: [
+          { x: 1, y: 1, type: 'point' },
+          { x: 2, y: 2, type: 'point' },
+          { x: 3, y: 3, type: 'point' },
+          { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+        ]
+      }
+    };
+    const question = { answers, scoringType };
+    const session = {
+      answer: [
+        { x: 1, y: 1, type: 'point' },
+        { x: 4, y: 4, type: 'point' },
+        { from: { x: 1, y: 1 }, to: { x: 2, y: 2 }, type: 'segment' }
+      ]
+    };
+
+    const mod = await model({
+      ...question,
+      scoringType
+    }, session, env);
+
+    const result = await outcome(mod, session, env);
+
+    expect(result.score).toEqual(expected);
+  });
+
+  it.each`
       session
-    )}`, async () => {
-      const o = await outcome({}, session, { mode: 'evaluate ' });
+      ${undefined}
+      ${null}
+      ${{}}
+    `('returns score: 0 and empty: true if session is $session', async ({ session, expected }) => {
+    const o = await outcome({}, session, { mode: 'evaluate ' });
 
-      expect(o).toEqual({ score: 0, empty: true });
-    });
-  };
+    expect(o).toEqual({ score: 0, empty: true });
+  });
 
-  assertOutcome(undefined);
-  assertOutcome(null);
-  assertOutcome({});
+  it('Lines are correctly scored (ch3729)', async () => {
+    const m = {
+      element: "pie-element-graphing",
+      range: {
+        labelStep: 50,
+        step: 10,
+        min: -220,
+        axisLabel: "f(n)",
+        max: 220
+      },
+      rationale: 'Rationale',
+      prompt: 'Prompt',
+      domain: {
+        max: 220,
+        labelStep: 50,
+        step: 10,
+        min: -220,
+        axisLabel: "n"
+      },
+      id: "4028e4a24c574edc014c900663fb529d",
+      graph: { height: 500, width: 500 },
+      answers: {
+        correctAnswer: {
+          marks: [
+            { from: { y: 60, x: 30 }, type: "line", to: { x: 110, y: 60 } },
+            { type: "line", to: { x: 0, y: 160 }, from: { y: 190, x: 0 } }
+          ]
+        }
+      },
+      toolbarTools: ["line"]
+    };
+    const session = {
+      answer: [
+        { from: { x: -1, y: 60 }, to: { x: 1, y: 60 }, type: 'line' },
+        { from: { x: 0, y: 50 }, to: { x: 0, y: 100 }, type: 'line' },
+      ]
+    };
+
+    const mod = await model(m, session, {});
+    const result = await outcome(mod, session, {});
+
+    expect(result.score).toEqual(1);
+  });
+
+  it('Sines are correctly scored (ch4146)', async () => {
+    const m = {
+      rationale: "Rationale",
+      prompt: "Prompt",
+      domain: {
+        min: -7,
+        axisLabel: "<i>x</i>",
+        max: 7,
+        labelStep: 1,
+        step: 0.5
+      },
+      id: "4028e4a24b9010f8014ba33810fd2c5c",
+      graph: { width: 500, height: 500 },
+      answers: {
+        correctAnswer: {
+          marks: [{ edge: { x: 0.5, y: 5 }, root: { y: 3, x: 0 }, type: "sine" }]
+        }
+      },
+      toolbarTools: ['sine'],
+      element: "pie-element-graphing",
+      range: {
+        min: -7,
+        axisLabel: "<i>f</i>(<i>x</i>)",
+        max: 7,
+        labelStep: 1,
+        step: 1
+      }
+    };
+    const session = {
+      answer: [
+        { edge: { x: -0.5, y: 1 }, root: { y: 3, x: 0 }, type: "sine" },
+      ]
+    };
+
+    const mod = await model(m, session, {});
+    const result = await outcome(mod, session, {});
+
+    expect(result.score).toEqual(1);
+  });
+
+  it('Lines are correctly scored (ch4126)', async () => {
+    const m = {
+      id: "4028e4a24ca05186014cbae62f752be7",
+      graph: {
+        height: 500,
+        width: 500
+      },
+      answers: {
+        correctAnswer: {
+          marks: [
+            { type: "line", to: { x: 0, y: -4 }, from: { y: -6, x: 0 } },
+            { from: { y: 0, x: -6 }, type: "line", to: { x: 4, y: 0 } },
+            { from: { x: -4, y: -6 }, type: "line", to: { x: -4, y: -4 } }
+          ]
+        }
+      },
+      toolbarTools: ['line'],
+      element: "pie-element-graphing",
+      range: {
+        min: -11,
+        axisLabel: "f(x)",
+        max: 11,
+        labelStep: 1,
+        step: 1
+      },
+      title: "Electric Field as a Function of Location",
+      rationale: "Rationale",
+      prompt: "Prompt",
+      labels: {},
+      domain: {
+        min: -11,
+        axisLabel: "x",
+        max: 11,
+        labelStep: 1,
+        step: 1
+      }
+    };
+    const session = {
+      answer: [
+        { from: { x: 0, y: 1 }, type: "line", to: { x: 0, y: 3 } },
+        { from: { x: 1, y: 0 }, type: "line", to: { x: 3, y: 0 } }
+      ]
+    };
+
+    const mod = await model(m, session, {});
+    const result = await outcome(mod, session, {});
+
+    expect(result.score).toEqual(0.67);
+
+    const session2 = {
+      answer: [
+        { from: { x: 0, y: 3 }, type: "line", to: { x: 0, y: 1 } },
+        { from: { x: 3, y: 0 }, type: "line", to: { x: 1, y: 0 } }
+      ]
+    };
+
+    expect((await outcome(await model(m, session2, {}), session2, {})).score).toEqual(0.67);
+
+    const session3 = {
+      answer: [
+        { from: { x: 0, y: 3 }, type: "line", to: { x: 0, y: 1 } },
+        { from: { x: 3, y: 0 }, type: "line", to: { x: 1, y: 0 } },
+        { from: { x: -4, y: -8 }, type: "line", to: { x: -4, y: 4 } }
+      ]
+    };
+
+    expect((await outcome(await model(m, session3, {}), session3, {})).score).toEqual(1);
+  });
 });
 
 describe('createCorrectResponseSession', () => {

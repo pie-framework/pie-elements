@@ -1868,18 +1868,18 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
-"@pie-lib/controller-utils@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.3.tgz#e5852eadc914946d84fc994f7b0621c14e65bf01"
-  integrity sha512-/BtjdQi/QRvcem85wiP1dfEbll7NdIG5qE9ZN6pnIXABU+efwQwSBfnTnSCq6EFfIN+BIFm54b5cGCehpyZyAg==
+"@pie-lib/controller-utils@^0.2.16":
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.16.tgz#0043cbab04440385ac14fffd35ee556c3b8b4e95"
+  integrity sha512-E92REbcEeAbyq2uPMprUHrfwcuNm2ex2TCgTtqlLkJaaBtQ5I/WyMItd7KPKmMgFe/4vCq42aAdzOCC2q09JEA==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/controller-utils@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.5.tgz#69575caaec5b74b84d246174fb0eb30c89781907"
-  integrity sha512-cmBCpbB+bw1Op7TEqAiCQvflwwRc7kRec4OMc/kOWPaolEYz3BWPykNMc7z5R/Bvx7TxettuCx3hBl3a9zhQIg==
+"@pie-lib/controller-utils@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.3.tgz#e5852eadc914946d84fc994f7b0621c14e65bf01"
+  integrity sha512-/BtjdQi/QRvcem85wiP1dfEbll7NdIG5qE9ZN6pnIXABU+efwQwSBfnTnSCq6EFfIN+BIFm54b5cGCehpyZyAg==
   dependencies:
     debug "^4.1.1"
     lodash "^4.17.11"
