@@ -30,7 +30,11 @@ export const normalize = question => ({
 export const getScore = (question, session, env = {}) => {
   const { correctAnswer, data: initialData = [], scoringType, editCategoryEnabled } = question;
 
-  const isPartialScoring = partialScoring.enabled(question, env, scoringType === 'partial scoring');
+  const isPartialScoring = partialScoring.enabled(
+    { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
+    env
+  );
+
   const { data: correctAnswers = [] } = correctAnswer || {};
   const defaultAnswers = filterCategories(initialData, editCategoryEnabled);
 
@@ -161,7 +165,8 @@ export function model(question, session, env) {
       rationaleEnabled,
       teacherInstructions,
       teacherInstructionsEnabled,
-      correctAnswer
+      correctAnswer,
+      scoringType
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -181,6 +186,7 @@ export function model(question, session, env) {
       size: graph,
       correctness: correctInfo,
       disabled: env.mode !== 'gather',
+      scoringType
     };
 
     if (env.mode === 'evaluate' || env.mode === 'view') {
