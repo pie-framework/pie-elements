@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.0.5...@pie-element/placement-ordering-controller@6.0.6) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
 ## [6.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.0.4...@pie-element/placement-ordering-controller@6.0.5) (2019-12-03)
 
 

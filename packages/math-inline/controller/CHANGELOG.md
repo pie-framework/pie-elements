@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.2.4...@pie-element/math-inline-controller@5.2.5) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.2.3...@pie-element/math-inline-controller@5.2.4) (2020-02-18)
 
 

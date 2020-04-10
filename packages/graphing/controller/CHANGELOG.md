@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.1.3...@pie-element/graphing-controller@3.1.4) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* Partial credit scoring is not working for Graphing items (updated accordingly to pie-lib/controller-utils) ([b505358](https://github.com/pie-framework/pie-elements/commit/b505358))
+* Scoring issues for graphing line (3729 & 4126), started on scoring issues for sine (4146) ([4724370](https://github.com/pie-framework/pie-elements/commit/4724370))
+
+
+
+
+
 ## [3.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.1.2...@pie-element/graphing-controller@3.1.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/graphing-controller

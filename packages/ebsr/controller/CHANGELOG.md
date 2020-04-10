@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@5.0.3...@pie-element/ebsr-controller@5.0.4) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
 ## [5.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@5.0.2...@pie-element/ebsr-controller@5.0.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/ebsr-controller

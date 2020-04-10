@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.2.9...@pie-element/number-line-controller@4.2.10) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
 ## [4.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.2.8...@pie-element/number-line-controller@4.2.9) (2019-12-03)
 
 
