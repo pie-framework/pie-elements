@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/drag-in-the-blank-controller",
   "private": true,
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

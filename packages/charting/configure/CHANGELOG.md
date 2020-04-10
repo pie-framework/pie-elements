@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.0.5...@pie-element/charting-configure@2.1.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* use latest [@pie-lib](https://github.com/pie-lib) releases ([0061e0e](https://github.com/pie-framework/pie-elements/commit/0061e0e))
+
+
+
+
+
 ## [2.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.0.5...@pie-element/charting-configure@2.0.6) (2020-04-10)
 
 
