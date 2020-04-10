@@ -1468,5 +1468,35 @@
     "committerDate": "2020-01-27 11:20:25 +0000",
     "isTagged": true,
     "tag": "@pie-element/math-inline-configure@5.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump libs",
+    "merge": null,
+    "header": "fix: bump libs",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3d4f3e9bd4c16b80dcd530c3fbe0af7e012d7e18",
+    "gitTags": "",
+    "committerDate": "2020-03-27 23:17:39 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@5.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump math deps",
+    "merge": null,
+    "header": "fix: bump math deps",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4b538695dbe52eeb80073ae16c534167f1f43790",
+    "gitTags": "",
+    "committerDate": "2020-03-27 22:56:25 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-configure@5.2.0"
   }
 ]

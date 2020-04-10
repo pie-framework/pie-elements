@@ -1048,5 +1048,50 @@
     "committerDate": "2020-02-15 20:43:31 +0000",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.6.15"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "patch bump number-line",
+    "merge": null,
+    "header": "fix: patch bump number-line",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "cbaab0e001358b9337447a2d84d9d577a194f09d",
+    "gitTags": "",
+    "committerDate": "2020-03-28 22:20:28 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "log pslb detail",
+    "merge": null,
+    "header": "fix: log pslb detail",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5bc998ba3ef2db8307a8fe4653ebcb5831d936ec",
+    "gitTags": "",
+    "committerDate": "2020-03-27 22:37:10 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch6021: Updated documentation.",
+    "merge": null,
+    "header": "fix: ch6021: Updated documentation.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9a4b02a79ef78f9f1ccf1091ffc43292c33a0633",
+    "gitTags": "",
+    "committerDate": "2020-02-20 16:55:07 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.7.0"
   }
 ]
