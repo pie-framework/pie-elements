@@ -513,5 +513,20 @@
     "committerDate": "2019-12-19 12:17:00 +0200",
     "isTagged": true,
     "tag": "@pie-element/hotspot-configure@4.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen",
+    "merge": null,
+    "header": "fix: ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "94f4e0782b0778860658a1bcde6d65493169e267",
+    "gitTags": "",
+    "committerDate": "2020-03-12 16:52:26 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-configure@4.2.0"
   }
 ]

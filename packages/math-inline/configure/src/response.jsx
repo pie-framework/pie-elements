@@ -26,7 +26,7 @@ const styles = theme => ({
     justifyContent: 'space-between'
   },
   cardContent: {
-    paddingBottom: `${theme.spacing.unit}px !important`,
+    paddingBottom: `${theme.spacing.unit}px !important`
   },
   title: {
     fontWeight: 700,
@@ -34,7 +34,7 @@ const styles = theme => ({
     flex: 3
   },
   selectContainer: {
-    flex: 2,
+    flex: 2
   },
   inputContainer: {
     marginTop: theme.spacing.unit
@@ -118,6 +118,11 @@ class Response extends React.Component {
 
     newResponse[name] = evt.target.value;
 
+    if (name === 'validation' && evt.target.value === 'symbolic') {
+      newResponse.allowThousandsSeparator = true;
+      newResponse.allowSpaces = true;
+    }
+
     onResponseChange(newResponse, index);
   };
 
@@ -154,7 +159,7 @@ class Response extends React.Component {
     const newResponse = { ...response };
 
     if (!newResponse.alternates) {
-      newResponse.alternates = {}
+      newResponse.alternates = {};
     }
 
     newResponse.alternates[alternateIdCounter] = '';
@@ -177,7 +182,9 @@ class Response extends React.Component {
     this.setState(state => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad[alternateId] ? state.showKeypad.openCount : state.showKeypad.openCount - 1
+        openCount: !state.showKeypad[alternateId]
+          ? state.showKeypad.openCount
+          : state.showKeypad.openCount - 1
       }
     }));
   };
@@ -196,7 +203,9 @@ class Response extends React.Component {
     this.setState(state => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad.main ? state.showKeypad.openCount + 1 : state.showKeypad.openCount,
+        openCount: !state.showKeypad.main
+          ? state.showKeypad.openCount + 1
+          : state.showKeypad.openCount,
         main: true
       }
     }));
@@ -206,7 +215,9 @@ class Response extends React.Component {
     this.setState(state => ({
       showKeypad: {
         ...state.showKeypad,
-        openCount: !state.showKeypad[alternateId] ? state.showKeypad.openCount + 1 : state.showKeypad.openCount,
+        openCount: !state.showKeypad[alternateId]
+          ? state.showKeypad.openCount + 1
+          : state.showKeypad.openCount,
         [alternateId]: true
       }
     }));
@@ -225,11 +236,17 @@ class Response extends React.Component {
   render() {
     const { classes, mode, defaultResponse, index, response } = this.props;
     const { showKeypad } = this.state;
-    const { validation, answer, alternates, allowDecimals = false, allowSpaces } = response;
+    const {
+      validation,
+      answer,
+      alternates,
+      allowThousandsSeparator = false,
+      allowSpaces
+    } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
-      mathToolbar: classes.mathToolbar,
+      mathToolbar: classes.mathToolbar
     };
     const styles = {
       minHeight: `${showKeypad.openCount > 0 ? 430 : 230}px`
@@ -239,8 +256,18 @@ class Response extends React.Component {
       <Card className={classes.responseContainer} style={styles}>
         <CardContent className={classes.cardContent}>
           <div className={classes.titleBar}>
-            <Typography className={classes.title} component="h2">Response {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED ? (defaultResponse ? '' : index + 1) : ''}</Typography>
-            <InputContainer label="Validation" className={classes.selectContainer}>
+            <Typography className={classes.title} component="h2">
+              Response{' '}
+              {INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED
+                ? defaultResponse
+                  ? ''
+                  : index + 1
+                : ''}
+            </Typography>
+            <InputContainer
+              label="Validation"
+              className={classes.selectContainer}
+            >
               <Select
                 className={classes.select}
                 onChange={this.onChange('validation')}
@@ -257,7 +284,6 @@ class Response extends React.Component {
               keypadMode={mode}
               classNames={classNames}
               controlledKeypad
-              noDecimal={!allowDecimals}
               showKeypad={showKeypad.main}
               latex={answer || ''}
               onChange={this.onAnswerChange}
@@ -265,45 +291,54 @@ class Response extends React.Component {
               onDone={this.onDone}
             />
           </div>
-          {hasAlternates && Object.keys(alternates).map((alternateId, altIdx) => (
-            <div className={classes.inputContainer} key={alternateId}>
-              <div className={classes.alternateBar}>
-                <InputLabel>Alternate{Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}</InputLabel>
-                <Button className={classes.removeAlternateButton} type="secondary" onClick={this.onRemoveAlternate(alternateId)}>
-                  Remove
-                </Button>
+          {hasAlternates &&
+            Object.keys(alternates).map((alternateId, altIdx) => (
+              <div className={classes.inputContainer} key={alternateId}>
+                <div className={classes.alternateBar}>
+                  <InputLabel>
+                    Alternate
+                    {Object.keys(alternates).length > 1 ? ` ${altIdx + 1}` : ''}
+                  </InputLabel>
+                  <Button
+                    className={classes.removeAlternateButton}
+                    type="secondary"
+                    onClick={this.onRemoveAlternate(alternateId)}
+                  >
+                    Remove
+                  </Button>
+                </div>
+                <MathToolbar
+                  classNames={classNames}
+                  controlledKeypad
+                  keypadMode={mode}
+                  showKeypad={showKeypad[alternateId] || false}
+                  latex={alternates[alternateId] || ''}
+                  onChange={this.onAlternateAnswerChange(alternateId)}
+                  onFocus={this.onAlternateFocus(alternateId)}
+                  onDone={this.onAlternateDone(alternateId)}
+                />
               </div>
-              <MathToolbar
-                classNames={classNames}
-                controlledKeypad
-                keypadMode={mode}
-                showKeypad={showKeypad[alternateId] || false}
-                latex={alternates[alternateId] || ''}
-                noDecimal={!allowDecimals}
-                onChange={this.onAlternateAnswerChange(alternateId)}
-                onFocus={this.onAlternateFocus(alternateId)}
-                onDone={this.onAlternateDone(alternateId)}
-              />
-            </div>
-          ))}
-          <div className={classes.configPanel}>
-            {validation === 'literal' && (
-              <Button className={classes.alternateButton} type="primary" onClick={this.onAddAlternate}>
+            ))}
+          {validation === 'literal' && (
+            <div className={classes.configPanel}>
+              <Button
+                className={classes.alternateButton}
+                type="primary"
+                onClick={this.onAddAlternate}
+              >
                 ADD ALTERNATE
               </Button>
-            ) || <div />}
-            <div className={classes.checkboxContainer}>
-              <FormControlLabel
-                classes={{ root: classes.configLabel }}
-                label="Allow Thousands Separators (Commas)"
-                control={
-                  <Checkbox
-                    checked={allowDecimals}
-                    onChange={this.onConfigChanged('allowDecimals')}
-                  />
-                }
-              />
-              {validation === 'literal' && (
+              <div className={classes.checkboxContainer}>
+                <FormControlLabel
+                  classes={{ root: classes.configLabel }}
+                  label="Allow Thousands Separators (Commas)"
+                  control={
+                    <Checkbox
+                      checked={allowThousandsSeparator}
+                      onChange={this.onConfigChanged('allowThousandsSeparator')}
+                    />
+                  }
+                />
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}
                   label="Allow Extra Spaces"
@@ -314,9 +349,9 @@ class Response extends React.Component {
                     />
                   }
                 />
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </CardContent>
       </Card>
     );

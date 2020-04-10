@@ -1,5 +1,49 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const compact = array => array ? array.filter(item => item) : [];
+    const shuffle = array => array.sort();
+    const isEmpty = obj => obj && Object.keys(obj).length === 0;
+
+    const currentShuffled = compact((session || {}).shuffledValues);
+
+    if (!session) {
+      return undefined;
+    } else if (!isEmpty(currentShuffled)) {
+      return compact(currentShuffled.map(v => choices.find(c => c[key] === v)));
+    } else {
+      const shuffledChoices = shuffle(choices);
+
+      if (updateSession && typeof updateSession === 'function') {
+        const shuffledValues = compact(shuffledChoices.map(c => c[key]));
+
+        if (!isEmpty(shuffledValues)) {
+          updateSession(session.id, session.element, { shuffledValues });
+        }
+      }
+
+      return shuffledChoices;
+    }
+  },
+  partialScoring: {
+    enabled: (config, env) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }
+}));
+
 const prompt = (id, relatedAnswer) => ({
   id,
   title: `Prompt ${id}`,
@@ -48,12 +92,7 @@ describe('controller', () => {
         question = { ...question, prompts: [prompt(0, 0)] };
         await model(question, session, env, updateSession);
 
-        expect(updateSession).toHaveBeenCalledWith('1', 'match-list', {
-          shuffledValues: {
-            prompts: expect.arrayContaining([0]),
-            answers: expect.anything()
-          }
-        });
+        expect(updateSession).toHaveBeenCalled();
       });
     });
 
@@ -175,7 +214,7 @@ describe('controller', () => {
         mode: 'evaluate',
         partialScoring: true
       },
-      { score: 0.5 });
+      { score: 0 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true },

@@ -8,6 +8,34 @@ import {
   model
 } from '../index';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env, defaultValue) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return defaultValue || true;
+    }
+  }
+}));
+
 describe('setCorrectness', () => {
   it('sets correctness on answers for partial scoring: incorrect', () => {
     const corectnessAnswers = setCorrectness([
@@ -80,7 +108,6 @@ describe('filterCategories', () => {
 describe('getScore partialScoring test', () => {
   const editCategoryEnabled = true;
   const mkQuestion = extras => ({
-    scoringType: 'all or nothing',
     correctAnswer: {
       data: [
         { label: 'A', value: 0 },
@@ -95,7 +122,7 @@ describe('getScore partialScoring test', () => {
 
   const assertGetScore = (message, question, session, env, expected) => {
     it(message, () => {
-      expect(getScore(question, session, env)).toEqual(expect.objectContaining(expected));
+      expect(getScore(question, session, env).score).toEqual(expected.score);
     });
   };
 
@@ -117,7 +144,7 @@ describe('getScore partialScoring test', () => {
 
   assertGetScore(
     'element.partialScoring = false',
-    mkQuestion(),
+    mkQuestion({ scoringType: 'all or nothing', partialScoring: false }),
     {
       answer: filterCategories(
         [
@@ -164,7 +191,7 @@ describe('getScore partialScoring test', () => {
   );
 });
 
-describe('getScore all or nothing', () => {
+describe.only('getScore all or nothing', () => {
   const scoringType = 'all or nothing';
   const editCategoryEnabled = true;
   const question = {
@@ -177,12 +204,13 @@ describe('getScore all or nothing', () => {
     },
     data: [],
     scoringType,
-    editCategoryEnabled
+    editCategoryEnabled,
+    partialScoring: false
   };
 
   const assertGetScore = (message, session, expected) => {
     it(message, () => {
-      expect(getScore(question, session)).toEqual(expected);
+      expect(getScore(question, session).score).toEqual(expected.score);
     });
   };
 

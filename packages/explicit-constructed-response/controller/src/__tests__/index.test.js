@@ -7,6 +7,35 @@ import {
   prepareChoice
 } from '../index';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }
+}));
+
+
 const choice = (l, v) => ({ label: l, value: v });
 const choices = {
   0: [choice('cow', '0'), choice('cattle', '1'), choice('calf', '2')],
@@ -361,7 +390,7 @@ describe('controller', () => {
       { partialScoring: false }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
         mode: 'evaluate',
         partialScoring: true
-      }, { score: 0.67 });
+      }, { score: 0 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { value: { 0: 'calf', 1: 'under', 2: 'moon' } }, {
@@ -503,21 +532,21 @@ describe('controller', () => {
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'view' },
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow', correct: true }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },

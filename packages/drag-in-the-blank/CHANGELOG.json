@@ -873,5 +873,35 @@
     "committerDate": "2019-12-06 12:22:05 +0000",
     "isTagged": true,
     "tag": "@pie-element/drag-in-the-blank@3.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch7653: In IBX Item Authoring, for Drag in the Blank, the \"Add Choice\" button has no apparent effect.",
+    "merge": null,
+    "header": "fix: ch7653: In IBX Item Authoring, for Drag in the Blank, the \"Add Choice\" button has no apparent effect.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "1307f821e870a2ac33c285f2147fb70e5e4a1d6d",
+    "gitTags": "",
+    "committerDate": "2020-03-12 17:51:14 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.4.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch7653: In IBX Item Authoring, for Drag in the Blank, the \"Add Choice\" button has no apparent effect.",
+    "merge": null,
+    "header": "fix: ch7653: In IBX Item Authoring, for Drag in the Blank, the \"Add Choice\" button has no apparent effect.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d61d0f2ccb650bac39482161b97095913812daad",
+    "gitTags": "",
+    "committerDate": "2020-03-12 17:49:59 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/drag-in-the-blank@3.4.0"
   }
 ]
