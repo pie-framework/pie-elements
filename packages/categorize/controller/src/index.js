@@ -4,9 +4,9 @@ import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
-import debug from 'debug';
 
-const log = debug('@pie-element:categorize:controller');
+// eslint-disable-next-line no-console
+const log = console.log.bind(console, '@pie-element:categorize:controller');
 
 export { score };
 

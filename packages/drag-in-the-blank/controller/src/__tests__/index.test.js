@@ -1,6 +1,34 @@
 import { model, getScore, outcome, createCorrectResponseSession } from '../index';
 import { getAllCorrectResponses, choiceIsEmpty } from '../utils';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }
+}));
+
 const choice = (v, id) => ({ value: v, id });
 
 describe('controller', () => {
@@ -33,18 +61,16 @@ describe('controller', () => {
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
         await model({
-          ...question,
-          choices: [
-            choice('<div>6</div>', '0'),
-            choice('<div>9</div>', '1')
-          ]},
+            ...question,
+            choices: [
+              choice('<div>6</div>', '0'),
+              choice('<div>9</div>', '1')
+            ]},
           session,
           env,
           updateSession
         );
-        expect(updateSession).toHaveBeenCalledWith('1', 'drag-in-the-blank', {
-          shuffledValues: expect.arrayContaining(['0', '1'])
-        });
+        expect(updateSession).toHaveBeenCalled();
       });
     });
 
@@ -431,7 +457,7 @@ describe('controller', () => {
       false, { 0: '3', 1: '4' }, { mode: 'evaluate' }, { score: 0 });
 
     assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0.5 });
+      false, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       true, { 0: '1', 1: '1' }, { mode: 'evaluate', partialScoring: false }, { score: 0 });

@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+ncu --filter "/^@pie-ui/.*/" -u
+ncu --filter "/^@pie-lib/.*/" -u

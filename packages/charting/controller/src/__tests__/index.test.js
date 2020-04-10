@@ -8,6 +8,34 @@ import {
   model
 } from '../index';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env, defaultValue) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return defaultValue || true;
+    }
+  }
+}));
+
 describe('setCorrectness', () => {
   it('sets correctness on answers for partial scoring: incorrect', () => {
     const corectnessAnswers = setCorrectness([

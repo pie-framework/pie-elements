@@ -318,5 +318,20 @@
     "committerDate": "2020-01-29 19:09:35 +0000",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@3.1.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "Scoring issues for graphing line (3729 & 4126), started on scoring issues for sine (4146)",
+    "merge": null,
+    "header": "fix: Scoring issues for graphing line (3729 & 4126), started on scoring issues for sine (4146)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4724370fdeda6b85c0a14a499e50ddc4f727e4e3",
+    "gitTags": "",
+    "committerDate": "2020-03-01 16:15:03 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@3.2.0"
   }
 ]

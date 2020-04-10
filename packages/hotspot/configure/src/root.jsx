@@ -24,13 +24,30 @@ export class Root extends React.Component {
   };
 
   handleOnUpdateImageDimensions = (value, type) => {
-    const { model: { dimensions }, onUpdateImageDimension } = this.props;
-    const newDimensions = {
-      ...dimensions,
-      [type]: value
-    };
+    const {
+      model: { dimensions },
+      configuration: { preserveAspectRatio = {} },
+      onUpdateImageDimension
+    } = this.props;
 
-    onUpdateImageDimension(newDimensions);
+    const imageAspectRatio = dimensions.width / dimensions.height;
+
+    switch (type) {
+      case 'width':
+        onUpdateImageDimension({
+          width: value,
+          height: preserveAspectRatio.enabled ? value / imageAspectRatio : dimensions.height
+        });
+        break;
+      case 'height':
+        onUpdateImageDimension({
+          width: preserveAspectRatio.enabled ? value * imageAspectRatio : dimensions.width,
+          height: value
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   render() {
@@ -53,7 +70,8 @@ export class Root extends React.Component {
       partialScoring = {},
       prompt = {},
       teacherInstructions = {},
-      rationale = {}
+      rationale = {},
+      preserveAspectRatio = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
 
@@ -147,6 +165,7 @@ export class Root extends React.Component {
               onImageUpload={onImageUpload}
               shapes={model.shapes}
               strokeWidth={model.strokeWidth}
+              preserveAspectRatioEnabled={preserveAspectRatio.enabled}
             />
 
             {model.imageUrl && (
