@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pie-lib/controller-utils": "^0.2.17",
-    "@pie-lib/feedback": "^0.4.20",
+    "@pie-lib/feedback": "^0.4.21",
     "debug": "^4.1.1",
     "lodash": "^4.17.15"
   },
