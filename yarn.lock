@@ -2331,13 +2331,13 @@
     react-dom "^16.8.1"
     react-konva "^16.10.1-0"
 
-"@pie-ui/ebsr@^1.2.31":
-  version "1.2.31"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.31.tgz#177d61dec848f2b56e41431c144d9cfd4907e89c"
-  integrity sha512-HlwHWgxMuhP11KQjZFdsIVot03+ZikahkNd/S+tkMCJG+sb3Ov1gMxJR9QxprzgLaw3IOXxJTAVsaG9gLqwj/w==
+"@pie-ui/ebsr@^1.2.33":
+  version "1.2.33"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.33.tgz#c8ad3d5e0ad862aa0ad1e80eead8457c72f43ccf"
+  integrity sha512-hce4IjbiiMA4IAY1S3BC6HTkDiHVU8tWcWNfjjWg7wZEmMXu3j0usSywuVUMES6DriGo6p9roTtuTSkqYDsCsw==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-ui/multiple-choice" "^4.12.14"
+    "@pie-ui/multiple-choice" "^4.12.15"
     classnames "^2.2.5"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2493,26 +2493,6 @@
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"
-
-"@pie-ui/multiple-choice@^4.12.14":
-  version "4.12.14"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.12.14.tgz#fc7176cebc936e26042814057bd6923fc5be109c"
-  integrity sha512-mMs654Fg7bBGOUUOIeaCRPFjNbNFTlCoOrN6QLpTwHkoFd3/TIhVWOEBvSFz8H+O01sID5GVo3ISz9xdCAiouQ==
-  dependencies:
-    "@material-ui/core" "^3.9.2"
-    "@pie-lib/config-ui" "^10.8.14"
-    "@pie-lib/correct-answer-toggle" "^2.2.19"
-    "@pie-lib/math-rendering" "^2.1.10"
-    "@pie-lib/render-ui" "^4.7.13"
-    classnames "^2.2.5"
-    debug "^4.1.1"
-    enzyme-to-json "^3.3.3"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-    react-test-renderer "^16.3.2"
-    react-transition-group "^2.3.1"
 
 "@pie-ui/multiple-choice@^4.12.15":
   version "4.12.15"
@@ -10346,6 +10326,22 @@ node-notifier@^5.2.1:
     shellwords "^0.1.1"
     which "^1.3.0"
 
+node-pre-gyp@*:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.14.0.tgz#9a0596533b877289bcad4e143982ca3d904ddc83"
+  integrity sha512-+CvDC7ZttU/sSt9rFjix/P05iS43qHCOOGzcr3Ry99bXG7VX953+vFyEuph/tfqoYu8dttBkE86JSKBO2OzcxA==
+  dependencies:
+    detect-libc "^1.0.2"
+    mkdirp "^0.5.1"
+    needle "^2.2.1"
+    nopt "^4.0.1"
+    npm-packlist "^1.1.6"
+    npmlog "^4.0.2"
+    rc "^1.2.7"
+    rimraf "^2.6.1"
+    semver "^5.3.0"
+    tar "^4.4.2"
+
 node-pre-gyp@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.12.0.tgz#39ba4bb1439da030295f899e3b520b7785766149"
@@ -13664,7 +13660,7 @@ table@4.0.2:
     slice-ansi "1.0.0"
     string-width "^2.1.1"
 
-tar@^4, tar@^4.4.10, tar@^4.4.12, tar@^4.4.8:
+tar@^4, tar@^4.4.10, tar@^4.4.12, tar@^4.4.2, tar@^4.4.8:
   version "4.4.13"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.13.tgz#43b364bc52888d555298637b10d60790254ab525"
   integrity sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==
