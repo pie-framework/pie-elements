@@ -1108,5 +1108,35 @@
     "committerDate": "2020-03-31 19:25:13 +0100",
     "isTagged": true,
     "tag": "@pie-element/categorize-configure@5.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump all packages to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump all packages to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d9ec9a8689f0a391594b5e2f4ea958c6dc9f6d7b",
+    "gitTags": " (develop)",
+    "committerDate": "2020-04-10 20:01:37 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-configure@5.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump lib and ui versions",
+    "merge": null,
+    "header": "fix: bump lib and ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:13:24 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/categorize-configure@5.2.1"
   }
 ]
