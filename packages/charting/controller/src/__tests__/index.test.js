@@ -120,16 +120,26 @@ describe('getScore partialScoring test', () => {
     ...extras
   });
 
-  const assertGetScore = (message, question, session, env, expected) => {
-    it(message, () => {
-      expect(getScore(question, session, env).score).toEqual(expected.score);
-    });
-  };
-
-  assertGetScore(
-    'element.partialScoring = true',
-    mkQuestion({ scoringType: 'partial scoring' }),
-    {
+  // if model.scoringType = 'all or nothing'
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || env.partialScoring = undefined    => dichotomous
+  // else model.scoringType = 'partial scoring' || model.scoringType = undefined
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || model.partialScoring = undefined  => partial-credit scoring
+  it.each`
+      mode          |       partialScoring        |   scoringType          |       expected
+      ${'evaluate'} |       ${false}              |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${undefined}          |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${false}              |  ${'partial scoring'}  |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'partial scoring'}  |       ${0.33}
+      ${'evaluate'} |       ${undefined}          |  ${'partial scoring'}  |       ${0.33}
+      ${'evaluate'} |       ${false}              |  ${undefined}          |       ${0}
+      ${'evaluate'} |       ${true}               |  ${undefined}          |       ${0.33}
+      ${'evaluate'} |       ${undefined}          |  ${undefined}          |       ${0.33}
+    `('env: { mode $mode, partialScoring $partialScoring }, model.scoringType = $scoringType => $expected', async ({ mode, partialScoring, scoringType, expected }) => {
+    const env = { mode, partialScoring };
+    const session = {
       answer: filterCategories(
         [
           { label: 'A', value: 0 },
@@ -137,61 +147,16 @@ describe('getScore partialScoring test', () => {
         ],
         editCategoryEnabled
       )
-    },
-    { mode: 'evaluate' },
-    { score: 0.33 }
-  );
+    };
 
-  assertGetScore(
-    'element.partialScoring = false',
-    mkQuestion({ scoringType: 'all or nothing', partialScoring: false }),
-    {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
-      )
-    },
-    { mode: 'evaluate' },
-    { score: 0 }
-  );
+    const mod = await model(mkQuestion({ scoringType }), session, env);
+    const result = await outcome(mod, session, env);
 
-  assertGetScore(
-    'element.partialScoring = false, env.partialScoring = true',
-    mkQuestion(),
-    {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
-      )
-    },
-    { mode: 'evaluate', partialScoring: true },
-    { score: 0.33 }
-  );
-
-  assertGetScore(
-    'element.partialScoring = true, env.partialScoring = false',
-    mkQuestion({ scoringType: 'partial scoring' }),
-    {
-      answer: filterCategories(
-        [
-          { label: 'A', value: 0 },
-          { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
-      )
-    },
-    { mode: 'evaluate', partialScoring: false },
-    { score: 0 }
-  );
+    expect(result.score).toEqual(expected);
+  });
 });
 
-describe.only('getScore all or nothing', () => {
+describe('getScore all or nothing', () => {
   const scoringType = 'all or nothing';
   const editCategoryEnabled = true;
   const question = {
@@ -204,13 +169,12 @@ describe.only('getScore all or nothing', () => {
     },
     data: [],
     scoringType,
-    editCategoryEnabled,
-    partialScoring: false
+    editCategoryEnabled
   };
 
   const assertGetScore = (message, session, expected) => {
     it(message, () => {
-      expect(getScore(question, session).score).toEqual(expected.score);
+      expect(getScore(question, session)).toEqual(expected);
     });
   };
 
@@ -1194,15 +1158,35 @@ describe('outcome', () => {
     "teacherInstructions": null,
   };
 
+  // if model.scoringType = 'all or nothing'
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || env.partialScoring = undefined    => dichotomous
+  // else model.scoringType = 'partial scoring' || model.scoringType = undefined
+  //    if env.partialScoring = false                                       => dichotomous
+  //    else env.partialScoring = true || model.partialScoring = undefined  => partial-credit scoring
+
   it.each`
-      mode          |       partialScoring        |       expected
-      ${'evaluate'} |       ${true}               |       ${0.89}
-      ${'evaluate'} |       ${false}              |       ${0}
-      ${'gather'}   |       ${true}               |       ${0}
-    `('mode ${mode}, partialScoring ${partialScoring} => $expected', async ({ mode, partialScoring, expected }) => {
+      mode          |       partialScoring        |   scoringType          |       expected
+      ${'evaluate'} |       ${false}              |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${undefined}          |  ${'all or nothing'}   |       ${0}
+      ${'evaluate'} |       ${false}              |  ${'partial scoring'}  |       ${0}
+      ${'evaluate'} |       ${true}               |  ${'partial scoring'}  |       ${0.89}
+      ${'evaluate'} |       ${undefined}          |  ${'partial scoring'}  |       ${0.89}
+      ${'evaluate'} |       ${false}              |  ${undefined}          |       ${0}
+      ${'evaluate'} |       ${true}               |  ${undefined}          |       ${0.89}
+      ${'evaluate'} |       ${undefined}          |  ${undefined}          |       ${0.89}
+      ${'gather'}   |       ${false}              |  ${'partial scoring'}  |       ${0}
+      ${'gather'}   |       ${true}               |  ${'partial scoring'}  |       ${0}
+      ${'gather'}   |       ${undefined}          |  ${'partial scoring'}  |       ${0}
+    `('env.mode $mode, env.partialScoring $partialScoring, model.scoringType $scoringType => $expected', async ({ mode, partialScoring, scoringType, expected }) => {
     const env = { mode, partialScoring };
 
-    const mod =  await model(question, session, env);
+    const mod = await model({
+      ...question,
+      scoringType
+    }, session, env);
+
     const result = await outcome(mod, session, env);
 
     expect(result.score).toEqual(expected);
