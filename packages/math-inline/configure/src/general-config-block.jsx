@@ -300,7 +300,7 @@ class GeneralConfigBlock extends React.Component {
       answer: '',
       alternates: {},
       allowSpaces: true,
-      allowDecimals: true
+      allowThousandsSeparator: true
     };
 
     newModel.responses = newModel.responses.concat(response);

@@ -503,21 +503,21 @@ describe('controller', () => {
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'view' },
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow' }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },
       { correct: 'Correct', incorrect: 'Incorrect' },
       { value: '0', label: 'cow'},
       { value: '0', label: 'cow', correct: true }
-      );
+    );
 
     assertPrepareChoice(
       { mode: 'evaluate' },

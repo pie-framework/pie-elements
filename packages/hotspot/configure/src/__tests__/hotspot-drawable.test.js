@@ -63,7 +63,7 @@ const model = () => ({
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   outlineColor: 'blue',
-  multipleCorrect: true
+  multipleCorrect: true,
 });
 
 describe('HotspotDrawable', () => {
@@ -89,6 +89,7 @@ describe('HotspotDrawable', () => {
         onUpdateShapes: onUpdateShapes,
         outlineColor: initialModel.outlineColor,
         shapes: initialModel.shapes,
+        strokeWidth: 5,
         ...extras
       };
 
