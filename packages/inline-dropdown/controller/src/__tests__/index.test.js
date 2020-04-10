@@ -269,7 +269,7 @@ describe('controller', () => {
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'evaluate', role: 'instructor' },
           jest.fn()
-          );
+        );
 
         expect(result).toEqual({
           ...question,
