@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/explicit-constructed-response": "^1.7.21"
+    "@pie-ui/explicit-constructed-response": "^1.7.22"
   },
   "pie": {
     "element": "@pie-ui/explicit-constructed-response"

@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+console.log('foo');
+
+const fs = require('fs-extra');
+const path = require('path');
+const { execSync } = require('child_process');
+const rootDir = path.resolve(__dirname, '../packages');
+const names = fs.readdirSync(rootDir);
+
+names.map((n) => {
+  const pkgPath = path.join(rootDir, n, 'package.json');
+  const pkg = fs.readJsonSync(pkgPath);
+
+  let s;
+  try {
+    s = execSync(`npm view ${pkg.name}@latest version`).toString().trim();
+  } catch (e) {
+    console.log('error for:', pkg.name);
+  }
+
+  // console.log(pkg.name, pkg.version, 'deployed version', v);
+  if (s && s === pkg.version) {
+    // console.log(pkg.name, 'ok');
+  } else {
+    console.log(pkg.name, 'not ok', pkg.version, 'published version:', s);
+
+    pkg.version = s;
+    fs.writeJsonSync(pkgPath, pkg, { spaces: 2 });
+  }
+  // console.log(pkg.name, s.toString());
+});

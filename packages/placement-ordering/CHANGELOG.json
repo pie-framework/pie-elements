@@ -1173,5 +1173,20 @@
     "committerDate": "2019-12-18 12:08:39 +0000",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering@7.0.7"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui versions",
+    "merge": null,
+    "header": "fix: bump ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5b9d99fe59c304bdd173c9336503eb558900d2a2",
+    "gitTags": "",
+    "committerDate": "2020-03-31 19:25:13 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering@7.1.0"
   }
 ]
