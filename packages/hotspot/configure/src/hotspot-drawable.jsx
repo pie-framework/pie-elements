@@ -53,13 +53,12 @@ export class Drawable extends React.Component {
     onUpdateShapes(newShapes);
   };
 
-  handleMouseMove = (e, offset) => {
+  handleMouseMove = (e) => {
     // !IMPORTANT: currently, only 'rectangles' are drawable
     const { isDrawing, isDrawingShapeId } = this.state;
+    const { shapes } = this.props;
 
     if (isDrawing && isDrawingShapeId) {
-      const { shapes } = this.props;
-
       const mouseX = e.evt.layerX;
       const mouseY = e.evt.layerY;
 
@@ -76,9 +75,8 @@ export class Drawable extends React.Component {
           ...newShapesList[currShapeIndex],
           height: newHeight,
           width: newWidth,
-          // the subtraction is needed because the stage has this offset (x & y)
-          x: currShape.x - offset,
-          y: currShape.y - offset
+          x: currShape.x,
+          y: currShape.y
         };
 
         // On mouse move don't trigger any event. Put the shapes on this state instead.
@@ -150,11 +148,18 @@ export class Drawable extends React.Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { disableDrag } = this.props;
+    const { disableDrag, preserveAspectRatioEnabled } = this.props;
+    const { dimensions } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
+    let x = e.clientX - bounds.left;
+    let y = e.clientY - bounds.top;
+
+    if (preserveAspectRatioEnabled) {
+      const imageAspectRatio = dimensions.width / dimensions.height;
+
+      y = x / imageAspectRatio;
+    }
 
     const resizeValid = this.checkIfResizeValid(x, y);
     const hasMinimumWidth = x > 150 && y > 150;
@@ -213,10 +218,7 @@ export class Drawable extends React.Component {
     const shapesToUse = stateShapes || shapes;
 
     return (
-      <div
-        className={classes.base}
-        style={{ padding: strokeWidth / 2 }}
-      >
+      <div className={classes.base}>
         {imageUrl && (
           <div className={classes.imageContainer}>
             <img
@@ -236,12 +238,10 @@ export class Drawable extends React.Component {
 
         <Stage
           className={classes.stage}
-          height={(heightFromState || height) + strokeWidth}
-          width={(widthFromState || width) + strokeWidth}
-          x={strokeWidth / 2}
-          y={strokeWidth / 2}
+          height={heightFromState || height}
+          width={widthFromState || width}
           onClick={this.handleOnStageClick}
-          onContentMouseMove={e => this.handleMouseMove(e, strokeWidth / 2)}
+          onContentMouseMove={this.handleMouseMove}
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
@@ -315,7 +315,8 @@ Drawable.propTypes = {
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.array.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  preserveAspectRatioEnabled: PropTypes.bool
 };
 
 export default withStyles(styles)(Drawable);

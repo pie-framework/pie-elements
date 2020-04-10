@@ -60,7 +60,7 @@ const model = () => ({
       }]
   },
   dimensions: {
-    height: 291, width: 410
+    height: 300, width: 400
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   hotspotList: [
@@ -94,10 +94,13 @@ describe('Root', () => {
   ;
 
   beforeEach(() => {
-    w = extras => {
+    w = (extrasConfiguration, extras) => {
       const props = {
         classes: {},
-        configuration: defaultValues.configuration,
+        configuration: {
+          ...defaultValues.configuration,
+          ...extrasConfiguration
+        },
         model: initialModel,
         onColorChanged,
         onImageUpload,
@@ -134,12 +137,50 @@ describe('Root', () => {
       expect(onColorChanged).toHaveBeenLastCalledWith('typeColor', 'color');
     });
 
-    it('calls onUpdateImageDimension', () => {
-      wrapper.instance().handleOnUpdateImageDimensions('value', 'type');
+    it('preserveAspectRatio = true => calls onUpdateImageDimension for width keeping aspect ratio', () => {
+      wrapper.instance().handleOnUpdateImageDimensions(200, 'width');
 
-      expect(onUpdateImageDimension).toHaveBeenLastCalledWith({
+      expect(onUpdateImageDimension).toBeCalledWith({
+        width: 200,
+        height: 150
+      });
+    });
+
+    it('preserveAspectRatio = true => calls onUpdateImageDimension for height keeping aspect ratio', () => {
+      wrapper.instance().handleOnUpdateImageDimensions(600, 'height');
+
+      expect(onUpdateImageDimension).toBeCalledWith({
+        width: 800,
+        height: 600
+      });
+    });
+
+
+    it('preserveAspectRatio = false => calls onUpdateImageDimension for height keeping aspect ratio', () => {
+      let wr = w({
+        preserveAspectRatio: {
+          enabled: false
+        }
+      });
+      wr.instance().handleOnUpdateImageDimensions(600, 'height');
+
+      expect(onUpdateImageDimension).toBeCalledWith({
         ...initialModel.dimensions,
-        type: 'value'
+        height: 600
+      });
+    });
+
+    it('preserveAspectRatio = false => calls onUpdateImageDimension for width without keeping aspect ratio', () => {
+      let wr = w({
+        preserveAspectRatio: {
+          enabled: false
+        }
+      });
+      wr.instance().handleOnUpdateImageDimensions(200, 'width');
+
+      expect(onUpdateImageDimension).toBeCalledWith({
+        ...initialModel.dimensions,
+        width: 200,
       });
     });
   });

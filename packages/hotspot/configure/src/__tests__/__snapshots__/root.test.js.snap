@@ -15,6 +15,11 @@ exports[`Root render renders 1`] = `
               "label": "Allow Partial Scoring",
               "settings": false,
             },
+            "preserveAspectRatio": Object {
+              "enabled": true,
+              "label": "Preserve aspect ratio",
+              "settings": false,
+            },
             "prompt": Object {
               "label": "Prompt",
               "settings": true,
@@ -46,8 +51,8 @@ exports[`Root render renders 1`] = `
           Object {
             "configure": Object {},
             "dimensions": Object {
-              "height": 291,
-              "width": 410,
+              "height": 300,
+              "width": 400,
             },
             "hotspotColor": "rgba(137, 183, 244, 0.65)",
             "hotspotList": Array [
@@ -195,8 +200,8 @@ exports[`Root render renders 1`] = `
       <WithStyles(Container)
         dimensions={
           Object {
-            "height": 291,
-            "width": 410,
+            "height": 300,
+            "width": 400,
           }
         }
         hotspotColor="rgba(137, 183, 244, 0.65)"
@@ -206,6 +211,7 @@ exports[`Root render renders 1`] = `
         onUpdateImageDimension={[MockFunction]}
         onUpdateShapes={[MockFunction]}
         outlineColor="blue"
+        preserveAspectRatioEnabled={true}
         shapes={
           Object {
             "polygons": Array [
@@ -316,7 +322,7 @@ exports[`Root render renders 1`] = `
             min={0}
             onChange={[Function]}
             showErrorWhenOutsideRange={true}
-            value={410}
+            value={400}
           />
           <Component
             key="hotspot-manual-height"
@@ -324,7 +330,7 @@ exports[`Root render renders 1`] = `
             min={0}
             onChange={[Function]}
             showErrorWhenOutsideRange={true}
-            value={291}
+            value={300}
           />
         </div>
       </div>

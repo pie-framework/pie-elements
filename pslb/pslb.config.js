@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs-extra');
+const _ = require('lodash');
 
 const reactIsExports = [
   'AsyncMode',
@@ -58,6 +60,23 @@ const konva = [
   'Stage'
 ];
 
+const immutable = [
+  'Map',
+  'Set',
+  'List',
+  'Iterable',
+  'Seq',
+  'Collection',
+  'OrderedMap',
+  'Stack',
+  'OrderedSet',
+  'Record',
+  'Range',
+  'Repeat',
+  'is',
+  'fromJS'
+];
+
 const commonJs = {
   namedExports: {
     'node_modules/react-konva/lib/ReactKonva.js': konva,
@@ -83,26 +102,42 @@ const commonJs = {
     'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
     'node_modules/react-dom/index.js': ['findDOMNode'],
     'node_modules/esrever/esrever.js': ['reverse'],
-    'node_modules/immutable/dist/immutable.js': [
-      'Map',
-      'Set',
-      'List',
-      'Iterable',
-      'Seq',
-      'Collection',
-      'OrderedMap',
-      'Stack',
-      'OrderedSet',
-      'Record',
-      'Range',
-      'Repeat',
-      'is',
-      'fromJS'
-    ]
+    'node_modules/slate-plain-serializer/node_modules/immutable/dist/immutable.js': immutable,
+    'node_modules/immutable/dist/immutable.js': immutable
   }
 };
 
+/** Pslb will only support pie packages that have a configure and controller subpkg */
+const listPackages = () => {
+  // eslint-disable-next-line no-undef
+  const root = path.resolve(__dirname, '..', 'packages');
+  const files = fs.readdirSync(root);
+
+  return _.compact(
+    files
+      .filter(f => !f.includes('@'))
+      .map(f => {
+        try {
+          const rootPkg = fs.readJsonSync(path.join(root, f, 'package.json'));
+          const configPkg = fs.readJsonSync(
+            path.join(root, f, 'configure/package.json')
+          );
+          const controllerPkg = fs.readJsonSync(
+            path.join(root, f, 'controller/package.json')
+          );
+          if (!configPkg.module || !controllerPkg.module) {
+            return;
+          }
+          return rootPkg.name;
+        } catch (e) {
+          console.warn(`error for: ${f}`);
+        }
+      })
+  );
+};
+
 module.exports = {
+  packages: listPackages(),
   pkg: {
     type: 'pie-package',
     // eslint-disable-next-line no-undef
@@ -119,7 +154,6 @@ module.exports = {
     },
     extensions: { commonJs }
   },
-  packages: ['@pie-element/number-line'],
   libs: [
     {
       name: '@pie-element/shared-config',
@@ -133,8 +167,8 @@ module.exports = {
       repository: 'pie-framework/pie-elements',
       modules: [
         /** make use of the pie-ui shared lib */
-        { name: '@pie-ui/shared-lib', version: '^2.0.0' },
-        { name: '@pie-ui/shared-math-edit', version: '^1.0.0' }
+        { name: '@pie-ui/shared-lib', version: '^2.5.0' },
+        { name: '@pie-ui/shared-math-edit', version: '^1.5.0' }
       ],
       /**
        * Ideally namespace imports would be the default import method.
@@ -151,7 +185,7 @@ module.exports = {
        * @see rollup/plugin-commonjs/ too
        */
       imports: {
-        defaults: [],
+        default: ['@pie-lib/editable-html'],
         namespace: ['@pie-framework/pie-configure-events', '@pie-lib/config-ui']
       }
     }
