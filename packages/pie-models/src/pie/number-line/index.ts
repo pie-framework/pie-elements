@@ -54,9 +54,9 @@ interface Domain {
 }
 
 interface Ticks {
-  /** smallest tick */
+  /** smallest tick - These ticks don't have labels. */
   minor: number;
-  /** larger tick - has labels */
+  /** larger tick - These ticks have labels. */
   major: number;
 }
 
@@ -82,8 +82,6 @@ interface NumberLineDomainConfiguration {
 
   /** tick configuration */
   tick: Ticks;
-  /** */
-  tickLabelOverrides: string[]; // TODO find the type for this property
 
   /** the title under the graph */
   title?: string;

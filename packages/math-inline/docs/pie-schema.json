@@ -271,10 +271,10 @@
             "type": "boolean",
             "title": "allowSpaces"
           },
-          "allowDecimals": {
-            "description": "Indicates if decimals are allowed",
+          "allowThousandsSeparator": {
+            "description": "Indicates if thousand separators are allowed",
             "type": "boolean",
-            "title": "allowDecimals"
+            "title": "allowThousandsSeparator"
           }
         },
         "required": [
@@ -346,10 +346,10 @@
           "type": "boolean",
           "title": "allowSpaces"
         },
-        "allowDecimals": {
-          "description": "Indicates if decimals are allowed",
+        "allowThousandsSeparator": {
+          "description": "Indicates if thousand separators are allowed",
           "type": "boolean",
-          "title": "allowDecimals"
+          "title": "allowThousandsSeparator"
         }
       },
       "required": [
@@ -726,10 +726,10 @@
           "type": "boolean",
           "title": "allowSpaces"
         },
-        "allowDecimals": {
-          "description": "Indicates if decimals are allowed",
+        "allowThousandsSeparator": {
+          "description": "Indicates if thousand separators are allowed",
           "type": "boolean",
-          "title": "allowDecimals"
+          "title": "allowThousandsSeparator"
         }
       },
       "required": [

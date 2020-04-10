@@ -3,12 +3,13 @@
   "private": true,
   "version": "4.5.8",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.7.51",
-    "@pie-lib/editable-html": "^7.10.41",
-    "@pie-ui/number-line": "^7.1.15",
+    "@pie-lib/config-ui": "^10.8.14",
+    "@pie-lib/editable-html": "^7.11.12",
+    "@pie-ui/number-line": "^7.1.36",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   }

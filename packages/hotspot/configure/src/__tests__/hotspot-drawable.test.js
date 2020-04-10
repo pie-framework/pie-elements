@@ -63,7 +63,7 @@ const model = () => ({
   },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   outlineColor: 'blue',
-  multipleCorrect: true
+  multipleCorrect: true,
 });
 
 describe('HotspotDrawable', () => {
@@ -89,6 +89,7 @@ describe('HotspotDrawable', () => {
         onUpdateShapes: onUpdateShapes,
         outlineColor: initialModel.outlineColor,
         shapes: initialModel.shapes,
+        strokeWidth: 5,
         ...extras
       };
 
@@ -136,6 +137,32 @@ describe('HotspotDrawable', () => {
           type: 'rectangles'
         }
       ]);
+    });
+
+    it('handleOnStageClick isDrawing = true', () => {
+      wrapper.instance().state.isDrawing = true;
+      wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
+
+      wrapper.instance().handleOnStageClick({
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      });
+
+      expect(onUpdateShapes).toHaveBeenCalledWith([...initialModel.shapes.slice(0, 2)]);
+
+      // at this point, state.stateShapes is false, so we don't want to update shapes with false (onUpdateShapes)
+      expect(wrapper.instance().state.stateShapes).toEqual(false);
+
+      wrapper.instance().handleOnStageClick({
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      });
+
+      expect(onUpdateShapes).not.toBeCalledWith(false);
     });
 
     it('handleOnStageClick isDrawing = true', () => {

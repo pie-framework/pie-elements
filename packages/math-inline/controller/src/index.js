@@ -141,7 +141,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         let answerValueToUse = processAnswerItem(answerItem, true);
         let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
-        if (correctResponse.allowDecimals) {
+        if (correctResponse.allowThousandsSeparator) {
           if (
             containsDecimal(answerValueToUse) &&
             decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
@@ -185,7 +185,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
             processAnswerItem(answerItem),
             {
               isLatex: true,
-              allowDecimals: correctResponse.allowDecimals
+              allowThousandsSeparator: correctResponse.allowThousandsSeparator
             }
           );
           if (answerCorrect) {

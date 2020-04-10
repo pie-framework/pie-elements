@@ -6,11 +6,8 @@ import isEqual from 'lodash/isEqual';
 import filter from 'lodash/filter';
 import isEmpty from 'lodash/isEmpty';
 import {
-  sinY,
-  buildDataPoints,
   getAmplitudeAndFreq,
-  FREQ_DIVIDER,
-  parabolaFromTwoPoints
+  pointsToABC
 } from '@pie-lib/graphing-utils';
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -38,9 +35,56 @@ export const equalVector = (vector1, vector2) => {
   return ((isEqual(vector1.from, vector2.from) && isEqual(vector1.to, vector2.to)));
 };
 
+const returnLineEquationCoefficients = line => {
+  const xA = line.from.x;
+  const yA = line.from.y;
+  const xB = line.to.x;
+  const yB = line.to.y;
+
+  return {
+    a: yB - yA,
+    b: xA - xB,
+    c: (xB * yA) - (xA * yB)
+  };
+};
+
+const getSignificantDecimals = number => Math.round(number * 10000) / 10000;
+
 export const equalLine = (line1, line2) => {
+  // line equation: ax + by + c = 0
+  // 2 lines are equal if a1/a2 = b1/b2 = c1/c2, where a, b, c are the coefficients in line equation
+
+  // line equation knowing 2 points: (y - yA) / (yB - yA) = (x - xA) / (xB - xA)
+  // extending this equation, we get: x * (yB - yA) + y * (xA - xB) + (xB * yA - xA * yB) = 0
+  // where a = yB - yA; b = xA - xB; c = xB * yA - xA * yB
+
+  const { a: a1, b: b1, c: c1 } = returnLineEquationCoefficients(line1);
+  const { a: a2, b: b2, c: c2 } = returnLineEquationCoefficients(line2);
+
+  const proportions = [];
+
+  if (a2 !== 0) {
+    proportions.push(getSignificantDecimals((a1 / a2)));
+  } else if (a1 !== a2) {
+    return false;
+  }
+
+  if (b2 !== 0) {
+    proportions.push(getSignificantDecimals((b1 / b2)));
+  } else if (b1 !== b2) {
+    return false;
+  }
+
+  if (c2 !== 0) {
+    proportions.push(getSignificantDecimals(c1 / c2));
+  } else if (c1 !== c2) {
+    return false;
+  }
+
+  return lodash.uniq(proportions).length === 1;
+
   // (y2 - y1)/(x2 - x1) = (y4 - y3)/(x4 - x3);
-  return (((line1.to.y - line1.from.y) / (line1.to.x - line1.from.x)) === ((line2.to.y - line2.from.y) / (line2.to.x - line2.from.x)));
+  // return ((Math.abs((line1.to.y - line1.from.y) / (line1.to.x - line1.from.x))) === (Math.abs((line2.to.y - line2.from.y) / (line2.to.x - line2.from.x))));
 };
 
 export const equalRay = (ray1, ray2) => {
@@ -78,57 +122,82 @@ export const equalCircle = (c1, c2) => {
 export const equalSine = (sine1, sine2) => {
   const getPoints = ({ root, edge }) => {
     const { amplitude, freq } = getAmplitudeAndFreq(root, edge);
-    const interval = freq / FREQ_DIVIDER;
-    const t = root.x + (root.x - edge.x);
-    const min = t < edge.x ? t : edge.x + (edge.x - t);
-    const max = t >= edge.x ? t : edge.x + (edge.x - t);
-    const bp = buildDataPoints(
-      min,
-      max,
-      root,
-      edge,
-      interval,
-      sinY(amplitude, freq, { phase: root.x, vertical: root.y })
-    );
+    // the height of the sine wave
+    const tY = Math.abs(root.y - edge.y) * 2;
+    // the distance on x axis between edge and root
+    const tXRoot = Math.abs(root.x - edge.x);
+    // the distance on x axis between 2 edges for sine wave (min & max)
+    const tX = tXRoot * 2;
+    // the first edge placed east side of root
+    let edgeAboveZeroX = edge.x;
+    let edgeAboveZeroY = edge.y;
 
-    return bp.filter(bpp => bpp.x < max && bpp.x > min).map(bpp => bpp.y);
+    // if edge less then 0, find out the appropriate edge placed east side of zero (0)
+    while (edgeAboveZeroX < 0 && tX !== 0) {
+      edgeAboveZeroX = edgeAboveZeroX + tX;
+      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
+    }
+
+    // if edge more then 0, find out the appropriate edge placed east side of zero (0)
+    while (edgeAboveZeroX - tX > 0 && tX !== 0) {
+      edgeAboveZeroX = edgeAboveZeroX - tX;
+      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
+    }
+
+    return {
+      amplitude: getSignificantDecimals(amplitude),
+      freq: getSignificantDecimals(freq),
+      min: getSignificantDecimals(edge.y < root.y ? edge.y : edge.y - tY),
+      max: getSignificantDecimals(edge.y < root.y ? edge.y + tY : edge.y),
+      edgeAboveZeroX: getSignificantDecimals(edgeAboveZeroX),
+      edgeAboveZeroY: getSignificantDecimals(edgeAboveZeroY)
+    };
   };
 
   const studentAnswerBpY = getPoints(sine1);
   const correctAnswerBpY = getPoints(sine2);
-  const nDif = lodash.differenceWith(studentAnswerBpY.map(s => -s).reverse(), correctAnswerBpY, isEqual);
-  const dif = lodash.differenceWith(studentAnswerBpY, correctAnswerBpY, isEqual);
 
-  return dif.length === 0 || nDif.length === 0;
+  const {
+    amplitude: amplitude1,
+    freq: freq1,
+    min: min1,
+    max: max1,
+    edgeAboveZeroX: edgeAboveZeroX1,
+    edgeAboveZeroY: edgeAboveZeroY1
+  } = studentAnswerBpY;
+  const {
+    amplitude: amplitude2,
+    freq: freq2,
+    min: min2,
+    max: max2,
+    edgeAboveZeroX: edgeAboveZeroX2,
+    edgeAboveZeroY: edgeAboveZeroY2
+  } = correctAnswerBpY;
+
+  return (Math.abs(amplitude1) === Math.abs(amplitude2) &&
+    Math.abs(freq1) === Math.abs(freq2) &&
+    min1 === min2 && max1 === max2 &&
+    edgeAboveZeroX1 === edgeAboveZeroX2 &&
+    edgeAboveZeroY1 === edgeAboveZeroY2);
+  // rootDiff1 === rootDiff2);
 };
 
 export const equalParabola = (p1, p2) => {
-  const min = p1.root.x < p1.edge.x ? p1.root.x + (p1.root.x - p1.edge.x) : p1.edge.x;
-  const max = p1.root.x < p1.edge.x ? p1.edge.x : p1.root.x + (p1.root.x - p1.edge.x);
-  const minMark = p2.root.x < p2.edge.x ? p2.root.x + (p2.root.x - p2.edge.x) : p2.edge.x;
-  const maxMark = p2.root.x < p2.edge.x ? p2.edge.x : p2.root.x + (p2.root.x - p2.edge.x);
+  const { edge: edgeP1, root: rootP1 } = p1;
+  const { edge: edgeP2, root: rootP2 } = p2;
+  const p1edge = edgeP1 || { ...rootP1 };
+  const p2edge = edgeP2 || { ...rootP2 };
 
-  const getPoints = ({ root, edge }) => {
-    const interval = 1;
-    let bp = buildDataPoints(
-      min,
-      max,
-      root,
-      edge,
-      interval,
-      parabolaFromTwoPoints(root, edge)
-    );
+  const p1mirrorEdge = { x: rootP1.x - (p1edge.x - rootP1.x), y: p1edge.y };
+  const p2mirrorEdge = { x: rootP2.x - (p2edge.x - rootP2.x), y: p2edge.y };
 
-    return bp.map(bpp => bpp.y);
-  };
+  const { a: a1, b: b1, c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
+  const { a: a2, b: b2, c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
 
-  const studentAnswerBpY = getPoints(p1);
-  const correctAnswerBpY = getPoints(p2);
+  // sometimes numbers have this form: 1.00000000002 because of calculations, we have to round them
+  const round = number => Math.round(number * 10000) / 10000;
 
-  const nDif = lodash.differenceWith(studentAnswerBpY.reverse(), correctAnswerBpY, isEqual);
-  const dif = lodash.differenceWith(studentAnswerBpY, correctAnswerBpY, isEqual);
-
-  return (dif.length === 0 || nDif.length === 0) && min === minMark && max === maxMark;
+  return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
 };
 
 const initializeGraphMap = () => ({
@@ -318,18 +387,18 @@ export const getScore = (question, session, env = {}) => {
     });
   });
 
-  const isPartialScoring = partialScoring.enabled(question, env, question.scoringType === 'partial scoring');
+  const isPartialScoring = partialScoring.enabled(
+    {
+      partialScoring: question.scoringType !== undefined ? question.scoringType === 'partial scoring' : question.scoringType
+    },
+    env
+  );
 
   if (isPartialScoring) {
     return partial(questionPossibleAnswers, correctedMarks);
-  } else if (question.scoringType === 'dichotomous') {
-    return dichotomous(questionPossibleAnswers, correctedMarks);
   }
 
-  return {
-    correctMarks: [],
-    score: 0
-  };
+  return dichotomous(questionPossibleAnswers, correctedMarks);
 };
 
 export const normalize = question => ({
@@ -355,7 +424,9 @@ export function model(question, session, env) {
       yAxisLabel,
       tools,
       graph,
-      toolbarTools
+      toolbarTools,
+      scoringType,
+      answers
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -373,7 +444,9 @@ export function model(question, session, env) {
       yAxisLabel,
       tools,
       size: graph,
-      toolbarTools
+      toolbarTools,
+      scoringType,
+      answers
     };
 
     if (env.mode === 'evaluate') {
@@ -397,6 +470,10 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env = {}) {
   return new Promise(resolve => {
+    if (env.mode === 'gather') {
+      resolve({ score: 0 });
+    }
+
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }

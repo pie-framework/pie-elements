@@ -28,7 +28,11 @@ export class Drawable extends React.Component {
     // If we're drawing a shape, a click finishes the drawing and sends the new shapes to HOC
     if (isDrawing) {
       this.setState({ isDrawing: !isDrawing, stateShapes: false, isDrawingShapeId: undefined });
-      onUpdateShapes(stateShapes);
+
+      if (stateShapes) {
+        onUpdateShapes(stateShapes);
+      }
+
       return;
     }
 
@@ -144,11 +148,18 @@ export class Drawable extends React.Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { disableDrag } = this.props;
+    const { disableDrag, preserveAspectRatioEnabled } = this.props;
+    const { dimensions } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
+    let x = e.clientX - bounds.left;
+    let y = e.clientY - bounds.top;
+
+    if (preserveAspectRatioEnabled) {
+      const imageAspectRatio = dimensions.width / dimensions.height;
+
+      y = x / imageAspectRatio;
+    }
 
     const resizeValid = this.checkIfResizeValid(x, y);
     const hasMinimumWidth = x > 150 && y > 150;
@@ -228,9 +239,9 @@ export class Drawable extends React.Component {
         <Stage
           className={classes.stage}
           height={heightFromState || height}
+          width={widthFromState || width}
           onClick={this.handleOnStageClick}
           onContentMouseMove={this.handleMouseMove}
-          width={widthFromState || width}
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
@@ -304,7 +315,8 @@ Drawable.propTypes = {
   onUpdateShapes: PropTypes.func.isRequired,
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.array.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  preserveAspectRatioEnabled: PropTypes.bool
 };
 
 export default withStyles(styles)(Drawable);

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "debug": "^4.1.1"
   }

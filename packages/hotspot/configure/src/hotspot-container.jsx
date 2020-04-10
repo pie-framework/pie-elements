@@ -88,7 +88,7 @@ export class Container extends Component {
       shapes: newShapes
     }, () => {
       if (newShapes.length) {
-        const updatedShapes = newShapes.reduce((acc, { type, ...shapeProps}) => {
+        const updatedShapes = newShapes.reduce((acc, { type, ...shapeProps }) => {
           acc[type] = [...(acc[type] || []), shapeProps];
           return acc;
         }, {
@@ -137,7 +137,8 @@ export class Container extends Component {
       multipleCorrect,
       onUpdateImageDimension,
       outlineColor,
-      strokeWidth
+      strokeWidth,
+      preserveAspectRatioEnabled
     } = this.props;
     const {
       dropzoneActive,
@@ -200,6 +201,7 @@ export class Container extends Component {
                   outlineColor={outlineColor}
                   shapes={shapes}
                   strokeWidth={strokeWidth}
+                  preserveAspectRatioEnabled={preserveAspectRatioEnabled}
                 />
               )
               : (
@@ -261,7 +263,9 @@ const styles = theme => ({
     justifyContent: 'center'
   },
   drawableHeight: {
-    minHeight: 350
+    minHeight: 350,
+    paddingBottom: '40px',
+    paddingRight: '40px',
   },
   icon: {
     '&:hover': {
@@ -330,7 +334,8 @@ Container.propTypes = {
     rectangles: PropTypes.array,
     polygons: PropTypes.array
   }).isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  preserveAspectRatioEnabled: PropTypes.bool
 };
 Container.defaultProps = {
   strokeWidth: 5

@@ -126,15 +126,31 @@ export class Choices extends React.Component {
     onChange(newChoices);
   };
 
+  getVisibleChoices = () => {
+    const {
+      duplicates,
+      model: { choices, correctResponse }
+    } = this.props;
+
+    if (!choices) {
+      return [];
+    }
+
+    if (duplicates) {
+      return choices;
+    }
+
+    // if duplicates not allowed, remove the choices that are used to define the correct response
+    return choices.filter(choice => !find(correctResponse, v => v === choice.id));
+  };
+
   render() {
     const { focusedEl } = this.state;
     const {
       classes,
       duplicates,
-      model: { choices, correctResponse }
     } = this.props;
-
-    const visibleChoices = choices && choices.filter(choice => duplicates || (!duplicates && find(correctResponse, v => v === choice.id)));
+    const visibleChoices = this.getVisibleChoices() || [];
 
     return (
       <div className={classes.design}>
@@ -150,7 +166,6 @@ export class Choices extends React.Component {
           className={classes.altChoices}
         >
           {
-            visibleChoices &&
             visibleChoices.map((c, index) => {
               if (focusedEl === c.id) {
                 return (
