@@ -16,9 +16,9 @@ const args = minimist(process.argv.slice(2));
 const r = (...parts) =>
   resolve.apply(null, [__dirname, '..', 'packages'].concat(parts));
 
-const rel = p => relative(resolve(__dirname, '..'), p);
+const rel = (p) => relative(resolve(__dirname, '..'), p);
 
-const expandPkg = d => {
+const expandPkg = (d) => {
   const out = [];
 
   out.push(rel(r(d)));
@@ -33,9 +33,9 @@ const expandPkg = d => {
   return out;
 };
 
-const getElementPackages = dir => {
+const getElementPackages = (dir) => {
   const dirs = readdirSync(dir);
-  const all = _.flatten(dirs.map(d => expandPkg(d)));
+  const all = _.flatten(dirs.map((d) => expandPkg(d)));
   const out = all.map(getPackage);
   return out;
 };
@@ -51,7 +51,7 @@ class ElementsCommands extends Commands {
 
   clean() {
     return Promise.all(
-      getElementPackages(join(this.projectRoot, 'packages')).map(p => {
+      getElementPackages(join(this.projectRoot, 'packages')).map((p) => {
         const cwd = resolve(__dirname, '..', p.dir);
         log('cwd:', cwd);
         return this.runCmd('rm -fr lib', { cwd });
@@ -65,15 +65,15 @@ class ElementsCommands extends Commands {
     );
   }
 
-  build() {
-    return super.build().then(() => this.sharedBuild());
-  }
+  // build() {
+  //   return super.build().then(() => this.sharedBuild());
+  // }
 
   babel() {
     return Promise.all(
       getElementPackages(join(this.projectRoot, 'packages'))
-        .filter(p => pathExistsSync(join(p.dir, 'src')))
-        .map(p => {
+        .filter((p) => pathExistsSync(join(p.dir, 'src')))
+        .map((p) => {
           const cwd = resolve(__dirname, '..', p.dir);
           const cmd = `${this.p.babel} --ignore '**/__test__/**','**/__tests__/**','**/__mocks__/**' src -d lib --source-maps --root-mode upward`;
           return this.runCmd(cmd, { cwd });
@@ -90,7 +90,7 @@ cmds
     console.log('all done');
     process.exit(0);
   })
-  .catch(e => {
+  .catch((e) => {
     console.error('build failed:');
     console.error(e);
     process.exit(1);
