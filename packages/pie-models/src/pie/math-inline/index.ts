@@ -38,8 +38,8 @@ interface MathInlineResponse {
     /** Indicates if spaces are allowed */
     allowSpaces?: boolean;
 
-    /** Indicates if decimals are allowed */
-    allowDecimals?: boolean;
+    /** Indicates if thousand separators are allowed */
+    allowThousandsSeparator?: boolean;
 }
 
 /**

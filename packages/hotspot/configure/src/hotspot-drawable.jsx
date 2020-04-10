@@ -53,12 +53,13 @@ export class Drawable extends React.Component {
     onUpdateShapes(newShapes);
   };
 
-  handleMouseMove = (e) => {
+  handleMouseMove = (e, offset) => {
     // !IMPORTANT: currently, only 'rectangles' are drawable
     const { isDrawing, isDrawingShapeId } = this.state;
-    const { shapes } = this.props;
 
     if (isDrawing && isDrawingShapeId) {
+      const { shapes } = this.props;
+
       const mouseX = e.evt.layerX;
       const mouseY = e.evt.layerY;
 
@@ -75,8 +76,9 @@ export class Drawable extends React.Component {
           ...newShapesList[currShapeIndex],
           height: newHeight,
           width: newWidth,
-          x: currShape.x,
-          y: currShape.y
+          // the subtraction is needed because the stage has this offset (x & y)
+          x: currShape.x - offset,
+          y: currShape.y - offset
         };
 
         // On mouse move don't trigger any event. Put the shapes on this state instead.
@@ -211,7 +213,10 @@ export class Drawable extends React.Component {
     const shapesToUse = stateShapes || shapes;
 
     return (
-      <div className={classes.base}>
+      <div
+        className={classes.base}
+        style={{ padding: strokeWidth / 2 }}
+      >
         {imageUrl && (
           <div className={classes.imageContainer}>
             <img
@@ -231,10 +236,12 @@ export class Drawable extends React.Component {
 
         <Stage
           className={classes.stage}
-          height={heightFromState || height}
+          height={(heightFromState || height) + strokeWidth}
+          width={(widthFromState || width) + strokeWidth}
+          x={strokeWidth / 2}
+          y={strokeWidth / 2}
           onClick={this.handleOnStageClick}
-          onContentMouseMove={this.handleMouseMove}
-          width={widthFromState || width}
+          onContentMouseMove={e => this.handleMouseMove(e, strokeWidth / 2)}
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
