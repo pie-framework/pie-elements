@@ -5,6 +5,34 @@ jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn().mockReturnValue(false)
 }));
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }
+}));
+
 const rhomb = 'rhomb';
 const hexagon = 'hexagon';
 const square = 'square';
@@ -89,7 +117,7 @@ describe('controller', () => {
           { value: square, containerIndex: 1 },
           { value: trapeze, containerIndex: 0 }
         ]
-      }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+      }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { answers: [

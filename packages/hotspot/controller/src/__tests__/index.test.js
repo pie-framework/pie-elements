@@ -1,6 +1,34 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
 import { isResponseCorrect } from '../utils';
 
+jest.mock('@pie-lib/controller-utils', () => ({
+  getShuffledChoices: (choices, session, updateSession, key) => {
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+
+    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+      updateSession();
+    }
+
+    return choices;
+  },
+  partialScoring: {
+    enabled: (config, env) => {
+      config = config || {};
+      env = env || {};
+
+      if (config.partialScoring === false) {
+        return false;
+      }
+
+      if (env.partialScoring === false) {
+        return false;
+      }
+
+      return true;
+    }
+  }
+}));
+
 describe('controller', () => {
   let result, question, session, env;
 
@@ -73,7 +101,7 @@ describe('controller', () => {
       { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate' }, { score: 0 });
 
     assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0.2 });
+      { partialScoring: false }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
 
     assertOutcome('element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true }, { answers: [{ id: '2' }] }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
