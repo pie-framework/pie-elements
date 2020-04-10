@@ -283,7 +283,7 @@ describe('controller', () => {
   });
 
   describe('correct response', () => {
-  
+
 
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(question, {

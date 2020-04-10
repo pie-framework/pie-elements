@@ -33,11 +33,11 @@ describe('controller', () => {
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
         await model({
-          ...question,
-          choices: [
-            choice('<div>6</div>', '0'),
-            choice('<div>9</div>', '1')
-          ]},
+            ...question,
+            choices: [
+              choice('<div>6</div>', '0'),
+              choice('<div>9</div>', '1')
+            ]},
           session,
           env,
           updateSession
