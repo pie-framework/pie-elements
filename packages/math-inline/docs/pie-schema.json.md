@@ -96,9 +96,9 @@ an object with some alternatives for the correct answers
 
 Indicates if spaces are allowed
 
-## `allowDecimals` (boolean)
+## `allowThousandsSeparator` (boolean)
 
-Indicates if decimals are allowed
+Indicates if thousand separators are allowed
 
 # `defaultResponse` (object)
 
@@ -132,9 +132,9 @@ an object with some alternatives for the correct answers
 
 Indicates if spaces are allowed
 
-## `allowDecimals` (boolean)
+## `allowThousandsSeparator` (boolean)
 
-Indicates if decimals are allowed
+Indicates if thousand separators are allowed
 
 # `partialScoring` (boolean)
 
@@ -291,9 +291,9 @@ an object with some alternatives for the correct answers
 
 Indicates if spaces are allowed
 
-### `allowDecimals` (boolean)
+### `allowThousandsSeparator` (boolean)
 
-Indicates if decimals are allowed
+Indicates if thousand separators are allowed
 
 ## `Alternate` (object)
 
