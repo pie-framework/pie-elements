@@ -2218,13 +2218,13 @@
     react-dom "^16.8.1"
     react-konva "^16.10.1-0"
 
-"@pie-ui/ebsr@^1.2.34":
-  version "1.2.34"
-  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.34.tgz#6638f579cc2ead17b065f7ef5a4537fd238cc9fb"
-  integrity sha512-ClIDmqQDDbSktShW8xCCGtkFNSdjP+Ym9FEAHjQI9wICpvsZDUnXurHqQLU02TDZmp09OwhfjL+IcFXnib0yIA==
+"@pie-ui/ebsr@^1.2.35":
+  version "1.2.35"
+  resolved "https://registry.yarnpkg.com/@pie-ui/ebsr/-/ebsr-1.2.35.tgz#447d4928b1322ba56535e40ab820534de13625e5"
+  integrity sha512-khGI1rS748fswYarIbgWfyDiHOGsw8aE/PwDluXppoKnDBn00eAfhGXsbE5gEQbUuAEJFoFFlK4IudB8qSf9Ig==
   dependencies:
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-ui/multiple-choice" "^4.12.16"
+    "@pie-ui/multiple-choice" "^4.12.17"
     classnames "^2.2.5"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2380,26 +2380,6 @@
     prop-types "^15.6.1"
     react "^16.8.1"
     react-dom "^16.8.1"
-
-"@pie-ui/multiple-choice@^4.12.16":
-  version "4.12.16"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.12.16.tgz#706766f0922a305f0d40224e46d42843ec99117e"
-  integrity sha512-82Js3if8YOitCiJmRielsZATtNSFWpduaV8RAPTQchijaZMhvj3Vq9clo52BtDXSZ+7wl8Sby5sN5iThKJ7iHg==
-  dependencies:
-    "@material-ui/core" "^3.9.2"
-    "@pie-lib/config-ui" "^10.8.16"
-    "@pie-lib/correct-answer-toggle" "^2.2.20"
-    "@pie-lib/math-rendering" "^2.1.11"
-    "@pie-lib/render-ui" "^4.7.14"
-    classnames "^2.2.5"
-    debug "^4.1.1"
-    enzyme-to-json "^3.3.3"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-    react "^16.8.1"
-    react-dom "^16.8.1"
-    react-test-renderer "^16.3.2"
-    react-transition-group "^2.3.1"
 
 "@pie-ui/multiple-choice@^4.12.17":
   version "4.12.17"
