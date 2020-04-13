@@ -2401,6 +2401,26 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
+"@pie-ui/multiple-choice@^4.12.17":
+  version "4.12.17"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.12.17.tgz#56a7ea59de2b17e73115efed18f2b87977da6d19"
+  integrity sha512-n77ODtYu7m4cuZ8iW0mQXr8CRmoEQt+kw4M0jxgk22nc8WVpY5zu+NhA/s+XiFcKclycWEP6d0bidAprtptxew==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^10.8.16"
+    "@pie-lib/correct-answer-toggle" "^2.2.20"
+    "@pie-lib/math-rendering" "^2.1.11"
+    "@pie-lib/render-ui" "^4.7.14"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
 "@pie-ui/number-line@^7.1.37":
   version "7.1.37"
   resolved "https://registry.yarnpkg.com/@pie-ui/number-line/-/number-line-7.1.37.tgz#8ac91681c77108a423e622ab82e98b7dbdc502af"
