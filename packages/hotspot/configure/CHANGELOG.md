@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.1.7...@pie-element/hotspot-configure@4.4.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen ([94f4e07](https://github.com/pie-framework/pie-elements/commit/94f4e07))
+* ch7799: the Item Preview for a legacy hot spot item appears to show the wrong answer because the lines that are too close to the margins are not visible. Solution: add padding and move content accordingly so that the lines will be displayed entirely. ([a5c696e](https://github.com/pie-framework/pie-elements/commit/a5c696e))
+
+
+### Features
+
+* 7727: When resizing images in hotspot, the default behavior should be to keep the aspect ratio fixed ([651d7e2](https://github.com/pie-framework/pie-elements/commit/651d7e2))
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.1.7...@pie-element/hotspot-configure@4.2.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen ([94f4e07](https://github.com/pie-framework/pie-elements/commit/94f4e07))
+* ch7799: the Item Preview for a legacy hot spot item appears to show the wrong answer because the lines that are too close to the margins are not visible. Solution: add padding and move content accordingly so that the lines will be displayed entirely. ([a5c696e](https://github.com/pie-framework/pie-elements/commit/a5c696e))
+
+
+### Features
+
+* 7727: When resizing images in hotspot, the default behavior should be to keep the aspect ratio fixed ([651d7e2](https://github.com/pie-framework/pie-elements/commit/651d7e2))
+
+
+
+
+
+## [4.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.1.6...@pie-element/hotspot-configure@4.1.7) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 ## [4.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.1.5...@pie-element/hotspot-configure@4.1.6) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

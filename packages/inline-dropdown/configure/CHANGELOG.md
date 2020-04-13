@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.2.4...@pie-element/inline-dropdown-configure@3.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
+## [3.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.2.4...@pie-element/inline-dropdown-configure@3.2.5) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
+## [3.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.2.3...@pie-element/inline-dropdown-configure@3.2.4) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown-configure
+
+
+
+
+
 ## [3.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.2.2...@pie-element/inline-dropdown-configure@3.2.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-configure

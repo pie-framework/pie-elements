@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.1.5...@pie-element/multiple-choice@5.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump [@pie-lib](https://github.com/pie-lib) dependencies ([dcef3a7](https://github.com/pie-framework/pie-elements/commit/dcef3a7))
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+
+
+
+
+
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.1.5...@pie-element/multiple-choice@5.2.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump [@pie-lib](https://github.com/pie-lib) dependencies ([dcef3a7](https://github.com/pie-framework/pie-elements/commit/dcef3a7))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+
+
+
+
+
+## [5.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.1.4...@pie-element/multiple-choice@5.1.5) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
 ## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.1.3...@pie-element/multiple-choice@5.1.4) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

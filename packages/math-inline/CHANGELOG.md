@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.2.5...@pie-element/math-inline@5.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump libs ([3d4f3e9](https://github.com/pie-framework/pie-elements/commit/3d4f3e9))
+* bump math deps ([4b53869](https://github.com/pie-framework/pie-elements/commit/4b53869))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+
+
+
+## [5.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.2.5...@pie-element/math-inline@5.2.6) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump libs ([3d4f3e9](https://github.com/pie-framework/pie-elements/commit/3d4f3e9))
+* bump math deps ([4b53869](https://github.com/pie-framework/pie-elements/commit/4b53869))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+
+
+
+## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.2.4...@pie-element/math-inline@5.2.5) (2020-02-18)
+
+
+### Bug Fixes
+
+* **math-inline:** no responses on controller object unless mode is evaluate ([195a6ce](https://github.com/pie-framework/pie-elements/commit/195a6ce))
+
+
+
+
+
 ## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.2.3...@pie-element/math-inline@5.2.4) (2020-02-03)
 
 **Note:** Version bump only for package @pie-element/math-inline

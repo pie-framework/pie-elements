@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.13...@pie-element/passage@1.4.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
+
+
+
+
+
+## [1.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.13...@pie-element/passage@1.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* ch6126: updated version ([4d11b59](https://github.com/pie-framework/pie-elements/commit/4d11b59))
+
+
+
+
+
 ## [1.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.2.12...@pie-element/passage@1.2.13) (2020-02-03)
 
 
