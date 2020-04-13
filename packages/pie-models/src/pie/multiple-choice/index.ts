@@ -18,7 +18,9 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates the choices are single or multiple selection */
   choiceMode?: 'checkbox' | 'radio';
 
-  /** What key should be displayed before choices. If undefined no  key will be displayed.  */
+  /** What key should be displayed before choices. If undefined no  key will be displayed.
+   * @default: 'letters'
+   * */
   choicePrefix?: 'letters' | 'numbers';
 
   /** The choice options for the question */
