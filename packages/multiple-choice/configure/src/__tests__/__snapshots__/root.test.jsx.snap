@@ -1,6 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main snapshot renders 1`] = `
+exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "choiceMode": "checkbox",
+      "choicePrefix": "letters",
+      "choices": Array [
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Sweden",
+          "value": "sweden",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Iceland",
+          "value": "iceland",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Norway",
+          "value": "norway",
+        },
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Finland",
+          "value": "finland",
+        },
+      ],
+      "configure": Object {},
+      "feedbackEnabled": true,
+      "lockChoiceOrder": true,
+      "partialScoring": false,
+      "prompt": "Which of these northern European countries are EU members?",
+      "promptEnabled": true,
+      "rationaleEnabled": true,
+      "scoringType": "auto",
+      "studentInstructionsEnabled": true,
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onAddChoice={[Function]}
+  onChangeModel={[Function]}
+  onChoiceChanged={[Function]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onRemoveChoice={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;
+
+exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
 <WithStyles(Component)
   classes={Object {}}
   model={
@@ -44,8 +110,15 @@ exports[`Main snapshot renders 1`] = `
         },
       ],
       "configure": Object {},
+      "feedbackEnabled": true,
+      "lockChoiceOrder": true,
       "partialScoring": false,
       "prompt": "Which of these northern European countries are EU members?",
+      "promptEnabled": true,
+      "rationaleEnabled": true,
+      "scoringType": "auto",
+      "studentInstructionsEnabled": true,
+      "teacherInstructionsEnabled": true,
     }
   }
   onAddChoice={[Function]}

@@ -44,11 +44,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export const normalize = question => ({
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  choicePrefix: 'numbers',
+  ...defaults,
   ...question,
 });
 

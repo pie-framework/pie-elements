@@ -5,7 +5,7 @@
 export default {
   model: {
     choiceMode: 'checkbox',
-    choicePrefix: 'numbers',
+    choicePrefix: 'letters',
     choices: [],
     prompt: 'Question Prompt goes here',
     lockChoiceOrder: true,
