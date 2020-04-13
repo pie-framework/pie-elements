@@ -873,5 +873,20 @@
     "committerDate": "2020-04-10 17:13:24 +0100",
     "isTagged": true,
     "tag": "@pie-element/placement-ordering-configure@5.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump all packages to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump all packages to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d9ec9a8689f0a391594b5e2f4ea958c6dc9f6d7b",
+    "gitTags": "",
+    "committerDate": "2020-04-10 20:01:37 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/placement-ordering-configure@5.1.1"
   }
 ]
