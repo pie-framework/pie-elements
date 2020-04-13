@@ -878,5 +878,35 @@
     "committerDate": "2020-03-31 19:25:13 +0100",
     "isTagged": true,
     "tag": "@pie-element/math-inline-controller@5.3.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump lib and ui versions",
+    "merge": null,
+    "header": "fix: bump lib and ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:13:24 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@5.3.1"
+  },
+  {
+    "type": "fix",
+    "scope": "math-inline",
+    "subject": "allowThousandsSeparator behavior change - ch7109",
+    "merge": null,
+    "header": "fix(math-inline): allowThousandsSeparator behavior change - ch7109",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "13ed920ebc92130ad9e98d6d3d4a388d737ce58e",
+    "gitTags": "",
+    "committerDate": "2020-03-25 14:14:57 +0200",
+    "isTagged": true,
+    "tag": "@pie-element/math-inline-controller@5.3.1"
   }
 ]

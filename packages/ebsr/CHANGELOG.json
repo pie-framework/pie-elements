@@ -1378,5 +1378,35 @@
     "committerDate": "2020-03-31 19:25:13 +0100",
     "isTagged": true,
     "tag": "@pie-element/ebsr@6.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump lib and ui versions",
+    "merge": null,
+    "header": "fix: bump lib and ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:13:24 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page.",
+    "merge": null,
+    "header": "fix: PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e215704cd83ae0f60e90ac6ce7a03031a325d5cc",
+    "gitTags": " (origin/fix/PD-90-part-labels-do-not-show-up)",
+    "committerDate": "2020-04-10 18:27:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.1"
   }
 ]

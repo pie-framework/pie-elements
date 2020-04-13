@@ -348,5 +348,50 @@
     "committerDate": "2020-03-30 21:50:42 +0100",
     "isTagged": true,
     "tag": "@pie-element/charting@2.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump version",
+    "merge": null,
+    "header": "fix: bump version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "98a13048d48af872a216f9e2eae1a22a7ecf552f",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:14:19 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/charting@2.3.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump lib and ui versions",
+    "merge": null,
+    "header": "fix: bump lib and ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:13:24 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/charting@2.3.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "ch3979: Partial credit scoring is not working for Charting items (updated accordingly to pie-lib/controller-utils)",
+    "merge": null,
+    "header": "fix: ch3979: Partial credit scoring is not working for Charting items (updated accordingly to pie-lib/controller-utils)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "9c650b9580512a301ac8cd86106664f4f8e6d21d",
+    "gitTags": "",
+    "committerDate": "2020-04-07 11:49:41 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/charting@2.3.1"
   }
 ]
