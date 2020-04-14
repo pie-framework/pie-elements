@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/feedback": "^0.4.21"
+    "@pie-lib/feedback": "^0.4.22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
