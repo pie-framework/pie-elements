@@ -493,5 +493,20 @@
     "committerDate": "2020-04-10 20:01:37 +0100",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice-controller@3.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "merge": null,
+    "header": "fix: PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "27cd7adf01276ecd09094c4d7808807590a8c00a",
+    "gitTags": "",
+    "committerDate": "2020-04-13 09:47:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@3.2.2"
   }
 ]

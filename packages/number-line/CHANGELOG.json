@@ -1168,5 +1168,20 @@
     "committerDate": "2020-04-10 17:39:16 +0100",
     "isTagged": true,
     "tag": "@pie-element/number-line@5.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "corret closeTo precision PD-132 (#446)",
+    "merge": null,
+    "header": "fix: corret closeTo precision PD-132 (#446)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "33d0b83065e981cbff16522de32617add85c5896",
+    "gitTags": "",
+    "committerDate": "2020-04-13 16:44:03 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.2"
   }
 ]
