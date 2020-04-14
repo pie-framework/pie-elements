@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.3.1...@pie-element/multiple-choice@5.3.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix) ([27cd7ad](https://github.com/pie-framework/pie-elements/commit/27cd7ad))
+* PD-129: Updated pie-ui/multiple-choice version. ([7dd504a](https://github.com/pie-framework/pie-elements/commit/7dd504a))
+
+
+
+
+
 ## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.1.5...@pie-element/multiple-choice@5.3.1) (2020-04-10)
 
 

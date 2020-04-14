@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@5.1.1...@pie-element/ebsr-controller@5.1.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page. ([d682379](https://github.com/pie-framework/pie-elements/commit/d682379))
+
+
+
+
+
 ## [5.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-controller@5.0.3...@pie-element/ebsr-controller@5.1.1) (2020-04-10)
 
 

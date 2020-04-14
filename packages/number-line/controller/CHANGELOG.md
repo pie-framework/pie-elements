@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.1...@pie-element/number-line-controller@4.3.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* corret closeTo precision PD-132 ([#446](https://github.com/pie-framework/pie-elements/issues/446)) ([33d0b83](https://github.com/pie-framework/pie-elements/commit/33d0b83))
+
+
+
+
+
 ## [4.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.2.9...@pie-element/number-line-controller@4.3.1) (2020-04-10)
 
 
