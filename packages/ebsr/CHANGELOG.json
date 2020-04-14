@@ -1438,5 +1438,35 @@
     "committerDate": "2020-04-10 17:39:16 +0100",
     "isTagged": true,
     "tag": "@pie-element/ebsr@6.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump @pie-ui/ebsr",
+    "merge": null,
+    "header": "fix: bump @pie-ui/ebsr",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "e84c55107f55ab5ed4488ed8e040e3e3a189f8f5",
+    "gitTags": "",
+    "committerDate": "2020-04-13 22:47:25 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page.",
+    "merge": null,
+    "header": "fix: PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d682379eb14b50537eccb418892fa23dff797db9",
+    "gitTags": " (origin/fix/PD-90/default-value-for-ebsr-part-labels)",
+    "committerDate": "2020-04-13 18:51:52 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.2"
   }
 ]

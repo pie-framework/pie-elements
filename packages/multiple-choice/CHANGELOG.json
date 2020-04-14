@@ -1878,5 +1878,35 @@
     "committerDate": "2020-04-10 17:39:16 +0100",
     "isTagged": true,
     "tag": "@pie-element/multiple-choice@5.3.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-129: Updated pie-ui/multiple-choice version.",
+    "merge": null,
+    "header": "fix: PD-129: Updated pie-ui/multiple-choice version.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "7dd504ab5935ca7a3e1a665dac2b8afe5e298456",
+    "gitTags": " (origin/fix/PD-129-updated-version)",
+    "committerDate": "2020-04-13 18:58:15 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@5.3.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "merge": null,
+    "header": "fix: PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "27cd7adf01276ecd09094c4d7808807590a8c00a",
+    "gitTags": "",
+    "committerDate": "2020-04-13 09:47:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice@5.3.2"
   }
 ]
