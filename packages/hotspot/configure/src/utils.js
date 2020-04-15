@@ -67,6 +67,8 @@ const getUpdatedShapes = (initialDim, nextDim, shapes) => {
 // example:
 // from: { rectangles: [r1], polygons: [p1, p2]}
 // to: [{ ...r1, group: 'rectangles' }, { ...p1, group: 'polygons' }, { ...p2, group: 'polygons' }]
+// if a shape has index defined, keep it, otherwise initialize it
+// index is used for the UNDO function
 const getAllShapes = (shapesMap) => {
   shapesMap = shapesMap || {};
   const shapesArray = [];
@@ -76,7 +78,11 @@ const getAllShapes = (shapesMap) => {
     ? shapesKeys.reduce((acc, currentShapeKey) =>
         acc.concat(
           shapesMap[currentShapeKey]
-            ? shapesMap[currentShapeKey].map(shape => ({ ...shape, group: currentShapeKey }))
+            ? shapesMap[currentShapeKey].map((shape, index) => ({
+              ...shape,
+              group: currentShapeKey,
+              index: shape.index || acc.length + index
+            }))
             : []),
       shapesArray)
     : shapesArray;

@@ -134,7 +134,8 @@ describe('HotspotDrawable', () => {
           width: 0,
           x: 20,
           y: 30,
-          group: 'rectangles'
+          group: 'rectangles',
+          index: 6
         }
       ]);
     });

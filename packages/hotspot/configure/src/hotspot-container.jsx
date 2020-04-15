@@ -93,7 +93,10 @@ export class Container extends Component {
     const { shapes } = this.state;
 
     if (shapes && shapes.length) {
-      const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
+      // sort by index value
+      let newShapes = shapes.sort((a, b) => (parseInt(a.index) - parseInt(b.index)));
+
+      newShapes = newShapes ? newShapes.slice(0, newShapes.length - 1) : [];
 
       this.onUpdateShapes(newShapes);
     }

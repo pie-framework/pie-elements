@@ -141,9 +141,9 @@ describe('Root', () => {
           height: 600
         });
         expect(onUpdateShapes).toBeCalledWith({
-          rectangles: [{ x: 20, y: 20, height: 200, width: 200 }],
+          rectangles: [{ x: 20, y: 20, height: 200, width: 200, index: 0 }],
           polygons: [{
-            points: [{ x: 0, y: 400 }, { x: 400, y: 400 }, { x: 200, y: 600 }]
+            points: [{ x: 0, y: 400 }, { x: 400, y: 400 }, { x: 200, y: 600 }], index: 1
           }]
         });
       });
@@ -156,9 +156,9 @@ describe('Root', () => {
           height: 150
         });
         expect(onUpdateShapes).toBeCalledWith({
-          rectangles: [{ x: 5, y: 5, height: 50, width: 50 }],
+          rectangles: [{ x: 5, y: 5, height: 50, width: 50, index: 0 }],
           polygons: [{
-            points: [{ x: 0, y: 100 }, { x: 100, y: 100 }, { x: 50, y: 150 }]
+            points: [{ x: 0, y: 100 }, { x: 100, y: 100 }, { x: 50, y: 150 }], index: 1
           }]
         });
       });
@@ -171,9 +171,9 @@ describe('Root', () => {
           height: 450
         });
         expect(onUpdateShapes).toBeCalledWith({
-          rectangles: [{ x: 15, y: 15, height: 150, width: 150 }],
+          rectangles: [{ x: 15, y: 15, height: 150, width: 150, index: 0 }],
           polygons: [{
-            points: [{ x: 0, y: 300 }, { x: 300, y: 300 }, { x: 150, y: 450 }]
+            points: [{ x: 0, y: 300 }, { x: 300, y: 300 }, { x: 150, y: 450 }], index: 1
           }]
         });
       });
@@ -186,9 +186,9 @@ describe('Root', () => {
           height: 270
         });
         expect(onUpdateShapes).toBeCalledWith({
-          rectangles: [{ x: 9, y: 9, height: 90, width: 90 }],
+          rectangles: [{ x: 9, y: 9, height: 90, width: 90, index: 0 }],
           polygons: [{
-            points: [{ x: 0, y: 180 }, { x: 180, y: 180 }, { x: 90, y: 270 }]
+            points: [{ x: 0, y: 180 }, { x: 180, y: 180 }, { x: 90, y: 270 }], index: 1
           }]
         });
       });
@@ -216,9 +216,9 @@ describe('Root', () => {
           height: 300
         });
         expect(onUpdateShapes).toBeCalledWith({
-          rectangles: [{ x: 20, y: 10, height: 100, width: 200 }],
+          rectangles: [{ x: 20, y: 10, height: 100, width: 200, index: 0 }],
           polygons: [{
-            points: [{ x: 0, y: 200 }, { x: 400, y: 200 }, { x: 200, y: 300 }]
+            points: [{ x: 0, y: 200 }, { x: 400, y: 200 }, { x: 200, y: 300 }], index: 1
           }]
         });
       });
@@ -231,9 +231,9 @@ describe('Root', () => {
           height: 300
         });
         expect(onUpdateShapes).toBeCalledWith({
-            rectangles: [{ x: 5, y: 10, height: 100, width: 50 }],
+            rectangles: [{ x: 5, y: 10, height: 100, width: 50, index: 0 }],
             polygons: [{
-              points: [{ x: 0, y: 200 }, { x: 100, y: 200 }, { x: 50, y: 300 }]
+              points: [{ x: 0, y: 200 }, { x: 100, y: 200 }, { x: 50, y: 300 }], index: 1
             }]
           }
         );
@@ -247,8 +247,9 @@ describe('Root', () => {
           height: 450
         });
         expect(onUpdateShapes).toBeCalledWith({
-            rectangles: [{ x: 10, y: 15, height: 150, width: 100 }],
+            rectangles: [{ x: 10, y: 15, height: 150, width: 100, index: 0 }],
             polygons: [{
+              index: 1,
               points: [{ x: 0, y: 300 }, { x: 200, y: 300 }, { x: 100, y: 450 }]
             }]
           }
@@ -263,9 +264,10 @@ describe('Root', () => {
           height: 270
         });
         expect(onUpdateShapes).toBeCalledWith({
-            rectangles: [{ x: 10, y: 9, height: 90, width: 100 }],
+            rectangles: [{ x: 10, y: 9, height: 90, width: 100, index: 0 }],
             polygons: [{
-              points: [{ x: 0, y: 180 }, { x: 200, y: 180 }, { x: 100, y: 270 }]
+              points: [{ x: 0, y: 180 }, { x: 200, y: 180 }, { x: 100, y: 270 }],
+              index: 1
             }]
           }
         );

@@ -116,13 +116,15 @@ const shapesArray = [
     width: 100,
     x: 1,
     y: 1,
-    group: 'rectangles'
+    group: 'rectangles',
+    index: 0
   }, {
     height: 200,
     width: 200,
     x: 200,
     y: 1,
-    group: 'rectangles'
+    group: 'rectangles',
+    index: 1
   },
   {
     points: [
@@ -130,7 +132,8 @@ const shapesArray = [
       { x: 1, y: 200 },
       { y: 200, x: 200 },
       { y: 200, x: 200 }],
-    group: 'polygons'
+    group: 'polygons',
+    index: 2
   }, {
     points: [
       { x: 200, y: 100 },
@@ -138,7 +141,8 @@ const shapesArray = [
       { x: 400, y: 200 },
       { x: 400, y: 200 }
     ],
-    group: 'polygons'
+    group: 'polygons',
+    index: 3
   }
 ];
 
@@ -150,11 +154,13 @@ const shapesMap = {
       width: 100,
       x: 1,
       y: 1,
+      index: 0
     }, {
       height: 200,
       width: 200,
       x: 200,
       y: 1,
+      index: 1
     }
   ], polygons: [
     {
@@ -163,6 +169,7 @@ const shapesMap = {
         { x: 1, y: 200 },
         { y: 200, x: 200 },
         { y: 200, x: 200 }],
+      index: 2,
     }, {
       points: [
         { x: 200, y: 100 },
@@ -170,6 +177,7 @@ const shapesMap = {
         { x: 400, y: 200 },
         { x: 400, y: 200 }
       ],
+      index: 3
     }
   ]
 };
@@ -193,9 +201,9 @@ describe('groupShapes', () => {
   it.each`
       shapesArray     |  expected
       ${shapesArray}  |  ${shapesMap}
-      ${null}         |  ${{ rectangles: [], polygons: []}}
-      ${undefined}    |  ${{ rectangles: [], polygons: []}}
-      ${[]}           |  ${{ rectangles: [], polygons: []}}
+      ${null}         |  ${{ rectangles: [], polygons: [] }}
+      ${undefined}    |  ${{ rectangles: [], polygons: [] }}
+      ${[]}           |  ${{ rectangles: [], polygons: [] }}
     `('TURNS shapes = $shapesArray INTO $expected',
     async ({ shapesArray, expected }) => {
       expect(groupShapes(shapesArray)).toEqual(expected);

@@ -57,7 +57,7 @@ export class Drawable extends React.Component {
     // Otherwise, a click should add a new rectangle at the mouse position with 0 width and height
     const newShapes = shapes.slice();
     // get the max id value
-    const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
+    const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;// get the max id value
 
     newShapes.push({
       id: `${value + 1}`,
@@ -65,7 +65,8 @@ export class Drawable extends React.Component {
       width: 0,
       x: e.evt.layerX,
       y: e.evt.layerY,
-      group: 'rectangles'
+      group: 'rectangles',
+      index: newShapes.length
     });
 
     onUpdateShapes(newShapes);
