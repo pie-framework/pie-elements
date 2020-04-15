@@ -6,6 +6,7 @@ import Help from '@material-ui/icons/Help';
 import Drawable from './hotspot-drawable';
 import Button from './button';
 import UploadControl from './upload-control';
+import { getAllShapes, groupShapes } from './utils';
 
 const isImage = (file) => {
   const imageType = /image.*/;
@@ -13,23 +14,19 @@ const isImage = (file) => {
 };
 
 export class Container extends Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      ...prevState,
+      shapes: getAllShapes(nextProps.shapes),
+    }
+  }
+
   constructor(props) {
     super(props);
 
-    const { shapes } = props;
-    const shapesKeys = Object.keys(shapes || {});
-
-
     this.state = {
       dragEnabled: true,
-      shapes: shapesKeys.length
-        ? shapesKeys.reduce((acc, currentShapeKey) =>
-            acc.concat(
-              shapes[currentShapeKey]
-                ? shapes[currentShapeKey].map(shape => ({ ...shape, type: currentShapeKey }))
-                : []),
-          [])
-        : []
+      shapes: getAllShapes(props.shapes)
     }
   }
 
@@ -37,16 +34,14 @@ export class Container extends Component {
     const { onImageUpload } = this.props;
     const reader = new FileReader();
 
-    reader.onloadend = () => {
-      onImageUpload(reader.result);
-    };
+    reader.onloadend = () => onImageUpload(reader.result);
     reader.readAsDataURL(file)
   };
 
   handleUploadImage = (e) => {
     e.preventDefault();
-    const file = e.target.files[0];
-    this.handleFileRead(file);
+
+    this.handleFileRead(e.target.files[0]);
   };
 
   enableDropzone = () => this.setState({ dropzoneActive: true });
@@ -54,10 +49,12 @@ export class Container extends Component {
 
   handleOnDrop = (e) => {
     e.preventDefault();
+
     const { items, files } = e.dataTransfer;
 
     if (items && items[0].kind === 'file') {
       const file = items[0].getAsFile();
+
       if (isImage(file)) {
         this.handleFileRead(file);
       }
@@ -69,6 +66,7 @@ export class Container extends Component {
 
   handleOnDragOver = (e) => {
     e.preventDefault();
+
     const { dropzoneActive } = this.state;
 
     if (!dropzoneActive) {
@@ -78,32 +76,17 @@ export class Container extends Component {
 
   handleOnDragExit = (e) => {
     e.preventDefault();
+
     this.disableDropzone();
   };
 
   onUpdateShapes = newShapes => {
     const { onUpdateShapes } = this.props;
 
-    this.setState({
-      shapes: newShapes
-    }, () => {
-      if (newShapes.length) {
-        const updatedShapes = newShapes.reduce((acc, { type, ...shapeProps }) => {
-          acc[type] = [...(acc[type] || []), shapeProps];
-          return acc;
-        }, {
-          rectangles: [],
-          polygons: []
-        });
-
-        onUpdateShapes(updatedShapes);
-      } else {
-        onUpdateShapes({
-          rectangles: [],
-          polygons: []
-        });
-      }
-    });
+    this.setState(
+      { shapes: newShapes },
+      () => onUpdateShapes(groupShapes(newShapes))
+    );
   };
 
   handleUndo = () => {
@@ -111,22 +94,18 @@ export class Container extends Component {
 
     if (shapes && shapes.length) {
       const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
+
       this.onUpdateShapes(newShapes);
     }
   };
 
-  handleClearAll = () => {
-    this.onUpdateShapes([]);
-  };
+  handleClearAll = () => this.onUpdateShapes([]);
 
   handleEnableDrag = () => this.setState({ dragEnabled: true });
   handleDisableDrag = () => this.setState({ dragEnabled: false });
   handleInputClick = () => this.input.click();
 
-  toggleTooltip = () => {
-    const { showTooltip } = this.state;
-    this.setState({ showTooltip: !showTooltip })
-  };
+  toggleTooltip = () => this.setState({ showTooltip: !this.state.showTooltip });
 
   render() {
     const {

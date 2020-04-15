@@ -94,21 +94,21 @@ describe('HotspotContainer', () => {
         x: 1,
         y: 1,
         correct: true,
-        type: 'rectangles'
+        group: 'rectangles'
       }, {
         id: '1',
         height: 140,
         width: 130,
         x: 140,
         y: 1,
-        type: 'rectangles'
+        group: 'rectangles'
       }, {
         id: '2',
         height: 140,
         width: 130,
         x: 280,
         y: 1,
-        type: 'rectangles'
+        group: 'rectangles'
       },
       {
         id: '3',
@@ -118,7 +118,7 @@ describe('HotspotContainer', () => {
           { y: 288, x: 129 },
           { y: 148, x: 129 }],
         correct: true,
-        type: 'polygons'
+        group: 'polygons'
       }, {
         id: '4',
         points: [
@@ -127,7 +127,7 @@ describe('HotspotContainer', () => {
           { y: 289, x: 269 },
           { x: 269, y: 151 }],
         correct: false,
-        type: 'polygons'
+        group: 'polygons'
       }, {
         id: '5',
         points: [
@@ -137,7 +137,7 @@ describe('HotspotContainer', () => {
           { x: 407, y: 150 }
         ],
         correct: false,
-        type: 'polygons'
+        group: 'polygons'
       }
     ];
 
@@ -156,7 +156,7 @@ describe('HotspotContainer', () => {
         width: 130,
         x: 280,
         y: 1,
-        type: 'rectangles'
+        group: 'rectangles'
       };
 
       wrapper.instance().onUpdateShapes([...formattedShapes, newShape]);
@@ -193,7 +193,7 @@ describe('HotspotContainer', () => {
         width: 130,
         x: 280,
         y: 1,
-        type: 'rectangles'
+        group: 'rectangles'
       };
 
       wrapper.instance().onUpdateShapes([...formattedShapes, newShape]);

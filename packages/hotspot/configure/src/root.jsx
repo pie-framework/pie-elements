@@ -12,42 +12,40 @@ import { withStyles } from '@material-ui/core/styles';
 
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
+import { updateImageDimensions, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
 
 const { Panel, toggle } = settings;
 
 export class Root extends React.Component {
-  handleColorChange = (type, color) => {
+  handleColorChange = (fieldType, color) => {
     const { onColorChanged } = this.props;
-    const cType = `${type}Color`;
+    const cType = `${fieldType}Color`;
 
     onColorChanged(cType, color);
   };
 
-  handleOnUpdateImageDimensions = (value, type) => {
+  handleOnUpdateImageDimensions = (value, resizeType) => {
     const {
-      model: { dimensions },
+      model: { dimensions, shapes },
       configuration: { preserveAspectRatio = {} },
-      onUpdateImageDimension
+      onUpdateImageDimension,
+      onUpdateShapes,
     } = this.props;
 
-    const imageAspectRatio = dimensions.width / dimensions.height;
+    const nextImageDimensions = { ...dimensions, [resizeType]: value };
 
-    switch (type) {
-      case 'width':
-        onUpdateImageDimension({
-          width: value,
-          height: preserveAspectRatio.enabled ? value / imageAspectRatio : dimensions.height
-        });
-        break;
-      case 'height':
-        onUpdateImageDimension({
-          width: preserveAspectRatio.enabled ? value * imageAspectRatio : dimensions.width,
-          height: value
-        });
-        break;
-      default:
-        break;
-    }
+    // if preserveAspectRatio.enabled, updateImageDimensions function makes sure aspect ratio is kept
+    const updatedDimensions = updateImageDimensions(
+      dimensions,
+      nextImageDimensions,
+      preserveAspectRatio.enabled,
+      resizeType
+    );
+    const shapesArray = getAllShapes(shapes);
+    const updatedShapes = getUpdatedShapes(dimensions, updatedDimensions, shapesArray);
+
+    onUpdateShapes(groupShapes(updatedShapes));
+    onUpdateImageDimension(updatedDimensions);
   };
 
   render() {
@@ -237,7 +235,6 @@ const styles = theme => ({
 Root.propTypes = {
   classes: PropTypes.object.isRequired,
   configuration: PropTypes.object,
-  disableSidePanel: PropTypes.bool,
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
     add: PropTypes.func,

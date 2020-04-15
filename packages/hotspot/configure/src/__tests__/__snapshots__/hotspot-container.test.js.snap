@@ -47,31 +47,32 @@ exports[`HotspotContainer render renders 1`] = `
           Array [
             Object {
               "correct": true,
+              "group": "rectangles",
               "height": 140,
               "id": "0",
-              "type": "rectangles",
               "width": 130,
               "x": 1,
               "y": 1,
             },
             Object {
+              "group": "rectangles",
               "height": 140,
               "id": "1",
-              "type": "rectangles",
               "width": 130,
               "x": 140,
               "y": 1,
             },
             Object {
+              "group": "rectangles",
               "height": 140,
               "id": "2",
-              "type": "rectangles",
               "width": 130,
               "x": 280,
               "y": 1,
             },
             Object {
               "correct": true,
+              "group": "polygons",
               "id": "3",
               "points": Array [
                 Object {
@@ -91,10 +92,10 @@ exports[`HotspotContainer render renders 1`] = `
                   "y": 148,
                 },
               ],
-              "type": "polygons",
             },
             Object {
               "correct": false,
+              "group": "polygons",
               "id": "4",
               "points": Array [
                 Object {
@@ -114,10 +115,10 @@ exports[`HotspotContainer render renders 1`] = `
                   "y": 151,
                 },
               ],
-              "type": "polygons",
             },
             Object {
               "correct": false,
+              "group": "polygons",
               "id": "5",
               "points": Array [
                 Object {
@@ -137,7 +138,6 @@ exports[`HotspotContainer render renders 1`] = `
                   "y": 150,
                 },
               ],
-              "type": "polygons",
             },
           ]
         }
