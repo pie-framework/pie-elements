@@ -393,5 +393,20 @@
     "committerDate": "2020-04-10 20:01:37 +0100",
     "isTagged": true,
     "tag": "@pie-element/graphing-controller@3.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui/lib versions",
+    "merge": null,
+    "header": "fix: bump ui/lib versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3edb2321ebaefcaee70c3642aa6da8a50e8a99e5",
+    "gitTags": "",
+    "committerDate": "2020-04-14 15:36:44 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/graphing-controller@3.2.3"
   }
 ]

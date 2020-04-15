@@ -178,5 +178,20 @@
     "committerDate": "2020-04-10 17:39:16 +0100",
     "isTagged": true,
     "tag": "@pie-element/protractor@2.5.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui/lib versions",
+    "merge": null,
+    "header": "fix: bump ui/lib versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3edb2321ebaefcaee70c3642aa6da8a50e8a99e5",
+    "gitTags": "",
+    "committerDate": "2020-04-14 15:36:44 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/protractor@2.5.3"
   }
 ]
