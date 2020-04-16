@@ -41,8 +41,11 @@ export class Root extends React.Component {
       preserveAspectRatio.enabled,
       resizeType
     );
+    // transform shapes map into shapes array
     const shapesArray = getAllShapes(shapes);
+    // transform all the shapes to fit the re-sized image
     const updatedShapes = getUpdatedShapes(dimensions, updatedDimensions, shapesArray);
+    // transform shapes array back into shapes map
 
     onUpdateShapes(groupShapes(updatedShapes));
     onUpdateImageDimension(updatedDimensions);

@@ -29,7 +29,7 @@ export function model(question, session, env) {
     prompt,
     shapes
   } = normalizedQuestion;
-  const { rectangles = [], polygons = [] } = shapes || {};
+  const { rectangles, polygons } = shapes || {};
 
   return new Promise(resolve => {
     const out = {
@@ -63,7 +63,7 @@ export function model(question, session, env) {
     out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
     out.strokeWidth = normalizedQuestion.strokeWidth;
 
-    console.log(out);
+    // console.log(out);
     resolve(out);
   });
 }

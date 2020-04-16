@@ -15,6 +15,7 @@ const isImage = (file) => {
 
 export class Container extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
+    // always transform shapes map into shapes array at this level
     return {
       ...prevState,
       shapes: getAllShapes(nextProps.shapes),
@@ -26,6 +27,7 @@ export class Container extends Component {
 
     this.state = {
       dragEnabled: true,
+      // always transform shapes map into shapes array at this level
       shapes: getAllShapes(props.shapes)
     }
   }
@@ -85,6 +87,7 @@ export class Container extends Component {
 
     this.setState(
       { shapes: newShapes },
+      // always transform shapes array back into shapes map when saving changes
       () => onUpdateShapes(groupShapes(newShapes))
     );
   };
