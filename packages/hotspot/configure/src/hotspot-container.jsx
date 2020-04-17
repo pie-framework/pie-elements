@@ -257,8 +257,7 @@ const styles = theme => ({
       color: '#333131',
       cursor: 'help'
     },
-    color: '#C1C1C1',
-    padding: '5px 9px'
+    color: '#C1C1C1'
   },
   replaceButton: {
     marginLeft: 0,
@@ -277,7 +276,8 @@ const styles = theme => ({
   },
   tooltip: {
     position: 'relative',
-    textAlign: 'right'
+    textAlign: 'right',
+    padding: '5px 9px'
   },
   tooltipContent: {
     background: '#333131',
