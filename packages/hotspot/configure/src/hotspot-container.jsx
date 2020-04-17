@@ -210,7 +210,7 @@ export class Container extends Component {
               {showTooltip && (
                 <div className={classes.tooltipContent}>
                   <label>
-                    Click, move mouse and click again to create a hotspot. Click the hotspot to mark correct. Click
+                    Click and drag to create a hotspot. Click the hotspot to mark correct. Click
                     again to unmark.
                   </label>
                   <div className={classes.tooltipArrow}/>
