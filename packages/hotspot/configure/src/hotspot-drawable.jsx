@@ -38,40 +38,41 @@ export class Drawable extends React.Component {
   }
 
   /// start of handling HotSpots section
-  handleOnStageClick = (e) => {
+  handleOnMouseDown = (e) => {
+    if (e.target === e.currentTarget) {
+      const { onUpdateShapes, shapes } = this.props;
+      // Add a new rectangle at the mouse position with 0 width and height
+      const newShapes = shapes.slice();
+      const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
+
+      newShapes.push({
+        id: `${value + 1}`,
+        height: 0,
+        width: 0,
+        x: e.evt.layerX,
+        y: e.evt.layerY,
+        group: 'rectangles',
+        index: shapes.length
+      });
+
+      this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
+      onUpdateShapes(newShapes);
+    }
+  };
+
+  handleOnMouseUp = () => {
     // !IMPORTANT: currently, only 'rectangles' are drawable
     const { isDrawing, stateShapes } = this.state;
-    const { onUpdateShapes, shapes } = this.props;
+    const { onUpdateShapes } = this.props;
 
-    // If we're drawing a shape, a click should finish the drawing and send the new shapes to HOC
+    // If we're drawing a shape, a click finishes the drawing and sends the new shapes to HOC
     if (isDrawing) {
-      if (stateShapes) {
-        onUpdateShapes(cloneDeep(stateShapes));
-      }
-
       this.setState({ isDrawing: !isDrawing, stateShapes: false, isDrawingShapeId: undefined });
 
-      return;
+      if (stateShapes) {
+        onUpdateShapes(stateShapes);
+      }
     }
-
-    // Otherwise, a click should add a new rectangle at the mouse position with 0 width and height
-    const newShapes = shapes.slice();
-    // get the max id value
-    const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;// get the max id value
-
-    newShapes.push({
-      id: `${value + 1}`,
-      height: 0,
-      width: 0,
-      x: e.evt.layerX,
-      y: e.evt.layerY,
-      group: 'rectangles',
-      index: newShapes.length
-    });
-
-    onUpdateShapes(newShapes);
-
-    this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
   };
 
   handleMouseMove = (e) => {
@@ -281,8 +282,9 @@ export class Drawable extends React.Component {
           className={classes.stage}
           height={heightFromState || height}
           width={widthFromState || width}
-          onClick={this.handleOnStageClick}
-          onContentMouseMove={this.handleMouseMove}
+          onMouseDown={this.handleOnMouseDown }
+          onMouseUp={this.handleOnMouseUp }
+          onMouseMove={this.handleMouseMove }
         >
           <Layer>
             {shapesToUse.map((shape, index) => {

@@ -118,13 +118,34 @@ describe('HotspotDrawable', () => {
       wrapper = w();
     });
 
-    it('handleOnStageClick isDrawing = false', () => {
-      wrapper.instance().handleOnStageClick({
+    it('handleOnMouseDown target != Stage', () => {
+      wrapper.instance().state.stateShapes = initialModel.shapes;
+
+      const event = {
+        target: 'Line',
+        currentTarget: 'Stage',
         evt: {
           layerX: 20,
           layerY: 30
         }
-      });
+      };
+
+      wrapper.instance().handleOnMouseDown(event);
+
+      expect(onUpdateShapes).not.toBeCalled();
+    });
+
+    it('handleOnMouseDown target = Stage', () => {
+      const event = {
+        target: 'Stage',
+        currentTarget: 'Stage',
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      };
+
+      wrapper.instance().handleOnMouseDown(event);
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         ...initialModel.shapes,
@@ -140,11 +161,11 @@ describe('HotspotDrawable', () => {
       ]);
     });
 
-    it('handleOnStageClick isDrawing = true', () => {
+    it('handleOnMouseUp isDrawing = true', () => {
       wrapper.instance().state.isDrawing = true;
       wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
 
-      wrapper.instance().handleOnStageClick({
+      wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30
@@ -156,7 +177,7 @@ describe('HotspotDrawable', () => {
       // at this point, state.stateShapes is false, so we don't want to update shapes with false (onUpdateShapes)
       expect(wrapper.instance().state.stateShapes).toEqual(false);
 
-      wrapper.instance().handleOnStageClick({
+      wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30
@@ -164,15 +185,11 @@ describe('HotspotDrawable', () => {
       });
 
       expect(onUpdateShapes).not.toBeCalledWith(false);
-    });
 
-    it('handleOnStageClick isDrawing = true', () => {
-      wrapper.instance().state.isDrawing = true;
-      wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
 
-      wrapper.instance().handleOnStageClick({});
+      wrapper.instance().handleOnMouseUp({});
 
-      expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2))
+      expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2));
     });
 
     it('handleOnSetAsCorrect correct', () => {
