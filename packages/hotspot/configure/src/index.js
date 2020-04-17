@@ -1,13 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import debug from 'debug';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
   InsertImageEvent,
 } from '@pie-framework/pie-configure-events';
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import debug from 'debug';
-import cloneDeep from 'lodash/cloneDeep';
 
 import Root from './root';
 import sensibleDefaults from './defaults';
@@ -40,11 +38,6 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
-  set disableSidePanel(s) {
-    this._disableSidePanel = s;
-    this._render();
-  }
-
   dispatchModelUpdated(reset) {
     const resetValue = !!reset;
 
@@ -57,10 +50,15 @@ export default class HotspotConfigure extends HTMLElement {
     this._render();
   }
 
-  onModelChangedByConfig = (m, type) => {
+  onConfigurationChanged = (c) => {
+    this._configuration = c;
+    this._render();
+  };
+
+  onModelChangedByConfig = (m, propertyType) => {
     const _model = m;
 
-    if (type === 'multipleCorrect') {
+    if (propertyType === 'multipleCorrect') {
       const { rectangles = [], polygons = [] } = _model.shapes || {};
 
       _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
@@ -70,26 +68,18 @@ export default class HotspotConfigure extends HTMLElement {
     this.onModelChanged(_model);
   };
 
-  onConfigurationChanged = (c) => {
-    this._configuration = c;
-    this._render();
-  };
-
   onColorChanged = (colorType, color) => {
-    const { _model } = this;
-
-    _model[colorType] = color;
-
-    this.onModelChanged(_model);
+    this.onModelChanged({
+      ...this._model,
+      [colorType]: color
+    });
   };
 
   onPromptChanged = prompt => {
-    const { _model } = this;
-    const update = cloneDeep(_model);
-
-    update.prompt = prompt;
-
-    this.onModelChanged(update);
+    this.onModelChanged({
+      ...this._model,
+      prompt
+    });
   };
 
   onRationaleChanged = rationale => {
@@ -106,48 +96,28 @@ export default class HotspotConfigure extends HTMLElement {
     });
   };
 
-  onMultipleCorrectChanged = () => {
-    const { _model } = this;
-
-    _model.multipleCorrect = !_model.multipleCorrect;
-
-    if (!_model.multipleCorrect) {
-      _model.partialScoring = false;
-    }
-
-    const { rectangles = [], polygons = [] } = _model.shapes || {};
-
-    _model.shapes.rectangles = rectangles.map(shape => ({ ...shape, correct: false }));
-    _model.shapes.polygons = polygons.map(shape => ({ ...shape, correct: false }));
-
-    this.onModelChanged(_model);
+  onUpdateImageDimension = dimensions => {
+    this.onModelChanged({
+      ...this._model,
+      dimensions
+    });
   };
 
-  onUpdateImageDimension = (dimensions) => {
-    const { _model } = this;
-
-    _model.dimensions = dimensions;
-
-    this.onModelChanged(_model);
-  };
-
-  onUpdateShapes = (shapes) => {
-    const { _model } = this;
-
-    _model.shapes = shapes;
-
-    this.onModelChanged(_model);
+  onUpdateShapes = shapes => {
+    this.onModelChanged({
+      ...this._model,
+      shapes
+    });
   };
 
   onImageUpload = imageUrl => {
-    const { _model } = this;
-
-    _model.imageUrl = imageUrl;
-
-    this.onModelChanged(_model);
+    this.onModelChanged({
+      ...this._model,
+      imageUrl
+    });
   };
 
-  insertImage = (handler) => {
+  insertImage = handler => {
     this.dispatchEvent(new InsertImageEvent(handler));
   };
 
@@ -159,7 +129,6 @@ export default class HotspotConfigure extends HTMLElement {
     log('_render');
     let element = React.createElement(Root, {
       configuration: this._configuration,
-      disableSidePanel: this._disableSidePanel,
       model: this._model,
       onColorChanged: this.onColorChanged,
       onImageUpload: this.onImageUpload,
@@ -175,6 +144,7 @@ export default class HotspotConfigure extends HTMLElement {
       onModelChangedByConfig: this.onModelChangedByConfig,
       onTeacherInstructionsChanged: this.onTeacherInstructionsChanged,
     });
+
     ReactDOM.render(element, this);
   }
 }

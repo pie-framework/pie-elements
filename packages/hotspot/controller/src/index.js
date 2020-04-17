@@ -29,7 +29,7 @@ export function model(question, session, env) {
     prompt,
     shapes
   } = normalizedQuestion;
-  const { rectangles = [], polygons = [] } = shapes || {};
+  const { rectangles, polygons } = shapes || {};
 
   return new Promise(resolve => {
     const out = {
@@ -43,8 +43,8 @@ export function model(question, session, env) {
       partialScoring,
       shapes: {
         ...shapes,
-        rectangles: rectangles || [],
-        polygons: polygons || []
+        rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
+        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps }))
       },
       responseCorrect:
         env.mode === 'evaluate'
@@ -63,6 +63,7 @@ export function model(question, session, env) {
     out.prompt = normalizedQuestion.promptEnabled ? prompt : null;
     out.strokeWidth = normalizedQuestion.strokeWidth;
 
+    // console.log(out);
     resolve(out);
   });
 }
