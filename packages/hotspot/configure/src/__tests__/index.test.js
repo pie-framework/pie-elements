@@ -1,4 +1,3 @@
-import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -13,34 +12,28 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
+jest.mock('react-dom', () => ({
+  render: jest.fn()
+}));
+
 const model = () => ({
   prompt: 'This is the question prompt',
   imageUrl: '',
   shapes: {
     rectangles: [
-      {
-        id: '1',
-        correct: true
-      },
-      {
-        id: '2'
-      },
-      {
-        id: '3'
-      }
+      { id: '1', correct: true },
+      { id: '2' },
+      { id: '3' }
     ],
     polygons: [
       {
-        'points': [{ 'x': 1, 'y': 2 }, { 'y': 139, 'x': 1 }, { 'y': 139, 'x': 130 }, { 'x': 130, 'y': 2 }],
+        'points': [{ x: 1, y: 2 }, { y: 139, x: 1 }, { y: 139, x: 130 }, { x: 130, y: 2 }],
         'correct': false,
         'id': '0'
       }
     ]
   },
-  dimensions: {
-    height: 0,
-    width: 0
-  },
+  dimensions: { height: 0, width: 0 },
   hotspotColor: 'rgba(137, 183, 244, 0.65)',
   hotspotList: [
     'rgba(137, 183, 244, 0.65)',
@@ -48,19 +41,11 @@ const model = () => ({
     'rgba(254, 241, 96, 0.65)'
   ],
   outlineColor: 'blue',
-  outlineList: [
-    'blue',
-    'red',
-    'yellow'
-  ],
+  outlineList: ['blue', 'red', 'yellow'],
   configure: {},
   multipleCorrect: true,
   partialScoring: false
 });
-
-jest.mock('react-dom', () => ({
-  render: jest.fn()
-}));
 
 describe('index', () => {
   let Def;
@@ -102,24 +87,20 @@ describe('index', () => {
       });
     });
 
-    describe('undoShape', () => {
-      it('removes the latest shape', () => {
-        const shapes = initialModel.shapes.rectangles;
-        const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
-        el.onUpdateShapes({ polygons: initialModel.shapes.polygons, rectangles: newShapes });
+    describe('onColorChanged', () => {
+      it('changes hotspot color', () => {
+        el.onColorChanged('hotspotColor', 'red');
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: { polygons: initialModel.shapes.polygons, rectangles: newShapes } }),
+          expect.objectContaining({ hotspotColor: 'red' }),
         );
       });
-    });
 
-    describe('clearAllShapes', () => {
-      it('removes all shapes', () => {
-        el.onUpdateShapes({ polygons: [], rectangles: [] });
+      it('changes outline color', () => {
+        el.onColorChanged('outlineColor', 'lightred');
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes: { polygons: [], rectangles: [] } }),
+          expect.objectContaining({ outlineColor: 'lightred' }),
         );
       });
     });
@@ -157,20 +138,41 @@ describe('index', () => {
       });
     });
 
-    describe('onColorChanged', () => {
-      it('changes hotspot color', () => {
-        el.onColorChanged('hotspotColor', 'red');
+    describe('onUpdateImageDimensions', () => {
+      it('changes the image dimensions', () => {
+        el.onUpdateImageDimension({ height: 400, width: 400 });
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ hotspotColor: 'red' }),
+          expect.objectContaining({ dimensions: { height: 400, width: 400 } })
+        );
+      });
+    });
+
+    describe('onUpdateShapes', () => {
+      it('changes the shapes', () => {
+        const shapes = { polygons: [], rectangles: [...initialModel.shapes.rectangles, { id: '2' }] };
+        el.onUpdateShapes(shapes);
+
+        expect(onModelChanged).toBeCalledWith(
+          expect.objectContaining({ shapes }),
         );
       });
 
-      it('changes outline color', () => {
-        el.onColorChanged('outlineColor', 'lightred');
+      it('removes the latest shape', () => {
+        const shapes = initialModel.shapes.rectangles;
+        const newShapes = shapes ? shapes.slice(0, shapes.length - 1) : [];
+        el.onUpdateShapes({ polygons: initialModel.shapes.polygons, rectangles: newShapes });
 
         expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ outlineColor: 'lightred' }),
+          expect.objectContaining({ shapes: { polygons: initialModel.shapes.polygons, rectangles: newShapes } }),
+        );
+      });
+
+      it('removes all shapes', () => {
+        el.onUpdateShapes({ polygons: [], rectangles: [] });
+
+        expect(onModelChanged).toBeCalledWith(
+          expect.objectContaining({ shapes: { polygons: [], rectangles: [] } }),
         );
       });
     });
@@ -181,27 +183,6 @@ describe('index', () => {
 
         expect(onModelChanged).toBeCalledWith(
           expect.objectContaining({ imageUrl: 'https://picsum.photos/id/102/200/300' }),
-        );
-      });
-    });
-
-    describe('onUpdateImageDimensions', () => {
-      it('changes the image dimensions', () => {
-        el.onUpdateImageDimension({height: 400, width: 400});
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({dimensions: {height: 400, width: 400}})
-        );
-      });
-    });
-
-    describe('onUpdateShapes', () => {
-      it('changes the shapes', () => {
-        const shapes = { polygons: [], rectangles: [...initialModel.shapes.rectangles, { id: '2' }]};
-        el.onUpdateShapes(shapes);
-
-        expect(onModelChanged).toBeCalledWith(
-          expect.objectContaining({ shapes }),
         );
       });
     });

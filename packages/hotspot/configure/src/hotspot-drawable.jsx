@@ -2,25 +2,65 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Layer, Stage } from 'react-konva';
 import max from 'lodash/max';
+import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
+import { updateImageDimensions, getUpdatedShapes } from './utils';
 
 export class Drawable extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let dimensions = nextProps.dimensions;
+
+    if (prevState && prevState.resizing) {
+      dimensions = prevState.dimensions;
+    }
+
+    return {
+      ...prevState,
+      dimensions: dimensions,
+    }
+  }
+
   constructor(props) {
     super(props);
+
     this.state = {
       isDrawing: false,
       stateShapes: false,
+      resizing: false,
       dimensions: {
         height: 0,
         width: 0,
-      }
-    };
+      },
+    }
   }
 
-  handleOnStageClick = (e) => {
+  /// start of handling HotSpots section
+  handleOnMouseDown = (e) => {
+    if (e.target === e.currentTarget) {
+      const { onUpdateShapes, shapes } = this.props;
+      // Add a new rectangle at the mouse position with 0 width and height
+      const newShapes = shapes.slice();
+      const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
+
+      newShapes.push({
+        id: `${value + 1}`,
+        height: 0,
+        width: 0,
+        x: e.evt.layerX,
+        y: e.evt.layerY,
+        group: 'rectangles',
+        index: shapes.length
+      });
+
+      this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
+      onUpdateShapes(newShapes);
+    }
+  };
+
+  handleOnMouseUp = () => {
     // !IMPORTANT: currently, only 'rectangles' are drawable
     const { isDrawing, stateShapes } = this.state;
     const { onUpdateShapes } = this.props;
@@ -32,25 +72,7 @@ export class Drawable extends React.Component {
       if (stateShapes) {
         onUpdateShapes(stateShapes);
       }
-
-      return;
     }
-
-    // Otherwise, add a new rectangle at the mouse position with 0 width and height
-    const newShapes = this.props.shapes.slice();
-    const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
-
-    newShapes.push({
-      id: `${value + 1}`,
-      height: 0,
-      width: 0,
-      x: e.evt.layerX,
-      y: e.evt.layerY,
-      type: 'rectangles'
-    });
-
-    this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
-    onUpdateShapes(newShapes);
   };
 
   handleMouseMove = (e) => {
@@ -85,6 +107,21 @@ export class Drawable extends React.Component {
     }
   };
 
+  handleOnDragEnd = (id, updatedProps) => {
+    const { shapes, onUpdateShapes } = this.props;
+    const newShapes = shapes.map(shape => {
+      if (shape.id === id) {
+        return {
+          ...shape,
+          ...updatedProps
+        }
+      }
+      return shape;
+    });
+
+    onUpdateShapes(cloneDeep(newShapes));
+  };
+
   handleOnSetAsCorrect = (shape) => {
     const { id } = shape;
     const { multipleCorrect, shapes, onUpdateShapes } = this.props;
@@ -105,24 +142,11 @@ export class Drawable extends React.Component {
       })
     }
 
-    onUpdateShapes(newShapes);
+    onUpdateShapes(cloneDeep(newShapes));
   };
+  /// end of handling HotSpots section
 
-  handleOnDragEnd = (id, updatedProps) => {
-    const { shapes, onUpdateShapes } = this.props;
-    const newShapes = shapes.map(shape => {
-      if (shape.id === id) {
-        return {
-          ...shape,
-          ...updatedProps
-        }
-      }
-      return shape;
-    });
-
-    onUpdateShapes(newShapes);
-  };
-
+  /// start of handling Image section
   handleOnImageLoad = ({ target }) => {
     const { onUpdateImageDimension } = this.props;
     const resizeHandle = this.resize;
@@ -135,8 +159,9 @@ export class Drawable extends React.Component {
       width: newWidth
     };
 
-    this.setState({ dimensions });
-    onUpdateImageDimension(dimensions);
+    this.setState(
+      { dimensions },
+      () => onUpdateImageDimension(dimensions));
 
     resizeHandle.addEventListener('mousedown', this.initialiseResize, false);
   };
@@ -144,34 +169,6 @@ export class Drawable extends React.Component {
   initialiseResize = () => {
     window.addEventListener('mousemove', this.startResizing, false);
     window.addEventListener('mouseup', this.stopResizing, false);
-  };
-
-  startResizing = (e) => {
-    const box = this.image;
-    const { disableDrag, preserveAspectRatioEnabled } = this.props;
-    const { dimensions } = this.state;
-
-    const bounds = e.target.getBoundingClientRect();
-    let x = e.clientX - bounds.left;
-    let y = e.clientY - bounds.top;
-
-    if (preserveAspectRatioEnabled) {
-      const imageAspectRatio = dimensions.width / dimensions.height;
-
-      y = x / imageAspectRatio;
-    }
-
-    const resizeValid = this.checkIfResizeValid(x, y);
-    const hasMinimumWidth = x > 150 && y > 150;
-
-    if (resizeValid && hasMinimumWidth) {
-      box.style.width = `${x}px`;
-      box.style.height = `${y}px`;
-
-      this.setState({ dimensions: { height: y, width: x } });
-    }
-
-    disableDrag();
   };
 
   checkIfResizeValid(x, y) {
@@ -189,16 +186,61 @@ export class Drawable extends React.Component {
     return drawable;
   }
 
+  startResizing = (e) => {
+    const bounds = e.target.getBoundingClientRect();
+    const box = this.image;
+    const {
+      disableDrag,
+      preserveAspectRatioEnabled,
+      dimensions,
+      shapes
+    } = this.props;
+
+    // todo previously we had state.dimensions, is it needed?
+    const { width, height } = updateImageDimensions(
+      dimensions,
+      {
+        width: e.clientX - bounds.left,
+        height: e.clientY - bounds.top
+      },
+      preserveAspectRatioEnabled
+    );
+
+    const resizeValid = this.checkIfResizeValid(width, height);
+    const hasMinimumWidth = width > 150 && height > 150;
+
+    if (resizeValid && hasMinimumWidth) {
+      box.style.width = `${width}px`;
+      box.style.height = `${height}px`;
+
+      this.setState({
+        resizing: true,
+        dimensions: { height: height, width: width },
+        stateShapes: getUpdatedShapes(dimensions, { width, height }, shapes)
+      });
+    }
+
+    disableDrag();
+  };
+
   stopResizing = () => {
-    const { enableDrag, onUpdateImageDimension } = this.props;
-    const { dimensions } = this.state;
+    const { enableDrag, onUpdateImageDimension, onUpdateShapes } = this.props;
+    const { dimensions, stateShapes } = this.state;
 
     enableDrag();
+
+    if (stateShapes) {
+      onUpdateShapes(cloneDeep(stateShapes));
+    }
+
     onUpdateImageDimension(dimensions);
 
     window.removeEventListener('mousemove', this.startResizing, false);
     window.removeEventListener('mouseup', this.stopResizing, false);
+
+    this.setState({ resizing: false, stateShapes: false });
   };
+  /// end of handling Image section
 
   render() {
     const {
@@ -240,12 +282,13 @@ export class Drawable extends React.Component {
           className={classes.stage}
           height={heightFromState || height}
           width={widthFromState || width}
-          onClick={this.handleOnStageClick}
-          onContentMouseMove={this.handleMouseMove}
+          onMouseDown={this.handleOnMouseDown }
+          onMouseUp={this.handleOnMouseUp }
+          onMouseMove={this.handleMouseMove }
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
-              const Tag = shape.type === 'polygons' ? Polygon : Rectangle;
+              const Tag = shape.group === 'polygons' ? Polygon : Rectangle;
 
               return (
                 <Tag
