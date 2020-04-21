@@ -20,9 +20,6 @@ const { Panel, toggle, radio } = settings;
 
 const log = debug('@pie-element:select-text:configure');
 
-// Making sure that one character words are not placed at the end of a sentence
-export const prepareText = text => (text || '').replace(/( +.{1})\./g, '$1 .');
-
 export class Design extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
@@ -44,7 +41,7 @@ export class Design extends React.Component {
     const { model } = this.props;
 
     this.state = {
-      text: model ? prepareText(model.text) : ''
+      text: (model && model.text) || ''
     };
   }
 
@@ -67,7 +64,7 @@ export class Design extends React.Component {
 
   changeText = event => {
     const value = event.target.value;
-    const preparedText = prepareText(value);
+    const preparedText = value;
 
     this.setState({
       text: value
