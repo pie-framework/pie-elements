@@ -1791,6 +1791,16 @@
   dependencies:
     jquery "^3.3.1"
 
+"@pie-framework/parse-english@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-framework/parse-english/-/parse-english-1.0.0.tgz#75557ae960be97625a9684169f7404b2b2b98290"
+  integrity sha512-LL2DTekKtT36af5Li+qWOZidXJMap6BECEZ7fSR82PgTZe38ktzK4TUw5m1UbyDyr1fONOZ3u8vhEi8UqbvG/g==
+  dependencies:
+    nlcst-to-string "^2.0.0"
+    parse-latin "^4.0.0"
+    unist-util-modify-children "^1.0.0"
+    unist-util-visit-children "^1.0.0"
+
 "@pie-framework/pie-configure-events@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@pie-framework/pie-configure-events/-/pie-configure-events-1.2.0.tgz#b1a8dea620ac120fe768e4d6a624f40090d3f153"
@@ -2113,6 +2123,20 @@
     invariant "^2.2.4"
     lodash "^4.17.11"
     parse-english "^4.1.1"
+    prop-types "^15.6.2"
+    unist-util-inspect "^4.1.3"
+
+"@pie-lib/text-select@^1.5.23":
+  version "1.5.23"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.5.23.tgz#c3d20ead1db3d392764aa23069781d0bfd0b1bb2"
+  integrity sha512-ZGsq5bg9lDfAXe3bzlKmkF4kkknWfASX4Tk5JGjA7/PiLt1f0bJ3+EgguOy8vG8+qLQiVrWVYMa2jmYjVUlQUw==
+  dependencies:
+    "@pie-framework/parse-english" "^1.0.0"
+    "@pie-lib/style-utils" "^0.1.20"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    invariant "^2.2.4"
+    lodash "^4.17.11"
     prop-types "^15.6.2"
     unist-util-inspect "^4.1.3"
 
