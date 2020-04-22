@@ -2314,10 +2314,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/hotspot@^1.3.24":
-  version "1.3.24"
-  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.3.24.tgz#3bc3b7ec20b212c47d068a20129dffda8cb370c8"
-  integrity sha512-kaNxc3c8nguSFH93uzxWZuwDUlabkNlJFVdUze98VpCs9FYHsUTgBTHPIo7OfT5ZpyZ5RoCc6HRrGJVYO23aLg==
+"@pie-ui/hotspot@^1.3.25":
+  version "1.3.25"
+  resolved "https://registry.yarnpkg.com/@pie-ui/hotspot/-/hotspot-1.3.25.tgz#106121febbeb552ed290f73281b11d91dc0724a9"
+  integrity sha512-UuY1MKdsp3BOaFhuiWZ1TzF7HlFfpF7pOx2LZp5nl3tLqoVW5XWIlcGJkEcVtiQa1GNWlxGqM0At1mlCvw3tGA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-framework/pie-player-events" "^0.1.0"
