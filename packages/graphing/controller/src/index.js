@@ -179,7 +179,7 @@ export const equalSine = (sine1, sine2) => {
     min1 === min2 && max1 === max2 &&
     edgeAboveZeroX1 === edgeAboveZeroX2 &&
     edgeAboveZeroY1 === edgeAboveZeroY2);
-    // rootDiff1 === rootDiff2);
+  // rootDiff1 === rootDiff2);
 };
 
 export const equalParabola = (p1, p2) => {
@@ -191,8 +191,8 @@ export const equalParabola = (p1, p2) => {
   const p1mirrorEdge = { x: rootP1.x - (p1edge.x - rootP1.x), y: p1edge.y };
   const p2mirrorEdge = { x: rootP2.x - (p2edge.x - rootP2.x), y: p2edge.y };
 
-  const { a: a1, b: b1 , c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
-  const { a: a2, b: b2 , c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
+  const { a: a1, b: b1, c: c1 } = pointsToABC(rootP1, edgeP1, p1mirrorEdge);
+  const { a: a2, b: b2, c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
 
   // sometimes numbers have this form: 1.00000000002 because of calculations, we have to round them
   const round = number => Math.round(number * 10000) / 10000;
@@ -387,7 +387,12 @@ export const getScore = (question, session, env = {}) => {
     });
   });
 
-  const isPartialScoring = partialScoring.enabled(question, env, question.scoringType === 'partial scoring');
+  const isPartialScoring = partialScoring.enabled(
+    {
+      partialScoring: question.scoringType !== undefined ? question.scoringType === 'partial scoring' : question.scoringType
+    },
+    env
+  );
 
   if (isPartialScoring) {
     return partial(questionPossibleAnswers, correctedMarks);
@@ -419,7 +424,9 @@ export function model(question, session, env) {
       yAxisLabel,
       tools,
       graph,
-      toolbarTools
+      toolbarTools,
+      scoringType,
+      answers
     } = normalizedQuestion;
 
     const correctInfo = { correctness: 'incorrect', score: '0%' };
@@ -437,7 +444,9 @@ export function model(question, session, env) {
       yAxisLabel,
       tools,
       size: graph,
-      toolbarTools
+      toolbarTools,
+      scoringType,
+      answers
     };
 
     if (env.mode === 'evaluate') {
@@ -461,6 +470,10 @@ export function model(question, session, env) {
 
 export function outcome(model, session, env = {}) {
   return new Promise(resolve => {
+    if (env.mode === 'gather') {
+      resolve({ score: 0 });
+    }
+
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }

@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.0...@pie-element/hotspot@4.6.1) (2020-04-14)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.4...@pie-element/hotspot@4.6.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump hotspot ([7976558](https://github.com/pie-framework/pie-elements/commit/7976558))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([4647e95](https://github.com/pie-framework/pie-elements/commit/4647e95))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen ([94f4e07](https://github.com/pie-framework/pie-elements/commit/94f4e07))
+* ch7799: the Item Preview for a legacy hot spot item appears to show the wrong answer because the lines that are too close to the margins are not visible. Solution: add padding and move content accordingly so that the lines will be displayed entirely. ([a5c696e](https://github.com/pie-framework/pie-elements/commit/a5c696e))
+
+
+### Features
+
+* 7727: When resizing images in hotspot, the default behavior should be to keep the aspect ratio fixed ([651d7e2](https://github.com/pie-framework/pie-elements/commit/651d7e2))
+
+
+
+
+
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.4...@pie-element/hotspot@4.4.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump hotspot ([7976558](https://github.com/pie-framework/pie-elements/commit/7976558))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([4647e95](https://github.com/pie-framework/pie-elements/commit/4647e95))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* ch7720: Authoring problem with Hotspot: Double-clicking image crashes Build screen ([94f4e07](https://github.com/pie-framework/pie-elements/commit/94f4e07))
+* ch7799: the Item Preview for a legacy hot spot item appears to show the wrong answer because the lines that are too close to the margins are not visible. Solution: add padding and move content accordingly so that the lines will be displayed entirely. ([a5c696e](https://github.com/pie-framework/pie-elements/commit/a5c696e))
+
+
+### Features
+
+* 7727: When resizing images in hotspot, the default behavior should be to keep the aspect ratio fixed ([651d7e2](https://github.com/pie-framework/pie-elements/commit/651d7e2))
+
+
+
+
+
+## [4.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.3...@pie-element/hotspot@4.2.4) (2020-02-18)
+
+
+### Bug Fixes
+
+* ch7555: selecting answers in a different order was not working (Hot spot scoring problem in IBX (legacy content with multiple correct answers)) ([6ffd5a3](https://github.com/pie-framework/pie-elements/commit/6ffd5a3))
+
+
+
+
+
 ## [4.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.2.2...@pie-element/hotspot@4.2.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/hotspot

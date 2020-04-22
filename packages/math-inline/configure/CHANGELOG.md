@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.2.1...@pie-element/math-inline-configure@5.2.2) (2020-04-14)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.1.6...@pie-element/math-inline-configure@5.2.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump libs ([3d4f3e9](https://github.com/pie-framework/pie-elements/commit/3d4f3e9))
+* bump math deps ([4b53869](https://github.com/pie-framework/pie-elements/commit/4b53869))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+
+
+
+## [5.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.1.6...@pie-element/math-inline-configure@5.1.7) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump libs ([3d4f3e9](https://github.com/pie-framework/pie-elements/commit/3d4f3e9))
+* bump math deps ([4b53869](https://github.com/pie-framework/pie-elements/commit/4b53869))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+
+
+
+## [5.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.1.5...@pie-element/math-inline-configure@5.1.6) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
 ## [5.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.1.4...@pie-element/math-inline-configure@5.1.5) (2020-02-03)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

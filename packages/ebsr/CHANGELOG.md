@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.2.1...@pie-element/ebsr@6.2.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* bump @pie-ui/ebsr ([e84c551](https://github.com/pie-framework/pie-elements/commit/e84c551))
+* PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page. ([d682379](https://github.com/pie-framework/pie-elements/commit/d682379))
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.0.3...@pie-element/ebsr@6.2.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page. ([e215704](https://github.com/pie-framework/pie-elements/commit/e215704))
+
+
+
+
+
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.0.3...@pie-element/ebsr@6.1.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* PD-90 Part Labels don't show up when multiple ebsr-elements are on the same page. ([e215704](https://github.com/pie-framework/pie-elements/commit/e215704))
+
+
+
+
+
 ## [6.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.0.2...@pie-element/ebsr@6.0.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/ebsr

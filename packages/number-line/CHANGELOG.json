@@ -1052,21 +1052,6 @@
   {
     "type": "fix",
     "scope": null,
-    "subject": "bump ui versions",
-    "merge": null,
-    "header": "fix: bump ui versions",
-    "body": null,
-    "footer": null,
-    "notes": [],
-    "hash": "5b9d99fe59c304bdd173c9336503eb558900d2a2",
-    "gitTags": "",
-    "committerDate": "2020-03-31 19:25:13 +0100",
-    "isTagged": true,
-    "tag": "@pie-element/number-line@5.6.17"
-  },
-  {
-    "type": "fix",
-    "scope": null,
     "subject": "patch bump number-line",
     "merge": null,
     "header": "fix: patch bump number-line",
@@ -1074,10 +1059,10 @@
     "footer": null,
     "notes": [],
     "hash": "cbaab0e001358b9337447a2d84d9d577a194f09d",
-    "gitTags": " (origin/develop, origin/HEAD)",
+    "gitTags": "",
     "committerDate": "2020-03-28 22:20:28 +0000",
     "isTagged": true,
-    "tag": "@pie-element/number-line@5.6.17"
+    "tag": "@pie-element/number-line@5.7.0"
   },
   {
     "type": "fix",
@@ -1092,7 +1077,7 @@
     "gitTags": "",
     "committerDate": "2020-03-27 22:37:10 +0000",
     "isTagged": true,
-    "tag": "@pie-element/number-line@5.6.17"
+    "tag": "@pie-element/number-line@5.7.0"
   },
   {
     "type": "fix",
@@ -1104,9 +1089,99 @@
     "footer": null,
     "notes": [],
     "hash": "9a4b02a79ef78f9f1ccf1091ffc43292c33a0633",
-    "gitTags": " (origin/andreea/ch6021/on-a-number-line-item-tick-marks-that-shouldn)",
+    "gitTags": "",
     "committerDate": "2020-02-20 16:55:07 +0200",
     "isTagged": true,
-    "tag": "@pie-element/number-line@5.6.17"
+    "tag": "@pie-element/number-line@5.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui versions",
+    "merge": null,
+    "header": "fix: bump ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "5b9d99fe59c304bdd173c9336503eb558900d2a2",
+    "gitTags": "",
+    "committerDate": "2020-03-31 19:25:13 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.7.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump version",
+    "merge": null,
+    "header": "fix: bump version",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "98a13048d48af872a216f9e2eae1a22a7ecf552f",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:14:19 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump lib and ui versions",
+    "merge": null,
+    "header": "fix: bump lib and ui versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:13:24 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump all packages to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump all packages to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d9ec9a8689f0a391594b5e2f4ea958c6dc9f6d7b",
+    "gitTags": "",
+    "committerDate": "2020-04-10 20:01:37 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump version to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump version to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "4d55f6d203f496420e2ed2fa32c0851406036c53",
+    "gitTags": "",
+    "committerDate": "2020-04-10 17:39:16 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "corret closeTo precision PD-132 (#446)",
+    "merge": null,
+    "header": "fix: corret closeTo precision PD-132 (#446)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "33d0b83065e981cbff16522de32617add85c5896",
+    "gitTags": "",
+    "committerDate": "2020-04-13 16:44:03 -0400",
+    "isTagged": true,
+    "tag": "@pie-element/number-line@5.8.2"
   }
 ]

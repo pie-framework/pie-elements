@@ -86,6 +86,8 @@ export function getScore(question, session) {
   });
 }
 
+export const CLOSE_TO_PRECISION = 3;
+
 export const closeTo = (a, b, precision) => {
   precision = precision || 5;
   const expectedDiff = Math.pow(10, -precision) / 2;
@@ -97,7 +99,7 @@ export const closeTo = (a, b, precision) => {
 const matches = a => v => {
   return isEqualWith(a, v, (v, ov) => {
     if (typeof v === 'number' && typeof ov === 'number') {
-      return closeTo(v, ov, 0.000000001);
+      return closeTo(v, ov, CLOSE_TO_PRECISION);
     }
   });
 };

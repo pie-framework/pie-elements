@@ -60,6 +60,8 @@ const parsePart = (part, key, session, env) => {
 };
 
 export const normalize = question => ({
+  partLabels: true,
+  partLabelType: 'Letters',
   ...question,
   partA: {
     rationaleEnabled: true,

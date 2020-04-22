@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/placement-ordering",
-  "version": "7.1.0-bm.0",
+  "version": "7.2.2",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/placement-ordering": "^4.7.28"
+    "@pie-ui/placement-ordering": "^4.7.30"
   },
   "pie": {
     "element": "@pie-ui/placement-ordering"

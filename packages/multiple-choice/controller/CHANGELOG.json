@@ -477,6 +477,36 @@
     "gitTags": "",
     "committerDate": "2020-03-31 19:25:13 +0100",
     "isTagged": true,
-    "tag": "@pie-element/multiple-choice-controller@3.1.5"
+    "tag": "@pie-element/multiple-choice-controller@3.2.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump all packages to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump all packages to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d9ec9a8689f0a391594b5e2f4ea958c6dc9f6d7b",
+    "gitTags": " (develop)",
+    "committerDate": "2020-04-10 20:01:37 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@3.2.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "merge": null,
+    "header": "fix: PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "27cd7adf01276ecd09094c4d7808807590a8c00a",
+    "gitTags": "",
+    "committerDate": "2020-04-13 09:47:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-controller@3.2.2"
   }
 ]

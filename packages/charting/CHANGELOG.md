@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.3.1...@pie-element/charting@2.3.2) (2020-04-14)
+
+**Note:** Version bump only for package @pie-element/charting
+
+
+
+
+
+## [2.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.1.4...@pie-element/charting@2.3.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* ch3979: Partial credit scoring is not working for Charting items (updated accordingly to pie-lib/controller-utils) ([9c650b9](https://github.com/pie-framework/pie-elements/commit/9c650b9))
+* use latest [@pie-lib](https://github.com/pie-lib) releases ([0061e0e](https://github.com/pie-framework/pie-elements/commit/0061e0e))
+
+
+
+
+
+## [2.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.1.4...@pie-element/charting@2.2.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+* ch3979: Partial credit scoring is not working for Charting items (updated accordingly to pie-lib/controller-utils) ([9c650b9](https://github.com/pie-framework/pie-elements/commit/9c650b9))
+* use latest [@pie-lib](https://github.com/pie-lib) releases ([0061e0e](https://github.com/pie-framework/pie-elements/commit/0061e0e))
+
+
+
+
+
+## [2.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.1.3...@pie-element/charting@2.1.4) (2020-02-18)
+
+
+### Bug Fixes
+
+* ch3979: use correctAnswer in evaluate mode (Partial credit scoring is not working for Charting items) ([a2d21ca](https://github.com/pie-framework/pie-elements/commit/a2d21ca))
+
+
+
+
+
 ## [2.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.1.2...@pie-element/charting@2.1.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/charting

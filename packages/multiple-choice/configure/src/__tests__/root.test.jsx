@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import { Main } from '../main';
+import defaults from '../defaults';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -15,10 +16,10 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
-const model = () => ({
+const model = (extras) => ({
+  ...defaults.model,
   prompt: 'Which of these northern European countries are EU members?',
   choiceMode: 'checkbox',
-  choicePrefix: 'numbers',
   choices: [
     {
       correct: true,
@@ -57,7 +58,8 @@ const model = () => ({
     }
   ],
   partialScoring: false,
-  configure: {}
+  configure: {},
+  ...extras
 });
 
 describe('Main', () => {
@@ -79,7 +81,12 @@ describe('Main', () => {
   };
 
   describe('snapshot', () => {
-    it('renders', () => {
+    it('renders with choicePrefix="numbers"', () => {
+      w = wrapper({ model: model({ choicePrefix: 'numbers' }) });
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders with choicePrefix="letters" as default', () => {
       w = wrapper();
       expect(w).toMatchSnapshot();
     });
@@ -123,7 +130,7 @@ describe('Main', () => {
     describe('onChoiceChanged', () => {
       describe('checkbox', () => {
         it('changes choice (there are 2 true values)', () => {
-          const newChoices = [ ...model().choices ];
+          const newChoices = [...model().choices];
           let choice = {
             correct: true,
             value: 'iceland',

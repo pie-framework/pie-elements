@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.9.0-bm.0",
+  "version": "1.10.2",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/match-list": "^1.4.26"
+    "@pie-ui/match-list": "^1.4.28"
   },
   "pie": {
     "element": "@pie-ui/match-list"

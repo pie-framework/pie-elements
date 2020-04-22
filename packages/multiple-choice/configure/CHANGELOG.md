@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.1.1...@pie-element/multiple-choice-configure@3.1.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix) ([27cd7ad](https://github.com/pie-framework/pie-elements/commit/27cd7ad))
+
+
+
+
+
+## [3.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.0.2...@pie-element/multiple-choice-configure@3.1.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump [@pie-lib](https://github.com/pie-lib) dependencies ([dcef3a7](https://github.com/pie-framework/pie-elements/commit/dcef3a7))
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
+## [3.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.0.2...@pie-element/multiple-choice-configure@3.0.3) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump [@pie-lib](https://github.com/pie-lib) dependencies ([dcef3a7](https://github.com/pie-framework/pie-elements/commit/dcef3a7))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
+## [3.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.0.1...@pie-element/multiple-choice-configure@3.0.2) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
 ## [3.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.0.0...@pie-element/multiple-choice-configure@3.0.1) (2019-11-06)
 
 

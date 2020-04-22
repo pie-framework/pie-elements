@@ -1,12 +1,12 @@
 {
   "name": "@pie-element/multiple-choice",
   "repository": "pie-framework/pie-elements",
-  "version": "5.2.0-bm.0",
+  "version": "5.3.2",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/multiple-choice": "^4.12.14"
+    "@pie-ui/multiple-choice": "^4.12.18"
   },
   "pie": {
     "element": "@pie-ui/multiple-choice"

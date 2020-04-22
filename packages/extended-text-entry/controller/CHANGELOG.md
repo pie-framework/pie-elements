@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.1...@pie-element/extended-text-entry-controller@4.1.2) (2020-04-14)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-controller
+
+
+
+
+
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.0.1...@pie-element/extended-text-entry-controller@4.1.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.0.1...@pie-element/extended-text-entry-controller@4.0.2) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+
+
+
+
+
 ## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.0.0...@pie-element/extended-text-entry-controller@4.0.1) (2019-12-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

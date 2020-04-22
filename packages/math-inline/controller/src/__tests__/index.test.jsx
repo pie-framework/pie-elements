@@ -264,7 +264,7 @@ describe('model', () => {
         responses: [
           {
             allowSpaces: true,
-            allowDecimals: true,
+            allowThousandsSeparator: true,
             answer: '3000',
             id: '1',
             alternates: {},

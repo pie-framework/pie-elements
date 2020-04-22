@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.2.1...@pie-element/select-text@6.2.2) (2020-04-14)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.13...@pie-element/select-text@6.2.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump all packages to avoid tag conflict ([d9ec9a8](https://github.com/pie-framework/pie-elements/commit/d9ec9a8))
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+
+
+
+
+
+## [6.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.13...@pie-element/select-text@6.1.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* bump lib and ui versions ([a882cbf](https://github.com/pie-framework/pie-elements/commit/a882cbf))
+* bump ui versions ([5b9d99f](https://github.com/pie-framework/pie-elements/commit/5b9d99f))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* bump version to avoid tag conflict ([4d55f6d](https://github.com/pie-framework/pie-elements/commit/4d55f6d))
+
+
+
+
+
+## [6.0.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.12...@pie-element/select-text@6.0.13) (2020-02-18)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
 ## [6.0.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.0.11...@pie-element/select-text@6.0.12) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/select-text

@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/drawing-response",
-  "version": "3.2.0-bm.0",
+  "version": "3.3.2",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/drawing-response": "^1.6.22"
+    "@pie-ui/drawing-response": "^1.6.24"
   },
   "pie": {
     "element": "@pie-ui/drawing-response"

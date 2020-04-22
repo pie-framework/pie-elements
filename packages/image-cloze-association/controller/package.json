@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/image-cloze-association-controller",
   "private": true,
-  "version": "3.2.0-bm.0",
+  "version": "3.2.2",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.2.16",
+    "@pie-lib/controller-utils": "^0.2.18",
     "debug": "^4.1.1",
     "humps": "^2.0.1",
     "lodash": "^4.17.15"

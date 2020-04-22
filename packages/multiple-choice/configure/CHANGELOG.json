@@ -1252,6 +1252,21 @@
   {
     "type": "fix",
     "scope": null,
+    "subject": "bump @pie-lib dependencies",
+    "merge": null,
+    "header": "fix: bump @pie-lib dependencies",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "dcef3a72e83d09aa6566a1285a3ff2ec8219988a",
+    "gitTags": "",
+    "committerDate": "2020-03-23 12:46:14 +0000",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@3.1.0"
+  },
+  {
+    "type": "fix",
+    "scope": null,
     "subject": "bump ui versions",
     "merge": null,
     "header": "fix: bump ui versions",
@@ -1267,16 +1282,46 @@
   {
     "type": "fix",
     "scope": null,
-    "subject": "bump @pie-lib dependencies",
+    "subject": "bump lib and ui versions",
     "merge": null,
-    "header": "fix: bump @pie-lib dependencies",
+    "header": "fix: bump lib and ui versions",
     "body": null,
     "footer": null,
     "notes": [],
-    "hash": "dcef3a72e83d09aa6566a1285a3ff2ec8219988a",
+    "hash": "a882cbf4580098ce0e12c51cf6ad2879817e17e7",
     "gitTags": "",
-    "committerDate": "2020-03-23 12:46:14 +0000",
+    "committerDate": "2020-04-10 17:13:24 +0100",
     "isTagged": true,
-    "tag": "@pie-element/multiple-choice-configure@3.1.0"
+    "tag": "@pie-element/multiple-choice-configure@3.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump all packages to avoid tag conflict",
+    "merge": null,
+    "header": "fix: bump all packages to avoid tag conflict",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "d9ec9a8689f0a391594b5e2f4ea958c6dc9f6d7b",
+    "gitTags": "",
+    "committerDate": "2020-04-10 20:01:37 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@3.1.1"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "merge": null,
+    "header": "fix: PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix)",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "27cd7adf01276ecd09094c4d7808807590a8c00a",
+    "gitTags": "",
+    "committerDate": "2020-04-13 09:47:09 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/multiple-choice-configure@3.1.2"
   }
 ]

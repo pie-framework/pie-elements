@@ -1504,9 +1504,9 @@
     "footer": null,
     "notes": [],
     "hash": "9a4b02a79ef78f9f1ccf1091ffc43292c33a0633",
-    "gitTags": " (origin/andreea/ch6021/on-a-number-line-item-tick-marks-that-shouldn)",
+    "gitTags": "",
     "committerDate": "2020-02-20 16:55:07 +0200",
     "isTagged": true,
-    "tag": "@pie-element/pie-models@9.0.4"
+    "tag": "@pie-element/pie-models@9.1.0"
   }
 ]

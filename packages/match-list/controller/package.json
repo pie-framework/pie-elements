@@ -1,15 +1,15 @@
 {
   "name": "@pie-element/match-list-controller",
   "private": true,
-  "version": "1.5.0-bm.0",
+  "version": "1.5.2",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/.bin/jest"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.2.16",
-    "@pie-lib/feedback": "^0.4.20",
+    "@pie-lib/controller-utils": "^0.2.18",
+    "@pie-lib/feedback": "^0.4.22",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },
