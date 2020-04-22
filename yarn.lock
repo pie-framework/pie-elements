@@ -2017,6 +2017,18 @@
     lodash "^4.17.11"
     react-portal "^4.2.0"
 
+"@pie-lib/math-input@^6.4.15":
+  version "6.4.15"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.4.15.tgz#2e0a3ef2f1100f41470bc4e8d22bd1c23967f1ec"
+  integrity sha512-f9UIzVK9l/R+JckU5PXgCInOVfNx7rC2N3eb1e23dSS3BngnaDmmT4FltpdHAa2eLR44jC2vLKdrakWmMZFKLg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-framework/mathquill" "^1.1.0"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    react-portal "^4.2.0"
+
 "@pie-lib/math-rendering@^2.1.12":
   version "2.1.12"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-2.1.12.tgz#8471b14168f310f6d87defff57eca8b4e87e6bd0"
@@ -2386,16 +2398,16 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.0.38":
-  version "3.0.38"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.38.tgz#0216e64283eaa16684264732c0902972c9e463cf"
-  integrity sha512-s08OzpGUitVJC5sjbDCWifcNeGx4sR5+2c33IPUg0VXFVSEHNNT/Nr57QOsMl6J9UfPF37emmv/+Zpij0jLniA==
+"@pie-ui/math-inline@^3.0.39":
+  version "3.0.39"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.0.39.tgz#369b8827330bb7209295ca884f7411d1c1bcf43c"
+  integrity sha512-1js9s1Kve1pZleyL6Xr8q+ARGNQJCOB4TFZtGK8j8wK0Vdf8/BnnaG1eHdhhNaFe2i/KQ2FVRZFYhxR/p6NZyg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^1.1.0"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/correct-answer-toggle" "^2.2.21"
-    "@pie-lib/math-input" "^6.4.14"
+    "@pie-lib/math-input" "^6.4.15"
     "@pie-lib/math-toolbar" "^1.5.1"
     "@pie-lib/render-ui" "^4.7.15"
     classnames "^2.2.5"
