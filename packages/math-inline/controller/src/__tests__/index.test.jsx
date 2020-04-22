@@ -800,3 +800,61 @@ describe('3826', () => {
     expect(result).toEqual({ score: 1 });
   });
 });
+
+
+describe('PD-66', () => {
+  const question = {
+    id: '1',
+    prompt: 'prompt',
+    rationale: 'rationale',
+    element: 'math-inline',
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    responseType: 'Advanced Multi',
+    expression: '{{response}}',
+    equationEditor: 'statistics',
+    responses: [
+      {
+        allowSpaces: true,
+        answer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)',
+        id: '1',
+        validation: 'literal',
+      },
+      {
+        answer: '\\left(\\frac{-x}{3},\\frac{-y}{3}\\right)',
+        validation: 'equivLiteral',
+      },
+      {
+        answer: '\\left(\\frac{x}{-3},\\frac{y}{-3}\\right)',
+        validation: 'equivLiteral',
+      },
+      {
+        answer: '\\left(-\\frac{1}{3}x,-\\frac{1}{3}y\\right)',
+        validation: 'equivLiteral',
+      },
+      {
+        answer: '\\left(\\frac{-1}{3}x,\\frac{-1}{3}y\\right)',
+        validation: 'equivLiteral',
+      },
+      {
+        answer: '\\left(\\frac{1}{-3}x,\\frac{1}{-3}y\\right)',
+        validation: 'equivLiteral',
+      },
+    ],
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)' } },
+      completeAnswer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(question, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+});
