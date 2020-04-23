@@ -112,7 +112,7 @@ const blacklist = [
   'placement-ordering',
   'math-inline',
   'rubric',
-  'match-list',
+  // 'match-list',
   'passage',
   'protractor',
   'ruler',
