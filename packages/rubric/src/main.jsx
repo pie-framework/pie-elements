@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
-  points: PropTypes.arrayOf(PropTypes.string)
+  points: PropTypes.arrayOf(PropTypes.string),
 });
 
 class Rubric extends React.Component {
@@ -19,14 +19,14 @@ class Rubric extends React.Component {
     super(props);
     this.state = {
       rubricOpen: false,
-      linkPrefix: 'Show'
+      linkPrefix: 'Show',
     };
     this.toggleRubric = this.toggleRubric.bind(this);
   }
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    value: RubricType
+    value: RubricType,
   };
 
   toggleRubric() {
@@ -81,8 +81,8 @@ class Rubric extends React.Component {
 
 const styles = () => ({
   rubricCol: {
-    flex: '0 1 auto'
-  }
+    flex: '0 1 auto',
+  },
 });
 
 export default withStyles(styles)(Rubric);
