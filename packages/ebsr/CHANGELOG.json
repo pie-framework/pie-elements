@@ -1468,5 +1468,35 @@
     "committerDate": "2020-04-13 18:51:52 +0300",
     "isTagged": true,
     "tag": "@pie-element/ebsr@6.2.2"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "bump ui/lib versions",
+    "merge": null,
+    "header": "fix: bump ui/lib versions",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "3edb2321ebaefcaee70c3642aa6da8a50e8a99e5",
+    "gitTags": "",
+    "committerDate": "2020-04-14 15:36:44 +0100",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-129 and PD-127: Updated pie-ui/ebsr and pie-elements/multiple-choice versions.",
+    "merge": null,
+    "header": "fix: PD-129 and PD-127: Updated pie-ui/ebsr and pie-elements/multiple-choice versions.",
+    "body": null,
+    "footer": null,
+    "notes": [],
+    "hash": "2ca902c306dae8725288ed86454800b7317d4d03",
+    "gitTags": " (origin/fix/pd-127-and-pd-129)",
+    "committerDate": "2020-04-14 17:26:31 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/ebsr@6.2.3"
   }
 ]
