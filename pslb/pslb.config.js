@@ -113,7 +113,13 @@ const commonJs = {
   },
 };
 
-const blacklist = ['math-inline', 'protractor', 'ruler', 'calculator'];
+const blacklist = [
+  'pie-models',
+  'math-inline',
+  'protractor',
+  'ruler',
+  'calculator',
+];
 
 /** Pslb will only support pie packages that have a configure and controller subpkg */
 const listPackages = () => {
