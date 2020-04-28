@@ -12,21 +12,21 @@ const model = () => ({
       x: 1,
       y: 1,
       correct: true,
-      type: 'rectangles'
+      group: 'rectangles'
     }, {
       id: '1',
       height: 140,
       width: 130,
       x: 140,
       y: 1,
-      type: 'rectangles'
+      group: 'rectangles'
     }, {
       id: '2',
       height: 140,
       width: 130,
       x: 280,
       y: 1,
-      type: 'rectangles'
+      group: 'rectangles'
     },
     {
       id: '3',
@@ -36,7 +36,7 @@ const model = () => ({
         { y: 288, x: 129 },
         { y: 148, x: 129 }],
       correct: true,
-      type: 'polygons'
+      group: 'polygons'
     }, {
       id: '4',
       points: [
@@ -45,7 +45,7 @@ const model = () => ({
         { y: 289, x: 269 },
         { x: 269, y: 151 }],
       correct: false,
-      type: 'polygons'
+      group: 'polygons'
     }, {
       id: '5',
       points: [
@@ -55,7 +55,7 @@ const model = () => ({
         { x: 407, y: 150 }
       ],
       correct: false,
-      type: 'polygons'
+      group: 'polygons'
     }
   ],
   dimensions: {
@@ -118,13 +118,34 @@ describe('HotspotDrawable', () => {
       wrapper = w();
     });
 
-    it('handleOnStageClick isDrawing = false', () => {
-      wrapper.instance().handleOnStageClick({
+    it('handleOnMouseDown target != Stage', () => {
+      wrapper.instance().state.stateShapes = initialModel.shapes;
+
+      const event = {
+        target: 'Line',
+        currentTarget: 'Stage',
         evt: {
           layerX: 20,
           layerY: 30
         }
-      });
+      };
+
+      wrapper.instance().handleOnMouseDown(event);
+
+      expect(onUpdateShapes).not.toBeCalled();
+    });
+
+    it('handleOnMouseDown target = Stage', () => {
+      const event = {
+        target: 'Stage',
+        currentTarget: 'Stage',
+        evt: {
+          layerX: 20,
+          layerY: 30
+        }
+      };
+
+      wrapper.instance().handleOnMouseDown(event);
 
       expect(onUpdateShapes).toHaveBeenCalledWith([
         ...initialModel.shapes,
@@ -134,16 +155,17 @@ describe('HotspotDrawable', () => {
           width: 0,
           x: 20,
           y: 30,
-          type: 'rectangles'
+          group: 'rectangles',
+          index: 6
         }
       ]);
     });
 
-    it('handleOnStageClick isDrawing = true', () => {
+    it('handleOnMouseUp isDrawing = true', () => {
       wrapper.instance().state.isDrawing = true;
       wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
 
-      wrapper.instance().handleOnStageClick({
+      wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30
@@ -155,7 +177,7 @@ describe('HotspotDrawable', () => {
       // at this point, state.stateShapes is false, so we don't want to update shapes with false (onUpdateShapes)
       expect(wrapper.instance().state.stateShapes).toEqual(false);
 
-      wrapper.instance().handleOnStageClick({
+      wrapper.instance().handleOnMouseUp({
         evt: {
           layerX: 20,
           layerY: 30
@@ -163,15 +185,11 @@ describe('HotspotDrawable', () => {
       });
 
       expect(onUpdateShapes).not.toBeCalledWith(false);
-    });
 
-    it('handleOnStageClick isDrawing = true', () => {
-      wrapper.instance().state.isDrawing = true;
-      wrapper.instance().state.stateShapes = initialModel.shapes.slice(0, 2);
 
-      wrapper.instance().handleOnStageClick({});
+      wrapper.instance().handleOnMouseUp({});
 
-      expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2))
+      expect(onUpdateShapes).toHaveBeenCalledWith(initialModel.shapes.slice(0, 2));
     });
 
     it('handleOnSetAsCorrect correct', () => {

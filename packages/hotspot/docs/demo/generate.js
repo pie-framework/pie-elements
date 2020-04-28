@@ -17,20 +17,20 @@ exports.model = (id, element) => ({
   shapes: {
     rectangles: [
       {
-        id: '0',
+        id: 'aaa0',
         height: 140,
         width: 130,
         x: 1,
         y: 1,
         correct: true
       }, {
-        id: '1',
+        id: 'd41',
         height: 140,
         width: 130,
         x: 140,
         y: 1
       }, {
-        id: '2',
+        id: 'aaaa42',
         height: 140,
         width: 130,
         x: 280,
@@ -44,12 +44,12 @@ exports.model = (id, element) => ({
       correct: true
     }, {
       // triangle
-      id: '4',
+      id: 'g74',
       points: [{ y: 151, x: 141 }, { y: 289, x: 205 }, { x: 269, y: 151 }],
       correct: false
     }, {
       // hexagon
-      id: '5',
+      id: 'j35',
       points: [
         { x: 300, y: 150 },
         { x: 279, y: 220 },

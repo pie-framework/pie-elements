@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/drag-in-the-blank": "^1.7.25"
+    "@pie-ui/drag-in-the-blank": "^1.7.27"
   },
   "pie": {
     "element": "@pie-ui/drag-in-the-blank"

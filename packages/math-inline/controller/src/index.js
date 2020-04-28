@@ -130,78 +130,81 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
   correctResponseItem.forEach(correctResponse => {
-    const acceptedValues = [correctResponse.answer].concat(
-      Object.keys(correctResponse.alternates || {}).map(
-        alternateId => correctResponse.alternates[alternateId]
-      )
-    );
+    // if not already deemed correct for one of the correct responses
+    if (!answerCorrect) {
+      const acceptedValues = [correctResponse.answer].concat(
+          Object.keys(correctResponse.alternates || {}).map(
+              alternateId => correctResponse.alternates[alternateId]
+          )
+      );
 
-    if (correctResponse.validation === 'literal') {
-      for (let i = 0; i < acceptedValues.length; i++) {
-        let answerValueToUse = processAnswerItem(answerItem, true);
-        let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
+      if (correctResponse.validation === 'literal') {
+        for (let i = 0; i < acceptedValues.length; i++) {
+          let answerValueToUse = processAnswerItem(answerItem, true);
+          let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
-        if (correctResponse.allowThousandsSeparator) {
-          if (
-            containsDecimal(answerValueToUse) &&
-            decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
-          ) {
-            answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
+          if (correctResponse.allowThousandsSeparator) {
+            if (
+                containsDecimal(answerValueToUse) &&
+                decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+            ) {
+              answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
+            }
+
+            if (
+                containsDecimal(acceptedValueToUse) &&
+                decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+            ) {
+              acceptedValueToUse = acceptedValueToUse.replace(
+                  decimalCommaRegex,
+                  ''
+              );
+            }
           }
 
-          if (
-            containsDecimal(acceptedValueToUse) &&
-            decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
-          ) {
-            acceptedValueToUse = acceptedValueToUse.replace(
-              decimalCommaRegex,
-              ''
-            );
-          }
-        }
-
-        if (correctResponse.allowSpaces) {
-          if (
-            acceptedValueToUse === trimSpaces(answerValueToUse) ||
-            acceptedValueToUse === answerValueToUse ||
-            trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-          ) {
+          if (correctResponse.allowSpaces) {
+            if (
+                acceptedValueToUse === trimSpaces(answerValueToUse) ||
+                acceptedValueToUse === answerValueToUse ||
+                trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
+            ) {
+              answerCorrect = true;
+              break;
+            }
+          } else if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
             break;
           }
-        } else if (acceptedValueToUse === answerValueToUse) {
-          answerCorrect = true;
-          break;
         }
-      }
-    } else {
-      try {
-        for (let i = 0; i < acceptedValues.length; i++) {
-          // let answerValueToUse = processAnswerItem(answerItem);
-          // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+      } else {
+        try {
+          for (let i = 0; i < acceptedValues.length; i++) {
+            // let answerValueToUse = processAnswerItem(answerItem);
+            // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
-          answerCorrect = areValuesEqual(
-            processAnswerItem(acceptedValues[i]),
-            processAnswerItem(answerItem),
-            {
-              isLatex: true,
-              allowThousandsSeparator: correctResponse.allowThousandsSeparator
+            answerCorrect = areValuesEqual(
+                processAnswerItem(acceptedValues[i]),
+                processAnswerItem(answerItem),
+                {
+                  isLatex: true,
+                  allowThousandsSeparator: correctResponse.allowThousandsSeparator
+                }
+            );
+            if (answerCorrect) {
+              break;
             }
-          );
-          if (answerCorrect) {
-            break;
           }
+        } catch (e) {
+          log(
+              'Parse failure when evaluating math',
+              e,
+              correctResponse,
+              answerItem
+          );
+          // try to string check compare, last resort?
+          // once invalid models have been weeded out, this'll get removed.
+          answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
         }
-      } catch (e) {
-        log(
-          'Parse failure when evaluating math',
-          e,
-          correctResponse,
-          answerItem
-        );
-        // try to string check compare, last resort?
-        // once invalid models have been weeded out, this'll get removed.
-        answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
       }
     }
   });
