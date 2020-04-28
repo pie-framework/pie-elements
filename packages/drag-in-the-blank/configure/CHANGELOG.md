@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.4.3...@pie-element/drag-in-the-blank-configure@3.4.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
+
+
+
+
+
 ## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.4.2...@pie-element/drag-in-the-blank-configure@3.4.3) (2020-04-14)
 
 

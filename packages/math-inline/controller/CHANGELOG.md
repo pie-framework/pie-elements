@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.3...@pie-element/math-inline-controller@5.3.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
+* **math-inline:** fix evaluation logic - stop on correct answer found - PD-66 ([dad4a81](https://github.com/pie-framework/pie-elements/commit/dad4a81))
+* bump @pie-lib/math-evaluator PD-3 ([3af50a2](https://github.com/pie-framework/pie-elements/commit/3af50a2))
+
+
+
+
+
 ## [5.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.2...@pie-element/math-inline-controller@5.3.3) (2020-04-14)
 
 

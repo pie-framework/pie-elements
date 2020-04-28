@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.3...@pie-element/hotspot-controller@3.3.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* PD-56: Bug with resizing an image in hot spot ([bfeb160](https://github.com/pie-framework/pie-elements/commit/bfeb160))
+
+
+
+
+
 ## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.2...@pie-element/hotspot-controller@3.3.3) (2020-04-14)
 
 

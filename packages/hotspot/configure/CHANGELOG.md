@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.2...@pie-element/hotspot-configure@4.4.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+* PD-56: Bug with resizing an image in hot spot ([bfeb160](https://github.com/pie-framework/pie-elements/commit/bfeb160))
+* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
+
+
+
+
+
 ## [4.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.1...@pie-element/hotspot-configure@4.4.2) (2020-04-14)
 
 
