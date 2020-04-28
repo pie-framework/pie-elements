@@ -1993,10 +1993,10 @@
     slate-react "^0.14.3"
     to-style "^1.3.3"
 
-"@pie-lib/math-evaluator@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-2.0.0.tgz#649a5381ec514cf2a736f131523e823e4de48770"
-  integrity sha512-0W1upjPV3jQatL8dYRfkuNRJoEXjHbAO2I/vTXqJ0zrTffSbv87d6kcCjq4i2QRhtL7R4+Do9JDXMGzLcym07w==
+"@pie-lib/math-evaluator@^0.6.21":
+  version "0.6.22"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-evaluator/-/math-evaluator-0.6.22.tgz#fd97555ecce100632dd1534c69cacb97653ceaf5"
+  integrity sha512-rhBYwPinnSoSPeCyUqhWTEFJ7BIcp4ZZr9Ax0kPG1XNdfBzqlOb6+vISeEtMb31iifQLRInaOXJEru1r/Dd9xg==
   dependencies:
     "@pie-framework/math-expressions" "^3.0.0"
     jsesc "^2.5.2"
