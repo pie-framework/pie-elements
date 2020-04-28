@@ -12,7 +12,7 @@
     "element": "@pie-ui/categorize"
   },
   "dependencies": {
-    "@pie-ui/categorize": "^1.4.11"
+    "@pie-ui/categorize": "^1.4.12"
   },
   "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
 }

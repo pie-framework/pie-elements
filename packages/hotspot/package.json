@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/hotspot": "^1.3.26"
+    "@pie-ui/hotspot": "^1.3.27"
   },
   "pie": {
     "element": "@pie-ui/hotspot"
