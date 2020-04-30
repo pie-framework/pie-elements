@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "3.5.2",
+  "version": "3.5.4",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/drag-in-the-blank": "^1.7.25"
+    "@pie-ui/drag-in-the-blank": "^1.7.28"
   },
   "pie": {
     "element": "@pie-ui/drag-in-the-blank"

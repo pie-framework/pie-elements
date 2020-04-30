@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.5.3...@pie-element/protractor@2.5.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
+
+
+
+
+
+## [2.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.5.2...@pie-element/protractor@2.5.3) (2020-04-14)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
+
+
+
+
+
 ## [2.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.5.1...@pie-element/protractor@2.5.2) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/protractor

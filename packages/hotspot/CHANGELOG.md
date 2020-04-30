@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.2...@pie-element/hotspot@4.6.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([45f0da6](https://github.com/pie-framework/pie-elements/commit/45f0da6))
+* PD-55, PD-56, PD-57, PD-58: Updated version of pie-ui/hotspot ([04ede85](https://github.com/pie-framework/pie-elements/commit/04ede85))
+* PD-56: Bug with resizing an image in hot spot ([bfeb160](https://github.com/pie-framework/pie-elements/commit/bfeb160))
+* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+* update ui/lib versions ([0226b0b](https://github.com/pie-framework/pie-elements/commit/0226b0b))
+
+
+
+
+
+## [4.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.1...@pie-element/hotspot@4.6.2) (2020-04-14)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
+
+
+
+
+
 ## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.0...@pie-element/hotspot@4.6.1) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/hotspot

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.3...@pie-element/categorize-controller@5.1.4) (2020-04-28)
+
+
+### Bug Fixes
+
+* ui+libs update ([6127de2](https://github.com/pie-framework/pie-elements/commit/6127de2))
+
+
+
+
+
+## [5.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.2...@pie-element/categorize-controller@5.1.3) (2020-04-14)
+
+
+### Bug Fixes
+
+* bump ui/lib versions ([3edb232](https://github.com/pie-framework/pie-elements/commit/3edb232))
+
+
+
+
+
 ## [5.1.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.1...@pie-element/categorize-controller@5.1.2) (2020-04-14)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

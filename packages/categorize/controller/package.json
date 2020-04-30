@@ -2,12 +2,12 @@
   "name": "@pie-element/categorize-controller",
   "private": true,
   "dependencies": {
-    "@pie-lib/categorize": "^0.6.16",
+    "@pie-lib/categorize": "^0.6.17",
     "@pie-lib/controller-utils": "^0.2.18",
     "@pie-lib/feedback": "^0.4.22",
     "lodash": "^4.17.15"
   },
-  "version": "5.1.2",
+  "version": "5.1.4",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

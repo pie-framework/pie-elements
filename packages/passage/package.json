@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "publishConfig": {
     "access": "public"
   },
@@ -9,7 +9,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/passage": "^1.3.7"
+    "@pie-ui/passage": "^1.3.9"
   },
   "pie": {
     "element": "@pie-ui/passage"

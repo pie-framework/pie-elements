@@ -17,8 +17,9 @@ exports[`HotspotDrawable render renders 1`] = `
   </div>
   <ForwardRef
     height={291}
-    onClick={[Function]}
-    onContentMouseMove={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
     width={410}
   >
     <Layer>
@@ -180,8 +181,9 @@ exports[`HotspotDrawable render renders with default strokeWidth 1`] = `
   </div>
   <ForwardRef
     height={291}
-    onClick={[Function]}
-    onContentMouseMove={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
     width={410}
   >
     <Layer>
@@ -343,8 +345,9 @@ exports[`HotspotDrawable render renders with given strokeWidth 1`] = `
   </div>
   <ForwardRef
     height={291}
-    onClick={[Function]}
-    onContentMouseMove={[Function]}
+    onMouseDown={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
     width={410}
   >
     <Layer>
