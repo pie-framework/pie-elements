@@ -144,6 +144,15 @@ const listPackages = () => {
 
 module.exports = {
   packages: listPackages(),
+  commonLib: {
+    packageDir: path.resolve(__dirname, '../packages'),
+    minify: false,
+    mode: 'development',
+    repository: 'pie-framework/pie-elements',
+    extensions: {
+      commonJs,
+    },
+  },
   pkg: {
     type: 'pie-package',
     // eslint-disable-next-line no-undef
@@ -165,11 +174,6 @@ module.exports = {
       name: '@pie-element/shared-config',
       // eslint-disable-next-line no-undef
       output: path.resolve(__dirname, '../packages'),
-      minify: false,
-      mode: 'development',
-      extensions: {
-        commonJs,
-      },
       repository: 'pie-framework/pie-elements',
       modules: [
         /** make use of the pie-ui shared lib */
