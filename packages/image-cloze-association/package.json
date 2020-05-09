@@ -7,7 +7,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/image-cloze-association": "^1.2.33"
+    "@pie-ui/image-cloze-association": "^1.2.34"
   },
   "pie": {
     "element": "@pie-ui/image-cloze-association"
