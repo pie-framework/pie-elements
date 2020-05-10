@@ -30,7 +30,7 @@ const reactIsExports = [
   'isStrictMode',
   'isSuspense',
   'isValidElementType',
-  'typeOf'
+  'typeOf',
 ];
 
 const konva = [
@@ -57,7 +57,7 @@ const konva = [
   'Arrow',
   'Shape',
   'useStrictMode',
-  'Stage'
+  'Stage',
 ];
 
 const immutable = [
@@ -74,11 +74,12 @@ const immutable = [
   'Range',
   'Repeat',
   'is',
-  'fromJS'
+  'fromJS',
 ];
 
 const commonJs = {
   namedExports: {
+    'node_modules/js-combinatorics/combinatorics.js': ['combination'],
     'node_modules/react-konva/lib/ReactKonva.js': konva,
     'node_modules/react-redux/node_modules/react-is/index.js': reactIsExports,
     //TODO: common js should be picking these up?
@@ -97,15 +98,28 @@ const commonJs = {
       'useMemo',
       'useRef',
       'createRef',
-      'Component'
+      'Component',
+      'useReducer',
     ],
+    'node_modules/humps/humps.js': ['camelizeKeys'],
     'node_modules/react-dom/server.browser.js': ['renderToStaticMarkup'],
-    'node_modules/react-dom/index.js': ['findDOMNode'],
+    'node_modules/react-dom/index.js': [
+      'findDOMNode',
+      'unstable_batchedUpdates',
+    ],
     'node_modules/esrever/esrever.js': ['reverse'],
     'node_modules/slate-plain-serializer/node_modules/immutable/dist/immutable.js': immutable,
-    'node_modules/immutable/dist/immutable.js': immutable
-  }
+    'node_modules/immutable/dist/immutable.js': immutable,
+  },
 };
+
+const blacklist = [
+  'pie-models',
+  'math-inline',
+  'protractor',
+  'ruler',
+  'calculator',
+];
 
 /** Pslb will only support pie packages that have a configure and controller subpkg */
 const listPackages = () => {
@@ -115,22 +129,14 @@ const listPackages = () => {
 
   return _.compact(
     files
-      .filter(f => !f.includes('@'))
-      .map(f => {
+      .filter((f) => !f.includes('@'))
+      .filter((f) => !blacklist.includes(f))
+      .map((f) => {
         try {
           const rootPkg = fs.readJsonSync(path.join(root, f, 'package.json'));
-          const configPkg = fs.readJsonSync(
-            path.join(root, f, 'configure/package.json')
-          );
-          const controllerPkg = fs.readJsonSync(
-            path.join(root, f, 'controller/package.json')
-          );
-          if (!configPkg.module || !controllerPkg.module) {
-            return;
-          }
           return rootPkg.name;
         } catch (e) {
-          console.warn(`error for: ${f}`);
+          console.warn(`error for: ${f}, ${e.message}`);
         }
       })
   );
@@ -138,6 +144,15 @@ const listPackages = () => {
 
 module.exports = {
   packages: listPackages(),
+  commonLib: {
+    packageDir: path.resolve(__dirname, '../packages'),
+    minify: false,
+    mode: 'development',
+    repository: 'pie-framework/pie-elements',
+    extensions: {
+      commonJs,
+    },
+  },
   pkg: {
     type: 'pie-package',
     // eslint-disable-next-line no-undef
@@ -152,23 +167,18 @@ module.exports = {
         `${type}.js`
       );
     },
-    extensions: { commonJs }
+    extensions: { commonJs },
   },
   libs: [
     {
       name: '@pie-element/shared-config',
       // eslint-disable-next-line no-undef
       output: path.resolve(__dirname, '../packages'),
-      minify: false,
-      mode: 'development',
-      extensions: {
-        commonJs
-      },
       repository: 'pie-framework/pie-elements',
       modules: [
         /** make use of the pie-ui shared lib */
         { name: '@pie-ui/shared-lib', version: '^2.5.0' },
-        { name: '@pie-ui/shared-math-edit', version: '^1.5.0' }
+        { name: '@pie-ui/shared-math-edit', version: '^1.5.0' },
       ],
       /**
        * Ideally namespace imports would be the default import method.
@@ -186,10 +196,13 @@ module.exports = {
        */
       imports: {
         default: ['@pie-lib/editable-html'],
-        namespace: ['@pie-framework/pie-configure-events', '@pie-lib/config-ui']
-      }
-    }
-  ]
+        namespace: [
+          '@pie-framework/pie-configure-events',
+          '@pie-lib/config-ui',
+        ],
+      },
+    },
+  ],
 };
 
 /**
