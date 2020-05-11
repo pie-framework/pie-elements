@@ -1755,6 +1755,13 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
+"@pie-element/multiple-choice@^5.3.4":
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-5.3.4.tgz#56d425411e9737b8265ddecbfb6be199ddf820bf"
+  integrity sha512-1R3TFh1kbbWoorXK0UNYVZwWt0C52BeQtk0KjsO8kK2ixeFNbMggR90ekPUWhFHYHHuHa9ejOt4D3nEZiBgvwg==
+  dependencies:
+    "@pie-ui/multiple-choice" "^4.12.21"
+
 "@pie-framework/build-helper@^4.4.2":
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-4.4.4.tgz#62be2c76da136652ba0e08ff284a79101075f83c"
@@ -2412,7 +2419,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/multiple-choice@^4.12.22":
+"@pie-ui/multiple-choice@^4.12.21", "@pie-ui/multiple-choice@^4.12.22":
   version "4.12.22"
   resolved "https://registry.yarnpkg.com/@pie-ui/multiple-choice/-/multiple-choice-4.12.22.tgz#2c27c4a820c22c260d991f44e5e77f635eef1261"
   integrity sha512-z45Ek62JjVDGHmnjZzgzJfcP31/MJbj7ReKbL2V9BUS57gopxTGSXc21OGYkEOtnrkerralJSWNMANuFaDehVg==
@@ -2538,14 +2545,14 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@pslb/pslb@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-2.4.0.tgz#0c5a716332fb0882b4633e798967e3cf7f998200"
-  integrity sha512-CrpR/FICjEflPIvI0TVXzbI7QJZ7DKex5nrvCknyMMpWTCNMGpgw+WTVjcaMXS/urA+p+j0zh3TuYFNPf1GqBA==
+"@pslb/pslb@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-2.4.1.tgz#74a1f441fe00892d8a66fad8485a296861122dff"
+  integrity sha512-KqRsTTmDxoBmtoonVkQgnfntr4qy8AG9S1PuOdlDqgf7vXin6qf2ZnCNLmn5IXHwbH261Y1/EfWGQrMoedz7qw==
   dependencies:
     "@pslb/estree-helper" "^2.4.0"
     "@pslb/plugin-commonjs" "^11.0.3"
-    "@pslb/rollup-plugin-dll" "^2.4.0"
+    "@pslb/rollup-plugin-dll" "^2.4.1"
     "@rollup/plugin-json" "^4.0.3"
     "@rollup/plugin-node-resolve" "^7.1.3"
     "@rollup/plugin-replace" "^2.3.2"
@@ -2571,10 +2578,10 @@
     serve-handler "^6.1.2"
     winston "^3.2.1"
 
-"@pslb/rollup-plugin-dll@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-2.4.0.tgz#ef4a963ef7413afe27386995fdf8a6aef8c41cc5"
-  integrity sha512-YQzJG3zu4w0PHIEfpzSFxGjNgMHNK8hdUEak1ArXhRMSZex2x7JoUUtkceyqDX6aKdAJF1ISr6++CPOBTbOyIw==
+"@pslb/rollup-plugin-dll@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-2.4.1.tgz#9f623dc7502ce31c74d7d907b406ae489366c7e8"
+  integrity sha512-r3fN4FfpsHfXE1iBNgp6LCn08PbCEVs2B5UzeRa5BS5JpsxsWiQqKB+dSFWvG1wjzvJ6MI1MGUAvLPPneR8qxA==
   dependencies:
     "@pslb/estree-helper" "^2.4.0"
     acorn "^7.1.1"
