@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs-extra');
 const _ = require('lodash');
-
+// math-inline - 404 - maybe wasnt published
+// graphing - ?? - bad model
 const reactIsExports = [
   'AsyncMode',
   'ConcurrentMode',
