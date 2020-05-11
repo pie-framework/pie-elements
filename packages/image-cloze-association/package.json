@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/image-cloze-association",
-  "version": "3.3.4",
+  "version": "3.3.5-next.30+0e14ff98",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -13,5 +13,6 @@
     "element": "@pie-ui/image-cloze-association"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

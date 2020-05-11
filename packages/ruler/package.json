@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ruler",
-  "version": "3.10.4",
+  "version": "3.10.5-next.30+0e14ff98",
   "publishConfig": {
     "access": "public"
   },
@@ -14,5 +14,5 @@
   "pie": {
     "element": "@pie-ui/ruler"
   },
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

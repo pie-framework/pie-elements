@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "6.3.4",
+  "version": "6.3.5-next.30+0e14ff98",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
@@ -14,5 +14,5 @@
   "dependencies": {
     "@pie-ui/categorize": "^1.4.14"
   },
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ebsr",
-  "version": "6.2.4",
+  "version": "6.2.5-next.30+0e14ff98",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -13,5 +13,6 @@
     "@pie-ui/ebsr": "^1.2.40"
   },
   "author": "pie framework developers",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }
