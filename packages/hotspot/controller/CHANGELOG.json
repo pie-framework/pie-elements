@@ -343,5 +343,20 @@
     "committerDate": "2020-04-14 15:36:44 +0100",
     "isTagged": true,
     "tag": "@pie-element/hotspot-controller@3.3.3"
+  },
+  {
+    "type": "fix",
+    "scope": null,
+    "subject": "PD-56: Bug with resizing an image in hot spot",
+    "merge": null,
+    "header": "fix: PD-56: Bug with resizing an image in hot spot",
+    "body": "fix: PD-57: Hotspot: Enlarge the Help icon\nfix: PD-58: Hotspot: Hotspot creation should use a drag-and-drop gesture to create hotspots.",
+    "footer": null,
+    "notes": [],
+    "hash": "bfeb160b80d089178b193b990d68b61965be8866",
+    "gitTags": "",
+    "committerDate": "2020-04-17 09:31:25 +0300",
+    "isTagged": true,
+    "tag": "@pie-element/hotspot-controller@3.3.4"
   }
 ]
