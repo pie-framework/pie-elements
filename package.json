@@ -9,8 +9,7 @@
     "build": "scripts/build build",
     "release": "scripts/build build release",
     "release:next": "scripts/build build release --next --lernaLogLevel silly",
-    "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig",
-    "prepack": "scripts/build changelog"
+    "postinstall": "lerna bootstrap && git config --local include.path ../.gitconfig"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
