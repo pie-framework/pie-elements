@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorrectResponse renders snapshot 1`] = `
+<div>
+  Define Correct Response
+  <Tools
+    classes={Object {}}
+    toggleToolBarTool={[Function]}
+    toolbarTools={Array []}
+  />
+  <div>
+    <div
+      onClick={[Function]}
+    >
+      ADD ALTERNATE
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tools renders snapshot 1`] = `
+<div>
+  GRAPHING TOOLS
+  <div>
+    <div
+      className=""
+      key="label"
+      onClick={[Function]}
+    >
+      LABEL
+    </div>
+  </div>
+</div>
+`;

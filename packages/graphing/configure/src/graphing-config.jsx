@@ -3,12 +3,98 @@ import { NumberTextField } from '@pie-lib/config-ui';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph } from '@pie-lib/graphing';
+import { GraphContainer } from '@pie-lib/graphing';
 import { TextField } from '@material-ui/core';
-import cloneDeep from 'lodash/cloneDeep';
 
 import { get, set } from 'lodash';
 import Typography from '@material-ui/core/Typography';
+
+export const AuthoringColumn = ({ columnKey, axis, classes, model }) => {
+  const rows = [{
+    key: '${columnKey}-min-max',
+    inputs: [
+      {
+        key: `${columnKey}.min`,
+        label: 'Min value',
+        className: classes.smallInput
+      },
+      {
+        key: `${columnKey}.max`,
+        label: 'Max value',
+        className: classes.smallInput
+      }
+    ]
+  }, {
+    key: `${columnKey}-tick-frequency`,
+    inputs: [
+      {
+        key: `${columnKey}.step`,
+        label: 'Tick frequency'
+      }
+    ]
+  },
+    {
+      key: `${columnKey}-tick-label-frequency`,
+      inputs: [
+        {
+          key: `${columnKey}.labelStep`,
+          label: 'Tick label frequency'
+        }
+      ]
+    },
+    {
+      key: `${columnKey}-axis-label`,
+      inputs: [
+        {
+          type: 'text',
+          key: `${axis}-axis-label-input`,
+          label: `${axis} Axis Label`
+        }
+      ]
+    }
+  ];
+
+  return (
+    <div className={classes.column} key={columnKey}>
+      {`${columnKey.toUpperCase()} (${axis.toUpperCase()})`}
+
+      {rows.map(row => (
+        <div className={classes.row} key={row.key}>
+          {row.inputs.map(input => {
+            if (input.type === 'text') {
+              return (
+                <TextField
+                  className={classes.input}
+                  label={input.label.toUpperCase()}
+                  value={model[`${axis}AxisLabel`]}
+                  onChange={({ target }) => this.onChangeInputValue(`${axis}AxisLabel`, target.value)}
+                />
+              );
+            }
+
+            return (
+              <TextField
+                type="number"
+                key={input.key}
+                label={input.label.toUpperCase()}
+                onChange={(event, value) => this.onChangeInputValue(input.key, value)}
+                value={get(model, input.key)}
+                className={input.className || classes.input}
+              />
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+AuthoringColumn.propTypes = {
+  axis: PropTypes.String,
+  classes: PropTypes.object,
+  columnKey: PropTypes.String,
+  model: PropTypes.object,
+};
 
 const styles = theme => ({
   container: {
@@ -42,19 +128,7 @@ export class GraphingConfig extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     authoringEnabled: PropTypes.bool,
-    tools: PropTypes.array
   };
-
-  constructor(props) {
-    super(props);
-    const toolsArr = cloneDeep(props.tools);
-    toolsArr.forEach(t => (t.toolbar = true));
-
-    this.state = {
-      currentTool: toolsArr.length && toolsArr[0].type,
-      tools: toolsArr
-    };
-  }
 
   onChangeInputValue = (key, value) => {
     const { model } = this.props;
@@ -94,87 +168,9 @@ export class GraphingConfig extends React.Component {
 
   render() {
     const { classes, model, authoringEnabled } = this.props;
-    const { tools, currentTool }  = this.state;
-
-    const Column = ({ columnKey, axis }) => {
-      const rows = [{
-        key: '${columnKey}-min-max',
-        inputs: [
-          {
-            key: `${columnKey}.min`,
-            label: 'Min value',
-            className: classes.smallInput
-          },
-          {
-            key: `${columnKey}.max`,
-            label: 'Max value',
-            className: classes.smallInput
-          }
-        ]
-      }, {
-        key: `${columnKey}-tick-frequency`,
-        inputs: [
-          {
-            key: `${columnKey}.step`,
-            label: 'Tick frequency'
-          }
-        ]
-      },
-        {
-          key: `${columnKey}-tick-label-frequency`,
-          inputs: [
-            {
-              key: `${columnKey}.labelStep`,
-              label: 'Tick label frequency'
-            }
-          ]
-        },
-        {
-          key: `${columnKey}-axis-label`,
-          inputs: [
-            {
-              type: 'text',
-              key: `${axis}-axis-label-input`,
-              label: `${axis} Axis Label`
-            }
-          ]
-        }
-      ];
-
-      return (
-        <div className={classes.column} key={columnKey}>
-          {`${columnKey.toUpperCase()} (${axis.toUpperCase()})`}
-
-          {rows.map(row => (
-            <div className={classes.row} key={row.key}>
-              {row.inputs.map(input => {
-                if (input.type === 'text') {
-                  return (
-                    <TextField
-                      className={classes.input}
-                      label={input.label.toUpperCase()}
-                      value={model[`${axis}AxisLabel`]}
-                      onChange={({ target }) => this.onChangeInputValue(`${axis}AxisLabel`, target.value)}
-                    />
-                  );
-                }
-
-                return (
-                  <TextField
-                    type="number"
-                    key={input.key}
-                    label={input.label.toUpperCase()}
-                    onChange={(event, value) => this.onChangeInputValue(input.key, value)}
-                    value={get(this.props.model, input.key)}
-                    className={input.className || classes.input}
-                  />
-                );
-              })}
-            </div>
-            ))}
-        </div>
-      );
-    };
+    let { graph } = model || {};
+    const { arrows, backgroundMarks, domain, labels, range, title, toolbarTools } = model || {};
+    graph = graph || {};
 
     return (
       <div>
@@ -184,8 +180,8 @@ export class GraphingConfig extends React.Component {
           {
             authoringEnabled && (
               <div className={classnames(classes.column, classes.settings)} key="settings">
-                <Column columnKey="domain" axis="x"/>
-                <Column columnKey="range" axis="y"/>
+                <AuthoringColumn columnKey="domain" axis="x" classes={classes} model={model} />
+                <AuthoringColumn columnKey="range" axis="y" classes={classes} model={model} />
               </div>
             )
           }
@@ -195,22 +191,18 @@ export class GraphingConfig extends React.Component {
               <span>Use the tools below to set background shapes</span>
             </Typography>
 
-            <Graph
-              key="graphing-config"
-              size={{
-                width: model.graph && model.graph.width,
-                height: model.graph && model.graph.height
-              }}
-              domain={model.domain}
-              range={model.range}
-              title={model.title}
-              labels={model.labels}
-              marks={model.backgroundMarks}
+            <GraphContainer
+              axesSettings={{ includeArrows: arrows }}
               backgroundMarks={[]}
+              domain={domain}
+              key="graphing-config"
+              labels={labels}
+              marks={backgroundMarks}
               onChangeMarks={this.changeBackgroundMarks}
-              tools={tools}
-              currentTool={currentTool}
-              defaultTool={tools.length && tools[0].type}
+              range={range}
+              size={{ width: graph.width, height: graph.height }}
+              title={title}
+              toolbarTools={toolbarTools}
             />
           </div>
 

@@ -2,7 +2,9 @@ import * as React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph } from '@pie-lib/graphing';
+import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
+
+const { allTools } = tools;
 
 import { set } from 'lodash';
 
@@ -45,17 +47,48 @@ const styles = theme => ({
   }
 });
 
+export const Tools = ({ classes, toolbarTools, toggleToolBarTool }) => {
+  // label has to be placed at the end of the list
+  const allToolsNoLabel = (allTools || []).filter(tool => tool !== 'label');
+
+  return (
+    <div className={classes.graphingTools}>
+      GRAPHING TOOLS
+
+      <div className={classes.availableTools}>
+        {([...allToolsNoLabel, 'label']).map(tool => {
+          const selected = toolbarTools.find(t => t === tool);
+
+          return (
+            <div
+              key={tool}
+              className={classnames(
+                classes.availableTool,
+                selected && classes.selectedTool
+              )}
+              onClick={() => toggleToolBarTool(tool)}
+            >
+              {tool.toUpperCase()}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+Tools.propTypes = {
+  classes: PropTypes.object.isRequired,
+  toolbarTools: PropTypes.arrayOf(PropTypes.string),
+  toggleToolBarTool: PropTypes.func
+};
+
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    tools: PropTypes.arrayOf(
-      PropTypes.shape({
-        Component: PropTypes.shape({ type: PropTypes.string }),
-        type: PropTypes.string.isRequired
-      })
-    )
+    toolbarTools: PropTypes.arrayOf(PropTypes.String)
   };
 
   changeMarks = (key, marks) => {
@@ -75,100 +108,72 @@ export class CorrectResponse extends React.Component {
   toggleToolBarTool = tool => {
     const { toolbarTools } = this.props.model;
 
-    const index = toolbarTools.findIndex(t => tool.type === t);
+    const index = toolbarTools.findIndex(t => tool === t);
 
     if (index >= 0) {
       const update = [...toolbarTools];
       update.splice(index, 1);
       this.changeToolbarTools(update);
     } else {
-      this.changeToolbarTools([...toolbarTools, tool.type]);
+      this.changeToolbarTools([...toolbarTools, tool]);
     }
   };
 
-  render() {
-    const { classes, model, onChange, tools } = this.props;
-    const { toolbarTools } = model;
+  addAlternateResponse = () => {
+    const { model, onChange } = this.props;
+    const { answers } = model || {};
+    const answersKeys = Object.keys(answers);
 
-    const t = tools.map(tool => {
-      tool.toolbar = toolbarTools.some(t => t === tool.type);
-      return tool;
-    });
-    const showLabel = toolbarTools && toolbarTools.some(t => t === 'label');
+    set(
+      model,
+      `answers.${`alternate${answersKeys.length}`}`,
+      { name: `Alternate ${answersKeys.length}`, marks: [] }
+    );
+    onChange(model);
+  };
+
+  render() {
+    const { classes, model } = this.props;
+    let { graph } = model || {};
+    const { answers, arrows, backgroundMarks, domain, labels, range, title, toolbarTools } = model || {};
+    graph = graph || {};
+
+    const answersKeys = Object.keys(answers);
 
     return (
       <div>
         Define Correct Response
-        <div className={classes.graphingTools}>
-          GRAPHING TOOLS
-          <div className={classes.availableTools}>
-            {t.map(tool => {
-              const selected = toolbarTools.find(t => t === tool.type);
+        <Tools
+          classes={classes}
+          toggleToolBarTool={this.toggleToolBarTool}
+          toolbarTools={toolbarTools}
+        />
 
-              return (
-                <div
-                  key={tool.type}
-                  className={classnames(
-                    classes.availableTool,
-                    selected && classes.selectedTool
-                  )}
-                  onClick={() => this.toggleToolBarTool(tool)}
-                >
-                  {tool.type.toUpperCase()}
-                </div>
-              );
-            })}
-            <div
-              key="label"
-              className={classnames(
-                classes.availableTool,
-                showLabel && classes.selectedTool
-              )}
-              onClick={() => this.toggleToolBarTool({ type: 'label' })}
-            >
-              LABEL
-            </div>
-          </div>
-        </div>
         <div className={classes.container}>
-          {Object.keys(model.answers).map(mark => (
-            <div key={`correct-response-graph-${model.answers[mark].name}`}>
-              <p>{model.answers[mark].name}</p>
+          {answersKeys.map(mark => {
+            const { marks, name } = answers[mark] || {};
 
-              <Graph
-                size={{
-                  width: model.graph && model.graph.width,
-                  height: model.graph && model.graph.height
-                }}
-                domain={model.domain}
-                range={model.range}
-                title={model.title}
-                labels={model.labels}
-                marks={model.answers[mark].marks}
-                backgroundMarks={model.backgroundMarks}
-                onChangeMarks={marks => this.changeMarks(mark, marks)}
-                tools={tools}
-                currentTool={tools.length && tools[0].Component.type}
-                defaultTool={tools.length && tools[0].type}
-                hideLabel={!showLabel}
-              />
-            </div>
-          ))}
+            return (
+              <div key={`correct-response-graph-${name}`}>
+                <p>{name}</p>
 
-          <div
-            className={classes.button}
-            onClick={() => {
-              set(
-                model,
-                `answers.${`alternate${Object.keys(model.answers).length}`}`,
-                {
-                  name: `Alternate ${Object.keys(model.answers).length}`,
-                  marks: []
-                }
-              );
-              onChange(model);
-            }}
-          >
+                <Graph
+                  axesSettings={{ includeArrows: arrows }}
+                  backgroundMarks={backgroundMarks}
+                  domain={domain}
+                  labels={labels}
+                  marks={marks}
+                  onChangeMarks={newMarks => this.changeMarks(mark, newMarks)}
+                  range={range}
+                  size={{ width: graph.width, height: graph.height }}
+                  title={title}
+                  toolbarTools={toolbarTools}
+                />
+              </div>
+            )
+          })}
+
+          <div className={classes.button} onClick={this.addAlternateResponse}>
             ADD ALTERNATE
           </div>
         </div>

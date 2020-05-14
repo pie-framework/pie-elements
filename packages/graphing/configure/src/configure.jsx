@@ -8,9 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
-import { tools } from '@pie-lib/graphing';
 
-const { Panel, toggle, radio, numberFields } = settings;
+const { Panel, toggle, radio } = settings;
 const log = debug('@pie-element:graphing:configure');
 
 const styles = theme => ({
@@ -34,18 +33,6 @@ const styles = theme => ({
     width: '100%'
   }
 });
-
-const toolsArr = [
-  tools.point(),
-  tools.circle(),
-  tools.polygon(),
-  tools.segment(),
-  tools.vector(),
-  tools.ray(),
-  tools.line(),
-  tools.sine(),
-  tools.parabola()
-];
 
 export class Configure extends React.Component {
   static propTypes = {
@@ -118,20 +105,6 @@ export class Configure extends React.Component {
                 'title.enabled': title.settings && toggle(title.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),
-                graph: numberFields('Graph Display Size', {
-                  domain: {
-                    label: 'Domain',
-                    suffix: 'px',
-                    min: 400,
-                    max: 700
-                  },
-                  range: {
-                    label: 'Range',
-                    suffix: 'px',
-                    min: 400,
-                    max: 700
-                  }
-                })
               },
               Properties: {
                 'authoring.enabled':
@@ -211,14 +184,12 @@ export class Configure extends React.Component {
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
-            tools={toolsArr}
           />
 
           <CorrectResponse
             config={config}
             model={model}
             onChange={this.props.onModelChanged}
-            tools={toolsArr}
           />
         </div>
       </layout.ConfigLayout>

@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthoringColumn renders snapshot 1`] = `
+<div
+  key="columnKey"
+>
+  COLUMNKEY (X)
+  <div
+    key="\${columnKey}-min-max"
+  >
+    <TextField
+      key="columnKey.min"
+      label="MIN VALUE"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      variant="standard"
+    />
+    <TextField
+      key="columnKey.max"
+      label="MAX VALUE"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      variant="standard"
+    />
+  </div>
+  <div
+    key="columnKey-tick-frequency"
+  >
+    <TextField
+      key="columnKey.step"
+      label="TICK FREQUENCY"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      variant="standard"
+    />
+  </div>
+  <div
+    key="columnKey-tick-label-frequency"
+  >
+    <TextField
+      key="columnKey.labelStep"
+      label="TICK LABEL FREQUENCY"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      type="number"
+      variant="standard"
+    />
+  </div>
+  <div
+    key="columnKey-axis-label"
+  >
+    <TextField
+      label="X AXIS LABEL"
+      onChange={[Function]}
+      required={false}
+      select={false}
+      variant="standard"
+    />
+  </div>
+</div>
+`;
+
+exports[`GraphingConfig renders snapshot 1`] = `
+<div>
+  Define Graph Attributes
+  <div>
+    <div
+      key="graph"
+    >
+      <WithStyles(Typography)
+        component="div"
+        type="body1"
+      >
+        <span>
+          Use the tools below to set background shapes
+        </span>
+      </WithStyles(Typography)>
+      <Root
+        axesSettings={
+          Object {
+            "includeArrows": true,
+          }
+        }
+        backgroundMarks={Array []}
+        domain={
+          Object {
+            "axisLabel": "x",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "step": 1,
+          }
+        }
+        key="graphing-config"
+        labels={Object {}}
+        marks={Array []}
+        onChangeMarks={[Function]}
+        range={
+          Object {
+            "axisLabel": "y",
+            "labelStep": 1,
+            "max": 5,
+            "min": -5,
+            "step": 1,
+          }
+        }
+        size={
+          Object {
+            "height": 500,
+            "width": 500,
+          }
+        }
+        title=""
+        toolbarTools={Array []}
+      />
+    </div>
+  </div>
+</div>
+`;

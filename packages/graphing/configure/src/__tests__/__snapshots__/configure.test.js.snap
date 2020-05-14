@@ -55,7 +55,6 @@ exports[`Configure renders snapshot 1`] = `
         Object {
           "Item Type": Object {
             "arrows": false,
-            "graph": undefined,
             "labels": false,
             "padding": false,
             "title.enabled": false,
@@ -72,56 +71,37 @@ exports[`Configure renders snapshot 1`] = `
       }
       model={
         Object {
-          "answers": Object {
-            "correctAnswer": Object {
-              "marks": Array [],
-              "name": "Correct Answer",
-            },
-          },
+          "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
-            "max": 10,
-            "min": -10,
-            "padding": 0,
+            "max": 5,
+            "min": -5,
             "step": 1,
           },
           "graph": Object {
-            "height": 480,
-            "width": 480,
+            "height": 500,
+            "width": 500,
           },
-          "labels": null,
+          "labels": Object {},
           "padding": true,
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1.5,
+            "labelStep": 1,
             "max": 5,
             "min": -5,
-            "padding": 0,
-            "step": 0.5,
+            "step": 1,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
-          "scoringType": "dichotomous",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "toolbarTools": Array [
-            "point",
-            "circle",
-            "polygon",
-            "segment",
-            "ray",
-            "vector",
-            "line",
-            "sine",
-            "parabola",
-            "label",
-          ],
+          "toolbarTools": Array [],
         }
       }
     />
@@ -150,7 +130,7 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         disableUnderline={true}
-        markup="Here goes item stem!"
+        markup=""
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -159,7 +139,7 @@ exports[`Configure renders snapshot 1`] = `
       label="Rationale"
     >
       <EditableHtml
-        markup="Rationale goes here!"
+        markup=""
         onChange={[Function]}
       />
     </InputContainer>
@@ -167,333 +147,89 @@ exports[`Configure renders snapshot 1`] = `
       authoringEnabled={false}
       config={
         Object {
-          "height": 480,
-          "width": 480,
+          "height": 500,
+          "width": 500,
         }
       }
       model={
         Object {
-          "answers": Object {
-            "correctAnswer": Object {
-              "marks": Array [],
-              "name": "Correct Answer",
-            },
-          },
+          "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
-            "max": 10,
-            "min": -10,
-            "padding": 0,
+            "max": 5,
+            "min": -5,
             "step": 1,
           },
           "graph": Object {
-            "height": 480,
-            "width": 480,
+            "height": 500,
+            "width": 500,
           },
-          "labels": null,
+          "labels": Object {},
           "padding": true,
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1.5,
+            "labelStep": 1,
             "max": 5,
             "min": -5,
-            "padding": 0,
-            "step": 0.5,
+            "step": 1,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
-          "scoringType": "dichotomous",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "toolbarTools": Array [
-            "point",
-            "circle",
-            "polygon",
-            "segment",
-            "ray",
-            "vector",
-            "line",
-            "sine",
-            "parabola",
-            "label",
-          ],
+          "toolbarTools": Array [],
         }
-      }
-      tools={
-        Array [
-          Object {
-            "Component": [Function],
-            "type": "point",
-          },
-          Object {
-            "Component": [Function],
-            "type": "circle",
-          },
-          Object {
-            "Component": [Function],
-            "type": "polygon",
-          },
-          Object {
-            "Component": [Function],
-            "type": "segment",
-          },
-          Object {
-            "Component": [Function],
-            "type": "vector",
-          },
-          Object {
-            "Component": [Function],
-            "type": "ray",
-          },
-          Object {
-            "Component": [Function],
-            "type": "line",
-          },
-          Object {
-            "Component": [Function],
-            "type": "sine",
-          },
-          Object {
-            "Component": [Function],
-            "type": "parabola",
-          },
-        ]
       }
     />
     <WithStyles(CorrectResponse)
       config={
         Object {
-          "height": 480,
-          "width": 480,
+          "height": 500,
+          "width": 500,
         }
       }
       model={
         Object {
-          "answers": Object {
-            "correctAnswer": Object {
-              "marks": Array [],
-              "name": "Correct Answer",
-            },
-          },
+          "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
-            "max": 10,
-            "min": -10,
-            "padding": 0,
+            "max": 5,
+            "min": -5,
             "step": 1,
           },
           "graph": Object {
-            "height": 480,
-            "width": 480,
+            "height": 500,
+            "width": 500,
           },
-          "labels": null,
+          "labels": Object {},
           "padding": true,
-          "prompt": "Here goes item stem!",
+          "prompt": "",
           "promptEnabled": true,
           "range": Object {
             "axisLabel": "y",
-            "labelStep": 1.5,
+            "labelStep": 1,
             "max": 5,
             "min": -5,
-            "padding": 0,
-            "step": 0.5,
+            "step": 1,
           },
-          "rationale": "Rationale goes here!",
+          "rationale": "",
           "rationaleEnabled": true,
-          "scoringType": "dichotomous",
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
-          "toolbarTools": Array [
-            "point",
-            "circle",
-            "polygon",
-            "segment",
-            "ray",
-            "vector",
-            "line",
-            "sine",
-            "parabola",
-            "label",
-          ],
+          "toolbarTools": Array [],
         }
-      }
-      tools={
-        Array [
-          Object {
-            "Component": [Function],
-            "type": "point",
-          },
-          Object {
-            "Component": [Function],
-            "type": "circle",
-          },
-          Object {
-            "Component": [Function],
-            "type": "polygon",
-          },
-          Object {
-            "Component": [Function],
-            "type": "segment",
-          },
-          Object {
-            "Component": [Function],
-            "type": "vector",
-          },
-          Object {
-            "Component": [Function],
-            "type": "ray",
-          },
-          Object {
-            "Component": [Function],
-            "type": "line",
-          },
-          Object {
-            "Component": [Function],
-            "type": "sine",
-          },
-          Object {
-            "Component": [Function],
-            "type": "parabola",
-          },
-        ]
       }
     />
   </div>
 </ConfigLayout>
-`;
-
-exports[`CorrectResponse renders snapshot 1`] = `
-<div>
-  Define Correct Response
-  <div>
-    GRAPHING TOOLS
-    <div>
-      <div
-        className=""
-        key="label"
-        onClick={[Function]}
-      >
-        LABEL
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      key="correct-response-graph-Correct Answer"
-    >
-      <p>
-        Correct Answer
-      </p>
-      <GraphContainer
-        backgroundMarks={Array []}
-        currentTool={0}
-        defaultTool={0}
-        domain={
-          Object {
-            "axisLabel": "x",
-            "labelStep": 1,
-            "max": 10,
-            "min": 20,
-            "padding": 0,
-            "step": 1,
-          }
-        }
-        hideLabel={false}
-        labels={null}
-        marks={Array []}
-        onChangeMarks={[Function]}
-        range={
-          Object {
-            "axisLabel": "y",
-            "labelStep": 1.5,
-            "max": 5,
-            "min": -5,
-            "padding": 0,
-            "step": 0.5,
-          }
-        }
-        size={
-          Object {
-            "height": 480,
-            "width": 480,
-          }
-        }
-        title=""
-        tools={Array []}
-      />
-    </div>
-    <div
-      onClick={[Function]}
-    >
-      ADD ALTERNATE
-    </div>
-  </div>
-</div>
-`;
-
-exports[`GraphingConfig renders snapshot 1`] = `
-<div>
-  Define Graph Attributes
-  <div>
-    <div
-      key="graph"
-    >
-      <WithStyles(Typography)
-        component="div"
-        type="body1"
-      >
-        <span>
-          Use the tools below to set background shapes
-        </span>
-      </WithStyles(Typography)>
-      <GraphContainer
-        backgroundMarks={Array []}
-        currentTool={0}
-        defaultTool={0}
-        domain={
-          Object {
-            "axisLabel": "x",
-            "labelStep": 1,
-            "max": 10,
-            "min": -10,
-            "padding": 0,
-            "step": 1,
-          }
-        }
-        key="graphing-config"
-        labels={null}
-        marks={Array []}
-        onChangeMarks={[Function]}
-        range={
-          Object {
-            "axisLabel": "y",
-            "labelStep": 1.5,
-            "max": 5,
-            "min": -5,
-            "padding": 0,
-            "step": 0.5,
-          }
-        }
-        size={
-          Object {
-            "height": 480,
-            "width": 480,
-          }
-        }
-        title=""
-        tools={Array []}
-      />
-    </div>
-  </div>
-</div>
 `;
