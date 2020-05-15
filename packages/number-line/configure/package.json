@@ -7,9 +7,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.21",
-    "@pie-lib/editable-html": "^7.12.6",
-    "@pie-ui/number-line": "^7.1.40",
+    "@pie-lib/config-ui": "^10.8.23",
+    "@pie-lib/editable-html": "^7.12.8",
+    "@pie-ui/number-line": "^7.1.41",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   }

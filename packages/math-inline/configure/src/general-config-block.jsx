@@ -12,40 +12,41 @@ import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import isEqual from 'lodash/isEqual';
 import { ResponseTypes } from './utils';
+import MathQuill from '@pie-framework/mathquill';
 
 let registered = false;
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   templateTitle: {
-    fontSize: '0.85rem'
+    fontSize: '0.85rem',
   },
   addResponseButton: {
     border: '1px solid lightgrey',
     float: 'right',
-    width: '150px'
+    width: '150px',
   },
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   selectContainer: {
     flex: 'initial',
     width: '40%',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   inputContainer: {
     marginBottom: theme.spacing.unit * 4,
     display: 'flex',
     flexDirection: 'column',
-    width: '90%'
+    width: '90%',
   },
   responseEditor: {
     display: 'flex',
@@ -56,25 +57,25 @@ const styles = theme => ({
     height: 'auto',
     minHeight: '130px',
     textAlign: 'left',
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit,
   },
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
-    maxWidth: '600px'
+    maxWidth: '600px',
   },
   blockContainer: {
     margin: theme.spacing.unit,
     display: 'inline-flex',
-    border: '2px solid grey'
+    border: '2px solid grey',
   },
   blockContainerGeneric: {
-    margin: theme.spacing.unit / 2
+    margin: theme.spacing.unit / 2,
   },
   blockResponse: {
     flex: 2,
@@ -85,10 +86,10 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRight: '2px solid grey'
+    borderRight: '2px solid grey',
   },
   blockResponseGeneric: {
-    borderRight: 0
+    borderRight: 0,
   },
   blockMath: {
     color: '#bdbdbd',
@@ -100,11 +101,11 @@ const styles = theme => ({
     '& > .mq-math-mode': {
       '& > .mq-hasCursor': {
         '& > .mq-cursor': {
-          display: 'none'
-        }
-      }
-    }
-  }
+          display: 'none',
+        },
+      },
+    },
+  },
 });
 
 const REGEX = /{{response}}/gm;
@@ -138,7 +139,7 @@ class GeneralConfigBlock extends React.Component {
     configuration: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
-    rationaleEnabled: PropTypes.bool
+    rationaleEnabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -152,7 +153,7 @@ class GeneralConfigBlock extends React.Component {
 
       props.model.expression.replace(REGEX, () => {
         responseAreas[`r${answerBlocks++}`] = {
-          value: ''
+          value: '',
         };
       });
     }
@@ -160,11 +161,11 @@ class GeneralConfigBlock extends React.Component {
     this.state = {
       showKeypad: false,
       responseAreas,
-      responseIdCounter: Object.keys(responseAreas).length
+      responseIdCounter: Object.keys(responseAreas).length,
     };
   }
 
-  onChange = name => evtOrValue => {
+  onChange = (name) => (evtOrValue) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
@@ -197,11 +198,11 @@ class GeneralConfigBlock extends React.Component {
     const { classes } = this.props;
 
     if (typeof window !== 'undefined') {
-      const MathQuill = require('@pie-framework/mathquill');
+      // const MathQuill = require('@pie-framework/mathquill');
       let MQ = MathQuill.getInterface(2);
 
       if (!registered) {
-        MQ.registerEmbed('answerBlock', data => {
+        MQ.registerEmbed('answerBlock', (data) => {
           // not used until we implement individual answer tracking
           // const individualAnswerBlock = `<div class="${classes.blockContainer}">
           //     <div class="${classes.blockResponse}" id="${data}Index">R</div>
@@ -223,7 +224,7 @@ class GeneralConfigBlock extends React.Component {
           return {
             htmlString: genericAnswerBlock,
             text: () => 'text',
-            latex: () => `\\embed{answerBlock}[${data}]`
+            latex: () => `\\embed{answerBlock}[${data}]`,
           };
         });
 
@@ -251,7 +252,7 @@ class GeneralConfigBlock extends React.Component {
 
       model.expression.replace(REGEX, () => {
         responseAreas[`r${answerBlocks++}`] = {
-          value: ''
+          value: '',
         };
       });
     }
@@ -260,7 +261,7 @@ class GeneralConfigBlock extends React.Component {
       this.setState(
         {
           showKeypad: false,
-          responseAreas
+          responseAreas,
         },
         () => {
           if (this.root && Object.keys(responseAreas).length) {
@@ -269,7 +270,7 @@ class GeneralConfigBlock extends React.Component {
               const indexEl = this.root.querySelector(`#${responseId}Index`);
 
               if (el) {
-                const MathQuill = require('@pie-framework/mathquill');
+                // const MathQuill = require('@pie-framework/mathquill');
                 let MQ = MathQuill.getInterface(2);
                 // We no longer have individual answers, so we cannot set text content of blocks
                 // el.textContent = response.answer;
@@ -290,7 +291,7 @@ class GeneralConfigBlock extends React.Component {
 
     let newCounter = responseIdCounter;
 
-    while (model.responses.find(response => response.id === newCounter)) {
+    while (model.responses.find((response) => response.id === newCounter)) {
       newCounter++;
     }
 
@@ -300,14 +301,14 @@ class GeneralConfigBlock extends React.Component {
       answer: '',
       alternates: {},
       allowSpaces: true,
-      allowThousandsSeparator: true
+      allowThousandsSeparator: true,
     };
 
     newModel.responses = newModel.responses.concat(response);
     onChange(newModel);
 
     this.setState({
-      responseIdCounter: response.id
+      responseIdCounter: response.id,
     });
   };
 
@@ -326,7 +327,7 @@ class GeneralConfigBlock extends React.Component {
       imageSupport,
       configuration,
       promptEnabled,
-      rationaleEnabled
+      rationaleEnabled,
     } = this.props;
     const { showKeypad } = this.state;
     const {
@@ -335,14 +336,13 @@ class GeneralConfigBlock extends React.Component {
       equationEditor,
       responses,
       responseType,
-      rationale
+      rationale,
     } = model;
-    const { rationale: cRationale = {} } =
-      configuration || {};
+    const { rationale: cRationale = {} } = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
-      mathToolbar: classes.mathToolbar
+      mathToolbar: classes.mathToolbar,
     };
 
     const responsesToUse =
@@ -352,7 +352,7 @@ class GeneralConfigBlock extends React.Component {
 
     return (
       <div
-        ref={r => (this.root = r || this.root)}
+        ref={(r) => (this.root = r || this.root)}
         className={classes.container}
       >
         {promptEnabled && (

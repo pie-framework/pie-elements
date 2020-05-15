@@ -4,19 +4,19 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.4.4",
+  "version": "4.4.5-next.30+0e14ff98",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/match": "^2.3.36"
+    "@pie-ui/match": "^2.3.37"
   },
   "pie": {
     "element": "@pie-ui/match"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

@@ -614,7 +614,7 @@
     "footer": null,
     "notes": [],
     "hash": "45f0da6e3e01f33aff6059cb13d571554690348b",
-    "gitTags": " (origin/develop, origin/HEAD, develop)",
+    "gitTags": "",
     "committerDate": "2020-04-28 14:57:57 +0100",
     "isTagged": true,
     "tag": "@pie-element/explicit-constructed-response-configure@3.5.4"

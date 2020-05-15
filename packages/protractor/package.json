@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/protractor",
-  "version": "2.5.4",
+  "version": "2.5.5-next.30+0e14ff98",
   "publishConfig": {
     "access": "public"
   },
@@ -13,5 +13,6 @@
   },
   "dependencies": {
     "@pie-ui/protractor": "^2.2.23"
-  }
+  },
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }
