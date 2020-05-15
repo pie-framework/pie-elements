@@ -34,19 +34,18 @@ function processAnswerItem(answerItem = '', isLiteral) {
   // further processing is to be added here if needed
   let newAnswerItem = answerItem.replace('−', '-');
 
-  newAnswerItem = newAnswerItem.replace('\\cdot', '\\times');
+  newAnswerItem = newAnswerItem.replace(/\\cdot/g, '\\times');
 
   // also ignore text nodes, just swap out with empty string
 
   newAnswerItem = newAnswerItem.replace(textRegex, '');
 
-  newAnswerItem = newAnswerItem.replace('\\ ', '').replace(' ', '');
+  newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
 
   // eslint-disable-next-line no-useless-escape
   newAnswerItem = newAnswerItem
-    .replace('\\%', '')
-    .replace('%', '')
-    .replace('%', '');
+    .replace(/\\%/g, '')
+    .replace(/%/g, '');
 
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
