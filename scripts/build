@@ -61,13 +61,13 @@ class ElementsCommands extends Commands {
 
   sharedBuild() {
     return this.runCmd(
-      `yarn pslb --config pslb/pslb.config.js --publishLibs --token ${args.token} --cleanLibs --logLevel silly`
+      `yarn pslb --config pslb/pslb.config.js --publishLibs --token ${args.token} --cleanLibs --logLevel info`
     );
   }
 
-  // build() {
-  //   return super.build().then(() => this.sharedBuild());
-  // }
+  build() {
+    return super.build().then(() => this.sharedBuild());
+  }
 
   babel() {
     return Promise.all(

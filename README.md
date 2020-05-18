@@ -57,6 +57,14 @@ All tests are run from the root of the repo.
 npm test
 ```
 
+# publishing
+
+## canary
+
+```shell
+yarn lerna publish --canary --dist-tag $TAG --preid $TAG --force-publish
+```
+
 ### CI
 
 We use circleci - see .circleci/config.yml

@@ -1,18 +1,18 @@
 {
   "name": "@pie-element/placement-ordering",
-  "version": "7.2.4",
+  "version": "7.2.5-next.30+0e14ff98",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/placement-ordering": "^4.7.33"
+    "@pie-ui/placement-ordering": "^4.7.34"
   },
   "pie": {
     "element": "@pie-ui/placement-ordering"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.4.3",
+  "version": "1.4.4-next.30+0e14ff98",
   "publishConfig": {
     "access": "public"
   },
@@ -13,5 +13,6 @@
   },
   "pie": {
     "element": "@pie-ui/passage"
-  }
+  },
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

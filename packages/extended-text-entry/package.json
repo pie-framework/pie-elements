@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "6.2.4",
+  "version": "6.2.5-next.30+0e14ff98",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -9,10 +9,10 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/extended-text-entry": "^3.2.31"
+    "@pie-ui/extended-text-entry": "^3.2.32"
   },
   "pie": {
     "element": "@pie-ui/extended-text-entry"
   },
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
 }

@@ -40,91 +40,6 @@ describe('controller', () => {
 
   const { stringify } = JSON;
 
-  describe('outcome', () => {
-    it('returns score of 0', async () => {
-      const result = await outcome(
-        question,
-        { value: ['banana'] },
-        { mode: 'gather' }
-      );
-      expect(result.score).toEqual(0);
-    });
-
-    it('returns score of 1', async () => {
-      const result = await outcome(
-        question,
-        { value: ['apple'] },
-        { mode: 'gather' }
-      );
-      expect(result.score).toEqual(1);
-    });
-
-    describe('partial scoring', () => {
-      describe('choiceMode:radio is disabled', () => {
-        it('with defaults', async () => {
-          const result = await outcome(question, {}, {});
-          expect(result.score).toEqual(0);
-        });
-        it('with defaults and correct', async () => {
-          const result = await outcome(question, { value: ['apple'] }, {});
-          expect(result.score).toEqual(1);
-        });
-        it('with env.partialScoring: true', async () => {
-          const result = await outcome(question, { partialScoring: true }, {});
-          expect(result.score).toEqual(0);
-        });
-        it('with env.partialScoring: true + config.partialScoring: true', async () => {
-          const result = await outcome(
-            { ...question, partialScoring: true },
-            { partialScoring: true },
-            {}
-          );
-          expect(result.score).toEqual(0);
-        });
-      });
-
-      describe('checkbox', () => {
-        beforeEach(() => {
-          const choices = question.choices.concat({
-            value: 'c',
-            correct: true
-          });
-          question = {
-            ...question,
-            choiceMode: 'checkbox',
-            partialScoring: true,
-            choices
-          };
-        });
-        it('returns a score of 0.33', async () => {
-          const result = await outcome(question, { value: [] }, { mode: 'evaluate '});
-          expect(result.score).toEqual(0.33);
-        });
-
-        it('returns score of 0.67', async () => {
-          const result = await outcome(
-            question,
-            { value: ['apple'] },
-            { mode: 'gather' }
-          );
-          expect(result.score).toBeCloseTo(0.67);
-        });
-      });
-    });
-
-    const returnsOutcome = session => {
-      it(`returns score: 0 and empty: true if session is ${stringify(session)}`, async () => {
-        const o = await outcome(question, session, { mode: 'evaluate' });
-
-        expect(o).toEqual({ score: 0, empty: true });
-      });
-    };
-
-    returnsOutcome(undefined);
-    returnsOutcome(null);
-    returnsOutcome({});
-  });
-
   describe('model', () => {
     describe('mode: gather', () => {
       beforeEach(async () => {
@@ -270,23 +185,173 @@ describe('controller', () => {
   });
 
   describe('getScore', () => {
-    const returnsScore = sess => {
-      it(`returns score: 0 if session is ${stringify(sess)}`,  () => {
-        const score = getScore(question, sess);
+    it.each`
+        sessionValue                           |     expectedDychotomous     |     expectedPartialScoring
+        ${undefined}                           |     ${0}                    |     ${0}
+        ${null}                                |     ${0}                    |     ${0}
+        ${[]}                                  |     ${0}                    |     ${0}
+        ${['a']}                               |     ${0}                    |     ${0.5}
+        ${['e']}                               |     ${0}                    |     ${0.5}
+        ${['a', 'b']}                          |     ${0}                    |     ${0.5}
+        ${['a', 'c']}                          |     ${0}                    |     ${0.5}
+        ${['a', 'd']}                          |     ${0}                    |     ${0.5}
+        ${['a', 'e']}                          |     ${1}                    |     ${1}
+        ${['a', 'b', 'c']}                     |     ${0}                    |     ${0}
+        ${['a', 'b', 'd']}                     |     ${0}                    |     ${0}
+        ${['a', 'b', 'e']}                     |     ${0}                    |     ${0.5}
+        ${['a', 'b', 'c', 'd']}                |     ${0}                    |     ${0}
+        ${['a', 'b', 'c', 'e']}                |     ${0}                    |     ${0}
+        ${['a', 'b', 'c', 'd', 'e']}           |     ${0}                    |     ${0}
+        ${['a', 'c', 'd', 'e']}                |     ${0}                    |     ${0}
+        ${['a', 'd', 'e']}                     |     ${0}                    |     ${0.5}
+      `('session = $sessionValue; partial scoring = true => score = $expectedPartialScoring / partial scoring = false => score = $expectedDychotomous',
+      async ({ sessionValue, expectedPartialScoring, expectedDychotomous }) => {
+        const q = {
+          choiceMode: 'checkbox',
+          choices: [
+            { label: 'a', value: 'a', correct: true },
+            { label: 'b', value: 'b' },
+            { label: 'c', value: 'c' },
+            { label: 'd', value: 'd' },
+            { label: 'e', value: 'e', correct: true },
+          ]
+        };
 
-        expect(score).toEqual(0);
+        const resultPS = await outcome(q, { value: sessionValue }, { mode: 'evaluate ' });
+
+        expect(resultPS.score).toEqual(expectedPartialScoring);
+
+        const resultD = await outcome(
+          { ...q, partialScoring: false },
+          { value: sessionValue },
+          { mode: 'evaluate ' }
+        );
+
+        expect(resultD.score).toEqual(expectedDychotomous);
       });
-    };
+  });
 
-    returnsScore(undefined);
-    returnsScore(null);
-    returnsScore({});
+  describe('outcome', () => {
+    it('returns score of 0', async () => {
+      const result = await outcome(
+        question,
+        { value: ['banana'] },
+        { mode: 'gather' }
+      );
+      expect(result.score).toEqual(0);
+    });
+
+    it('returns score of 1', async () => {
+      const result = await outcome(
+        question,
+        { value: ['apple'] },
+        { mode: 'gather' }
+      );
+      expect(result.score).toEqual(1);
+    });
+
+    describe('partial scoring', () => {
+      describe('choiceMode:radio is disabled', () => {
+        it('with defaults', async () => {
+          const result = await outcome(question, {}, {});
+          expect(result.score).toEqual(0);
+        });
+        it('with defaults and correct', async () => {
+          const result = await outcome(question, { value: ['apple'] }, {});
+          expect(result.score).toEqual(1);
+        });
+        it('with env.partialScoring: true', async () => {
+          const result = await outcome(question, { partialScoring: true }, {});
+          expect(result.score).toEqual(0);
+        });
+        it('with env.partialScoring: true + config.partialScoring: true', async () => {
+          const result = await outcome(
+            { ...question, partialScoring: true },
+            { partialScoring: true },
+            {}
+          );
+          expect(result.score).toEqual(0);
+        });
+      });
+
+      describe('checkbox', () => {
+        beforeEach(() => {
+          const choices = question.choices.concat({
+            value: 'c',
+            correct: true
+          });
+          question = {
+            ...question,
+            choiceMode: 'checkbox',
+            partialScoring: true,
+            choices
+          };
+        });
+
+        it.each`
+        sessionValue                                                                               |     expected
+        ${undefined}                                                                               |     ${0}
+        ${null}                                                                                    |     ${0}
+        ${[]}                                                                                      |     ${0}
+        ${['apple']}                                                                               |     ${0.25}
+        ${['apple', 'cherry']}                                                                     |     ${0.5}
+        ${['apple', 'banana']}                                                                     |     ${0.5}
+        ${['apple', 'banana', 'cherry']}                                                           |     ${0.75}
+        ${['apple', 'banana', 'grapes']}                                                           |     ${0.75}
+        ${['apple', 'banana', 'grapes', 'cherry']}                                                 |     ${1}
+        ${['cherry', 'banana', 'grapes']}                                                          |     ${0.75}
+        ${['apple', 'durian']}                                                                     |     ${0.25}
+        ${['apple', 'durian', 'elderberries']}                                                     |     ${0.25}
+        ${['apple', 'durian', 'feijoa', 'elderberries', 'jackfruit']}                              |     ${0}
+        ${['apple', 'durian', 'feijoa', 'elderberries', 'jackfruit', 'kiwi']}                      |     ${0}
+        ${['apple', 'cherry', 'durian', 'feijoa', 'elderberries', 'jackfruit', 'kiwi']}            |     ${0}
+        ${['apple', 'cherry', 'durian', 'feijoa', 'elderberries', 'jackfruit', 'kiwi']}            |     ${0}
+        ${['apple', 'cherry', 'banana', 'durian', 'feijoa', 'elderberries', 'jackfruit', 'kiwi']}  |     ${0}
+        ${['apple', 'cherry', 'banana', 'durian', 'feijoa', 'jackfruit', 'kiwi']}                  |     ${0}
+        ${['apple', 'cherry', 'banana', 'grapes', 'durian', 'jackfruit', 'kiwi']}                  |     ${0.25}
+        ${['apple', 'cherry', 'banana', 'grapes', 'durian', 'jackfruit']}                          |     ${0.5}
+        ${['apple', 'cherry', 'banana', 'grapes', 'durian']}                                       |     ${0.75}
+      `('outcome: partial scoring = true, sessionValue = $sessionValue => expected = $expected',
+          async ({ sessionValue, expected }) => {
+            const q = {
+              choiceMode: 'checkbox',
+              choices: [
+                { label: 'a', value: 'apple', correct: true },
+                { label: 'b', value: 'banana', correct: true },
+                { label: 'c', value: 'cherry', correct: true },
+                { label: 'd', value: 'durian' },
+                { label: 'e', value: 'elderberries' },
+                { label: 'f', value: 'feijoa' },
+                { label: 'g', value: 'grapes', correct: true },
+                { label: 'j', value: 'jackfruit' },
+                { label: 'k', value: 'kiwi' },
+              ]
+            };
+
+
+            const result = await outcome(q, { value: sessionValue }, { mode: 'evaluate ' });
+            expect(result.score).toEqual(expected);
+          });
+      });
+    });
+
+    it.each`
+    session         |     empty
+    ${undefined}    |     ${true}
+    ${null}         |     ${true}
+    ${{}}           |     ${true}
+    ${{ value: [] }}|     ${false}
+    `('returns score: 0 and empty: true if session is $session', async ({ session, empty }) => {
+      const o = await outcome(question, session, { mode: 'evaluate' });
+
+      expect(o).toEqual({ score: 0, empty });
+    });
   });
 
   describe('correct response', () => {
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(question, { mode: 'gather', role: 'instructor' });
-      expect(sess).toEqual({"id": "1", "value": ["apple"]});
+      expect(sess).toEqual({ 'id': '1', 'value': ['apple'] });
     });
 
     it('returns null env is student', async () => {
@@ -294,6 +359,4 @@ describe('controller', () => {
       expect(noResult).toBeNull();
     });
   });
-
-
 });
