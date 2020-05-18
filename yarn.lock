@@ -1887,10 +1887,33 @@
     prop-types "^15.6.2"
     react-transition-group "^2.5.2"
 
+"@pie-lib/correct-answer-toggle@^2.2.23":
+  version "2.2.23"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.2.23.tgz#84026f54f1e5e0e3c28f8940128556b2db56729b"
+  integrity sha512-GQcZp1SZ16qmTms59E7yPP6orBxsmJJtPNudTabYD7bdJg8+ymJouaUtBTDfLraOFPWG3eReYE0jh+0ENmiHbw==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/icons" "^2.4.20"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/drag@^1.1.42":
   version "1.1.42"
   resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.42.tgz#5c23c6bb972d0b69b4cc2984d3eea99a0d173774"
   integrity sha512-0Jt1qZ39Qqhl8r5S62fLzrigRfP/xOnoW0iL1rvSkqoptW2XAP2ny9yJiQykQHTIf60FNqpgvvnybQge6A/O6w==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    react-dnd "^9.3.2"
+    react-dnd-html5-backend "^9.3.2"
+
+"@pie-lib/drag@^1.1.44":
+  version "1.1.44"
+  resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.44.tgz#39b6dbe6da6206d2bbfab66572ab92efdb750be7"
+  integrity sha512-DrXY8IsvDrIFGgMC3D6ne7NS190WZkyEuDe2mwT2STV+bHFcTw4HCId9oZjvIuAdCMk4xiT9qWinILOqjKCi/g==
   dependencies:
     "@material-ui/core" "^3.8.3"
     classnames "^2.2.6"
@@ -2159,16 +2182,16 @@
     react-dom "^16.8.1"
     react-draggable "^3.0.5"
 
-"@pie-ui/categorize@^1.4.13":
-  version "1.4.13"
-  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.4.13.tgz#07f45a2328c245dc844fe9d6c9a10aa21886af24"
-  integrity sha512-bAqHqYPZvBIqO6WSRF2zd/pjmOAImm/9qjYnDRbOsH37NSiJUIIIk+gYJJsW5n3QAghEsbTH0Jue7dTzigndvg==
+"@pie-ui/categorize@^1.4.14":
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/@pie-ui/categorize/-/categorize-1.4.14.tgz#9fe385e79682dca7448cc143f534ffe69e8985cf"
+  integrity sha512-apiggqKJbqaMSzgOx/llRfqMA1SqW7yvvo9bhIvmSsXG6NtNZKH0wclfjCM10nA61RDIpuDj1eHvKvA8gGrwVg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
     "@pie-lib/categorize" "^0.6.17"
-    "@pie-lib/correct-answer-toggle" "^2.2.21"
-    "@pie-lib/drag" "^1.1.42"
+    "@pie-lib/correct-answer-toggle" "^2.2.23"
+    "@pie-lib/drag" "^1.1.44"
     "@pie-lib/math-rendering" "^2.1.12"
     "@pie-lib/render-ui" "^4.7.16"
     classnames "^2.2.5"
