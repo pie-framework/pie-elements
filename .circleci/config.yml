@@ -78,6 +78,7 @@ workflows:
   build:
     jobs:
       - build:
+          context: jira
           filters:
             branches:
               only:
@@ -86,6 +87,7 @@ workflows:
   release:
     jobs:
       - release:
+          context: jira
           filters:
             branches:
               only:
@@ -93,7 +95,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: '0 0 * * *'
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
