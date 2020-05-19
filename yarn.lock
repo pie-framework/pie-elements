@@ -1762,10 +1762,10 @@
   dependencies:
     "@pie-ui/multiple-choice" "^4.12.21"
 
-"@pie-framework/build-helper@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-4.5.0.tgz#6b62c3b69f5958858537f220218cd89ad267c702"
-  integrity sha512-KZtXOyCpOAXqPXbmt4FcU8nIohTwyKqXLtz4SuWx3FzZejsZ3KKqGdR5zAdKbg5GggHKt9Ky47uTsEDjugIBqw==
+"@pie-framework/build-helper@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-4.5.1.tgz#cb86348aef3cc8d3c3197ae211d6420437df6fe4"
+  integrity sha512-/GAIUKZBjJrxnfP+mDLCwJbrD26cLN7UQOMwpS4NOxzEri82nVpWH/NPu6Pmet2GoncRRU5TVl7szoT4+8/rXA==
   dependencies:
     conventional-changelog-core "^3.1.6"
     conventional-changelog-writer "^4.0.3"
