@@ -7,7 +7,8 @@
   "version": "2.3.5-next.30+0e14ff98",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
     "@pie-ui/charting": "^0.2.27"

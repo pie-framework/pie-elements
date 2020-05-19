@@ -1,0 +1,65 @@
+#!/usr/bin/env node
+/* eslint-disable no-console */
+const minimist = require('minimist');
+const path = require('path');
+
+const { handlers } = require('@pie-framework/build-helper');
+
+const { publishFixToJira } = handlers;
+
+const cliArgs = minimist(process.argv.slice(2));
+
+const run = async () => {
+  const args = { ...process.env, ...cliArgs };
+
+  const filtered = Object.keys(args)
+    .filter((k) => k.startsWith('npm_') || k.startsWith('JIRA_'))
+    .reduce((acc, k) => {
+      acc[k] = args[k];
+      return acc;
+    }, {});
+
+  const event = filtered.npm_lifecycle_event;
+
+  console.log('lifecycle event: ', event);
+
+  if (event !== 'postpublish') {
+    console.error('only supports postpublish, do nothing');
+    return;
+  }
+
+  if (!filtered.JIRA_AUTH_TOKEN) {
+    console.error('no jira auth token, do nothing');
+    return;
+  }
+
+  if (!filtered.JIRA_EMAIL) {
+    console.error('no jira email, do nothing');
+    return;
+  }
+
+  const jiraOpts = {
+    projectPrefixes: ['PD'],
+    host: 'illuminate.atlassian.net',
+    apiToken: filtered.JIRA_AUTH_TOKEN,
+    email: filtered.JIRA_EMAIL,
+    projectId: 'PD',
+  };
+
+  const result = await publishFixToJira(
+    path.resolve(__dirname, '..'),
+    jiraOpts,
+    filtered
+  );
+  return result;
+};
+
+run()
+  .then(() => {
+    console.log('done');
+    process.exit(0);
+  })
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
