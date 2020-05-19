@@ -8,7 +8,8 @@
   "main": "lib/index.js",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
     "@pie-ui/math-inline": "^3.0.43"

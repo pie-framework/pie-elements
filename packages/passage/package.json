@@ -14,5 +14,8 @@
   "pie": {
     "element": "@pie-ui/passage"
   },
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "scripts": {
+    "postpublish": "../../scripts/postpublish"
+  }
 }

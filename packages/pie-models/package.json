@@ -13,7 +13,8 @@
     "copy-schemas": "ts-node scripts/GenerateSchemas.ts -c",
     "build": "tsc",
     "view-docs": "docson -d dist/schemas",
-    "prepare": "npm run build & npm run make-schemas"
+    "prepare": "npm run build & npm run make-schemas",
+    "postpublish": "../../scripts/postpublish"
   },
   "author": "PIE Framework",
   "license": "ISC",

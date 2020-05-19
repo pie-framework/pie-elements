@@ -20,7 +20,7 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@pie-framework/build-helper": "^4.4.2",
+    "@pie-framework/build-helper": "^4.5.0",
     "@pie-lib/test-utils": "^0.2.13",
     "@pslb/pslb": "^2.4.1",
     "@tbranyen/jsdom": "^13.0.0",
