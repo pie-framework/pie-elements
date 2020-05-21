@@ -118,7 +118,20 @@ exports[`GraphingConfig renders snapshot 1`] = `
           }
         }
         title=""
-        toolbarTools={Array []}
+        toolbarTools={
+          Array [
+            "circle",
+            "line",
+            "label",
+            "parabola",
+            "point",
+            "polygon",
+            "ray",
+            "segment",
+            "sine",
+            "vector",
+          ]
+        }
       />
     </div>
   </div>

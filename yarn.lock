@@ -2016,34 +2016,6 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^1.2.23":
-  version "1.2.23"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-1.2.23.tgz#14e0f9a4bfce37d51617d67e2e8ba04cfec2b211"
-  integrity sha512-LoB34Zm8I6Dhza8CBjUO0S+J803obSVfD85YJ+oUdBsn9yCA2unP6QMcbWdJhDESZTcja0FWinS4RvY5CWV+aw==
-  dependencies:
-    "@mapbox/point-geometry" "^0.1.0"
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/graphing-utils" "^1.1.15"
-    "@pie-lib/plot" "^1.3.16"
-    "@vx/axis" "^0.0.189"
-    "@vx/clip-path" "^0.0.189"
-    "@vx/event" "^0.0.189"
-    "@vx/grid" "^0.0.189"
-    "@vx/point" "^0.0.189"
-    "@vx/shape" "^0.0.189"
-    classnames "^2.2.6"
-    d3-scale "^2.1.2"
-    d3-selection "^1.3.2"
-    debug "^4.1.1"
-    invariant "^2.2.4"
-    lodash "^4.17.11"
-    react "^16.8.1"
-    react-draggable "^3.3.0"
-    react-input-autosize "^2.2.1"
-    react-redux "^6.0.0"
-    redux "^4.0.1"
-    redux-undo beta
-
 "@pie-lib/graphing@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.0.0.tgz#5df578cb8e032d60b0263638c8c5601ce45e7120"
@@ -2425,14 +2397,14 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/graphing@^2.3.32":
-  version "2.3.32"
-  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-2.3.32.tgz#9bf5d7a6828b21a556d1ae100634eddcd4875031"
-  integrity sha512-knnVGp4AXZ682OX5Z4jMdDrWJhHzeDsVP3V/YR0kTvVL8mPxNLfvtK02m1DmD4xj3vaPm0JePRWubM7i9NVJsw==
+"@pie-ui/graphing@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/graphing/-/graphing-3.0.0.tgz#fdbcca0334026742aa317751b616f3fd8687c58e"
+  integrity sha512-TqnrPW1mdT+XgnzkqbhdD09fD/kA9DQOxAbDJN8YJY3gaaZw1mvKoJzbq2Wciff7nC/celAHibULuHurmdaAew==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/graphing" "^1.2.23"
+    "@pie-lib/graphing" "^2.0.0"
     "@pie-lib/math-rendering" "^2.1.12"
     "@pie-lib/render-ui" "^4.7.16"
     classnames "^2.2.5"
