@@ -73,11 +73,6 @@ export async function model(question, session, env, updateSession) {
     keyMode: normalizedQuestion.choicePrefix,
     shuffle: !normalizedQuestion.lockChoiceOrder,
     choices,
-
-    //TODO: ok to return this in gather mode? gives a clue to how many answers are needed?
-    complete: {
-      min: normalizedQuestion.choices ? normalizedQuestion.choices.filter(c => c.correct).length : 0
-    },
     responseCorrect:
       env.mode === 'evaluate' ? isResponseCorrect(normalizedQuestion, session) : undefined
   };
