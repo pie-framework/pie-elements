@@ -4,6 +4,16 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "**/lib/**",
+    "**/src/**",
+    "docs/**",
+    "!**/node_modules/**",
+    "!**/__tests__/**",
+    "!**/__mocks__/**",
+    "!NEXT.*",
+    "!.pie"
+  ],
   "version": "6.3.5-next.30+0e14ff98",
   "description": "",
   "author": "pie framework developers",

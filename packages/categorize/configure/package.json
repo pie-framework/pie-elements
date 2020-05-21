@@ -8,6 +8,14 @@
   "scripts": {},
   "author": "pie framework developers",
   "license": "ISC",
+  "files": [
+    "**/lib/**",
+    "**/src/**",
+    "!**/node_modules/**",
+    "!**/__tests__/**",
+    "!**/__mocks__/**",
+    "!NEXT.*"
+  ],
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.1",
