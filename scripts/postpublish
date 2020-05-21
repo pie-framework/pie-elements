@@ -9,6 +9,8 @@ const { publishFixToJira } = handlers;
 
 const cliArgs = minimist(process.argv.slice(2));
 
+const fixVersion = (suggested) => suggested.replace('@pie-element/', '');
+
 const run = async () => {
   const args = { ...process.env, ...cliArgs };
 
@@ -50,7 +52,11 @@ const run = async () => {
     process.cwd(),
     path.resolve(__dirname, '..'),
     jiraOpts,
-    { ...filtered, tagToStatus: { next: 'Ready for review', latest: 'Done' } }
+    {
+      ...filtered,
+      tagToStatus: { next: 'Ready for review', latest: 'Done' },
+      fixVersion,
+    }
   );
   return result;
 };
