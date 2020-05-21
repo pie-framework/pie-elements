@@ -50,7 +50,7 @@ const run = async () => {
     process.cwd(),
     path.resolve(__dirname, '..'),
     jiraOpts,
-    filtered
+    { ...filtered, tagToStatus: { next: 'Ready for review', latest: 'Done' } }
   );
   return result;
 };
