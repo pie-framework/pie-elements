@@ -134,7 +134,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
         toolbarOpts={
           Object {
-            "alwaysVisible": true,
             "position": "top",
           }
         }
@@ -310,7 +309,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         }
         toolbarOpts={
           Object {
-            "alwaysVisible": true,
             "position": "top",
           }
         }

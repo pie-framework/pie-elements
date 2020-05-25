@@ -262,10 +262,7 @@ export class Main extends React.Component {
             </Typography>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              toolbarOpts={{
-                position: 'top',
-                alwaysVisible: true
-              }}
+              toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'explicit-constructed-response',
                 options: {

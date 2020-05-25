@@ -418,10 +418,7 @@ export class Main extends React.Component {
             />
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              toolbarOpts={{
-                position: 'top',
-                alwaysVisible: true
-              }}
+              toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'inline-dropdown',
                 options: {

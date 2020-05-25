@@ -217,10 +217,7 @@ export class Main extends React.Component {
             </Typography>
             <EditableHtml
               activePlugins={ALL_PLUGINS}
-              toolbarOpts={{
-                position: 'top',
-                alwaysVisible: true
-              }}
+              toolbarOpts={{ position: 'top' }}
               responseAreaProps={{
                 type: 'drag-in-the-blank',
                 options: {
