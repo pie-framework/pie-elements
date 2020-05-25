@@ -1,4 +1,3 @@
-import forEach from 'lodash/forEach';
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
@@ -6,26 +5,63 @@ import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 // eslint-disable-next-line no-console
-const log = console.log.bind(console, '@pie-element:categorize:controller');
 
 export { score };
+
+export const getPartialScore = (correctResponse, builtCategories) => {
+  // in the resulted best scenario we make a sum with all the correct responses
+  // and all the placements
+  const { placements, score } = builtCategories.reduce((acc, { choices = [] }) => ({
+      placements: acc.placements + choices.length,
+      score: acc.score + choices.filter(ch => ch.correct).length,
+    }
+  ), { placements: 0, score: 0 });
+
+  // in the correct response, we make a sum of the max possible score
+  const { maxScore } = correctResponse.reduce((acc, { choices }) => ({
+      maxScore: acc.maxScore + choices.length
+    }
+  ), { maxScore: 0 });
+
+  // if there are any extra placements, we subtract from the obtained score
+  const extraPlacements = placements > maxScore ? placements - maxScore : 0;
+  const totalScore = (score - extraPlacements) / maxScore;
+
+  return totalScore < 0 ? 0 : parseFloat(totalScore.toFixed(2));
+};
+
+export const getTotalScore = (question, session, env) => {
+  const { categories, choices } = question || {};
+  let { correctResponse } = question || {};
+  let { answers } = session || {};
+  answers = answers || [];
+  correctResponse = correctResponse || [];
+
+  // this function is used in pie-ui/categorize as well, in order to get the best scenario
+  // so we get the best scenario and calculate the score
+  const { categories: builtCategories, correct } = buildState(categories, choices, answers, correctResponse);
+
+  const hasAlternates = correctResponse.map(c => c.alternateResponses).filter(alternate => alternate);
+  const enabled = partialScoring.enabled(question, env);
+
+  // if there are any alternates, there will be no partial scoring!
+  if (enabled && !hasAlternates.length) {
+    // we apply partial scoring
+    return getPartialScore(correctResponse, builtCategories);
+  }
+
+  // else we apply dichotomous
+  return correct ? 1 : 0;
+};
 
 export const getCorrectness = (question, session, env) => {
   return new Promise(resolve => {
     if (env.mode === 'evaluate') {
-      const state = buildState(
-        question.categories,
-        question.choices,
-        (session && session.answers) || [],
-        question.correctResponse
-      );
-      log('state: ', state);
+      const score = getTotalScore(question, session, env);
 
-      const scoreInfo = getTotalScore(question, session, env);
-
-      if (scoreInfo === 1) {
+      if (score === 1) {
         resolve('correct');
-      } else if (scoreInfo === 0) {
+      } else if (score === 0) {
         resolve('incorrect');
       } else {
         resolve('partially-correct');
@@ -61,149 +97,76 @@ export const normalize = question => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export const model = (question, session, env, updateSession) =>
-  new Promise(resolve => {
+  new Promise(async resolve => {
     const normalizedQuestion = normalize(question);
-    const correctPromise = getCorrectness(normalizedQuestion, session, env);
+    const answerCorrectness = getCorrectness(normalizedQuestion, session, env);
+
+    const { mode, role } = env || {};
 
     const {
-      feedbackEnabled,
-      feedback,
-      lockChoiceOrder,
-      promptEnabled,
-      prompt,
       categories,
+      categoriesPerRow,
       choicesPerRow,
       choicesLabel,
       choicesPosition,
-      removeTilesAfterPlacing,
-      categoriesPerRow,
-      rowLabels,
       correctResponse,
+      feedback,
+      feedbackEnabled,
+      lockChoiceOrder,
+      promptEnabled,
+      prompt,
+      removeTilesAfterPlacing,
+      rowLabels,
       rationaleEnabled,
       rationale,
       teacherInstructionsEnabled,
       teacherInstructions
     } = normalizedQuestion;
     let { choices } = normalizedQuestion;
+    let fb;
 
-    correctPromise.then(async correctness => {
-      const fb =
-        env.mode === 'evaluate' && feedbackEnabled
-          ? getFeedbackForCorrectness(correctness, feedback)
-          : Promise.resolve(undefined);
-
-      if (!lockChoiceOrder) {
-        choices = await getShuffledChoices(
-          choices,
-          session,
-          updateSession,
-          'id'
-        );
-      }
-
-      fb.then(feedback => {
-        const out = {
-          correctness,
-          feedback,
-          prompt: promptEnabled ? prompt : null,
-          choices: choices || [],
-          categories: categories || [],
-          disabled: env.mode !== 'gather',
-          choicesPerRow: choicesPerRow || 2,
-          choicesLabel: choicesLabel || '',
-          choicesPosition,
-          removeTilesAfterPlacing,
-          lockChoiceOrder,
-          categoriesPerRow: categoriesPerRow || 2,
-          rowLabels
-        };
-
-        out.correctResponse =
-          env.mode === 'evaluate' ? correctResponse : undefined;
-
-        if (
-          env.role === 'instructor' &&
-          (env.mode === 'view' || env.mode === 'evaluate')
-        ) {
-          out.rationale = rationaleEnabled ? rationale : null;
-          out.teacherInstructions = teacherInstructionsEnabled
-            ? teacherInstructions
-            : null;
-        } else {
-          out.rationale = null;
-          out.teacherInstructions = null;
-        }
-
-        resolve(out);
-      });
-    });
-  });
-
-const isCorrect = (correctResponse, c) => correctResponse.find(cR => cR === c);
-
-export const getScore = (
-  category,
-  choices,
-  correctResponse,
-  sessionChoices
-) => {
-  const maxScore = choices.length;
-
-  const chosen = choiceId => !!(sessionChoices || []).find(v => v === choiceId);
-
-  const correctAndNotChosen = c => isCorrect(correctResponse, c) && !chosen(c);
-  const incorrectAndChosen = c => !isCorrect(correctResponse, c) && chosen(c);
-
-  const correctCount = choices.reduce((total, choice) => {
-    if (correctAndNotChosen(choice.id) || incorrectAndChosen(choice.id)) {
-      return total - 1;
-    } else {
-      return total;
+    if (mode === 'evaluate' && feedbackEnabled) {
+      fb = await getFeedbackForCorrectness(answerCorrectness.correctness, feedback);
     }
-  }, choices.length);
 
-  const str = (correctCount / maxScore).toFixed(2);
-  return parseFloat(str);
-};
-
-export const getTotalScore = (question, session, env) => {
-  const { categories, correctResponse } = question;
-  question;
-  const correctCount = categories.reduce((total, category) => {
-    const response =
-      correctResponse.find(cR => cR.category === category.id) || {};
-    const sessionAnswers = (session && session.answers) || [];
-    const answers = sessionAnswers.find(a => a.category === category.id) || {};
-    let choiceScore = getScore(
-      category,
-      question.choices,
-      response.choices || [],
-      answers.choices || []
-    );
-
-    forEach(response.alternateResponses || [], choices => {
-      const currentScore = getScore(
-        category,
-        question.choices,
-        choices || [],
-        answers.choices || []
+    if (!lockChoiceOrder) {
+      choices = await getShuffledChoices(
+        choices,
+        session,
+        updateSession,
+        'id'
       );
+    }
 
-      if (currentScore >= choiceScore) {
-        choiceScore = currentScore;
-      }
-    });
+    const out = {
+      categories: categories || [],
+      categoriesPerRow: categoriesPerRow || 2,
+      correctness: answerCorrectness.correctness,
+      choices: choices || [],
+      choicesLabel: choicesLabel || '',
+      choicesPerRow: choicesPerRow || 2,
+      choicesPosition,
+      disabled: mode !== 'gather',
+      feedback: fb,
+      lockChoiceOrder,
+      prompt: promptEnabled ? prompt : null,
+      removeTilesAfterPlacing,
+      rowLabels,
+      correctResponse: mode === 'evaluate' ? correctResponse : undefined,
+    };
 
-    return total + choiceScore;
-  }, 0);
+    if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
+      out.rationale = rationaleEnabled ? rationale : null;
+      out.teacherInstructions = teacherInstructionsEnabled
+        ? teacherInstructions
+        : null;
+    } else {
+      out.rationale = null;
+      out.teacherInstructions = null;
+    }
 
-  const categoriesLength = categories.length;
-  const str = categoriesLength
-    ? (correctCount / categoriesLength).toFixed(2)
-    : 0;
-  const enabled = partialScoring.enabled(question, env);
-  return enabled ? parseFloat(str) : parseInt(str, 10);
-};
+    resolve(out);
+  });
 
 export const outcome = (question, session, env) => {
   if (env.mode !== 'evaluate') {
@@ -222,12 +185,12 @@ export const outcome = (question, session, env) => {
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
-    if (env.mode !== 'evaluate' && env.role === 'instructor') {
+    const { mode, role } = env || {};
+
+    if (mode !== 'evaluate' && role === 'instructor') {
       const { correctResponse } = question;
-      resolve({
-        answers: correctResponse,
-        id: 1
-      });
+
+      resolve({ answers: correctResponse, id: 1 });
     } else {
       return resolve(null);
     }
