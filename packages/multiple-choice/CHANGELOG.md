@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.3.4...@pie-element/multiple-choice@5.4.0-next.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+* Multiple Select should report a question as "answered" as soon as a selection has been made (Remove unintended clue about how many answer choices are correct.) PD-253 ([314ead5](https://github.com/pie-framework/pie-elements/commit/314ead5))
+* New partial-credit scoring algorithm for MCA items. PD-165 ([e80f2db](https://github.com/pie-framework/pie-elements/commit/e80f2db))
+* PD-253 upgrade @pie-ui/multiple-choice to 4.12.23 ([007fb04](https://github.com/pie-framework/pie-elements/commit/007fb04))
+
+
+### Features
+
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.3.3...@pie-element/multiple-choice@5.3.4) (2020-04-28)
 
 

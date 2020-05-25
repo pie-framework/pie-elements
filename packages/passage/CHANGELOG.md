@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.3...@pie-element/passage@1.5.0-next.0) (2020-05-25)
+
+
+### Features
+
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.4.2...@pie-element/passage@1.4.3) (2020-04-28)
 
 

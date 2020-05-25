@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.5.3...@pie-element/match-list-controller@1.5.4) (2020-05-25)
+
+
+### Bug Fixes
+
+* match-list - shared build ([ab0c194](https://github.com/pie-framework/pie-elements/commit/ab0c194))
+
+
+
+
+
 ## [1.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list-controller@1.5.2...@pie-element/match-list-controller@1.5.3) (2020-04-14)
 
 

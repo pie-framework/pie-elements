@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.1.4...@pie-element/graphing-configure@3.1.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+* Graphing issues with rendering and scoring + Polygon euality. PD-123 and PD-124. Updated tests. ([6ef8d17](https://github.com/pie-framework/pie-elements/commit/6ef8d17))
+* updated pie-ui/graphing version and updated snapshots. PD-123. PD-124 ([358e89e](https://github.com/pie-framework/pie-elements/commit/358e89e))
+
+
+
+
+
 ## [3.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.1.3...@pie-element/graphing-configure@3.1.4) (2020-04-28)
 
 

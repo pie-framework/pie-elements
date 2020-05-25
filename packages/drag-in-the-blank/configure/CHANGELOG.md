@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.4.4...@pie-element/drag-in-the-blank-configure@3.4.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+* The response template formatting toolbar should behave like other PIE formatting toolbars: it should appear only when the field with which it is associated has focus. This applies to the following item types: explicit-constructed-response, inline-dropdown, drag-in-the-blank. PD-142 ([0d70bba](https://github.com/pie-framework/pie-elements/commit/0d70bba))
+
+
+
+
+
 ## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.4.3...@pie-element/drag-in-the-blank-configure@3.4.4) (2020-04-28)
 
 
