@@ -95,6 +95,7 @@ class PolComponent extends React.Component {
           closed={true}
           fill={hotspotColor}
           onClick={this.handleClick}
+          onTap={this.handleClick}
           draggable
           stroke={outlineColor}
           strokeWidth={correct ? strokeWidth : 0}

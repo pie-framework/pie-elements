@@ -51,6 +51,7 @@ class RectComponent extends React.Component {
           height={height}
           fill={hotspotColor}
           onClick={this.handleClick}
+          onTap={this.handleClick}
           draggable
           stroke={outlineColor}
           strokeWidth={correct ? strokeWidth : 0}
