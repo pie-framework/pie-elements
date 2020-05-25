@@ -1,6 +1,15 @@
-import { tools } from '@pie-lib/graphing';
-
-const { allTools = [] } = tools;
+// TODO: This is lifted from @pie-lib/graphing, however importing this will break a controller build because it has jsx source in that package.
+const allTools = [
+  'circle',
+  'line',
+  'label',
+  'parabola',
+  'point',
+  'polygon',
+  'ray',
+  'segment',
+  'sine',
+  'vector'];
 
 /* model defaults */
 export default {
