@@ -68,10 +68,6 @@ describe('controller', () => {
         expect(result.keyMode).toEqual('letters');
       });
 
-      it('returns complete', () => {
-        expect(result.complete).toEqual({ min: 1 });
-      });
-
       it('returns choices', () => {
         expect(result.choices).toEqual(
           expect.arrayContaining([
