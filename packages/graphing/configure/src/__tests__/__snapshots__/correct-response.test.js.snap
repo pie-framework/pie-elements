@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CorrectResponse renders snapshot 1`] = `
+<div>
+  Define Correct Response
+  <Tools
+    classes={Object {}}
+    toggleToolBarTool={[Function]}
+    toolbarTools={
+      Array [
+        "circle",
+        "line",
+        "label",
+        "parabola",
+        "point",
+        "polygon",
+        "ray",
+        "segment",
+        "sine",
+        "vector",
+      ]
+    }
+  />
+  <div>
+    <div
+      onClick={[Function]}
+    >
+      ADD ALTERNATE
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tools renders snapshot 1`] = `
+<div>
+  GRAPHING TOOLS
+  <div>
+    <div
+      className=""
+      key="circle"
+      onClick={[Function]}
+    >
+      CIRCLE
+    </div>
+    <div
+      className=""
+      key="line"
+      onClick={[Function]}
+    >
+      LINE
+    </div>
+    <div
+      className=""
+      key="parabola"
+      onClick={[Function]}
+    >
+      PARABOLA
+    </div>
+    <div
+      className=""
+      key="point"
+      onClick={[Function]}
+    >
+      POINT
+    </div>
+    <div
+      className=""
+      key="polygon"
+      onClick={[Function]}
+    >
+      POLYGON
+    </div>
+    <div
+      className=""
+      key="ray"
+      onClick={[Function]}
+    >
+      RAY
+    </div>
+    <div
+      className=""
+      key="segment"
+      onClick={[Function]}
+    >
+      SEGMENT
+    </div>
+    <div
+      className=""
+      key="sine"
+      onClick={[Function]}
+    >
+      SINE
+    </div>
+    <div
+      className=""
+      key="vector"
+      onClick={[Function]}
+    >
+      VECTOR
+    </div>
+    <div
+      className=""
+      key="label"
+      onClick={[Function]}
+    >
+      LABEL
+    </div>
+  </div>
+</div>
+`;

@@ -27,36 +27,38 @@ export default class GraphLinesConfigure extends HTMLElement {
     this._render();
   }
 
-  onModelChanged(model) {
+  onModelChanged = (model) => {
     this._model = model;
     this._render();
-    log('[onModelChanged]: ', this._model);
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
-  }
 
-  onConfigurationChanged(config) {
+    log('[onModelChanged]: ', this._model);
+
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+  };
+
+  onConfigurationChanged = (config) => {
     this._configuration = config;
     this._render();
-  }
+  };
 
-  insertImage(handler) {
+  insertImage = (handler) => {
     this.dispatchEvent(new InsertImageEvent(handler));
-  }
+  };
 
-  onDeleteImage(src, done) {
+  onDeleteImage = (src, done) => {
     this.dispatchEvent(new DeleteImageEvent(src, done));
-  }
+  };
 
   _render() {
     if (this._model) {
       const el = React.createElement(Configure, {
-        onModelChanged: this.onModelChanged.bind(this),
-        onConfigurationChanged: this.onConfigurationChanged.bind(this),
+        onModelChanged: this.onModelChanged,
+        onConfigurationChanged: this.onConfigurationChanged,
         model: this._model,
         configuration: this._configuration,
         imageSupport: {
-          add: this.insertImage.bind(this),
-          delete: this.onDeleteImage.bind(this)
+          add: this.insertImage,
+          delete: this.onDeleteImage,
         }
       });
       ReactDOM.render(el, this);

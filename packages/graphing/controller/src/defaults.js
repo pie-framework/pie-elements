@@ -1,51 +1,38 @@
-/**
- * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
- * rationale, scoringType, studentInstructions, teacherInstructions
- * so there's no implementation (they are only added in model)
- */
+import { tools } from '@pie-lib/graphing';
 
+const { allTools = [] } = tools;
+
+/* model defaults */
 export default {
-  scoringType: 'auto',
+  answers: {},
   arrows: true,
-  padding: true,
-
-  configure: {
-    arrows: {
-      settings: false,
-      label: 'Include arrows',
-    },
-    padding: {
-      settings: false,
-      label: 'Padding',
-    },
-    graphTitle: {
-      settings: false,
-      label: 'Graph Title',
-      enabled: true
-    },
-    labels: {
-      settings: false,
-      label: 'Labels',
-      enabled: true
-    },
-    rationale: {
-      settings: false,
-      label: 'Rationale',
-      enabled: true,
-    },
-    scoringType: {
-      settings: false,
-      label: 'Scoring Type',
-    },
-    studentInstructions: {
-      settings: false,
-      label: 'Student Instructions',
-      enabled: true,
-    },
-    teacherInstructions: {
-      settings: false,
-      label: 'Teacher Instructions',
-      enabled: false,
-    },
+  backgroundMarks: [],
+  domain: {
+    min: -5,
+    max: 5,
+    step: 1,
+    labelStep: 1,
+    axisLabel: 'x'
   },
+  graph: {
+    width: 500,
+    height: 500
+  },
+  labels: {},
+  padding: true,
+  prompt: '',
+  range: {
+    min: -5,
+    max: 5,
+    step: 1,
+    labelStep: 1,
+    axisLabel: 'y'
+  },
+  rationale: '',
+  title: '',
+  toolbarTools: allTools,
+  promptEnabled: true,
+  rationaleEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true
 };

@@ -2,8 +2,6 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { Configure } from '../configure';
-import { GraphingConfig } from '../graphing-config';
-import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -115,117 +113,6 @@ describe('Configure', () => {
         ...defaultValues.model,
         teacherInstructions: 'New Teacher Instructions',
       }));
-    });
-  });
-});
-
-describe('GraphingConfig', () => {
-  let wrapper;
-  let props;
-
-  beforeEach(() => {
-    props = {
-      classes: {},
-      model: defaultValues.model,
-      onChange: jest.fn(),
-      tools: []
-    };
-
-    wrapper = newProps => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<GraphingConfig { ...configureProps } />);
-    };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    })
-  });
-
-  describe('logic', () => {
-    it('changeBackgroundMarks calls onChange', () => {
-      const component = wrapper();
-      const bM = [{ x: 1, y: 1, type: 'point'}];
-
-      component.instance().changeBackgroundMarks(bM);
-
-      expect(component.instance().props.onChange).toBeCalledWith({
-        ...defaultValues.model,
-        backgroundMarks: bM
-      });
-    });
-
-    it('onChangeInputValue calls onChange', () => {
-      const component = wrapper();
-      component.instance().onChangeInputValue('domain.min', 20);
-
-      expect(component.instance().props.model.domain.min).toEqual(20);
-      expect(component.instance().props.onChange).toHaveBeenCalledWith({
-        ...defaultValues.model,
-        domain: {
-          ...defaultValues.model.domain,
-          min: 20
-        }
-      })
-    });
-  });
-});
-
-
-describe('CorrectResponse', () => {
-  let wrapper;
-  let props;
-
-  beforeEach(() => {
-    props = {
-      classes: {},
-      model: defaultValues.model,
-      onChange: jest.fn(),
-      tools: []
-    };
-
-    wrapper = newProps => {
-      const configureProps = { ...props, newProps };
-
-      return shallow(<CorrectResponse { ...configureProps } />);
-    };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    })
-  });
-
-  describe('logic', () => {
-    it('changeMarks calls onChange', () => {
-      const component = wrapper();
-      const marks = [{ x: 1, y: 1, type: 'point'}];
-
-      component.instance().changeMarks('alternateTest', marks);
-
-      expect(component.instance().props.onChange).toBeCalledWith({
-        ...defaultValues.model,
-        answers: {
-          ...defaultValues.model.answers,
-          alternateTest: {
-            marks
-          }
-        }
-      });
-    });
-
-    it('changeToolbarTools calls onChange', () => {
-      const component = wrapper();
-      component.instance().changeToolbarTools([]);
-
-      expect(component.instance().props.model.toolbarTools).toEqual([]);
-      expect(component.instance().props.onChange).toHaveBeenCalledWith({
-        ...defaultValues.model,
-        toolbarTools: []
-      })
     });
   });
 });

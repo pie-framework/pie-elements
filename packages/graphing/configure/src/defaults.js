@@ -1,57 +1,40 @@
+import { tools } from '@pie-lib/graphing';
+
+const { allTools = [] } = tools;
 /**
- * NOTE: There's no functionality described for arrows, padding, labels, graphTitle,
- * rationale, scoringType, studentInstructions, teacherInstructions
+ * NOTE: There's no functionality described for padding
  * so there's no implementation (they are only added in model)
  */
 
 export default {
   model: {
-    toolbarTools: [
-      'point',
-      'circle',
-      'polygon',
-      'segment',
-      'ray',
-      'vector',
-      'line',
-      'sine',
-      'parabola',
-      'label'
-    ],
-    answers: {
-      correctAnswer: {
-        name: 'Correct Answer',
-        marks: []
-      }
-    },
+    answers: {},
     arrows: true,
     backgroundMarks: [],
     domain: {
-      min: -10,
-      max: 10,
-      padding: 0,
+      min: -5,
+      max: 5,
       step: 1,
       labelStep: 1,
       axisLabel: 'x'
     },
     graph: {
-      width: 480,
-      height: 480
+      width: 500,
+      height: 500
     },
-    labels: null,
+    labels: {},
     padding: true,
-    prompt: 'Here goes item stem!',
+    prompt: '',
     range: {
       min: -5,
       max: 5,
-      padding: 0,
-      step: 0.5,
-      labelStep: 1.5,
+      step: 1,
+      labelStep: 1,
       axisLabel: 'y'
     },
-    rationale: 'Rationale goes here!',
-    scoringType: 'dichotomous',
+    rationale: '',
     title: '',
+    toolbarTools: allTools,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
