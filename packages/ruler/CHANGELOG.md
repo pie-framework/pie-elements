@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.11.0-next.0...@pie-element/ruler@3.10.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+
+
+
+
+
 # [3.11.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.10.4...@pie-element/ruler@3.11.0-next.0) (2020-05-25)
 
 

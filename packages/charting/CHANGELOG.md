@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.4.0-next.0...@pie-element/charting@2.4.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* version issue ([e4cc522](https://github.com/pie-framework/pie-elements/commit/e4cc522))
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+
+
+
+
+
 # [2.4.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.3.4...@pie-element/charting@2.4.0-next.0) (2020-05-25)
 
 

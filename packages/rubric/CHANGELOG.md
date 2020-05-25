@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.5.0-next.0...@pie-element/rubric@1.4.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+
+
+
+
+
 # [1.5.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.4.4...@pie-element/rubric@1.5.0-next.0) (2020-05-25)
 
 

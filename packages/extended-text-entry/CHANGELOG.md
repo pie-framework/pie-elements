@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.0-next.0...@pie-element/extended-text-entry@6.2.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+
+
+
+
+
 # [6.3.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.4...@pie-element/extended-text-entry@6.3.0-next.0) (2020-05-25)
 
 

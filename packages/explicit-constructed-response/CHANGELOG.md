@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.0-next.0...@pie-element/explicit-constructed-response@3.6.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+
+
+
+
+
 # [3.7.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.6.4...@pie-element/explicit-constructed-response@3.7.0-next.0) (2020-05-25)
 
 

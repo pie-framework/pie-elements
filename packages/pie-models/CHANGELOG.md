@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@9.1.0-bm.0...@pie-element/pie-models@10.1.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump pie-models version ([ac950ce](https://github.com/pie-framework/pie-elements/commit/ac950ce))
+* bump version ([98a1304](https://github.com/pie-framework/pie-elements/commit/98a1304))
+* PD-127: MC Choice Prefix Issue (Set 'letters' as default choicePrefix) ([27cd7ad](https://github.com/pie-framework/pie-elements/commit/27cd7ad))
+* version issue ([3935c9c](https://github.com/pie-framework/pie-elements/commit/3935c9c))
+* **math-inline:** allowThousandsSeparator behavior change - ch7109 ([13ed920](https://github.com/pie-framework/pie-elements/commit/13ed920))
+
+
+### Features
+
+* 7727: When resizing images in hotspot, the default behavior should be to keep the aspect ratio fixed ([651d7e2](https://github.com/pie-framework/pie-elements/commit/651d7e2))
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [9.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@9.0.2...@pie-element/pie-models@9.0.3) (2020-01-31)
 
 **Note:** Version bump only for package @pie-element/pie-models
