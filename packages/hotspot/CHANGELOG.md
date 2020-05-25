@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.3...@pie-element/hotspot@4.7.0-next.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+* onClick from react-konva not working for iPad, added onTap. PD-60 ([3cfc031](https://github.com/pie-framework/pie-elements/commit/3cfc031))
+* updated pie-ui/hotspot version. PD-60 ([ba921cb](https://github.com/pie-framework/pie-elements/commit/ba921cb))
+
+
+### Features
+
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [4.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.2...@pie-element/hotspot@4.6.3) (2020-04-28)
 
 

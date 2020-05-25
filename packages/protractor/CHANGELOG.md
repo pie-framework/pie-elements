@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.5.4...@pie-element/protractor@2.6.0-next.0) (2020-05-25)
+
+
+### Features
+
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [2.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.5.3...@pie-element/protractor@2.5.4) (2020-04-28)
 
 

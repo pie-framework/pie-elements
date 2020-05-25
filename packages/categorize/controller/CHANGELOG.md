@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.4...@pie-element/categorize-controller@5.1.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* For Classification items, partial score should be: for correct +1, for extra placement: -1. PD-45 and PD-46 ([667a33b](https://github.com/pie-framework/pie-elements/commit/667a33b))
+
+
+
+
+
 ## [5.1.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.3...@pie-element/categorize-controller@5.1.4) (2020-04-28)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.2.3...@pie-element/graphing-controller@3.2.4) (2020-05-25)
+
+
+### Bug Fixes
+
+* Graphing issues with rendering and scoring + Polygon euality. PD-123 and PD-124. Updated tests. ([6ef8d17](https://github.com/pie-framework/pie-elements/commit/6ef8d17))
+* remove reference to @pie-lib/graphing from controller ([96b180d](https://github.com/pie-framework/pie-elements/commit/96b180d))
+
+
+
+
+
 ## [3.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.2.2...@pie-element/graphing-controller@3.2.3) (2020-04-14)
 
 

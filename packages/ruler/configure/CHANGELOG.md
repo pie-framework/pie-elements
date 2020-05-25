@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.4...@pie-element/ruler-configure@2.7.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+
+
+
+
+
 ## [2.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.3...@pie-element/ruler-configure@2.7.4) (2020-04-28)
 
 

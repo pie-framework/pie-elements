@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.4...@pie-element/math-inline-controller@5.3.5) (2020-05-25)
+
+
+### Bug Fixes
+
+* **math-inline:** fix correct answer prep logic regex - PD-205 ([2b16ef4](https://github.com/pie-framework/pie-elements/commit/2b16ef4))
+
+
+
+
+
 ## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.3...@pie-element/math-inline-controller@5.3.4) (2020-04-28)
 
 

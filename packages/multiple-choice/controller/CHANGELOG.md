@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.2.3...@pie-element/multiple-choice-controller@3.2.4) (2020-05-25)
+
+
+### Bug Fixes
+
+* Multiple Select should report a question as "answered" as soon as a selection has been made (Remove unintended clue about how many answer choices are correct.) PD-253 ([314ead5](https://github.com/pie-framework/pie-elements/commit/314ead5))
+* New partial-credit scoring algorithm for MCA items. PD-165 ([e80f2db](https://github.com/pie-framework/pie-elements/commit/e80f2db))
+
+
+
+
+
 ## [3.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.2.2...@pie-element/multiple-choice-controller@3.2.3) (2020-04-14)
 
 

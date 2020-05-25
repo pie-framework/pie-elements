@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0-next.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.3.4...@pie-element/math-inline@5.4.0-next.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* bump deps ([c6080d6](https://github.com/pie-framework/pie-elements/commit/c6080d6))
+* **math-inline:** fix correct answer prep logic regex - PD-205 ([2b16ef4](https://github.com/pie-framework/pie-elements/commit/2b16ef4))
+
+
+### Features
+
+* add postpublish handler ([9b41dea](https://github.com/pie-framework/pie-elements/commit/9b41dea))
+
+
+
+
+
 ## [5.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.3.3...@pie-element/math-inline@5.3.4) (2020-04-28)
 
 
