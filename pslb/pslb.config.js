@@ -149,7 +149,7 @@ module.exports = {
     commonJs,
   },
   mode: 'development',
-  range: 'exact',
+  range: '^',
   minify: false,
   libs: {
     repository: 'pie-framework/pie-elements',
