@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.2.5...@pie-element/extended-text-entry@6.2.6) (2020-06-09)
+
+
+### Bug Fixes
+
+* Excessive white space between the "parts" of "multi-part" Extended Text items. (pie-ui/extended-text-entry update) PD-37 ([4062996](https://github.com/pie-framework/pie-elements/commit/4062996))
+
+
+
+
+
 ## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.0-next.0...@pie-element/extended-text-entry@6.2.5) (2020-05-25)
 
 

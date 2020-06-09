@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.4.1...@pie-element/drawing-response@3.4.2) (2020-06-09)
+
+
+### Bug Fixes
+
+* For Drawing Response, "View" mode is acting like "Gather" Mode (pie-ui/drawing-response update) PD-274 ([92c671e](https://github.com/pie-framework/pie-elements/commit/92c671e))
+
+
+
+
+
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.4.0-next.0...@pie-element/drawing-response@3.4.1) (2020-05-25)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.3.5...@pie-element/math-inline@5.3.6) (2020-06-09)
+
+
+### Bug Fixes
+
+* For a particular equation response item, the math editor doesn't work (pie-ui/math-inline update) PD-277 ([c43de7a](https://github.com/pie-framework/pie-elements/commit/c43de7a))
+
+
+
+
+
 ## [5.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.0-next.0...@pie-element/math-inline@5.3.5) (2020-05-25)
 
 

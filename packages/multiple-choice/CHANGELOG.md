@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.3.5...@pie-element/multiple-choice@5.4.0) (2020-06-09)
+
+
+### Features
+
+* PD-311 - upgrade pie-ui/multiple-choice@4.13.0 ([154caf5](https://github.com/pie-framework/pie-elements/commit/154caf5))
+
+
+
+
+
 ## [5.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.4.0-next.0...@pie-element/multiple-choice@5.3.5) (2020-05-25)
 
 
