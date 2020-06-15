@@ -161,7 +161,7 @@ module.exports = {
         repository: 'pie-framework/pie-elements',
         modules: [
           /** make use of the pie-ui shared lib */
-          { name: '@pie-ui/shared-lib', version: '^2.5.0' },
+          { name: '@pie-ui/shared-lib', version: '^3.0.0' },
           { name: '@pie-ui/shared-math-edit', version: '^1.5.0' },
         ],
         /**
