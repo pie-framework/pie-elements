@@ -11,7 +11,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/explicit-constructed-response": "^1.7.27"
+    "@pie-ui/explicit-constructed-response": "^1.7.28"
   },
   "pie": {
     "element": "@pie-ui/explicit-constructed-response"
