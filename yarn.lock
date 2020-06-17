@@ -2547,10 +2547,10 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pslb/estree-helper@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@pslb/estree-helper/-/estree-helper-4.0.2.tgz#2ab3c12aa35a42d329fbef76b46125028ee1952b"
-  integrity sha512-9gpg+tbvF3ru2PTwcYIhv9bgENTGdRn11jBd+JbBr+VdvktWxAtxigHuHF+HKjALrxo9xH7VsnYEhmC6uLahOg==
+"@pslb/estree-helper@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@pslb/estree-helper/-/estree-helper-4.0.4.tgz#9820cb9e3b2fbca65216856080a85bdc522ff19e"
+  integrity sha512-yMzElhKlw33DJ5A+4buJp/ErDuZpWfrE1vYSTi0T3AFenyIEk6faDyM6mDpcMSuksSEV91xGMDZjr7Cw1lU+Kg==
 
 "@pslb/plugin-commonjs@^11.0.3":
   version "11.0.3"
@@ -2563,14 +2563,14 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@pslb/pslb@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.0.2.tgz#d0be844dbd6ad29164caead036fe47278b94ca9b"
-  integrity sha512-38eRZhGoFDi/HOVGvvlQhBiWVqrdCkf0jOZZdG+6xP2uRBQw03e8w+gzMinRCx+fQrz558YZVro0hqvsOcI/3w==
+"@pslb/pslb@^4.0.3":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.0.4.tgz#3e96f595400a112f3bdf03ca7b6c389ed18d29aa"
+  integrity sha512-rgQFg/QQe0Yd77YzswkuWJi+9mCMy7qnVDS16ZXdB40v8LbKdbyXmAgl9KgNw2jpKt6kwccGh7V5e7NOWPydEg==
   dependencies:
-    "@pslb/estree-helper" "^4.0.2"
+    "@pslb/estree-helper" "^4.0.4"
     "@pslb/plugin-commonjs" "^11.0.3"
-    "@pslb/rollup-plugin-dll" "^4.0.2"
+    "@pslb/rollup-plugin-dll" "^4.0.4"
     "@rollup/plugin-json" "^4.1.0"
     "@rollup/plugin-node-resolve" "^8.0.1"
     "@rollup/plugin-replace" "^2.3.3"
@@ -2597,12 +2597,12 @@
     serve-handler "^6.1.3"
     winston "^3.2.1"
 
-"@pslb/rollup-plugin-dll@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-4.0.2.tgz#a3b5417db3a27e39e27ef1f8b24e8a3517fba00c"
-  integrity sha512-F3xVCkVsYDRVaqBpS5VNCPXXG6PGIddShXMDqy0dvr6GGhhKD0DizTOJh2uOMc6oo5PuaSTH9Hlx4XQh7UHs7A==
+"@pslb/rollup-plugin-dll@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-4.0.4.tgz#1c1526b781baa2593dd2f595fbfebbfd6752eeb1"
+  integrity sha512-9trsQXT3e5FGsKU4VYdOaLxT9Be31NkvHCVQfh8t+8p2C86mhzJBQ4op+pdSpDZh5CW4bV63HzUU84SFgTIbcw==
   dependencies:
-    "@pslb/estree-helper" "^4.0.2"
+    "@pslb/estree-helper" "^4.0.4"
     acorn "^7.3.1"
     astring "1.4.3"
     estree-walker "2.0.1"
