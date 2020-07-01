@@ -1,0 +1,21 @@
+{
+  "name": "@pie-element/likert",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "pie-framework/pie-elements",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@pie-ui/likert": "^0.0.1"
+  },
+  "pie": {
+    "element": "@pie-ui/likert"
+  },
+  "author": "",
+  "license": "ISC",
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+}
