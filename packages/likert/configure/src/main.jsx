@@ -181,6 +181,18 @@ const LikertType = withStyles(styles)((props) => {
   )
 });
 
+const buildValuesMap = model => model.choices.reduce((acc, choice) => {
+  const accClone = { ...acc };
+  const choiceValue = parseInt(choice.value);
+  if (!accClone[choiceValue]) {
+    accClone[choiceValue] = 0;
+  }
+  return {
+    ...accClone,
+    [choiceValue]: accClone[choiceValue] + 1
+  }
+}, {});
+
 const Design = withStyles(styles)(props => {
   const {
     classes,
@@ -196,24 +208,13 @@ const Design = withStyles(styles)(props => {
   const {
     prompt = {},
     teacherInstructions = {},
-    studentInstructions = {},
     scoringType = {},
   } = configuration || {};
   const {
     teacherInstructionsEnabled
   } = model || {};
 
-  const valuesMap = model.choices.reduce((acc, choice) => {
-    const accClone = { ...acc };
-    const choiceValue = parseInt(choice.value);
-    if (!accClone[choiceValue]) {
-      accClone[choiceValue] = 0;
-    }
-    return {
-      ...accClone,
-      [choiceValue]: accClone[choiceValue] + 1
-    }
-  }, {});
+  const valuesMap = buildValuesMap(model);
 
   return (
     <div className={classes.design}>

@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debug from 'debug';
-import {
-  DeleteImageEvent,
-  InsertImageEvent,
-  ModelUpdatedEvent
-} from '@pie-framework/pie-configure-events';
+import {ModelUpdatedEvent} from '@pie-framework/pie-configure-events';
 
 import Main from './main';
 import defaults from 'lodash/defaults';
@@ -82,15 +78,6 @@ export default class Likert extends HTMLElement {
     this._render();
   }
 
-  /** @param {done, progress, file} handler */
-  insertImage(handler) {
-    this.dispatchEvent(new InsertImageEvent(handler));
-  }
-
-  onDeleteImage(src, done) {
-    this.dispatchEvent(new DeleteImageEvent(src, done));
-  }
-
   _render() {
     log('_render');
     let element = React.createElement(Main, {
@@ -98,11 +85,7 @@ export default class Likert extends HTMLElement {
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
-      disableSidePanel: this._disableSidePanel,
-      imageSupport: {
-        add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
-      }
+      disableSidePanel: this._disableSidePanel
     });
     ReactDOM.render(element, this);
   }
