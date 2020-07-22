@@ -1,0 +1,124 @@
+{
+  "description": "Model for the Likert Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "likertScale": {
+      "description": "Indicates the likert scale",
+      "enum": [
+        "likert3",
+        "likert5",
+        "likert7"
+      ],
+      "type": "string",
+      "title": "likertScale"
+    },
+    "likertType": {
+      "description": "Indicates the likert type",
+      "enum": [
+        "agreement",
+        "frequency",
+        "importance",
+        "like",
+        "likelihood",
+        "yesNo"
+      ],
+      "type": "string",
+      "title": "likertType"
+    },
+    "likertOrientation": {
+      "description": "Indicates the likert type",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "type": "string",
+      "title": "likertOrientation"
+    },
+    "choices": {
+      "description": "The choice options for the question",
+      "type": "array",
+      "items": {
+        "title": "LikertChoice",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "the value that will be stored if this likert choice is selected",
+            "type": "string",
+            "title": "value"
+          },
+          "label": {
+            "description": "the text label that will be presented to the user for this likert choice",
+            "type": "string",
+            "title": "label"
+          }
+        },
+        "required": [
+          "label",
+          "value"
+        ]
+      },
+      "title": "choices"
+    },
+    "teacherInstructionsEnabled": {
+      "description": "Indicates if Teacher Instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructionsEnabled"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "choices",
+    "element",
+    "id",
+    "teacherInstructionsEnabled"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "LikertChoice": {
+      "title": "LikertChoice",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "the value that will be stored if this likert choice is selected",
+          "type": "string",
+          "title": "value"
+        },
+        "label": {
+          "description": "the text label that will be presented to the user for this likert choice",
+          "type": "string",
+          "title": "label"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
