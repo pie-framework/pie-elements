@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/image-cloze-association-configure",
   "private": true,
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
