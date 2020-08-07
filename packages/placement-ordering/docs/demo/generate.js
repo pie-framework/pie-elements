@@ -9,8 +9,7 @@ exports.model = (id, element) => ({
     },
     {
       id: 'c2',
-      label: 'Lemon',
-      lockChoiceOrder: true,
+      label: 'Lemon'
     },
     {
       id: 'c3',
@@ -21,6 +20,7 @@ exports.model = (id, element) => ({
       label: 'Pear',
     },
   ],
+  correctResponse: ['c1', 'c2', 'c3', 'c4'],
   alternateResponses : [
     ['c4', 'c3', 'c2', 'c1']
   ],
@@ -39,6 +39,7 @@ exports.model = (id, element) => ({
       custom: 'nearly'
     }
   },
+  feedbackEnabled: true,
   prompt: 'Arrange the fruits alphabetically',
   promptEnabled: true,
   lockChoiceOrder: false,

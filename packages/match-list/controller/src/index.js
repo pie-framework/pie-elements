@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { decideLockChoiceOrder, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match-list:controller');
@@ -124,7 +124,9 @@ export function model(question, session, env, updateSession) {
       });
     };
 
-    if (!question.lockChoiceOrder) {
+    const lockChoiceOrder = decideLockChoiceOrder(question, session, env);
+
+    if (!lockChoiceOrder) {
       prompts = await getShuffledChoices(
         prompts,
         { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
@@ -165,8 +167,7 @@ export function model(question, session, env, updateSession) {
         config: {
           ...question,
           prompts,
-          answers,
-          shuffled: !question.lockChoiceOrder
+          answers
         },
         correctness: correctInfo,
         feedback,

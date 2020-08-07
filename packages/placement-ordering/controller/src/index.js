@@ -2,7 +2,7 @@ import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import { decideLockChoiceOrder, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 import defaults from './defaults';
@@ -76,13 +76,21 @@ export function model(question, session, env, updateSession) {
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
 
-    if (!normalizedQuestion.lockChoiceOrder) {
+    const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env, () => {
+        return !!session.userInteraction;
+    });
+
+    if (!lockChoiceOrder) {
       choices = await getShuffledChoices(
         choices,
         session,
         updateSession,
         'label'
       );
+
+      if (!session.shuffledValues) {
+          session.value = choices.map(m => m.id);
+      }
     }
 
     base.choices = choices;

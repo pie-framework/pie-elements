@@ -1,7 +1,11 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import {
+  decideLockChoiceOrder,
+  getShuffledChoices,
+  partialScoring
+} from '@pie-lib/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
 
@@ -80,15 +84,22 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    if (!normalizedQuestion.lockChoiceOrder) {
-      Object.keys(choices).forEach(async key => {
+    const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env);
+
+    if (!lockChoiceOrder) {
+      const keys = Object.keys(choices);
+      let i;
+
+      for (i = 0; i < keys.length; i++) {
+        const key = keys[i];
+
         choices[key] = await getShuffledChoices(
           choices[key],
           session,
           updateSession,
           'value'
         );
-      });
+      }
     }
 
     let teacherInstructions = null;
@@ -109,7 +120,6 @@ export function model(question, session, env, updateSession) {
       disabled: env.mode !== 'gather',
       mode: env.mode,
       prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-      shuffle: !normalizedQuestion.lockChoiceOrder,
       markup: normalizedQuestion.markup,
       choices,
       feedback,
