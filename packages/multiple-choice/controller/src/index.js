@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { isResponseCorrect } from './utils';
 import defaults from './defaults';
-import { decideLockChoiceOrder, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const { role, mode } = env || {};
@@ -56,7 +56,7 @@ export async function model(question, session, env, updateSession) {
     prepareChoice(normalizedQuestion, env, defaultFeedback)
   );
 
-  const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env);
+  const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
   if (!lockChoiceOrder) {
     choices = await getShuffledChoices(

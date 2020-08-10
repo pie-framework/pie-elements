@@ -2,7 +2,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import {
-  decideLockChoiceOrder,
+  lockChoices,
   getShuffledChoices,
   partialScoring
 } from '@pie-lib/controller-utils';
@@ -84,7 +84,7 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env);
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (!lockChoiceOrder) {
       const keys = Object.keys(choices);

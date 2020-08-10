@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { decideLockChoiceOrder, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 // eslint-disable-next-line no-console
@@ -124,7 +124,7 @@ export const model = (question, session, env, updateSession) =>
     let { choices } = normalizedQuestion;
     let fb;
 
-    const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env);
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (mode === 'evaluate' && feedbackEnabled) {
       fb = await getFeedbackForCorrectness(answerCorrectness.correctness, feedback);

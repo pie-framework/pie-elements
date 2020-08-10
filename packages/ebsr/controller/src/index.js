@@ -1,5 +1,5 @@
 import defaults from './defaults';
-import { decideLockChoiceOrder, getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
@@ -103,7 +103,7 @@ export async function model(question, session, env, updateSession) {
     });
 
   const partASession = get(session, 'value.partA');
-  const partALockChoiceOrder = decideLockChoiceOrder(normalizedQuestion.partA, partASession, env);
+  const partALockChoiceOrder = lockChoices(normalizedQuestion.partA, partASession, env);
 
   if (!partALockChoiceOrder) {
     partA.choices = await getShuffledChoices(
@@ -115,7 +115,7 @@ export async function model(question, session, env, updateSession) {
   }
 
   const partBSession = get(session, 'value.partB');
-  const partBLockChoiceOrder = decideLockChoiceOrder(normalizedQuestion.partB, partBSession, env);
+  const partBLockChoiceOrder = lockChoices(normalizedQuestion.partB, partBSession, env);
 
   if (!partBLockChoiceOrder) {
     partB.choices = await getShuffledChoices(

@@ -1,7 +1,7 @@
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
 import { getAllCorrectResponses, choiceIsEmpty } from './utils';
-import { decideLockChoiceOrder, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 
 export const normalize = question => ({
   rationaleEnabled: true,
@@ -56,7 +56,7 @@ export function model(question, session, env, updateSession) {
 
     let choices = normalizedQuestion.choices && normalizedQuestion.choices.filter(choice => !choiceIsEmpty(choice));
 
-    const lockChoiceOrder = decideLockChoiceOrder(normalizedQuestion, session, env);
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (!lockChoiceOrder) {
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
