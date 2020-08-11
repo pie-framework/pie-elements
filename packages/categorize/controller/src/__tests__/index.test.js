@@ -3,7 +3,8 @@ import {
   outcome,
   getCorrectness,
   createCorrectResponseSession,
-  getTotalScore, getPartialScore
+  getTotalScore,
+  getPartialScore,
 } from '../index';
 import React from 'react';
 
@@ -11,14 +12,22 @@ jest.mock('@pie-lib/categorize', () => ({
   // used this algorithm in order to control the value of correct; check `fakeCorrect` below
   buildState: (mockedCategories, choices, answers) => ({
     categories: mockedCategories,
-    correct: mockedCategories === answers
-  })
+    correct: mockedCategories === answers,
+  }),
 }));
 jest.mock('@pie-lib/controller-utils', () => ({
+  ...jest.requireActual('@pie-lib/controller-utils'),
   getShuffledChoices: (choices, session, updateSession, key) => {
-    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
+    const currentShuffled = ((session || {}).shuffledValues || []).filter(
+      (v) => v
+    );
 
-    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
+    if (
+      session &&
+      !currentShuffled.length &&
+      updateSession &&
+      typeof updateSession === 'function'
+    ) {
       updateSession();
     }
 
@@ -38,13 +47,15 @@ jest.mock('@pie-lib/controller-utils', () => ({
       }
 
       return true;
-    }
-  }
+    },
+  },
 }));
 
 const categories = [{ id: '1', label: 'One' }];
-const choices = [{ id: '1', content: 'Foo' }, { id: '2', content: 'Bar' }];
-
+const choices = [
+  { id: '1', content: 'Foo' },
+  { id: '2', content: 'Bar' },
+];
 
 const category10 = { id: '10', label: 'SUM=10' };
 const category11 = { id: '11', label: 'SUM=11' };
@@ -56,19 +67,19 @@ const choice6 = { id: '6', content: '6' };
 const choice7 = { id: '7', content: '7' };
 const scoringCorrectResponseNoAlternates = [
   { category: '10', choices: ['3', '7'] },
-  { category: '11', choices: ['4', '7'] }
+  { category: '11', choices: ['4', '7'] },
 ];
 const scoringCorrectResponseWithAlternates = [
   { category: '10', choices: ['3', '7'], alternateResponses: [['4', '6']] },
-  { category: '11', choices: ['4', '7'], alternateResponses: [['5', '6']] }
+  { category: '11', choices: ['4', '7'], alternateResponses: [['5', '6']] },
 ];
 
-const makeQuestion = extras => ({
+const makeQuestion = (extras) => ({
   categories,
   choices,
   correctResponse: [{ category: '1', choices: ['1', '2'] }],
   lockChoiceOrder: true,
-  ...extras
+  ...extras,
 });
 
 describe('controller', () => {
@@ -92,7 +103,12 @@ describe('controller', () => {
       });
 
       it('disabled true for evaluate', async () => {
-        const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+        const result = await model(
+          question,
+          {},
+          { mode: 'evaluate' },
+          jest.fn()
+        );
         expect(result).toMatchObject({ disabled: true });
       });
     });
@@ -100,7 +116,7 @@ describe('controller', () => {
     it('adds correctResponse for evaluate', async () => {
       const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
       expect(result).toMatchObject({
-        correctResponse: [{ category: '1', choices: ['1', '2'] }]
+        correctResponse: [{ category: '1', choices: ['1', '2'] }],
       });
     });
 
@@ -109,7 +125,7 @@ describe('controller', () => {
       expect(result).toMatchObject({
         choicesPerRow: 2,
         categoriesPerRow: 2,
-        choicesLabel: ''
+        choicesLabel: '',
       });
     });
 
@@ -123,7 +139,7 @@ describe('controller', () => {
             id: '1',
             element: 'categorize-element',
             ...question,
-            lockChoiceOrder: false
+            lockChoiceOrder: false,
           },
           session,
           env,
@@ -138,23 +154,23 @@ describe('controller', () => {
     it('returns correct response if env is correct', async () => {
       const sess = await createCorrectResponseSession(question, {
         mode: 'gather',
-        role: 'instructor'
+        role: 'instructor',
       });
       expect(sess).toEqual({
         answers: [
           {
             category: '1',
-            choices: ['1', '2']
-          }
+            choices: ['1', '2'],
+          },
         ],
-        id: 1
+        id: 1,
       });
     });
 
     it('returns null env is student', async () => {
       const noResult = await createCorrectResponseSession(question, {
         mode: 'gather',
-        role: 'student'
+        role: 'student',
       });
       expect(noResult).toBeNull();
     });
@@ -165,164 +181,222 @@ describe('controller', () => {
       id: '10',
       label: 'SUM=10',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: true }]
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: true },
+      ],
     },
     {
       id: '11',
       label: 'SUM=11',
       correct: false,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: false }]
-    }
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: false },
+      ],
+    },
   ];
   const mC2 = [
     {
       id: '10',
       label: 'SUM=10',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: true }]
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: true },
+      ],
     },
     {
       id: '11',
       label: 'SUM=11',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: true }]
-    }
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: true },
+      ],
+    },
   ];
   const mC3 = [
     {
       id: '10',
       label: 'SUM=10',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice3, correct: false }, { ...choice7, correct: true }]
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice3, correct: false },
+        { ...choice7, correct: true },
+      ],
     },
     {
       id: '11',
       label: 'SUM=11',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: true }]
-    }
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: true },
+      ],
+    },
   ];
   const mC4 = [
     {
       id: '10',
       label: 'SUM=10',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice3, correct: false }, { ...choice7, correct: true }]
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice3, correct: false },
+        { ...choice7, correct: true },
+      ],
     },
     {
       id: '11',
       label: 'SUM=11',
       correct: true,
-      choices: [{ ...choice3, correct: true }, { ...choice7, correct: true }, { ...choice7, correct: false }]
-    }
+      choices: [
+        { ...choice3, correct: true },
+        { ...choice7, correct: true },
+        { ...choice7, correct: false },
+      ],
+    },
   ];
   const mC5 = [
     {
       id: '10',
       label: 'SUM=10',
       correct: false,
-      choices: [{ ...choice3, correct: false }, { ...choice3, correct: false }, { ...choice7, correct: false }]
+      choices: [
+        { ...choice3, correct: false },
+        { ...choice3, correct: false },
+        { ...choice7, correct: false },
+      ],
     },
     {
       id: '11',
       label: 'SUM=11',
       correct: false,
-      choices: [{ ...choice3, correct: false }, { ...choice7, correct: false }, { ...choice7, correct: false }]
-    }
+      choices: [
+        { ...choice3, correct: false },
+        { ...choice7, correct: false },
+        { ...choice7, correct: false },
+      ],
+    },
   ];
 
   describe('getCorrectness', () => {
     it('mode: gather -> resolves undefined', () => {
-      expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(undefined);
+      expect(getCorrectness(question, {}, { mode: 'gather' })).resolves.toEqual(
+        undefined
+      );
     });
 
     it('mode: view -> resolves undefined', () => {
-      expect(getCorrectness(question, {}, { mode: 'view' })).resolves.toEqual(undefined);
+      expect(getCorrectness(question, {}, { mode: 'view' })).resolves.toEqual(
+        undefined
+      );
     });
 
     const sessionCorrect = { answers: mC2 };
     const sessionPartially = { answers: mC1 };
 
     it.each`
-        session               |   expected
-        ${undefined}          |   ${'incorrect'}
-        ${null}               |   ${'incorrect'}
-        ${{}}                 |   ${'incorrect'}
-        ${sessionCorrect}     |   ${'correct'}
-        ${sessionPartially}   |   ${'partially-correct'}
-    `('mode: evaluate -> resolves $expected if session is $session', ({ session, expected }) => {
-      const res = getCorrectness({
-        ...question,
-        partialScoring: true,
-        categories: mC1,
-        correctResponse: scoringCorrectResponseNoAlternates
-      }, session, { mode: 'evaluate' });
+      session             | expected
+      ${undefined}        | ${'incorrect'}
+      ${null}             | ${'incorrect'}
+      ${{}}               | ${'incorrect'}
+      ${sessionCorrect}   | ${'correct'}
+      ${sessionPartially} | ${'partially-correct'}
+    `(
+      'mode: evaluate -> resolves $expected if session is $session',
+      ({ session, expected }) => {
+        const res = getCorrectness(
+          {
+            ...question,
+            partialScoring: true,
+            categories: mC1,
+            correctResponse: scoringCorrectResponseNoAlternates,
+          },
+          session,
+          { mode: 'evaluate' }
+        );
 
-      expect(res).resolves.toEqual(expected);
-    });
+        expect(res).resolves.toEqual(expected);
+      }
+    );
   });
 
   describe('getTotalScore', () => {
     it.each`
-    partialScoring    |   mockedCategories           |   fakeCorrect    |     expected
-    ${true}           |   ${mC1}                     |   ${false}       |     ${0}
-    ${false}          |   ${mC1}                     |   ${false}       |     ${0}
-    ${true}           |   ${mC1}                     |   ${true}        |     ${1}
-    ${false}          |   ${mC1}                     |   ${true}        |     ${1}
-    `('With Alternates, partialScoring = $partialScoring -> dychotomous: $expected',
+      partialScoring | mockedCategories | fakeCorrect | expected
+      ${true}        | ${mC1}           | ${false}    | ${0}
+      ${false}       | ${mC1}           | ${false}    | ${0}
+      ${true}        | ${mC1}           | ${true}     | ${1}
+      ${false}       | ${mC1}           | ${true}     | ${1}
+    `(
+      'With Alternates, partialScoring = $partialScoring -> dychotomous: $expected',
       ({ partialScoring, mockedCategories, fakeCorrect, expected }) => {
-        const totalScore = getTotalScore({
+        const totalScore = getTotalScore(
+          {
             ...question,
             partialScoring,
             categories: mockedCategories,
-            correctResponse: scoringCorrectResponseWithAlternates
+            correctResponse: scoringCorrectResponseWithAlternates,
           },
           { answers: fakeCorrect ? mockedCategories : [] },
-          {});
+          {}
+        );
 
         expect(totalScore).toEqual(expected);
-      });
+      }
+    );
 
     it.each`
-    partialScoring    |   mockedCategories           |     expected
-    ${true}           |   ${mC1}                     |     ${0.75}
-    ${false}          |   ${mC1}                     |     ${0}
-    ${true}           |   ${mC2}                     |     ${1}
-    ${false}          |   ${mC2}                     |     ${0}
-    ${true}           |   ${mC3}                     |     ${0.75}
-    ${true}           |   ${mC4}                     |     ${0.5}
-    ${true}           |   ${mC5}                     |     ${0}
-    `('Without Alternates, partialScoring = $partialScoring -> $expected',
+      partialScoring | mockedCategories | expected
+      ${true}        | ${mC1}           | ${0.75}
+      ${false}       | ${mC1}           | ${0}
+      ${true}        | ${mC2}           | ${1}
+      ${false}       | ${mC2}           | ${0}
+      ${true}        | ${mC3}           | ${0.75}
+      ${true}        | ${mC4}           | ${0.5}
+      ${true}        | ${mC5}           | ${0}
+    `(
+      'Without Alternates, partialScoring = $partialScoring -> $expected',
       ({ partialScoring, mockedCategories, expected }) => {
-        const totalScore = getTotalScore({
+        const totalScore = getTotalScore(
+          {
             ...question,
             partialScoring,
             categories: mockedCategories,
-            correctResponse: scoringCorrectResponseNoAlternates
+            correctResponse: scoringCorrectResponseNoAlternates,
           },
           { answers: [] },
-          {});
+          {}
+        );
 
         expect(totalScore).toEqual(expected);
-      });
+      }
+    );
   });
 
   describe('getPartialScore', () => {
     it.each`
-    mockedCategories           |     expected
-    ${mC1}                     |     ${0.75}
-    ${mC2}                     |     ${1}
-    ${mC3}                     |     ${0.75}
-    ${mC4}                     |     ${0.5}
-    ${mC5}                     |     ${0}
-    `('Without Alternates, partialScoring = $partialScoring -> $expected',
+      mockedCategories | expected
+      ${mC1}           | ${0.75}
+      ${mC2}           | ${1}
+      ${mC3}           | ${0.75}
+      ${mC4}           | ${0.5}
+      ${mC5}           | ${0}
+    `(
+      'Without Alternates, partialScoring = $partialScoring -> $expected',
       ({ mockedCategories, expected }) => {
-        const totalScore = getPartialScore(scoringCorrectResponseNoAlternates, mockedCategories);
+        const totalScore = getPartialScore(
+          scoringCorrectResponseNoAlternates,
+          mockedCategories
+        );
 
         expect(totalScore).toEqual(expected);
-      });
+      }
+    );
   });
-
 
   describe('outcome', () => {
     describe('mode: gather', () => {
@@ -343,25 +417,27 @@ describe('controller', () => {
 
     describe('mode: evaluate', () => {
       it.each`
-    partialScoring  |    envPartialScoring  |   expected
-    ${true}         |    ${undefined}       |   ${{ empty: false, score: 0.75 }}
-    ${false}        |    ${undefined}       |   ${{ empty: false, score: 1 }}
-    ${true}         |    ${false}           |   ${{ empty: false, score: 1 }}
-    ${false}        |    ${true}            |   ${{ empty: false, score: 1 }}
-    `('element.partialScoring = $partialScoring, env.partialScoring = $envPartialScoring', async ({ partialScoring, envPartialScoring, expected }) => {
-        const result = await outcome(
-          {
-            ...question,
-            partialScoring,
-            correctResponse: scoringCorrectResponseNoAlternates,
-            categories: mC1
-          },
-          { answers: mC1 },
-          { mode: 'evaluate', partialScoring: envPartialScoring }
-        );
-        expect(result).toEqual(expected);
-      });
+        partialScoring | envPartialScoring | expected
+        ${true}        | ${undefined}      | ${{ empty: false, score: 0.75 }}
+        ${false}       | ${undefined}      | ${{ empty: false, score: 1 }}
+        ${true}        | ${false}          | ${{ empty: false, score: 1 }}
+        ${false}       | ${true}           | ${{ empty: false, score: 1 }}
+      `(
+        'element.partialScoring = $partialScoring, env.partialScoring = $envPartialScoring',
+        async ({ partialScoring, envPartialScoring, expected }) => {
+          const result = await outcome(
+            {
+              ...question,
+              partialScoring,
+              correctResponse: scoringCorrectResponseNoAlternates,
+              categories: mC1,
+            },
+            { answers: mC1 },
+            { mode: 'evaluate', partialScoring: envPartialScoring }
+          );
+          expect(result).toEqual(expected);
+        }
+      );
     });
   });
-
 });

@@ -1,58 +1,14 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
 
-jest.mock('@pie-lib/controller-utils', () => ({
-  getShuffledChoices: (choices, session, updateSession, key) => {
-    const compact = array => array ? array.filter(item => item) : [];
-    const shuffle = array => array.sort();
-    const isEmpty = obj => obj && Object.keys(obj).length === 0;
-
-    const currentShuffled = compact((session || {}).shuffledValues);
-
-    if (!session) {
-      return undefined;
-    } else if (!isEmpty(currentShuffled)) {
-      return compact(currentShuffled.map(v => choices.find(c => c[key] === v)));
-    } else {
-      const shuffledChoices = shuffle(choices);
-
-      if (updateSession && typeof updateSession === 'function') {
-        const shuffledValues = compact(shuffledChoices.map(c => c[key]));
-
-        if (!isEmpty(shuffledValues)) {
-          updateSession(session.id, session.element, { shuffledValues });
-        }
-      }
-
-      return shuffledChoices;
-    }
-  },
-  partialScoring: {
-    enabled: (config, env) => {
-      config = config || {};
-      env = env || {};
-
-      if (config.partialScoring === false) {
-        return false;
-      }
-
-      if (env.partialScoring === false) {
-        return false;
-      }
-
-      return true;
-    }
-  }
-}));
-
 const prompt = (id, relatedAnswer) => ({
   id,
   title: `Prompt ${id}`,
-  relatedAnswer
+  relatedAnswer,
 });
 
-const answer = id => ({
+const answer = (id) => ({
   id,
-  title: `Answer ${id}`
+  title: `Answer ${id}`,
 });
 
 describe('controller', () => {
@@ -69,17 +25,17 @@ describe('controller', () => {
           {
             id: 1,
             title: 'Question Text 1',
-            values: [false, false]
+            values: [false, false],
           },
           {
             id: 2,
             title: 'Question Text 2',
-            values: [false, false]
-          }
+            values: [false, false],
+          },
         ],
         layout: 3,
-        headers: ['Column 1', 'Column 2', 'Column 3']
-      }
+        headers: ['Column 1', 'Column 2', 'Column 3'],
+      },
     };
   });
 
@@ -97,7 +53,7 @@ describe('controller', () => {
     });
 
     describe('mode: evaluate', () => {
-      const returnCorrectness = session => {
+      const returnCorrectness = (session) => {
         it(`returns correctness and score: 0 if session is ${JSON.stringify(
           session
         )}`, async () => {
@@ -107,8 +63,8 @@ describe('controller', () => {
             expect.objectContaining({
               correctness: {
                 correctness: 'unanswered',
-                score: '0%'
-              }
+                score: '0%',
+              },
             })
           );
         });
@@ -128,8 +84,8 @@ describe('controller', () => {
         expect(updateSession).toHaveBeenCalledWith('1', 'match-list', {
           shuffledValues: {
             prompts: expect.arrayContaining([1, 2]),
-            answers: expect.arrayContaining([3, 4, 5])
-          }
+            answers: expect.arrayContaining([3, 4, 5]),
+          },
         });
       });
 
@@ -139,8 +95,8 @@ describe('controller', () => {
           element: 'match-list',
           shuffledValues: {
             prompts: [2, 1],
-            answers: [4, 5, 3]
-          }
+            answers: [4, 5, 3],
+          },
         };
         env = { mode: 'gather' };
         const updateSession = jest.fn().mockResolvedValue();
@@ -149,7 +105,7 @@ describe('controller', () => {
             ...question,
             prompts: [prompt(1, 1), prompt(2, 2)],
             answers: [answer(3), answer(4), answer(5)],
-            lockChoiceOrder: false
+            lockChoiceOrder: false,
           },
           session,
           env,
@@ -160,7 +116,7 @@ describe('controller', () => {
         expect(result.config.answers).toEqual([
           answer(4),
           answer(5),
-          answer(3)
+          answer(3),
         ]);
       });
     });
@@ -169,10 +125,11 @@ describe('controller', () => {
   describe('outcome partialScoring test', () => {
     const assertOutcome = (message, extra, sessionValue, env, expected) => {
       it(message, async () => {
-        const result = await outcome({
+        const result = await outcome(
+          {
             ...question,
             ...extra,
-            answers: [answer(1), answer(2), answer(3)]
+            answers: [answer(1), answer(2), answer(3)],
           },
           sessionValue,
           env
@@ -182,57 +139,68 @@ describe('controller', () => {
       });
     };
 
-    assertOutcome('element.partialScoring = true',
+    assertOutcome(
+      'element.partialScoring = true',
       { partialScoring: true },
       {
         value: {
           1: 1,
-          2: 3
-        }
+          2: 3,
+        },
       },
-      { mode: 'evaluate' }, { score: 0.5 });
+      { mode: 'evaluate' },
+      { score: 0.5 }
+    );
 
-    assertOutcome('element.partialScoring = false',
+    assertOutcome(
+      'element.partialScoring = false',
       { partialScoring: false },
       {
         value: {
           1: 1,
-          2: 3
-        }
+          2: 3,
+        },
       },
-      { mode: 'evaluate' }, { score: 0 });
+      { mode: 'evaluate' },
+      { score: 0 }
+    );
 
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
+    assertOutcome(
+      'element.partialScoring = false, env.partialScoring = true',
       { partialScoring: false },
       {
         value: {
           1: 1,
-          2: 3
-        }
+          2: 3,
+        },
       },
       {
         mode: 'evaluate',
-        partialScoring: true
+        partialScoring: true,
       },
-      { score: 0 });
+      { score: 0 }
+    );
 
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
+    assertOutcome(
+      'element.partialScoring = true, env.partialScoring = false',
       { partialScoring: true },
       {
         value: {
           1: 1,
-          2: 3
-        }
+          2: 3,
+        },
       },
       {
         mode: 'evaluate',
-        partialScoring: false
-      }, { score: 0 });
+        partialScoring: false,
+      },
+      { score: 0 }
+    );
   });
 
   describe('outcome', () => {
     describe('mode: evaluate', () => {
-      const returnOutcome = session => {
+      const returnOutcome = (session) => {
         it(`returns empty: true and score: 0 if session is ${JSON.stringify(
           session
         )}`, async () => {
@@ -241,7 +209,7 @@ describe('controller', () => {
           expect(o).toEqual(
             expect.objectContaining({
               score: 0,
-              empty: true
+              empty: true,
             })
           );
         });
@@ -258,13 +226,13 @@ describe('createCorrectResponseSession', () => {
   const question = {
     prompt: 'Your prompt goes here',
     prompts: [prompt(1, 1), prompt(3, 4), prompt(4, 3), prompt(2, 2)],
-    answers: [answer(1), answer(2), answer(3), answer(4), answer(5), answer(6)]
+    answers: [answer(1), answer(2), answer(3), answer(4), answer(5), answer(6)],
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'gather',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
@@ -272,16 +240,16 @@ describe('createCorrectResponseSession', () => {
         1: 1,
         3: 4,
         4: 3,
-        2: 2
+        2: 2,
       },
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns correct response if role is instructor and mode is view', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'view',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
@@ -289,16 +257,16 @@ describe('createCorrectResponseSession', () => {
         1: 1,
         3: 4,
         4: 3,
-        2: 2
+        2: 2,
       },
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns null if mode is evaluate', async () => {
     const noResult = await createCorrectResponseSession(question, {
       mode: 'evaluate',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(noResult).toBeNull();
@@ -307,7 +275,7 @@ describe('createCorrectResponseSession', () => {
   it('returns null if role is student', async () => {
     const noResult = await createCorrectResponseSession(question, {
       mode: 'gather',
-      role: 'student'
+      role: 'student',
     });
 
     expect(noResult).toBeNull();

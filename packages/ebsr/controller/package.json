@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.2.18",
+    "@pie-lib/controller-utils": "^0.2.19",
     "lodash": "^4.17.15"
   },
   "author": "",
