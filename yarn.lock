@@ -2486,10 +2486,10 @@
     react-test-renderer "^16.3.2"
     react-transition-group "^2.3.1"
 
-"@pie-ui/match-list@^1.4.34":
-  version "1.4.34"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.4.34.tgz#5b02d9e0da3fb2582a1d59dab0959e080efe6b87"
-  integrity sha512-R6KwUJaQdTHNrcL6VGIAgpm4yxkY9iEnWCELoPRW0l8MI1yKz1kAQ1N90KqHjFw8LtY/Dh6UYU89/tLlr6+DRg==
+"@pie-ui/match-list@^1.4.35":
+  version "1.4.35"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match-list/-/match-list-1.4.35.tgz#c313026f91d08cac2c258166e8f8d79118aa21e8"
+  integrity sha512-W81onsst460dLy4t4lIxkvN6DmUAHKcsbokNBtU529QF6GTaQYPVVv+wu6lxMEWwZsWNw2jSdpRZPDMWpJIwjg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
@@ -2506,10 +2506,10 @@
     react-dnd "^9.3.2"
     react-dom "^16.8.1"
 
-"@pie-ui/match@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.4.2.tgz#f468e0fc33ebf5f75e891f6ba453cedb1ad61890"
-  integrity sha512-ldp6cVRhNWdZ1MCObogyI+z4sTKLCQW25XpCVKLglkjZe1BYS2FTFgwCWGFW404EJtyKClKjVC4O9row1SRtbw==
+"@pie-ui/match@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@pie-ui/match/-/match-2.4.3.tgz#65e3e64da31a85b68b49a0415e8124d54632da21"
+  integrity sha512-TyZn2k0aN06ZyrVUHGdXXQc5sb+GSCiyql8WLiHuLFWD/FGZr/xQXu1s0KV93N+E4eDORbyTij3AchrDROA6gw==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
