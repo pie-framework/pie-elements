@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@pie-lib/controller-utils": "^0.2.20",
+    "@pie-lib/controller-utils": "^0.2.21",
     "@pie-lib/feedback": "^0.4.22",
     "debug": "^3.1.0",
     "js-combinatorics": "^0.5.4",
