@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.3...@pie-element/categorize@6.5.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/categorize
+
+
+
+
+
 ## [6.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.2...@pie-element/categorize@6.5.3) (2020-08-25)
 
 **Note:** Version bump only for package @pie-element/categorize
