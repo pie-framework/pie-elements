@@ -113,7 +113,7 @@ const Design = withStyles(styles)(props => {
             markup={model.prompt}
             onChange={onPromptChanged}
             imageSupport={imageSupport}
-            nonEmpty={!prompt.settings}
+            nonEmpty={false}
             disableUnderline
           />
         </InputContainer>
