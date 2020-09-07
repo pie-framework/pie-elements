@@ -226,7 +226,7 @@ export class Design extends React.Component {
                   markup={model.prompt || ''}
                   onChange={this.onPromptChanged}
                   imageSupport={imageSupport}
-                  nonEmpty={!prompt.settings}
+                  nonEmpty={false}
                   disableUnderline
                 />
               </InputContainer>
