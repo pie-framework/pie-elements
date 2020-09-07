@@ -207,7 +207,7 @@ export class Main extends React.Component {
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
                   imageSupport={imageSupport}
-                  nonEmpty={!prompt.settings}
+                  nonEmpty={false}
                   disableUnderline
                 />
               </InputContainer>
@@ -228,7 +228,7 @@ export class Main extends React.Component {
               markup={model.slateMarkup}
               onChange={this.onMarkupChanged}
               imageSupport={imageSupport}
-              nonEmpty={!prompt.settings}
+              nonEmpty={false}
               disableUnderline
             />
             <Choices
