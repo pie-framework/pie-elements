@@ -11,7 +11,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/graphing": "^3.0.7"
+    "@pie-ui/graphing": "^3.0.8"
   },
   "pie": {
     "element": "@pie-ui/graphing"
