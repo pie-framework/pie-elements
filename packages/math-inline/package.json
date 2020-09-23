@@ -12,7 +12,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^3.1.1"
+    "@pie-ui/math-inline": "^3.1.3"
   },
   "pie": {
     "element": "@pie-ui/math-inline"
