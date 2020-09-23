@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.5...@pie-element/explicit-constructed-response@3.7.6) (2020-09-23)
+
+
+### Bug Fixes
+
+* In LP, erroneous score data being returned for some ECRs. (Use responseAreas to determine the max score) PD-570 ([#477](https://github.com/pie-framework/pie-elements/issues/477)) ([491e56d](https://github.com/pie-framework/pie-elements/commit/491e56d))
+
+
+
+
+
 ## [3.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.4...@pie-element/explicit-constructed-response@3.7.5) (2020-09-07)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response
