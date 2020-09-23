@@ -142,16 +142,17 @@ export const getScore = (config, session) => {
     return 0;
   }
 
-  const maxScore = Object.keys(config.choices).length;
+  const responseAreas = config.markup && config.markup.match(/\{\{(.)\}\}/g);
+  const maxScore = responseAreas ? responseAreas.length : 0;
   const correctCount = reduce(config.choices, (total, respArea, key) => {
     const chosenValue = value && value[key];
 
     if (isEmpty(chosenValue) || !find(respArea, c => prepareVal(c.label) === prepareVal(chosenValue))) {
-      return total - 1;
+      return total;
     }
 
-    return total;
-  }, maxScore);
+    return total + 1;
+  }, 0);
 
   const str = maxScore ? (correctCount / maxScore).toFixed(2) : 0;
 
