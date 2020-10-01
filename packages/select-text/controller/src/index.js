@@ -75,7 +75,7 @@ export const outcome = (question, session, env) =>
       resolve({ score: 0, empty: true });
     }
 
-    session.selectedTokens = session.selectedTokens || [];
+    session = normalizeSession(session);
 
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
@@ -97,6 +97,11 @@ export function createDefaultModel(model = {}) {
     });
   });
 }
+
+export const normalizeSession = (s) => ({
+  selectedTokens: [],
+  ...s,
+});
 
 export const normalize = (question) => ({
   feedbackEnabled: true,
