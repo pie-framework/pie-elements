@@ -9,7 +9,7 @@ const log = debug('@pie-element:select-text:controller');
 const buildTokens = (tokens, evaluateMode) => {
   tokens = tokens || [];
 
-  return tokens.map(t =>
+  return tokens.map((t) =>
     Object.assign(
       {},
       t,
@@ -19,7 +19,7 @@ const buildTokens = (tokens, evaluateMode) => {
 };
 
 export const getCorrectness = (tokens, selected) => {
-  const correct = tokens.filter(t => t.correct === true);
+  const correct = tokens.filter((t) => t.correct === true);
 
   if (correct.length === 0) {
     return 'unknown';
@@ -43,8 +43,8 @@ export const getCorrectness = (tokens, selected) => {
 };
 
 const getCorrectSelected = (tokens, selected) => {
-  return selected.filter(s => {
-    const index = tokens.findIndex(c => {
+  return (selected || []).filter((s) => {
+    const index = tokens.findIndex((c) => {
       return c.correct && c.start === s.start && c.end === s.end;
     });
     return index !== -1;
@@ -70,46 +70,48 @@ export const getPartialScore = (question, session, totalCorrect) => {
 };
 
 export const outcome = (question, session, env) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }
+
+    session.selectedTokens = session.selectedTokens || [];
 
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
       const enabled = partialScoring.enabled(question, env, true);
-      const totalCorrect = question.tokens.filter(t => t.correct);
+      const totalCorrect = question.tokens.filter((t) => t.correct);
       const score = getPartialScore(question, session, totalCorrect);
       resolve({
-        score: enabled ? score : score === 1 ? 1 : 0
+        score: enabled ? score : score === 1 ? 1 : 0,
       });
     }
   });
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       ...defaults,
-      ...model
+      ...model,
     });
   });
 }
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   feedbackEnabled: true,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question
+  ...question,
 });
 
 export const model = (question, session, env) => {
   session = session || { selectedToken: [] };
   session.selectedTokens = session.selectedTokens || [];
   const normalizedQuestion = normalize(question);
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
     const tokens = buildTokens(
@@ -127,7 +129,7 @@ export const model = (question, session, env) => {
         ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const out = {
         tokens,
         highlightChoices: normalizedQuestion.highlightChoices,
@@ -140,7 +142,7 @@ export const model = (question, session, env) => {
         correctness,
         feedback,
         incorrect:
-          env.mode === 'evaluate' ? correctness !== 'correct' : undefined
+          env.mode === 'evaluate' ? correctness !== 'correct' : undefined,
       };
 
       if (
@@ -164,14 +166,14 @@ export const model = (question, session, env) => {
 };
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { tokens } = question;
-      const selectedTokens = tokens.filter(t => t.correct);
+      const selectedTokens = tokens.filter((t) => t.correct);
 
       resolve({
         id: '1',
-        selectedTokens
+        selectedTokens,
       });
     } else {
       resolve(null);
