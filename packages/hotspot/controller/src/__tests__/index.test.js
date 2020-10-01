@@ -41,6 +41,21 @@ describe('controller', () => {
   });
 
   describe('outcome partialScoring test', () => {
+
+    describe('hanging controller', ()=> {
+
+      it('doesnt hang if answers is missing', async () => {
+        const response = await outcome({}, {id: "1"}, {});
+        expect(response).toEqual({score: 0, empty: true});
+      });
+
+      it('doesnt hang if the rest is missing', async () => {
+        const response = await outcome({}, {id: "1", answers: {}}, {});
+        expect(response).toEqual({score: 0 });
+      });
+      
+    })
+
     beforeEach(() => {
       const rectangles = question.shapes.rectangles.concat({
         id: '5',
