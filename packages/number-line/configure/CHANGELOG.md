@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.6.12...@pie-element/number-line-configure@4.6.13) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
 ## [4.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.6.11...@pie-element/number-line-configure@4.6.12) (2020-09-23)
 
 **Note:** Version bump only for package @pie-element/number-line-configure
