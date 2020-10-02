@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/drawing-response-configure",
   "private": true,
-  "version": "3.1.10",
+  "version": "3.1.11",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
