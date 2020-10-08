@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.6...@pie-element/select-text@6.3.7) (2020-10-02)
+
+
+### Bug Fixes
+
+* handle empty sessions ([3e2cc2d](https://github.com/pie-framework/pie-elements/commit/3e2cc2d))
+
+
+
+
+
+## [6.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.5...@pie-element/select-text@6.3.6) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.4...@pie-element/select-text@6.3.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.3.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.3...@pie-element/select-text@6.3.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.2...@pie-element/select-text@6.3.3) (2020-08-25)
 
 **Note:** Version bump only for package @pie-element/select-text

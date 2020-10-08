@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "5.4.3",
+  "version": "5.4.7",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -12,7 +12,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^3.1.1"
+    "@pie-ui/math-inline": "^3.1.5"
   },
   "pie": {
     "element": "@pie-ui/math-inline"

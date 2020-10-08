@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.6...@pie-element/math-inline@5.4.7) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.5...@pie-element/math-inline@5.4.6) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.4...@pie-element/math-inline@5.4.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.3...@pie-element/math-inline@5.4.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
 ## [5.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.2...@pie-element/math-inline@5.4.3) (2020-08-25)
 
 **Note:** Version bump only for package @pie-element/math-inline

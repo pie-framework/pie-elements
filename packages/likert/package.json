@@ -4,13 +4,13 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/likert": "^0.1.2"
+    "@pie-ui/likert": "^0.1.6"
   },
   "pie": {
     "element": "@pie-ui/likert"

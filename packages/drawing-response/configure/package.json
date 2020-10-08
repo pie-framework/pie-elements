@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/drawing-response-configure",
   "private": true,
-  "version": "3.1.9",
+  "version": "3.1.12",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.27",
-    "@pie-lib/editable-html": "^7.12.11",
+    "@pie-lib/config-ui": "^10.8.30",
+    "@pie-lib/editable-html": "^7.12.12",
     "classnames": "^2.2.6",
     "debug": "^3.1.0",
     "lodash": "^4.17.15",

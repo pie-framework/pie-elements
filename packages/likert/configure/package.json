@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/likert-configure",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.27",
-    "@pie-lib/editable-html": "^7.12.11",
+    "@pie-lib/config-ui": "^10.8.30",
+    "@pie-lib/editable-html": "^7.12.12",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",

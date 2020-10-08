@@ -3,7 +3,7 @@ import {
   getCorrectness,
   model,
   outcome,
-  createCorrectResponseSession
+  createCorrectResponseSession,
 } from '../index';
 import isFunction from 'lodash/isFunction';
 
@@ -12,7 +12,7 @@ const token = (start, end, text, correct) => ({ start, end, text, correct });
 describe('getCorrectness', () => {
   const assert = (tokens, selected, expected) => {
     //set tokens to be correct if not set
-    tokens = tokens.map(t =>
+    tokens = tokens.map((t) =>
       t.correct !== undefined ? t : { ...t, correct: true }
     );
 
@@ -80,32 +80,32 @@ describe('getCorrectness', () => {
   });
 });
 
-const q = extras => ({
+const q = (extras) => ({
   feedbackEnabled: true,
   highlightChoices: true,
   maxSelections: 10,
   tokens: [
     { start: 0, end: 1, text: 'f', correct: true },
     { start: 1, end: 2, text: 'o', correct: false },
-    { start: 2, end: 3, text: 'o', correct: true }
+    { start: 2, end: 3, text: 'o', correct: true },
   ],
   text: 'foo',
-  ...extras
+  ...extras,
 });
 
-const s = extras => ({
+const s = (extras) => ({
   selectedTokens: [],
-  ...extras
+  ...extras,
 });
 
-const e = extras => ({
+const e = (extras) => ({
   mode: 'gather',
-  ...extras
+  ...extras,
 });
 
-const assertFn = fn => (label, question, session, env, expected) => {
+const assertFn = (fn) => (label, question, session, env, expected) => {
   it(label, () =>
-    fn(question, session, env).then(r => {
+    fn(question, session, env).then((r) => {
       if (isFunction(expected)) {
         expected(r);
       } else {
@@ -119,27 +119,37 @@ describe('correct response', () => {
   it('returns correct response if env is correct', async () => {
     const sess = await createCorrectResponseSession(q(), {
       mode: 'gather',
-      role: 'instructor'
+      role: 'instructor',
     });
     expect(sess).toEqual({
       id: '1',
       selectedTokens: [
         { correct: true, end: 1, start: 0, text: 'f' },
-        { correct: true, end: 3, start: 2, text: 'o' }
-      ]
+        { correct: true, end: 3, start: 2, text: 'o' },
+      ],
     });
   });
 
   it('returns null env is student', async () => {
     const noResult = await createCorrectResponseSession(q(), {
       mode: 'gather',
-      role: 'student'
+      role: 'student',
     });
     expect(noResult).toBeNull();
   });
 });
 
 describe('outcome', () => {
+  it.only('handles empty session', async () => {
+    const result = await outcome(
+      { tokens: [] },
+      { id: '1' },
+      { mode: 'evaluate' }
+    );
+    console.log('result:', result);
+    expect(result).toEqual({ score: 0 });
+  });
+
   const assert = assertFn(outcome);
 
   assert(
@@ -151,24 +161,24 @@ describe('outcome', () => {
   );
   assert('score: 0 and empty: true if session is null', q(), null, e(), {
     score: 0,
-    empty: true
+    empty: true,
   });
   assert('score: 0 and empty: true if session is {}', q(), {}, e(), {
     score: 0,
-    empty: true
+    empty: true,
   });
 
   assert('score undefined for gather', q(), s(), e(), { score: undefined });
   assert('score undefined for view', q(), s(), e({ mode: 'view' }), {
-    score: undefined
+    score: undefined,
   });
   assert(
     'score 1 for correct',
     q(),
-    s({ selectedTokens: q().tokens.filter(t => t.correct) }),
+    s({ selectedTokens: q().tokens.filter((t) => t.correct) }),
     e({ mode: 'evaluate' }),
     {
-      score: 1
+      score: 1,
     }
   );
   assert(
@@ -177,7 +187,7 @@ describe('outcome', () => {
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {
-      score: 0.5
+      score: 0.5,
     }
   );
   assert(
@@ -186,40 +196,40 @@ describe('outcome', () => {
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {
-      score: 0
+      score: 0,
     }
   );
   assert(
     'score 0.50 for partially-correct and partialScoring config',
     q({
-      partialScoring: true
+      partialScoring: true,
     }),
     s({ selectedTokens: [q().tokens[0]] }),
     e({ mode: 'evaluate' }),
     {
-      score: 0.5
+      score: 0.5,
     }
   );
   assert(
     'score 0 for partially-correct and partialScoring config with deduction',
     q({
-      partialScoring: true
+      partialScoring: true,
     }),
     s({ selectedTokens: [...q().tokens, { start: 3, end: 4, text: '0' }] }),
     e({ mode: 'evaluate' }),
     {
-      score: 0
+      score: 0,
     }
   );
   assert(
     'score 0.50 for partially-correct and partialScoring config with deduction',
     q({
-      partialScoring: true
+      partialScoring: true,
     }),
     s({ selectedTokens: q().tokens }),
     e({ mode: 'evaluate' }),
     {
-      score: 0.5
+      score: 0.5,
     }
   );
 });
@@ -229,39 +239,39 @@ describe('model', () => {
 
   describe('disabled', () => {
     assert('not disabled for gather', q(), s(), e(), {
-      disabled: false
+      disabled: false,
     });
 
     assert('disabled for evaluate', q(), s(), e({ mode: 'evaluate' }), {
-      disabled: true
+      disabled: true,
     });
 
     assert('disabled for view', q(), s(), e({ mode: 'view' }), {
-      disabled: true
+      disabled: true,
     });
   });
 
   describe('maxSelections', () => {
     assert('maxSelections is set', q(), s(), e(), {
-      maxSelections: 10
+      maxSelections: 10,
     });
   });
 
   describe('highlightChoices', () => {
     assert('highlightChoices is set', q(), s(), e(), {
-      highlightChoices: true
+      highlightChoices: true,
     });
   });
 
   describe('correctness', () => {
     assert('correctness undefined in gather', q(), s(), e(), {
       correctness: undefined,
-      incorrect: undefined
+      incorrect: undefined,
     });
 
     assert('correctness undefined in view', q(), s(), e({ mode: 'view' }), {
       correctness: undefined,
-      incorrect: undefined
+      incorrect: undefined,
     });
 
     assert(
@@ -270,7 +280,7 @@ describe('model', () => {
       undefined,
       e({ mode: 'evaluate' }),
       {
-        correctness: 'incorrect'
+        correctness: 'incorrect',
       }
     );
 
@@ -280,20 +290,21 @@ describe('model', () => {
       null,
       e({ mode: 'evaluate' }),
       {
-        correctness: 'incorrect'
+        correctness: 'incorrect',
       }
     );
 
     assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
-      correctness: 'incorrect'
+      correctness: 'incorrect',
     });
 
     it('does not remove html entities from text', async () => {
-      const text = "<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.<\/p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;<\/p>";
+      const text =
+        '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>';
       const result = await model(
         {
           ...q(),
-          text
+          text,
         },
         s(),
         e()
@@ -305,10 +316,10 @@ describe('model', () => {
 
   describe('feedback', () => {
     assert('feedback is undefined in gather', q(), s(), e(), {
-      feedback: undefined
+      feedback: undefined,
     });
     assert('feedback is undefined in view', q(), s(), e({ mode: 'view' }), {
-      feedback: undefined
+      feedback: undefined,
     });
     assert(
       'feedback is defined in evaluate',
@@ -316,7 +327,7 @@ describe('model', () => {
       s(),
       e({ mode: 'evaluate' }),
       {
-        feedback: 'Incorrect'
+        feedback: 'Incorrect',
       }
     );
     assert(
@@ -325,12 +336,12 @@ describe('model', () => {
       s({
         selectedTokens: [
           { start: 0, end: 1, text: 'f', correct: true },
-          { start: 2, end: 3, text: 'o', correct: true }
-        ]
+          { start: 2, end: 3, text: 'o', correct: true },
+        ],
       }),
       e({ mode: 'evaluate' }),
       {
-        feedback: 'Correct'
+        feedback: 'Correct',
       }
     );
   });
@@ -341,8 +352,8 @@ describe('model', () => {
       q(),
       s(),
       e({ mode: 'gather' }),
-      r => {
-        expect(r.tokens.filter(t => t.correct === undefined).length).toEqual(
+      (r) => {
+        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
           r.tokens.length
         );
       }
@@ -353,8 +364,8 @@ describe('model', () => {
       q(),
       s(),
       e({ mode: 'view' }),
-      r => {
-        expect(r.tokens.filter(t => t.correct === undefined).length).toEqual(
+      (r) => {
+        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
           r.tokens.length
         );
       }
@@ -364,8 +375,10 @@ describe('model', () => {
       q(),
       s(),
       e({ mode: 'evaluate' }),
-      r => {
-        expect(r.tokens.filter(t => t.correct === undefined).length).toEqual(0);
+      (r) => {
+        expect(r.tokens.filter((t) => t.correct === undefined).length).toEqual(
+          0
+        );
       }
     );
   });
@@ -389,59 +402,60 @@ describe('model', () => {
         feedback: {
           correct: {
             default: 'Correct',
-            type: 'none'
+            type: 'none',
           },
           incorrect: {
             default: 'Incorrect',
-            type: 'none'
-          }
+            type: 'none',
+          },
         },
         tokens: [
           {
             start: 0,
             correct: false,
             end: 32,
-            text: '<span>Estaba muy enojado.</span>'
+            text: '<span>Estaba muy enojado.</span>',
           },
           {
             end: 90,
             text: '<span>-Pedro,¿cómo pudiste hacer eso?</span>',
             start: 32,
-            correct: false
+            correct: false,
           },
           {
             start: 90,
             correct: true,
             end: 159,
             text:
-              '<span>¡No debes usar cosas ajenas sin preguntar primero!</span>'
+              '<span>¡No debes usar cosas ajenas sin preguntar primero!</span>',
           },
           {
             start: 159,
             correct: false,
             end: 207,
-            text: '<span>De pronto me sentí terrible.</span>'
+            text: '<span>De pronto me sentí terrible.</span>',
           },
           {
             text:
               '<span>¡Estaba acusando a mi hermano de hacer la misma cosa que yo había hecho!</span>',
             start: 207,
             correct: false,
-            end: 305
+            end: 305,
           },
           {
             start: 305,
             correct: false,
             end: 380,
-            text: '<span>Mi mamá me miró de una forma muy extraña.</span>'
+            text: '<span>Mi mamá me miró de una forma muy extraña.</span>',
           },
           {
             start: 380,
             correct: false,
             end: 461,
-            text: '<span>Ella podía ver que yo sabía lo que había hecho.</span>'
-          }
-        ]
+            text:
+              '<span>Ella podía ver que yo sabía lo que había hecho.</span>',
+          },
+        ],
       };
 
       const result = await model(d, {}, { mode: 'evaluate' });
