@@ -10,7 +10,7 @@
     "@material-ui/core": "^3.9.2",
     "@pie-element/multiple-choice": "^5.5.8",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.30",
+    "@pie-lib/config-ui": "^10.8.31",
     "lodash": "^4.17.15",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
