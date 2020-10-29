@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.1.15...@pie-element/match-configure@4.1.16) (2020-10-29)
+
+**Note:** Version bump only for package @pie-element/match-configure
+
+
+
+
+
 ## [4.1.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.1.14...@pie-element/match-configure@4.1.15) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/match-configure

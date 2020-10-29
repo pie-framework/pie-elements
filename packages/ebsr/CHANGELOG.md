@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.3.9...@pie-element/ebsr@6.3.10) (2020-10-29)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
 ## [6.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.3.8...@pie-element/ebsr@6.3.9) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/ebsr
