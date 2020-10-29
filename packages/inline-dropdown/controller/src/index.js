@@ -33,7 +33,6 @@ export const normalize = (question) => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  console.log(require('@pie-lib/controller-utils'));
   return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
     const { value = {} } = session || {};
