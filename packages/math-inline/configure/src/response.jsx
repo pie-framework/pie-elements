@@ -274,7 +274,7 @@ class Response extends React.Component {
                 value={validation}
               >
                 <MenuItem value="literal">Literal Validation</MenuItem>
-                <MenuItem value="symbolic">Symbolic Validation</MenuItem>
+                {/* Remove symbolic validation PD-690 <MenuItem value="symbolic">Symbolic Validation</MenuItem>*/}
               </Select>
             </InputContainer>
           </div>
