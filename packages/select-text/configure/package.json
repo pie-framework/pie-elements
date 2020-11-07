@@ -8,9 +8,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.36",
-    "@pie-lib/editable-html": "^7.13.4",
-    "@pie-lib/scoring-config": "^3.5.104",
+    "@pie-lib/config-ui": "^10.8.38",
+    "@pie-lib/editable-html": "^7.14.0",
+    "@pie-lib/scoring-config": "^3.5.106",
     "@pie-lib/text-select": "^1.7.2",
     "debug": "^3.1.0",
     "lodash": "^4.17.15",
