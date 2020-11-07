@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.14...@pie-element/rubric-configure@1.2.15) (2020-11-07)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
 ## [1.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.13...@pie-element/rubric-configure@1.2.14) (2020-10-29)
 
 **Note:** Version bump only for package @pie-element/rubric-configure
