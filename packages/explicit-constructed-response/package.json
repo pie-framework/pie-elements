@@ -4,14 +4,14 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "3.7.6",
+  "version": "3.7.9",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/explicit-constructed-response": "^1.7.32"
+    "@pie-ui/explicit-constructed-response": "^1.9.1"
   },
   "pie": {
     "element": "@pie-ui/explicit-constructed-response"

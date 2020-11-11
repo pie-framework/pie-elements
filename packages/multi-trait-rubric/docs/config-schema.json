@@ -1,0 +1,20 @@
+{
+  "description": "Config Object for @pie-elements/multi-trait-rubric",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "showPrompt": {
+      "description": "Determines whether prompt field will be displayed or not",
+      "default": true,
+      "type": "boolean",
+      "title": "showPrompt"
+    },
+    "promptLabel": {
+      "description": "The label for the item stem/prompt field",
+      "default": "Item Stemm",
+      "type": "string",
+      "title": "promptLabel"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

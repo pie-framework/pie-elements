@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.5.6",
+  "version": "4.5.9",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -12,7 +12,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/match": "^2.4.6"
+    "@pie-ui/match": "^2.6.1"
   },
   "pie": {
     "element": "@pie-ui/match"

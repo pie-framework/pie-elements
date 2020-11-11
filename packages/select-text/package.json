@@ -4,10 +4,10 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "6.3.5",
+  "version": "6.3.8",
   "description": "",
   "dependencies": {
-    "@pie-ui/select-text": "^1.6.34"
+    "@pie-ui/select-text": "^1.7.1"
   },
   "pie": {
     "element": "@pie-ui/select-text"
