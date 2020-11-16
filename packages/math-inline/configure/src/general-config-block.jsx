@@ -334,6 +334,7 @@ class GeneralConfigBlock extends React.Component {
       prompt,
       expression,
       equationEditor,
+      promptEquationEditor = 'everything',
       responses,
       responseType,
       rationale,
@@ -375,30 +376,55 @@ class GeneralConfigBlock extends React.Component {
             <EditableHtml
               className={classes.prompt}
               markup={rationale || ''}
+              pluginProps={{
+                math: {
+                  controlledKeypadMode: false
+                }
+              }}
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
             />
           </InputContainer>
         )}
-        {responseType === ResponseTypes.advanced && (
-          <div className={classes.inputContainer}>
+        {responseType === ResponseTypes.advanced && ([
+            <InputContainer
+              key="templateEditorType"
+              label="Response Template Equation Editor"
+              className={classes.selectContainer}
+            >
+              <Select
+                className={classes.select}
+                onChange={this.onChange('promptEquationEditor')}
+                value={promptEquationEditor}
+              >
+                <MenuItem value={1}>Grade 1 - 2</MenuItem>
+                <MenuItem value={3}>Grade 3 - 5</MenuItem>
+                <MenuItem value={6}>Grade 6 - 7</MenuItem>
+                <MenuItem value={8}>Grade 8 - HS</MenuItem>
+                <MenuItem value={'geometry'}>Geometry</MenuItem>
+                <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+                <MenuItem value={'statistics'}>Statistics</MenuItem>
+                <MenuItem value={'everything'}>Everything</MenuItem>
+              </Select>
+            </InputContainer>,
+          <div className={classes.inputContainer} key="templateHolder">
             <InputLabel className={classes.templateTitle}>
               RESPONSE TEMPLATE
             </InputLabel>
             <MathToolbar
               classNames={classNames}
               allowAnswerBlock
+              keypadMode={promptEquationEditor}
               controlledKeypad
               showKeypad={showKeypad}
               latex={prepareForStatic(expression) || ''}
-              keypadMode="everything"
               onChange={this.onChange('expression')}
               onFocus={this.onFocus}
               onDone={this.onDone}
             />
           </div>
-        )}
+        ])}
         <h3>Define Correct Response</h3>
         <div className={classes.flexContainer}>
           <InputContainer
