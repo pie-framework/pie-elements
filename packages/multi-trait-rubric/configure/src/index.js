@@ -3,7 +3,7 @@ import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Main from './initialMain';
+import Main from './main';
 
 export default class MultiTraitRubricElement extends HTMLElement {
   constructor() {
