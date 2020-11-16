@@ -31,7 +31,8 @@ const styles = theme => ({
   },
   traitTile: {
     cursor: 'move',
-    backgroundColor: 'white',
+    backgroundColor: '#fafafa',
+    borderRadius: '4px',
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
