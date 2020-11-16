@@ -27,8 +27,14 @@ const styles = {
     justifyContent: 'flex-end',
     textAlign: 'right'
   },
+  maxPoints: {
+    width: '300px',
+    margin: '16px 0 32px'
+  },
   scaleWrapper: {
     border: '1px solid lightgrey',
+    display: 'flex',
+    flexDirection: 'column',
     padding: '16px',
     margin: '12px 0',
     wordBreak: 'break-word'
@@ -141,6 +147,7 @@ export class Scale extends React.Component {
         />
 
         <TextField
+          classes={{ root: classes.maxPoints }}
           label='Max Points'
           type="number"
           inputProps={{ min: 1, max: 10 }}
