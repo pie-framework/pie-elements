@@ -69,7 +69,7 @@ export class Main extends React.Component {
     const { scales } = model || {};
 
     return (
-      <div style={{ width: '90vw' }}>
+      <div style={{ width: '60vw' }}>
         {scales.map((scale, scaleIndex) => (
           <Scale
             key={`scale-${scaleIndex}`}

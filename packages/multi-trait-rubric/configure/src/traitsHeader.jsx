@@ -69,7 +69,7 @@ class TraitsHeaderTile extends React.Component {
           <div className={classes.subLabel}>Trait Label</div>
           <EditableHtml
             className={classes.editableLabel}
-            markup={traitLabel || 'Label'}
+            markup={traitLabel || 'Trait'}
             onChange={onTraitLabelChange}
             placeholder='Trait Label'
             pluginProps={pluginProps}
