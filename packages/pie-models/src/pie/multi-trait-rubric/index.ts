@@ -1,5 +1,5 @@
 import {PieModel} from '../../PieModel';
-import { PromptConfig } from '../../PromptConfig';
+import {ConfigurePropWithEnabled} from '../ConfigurationProp';
 
 
 interface Trait {
@@ -55,5 +55,9 @@ export interface MultiTraitRubricPie extends PieModel {
  * Config Object for @pie-elements/multi-trait-rubric
  * @additionalProperties false
  */
-export interface MultiTraitRubricConfigure extends PromptConfig {
+export interface MultiTraitRubricConfigure {
+  /**
+   * Configuration for showing the Standards column
+   */
+  showStandards?: ConfigurePropWithEnabled;
 }
