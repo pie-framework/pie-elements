@@ -4,12 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Main from './main';
+import defaults from './defaults';
 
 export default class MultiTraitRubricElement extends HTMLElement {
   constructor() {
     super();
     this._model = {};
-    this._configuration = {};
+    this._configuration = defaults.configuration;
   }
 
   set model(s) {
@@ -17,10 +18,22 @@ export default class MultiTraitRubricElement extends HTMLElement {
     this._render();
   }
 
+
+  set configuration(c) {
+    this._configuration = c;
+    this._render();
+  }
+
   onModelChanged = (m) => {
     this._model = m;
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
+  }
+
+  onConfigurationChanged = (c) => {
+    this._configuration = c;
+
+    this._render();
   }
 
   _render() {

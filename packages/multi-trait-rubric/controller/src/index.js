@@ -13,7 +13,15 @@ export const normalize = question => ({ ...defaults, ...question });
  * @param {*} env
  */
 export async function model(question, session, env) {
-  return normalize(question);
+  const normalizedQuestion = normalize(question);
+
+  if (!env.role || env.role === 'student') {
+    normalizedQuestion.visible = normalizedQuestion.visibleToStudent;
+  } else {
+    normalizedQuestion.visible = true;
+  }
+
+  return normalizedQuestion;
 }
 
 

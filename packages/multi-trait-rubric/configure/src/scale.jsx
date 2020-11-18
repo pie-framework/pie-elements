@@ -28,6 +28,8 @@ const inputStyles = {
   root: {
     'label + &': {
       marginTop: '24px',
+      marginBottom: '24px',
+      width: '180px'
     },
   },
   input: {
@@ -257,7 +259,7 @@ export class Scale extends React.Component {
   }
 
   render() {
-    const { classes, scale, scaleIndex, onScaleChanged } = this.props || {};
+    const { classes, scale, scaleIndex, showStandards, onScaleChanged } = this.props || {};
     const {
       excludeZero,
       maxPoints,
@@ -330,6 +332,7 @@ export class Scale extends React.Component {
           scorePointsLabels={scorePointsLabels}
           onScaleChange={(params) => onScaleChanged(scaleIndex, params)}
           onTraitLabelChange={label => onScaleChanged(scaleIndex, { traitLabel: label })}
+          showStandards={showStandards}
         />
 
         {traits.map((trait, index) => (
@@ -342,6 +345,7 @@ export class Scale extends React.Component {
             onTraitRemoved={() => this.showDeleteTraitModal(index)}
             onTraitChanged={trait => this.onTraitChanged(index, trait)}
             onTraitDropped={this.onTraitDropped}
+            showStandards={showStandards}
           />
         ))}
 
@@ -410,7 +414,8 @@ Scale.propTypes = {
   }),
   scaleIndex: PropTypes.number,
   onScaleChanged: PropTypes.func,
-  onScaleRemoved: PropTypes.func
+  onScaleRemoved: PropTypes.func,
+  showStandards: PropTypes.bool
 }
 
 export default withDragContext(withStyles(styles)(Scale));

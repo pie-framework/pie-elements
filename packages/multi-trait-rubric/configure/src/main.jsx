@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 
 import AddCircle from '@material-ui/icons/AddCircle';
 import { withStyles } from '@material-ui/core/styles';
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { withDragContext } from '@pie-lib/drag';
+import { layout, settings } from '@pie-lib/config-ui';
 
 import Scale from './scale';
+
+const { Panel, toggle } = settings;
 
 const styles = {
   addCircle: {
@@ -64,31 +68,89 @@ export class Main extends React.Component {
     onModelChanged({ ...model, scales });
   }
 
+  onHalfScoringChanged = () => {
+    const { model, onModelChanged } = this.props;
+    let { halfScoring } = model || {};
+
+    onModelChanged({ ...model, halfScoring: !halfScoring });
+  }
+
+  onVisibleToStudentChanged = () => {
+    const { model, onModelChanged } = this.props;
+    let { visibleToStudent } = model || {};
+
+    onModelChanged({ ...model, visibleToStudent: !visibleToStudent });
+  }
+
   render() {
-    const { model, classes } = this.props || {};
-    const { scales } = model || {};
+    const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};
+    const { scales, visibleToStudent, halfScoring } = model || {};
+    const { showStandards } = configuration || {};
 
     return (
-      <div style={{ width: '60vw' }}>
-        {scales.map((scale, scaleIndex) => (
-          <Scale
-            key={`scale-${scaleIndex}`}
-            scale={scale}
-            scaleIndex={scaleIndex}
-            onScaleRemoved={this.onScaleRemoved}
-            onScaleChanged={this.onScaleChanged}
-            {...this.props}
-          />
-        ))}
+      <div className={classes.design}>
+        <layout.ConfigLayout
+          settings={
+            <Panel
+              model={model}
+              onChangeModel={onModelChanged}
+              configuration={configuration}
+              onChangeConfiguration={onConfigurationChanged}
+              groups={{
+                Settings: {
+                  'showStandards.enabled': showStandards.settings && toggle(showStandards.label, true),
+                },
+              }}
+            />
+          }
+        >
+          <div style={{ width: '60vw' }}>
+            <FormControlLabel
+              label="Half Scoring"
+              value="half_scoring"
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={halfScoring}
+                  onChange={this.onHalfScoringChanged}
+                />
+              }
+            />
+
+            <FormControlLabel
+              label="Visible to Students"
+              value="visible_to_students"
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={visibleToStudent}
+                  onChange={this.onVisibleToStudentChanged}
+                />
+              }
+            />
+
+            {scales.map((scale, scaleIndex) => (
+              <Scale
+                key={`scale-${scaleIndex}`}
+                scale={scale}
+                scaleIndex={scaleIndex}
+                onScaleRemoved={this.onScaleRemoved}
+                onScaleChanged={this.onScaleChanged}
+                showStandards={showStandards.enabled}
+                {...this.props}
+              />
+            ))}
 
 
-        <div className={classes.buttonWrapper}>
-          <div>Add Scale</div>
-          <AddCircle
-            classes={{ root: classes.addCircle }}
-            onClick={this.onScaleAdded}
-          />
-        </div>
+            <div className={classes.buttonWrapper}>
+              <div>Add Scale</div>
+              <AddCircle
+                classes={{ root: classes.addCircle }}
+                onClick={this.onScaleAdded}
+              />
+            </div>
+          </div>
+        </layout.ConfigLayout>
       </div>
     );
   }
@@ -97,7 +159,9 @@ export class Main extends React.Component {
 Main.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object,
+  configuration: PropTypes.object,
   onModelChanged: PropTypes.func,
+  onConfigurationChanged: PropTypes.func,
 }
 
 export default withDragContext(withStyles(styles)(Main));

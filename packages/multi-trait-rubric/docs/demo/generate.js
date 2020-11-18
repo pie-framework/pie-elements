@@ -24,7 +24,7 @@ exports.model = (id, element) => ({
         },
         {
           name: 'Organization',
-          standards: ['W.8.2.C.a'],
+          standards: [],
           description: 'the internal structure of the piece',
           scorePointsDescriptors: [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',

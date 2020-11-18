@@ -14,7 +14,7 @@ const styles = {
   },
   traitTile: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: '#f6f6f6',
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
@@ -54,6 +54,7 @@ class TraitsHeaderTile extends React.Component {
       scorePointsLabels,
       traitLabel,
       classes,
+      showStandards,
       onTraitLabelChange,
     } = this.props;
     const pluginProps = {
@@ -76,9 +77,11 @@ class TraitsHeaderTile extends React.Component {
           />
         </div>
 
-        <div className={classes.label}>
-          Standard(s)
-        </div>
+        {showStandards && (
+          <div className={classes.label}>
+            Standard(s)
+          </div>
+        )}
 
         <div className={classes.label}>
           Description
@@ -131,6 +134,7 @@ TraitsHeaderTile.propTypes = {
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
   traitLabel: PropTypes.string,
+  showStandards: PropTypes.bool
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

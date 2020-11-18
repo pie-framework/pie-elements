@@ -4,5 +4,11 @@ export default {
     halfScoring: false,
     scales: []
   },
-  configuration: {}
+  configuration: {
+    showStandards: {
+      settings: false,
+      label: 'Show Standards',
+      enabled: false
+    },
+  }
 };

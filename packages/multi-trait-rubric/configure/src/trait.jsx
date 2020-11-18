@@ -76,6 +76,7 @@ export class TraitTile extends React.Component {
         scorePointsDescriptors
       },
       scorePointsValues,
+      showStandards
     } = this.props;
 
     const dragSourceOpts = {};
@@ -101,13 +102,15 @@ export class TraitTile extends React.Component {
               pluginProps={pluginProps}
             />
 
-            <EditableHtml
-              className={classes.prompt}
-              placeholder="Standards"
-              markup={standards.join(',')}
-              onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
-              pluginProps={pluginProps}
-            />
+            {showStandards && (
+              <EditableHtml
+                className={classes.prompt}
+                placeholder="Standards"
+                markup={standards.join(',')}
+                onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
+                pluginProps={pluginProps}
+              />
+            )}
 
             <EditableHtml
               className={classes.prompt}
@@ -168,7 +171,8 @@ TraitTile.propTypes = {
     scorePointsDescriptors: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
   }),
-  scorePointsValues: PropTypes.arrayOf(PropTypes.number)
+  scorePointsValues: PropTypes.arrayOf(PropTypes.number),
+  showStandards: PropTypes.bool
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);
