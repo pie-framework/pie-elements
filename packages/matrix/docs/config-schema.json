@@ -1,1 +1,54 @@
-{}
+{
+  "description": "Config Object for @pie-elements/matrix",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "teacherInstructions": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "showPrompt": {
+      "description": "Determines whether prompt field will be displayed or not",
+      "default": true,
+      "type": "boolean",
+      "title": "showPrompt"
+    },
+    "promptLabel": {
+      "description": "The label for the item stem/prompt field",
+      "default": "Item Stemm",
+      "type": "string",
+      "title": "promptLabel"
+    }
+  },
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
