@@ -1,7 +1,7 @@
-# @pie-element/likert
+# @pie-element/matrix
 
 
-A [pie][pie]likert component.
+A [pie][pie]matrix component.
 
 
 ## Usage
@@ -9,20 +9,24 @@ A [pie][pie]likert component.
 To use this pie, you need to configure it within an Assessment Item. This means that you'll need to add it to the `index.html` and `config.json` files.
 
 ```html
-<likert-element pie-id="1"></likert-element>
+<matrix-element pie-id="1"></matrix-element>
 ```
 
 ```javascript
 {
   elements: {
-    'likert': '@pie-element/likert-element@^0.0.1'
+    'matrix': '@pie-element/matrix-element@^0.0.1'
   },
   models: [
     {
       id : "1",
-      element: 'likert',
+      element: 'matrix',
       prompt : "How likely are you to report a problem?",
-      // more configuration...
+      labelType: 'agreement',
+      rowLabels: ['I\'m interested in politics.', 'I\'m interested in economics.'],
+      columnLabels: ['Disagree', 'Unsure', 'Agree'],
+      matrixValues: {},
+      prompt: 'How interested are you in the following domains?'
     }
   ]
 ```
@@ -34,7 +38,7 @@ To preview it in that context you'll need the [pie][pie] tool.
 
 ```shell
 npm install -g pie
-cd likert/docs/demo
+cd matrix/docs/demo
 pie serve #will build and serve the pie... then go to http://localhost:4000
 ```
 
