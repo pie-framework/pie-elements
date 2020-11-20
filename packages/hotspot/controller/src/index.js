@@ -119,6 +119,8 @@ export function outcome(config, session, env = {}) {
     if (session.answers) {
       const score = getScore(config, session, env);
       resolve({ score });
+    } else {
+      resolve({score: 0, empty: true})
     }
   });
 }

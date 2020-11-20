@@ -123,7 +123,7 @@ const blacklist = [
 /** Pslb will only support pie packages that have a configure and controller subpkg */
 const listPackages = () => {
   // eslint-disable-next-line no-undef
-  const root = path.resolve(__dirname, '..', 'packages');
+  const root = path.resolve(__dirname, 'packages');
   const files = fs.readdirSync(root);
 
   return _.compact(
@@ -143,7 +143,7 @@ const listPackages = () => {
 
 module.exports = {
   packages: listPackages(),
-  packagesDir: path.resolve(__dirname, '../packages'),
+  packagesDir: path.resolve(__dirname, './packages'),
   type: 'pie-package',
   extensions: {
     commonJs,
@@ -161,7 +161,7 @@ module.exports = {
         repository: 'pie-framework/pie-elements',
         modules: [
           /** make use of the pie-ui shared lib */
-          { name: '@pie-ui/shared-lib', version: '^2.5.0' },
+          { name: '@pie-ui/shared-lib', version: '^3.0.0' },
           { name: '@pie-ui/shared-math-edit', version: '^1.5.0' },
         ],
         /**

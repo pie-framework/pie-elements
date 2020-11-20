@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 // eslint-disable-next-line no-console
@@ -112,7 +112,6 @@ export const model = (question, session, env, updateSession) =>
       correctResponse,
       feedback,
       feedbackEnabled,
-      lockChoiceOrder,
       promptEnabled,
       prompt,
       removeTilesAfterPlacing,
@@ -124,6 +123,8 @@ export const model = (question, session, env, updateSession) =>
     } = normalizedQuestion;
     let { choices } = normalizedQuestion;
     let fb;
+
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (mode === 'evaluate' && feedbackEnabled) {
       fb = await getFeedbackForCorrectness(answerCorrectness.correctness, feedback);

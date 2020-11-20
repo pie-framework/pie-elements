@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.8...@pie-element/explicit-constructed-response@3.7.9) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.7...@pie-element/explicit-constructed-response@3.7.8) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.6...@pie-element/explicit-constructed-response@3.7.7) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.5...@pie-element/explicit-constructed-response@3.7.6) (2020-09-23)
+
+
+### Bug Fixes
+
+* In LP, erroneous score data being returned for some ECRs. (Use responseAreas to determine the max score) PD-570 ([#477](https://github.com/pie-framework/pie-elements/issues/477)) ([491e56d](https://github.com/pie-framework/pie-elements/commit/491e56d))
+
+
+
+
+
+## [3.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.4...@pie-element/explicit-constructed-response@3.7.5) (2020-09-07)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.3...@pie-element/explicit-constructed-response@3.7.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.2...@pie-element/explicit-constructed-response@3.7.3) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.1...@pie-element/explicit-constructed-response@3.7.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
+## [3.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.6.5...@pie-element/explicit-constructed-response@3.7.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response
+
+
+
+
+
 ## [3.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.7.0-next.0...@pie-element/explicit-constructed-response@3.6.5) (2020-05-25)
 
 

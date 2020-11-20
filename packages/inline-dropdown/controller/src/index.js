@@ -1,11 +1,15 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import {
+  lockChoices,
+  getShuffledChoices,
+  partialScoring,
+} from '@pie-lib/controller-utils';
 
 import { getAllCorrectResponses } from './utils';
 
-const getFeedback = correct => {
+const getFeedback = (correct) => {
   if (correct) {
     return 'correct';
   }
@@ -13,7 +17,7 @@ const getFeedback = correct => {
   return 'incorrect';
 };
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
@@ -29,13 +33,14 @@ export const normalize = question => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  return new Promise(async resolve => {
+  console.log(require('@pie-lib/controller-utils'));
+  return new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
     const { value = {} } = session || {};
     let choices = reduce(
       normalizedQuestion.choices,
       (obj, area, key) => {
-        obj[key] = map(area, choice => choice);
+        obj[key] = map(area, (choice) => choice);
 
         return obj;
       },
@@ -80,23 +85,34 @@ export function model(question, session, env, updateSession) {
       }
     }
 
-    if (!normalizedQuestion.lockChoiceOrder) {
-      Object.keys(choices).forEach(async key => {
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+
+    if (!lockChoiceOrder) {
+      const keys = Object.keys(choices);
+      let i;
+
+      for (i = 0; i < keys.length; i++) {
+        const key = keys[i];
+
         choices[key] = await getShuffledChoices(
           choices[key],
           session,
           updateSession,
           'value'
         );
-      });
+      }
     }
 
     let teacherInstructions = null;
     let rationale = null;
 
-    if (env.role === 'instructor' &&
-      (env.mode === 'view' || env.mode === 'evaluate')) {
-      rationale = normalizedQuestion.rationaleEnabled ? normalizedQuestion.rationale : null;
+    if (
+      env.role === 'instructor' &&
+      (env.mode === 'view' || env.mode === 'evaluate')
+    ) {
+      rationale = normalizedQuestion.rationaleEnabled
+        ? normalizedQuestion.rationale
+        : null;
       teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
         : null;
@@ -108,16 +124,19 @@ export function model(question, session, env, updateSession) {
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
-      prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-      shuffle: !normalizedQuestion.lockChoiceOrder,
+      prompt: normalizedQuestion.promptEnabled
+        ? normalizedQuestion.prompt
+        : null,
       markup: normalizedQuestion.markup,
       choices,
       feedback,
 
       responseCorrect:
-        env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined,
+        env.mode === 'evaluate'
+          ? getScore(normalizedQuestion, session) === 1
+          : undefined,
       rationale,
-      teacherInstructions
+      teacherInstructions,
     };
 
     resolve(out);
@@ -174,7 +193,7 @@ export const getScore = (config, session) => {
  *   `model.partialScoring`.
  */
 export function outcome(model, session, env = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
     }
@@ -184,20 +203,21 @@ export function outcome(model, session, env = {}) {
 
     resolve({
       score: partialScoringEnabled ? score : Math.floor(score),
-      empty: false
+      empty: false,
     });
   });
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { choices } = question;
       const value = {};
 
       if (choices) {
         Object.keys(choices).forEach((key, i) => {
-          const correctChoices = choices[key] && choices[key].filter(c => c.correct);
+          const correctChoices =
+            choices[key] && choices[key].filter((c) => c.correct);
 
           value[i] = correctChoices && correctChoices[0].value;
         });
@@ -205,7 +225,7 @@ export const createCorrectResponseSession = (question, env) => {
 
       resolve({
         id: '1',
-        value
+        value,
       });
     } else {
       resolve(null);

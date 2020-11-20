@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.7...@pie-element/match-list@1.11.8) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.6...@pie-element/match-list@1.11.7) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.5...@pie-element/match-list@1.11.6) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.4...@pie-element/match-list@1.11.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.3...@pie-element/match-list@1.11.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.2...@pie-element/match-list@1.11.3) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.1...@pie-element/match-list@1.11.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.11.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.10.5...@pie-element/match-list@1.11.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
 ## [1.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.11.0-next.0...@pie-element/match-list@1.10.5) (2020-05-25)
 
 

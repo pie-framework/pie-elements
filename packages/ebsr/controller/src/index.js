@@ -1,7 +1,8 @@
 import defaults from './defaults';
-import { getShuffledChoices } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices } from '@pie-lib/controller-utils';
 import { isResponseCorrect } from './utils';
-import _ from 'lodash';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
 
 const prepareChoice = (model, env, defaultFeedback) => choice => {
   const out = {
@@ -101,7 +102,10 @@ export async function model(question, session, env, updateSession) {
       resolve();
     });
 
-  if (!normalizedQuestion.partA.lockChoiceOrder) {
+  const partASession = get(session, 'value.partA');
+  const partALockChoiceOrder = lockChoices(normalizedQuestion.partA, partASession, env);
+
+  if (!partALockChoiceOrder) {
     partA.choices = await getShuffledChoices(
       partA.choices,
       { shuffledValues: (session.shuffledValues || {}).partA },
@@ -110,7 +114,10 @@ export async function model(question, session, env, updateSession) {
     );
   }
 
-  if (!normalizedQuestion.partB.lockChoiceOrder) {
+  const partBSession = get(session, 'value.partB');
+  const partBLockChoiceOrder = lockChoices(normalizedQuestion.partB, partBSession, env);
+
+  if (!partBLockChoiceOrder) {
     partB.choices = await getShuffledChoices(
       partB.choices,
       { shuffledValues: (session.shuffledValues || {}).partB },
@@ -119,7 +126,7 @@ export async function model(question, session, env, updateSession) {
     );
   }
 
-  if (!_.isEmpty(shuffledValues)) {
+  if (!isEmpty(shuffledValues)) {
     if (updateSession && typeof updateSession === 'function') {
       updateSession(session.id, session.element, {
         shuffledValues

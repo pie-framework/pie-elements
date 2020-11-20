@@ -4,14 +4,14 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "1.10.5",
+  "version": "1.11.8",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/match-list": "^1.4.32"
+    "@pie-ui/match-list": "^1.6.1"
   },
   "pie": {
     "element": "@pie-ui/match-list"

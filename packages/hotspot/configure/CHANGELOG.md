@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.11...@pie-element/hotspot-configure@4.4.12) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.10...@pie-element/hotspot-configure@4.4.11) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.9...@pie-element/hotspot-configure@4.4.10) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.8...@pie-element/hotspot-configure@4.4.9) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.7...@pie-element/hotspot-configure@4.4.8) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.6...@pie-element/hotspot-configure@4.4.7) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.5...@pie-element/hotspot-configure@4.4.6) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 ## [4.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.4...@pie-element/hotspot-configure@4.4.5) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

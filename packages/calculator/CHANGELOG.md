@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.6...@pie-element/calculator@2.13.7) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.5...@pie-element/calculator@2.13.6) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.4...@pie-element/calculator@2.13.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.3...@pie-element/calculator@2.13.4) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.2...@pie-element/calculator@2.13.3) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.13.1...@pie-element/calculator@2.13.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.13.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.12.1...@pie-element/calculator@2.13.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
 ## [2.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.12.0-next.0...@pie-element/calculator@2.12.1) (2020-05-25)
 
 

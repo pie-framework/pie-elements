@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.12...@pie-element/ruler-configure@2.7.13) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.11...@pie-element/ruler-configure@2.7.12) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.10...@pie-element/ruler-configure@2.7.11) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.9...@pie-element/ruler-configure@2.7.10) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.8...@pie-element/ruler-configure@2.7.9) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.7...@pie-element/ruler-configure@2.7.8) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
+## [2.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.6...@pie-element/ruler-configure@2.7.7) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
 ## [2.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.5...@pie-element/ruler-configure@2.7.6) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/ruler-configure

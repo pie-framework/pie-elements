@@ -1,36 +1,14 @@
-import { model, outcome, getPartialScore, isResponseCorrect, createCorrectResponseSession } from '../index';
+import {
+  model,
+  outcome,
+  getPartialScore,
+  isResponseCorrect,
+  createCorrectResponseSession,
+} from '../index';
 
 jest.mock('../utils', () => ({
-  ...(jest.requireActual('../utils.js')),
-  isResponseCorrect: jest.fn().mockReturnValue(false)
-}));
-
-jest.mock('@pie-lib/controller-utils', () => ({
-  getShuffledChoices: (choices, session, updateSession, key) => {
-    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
-
-    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
-      updateSession();
-    }
-
-    return choices;
-  },
-  partialScoring: {
-    enabled: (config, env) => {
-      config = config || {};
-      env = env || {};
-
-      if (config.partialScoring === false) {
-        return false;
-      }
-
-      if (env.partialScoring === false) {
-        return false;
-      }
-
-      return true;
-    }
-  }
+  ...jest.requireActual('../utils.js'),
+  isResponseCorrect: jest.fn().mockReturnValue(false),
 }));
 
 const rhomb = 'rhomb';
@@ -42,13 +20,13 @@ const responseContainer1 = {
   x: 0,
   y: 0,
   height: '0%',
-  width: '0%'
+  width: '0%',
 };
 const responseContainer2 = {
   x: 1,
   y: 1,
   height: '1%',
-  width: '1%'
+  width: '1%',
 };
 
 describe('controller', () => {
@@ -61,78 +39,108 @@ describe('controller', () => {
         src: '',
         width: 0,
         scale: false,
-        height: 0
+        height: 0,
       },
       validation: {
         valid_response: {
           score: 1,
           value: [
             [rhomb, square],
-            [rhomb, square, trapeze]
-          ]
-        }
+            [rhomb, square, trapeze],
+          ],
+        },
       },
       possible_responses: [rhomb, hexagon, square, trapeze],
       response_containers: [responseContainer1, responseContainer2],
       duplicate_responses: true,
       max_response_per_zone: 5,
-      partialScoring: false
+      partialScoring: false,
     };
   });
 
   describe('outcome partialScoring test', () => {
     const assertOutcome = (message, extra, sessionValue, env, expected) => {
       it(message, async () => {
-        const result = await outcome({ ...question, ...extra }, sessionValue, env);
+        const result = await outcome(
+          { ...question, ...extra },
+          sessionValue,
+          env
+        );
 
         expect(result).toEqual(expect.objectContaining(expected));
       });
     };
 
-    assertOutcome('element.partialScoring = true',
-      { partialScoring: true }, { answers: [
+    assertOutcome(
+      'element.partialScoring = true',
+      { partialScoring: true },
+      {
+        answers: [
           { value: rhomb, containerIndex: 0 },
           { value: square, containerIndex: 0 },
           { value: rhomb, containerIndex: 1 },
           { value: square, containerIndex: 1 },
-          { value: trapeze, containerIndex: 0 }
-        ]
-      }, { mode: 'evaluate' }, { score: 0.2 });
+          { value: trapeze, containerIndex: 0 },
+        ],
+      },
+      { mode: 'evaluate' },
+      { score: 0.2 }
+    );
 
-    assertOutcome('element.partialScoring = false',
-      { partialScoring: false }, { answers: [
+    assertOutcome(
+      'element.partialScoring = false',
+      { partialScoring: false },
+      {
+        answers: [
           { value: rhomb, containerIndex: 0 },
           { value: square, containerIndex: 0 },
           { value: rhomb, containerIndex: 1 },
           { value: square, containerIndex: 1 },
-          { value: trapeze, containerIndex: 0 }
-        ]
-      }, { mode: 'evaluate' }, { score: 0 });
+          { value: trapeze, containerIndex: 0 },
+        ],
+      },
+      { mode: 'evaluate' },
+      { score: 0 }
+    );
 
-    assertOutcome('element.partialScoring = false, env.partialScoring = true',
-      { partialScoring: false }, { answers: [
+    assertOutcome(
+      'element.partialScoring = false, env.partialScoring = true',
+      { partialScoring: false },
+      {
+        answers: [
           { value: rhomb, containerIndex: 0 },
           { value: square, containerIndex: 0 },
           { value: rhomb, containerIndex: 1 },
           { value: square, containerIndex: 1 },
-          { value: trapeze, containerIndex: 0 }
-        ]
-      }, { mode: 'evaluate', partialScoring: true }, { score: 0 });
+          { value: trapeze, containerIndex: 0 },
+        ],
+      },
+      { mode: 'evaluate', partialScoring: true },
+      { score: 0 }
+    );
 
-    assertOutcome('element.partialScoring = true, env.partialScoring = false',
-      { partialScoring: true }, { answers: [
+    assertOutcome(
+      'element.partialScoring = true, env.partialScoring = false',
+      { partialScoring: true },
+      {
+        answers: [
           { value: rhomb, containerIndex: 0 },
           { value: square, containerIndex: 0 },
           { value: rhomb, containerIndex: 1 },
           { value: square, containerIndex: 1 },
-          { value: trapeze, containerIndex: 0 }
-        ]
-      }, { mode: 'evaluate', partialScoring: false }, { score: 0 });
+          { value: trapeze, containerIndex: 0 },
+        ],
+      },
+      { mode: 'evaluate', partialScoring: false },
+      { score: 0 }
+    );
   });
 
   describe('outcome', () => {
-    const returnOutcome = session => {
-      it(`returns score of 0 and empty: true if session is ${JSON.stringify(session)}`, async () => {
+    const returnOutcome = (session) => {
+      it(`returns score of 0 and empty: true if session is ${JSON.stringify(
+        session
+      )}`, async () => {
         const result = await outcome(question, session);
         expect(result).toEqual({ score: 0, empty: true });
       });
@@ -143,25 +151,22 @@ describe('controller', () => {
     returnOutcome({});
 
     it('returns score of 0', async () => {
-      const result = await outcome(
-        question,
-        { answers: [{ value: rhomb, containerIndex: 0 }] }
-      );
+      const result = await outcome(question, {
+        answers: [{ value: rhomb, containerIndex: 0 }],
+      });
       expect(result.score).toEqual(0);
     });
 
     it('returns score of 1', async () => {
-      const result = await outcome(
-        question,
-        { answers: [
-            { value: rhomb, containerIndex: 0 },
-            { value: square, containerIndex: 0 },
-            { value: rhomb, containerIndex: 1 },
-            { value: square, containerIndex: 1 },
-            { value: trapeze, containerIndex: 1 }
-          ]
-        }
-      );
+      const result = await outcome(question, {
+        answers: [
+          { value: rhomb, containerIndex: 0 },
+          { value: square, containerIndex: 0 },
+          { value: rhomb, containerIndex: 1 },
+          { value: square, containerIndex: 1 },
+          { value: trapeze, containerIndex: 1 },
+        ],
+      });
       expect(result.score).toEqual(1);
     });
 
@@ -173,23 +178,21 @@ describe('controller', () => {
               ...question,
               validation: {
                 ...question.validation,
-                alt_responses: [{
-                  score: 1,
-                  value: [
-                    [rhomb],
-                    [square],
-                    [trapeze],
-                    [hexagon]
-                  ]
-                }]
-              }
+                alt_responses: [
+                  {
+                    score: 1,
+                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                  },
+                ],
+              },
             },
-            { answers: [
+            {
+              answers: [
                 { value: rhomb, containerIndex: 0 },
                 { value: square, containerIndex: 1 },
                 { value: trapeze, containerIndex: 2 },
-                { value: hexagon, containerIndex: 3 }
-              ]
+                { value: hexagon, containerIndex: 3 },
+              ],
             }
           );
           expect(result.score).toEqual(1);
@@ -201,23 +204,21 @@ describe('controller', () => {
               ...question,
               validation: {
                 ...question.validation,
-                alt_responses: [{
-                  score: 1,
-                  value: [
-                    [rhomb],
-                    [square],
-                    [trapeze],
-                    [hexagon]
-                  ]
-                }]
-              }
+                alt_responses: [
+                  {
+                    score: 1,
+                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                  },
+                ],
+              },
             },
-            { answers: [
+            {
+              answers: [
                 { value: rhomb, containerIndex: 3 },
                 { value: square, containerIndex: 1 },
                 { value: trapeze, containerIndex: 2 },
-                { value: hexagon, containerIndex: 0 }
-              ]
+                { value: hexagon, containerIndex: 0 },
+              ],
             }
           );
           expect(result.score).toEqual(0);
@@ -231,31 +232,25 @@ describe('controller', () => {
               ...question,
               validation: {
                 ...question.validation,
-                alt_responses: [{
-                  score: 1,
-                  value: [
-                    [square],
-                    [rhomb],
-                    [hexagon],
-                    [trapeze]
-                  ]
-                }, {
-                  score: 1,
-                  value: [
-                    [rhomb],
-                    [square],
-                    [trapeze],
-                    [hexagon]
-                  ]
-                }]
-              }
+                alt_responses: [
+                  {
+                    score: 1,
+                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                  },
+                  {
+                    score: 1,
+                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                  },
+                ],
+              },
             },
-            { answers: [
+            {
+              answers: [
                 { value: rhomb, containerIndex: 0 },
                 { value: square, containerIndex: 1 },
                 { value: trapeze, containerIndex: 2 },
-                { value: hexagon, containerIndex: 3 }
-              ]
+                { value: hexagon, containerIndex: 3 },
+              ],
             }
           );
           expect(result.score).toEqual(1);
@@ -267,31 +262,25 @@ describe('controller', () => {
               ...question,
               validation: {
                 ...question.validation,
-                alt_responses: [{
-                  score: 1,
-                  value: [
-                    [square],
-                    [rhomb],
-                    [hexagon],
-                    [trapeze]
-                  ]
-                }, {
-                  score: 1,
-                  value: [
-                    [rhomb],
-                    [square],
-                    [trapeze],
-                    [hexagon]
-                  ]
-                }]
-              }
+                alt_responses: [
+                  {
+                    score: 1,
+                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                  },
+                  {
+                    score: 1,
+                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                  },
+                ],
+              },
             },
-            { answers: [
+            {
+              answers: [
                 { value: rhomb, containerIndex: 3 },
                 { value: square, containerIndex: 1 },
                 { value: trapeze, containerIndex: 2 },
-                { value: hexagon, containerIndex: 0 }
-              ]
+                { value: hexagon, containerIndex: 0 },
+              ],
             }
           );
           expect(result.score).toEqual(0);
@@ -325,7 +314,7 @@ describe('controller', () => {
           src: '',
           width: 0,
           scale: false,
-          height: 0
+          height: 0,
         });
       });
 
@@ -335,16 +324,16 @@ describe('controller', () => {
             score: 1,
             value: [
               [rhomb, square],
-              [rhomb, square, trapeze]
-            ]
-          }
+              [rhomb, square, trapeze],
+            ],
+          },
         });
       });
 
       it('returns responseContainers', () => {
         expect(result.responseContainers).toEqual([
           responseContainer1,
-          responseContainer2
+          responseContainer2,
         ]);
       });
 
@@ -385,12 +374,20 @@ describe('controller', () => {
         expect(result.responseCorrect).toEqual(false);
       });
 
-      const returnModel = sess => {
-        it(`returns responseCorrect: false if session is ${JSON.stringify(sess)}`, async () => {
-          const result = await model(question, sess, env = { mode: 'evaluate' });
-          expect(result).toEqual(expect.objectContaining({
-            responseCorrect: false
-          }));
+      const returnModel = (sess) => {
+        it(`returns responseCorrect: false if session is ${JSON.stringify(
+          sess
+        )}`, async () => {
+          const result = await model(
+            question,
+            sess,
+            (env = { mode: 'evaluate' })
+          );
+          expect(result).toEqual(
+            expect.objectContaining({
+              responseCorrect: false,
+            })
+          );
         });
       };
 
@@ -401,7 +398,7 @@ describe('controller', () => {
   });
 
   describe('getPartialScore', () => {
-    const returnPartialScore = sess => {
+    const returnPartialScore = (sess) => {
       it(`returns score of 0 if session is ${JSON.stringify(sess)}`, () => {
         const result = getPartialScore(question, sess);
         expect(result).toEqual(0);
@@ -414,7 +411,7 @@ describe('controller', () => {
   });
 
   describe('isResponseCorrect', () => {
-    const returnIsResponseCorrect = sess => {
+    const returnIsResponseCorrect = (sess) => {
       it(`returns score of 0 if session is ${JSON.stringify(sess)}`, () => {
         const result = isResponseCorrect([], sess);
         expect(result).toEqual(false);
@@ -434,7 +431,7 @@ describe('createCorrectResponseSession', () => {
       src: 'https://app.fluence.net/ia/image/6412223997a34018b15f8512bee6c04c',
       width: 465,
       scale: false,
-      height: 313
+      height: 313,
     },
     response_containers: [
       {
@@ -444,7 +441,7 @@ describe('createCorrectResponseSession', () => {
         width: '35.70%',
         y: 1.6,
         height: '23.64%',
-        aria_label: ''
+        aria_label: '',
       },
       {
         pointer: 'undefined',
@@ -453,12 +450,12 @@ describe('createCorrectResponseSession', () => {
         width: '35.92%',
         y: 39.62,
         height: '23.32%',
-        aria_label: ''
-      }
+        aria_label: '',
+      },
     ],
     possible_responses: [
       '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
-      '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'
+      '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
     ],
     validation: {
       scoring_type: 'exactMatch',
@@ -466,66 +463,76 @@ describe('createCorrectResponseSession', () => {
         score: 1,
         value: [
           [
-            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'
+            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
           ],
           [
-            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>'
-          ]
-        ]
-      }
-    }
+            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          ],
+        ],
+      },
+    },
   };
 
   it('returns correct response if role is instructor and mode is gather', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'gather',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
       answers: [
         {
-          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
-          containerIndex: 0
+          value:
+            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          containerIndex: 0,
         },
         {
-          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
-          containerIndex: 1
-        }
+          value:
+            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          containerIndex: 1,
+        },
       ],
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns correct response if role is instructor and mode is view', async () => {
     const sess = await createCorrectResponseSession(question, {
       mode: 'view',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(sess).toEqual({
       answers: [
         {
-          value: '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
-          containerIndex: 0
+          value:
+            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
+          containerIndex: 0,
         },
         {
-          value: '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
-          containerIndex: 1
-        }
+          value:
+            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
+          containerIndex: 1,
+        },
       ],
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns null if mode is evaluate', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'evaluate', role: 'instructor' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'evaluate',
+      role: 'instructor',
+    });
 
     expect(noResult).toBeNull();
   });
 
   it('returns null if role is student', async () => {
-    const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
+    const noResult = await createCorrectResponseSession(question, {
+      mode: 'gather',
+      role: 'student',
+    });
 
     expect(noResult).toBeNull();
   });

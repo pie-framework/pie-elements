@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.9...@pie-element/select-text-controller@4.1.10) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.8...@pie-element/select-text-controller@4.1.9) (2020-10-02)
+
+
+### Bug Fixes
+
+* handle empty sessions ([3e2cc2d](https://github.com/pie-framework/pie-elements/commit/3e2cc2d))
+
+
+
+
+
+## [4.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.7...@pie-element/select-text-controller@4.1.8) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.6...@pie-element/select-text-controller@4.1.7) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.5...@pie-element/select-text-controller@4.1.6) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
 ## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.4...@pie-element/select-text-controller@4.1.5) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/select-text-controller

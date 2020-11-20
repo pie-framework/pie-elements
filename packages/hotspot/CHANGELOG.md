@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.7...@pie-element/hotspot@4.7.8) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.6...@pie-element/hotspot@4.7.7) (2020-10-02)
+
+
+### Bug Fixes
+
+* PD-612 - hotspot hanging ([a00aa5c](https://github.com/pie-framework/pie-elements/commit/a00aa5c))
+
+
+
+
+
+## [4.7.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.5...@pie-element/hotspot@4.7.6) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.4...@pie-element/hotspot@4.7.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.3...@pie-element/hotspot@4.7.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.2...@pie-element/hotspot@4.7.3) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.1...@pie-element/hotspot@4.7.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.6.4...@pie-element/hotspot@4.7.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
 ## [4.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.0-next.0...@pie-element/hotspot@4.6.4) (2020-05-25)
 
 

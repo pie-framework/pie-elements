@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.2.1...@pie-element/pie-models@10.2.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [10.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.1.0...@pie-element/pie-models@10.2.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
 # [10.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@9.1.0-bm.0...@pie-element/pie-models@10.1.0) (2020-05-25)
 
 

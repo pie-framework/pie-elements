@@ -1,36 +1,8 @@
 import _ from 'lodash';
 import * as controller from '../index';
 
-jest.mock('@pie-lib/controller-utils', () => ({
-  getShuffledChoices: (choices, session, updateSession, key) => {
-    const currentShuffled = ((session || {}).shuffledValues || []).filter(v => v);
-
-    if (session && !currentShuffled.length && updateSession && typeof updateSession === 'function') {
-      updateSession();
-    }
-
-    return choices;
-  },
-  partialScoring: {
-    enabled: (config, env) => {
-      config = config || {};
-      env = env || {};
-
-      if (config.partialScoring === false) {
-        return false;
-      }
-
-      if (env.partialScoring === false) {
-        return false;
-      }
-
-      return true;
-    }
-  }
-}));
-
 describe('index', () => {
-  let base = o => {
+  let base = (o) => {
     o = _.merge(
       {
         prompt: 'hi',
@@ -38,7 +10,7 @@ describe('index', () => {
         choices: [],
         correctResponse: [],
         lockChoiceOrder: true,
-        feedbackEnabled: true
+        feedbackEnabled: true,
       },
       o
     );
@@ -66,7 +38,7 @@ describe('index', () => {
 
     it(
       'returns prompt',
-      assertModel(base(), {}, {}, m => expect(m.prompt).toEqual('hi'))
+      assertModel(base(), {}, {}, (m) => expect(m.prompt).toEqual('hi'))
     );
 
     it(
@@ -89,7 +61,7 @@ describe('index', () => {
       assertModel(
         base({
           correctResponse: ['a', 'b'],
-          feedback: { correct: { type: 'custom', custom: 'foo' } }
+          feedback: { correct: { type: 'custom', custom: 'foo' } },
         }),
         { value: ['a', 'b'] },
         { mode: 'evaluate' },
@@ -106,8 +78,8 @@ describe('index', () => {
         choices: [
           { label: 'a', id: 'a' },
           { label: 'b', id: 'b' },
-          { label: 'c', id: 'c' }
-        ]
+          { label: 'c', id: 'c' },
+        ],
       });
 
       session = { value: ['a', 'b', 'c'] };
@@ -123,8 +95,8 @@ describe('index', () => {
             choices: [
               { id: 'a', label: 'a' },
               { id: 'b', label: 'b' },
-              { label: 'c', id: 'c' }
-            ]
+              { label: 'c', id: 'c' },
+            ],
           }
         )
       );
@@ -136,8 +108,8 @@ describe('index', () => {
           outcomes: [
             { id: 'a', outcome: 'correct' },
             { id: 'b', outcome: 'correct' },
-            { id: 'c', outcome: 'correct' }
-          ]
+            { id: 'c', outcome: 'correct' },
+          ],
         })
       );
 
@@ -148,8 +120,8 @@ describe('index', () => {
           outcomes: [
             { id: 'c', outcome: 'correct' },
             { id: 'b', outcome: 'correct' },
-            { id: 'a', outcome: 'correct' }
-          ]
+            { id: 'a', outcome: 'correct' },
+          ],
         })
       );
 
@@ -157,7 +129,7 @@ describe('index', () => {
       it(
         'returns outcomes - 1 correct',
         assertModel(model, { value: ['a'] }, env, {
-          outcomes: [{ id: 'a', outcome: 'correct' }]
+          outcomes: [{ id: 'a', outcome: 'correct' }],
         })
       );
 
@@ -165,7 +137,7 @@ describe('index', () => {
       it(
         'returns outcomes for alternate - 1 correct',
         assertModel(model, { value: ['c'] }, env, {
-          outcomes: [{ id: 'c', outcome: 'correct' }]
+          outcomes: [{ id: 'c', outcome: 'correct' }],
         })
       );
 
@@ -179,15 +151,15 @@ describe('index', () => {
         assertModel(model, { value: ['b', 'a'] }, env, {
           outcomes: [
             { id: 'b', outcome: 'incorrect' },
-            { id: 'a', outcome: 'incorrect' }
-          ]
+            { id: 'a', outcome: 'incorrect' },
+          ],
         })
       );
 
       it(
         'returns config.correctResponse - 2 - incorrect',
         assertModel(model, { value: ['b', 'a'] }, env, {
-          correctResponse: ['a', 'b', 'c']
+          correctResponse: ['a', 'b', 'c'],
         })
       );
     });
@@ -200,9 +172,9 @@ describe('index', () => {
           choices: [
             { label: 'a', id: 'a' },
             { label: 'b', id: 'b' },
-            { label: 'c', id: 'c' }
+            { label: 'c', id: 'c' },
           ],
-          lockChoiceOrder: false
+          lockChoiceOrder: false,
         });
         const updateSession = jest.fn().mockResolvedValue();
         await controller.model(question, session, env, updateSession);
@@ -211,7 +183,7 @@ describe('index', () => {
     });
 
     describe('session not set', () => {
-      const assertModelCorrectness = session => {
+      const assertModelCorrectness = (session) => {
         it(`returns correctness: incorrect of session is ${JSON.stringify(
           session
         )}`, async () => {
@@ -236,14 +208,14 @@ describe('index', () => {
         choices: [
           { label: 'a', id: 'a' },
           { label: 'b', id: 'b' },
-          { label: 'c', id: 'c' }
-        ]
+          { label: 'c', id: 'c' },
+        ],
       });
 
       it('returns correct response if env is correct', async () => {
         const sess = await controller.createCorrectResponseSession(model, {
           mode: 'gather',
-          role: 'instructor'
+          role: 'instructor',
         });
         expect(sess).toEqual({ id: '1', value: ['a', 'b', 'c'] });
       });
@@ -251,7 +223,7 @@ describe('index', () => {
       it('returns null env is student', async () => {
         const noResult = await controller.createCorrectResponseSession(model, {
           mode: 'gather',
-          role: 'student'
+          role: 'student',
         });
         expect(noResult).toBeNull();
       });
@@ -273,7 +245,7 @@ describe('index', () => {
           controller.questionError()
         ));
     };
-    const assertOutcomeSessionNotset = session => {
+    const assertOutcomeSessionNotset = (session) => {
       it(`return score: 0 and empty: true if session is ${JSON.stringify(
         session
       )}`, () =>
@@ -295,7 +267,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']]
+        alternateResponses: [['c']],
       },
       ['a'],
       1
@@ -304,7 +276,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']]
+        alternateResponses: [['c']],
       },
       ['b'],
       0
@@ -312,7 +284,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['b', 'c', 'a']]
+        alternateResponses: [['b', 'c', 'a']],
       },
       ['c', 'a', 'b'],
       0.33
@@ -325,7 +297,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']]
+        alternateResponses: [['a', 'c', 'b']],
       },
       ['a', 'b'],
       0.33
@@ -334,7 +306,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'b']]
+        alternateResponses: [['a', 'b']],
       },
       ['c', 'a', 'b'],
       0.33
@@ -343,7 +315,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']]
+        alternateResponses: [['a', 'c', 'b']],
       },
       ['a', 'b'],
       0
@@ -352,7 +324,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'b']]
+        alternateResponses: [['a', 'b']],
       },
       ['c', 'a', 'b'],
       0,
@@ -364,7 +336,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']]
+        alternateResponses: [['c']],
       },
       ['c'],
       1
@@ -373,7 +345,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']]
+        alternateResponses: [['c']],
       },
       ['b'],
       0
@@ -381,7 +353,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']]
+        alternateResponses: [['c', 'b', 'a']],
       },
       ['c', 'a', 'b'],
       0.67
@@ -394,7 +366,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']]
+        alternateResponses: [['c', 'b', 'a']],
       },
       ['c', 'b'],
       0.33
@@ -403,7 +375,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']]
+        alternateResponses: [['a', 'c', 'b']],
       },
       ['c', 'a', 'b'],
       0.67
@@ -412,7 +384,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']]
+        alternateResponses: [['a', 'c', 'b']],
       },
       ['a', 'b'],
       0
@@ -421,7 +393,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']]
+        alternateResponses: [['a', 'c', 'b']],
       },
       ['c', 'a', 'b'],
       0,

@@ -10,23 +10,8 @@ import {
   equalParabola,
   constructSegmentsFromPoints,
   removeDuplicateSegments,
-  removeInvalidSegments
+  removeInvalidSegments,
 } from '../utils';
-
-jest.mock('@pie-lib/controller-utils', () => ({
-  partialScoring: {
-    enabled: (config, env) => {
-      config = config || {};
-      env = env || {};
-
-      if (config.partialScoring === false) {
-        return false;
-      }
-
-      return env.partialScoring !== false;
-    }
-  }
-}));
 
 // p = point, n = -
 // eg.: A(0, -6) => p0_n6
@@ -68,7 +53,7 @@ describe('equalPoint', () => {
     [p0_0, p0_0, true],
     [p10_10, p10_10, true],
     [p2_3, p1_10, false],
-    [p0_0, p1_0, false]
+    [p0_0, p1_0, false],
   ])('%j, %j => %s', (pointA, pointB, expected) => {
     const result = equalPoint(pointA, pointB);
 
@@ -176,10 +161,13 @@ describe('equalLine', () => {
     [{ from: pn10_n10, to: p0_0 }, { from: pn1_n1, to: p22_22 }, true],
 
     // A(-10, -10), B(0, 0), C(-1, -1), D(22, 23)
-    [{ from: pn10_n10, to: p0_0 }, { from: pn1_n1, to: { x: 22, y: 23 } }, false],
+    [
+      { from: pn10_n10, to: p0_0 },
+      { from: pn1_n1, to: { x: 22, y: 23 } },
+      false,
+    ],
 
     [{ from: p0_0, to: p1_0 }, { from: p10_10, to: p1_0 }, false],
-
   ])('%j, %j => %s', (l1, l2, expected) => {
     const result = equalLine(l1, l2);
 
@@ -206,7 +194,9 @@ describe('equalRay', () => {
 
 describe('equalPolygon', () => {
   const assert = (pointsA, pointsB, expected) => {
-    it(`[${JSON.stringify(pointsA)}], [${JSON.stringify(pointsB)}] ${expected ? 'are' : 'are not'} equal`, () => {
+    it(`[${JSON.stringify(pointsA)}], [${JSON.stringify(pointsB)}] ${
+      expected ? 'are' : 'are not'
+    } equal`, () => {
       const result = equalPolygon({ points: pointsA }, { points: pointsB });
 
       expect(result).toEqual(expected);
@@ -279,14 +269,14 @@ describe('equalPolygon', () => {
     [
       { x: 0, y: 0 },
       { x: 1, y: 1 },
-      { x: 2, y: 2 }
+      { x: 2, y: 2 },
     ],
     [
       { x: 1, y: 1 },
       { x: 0, y: 0 },
       { x: 2, y: 2 },
       { x: 3, y: 0 },
-      { x: 2, y: 2 }
+      { x: 2, y: 2 },
     ],
     false
   );
@@ -310,9 +300,9 @@ describe('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
     it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
       sine1.edge.y
-      })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
+    })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
       sine2.edge.y
-      })] ${expected ? 'are' : 'are not'} equal`, () => {
+    })] ${expected ? 'are' : 'are not'} equal`, () => {
       const result = equalSine(sine1, sine2);
 
       expect(result).toEqual(expected);
@@ -417,9 +407,9 @@ describe('equalParabola', () => {
   const assert = (p1, p2, expected) => {
     it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${
       p2.root.x
-      },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
+    },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
       expected ? 'are' : 'are not'
-      } equal`, () => {
+    } equal`, () => {
       const result = equalParabola(p1, p2);
 
       expect(result).toEqual(expected);
@@ -553,38 +543,52 @@ describe('equalParabola', () => {
 
   // a = -1, b = -9, c = 3
   assert(
-    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
-    { root: { x: -4.5, y: 93 / 4 }, edge: { x: (Math.sqrt(93) / 2) - 4.5, y: 0 } },
+    {
+      root: { x: -4.5, y: 93 / 4 },
+      edge: { x: -4.5 - Math.sqrt(93) / 2, y: 0 },
+    },
+    {
+      root: { x: -4.5, y: 93 / 4 },
+      edge: { x: Math.sqrt(93) / 2 - 4.5, y: 0 },
+    },
     true
   );
 
   assert(
-    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
+    {
+      root: { x: -4.5, y: 93 / 4 },
+      edge: { x: -4.5 - Math.sqrt(93) / 2, y: 0 },
+    },
     { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.31 } },
     true
   );
 
   assert(
-    { root: { x: -4.5, y: 93 / 4 }, edge: { x: -4.5 - (Math.sqrt(93) / 2), y: 0 } },
+    {
+      root: { x: -4.5, y: 93 / 4 },
+      edge: { x: -4.5 - Math.sqrt(93) / 2, y: 0 },
+    },
     { root: { x: -4.5, y: 93 / 4 }, edge: { x: -67.9, y: -3996.3000009 } },
     false
   );
 });
 
-
 describe('constructSegmentsFromPoints', () => {
   test.each([
     [
       [p0_0, p22_22],
-      [{ from: p0_0, to: p22_22 }, { from: p22_22, to: p0_0 }]
+      [
+        { from: p0_0, to: p22_22 },
+        { from: p22_22, to: p0_0 },
+      ],
     ],
     [
       [p0_0, p22_22, pn1_n1],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
-        { from: pn1_n1, to: p0_0 }
-      ]
+        { from: pn1_n1, to: p0_0 },
+      ],
     ],
     [
       [p0_0, p22_22, pn1_n1, p1_0],
@@ -592,8 +596,8 @@ describe('constructSegmentsFromPoints', () => {
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p1_0 },
-        { from: p1_0, to: p0_0 }
-      ]
+        { from: p1_0, to: p0_0 },
+      ],
     ],
     [
       [p0_0, p22_22, pn1_n1, p1_0, p30_0],
@@ -602,12 +606,12 @@ describe('constructSegmentsFromPoints', () => {
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p1_0 },
         { from: p1_0, to: p30_0 },
-        { from: p30_0, to: p0_0 }
-      ]
+        { from: p30_0, to: p0_0 },
+      ],
     ],
     [undefined, []],
     [null, []],
-    [[], []]
+    [[], []],
   ])('points: %j, segments: %j', (points, segments) => {
     expect(constructSegmentsFromPoints(points)).toEqual(segments);
   });
@@ -616,8 +620,11 @@ describe('constructSegmentsFromPoints', () => {
 describe('removeDuplicateSegments', () => {
   test.each([
     [
-      [{ from: p0_0, to: p22_22 }, { from: p22_22, to: p0_0 }],
-      [{ from: p0_0, to: p22_22 }]
+      [
+        { from: p0_0, to: p22_22 },
+        { from: p22_22, to: p0_0 },
+      ],
+      [{ from: p0_0, to: p22_22 }],
     ],
     [
       [
@@ -626,13 +633,13 @@ describe('removeDuplicateSegments', () => {
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p0_0 },
         { from: pn1_n1, to: p0_0 },
-        { from: p0_0, to: pn1_n1 }
+        { from: p0_0, to: pn1_n1 },
       ],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
-        { from: pn1_n1, to: p0_0 }
-      ]
+        { from: pn1_n1, to: p0_0 },
+      ],
     ],
     [
       [
@@ -643,14 +650,14 @@ describe('removeDuplicateSegments', () => {
         { from: pn1_n1, to: p1_0 },
         { from: pn1_n1, to: p22_22 },
         { from: p1_0, to: pn1_n1 },
-        { from: p1_0, to: p0_0 }
+        { from: p1_0, to: p0_0 },
       ],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p1_0 },
-        { from: p1_0, to: p0_0 }
-      ]
+        { from: p1_0, to: p0_0 },
+      ],
     ],
     [
       [
@@ -668,42 +675,53 @@ describe('removeDuplicateSegments', () => {
         { from: p30_0, to: p1_0 },
         { from: p30_0, to: p0_0 },
         { from: p30_0, to: p0_0 },
-        { from: p0_0, to: p30_0 }
+        { from: p0_0, to: p30_0 },
       ],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p1_0 },
         { from: p1_0, to: p30_0 },
-        { from: p30_0, to: p0_0 }
-      ]
+        { from: p30_0, to: p0_0 },
+      ],
     ],
     [undefined, []],
     [null, []],
-    [[], []]
-  ])('segments: %j, segments without duplicates: %j', (segments, segmentsWithoutDuplicates) => {
-    expect(removeDuplicateSegments(segments)).toEqual(segmentsWithoutDuplicates);
-  });
+    [[], []],
+  ])(
+    'segments: %j, segments without duplicates: %j',
+    (segments, segmentsWithoutDuplicates) => {
+      expect(removeDuplicateSegments(segments)).toEqual(
+        segmentsWithoutDuplicates
+      );
+    }
+  );
 });
 
 describe('removeInvalidSegments', () => {
   test.each([
     [
-      [{ from: p0_0, to: p22_22 }, { from: p22_22, to: p0_0 }],
-      [{ from: p0_0, to: p22_22 }, { from: p22_22, to: p0_0 }]
+      [
+        { from: p0_0, to: p22_22 },
+        { from: p22_22, to: p0_0 },
+      ],
+      [
+        { from: p0_0, to: p22_22 },
+        { from: p22_22, to: p0_0 },
+      ],
     ],
     [
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
         { from: p22_22, to: p22_22 },
-        { from: pn1_n1, to: p0_0 }
+        { from: pn1_n1, to: p0_0 },
       ],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
-        { from: pn1_n1, to: p0_0 }
-      ]
+        { from: pn1_n1, to: p0_0 },
+      ],
     ],
     [
       [
@@ -716,23 +734,27 @@ describe('removeInvalidSegments', () => {
         { from: p1_0, to: p30_0 },
         { from: p1_0, to: p1_0 },
         { from: p30_0, to: p0_0 },
-        { from: p30_0, to: p30_0 }
+        { from: p30_0, to: p30_0 },
       ],
       [
         { from: p0_0, to: p22_22 },
         { from: p22_22, to: pn1_n1 },
         { from: pn1_n1, to: p1_0 },
         { from: p1_0, to: p30_0 },
-        { from: p30_0, to: p0_0 }
-      ]
+        { from: p30_0, to: p0_0 },
+      ],
     ],
     [undefined, []],
     [null, []],
-    [[], []]
-  ])('segments: %j, only valid segments: %j', (segments, segmentsWithoutDuplicates) => {
-    expect(removeInvalidSegments(segments)).toEqual(segmentsWithoutDuplicates);
-  });
+    [[], []],
+  ])(
+    'segments: %j, only valid segments: %j',
+    (segments, segmentsWithoutDuplicates) => {
+      expect(removeInvalidSegments(segments)).toEqual(
+        segmentsWithoutDuplicates
+      );
+    }
+  );
 });
-
 
 // test.each([])('', () => {});

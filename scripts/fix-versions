@@ -3,8 +3,10 @@
 const fs = require('fs-extra');
 const { join } = require('path');
 const { execSync } = require('child_process');
-
+const minimist = require('minimist');
+const args = minimist(process.argv.slice(2));
 const semver = require('semver');
+const _ = require('lodash');
 console.log('fix versions');
 
 const dirs = fs.readdirSync('packages');
@@ -15,31 +17,39 @@ const list = execSync(`git tag --list`).toString();
 
 // console.log('list:', list);
 
-const rows = list.split(`\n`).map(n => n.trim());
+const rows = list.split(`\n`).map((n) => n.trim());
 // console.log('rows', rows);
-dirs.forEach(d => {
-  const pkgFile = join('packages', d, 'package.json');
-  const pkg = fs.readJsonSync(pkgFile);
+dirs
+  .filter((d) => (args.dir ? args.dir.includes(d) : true))
+  .forEach((d) => {
+    const pkgFile = join('packages', d, 'package.json');
+    const pkg = fs.readJsonSync(pkgFile);
 
-  const index = rows.indexOf(`${pkg.name}@${pkg.version}`);
+    const index = rows.indexOf(`${pkg.name}@${pkg.version}`);
 
-  if (index >= 0) {
-    console.log(pkg.name, pkg.version, 'needs fixing');
-    const versions = rows
-      .filter(r => {
-        return r.startsWith(`${pkg.name}@`);
-      })
-      .map(r => r.replace(`${pkg.name}@`, ''))
-      .sort();
+    if (index >= 0) {
+      console.log(pkg.name, pkg.version, 'needs fixing');
 
-    const last = versions[versions.length - 1];
+      const versions = _(rows)
+        .filter((r) => r.startsWith(`${pkg.name}@`))
+        .map((r) => r.replace(`${pkg.name}@`, ''))
+        .sort(semver.compare)
+        .value();
+      // const versions = rows
+      //   .filter((r) => {
+      //     return r.startsWith(`${pkg.name}@`);
+      //   })
+      //   .map((r) => r.replace(`${pkg.name}@`, ''))
+      //   .sort();
 
-    const bumped = semver.inc(last, 'minor');
+      const last = versions[versions.length - 1];
 
-    console.log('versions:', versions);
-    console.log('new version:', bumped);
+      const bumped = semver.inc(last, 'minor');
 
-    pkg.version = bumped;
-    fs.writeJsonSync(pkgFile, pkg, { spaces: '  ' });
-  }
-});
+      console.log('versions:', versions);
+      console.log('new version:', bumped);
+
+      pkg.version = bumped;
+      fs.writeJsonSync(pkgFile, pkg, { spaces: '  ' });
+    }
+  });

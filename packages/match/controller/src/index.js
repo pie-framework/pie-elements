@@ -1,8 +1,10 @@
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
+import find from 'lodash/find';
+import get from 'lodash/get';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match:controller');
@@ -160,7 +162,9 @@ export function model(question, session, env, updateSession) {
       correctness
     };
 
-    if (!normalizedQuestion.lockChoiceOrder) {
+    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
+
+    if (!lockChoiceOrder) {
       normalizedQuestion.rows = await getShuffledChoices(
         normalizedQuestion.rows,
         session,

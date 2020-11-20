@@ -162,7 +162,7 @@ export class Configure extends React.Component {
                 markup={model.prompt}
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
-                nonEmpty={!prompt.settings}
+                nonEmpty={false}
                 disableUnderline
               />
             </InputContainer>

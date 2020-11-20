@@ -25,9 +25,9 @@ exports[`config snapshot renders 1`] = `
       onChange={[Function]}
     />
     <Component
+      checked={true}
       label="Lock Choice Order"
       onChange={[Function]}
-      value={true}
     />
   </div>
   <div>

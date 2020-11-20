@@ -128,7 +128,7 @@ export class Config extends React.Component {
           <InputCheckbox
             className={classes.shuffleCheckbox}
             label={'Lock Choice Order'}
-            value={config.lockChoiceOrder}
+            checked={config.lockChoiceOrder}
             onChange={this.toggleShuffle}
           />
         </div>

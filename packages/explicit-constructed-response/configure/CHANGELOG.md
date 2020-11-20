@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.13...@pie-element/explicit-constructed-response-configure@3.5.14) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.12...@pie-element/explicit-constructed-response-configure@3.5.13) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.11...@pie-element/explicit-constructed-response-configure@3.5.12) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.10...@pie-element/explicit-constructed-response-configure@3.5.11) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.9...@pie-element/explicit-constructed-response-configure@3.5.10) (2020-09-07)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.8...@pie-element/explicit-constructed-response-configure@3.5.9) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.7...@pie-element/explicit-constructed-response-configure@3.5.8) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
+## [3.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.6...@pie-element/explicit-constructed-response-configure@3.5.7) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
+
+
+
+
+
 ## [3.5.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.5...@pie-element/explicit-constructed-response-configure@3.5.6) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

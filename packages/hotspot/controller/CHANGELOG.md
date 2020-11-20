@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.10...@pie-element/hotspot-controller@3.3.11) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
+## [3.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.9...@pie-element/hotspot-controller@3.3.10) (2020-10-02)
+
+
+### Bug Fixes
+
+* PD-612 - hotspot hanging ([a00aa5c](https://github.com/pie-framework/pie-elements/commit/a00aa5c))
+
+
+
+
+
+## [3.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.8...@pie-element/hotspot-controller@3.3.9) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
+## [3.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.7...@pie-element/hotspot-controller@3.3.8) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
+## [3.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.6...@pie-element/hotspot-controller@3.3.7) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/hotspot-controller
+
+
+
+
+
 ## [3.3.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.5...@pie-element/hotspot-controller@3.3.6) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/hotspot-controller

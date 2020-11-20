@@ -222,7 +222,7 @@ export class Main extends React.Component {
               className={classes.prompt}
               markup={model.prompt}
               onChange={prompt => onChange({ prompt })}
-              nonEmpty={!prompt.settings}
+              nonEmpty={false}
               disableUnderline
             />
           </FormSection>

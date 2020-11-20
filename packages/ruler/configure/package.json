@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/ruler-configure",
   "private": true,
-  "version": "2.7.6",
+  "version": "2.7.13",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.23"
+    "@pie-lib/config-ui": "^10.8.38"
   },
   "author": "",
   "license": "ISC"

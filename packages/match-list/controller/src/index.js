@@ -1,6 +1,10 @@
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import {
+  lockChoices,
+  getShuffledChoices,
+  partialScoring,
+} from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 const log = debug('@pie-element:match-list:controller');
@@ -38,7 +42,7 @@ const getCorrectness = (question, env, answers) => {
 const getCorrectSelected = (prompts = [], answers) => {
   let correctAnswers = 0;
 
-  prompts.forEach(p => {
+  prompts.forEach((p) => {
     if (p.relatedAnswer === answers[p.id]) {
       correctAnswers += 1;
     }
@@ -47,7 +51,7 @@ const getCorrectSelected = (prompts = [], answers) => {
   return correctAnswers;
 };
 
-const getTotalCorrect = question => {
+const getTotalCorrect = (question) => {
   return question && question.prompts ? question.prompts.length : 0;
 };
 
@@ -69,7 +73,7 @@ const getOutComeScore = (question, env, answers) => {
 };
 
 export const outcome = (question, session, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -77,7 +81,7 @@ export const outcome = (question, session, env) => {
         resolve({ score: 0, empty: true });
       } else {
         const out = {
-          score: getOutComeScore(question, env, session.value)
+          score: getOutComeScore(question, env, session.value),
         };
 
         resolve(out);
@@ -87,10 +91,10 @@ export const outcome = (question, session, env) => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       ...defaults,
-      ...model
+      ...model,
     });
   });
 }
@@ -103,28 +107,31 @@ export function createDefaultModel(model = {}) {
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export function model(question, session, env, updateSession) {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
     const correctness = getCorrectness(question, env, session && session.value);
     const correctResponse = {};
-    const score = `${getOutComeScore(question, env, session && session.value) *
-      100}%`;
+    const score = `${
+      getOutComeScore(question, env, session && session.value) * 100
+    }%`;
     const correctInfo = {
       score,
-      correctness
+      correctness,
     };
 
     const shuffledValues = {};
     let prompts = question.prompts;
     let answers = question.answers;
 
-    const us = part => (id, element, update) => {
-      return new Promise(resolve => {
+    const us = (part) => (id, element, update) => {
+      return new Promise((resolve) => {
         shuffledValues[part] = update.shuffledValues;
         resolve();
       });
     };
 
-    if (!question.lockChoiceOrder) {
+    const lockChoiceOrder = lockChoices(question, session, env);
+
+    if (!lockChoiceOrder) {
       prompts = await getShuffledChoices(
         prompts,
         { shuffledValues: ((session && session.shuffledValues) || {}).prompts },
@@ -142,15 +149,15 @@ export function model(question, session, env, updateSession) {
     if (!isEmpty(shuffledValues)) {
       if (updateSession && typeof updateSession === 'function') {
         updateSession(session.id, session.element, {
-          shuffledValues
-        }).catch(e => {
+          shuffledValues,
+        }).catch((e) => {
           console.error('update session failed', e);
         });
       }
     }
 
     if (question && prompts) {
-      prompts.forEach(prompt => {
+      prompts.forEach((prompt) => {
         correctResponse[prompt.id] = prompt.relatedAnswer;
       });
     }
@@ -160,17 +167,16 @@ export function model(question, session, env, updateSession) {
         ? getFeedbackForCorrectness(correctInfo.correctness, question.feedback)
         : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const base = {
         config: {
           ...question,
           prompts,
           answers,
-          shuffled: !question.lockChoiceOrder
         },
         correctness: correctInfo,
         feedback,
-        mode: env.mode
+        mode: env.mode,
       };
 
       if (
@@ -183,7 +189,7 @@ export function model(question, session, env, updateSession) {
       }
 
       const out = Object.assign(base, {
-        correctResponse
+        correctResponse,
       });
 
       log('out: ', out);
@@ -193,20 +199,20 @@ export function model(question, session, env, updateSession) {
 }
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { prompts, answers } = question;
       const value = {};
 
-      prompts.forEach(p => {
-        if (answers.filter(a => a.id === p.relatedAnswer).length) {
+      prompts.forEach((p) => {
+        if (answers.filter((a) => a.id === p.relatedAnswer).length) {
           value[p.id] = p.relatedAnswer;
         }
       });
 
       resolve({
         value,
-        id: '1'
+        id: '1',
       });
     } else {
       resolve(null);

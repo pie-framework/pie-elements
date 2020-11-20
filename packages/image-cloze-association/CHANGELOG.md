@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.7...@pie-element/image-cloze-association@3.4.8) (2020-10-16)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.6...@pie-element/image-cloze-association@3.4.7) (2020-10-02)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.5...@pie-element/image-cloze-association@3.4.6) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.4...@pie-element/image-cloze-association@3.4.5) (2020-09-23)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.3...@pie-element/image-cloze-association@3.4.4) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.2...@pie-element/image-cloze-association@3.4.3) (2020-08-25)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.1...@pie-element/image-cloze-association@3.4.2) (2020-08-13)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.3.5...@pie-element/image-cloze-association@3.4.1) (2020-08-07)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
 ## [3.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.0-next.0...@pie-element/image-cloze-association@3.3.5) (2020-05-25)
 
 
