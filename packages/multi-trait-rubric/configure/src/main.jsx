@@ -45,42 +45,46 @@ export class Main extends React.Component {
     onModelChanged({ ...model, scales });
   }
 
-  onScaleChanged = (s, params) => {
+  onScaleChanged = (scaleIndex, params) => {
     const { model, onModelChanged } = this.props;
     const { scales } = model || {};
 
+    if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
+
     Object.keys(params).forEach(key => {
-      scales[s][key] = params[key];
+      scales[scaleIndex][key] = params[key];
     });
 
     onModelChanged({ ...model, scales });
-  }
+  };
 
-  onScaleRemoved = (index) => {
+  onScaleRemoved = (scaleIndex) => {
     const { model, onModelChanged } = this.props;
     let { scales } = model || {};
 
+    if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
+
     scales = [
-      ...scales.slice(0, index),
-      ...scales.slice(index + 1)
+      ...scales.slice(0, scaleIndex),
+      ...scales.slice(scaleIndex + 1)
     ];
 
     onModelChanged({ ...model, scales });
-  }
+  };
 
   onHalfScoringChanged = () => {
     const { model, onModelChanged } = this.props;
     let { halfScoring } = model || {};
 
     onModelChanged({ ...model, halfScoring: !halfScoring });
-  }
+  };
 
   onVisibleToStudentChanged = () => {
     const { model, onModelChanged } = this.props;
     let { visibleToStudent } = model || {};
 
     onModelChanged({ ...model, visibleToStudent: !visibleToStudent });
-  }
+  };
 
   render() {
     const { model, classes, configuration, onConfigurationChanged, onModelChanged } = this.props || {};

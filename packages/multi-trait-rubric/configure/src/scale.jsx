@@ -209,15 +209,19 @@ export class Scale extends React.Component {
   onTraitRemoved = () => {
     const { traitToDeleteIndex } = this.state;
     const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    const { traits } = scale || {};
+    let { traits } = scale || {};
 
-    if (traitToDeleteIndex >= 0) {
-      delete traits[traitToDeleteIndex];
+    if (traitToDeleteIndex >= 0 && traitToDeleteIndex < traits.length) {
+      traits = [
+        ...traits.slice(0, traitToDeleteIndex),
+        ...traits.slice(traitToDeleteIndex + 1)
+      ];
 
       onScaleChanged(scaleIndex, { traits });
     }
 
     this.hideDeleteTraitModal();
+    return false;
   }
 
   onTraitAdded = () => {
@@ -398,8 +402,6 @@ export class Scale extends React.Component {
 
 Scale.propTypes = {
   classes: PropTypes.object,
-  model: PropTypes.object,
-  onModelChanged: PropTypes.func,
   scale: PropTypes.shape({
     excludeZero: PropTypes.bool,
     maxPoints: PropTypes.number,
