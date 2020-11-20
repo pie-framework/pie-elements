@@ -96,7 +96,7 @@ const LikertOrientation = withStyles(styles)((props) => {
   return (
     <div className={classes.radioButtonsWrapper}>
       <p className={classes.radioButtonsColumnHeader}>
-        Likert Scale
+        Likert Orientation
       </p>
       <RadioGroup
         aria-label='likertOrientation'
