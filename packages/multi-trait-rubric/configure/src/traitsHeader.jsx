@@ -39,9 +39,11 @@ const styles = {
   }
 };
 
-class TraitsHeaderTile extends React.Component {
+export class TraitsHeaderTile extends React.Component {
   onScorePointLabelChange = ({ scorePointLabel, value }) => {
     const { scorePointsLabels, onScaleChange } = this.props;
+
+    if (value < 0 || value >= scorePointsLabels.length) return;
 
     scorePointsLabels[value] = scorePointLabel;
 

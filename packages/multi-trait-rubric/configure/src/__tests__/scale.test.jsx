@@ -1,6 +1,5 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-
 import { Scale } from '../scale';
 import { excludeZeroTypes } from '../modals';
 
@@ -22,51 +21,52 @@ const scale = () => ({
     },
   ]
 });
-
 describe('Scale', () => {
   let w;
-  let onScaleChanged = jest.fn();
-  let onScaleRemoved = jest.fn();
 
   const wrapper = extras => {
     const defaults = {
       classes: {},
       scale: scale(),
       scaleIndex: 0,
-      onScaleChanged,
-      onScaleRemoved,
       showStandards: true,
       ...extras
     };
-
     return shallow(<Scale {...defaults} />);
   };
 
   describe('snapshot', () => {
     it('renders', () => {
       w = wrapper();
+
       expect(w).toMatchSnapshot();
     });
 
     it('renders without traits', () => {
       w = wrapper({ traits: [] });
+
       expect(w).toMatchSnapshot();
     });
 
     it('renders without standards', () => {
       w = wrapper({ showStandards: false });
+
       expect(w).toMatchSnapshot();
     });
   });
 
   describe('logic', () => {
+    let onScaleChanged;
+
     beforeEach(() => {
-      w = wrapper();
+      onScaleChanged = jest.fn();
+      w = wrapper({ onScaleChanged });
     });
 
     describe('changeExcludeZero', () => {
       it('removes zero', () => {
         const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
+
         w.instance().changeExcludeZero(excludeZeroTypes.remove0);
 
         expect(onScaleChanged).toBeCalledWith(0, {
@@ -78,8 +78,10 @@ describe('Scale', () => {
           }]
         });
       });
+
       it('add0 zero', () => {
         const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
+
         w.instance().changeExcludeZero(excludeZeroTypes.add0);
 
         expect(onScaleChanged).toBeCalledWith(0, {
@@ -91,8 +93,10 @@ describe('Scale', () => {
           }]
         });
       });
+
       it('shift to Left', () => {
         const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
+
         w.instance().changeExcludeZero(excludeZeroTypes.shiftLeft);
 
         expect(onScaleChanged).toBeCalledWith(0, {
@@ -104,8 +108,10 @@ describe('Scale', () => {
           }]
         });
       });
+
       it('shift to Right', () => {
         const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
+
         w.instance().changeExcludeZero(excludeZeroTypes.shiftRight);
 
         expect(onScaleChanged).toBeCalledWith(0, {
@@ -114,8 +120,7 @@ describe('Scale', () => {
           traits: [{
             ...traits[0],
             scorePointsDescriptors: [...traits[0].scorePointsDescriptors, '']
-          }
-          ]
+          }]
         })
         ;
       });
@@ -124,6 +129,7 @@ describe('Scale', () => {
     describe('updateMaxPointsFieldValue', () => {
       it('shows alert box is number less then max points', () => {
         const { maxPoints } = w.instance().props.scale;
+
         w.instance().updateMaxPointsFieldValue({ target: { value: maxPoints - 1 } });
 
         expect(w.instance().state.newMaxPoints).toEqual(maxPoints - 1);
@@ -131,6 +137,7 @@ describe('Scale', () => {
 
       it('changes max points if number more then max points', () => {
         const { maxPoints } = w.instance().props.scale;
+
         w.instance().updateMaxPointsFieldValue({ target: { value: maxPoints + 1 } });
 
         expect(onScaleChanged).toBeCalledWith(0, { maxPoints: maxPoints + 1 });
@@ -148,30 +155,38 @@ describe('Scale', () => {
 
     describe('deleteScale', () => {
       it('calls onRemoveScale', () => {
+        const onScaleRemoved = jest.fn();
+
+        w = wrapper({ onScaleRemoved });
         w.instance().deleteScale();
 
         expect(onScaleRemoved).toBeCalledWith(0);
       });
     });
 
-    describe.only('onTraitRemoved', () => {
-      // todo
-      // it('calls onScaleChanged', () => {
-      //   w.instance().setState({ traitToDeleteIndex: 0 });
-      //   w.instance().onTraitRemoved();
-      //
-      //   expect(onScaleRemoved).toBeCalledWith(0, { traits: [] });
-      // });
-
+    describe('onTraitRemoved', () => {
       it('does not call onScaleChanged if index not valid', () => {
         w.instance().setState({ traitToDeleteIndex: -1 });
-        const result = w.instance().onTraitRemoved();
+        w.instance().onTraitRemoved();
 
-        expect(result).toEqual(false);
+        expect(onScaleChanged).not.toBeCalled();
+      });
+
+      it('calls onScaleChanged', () => {
+        w.instance().state.traitToDeleteIndex = 0;
+        w.instance().onTraitRemoved();
+
+        expect(onScaleChanged).toBeCalledWith(0, { traits: [] });
       });
     });
 
-    describe.only('onTraitChanged', () => {
+    describe('onTraitChanged', () => {
+      it('does not call onScaleChanged', () => {
+        w.instance().onTraitChanged(1000, {});
+
+        expect(onScaleChanged).not.toBeCalled();
+      });
+
       it('calls onScaleChanged', () => {
         w.instance().onTraitChanged(0, {});
 
@@ -179,13 +194,26 @@ describe('Scale', () => {
       });
     });
 
-    // todo
-    // describe.only('onTraitDropped', () => {
-    //   it('calls onScaleChanged', () => {
-    //     w.instance().onTraitDropped({ index: 0 }, 1);
-    //
-    //     expect(onScaleChanged).toBeCalledWith(0, { traits: [{}]});
-    //   });
-    // });
+    describe('onTraitDropped', () => {
+      it('calls onScaleChanged', () => {
+        w.instance().onTraitAdded();
+        w.instance().onTraitAdded();
+
+        const { traits } = w.instance().props.scale;
+        const length = traits.length;
+        const lastButOne = traits[length - 2];
+        const last = traits[length - 1];
+
+        w.instance().onTraitDropped({ index: length - 2 }, length - 1);
+
+        expect(onScaleChanged).toBeCalledWith(0, {
+          traits: [
+            ...traits.slice(0, length - 2),
+            last,
+            lastButOne
+          ]
+        });
+      });
+    });
   });
 });

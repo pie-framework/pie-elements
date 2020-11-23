@@ -34,6 +34,10 @@ export class Main extends React.Component {
     const { model, onModelChanged } = this.props;
     let { scales } = model || {};
 
+    if (!scales.length) {
+      scales = [];
+    }
+
     scales.push({
       excludeZero: false,
       maxPoints: 1,

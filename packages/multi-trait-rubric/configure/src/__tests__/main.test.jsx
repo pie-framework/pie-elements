@@ -124,10 +124,10 @@ const model = (extras) => ({
 });
 
 describe('Main', () => {
-  let w;
-  let onModelChanged = jest.fn();
-  let onConfigurationChanged = jest.fn();
   let initialModel = model();
+  let w;
+  let onModelChanged;
+  let onConfigurationChanged;
 
   const wrapper = extras => {
     const defaults = {
@@ -162,6 +162,9 @@ describe('Main', () => {
 
   describe('logic', () => {
     beforeEach(() => {
+      onModelChanged = jest.fn();
+      onConfigurationChanged = jest.fn();
+
       w = wrapper();
     });
 
@@ -186,10 +189,10 @@ describe('Main', () => {
     });
 
     describe('onScaleChanged', () => {
-      it('does not call change scales', () => {
-        const result = w.instance().onScaleChanged(100);
+      it('does not call onModelChanged', () => {
+        w.instance().onScaleChanged(100);
 
-        expect(result).toEqual(false);
+        expect(onModelChanged).not.toBeCalled();
       });
 
       it('changes a scale\'s excludeZero', () => {
@@ -260,9 +263,9 @@ describe('Main', () => {
 
     describe('onScaleRemoved', () => {
       it('does not call change scales', () => {
-        const result = w.instance().onScaleRemoved(100);
+        w.instance().onScaleRemoved(100);
 
-        expect(result).toEqual(false);
+        expect(onModelChanged).not.toBeCalled();
       });
 
       it('removes scale', () => {

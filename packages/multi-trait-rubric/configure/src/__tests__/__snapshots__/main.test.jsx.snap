@@ -227,8 +227,6 @@ Overall appearance is acceptable or better",
             "visibleToStudent": true,
           }
         }
-        onChangeConfiguration={[MockFunction]}
-        onChangeModel={[MockFunction]}
       />
     }
   >
@@ -479,8 +477,6 @@ Overall appearance is acceptable or better",
             "visibleToStudent": true,
           }
         }
-        onConfigurationChanged={[MockFunction]}
-        onModelChanged={[MockFunction]}
         onScaleChanged={[Function]}
         onScaleRemoved={[Function]}
         scale={
@@ -876,8 +872,6 @@ Overall appearance is acceptable or better",
             "visibleToStudent": true,
           }
         }
-        onConfigurationChanged={[MockFunction]}
-        onModelChanged={[MockFunction]}
         onScaleChanged={[Function]}
         onScaleRemoved={[Function]}
         scale={
@@ -959,8 +953,6 @@ exports[`Main snapshot renders without scales 1`] = `
             "visibleToStudent": true,
           }
         }
-        onChangeConfiguration={[MockFunction]}
-        onChangeModel={[MockFunction]}
       />
     }
   >

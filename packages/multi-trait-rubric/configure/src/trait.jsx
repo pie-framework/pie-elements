@@ -57,6 +57,8 @@ export class TraitTile extends React.Component {
   onScorePointDescriptorChange = ({ descriptor, value }) => {
     const { trait: { scorePointsDescriptors } } = this.props;
 
+    if (value < 0 || value >= scorePointsDescriptors.length) return;
+
     scorePointsDescriptors[value] = descriptor;
 
     this.onTraitChanged({ scorePointsDescriptors });
