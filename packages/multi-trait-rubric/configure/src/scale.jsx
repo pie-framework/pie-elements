@@ -111,6 +111,9 @@ export class Scale extends React.Component {
 
     this.hideToggleExcludeZeroModal();
 
+    if (scorePointsLabels.length < 1) return;
+
+
     switch (excludeZeroType) {
       case excludeZeroTypes.remove0: {
         // removes column 0

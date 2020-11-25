@@ -165,8 +165,15 @@ describe('Scale', () => {
     });
 
     describe('onTraitRemoved', () => {
-      it('does not call onScaleChanged if index not valid', () => {
+      it('does not call onScaleChanged if index less than zero', () => {
         w.instance().setState({ traitToDeleteIndex: -1 });
+        w.instance().onTraitRemoved();
+
+        expect(onScaleChanged).not.toBeCalled();
+      });
+
+      it('does not call onScaleChanged if index more than length', () => {
+        w.instance().setState({ traitToDeleteIndex: 100 });
         w.instance().onTraitRemoved();
 
         expect(onScaleChanged).not.toBeCalled();
@@ -181,7 +188,13 @@ describe('Scale', () => {
     });
 
     describe('onTraitChanged', () => {
-      it('does not call onScaleChanged', () => {
+      it('does not call onScaleChanged if index less than zero', () => {
+        w.instance().onTraitChanged(-100, {});
+
+        expect(onScaleChanged).not.toBeCalled();
+      });
+
+      it('does not call onScaleChanged if index more than length', () => {
         w.instance().onTraitChanged(1000, {});
 
         expect(onScaleChanged).not.toBeCalled();

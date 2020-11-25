@@ -43,7 +43,13 @@ describe('Trait', () => {
     });
 
     describe('onScorePointLabelChange', () => {
-      it('does not call onScaleChange with scorePointsLabels', () => {
+      it('does not call onScaleChange with scorePointsLabels if value less than 0', () => {
+        w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: -10 });
+
+        expect(onScaleChange).not.toBeCalled();
+      });
+
+      it('does not call onScaleChange with scorePointsLabels if value more than length', () => {
         w.instance().onScorePointLabelChange({ scorePointLabel: 'New Label', value: 10 });
 
         expect(onScaleChange).not.toBeCalled();

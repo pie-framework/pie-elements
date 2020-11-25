@@ -2,6 +2,7 @@ import React from 'react';
 import debug from 'debug';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 import { DragSource, DropTarget } from 'react-dnd';
 
 import DragHandle from '@material-ui/icons/DragHandle';
@@ -46,6 +47,8 @@ const styles = theme => ({
 export class TraitTile extends React.Component {
   onTraitChanged = (params) => {
     const { trait, onTraitChanged } = this.props;
+
+    if (isEmpty(params)) return;
 
     Object.keys(params).forEach(key => {
       trait[key] = params[key];

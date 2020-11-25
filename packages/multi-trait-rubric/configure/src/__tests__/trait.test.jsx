@@ -53,6 +53,30 @@ describe('Trait', () => {
     });
 
     describe('onTraitChanged', () => {
+      it('does not call onTraitChanged if params null', () => {
+        const { trait } = w.instance().props;
+
+        w.instance().onTraitChanged(null);
+
+        expect(onTraitChanged).not.toBeCalled();
+      });
+
+      it('does not call onTraitChanged if params undefined', () => {
+        const { trait } = w.instance().props;
+
+        w.instance().onTraitChanged(undefined);
+
+        expect(onTraitChanged).not.toBeCalled();
+      });
+
+      it('does not call onTraitChanged if params empty', () => {
+        const { trait } = w.instance().props;
+
+        w.instance().onTraitChanged({});
+
+        expect(onTraitChanged).not.toBeCalled();
+      });
+
       it('call onTraitChanged with name', () => {
         const { trait } = w.instance().props;
 

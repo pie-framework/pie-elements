@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import isEmpty from 'lodash/isEmpty';
+
 import AddCircle from '@material-ui/icons/AddCircle';
 import { withStyles } from '@material-ui/core/styles';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
@@ -53,7 +55,7 @@ export class Main extends React.Component {
     const { model, onModelChanged } = this.props;
     const { scales } = model || {};
 
-    if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
+    if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 
     Object.keys(params).forEach(key => {
       scales[scaleIndex][key] = params[key];

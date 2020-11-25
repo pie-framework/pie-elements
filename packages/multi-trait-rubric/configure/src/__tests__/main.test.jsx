@@ -189,8 +189,32 @@ describe('Main', () => {
     });
 
     describe('onScaleChanged', () => {
-      it('does not call onModelChanged', () => {
+      it('does not call onModelChanged if index less than 0', () => {
+        w.instance().onScaleChanged(-1);
+
+        expect(onModelChanged).not.toBeCalled();
+      });
+
+      it('does not call onModelChanged if index more than length', () => {
         w.instance().onScaleChanged(100);
+
+        expect(onModelChanged).not.toBeCalled();
+      });
+
+      it('does not call onModelChanged if params null', () => {
+        w.instance().onScaleChanged(0, null);
+
+        expect(onModelChanged).not.toBeCalled();
+      });
+
+      it('does not call onModelChanged if params undefined', () => {
+        w.instance().onScaleChanged(0, undefined);
+
+        expect(onModelChanged).not.toBeCalled();
+      });
+
+      it('does not call onModelChanged if params empty', () => {
+        w.instance().onScaleChanged(0, {});
 
         expect(onModelChanged).not.toBeCalled();
       });
@@ -262,7 +286,13 @@ describe('Main', () => {
     });
 
     describe('onScaleRemoved', () => {
-      it('does not call change scales', () => {
+      it('does not call change scales if index less than 0', () => {
+        w.instance().onScaleRemoved(-1);
+
+        expect(onModelChanged).not.toBeCalled();
+      });
+
+      it('does not call change scales if index more then length', () => {
         w.instance().onScaleRemoved(100);
 
         expect(onModelChanged).not.toBeCalled();
