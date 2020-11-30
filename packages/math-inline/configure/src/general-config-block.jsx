@@ -338,7 +338,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale,
     } = model;
-    const { rationale: cRationale = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {}} = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
@@ -356,7 +356,7 @@ class GeneralConfigBlock extends React.Component {
         className={classes.container}
       >
         {promptEnabled && (
-          <InputContainer label="Prompt" className={classes.promptHolder}>
+          <InputContainer label={cPrompt.label} className={classes.promptHolder}>
             <EditableHtml
               onFocus={this.onPromptFocus}
               className={classes.prompt}
