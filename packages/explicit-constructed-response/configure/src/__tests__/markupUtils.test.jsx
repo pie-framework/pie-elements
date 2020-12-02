@@ -24,10 +24,6 @@ describe('markupUtils', () => {
       expect(removeUnwantedCharacters('<div>foo\/bar</div>')).toEqual('<div>foo/bar</div>');
     });
 
-    it('should remove <br> and </br> tags', () => {
-      expect(removeUnwantedCharacters('<div>foo</br><br>bar</div>')).toEqual('<div>foobar</div>');
-    });
-
   });
 
   describe('processMarkup', () => {
