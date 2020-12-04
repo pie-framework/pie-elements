@@ -18,17 +18,20 @@ export const equalPoint = (A, B) => {
 export const equalSegment = (segment1, segment2) => {
   // A.from = B.from, A.to = B.to OR A.from = B.to, A.to = B.from
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
-  return ((isEqual(segment1.from, segment2.from) && isEqual(segment1.to, segment2.to)) ||
-    ((isEqual(segment1.to, segment2.from) && isEqual(segment1.from, segment2.to))));
+  return (
+    (isEqual(segment1.from, segment2.from) &&
+      isEqual(segment1.to, segment2.to)) ||
+    (isEqual(segment1.to, segment2.from) && isEqual(segment1.from, segment2.to))
+  );
 };
 
 export const equalVector = (vector1, vector2) => {
   // A.from = B.from, A.to = B.to;
   // x1 = x3 & y1 = y3 & x2 = x4 & y2 = y4
-  return ((isEqual(vector1.from, vector2.from) && isEqual(vector1.to, vector2.to)));
+  return isEqual(vector1.from, vector2.from) && isEqual(vector1.to, vector2.to);
 };
 
-const returnLineEquationCoefficients = line => {
+const returnLineEquationCoefficients = (line) => {
   const xA = line.from.x;
   const yA = line.from.y;
   const xB = line.to.x;
@@ -37,11 +40,11 @@ const returnLineEquationCoefficients = line => {
   return {
     a: yB - yA,
     b: xA - xB,
-    c: (xB * yA) - (xA * yB)
+    c: xB * yA - xA * yB,
   };
 };
 
-const getSignificantDecimals = number => Math.round(number * 10000) / 10000;
+const getSignificantDecimals = (number) => Math.round(number * 10000) / 10000;
 
 export const equalLine = (line1, line2) => {
   // line equation: ax + by + c = 0
@@ -57,13 +60,13 @@ export const equalLine = (line1, line2) => {
   const proportions = [];
 
   if (a2 !== 0) {
-    proportions.push(getSignificantDecimals((a1 / a2)));
+    proportions.push(getSignificantDecimals(a1 / a2));
   } else if (a1 !== a2) {
     return false;
   }
 
   if (b2 !== 0) {
-    proportions.push(getSignificantDecimals((b1 / b2)));
+    proportions.push(getSignificantDecimals(b1 / b2));
   } else if (b1 !== b2) {
     return false;
   }
@@ -85,19 +88,31 @@ export const equalRay = (ray1, ray2) => {
   // slope & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
   const mRay1 = (ray1.to.y - ray1.from.y) / (ray1.to.x - ray1.from.x);
   const mRay2 = (ray2.to.y - ray2.from.y) / (ray2.to.x - ray2.from.x);
-  const angleRay1 = Math.atan2(ray1.to.y - ray1.from.y, ray1.to.x - ray1.from.x) * 180 / Math.PI;
-  const angleRay2 = Math.atan2(ray2.to.y - ray2.from.y, ray2.to.x - ray2.from.x) * 180 / Math.PI;
+  const angleRay1 =
+    (Math.atan2(ray1.to.y - ray1.from.y, ray1.to.x - ray1.from.x) * 180) /
+    Math.PI;
+  const angleRay2 =
+    (Math.atan2(ray2.to.y - ray2.from.y, ray2.to.x - ray2.from.x) * 180) /
+    Math.PI;
 
-  return mRay1 === mRay2 && ray1.from.x === ray2.from.x && ray1.from.y === ray2.from.y && angleRay1 === angleRay2;
+  return (
+    mRay1 === mRay2 &&
+    ray1.from.x === ray2.from.x &&
+    ray1.from.y === ray2.from.y &&
+    angleRay1 === angleRay2
+  );
 };
 
-export const constructSegmentsFromPoints = points => {
+export const constructSegmentsFromPoints = (points) => {
   // takes the list of points that represent a polygon and transforms it into a list of segments; eg.:
   // points: A, B, C, D => segments: AB, BC, CD, DA
-  return (points || []).map((point, index) => ({ from: point, to: points[(index + 1) % points.length] }));
+  return (points || []).map((point, index) => ({
+    from: point,
+    to: points[(index + 1) % points.length],
+  }));
 };
 
-export const removeDuplicateSegments = segments => {
+export const removeDuplicateSegments = (segments) => {
   segments = segments || [];
   // removes segments that are duplicates; eg. These segments are the same, so one will be removed:
   // segment1: from: { x: 1, y: 1 }, to: { x: 2, y: 1 }
@@ -105,11 +120,11 @@ export const removeDuplicateSegments = segments => {
   return uniqWith(segments, (s1, s2) => equalSegment(s1, s2));
 };
 
-export const removeInvalidSegments = segments => {
+export const removeInvalidSegments = (segments) => {
   segments = segments || [];
   // removes segments that start in a point and end in the same point (eg.: from: { x: 1, y: 1 }, to: { x: 1, y: 1 })
 
-  return segments.filter(segment => !isEqual(segment.from, segment.to));
+  return segments.filter((segment) => !isEqual(segment.from, segment.to));
 };
 
 export const equalPolygon = (poly1, poly2) => {
@@ -120,23 +135,43 @@ export const equalPolygon = (poly1, poly2) => {
   const segments1 = constructSegmentsFromPoints(points1);
   const segments2 = constructSegmentsFromPoints(points2);
 
-  const segments1NoDuplicates = removeDuplicateSegments(removeInvalidSegments(segments1));
-  const segments2NoDuplicates = removeDuplicateSegments(removeInvalidSegments(segments2));
+  const segments1NoDuplicates = removeDuplicateSegments(
+    removeInvalidSegments(segments1)
+  );
+  const segments2NoDuplicates = removeDuplicateSegments(
+    removeInvalidSegments(segments2)
+  );
 
-  const differentSegments1 = differenceWith(segments1NoDuplicates, segments2NoDuplicates, equalSegment);
-  const differentSegments2 = differenceWith(segments2NoDuplicates, segments1NoDuplicates, equalSegment);
+  const differentSegments1 = differenceWith(
+    segments1NoDuplicates,
+    segments2NoDuplicates,
+    equalSegment
+  );
+  const differentSegments2 = differenceWith(
+    segments2NoDuplicates,
+    segments1NoDuplicates,
+    equalSegment
+  );
 
-  return (!differentSegments1 || !differentSegments1.length) && (!differentSegments2 || !differentSegments2.length);
+  return (
+    (!differentSegments1 || !differentSegments1.length) &&
+    (!differentSegments2 || !differentSegments2.length)
+  );
 };
 
 export const equalCircle = (c1, c2) => {
-  const equalRootAndEdge = isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
+  const equalRootAndEdge =
+    isEqual(c2.edge, c1.edge) && isEqual(c2.root, c1.root);
 
   // if both edge and root are the same, it means the shapes are exactly the same
   if (equalRootAndEdge) return true;
 
-  const rC1 = Math.sqrt(((c1.edge.x - c1.root.x) ** 2) + ((c1.edge.y - c1.root.y) ** 2));
-  const rC2 = Math.sqrt(((c2.edge.x - c2.root.x) ** 2) + ((c2.edge.y - c2.root.y) ** 2));
+  const rC1 = Math.sqrt(
+    (c1.edge.x - c1.root.x) ** 2 + (c1.edge.y - c1.root.y) ** 2
+  );
+  const rC2 = Math.sqrt(
+    (c2.edge.x - c2.root.x) ** 2 + (c2.edge.y - c2.root.y) ** 2
+  );
 
   // if both root and radius are the same, it means the shapes are equal
   return isEqual(c2.root, c1.root) && isEqual(rC1, rC2);
@@ -158,13 +193,15 @@ export const equalSine = (sine1, sine2) => {
     // if edge less then 0, find out the appropriate edge placed east side of zero (0)
     while (edgeAboveZeroX < 0 && tX !== 0) {
       edgeAboveZeroX = edgeAboveZeroX + tX;
-      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
+      edgeAboveZeroY =
+        edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
     }
 
     // if edge more then 0, find out the appropriate edge placed east side of zero (0)
     while (edgeAboveZeroX - tX > 0 && tX !== 0) {
       edgeAboveZeroX = edgeAboveZeroX - tX;
-      edgeAboveZeroY = edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
+      edgeAboveZeroY =
+        edgeAboveZeroY < root.y ? edgeAboveZeroY + tY : edgeAboveZeroY - tY;
     }
 
     return {
@@ -173,7 +210,7 @@ export const equalSine = (sine1, sine2) => {
       min: getSignificantDecimals(edge.y < root.y ? edge.y : edge.y - tY),
       max: getSignificantDecimals(edge.y < root.y ? edge.y + tY : edge.y),
       edgeAboveZeroX: getSignificantDecimals(edgeAboveZeroX),
-      edgeAboveZeroY: getSignificantDecimals(edgeAboveZeroY)
+      edgeAboveZeroY: getSignificantDecimals(edgeAboveZeroY),
     };
   };
 
@@ -186,7 +223,7 @@ export const equalSine = (sine1, sine2) => {
     min: min1,
     max: max1,
     edgeAboveZeroX: edgeAboveZeroX1,
-    edgeAboveZeroY: edgeAboveZeroY1
+    edgeAboveZeroY: edgeAboveZeroY1,
   } = studentAnswerBpY;
   const {
     amplitude: amplitude2,
@@ -194,14 +231,17 @@ export const equalSine = (sine1, sine2) => {
     min: min2,
     max: max2,
     edgeAboveZeroX: edgeAboveZeroX2,
-    edgeAboveZeroY: edgeAboveZeroY2
+    edgeAboveZeroY: edgeAboveZeroY2,
   } = correctAnswerBpY;
 
-  return (Math.abs(amplitude1) === Math.abs(amplitude2) &&
+  return (
+    Math.abs(amplitude1) === Math.abs(amplitude2) &&
     Math.abs(freq1) === Math.abs(freq2) &&
-    min1 === min2 && max1 === max2 &&
+    min1 === min2 &&
+    max1 === max2 &&
     edgeAboveZeroX1 === edgeAboveZeroX2 &&
-    edgeAboveZeroY1 === edgeAboveZeroY2);
+    edgeAboveZeroY1 === edgeAboveZeroY2
+  );
   // rootDiff1 === rootDiff2);
 };
 
@@ -218,9 +258,13 @@ export const equalParabola = (p1, p2) => {
   const { a: a2, b: b2, c: c2 } = pointsToABC(rootP2, edgeP2, p2mirrorEdge);
 
   // sometimes numbers have this form: 1.00000000002 because of calculations, we have to round them
-  const round = number => Math.round(number * 10000) / 10000;
+  const round = (number) => Math.round(number * 10000) / 10000;
 
-  return round(a1) === round(a2) && round(b1) === round(b2) && round(c1) === round(c2);
+  return (
+    round(a1) === round(a2) &&
+    round(b1) === round(b2) &&
+    round(c1) === round(c2)
+  );
 };
 
 export const equalMarks = {
@@ -234,3 +278,20 @@ export const equalMarks = {
   sine: (sessAnswer, mark) => equalSine(sessAnswer, mark),
   vector: (sessAnswer, mark) => equalVector(sessAnswer, mark),
 };
+
+const completeMark = {
+  point: point => point && Number.isFinite(point.x) && Number.isFinite(point.y),
+  line: line => line && completeMark.point(line.from) && completeMark.point(line.to),
+  ray: ray => ray && completeMark.point(ray.from) && completeMark.point(ray.to),
+  segment: segment => segment && completeMark.point(segment.from) && completeMark.point(segment.to),
+  vector: vector => vector && completeMark.point(vector.from) && completeMark.point(vector.to),
+  polygon: poly => poly && poly.points && poly.points.length &&
+    (poly.points.filter(point => completeMark.point(point)) || []).length === poly.points.length, // && poly.closed?,
+  circle: circle => circle && completeMark.point(circle.edge) && completeMark.point(circle.root),
+  parabola: parabola => parabola && completeMark.point(parabola.edge) && completeMark.point(parabola.root),
+  sine: sine => sine && completeMark.point(sine.edge) && completeMark.point(sine.root),
+};
+
+export const removeInvalidAnswers = answers => answers
+  ? (answers || []).filter(answer => completeMark[answer.type] ? completeMark[answer.type](answer) : false)
+  : [];
