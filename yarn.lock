@@ -1908,6 +1908,22 @@
     prop-types "^15.6.2"
     react-measure "^2.2.2"
 
+"@pie-lib/config-ui@^10.8.39":
+  version "10.8.39"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.8.39.tgz#d25fa716ce3ab5bd513b92b7851ff58f9a628179"
+  integrity sha512-D0mgivdQSOnAUete4//TcXMAzAYaGGDuShCBfRGPlb4yVUYKjvGCrmcU/5sciN16pxQOQ41Ozz2Us33xqxoEsQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/editable-html" "^7.14.1"
+    "@pie-lib/icons" "^2.4.20"
+    "@pie-lib/render-ui" "^4.9.4"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-measure "^2.2.2"
+
 "@pie-lib/controller-utils@^0.2.21":
   version "0.2.21"
   resolved "https://registry.yarnpkg.com/@pie-lib/controller-utils/-/controller-utils-0.2.21.tgz#e5bd53c5c26d9c513efde0dbb04b14838ad82388"
@@ -1944,6 +1960,39 @@
   version "7.14.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.14.0.tgz#ead5e12ae829b904bab4c9516d2b55f0b48b677f"
   integrity sha512-qswCsa9uB5DbUfq/3Kyj/4M2sKd5fnM2kUt7SLWFpVqhc9OHGVj/6RjesZz3NqpthRzk4C6/PxIL5i6td/vSrg==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@material-ui/styles" "^3.0.0-alpha.10"
+    "@pie-lib/drag" "^1.1.45"
+    "@pie-lib/math-rendering" "^2.2.3"
+    "@pie-lib/math-toolbar" "^1.6.0"
+    "@pie-lib/render-ui" "^4.9.4"
+    change-case "^3.0.2"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    immutable "^4.0.0-rc.12"
+    keycode "^2.2.0"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-attr-converter "^0.3.1"
+    react-jss "^8.6.1"
+    react-portal "^4.2.0"
+    slate "^0.36.2"
+    slate-dev-environment "^0.2.0"
+    slate-edit-list "^0.11.3"
+    slate-edit-table "^0.17.0"
+    slate-html-serializer "^0.6.12"
+    slate-prop-types "^0.4.38"
+    slate-react "^0.14.3"
+    slate-schema-violations "^0.1.39"
+    slate-soft-break "^0.8.1"
+    to-style "^1.3.3"
+
+"@pie-lib/editable-html@^7.14.1":
+  version "7.14.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.14.1.tgz#d55c74540626474cd958b713e96e9ce6065c28ba"
+  integrity sha512-mGa6lMBc2+1Zw4TcUDzc+E5G9zC5NnHJeC2gWK86wonlJTqCbnhsZG2xWgthKan24FdgTGfisVO7SVb2sgDxqA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"

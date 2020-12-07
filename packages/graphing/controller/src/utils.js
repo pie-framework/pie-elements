@@ -293,5 +293,5 @@ const completeMark = {
 };
 
 export const removeInvalidAnswers = answers => answers
-  ? answers.filter(answer => completeMark[answer.type] ? completeMark[answer.type](answer) : false)
+  ? (answers || []).filter(answer => completeMark[answer.type] ? completeMark[answer.type](answer) : false)
   : [];

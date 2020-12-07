@@ -80,6 +80,8 @@ export const getBestAnswer = (question, session, env = {}) => {
     const possibleAnswer = entry[1] || {};
     let { marks } = possibleAnswer;
 
+    marks = removeInvalidAnswers(marks)
+
     if (!marks || !marks.length) {
       return acc;
     }
