@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqWith from 'lodash/uniqWith';
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import { equalMarks } from './utils';
+import { equalMarks, removeInvalidAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -60,7 +60,7 @@ export const getBestAnswer = (question, session, env = {}) => {
   let { answer } = session || {};
 
   // initialize answer if no values
-  answer = answer || [];
+  answer = removeInvalidAnswers(answer || []);
 
   // initialize one possible answer if no values
   if (isEmpty(questionPossibleAnswers)) {

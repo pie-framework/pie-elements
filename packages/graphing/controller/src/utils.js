@@ -86,13 +86,6 @@ export const equalLine = (line1, line2) => {
 export const equalRay = (ray1, ray2) => {
   // slope: m = (y2-y1)/(x2-x1)
   // slope & x1 = x3 & y1 = y3 & angle between (x1, y1) (x2, y2) is same as angle between (x3, y3) (x4, y4)
-  if (!ray1.to || !ray1.from) {
-    return false;
-  }
-  if (!ray2.to || !ray2.from) {
-    return false;
-  }
-
   const mRay1 = (ray1.to.y - ray1.from.y) / (ray1.to.x - ray1.from.x);
   const mRay2 = (ray2.to.y - ray2.from.y) / (ray2.to.x - ray2.from.x);
   const angleRay1 =
@@ -285,3 +278,20 @@ export const equalMarks = {
   sine: (sessAnswer, mark) => equalSine(sessAnswer, mark),
   vector: (sessAnswer, mark) => equalVector(sessAnswer, mark),
 };
+
+const completeMark = {
+  point: point => point && Number.isFinite(point.x) && Number.isFinite(point.y),
+  line: line => line && completeMark.point(line.from) && completeMark.point(line.to),
+  ray: ray => ray && completeMark.point(ray.from) && completeMark.point(ray.to),
+  segment: segment => segment && completeMark.point(segment.from) && completeMark.point(segment.to),
+  vector: vector => vector && completeMark.point(vector.from) && completeMark.point(vector.to),
+  polygon: poly => poly && poly.points && poly.points.length &&
+    (poly.points.filter(point => completeMark.point(point)) || []).length === poly.points.length, // && poly.closed?,
+  circle: circle => circle && completeMark.point(circle.edge) && completeMark.point(circle.root),
+  parabola: parabola => parabola && completeMark.point(parabola.edge) && completeMark.point(parabola.root),
+  sine: sine => sine && completeMark.point(sine.edge) && completeMark.point(sine.root),
+};
+
+export const removeInvalidAnswers = answers => answers
+  ? answers.filter(answer => completeMark[answer.type] ? completeMark[answer.type](answer) : false)
+  : [];
