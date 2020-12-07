@@ -50,7 +50,7 @@ const model = (id, element) => ({
 });
 
 describe('PD-775', () => {
-  it('fails now', async () => {
+  it('does not fail if session has incomplete marks', async () => {
     const session = {
       id: '1',
       element: 'pie-graphing',
@@ -92,6 +92,6 @@ describe('PD-775', () => {
     const result = await controller.model(model('1', 'pie-graphing'), session, {
       mode: 'evaluate',
     });
-    console.log('result:', result);
+    expect(result).toBeDefined();
   });
 });
