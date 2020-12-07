@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Build a webpack bundle of the controller module.
+ * Build a webpack bundle of the controller module. We're just building graphing atm, if needs be can make the package name an arg.
  */
 const webpack = require('webpack');
 const debug = require('debug');
