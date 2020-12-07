@@ -107,13 +107,9 @@ describe('PD-775', () => {
         },
       ],
     };
-    const result = await controller.outcome(
-      model('1', 'pie-graphing'),
-      session,
-      {
-        mode: 'evaluate',
-      }
-    );
+    const result = await controller.model(model('1', 'pie-graphing'), session, {
+      mode: 'evaluate',
+    });
     console.log('result:', result);
   });
 });
