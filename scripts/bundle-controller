@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+
+/**
+ * Build a webpack bundle of the controller module.
+ */
+const webpack = require('webpack');
+const debug = require('debug');
+const log = debug('bundle-controller');
+const path = require('path');
+
+const run = () => {
+  try {
+    const config = {
+      context: path.resolve(__dirname, '..'),
+      // mode: 'development',
+      entry: {
+        controller: `./packages/graphing/controller`,
+      },
+      output: {
+        filename: '[name].bundle.js',
+        libraryTarget: 'commonjs2',
+        path: path.resolve(__dirname, '../bundles'),
+      },
+    };
+
+    const compiler = webpack(config);
+
+    return new Promise((resolve, reject) => {
+      compiler.run((err, stats) => {
+        log('compile done..');
+        if (err) {
+          reject(err);
+        } else {
+          if (stats.hasErrors()) {
+            const errors = stats.toJson({ errors: true });
+            console.error('errors:', errors.errors);
+            reject(new Error('webpack failed'));
+          } else {
+            resolve({});
+          }
+        }
+      });
+    });
+  } catch (e) {
+    console.log('e:', e);
+  }
+};
+
+run()
+  .then((r) => {
+    console.log('result', r);
+  })
+  .catch((e) => {
+    console.error(e);
+  });

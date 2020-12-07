@@ -1,23 +1,5 @@
 import * as controller from '../index';
 
-// const model = (id, element) => ({
-//   domain: { min: -1, step: 1, axisLabel: 'X', max: 12, labelStep: 1 },
-//   graph: { height: 500, width: 500 },
-//   element,
-//   id,
-//   toolbarTools: ['move', 'ray'],
-//   answers: {
-//     correctAnswer: {
-//       marks: [{ from: { y: 0, x: 0 }, to: { x: 10, y: 30 }, type: 'ray' }],
-//     },
-//   },
-//   range: { axisLabel: 'Y', min: -1, max: 33, labelStep: 2, step: 2 },
-//   title: 'Cost of Gasoline ',
-//   labels: { bottom: 'Number of Gallons ', left: 'Cost of Gasoline ($)' },
-//   prompt: 'prompt',
-// });
-
-////
 const model = (id, element) => ({
   id,
   element,
