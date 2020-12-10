@@ -111,6 +111,8 @@ const styles = (theme) => ({
 const REGEX = /{{response}}/gm;
 const TEMPORARY_RESPONSE_FIELD = /\\%response\\%/gm;
 const ANSWER_BLOCK_REGEX = /\\embed\{answerBlock\}\[r\d*\]/g;
+const NEWLINE_BLOCK = /\\embed\{newLine\}\[\]/g;
+const NEWLINE_LATEX = /\\newline/g;
 
 function prepareForStatic(expression) {
   if (expression) {
@@ -119,7 +121,7 @@ function prepareForStatic(expression) {
     return expression.replace(
       REGEX,
       () => `\\embed{answerBlock}[r${answerBlocks++}]`
-    );
+    ).replace(NEWLINE_LATEX, '\\embed{newLine}[]');
   }
 }
 
@@ -127,7 +129,8 @@ function prepareForModel(expression) {
   if (expression) {
     return expression
       .replace(ANSWER_BLOCK_REGEX, () => '{{response}}')
-      .replace(TEMPORARY_RESPONSE_FIELD, () => '{{response}}');
+      .replace(TEMPORARY_RESPONSE_FIELD, () => '{{response}}')
+      .replace(NEWLINE_BLOCK, () => '\\newline');
   }
 }
 
