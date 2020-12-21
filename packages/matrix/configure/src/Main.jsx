@@ -134,6 +134,13 @@ export class Main extends React.Component {
     });
   };
 
+  onChangeModel = data => {
+    this.props.onModelChanged({
+      ...this.props.model,
+      ...data
+    });
+  };
+
   onTeacherInstructionsChanged = teacherInstructions => {
     this.props.onModelChanged({
       ...this.props.model,
@@ -145,7 +152,7 @@ export class Main extends React.Component {
     return (
       <Design
         {...this.props}
-        onChangeModel={this.props.onModelChanged}z
+        onChangeModel={this.props.onModelChanged}
         onPromptChanged={this.onPromptChanged}
         onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
       />
