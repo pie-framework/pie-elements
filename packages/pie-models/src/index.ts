@@ -20,3 +20,5 @@ export { MathInlinePie, MathInlineConfigure } from './pie/math-inline';
 export { PlacementOrderingPie, PlacementOrderingConfigure } from './pie/placement-ordering';
 export { RulerPie, RulerConfigure } from './pie/ruler';
 export { TextEntryPie, TextEntryConfigure } from './pie/text-entry';
+export { LikertPie, LikertConfigure } from './pie/likert';
+export { MatrixPie, MatrixConfigure} from './pie/matrix';
