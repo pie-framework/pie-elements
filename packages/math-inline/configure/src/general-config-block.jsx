@@ -297,7 +297,7 @@ class GeneralConfigBlock extends React.Component {
 
     const response = {
       id: newCounter,
-      validation: 'symbolic',
+      validation: 'literal',
       answer: '',
       alternates: {},
       allowSpaces: true,
