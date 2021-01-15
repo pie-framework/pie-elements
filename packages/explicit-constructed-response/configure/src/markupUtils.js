@@ -2,7 +2,7 @@ import escape from 'lodash/escape';
 
 export const removeUnwantedCharacters = markup =>
   markup
-    .replace(/(\t)|(\n)|(\\t)|(\\n)/g, '')
+    .replace(/(\t+(?!imes))|(\n)|(\\t+(?!imes))|(\\n)/g, '')
     .replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 const createElementFromHTML = (htmlString = '') => {
