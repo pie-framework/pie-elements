@@ -11,7 +11,7 @@ exports.model = (id, element) => ({
       answer: 'r=\\sqrt{\\frac{V}{7\\pi}}',
       id: '1',
       alternates: {},
-      validation: 'symbolic'
+      validation: 'literal'
     }
   ],
   rationale:
