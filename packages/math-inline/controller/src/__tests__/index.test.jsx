@@ -935,3 +935,154 @@ describe('PD-205', () => {
     expect(result).toEqual({ score: 1 });
   });
 });
+
+describe('PD-610', () => {
+  const equation_01 = {
+    id: 1,
+    element: 'math-inline',
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    equationEditor: 3,
+    teacherInstructions: '',
+    responseType: 'Advanced Multi',
+    expression:
+    "\\frac{1}{3}=\\frac{{response}}{6}",
+    rationale:
+        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+    responses: [
+      {
+        answer: '\\frac{1}{3}=\\frac{2}{6}',
+        validation: 'literal',
+        id: '1',
+        allowSpaces: true,
+      }
+    ],
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '2' } },
+      completeAnswer: '\\frac{1}{3}=\\frac{2}{6}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_01, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+
+  
+  it('scores 0', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '2' } },
+      completeAnswer: '\\frac{1}{3}=\\frac{1}{6}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_01, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+
+  const equation_02 = {
+    id: 2,
+    element: 'math-inline',
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    equationEditor: 3,
+    teacherInstructions: '',
+    responseType: 'Advanced Multi',
+    expression:
+    "\\frac{3}{4}=\\frac{{response}}{8}",
+    rationale:
+        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+    responses: [
+      {
+        answer: '\\frac{3}{4}=\\frac{6}{8}',
+        validation: 'literal',
+        id: '1',
+        allowSpaces: true,
+      }
+    ],
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '2',
+      answers: { r1: { value: '6' } },
+      completeAnswer: '\\frac{3}{4}=\\frac{6}{8}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_02, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+
+  
+  it('scores 0', async () => {
+    const session = {
+      id: '2',
+      answers: { r1: { value: '6' } },
+      completeAnswer: '\\frac{3}{4}=\\frac{3}{8}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_02, session, env);
+    expect(result).toEqual({ score: 0});
+  });
+
+  const equation_03 = {
+    id: 3,
+    element: 'math-inline',
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    equationEditor: 3,
+    teacherInstructions: '',
+    responseType: 'Advanced Multi',
+    expression:
+    "\\frac{3}{6}=\\frac{{response}}{2}",
+    rationale:
+        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+    responses: [
+      {
+        answer: '\\frac{3}{6}=\\frac{1}{2}',
+        validation: 'literal',
+        id: '3',
+        allowSpaces: true,
+      }
+    ],
+  };
+
+  it('scores 1', async () => {
+    const session = {
+      id: '3',
+      answers: { r1: { value: '1' } },
+      completeAnswer: '\\frac{3}{6}=\\frac{1}{2}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_03, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+
+  it('scores 0', async () => {
+    const session = {
+      id: '3',
+      answers: { r1: { value: '1' } },
+      completeAnswer: '\\frac{3}{6}=\\frac{2}{2}'
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(equation_03, session, env);
+    expect(result).toEqual({ score: 0 });
+  });
+});

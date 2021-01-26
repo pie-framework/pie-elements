@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "choiceMode": "checkbox",
+      "choicePrefix": "letters",
+      "choices": Array [
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Sweden",
+          "value": "sweden",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Iceland",
+          "value": "iceland",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Norway",
+          "value": "norway",
+        },
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Finland",
+          "value": "finland",
+        },
+      ],
+      "configure": Object {},
+      "feedbackEnabled": true,
+      "lockChoiceOrder": true,
+      "partialScoring": false,
+      "prompt": "Which of these northern European countries are EU members?",
+      "promptEnabled": true,
+      "rationaleEnabled": true,
+      "scoringType": "auto",
+      "studentInstructionsEnabled": true,
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onAddChoice={[Function]}
+  onChangeModel={[Function]}
+  onChoiceChanged={[Function]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onRemoveChoice={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;
+
+exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "choiceMode": "checkbox",
+      "choicePrefix": "numbers",
+      "choices": Array [
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Sweden",
+          "value": "sweden",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Iceland",
+          "value": "iceland",
+        },
+        Object {
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Norway",
+          "value": "norway",
+        },
+        Object {
+          "correct": true,
+          "feedback": Object {
+            "type": "none",
+            "value": "",
+          },
+          "label": "Finland",
+          "value": "finland",
+        },
+      ],
+      "configure": Object {},
+      "feedbackEnabled": true,
+      "lockChoiceOrder": true,
+      "partialScoring": false,
+      "prompt": "Which of these northern European countries are EU members?",
+      "promptEnabled": true,
+      "rationaleEnabled": true,
+      "scoringType": "auto",
+      "studentInstructionsEnabled": true,
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onAddChoice={[Function]}
+  onChangeModel={[Function]}
+  onChoiceChanged={[Function]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onRemoveChoice={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;
+
+exports[`Main snapshot renders with default values 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "columnLabels": Array [
+        "Disagree",
+        "Unsure",
+        "Agree",
+      ],
+      "configure": Object {},
+      "labelType": "agreement",
+      "matrixValues": Object {},
+      "prompt": "How interested are you in the following domains?",
+      "rowLabels": Array [
+        "I'm interested in politics.",
+        "I'm interested in economics.",
+      ],
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChangeModel={[MockFunction]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;
+
+exports[`Main snapshot renders with labelType="agreement" 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "columnLabels": Array [
+        "Disagree",
+        "Unsure",
+        "Agree",
+      ],
+      "configure": Object {},
+      "labelType": "agreement",
+      "matrixValues": Object {},
+      "prompt": "How interested are you in the following domains?",
+      "rowLabels": Array [
+        "I'm interested in politics.",
+        "I'm interested in economics.",
+      ],
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChangeModel={[MockFunction]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;

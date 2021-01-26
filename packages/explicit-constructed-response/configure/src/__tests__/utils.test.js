@@ -45,11 +45,6 @@ describe('processMarkup', () => {
     '<div> \/foobar </div>',
     '<div> /foobar </div>',
     'should replace \/ with / in the string');
-
-  assertProcessMarkup(
-    '<div> <br><br> </br> </div>',
-    '<div>   </div>',
-    'should remove <br> or </br> elements from the string');
 });
 
 describe('createSlateMarkup', () => {
@@ -106,9 +101,4 @@ describe('createSlateMarkup', () => {
     '<div> \/foobar </div>',
     '<div> /foobar </div>',
     'should replace \/ with / in the string');
-
-  assertCreateSlateMarkup(
-    '<div> <br><br> </br> </div>',
-    '<div>   </div>',
-    'should remove <br> or </br> elements from the string');
 });
