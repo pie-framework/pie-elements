@@ -1,7 +1,6 @@
 const choice = (l, v) => ({ label: l, value: v });
 
-// const markup = '<p>The {{0}} <br> jumped {{1}} <br> the {{2}}</p>';
-const markup = `Let <math><mi>&#402;</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfenced open="|" close="|"><mi>x</mi></mfenced><mo>+</mo><mn>5</mn></math>&#160;and <math><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup><mo>-</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn></math>.<br>`;
+const markup = '<p>The {{0}} <br> jumped {{1}} <br> the {{2}}</p>';
 
 exports.model = (id, element) => ({
   id,
