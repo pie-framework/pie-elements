@@ -14,6 +14,7 @@ export default {
     feedbackEnabled: true,
     promptEnabled: true,
     rationaleEnabled: true,
+    limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true
   },
@@ -22,6 +23,10 @@ export default {
     addChoiceButton: {
       settings: true,
       label: 'Add a Choice'
+    },
+    limitChoicesNumber: {
+      settings: true,
+      label: 'Limit choices to 9'
     },
     choiceMode: {
       settings: true,

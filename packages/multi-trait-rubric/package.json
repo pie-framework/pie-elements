@@ -1,0 +1,19 @@
+{
+  "name": "@pie-element/multi-trait-rubric",
+  "repository": "pie-framework/pie-elements",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pie-ui/multi-trait-rubric": "^1.1.1",
+    "clsx": "^1.1.1"
+  },
+  "pie": {
+    "element": "@pie-ui/multi-trait-rubric"
+  },
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "scripts": {
+    "postpublish": "../../scripts/postpublish"
+  }
+}

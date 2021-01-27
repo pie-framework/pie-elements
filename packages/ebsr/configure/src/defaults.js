@@ -67,8 +67,11 @@ export default {
   },
   configuration: {
     partialScoring: {
-      settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
+      // this will turn off partial scoring toggle in the settings tab by default for the interaction
+      // as we'd like partial scoring to be controlled from the environment entirely
+      // if any other consumers would like to enable it for themselves, they can do so from their model directly.
+      settings: false
     },
     scoringType: {
       settings: false,

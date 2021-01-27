@@ -1,0 +1,1004 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "showStandards": Object {
+              "enabled": false,
+              "label": "Show Standards",
+              "settings": false,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Settings": Object {
+              "showStandards.enabled": false,
+            },
+          }
+        }
+        model={
+          Object {
+            "element": "multi-trait-rubric",
+            "halfScoring": false,
+            "id": "1",
+            "scales": Array [
+              Object {
+                "excludeZero": false,
+                "maxPoints": 4,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Developing",
+                  "Progressing",
+                  "Effective",
+                  "Strong",
+                ],
+                "traitLabel": "Trait",
+                "traits": Array [
+                  Object {
+                    "description": "the main message",
+                    "name": "Ideas",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Topic undefined and/or difficult to follow
+
+Details are unclear",
+                      "Topic too broad
+
+Details are limited",
+                      "Writing stays on topic
+
+Complete details given",
+                      "Strong control of topic
+
+Relevant, accurate, specific details that support topic",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the internal structure of the piece",
+                    "name": "Organization",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Does not have a beginning, middle and/or end
+
+Does not have a lead and/or conclusion
+
+Transitions confusing and/or not present
+
+Not written in logical order
+
+No sign of paragraphing / incorrect paragraphing",
+                      "Weak beginning, middle and end
+
+Has evidence of a lead and/or conclusion but missing elements
+
+Transitions are used sometimes
+
+Some logical order
+
+Most paragraphing incorrect",
+                      "Has an acceptable beginning, middle and end
+
+Includes a lead and conclusion
+
+Transitions are used correctly
+
+Mostly logical order
+
+Mostly correct paragraphing",
+                      "Has an effective beginning, middle and end
+
+Powerful introduction / lead and conclusion
+
+Effective transitions
+
+Logical order / sequencing
+
+Uses appropriate paragraphing",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the vocabulary a writer chooses to convey meaning",
+                    "name": "Word Choice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Vocabulary is limited/used incorrectly
+
+No figurative language; words do not convey meaning",
+                      "Generally correct words
+
+Attempt at figurative language
+
+and/or words convey general meaning",
+                      "Some active verbs and precise nouns
+
+Effective use of figurative language and/or words that enhance meaning",
+                      "Powerful and engaging words
+
+Artful use of figurative language and/or sensory detail",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the rhythm and flow of the language",
+                    "name": "Sentence Fluency",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "No sentences are clear
+
+No variety in sentence structure
+
+Frequent run-ons and/or fragments are present",
+                      "Some sentences are clear
+
+Sentence variety used rarely
+
+Some run-ons and/or fragments are present",
+                      "Most sentences are clear
+
+Some sentence variety is used
+
+Run-ons and/or fragments are rare",
+                      "All Sentences are clear
+
+Variety of sentence structure is used
+
+Run-ons and/or fragments are not present",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the mechanical correctness",
+                    "name": "Conventions",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Many distracting errors are present in grammar, punctuation, capitalization and/or spelling",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present and some distract from meaning",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present but don’t distract from meaning",
+                      "Few errors in grammar, punctuation,
+
+capitalization and/or spelling",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the personal tone and flavor of the author's message",
+                    "name": "Voice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Not concerned with audience or purpose
+
+No viewpoint (perspective) used
+
+Writing is mechanical and lifeless",
+                      "Shows beginning awareness of audience/purpose
+
+Some viewpoint (perspective) used throughout the piece
+
+Writing is distant, too formal or informal",
+                      "Awareness of audience; purpose is clear most of the time
+
+Uses viewpoint (perspective) throughout most of the paper
+
+Writing is pleasant, agreeable and satisfying",
+                      "Powerful connection with audience; purpose is clearly communicated
+
+Maintains strong viewpoint (perspective) throughout entire piece
+
+Writing is expressive, engaging and has lots of energy",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+              Object {
+                "excludeZero": false,
+                "maxPoints": 2,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Unsatisfactory",
+                  "Satisfactory",
+                ],
+                "traitLabel": "Category",
+                "traits": Array [
+                  Object {
+                    "description": "",
+                    "name": "Presentation",
+                    "scorePointsDescriptors": Array [
+                      "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+                      "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+                      "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+            ],
+            "visibleToStudent": true,
+          }
+        }
+      />
+    }
+  >
+    <div
+      style={
+        Object {
+          "width": "60vw",
+        }
+      }
+    >
+      <WithStyles(WithFormControlContext(FormControlLabel))
+        control={
+          <WithStyles(Checkbox)
+            checked={false}
+            color="primary"
+            onChange={[Function]}
+          />
+        }
+        label="Half Scoring"
+        value="half_scoring"
+      />
+      <WithStyles(WithFormControlContext(FormControlLabel))
+        control={
+          <WithStyles(Checkbox)
+            checked={true}
+            color="primary"
+            onChange={[Function]}
+          />
+        }
+        label="Visible to Students"
+        value="visible_to_students"
+      />
+      <WithStyles(Scale)
+        classes={Object {}}
+        configuration={
+          Object {
+            "showStandards": Object {
+              "enabled": false,
+              "label": "Show Standards",
+              "settings": false,
+            },
+          }
+        }
+        key="scale-0"
+        model={
+          Object {
+            "element": "multi-trait-rubric",
+            "halfScoring": false,
+            "id": "1",
+            "scales": Array [
+              Object {
+                "excludeZero": false,
+                "maxPoints": 4,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Developing",
+                  "Progressing",
+                  "Effective",
+                  "Strong",
+                ],
+                "traitLabel": "Trait",
+                "traits": Array [
+                  Object {
+                    "description": "the main message",
+                    "name": "Ideas",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Topic undefined and/or difficult to follow
+
+Details are unclear",
+                      "Topic too broad
+
+Details are limited",
+                      "Writing stays on topic
+
+Complete details given",
+                      "Strong control of topic
+
+Relevant, accurate, specific details that support topic",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the internal structure of the piece",
+                    "name": "Organization",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Does not have a beginning, middle and/or end
+
+Does not have a lead and/or conclusion
+
+Transitions confusing and/or not present
+
+Not written in logical order
+
+No sign of paragraphing / incorrect paragraphing",
+                      "Weak beginning, middle and end
+
+Has evidence of a lead and/or conclusion but missing elements
+
+Transitions are used sometimes
+
+Some logical order
+
+Most paragraphing incorrect",
+                      "Has an acceptable beginning, middle and end
+
+Includes a lead and conclusion
+
+Transitions are used correctly
+
+Mostly logical order
+
+Mostly correct paragraphing",
+                      "Has an effective beginning, middle and end
+
+Powerful introduction / lead and conclusion
+
+Effective transitions
+
+Logical order / sequencing
+
+Uses appropriate paragraphing",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the vocabulary a writer chooses to convey meaning",
+                    "name": "Word Choice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Vocabulary is limited/used incorrectly
+
+No figurative language; words do not convey meaning",
+                      "Generally correct words
+
+Attempt at figurative language
+
+and/or words convey general meaning",
+                      "Some active verbs and precise nouns
+
+Effective use of figurative language and/or words that enhance meaning",
+                      "Powerful and engaging words
+
+Artful use of figurative language and/or sensory detail",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the rhythm and flow of the language",
+                    "name": "Sentence Fluency",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "No sentences are clear
+
+No variety in sentence structure
+
+Frequent run-ons and/or fragments are present",
+                      "Some sentences are clear
+
+Sentence variety used rarely
+
+Some run-ons and/or fragments are present",
+                      "Most sentences are clear
+
+Some sentence variety is used
+
+Run-ons and/or fragments are rare",
+                      "All Sentences are clear
+
+Variety of sentence structure is used
+
+Run-ons and/or fragments are not present",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the mechanical correctness",
+                    "name": "Conventions",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Many distracting errors are present in grammar, punctuation, capitalization and/or spelling",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present and some distract from meaning",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present but don’t distract from meaning",
+                      "Few errors in grammar, punctuation,
+
+capitalization and/or spelling",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the personal tone and flavor of the author's message",
+                    "name": "Voice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Not concerned with audience or purpose
+
+No viewpoint (perspective) used
+
+Writing is mechanical and lifeless",
+                      "Shows beginning awareness of audience/purpose
+
+Some viewpoint (perspective) used throughout the piece
+
+Writing is distant, too formal or informal",
+                      "Awareness of audience; purpose is clear most of the time
+
+Uses viewpoint (perspective) throughout most of the paper
+
+Writing is pleasant, agreeable and satisfying",
+                      "Powerful connection with audience; purpose is clearly communicated
+
+Maintains strong viewpoint (perspective) throughout entire piece
+
+Writing is expressive, engaging and has lots of energy",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+              Object {
+                "excludeZero": false,
+                "maxPoints": 2,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Unsatisfactory",
+                  "Satisfactory",
+                ],
+                "traitLabel": "Category",
+                "traits": Array [
+                  Object {
+                    "description": "",
+                    "name": "Presentation",
+                    "scorePointsDescriptors": Array [
+                      "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+                      "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+                      "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+            ],
+            "visibleToStudent": true,
+          }
+        }
+        onScaleChanged={[Function]}
+        onScaleRemoved={[Function]}
+        scale={
+          Object {
+            "excludeZero": false,
+            "maxPoints": 4,
+            "scorePointsLabels": Array [
+              "Non-Scorable",
+              "Developing",
+              "Progressing",
+              "Effective",
+              "Strong",
+            ],
+            "traitLabel": "Trait",
+            "traits": Array [
+              Object {
+                "description": "the main message",
+                "name": "Ideas",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "Topic undefined and/or difficult to follow
+
+Details are unclear",
+                  "Topic too broad
+
+Details are limited",
+                  "Writing stays on topic
+
+Complete details given",
+                  "Strong control of topic
+
+Relevant, accurate, specific details that support topic",
+                ],
+                "standards": Array [],
+              },
+              Object {
+                "description": "the internal structure of the piece",
+                "name": "Organization",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "Does not have a beginning, middle and/or end
+
+Does not have a lead and/or conclusion
+
+Transitions confusing and/or not present
+
+Not written in logical order
+
+No sign of paragraphing / incorrect paragraphing",
+                  "Weak beginning, middle and end
+
+Has evidence of a lead and/or conclusion but missing elements
+
+Transitions are used sometimes
+
+Some logical order
+
+Most paragraphing incorrect",
+                  "Has an acceptable beginning, middle and end
+
+Includes a lead and conclusion
+
+Transitions are used correctly
+
+Mostly logical order
+
+Mostly correct paragraphing",
+                  "Has an effective beginning, middle and end
+
+Powerful introduction / lead and conclusion
+
+Effective transitions
+
+Logical order / sequencing
+
+Uses appropriate paragraphing",
+                ],
+                "standards": Array [],
+              },
+              Object {
+                "description": "the vocabulary a writer chooses to convey meaning",
+                "name": "Word Choice",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "Vocabulary is limited/used incorrectly
+
+No figurative language; words do not convey meaning",
+                  "Generally correct words
+
+Attempt at figurative language
+
+and/or words convey general meaning",
+                  "Some active verbs and precise nouns
+
+Effective use of figurative language and/or words that enhance meaning",
+                  "Powerful and engaging words
+
+Artful use of figurative language and/or sensory detail",
+                ],
+                "standards": Array [],
+              },
+              Object {
+                "description": "the rhythm and flow of the language",
+                "name": "Sentence Fluency",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "No sentences are clear
+
+No variety in sentence structure
+
+Frequent run-ons and/or fragments are present",
+                  "Some sentences are clear
+
+Sentence variety used rarely
+
+Some run-ons and/or fragments are present",
+                  "Most sentences are clear
+
+Some sentence variety is used
+
+Run-ons and/or fragments are rare",
+                  "All Sentences are clear
+
+Variety of sentence structure is used
+
+Run-ons and/or fragments are not present",
+                ],
+                "standards": Array [],
+              },
+              Object {
+                "description": "the mechanical correctness",
+                "name": "Conventions",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "Many distracting errors are present in grammar, punctuation, capitalization and/or spelling",
+                  "Errors in grammar, punctuation, capitalization and/or spelling are present and some distract from meaning",
+                  "Errors in grammar, punctuation, capitalization and/or spelling are present but don’t distract from meaning",
+                  "Few errors in grammar, punctuation,
+
+capitalization and/or spelling",
+                ],
+                "standards": Array [],
+              },
+              Object {
+                "description": "the personal tone and flavor of the author's message",
+                "name": "Voice",
+                "scorePointsDescriptors": Array [
+                  "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                  "Not concerned with audience or purpose
+
+No viewpoint (perspective) used
+
+Writing is mechanical and lifeless",
+                  "Shows beginning awareness of audience/purpose
+
+Some viewpoint (perspective) used throughout the piece
+
+Writing is distant, too formal or informal",
+                  "Awareness of audience; purpose is clear most of the time
+
+Uses viewpoint (perspective) throughout most of the paper
+
+Writing is pleasant, agreeable and satisfying",
+                  "Powerful connection with audience; purpose is clearly communicated
+
+Maintains strong viewpoint (perspective) throughout entire piece
+
+Writing is expressive, engaging and has lots of energy",
+                ],
+                "standards": Array [],
+              },
+            ],
+          }
+        }
+        scaleIndex={0}
+        showStandards={false}
+      />
+      <WithStyles(Scale)
+        classes={Object {}}
+        configuration={
+          Object {
+            "showStandards": Object {
+              "enabled": false,
+              "label": "Show Standards",
+              "settings": false,
+            },
+          }
+        }
+        key="scale-1"
+        model={
+          Object {
+            "element": "multi-trait-rubric",
+            "halfScoring": false,
+            "id": "1",
+            "scales": Array [
+              Object {
+                "excludeZero": false,
+                "maxPoints": 4,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Developing",
+                  "Progressing",
+                  "Effective",
+                  "Strong",
+                ],
+                "traitLabel": "Trait",
+                "traits": Array [
+                  Object {
+                    "description": "the main message",
+                    "name": "Ideas",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Topic undefined and/or difficult to follow
+
+Details are unclear",
+                      "Topic too broad
+
+Details are limited",
+                      "Writing stays on topic
+
+Complete details given",
+                      "Strong control of topic
+
+Relevant, accurate, specific details that support topic",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the internal structure of the piece",
+                    "name": "Organization",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Does not have a beginning, middle and/or end
+
+Does not have a lead and/or conclusion
+
+Transitions confusing and/or not present
+
+Not written in logical order
+
+No sign of paragraphing / incorrect paragraphing",
+                      "Weak beginning, middle and end
+
+Has evidence of a lead and/or conclusion but missing elements
+
+Transitions are used sometimes
+
+Some logical order
+
+Most paragraphing incorrect",
+                      "Has an acceptable beginning, middle and end
+
+Includes a lead and conclusion
+
+Transitions are used correctly
+
+Mostly logical order
+
+Mostly correct paragraphing",
+                      "Has an effective beginning, middle and end
+
+Powerful introduction / lead and conclusion
+
+Effective transitions
+
+Logical order / sequencing
+
+Uses appropriate paragraphing",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the vocabulary a writer chooses to convey meaning",
+                    "name": "Word Choice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Vocabulary is limited/used incorrectly
+
+No figurative language; words do not convey meaning",
+                      "Generally correct words
+
+Attempt at figurative language
+
+and/or words convey general meaning",
+                      "Some active verbs and precise nouns
+
+Effective use of figurative language and/or words that enhance meaning",
+                      "Powerful and engaging words
+
+Artful use of figurative language and/or sensory detail",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the rhythm and flow of the language",
+                    "name": "Sentence Fluency",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "No sentences are clear
+
+No variety in sentence structure
+
+Frequent run-ons and/or fragments are present",
+                      "Some sentences are clear
+
+Sentence variety used rarely
+
+Some run-ons and/or fragments are present",
+                      "Most sentences are clear
+
+Some sentence variety is used
+
+Run-ons and/or fragments are rare",
+                      "All Sentences are clear
+
+Variety of sentence structure is used
+
+Run-ons and/or fragments are not present",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the mechanical correctness",
+                    "name": "Conventions",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Many distracting errors are present in grammar, punctuation, capitalization and/or spelling",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present and some distract from meaning",
+                      "Errors in grammar, punctuation, capitalization and/or spelling are present but don’t distract from meaning",
+                      "Few errors in grammar, punctuation,
+
+capitalization and/or spelling",
+                    ],
+                    "standards": Array [],
+                  },
+                  Object {
+                    "description": "the personal tone and flavor of the author's message",
+                    "name": "Voice",
+                    "scorePointsDescriptors": Array [
+                      "Student’s response is blank, not in English, not legible, or does not respond to the prompt.",
+                      "Not concerned with audience or purpose
+
+No viewpoint (perspective) used
+
+Writing is mechanical and lifeless",
+                      "Shows beginning awareness of audience/purpose
+
+Some viewpoint (perspective) used throughout the piece
+
+Writing is distant, too formal or informal",
+                      "Awareness of audience; purpose is clear most of the time
+
+Uses viewpoint (perspective) throughout most of the paper
+
+Writing is pleasant, agreeable and satisfying",
+                      "Powerful connection with audience; purpose is clearly communicated
+
+Maintains strong viewpoint (perspective) throughout entire piece
+
+Writing is expressive, engaging and has lots of energy",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+              Object {
+                "excludeZero": false,
+                "maxPoints": 2,
+                "scorePointsLabels": Array [
+                  "Non-Scorable",
+                  "Unsatisfactory",
+                  "Satisfactory",
+                ],
+                "traitLabel": "Category",
+                "traits": Array [
+                  Object {
+                    "description": "",
+                    "name": "Presentation",
+                    "scorePointsDescriptors": Array [
+                      "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+                      "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+                      "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+                    ],
+                    "standards": Array [],
+                  },
+                ],
+              },
+            ],
+            "visibleToStudent": true,
+          }
+        }
+        onScaleChanged={[Function]}
+        onScaleRemoved={[Function]}
+        scale={
+          Object {
+            "excludeZero": false,
+            "maxPoints": 2,
+            "scorePointsLabels": Array [
+              "Non-Scorable",
+              "Unsatisfactory",
+              "Satisfactory",
+            ],
+            "traitLabel": "Category",
+            "traits": Array [
+              Object {
+                "description": "",
+                "name": "Presentation",
+                "scorePointsDescriptors": Array [
+                  "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+                  "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+                  "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+                ],
+                "standards": Array [],
+              },
+            ],
+          }
+        }
+        scaleIndex={1}
+        showStandards={false}
+      />
+      <div>
+        <div>
+          Add Scale
+        </div>
+        <pure(AddCircleIcon)
+          classes={
+            Object {
+              "root": undefined,
+            }
+          }
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </ConfigLayout>
+</div>
+`;
+
+exports[`Main snapshot renders without scales 1`] = `
+<div>
+  <ConfigLayout
+    settings={
+      <Panel
+        configuration={
+          Object {
+            "showStandards": Object {
+              "enabled": false,
+              "label": "Show Standards",
+              "settings": false,
+            },
+          }
+        }
+        groups={
+          Object {
+            "Settings": Object {
+              "showStandards.enabled": false,
+            },
+          }
+        }
+        model={
+          Object {
+            "element": "multi-trait-rubric",
+            "halfScoring": false,
+            "id": "1",
+            "scales": Array [],
+            "visibleToStudent": true,
+          }
+        }
+      />
+    }
+  >
+    <div
+      style={
+        Object {
+          "width": "60vw",
+        }
+      }
+    >
+      <WithStyles(WithFormControlContext(FormControlLabel))
+        control={
+          <WithStyles(Checkbox)
+            checked={false}
+            color="primary"
+            onChange={[Function]}
+          />
+        }
+        label="Half Scoring"
+        value="half_scoring"
+      />
+      <WithStyles(WithFormControlContext(FormControlLabel))
+        control={
+          <WithStyles(Checkbox)
+            checked={true}
+            color="primary"
+            onChange={[Function]}
+          />
+        }
+        label="Visible to Students"
+        value="visible_to_students"
+      />
+      <div>
+        <div>
+          Add Scale
+        </div>
+        <pure(AddCircleIcon)
+          classes={
+            Object {
+              "root": undefined,
+            }
+          }
+          onClick={[Function]}
+        />
+      </div>
+    </div>
+  </ConfigLayout>
+</div>
+`;

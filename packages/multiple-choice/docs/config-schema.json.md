@@ -24,6 +24,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `limitChoicesNumber` (object)
+
+Properties of the `limitChoicesNumber` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `choiceMode` (object)
 
 Properties of the `choiceMode` object:
