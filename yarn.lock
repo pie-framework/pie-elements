@@ -2074,6 +2074,19 @@
     prop-types "^15.6.2"
     react-transition-group "^2.5.2"
 
+"@pie-lib/correct-answer-toggle@^2.3.12":
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.12.tgz#6b7df2cd80d65f857f74a8e4a303f2360109c008"
+  integrity sha512-ZLHNg5be9vAa5VsQjxCP5f/W1nXcke9fvw4Dfyr52CTow7LI+oyrXK8+yXqUOZqvNZhCs4D7ffBG26eKXSHJMQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@pie-lib/icons" "^2.4.20"
+    "@pie-lib/render-ui" "^4.10.1"
+    classnames "^2.2.6"
+    lodash "^4.17.11"
+    prop-types "^15.6.2"
+    react-transition-group "^2.5.2"
+
 "@pie-lib/drag@^1.1.45":
   version "1.1.45"
   resolved "https://registry.yarnpkg.com/@pie-lib/drag/-/drag-1.1.45.tgz#8fc9f560a5954f43326753243b702d8e847bef72"
@@ -2713,18 +2726,18 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/math-inline@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.2.1.tgz#4e9d320f85b992592eb9c2f02c3247dd97d2bef2"
-  integrity sha512-ab2LbPiIqm7VhAwREAKqMCLTIDEPqGoUYE6saWjL6pIgN4Icz/XhUWrbe2XEQ0T3z+kXBPI5NR4vwnIapVNBGQ==
+"@pie-ui/math-inline@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@pie-ui/math-inline/-/math-inline-3.3.0.tgz#b8701af563b2b62d9f5a92a20ed1bc1f9314c371"
+  integrity sha512-0epb7IxwU7deuoQ4J00NFlMhuyI5EbXnGdegcEoaUF51FsrC2OTKFyQTKgQoUzrjhXoLMWNYsjcbgLE6tS9TFA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/mathquill" "^1.1.0"
     "@pie-framework/pie-player-events" "^0.1.0"
-    "@pie-lib/correct-answer-toggle" "^2.3.10"
+    "@pie-lib/correct-answer-toggle" "^2.3.12"
     "@pie-lib/math-input" "^6.5.1"
-    "@pie-lib/math-toolbar" "^1.6.0"
-    "@pie-lib/render-ui" "^4.9.4"
+    "@pie-lib/math-toolbar" "^1.7.0"
+    "@pie-lib/render-ui" "^4.10.1"
     classnames "^2.2.5"
     debug "^4.1.1"
     lodash "^4.17.10"
@@ -2732,7 +2745,7 @@
     react "^16.8.1"
     react-dom "^16.8.1"
 
-"@pie-ui/matrix@0.0.1":
+"@pie-ui/matrix@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@pie-ui/matrix/-/matrix-0.0.2.tgz#d33501e08a6f54645c0ea52f66157b1b34e68c33"
   integrity sha512-vGqYk67JElmsCZR5GF9UeioTmK2ZuHLeB3UgOKvyQyP+ADNxow7zLyO4HuggdOneZFL2MQL01Ib/AQX68ycSqw==
