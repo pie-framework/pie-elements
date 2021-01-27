@@ -8,11 +8,15 @@ import {
   layout,
   choiceUtils as utils
 } from '@pie-lib/config-ui';
+import { color } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const { Panel, toggle, radio } = settings;
+
+const MAX_CHOICES = 9;
 
 const styles = theme => ({
   promptHolder: {
@@ -49,6 +53,17 @@ const styles = theme => ({
   },
   addButton: {
     float: 'right'
+  },
+  disableButton: {
+    cursor: 'not-allowed',
+    pointerEvents: 'all',
+    backgroundColor: color.disabled(),
+    '&:hover': {
+      backgroundColor: color.disabled(),
+    },
+    '&:focus': {
+      backgroundColor: color.disabled(),
+    }
   }
 });
 
@@ -69,6 +84,7 @@ const Design = withStyles(styles)(props => {
   const {
     prompt = {},
     addChoiceButton = {},
+    limitChoicesNumber = {},
     feedback = {},
     deleteChoice = {},
     choiceMode = {},
@@ -83,6 +99,7 @@ const Design = withStyles(styles)(props => {
     settingsPanelDisabled
   } = configuration || {};
   const {
+    limitChoicesNumber: limitChoicesNumberModel,
     teacherInstructionsEnabled,
     rationaleEnabled,
     feedbackEnabled,
@@ -161,14 +178,17 @@ const Design = withStyles(styles)(props => {
       ))}
       <br />
       {addChoiceButton.settings && (
-        <Button
-          className={classes.addButton}
-          variant="contained"
-          color="primary"
-          onClick={onAddChoice}
-        >
-          {addChoiceButton.label}
-        </Button>
+        <Tooltip title={limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? `Only ${MAX_CHOICES} allowed maximum` : ''} classes={{ tooltip: classes.tooltip }}>
+          <Button
+            classes={{ root: limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? classes.disableButton : undefined }}
+            className={classes.addButton}
+            variant="contained"
+            color="primary"
+            onClick={onAddChoice}
+          >
+            {addChoiceButton.label}
+          </Button>
+        </Tooltip>
       )}
     </div>
   );
@@ -198,6 +218,8 @@ const Design = withStyles(styles)(props => {
                     radio(choicePrefix.label, ['numbers', 'letters']),
                   partialScoring:
                     partialScoring.settings && toggle(partialScoring.label),
+                  limitChoicesNumber:
+                    limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label)
@@ -249,15 +271,18 @@ export class Main extends React.Component {
 
   onAddChoice = () => {
     const { model } = this.props;
-    model.choices.push({
-      label: '',
-      value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
-      feedback: {
-        type: 'none'
-      }
-    });
 
-    this.props.onModelChanged(model);
+    if (!model.limitChoicesNumber || (model.limitChoicesNumber && model.choices.length < MAX_CHOICES)) {
+      model.choices.push({
+        label: '',
+        value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
+        feedback: {
+          type: 'none'
+        }
+      });
+
+      this.props.onModelChanged(model);
+    }
   };
 
   onChoiceChanged = (index, choice) => {
