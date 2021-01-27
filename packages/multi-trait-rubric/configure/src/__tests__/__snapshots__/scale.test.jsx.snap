@@ -1,0 +1,649 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scale snapshot renders 1`] = `
+<div
+  key="scale-0"
+>
+  <div>
+    <h3
+      style={
+        Object {
+          "color": "grey",
+        }
+      }
+    >
+      Scale #
+      0
+    </h3>
+    <pure(DeleteIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <WithStyles(WithFormControlContext(FormControlLabel))
+    control={
+      <WithStyles(Checkbox)
+        checked={false}
+        color="primary"
+        onChange={[Function]}
+      />
+    }
+    label="Exclude Zero"
+    value="exclude_zero"
+  />
+  <WithStyles(FormControl)>
+    <WithStyles(WithFormControlContext(InputLabel))>
+      Max Points
+    </WithStyles(WithFormControlContext(InputLabel))>
+    <WithStyles(WithFormControlContext(Select))
+      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
+      onChange={[Function]}
+      value={2}
+    >
+      <WithStyles(MenuItem)
+        key="menu-item-1"
+        value={1}
+      >
+        1
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-2"
+        value={2}
+      >
+        2
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-3"
+        value={3}
+      >
+        3
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-4"
+        value={4}
+      >
+        4
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-5"
+        value={5}
+      >
+        5
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-6"
+        value={6}
+      >
+        6
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-7"
+        value={7}
+      >
+        7
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-8"
+        value={8}
+      >
+        8
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-9"
+        value={9}
+      >
+        9
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-10"
+        value={10}
+      >
+        10
+      </WithStyles(MenuItem)>
+    </WithStyles(WithFormControlContext(Select))>
+  </WithStyles(FormControl)>
+  <WithStyles(TraitsHeaderTile)
+    key="header-key"
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={true}
+    traitLabel="Category"
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <div>
+    <div>
+      <div>
+        Add
+      </div>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Category",
+          }
+        }
+      />
+    </div>
+    <pure(AddCircleIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <ExcludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <IncludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <DecreaseMaxPoints
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <DeleteScale
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <DeleteTrait
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
+exports[`Scale snapshot renders without standards 1`] = `
+<div
+  key="scale-0"
+>
+  <div>
+    <h3
+      style={
+        Object {
+          "color": "grey",
+        }
+      }
+    >
+      Scale #
+      0
+    </h3>
+    <pure(DeleteIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <WithStyles(WithFormControlContext(FormControlLabel))
+    control={
+      <WithStyles(Checkbox)
+        checked={false}
+        color="primary"
+        onChange={[Function]}
+      />
+    }
+    label="Exclude Zero"
+    value="exclude_zero"
+  />
+  <WithStyles(FormControl)>
+    <WithStyles(WithFormControlContext(InputLabel))>
+      Max Points
+    </WithStyles(WithFormControlContext(InputLabel))>
+    <WithStyles(WithFormControlContext(Select))
+      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
+      onChange={[Function]}
+      value={2}
+    >
+      <WithStyles(MenuItem)
+        key="menu-item-1"
+        value={1}
+      >
+        1
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-2"
+        value={2}
+      >
+        2
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-3"
+        value={3}
+      >
+        3
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-4"
+        value={4}
+      >
+        4
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-5"
+        value={5}
+      >
+        5
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-6"
+        value={6}
+      >
+        6
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-7"
+        value={7}
+      >
+        7
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-8"
+        value={8}
+      >
+        8
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-9"
+        value={9}
+      >
+        9
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-10"
+        value={10}
+      >
+        10
+      </WithStyles(MenuItem)>
+    </WithStyles(WithFormControlContext(Select))>
+  </WithStyles(FormControl)>
+  <WithStyles(TraitsHeaderTile)
+    key="header-key"
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={false}
+    traitLabel="Category"
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={false}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <div>
+    <div>
+      <div>
+        Add
+      </div>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Category",
+          }
+        }
+      />
+    </div>
+    <pure(AddCircleIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <ExcludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <IncludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <DecreaseMaxPoints
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <DeleteScale
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <DeleteTrait
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
+exports[`Scale snapshot renders without traits 1`] = `
+<div
+  key="scale-0"
+>
+  <div>
+    <h3
+      style={
+        Object {
+          "color": "grey",
+        }
+      }
+    >
+      Scale #
+      0
+    </h3>
+    <pure(DeleteIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <WithStyles(WithFormControlContext(FormControlLabel))
+    control={
+      <WithStyles(Checkbox)
+        checked={false}
+        color="primary"
+        onChange={[Function]}
+      />
+    }
+    label="Exclude Zero"
+    value="exclude_zero"
+  />
+  <WithStyles(FormControl)>
+    <WithStyles(WithFormControlContext(InputLabel))>
+      Max Points
+    </WithStyles(WithFormControlContext(InputLabel))>
+    <WithStyles(WithFormControlContext(Select))
+      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
+      onChange={[Function]}
+      value={2}
+    >
+      <WithStyles(MenuItem)
+        key="menu-item-1"
+        value={1}
+      >
+        1
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-2"
+        value={2}
+      >
+        2
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-3"
+        value={3}
+      >
+        3
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-4"
+        value={4}
+      >
+        4
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-5"
+        value={5}
+      >
+        5
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-6"
+        value={6}
+      >
+        6
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-7"
+        value={7}
+      >
+        7
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-8"
+        value={8}
+      >
+        8
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-9"
+        value={9}
+      >
+        9
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        key="menu-item-10"
+        value={10}
+      >
+        10
+      </WithStyles(MenuItem)>
+    </WithStyles(WithFormControlContext(Select))>
+  </WithStyles(FormControl)>
+  <WithStyles(TraitsHeaderTile)
+    key="header-key"
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={true}
+    traitLabel="Category"
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={
+      Array [
+        2,
+        1,
+        0,
+      ]
+    }
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <div>
+    <div>
+      <div>
+        Add
+      </div>
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Category",
+          }
+        }
+      />
+    </div>
+    <pure(AddCircleIcon)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      onClick={[Function]}
+    />
+  </div>
+  <ExcludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <IncludeZeroDialog
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <DecreaseMaxPoints
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <DeleteScale
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <DeleteTrait
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;

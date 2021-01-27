@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Trait snapshot renders 1`] = `
+<div>
+  <div>
+    <div>
+      <div
+        style={
+          Object {
+            "opacity": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <span
+          className=""
+        >
+          <pure(DragHandleIcon) />
+        </span>
+        <EditableHtml
+          markup="Presentation"
+          onChange={[Function]}
+          placeholder="Trait name"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          markup=""
+          onChange={[Function]}
+          placeholder="Standards"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          markup=""
+          onChange={[Function]}
+          placeholder="Description"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-0"
+          markup="Handwriting is generally legible
+
+Overall appearance is acceptable or better"
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-1"
+          markup="Handwriting poor
+
+Overall appearance is distracting to unacceptable"
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-2"
+          markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <div>
+          <WithStyles(IconButton)
+            color="default"
+          >
+            <pure(RemoveCircleIcon)
+              classes={
+                Object {
+                  "root": undefined,
+                }
+              }
+            />
+          </WithStyles(IconButton)>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Trait snapshot renders without standards 1`] = `
+<div>
+  <div>
+    <div>
+      <div
+        style={
+          Object {
+            "opacity": 1,
+            "width": "100%",
+          }
+        }
+      >
+        <span
+          className=""
+        >
+          <pure(DragHandleIcon) />
+        </span>
+        <EditableHtml
+          markup="Presentation"
+          onChange={[Function]}
+          placeholder="Trait name"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          markup=""
+          onChange={[Function]}
+          placeholder="Description"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-0"
+          markup="Handwriting is generally legible
+
+Overall appearance is acceptable or better"
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-1"
+          markup="Handwriting poor
+
+Overall appearance is distracting to unacceptable"
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <EditableHtml
+          key="score-point-descriptor-2"
+          markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+          onChange={[Function]}
+          placeholder="Descriptor"
+          pluginProps={
+            Object {
+              "image": Object {
+                "disabled": true,
+              },
+              "math": Object {
+                "disabled": true,
+              },
+            }
+          }
+        />
+        <div>
+          <WithStyles(IconButton)
+            color="default"
+          >
+            <pure(RemoveCircleIcon)
+              classes={
+                Object {
+                  "root": undefined,
+                }
+              }
+            />
+          </WithStyles(IconButton)>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
