@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/likert": "^0.1.9"
+    "@pie-ui/likert": "^0.1.11"
   },
   "pie": {
     "element": "@pie-ui/likert"
