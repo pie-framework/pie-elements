@@ -1,7 +1,11 @@
 import isEmpty from 'lodash/isEmpty';
 import { buildState, score } from '@pie-lib/categorize';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import {
+  lockChoices,
+  getShuffledChoices,
+  partialScoring,
+} from '@pie-lib/controller-utils';
 import defaults from './defaults';
 
 // eslint-disable-next-line no-console
@@ -11,17 +15,21 @@ export { score };
 export const getPartialScore = (correctResponse, builtCategories) => {
   // in the resulted best scenario we make a sum with all the correct responses
   // and all the placements
-  const { placements, score } = builtCategories.reduce((acc, { choices = [] }) => ({
+  const { placements, score } = builtCategories.reduce(
+    (acc, { choices = [] }) => ({
       placements: acc.placements + choices.length,
-      score: acc.score + choices.filter(ch => ch.correct).length,
-    }
-  ), { placements: 0, score: 0 });
+      score: acc.score + choices.filter((ch) => ch.correct).length,
+    }),
+    { placements: 0, score: 0 }
+  );
 
   // in the correct response, we make a sum of the max possible score
-  const { maxScore } = correctResponse.reduce((acc, { choices }) => ({
-      maxScore: acc.maxScore + choices.length
-    }
-  ), { maxScore: 0 });
+  const { maxScore } = correctResponse.reduce(
+    (acc, { choices }) => ({
+      maxScore: acc.maxScore + choices.length,
+    }),
+    { maxScore: 0 }
+  );
 
   // if there are any extra placements, we subtract from the obtained score
   const extraPlacements = placements > maxScore ? placements - maxScore : 0;
@@ -31,6 +39,13 @@ export const getPartialScore = (correctResponse, builtCategories) => {
 };
 
 export const getTotalScore = (question, session, env) => {
+  if (!session) {
+    return 0;
+  }
+
+  if (Object.keys(session).length === 0) {
+    return 0;
+  }
   const { categories, choices } = question || {};
   let { correctResponse } = question || {};
   let { answers } = session || {};
@@ -39,9 +54,16 @@ export const getTotalScore = (question, session, env) => {
 
   // this function is used in pie-ui/categorize as well, in order to get the best scenario
   // so we get the best scenario and calculate the score
-  const { categories: builtCategories, correct } = buildState(categories, choices, answers, correctResponse);
+  const { categories: builtCategories, correct } = buildState(
+    categories,
+    choices,
+    answers,
+    correctResponse
+  );
 
-  const hasAlternates = correctResponse.map(c => c.alternateResponses).filter(alternate => alternate);
+  const hasAlternates = correctResponse
+    .map((c) => c.alternateResponses)
+    .filter((alternate) => alternate);
   const enabled = partialScoring.enabled(question, env);
 
   // if there are any alternates, there will be no partial scoring!
@@ -55,10 +77,9 @@ export const getTotalScore = (question, session, env) => {
 };
 
 export const getCorrectness = (question, session, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode === 'evaluate') {
       const score = getTotalScore(question, session, env);
-
       if (score === 1) {
         resolve('correct');
       } else if (score === 0) {
@@ -73,20 +94,20 @@ export const getCorrectness = (question, session, env) => {
 };
 
 export const createDefaultModel = (model = {}) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve({
       ...defaults,
-      ...model
+      ...model,
     });
   });
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   feedbackEnabled: true,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question
+  ...question,
 });
 
 /**
@@ -97,7 +118,7 @@ export const normalize = question => ({
  * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
 export const model = (question, session, env, updateSession) =>
-  new Promise(async resolve => {
+  new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
     const answerCorrectness = getCorrectness(normalizedQuestion, session, env);
 
@@ -119,7 +140,7 @@ export const model = (question, session, env, updateSession) =>
       rationaleEnabled,
       rationale,
       teacherInstructionsEnabled,
-      teacherInstructions
+      teacherInstructions,
     } = normalizedQuestion;
     let { choices } = normalizedQuestion;
     let fb;
@@ -127,16 +148,14 @@ export const model = (question, session, env, updateSession) =>
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
     if (mode === 'evaluate' && feedbackEnabled) {
-      fb = await getFeedbackForCorrectness(answerCorrectness.correctness, feedback);
+      fb = await getFeedbackForCorrectness(
+        answerCorrectness.correctness,
+        feedback
+      );
     }
 
     if (!lockChoiceOrder) {
-      choices = await getShuffledChoices(
-        choices,
-        session,
-        updateSession,
-        'id'
-      );
+      choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
     const out = {
@@ -175,17 +194,17 @@ export const outcome = (question, session, env) => {
       new Error('Can not call outcome when mode is not evaluate')
     );
   } else {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve({
         score: getTotalScore(question, session, env),
-        empty: !session || isEmpty(session)
+        empty: !session || isEmpty(session),
       });
     });
   }
 };
 
 export const createCorrectResponseSession = (question, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const { mode, role } = env || {};
 
     if (mode !== 'evaluate' && role === 'instructor') {
