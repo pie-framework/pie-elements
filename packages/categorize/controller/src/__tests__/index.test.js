@@ -298,21 +298,21 @@ describe('controller', () => {
     const sessionCorrect = { answers: mC2 };
     const sessionPartially = { answers: mC1 };
 
-    it.skip.each`
-      session             | expected
-      ${undefined}        | ${'incorrect'}
-      ${null}             | ${'incorrect'}
-      ${{}}               | ${'incorrect'}
-      ${sessionCorrect}   | ${'correct'}
-      ${sessionPartially} | ${'partially-correct'}
+    it.each`
+      session             | categories | expected
+      ${undefined}        | ${mC1}     | ${'incorrect'}
+      ${null}             | ${mC1}     | ${'incorrect'}
+      ${{}}               | ${mC1}     | ${'incorrect'}
+      ${sessionCorrect}   | ${mC2}     | ${'correct'}
+      ${sessionPartially} | ${mC1}     | ${'partially-correct'}
     `(
       'mode: evaluate -> resolves $expected if session is $session',
-      async ({ session, expected }) => {
+      async ({ session, categories, expected }) => {
         const res = await getCorrectness(
           {
             ...question,
             partialScoring: true,
-            categories: mC1,
+            categories,
             correctResponse: scoringCorrectResponseNoAlternates,
           },
           session,
