@@ -11,7 +11,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/inline-dropdown": "^1.9.5"
+    "@pie-ui/inline-dropdown": "^1.9.6"
   },
   "pie": {
     "element": "@pie-ui/inline-dropdown"
