@@ -50,7 +50,10 @@ export default class DrawableResponseConfigure extends HTMLElement {
 
   onConfigurationChanged = (c) => {
     if (!c.backgroundImage.enabled) {
-      this.onImageUpload('');
+      this.onModelChanged({
+        ...this._model,
+        imageUrl: ''
+      });
     }
     this._configuration = c;
     this._render();
