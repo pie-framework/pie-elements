@@ -82,6 +82,10 @@ Determines if prompt should show
 
 Indicates the order of choices should be randomly ordered when presented to user
 
+# `limitChoicesNumber` (boolean)
+
+Indicates whether the number of maximum choices can exceed 9, defaults to true
+
 # `partialScoring` (boolean)
 
 Indicates that the item should use partial scoring

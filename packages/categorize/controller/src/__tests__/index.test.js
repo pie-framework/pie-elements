@@ -299,27 +299,27 @@ describe('controller', () => {
     const sessionPartially = { answers: mC1 };
 
     it.each`
-      session             | expected
-      ${undefined}        | ${'incorrect'}
-      ${null}             | ${'incorrect'}
-      ${{}}               | ${'incorrect'}
-      ${sessionCorrect}   | ${'correct'}
-      ${sessionPartially} | ${'partially-correct'}
+      session             | categories | expected
+      ${undefined}        | ${mC1}     | ${'incorrect'}
+      ${null}             | ${mC1}     | ${'incorrect'}
+      ${{}}               | ${mC1}     | ${'incorrect'}
+      ${sessionCorrect}   | ${mC2}     | ${'correct'}
+      ${sessionPartially} | ${mC1}     | ${'partially-correct'}
     `(
       'mode: evaluate -> resolves $expected if session is $session',
-      ({ session, expected }) => {
-        const res = getCorrectness(
+      async ({ session, categories, expected }) => {
+        const res = await getCorrectness(
           {
             ...question,
             partialScoring: true,
-            categories: mC1,
+            categories,
             correctResponse: scoringCorrectResponseNoAlternates,
           },
           session,
           { mode: 'evaluate' }
         );
 
-        expect(res).resolves.toEqual(expected);
+        expect(res).toEqual(expected);
       }
     );
   });

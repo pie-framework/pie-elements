@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
 
 const { Panel, toggle, numberFields, dropdown } = settings;
 
@@ -139,6 +139,7 @@ export class Main extends React.Component {
           {promptEnabled && (
             <InputContainer label={prompt.label} className={classes.promptContainer}>
               <EditableHtml
+                activePlugins={ALL_PLUGINS}
                 className={classes.prompt}
                 markup={model.prompt || ''}
                 onChange={this.onPromptChange}

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot renders with default values 1`] = `
+<WithStyles(Component)
+  classes={Object {}}
+  model={
+    Object {
+      "columnLabels": Array [
+        "Disagree",
+        "Unsure",
+        "Agree",
+      ],
+      "configure": Object {},
+      "labelType": "agreement",
+      "matrixValues": Object {},
+      "prompt": "How interested are you in the following domains?",
+      "rowLabels": Array [
+        "I'm interested in politics.",
+        "I'm interested in economics.",
+      ],
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChangeModel={[MockFunction]}
+  onConfigurationChanged={[MockFunction]}
+  onModelChanged={[MockFunction]}
+  onPromptChanged={[Function]}
+  onTeacherInstructionsChanged={[Function]}
+/>
+`;

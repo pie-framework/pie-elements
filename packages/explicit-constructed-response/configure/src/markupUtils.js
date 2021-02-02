@@ -2,10 +2,8 @@ import escape from 'lodash/escape';
 
 export const removeUnwantedCharacters = markup =>
   markup
-    .replace(/(\t)|(\n)|(\\t)|(\\n)/g, '')
-    .replace(/\\"/g, '"').replace(/\\\//g, '/')
-    // <br> causes an infinite normalizing in editable-html for some reason
-    .replace(/(<br>)|(<\/br>)/g, '');
+    .replace(/(\t+(?!imes))|(\n)|(\\t+(?!imes))|(\\n)/g, '')
+    .replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 const createElementFromHTML = (htmlString = '') => {
   const div = document.createElement('div');

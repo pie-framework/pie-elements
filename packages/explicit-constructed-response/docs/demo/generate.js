@@ -1,6 +1,6 @@
 const choice = (l, v) => ({ label: l, value: v });
 
-const markup = '<p>The {{0}} jumped {{1}} the {{2}}</p>';
+const markup = '<p>The {{0}} <br> jumped {{1}} <br> the {{2}}</p>';
 
 exports.model = (id, element) => ({
   id,

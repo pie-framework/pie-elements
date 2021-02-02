@@ -78,6 +78,10 @@ const immutable = [
 
 const commonJs = {
   namedExports: {
+    'node_modules/react-beautiful-dnd/node_modules/react-is/index.js': [
+      'isValidElementType',
+      'isContextConsumer',
+    ],
     'node_modules/js-combinatorics/combinatorics.js': ['combination'],
     'node_modules/react-konva/lib/ReactKonva.js': konva,
     'node_modules/react-redux/node_modules/react-is/index.js': reactIsExports,
@@ -161,8 +165,8 @@ module.exports = {
         repository: 'pie-framework/pie-elements',
         modules: [
           /** make use of the pie-ui shared lib */
-          { name: '@pie-ui/shared-lib', version: '^4.0.0' },
-          { name: '@pie-ui/shared-math-edit', version: '^1.17.1' },
+          { name: '@pie-ui/shared-lib', version: '^4.1.1' },
+          { name: '@pie-ui/shared-math-edit', version: '^1.18.1' },
         ],
         /**
          * Ideally namespace imports would be the default import method.
