@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.10...@pie-element/extended-text-entry@6.4.0) (2021-02-02)
+
+
+### Features
+
+* **extended-text-entry:** add all plugins to editable html authoring - PD-707 ([c8e3df3](https://github.com/pie-framework/pie-elements/commit/c8e3df3))
+
+
+
+
+
 ## [6.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.3.9...@pie-element/extended-text-entry@6.3.10) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

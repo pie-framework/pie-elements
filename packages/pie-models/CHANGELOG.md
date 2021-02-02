@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.2.2...@pie-element/pie-models@10.3.0) (2021-02-02)
+
+
+### Features
+
+* multi-trait-rubric (No authoring yet) ([dc01b01](https://github.com/pie-framework/pie-elements/commit/dc01b01))
+
+
+
+
+
 ## [10.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.2.1...@pie-element/pie-models@10.2.2) (2020-08-13)
 
 **Note:** Version bump only for package @pie-element/pie-models

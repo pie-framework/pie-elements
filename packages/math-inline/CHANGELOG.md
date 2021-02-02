@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.11...@pie-element/math-inline@5.5.0) (2021-02-02)
+
+
+### Bug Fixes
+
+* label for Equation response is made dynamic, which is hardcoded PD-268 ([aac0b02](https://github.com/pie-framework/pie-elements/commit/aac0b02))
+
+
+### Features
+
+* **math-inline:** add equation editor type dropdown for prompt - PD-355 ([4934753](https://github.com/pie-framework/pie-elements/commit/4934753))
+* **math-inline:** linebreaks re-worked to maintain standard latex on model - PD-787 ([9c096c0](https://github.com/pie-framework/pie-elements/commit/9c096c0))
+* **math-inline:** turn off symbolic validation until validation engine is fully optimized - PD690 ([33e717e](https://github.com/pie-framework/pie-elements/commit/33e717e))
+
+
+
+
+
 ## [5.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.4.10...@pie-element/math-inline@5.4.11) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/math-inline

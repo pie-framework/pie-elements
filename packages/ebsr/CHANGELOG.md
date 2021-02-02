@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.3.11...@pie-element/ebsr@6.4.0) (2021-02-02)
+
+
+### Features
+
+* **ebsr:** partial scoring settings panel toggle off by default - PD-721 ([00b4f6d](https://github.com/pie-framework/pie-elements/commit/00b4f6d))
+
+
+
+
+
 ## [6.3.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.3.10...@pie-element/ebsr@6.3.11) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/ebsr

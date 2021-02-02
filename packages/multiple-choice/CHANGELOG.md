@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.5.12...@pie-element/multiple-choice@5.6.0) (2021-02-02)
+
+
+### Features
+
+* **multiple-choice:** add maximum number of choices toggle and related logic ([f506444](https://github.com/pie-framework/pie-elements/commit/f506444))
+
+
+
+
+
 ## [5.5.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.5.11...@pie-element/multiple-choice@5.5.12) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

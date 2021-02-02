@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.5.12",
+  "version": "4.5.13",
   "main": "lib/index.js",
   "description": "",
   "scripts": {

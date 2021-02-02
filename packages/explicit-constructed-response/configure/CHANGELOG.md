@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.17...@pie-element/explicit-constructed-response-configure@3.5.18) (2021-02-02)
+
+
+### Bug Fixes
+
+* modified regex to handle multiplication symbol issue PD-367 ([6554549](https://github.com/pie-framework/pie-elements/commit/6554549))
+
+
+
+
+
 ## [3.5.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.5.16...@pie-element/explicit-constructed-response-configure@3.5.17) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

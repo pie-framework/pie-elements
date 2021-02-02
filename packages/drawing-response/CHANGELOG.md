@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.5.10...@pie-element/drawing-response@3.5.11) (2021-02-02)
+
+
+### Bug Fixes
+
+* **drawing-response:** fix image removal if setting is turned off ([5f6c56a](https://github.com/pie-framework/pie-elements/commit/5f6c56a))
+
+
+
+
+
 ## [3.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.5.9...@pie-element/drawing-response@3.5.10) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/drawing-response

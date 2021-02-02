@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.11...@pie-element/hotspot@4.7.12) (2021-02-02)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
 ## [4.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.10...@pie-element/hotspot@4.7.11) (2020-11-07)
 
 **Note:** Version bump only for package @pie-element/hotspot
