@@ -154,6 +154,7 @@ const Design = withStyles(styles)(props => {
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
+            color="primary"
           />
           {rationaleEnabled && (
             <InputContainer
