@@ -96,9 +96,9 @@ describe('Main', () => {
       });
 
       it('calls onAddChoice if choice not empty', () => {
-        w.instance().onDone('<div>test</div>');
+        w.instance().onDone('test');
 
-        expect(onAddChoice).toBeCalledWith('0', '<div>test</div>');
+        expect(onAddChoice).toBeCalledWith('0', 'test');
       });
     });
 
