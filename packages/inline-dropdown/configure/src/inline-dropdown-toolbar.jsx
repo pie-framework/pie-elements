@@ -154,7 +154,7 @@ export class RespAreaToolbar extends React.Component {
     const onlyText = createElementFromHTML(val).textContent;
 
     if (!isEmpty(onlyText)) {
-      onAddChoice(node.data.get('index'), val);
+      onAddChoice(node.data.get('index'), onlyText);
     }
   };
 
