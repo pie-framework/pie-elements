@@ -7,6 +7,11 @@ import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import { withStyles } from '@material-ui/core/styles';
 
 import EditableHtml from '@pie-lib/editable-html';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputBase from '@material-ui/core/InputBase';
 
 const styles = {
   actions: {
@@ -18,7 +23,7 @@ const styles = {
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
-    alignItems: 'flex-start'
+    alignItems: 'center',
   },
   controls: {
     display: 'flex',
@@ -29,7 +34,21 @@ const styles = {
     width: '80%',
     border: 'none',
     margin: '8px',
-    padding: '10px 0'
+    padding: '10px 0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  label1: {
+    textAlign: 'center',
+    width: '80%',
+    border: 'none',
+    margin: '8px',
+    padding: '10px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   editableLabel: {
     textAlign: 'left'
@@ -38,6 +57,31 @@ const styles = {
     paddingBottom: '16px'
   }
 };
+
+const inputStyles = {
+  root: {
+    'label + &': {
+      marginTop: '24px',
+      marginBottom: '24px',
+      width: '60px'
+    },
+  },
+  input: {
+    borderRadius: '4px',
+    position: 'relative',
+    border: '1px solid #ced4da',
+    fontSize: '16px',
+    padding: '10px 26px 10px 12px',
+
+    '&:focus': {
+      borderRadius: '4px',
+    }
+  },
+};
+
+
+const BootstrapInput = withStyles(inputStyles)(InputBase);
+
 
 export class TraitsHeaderTile extends React.Component {
   onScorePointLabelChange = ({ scorePointLabel, value }) => {
@@ -58,6 +102,12 @@ export class TraitsHeaderTile extends React.Component {
       classes,
       showStandards,
       onTraitLabelChange,
+      showDescription,
+      showLevelTagInput,
+      maxPoints,
+      maxScoreOptions,
+      updateMaxPointsFieldValue,
+      scaleIndex
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
@@ -68,15 +118,43 @@ export class TraitsHeaderTile extends React.Component {
       <div className={classes.traitTile}>
         <span><DragHandle className={classes.actions}/></span>
 
-        <div className={classes.label}>
-          <div className={classes.subLabel}>Trait Label</div>
-          <EditableHtml
-            className={classes.editableLabel}
-            markup={traitLabel || 'Trait'}
-            onChange={onTraitLabelChange}
-            placeholder='Trait Label'
-            pluginProps={pluginProps}
-          />
+        <div className={classes.label1}>
+          {showLevelTagInput && (
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
+              <div className={classes.subLabel}>Trait Label</div>
+              <EditableHtml
+                className={classes.editableLabel}
+                markup={traitLabel || 'Trait'}
+                onChange={onTraitLabelChange}
+                placeholder='Trait Label'
+                pluginProps={pluginProps}
+              />
+            </div>
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
+            <h4>Scale #{scaleIndex}</h4>
+            <div style={{ width: '24px' }}/>
+            <FormControl className={classes.margin}>
+              <InputLabel>
+                Max Points
+              </InputLabel>
+              <Select
+                value={maxPoints}
+                onChange={updateMaxPointsFieldValue}
+                input={<BootstrapInput/>}
+              >
+                {(maxScoreOptions || []).map(maxScore => (
+                  <MenuItem
+                    key={`menu-item-${maxScore}`}
+                    value={maxScore}
+                  >
+                    {maxScore}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
         </div>
 
         {showStandards && (
@@ -85,9 +163,11 @@ export class TraitsHeaderTile extends React.Component {
           </div>
         )}
 
-        <div className={classes.label}>
-          Description
-        </div>
+        {showDescription && (
+          <div className={classes.label}>
+            Description
+          </div>
+        )}
 
         {scorePointsValues.map((scorePointsValue, index) => {
           const value = scorePointsValues.length - index - 1;
@@ -136,7 +216,9 @@ TraitsHeaderTile.propTypes = {
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
   traitLabel: PropTypes.string,
-  showStandards: PropTypes.bool
+  showStandards: PropTypes.bool,
+  showLevelTagInput: PropTypes.bool,
+  showDescription: PropTypes.bool,
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

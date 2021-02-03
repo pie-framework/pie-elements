@@ -19,9 +19,6 @@ import {
   DecreaseMaxPoints,
   DeleteScale,
   DeleteTrait,
-  ExcludeZeroDialog,
-  IncludeZeroDialog,
-  excludeZeroTypes
 } from './modals';
 
 const inputStyles = {
@@ -83,6 +80,10 @@ const styles = {
     background: '#f1f1f1',
     margin: '16px 0',
     padding: '16px'
+  },
+  full: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 };
 
@@ -93,74 +94,9 @@ export class Scale extends React.Component {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
-    showExcludeZeroDialog: false,
   };
 
   set = (newState) => this.setState(newState);
-
-  // Exclude Zero
-  showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
-
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
-
-  changeExcludeZero = (excludeZeroType) => {
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    let { excludeZero, scorePointsLabels, traits } = scale || {};
-
-    excludeZero = !excludeZero;
-
-    this.hideToggleExcludeZeroModal();
-
-    if (scorePointsLabels.length < 1) return;
-
-
-    switch (excludeZeroType) {
-      case excludeZeroTypes.remove0: {
-        // removes column 0
-        scorePointsLabels = scorePointsLabels.slice(1);
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: scorePointsDescriptors.slice(1)
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.add0: {
-        // adds empty column at start
-        scorePointsLabels = ['', ...scorePointsLabels];
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: ['', ...scorePointsDescriptors]
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.shiftLeft: {
-        // removes last column
-        scorePointsLabels = scorePointsLabels.slice(0, -1);
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: scorePointsDescriptors.slice(0, -1)
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.shiftRight: {
-        // adds empty column at end
-        scorePointsLabels = [...scorePointsLabels, ''];
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: [...scorePointsDescriptors, '']
-        }));
-
-        break;
-      }
-      default:
-        break;
-    }
-
-    onScaleChanged(scaleIndex, { excludeZero, scorePointsLabels, traits });
-  }
 
   // Max Points
   updateMaxPointsFieldValue = ({ target }) => {
@@ -267,16 +203,24 @@ export class Scale extends React.Component {
   }
 
   render() {
-    const { classes, scale, scaleIndex, showStandards, onScaleChanged } = this.props || {};
     const {
+      classes,
+      scale,
+      scaleIndex,
+      showStandards,
+      onScaleChanged,
       excludeZero,
+      showDescription,
+      showLevelTagInput
+    } = this.props || {};
+    const {
       maxPoints,
       scorePointsLabels,
       traitLabel,
       traits
     } = scale || {};
+
     const {
-      showExcludeZeroDialog,
       showDecreaseMaxPointsDialog,
       showDeleteScaleDialog,
       showDeleteTraitDialog
@@ -292,46 +236,11 @@ export class Scale extends React.Component {
     return (
       <div key={`scale-${scaleIndex}`} className={classes.scaleWrapper}>
         <div className={classes.scaleTitleWrapper}>
-          <h3 style={{ color: 'grey' }}>
-            Scale #{scaleIndex}
-          </h3>
           <Delete
             classes={{ root: classes.addCircle }}
             onClick={this.showDeleteScaleModal}
           />
         </div>
-
-        <FormControlLabel
-          label="Exclude Zero"
-          value="exclude_zero"
-          control={
-            <Checkbox
-              color="primary"
-              checked={excludeZero}
-              onChange={this.showToggleExcludeZeroModal}
-            />
-          }
-        />
-
-        <FormControl className={classes.margin}>
-          <InputLabel>
-            Max Points
-          </InputLabel>
-          <Select
-            value={maxPoints}
-            onChange={this.updateMaxPointsFieldValue}
-            input={<BootstrapInput/>}
-          >
-            {maxScoreOptions.map(maxScore => (
-              <MenuItem
-                key={`menu-item-${maxScore}`}
-                value={maxScore}
-              >
-                {maxScore}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
 
         <TraitsHeader
           key={'header-key'}
@@ -341,6 +250,12 @@ export class Scale extends React.Component {
           onScaleChange={(params) => onScaleChanged(scaleIndex, params)}
           onTraitLabelChange={label => onScaleChanged(scaleIndex, { traitLabel: label })}
           showStandards={showStandards}
+          showDescription={showDescription}
+          showLevelTagInput={showLevelTagInput}
+          maxPoints={maxPoints}
+          maxScoreOptions={maxScoreOptions}
+          updateMaxPointsFieldValue={this.updateMaxPointsFieldValue}
+          scaleIndex={scaleIndex}
         />
 
         {traits.map((trait, index) => (
@@ -354,6 +269,7 @@ export class Scale extends React.Component {
             onTraitChanged={trait => this.onTraitChanged(index, trait)}
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
+            showDescription={showDescription}
           />
         ))}
 
@@ -368,18 +284,6 @@ export class Scale extends React.Component {
             onClick={this.onTraitAdded}
           />
         </div>
-
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
 
         <DecreaseMaxPoints
           open={!!showDecreaseMaxPointsDialog}
@@ -407,7 +311,6 @@ export class Scale extends React.Component {
 Scale.propTypes = {
   classes: PropTypes.object,
   scale: PropTypes.shape({
-    excludeZero: PropTypes.bool,
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
     traitLabel: PropTypes.string,
@@ -418,10 +321,13 @@ Scale.propTypes = {
       description: PropTypes.string,
     }))
   }),
+  excludeZero: PropTypes.bool,
   scaleIndex: PropTypes.number,
   onScaleChanged: PropTypes.func,
   onScaleRemoved: PropTypes.func,
-  showStandards: PropTypes.bool
+  showStandards: PropTypes.bool,
+  showLevelTagInput: PropTypes.bool,
+  showDescription: PropTypes.bool,
 }
 
 export default withDragContext(withStyles(styles)(Scale));
