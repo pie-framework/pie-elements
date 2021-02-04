@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/calculator-configure",
-  "version": "1.8.17",
+  "version": "1.8.18",
   "description": "",
   "main": "lib/index.js",
   "private": true,

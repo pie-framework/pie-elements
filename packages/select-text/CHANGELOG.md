@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.12...@pie-element/select-text@6.3.13) (2021-02-04)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
 ## [6.3.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.11...@pie-element/select-text@6.3.12) (2021-02-02)
 
 **Note:** Version bump only for package @pie-element/select-text
