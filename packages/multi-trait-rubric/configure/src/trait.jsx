@@ -20,12 +20,19 @@ const styles = theme => ({
   },
   controls: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    bottom: 0,
+    left: 0
   },
   prompt: {
-    width: '80%',
+    width: '140px',
     border: 'none',
-    margin: '8px'
+    margin: '10px'
+  },
+  mainPrompt: {
+    width: '160px',
+    margin: '10px 0'
   },
   removeCircle: {
     fill: theme.palette.error[500]
@@ -37,10 +44,20 @@ const styles = theme => ({
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    padding: '16px',
+    boxSizing: 'border-box',
+    position: 'relative'
   },
   targetPrompt: {
     backgroundColor: '#D7D7D7'
+  },
+  slateEditor: {
+    fontFamily: 'Cerebri',
+  },
+  dragHandle: {
+    position: 'absolute',
+    top: 0
   }
 });
 
@@ -100,19 +117,25 @@ export class TraitTile extends React.Component {
               <DragHandle className={classes.actions}/>
             </span>
 
-            {showDescription && (
-              <EditableHtml
-                className={classes.prompt}
-                placeholder="Trait name"
-                markup={name}
-                onChange={name => this.onTraitChanged({ name })}
-                pluginProps={pluginProps}
-              />
-            )}
+            <div className={classes.controls}>
+              <IconButton color='default' onClick={onTraitRemoved}>
+                <RemoveCircle classes={{ root: classes.removeCircle }}/>
+              </IconButton>
+            </div>
+
+            <EditableHtml
+              className={classNames(classes.prompt, classes.mainPrompt)}
+              classes={{ slateEditor: classes.slateEditor }}
+              placeholder="Trait name"
+              markup={name}
+              onChange={name => this.onTraitChanged({ name })}
+              pluginProps={pluginProps}
+            />
 
             {showStandards && (
               <EditableHtml
                 className={classes.prompt}
+                classes={{ slateEditor: classes.slateEditor }}
                 placeholder="Standards"
                 markup={standards.join(',')}
                 onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
@@ -120,13 +143,16 @@ export class TraitTile extends React.Component {
               />
             )}
 
-            <EditableHtml
-              className={classes.prompt}
-              placeholder="Description"
-              markup={description}
-              onChange={description => this.onTraitChanged({ description })}
-              pluginProps={pluginProps}
-            />
+            {showDescription && (
+              <EditableHtml
+                className={classes.prompt}
+                classes={{ slateEditor: classes.slateEditor }}
+                placeholder="Description"
+                markup={description}
+                onChange={description => this.onTraitChanged({ description })}
+                pluginProps={pluginProps}
+              />
+            )}
 
             {scorePointsValues.map((scorePointsValue, index) => {
               const value = scorePointsValues.length - index - 1;
@@ -142,6 +168,7 @@ export class TraitTile extends React.Component {
                 <EditableHtml
                   key={`score-point-descriptor-${index}`}
                   className={classes.prompt}
+                  classes={{ slateEditor: classes.slateEditor }}
                   placeholder='Descriptor'
                   markup={scoreDescriptor}
                   onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
@@ -149,12 +176,6 @@ export class TraitTile extends React.Component {
                 />
               )
             })}
-
-            <div className={classes.controls}>
-              <IconButton color='default' onClick={onTraitRemoved}>
-                <RemoveCircle classes={{ root: classes.removeCircle }}/>
-              </IconButton>
-            </div>
           </div>
         </div>
       ),

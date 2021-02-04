@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import isEmpty from 'lodash/isEmpty';
 
-import AddCircle from '@material-ui/icons/AddCircle';
 import { withStyles } from '@material-ui/core/styles';
-import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { withDragContext } from '@pie-lib/drag';
 import { layout, settings } from '@pie-lib/config-ui';
@@ -16,6 +14,10 @@ import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals
 const { Panel, toggle } = settings;
 
 const styles = {
+  design: {
+    fontFamily: 'Cerebri Sans',
+    fontSize: '14px',
+  },
   addCircle: {
     fill: 'grey',
     marginLeft: '16px',
@@ -235,13 +237,23 @@ export class Main extends React.Component {
               />
             ))}
 
-
             <div className={classes.buttonWrapper}>
-              <div>Add Scale</div>
-              <AddCircle
-                classes={{ root: classes.addCircle }}
+              <div
                 onClick={this.onScaleAdded}
-              />
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                  padding: '11px 16px',
+                  width: '114px',
+                  background: '#ECEDF1',
+                  borderRadius: '4px',
+                  justifyContent: 'space-around',
+                  color: '#050F2D'
+                }}
+              >
+                <strong>+</strong> <div>Add Scale</div>
+              </div>
             </div>
           </div>
         </layout.ConfigLayout>

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import DragHandle from '@material-ui/icons/DragHandle';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import { withStyles } from '@material-ui/core/styles';
 
 import EditableHtml from '@pie-lib/editable-html';
@@ -12,26 +10,38 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
+import Delete from '@material-ui/icons/Delete';
 
 const styles = {
-  actions: {
-    visibility: 'hidden'
+  toolbar: {
+    backgroundColor: '#f6f6f6',
+    width: '100%',
+    padding: '16px',
+    boxSizing: 'border-box',
+    position: 'relative'
   },
   traitTile: {
-    width: '100%',
-    backgroundColor: '#f6f6f6',
     marginTop: '5px',
     marginBottom: '5px',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
-  controls: {
+  scorePointBoxWrapper: {
+    padding: '0 10px'
+  },
+  scorePointBox: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    borderRadius: '4px',
+    background: 'white',
+    width: '140px',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    border: '1px solid #ccc'
   },
   label: {
     textAlign: 'center',
-    width: '80%',
+    width: '140px',
     border: 'none',
     margin: '8px',
     padding: '10px 0',
@@ -41,37 +51,71 @@ const styles = {
   },
   label1: {
     textAlign: 'center',
-    width: '80%',
     border: 'none',
-    margin: '8px',
-    padding: '10px 0',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between',
+    width: '160px'
   },
   editableLabel: {
-    textAlign: 'left'
+    textAlign: 'left',
+    flex: 1,
+    border: 'none',
+
+    '& div': {
+      padding: 0
+    },
+
+    '& > div': {
+      border: 'none',
+      borderLeft: '1px solid #ccc',
+      borderRadius: 0,
+      padding: '8px'
+    },
+  },
+  editableLevel: {
+    background: 'white'
   },
   subLabel: {
-    paddingBottom: '16px'
+    width: '24px',
+    textAlign: 'center'
+  },
+  subLabelMain: {
+    width: 'max-content',
+    padding: '8px'
+  },
+  slateEditor: {
+    fontFamily: 'Cerebri',
+  },
+  delete: {
+    fill: 'grey',
+    marginLeft: '16px',
+    height: '30px',
+    width: '30px',
+    position: 'absolute',
+    top: '4px',
+    right: '4px',
+    cursor: 'pointer'
   }
 };
 
 const inputStyles = {
   root: {
+    background: 'white',
     'label + &': {
-      marginTop: '24px',
-      marginBottom: '24px',
-      width: '60px'
+      marginTop: '20px',
+      marginBottom: 0,
+      width: '80px'
     },
   },
   input: {
     borderRadius: '4px',
     position: 'relative',
     border: '1px solid #ced4da',
-    fontSize: '16px',
-    padding: '10px 26px 10px 12px',
+    fontSize: '14px',
+    fontFamily: 'Cerebri Sans',
+    padding: '8px 12px',
 
     '&:focus': {
       borderRadius: '4px',
@@ -107,7 +151,8 @@ export class TraitsHeaderTile extends React.Component {
       maxPoints,
       maxScoreOptions,
       updateMaxPointsFieldValue,
-      scaleIndex
+      scaleIndex,
+      showDeleteScaleModal
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
@@ -115,28 +160,39 @@ export class TraitsHeaderTile extends React.Component {
     };
 
     return (
-      <div className={classes.traitTile}>
-        <span><DragHandle className={classes.actions}/></span>
-
-        <div className={classes.label1}>
+      <div className={classes.toolbar}>
+        <div>
+          <Delete
+            classes={{ root: classes.delete }}
+            onClick={showDeleteScaleModal}
+          />
           {showLevelTagInput && (
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
-              <div className={classes.subLabel}>Trait Label</div>
+            <div className={classes.scorePointBoxWrapper}>
+
+              <div className={classNames(classes.subLabel, classes.subLabelMain)}>Level Label</div>
+
               <EditableHtml
-                className={classes.editableLabel}
+                className={classes.editableLevel}
+                classes={{ slateEditor: classes.slateEditor }}
                 markup={traitLabel || 'Trait'}
                 onChange={onTraitLabelChange}
                 placeholder='Trait Label'
                 pluginProps={pluginProps}
               />
+
             </div>
           )}
+        </div>
+        <div className={classes.traitTile}>
+          <div className={classes.label1}>
 
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end' }}>
-            <h4>Scale #{scaleIndex}</h4>
-            <div style={{ width: '24px' }}/>
+            <div style={{
+              lineHeight: '16px',
+              color: '#050F2D'
+            }}>Scale {scaleIndex + 1}</div>
+            <div style={{ width: '16px' }}/>
             <FormControl className={classes.margin}>
-              <InputLabel>
+              <InputLabel style={{ width: 'max-content', color: '#050F2D' }}>
                 Max Points
               </InputLabel>
               <Select
@@ -155,54 +211,51 @@ export class TraitsHeaderTile extends React.Component {
               </Select>
             </FormControl>
           </div>
-        </div>
 
-        {showStandards && (
-          <div className={classes.label}>
-            Standard(s)
-          </div>
-        )}
-
-        {showDescription && (
-          <div className={classes.label}>
-            Description
-          </div>
-        )}
-
-        {scorePointsValues.map((scorePointsValue, index) => {
-          const value = scorePointsValues.length - index - 1;
-          let scoreDescriptor;
-
-          try {
-            scoreDescriptor = scorePointsLabels[value] || '';
-          } catch (e) {
-            scoreDescriptor = '';
-          }
-
-          return (
-            <div
-              className={classes.label}
-              key={`score-point-label-${index}`}
-            >
-              <div className={classes.subLabel}>
-                {scorePointsValue}
-              </div>
-
-              <EditableHtml
-                className={classes.editableLabel}
-                markup={scoreDescriptor}
-                placeholder='Label'
-                onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
-                pluginProps={pluginProps}
-              />
+          {showStandards && (
+            <div className={classes.label}>
+              Standard(s)
             </div>
-          )
-        })}
+          )}
 
-        <div className={classes.controls}>
-          <IconButton color='default'>
-            <RemoveCircle classes={{ root: classes.actions }}/>
-          </IconButton>
+          {showDescription && (
+            <div className={classes.label}>
+              Description
+            </div>
+          )}
+
+          {scorePointsValues.map((scorePointsValue, index) => {
+            const value = scorePointsValues.length - index - 1;
+            let scoreDescriptor;
+
+            try {
+              scoreDescriptor = scorePointsLabels[value] || '';
+            } catch (e) {
+              scoreDescriptor = '';
+            }
+
+            return (
+              <div className={classes.scorePointBoxWrapper}>
+                <div
+                  className={classes.scorePointBox}
+                  key={`score-point-label-${index}`}
+                >
+                  <div className={classes.subLabel}>
+                    {scorePointsValue}
+                  </div>
+
+                  <EditableHtml
+                    className={classes.editableLabel}
+                    classes={{ slateEditor: classes.slateEditor }}
+                    markup={scoreDescriptor}
+                    placeholder='Label'
+                    onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                    pluginProps={pluginProps}
+                  />
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     );

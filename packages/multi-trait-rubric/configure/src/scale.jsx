@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Checkbox, FormControlLabel } from '@material-ui/core';
-import Delete from '@material-ui/icons/Delete';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputBase from '@material-ui/core/InputBase';
-import AddCircle from '@material-ui/icons/AddCircle';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
 
 import { withDragContext } from '@pie-lib/drag';
@@ -21,36 +13,7 @@ import {
   DeleteTrait,
 } from './modals';
 
-const inputStyles = {
-  root: {
-    'label + &': {
-      marginTop: '24px',
-      marginBottom: '24px',
-      width: '180px'
-    },
-  },
-  input: {
-    borderRadius: '4px',
-    position: 'relative',
-    border: '1px solid #ced4da',
-    fontSize: '16px',
-    padding: '10px 26px 10px 12px',
-
-    '&:focus': {
-      borderRadius: '4px',
-    }
-  },
-};
-
-const BootstrapInput = withStyles(inputStyles)(InputBase);
-
 const styles = {
-  addCircle: {
-    fill: 'grey',
-    marginLeft: '16px',
-    height: '30px',
-    width: '30px'
-  },
   buttonWrapper: {
     alignItems: 'center',
     color: 'grey',
@@ -71,19 +34,10 @@ const styles = {
     margin: '12px 0',
     wordBreak: 'break-word'
   },
-  scaleTitleWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
   trait: {
     background: '#f1f1f1',
     margin: '16px 0',
     padding: '16px'
-  },
-  full: {
-    display: 'flex',
-    flexDirection: 'row'
   }
 };
 
@@ -235,13 +189,6 @@ export class Scale extends React.Component {
 
     return (
       <div key={`scale-${scaleIndex}`} className={classes.scaleWrapper}>
-        <div className={classes.scaleTitleWrapper}>
-          <Delete
-            classes={{ root: classes.addCircle }}
-            onClick={this.showDeleteScaleModal}
-          />
-        </div>
-
         <TraitsHeader
           key={'header-key'}
           traitLabel={traitLabel}
@@ -256,6 +203,7 @@ export class Scale extends React.Component {
           maxScoreOptions={maxScoreOptions}
           updateMaxPointsFieldValue={this.updateMaxPointsFieldValue}
           scaleIndex={scaleIndex}
+          showDeleteScaleModal={this.showDeleteScaleModal}
         />
 
         {traits.map((trait, index) => (
@@ -274,15 +222,22 @@ export class Scale extends React.Component {
         ))}
 
         <div className={classes.buttonWrapper}>
-          <div>
-            <div>Add</div>
-            <div dangerouslySetInnerHTML={{ __html: traitLabel || ' Trait' }}/>
-          </div>
-
-          <AddCircle
-            classes={{ root: classes.addCircle }}
+          <div
             onClick={this.onTraitAdded}
-          />
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'flex-start',
+              padding: '11px 16px',
+              width: '114px',
+              background: '#ECEDF1',
+              borderRadius: '4px',
+              justifyContent: 'space-around',
+              color: '#050F2D'
+            }}
+          >
+            <strong>+</strong> <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel}` || ' Trait' }}/>
+          </div>
         </div>
 
         <DecreaseMaxPoints
