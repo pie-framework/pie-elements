@@ -2019,10 +2019,10 @@
     "@octokit/openapi-types" "^4.0.0"
     "@types/node" ">= 8"
 
-"@pie-framework/build-helper@^5.2.0":
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.3.tgz#52ab878117aa02bb22f0a2e00e04bee232f68c31"
-  integrity sha512-AKyy2b8v1OjiGOFpLrMJ4aTmWnLP0DK0kU6MEVF7HVQ3IMFyh30EpMi5LH5F9VYnrQKR6xTGDcgt7h3qpkQCaA==
+"@pie-framework/build-helper@^5.2.4":
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.4.tgz#296418ccc97d6981bd820f8da3521e7b0e825ff3"
+  integrity sha512-PfU4LDhI6m5E8eCien8Q0nhLkfqrddLYfTf7WT4gcM5mtnCzo38bMuX5Jw+L4wcfEwcEVuziJp+rTbcYmRhKVg==
   dependencies:
     conventional-changelog-core "^4.1.7"
     conventional-changelog-writer "^4.0.16"
