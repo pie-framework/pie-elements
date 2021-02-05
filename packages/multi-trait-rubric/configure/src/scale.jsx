@@ -7,32 +7,25 @@ import { withDragContext } from '@pie-lib/drag';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
+import { MultiTraitButton } from './common';
 import {
   DecreaseMaxPoints,
   DeleteScale,
   DeleteTrait,
 } from './modals';
 
+const maxScoreOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const styles = {
-  buttonWrapper: {
-    alignItems: 'center',
-    color: 'grey',
+  scaleWrapper: {
     display: 'flex',
-    fontSize: '16px',
-    justifyContent: 'flex-end',
-    textAlign: 'right'
+    flexDirection: 'column',
+    margin: '12px 0',
+    wordBreak: 'break-word',
+    padding: '16px 32px'
   },
   maxPoints: {
     width: '300px',
     margin: '16px 0 32px'
-  },
-  scaleWrapper: {
-    border: '1px solid lightgrey',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '16px',
-    margin: '12px 0',
-    wordBreak: 'break-word'
   },
   trait: {
     background: '#f1f1f1',
@@ -40,8 +33,6 @@ const styles = {
     padding: '16px'
   }
 };
-
-const maxScoreOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export class Scale extends React.Component {
   state = {
@@ -221,24 +212,9 @@ export class Scale extends React.Component {
           />
         ))}
 
-        <div className={classes.buttonWrapper}>
-          <div
-            onClick={this.onTraitAdded}
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'flex-start',
-              padding: '11px 16px',
-              width: '114px',
-              background: '#ECEDF1',
-              borderRadius: '4px',
-              justifyContent: 'space-around',
-              color: '#050F2D'
-            }}
-          >
-            <strong>+</strong> <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel}` || ' Trait' }}/>
-          </div>
-        </div>
+        <MultiTraitButton onClick={this.onTraitAdded}>
+          <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel || ' Trait'}` }}/>
+        </MultiTraitButton>
 
         <DecreaseMaxPoints
           open={!!showDecreaseMaxPointsDialog}

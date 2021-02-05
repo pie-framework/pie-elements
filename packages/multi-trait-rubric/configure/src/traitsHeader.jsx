@@ -1,44 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
-
-import EditableHtml from '@pie-lib/editable-html';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputBase from '@material-ui/core/InputBase';
-import Delete from '@material-ui/icons/Delete';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import {
+  Block,
+  PrimaryBlock,
+  Row,
+  SecondaryBlock,
+  ScorePoint,
+  MaxPointsPicker,
+  SimpleInput, ScaleSettings
+} from './common';
 
 const styles = {
-  toolbar: {
-    backgroundColor: '#f6f6f6',
-    width: '100%',
-    padding: '16px',
-    boxSizing: 'border-box',
-    position: 'relative'
-  },
-  traitTile: {
-    marginTop: '5px',
-    marginBottom: '5px',
-    display: 'flex',
-    alignItems: 'flex-end',
-  },
-  scorePointBoxWrapper: {
-    padding: '0 10px'
-  },
-  scorePointBox: {
-    display: 'flex',
-    borderRadius: '4px',
-    background: 'white',
-    width: '140px',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    border: '1px solid #ccc'
-  },
   label: {
     textAlign: 'center',
     width: '140px',
@@ -49,85 +28,17 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-around'
   },
-  label1: {
-    textAlign: 'center',
-    border: 'none',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '160px'
-  },
-  editableLabel: {
-    textAlign: 'left',
-    flex: 1,
-    border: 'none',
-
-    '& div': {
-      padding: 0
-    },
-
-    '& > div': {
-      border: 'none',
-      borderLeft: '1px solid #ccc',
-      borderRadius: 0,
-      padding: '8px'
-    },
-  },
-  editableLevel: {
-    background: 'white'
-  },
-  subLabel: {
-    width: '24px',
-    textAlign: 'center'
-  },
-  subLabelMain: {
-    width: 'max-content',
-    padding: '8px'
-  },
-  slateEditor: {
-    fontFamily: 'Cerebri',
-  },
-  delete: {
-    fill: 'grey',
-    marginLeft: '16px',
-    height: '30px',
-    width: '30px',
-    position: 'absolute',
-    top: '4px',
-    right: '4px',
-    cursor: 'pointer'
+  greyHeader: {
+    background: '#f1f1f1',
+    borderRadius: '4px'
   }
 };
 
-const inputStyles = {
-  root: {
-    background: 'white',
-    'label + &': {
-      marginTop: '20px',
-      marginBottom: 0,
-      width: '80px'
-    },
-  },
-  input: {
-    borderRadius: '4px',
-    position: 'relative',
-    border: '1px solid #ced4da',
-    fontSize: '14px',
-    fontFamily: 'Cerebri Sans',
-    padding: '8px 12px',
-
-    '&:focus': {
-      borderRadius: '4px',
-    }
-  },
-};
-
-
-const BootstrapInput = withStyles(inputStyles)(InputBase);
-
-
 export class TraitsHeaderTile extends React.Component {
+  state = {
+    anchorEl: null
+  };
+
   onScorePointLabelChange = ({ scorePointLabel, value }) => {
     const { scorePointsLabels, onScaleChange } = this.props;
 
@@ -137,6 +48,10 @@ export class TraitsHeaderTile extends React.Component {
 
     onScaleChange({ scorePointsLabels });
   };
+
+  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
+
+  handleClose = () => this.setState({ anchorEl: null });
 
   render() {
     const {
@@ -149,7 +64,6 @@ export class TraitsHeaderTile extends React.Component {
       showDescription,
       showLevelTagInput,
       maxPoints,
-      maxScoreOptions,
       updateMaxPointsFieldValue,
       scaleIndex,
       showDeleteScaleModal
@@ -158,70 +72,78 @@ export class TraitsHeaderTile extends React.Component {
       image: { disabled: true },
       math: { disabled: true }
     };
+    const { anchorEl } = this.state;
 
     return (
-      <div className={classes.toolbar}>
-        <div>
-          <Delete
-            classes={{ root: classes.delete }}
-            onClick={showDeleteScaleModal}
-          />
+      <Row className={classes.greyHeader}>
+        <PrimaryBlock>
           {showLevelTagInput && (
-            <div className={classes.scorePointBoxWrapper}>
-
-              <div className={classNames(classes.subLabel, classes.subLabelMain)}>Level Label</div>
-
-              <EditableHtml
-                className={classes.editableLevel}
-                classes={{ slateEditor: classes.slateEditor }}
-                markup={traitLabel || 'Trait'}
-                onChange={onTraitLabelChange}
-                placeholder='Trait Label'
-                pluginProps={pluginProps}
-              />
-
-            </div>
+            <SimpleInput
+              markup={traitLabel || 'Trait'}
+              onChange={onTraitLabelChange}
+              pluginProps={pluginProps}
+              label='Level Label'
+            />
           )}
-        </div>
-        <div className={classes.traitTile}>
-          <div className={classes.label1}>
 
-            <div style={{
-              lineHeight: '16px',
-              color: '#050F2D'
-            }}>Scale {scaleIndex + 1}</div>
-            <div style={{ width: '16px' }}/>
-            <FormControl className={classes.margin}>
-              <InputLabel style={{ width: 'max-content', color: '#050F2D' }}>
-                Max Points
-              </InputLabel>
-              <Select
-                value={maxPoints}
-                onChange={updateMaxPointsFieldValue}
-                input={<BootstrapInput/>}
+          <ScaleSettings>
+            <div>
+              Scale {scaleIndex + 1}
+            </div>
+
+            <MaxPointsPicker
+              maxPoints={maxPoints}
+              onChange={updateMaxPointsFieldValue}
+            />
+
+            <div>
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                onClick={this.handleClick}
               >
-                {(maxScoreOptions || []).map(maxScore => (
+                <MoreVertIcon/>
+              </IconButton>
+              <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={this.handleClose}
+              >
+                {['Remove Scale'].map((option) => (
                   <MenuItem
-                    key={`menu-item-${maxScore}`}
-                    value={maxScore}
+                    key={option}
+                    onClick={() => {
+                      showDeleteScaleModal();
+                      this.handleClose();
+                    }}
                   >
-                    {maxScore}
+                    {option}
                   </MenuItem>
                 ))}
-              </Select>
-            </FormControl>
-          </div>
+              </Menu>
+            </div>
+          </ScaleSettings>
+        </PrimaryBlock>
+
+        <SecondaryBlock>
 
           {showStandards && (
-            <div className={classes.label}>
-              Standard(s)
-            </div>
+            <Block>
+              <div className={classes.label}>
+                Standard(s)
+              </div>
+            </Block>
           )}
 
           {showDescription && (
-            <div className={classes.label}>
-              Description
-            </div>
+            <Block>
+              <div className={classes.label}>
+                Description
+              </div>
+            </Block>
           )}
 
           {scorePointsValues.map((scorePointsValue, index) => {
@@ -235,29 +157,18 @@ export class TraitsHeaderTile extends React.Component {
             }
 
             return (
-              <div className={classes.scorePointBoxWrapper}>
-                <div
-                  className={classes.scorePointBox}
-                  key={`score-point-label-${index}`}
-                >
-                  <div className={classes.subLabel}>
-                    {scorePointsValue}
-                  </div>
-
-                  <EditableHtml
-                    className={classes.editableLabel}
-                    classes={{ slateEditor: classes.slateEditor }}
-                    markup={scoreDescriptor}
-                    placeholder='Label'
-                    onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
-                    pluginProps={pluginProps}
-                  />
-                </div>
-              </div>
+              <Block key={`secondary-block-part-${index}`}>
+                <ScorePoint
+                  scorePointsValue={scorePointsValue}
+                  scoreDescriptor={scoreDescriptor}
+                  pluginProps={pluginProps}
+                  onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                />
+              </Block>
             )
           })}
-        </div>
-      </div>
+        </SecondaryBlock>
+      </Row>
     );
   }
 }
@@ -272,6 +183,10 @@ TraitsHeaderTile.propTypes = {
   showStandards: PropTypes.bool,
   showLevelTagInput: PropTypes.bool,
   showDescription: PropTypes.bool,
+  maxPoints: PropTypes.number,
+  updateMaxPointsFieldValue: PropTypes.func,
+  scaleIndex: PropTypes.number,
+  showDeleteScaleModal: PropTypes.bool,
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

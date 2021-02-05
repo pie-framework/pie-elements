@@ -9,6 +9,8 @@ import { withDragContext } from '@pie-lib/drag';
 import { layout, settings } from '@pie-lib/config-ui';
 
 import Scale from './scale';
+import { MultiTraitButton } from './common';
+
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals';
 
 const { Panel, toggle } = settings;
@@ -17,20 +19,6 @@ const styles = {
   design: {
     fontFamily: 'Cerebri Sans',
     fontSize: '14px',
-  },
-  addCircle: {
-    fill: 'grey',
-    marginLeft: '16px',
-    height: '30px',
-    width: '30px'
-  },
-  buttonWrapper: {
-    alignItems: 'center',
-    color: 'grey',
-    display: 'flex',
-    fontSize: '16px',
-    justifyContent: 'flex-end',
-    textAlign: 'right'
   }
 };
 
@@ -193,11 +181,9 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, configuration, onConfigurationChanged } = this.props || {};
-    const { scales, visibleToStudent, halfScoring, excludeZero } = model || {};
     const { showStandards, showExcludeZero, showLevelTagInput, showDescription, showVisibleToStudent, showHalfScoring } = configuration || {};
+    const { scales, excludeZero } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
-
-    console.log(configuration)
 
     return (
       <div className={classes.design}>
@@ -221,7 +207,8 @@ export class Main extends React.Component {
             />
           }
         >
-          <div style={{ width: '60vw' }}>
+          {/*TODO:*/}
+          <div style={{ maxWidth: '1000px' }}>
             {scales.map((scale, scaleIndex) => (
               <Scale
                 key={`scale-${scaleIndex}`}
@@ -237,24 +224,9 @@ export class Main extends React.Component {
               />
             ))}
 
-            <div className={classes.buttonWrapper}>
-              <div
-                onClick={this.onScaleAdded}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'flex-start',
-                  padding: '11px 16px',
-                  width: '114px',
-                  background: '#ECEDF1',
-                  borderRadius: '4px',
-                  justifyContent: 'space-around',
-                  color: '#050F2D'
-                }}
-              >
-                <strong>+</strong> <div>Add Scale</div>
-              </div>
-            </div>
+            <MultiTraitButton onClick={this.onScaleAdded}>
+              Add Scale
+            </MultiTraitButton>
           </div>
         </layout.ConfigLayout>
 
