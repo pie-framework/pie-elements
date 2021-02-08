@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import { withDragContext } from '@pie-lib/drag';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
-import { MultiTraitButton } from './common';
+import { BlockWidth, MultiTraitButton } from './common';
 import {
   DecreaseMaxPoints,
   DeleteScale,
@@ -39,6 +41,7 @@ export class Scale extends React.Component {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
+    currentPosition: 0
   };
 
   set = (newState) => this.setState(newState);
@@ -168,7 +171,8 @@ export class Scale extends React.Component {
     const {
       showDecreaseMaxPointsDialog,
       showDeleteScaleDialog,
-      showDeleteTraitDialog
+      showDeleteTraitDialog,
+      currentPosition
     } = this.state;
 
     const scorePointsValues = [];
@@ -178,8 +182,15 @@ export class Scale extends React.Component {
       scorePointsValues.push(pointValue);
     }
 
+    const AdjustedBlockWidth = BlockWidth + 2 * 8;
+
     return (
       <div key={`scale-${scaleIndex}`} className={classes.scaleWrapper}>
+
+        <div>
+          <ArrowBackIosIcon onClick={() => this.setState({ currentPosition: currentPosition - (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })}/>
+          <ArrowForwardIosIcon onClick={() => this.setState({ currentPosition: currentPosition + (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })} />
+        </div>
         <TraitsHeader
           key={'header-key'}
           traitLabel={traitLabel}
@@ -195,6 +206,7 @@ export class Scale extends React.Component {
           updateMaxPointsFieldValue={this.updateMaxPointsFieldValue}
           scaleIndex={scaleIndex}
           showDeleteScaleModal={this.showDeleteScaleModal}
+          currentPosition={currentPosition}
         />
 
         {traits.map((trait, index) => (
@@ -209,6 +221,7 @@ export class Scale extends React.Component {
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
             showDescription={showDescription}
+            currentPosition={currentPosition}
           />
         ))}
 

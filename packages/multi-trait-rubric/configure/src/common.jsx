@@ -9,6 +9,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
 
+export const BlockWidth = 180;
+
 export const MultiTraitButton = withStyles({
   button: {
     fontSize: '16px',
@@ -46,8 +48,8 @@ export const PrimaryBlock = withStyles({
 
 export const Block = withStyles({
   block: {
-    width: '180px',
-    minWidth: '180px',
+    width: `${BlockWidth}px`,
+    minWidth: `${BlockWidth}px`,
     padding: '8px'
   }
 })(({ classes, children }) => (
@@ -58,13 +60,13 @@ export const Block = withStyles({
 export const SecondaryBlock = withStyles({
   secondaryBlock: {
     display: 'flex',
-    overflowX: 'scroll',
+    overflowX: 'hidden',
     alignItems: 'flex-end',
     // this is needed to show the editor toolbar:
     paddingBottom: '22px'
   }
-})(({ classes, children }) => (
-  <div className={classes.secondaryBlock}>
+})(({ classes, children, setRef }) => (
+  <div className={classes.secondaryBlock} ref={setRef}>
     {children}
   </div>
 ));

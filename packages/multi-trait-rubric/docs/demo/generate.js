@@ -6,7 +6,7 @@ exports.model = (id, element) => ({
   excludeZero: true,
   scales: [
     {
-      maxPoints: 4,
+      maxPoints: 10,
       scorePointsLabels: ['Non-Scorable', 'Developing', 'Progressing', 'Effective', 'Strong'],
       traitLabel: 'Trait',
       traits: [

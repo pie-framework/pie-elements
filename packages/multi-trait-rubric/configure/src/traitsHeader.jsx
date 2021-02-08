@@ -39,6 +39,12 @@ export class TraitsHeaderTile extends React.Component {
     anchorEl: null
   };
 
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.currentPosition !== this.props.currentPosition) {
+      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+    }
+  }
+
   onScorePointLabelChange = ({ scorePointLabel, value }) => {
     const { scorePointsLabels, onScaleChange } = this.props;
 
@@ -128,7 +134,11 @@ export class TraitsHeaderTile extends React.Component {
           </ScaleSettings>
         </PrimaryBlock>
 
-        <SecondaryBlock>
+        <SecondaryBlock
+          setRef={ref => {
+            this.secondaryBlock = ref;
+          }}
+        >
 
           {showStandards && (
             <Block>

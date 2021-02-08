@@ -45,6 +45,12 @@ const styles = {
 export class TraitTile extends React.Component {
   state = {};
 
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.currentPosition !== this.props.currentPosition) {
+      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+    }
+  }
+
   onTraitChanged = (params) => {
     const { trait, onTraitChanged } = this.props;
 
@@ -143,8 +149,11 @@ export class TraitTile extends React.Component {
                 placeholder='Enter Trait'
               />
             </PrimaryBlock>
-            <SecondaryBlock>
-
+            <SecondaryBlock
+              setRef={ref => {
+                this.secondaryBlock = ref;
+              }}
+            >
               {showStandards && (
                 <Block>
                   <ExpandedInput
