@@ -6,6 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {
   Block,
@@ -14,7 +16,10 @@ import {
   SecondaryBlock,
   ScorePoint,
   MaxPointsPicker,
-  SimpleInput, ScaleSettings
+  SimpleInput,
+  ScaleSettings,
+  BlockWidth,
+  Arrow
 } from './common';
 
 const styles = {
@@ -30,18 +35,32 @@ const styles = {
   },
   greyHeader: {
     background: '#f1f1f1',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    position: 'relative'
   }
 };
 
 export class TraitsHeaderTile extends React.Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    showRight: null,
+    showLeft: null
   };
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentDidMount() {
+    if (this.state.showRight === null && this.secondaryBlock) {
+      this.setState({ showRight: this.secondaryBlock.scrollWidth - this.secondaryBlock.offsetWidth });
+    }
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentPosition !== this.props.currentPosition) {
       this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+
+      this.setState({
+        showLeft: nextProps.currentPosition >= 0,
+        showRight: nextProps.currentPosition < this.secondaryBlock.scrollWidth - this.secondaryBlock.offsetWidth
+      });
     }
   }
 
@@ -72,16 +91,41 @@ export class TraitsHeaderTile extends React.Component {
       maxPoints,
       updateMaxPointsFieldValue,
       scaleIndex,
-      showDeleteScaleModal
+      showDeleteScaleModal,
+      increasePosition,
+      decreasePosition,
+      currentPosition,
+      scaleHeight
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
       math: { disabled: true }
     };
-    const { anchorEl } = this.state;
+    const { anchorEl, showLeft, showRight } = this.state;
+
+    const AdjustedBlockWidth = BlockWidth + 2 * 8;
+
 
     return (
       <Row className={classes.greyHeader}>
+        <Arrow
+          scaleHeight={scaleHeight}
+          width={`${AdjustedBlockWidth / 2}px`}
+          show={showLeft}
+          onClick={decreasePosition}
+          left='200px'
+        >
+          <ArrowBackIosIcon/>
+        </Arrow>
+        <Arrow
+          scaleHeight={scaleHeight}
+          width={`${AdjustedBlockWidth / (currentPosition === 0 ? 2 : 4)}px`}
+          show={showRight}
+          onClick={increasePosition}
+        >
+          <ArrowForwardIosIcon/>
+        </Arrow>
+
         <PrimaryBlock>
           {showLevelTagInput && (
             <SimpleInput
@@ -195,7 +239,11 @@ TraitsHeaderTile.propTypes = {
   showDescription: PropTypes.bool,
   maxPoints: PropTypes.number,
   updateMaxPointsFieldValue: PropTypes.func,
+  increasePosition: PropTypes.func,
+  decreasePosition: PropTypes.func,
   scaleIndex: PropTypes.number,
+  currentPosition: PropTypes.number,
+  scaleHeight: PropTypes.number,
   showDeleteScaleModal: PropTypes.bool,
 };
 

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import { withDragContext } from '@pie-lib/drag';
 
@@ -41,10 +39,17 @@ export class Scale extends React.Component {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
-    currentPosition: 0
+    currentPosition: 0,
+    scaleHeight: 0
   };
 
   set = (newState) => this.setState(newState);
+
+  componentDidMount() {
+    if (this.state.scaleHeight === 0 && this.scaleWrapper) {
+      this.setState({ scaleHeight: this.scaleWrapper.clientHeight });
+    }
+  }
 
   // Max Points
   updateMaxPointsFieldValue = ({ target }) => {
@@ -172,7 +177,8 @@ export class Scale extends React.Component {
       showDecreaseMaxPointsDialog,
       showDeleteScaleDialog,
       showDeleteTraitDialog,
-      currentPosition
+      currentPosition,
+      scaleHeight
     } = this.state;
 
     const scorePointsValues = [];
@@ -185,12 +191,13 @@ export class Scale extends React.Component {
     const AdjustedBlockWidth = BlockWidth + 2 * 8;
 
     return (
-      <div key={`scale-${scaleIndex}`} className={classes.scaleWrapper}>
-
-        <div>
-          <ArrowBackIosIcon onClick={() => this.setState({ currentPosition: currentPosition - (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })}/>
-          <ArrowForwardIosIcon onClick={() => this.setState({ currentPosition: currentPosition + (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })} />
-        </div>
+      <div
+        key={`scale-${scaleIndex}`}
+        className={classes.scaleWrapper}
+        ref={ref => {
+          this.scaleWrapper = ref;
+        }}
+      >
         <TraitsHeader
           key={'header-key'}
           traitLabel={traitLabel}
@@ -207,6 +214,9 @@ export class Scale extends React.Component {
           scaleIndex={scaleIndex}
           showDeleteScaleModal={this.showDeleteScaleModal}
           currentPosition={currentPosition}
+          increasePosition={() => this.setState({ currentPosition: currentPosition + (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })}
+          decreasePosition={() => this.setState({ currentPosition: currentPosition - (!currentPosition ? AdjustedBlockWidth / 2 : AdjustedBlockWidth) })}
+          scaleHeight={scaleHeight}
         />
 
         {traits.map((trait, index) => (

@@ -75,7 +75,7 @@ export const SecondaryBlock = withStyles({
 export const Row = withStyles({
   row: {
     display: 'flex',
-    margin: '4px 0'
+    margin: '4px 0',
   }
 })(({ classes, children, className }) => (
   <div className={classnames(classes.row, className)}>
@@ -293,6 +293,33 @@ export const ScaleSettings = withStyles({
     {children}
   </div>
 ));
+
+export const Arrow = withStyles({
+  arrow: {
+    position: 'absolute',
+    zIndex: 10,
+    cursor: 'pointer',
+    right: 0,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    background: 'linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
+    padding: '70px 0'
+  }
+})(({ classes, children, className, scaleHeight, show, width, onClick, left }) => (
+  <div className={classnames(classes.arrow, className)}
+       style={{
+         height: scaleHeight || '-webkit-fill-available',
+         display: show ? 'flex' : 'none',
+         width: width,
+         left: left,
+         background: left ? 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))' : undefined
+       }}
+       onClick={onClick}
+  >
+    {children}
+  </div>
+));
+
 
 
 
