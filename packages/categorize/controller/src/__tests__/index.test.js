@@ -15,6 +15,10 @@ jest.mock('@pie-lib/categorize', () => ({
     correct: mockedCategories === answers,
   }),
 }));
+jest.mock('@pie-lib/feedback', () => ({
+  getFeedbackForCorrectness: () =>
+    new Promise((resolve) => resolve('This is getFeedbackForCorrectness response.'))
+}));
 jest.mock('@pie-lib/controller-utils', () => ({
   ...jest.requireActual('@pie-lib/controller-utils'),
   getShuffledChoices: (choices, session, updateSession, key) => {
@@ -89,6 +93,29 @@ describe('controller', () => {
     it('returns model', async () => {
       const result = await model(question, {}, { mode: 'gather' }, jest.fn());
       expect(result).toMatchObject({ ...question, correctResponse: undefined });
+    });
+
+    it('returns model in evaluate mode', async () => {
+      const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+      expect(result).toMatchObject({ ...question, correctness: 'incorrect' });
+    });
+
+    it('feedback: returns proper feedback in evaluate mode', async () => {
+      const result = await model(question, {}, { mode: 'evaluate' }, jest.fn());
+      expect(result.feedback).toEqual('This is getFeedbackForCorrectness response.');
+    });
+
+    it('feedback: returns proper feedback if feedback is not enabled', async () => {
+      const result = await model({
+        ...question,
+        feedbackEnabled: false
+      },{}, { mode: 'evaluate' }, jest.fn());
+      expect(result.feedback).toEqual(undefined);
+    });
+
+    it('feedback: returns proper feedback in gather mode', async () => {
+      const result = await model(question, {}, { mode: 'gather' }, jest.fn());
+      expect(result.feedback).toEqual(undefined);
     });
 
     describe('disabled', () => {
