@@ -148,14 +148,14 @@ describe('controller', () => {
               label: 'a',
               value: 'apple',
               correct: true,
-              feedback: 'foo',
+              feedback: undefined,
               rationale: null
             },
             {
               label: 'b',
               value: 'banana',
               correct: false,
-              feedback: 'Incorrect',
+              feedback: undefined,
               rationale: null
             }
           ])
