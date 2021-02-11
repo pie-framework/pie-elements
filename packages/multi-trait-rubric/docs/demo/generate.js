@@ -4,6 +4,9 @@ exports.model = (id, element) => ({
   visibleToStudent: true,
   halfScoring: false,
   excludeZero: true,
+  pointLabels: true,
+  description: false,
+  standards: false,
   scales: [
     {
       maxPoints: 10,
@@ -85,7 +88,7 @@ exports.model = (id, element) => ({
       ]
     },
     {
-      maxPoints: 2,
+      maxPoints: 5,
       scorePointsLabels: ['Non-Scorable', 'Unsatisfactory', 'Satisfactory'],
       traitLabel: 'Category',
       traits: [

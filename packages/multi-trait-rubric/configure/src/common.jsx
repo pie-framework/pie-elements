@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -26,7 +26,7 @@ export const MultiTraitButton = withStyles({
     color: '#050F2D',
     cursor: 'pointer'
   }
-})(({ classes, children, onClick }) => (
+})(({classes, children, onClick}) => (
   <div className={classes.button} onClick={onClick}>
     <strong>+</strong>
     <div>{children}</div>
@@ -38,9 +38,10 @@ export const PrimaryBlock = withStyles({
     width: '200px',
     minWidth: '200px',
     position: 'relative',
-    padding: '8px'
+    padding: '8px',
+    boxSizing: 'border-box',
   }
-})(({ classes, children }) => (
+})(({classes, children}) => (
   <div className={classes.primaryBlock}>
     {children}
   </div>
@@ -52,7 +53,7 @@ export const Block = withStyles({
     minWidth: `${BlockWidth}px`,
     padding: '8px'
   }
-})(({ classes, children }) => (
+})(({classes, children}) => (
   <div className={classes.block}>
     {children}
   </div>
@@ -65,7 +66,7 @@ export const SecondaryBlock = withStyles({
     // this is needed to show the editor toolbar:
     paddingBottom: '22px'
   }
-})(({ classes, children, setRef }) => (
+})(({classes, children, setRef}) => (
   <div className={classes.secondaryBlock} ref={setRef}>
     {children}
   </div>
@@ -77,7 +78,7 @@ export const Row = withStyles({
     display: 'flex',
     margin: '4px 0',
   }
-})(({ classes, children, className }) => (
+})(({classes, children, className}) => (
   <div className={classnames(classes.row, className)}>
     {children}
   </div>
@@ -95,6 +96,11 @@ export const ScorePoint = withStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     border: '1px solid #ccc'
+  },
+  scorePointBoxDisabled: {
+    background: 'none',
+    justifyContent: 'center',
+    border: '0'
   },
   subLabel: {
     width: '24px',
@@ -119,24 +125,30 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange }) => (
-  <div className={classes.scorePointBoxWrapper}>
-    <div className={classes.scorePointBox}>
-      <div className={classes.subLabel}>
-        {scorePointsValue}
-      </div>
+})(({classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels}) => {
 
-      <EditableHtml
-        className={classes.editableLabel}
-        classes={{ slateEditor: classes.slateEditor }}
-        markup={scoreDescriptor}
-        placeholder='Label'
-        onChange={onChange}
-        pluginProps={pluginProps}
-      />
+  const scoreBoxClasses =
+    showScorePointLabels ? classes.scorePointBox : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
+
+  return (
+    <div className={classes.scorePointBoxWrapper}>
+      <div className={scoreBoxClasses}>
+        <div className={classes.subLabel}>
+          {scorePointsValue}
+        </div>
+
+        {showScorePointLabels ? <EditableHtml
+          className={classes.editableLabel}
+          classes={{slateEditor: classes.slateEditor}}
+          markup={scoreDescriptor}
+          placeholder='Label'
+          onChange={onChange}
+          pluginProps={pluginProps}
+        /> : null}
+      </div>
     </div>
-  </div>
-));
+  );
+});
 
 
 const maxScoreOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -166,7 +178,7 @@ const inputStyles = {
 
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
-export const MaxPointsPicker = withStyles({})(({ classes, maxPoints, onChange }) => (
+export const MaxPointsPicker = withStyles({})(({classes, maxPoints, onChange}) => (
   <FormControl>
     <InputLabel>
       Max Points
@@ -202,13 +214,13 @@ export const SimpleInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label }) => (
+})(({classes, markup, onChange, pluginProps, label}) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
     <EditableHtml
       className={classes.editableLevel}
-      classes={{ slateEditor: classes.slateEditor }}
+      classes={{slateEditor: classes.slateEditor}}
       markup={markup}
       onChange={onChange}
       placeholder='Trait Label'
@@ -243,13 +255,13 @@ export const UnderlinedInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, placeholder }) => (
+})(({classes, markup, onChange, pluginProps, label, placeholder}) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
     <EditableHtml
       className={classes.editableLevel}
-      classes={{ slateEditor: classes.slateEditor }}
+      classes={{slateEditor: classes.slateEditor}}
       markup={markup}
       onChange={onChange}
       placeholder={placeholder}
@@ -269,11 +281,11 @@ export const ExpandedInput = withStyles({
     border: 'none',
     margin: '10px'
   },
-})(({ classes, markup, onChange, pluginProps, placeholder }) => (
+})(({classes, markup, onChange, pluginProps, placeholder}) => (
   <div>
     <EditableHtml
       className={classes.prompt}
-      classes={{ slateEditor: classes.slateEditor }}
+      classes={{slateEditor: classes.slateEditor}}
       markup={markup}
       onChange={onChange}
       placeholder={placeholder}
@@ -288,7 +300,7 @@ export const ScaleSettings = withStyles({
     justifyContent: 'space-between',
     alignItems: 'flex-end'
   }
-})(({ classes, children }) => (
+})(({classes, children}) => (
   <div className={classes.scaleSettings}>
     {children}
   </div>
@@ -303,23 +315,48 @@ export const Arrow = withStyles({
     alignItems: 'flex-start',
     justifyContent: 'center',
     background: 'linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
-    padding: '70px 0'
+    boxSizing: 'border-box',
+    padding: '4px 0'
+  },
+  innerGrey: {
+    position: 'absolute',
+    zIndex: 11,
+    cursor: 'pointer',
+    right: 0,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    background: 'linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
+    boxSizing: 'border-box',
+    height: '83px',
+
+    '& svg': {
+      position: 'absolute',
+      bottom: '-24px'
+    }
   }
-})(({ classes, children, className, scaleHeight, show, width, onClick, left }) => (
-  <div className={classnames(classes.arrow, className)}
-       style={{
-         height: scaleHeight || '-webkit-fill-available',
-         display: show ? 'flex' : 'none',
-         width: width,
-         left: left,
-         background: left ? 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))' : undefined
-       }}
-       onClick={onClick}
-  >
-    {children}
-  </div>
+})(({classes, children, className, show, width, onClick, left}) => (
+
+    <div className={classnames(classes.arrow, className)}
+         style={{
+           height: '-webkit-fill-available',
+           display: show ? 'flex' : 'none',
+           width: width,
+           left: left,
+           background: left ? 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))' : undefined
+         }}
+         onClick={onClick}
+    >
+      <div className={classnames(classes.innerGrey, className)}
+           style={{
+             display: show ? 'flex' : 'none',
+             width: width,
+             left: 0,
+             background: left ? 'linear-gradient(to right, #F1F1F1, rgba(255,255,255,0))' : undefined
+           }}
+           onClick={onClick}
+      >
+        {children}
+      </div>
+    </div>
+
 ));
-
-
-
-

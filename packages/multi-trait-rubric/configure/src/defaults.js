@@ -2,6 +2,9 @@ export default {
   model: {
     visibleToStudent: true,
     halfScoring: false,
+    pointLabels: true,
+    description: false,
+    standards: false,
     scales: []
   },
   configuration: {
@@ -13,6 +16,11 @@ export default {
     showExcludeZero: {
       settings: true,
       label: 'Exclude Zero',
+      enabled: false
+    },
+    showScorePointLabels: {
+      settings: true,
+      label: 'Show Score Point Labels',
       enabled: false
     },
     showLevelTagInput: {
@@ -35,5 +43,10 @@ export default {
       label: 'Half Scoring',
       enabled: false
     },
+    dragAndDrop: {
+      settings: false,
+      label: 'Enable Drag and Drop',
+      enabled: false,
+    }
   }
 };

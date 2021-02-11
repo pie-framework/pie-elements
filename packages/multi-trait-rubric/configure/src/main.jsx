@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 import isEmpty from 'lodash/isEmpty';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 
-import { withDragContext } from '@pie-lib/drag';
-import { layout, settings } from '@pie-lib/config-ui';
+import {withDragContext} from '@pie-lib/drag';
+import {layout, settings} from '@pie-lib/config-ui';
 
 import Scale from './scale';
-import { MultiTraitButton } from './common';
+import {MultiTraitButton} from './common';
 
-import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals';
+import {ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog} from './modals';
 
-const { Panel, toggle } = settings;
+const {Panel, toggle} = settings;
 
 const styles = {
   design: {
@@ -31,8 +31,8 @@ export class Main extends React.Component {
   };
 
   onScaleAdded = () => {
-    const { model, onModelChanged } = this.props;
-    let { scales } = model || {};
+    const {model, onModelChanged} = this.props;
+    let {scales} = model || {};
 
     if (!scales.length) {
       scales = [];
@@ -46,12 +46,12 @@ export class Main extends React.Component {
       traits: []
     });
 
-    onModelChanged({ ...model, scales });
+    onModelChanged({...model, scales});
   }
 
   onScaleChanged = (scaleIndex, params) => {
-    const { model, onModelChanged } = this.props;
-    const { scales } = model || {};
+    const {model, onModelChanged} = this.props;
+    const {scales} = model || {};
 
     if (scaleIndex < 0 || scaleIndex >= scales.length || isEmpty(params)) return false;
 
@@ -59,12 +59,12 @@ export class Main extends React.Component {
       scales[scaleIndex][key] = params[key];
     });
 
-    onModelChanged({ ...model, scales });
+    onModelChanged({...model, scales});
   };
 
   onScaleRemoved = (scaleIndex) => {
-    const { model, onModelChanged } = this.props;
-    let { scales } = model || {};
+    const {model, onModelChanged} = this.props;
+    let {scales} = model || {};
 
     if (scaleIndex < 0 || scaleIndex >= scales.length) return false;
 
@@ -73,39 +73,66 @@ export class Main extends React.Component {
       ...scales.slice(scaleIndex + 1)
     ];
 
-    onModelChanged({ ...model, scales });
+    onModelChanged({...model, scales});
   };
 
   onHalfScoringChanged = () => {
-    const { model, onModelChanged } = this.props;
-    let { halfScoring } = model || {};
+    const {model, onModelChanged} = this.props;
+    let {halfScoring} = model || {};
 
-    onModelChanged({ ...model, halfScoring: !halfScoring });
+    onModelChanged({...model, halfScoring: !halfScoring});
   };
 
   onVisibleToStudentChanged = () => {
-    const { model, onModelChanged } = this.props;
-    let { visibleToStudent } = model || {};
+    const {model, onModelChanged} = this.props;
+    let {visibleToStudent} = model || {};
 
-    onModelChanged({ ...model, visibleToStudent: !visibleToStudent });
+    onModelChanged({...model, visibleToStudent: !visibleToStudent});
   };
 
   set = (newState) => this.setState(newState);
 
-  // Exclude Zero
-  showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
+  changeShowScorePointLabels = () => {
+    const { model, onModelChanged } = this.props || {};
+    let { pointLabels } = model || {};
 
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
+    pointLabels = !pointLabels;
+
+    onModelChanged({ ...model, pointLabels });
+  }
+
+  changeShowDescription = () => {
+    const { model, onModelChanged } = this.props || {};
+    let { description } = model || {};
+
+    description = !description;
+
+    onModelChanged({ ...model, description });
+  }
+
+  changeShowStandards = () => {
+    const { model, onModelChanged } = this.props || {};
+    let { standards } = model || {};
+
+    standards = !standards;
+
+    onModelChanged({ ...model, standards });
+  }
+
+  // Exclude Zero
+  showToggleExcludeZeroModal = () => this.set({showExcludeZeroDialog: true});
+
+  hideToggleExcludeZeroModal = () => this.set({showExcludeZeroDialog: false});
 
   changeExcludeZero = (excludeZeroType) => {
-    const { model, onModelChanged } = this.props || {};
-    const { scales } = model || {};
-    let { excludeZero } = model || {};
+    const {model, onModelChanged} = this.props || {};
+    const {scales} = model || {};
+    let {excludeZero} = model || {};
 
     excludeZero = !excludeZero;
 
     const newScales = scales.reduce((acc, scale) => {
-      let { scorePointsLabels, traits } = scale || {};
+      let {scorePointsLabels, traits} = scale || {};
 
       if (scorePointsLabels.length < 1) return acc;
 
@@ -113,7 +140,7 @@ export class Main extends React.Component {
         case excludeZeroTypes.remove0: {
           // removes column 0
           scorePointsLabels = scorePointsLabels.slice(1);
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
+          traits = traits.map(({scorePointsDescriptors, ...trait}) => ({
             ...trait,
             scorePointsDescriptors: scorePointsDescriptors.slice(1)
           }));
@@ -123,7 +150,7 @@ export class Main extends React.Component {
         case excludeZeroTypes.add0: {
           // adds empty column at start
           scorePointsLabels = ['', ...scorePointsLabels];
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
+          traits = traits.map(({scorePointsDescriptors, ...trait}) => ({
             ...trait,
             scorePointsDescriptors: ['', ...scorePointsDescriptors]
           }));
@@ -133,7 +160,7 @@ export class Main extends React.Component {
         case excludeZeroTypes.shiftLeft: {
           // removes last column
           scorePointsLabels = scorePointsLabels.slice(0, -1);
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
+          traits = traits.map(({scorePointsDescriptors, ...trait}) => ({
             ...trait,
             scorePointsDescriptors: scorePointsDescriptors.slice(0, -1)
           }));
@@ -143,7 +170,7 @@ export class Main extends React.Component {
         case excludeZeroTypes.shiftRight: {
           // adds empty column at end
           scorePointsLabels = [...scorePointsLabels, ''];
-          traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
+          traits = traits.map(({scorePointsDescriptors, ...trait}) => ({
             ...trait,
             scorePointsDescriptors: [...scorePointsDescriptors, '']
           }));
@@ -163,14 +190,13 @@ export class Main extends React.Component {
       return acc;
     }, []);
 
-    onModelChanged({ ...model, scales: newScales, excludeZero });
-
+    onModelChanged({...model, scales: newScales, excludeZero});
 
     this.hideToggleExcludeZeroModal();
   }
 
   onModelChanged = (updatedModel, updatedProperty) => {
-    const { onModelChanged } = this.props || {};
+    const {onModelChanged} = this.props || {};
 
     if (updatedProperty === 'excludeZero') {
       this.showToggleExcludeZeroModal();
@@ -180,10 +206,19 @@ export class Main extends React.Component {
   }
 
   render() {
-    const { model, classes, configuration, onConfigurationChanged } = this.props || {};
-    const { showStandards, showExcludeZero, showLevelTagInput, showDescription, showVisibleToStudent, showHalfScoring } = configuration || {};
-    const { scales, excludeZero } = model || {};
-    const { showExcludeZeroDialog } = this.state || {};
+    const {model, classes, configuration, onConfigurationChanged} = this.props || {};
+    const {
+      showStandards,
+      showExcludeZero,
+      showLevelTagInput,
+      showDescription,
+      showVisibleToStudent,
+      showHalfScoring,
+      showScorePointLabels,
+      dragAndDrop
+    } = configuration || {};
+    const {scales, excludeZero, description, pointLabels, standards} = model || {};
+    const {showExcludeZeroDialog} = this.state || {};
 
     return (
       <div className={classes.design}>
@@ -196,19 +231,23 @@ export class Main extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
-                  'showStandards.enabled': showStandards.settings && toggle(showStandards.label, true),
+                  standards: showStandards.settings && toggle(showStandards.label),
                   'showLevelTagInput.enabled': showLevelTagInput.settings && toggle(showLevelTagInput.label, true),
-                  'showDescription.enabled': showDescription.settings && toggle(showDescription.label, true),
                   visibleToStudent: showVisibleToStudent.settings && toggle(showVisibleToStudent.label),
                   excludeZero: showExcludeZero.settings && toggle(showExcludeZero.label),
                   halfScoring: showHalfScoring.settings && toggle(showHalfScoring.label),
+                  'dragAndDrop.enabled': dragAndDrop.settings && toggle(dragAndDrop.label, true)
                 },
+                Properties: {
+                  description: showDescription.settings && toggle(showDescription.label),
+                  pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label)
+                }
               }}
             />
           }
         >
           {/*TODO:*/}
-          <div style={{ maxWidth: '1000px' }}>
+          <div style={{maxWidth: '1000px'}}>
             {scales.map((scale, scaleIndex) => (
               <Scale
                 key={`scale-${scaleIndex}`}
@@ -216,10 +255,12 @@ export class Main extends React.Component {
                 scaleIndex={scaleIndex}
                 onScaleRemoved={this.onScaleRemoved}
                 onScaleChanged={this.onScaleChanged}
-                showStandards={showStandards.enabled}
-                showDescription={showDescription.enabled}
+                showStandards={standards}
+                showScorePointLabels={pointLabels}
+                showDescription={description}
                 showLevelTagInput={showLevelTagInput.enabled}
                 excludeZero={excludeZero}
+                enableDragAndDrop={dragAndDrop.enabled}
                 {...this.props}
               />
             ))}

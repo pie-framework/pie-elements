@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -43,40 +43,27 @@ const styles = {
 export class TraitsHeaderTile extends React.Component {
   state = {
     anchorEl: null,
-    showRight: null,
-    showLeft: null
   };
-
-  componentDidMount() {
-    if (this.state.showRight === null && this.secondaryBlock) {
-      this.setState({ showRight: this.secondaryBlock.scrollWidth - this.secondaryBlock.offsetWidth });
-    }
-  }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentPosition !== this.props.currentPosition) {
-      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
-
-      this.setState({
-        showLeft: nextProps.currentPosition >= 0,
-        showRight: nextProps.currentPosition < this.secondaryBlock.scrollWidth - this.secondaryBlock.offsetWidth
-      });
+      this.secondaryBlock.scrollTo({left: nextProps.currentPosition});
     }
   }
 
-  onScorePointLabelChange = ({ scorePointLabel, value }) => {
-    const { scorePointsLabels, onScaleChange } = this.props;
+  onScorePointLabelChange = ({scorePointLabel, value}) => {
+    const {scorePointsLabels, onScaleChange} = this.props;
 
     if (value < 0 || value >= scorePointsLabels.length) return;
 
     scorePointsLabels[value] = scorePointLabel;
 
-    onScaleChange({ scorePointsLabels });
+    onScaleChange({scorePointsLabels});
   };
 
-  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
+  handleClick = (event) => this.setState({anchorEl: event.currentTarget});
 
-  handleClose = () => this.setState({ anchorEl: null });
+  handleClose = () => this.setState({anchorEl: null});
 
   render() {
     const {
@@ -92,40 +79,17 @@ export class TraitsHeaderTile extends React.Component {
       updateMaxPointsFieldValue,
       scaleIndex,
       showDeleteScaleModal,
-      increasePosition,
-      decreasePosition,
-      currentPosition,
-      scaleHeight
+      showScorePointLabels,
+      setSecondaryBlockRef
     } = this.props;
     const pluginProps = {
-      image: { disabled: true },
-      math: { disabled: true }
+      image: {disabled: true},
+      math: {disabled: true}
     };
-    const { anchorEl, showLeft, showRight } = this.state;
-
-    const AdjustedBlockWidth = BlockWidth + 2 * 8;
-
+    const {anchorEl} = this.state;
 
     return (
       <Row className={classes.greyHeader}>
-        <Arrow
-          scaleHeight={scaleHeight}
-          width={`${AdjustedBlockWidth / 2}px`}
-          show={showLeft}
-          onClick={decreasePosition}
-          left='200px'
-        >
-          <ArrowBackIosIcon/>
-        </Arrow>
-        <Arrow
-          scaleHeight={scaleHeight}
-          width={`${AdjustedBlockWidth / (currentPosition === 0 ? 2 : 4)}px`}
-          show={showRight}
-          onClick={increasePosition}
-        >
-          <ArrowForwardIosIcon/>
-        </Arrow>
-
         <PrimaryBlock>
           {showLevelTagInput && (
             <SimpleInput
@@ -178,11 +142,13 @@ export class TraitsHeaderTile extends React.Component {
           </ScaleSettings>
         </PrimaryBlock>
 
-        <SecondaryBlock
-          setRef={ref => {
+        <SecondaryBlock setRef={ref => {
+          if (ref) {
             this.secondaryBlock = ref;
-          }}
-        >
+
+            setSecondaryBlockRef(ref);
+          }
+        }}>
 
           {showStandards && (
             <Block>
@@ -216,7 +182,8 @@ export class TraitsHeaderTile extends React.Component {
                   scorePointsValue={scorePointsValue}
                   scoreDescriptor={scoreDescriptor}
                   pluginProps={pluginProps}
-                  onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                  showScorePointLabels={showScorePointLabels}
+                  onChange={scorePointLabel => this.onScorePointLabelChange({scorePointLabel, value})}
                 />
               </Block>
             )
@@ -243,8 +210,9 @@ TraitsHeaderTile.propTypes = {
   decreasePosition: PropTypes.func,
   scaleIndex: PropTypes.number,
   currentPosition: PropTypes.number,
-  scaleHeight: PropTypes.number,
   showDeleteScaleModal: PropTypes.bool,
+  showScorePointLabels: PropTypes.bool,
+  setSecondaryBlockRef: PropTypes.func
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

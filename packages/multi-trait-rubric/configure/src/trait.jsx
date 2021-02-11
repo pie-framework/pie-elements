@@ -45,8 +45,10 @@ const styles = {
 export class TraitTile extends React.Component {
   state = {};
 
-  componentWillReceiveProps(nextProps, nextContext) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.currentPosition !== this.props.currentPosition) {
+      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+    } else if (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition) {
       this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
     }
   }
@@ -92,7 +94,8 @@ export class TraitTile extends React.Component {
       },
       scorePointsValues,
       showStandards,
-      showDescription
+      showDescription,
+      enableDragAndDrop
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -108,10 +111,11 @@ export class TraitTile extends React.Component {
         <div>
           <Row>
             <PrimaryBlock>
-                <span className={classes.dragHandle}>
-                  <DragIndicatorIcon className={classes.actions}/>
-                </span>
-
+              {enableDragAndDrop ?
+                  <span className={classes.dragHandle}>
+                    <DragIndicatorIcon className={classes.actions}/>
+                  </span> : null
+              }
               <div className={classes.controls}>
                 <IconButton
                   aria-label="more"
@@ -225,6 +229,8 @@ TraitTile.propTypes = {
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   showStandards: PropTypes.bool,
   showDescription: PropTypes.bool,
+  enableDragAndDrop: PropTypes.bool,
+  currentPosition: PropTypes.number,
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);
