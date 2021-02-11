@@ -4,130 +4,130 @@ exports[`Trait snapshot renders 1`] = `
 <div>
   <div>
     <div>
-      <div
-        style={
-          Object {
-            "opacity": 1,
-            "width": "100%",
-          }
-        }
-      >
-        <span
-          className=""
+      <WithStyles(Component)>
+        <WithStyles(Component)>
+          <div>
+            <WithStyles(IconButton)
+              aria-controls="long-menu"
+              aria-haspopup="true"
+              aria-label="more"
+              onClick={[Function]}
+            >
+              <pure(MoreVertIcon) />
+            </WithStyles(IconButton)>
+            <WithStyles(Menu)
+              id="long-menu"
+              keepMounted={true}
+              onClose={[Function]}
+              open={false}
+            >
+              <WithStyles(MenuItem)
+                key="Remove Trait"
+                onClick={[Function]}
+              >
+                Remove Trait
+              </WithStyles(MenuItem)>
+            </WithStyles(Menu)>
+          </div>
+          <WithStyles(Component)
+            markup="Presentation"
+            onChange={[Function]}
+            placeholder="Enter Trait"
+            pluginProps={
+              Object {
+                "image": Object {
+                  "disabled": true,
+                },
+                "math": Object {
+                  "disabled": true,
+                },
+              }
+            }
+          />
+        </WithStyles(Component)>
+        <WithStyles(Component)
+          setRef={[Function]}
         >
-          <pure(DragHandleIcon) />
-        </span>
-        <EditableHtml
-          markup="Presentation"
-          onChange={[Function]}
-          placeholder="Trait name"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          markup=""
-          onChange={[Function]}
-          placeholder="Standards"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          markup=""
-          onChange={[Function]}
-          placeholder="Description"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-0"
-          markup="Handwriting is generally legible
-
-Overall appearance is acceptable or better"
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-1"
-          markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-2"
-          markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <div>
-          <WithStyles(IconButton)
-            color="default"
-          >
-            <pure(RemoveCircleIcon)
-              classes={
+          <WithStyles(Component)>
+            <WithStyles(Component)
+              markup=""
+              onChange={[Function]}
+              placeholder="Standards"
+              pluginProps={
                 Object {
-                  "root": undefined,
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
                 }
               }
             />
-          </WithStyles(IconButton)>
-        </div>
-      </div>
+          </WithStyles(Component)>
+          <WithStyles(Component)
+            key="key-key-0"
+          >
+            <WithStyles(Component)
+              markup="Handwriting is generally legible
+
+Overall appearance is acceptable or better"
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
+                Object {
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            />
+          </WithStyles(Component)>
+          <WithStyles(Component)
+            key="key-key-1"
+          >
+            <WithStyles(Component)
+              markup="Handwriting poor
+
+Overall appearance is distracting to unacceptable"
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
+                Object {
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            />
+          </WithStyles(Component)>
+          <WithStyles(Component)
+            key="key-key-2"
+          >
+            <WithStyles(Component)
+              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
+                Object {
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            />
+          </WithStyles(Component)>
+        </WithStyles(Component)>
+      </WithStyles(Component)>
     </div>
   </div>
 </div>
@@ -137,115 +137,113 @@ exports[`Trait snapshot renders without standards 1`] = `
 <div>
   <div>
     <div>
-      <div
-        style={
-          Object {
-            "opacity": 1,
-            "width": "100%",
-          }
-        }
-      >
-        <span
-          className=""
+      <WithStyles(Component)>
+        <WithStyles(Component)>
+          <div>
+            <WithStyles(IconButton)
+              aria-controls="long-menu"
+              aria-haspopup="true"
+              aria-label="more"
+              onClick={[Function]}
+            >
+              <pure(MoreVertIcon) />
+            </WithStyles(IconButton)>
+            <WithStyles(Menu)
+              id="long-menu"
+              keepMounted={true}
+              onClose={[Function]}
+              open={false}
+            >
+              <WithStyles(MenuItem)
+                key="Remove Trait"
+                onClick={[Function]}
+              >
+                Remove Trait
+              </WithStyles(MenuItem)>
+            </WithStyles(Menu)>
+          </div>
+          <WithStyles(Component)
+            markup="Presentation"
+            onChange={[Function]}
+            placeholder="Enter Trait"
+            pluginProps={
+              Object {
+                "image": Object {
+                  "disabled": true,
+                },
+                "math": Object {
+                  "disabled": true,
+                },
+              }
+            }
+          />
+        </WithStyles(Component)>
+        <WithStyles(Component)
+          setRef={[Function]}
         >
-          <pure(DragHandleIcon) />
-        </span>
-        <EditableHtml
-          markup="Presentation"
-          onChange={[Function]}
-          placeholder="Trait name"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          markup=""
-          onChange={[Function]}
-          placeholder="Description"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-0"
-          markup="Handwriting is generally legible
+          <WithStyles(Component)
+            key="key-key-0"
+          >
+            <WithStyles(Component)
+              markup="Handwriting is generally legible
 
 Overall appearance is acceptable or better"
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-1"
-          markup="Handwriting poor
-
-Overall appearance is distracting to unacceptable"
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <EditableHtml
-          key="score-point-descriptor-2"
-          markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
-          onChange={[Function]}
-          placeholder="Descriptor"
-          pluginProps={
-            Object {
-              "image": Object {
-                "disabled": true,
-              },
-              "math": Object {
-                "disabled": true,
-              },
-            }
-          }
-        />
-        <div>
-          <WithStyles(IconButton)
-            color="default"
-          >
-            <pure(RemoveCircleIcon)
-              classes={
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
                 Object {
-                  "root": undefined,
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
                 }
               }
             />
-          </WithStyles(IconButton)>
-        </div>
-      </div>
+          </WithStyles(Component)>
+          <WithStyles(Component)
+            key="key-key-1"
+          >
+            <WithStyles(Component)
+              markup="Handwriting poor
+
+Overall appearance is distracting to unacceptable"
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
+                Object {
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            />
+          </WithStyles(Component)>
+          <WithStyles(Component)
+            key="key-key-2"
+          >
+            <WithStyles(Component)
+              markup="Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. "
+              onChange={[Function]}
+              placeholder="Enter Description Here"
+              pluginProps={
+                Object {
+                  "image": Object {
+                    "disabled": true,
+                  },
+                  "math": Object {
+                    "disabled": true,
+                  },
+                }
+              }
+            />
+          </WithStyles(Component)>
+        </WithStyles(Component)>
+      </WithStyles(Component)>
     </div>
   </div>
 </div>
