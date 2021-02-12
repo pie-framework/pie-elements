@@ -129,6 +129,8 @@ export class Main extends React.Component {
     const {scales} = model || {};
     let {excludeZero} = model || {};
 
+    if (!scales || !scales.length) return;
+
     excludeZero = !excludeZero;
 
     const newScales = scales.reduce((acc, scale) => {
@@ -248,7 +250,7 @@ export class Main extends React.Component {
         >
           {/*TODO:*/}
           <div style={{maxWidth: '1000px'}}>
-            {scales.map((scale, scaleIndex) => (
+            {(scales || []).map((scale, scaleIndex) => (
               <Scale
                 key={`scale-${scaleIndex}`}
                 scale={scale}

@@ -6,8 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import {
   Block,
@@ -18,8 +16,6 @@ import {
   MaxPointsPicker,
   SimpleInput,
   ScaleSettings,
-  BlockWidth,
-  Arrow
 } from './common';
 
 const styles = {

@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { TraitsHeaderTile } from '../traitsHeader';
-import PropTypes from "prop-types";
 
 describe('Trait', () => {
   let w;
@@ -29,6 +28,24 @@ describe('Trait', () => {
 
     it('renders without standards', () => {
       w = wrapper({ showStandards: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders without description', () => {
+      w = wrapper({ showDescription: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders without level tag input', () => {
+      w = wrapper({ showLevelTagInput: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders without score points values', () => {
+      w = wrapper({ scorePointsValues: [] });
 
       expect(w).toMatchSnapshot();
     });

@@ -104,6 +104,261 @@ exports[`Trait snapshot renders 1`] = `
 </WithStyles(Component)>
 `;
 
+exports[`Trait snapshot renders without description 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        NaN
+      </div>
+      <WithStyles(Component) />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait snapshot renders without level tag input 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        NaN
+      </div>
+      <WithStyles(Component) />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait snapshot renders without score points values 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        NaN
+      </div>
+      <WithStyles(Component) />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
 exports[`Trait snapshot renders without standards 1`] = `
 <WithStyles(Component)>
   <WithStyles(Component)>

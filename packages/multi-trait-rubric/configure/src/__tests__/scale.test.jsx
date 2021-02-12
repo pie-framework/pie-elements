@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import { Scale } from '../scale';
-import { excludeZeroTypes } from '../modals';
 
 const scale = () => ({
   excludeZero: false,
@@ -53,6 +52,18 @@ describe('Scale', () => {
 
       expect(w).toMatchSnapshot();
     });
+
+    it('renders without descriptions', () => {
+      w = wrapper({ showDescription: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders with drag and drop enabled', () => {
+      w = wrapper({ dragAndDrop: true });
+
+      expect(w).toMatchSnapshot();
+    });
   });
 
   describe('logic', () => {
@@ -63,68 +74,6 @@ describe('Scale', () => {
       w = wrapper({ onScaleChanged });
     });
 
-    // describe('changeExcludeZero', () => {
-    //   it('removes zero', () => {
-    //     const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
-    //
-    //     w.instance().changeExcludeZero(excludeZeroTypes.remove0);
-    //
-    //     expect(onScaleChanged).toBeCalledWith(0, {
-    //       excludeZero: !excludeZero,
-    //       scorePointsLabels: scorePointsLabels.slice(1),
-    //       traits: [{
-    //         ...traits[0],
-    //         scorePointsDescriptors: traits[0].scorePointsDescriptors.slice(1)
-    //       }]
-    //     });
-    //   });
-    //
-    //   it('add0 zero', () => {
-    //     const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
-    //
-    //     w.instance().changeExcludeZero(excludeZeroTypes.add0);
-    //
-    //     expect(onScaleChanged).toBeCalledWith(0, {
-    //       excludeZero: !excludeZero,
-    //       scorePointsLabels: ['', ...scorePointsLabels],
-    //       traits: [{
-    //         ...traits[0],
-    //         scorePointsDescriptors: ['', ...traits[0].scorePointsDescriptors]
-    //       }]
-    //     });
-    //   });
-    //
-    //   it('shift to Left', () => {
-    //     const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
-    //
-    //     w.instance().changeExcludeZero(excludeZeroTypes.shiftLeft);
-    //
-    //     expect(onScaleChanged).toBeCalledWith(0, {
-    //       excludeZero: !excludeZero,
-    //       scorePointsLabels: scorePointsLabels.slice(0, -1),
-    //       traits: [{
-    //         ...traits[0],
-    //         scorePointsDescriptors: traits[0].scorePointsDescriptors.slice(0, -1)
-    //       }]
-    //     });
-    //   });
-    //
-    //   it('shift to Right', () => {
-    //     const { traits, scorePointsLabels, excludeZero } = w.instance().props.scale;
-    //
-    //     w.instance().changeExcludeZero(excludeZeroTypes.shiftRight);
-    //
-    //     expect(onScaleChanged).toBeCalledWith(0, {
-    //       excludeZero: !excludeZero,
-    //       scorePointsLabels: [...scorePointsLabels, ''],
-    //       traits: [{
-    //         ...traits[0],
-    //         scorePointsDescriptors: [...traits[0].scorePointsDescriptors, '']
-    //       }]
-    //     })
-    //     ;
-    //   });
-    // });
 
     describe('updateMaxPointsFieldValue', () => {
       it('shows alert box is number less then max points', () => {

@@ -42,6 +42,24 @@ describe('Trait', () => {
 
       expect(w).toMatchSnapshot();
     });
+
+    it('renders without description', () => {
+      w = wrapper({ description: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders with drag and drop', () => {
+      w = wrapper({ dragAndDrop: true });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders without score points values', () => {
+      w = wrapper({ scorePointsValues: [] });
+
+      expect(w).toMatchSnapshot();
+    });
   });
 
   describe('logic', () => {
@@ -70,8 +88,6 @@ describe('Trait', () => {
       });
 
       it('does not call onTraitChanged if params empty', () => {
-        const { trait } = w.instance().props;
-
         w.instance().onTraitChanged({});
 
         expect(onTraitChanged).not.toBeCalled();
@@ -114,6 +130,12 @@ describe('Trait', () => {
     describe('onScorePointDescriptorChange', () => {
       it('does not call onTraitChanged with scorePointsDescriptors', () => {
         w.instance().onScorePointDescriptorChange({ descriptor: 'New Descriptor', value: 10 });
+
+        expect(onTraitChanged).not.toBeCalled();
+      });
+
+      it('does not call onTraitChanged with scorePointsDescriptors', () => {
+        w.instance().onScorePointDescriptorChange({ descriptor: 'New Descriptor', value: -10 });
 
         expect(onTraitChanged).not.toBeCalled();
       });

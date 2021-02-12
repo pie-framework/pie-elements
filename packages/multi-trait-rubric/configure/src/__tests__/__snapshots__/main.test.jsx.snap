@@ -69,12 +69,12 @@ exports[`Main snapshot renders 1`] = `
           Object {
             "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
             "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -244,7 +244,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -332,17 +331,18 @@ Overall appearance is acceptable or better",
           }
         }
         enableDragAndDrop={false}
+        excludeZero={true}
         key="scale-0"
         model={
           Object {
             "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
             "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -512,7 +512,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -546,7 +545,6 @@ Overall appearance is acceptable or better",
         onScaleRemoved={[Function]}
         scale={
           Object {
-            "excludeZero": false,
             "maxPoints": 4,
             "scorePointsLabels": Array [
               "Non-Scorable",
@@ -769,17 +767,18 @@ Writing is expressive, engaging and has lots of energy",
           }
         }
         enableDragAndDrop={false}
+        excludeZero={true}
         key="scale-1"
         model={
           Object {
             "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
             "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -949,7 +948,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -983,7 +981,6 @@ Overall appearance is acceptable or better",
         onScaleRemoved={[Function]}
         scale={
           Object {
-            "excludeZero": false,
             "maxPoints": 2,
             "scorePointsLabels": Array [
               "Non-Scorable",
@@ -1104,6 +1101,7 @@ exports[`Main snapshot renders without scales 1`] = `
           Object {
             "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
             "pointLabels": true,

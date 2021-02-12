@@ -118,6 +118,244 @@ Overall appearance is acceptable or better",
 </div>
 `;
 
+exports[`Scale snapshot renders with drag and drop enabled 1`] = `
+<div
+  key="scale-0"
+>
+  <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
+    key="header-key"
+    maxPoints={2}
+    maxScoreOptions={
+      Array [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+      ]
+    }
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scaleIndex={0}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
+    showStandards={true}
+    traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Add Category",
+        }
+      }
+    />
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <WithStyles(RawDeleteScale)
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <WithStyles(RawDeleteTrait)
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
+exports[`Scale snapshot renders without descriptions 1`] = `
+<div
+  key="scale-0"
+>
+  <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
+    key="header-key"
+    maxPoints={2}
+    maxScoreOptions={
+      Array [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+      ]
+    }
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scaleIndex={0}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
+    showDescription={false}
+    showStandards={true}
+    traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    showDescription={false}
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Add Category",
+        }
+      }
+    />
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <WithStyles(RawDeleteScale)
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <WithStyles(RawDeleteTrait)
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
 exports[`Scale snapshot renders without standards 1`] = `
 <div
   key="scale-0"
