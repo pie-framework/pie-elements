@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -37,6 +37,10 @@ const styles = {
     background: '#f1f1f1',
     borderRadius: '4px',
     position: 'relative'
+  },
+  primaryBlockGreyHeader: {
+    paddingBottom: '30px',
+    paddingTop: '12px'
   }
 };
 
@@ -47,23 +51,23 @@ export class TraitsHeaderTile extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentPosition !== this.props.currentPosition) {
-      this.secondaryBlock.scrollTo({left: nextProps.currentPosition});
+      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
     }
   }
 
-  onScorePointLabelChange = ({scorePointLabel, value}) => {
-    const {scorePointsLabels, onScaleChange} = this.props;
+  onScorePointLabelChange = ({ scorePointLabel, value }) => {
+    const { scorePointsLabels, onScaleChange } = this.props;
 
     if (value < 0 || value >= scorePointsLabels.length) return;
 
     scorePointsLabels[value] = scorePointLabel;
 
-    onScaleChange({scorePointsLabels});
+    onScaleChange({ scorePointsLabels });
   };
 
-  handleClick = (event) => this.setState({anchorEl: event.currentTarget});
+  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
 
-  handleClose = () => this.setState({anchorEl: null});
+  handleClose = () => this.setState({ anchorEl: null });
 
   render() {
     const {
@@ -83,14 +87,14 @@ export class TraitsHeaderTile extends React.Component {
       setSecondaryBlockRef
     } = this.props;
     const pluginProps = {
-      image: {disabled: true},
-      math: {disabled: true}
+      image: { disabled: true },
+      math: { disabled: true }
     };
-    const {anchorEl} = this.state;
+    const { anchorEl } = this.state;
 
     return (
       <Row className={classes.greyHeader}>
-        <PrimaryBlock>
+        <PrimaryBlock className={classes.primaryBlockGreyHeader}>
           {showLevelTagInput && (
             <SimpleInput
               markup={traitLabel || 'Trait'}
@@ -183,7 +187,7 @@ export class TraitsHeaderTile extends React.Component {
                   scoreDescriptor={scoreDescriptor}
                   pluginProps={pluginProps}
                   showScorePointLabels={showScorePointLabels}
-                  onChange={scorePointLabel => this.onScorePointLabelChange({scorePointLabel, value})}
+                  onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
                 />
               </Block>
             )

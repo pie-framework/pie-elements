@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -26,7 +26,7 @@ export const MultiTraitButton = withStyles({
     color: '#050F2D',
     cursor: 'pointer'
   }
-})(({classes, children, onClick}) => (
+})(({ classes, children, onClick }) => (
   <div className={classes.button} onClick={onClick}>
     <strong>+</strong>
     <div>{children}</div>
@@ -41,8 +41,8 @@ export const PrimaryBlock = withStyles({
     padding: '8px',
     boxSizing: 'border-box',
   }
-})(({classes, children}) => (
-  <div className={classes.primaryBlock}>
+})(({ classes, children, className }) => (
+  <div className={classnames(classes.primaryBlock, className)}>
     {children}
   </div>
 ));
@@ -53,7 +53,7 @@ export const Block = withStyles({
     minWidth: `${BlockWidth}px`,
     padding: '8px'
   }
-})(({classes, children}) => (
+})(({ classes, children }) => (
   <div className={classes.block}>
     {children}
   </div>
@@ -66,7 +66,7 @@ export const SecondaryBlock = withStyles({
     // this is needed to show the editor toolbar:
     paddingBottom: '22px'
   }
-})(({classes, children, setRef}) => (
+})(({ classes, children, setRef }) => (
   <div className={classes.secondaryBlock} ref={setRef}>
     {children}
   </div>
@@ -78,7 +78,7 @@ export const Row = withStyles({
     display: 'flex',
     margin: '4px 0',
   }
-})(({classes, children, className}) => (
+})(({ classes, children, className }) => (
   <div className={classnames(classes.row, className)}>
     {children}
   </div>
@@ -125,7 +125,7 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels}) => {
+})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels }) => {
 
   const scoreBoxClasses =
     showScorePointLabels ? classes.scorePointBox : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -139,7 +139,7 @@ export const ScorePoint = withStyles({
 
         {showScorePointLabels ? <EditableHtml
           className={classes.editableLabel}
-          classes={{slateEditor: classes.slateEditor}}
+          classes={{ slateEditor: classes.slateEditor }}
           markup={scoreDescriptor}
           placeholder='Label'
           onChange={onChange}
@@ -178,7 +178,7 @@ const inputStyles = {
 
 const BootstrapInput = withStyles(inputStyles)(InputBase);
 
-export const MaxPointsPicker = withStyles({})(({classes, maxPoints, onChange}) => (
+export const MaxPointsPicker = withStyles({})(({ classes, maxPoints, onChange }) => (
   <FormControl>
     <InputLabel>
       Max Points
@@ -214,13 +214,13 @@ export const SimpleInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({classes, markup, onChange, pluginProps, label}) => (
+})(({ classes, markup, onChange, pluginProps, label }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
     <EditableHtml
       className={classes.editableLevel}
-      classes={{slateEditor: classes.slateEditor}}
+      classes={{ slateEditor: classes.slateEditor }}
       markup={markup}
       onChange={onChange}
       placeholder='Trait Label'
@@ -255,13 +255,13 @@ export const UnderlinedInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({classes, markup, onChange, pluginProps, label, placeholder}) => (
+})(({ classes, markup, onChange, pluginProps, label, placeholder }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
     <EditableHtml
       className={classes.editableLevel}
-      classes={{slateEditor: classes.slateEditor}}
+      classes={{ slateEditor: classes.slateEditor }}
       markup={markup}
       onChange={onChange}
       placeholder={placeholder}
@@ -281,11 +281,11 @@ export const ExpandedInput = withStyles({
     border: 'none',
     margin: '10px'
   },
-})(({classes, markup, onChange, pluginProps, placeholder}) => (
+})(({ classes, markup, onChange, pluginProps, placeholder }) => (
   <div>
     <EditableHtml
       className={classes.prompt}
-      classes={{slateEditor: classes.slateEditor}}
+      classes={{ slateEditor: classes.slateEditor }}
       markup={markup}
       onChange={onChange}
       placeholder={placeholder}
@@ -300,7 +300,7 @@ export const ScaleSettings = withStyles({
     justifyContent: 'space-between',
     alignItems: 'flex-end'
   }
-})(({classes, children}) => (
+})(({ classes, children }) => (
   <div className={classes.scaleSettings}>
     {children}
   </div>
@@ -327,36 +327,36 @@ export const Arrow = withStyles({
     justifyContent: 'center',
     background: 'linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
     boxSizing: 'border-box',
-    height: '83px',
+    height: '99px',
 
     '& svg': {
       position: 'absolute',
       bottom: '-24px'
     }
   }
-})(({classes, children, className, show, width, onClick, left}) => (
+})(({ classes, children, className, show, width, onClick, left }) => (
 
-    <div className={classnames(classes.arrow, className)}
+  <div className={classnames(classes.arrow, className)}
+       style={{
+         height: '-webkit-fill-available',
+         display: show ? 'flex' : 'none',
+         width: width,
+         left: left,
+         background: left ? 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))' : undefined
+       }}
+       onClick={onClick}
+  >
+    <div className={classnames(classes.innerGrey, className)}
          style={{
-           height: '-webkit-fill-available',
            display: show ? 'flex' : 'none',
            width: width,
-           left: left,
-           background: left ? 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))' : undefined
+           left: 0,
+           background: left ? 'linear-gradient(to right, #F1F1F1, rgba(255,255,255,0))' : undefined
          }}
          onClick={onClick}
     >
-      <div className={classnames(classes.innerGrey, className)}
-           style={{
-             display: show ? 'flex' : 'none',
-             width: width,
-             left: 0,
-             background: left ? 'linear-gradient(to right, #F1F1F1, rgba(255,255,255,0))' : undefined
-           }}
-           onClick={onClick}
-      >
-        {children}
-      </div>
+      {children}
     </div>
+  </div>
 
 ));
