@@ -1,50 +1,56 @@
 import React from 'react';
 import debug from 'debug';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import { DragSource, DropTarget } from 'react-dnd';
 
-import DragHandle from '@material-ui/icons/DragHandle';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import { withStyles } from '@material-ui/core/styles';
 
-import EditableHtml from '@pie-lib/editable-html';
+import {
+  Block,
+  ExpandedInput,
+  PrimaryBlock,
+  Row,
+  SecondaryBlock,
+  UnderlinedInput
+} from './common';
+import IconButton from '@material-ui/core/IconButton';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 
 const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
-const styles = theme => ({
+const styles = {
   actions: {
     color: '#B1B1B1'
   },
   controls: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    top: '28px',
+    right: '8px',
+    cursor: 'pointer',
   },
-  prompt: {
-    width: '80%',
-    border: 'none',
-    margin: '8px'
-  },
-  removeCircle: {
-    fill: theme.palette.error[500]
-  },
-  traitTile: {
-    cursor: 'move',
-    backgroundColor: '#fafafa',
-    borderRadius: '4px',
-    marginTop: '5px',
-    marginBottom: '5px',
-    display: 'flex',
-    alignItems: 'flex-start'
-  },
-  targetPrompt: {
-    backgroundColor: '#D7D7D7'
+  dragHandle: {
+    position: 'absolute',
+    top: '80px',
+    left: '-26px',
+    cursor: 'move'
   }
-});
+};
 
 export class TraitTile extends React.Component {
+  state = {};
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.currentPosition !== this.props.currentPosition || (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition)) {
+      this.scrollToPosition(nextProps.currentPosition);
+    }
+  }
+
   onTraitChanged = (params) => {
     const { trait, onTraitChanged } = this.props;
 
@@ -67,12 +73,18 @@ export class TraitTile extends React.Component {
     this.onTraitChanged({ scorePointsDescriptors });
   };
 
+  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
+
+  handleClose = () => this.setState({ anchorEl: null });
+
+  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
+
   render() {
     const {
       classes,
       connectDragSource,
       connectDropTarget,
-      isDragging,
+      // isDragging,
       onTraitRemoved,
       trait: {
         name,
@@ -81,11 +93,14 @@ export class TraitTile extends React.Component {
         scorePointsDescriptors
       },
       scorePointsValues,
-      showStandards
+      showStandards,
+      showDescription,
+      enableDragAndDrop
     } = this.props;
+    const { anchorEl } = this.state;
 
     const dragSourceOpts = {};
-    const opacity = isDragging ? 0 : 1;
+    // const opacity = isDragging ? 0 : 1;
     const pluginProps = {
       image: { disabled: true },
       math: { disabled: true }
@@ -94,65 +109,100 @@ export class TraitTile extends React.Component {
     return connectDragSource(
       connectDropTarget(
         <div>
-          <div className={classes.traitTile} style={{ opacity: opacity, width: '100%' }}>
-            <span className={classNames(classes.dragHandle)}>
-              <DragHandle className={classes.actions}/>
-            </span>
-
-            <EditableHtml
-              className={classes.prompt}
-              placeholder="Trait name"
-              markup={name}
-              onChange={name => this.onTraitChanged({ name })}
-              pluginProps={pluginProps}
-            />
-
-            {showStandards && (
-              <EditableHtml
-                className={classes.prompt}
-                placeholder="Standards"
-                markup={standards.join(',')}
-                onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
-                pluginProps={pluginProps}
-              />
-            )}
-
-            <EditableHtml
-              className={classes.prompt}
-              placeholder="Description"
-              markup={description}
-              onChange={description => this.onTraitChanged({ description })}
-              pluginProps={pluginProps}
-            />
-
-            {scorePointsValues.map((scorePointsValue, index) => {
-              const value = scorePointsValues.length - index - 1;
-              let scoreDescriptor;
-
-              try {
-                scoreDescriptor = scorePointsDescriptors[value] || '';
-              } catch (e) {
-                scoreDescriptor = '';
+          <Row>
+            <PrimaryBlock>
+              {enableDragAndDrop ?
+                <span className={classes.dragHandle}>
+                    <DragIndicatorIcon className={classes.actions}/>
+                  </span> : null
               }
+              <div className={classes.controls}>
+                <IconButton
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
+                  <MoreVertIcon/>
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={!!anchorEl}
+                  onClose={this.handleClose}
+                >
+                  {['Remove Trait'].map((option) => (
+                    <MenuItem
+                      key={option}
+                      onClick={() => {
+                        onTraitRemoved();
+                        this.handleClose();
+                      }}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </div>
 
-              return (
-                <EditableHtml
-                  key={`score-point-descriptor-${index}`}
-                  className={classes.prompt}
-                  placeholder='Descriptor'
-                  markup={scoreDescriptor}
-                  onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
-                  pluginProps={pluginProps}
-                />
-              )
-            })}
+              <UnderlinedInput
+                markup={name}
+                onChange={name => this.onTraitChanged({ name })}
+                pluginProps={pluginProps}
+                placeholder='Enter Trait'
+              />
+            </PrimaryBlock>
+            <SecondaryBlock
+              setRef={ref => {
+                this.secondaryBlock = ref;
+              }}
+            >
+              {showStandards && (
+                <Block>
+                  <ExpandedInput
+                    placeholder="Standards"
+                    markup={standards.join(',')}
+                    onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
+                    pluginProps={pluginProps}
+                  />
+                </Block>
+              )}
 
-            <div className={classes.controls}>
-              <IconButton color='default' onClick={onTraitRemoved}>
-                <RemoveCircle classes={{ root: classes.removeCircle }}/>
-              </IconButton>
-            </div>
-          </div>
+              {showDescription && (
+                <Block>
+                  <ExpandedInput
+                    placeholder="Description"
+                    markup={description}
+                    onChange={description => this.onTraitChanged({ description })}
+                    pluginProps={pluginProps}
+                  />
+                </Block>
+              )}
+
+              {scorePointsValues.map((scorePointsValue, index) => {
+                const value = scorePointsValues.length - index - 1;
+                let scoreDescriptor;
+
+                try {
+                  scoreDescriptor = scorePointsDescriptors[value] || '';
+                } catch (e) {
+                  scoreDescriptor = '';
+                }
+
+                return (
+                  <Block key={`key-key-${index}`}>
+                    <ExpandedInput
+                      placeholder='Enter Description Here'
+                      markup={scoreDescriptor}
+                      onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
+                      pluginProps={pluginProps}
+                    />
+                  </Block>
+                )
+              })}
+            </SecondaryBlock>
+          </Row>
         </div>
       ),
       dragSourceOpts
@@ -177,7 +227,10 @@ TraitTile.propTypes = {
     description: PropTypes.string,
   }),
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
-  showStandards: PropTypes.bool
+  showStandards: PropTypes.bool,
+  showDescription: PropTypes.bool,
+  enableDragAndDrop: PropTypes.bool,
+  currentPosition: PropTypes.number,
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);

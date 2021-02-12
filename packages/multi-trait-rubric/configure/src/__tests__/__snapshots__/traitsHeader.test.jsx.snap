@@ -1,18 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Trait snapshot renders 1`] = `
-<div>
-  <span>
-    <pure(DragHandleIcon) />
-  </span>
-  <div>
-    <div>
-      Trait Label
-    </div>
-    <EditableHtml
+exports[`Trait Header snapshot renders 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)
+      label="Level Label"
       markup="Category"
       onChange={[Function]}
-      placeholder="Trait Label"
       pluginProps={
         Object {
           "image": Object {
@@ -24,108 +18,124 @@ exports[`Trait snapshot renders 1`] = `
         }
       }
     />
-  </div>
-  <div>
-    Standard(s)
-  </div>
-  <div>
-    Description
-  </div>
-  <div
-    key="score-point-label-0"
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
   >
-    <div>
-      0
-    </div>
-    <EditableHtml
-      markup="C"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div
-    key="score-point-label-1"
-  >
-    <div>
-      1
-    </div>
-    <EditableHtml
-      markup="B"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div
-    key="score-point-label-2"
-  >
-    <div>
-      2
-    </div>
-    <EditableHtml
-      markup="A"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div>
-    <WithStyles(IconButton)
-      color="default"
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Description
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
     >
-      <pure(RemoveCircleIcon)
-        classes={
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
           Object {
-            "root": undefined,
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
           }
         }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+        showScorePointLabels={true}
       />
-    </WithStyles(IconButton)>
-  </div>
-</div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
 `;
 
-exports[`Trait snapshot renders without standards 1`] = `
-<div>
-  <span>
-    <pure(DragHandleIcon) />
-  </span>
-  <div>
-    <div>
-      Trait Label
-    </div>
-    <EditableHtml
+exports[`Trait Header snapshot renders without description 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)
+      label="Level Label"
       markup="Category"
       onChange={[Function]}
-      placeholder="Trait Label"
       pluginProps={
         Object {
           "image": Object {
@@ -137,88 +147,544 @@ exports[`Trait snapshot renders without standards 1`] = `
         }
       }
     />
-  </div>
-  <div>
-    Description
-  </div>
-  <div
-    key="score-point-label-0"
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
   >
-    <div>
-      0
-    </div>
-    <EditableHtml
-      markup="C"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div
-    key="score-point-label-1"
-  >
-    <div>
-      1
-    </div>
-    <EditableHtml
-      markup="B"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div
-    key="score-point-label-2"
-  >
-    <div>
-      2
-    </div>
-    <EditableHtml
-      markup="A"
-      onChange={[Function]}
-      placeholder="Label"
-      pluginProps={
-        Object {
-          "image": Object {
-            "disabled": true,
-          },
-          "math": Object {
-            "disabled": true,
-          },
-        }
-      }
-    />
-  </div>
-  <div>
-    <WithStyles(IconButton)
-      color="default"
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
     >
-      <pure(RemoveCircleIcon)
-        classes={
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
           Object {
-            "root": undefined,
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
           }
         }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+        showScorePointLabels={true}
       />
-    </WithStyles(IconButton)>
-  </div>
-</div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait Header snapshot renders without level tag input 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Description
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait Header snapshot renders without score point labels 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)
+      label="Level Label"
+      markup="Category"
+      onChange={[Function]}
+      pluginProps={
+        Object {
+          "image": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Description
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+        showScorePointLabels={false}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+        showScorePointLabels={false}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+        showScorePointLabels={false}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait Header snapshot renders without score point values 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)
+      label="Level Label"
+      markup="Category"
+      onChange={[Function]}
+      pluginProps={
+        Object {
+          "image": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Standard(s)
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)>
+      <div>
+        Description
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
+`;
+
+exports[`Trait Header snapshot renders without standards 1`] = `
+<WithStyles(Component)>
+  <WithStyles(Component)>
+    <WithStyles(Component)
+      label="Level Label"
+      markup="Category"
+      onChange={[Function]}
+      pluginProps={
+        Object {
+          "image": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "disabled": true,
+          },
+        }
+      }
+    />
+    <WithStyles(Component)>
+      <div>
+        Scale 
+        1
+      </div>
+      <WithStyles(Component)
+        maxPoints={2}
+      />
+      <div>
+        <WithStyles(IconButton)
+          aria-controls="long-menu"
+          aria-haspopup="true"
+          aria-label="more"
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Menu)
+          anchorEl={null}
+          id="long-menu"
+          keepMounted={true}
+          onClose={[Function]}
+          open={false}
+        >
+          <WithStyles(MenuItem)
+            key="Remove Scale"
+            onClick={[Function]}
+          >
+            Remove Scale
+          </WithStyles(MenuItem)>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    setRef={[Function]}
+  >
+    <WithStyles(Component)>
+      <div>
+        Description
+      </div>
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-0"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="C"
+        scorePointsValue={0}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-1"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="B"
+        scorePointsValue={1}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+    <WithStyles(Component)
+      key="secondary-block-part-2"
+    >
+      <WithStyles(Component)
+        onChange={[Function]}
+        pluginProps={
+          Object {
+            "image": Object {
+              "disabled": true,
+            },
+            "math": Object {
+              "disabled": true,
+            },
+          }
+        }
+        scoreDescriptor="A"
+        scorePointsValue={2}
+        showScorePointLabels={true}
+      />
+    </WithStyles(Component)>
+  </WithStyles(Component)>
+</WithStyles(Component)>
 `;

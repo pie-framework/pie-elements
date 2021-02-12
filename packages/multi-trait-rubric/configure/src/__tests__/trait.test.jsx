@@ -23,8 +23,14 @@ describe('Trait', () => {
       connectDropTarget: props => <div>{props}</div>,
       trait: trait(),
       index: 0,
-      showStandards: true,
       scorePointsValues: [0, 1, 2],
+      scorePointsLabels: ['A', 'B', 'C'],
+      traitLabel: 'Category',
+      maxPoints: 2,
+      scaleIndex: 0,
+      currentPosition: 0,
+      showStandards: true,
+      showDescription: true,
       ...extras
     };
     return shallow(<TraitTile {...defaults} />);
@@ -42,14 +48,59 @@ describe('Trait', () => {
 
       expect(w).toMatchSnapshot();
     });
+
+    it('renders without description', () => {
+      w = wrapper({ description: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders with drag and drop', () => {
+      w = wrapper({ dragAndDrop: true });
+
+      expect(w).toMatchSnapshot();
+    });
+
+    it('renders without score points values', () => {
+      w = wrapper({ scorePointsValues: [] });
+
+      expect(w).toMatchSnapshot();
+    });
   });
 
   describe('logic', () => {
+    let onScaleChange;
     let onTraitChanged;
+    const scrollToPositionSpy = jest.fn();
 
     beforeEach(() => {
       onTraitChanged = jest.fn();
-      w = wrapper({ onTraitChanged });
+      onScaleChange = jest.fn();
+      w = wrapper({ onScaleChange, onTraitChanged });
+    });
+
+    describe('scroll position', () => {
+      it ('does not change scroll position when current position prop does not change', () => {
+        const wrap = wrapper({ currentPosition: 200 });
+
+        expect(wrap.instance().props.currentPosition).toEqual(200);
+
+        wrap.instance().scrollToPosition = scrollToPositionSpy;
+        wrap.setProps({ currentPosition: 200 });
+
+        expect(scrollToPositionSpy).not.toBeCalled();
+      });
+
+      it ('changes scroll position when current position prop changes', () => {
+        const wrap = wrapper({ currentPosition: 200 });
+
+        expect(wrap.instance().props.currentPosition).toEqual(200);
+
+        wrap.instance().scrollToPosition = scrollToPositionSpy;
+        wrap.setProps({ currentPosition: 300 });
+
+        expect(scrollToPositionSpy).toBeCalledWith(300);
+      });
     });
 
     describe('onTraitChanged', () => {
@@ -70,8 +121,6 @@ describe('Trait', () => {
       });
 
       it('does not call onTraitChanged if params empty', () => {
-        const { trait } = w.instance().props;
-
         w.instance().onTraitChanged({});
 
         expect(onTraitChanged).not.toBeCalled();
@@ -114,6 +163,12 @@ describe('Trait', () => {
     describe('onScorePointDescriptorChange', () => {
       it('does not call onTraitChanged with scorePointsDescriptors', () => {
         w.instance().onScorePointDescriptorChange({ descriptor: 'New Descriptor', value: 10 });
+
+        expect(onTraitChanged).not.toBeCalled();
+      });
+
+      it('does not call onTraitChanged with scorePointsDescriptors', () => {
+        w.instance().onScorePointDescriptorChange({ descriptor: 'New Descriptor', value: -10 });
 
         expect(onTraitChanged).not.toBeCalled();
       });
