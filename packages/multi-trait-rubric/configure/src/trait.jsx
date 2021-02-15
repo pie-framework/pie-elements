@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { DragSource, DropTarget } from 'react-dnd';
 
 import { withStyles } from '@material-ui/core/styles';
+import { color } from '@pie-lib/render-ui';
 
 import {
   Block,
@@ -24,7 +25,7 @@ const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
 const styles = {
   actions: {
-    color: '#B1B1B1'
+    color: color.secondaryBackground()
   },
   controls: {
     display: 'flex',

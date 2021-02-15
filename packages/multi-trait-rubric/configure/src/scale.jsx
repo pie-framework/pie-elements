@@ -6,6 +6,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import {withDragContext} from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
@@ -31,7 +32,7 @@ const styles = {
     margin: '16px 0 32px'
   },
   trait: {
-    background: '#f1f1f1',
+    background: color.secondaryBackground(),
     margin: '16px 0',
     padding: '16px'
   }
@@ -210,6 +211,8 @@ export class Scale extends React.Component {
     const increasedPosition = currentPosition + (currentPosition === 0 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
     const decreasedPosition = currentPosition - (currentPosition === AdjustedBlockWidth / 2 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
 
+    const traitsHeaderHeight = '100px';
+
     return (
       <div
         key={`scale-${scaleIndex}`}
@@ -240,6 +243,7 @@ export class Scale extends React.Component {
           scaleIndex={scaleIndex}
           showDeleteScaleModal={this.showDeleteScaleModal}
           currentPosition={currentPosition}
+          height={traitsHeaderHeight}
         />
 
         {traits.map((trait, index) => (
@@ -261,6 +265,7 @@ export class Scale extends React.Component {
 
         <Arrow
           width={`${AdjustedBlockWidth / 2}px`}
+          height={traitsHeaderHeight}
           show={showLeft}
           onClick={() => this.setState({
             currentPosition: decreasedPosition,
@@ -273,6 +278,7 @@ export class Scale extends React.Component {
         </Arrow>
         <Arrow
           width={`${AdjustedBlockWidth / 2}px`}
+          height={traitsHeaderHeight}
           show={showRight}
           onClick={() => this.setState({
             currentPosition: increasedPosition,

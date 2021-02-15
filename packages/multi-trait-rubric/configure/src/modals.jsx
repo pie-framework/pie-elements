@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Button from '@material-ui/core/Button';
+import { color } from '@pie-lib/render-ui';
 
 export const excludeZeroTypes = {
   remove0: 'remove0',
@@ -28,7 +29,7 @@ const styles = () => ({
       fontSize: '20px',
       lineHeight: '23px',
       fontFamily: 'Cerebri Sans',
-      color: '#212529'
+      color: color.text()
     }
   },
   text: {
@@ -37,7 +38,7 @@ const styles = () => ({
     '& p': {
       fontSize: '16px',
       fontFamily: 'Cerebri Sans',
-      color: '#212529'
+      color: color.text()
     }
   },
   button: {
@@ -47,12 +48,12 @@ const styles = () => ({
     fontFamily: 'Cerebri Sans',
     lineHeight: '14px',
     textTransform: 'none',
-    background: '#0049FF',
-    color: '#FFFFFF'
+    background: color.primary(),
+    color: 'white'
   },
   cancelButton: {
-    background: '#ECEDF1',
-    color: '#050F2D'
+    background: color.secondaryBackground(),
+    color: color.text()
   },
 });
 

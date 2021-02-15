@@ -8,6 +8,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
+import { color } from '@pie-lib/render-ui';
+import grey from '@material-ui/core/colors/grey';
 
 export const BlockWidth = 180;
 
@@ -20,10 +22,10 @@ export const MultiTraitButton = withStyles({
     alignItems: 'flex-start',
     padding: '11px 16px',
     width: '114px',
-    background: '#f8f8f8',
+    background: color.secondaryBackground(),
     borderRadius: '4px',
     justifyContent: 'space-around',
-    color: '#050F2D',
+    color: color.text(),
     cursor: 'pointer'
   }
 })(({ classes, children, onClick }) => (
@@ -62,9 +64,7 @@ export const SecondaryBlock = withStyles({
   secondaryBlock: {
     display: 'flex',
     overflowX: 'hidden',
-    alignItems: 'flex-end',
-    // this is needed to show the editor toolbar:
-    paddingBottom: '22px'
+    alignItems: 'center',
   }
 })(({ classes, children, setRef }) => (
   <div className={classes.secondaryBlock} ref={setRef}>
@@ -78,8 +78,13 @@ export const Row = withStyles({
     display: 'flex',
     margin: '4px 0',
   }
-})(({ classes, children, className }) => (
-  <div className={classnames(classes.row, className)}>
+})(({ classes, children, className, height }) => (
+  <div
+    className={classnames(classes.row, className)}
+    style={{
+      height: height
+    }}
+  >
     {children}
   </div>
 ));
@@ -95,7 +100,7 @@ export const ScorePoint = withStyles({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    border: '1px solid #ccc'
+    border: `solid 1px ${grey[400]}`
   },
   scorePointBoxDisabled: {
     background: 'none',
@@ -117,7 +122,7 @@ export const ScorePoint = withStyles({
 
     '& > div': {
       border: 'none',
-      borderLeft: '1px solid #ccc',
+      borderLeft: `solid 1px ${grey[400]}`,
       borderRadius: 0,
       padding: '8px'
     },
@@ -164,7 +169,7 @@ const inputStyles = {
   input: {
     borderRadius: '4px',
     position: 'relative',
-    border: '1px solid #ced4da',
+    border: `solid 1px ${grey[400]}`,
     fontSize: '14px',
     fontFamily: 'Cerebri Sans',
     padding: '8px 12px',
@@ -247,7 +252,7 @@ export const UnderlinedInput = withStyles({
 
     '& > div': {
       border: 'none',
-      borderBottom: '1px solid #ccc',
+      borderBottom: `solid 1px ${grey[400]}`,
       borderRadius: 0,
       padding: '8px'
     },
@@ -327,14 +332,13 @@ export const Arrow = withStyles({
     justifyContent: 'center',
     background: 'linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
     boxSizing: 'border-box',
-    height: '99px',
 
     '& svg': {
       position: 'absolute',
       bottom: '-24px'
     }
   }
-})(({ classes, children, className, show, width, onClick, left }) => (
+})(({ classes, children, className, show, width, onClick, left, height }) => (
 
   <div className={classnames(classes.arrow, className)}
        style={{
@@ -350,8 +354,9 @@ export const Arrow = withStyles({
          style={{
            display: show ? 'flex' : 'none',
            width: width,
+           height: height,
            left: 0,
-           background: left ? 'linear-gradient(to right, #F1F1F1, rgba(255,255,255,0))' : undefined
+           background: left ? 'linear-gradient(to right, rgba(241,241,241,1), rgba(255,255,255,0))' : undefined
          }}
          onClick={onClick}
     >

@@ -2,6 +2,13 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { TraitsHeaderTile } from '../traitsHeader';
 
+jest.mock('@pie-lib/render-ui', () => ({
+  color: {
+    text: jest.fn().mockReturnValue('black'),
+    secondaryBackground: jest.fn().mockReturnValue('grey'),
+  }
+}));
+
 describe('Trait', () => {
   let w;
 

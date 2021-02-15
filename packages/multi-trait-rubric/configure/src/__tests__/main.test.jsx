@@ -16,6 +16,14 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
+jest.mock('@pie-lib/render-ui', () => ({
+  color: {
+    text: jest.fn().mockReturnValue('black'),
+    secondaryBackground: jest.fn().mockReturnValue('grey'),
+    primary: jest.fn().mockReturnValue('blue'),
+  }
+}));
+
 const model = (extras) => ({
   id: '1',
   element: 'multi-trait-rubric',

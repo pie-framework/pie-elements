@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { color } from '@pie-lib/render-ui';
 
 import {
   Block,
@@ -30,12 +31,11 @@ const styles = {
     justifyContent: 'space-around'
   },
   greyHeader: {
-    background: '#f1f1f1',
+    background: color.secondaryBackground(),
     borderRadius: '4px',
     position: 'relative'
   },
   primaryBlockGreyHeader: {
-    paddingBottom: '30px',
     paddingTop: '12px'
   }
 };
@@ -80,7 +80,8 @@ export class TraitsHeaderTile extends React.Component {
       scaleIndex,
       showDeleteScaleModal,
       showScorePointLabels,
-      setSecondaryBlockRef
+      setSecondaryBlockRef,
+      height
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
@@ -89,7 +90,7 @@ export class TraitsHeaderTile extends React.Component {
     const { anchorEl } = this.state;
 
     return (
-      <Row className={classes.greyHeader}>
+      <Row className={classes.greyHeader} height={height}>
         <PrimaryBlock className={classes.primaryBlockGreyHeader}>
           {showLevelTagInput && (
             <SimpleInput
@@ -212,7 +213,8 @@ TraitsHeaderTile.propTypes = {
   currentPosition: PropTypes.number,
   showDeleteScaleModal: PropTypes.bool,
   showScorePointLabels: PropTypes.bool,
-  setSecondaryBlockRef: PropTypes.func
+  setSecondaryBlockRef: PropTypes.func,
+  height: PropTypes.string
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

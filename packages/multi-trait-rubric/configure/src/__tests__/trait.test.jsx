@@ -13,6 +13,13 @@ const trait = () => ({
   ],
 });
 
+jest.mock('@pie-lib/render-ui', () => ({
+  color: {
+    text: jest.fn().mockReturnValue('black'),
+    secondaryBackground: jest.fn().mockReturnValue('grey'),
+  }
+}));
+
 describe('Trait', () => {
   let w;
 
