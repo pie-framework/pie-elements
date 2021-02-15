@@ -46,11 +46,9 @@ const styles = {
 export class TraitTile extends React.Component {
   state = {};
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentPosition !== this.props.currentPosition) {
-      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
-    } else if (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition) {
-      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.currentPosition !== this.props.currentPosition || (this.secondaryBlock && this.secondaryBlock.scrollLeft !== nextProps.currentPosition)) {
+      this.scrollToPosition(nextProps.currentPosition);
     }
   }
 
@@ -79,6 +77,8 @@ export class TraitTile extends React.Component {
   handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
 
   handleClose = () => this.setState({ anchorEl: null });
+
+  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
 
   render() {
     const {
@@ -113,7 +113,7 @@ export class TraitTile extends React.Component {
           <Row>
             <PrimaryBlock>
               {enableDragAndDrop ?
-                  <span className={classes.dragHandle}>
+                <span className={classes.dragHandle}>
                     <DragIndicatorIcon className={classes.actions}/>
                   </span> : null
               }

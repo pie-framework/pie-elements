@@ -9,18 +9,27 @@ jest.mock('@pie-lib/render-ui', () => ({
   }
 }));
 
-describe('Trait', () => {
+describe('Trait Header', () => {
   let w;
 
   const wrapper = extras => {
     const defaults = {
       classes: {},
-      onTraitLabelChange: () => {},
-      onScaleChange: () => {},
+      onTraitLabelChange: () => {
+      },
+      onScaleChange: () => {
+      },
       scorePointsValues: [0, 1, 2],
       scorePointsLabels: ['A', 'B', 'C'],
       traitLabel: 'Category',
+      maxPoints: 2,
+      scaleIndex: 0,
+      currentPosition: 0,
       showStandards: true,
+      showLevelTagInput: true,
+      showDescription: true,
+      showDeleteScaleModal: true,
+      showScorePointLabels: true,
       ...extras
     };
     return shallow(<TraitsHeaderTile {...defaults} />);
@@ -45,13 +54,19 @@ describe('Trait', () => {
       expect(w).toMatchSnapshot();
     });
 
+    it('renders without score point labels', () => {
+      w = wrapper({ showScorePointLabels: false });
+
+      expect(w).toMatchSnapshot();
+    });
+
     it('renders without level tag input', () => {
       w = wrapper({ showLevelTagInput: false });
 
       expect(w).toMatchSnapshot();
     });
 
-    it('renders without score points values', () => {
+    it('renders without score point values', () => {
       w = wrapper({ scorePointsValues: [] });
 
       expect(w).toMatchSnapshot();
@@ -60,10 +75,35 @@ describe('Trait', () => {
 
   describe('logic', () => {
     let onScaleChange;
+    const scrollToPositionSpy = jest.fn();
 
     beforeEach(() => {
       onScaleChange = jest.fn();
       w = wrapper({ onScaleChange });
+    });
+
+    describe('scroll position', () => {
+      it ('does not change scroll position when current position prop does not change', () => {
+        const wrap = wrapper({ currentPosition: 200 });
+
+        expect(wrap.instance().props.currentPosition).toEqual(200);
+
+        wrap.instance().scrollToPosition = scrollToPositionSpy;
+        wrap.setProps({ currentPosition: 200 });
+
+        expect(scrollToPositionSpy).not.toBeCalled();
+      });
+
+      it ('changes scroll position when current position prop changes', () => {
+        const wrap = wrapper({ currentPosition: 200 });
+
+        expect(wrap.instance().props.currentPosition).toEqual(200);
+
+        wrap.instance().scrollToPosition = scrollToPositionSpy;
+        wrap.setProps({ currentPosition: 300 });
+
+        expect(scrollToPositionSpy).toBeCalledWith(300);
+      });
     });
 
     describe('onScorePointLabelChange', () => {

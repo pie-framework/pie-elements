@@ -5,42 +5,38 @@ export default {
     pointLabels: true,
     description: false,
     standards: false,
-    scales: []
+    scales: [],
+    excludeZero: false
   },
   configuration: {
-    showStandards: {
-      settings: true,
-      label: 'Show Standards',
-      enabled: false
-    },
     showExcludeZero: {
       settings: true,
       label: 'Exclude Zero',
-      enabled: false
     },
     showScorePointLabels: {
       settings: true,
       label: 'Show Score Point Labels',
-      enabled: false
-    },
-    showLevelTagInput: {
-      settings: true,
-      label: 'Show Level Tag Input',
-      enabled: false
     },
     showDescription: {
       settings: true,
       label: 'Show Description',
-      enabled: false
     },
     showVisibleToStudent: {
       settings: true,
       label: 'Visible to Student',
-      enabled: false
     },
     showHalfScoring: {
       settings: true,
       label: 'Half Scoring',
+    },
+    // these should not be set to true (should not be used) for now
+    showStandards: {
+      settings: false,
+      label: 'Show Standards',
+    },
+    showLevelTagInput: {
+      settings: false,
+      label: 'Show Level Tag Input',
       enabled: false
     },
     dragAndDrop: {

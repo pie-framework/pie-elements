@@ -47,7 +47,7 @@ export class TraitsHeaderTile extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentPosition !== this.props.currentPosition) {
-      this.secondaryBlock.scrollTo({ left: nextProps.currentPosition });
+      this.scrollToPosition(nextProps.currentPosition);
     }
   }
 
@@ -64,6 +64,8 @@ export class TraitsHeaderTile extends React.Component {
   handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
 
   handleClose = () => this.setState({ anchorEl: null });
+
+  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
 
   render() {
     const {
@@ -143,13 +145,15 @@ export class TraitsHeaderTile extends React.Component {
           </ScaleSettings>
         </PrimaryBlock>
 
-        <SecondaryBlock setRef={ref => {
-          if (ref) {
-            this.secondaryBlock = ref;
+        <SecondaryBlock
+          setRef={ref => {
+            if (ref) {
+              this.secondaryBlock = ref;
 
-            setSecondaryBlockRef(ref);
-          }
-        }}>
+              setSecondaryBlockRef(ref);
+            }
+          }}
+        >
 
           {showStandards && (
             <Block>
