@@ -2,9 +2,9 @@ Config Object for @pie-elements/multi-trait-rubric
 
 The schema defines the following properties:
 
-# `showStandards` (object)
+# `showExcludeZero` (object)
 
-Properties of the `showStandards` object:
+Properties of the `showExcludeZero` object:
 
 ## `settings` (boolean)
 
@@ -14,10 +14,53 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-## `enabled` (boolean)
+# `showScorePointLabels` (object)
 
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+Properties of the `showScorePointLabels` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `showDescription` (object)
+
+Properties of the `showDescription` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `showVisibleToStudent` (object)
+
+Properties of the `showVisibleToStudent` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `showHalfScoring` (object)
+
+Properties of the `showHalfScoring` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 ---
 
@@ -25,9 +68,9 @@ Indicates the value of the item if it affects config-ui
 
 The schema defines the following additional types:
 
-## `ConfigurePropWithEnabled` (object)
+## `ConfigureProp` (object)
 
-Properties of the `ConfigurePropWithEnabled` object:
+Properties of the `ConfigureProp` object:
 
 ### `settings` (boolean)
 
@@ -36,8 +79,3 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)

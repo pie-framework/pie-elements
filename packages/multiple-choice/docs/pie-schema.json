@@ -14,6 +14,7 @@
     },
     "choicePrefix": {
       "description": "What key should be displayed before choices. If undefined no  key will be displayed.",
+      "default": ": 'letters'",
       "enum": [
         "letters",
         "numbers"
@@ -100,11 +101,6 @@
       "description": "Indicates the order of choices should be randomly ordered when presented to user",
       "type": "boolean",
       "title": "lockChoiceOrder"
-    },
-    "limitChoicesNumber": {
-      "description": "Indicates whether the number of maximum choices can exceed 9, defaults to true",
-      "type": "boolean",
-      "title": "limitChoicesNumber"
     },
     "partialScoring": {
       "description": "Indicates that the item should use partial scoring",

@@ -21,7 +21,14 @@ export async function model(question, session, env) {
     normalizedQuestion.visible = true;
   }
 
-  return normalizedQuestion;
+  // todo update pie-ui instead of parsing this here:
+  const { scales, excludeZero } = normalizedQuestion || {};
+  const parsedScales = (scales || []).map(scale => ({ ...scale, excludeZero }));
+
+  return {
+    ...normalizedQuestion,
+    scales: parsedScales
+  };
 }
 
 

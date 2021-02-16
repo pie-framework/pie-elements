@@ -20,6 +20,8 @@ This element must be one of the following enum values:
 * `letters`
 * `numbers`
 
+Default: `": 'letters'"`
+
 # `choices` (array, required)
 
 The choice options for the question
@@ -81,10 +83,6 @@ Determines if prompt should show
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices should be randomly ordered when presented to user
-
-# `limitChoicesNumber` (boolean)
-
-Indicates whether the number of maximum choices can exceed 9, defaults to true
 
 # `partialScoring` (boolean)
 

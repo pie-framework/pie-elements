@@ -2260,6 +2260,14 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
+"@pie-lib/icons@^2.4.23":
+  version "2.4.23"
+  resolved "https://registry.yarnpkg.com/@pie-lib/icons/-/icons-2.4.23.tgz#2e3344ed5d208f9744509cb76a89bae92b69f1bb"
+  integrity sha512-1qtGQCyEVrW72Fae8HDBf3cFB50nblUkdt+GsBBDCWoLn+gl3DMYHfPi1j6MmqAfiHx/AoR+QtBuovsP7to99Q==
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
+
 "@pie-lib/mask-markup@^1.10.4":
   version "1.10.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.10.4.tgz#735afa0c5669cbd1555f24e7736d2b5f50bf0547"
@@ -2311,6 +2319,15 @@
     lodash "^4.17.11"
     mathjax-full "^3.1.2"
 
+"@pie-lib/math-rendering@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/math-rendering/-/math-rendering-2.3.4.tgz#da0ccbd304691e9c843116741f97b2939eeb579a"
+  integrity sha512-9Ytx/nBXzkSQrhoD1ySKon3qj/r685ugxgnYroOfCa6Mhh8f3E8Xcs6mPwKvm9QnM+vjkIGny82lTzmHyj4Hsw==
+  dependencies:
+    debug "^4.1.1"
+    lodash "^4.17.11"
+    mathjax-full "^3.1.2"
+
 "@pie-lib/math-toolbar@^1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.7.1.tgz#7fa01d01b54fb46a5189d73d00370abf0ee7fac0"
@@ -2356,6 +2373,20 @@
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/icons" "^2.4.20"
     "@pie-lib/math-rendering" "^2.3.1"
+    classnames "^2.2.6"
+    debug "^4.1.1"
+    prop-types "^15.7.2"
+    react-transition-group "^2.5.2"
+
+"@pie-lib/render-ui@^4.11.3":
+  version "4.11.3"
+  resolved "https://registry.yarnpkg.com/@pie-lib/render-ui/-/render-ui-4.11.3.tgz#487d33c5e57e5258ecaf6d747373887822934f61"
+  integrity sha512-6zM/1apIV45uizsqrrX4Q3plV0E9RxHrNXJhOpFuagAGqhcvBzDYU1693Gigo78G/S+0oqstNl0vTYHyN6T5DQ==
+  dependencies:
+    "@material-ui/core" "^3.8.3"
+    "@material-ui/icons" "^3.0.2"
+    "@pie-lib/icons" "^2.4.23"
+    "@pie-lib/math-rendering" "^2.3.4"
     classnames "^2.2.6"
     debug "^4.1.1"
     prop-types "^15.7.2"
@@ -2712,10 +2743,10 @@
     react-dom "^16.8.1"
     styled-components "^5.2.1"
 
-"@pie-ui/multi-trait-rubric@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@pie-ui/multi-trait-rubric/-/multi-trait-rubric-1.1.1.tgz#995b47b1b168192e500191ac3d5bf1112b2af3a0"
-  integrity sha512-fT/b6e8HIBFfYSQ0nEY2uvSuSReMJEniYh6Z5SHjDdZ4YjKAISRQq7NxaWd7SmpTWmlMES1lDUGKYRqGyDZExw==
+"@pie-ui/multi-trait-rubric@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-ui/multi-trait-rubric/-/multi-trait-rubric-1.2.2.tgz#483e43dfceb0f9ba7008d274b424cb5c4f037179"
+  integrity sha512-sLH6A65uZGtWxDkd0F/F/aZfvK1gpxc5XLjMagwhTKTWl6AY+a8L3lj4k9HHWN9H3Nao0o4emxrXaPA0HZ7tbA==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@pie-framework/pie-player-events" "^0.1.0"
