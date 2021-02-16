@@ -20,12 +20,14 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
   if (mode === 'evaluate') {
     out.correct = !!choice.correct;
 
-    const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
+    if (model.feedbackEnabled) {
+      const feedbackType = (choice.feedback && choice.feedback.type) || 'none';
 
-    if (feedbackType === 'default') {
-      out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
-    } else if (feedbackType === 'custom') {
-      out.feedback = choice.feedback.value;
+      if (feedbackType === 'default') {
+        out.feedback = defaultFeedback[choice.correct ? 'correct' : 'incorrect'];
+      } else if (feedbackType === 'custom') {
+        out.feedback = choice.feedback.value;
+      }
     }
   }
 
