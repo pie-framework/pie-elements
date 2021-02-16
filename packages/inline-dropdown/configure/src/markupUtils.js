@@ -1,6 +1,9 @@
 import escape from 'lodash/escape';
 
-export const removeUnwantedCharacters = markup => markup.replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+export const removeUnwantedCharacters = markup =>
+  markup
+    .replace(/(\t+(?!imes))|(\n)|(\\t+(?!imes))|(\\n)/g, '')
+    .replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 export const createElementFromHTML = htmlString => {
   const div = document.createElement('div');

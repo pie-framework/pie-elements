@@ -9,7 +9,10 @@ export const createElementFromHTML = htmlString => {
   return div;
 };
 
-export const removeUnwantedCharacters = markup => markup.replace(/(\t)|(\n)|(\\t)|(\\n)/g, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
+export const removeUnwantedCharacters = markup =>
+  markup
+    .replace(/(\t+(?!imes))|(\n)|(\\t+(?!imes))|(\\n)/g, '')
+    .replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 export const processMarkup = markup => {
   const newMarkup = removeUnwantedCharacters(markup);
