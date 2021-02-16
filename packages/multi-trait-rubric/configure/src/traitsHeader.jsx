@@ -1,45 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DragHandle from '@material-ui/icons/DragHandle';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { color } from '@pie-lib/render-ui';
 
-import EditableHtml from '@pie-lib/editable-html';
+import {
+  Block,
+  PrimaryBlock,
+  Row,
+  SecondaryBlock,
+  ScorePoint,
+  MaxPointsPicker,
+  SimpleInput,
+  ScaleSettings,
+  HeaderHeight,
+  HeaderHeightLarge
+} from './common';
 
 const styles = {
-  actions: {
-    visibility: 'hidden'
-  },
-  traitTile: {
-    width: '100%',
-    backgroundColor: '#f6f6f6',
-    marginTop: '5px',
-    marginBottom: '5px',
-    display: 'flex',
-    alignItems: 'flex-start'
-  },
-  controls: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  },
   label: {
     textAlign: 'center',
-    width: '80%',
+    width: '140px',
     border: 'none',
     margin: '8px',
-    padding: '10px 0'
+    padding: '10px 0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
-  editableLabel: {
-    textAlign: 'left'
+  greyHeader: {
+    background: color.secondaryBackground(),
+    borderRadius: '4px',
+    position: 'relative'
   },
-  subLabel: {
-    paddingBottom: '16px'
+  primaryBlockGreyHeader: {
+    paddingTop: '12px'
   }
 };
 
 export class TraitsHeaderTile extends React.Component {
+  state = {
+    anchorEl: null,
+  };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.currentPosition !== this.props.currentPosition) {
+      this.scrollToPosition(nextProps.currentPosition);
+    }
+  }
+
   onScorePointLabelChange = ({ scorePointLabel, value }) => {
     const { scorePointsLabels, onScaleChange } = this.props;
 
@@ -50,6 +63,17 @@ export class TraitsHeaderTile extends React.Component {
     onScaleChange({ scorePointsLabels });
   };
 
+  handleClick = (event) => this.setState({ anchorEl: event.currentTarget });
+
+  handleClose = () => this.setState({ anchorEl: null });
+
+  scrollToPosition = position => this.secondaryBlock.scrollTo({ left: position });
+
+  openMenu = () => {
+    this.props.showDeleteScaleModal();
+    this.handleClose();
+  };
+
   render() {
     const {
       scorePointsValues,
@@ -58,73 +82,121 @@ export class TraitsHeaderTile extends React.Component {
       classes,
       showStandards,
       onTraitLabelChange,
+      showDescription,
+      showLevelTagInput,
+      maxPoints,
+      updateMaxPointsFieldValue,
+      scaleIndex,
+      showScorePointLabels,
+      setSecondaryBlockRef,
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
       math: { disabled: true }
     };
+    const { anchorEl } = this.state;
 
     return (
-      <div className={classes.traitTile}>
-        <span><DragHandle className={classes.actions}/></span>
+      <Row className={classes.greyHeader} height={showLevelTagInput ? HeaderHeightLarge : HeaderHeight}>
+        <PrimaryBlock className={classes.primaryBlockGreyHeader}>
+          {showLevelTagInput && (
+            <SimpleInput
+              markup={traitLabel || 'Trait'}
+              onChange={onTraitLabelChange}
+              pluginProps={pluginProps}
+              label='Level Label'
+            />
+          )}
 
-        <div className={classes.label}>
-          <div className={classes.subLabel}>Trait Label</div>
-          <EditableHtml
-            className={classes.editableLabel}
-            markup={traitLabel || 'Trait'}
-            onChange={onTraitLabelChange}
-            placeholder='Trait Label'
-            pluginProps={pluginProps}
-          />
-        </div>
-
-        {showStandards && (
-          <div className={classes.label}>
-            Standard(s)
-          </div>
-        )}
-
-        <div className={classes.label}>
-          Description
-        </div>
-
-        {scorePointsValues.map((scorePointsValue, index) => {
-          const value = scorePointsValues.length - index - 1;
-          let scoreDescriptor;
-
-          try {
-            scoreDescriptor = scorePointsLabels[value] || '';
-          } catch (e) {
-            scoreDescriptor = '';
-          }
-
-          return (
-            <div
-              className={classes.label}
-              key={`score-point-label-${index}`}
-            >
-              <div className={classes.subLabel}>
-                {scorePointsValue}
-              </div>
-
-              <EditableHtml
-                className={classes.editableLabel}
-                markup={scoreDescriptor}
-                placeholder='Label'
-                onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
-                pluginProps={pluginProps}
-              />
+          <ScaleSettings>
+            <div>
+              Scale {scaleIndex + 1}
             </div>
-          )
-        })}
 
-        <div className={classes.controls}>
-          <IconButton color='default'>
-            <RemoveCircle classes={{ root: classes.actions }}/>
-          </IconButton>
-        </div>
-      </div>
+            <MaxPointsPicker
+              maxPoints={maxPoints}
+              onChange={updateMaxPointsFieldValue}
+            />
+
+            <div>
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                onClick={this.handleClick}
+              >
+                <MoreVertIcon/>
+              </IconButton>
+              <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={this.handleClose}
+              >
+                {['Remove Scale'].map((option) => (
+                  <MenuItem
+                    key={option}
+                    onClick={this.openMenu}
+                  >
+                    {option}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </div>
+          </ScaleSettings>
+        </PrimaryBlock>
+
+        <SecondaryBlock
+          setRef={ref => {
+            if (ref) {
+              this.secondaryBlock = ref;
+
+              setSecondaryBlockRef(ref);
+            }
+          }}
+        >
+
+          {showStandards && (
+            <Block>
+              <div className={classes.label}>
+                Standard(s)
+              </div>
+            </Block>
+          )}
+
+          {showDescription && (
+            <Block>
+              <div className={classes.label}>
+                Description
+              </div>
+            </Block>
+          )}
+
+          {scorePointsValues.map((scorePointsValue, index) => {
+            const value = scorePointsValues.length - index - 1;
+            let scoreDescriptor;
+
+            try {
+              scoreDescriptor = scorePointsLabels[value] || '';
+            } catch (e) {
+              scoreDescriptor = '';
+            }
+
+            return (
+              <Block key={`secondary-block-part-${index}`}>
+                <ScorePoint
+                  scorePointsValue={scorePointsValue}
+                  scoreDescriptor={scoreDescriptor}
+                  pluginProps={pluginProps}
+                  showScorePointLabels={showScorePointLabels}
+                  onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                />
+              </Block>
+            )
+          })}
+        </SecondaryBlock>
+      </Row>
     );
   }
 }
@@ -136,7 +208,16 @@ TraitsHeaderTile.propTypes = {
   scorePointsValues: PropTypes.arrayOf(PropTypes.number),
   scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
   traitLabel: PropTypes.string,
-  showStandards: PropTypes.bool
+  showStandards: PropTypes.bool,
+  showLevelTagInput: PropTypes.bool,
+  showDescription: PropTypes.bool,
+  maxPoints: PropTypes.number,
+  updateMaxPointsFieldValue: PropTypes.func,
+  scaleIndex: PropTypes.number,
+  currentPosition: PropTypes.number,
+  showDeleteScaleModal: PropTypes.func,
+  showScorePointLabels: PropTypes.bool,
+  setSecondaryBlockRef: PropTypes.func
 };
 
 export default withStyles(styles)(TraitsHeaderTile);

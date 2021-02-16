@@ -4,112 +4,13 @@ exports[`Scale snapshot renders 1`] = `
 <div
   key="scale-0"
 >
-  <div>
-    <h3
-      style={
-        Object {
-          "color": "grey",
-        }
-      }
-    >
-      Scale #
-      0
-    </h3>
-    <pure(DeleteIcon)
-      classes={
-        Object {
-          "root": undefined,
-        }
-      }
-      onClick={[Function]}
-    />
-  </div>
-  <WithStyles(WithFormControlContext(FormControlLabel))
-    control={
-      <WithStyles(Checkbox)
-        checked={false}
-        color="primary"
-        onChange={[Function]}
-      />
-    }
-    label="Exclude Zero"
-    value="exclude_zero"
-  />
-  <WithStyles(FormControl)>
-    <WithStyles(WithFormControlContext(InputLabel))>
-      Max Points
-    </WithStyles(WithFormControlContext(InputLabel))>
-    <WithStyles(WithFormControlContext(Select))
-      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
-      onChange={[Function]}
-      value={2}
-    >
-      <WithStyles(MenuItem)
-        key="menu-item-1"
-        value={1}
-      >
-        1
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-2"
-        value={2}
-      >
-        2
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-3"
-        value={3}
-      >
-        3
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-4"
-        value={4}
-      >
-        4
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-5"
-        value={5}
-      >
-        5
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-6"
-        value={6}
-      >
-        6
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-7"
-        value={7}
-      >
-        7
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-8"
-        value={8}
-      >
-        8
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-9"
-        value={9}
-      >
-        9
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-10"
-        value={10}
-      >
-        10
-      </WithStyles(MenuItem)>
-    </WithStyles(WithFormControlContext(Select))>
-  </WithStyles(FormControl)>
   <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
     key="header-key"
+    maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
+    scaleIndex={0}
     scorePointsLabels={
       Array [
         "Non-Scorable",
@@ -117,17 +18,15 @@ exports[`Scale snapshot renders 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
     showStandards={true}
     traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
     index={0}
     key="0"
     onTraitChanged={[Function]}
@@ -140,13 +39,7 @@ exports[`Scale snapshot renders 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
     showStandards={true}
     trait={
       Object {
@@ -165,50 +58,252 @@ Overall appearance is acceptable or better",
       }
     }
   />
-  <div>
-    <div>
-      <div>
-        Add
-      </div>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Category",
-          }
-        }
-      />
-    </div>
-    <pure(AddCircleIcon)
-      classes={
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
         Object {
-          "root": undefined,
+          "__html": "Add Category",
         }
       }
-      onClick={[Function]}
     />
-  </div>
-  <ExcludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <IncludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <DecreaseMaxPoints
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
     cancel={[Function]}
     deleteScorePoints={[Function]}
     open={false}
   />
-  <DeleteScale
+  <WithStyles(RawDeleteScale)
     cancel={[Function]}
     deleteScale={[Function]}
     open={false}
     scaleIndex={0}
   />
-  <DeleteTrait
+  <WithStyles(RawDeleteTrait)
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
+exports[`Scale snapshot renders with drag and drop enabled 1`] = `
+<div
+  key="scale-0"
+>
+  <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
+    key="header-key"
+    maxPoints={2}
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scaleIndex={0}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
+    showStandards={true}
+    traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Add Category",
+        }
+      }
+    />
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <WithStyles(RawDeleteScale)
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <WithStyles(RawDeleteTrait)
+    cancel={[Function]}
+    deleteTrait={[Function]}
+    open={false}
+  />
+</div>
+`;
+
+exports[`Scale snapshot renders without descriptions 1`] = `
+<div
+  key="scale-0"
+>
+  <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
+    key="header-key"
+    maxPoints={2}
+    onScaleChange={[Function]}
+    onTraitLabelChange={[Function]}
+    scaleIndex={0}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
+    showDescription={false}
+    showStandards={true}
+    traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
+  />
+  <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
+    index={0}
+    key="0"
+    onTraitChanged={[Function]}
+    onTraitDropped={[Function]}
+    onTraitRemoved={[Function]}
+    scorePointsLabels={
+      Array [
+        "Non-Scorable",
+        "Unsatisfactory",
+        "Satisfactory",
+      ]
+    }
+    scorePointsValues={Array []}
+    showDescription={false}
+    showStandards={true}
+    trait={
+      Object {
+        "description": "",
+        "name": "Presentation",
+        "scorePointsDescriptors": Array [
+          "Handwriting is unreadable, or response is blank, not in English, or too brief to evaluate. ",
+          "Handwriting poor
+
+Overall appearance is distracting to unacceptable",
+          "Handwriting is generally legible
+
+Overall appearance is acceptable or better",
+        ],
+        "standards": Array [],
+      }
+    }
+  />
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Add Category",
+        }
+      }
+    />
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
+    cancel={[Function]}
+    deleteScorePoints={[Function]}
+    open={false}
+  />
+  <WithStyles(RawDeleteScale)
+    cancel={[Function]}
+    deleteScale={[Function]}
+    open={false}
+    scaleIndex={0}
+  />
+  <WithStyles(RawDeleteTrait)
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
@@ -220,112 +315,13 @@ exports[`Scale snapshot renders without standards 1`] = `
 <div
   key="scale-0"
 >
-  <div>
-    <h3
-      style={
-        Object {
-          "color": "grey",
-        }
-      }
-    >
-      Scale #
-      0
-    </h3>
-    <pure(DeleteIcon)
-      classes={
-        Object {
-          "root": undefined,
-        }
-      }
-      onClick={[Function]}
-    />
-  </div>
-  <WithStyles(WithFormControlContext(FormControlLabel))
-    control={
-      <WithStyles(Checkbox)
-        checked={false}
-        color="primary"
-        onChange={[Function]}
-      />
-    }
-    label="Exclude Zero"
-    value="exclude_zero"
-  />
-  <WithStyles(FormControl)>
-    <WithStyles(WithFormControlContext(InputLabel))>
-      Max Points
-    </WithStyles(WithFormControlContext(InputLabel))>
-    <WithStyles(WithFormControlContext(Select))
-      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
-      onChange={[Function]}
-      value={2}
-    >
-      <WithStyles(MenuItem)
-        key="menu-item-1"
-        value={1}
-      >
-        1
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-2"
-        value={2}
-      >
-        2
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-3"
-        value={3}
-      >
-        3
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-4"
-        value={4}
-      >
-        4
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-5"
-        value={5}
-      >
-        5
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-6"
-        value={6}
-      >
-        6
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-7"
-        value={7}
-      >
-        7
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-8"
-        value={8}
-      >
-        8
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-9"
-        value={9}
-      >
-        9
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-10"
-        value={10}
-      >
-        10
-      </WithStyles(MenuItem)>
-    </WithStyles(WithFormControlContext(Select))>
-  </WithStyles(FormControl)>
   <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
     key="header-key"
+    maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
+    scaleIndex={0}
     scorePointsLabels={
       Array [
         "Non-Scorable",
@@ -333,17 +329,15 @@ exports[`Scale snapshot renders without standards 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
     showStandards={false}
     traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
     index={0}
     key="0"
     onTraitChanged={[Function]}
@@ -356,13 +350,7 @@ exports[`Scale snapshot renders without standards 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
     showStandards={false}
     trait={
       Object {
@@ -381,50 +369,44 @@ Overall appearance is acceptable or better",
       }
     }
   />
-  <div>
-    <div>
-      <div>
-        Add
-      </div>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Category",
-          }
-        }
-      />
-    </div>
-    <pure(AddCircleIcon)
-      classes={
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
         Object {
-          "root": undefined,
+          "__html": "Add Category",
         }
       }
-      onClick={[Function]}
     />
-  </div>
-  <ExcludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <IncludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <DecreaseMaxPoints
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
     cancel={[Function]}
     deleteScorePoints={[Function]}
     open={false}
   />
-  <DeleteScale
+  <WithStyles(RawDeleteScale)
     cancel={[Function]}
     deleteScale={[Function]}
     open={false}
     scaleIndex={0}
   />
-  <DeleteTrait
+  <WithStyles(RawDeleteTrait)
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}
@@ -436,112 +418,13 @@ exports[`Scale snapshot renders without traits 1`] = `
 <div
   key="scale-0"
 >
-  <div>
-    <h3
-      style={
-        Object {
-          "color": "grey",
-        }
-      }
-    >
-      Scale #
-      0
-    </h3>
-    <pure(DeleteIcon)
-      classes={
-        Object {
-          "root": undefined,
-        }
-      }
-      onClick={[Function]}
-    />
-  </div>
-  <WithStyles(WithFormControlContext(FormControlLabel))
-    control={
-      <WithStyles(Checkbox)
-        checked={false}
-        color="primary"
-        onChange={[Function]}
-      />
-    }
-    label="Exclude Zero"
-    value="exclude_zero"
-  />
-  <WithStyles(FormControl)>
-    <WithStyles(WithFormControlContext(InputLabel))>
-      Max Points
-    </WithStyles(WithFormControlContext(InputLabel))>
-    <WithStyles(WithFormControlContext(Select))
-      input={<WithStyles(WithStyles(WithFormControlContext(InputBase))) />}
-      onChange={[Function]}
-      value={2}
-    >
-      <WithStyles(MenuItem)
-        key="menu-item-1"
-        value={1}
-      >
-        1
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-2"
-        value={2}
-      >
-        2
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-3"
-        value={3}
-      >
-        3
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-4"
-        value={4}
-      >
-        4
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-5"
-        value={5}
-      >
-        5
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-6"
-        value={6}
-      >
-        6
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-7"
-        value={7}
-      >
-        7
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-8"
-        value={8}
-      >
-        8
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-9"
-        value={9}
-      >
-        9
-      </WithStyles(MenuItem)>
-      <WithStyles(MenuItem)
-        key="menu-item-10"
-        value={10}
-      >
-        10
-      </WithStyles(MenuItem)>
-    </WithStyles(WithFormControlContext(Select))>
-  </WithStyles(FormControl)>
   <WithStyles(TraitsHeaderTile)
+    currentPosition={0}
     key="header-key"
+    maxPoints={2}
     onScaleChange={[Function]}
     onTraitLabelChange={[Function]}
+    scaleIndex={0}
     scorePointsLabels={
       Array [
         "Non-Scorable",
@@ -549,17 +432,15 @@ exports[`Scale snapshot renders without traits 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
+    setSecondaryBlockRef={[Function]}
+    showDeleteScaleModal={[Function]}
     showStandards={true}
     traitLabel="Category"
+    updateMaxPointsFieldValue={[Function]}
   />
   <DropTarget(DragSource(WithStyles(TraitTile)))
+    currentPosition={0}
     index={0}
     key="0"
     onTraitChanged={[Function]}
@@ -572,13 +453,7 @@ exports[`Scale snapshot renders without traits 1`] = `
         "Satisfactory",
       ]
     }
-    scorePointsValues={
-      Array [
-        2,
-        1,
-        0,
-      ]
-    }
+    scorePointsValues={Array []}
     showStandards={true}
     trait={
       Object {
@@ -597,50 +472,44 @@ Overall appearance is acceptable or better",
       }
     }
   />
-  <div>
-    <div>
-      <div>
-        Add
-      </div>
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Category",
-          }
-        }
-      />
-    </div>
-    <pure(AddCircleIcon)
-      classes={
+  <WithStyles(Component)
+    left="232px"
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowBackIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+    show={null}
+    width="98px"
+  >
+    <pure(ArrowForwardIosIcon) />
+  </WithStyles(Component)>
+  <WithStyles(Component)
+    onClick={[Function]}
+  >
+    <div
+      dangerouslySetInnerHTML={
         Object {
-          "root": undefined,
+          "__html": "Add Category",
         }
       }
-      onClick={[Function]}
     />
-  </div>
-  <ExcludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <IncludeZeroDialog
-    cancel={[Function]}
-    changeExcludeZero={[Function]}
-    open={false}
-  />
-  <DecreaseMaxPoints
+  </WithStyles(Component)>
+  <WithStyles(RawDecreaseMaxPoints)
     cancel={[Function]}
     deleteScorePoints={[Function]}
     open={false}
   />
-  <DeleteScale
+  <WithStyles(RawDeleteScale)
     cancel={[Function]}
     deleteScale={[Function]}
     open={false}
     scaleIndex={0}
   />
-  <DeleteTrait
+  <WithStyles(RawDeleteTrait)
     cancel={[Function]}
     deleteTrait={[Function]}
     open={false}

@@ -6,32 +6,35 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import defaults from './defaults';
 
+const modelWithDefaults = m => ({ ...defaults.model, ...m });
+const configurationWithDefaults = c => ({ ...defaults.configuration, ...c });
+
 export default class MultiTraitRubricElement extends HTMLElement {
   constructor() {
     super();
-    this._model = {};
-    this._configuration = defaults.configuration;
+    this._model = modelWithDefaults();
+    this._configuration = configurationWithDefaults();
   }
 
-  set model(s) {
-    this._model = s;
+  set model(m) {
+    this._model = modelWithDefaults(m);
     this._render();
   }
 
 
   set configuration(c) {
-    this._configuration = c;
+    this._configuration = configurationWithDefaults(c);
     this._render();
   }
 
   onModelChanged = (m) => {
-    this._model = m;
+    this._model = modelWithDefaults(m);
     this._render();
     this.dispatchEvent(new ModelUpdatedEvent(this._model, false));
   }
 
   onConfigurationChanged = (c) => {
-    this._configuration = c;
+    this._configuration = configurationWithDefaults(c);
 
     this._render();
   }

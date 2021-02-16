@@ -6,9 +6,25 @@ The schema defines the following properties:
 
 Indicates if half scoring is enabled
 
+# `pointLabels` (boolean)
+
+Indicates if point labels should be shown
+
 # `visibleToStudent` (boolean)
 
 Indicates if should be visible to student
+
+# `description` (boolean)
+
+Indicates if description should be shown
+
+# `standards` (boolean)
+
+Indicates if standards should be shown
+
+# `excludeZero` (boolean)
+
+Indicates if scoring should start at 0 or 1
 
 # `scales` (array, required)
 
@@ -17,10 +33,6 @@ scales
 The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
-
-## `excludeZero` (boolean)
-
-Indicates if scoring should start at 0 or 1
 
 ## `maxPoints` (number, required)
 
@@ -78,9 +90,9 @@ The html Element tag name
 
 The schema defines the following additional types:
 
-## `ConfigurePropWithEnabled` (object)
+## `ConfigureProp` (object)
 
-Properties of the `ConfigurePropWithEnabled` object:
+Properties of the `ConfigureProp` object:
 
 ### `settings` (boolean)
 
@@ -90,18 +102,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
-
 ## `Scale` (object)
 
 Properties of the `Scale` object:
-
-### `excludeZero` (boolean)
-
-Indicates if scoring should start at 0 or 1
 
 ### `maxPoints` (number, required)
 
