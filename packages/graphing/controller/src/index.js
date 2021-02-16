@@ -146,7 +146,7 @@ export function model(question, session, env) {
       base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     }
 
-    if (mode === 'evaluate') {
+    if (mode === 'evaluate' && !isEmpty(answers)) {
       const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
 
       // array of marks from session with 'correctness' property set
@@ -162,7 +162,7 @@ export function model(question, session, env) {
 
 export function outcome(question, session, env = {}) {
   return new Promise(resolve => {
-    if (env.mode !== 'evaluate') {
+    if (env.mode !== 'evaluate' || isEmpty(question.answers)) {
       resolve({ score: 0 });
     }
 
@@ -197,4 +197,3 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
-
