@@ -11,7 +11,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/drag-in-the-blank": "^1.8.6"
+    "@pie-ui/drag-in-the-blank": "^1.8.9"
   },
   "pie": {
     "element": "@pie-ui/drag-in-the-blank"
