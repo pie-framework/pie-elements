@@ -146,13 +146,18 @@ export function model(question, session, env) {
       base.teacherInstructions = teacherInstructionsEnabled ? teacherInstructions : null;
     }
 
-    if (mode === 'evaluate' && !isEmpty(answers)) {
-      const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
+    if (mode === 'evaluate') {
+      if (!isEmpty(answers)) {
+        const { answersCorrected, bestScoreAnswerKey, bestScore } = getBestAnswer(normalizedQuestion, session, env);
 
-      // array of marks from session with 'correctness' property set
-      base.answersCorrected = answersCorrected;
-      base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
-      base.showToggle = base.showToggle && bestScore !== 1;
+        // array of marks from session with 'correctness' property set
+        base.answersCorrected = answersCorrected;
+        base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
+        base.showToggle = base.showToggle && bestScore !== 1;
+      } else {
+        base.answersCorrected = [];
+        base.correctResponse = [];
+      }
     }
 
     log('base: ', base);
@@ -162,12 +167,12 @@ export function model(question, session, env) {
 
 export function outcome(question, session, env = {}) {
   return new Promise(resolve => {
-    if (env.mode !== 'evaluate' || isEmpty(question.answers)) {
-      resolve({ score: 0 });
-    }
-
     if (!session || isEmpty(session)) {
       resolve({ score: 0, empty: true });
+    }
+
+    if (env.mode !== 'evaluate' || isEmpty(question.answers)) {
+      resolve({ score: 0 });
     }
 
     const { bestScore } = getBestAnswer(question, session, env);

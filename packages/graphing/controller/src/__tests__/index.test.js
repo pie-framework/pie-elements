@@ -184,6 +184,19 @@ describe('model', () => {
       },
       { answer: [{ type: 'point', x: 0, y: 1 }] },
     ],
+    [
+      { mode: 'evaluate' },
+      { answers: {} },
+      {
+        disabled: true,
+        rationale: null,
+         teacherInstructions: null,
+        showToggle: false,
+        answersCorrected: [],
+        correctResponse: []
+      },
+      undefined
+    ],
   ])(
     'model env = %j',
     async (env, extraQuestionProps, expectedResult, session) => {
@@ -333,7 +346,7 @@ describe('getBestAnswer', () => {
     );
   });
 
-  describe('returns proper results in params are incorrectly defined', () => {
+  describe('returns proper results if params are incorrectly defined', () => {
     it.each`
       session
       ${undefined}
@@ -614,6 +627,14 @@ describe('outcome', () => {
     expect(
       (await outcome(await model(m, session3, env), session3, env)).score
     ).toEqual(1);
+
+    const session4 = {
+     answer: [],
+    };
+
+    expect(
+      (await outcome(await model(m, session4, env), session4, env)).score
+    ).toEqual(0);
   });
 });
 
