@@ -54,6 +54,14 @@ describe('model', () => {
     it('returns empty array for responses', () => {
       expect(result.config.responses).toEqual([]);
     });
+
+    it('returns null for rationale', () => {
+      expect(result.config.rationale).toEqual(null);
+    });
+
+    it('returns null for teacher instructions', () => {
+      expect(result.config.teacherInstructions).toEqual(null);
+    });
   });
 
   describe('view', () => {
@@ -974,7 +982,7 @@ describe('PD-610', () => {
     expect(result).toEqual({ score: 1 });
   });
 
-  
+
   it('scores 0', async () => {
     const session = {
       id: '1',
@@ -1024,7 +1032,7 @@ describe('PD-610', () => {
     expect(result).toEqual({ score: 1 });
   });
 
-  
+
   it('scores 0', async () => {
     const session = {
       id: '2',
