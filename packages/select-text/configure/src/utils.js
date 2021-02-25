@@ -35,8 +35,15 @@ export const parseParagraphs = (dom) => {
 };
 
 export const prepareText = text => {
-  const txtDom = createElementFromHTML(text);
+  let txtDom = createElementFromHTML(text);
   const allDomElements = Array.from(txtDom.querySelectorAll('*'));
+
+  if(txtDom.querySelectorAll('p').length === 0) {
+    const div = document.createElement('div');
+
+    div.innerHTML = `<p>${txtDom.innerHTML}</p>`;
+    txtDom = div;
+  }
 
   // if no dom elements, we just return the text
   if (allDomElements.length === 0) {

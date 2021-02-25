@@ -20,4 +20,10 @@ describe('logic', () => {
     expect(formattedText).toEqual('foo\nbar\n\nbar\nfoo');
   });
 
+  it('adds p if there are no paragraphs', () => {
+    const formattedText = prepareText(`foo<br>bar<br>foo`);
+
+    expect(formattedText).toEqual('foo\nbar\nfoo');
+  });
+
 });
