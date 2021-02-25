@@ -37,13 +37,13 @@ exports[`Root render renders 1`] = `
         groups={
           Object {
             "Properties": Object {
+              "rationaleEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
               "multipleCorrect": undefined,
               "partialScoring": false,
               "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
             },
           }
         }
