@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import uniqWith from 'lodash/uniqWith';
 import isEmpty from 'lodash/isEmpty';
 import defaults from './defaults';
-import { equalMarks } from './utils';
+import { equalMarks, sortedAnswers } from './utils';
 
 import { partialScoring } from '@pie-lib/controller-utils';
 
@@ -65,6 +65,10 @@ export const getBestAnswer = (question, session, env = {}) => {
   // initialize one possible answer if no values
   if (isEmpty(questionPossibleAnswers)) {
     questionPossibleAnswers = { correctAnswer: initializeGraphMap() };
+  } else {
+    if (questionPossibleAnswers.hasOwnProperty('correctAnswer')) {
+      questionPossibleAnswers = Object.assign({ correctAnswer: questionPossibleAnswers.correctAnswer }, sortedAnswers(questionPossibleAnswers));
+    }
   }
 
   const partialScoringEnabled = getPartialScoring({ scoringType, env });
@@ -100,7 +104,7 @@ export const getBestAnswer = (question, session, env = {}) => {
       score = 0;
     }
 
-    if (score / maxScore >= acc.bestScore) {
+    if (score / maxScore > acc.bestScore || !acc.foundOneSolution) {
       if (partialScoringEnabled) {
         acc.bestScore = parseFloat((score / maxScore).toFixed(2));
       } else {
@@ -109,6 +113,7 @@ export const getBestAnswer = (question, session, env = {}) => {
 
       acc.bestScoreAnswerKey = possibleAnswerKey;
       acc.answersCorrected = correctedAnswer;
+      acc.foundOneSolution = true;
     }
 
     return acc;
@@ -116,7 +121,8 @@ export const getBestAnswer = (question, session, env = {}) => {
     bestScore: 0,
     bestScoreAnswerKey: null,
     // initially we just suppose all the answers are incorrect
-    answersCorrected: cloneDeep(sessionAnswers).map(answer => ({ ...answer, correctness: 'incorrect' }))
+      answersCorrected: cloneDeep(sessionAnswers).map(answer => ({ ...answer, correctness: 'incorrect' })),
+    foundOneSolution: false
   });
 };
 
@@ -197,4 +203,3 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
-
