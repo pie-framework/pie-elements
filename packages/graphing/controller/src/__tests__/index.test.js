@@ -359,6 +359,7 @@ describe('getBestAnswer', () => {
           answersCorrected: [],
           bestScore: 0,
           bestScoreAnswerKey: null,
+          foundOneSolution: false,
         });
       }
     );
@@ -378,6 +379,7 @@ describe('getBestAnswer', () => {
           answersCorrected: [],
           bestScore: 0,
           bestScoreAnswerKey: null,
+          foundOneSolution: false,
         });
       }
     );
