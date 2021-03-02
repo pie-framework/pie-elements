@@ -144,7 +144,7 @@ export function outcome(model, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { choices } = question || [];
+      const { choices } = question || { choices: [] };
 
       resolve({
         id: '1',
