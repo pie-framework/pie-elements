@@ -28,10 +28,16 @@ export const equalVector = (vector1, vector2) => {
   return ((isEqual(vector1.from, vector2.from) && isEqual(vector1.to, vector2.to)));
 };
 
-export const sortedAnswers = (answers) => Object.keys(answers).sort().reduce((result, key) => {
-  result[key] = answers[key];
-  return result;
-}, {});
+// this function is implemented in configure as well
+export const sortedAnswers = (answers) => {
+  answers = answers || {};
+
+  return Object.keys(answers).sort().reduce((result, key) => {
+    result[key] = answers[key];
+
+    return result;
+  }, {});
+};
 
 const returnLineEquationCoefficients = line => {
   const xA = line.from.x;

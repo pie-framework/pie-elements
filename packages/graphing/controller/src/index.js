@@ -54,6 +54,16 @@ const getPartialScoring = ({ scoringType, env }) => {
   return partialScoring.enabled({ partialScoring: pS }, env);
 };
 
+export const orderCorrectAnswers = (questionPossibleAnswers) => {
+  questionPossibleAnswers = questionPossibleAnswers || {};
+
+  if (!questionPossibleAnswers.hasOwnProperty('correctAnswer')) {
+    sortedAnswers(questionPossibleAnswers);
+  }
+
+  return Object.assign({ correctAnswer: questionPossibleAnswers.correctAnswer }, sortedAnswers(questionPossibleAnswers));
+};
+
 export const getBestAnswer = (question, session, env = {}) => {
   // questionPossibleAnswers contains all possible answers (correct response and alternates);
   let { answers: questionPossibleAnswers, scoringType } = question || {};
@@ -66,9 +76,7 @@ export const getBestAnswer = (question, session, env = {}) => {
   if (isEmpty(questionPossibleAnswers)) {
     questionPossibleAnswers = { correctAnswer: initializeGraphMap() };
   } else {
-    if (questionPossibleAnswers.hasOwnProperty('correctAnswer')) {
-      questionPossibleAnswers = Object.assign({ correctAnswer: questionPossibleAnswers.correctAnswer }, sortedAnswers(questionPossibleAnswers));
-    }
+    orderCorrectAnswers(questionPossibleAnswers);
   }
 
   const partialScoringEnabled = getPartialScoring({ scoringType, env });
@@ -121,7 +129,7 @@ export const getBestAnswer = (question, session, env = {}) => {
     bestScore: 0,
     bestScoreAnswerKey: null,
     // initially we just suppose all the answers are incorrect
-      answersCorrected: cloneDeep(sessionAnswers).map(answer => ({ ...answer, correctness: 'incorrect' })),
+    answersCorrected: cloneDeep(sessionAnswers).map(answer => ({ ...answer, correctness: 'incorrect' })),
     foundOneSolution: false
   });
 };
