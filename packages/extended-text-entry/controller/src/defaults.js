@@ -1,3 +1,6 @@
 export default {
-  prompt: '<div>This is the question prompt</div>',
+  dimensions: {
+    height: 100,
+    width: 500,
+  }
 };
