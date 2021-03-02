@@ -11,6 +11,7 @@ import {
   constructSegmentsFromPoints,
   removeDuplicateSegments,
   removeInvalidSegments,
+  sortedAnswers,
 } from '../utils';
 
 // p = point, n = -
@@ -196,11 +197,11 @@ describe('equalPolygon', () => {
   const assert = (pointsA, pointsB, expected) => {
     it(`[${JSON.stringify(pointsA)}], [${JSON.stringify(pointsB)}] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
-      const result = equalPolygon({ points: pointsA }, { points: pointsB });
+      } equal`, () => {
+        const result = equalPolygon({ points: pointsA }, { points: pointsB });
 
-      expect(result).toEqual(expected);
-    });
+        expect(result).toEqual(expected);
+      });
   };
 
   const A = { x: 0, y: 0 };
@@ -300,13 +301,13 @@ describe('equalSine', () => {
   const assert = (sine1, sine2, expected) => {
     it(`[(${sine1.root.x},${sine1.root.y}), (${sine1.edge.x},${
       sine1.edge.y
-    })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
+      })], [(${sine2.root.x},${sine2.root.y}), (${sine2.edge.x},${
       sine2.edge.y
-    })] ${expected ? 'are' : 'are not'} equal`, () => {
-      const result = equalSine(sine1, sine2);
+      })] ${expected ? 'are' : 'are not'} equal`, () => {
+        const result = equalSine(sine1, sine2);
 
-      expect(result).toEqual(expected);
-    });
+        expect(result).toEqual(expected);
+      });
   };
 
   assert(
@@ -407,13 +408,13 @@ describe('equalParabola', () => {
   const assert = (p1, p2, expected) => {
     it(`[(${p1.root.x},${p1.root.y}), (${p1.edge.x},${p1.edge.y})], [(${
       p2.root.x
-    },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
+      },${p2.root.y}), (${p2.edge.x},${p2.edge.y})] ${
       expected ? 'are' : 'are not'
-    } equal`, () => {
-      const result = equalParabola(p1, p2);
+      } equal`, () => {
+        const result = equalParabola(p1, p2);
 
-      expect(result).toEqual(expected);
-    });
+        expect(result).toEqual(expected);
+      });
   };
 
   assert(
@@ -758,3 +759,91 @@ describe('removeInvalidSegments', () => {
 });
 
 // test.each([])('', () => {});
+
+describe('sortedAnswers', () => {
+
+
+  it('sortedAnswers should return empty object for undefined answers array', () => {
+    const answers = undefined;
+    const result = {};
+    expect(sortedAnswers(answers)).toEqual(result);
+  })
+});
+
+it('sortedAnswers should return empty object for an empty answers array', () => {
+  const answers = {};
+  const result = {};
+  expect(sortedAnswers(answers)).toEqual(result);
+})
+
+it('sortedAnswers should return an array of answers sorted alphabetically', () => {
+  const answers = {
+    correctAnswer: {
+      name: 'Correct Answer',
+      marks: [{
+        type: 'point',
+        x: 0,
+        y: 0
+      }]
+    },
+    aCorrectAnswer: {
+      name: 'Correct Answer',
+      marks: [{
+        type: 'point',
+        x: 0,
+        y: 0
+      }]
+    },
+    alternate1: {
+      name: 'Alternate 1',
+      marks: [{
+        type: 'segment',
+        from: { x: 0, y: 0 },
+        to: { x: 1, y: 1 },
+      },
+      {
+        type: 'point',
+        x: 3,
+        y: 3,
+        label: 'Point',
+        showLabel: true
+      }]
+    }
+  };
+
+  const result = {
+    aCorrectAnswer: {
+      name: 'Correct Answer',
+      marks: [{
+        type: 'point',
+        x: 0,
+        y: 0
+      }]
+    },
+    alternate1: {
+      name: 'Alternate 1',
+      marks: [{
+        type: 'segment',
+        from: { x: 0, y: 0 },
+        to: { x: 1, y: 1 },
+      },
+      {
+        type: 'point',
+        x: 3,
+        y: 3,
+        label: 'Point',
+        showLabel: true
+      }]
+    },
+    correctAnswer: {
+      name: 'Correct Answer',
+      marks: [{
+        type: 'point',
+        x: 0,
+        y: 0
+      }]
+    },
+  };
+
+  expect(sortedAnswers(answers)).toEqual(result);
+});
