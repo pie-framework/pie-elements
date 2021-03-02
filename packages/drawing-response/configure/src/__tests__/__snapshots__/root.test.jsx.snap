@@ -28,12 +28,13 @@ exports[`Root snapshot renders 1`] = `
         }
         groups={
           Object {
-            "Properties": Object {},
+            "Properties": Object {
+              "rationaleEnabled": undefined,
+              "teacherInstructionsEnabled": undefined,
+            },
             "Settings": Object {
               "backgroundImage.enabled": undefined,
               "promptEnabled": undefined,
-              "rationaleEnabled": undefined,
-              "teacherInstructionsEnabled": undefined,
             },
           }
         }

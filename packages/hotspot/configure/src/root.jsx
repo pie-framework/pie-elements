@@ -93,11 +93,11 @@ export class Root extends React.Component {
                     partialScoring.settings && toggle(partialScoring.label),
                   promptEnabled:
                     prompt.settings && toggle(prompt.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
-                    teacherInstructions.settings && toggle(teacherInstructions.label)
+                    teacherInstructions.settings && toggle(teacherInstructions.label),
+                  rationaleEnabled: rationale.settings && toggle(rationale.label)
                 }
               }}
             />
