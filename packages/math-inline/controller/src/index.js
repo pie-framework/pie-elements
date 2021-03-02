@@ -311,6 +311,8 @@ export function model(question, session, env) {
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
+        out.config.rationale = null;
+        out.config.teacherInstructions = null;
       }
 
       out.config.prompt = normalizedQuestion.promptEnabled
