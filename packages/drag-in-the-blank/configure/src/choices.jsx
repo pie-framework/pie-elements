@@ -180,6 +180,14 @@ export class Choices extends React.Component {
                       ref={ref => (this.focusedNodeRef = ref)}
                       className={classes.prompt}
                       markup={c.value}
+                      pluginProps={{
+                        video: {
+                          disabled: true
+                        },
+                        audio: {
+                          disabled: true
+                        }
+                      }}
                       onChange={val => this.onChoiceChanged(c.value, val, c.id)}
                       onDone={() => {
                         this.setState({
