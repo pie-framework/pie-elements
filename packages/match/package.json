@@ -12,7 +12,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/match": "^2.6.9"
+    "@pie-ui/match": "^2.6.10"
   },
   "pie": {
     "element": "@pie-ui/match"

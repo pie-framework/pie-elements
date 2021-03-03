@@ -11,7 +11,7 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/match-list": "^1.6.9"
+    "@pie-ui/match-list": "^1.6.10"
   },
   "pie": {
     "element": "@pie-ui/match-list"

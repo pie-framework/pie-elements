@@ -12,7 +12,7 @@
     "element": "@pie-ui/protractor"
   },
   "dependencies": {
-    "@pie-ui/protractor": "^2.2.27"
+    "@pie-ui/protractor": "^2.2.28"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {

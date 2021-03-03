@@ -9,7 +9,7 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/ruler": "^2.2.27"
+    "@pie-ui/ruler": "^2.2.28"
   },
   "pie": {
     "element": "@pie-ui/ruler"
