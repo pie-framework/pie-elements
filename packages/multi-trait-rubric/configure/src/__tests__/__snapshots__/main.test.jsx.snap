@@ -7,28 +7,74 @@ exports[`Main snapshot renders 1`] = `
       <Panel
         configuration={
           Object {
+            "dragAndDrop": Object {
+              "enabled": false,
+              "label": "Enable Drag and Drop",
+              "settings": false,
+            },
+            "showDescription": Object {
+              "enabled": false,
+              "label": "Show Description",
+              "settings": true,
+            },
+            "showExcludeZero": Object {
+              "enabled": false,
+              "label": "Exclude Zero",
+              "settings": true,
+            },
+            "showHalfScoring": Object {
+              "enabled": false,
+              "label": "Half Scoring",
+              "settings": true,
+            },
+            "showLevelTagInput": Object {
+              "enabled": false,
+              "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showScorePointLabels": Object {
+              "enabled": false,
+              "label": "Show Score Point Labels",
+              "settings": true,
+            },
             "showStandards": Object {
               "enabled": false,
               "label": "Show Standards",
               "settings": false,
             },
+            "showVisibleToStudent": Object {
+              "enabled": false,
+              "label": "Visible to Student",
+              "settings": true,
+            },
           }
         }
         groups={
           Object {
+            "Properties": Object {
+              "description": undefined,
+              "pointLabels": undefined,
+            },
             "Settings": Object {
-              "showStandards.enabled": false,
+              "dragAndDrop.enabled": false,
+              "excludeZero": undefined,
+              "halfScoring": undefined,
+              "showLevelTagInput.enabled": undefined,
+              "standards": false,
+              "visibleToStudent": undefined,
             },
           }
         }
         model={
           Object {
+            "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
+            "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -198,7 +244,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -224,61 +269,80 @@ Overall appearance is acceptable or better",
                 ],
               },
             ],
+            "standards": false,
             "visibleToStudent": true,
           }
         }
+        onChangeModel={[Function]}
       />
     }
   >
     <div
       style={
         Object {
-          "width": "60vw",
+          "maxWidth": undefined,
         }
       }
     >
-      <WithStyles(WithFormControlContext(FormControlLabel))
-        control={
-          <WithStyles(Checkbox)
-            checked={false}
-            color="primary"
-            onChange={[Function]}
-          />
-        }
-        label="Half Scoring"
-        value="half_scoring"
-      />
-      <WithStyles(WithFormControlContext(FormControlLabel))
-        control={
-          <WithStyles(Checkbox)
-            checked={true}
-            color="primary"
-            onChange={[Function]}
-          />
-        }
-        label="Visible to Students"
-        value="visible_to_students"
-      />
       <WithStyles(Scale)
         classes={Object {}}
         configuration={
           Object {
+            "dragAndDrop": Object {
+              "enabled": false,
+              "label": "Enable Drag and Drop",
+              "settings": false,
+            },
+            "showDescription": Object {
+              "enabled": false,
+              "label": "Show Description",
+              "settings": true,
+            },
+            "showExcludeZero": Object {
+              "enabled": false,
+              "label": "Exclude Zero",
+              "settings": true,
+            },
+            "showHalfScoring": Object {
+              "enabled": false,
+              "label": "Half Scoring",
+              "settings": true,
+            },
+            "showLevelTagInput": Object {
+              "enabled": false,
+              "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showScorePointLabels": Object {
+              "enabled": false,
+              "label": "Show Score Point Labels",
+              "settings": true,
+            },
             "showStandards": Object {
               "enabled": false,
               "label": "Show Standards",
               "settings": false,
             },
+            "showVisibleToStudent": Object {
+              "enabled": false,
+              "label": "Visible to Student",
+              "settings": true,
+            },
           }
         }
+        enableDragAndDrop={false}
+        excludeZero={true}
         key="scale-0"
         model={
           Object {
+            "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
+            "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -448,7 +512,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -474,6 +537,7 @@ Overall appearance is acceptable or better",
                 ],
               },
             ],
+            "standards": false,
             "visibleToStudent": true,
           }
         }
@@ -481,7 +545,6 @@ Overall appearance is acceptable or better",
         onScaleRemoved={[Function]}
         scale={
           Object {
-            "excludeZero": false,
             "maxPoints": 4,
             "scorePointsLabels": Array [
               "Non-Scorable",
@@ -652,28 +715,70 @@ Writing is expressive, engaging and has lots of energy",
           }
         }
         scaleIndex={0}
+        showDescription={false}
+        showLevelTagInput={false}
+        showScorePointLabels={true}
         showStandards={false}
       />
       <WithStyles(Scale)
         classes={Object {}}
         configuration={
           Object {
+            "dragAndDrop": Object {
+              "enabled": false,
+              "label": "Enable Drag and Drop",
+              "settings": false,
+            },
+            "showDescription": Object {
+              "enabled": false,
+              "label": "Show Description",
+              "settings": true,
+            },
+            "showExcludeZero": Object {
+              "enabled": false,
+              "label": "Exclude Zero",
+              "settings": true,
+            },
+            "showHalfScoring": Object {
+              "enabled": false,
+              "label": "Half Scoring",
+              "settings": true,
+            },
+            "showLevelTagInput": Object {
+              "enabled": false,
+              "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showScorePointLabels": Object {
+              "enabled": false,
+              "label": "Show Score Point Labels",
+              "settings": true,
+            },
             "showStandards": Object {
               "enabled": false,
               "label": "Show Standards",
               "settings": false,
             },
+            "showVisibleToStudent": Object {
+              "enabled": false,
+              "label": "Visible to Student",
+              "settings": true,
+            },
           }
         }
+        enableDragAndDrop={false}
+        excludeZero={true}
         key="scale-1"
         model={
           Object {
+            "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
+            "pointLabels": true,
             "scales": Array [
               Object {
-                "excludeZero": false,
                 "maxPoints": 4,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -843,7 +948,6 @@ Writing is expressive, engaging and has lots of energy",
                 ],
               },
               Object {
-                "excludeZero": false,
                 "maxPoints": 2,
                 "scorePointsLabels": Array [
                   "Non-Scorable",
@@ -869,6 +973,7 @@ Overall appearance is acceptable or better",
                 ],
               },
             ],
+            "standards": false,
             "visibleToStudent": true,
           }
         }
@@ -876,7 +981,6 @@ Overall appearance is acceptable or better",
         onScaleRemoved={[Function]}
         scale={
           Object {
-            "excludeZero": false,
             "maxPoints": 2,
             "scorePointsLabels": Array [
               "Non-Scorable",
@@ -903,23 +1007,28 @@ Overall appearance is acceptable or better",
           }
         }
         scaleIndex={1}
+        showDescription={false}
+        showLevelTagInput={false}
+        showScorePointLabels={true}
         showStandards={false}
       />
-      <div>
-        <div>
-          Add Scale
-        </div>
-        <pure(AddCircleIcon)
-          classes={
-            Object {
-              "root": undefined,
-            }
-          }
-          onClick={[Function]}
-        />
-      </div>
+      <WithStyles(Component)
+        onClick={[Function]}
+      >
+        Add Scale
+      </WithStyles(Component)>
     </div>
   </ConfigLayout>
+  <WithStyles(RawExcludeZeroDialog)
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <WithStyles(RawIncludeZeroDialog)
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
 </div>
 `;
 
@@ -930,75 +1039,104 @@ exports[`Main snapshot renders without scales 1`] = `
       <Panel
         configuration={
           Object {
+            "dragAndDrop": Object {
+              "enabled": false,
+              "label": "Enable Drag and Drop",
+              "settings": false,
+            },
+            "showDescription": Object {
+              "enabled": false,
+              "label": "Show Description",
+              "settings": true,
+            },
+            "showExcludeZero": Object {
+              "enabled": false,
+              "label": "Exclude Zero",
+              "settings": true,
+            },
+            "showHalfScoring": Object {
+              "enabled": false,
+              "label": "Half Scoring",
+              "settings": true,
+            },
+            "showLevelTagInput": Object {
+              "enabled": false,
+              "label": "Show Level Tag Input",
+              "settings": true,
+            },
+            "showScorePointLabels": Object {
+              "enabled": false,
+              "label": "Show Score Point Labels",
+              "settings": true,
+            },
             "showStandards": Object {
               "enabled": false,
               "label": "Show Standards",
               "settings": false,
             },
+            "showVisibleToStudent": Object {
+              "enabled": false,
+              "label": "Visible to Student",
+              "settings": true,
+            },
           }
         }
         groups={
           Object {
+            "Properties": Object {
+              "description": undefined,
+              "pointLabels": undefined,
+            },
             "Settings": Object {
-              "showStandards.enabled": false,
+              "dragAndDrop.enabled": false,
+              "excludeZero": undefined,
+              "halfScoring": undefined,
+              "showLevelTagInput.enabled": undefined,
+              "standards": false,
+              "visibleToStudent": undefined,
             },
           }
         }
         model={
           Object {
+            "description": false,
             "element": "multi-trait-rubric",
+            "excludeZero": true,
             "halfScoring": false,
             "id": "1",
+            "pointLabels": true,
             "scales": Array [],
+            "standards": false,
             "visibleToStudent": true,
           }
         }
+        onChangeModel={[Function]}
       />
     }
   >
     <div
       style={
         Object {
-          "width": "60vw",
+          "maxWidth": undefined,
         }
       }
     >
-      <WithStyles(WithFormControlContext(FormControlLabel))
-        control={
-          <WithStyles(Checkbox)
-            checked={false}
-            color="primary"
-            onChange={[Function]}
-          />
-        }
-        label="Half Scoring"
-        value="half_scoring"
-      />
-      <WithStyles(WithFormControlContext(FormControlLabel))
-        control={
-          <WithStyles(Checkbox)
-            checked={true}
-            color="primary"
-            onChange={[Function]}
-          />
-        }
-        label="Visible to Students"
-        value="visible_to_students"
-      />
-      <div>
-        <div>
-          Add Scale
-        </div>
-        <pure(AddCircleIcon)
-          classes={
-            Object {
-              "root": undefined,
-            }
-          }
-          onClick={[Function]}
-        />
-      </div>
+      <WithStyles(Component)
+        onClick={[Function]}
+      >
+        Add Scale
+      </WithStyles(Component)>
     </div>
   </ConfigLayout>
+  <WithStyles(RawExcludeZeroDialog)
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
+  <WithStyles(RawIncludeZeroDialog)
+    cancel={[Function]}
+    changeExcludeZero={[Function]}
+    open={false}
+  />
 </div>
 `;

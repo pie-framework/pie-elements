@@ -1,8 +1,9 @@
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import React from 'react';
 
-import { Main } from '../main';
-import { choiceUtils as utils } from '@pie-lib/config-ui';
+import {Main} from '../main';
+import {choiceUtils as utils} from '@pie-lib/config-ui';
+import {excludeZeroTypes} from '../modals';
 
 jest.mock('@pie-lib/config-ui', () => ({
   layout: {
@@ -15,23 +16,35 @@ jest.mock('@pie-lib/config-ui', () => ({
   }
 }));
 
+jest.mock('@pie-lib/render-ui', () => ({
+  color: {
+    text: jest.fn().mockReturnValue('black'),
+    secondaryBackground: jest.fn().mockReturnValue('grey'),
+    background: jest.fn().mockReturnValue('transparent'),
+    primary: jest.fn().mockReturnValue('blue'),
+  }
+}));
+
 const model = (extras) => ({
   id: '1',
   element: 'multi-trait-rubric',
   visibleToStudent: true,
   halfScoring: false,
+  pointLabels: true,
+  description: false,
+  standards: false,
+  excludeZero: true,
   scales: [
     {
-      excludeZero: false,
-      maxPoints: 4,
-      scorePointsLabels: ['Non-Scorable', 'Developing', 'Progressing', 'Effective', 'Strong'],
-      traitLabel: 'Trait',
-      traits: [
+      'maxPoints': 4,
+      'scorePointsLabels': ['Non-Scorable', 'Developing', 'Progressing', 'Effective', 'Strong'],
+      'traitLabel': 'Trait',
+      'traits': [
         {
-          name: 'Ideas',
-          standards: [],
-          description: 'the main message',
-          scorePointsDescriptors: [
+          'name': 'Ideas',
+          'standards': [],
+          'description': 'the main message',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Topic undefined and/or difficult to follow\n' + '\n' + 'Details are unclear',
             'Topic too broad\n' + '\n' + 'Details are limited',
@@ -40,10 +53,10 @@ const model = (extras) => ({
           ],
         },
         {
-          name: 'Organization',
-          standards: [],
-          description: 'the internal structure of the piece',
-          scorePointsDescriptors: [
+          'name': 'Organization',
+          'standards': [],
+          'description': 'the internal structure of the piece',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Does not have a beginning, middle and/or end\n' + '\n' + 'Does not have a lead and/or conclusion\n' + '\n' + 'Transitions confusing and/or not present\n' + '\n' + 'Not written in logical order\n' + '\n' + 'No sign of paragraphing / incorrect paragraphing',
             'Weak beginning, middle and end\n' + '\n' + 'Has evidence of a lead and/or conclusion but missing elements\n' + '\n' + 'Transitions are used sometimes\n' + '\n' + 'Some logical order\n' + '\n' + 'Most paragraphing incorrect',
@@ -52,10 +65,10 @@ const model = (extras) => ({
           ],
         },
         {
-          name: 'Word Choice',
-          standards: [],
-          description: 'the vocabulary a writer chooses to convey meaning',
-          scorePointsDescriptors: [
+          'name': 'Word Choice',
+          'standards': [],
+          'description': 'the vocabulary a writer chooses to convey meaning',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Vocabulary is limited/used incorrectly\n' + '\n' + 'No figurative language; words do not convey meaning',
             'Generally correct words\n' + '\n' + 'Attempt at figurative language\n' + '\n' + 'and/or words convey general meaning',
@@ -64,10 +77,10 @@ const model = (extras) => ({
           ],
         },
         {
-          name: 'Sentence Fluency',
-          standards: [],
-          description: 'the rhythm and flow of the language',
-          scorePointsDescriptors: [
+          'name': 'Sentence Fluency',
+          'standards': [],
+          'description': 'the rhythm and flow of the language',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'No sentences are clear\n' + '\n' + 'No variety in sentence structure\n' + '\n' + 'Frequent run-ons and/or fragments are present',
             'Some sentences are clear\n' + '\n' + 'Sentence variety used rarely\n' + '\n' + 'Some run-ons and/or fragments are present',
@@ -76,10 +89,10 @@ const model = (extras) => ({
           ],
         },
         {
-          name: 'Conventions',
-          standards: [],
-          description: 'the mechanical correctness',
-          scorePointsDescriptors: [
+          'name': 'Conventions',
+          'standards': [],
+          'description': 'the mechanical correctness',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Many distracting errors are present in grammar, punctuation, capitalization and/or spelling',
             'Errors in grammar, punctuation, capitalization and/or spelling are present and some distract from meaning',
@@ -88,10 +101,10 @@ const model = (extras) => ({
           ],
         },
         {
-          name: 'Voice',
-          standards: [],
-          description: 'the personal tone and flavor of the author\'s message',
-          scorePointsDescriptors: [
+          'name': 'Voice',
+          'standards': [],
+          'description': 'the personal tone and flavor of the author\'s message',
+          'scorePointsDescriptors': [
             'Student’s response is blank, not in English, not legible, or does not respond to the prompt.',
             'Not concerned with audience or purpose\n' + '\n' + 'No viewpoint (perspective) used\n' + '\n' + 'Writing is mechanical and lifeless',
             'Shows beginning awareness of audience/purpose\n' + '\n' + 'Some viewpoint (perspective) used throughout the piece\n' + '\n' + 'Writing is distant, too formal or informal',
@@ -102,7 +115,6 @@ const model = (extras) => ({
       ]
     },
     {
-      excludeZero: false,
       maxPoints: 2,
       scorePointsLabels: ['Non-Scorable', 'Unsatisfactory', 'Satisfactory'],
       traitLabel: 'Category',
@@ -125,7 +137,6 @@ const model = (extras) => ({
 
 describe('Main', () => {
   let initialModel = model();
-  let w;
   let onModelChanged;
   let onConfigurationChanged;
 
@@ -141,21 +152,56 @@ describe('Main', () => {
           label: 'Show Standards',
           enabled: false
         },
+        showExcludeZero: {
+          settings: true,
+          label: 'Exclude Zero',
+          enabled: false
+        },
+        showScorePointLabels: {
+          settings: true,
+          label: 'Show Score Point Labels',
+          enabled: false
+        },
+        showLevelTagInput: {
+          settings: true,
+          label: 'Show Level Tag Input',
+          enabled: false
+        },
+        showDescription: {
+          settings: true,
+          label: 'Show Description',
+          enabled: false
+        },
+        showVisibleToStudent: {
+          settings: true,
+          label: 'Visible to Student',
+          enabled: false
+        },
+        showHalfScoring: {
+          settings: true,
+          label: 'Half Scoring',
+          enabled: false
+        },
+        dragAndDrop: {
+          settings: false,
+          label: 'Enable Drag and Drop',
+          enabled: false,
+        }
       },
     };
-    const props = { ...defaults };
+    const props = {...defaults};
 
     return shallow(<Main {...props} />);
   };
 
   describe('snapshot', () => {
     it('renders', () => {
-      w = wrapper();
+      const w = wrapper();
       expect(w).toMatchSnapshot();
     });
 
     it('renders without scales', () => {
-      w = wrapper({ scales: [] });
+      const w = wrapper({scales: []});
       expect(w).toMatchSnapshot();
     });
   });
@@ -164,12 +210,344 @@ describe('Main', () => {
     beforeEach(() => {
       onModelChanged = jest.fn();
       onConfigurationChanged = jest.fn();
+    });
 
-      w = wrapper();
+    describe('changeExcludeZero', () => {
+      it('scales is empty array', () => {
+        const w = wrapper({scales: null});
+
+        w.instance().changeExcludeZero(excludeZeroTypes.remove0);
+        expect(onModelChanged).not.toBeCalled();
+      })
+
+      it('removes zero', () => {
+        const w = wrapper({
+          scales: [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b', 'c'],
+                },
+              ]
+            }
+          ]
+        })
+        const {excludeZero} = w.instance().props.model;
+
+        w.instance().changeExcludeZero(excludeZeroTypes.remove0);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          scales:  [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['b', 'c'],
+                },
+              ]
+            }
+          ],
+          excludeZero: !excludeZero
+        });
+      });
+
+      it('add0 zero', () => {
+        const w = wrapper({
+          scales: [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b', 'c'],
+                },
+              ]
+            }
+          ]
+        })
+        const {excludeZero} = w.instance().props.model;
+
+        w.instance().changeExcludeZero(excludeZeroTypes.add0);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          scales:  [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['', 'Zero', 'One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['', 'a', 'b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['', 'a', 'b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['', 'Zero', 'One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['', 'a', 'b', 'c'],
+                },
+              ]
+            }
+          ],
+          excludeZero: !excludeZero
+        });
+      });
+
+      it('shift to Left', () => {
+        const w = wrapper({
+          scales: [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b', 'c'],
+                },
+              ]
+            }
+          ]
+        })
+        const {excludeZero} = w.instance().props.model;
+
+        w.instance().changeExcludeZero(excludeZeroTypes.shiftLeft);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          scales:  [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b'],
+                },
+              ]
+            }
+          ],
+          excludeZero: !excludeZero
+        });
+      });
+
+      it('shift to Right', () => {
+        const w = wrapper({
+          scales: [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three', 'Four'],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e'],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One', 'Two'],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b', 'c'],
+                },
+              ]
+            }
+          ]
+        })
+        const {excludeZero} = w.instance().props.model;
+
+        w.instance().changeExcludeZero(excludeZeroTypes.shiftRight);
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          scales:  [
+            {
+              'maxPoints': 4,
+              'scorePointsLabels': ['Zero', 'One', 'Two', 'Three', 'Four', ''],
+              'traitLabel': 'Trait',
+              'traits': [
+                {
+                  'name': 'Ideas',
+                  'standards': [],
+                  'description': 'the main message',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e', ''],
+                },
+                {
+                  'name': 'Organization',
+                  'standards': [],
+                  'description': 'the internal structure of the piece',
+                  'scorePointsDescriptors': ['a', 'b', 'c', 'd', 'e', ''],
+                },
+              ]
+            },
+            {
+              maxPoints: 2,
+              scorePointsLabels: ['Zero', 'One', 'Two', ''],
+              traitLabel: 'Category',
+              traits: [
+                {
+                  name: 'Presentation',
+                  standards: [],
+                  description: '',
+                  scorePointsDescriptors: ['a', 'b', 'c', ''],
+                },
+              ]
+            }
+          ],
+          excludeZero: !excludeZero
+        });
+      });
     });
 
     describe('onScaleAdded', () => {
       it('adds a scale', () => {
+        const w = wrapper();
         w.instance().onScaleAdded();
 
         expect(onModelChanged).toBeCalledWith({
@@ -190,95 +568,105 @@ describe('Main', () => {
 
     describe('onScaleChanged', () => {
       it('does not call onModelChanged if index less than 0', () => {
+        const w = wrapper();
         w.instance().onScaleChanged(-1);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if index more than length', () => {
+        const w = wrapper();
         w.instance().onScaleChanged(100);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params null', () => {
+        const w = wrapper();
         w.instance().onScaleChanged(0, null);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params undefined', () => {
+        const w = wrapper();
         w.instance().onScaleChanged(0, undefined);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call onModelChanged if params empty', () => {
+        const w = wrapper();
         w.instance().onScaleChanged(0, {});
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('changes a scale\'s excludeZero', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { excludeZero: true });
+        w.instance().onScaleChanged(0, {excludeZero: true});
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           scales: [
-            { ...firstScale, excludeZero: true },
+            {...firstScale, excludeZero: true},
             ...scales
           ]
         });
       });
 
       it('changes a scale\'s maxPoints', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { maxPoints: 3 });
+        w.instance().onScaleChanged(0, {maxPoints: 3});
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           scales: [
-            { ...firstScale, maxPoints: 3 },
+            {...firstScale, maxPoints: 3},
             ...scales
           ]
         });
       });
 
       it('changes a scale\'s scorePointsLabels', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { scorePointsLabels: [] });
+        w.instance().onScaleChanged(0, {scorePointsLabels: []});
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           scales: [
-            { ...firstScale, scorePointsLabels: [] },
+            {...firstScale, scorePointsLabels: []},
             ...scales
           ]
         });
       });
 
       it('changes a scale\'s traitLabel', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { traitLabel: 'Test' });
+        w.instance().onScaleChanged(0, {traitLabel: 'Test'});
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           scales: [
-            { ...firstScale, traitLabel: 'Test' },
+            {...firstScale, traitLabel: 'Test'},
             ...scales
           ]
         });
       });
 
       it('changes a scale\'s traits', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
-        w.instance().onScaleChanged(0, { traits: [] });
+        w.instance().onScaleChanged(0, {traits: []});
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           scales: [
-            { ...firstScale, traits: [] },
+            {...firstScale, traits: []},
             ...scales
           ]
         });
@@ -287,18 +675,21 @@ describe('Main', () => {
 
     describe('onScaleRemoved', () => {
       it('does not call change scales if index less than 0', () => {
+        const w = wrapper();
         w.instance().onScaleRemoved(-1);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('does not call change scales if index more then length', () => {
+        const w = wrapper();
         w.instance().onScaleRemoved(100);
 
         expect(onModelChanged).not.toBeCalled();
       });
 
       it('removes scale', () => {
+        const w = wrapper();
         const [firstScale, ...scales] = w.instance().props.model.scales;
 
         w.instance().onScaleRemoved(0);
@@ -312,7 +703,8 @@ describe('Main', () => {
 
     describe('onHalfScoringChanged', () => {
       it('changes half scoring', () => {
-        const { halfScoring } = w.instance().props.model;
+        const w = wrapper();
+        const {halfScoring} = w.instance().props.model;
         w.instance().onHalfScoringChanged();
 
         expect(onModelChanged).toBeCalledWith({
@@ -324,12 +716,52 @@ describe('Main', () => {
 
     describe('onVisibleToStudentChanged', () => {
       it('changes visible to student', () => {
-        const { visibleToStudent } = w.instance().props.model;
+        const w = wrapper();
+        const {visibleToStudent} = w.instance().props.model;
         w.instance().onVisibleToStudentChanged();
 
         expect(onModelChanged).toBeCalledWith({
           ...initialModel,
           visibleToStudent: !visibleToStudent
+        });
+      });
+    });
+
+    describe('changeShowScorePointLabels', () => {
+      it('changes show score point labels', () => {
+        const w = wrapper();
+        const {pointLabels} = w.instance().props.model;
+        w.instance().changeShowScorePointLabels();
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          pointLabels: !pointLabels
+        });
+      });
+    });
+
+    describe('changeShowDescription', () => {
+      it('changes show description', () => {
+        const w = wrapper();
+        const {description} = w.instance().props.model;
+        w.instance().changeShowDescription();
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          description: !description
+        });
+      });
+    });
+
+    describe('changeShowStandards', () => {
+      it('changes show standards', () => {
+        const w = wrapper();
+        const {standards} = w.instance().props.model;
+        w.instance().changeShowStandards();
+
+        expect(onModelChanged).toBeCalledWith({
+          ...initialModel,
+          standards: !standards
         });
       });
     });

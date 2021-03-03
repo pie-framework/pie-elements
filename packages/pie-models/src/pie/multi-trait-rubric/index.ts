@@ -1,5 +1,5 @@
 import {PieModel} from '../../PieModel';
-import {ConfigurePropWithEnabled} from '../ConfigurationProp';
+import {ConfigureProp} from '../ConfigurationProp';
 
 
 interface Trait {
@@ -18,9 +18,6 @@ interface Trait {
 }
 
 interface Scale {
-  /** Indicates if scoring should start at 0 or 1 */
-  excludeZero?: boolean;
-
   /** Indicates max limit for scoring points */
   maxPoints: number;
 
@@ -43,8 +40,20 @@ export interface MultiTraitRubricPie extends PieModel {
   /** Indicates if half scoring is enabled */
   halfScoring?: boolean;
 
+  /** Indicates if point labels should be shown */
+  pointLabels?: boolean;
+
   /** Indicates if should be visible to student */
   visibleToStudent?: boolean;
+
+  /** Indicates if description should be shown */
+  description?: boolean;
+
+  /** Indicates if standards should be shown */
+  standards?: boolean;
+
+  /** Indicates if scoring should start at 0 or 1 */
+  excludeZero?: boolean;
 
   /** scales */
   scales: Scale[];
@@ -57,7 +66,50 @@ export interface MultiTraitRubricPie extends PieModel {
  */
 export interface MultiTraitRubricConfigure {
   /**
-   * Configuration for showing the Standards column
+   * Configuration for Excluding Zero Column
    */
-  showStandards?: ConfigurePropWithEnabled;
+  showExcludeZero?: ConfigureProp;
+
+  /**
+   * Configuration for Showing Score Point Labels
+   */
+  showScorePointLabels?: ConfigureProp;
+
+  /**
+   * Configuration for Showing Description
+   */
+  showDescription?: ConfigureProp;
+
+  /**
+   * Configuration for Showing Multi-trait-rubric to Students
+   */
+  showVisibleToStudent?: ConfigureProp;
+
+  /**
+   * Configuration for Showing Half Scoring Indicator
+   */
+  showHalfScoring?: ConfigureProp;
+
+  /**
+   * How large (in px) should multi-trait-rubric be
+   */
+  maxWidth: string
+
+
+  // these should not be set to true (should not be used) for now
+  //
+  // /**
+  //  * Configuration for showing the Standards column
+  //  */
+  // showStandards?: ConfigureProp;
+  //
+  // /**
+  //  * Configuration for showing the Level Tag Input
+  //  */
+  // showLevelTagInput?: ConfigurePropWithEnabled;
+  //
+  // /**
+  //  * Configuration for allowing drag & drop per traits
+  //  */
+  // dragAndDrop?: ConfigurePropWithEnabled;
 }

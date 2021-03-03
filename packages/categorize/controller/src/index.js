@@ -120,7 +120,7 @@ export const normalize = (question) => ({
 export const model = (question, session, env, updateSession) =>
   new Promise(async (resolve) => {
     const normalizedQuestion = normalize(question);
-    const answerCorrectness = getCorrectness(normalizedQuestion, session, env);
+    const answerCorrectness = await getCorrectness(normalizedQuestion, session, env);
 
     const { mode, role } = env || {};
 
@@ -149,7 +149,7 @@ export const model = (question, session, env, updateSession) =>
 
     if (mode === 'evaluate' && feedbackEnabled) {
       fb = await getFeedbackForCorrectness(
-        answerCorrectness.correctness,
+        answerCorrectness,
         feedback
       );
     }
@@ -161,7 +161,7 @@ export const model = (question, session, env, updateSession) =>
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
-      correctness: answerCorrectness.correctness,
+      correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
       choicesPerRow: choicesPerRow || 2,

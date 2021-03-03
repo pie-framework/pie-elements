@@ -122,7 +122,7 @@ export class CorrectResponse extends React.Component {
   addAlternateResponse = () => {
     const { model, onChange } = this.props;
     const { answers } = model || {};
-    const answersKeys = Object.keys(answers);
+    const answersKeys = Object.keys(answers || {});
 
     set(
       model,
@@ -138,7 +138,7 @@ export class CorrectResponse extends React.Component {
     const { answers, arrows, backgroundMarks, domain, labels, range, title, toolbarTools } = model || {};
     graph = graph || {};
 
-    const answersKeys = Object.keys(answers);
+   const answersKeys = Object.keys(answers || {});
 
     return (
       <div>

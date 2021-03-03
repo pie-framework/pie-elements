@@ -85,7 +85,7 @@ const mathSample = extras => {
       partialScoring: false,
       maxSelections: 2,
       prompt: 'What sentences contain the character 6 in them?',
-      text: mathSampleText,
+      text:mathSampleText
       tokens: mathSampleTokens,
     },
     extras

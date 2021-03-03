@@ -51,7 +51,7 @@ const styles = (theme) => ({
   responseEditor: {
     display: 'flex',
     justifyContent: 'center',
-    width: 'auto',
+    width: '100%',
     minWidth: '500px',
     maxWidth: '900px',
     height: 'auto',

@@ -35,6 +35,11 @@ describe('markupUtils', () => {
       expect(removeUnwantedCharacters('<div>foo\/bar</div>')).toEqual('<div>foo/bar</div>');
     });
 
+    it('should not remove \\t character which has latex like \\times', () => {
+      expect(removeUnwantedCharacters('<div><span data-latex=\"\" data-raw=\"3\\times3\\div2\">3\\times3\\div2</span></div>'))
+        .toEqual("<div><span data-latex=\"\" data-raw=\"3\\times3\\div2\">3\\times3\\div2</span></div>");
+    });
+
   });
 
   describe('processMarkup', () => {

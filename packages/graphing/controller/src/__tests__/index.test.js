@@ -5,6 +5,7 @@ import {
   outcome,
   createCorrectResponseSession,
   getAnswerCorrected,
+  orderCorrectAnswers,
 } from '../index';
 import defaults from '../defaults';
 
@@ -184,6 +185,19 @@ describe('model', () => {
       },
       { answer: [{ type: 'point', x: 0, y: 1 }] },
     ],
+    [
+      { mode: 'evaluate' },
+      { answers: {} },
+      {
+        disabled: true,
+        rationale: null,
+         teacherInstructions: null,
+        showToggle: false,
+        answersCorrected: [],
+        correctResponse: []
+      },
+      undefined
+    ],
   ])(
     'model env = %j',
     async (env, extraQuestionProps, expectedResult, session) => {
@@ -333,7 +347,7 @@ describe('getBestAnswer', () => {
     );
   });
 
-  describe('returns proper results in params are incorrectly defined', () => {
+  describe('returns proper results if params are incorrectly defined', () => {
     it.each`
       session
       ${undefined}
@@ -359,6 +373,7 @@ describe('getBestAnswer', () => {
           answersCorrected: [],
           bestScore: 0,
           bestScoreAnswerKey: null,
+          foundOneSolution: false,
         });
       }
     );
@@ -378,6 +393,7 @@ describe('getBestAnswer', () => {
           answersCorrected: [],
           bestScore: 0,
           bestScoreAnswerKey: null,
+          foundOneSolution: false,
         });
       }
     );
@@ -614,6 +630,14 @@ describe('outcome', () => {
     expect(
       (await outcome(await model(m, session3, env), session3, env)).score
     ).toEqual(1);
+
+    const session4 = {
+     answer: [],
+    };
+
+    expect(
+      (await outcome(await model(m, session4, env), session4, env)).score
+    ).toEqual(0);
   });
 });
 
@@ -733,4 +757,153 @@ describe('createCorrectResponseSession', () => {
 
     expect(noResult).toBeNull();
   });
+});
+
+describe('orderCorrectAnswers', () => {
+
+  it('orderCorrectAnswers should return ordered object, with correctAnswer first, if answers has correctAnswer key', () => {
+
+    const questionPossibleAnswers = {
+      aCorrectAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      alternate1: {
+        name: 'Alternate 1',
+        marks: [{
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }]
+      }
+    };
+
+    const orderedAnswers = {
+      correctAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      aCorrectAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      alternate1: {
+        name: 'Alternate 1',
+        marks: [{
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }]
+      }
+    };
+
+    expect(orderCorrectAnswers(questionPossibleAnswers)).toEqual(orderedAnswers);
+  });
+
+  it('orderCorrectAnswers should return alphabetically ordered object if answers does not have correctAnswer key', () => {
+
+    const questionPossibleAnswers = {
+      aCorrectAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      alternate2: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      alternate1: {
+        name: 'Alternate 1',
+        marks: [{
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }]
+      }
+    };
+
+    const sortedAnswers = {
+      aCorrectAnswer: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+      alternate1: {
+        name: 'Alternate 1',
+        marks: [{
+          type: 'segment',
+          from: { x: 0, y: 0 },
+          to: { x: 1, y: 1 },
+        },
+        {
+          type: 'point',
+          x: 3,
+          y: 3,
+          label: 'Point',
+          showLabel: true
+        }]
+      },
+      alternate2: {
+        name: 'Correct Answer',
+        marks: [{
+          type: 'point',
+          x: 0,
+          y: 0
+        }]
+      },
+    };
+
+    expect(orderCorrectAnswers(questionPossibleAnswers)).toEqual(sortedAnswers);
+  })
 });

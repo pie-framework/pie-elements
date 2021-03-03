@@ -6,7 +6,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/multi-trait-rubric": "^1.1.1",
+    "@pie-ui/multi-trait-rubric": "^1.2.2",
     "clsx": "^1.1.1"
   },
   "pie": {

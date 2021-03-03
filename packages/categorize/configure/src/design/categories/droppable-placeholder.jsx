@@ -81,7 +81,8 @@ const styles = () => ({
   },
   placeHolder: {
     width: '100%',
-    minHeight: '100px'
+    minHeight: '100px',
+    height: 'auto'
   }
 });
 

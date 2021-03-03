@@ -1,178 +1,110 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Checkbox, FormControlLabel } from '@material-ui/core';
-import Delete from '@material-ui/icons/Delete';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputBase from '@material-ui/core/InputBase';
-import AddCircle from '@material-ui/icons/AddCircle';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import { withDragContext } from '@pie-lib/drag';
+import { color } from '@pie-lib/render-ui';
 
 import TraitsHeader from './traitsHeader';
 import TraitTile from './trait';
 import {
+  Arrow,
+  BlockWidth,
+  DragHandleSpace,
+  MultiTraitButton,
+  PrimaryBlockWidth
+} from './common';
+import {
   DecreaseMaxPoints,
   DeleteScale,
   DeleteTrait,
-  ExcludeZeroDialog,
-  IncludeZeroDialog,
-  excludeZeroTypes
 } from './modals';
 
-const inputStyles = {
-  root: {
-    'label + &': {
-      marginTop: '24px',
-      marginBottom: '24px',
-      width: '180px'
-    },
-  },
-  input: {
-    borderRadius: '4px',
-    position: 'relative',
-    border: '1px solid #ced4da',
-    fontSize: '16px',
-    padding: '10px 26px 10px 12px',
-
-    '&:focus': {
-      borderRadius: '4px',
-    }
-  },
-};
-
-const BootstrapInput = withStyles(inputStyles)(InputBase);
+const AdjustedBlockWidth = BlockWidth + (2 * 8); // 8 is padding
 
 const styles = {
-  addCircle: {
-    fill: 'grey',
-    marginLeft: '16px',
-    height: '30px',
-    width: '30px'
-  },
-  buttonWrapper: {
-    alignItems: 'center',
-    color: 'grey',
+  scaleWrapper: {
     display: 'flex',
-    fontSize: '16px',
-    justifyContent: 'flex-end',
-    textAlign: 'right'
+    flexDirection: 'column',
+    margin: '12px 0',
+    wordBreak: 'break-word',
+    padding: `16px 0 16px ${DragHandleSpace}px`,
+    position: 'relative'
   },
   maxPoints: {
     width: '300px',
     margin: '16px 0 32px'
   },
-  scaleWrapper: {
-    border: '1px solid lightgrey',
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '16px',
-    margin: '12px 0',
-    wordBreak: 'break-word'
-  },
-  scaleTitleWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
   trait: {
-    background: '#f1f1f1',
+    background: color.secondaryBackground(),
     margin: '16px 0',
     padding: '16px'
   }
 };
-
-const maxScoreOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export class Scale extends React.Component {
   state = {
     showDecreaseMaxPointsDialog: false,
     showDeleteScaleDialog: false,
     showDeleteTraitDialog: false,
-    showExcludeZeroDialog: false,
+    currentPosition: 0,
+    showRight: null,
+    showLeft: null
   };
 
   set = (newState) => this.setState(newState);
 
-  // Exclude Zero
-  showToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: true });
-
-  hideToggleExcludeZeroModal = () => this.set({ showExcludeZeroDialog: false });
-
-  changeExcludeZero = (excludeZeroType) => {
-    const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    let { excludeZero, scorePointsLabels, traits } = scale || {};
-
-    excludeZero = !excludeZero;
-
-    this.hideToggleExcludeZeroModal();
-
-    if (scorePointsLabels.length < 1) return;
-
-
-    switch (excludeZeroType) {
-      case excludeZeroTypes.remove0: {
-        // removes column 0
-        scorePointsLabels = scorePointsLabels.slice(1);
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: scorePointsDescriptors.slice(1)
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.add0: {
-        // adds empty column at start
-        scorePointsLabels = ['', ...scorePointsLabels];
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: ['', ...scorePointsDescriptors]
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.shiftLeft: {
-        // removes last column
-        scorePointsLabels = scorePointsLabels.slice(0, -1);
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: scorePointsDescriptors.slice(0, -1)
-        }));
-
-        break;
-      }
-      case excludeZeroTypes.shiftRight: {
-        // adds empty column at end
-        scorePointsLabels = [...scorePointsLabels, ''];
-        traits = traits.map(({ scorePointsDescriptors, ...trait }) => ({
-          ...trait,
-          scorePointsDescriptors: [...scorePointsDescriptors, '']
-        }));
-
-        break;
-      }
-      default:
-        break;
+  componentDidMount() {
+    if (this.state.showRight === null && this.secondaryBlockRef) {
+      this.setState({ showRight: this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth });
     }
+  }
 
-    onScaleChanged(scaleIndex, { excludeZero, scorePointsLabels, traits });
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.excludeZero !== this.props.excludeZero ||
+      nextProps.showStandards !== this.props.showStandards ||
+      nextProps.showDescription !== this.props.showDescription) {
+      this.setState({
+        currentPosition: 0,
+        showLeft: false,
+        showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth
+      });
+    }
   }
 
   // Max Points
   updateMaxPointsFieldValue = ({ target }) => {
     const { scale, scaleIndex, onScaleChanged } = this.props || {};
-    const { maxPoints } = scale;
+    const { maxPoints, scorePointsLabels, traits } = scale;
 
     const numberValue = parseInt(target.value, 10);
+
+    this.setState({
+      currentPosition: 0,
+      showLeft: false,
+      showRight: this.secondaryBlockRef && this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth
+    });
 
     if (numberValue < maxPoints) {
       this.showDecreaseMaxPointsModal({ newMaxPoints: numberValue });
     } else {
-      onScaleChanged(scaleIndex, { maxPoints: numberValue })
+      for (let i = 0; i <= numberValue; i++) {
+        if (!scorePointsLabels[i]) {
+          scorePointsLabels.push('');
+        }
+
+        traits.forEach((trait, index) => {
+          if (!traits[index].scorePointsDescriptors[i]) {
+            traits[index].scorePointsDescriptors.push('');
+          }
+        });
+
+      }
+
+      onScaleChanged(scaleIndex, { maxPoints: numberValue, scorePointsLabels, traits })
     }
   }
 
@@ -266,20 +198,55 @@ export class Scale extends React.Component {
     onScaleChanged(scaleIndex, { traits });
   }
 
+  decreasePosition = () => {
+    const { currentPosition } = this.state;
+    const decreasedPosition = currentPosition - (currentPosition === AdjustedBlockWidth / 2 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
+
+    this.setState({
+      currentPosition: decreasedPosition,
+      showRight: decreasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+      showLeft: decreasedPosition > 0
+    });
+  }
+
+  increasePosition = () => {
+    const { currentPosition } = this.state;
+    const increasedPosition = currentPosition + (currentPosition === 0 ? AdjustedBlockWidth / 2 : AdjustedBlockWidth);
+
+    this.setState({
+      currentPosition: increasedPosition,
+      showRight: increasedPosition < this.secondaryBlockRef.scrollWidth - this.secondaryBlockRef.offsetWidth,
+      showLeft: increasedPosition > 0
+    });
+  }
+
   render() {
-    const { classes, scale, scaleIndex, showStandards, onScaleChanged } = this.props || {};
     const {
+      classes,
+      scale,
+      scaleIndex,
+      showStandards,
+      onScaleChanged,
       excludeZero,
+      showDescription,
+      showLevelTagInput,
+      showScorePointLabels,
+      enableDragAndDrop
+    } = this.props || {};
+    const {
       maxPoints,
       scorePointsLabels,
       traitLabel,
       traits
     } = scale || {};
+
     const {
-      showExcludeZeroDialog,
       showDecreaseMaxPointsDialog,
       showDeleteScaleDialog,
-      showDeleteTraitDialog
+      showDeleteTraitDialog,
+      currentPosition,
+      showRight,
+      showLeft
     } = this.state;
 
     const scorePointsValues = [];
@@ -289,51 +256,21 @@ export class Scale extends React.Component {
       scorePointsValues.push(pointValue);
     }
 
+
     return (
-      <div key={`scale-${scaleIndex}`} className={classes.scaleWrapper}>
-        <div className={classes.scaleTitleWrapper}>
-          <h3 style={{ color: 'grey' }}>
-            Scale #{scaleIndex}
-          </h3>
-          <Delete
-            classes={{ root: classes.addCircle }}
-            onClick={this.showDeleteScaleModal}
-          />
-        </div>
-
-        <FormControlLabel
-          label="Exclude Zero"
-          value="exclude_zero"
-          control={
-            <Checkbox
-              color="primary"
-              checked={excludeZero}
-              onChange={this.showToggleExcludeZeroModal}
-            />
-          }
-        />
-
-        <FormControl className={classes.margin}>
-          <InputLabel>
-            Max Points
-          </InputLabel>
-          <Select
-            value={maxPoints}
-            onChange={this.updateMaxPointsFieldValue}
-            input={<BootstrapInput/>}
-          >
-            {maxScoreOptions.map(maxScore => (
-              <MenuItem
-                key={`menu-item-${maxScore}`}
-                value={maxScore}
-              >
-                {maxScore}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
+      <div
+        key={`scale-${scaleIndex}`}
+        className={classes.scaleWrapper}
+        ref={ref => {
+          this.scaleWrapper = ref;
+        }}
+      >
         <TraitsHeader
+          setSecondaryBlockRef={ref => {
+            if (ref) {
+              this.secondaryBlockRef = ref;
+            }
+          }}
           key={'header-key'}
           traitLabel={traitLabel}
           scorePointsValues={scorePointsValues}
@@ -341,6 +278,14 @@ export class Scale extends React.Component {
           onScaleChange={(params) => onScaleChanged(scaleIndex, params)}
           onTraitLabelChange={label => onScaleChanged(scaleIndex, { traitLabel: label })}
           showStandards={showStandards}
+          showDescription={showDescription}
+          showLevelTagInput={showLevelTagInput}
+          showScorePointLabels={showScorePointLabels}
+          maxPoints={maxPoints}
+          updateMaxPointsFieldValue={this.updateMaxPointsFieldValue}
+          scaleIndex={scaleIndex}
+          showDeleteScaleModal={this.showDeleteScaleModal}
+          currentPosition={currentPosition}
         />
 
         {traits.map((trait, index) => (
@@ -354,32 +299,33 @@ export class Scale extends React.Component {
             onTraitChanged={trait => this.onTraitChanged(index, trait)}
             onTraitDropped={this.onTraitDropped}
             showStandards={showStandards}
+            showDescription={showDescription}
+            currentPosition={currentPosition}
+            enableDragAndDrop={enableDragAndDrop}
           />
         ))}
 
-        <div className={classes.buttonWrapper}>
-          <div>
-            <div>Add</div>
-            <div dangerouslySetInnerHTML={{ __html: traitLabel || ' Trait' }}/>
-          </div>
+        <Arrow
+          width={`${AdjustedBlockWidth / 2}px`}
+          show={showLeft}
+          onClick={this.decreasePosition}
+          left={`${PrimaryBlockWidth + DragHandleSpace}px`}
+          showLevelTagInput={showLevelTagInput}
+        >
+          <ArrowBackIosIcon/>
+        </Arrow>
+        <Arrow
+          width={`${AdjustedBlockWidth / 2}px`}
+          show={showRight}
+          onClick={this.increasePosition}
+          showLevelTagInput={showLevelTagInput}
+        >
+          <ArrowForwardIosIcon/>
+        </Arrow>
 
-          <AddCircle
-            classes={{ root: classes.addCircle }}
-            onClick={this.onTraitAdded}
-          />
-        </div>
-
-        <ExcludeZeroDialog
-          open={showExcludeZeroDialog && !excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
-
-        <IncludeZeroDialog
-          open={showExcludeZeroDialog && excludeZero}
-          changeExcludeZero={this.changeExcludeZero}
-          cancel={this.hideToggleExcludeZeroModal}
-        />
+        <MultiTraitButton onClick={this.onTraitAdded}>
+          <div dangerouslySetInnerHTML={{ __html: `Add ${traitLabel || ' Trait'}` }}/>
+        </MultiTraitButton>
 
         <DecreaseMaxPoints
           open={!!showDecreaseMaxPointsDialog}
@@ -407,7 +353,6 @@ export class Scale extends React.Component {
 Scale.propTypes = {
   classes: PropTypes.object,
   scale: PropTypes.shape({
-    excludeZero: PropTypes.bool,
     maxPoints: PropTypes.number,
     scorePointsLabels: PropTypes.arrayOf(PropTypes.string),
     traitLabel: PropTypes.string,
@@ -418,10 +363,15 @@ Scale.propTypes = {
       description: PropTypes.string,
     }))
   }),
+  excludeZero: PropTypes.bool,
   scaleIndex: PropTypes.number,
   onScaleChanged: PropTypes.func,
   onScaleRemoved: PropTypes.func,
-  showStandards: PropTypes.bool
+  showStandards: PropTypes.bool,
+  showLevelTagInput: PropTypes.bool,
+  showDescription: PropTypes.bool,
+  showScorePointLabels: PropTypes.bool,
+  enableDragAndDrop: PropTypes.bool,
 }
 
 export default withDragContext(withStyles(styles)(Scale));
