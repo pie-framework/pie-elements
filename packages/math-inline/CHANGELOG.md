@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.5.1...@pie-element/math-inline@5.5.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* **math-inline:** don't include rationale and teacher instructions in the item configuration for student gather ([4c97b26](https://github.com/pie-framework/pie-elements/commit/4c97b262a0f4179fd7ac809a5ed03bc48f7de839))
+* **math-inline:** fix editor width to contain button ([54e3f87](https://github.com/pie-framework/pie-elements/commit/54e3f8703064245f839ba5f64b12c715d721d569))
+
+
+
+
+
 ## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.5.0...@pie-element/math-inline@5.5.1) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/math-inline

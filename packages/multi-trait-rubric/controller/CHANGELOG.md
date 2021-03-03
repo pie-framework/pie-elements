@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-controller@1.1.0...@pie-element/multi-trait-rubric-controller@1.2.0) (2021-03-03)
+
+
+### Features
+
+* Updated design. Moved exclude zero at item level. Added ability to toggle from Settings Panel: level tag input, description, standards, visibility to student, half scoring, score labels, drag and drop. Added Actionable List. BREAKING CHANGE: moved exclude zero at item level (from scale level) ([c8bb906](https://github.com/pie-framework/pie-elements/commit/c8bb9064712aae057b74dceba5928a19054b27eb))
+
+
+
+
+
 # 1.1.0 (2021-02-02)
 
 

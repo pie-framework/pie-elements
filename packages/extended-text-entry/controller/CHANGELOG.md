@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.5...@pie-element/extended-text-entry-controller@4.1.6) (2021-03-03)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** add default dimensions to fix PD-694 ([bbebfd9](https://github.com/pie-framework/pie-elements/commit/bbebfd93d2a0e8d330629775732e184335661f34))
+
+
+
+
+
 ## [4.1.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.4...@pie-element/extended-text-entry-controller@4.1.5) (2020-05-25)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

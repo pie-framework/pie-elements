@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.12...@pie-element/categorize-controller@5.1.13) (2021-03-03)
+
+
+### Bug Fixes
+
+* **categorize:** add tests for correctness and feedback ([2ca5023](https://github.com/pie-framework/pie-elements/commit/2ca50230ba34782bfdc3c53c74c5d51bca19510f))
+* **categorize:** get correctness and feedback ([cd0f71b](https://github.com/pie-framework/pie-elements/commit/cd0f71be74861098640a10942e9a36b47b874fbb))
+
+
+
+
+
 ## [5.1.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.11...@pie-element/categorize-controller@5.1.12) (2021-02-02)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

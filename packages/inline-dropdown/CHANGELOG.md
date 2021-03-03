@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.5.14...@pie-element/inline-dropdown@3.6.0) (2021-03-03)
+
+
+### Features
+
+* made sure the other markup utils elements are not removing \times ([8eb6170](https://github.com/pie-framework/pie-elements/commit/8eb61703c5e4f5561c570c4c9d6fa3f182edc4cc))
+
+
+
+
+
 ## [3.5.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.5.13...@pie-element/inline-dropdown@3.5.14) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

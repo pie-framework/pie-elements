@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.1.19...@pie-element/graphing-configure@3.1.20) (2021-03-03)
+
+
+### Bug Fixes
+
+* **graphing:** add correctResponse first in answers array & show correctResponse if there is no better alternate response  PD-784 ([d7dfac7](https://github.com/pie-framework/pie-elements/commit/d7dfac705bd949104641289135a32c6a34bad481))
+* **graphing:** add correctResponse first in answers array & show correctResponse if there is no better alternate response PD-784 ([8af8ae4](https://github.com/pie-framework/pie-elements/commit/8af8ae463d72e0b5323406716079f8ad6942fe62))
+
+
+
+
+
 ## [3.1.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.1.18...@pie-element/graphing-configure@3.1.19) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

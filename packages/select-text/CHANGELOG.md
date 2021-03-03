@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.13...@pie-element/select-text@6.3.14) (2021-03-03)
+
+
+### Bug Fixes
+
+* syntax error in generate ([d73dab5](https://github.com/pie-framework/pie-elements/commit/d73dab5ead8d6cf7cf40084f8a47f5567ee68634))
+* **select-text:** add paragraph if text doesn't have any, to display legacy item from PD-749 ([1da680e](https://github.com/pie-framework/pie-elements/commit/1da680e86025056cd02f7baa97e44eca9aeee514))
+
+
+
+
+
 ## [6.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.12...@pie-element/select-text@6.3.13) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/select-text

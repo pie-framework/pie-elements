@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.1.18...@pie-element/select-text-configure@5.1.19) (2021-03-03)
+
+
+### Bug Fixes
+
+* **select-text:** add paragraph if text doesn't have any, to display legacy item from PD-749 ([1da680e](https://github.com/pie-framework/pie-elements/commit/1da680e86025056cd02f7baa97e44eca9aeee514))
+
+
+
+
+
 ## [5.1.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.1.17...@pie-element/select-text-configure@5.1.18) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

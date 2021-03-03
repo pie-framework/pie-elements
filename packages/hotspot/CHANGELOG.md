@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.13...@pie-element/hotspot@4.7.14) (2021-03-03)
+
+
+### Bug Fixes
+
+* hotspot and drawing response settings panel sections to fix PD-61 ([1bf43f0](https://github.com/pie-framework/pie-elements/commit/1bf43f07825ad98c9e0920aad09c411fe6d14b2c))
+
+
+
+
+
 ## [4.7.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.12...@pie-element/hotspot@4.7.13) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/hotspot

@@ -1,14 +1,14 @@
 {
   "name": "@pie-element/ebsr-configure",
   "private": true,
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
   "author": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-element/multiple-choice": "^5.6.1",
+    "@pie-element/multiple-choice": "^5.7.0",
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.8.52",
     "lodash": "^4.17.15",

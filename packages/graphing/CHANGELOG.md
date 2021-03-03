@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.4.14...@pie-element/graphing@3.4.15) (2021-03-03)
+
+
+### Bug Fixes
+
+* **graphing:** add correctResponse first in answers array & show correctResponse if there is no better alternate response  PD-784 ([d7dfac7](https://github.com/pie-framework/pie-elements/commit/d7dfac705bd949104641289135a32c6a34bad481))
+* **graphing:** add correctResponse first in answers array & show correctResponse if there is no better alternate response PD-784 ([8af8ae4](https://github.com/pie-framework/pie-elements/commit/8af8ae463d72e0b5323406716079f8ad6942fe62))
+* **graphing:** If a Graphing item has no correct answer, Evaluate mode should just show the student’s response without any markup (do not evaluate if correct answer is not defined) PD-790 ([7776073](https://github.com/pie-framework/pie-elements/commit/7776073cbec376028263485c73369404e96307ac))
+* **graphing:** initialize answersCorrected and correctResponse for evaluate mode and empty answers PD-790 ([a1d6468](https://github.com/pie-framework/pie-elements/commit/a1d6468c4a6d3b1e3e51027a6300ef77fdb036be))
+
+
+
+
+
 ## [3.4.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.4.13...@pie-element/graphing@3.4.14) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/graphing

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.3.0...@pie-element/pie-models@10.4.0) (2021-03-03)
+
+
+### Features
+
+* Updated design. Moved exclude zero at item level. Added ability to toggle from Settings Panel: level tag input, description, standards, visibility to student, half scoring, score labels, drag and drop. Added Actionable List. BREAKING CHANGE: moved exclude zero at item level (from scale level) ([c8bb906](https://github.com/pie-framework/pie-elements/commit/c8bb9064712aae057b74dceba5928a19054b27eb))
+
+
+
+
+
 # [10.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.2.2...@pie-element/pie-models@10.3.0) (2021-02-02)
 
 

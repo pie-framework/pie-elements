@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.14...@pie-element/categorize@6.5.15) (2021-03-03)
+
+
+### Bug Fixes
+
+* **categorize:** add tests for correctness and feedback ([2ca5023](https://github.com/pie-framework/pie-elements/commit/2ca50230ba34782bfdc3c53c74c5d51bca19510f))
+* **categorize:** fix height for droppable-placeholder ([ff6b2c9](https://github.com/pie-framework/pie-elements/commit/ff6b2c92fb5d6444188069b5c1a463596c8fdbb2))
+* **categorize:** get correctness and feedback ([cd0f71b](https://github.com/pie-framework/pie-elements/commit/cd0f71be74861098640a10942e9a36b47b874fbb))
+
+
+
+
+
 ## [6.5.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.13...@pie-element/categorize@6.5.14) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/categorize

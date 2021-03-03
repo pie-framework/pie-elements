@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.2.9...@pie-element/multiple-choice-controller@3.2.10) (2021-03-03)
+
+
+### Bug Fixes
+
+* **multiple-choice:** hide feedback for player if disabled ([2fb6a5d](https://github.com/pie-framework/pie-elements/commit/2fb6a5d707e9ed60502aaa87a5ff1aa3b77f8df0))
+* **multiple-choice:** test feedback ([7827e4d](https://github.com/pie-framework/pie-elements/commit/7827e4d3032e321b9ff5ac7e465026faa2fa2997))
+
+
+
+
+
 ## [3.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.2.8...@pie-element/multiple-choice-controller@3.2.9) (2020-10-16)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

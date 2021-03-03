@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.12...@pie-element/math-inline-controller@5.3.13) (2021-03-03)
+
+
+### Bug Fixes
+
+* **math-inline:** don't include rationale and teacher instructions in the item configuration for student gather ([4c97b26](https://github.com/pie-framework/pie-elements/commit/4c97b262a0f4179fd7ac809a5ed03bc48f7de839))
+
+
+
+
+
 ## [5.3.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.11...@pie-element/math-inline-controller@5.3.12) (2021-02-02)
 
 **Note:** Version bump only for package @pie-element/math-inline-controller

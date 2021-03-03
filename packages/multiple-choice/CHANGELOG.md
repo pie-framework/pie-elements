@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.6.1...@pie-element/multiple-choice@5.7.0) (2021-03-03)
+
+
+### Bug Fixes
+
+* **multiple-choice:** hide feedback for player if disabled ([2fb6a5d](https://github.com/pie-framework/pie-elements/commit/2fb6a5d707e9ed60502aaa87a5ff1aa3b77f8df0))
+* **multiple-choice:** test feedback ([7827e4d](https://github.com/pie-framework/pie-elements/commit/7827e4d3032e321b9ff5ac7e465026faa2fa2997))
+
+
+### Features
+
+* Updated design. Moved exclude zero at item level. Added ability to toggle from Settings Panel: level tag input, description, standards, visibility to student, half scoring, score labels, drag and drop. Added Actionable List. BREAKING CHANGE: moved exclude zero at item level (from scale level) ([c8bb906](https://github.com/pie-framework/pie-elements/commit/c8bb9064712aae057b74dceba5928a19054b27eb))
+
+
+
+
+
 ## [5.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.6.0...@pie-element/multiple-choice@5.6.1) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.19...@pie-element/categorize-configure@5.2.20) (2021-03-03)
+
+
+### Bug Fixes
+
+* **categorize:** fix height for droppable-placeholder ([ff6b2c9](https://github.com/pie-framework/pie-elements/commit/ff6b2c92fb5d6444188069b5c1a463596c8fdbb2))
+
+
+
+
+
 ## [5.2.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.18...@pie-element/categorize-configure@5.2.19) (2021-02-04)
 
 **Note:** Version bump only for package @pie-element/categorize-configure
