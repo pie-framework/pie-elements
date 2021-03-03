@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.7.0...@pie-element/multiple-choice@5.7.3) (2021-03-03)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
 # [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.6.1...@pie-element/multiple-choice@5.7.0) (2021-03-03)
 
 

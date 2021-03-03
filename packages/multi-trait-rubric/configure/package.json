@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/multi-trait-rubric-configure",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",

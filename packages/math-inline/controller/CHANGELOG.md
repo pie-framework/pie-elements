@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.13...@pie-element/math-inline-controller@5.3.16) (2021-03-03)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
 ## [5.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.3.12...@pie-element/math-inline-controller@5.3.13) (2021-03-03)
 
 

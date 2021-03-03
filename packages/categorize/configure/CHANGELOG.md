@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.20...@pie-element/categorize-configure@5.2.23) (2021-03-03)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
 ## [5.2.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.19...@pie-element/categorize-configure@5.2.20) (2021-03-03)
 
 
