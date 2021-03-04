@@ -4,12 +4,9 @@ Enzyme.configure({ adapter: new Adapter() });
 
 // mock HTML - jsdom doesnt support it.
 global.HTMLElement = class HTMLElement {
-  dispatchEvent() {}
-
-  constructor() {
-    this.querySelector = jest.fn().mockReturnValue(this);
-    this.addEventListener = jest.fn();
-  }
+  dispatchEvent = jest.fn();
+  addEventListener = jest.fn();
+  querySelector = jest.fn().mockReturnValue(this);
 };
 
 global.CustomEvent = class CustomEvent {};
@@ -17,5 +14,5 @@ global.CustomEvent = class CustomEvent {};
 global.customElements = {
   define: jest.fn(),
   whenDefined: jest.fn().mockResolvedValue(),
-  get: jest.fn()
+  get: jest.fn(),
 };

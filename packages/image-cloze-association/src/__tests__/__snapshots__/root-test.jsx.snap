@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root snapshots model renders 1`] = `
+<DndProvider
+  backend={[Function]}
+>
+  <ImageClozeAssociationComponent
+    classes={Object {}}
+    model={
+      Object {
+        "answers": Array [
+          Object {
+            "containerIndex": 0,
+            "id": 1,
+            "value": "1",
+          },
+          Object {
+            "containerIndex": 1,
+            "id": 2,
+            "value": "2",
+          },
+        ],
+        "canDrag": true,
+        "draggingElement": Object {},
+        "duplicateResponses": false,
+        "image": Object {},
+        "maxResponsePerZone": 5,
+        "onAnswerSelect": [Function],
+        "onDragAnswerBegin": [Function],
+        "onDragAnswerEnd": [Function],
+        "possibleResponses": Array [],
+        "responseContainers": Array [],
+      }
+    }
+    updateAnswer={[Function]}
+  />
+</DndProvider>
+`;

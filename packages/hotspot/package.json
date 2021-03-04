@@ -7,15 +7,22 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/hotspot": "^1.5.11"
-  },
-  "pie": {
-    "element": "@pie-ui/hotspot"
+    "@material-ui/core": "^3.9.3",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "konva": "^3.2.5",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-konva": "^16.9.0-0"
   },
   "author": "pie framework developers",
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
-  }
+  },
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

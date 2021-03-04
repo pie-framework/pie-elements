@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawingResponse CircleDrawable snapshot renders 1`] = `
+<Circle
+  onClick={[Function]}
+  onDragEnd={[Function]}
+  radius={100}
+  x={200}
+  y={200}
+/>
+`;
+
+exports[`DrawingResponse DrawableText snapshot renders 1`] = `
+<div>
+  <Text
+    bubbles={true}
+    draggable={true}
+    fontSize={16}
+    id="gcifqhhimf8k2d6g8hs"
+    key="gcifqhhimf8k2d6g8hs"
+    name="text_gcifqhhimf8k2d6g8hs"
+    onClick={[Function]}
+    onDblClick={[Function]}
+    onDragEnd={[MockFunction]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTransform={[Function]}
+    onTransformEnd={[MockFunction]}
+    text="Double click to edit this text. Press Enter to submit."
+    visible={true}
+    width={200}
+    x={60}
+    y={60}
+  />
+  <TransformerComponent
+    key="transformer_gcifqhhimf8k2d6g8hs"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    selectedShapeName="text_gcifqhhimf8k2d6g8hs"
+  />
+</div>
+`;
+
+exports[`DrawingResponse DrawableText snapshot renders textAreas 1`] = `
+<div>
+  <textarea
+    key="textarea_gcifqhhimf8k2d6g8hs"
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`DrawingResponse DrawableText snapshot when there is no value renders 1`] = `
+<div>
+  <Text
+    bubbles={true}
+    draggable={true}
+    fontSize={16}
+    id="gcifqhhimf8k2d6g8hs"
+    key="gcifqhhimf8k2d6g8hs"
+    name="text_gcifqhhimf8k2d6g8hs"
+    onClick={[Function]}
+    onDblClick={[Function]}
+    onDragEnd={[MockFunction]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTransform={[Function]}
+    onTransformEnd={[MockFunction]}
+    text="Double click to edit this text. Press Enter to submit."
+    visible={true}
+    width={200}
+    x={60}
+    y={60}
+  />
+  <TransformerComponent
+    key="transformer_gcifqhhimf8k2d6g8hs"
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    selectedShapeName="text_gcifqhhimf8k2d6g8hs"
+  />
+</div>
+`;
+
+exports[`DrawingResponse EraserDrawable snapshot renders 1`] = `
+<Line
+  bezier={true}
+  fill="white"
+  globalCompositeOperation="destination-out"
+  lineJoin="round"
+  lineWidth="5"
+  onDragEnd={[Function]}
+  points={
+    Array [
+      200,
+      200,
+      300,
+      300,
+    ]
+  }
+  stroke="white"
+  strokeStyle="#df4b26"
+  strokeWidth={5}
+  tension={0}
+  x={200}
+  y={200}
+/>
+`;
+
+exports[`DrawingResponse FreePathDrawable snapshot renders 1`] = `
+<Line
+  bezier={true}
+  onClick={[Function]}
+  onDragEnd={[Function]}
+  points={
+    Array [
+      200,
+      200,
+      300,
+      300,
+    ]
+  }
+  tension={0}
+  x={200}
+  y={200}
+/>
+`;
+
+exports[`DrawingResponse LineDrawable snapshot renders 1`] = `
+<Arrow
+  onClick={[Function]}
+  onDragEnd={[Function]}
+  pointerLength={0}
+  pointerWidth={0}
+  points={
+    Array [
+      200,
+      200,
+      300,
+      200,
+    ]
+  }
+  x={200}
+  y={200}
+/>
+`;
+
+exports[`DrawingResponse RectangleDrawable snapshot renders 1`] = `
+<Rect
+  height={100}
+  onClick={[Function]}
+  onDragEnd={[Function]}
+  strokeWidth={2}
+  width={100}
+  x={200}
+  y={200}
+/>
+`;

@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChoiceInput snapshots checkbox renders 1`] = `
+<div
+  className="corespring-checkbox"
+>
+  <div>
+    <WithStyles(FeedbackTick)
+      correctness="correct"
+    />
+    <div>
+      <WithStyles(Component)
+        control={
+          <WithStyles(Component)
+            checked={false}
+            correctness="correct"
+            onChange={[Function]}
+          />
+        }
+        disabled={false}
+        label="1. "
+      />
+      <PreviewPrompt
+        className="label"
+        onClick={[Function]}
+        prompt="label"
+        tagName="span"
+      />
+    </div>
+  </div>
+  <Feedback
+    correctness="correct"
+  />
+</div>
+`;
+
+exports[`ChoiceInput snapshots radio renders 1`] = `
+<div
+  className="corespring-radio-button"
+>
+  <div>
+    <WithStyles(FeedbackTick)
+      correctness="correct"
+    />
+    <div>
+      <WithStyles(Component)
+        control={
+          <WithStyles(Component)
+            checked={false}
+            correctness="correct"
+            onChange={[Function]}
+          />
+        }
+        disabled={false}
+        label="1. "
+      />
+      <PreviewPrompt
+        className="label"
+        onClick={[Function]}
+        prompt="label"
+        tagName="span"
+      />
+    </div>
+  </div>
+  <Feedback
+    correctness="correct"
+  />
+</div>
+`;
+
+exports[`ChoiceInput snapshots radio with incorrect renders 1`] = `
+<div
+  className="corespring-radio-button"
+>
+  <div>
+    <WithStyles(FeedbackTick)
+      correctness="incorrect"
+    />
+    <div>
+      <WithStyles(Component)
+        control={
+          <WithStyles(Component)
+            checked={false}
+            correctness="incorrect"
+            onChange={[Function]}
+          />
+        }
+        disabled={false}
+        label="1. "
+      />
+      <PreviewPrompt
+        className="label"
+        onClick={[Function]}
+        prompt="label"
+        tagName="span"
+      />
+    </div>
+  </div>
+  <Feedback
+    correctness="incorrect"
+  />
+</div>
+`;
+
+exports[`ChoiceInput snapshots rationale does not render 1`] = `
+<div
+  className="corespring-checkbox"
+>
+  <div>
+    <WithStyles(FeedbackTick)
+      correctness="correct"
+    />
+    <div>
+      <WithStyles(Component)
+        control={
+          <WithStyles(Component)
+            checked={false}
+            correctness="correct"
+            onChange={[Function]}
+          />
+        }
+        disabled={false}
+        label="1. "
+      />
+      <PreviewPrompt
+        className="label"
+        onClick={[Function]}
+        prompt="label"
+        tagName="span"
+      />
+    </div>
+  </div>
+  <Feedback
+    correctness="correct"
+  />
+</div>
+`;
+
+exports[`ChoiceInput snapshots rationale renders 1`] = `
+<div
+  className="corespring-checkbox"
+>
+  <div>
+    <WithStyles(FeedbackTick)
+      correctness="correct"
+    />
+    <div>
+      <WithStyles(Component)
+        control={
+          <WithStyles(Component)
+            checked={false}
+            correctness="correct"
+            onChange={[Function]}
+          />
+        }
+        disabled={false}
+        label="1. "
+      />
+      <PreviewPrompt
+        className="label"
+        onClick={[Function]}
+        prompt="label"
+        tagName="span"
+      />
+    </div>
+  </div>
+  <PreviewPrompt
+    className="rationale"
+    prompt="This is rationale"
+  />
+  <Feedback
+    correctness="correct"
+  />
+</div>
+`;

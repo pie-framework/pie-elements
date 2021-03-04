@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main render should render in evaluate mode 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "evaluate",
+      "prompt": "Prompt",
+      "promptEnabled": true,
+      "rationale": "Rationale",
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": "Teacher Instructions",
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;
+
+exports[`Main render should render in gather mode 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "gather",
+      "prompt": "Prompt",
+      "promptEnabled": true,
+      "rationale": "Rationale",
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": "Teacher Instructions",
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;
+
+exports[`Main render should render in view mode 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "view",
+      "prompt": "Prompt",
+      "promptEnabled": true,
+      "rationale": "Rationale",
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": "Teacher Instructions",
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;
+
+exports[`Main render should render without prompt 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "gather",
+      "prompt": null,
+      "promptEnabled": true,
+      "rationale": "Rationale",
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": "Teacher Instructions",
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;
+
+exports[`Main render should render without rationale 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "gather",
+      "prompt": "Prompt",
+      "promptEnabled": true,
+      "rationale": null,
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": "Teacher Instructions",
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;
+
+exports[`Main render should render without teacher instructions 1`] = `
+<Main
+  classes={
+    Object {
+      "mainContainer": "Main-mainContainer-1",
+    }
+  }
+  model={
+    Object {
+      "alternateResponses": Array [
+        Array [
+          "1",
+        ],
+        Array [
+          "0",
+        ],
+      ],
+      "choices": Array [
+        Object {
+          "id": "1",
+          "value": "<div>9</div>",
+        },
+        Object {
+          "id": "0",
+          "value": "<div>6</div>",
+        },
+      ],
+      "choicesPosition": "below",
+      "correctResponse": Object {
+        "0": "0",
+        "1": "1",
+      },
+      "disabled": false,
+      "duplicates": true,
+      "element": "drag-in-the-blank",
+      "feedback": Object {},
+      "id": "1",
+      "markup": "{{0}} + {{1}} = 15",
+      "mode": "gather",
+      "prompt": "Prompt",
+      "promptEnabled": true,
+      "rationale": "Rationale",
+      "rationaleEnabled": true,
+      "shuffle": true,
+      "studentInstructionsEnabled": true,
+      "teacherInstructions": null,
+      "teacherInstructionsEnabled": true,
+    }
+  }
+  onChange={[MockFunction]}
+  value={
+    Object {
+      "0": "1",
+      "1": "0",
+    }
+  }
+/>
+`;

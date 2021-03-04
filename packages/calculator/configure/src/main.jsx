@@ -2,17 +2,17 @@ import React from 'react';
 import { TwoChoice } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { CalculatorLayout } from '@pie-ui/calculator';
+import { CalculatorLayout } from '@pie-element/calculator';
 
 const MainTypes = {
   model: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export class Main extends React.Component {
   static propTypes = MainTypes;
 
-  onModeChange = mode => {
+  onModeChange = (mode) => {
     const { model } = this.props;
     const update = { ...model, mode };
     this.props.onChange(update);
@@ -48,7 +48,7 @@ export default class Stateful extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      model: props.model
+      model: props.model,
     };
   }
 
@@ -56,7 +56,7 @@ export default class Stateful extends React.Component {
     this.setState({ model: props.model });
   }
 
-  onChange = model => {
+  onChange = (model) => {
     this.setState({ model }, () => {
       this.props.onChange(this.state.model);
     });

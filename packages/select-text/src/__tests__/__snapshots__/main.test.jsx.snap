@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main snapshot renders 1`] = `
+<div>
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <TextSelect
+    onChange={[MockFunction]}
+    selectedTokens={
+      Array [
+        Object {
+          "end": 1,
+          "start": 0,
+          "text": "f",
+        },
+      ]
+    }
+    text="foo"
+    tokens={
+      Array [
+        Object {
+          "end": 1,
+          "start": 0,
+          "text": "f",
+        },
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`main snapshot renders rationale 1`] = `
+<div>
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <TextSelect
+    onChange={[MockFunction]}
+    selectedTokens={
+      Array [
+        Object {
+          "end": 1,
+          "start": 0,
+          "text": "f",
+        },
+      ]
+    }
+    text="foo"
+    tokens={
+      Array [
+        Object {
+          "end": 1,
+          "start": 0,
+          "text": "f",
+        },
+      ]
+    }
+  />
+</div>
+`;
+
+exports[`main snapshot renders showCorrect 1`] = `
+<div>
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={true}
+  />
+  <TextSelect
+    onChange={[MockFunction]}
+    selectedTokens={Array []}
+    text="foo"
+    tokens={
+      Array [
+        Object {
+          "end": 1,
+          "start": 0,
+          "text": "f",
+        },
+      ]
+    }
+  />
+</div>
+`;

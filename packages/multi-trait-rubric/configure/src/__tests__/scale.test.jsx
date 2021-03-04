@@ -21,14 +21,6 @@ const scale = () => ({
   ]
 });
 
-jest.mock('@pie-lib/render-ui', () => ({
-  color: {
-    secondaryBackground: jest.fn().mockReturnValue('grey'),
-    text: jest.fn().mockReturnValue('black'),
-    background: jest.fn().mockReturnValue('transparent'),
-  }
-}));
-
 describe('Scale', () => {
   let w;
 

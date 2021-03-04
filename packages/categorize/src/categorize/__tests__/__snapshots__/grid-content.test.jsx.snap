@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`grid-content snapshots className 1`] = `
+<div
+  className="foo"
+  style={
+    Object {
+      "gridTemplateColumns": "repeat(2, 1fr)",
+      "gridTemplateRows": "repeat(2, auto)",
+    }
+  }
+>
+  content
+</div>
+`;
+
+exports[`grid-content snapshots columns 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "gridTemplateColumns": "repeat(3, 1fr)",
+      "gridTemplateRows": "repeat(2, auto)",
+    }
+  }
+>
+  content
+</div>
+`;
+
+exports[`grid-content snapshots renders 1`] = `
+<div
+  className=""
+  style={
+    Object {
+      "gridTemplateColumns": "repeat(2, 1fr)",
+      "gridTemplateRows": "repeat(2, auto)",
+    }
+  }
+>
+  content
+</div>
+`;

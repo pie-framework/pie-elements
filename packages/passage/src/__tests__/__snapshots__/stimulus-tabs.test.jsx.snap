@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stimulus tabs snapshot should render component 1`] = `
+<StimulusTabs
+  classes={
+    Object {
+      "root": "StimulusTabs-root-1",
+      "stickyTabs": "StimulusTabs-stickyTabs-3",
+      "tab": "StimulusTabs-tab-2",
+    }
+  }
+  tabs={
+    Array [
+      Object {
+        "id": 1,
+        "text": "text for one",
+        "title": "one",
+      },
+      Object {
+        "id": 2,
+        "text": "text for two",
+        "title": "two",
+      },
+    ]
+  }
+/>
+`;

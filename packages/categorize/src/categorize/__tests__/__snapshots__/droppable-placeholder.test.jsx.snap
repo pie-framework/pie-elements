@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`droppable-placeholder snapshot className 1`] = `
+<div
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <PlaceHolder
+    className="foo"
+  >
+    content
+  </PlaceHolder>
+</div>
+`;
+
+exports[`droppable-placeholder snapshot disabled 1`] = `
+<div
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <PlaceHolder
+    disabled={true}
+  >
+    content
+  </PlaceHolder>
+</div>
+`;
+
+exports[`droppable-placeholder snapshot grid 1`] = `
+<div
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <PlaceHolder
+    grid={
+      Object {
+        "columns": 2,
+      }
+    }
+  >
+    content
+  </PlaceHolder>
+</div>
+`;
+
+exports[`droppable-placeholder snapshot renders 1`] = `
+<div
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <PlaceHolder>
+    content
+  </PlaceHolder>
+</div>
+`;

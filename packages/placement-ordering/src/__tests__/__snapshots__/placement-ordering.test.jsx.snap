@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlacementOrdering render shows toggle 1`] = `
+<div
+  className="placementOrdering"
+>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={true}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <OrderingTiler
+    includeTargets={true}
+    instanceId="3"
+    onDropChoice={[Function]}
+    onRemoveChoice={[Function]}
+    ordering={Object {}}
+    tiler={[Function]}
+  />
+  <br />
+  <WithStyles(Feedback) />
+</div>
+`;
+
+exports[`PlacementOrdering render snapshot 1`] = `
+<div
+  className="placementOrdering"
+>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <OrderingTiler
+    includeTargets={true}
+    instanceId="1"
+    onDropChoice={[Function]}
+    onRemoveChoice={[Function]}
+    ordering={Object {}}
+    tiler={[Function]}
+  />
+  <br />
+  <WithStyles(Feedback) />
+</div>
+`;
+
+exports[`PlacementOrdering render snapshot with rationale 1`] = `
+<div
+  className="placementOrdering"
+>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <OrderingTiler
+    includeTargets={true}
+    instanceId="5"
+    onDropChoice={[Function]}
+    onRemoveChoice={[Function]}
+    ordering={Object {}}
+    tiler={[Function]}
+  />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "This is rationale.",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(Feedback) />
+</div>
+`;

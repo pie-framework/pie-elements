@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshots not visible to students => renders empty div 1`] = `
+<Main
+  model={
+    Object {
+      "halfScoring": false,
+      "scales": Array [
+        Object {
+          "excludeZero": false,
+          "maxPoints": 1,
+          "scorePointsLabels": Array [
+            "A",
+            "B",
+          ],
+          "traitLabel": "Trait",
+          "traits": Array [],
+        },
+      ],
+      "visible": false,
+    }
+  }
+>
+  <div />
+</Main>
+`;
+
+exports[`Main snapshots visible to students => renders empty div if no scales 1`] = `
+<Main
+  model={
+    Object {
+      "halfScoring": false,
+      "scales": Array [],
+      "visible": false,
+    }
+  }
+>
+  <div />
+</Main>
+`;
+
+exports[`Main snapshots visible to students => renders table with half-scoring 1`] = `
+<Main
+  model={
+    Object {
+      "halfScoring": true,
+      "scales": Array [
+        Object {
+          "excludeZero": false,
+          "maxPoints": 1,
+          "scorePointsLabels": Array [
+            "A",
+            "B",
+          ],
+          "traitLabel": "Trait",
+          "traits": Array [],
+        },
+      ],
+      "visible": true,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "fontFamily": "Cerebri Sans",
+      }
+    }
+  >
+    <p>
+      * Half-point or in-between scores are permitted under this rubric.
+    </p>
+    <WithStyles(Scale)
+      key="scale_0"
+      scale={
+        Object {
+          "excludeZero": false,
+          "maxPoints": 1,
+          "scorePointsLabels": Array [
+            "A",
+            "B",
+          ],
+          "traitLabel": "Trait",
+          "traits": Array [],
+        }
+      }
+      scaleIndex={0}
+    >
+      <Scale
+        classes={
+          Object {
+            "pointLabel": "Scale-pointLabel-3",
+            "scorePointHeader": "Scale-scorePointHeader-2",
+            "scorePointValue": "Scale-scorePointValue-4",
+            "table": "Scale-table-1",
+          }
+        }
+        scale={
+          Object {
+            "excludeZero": false,
+            "maxPoints": 1,
+            "scorePointsLabels": Array [
+              "A",
+              "B",
+            ],
+            "traitLabel": "Trait",
+            "traits": Array [],
+          }
+        }
+        scaleIndex={0}
+      >
+        <table
+          className="Scale-table-1"
+          key="scale-0"
+        >
+          <thead>
+            <tr>
+              <th>
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Trait",
+                    }
+                  }
+                />
+              </th>
+              <th
+                key="table-header-0"
+              >
+                <table
+                  className="Scale-scorePointHeader-2"
+                >
+                  <thead>
+                    <tr>
+                      <td
+                        className="Scale-scorePointValue-4"
+                      >
+                        1 point
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </th>
+              <th
+                key="table-header-1"
+              >
+                <table
+                  className="Scale-scorePointHeader-2"
+                >
+                  <thead>
+                    <tr>
+                      <td
+                        className="Scale-scorePointValue-4"
+                      >
+                        0 points
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </Scale>
+    </WithStyles(Scale)>
+  </div>
+</Main>
+`;
+
+exports[`Main snapshots visible to students => renders table without half-scoring 1`] = `
+<Main
+  model={
+    Object {
+      "halfScoring": false,
+      "scales": Array [
+        Object {
+          "excludeZero": false,
+          "maxPoints": 1,
+          "scorePointsLabels": Array [
+            "A",
+            "B",
+          ],
+          "traitLabel": "Trait",
+          "traits": Array [],
+        },
+      ],
+      "visible": true,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "fontFamily": "Cerebri Sans",
+      }
+    }
+  >
+    <WithStyles(Scale)
+      key="scale_0"
+      scale={
+        Object {
+          "excludeZero": false,
+          "maxPoints": 1,
+          "scorePointsLabels": Array [
+            "A",
+            "B",
+          ],
+          "traitLabel": "Trait",
+          "traits": Array [],
+        }
+      }
+      scaleIndex={0}
+    >
+      <Scale
+        classes={
+          Object {
+            "pointLabel": "Scale-pointLabel-3",
+            "scorePointHeader": "Scale-scorePointHeader-2",
+            "scorePointValue": "Scale-scorePointValue-4",
+            "table": "Scale-table-1",
+          }
+        }
+        scale={
+          Object {
+            "excludeZero": false,
+            "maxPoints": 1,
+            "scorePointsLabels": Array [
+              "A",
+              "B",
+            ],
+            "traitLabel": "Trait",
+            "traits": Array [],
+          }
+        }
+        scaleIndex={0}
+      >
+        <table
+          className="Scale-table-1"
+          key="scale-0"
+        >
+          <thead>
+            <tr>
+              <th>
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Trait",
+                    }
+                  }
+                />
+              </th>
+              <th
+                key="table-header-0"
+              >
+                <table
+                  className="Scale-scorePointHeader-2"
+                >
+                  <thead>
+                    <tr>
+                      <td
+                        className="Scale-scorePointValue-4"
+                      >
+                        1 point
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </th>
+              <th
+                key="table-header-1"
+              >
+                <table
+                  className="Scale-scorePointHeader-2"
+                >
+                  <thead>
+                    <tr>
+                      <td
+                        className="Scale-scorePointValue-4"
+                      >
+                        0 points
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </Scale>
+    </WithStyles(Scale)>
+  </div>
+</Main>
+`;

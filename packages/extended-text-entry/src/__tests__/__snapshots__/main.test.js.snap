@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Main Component should match snapshot 1`] = `
+<div>
+  <EditableHtml
+    highlightShape={true}
+    markup="hi"
+    maxHeight="40vh"
+    onChange={[Function]}
+    pluginProps={
+      Object {
+        "audio": Object {
+          "disabled": true,
+        },
+        "math": Object {
+          "controlledKeypadMode": false,
+          "disabled": true,
+          "keypadMode": undefined,
+        },
+        "video": Object {
+          "disabled": true,
+        },
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Render Main Component should match snapshot with teacher instructions 1`] = `
+<div>
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Teacher Instructions",
+          "visible": "Hide Teacher Instructions",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Teacher Instructions",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+    <br />
+  </div>
+  <EditableHtml
+    highlightShape={true}
+    markup="hi"
+    maxHeight="40vh"
+    onChange={[Function]}
+    pluginProps={
+      Object {
+        "audio": Object {
+          "disabled": true,
+        },
+        "math": Object {
+          "controlledKeypadMode": false,
+          "disabled": true,
+          "keypadMode": undefined,
+        },
+        "video": Object {
+          "disabled": true,
+        },
+      }
+    }
+  />
+</div>
+`;

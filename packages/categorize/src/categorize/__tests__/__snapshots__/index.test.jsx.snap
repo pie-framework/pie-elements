@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`categorize snapshots incorrect 1`] = `
+<div>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`categorize snapshots renders 1`] = `
+<div>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`categorize snapshots renders with feedback 1`] = `
+<div>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+            "correctness": "correct",
+            "feedback": Object {
+              "correct": Object {
+                "default": "Correct",
+                "type": "default",
+              },
+              "incorrect": Object {
+                "default": "Incorrect",
+                "type": "default",
+              },
+              "partial": Object {
+                "default": "Nearly",
+                "type": "default",
+              },
+            },
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+          "correctness": "correct",
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "default",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "default",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "default",
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <WithStyles(Feedback)
+    correctness="correct"
+    feedback={
+      Object {
+        "correct": Object {
+          "default": "Correct",
+          "type": "default",
+        },
+        "incorrect": Object {
+          "default": "Incorrect",
+          "type": "default",
+        },
+        "partial": Object {
+          "default": "Nearly",
+          "type": "default",
+        },
+      }
+    }
+  />
+</div>
+`;
