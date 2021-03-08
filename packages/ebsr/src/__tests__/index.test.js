@@ -1,10 +1,9 @@
 import React from 'react';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
-import MultipleChoice from '@pie-elements/multiple-choice';
 import { isSessionComplete } from '..';
 
 jest.mock('@pie-lib/math-rendering', () => ({ renderMath: jest.fn() }));
-jest.mock('@pie-elements/multiple-choice', () => jest.fn());
+jest.mock('@pie-element/multiple-choice', () => jest.fn());
 
 const PART_A = 'partA';
 const PART_B = 'partB';
@@ -17,21 +16,21 @@ const defaultModel = {
     choices: [
       { value: 'a', label: 'label a' },
       { value: 'b', label: 'label b' },
-      { value: 'c', label: 'label c', correct: true, feedback: 'great' }
+      { value: 'c', label: 'label c', correct: true, feedback: 'great' },
     ],
     choicePrefix: 'numbers',
-    prompt: `prompt ${PART_A}`
+    prompt: `prompt ${PART_A}`,
   },
   partB: {
     choiceMode: 'radio',
     choices: [
       { value: 'd', label: 'label d', correct: true, feedback: 'great' },
       { value: 'e', label: 'label e' },
-      { value: 'f', label: 'label f' }
+      { value: 'f', label: 'label f' },
     ],
     choicePrefix: 'numbers',
-    prompt: `prompt ${PART_B}`
-  }
+    prompt: `prompt ${PART_B}`,
+  },
 };
 
 const defaultSession = { id: 1 };
@@ -50,9 +49,9 @@ describe('ebsr', () => {
     el.connectedCallback();
     ebsr = {
       partA: new HTMLElement(),
-      partB: new HTMLElement()
+      partB: new HTMLElement(),
     };
-    el.querySelector = jest.fn(s => {
+    el.querySelector = jest.fn((s) => {
       if (s === '#part-a') {
         return ebsr.partA;
       } else {
@@ -98,7 +97,7 @@ describe('ebsr', () => {
       const part = {};
       el.model = {};
       el.session = {
-        value: {}
+        value: {},
       };
       el.setPartSession(part, 'partA');
       expect(part.session).toEqual({ id: 'partA' });
