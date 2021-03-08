@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 import React from 'react';
 
 import {Main} from '../main';
-import {choiceUtils as utils} from '@pie-lib/config-ui';
 import {excludeZeroTypes} from '../modals';
 
 jest.mock('@pie-lib/config-ui', () => ({
@@ -13,15 +12,6 @@ jest.mock('@pie-lib/config-ui', () => ({
     Panel: props => <div {...props} />,
     toggle: jest.fn(),
     radio: jest.fn()
-  }
-}));
-
-jest.mock('@pie-lib/render-ui', () => ({
-  color: {
-    text: jest.fn().mockReturnValue('black'),
-    secondaryBackground: jest.fn().mockReturnValue('grey'),
-    background: jest.fn().mockReturnValue('transparent'),
-    primary: jest.fn().mockReturnValue('blue'),
   }
 }));
 

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`layout correct 1`] = `
+<div
+  className="correct"
+>
+  <WithStyles(Card)
+    className=""
+  >
+    <WithStyles(CardContent)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Foo",
+        }
+      }
+    />
+  </WithStyles(Card)>
+</div>
+`;
+
+exports[`layout disabled 1`] = `
+<div
+  className=""
+>
+  <WithStyles(Card)
+    className=""
+  >
+    <WithStyles(CardContent)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Foo",
+        }
+      }
+    />
+  </WithStyles(Card)>
+</div>
+`;
+
+exports[`layout isDragging 1`] = `
+<div
+  className=""
+>
+  <WithStyles(Card)
+    className=""
+  >
+    <WithStyles(CardContent)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Foo",
+        }
+      }
+    />
+  </WithStyles(Card)>
+</div>
+`;
+
+exports[`layout renders 1`] = `
+<div
+  className=""
+>
+  <WithStyles(Card)
+    className=""
+  >
+    <WithStyles(CardContent)
+      classes={
+        Object {
+          "root": undefined,
+        }
+      }
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Foo",
+        }
+      }
+    />
+  </WithStyles(Card)>
+</div>
+`;

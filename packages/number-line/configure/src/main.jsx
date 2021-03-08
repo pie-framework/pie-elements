@@ -5,7 +5,7 @@ import {
   NumberLineComponent,
   dataConverter,
   tickUtils
-} from '@pie-ui/number-line';
+} from '@pie-element/number-line';
 import Size from './size';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';

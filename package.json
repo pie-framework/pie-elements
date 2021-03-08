@@ -41,6 +41,7 @@
     "lerna": "^3.13.1",
     "minimist": "^1.2.0",
     "pacote": "^9.5.0",
+    "prettier": "^2.2.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "rimraf": "^2.6.2",

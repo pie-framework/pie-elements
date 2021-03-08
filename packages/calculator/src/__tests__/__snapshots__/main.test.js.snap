@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render a calculator component 1`] = `
+<Main
+  classes={
+    Object {
+      "active": "Main-active-2",
+      "icon": "Main-icon-1",
+    }
+  }
+  model={
+    Object {
+      "mode": "basic",
+    }
+  }
+/>
+`;

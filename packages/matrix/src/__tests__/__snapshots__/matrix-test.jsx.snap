@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matrix snapshot renders 1`] = `
+<styled.div>
+  <Component
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "instructions",
+        }
+      }
+    />
+  </Component>
+  <br />
+  <br />
+  <styled.div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "magic prompt",
+      }
+    }
+  />
+  <styled.div
+    gridTemplateColumns="min-content"
+  >
+    <styled.div
+      key="0"
+    />
+  </styled.div>
+</styled.div>
+`;

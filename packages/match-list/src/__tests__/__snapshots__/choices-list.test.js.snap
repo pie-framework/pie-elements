@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChoicesList render renders correctly 1`] = `
+<div>
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={1}
+    key="1"
+    session={Object {}}
+    title="Answer 1"
+    type="choice"
+  />
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={2}
+    key="2"
+    session={Object {}}
+    title="Answer 2"
+    type="choice"
+  />
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={3}
+    key="3"
+    session={Object {}}
+    title="Answer 3"
+    type="choice"
+  />
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={4}
+    key="4"
+    session={Object {}}
+    title="Answer 4"
+    type="choice"
+  />
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={5}
+    key="5"
+    session={Object {}}
+    title="Answer 5"
+    type="choice"
+  />
+  <DragSource(WithStyles(Answer))
+    draggable={true}
+    id={6}
+    key="6"
+    session={Object {}}
+    title="Answer 6"
+    type="choice"
+  />
+</div>
+`;

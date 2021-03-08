@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image snapshots image renders 1`] = `
+<Image
+  height={20}
+  image={null}
+  width={20}
+  x={5}
+  y={5}
+/>
+`;
+
+exports[`Image snapshots x y position renders 1`] = `
+<Image
+  height={20}
+  image={null}
+  width={20}
+  x={10}
+  y={10}
+/>
+`;

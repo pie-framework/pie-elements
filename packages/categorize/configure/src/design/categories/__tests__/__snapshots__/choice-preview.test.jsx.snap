@@ -7,6 +7,7 @@ exports[`ChoicePreview snapshot renders 1`] = `
   <Component>
     <HtmlAndMath
       html="content"
+      tag="div"
     />
     <WithStyles(IconButton)
       aria-label="delete"

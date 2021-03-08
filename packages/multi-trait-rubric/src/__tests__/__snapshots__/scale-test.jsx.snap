@@ -1,0 +1,644 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scale snapshots renders with 0 1`] = `
+<WithStyles(Scale)
+  classes={Object {}}
+  scale={
+    Object {
+      "excludeZero": false,
+      "maxPoints": 1,
+      "scorePointsLabels": Array [
+        "A",
+        "B",
+      ],
+      "traitLabel": "Trait",
+      "traits": Array [
+        Object {
+          "description": "Trait 1 Description",
+          "name": "Trait 1",
+          "scorePointsDescriptors": Array [
+            "Descriptor 0",
+            "Descriptor 1",
+          ],
+          "standards": Array [],
+        },
+      ],
+    }
+  }
+  scaleIndex={1}
+>
+  <Scale
+    classes={
+      Object {
+        "pointLabel": "Scale-pointLabel-3",
+        "scorePointHeader": "Scale-scorePointHeader-2",
+        "scorePointValue": "Scale-scorePointValue-4",
+        "table": "Scale-table-1",
+      }
+    }
+    scale={
+      Object {
+        "excludeZero": false,
+        "maxPoints": 1,
+        "scorePointsLabels": Array [
+          "A",
+          "B",
+        ],
+        "traitLabel": "Trait",
+        "traits": Array [
+          Object {
+            "description": "Trait 1 Description",
+            "name": "Trait 1",
+            "scorePointsDescriptors": Array [
+              "Descriptor 0",
+              "Descriptor 1",
+            ],
+            "standards": Array [],
+          },
+        ],
+      }
+    }
+    scaleIndex={1}
+  >
+    <table
+      className="Scale-table-1"
+      key="scale-1"
+    >
+      <thead>
+        <tr>
+          <th>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Trait",
+                }
+              }
+            />
+          </th>
+          <th
+            key="table-header-0"
+          >
+            <table
+              className="Scale-scorePointHeader-2"
+            >
+              <thead>
+                <tr>
+                  <td
+                    className="Scale-scorePointValue-4"
+                  >
+                    1 point
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </th>
+          <th
+            key="table-header-1"
+          >
+            <table
+              className="Scale-scorePointHeader-2"
+            >
+              <thead>
+                <tr>
+                  <td
+                    className="Scale-scorePointValue-4"
+                  >
+                    0 points
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <WithStyles(Trait)
+          excludeZero={false}
+          key="trait_1_0"
+          scaleIndex={1}
+          scorePointsValues={
+            Array [
+              1,
+              0,
+            ]
+          }
+          showDescription={false}
+          showStandards={false}
+          trait={
+            Object {
+              "description": "Trait 1 Description",
+              "name": "Trait 1",
+              "scorePointsDescriptors": Array [
+                "Descriptor 0",
+                "Descriptor 1",
+              ],
+              "standards": Array [],
+            }
+          }
+          traitIndex={0}
+        >
+          <Trait
+            classes={
+              Object {
+                "noDescription": "Trait-noDescription-6",
+                "trait": "Trait-trait-5",
+                "traitName": "Trait-traitName-7",
+              }
+            }
+            excludeZero={false}
+            scaleIndex={1}
+            scorePointsValues={
+              Array [
+                1,
+                0,
+              ]
+            }
+            showDescription={false}
+            showStandards={false}
+            trait={
+              Object {
+                "description": "Trait 1 Description",
+                "name": "Trait 1",
+                "scorePointsDescriptors": Array [
+                  "Descriptor 0",
+                  "Descriptor 1",
+                ],
+                "standards": Array [],
+              }
+            }
+            traitIndex={0}
+          >
+            <tr
+              key="scale-1-trait-0"
+            >
+              <td
+                className="Trait-trait-5 Trait-traitName-7"
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Trait 1",
+                    }
+                  }
+                />
+              </td>
+              <td
+                key="table-cell-0"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Descriptor 1",
+                    }
+                  }
+                />
+              </td>
+              <td
+                key="table-cell-1"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Descriptor 0",
+                    }
+                  }
+                />
+              </td>
+            </tr>
+          </Trait>
+        </WithStyles(Trait)>
+      </tbody>
+    </table>
+  </Scale>
+</WithStyles(Scale)>
+`;
+
+exports[`Scale snapshots renders with no score points 1`] = `
+<WithStyles(Scale)
+  classes={Object {}}
+  scale={
+    Object {
+      "excludeZero": true,
+      "maxPoints": 0,
+      "scorePointsLabels": Array [
+        "A",
+        "B",
+      ],
+      "traitLabel": "Trait",
+      "traits": Array [
+        Object {
+          "description": "Trait 1 Description",
+          "name": "Trait 1",
+          "scorePointsDescriptors": Array [
+            "Descriptor 0",
+            "Descriptor 1",
+          ],
+          "standards": Array [],
+        },
+      ],
+    }
+  }
+  scaleIndex={1}
+>
+  <Scale
+    classes={
+      Object {
+        "pointLabel": "Scale-pointLabel-3",
+        "scorePointHeader": "Scale-scorePointHeader-2",
+        "scorePointValue": "Scale-scorePointValue-4",
+        "table": "Scale-table-1",
+      }
+    }
+    scale={
+      Object {
+        "excludeZero": true,
+        "maxPoints": 0,
+        "scorePointsLabels": Array [
+          "A",
+          "B",
+        ],
+        "traitLabel": "Trait",
+        "traits": Array [
+          Object {
+            "description": "Trait 1 Description",
+            "name": "Trait 1",
+            "scorePointsDescriptors": Array [
+              "Descriptor 0",
+              "Descriptor 1",
+            ],
+            "standards": Array [],
+          },
+        ],
+      }
+    }
+    scaleIndex={1}
+  >
+    <table
+      className="Scale-table-1"
+      key="scale-1"
+    >
+      <thead>
+        <tr>
+          <th>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Trait",
+                }
+              }
+            />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <WithStyles(Trait)
+          excludeZero={true}
+          key="trait_1_0"
+          scaleIndex={1}
+          scorePointsValues={Array []}
+          showDescription={false}
+          showStandards={false}
+          trait={
+            Object {
+              "description": "Trait 1 Description",
+              "name": "Trait 1",
+              "scorePointsDescriptors": Array [
+                "Descriptor 0",
+                "Descriptor 1",
+              ],
+              "standards": Array [],
+            }
+          }
+          traitIndex={0}
+        >
+          <Trait
+            classes={
+              Object {
+                "noDescription": "Trait-noDescription-6",
+                "trait": "Trait-trait-5",
+                "traitName": "Trait-traitName-7",
+              }
+            }
+            excludeZero={true}
+            scaleIndex={1}
+            scorePointsValues={Array []}
+            showDescription={false}
+            showStandards={false}
+            trait={
+              Object {
+                "description": "Trait 1 Description",
+                "name": "Trait 1",
+                "scorePointsDescriptors": Array [
+                  "Descriptor 0",
+                  "Descriptor 1",
+                ],
+                "standards": Array [],
+              }
+            }
+            traitIndex={0}
+          >
+            <tr
+              key="scale-1-trait-0"
+            >
+              <td
+                className="Trait-trait-5 Trait-traitName-7"
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Trait 1",
+                    }
+                  }
+                />
+              </td>
+            </tr>
+          </Trait>
+        </WithStyles(Trait)>
+      </tbody>
+    </table>
+  </Scale>
+</WithStyles(Scale)>
+`;
+
+exports[`Scale snapshots renders with no traits 1`] = `
+<WithStyles(Scale)
+  classes={Object {}}
+  scale={
+    Object {
+      "excludeZero": false,
+      "maxPoints": 1,
+      "scorePointsLabels": Array [
+        "A",
+        "B",
+      ],
+      "traitLabel": "Trait",
+      "traits": Array [],
+    }
+  }
+  scaleIndex={1}
+>
+  <Scale
+    classes={
+      Object {
+        "pointLabel": "Scale-pointLabel-3",
+        "scorePointHeader": "Scale-scorePointHeader-2",
+        "scorePointValue": "Scale-scorePointValue-4",
+        "table": "Scale-table-1",
+      }
+    }
+    scale={
+      Object {
+        "excludeZero": false,
+        "maxPoints": 1,
+        "scorePointsLabels": Array [
+          "A",
+          "B",
+        ],
+        "traitLabel": "Trait",
+        "traits": Array [],
+      }
+    }
+    scaleIndex={1}
+  >
+    <table
+      className="Scale-table-1"
+      key="scale-1"
+    >
+      <thead>
+        <tr>
+          <th>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Trait",
+                }
+              }
+            />
+          </th>
+          <th
+            key="table-header-0"
+          >
+            <table
+              className="Scale-scorePointHeader-2"
+            >
+              <thead>
+                <tr>
+                  <td
+                    className="Scale-scorePointValue-4"
+                  >
+                    1 point
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </th>
+          <th
+            key="table-header-1"
+          >
+            <table
+              className="Scale-scorePointHeader-2"
+            >
+              <thead>
+                <tr>
+                  <td
+                    className="Scale-scorePointValue-4"
+                  >
+                    0 points
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </Scale>
+</WithStyles(Scale)>
+`;
+
+exports[`Scale snapshots renders without 0 1`] = `
+<WithStyles(Scale)
+  classes={Object {}}
+  scale={
+    Object {
+      "excludeZero": true,
+      "maxPoints": 1,
+      "scorePointsLabels": Array [
+        "A",
+        "B",
+      ],
+      "traitLabel": "Trait",
+      "traits": Array [
+        Object {
+          "description": "Trait 1 Description",
+          "name": "Trait 1",
+          "scorePointsDescriptors": Array [
+            "Descriptor 0",
+            "Descriptor 1",
+          ],
+          "standards": Array [],
+        },
+      ],
+    }
+  }
+  scaleIndex={1}
+>
+  <Scale
+    classes={
+      Object {
+        "pointLabel": "Scale-pointLabel-3",
+        "scorePointHeader": "Scale-scorePointHeader-2",
+        "scorePointValue": "Scale-scorePointValue-4",
+        "table": "Scale-table-1",
+      }
+    }
+    scale={
+      Object {
+        "excludeZero": true,
+        "maxPoints": 1,
+        "scorePointsLabels": Array [
+          "A",
+          "B",
+        ],
+        "traitLabel": "Trait",
+        "traits": Array [
+          Object {
+            "description": "Trait 1 Description",
+            "name": "Trait 1",
+            "scorePointsDescriptors": Array [
+              "Descriptor 0",
+              "Descriptor 1",
+            ],
+            "standards": Array [],
+          },
+        ],
+      }
+    }
+    scaleIndex={1}
+  >
+    <table
+      className="Scale-table-1"
+      key="scale-1"
+    >
+      <thead>
+        <tr>
+          <th>
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Trait",
+                }
+              }
+            />
+          </th>
+          <th
+            key="table-header-0"
+          >
+            <table
+              className="Scale-scorePointHeader-2"
+            >
+              <thead>
+                <tr>
+                  <td
+                    className="Scale-scorePointValue-4"
+                  >
+                    1 point
+                  </td>
+                </tr>
+              </thead>
+            </table>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <WithStyles(Trait)
+          excludeZero={true}
+          key="trait_1_0"
+          scaleIndex={1}
+          scorePointsValues={
+            Array [
+              1,
+            ]
+          }
+          showDescription={false}
+          showStandards={false}
+          trait={
+            Object {
+              "description": "Trait 1 Description",
+              "name": "Trait 1",
+              "scorePointsDescriptors": Array [
+                "Descriptor 0",
+                "Descriptor 1",
+              ],
+              "standards": Array [],
+            }
+          }
+          traitIndex={0}
+        >
+          <Trait
+            classes={
+              Object {
+                "noDescription": "Trait-noDescription-6",
+                "trait": "Trait-trait-5",
+                "traitName": "Trait-traitName-7",
+              }
+            }
+            excludeZero={true}
+            scaleIndex={1}
+            scorePointsValues={
+              Array [
+                1,
+              ]
+            }
+            showDescription={false}
+            showStandards={false}
+            trait={
+              Object {
+                "description": "Trait 1 Description",
+                "name": "Trait 1",
+                "scorePointsDescriptors": Array [
+                  "Descriptor 0",
+                  "Descriptor 1",
+                ],
+                "standards": Array [],
+              }
+            }
+            traitIndex={0}
+          >
+            <tr
+              key="scale-1-trait-0"
+            >
+              <td
+                className="Trait-trait-5 Trait-traitName-7"
+              >
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Trait 1",
+                    }
+                  }
+                />
+              </td>
+              <td
+                key="table-cell-0"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Descriptor 0",
+                    }
+                  }
+                />
+              </td>
+            </tr>
+          </Trait>
+        </WithStyles(Trait)>
+      </tbody>
+    </table>
+  </Scale>
+</WithStyles(Scale)>
+`;

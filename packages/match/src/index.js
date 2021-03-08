@@ -1,9 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Component } from '@pie-ui/match';
-import debug from 'debug';
+import Main from './main';
+import { SessionChangedEvent } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/math-rendering';
 
-const log = debug('pie-elements:match');
+import get from 'lodash/get';
+
+export { Main as Component };
+
+export const isComplete = (session, model) => {
+  const rows = get(model, 'config.rows');
+  const ids = rows.map(r => r.id);
+  return ids.reduce((acc, id) => {
+    if (!acc) {
+      return false;
+    }
+    const arr = session.answers && session.answers[id];
+    const hasChoice = Array.isArray(arr) && arr.includes(true);
+    return hasChoice && acc;
+  }, true);
+};
 
 export default class Match extends HTMLElement {
   constructor() {
@@ -21,8 +37,11 @@ export default class Match extends HTMLElement {
   }
 
   sessionChanged(s) {
-    this._session = s;
-    log('session: ', this._session);
+    this._session.answers = s.answers;
+    const complete = isComplete(this._session, this._model);
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase(), complete)
+    );
   }
 
   connectedCallback() {
@@ -34,14 +53,14 @@ export default class Match extends HTMLElement {
       return;
     }
 
-    const props = {
+    const el = React.createElement(Main, {
       model: this._model,
       session: this._session,
       onSessionChange: this.sessionChanged.bind(this)
-    };
+    });
 
-    const el = React.createElement(Component, props);
-
-    ReactDOM.render(el, this);
+    ReactDOM.render(el, this, () => {
+      renderMath(this);
+    });
   }
 }

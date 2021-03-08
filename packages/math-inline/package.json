@@ -12,12 +12,22 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/math-inline": "^3.3.9"
-  },
-  "pie": {
-    "element": "@pie-ui/math-inline"
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/mathquill": "^1.1.0",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/correct-answer-toggle": "^2.3.21",
+    "@pie-lib/math-input": "^6.5.8",
+    "@pie-lib/math-toolbar": "^1.7.8",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "module": "src/index.js"
 }

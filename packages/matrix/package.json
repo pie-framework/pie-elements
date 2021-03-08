@@ -10,12 +10,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/matrix": "^0.0.10"
-  },
-  "pie": {
-    "element": "@pie-ui/matrix"
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "debug": "^4.1.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "styled-components": "^5.2.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

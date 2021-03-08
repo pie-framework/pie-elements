@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Trait snapshots renders without scorePointsDescriptors 1`] = `
+<WithStyles(Trait)
+  scaleIndex={1}
+  scorePointsValues={
+    Array [
+      0,
+      1,
+    ]
+  }
+  showDescription={true}
+  showStandards={true}
+  trait={
+    Object {
+      "description": "Trait 1 Description",
+      "name": "Trait 1",
+      "scorePointsDescriptors": Array [],
+      "standards": Array [
+        "a",
+        "b",
+      ],
+    }
+  }
+  traitIndex={1}
+>
+  <Trait
+    classes={
+      Object {
+        "noDescription": "Trait-noDescription-2",
+        "trait": "Trait-trait-1",
+        "traitName": "Trait-traitName-3",
+      }
+    }
+    scaleIndex={1}
+    scorePointsValues={
+      Array [
+        0,
+        1,
+      ]
+    }
+    showDescription={true}
+    showStandards={true}
+    trait={
+      Object {
+        "description": "Trait 1 Description",
+        "name": "Trait 1",
+        "scorePointsDescriptors": Array [],
+        "standards": Array [
+          "a",
+          "b",
+        ],
+      }
+    }
+    traitIndex={1}
+  >
+    <tr
+      key="scale-1-trait-1"
+    >
+      <td
+        className="Trait-trait-1 Trait-traitName-3"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Trait 1",
+            }
+          }
+        />
+      </td>
+      <td>
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "a,b",
+            }
+          }
+        />
+      </td>
+      <td>
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Trait 1 Description",
+            }
+          }
+        />
+      </td>
+      <td
+        key="table-cell-0"
+      >
+        <div
+          className="Trait-noDescription-2"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "No Description",
+            }
+          }
+        />
+      </td>
+      <td
+        key="table-cell-1"
+      >
+        <div
+          className="Trait-noDescription-2"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "No Description",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </Trait>
+</WithStyles(Trait)>
+`;
+
+exports[`Trait snapshots renders without standards, description and scorePointsValues 1`] = `
+<WithStyles(Trait)
+  scaleIndex={1}
+  scorePointsValues={Array []}
+  showDescription={false}
+  showStandards={false}
+  trait={
+    Object {
+      "description": "Trait 1 Description",
+      "name": "Trait 1",
+      "scorePointsDescriptors": Array [
+        "Descriptor 0",
+        "Descriptor 1",
+      ],
+      "standards": Array [
+        "a",
+        "b",
+      ],
+    }
+  }
+  traitIndex={1}
+>
+  <Trait
+    classes={
+      Object {
+        "noDescription": "Trait-noDescription-2",
+        "trait": "Trait-trait-1",
+        "traitName": "Trait-traitName-3",
+      }
+    }
+    scaleIndex={1}
+    scorePointsValues={Array []}
+    showDescription={false}
+    showStandards={false}
+    trait={
+      Object {
+        "description": "Trait 1 Description",
+        "name": "Trait 1",
+        "scorePointsDescriptors": Array [
+          "Descriptor 0",
+          "Descriptor 1",
+        ],
+        "standards": Array [
+          "a",
+          "b",
+        ],
+      }
+    }
+    traitIndex={1}
+  >
+    <tr
+      key="scale-1-trait-1"
+    >
+      <td
+        className="Trait-trait-1 Trait-traitName-3"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "Trait 1",
+            }
+          }
+        />
+      </td>
+    </tr>
+  </Trait>
+</WithStyles(Trait)>
+`;

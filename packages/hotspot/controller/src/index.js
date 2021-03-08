@@ -43,7 +43,9 @@ export function model(question, session, env) {
       partialScoring,
       shapes: {
         ...shapes,
+        // eslint-disable-next-line no-unused-vars
         rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
+        // eslint-disable-next-line no-unused-vars
         polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps }))
       },
       responseCorrect:
