@@ -6,9 +6,9 @@ import _ from 'lodash';
 
 import {
   ModelSetEvent,
-  SessionChangedEvent
+  SessionChangedEvent,
 } from '@pie-framework/pie-player-events';
-import defaults from '../configure/src/defaults';
+import defaults from '../configure/lib/defaults';
 
 const log = debug('pie-ui:math-inline');
 
@@ -19,17 +19,13 @@ export default class MathInline extends HTMLElement {
     super();
     this._configuration = defaults.configuration;
     this.sessionChangedEventCaller = _.debounce((session) => {
-      this.dispatchEvent(
-        new SessionChangedEvent(session, true)
-      );
+      this.dispatchEvent(new SessionChangedEvent(session, true));
     }, 1000);
   }
 
   set model(m) {
     this._model = m;
-    this.dispatchEvent(
-      new ModelSetEvent(this._model, true, !!this._model)
-    );
+    this.dispatchEvent(new ModelSetEvent(this._model, true, !!this._model));
     this._render();
   }
 
@@ -62,7 +58,7 @@ export default class MathInline extends HTMLElement {
       model: this._model,
       session: this._session,
       configuration: this._configuration,
-      onSessionChange: this.sessionChanged.bind(this)
+      onSessionChange: this.sessionChanged.bind(this),
     });
 
     ReactDOM.render(el, this);
