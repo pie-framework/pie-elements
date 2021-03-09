@@ -78,7 +78,7 @@ export function model(question, session, env, updateSession) {
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
-    if (!lockChoiceOrder) {
+    if (!lockChoiceOrder && env.mode === 'gather') {
       choices = await getShuffledChoices(
         choices,
         session,
