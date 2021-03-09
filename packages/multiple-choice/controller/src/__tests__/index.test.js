@@ -230,6 +230,44 @@ describe('controller', () => {
       returnsCorrectness(null);
       returnsCorrectness({});
     });
+
+    describe('choicePrefix is undefined', () => {
+      const question = {
+        id: '1',
+        element: 'multiple-choice',
+        prompt: 'prompt',
+        promptEnabled: true,
+        choiceMode: 'radio',
+        feedbackEnabled: true,
+        choices: [
+          {
+            label: 'a',
+            value: 'apple',
+            correct: true,
+            feedback: {
+              type: 'custom',
+              value: 'foo'
+            }
+          },
+          {
+            label: 'b',
+            value: 'banana',
+            feedback: {
+              type: 'default'
+            }
+          }
+        ]
+      };
+
+      beforeEach(async () => {
+        session = {};
+        env = { mode: 'gather' };
+        result = await model(question, session, env);
+      });
+      it('returns default letters', () => {
+        expect(result.keyMode).toEqual('letters');
+      });
+    });
   });
 
   describe('getScore', () => {
