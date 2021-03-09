@@ -110,7 +110,7 @@ export async function model(question, session, env, updateSession) {
 
   if (!partALockChoiceOrder && partAChoices && partAChoices.length) {
     partA.choices = await getShuffledChoices(
-      partA.choices,
+      partAChoices,
       { shuffledValues: (session.shuffledValues || {}).partA },
       us('partA'),
       'value'
@@ -122,7 +122,7 @@ export async function model(question, session, env, updateSession) {
 
   if (!partBLockChoiceOrder && partBChoices && partBChoices.length) {
     partB.choices = await getShuffledChoices(
-      partB.choices,
+      partBChoices,
       { shuffledValues: (session.shuffledValues || {}).partB },
       us('partB'),
       'value'
