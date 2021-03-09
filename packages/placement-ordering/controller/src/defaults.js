@@ -1,31 +1,20 @@
 export default {
-  choiceLabel: 'choices:',
-  choices: [
-    {
-      id: 'c2',
-      label: 'Lemon',
-      moveOnDrag: true
-    },
-    {
-      id: 'c3',
-      label: 'Melon',
-      moveOnDrag: true
-    },
-    {
-      id: 'c1',
-      label: 'Blueberry',
-      moveOnDrag: false
-    },
-    {
-      id: 'c4',
-      label: 'Pear',
-      moveOnDrag: false
-    }
-  ],
-  completeLength: 4,
-  config: {},
-  prompt: 'Arrange the fruits alphabetically',
-  numberedGuides: true,
+  choiceLabel: 'Choice Label goes here',
+  choices: [],
+  correctResponse: [],
+  enableImages: false,
+  prompt: 'Item Stem goes here',
+  lockChoiceOrder: false,
+  numberedGuides: false,
   orientation: 'vertical',
-  targetLabel: 'Answer Area Label',
+  partialScoring: true,
+  placementArea: false,
+  removeTilesAfterPlacing: true,
+  scoringType: 'auto',
+  targetLabel: 'Target Label goes here',
+  rationaleEnabled: true,
+  feedbackEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true
 };

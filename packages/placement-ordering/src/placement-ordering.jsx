@@ -80,13 +80,13 @@ export class PlacementOrdering extends React.Component {
       nextProps.model.choices.length !== this.props.model.choices.length;
 
     if (includeTargetsChanged || choicesNumberChanged) {
-      this.initSessionIfNeeded(nextProps);
+      this.initSessionIfNeeded(nextProps, true);
     }
 
     this.setState(newState);
   }
 
-  initSessionIfNeeded(props) {
+  initSessionIfNeeded(props, reset) {
     const { model, session, onSessionChange } = props;
     const { config: newConfig } = model;
 
@@ -104,7 +104,10 @@ export class PlacementOrdering extends React.Component {
     } else if (newConfig.includeTargets) {
       const update = cloneDeep(session);
 
-      delete update.value;
+      if (reset) {
+        delete update.value;
+      }
+
       onSessionChange(update);
     }
   }
@@ -145,18 +148,18 @@ export class PlacementOrdering extends React.Component {
 
     return showingCorrect
       ? buildState(
-          model.choices,
-          model.correctResponse,
-          model.correctResponse.map(id => ({ id, outcome: 'correct' })),
-          {
-            includeTargets,
-            allowSameChoiceInTargets: model.config.allowSameChoiceInTargets
-          }
-        )
-      : buildState(model.choices, session.value, model.outcomes, {
+        model.choices,
+        model.correctResponse,
+        model.correctResponse.map(id => ({ id, outcome: 'correct' })),
+        {
           includeTargets,
           allowSameChoiceInTargets: model.config.allowSameChoiceInTargets
-        });
+        }
+      )
+      : buildState(model.choices, session.value, model.outcomes, {
+        includeTargets,
+        allowSameChoiceInTargets: model.config.allowSameChoiceInTargets
+      });
   };
 
   render() {
@@ -186,7 +189,7 @@ export class PlacementOrdering extends React.Component {
             </Collapsible>
           )
         }
-        <br />
+        <br/>
         <CorrectAnswerToggle
           show={showToggle}
           toggled={this.state.showingCorrect}
@@ -209,7 +212,7 @@ export class PlacementOrdering extends React.Component {
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
-        <br />
+        <br/>
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible
@@ -221,7 +224,7 @@ export class PlacementOrdering extends React.Component {
           )
         }
         {!showingCorrect && (
-          <Feedback correctness={model.correctness} feedback={model.feedback} />
+          <Feedback correctness={model.correctness} feedback={model.feedback}/>
         )}
       </div>
     );

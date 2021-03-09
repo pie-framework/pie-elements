@@ -52,6 +52,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export const normalize = question => ({
+  ...defaults,
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,
