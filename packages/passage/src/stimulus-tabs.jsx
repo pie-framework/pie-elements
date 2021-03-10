@@ -21,9 +21,6 @@ const styles = (/*theme*/) => ({
     paddingBottom: '20px',
     position: 'sticky',
     top: 0,
-  },
-  p: {
-    whiteSpace: 'pre-wrap'
   }
 });
 
@@ -37,7 +34,7 @@ function TabContainer(props) {
         padding,
         fontSize: '0.875em',
         backgroundColor: color.background(),
-        color: color.text()
+        color: color.text(),
       }}
     >
       {props.children}
@@ -75,6 +72,7 @@ class StimulusTabs extends React.Component {
   render() {
     const { classes, tabs } = this.props;
     const { activeTab } = this.state;
+
     if (tabs && tabs.length > 1) {
       return (
         <div className={classes.root}>
@@ -105,11 +103,13 @@ class StimulusTabs extends React.Component {
               <TabContainer multiple key={tab.id}>
                 <Purpose purpose="passage-text">
                   <div
+                    style={{ whiteSpace: 'pre-line' }}
                     key={tab.id}
                     dangerouslySetInnerHTML={this.createMarkup(tab.text)}
                   />
                 </Purpose>
               </TabContainer>
+
             ) : null
           )}
         </div>
@@ -117,9 +117,9 @@ class StimulusTabs extends React.Component {
 
     } else if (tabs && tabs[0]) {
       return (
-        <div>
+        <div style={{ whiteSpace: 'break-spaces' }} >
           <TabContainer>
-            <div dangerouslySetInnerHTML={{ __html: tabs[0].text }} />
+            <div dangerouslySetInnerHTML={this.createMarkup(tabs[0].text)} />
           </TabContainer>
         </div>
       );
