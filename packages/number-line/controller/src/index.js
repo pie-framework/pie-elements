@@ -33,6 +33,7 @@ const accumulateAnswer = correctResponse => (total, answer) => {
   const isCorrectResponse = correctResponse.some(cr => matches(cr)(answer));
   return total + (isCorrectResponse ? 1 : -1);
 };
+
 /**
  */
 export function outcome(model, session, env) {
@@ -47,6 +48,7 @@ export function outcome(model, session, env) {
       );
       const total = model.correctResponse.length;
       const score = numCorrect < 0 ? 0 : numCorrect / total;
+
       resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
     }
   });
@@ -104,7 +106,16 @@ const matches = a => v => {
   });
 };
 
-const getCorrected = (answer, correctResponse) => {
+export const getCorrected = (answer, correctResponse) => {
+  if (isEmpty(correctResponse) && answer.length > 0) {
+    return {
+      correct: [],
+      incorrect: [],
+      notInAnswer: [],
+      noCorrectResponse: true
+    };
+  }
+
   return answer.reduce(
     (acc, a, index) => {
       const { correct, incorrect, notInAnswer } = acc;
@@ -131,8 +142,12 @@ const getCorrected = (answer, correctResponse) => {
   );
 };
 
-const getCorrectness = corrected => {
-  const { incorrect, correct, notInAnswer } = corrected;
+export const getCorrectness = corrected => {
+  const { incorrect, correct, notInAnswer, noCorrectResponse } = corrected;
+
+  if (noCorrectResponse) {
+    return 'unknown';
+  }
 
   if (incorrect.length === 0 && correct.length === 0) {
     return 'unanswered';
@@ -258,7 +273,7 @@ export const createCorrectResponseSession = (question, env) => {
         answer,
         id: '1'
       });
-    } else  {
+    } else {
       resolve(null);
     }
   });

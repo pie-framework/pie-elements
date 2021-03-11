@@ -443,4 +443,52 @@ describe('controller', () => {
       expect(noResult).toBeNull();
     });
   });
+
+  describe('getCorrectness', () => {
+    const item = {
+      'type': 'point',
+      'pointType': 'full',
+      'domainPosition': 0.5
+    };
+
+    test.each([
+      [{ noCorrectResponse: true }, 'unknown'],
+      [{ incorrect: [], correct: [] }, 'unanswered'],
+      [{ incorrect: [], notInAnswer: [], correct: [item] }, 'correct'],
+      [{ incorrect: [item], notInAnswer: [], correct: [] }, 'incorrect'],
+      [{ incorrect: [], notInAnswer: [item], correct: [item] }, 'partial']
+    ])('%j -> %s', (corrected, expected) => {
+        const correctness = controller.getCorrectness(corrected);
+
+        expect(correctness).toEqual(expected);
+      }
+    );
+  });
+
+  describe('getCorrected', () => {
+    const defaultCorrected = {
+      correct: [],
+      incorrect: [],
+      notInAnswer: [],
+    };
+    const noCorrectResponse = {
+      ...defaultCorrected,
+      noCorrectResponse: true
+    };
+    const answer = {
+      'type': 'point',
+      'pointType': 'full',
+      'domainPosition': 0.5
+    };
+
+    test.each([
+      [[answer], [], noCorrectResponse],
+      [[], [], defaultCorrected],
+    ])('%j, %j -> %s', (answer, correctResponse, expected) => {
+        const correctness = controller.getCorrected(answer, correctResponse);
+
+        expect(correctness).toEqual(expected);
+      }
+    );
+  });
 });
