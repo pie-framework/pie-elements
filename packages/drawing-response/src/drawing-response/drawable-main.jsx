@@ -11,7 +11,7 @@ import ImageBackground from './drawable-image';
 import Button from './button';
 import factory from './factory';
 
-class DrawableMain extends React.Component {
+export class DrawableMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
