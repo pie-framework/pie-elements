@@ -30,7 +30,7 @@ function generateAdditionalKeys(keyData = []) {
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
   return (
     Math.floor(additionalKeys.length / 5) * 30 +
-    (equationEditor === 'everything' ? 600 : 500)
+    (equationEditor === 'miscellaneous' ? 600 : 500)
   );
 }
 

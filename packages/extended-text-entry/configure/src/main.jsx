@@ -67,7 +67,7 @@ export class Main extends React.Component {
       dimensions = {},
       equationEditor = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled , promptEnabled, feedbackEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled } = model || {};
 
     return (
       <layout.ConfigLayout
@@ -88,7 +88,7 @@ export class Main extends React.Component {
                   'geometry',
                   'advanced-algebra',
                   'statistics',
-                  'everything'
+                  'miscellaneous'
                 ]),
                 dimensions: numberFields(dimensions.label, {
                   width: {
@@ -105,16 +105,16 @@ export class Main extends React.Component {
                   }
                 }),
                 'multiple.enabled': multiple.settings &&
-                toggle(multiple.label, true),
+                  toggle(multiple.label, true),
                 promptEnabled: prompt.settings &&
-                toggle(prompt.label),
+                  toggle(prompt.label),
                 feedbackEnabled: feedback.settings && toggle(feedback.label),
               },
               'Properties': {
                 teacherInstructionsEnabled: teacherInstructions.settings &&
-                toggle(teacherInstructions.label),
+                  toggle(teacherInstructions.label),
                 studentInstructionsEnabled: studentInstructions.settings &&
-                toggle(studentInstructions.label)
+                  toggle(studentInstructions.label)
               },
             }}
           />
