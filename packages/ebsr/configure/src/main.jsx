@@ -26,12 +26,42 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func
   };
 
+  onModelChanged = (model, key) => {
+    const { onModelChanged } = this.props;
+
+    switch (key) {
+      case 'partB.choiceMode': {
+        let value = model.partB.choiceMode;
+
+        if (value === 'radio') {
+          let correctFound = false;
+
+          model.partB.choices = model.partB.choices.map(c => {
+            if (correctFound) {
+              c.correct = false;
+              return c;
+            }
+
+            if (c.correct) {
+              correctFound = true;
+            }
+            return c;
+          });
+        }
+        onModelChanged(model, true);
+        break;
+      }
+      default:
+        onModelChanged(model);
+        break;
+    }
+  };
+
   render() {
     const {
       classes,
       model,
       configuration,
-      onModelChanged,
       onConfigurationChanged
     } = this.props;
     const { partLabelType } = model;
@@ -67,7 +97,7 @@ export class Main extends React.Component {
           settings={
             <Panel
               model={model}
-              onChangeModel={onModelChanged}
+              onChangeModel={this.onModelChanged}
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
