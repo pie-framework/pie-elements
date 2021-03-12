@@ -142,7 +142,6 @@ export default class EbsrConfigure extends HTMLElement {
 
   disconnectedCallback() {
     this.removeEventListener(MODEL_UPDATED, this.onModelUpdated);
-    this._render();
   }
 
   _render() {
