@@ -224,7 +224,7 @@ export class NumberLine extends React.Component {
         <div>
           <div style={{ width: adjustedWidth }}>
             <Toggle
-              show={isArray(model.correctResponse) && !model.emptyAnswer}
+              show={isArray(model.correctResponse) && model.correctResponse.length && !model.emptyAnswer}
               toggled={showCorrectAnswer}
               onToggle={onShowCorrectAnswer}
               initialValue={false}
