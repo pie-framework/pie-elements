@@ -65,6 +65,7 @@ export const normalize = question => ({
   partLabelType: 'Letters',
   ...question,
   partA: {
+    ...defaults.partA,
     rationaleEnabled: true,
     feedbackEnabled: true,
     promptEnabled: true,
@@ -73,6 +74,7 @@ export const normalize = question => ({
     ...question.partA
   },
   partB: {
+    ...defaults.partB,
     rationaleEnabled: true,
     promptEnabled: true,
     feedbackEnabled: true,
