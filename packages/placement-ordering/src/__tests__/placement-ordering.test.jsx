@@ -160,7 +160,7 @@ describe('PlacementOrdering', () => {
         });
 
         it('calls buildState with session values', () => {
-          wrapper.setProps({ session: { value: ['c4', 'c2', 'c3', 'c1'] }});
+          wrapper.setProps({ session: { value: ['c4', 'c2', 'c3', 'c1'] } });
 
           wrapper.instance().createOrdering();
 
@@ -186,10 +186,10 @@ describe('PlacementOrdering', () => {
 
     describe('initSessionIfNeeded', () => {
       describe('with targets', () => {
-        it('resets session', () => {
+        it('does not reset initial session', () => {
           wrapper.instance().initSessionIfNeeded(wrapper.instance().props);
 
-          expect(onSessionChange).toHaveBeenCalledWith({});
+          expect(onSessionChange).toHaveBeenCalledWith({ value: [] });
         })
       });
 
@@ -252,7 +252,7 @@ describe('PlacementOrdering', () => {
           }
         });
 
-        expect(onSessionChange).toHaveBeenCalledWith({ value: ['c1', 'c2']});
+        expect(onSessionChange).toHaveBeenCalledWith({ value: ['c1', 'c2'] });
       });
     });
   });
