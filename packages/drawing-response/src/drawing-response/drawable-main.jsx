@@ -11,7 +11,7 @@ import ImageBackground from './drawable-image';
 import Button from './button';
 import factory from './factory';
 
-class DrawableMain extends React.Component {
+export class DrawableMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -153,7 +153,7 @@ class DrawableMain extends React.Component {
     allData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     const lastElement = allData[allData.length - 1];
 
-    if (lastElement.type === 'text-entry') {
+    if (lastElement && lastElement.type === 'text-entry') {
       TextEntry.all.pop();
       this.setState({ updatedAt: new Date() }, this.handleSessionChange);
     } else {

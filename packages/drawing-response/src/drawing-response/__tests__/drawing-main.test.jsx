@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import cloneDeep from 'lodash/cloneDeep';
 import FreePathDrawable from '../drawable-free-path';
 import LineDrawable from '../drawable-line';
@@ -7,6 +7,7 @@ import RectangleDrawable from '../drawable-rectangle';
 import CircleDrawable from '../drawable-circle';
 import EraserDrawable from '../drawable-eraser';
 import DrawableText from '../drawable-text';
+import {DrawableMain} from '../drawable-main';
 
 const drawableClasses = {
   FreePathDrawable,
@@ -32,6 +33,83 @@ describe('DrawingResponse', () => {
 
     return shallow(content);
   };
+
+  describe('DrawableMain', () => {
+    let onSessionChange = jest.fn();
+    const TextEntry = new DrawableText();
+
+    const wrapperMain = (extras, renderOpts) => {
+      const defaults = {
+        classes: {},
+        disabled: false,
+        className: 'className',
+        onSessionChange,
+        imageDimensions: {},
+        imageUrl: 'url',
+        drawableDimensions: {height: 350, width: 353},
+        fillColor: 'white',
+        outlineColor: 'black',
+        paintColor: 'red',
+        session: {},
+        toolActive: {type: 'Select', label: 'Select', icon: 'mdiCursorDefault'},
+        TextEntry
+      };
+      const props = {...defaults, ...extras};
+      return shallow(<DrawableMain {...props} />, {
+        ...renderOpts
+      });
+    }
+
+    describe('snapshot', () => {
+      it('renders', () => {
+        const w = wrapperMain();
+        expect(w).toMatchSnapshot();
+      });
+
+      it('renders disabled', () => {
+        const w = wrapperMain({disabled: true});
+        expect(w).toMatchSnapshot();
+      });
+    });
+
+    describe('logic', () => {
+      const handleSessionChange = jest.fn();
+      const forceUpdate = jest.fn();
+      const props = {
+        handleSessionChange,
+        forceUpdate,
+        paint: true,
+        paintColor: 'green',
+        startx: 200,
+        starty: 200,
+        x: 300,
+        y: 300,
+        createdAt: new Date(),
+      };
+
+      it('handleUndo', () => {
+        const w = wrapperMain();
+
+        w.setState({drawables: [new RectangleDrawable(props), new RectangleDrawable(props)]});
+        w.instance().handleUndo();
+
+        expect(w.state('drawables').length).toEqual(1);
+
+        w.instance().handleUndo();
+
+        expect(w.state('drawables')).toEqual([]);
+      });
+
+      it('handleClearAll', () => {
+        const w = wrapperMain();
+
+        w.setState({drawables: [new RectangleDrawable(props), new RectangleDrawable(props)]});
+        w.instance().handleClearAll();
+
+        expect(w.state('drawables')).toEqual([]);
+      });
+    })
+  });
 
   describe('CircleDrawable', () => {
     let handleSessionChange = jest.fn();
@@ -766,4 +844,5 @@ describe('DrawingResponse', () => {
       });
     });
   });
-});
+})
+;
