@@ -583,6 +583,15 @@ const styles = (theme) => ({
   },
   inputAndKeypadContainer: {
     position: 'relative',
+    '& .mq-overarrow-inner': {
+      border: 'none !important'
+    },
+    '& .mq-overarrow-inner-right': {
+      display: 'none !important'
+    },
+    '& .mq-overarrow-inner-left': {
+      display: 'none !important'
+    }
   },
   showCorrectness: {
     border: '2px solid',
