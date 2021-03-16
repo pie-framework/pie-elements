@@ -35,7 +35,7 @@ exports[`Math-Inline Main render renders correctly with snapshot 1`] = `
           "x\\\\frac{}{}",
         ],
         "element": "math-inline",
-        "equationEditor": "everything",
+        "equationEditor": "miscellaneous",
         "expression": "\\\\text{A family sized box contains} {{response}} \\\\text{less than} {{response}} \\\\text{times the number  }  \\\\frac{3}{6}=\\\\frac{ {{response}} }{4} + \\\\frac{ {{response}} }{4}",
         "feedback": Object {
           "correct": Object {

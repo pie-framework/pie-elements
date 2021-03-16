@@ -36,7 +36,7 @@ export interface ExtendedTextEntryPie extends PieModel {
   dimensions: Dimensions;
 
   /** Indicates if equation editor is enabled */
-  equationEditor?: 'everything' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
+  equationEditor?: 'miscellaneous' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;

@@ -94,7 +94,7 @@ class Response extends React.Component {
 
   static defaultProps = {
     defaultResponse: false,
-    mode: 'everything'
+    mode: 'miscellaneous'
   };
 
   constructor(props) {

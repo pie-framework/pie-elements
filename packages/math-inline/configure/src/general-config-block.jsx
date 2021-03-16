@@ -219,9 +219,9 @@ class GeneralConfigBlock extends React.Component {
             classes.blockContainerGeneric
           )}">
                 <div class="${cx(
-                  classes.blockResponse,
-                  classes.blockResponseGeneric
-                )}" id="${data}Index">Response</div>
+            classes.blockResponse,
+            classes.blockResponseGeneric
+          )}" id="${data}Index">Response</div>
               </div>`;
 
           return {
@@ -337,12 +337,12 @@ class GeneralConfigBlock extends React.Component {
       prompt,
       expression,
       equationEditor,
-      promptEquationEditor = 'everything',
+      promptEquationEditor = 'miscellaneous',
       responses,
       responseType,
       rationale,
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {}} = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
@@ -391,26 +391,26 @@ class GeneralConfigBlock extends React.Component {
           </InputContainer>
         )}
         {responseType === ResponseTypes.advanced && ([
-            <InputContainer
-              key="templateEditorType"
-              label="Response Template Equation Editor"
-              className={classes.selectContainer}
+          <InputContainer
+            key="templateEditorType"
+            label="Response Template Equation Editor"
+            className={classes.selectContainer}
+          >
+            <Select
+              className={classes.select}
+              onChange={this.onChange('promptEquationEditor')}
+              value={promptEquationEditor}
             >
-              <Select
-                className={classes.select}
-                onChange={this.onChange('promptEquationEditor')}
-                value={promptEquationEditor}
-              >
-                <MenuItem value={1}>Grade 1 - 2</MenuItem>
-                <MenuItem value={3}>Grade 3 - 5</MenuItem>
-                <MenuItem value={6}>Grade 6 - 7</MenuItem>
-                <MenuItem value={8}>Grade 8 - HS</MenuItem>
-                <MenuItem value={'geometry'}>Geometry</MenuItem>
-                <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
-                <MenuItem value={'statistics'}>Statistics</MenuItem>
-                <MenuItem value={'everything'}>Everything</MenuItem>
-              </Select>
-            </InputContainer>,
+              <MenuItem value={1}>Grade 1 - 2</MenuItem>
+              <MenuItem value={3}>Grade 3 - 5</MenuItem>
+              <MenuItem value={6}>Grade 6 - 7</MenuItem>
+              <MenuItem value={8}>Grade 8 - HS</MenuItem>
+              <MenuItem value={'geometry'}>Geometry</MenuItem>
+              <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
+              <MenuItem value={'statistics'}>Statistics</MenuItem>
+              <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
+            </Select>
+          </InputContainer>,
           <div className={classes.inputContainer} key="templateHolder">
             <InputLabel className={classes.templateTitle}>
               RESPONSE TEMPLATE
@@ -446,7 +446,7 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'geometry'}>Geometry</MenuItem>
               <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
               <MenuItem value={'statistics'}>Statistics</MenuItem>
-              <MenuItem value={'everything'}>Everything</MenuItem>
+              <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
             </Select>
           </InputContainer>
           {responseType === ResponseTypes.advanced && (

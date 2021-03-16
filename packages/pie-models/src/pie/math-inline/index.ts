@@ -71,9 +71,9 @@ export interface MathInlinePie extends PieModel {
      * 3 for Grade 3 - 5
      * 6 for Grade 6 - 7
      * 8 for Grade 8 - HS
-     * @default - everything
+     * @default - miscellaneous
      */
-    equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'everything' | 1 | 3 | 6 | 8;
+    equationEditor?: 'geometry' | 'advanced-algebra' | 'statistics' | 'miscellaneous' | 1 | 3 | 6 | 8;
 
     /** Feedback configuration for the responses */
     feedback?: ComplexFeedbackType;

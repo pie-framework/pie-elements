@@ -57,7 +57,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -71,7 +71,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -85,7 +85,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -99,7 +99,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -113,7 +113,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -127,7 +127,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -141,7 +141,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
@@ -154,7 +154,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
   });
