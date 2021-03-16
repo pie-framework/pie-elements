@@ -2230,10 +2230,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.2.16":
-  version "2.2.16"
-  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.2.16.tgz#1e2ae94b54d905c75fd63f1ef9cd443f9d7665df"
-  integrity sha512-jhbOkfUaFhUh++WGGpS+YQ1fKImh0YYGYPlVL7NiAzLbkupJ5WkkJ7Rk9yuAvLyojsI1KF/DuRCDaxn/HBQLWg==
+"@pie-lib/graphing@^2.2.17":
+  version "2.2.17"
+  resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.2.17.tgz#02d4686e669c9351843f80c6c7a7dda6f6a603aa"
+  integrity sha512-4q+E+yJoS/fFFDw6GTjeJyF6wKru3Y40I+tSp0Z8rzD9GkY8we6yplJE2XBm3JNXXd604hF3hHGXavW4FH6otQ==
   dependencies:
     "@mapbox/point-geometry" "^0.1.0"
     "@material-ui/core" "^3.8.3"
@@ -2267,10 +2267,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.10.11":
-  version "1.10.11"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.10.11.tgz#56237c0e550ee5bf2e79601e442d2648a54906d3"
-  integrity sha512-myL1iJEHLnMeSmuqy3x0DECN47XW9Fu0nOujYnR0qEPl3un+wsPpQLVWN7RiVFpSvgZq4oB2UjicS1Fflh/VJw==
+"@pie-lib/mask-markup@^1.10.12":
+  version "1.10.12"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.10.12.tgz#dc69a8c9c49b7ed7b985f6f8581b62f2f8683a33"
+  integrity sha512-V8AHGD/blLHfGQFnlMu2DNXtaUQU+bAy93PVAyz3k3IRTZkvjC5BwJyiNordQaFMWj5IRTfu1+5GXRzxlx781g==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.50"
