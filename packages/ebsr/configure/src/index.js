@@ -10,7 +10,7 @@ import sensibleDefaults from './defaults';
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
-class EbsrMCConfigure extends MultipleChoiceConfigure {}
+class EbsrMCConfigure extends MultipleChoiceConfigure { }
 
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
@@ -74,7 +74,13 @@ export default class EbsrConfigure extends HTMLElement {
     this._render();
   }
 
-  onModelChanged = (m) => {
+  dispatchModelUpdated(reset) {
+    const resetValue = !!reset;
+
+    this.dispatchEvent(new ModelUpdatedEvent(this._model, resetValue));
+  }
+
+  onModelChanged = (m, reset) => {
     this._model = {
       ...this._model,
       ...m,
@@ -88,8 +94,9 @@ export default class EbsrConfigure extends HTMLElement {
       }
     };
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model));
+    this.dispatchModelUpdated(reset);
     this._render();
+
   };
 
   set configuration(c) {
@@ -101,6 +108,10 @@ export default class EbsrConfigure extends HTMLElement {
 
   onConfigurationChanged(c) {
     this._configuration = prepareCustomizationObject(c, this._model).configuration;
+
+    if (this._model) {
+      this.onModelChanged(this._model);
+    }
 
     this._render();
   }
