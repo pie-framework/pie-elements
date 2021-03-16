@@ -67,8 +67,6 @@ class StimulusTabs extends React.Component {
 
   parsedText = (text) => text.replace(/(<br\/>\n)/g, '<br/>');
 
-  createMarkup = (tab) => { return { __html: this.parsedText(tab) } };
-
   render() {
     const { classes, tabs } = this.props;
     const { activeTab } = this.state;
@@ -90,7 +88,7 @@ class StimulusTabs extends React.Component {
                 label={
                   <Purpose purpose="passage-title">
                     <span
-                      dangerouslySetInnerHTML={this.createMarkup(tab.title)}
+                      dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
                     ></span>
                   </Purpose>
                 }
@@ -103,9 +101,8 @@ class StimulusTabs extends React.Component {
               <TabContainer multiple key={tab.id}>
                 <Purpose purpose="passage-text">
                   <div
-                    style={{ whiteSpace: 'pre-line' }}
                     key={tab.id}
-                    dangerouslySetInnerHTML={this.createMarkup(tab.text)}
+                    dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
                   />
                 </Purpose>
               </TabContainer>
@@ -119,7 +116,7 @@ class StimulusTabs extends React.Component {
       return (
         <div style={{ whiteSpace: 'break-spaces' }} >
           <TabContainer>
-            <div dangerouslySetInnerHTML={this.createMarkup(tabs[0].text)} />
+            <div dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>
         </div>
       );
