@@ -29,33 +29,32 @@ export class Main extends React.Component {
   onModelChanged = (model, key) => {
     const { onModelChanged } = this.props;
 
-    switch (key) {
-      case 'partB.choiceMode': {
-        let value = model.partB.choiceMode;
+    if (key !== 'partB.choiceMode') {
+      return onModelChanged(model);
+    };
 
-        if (value === 'radio') {
-          let correctFound = false;
+    const value = model.partB.choiceMode;
 
-          model.partB.choices = model.partB.choices.map(c => {
-            if (correctFound) {
-              c.correct = false;
-              return c;
-            }
+    if (value === 'radio') {
+      let correctFound = false;
 
-            if (c.correct) {
-              correctFound = true;
-            }
-            return c;
-          });
-        }
-        onModelChanged(model, true);
-        break;
-      }
-      default:
-        onModelChanged(model);
-        break;
-    }
-  };
+      model.partB.choices = model.partB.choices.map(c => {
+        // keep only one (first defined) correct answer
+        if (correctFound) {
+          c.correct = false;
+          return c;
+        };
+
+        if (c.correct) {
+          correctFound = true;
+        };
+
+        return c;
+      });
+    };
+
+    return onModelChanged(model, true);
+  }
 
   render() {
     const {
