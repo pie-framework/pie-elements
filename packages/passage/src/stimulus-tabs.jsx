@@ -5,6 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { color, Purpose } from '@pie-lib/render-ui';
+import previewLayout from '@pie-lib/render-ui/lib/preview-layout';
 
 const styles = (/*theme*/) => ({
   root: {
@@ -20,7 +21,7 @@ const styles = (/*theme*/) => ({
     paddingBottom: '20px',
     position: 'sticky',
     top: 0,
-  },
+  }
 });
 
 function TabContainer(props) {
@@ -64,9 +65,12 @@ class StimulusTabs extends React.Component {
     });
   };
 
+  parsedText = (text) => text.replace(/(<br\/>\n)/g, '<br/>');
+
   render() {
     const { classes, tabs } = this.props;
     const { activeTab } = this.state;
+
     if (tabs && tabs.length > 1) {
       return (
         <div className={classes.root}>
@@ -84,7 +88,7 @@ class StimulusTabs extends React.Component {
                 label={
                   <Purpose purpose="passage-title">
                     <span
-                      dangerouslySetInnerHTML={{ __html: tab.title }}
+                      dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
                     ></span>
                   </Purpose>
                 }
@@ -98,19 +102,21 @@ class StimulusTabs extends React.Component {
                 <Purpose purpose="passage-text">
                   <div
                     key={tab.id}
-                    dangerouslySetInnerHTML={{ __html: tab.text }}
+                    dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
                   />
                 </Purpose>
               </TabContainer>
+
             ) : null
           )}
         </div>
       );
+
     } else if (tabs && tabs[0]) {
       return (
-        <div>
+        <div style={{ whiteSpace: 'break-spaces' }} >
           <TabContainer>
-            <div dangerouslySetInnerHTML={{ __html: tabs[0].text }} />
+            <div dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>
         </div>
       );
