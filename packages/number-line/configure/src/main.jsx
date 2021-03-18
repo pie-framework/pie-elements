@@ -199,6 +199,36 @@ export class Main extends React.Component {
     onChange({ graph });
   };
 
+  clearCorrectResponse = () => {
+    const { onChange } = this.props;
+    const correctResponse = [];
+    onChange({ correctResponse });
+  };
+
+  clearInitialView = () => {
+    const { model, onChange } = this.props;
+    const initialElements = [];
+    const graph = { ...model.graph, initialElements };
+    onChange({ graph });
+  };
+
+  undoCorrectResponse = () => {
+    const { model, onChange } = this.props;
+    const correctResponse = [...model.correctResponse];
+    correctResponse.pop();
+    onChange({ correctResponse });
+  };
+
+  undoInitialView = () => {
+    const { onChange, model } = this.props;
+    const graph = { ...model.graph };
+    graph.initialElements = graph.initialElements || [];
+    graph.initialElements.pop();
+    onChange({ graph });
+  };
+
+  onAddElement = this.addInitialView;
+
   render() {
     const { classes, model, onChange, configuration } = this.props;
 
@@ -301,6 +331,8 @@ export class Main extends React.Component {
               onMoveElement={this.moveCorrectResponse}
               onDeleteElements={this.deleteCorrectResponse}
               onAddElement={this.addCorrectResponse}
+              onClearElements={this.clearCorrectResponse}
+              onUndoElement={this.undoCorrectResponse}
               answer={correctResponse}
               //strip feedback for this model
               model={trimModel(model)}
@@ -326,7 +358,9 @@ export class Main extends React.Component {
         <NumberLineComponent
           onMoveElement={this.moveInitialView}
           onDeleteElements={this.deleteInitialView}
-          onAddElement={this.addInitialView}
+          onAddElement={this.onAddElement}
+          onClearElements={this.clearInitialView}
+          onUndoElement={this.undoInitialView}
           answer={initialView}
           model={trimModel(model)}
         />
