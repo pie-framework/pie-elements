@@ -1,43 +1,43 @@
 const tokens = () =>  [
   {
-    "text": "If 'tweren't for sight and sound and smell,",
-    "start": 3,
-    "end": 52
+    text: 'If \'tweren\'t for sight and sound and smell,',
+    start: 3,
+    end: 52
   },
   {
-    "text": "I'd like the city pretty well,",
-    "start": 53,
-    "end": 89
+    text: 'I\'d like the city pretty well,',
+    start: 53,
+    end: 89
   },
   {
-    "text": "But when it comes to getting rest,",
-    "start": 90,
-    "end": 130
+    text: 'But when it comes to getting rest,',
+    start: 90,
+    end: 130
   },
   {
-    "text": "I like the country lots the best.",
-    "start": 131,
-    "end": 170
+    text: 'I like the country lots the best.',
+    start: 131,
+    end: 170
   },
   {
-    "text": "Sometimes it seems to me I must",
-    "start": 173,
-    "end": 210
+    text: 'Sometimes it seems to me I must',
+    start: 173,
+    end: 210
   },
   {
-    "text": "Just quit the city's din and dust,",
-    "start": 211,
-    "end": 251
+    text: 'Just quit the city\'s din and dust,',
+    start: 211,
+    end: 251
   },
   {
-    "text": "And get out where the sky is blue,",
-    "start": 252,
-    "end": 292
+    text: 'And get out where the sky is blue,',
+    start: 252,
+    end: 292
   },
   {
-    "text": "And say, now, how does it seem to you?",
-    "start": 293,
-    "end": 335
+    text: 'And say, now, how does it seem to you?',
+    start: 293,
+    end: 335
   }
 ];
 
