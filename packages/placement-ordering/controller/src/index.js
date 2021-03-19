@@ -87,7 +87,7 @@ export function model(question, session, env, updateSession) {
         'label'
       );
 
-      if (!session.shuffledValues) {
+      if (!session.shuffledValues && !normalizedQuestion.placementArea) {
           session.value = choices.map(m => m.id);
       }
     }

@@ -46,7 +46,7 @@ exports.model = (id, element) => ({
   numberedGuides: false,
   orientation: 'vertical',
   partialScoring: false,
-  placementArea: false,
+  placementArea: true,
   scoringType: 'auto',
   targetLabel: 'Answers',
 });
