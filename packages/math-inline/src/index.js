@@ -40,7 +40,9 @@ export default class MathInline extends HTMLElement {
   }
 
   sessionChanged(s) {
-    this._session = s;
+    this._session.answers = s.answers;
+    this._session.response = s.response;
+    this._session.completeAnswer = s.completeAnswer;
     this.sessionChangedEventCaller(this._session);
     log('session: ', this._session);
   }
