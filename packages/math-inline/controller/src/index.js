@@ -125,6 +125,45 @@ function handleStringBasedCheck(acceptedValues, answerItem) {
   return answerCorrect;
 }
 
+function parseByMultiplication(expression) {
+  const splittedExpression = expression.split('times');
+
+  return splittedExpression.sort().join('times');
+}
+
+function parseByMinus(expression) {
+  const splittedExpression = expression.split('-');
+  const result = splittedExpression.map(expr => parseByMultiplication(expr));
+
+  return result.sort().join('-');
+}
+
+function parseByPlus(expression) {
+  const splittedExpression = expression.split('+');
+  const result = splittedExpression.map(expr => parseByMinus(expr))
+
+  return result.sort().join('+');
+}
+
+function processIgnoreOrder(expression) {
+  const splitted = expression.split('=');
+  let [left, right] = splitted.sort();
+
+  console.log('left', left);
+  console.log('right', right);
+
+  left = parseByPlus(left);
+
+  if (right) {
+    right = parseByPlus(right);
+
+    return [left, right].sort().join('=');
+  }
+
+  return left;
+}
+
+
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
@@ -141,6 +180,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         for (let i = 0; i < acceptedValues.length; i++) {
           let answerValueToUse = processAnswerItem(answerItem, true);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
+          console.log('answerValueToUse', answerValueToUse);
+          console.log('acceptedValueToUse', acceptedValueToUse);
 
           if (correctResponse.allowThousandsSeparator) {
             if (
@@ -168,11 +209,25 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
                 trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
             ) {
               answerCorrect = true;
-              break;
+              // break;
             }
           } else if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
-            break;
+            // break;
+          }
+
+          const ignoreOrder = true;
+          if (ignoreOrder) {
+            const processedAnswerValueToUse = processIgnoreOrder(answerValueToUse);
+            const processedAcceptedValueToUse = processIgnoreOrder(acceptedValueToUse);
+
+            console.log('processedAnswerValueToUse', processedAnswerValueToUse);
+            console.log('processedAcceptedValueToUse', processedAcceptedValueToUse);
+
+            if (processedAnswerValueToUse === processedAcceptedValueToUse) {
+              answerCorrect = true;
+              break;
+            }
           }
         }
       } else {
