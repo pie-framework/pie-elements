@@ -124,8 +124,9 @@ export class Configure extends React.Component {
               <GeneralConfigBlock
                 imageSupport={imageSupport}
                 model={model}
-                configuration={configuration}
                 onChange={this.onChange}
+                configuration={configuration}
+                onConfigurationChanged={onConfigurationChanged}
                 rationaleEnabled={rationaleEnabled}
                 promptEnabled={promptEnabled}
               />

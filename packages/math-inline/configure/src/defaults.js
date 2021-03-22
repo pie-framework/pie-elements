@@ -69,6 +69,11 @@ export default {
     partialScoring: {
       settings: false,
       label: 'Allow Partial Scoring'
+    },
+    allowEquationSwap: {
+      settings: true,
+      default: false,
+      label: 'Allow Equation Swap',
     }
   }
 };

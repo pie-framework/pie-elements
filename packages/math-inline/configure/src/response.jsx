@@ -89,6 +89,8 @@ class Response extends React.Component {
     mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
+    configuration: PropTypes.object.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     response: PropTypes.object.isRequired
   };
 
@@ -126,13 +128,24 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
-  onConfigChanged = name => evt => {
+  handleOnModelChanged = name => evt => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
     newResponse[name] = evt.target.checked;
 
     onResponseChange(newResponse, index);
+  };
+
+  handleOnConfigurationChanged = name => evt => {
+    const { configuration, onConfigurationChanged } = this.props;
+    const newConfiguration = { ...configuration };
+
+    newConfiguration[name] = {
+      ...newConfiguration[name],
+      default: evt.target.checked
+    };
+    onConfigurationChanged(newConfiguration);
   };
 
   onAnswerChange = answer => {
@@ -234,15 +247,19 @@ class Response extends React.Component {
   };
 
   render() {
-    const { classes, mode, defaultResponse, index, response } = this.props;
+    const { classes, mode, defaultResponse, index, response, configuration } = this.props;
     const { showKeypad } = this.state;
     const {
       validation,
       answer,
       alternates,
       allowThousandsSeparator = false,
-      allowSpaces
+      allowSpaces,
     } = response;
+    const {
+      allowEquationSwap,
+    } = configuration;
+
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
@@ -274,7 +291,7 @@ class Response extends React.Component {
                 value={validation}
               >
                 <MenuItem value="literal">Literal Validation</MenuItem>
-                {/* Remove symbolic validation PD-690 <MenuItem value="symbolic">Symbolic Validation</MenuItem>*/}
+                <MenuItem value="symbolic">Symbolic Validation</MenuItem>
               </Select>
             </InputContainer>
           </div>
@@ -319,7 +336,6 @@ class Response extends React.Component {
                 />
               </div>
             ))}
-          {validation === 'literal' && (
             <div className={classes.configPanel}>
               <Button
                 className={classes.alternateButton}
@@ -329,29 +345,44 @@ class Response extends React.Component {
                 ADD ALTERNATE
               </Button>
               <div className={classes.checkboxContainer}>
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Thousands Separators (Commas)"
-                  control={
-                    <Checkbox
-                      checked={allowThousandsSeparator}
-                      onChange={this.onConfigChanged('allowThousandsSeparator')}
+                {validation === 'literal' && (
+                  <>
+                    <FormControlLabel
+                      classes={{ root: classes.configLabel }}
+                      label="Allow Thousands Separators (Commas)"
+                      control={
+                        <Checkbox
+                          checked={allowThousandsSeparator}
+                          onChange={this.handleOnModelChanged('allowThousandsSeparator')}
+                        />
+                      }
                     />
-                  }
-                />
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Extra Spaces"
-                  control={
-                    <Checkbox
-                      checked={allowSpaces}
-                      onChange={this.onConfigChanged('allowSpaces')}
+                    <FormControlLabel
+                      classes={{ root: classes.configLabel }}
+                      label="Allow Extra Spaces"
+                      control={
+                        <Checkbox
+                          checked={allowSpaces}
+                          onChange={this.handleOnModelChanged('allowSpaces')}
+                        />
+                      }
                     />
-                  }
-                />
+                  </>
+                )}
+                {validation === 'symbolic' && allowEquationSwap.settings ? (
+                  <FormControlLabel
+                    classes={{ root: classes.configLabel }}
+                    label={allowEquationSwap.label}
+                    control={
+                      <Checkbox
+                        checked={allowEquationSwap.default}
+                        onChange={this.handleOnConfigurationChanged('allowEquationSwap')}
+                      />
+                    }
+                  />
+                ) : null}
               </div>
-            </div>
-          )}
+          </div>
         </CardContent>
       </Card>
     );

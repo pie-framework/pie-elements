@@ -141,6 +141,7 @@ class GeneralConfigBlock extends React.Component {
     imageSupport: PropTypes.object,
     configuration: PropTypes.object,
     onChange: PropTypes.func.isRequired,
+    onConfigurationChanged: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool,
   };
@@ -288,7 +289,7 @@ class GeneralConfigBlock extends React.Component {
   };
 
   onAddResponse = () => {
-    const { model, onChange } = this.props;
+    const { model, onChange, configuration } = this.props;
     const { responseIdCounter } = this.state;
     const newModel = { ...model };
 
@@ -331,6 +332,7 @@ class GeneralConfigBlock extends React.Component {
       configuration,
       promptEnabled,
       rationaleEnabled,
+      onConfigurationChanged,
     } = this.props;
     const { showKeypad } = this.state;
     const {
@@ -466,6 +468,8 @@ class GeneralConfigBlock extends React.Component {
             response={response}
             defaultResponse={responseType === ResponseTypes.simple}
             onResponseChange={this.onResponseChange}
+            configuration={configuration}
+            onConfigurationChanged={onConfigurationChanged}
             index={idx}
           />
         ))}
