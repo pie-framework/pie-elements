@@ -44,7 +44,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
         range={
           Object {
             "label": "Amount",
-            "labelStep": 1,
             "max": 5.5,
             "min": 0,
           }
@@ -128,7 +127,6 @@ exports[`Configure renders snapshot 1`] = `
           "promptEnabled": true,
           "range": Object {
             "label": "Amount",
-            "labelStep": 1,
             "max": 5.5,
             "min": 0,
           },
@@ -237,7 +235,6 @@ exports[`Configure renders snapshot 1`] = `
           "promptEnabled": true,
           "range": Object {
             "label": "Amount",
-            "labelStep": 1,
             "max": 5.5,
             "min": 0,
           },
@@ -304,7 +301,6 @@ exports[`Configure renders snapshot 1`] = `
           "promptEnabled": true,
           "range": Object {
             "label": "Amount",
-            "labelStep": 1,
             "max": 5.5,
             "min": 0,
           },
@@ -344,7 +340,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
         range={
           Object {
             "label": "Amount",
-            "labelStep": 1,
             "max": 5.5,
             "min": 0,
           }
