@@ -7,7 +7,6 @@ exports.model = (id, element) => ({
   expression: '{{response}}',
   responses: [
     {
-      allowSpaces: true,
       answer: 'r=\\sqrt{\\frac{V}{7\\pi}}',
       id: '1',
       alternates: {},
