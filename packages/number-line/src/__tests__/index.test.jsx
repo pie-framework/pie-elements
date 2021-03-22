@@ -1,4 +1,5 @@
 import El from '../index';
+import React from 'react';
 
 jest.mock('../number-line', () => ({
   default: () => <div>NumberLine</div>
@@ -122,6 +123,61 @@ describe('number-line', () => {
 
     it('keeps the remaining point', () => {
       expect(instance._session.answer).toEqual([point.session(2)]);
+    });
+  });
+
+  describe('undo', () => {
+    beforeEach(() => {
+      instance = getStubInstance();
+      instance.session = {
+        answer: [point.session(1), point.session(2), point.session(3)]
+      };
+      instance.undoElement();
+    });
+
+    it('undo last element', () => {
+      expect(instance._session.answer.length).toEqual(2);
+    });
+
+    it('undo all elements', () => {
+      instance.undoElement();
+      instance.undoElement();
+
+      expect(instance._session.answer.length).toEqual(0);
+    });
+
+    it('undo more than all elements', () => {
+      instance.undoElement();
+      instance.undoElement();
+      instance.undoElement();
+
+      expect(instance._session.answer.length).toEqual(0);
+    });
+
+    it('add one and then remove one element', () => {
+      instance._session.answer.push(point.session(4));
+      instance.undoElement();
+
+      expect(instance._session.answer.length).toEqual(2);
+    });
+  });
+
+  describe('clearAll', () => {
+    beforeEach(() => {
+      instance = getStubInstance();
+      instance.session = {
+        answer: [point.session(1), point.session(2), point.session(3)]
+      };
+      instance.clearElements();
+    });
+
+    it('removes elements', () => {
+      expect(instance._session.answer.length).toEqual(0);
+    });
+
+    it('removes elements', () => {
+      instance.clearElements();
+      expect(instance._session.answer.length).toEqual(0);
     });
   });
 });

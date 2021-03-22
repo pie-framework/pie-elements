@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import injectSheet from 'react-jss';
 import styles from './styles';
 import PropTypes from 'prop-types';
+import Button from './button';
 
 const DeleteIcon = ({ classes }) => {
   return (
@@ -81,6 +82,8 @@ export class PointChooser extends React.Component {
     showDeleteButton: PropTypes.bool,
     onDeleteClick: PropTypes.func.isRequired,
     onElementType: PropTypes.func.isRequired,
+    onUndoElement: PropTypes.func.isRequired,
+    onClearElements: PropTypes.func.isRequired,
     icons: PropTypes.array
   };
 
@@ -89,6 +92,8 @@ export class PointChooser extends React.Component {
       elementType,
       showDeleteButton,
       onDeleteClick,
+      onUndoElement,
+      onClearElements,
       icons,
       classes,
       onElementType
@@ -102,11 +107,15 @@ export class PointChooser extends React.Component {
           selectPoint={onElementType}
           icons={icons}
         />
-        {showDeleteButton && (
-          <span className={classes.deleteIconHolder} onClick={onDeleteClick}>
+        <div className={classes.controls}>
+          {showDeleteButton && (
+            <span className={classes.deleteIconHolder} onClick={onDeleteClick}>
             <DeleteIcon classes={classes} />
           </span>
-        )}
+          )}
+          <Button onClick={onUndoElement} label="Undo" />
+          <Button onClick={onClearElements} label="Clear all" />
+        </div>
       </div>
     );
   }
