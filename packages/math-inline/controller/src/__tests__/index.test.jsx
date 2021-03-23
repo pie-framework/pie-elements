@@ -241,56 +241,6 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
     });
 
-    it('returns correct for correctness if allowSpaces is true', async () => {
-      question = mkQuestion({
-        ...defaultModel,
-        responses: [
-          {
-            allowSpaces: true,
-            answer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}',
-            id: '1',
-            alternates: {},
-            validation: 'literal'
-          }
-        ]
-      });
-      session = {
-        completeAnswer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}'
-      };
-
-      env = { mode: 'evaluate' };
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('correct');
-      expect(result.correctness.score).toEqual('100%');
-    });
-
-    it('returns correct for correctness if allowSpaces is true in simple mode too', async () => {
-      question = mkQuestion({
-        ...defaultModel,
-        responseType: 'Simple',
-        responses: [
-          {
-            allowSpaces: true,
-            allowThousandsSeparator: true,
-            answer: '3000',
-            id: '1',
-            alternates: {},
-            validation: 'literal'
-          }
-        ]
-      });
-      session = {
-        response: '3,000'
-      };
-
-      env = { mode: 'evaluate' };
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('correct');
-      expect(result.correctness.score).toEqual('100%');
-    });
-
     describe('all responses are checked', () => {
       beforeEach(() => {
         question = mkQuestion({
@@ -301,7 +251,7 @@ describe('model', () => {
               validation: 'symbolic',
               alternates: ['2']
             },
-            { answer: 'foo', validation: 'literal', allowSpaces: true, id: '1' }
+            { answer: 'foo', validation: 'literal', id: '1' }
           ]
         });
       });
@@ -337,8 +287,7 @@ describe('model', () => {
             alternates: {},
             answer: '1\\frac14',
             validation: 'symbolic',
-            id: '1',
-            allowSpaces: true
+            id: '1'
           }
         ]
       });
@@ -373,8 +322,7 @@ describe('model', () => {
           alternates: { 1: 'p\\left(x\\right)' },
           answer: '1\\frac14',
           validation: 'literal',
-          id: '1',
-          allowSpaces: true
+          id: '1'
         }
       ]
     });
@@ -426,7 +374,7 @@ describe('model', () => {
     it('returns incorrect for correctness', async () => {
       question = mkQuestion();
       session = { completeAnswer: '2\\div12=6\\text{eggs}' };
-      env = { mode: 'evaluate' };
+      //env = { mode: 'evaluate' };
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('incorrect');
@@ -529,8 +477,7 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: '2\\times7',
             validation: 'literal',
-            id: '1',
-            allowSpaces: true
+            id: '1'
           }
         ],
         id: '1'
@@ -686,8 +633,7 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: '1530',
             validation: 'symbolic',
-            id: '1',
-            allowSpaces: true
+            id: '1'
           }
         ],
         id: '1',
@@ -735,7 +681,6 @@ describe('6456 - outcome', () => {
     expression: '{{response}}',
     responses: [
       {
-        allowSpaces: true,
         answer: '-12.5',
         id: '1',
         alternates: { '1': '-12.5\\%' },
@@ -781,7 +726,6 @@ describe('6371', () => {
     expression: '{{response}}\\ \\text{dollars}',
     responses: [
       {
-        allowSpaces: true,
         answer: '4\\times10^3\\ \\text{dollars}',
         id: '1',
         alternates: {},
@@ -818,8 +762,7 @@ describe('3826', () => {
         id: '1',
         answer: '84%',
         alternates: {},
-        validation: 'literal',
-        allowSpaces: true
+        validation: 'literal'
       }
     ],
     id: '1',
@@ -858,7 +801,6 @@ describe('PD-66', () => {
     equationEditor: 'statistics',
     responses: [
       {
-        allowSpaces: true,
         answer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)',
         id: '1',
         validation: 'literal',
@@ -921,8 +863,7 @@ describe('PD-205', () => {
       {
         answer: '10\\times7\\times5=350\\ \\text{cubic}\\text{inches}',
         validation: 'literal',
-        id: '1',
-        allowSpaces: true,
+        id: '1'
       },
       {
         validation: 'equivLiteral',
@@ -996,8 +937,7 @@ describe('PD-610', () => {
       {
         answer: '\\frac{1}{3}=\\frac{2}{6}',
         validation: 'literal',
-        id: '1',
-        allowSpaces: true,
+        id: '1'
       }
     ],
   };
@@ -1046,8 +986,7 @@ describe('PD-610', () => {
       {
         answer: '\\frac{3}{4}=\\frac{6}{8}',
         validation: 'literal',
-        id: '1',
-        allowSpaces: true,
+        id: '1'
       }
     ],
   };
@@ -1096,8 +1035,7 @@ describe('PD-610', () => {
       {
         answer: '\\frac{3}{6}=\\frac{1}{2}',
         validation: 'literal',
-        id: '3',
-        allowSpaces: true,
+        id: '3'
       }
     ],
   };
