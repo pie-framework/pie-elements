@@ -1,20 +1,43 @@
-const tokens = () => [
+const tokens = () =>  [
   {
-    text: 'Rachel cut out 8 stars in 6 minutes.',
-    start: 0,
-    end: 36,
-    correct: true
+    text: 'If \'tweren\'t for sight and sound and smell,',
+    start: 3,
+    end: 52
   },
   {
-    text: 'Lovelle cut out 6 stars in 4 minutes.',
-    start: 37,
-    end: 74,
-    correct: true
+    text: 'I\'d like the city pretty well,',
+    start: 53,
+    end: 89
   },
   {
-    text: 'Lovelle and Rachel cut the same number of stars in 6 minutes.',
-    start: 117,
-    end: 177
+    text: 'But when it comes to getting rest,',
+    start: 90,
+    end: 130
+  },
+  {
+    text: 'I like the country lots the best.',
+    start: 131,
+    end: 170
+  },
+  {
+    text: 'Sometimes it seems to me I must',
+    start: 173,
+    end: 210
+  },
+  {
+    text: 'Just quit the city\'s din and dust,',
+    start: 211,
+    end: 251
+  },
+  {
+    text: 'And get out where the sky is blue,',
+    start: 252,
+    end: 292
+  },
+  {
+    text: 'And say, now, how does it seem to you?',
+    start: 293,
+    end: 335
   }
 ];
 

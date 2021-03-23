@@ -548,6 +548,38 @@ describe('createCorrectResponseSession', () => {
     });
   });
 
+  describe('PD-173', () => {
+    it('returns empty answer if model is incorrectly defined', async () => {
+      const question = {
+        element: 'math-inline',
+        responseType: 'Advanced Multi',
+        expression: 'x={{response}}\\ \\text{radians}',
+        responses: [
+          {
+            alternates: {},
+            answer: "x=\\frac{20,000}{r^2}\\text{radians}",
+            validation: 'symbolic',
+            id: '1',
+            allowSpaces: true
+          }
+        ],
+        id: '1'
+      };
+
+      const ca = question.responses[0].answer;
+      const cs = await createCorrectResponseSession(question, {
+        mode: 'gather',
+        role: 'instructor'
+      });
+
+      expect(cs).toMatchObject({
+        id: '1',
+        completeAnswer: ca,
+        answers: { }
+      });
+    });
+  });
+
   const val = value => ({ value });
   describe.each`
     expression                                      | cr                                | expected

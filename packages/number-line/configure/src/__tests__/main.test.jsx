@@ -87,5 +87,47 @@ describe('main', () => {
     describe('deleteInitialView', () => {});
     describe('addCorrectResponse', () => {});
     describe('addInitialView', () => {});
+
+    describe('clearCorrectResponse', () => {
+      it('clears correct response', () => {
+        const w = wrapper();
+        const i = w.instance();
+        i.props.model.correctResponse = ['Point1', 'Point2'];
+        i.clearCorrectResponse();
+        expect(onChange).toHaveBeenCalledWith({correctResponse: []});
+      });
+    });
+
+    describe('clearInitialView', () => {
+      it('clear initial elements', () => {
+        const w = wrapper();
+        const i = w.instance();
+        i.props.model.initialElements = ['Point1', 'Point2'];
+        i.clearInitialView();
+        const graph = { ...defaultModel.graph, initialElements: []}
+        expect(onChange).toHaveBeenCalledWith({graph});
+      });
+    });
+
+    describe('undoCorrectResponse', () => {
+      it('undo correct response', () => {
+        const w = wrapper();
+        const i = w.instance();
+        i.props.model.correctResponse = ['Point1', 'Point2'];
+        i.undoCorrectResponse();
+        expect(onChange).toHaveBeenCalledWith({correctResponse: ['Point1']});
+      });
+    });
+
+    describe('undoInitialView', () => {
+      it('undo initial response', () => {
+        const w = wrapper();
+        const i = w.instance();
+        i.props.model.initialElements = ['Point1'];
+        i.undoInitialView();
+        const graph = { ...defaultModel.graph, initialElements: []};
+        expect(onChange).toHaveBeenCalledWith({graph});
+      });
+    });
   });
 });
