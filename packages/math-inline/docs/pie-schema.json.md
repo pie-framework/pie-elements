@@ -38,8 +38,8 @@ This element must be one of the following enum values:
 * `6`
 * `8`
 * `advanced-algebra`
-* `miscellaneous`
 * `geometry`
+* `miscellaneous`
 * `statistics`
 
 Default: `"- miscellaneous"`
@@ -96,10 +96,6 @@ an object with some alternatives for the correct answers
 
 Indicates if spaces are allowed
 
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
-
 # `defaultResponse` (object)
 
 Properties of the `defaultResponse` object:
@@ -131,10 +127,6 @@ an object with some alternatives for the correct answers
 ## `allowSpaces` (boolean)
 
 Indicates if spaces are allowed
-
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 # `partialScoring` (boolean)
 
@@ -290,10 +282,6 @@ an object with some alternatives for the correct answers
 ### `allowSpaces` (boolean)
 
 Indicates if spaces are allowed
-
-### `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 ## `Alternate` (object)
 

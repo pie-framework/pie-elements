@@ -37,9 +37,6 @@ interface MathInlineResponse {
 
     /** Indicates if spaces are allowed */
     allowSpaces?: boolean;
-
-    /** Indicates if thousand separators are allowed */
-    allowThousandsSeparator?: boolean;
 }
 
 /**

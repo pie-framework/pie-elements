@@ -272,7 +272,6 @@ describe('model', () => {
         responses: [
           {
             allowSpaces: true,
-            allowThousandsSeparator: true,
             answer: '3000',
             id: '1',
             alternates: {},
@@ -880,11 +879,11 @@ describe('PD-205', () => {
     teacherInstructions: '',
     responseType: 'Advanced Multi',
     expression:
-        '{{response}}\\ =\\ {{response}}\\ \\text{cubic}\\ \\text{inches}',
+      '{{response}}\\ =\\ {{response}}\\ \\text{cubic}\\ \\text{inches}',
     rationale:
-        '<p>The volume of the box can be solved by any equivalent variation of the equation: 10 &#215; 7 &#215; 5 = 350 (cubic&#160;inches)&#160;or 70 &#215; 5 = 350&#160;(cubic&#160;inches). This answer is the result of accurately applying either the formula <span class="variable">l</span> &#215; <span class="variable">w</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> or <span class="variable">b</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> to find the volume of the&#160;rectangular prism described.</p>',
+      '<p>The volume of the box can be solved by any equivalent variation of the equation: 10 &#215; 7 &#215; 5 = 350 (cubic&#160;inches)&#160;or 70 &#215; 5 = 350&#160;(cubic&#160;inches). This answer is the result of accurately applying either the formula <span class="variable">l</span> &#215; <span class="variable">w</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> or <span class="variable">b</span> &#215; <span class="variable">h</span> = <span class="variable">V</span> to find the volume of the&#160;rectangular prism described.</p>',
     prompt:
-        '<p>Elyse has a plastic box she uses for sand art designs, as shown below.</p><p><img alt="image 5afe5c90cd7e491896d58552ab74b6f7" id="5afe5c90cd7e491896d58552ab74b6f7" src="https://storage.googleapis.com/pie-prod-221718-assets/image/a3ee5289-d882-4c7d-abce-2ee70ce8c26f"></p><p>The length of the box is 10&#160;inches, the width is 7&#160;inches, and the height is 5&#160;inches. Write and solve an&#160;equation Elyse can use to find&#160;the volume of sand, in cubic inches, that will fit in the container.&#160;</p><p>Use the on-screen keyboard to type the correct equation and answer in the box.</p>',
+      '<p>Elyse has a plastic box she uses for sand art designs, as shown below.</p><p><img alt="image 5afe5c90cd7e491896d58552ab74b6f7" id="5afe5c90cd7e491896d58552ab74b6f7" src="https://storage.googleapis.com/pie-prod-221718-assets/image/a3ee5289-d882-4c7d-abce-2ee70ce8c26f"></p><p>The length of the box is 10&#160;inches, the width is 7&#160;inches, and the height is 5&#160;inches. Write and solve an&#160;equation Elyse can use to find&#160;the volume of sand, in cubic inches, that will fit in the container.&#160;</p><p>Use the on-screen keyboard to type the correct equation and answer in the box.</p>',
     responses: [
       {
         answer: '10\\times7\\times5=350\\ \\text{cubic}\\text{inches}',
@@ -934,7 +933,7 @@ describe('PD-205', () => {
   it('scores 1', async () => {
     const session = {
       id: '1',
-      answers: { r1: { value: '350' }, r2: { value: '7\\cdot50'} },
+      answers: { r1: { value: '350' }, r2: { value: '7\\cdot50' } },
       completeAnswer: '350\\ =\\ 7\\cdot50\\ \\text{cubic}\\ \\text{inches}'
     };
 
@@ -957,9 +956,9 @@ describe('PD-610', () => {
     teacherInstructions: '',
     responseType: 'Advanced Multi',
     expression:
-    "\\frac{1}{3}=\\frac{{response}}{6}",
+      "\\frac{1}{3}=\\frac{{response}}{6}",
     rationale:
-        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+      '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{1}{3}=\\frac{2}{6}',
@@ -1007,9 +1006,9 @@ describe('PD-610', () => {
     teacherInstructions: '',
     responseType: 'Advanced Multi',
     expression:
-    "\\frac{3}{4}=\\frac{{response}}{8}",
+      "\\frac{3}{4}=\\frac{{response}}{8}",
     rationale:
-        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+      '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{3}{4}=\\frac{6}{8}',
@@ -1042,7 +1041,7 @@ describe('PD-610', () => {
 
     const env = { mode: 'evaluate' };
     const result = await outcome(equation_02, session, env);
-    expect(result).toEqual({ score: 0});
+    expect(result).toEqual({ score: 0 });
   });
 
   const equation_03 = {
@@ -1057,9 +1056,9 @@ describe('PD-610', () => {
     teacherInstructions: '',
     responseType: 'Advanced Multi',
     expression:
-    "\\frac{3}{6}=\\frac{{response}}{2}",
+      "\\frac{3}{6}=\\frac{{response}}{2}",
     rationale:
-        '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
+      '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{3}{6}=\\frac{1}{2}',
