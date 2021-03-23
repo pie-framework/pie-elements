@@ -5,7 +5,7 @@ const initialModel = {
   expression: '{{response}}',
   responses: [
     {
-      answer: 'y=3x-5\\cdot6+8\\cdot3+1+\\frac{4}{10}',
+      answer: 'r=\\sqrt{\\frac{V}{7\\pi}}',
       id: '1',
       alternates: {},
       validation: 'literal',
@@ -23,10 +23,9 @@ const E262456 = {
   'responses': [
     {
       'allowSpaces': true,
-      'validation': 'literal',
-      'answer': '2+1<a+1<c+3',
-      'id': '1',
-      'ignoreOrder': true
+      'validation': 'symbolic',
+      'answer': '$410',
+      'id': '1'
     }
   ],
   'responseType': 'Advanced Multi'
@@ -36,5 +35,5 @@ const E262456 = {
 exports.model = (id, element) => ({
   id,
   element,
-  ...initialModel
+  ...E262456
 });
