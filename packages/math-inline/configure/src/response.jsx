@@ -120,7 +120,6 @@ class Response extends React.Component {
 
     if (name === 'validation' && evt.target.value === 'symbolic') {
       newResponse.allowThousandsSeparator = true;
-      newResponse.allowSpaces = true;
     }
 
     onResponseChange(newResponse, index);
@@ -241,7 +240,6 @@ class Response extends React.Component {
       answer,
       alternates,
       allowThousandsSeparator = false,
-      allowSpaces
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
@@ -336,16 +334,6 @@ class Response extends React.Component {
                     <Checkbox
                       checked={allowThousandsSeparator}
                       onChange={this.onConfigChanged('allowThousandsSeparator')}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Extra Spaces"
-                  control={
-                    <Checkbox
-                      checked={allowSpaces}
-                      onChange={this.onConfigChanged('allowSpaces')}
                     />
                   }
                 />

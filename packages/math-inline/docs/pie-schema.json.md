@@ -38,8 +38,8 @@ This element must be one of the following enum values:
 * `6`
 * `8`
 * `advanced-algebra`
-* `miscellaneous`
 * `geometry`
+* `miscellaneous`
 * `statistics`
 
 Default: `"- miscellaneous"`
@@ -92,10 +92,6 @@ The answer for the question
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
 
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
-
 ## `allowThousandsSeparator` (boolean)
 
 Indicates if thousand separators are allowed
@@ -127,10 +123,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 ## `allowThousandsSeparator` (boolean)
 
@@ -286,10 +278,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-### `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 ### `allowThousandsSeparator` (boolean)
 
