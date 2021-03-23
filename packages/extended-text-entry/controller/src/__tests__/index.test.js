@@ -51,6 +51,7 @@ describe('controller', () => {
       const result = await model(question, session, env);
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: false,
@@ -65,6 +66,7 @@ describe('controller', () => {
       const result = await model(q({ promptEnabled: false }), session, env);
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: null,
         dimensions: defaults.dimensions,
         disabled: false,
@@ -79,6 +81,7 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'view' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
@@ -93,6 +96,7 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'view', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
@@ -107,6 +111,7 @@ describe('controller', () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'view', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
@@ -121,6 +126,7 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'evaluate' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
@@ -135,6 +141,7 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'evaluate', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
@@ -148,6 +155,7 @@ describe('controller', () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'evaluate', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,

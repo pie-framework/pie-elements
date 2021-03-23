@@ -61,7 +61,7 @@ export class Main extends React.Component {
             disabled={true}
             domain={domain}
             labels={labels}
-            marks={correctResponse}
+            marks={correctResponse.map(i => ({ ...i, correctness: 'correct' }))}
             onChangeMarks={onAnswersChange}
             range={range}
             size={size}

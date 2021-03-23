@@ -1,19 +1,40 @@
-exports.model = (id, element) => ({
-  id,
-  element,
+const initialModel = {
   customKeys: [],
   equationEditor: 'geometry',
   responseType: 'Advanced Multi',
   expression: '{{response}}',
   responses: [
     {
-      allowSpaces: true,
-      answer: 'r=\\sqrt{\\frac{V}{7\\pi}}',
+      answer: 'y=3x-5\\cdot6+8\\cdot3+1+\\frac{4}{10}',
       id: '1',
       alternates: {},
-      validation: 'literal'
+      validation: 'literal',
+      ignoreOrder: true
     }
   ],
   rationale:
     '<p>The correct answer is:</p><ul><li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><msqrt><mfrac><mi>V</mi><mrow><mn>7</mn><mi>&#960;</mi></mrow></mfrac></msqrt></math></li></ul>',
+}
+
+const E262456 = {
+  'equationEditor': 3,
+  'prompt': '<p><strong>B.</strong> Find the value of the expression that you wrote in part A to find how much money the band members made.</p>\n\n<p>Use the on-screen keyboard to type your answer in the box below.</p>\n',
+  'expression': '${{response}}',
+  'responses': [
+    {
+      'allowSpaces': true,
+      'validation': 'literal',
+      'answer': '2+1<a+1<c+3',
+      'id': '1',
+      'ignoreOrder': true
+    }
+  ],
+  'responseType': 'Advanced Multi'
+}
+
+
+exports.model = (id, element) => ({
+  id,
+  element,
+  ...initialModel
 });

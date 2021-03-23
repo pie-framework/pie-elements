@@ -163,7 +163,7 @@ const styles = theme => ({
     padding: 0
   },
   rowItem: {
-    padding: '12px 6px',
+    padding: '6px 12px',
     textAlign: 'center'
   },
   separator: {

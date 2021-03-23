@@ -40,7 +40,10 @@ export default class MathInline extends HTMLElement {
   }
 
   sessionChanged(s) {
-    this._session = s;
+    Object.keys(s).map(key => {
+      this._session[key] = s[key];
+    });
+
     this.sessionChangedEventCaller(this._session);
     log('session: ', this._session);
   }

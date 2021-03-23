@@ -36,7 +36,6 @@ export default {
     backgroundColor: 'white',
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
     borderRadius: '4px',
     padding: '1px'
   },
@@ -55,10 +54,15 @@ export default {
   },
   elementSelector: Object.assign(
     {
+      width: '55%',
       padding: '1px'
     },
     noselect()
   ),
+  controls: {
+    display: 'flex',
+    paddingTop: '7px'
+  },
   pf: styleElement(0),
   lff: styleElement(1),
   lef: styleElement(2),

@@ -12,10 +12,6 @@ const decimalCommaRegex = /,/g;
 const textRegex = /\\text\{([^{}]+)\}/g;
 const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
 
-function trimSpaces(str = '') {
-  return str.replace(/\\ /g, '').replace(/ /g, '');
-}
-
 /**
  * TODO:
  *
@@ -145,24 +141,64 @@ function parseByPlus(expression) {
   return result.sort().join('+');
 }
 
-function processIgnoreOrder(expression) {
-  const splitted = expression.split('=');
-  let [left, right] = splitted.sort();
-
-  console.log('left', left);
-  console.log('right', right);
-
-  left = parseByPlus(left);
-
-  if (right) {
-    right = parseByPlus(right);
-
-    return [left, right].sort().join('=');
-  }
-
-  return left;
+function getOppositeSign(sign) {
+  if (sign === '<')
+    return '>';
+  if (sign === '>')
+    return '<';
+  if (sign === 'ge')
+    return 'le';
+  if (sign === 'le')
+    return 'ge';
 }
 
+function parseBySign(expression) {
+  const splittedExpression = expression.split(/>|<|le|ge/gi);
+  const splittedSigns = expression.match(/>|<|le|ge/gi);
+
+  const result = splittedExpression.map((expr, index) => {
+    const parsedExpression = parseByPlus(expr);
+    const sign = splittedSigns && splittedSigns[index];
+
+    if (sign) {
+      return parsedExpression.concat(sign);
+    }
+
+    return parsedExpression;
+  });
+
+  return result.join('');
+}
+
+function processIgnoreOrder(expression) {
+  const splittedExpression = expression.split('=').sort();
+  const result = splittedExpression.map(expr => parseBySign(expr));
+
+  return result.sort().join('=');
+}
+
+function processReversedOrder(expression) {
+  const splittedByEqual = expression.split('=');
+
+  const res = splittedByEqual.map(exp => {
+    const splittedExpression = exp.split(/>|<|le|ge/gi).reverse();
+    const splittedSigns = exp.match(/>|<|le|ge/gi);
+
+    const result = splittedExpression.map((expr, index) => {
+      const sign = splittedSigns && splittedSigns[index];
+
+      if (sign) {
+        return expr.concat(getOppositeSign(sign));
+      }
+
+      return expr;
+    });
+
+    return result.join('');
+  });
+
+  return res.join('=');
+}
 
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
@@ -171,62 +207,56 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
     // if not already deemed correct for one of the correct responses
     if (!answerCorrect) {
       const acceptedValues = [correctResponse.answer].concat(
-          Object.keys(correctResponse.alternates || {}).map(
-              alternateId => correctResponse.alternates[alternateId]
-          )
+        Object.keys(correctResponse.alternates || {}).map(
+          alternateId => correctResponse.alternates[alternateId]
+        )
       );
 
       if (correctResponse.validation === 'literal') {
         for (let i = 0; i < acceptedValues.length; i++) {
           let answerValueToUse = processAnswerItem(answerItem, true);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
-          console.log('answerValueToUse', answerValueToUse);
-          console.log('acceptedValueToUse', acceptedValueToUse);
 
           if (correctResponse.allowThousandsSeparator) {
             if (
-                containsDecimal(answerValueToUse) &&
-                decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
+              containsDecimal(answerValueToUse) &&
+              decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
             ) {
               answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
             }
 
             if (
-                containsDecimal(acceptedValueToUse) &&
-                decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
+              containsDecimal(acceptedValueToUse) &&
+              decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
             ) {
               acceptedValueToUse = acceptedValueToUse.replace(
-                  decimalCommaRegex,
-                  ''
+                decimalCommaRegex,
+                ''
               );
             }
           }
 
-          if (correctResponse.allowSpaces) {
-            if (
-                acceptedValueToUse === trimSpaces(answerValueToUse) ||
-                acceptedValueToUse === answerValueToUse ||
-                trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-            ) {
-              answerCorrect = true;
-              // break;
-            }
-          } else if (acceptedValueToUse === answerValueToUse) {
+          if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
-            // break;
+            break;
           }
 
-          const ignoreOrder = true;
-          if (ignoreOrder) {
+          if (correctResponse.ignoreOrder) {
             const processedAnswerValueToUse = processIgnoreOrder(answerValueToUse);
             const processedAcceptedValueToUse = processIgnoreOrder(acceptedValueToUse);
-
-            console.log('processedAnswerValueToUse', processedAnswerValueToUse);
-            console.log('processedAcceptedValueToUse', processedAcceptedValueToUse);
 
             if (processedAnswerValueToUse === processedAcceptedValueToUse) {
               answerCorrect = true;
               break;
+            }
+
+            if (answerValueToUse.match(/>|<|le|ge/gi)) {
+              const reversedAnswerValueToUse = processReversedOrder(processedAnswerValueToUse);
+
+              if (reversedAnswerValueToUse === processedAcceptedValueToUse) {
+                answerCorrect = true;
+                break;
+              }
             }
           }
         }
@@ -237,12 +267,12 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
             // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
 
             answerCorrect = areValuesEqual(
-                processAnswerItem(acceptedValues[i]),
-                processAnswerItem(answerItem),
-                {
-                  isLatex: true,
-                  allowThousandsSeparator: correctResponse.allowThousandsSeparator
-                }
+              processAnswerItem(acceptedValues[i]),
+              processAnswerItem(answerItem),
+              {
+                isLatex: true,
+                allowThousandsSeparator: correctResponse.allowThousandsSeparator
+              }
             );
             if (answerCorrect) {
               break;
@@ -250,10 +280,10 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
           }
         } catch (e) {
           log(
-              'Parse failure when evaluating math',
-              e,
-              correctResponse,
-              answerItem
+            'Parse failure when evaluating math',
+            e,
+            correctResponse,
+            answerItem
           );
           // try to string check compare, last resort?
           // once invalid models have been weeded out, this'll get removed.
@@ -394,50 +424,58 @@ const simpleSessionResponse = question =>
   });
 
 const advancedSessionResponse = question =>
-  new Promise((resolve, reject) => {
-    try {
-      const { responses } = question;
-      const { answer } = responses ? responses[0] : {};
-      const e = question.expression;
-      const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
+new Promise((resolve, reject) => {
+  const { responses } = question;
+  const { answer } = responses ? responses[0] : {};
 
-      const o = escape(e).split(RESPONSE_TOKEN);
+  try {
+    const e = question.expression;
+    const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
 
-      const to = o.map(t => {
-        if (t === '') {
-          return '';
-        } else {
-          const out = t.replace(/\s+/g, () => {
-            return '\\s*';
-          });
-          return out;
-        }
-      });
+    const o = escape(e).split(RESPONSE_TOKEN);
+    const to = o.map(t => (t === '' ? t : t.replace(/\s+/g, () => ('\\s*'))));
+    const tt = to.join('(.*)');
 
-      const tt = to.join('(.*)');
+    const m = answer.match(new RegExp(tt));
 
-      const m = answer.match(new RegExp(tt));
+    const count = o.length - 1;
 
-      const count = o.length - 1;
-      if (!m) {
-        reject(new Error(`can not find match: ${o} in ${answer}`));
-        return;
-      }
-
-      m.shift();
-      const answers = {};
-      for (var i = 0; i < count; i++) {
-        answers[`r${i + 1}`] = { value: m[i].trim() };
-      }
+    if (!m) {
       resolve({
-        answers,
+        answers: {},
         completeAnswer: answer,
         id: question.id
       });
-    } catch (e) {
-      reject(e);
+
+      console.log(`can not find match: ${o} in ${answer}`);
+
+      return;
     }
-  });
+
+    m.shift();
+
+    const answers = {};
+
+    for (var i = 0; i < count; i++) {
+      answers[`r${i + 1}`] = { value: m[i].trim() };
+    }
+
+    resolve({
+      answers,
+      completeAnswer: answer,
+      id: question.id
+    });
+  } catch (e) {
+    resolve({
+      answers: {},
+      completeAnswer: answer,
+      id: question.id
+    });
+
+    console.error(e.toString());
+  }
+});
+
 
 export const createCorrectResponseSession = (question, env) => {
   if (env.mode === 'evaluate' || env.role !== 'instructor') {

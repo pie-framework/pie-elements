@@ -87,6 +87,7 @@ export class Main extends React.Component {
           pluginProps={{
             math: {
               disabled: !mathInput,
+              customKeys: this.props.model.customKeys,
               keypadMode: this.props.model.equationEditor,
               controlledKeypadMode: false
             },

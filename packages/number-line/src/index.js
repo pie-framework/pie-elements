@@ -104,6 +104,18 @@ export default class NumberLine extends HTMLElement {
     this._render();
   }
 
+  undoElement() {
+    this._session.answer.pop();
+    this.dispatchSessionChanged();
+    this._render();
+  }
+
+  clearElements() {
+    this._session.answer = [];
+    this.dispatchSessionChanged();
+    this._render();
+  }
+
   _applyInitialElements() {
     if (
       this._model &&
@@ -129,7 +141,9 @@ export default class NumberLine extends HTMLElement {
           answer,
           onAddElement: this.addElement.bind(this),
           onMoveElement: this.moveElement.bind(this),
-          onDeleteElements: this.deleteElements.bind(this)
+          onDeleteElements: this.deleteElements.bind(this),
+          onUndoElement: this.undoElement.bind(this),
+          onClearElements: this.clearElements.bind(this)
         };
 
         let el = React.createElement(RootComponent, props);

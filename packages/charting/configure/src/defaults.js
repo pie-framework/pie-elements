@@ -36,7 +36,6 @@ export default {
       label: 'Amount',
       max: 5.5,
       min: 0,
-      labelStep: 1,
     },
     scoringType: 'all or nothing',
     title: 'This is a chart!',
