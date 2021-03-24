@@ -119,7 +119,6 @@ class Response extends React.Component {
     newResponse[name] = evt.target.value;
 
     if (name === 'validation' && evt.target.value === 'symbolic') {
-      newResponse.allowThousandsSeparator = true;
       newResponse.allowSpaces = true;
     }
 
@@ -240,7 +239,6 @@ class Response extends React.Component {
       validation,
       answer,
       alternates,
-      allowThousandsSeparator = false,
       allowSpaces
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
@@ -329,16 +327,6 @@ class Response extends React.Component {
                 ADD ALTERNATE
               </Button>
               <div className={classes.checkboxContainer}>
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Thousands Separators (Commas)"
-                  control={
-                    <Checkbox
-                      checked={allowThousandsSeparator}
-                      onChange={this.onConfigChanged('allowThousandsSeparator')}
-                    />
-                  }
-                />
                 <FormControlLabel
                   classes={{ root: classes.configLabel }}
                   label="Allow Extra Spaces"
