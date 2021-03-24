@@ -108,7 +108,7 @@ function stripForStringCompare(answer = '') {
 function removeTrailingZeros(answer = '') {
   answer = answer.replace( /[^\d.]*/g, '');
 
-  return parseFloat(answer) ? parseFloat(answer).toString() : '';
+  return parseFloat(answer) ? parseFloat(answer).toString() : answer;
 }
 
 function handleStringBasedCheck(acceptedValues, answerItem) {
@@ -162,6 +162,11 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, allowTrailingZeros)
                 ''
               );
             }
+          }
+
+          if (allowTrailingZeros) {
+            acceptedValueToUse = removeTrailingZeros(acceptedValueToUse);
+            answerValueToUse = removeTrailingZeros(answerValueToUse);
           }
 
           if (acceptedValueToUse === answerValueToUse) {
