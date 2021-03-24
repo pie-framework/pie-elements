@@ -266,11 +266,6 @@
             },
             "title": "alternates"
           },
-          "allowSpaces": {
-            "description": "Indicates if spaces are allowed",
-            "type": "boolean",
-            "title": "allowSpaces"
-          },
           "allowThousandsSeparator": {
             "description": "Indicates if thousand separators are allowed",
             "type": "boolean",
@@ -362,11 +357,6 @@
             }
           },
           "title": "alternates"
-        },
-        "allowSpaces": {
-          "description": "Indicates if spaces are allowed",
-          "type": "boolean",
-          "title": "allowSpaces"
         },
         "allowThousandsSeparator": {
           "description": "Indicates if thousand separators are allowed",
@@ -742,11 +732,6 @@
             }
           },
           "title": "alternates"
-        },
-        "allowSpaces": {
-          "description": "Indicates if spaces are allowed",
-          "type": "boolean",
-          "title": "allowSpaces"
         },
         "allowThousandsSeparator": {
           "description": "Indicates if thousand separators are allowed",

@@ -12,10 +12,6 @@ const decimalCommaRegex = /,/g;
 const textRegex = /\\text\{([^{}]+)\}/g;
 const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
 
-function trimSpaces(str = '') {
-  return str.replace(/\\ /g, '').replace(/ /g, '');
-}
-
 /**
  * TODO:
  *
@@ -168,21 +164,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem, allowTrailingZeros)
             }
           }
 
-          if (allowTrailingZeros) {
-            acceptedValueToUse = removeTrailingZeros(acceptedValueToUse);
-            answerValueToUse = removeTrailingZeros(answerValueToUse);
-          }
-
-          if (correctResponse.allowSpaces) {
-            if (
-              acceptedValueToUse === trimSpaces(answerValueToUse) ||
-              acceptedValueToUse === answerValueToUse ||
-              trimSpaces(acceptedValueToUse) === trimSpaces(answerValueToUse)
-            ) {
-              answerCorrect = true;
-              break;
-            }
-          } else if (acceptedValueToUse === answerValueToUse) {
+          if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
             break;
           }

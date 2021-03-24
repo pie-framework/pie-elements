@@ -303,7 +303,6 @@ class GeneralConfigBlock extends React.Component {
       validation: 'literal',
       answer: '',
       alternates: {},
-      allowSpaces: true,
       allowThousandsSeparator: true,
     };
 

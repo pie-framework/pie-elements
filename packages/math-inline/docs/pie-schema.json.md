@@ -92,10 +92,6 @@ The answer for the question
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
 
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
-
 ## `allowThousandsSeparator` (boolean)
 
 Indicates if thousand separators are allowed
@@ -146,10 +142,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 ## `allowThousandsSeparator` (boolean)
 
@@ -305,10 +297,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-### `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 ### `allowThousandsSeparator` (boolean)
 
