@@ -92,10 +92,6 @@ The answer for the question
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
 
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
-
 # `defaultResponse` (object)
 
 Properties of the `defaultResponse` object:
@@ -123,10 +119,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-## `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 # `partialScoring` (boolean)
 
@@ -278,10 +270,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-### `allowSpaces` (boolean)
-
-Indicates if spaces are allowed
 
 ## `Alternate` (object)
 

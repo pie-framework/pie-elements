@@ -118,10 +118,6 @@ class Response extends React.Component {
 
     newResponse[name] = evt.target.value;
 
-    if (name === 'validation' && evt.target.value === 'symbolic') {
-      newResponse.allowSpaces = true;
-    }
-
     onResponseChange(newResponse, index);
   };
 
@@ -239,7 +235,6 @@ class Response extends React.Component {
       validation,
       answer,
       alternates,
-      allowSpaces
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
@@ -327,16 +322,6 @@ class Response extends React.Component {
                 ADD ALTERNATE
               </Button>
               <div className={classes.checkboxContainer}>
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Extra Spaces"
-                  control={
-                    <Checkbox
-                      checked={allowSpaces}
-                      onChange={this.onConfigChanged('allowSpaces')}
-                    />
-                  }
-                />
               </div>
             </div>
           )}
