@@ -7,6 +7,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <Panel
         configuration={
           Object {
+            "allowTrailingZerosConfig": Object {
+              "label": "Allow Trailing Zeros",
+              "settings": true,
+            },
             "feedback": Object {
               "label": "Feedback",
               "settings": true,
@@ -50,6 +54,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "allowTrailingZeros.enabled": undefined,
               "feedbackEnabled": undefined,
               "promptEnabled": undefined,
               "responseType": undefined,
@@ -58,6 +63,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
         }
         model={
           Object {
+            "allowTrailingZeros": Object {
+              "default": true,
+              "enabled": true,
+              "label": "Allow Trailing Zeros",
+            },
             "configure": undefined,
             "customKeys": Array [
               "\\\\left(\\\\right)",
@@ -125,6 +135,10 @@ exports[`Configure renders correctly with snapshot 1`] = `
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
+              "allowTrailingZerosConfig": Object {
+                "label": "Allow Trailing Zeros",
+                "settings": true,
+              },
               "feedback": Object {
                 "label": "Feedback",
                 "settings": true,
@@ -161,6 +175,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
           }
           model={
             Object {
+              "allowTrailingZeros": Object {
+                "default": true,
+                "enabled": true,
+                "label": "Allow Trailing Zeros",
+              },
               "configure": undefined,
               "customKeys": Array [
                 "\\\\left(\\\\right)",
@@ -403,10 +422,18 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     </WithStyles(Button)>
   </div>
   <WithStyles(Response)
+    allowTrailingZeros={
+      Object {
+        "default": true,
+        "enabled": true,
+        "label": "Allow Trailing Zeros",
+      }
+    }
     defaultResponse={false}
     index={0}
     key="1"
     mode="3"
+    onAllowTrailingZerosChange={[Function]}
     onResponseChange={[Function]}
     response={
       Object {

@@ -71,7 +71,8 @@ export class Configure extends React.Component {
       studentInstructions = {},
       rationale = {},
       prompt = {},
-      scoringType = {}
+      scoringType = {},
+      allowTrailingZerosConfig = {}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
@@ -92,7 +93,9 @@ export class Configure extends React.Component {
                   feedbackEnabled: feedback.settings &&
                     toggle(feedback.label),
                   'promptEnabled': prompt.settings &&
-                    toggle(prompt.label)
+                    toggle(prompt.label),
+                  'allowTrailingZeros.enabled':  allowTrailingZerosConfig.settings &&
+                    toggle(allowTrailingZerosConfig.label)
                 },
                 'Properties': {
                   teacherInstructionsEnabled: teacherInstructions.settings &&

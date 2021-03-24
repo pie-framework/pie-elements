@@ -86,7 +86,12 @@ const defaultProps = {
       }
     ],
     customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
-    configure: defaultValues.configure
+    configure: defaultValues.configure,
+    allowTrailingZeros: {
+      enabled: true,
+      label: 'Allow Trailing Zeros',
+      default: true
+    }
   },
   configuration: defaultValues.configuration
 };

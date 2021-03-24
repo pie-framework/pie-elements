@@ -28,8 +28,13 @@ const E262456 = {
       'id': '1'
     }
   ],
-  'responseType': 'Advanced Multi'
-}
+  'responseType': 'Advanced Multi',
+  'allowTrailingZeros': {
+    enabled: true,
+    label: 'Allow Trailing Zeros',
+    default: true
+  }
+};
 
 
 exports.model = (id, element) => ({

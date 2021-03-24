@@ -323,6 +323,14 @@ class GeneralConfigBlock extends React.Component {
     onChange(newModel);
   };
 
+  onAllowTrailingZerosChange = (allow) => {
+    const { model, onChange } = this.props;
+    const newModel = { ...model };
+
+    newModel.allowTrailingZeros.default = allow;
+    onChange(newModel);
+  };
+
   render() {
     const {
       classes,
@@ -341,6 +349,7 @@ class GeneralConfigBlock extends React.Component {
       responses,
       responseType,
       rationale,
+      allowTrailingZeros
     } = model;
     const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
 
@@ -462,10 +471,12 @@ class GeneralConfigBlock extends React.Component {
         {responsesToUse.map((response, idx) => (
           <Response
             key={response.id}
+            allowTrailingZeros={allowTrailingZeros}
             mode={equationEditor}
             response={response}
             defaultResponse={responseType === ResponseTypes.simple}
             onResponseChange={this.onResponseChange}
+            onAllowTrailingZerosChange={this.onAllowTrailingZerosChange}
             index={idx}
           />
         ))}

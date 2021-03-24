@@ -81,6 +81,19 @@ export interface MathInlinePie extends PieModel {
     /** Array of all correct responses; if responseType is Simple, only first element in array is used */
     responses: MathInlineResponse[];
 
+    /** Indicates if trailing zeros are allowed */
+    allowTrailingZeros?: {
+        /** Indicates if an author or editor will have access to this item configuration */
+        enabled?: boolean,
+        /** Indicates how the checkbox will be labeled in the UI */
+        label?: string,
+        /**
+         * If enabled is true, indicates the default state of the Allow Trailing Zeros checkbox
+         * If enabled is false, indicates if trailing zeros are allowed
+         */
+        default?: boolean
+    };
+
     /**
      * Default correct response
      * if not set, default value will be responses[0]
@@ -161,4 +174,9 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
      * Teacher Instructions configuration
      */
     teacherInstructions?: ConfigureProp;
+
+    /**
+     * Allow Trailing Zeros configuration
+     */
+    allowTrailingZerosConfig?: ConfigureProp;
 }

@@ -68,7 +68,8 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
-    answerItem
+    answerItem,
+    model.allowTrailingZeros.default
   );
   const correctnessObject = {
     correctness: 'incorrect',
@@ -108,6 +109,12 @@ function stripForStringCompare(answer = '') {
   return stripped;
 }
 
+function removeTrailingZeros(answer = '') {
+  answer = answer.replace( /[^\d.]*/g, '');
+
+  return parseFloat(answer) ? parseFloat(answer).toString() : '';
+}
+
 function handleStringBasedCheck(acceptedValues, answerItem) {
   let answerValueToUse = processAnswerItem(answerItem, true);
   let answerCorrect = false;
@@ -125,7 +132,7 @@ function handleStringBasedCheck(acceptedValues, answerItem) {
   return answerCorrect;
 }
 
-function getIsAnswerCorrect(correctResponseItem, answerItem) {
+function getIsAnswerCorrect(correctResponseItem, answerItem, allowTrailingZeros) {
   let answerCorrect = false;
 
   correctResponseItem.forEach(correctResponse => {
@@ -159,6 +166,11 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
                 ''
               );
             }
+          }
+
+          if (allowTrailingZeros) {
+            acceptedValueToUse = removeTrailingZeros(acceptedValueToUse);
+            answerValueToUse = removeTrailingZeros(answerValueToUse);
           }
 
           if (correctResponse.allowSpaces) {

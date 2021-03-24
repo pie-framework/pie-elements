@@ -38,8 +38,8 @@ This element must be one of the following enum values:
 * `6`
 * `8`
 * `advanced-algebra`
-* `miscellaneous`
 * `geometry`
+* `miscellaneous`
 * `statistics`
 
 Default: `"- miscellaneous"`
@@ -99,6 +99,25 @@ Indicates if spaces are allowed
 ## `allowThousandsSeparator` (boolean)
 
 Indicates if thousand separators are allowed
+
+# `allowTrailingZeros` (object)
+
+Indicates if trailing zeros are allowed
+
+Properties of the `allowTrailingZeros` object:
+
+## `enabled` (boolean)
+
+Indicates if an author or editor will have access to this item configuration
+
+## `label` (string)
+
+Indicates how the checkbox will be labeled in the UI
+
+## `default` (boolean)
+
+If enabled is true, indicates the default state of the Allow Trailing Zeros checkbox
+If enabled is false, indicates if trailing zeros are allowed
 
 # `defaultResponse` (object)
 

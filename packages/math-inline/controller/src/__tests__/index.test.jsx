@@ -18,6 +18,11 @@ const defaultModel = {
       validation: 'literal'
     }
   ],
+  allowTrailingZeros: {
+    enabled: true,
+    label: 'Allow Trailing Zeros',
+    default: true
+  },
   customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   id: 1
 };
@@ -289,6 +294,64 @@ describe('model', () => {
 
       expect(result.correctness.correctness).toEqual('correct');
       expect(result.correctness.score).toEqual('100%');
+    });
+
+    it('returns correct for correctness if allowTrailingZeros.enabled is false and allowTrailingZeros.default is true', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responses: [
+          {
+            allowSpaces: true,
+            answer: '\\frac{4}{15.00}\\ \\text{square}\\ \\text{inches}',
+            id: '1',
+            alternates: {},
+            validation: 'literal'
+          }
+        ],
+        allowTrailingZeros: {
+          enabled: false,
+          label: 'Allow Trailing Zeros',
+          default: true
+        },
+      })
+      session = {
+        completeAnswer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('correct');
+      expect(result.correctness.score).toEqual('100%');
+    });
+
+    it('returns incorrect for correctness allowTrailingZeros.enabled is false and allowTrailingZeros.default is false', async () => {
+      question = mkQuestion({
+        ...defaultModel,
+        responses: [
+          {
+            allowSpaces: true,
+            answer: '41.20000',
+            id: '1',
+            alternates: {},
+            validation: 'literal'
+          }
+        ],
+        allowTrailingZeros: {
+          enabled: false,
+          label: 'Allow Trailing Zeros',
+          default: false
+        },
+      });
+      session = {
+        completeAnswer: '41.2'
+      };
+
+      env = { mode: 'evaluate' };
+      result = await model(question, session, env);
+
+      expect(result.correctness.correctness).toEqual('incorrect');
+      expect(result.correctness.score).toEqual('0%');
     });
 
     describe('all responses are checked', () => {
@@ -700,7 +763,12 @@ describe('createCorrectResponseSession', () => {
           '\\frac{}{}',
           'x^{}',
           '\\left(\\right)'
-        ]
+        ],
+        allowTrailingZeros: {
+          enabled: false,
+          label: '',
+          default: false
+        }
       };
       const session = {
         id: '1',
@@ -745,7 +813,12 @@ describe('6456 - outcome', () => {
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline',
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 0', async () => {
@@ -791,7 +864,12 @@ describe('6371', () => {
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline'.trim(),
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -825,7 +903,12 @@ describe('3826', () => {
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline',
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -884,6 +967,11 @@ describe('PD-66', () => {
         validation: 'equivLiteral',
       },
     ],
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -961,6 +1049,11 @@ describe('PD-205', () => {
         validation: 'equivLiteral',
       },
     ],
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -1000,6 +1093,11 @@ describe('PD-610', () => {
         allowSpaces: true,
       }
     ],
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -1050,6 +1148,11 @@ describe('PD-610', () => {
         allowSpaces: true,
       }
     ],
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
@@ -1100,6 +1203,11 @@ describe('PD-610', () => {
         allowSpaces: true,
       }
     ],
+    allowTrailingZeros: {
+      enabled: false,
+      label: '',
+      default: false
+    }
   };
 
   it('scores 1', async () => {
