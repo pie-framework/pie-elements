@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerArea render renders correctly 1`] = `
+<div>
+  <div
+    key="0"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Prompt 1",
+        }
+      }
+    />
+    <div>
+      <WithStyles(Arrow)
+        direction="left"
+      />
+      <WithStyles(Arrow) />
+    </div>
+    <DragSource(DropTarget(WithStyles(Answer)))
+      draggable={false}
+      index={0}
+      key="0"
+      onPlaceAnswer={[Function]}
+      onRemoveChoice={[Function]}
+      promptId={1}
+      type="target"
+    />
+  </div>
+  <div
+    key="1"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Prompt 3",
+        }
+      }
+    />
+    <div>
+      <WithStyles(Arrow)
+        direction="left"
+      />
+      <WithStyles(Arrow) />
+    </div>
+    <DragSource(DropTarget(WithStyles(Answer)))
+      draggable={false}
+      index={1}
+      key="1"
+      onPlaceAnswer={[Function]}
+      onRemoveChoice={[Function]}
+      promptId={3}
+      type="target"
+    />
+  </div>
+  <div
+    key="2"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Prompt 4",
+        }
+      }
+    />
+    <div>
+      <WithStyles(Arrow)
+        direction="left"
+      />
+      <WithStyles(Arrow) />
+    </div>
+    <DragSource(DropTarget(WithStyles(Answer)))
+      draggable={false}
+      index={2}
+      key="2"
+      onPlaceAnswer={[Function]}
+      onRemoveChoice={[Function]}
+      promptId={4}
+      type="target"
+    />
+  </div>
+  <div
+    key="3"
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Prompt 2",
+        }
+      }
+    />
+    <div>
+      <WithStyles(Arrow)
+        direction="left"
+      />
+      <WithStyles(Arrow) />
+    </div>
+    <DragSource(DropTarget(WithStyles(Answer)))
+      draggable={false}
+      index={3}
+      key="3"
+      onPlaceAnswer={[Function]}
+      onRemoveChoice={[Function]}
+      promptId={2}
+      type="target"
+    />
+  </div>
+</div>
+`;

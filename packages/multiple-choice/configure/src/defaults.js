@@ -16,9 +16,14 @@ export default {
     rationaleEnabled: true,
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    verticalMode: true
   },
   configuration: {
+    verticalMode: {
+      settings: false,
+      label: 'Vertical Layout',
+    },
     answerChoiceCount: 0,
     addChoiceButton: {
       settings: true,

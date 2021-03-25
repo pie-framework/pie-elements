@@ -104,7 +104,7 @@ const MatrixLabelEditableButton = (props) => {
   const [scoreValue, setScoreValue] = useState('');
   const [showInput, setShowInput] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [scoresToRef, setScoresToRef] = React.useState(React.createRef());
+  const [scoresToRef,] = React.useState(React.createRef());
 
   const open = Boolean(anchorEl);
 

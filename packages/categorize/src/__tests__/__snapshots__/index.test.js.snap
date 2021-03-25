@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`categorize renders snapshot 1`] = `
+<div>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+            "correctResponse": Array [],
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+          "correctResponse": Array [],
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`categorize renders snapshot with rationale 1`] = `
+<div>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+            "correctResponse": Array [],
+            "rationale": "This is rationale",
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+          "correctResponse": Array [],
+          "rationale": "This is rationale",
+        }
+      }
+    />
+  </div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "This is rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+</div>
+`;
+
+exports[`categorize renders snapshot with teacherInstructions 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "These are teacher instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "flexDirection": "column-reverse",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <WithStyles(Categories)
+        categories={Array []}
+        model={
+          Object {
+            "categories": Array [],
+            "choices": Array [],
+            "correctResponse": Array [],
+            "teacherInstructions": "These are teacher instructions",
+          }
+        }
+        onDropChoice={[Function]}
+        onRemoveChoice={[Function]}
+      />
+    </div>
+    <WithStyles(Choices)
+      choicePosition="above"
+      choices={Array []}
+      model={
+        Object {
+          "categories": Array [],
+          "choices": Array [],
+          "correctResponse": Array [],
+          "teacherInstructions": "These are teacher instructions",
+        }
+      }
+    />
+  </div>
+</div>
+`;

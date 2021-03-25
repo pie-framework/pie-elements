@@ -11,12 +11,24 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/match-list": "^1.6.9"
-  },
-  "pie": {
-    "element": "@pie-ui/match-list"
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/correct-answer-toggle": "^2.3.21",
+    "@pie-lib/drag": "^1.1.50",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dnd": "^9.3.2",
+    "react-dom": "^16.8.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Container snapshots answers renders 1`] = `
+<ImageContainer
+  0={
+    Object {
+      "containerIndex": 0,
+      "id": 1,
+      "value": "1",
+    }
+  }
+  1={
+    Object {
+      "containerIndex": 1,
+      "id": 2,
+      "value": "2",
+    }
+  }
+  answers={Array []}
+  canDrag={true}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={Object {}}
+  duplicateResponses={false}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+/>
+`;
+
+exports[`Image Container snapshots canDrag renders 1`] = `
+<ImageContainer
+  answers={Array []}
+  canDrag={false}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={Object {}}
+  duplicateResponses={false}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+/>
+`;
+
+exports[`Image Container snapshots draggingElement renders 1`] = `
+<ImageContainer
+  answers={Array []}
+  canDrag={true}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={
+    Object {
+      "containerIndex": 1,
+      "id": 2,
+      "value": "2",
+    }
+  }
+  duplicateResponses={false}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+/>
+`;
+
+exports[`Image Container snapshots image renders 1`] = `
+<ImageContainer
+  answers={Array []}
+  canDrag={true}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={Object {}}
+  duplicateResponses={false}
+  height={0}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+  scale={false}
+  src="https://picsum.photos/id/102/200/300"
+  width={0}
+/>
+`;
+
+exports[`Image Container snapshots responseContainers renders 1`] = `
+<ImageContainer
+  0={
+    Object {
+      "height": "0%",
+      "width": "0%",
+      "x": 0,
+      "y": 0,
+    }
+  }
+  1={
+    Object {
+      "height": "1%",
+      "width": "1%",
+      "x": 1,
+      "y": 1,
+    }
+  }
+  answers={Array []}
+  canDrag={true}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={Object {}}
+  duplicateResponses={false}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+/>
+`;

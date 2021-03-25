@@ -59,15 +59,15 @@ class ElementsCommands extends Commands {
     );
   }
 
-  sharedBuild() {
-    return this.runCmd(
-      `yarn pslb --publishLibs --token ${args.token} --cleanLibs --logLevel info`
-    );
-  }
+  // sharedBuild() {
+  //   return this.runCmd(
+  //     `yarn pslb --publishLibs --token ${args.token} --cleanLibs --logLevel info`
+  //   );
+  // }
 
-  build() {
-    return super.build().then(() => this.sharedBuild());
-  }
+  // build() {
+  //   return super.build().then(() => this.sharedBuild());
+  // }
 
   babel() {
     return Promise.all(

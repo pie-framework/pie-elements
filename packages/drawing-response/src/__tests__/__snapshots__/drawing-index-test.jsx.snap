@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawingResponse snapshots renders 1`] = `
+<DrawingResponseComponent
+  classes={
+    Object {
+      "prompt": "DrawingResponseComponent-prompt-1",
+    }
+  }
+  model={
+    Object {
+      "disabled": false,
+      "imageDimensions": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "imageUrl": "",
+      "mode": "gather",
+      "prompt": "This is the question prompt",
+    }
+  }
+/>
+`;

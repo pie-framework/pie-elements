@@ -6,13 +6,25 @@
     "access": "public"
   },
   "dependencies": {
-    "@pie-ui/multiple-choice": "^4.15.12"
-  },
-  "pie": {
-    "element": "@pie-ui/multiple-choice"
+    "@material-ui/core": "^3.9.2",
+    "@pie-lib/config-ui": "^10.8.54",
+    "@pie-lib/correct-answer-toggle": "^2.3.21",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "debug": "^4.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-test-renderer": "^16.3.2",
+    "react-transition-group": "^2.3.1"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
-  }
+  },
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

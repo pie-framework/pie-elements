@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`categories snapshots disabled 1`] = `
+<WithStyles(GridContent)
+  columns={1}
+  rows={2}
+>
+  <WithStyles(Typography)
+    key="category-label-category label"
+  >
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "category label",
+        }
+      }
+    />
+  </WithStyles(Typography)>
+  <WithStyles(Category)
+    choices={Array []}
+    disabled={true}
+    grid={
+      Object {
+        "columns": 1,
+        "rows": 1,
+      }
+    }
+    id="1"
+    key="0"
+    label="category label"
+    onDropChoice={[Function]}
+    onRemoveChoice={[MockFunction]}
+  />
+</WithStyles(GridContent)>
+`;
+
+exports[`categories snapshots renders 1`] = `
+<WithStyles(GridContent)
+  columns={1}
+  rows={2}
+>
+  <WithStyles(Typography)
+    key="category-label-category label"
+  >
+    <span
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "category label",
+        }
+      }
+    />
+  </WithStyles(Typography)>
+  <WithStyles(Category)
+    choices={Array []}
+    grid={
+      Object {
+        "columns": 1,
+        "rows": 1,
+      }
+    }
+    id="1"
+    key="0"
+    label="category label"
+    onDropChoice={[Function]}
+    onRemoveChoice={[MockFunction]}
+  />
+</WithStyles(GridContent)>
+`;

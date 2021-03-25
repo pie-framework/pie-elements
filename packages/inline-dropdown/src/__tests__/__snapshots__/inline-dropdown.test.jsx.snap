@@ -1,0 +1,748 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineDropdown render should render in evaluate mode 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Teacher Instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={true}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Prompt",
+      }
+    }
+  />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="evaluate"
+    onChange={[MockFunction]}
+    prompt="Prompt"
+    rationale="Rationale"
+    showCorrectAnswer={false}
+    teacherInstructions="Teacher Instructions"
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`InlineDropdown render should render in gather mode 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Teacher Instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Prompt",
+      }
+    }
+  />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="gather"
+    onChange={[MockFunction]}
+    prompt="Prompt"
+    rationale="Rationale"
+    showCorrectAnswer={false}
+    teacherInstructions="Teacher Instructions"
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`InlineDropdown render should render in view mode 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Teacher Instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Prompt",
+      }
+    }
+  />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="view"
+    onChange={[MockFunction]}
+    prompt="Prompt"
+    rationale="Rationale"
+    showCorrectAnswer={false}
+    teacherInstructions="Teacher Instructions"
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`InlineDropdown render should render without prompt 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Teacher Instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="gather"
+    onChange={[MockFunction]}
+    prompt={null}
+    rationale="Rationale"
+    showCorrectAnswer={false}
+    teacherInstructions="Teacher Instructions"
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`InlineDropdown render should render without rationale 1`] = `
+<div>
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Teacher Instructions",
+        "visible": "Hide Teacher Instructions",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Teacher Instructions",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Prompt",
+      }
+    }
+  />
+  <br />
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="gather"
+    onChange={[MockFunction]}
+    prompt="Prompt"
+    rationale={null}
+    showCorrectAnswer={false}
+    teacherInstructions="Teacher Instructions"
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`InlineDropdown render should render without teacher instructions 1`] = `
+<div>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Prompt",
+      }
+    }
+  />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale",
+        "visible": "Hide Rationale",
+      }
+    }
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Rationale",
+        }
+      }
+    />
+  </WithStyles(Collapsible)>
+  <WithMask
+    choices={
+      Object {
+        "0": Array [
+          Object {
+            "correct": true,
+            "label": "cow ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "dog ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "cat ",
+            "value": "2",
+          },
+        ],
+        "1": Array [
+          Object {
+            "correct": true,
+            "label": "over ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "under ",
+            "value": "1",
+          },
+          Object {
+            "correct": false,
+            "label": "across ",
+            "value": "2",
+          },
+        ],
+        "2": Array [
+          Object {
+            "correct": true,
+            "label": "moon ",
+            "value": "0",
+          },
+          Object {
+            "correct": false,
+            "label": "sun",
+            "value": "2",
+          },
+          Object {
+            "correct": false,
+            "label": "house ",
+            "value": "3",
+          },
+        ],
+      }
+    }
+    classes={Object {}}
+    disabled={false}
+    feedback={
+      Object {
+        "0": "correct",
+        "1": "correct",
+        "2": "correct",
+      }
+    }
+    markup="<div><p>The {{0}} jumped {{1}} the {{2}}</p></div>"
+    mode="gather"
+    onChange={[MockFunction]}
+    prompt="Prompt"
+    rationale="Rationale"
+    showCorrectAnswer={false}
+    teacherInstructions={null}
+    value={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+      }
+    }
+  />
+</div>
+`;

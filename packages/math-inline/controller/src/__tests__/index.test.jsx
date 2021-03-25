@@ -648,7 +648,7 @@ describe('createCorrectResponseSession', () => {
       const question = {
         responseType: 'Advanced Multi',
         expression: '{{response}}',
-        equationEditor: 'everything',
+        equationEditor: 'miscellaneous',
         responses: [
           {
             alternates: {},

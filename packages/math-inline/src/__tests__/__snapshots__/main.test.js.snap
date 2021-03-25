@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Math-Inline Main render renders correctly with snapshot 1`] = `
+<Main
+  classes={
+    Object {
+      "blockContainer": "Main-blockContainer-17",
+      "blockMath": "Main-blockMath-20",
+      "blockResponse": "Main-blockResponse-18",
+      "collapsible": "Main-collapsible-9",
+      "content": "Main-content-8",
+      "correct": "Main-correct-15",
+      "correctAnswerShown": "Main-correctAnswerShown-14",
+      "expression": "Main-expression-11",
+      "incorrect": "Main-incorrect-16",
+      "inputAndKeypadContainer": "Main-inputAndKeypadContainer-12",
+      "keypadTooltip": "Main-keypadTooltip-4",
+      "keypadTooltipPopper": "Main-keypadTooltipPopper-5",
+      "main": "Main-main-6",
+      "mainContainer": "Main-mainContainer-1",
+      "responseContainer": "Main-responseContainer-10",
+      "showCorrectness": "Main-showCorrectness-13",
+      "title": "Main-title-7",
+      "toggle": "Main-toggle-19",
+      "tooltip": "Main-tooltip-2",
+      "tooltipPopper": "Main-tooltipPopper-3",
+    }
+  }
+  model={
+    Object {
+      "config": Object {
+        "customKeys": Array [
+          "\\\\left(\\\\right)",
+          "\\\\frac{}{}",
+          "x\\\\frac{}{}",
+        ],
+        "element": "math-inline",
+        "equationEditor": "miscellaneous",
+        "expression": "\\\\text{A family sized box contains} {{response}} \\\\text{less than} {{response}} \\\\text{times the number  }  \\\\frac{3}{6}=\\\\frac{ {{response}} }{4} + \\\\frac{ {{response}} }{4}",
+        "feedback": Object {
+          "correct": Object {
+            "default": "Correct",
+            "type": "none",
+          },
+          "incorrect": Object {
+            "default": "Incorrect",
+            "type": "none",
+          },
+          "partial": Object {
+            "default": "Nearly",
+            "type": "none",
+          },
+        },
+        "question": "<p>The binomial <math xmlns=\\"http://www.w3.org/1998/Math/MathML\\"> <mi>x</mi><mo>&#8722;</mo><mn>2</mn> </math> is a factor of the polynomial below.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\"> <mi>f</mi><mo stretchy=\\"false\\">(</mo><mi>x</mi><mo stretchy=\\"false\\">)</mo><mo>=</mo><msup> <mi>x</mi> <mn>3</mn> </msup> <mo>+</mo><msup> <mi>x</mi> <mn>2</mn> </msup> <mo>+</mo><mi>n</mi><mi>x</mi><mo>+</mo><mn>10</mn> </math> </span></p><p>What is the value of <span class=\\"variable\\">n</span>? Use the on-screen keyboard&#160;to type the correct answer in the box.</p>",
+        "responseType": "Advanced Multi",
+        "responses": Array [
+          Object {
+            "alternates": Object {},
+            "answer": "\\\\frac{3}{6}=\\\\frac{1}{2}",
+            "validation": "literal",
+          },
+        ],
+      },
+      "correctness": Object {},
+      "element": "math-inline",
+      "id": "1",
+    }
+  }
+  onSessionChange={[MockFunction]}
+  session={Object {}}
+/>
+`;

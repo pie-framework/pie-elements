@@ -1,0 +1,510 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container snapshot renders 1`] = `
+<div>
+  <WithStyles(Palette)
+    fillColor="white"
+    fillList={
+      Array [
+        Object {
+          "label": "no fill",
+          "value": "transparent",
+        },
+        Object {
+          "label": "lightblue",
+          "value": "lightblue",
+        },
+        Object {
+          "label": "lightyellow",
+          "value": "lightyellow",
+        },
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+    onFillColorChange={[Function]}
+    onOutlineColorChange={[Function]}
+    onPaintColorChange={[Function]}
+    outlineColor="black"
+    outlineList={
+      Array [
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+    paintColor="red"
+    paintList={
+      Array [
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+  />
+  <div>
+    <div>
+      <div>
+        <WithStyles(RawButton)
+          disabled={true}
+          key="Select"
+          label={
+            <IconWrapper
+              path="mdiCursorDefault"
+            />
+          }
+          onClick={[Function]}
+          title="Select"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="FreePathDrawable"
+          label={
+            <IconWrapper
+              path="mdiPencil"
+            />
+          }
+          onClick={[Function]}
+          title="Free Draw"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="LineDrawable"
+          label={
+            <IconWrapper
+              path="mdiMinus"
+            />
+          }
+          onClick={[Function]}
+          title="Line"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="RectangleDrawable"
+          label={
+            <IconWrapper
+              path="mdiRectangle"
+            />
+          }
+          onClick={[Function]}
+          title="Rectangle"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="CircleDrawable"
+          label={
+            <IconWrapper
+              path="mdiCircle"
+            />
+          }
+          onClick={[Function]}
+          title="Circle"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="Text"
+          label={
+            <IconWrapper
+              path="mdiFormatColorText"
+            />
+          }
+          onClick={[Function]}
+          title="Text Entry"
+        />
+        <WithStyles(RawButton)
+          disabled={false}
+          key="EraserDrawable"
+          label={
+            <IconWrapper
+              path="mdiEraser"
+            />
+          }
+          onClick={[Function]}
+          title="Eraser"
+        />
+      </div>
+    </div>
+    <div>
+      <WithStyles(DrawableMain)
+        TextEntry={
+          TextDrawable {
+            "addNewTextEntry": [Function],
+            "all": Array [],
+            "eventListenersDetachArray": Array [],
+            "handleClick": [Function],
+            "handleDblClick": [Function],
+            "handleMouseDown": [Function],
+            "handleMouseUp": [Function],
+            "handleTransform": [Function],
+            "removeEventListeners": [Function],
+            "setAll": [Function],
+          }
+        }
+        drawableDimensions={
+          Object {
+            "height": 0,
+            "width": 0,
+          }
+        }
+        fillColor="white"
+        imageDimensions={Object {}}
+        imageUrl="url"
+        onSessionChange={[MockFunction]}
+        outlineColor="black"
+        paintColor="red"
+        session={Object {}}
+        toolActive={
+          Object {
+            "icon": "mdiCursorDefault",
+            "label": "Select",
+            "type": "Select",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Container snapshot renders disabled 1`] = `
+<div>
+  <WithStyles(Palette)
+    fillColor="white"
+    fillList={
+      Array [
+        Object {
+          "label": "no fill",
+          "value": "transparent",
+        },
+        Object {
+          "label": "lightblue",
+          "value": "lightblue",
+        },
+        Object {
+          "label": "lightyellow",
+          "value": "lightyellow",
+        },
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+    onFillColorChange={[Function]}
+    onOutlineColorChange={[Function]}
+    onPaintColorChange={[Function]}
+    outlineColor="black"
+    outlineList={
+      Array [
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+    paintColor="red"
+    paintList={
+      Array [
+        Object {
+          "label": "red",
+          "value": "red",
+        },
+        Object {
+          "label": "orange",
+          "value": "orange",
+        },
+        Object {
+          "label": "yellow",
+          "value": "yellow",
+        },
+        Object {
+          "label": "violet",
+          "value": "violet",
+        },
+        Object {
+          "label": "blue",
+          "value": "blue",
+        },
+        Object {
+          "label": "green",
+          "value": "green",
+        },
+        Object {
+          "label": "white",
+          "value": "white",
+        },
+        Object {
+          "label": "black",
+          "value": "black",
+        },
+      ]
+    }
+  />
+  <div>
+    <div>
+      <div>
+        <WithStyles(RawButton)
+          disabled={true}
+          key="Select"
+          label={
+            <IconWrapper
+              path="mdiCursorDefault"
+            />
+          }
+          onClick={[Function]}
+          title="Select"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="FreePathDrawable"
+          label={
+            <IconWrapper
+              path="mdiPencil"
+            />
+          }
+          onClick={[Function]}
+          title="Free Draw"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="LineDrawable"
+          label={
+            <IconWrapper
+              path="mdiMinus"
+            />
+          }
+          onClick={[Function]}
+          title="Line"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="RectangleDrawable"
+          label={
+            <IconWrapper
+              path="mdiRectangle"
+            />
+          }
+          onClick={[Function]}
+          title="Rectangle"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="CircleDrawable"
+          label={
+            <IconWrapper
+              path="mdiCircle"
+            />
+          }
+          onClick={[Function]}
+          title="Circle"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="Text"
+          label={
+            <IconWrapper
+              path="mdiFormatColorText"
+            />
+          }
+          onClick={[Function]}
+          title="Text Entry"
+        />
+        <WithStyles(RawButton)
+          disabled={true}
+          key="EraserDrawable"
+          label={
+            <IconWrapper
+              path="mdiEraser"
+            />
+          }
+          onClick={[Function]}
+          title="Eraser"
+        />
+      </div>
+    </div>
+    <div>
+      <WithStyles(DrawableMain)
+        TextEntry={
+          TextDrawable {
+            "addNewTextEntry": [Function],
+            "all": Array [],
+            "eventListenersDetachArray": Array [],
+            "handleClick": [Function],
+            "handleDblClick": [Function],
+            "handleMouseDown": [Function],
+            "handleMouseUp": [Function],
+            "handleTransform": [Function],
+            "removeEventListeners": [Function],
+            "setAll": [Function],
+          }
+        }
+        disabled={true}
+        drawableDimensions={
+          Object {
+            "height": 0,
+            "width": 0,
+          }
+        }
+        fillColor="white"
+        imageDimensions={Object {}}
+        imageUrl="url"
+        onSessionChange={[MockFunction]}
+        outlineColor="black"
+        paintColor="red"
+        session={Object {}}
+        toolActive={
+          Object {
+            "icon": "mdiCursorDefault",
+            "label": "Select",
+            "type": "Select",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

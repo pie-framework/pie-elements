@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main render snapshot 1`] = `
+<div>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    toggled={false}
+  />
+  <br />
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+  />
+  <br />
+  <Root
+    axesSettings={
+      Object {
+        "includeArrows": undefined,
+      }
+    }
+    backgroundMarks={Array []}
+    marks={Array []}
+    onChangeMarks={[MockFunction]}
+  />
+  <br />
+</div>
+`;

@@ -10,12 +10,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@pie-ui/likert": "^0.1.16"
-  },
-  "pie": {
-    "element": "@pie-ui/likert"
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-test-renderer": "^16.3.2",
+    "react-transition-group": "^2.3.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa"
+  "gitHead": "a18cc6f915182fbee198dc3069a72aa6df578afa",
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

@@ -11,12 +11,20 @@
     "postpublish": "../../scripts/postpublish"
   },
   "dependencies": {
-    "@pie-ui/charting": "^0.3.10"
-  },
-  "pie": {
-    "element": "@pie-ui/charting"
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/charting": "^4.5.5",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.15",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3"
+  "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

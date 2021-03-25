@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rectangle snapshots evaluate with correct answer renders 1`] = `
+<RectComponent
+  classes={
+    Object {
+      "base": "RectComponent-base-1 base",
+    }
+  }
+  disabled={false}
+  height={200}
+  hotspotColor="rgba(137, 183, 244, 0.65)"
+  id="1"
+  isCorrect={true}
+  isEvaluateMode={true}
+  onClick={[MockFunction]}
+  outlineColor="blue"
+  selected={false}
+  strokeWidth={5}
+  width={300}
+  x={5}
+  y={5}
+/>
+`;
+
+exports[`Rectangle snapshots hotspot color renders 1`] = `
+<RectComponent
+  classes={
+    Object {
+      "base": "RectComponent-base-1 base",
+    }
+  }
+  disabled={false}
+  height={200}
+  hotspotColor="rgba(217, 30, 24, 0.65)"
+  id="1"
+  isCorrect={false}
+  isEvaluateMode={false}
+  onClick={[MockFunction]}
+  outlineColor="blue"
+  selected={false}
+  strokeWidth={5}
+  width={300}
+  x={5}
+  y={5}
+/>
+`;
+
+exports[`Rectangle snapshots outline color renders 1`] = `
+<RectComponent
+  classes={
+    Object {
+      "base": "RectComponent-base-1 base",
+    }
+  }
+  disabled={false}
+  height={200}
+  hotspotColor="rgba(137, 183, 244, 0.65)"
+  id="1"
+  isCorrect={false}
+  isEvaluateMode={false}
+  onClick={[MockFunction]}
+  outlineColor="red"
+  selected={false}
+  strokeWidth={5}
+  width={300}
+  x={5}
+  y={5}
+/>
+`;
+
+exports[`Rectangle snapshots outline width renders with default border width 1`] = `
+<RectComponent
+  classes={
+    Object {
+      "base": "RectComponent-base-1 base",
+    }
+  }
+  disabled={false}
+  height={200}
+  hotspotColor="rgba(137, 183, 244, 0.65)"
+  id="1"
+  isCorrect={false}
+  isEvaluateMode={false}
+  onClick={[MockFunction]}
+  outlineColor="blue"
+  selected={false}
+  strokeWidth={5}
+  width={300}
+  x={5}
+  y={5}
+/>
+`;
+
+exports[`Rectangle snapshots outline width renders with given border width 1`] = `
+<RectComponent
+  classes={
+    Object {
+      "base": "RectComponent-base-1 base",
+    }
+  }
+  disabled={false}
+  height={200}
+  hotspotColor="rgba(137, 183, 244, 0.65)"
+  id="1"
+  isCorrect={false}
+  isEvaluateMode={false}
+  onClick={[MockFunction]}
+  outlineColor="blue"
+  selected={false}
+  strokeWidth={10}
+  width={300}
+  x={5}
+  y={5}
+/>
+`;

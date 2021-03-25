@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChoiceInput snapshots renders 1`] = `
+<Component
+  checked={false}
+  classes={
+    Object {
+      "checked": "Component-checked-2 checked",
+      "root": "Component-root-1 root",
+    }
+  }
+  disabled={false}
+  matrixKey="matrixKey"
+  matrixValue={2}
+  onChange={[MockFunction]}
+/>
+`;

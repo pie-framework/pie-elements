@@ -38,11 +38,11 @@ This element must be one of the following enum values:
 * `6`
 * `8`
 * `advanced-algebra`
-* `everything`
 * `geometry`
+* `miscellaneous`
 * `statistics`
 
-Default: `"- everything"`
+Default: `"- miscellaneous"`
 
 # `feedback` (object)
 

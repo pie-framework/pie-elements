@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main render snapshot 1`] = `
+<Main
+  classes={
+    Object {
+      "collapsible": "Main-collapsible-5",
+      "main": "Main-main-2",
+      "mainContainer": "Main-mainContainer-1",
+      "prompt": "Main-prompt-4",
+      "toggle": "Main-toggle-3",
+    }
+  }
+  model={
+    Object {
+      "config": Object {
+        "choiceMode": "radio",
+        "element": "match-element",
+        "feedback": Object {
+          "correct": Object {
+            "default": "Correct",
+            "type": "none",
+          },
+          "incorrect": Object {
+            "default": "Incorrect",
+            "type": "none",
+          },
+          "partial": Object {
+            "default": "Nearly",
+            "type": "none",
+          },
+        },
+        "headers": Array [
+          "Column 1",
+          "Column 2",
+          "Column 3",
+        ],
+        "id": "1",
+        "layout": 3,
+        "partialScoring": Array [],
+        "rows": Array [
+          Object {
+            "id": 1,
+            "title": "Question Text 1",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 2,
+            "title": "Question Text 2",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 3,
+            "title": "Question Text 3",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 4,
+            "title": "Question Text 4",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+        ],
+      },
+    }
+  }
+  onSessionChange={[MockFunction]}
+  session={Object {}}
+/>
+`;
+
+exports[`Main render snapshot with rationale 1`] = `
+<Main
+  classes={
+    Object {
+      "collapsible": "Main-collapsible-5",
+      "main": "Main-main-2",
+      "mainContainer": "Main-mainContainer-1",
+      "prompt": "Main-prompt-4",
+      "toggle": "Main-toggle-3",
+    }
+  }
+  model={
+    Object {
+      "config": Object {
+        "choiceMode": "radio",
+        "element": "match-element",
+        "feedback": Object {
+          "correct": Object {
+            "default": "Correct",
+            "type": "none",
+          },
+          "incorrect": Object {
+            "default": "Incorrect",
+            "type": "none",
+          },
+          "partial": Object {
+            "default": "Nearly",
+            "type": "none",
+          },
+        },
+        "headers": Array [
+          "Column 1",
+          "Column 2",
+          "Column 3",
+        ],
+        "id": "1",
+        "layout": 3,
+        "partialScoring": Array [],
+        "rows": Array [
+          Object {
+            "id": 1,
+            "title": "Question Text 1",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 2,
+            "title": "Question Text 2",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 3,
+            "title": "Question Text 3",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 4,
+            "title": "Question Text 4",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+        ],
+      },
+    }
+  }
+  onSessionChange={[MockFunction]}
+  rationale="This is rationale"
+  session={Object {}}
+/>
+`;
+
+exports[`Main render snapshot with teacher Instructions 1`] = `
+<Main
+  classes={
+    Object {
+      "collapsible": "Main-collapsible-5",
+      "main": "Main-main-2",
+      "mainContainer": "Main-mainContainer-1",
+      "prompt": "Main-prompt-4",
+      "toggle": "Main-toggle-3",
+    }
+  }
+  model={
+    Object {
+      "config": Object {
+        "choiceMode": "radio",
+        "element": "match-element",
+        "feedback": Object {
+          "correct": Object {
+            "default": "Correct",
+            "type": "none",
+          },
+          "incorrect": Object {
+            "default": "Incorrect",
+            "type": "none",
+          },
+          "partial": Object {
+            "default": "Nearly",
+            "type": "none",
+          },
+        },
+        "headers": Array [
+          "Column 1",
+          "Column 2",
+          "Column 3",
+        ],
+        "id": "1",
+        "layout": 3,
+        "partialScoring": Array [],
+        "rows": Array [
+          Object {
+            "id": 1,
+            "title": "Question Text 1",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 2,
+            "title": "Question Text 2",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 3,
+            "title": "Question Text 3",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+          Object {
+            "id": 4,
+            "title": "Question Text 4",
+            "values": Array [
+              false,
+              false,
+            ],
+          },
+        ],
+      },
+    }
+  }
+  onSessionChange={[MockFunction]}
+  session={Object {}}
+  teacherInstructions="These are teacher instructions"
+/>
+`;

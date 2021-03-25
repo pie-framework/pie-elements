@@ -9,13 +9,17 @@
   "author": "pie framework developers",
   "license": "ISC",
   "dependencies": {
-    "@pie-ui/ruler": "^2.2.27"
-  },
-  "pie": {
-    "element": "@pie-ui/ruler"
+    "@material-ui/core": "^3.9.2",
+    "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/tools": "^0.9.22",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   },
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
-  }
+  },
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

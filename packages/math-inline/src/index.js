@@ -1,24 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Component } from '@pie-ui/math-inline';
+import Main from './main';
 import debug from 'debug';
-import defaults from '../configure/src/defaults';
+import _ from 'lodash';
 
-const log = debug('pie-elements:math-inline');
+import {
+  ModelSetEvent,
+  SessionChangedEvent,
+} from '@pie-framework/pie-player-events';
+import defaults from '../configure/lib/defaults';
+
+const log = debug('pie-ui:math-inline');
+
+export { Main as Component };
 
 export default class MathInline extends HTMLElement {
   constructor() {
     super();
     this._configuration = defaults.configuration;
+    this.sessionChangedEventCaller = _.debounce((session) => {
+      this.dispatchEvent(new SessionChangedEvent(session, true));
+    }, 1000);
   }
 
   set model(m) {
     this._model = m;
-    this._render();
-  }
-
-  set configuration(c) {
-    this._configuration = c;
+    this.dispatchEvent(new ModelSetEvent(this._model, true, !!this._model));
     this._render();
   }
 
@@ -27,8 +34,14 @@ export default class MathInline extends HTMLElement {
     this._render();
   }
 
+  set configuration(c) {
+    this._configuration = c;
+    this._render();
+  }
+
   sessionChanged(s) {
     this._session = s;
+    this.sessionChangedEventCaller(this._session);
     log('session: ', this._session);
   }
 
@@ -41,14 +54,12 @@ export default class MathInline extends HTMLElement {
       return;
     }
 
-    const props = {
+    const el = React.createElement(Main, {
       model: this._model,
-      configuration: this._configuration,
       session: this._session,
-      onSessionChange: this.sessionChanged.bind(this)
-    };
-
-    const el = React.createElement(Component, props);
+      configuration: this._configuration,
+      onSessionChange: this.sessionChanged.bind(this),
+    });
 
     ReactDOM.render(el, this);
   }

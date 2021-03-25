@@ -29,15 +29,15 @@
     },
     "equationEditor": {
       "description": "Indicates what type of editor should be displayed for all the possible responses\n1 for Grade 1 - 2\n3 for Grade 3 - 5\n6 for Grade 6 - 7\n8 for Grade 8 - HS",
-      "default": "- everything",
+      "default": "- miscellaneous",
       "enum": [
         1,
         3,
         6,
         8,
         "advanced-algebra",
-        "everything",
         "geometry",
+        "miscellaneous",
         "statistics"
       ],
       "title": "equationEditor"

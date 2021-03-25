@@ -8,15 +8,29 @@
   },
   "dependencies": {
     "@pie-lib/feedback": "^0.4.25",
-    "@pie-ui/number-line": "^7.4.9"
-  },
-  "pie": {
-    "element": "@pie-ui/number-line"
+    "@material-ui/core": "^3.9.2",
+    "@pie-lib/correct-answer-toggle": "^2.3.21",
+    "@pie-lib/icons": "^2.4.23",
+    "@pie-lib/math-rendering": "^2.3.6",
+    "@pie-lib/render-ui": "^4.11.5",
+    "classnames": "^2.2.5",
+    "d3-scale": "^3.2.1",
+    "d3-selection": "^1.4.1",
+    "lodash": "^4.17.10",
+    "mathjs": "^5.4.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-draggable": "^3.3.0",
+    "react-jss": "^8.4.0",
+    "react-transition-group": "^2.3.1"
   },
   "author": "pie framework developers",
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
   "scripts": {
     "postpublish": "../../scripts/postpublish"
-  }
+  },
+  "main": "lib/index.js",
+  "module": "src/index.js"
 }

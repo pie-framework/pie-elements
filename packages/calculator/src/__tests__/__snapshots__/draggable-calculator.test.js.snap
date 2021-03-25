@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DraggableCalculator snapshot Creates snapshot using enzyme 1`] = `
+<Draggable
+  allowAnyClick={false}
+  axis="both"
+  bounds={false}
+  cancel={null}
+  defaultClassName="react-draggable"
+  defaultClassNameDragged="react-draggable-dragged"
+  defaultClassNameDragging="react-draggable-dragging"
+  defaultPosition={
+    Object {
+      "x": 0,
+      "y": 0,
+    }
+  }
+  disabled={false}
+  enableUserSelectHack={true}
+  grid={null}
+  handle=".handle"
+  offsetParent={null}
+  onDrag={[Function]}
+  onMouseDown={[Function]}
+  onStart={[Function]}
+  onStop={[Function]}
+  position={null}
+  scale={1}
+  transform={null}
+>
+  <div>
+    <WithStyles(BaseLayout)
+      mode="basic"
+      onClose={[MockFunction]}
+    />
+  </div>
+</Draggable>
+`;
