@@ -32,6 +32,11 @@ export interface MultipleChoicePie extends PieModel {
   /** Determines if prompt should show */
   promptEnabled?: boolean;
 
+  /** Indicates the layout of choices for player
+   * @default: true
+   */
+  verticalMode?: boolean;
+
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
 
@@ -106,6 +111,12 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Configuration for the prompt
    */
   prompt?: ConfigureProp;
+
+  /**
+   * Indicates the layout of choices for player
+   * @default: true
+   */
+  verticalMode?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling
