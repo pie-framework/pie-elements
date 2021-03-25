@@ -23,6 +23,7 @@ describe('Choice', () => {
         checked: true,
         correctness: 'correct',
         displayKey: '0',
+        verticalMode: true,
         ...extras
       };
       return shallow(<Choice {...props}/>);

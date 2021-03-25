@@ -30,6 +30,7 @@ export class Choice extends React.Component {
       correctness,
       displayKey,
       classes,
+      verticalMode
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -43,11 +44,12 @@ export class Choice extends React.Component {
       feedback,
       correctness,
       displayKey,
+      verticalMode,
       onChange: this.onChange,
     };
 
     const names = classNames(classes.choice, {
-      [classes.last]: index === choicesLength - 1,
+      [classes.noBorder]: (index === choicesLength - 1) || !this.props.verticalMode,
     });
 
     return (
@@ -71,6 +73,7 @@ Choice.propTypes = {
   checked: PropTypes.bool,
   correctness: PropTypes.string,
   displayKey: PropTypes.string,
+  verticalMode: PropTypes.string
 };
 
 const StyledChoice = withStyles({
@@ -79,9 +82,9 @@ const StyledChoice = withStyles({
     paddingBottom: '10px',
     borderBottom: '1px solid #E0DEE0',
   },
-  last: {
+  noBorder: {
     borderBottom: 'none',
-  },
+  }
 })(Choice);
 
 // MultipleChoice
@@ -93,6 +96,11 @@ const styles = {
     '& *': {
       '-webkit-font-smoothing': 'antialiased',
     },
+  },
+  horizontalLayout: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   }
 };
 
@@ -110,6 +118,7 @@ export class MultipleChoice extends React.Component {
     responseCorrect: PropTypes.bool,
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
+    verticalMode: PropTypes.bool
   };
 
   constructor(props) {
@@ -216,28 +225,31 @@ export class MultipleChoice extends React.Component {
         />
         <br />
         <PreviewPrompt className="prompt" prompt={prompt}/>
-        {choices.map((choice, index) => (
-          <StyledChoice
-            key={`choice-${index}`}
-            choice={choice}
-            index={index}
-            choicesLength={choices.length}
-            showCorrect={showCorrect}
-            isEvaluateMode={isEvaluateMode}
-            choiceMode={choiceMode}
-            disabled={disabled}
-            onChoiceChanged={onChoiceChanged}
-            checked={
-              showCorrect
-                ? choice.correct || false
-                : this.isSelected(choice.value)
-            }
-            correctness={
-              isEvaluateMode ? this.getCorrectness(choice) : undefined
-            }
-            displayKey={this.indexToSymbol(index)}
-          />
-        ))}
+        <div className={this.props.verticalMode ? '' : classes.horizontalLayout}>
+          {choices.map((choice, index) => (
+            <StyledChoice
+              verticalMode={this.props.verticalMode}
+              key={`choice-${index}`}
+              choice={choice}
+              index={index}
+              choicesLength={choices.length}
+              showCorrect={showCorrect}
+              isEvaluateMode={isEvaluateMode}
+              choiceMode={choiceMode}
+              disabled={disabled}
+              onChoiceChanged={onChoiceChanged}
+              checked={
+                showCorrect
+                  ? choice.correct || false
+                  : this.isSelected(choice.value)
+              }
+              correctness={
+                isEvaluateMode ? this.getCorrectness(choice) : undefined
+              }
+              displayKey={this.indexToSymbol(index)}
+            />
+          ))}
+        </div>
       </div>
     );
   }

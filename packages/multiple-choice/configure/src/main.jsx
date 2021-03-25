@@ -96,7 +96,8 @@ const Design = withStyles(styles)(props => {
     rationale = {},
     scoringType = {},
     sequentialChoiceLabels = {},
-    settingsPanelDisabled
+    settingsPanelDisabled,
+    verticalMode
   } = configuration || {};
   const {
     limitChoicesNumber: limitChoicesNumberModel,
@@ -222,7 +223,8 @@ const Design = withStyles(styles)(props => {
                     limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  feedbackEnabled: feedback.settings && toggle(feedback.label)
+                  feedbackEnabled: feedback.settings && toggle(feedback.label),
+                  verticalMode: verticalMode.settings && toggle(verticalMode.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:

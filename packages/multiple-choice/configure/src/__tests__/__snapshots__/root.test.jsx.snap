@@ -54,6 +54,7 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
       "scoringType": "auto",
       "studentInstructionsEnabled": true,
       "teacherInstructionsEnabled": true,
+      "verticalMode": true,
     }
   }
   onAddChoice={[Function]}
@@ -121,6 +122,7 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
       "scoringType": "auto",
       "studentInstructionsEnabled": true,
       "teacherInstructionsEnabled": true,
+      "verticalMode": true,
     }
   }
   onAddChoice={[Function]}
