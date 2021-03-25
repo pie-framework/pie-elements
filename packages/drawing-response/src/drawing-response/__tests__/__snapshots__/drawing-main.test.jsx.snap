@@ -10,6 +10,68 @@ exports[`DrawingResponse CircleDrawable snapshot renders 1`] = `
 />
 `;
 
+exports[`DrawingResponse DrawableMain snapshot renders 1`] = `
+<div>
+  <div>
+    <WithStyles(RawButton)
+      disabled={false}
+      label="Undo"
+      onClick={[Function]}
+    />
+    <WithStyles(RawButton)
+      disabled={false}
+      label="Clear all"
+      onClick={[Function]}
+    />
+  </div>
+  <div>
+    <WithStyles(DrawableImage)
+      dimensions={Object {}}
+      url="url"
+    />
+    <ForwardRef
+      className=""
+      height={350}
+      onMouseMove={[Function]}
+      onMouseUp={[Function]}
+      width={353}
+    >
+      <Layer />
+    </ForwardRef>
+  </div>
+</div>
+`;
+
+exports[`DrawingResponse DrawableMain snapshot renders disabled 1`] = `
+<div>
+  <div>
+    <WithStyles(RawButton)
+      disabled={true}
+      label="Undo"
+      onClick={[Function]}
+    />
+    <WithStyles(RawButton)
+      disabled={true}
+      label="Clear all"
+      onClick={[Function]}
+    />
+  </div>
+  <div>
+    <WithStyles(DrawableImage)
+      dimensions={Object {}}
+      url="url"
+    />
+    <ForwardRef
+      className=""
+      height={350}
+      width={353}
+    >
+      <Layer />
+    </ForwardRef>
+  </div>
+</div>
+`;
+
 exports[`DrawingResponse DrawableText snapshot renders 1`] = `
 <div>
   <Text

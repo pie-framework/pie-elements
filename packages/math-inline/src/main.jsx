@@ -30,7 +30,7 @@ function generateAdditionalKeys(keyData = []) {
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
   return (
     Math.floor(additionalKeys.length / 5) * 30 +
-    (equationEditor === 'everything' ? 600 : 500)
+    (equationEditor === 'miscellaneous' ? 600 : 500)
   );
 }
 
@@ -579,10 +579,22 @@ const styles = (theme) => ({
           padding: theme.spacing.unit / 4,
         },
       },
+      '& sup': {
+        top: 0
+      },
     },
   },
   inputAndKeypadContainer: {
     position: 'relative',
+    '& .mq-overarrow-inner': {
+      border: 'none !important'
+    },
+    '& .mq-overarrow-inner-right': {
+      display: 'none !important'
+    },
+    '& .mq-overarrow-inner-left': {
+      display: 'none !important'
+    }
   },
   showCorrectness: {
     border: '2px solid',

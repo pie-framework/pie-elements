@@ -65,6 +65,7 @@ export const normalize = question => ({
   partLabelType: 'Letters',
   ...question,
   partA: {
+    ...defaults.partA,
     rationaleEnabled: true,
     feedbackEnabled: true,
     promptEnabled: true,
@@ -73,6 +74,7 @@ export const normalize = question => ({
     ...question.partA
   },
   partB: {
+    ...defaults.partB,
     rationaleEnabled: true,
     promptEnabled: true,
     feedbackEnabled: true,
@@ -105,9 +107,12 @@ export async function model(question, session, env, updateSession) {
   const partASession = get(session, 'value.partA');
   const partALockChoiceOrder = lockChoices(normalizedQuestion.partA, partASession, env);
 
-  if (!partALockChoiceOrder) {
+  const { choices: partAChoices } = partA || {};
+  const { choices: partBChoices } = partB || {};
+
+  if (!partALockChoiceOrder && partAChoices && partAChoices.length) {
     partA.choices = await getShuffledChoices(
-      partA.choices,
+      partAChoices,
       { shuffledValues: (session.shuffledValues || {}).partA },
       us('partA'),
       'value'
@@ -117,9 +122,9 @@ export async function model(question, session, env, updateSession) {
   const partBSession = get(session, 'value.partB');
   const partBLockChoiceOrder = lockChoices(normalizedQuestion.partB, partBSession, env);
 
-  if (!partBLockChoiceOrder) {
+  if (!partBLockChoiceOrder && partBChoices && partBChoices.length) {
     partB.choices = await getShuffledChoices(
-      partB.choices,
+      partBChoices,
       { shuffledValues: (session.shuffledValues || {}).partB },
       us('partB'),
       'value'

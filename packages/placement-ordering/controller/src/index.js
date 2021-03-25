@@ -52,6 +52,7 @@ export function createDefaultModel(model = {}) {
 }
 
 export const normalize = question => ({
+  ...defaults,
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,
@@ -78,7 +79,7 @@ export function model(question, session, env, updateSession) {
 
     const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
 
-    if (!lockChoiceOrder) {
+    if (!lockChoiceOrder && env.mode === 'gather') {
       choices = await getShuffledChoices(
         choices,
         session,
@@ -86,7 +87,7 @@ export function model(question, session, env, updateSession) {
         'label'
       );
 
-      if (!session.shuffledValues) {
+      if (!session.shuffledValues && !normalizedQuestion.placementArea) {
           session.value = choices.map(m => m.id);
       }
     }

@@ -21,7 +21,7 @@ exports.model = (id, element) => ({
     },
   ],
   correctResponse: ['c1', 'c2', 'c3', 'c4'],
-  alternateResponses : [
+  alternateResponses: [
     ['c4', 'c3', 'c2', 'c1']
   ],
   enableImages: false,
@@ -46,7 +46,7 @@ exports.model = (id, element) => ({
   numberedGuides: false,
   orientation: 'vertical',
   partialScoring: false,
-  placementArea: false,
+  placementArea: true,
   scoringType: 'auto',
   targetLabel: 'Answers',
 });

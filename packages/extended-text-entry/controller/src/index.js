@@ -41,7 +41,7 @@ export async function model(question, session, env) {
     teacherInstructions = null;
   }
 
-  let equationEditor = normalizedQuestion.equationEditor || 'everything';
+  let equationEditor = normalizedQuestion.equationEditor || 'miscellaneous';
 
   switch (normalizedQuestion.equationEditor) {
     case 'Grade 1 - 2':
@@ -63,6 +63,7 @@ export async function model(question, session, env) {
   return fb.then(feedback => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
+    customKeys: normalizedQuestion.customKeys || [],
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,

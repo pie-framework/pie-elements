@@ -1,5 +1,6 @@
 export default {
   partA: {
+    choicePrefix: 'letters',
     choices: [
       {
         value: 'a',
@@ -10,6 +11,7 @@ export default {
     disabled: false,
   },
   partB: {
+    choicePrefix: 'letters',
     choices: [
       {
         value: 'b',

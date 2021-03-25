@@ -68,7 +68,15 @@ export class NumberLineGraph extends React.Component {
 
   xScaleFn() {
     const { domain, width } = this.props;
-    return getXScale(domain.min, domain.max, width, 20);
+    const { max, min } = domain || {};
+
+    let padding = 20;
+
+    if (max) {
+      padding = max.toString().length * 4 + 15;
+    }
+
+    return getXScale(min, max, width, padding);
   }
 
   snapValueFn() {
@@ -213,11 +221,11 @@ export class NumberLineGraph extends React.Component {
 
       return (
         <svg width={width} height={height}>
-          {false && <Debug domain={domain} ticks={ticks} />}
-          <BaseLine y={lineY} width={width} />
-          {arrows.left && <Arrow y={lineY} />}
-          {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
-          <Ticks y={lineY} domain={domain} ticks={ticks} />
+          {false && <Debug domain={domain} ticks={ticks}/>}
+          <BaseLine y={lineY} width={width}/>
+          {arrows.left && <Arrow y={lineY}/>}
+          {arrows.right && <Arrow x={width} y={lineY} direction="right"/>}
+          <Ticks y={lineY} domain={domain} ticks={ticks}/>
           <rect
             ref={rect => (this.rect = rect)}
             //need to have a fill for it to be clickable

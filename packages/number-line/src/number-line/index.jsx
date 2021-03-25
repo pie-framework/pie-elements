@@ -50,6 +50,8 @@ export class NumberLine extends React.Component {
     onMoveElement: PropTypes.func.isRequired,
     onDeleteElements: PropTypes.func.isRequired,
     onAddElement: PropTypes.func.isRequired,
+    onUndoElement: PropTypes.func.isRequired,
+    onClearElements: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     answer: PropTypes.array,
     classes: PropTypes.object.isRequired
@@ -102,6 +104,10 @@ export class NumberLine extends React.Component {
     );
 
     if (elementData) {
+      const { answers } = this.state;
+      answers.push(elementData);
+
+      this.setState({ answers });
       this.props.onAddElement(elementData);
     }
   }
@@ -121,8 +127,9 @@ export class NumberLine extends React.Component {
     );
   }
 
-  UNSAFE_componentWillReceiveProps() {
-    this.setState({ showCorrectAnswer: false });
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const { answer } = nextProps;
+    this.setState({ showCorrectAnswer: false, answers: answer });
   }
 
   deselectElements() {
@@ -141,9 +148,25 @@ export class NumberLine extends React.Component {
     }
   }
 
+  undo() {
+    const { answers } = this.state;
+    const { onUndoElement } = this.props;
+
+    answers.pop();
+    this.setState({ answers });
+    onUndoElement();
+  }
+
+  clearAll() {
+    const { onClearElements } = this.props;
+
+    this.setState({ answers: [] });
+    onClearElements();
+  }
+
   render() {
-    let { model, answer, classes } = this.props;
-    let { showCorrectAnswer } = this.state;
+    let { model, classes } = this.props;
+    let { showCorrectAnswer, answers } = this.state;
     let { corrected = { correct: [], incorrect: [] }, disabled } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected =
@@ -165,7 +188,7 @@ export class NumberLine extends React.Component {
     };
 
     let getAnswerElements = () => {
-      return (answer || []).map((e, index) => {
+      return (answers || []).map((e, index) => {
         let out = cloneDeep(e);
         out.selected = this.state.selectedElements.indexOf(index) !== -1;
         out.correct = corrected.correct.includes(index)
@@ -193,8 +216,14 @@ export class NumberLine extends React.Component {
 
 
     let deleteElements = () => {
-      this.props.onDeleteElements(this.state.selectedElements);
-      this.setState({ selectedElements: [] });
+      const { selectedElements } = this.state;
+      this.props.onDeleteElements(selectedElements);
+
+      answers = answers.filter((v, index) => {
+        return !selectedElements.some(d => d === index);
+      });
+
+      this.setState({ selectedElements: [], answers });
     };
 
     let getIcons = () => {
@@ -224,7 +253,7 @@ export class NumberLine extends React.Component {
         <div>
           <div style={{ width: adjustedWidth }}>
             <Toggle
-              show={isArray(model.correctResponse) && !model.emptyAnswer}
+              show={isArray(model.correctResponse) && model.correctResponse.length && !model.emptyAnswer}
               toggled={showCorrectAnswer}
               onToggle={onShowCorrectAnswer}
               initialValue={false}
@@ -236,6 +265,8 @@ export class NumberLine extends React.Component {
               showDeleteButton={elementsSelected}
               onDeleteClick={deleteElements}
               onElementType={this.elementTypeSelected.bind(this)}
+              onClearElements={this.clearAll.bind(this)}
+              onUndoElement={this.undo.bind(this)}
               icons={getIcons()}
             />
           )}

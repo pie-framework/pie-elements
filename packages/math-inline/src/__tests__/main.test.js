@@ -33,7 +33,7 @@ describe('Math-Inline Main', () => {
         expression:
           '\\text{A family sized box contains} {{response}} \\text{less than} {{response}} \\text{times the number  }' +
           '  \\frac{3}{6}=\\frac{ {{response}} }{4} + \\frac{ {{response}} }{4}',
-        equationEditor: 'everything',
+        equationEditor: 'miscellaneous',
         responses: [
           {
             validation: 'literal',

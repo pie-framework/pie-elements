@@ -261,7 +261,7 @@ describe('controller', () => {
 
       beforeEach(async () => {
         session = {};
-        env = {mode: 'gather'};
+        env = { mode: 'gather' };
         result = await model(question, session, env);
       });
       it('returns default letters', () => {

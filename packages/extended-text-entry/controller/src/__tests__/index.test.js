@@ -51,13 +51,14 @@ describe('controller', () => {
       const result = await model(question, session, env);
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: false,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -65,13 +66,14 @@ describe('controller', () => {
       const result = await model(q({ promptEnabled: false }), session, env);
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: null,
         dimensions: defaults.dimensions,
         disabled: false,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -79,13 +81,14 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'view' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -93,13 +96,14 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'view', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -107,13 +111,14 @@ describe('controller', () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'view', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -121,13 +126,14 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'evaluate' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
 
@@ -135,26 +141,28 @@ describe('controller', () => {
       const result = await model(question, session, { mode: 'evaluate', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'evaluate', role: 'instructor' });
 
       expect(result).toEqual({
+        customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'everything'
+        equationEditor: 'miscellaneous'
       });
     });
   });

@@ -167,8 +167,10 @@ exports[`main snapshot renders 1`] = `
         }
       }
       onAddElement={[Function]}
+      onClearElements={[Function]}
       onDeleteElements={[Function]}
       onMoveElement={[Function]}
+      onUndoElement={[Function]}
     />
     <WithStyles(CardBar)
       header="Available Types"
@@ -234,8 +236,10 @@ exports[`main snapshot renders 1`] = `
       }
     }
     onAddElement={[Function]}
+    onClearElements={[Function]}
     onDeleteElements={[Function]}
     onMoveElement={[Function]}
+    onUndoElement={[Function]}
   />
   <InputCheckbox
     label="Make exhibit"

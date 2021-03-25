@@ -25,7 +25,7 @@ This element must be one of the following enum values:
 * `Grade 6 - 7`
 * `Grade 8 - HS`
 * `advanced-algebra`
-* `everything`
+* `miscellaneous`
 * `geometry`
 * `statistics`
 

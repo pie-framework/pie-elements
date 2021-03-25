@@ -228,6 +228,40 @@ describe('index', () => {
         expect(noResult).toBeNull();
       });
     });
+
+    describe('session', () => {
+      const choices = [
+        { id: '1', label: 'a' },
+        { id: '2', label: 'b' }
+      ];
+      const env = { mode: 'gather' };
+      const updateSession = jest.fn();
+
+      it('sets session value if no placementArea', async () => {
+        const question = base({
+          choices,
+          lockChoiceOrder: false
+        });
+        const session = {};
+
+        await controller.model(question, session, env, updateSession);
+
+        expect(session.value.sort()).toEqual(['1', '2']);
+      });
+
+      it('does not set session value if placementArea = true', async () => {
+        const question = base({
+          choices,
+          lockChoiceOrder: false,
+          placementArea: true
+        });
+        const session = {};
+
+        await controller.model(question, session, env, updateSession);
+
+        expect(session.value).toBeUndefined();
+      });
+    });
   });
 
   describe('outcome', () => {
