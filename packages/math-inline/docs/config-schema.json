@@ -115,8 +115,8 @@
         }
       }
     },
-    "allowTrailingZerosConfig": {
-      "title": "ConfigureProp",
+    "allowTrailingZeros": {
+      "description": "Allow Trailing Zeros configuration",
       "type": "object",
       "properties": {
         "settings": {
@@ -124,12 +124,23 @@
           "type": "boolean",
           "title": "settings"
         },
+        "enabled": {
+          "description": "Indicates if an author or editor will have access to this item configuration",
+          "type": "boolean",
+          "title": "enabled"
+        },
         "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "description": "Indicates how the checkbox will be labeled in the UI and the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        },
+        "default": {
+          "description": "If enabled is true and allowTrailingZeros is undefined in the model, indicates the default state of the Allow Trailing Zeros checkbox\nIf enabled is false and allowTrailingZeros is undefined in the model, indicates the state of Allow Trailing Zeros",
+          "type": "boolean",
+          "title": "default"
         }
-      }
+      },
+      "title": "allowTrailingZeros"
     },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",

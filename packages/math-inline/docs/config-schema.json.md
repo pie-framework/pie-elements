@@ -86,17 +86,28 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `allowTrailingZerosConfig` (object)
+# `allowTrailingZeros` (object)
 
-Properties of the `allowTrailingZerosConfig` object:
+Allow Trailing Zeros configuration
+
+Properties of the `allowTrailingZeros` object:
 
 ## `settings` (boolean)
 
 Indicates if the item has to be displayed in the Settings Panel
 
+## `enabled` (boolean)
+
+Indicates if an author or editor will have access to this item configuration
+
 ## `label` (string)
 
-Indicates the label for the item that has to be displayed in the Settings Panel
+Indicates how the checkbox will be labeled in the UI and the label for the item that has to be displayed in the Settings Panel
+
+## `default` (boolean)
+
+If enabled is true and allowTrailingZeros is undefined in the model, indicates the default state of the Allow Trailing Zeros checkbox
+If enabled is false and allowTrailingZeros is undefined in the model, indicates the state of Allow Trailing Zeros
 
 # `showPrompt` (boolean)
 

@@ -28,11 +28,7 @@ const E262456 = {
     }
   ],
   'responseType': 'Advanced Multi',
-  'allowTrailingZeros': {
-    enabled: true,
-    label: 'Allow Trailing Zeros',
-    default: true
-  }
+  'allowTrailingZeros': true
 };
 
 

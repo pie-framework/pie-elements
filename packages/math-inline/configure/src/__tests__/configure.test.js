@@ -87,11 +87,7 @@ const defaultProps = {
     ],
     customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
     configure: defaultValues.configure,
-    allowTrailingZeros: {
-      enabled: true,
-      label: 'Allow Trailing Zeros',
-      default: true
-    }
+    allowTrailingZeros: true
   },
   configuration: defaultValues.configuration
 };
@@ -131,6 +127,38 @@ describe('Configure', () => {
     expect(onModelChanged).toBeCalledWith(expect.objectContaining({
       teacherInstructions: 'Teacher Instructions'
     }));
+  });
+
+  it('if model.allowTrailingZeros is undefined, it is set to the default value in config', () => {
+    const onModelChanged = jest.fn();
+    const component = shallow(<ConfigureNotStyled
+      onModelChanged={onModelChanged}
+      classes={{}}
+      { ...defaultValues}
+      model={{...defaultValues.model, allowTrailingZeros: undefined}}
+    />);
+
+    expect(onModelChanged).toBeCalled();
+    expect(component.instance().props.model.allowTrailingZeros).toEqual(defaultValues.configuration.allowTrailingZeros.default);
+  });
+
+  it('if model.allowTrailingZeros is undefined and configuration.allowTrailingZeros.default is undefined, it is set to false', () => {
+    const onModelChanged = jest.fn();
+    const component = shallow(<ConfigureNotStyled
+      onModelChanged={onModelChanged}
+      classes={{}}
+      { ...defaultValues}
+      model={{...defaultValues.model, allowTrailingZeros: undefined}}
+      configuration={{
+        ...defaultValues.configuration,
+        allowTrailingZeros: {
+          ...defaultValues.configuration.allowTrailingZeros,
+          default: undefined
+        }}}
+    />);
+
+    expect(onModelChanged).toBeCalled();
+    expect(component.instance().props.model.allowTrailingZeros).toEqual(false);
   });
 });
 

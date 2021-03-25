@@ -283,24 +283,7 @@
     },
     "allowTrailingZeros": {
       "description": "Indicates if trailing zeros are allowed",
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "description": "Indicates if an author or editor will have access to this item configuration",
-          "type": "boolean",
-          "title": "enabled"
-        },
-        "label": {
-          "description": "Indicates how the checkbox will be labeled in the UI",
-          "type": "string",
-          "title": "label"
-        },
-        "default": {
-          "description": "If enabled is true, indicates the default state of the Allow Trailing Zeros checkbox\nIf enabled is false, indicates if trailing zeros are allowed",
-          "type": "boolean",
-          "title": "default"
-        }
-      },
+      "type": "boolean",
       "title": "allowTrailingZeros"
     },
     "defaultResponse": {

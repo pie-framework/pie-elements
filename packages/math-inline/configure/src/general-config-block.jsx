@@ -13,6 +13,8 @@ import { MathToolbar } from '@pie-lib/math-toolbar';
 import isEqual from 'lodash/isEqual';
 import { ResponseTypes } from './utils';
 import MathQuill from '@pie-framework/mathquill';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 let registered = false;
 
@@ -322,11 +324,11 @@ class GeneralConfigBlock extends React.Component {
     onChange(newModel);
   };
 
-  onAllowTrailingZerosChange = (allow) => {
+  onAllowTrailingZerosChange = (event) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel.allowTrailingZeros.default = allow;
+    newModel.allowTrailingZeros = event.target.checked;
     onChange(newModel);
   };
 
@@ -467,15 +469,23 @@ class GeneralConfigBlock extends React.Component {
             </Button>
           )}
         </div>
+        {configuration.allowTrailingZeros.enabled ?
+        <FormControlLabel
+          label={configuration.allowTrailingZeros.label}
+          control={
+            <Checkbox
+              checked={allowTrailingZeros}
+              onChange={this.onAllowTrailingZerosChange}
+            />
+          }
+        /> : null}
         {responsesToUse.map((response, idx) => (
           <Response
             key={response.id}
-            allowTrailingZeros={allowTrailingZeros}
             mode={equationEditor}
             response={response}
             defaultResponse={responseType === ResponseTypes.simple}
             onResponseChange={this.onResponseChange}
-            onAllowTrailingZerosChange={this.onAllowTrailingZerosChange}
             index={idx}
           />
         ))}

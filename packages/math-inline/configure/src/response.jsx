@@ -90,8 +90,6 @@ class Response extends React.Component {
     index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
     response: PropTypes.object.isRequired,
-    allowTrailingZeros: PropTypes.object.isRequired,
-    onAllowTrailingZerosChange: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -125,11 +123,6 @@ class Response extends React.Component {
     }
 
     onResponseChange(newResponse, index);
-  };
-
-  onChangeAllowTrailingZeros = evt => {
-    const { onAllowTrailingZerosChange } = this.props;
-    onAllowTrailingZerosChange(evt.target.checked);
   };
 
   onConfigChanged = name => evt => {
@@ -240,7 +233,7 @@ class Response extends React.Component {
   };
 
   render() {
-    const { classes, mode, defaultResponse, index, response, allowTrailingZeros } = this.props;
+    const { classes, mode, defaultResponse, index, response } = this.props;
     const { showKeypad } = this.state;
     const {
       validation,
@@ -344,17 +337,6 @@ class Response extends React.Component {
                     />
                   }
                 />
-                {allowTrailingZeros.enabled ?
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label={allowTrailingZeros.label}
-                  control={
-                    <Checkbox
-                      checked={allowTrailingZeros.default}
-                      onChange={this.onChangeAllowTrailingZeros}
-                    />
-                  }
-                /> : null }
               </div>
             </div>
           )}

@@ -7,7 +7,9 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <Panel
         configuration={
           Object {
-            "allowTrailingZerosConfig": Object {
+            "allowTrailingZeros": Object {
+              "default": false,
+              "enabled": true,
               "label": "Allow Trailing Zeros",
               "settings": true,
             },
@@ -63,11 +65,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
         }
         model={
           Object {
-            "allowTrailingZeros": Object {
-              "default": true,
-              "enabled": true,
-              "label": "Allow Trailing Zeros",
-            },
+            "allowTrailingZeros": true,
             "configure": undefined,
             "customKeys": Array [
               "\\\\left(\\\\right)",
@@ -135,7 +133,9 @@ exports[`Configure renders correctly with snapshot 1`] = `
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
-              "allowTrailingZerosConfig": Object {
+              "allowTrailingZeros": Object {
+                "default": false,
+                "enabled": true,
                 "label": "Allow Trailing Zeros",
                 "settings": true,
               },
@@ -175,11 +175,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
           }
           model={
             Object {
-              "allowTrailingZeros": Object {
-                "default": true,
-                "enabled": true,
-                "label": "Allow Trailing Zeros",
-              },
+              "allowTrailingZeros": true,
               "configure": undefined,
               "customKeys": Array [
                 "\\\\left(\\\\right)",
@@ -421,19 +417,20 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       + Response
     </WithStyles(Button)>
   </div>
-  <WithStyles(Response)
-    allowTrailingZeros={
-      Object {
-        "default": true,
-        "enabled": true,
-        "label": "Allow Trailing Zeros",
-      }
+  <WithStyles(WithFormControlContext(FormControlLabel))
+    control={
+      <WithStyles(Checkbox)
+        checked={true}
+        onChange={[Function]}
+      />
     }
+    label="Allow Trailing Zeros"
+  />
+  <WithStyles(Response)
     defaultResponse={false}
     index={0}
     key="1"
     mode="3"
-    onAllowTrailingZerosChange={[Function]}
     onResponseChange={[Function]}
     response={
       Object {

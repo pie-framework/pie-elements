@@ -36,11 +36,7 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    allowTrailingZeros: {
-      enabled: false,
-      label: '',
-      default: false
-    }
+    allowTrailingZeros: true
   },
   configuration: {
     prompt: {
@@ -75,9 +71,11 @@ export default {
       settings: false,
       label: 'Allow Partial Scoring'
     },
-    allowTrailingZerosConfig: {
+    allowTrailingZeros: {
       settings: true,
-      label: 'Allow Trailing Zeros'
+      label: 'Allow Trailing Zeros',
+      enabled: true,
+      default: true
     }
   }
 };

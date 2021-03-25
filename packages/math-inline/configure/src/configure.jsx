@@ -62,6 +62,12 @@ export class Configure extends React.Component {
     onModelChanged(model);
   };
 
+  onAllowTrailingZerosChanged = allowTrailingZeros => {
+    const { model, onModelChanged } = this.props;
+    model.allowTrailingZeros = allowTrailingZeros;
+    onModelChanged(model);
+  };
+
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
     const {
@@ -72,10 +78,19 @@ export class Configure extends React.Component {
       rationale = {},
       prompt = {},
       scoringType = {},
-      allowTrailingZerosConfig = {}
+      allowTrailingZeros = {}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
+
+    if (model.allowTrailingZeros === undefined) {
+      if(allowTrailingZeros.default  !== undefined) {
+        this.onAllowTrailingZerosChanged(allowTrailingZeros.default);
+      }
+      else {
+        this.onAllowTrailingZerosChanged(false);
+      }
+    }
 
     return (
       <div>
@@ -94,8 +109,8 @@ export class Configure extends React.Component {
                     toggle(feedback.label),
                   'promptEnabled': prompt.settings &&
                     toggle(prompt.label),
-                  'allowTrailingZeros.enabled':  allowTrailingZerosConfig.settings &&
-                    toggle(allowTrailingZerosConfig.label)
+                  'allowTrailingZeros.enabled':  allowTrailingZeros.settings &&
+                    toggle(allowTrailingZeros.label, true)
                 },
                 'Properties': {
                   teacherInstructionsEnabled: teacherInstructions.settings &&

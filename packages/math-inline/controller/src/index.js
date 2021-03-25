@@ -65,7 +65,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem,
-    model.allowTrailingZeros.default
+    model.allowTrailingZeros
   );
   const correctnessObject = {
     correctness: 'incorrect',
@@ -106,9 +106,7 @@ function stripForStringCompare(answer = '') {
 }
 
 function removeTrailingZeros(answer = '') {
-  answer = answer.replace( /[^\d.]*/g, '');
-
-  return parseFloat(answer) ? parseFloat(answer).toString() : answer;
+  return answer.replace(/(((?<=(\.)\d*?[1-9])0+)|(\.)0+)/g, '');
 }
 
 function handleStringBasedCheck(acceptedValues, answerItem) {

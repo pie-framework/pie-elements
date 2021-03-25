@@ -79,17 +79,7 @@ export interface MathInlinePie extends PieModel {
     responses: MathInlineResponse[];
 
     /** Indicates if trailing zeros are allowed */
-    allowTrailingZeros?: {
-        /** Indicates if an author or editor will have access to this item configuration */
-        enabled?: boolean,
-        /** Indicates how the checkbox will be labeled in the UI */
-        label?: string,
-        /**
-         * If enabled is true, indicates the default state of the Allow Trailing Zeros checkbox
-         * If enabled is false, indicates if trailing zeros are allowed
-         */
-        default?: boolean
-    };
+    allowTrailingZeros?: boolean;
 
     /**
      * Default correct response
@@ -175,5 +165,20 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
     /**
      * Allow Trailing Zeros configuration
      */
-    allowTrailingZerosConfig?: ConfigureProp;
+    allowTrailingZeros?: {
+        /**Indicates if the item has to be displayed in the Settings Panel */
+        settings?: boolean,
+
+        /** Indicates if an author or editor will have access to this item configuration */
+        enabled?: boolean,
+
+        /** Indicates how the checkbox will be labeled in the UI and the label for the item that has to be displayed in the Settings Panel*/
+        label?: string,
+
+        /**
+         * If enabled is true and allowTrailingZeros is undefined in the model, indicates the default state of the Allow Trailing Zeros checkbox
+         * If enabled is false and allowTrailingZeros is undefined in the model, indicates the state of Allow Trailing Zeros
+         */
+        default?: boolean
+    };
 }
