@@ -36,6 +36,11 @@ function processAnswerItem(answerItem = '', isLiteral) {
   // also ignore text nodes, just swap out with empty string
 
   newAnswerItem = newAnswerItem.replace(textRegex, '');
+  if (
+    containsDecimal(newAnswerItem) && validExpressionWithThousandSeparator(newAnswerItem)
+  ) {
+    newAnswerItem = newAnswerItem.replace(decimalCommaRegex, '');
+  }
 
   newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
 
@@ -151,18 +156,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         for (let i = 0; i < acceptedValues.length; i++) {
           let answerValueToUse = processAnswerItem(answerItem, true);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
-
-          if (
-            containsDecimal(answerValueToUse) && validExpressionWithThousandSeparator(answerValueToUse)
-          ) {
-            answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
-          }
-
-          if (
-            containsDecimal(acceptedValueToUse) && validExpressionWithThousandSeparator(acceptedValueToUse)
-          ) {
-            acceptedValueToUse = acceptedValueToUse.replace(decimalCommaRegex, '');
-          }
 
           if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
