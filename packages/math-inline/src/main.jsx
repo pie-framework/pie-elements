@@ -521,7 +521,7 @@ const styles = (theme) => ({
     display: 'inline-block',
   },
   tooltip: {
-    background: color.primaryLight(),
+    background: `${color.primaryLight()} !important`,
     color: color.text(),
     padding: theme.spacing.unit * 2,
     border: `1px solid ${color.secondary()}`,
