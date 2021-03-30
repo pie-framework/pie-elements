@@ -72,7 +72,6 @@ export default {
       label: 'Allow Partial Scoring'
     },
     allowTrailingZeros: {
-      settings: true,
       label: 'Allow Trailing Zeros',
       enabled: true,
       default: true

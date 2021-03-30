@@ -119,11 +119,6 @@
       "description": "Allow Trailing Zeros configuration",
       "type": "object",
       "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
         "enabled": {
           "description": "Indicates if an author or editor will have access to this item configuration",
           "type": "boolean",

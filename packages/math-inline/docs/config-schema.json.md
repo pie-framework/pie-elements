@@ -92,10 +92,6 @@ Allow Trailing Zeros configuration
 
 Properties of the `allowTrailingZeros` object:
 
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
 ## `enabled` (boolean)
 
 Indicates if an author or editor will have access to this item configuration

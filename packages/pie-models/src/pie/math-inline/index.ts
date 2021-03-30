@@ -166,9 +166,6 @@ export interface MathInlineConfigure extends PromptConfig, CommonConfigSettings 
      * Allow Trailing Zeros configuration
      */
     allowTrailingZeros?: {
-        /**Indicates if the item has to be displayed in the Settings Panel */
-        settings?: boolean,
-
         /** Indicates if an author or editor will have access to this item configuration */
         enabled?: boolean,
 

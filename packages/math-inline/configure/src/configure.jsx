@@ -109,8 +109,6 @@ export class Configure extends React.Component {
                     toggle(feedback.label),
                   'promptEnabled': prompt.settings &&
                     toggle(prompt.label),
-                  'allowTrailingZeros.enabled':  allowTrailingZeros.settings &&
-                    toggle(allowTrailingZeros.label, true)
                 },
                 'Properties': {
                   teacherInstructionsEnabled: teacherInstructions.settings &&
