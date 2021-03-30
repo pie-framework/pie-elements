@@ -42,7 +42,6 @@ exports.model = (id, element) => ({
   feedbackEnabled: true,
   prompt: 'Arrange the fruits alphabetically',
   promptEnabled: true,
-  lockChoiceOrder: false,
   numberedGuides: false,
   orientation: 'vertical',
   partialScoring: false,

@@ -2,7 +2,7 @@ import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 
 import _ from 'lodash';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
+import { partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 import defaults from './defaults';
@@ -66,33 +66,19 @@ export const normalize = question => ({
  * @param {*} question
  * @param {*} session
  * @param {*} env
- * @param {*} updateSession - optional - a function that will set the properties passed into it on the session.
  */
-export function model(question, session, env, updateSession) {
+export function model(question, session, env) {
   return new Promise(async resolve => {
     const normalizedQuestion = normalize(question);
     const base = {};
-    let choices = normalizedQuestion.choices;
 
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
+    base.choices = normalizedQuestion.choices;
 
-    const lockChoiceOrder = lockChoices(normalizedQuestion, session, env);
-
-    if (!lockChoiceOrder && env.mode === 'gather') {
-      choices = await getShuffledChoices(
-        choices,
-        session,
-        updateSession,
-        'label'
-      );
-
-      if (!session.shuffledValues && !normalizedQuestion.placementArea) {
-          session.value = choices.map(m => m.id);
-      }
+    if (env.mode === 'gather' && !normalizedQuestion.placementArea) {
+      session.value = base.choices.map(m => m.id);
     }
-
-    base.choices = choices;
 
     log('[model] removing tileSize for the moment.');
 

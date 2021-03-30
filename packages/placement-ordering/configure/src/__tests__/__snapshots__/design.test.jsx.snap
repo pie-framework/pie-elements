@@ -24,10 +24,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "label": "Feedback",
             "settings": true,
           },
-          "lockChoiceOrder": Object {
-            "label": "Lock Choice Order",
-            "settings": true,
-          },
           "numberedGuides": Object {
             "label": "Numbered guides",
             "settings": true,
@@ -87,7 +83,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
-            "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -103,7 +98,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "correctResponse": Array [],
           "enableImages": false,
           "feedbackEnabled": true,
-          "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,
@@ -206,10 +200,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "label": "Feedback",
             "settings": true,
           },
-          "lockChoiceOrder": Object {
-            "label": "Lock Choice Order",
-            "settings": true,
-          },
           "numberedGuides": Object {
             "label": "Numbered guides",
             "settings": true,
@@ -269,7 +259,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "choiceLabel.enabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
-            "lockChoiceOrder": undefined,
             "numberedGuides": false,
             "orientation": undefined,
             "partialScoring": false,
@@ -285,7 +274,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "correctResponse": Array [],
           "enableImages": false,
           "feedbackEnabled": true,
-          "lockChoiceOrder": false,
           "numberedGuides": false,
           "orientation": "vertical",
           "partialScoring": true,

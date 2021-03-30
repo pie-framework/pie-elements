@@ -4,7 +4,6 @@ export default {
   correctResponse: [],
   enableImages: false,
   prompt: 'Item Stem goes here',
-  lockChoiceOrder: false,
   numberedGuides: false,
   orientation: 'vertical',
   partialScoring: true,
