@@ -97,6 +97,12 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
+    "verticalMode": {
+      "description": "Indicates the layout of choices for player",
+      "default": ": true",
+      "type": "boolean",
+      "title": "verticalMode"
+    },
     "lockChoiceOrder": {
       "description": "Indicates the order of choices should be randomly ordered when presented to user",
       "type": "boolean",

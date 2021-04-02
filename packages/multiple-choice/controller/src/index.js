@@ -73,6 +73,7 @@ export async function model(question, session, env, updateSession) {
     disabled: env.mode !== 'gather',
     mode: env.mode,
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
+    verticalMode: normalizedQuestion.verticalMode,
     choiceMode: normalizedQuestion.choiceMode,
     keyMode: normalizedQuestion.choicePrefix,
     choices,
