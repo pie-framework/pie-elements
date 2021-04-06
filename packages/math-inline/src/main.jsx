@@ -29,8 +29,7 @@ function generateAdditionalKeys(keyData = []) {
 
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
   return (
-    Math.floor(additionalKeys.length / 5) * 30 +
-    (equationEditor === 'miscellaneous' ? 600 : 500)
+    Math.floor(additionalKeys.length / 5) * 30 + (equationEditor === 'miscellaneous' ? 600 : 500)
   );
 }
 
@@ -521,7 +520,7 @@ const styles = (theme) => ({
     display: 'inline-block',
   },
   tooltip: {
-    background: color.primaryLight(),
+    background: `${color.primaryLight()} !important`,
     color: color.text(),
     padding: theme.spacing.unit * 2,
     border: `1px solid ${color.secondary()}`,
