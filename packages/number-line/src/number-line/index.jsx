@@ -67,7 +67,8 @@ export class NumberLine extends React.Component {
 
     this.state = {
       selectedElements: [],
-      elementType: initialType
+      elementType: initialType,
+      answers: props.answer
     };
   }
 
