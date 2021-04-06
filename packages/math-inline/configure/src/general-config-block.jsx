@@ -305,7 +305,6 @@ class GeneralConfigBlock extends React.Component {
       validation: 'literal',
       answer: '',
       alternates: {},
-      allowThousandsSeparator: true,
     };
 
     newModel.responses = newModel.responses.concat(response);

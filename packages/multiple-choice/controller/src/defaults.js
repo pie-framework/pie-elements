@@ -3,5 +3,6 @@ export default {
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  verticalMode: true,
   choicePrefix: 'letters',
 };

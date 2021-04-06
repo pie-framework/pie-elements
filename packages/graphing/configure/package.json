@@ -9,9 +9,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.55",
-    "@pie-lib/editable-html": "^7.16.14",
-    "@pie-lib/graphing": "^2.2.19",
+    "@pie-lib/config-ui": "^10.8.57",
+    "@pie-lib/editable-html": "^7.16.16",
+    "@pie-lib/graphing": "^2.2.21",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",

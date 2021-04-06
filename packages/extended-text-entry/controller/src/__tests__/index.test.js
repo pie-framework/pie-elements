@@ -1,6 +1,5 @@
 import { model } from '../index';
 import isFunction from 'lodash/isFunction';
-
 const defaults = {
   feedback: { type: 'default', default: 'this is default feedback' },
   mathInput: false,
@@ -11,11 +10,9 @@ const defaults = {
   },
   teacherInstructions: 'Teacher Instructions'
 };
-
 const q = extras => ({ ...defaults, ...extras });
 const s = extras => ({ ...extras });
 const e = (mode = 'gather') => ({ mode });
-
 describe('controller', () => {
   const assert = (label, question, session, env, expected) => {
     it(label, async () => {
@@ -27,18 +24,15 @@ describe('controller', () => {
       }
     });
   };
-
   describe('model', () => {
     const question = q();
     const session = s();
     const env = e();
-
     describe('disabled', () => {
       assert('gather', question, session, env, { disabled: false });
       assert('view', question, session, e('view'), { disabled: true });
       assert('evaluate', question, session, e('evaluate'), { disabled: true });
     });
-
     describe('feedback', () => {
       assert('none for gather', question, session, env, { feedback: undefined });
       assert('none for view', question, session, e('view'), { feedback: undefined });
@@ -46,10 +40,8 @@ describe('controller', () => {
         feedback: q().feedback.default
       });
     });
-
     it('gather mode, promptEnabled: true', async () => {
       const result = await model(question, session, env);
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -61,10 +53,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('gather mode, promptEnabled: false', async () => {
       const result = await model(q({ promptEnabled: false }), session, env);
-
       expect(result).toEqual({
         customKeys: [],
         prompt: null,
@@ -76,10 +66,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('view mode, student role', async () => {
       const result = await model(question, session, { mode: 'view' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -91,10 +79,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('view mode, instructor role, teacherInstructions enabled', async () => {
       const result = await model(question, session, { mode: 'view', role: 'instructor' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -106,10 +92,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('view mode, instructor role, teacherInstructions disabled', async () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'view', role: 'instructor' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -121,10 +105,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('evaluate mode, student role', async () => {
       const result = await model(question, session, { mode: 'evaluate' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -136,10 +118,8 @@ describe('controller', () => {
         equationEditor: 'miscellaneous'
       });
     });
-
     it('evaluate mode, instructor role, teacherInstructions enabled', async () => {
       const result = await model(question, session, { mode: 'evaluate', role: 'instructor' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,
@@ -153,7 +133,6 @@ describe('controller', () => {
     });
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'evaluate', role: 'instructor' });
-
       expect(result).toEqual({
         customKeys: [],
         prompt: defaults.prompt,

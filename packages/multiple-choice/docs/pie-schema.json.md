@@ -80,6 +80,12 @@ The question prompt or item stem
 
 Determines if prompt should show
 
+# `verticalMode` (boolean)
+
+Indicates the layout of choices for player
+
+Default: `": true"`
+
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices should be randomly ordered when presented to user

@@ -9,7 +9,6 @@ describe('index', () => {
         promptEnabled: true,
         choices: [],
         correctResponse: [],
-        lockChoiceOrder: true,
         feedbackEnabled: true,
       },
       o
@@ -164,24 +163,6 @@ describe('index', () => {
       );
     });
 
-    describe('model - with updateSession', () => {
-      it('calls updateSession', async () => {
-        const session = { id: '1', element: 'placement-ordering' };
-        const env = { mode: 'gather' };
-        const question = base({
-          choices: [
-            { label: 'a', id: 'a' },
-            { label: 'b', id: 'b' },
-            { label: 'c', id: 'c' },
-          ],
-          lockChoiceOrder: false,
-        });
-        const updateSession = jest.fn().mockResolvedValue();
-        await controller.model(question, session, env, updateSession);
-        expect(updateSession).toHaveBeenCalled();
-      });
-    });
-
     describe('session not set', () => {
       const assertModelCorrectness = (session) => {
         it(`returns correctness: incorrect of session is ${JSON.stringify(
@@ -235,16 +216,14 @@ describe('index', () => {
         { id: '2', label: 'b' }
       ];
       const env = { mode: 'gather' };
-      const updateSession = jest.fn();
 
       it('sets session value if no placementArea', async () => {
         const question = base({
-          choices,
-          lockChoiceOrder: false
+          choices
         });
         const session = {};
 
-        await controller.model(question, session, env, updateSession);
+        await controller.model(question, session, env);
 
         expect(session.value.sort()).toEqual(['1', '2']);
       });
@@ -252,12 +231,11 @@ describe('index', () => {
       it('does not set session value if placementArea = true', async () => {
         const question = base({
           choices,
-          lockChoiceOrder: false,
           placementArea: true
         });
         const session = {};
 
-        await controller.model(question, session, env, updateSession);
+        await controller.model(question, session, env);
 
         expect(session.value).toBeUndefined();
       });

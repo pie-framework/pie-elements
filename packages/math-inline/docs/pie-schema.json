@@ -266,11 +266,6 @@
             },
             "title": "alternates"
           },
-          "allowThousandsSeparator": {
-            "description": "Indicates if thousand separators are allowed",
-            "type": "boolean",
-            "title": "allowThousandsSeparator"
-          },
           "allowTrailingZeros": {
             "description": "Indicates if trailing zeros are allowed",
             "type": "boolean",
@@ -340,11 +335,6 @@
             }
           },
           "title": "alternates"
-        },
-        "allowThousandsSeparator": {
-          "description": "Indicates if thousand separators are allowed",
-          "type": "boolean",
-          "title": "allowThousandsSeparator"
         },
         "allowTrailingZeros": {
           "description": "Indicates if trailing zeros are allowed",
@@ -720,11 +710,6 @@
             }
           },
           "title": "alternates"
-        },
-        "allowThousandsSeparator": {
-          "description": "Indicates if thousand separators are allowed",
-          "type": "boolean",
-          "title": "allowThousandsSeparator"
         },
         "allowTrailingZeros": {
           "description": "Indicates if trailing zeros are allowed",

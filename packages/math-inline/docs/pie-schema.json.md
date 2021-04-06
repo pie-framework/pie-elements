@@ -92,10 +92,6 @@ The answer for the question
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
 
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
-
 ## `allowTrailingZeros` (boolean)
 
 Indicates if trailing zeros are allowed
@@ -127,10 +123,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 ## `allowTrailingZeros` (boolean)
 
@@ -286,10 +278,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-### `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 ### `allowTrailingZeros` (boolean)
 

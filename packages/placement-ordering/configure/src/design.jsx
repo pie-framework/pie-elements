@@ -91,8 +91,6 @@ export class Design extends React.Component {
       orientation = {},
       removeTilesAfterPlacing = {},
       partialScoring = {},
-      lockChoiceOrder = {},
-
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
@@ -131,8 +129,6 @@ export class Design extends React.Component {
                   toggle(removeTilesAfterPlacing.label),
                 partialScoring:
                   partialScoring.settings && toggle(partialScoring.label),
-                lockChoiceOrder:
-                  lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                 feedbackEnabled:
                   feedback.settings && toggle(feedback.label)
               },

@@ -35,9 +35,6 @@ interface MathInlineResponse {
      */
     alternates: Alternates;
 
-    /** Indicates if thousand separators are allowed */
-    allowThousandsSeparator?: boolean;
-
     /** Indicates if trailing zeros are allowed */
     allowTrailingZeros?: boolean;
 }
