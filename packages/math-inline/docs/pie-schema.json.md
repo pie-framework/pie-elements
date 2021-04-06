@@ -96,7 +96,7 @@ an object with some alternatives for the correct answers
 
 Indicates if thousand separators are allowed
 
-# `allowTrailingZeros` (boolean)
+## `allowTrailingZeros` (boolean)
 
 Indicates if trailing zeros are allowed
 
@@ -131,6 +131,10 @@ an object with some alternatives for the correct answers
 ## `allowThousandsSeparator` (boolean)
 
 Indicates if thousand separators are allowed
+
+## `allowTrailingZeros` (boolean)
+
+Indicates if trailing zeros are allowed
 
 # `partialScoring` (boolean)
 
@@ -286,6 +290,10 @@ an object with some alternatives for the correct answers
 ### `allowThousandsSeparator` (boolean)
 
 Indicates if thousand separators are allowed
+
+### `allowTrailingZeros` (boolean)
+
+Indicates if trailing zeros are allowed
 
 ## `Alternate` (object)
 

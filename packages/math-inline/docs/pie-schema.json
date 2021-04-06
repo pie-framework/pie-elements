@@ -270,6 +270,11 @@
             "description": "Indicates if thousand separators are allowed",
             "type": "boolean",
             "title": "allowThousandsSeparator"
+          },
+          "allowTrailingZeros": {
+            "description": "Indicates if trailing zeros are allowed",
+            "type": "boolean",
+            "title": "allowTrailingZeros"
           }
         },
         "required": [
@@ -280,11 +285,6 @@
         ]
       },
       "title": "responses"
-    },
-    "allowTrailingZeros": {
-      "description": "Indicates if trailing zeros are allowed",
-      "type": "boolean",
-      "title": "allowTrailingZeros"
     },
     "defaultResponse": {
       "title": "MathInlineResponse",
@@ -345,6 +345,11 @@
           "description": "Indicates if thousand separators are allowed",
           "type": "boolean",
           "title": "allowThousandsSeparator"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates if trailing zeros are allowed",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
         }
       },
       "required": [
@@ -720,6 +725,11 @@
           "description": "Indicates if thousand separators are allowed",
           "type": "boolean",
           "title": "allowThousandsSeparator"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates if trailing zeros are allowed",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
         }
       },
       "required": [

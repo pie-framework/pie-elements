@@ -24,11 +24,11 @@ const E262456 = {
       'allowSpaces': true,
       'validation': 'symbolic',
       'answer': '$410',
-      'id': '1'
+      'id': '1',
+      'allowTrailingZeros': true
     }
   ],
   'responseType': 'Advanced Multi',
-  'allowTrailingZeros': true
 };
 
 

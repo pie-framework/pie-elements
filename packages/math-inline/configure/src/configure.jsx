@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import {
   FeedbackConfig,
   settings,
@@ -64,9 +64,37 @@ export class Configure extends React.Component {
 
   onAllowTrailingZerosChanged = allowTrailingZeros => {
     const { model, onModelChanged } = this.props;
-    model.allowTrailingZeros = allowTrailingZeros;
+
+    model.responses.map(response => {
+      response.allowTrailingZeros = allowTrailingZeros;
+      return response;
+    });
+
     onModelChanged(model);
   };
+
+  componentDidMount() {
+    const { model, configuration } = this.props;
+    const { allowTrailingZeros }  = configuration;
+    let isTrue = false;
+
+    model.responses.forEach(response => {
+      if (response.allowTrailingZeros === true) {
+        isTrue = true;
+      }
+    });
+
+    if (isTrue) {
+      this.onAllowTrailingZerosChanged(true);
+    }
+    else {
+      if (allowTrailingZeros && allowTrailingZeros.default !== undefined) {
+        this.onAllowTrailingZerosChanged(allowTrailingZeros.default);
+      } else {
+        this.onAllowTrailingZerosChanged(false);
+      }
+    }
+  }
 
   render() {
     const { classes, model, imageSupport, onModelChanged, configuration, onConfigurationChanged } = this.props;
@@ -78,19 +106,9 @@ export class Configure extends React.Component {
       rationale = {},
       prompt = {},
       scoringType = {},
-      allowTrailingZeros = {}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
-
-    if (model.allowTrailingZeros === undefined) {
-      if(allowTrailingZeros.default  !== undefined) {
-        this.onAllowTrailingZerosChanged(allowTrailingZeros.default);
-      }
-      else {
-        this.onAllowTrailingZerosChanged(false);
-      }
-    }
 
     return (
       <div>

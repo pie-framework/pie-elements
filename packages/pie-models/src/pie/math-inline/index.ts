@@ -37,6 +37,9 @@ interface MathInlineResponse {
 
     /** Indicates if thousand separators are allowed */
     allowThousandsSeparator?: boolean;
+
+    /** Indicates if trailing zeros are allowed */
+    allowTrailingZeros?: boolean;
 }
 
 /**
@@ -77,9 +80,6 @@ export interface MathInlinePie extends PieModel {
 
     /** Array of all correct responses; if responseType is Simple, only first element in array is used */
     responses: MathInlineResponse[];
-
-    /** Indicates if trailing zeros are allowed */
-    allowTrailingZeros?: boolean;
 
     /**
      * Default correct response

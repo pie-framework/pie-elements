@@ -62,10 +62,18 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
+  let allowTrailingZeros = false;
+
+  model.responses.forEach(response => {
+    if (response.allowTrailingZeros === true) {
+      allowTrailingZeros = true;
+    }
+  });
+
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem,
-    model.allowTrailingZeros
+    allowTrailingZeros
   );
   const correctnessObject = {
     correctness: 'incorrect',
