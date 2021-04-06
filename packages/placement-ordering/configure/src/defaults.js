@@ -10,7 +10,6 @@ export default {
     correctResponse: [],
     enableImages: false,
     prompt: 'Item Stem goes here',
-    lockChoiceOrder: false,
     numberedGuides: false,
     orientation: 'vertical',
     partialScoring: true,
@@ -46,10 +45,6 @@ export default {
     prompt: {
       settings: true,
       label: 'Item Stem'
-    },
-    lockChoiceOrder: {
-      settings: true,
-      label: 'Lock Choice Order'
     },
     numberedGuides: {
       settings: true,
