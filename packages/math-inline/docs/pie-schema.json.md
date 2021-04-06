@@ -92,10 +92,6 @@ The answer for the question
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
 
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
-
 # `defaultResponse` (object)
 
 Properties of the `defaultResponse` object:
@@ -123,10 +119,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-## `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 # `partialScoring` (boolean)
 
@@ -278,10 +270,6 @@ The answer for the question
 
 For validation type = literal, alternates represents
 an object with some alternatives for the correct answers
-
-### `allowThousandsSeparator` (boolean)
-
-Indicates if thousand separators are allowed
 
 ## `Alternate` (object)
 

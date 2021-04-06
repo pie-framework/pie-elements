@@ -11,6 +11,7 @@ const decimalRegex = /\.|,/g;
 const decimalCommaRegex = /,/g;
 const textRegex = /\\text\{([^{}]+)\}/g;
 const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
+const noNumbers = /[^0-9.,]+/g;
 
 /**
  * TODO:
@@ -35,6 +36,11 @@ function processAnswerItem(answerItem = '', isLiteral) {
   // also ignore text nodes, just swap out with empty string
 
   newAnswerItem = newAnswerItem.replace(textRegex, '');
+  if (
+    containsDecimal(newAnswerItem) && validExpressionWithThousandSeparator(newAnswerItem)
+  ) {
+    newAnswerItem = newAnswerItem.replace(decimalCommaRegex, '');
+  }
 
   newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
 
@@ -94,6 +100,19 @@ const stripTargets = [
   / /g
 ];
 
+const validExpressionWithThousandSeparator = (answer) => {
+  const numericValues = answer.split(noNumbers);
+
+  for (let i = 0; i < numericValues.length; i++) {
+    if (numericValues[i] != '' && containsDecimal(numericValues[i]) && !decimalWithThousandSeparatorNumberRegex.test(numericValues[i])) {
+
+      return false;
+    }
+  }
+
+  return true
+}
+
 function stripForStringCompare(answer = '') {
   let stripped = answer;
 
@@ -137,25 +156,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         for (let i = 0; i < acceptedValues.length; i++) {
           let answerValueToUse = processAnswerItem(answerItem, true);
           let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
-
-          if (correctResponse.allowThousandsSeparator) {
-            if (
-              containsDecimal(answerValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(answerValueToUse)
-            ) {
-              answerValueToUse = answerValueToUse.replace(decimalCommaRegex, '');
-            }
-
-            if (
-              containsDecimal(acceptedValueToUse) &&
-              decimalWithThousandSeparatorNumberRegex.test(acceptedValueToUse)
-            ) {
-              acceptedValueToUse = acceptedValueToUse.replace(
-                decimalCommaRegex,
-                ''
-              );
-            }
-          }
 
           if (acceptedValueToUse === answerValueToUse) {
             answerCorrect = true;
@@ -326,57 +326,57 @@ const simpleSessionResponse = question =>
   });
 
 const advancedSessionResponse = question =>
-new Promise((resolve, reject) => {
-  const { responses } = question;
-  const { answer } = responses ? responses[0] : {};
+  new Promise((resolve, reject) => {
+    const { responses } = question;
+    const { answer } = responses ? responses[0] : {};
 
-  try {
-    const e = question.expression;
-    const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
+    try {
+      const e = question.expression;
+      const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
 
-    const o = escape(e).split(RESPONSE_TOKEN);
-    const to = o.map(t => (t === '' ? t : t.replace(/\s+/g, () => ('\\s*'))));
-    const tt = to.join('(.*)');
+      const o = escape(e).split(RESPONSE_TOKEN);
+      const to = o.map(t => (t === '' ? t : t.replace(/\s+/g, () => ('\\s*'))));
+      const tt = to.join('(.*)');
 
-    const m = answer.match(new RegExp(tt));
+      const m = answer.match(new RegExp(tt));
 
-    const count = o.length - 1;
+      const count = o.length - 1;
 
-    if (!m) {
+      if (!m) {
+        resolve({
+          answers: {},
+          completeAnswer: answer,
+          id: question.id
+        });
+
+        console.log(`can not find match: ${o} in ${answer}`);
+
+        return;
+      }
+
+      m.shift();
+
+      const answers = {};
+
+      for (var i = 0; i < count; i++) {
+        answers[`r${i + 1}`] = { value: m[i].trim() };
+      }
+
+      resolve({
+        answers,
+        completeAnswer: answer,
+        id: question.id
+      });
+    } catch (e) {
       resolve({
         answers: {},
         completeAnswer: answer,
         id: question.id
       });
 
-      console.log(`can not find match: ${o} in ${answer}`);
-
-      return;
+      console.error(e.toString());
     }
-
-    m.shift();
-
-    const answers = {};
-
-    for (var i = 0; i < count; i++) {
-      answers[`r${i + 1}`] = { value: m[i].trim() };
-    }
-
-    resolve({
-      answers,
-      completeAnswer: answer,
-      id: question.id
-    });
-  } catch (e) {
-    resolve({
-      answers: {},
-      completeAnswer: answer,
-      id: question.id
-    });
-
-    console.error(e.toString());
-  }
-});
+  });
 
 
 export const createCorrectResponseSession = (question, env) => {

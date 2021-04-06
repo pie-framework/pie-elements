@@ -118,10 +118,6 @@ class Response extends React.Component {
 
     newResponse[name] = evt.target.value;
 
-    if (name === 'validation' && evt.target.value === 'symbolic') {
-      newResponse.allowThousandsSeparator = true;
-    }
-
     onResponseChange(newResponse, index);
   };
 
@@ -239,7 +235,6 @@ class Response extends React.Component {
       validation,
       answer,
       alternates,
-      allowThousandsSeparator = false,
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
@@ -327,16 +322,6 @@ class Response extends React.Component {
                 ADD ALTERNATE
               </Button>
               <div className={classes.checkboxContainer}>
-                <FormControlLabel
-                  classes={{ root: classes.configLabel }}
-                  label="Allow Thousands Separators (Commas)"
-                  control={
-                    <Checkbox
-                      checked={allowThousandsSeparator}
-                      onChange={this.onConfigChanged('allowThousandsSeparator')}
-                    />
-                  }
-                />
               </div>
             </div>
           )}

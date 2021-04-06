@@ -34,9 +34,6 @@ interface MathInlineResponse {
      * an object with some alternatives for the correct answers
      */
     alternates: Alternates;
-
-    /** Indicates if thousand separators are allowed */
-    allowThousandsSeparator?: boolean;
 }
 
 /**
