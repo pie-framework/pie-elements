@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.1.22...@pie-element/placement-ordering-configure@5.2.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **placement-ordering:** provide an array of objects containing {key, weight}  as expected in correctResponse ([27df005](https://github.com/pie-framework/pie-elements/commit/27df005d44bf88118438d6319dbeb12fe25eb00c))
+
+
+### Features
+
+* **placement-ordering:** remove lockChoiceOrder PD-351 ([#557](https://github.com/pie-framework/pie-elements/issues/557)) ([cf1f4d1](https://github.com/pie-framework/pie-elements/commit/cf1f4d192aae153df60fa0d8ca0a85939c683bae))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [5.1.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.1.19...@pie-element/placement-ordering-configure@5.1.22) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure
