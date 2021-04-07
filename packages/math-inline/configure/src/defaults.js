@@ -73,7 +73,7 @@ export default {
     allowTrailingZeros: {
       label: 'Allow Trailing Zeros',
       enabled: true,
-      default: true
+      default: false
     }
   }
 };

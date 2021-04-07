@@ -79,21 +79,14 @@ export class Configure extends React.Component {
     let isTrue = false;
 
     (model.responses || []).forEach(response => {
-      if (response.allowTrailingZeros === true) {
-        isTrue = true;
-      }
+        isTrue = isTrue || response.allowTrailingZeros;
     });
 
-    if (isTrue) {
-      this.onAllowTrailingZerosChanged(true);
+    if (!isTrue && allowTrailingZeros && allowTrailingZeros.default !== undefined) {
+      isTrue = allowTrailingZeros.default;
     }
-    else {
-      if (allowTrailingZeros && allowTrailingZeros.default !== undefined) {
-        this.onAllowTrailingZerosChanged(allowTrailingZeros.default);
-      } else {
-        this.onAllowTrailingZerosChanged(false);
-      }
-    }
+
+    this.onAllowTrailingZerosChanged(isTrue);
   }
 
   render() {

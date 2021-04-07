@@ -327,7 +327,7 @@ class GeneralConfigBlock extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel.responses.forEach(response => {
+    (newModel.responses || []).forEach(response => {
       response.allowTrailingZeros = event.target.checked;
     });
 
@@ -353,7 +353,11 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
+    let { rationale: cRationale, prompt: cPrompt, allowTrailingZeros } = configuration || {};
+
+    allowTrailingZeros = allowTrailingZeros || {};
+    cRationale = cRationale || {};
+    cPrompt = cPrompt || {};
 
     const classNames = {
       editor: classes.responseEditor,
@@ -470,12 +474,12 @@ class GeneralConfigBlock extends React.Component {
             </Button>
           )}
         </div>
-        {configuration.allowTrailingZeros.enabled ?
+        {allowTrailingZeros.enabled ?
         <FormControlLabel
-          label={configuration.allowTrailingZeros.label}
+          label={allowTrailingZeros.label}
           control={
             <Checkbox
-              checked={responses[0].allowTrailingZeros}
+              checked={responses && responses[0] && responses[0].allowTrailingZeros}
               onChange={this.onAllowTrailingZerosChange}
             />
           }
