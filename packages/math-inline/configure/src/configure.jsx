@@ -79,7 +79,7 @@ export class Configure extends React.Component {
     let isTrue = false;
 
     (model.responses || []).forEach(response => {
-        isTrue = isTrue || response.allowTrailingZeros;
+        isTrue = isTrue || !!response.allowTrailingZeros;
     });
 
     if (!isTrue && allowTrailingZeros && allowTrailingZeros.default !== undefined) {

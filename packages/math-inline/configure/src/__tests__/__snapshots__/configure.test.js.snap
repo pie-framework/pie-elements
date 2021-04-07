@@ -8,7 +8,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
         configuration={
           Object {
             "allowTrailingZeros": Object {
-              "default": true,
+              "default": false,
               "enabled": true,
               "label": "Allow Trailing Zeros",
             },
@@ -132,7 +132,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
           configuration={
             Object {
               "allowTrailingZeros": Object {
-                "default": true,
+                "default": false,
                 "enabled": true,
                 "label": "Allow Trailing Zeros",
               },
