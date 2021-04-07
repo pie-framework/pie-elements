@@ -65,7 +65,7 @@ export class Configure extends React.Component {
   onAllowTrailingZerosChanged = allowTrailingZeros => {
     const { model, onModelChanged } = this.props;
 
-    model.responses.map(response => {
+    (model.responses || []).map(response => {
       response.allowTrailingZeros = allowTrailingZeros;
       return response;
     });
@@ -78,7 +78,7 @@ export class Configure extends React.Component {
     const { allowTrailingZeros }  = configuration;
     let isTrue = false;
 
-    model.responses.forEach(response => {
+    (model.responses || []).forEach(response => {
       if (response.allowTrailingZeros === true) {
         isTrue = true;
       }

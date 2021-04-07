@@ -36,7 +36,6 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    allowTrailingZeros: true
   },
   configuration: {
     prompt: {

@@ -63,7 +63,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
         }
         model={
           Object {
-            "allowTrailingZeros": true,
             "configure": undefined,
             "customKeys": Array [
               "\\\\left(\\\\right)",
@@ -107,6 +106,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             "responseType": "Advanced Multi",
             "responses": Array [
               Object {
+                "allowTrailingZeros": true,
                 "alternates": Object {
                   "1": "6=72\\\\div12\\\\text{eggs}",
                   "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
@@ -172,7 +172,6 @@ exports[`Configure renders correctly with snapshot 1`] = `
           }
           model={
             Object {
-              "allowTrailingZeros": true,
               "configure": undefined,
               "customKeys": Array [
                 "\\\\left(\\\\right)",
@@ -216,6 +215,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "responseType": "Advanced Multi",
               "responses": Array [
                 Object {
+                  "allowTrailingZeros": true,
                   "alternates": Object {
                     "1": "6=72\\\\div12\\\\text{eggs}",
                     "2": "\\\\frac{72}{12}=6\\\\text{eggs}",
@@ -431,6 +431,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     onResponseChange={[Function]}
     response={
       Object {
+        "allowTrailingZeros": true,
         "alternates": Object {
           "1": "6=72\\\\div12\\\\text{eggs}",
           "2": "\\\\frac{72}{12}=6\\\\text{eggs}",

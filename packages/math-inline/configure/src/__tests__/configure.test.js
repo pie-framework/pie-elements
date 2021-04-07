@@ -82,12 +82,12 @@ const defaultProps = {
           '2': '\\frac{72}{12}=6\\text{eggs}',
           '3': '6=\\frac{72}{12}\\text{eggs}'
         },
-        validation: 'literal'
+        validation: 'literal',
+        allowTrailingZeros: true
       }
     ],
     customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
-    configure: defaultValues.configure,
-    allowTrailingZeros: true
+    configure: defaultValues.configure
   },
   configuration: defaultValues.configuration
 };
@@ -95,9 +95,11 @@ const defaultProps = {
 describe('Configure', () => {
   let wrapper;
   let component;
+  let onModelChanged;
 
   beforeEach(() => {
-    wrapper = shallowChild(Configure, defaultProps, 2);
+    onModelChanged = jest.fn();
+    wrapper = shallowChild(Configure, {...defaultProps, onModelChanged}, 2);
   });
 
   it('renders correctly', () => {
@@ -115,7 +117,6 @@ describe('Configure', () => {
   });
 
   it('changeTeacherInstructions calls onModelChange', () => {
-    const onModelChanged = jest.fn();
     const component = shallow(<ConfigureNotStyled
       onModelChanged={onModelChanged}
       classes={{}}
@@ -129,26 +130,38 @@ describe('Configure', () => {
     }));
   });
 
-  it('if model.allowTrailingZeros is undefined, it is set to the default value in config', () => {
-    const onModelChanged = jest.fn();
+  it('if allowTrailingZeros is undefined in the model responses, it is set to the default value in config', () => {
     const component = shallow(<ConfigureNotStyled
       onModelChanged={onModelChanged}
       classes={{}}
       { ...defaultValues}
-      model={{...defaultValues.model, allowTrailingZeros: undefined}}
+      model={{
+        ...defaultValues.model,
+        responses: [{
+          'validation': 'literal',
+          'answer': '',
+          'id': '1',
+        }]
+      }}
     />);
 
     expect(onModelChanged).toBeCalled();
-    expect(component.instance().props.model.allowTrailingZeros).toEqual(defaultValues.configuration.allowTrailingZeros.default);
+    expect(component.instance().props.model.responses[0].allowTrailingZeros).toEqual(defaultValues.configuration.allowTrailingZeros.default);
   });
 
-  it('if model.allowTrailingZeros is undefined and configuration.allowTrailingZeros.default is undefined, it is set to false', () => {
-    const onModelChanged = jest.fn();
+  it('if allowTrailingZeros is undefined in the model and configuration.allowTrailingZeros.default is undefined, it is set to false', () => {
     const component = shallow(<ConfigureNotStyled
       onModelChanged={onModelChanged}
       classes={{}}
       { ...defaultValues}
-      model={{...defaultValues.model, allowTrailingZeros: undefined}}
+      model={{
+        ...defaultValues.model,
+        responses: [{
+          'validation': 'literal',
+          'answer': '',
+          'id': '1',
+        }]
+      }}
       configuration={{
         ...defaultValues.configuration,
         allowTrailingZeros: {
@@ -158,7 +171,7 @@ describe('Configure', () => {
     />);
 
     expect(onModelChanged).toBeCalled();
-    expect(component.instance().props.model.allowTrailingZeros).toEqual(false);
+    expect(component.instance().props.model.responses[0].allowTrailingZeros).toEqual(false);
   });
 });
 

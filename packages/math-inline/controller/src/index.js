@@ -70,7 +70,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 
   let allowTrailingZeros = false;
 
-  model.responses.forEach(response => {
+  (model.responses || []).forEach(response => {
     if (response.allowTrailingZeros === true) {
       allowTrailingZeros = true;
     }

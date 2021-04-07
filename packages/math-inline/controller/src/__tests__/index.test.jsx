@@ -15,10 +15,10 @@ const defaultModel = {
         '2': '\\frac{72}{12}=6\\text{eggs}',
         '3': '6=\\frac{72}{12}\\text{eggs}'
       },
-      validation: 'literal'
+      validation: 'literal',
+      allowTrailingZeros: true
     }
   ],
-  allowTrailingZeros: true,
   customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   id: 1
 };
@@ -247,14 +247,13 @@ describe('model', () => {
         ...defaultModel,
         responses: [
           {
-            allowSpaces: true,
             answer: '\\frac{4}{15.00}\\ \\text{square}\\ \\text{inches}',
             id: '1',
             alternates: {},
-            validation: 'literal'
+            validation: 'literal',
+            allowTrailingZeros: true,
           }
         ],
-        allowTrailingZeros: true,
       })
       session = {
         completeAnswer: '\\frac{4}{15}\\ \\text{square}\\ \\text{inches}'
@@ -272,14 +271,13 @@ describe('model', () => {
         ...defaultModel,
         responses: [
           {
-            allowSpaces: true,
             answer: '41.20000',
             id: '1',
             alternates: {},
-            validation: 'literal'
+            validation: 'literal',
+            allowTrailingZeros: false
           }
         ],
-        allowTrailingZeros: false,
       });
       session = {
         completeAnswer: '41.2'
@@ -558,8 +556,7 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: "x=\\frac{20,000}{r^2}\\text{radians}",
             validation: 'symbolic',
-            id: '1',
-            allowSpaces: true
+            id: '1'
           }
         ],
         id: '1'
@@ -684,7 +681,8 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: '1530',
             validation: 'symbolic',
-            id: '1'
+            id: '1',
+            allowTrailingZeros: false
           }
         ],
         id: '1',
@@ -697,8 +695,7 @@ describe('createCorrectResponseSession', () => {
           '\\frac{}{}',
           'x^{}',
           '\\left(\\right)'
-        ],
-        allowTrailingZeros: false
+        ]
       };
       const session = {
         id: '1',
@@ -736,14 +733,14 @@ describe('6456 - outcome', () => {
         answer: '-12.5',
         id: '1',
         alternates: { '1': '-12.5\\%' },
-        validation: 'symbolic'
+        validation: 'symbolic',
+        allowTrailingZeros: false
       }
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
     element: 'math-inline',
-    allowTrailingZeros: false
   };
 
   it('scores 0', async () => {
@@ -782,14 +779,14 @@ describe('6371', () => {
         answer: '4\\times10^3\\ \\text{dollars}',
         id: '1',
         alternates: {},
-        validation: 'symbolic'
+        validation: 'symbolic',
+        allowTrailingZeros: false
       }
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
     element: 'math-inline'.trim(),
-    allowTrailingZeros: false
   };
 
   it('scores 1', async () => {
@@ -816,14 +813,14 @@ describe('3826', () => {
         id: '1',
         answer: '84%',
         alternates: {},
-        validation: 'literal'
+        validation: 'literal',
+        allowTrailingZeros: false
       }
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
     element: 'math-inline',
-    allowTrailingZeros: false
   };
 
   it('scores 1', async () => {
@@ -859,29 +856,34 @@ describe('PD-66', () => {
         answer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)',
         id: '1',
         validation: 'literal',
+        allowTrailingZeros: false
       },
       {
         answer: '\\left(\\frac{-x}{3},\\frac{-y}{3}\\right)',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '\\left(\\frac{x}{-3},\\frac{y}{-3}\\right)',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '\\left(-\\frac{1}{3}x,-\\frac{1}{3}y\\right)',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '\\left(\\frac{-1}{3}x,\\frac{-1}{3}y\\right)',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '\\left(\\frac{1}{-3}x,\\frac{1}{-3}y\\right)',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
     ],
-    allowTrailingZeros: false
   };
 
   it('scores 1', async () => {
@@ -919,46 +921,55 @@ describe('PD-205', () => {
       {
         answer: '10\\times7\\times5=350\\ \\text{cubic}\\text{inches}',
         validation: 'literal',
-        id: '1'
+        id: '1',
+        allowTrailingZeros: false
       },
       {
         validation: 'equivLiteral',
         answer: '350=10\\times7\\times5\\ \\text{cubic}\\text{inches}',
+        allowTrailingZeros: false
       },
       {
         answer: '350=10\\times5\\times7\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '350=7\\times5\\times10\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '350=5\\times10\\times7\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         validation: 'equivLiteral',
         answer: '350=7\\times10\\times5\\ \\text{cubic}\\text{inches}',
+        allowTrailingZeros: false
       },
       {
         answer: '350=7\\times5\\times10\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '70\\times5=350\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '350=70\\times5\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
       {
         answer: '350=5\\times70\\ \\text{cubic}\\text{inches}',
         validation: 'equivLiteral',
+        allowTrailingZeros: false
       },
     ],
-    allowTrailingZeros: false
   };
 
   it('scores 1', async () => {
@@ -994,10 +1005,10 @@ describe('PD-610', () => {
       {
         answer: '\\frac{1}{3}=\\frac{2}{6}',
         validation: 'literal',
-        id: '1'
+        id: '1',
+        allowTrailingZeros: false
       }
-    ],
-    allowTrailingZeros: false
+    ]
   };
 
   it('scores 1', async () => {
@@ -1044,10 +1055,10 @@ describe('PD-610', () => {
       {
         answer: '\\frac{3}{4}=\\frac{6}{8}',
         validation: 'literal',
-        id: '1'
+        id: '1',
+        allowTrailingZeros: false
       }
-    ],
-    allowTrailingZeros: false
+    ]
   };
 
   it('scores 1', async () => {
@@ -1094,10 +1105,10 @@ describe('PD-610', () => {
       {
         answer: '\\frac{3}{6}=\\frac{1}{2}',
         validation: 'literal',
-        id: '3'
+        id: '3',
+        allowTrailingZeros: false
       }
-    ],
-    allowTrailingZeros: false
+    ]
   };
 
   it('scores 1', async () => {
