@@ -35,10 +35,16 @@ exports[`Trait snapshot renders 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -185,10 +191,16 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -335,10 +347,16 @@ exports[`Trait snapshot renders without description 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -485,10 +503,16 @@ exports[`Trait snapshot renders without score points values 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -574,10 +598,16 @@ exports[`Trait snapshot renders without standards 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
