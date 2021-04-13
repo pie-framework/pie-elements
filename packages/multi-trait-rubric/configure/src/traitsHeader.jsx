@@ -92,7 +92,9 @@ export class TraitsHeaderTile extends React.Component {
     } = this.props;
     const pluginProps = {
       image: { disabled: true },
-      math: { disabled: true }
+      math: { disabled: true },
+      audio: { disabled: true },
+      video: { disabled: true }
     };
     const { anchorEl } = this.state;
 

@@ -109,6 +109,12 @@ export class TraitTile extends React.Component {
       image: { disabled: true },
       math: { disabled: true }
     };
+    const pluginPropsLabel = {
+      image: { disabled: true },
+      math: { disabled: true },
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
 
     return connectDragSource(
       connectDropTarget(
@@ -150,7 +156,7 @@ export class TraitTile extends React.Component {
               <UnderlinedInput
                 markup={name}
                 onChange={name => this.onTraitChanged({ name })}
-                pluginProps={pluginProps}
+                pluginProps={pluginPropsLabel}
                 placeholder='Enter Trait'
               />
             </PrimaryBlock>

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { withStyles } from '@material-ui/core/styles';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -11,14 +11,14 @@ import InputBase from '@material-ui/core/InputBase';
 import { color } from '@pie-lib/render-ui';
 import grey from '@material-ui/core/colors/grey';
 
-export const BlockWidth = 180;
+export const BlockWidth = 200;
 export const PrimaryBlockWidth = 200;
 export const DragHandleSpace = 32;
 export const HeaderHeight = '100px';
 export const HeaderHeightLarge = '160px';
 const InputHeight = '120px';
 const greyBorder = `solid 1px ${grey[400]}`;
-const Padding = '8px';
+const Padding = '8px 4px';
 
 export const MultiTraitButton = withStyles({
   button: {
@@ -63,8 +63,13 @@ export const Block = withStyles({
   block: {
     width: `${BlockWidth}px`,
     minWidth: `${BlockWidth}px`,
-    padding: Padding
-  }
+    padding: Padding,
+
+    '& ul, ol': {
+      marginBlockStart: 0,
+      paddingInlineStart: '16px'
+    }
+  },
 })(({ classes, children }) => (
   <div className={classes.block}>
     {children}
@@ -161,6 +166,7 @@ export const ScorePoint = withStyles({
           placeholder='Label'
           onChange={onChange}
           pluginProps={pluginProps}
+          activePlugins={DEFAULT_PLUGINS.filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list')}
         /> : null}
       </div>
     </div>
@@ -281,6 +287,7 @@ export const UnderlinedInput = withStyles({
       onChange={onChange}
       placeholder={placeholder}
       pluginProps={pluginProps}
+      activePlugins={DEFAULT_PLUGINS.filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list')}
     />
   </div>
 ));
@@ -294,7 +301,8 @@ export const ExpandedInput = withStyles({
   },
   prompt: {
     border: 'none',
-    margin: '10px'
+    margin: '10px',
+    marginTop: 0
   },
 })(({ classes, markup, onChange, pluginProps, placeholder }) => (
   <div>
