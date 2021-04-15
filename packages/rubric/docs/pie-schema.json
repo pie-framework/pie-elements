@@ -1,0 +1,62 @@
+{
+  "description": "Model for the RubricPie Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "points": {
+      "description": "Indicates the score points labels. Starting from 0 to max",
+      "type": "array",
+      "items": {
+        "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[0-9]+$": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "points"
+    },
+    "sampleAnswers": {
+      "description": "Indicates the sample answers labels. Starting from 0 to max",
+      "type": "array",
+      "items": {
+        "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^[0-9]+$": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "sampleAnswers"
+    },
+    "maxPoints": {
+      "description": "Indicates the max limit for scoring points",
+      "type": "number",
+      "title": "maxPoints"
+    },
+    "excludeZeros": {
+      "description": "Indicates if point 0 should be shown",
+      "type": "boolean",
+      "title": "excludeZeros"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
