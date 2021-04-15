@@ -26,7 +26,7 @@ const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
 const styles = {
   actions: {
-    color: color.primary()
+    color: color.text()
   },
   controls: {
     display: 'flex',
