@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputBase from '@material-ui/core/InputBase';
 import { color } from '@pie-lib/render-ui';
 import grey from '@material-ui/core/colors/grey';
+import {filteredDefaultPlugins} from './utils';
 
 export const BlockWidth = 200;
 export const PrimaryBlockWidth = 200;
@@ -166,7 +167,7 @@ export const ScorePoint = withStyles({
           placeholder='Label'
           onChange={onChange}
           pluginProps={pluginProps}
-          activePlugins={DEFAULT_PLUGINS.filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list')}
+          activePlugins={filteredDefaultPlugins}
         /> : null}
       </div>
     </div>
@@ -246,6 +247,7 @@ export const SimpleInput = withStyles({
       onChange={onChange}
       placeholder='Trait Label'
       pluginProps={pluginProps}
+      activePlugins={filteredDefaultPlugins}
     />
   </div>
 ));
@@ -287,7 +289,7 @@ export const UnderlinedInput = withStyles({
       onChange={onChange}
       placeholder={placeholder}
       pluginProps={pluginProps}
-      activePlugins={DEFAULT_PLUGINS.filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list')}
+      activePlugins={filteredDefaultPlugins}
     />
   </div>
 ));

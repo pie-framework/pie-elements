@@ -20,6 +20,7 @@ import {
   HeaderHeight,
   HeaderHeightLarge
 } from './common';
+import { labelPlugins } from './utils';
 
 const styles = {
   label: {
@@ -90,12 +91,6 @@ export class TraitsHeaderTile extends React.Component {
       showScorePointLabels,
       setSecondaryBlockRef,
     } = this.props;
-    const pluginProps = {
-      image: { disabled: true },
-      math: { disabled: true },
-      audio: { disabled: true },
-      video: { disabled: true }
-    };
     const { anchorEl } = this.state;
 
     return (
@@ -105,7 +100,7 @@ export class TraitsHeaderTile extends React.Component {
             <SimpleInput
               markup={traitLabel || 'Trait'}
               onChange={onTraitLabelChange}
-              pluginProps={pluginProps}
+              pluginProps={labelPlugins}
               label='Level Label'
             />
           )}
@@ -190,7 +185,7 @@ export class TraitsHeaderTile extends React.Component {
                 <ScorePoint
                   scorePointsValue={scorePointsValue}
                   scoreDescriptor={scoreDescriptor}
-                  pluginProps={pluginProps}
+                  pluginProps={labelPlugins}
                   showScorePointLabels={showScorePointLabels}
                   onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
                 />
