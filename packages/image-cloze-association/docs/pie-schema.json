@@ -1,0 +1,300 @@
+{
+  "description": "Model for the @pie-elements/image-cloze-association Interaction",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "description": "The question prompt or item stem",
+      "type": "string",
+      "title": "prompt"
+    },
+    "rationaleEnabled": {
+      "description": "Indicates if Rationale is enabled",
+      "type": "boolean",
+      "title": "rationaleEnabled"
+    },
+    "teacherInstructionsEnabled": {
+      "description": "Indicates if Teacher Instructions are enabled",
+      "type": "boolean",
+      "title": "teacherInstructionsEnabled"
+    },
+    "studentInstructionsEnabled": {
+      "description": "Indicates if Student Instructions are enabled",
+      "type": "boolean",
+      "title": "studentInstructionsEnabled"
+    },
+    "image": {
+      "description": "The image over which the responses will be dragged",
+      "type": "object",
+      "properties": {
+        "src": {
+          "description": "The url of the image",
+          "type": "string",
+          "title": "src"
+        },
+        "width": {
+          "description": "The width of the image",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "The height of the image",
+          "type": "number",
+          "title": "height"
+        }
+      },
+      "title": "image"
+    },
+    "responseContainers": {
+      "description": "List of the response containers\nThe response containers are the areas where the images are dragged in",
+      "type": "array",
+      "items": {
+        "title": "ResponseContainer",
+        "type": "object",
+        "properties": {
+          "x": {
+            "description": "The x coordinate of the response container",
+            "type": "number",
+            "title": "x"
+          },
+          "y": {
+            "description": "The y coordinate of the response container",
+            "type": "number",
+            "title": "y"
+          },
+          "width": {
+            "description": "The width of the response container",
+            "type": "string",
+            "title": "width"
+          },
+          "height": {
+            "description": "The height of the response container",
+            "type": "string",
+            "title": "height"
+          }
+        }
+      },
+      "title": "responseContainers"
+    },
+    "stimulus": {
+      "description": "The question stimulus",
+      "type": "string",
+      "title": "stimulus"
+    },
+    "possibleResponses": {
+      "description": "List of img tags that are the possible responses",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "possibleResponses"
+    },
+    "validation": {
+      "title": "Validation",
+      "type": "object",
+      "properties": {
+        "validResponse": {
+          "title": "ValidResponse",
+          "type": "object",
+          "properties": {
+            "score": {
+              "description": "The score of the response",
+              "type": "number",
+              "title": "score"
+            },
+            "value": {
+              "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "title": "value"
+            }
+          }
+        },
+        "altResponses": {
+          "description": "List of alternate responses",
+          "type": "array",
+          "items": {
+            "title": "ValidResponse",
+            "type": "object",
+            "properties": {
+              "score": {
+                "description": "The score of the response",
+                "type": "number",
+                "title": "score"
+              },
+              "value": {
+                "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "title": "value"
+              }
+            }
+          },
+          "title": "altResponses"
+        }
+      }
+    },
+    "partialScoring": {
+      "description": "Indicates if the item should use partial scoring",
+      "type": "boolean",
+      "title": "partialScoring"
+    },
+    "maxResponsePerZone": {
+      "description": "Indicates how many responses can be placed in a response container",
+      "default": 1,
+      "type": "number",
+      "title": "maxResponsePerZone"
+    },
+    "duplicateResponses": {
+      "description": "Indicates if duplicate responses are allowed",
+      "type": "boolean",
+      "title": "duplicateResponses"
+    },
+    "id": {
+      "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
+      "type": "string",
+      "title": "id"
+    },
+    "element": {
+      "description": "The html Element tag name",
+      "type": "string",
+      "title": "element"
+    }
+  },
+  "required": [
+    "element",
+    "id"
+  ],
+  "definitions": {
+    "ConfigureProp": {
+      "title": "ConfigureProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        }
+      }
+    },
+    "ResponseContainer": {
+      "title": "ResponseContainer",
+      "type": "object",
+      "properties": {
+        "x": {
+          "description": "The x coordinate of the response container",
+          "type": "number",
+          "title": "x"
+        },
+        "y": {
+          "description": "The y coordinate of the response container",
+          "type": "number",
+          "title": "y"
+        },
+        "width": {
+          "description": "The width of the response container",
+          "type": "string",
+          "title": "width"
+        },
+        "height": {
+          "description": "The height of the response container",
+          "type": "string",
+          "title": "height"
+        }
+      }
+    },
+    "Validation": {
+      "title": "Validation",
+      "type": "object",
+      "properties": {
+        "validResponse": {
+          "title": "ValidResponse",
+          "type": "object",
+          "properties": {
+            "score": {
+              "description": "The score of the response",
+              "type": "number",
+              "title": "score"
+            },
+            "value": {
+              "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "title": "value"
+            }
+          }
+        },
+        "altResponses": {
+          "description": "List of alternate responses",
+          "type": "array",
+          "items": {
+            "title": "ValidResponse",
+            "type": "object",
+            "properties": {
+              "score": {
+                "description": "The score of the response",
+                "type": "number",
+                "title": "score"
+              },
+              "value": {
+                "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "title": "value"
+              }
+            }
+          },
+          "title": "altResponses"
+        }
+      }
+    },
+    "ValidResponse": {
+      "title": "ValidResponse",
+      "type": "object",
+      "properties": {
+        "score": {
+          "description": "The score of the response",
+          "type": "number",
+          "title": "score"
+        },
+        "value": {
+          "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": "value"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
