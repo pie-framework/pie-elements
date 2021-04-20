@@ -83,12 +83,18 @@ Properties of the `validResponse` object:
 
 The score of the response
 
-### `value` (array)
+### `value` (object)
 
 The value of the response
-Each value is an array of arrays, with each inner array containing a single string that is a img tag
+Each value is an object with a property "images"
 
-The object is an array with all elements of the type `array`.
+Properties of the `value` object:
+
+#### `images` (array)
+
+An array containing a string that is a img tag
+
+The object is an array with all elements of the type `string`.
 
 ## `altResponses` (array)
 
@@ -102,12 +108,18 @@ The array object has the following properties:
 
 The score of the response
 
-### `value` (array)
+### `value` (object)
 
 The value of the response
-Each value is an array of arrays, with each inner array containing a single string that is a img tag
+Each value is an object with a property "images"
 
-The object is an array with all elements of the type `array`.
+Properties of the `value` object:
+
+#### `images` (array)
+
+An array containing a string that is a img tag
+
+The object is an array with all elements of the type `string`.
 
 # `partialScoring` (boolean)
 
@@ -181,12 +193,18 @@ Properties of the `validResponse` object:
 
 The score of the response
 
-#### `value` (array)
+#### `value` (object)
 
 The value of the response
-Each value is an array of arrays, with each inner array containing a single string that is a img tag
+Each value is an object with a property "images"
 
-The object is an array with all elements of the type `array`.
+Properties of the `value` object:
+
+##### `images` (array)
+
+An array containing a string that is a img tag
+
+The object is an array with all elements of the type `string`.
 
 ### `altResponses` (array)
 
@@ -200,12 +218,18 @@ The array object has the following properties:
 
 The score of the response
 
-#### `value` (array)
+#### `value` (object)
 
 The value of the response
-Each value is an array of arrays, with each inner array containing a single string that is a img tag
+Each value is an object with a property "images"
 
-The object is an array with all elements of the type `array`.
+Properties of the `value` object:
+
+##### `images` (array)
+
+An array containing a string that is a img tag
+
+The object is an array with all elements of the type `string`.
 
 ## `ValidResponse` (object)
 
@@ -215,9 +239,15 @@ Properties of the `ValidResponse` object:
 
 The score of the response
 
-### `value` (array)
+### `value` (object)
 
 The value of the response
-Each value is an array of arrays, with each inner array containing a single string that is a img tag
+Each value is an object with a property "images"
 
-The object is an array with all elements of the type `array`.
+Properties of the `value` object:
+
+#### `images` (array)
+
+An array containing a string that is a img tag
+
+The object is an array with all elements of the type `string`.

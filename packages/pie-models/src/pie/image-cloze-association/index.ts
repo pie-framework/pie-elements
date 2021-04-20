@@ -32,9 +32,12 @@ interface ValidResponse {
 
     /**
      * The value of the response
-     * Each value is an array of arrays, with each inner array containing a single string that is a img tag
+     * Each value is an object with a property "images"
      */
-    value?: string[][];
+    value?: {
+        /** An array containing a string that is a img tag */
+        images?: string[];
+    };
 }
 
 /**

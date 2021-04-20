@@ -103,12 +103,16 @@
               "title": "score"
             },
             "value": {
-              "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "string"
+              "description": "The value of the response\nEach value is an object with a property \"images\"",
+              "type": "object",
+              "properties": {
+                "images": {
+                  "description": "An array containing a string that is a img tag",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "images"
                 }
               },
               "title": "value"
@@ -128,12 +132,16 @@
                 "title": "score"
               },
               "value": {
-                "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                "description": "The value of the response\nEach value is an object with a property \"images\"",
+                "type": "object",
+                "properties": {
+                  "images": {
+                    "description": "An array containing a string that is a img tag",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "images"
                   }
                 },
                 "title": "value"
@@ -232,12 +240,16 @@
               "title": "score"
             },
             "value": {
-              "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "string"
+              "description": "The value of the response\nEach value is an object with a property \"images\"",
+              "type": "object",
+              "properties": {
+                "images": {
+                  "description": "An array containing a string that is a img tag",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "images"
                 }
               },
               "title": "value"
@@ -257,12 +269,16 @@
                 "title": "score"
               },
               "value": {
-                "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
+                "description": "The value of the response\nEach value is an object with a property \"images\"",
+                "type": "object",
+                "properties": {
+                  "images": {
+                    "description": "An array containing a string that is a img tag",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "images"
                   }
                 },
                 "title": "value"
@@ -283,12 +299,16 @@
           "title": "score"
         },
         "value": {
-          "description": "The value of the response\nEach value is an array of arrays, with each inner array containing a single string that is a img tag",
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "string"
+          "description": "The value of the response\nEach value is an object with a property \"images\"",
+          "type": "object",
+          "properties": {
+            "images": {
+              "description": "An array containing a string that is a img tag",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "images"
             }
           },
           "title": "value"
