@@ -45,8 +45,12 @@ describe('controller', () => {
         valid_response: {
           score: 1,
           value: [
-            [rhomb, square],
-            [rhomb, square, trapeze],
+            {
+              images: [rhomb, square]
+            },
+            {
+              images: [rhomb, square, trapeze]
+            },
           ],
         },
       },
@@ -181,7 +185,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -207,7 +211,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -235,11 +239,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -265,11 +269,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -323,8 +327,8 @@ describe('controller', () => {
           validResponse: {
             score: 1,
             value: [
-              [rhomb, square],
-              [rhomb, square, trapeze],
+              {images: [rhomb, square]},
+              {images: [rhomb, square, trapeze]},
             ],
           },
         });

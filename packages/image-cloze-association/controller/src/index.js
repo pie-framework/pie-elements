@@ -82,7 +82,7 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
 const getDeductionPerContainer = (containerIndex, answers, valid) => {
   const totalStack = answers.filter(item => item.containerIndex === containerIndex);
   const incorrectStack = totalStack.filter(item => !item.isCorrect);
-  const maxValid = valid.value[containerIndex].length;
+  const maxValid = valid.value[containerIndex].images.length;
 
   if (totalStack.length > maxValid) {
     const ignored = totalStack.length - maxValid;
@@ -100,7 +100,7 @@ export const getPartialScore = (question, session) => {
     return 0;
   }
 
-  validResponse.value.forEach(value => possibleResponses += value.length);
+  validResponse.value.forEach(value => possibleResponses += value.images.length);
 
   if (session.answers && session.answers.length) {
     const all = getAllUniqueCorrectness(session.answers, validResponse.value);
