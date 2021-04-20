@@ -47,11 +47,11 @@ export const isResponseCorrect = (responses, session) => {
     return false;
   }
 
-  responses.forEach(value => totalValidResponses += value.length);
+  responses.forEach(value => totalValidResponses += value.images.length);
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach(answer => {
-      if (!responses[answer.containerIndex].includes(answer.value)) {
+      if (!responses[answer.containerIndex].images.includes(answer.value)) {
         isCorrect = false;
       }
     });

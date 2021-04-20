@@ -52,12 +52,12 @@ exports.model = (id, element) => ({
     valid_response: {
       score: 1,
       value: [
-        [
-          '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'
-        ],
-        [
-          '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>'
-        ]
+        {
+          images: ['<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>']
+        },
+        {
+          images: ['<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>']
+        }
       ]
     }
   },
