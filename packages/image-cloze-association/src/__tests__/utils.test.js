@@ -33,11 +33,11 @@ describe('utils', () => {
     validResponses = {
       validResponse: {
         value: [
-          [rhomb],
-          [rhomb, trapeze]
+          { images: [rhomb] },
+          { images: [rhomb, trapeze] }
         ]
       }
-    }
+    };
   });
 
   describe('correctness', () => {
@@ -113,8 +113,8 @@ describe('utils', () => {
               ...validResponses,
               altResponses: [{
                 value: [
-                  [rhomb],
-                  [hexagon]
+                  { images: [rhomb] },
+                  { images: [hexagon] }
                 ]
               }]
             }
@@ -135,8 +135,8 @@ describe('utils', () => {
               ...validResponses,
               altResponses: [{
                 value: [
-                  [hexagon],
-                  [rhomb]
+                  { images: [hexagon] },
+                  { images: [rhomb] },
                 ]
               }]
             }
@@ -159,13 +159,13 @@ describe('utils', () => {
               ...validResponses,
               altResponses: [{
                 value: [
-                  [hexagon],
-                  [rhomb]
+                  { images: [hexagon] },
+                  { images: [rhomb] },
                 ]
               }, {
                 value: [
-                  [rhomb],
-                  [hexagon]
+                  { images: [rhomb] },
+                  { images: [hexagon] },
                 ]
               }]
             }
@@ -186,13 +186,13 @@ describe('utils', () => {
               ...validResponses,
               altResponses: [{
                 value: [
-                  [hexagon],
-                  [rhomb]
+                  { images: [hexagon] },
+                  { images: [rhomb] },
                 ]
               }, {
                 value: [
-                  [hexagon],
-                  [hexagon]
+                  { images: [hexagon] },
+                  { images: [hexagon] },
                 ]
               }]
             }
