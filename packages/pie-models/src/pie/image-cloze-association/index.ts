@@ -39,6 +39,16 @@ interface ValidResponse {
         images?: string[];
     };
 }
+interface Image {
+    /** The url of the image*/
+    src?: string;
+
+    /** The width of the image*/
+    width?: number;
+
+    /** The height of the image*/
+    height?: number;
+}
 
 /**
  * Model for the @pie-elements/image-cloze-association Interaction
@@ -58,17 +68,7 @@ export interface ImageClozeAssociationPie extends PieModel {
     studentInstructionsEnabled?: boolean;
 
     /** The image over which the responses will be dragged*/
-    image?: {
-
-        /** The url of the image*/
-        src?: string;
-
-        /** The width of the image*/
-        width?: number;
-
-        /** The height of the image*/
-        height?: number;
-    };
+    image?: Image;
 
     /**
      * List of the response containers

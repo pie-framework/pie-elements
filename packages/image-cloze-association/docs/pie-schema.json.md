@@ -20,8 +20,6 @@ Indicates if Student Instructions are enabled
 
 # `image` (object)
 
-The image over which the responses will be dragged
-
 Properties of the `image` object:
 
 ## `src` (string)
@@ -160,6 +158,22 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `Image` (object)
+
+Properties of the `Image` object:
+
+### `src` (string)
+
+The url of the image
+
+### `width` (number)
+
+The width of the image
+
+### `height` (number)
+
+The height of the image
 
 ## `ResponseContainer` (object)
 

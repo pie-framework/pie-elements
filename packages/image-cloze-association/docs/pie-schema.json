@@ -24,7 +24,7 @@
       "title": "studentInstructionsEnabled"
     },
     "image": {
-      "description": "The image over which the responses will be dragged",
+      "title": "Image",
       "type": "object",
       "properties": {
         "src": {
@@ -42,8 +42,7 @@
           "type": "number",
           "title": "height"
         }
-      },
-      "title": "image"
+      }
     },
     "responseContainers": {
       "description": "List of the response containers\nThe response containers are the areas where the images are dragged in",
@@ -197,6 +196,27 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "Image": {
+      "title": "Image",
+      "type": "object",
+      "properties": {
+        "src": {
+          "description": "The url of the image",
+          "type": "string",
+          "title": "src"
+        },
+        "width": {
+          "description": "The width of the image",
+          "type": "number",
+          "title": "width"
+        },
+        "height": {
+          "description": "The height of the image",
+          "type": "number",
+          "title": "height"
         }
       }
     },
