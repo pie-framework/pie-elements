@@ -167,6 +167,11 @@
       "type": "boolean",
       "title": "duplicateResponses"
     },
+    "showDashedBorder": {
+      "description": "Indicates if the response containers should have a dashed border",
+      "type": "boolean",
+      "title": "showDashedBorder"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
