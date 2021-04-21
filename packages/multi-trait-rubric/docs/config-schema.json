@@ -82,8 +82,16 @@
           "title": "label"
         }
       }
+    },
+    "width": {
+      "description": "How large (in px) should multi-trait-rubric be",
+      "type": "string",
+      "title": "width"
     }
   },
+  "required": [
+    "width"
+  ],
   "definitions": {
     "ConfigureProp": {
       "title": "ConfigureProp",
