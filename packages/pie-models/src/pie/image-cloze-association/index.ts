@@ -96,6 +96,9 @@ export interface ImageClozeAssociationPie extends PieModel {
 
     /** Indicates if duplicate responses are allowed */
     duplicateResponses?: boolean;
+
+    /** Indicates if the response containers should have a dashed border */
+    showDashedBorder?: boolean;
 }
 
 /**

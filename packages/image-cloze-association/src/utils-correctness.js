@@ -4,7 +4,7 @@ const getAllCorrectAnswers = (answers, responses) =>
     isCorrect: (responses[answer.containerIndex].images || []).includes(answer.value)
   }));
 
-const getValidAnswer = (answer, response) => response[answer.containerIndex].filter(res => res === answer.value);
+const getValidAnswer = (answer, response) => (response[answer.containerIndex].images || []).filter(res => res === answer.value);
 
 const getUniqueCorrectAnswers = (answers, validResponses) => {
   let finalAnswers = answers;

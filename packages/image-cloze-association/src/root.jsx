@@ -198,7 +198,8 @@ class ImageClozeAssociationComponent extends React.Component {
         stimulus,
         responseCorrect,
         validation,
-        teacherInstructions
+        teacherInstructions,
+        showDashedBorder,
       }
     } = this.props;
     const {
@@ -241,6 +242,7 @@ class ImageClozeAssociationComponent extends React.Component {
             onDragAnswerBegin={this.beginDrag}
             onDragAnswerEnd={this.handleOnDragEnd}
             responseContainers={responseContainers}
+            showDashedBorder={showDashedBorder}
           />
 
           <PossibleResponses

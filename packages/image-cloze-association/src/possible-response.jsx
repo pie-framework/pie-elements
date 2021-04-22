@@ -7,7 +7,7 @@ import { color } from '@pie-lib/render-ui';
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 
-class PossibleResponse extends React.Component {
+export class PossibleResponse extends React.Component {
   getClassname = () => {
     const { classes, data: { isCorrect } } = this.props;
     let styleProp;
