@@ -89,7 +89,7 @@ const styles = theme => ({
 const createElementFromHTML = htmlString => {
   const div = document.createElement('div');
 
-  div.innerHTML = htmlString.trim();
+  div.innerHTML = (htmlString || '').trim();
 
   return div;
 };
@@ -175,6 +175,32 @@ export class Main extends React.Component {
 
   onMarkupChanged = slateMarkup => {
     this.onModelChange({ slateMarkup });
+  };
+
+  onCheck = callback => {
+    this.setState({
+      dialog: {
+        open: true,
+        message:
+          'Response areas with under 2 options or with no correct answers will be discarded',
+        onOk: () => {
+          this.setState(
+            {
+              dialog: {
+                open: false
+              }
+            },
+            callback
+          );
+        },
+        onCancel: () =>
+          this.setState({
+            dialog: {
+              open: false
+            }
+          })
+      }
+    });
   };
 
   onChange = markup => {
@@ -430,6 +456,7 @@ export class Main extends React.Component {
                   return () => (
                     <InlineDropdownToolbar
                       onAddChoice={this.onAddChoice}
+                      onCheck={this.onCheck}
                       onRemoveChoice={index =>
                         this.onRemoveChoice(node.data.get('index'), index)
                       }
