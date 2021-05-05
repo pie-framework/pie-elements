@@ -102,6 +102,7 @@ const styles = theme => ({
   label: {
     color: color.text(),
     backgroundColor: color.background(),
+    fontSize: theme.typography.fontSize,
     textAlign: 'center',
     paddingTop: theme.spacing.unit
   }
