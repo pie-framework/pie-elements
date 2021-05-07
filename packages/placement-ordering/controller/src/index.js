@@ -88,6 +88,7 @@ export function model(question, session, env) {
     base.config = {
       orientation: normalizedQuestion.orientation || 'vertical',
       includeTargets: normalizedQuestion.placementArea,
+      choiceLabelEnabled: normalizedQuestion.choiceLabelEnabled,
       targetLabel: normalizedQuestion.targetLabel,
       choiceLabel: normalizedQuestion.choiceLabel,
       showOrdering: normalizedQuestion.numberedGuides,
