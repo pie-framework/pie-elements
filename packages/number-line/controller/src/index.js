@@ -175,7 +175,7 @@ export const getCorrectness = corrected => {
 export function normalize(question) {
   return new Promise(resolve => {
     const feedback = merge(defaults.feedback, question.feedback);
-    console.log('feedback', feedback);
+
     if (isEqual(feedback, question.feedback)) {
       return resolve(undefined);
     } else {
@@ -205,14 +205,11 @@ export function model(question, session, env) {
     return Promise.reject(new Error('question is null'));
   }
 
-  return new Promise((resolve, reject) => {
-    console.log(question);
-
-    normalize(question).then(() => {});
-
-    console.log('normalized',question);
+  return new Promise(async (resolve, reject) => {
+    await normalize(question);
 
     const { graph } = question;
+
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
 
