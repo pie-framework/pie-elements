@@ -168,28 +168,14 @@ export const getCorrectness = corrected => {
   return 'unknown';
 };
 
-const feedbackDefaults = {
-  correct: {
-    type: 'default',
-    default: 'Correct'
-  },
-  incorrect: {
-    type: 'default',
-    default: 'Incorrect'
-  },
-  partial: {
-    type: 'default',
-    default: 'Nearly'
-  }
-};
-
 /**
  * A sample of a normalize function see:
  * https://github.com/pie-framework/pie-elements/issues/21
  */
 export function normalize(question) {
   return new Promise(resolve => {
-    const feedback = merge(feedbackDefaults, question.feedback);
+    const feedback = merge(defaults.feedback, question.feedback);
+    console.log('feedback', feedback);
     if (isEqual(feedback, question.feedback)) {
       return resolve(undefined);
     } else {
@@ -202,9 +188,10 @@ export function normalize(question) {
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     const out = {
+      ...model,
       graph: {
-        ...defaults,
-        ...model
+        ...defaults.graph,
+        ...model.graph,
       },
       colorContrast: 'black_on_white'
     };
@@ -219,6 +206,12 @@ export function model(question, session, env) {
   }
 
   return new Promise((resolve, reject) => {
+    console.log(question);
+
+    normalize(question).then(() => {});
+
+    console.log('normalized',question);
+
     const { graph } = question;
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
