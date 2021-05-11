@@ -177,10 +177,9 @@ export function normalize(question) {
     const feedback = merge(defaults.feedback, question.feedback);
 
     if (isEqual(feedback, question.feedback)) {
-      return resolve(undefined);
+      return resolve({ ...question });
     } else {
-      question.feedback = feedback;
-      resolve(question);
+      resolve({ ...question, feedback });
     }
   });
 }
@@ -206,14 +205,14 @@ export function model(question, session, env) {
   }
 
   return new Promise(async (resolve, reject) => {
-    await normalize(question);
+    const normalizedQuestion = await normalize(question);
 
-    const { graph } = question;
+    const { graph } = normalizedQuestion;
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
 
-      const correctResponse = cloneDeep(question.correctResponse);
+      const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
       const corrected =
         evaluateMode &&
         getCorrected(session ? session.answer || [] : [], correctResponse);
@@ -224,19 +223,19 @@ export function model(question, session, env) {
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
 
       const fb = evaluateMode
-        ? getFeedbackForCorrectness(correctness, question.feedback)
+        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
       fb.then(feedbackMessage => {
         const out = {
-          prompt: question.prompt,
+          prompt: normalizedQuestion.prompt,
           graph,
           disabled,
           corrected,
           correctResponse:
             evaluateMode &&
             ['unanswered', 'correct'].indexOf(correctness) === -1 &&
-            question.correctResponse,
+            normalizedQuestion.correctResponse,
           feedback: feedbackMessage && {
             type: correctness,
             message: feedbackMessage
