@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withDragContext } from '@pie-lib/drag';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { ShowRationale } from '@pie-lib/icons';
+import { Collapsible } from '@pie-lib/render-ui';
+import { withStyles } from '@material-ui/core/styles';
 
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
-
 import { getAnswersCorrectness } from './utils-correctness';
-import { Collapsible } from '@pie-lib/render-ui';
 import _ from 'lodash';
 
 const generateId = () =>
@@ -99,7 +101,12 @@ class ImageClozeAssociationComponent extends React.Component {
       );
 
       const shiftedItem = answersInThisContainer[0];
-      answersInThisContainer.shift(); // FIFO
+      if (maxResponsePerZone === 1) {
+        answersInThisContainer.shift(); // FIFO
+      } else {
+        this.setState({ maxResponsePerZoneWarning: true });
+        return;
+      }
 
       // if duplicates are not allowed, make sure to put the shifted value back in possible responses
       if (!duplicateResponses) {
@@ -150,6 +157,7 @@ class ImageClozeAssociationComponent extends React.Component {
     }
 
     this.setState({
+      maxResponsePerZoneWarning: false,
       answers: answersToStore,
       possibleResponses:
         // for single response per container remove answer from possible responses
@@ -173,6 +181,7 @@ class ImageClozeAssociationComponent extends React.Component {
       answer.containerIndex === undefined; // don't duplicate possible responses
 
     this.setState({
+      maxResponsePerZoneWarning: false,
       answers: answersToStore,
       // push back into possible responses the removed answer if responses cannot be duplicated
       possibleResponses:
@@ -205,8 +214,12 @@ class ImageClozeAssociationComponent extends React.Component {
       answers,
       draggingElement,
       possibleResponses,
-      responseContainers
+      responseContainers,
+      maxResponsePerZone,
+      maxResponsePerZoneWarning
     } = this.state;
+
+    const warningMessage = `You’ve reached the limit of ${maxResponsePerZone} responses per area. To add another response, one must first be removed.`;
 
     const answersToShow =
       responseCorrect !== undefined
@@ -243,6 +256,12 @@ class ImageClozeAssociationComponent extends React.Component {
             responseContainers={responseContainers}
           />
 
+          {maxResponsePerZoneWarning && (
+            <WarningInfo
+              message={warningMessage}
+            />
+          )}
+
           <PossibleResponses
             canDrag={!disabled}
             data={possibleResponses}
@@ -255,6 +274,45 @@ class ImageClozeAssociationComponent extends React.Component {
     );
   }
 }
+
+const WarningInfo = withStyles({
+  warning: {
+    margin: '0 16px',
+    backgroundColor: '#dddddd',
+    padding: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 'fit-content',
+    '& svg': {
+      height: '30px'
+    },
+    '& h1': {
+      padding: '0px',
+      margin: '0px'
+    }
+  },
+  message: {
+    paddingLeft: '5px',
+    userSelect: 'none'
+  },
+})(({ classes, message }) => (
+  <TransitionGroup>
+    <CSSTransition classNames={'fb'} key="fb" timeout={300}>
+      <div key="panel" className={classes.warning}>
+        <ShowRationale iconSet="emoji" shape="square" />
+        <span
+          className={classes.message}
+          dangerouslySetInnerHTML={{ __html: message }}
+        />
+      </div>
+    </CSSTransition>
+  </TransitionGroup>
+));
+
+WarningInfo.propTypes = {
+  message: PropTypes.string,
+  classes: PropTypes.object.isRequired,
+};
 
 ImageClozeAssociationComponent.propTypes = {
   classes: PropTypes.object,
