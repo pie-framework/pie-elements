@@ -132,14 +132,14 @@ class ImageClozeAssociationComponent extends React.Component {
       ];
     } else {
       // answers will be:
-      // + if duplicatesAllowed, all the other answers
+      // + if duplicatesAllowed, all the other answers, except the one that was dragged
       //   else: all the answers that are not having the same value
       // + new answer
       answersToStore = [
         // TODO allow duplicates case Question: should we remove answer from a container if dragged to another container?
         // if yes, this should do it: add a.id !== answer.id instead of 'true'
         ...answers.filter(a =>
-          duplicateResponses ? true : a.value !== answer.value
+          duplicateResponses ? a.id !== answer.id : a.value !== answer.value
         ),
         {
           ...answer,
