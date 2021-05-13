@@ -219,7 +219,8 @@ class ImageClozeAssociationComponent extends React.Component {
       maxResponsePerZoneWarning
     } = this.state;
 
-    const warningMessage = `You’ve reached the limit of ${maxResponsePerZone} responses per area. To add another response, one must first be removed.`;
+    const warningMessage = `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
+      'To add another response, one must first be removed.';
 
     const answersToShow =
       responseCorrect !== undefined
