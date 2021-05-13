@@ -177,11 +177,24 @@ describe('controller', () => {
     });
 
     assertOutcome(
-      'with deductions',
-      mkQuestion(),
+      'score is 0.5 for 2/2 answers correct and 1 extra incorrect answer',
+      mkQuestion({ partialScoring: true }),
       {
         answer: [
           ...mkQuestion().correctResponse,
+          { type: 'point', pointType: 'full', position: -3.3 },
+        ],
+      },
+      {},
+      { score: 0.5 }
+    );
+
+    assertOutcome(
+      'score is 0.5 for 1/2 answers correct and 1 extra incorrect answer',
+      mkQuestion({ partialScoring: true }),
+      {
+        answer: [
+          mkQuestion().correctResponse[0],
           { type: 'point', pointType: 'full', position: -3.3 },
         ],
       },

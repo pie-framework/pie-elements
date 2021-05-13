@@ -31,7 +31,7 @@ const getPartialScore = (corrected, ps) => {
 
 const accumulateAnswer = correctResponse => (total, answer) => {
   const isCorrectResponse = correctResponse.some(cr => matches(cr)(answer));
-  return total + (isCorrectResponse ? 1 : -1);
+  return total + (isCorrectResponse ? 1 : 0);
 };
 
 /**
@@ -46,8 +46,18 @@ export function outcome(model, session, env) {
         accumulateAnswer(model.correctResponse),
         0
       );
+
+      let numIncorrect = 0;
+      if((session.answer || []).length > model.correctResponse.length) {
+         numIncorrect = (session.answer || []).length - model.correctResponse.length;
+      }
+
       const total = model.correctResponse.length;
-      const score = numCorrect < 0 ? 0 : numCorrect / total;
+      let score = numCorrect < 0 ? 0 : (numCorrect - numIncorrect) / total;
+
+      if(score < 0) {
+        score = 0;
+      }
 
       resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
     }
