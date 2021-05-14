@@ -8,23 +8,18 @@ const defaultModel = {
     {
       id: 1,
       title: 'Question Text 1',
-      values: [false, false],
+      values: [true, true],
     },
     {
       id: 2,
       title: 'Question Text 2',
-      values: [false, false],
+      values: [false, true],
     },
     {
       id: 3,
       title: 'Question Text 3',
-      values: [false, false],
-    },
-    {
-      id: 4,
-      title: 'Question Text 4',
-      values: [false, false],
-    },
+      values: [false, true],
+    }
   ],
   lockChoiceOrder: true,
   partialScoring: false,
@@ -80,9 +75,9 @@ describe('outcome partialScoring test', () => {
   };
 
   assertOutcome(
-    'element.partialScoring = true',
+    'element.partialScoring = true, 1/4 correct answers and 0 incorrect answers',
     { partialScoring: true },
-    { answers: { 1: [false, false] } },
+    { answers: { 1: [true, false] } },
     { mode: 'evaluate' },
     { score: 0.25 }
   );
@@ -90,7 +85,7 @@ describe('outcome partialScoring test', () => {
   assertOutcome(
     'element.partialScoring = false',
     { partialScoring: false },
-    { answers: { 1: [false, false] } },
+    { answers: { 1: [true, false] } },
     { mode: 'evaluate' },
     { score: 0 }
   );
@@ -275,8 +270,8 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
-          2: [false, false],
+          1: [true, true],
+          2: [false, true],
           3: [false, false],
         },
       };
@@ -316,7 +311,7 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
+          1: [false, true],
         },
       };
 
@@ -327,7 +322,7 @@ describe('model', () => {
 
       session = {
         answers: {
-          2: [false, false],
+          2: [false, true],
         },
       };
 
@@ -338,7 +333,7 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
+          1: [true, true],
           2: [false, false],
         },
       };
@@ -350,8 +345,8 @@ describe('model', () => {
 
       session = {
         answers: {
-          2: [false, false],
-          4: [false, false],
+          2: [false, true],
+          3: [false, true],
         },
       };
 
@@ -362,9 +357,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          2: [false, false],
+          1: [true, true],
+          2: [true, true],
           3: [false, false],
-          4: [false, false],
         },
       };
 
@@ -375,8 +370,8 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
-          3: [false, false],
+          1: [true, true],
+          3: [true, true],
           4: [false, true],
         },
       };
@@ -384,13 +379,13 @@ describe('model', () => {
       result = await model(question, session, env);
 
       expect(result.correctness.correctness).toEqual('partial');
-      expect(result.correctness.score).toEqual('63%');
+      expect(result.correctness.score).toEqual('75%');
 
       session = {
         answers: {
           1: [true, false],
-          3: [true, false],
-          4: [false, false],
+          3: [false, true],
+          4: [true, false],
         },
       };
 
@@ -459,10 +454,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
-          2: [false, false],
-          3: [false, false],
-          4: [false, false],
+          1: [true, true],
+          2: [false, true],
+          3: [false, true]
         },
       };
 
@@ -473,10 +467,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          2: [false, false],
-          3: [false, false],
-          1: [false, false],
-          4: [false, false],
+          2: [false, true],
+          3: [false, true],
+          1: [true, true]
         },
       };
 
@@ -487,10 +480,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          4: [false, false],
-          2: [false, false],
-          3: [false, false],
-          1: [false, false],
+          2: [false, true],
+          3: [false, true],
+          1: [true, true],
         },
       };
 
@@ -514,10 +506,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
-          2: [false, false],
-          3: [false, false],
-          4: [false, false],
+          1: [true, true],
+          2: [false, true],
+          3: [false, true],
         },
       };
 
@@ -528,10 +519,9 @@ describe('model', () => {
 
       session = {
         answers: {
-          1: [false, false],
-          4: [false, false],
-          2: [false, false],
-          3: [false, false],
+          1: [true, true],
+          3: [false, true],
+          2: [false, true],
         },
       };
       result = await model(question, session, env);
@@ -549,10 +539,9 @@ describe('model', () => {
       });
       expect(sess).toEqual({
         answers: {
-          '1': [false, false],
-          '2': [false, false],
-          '3': [false, false],
-          '4': [false, false],
+          '1': [true, true],
+          '2': [false, true],
+          '3': [false, true],
         },
         id: '1',
       });
