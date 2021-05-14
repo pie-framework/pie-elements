@@ -3,6 +3,7 @@ export default {
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  verticalMode: true,
   choicePrefix: 'letters',
+  choicesLayout: 'vertical',
+  gridColumns: 2
 };

@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const MAX_CHOICES = 9;
 
@@ -97,7 +97,8 @@ const Design = withStyles(styles)(props => {
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
-    verticalMode
+    choicesLayout,
+    gridColumns,
   } = configuration || {};
   const {
     limitChoicesNumber: limitChoicesNumberModel,
@@ -106,6 +107,8 @@ const Design = withStyles(styles)(props => {
     feedbackEnabled,
     promptEnabled
   } = model || {};
+
+  const nrOfColumnsAvailable = Array.from({length: model.choices.length}, (_, i) => i + 1);
 
   const Content = (
     <div>
@@ -224,7 +227,8 @@ const Design = withStyles(styles)(props => {
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),
-                  verticalMode: verticalMode.settings && toggle(verticalMode.label)
+                  choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+                  gridColumns: model.choicesLayout === 'grid' && dropdown(gridColumns.label, nrOfColumnsAvailable),
                 },
                 Properties: {
                   teacherInstructionsEnabled:

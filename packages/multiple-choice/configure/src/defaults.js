@@ -17,12 +17,17 @@ export default {
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true
+    choicesLayout: 'vertical',
+    gridColumns: 2
+
   },
   configuration: {
-    verticalMode: {
-      settings: false,
-      label: 'Vertical Mode',
+    choicesLayout: {
+      settings: true,
+      label: 'Choices Layout',
+    },
+    gridColumns: {
+      label: 'Grid columns'
     },
     answerChoiceCount: 0,
     addChoiceButton: {
