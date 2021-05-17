@@ -171,6 +171,7 @@ export class PlacementOrdering extends React.Component {
       orientation: 'vertical',
       includeTargets: true
     };
+    const { note, showNote, env } = model;
     const { orientation, includeTargets } = config;
     const vertical = orientation === 'vertical';
     const ordering = this.createOrdering();
@@ -213,6 +214,12 @@ export class PlacementOrdering extends React.Component {
           onRemoveChoice={this.onRemoveChoice}
         />
         <br/>
+        {(showingCorrect || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+          <div
+            className={classes.prompt}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${model.note}` }}
+          />
+        )}
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible

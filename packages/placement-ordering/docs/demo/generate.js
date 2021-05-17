@@ -41,6 +41,7 @@ exports.model = (id, element) => ({
   },
   feedbackEnabled: true,
   prompt: 'Arrange the fruits alphabetically',
+  note: 'The answer shown above is the most common correct answer for this item. One or more additional correct answers are also defined, and will also be recognized as correct.',
   promptEnabled: true,
   numberedGuides: false,
   orientation: 'vertical',

@@ -72,9 +72,12 @@ export function model(question, session, env) {
     const normalizedQuestion = normalize(question);
     const base = {};
 
+    base.env = env;
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
     base.choices = normalizedQuestion.choices;
+    base.note = normalizedQuestion.note;
+    base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
 
     if (env.mode === 'gather' && !normalizedQuestion.placementArea) {
       session.value = base.choices.map(m => m.id);
