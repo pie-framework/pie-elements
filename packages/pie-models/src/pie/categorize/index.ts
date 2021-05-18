@@ -120,6 +120,9 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+  /** Indicates the note for the answer */
+  note?: string;
 }
 
 /**

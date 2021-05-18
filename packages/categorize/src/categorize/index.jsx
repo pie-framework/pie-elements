@@ -119,7 +119,7 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
-    const { choicesPosition } = model;
+    const { choicesPosition, note, showNote, env } = model;
 
     const choicePosition = choicesPosition || 'above';
 
@@ -199,6 +199,12 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
           />
         </div>
+        {(showCorrect || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+          <div
+            className={classes.prompt}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${model.note}` }}
+          />
+        )}
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible
