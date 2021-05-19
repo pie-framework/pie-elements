@@ -11,6 +11,9 @@ export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     prompt: PropTypes.string,
+    note: PropTypes.string,
+    showNote: PropTypes.bool,
+    env: PropTypes.object,
     rationale: PropTypes.string,
     disabled: PropTypes.bool,
     markup: PropTypes.string,
@@ -50,7 +53,7 @@ export class Main extends React.Component {
 
   render() {
     const { showCorrectAnswer, value } = this.state;
-    const { classes, mode, prompt, rationale, teacherInstructions } = this.props;
+    const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env } = this.props;
 
     return (
       <div className={classes.mainContainer}>
@@ -71,23 +74,27 @@ export class Main extends React.Component {
           onToggle={this.toggleShowCorrect}
         />
         {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
-        {
-          rationale && hasText(rationale) && (
-            <div className={classes.collapsible}>
-              <Collapsible
-                labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              >
-                <div dangerouslySetInnerHTML={{ __html: rationale }}/>
-              </Collapsible>
-            </div>
-          )
-        }
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
           showCorrectAnswer={showCorrectAnswer}
           value={value}
         />
+        {(showCorrectAnswer || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
+        {rationale && hasText(rationale) && (
+          <div className={classes.collapsible}>
+            <Collapsible
+              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+            </Collapsible>
+          </div>
+        )}
       </div>
     );
   }
@@ -98,6 +105,9 @@ const styles = theme => ({
     padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background()
+  },
+  note: {
+    padding: '5px 0',
   },
   collapsible: {
     margin: `${theme.spacing.unit * 2} 0`,
