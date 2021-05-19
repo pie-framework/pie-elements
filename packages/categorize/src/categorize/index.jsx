@@ -201,8 +201,8 @@ export class Categorize extends React.Component {
         </div>
         {(showCorrect || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
           <div
-            className={classes.prompt}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${model.note}` }}
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
           />
         )}
         {
@@ -254,6 +254,9 @@ const styles = (theme) => ({
   prompt: {
     marginBottom: '35px',
     verticalAlign: 'middle'
+  },
+  note: {
+    padding: '5px'
   },
   categorize: {
     marginBottom: theme.spacing.unit,
