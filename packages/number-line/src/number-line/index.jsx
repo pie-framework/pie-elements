@@ -293,7 +293,7 @@ export class NumberLine extends React.Component {
               message={maxPointsMessage()}
             />
           )}
-          {model.feedback && (
+          {model.feedback && !showCorrectAnswer && (
             <Feedback {...model.feedback} width={adjustedWidth} />
           )}
         </div>
