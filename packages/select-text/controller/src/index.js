@@ -60,9 +60,9 @@ export const getPartialScore = (question, session, totalCorrect) => {
   }
 
   const correctCount = getCorrectCount(question.tokens, session.selectedTokens);
-  const correctTokens = question.tokens.filter((t) => t.correct === true);
+  const correctTokens = (question.tokens || []).filter((t) => t.correct === true);
   const extraSelected = session.selectedTokens ? session.selectedTokens.length > correctTokens.length : 0;
-  const incorrectCount = extraSelected ? session.selectedTokens.length - correctCount : 0;
+  const incorrectCount = extraSelected ? session.selectedTokens && session.selectedTokens.length - correctCount : 0;
   const count = correctCount - incorrectCount;
   const positiveCount = count < 0 ? 0 : count;
 
