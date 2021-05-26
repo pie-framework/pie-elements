@@ -100,17 +100,19 @@ const getPartialScore = (question, answers) => {
     const { correctAnswers, incorrectAnswers } = getCheckboxes(question.rows, answers);
     const totalCorrect = getTotalCorrectAnswers(question);
 
+    const total = totalCorrect === 0 ? 1 : totalCorrect;
+
     if (correctAnswers + incorrectAnswers > totalCorrect) {
       const extraAnswers = (correctAnswers + incorrectAnswers) - totalCorrect;
-      const score = parseFloat(((correctAnswers - extraAnswers) / totalCorrect).toFixed(2));
+      const score = parseFloat(((correctAnswers - extraAnswers) / total).toFixed(2));
 
       return score < 0 ? 0 : score;
     } else {
-      return parseFloat((correctAnswers / totalCorrect).toFixed(2));
+      return parseFloat((correctAnswers / total).toFixed(2));
     }
   } else {
     const correctAnswers = getCorrectRadios(question.rows, answers);
-    const totalCorrect = getTotalCorrect(question);
+    const totalCorrect = getTotalCorrect(question) === 0 ? 1 : getTotalCorrect(question);
 
     return parseFloat((correctAnswers / totalCorrect).toFixed(2));
   }
