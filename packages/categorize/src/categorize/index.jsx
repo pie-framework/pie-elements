@@ -137,7 +137,7 @@ export class Categorize extends React.Component {
     log('[render] disabled: ', model.disabled);
 
     const { rowLabels, categoriesPerRow } = model;
-    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow);
+    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
 
     return (
       <div className={classes.mainContainer}>
