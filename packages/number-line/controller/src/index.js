@@ -47,12 +47,17 @@ export function outcome(model, session, env) {
         0
       );
 
+      let total = model.correctResponse.length;
       let numIncorrect = 0;
-      if((session.answer || []).length > model.correctResponse.length) {
-         numIncorrect = (session.answer || []).length - model.correctResponse.length;
+
+      if((session.answer || []).length > total) {
+         numIncorrect = (session.answer || []).length - total;
       }
 
-      const total = model.correctResponse.length;
+      if (total === 0) {
+        total = 1;
+      }
+
       let score = numCorrect < 0 ? 0 : (numCorrect - numIncorrect) / total;
 
       if(score < 0) {
