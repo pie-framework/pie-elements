@@ -114,7 +114,8 @@ const getScore = (config, session, env = {}) => {
 
   const extraAnswers = selectedChoices > correctChoices.length ? selectedChoices - correctChoices.length : 0;
 
-  const str = ((correctAnswers - extraAnswers)/ correctChoices.length).toFixed(2);
+  const total = correctChoices.length === 0 ? 1 : correctChoices.length;
+  const str = ((correctAnswers - extraAnswers) / total).toFixed(2);
 
   return str < 0 ? 0 : parseFloat(str);
 };
