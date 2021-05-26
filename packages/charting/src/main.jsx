@@ -61,9 +61,10 @@ export class Main extends React.Component {
       categoryDefaultLabel,
       rationale,
       correctedAnswer,
+      correctAnswer
     } = model;
 
-    const correctData = model.correctAnswer && model.correctAnswer.data ? model.correctAnswer.data.map(data => {
+    const correctData = correctAnswer && correctAnswer.data ? correctAnswer.data.map(data => {
       return {
         ...data,
         interactive: false,
