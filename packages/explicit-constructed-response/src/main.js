@@ -54,6 +54,7 @@ export class Main extends React.Component {
   render() {
     const { showCorrectAnswer, value } = this.state;
     const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env } = this.props;
+    const { role } = env || {};
 
     return (
       <div className={classes.mainContainer}>
@@ -80,7 +81,7 @@ export class Main extends React.Component {
           showCorrectAnswer={showCorrectAnswer}
           value={value}
         />
-        {(showCorrectAnswer || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+        {(showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note && (
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}

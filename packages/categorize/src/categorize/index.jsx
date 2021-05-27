@@ -120,7 +120,7 @@ export class Categorize extends React.Component {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
     const { choicesPosition, note, showNote, env } = model;
-
+    const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
     const style = {
@@ -199,7 +199,7 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
           />
         </div>
-        {(showCorrect || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+        {(showCorrect || mode === 'view' && role === 'instructor') && showNote && note && (
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
@@ -256,7 +256,7 @@ const styles = (theme) => ({
     verticalAlign: 'middle'
   },
   note: {
-    padding: '5px'
+    padding: '5px 0'
   },
   categorize: {
     marginBottom: theme.spacing.unit,

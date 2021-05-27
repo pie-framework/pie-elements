@@ -186,6 +186,7 @@ export class PlacementOrdering extends React.Component {
     const { orientation, includeTargets } = config;
     const vertical = orientation === 'vertical';
     const ordering = this.createOrdering();
+    const { mode, role } = env || {};
 
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
 
@@ -223,7 +224,7 @@ export class PlacementOrdering extends React.Component {
           onRemoveChoice={this.onRemoveChoice}
         />
         <br/>
-        {(showingCorrect || env && env.mode === 'view' && env.role === 'instructor') && showNote && note && (
+        {(showingCorrect || mode === 'view' && role === 'instructor') && showNote && note && (
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}

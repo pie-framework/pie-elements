@@ -94,6 +94,7 @@ describe('controller', () => {
           ...extra
         };
         env = { mode: 'gather' };
+
         const result = await model(q, {
           id: '1',
           element: 'explicit-constructed-response',
@@ -147,6 +148,7 @@ describe('controller', () => {
           ...extra
         };
         env = { mode: 'view', role: 'instructor' };
+
         const result = await model(q, {
           id: '1',
           element: 'explicit-constructed-response',
@@ -202,6 +204,7 @@ describe('controller', () => {
           ...extra
         };
         env = { mode: 'view', role: ' student'};
+
         const result = await model(q, {
           id: '1',
           element: 'explicit-constructed-response',
@@ -256,7 +259,8 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        env = { mode: 'evaluate', role: 'instructor' }
+        env = { mode: 'evaluate', role: 'instructor' };
+
         const result = await model(q, {
           id: '1',
           element: 'explicit-constructed-response',
