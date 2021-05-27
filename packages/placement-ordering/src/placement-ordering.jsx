@@ -189,6 +189,7 @@ export class PlacementOrdering extends React.Component {
     const { mode, role } = env || {};
 
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
+    const displayNote = (showingCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     return (
       <div className={classes.placementOrdering}>
@@ -224,7 +225,7 @@ export class PlacementOrdering extends React.Component {
           onRemoveChoice={this.onRemoveChoice}
         />
         <br/>
-        {(showingCorrect || mode === 'view' && role === 'instructor') && showNote && note && (
+        {displayNote && (
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}

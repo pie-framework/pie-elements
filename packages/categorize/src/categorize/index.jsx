@@ -137,6 +137,7 @@ export class Categorize extends React.Component {
     log('[render] disabled: ', model.disabled);
 
     const { rowLabels } = model;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     return (
       <div className={classes.mainContainer}>
@@ -199,7 +200,7 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
           />
         </div>
-        {(showCorrect || mode === 'view' && role === 'instructor') && showNote && note && (
+        {displayNote && (
           <div
             className={classes.note}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
