@@ -62,13 +62,6 @@ describe('Root', () => {
           expect.objectContaining({ prompt: 'New Prompt' }))
     });
 
-    it('onRationaleChanged calls onModelChanged', () => {
-      w.instance().onRationaleChanged('New Rationale');
-
-      expect(onModelChanged).toHaveBeenCalledWith(
-          expect.objectContaining({ rationale: 'New Rationale' }))
-    });
-
     it('onTeacherInstructionsChanged calls onModelChanged', () => {
       w.instance().onTeacherInstructionsChanged('New Teacher Instructions');
 
