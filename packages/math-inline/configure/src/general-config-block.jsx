@@ -6,7 +6,6 @@ import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
