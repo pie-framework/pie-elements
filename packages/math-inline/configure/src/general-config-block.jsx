@@ -447,15 +447,6 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
             </Select>
           </InputContainer>
-          {responseType === ResponseTypes.advanced && (
-            <Button
-              className={classes.addResponseButton}
-              type="primary"
-              onClick={this.onAddResponse}
-            >
-              + Response
-            </Button>
-          )}
         </div>
         {responsesToUse.map((response, idx) => (
           <Response
