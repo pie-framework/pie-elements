@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
+import { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 
 class MenuItemComp extends React.Component {
   static propTypes = {
@@ -197,6 +198,12 @@ export class RespAreaToolbar extends React.Component {
     const { classes, choices } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const labelPlugins = {
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
+
     if (!toolbarStyle) {
       return null;
     }
@@ -229,6 +236,8 @@ export class RespAreaToolbar extends React.Component {
             onChange={this.onRespAreaChange}
             onDone={this.onDone}
             placeholder="Add Choice"
+            activePlugins={filteredDefaultPlugins}
+            pluginProps={labelPlugins}
           />
           <i
             style={{
