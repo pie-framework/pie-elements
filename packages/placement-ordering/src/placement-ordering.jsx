@@ -181,15 +181,17 @@ export class PlacementOrdering extends React.Component {
       <div className={classes.placementOrdering}>
         {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br/>
         <CorrectAnswerToggle
           show={showToggle}
           toggled={this.state.showingCorrect}
@@ -212,7 +214,7 @@ export class PlacementOrdering extends React.Component {
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
-        <br/>
+        <br />
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible

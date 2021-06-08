@@ -6,15 +6,6 @@ exports[`Main render snapshot 1`] = `
     onToggle={[Function]}
     toggled={false}
   />
-  <br />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
-  />
-  <br />
   <Root
     axesSettings={
       Object {

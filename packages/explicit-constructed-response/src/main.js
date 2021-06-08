@@ -100,7 +100,7 @@ const styles = theme => ({
     backgroundColor: color.background()
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2} 0`,
+    margin: `${theme.spacing.unit * 2}px 0`,
   }
 });
 
