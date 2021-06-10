@@ -290,7 +290,7 @@ export class Design extends React.Component {
 
           {selectionCount.settings && (
             <NumberTextField
-              min={0}
+              min={model.tokens.filter(t => t.correct).length || 0}
               label={`${selectionCount.label} (0:any)`}
               max={model.tokens.length}
               value={model.maxSelections}
