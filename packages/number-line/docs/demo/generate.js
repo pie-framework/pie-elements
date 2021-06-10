@@ -37,7 +37,6 @@ exports.oldModel = (id, element) => ({
       right: true
     },
     width: 500,
-    height: 400,
     domain: { min: -5, max: 5 },
     ticks: {
       minor: 1,
@@ -96,7 +95,6 @@ exports.model = (id, element) => ({
     availableTypes: {
       PF: true
     },
-    height: 300,
     title: '<div></div>'
   },
   id,

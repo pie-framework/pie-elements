@@ -42,10 +42,6 @@ Properties of the `arrows` object:
 
 Indicates domain representation width
 
-## `height` (number, required)
-
-Indicates domain representation height
-
 ## `domain` (object, required)
 
 Properties of the `domain` object:
@@ -337,10 +333,6 @@ Properties of the `arrows` object:
 ### `width` (number, required)
 
 Indicates domain representation width
-
-### `height` (number, required)
-
-Indicates domain representation height
 
 ### `domain` (object, required)
 

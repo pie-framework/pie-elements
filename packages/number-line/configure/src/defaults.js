@@ -12,7 +12,6 @@ export const model = {
     },
     maxNumberOfPoints: 20,
     width: 500,
-    height: 400,
     initialType: 'PF',
     exhibitOnly: false,
     availableTypes: {

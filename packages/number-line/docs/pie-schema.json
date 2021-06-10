@@ -344,11 +344,6 @@
           "type": "number",
           "title": "width"
         },
-        "height": {
-          "description": "Indicates domain representation height",
-          "type": "number",
-          "title": "height"
-        },
         "domain": {
           "title": "Domain",
           "type": "object",
@@ -630,7 +625,6 @@
         "availableTypes",
         "domain",
         "exhibitOnly",
-        "height",
         "initialElements",
         "initialType",
         "maxNumberOfPoints",
@@ -1048,11 +1042,6 @@
           "type": "number",
           "title": "width"
         },
-        "height": {
-          "description": "Indicates domain representation height",
-          "type": "number",
-          "title": "height"
-        },
         "domain": {
           "title": "Domain",
           "type": "object",
@@ -1334,7 +1323,6 @@
         "availableTypes",
         "domain",
         "exhibitOnly",
-        "height",
         "initialElements",
         "initialType",
         "maxNumberOfPoints",
