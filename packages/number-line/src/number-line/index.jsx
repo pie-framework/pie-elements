@@ -25,7 +25,8 @@ const styles = {
     userSelect: 'none'
   },
   numberLine: {
-    padding: '10px'
+    padding: '10px',
+    boxSizing: 'unset'
   },
   black_on_rose: {
     backgroundColor: 'mistyrose'
