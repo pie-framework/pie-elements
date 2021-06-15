@@ -8,8 +8,29 @@ import Button from '@material-ui/core/Button';
 import Choice from './choice';
 import { choiceIsEmpty } from './markupUtils';
 import { withStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
 
 window.renMath = renderMath;
+
+const InfoDialog = ({ open, onOk }) => (
+  <Dialog open={open}>
+    <DialogTitle>Identical answer choices are not allowed and will be discarded</DialogTitle>
+    <DialogActions>
+      {onOk && (
+        <Button onClick={onOk} color="primary">
+          OK
+        </Button>
+      )}
+    </DialogActions>
+  </Dialog>
+);
+
+InfoDialog.propTypes = {
+  open: PropTypes.bool,
+  onOk: PropTypes.func,
+};
 
 const styles = theme => ({
   design: {
@@ -35,7 +56,11 @@ export class Choices extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
-  state = {};
+  state = {
+    dialog: {
+      open: false
+    }
+  };
 
   componentDidUpdate() {
     //eslint-disable-next-line
@@ -51,6 +76,31 @@ export class Choices extends React.Component {
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
     const { choices, correctResponse, alternateResponses } = model;
+    const exists = (choices || []).filter(c => c.value === val);
+
+    if(exists.length) {
+      const newChoices = (choices || []).filter(c => c.id !== key);
+
+      onChange(newChoices);
+
+      this.setState({
+        dialog: {
+          open: true,
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              }
+            );
+          }
+        }
+      });
+
+      return;
+    }
+
     const newChoices = choices
       ? choices.map(c => {
         if (c.id === key) {
@@ -145,7 +195,7 @@ export class Choices extends React.Component {
   };
 
   render() {
-    const { focusedEl } = this.state;
+    const { focusedEl, dialog } = this.state;
     const {
       classes,
       duplicates,
@@ -154,6 +204,10 @@ export class Choices extends React.Component {
 
     return (
       <div className={classes.design}>
+        <InfoDialog
+          open={dialog.open}
+          onOk={dialog.onOk}
+        />
         <Button
           className={classes.addButton}
           variant="contained"
