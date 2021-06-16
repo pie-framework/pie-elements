@@ -114,7 +114,13 @@ export class Row extends React.Component {
               pluginProps={{
                 image: {
                   disabled: !enableImages
-                }
+                },
+                audio: {
+                  disabled: true
+                },
+                video: {
+                  disabled: true
+                },
               }}
             />
           </div>
