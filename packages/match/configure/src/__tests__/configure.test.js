@@ -12,6 +12,7 @@ import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
 import cloneDeep from 'lodash/cloneDeep';
 import defaultValues from '../defaults';
+import EditableHTML from '@pie-lib/editable-html';
 
 jest.mock('@material-ui/core', () => ({
   Input: props => <div/>,
@@ -376,8 +377,8 @@ describe('GeneralConfigBlock', () => {
   it('renders correctly', () => {
     component = wrapper();
 
-    expect(component.find(Select).length).toBeGreaterThan(1);
-    expect(component.find(MenuItem).length).toBeGreaterThan(3);
+    expect(component.find(Select).length).toEqual(1);
+    expect(component.find(MenuItem).length).toEqual(2);
   });
 });
 
@@ -408,7 +409,6 @@ describe('AnswerConfigBlock', () => {
     it('renders correctly', () => {
       component = wrapper();
 
-      expect(component.find(Input).length).toBeGreaterThan(2);
       expect(component.find(Button).length).toEqual(1);
     });
   });

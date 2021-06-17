@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputContainer } from '@pie-lib/config-ui';
+import { InputContainer, NumberTextField } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -27,17 +27,22 @@ class GeneralConfigBlock extends React.Component {
     onLayoutChange: PropTypes.func.isRequired
   };
 
-  onChange = (name) => event => {
-    const { model, onLayoutChange, onResponseTypeChange } = this.props;
+  onChangeResponseType = (name) => event => {
+    const { model, onResponseTypeChange } = this.props;
     const newModel = { ...model };
 
     newModel[name] = event.target.value;
 
-    if (name === 'layout') {
-      onLayoutChange(newModel[name]);
-    } else {
-      onResponseTypeChange(newModel[name]);
-    }
+    onResponseTypeChange(newModel[name]);
+  };
+
+  onChangeColumns = (name, value) => {
+    const { model, onLayoutChange } = this.props;
+    const newModel = { ...model };
+
+    newModel[name] = value;
+
+    onLayoutChange(newModel[name]);
   };
 
   render() {
@@ -55,15 +60,14 @@ class GeneralConfigBlock extends React.Component {
               label={layout.label}
               className={classes.inputContainer}
             >
-              <Select
-                className={classes.select}
-                onChange={this.onChange('layout')}
+              <NumberTextField
+                type="number"
+                min={3}
+                max={10}
                 value={model.layout}
-              >
-                <MenuItem value={3}>3 Columns</MenuItem>
-                <MenuItem value={4}>4 Columns</MenuItem>
-                <MenuItem value={5}>5 Columns</MenuItem>
-              </Select>
+                onChange={(e, v) => this.onChangeColumns('layout', v)}
+                suffix={'Columns'}
+              />
             </InputContainer>
           }
         </div>
@@ -73,7 +77,7 @@ class GeneralConfigBlock extends React.Component {
             <InputContainer label={choiceMode.label} className={classes.inputContainer}>
               <Select
                 className={classes.select}
-                onChange={this.onChange('choiceMode')}
+                onChange={this.onChangeResponseType('choiceMode')}
                 value={model.choiceMode}
               >
                 <MenuItem value="radio">Radio - One Answer</MenuItem>
