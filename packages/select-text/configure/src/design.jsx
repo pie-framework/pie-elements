@@ -161,6 +161,9 @@ export class Design extends React.Component {
       teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled
     } = model || {};
 
+    let { tokens: tokensModel } = model;
+    tokensModel = tokensModel || [];
+
     log('[render] maxSelections:', model.maxSelections);
 
     return (
@@ -259,7 +262,7 @@ export class Design extends React.Component {
               <Tokenizer
                 className={classes.tokenizer}
                 text={model.text}
-                tokens={model.tokens}
+                tokens={tokensModel}
                 onChange={this.changeTokens}
               />
             </InputContainer>
@@ -274,7 +277,7 @@ export class Design extends React.Component {
 
           {selections.settings && (
             <Chip
-              label={`${selections.label}: ${model.tokens.length}`}
+              label={`${selections.label}: ${tokensModel.length}`}
               className={classes.chip}
             />
           )}
@@ -282,7 +285,7 @@ export class Design extends React.Component {
           {correctAnswer.settings && (
             <Chip
               label={`${correctAnswer.label}: ${
-                model.tokens.filter(t => t.correct).length
+                tokensModel.filter(t => t.correct).length
               }`}
               className={classes.chip}
             />
@@ -290,9 +293,9 @@ export class Design extends React.Component {
 
           {selectionCount.settings && (
             <NumberTextField
-              min={model.tokens.filter(t => t.correct).length || 0}
+              min={tokensModel.filter(t => t.correct).length || 0}
               label={`${selectionCount.label} (0:any)`}
-              max={model.tokens.length}
+              max={tokensModel.length}
               value={model.maxSelections}
               onChange={this.changeMaxSelections}
               className={classes.numberField}
