@@ -235,7 +235,7 @@ export class MultipleChoice extends React.Component {
         />
         <br />
         <PreviewPrompt className="prompt" prompt={prompt}/>
-        <div className={classNames(layoutClass)} style={styles.getColumns(this.props.gridColumns)}>
+        <div className={classNames({ [classes.gridLayout]: this.props.choicesLayout === 'grid'}, {[classes.horizontalLayout]: this.props.choicesLayout === 'horizontal' })} style={styles.getColumns(this.props.gridColumns)}>
           {choices.map((choice, index) => (
             <StyledChoice
               choicesLayout={this.props.choicesLayout}
