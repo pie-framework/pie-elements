@@ -214,7 +214,6 @@ export class MultipleChoice extends React.Component {
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
-    const layoutClass = this.props.choicesLayout === 'grid' ? classes.gridLayout : (this.props.choicesLayout === 'vertical'? '' : classes.horizontalLayout)
     return (
       <div className={classes.corespringChoice}>
         {teacherInstructions && (
