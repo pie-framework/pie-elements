@@ -284,7 +284,7 @@ exports.model = (id, element) => ({
   choices: [
     {
       id: 'id-mar',
-      content: '<div>mar Para para mar mar para mar bec telefon iphone. mar Para para mar mar para mar bec telefon iphone. mar Para para mar mar para mar bec telefon iphone</div>',
+      content: '<div>mar</div>',
     },
     {
       id: 'id-para',
@@ -331,7 +331,7 @@ exports.model = (id, element) => ({
       alternateResponses: [['id-rosie', 'id-morcov'], ['id-morcov']],
     },
   ],
-  rowLabels: ['1', '2'],
+  rowLabels: ['', ''],
   partialScoring: true,
   feedbackEnabled: true,
   rationaleEnabled: true,

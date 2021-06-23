@@ -60,7 +60,7 @@ export class Choices extends React.Component {
                 disabled={disabled}
                 className={classes.choice}
                 key={index}
-                extraStyle={{ maxWidth: `${95/ model.categoriesPerRow}%` }}
+                extraStyle={{ maxWidth: `${95 / model.categoriesPerRow}%` }}
                 {...c}
               />
             );
