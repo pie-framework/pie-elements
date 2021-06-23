@@ -5,21 +5,6 @@ exports[`config snapshot renders 1`] = `
   className=""
 >
   <div>
-    <TextField
-      inputProps={
-        Object {
-          "max": 4,
-          "min": 1,
-        }
-      }
-      label="Choices per row"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      value={2}
-      variant="standard"
-    />
     <Component
       label="Remove all tiles after placing"
       onChange={[Function]}

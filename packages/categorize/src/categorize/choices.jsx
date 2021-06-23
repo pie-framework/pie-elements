@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Choice, { ChoiceType } from './choice';
 export { ChoiceType };
-import GridContent from './grid-content';
 
 const Blank = () => <div />;
 
@@ -17,7 +16,7 @@ export class Choices extends React.Component {
       ])
     ),
     model: PropTypes.shape({
-      choicesPerRow: PropTypes.number,
+      categoriesPerRow: PropTypes.number,
       choicesLabel: PropTypes.string,
     }),
     disabled: PropTypes.bool,
@@ -26,7 +25,7 @@ export class Choices extends React.Component {
 
   static defaultProps = {
     model: {
-      choicesPerRow: 4,
+      categoriesPerRow: 1,
       choicesLabel: '',
     },
   };
@@ -52,11 +51,7 @@ export class Choices extends React.Component {
         {model.choicesLabel && model.choicesLabel !== '' && (
           <div className={classes.labelHolder}>{model.choicesLabel}</div>
         )}
-        <GridContent
-          columns={model.choicesPerRow}
-          className={classes.choices}
-          extraStyle={style}
-        >
+        <div className={classes.choices} style={style}>
           {choices.map((c, index) => {
             return c.empty ? (
               <Blank key={index} />
@@ -65,11 +60,12 @@ export class Choices extends React.Component {
                 disabled={disabled}
                 className={classes.choice}
                 key={index}
+                extraStyle={{ maxWidth: `${95/ model.categoriesPerRow}%` }}
                 {...c}
               />
             );
           })}
-        </GridContent>
+        </div>
       </div>
     );
   }
@@ -81,8 +77,11 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
   },
   choices: {
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    padding: theme.spacing.unit / 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap'
   },
   labelHolder: {
     margin: '0 auto',

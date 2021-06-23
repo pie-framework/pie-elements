@@ -31,13 +31,11 @@ export class Category extends React.Component {
       disabled,
       onDropChoice,
       onRemoveChoice,
-      grid,
       id,
       correct,
     } = this.props;
 
     const names = classNames(classes.category, className);
-
     const placeholderNames = classNames(
       classes.placeholder,
       correct === false && classes.incorrect
@@ -46,10 +44,6 @@ export class Category extends React.Component {
     return (
       <div className={names}>
         <PlaceHolder
-          grid={{
-            ...grid,
-            rowsRepeatValue: 'minmax(60px, auto)',
-          }}
           onDropChoice={onDropChoice}
           disabled={disabled}
           className={placeholderNames}
@@ -69,18 +63,27 @@ export class Category extends React.Component {
     );
   }
 }
-const styles = () => ({
+
+const styles = (theme) => ({
   incorrect: {
     border: `solid 2px ${color.incorrect()}`,
   },
   placeholder: {
-    minHeight: '60px',
-    flex: '1',
-    display: 'grid',
+    minHeight: '80px',
+    padding: theme.spacing.unit / 2,
+    borderRadius: theme.spacing.unit / 2,
+    gridColumnGap: 0,
+    gridRowGap: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'flex-start'
   },
   category: {
     display: 'flex',
     flexDirection: 'column',
   },
 });
+
 export default withStyles(styles)(Category);

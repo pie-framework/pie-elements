@@ -22,12 +22,6 @@ The xhtml content for the choice
 
 ## `correctResponseCount` (string,number)
 
-# `choicesPerRow` (number)
-
-The number of columns in which to present the choices
-
-Default: `2`
-
 # `categoriesPerRow` (number)
 
 The number of columns in which to present the categories

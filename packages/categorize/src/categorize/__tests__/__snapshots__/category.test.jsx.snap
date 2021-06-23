@@ -7,13 +7,6 @@ exports[`category snapshots disabled 1`] = `
   <DropTarget(DroppablePlaceholder)
     className="placeholder"
     disabled={true}
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-        "rowsRepeatValue": "minmax(60px, auto)",
-      }
-    }
   />
 </div>
 `;
@@ -24,13 +17,6 @@ exports[`category snapshots incorrect 1`] = `
 >
   <DropTarget(DroppablePlaceholder)
     className="placeholder"
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-        "rowsRepeatValue": "minmax(60px, auto)",
-      }
-    }
   >
     <DragSource(Choice)
       categoryId="1"
@@ -48,13 +34,6 @@ exports[`category snapshots renders 1`] = `
 >
   <DropTarget(DroppablePlaceholder)
     className="placeholder"
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-        "rowsRepeatValue": "minmax(60px, auto)",
-      }
-    }
   />
 </div>
 `;

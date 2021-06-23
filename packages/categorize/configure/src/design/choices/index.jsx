@@ -73,7 +73,7 @@ export class Choices extends React.Component {
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
-      gridTemplateColumns: `repeat(${model.choicesPerRow}, 1fr)`
+      gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`
     };
 
     return (

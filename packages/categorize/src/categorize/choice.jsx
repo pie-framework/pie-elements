@@ -54,7 +54,7 @@ export class Layout extends React.Component {
   }
 }
 
-const styles = () => ({
+const styles = (theme) => ({
   choice: {
     cursor: 'pointer',
     height: '100%',
@@ -64,11 +64,16 @@ const styles = () => ({
     },
     '&.incorrect': {
       border: `solid 2px ${color.incorrect()}`
-    }
+    },
+    borderRadius: '6px'
   },
   cardRoot: {
     color: color.text(),
     backgroundColor: color.background(),
+    '&:last-child': {
+      paddingBottom: theme.spacing.unit * 2
+    },
+    borderRadius: '4px',
     border: '1px solid'
   },
   disabled: {
@@ -90,6 +95,7 @@ const Styled = withStyles(styles)(Layout);
 export class Choice extends React.Component {
   static propTypes = {
     ...ChoiceType,
+    extraStyle: PropTypes.object,
     connectDragSource: PropTypes.func.isRequired
   };
 
@@ -100,10 +106,12 @@ export class Choice extends React.Component {
       content,
       disabled,
       isDragging,
-      correct
+      correct,
+      extraStyle
     } = this.props;
+
     return connectDragSource(
-      <div style={{ width: '100%', height: 'max-content' }}>
+      <div style={{ margin: '4px', ...extraStyle }}>
         <Styled
           id={id}
           content={content}

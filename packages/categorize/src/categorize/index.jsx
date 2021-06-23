@@ -258,4 +258,5 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing.unit * 2
   }
 });
+
 export default withDragContext(withStyles(styles)(CategorizeProvider));

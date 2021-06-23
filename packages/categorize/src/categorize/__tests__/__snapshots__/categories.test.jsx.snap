@@ -19,12 +19,6 @@ exports[`categories snapshots disabled 1`] = `
   <WithStyles(Category)
     choices={Array []}
     disabled={true}
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-      }
-    }
     id="1"
     key="0"
     label="category label"
@@ -52,12 +46,6 @@ exports[`categories snapshots renders 1`] = `
   </WithStyles(Typography)>
   <WithStyles(Category)
     choices={Array []}
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-      }
-    }
     id="1"
     key="0"
     label="category label"
