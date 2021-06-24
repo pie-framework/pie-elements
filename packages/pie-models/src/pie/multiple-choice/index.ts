@@ -119,6 +119,12 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   verticalMode?: ConfigureProp;
 
   /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: "bottom"
+   */
+  toolbarEditorPosition?: ConfigureProp;
+
+  /**
    * Indicates whether the settings panel will allow author to control choice shuffling
    */
   lockChoiceOrder?: ConfigureProp;
