@@ -5,12 +5,15 @@ import isObject from 'lodash/isObject';
 
 const domain = (min, max) => ({ min, max });
 const ticks = (minor, major) => ({ minor, major });
-const fs = f => (isObject(f) ? `${f.n * f.s}/${f.d}` : fs(math.fraction(f)));
-const tickString = ticks =>
+const fs = (f) => (isObject(f) ? `${f.n * f.s}/${f.d}` : fs(math.fraction(f)));
+const tickString = (ticks) =>
   `minor:${fs(ticks.minor)}, major: ${fs(ticks.major)}`;
-const pf = f => `${f.n * f.s}/${f.d}`;
+const pf = (f) => `${f.n * f.s}/${f.d}`;
 const f = (n, d) =>
-  math.fraction.apply(math, [n, d].filter(v => v !== undefined));
+  math.fraction.apply(
+    math,
+    [n, d].filter((v) => v !== undefined)
+  );
 
 describe('ticks', () => {
   describe('normalizeTicks', () => {
@@ -42,8 +45,15 @@ describe('ticks', () => {
       f(-1, 2),
       f(-1),
       f(-3, 2),
-      f(-4, 2)
+      f(-4, 2),
     ]);
+    assertFr(f(-1, 2), f(-2.3), f(-1, 2), [
+      f(-1, 2),
+      f(-1),
+      f(-3, 2),
+      f(-4, 2),
+    ]);
+    assertFr(f(0), f(2), f(1), [f(0), f(1), f(2)]);
     assertFr(f(0), f(-2), f(-1), [f(0), f(-1), f(-2)]);
     assertFr(f(0), f(-23, 10), f(-0.4), [
       f(0),
@@ -51,7 +61,7 @@ describe('ticks', () => {
       f(-8, 10),
       f(-6, 5),
       f(-8, 5),
-      f(-2)
+      f(-2),
     ]);
     assertFr(f(0), f(-1.99), f(-1), [f(0), f(-1)]);
     assertFr(f(0), f(-2), f(-1), [f(0), f(-1), f(-2)]);
@@ -105,7 +115,7 @@ describe('ticks', () => {
       f(1, 3),
       f(2, 3),
       f(1, 1),
-      f(4, 3)
+      f(4, 3),
     ]);
 
     assertSimpleRange(-1, 1, f(1, 2), [
@@ -113,7 +123,7 @@ describe('ticks', () => {
       f(-1, 2),
       f(0, 1),
       f(1, 2),
-      f(1, 1)
+      f(1, 1),
     ]);
   });
 
@@ -131,7 +141,7 @@ describe('ticks', () => {
         );
 
         // console.log('result', result);
-        Object.keys(expected).forEach(i => {
+        Object.keys(expected).forEach((i) => {
           const a = expected[i];
           const index = parseInt(i, 10);
           const s = result.slice(index, index + a.length);
@@ -147,11 +157,11 @@ describe('ticks', () => {
       2,
       { limit: false },
       {
-        0: [tt(-5, 'minor'), tt(-4, 'major')]
+        0: [tt(-5, 'minor'), tt(-4, 'major')],
       }
     );
     assertTicks(-5.3, 5, 1, 2, {
-      0: [tt(-5, 'minor'), tt(-4, 'major')]
+      0: [tt(-5, 'minor'), tt(-4, 'major')],
     });
     assertTicks(
       1.2,
@@ -160,19 +170,19 @@ describe('ticks', () => {
       1.5,
       { limit: false },
       {
-        0: [tt(1.5, 'major')]
+        0: [tt(1.5, 'major')],
       }
     );
 
     assertTicks(-2.4, 1, 0.9, 1.8, {
-      0: [tt(-1.8, 'major')]
+      0: [tt(-1.8, 'major')],
     });
     assertTicks(-2, 1, 0.9, 1.8, {
-      0: [tt(-1.8, 'major')]
+      0: [tt(-1.8, 'major')],
     });
 
     assertTicks(1, 10, 1, 2, {
-      0: [tt(1, 'minor'), tt(2, 'major'), tt(3, 'minor'), tt(4, 'major')]
+      0: [tt(1, 'minor'), tt(2, 'major'), tt(3, 'minor'), tt(4, 'major')],
     });
 
     assertTicks(-2, 1, 0.5, 1, {
@@ -180,14 +190,14 @@ describe('ticks', () => {
         tt(-2, 'major'),
         tt(-1.5, 'minor'),
         tt(-1, 'major'),
-        tt(-0.5, 'minor')
-      ]
+        tt(-0.5, 'minor'),
+      ],
     });
 
     assertTicks(-2, 1, 0.1, 0.2, {
       0: [tt(-2, 'major'), tt(-1.9, 'minor'), tt(-1.8, 'major')],
       20: [tt(0, 'major')],
-      28: [tt(0.8, 'major')] //, tt(0.9, 'minor'), tt(1, 'max')]
+      28: [tt(0.8, 'major')], //, tt(0.9, 'minor'), tt(1, 'max')]
     });
 
     assertTicks(
@@ -202,19 +212,19 @@ describe('ticks', () => {
           tt(-4, 'minor'),
           tt(0, 'major'),
           tt(4, 'minor'),
-          tt(8, 'major')
-        ]
+          tt(8, 'major'),
+        ],
       }
     );
 
     assertTicks(-100, 10, 8, 16, {
-      0: [tt(-96, 'major'), tt(-88, 'minor'), tt(-80, 'major')]
+      0: [tt(-96, 'major'), tt(-88, 'minor'), tt(-80, 'major')],
     });
 
     assertTicks(0, 100, 1, 10, {
       0: [tt(0, 'major')],
       90: [tt(90, 'major')],
-      100: [tt(100, 'major')]
+      100: [tt(100, 'major')],
     });
 
     //limited to 100/3 + 200/3
@@ -222,8 +232,8 @@ describe('ticks', () => {
       0: [
         tt(0, 'major'),
         tt(33.333333333333336, 'minor'),
-        tt(66.666666666666666, 'major')
-      ]
+        tt(66.666666666666666, 'major'),
+      ],
     });
   });
 
