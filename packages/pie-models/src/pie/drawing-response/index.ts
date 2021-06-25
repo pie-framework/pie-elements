@@ -32,9 +32,6 @@ export interface DrawingResponsePie extends PieModel {
     /** Indicates teacher instructions */
     teacherInstructions?: string;
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
-
     /** Indicates if Student Instructions are enabled */
     studentInstructionsEnabled: boolean;
 
@@ -56,9 +53,6 @@ export interface DrawingResponseConfigure extends PromptConfig {
      * Configuration for partial scoring
      */
     partialScoring?:  ConfigureProp;
-
-    /** Configuration for rationale */
-    rationale?: ConfigureProp;
 
     /**
      * Student Instructions configuration

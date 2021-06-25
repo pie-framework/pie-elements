@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.1.14...@pie-element/placement-ordering-controller@6.2.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* Do not set session.value if placementArea is true. ([814e9b5](https://github.com/pie-framework/pie-elements/commit/814e9b5048e739cc1ddcfd983b274c38bee04073))
+* If you return to an item with a separate target area the previously-entered response is seemingly lost. (+ Updated defaults) PD-527 ([9689c13](https://github.com/pie-framework/pie-elements/commit/9689c138c619234dc7b8ae1db92b1f21bf469c30))
+* Shuffle choices only if user is in gather mode. (at evaluate, at least, the order is important) PD-1002 ([78773a0](https://github.com/pie-framework/pie-elements/commit/78773a08ca0d69c822a96fca8ef6804c0b9917e9))
+
+
+### Features
+
+* **placement-ordering:** remove lockChoiceOrder PD-351 ([#557](https://github.com/pie-framework/pie-elements/issues/557)) ([cf1f4d1](https://github.com/pie-framework/pie-elements/commit/cf1f4d192aae153df60fa0d8ca0a85939c683bae))
+
+
+
+
+
 ## [6.1.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.1.11...@pie-element/placement-ordering-controller@6.1.14) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

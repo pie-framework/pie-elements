@@ -85,5 +85,12 @@ describe('Image Container', () => {
         expect(wrapper).toMatchSnapshot();
       });
     });
+
+    describe('showDashedBorder', () => {
+      it('renders', () => {
+        const wrapper = mkWrapper({ showDashedBorder: true });
+        expect(wrapper).toMatchSnapshot();
+      });
+    });
   });
 });

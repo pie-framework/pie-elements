@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.4.3...@pie-element/pie-models@10.5.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **math-inline:** remove allow thousand separators from model, remove checkbox, validate answers indifferent to the presence of commas used as thousands separators PD-1031 ([#554](https://github.com/pie-framework/pie-elements/issues/554)) ([188555b](https://github.com/pie-framework/pie-elements/commit/188555ba3dd7fa6802a1d00eead0f8a86f4615b4))
+* rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
+
+
+### Features
+
+* Added Vertical Mode for player ([#555](https://github.com/pie-framework/pie-elements/issues/555)) ([0da549e](https://github.com/pie-framework/pie-elements/commit/0da549e8af2523491779582674477ef08ba0990b))
+* **math-inline:** remove allowSpaces. BREAKING CHANGE: removed allowSpaces from model PD-285 ([#549](https://github.com/pie-framework/pie-elements/issues/549)) ([9fdd6bd](https://github.com/pie-framework/pie-elements/commit/9fdd6bde196124f138bdd93a1afc1ac7bfaa2508))
+
+
+
+
+
 ## [10.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.4.0...@pie-element/pie-models@10.4.3) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/pie-models

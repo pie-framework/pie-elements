@@ -36,6 +36,12 @@ exports[`Categories snapshot renders 1`] = `
       }
     }
   >
+    <WithStyles(Component)
+      categoriesPerRow={2}
+      markup=""
+      onChange={[Function]}
+      rowIndex={0}
+    />
     <WithStyles(Category)
       category={
         Object {
@@ -48,12 +54,6 @@ exports[`Categories snapshot renders 1`] = `
       onChange={[Function]}
       onDelete={[Function]}
       onDeleteChoice={[Function]}
-    />
-    <WithStyles(Component)
-      categoriesPerRow={2}
-      markup=""
-      onChange={[Function]}
-      rowIndex={0}
     />
   </div>
 </div>

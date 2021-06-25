@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.9.18...@pie-element/number-line@5.10.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* If a Number Line element has no correct answer, Evaluate mode should just show the student's response without any markup PD-1012 ([4c9e0a2](https://github.com/pie-framework/pie-elements/commit/4c9e0a2168b71a257b7ea03495c04c786792c74c))
+* In a number line item with very large (5-digit) numeric labels, the labels are partially cut off PD-471 ([7578317](https://github.com/pie-framework/pie-elements/commit/757831746224c5a984c8e01d078dd51c11484529))
+
+
+### Features
+
+* **number-line:** Add Undo and Clear All buttons - PD-498 ([339158d](https://github.com/pie-framework/pie-elements/commit/339158d15870e4d731c8bb9f50eeb3c455d7635a))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [5.9.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.9.15...@pie-element/number-line@5.9.18) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/number-line

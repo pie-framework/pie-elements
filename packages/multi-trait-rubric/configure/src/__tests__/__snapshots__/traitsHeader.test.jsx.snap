@@ -11,10 +11,16 @@ exports[`Trait Header snapshot renders 1`] = `
       onChange={[Function]}
       pluginProps={
         Object {
+          "audio": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": true,
           },
           "math": Object {
+            "disabled": true,
+          },
+          "video": Object {
             "disabled": true,
           },
         }
@@ -74,10 +80,16 @@ exports[`Trait Header snapshot renders 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -94,10 +106,16 @@ exports[`Trait Header snapshot renders 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -114,10 +132,16 @@ exports[`Trait Header snapshot renders 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -142,10 +166,16 @@ exports[`Trait Header snapshot renders without description 1`] = `
       onChange={[Function]}
       pluginProps={
         Object {
+          "audio": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": true,
           },
           "math": Object {
+            "disabled": true,
+          },
+          "video": Object {
             "disabled": true,
           },
         }
@@ -200,10 +230,16 @@ exports[`Trait Header snapshot renders without description 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -220,10 +256,16 @@ exports[`Trait Header snapshot renders without description 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -240,10 +282,16 @@ exports[`Trait Header snapshot renders without description 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -316,10 +364,16 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -336,10 +390,16 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -356,10 +416,16 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -384,10 +450,16 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
       onChange={[Function]}
       pluginProps={
         Object {
+          "audio": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": true,
           },
           "math": Object {
+            "disabled": true,
+          },
+          "video": Object {
             "disabled": true,
           },
         }
@@ -447,10 +519,16 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -467,10 +545,16 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -487,10 +571,16 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -515,10 +605,16 @@ exports[`Trait Header snapshot renders without score point values 1`] = `
       onChange={[Function]}
       pluginProps={
         Object {
+          "audio": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": true,
           },
           "math": Object {
+            "disabled": true,
+          },
+          "video": Object {
             "disabled": true,
           },
         }
@@ -586,10 +682,16 @@ exports[`Trait Header snapshot renders without standards 1`] = `
       onChange={[Function]}
       pluginProps={
         Object {
+          "audio": Object {
+            "disabled": true,
+          },
           "image": Object {
             "disabled": true,
           },
           "math": Object {
+            "disabled": true,
+          },
+          "video": Object {
             "disabled": true,
           },
         }
@@ -644,10 +746,16 @@ exports[`Trait Header snapshot renders without standards 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -664,10 +772,16 @@ exports[`Trait Header snapshot renders without standards 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }
@@ -684,10 +798,16 @@ exports[`Trait Header snapshot renders without standards 1`] = `
         onChange={[Function]}
         pluginProps={
           Object {
+            "audio": Object {
+              "disabled": true,
+            },
             "image": Object {
               "disabled": true,
             },
             "math": Object {
+              "disabled": true,
+            },
+            "video": Object {
               "disabled": true,
             },
           }

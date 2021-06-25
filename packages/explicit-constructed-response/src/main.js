@@ -112,7 +112,7 @@ const styles = theme => ({
     padding: '5px 0',
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2} 0`,
+    margin: `${theme.spacing.unit * 2}px 0`,
   }
 });
 

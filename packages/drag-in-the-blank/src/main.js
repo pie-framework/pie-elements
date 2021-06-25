@@ -46,32 +46,42 @@ export class Main extends React.Component {
       ...model,
       value
     };
+    const showCorrectAnswerToggle = mode === 'evaluate';
 
     return (
       <div className={classes.mainContainer}>
         {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br />
         <CorrectAnswerToggle
-          show={mode === 'evaluate'}
+          show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />
-        {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
-        <br />
+        {showCorrectAnswerToggle && <br />}
+        {prompt && (
+          <React.Fragment>
+            <div dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <br />
+          </React.Fragment>
+        )}
         {
           model.rationale && hasText(model.rationale) && (
-            <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
-              <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
+                <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br />
         <DraggableDragInTheBlank
           {...modelWithValue}
           onChange={onChange}

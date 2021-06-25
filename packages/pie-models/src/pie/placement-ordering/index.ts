@@ -113,6 +113,9 @@ export interface PlacementOrderingPie extends PieModel {
     /** Indicates if Teacher Instructions are enabled */
     teacherInstructionsEnabled: boolean;
 
+    /** Indicates if Choice Label is enabled */
+    choiceLabelEnabled?: boolean;
+
     /** Indicates the note for the answer */
     note?: string;
 }
@@ -125,7 +128,7 @@ export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSe
     /**
      * Choice Label configuration
      */
-    choiceLabel?: ConfigurePropWithEnabled;
+    choiceLabel?: ConfigureProp;
 
     /**
      * Choices configuration

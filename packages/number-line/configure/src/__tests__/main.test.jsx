@@ -54,7 +54,7 @@ describe('main', () => {
     });
 
     fn('changeMaxNoOfPoints', [{}, 10], {
-      graph: expect.objectContaining({ maxNumberOfPoints: 10 })
+      graph: expect.objectContaining({ maxNumberOfPoints: 10, height: 300 })
     });
 
     fn('changeGraphTitle', ['title'], {

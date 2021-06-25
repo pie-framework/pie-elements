@@ -66,7 +66,7 @@ export class Main extends React.Component {
               >
                 <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
               </Collapsible>
-              <br/>
+              <br />
             </div>
           )
         }
@@ -101,7 +101,7 @@ export class Main extends React.Component {
         />
         {feedback && (
           <div>
-            <br/>
+            <br />
             <Feedback correctness="correct" feedback={feedback}/>
           </div>
         )}

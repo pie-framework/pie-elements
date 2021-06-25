@@ -7,7 +7,7 @@ import { color } from '@pie-lib/render-ui';
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
 
-class PossibleResponse extends React.Component {
+export class PossibleResponse extends React.Component {
   getClassname = () => {
     const { classes, data: { isCorrect } } = this.props;
     let styleProp;
@@ -65,6 +65,10 @@ const styles = () => ({
     backgroundColor: color.background(),
     border: `1px solid ${color.primary()}`,
     display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '28px',
+    padding: '0 3px',
     marginLeft: 2,
     marginTop: 2,
     width: 'fit-content'

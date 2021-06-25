@@ -9,6 +9,8 @@ import compact from 'lodash/compact';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
+import ReactDOM from 'react-dom';
+import {renderMath} from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:placement-ordering');
 
@@ -64,6 +66,13 @@ export class PlacementOrdering extends React.Component {
 
   componentDidMount() {
     this.initSessionIfNeeded(this.props);
+  }
+
+  componentDidUpdate() {
+    //eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -194,14 +203,16 @@ export class PlacementOrdering extends React.Component {
     return (
       <div className={classes.placementOrdering}>
         {teacherInstructions && hasText(teacherInstructions) && (
-          <Collapsible
-            labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-            className={classes.collapsible}
-          >
-            <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-          </Collapsible>
+          <React.Fragment>
+            <Collapsible
+              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              className={classes.collapsible}
+            >
+              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+            </Collapsible>
+            <br/>
+          </React.Fragment>
         )}
-        <br/>
         <CorrectAnswerToggle
           show={showToggle}
           toggled={showingCorrect}
@@ -221,6 +232,7 @@ export class PlacementOrdering extends React.Component {
           addGuide={config.showOrdering}
           tileSize={config.tileSize}
           includeTargets={includeTargets}
+          choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />

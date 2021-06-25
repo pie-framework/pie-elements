@@ -144,7 +144,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit
   },
   column: {
-    padding: '10px 20px 0',
+    padding: '5px 0',
   },
   correct: {
     color: `${color.correct()} !important`
@@ -163,7 +163,7 @@ const styles = theme => ({
     padding: 0
   },
   rowItem: {
-    padding: '6px 12px',
+    padding: '12px',
     textAlign: 'center'
   },
   separator: {
@@ -172,6 +172,7 @@ const styles = theme => ({
     width: '100%'
   },
   tag: {
+    padding: '6px',
     color: color.text(),
     '&:hover': {
       color: color.primaryLight()

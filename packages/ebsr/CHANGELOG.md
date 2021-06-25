@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.4.5...@pie-element/ebsr@6.5.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ebsr:** set only one correct answer when controls are switched from checkbox to radio button PD-262 ([cc59293](https://github.com/pie-framework/pie-elements/commit/cc592935952321b59c90cba816d1e3766d748afc))
+* EBSR authoring triggering console error PD-909 ([2c6bcb3](https://github.com/pie-framework/pie-elements/commit/2c6bcb3535434cc2c3f75f14cebde723aeaf9c36))
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [6.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.4.2...@pie-element/ebsr@6.4.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/ebsr
