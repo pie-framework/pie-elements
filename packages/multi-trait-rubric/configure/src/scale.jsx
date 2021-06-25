@@ -192,10 +192,15 @@ export class Scale extends React.Component {
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];
 
-    traits[oldIndex] = traits[newIndex];
-    traits[newIndex] = cup;
+    const remainingTraits = traits.filter((item, index) => index !== oldIndex);
 
-    onScaleChanged(scaleIndex, { traits });
+    const newTraits = [
+      ...remainingTraits.slice(0, newIndex),
+      cup,
+      ...remainingTraits.slice(newIndex),
+    ];
+
+    onScaleChanged(scaleIndex, { traits: newTraits });
   }
 
   decreasePosition = () => {

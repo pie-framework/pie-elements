@@ -91,7 +91,7 @@ export default {
       enabled: false
     },
     dragAndDrop: {
-      settings: false,
+      settings: true,
       label: 'Enable Drag and Drop',
       enabled: false,
     }

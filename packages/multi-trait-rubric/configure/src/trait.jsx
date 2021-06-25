@@ -29,7 +29,7 @@ const log = debug('@pie-element:placement-ordering:configure:trait-tile');
 
 const styles = {
   actions: {
-    color: color.secondaryBackground()
+    color: color.text()
   },
   controls: {
     display: 'flex',
@@ -94,6 +94,7 @@ export class TraitTile extends React.Component {
       classes,
       connectDragSource,
       connectDropTarget,
+      connectDragPreview,
       trait: {
         name,
         standards,
@@ -109,21 +110,22 @@ export class TraitTile extends React.Component {
     } = this.props;
     const { anchorEl } = this.state;
 
-    const dragSourceOpts = {};
     const pluginProps = {
       image: { disabled: true },
       math: { disabled: true }
     };
 
-    return connectDragSource(
-      connectDropTarget(
-        <div>
-          <Row>
-            <PrimaryBlock>
-              {enableDragAndDrop ?
-                <span className={classes.dragHandle}>
+    return (
+      connectDragPreview(
+        connectDropTarget(
+          <div>
+            <Row>
+              <PrimaryBlock>
+                {enableDragAndDrop ?
+                  connectDragSource(
+                    <span className={classes.dragHandle}>
                     <DragIndicatorIcon className={classes.actions}/>
-                  </span> : null
+                  </span>) : null
               }
               <div className={classes.controls}>
                 <IconButton
@@ -176,16 +178,16 @@ export class TraitTile extends React.Component {
                 </Block>
               )}
 
-              {showDescription && (
-                <Block>
-                  <ExpandedInput
-                    placeholder="Description"
-                    markup={description}
-                    onChange={description => this.onTraitChanged({ description })}
-                    pluginProps={pluginProps}
-                  />
-                </Block>
-              )}
+                {showDescription && (
+                  <Block>
+                    <ExpandedInput
+                      placeholder="Description"
+                      markup={description}
+                      onChange={description => this.onTraitChanged({ description })}
+                      pluginProps={pluginProps}
+                    />
+                  </Block>
+                )}
 
               {(scorePointsValues || []).map((scorePointsValue, index) => {
                 const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
@@ -193,29 +195,28 @@ export class TraitTile extends React.Component {
                 const value = scorePointsValues.length - index - 1;
                 let scoreDescriptor;
 
-                try {
-                  scoreDescriptor = scorePointsDescriptors[value] || '';
-                } catch (e) {
-                  scoreDescriptor = '';
-                }
+                  try {
+                    scoreDescriptor = scorePointsDescriptors[value] || '';
+                  } catch (e) {
+                    scoreDescriptor = '';
+                  }
 
-                return (
-                  <Block key={`key-key-${index}`}>
-                    <ExpandedInput
-                      placeholder='Enter Description Here'
-                      markup={scoreDescriptor}
-                      onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
-                      pluginProps={pluginProps}
-                      alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
-                    />
-                  </Block>
-                )
-              })}
-            </SecondaryBlock>
-          </Row>
-        </div>
-      ),
-      dragSourceOpts
+                  return (
+                    <Block key={`key-key-${index}`}>
+                      <ExpandedInput
+                        placeholder='Enter Description Here'
+                        markup={scoreDescriptor}
+                        onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
+                        pluginProps={pluginProps}
+                        alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                      />
+                    </Block>
+                  )
+                })}
+              </SecondaryBlock>
+            </Row>
+          </div>
+        ))
     );
   }
 }
@@ -223,6 +224,7 @@ export class TraitTile extends React.Component {
 TraitTile.propTypes = {
   connectDragSource: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired,
+  connectDragPreview: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   isDragging: PropTypes.bool.isRequired,
   id: PropTypes.any,
@@ -262,6 +264,7 @@ const StyledSource = DragSource(
   traitSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   })
 )(StyledTrait);
