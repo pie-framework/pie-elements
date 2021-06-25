@@ -23,14 +23,14 @@ const styles = {
   graphTitle: {
     textAlign: 'center',
     pointerEvents: 'none',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   numberLine: {
     padding: '10px',
-    boxSizing: 'unset'
+    boxSizing: 'unset',
   },
   black_on_rose: {
-    backgroundColor: 'mistyrose'
+    backgroundColor: 'mistyrose',
   },
   white_on_black: {
     backgroundColor: 'black',
@@ -39,12 +39,12 @@ const styles = {
     '--line-stroke': 'white',
     '--arrow-color': 'white',
     '--point-stroke': 'white',
-    '--point-fill': 'black'
+    '--point-fill': 'black',
   },
   prompt: {
     verticalAlign: 'middle',
-    marginBottom: '16px'
-  }
+    marginBottom: '16px',
+  },
 };
 
 export class NumberLine extends React.Component {
@@ -56,7 +56,7 @@ export class NumberLine extends React.Component {
     onClearElements: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     answer: PropTypes.array,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -70,7 +70,7 @@ export class NumberLine extends React.Component {
     this.state = {
       selectedElements: [],
       elementType: initialType,
-      answers: props.answer
+      answers: props.answer,
     };
   }
 
@@ -79,7 +79,7 @@ export class NumberLine extends React.Component {
     if (this.state.selectedElements.indexOf(index) === -1) {
       selected = this.state.selectedElements.concat([index]);
     } else {
-      selected = this.state.selectedElements.filter(e => e !== index);
+      selected = this.state.selectedElements.filter((e) => e !== index);
     }
     this.setState({ selectedElements: selected });
   }
@@ -113,11 +113,11 @@ export class NumberLine extends React.Component {
         return JSON.stringify(element) === JSON.stringify(elementData);
       });
 
-     if(!contains) {
-       answers.push(elementData);
-       this.setState({ answers });
-       this.props.onAddElement(elementData);
-     }
+      if (!contains) {
+        answers.push(elementData);
+        this.setState({ answers });
+        this.props.onAddElement(elementData);
+      }
     }
   }
 
@@ -125,8 +125,8 @@ export class NumberLine extends React.Component {
     let {
       answer,
       model: {
-        graph: { maxNumberOfPoints }
-      }
+        graph: { maxNumberOfPoints },
+      },
     } = this.props;
 
     return (
@@ -139,8 +139,8 @@ export class NumberLine extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { answer } = nextProps;
 
-    if(!isEqual(this.state.answers, answer)) {
-      this.setState({showCorrectAnswer: false, answers: answer});
+    if (!isEqual(this.state.answers, answer)) {
+      this.setState({ showCorrectAnswer: false, answers: answer });
     }
   }
 
@@ -150,7 +150,7 @@ export class NumberLine extends React.Component {
 
   getSize(type, min, max, defaultValue) {
     const {
-      model: { graph }
+      model: { graph },
     } = this.props;
 
     if (graph && graph[type]) {
@@ -177,32 +177,50 @@ export class NumberLine extends React.Component {
   }
 
   render() {
-    let { model, classes } = this.props;
-    let { showCorrectAnswer, answers } = this.state;
-    let { corrected = { correct: [], incorrect: [] }, disabled } = model;
+    let { model, classes, onDeleteElements, onMoveElement } = this.props;
+    let {
+      showCorrectAnswer,
+      answers,
+      selectedElements,
+      showMaxPointsWarning,
+      elementType,
+    } = this.state;
+    let {
+      corrected = { correct: [], incorrect: [] },
+      disabled,
+      graph,
+      correctResponse,
+      prompt,
+      emptyAnswer,
+      feedback,
+      colorContrast,
+    } = model;
     let addElement = this.addElement.bind(this);
     let elementsSelected =
-      !disabled &&
-      this.state.selectedElements &&
-      this.state.selectedElements.length > 0;
+      !disabled && selectedElements && selectedElements.length > 0;
+    const {
+      ticks,
+      domain,
+      arrows,
+      maxNumberOfPoints,
+      height,
+      availableTypes,
+      title,
+    } = graph;
     const width = this.getSize('width', 400, 1600, 600);
-    const height = this.getSize('height', 300, 800, 400);
-
-    const { ticks, domain, arrows } = model.graph;
-
     let graphProps = {
       disabled,
       domain,
       ticks,
       width,
       height,
-      arrows
+      arrows,
     };
 
     let getAnswerElements = () => {
       return (answers || []).map((e, index) => {
         let out = cloneDeep(e);
-        out.selected = this.state.selectedElements.indexOf(index) !== -1;
+        out.selected = selectedElements.indexOf(index) !== -1;
         out.correct = corrected.correct.includes(index)
           ? true
           : corrected.incorrect.includes(index)
@@ -213,7 +231,7 @@ export class NumberLine extends React.Component {
     };
 
     let getCorrectAnswerElements = () => {
-      return (model.correctResponse || []).map(r => {
+      return (correctResponse || []).map((r) => {
         r.correct = true;
         return r;
       });
@@ -224,48 +242,56 @@ export class NumberLine extends React.Component {
       : getAnswerElements();
 
     let maxPointsMessage = () =>
-      `You can only add ${model.graph.maxNumberOfPoints} element${model.graph.maxNumberOfPoints == 1 ? '' : 's'}`;
-
+      `You can only add ${maxNumberOfPoints} element${
+        maxNumberOfPoints == 1 ? '' : 's'
+      }`;
 
     let deleteElements = () => {
-      const { selectedElements } = this.state;
-      this.props.onDeleteElements(selectedElements);
+      onDeleteElements(selectedElements);
 
       answers = answers.filter((v, index) => {
-        return !selectedElements.some(d => d === index);
+        return !selectedElements.some((d) => d === index);
       });
 
       this.setState({ selectedElements: [], answers });
     };
 
     let getIcons = () => {
-      if (model.graph.availableTypes) {
-        return Object.keys(model.graph.availableTypes)
-          .filter(k => model.graph.availableTypes[k])
-          .map(k => k.toLowerCase());
+      if (availableTypes) {
+        return Object.keys(availableTypes)
+          .filter((k) => availableTypes[k])
+          .map((k) => k.toLowerCase());
       }
     };
 
-    let onShowCorrectAnswer = show => {
+    let onShowCorrectAnswer = (show) => {
       this.setState({ showCorrectAnswer: show });
     };
 
     let adjustedWidth = graphProps.width - 20;
 
-    const names = classNames(classes.numberLine, classes.mainContainer, classes[model.colorContrast]);
+    const names = classNames(
+      classes.numberLine,
+      classes.mainContainer,
+      classes[colorContrast]
+    );
 
     return (
       <div className={names} style={{ width }}>
-        {model.prompt && (
+        {prompt && (
           <div
             className={classes.prompt}
-            dangerouslySetInnerHTML={{ __html: model.prompt }}
+            dangerouslySetInnerHTML={{ __html: prompt }}
           />
         )}
         <div>
           <div style={{ width: adjustedWidth }}>
             <Toggle
-              show={isArray(model.correctResponse) && model.correctResponse.length && !model.emptyAnswer}
+              show={
+                isArray(correctResponse) &&
+                correctResponse.length &&
+                !emptyAnswer
+              }
               toggled={showCorrectAnswer}
               onToggle={onShowCorrectAnswer}
               initialValue={false}
@@ -273,7 +299,7 @@ export class NumberLine extends React.Component {
           </div>
           {!disabled && (
             <PointChooser
-              elementType={this.state.elementType}
+              elementType={elementType}
               showDeleteButton={elementsSelected}
               onDeleteClick={deleteElements}
               onElementType={this.elementTypeSelected.bind(this)}
@@ -286,26 +312,26 @@ export class NumberLine extends React.Component {
             {...graphProps}
             elements={elements}
             onAddElement={addElement}
-            onMoveElement={this.props.onMoveElement}
+            onMoveElement={onMoveElement}
             onToggleElement={this.toggleElement.bind(this)}
             onDeselectElements={this.deselectElements.bind(this)}
             debug={false}
           />
-          {model.graph.title && (
+          {title && (
             <div
               className={classes.graphTitle}
-              dangerouslySetInnerHTML={{ __html: model.graph.title }}
+              dangerouslySetInnerHTML={{ __html: title }}
             />
           )}
-          {this.state.showMaxPointsWarning && (
+          {showMaxPointsWarning && (
             <Feedback
               type="info"
               width={adjustedWidth}
               message={maxPointsMessage()}
             />
           )}
-          {model.feedback && !showCorrectAnswer && (
-            <Feedback {...model.feedback} width={adjustedWidth} />
+          {feedback && !showCorrectAnswer && (
+            <Feedback {...feedback} width={adjustedWidth} />
           )}
         </div>
       </div>
