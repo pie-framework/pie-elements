@@ -260,10 +260,10 @@ export class RespAreaToolbar extends React.Component {
             onKeyDown={this.onKeyDown}
             onChange={this.onRespAreaChange}
             onDone={this.onDone}
+            onBlur={this.onBlur}
             placeholder="Add Choice"
             activePlugins={filteredDefaultPlugins}
             pluginProps={labelPlugins}
-            onBlur={this.onBlur}
           />
           <i
             style={{
