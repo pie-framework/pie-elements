@@ -60,12 +60,6 @@ export interface CategorizePie extends PieModel {
   choices: CategoryChoice[];
 
   /**
-   * The number of columns in which to present the choices
-   * @default 2
-   */
-  choicesPerRow?: number;
-
-  /**
    * The number of columns in which to present the categories
    * @default 2
    */

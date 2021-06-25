@@ -129,7 +129,6 @@ export const model = (question, session, env, updateSession) =>
     const {
       categories,
       categoriesPerRow,
-      choicesPerRow,
       choicesLabel,
       choicesPosition,
       correctResponse,
@@ -168,7 +167,6 @@ export const model = (question, session, env, updateSession) =>
       correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
-      choicesPerRow: choicesPerRow || 2,
       choicesPosition,
       disabled: mode !== 'gather',
       feedback: fb,

@@ -1,7 +1,6 @@
 const E234 = {
   choicesPosition: 'below',
   lockChoiceOrder: false,
-  choicesPerRow: 2,
   choices: [
     {
       content: 'built on board',
@@ -52,7 +51,6 @@ const E234 = {
   ],
 };
 // const E236 = {
-//   choicesPerRow: 2,
 //   choices: [
 //     {
 //       id: '0',
@@ -123,7 +121,6 @@ const E234 = {
 //   lockChoiceOrder: false,
 // };
 // const E216 = {
-//   choicesPerRow: 2,
 //   choices: [
 //     {
 //       categoryCount: 1,
@@ -244,7 +241,6 @@ const E234 = {
 //   ],
 //   choicesPosition: 'below',
 //   lockChoiceOrder: false,
-//   choicesPerRow: 2,
 //   choices: [
 //     {
 //       content: '<em>f</em>(<em>x</em>) is increasing',
@@ -304,7 +300,6 @@ exports.model = (id, element) => ({
       categoryCount: 2,
     },
   ],
-  choicesPerRow: 4,
   choicesPosition: 'below',
   choicesLabel: '',
   lockChoiceOrder: true,
