@@ -21,5 +21,6 @@ export { PlacementOrderingPie, PlacementOrderingConfigure } from './pie/placemen
 export { RulerPie, RulerConfigure } from './pie/ruler';
 export { TextEntryPie, TextEntryConfigure } from './pie/text-entry';
 export { LikertPie, LikertConfigure } from './pie/likert';
+export { ImageClozeAssociationPie, ImageClozeAssociationConfigure } from './pie/image-cloze-association';
 export { MatrixPie, MatrixConfigure } from './pie/matrix';
 export { RubricPie, RubricConfigure } from './pie/rubric';

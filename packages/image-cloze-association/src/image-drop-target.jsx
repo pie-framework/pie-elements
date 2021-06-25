@@ -16,6 +16,7 @@ const ImageDropTarget = ({
   duplicateResponses,
   onDragAnswerBegin,
   onDragAnswerEnd,
+  showDashedBorder,
   // dnd-related props
   connectDropTarget,
   isOverCurrent
@@ -23,6 +24,7 @@ const ImageDropTarget = ({
   <div
     className={`
         ${classes.responseContainer}
+        ${showDashedBorder && !draggingElement.id ? classes.responseContainerDashed : ''}
         ${draggingElement.id ? classes.responseContainerActive : ''}
       `}
     style={containerStyle}
@@ -60,7 +62,8 @@ ImageDropTarget.propTypes = {
   draggingElement: PropTypes.object.isRequired,
   onDragAnswerBegin: PropTypes.func.isRequired,
   onDragAnswerEnd: PropTypes.func.isRequired,
-  onDrop: PropTypes.func.isRequired
+  onDrop: PropTypes.func.isRequired,
+  showDashedBorder: PropTypes.bool
 };
 
 ImageDropTarget.defaultProps = {
@@ -84,6 +87,9 @@ const styles = () => ({
   responseContainerActive: {
     border: `2px solid ${color.text()}`,
     backgroundColor: 'rgba(230, 242, 252, .8)'
+  },
+  responseContainerDashed: {
+    border: `2px dashed ${color.text()}`
   }
 });
 

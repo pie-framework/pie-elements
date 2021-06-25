@@ -20,7 +20,8 @@ class ImageContainer extends Component {
       onAnswerSelect,
       onDragAnswerBegin,
       onDragAnswerEnd,
-      responseContainers
+      responseContainers,
+      showDashedBorder
     } = this.props;
 
     return (
@@ -53,6 +54,7 @@ class ImageContainer extends Component {
               onDrop={(item) => onAnswerSelect(item, r.index)}
               onDragAnswerBegin={onDragAnswerBegin}
               onDragAnswerEnd={onDragAnswerEnd}
+              showDashedBorder={showDashedBorder}
             />
           );
         })}
@@ -71,7 +73,8 @@ ImageContainer.propTypes = {
   onAnswerSelect: PropTypes.func.isRequired,
   onDragAnswerBegin: PropTypes.func.isRequired,
   onDragAnswerEnd: PropTypes.func.isRequired,
-  responseContainers: PropTypes.array.isRequired
+  responseContainers: PropTypes.array.isRequired,
+  showDashedBorder: PropTypes.bool
 };
 
 ImageContainer.defaultProps = {
