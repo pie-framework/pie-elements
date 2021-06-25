@@ -140,7 +140,7 @@ describe('correct response', () => {
 });
 
 describe('outcome', () => {
-  it.only('handles empty session', async () => {
+  it('handles empty session', async () => {
     const result = await outcome(
       { tokens: [] },
       { id: '1' },
@@ -460,6 +460,264 @@ describe('model', () => {
 
       const result = await model(d, {}, { mode: 'evaluate' });
       expect(result).toBeDefined();
+    });
+  });
+
+  describe("partialScoring", () => {
+    const model = {
+      tokens: [
+        {
+          text: "Benedict",
+          start: 0,
+          end: 8,
+          correct: false,
+        },
+        {
+          text: "Arnold",
+          start: 9,
+          end: 15,
+          correct: false,
+        },
+        {
+          text: "is",
+          start: 16,
+          end: 18,
+          correct: false,
+        },
+        {
+          text: "remembered",
+          start: 19,
+          end: 29,
+          correct: false,
+        },
+        {
+          text: "for",
+          start: 30,
+          end: 33,
+          correct: false,
+        },
+        {
+          text: "betraying",
+          start: 34,
+          end: 43,
+          correct: true,
+        },
+        {
+          text: "the",
+          start: 44,
+          end: 47,
+          correct: false,
+        },
+        {
+          text: "American",
+          start: 48,
+          end: 56,
+          correct: false,
+        },
+        {
+          text: "patriots",
+          start: 57,
+          end: 65,
+          correct: true,
+        },
+        {
+          text: "during",
+          start: 66,
+          end: 72,
+          correct: false,
+        },
+        {
+          text: "the",
+          start: 73,
+          end: 76,
+          correct: false,
+        },
+        {
+          text: "Revolutionary",
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: "War.",
+          start: 91,
+          end: 95,
+          correct: true,
+        }
+      ],
+      highlightChoices: false,
+      text: "Benedict Arnold is remembered for betraying the American patriots during the Revolutionary War.",
+      disabled: false,
+      rationale: null,
+      partialScoring: true
+    };
+
+    it('returns a score of 0', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+          text: 'the',
+          start: 73,
+          end: 76,
+          correct: false,
+        }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(0);
+    });
+
+    it('returns a score of 1', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+            text: 'Revolutionary',
+            start: 77,
+            end: 90,
+            correct: true,
+          },
+          {
+            text: 'War.',
+            start: 91,
+            end: 95,
+            correct: true,
+          },
+          {
+            text: "patriots",
+            start: 57,
+            end: 65,
+            correct: true,
+          },
+          {
+            text: "betraying",
+            start: 34,
+            end: 43,
+            correct: true,
+          }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(1);
+    });
+
+    it('returns a score of 0.75', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+          text: 'Revolutionary',
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: 'patriots',
+          start: 57,
+          end: 65,
+          correct: true,
+        },
+        {
+          text: 'betraying',
+          start: 34,
+          end: 43,
+          correct: true,
+        }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(0.75);
+    });
+
+    it('returns a score of 0.5', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+          text: "during",
+          start: 66,
+          end: 72,
+          correct: false,
+        },
+        {
+          text: "the",
+          start: 73,
+          end: 76,
+          correct: false,
+        },
+        {
+          text: 'Revolutionary',
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: 'betraying',
+          start: 34,
+          end: 43,
+          correct: true,
+        }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(0.5);
+    });
+
+    it('returns a score of 0.25', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+          text: 'Revolutionary',
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: "during",
+          start: 66,
+          end: 72,
+          correct: false,
+        },
+        {
+          text: "the",
+          start: 73,
+          end: 76,
+          correct: false,
+        }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(0.25);
+    });
+
+    it('returns a score of 0 for 1/4 correct answer an 4 incorrect answers', async () => {
+      const result = await outcome(model, {
+        id: 1,
+        selectedTokens: [{
+          text: 'Revolutionary',
+          start: 77,
+          end: 90,
+          correct: true,
+        },
+        {
+          text: "during",
+          start: 66,
+          end: 72,
+          correct: false,
+        },
+        {
+          text: "the",
+          start: 73,
+          end: 76,
+          correct: false,
+        },
+        {
+          text: 'is',
+          start: 16,
+          end: 18,
+          correct: false,
+        },
+        {
+          text: 'remembered',
+          start: 19,
+          end: 29,
+          correct: false,
+        },
+        {
+          text: 'for',
+          start: 30,
+          end: 33,
+          correct: false,
+        }]
+      }, {mode: 'evaluate'});
+      expect(result.score).toEqual(0);
     });
   });
 });

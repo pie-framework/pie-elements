@@ -46,6 +46,11 @@ export interface Part {
 
     /** Indicates if Teacher Instructions are enabled */
     teacherInstructionsEnabled: boolean;
+
+    /** Indicates the layout of choices for player
+     * @default: true
+     */
+    verticalMode?: boolean;
 }
 
 /** NOTE: teacherInstructions, studentInstructions, rationale & rubric
@@ -128,6 +133,12 @@ interface PartConfiguration {
      * Teacher Instructions configuration
      */
     teacherInstructions?: ConfigureProp;
+
+    /**
+     * Indicates the layout of choices for player
+     * @default: true
+     */
+    verticalMode?: ConfigureProp;
 }
 
 /**

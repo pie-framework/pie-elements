@@ -9,6 +9,8 @@ import compact from 'lodash/compact';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
+import ReactDOM from 'react-dom';
+import {renderMath} from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:placement-ordering');
 
@@ -64,6 +66,13 @@ export class PlacementOrdering extends React.Component {
 
   componentDidMount() {
     this.initSessionIfNeeded(this.props);
+  }
+
+  componentDidUpdate() {
+    //eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -209,6 +218,7 @@ export class PlacementOrdering extends React.Component {
           addGuide={model.config.showOrdering}
           tileSize={model.config && model.config.tileSize}
           includeTargets={includeTargets}
+          choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />

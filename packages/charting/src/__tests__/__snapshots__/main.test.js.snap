@@ -2,6 +2,11 @@
 
 exports[`Main render snapshot 1`] = `
 <div>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
   <br />
   <div
     dangerouslySetInnerHTML={

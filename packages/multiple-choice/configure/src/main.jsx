@@ -107,6 +107,11 @@ const Design = withStyles(styles)(props => {
     promptEnabled
   } = model || {};
 
+  const labelPlugins = {
+    audio: { disabled: true },
+    video: { disabled: true }
+  };
+
   const Content = (
     <div>
       {teacherInstructionsEnabled && (
@@ -172,6 +177,7 @@ const Design = withStyles(styles)(props => {
                   })
                 }
                 imageSupport={imageSupport}
+                pluginProps={labelPlugins}
               />
             </InputContainer>
           )}

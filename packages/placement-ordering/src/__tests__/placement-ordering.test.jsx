@@ -53,7 +53,7 @@ describe('PlacementOrdering', () => {
         }}
         onSessionChange={onSessionChange}
       />,
-      {}
+      {disableLifecycleMethods: true}
     );
   };
 
