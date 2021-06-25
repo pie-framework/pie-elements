@@ -86,6 +86,17 @@ Indicates the layout of choices for player
 
 Default: `": true"`
 
+# `toolbarEditorPosition` (string, enum)
+
+Indicates the editor's toolbar position which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
+
 # `lockChoiceOrder` (boolean)
 
 Indicates the order of choices should be randomly ordered when presented to user

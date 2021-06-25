@@ -37,6 +37,12 @@ export interface MultipleChoicePie extends PieModel {
    */
   verticalMode?: boolean;
 
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
+
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
 
@@ -117,12 +123,6 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * @default: true
    */
   verticalMode?: ConfigureProp;
-
-  /**
-   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-   * @default: "bottom"
-   */
-  toolbarEditorPosition?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling
