@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.23...@pie-element/charting-configure@2.1.24) (2021-04-07)
+
+
+### Bug Fixes
+
+* **charting:** remove step & labelStep from default model PD-1016 ([cb1cf4e](https://github.com/pie-framework/pie-elements/commit/cb1cf4e507255dbda0c8e1c79695b384bcdec294))
+
+
+
+
+
 ## [2.1.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.20...@pie-element/charting-configure@2.1.23) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/charting-configure

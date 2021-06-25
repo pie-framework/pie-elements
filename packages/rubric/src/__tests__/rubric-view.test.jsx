@@ -10,6 +10,7 @@ describe('rubric viewer', () => {
   const wrapper = extras => {
     const props = {value: {
       points: ['nothing right', 'a teeny bit right', 'mostly right', 'bingo'],
+      sampleAnswers: [null, 'just right', 'not left', null],
       excludeZero: false,
       ...extras
     }};
@@ -36,11 +37,11 @@ describe('rubric viewer', () => {
     it('renders correctly with exluded zeroes', () => {
       let w = wrapper({ excludeZero: true });
       w.find(Link).simulate('click');
-      expect(w.find('li').length).toEqual(3);
+      expect(w.find('li').length).toEqual(5);
 
       w = wrapper({ excludeZero: false });
       w.find(Link).simulate('click');
-      expect(w.find('li').length).toEqual(4);
+      expect(w.find('li').length).toEqual(6);
     });
   });
 
