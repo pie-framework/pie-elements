@@ -126,6 +126,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+## `verticalMode` (object)
+
+Properties of the `verticalMode` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `partB` (object, required)
 
 Properties of the `partB` object:
@@ -241,6 +253,18 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ## `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `verticalMode` (object)
+
+Properties of the `verticalMode` object:
 
 ### `settings` (boolean)
 
@@ -419,6 +443,18 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 ### `teacherInstructions` (object)
 
 Properties of the `teacherInstructions` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `verticalMode` (object)
+
+Properties of the `verticalMode` object:
 
 #### `settings` (boolean)
 
