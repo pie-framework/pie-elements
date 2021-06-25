@@ -55,15 +55,17 @@ export class Main extends React.Component {
       <div className={classes.mainContainer}>
         {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br />
         <div
           className={classes.prompt}
           dangerouslySetInnerHTML={{ __html: model.prompt }}

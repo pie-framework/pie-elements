@@ -1,13 +1,13 @@
 {
   "name": "@pie-element/calculator-configure",
-  "version": "1.8.22",
+  "version": "1.9.0",
   "description": "",
   "main": "lib/index.js",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.8.57",
+    "@pie-lib/config-ui": "^10.9.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },

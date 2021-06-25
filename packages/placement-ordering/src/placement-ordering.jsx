@@ -9,6 +9,8 @@ import compact from 'lodash/compact';
 import debug from 'debug';
 import uniqueId from 'lodash/uniqueId';
 import { withStyles } from '@material-ui/core/styles';
+import ReactDOM from 'react-dom';
+import {renderMath} from '@pie-lib/math-rendering';
 
 const log = debug('pie-elements:placement-ordering');
 
@@ -64,6 +66,13 @@ export class PlacementOrdering extends React.Component {
 
   componentDidMount() {
     this.initSessionIfNeeded(this.props);
+  }
+
+  componentDidUpdate() {
+    //eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -181,15 +190,17 @@ export class PlacementOrdering extends React.Component {
       <div className={classes.placementOrdering}>
         {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br/>
         <CorrectAnswerToggle
           show={showToggle}
           toggled={this.state.showingCorrect}
@@ -209,10 +220,11 @@ export class PlacementOrdering extends React.Component {
           addGuide={model.config.showOrdering}
           tileSize={model.config && model.config.tileSize}
           includeTargets={includeTargets}
+          choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
-        <br/>
+        <br />
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible

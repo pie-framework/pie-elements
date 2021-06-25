@@ -175,7 +175,6 @@ export class Categories extends React.Component {
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
-    const lastRowLabelIndex = parseInt((categories.length - 1) / categoriesPerRow);
 
     return (
       <div className={classNames(classes.categories, className)}>
@@ -194,24 +193,22 @@ export class Categories extends React.Component {
         </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
-            const hasRowLabel = index > 1 && index % categoriesPerRow === 0;
-            const rowIndex = parseInt(index / (categoriesPerRow + 1));
+            const hasRowLabel = index % categoriesPerRow === 0;
+            const rowIndex = index / categoriesPerRow;
 
             return (
               <React.Fragment
                 key={index}
               >
-                {
-                  hasRowLabel && (
-                    <RowLabel
-                      categoriesPerRow={categoriesPerRow}
-                      rowIndex={rowIndex}
-                      markup={rowLabels[rowIndex] || ''}
-                      onChange={(val) => this.changeRowLabel(val, rowIndex)}
-                      imageSupport={imageSupport}
-                    />
-                  )
-                }
+                {hasRowLabel && (
+                  <RowLabel
+                    categoriesPerRow={categoriesPerRow}
+                    rowIndex={rowIndex}
+                    markup={rowLabels[rowIndex] || ''}
+                    onChange={(val) => this.changeRowLabel(val, rowIndex)}
+                    imageSupport={imageSupport}
+                  />
+                )}
                 <Category
                   imageSupport={imageSupport}
                   category={category}
@@ -225,13 +222,6 @@ export class Categories extends React.Component {
               </React.Fragment>
             );
           })}
-          <RowLabel
-            categoriesPerRow={categoriesPerRow}
-            rowIndex={lastRowLabelIndex}
-            markup={rowLabels[lastRowLabelIndex] || ''}
-            onChange={(val) => this.changeRowLabel(val, lastRowLabelIndex)}
-            imageSupport={imageSupport}
-          />
         </div>
       </div>
     );

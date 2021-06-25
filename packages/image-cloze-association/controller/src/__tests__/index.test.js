@@ -45,8 +45,12 @@ describe('controller', () => {
         valid_response: {
           score: 1,
           value: [
-            [rhomb, square],
-            [rhomb, square, trapeze],
+            {
+              images: [rhomb, square]
+            },
+            {
+              images: [rhomb, square, trapeze]
+            },
           ],
         },
       },
@@ -170,6 +174,81 @@ describe('controller', () => {
       expect(result.score).toEqual(1);
     });
 
+    describe('returns score 0 for wrong validation format', () => {
+      it('returns 0 for old value format', async () => {
+        const result = await outcome(
+          {
+            ...question,
+            validation: {
+              valid_response: {
+                score: 1,
+                value: [
+                  [rhomb, square],
+                  [trapeze, hexagon]
+                ],
+              },
+            },
+          },
+          {
+            answers: [
+              { value: rhomb, containerIndex: 0 },
+              { value: square, containerIndex: 0 },
+              { value: trapeze, containerIndex: 1 },
+              { value: hexagon, containerIndex: 1 },
+            ],
+          }
+        );
+        expect(result.score).toEqual(0);
+      });
+
+      it('returns 0 for when images is null ', async () => {
+        const result = await outcome(
+          {
+            ...question,
+            validation: {
+              valid_response: {
+                score: 1,
+                value: [
+                  { images: null }
+                ],
+              },
+            },
+          },
+          {
+            answers: [
+              { value: rhomb, containerIndex: 0 },
+              { value: hexagon, containerIndex: 1 },
+            ],
+          }
+        );
+        expect(result.score).toEqual(0);
+      });
+
+      it('returns 0 for when value is [{}]', async () => {
+        const result = await outcome(
+          {
+            ...question,
+            validation: {
+              valid_response: {
+                score: 1,
+                value: [
+                  {}
+                ],
+              },
+            },
+          },
+          {
+            answers: [
+              { value: rhomb, containerIndex: 0 },
+              { value: hexagon, containerIndex: 1 },
+            ],
+          }
+        );
+        expect(result.score).toEqual(0);
+      });
+
+    });
+
     describe('alternate correct answers', () => {
       describe('handles one option', async () => {
         it('returns score of 1', async () => {
@@ -181,7 +260,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -207,7 +286,7 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -235,11 +314,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -265,11 +344,11 @@ describe('controller', () => {
                 alt_responses: [
                   {
                     score: 1,
-                    value: [[square], [rhomb], [hexagon], [trapeze]],
+                    value: [{images: [square]}, {images: [rhomb]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                   {
                     score: 1,
-                    value: [[rhomb], [square], [trapeze], [hexagon]],
+                    value: [{images: [rhomb]}, {images: [square]}, {images: [trapeze]}, {images: [hexagon]}],
                   },
                 ],
               },
@@ -323,8 +402,8 @@ describe('controller', () => {
           validResponse: {
             score: 1,
             value: [
-              [rhomb, square],
-              [rhomb, square, trapeze],
+              {images: [rhomb, square]},
+              {images: [rhomb, square, trapeze]},
             ],
           },
         });
@@ -462,12 +541,12 @@ describe('createCorrectResponseSession', () => {
       valid_response: {
         score: 1,
         value: [
-          [
-            '<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>',
-          ],
-          [
-            '<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>',
-          ],
+          {
+            images: ['<img alt="" src="https://app.fluence.net/ia/image/729ca157d04c440ab7ae1c2abfb9c057"/>'],
+          },
+          {
+            images: ['<img alt="" src="https://app.fluence.net/ia/image/9e5ed1d6762c4dac87b080e190af113d"/>'],
+          },
         ],
       },
     },

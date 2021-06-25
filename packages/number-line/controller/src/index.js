@@ -31,7 +31,7 @@ const getPartialScore = (corrected, ps) => {
 
 const accumulateAnswer = correctResponse => (total, answer) => {
   const isCorrectResponse = correctResponse.some(cr => matches(cr)(answer));
-  return total + (isCorrectResponse ? 1 : -1);
+  return total + (isCorrectResponse ? 1 : 0);
 };
 
 /**
@@ -46,8 +46,23 @@ export function outcome(model, session, env) {
         accumulateAnswer(model.correctResponse),
         0
       );
-      const total = model.correctResponse.length;
-      const score = numCorrect < 0 ? 0 : numCorrect / total;
+
+      let total = model.correctResponse.length;
+      let numIncorrect = 0;
+
+      if((session.answer || []).length > total) {
+         numIncorrect = (session.answer || []).length - total;
+      }
+
+      if (total === 0) {
+        total = 1;
+      }
+
+      let score = numCorrect < 0 ? 0 : (numCorrect - numIncorrect) / total;
+
+      if(score < 0) {
+        score = 0;
+      }
 
       resolve({ score: partialScoringEnabled ? score : score === 1 ? 1 : 0 });
     }
@@ -168,33 +183,18 @@ export const getCorrectness = corrected => {
   return 'unknown';
 };
 
-const feedbackDefaults = {
-  correct: {
-    type: 'default',
-    default: 'Correct'
-  },
-  incorrect: {
-    type: 'default',
-    default: 'Incorrect'
-  },
-  partial: {
-    type: 'default',
-    default: 'Nearly'
-  }
-};
-
 /**
  * A sample of a normalize function see:
  * https://github.com/pie-framework/pie-elements/issues/21
  */
 export function normalize(question) {
   return new Promise(resolve => {
-    const feedback = merge(feedbackDefaults, question.feedback);
+    const feedback = merge(defaults.feedback, question.feedback);
+
     if (isEqual(feedback, question.feedback)) {
-      return resolve(undefined);
+      return resolve({ ...question });
     } else {
-      question.feedback = feedback;
-      resolve(question);
+      resolve({ ...question, feedback });
     }
   });
 }
@@ -202,9 +202,10 @@ export function normalize(question) {
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
     const out = {
+      ...model,
       graph: {
-        ...defaults,
-        ...model
+        ...defaults.graph,
+        ...model.graph,
       },
       colorContrast: 'black_on_white'
     };
@@ -218,12 +219,15 @@ export function model(question, session, env) {
     return Promise.reject(new Error('question is null'));
   }
 
-  return new Promise((resolve, reject) => {
-    const { graph } = question;
+  return new Promise(async (resolve, reject) => {
+    const normalizedQuestion = await normalize(question);
+
+    const { graph } = normalizedQuestion;
+
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
 
-      const correctResponse = cloneDeep(question.correctResponse);
+      const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
       const corrected =
         evaluateMode &&
         getCorrected(session ? session.answer || [] : [], correctResponse);
@@ -234,19 +238,19 @@ export function model(question, session, env) {
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
 
       const fb = evaluateMode
-        ? getFeedbackForCorrectness(correctness, question.feedback)
+        ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
       fb.then(feedbackMessage => {
         const out = {
-          prompt: question.prompt,
+          prompt: normalizedQuestion.prompt,
           graph,
           disabled,
           corrected,
           correctResponse:
             evaluateMode &&
             ['unanswered', 'correct'].indexOf(correctness) === -1 &&
-            question.correctResponse,
+            normalizedQuestion.correctResponse,
           feedback: feedbackMessage && {
             type: correctness,
             message: feedbackMessage

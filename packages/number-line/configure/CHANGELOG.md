@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.6.23...@pie-element/number-line-configure@4.7.0) (2021-04-07)
+
+
+### Features
+
+* **number-line:** Add Undo and Clear All buttons - PD-498 ([339158d](https://github.com/pie-framework/pie-elements/commit/339158d15870e4d731c8bb9f50eeb3c455d7635a))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [4.6.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.6.20...@pie-element/number-line-configure@4.6.23) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/number-line-configure

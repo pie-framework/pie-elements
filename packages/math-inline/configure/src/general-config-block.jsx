@@ -6,7 +6,6 @@ import { InputContainer } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
@@ -447,15 +446,6 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
             </Select>
           </InputContainer>
-          {responseType === ResponseTypes.advanced && (
-            <Button
-              className={classes.addResponseButton}
-              type="primary"
-              onClick={this.onAddResponse}
-            >
-              + Response
-            </Button>
-          )}
         </div>
         {responsesToUse.map((response, idx) => (
           <Response

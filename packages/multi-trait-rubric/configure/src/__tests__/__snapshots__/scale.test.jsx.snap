@@ -40,6 +40,7 @@ exports[`Scale snapshot renders 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     showStandards={true}
     trait={
       Object {
@@ -62,14 +63,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -143,6 +144,7 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     showStandards={true}
     trait={
       Object {
@@ -165,14 +167,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -247,6 +249,7 @@ exports[`Scale snapshot renders without descriptions 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     showDescription={false}
     showStandards={true}
     trait={
@@ -270,14 +273,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -351,6 +354,7 @@ exports[`Scale snapshot renders without standards 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     showStandards={false}
     trait={
       Object {
@@ -373,14 +377,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -454,6 +458,7 @@ exports[`Scale snapshot renders without traits 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     showStandards={true}
     trait={
       Object {
@@ -476,14 +481,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>

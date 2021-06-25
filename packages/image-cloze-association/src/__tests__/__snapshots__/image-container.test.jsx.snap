@@ -134,3 +134,23 @@ exports[`Image Container snapshots responseContainers renders 1`] = `
   responseContainers={Array []}
 />
 `;
+
+exports[`Image Container snapshots showDashedBorder renders 1`] = `
+<ImageContainer
+  answers={Array []}
+  canDrag={true}
+  classes={
+    Object {
+      "base": "ImageContainer-base-1",
+    }
+  }
+  draggingElement={Object {}}
+  duplicateResponses={false}
+  image={Object {}}
+  onAnswerSelect={[Function]}
+  onDragAnswerBegin={[Function]}
+  onDragAnswerEnd={[Function]}
+  responseContainers={Array []}
+  showDashedBorder={true}
+/>
+`;

@@ -51,27 +51,36 @@ export class InlineDropdown extends React.Component {
   render() {
     const { showCorrectAnswer } = this.state;
     const { classes, prompt, mode, rationale, teacherInstructions } = this.props;
+    const showCorrectAnswerToggle = mode === 'evaluate';
 
     return (
       <div className={classes.mainContainer}>
         {
           teacherInstructions && hasText(teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              >
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
 
         <CorrectAnswerToggle
-          show={mode === 'evaluate'}
+          show={showCorrectAnswerToggle}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />
-        <br />
-        {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
-        <br />
+        {showCorrectAnswerToggle && <br />}
+
+        {prompt && (
+          <React.Fragment>
+            <div dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <br />
+          </React.Fragment>
+        )}
         {
           rationale && hasText(rationale) && (
             <Collapsible

@@ -20,6 +20,8 @@ export const setCorrectness = (answers, partialScoring) => answers ? answers.map
 
 
 export const normalize = question => ({
+  addCategoryEnabled: true,
+  editCategoryEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,

@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { withDragContext } from '@pie-lib/drag';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/icons';
-import { Collapsible } from '@pie-lib/render-ui';
+import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Image from './image-container';
@@ -14,9 +14,7 @@ import { getAnswersCorrectness } from './utils-correctness';
 import _ from 'lodash';
 
 const generateId = () =>
-  Math.random()
-    .toString(36)
-    .substring(2) + new Date().getTime().toString(36);
+  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
 class ImageClozeAssociationComponent extends React.Component {
   constructor(props) {
@@ -26,32 +24,32 @@ class ImageClozeAssociationComponent extends React.Component {
         possibleResponses,
         responseContainers,
         duplicateResponses,
-        maxResponsePerZone
+        maxResponsePerZone,
       },
-      session
+      session,
     } = props;
     let { answers } = session || {};
     // set id for each possible response
     const possibleResponsesWithIds = (possibleResponses || []).map(
       (item, index) => ({
         value: item,
-        id: `${index}`
+        id: `${index}`,
       })
     );
 
     answers = _(answers || [])
       .groupBy('containerIndex')
       // keep only last maxResponsePerZone answers for each zone
-      .map(grp => grp.slice(-(maxResponsePerZone || 1)))
+      .map((grp) => grp.slice(-(maxResponsePerZone || 1)))
       .flatMap()
       // set id for each answer
       .map((answer, index) => ({ ...answer, id: `${index}` }))
       // return only answer which have a valid container index
-      .filter(answer => answer.containerIndex < responseContainers.length)
+      .filter((answer) => answer.containerIndex < responseContainers.length)
       .value();
 
     const possibleResponsesFiltered = possibleResponsesWithIds.filter(
-      response => !answers.find(answer => answer.value === response.value)
+      (response) => !answers.find((answer) => answer.value === response.value)
     );
     this.state = {
       answers: answers || [],
@@ -63,41 +61,41 @@ class ImageClozeAssociationComponent extends React.Component {
       responseContainers: responseContainers.map((item, index) => ({
         index,
         ...item,
-        id: `${index}`
+        id: `${index}`,
       })),
-      maxResponsePerZone: maxResponsePerZone || 1
+      maxResponsePerZone: maxResponsePerZone || 1,
     };
   }
 
-  beginDrag = draggingElement => {
+  beginDrag = (draggingElement) => {
     this.setState({
-      draggingElement
+      draggingElement,
     });
   };
 
   handleOnDragEnd = () => {
     this.setState({
-      draggingElement: { id: '', value: '' }
+      draggingElement: { id: '', value: '' },
     });
   };
 
   handleOnAnswerSelect = (answer, responseContainerIndex) => {
     const {
       model: { duplicateResponses },
-      updateAnswer
+      updateAnswer,
     } = this.props;
     const { answers, possibleResponses, maxResponsePerZone } = this.state;
     let answersToStore;
 
     if (
       maxResponsePerZone ===
-      answers.filter(a => a.containerIndex === responseContainerIndex).length
+      answers.filter((a) => a.containerIndex === responseContainerIndex).length
     ) {
       const answersInThisContainer = answers.filter(
-        a => a.containerIndex === responseContainerIndex
+        (a) => a.containerIndex === responseContainerIndex
       );
       const answersInOtherContainers = answers.filter(
-        b => b.containerIndex !== responseContainerIndex
+        (b) => b.containerIndex !== responseContainerIndex
       );
 
       const shiftedItem = answersInThisContainer[0];
@@ -113,9 +111,13 @@ class ImageClozeAssociationComponent extends React.Component {
         possibleResponses.push({
           ...shiftedItem,
           containerIndex: '',
-          id: `${_.max(
-            possibleResponses.map(c => parseInt(c.id)).filter(id => !isNaN(id))
-          ) + 1}`
+          id: `${
+            _.max(
+              possibleResponses
+                .map((c) => parseInt(c.id))
+                .filter((id) => !isNaN(id))
+            ) + 1
+          }`,
         });
       }
 
@@ -128,31 +130,31 @@ class ImageClozeAssociationComponent extends React.Component {
         ...answersInThisContainer, // shifted
         // TODO allow duplicates case Question: should we remove answer from a container if dragged to another container?
         // if yes, this should do it: add a.id !== answer.id instead of 'true'
-        ...answersInOtherContainers.filter(a =>
+        ...answersInOtherContainers.filter((a) =>
           duplicateResponses ? true : a.value !== answer.value
         ), // un-shifted
         {
           ...answer,
           containerIndex: responseContainerIndex,
-          ...(duplicateResponses ? { id: generateId() } : {})
-        }
+          ...(duplicateResponses ? { id: generateId() } : {}),
+        },
       ];
     } else {
       // answers will be:
-      // + if duplicatesAllowed, all the other answers
+      // + if duplicatesAllowed, all the other answers, except the one that was dragged
       //   else: all the answers that are not having the same value
       // + new answer
       answersToStore = [
         // TODO allow duplicates case Question: should we remove answer from a container if dragged to another container?
         // if yes, this should do it: add a.id !== answer.id instead of 'true'
-        ...answers.filter(a =>
-          duplicateResponses ? true : a.value !== answer.value
+        ...answers.filter((a) =>
+          duplicateResponses ? a.id !== answer.id : a.value !== answer.value
         ),
         {
           ...answer,
           containerIndex: responseContainerIndex,
-          ...(duplicateResponses ? { id: generateId() } : {})
-        }
+          ...(duplicateResponses ? { id: generateId() } : {}),
+        },
       ];
     }
 
@@ -164,19 +166,19 @@ class ImageClozeAssociationComponent extends React.Component {
         duplicateResponses
           ? possibleResponses
           : possibleResponses.filter(
-              response => response.value !== answer.value
-            )
+              (response) => response.value !== answer.value
+            ),
     });
     updateAnswer(answersToStore);
   };
 
-  handleOnAnswerRemove = answer => {
+  handleOnAnswerRemove = (answer) => {
     const {
       model: { duplicateResponses },
-      updateAnswer
+      updateAnswer,
     } = this.props;
     const { answers, possibleResponses } = this.state;
-    const answersToStore = answers.filter(a => a.id !== answer.id);
+    const answersToStore = answers.filter((a) => a.id !== answer.id);
     const shouldNotPushInPossibleResponses =
       answer.containerIndex === undefined; // don't duplicate possible responses
 
@@ -191,9 +193,9 @@ class ImageClozeAssociationComponent extends React.Component {
               ...possibleResponses,
               {
                 ...answer,
-                containerIndex: undefined
-              }
-            ]
+                containerIndex: undefined,
+              },
+            ],
     });
     updateAnswer(answersToStore);
   };
@@ -207,8 +209,10 @@ class ImageClozeAssociationComponent extends React.Component {
         stimulus,
         responseCorrect,
         validation,
-        teacherInstructions
-      }
+        teacherInstructions,
+        prompt,
+        showDashedBorder,
+      },
     } = this.props;
     const {
       answers,
@@ -216,10 +220,11 @@ class ImageClozeAssociationComponent extends React.Component {
       possibleResponses,
       responseContainers,
       maxResponsePerZone,
-      maxResponsePerZoneWarning
+      maxResponsePerZoneWarning,
     } = this.state;
 
-    const warningMessage = `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
+    const warningMessage =
+      `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
       'To add another response, one must first be removed.';
 
     const answersToShow =
@@ -229,11 +234,13 @@ class ImageClozeAssociationComponent extends React.Component {
 
     return (
       <div>
+        <PreviewPrompt className="prompt" prompt={prompt} />
+
         {teacherInstructions && (
           <Collapsible
             labels={{
               hidden: 'Show Teacher Instructions',
-              visible: 'Hide Teacher Instructions'
+              visible: 'Hide Teacher Instructions',
             }}
           >
             <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
@@ -255,12 +262,11 @@ class ImageClozeAssociationComponent extends React.Component {
             onDragAnswerBegin={this.beginDrag}
             onDragAnswerEnd={this.handleOnDragEnd}
             responseContainers={responseContainers}
+            showDashedBorder={showDashedBorder}
           />
 
           {maxResponsePerZoneWarning && (
-            <WarningInfo
-              message={warningMessage}
-            />
+            <WarningInfo message={warningMessage} />
           )}
 
           <PossibleResponses
@@ -285,16 +291,16 @@ const WarningInfo = withStyles({
     alignItems: 'center',
     width: 'fit-content',
     '& svg': {
-      height: '30px'
+      height: '30px',
     },
     '& h1': {
       padding: '0px',
-      margin: '0px'
-    }
+      margin: '0px',
+    },
   },
   message: {
     paddingLeft: '5px',
-    userSelect: 'none'
+    userSelect: 'none',
   },
 })(({ classes, message }) => (
   <TransitionGroup>
@@ -319,11 +325,11 @@ ImageClozeAssociationComponent.propTypes = {
   classes: PropTypes.object,
   model: PropTypes.object.isRequired,
   session: PropTypes.object,
-  updateAnswer: PropTypes.func.isRequired
+  updateAnswer: PropTypes.func.isRequired,
 };
 
 ImageClozeAssociationComponent.defaultProps = {
-  classes: {}
+  classes: {},
 };
 
 export default withDragContext(ImageClozeAssociationComponent);
