@@ -172,12 +172,11 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { choices } = question;
-      const value = choices.map(c => c.id);
+      const { correctResponse } = question;
 
       resolve({
         id: '1',
-        value
+        value: correctResponse
       });
     } else {
       resolve(null);
