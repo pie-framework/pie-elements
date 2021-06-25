@@ -201,7 +201,33 @@ describe('index', () => {
         expect(sess).toEqual({ id: '1', value: ['a', 'b', 'c'] });
       });
 
-      it('returns null env is student', async () => {
+      it('returns correct response if env is correct for shuffled choices', async () => {
+        const model = base({
+          correctResponse: ['a', 'b', 'c'],
+          alternateResponses: [['c', 'b', 'a']],
+          choices: [
+            { label: 'c', id: 'c' },
+            { label: 'b', id: 'b' },
+            { label: 'a', id: 'a' },
+          ],
+        });
+
+        const sess = await controller.createCorrectResponseSession(model, {
+          mode: 'gather',
+          role: 'instructor',
+        });
+        expect(sess).toEqual({ id: '1', value: ['a', 'b', 'c'] });
+      });
+
+      it('returns null if mode is evaluate', async () => {
+        const sess = await controller.createCorrectResponseSession(model, {
+          mode: 'evaluate',
+          role: 'instructor',
+        });
+        expect(sess).toBeNull();
+      });
+
+      it('returns null if role is student', async () => {
         const noResult = await controller.createCorrectResponseSession(model, {
           mode: 'gather',
           role: 'student',

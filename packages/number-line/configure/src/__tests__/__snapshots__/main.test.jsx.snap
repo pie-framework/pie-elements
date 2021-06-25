@@ -25,6 +25,20 @@ exports[`main snapshot renders 1`] = `
         size={
           Object {
             "correctResponse": Array [],
+            "feedback": Object {
+              "correct": Object {
+                "default": "Correct",
+                "type": "none",
+              },
+              "incorrect": Object {
+                "default": "Incorrect",
+                "type": "none",
+              },
+              "partial": Object {
+                "default": "Nearly",
+                "type": "none",
+              },
+            },
             "graph": Object {
               "arrows": Object {
                 "left": true,
@@ -130,6 +144,20 @@ exports[`main snapshot renders 1`] = `
           "feedback": undefined,
           "graph": Object {
             "correctResponse": Array [],
+            "feedback": Object {
+              "correct": Object {
+                "default": "Correct",
+                "type": "none",
+              },
+              "incorrect": Object {
+                "default": "Incorrect",
+                "type": "none",
+              },
+              "partial": Object {
+                "default": "Nearly",
+                "type": "none",
+              },
+            },
             "graph": Object {
               "arrows": Object {
                 "left": true,
@@ -199,6 +227,20 @@ exports[`main snapshot renders 1`] = `
         "feedback": undefined,
         "graph": Object {
           "correctResponse": Array [],
+          "feedback": Object {
+            "correct": Object {
+              "default": "Correct",
+              "type": "none",
+            },
+            "incorrect": Object {
+              "default": "Incorrect",
+              "type": "none",
+            },
+            "partial": Object {
+              "default": "Nearly",
+              "type": "none",
+            },
+          },
           "graph": Object {
             "arrows": Object {
               "left": true,

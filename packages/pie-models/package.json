@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/pie-models",
-  "version": "10.4.3",
+  "version": "10.5.0",
   "private": true,
   "description": "This project contains documented typescript interfaces for generating schema documentation.",
   "main": "index.js",

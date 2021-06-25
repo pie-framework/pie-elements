@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 export const RubricType = PropTypes.shape({
   excludeZero: PropTypes.bool,
   points: PropTypes.arrayOf(PropTypes.string),
+  sampleAnswers: PropTypes.arrayOf(PropTypes.string),
 });
 
 class Rubric extends React.Component {
@@ -45,7 +46,8 @@ class Rubric extends React.Component {
   render() {
     const { value, classes } = this.props;
     if (value && value.points) {
-      const points = value.points;
+      const { points, sampleAnswers } = value;
+
       return (
         <div className={classes.root}>
           <Link href={this.dudUrl} onClick={this.toggleRubric}>
@@ -56,17 +58,33 @@ class Rubric extends React.Component {
               {points.map(
                 (desc, index) =>
                   this.shouldRenderPoint(index, value) && (
-                    <ListItem key={index}>
-                      <ListItemText
-                        className={classes.rubricCol}
-                        primary={`${index} PTS`}
-                      />
-                      <ListItemText
-                        primary={
-                          <div dangerouslySetInnerHTML={{ __html: desc }} />
-                        }
-                      />
-                    </ListItem>
+                    <React.Fragment key={index}>
+                      <ListItem key={`P${index}`}>
+                        <ListItemText
+                          className={classes.rubricCol}
+                          primary={`${index} PTS`}
+                        />
+                        <ListItemText
+                          primary={
+                            <div dangerouslySetInnerHTML={{ __html: desc }} />
+                          }
+                        />
+                      </ListItem>
+                      {sampleAnswers && sampleAnswers[index] && (
+                        <ListItem key={`S${index}`}>
+                          <ListItemText
+                            className={classes.rubricCol}
+                            style={{marginLeft: '20px'}}
+                            primary={'Sample Answer'}
+                          />
+                          <ListItemText
+                            primary={
+                              <div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                            }
+                          />
+                        </ListItem>
+                      )}
+                    </React.Fragment>
                   )
               )}
             </List>

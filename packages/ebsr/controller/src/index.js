@@ -71,6 +71,7 @@ export const normalize = question => ({
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    verticalMode: true,
     ...question.partA
   },
   partB: {
@@ -80,6 +81,7 @@ export const normalize = question => ({
     feedbackEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    verticalMode: true,
     ...question.partB
   }
 });

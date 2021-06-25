@@ -6,7 +6,6 @@ export default {
       height: 0,
       width: 0
     },
-    rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
@@ -16,10 +15,6 @@ export default {
       settings: true,
       label: 'Background Image',
       enabled: true
-    },
-    rationale: {
-      settings: true,
-      label: 'Rationale'
     },
     prompt: {
       settings: true,
