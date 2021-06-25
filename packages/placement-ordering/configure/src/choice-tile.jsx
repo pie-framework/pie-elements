@@ -61,6 +61,14 @@ export class ChoiceTile extends React.Component {
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
 
+    const choicePlugins = {
+      image: {
+        disabled: disableImages
+      },
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
+
     const opacity = isDragging ? 0 : 1;
     const markup = (
       <div className={classes.choiceTile} style={{ opacity: opacity, width: '100%' }}>
@@ -76,11 +84,7 @@ export class ChoiceTile extends React.Component {
           markup={label}
           imageSupport={imageSupport || undefined}
           onChange={this.onLabelChange}
-          pluginProps={{
-            image: {
-              disabled: disableImages
-            }
-          }}
+          pluginProps={choicePlugins}
         />
         {editable && (
           <div className={classes.controls}>
