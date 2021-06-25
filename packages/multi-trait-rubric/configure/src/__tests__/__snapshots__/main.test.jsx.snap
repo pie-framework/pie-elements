@@ -280,7 +280,7 @@ Overall appearance is acceptable or better",
     <div
       style={
         Object {
-          "maxWidth": undefined,
+          "width": "730px",
         }
       }
     >
@@ -719,6 +719,7 @@ Writing is expressive, engaging and has lots of energy",
         showLevelTagInput={false}
         showScorePointLabels={true}
         showStandards={false}
+        width="730px"
       />
       <WithStyles(Scale)
         classes={Object {}}
@@ -1011,6 +1012,7 @@ Overall appearance is acceptable or better",
         showLevelTagInput={false}
         showScorePointLabels={true}
         showStandards={false}
+        width="730px"
       />
       <WithStyles(Component)
         onClick={[Function]}
@@ -1117,7 +1119,7 @@ exports[`Main snapshot renders without scales 1`] = `
     <div
       style={
         Object {
-          "maxWidth": undefined,
+          "width": "730px",
         }
       }
     >

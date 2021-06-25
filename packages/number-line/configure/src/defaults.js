@@ -26,7 +26,21 @@ export const model = {
       REP: true
     },
     initialElements: []
-  }
+  },
+  feedback: {
+    correct: {
+      default: 'Correct',
+      type: 'none'
+    },
+    incorrect: {
+      default: 'Incorrect',
+      type: 'none'
+    },
+    partial: {
+      default: 'Nearly',
+      type: 'none'
+    }
+  },
 };
 
 export const configuration = {

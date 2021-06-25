@@ -59,12 +59,44 @@ export interface MultiTraitRubricPie extends PieModel {
   scales: Scale[];
 }
 
+interface DialogContent {
+  /** Dialog box title */
+  title?: string;
+
+  /** Dialog box text */
+  text?: string;
+}
 
 /**
  * Config Object for @pie-elements/multi-trait-rubric
  * @additionalProperties false
  */
 export interface MultiTraitRubricConfigure {
+  /**
+   * Configuration for Excluding Zero Dialog Box
+   */
+  excludeZeroDialogBoxContent?: DialogContent;
+
+  /**
+   * Configuration for Including Zero Dialog Box
+   */
+  includeZeroDialogBoxContent?: DialogContent;
+
+  /**
+   * Configuration for Deleting Trait Dialog Box
+   */
+  deleteTraitDialogBoxContent?: DialogContent;
+
+  /**
+   * Configuration for Deleting Scale Dialog Box
+   */
+  deleteScaleDialogBoxContent?: DialogContent;
+
+  /**
+   * Configuration for Decreasing Max Points Dialog Box
+   */
+  maxPointsDialogBoxContent?: DialogContent;
+
   /**
    * Configuration for Excluding Zero Column
    */
@@ -93,7 +125,7 @@ export interface MultiTraitRubricConfigure {
   /**
    * How large (in px) should multi-trait-rubric be
    */
-  maxWidth: string
+  width: string
 
 
   // these should not be set to true (should not be used) for now

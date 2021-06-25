@@ -57,21 +57,26 @@ export class Likert extends React.Component {
     return (
       <div className={classes.corespringChoice}>
         {teacherInstructions && (
-          <Collapsible
-            labels={{
-              hidden: 'Show Teacher Instructions',
-              visible: 'Hide Teacher Instructions',
-            }}
-          >
-            <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
-          </Collapsible>
+          <React.Fragment>
+            <Collapsible
+              labels={{
+                hidden: 'Show Teacher Instructions',
+                visible: 'Hide Teacher Instructions',
+              }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+            </Collapsible>
+            <br />
+          </React.Fragment>
         )}
-        <br />
-        <br />
-        <div
-          className={classes.prompt}
-          dangerouslySetInnerHTML={{ __html: prompt }}
-        />
+
+        {prompt && (
+          <div
+            className={classes.prompt}
+            dangerouslySetInnerHTML={{ __html: prompt }}
+          />
+        )}
+
         <div className={classes.choicesWrapper} style={{ flexDirection }}>
           {choices.map((choice, index) => (
             <ChoiceInput
@@ -83,7 +88,7 @@ export class Likert extends React.Component {
               onChange={onSessionChange}
               likertOrientation={likertOrientation}
               checked={this.isSelected(choice.value)}
-            ></ChoiceInput>
+            />
           ))}
         </div>
       </div>

@@ -11,6 +11,7 @@ import { color } from '@pie-lib/render-ui';
 import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
+import isEqual from 'lodash/isEqual';
 
 export { Graph };
 
@@ -22,13 +23,14 @@ const styles = {
   graphTitle: {
     textAlign: 'center',
     pointerEvents: 'none',
-    userSelect: 'none'
+    userSelect: 'none',
   },
   numberLine: {
-    padding: '10px'
+    padding: '10px',
+    boxSizing: 'unset',
   },
   black_on_rose: {
-    backgroundColor: 'mistyrose'
+    backgroundColor: 'mistyrose',
   },
   white_on_black: {
     backgroundColor: 'black',
@@ -37,12 +39,12 @@ const styles = {
     '--line-stroke': 'white',
     '--arrow-color': 'white',
     '--point-stroke': 'white',
-    '--point-fill': 'black'
+    '--point-fill': 'black',
   },
   prompt: {
     verticalAlign: 'middle',
-    marginBottom: '16px'
-  }
+    marginBottom: '16px',
+  },
 };
 
 export class NumberLine extends React.Component {
@@ -54,7 +56,7 @@ export class NumberLine extends React.Component {
     onClearElements: PropTypes.func.isRequired,
     model: PropTypes.object.isRequired,
     answer: PropTypes.array,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
@@ -68,7 +70,7 @@ export class NumberLine extends React.Component {
     this.state = {
       selectedElements: [],
       elementType: initialType,
-      answers: props.answer
+      answers: props.answer,
     };
   }
 
@@ -77,7 +79,7 @@ export class NumberLine extends React.Component {
     if (this.state.selectedElements.indexOf(index) === -1) {
       selected = this.state.selectedElements.concat([index]);
     } else {
-      selected = this.state.selectedElements.filter(e => e !== index);
+      selected = this.state.selectedElements.filter((e) => e !== index);
     }
     this.setState({ selectedElements: selected });
   }
@@ -106,10 +108,16 @@ export class NumberLine extends React.Component {
 
     if (elementData) {
       const { answers } = this.state;
-      answers.push(elementData);
 
-      this.setState({ answers });
-      this.props.onAddElement(elementData);
+      const contains = answers.some((element) => {
+        return JSON.stringify(element) === JSON.stringify(elementData);
+      });
+
+      if (!contains) {
+        answers.push(elementData);
+        this.setState({ answers });
+        this.props.onAddElement(elementData);
+      }
     }
   }
 
@@ -117,8 +125,8 @@ export class NumberLine extends React.Component {
     let {
       answer,
       model: {
-        graph: { maxNumberOfPoints }
-      }
+        graph: { maxNumberOfPoints },
+      },
     } = this.props;
 
     return (
@@ -130,7 +138,10 @@ export class NumberLine extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { answer } = nextProps;
-    this.setState({ showCorrectAnswer: false, answers: answer });
+
+    if (!isEqual(this.state.answers, answer)) {
+      this.setState({ showCorrectAnswer: false, answers: answer });
+    }
   }
 
   deselectElements() {
@@ -139,7 +150,7 @@ export class NumberLine extends React.Component {
 
   getSize(type, min, max, defaultValue) {
     const {
-      model: { graph }
+      model: { graph },
     } = this.props;
 
     if (graph && graph[type]) {
@@ -172,7 +183,7 @@ export class NumberLine extends React.Component {
       answers,
       selectedElements,
       showMaxPointsWarning,
-      elementType
+      elementType,
     } = this.state;
     let {
       corrected = { correct: [], incorrect: [] },
@@ -182,11 +193,20 @@ export class NumberLine extends React.Component {
       prompt,
       emptyAnswer,
       feedback,
-      colorContrast
+      colorContrast,
     } = model;
     let addElement = this.addElement.bind(this);
-    let elementsSelected = !disabled && selectedElements && selectedElements.length > 0;
-    const { ticks, domain, arrows, maxNumberOfPoints, height, availableTypes, title } = graph;
+    let elementsSelected =
+      !disabled && selectedElements && selectedElements.length > 0;
+    const {
+      ticks,
+      domain,
+      arrows,
+      maxNumberOfPoints,
+      height,
+      availableTypes,
+      title,
+    } = graph;
     const width = this.getSize('width', 400, 1600, 600);
     let graphProps = {
       disabled,
@@ -194,7 +214,7 @@ export class NumberLine extends React.Component {
       ticks,
       width,
       height,
-      arrows
+      arrows,
     };
 
     let getAnswerElements = () => {
@@ -211,7 +231,7 @@ export class NumberLine extends React.Component {
     };
 
     let getCorrectAnswerElements = () => {
-      return (correctResponse || []).map(r => {
+      return (correctResponse || []).map((r) => {
         r.correct = true;
         return r;
       });
@@ -222,14 +242,15 @@ export class NumberLine extends React.Component {
       : getAnswerElements();
 
     let maxPointsMessage = () =>
-      `You can only add ${maxNumberOfPoints} element${maxNumberOfPoints == 1 ? '' : 's'}`;
-
+      `You can only add ${maxNumberOfPoints} element${
+        maxNumberOfPoints == 1 ? '' : 's'
+      }`;
 
     let deleteElements = () => {
       onDeleteElements(selectedElements);
 
       answers = answers.filter((v, index) => {
-        return !selectedElements.some(d => d === index);
+        return !selectedElements.some((d) => d === index);
       });
 
       this.setState({ selectedElements: [], answers });
@@ -238,18 +259,22 @@ export class NumberLine extends React.Component {
     let getIcons = () => {
       if (availableTypes) {
         return Object.keys(availableTypes)
-          .filter(k => availableTypes[k])
-          .map(k => k.toLowerCase());
+          .filter((k) => availableTypes[k])
+          .map((k) => k.toLowerCase());
       }
     };
 
-    let onShowCorrectAnswer = show => {
+    let onShowCorrectAnswer = (show) => {
       this.setState({ showCorrectAnswer: show });
     };
 
     let adjustedWidth = graphProps.width - 20;
 
-    const names = classNames(classes.numberLine, classes.mainContainer, classes[colorContrast]);
+    const names = classNames(
+      classes.numberLine,
+      classes.mainContainer,
+      classes[colorContrast]
+    );
 
     return (
       <div className={names} style={{ width }}>
@@ -262,7 +287,11 @@ export class NumberLine extends React.Component {
         <div>
           <div style={{ width: adjustedWidth }}>
             <Toggle
-              show={isArray(correctResponse) && correctResponse.length && !emptyAnswer}
+              show={
+                isArray(correctResponse) &&
+                correctResponse.length &&
+                !emptyAnswer
+              }
               toggled={showCorrectAnswer}
               onToggle={onShowCorrectAnswer}
               initialValue={false}
@@ -301,7 +330,7 @@ export class NumberLine extends React.Component {
               message={maxPointsMessage()}
             />
           )}
-          {feedback && (
+          {feedback && !showCorrectAnswer && (
             <Feedback {...feedback} width={adjustedWidth} />
           )}
         </div>

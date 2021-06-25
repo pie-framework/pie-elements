@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.7.3...@pie-element/multiple-choice@5.8.0) (2021-04-07)
+
+
+### Features
+
+* Added Vertical Mode for player ([#555](https://github.com/pie-framework/pie-elements/issues/555)) ([0da549e](https://github.com/pie-framework/pie-elements/commit/0da549e8af2523491779582674477ef08ba0990b))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [5.7.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.7.0...@pie-element/multiple-choice@5.7.3) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

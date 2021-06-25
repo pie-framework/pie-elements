@@ -19,7 +19,8 @@ const model = {
   responseContainers: [],
   possibleResponses: [],
   duplicateResponses: false,
-  maxResponsePerZone: 5
+  maxResponsePerZone: 5,
+  showDashedBorder: true
 };
 
 describe('Root', () => {

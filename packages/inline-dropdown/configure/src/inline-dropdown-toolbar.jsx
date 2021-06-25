@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import classnames from 'classnames';
+import { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 
 class MenuItemComp extends React.Component {
   static propTypes = {
@@ -193,9 +194,39 @@ export class RespAreaToolbar extends React.Component {
     }
   };
 
+  onBlur = () => {
+    if (this.clickedInside) {
+      this.clickedInside = false;
+      return;
+    }
+
+    const { node, choices, onCheck, onToolbarDone, value } = this.props;
+    const correctResponse = (choices || []).find(choice => choice.correct);
+
+    this.onAddChoice();
+    if (!choices || (choices && choices.length < 2) || !correctResponse) {
+      onCheck(() => {
+        const change = value.change();
+
+        change.removeNodeByKey(node.get('key'));
+        onToolbarDone(change, false);
+      });
+    }
+  };
+
+  onClickInside = () => {
+    this.clickedInside = true;
+  };
+
   render() {
     const { classes, choices } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
+
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const labelPlugins = {
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
 
     if (!toolbarStyle) {
       return null;
@@ -207,6 +238,7 @@ export class RespAreaToolbar extends React.Component {
           ...toolbarStyle,
           backgroundColor: '#E0E1E6'
         }}
+        onMouseDown={this.onClickInside}
       >
         <div className={classes.itemBuilder}>
           <EditableHtml
@@ -222,13 +254,16 @@ export class RespAreaToolbar extends React.Component {
               position: 'top',
               alwaysVisible: false,
               showDone: false,
-              doneOn: 'custom'
+              doneOn: 'blur'
             }}
             markup={respAreaMarkup}
             onKeyDown={this.onKeyDown}
             onChange={this.onRespAreaChange}
             onDone={this.onDone}
             placeholder="Add Choice"
+            activePlugins={filteredDefaultPlugins}
+            pluginProps={labelPlugins}
+            onBlur={this.onBlur}
           />
           <i
             style={{

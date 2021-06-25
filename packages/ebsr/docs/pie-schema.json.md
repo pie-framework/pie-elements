@@ -76,6 +76,12 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+## `verticalMode` (boolean)
+
+Indicates the layout of choices for player
+
+Default: `": true"`
+
 # `partB` (object, required)
 
 Properties of the `partB` object:
@@ -149,6 +155,12 @@ Indicates if Student Instructions are enabled
 ## `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
+
+## `verticalMode` (boolean)
+
+Indicates the layout of choices for player
+
+Default: `": true"`
 
 # `partLabels` (boolean, required)
 
@@ -314,6 +326,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+### `verticalMode` (object)
+
+Properties of the `verticalMode` object:
+
+#### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+#### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:
@@ -399,6 +423,12 @@ Indicates if Student Instructions are enabled
 ### `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
+
+### `verticalMode` (boolean)
+
+Indicates the layout of choices for player
+
+Default: `": true"`
 
 ## `Choice` (object)
 
