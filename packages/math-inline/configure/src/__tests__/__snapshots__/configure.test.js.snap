@@ -394,13 +394,6 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
         </WithStyles(MenuItem)>
       </WithStyles(WithFormControlContext(Select))>
     </InputContainer>
-    <WithStyles(Button)
-      className="GeneralConfigBlock-addResponseButton-7"
-      onClick={[Function]}
-      type="primary"
-    >
-      + Response
-    </WithStyles(Button)>
   </div>
   <WithStyles(Response)
     defaultResponse={false}
