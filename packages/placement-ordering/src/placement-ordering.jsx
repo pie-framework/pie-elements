@@ -218,6 +218,7 @@ export class PlacementOrdering extends React.Component {
           addGuide={model.config.showOrdering}
           tileSize={model.config && model.config.tileSize}
           includeTargets={includeTargets}
+          choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
