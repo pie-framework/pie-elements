@@ -2,6 +2,9 @@
 
 exports[`Root snapshots model renders 1`] = `
 <div>
+  <WithStyles(PreviewPrompt)
+    className="prompt"
+  />
   <WithStyles(Typography)>
     <span
       dangerouslySetInnerHTML={
