@@ -5,7 +5,6 @@ import { color, Collapsible, hasText } from '@pie-lib/render-ui';
 import { Chart, chartTypes } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import {GraphContainer} from '@pie-lib/graphing';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -22,7 +21,7 @@ export class Main extends React.Component {
 
     this.state = {
       categories: props.categories || props.model.data,
-      showingCorrect: false
+      showingCorrect: false,
     };
   }
 
@@ -43,7 +42,7 @@ export class Main extends React.Component {
       () => this.props.onAnswersChange(data)
     );
 
-  toggleCorrect = showingCorrect => this.setState({ showingCorrect });
+  toggleCorrect = (showingCorrect) => this.setState({ showingCorrect });
 
   render() {
     const { categories, showingCorrect } = this.state;
@@ -61,16 +60,19 @@ export class Main extends React.Component {
       categoryDefaultLabel,
       rationale,
       correctedAnswer,
-      correctAnswer
+      correctAnswer,
     } = model;
 
-    const correctData = correctAnswer && correctAnswer.data ? correctAnswer.data.map(data => {
-      return {
-        ...data,
-        interactive: false,
-        editable: false
-      };
-    }) : [];
+    const correctData =
+      correctAnswer && correctAnswer.data
+        ? correctAnswer.data.map((data) => {
+            return {
+              ...data,
+              interactive: false,
+              editable: false,
+            };
+          })
+        : [];
 
     const showToggle = correctData && correctData.length > 0;
 
@@ -106,7 +108,7 @@ export class Main extends React.Component {
           </React.Fragment>
         )}
 
-        {(showingCorrect && showToggle) ? (
+        {showingCorrect && showToggle ? (
           <Chart
             chartType={chartType}
             size={size}
@@ -147,7 +149,8 @@ export class Main extends React.Component {
             editCategoryEnabled={editCategoryEnabled}
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={categoryDefaultLabel}
-          />)}
+          />
+        )}
 
         <br />
         {rationale && hasText(rationale) && (
@@ -162,7 +165,7 @@ export class Main extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   mainContainer: {
     padding: theme.spacing.unit,
     color: color.text(),
