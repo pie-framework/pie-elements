@@ -3,7 +3,6 @@ import { Config } from '../configure';
 import AnswerConfigBlock from '../answer-config-block';
 import GeneralConfigBlock from '../general-config-block';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FeedbackConfig } from '@pie-lib/config-ui';
@@ -12,7 +11,6 @@ import { shallow } from 'enzyme';
 import { styles } from '../answer-config-block';
 import cloneDeep from 'lodash/cloneDeep';
 import defaultValues from '../defaults';
-import EditableHTML from '@pie-lib/editable-html';
 
 jest.mock('@material-ui/core', () => ({
   Input: props => <div/>,
