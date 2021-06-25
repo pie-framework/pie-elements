@@ -11,6 +11,7 @@ import { color } from '@pie-lib/render-ui';
 import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
+import isEqual from 'lodash/isEqual';
 
 export { Graph };
 
@@ -25,7 +26,8 @@ const styles = {
     userSelect: 'none'
   },
   numberLine: {
-    padding: '10px'
+    padding: '10px',
+    boxSizing: 'unset'
   },
   black_on_rose: {
     backgroundColor: 'mistyrose'
@@ -106,10 +108,16 @@ export class NumberLine extends React.Component {
 
     if (elementData) {
       const { answers } = this.state;
-      answers.push(elementData);
 
-      this.setState({ answers });
-      this.props.onAddElement(elementData);
+      const contains = answers.some((element) => {
+        return JSON.stringify(element) === JSON.stringify(elementData);
+      });
+
+     if(!contains) {
+       answers.push(elementData);
+       this.setState({ answers });
+       this.props.onAddElement(elementData);
+     }
     }
   }
 
@@ -130,7 +138,10 @@ export class NumberLine extends React.Component {
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { answer } = nextProps;
-    this.setState({ showCorrectAnswer: false, answers: answer });
+
+    if(!isEqual(this.state.answers, answer)) {
+      this.setState({showCorrectAnswer: false, answers: answer});
+    }
   }
 
   deselectElements() {
@@ -293,7 +304,7 @@ export class NumberLine extends React.Component {
               message={maxPointsMessage()}
             />
           )}
-          {model.feedback && (
+          {model.feedback && !showCorrectAnswer && (
             <Feedback {...model.feedback} width={adjustedWidth} />
           )}
         </div>

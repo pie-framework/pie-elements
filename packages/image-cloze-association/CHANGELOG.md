@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.17...@pie-element/image-cloze-association@3.5.0) (2021-04-07)
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [3.4.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.14...@pie-element/image-cloze-association@3.4.17) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

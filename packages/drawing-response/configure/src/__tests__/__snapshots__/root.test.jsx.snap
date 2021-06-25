@@ -16,10 +16,6 @@ exports[`Root snapshot renders 1`] = `
               "label": "Prompt",
               "settings": true,
             },
-            "rationale": Object {
-              "label": "Rationale",
-              "settings": true,
-            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -29,7 +25,6 @@ exports[`Root snapshot renders 1`] = `
         groups={
           Object {
             "Properties": Object {
-              "rationaleEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {

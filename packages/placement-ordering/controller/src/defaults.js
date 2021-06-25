@@ -1,5 +1,5 @@
 export default {
-  choiceLabel: 'Choice Label goes here',
+  choiceLabel: '',
   choices: [],
   correctResponse: [],
   enableImages: false,
@@ -8,9 +8,10 @@ export default {
   orientation: 'vertical',
   partialScoring: true,
   placementArea: false,
+  choiceLabelEnabled: true,
   removeTilesAfterPlacing: true,
   scoringType: 'auto',
-  targetLabel: 'Target Label goes here',
+  targetLabel: '',
   rationaleEnabled: true,
   feedbackEnabled: true,
   promptEnabled: true,

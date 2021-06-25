@@ -108,7 +108,13 @@ const Design = withStyles(styles)(props => {
     promptEnabled
   } = model || {};
 
+
   const nrOfColumnsAvailable = Array.from({length: model.choices.length}, (_, i) => i + 1);
+
+  const labelPlugins = {
+    audio: { disabled: true },
+    video: { disabled: true }
+  };
 
   const Content = (
     <div>
@@ -175,6 +181,7 @@ const Design = withStyles(styles)(props => {
                   })
                 }
                 imageSupport={imageSupport}
+                pluginProps={labelPlugins}
               />
             </InputContainer>
           )}
