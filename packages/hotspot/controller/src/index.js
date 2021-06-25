@@ -93,21 +93,31 @@ const getScore = (config, session, env = {}) => {
   }
 
   let correctAnswers = 0;
+  let selectedChoices = 0;
 
   const choices = [...rectangles, ...polygons];
+
+  const correctChoices = choices.filter(choice => choice.correct);
 
   choices.forEach(shape => {
     const selected = answers && answers.filter(answer => answer.id === shape.id)[0];
     const correctlySelected = shape.correct && selected;
-    const correctlyUnselected = !shape.correct && !selected;
 
-    if (correctlySelected || correctlyUnselected) {
+    if(selected) {
+      selectedChoices +=1;
+    }
+
+    if (correctlySelected) {
       correctAnswers += 1;
     }
   });
 
-  const str = (correctAnswers / choices.length).toFixed(2);
-  return parseFloat(str);
+  const extraAnswers = selectedChoices > correctChoices.length ? selectedChoices - correctChoices.length : 0;
+
+  const total = correctChoices.length === 0 ? 1 : correctChoices.length;
+  const str = ((correctAnswers - extraAnswers) / total).toFixed(2);
+
+  return str < 0 ? 0 : parseFloat(str);
 };
 
 export function outcome(config, session, env = {}) {

@@ -125,7 +125,7 @@ export interface MultiTraitRubricConfigure {
   /**
    * How large (in px) should multi-trait-rubric be
    */
-  maxWidth: string
+  width: string
 
 
   // these should not be set to true (should not be used) for now

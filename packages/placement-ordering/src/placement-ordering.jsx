@@ -173,40 +173,54 @@ export class PlacementOrdering extends React.Component {
 
   render() {
     const { classes, model } = this.props;
-    const showToggle =
-      model.correctResponse && model.correctResponse.length > 0;
+    const {
+      correctResponse,
+      correctness,
+      prompt,
+      rationale,
+      feedback,
+      config: configs,
+      note,
+      showNote,
+      env,
+      disabled,
+      teacherInstructions
+    } = model;
+    const showToggle = correctResponse && correctResponse.length > 0;
     const { showingCorrect } = this.state;
-    const config = model.config || {
+    const config = configs || {
       orientation: 'vertical',
       includeTargets: true
     };
     const { orientation, includeTargets } = config;
     const vertical = orientation === 'vertical';
     const ordering = this.createOrdering();
+    const { mode, role } = env || {};
 
     const Tiler = vertical ? VerticalTiler : HorizontalTiler;
+    const displayNote = (showingCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     return (
       <div className={classes.placementOrdering}>
-        {
-          model.teacherInstructions && hasText(model.teacherInstructions) && (
+        {teacherInstructions && hasText(teacherInstructions) && (
+          <React.Fragment>
             <Collapsible
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
             </Collapsible>
-          )
-        }
-        <br/>
+            <br/>
+          </React.Fragment>
+        )}
         <CorrectAnswerToggle
           show={showToggle}
-          toggled={this.state.showingCorrect}
+          toggled={showingCorrect}
           onToggle={this.toggleCorrect}
         />
         <div
           className={classes.prompt}
-          dangerouslySetInnerHTML={{ __html: model.prompt }}
+          dangerouslySetInnerHTML={{ __html: prompt }}
         />
         <OrderingTiler
           instanceId={this.instanceId}
@@ -214,27 +228,31 @@ export class PlacementOrdering extends React.Component {
           targetLabel={config.targetLabel}
           ordering={ordering}
           tiler={Tiler}
-          disabled={model.disabled}
-          addGuide={model.config.showOrdering}
-          tileSize={model.config && model.config.tileSize}
+          disabled={disabled}
+          addGuide={config.showOrdering}
+          tileSize={config.tileSize}
           includeTargets={includeTargets}
           choiceLabelEnabled={model.config && model.config.choiceLabelEnabled}
           onDropChoice={this.onDropChoice}
           onRemoveChoice={this.onRemoveChoice}
         />
         <br/>
-        {
-          model.rationale && hasText(model.rationale) && (
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-              className={classes.collapsible}
-            >
-              <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
-            </Collapsible>
-          )
-        }
+        {displayNote && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
+        {rationale && hasText(rationale) && (
+          <Collapsible
+            labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+            className={classes.collapsible}
+          >
+            <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+          </Collapsible>
+        )}
         {!showingCorrect && (
-          <Feedback correctness={model.correctness} feedback={model.feedback}/>
+          <Feedback correctness={correctness} feedback={feedback}/>
         )}
       </div>
     );
@@ -254,6 +272,9 @@ const styles = theme => ({
   prompt: {
     padding: '5px',
     paddingBottom: '15px'
+  },
+  note: {
+    padding: '5px'
   },
   collapsible: {
     paddingTop: theme.spacing.unit * 2,

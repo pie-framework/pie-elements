@@ -7,15 +7,6 @@ exports[`Main render snapshot 1`] = `
     show={false}
     toggled={false}
   />
-  <br />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
-  />
-  <br />
   <WithStyles(Chart)
     charts={
       Array [

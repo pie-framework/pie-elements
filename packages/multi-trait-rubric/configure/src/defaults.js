@@ -79,7 +79,7 @@ export default {
       settings: true,
       label: 'Half Scoring',
     },
-    maxWidth: '1000px',
+    width: '900px',
     // these should not be set to true (should not be used) for now
     showStandards: {
       settings: false,
@@ -91,7 +91,7 @@ export default {
       enabled: false
     },
     dragAndDrop: {
-      settings: false,
+      settings: true,
       label: 'Enable Drag and Drop',
       enabled: false,
     }

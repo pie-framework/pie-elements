@@ -41,7 +41,7 @@ class DrawingResponseComponent extends React.Component {
     ) : (
       <div>
         {teacherInstructions && (
-          <div style={{ margin: '16px 0' }}>
+          <React.Fragment>
             <Collapsible
               labels={{
                 hidden: 'Show Teacher Instructions',
@@ -50,9 +50,9 @@ class DrawingResponseComponent extends React.Component {
             >
               <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
             </Collapsible>
-          </div>
+            <br />
+          </React.Fragment>
         )}
-        <br />
 
         <Typography className={classes.prompt}>
           <span dangerouslySetInnerHTML={{ __html: prompt }} />
