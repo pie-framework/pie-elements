@@ -163,14 +163,14 @@
         }
       }
     },
-    "maxWidth": {
+    "width": {
       "description": "How large (in px) should multi-trait-rubric be",
       "type": "string",
-      "title": "maxWidth"
+      "title": "width"
     }
   },
   "required": [
-    "maxWidth"
+    "width"
   ],
   "definitions": {
     "DialogContent": {

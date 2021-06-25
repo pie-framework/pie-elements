@@ -85,8 +85,8 @@ export const SecondaryBlock = withStyles({
     // this is needed to show the editor toolbar!!!
     paddingBottom: '22px'
   }
-})(({ classes, children, setRef }) => (
-  <div className={classes.secondaryBlock} ref={setRef}>
+})(({ classes, children, setRef, width }) => (
+  <div className={classes.secondaryBlock} style={{ width: width }} ref={setRef}>
     {children}
   </div>
 ));
@@ -306,7 +306,7 @@ export const ExpandedInput = withStyles({
     margin: '10px',
     marginTop: 0
   },
-})(({ classes, markup, onChange, pluginProps, placeholder }) => (
+})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight }) => (
   <div>
     <EditableHtml
       className={classes.prompt}
@@ -315,6 +315,7 @@ export const ExpandedInput = withStyles({
       onChange={onChange}
       placeholder={placeholder}
       pluginProps={pluginProps}
+      toolbarOpts={alignToRight && { alignment: 'right' }}
     />
   </div>
 ));

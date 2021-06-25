@@ -9,6 +9,7 @@ import { color } from '@pie-lib/render-ui';
 
 import {
   Block,
+  BlockWidth,
   DragHandleSpace,
   ExpandedInput,
   PrimaryBlock,
@@ -103,7 +104,9 @@ export class TraitTile extends React.Component {
       scorePointsValues,
       showStandards,
       showDescription,
-      enableDragAndDrop
+      enableDragAndDrop,
+      currentPosition,
+      secondaryBlockWidth
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -162,6 +165,7 @@ export class TraitTile extends React.Component {
               setRef={ref => {
                 this.secondaryBlock = ref;
               }}
+              width={`${secondaryBlockWidth}px`}
             >
               {showStandards && standards && (
                 <Block>
@@ -185,9 +189,11 @@ export class TraitTile extends React.Component {
                   </Block>
                 )}
 
-                {(scorePointsValues || []).map((scorePointsValue, index) => {
-                  const value = scorePointsValues.length - index - 1;
-                  let scoreDescriptor;
+              {(scorePointsValues || []).map((scorePointsValue, index) => {
+                const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
+                const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * index + currentPosition - 98;
+                const value = scorePointsValues.length - index - 1;
+                let scoreDescriptor;
 
                   try {
                     scoreDescriptor = scorePointsDescriptors[value] || '';
@@ -202,6 +208,7 @@ export class TraitTile extends React.Component {
                         markup={scoreDescriptor}
                         onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
                         pluginProps={pluginProps}
+                        alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                       />
                     </Block>
                   )
@@ -236,6 +243,7 @@ TraitTile.propTypes = {
   showDescription: PropTypes.bool,
   enableDragAndDrop: PropTypes.bool,
   currentPosition: PropTypes.number,
+  secondaryBlockWidth: PropTypes.number,
 };
 
 export const StyledTrait = withStyles(styles)(TraitTile);

@@ -236,7 +236,8 @@ export class Scale extends React.Component {
       showDescription,
       showLevelTagInput,
       showScorePointLabels,
-      enableDragAndDrop
+      enableDragAndDrop,
+      width
     } = this.props || {};
     const {
       maxPoints,
@@ -255,6 +256,7 @@ export class Scale extends React.Component {
     } = this.state;
 
     const scorePointsValues = [];
+    const secondaryBlockWidth = (parseInt(width) - DragHandleSpace - PrimaryBlockWidth) || 320; // 320 is minWidth
 
     // determining the score points values
     for (let pointValue = maxPoints; pointValue >= excludeZero ? 1 : 0; pointValue -= 1) {
@@ -307,6 +309,7 @@ export class Scale extends React.Component {
             showDescription={showDescription}
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
+            secondaryBlockWidth={secondaryBlockWidth}
           />
         ))}
 
@@ -368,6 +371,7 @@ Scale.propTypes = {
       description: PropTypes.string,
     }))
   }),
+  width: PropTypes.string,
   excludeZero: PropTypes.bool,
   scaleIndex: PropTypes.number,
   onScaleChanged: PropTypes.func,
