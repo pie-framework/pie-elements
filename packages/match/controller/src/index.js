@@ -1,8 +1,6 @@
 import isEqual from 'lodash/isEqual';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
-import find from 'lodash/find';
-import get from 'lodash/get';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { lockChoices, getShuffledChoices, partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
@@ -20,9 +18,9 @@ const getResponseCorrectness = (model, answers, env = {}) => {
     return 'unanswered';
   }
 
-  const totalCorrectAnswers = getTotalCorrect(model);
+  const totalCorrectAnswers  = checkboxMode ? getTotalCorrectAnswers(model) : getTotalCorrect(model);
   const correctAnswers = checkboxMode
-    ? getCorrectCheckboxes(rows, answers)
+    ? getCheckboxes(rows, answers).correctAnswers
     : getCorrectRadios(rows, answers);
 
   if (totalCorrectAnswers === correctAnswers) {
@@ -42,22 +40,25 @@ const getCorrectness = (question, env, answers = {}) => {
   }
 };
 
-const getCorrectCheckboxes = (rows, answers) => {
+const getCheckboxes = (rows, answers) => {
   let correctAnswers = 0;
+  let incorrectAnswers = 0;
 
   rows.forEach(row => {
     const answer = answers[row.id];
 
     if (answer) {
       row.values.forEach((v, i) => {
-        if (answer[i] === v) {
+        if (answer[i] && answer[i] === v ) {
           correctAnswers += 1;
+        } else if (answer[i] && answer[i] !== v ){
+          incorrectAnswers += 1;
         }
       });
     }
   });
 
-  return correctAnswers;
+  return { correctAnswers, incorrectAnswers };
 };
 
 const getCorrectRadios = (rows, answers) => {
@@ -78,14 +79,43 @@ const getTotalCorrect = question => {
   return (question.rows.length || 0) * matchingTable;
 };
 
+const getTotalCorrectAnswers = question => {
+  let noOfTotalCorrectAnswers = 0;
+
+  question.rows.forEach(row => {
+    row.values.forEach(value => {
+      if(value) {
+        noOfTotalCorrectAnswers += 1;
+      }
+    });
+  });
+
+  return noOfTotalCorrectAnswers;
+};
+
 const getPartialScore = (question, answers) => {
   const checkboxMode = question.choiceMode === 'checkbox';
-  const count = checkboxMode
-    ? getCorrectCheckboxes(question.rows, answers)
-    : getCorrectRadios(question.rows, answers);
-  const totalCorrect = getTotalCorrect(question);
 
-  return parseFloat((count / totalCorrect).toFixed(2));
+  if(checkboxMode) {
+    const { correctAnswers, incorrectAnswers } = getCheckboxes(question.rows, answers);
+    const totalCorrect = getTotalCorrectAnswers(question);
+
+    const total = totalCorrect === 0 ? 1 : totalCorrect;
+
+    if (correctAnswers + incorrectAnswers > totalCorrect) {
+      const extraAnswers = (correctAnswers + incorrectAnswers) - totalCorrect;
+      const score = parseFloat(((correctAnswers - extraAnswers) / total).toFixed(2));
+
+      return score < 0 ? 0 : score;
+    } else {
+      return parseFloat((correctAnswers / total).toFixed(2));
+    }
+  } else {
+    const correctAnswers = getCorrectRadios(question.rows, answers);
+    const totalCorrect = getTotalCorrect(question) === 0 ? 1 : getTotalCorrect(question);
+
+    return parseFloat((correctAnswers / totalCorrect).toFixed(2));
+  }
 };
 
 const getOutComeScore = (question, env, answers = {}) => {
