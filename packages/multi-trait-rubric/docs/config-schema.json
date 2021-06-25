@@ -3,6 +3,86 @@
   "additionalProperties": false,
   "type": "object",
   "properties": {
+    "excludeZeroDialogBoxContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "includeZeroDialogBoxContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "deleteTraitDialogBoxContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "deleteScaleDialogBoxContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
+    "maxPointsDialogBoxContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
     "showExcludeZero": {
       "title": "ConfigureProp",
       "type": "object",
@@ -82,9 +162,33 @@
           "title": "label"
         }
       }
+    },
+    "maxWidth": {
+      "description": "How large (in px) should multi-trait-rubric be",
+      "type": "string",
+      "title": "maxWidth"
     }
   },
+  "required": [
+    "maxWidth"
+  ],
   "definitions": {
+    "DialogContent": {
+      "title": "DialogContent",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Dialog box title",
+          "type": "string",
+          "title": "title"
+        },
+        "text": {
+          "description": "Dialog box text",
+          "type": "string",
+          "title": "text"
+        }
+      }
+    },
     "ConfigureProp": {
       "title": "ConfigureProp",
       "type": "object",

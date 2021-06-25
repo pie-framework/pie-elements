@@ -138,7 +138,7 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {['Remove Trait'].map((option) => (
+                  {[`Remove ${name}`].map((option) => (
                     <MenuItem
                       key={option}
                       onClick={this.openMenu}
