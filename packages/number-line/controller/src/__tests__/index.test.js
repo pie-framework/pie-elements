@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
+import { normalize } from '../index';
 
 const mkQuestion = (extras) => ({
   correctResponse: [
@@ -262,6 +263,29 @@ describe('controller', () => {
       { mode: 'evaluate' },
       { score: 0, empty: true }
     );
+  });
+
+  describe('normalize', () => {
+    const question = mkQuestion({ feedback: undefined });
+
+    it('adds default feedback if it is undefined', async () => {
+      const normalizedQuestion = await normalize(question);
+
+      expect(normalizedQuestion.feedback).toMatchObject({
+          correct: {
+            default: 'Correct',
+            type: 'none'
+          },
+          incorrect: {
+            default: 'Incorrect',
+            type: 'none'
+          },
+          partial: {
+            default: 'Nearly',
+            type: 'none'
+          }
+      });
+    });
   });
 
   describe('model', () => {
