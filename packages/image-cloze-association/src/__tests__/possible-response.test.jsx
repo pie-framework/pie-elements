@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import PossibleResponse from '../possible-response';
+import { PossibleResponse } from '../possible-response';
 
 describe('Possible Response', () => {
   let wrapper;
@@ -13,7 +13,9 @@ describe('Possible Response', () => {
       {
         canDrag: false,
         containerStyle: {},
-        data: {}
+        data: {},
+        onDragBegin: jest.fn(),
+        onDragEnd: jest.fn()
       },
       opts
     );

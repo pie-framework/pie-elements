@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.3.17...@pie-element/placement-ordering@7.4.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* Do not set session.value if placementArea is true. ([814e9b5](https://github.com/pie-framework/pie-elements/commit/814e9b5048e739cc1ddcfd983b274c38bee04073))
+* If you return to an item with a separate target area the previously-entered response is seemingly lost. (+ Updated defaults) PD-527 ([9689c13](https://github.com/pie-framework/pie-elements/commit/9689c138c619234dc7b8ae1db92b1f21bf469c30))
+* Shuffle choices only if user is in gather mode. (at evaluate, at least, the order is important) PD-1002 ([78773a0](https://github.com/pie-framework/pie-elements/commit/78773a08ca0d69c822a96fca8ef6804c0b9917e9))
+* **placement-ordering:** provide an array of objects containing {key, weight}  as expected in correctResponse ([27df005](https://github.com/pie-framework/pie-elements/commit/27df005d44bf88118438d6319dbeb12fe25eb00c))
+
+
+### Features
+
+* **placement-ordering:** remove lockChoiceOrder PD-351 ([#557](https://github.com/pie-framework/pie-elements/issues/557)) ([cf1f4d1](https://github.com/pie-framework/pie-elements/commit/cf1f4d192aae153df60fa0d8ca0a85939c683bae))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [7.3.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.3.14...@pie-element/placement-ordering@7.3.17) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

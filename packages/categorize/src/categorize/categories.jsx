@@ -55,13 +55,13 @@ export class Categories extends React.Component {
         rows={Math.ceil(categories.length / categoriesPerRow) * 2}
       >
         {
-          chunkedCategories.map(cat => {
+          chunkedCategories.map((cat, rowIndex) => {
             let items = [];
 
             // for each inner array of categories, create a row with category titles
-            cat.forEach(c => {
+            cat.forEach((c, columnIndex) => {
               items.push((
-                <Typography className={classes.label} key={`category-label-${c.label}`}>
+                <Typography className={classes.label} key={`category-label-${rowIndex}-${columnIndex}`}>
                   <span dangerouslySetInnerHTML={{ __html: c.label }}/>
                 </Typography>));
             });
@@ -70,7 +70,7 @@ export class Categories extends React.Component {
             items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>));
 
             // for each inner array of categories, create a row with category containers
-            cat.forEach((c, index) => {
+            cat.forEach((c, columnIndex) => {
               const rows = Math.floor(c.choices.length / columns) + 1;
 
               items.push(<Category
@@ -79,7 +79,7 @@ export class Categories extends React.Component {
                 onRemoveChoice={onRemoveChoice}
                 disabled={disabled}
                 className={classes.category}
-                key={index}
+                key={`category-element-${rowIndex}-${columnIndex}`}
                 {...c}
               />);
             });
@@ -102,6 +102,7 @@ const styles = theme => ({
   label: {
     color: color.text(),
     backgroundColor: color.background(),
+    fontSize: theme.typography.fontSize,
     textAlign: 'center',
     paddingTop: theme.spacing.unit
   }

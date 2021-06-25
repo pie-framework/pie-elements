@@ -14,6 +14,11 @@ const styles = () => ({
     fontSize: '14px',
     lineHeight: '16px',
 
+    '& ul, ol': {
+      marginBlockStart: 0,
+      paddingInlineStart: '16px'
+    },
+
     '& th': {
       padding: '16px',
       textAlign: 'left',

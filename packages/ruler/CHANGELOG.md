@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.11.16...@pie-element/ruler@3.12.0) (2021-04-07)
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [3.11.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.11.13...@pie-element/ruler@3.11.16) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/ruler

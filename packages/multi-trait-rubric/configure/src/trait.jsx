@@ -16,6 +16,8 @@ import {
   SecondaryBlock,
   UnderlinedInput
 } from './common';
+import { labelPlugins } from './utils';
+
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -121,56 +123,56 @@ export class TraitTile extends React.Component {
                     <span className={classes.dragHandle}>
                     <DragIndicatorIcon className={classes.actions}/>
                   </span>) : null
-                }
-                <div className={classes.controls}>
-                  <IconButton
-                    aria-label="more"
-                    aria-controls="long-menu"
-                    aria-haspopup="true"
-                    onClick={this.handleClick}
-                  >
-                    <MoreVertIcon/>
-                  </IconButton>
-                  <Menu
-                    id="long-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={!!anchorEl}
-                    onClose={this.handleClose}
-                  >
-                    {['Remove Trait'].map((option) => (
-                      <MenuItem
-                        key={option}
-                        onClick={this.openMenu}
-                      >
-                        {option}
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </div>
+              }
+              <div className={classes.controls}>
+                <IconButton
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={this.handleClick}
+                >
+                  <MoreVertIcon/>
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={!!anchorEl}
+                  onClose={this.handleClose}
+                >
+                  {[`Remove ${name}`].map((option) => (
+                    <MenuItem
+                      key={option}
+                      onClick={this.openMenu}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </div>
 
-                <UnderlinedInput
-                  markup={name}
-                  onChange={name => this.onTraitChanged({ name })}
-                  pluginProps={pluginProps}
-                  placeholder='Enter Trait'
-                />
-              </PrimaryBlock>
-              <SecondaryBlock
-                setRef={ref => {
-                  this.secondaryBlock = ref;
-                }}
-              >
-                {showStandards && standards && (
-                  <Block>
-                    <ExpandedInput
-                      placeholder="Standards"
-                      markup={standards.join(',')}
-                      onChange={standards => this.onTraitChanged({standards: standards.split(',')})}
-                      pluginProps={pluginProps}
-                    />
-                  </Block>
-                )}
+              <UnderlinedInput
+                markup={name}
+                onChange={name => this.onTraitChanged({ name })}
+                pluginProps={labelPlugins}
+                placeholder='Enter Trait'
+              />
+            </PrimaryBlock>
+            <SecondaryBlock
+              setRef={ref => {
+                this.secondaryBlock = ref;
+              }}
+            >
+              {showStandards && standards && (
+                <Block>
+                  <ExpandedInput
+                    placeholder="Standards"
+                    markup={standards.join(',')}
+                    onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
+                    pluginProps={pluginProps}
+                  />
+                </Block>
+              )}
 
                 {showDescription && (
                   <Block>
