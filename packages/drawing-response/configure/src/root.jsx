@@ -21,15 +21,6 @@ export class Root extends React.Component {
     });
   };
 
-  onRationaleChanged = rationale => {
-    const { model, onModelChanged } = this.props;
-
-    onModelChanged({
-      ...model,
-      rationale
-    });
-  };
-
   onTeacherInstructionsChanged = teacherInstructions => {
     const { model, onModelChanged } = this.props;
 
@@ -66,9 +57,9 @@ export class Root extends React.Component {
       onConfigurationChanged,
       onModelChanged
     } = this.props;
-    const { backgroundImage = {}, rationale = {}, prompt = {}, teacherInstructions = {} } =
+    const { backgroundImage = {}, prompt = {}, teacherInstructions = {} } =
       configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled } =
       model || {};
 
     return (
@@ -90,9 +81,7 @@ export class Root extends React.Component {
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&
-                    toggle(teacherInstructions.label),
-                  rationaleEnabled:
-                    rationale.settings && toggle(rationale.label)
+                    toggle(teacherInstructions.label)
                 }
               }}
             />
@@ -118,19 +107,6 @@ export class Root extends React.Component {
                 <EditableHtml
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
-                />
-              </InputContainer>
-            )}
-
-            {rationaleEnabled && (
-              <InputContainer
-                label={rationale.label}
-                className={classes.prompt}
-              >
-                <EditableHtml
-                  markup={model.rationale || ''}
-                  onChange={this.onRationaleChanged}
-                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}

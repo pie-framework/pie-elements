@@ -2,7 +2,6 @@
 
 exports[`main snapshot renders 1`] = `
 <div>
-  <br />
   <div
     dangerouslySetInnerHTML={
       Object {
@@ -41,7 +40,6 @@ exports[`main snapshot renders 1`] = `
 
 exports[`main snapshot renders rationale 1`] = `
 <div>
-  <br />
   <div
     dangerouslySetInnerHTML={
       Object {
@@ -80,7 +78,6 @@ exports[`main snapshot renders rationale 1`] = `
 
 exports[`main snapshot renders showCorrect 1`] = `
 <div>
-  <br />
   <div
     dangerouslySetInnerHTML={
       Object {

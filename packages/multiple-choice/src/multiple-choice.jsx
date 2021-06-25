@@ -204,26 +204,29 @@ export class MultipleChoice extends React.Component {
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
+    const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
       <div className={classes.corespringChoice}>
         {teacherInstructions && (
-          <Collapsible
-            labels={{
-              hidden: 'Show Teacher Instructions',
-              visible: 'Hide Teacher Instructions',
-            }}
-          >
-          <PreviewPrompt className="prompt" prompt={teacherInstructions} />
-          </Collapsible>
+          <React.Fragment>
+            <Collapsible
+              labels={{
+                hidden: 'Show Teacher Instructions',
+                visible: 'Hide Teacher Instructions',
+              }}
+            >
+              <PreviewPrompt className="prompt" prompt={teacherInstructions} />
+            </Collapsible>
+            <br />
+          </React.Fragment>
         )}
-        <br />
         <CorrectAnswerToggle
-          show={isEvaluateMode && !responseCorrect}
-          toggled={this.state.showCorrect}
+          show={showCorrectAnswerToggle}
+          toggled={showCorrect}
           onToggle={this.onToggle.bind(this)}
         />
-        <br />
+        {showCorrectAnswerToggle && <br />}
         <PreviewPrompt className="prompt" prompt={prompt}/>
         <div className={this.props.verticalMode ? '' : classes.horizontalLayout}>
           {choices.map((choice, index) => (

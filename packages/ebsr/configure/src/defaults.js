@@ -39,6 +39,10 @@ const defaultConfig = {
   teacherInstructions: {
     settings: true,
     label: 'Teacher Instructions'
+  },
+  verticalMode: {
+    settings: true,
+    label: 'Vertical Mode',
   }
 };
 
@@ -54,6 +58,7 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  verticalMode: true,
   ...base
 });
 

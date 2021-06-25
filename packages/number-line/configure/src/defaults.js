@@ -12,7 +12,6 @@ export const model = {
     },
     maxNumberOfPoints: 20,
     width: 500,
-    height: 400,
     initialType: 'PF',
     exhibitOnly: false,
     availableTypes: {
@@ -27,7 +26,21 @@ export const model = {
       REP: true
     },
     initialElements: []
-  }
+  },
+  feedback: {
+    correct: {
+      default: 'Correct',
+      type: 'none'
+    },
+    incorrect: {
+      default: 'Incorrect',
+      type: 'none'
+    },
+    partial: {
+      default: 'Nearly',
+      type: 'none'
+    }
+  },
 };
 
 export const configuration = {

@@ -5,7 +5,7 @@
 
 export default {
   model: {
-    choiceLabel: 'Choice Label goes here',
+    choiceLabel: '',
     choices: [],
     correctResponse: [],
     enableImages: false,
@@ -15,8 +15,9 @@ export default {
     partialScoring: true,
     placementArea: false,
     removeTilesAfterPlacing: true,
+    choiceLabelEnabled: true,
     scoringType: 'auto',
-    targetLabel: 'Target Label goes here',
+    targetLabel: '',
     rationaleEnabled: true,
     feedbackEnabled: true,
     promptEnabled: true,
@@ -26,8 +27,7 @@ export default {
   configuration: {
     choiceLabel: {
       settings: true,
-      label: 'Choice label',
-      enabled: true,
+      label: 'Choice label'
     },
     choices: {
       settings: true,

@@ -94,6 +94,12 @@
           "description": "Indicates if Teacher Instructions are enabled",
           "type": "boolean",
           "title": "teacherInstructionsEnabled"
+        },
+        "verticalMode": {
+          "description": "Indicates the layout of choices for player",
+          "default": ": true",
+          "type": "boolean",
+          "title": "verticalMode"
         }
       },
       "required": [
@@ -198,6 +204,12 @@
           "description": "Indicates if Teacher Instructions are enabled",
           "type": "boolean",
           "title": "teacherInstructionsEnabled"
+        },
+        "verticalMode": {
+          "description": "Indicates the layout of choices for player",
+          "default": ": true",
+          "type": "boolean",
+          "title": "verticalMode"
         }
       },
       "required": [
@@ -422,6 +434,22 @@
               "title": "label"
             }
           }
+        },
+        "verticalMode": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
         }
       }
     },
@@ -532,6 +560,12 @@
           "description": "Indicates if Teacher Instructions are enabled",
           "type": "boolean",
           "title": "teacherInstructionsEnabled"
+        },
+        "verticalMode": {
+          "description": "Indicates the layout of choices for player",
+          "default": ": true",
+          "type": "boolean",
+          "title": "verticalMode"
         }
       },
       "required": [

@@ -20,6 +20,10 @@ export class InputHeader extends React.Component {
   static defaultProps = {};
   render() {
     const { onChange, label, classes, className, imageSupport } = this.props;
+    const choicePlugins = {
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
 
     return (
       <div className={classNames(classes.inputHeader, className)}>
@@ -30,6 +34,7 @@ export class InputHeader extends React.Component {
           markup={label}
           onChange={onChange}
           className={classes.editor}
+          pluginProps={choicePlugins}
         />
       </div>
     );

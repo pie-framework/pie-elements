@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.2.3...@pie-element/multi-trait-rubric-configure@1.3.0) (2021-04-07)
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [1.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.2.0...@pie-element/multi-trait-rubric-configure@1.2.3) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric-configure

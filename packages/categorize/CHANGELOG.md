@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.18...@pie-element/categorize@6.6.0) (2021-04-07)
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [6.5.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.15...@pie-element/categorize@6.5.18) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/categorize

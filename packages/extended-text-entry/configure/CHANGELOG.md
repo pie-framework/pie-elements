@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.5...@pie-element/extended-text-entry-configure@5.2.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
+
+
+
+
+
 ## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.2...@pie-element/extended-text-entry-configure@5.2.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

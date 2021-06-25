@@ -94,6 +94,14 @@ export class Main extends React.Component {
     onChange: PropTypes.func.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    const { model: { graph: { availableTypes, maxNumberOfPoints }}} = props;
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+
+    this.graphChange({ height });
+  };
+
   graphChange = o => {
     const { onChange } = this.props;
     const graph = { ...this.props.model.graph, ...o };
@@ -102,8 +110,28 @@ export class Main extends React.Component {
 
   changeSize = ({ width, height }) => this.graphChange({ width, height });
 
-  changeMaxNoOfPoints = (e, maxNumberOfPoints) =>
-    this.graphChange({ maxNumberOfPoints });
+  getAdjustedHeight = (availableTypes, maxNumberOfPoints) => {
+    let onlyPFAvailable = true;
+
+    Object.entries(availableTypes || {}).forEach(([type, value]) => {
+      if (type !== 'PF' && value) {
+        onlyPFAvailable = false;
+        return;
+      }
+    });
+
+    const height = maxNumberOfPoints && (maxNumberOfPoints === 1 || onlyPFAvailable)
+      ? 100 : (50 + (maxNumberOfPoints || 20) * 25);
+
+    return height;
+  };
+
+  changeMaxNoOfPoints = (e, maxNumberOfPoints) => {
+    const { model : { graph: { availableTypes }}} = this.props;
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+
+    this.graphChange({ maxNumberOfPoints, height });
+  };
 
   changeGraphTitle = title => this.graphChange({ title });
 
@@ -127,7 +155,11 @@ export class Main extends React.Component {
   changeArrows = arrows => this.graphChange({ arrows });
 
   setDefaults = () => {
-    this.props.onChange({ graph: cloneDeep(defaultModel.graph) });
+    const { graph: { availableTypes, maxNumberOfPoints }} = defaultModel;
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+    const graph = { ...cloneDeep(defaultModel.graph), height };
+
+    this.props.onChange({ graph });
   };
 
   exhibitChanged = (event, value) => {
@@ -160,10 +192,15 @@ export class Main extends React.Component {
 
   availableTypesChange = availableTypes => {
     const { model, onChange } = this.props;
-    new Set(model.correctResponse.map(toPointType)).forEach(pointType => {
+    const { correctResponse, graph: { maxNumberOfPoints }} = model;
+
+    new Set(correctResponse.map(toPointType)).forEach(pointType => {
       availableTypes[pointType] = true;
     });
-    const graph = { ...model.graph, availableTypes };
+
+    const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
+    const graph = { ...model.graph, availableTypes, height };
+
     onChange({ graph });
   };
 
