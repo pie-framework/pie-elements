@@ -57,7 +57,6 @@ export class Layout extends React.Component {
 const styles = theme => ({
   choice: {
     cursor: 'pointer',
-    height: '100%',
     width: '100%',
     '&.correct': {
       border: `solid 2px ${color.correct()}`
