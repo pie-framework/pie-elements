@@ -63,14 +63,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -167,14 +167,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -273,14 +273,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -377,14 +377,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>
@@ -481,14 +481,14 @@ Overall appearance is acceptable or better",
     left="232px"
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowBackIosIcon) />
   </WithStyles(Component)>
   <WithStyles(Component)
     onClick={[Function]}
     show={null}
-    width="98px"
+    width="108px"
   >
     <pure(ArrowForwardIosIcon) />
   </WithStyles(Component)>

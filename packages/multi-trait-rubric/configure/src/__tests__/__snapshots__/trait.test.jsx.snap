@@ -22,10 +22,10 @@ exports[`Trait snapshot renders 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Trait"
+                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Trait
+                Remove Presentation
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -35,10 +35,16 @@ exports[`Trait snapshot renders 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -176,10 +182,10 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Trait"
+                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Trait
+                Remove Presentation
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -189,10 +195,16 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -330,10 +342,10 @@ exports[`Trait snapshot renders without description 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Trait"
+                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Trait
+                Remove Presentation
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -343,10 +355,16 @@ exports[`Trait snapshot renders without description 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -484,10 +502,10 @@ exports[`Trait snapshot renders without score points values 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Trait"
+                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Trait
+                Remove Presentation
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -497,10 +515,16 @@ exports[`Trait snapshot renders without score points values 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }
@@ -574,10 +598,10 @@ exports[`Trait snapshot renders without standards 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Trait"
+                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Trait
+                Remove Presentation
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -587,10 +611,16 @@ exports[`Trait snapshot renders without standards 1`] = `
             placeholder="Enter Trait"
             pluginProps={
               Object {
+                "audio": Object {
+                  "disabled": true,
+                },
                 "image": Object {
                   "disabled": true,
                 },
                 "math": Object {
+                  "disabled": true,
+                },
+                "video": Object {
                   "disabled": true,
                 },
               }

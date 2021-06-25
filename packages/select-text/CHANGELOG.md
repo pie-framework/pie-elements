@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.17...@pie-element/select-text@6.4.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **select-text:** update tokens in demo ([c768ea8](https://github.com/pie-framework/pie-elements/commit/c768ea8c3382065c7986d8a53fa32777bfa666ee))
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [6.3.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.14...@pie-element/select-text@6.3.17) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/select-text

@@ -17,6 +17,8 @@ import {
   SecondaryBlock,
   UnderlinedInput
 } from './common';
+import { labelPlugins } from './utils';
+
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Menu from '@material-ui/core/Menu';
@@ -139,7 +141,7 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {['Remove Trait'].map((option) => (
+                  {[`Remove ${name}`].map((option) => (
                     <MenuItem
                       key={option}
                       onClick={this.openMenu}
@@ -153,7 +155,7 @@ export class TraitTile extends React.Component {
               <UnderlinedInput
                 markup={name}
                 onChange={name => this.onTraitChanged({ name })}
-                pluginProps={pluginProps}
+                pluginProps={labelPlugins}
                 placeholder='Enter Trait'
               />
             </PrimaryBlock>

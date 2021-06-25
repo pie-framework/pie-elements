@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.9...@pie-element/extended-text-entry-controller@4.1.10) (2021-04-07)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** custom key fix for math keypad - PD-388 ([44fb9e2](https://github.com/pie-framework/pie-elements/commit/44fb9e2bde460632d2a517c33a32153b333f27f2))
+* **math-inline:** remove allow thousand separators from model, remove checkbox, validate answers indifferent to the presence of commas used as thousands separators PD-1031 ([#554](https://github.com/pie-framework/pie-elements/issues/554)) ([188555b](https://github.com/pie-framework/pie-elements/commit/188555ba3dd7fa6802a1d00eead0f8a86f4615b4))
+* rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
+
+
+
+
+
 ## [4.1.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.6...@pie-element/extended-text-entry-controller@4.1.9) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller

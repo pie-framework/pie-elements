@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.7...@pie-element/passage@1.6.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **passage:** preserve non-breaking spaces in content in order to make indentation visible PD-611 ([0034d6a](https://github.com/pie-framework/pie-elements/commit/0034d6a1cdd8aff14b66efa1f3010e7864e96180))
+* **passage:** replace newline with br, add pre-line PD-611 ([006c564](https://github.com/pie-framework/pie-elements/commit/006c564de029e7d65da58df15237134fea79b053))
+
+
+### Features
+
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [1.5.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.5.4...@pie-element/passage@1.5.7) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/passage

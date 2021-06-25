@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.2.5...@pie-element/multiple-choice-configure@3.3.0) (2021-04-07)
+
+
+### Features
+
+* Added Vertical Mode for player ([#555](https://github.com/pie-framework/pie-elements/issues/555)) ([0da549e](https://github.com/pie-framework/pie-elements/commit/0da549e8af2523491779582674477ef08ba0990b))
+
+
+
+
+
 ## [3.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.2.2...@pie-element/multiple-choice-configure@3.2.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure
