@@ -145,6 +145,14 @@ describe('model', () => {
         defaultModel.rows.map(({ id, title }) => ({ id, title }))
       );
     });
+
+    it('returns null for rationale', () => {
+      expect(result.config.rationale).toEqual(null);
+    });
+
+    it('returns null for teacher instructions', () => {
+      expect(result.config.teacherInstructions).toEqual(null);
+    });
   });
 
   describe('view', () => {
