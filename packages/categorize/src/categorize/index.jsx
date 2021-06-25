@@ -143,22 +143,24 @@ export class Categorize extends React.Component {
       <div className={classes.mainContainer}>
         {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
-            <Collapsible
-              labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              className={classes.collapsible}
-            >
-              <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                className={classes.collapsible}
+              >
+                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
-        <br />
         <CorrectAnswerToggle
           show={showCorrect || correct === false}
           toggled={showCorrect}
           onToggle={this.toggleShowCorrect}
         />
         {
-          removeHTMLTags(model.prompt) &&
+          model.prompt && removeHTMLTags(model.prompt) &&
           <div
             className={classes.prompt}
             dangerouslySetInnerHTML={{ __html: model.prompt }}
