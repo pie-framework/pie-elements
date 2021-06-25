@@ -12,7 +12,6 @@ describe('controller', () => {
         height: 0,
         width: 0
       },
-      rationale: 'Rationale',
       teacherInstructions: 'Teacher Instructions'
     };
   });
@@ -57,7 +56,6 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: null,
           teacherInstructions: null
         });
       });
@@ -71,7 +69,6 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: null,
-          rationale: null,
           teacherInstructions: null
         });
       });
@@ -86,12 +83,11 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: null,
           teacherInstructions: null
         });
       });
 
-      it('view mode, instructor role, rationale and teacherInstructions enabled', async () => {
+      it('view mode, instructor role and teacherInstructions enabled', async () => {
         result = await model(question, {}, { mode: 'view', role: 'instructor'});
 
         expect(result).toEqual({
@@ -100,14 +96,13 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: question.rationale,
           teacherInstructions: question.teacherInstructions
         });
       });
 
-      it('evaluate mode, instructor role, rationale and teacherInstructions disabled', async () => {
+      it('evaluate mode, instructor role and teacherInstructions disabled', async () => {
         result = await model(
-          { ...question, rationaleEnabled: false, teacherInstructionsEnabled: false },
+          { ...question, teacherInstructionsEnabled: false },
           {},
           { mode: 'evaluate', role: 'instructor'});
 
@@ -117,7 +112,6 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: null,
           teacherInstructions: null
         });
       });
@@ -131,12 +125,11 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: null,
           teacherInstructions: null
         });
       });
 
-      it('evaluate mode, instructor role, rationale and teacherInstructions enabled', async () => {
+      it('evaluate mode, instructor role and teacherInstructions enabled', async () => {
         result = await model(question, {}, { mode: 'evaluate', role: 'instructor'});
 
         expect(result).toEqual({
@@ -145,14 +138,13 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: question.rationale,
           teacherInstructions: question.teacherInstructions
         });
       });
 
-      it('view mode, instructor role, rationale and teacherInstructions disabled', async () => {
+      it('view mode, instructor role and teacherInstructions disabled', async () => {
         result = await model(
-          { ...question, rationaleEnabled: false, teacherInstructionsEnabled: false },
+          { ...question, teacherInstructionsEnabled: false },
           {},
           { mode: 'view', role: 'instructor'});
 
@@ -162,7 +154,6 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          rationale: null,
           teacherInstructions: null
         });
       });
