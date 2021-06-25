@@ -76,7 +76,7 @@ Choice.propTypes = {
   correctness: PropTypes.string,
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-  gridColumns: PropTypes.number
+  gridColumns: PropTypes.string
 };
 
 const StyledChoice = withStyles({
@@ -128,7 +128,7 @@ export class MultipleChoice extends React.Component {
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    gridColumns: PropTypes.number
+    gridColumns: PropTypes.string
   };
 
   constructor(props) {

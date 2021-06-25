@@ -105,11 +105,13 @@ const Design = withStyles(styles)(props => {
     teacherInstructionsEnabled,
     rationaleEnabled,
     feedbackEnabled,
-    promptEnabled
+    promptEnabled,
+    choices
   } = model || {};
 
-
-  const nrOfColumnsAvailable = Array.from({length: model.choices.length}, (_, i) => i + 1);
+  const nrOfColumnsAvailable = (choices && choices.length)
+      ? Array.from({length: choices.length}, (_, i) => (`${i + 1}`))
+      : [];
 
   const labelPlugins = {
     audio: { disabled: true },
@@ -204,6 +206,30 @@ const Design = withStyles(styles)(props => {
     </div>
   );
 
+  const settingsInPanel = {
+    choiceMode:
+        choiceMode.settings &&
+        radio(choiceMode.label, ['checkbox', 'radio']),
+    'sequentialChoiceLabels.enabled':
+        sequentialChoiceLabels.settings &&
+        toggle(sequentialChoiceLabels.label, true),
+    choicePrefix:
+        choicePrefix.settings &&
+        radio(choicePrefix.label, ['numbers', 'letters']),
+    partialScoring:
+        partialScoring.settings && toggle(partialScoring.label),
+    limitChoicesNumber:
+        limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
+    lockChoiceOrder:
+        lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+    feedbackEnabled: feedback.settings && toggle(feedback.label),
+    choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+  };
+
+  if (model.choicesLayout === 'grid' && nrOfColumnsAvailable.length > 0) {
+    settingsInPanel.gridColumns = dropdown(gridColumns.label, nrOfColumnsAvailable);
+  }
+
   return (
     <div className={classes.design}>
       {settingsPanelDisabled ? (
@@ -217,26 +243,7 @@ const Design = withStyles(styles)(props => {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  choiceMode:
-                    choiceMode.settings &&
-                    radio(choiceMode.label, ['checkbox', 'radio']),
-                  'sequentialChoiceLabels.enabled':
-                    sequentialChoiceLabels.settings &&
-                    toggle(sequentialChoiceLabels.label, true),
-                  choicePrefix:
-                    choicePrefix.settings &&
-                    radio(choicePrefix.label, ['numbers', 'letters']),
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  limitChoicesNumber:
-                    limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  feedbackEnabled: feedback.settings && toggle(feedback.label),
-                  choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
-                  gridColumns: model.choicesLayout === 'grid' && dropdown(gridColumns.label, nrOfColumnsAvailable),
-                },
+                Settings: settingsInPanel,
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&

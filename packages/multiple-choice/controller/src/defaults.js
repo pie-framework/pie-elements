@@ -5,5 +5,5 @@ export default {
   studentInstructionsEnabled: true,
   choicePrefix: 'letters',
   choicesLayout: 'vertical',
-  gridColumns: 2
+  gridColumns: '2'
 };

@@ -18,7 +18,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     choicesLayout: 'vertical',
-    gridColumns: 2
+    gridColumns: '2'
   },
   configuration: {
     choicesLayout: {
