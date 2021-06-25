@@ -90,6 +90,14 @@ export class Row extends React.Component {
     } = this.props;
     const opacity = isDragging ? 0 : 1;
 
+    const rowPlugins = {
+      image: {
+        disabled: !enableImages
+      },
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
+
     const content = (
       <div style={{
         opacity: opacity
@@ -111,11 +119,7 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={{
-                image: {
-                  disabled: !enableImages
-                }
-              }}
+              pluginProps={rowPlugins}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (

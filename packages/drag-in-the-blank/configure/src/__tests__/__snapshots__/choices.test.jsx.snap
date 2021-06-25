@@ -2,6 +2,9 @@
 
 exports[`Choices snapshot renders with duplicates 1`] = `
 <div>
+  <InfoDialog
+    open={false}
+  />
   <WithStyles(Button)
     color="primary"
     onClick={[Function]}
@@ -55,6 +58,9 @@ exports[`Choices snapshot renders with duplicates 1`] = `
 
 exports[`Choices snapshot renders without duplicates 1`] = `
 <div>
+  <InfoDialog
+    open={false}
+  />
   <WithStyles(Button)
     color="primary"
     onClick={[Function]}

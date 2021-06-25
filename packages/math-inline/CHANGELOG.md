@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.5.5...@pie-element/math-inline@5.6.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **math-inline:** fix background color, overwrite MUI styles - PD-773 ([#556](https://github.com/pie-framework/pie-elements/issues/556)) ([e88cac4](https://github.com/pie-framework/pie-elements/commit/e88cac4e19483686cb5aff4ca38789670b027c33))
+* **math-inline:** remove allow thousand separators from model, remove checkbox, validate answers indifferent to the presence of commas used as thousands separators PD-1031 ([#554](https://github.com/pie-framework/pie-elements/issues/554)) ([188555b](https://github.com/pie-framework/pie-elements/commit/188555ba3dd7fa6802a1d00eead0f8a86f4615b4))
+* createCorrectResponseSession was throwing an error if model was incorrectly set and this was causing issues in ibx; instead, if the model is not correctly set, just return an empty answer. PD-173 ([863425a](https://github.com/pie-framework/pie-elements/commit/863425ad48816dea1304de7e4fbae8e5f75e7f54))
+* import ([a2ee506](https://github.com/pie-framework/pie-elements/commit/a2ee50608f966184ba1cd1f45c7ca987aea683eb))
+* Instead of resetting the entire session object, update its properties. ([a5cff10](https://github.com/pie-framework/pie-elements/commit/a5cff102a58632ae3f56c33ad0af6d25ae400a1b))
+* rename the 'Everything' math editor as the 'Miscellaneous' math editor PD-870 ([cebc7da](https://github.com/pie-framework/pie-elements/commit/cebc7dad9cd8b8ad498134e116b705079c1e13c9))
+* **math-inline:** fix spacing bug with nth roots in response area PD-207 ([dfc4cf0](https://github.com/pie-framework/pie-elements/commit/dfc4cf0ad77702c1f90613e7ea6547c89f9dce53))
+* **math-inline:** override style for ray PD-48 ([b91bdf4](https://github.com/pie-framework/pie-elements/commit/b91bdf4e82f2e63d1defeceabb53fe9a8979d2ef))
+
+
+### Features
+
+* **math-inline:** remove allowSpaces. BREAKING CHANGE: removed allowSpaces from model PD-285 ([#549](https://github.com/pie-framework/pie-elements/issues/549)) ([9fdd6bd](https://github.com/pie-framework/pie-elements/commit/9fdd6bde196124f138bdd93a1afc1ac7bfaa2508))
+* merge pie-ui into pie-elements PD-977 ([01ebfd7](https://github.com/pie-framework/pie-elements/commit/01ebfd7ce98b041dd0573575efd8b6da03f22162))
+
+
+
+
+
 ## [5.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.5.2...@pie-element/math-inline@5.5.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/math-inline

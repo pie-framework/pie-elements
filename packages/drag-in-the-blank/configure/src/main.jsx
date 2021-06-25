@@ -230,6 +230,10 @@ export class Main extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               disableUnderline
+              pluginProps={{
+                audio: { disabled: true },
+                video: { disabled: true }
+              }}
             />
             <Choices
               model={model}

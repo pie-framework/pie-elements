@@ -22,7 +22,7 @@ export default {
   },
   configuration: {
     verticalMode: {
-      settings: false,
+      settings: true,
       label: 'Vertical Mode',
     },
     answerChoiceCount: 0,

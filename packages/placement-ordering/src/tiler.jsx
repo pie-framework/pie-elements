@@ -56,6 +56,7 @@ class HTiler extends React.Component {
   render() {
     const {
       includeTargets,
+      choiceLabelEnabled,
       choiceLabel,
       targetLabel,
       tiles,
@@ -89,7 +90,7 @@ class HTiler extends React.Component {
         <div
           className={classes.choiceLabel}
           style={labelStyle}
-          dangerouslySetInnerHTML={{ __html: choiceLabel }}
+          dangerouslySetInnerHTML={{ __html: choiceLabelEnabled ? choiceLabel : '' }}
         />
 
         {includeTargets && (
@@ -127,6 +128,7 @@ class VTiler extends React.Component {
   render() {
     const {
       includeTargets,
+      choiceLabelEnabled,
       choiceLabel,
       targetLabel,
       tiles,
@@ -153,7 +155,7 @@ class VTiler extends React.Component {
       <div className={names} style={style}>
         <div
           className={classes.choiceLabel}
-          dangerouslySetInnerHTML={{ __html: choiceLabel }}
+          dangerouslySetInnerHTML={{ __html: choiceLabelEnabled ? choiceLabel : '' }}
         />
 
         {includeTargets && (

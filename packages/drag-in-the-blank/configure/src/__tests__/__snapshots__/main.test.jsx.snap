@@ -124,6 +124,16 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
         nonEmpty={false}
         onChange={[Function]}
+        pluginProps={
+          Object {
+            "audio": Object {
+              "disabled": true,
+            },
+            "video": Object {
+              "disabled": true,
+            },
+          }
+        }
         responseAreaProps={
           Object {
             "options": Object {
@@ -299,6 +309,16 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         markup="<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15"
         nonEmpty={false}
         onChange={[Function]}
+        pluginProps={
+          Object {
+            "audio": Object {
+              "disabled": true,
+            },
+            "video": Object {
+              "disabled": true,
+            },
+          }
+        }
         responseAreaProps={
           Object {
             "options": Object {

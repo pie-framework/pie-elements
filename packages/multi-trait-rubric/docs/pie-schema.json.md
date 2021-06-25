@@ -90,6 +90,18 @@ The html Element tag name
 
 The schema defines the following additional types:
 
+## `DialogContent` (object)
+
+Properties of the `DialogContent` object:
+
+### `title` (string)
+
+Dialog box title
+
+### `text` (string)
+
+Dialog box text
+
 ## `ConfigureProp` (object)
 
 Properties of the `ConfigureProp` object:

@@ -43,7 +43,7 @@ const style = {
     fill: color.incorrect()
   },
   empty: {
-    fill: color.secondary()
+    fill: 'white'
   }
 };
 
