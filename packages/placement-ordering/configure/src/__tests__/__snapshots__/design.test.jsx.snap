@@ -7,7 +7,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       configuration={
         Object {
           "choiceLabel": Object {
-            "enabled": true,
             "label": "Choice label",
             "settings": true,
           },
@@ -80,7 +79,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "choiceLabel.enabled": undefined,
+            "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
             "numberedGuides": false,
@@ -93,7 +92,8 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       }
       model={
         Object {
-          "choiceLabel": "Choice Label goes here",
+          "choiceLabel": "",
+          "choiceLabelEnabled": true,
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
@@ -108,7 +108,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "studentInstructionsEnabled": true,
-          "targetLabel": "Target Label goes here",
+          "targetLabel": "",
           "teacherInstructionsEnabled": true,
         }
       }
@@ -154,7 +154,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         label="CHOICE LABEL"
       >
         <EditableHtml
-          markup="Choice Label goes here"
+          markup=""
           onChange={[Function]}
         />
       </InputContainer>
@@ -183,7 +183,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       configuration={
         Object {
           "choiceLabel": Object {
-            "enabled": true,
             "label": "Choice label",
             "settings": true,
           },
@@ -256,7 +255,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "teacherInstructionsEnabled": undefined,
           },
           "Settings": Object {
-            "choiceLabel.enabled": undefined,
+            "choiceLabelEnabled": undefined,
             "enableImages": undefined,
             "feedbackEnabled": undefined,
             "numberedGuides": false,
@@ -269,7 +268,8 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       }
       model={
         Object {
-          "choiceLabel": "Choice Label goes here",
+          "choiceLabel": "",
+          "choiceLabelEnabled": true,
           "choices": Array [],
           "correctResponse": Array [],
           "enableImages": false,
@@ -284,7 +284,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
           "studentInstructionsEnabled": true,
-          "targetLabel": "Target Label goes here",
+          "targetLabel": "",
           "teacherInstructionsEnabled": true,
         }
       }
@@ -330,7 +330,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         label="CHOICE LABEL"
       >
         <EditableHtml
-          markup="Choice Label goes here"
+          markup=""
           onChange={[Function]}
         />
       </InputContainer>

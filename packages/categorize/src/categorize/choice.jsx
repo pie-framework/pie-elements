@@ -54,7 +54,7 @@ export class Layout extends React.Component {
   }
 }
 
-const styles = () => ({
+const styles = theme => ({
   choice: {
     cursor: 'pointer',
     height: '100%',
@@ -69,6 +69,7 @@ const styles = () => ({
   cardRoot: {
     color: color.text(),
     backgroundColor: color.background(),
+    fontSize: theme.typography.fontSize + 2,
     border: '1px solid'
   },
   disabled: {

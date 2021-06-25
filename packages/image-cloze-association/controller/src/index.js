@@ -47,11 +47,11 @@ export const isResponseCorrect = (responses, session) => {
     return false;
   }
 
-  responses.forEach(value => totalValidResponses += value.length);
+  responses.forEach(value => totalValidResponses += (value.images || []).length);
 
   if (session.answers && totalValidResponses === session.answers.length) {
     session.answers.forEach(answer => {
-      if (!responses[answer.containerIndex].includes(answer.value)) {
+      if (!(responses[answer.containerIndex].images || []).includes(answer.value)) {
         isCorrect = false;
       }
     });
@@ -82,7 +82,7 @@ const isDefaultOrAltResponseCorrect = (question, session) => {
 const getDeductionPerContainer = (containerIndex, answers, valid) => {
   const totalStack = answers.filter(item => item.containerIndex === containerIndex);
   const incorrectStack = totalStack.filter(item => !item.isCorrect);
-  const maxValid = valid.value[containerIndex].length;
+  const maxValid = (valid.value[containerIndex].images || []).length;
 
   if (totalStack.length > maxValid) {
     const ignored = totalStack.length - maxValid;
@@ -100,7 +100,7 @@ export const getPartialScore = (question, session) => {
     return 0;
   }
 
-  validResponse.value.forEach(value => possibleResponses += value.length);
+  validResponse.value.forEach(value => possibleResponses += (value.images || []).length);
 
   if (session.answers && session.answers.length) {
     const all = getAllUniqueCorrectness(session.answers, validResponse.value);
@@ -163,7 +163,7 @@ export const createCorrectResponseSession = (question, env) => {
 
       if (value) {
         value.forEach((container, i) => {
-          container.forEach(v => {
+          (container.images || []).forEach(v => {
             answers.push({
               value: v,
               containerIndex: i

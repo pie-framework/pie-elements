@@ -136,7 +136,8 @@ export class Categorize extends React.Component {
 
     log('[render] disabled: ', model.disabled);
 
-    const { rowLabels } = model;
+    const { rowLabels, categoriesPerRow } = model;
+    const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
 
     return (
       <div className={classes.mainContainer}>
@@ -168,9 +169,9 @@ export class Categorize extends React.Component {
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex' }}>
             {
-              rowLabels && (
+              rowLabels && nbOfRows && (
                 <div style={{ display: 'grid', marginRight: '20px' }}>
-                  {rowLabels.map((label, index) => (
+                  {rowLabels.slice(0, nbOfRows).map((label, index) => (
                     <div
                       key={index}
                       style={{
