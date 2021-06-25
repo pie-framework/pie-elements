@@ -8,7 +8,7 @@ import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
 
 import { getAnswersCorrectness } from './utils-correctness';
-import { Collapsible } from '@pie-lib/render-ui';
+import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import _ from 'lodash';
 
 const generateId = () =>
@@ -199,6 +199,7 @@ class ImageClozeAssociationComponent extends React.Component {
         responseCorrect,
         validation,
         teacherInstructions,
+        prompt,
         showDashedBorder,
       }
     } = this.props;
@@ -216,6 +217,8 @@ class ImageClozeAssociationComponent extends React.Component {
 
     return (
       <div>
+        <PreviewPrompt className="prompt" prompt={prompt} />
+
         {teacherInstructions && (
           <Collapsible
             labels={{
