@@ -54,6 +54,7 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
       "scoringType": "auto",
       "studentInstructionsEnabled": true,
       "teacherInstructionsEnabled": true,
+      "toolbarEditorPosition": "bottom",
       "verticalMode": true,
     }
   }
@@ -122,6 +123,7 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
       "scoringType": "auto",
       "studentInstructionsEnabled": true,
       "teacherInstructionsEnabled": true,
+      "toolbarEditorPosition": "bottom",
       "verticalMode": true,
     }
   }

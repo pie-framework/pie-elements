@@ -43,5 +43,6 @@ exports.model = (id, element) => ({
     }
   ],
   prompt: 'Which of these northern European countries are EU members? <math><mstack><msrow><mn>111</mn></msrow><msline/></mstack></math>',
-  promptEnabled: true
+  promptEnabled: true,
+  toolbarEditorPosition: 'top'
 });
