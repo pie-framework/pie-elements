@@ -47,6 +47,13 @@ const styles = {
   }
 };
 
+const createElementFromHTML = htmlString => {
+  const div = document.createElement('div');
+  div.innerHTML = (htmlString || '').trim();
+
+  return div;
+};
+
 export class TraitTile extends React.Component {
   state = {};
 
@@ -115,6 +122,9 @@ export class TraitTile extends React.Component {
       math: { disabled: true }
     };
 
+    const onlyText = createElementFromHTML(name).textContent;
+    const traitName = isEmpty(onlyText) ? name : onlyText;
+
     return (
       connectDragPreview(
         connectDropTarget(
@@ -143,7 +153,7 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {[`Remove ${name}`].map((option) => (
+                  {[`Remove ${traitName}`].map((option) => (
                     <MenuItem
                       key={option}
                       onClick={this.openMenu}
