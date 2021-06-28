@@ -44,14 +44,11 @@ const styles = {
     top: '80px',
     left: `-${DragHandleSpace}px`,
     cursor: 'move'
+  },
+  removeLabel: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
   }
-};
-
-const createElementFromHTML = htmlString => {
-  const div = document.createElement('div');
-  div.innerHTML = (htmlString || '').trim();
-
-  return div;
 };
 
 export class TraitTile extends React.Component {
@@ -122,9 +119,6 @@ export class TraitTile extends React.Component {
       math: { disabled: true }
     };
 
-    const onlyText = createElementFromHTML(name).textContent;
-    const traitName = isEmpty(onlyText) ? name : onlyText;
-
     return (
       connectDragPreview(
         connectDropTarget(
@@ -153,7 +147,11 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {[`Remove ${traitName}`].map((option) => (
+                  {[<div
+                    className={classes.removeLabel}
+                    key={name}
+                    dangerouslySetInnerHTML={{__html: `Remove ${name}`}}
+                  />].map((option) => (
                     <MenuItem
                       key={option}
                       onClick={this.openMenu}
