@@ -147,18 +147,12 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {[<div
-                    className={classes.removeLabel}
-                    key={name}
-                    dangerouslySetInnerHTML={{__html: `Remove ${name}`}}
-                  />].map((option) => (
-                    <MenuItem
-                      key={option}
-                      onClick={this.openMenu}
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={this.openMenu}>
+                    <div
+                      className={classes.removeLabel}
+                      dangerouslySetInnerHTML={{__html: `Remove ${name}`}}
+                    />
+                  </MenuItem>
                 </Menu>
               </div>
 

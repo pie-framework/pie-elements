@@ -22,7 +22,6 @@ exports[`Trait snapshot renders 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="[object Object]"
                 onClick={[Function]}
               >
                 <div
@@ -31,7 +30,6 @@ exports[`Trait snapshot renders 1`] = `
                       "__html": "Remove Presentation",
                     }
                   }
-                  key="Presentation"
                 />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
@@ -189,7 +187,6 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="[object Object]"
                 onClick={[Function]}
               >
                 <div
@@ -198,7 +195,6 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
                       "__html": "Remove Presentation",
                     }
                   }
-                  key="Presentation"
                 />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
@@ -356,7 +352,6 @@ exports[`Trait snapshot renders without description 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="[object Object]"
                 onClick={[Function]}
               >
                 <div
@@ -365,7 +360,6 @@ exports[`Trait snapshot renders without description 1`] = `
                       "__html": "Remove Presentation",
                     }
                   }
-                  key="Presentation"
                 />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
@@ -523,7 +517,6 @@ exports[`Trait snapshot renders without score points values 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="[object Object]"
                 onClick={[Function]}
               >
                 <div
@@ -532,7 +525,6 @@ exports[`Trait snapshot renders without score points values 1`] = `
                       "__html": "Remove Presentation",
                     }
                   }
-                  key="Presentation"
                 />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
@@ -626,7 +618,6 @@ exports[`Trait snapshot renders without standards 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="[object Object]"
                 onClick={[Function]}
               >
                 <div
@@ -635,7 +626,6 @@ exports[`Trait snapshot renders without standards 1`] = `
                       "__html": "Remove Presentation",
                     }
                   }
-                  key="Presentation"
                 />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
