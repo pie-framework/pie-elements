@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.2.13...@pie-element/charting-controller@2.2.14) (2021-06-29)
+
+
+### Bug Fixes
+
+* **charting:** Fixed student cannot edit category labels when required - PD-535 ([#596](https://github.com/pie-framework/pie-elements/issues/596)) ([5eb6c56](https://github.com/pie-framework/pie-elements/commit/5eb6c5638615e1186a54aa522670e1e7d5154b5c))
+
+
+
+
+
 ## [2.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-controller@2.2.10...@pie-element/charting-controller@2.2.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/charting-controller

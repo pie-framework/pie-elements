@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.3.13...@pie-element/match-controller@4.4.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **match:** remove rationale and teacher instructions from the item model returned by the API PD-1158 ([#591](https://github.com/pie-framework/pie-elements/issues/591)) ([e33786a](https://github.com/pie-framework/pie-elements/commit/e33786ad0bc788872c3624805790c82b3819c879))
+
+
+### Features
+
+* **match:** change partial scoring method for match items that use checkboxes PD-741 ([#588](https://github.com/pie-framework/pie-elements/issues/588)) ([65cd5dd](https://github.com/pie-framework/pie-elements/commit/65cd5dd6adb2307f89f53248b0d4489b0dd71e39))
+
+
+
+
+
 ## [4.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-controller@4.3.10...@pie-element/match-controller@4.3.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/match-controller

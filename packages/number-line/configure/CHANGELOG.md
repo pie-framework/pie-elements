@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.7.0...@pie-element/number-line-configure@4.8.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **number-line:** if feedback is not specified in the model, it is set to none PD-935 ([#580](https://github.com/pie-framework/pie-elements/issues/580)) ([d1246e1](https://github.com/pie-framework/pie-elements/commit/d1246e184b4678d4515409c0bab16bc0f6e826dc))
+
+
+### Features
+
+* **number-line:** Changed vertical space depending on max number of points - PD-1011 \n\n BREAKING CHANGE: Removed height from the model ([#605](https://github.com/pie-framework/pie-elements/issues/605)) ([eb3bf84](https://github.com/pie-framework/pie-elements/commit/eb3bf84474803bb648d61dbddb53fa137863eda7))
+
+
+
+
+
 # [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.6.23...@pie-element/number-line-configure@4.7.0) (2021-04-07)
 
 

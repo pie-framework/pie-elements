@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.4.4...@pie-element/inline-dropdown-configure@3.5.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** Improved the UX when adding an answer choice PD-294 ([#570](https://github.com/pie-framework/pie-elements/issues/570)) ([7ed2843](https://github.com/pie-framework/pie-elements/commit/7ed2843cdb536ec1bc1a0645f54ef7e58b76663b))
+
+
+### Features
+
+* **inline-dropdown:** remove table, lists, audio and video buttons from choices toolbar PD-1179, PD-1180 ([#600](https://github.com/pie-framework/pie-elements/issues/600)) ([b6cbeda](https://github.com/pie-framework/pie-elements/commit/b6cbeda042d17660e7339e3010610e4ba1f3a682))
+
+
+
+
+
 ## [3.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.4.3...@pie-element/inline-dropdown-configure@3.4.4) (2021-04-07)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-configure

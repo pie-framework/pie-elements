@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.5.0...@pie-element/ebsr@6.6.0) (2021-06-29)
+
+
+### Features
+
+* **ebsr:** Added vertical/horizontal layout setting - PD-1144 ([#579](https://github.com/pie-framework/pie-elements/issues/579)) ([51c4093](https://github.com/pie-framework/pie-elements/commit/51c4093b4ade86a9c1118066b9dee36bc0582f3a))
+
+
+
+
+
 # [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.4.5...@pie-element/ebsr@6.5.0) (2021-04-07)
 
 

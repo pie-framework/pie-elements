@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.6.0...@pie-element/math-inline@5.6.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **math-inline:** remove +response button from authoring PD-334 ([#598](https://github.com/pie-framework/pie-elements/issues/598)) ([88ce52b](https://github.com/pie-framework/pie-elements/commit/88ce52b12b2e2d34b51b1a05927a26251b30832f))
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.5.5...@pie-element/math-inline@5.6.0) (2021-04-07)
 
 

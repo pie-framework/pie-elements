@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.1.0...@pie-element/likert@0.1.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
+
+
+
+
+
 # [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert@0.0.18...@pie-element/likert@0.1.0) (2021-04-07)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.4.0...@pie-element/hotspot-controller@3.4.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **hotspot:** partial scoring not working correctly PD-816 ([#583](https://github.com/pie-framework/pie-elements/issues/583)) ([8266134](https://github.com/pie-framework/pie-elements/commit/8266134bd0e298a89cbcbeb1f8ad16bb803e60ae))
+
+
+
+
+
 # [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-controller@3.3.15...@pie-element/hotspot-controller@3.4.0) (2021-04-07)
 
 

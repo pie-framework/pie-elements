@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.13...@pie-element/image-cloze-association-controller@3.2.14) (2021-06-29)
+
+
+### Bug Fixes
+
+* image-cloze-association create schemas for PD-1095 ([#562](https://github.com/pie-framework/pie-elements/issues/562)) ([d2e39da](https://github.com/pie-framework/pie-elements/commit/d2e39da045f594938239f1a25ac9786bdaffa6d9))
+
+
+
+
+
 ## [3.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.10...@pie-element/image-cloze-association-controller@3.2.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-controller
