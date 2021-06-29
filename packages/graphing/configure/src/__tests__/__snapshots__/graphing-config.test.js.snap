@@ -85,7 +85,12 @@ exports[`GraphingConfig renders snapshot 1`] = `
       <Root
         axesSettings={
           Object {
-            "includeArrows": true,
+            "includeArrows": Object {
+              "down": true,
+              "left": true,
+              "right": true,
+              "up": true,
+            },
           }
         }
         backgroundMarks={Array []}

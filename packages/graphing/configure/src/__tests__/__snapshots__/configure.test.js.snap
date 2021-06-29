@@ -7,8 +7,20 @@ exports[`Configure renders snapshot 1`] = `
       configuration={
         Object {
           "arrows": Object {
-            "label": "Include arrows",
-            "settings": false,
+            "down": Object {
+              "label": "down",
+            },
+            "label": "Include Arrows",
+            "left": Object {
+              "label": "left",
+            },
+            "right": Object {
+              "label": "right",
+            },
+            "settings": true,
+            "up": Object {
+              "label": "up",
+            },
           },
           "authoring": Object {
             "enabled": false,
@@ -54,7 +66,7 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Item Type": Object {
-            "arrows": false,
+            "arrows": undefined,
             "labels": false,
             "padding": false,
             "title.enabled": false,
@@ -72,7 +84,12 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": true,
+          "arrows": Object {
+            "down": true,
+            "left": true,
+            "right": true,
+            "up": true,
+          },
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",
@@ -154,7 +171,12 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": true,
+          "arrows": Object {
+            "down": true,
+            "left": true,
+            "right": true,
+            "up": true,
+          },
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",
@@ -197,7 +219,12 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": true,
+          "arrows": Object {
+            "down": true,
+            "left": true,
+            "right": true,
+            "up": true,
+          },
           "backgroundMarks": Array [],
           "domain": Object {
             "axisLabel": "x",

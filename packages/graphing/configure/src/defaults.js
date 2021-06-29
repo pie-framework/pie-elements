@@ -1,6 +1,6 @@
-import { tools } from '@pie-lib/graphing';
+import {tools} from '@pie-lib/graphing';
 
-const { allTools = [] } = tools;
+const {allTools = []} = tools;
 /**
  * NOTE: There's no functionality described for padding
  * so there's no implementation (they are only added in model)
@@ -9,7 +9,12 @@ const { allTools = [] } = tools;
 export default {
   model: {
     answers: {},
-    arrows: true,
+    arrows: {
+      left: true,
+      right: true,
+      up: true,
+      down: true
+    },
     backgroundMarks: [],
     domain: {
       min: -5,
@@ -47,8 +52,20 @@ export default {
       enabled: false
     },
     arrows: {
-      settings: false,
-      label: 'Include arrows'
+      settings: true,
+      label: 'Include Arrows',
+      left: {
+        label: 'left'
+      },
+      right: {
+        label: 'right'
+      },
+      up: {
+        label: 'up'
+      },
+      down: {
+        label: 'down'
+      }
     },
     padding: {
       settings: false,
