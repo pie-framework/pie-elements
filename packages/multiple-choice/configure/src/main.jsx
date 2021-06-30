@@ -282,6 +282,17 @@ export class Main extends React.Component {
     })
   };
 
+  componentDidMount() {
+    const { model, onModelChanged } = this.props;
+    const { verticalMode } = model;
+
+    if (verticalMode !== undefined) {
+      const choicesLayout = verticalMode === false ? 'horizontal': 'vertical';
+
+      onModelChanged({...model, choicesLayout: choicesLayout});
+    }
+  }
+
   onRemoveChoice = index => {
     const { model } = this.props;
 
