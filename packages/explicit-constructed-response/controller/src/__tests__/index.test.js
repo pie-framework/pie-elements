@@ -47,12 +47,13 @@ const question = {
   markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
   disabled: false,
   choices,
-  prompt: 'Complete the sentence'
+  prompt: 'Complete the sentence',
+  note: 'The answer shown above is the most common correct answer for this item.'
 };
 
 describe('controller', () => {
   describe('model', () => {
-    let q;
+    let q, env;
 
     it('output when session is defined', async () => {
       const m = await model(question,
@@ -92,10 +93,13 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
+        env = { mode: 'gather' };
+
         const result = await model(q, {
           id: '1',
-          element: 'explicit-constructed-response', ...session
-        }, { mode: 'gather' });
+          element: 'explicit-constructed-response',
+          ...session
+        }, env);
 
         expect(result).toEqual({
           ...question,
@@ -103,6 +107,7 @@ describe('controller', () => {
           mode: 'gather',
           feedback: {},
           responseCorrect: undefined,
+          env,
           ...expected
         });
       });
@@ -114,6 +119,7 @@ describe('controller', () => {
       {},
       {
         rationale: null,
+        showNote: true,
         teacherInstructions: null
       });
 
@@ -129,6 +135,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
+        showNote: true,
         teacherInstructions: null
       });
 
@@ -140,10 +147,13 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        const result = await model(
-          q,
-          { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'view', role: 'instructor' });
+        env = { mode: 'view', role: 'instructor' };
+
+        const result = await model(q, {
+          id: '1',
+          element: 'explicit-constructed-response',
+          ...session
+        }, env);
 
         expect(result).toEqual({
           ...question,
@@ -151,6 +161,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          env,
           ...expected
         });
       });
@@ -168,6 +179,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
+        showNote: true,
         teacherInstructions: null
       }
     );
@@ -178,6 +190,7 @@ describe('controller', () => {
       {},
       {
         teacherInstructions: 'Teacher Instructions',
+        showNote: true,
         rationale: 'Rationale',
       }
     );
@@ -190,10 +203,13 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        const result = await model(
-          q,
-          { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'view', role: 'student' });
+        env = { mode: 'view', role: ' student'};
+
+        const result = await model(q, {
+          id: '1',
+          element: 'explicit-constructed-response',
+          ...session
+        }, env);
 
         expect(result).toEqual({
           ...question,
@@ -201,6 +217,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          env,
           ...expected
         });
       });
@@ -218,6 +235,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
+        showNote: true,
         teacherInstructions: null
       }
     );
@@ -228,6 +246,7 @@ describe('controller', () => {
       {},
       {
         rationale: null,
+        showNote: true,
         teacherInstructions: null
       }
     );
@@ -240,10 +259,13 @@ describe('controller', () => {
           rationale: 'Rationale',
           ...extra
         };
-        const result = await model(
-          q,
-          { id: '1', element: 'explicit-constructed-response', ...session },
-          { mode: 'evaluate', role: 'instructor' });
+        env = { mode: 'evaluate', role: 'instructor' };
+
+        const result = await model(q, {
+          id: '1',
+          element: 'explicit-constructed-response',
+          ...session
+        }, env);
 
         expect(result).toEqual({
           ...question,
@@ -264,6 +286,7 @@ describe('controller', () => {
             ],
             2: [{ label: 'moon', value: '0', correct: true }]
           },
+          env,
           ...expected
         });
       });
@@ -281,6 +304,7 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'correct' },
+        showNote: true,
         responseCorrect: true,
       }
     );
@@ -296,6 +320,7 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
+        showNote: true,
         responseCorrect: false,
       }
     );
@@ -311,6 +336,7 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'correct', 1: 'correct', 2: 'incorrect' },
+        showNote: true,
         responseCorrect: false,
       }
     );
@@ -326,6 +352,7 @@ describe('controller', () => {
       },
       {
         feedback: { 0: 'incorrect', 1: 'incorrect', 2: 'incorrect' },
+        showNote: true,
         responseCorrect: false,
       }
     );

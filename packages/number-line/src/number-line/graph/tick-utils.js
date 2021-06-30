@@ -31,7 +31,7 @@ export const snapTo = (min, max, interval, value) => {
 };
 
 export const fractionRange = (start, end, interval) => {
-  const m = math.mod(start, interval);
+  const m = math.mod(math.abs(start), math.abs(interval));
   if (!math.equal(m, 0)) {
     throw new Error('start point must be divisible by interval');
   }
@@ -40,7 +40,8 @@ export const fractionRange = (start, end, interval) => {
     return [];
   }
 
-  const e = math.subtract(end, math.mod(end, interval));
+  const e = math.subtract(end, math.mod(end, math.abs(interval)));
+
   const direction = math.larger(interval, 0) ? 'positive' : 'negative';
 
   if (direction === 'negative' && math.largerEq(end, start)) {
@@ -49,7 +50,12 @@ export const fractionRange = (start, end, interval) => {
   if (direction === 'positive' && math.smallerEq(end, start)) {
     throw new Error('start must be < end when doing increments');
   }
-  const compareFn = direction === 'positive' ? math.smallerEq : math.largerEq;
+  const compareFn =
+    direction === 'positive'
+      ? math.smallerEq
+      : math.equal(e, end)
+      ? math.largerEq
+      : math.larger;
   const out = [];
 
   let next = start;
@@ -77,7 +83,7 @@ export const zeroBasedRange = (start, end, interval) => {
     start: math.abs(start),
     end: math.abs(end),
     interval: math.abs(interval),
-    multiplier: math.smaller(interval, 0) ? -1 : 1
+    multiplier: math.smaller(interval, 0) ? -1 : 1,
   };
 
   const m = math.mod(a.start, a.interval);
@@ -86,7 +92,7 @@ export const zeroBasedRange = (start, end, interval) => {
     : a.start;
 
   const r = fractionRange(s, a.end, a.interval);
-  const out = a.multiplier === -1 ? r.map(v => math.multiply(v, -1)) : r;
+  const out = a.multiplier === -1 ? r.map((v) => math.multiply(v, -1)) : r;
 
   if (math.smaller(interval, 0)) {
     out.reverse();
@@ -147,11 +153,11 @@ const limit = (v, min, max) => {
   return v;
 };
 
-export const minorLimits = domain => {
+export const minorLimits = (domain) => {
   const end = domain.max - domain.min;
   return {
     min: math.divide(math.fraction(end), 100),
-    max: math.divide(math.fraction(end), 3)
+    max: math.divide(math.fraction(end), 3),
   };
 };
 
@@ -165,7 +171,7 @@ export const isMultiple = (multiple, src) => {
  * @param {*} v
  * @return mathjs.fraction
  */
-export const fraction = v => {
+export const fraction = (v) => {
   if (isObject(v)) {
     return math.fraction(v.n * v.s, v.d);
   } else if (isNumber(v)) {
@@ -200,8 +206,8 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
   const rng = simpleRange(domain.min, domain.max, ticks.minor);
 
   const o = rng
-    .filter(x => math.smallerEq(x, math.fraction(domain.max)))
-    .map(x => {
+    .filter((x) => math.smallerEq(x, math.fraction(domain.max)))
+    .map((x) => {
       let type = 'minor';
       const modulo = math.mod(x, ticks.major);
       if (closeTo(math.number(modulo), 0)) {
@@ -217,12 +223,12 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
 export const buildTickData = (domain, ticks, opts) => {
   const result = buildTickDataAsFractions(domain, ticks, opts);
 
-  const out = result.map(o => ({ ...o, x: math.number(o.x) }));
+  const out = result.map((o) => ({ ...o, x: math.number(o.x) }));
   return out;
 };
 
 export const snapElements = (domain, ticks, elements) => {
-  return elements.map(e => {
+  return elements.map((e) => {
     const size = Number.isFinite(e.size)
       ? snapTo(0, e.size, ticks.minor, e.size)
       : undefined;

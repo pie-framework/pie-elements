@@ -22,10 +22,15 @@ exports[`Trait snapshot renders 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Presentation
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Remove Presentation",
+                    }
+                  }
+                />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -182,10 +187,15 @@ exports[`Trait snapshot renders with drag and drop 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Presentation
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Remove Presentation",
+                    }
+                  }
+                />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -342,10 +352,15 @@ exports[`Trait snapshot renders without description 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Presentation
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Remove Presentation",
+                    }
+                  }
+                />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -502,10 +517,15 @@ exports[`Trait snapshot renders without score points values 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Presentation
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Remove Presentation",
+                    }
+                  }
+                />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>
@@ -598,10 +618,15 @@ exports[`Trait snapshot renders without standards 1`] = `
               open={false}
             >
               <WithStyles(MenuItem)
-                key="Remove Presentation"
                 onClick={[Function]}
               >
-                Remove Presentation
+                <div
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Remove Presentation",
+                    }
+                  }
+                />
               </WithStyles(MenuItem)>
             </WithStyles(Menu)>
           </div>

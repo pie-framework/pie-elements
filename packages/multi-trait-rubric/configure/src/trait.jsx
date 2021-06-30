@@ -44,6 +44,10 @@ const styles = {
     top: '80px',
     left: `-${DragHandleSpace}px`,
     cursor: 'move'
+  },
+  removeLabel: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
   }
 };
 
@@ -143,14 +147,12 @@ export class TraitTile extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  {[`Remove ${name}`].map((option) => (
-                    <MenuItem
-                      key={option}
-                      onClick={this.openMenu}
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={this.openMenu}>
+                    <div
+                      className={classes.removeLabel}
+                      dangerouslySetInnerHTML={{__html: `Remove ${name}`}}
+                    />
+                  </MenuItem>
                 </Menu>
               </div>
 

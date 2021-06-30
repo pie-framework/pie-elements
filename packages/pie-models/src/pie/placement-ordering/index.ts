@@ -115,6 +115,9 @@ export interface PlacementOrderingPie extends PieModel {
 
     /** Indicates if Choice Label is enabled */
     choiceLabelEnabled?: boolean;
+
+    /** Indicates the note for the answer */
+    note?: string;
 }
 
 /**
