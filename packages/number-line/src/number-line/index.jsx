@@ -213,7 +213,7 @@ export class NumberLine extends React.Component {
       domain,
       ticks,
       width,
-      height,
+      height: height || 100,
       arrows,
     };
 
