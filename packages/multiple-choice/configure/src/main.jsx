@@ -114,7 +114,6 @@ const Design = withStyles(styles)(props => {
 
   const toolbarOpts = {};
 
-  console.log(model.toolbarEditorPosition);
   switch (model.toolbarEditorPosition) {
     case 'top':
       toolbarOpts.position = 'top';
