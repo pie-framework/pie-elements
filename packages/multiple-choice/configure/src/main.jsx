@@ -283,6 +283,8 @@ export class Main extends React.Component {
   };
 
   componentDidMount() {
+    // This is used for offering support for old models which have the property verticalMode
+    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
     const { model, onModelChanged } = this.props;
     const { verticalMode } = model;
 
