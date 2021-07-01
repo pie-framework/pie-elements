@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, dropdown } = settings;
 
 const MAX_CHOICES = 9;
 
@@ -97,15 +97,21 @@ const Design = withStyles(styles)(props => {
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
-    verticalMode
+    choicesLayout,
+    gridColumns,
   } = configuration || {};
   const {
     limitChoicesNumber: limitChoicesNumberModel,
     teacherInstructionsEnabled,
     rationaleEnabled,
     feedbackEnabled,
-    promptEnabled
+    promptEnabled,
+    choices
   } = model || {};
+
+  const nrOfColumnsAvailable = (choices && choices.length)
+      ? Array.from({length: choices.length}, (_, i) => (`${i + 1}`))
+      : [];
 
   const labelPlugins = {
     audio: { disabled: true },
@@ -200,6 +206,30 @@ const Design = withStyles(styles)(props => {
     </div>
   );
 
+  const settingsInPanel = {
+    choiceMode:
+        choiceMode.settings &&
+        radio(choiceMode.label, ['checkbox', 'radio']),
+    'sequentialChoiceLabels.enabled':
+        sequentialChoiceLabels.settings &&
+        toggle(sequentialChoiceLabels.label, true),
+    choicePrefix:
+        choicePrefix.settings &&
+        radio(choicePrefix.label, ['numbers', 'letters']),
+    partialScoring:
+        partialScoring.settings && toggle(partialScoring.label),
+    limitChoicesNumber:
+        limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
+    lockChoiceOrder:
+        lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+    feedbackEnabled: feedback.settings && toggle(feedback.label),
+    choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+  };
+
+  if (model.choicesLayout === 'grid' && nrOfColumnsAvailable.length > 0) {
+    settingsInPanel.gridColumns = dropdown(gridColumns.label, nrOfColumnsAvailable);
+  }
+
   return (
     <div className={classes.design}>
       {settingsPanelDisabled ? (
@@ -213,25 +243,7 @@ const Design = withStyles(styles)(props => {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: {
-                  choiceMode:
-                    choiceMode.settings &&
-                    radio(choiceMode.label, ['checkbox', 'radio']),
-                  'sequentialChoiceLabels.enabled':
-                    sequentialChoiceLabels.settings &&
-                    toggle(sequentialChoiceLabels.label, true),
-                  choicePrefix:
-                    choicePrefix.settings &&
-                    radio(choicePrefix.label, ['numbers', 'letters']),
-                  partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label),
-                  limitChoicesNumber:
-                    limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
-                  lockChoiceOrder:
-                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-                  feedbackEnabled: feedback.settings && toggle(feedback.label),
-                  verticalMode: verticalMode.settings && toggle(verticalMode.label)
-                },
+                Settings: settingsInPanel,
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&
@@ -269,6 +281,19 @@ export class Main extends React.Component {
       delete: PropTypes.func.isRequired
     })
   };
+
+  componentDidMount() {
+    // This is used for offering support for old models which have the property verticalMode
+    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
+    const { model, onModelChanged } = this.props;
+    const { verticalMode } = model;
+
+    if (verticalMode !== undefined) {
+      const choicesLayout = verticalMode === false ? 'horizontal': 'vertical';
+
+      onModelChanged({...model, choicesLayout: choicesLayout});
+    }
+  }
 
   onRemoveChoice = index => {
     const { model } = this.props;

@@ -23,7 +23,8 @@ describe('Choice', () => {
         checked: true,
         correctness: 'correct',
         displayKey: '0',
-        verticalMode: true,
+        choicesLayout: 'grid',
+        gridColumns: 2,
         ...extras
       };
       return shallow(<Choice {...props}/>);
