@@ -55,17 +55,6 @@ class PolygonComponent extends React.Component {
 
   getOutlineWidth = (selected, strokeWidth) => selected ? strokeWidth : 0;
 
-  getEvaluateText = (isCorrect, selected) => {
-    if (selected && isCorrect) {
-      return 'Correctly\nselected';
-    } else if (selected && !isCorrect) {
-      return 'Incorrectly\nselected';
-    } else if (!selected && isCorrect) {
-      return 'Correctly\nunselected';
-    }
-    return 'Incorrectly\nunselected';
-  };
-
   render() {
     const {
       classes,
@@ -75,6 +64,7 @@ class PolygonComponent extends React.Component {
       outlineColor,
       selected,
       points,
+      evaluateText,
       strokeWidth
     } = this.props;
 
@@ -124,6 +114,7 @@ class PolygonComponent extends React.Component {
             src={iconSrc}
             x={iconX}
             y={iconY}
+            tooltip={evaluateText}
           />
         ): null}
       </Group>
@@ -150,10 +141,12 @@ PolygonComponent.propTypes = {
   outlineColor: PropTypes.string.isRequired,
   points: PropTypes.array.isRequired,
   selected: PropTypes.bool.isRequired,
+  evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number
 };
 
 PolygonComponent.defaultProps = {
+  evaluateText: null,
   strokeWidth: 5
 };
 

@@ -16,7 +16,8 @@ describe('Image', () => {
       {
         x: 5,
         y: 5,
-        src: ''
+        src: '',
+        tooltip: null
       },
       opts
     );
@@ -39,6 +40,13 @@ describe('Image', () => {
     describe('image', () => {
       it('renders', () => {
         const wrapper = mkWrapper({ src: 'https://picsum.photos/id/102/200/300' });
+        expect(toJson(wrapper)).toMatchSnapshot();
+      });
+    });
+
+    describe('tooltip', () => {
+      it('renders', () => {
+        const wrapper = mkWrapper({ tooltip: 'Correctly\nselected' });
         expect(toJson(wrapper)).toMatchSnapshot();
       });
     });
