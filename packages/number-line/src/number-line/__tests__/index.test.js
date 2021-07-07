@@ -38,24 +38,12 @@ describe('NumberLine', () => {
       expect(wrapper.find(Graph).prop('width')).toEqual(600);
     });
 
-    it('sets default height', () => {
-      expect(wrapper.find(Graph).prop('height')).toEqual(400);
-    });
-
     it('sets custom width', () => {
       expect(
         mkWrapper({ model: { graph: { width: 1001 } } })
           .find(Graph)
           .prop('width')
       ).toEqual(1001);
-    });
-
-    it('sets custom height', () => {
-      expect(
-        mkWrapper({ model: { graph: { height: 701 } } })
-          .find(Graph)
-          .prop('height')
-      ).toEqual(701);
     });
   });
 });

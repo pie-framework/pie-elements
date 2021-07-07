@@ -72,17 +72,21 @@ export class Main extends React.Component {
 
         {
           teacherInstructions && hasText(teacherInstructions) && (
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
 
-        <br/>
-
-        <div className={classes.prompt} dangerouslySetInnerHTML={{ __html: prompt }}/>
-
-        <br/>
+        {prompt && (
+          <React.Fragment>
+            <div className={classes.prompt} dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <br />
+          </React.Fragment>
+        )}
 
         <GraphContainer
           axesSettings={{ includeArrows: arrows }}
@@ -98,7 +102,7 @@ export class Main extends React.Component {
           toolbarTools={toolbarTools}
         />
 
-        <br/>
+        <br />
 
         {
           rationale && hasText(rationale) && (

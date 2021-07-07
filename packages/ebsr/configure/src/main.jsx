@@ -73,6 +73,7 @@ export class Main extends React.Component {
       prompt: promptA = {},
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
+      verticalMode: verticalModeA = {},
       rationale: rationaleA = {}
     } = partA || {};
     const {
@@ -83,6 +84,7 @@ export class Main extends React.Component {
       prompt: promptB = {},
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
+      verticalMode: verticalModeB = {},
       rationale: rationaleB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
@@ -120,6 +122,8 @@ export class Main extends React.Component {
                     radio(choicePrefixA.label, ['numbers', 'letters']),
                   'partA.lockChoiceOrder':
                     lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
+                  'partA.verticalMode':
+                    verticalModeA.settings && toggle(verticalModeA.label)
                 },
                 [`Properties ${firstPart}`]: {
                   'partA.feedbackEnabled': feedbackA.settings &&
@@ -143,7 +147,9 @@ export class Main extends React.Component {
                     choicePrefixB.settings &&
                     radio(choicePrefixB.label, ['numbers', 'letters']),
                   'partB.lockChoiceOrder':
-                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label)
+                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
+                  'partB.verticalMode':
+                    verticalModeB.settings && toggle(verticalModeB.label)
                 },
                 [`Properties ${secondPart}`]: {
                   'partB.feedbackEnabled':

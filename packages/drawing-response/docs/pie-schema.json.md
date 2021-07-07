@@ -38,10 +38,6 @@ Indicates student instructions
 
 Indicates teacher instructions
 
-# `rationaleEnabled` (boolean, required)
-
-Indicates if Rationale are enabled
-
 # `studentInstructionsEnabled` (boolean, required)
 
 Indicates if Student Instructions are enabled

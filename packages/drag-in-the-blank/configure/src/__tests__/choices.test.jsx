@@ -106,6 +106,15 @@ describe('Choices', () => {
         ]);
       });
 
+      it('does not add identical choice', () => {
+        w.instance().onChoiceChanged('<div>12</div>', '<div>9</div>', '2');
+
+        expect(onChange).toBeCalledWith([
+          { value: '<div>6</div>', id: '0' },
+          { value: '<div>9</div>', id: '1' }
+        ]);
+      });
+
       it('does not remove a choice if its new value is empty, but is used in correct response', () => {
         const jsdomAlert = window.alert;  // remember the jsdom alert
 

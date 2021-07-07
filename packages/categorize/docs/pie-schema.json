@@ -42,12 +42,6 @@
       },
       "title": "choices"
     },
-    "choicesPerRow": {
-      "description": "The number of columns in which to present the choices",
-      "default": 2,
-      "type": "number",
-      "title": "choicesPerRow"
-    },
     "categoriesPerRow": {
       "description": "The number of columns in which to present the categories",
       "default": 2,
@@ -388,6 +382,11 @@
       "description": "Indicates if Teacher Instructions are enabled",
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
+    },
+    "note": {
+      "description": "Indicates the note for the answer",
+      "type": "string",
+      "title": "note"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",

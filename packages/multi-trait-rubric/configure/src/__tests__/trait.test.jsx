@@ -21,6 +21,7 @@ describe('Trait', () => {
       classes: {},
       connectDragSource: props => <div>{props}</div>,
       connectDropTarget: props => <div>{props}</div>,
+      connectDragPreview: props => <div>{props}</div>,
       trait: trait(),
       index: 0,
       scorePointsValues: [0, 1, 2],

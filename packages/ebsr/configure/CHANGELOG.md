@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.2.5...@pie-element/ebsr-configure@6.2.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ebsr:** set only one correct answer when controls are switched from checkbox to radio button PD-262 ([cc59293](https://github.com/pie-framework/pie-elements/commit/cc592935952321b59c90cba816d1e3766d748afc))
+
+
+
+
+
 ## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.2.2...@pie-element/ebsr-configure@6.2.5) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/ebsr-configure

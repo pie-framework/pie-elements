@@ -1433,6 +1433,7 @@ describe('outcome', () => {
   };
   const question = {
     addCategoryEnabled: true,
+    editCategoryEnabled: false,
     chartType: 'bar',
     data: [
       {

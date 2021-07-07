@@ -149,6 +149,14 @@ export class Row extends React.Component {
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
+    const rowPlugins = {
+      image: {
+        disabled: !enableImages
+      },
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
+
     const content = (
       <div style={{
         opacity: opacity
@@ -170,17 +178,7 @@ export class Row extends React.Component {
               markup={row.title}
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
-              pluginProps={{
-                image: {
-                  disabled: !enableImages
-                },
-                audio: {
-                  disabled: true
-                },
-                video: {
-                  disabled: true
-                },
-              }}
+              pluginProps={rowPlugins}
               allowValidation
             />
           </div>

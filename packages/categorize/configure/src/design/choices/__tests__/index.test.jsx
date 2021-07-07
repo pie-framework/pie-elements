@@ -12,7 +12,6 @@ describe('choices', () => {
         content: 'Choice 0'
       },
     ],
-    choicesPerRow: 2,
     choicesPosition: 'below',
     choicesLabel: '',
     lockChoiceOrder: true,

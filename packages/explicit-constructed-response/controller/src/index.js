@@ -99,6 +99,14 @@ export function model(question, session, env) {
       }, {});
     }
 
+    let showNote = false;
+    // check if a choice has an alternate
+    Object.values(choices).forEach(choice => {
+       if (choice && choice.length > 1) {
+         showNote = true;
+       }
+    });
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -106,6 +114,9 @@ export function model(question, session, env) {
       markup: normalizedQuestion.markup,
       choices,
       feedback,
+      env,
+      note: normalizedQuestion.note,
+      showNote,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.13...@pie-element/number-line-controller@4.3.14) (2021-04-07)
+
+
+### Bug Fixes
+
+* If a Number Line element has no correct answer, Evaluate mode should just show the student's response without any markup PD-1012 ([4c9e0a2](https://github.com/pie-framework/pie-elements/commit/4c9e0a2168b71a257b7ea03495c04c786792c74c))
+
+
+
+
+
 ## [4.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.10...@pie-element/number-line-controller@4.3.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/number-line-controller

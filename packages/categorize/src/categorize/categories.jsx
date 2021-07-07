@@ -16,8 +16,7 @@ export class Categories extends React.Component {
     classes: PropTypes.object.isRequired,
     categories: PropTypes.arrayOf(PropTypes.shape(CategoryType)),
     model: PropTypes.shape({
-      categoriesPerRow: PropTypes.number,
-      choicesPerRow: PropTypes.number,
+      categoriesPerRow: PropTypes.number
     }),
     disabled: PropTypes.bool,
     onDropChoice: PropTypes.func.isRequired,
@@ -26,8 +25,7 @@ export class Categories extends React.Component {
 
   static defaultProps = {
     model: {
-      categoriesPerRow: 1,
-      choicesPerRow: 1
+      categoriesPerRow: 1
     }
   };
 
@@ -40,9 +38,7 @@ export class Categories extends React.Component {
       onDropChoice,
       onRemoveChoice,
     } = this.props;
-    const { choicesPerRow, categoriesPerRow } = model;
-
-    const columns = choicesPerRow / categoriesPerRow;
+    const { categoriesPerRow } = model;
 
     // split categories into an array of arrays (inner array),
     // where each inner array represents how many categories should be displayed on one row
@@ -55,13 +51,13 @@ export class Categories extends React.Component {
         rows={Math.ceil(categories.length / categoriesPerRow) * 2}
       >
         {
-          chunkedCategories.map(cat => {
+          chunkedCategories.map((cat, rowIndex) => {
             let items = [];
 
             // for each inner array of categories, create a row with category titles
-            cat.forEach(c => {
+            cat.forEach((c, columnIndex) => {
               items.push((
-                <Typography className={classes.label} key={`category-label-${c.label}`}>
+                <Typography className={classes.label} key={`category-label-${rowIndex}-${columnIndex}`}>
                   <span dangerouslySetInnerHTML={{ __html: c.label }}/>
                 </Typography>));
             });
@@ -70,16 +66,13 @@ export class Categories extends React.Component {
             items = items.concat(Array(categoriesPerRow - cat.length).fill(<div/>));
 
             // for each inner array of categories, create a row with category containers
-            cat.forEach((c, index) => {
-              const rows = Math.floor(c.choices.length / columns) + 1;
-
+            cat.forEach((c, columnIndex) => {
               items.push(<Category
-                grid={{ rows, columns }}
                 onDropChoice={h => onDropChoice(c.id, h)}
                 onRemoveChoice={onRemoveChoice}
                 disabled={disabled}
                 className={classes.category}
-                key={index}
+                key={`category-element-${rowIndex}-${columnIndex}`}
                 {...c}
               />);
             });
@@ -102,6 +95,7 @@ const styles = theme => ({
   label: {
     color: color.text(),
     backgroundColor: color.background(),
+    fontSize: theme.typography.fontSize,
     textAlign: 'center',
     paddingTop: theme.spacing.unit
   }

@@ -2,18 +2,10 @@
 
 exports[`categorize renders snapshot 1`] = `
 <div>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
-  />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
   />
   <div
     style={
@@ -59,18 +51,10 @@ exports[`categorize renders snapshot 1`] = `
 
 exports[`categorize renders snapshot with rationale 1`] = `
 <div>
-  <br />
   <WithStyles(CorrectAnswerToggle)
     onToggle={[Function]}
     show={false}
     toggled={false}
-  />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
   />
   <div
     style={
@@ -155,13 +139,6 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
     onToggle={[Function]}
     show={false}
     toggled={false}
-  />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
   />
   <div
     style={
