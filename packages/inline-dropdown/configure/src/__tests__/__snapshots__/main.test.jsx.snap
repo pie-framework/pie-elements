@@ -54,6 +54,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
                 Object {
                   "correct": true,
                   "label": "cow ",
+                  "rationale": "rationale for cow",
                   "value": "0",
                 },
                 Object {
@@ -71,6 +72,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
                 Object {
                   "correct": true,
                   "label": "over ",
+                  "rationale": "rationale for over",
                   "value": "0",
                 },
                 Object {
@@ -88,6 +90,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
                 Object {
                   "correct": true,
                   "label": "moon ",
+                  "rationale": "rationale for moon",
                   "value": "0",
                 },
                 Object {
@@ -173,6 +176,58 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           }
         }
       />
+      <br />
+      <InputContainer
+        key="cow "
+        label={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "Rationale for cow ",
+              }
+            }
+          />
+        }
+      >
+        <EditableHtml
+          markup="rationale for cow"
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <InputContainer
+        key="over "
+        label={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "Rationale for over ",
+              }
+            }
+          />
+        }
+      >
+        <EditableHtml
+          markup="rationale for over"
+          onChange={[Function]}
+        />
+      </InputContainer>
+      <InputContainer
+        key="moon "
+        label={
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "Rationale for moon ",
+              }
+            }
+          />
+        }
+      >
+        <EditableHtml
+          markup="rationale for moon"
+          onChange={[Function]}
+        />
+      </InputContainer>
     </div>
   </ConfigLayout>
 </div>
@@ -232,6 +287,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
                 Object {
                   "correct": true,
                   "label": "cow ",
+                  "rationale": "rationale for cow",
                   "value": "0",
                 },
                 Object {
@@ -249,6 +305,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
                 Object {
                   "correct": true,
                   "label": "over ",
+                  "rationale": "rationale for over",
                   "value": "0",
                 },
                 Object {
@@ -266,6 +323,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
                 Object {
                   "correct": true,
                   "label": "moon ",
+                  "rationale": "rationale for moon",
                   "value": "0",
                 },
                 Object {
@@ -324,6 +382,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           }
         }
       />
+      <br />
     </div>
   </ConfigLayout>
 </div>

@@ -104,6 +104,7 @@ export function model(question, session, env, updateSession) {
 
     let teacherInstructions = null;
     let rationale = null;
+    let correctChoicesRationales = null;
 
     if (
       env.role === 'instructor' &&
@@ -115,9 +116,19 @@ export function model(question, session, env, updateSession) {
       teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
         : null;
+      correctChoicesRationales = normalizedQuestion.rationaleEnabled
+        ? choices && Object.keys(choices).map(key => choices[key]
+        .reduce((acc, currentValue) => {
+          if (currentValue.correct) {
+            acc.push({label: currentValue.label, rationale: currentValue.rationale});
+          }
+          return acc;
+        }, []))
+        : null;
     } else {
       rationale = null;
       teacherInstructions = null;
+      correctChoicesRationales = null;
     }
 
     const out = {
@@ -136,6 +147,7 @@ export function model(question, session, env, updateSession) {
           : undefined,
       rationale,
       teacherInstructions,
+      correctChoicesRationales
     };
 
     resolve(out);

@@ -20,7 +20,8 @@ describe('InlineDropdown', () => {
             {
               label: 'cow ',
               value: '0',
-              correct: true
+              correct: true,
+              rationale: 'rationale cow'
             },
             {
               label: 'dog ',
@@ -37,7 +38,8 @@ describe('InlineDropdown', () => {
             {
               label: 'over ',
               value: '0',
-              correct: true
+              correct: true,
+              rationale: 'rationale over'
             },
             {
               label: 'under ',
@@ -54,7 +56,8 @@ describe('InlineDropdown', () => {
             {
               label: 'moon ',
               value: '0',
-              correct: true
+              correct: true,
+              rationale: 'rationale moon'
             },
             {
               label: 'sun',
@@ -103,6 +106,10 @@ describe('InlineDropdown', () => {
 
     it('should render without prompt', () => {
       expect(wrapper({ prompt: null })).toMatchSnapshot();
+    });
+
+    it('should render without correct choices rationale', () => {
+      expect(wrapper({ correctChoicesRationales: null })).toMatchSnapshot();
     });
   });
 });

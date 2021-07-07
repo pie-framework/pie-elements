@@ -83,6 +83,10 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#495B8F'
+  },
+  rationaleLabel: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
   }
 });
 
@@ -167,6 +171,16 @@ export class Main extends React.Component {
 
   onRationaleChanged = rationale => {
     this.onModelChange({ rationale });
+  };
+
+  onChoiceRationaleChanged = (index, choice) => {
+    const { model } = this.props;
+    const indexOfChoice = model.choices[index]
+      .findIndex(elem => elem.label === choice.label && elem.value === choice.value);
+
+    model.choices[index].splice(indexOfChoice, 1, choice);
+
+    this.onModelChange(model);
   };
 
   onTeacherInstructionsChanged = teacherInstructions => {
@@ -354,8 +368,16 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {}
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, choices } =
       model || {};
+
+    const correctChoices = (Object.keys(choices) || []).map(key => (choices[key] || [])
+      .reduce((acc, currentValue) => {
+        if (currentValue.correct) {
+          acc.push(currentValue);
+        }
+        return acc;
+      }, []));
 
     return (
       <div className={classes.design}>
@@ -479,6 +501,32 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
             />
+            <br />
+            {rationaleEnabled && correctChoices && correctChoices.map((choice, index) => (
+              choice[0] && (
+                <InputContainer
+                  key={choice[0].label}
+                  label={
+                    <span
+                      className={classes.rationaleLabel}
+                      dangerouslySetInnerHTML={{__html: `${rationale.label} for ${choice[0].label}`}}
+                    />
+                  }
+                  className={classes.promptHolder}
+                >
+                  <EditableHtml
+                    className={classes.prompt}
+                    markup={choice[0].rationale || ''}
+                    onChange={c =>
+                      this.onChoiceRationaleChanged(index, {
+                        ...choice[0],
+                        rationale: c
+                      })
+                    }
+                    imageSupport={imageSupport}
+                  />
+                </InputContainer>)))
+            }
           </div>
         </layout.ConfigLayout>
       </div>

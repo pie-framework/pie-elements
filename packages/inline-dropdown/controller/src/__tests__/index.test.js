@@ -32,6 +32,7 @@ describe('inline-dropdown', () => {
             correct: true,
             value: '9719398',
             label: '16,000',
+            rationale: 'rationale for choice'
           },
         ],
       },
@@ -59,7 +60,7 @@ describe('inline-dropdown', () => {
   });
 
   describe('model - with updateSession', () => {
-    it.only('calls updateSession', async () => {
+    it('calls updateSession', async () => {
       session = { id: '1', element: 'inline-dropdown-element' };
       env = { mode: 'gather' };
       const updateSession = jest.fn().mockResolvedValue();
@@ -89,6 +90,7 @@ const question = {
         label: 'cow ',
         value: '0',
         correct: true,
+        rationale: 'rationale cow'
       },
       {
         label: 'dog ',
@@ -106,6 +108,7 @@ const question = {
         label: 'over ',
         value: '0',
         correct: true,
+        rationale: 'rationale over'
       },
       {
         label: 'under ',
@@ -123,6 +126,7 @@ const question = {
         label: 'moon ',
         value: '0',
         correct: true,
+        rationale: 'rationale moon'
       },
       {
         label: 'sun',
@@ -141,13 +145,14 @@ const question = {
 describe('controller', () => {
   describe('model', () => {
     let q;
+    const updateSession = jest.fn().mockResolvedValue();
 
     it('output when session is defined', async () => {
       const m = await model(
         question,
         { value: { 0: '0', 1: '0', 2: '0' } },
         { mode: 'evaluate' },
-        jest.fn()
+        updateSession
       );
 
       expect(m).toEqual(
@@ -164,7 +169,7 @@ describe('controller', () => {
           question,
           session,
           { mode: 'evaluate' },
-          jest.fn()
+          updateSession
         );
 
         expect(m).toEqual(
@@ -198,7 +203,7 @@ describe('controller', () => {
             ...session,
           },
           { mode: 'gather' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -219,6 +224,7 @@ describe('controller', () => {
       {
         rationale: null,
         teacherInstructions: null,
+        correctChoicesRationales: null
       }
     );
 
@@ -235,6 +241,7 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         teacherInstructions: null,
+        correctChoicesRationales: null
       }
     );
 
@@ -252,7 +259,7 @@ describe('controller', () => {
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'view', role: 'instructor' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -279,6 +286,7 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         teacherInstructions: null,
+        correctChoicesRationales: null
       }
     );
 
@@ -289,6 +297,11 @@ describe('controller', () => {
       {
         teacherInstructions: 'Teacher Instructions',
         rationale: 'Rationale',
+        correctChoicesRationales: [
+          [{ label: "cow ", rationale: "rationale cow" }],
+          [{ label: "over ", rationale: "rationale over" }],
+          [{ label: "moon ", rationale: "rationale moon" }]
+        ]
       }
     );
 
@@ -332,6 +345,7 @@ describe('controller', () => {
         prompt: null,
         rationale: null,
         teacherInstructions: null,
+        correctChoicesRationales: null
       }
     );
 
@@ -342,6 +356,7 @@ describe('controller', () => {
       {
         rationale: null,
         teacherInstructions: null,
+        correctChoicesRationales: null
       }
     );
 
@@ -359,7 +374,7 @@ describe('controller', () => {
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'evaluate', role: 'instructor' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -368,7 +383,11 @@ describe('controller', () => {
           rationale: 'Rationale',
           mode: 'evaluate',
           disabled: true,
-
+          correctChoicesRationales: [
+            [{ label: "cow ", rationale: "rationale cow" }],
+            [{ label: "over ", rationale: "rationale over" }],
+            [{ label: "moon ", rationale: "rationale moon" }]
+          ],
           ...expected,
         });
       });

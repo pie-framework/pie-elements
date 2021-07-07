@@ -16,6 +16,7 @@ export class InlineDropdown extends React.Component {
     markup: PropTypes.string,
     mode: PropTypes.string,
     rationale: PropTypes.string,
+    correctChoicesRationales: PropTypes.array,
     teacherInstructions: PropTypes.string,
     choices: PropTypes.object,
     value: PropTypes.object,
@@ -50,8 +51,10 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions } = this.props;
+    const { classes, prompt, mode, rationale, teacherInstructions, correctChoicesRationales } = this.props;
     const showCorrectAnswerToggle = mode === 'evaluate';
+    const choiceRationalesHaveText = correctChoicesRationales && correctChoicesRationales
+      .filter(choice => choice[0] && choice[0].rationale && hasText(choice[0].rationale)).length !== 0;
 
     return (
       <div className={classes.mainContainer}>
@@ -90,6 +93,24 @@ export class InlineDropdown extends React.Component {
             </Collapsible>
           )
         }
+        <br />
+        {choiceRationalesHaveText && (
+          <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
+            <div>
+              {correctChoicesRationales.map(choice =>
+                choice && choice[0] && choice[0].rationale && hasText(choice[0].rationale) ? (
+                    <div className={classes.choiceRationale} key={choice[0].label}>
+                      <div
+                        className={classes.choiceRationaleLabel}
+                        dangerouslySetInnerHTML={{__html: `${choice[0].label}: `}}
+                      />
+                      <div dangerouslySetInnerHTML={{__html: choice[0].rationale}}/>
+                    </div>)
+                  :
+                  null
+              )}
+            </div>
+          </Collapsible>)}
         <DropDown
           {...this.props}
           showCorrectAnswer={showCorrectAnswer}
@@ -104,6 +125,14 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     padding: theme.spacing.unit
+  },
+  choiceRationale: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
+  },
+  choiceRationaleLabel: {
+    color: theme.palette.primary.light,
+    display: 'flex'
   }
 });
 
