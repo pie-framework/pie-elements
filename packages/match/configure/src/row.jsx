@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { Checkbox } from '@pie-lib/config-ui';
-import { color } from '@pie-lib/render-ui';
 import DragHandle from '@material-ui/icons/DragHandle';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
@@ -149,12 +148,6 @@ export class Row extends React.Component {
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
-    const values = row.values.filter((rowValue) => !!rowValue).length;
-
-    if(!values) {
-      // row.values[0] = true; // default first answer selected
-
-    }
 
     const content = (
       <div style={{
@@ -213,13 +206,6 @@ export class Row extends React.Component {
             </Button>
           </div>
         </div>
-
-        {!values && model.choiceMode === 'radio' ?
-          <div className={classes.warningMessage}>
-            If no correct answer is selected, the question row will not be published
-          </div>
-          : null}
-
         <hr className={classes.separator} />
         <InfoDialog
           title={dialog.message}
@@ -281,12 +267,6 @@ const styles = theme => ({
     border: 0,
     borderTop: '2px solid lightgray',
     width: '100%'
-  },
-  warningMessage: {
-    textAlign: 'center',
-    color: color.disabled(),
-    paddingTop: 10,
-    fontSize: '14px'
   }
 });
 

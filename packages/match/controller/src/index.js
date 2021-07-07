@@ -143,30 +143,6 @@ export const normalize = question => ({
 export function model(question, session, env, updateSession) {
   return new Promise(async resolve => {
     const normalizedQuestion = cloneDeep(normalize(question));
-    let validRows = [];
-
-    if(question.choiceMode === 'radio') {
-      // filter rows that have one correct answer selected
-      validRows = (normalizedQuestion.rows || []).filter((row) => {
-          const hasCorrectAnswer = (row.values || []).filter((rowValue) => !!rowValue);
-
-          return hasCorrectAnswer.length;
-        });
-    } else {
-      // count how many correct answer are selected
-      let noOfCorrectAnswers = 0;
-
-      (normalizedQuestion.rows || []).forEach((row) => {
-        const hasCorrectAnswer = (row.values || []).filter((rowValue) => !!rowValue);
-
-        noOfCorrectAnswers += hasCorrectAnswer.length;
-      });
-
-      if (noOfCorrectAnswers >= normalizedQuestion.rows.length) {
-        validRows = normalizedQuestion.rows;
-      }
-    }
-
     let correctness, score;
 
     if ((!session || isEmpty(session)) && env.mode === 'evaluate') {
@@ -214,7 +190,6 @@ export function model(question, session, env, updateSession) {
         prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
         config: {
           ...normalizedQuestion,
-          rows: validRows,
           shuffled: !normalizedQuestion.lockChoiceOrder
         },
         feedback,

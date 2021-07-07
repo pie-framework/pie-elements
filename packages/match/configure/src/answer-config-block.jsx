@@ -183,23 +183,16 @@ class AnswerConfigBlock extends React.Component {
       video: { disabled: true }
     };
 
-    const validateCheckboxesMessage = 'There should be at least as many checked checkboxes as the number of question' +
-      ' rows, but there doesn’t necessarily have to be a checked checkbox for every individual question row. ';
-
     return (
       <div className={classes.container}>
         <Typography type="body1" component="div">
           Click on the labels to edit or remove. Set the correct answers by
           clicking each correct answer per row.
-          <br/>
-          <br/>
-          {model.choiceMode === 'validateCheckboxesMessage' ? validateCheckboxesMessage : null}
         </Typography>
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
-            (model.headers || []).map((header, idx) => {
-              return (
+            (model.headers || []).map((header, idx) => (
                 <div
                   key={idx}
                   className={cx(classes.rowItem, {
@@ -217,7 +210,7 @@ class AnswerConfigBlock extends React.Component {
                     allowValidation
                   />
                 </div>
-              );})}
+              ))}
             <div className={classes.deleteIcon}>
               <Button disabled>
                 <div />

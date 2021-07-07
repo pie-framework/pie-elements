@@ -146,58 +146,9 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual([]);
-    });
-  });
-
-  describe('gather - returns only rows that are valid', () => {
-    beforeEach(async () => {
-      question = mkQuestion({
-        ...defaultModel,
-        rows: [
-          {
-            id: 1,
-            title: 'Question Text 1',
-            values: [false, true],
-          },
-          {
-            id: 2,
-            title: 'Question Text 2',
-            values: [false, false],
-          },
-          {
-            id: 3,
-            title: 'Question Text 3',
-            values: [true, false],
-          },
-          {
-            id: 4,
-            title: 'Question Text 4',
-            values: [false, true],
-          }
-        ],
-        choiceMode: 'radio',
-      });
-      session = {};
-      env = {mode: 'gather'};
-      result = await model(question, session, env);
-    });
-
-    it('returns rows that have correct values defined', () => {
-      expect(result.config.rows).toEqual([
-        {
-          id: 1,
-          title: 'Question Text 1'
-        },
-        {
-          id: 3,
-          title: 'Question Text 3'
-        },
-        {
-          id: 4,
-          title: 'Question Text 4'
-        }
-      ]);
+      expect(result.config.rows).toEqual(
+        defaultModel.rows.map(({ id, title }) => ({ id, title }))
+      );
     });
   });
 
@@ -248,7 +199,9 @@ describe('model', () => {
     });
 
     it('returns rows without correct values', () => {
-      expect(result.config.rows).toEqual([]);
+      expect(result.config.rows).toEqual(
+        defaultModel.rows.map(({ id, title }) => ({ id, title }))
+      );
     });
   });
 
@@ -289,7 +242,7 @@ describe('model', () => {
     });
 
     it('returns rows with correct values', () => {
-      expect(result.config.rows).toEqual([]);
+      expect(result.config.rows).toEqual(defaultModel.rows);
     });
 
     const returnCorrectness = (sess) => {
