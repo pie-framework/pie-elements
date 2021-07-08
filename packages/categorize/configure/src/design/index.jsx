@@ -37,7 +37,8 @@ export class Design extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   constructor(props) {
@@ -159,6 +160,17 @@ export class Design extends React.Component {
       feedbackEnabled
     } = model || {};
 
+    const toolbarOpts = {};
+
+    switch (model.toolbarEditorPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
+
     const config = model.config || {};
     config.choices = config.choices || { label: '', columns: 2 };
 
@@ -228,6 +240,7 @@ export class Design extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   disableUnderline
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -243,6 +256,7 @@ export class Design extends React.Component {
                   onChange={this.changeTeacherInstructions}
                   imageSupport={imageSupport}
                   nonEmpty={false}
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -258,6 +272,7 @@ export class Design extends React.Component {
                   onChange={this.changeRationale}
                   imageSupport={imageSupport}
                   nonEmpty={false}
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -267,6 +282,7 @@ export class Design extends React.Component {
               model={model}
               categories={categories || []}
               onModelChanged={this.updateModel}
+              toolbarOpts={toolbarOpts}
             />
 
             <Header
@@ -309,6 +325,7 @@ export class Design extends React.Component {
               <FeedbackConfig
                 feedback={model.feedback}
                 onChange={this.changeFeedback}
+                toolbarOpts={toolbarOpts}
               />
             )}
           </div>
