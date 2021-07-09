@@ -204,6 +204,17 @@ class Configure extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
       model || {};
 
+    const toolbarOpts = {};
+
+    switch (model.toolbarEditorPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
+
     log('[render] model', model);
 
     return (
@@ -254,6 +265,7 @@ class Configure extends React.Component {
                 onChange={this.onTeacherInstructionsChanged}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -270,6 +282,7 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 disableUnderline
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -284,6 +297,7 @@ class Configure extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChanged}
                 imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -300,11 +314,13 @@ class Configure extends React.Component {
             onChange={this.onChange}
             onAddRow={this.onAddRow}
             onDeleteRow={this.onDeleteRow}
+            toolbarOpts={toolbarOpts}
           />
           {feedbackEnabled && (
             <FeedbackConfig
               feedback={model.feedback}
               onChange={this.onFeedbackChange}
+              toolbarOpts={toolbarOpts}
             />
           )}
         </div>
