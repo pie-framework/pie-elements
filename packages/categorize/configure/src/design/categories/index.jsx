@@ -172,9 +172,8 @@ export class Categories extends React.Component {
       categories,
       imageSupport,
       toolbarOpts
-     = this.props;
+    } = this.props;
     const { categoriesPerRow, rowLabels } = model;
-    console.log(toolbarOpts);
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
@@ -220,6 +219,7 @@ export class Categories extends React.Component {
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
+                  toolbarOpts={toolbarOpts}
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }

@@ -37,8 +37,7 @@ export class Design extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    }),
-    toolbarOpts: PropTypes.object
+    })
   };
 
   constructor(props) {
@@ -319,6 +318,7 @@ export class Design extends React.Component {
               choices={choices}
               model={model}
               onModelChanged={this.updateModel}
+              toolbarOpts={toolbarOpts}
             />
 
             {feedbackEnabled && (
