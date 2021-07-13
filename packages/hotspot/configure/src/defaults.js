@@ -1,6 +1,7 @@
 export default {
   model: {
     prompt: 'This is the question prompt',
+    toolbarEditorPosition: "bottom",
     promptEnabled: true,
     imageUrl: '',
     shapes: {
