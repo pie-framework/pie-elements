@@ -113,6 +113,12 @@ export interface MathInlinePie extends PieModel {
 
     /** Indicates if Teacher Instructions are enabled */
     teacherInstructionsEnabled: boolean;
+
+    /**
+     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+     * @default: 'bottom'
+     */
+    toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 
