@@ -79,6 +79,7 @@ const base = extras =>
       rationale: 'Rationale goes here.',
       prompt: 'What sentences contain the character 6 in them?',
       promptEnabled: true,
+      toolbarEditorPosition: 'top',
       // text: `<p>Warhol was born in 1928 in Pittsburgh, Pennsylvania. When he was eight years old, he became very sick and had to stay in bed for months. To help him pass the time his mother, who was an artist, taught him how to draw. He took to it like a fish to water. Art became the center of Andy's world. A year later he added picture-taking to his interests when his mother gave him a camera. He also became fascinated with movies.</p><p>Andy studied art in school and learned many ways to make art. He learned how to use different art materials, such as oil paints, metal, clay, and wood. In 1949 he moved to New York City, where he got a job drawing and painting pictures for magazines.</p>`,
       text: `<p>If 'tweren't for sight and sound and smell,<br />
 I'd like the city pretty well,<br />
