@@ -2,9 +2,8 @@
 
 exports[`choices snapshots disabled 1`] = `
 <div>
-  <WithStyles(GridContent)
-    columns={4}
-    extraStyle={
+  <div
+    style={
       Object {
         "textAlign": "center",
       }
@@ -15,28 +14,31 @@ exports[`choices snapshots disabled 1`] = `
 
 exports[`choices snapshots empty 1`] = `
 <div>
-  <WithStyles(GridContent)
-    columns={4}
-    extraStyle={
+  <div
+    style={
       Object {
         "textAlign": "center",
       }
     }
   >
     <DragSource(Choice)
+      extraStyle={
+        Object {
+          "maxWidth": "95%",
+        }
+      }
       id="1"
       key="0"
       label="foo"
     />
-  </WithStyles(GridContent)>
+  </div>
 </div>
 `;
 
 exports[`choices snapshots empty 2`] = `
 <div>
-  <WithStyles(GridContent)
-    columns={4}
-    extraStyle={
+  <div
+    style={
       Object {
         "textAlign": "center",
       }
@@ -45,15 +47,14 @@ exports[`choices snapshots empty 2`] = `
     <Blank
       key="0"
     />
-  </WithStyles(GridContent)>
+  </div>
 </div>
 `;
 
 exports[`choices snapshots renders 1`] = `
 <div>
-  <WithStyles(GridContent)
-    columns={4}
-    extraStyle={
+  <div
+    style={
       Object {
         "textAlign": "center",
       }

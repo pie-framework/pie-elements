@@ -112,6 +112,17 @@ const Design = withStyles(styles)(props => {
     video: { disabled: true }
   };
 
+  const toolbarOpts = {};
+
+  switch (model.toolbarEditorPosition) {
+    case 'top':
+      toolbarOpts.position = 'top';
+      break;
+    default:
+      toolbarOpts.position = 'bottom';
+      break;
+  }
+
   const Content = (
     <div>
       {teacherInstructionsEnabled && (
@@ -125,7 +136,7 @@ const Design = withStyles(styles)(props => {
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
             nonEmpty={false}
-            toolbarOpts={{ position: model.toolbarEditorPosition === 'top' ? model.toolbarEditorPosition : 'bottom' }}
+            toolbarOpts={toolbarOpts}
           />
         </InputContainer>
       )}
@@ -139,7 +150,7 @@ const Design = withStyles(styles)(props => {
             imageSupport={imageSupport}
             nonEmpty={false}
             disableUnderline
-            toolbarOpts={{ position: model.toolbarEditorPosition === 'top' ? model.toolbarEditorPosition : 'bottom' }}
+            toolbarOpts={toolbarOpts}
           />
         </InputContainer>
       )}
@@ -162,7 +173,7 @@ const Design = withStyles(styles)(props => {
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
-            toolbarOpts={{ position: model.toolbarEditorPosition === 'top' ? model.toolbarEditorPosition : 'bottom' }}
+            toolbarOpts={toolbarOpts}
           />
           {rationaleEnabled && (
             <InputContainer
@@ -180,7 +191,7 @@ const Design = withStyles(styles)(props => {
                   })
                 }
                 imageSupport={imageSupport}
-                toolbarOpts={{ position: model.toolbarEditorPosition === 'top' ? model.toolbarEditorPosition : 'bottom' }}
+                toolbarOpts={toolbarOpts}
                 pluginProps={labelPlugins}
               />
             </InputContainer>

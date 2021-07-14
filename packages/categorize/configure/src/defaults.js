@@ -1,7 +1,6 @@
 export default {
   model: {
     choices: [],
-    choicesPerRow: 2,
     choicesPosition: 'below',
     choicesLabel: '',
     lockChoiceOrder: true,

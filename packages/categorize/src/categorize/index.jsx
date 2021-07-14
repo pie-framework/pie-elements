@@ -119,8 +119,8 @@ export class Categorize extends React.Component {
   render() {
     const { classes, model, session } = this.props;
     const { showCorrect } = this.state;
-    const { choicesPosition } = model;
-
+    const { choicesPosition, note, showNote, env } = model;
+    const { mode, role } = env || {};
     const choicePosition = choicesPosition || 'above';
 
     const style = {
@@ -138,6 +138,7 @@ export class Categorize extends React.Component {
 
     const { rowLabels, categoriesPerRow } = model;
     const nbOfRows = categories && Math.ceil(categories.length / categoriesPerRow) || 0;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     return (
       <div className={classes.mainContainer}>
@@ -202,6 +203,12 @@ export class Categorize extends React.Component {
             choicePosition={choicePosition}
           />
         </div>
+        {displayNote && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
         {
           model.rationale && hasText(model.rationale) && (
             <Collapsible
@@ -252,6 +259,9 @@ const styles = (theme) => ({
     marginBottom: '35px',
     verticalAlign: 'middle'
   },
+  note: {
+    padding: '5px 0'
+  },
   categorize: {
     marginBottom: theme.spacing.unit,
     display: 'flex',
@@ -261,4 +271,5 @@ const styles = (theme) => ({
     paddingBottom: theme.spacing.unit * 2
   }
 });
+
 export default withDragContext(withStyles(styles)(CategorizeProvider));

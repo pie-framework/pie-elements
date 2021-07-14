@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { InputCheckbox } from '@pie-lib/config-ui';
+import { Checkbox } from '@pie-lib/config-ui';
 
 const positionOptions = [
   {
@@ -62,15 +62,6 @@ export class Config extends React.Component {
     onModelChanged({ choices: update });
   };
 
-  changeColumns = ({ target }) => {
-    const { onModelChanged } = this.props;
-    const numberValue = parseInt(target.value, 10);
-
-    if (numberValue && numberValue >= 1 && numberValue <= 4) {
-      onModelChanged({ choicesPerRow: numberValue });
-    }
-  };
-
   changeLabel = ({ target }) => {
     this.props.onModelChanged({ choicesLabel: target.value });
   };
@@ -110,23 +101,12 @@ export class Config extends React.Component {
     return (
       <div className={classNames(classes.config, className)}>
         <div className={classes.row}>
-          <TextField
-            label={'Choices per row'}
-            type="number"
-            inputProps={{
-              min: 1,
-              max: 4
-            }}
-            value={config.choicesPerRow}
-            onChange={this.changeColumns}
-          />
-          <InputCheckbox
+          <Checkbox
             label={'Remove all tiles after placing'}
             checked={categoryCountIsOne}
             onChange={this.toggleRemoveAllTiles}
           />
-          <InputCheckbox
-            className={classes.shuffleCheckbox}
+          <Checkbox
             label={'Lock Choice Order'}
             checked={config.lockChoiceOrder}
             onChange={this.toggleShuffle}

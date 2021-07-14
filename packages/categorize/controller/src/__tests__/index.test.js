@@ -150,7 +150,6 @@ describe('controller', () => {
     it('adds default config', async () => {
       const result = await model(question, {}, { mode: 'gather' }, jest.fn());
       expect(result).toMatchObject({
-        choicesPerRow: 2,
         categoriesPerRow: 2,
         choicesLabel: '',
       });

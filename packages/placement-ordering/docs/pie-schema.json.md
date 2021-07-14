@@ -160,6 +160,10 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Choice Label is enabled
 
+# `note` (string)
+
+Indicates the note for the answer
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
