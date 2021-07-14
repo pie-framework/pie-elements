@@ -152,7 +152,7 @@ export class RespAreaToolbar extends React.Component {
 
   onDone = (val) => {
     const { node, onAddChoice } = this.props;
-    const onlyText = createElementFromHTML(val).textContent;
+    const onlyText = createElementFromHTML(val).textContent.trim();
 
     if (!isEmpty(onlyText)) {
       onAddChoice(node.data.get('index'), val);
@@ -218,6 +218,16 @@ export class RespAreaToolbar extends React.Component {
     this.clickedInside = true;
   };
 
+  focusInput = () => {
+    // we need to focus the input so that math is saved even without pressing the green checkmark
+    const slateEditorRef = this.editorRef && this.editorRef.rootRef && this.editorRef.rootRef.slateEditor;
+    const inputRef = slateEditorRef && slateEditorRef.editorRef && slateEditorRef.editorRef.element;
+
+    if (inputRef) {
+      inputRef.focus();
+    }
+  };
+
   render() {
     const { classes, choices } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
@@ -276,7 +286,8 @@ export class RespAreaToolbar extends React.Component {
               transform: 'translate(0, -50%)'
             }}
             contentEditable={false}
-            onMouseDown={() => this.onAddChoice()}
+            onMouseDown={() => this.focusInput()}
+            onClick={() => this.onAddChoice()}
           >
             +
           </i>
