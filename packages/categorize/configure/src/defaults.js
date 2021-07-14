@@ -16,7 +16,7 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: "bottom",
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     feedback: {

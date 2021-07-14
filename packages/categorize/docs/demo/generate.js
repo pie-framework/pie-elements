@@ -338,5 +338,5 @@ exports.model = (id, element) => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  toolbarEditorPosition: "top",
+  toolbarEditorPosition: 'top',
 });
