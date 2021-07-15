@@ -32,6 +32,7 @@ export default class SelectTextConfigure extends HTMLElement {
 
   set model(m) {
     this._model = SelectTextConfigure.createDefaultModel(m);
+    this.dispatchEvent(new ModelUpdatedEvent(this._model), true);
     this.render();
   }
 
