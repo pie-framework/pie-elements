@@ -71,7 +71,7 @@ exports.oldModel = (id, element) => ({
 });
 
 exports.model = (id, element) => ({
-  toolbarEditorPosition: 'top',
+  toolbarEditorPosition: 'bottom',
   correctResponse: [
     {
       pointType: 'full',
