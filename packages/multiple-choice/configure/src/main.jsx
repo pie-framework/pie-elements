@@ -6,7 +6,7 @@ import {
   ChoiceConfiguration,
   settings,
   layout,
-  choiceUtils as utils
+  choiceUtils as utils,
 } from '@pie-lib/config-ui';
 import { color } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,43 +16,55 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const { Panel, toggle, radio } = settings;
 
+// class CustomEditor extends HTMLElement {
+//   set markup(s) {
+//     this.innerHTML = s;
+//   }
+
+//   connectedCallback() {
+//     // this.innerHTML = 'foo';
+//   }
+// }
+
+// customElements.define('custom-editor', CustomEditor);
+
 const MAX_CHOICES = 9;
 
-const styles = theme => ({
+const styles = (theme) => ({
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   rationaleHolder: {
-    width: '70%'
+    width: '70%',
   },
   rationale: {
-    paddingTop: theme.spacing.unit * 2
+    paddingTop: theme.spacing.unit * 2,
   },
   design: {
-    paddingTop: theme.spacing.unit * 3
+    paddingTop: theme.spacing.unit * 3,
   },
   choiceConfigurationHolder: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   choiceConfiguration: {
     width: '100%',
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   switchElement: {
     justifyContent: 'space-between',
-    margin: 0
+    margin: 0,
   },
   addButton: {
-    float: 'right'
+    float: 'right',
   },
   disableButton: {
     cursor: 'not-allowed',
@@ -63,13 +75,14 @@ const styles = theme => ({
     },
     '&:focus': {
       backgroundColor: color.disabled(),
-    }
-  }
+    },
+  },
 });
 
-const Design = withStyles(styles)(props => {
+const Design = withStyles(styles)((props) => {
   const {
     classes,
+    customEditor,
     model,
     configuration,
     onPromptChanged,
@@ -79,7 +92,7 @@ const Design = withStyles(styles)(props => {
     imageSupport,
     onChangeModel,
     onConfigurationChanged,
-    onTeacherInstructionsChanged
+    onTeacherInstructionsChanged,
   } = props;
   const {
     prompt = {},
@@ -97,23 +110,29 @@ const Design = withStyles(styles)(props => {
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
-    verticalMode
+    verticalMode,
   } = configuration || {};
   const {
     limitChoicesNumber: limitChoicesNumberModel,
     teacherInstructionsEnabled,
     rationaleEnabled,
     feedbackEnabled,
-    promptEnabled
+    promptEnabled,
   } = model || {};
 
   const labelPlugins = {
     audio: { disabled: true },
-    video: { disabled: true }
+    video: { disabled: true },
   };
+
+  const TextEditor = customEditor ? customEditor : EditableHtml;
+
+  console.log('TextEditor:', TextEditor);
 
   const Content = (
     <div>
+      <TextEditor markup={`<div>hi there</div>`}></TextEditor>
+
       {teacherInstructionsEnabled && (
         <InputContainer
           label={teacherInstructions.label}
@@ -156,7 +175,7 @@ const Design = withStyles(styles)(props => {
             defaultFeedback={{}}
             imageSupport={imageSupport}
             onDelete={() => onRemoveChoice(index)}
-            onChange={c => onChoiceChanged(index, c)}
+            onChange={(c) => onChoiceChanged(index, c)}
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
@@ -170,10 +189,10 @@ const Design = withStyles(styles)(props => {
               <EditableHtml
                 className={classes.rationale}
                 markup={choice.rationale || ''}
-                onChange={c =>
+                onChange={(c) =>
                   onChoiceChanged(index, {
                     ...choice,
-                    rationale: c
+                    rationale: c,
                   })
                 }
                 imageSupport={imageSupport}
@@ -185,9 +204,21 @@ const Design = withStyles(styles)(props => {
       ))}
       <br />
       {addChoiceButton.settings && (
-        <Tooltip title={limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? `Only ${MAX_CHOICES} allowed maximum` : ''} classes={{ tooltip: classes.tooltip }}>
+        <Tooltip
+          title={
+            limitChoicesNumberModel && model.choices.length >= MAX_CHOICES
+              ? `Only ${MAX_CHOICES} allowed maximum`
+              : ''
+          }
+          classes={{ tooltip: classes.tooltip }}
+        >
           <Button
-            classes={{ root: limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? classes.disableButton : undefined }}
+            classes={{
+              root:
+                limitChoicesNumberModel && model.choices.length >= MAX_CHOICES
+                  ? classes.disableButton
+                  : undefined,
+            }}
             className={classes.addButton}
             variant="contained"
             color="primary"
@@ -226,11 +257,13 @@ const Design = withStyles(styles)(props => {
                   partialScoring:
                     partialScoring.settings && toggle(partialScoring.label),
                   limitChoicesNumber:
-                    limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
+                    limitChoicesNumber.settings &&
+                    toggle(limitChoicesNumber.label),
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   feedbackEnabled: feedback.settings && toggle(feedback.label),
-                  verticalMode: verticalMode.settings && toggle(verticalMode.label)
+                  verticalMode:
+                    verticalMode.settings && toggle(verticalMode.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -244,8 +277,8 @@ const Design = withStyles(styles)(props => {
                     rationale.settings && toggle(rationale.label),
                   scoringType:
                     scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric'])
-                }
+                    radio(scoringType.label, ['auto', 'rubric']),
+                },
               }}
             />
           }
@@ -266,11 +299,11 @@ export class Main extends React.Component {
     classes: PropTypes.object.isRequired,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
-  onRemoveChoice = index => {
+  onRemoveChoice = (index) => {
     const { model } = this.props;
 
     model.choices.splice(index, 1);
@@ -280,13 +313,19 @@ export class Main extends React.Component {
   onAddChoice = () => {
     const { model } = this.props;
 
-    if (!model.limitChoicesNumber || (model.limitChoicesNumber && model.choices.length < MAX_CHOICES)) {
+    if (
+      !model.limitChoicesNumber ||
+      (model.limitChoicesNumber && model.choices.length < MAX_CHOICES)
+    ) {
       model.choices.push({
         label: '',
-        value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
+        value: utils.firstAvailableIndex(
+          model.choices.map((c) => c.value),
+          0
+        ),
         feedback: {
-          type: 'none'
-        }
+          type: 'none',
+        },
       });
 
       this.props.onModelChanged(model);
@@ -297,7 +336,7 @@ export class Main extends React.Component {
     const { model } = this.props;
 
     if (choice.correct && model.choiceMode === 'radio') {
-      model.choices = model.choices.map(c => {
+      model.choices = model.choices.map((c) => {
         return merge({}, c, { correct: false });
       });
     }
@@ -306,17 +345,17 @@ export class Main extends React.Component {
     this.props.onModelChanged(model);
   };
 
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     this.props.onModelChanged({
       ...this.props.model,
-      prompt
+      prompt,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     this.props.onModelChanged({
       ...this.props.model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
@@ -330,7 +369,7 @@ export class Main extends React.Component {
         if (value === 'radio') {
           let correctFound = false;
 
-          model.choices = model.choices.map(c => {
+          model.choices = model.choices.map((c) => {
             if (correctFound) {
               c.correct = false;
               return c;

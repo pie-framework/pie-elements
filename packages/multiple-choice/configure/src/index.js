@@ -4,7 +4,7 @@ import debug from 'debug';
 import {
   DeleteImageEvent,
   InsertImageEvent,
-  ModelUpdatedEvent
+  ModelUpdatedEvent,
 } from '@pie-framework/pie-configure-events';
 
 import Main from './main';
@@ -25,8 +25,8 @@ const generateFormattedChoices = (choices, choiceCount = 0) => {
         label: '',
         feedback: {
           type: 'none',
-          value: ''
-        }
+          value: '',
+        },
       });
     }
 
@@ -43,17 +43,21 @@ const prepareCustomizationObject = (config, model) => {
     configuration,
     model: {
       ...model,
-      choices: generateFormattedChoices((model && model.choices) || [], configuration && configuration.answerChoiceCount)
-    }
+      choices: generateFormattedChoices(
+        (model && model.choices) || [],
+        configuration && configuration.answerChoiceCount
+      ),
+    },
   };
 };
 
 export default class MultipleChoice extends HTMLElement {
-  static createDefaultModel = (model = {}) => utils.normalizeChoices({
-    ...sensibleDefaults.model,
-    ...model,
-    choices: generateFormattedChoices((model && model.choices) || [])
-  });
+  static createDefaultModel = (model = {}) =>
+    utils.normalizeChoices({
+      ...sensibleDefaults.model,
+      ...model,
+      choices: generateFormattedChoices((model && model.choices) || []),
+    });
 
   constructor() {
     super();
@@ -82,6 +86,10 @@ export default class MultipleChoice extends HTMLElement {
     this._render();
   }
 
+  set editor(tagName) {
+    this._editor = tagName;
+  }
+
   dispatchModelUpdated(reset) {
     const resetValue = !!reset;
 
@@ -95,7 +103,10 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   onConfigurationChanged(c) {
-    this._configuration = prepareCustomizationObject(c, this._model).configuration;
+    this._configuration = prepareCustomizationObject(
+      c,
+      this._model
+    ).configuration;
 
     if (this._model) {
       this.onModelChanged(this._model);
@@ -123,8 +134,9 @@ export default class MultipleChoice extends HTMLElement {
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
-        delete: this.onDeleteImage.bind(this)
-      }
+        delete: this.onDeleteImage.bind(this),
+      },
+      customEditor: 'custom-editor', //this._editor,
     });
     ReactDOM.render(element, this);
   }
