@@ -45,5 +45,5 @@ exports.model = (id, element) => ({
   ],
   promptEnabled: true,
   prompt: 'Select correct answers.',
-  toolbarEditorPosition: 'top',
+  toolbarEditorPosition: 'bottom'
 });
