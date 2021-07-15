@@ -49,5 +49,5 @@ exports.model = (id, element) => ({
   placementArea: true,
   scoringType: 'auto',
   targetLabel: 'Answers',
-  toolbarEditorPosition: 'top',
+  toolbarEditorPosition: 'bottom'
 });
