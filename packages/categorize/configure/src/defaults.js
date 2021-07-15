@@ -15,7 +15,8 @@ export default {
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     feedback: {
@@ -50,6 +51,10 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    toolbarEditorPosition:{
+      settings: false,
+      label: 'Toolbar Editor Position'
     },
   }
 };

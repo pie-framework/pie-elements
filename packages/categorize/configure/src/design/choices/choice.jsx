@@ -36,7 +36,8 @@ export class Choice extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   static defaultProps = {};
@@ -65,7 +66,8 @@ export class Choice extends React.Component {
       onDelete,
       connectDragSource,
       connectDragPreview,
-      imageSupport
+      imageSupport,
+      toolbarOpts
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -91,6 +93,7 @@ export class Choice extends React.Component {
               label={choice.content}
               onChange={this.changeContent}
               onDelete={onDelete}
+              toolbarOpts={toolbarOpts}
             />
           </span>
         )}

@@ -96,6 +96,11 @@ exports[`Design snapshot renders 1`] = `
           }
         }
         onModelChanged={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
       <WithStyles(Header)
         buttonLabel="ADD AN ALTERNATE RESPONSE"
@@ -139,6 +144,11 @@ exports[`Design snapshot renders 1`] = `
           }
         }
         onModelChanged={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </div>
   </ConfigLayout>

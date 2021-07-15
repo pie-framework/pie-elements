@@ -21,7 +21,8 @@ export class Category extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   static defaultProps = {};
@@ -41,9 +42,9 @@ export class Category extends React.Component {
       onDelete,
       onDeleteChoice,
       onAddChoice,
-      imageSupport
+      imageSupport,
+      toolbarOpts
     } = this.props;
-
     return (
       <Card className={classNames(classes.category, className)}>
         {
@@ -53,6 +54,7 @@ export class Category extends React.Component {
               onChange={this.changeLabel}
               onDelete={onDelete}
               imageSupport={imageSupport}
+              toolbarOpts={toolbarOpts}
             />
           )
         }
