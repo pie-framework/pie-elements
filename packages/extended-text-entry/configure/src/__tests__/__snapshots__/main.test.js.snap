@@ -73,6 +73,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "rationaleEnabled": true,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
         }
       }
       onChangeConfiguration={[Function]}
@@ -89,6 +90,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </Component>
     <br />
@@ -100,6 +106,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup="This is the question prompt"
         nonEmpty={false}
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </Component>
     <WithStyles(Typography)
@@ -116,6 +127,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
       }
       label="When submitted, show"
       onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </div>
 </ConfigLayout>

@@ -27,8 +27,8 @@
         "Grade 6 - 7",
         "Grade 8 - HS",
         "advanced-algebra",
-        "miscellaneous",
         "geometry",
+        "miscellaneous",
         "statistics"
       ],
       "type": "string",
@@ -107,6 +107,14 @@
       "description": "Indicates if Teacher Instructions are enabled",
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
+    },
+    "toolbarEditorPosition": {
+      "enum": [
+        "bottom",
+        "top"
+      ],
+      "type": "string",
+      "title": "toolbarEditorPosition"
     },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
