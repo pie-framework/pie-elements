@@ -110,6 +110,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "studentInstructionsEnabled": true,
           "targetLabel": "",
           "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
         }
       }
       onChangeConfiguration={[Function]}
@@ -124,6 +125,11 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       markup=""
       nonEmpty={false}
       onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </InputContainer>
   <FormSection
@@ -135,6 +141,11 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       <EditableHtml
         markup="Item Stem goes here"
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
     <InputContainer
@@ -143,6 +154,11 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       <EditableHtml
         markup=""
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
   </FormSection>
@@ -156,6 +172,11 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         <EditableHtml
           markup=""
           onChange={[Function]}
+          toolbarOpts={
+            Object {
+              "position": "bottom",
+            }
+          }
         />
       </InputContainer>
     </div>
@@ -167,11 +188,21 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
   </FormSection>
   <FeedbackConfig
     onChange={[Function]}
+    toolbarOpts={
+      Object {
+        "position": "bottom",
+      }
+    }
   />
 </ConfigLayout>
 `;
@@ -286,6 +317,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "studentInstructionsEnabled": true,
           "targetLabel": "",
           "teacherInstructionsEnabled": true,
+          "toolbarEditorPosition": "bottom",
         }
       }
       onChangeConfiguration={[Function]}
@@ -300,6 +332,11 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       markup=""
       nonEmpty={false}
       onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </InputContainer>
   <FormSection
@@ -311,6 +348,11 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       <EditableHtml
         markup="Item Stem goes here"
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
     <InputContainer
@@ -319,6 +361,11 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       <EditableHtml
         markup=""
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
   </FormSection>
@@ -332,6 +379,11 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         <EditableHtml
           markup=""
           onChange={[Function]}
+          toolbarOpts={
+            Object {
+              "position": "bottom",
+            }
+          }
         />
       </InputContainer>
     </div>
@@ -343,11 +395,21 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        toolbarOpts={
+          Object {
+            "position": "bottom",
+          }
+        }
       />
     </InputContainer>
   </FormSection>
   <FeedbackConfig
     onChange={[Function]}
+    toolbarOpts={
+      Object {
+        "position": "bottom",
+      }
+    }
   />
 </ConfigLayout>
 `;
