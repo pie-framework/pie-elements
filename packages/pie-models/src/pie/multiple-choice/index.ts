@@ -37,6 +37,12 @@ export interface MultipleChoicePie extends PieModel {
    */
   verticalMode?: boolean;
 
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
+
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
 

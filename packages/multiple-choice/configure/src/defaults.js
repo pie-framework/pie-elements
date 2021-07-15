@@ -17,7 +17,8 @@ export default {
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true
+    verticalMode: true,
+    toolbarEditorPosition: 'bottom'
   },
   configuration: {
     verticalMode: {
@@ -75,6 +76,10 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
-    }
+    },
+    toolbarEditorPosition:{
+      settings: false,
+      label: 'Toolbar Editor Position'
+    },
   }
 };
