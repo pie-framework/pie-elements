@@ -35,5 +35,5 @@ exports.model = (id, element) => ({
   'mode': 'gather',
   'disabled': false,
   'teacherInstructions': null,
-  'toolbarEditorPosition': 'top'
+  'toolbarEditorPosition': 'bottom'
 });
