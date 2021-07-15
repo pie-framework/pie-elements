@@ -53,7 +53,8 @@ export class Choices extends React.Component {
     duplicates: PropTypes.bool,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    toolbarOpts: PropTypes.object
   };
 
   state = {
@@ -199,6 +200,7 @@ export class Choices extends React.Component {
     const {
       classes,
       duplicates,
+      toolbarOpts
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -249,6 +251,7 @@ export class Choices extends React.Component {
                         });
                       }}
                       disableUnderline
+                      toolbarOpts={toolbarOpts}
                     />
                   </div>
                 );
