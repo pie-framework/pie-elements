@@ -89,6 +89,7 @@ exports[`GraphingConfig renders snapshot 1`] = `
           }
         }
         backgroundMarks={Array []}
+        coordinatesOnHover={false}
         domain={
           Object {
             "axisLabel": "x",

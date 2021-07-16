@@ -135,7 +135,17 @@ export class CorrectResponse extends React.Component {
   render() {
     const { classes, model } = this.props;
     let { graph } = model || {};
-    const { answers, arrows, backgroundMarks, domain, labels, range, title, toolbarTools } = model || {};
+    const {
+      answers,
+      arrows,
+      backgroundMarks,
+      coordinatesOnHover,
+      domain,
+      labels,
+      range,
+      title,
+      toolbarTools
+    } = model || {};
     graph = graph || {};
 
    const answersKeys = Object.keys(answers || {});
@@ -160,6 +170,7 @@ export class CorrectResponse extends React.Component {
                 <Graph
                   axesSettings={{ includeArrows: arrows }}
                   backgroundMarks={backgroundMarks}
+                  coordinatesOnHover={coordinatesOnHover}
                   domain={domain}
                   labels={labels}
                   marks={marks}

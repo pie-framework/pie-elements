@@ -15,6 +15,10 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Allow authoring",
             "settings": false,
           },
+          "coordinatesOnHover": Object {
+            "label": "Coordinates on Hover",
+            "settings": true,
+          },
           "labels": Object {
             "enabled": true,
             "label": "Labels",
@@ -55,6 +59,7 @@ exports[`Configure renders snapshot 1`] = `
         Object {
           "Item Type": Object {
             "arrows": false,
+            "coordinatesOnHover": undefined,
             "labels": false,
             "padding": false,
             "title.enabled": false,
@@ -74,6 +79,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
+          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -156,6 +162,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
+          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -199,6 +206,7 @@ exports[`Configure renders snapshot 1`] = `
           "answers": Object {},
           "arrows": true,
           "backgroundMarks": Array [],
+          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,

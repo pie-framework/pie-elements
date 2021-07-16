@@ -1453,6 +1453,11 @@
       },
       "title": "backgroundMarks"
     },
+    "coordinatesOnHover": {
+      "description": "Indicates if coordinates of a point are displayed on hover",
+      "type": "boolean",
+      "title": "coordinatesOnHover"
+    },
     "domain": {
       "title": "GraphSettings",
       "type": "object",

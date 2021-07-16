@@ -35,6 +35,7 @@ export default {
     rationale: '',
     title: '',
     toolbarTools: allTools,
+    coordinatesOnHover: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -83,6 +84,10 @@ export default {
       settings: false,
       label: 'Graph Title',
       enabled: true
+    },
+    coordinatesOnHover: {
+      settings: true,
+      label: 'Coordinates on Hover'
     }
   }
 };

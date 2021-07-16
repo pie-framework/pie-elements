@@ -28,6 +28,7 @@ export default {
     height: 500
   },
   labels: {},
+  coordinatesOnHover: false,
   padding: true,
   prompt: '',
   range: {
