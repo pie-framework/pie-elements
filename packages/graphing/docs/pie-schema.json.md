@@ -52,6 +52,10 @@ Additional restrictions:
 
 * Minimum items: `1`
 
+# `coordinatesOnHover` (boolean)
+
+Indicates if coordinates of a point are displayed on hover
+
 # `domain` (object, required)
 
 Properties of the `domain` object:
