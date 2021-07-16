@@ -218,6 +218,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
           }
           onChange={[Function]}
           promptEnabled={true}
+          toolbarOpts={
+            Object {
+              "position": "bottom",
+            }
+          }
         />
         <FeedbackConfig
           feedback={
@@ -237,6 +242,11 @@ exports[`Configure renders correctly with snapshot 1`] = `
             }
           }
           onChange={[Function]}
+          toolbarOpts={
+            Object {
+              "position": "bottom",
+            }
+          }
         />
       </div>
     </div>
