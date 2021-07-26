@@ -43,8 +43,10 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
           "value": "finland",
         },
       ],
+      "choicesLayout": "vertical",
       "configure": Object {},
       "feedbackEnabled": true,
+      "gridColumns": "2",
       "limitChoicesNumber": true,
       "lockChoiceOrder": true,
       "partialScoring": false,
@@ -62,7 +64,136 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
   onChangeModel={[Function]}
   onChoiceChanged={[Function]}
   onConfigurationChanged={[MockFunction]}
-  onModelChanged={[MockFunction]}
+  onModelChanged={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "choiceMode": "checkbox",
+            "choicePrefix": "numbers",
+            "choices": Array [
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Sweden",
+                "value": "sweden",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Iceland",
+                "value": "iceland",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Norway",
+                "value": "norway",
+              },
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Finland",
+                "value": "finland",
+              },
+            ],
+            "choicesLayout": "vertical",
+            "configure": Object {},
+            "feedbackEnabled": true,
+            "gridColumns": "2",
+            "limitChoicesNumber": true,
+            "lockChoiceOrder": true,
+            "partialScoring": false,
+            "prompt": "Which of these northern European countries are EU members?",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "scoringType": "auto",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+            "toolbarEditorPosition": "bottom",
+            "verticalMode": true,
+          },
+        ],
+        Array [
+          Object {
+            "choiceMode": "checkbox",
+            "choicePrefix": "letters",
+            "choices": Array [
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Sweden",
+                "value": "sweden",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Iceland",
+                "value": "iceland",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Norway",
+                "value": "norway",
+              },
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Finland",
+                "value": "finland",
+              },
+            ],
+            "choicesLayout": "vertical",
+            "configure": Object {},
+            "feedbackEnabled": true,
+            "gridColumns": "2",
+            "limitChoicesNumber": true,
+            "lockChoiceOrder": true,
+            "partialScoring": false,
+            "prompt": "Which of these northern European countries are EU members?",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "scoringType": "auto",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+            "toolbarEditorPosition": "bottom",
+            "verticalMode": true,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
   onTeacherInstructionsChanged={[Function]}
@@ -112,8 +243,10 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
           "value": "finland",
         },
       ],
+      "choicesLayout": "vertical",
       "configure": Object {},
       "feedbackEnabled": true,
+      "gridColumns": "2",
       "limitChoicesNumber": true,
       "lockChoiceOrder": true,
       "partialScoring": false,
@@ -131,7 +264,75 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
   onChangeModel={[Function]}
   onChoiceChanged={[Function]}
   onConfigurationChanged={[MockFunction]}
-  onModelChanged={[MockFunction]}
+  onModelChanged={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "choiceMode": "checkbox",
+            "choicePrefix": "numbers",
+            "choices": Array [
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Sweden",
+                "value": "sweden",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Iceland",
+                "value": "iceland",
+              },
+              Object {
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Norway",
+                "value": "norway",
+              },
+              Object {
+                "correct": true,
+                "feedback": Object {
+                  "type": "none",
+                  "value": "",
+                },
+                "label": "Finland",
+                "value": "finland",
+              },
+            ],
+            "choicesLayout": "vertical",
+            "configure": Object {},
+            "feedbackEnabled": true,
+            "gridColumns": "2",
+            "limitChoicesNumber": true,
+            "lockChoiceOrder": true,
+            "partialScoring": false,
+            "prompt": "Which of these northern European countries are EU members?",
+            "promptEnabled": true,
+            "rationaleEnabled": true,
+            "scoringType": "auto",
+            "studentInstructionsEnabled": true,
+            "teacherInstructionsEnabled": true,
+            "toolbarEditorPosition": "bottom",
+            "verticalMode": true,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   onPromptChanged={[Function]}
   onRemoveChoice={[Function]}
   onTeacherInstructionsChanged={[Function]}

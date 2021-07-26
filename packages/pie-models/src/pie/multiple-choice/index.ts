@@ -33,9 +33,14 @@ export interface MultipleChoicePie extends PieModel {
   promptEnabled?: boolean;
 
   /** Indicates the layout of choices for player
-   * @default: true
+   * @default: 'vertical'
    */
-  verticalMode?: boolean;
+  choicesLayout?: 'vertical' | 'grid' | 'horizontal';
+
+  /** Indicates the number of columns for the grid layout
+   * @default: 2
+   */
+  gridColumns?: number;
 
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
@@ -118,11 +123,15 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    */
   prompt?: ConfigureProp;
 
-  /**
-   * Indicates the layout of choices for player
-   * @default: true
+  /** Indicates the layout of choices for player
+   * @default: 'vertical'
    */
-  verticalMode?: ConfigureProp;
+  choicesLayout?: ConfigureProp;
+
+  /** Indicates the number of columns for the grid layout
+   * @default: 2
+   */
+  gridColumns?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling
