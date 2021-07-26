@@ -32,7 +32,8 @@ export class Row extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
-    enableImages: PropTypes.bool
+    enableImages: PropTypes.bool,
+    toolbarOpts: PropTypes.object
   };
 
   static defaultProps = {};
@@ -144,7 +145,8 @@ export class Row extends React.Component {
       model,
       row,
       idx,
-      enableImages
+      enableImages,
+      toolbarOpts
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -179,6 +181,7 @@ export class Row extends React.Component {
               onChange={this.onRowTitleChange(idx)}
               className={classes.editor}
               pluginProps={rowPlugins}
+              toolbarOpts={toolbarOpts}
               allowValidation
             />
           </div>
