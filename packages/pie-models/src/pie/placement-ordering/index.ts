@@ -34,6 +34,11 @@ export interface CorrectResponse {
     weight?: number;
 }
 
+export interface AlternateResponse {
+    /** Array that contains the alternate response ids */
+    alternateResponse: string[];
+}
+
 /** NOTE: teacherInstructions, studentInstructions & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configuration (to be moved when the functionality is defined)
@@ -54,7 +59,7 @@ export interface PlacementOrderingPie extends PieModel {
     correctResponse?: CorrectResponse[];
 
     /** Array that contains the correct alternate responses */
-    alternateResponses: string[];
+    alternateResponses: AlternateResponse[];
 
     /** Indicates if the choices editor can use images */
     enableImages?: boolean;

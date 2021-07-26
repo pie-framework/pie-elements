@@ -10,6 +10,7 @@ import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
+import { InfoDialog } from './common';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -37,6 +38,13 @@ export class Row extends React.Component {
 
   static defaultProps = {};
 
+  state = {
+    dialog: {
+      open: false,
+      message: ''
+    }
+  };
+
   componentDidMount() {
     document.addEventListener('mouseup', this.onMouseUpOnHandle);
   }
@@ -45,9 +53,39 @@ export class Row extends React.Component {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel.rows[rowIndex].title = value;
+    const rows = newModel.rows || []
+    const currentRow =  rows[rowIndex] && rows[rowIndex].title;
 
-    onChange(newModel);
+    const sameValue = rows.filter(row => {
+      const wasChanged = currentRow !== value && `<div>${currentRow}</div>` !== value;
+      const sameValueEntered = row.title === value || `<div>${row.title}</div>` === value;
+
+      return wasChanged && sameValueEntered;
+    });
+
+    const empty = value === '<div></div>';
+
+    if (sameValue.length || empty) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: 'The question row headings must be non-blank and unique.',
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false,
+                }
+              }
+            );
+          }
+        }
+      });
+    } else {
+      newModel.rows[rowIndex].title = value;
+
+      onChange(newModel);
+    }
   };
 
   onRowValueChange = (rowIndex, rowValueIndex) => event => {
@@ -66,7 +104,27 @@ export class Row extends React.Component {
   };
 
   onDeleteRow = (idx) => () => {
-    this.props.onDeleteRow(idx)
+    const { model, onDeleteRow } = this.props;
+
+    if(model.rows && model.rows.length === 1) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: 'There has to be at least one question row.',
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false,
+                }
+              }
+            );
+          }
+        }
+      });
+    } else {
+      onDeleteRow(idx);
+    }
   };
 
   onMouseDownOnHandle = () => {
@@ -90,6 +148,7 @@ export class Row extends React.Component {
       enableImages,
       toolbarOpts
     } = this.props;
+    const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
 
     const rowPlugins = {
@@ -123,6 +182,7 @@ export class Row extends React.Component {
               className={classes.editor}
               pluginProps={rowPlugins}
               toolbarOpts={toolbarOpts}
+              allowValidation
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
@@ -148,6 +208,11 @@ export class Row extends React.Component {
           </div>
         </div>
         <hr className={classes.separator} />
+        <InfoDialog
+          title={dialog.message}
+          open={dialog.open}
+          onOk={dialog.onOk}
+        />
       </div>
     );
 
