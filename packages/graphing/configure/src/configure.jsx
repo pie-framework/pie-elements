@@ -9,7 +9,7 @@ import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
 
-const { Panel, toggle, radio } = settings;
+const { Panel, toggle, radio, checkboxes } = settings;
 const log = debug('@pie-element:graphing:configure');
 
 const styles = theme => ({
@@ -45,6 +45,33 @@ export class Configure extends React.Component {
   };
 
   static defaultProps = { classes: {} };
+
+  componentDidMount() {
+    // This is used for offering support for old models which have the property arrows: boolean
+    // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
+    const { onModelChanged, model } = this.props;
+    let { arrows } = model || {};
+
+    if (typeof arrows === 'boolean') {
+      if (arrows) {
+        arrows = {
+          left: true,
+          right: true,
+          up: true,
+          down: true
+        };
+      } else {
+        arrows = {
+          left: false,
+          right: false,
+          up: false,
+          down: false
+        };
+      }
+
+      onModelChanged({ ...model, arrows });
+    }
+  }
 
   onRationaleChange = rationale => {
     const { onModelChanged, model } = this.props;
@@ -102,7 +129,12 @@ export class Configure extends React.Component {
             onChangeConfiguration={onConfigurationChanged}
             groups={{
               'Item Type': {
-                arrows: arrows.settings && toggle(arrows.label),
+                arrows: arrows.settings && checkboxes(arrows.label, {
+                  left: arrows.left,
+                  right: arrows.right,
+                  up: arrows.up,
+                  down: arrows.down
+                }),
                 'title.enabled': title.settings && toggle(title.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),

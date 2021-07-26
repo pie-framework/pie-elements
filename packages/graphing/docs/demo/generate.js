@@ -105,7 +105,12 @@ exports.model = (id, element) => ({
         }]
     }
   },
-  arrows: true,
+  arrows: {
+    left: true,
+    right: true,
+    up: true,
+    down: true
+  },
   backgroundMarks: [
     {
       type: 'point',
