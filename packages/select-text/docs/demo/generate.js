@@ -1,43 +1,43 @@
-const tokens = () =>  [
+const tokens = () => [
   {
     text: 'If \'tweren\'t for sight and sound and smell,',
-    start: 3,
-    end: 52
+    start: 0,
+    end: 43
   },
   {
     text: 'I\'d like the city pretty well,',
-    start: 53,
-    end: 89
+    start: 44,
+    end: 74
   },
   {
     text: 'But when it comes to getting rest,',
-    start: 90,
-    end: 130
+    start: 75,
+    end: 109
   },
   {
     text: 'I like the country lots the best.',
-    start: 131,
-    end: 170
+    start: 110,
+    end: 143
   },
   {
     text: 'Sometimes it seems to me I must',
-    start: 173,
-    end: 210
+    start: 145,
+    end: 176
   },
   {
     text: 'Just quit the city\'s din and dust,',
-    start: 211,
-    end: 251
+    start: 177,
+    end: 211
   },
   {
     text: 'And get out where the sky is blue,',
-    start: 252,
-    end: 292
+    start: 212,
+    end: 246
   },
   {
     text: 'And say, now, how does it seem to you?',
-    start: 293,
-    end: 335
+    start: 247,
+    end: 285
   }
 ];
 

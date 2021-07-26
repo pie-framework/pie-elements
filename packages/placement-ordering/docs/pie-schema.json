@@ -72,7 +72,21 @@
       "description": "Array that contains the correct alternate responses",
       "type": "array",
       "items": {
-        "type": "string"
+        "title": "AlternateResponse",
+        "type": "object",
+        "properties": {
+          "alternateResponse": {
+            "description": "Array that contains the alternate response ids",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "alternateResponse"
+          }
+        },
+        "required": [
+          "alternateResponse"
+        ]
       },
       "title": "alternateResponses"
     },
@@ -436,6 +450,23 @@
       },
       "required": [
         "id"
+      ]
+    },
+    "AlternateResponse": {
+      "title": "AlternateResponse",
+      "type": "object",
+      "properties": {
+        "alternateResponse": {
+          "description": "Array that contains the alternate response ids",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "alternateResponse"
+        }
+      },
+      "required": [
+        "alternateResponse"
       ]
     },
     "ComplexFeedbackType": {
