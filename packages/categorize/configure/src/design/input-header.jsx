@@ -14,12 +14,17 @@ export class InputHeader extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className, imageSupport } = this.props;
+    const { onChange, label, classes, className, imageSupport, toolbarOpts } = this.props;
+    const choicePlugins = {
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
 
     return (
       <div className={classNames(classes.inputHeader, className)}>
@@ -30,6 +35,8 @@ export class InputHeader extends React.Component {
           markup={label}
           onChange={onChange}
           className={classes.editor}
+          pluginProps={choicePlugins}
+          toolbarOpts={toolbarOpts}
         />
       </div>
     );

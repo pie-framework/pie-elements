@@ -60,12 +60,6 @@ export interface CategorizePie extends PieModel {
   choices: CategoryChoice[];
 
   /**
-   * The number of columns in which to present the choices
-   * @default 2
-   */
-  choicesPerRow?: number;
-
-  /**
    * The number of columns in which to present the categories
    * @default 2
    */
@@ -120,6 +114,15 @@ export interface CategorizePie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+  /** Indicates the note for the answer */
+  note?: string;
+
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**

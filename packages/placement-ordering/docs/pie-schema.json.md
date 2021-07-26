@@ -56,6 +56,14 @@ Note: weights are not configurable in the existing component so we'll ignore it 
 
 Array that contains the correct alternate responses
 
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+## `alternateResponse` (array, required)
+
+Array that contains the alternate response ids
+
 The object is an array with all elements of the type `string`.
 
 # `enableImages` (boolean)
@@ -156,6 +164,14 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `choiceLabelEnabled` (boolean)
+
+Indicates if Choice Label is enabled
+
+# `note` (string)
+
+Indicates the note for the answer
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -169,23 +185,6 @@ The html Element tag name
 # Sub Schemas
 
 The schema defines the following additional types:
-
-## `ConfigurePropWithEnabled` (object)
-
-Properties of the `ConfigurePropWithEnabled` object:
-
-### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `enabled` (boolean)
-
-Indicates the value of the item if it affects config-ui
-(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ConfigureProp` (object)
 
@@ -236,6 +235,16 @@ The id of the correct response
 
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
+
+## `AlternateResponse` (object)
+
+Properties of the `AlternateResponse` object:
+
+### `alternateResponse` (array, required)
+
+Array that contains the alternate response ids
+
+The object is an array with all elements of the type `string`.
 
 ## `ComplexFeedbackType` (object)
 

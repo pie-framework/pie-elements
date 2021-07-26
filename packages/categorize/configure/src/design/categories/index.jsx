@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange }) => {
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts }) => {
   return (
     <div
       style={{
@@ -53,6 +53,7 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         onChange={onChange}
         imageSupport={imageSupport}
         nonEmpty={false}
+        toolbarOpts={toolbarOpts}
       />
     </div>
   );
@@ -68,7 +69,8 @@ export class Categories extends React.Component {
     className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    toolbarOpts: PropTypes.object
   };
 
   changeCategoryColumns = event => {
@@ -168,14 +170,14 @@ export class Categories extends React.Component {
       classes,
       className,
       categories,
-      imageSupport
+      imageSupport,
+      toolbarOpts
     } = this.props;
     const { categoriesPerRow, rowLabels } = model;
 
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
-    const lastRowLabelIndex = parseInt((categories.length - 1) / categoriesPerRow);
 
     return (
       <div className={classNames(classes.categories, className)}>
@@ -194,30 +196,30 @@ export class Categories extends React.Component {
         </div>
         <div className={classes.categoriesHolder} style={holderStyle}>
           {categories.map((category, index) => {
-            const hasRowLabel = index > 1 && index % categoriesPerRow === 0;
-            const rowIndex = parseInt(index / (categoriesPerRow + 1));
+            const hasRowLabel = index % categoriesPerRow === 0;
+            const rowIndex = index / categoriesPerRow;
 
             return (
               <React.Fragment
                 key={index}
               >
-                {
-                  hasRowLabel && (
-                    <RowLabel
-                      categoriesPerRow={categoriesPerRow}
-                      rowIndex={rowIndex}
-                      markup={rowLabels[rowIndex] || ''}
-                      onChange={(val) => this.changeRowLabel(val, rowIndex)}
-                      imageSupport={imageSupport}
-                    />
-                  )
-                }
+                {hasRowLabel && (
+                  <RowLabel
+                    categoriesPerRow={categoriesPerRow}
+                    rowIndex={rowIndex}
+                    markup={rowLabels[rowIndex] || ''}
+                    onChange={(val) => this.changeRowLabel(val, rowIndex)}
+                    imageSupport={imageSupport}
+                    toolbarOpts={toolbarOpts}
+                  />
+                )}
                 <Category
                   imageSupport={imageSupport}
                   category={category}
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
+                  toolbarOpts={toolbarOpts}
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }
@@ -225,13 +227,6 @@ export class Categories extends React.Component {
               </React.Fragment>
             );
           })}
-          <RowLabel
-            categoriesPerRow={categoriesPerRow}
-            rowIndex={lastRowLabelIndex}
-            markup={rowLabels[lastRowLabelIndex] || ''}
-            onChange={(val) => this.changeRowLabel(val, lastRowLabelIndex)}
-            imageSupport={imageSupport}
-          />
         </div>
       </div>
     );

@@ -26,34 +26,39 @@ export class Main extends React.Component {
     onConfigurationChanged: PropTypes.func
   };
 
+  removeExtraChoices = (choices) => {
+    let correctFound = false;
+
+     return (choices || []).map(choice => {
+      if (correctFound) {
+        choice.correct = false;
+        return choice;
+      }
+
+      if (choice.correct) {
+        correctFound = true;
+      }
+
+      return choice;
+    });
+  }
+
   onModelChanged = (model, key) => {
     const { onModelChanged } = this.props;
 
-    if (key !== 'partB.choiceMode') {
-      return onModelChanged(model);
-    };
+    if (key === 'partA.choiceMode' && model.partA.choiceMode === 'radio') {
+      model.partA.choices = this.removeExtraChoices(model.partA.choices);
 
-    const value = model.partB.choiceMode;
+      return onModelChanged(model, true);
+    }
 
-    if (value === 'radio') {
-      let correctFound = false;
+    if (key === 'partB.choiceMode' && model.partB.choiceMode === 'radio') {
+      model.partB.choices = this.removeExtraChoices(model.partB.choices);
 
-      model.partB.choices = model.partB.choices.map(c => {
-        // keep only one (first defined) correct answer
-        if (correctFound) {
-          c.correct = false;
-          return c;
-        };
+      return onModelChanged(model, true);
+    }
 
-        if (c.correct) {
-          correctFound = true;
-        };
-
-        return c;
-      });
-    };
-
-    return onModelChanged(model, true);
+    return onModelChanged(model);
   }
 
   render() {
@@ -73,6 +78,7 @@ export class Main extends React.Component {
       prompt: promptA = {},
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
+      verticalMode: verticalModeA = {},
       rationale: rationaleA = {}
     } = partA || {};
     const {
@@ -83,6 +89,7 @@ export class Main extends React.Component {
       prompt: promptB = {},
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
+      verticalMode: verticalModeB = {},
       rationale: rationaleB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
@@ -120,6 +127,8 @@ export class Main extends React.Component {
                     radio(choicePrefixA.label, ['numbers', 'letters']),
                   'partA.lockChoiceOrder':
                     lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
+                  'partA.verticalMode':
+                    verticalModeA.settings && toggle(verticalModeA.label)
                 },
                 [`Properties ${firstPart}`]: {
                   'partA.feedbackEnabled': feedbackA.settings &&
@@ -143,7 +152,9 @@ export class Main extends React.Component {
                     choicePrefixB.settings &&
                     radio(choicePrefixB.label, ['numbers', 'letters']),
                   'partB.lockChoiceOrder':
-                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label)
+                    lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
+                  'partB.verticalMode':
+                    verticalModeB.settings && toggle(verticalModeB.label)
                 },
                 [`Properties ${secondPart}`]: {
                   'partB.feedbackEnabled':

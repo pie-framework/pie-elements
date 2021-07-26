@@ -32,24 +32,6 @@ exports[`Main render should render in evaluate mode 1`] = `
       }
     }
   />
-  <div>
-    <WithStyles(Collapsible)
-      labels={
-        Object {
-          "hidden": "Show Rationale",
-          "visible": "Hide Rationale",
-        }
-      }
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
-      />
-    </WithStyles(Collapsible)>
-  </div>
   <WithMask
     choices={
       Object {
@@ -113,6 +95,24 @@ exports[`Main render should render in evaluate mode 1`] = `
       }
     }
   />
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Rationale",
+          "visible": "Hide Rationale",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Rationale",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+  </div>
 </div>
 `;
 
@@ -148,24 +148,6 @@ exports[`Main render should render in gather mode 1`] = `
       }
     }
   />
-  <div>
-    <WithStyles(Collapsible)
-      labels={
-        Object {
-          "hidden": "Show Rationale",
-          "visible": "Hide Rationale",
-        }
-      }
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
-      />
-    </WithStyles(Collapsible)>
-  </div>
   <WithMask
     choices={
       Object {
@@ -229,6 +211,24 @@ exports[`Main render should render in gather mode 1`] = `
       }
     }
   />
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Rationale",
+          "visible": "Hide Rationale",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Rationale",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+  </div>
 </div>
 `;
 
@@ -264,24 +264,6 @@ exports[`Main render should render in view mode 1`] = `
       }
     }
   />
-  <div>
-    <WithStyles(Collapsible)
-      labels={
-        Object {
-          "hidden": "Show Rationale",
-          "visible": "Hide Rationale",
-        }
-      }
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
-      />
-    </WithStyles(Collapsible)>
-  </div>
   <WithMask
     choices={
       Object {
@@ -345,6 +327,24 @@ exports[`Main render should render in view mode 1`] = `
       }
     }
   />
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Rationale",
+          "visible": "Hide Rationale",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Rationale",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+  </div>
 </div>
 `;
 
@@ -373,24 +373,6 @@ exports[`Main render should render without prompt 1`] = `
     show={false}
     toggled={false}
   />
-  <div>
-    <WithStyles(Collapsible)
-      labels={
-        Object {
-          "hidden": "Show Rationale",
-          "visible": "Hide Rationale",
-        }
-      }
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
-      />
-    </WithStyles(Collapsible)>
-  </div>
   <WithMask
     choices={
       Object {
@@ -454,6 +436,24 @@ exports[`Main render should render without prompt 1`] = `
       }
     }
   />
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Rationale",
+          "visible": "Hide Rationale",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Rationale",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+  </div>
 </div>
 `;
 
@@ -569,24 +569,6 @@ exports[`Main render should render without teacher instructions 1`] = `
       }
     }
   />
-  <div>
-    <WithStyles(Collapsible)
-      labels={
-        Object {
-          "hidden": "Show Rationale",
-          "visible": "Hide Rationale",
-        }
-      }
-    >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
-      />
-    </WithStyles(Collapsible)>
-  </div>
   <WithMask
     choices={
       Object {
@@ -650,5 +632,23 @@ exports[`Main render should render without teacher instructions 1`] = `
       }
     }
   />
+  <div>
+    <WithStyles(Collapsible)
+      labels={
+        Object {
+          "hidden": "Show Rationale",
+          "visible": "Hide Rationale",
+        }
+      }
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Rationale",
+          }
+        }
+      />
+    </WithStyles(Collapsible)>
+  </div>
 </div>
 `;

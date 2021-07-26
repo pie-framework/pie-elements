@@ -29,6 +29,7 @@ export class Main extends React.Component {
       answersCorrected,
       arrows,
       backgroundMarks,
+      coordinatesOnHover,
       correctResponse,
       disabled,
       domain,
@@ -42,9 +43,7 @@ export class Main extends React.Component {
       teacherInstructions,
       toolbarTools
     } = model || {};
-
     const marks = answersCorrected || answer || [];
-
 
     return (
       <div className={classes.mainContainer}>
@@ -58,6 +57,7 @@ export class Main extends React.Component {
           <GraphContainer
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={backgroundMarks}
+            coordinatesOnHover={coordinatesOnHover}
             disabled={true}
             domain={domain}
             labels={labels}
@@ -72,21 +72,26 @@ export class Main extends React.Component {
 
         {
           teacherInstructions && hasText(teacherInstructions) && (
-            <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-            </Collapsible>
+            <React.Fragment>
+              <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
           )
         }
 
-        <br/>
-
-        <div className={classes.prompt} dangerouslySetInnerHTML={{ __html: prompt }}/>
-
-        <br/>
+        {prompt && (
+          <React.Fragment>
+            <div className={classes.prompt} dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <br />
+          </React.Fragment>
+        )}
 
         <GraphContainer
           axesSettings={{ includeArrows: arrows }}
           backgroundMarks={backgroundMarks}
+          coordinatesOnHover={coordinatesOnHover}
           disabled={disabled}
           domain={domain}
           labels={labels}
@@ -98,7 +103,7 @@ export class Main extends React.Component {
           toolbarTools={toolbarTools}
         />
 
-        <br/>
+        <br />
 
         {
           rationale && hasText(rationale) && (

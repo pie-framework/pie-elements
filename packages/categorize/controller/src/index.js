@@ -38,6 +38,10 @@ export const getPartialScore = (correctResponse, builtCategories) => {
   return totalScore < 0 ? 0 : parseFloat(totalScore.toFixed(2));
 };
 
+const getAlternates = correctResponse => correctResponse
+  .map((c) => c.alternateResponses)
+  .filter((alternate) => alternate);
+
 export const getTotalScore = (question, session, env) => {
   if (!session) {
     return 0;
@@ -61,13 +65,11 @@ export const getTotalScore = (question, session, env) => {
     correctResponse
   );
 
-  const hasAlternates = correctResponse
-    .map((c) => c.alternateResponses)
-    .filter((alternate) => alternate);
+  const alternates = getAlternates(correctResponse);
   const enabled = partialScoring.enabled(question, env);
 
   // if there are any alternates, there will be no partial scoring!
-  if (enabled && !hasAlternates.length) {
+  if (enabled && !alternates.length) {
     // we apply partial scoring
     return getPartialScore(correctResponse, builtCategories);
   }
@@ -127,7 +129,6 @@ export const model = (question, session, env, updateSession) =>
     const {
       categories,
       categoriesPerRow,
-      choicesPerRow,
       choicesLabel,
       choicesPosition,
       correctResponse,
@@ -139,6 +140,7 @@ export const model = (question, session, env, updateSession) =>
       rowLabels,
       rationaleEnabled,
       rationale,
+      note,
       teacherInstructionsEnabled,
       teacherInstructions,
     } = normalizedQuestion;
@@ -158,13 +160,13 @@ export const model = (question, session, env, updateSession) =>
       choices = await getShuffledChoices(choices, session, updateSession, 'id');
     }
 
+    const alternates = getAlternates(correctResponse);
     const out = {
       categories: categories || [],
       categoriesPerRow: categoriesPerRow || 2,
       correctness: answerCorrectness,
       choices: choices || [],
       choicesLabel: choicesLabel || '',
-      choicesPerRow: choicesPerRow || 2,
       choicesPosition,
       disabled: mode !== 'gather',
       feedback: fb,
@@ -172,6 +174,9 @@ export const model = (question, session, env, updateSession) =>
       prompt: promptEnabled ? prompt : null,
       removeTilesAfterPlacing,
       rowLabels,
+      note,
+      env,
+      showNote: alternates && alternates.length > 0,
       correctResponse: mode === 'evaluate' ? correctResponse : undefined,
     };
 

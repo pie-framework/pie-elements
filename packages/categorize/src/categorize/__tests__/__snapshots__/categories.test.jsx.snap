@@ -6,7 +6,7 @@ exports[`categories snapshots disabled 1`] = `
   rows={2}
 >
   <WithStyles(Typography)
-    key="category-label-category label"
+    key="category-label-0-0"
   >
     <span
       dangerouslySetInnerHTML={
@@ -19,14 +19,8 @@ exports[`categories snapshots disabled 1`] = `
   <WithStyles(Category)
     choices={Array []}
     disabled={true}
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-      }
-    }
     id="1"
-    key="0"
+    key="category-element-0-0"
     label="category label"
     onDropChoice={[Function]}
     onRemoveChoice={[MockFunction]}
@@ -40,7 +34,7 @@ exports[`categories snapshots renders 1`] = `
   rows={2}
 >
   <WithStyles(Typography)
-    key="category-label-category label"
+    key="category-label-0-0"
   >
     <span
       dangerouslySetInnerHTML={
@@ -52,14 +46,8 @@ exports[`categories snapshots renders 1`] = `
   </WithStyles(Typography)>
   <WithStyles(Category)
     choices={Array []}
-    grid={
-      Object {
-        "columns": 1,
-        "rows": 1,
-      }
-    }
     id="1"
-    key="0"
+    key="category-element-0-0"
     label="category label"
     onDropChoice={[Function]}
     onRemoveChoice={[MockFunction]}

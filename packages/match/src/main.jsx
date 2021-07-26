@@ -118,6 +118,8 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { showCorrect, session } = this.state;
+    const { correctness = {} } = model;
+    const showCorrectAnswerToggle = correctness.correctness && correctness.correctness !== 'correct';
 
     return (
       <div className={classes.mainContainer}>
@@ -144,15 +146,11 @@ export class Main extends React.Component {
 
         <div className={classes.main}>
           <CorrectAnswerToggle
-            className={classes.toggle}
-            show={
-              model.correctness &&
-              model.correctness.correctness &&
-              model.correctness.correctness !== 'correct'
-            }
+            show={showCorrectAnswerToggle}
             toggled={showCorrect}
             onToggle={this.toggleShowCorrect}
           />
+          {showCorrectAnswerToggle && <br />}
           <AnswerGrid
             showCorrect={showCorrect}
             allowFeedback={model.allowFeedback}

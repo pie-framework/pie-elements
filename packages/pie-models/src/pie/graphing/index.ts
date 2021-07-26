@@ -155,6 +155,9 @@ export interface GraphingPie extends PieModel {
     /** Indicates marks that have to be displayed in background */
     backgroundMarks: [Mark];
 
+    /** Indicates if coordinates of a point are displayed on hover */
+    coordinatesOnHover?: boolean;
+
     /** Indicates domain settings for the graph */
     domain: GraphSettings;
 
@@ -249,6 +252,11 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
      * Arrows configuration
      */
     arrows?: ArrowsConfigProp;
+
+    /**
+     *  Coordinates configuration
+     */
+    coordinatesOnHover?: ConfigureProp;
 
     /**
      * Padding configuration

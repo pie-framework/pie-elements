@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { defaults } from '@pie-lib/feedback';
 import * as controller from '../index';
+import { normalize } from '../index';
 
 const mkQuestion = (extras) => ({
   correctResponse: [
@@ -177,11 +178,24 @@ describe('controller', () => {
     });
 
     assertOutcome(
-      'with deductions',
-      mkQuestion(),
+      'score is 0.5 for 2/2 answers correct and 1 extra incorrect answer',
+      mkQuestion({ partialScoring: true }),
       {
         answer: [
           ...mkQuestion().correctResponse,
+          { type: 'point', pointType: 'full', position: -3.3 },
+        ],
+      },
+      {},
+      { score: 0.5 }
+    );
+
+    assertOutcome(
+      'score is 0.5 for 1/2 answers correct and 1 extra incorrect answer',
+      mkQuestion({ partialScoring: true }),
+      {
+        answer: [
+          mkQuestion().correctResponse[0],
           { type: 'point', pointType: 'full', position: -3.3 },
         ],
       },
@@ -249,6 +263,29 @@ describe('controller', () => {
       { mode: 'evaluate' },
       { score: 0, empty: true }
     );
+  });
+
+  describe('normalize', () => {
+    const question = mkQuestion({ feedback: undefined });
+
+    it('adds default feedback if it is undefined', async () => {
+      const normalizedQuestion = await normalize(question);
+
+      expect(normalizedQuestion.feedback).toMatchObject({
+          correct: {
+            default: 'Correct',
+            type: 'none'
+          },
+          incorrect: {
+            default: 'Incorrect',
+            type: 'none'
+          },
+          partial: {
+            default: 'Nearly',
+            type: 'none'
+          }
+      });
+    });
   });
 
   describe('model', () => {

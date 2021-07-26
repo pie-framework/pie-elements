@@ -19,7 +19,6 @@ describe('config', () => {
           content: 'Choice 0'
         },
       ],
-      choicesPerRow: 2,
       choicesPosition: 'below',
       choicesLabel: '',
       lockChoiceOrder: true,
@@ -78,16 +77,6 @@ describe('config', () => {
         expect(onModelChanged).toBeCalledWith({ choices: [
             { id: '0', content: 'Choice 0', categoryCount: 0 }
           ]});
-      });
-    });
-
-    it('changeColumns', () => {
-      let w = wrapper();
-
-      w.instance().changeColumns({ target: { value: 4 } });
-
-      expect(onModelChanged).toBeCalledWith({
-        choicesPerRow: 4
       });
     });
 

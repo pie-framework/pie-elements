@@ -12,7 +12,6 @@ const log = debug('@pie-ui:extended-text-entry');
 
 const style = theme => ({
   main: {
-    padding: '10px 20px',
     backgroundColor: color.background(),
     color: color.text()
   },
@@ -66,7 +65,7 @@ export class Main extends React.Component {
               >
                 <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
               </Collapsible>
-              <br/>
+              <br />
             </div>
           )
         }
@@ -101,7 +100,7 @@ export class Main extends React.Component {
         />
         {feedback && (
           <div>
-            <br/>
+            <br />
             <Feedback correctness="correct" feedback={feedback}/>
           </div>
         )}

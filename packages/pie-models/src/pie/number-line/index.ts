@@ -71,9 +71,6 @@ interface NumberLineDomainConfiguration {
   /** Indicates domain representation width */
   width: number;
 
-  /** Indicates domain representation height */
-  height: number;
-
   /** Domain limits */
   domain: Domain;
 

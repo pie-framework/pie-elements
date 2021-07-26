@@ -71,17 +71,18 @@ const Matrix = (props) => {
   return (
     <MatrixWrapper>
       {teacherInstructions && (
-        <Collapsible
-          labels={{
-            hidden: 'Show Teacher Instructions',
-            visible: 'Hide Teacher Instructions',
-          }}
-        >
-          <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
-        </Collapsible>
+        <React.Fragment>
+          <Collapsible
+            labels={{
+              hidden: 'Show Teacher Instructions',
+              visible: 'Hide Teacher Instructions',
+            }}
+          >
+            <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
+          </Collapsible>
+          <br />
+        </React.Fragment>
       )}
-      <br/>
-      <br/>
       <PromptWrapper dangerouslySetInnerHTML={{__html: prompt}}/>
       <MatrixGridWrapper gridTemplateColumns={gridTemplateColumns}>
         {gridMatrixItems.map((gridMatrixItem, gridMatrixIndex) => {

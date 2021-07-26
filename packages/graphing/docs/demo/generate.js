@@ -132,6 +132,7 @@ exports.model = (id, element) => ({
     width: 480,
     height: 480
   },
+  coordinatesOnHover: false,
   labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
   padding: true,
   prompt: 'Here goes item stem !!!!!!',

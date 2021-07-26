@@ -13,6 +13,7 @@ import { MultiTraitButton } from './common';
 import { ExcludeZeroDialog, excludeZeroTypes, IncludeZeroDialog } from './modals';
 
 const { Panel, toggle } = settings;
+const MIN_WIDTH = '730px';
 
 const styles = {
   design: {
@@ -217,10 +218,11 @@ export class Main extends React.Component {
       showHalfScoring,
       showScorePointLabels,
       dragAndDrop,
-      maxWidth
+      width
     } = configuration || {};
     const { scales, excludeZero, description, pointLabels, standards } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
+    const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
     return (
       <div className={classes.design}>
@@ -248,7 +250,7 @@ export class Main extends React.Component {
             />
           }
         >
-          <div style={{ maxWidth: maxWidth }}>
+          <div style={{ width: adjustedWidth }}>
             {(scales || []).map((scale, scaleIndex) => (
               <Scale
                 key={`scale-${scaleIndex}`}
@@ -262,6 +264,7 @@ export class Main extends React.Component {
                 showLevelTagInput={showLevelTagInput.enabled}
                 excludeZero={excludeZero}
                 enableDragAndDrop={dragAndDrop.enabled}
+                width={adjustedWidth}
                 {...this.props}
                 classes={{}}
               />

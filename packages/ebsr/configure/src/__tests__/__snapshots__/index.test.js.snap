@@ -14,6 +14,7 @@ Object {
     "studentInstructionsEnabled": true,
     "teacherInstructions": "",
     "teacherInstructionsEnabled": true,
+    "verticalMode": true,
   },
   "partB": Object {
     "choiceMode": "radio",
@@ -27,6 +28,7 @@ Object {
     "studentInstructionsEnabled": true,
     "teacherInstructions": "",
     "teacherInstructionsEnabled": true,
+    "verticalMode": true,
   },
   "partLabelType": "Letters",
   "partLabels": true,
@@ -48,6 +50,7 @@ Object {
     "studentInstructionsEnabled": true,
     "teacherInstructions": "ti",
     "teacherInstructionsEnabled": true,
+    "verticalMode": true,
   },
   "partB": Object {
     "choiceMode": "radio",
@@ -61,6 +64,7 @@ Object {
     "studentInstructionsEnabled": true,
     "teacherInstructions": "",
     "teacherInstructionsEnabled": true,
+    "verticalMode": true,
   },
   "partLabelType": "Letters",
   "partLabels": true,

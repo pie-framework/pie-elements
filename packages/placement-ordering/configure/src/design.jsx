@@ -96,7 +96,7 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled } =
       model || {};
 
     return (
@@ -111,8 +111,8 @@ export class Design extends React.Component {
             }
             groups={{
               Settings: {
-                'choiceLabel.enabled':
-                  choiceLabel.settings && toggle(choiceLabel.label, true),
+                choiceLabelEnabled:
+                  choiceLabel.settings && toggle(choiceLabel.label),
                 placementArea:
                   placementArea.settings && toggle(placementArea.label),
                 numberedGuides:
@@ -195,7 +195,7 @@ export class Design extends React.Component {
 
         <FormSection label="Define Choices">
           <div className={classes.row}>
-            {choiceLabel.enabled && (
+            {choiceLabelEnabled && (
               <InputContainer
                 label={
                   choiceLabel &&

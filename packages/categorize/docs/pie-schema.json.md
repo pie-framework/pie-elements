@@ -22,12 +22,6 @@ The xhtml content for the choice
 
 ## `correctResponseCount` (string,number)
 
-# `choicesPerRow` (number)
-
-The number of columns in which to present the choices
-
-Default: `2`
-
 # `categoriesPerRow` (number)
 
 The number of columns in which to present the categories
@@ -163,6 +157,21 @@ Indicates if Student Instructions are enabled
 # `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
+
+# `note` (string)
+
+Indicates the note for the answer
+
+# `toolbarEditorPosition` (string, enum)
+
+Indicates the editor's toolbar position which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
 
 # `id` (string, required)
 

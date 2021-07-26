@@ -20,7 +20,8 @@ export class Choices extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   static defaultProps = {};
@@ -68,12 +69,13 @@ export class Choices extends React.Component {
       choices,
       model,
       imageSupport,
-      onModelChanged
+      onModelChanged,
+      toolbarOpts
     } = this.props;
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
-      gridTemplateColumns: `repeat(${model.choicesPerRow}, 1fr)`
+      gridTemplateColumns: `repeat(${model.categoriesPerRow}, 1fr)`
     };
 
     return (
@@ -94,6 +96,7 @@ export class Choices extends React.Component {
               imageSupport={imageSupport}
               onChange={this.changeChoice}
               onDelete={() => this.deleteChoice(h)}
+              toolbarOpts={toolbarOpts}
             />
           ))}
         </div>

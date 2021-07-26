@@ -192,10 +192,15 @@ export class Scale extends React.Component {
     const { index: oldIndex } = source;
     const cup = traits[oldIndex];
 
-    traits[oldIndex] = traits[newIndex];
-    traits[newIndex] = cup;
+    const remainingTraits = traits.filter((item, index) => index !== oldIndex);
 
-    onScaleChanged(scaleIndex, { traits });
+    const newTraits = [
+      ...remainingTraits.slice(0, newIndex),
+      cup,
+      ...remainingTraits.slice(newIndex),
+    ];
+
+    onScaleChanged(scaleIndex, { traits: newTraits });
   }
 
   decreasePosition = () => {
@@ -231,7 +236,8 @@ export class Scale extends React.Component {
       showDescription,
       showLevelTagInput,
       showScorePointLabels,
-      enableDragAndDrop
+      enableDragAndDrop,
+      width
     } = this.props || {};
     const {
       maxPoints,
@@ -250,12 +256,12 @@ export class Scale extends React.Component {
     } = this.state;
 
     const scorePointsValues = [];
+    const secondaryBlockWidth = (parseInt(width) - DragHandleSpace - PrimaryBlockWidth) || 320; // 320 is minWidth
 
     // determining the score points values
     for (let pointValue = maxPoints; pointValue >= excludeZero ? 1 : 0; pointValue -= 1) {
       scorePointsValues.push(pointValue);
     }
-
 
     return (
       <div
@@ -286,6 +292,7 @@ export class Scale extends React.Component {
           scaleIndex={scaleIndex}
           showDeleteScaleModal={this.showDeleteScaleModal}
           currentPosition={currentPosition}
+          secondaryBlockWidth={secondaryBlockWidth}
         />
 
         {traits.map((trait, index) => (
@@ -302,6 +309,7 @@ export class Scale extends React.Component {
             showDescription={showDescription}
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
+            secondaryBlockWidth={secondaryBlockWidth}
           />
         ))}
 
@@ -363,6 +371,7 @@ Scale.propTypes = {
       description: PropTypes.string,
     }))
   }),
+  width: PropTypes.string,
   excludeZero: PropTypes.bool,
   scaleIndex: PropTypes.number,
   onScaleChanged: PropTypes.func,

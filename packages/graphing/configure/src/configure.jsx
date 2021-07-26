@@ -111,6 +111,7 @@ export class Configure extends React.Component {
       scoringType = {},
       studentInstructions = {},
       teacherInstructions = {},
+      coordinatesOnHover = {},
       prompt = {},
       authoring = {}
     } = configuration || {};
@@ -137,6 +138,7 @@ export class Configure extends React.Component {
                 'title.enabled': title.settings && toggle(title.label, true),
                 padding: padding.settings && toggle(padding.label),
                 labels: labels.settings && toggle(labels.label),
+                coordinatesOnHover: coordinatesOnHover.settings && toggle(coordinatesOnHover.label),
               },
               Properties: {
                 'authoring.enabled':

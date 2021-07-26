@@ -22,6 +22,7 @@ describe('Polygon', () => {
         id: '1',
         isCorrect: false,
         isEvaluateMode: false,
+        evaluateText: null,
         disabled: false,
         outlineColor: 'blue',
         selected: false,
@@ -68,7 +69,7 @@ describe('Polygon', () => {
 
     describe('evaluate with correct answer', () => {
       it('renders', () => {
-        const wrapper = mkWrapper({ isEvaluateMode: true, isCorrect: true });
+        const wrapper = mkWrapper({ isEvaluateMode: true, isCorrect: true, evaluateText: 'Correctly\nselected' });
         expect(toJson(wrapper)).toMatchSnapshot();
       });
     });
