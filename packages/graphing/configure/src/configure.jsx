@@ -46,6 +46,33 @@ export class Configure extends React.Component {
 
   static defaultProps = { classes: {} };
 
+  componentDidMount() {
+    // This is used for offering support for old models which have the property arrows: boolean
+    // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
+    const { onModelChanged, model } = this.props;
+    let { arrows } = model || {};
+
+    if (typeof arrows === 'boolean') {
+      if (arrows) {
+        arrows = {
+          left: true,
+          right: true,
+          up: true,
+          down: true
+        };
+      } else {
+        arrows = {
+          left: false,
+          right: false,
+          up: false,
+          down: false
+        };
+      }
+
+      onModelChanged({ ...model, arrows });
+    }
+  }
+
   onRationaleChange = rationale => {
     const { onModelChanged, model } = this.props;
 
