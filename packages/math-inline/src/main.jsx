@@ -339,6 +339,8 @@ export class Main extends React.Component {
     const { model, classes } = this.props;
     const state = this.state;
     const { activeAnswerBlock, showCorrect, session } = state;
+    const { config: { showNote, note, env: { mode, role } = {}} = {}} = model;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     if (!model.config) {
       return null;
@@ -427,6 +429,12 @@ export class Main extends React.Component {
           )}
         </div>
         </Readable>
+        {displayNote && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
       </div>
     );
 
@@ -556,6 +564,9 @@ const styles = (theme) => ({
   },
   content: {
     marginTop: theme.spacing.unit * 2,
+  },
+  note: {
+    paddingTop: '15px',
   },
   collapsible: {
     marginTop: theme.spacing.unit * 2,
