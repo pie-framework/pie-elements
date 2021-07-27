@@ -36,7 +36,8 @@ export default {
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     prompt: {

@@ -2,14 +2,15 @@ import * as React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { swap } from '@pie-lib/drag';
 import AddRow from './add-row';
 import Row from './row';
-import { swap, withDragContext } from '@pie-lib/drag';
 import debug from 'debug';
 import lodash from 'lodash';
+import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
+import { InfoDialog } from './common';
 
 const log = debug('pie-elements:match:configure');
 
@@ -28,7 +29,12 @@ const styles = theme => ({
   rowItem: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    '&> div': {
+      width: '150px',
+      padding: '12px',
+      textAlign: 'center'
+    },
   },
   deleteIcon: {
     flex: 0.5,
@@ -37,7 +43,14 @@ const styles = theme => ({
   questionText: {
     flex: 2,
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    '&> div': {
+      width: '100%',
+      padding: 0,
+      maxWidth: 'unset',
+      textAlign: 'left',
+      minWidth: '350px'
+    }
   },
   rowTable: {
     display: 'flex',
@@ -50,8 +63,9 @@ const styles = theme => ({
     width: '100%'
   },
   headerInput: {
-    textAlign: 'center',
-    maxWidth: '100px'
+    '&> div': {
+      fontWeight: 'bold'
+    }
   }
 });
 
@@ -66,7 +80,14 @@ class AnswerConfigBlock extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
+  };
+
+  state = {
+    dialog: {
+      open: false
+    }
   };
 
   moveRow = (from, to) => {
@@ -99,13 +120,50 @@ class AnswerConfigBlock extends React.Component {
     onChange(model, name);
   };
 
-  onHeaderChange = headerIndex => event => {
+  onHeaderChange = headerIndex => value => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
 
-    newModel.headers[headerIndex] = event.target.value;
+    if(headerIndex === 0) {
+      newModel.headers[headerIndex] = value;
+      onChange(newModel);
 
-    onChange(newModel);
+      return;
+    }
+
+    const headers = newModel.headers || [];
+
+    const currentHeader = headers[headerIndex];
+
+    const sameValue = headers.filter(header => {
+      const wasChanged = currentHeader !== value && `<div>${currentHeader}</div>` !== value;
+      const sameValueEntered = header === value || `<div>${header}</div>` === value;
+
+      return wasChanged && sameValueEntered;
+    });
+
+    const empty = value === '<div></div>';
+
+    if (sameValue.length || empty) {
+      this.setState({
+        dialog: {
+          open: true,
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              }
+            );
+          }
+        }
+      });
+    } else {
+      newModel.headers[headerIndex] = value;
+
+      onChange(newModel);
+    }
   };
 
   render() {
@@ -114,9 +172,18 @@ class AnswerConfigBlock extends React.Component {
       model,
       onAddRow,
       imageSupport,
-      configuration
+      configuration,
+      toolbarOpts
     } = this.props;
     const { headers = {} } = configuration || {};
+    const { dialog } = this.state;
+
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
+      .filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
+    const labelPlugins = {
+      audio: { disabled: true },
+      video: { disabled: true }
+    };
 
     return (
       <div className={classes.container}>
@@ -127,20 +194,22 @@ class AnswerConfigBlock extends React.Component {
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
-              model.headers.map((header, idx) => (
+            (model.headers || []).map((header, idx) => (
                 <div
                   key={idx}
                   className={cx(classes.rowItem, {
                     [classes.questionText]: idx === 0
                   })}
                 >
-                  <Input
-                    type="text"
-                    disableUnderline
-                    classes={idx === 0 ? null : { input: classes.headerInput }}
+                  <EditableHTML
                     onChange={this.onHeaderChange(idx)}
-                    value={header}
-                    placeholder="Enter Value"
+                    markup={header}
+                    className={classes.headerInput}
+                    label={'column label'}
+                    activePlugins={filteredDefaultPlugins}
+                    pluginProps={labelPlugins}
+                    autoWidthToolbar
+                    allowValidation
                   />
                 </div>
               ))}
@@ -162,13 +231,19 @@ class AnswerConfigBlock extends React.Component {
               onMoveRow={this.moveRow}
               imageSupport={imageSupport}
               enableImages={model.enableImages}
+              toolbarOpts={toolbarOpts}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
         </div>
+          <InfoDialog
+            title={'The column headings must be non-blank and unique.'}
+            open={dialog.open}
+            onOk={dialog.onOk}
+          />
       </div>
     );
   }
 }
 
-export default withDragContext(withStyles(styles)(AnswerConfigBlock));
+export default withStyles(styles)(AnswerConfigBlock);

@@ -1,43 +1,43 @@
-const tokens = () =>  [
+const tokens = () => [
   {
     text: 'If \'tweren\'t for sight and sound and smell,',
-    start: 3,
-    end: 52
+    start: 0,
+    end: 43
   },
   {
     text: 'I\'d like the city pretty well,',
-    start: 53,
-    end: 89
+    start: 44,
+    end: 74
   },
   {
     text: 'But when it comes to getting rest,',
-    start: 90,
-    end: 130
+    start: 75,
+    end: 109
   },
   {
     text: 'I like the country lots the best.',
-    start: 131,
-    end: 170
+    start: 110,
+    end: 143
   },
   {
     text: 'Sometimes it seems to me I must',
-    start: 173,
-    end: 210
+    start: 145,
+    end: 176
   },
   {
     text: 'Just quit the city\'s din and dust,',
-    start: 211,
-    end: 251
+    start: 177,
+    end: 211
   },
   {
     text: 'And get out where the sky is blue,',
-    start: 252,
-    end: 292
+    start: 212,
+    end: 246
   },
   {
     text: 'And say, now, how does it seem to you?',
-    start: 293,
-    end: 335
+    start: 247,
+    end: 285
   }
 ];
 
@@ -79,6 +79,7 @@ const base = extras =>
       rationale: 'Rationale goes here.',
       prompt: 'What sentences contain the character 6 in them?',
       promptEnabled: true,
+      toolbarEditorPosition: 'bottom',
       // text: `<p>Warhol was born in 1928 in Pittsburgh, Pennsylvania. When he was eight years old, he became very sick and had to stay in bed for months. To help him pass the time his mother, who was an artist, taught him how to draw. He took to it like a fish to water. Art became the center of Andy's world. A year later he added picture-taking to his interests when his mother gave him a camera. He also became fascinated with movies.</p><p>Andy studied art in school and learned many ways to make art. He learned how to use different art materials, such as oil paints, metal, clay, and wood. In 1949 he moved to New York City, where he got a job drawing and painting pictures for magazines.</p>`,
       text: `<p>If 'tweren't for sight and sound and smell,<br />
 I'd like the city pretty well,<br />

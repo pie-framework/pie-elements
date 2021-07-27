@@ -69,11 +69,19 @@ export async function model(question, session, env, updateSession) {
     );
   }
 
+  // This is used for offering support for old models which have the property verticalMode
+  // Same thing is set in authoring : packages/multiple-choice/configure/src/main.jsx - componentDidMount
+  let layout = '';
+  if(normalizedQuestion.verticalMode !== undefined) {
+    layout = normalizedQuestion.verticalMode === false ? 'horizontal': 'vertical';
+  }
+
   const out = {
     disabled: env.mode !== 'gather',
     mode: env.mode,
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-    verticalMode: normalizedQuestion.verticalMode,
+    choicesLayout: normalizedQuestion.choicesLayout || layout,
+    gridColumns: normalizedQuestion.gridColumns,
     choiceMode: normalizedQuestion.choiceMode,
     keyMode: normalizedQuestion.choicePrefix,
     choices,

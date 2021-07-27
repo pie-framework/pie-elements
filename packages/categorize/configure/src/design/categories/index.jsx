@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange }) => {
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts }) => {
   return (
     <div
       style={{
@@ -53,6 +53,7 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         onChange={onChange}
         imageSupport={imageSupport}
         nonEmpty={false}
+        toolbarOpts={toolbarOpts}
       />
     </div>
   );
@@ -68,7 +69,8 @@ export class Categories extends React.Component {
     className: PropTypes.string,
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
-    model: PropTypes.object.isRequired
+    model: PropTypes.object.isRequired,
+    toolbarOpts: PropTypes.object
   };
 
   changeCategoryColumns = event => {
@@ -168,7 +170,8 @@ export class Categories extends React.Component {
       classes,
       className,
       categories,
-      imageSupport
+      imageSupport,
+      toolbarOpts
     } = this.props;
     const { categoriesPerRow, rowLabels } = model;
 
@@ -207,6 +210,7 @@ export class Categories extends React.Component {
                     markup={rowLabels[rowIndex] || ''}
                     onChange={(val) => this.changeRowLabel(val, rowIndex)}
                     imageSupport={imageSupport}
+                    toolbarOpts={toolbarOpts}
                   />
                 )}
                 <Category
@@ -215,6 +219,7 @@ export class Categories extends React.Component {
                   onChange={this.change}
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
+                  toolbarOpts={toolbarOpts}
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }
