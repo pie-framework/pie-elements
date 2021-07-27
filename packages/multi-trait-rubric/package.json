@@ -8,7 +8,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/render-ui": "^4.11.7",
+    "@pie-lib/render-ui": "^4.11.8",
     "clsx": "^1.1.1",
     "enzyme-to-json": "^3.3.5",
     "prop-types": "^15.6.1",
