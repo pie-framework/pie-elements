@@ -80,7 +80,8 @@ class AnswerConfigBlock extends React.Component {
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
-    })
+    }),
+    toolbarOpts: PropTypes.object
   };
 
   state = {
@@ -171,7 +172,8 @@ class AnswerConfigBlock extends React.Component {
       model,
       onAddRow,
       imageSupport,
-      configuration
+      configuration,
+      toolbarOpts
     } = this.props;
     const { headers = {} } = configuration || {};
     const { dialog } = this.state;
@@ -229,6 +231,7 @@ class AnswerConfigBlock extends React.Component {
               onMoveRow={this.moveRow}
               imageSupport={imageSupport}
               enableImages={model.enableImages}
+              toolbarOpts={toolbarOpts}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
