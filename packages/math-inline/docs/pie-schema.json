@@ -396,6 +396,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "note": {
+      "description": "Indicates the note for the answer",
+      "type": "string",
+      "title": "note"
+    },
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
