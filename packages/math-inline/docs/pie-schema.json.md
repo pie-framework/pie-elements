@@ -168,6 +168,10 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `note` (string)
+
+Indicates the note for the answer
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'

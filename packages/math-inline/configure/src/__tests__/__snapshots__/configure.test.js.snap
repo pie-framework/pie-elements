@@ -83,6 +83,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             },
             "feedbackEnabled": true,
             "id": "1",
+            "note": "The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.",
             "promptEnabled": true,
             "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
  <mrow>
@@ -186,6 +187,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               },
               "feedbackEnabled": true,
               "id": "1",
+              "note": "The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.",
               "promptEnabled": true,
               "question": "<p>Sam sells baskets of eggs at his farm stand. He sold 12 baskets and wrote the number sentence below to show how many eggs he sold in all.</p><p><span class=\\"equation-block\\"><math xmlns=\\"http://www.w3.org/1998/Math/MathML\\" >
  <mrow>
