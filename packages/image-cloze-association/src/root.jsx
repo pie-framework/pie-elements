@@ -6,6 +6,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { ShowRationale } from '@pie-lib/icons';
 import { Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
+import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
@@ -64,6 +65,7 @@ class ImageClozeAssociationComponent extends React.Component {
         id: `${index}`,
       })),
       maxResponsePerZone: maxResponsePerZone || 1,
+      showCorrect: false
     };
   }
 
@@ -200,6 +202,8 @@ class ImageClozeAssociationComponent extends React.Component {
     updateAnswer(answersToStore);
   };
 
+  toggleCorrect = showCorrect => this.setState({ showCorrect });
+
   render() {
     const {
       model: {
@@ -221,7 +225,24 @@ class ImageClozeAssociationComponent extends React.Component {
       responseContainers,
       maxResponsePerZone,
       maxResponsePerZoneWarning,
+      showCorrect
     } = this.state;
+
+    const showToggle = responseCorrect !== undefined;
+
+    const { validResponse } = validation || {};
+    const correctAnswers = [];
+
+    if (validResponse) {
+      (validResponse.value || []).forEach((container, i) => {
+        (container.images || []).forEach(v => {
+          correctAnswers.push({
+            value: v,
+            containerIndex: i
+          });
+        });
+      });
+    }
 
     const warningMessage =
       `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
@@ -251,32 +272,55 @@ class ImageClozeAssociationComponent extends React.Component {
           <span dangerouslySetInnerHTML={{ __html: stimulus }} />
         </Typography>
 
-        <InteractiveSection responseCorrect={responseCorrect}>
-          <Image
-            canDrag={!disabled}
-            answers={answersToShow}
-            draggingElement={draggingElement}
-            duplicateResponses={duplicateResponses}
-            image={image}
-            onAnswerSelect={this.handleOnAnswerSelect}
-            onDragAnswerBegin={this.beginDrag}
-            onDragAnswerEnd={this.handleOnDragEnd}
-            responseContainers={responseContainers}
-            showDashedBorder={showDashedBorder}
-          />
+        <CorrectAnswerToggle
+          show={showToggle}
+          toggled={showCorrect}
+          onToggle={this.toggleCorrect}
+        />
+        <br/>
 
-          {maxResponsePerZoneWarning && (
-            <WarningInfo message={warningMessage} />
-          )}
+        {(showCorrect && showToggle) ? (
+          <InteractiveSection responseCorrect={true}>
+            <Image
+              canDrag={false}
+              answers={correctAnswers}
+              draggingElement={draggingElement}
+              duplicateResponses={duplicateResponses}
+              image={image}
+              onAnswerSelect={this.handleOnAnswerSelect}
+              onDragAnswerBegin={this.beginDrag}
+              onDragAnswerEnd={this.handleOnDragEnd}
+              responseContainers={responseContainers}
+              showDashedBorder={showDashedBorder}
+            />
+          </InteractiveSection>
+        ) : (
+          <InteractiveSection responseCorrect={responseCorrect}>
+            <Image
+              canDrag={!disabled}
+              answers={answersToShow}
+              draggingElement={draggingElement}
+              duplicateResponses={duplicateResponses}
+              image={image}
+              onAnswerSelect={this.handleOnAnswerSelect}
+              onDragAnswerBegin={this.beginDrag}
+              onDragAnswerEnd={this.handleOnDragEnd}
+              responseContainers={responseContainers}
+              showDashedBorder={showDashedBorder}
+            />
 
-          <PossibleResponses
-            canDrag={!disabled}
-            data={possibleResponses}
-            onAnswerRemove={this.handleOnAnswerRemove}
-            onDragBegin={this.beginDrag}
-            onDragEnd={this.handleOnDragEnd}
-          />
-        </InteractiveSection>
+            {maxResponsePerZoneWarning && (
+              <WarningInfo message={warningMessage}/>
+            )}
+
+            <PossibleResponses
+              canDrag={!disabled}
+              data={possibleResponses}
+              onAnswerRemove={this.handleOnAnswerRemove}
+              onDragBegin={this.beginDrag}
+              onDragEnd={this.handleOnDragEnd}
+            />
+          </InteractiveSection>)}
       </div>
     );
   }

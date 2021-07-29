@@ -14,6 +14,12 @@ exports[`Root snapshots model renders 1`] = `
       }
     />
   </WithStyles(Typography)>
+  <WithStyles(CorrectAnswerToggle)
+    onToggle={[Function]}
+    show={false}
+    toggled={false}
+  />
+  <br />
   <WithStyles(InteractiveSection)>
     <WithStyles(ImageContainer)
       answers={Array []}
