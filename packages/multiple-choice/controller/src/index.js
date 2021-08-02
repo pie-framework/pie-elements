@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import isEmpty from 'lodash/isEmpty';
-import { isResponseCorrect } from './utils';
+import {isResponseCorrect, parseHTML} from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
@@ -8,8 +8,12 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
   const { role, mode } = env || {};
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
+
+  if(model.accessibilityLabelsEnabled){
+    out.accessibility = parseHTML(choice.accessibility).textContent || choice.value;
+  }
 
   if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
     out.rationale = model.rationaleEnabled ? choice.rationale : null;

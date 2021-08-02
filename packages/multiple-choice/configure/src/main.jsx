@@ -31,7 +31,13 @@ const styles = theme => ({
   rationaleHolder: {
     width: '70%'
   },
+  accessibilityHolder: {
+    width: '70%'
+  },
   rationale: {
+    paddingTop: theme.spacing.unit * 2
+  },
+  accessibility: {
     paddingTop: theme.spacing.unit * 2
   },
   design: {
@@ -94,6 +100,7 @@ const Design = withStyles(styles)(props => {
     teacherInstructions = {},
     studentInstructions = {},
     rationale = {},
+    accessibility = {},
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
@@ -103,6 +110,7 @@ const Design = withStyles(styles)(props => {
     limitChoicesNumber: limitChoicesNumberModel,
     teacherInstructionsEnabled,
     rationaleEnabled,
+    accessibilityLabelsEnabled,
     feedbackEnabled,
     promptEnabled
   } = model || {};
@@ -181,6 +189,26 @@ const Design = withStyles(styles)(props => {
               />
             </InputContainer>
           )}
+          {accessibilityLabelsEnabled && (
+              <InputContainer
+                  key={`accessibility-${index}`}
+                  label={accessibility.label}
+                  className={classes.accessibilityHolder}
+              >
+                <EditableHtml
+                    className={classes.accessibility}
+                    markup={choice.accessibility || ''}
+                    onChange={c =>
+                        onChoiceChanged(index, {
+                          ...choice,
+                          accessibility: c
+                        })
+                    }
+                    imageSupport={imageSupport}
+                    pluginProps={labelPlugins}
+                />
+              </InputContainer>
+          )}
         </div>
       ))}
       <br />
@@ -242,6 +270,8 @@ const Design = withStyles(styles)(props => {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
+                  accessibilityLabelsEnabled:
+                      accessibility.settings && toggle(accessibility.label),
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric'])

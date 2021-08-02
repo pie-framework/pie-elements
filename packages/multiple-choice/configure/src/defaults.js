@@ -64,6 +64,10 @@ export default {
       settings: true,
       label: 'Rationale'
     },
+    accessibility: {
+      settings: true,
+      label: 'Accessibility Label'
+    },
     scoringType: {
       settings: false,
       label: 'Scoring Type'
