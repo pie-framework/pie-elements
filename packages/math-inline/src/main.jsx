@@ -18,6 +18,8 @@ const NEWLINE_LATEX = /\\newline/g;
 const REGEX = /{{response}}/gm;
 const DEFAULT_KEYPAD_VARIANT = 6;
 
+const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 function generateAdditionalKeys(keyData = []) {
   return keyData.map((key) => ({
     name: key,
@@ -323,17 +325,24 @@ export class Main extends React.Component {
     if (
       !relatedTarget ||
       !currentTarget ||
-      !(
-        relatedTarget.offsetParent &&
-        relatedTarget.offsetParent.children &&
-        relatedTarget.offsetParent.children[0] &&
-        relatedTarget.offsetParent.children[0].attributes &&
-        relatedTarget.offsetParent.children[0].attributes['data-keypad']
-      )
-    ) {
+      (!IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.attributes?.['data-keypad']) ||
+      (IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.children[0]?.attributes?.['data-keypad'])) {
       this.setState({ activeAnswerBlock: '' });
     }
   };
+
+  setTooltipRef(ref) {
+    // Safari Hack: https://stackoverflow.com/a/42764495/5757635
+    setTimeout(() => {
+      if (ref && IS_SAFARI) {
+        const div = document.querySelector("[role='tooltip']");
+        if (div) {
+          const el = div.firstChild;
+          el.setAttribute('tabindex', '-1');
+        }
+      }
+    }, 1);
+  }
 
   render() {
     const { model, classes } = this.props;
@@ -378,6 +387,7 @@ export class Main extends React.Component {
               })}
             >
               <Tooltip
+                ref={ref => this.setTooltipRef(ref)}
                 interactive
                 open={!!activeAnswerBlock}
                 classes={{
