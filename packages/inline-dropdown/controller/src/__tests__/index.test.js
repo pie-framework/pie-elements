@@ -96,11 +96,13 @@ const question = {
         label: 'dog ',
         value: '1',
         correct: false,
+        rationale: 'rationale dog'
       },
       {
         label: 'cat ',
         value: '2',
         correct: false,
+        rationale: 'rationale cat'
       },
     ],
     '1': [
@@ -114,11 +116,13 @@ const question = {
         label: 'under ',
         value: '1',
         correct: false,
+        rationale: 'rationale under'
       },
       {
         label: 'across ',
         value: '2',
         correct: false,
+        rationale: 'rationale across'
       },
     ],
     '2': [
@@ -132,11 +136,13 @@ const question = {
         label: 'sun',
         value: '2',
         correct: false,
+        rationale: 'rationale sun'
       },
       {
         label: 'house ',
         value: '3',
         correct: false,
+        rationale: 'rationale house'
       },
     ],
   },
@@ -185,8 +191,73 @@ describe('controller', () => {
     returnModel(null);
     returnModel({});
 
+    const choicesWithNullRationale = {
+      '0': [
+        {
+          label: 'cow ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'dog ',
+          value: '1',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'cat ',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+      ],
+      '1': [
+        {
+          label: 'over ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'under ',
+          value: '1',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'across ',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+      ],
+      '2': [
+        {
+          label: 'moon ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'sun',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'house ',
+          value: '3',
+          correct: false,
+          rationale: null
+        }
+      ]
+    };
+
+
     const assertGather = (label, extra, session, expected) => {
       it(`'mode: gather, ${label}'`, async () => {
+
         q = {
           ...question,
           alternateResponse: { '2': ['2'] },
@@ -212,6 +283,7 @@ describe('controller', () => {
           mode: 'gather',
           feedback: {},
           responseCorrect: undefined,
+          choices: choicesWithNullRationale,
           ...expected,
         });
       });
@@ -223,8 +295,7 @@ describe('controller', () => {
       {},
       {
         rationale: null,
-        teacherInstructions: null,
-        correctChoicesRationales: null
+        teacherInstructions: null
       }
     );
 
@@ -240,8 +311,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null,
-        correctChoicesRationales: null
+        teacherInstructions: null
       }
     );
 
@@ -268,40 +338,36 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          choices: choicesWithNullRationale,
           ...expected,
         });
       });
     };
 
     assertView(
-      ' + role: instructor, promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
+      ' + role: instructor, promptEnabled, rationaleEnabled, teacherInstructionsEnabled and choiceRationaleEnabled set to false',
       {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
+        choiceRationaleEnabled: false
       },
       {},
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null,
-        correctChoicesRationales: null
+        teacherInstructions: null
       }
     );
 
     assertView(
-      ' + role: instructor, promptEnabled, rationaleEnabled and teacherInstructionsEnabled unset',
+      ' + role: instructor, promptEnabled, rationaleEnabled, teacherInstructionsEnabled and choiceRationaleEnabled unset',
       {},
       {},
       {
         teacherInstructions: 'Teacher Instructions',
-        rationale: 'Rationale',
-        correctChoicesRationales: [
-          [{ label: "cow ", rationale: "rationale cow" }],
-          [{ label: "over ", rationale: "rationale over" }],
-          [{ label: "moon ", rationale: "rationale moon" }]
-        ]
+        rationale: 'Rationale'
       }
     );
 
@@ -327,6 +393,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          choices: choicesWithNullRationale,
           ...expected,
         });
       });
@@ -344,8 +411,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null,
-        correctChoicesRationales: null
+        teacherInstructions: null
       }
     );
 
@@ -356,7 +422,6 @@ describe('controller', () => {
       {
         rationale: null,
         teacherInstructions: null,
-        correctChoicesRationales: null
       }
     );
 
@@ -368,6 +433,7 @@ describe('controller', () => {
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
+          choiceRationaleEnabled: true,
           ...extra,
         };
         const result = await model(
@@ -383,11 +449,6 @@ describe('controller', () => {
           rationale: 'Rationale',
           mode: 'evaluate',
           disabled: true,
-          correctChoicesRationales: [
-            [{ label: "cow ", rationale: "rationale cow" }],
-            [{ label: "over ", rationale: "rationale over" }],
-            [{ label: "moon ", rationale: "rationale moon" }]
-          ],
           ...expected,
         });
       });

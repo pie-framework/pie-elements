@@ -9,6 +9,7 @@ export default {
     alternateResponse: {},
     promptEnabled: true,
     rationaleEnabled: true,
+    choiceRationaleEnabled: false,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true
   },
@@ -32,6 +33,10 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    choiceRationale: {
+      settings: true,
+      label: 'Choice Rationale'
     }
   }
 };

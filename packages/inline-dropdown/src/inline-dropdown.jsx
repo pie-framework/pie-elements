@@ -51,10 +51,19 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions, correctChoicesRationales } = this.props;
+    const { classes, prompt, mode, rationale, teacherInstructions, choices } = this.props;
     const showCorrectAnswerToggle = mode === 'evaluate';
-    const choiceRationalesHaveText = correctChoicesRationales && correctChoicesRationales
-      .filter(choice => choice[0] && choice[0].rationale && hasText(choice[0].rationale)).length !== 0;
+    let choiceRationalesHaveText = false;
+
+    const choiceRationales = (Object.keys(choices) || []).map(key => (choices[key] || [])
+      .reduce((acc, currentValue) => {
+        if (currentValue.rationale && hasText(currentValue.rationale)) {
+          choiceRationalesHaveText = true;
+
+          acc.push(currentValue);
+        }
+        return acc;
+      }, []));
 
     return (
       <div className={classes.mainContainer}>
@@ -97,18 +106,16 @@ export class InlineDropdown extends React.Component {
         {choiceRationalesHaveText && (
           <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
             <div>
-              {correctChoicesRationales.map(choice =>
-                choice && choice[0] && choice[0].rationale && hasText(choice[0].rationale) ? (
-                    <div className={classes.choiceRationale} key={choice[0].label}>
+              {choiceRationales.map(choices =>
+                choices && choices.length > 0 && choices.map( choice =>
+                    <div className={classes.choiceRationale} key={choice.label}>
                       <div
                         className={classes.choiceRationaleLabel}
-                        dangerouslySetInnerHTML={{__html: `${choice[0].label}: `}}
+                        dangerouslySetInnerHTML={{__html: `${choice.label}: `}}
                       />
-                      <div dangerouslySetInnerHTML={{__html: choice[0].rationale}}/>
-                    </div>)
-                  :
-                  null
-              )}
+                      <div dangerouslySetInnerHTML={{__html: choice.rationale}}/>
+                    </div>
+                ))}
             </div>
           </Collapsible>)}
         <DropDown

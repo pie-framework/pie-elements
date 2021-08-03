@@ -12,6 +12,9 @@ export interface Choice {
 
     /** Indicates if choice is correct */
     correct?: boolean;
+
+    /** Rationale for the choice */
+    rationale?: string;
 }
 
 export interface Choices {
@@ -71,6 +74,9 @@ export interface InlineDropdownPie extends PieModel {
     /** Indicates if Rationale are enabled */
     rationaleEnabled: boolean;
 
+    /** Indicates if Choice Level Rationales are enabled */
+    choiceRationaleEnabled: boolean;
+
     /** Indicates if Student Instructions are enabled */
     studentInstructionsEnabled: boolean;
 
@@ -108,6 +114,11 @@ export interface InlineDropdownConfigure extends PromptConfig, CommonConfigSetti
      * Rationale configuration
      */
     rationale?: ConfigureProp;
+
+    /**
+     * Choice Level Rationales configuration
+     */
+    choiceRationale?: ConfigureProp;
 
     /**
      * Scoring Type configuration

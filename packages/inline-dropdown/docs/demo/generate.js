@@ -18,12 +18,14 @@ exports.model = (id, element) => ({
       {
         label: 'dog ',
         value: '1',
-        correct: false
+        correct: false,
+        rationale: 'rationale dog'
       },
       {
         label: 'cat ',
         value: '2',
-        correct: false
+        correct: false,
+        rationale: 'rationale car'
       }
     ],
     '1': [
@@ -36,12 +38,14 @@ exports.model = (id, element) => ({
       {
         label: 'under ',
         value: '1',
-        correct: false
+        correct: false,
+        rationale: 'rationale under'
       },
       {
         label: 'across ',
         value: '2',
-        correct: false
+        correct: false,
+        rationale: 'rationale across'
       }
     ],
     '2': [
@@ -54,16 +58,19 @@ exports.model = (id, element) => ({
       {
         label: 'sun',
         value: '2',
-        correct: false
+        correct: false,
+        rationale: 'rationale sun'
       },
       {
         label: 'house ',
         value: '3',
-        correct: false
+        correct: false,
+        rationale: 'rationale house'
       }
     ]
   },
   alternateResponse: {
     '2': ['2']
-  }
+  },
+  choiceRationaleEnabled: false
 });

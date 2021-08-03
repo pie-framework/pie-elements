@@ -107,9 +107,5 @@ describe('InlineDropdown', () => {
     it('should render without prompt', () => {
       expect(wrapper({ prompt: null })).toMatchSnapshot();
     });
-
-    it('should render without correct choices rationale', () => {
-      expect(wrapper({ correctChoicesRationales: null })).toMatchSnapshot();
-    });
   });
 });

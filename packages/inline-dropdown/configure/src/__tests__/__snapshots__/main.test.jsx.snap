@@ -7,6 +7,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       <Panel
         configuration={
           Object {
+            "choiceRationale": Object {
+              "label": "Choice Rationale",
+              "settings": true,
+            },
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
@@ -32,6 +36,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         groups={
           Object {
             "Properties": Object {
+              "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
@@ -49,6 +54,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
                 "2",
               ],
             },
+            "choiceRationaleEnabled": false,
             "choices": Object {
               "0": Array [
                 Object {
@@ -177,57 +183,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
       />
       <br />
-      <InputContainer
-        key="cow "
-        label={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Rationale for cow ",
-              }
-            }
-          />
-        }
-      >
-        <EditableHtml
-          markup="rationale for cow"
-          onChange={[Function]}
-        />
-      </InputContainer>
-      <InputContainer
-        key="over "
-        label={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Rationale for over ",
-              }
-            }
-          />
-        }
-      >
-        <EditableHtml
-          markup="rationale for over"
-          onChange={[Function]}
-        />
-      </InputContainer>
-      <InputContainer
-        key="moon "
-        label={
-          <span
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "Rationale for moon ",
-              }
-            }
-          />
-        }
-      >
-        <EditableHtml
-          markup="rationale for moon"
-          onChange={[Function]}
-        />
-      </InputContainer>
     </div>
   </ConfigLayout>
 </div>
@@ -240,6 +195,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
       <Panel
         configuration={
           Object {
+            "choiceRationale": Object {
+              "label": "Choice Rationale",
+              "settings": true,
+            },
             "lockChoiceOrder": Object {
               "label": "Lock Choice Order",
               "settings": true,
@@ -265,6 +224,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         groups={
           Object {
             "Properties": Object {
+              "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
@@ -282,6 +242,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
                 "2",
               ],
             },
+            "choiceRationaleEnabled": false,
             "choices": Object {
               "0": Array [
                 Object {
