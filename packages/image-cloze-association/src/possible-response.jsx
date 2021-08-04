@@ -27,9 +27,10 @@ export class PossibleResponse extends React.Component {
     const { classes, connectDragSource, containerStyle, data } = this.props;
     const additionalClass = this.getClassname();
     const evaluationStyle = {
-      alignSelf: 'center',
       fontSize: 14,
-      paddingRight: 2
+      position: 'absolute',
+      bottom: '3px',
+      right: '3px'
     };
 
     return connectDragSource(
@@ -62,6 +63,7 @@ PossibleResponse.defaultProps = {
 
 const styles = () => ({
   base: {
+    position: 'relative',
     backgroundColor: color.background(),
     border: `1px solid ${color.primary()}`,
     display: 'flex',
