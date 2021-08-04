@@ -74,6 +74,9 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+  /** Indicates if Accessibility Labels are enabled */
+  accessibilityLabelsEnabled: boolean;
 }
 
 
@@ -166,5 +169,10 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Indicates if sequential choice labels configuration (currently not used)
    */
-  sequentialChoiceLabels?: ConfigurePropWithEnabled
+  sequentialChoiceLabels?: ConfigurePropWithEnabled;
+  
+  /**
+   * Accessibility configuration
+   */
+  accessibility?: ConfigureProp;
 }
