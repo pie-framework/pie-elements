@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Image from './image-container';
 import InteractiveSection from './interactive-section';
 import PossibleResponses from './possible-responses';
-import { getAnswersCorrectness } from './utils-correctness';
+import { getUnansweredAnswers, getAnswersCorrectness } from './utils-correctness';
 import _ from 'lodash';
 
 const generateId = () =>
@@ -227,10 +227,14 @@ class ImageClozeAssociationComponent extends React.Component {
       `You’ve reached the limit of ${maxResponsePerZone} responses per area.` +
       'To add another response, one must first be removed.';
 
-    const answersToShow =
+    let answersToShow =
       responseCorrect !== undefined
         ? getAnswersCorrectness(answers, validation, duplicateResponses)
         : answers;
+
+    if (responseCorrect === false && maxResponsePerZone === 1) {
+      answersToShow = [...answersToShow, ...getUnansweredAnswers(answersToShow, validation)];
+    }
 
     return (
       <div>
