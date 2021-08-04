@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering-controller",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
