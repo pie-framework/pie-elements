@@ -65,7 +65,7 @@ export default {
       label: 'Rationale'
     },
     accessibility: {
-      settings: true,
+      settings: false,
       label: 'Accessibility Label'
     },
     scoringType: {
