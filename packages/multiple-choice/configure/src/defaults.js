@@ -17,64 +17,78 @@ export default {
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true
+    verticalMode: true,
+    toolbarEditorPosition: 'bottom',
+    choicesLayout: 'vertical',
+    gridColumns: '2',
   },
   configuration: {
-    verticalMode: {
+    choicesLayout: {
       settings: true,
-      label: 'Vertical Mode',
+      label: 'Choices Layout',
+    },
+    gridColumns: {
+      label: 'Grid columns',
     },
     answerChoiceCount: 0,
     addChoiceButton: {
       settings: true,
-      label: 'Add a Choice'
+      label: 'Add a Choice',
     },
     limitChoicesNumber: {
       settings: true,
-      label: 'Limit choices to 9'
+      label: 'Limit choices to 9',
     },
     choiceMode: {
       settings: true,
-      label: 'Response Type'
+      label: 'Response Type',
     },
     choicePrefix: {
       settings: true,
-      label: 'Choice Labels'
+      label: 'Choice Labels',
     },
     deleteChoice: {
-      settings: true
+      settings: true,
     },
     feedback: {
       settings: true,
-      label: 'Feedback'
+      label: 'Feedback',
     },
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     lockChoiceOrder: {
       settings: true,
-      label: 'Lock Choice Order'
+      label: 'Lock Choice Order',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
+      label: 'Allow Partial Scoring',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
+    },
+    accessibility: {
+      settings: false,
+      label: 'Accessibility Label'
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
-    }
-  }
+      label: 'Teacher Instructions',
+    },
+    toolbarEditorPosition: {
+      settings: false,
+      label: 'Toolbar Editor Position',
+    },
+  },
 };

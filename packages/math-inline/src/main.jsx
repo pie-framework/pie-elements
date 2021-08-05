@@ -18,6 +18,8 @@ const NEWLINE_LATEX = /\\newline/g;
 const REGEX = /{{response}}/gm;
 const DEFAULT_KEYPAD_VARIANT = 6;
 
+const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 function generateAdditionalKeys(keyData = []) {
   return keyData.map((key) => ({
     name: key,
@@ -323,22 +325,31 @@ export class Main extends React.Component {
     if (
       !relatedTarget ||
       !currentTarget ||
-      !(
-        relatedTarget.offsetParent &&
-        relatedTarget.offsetParent.children &&
-        relatedTarget.offsetParent.children[0] &&
-        relatedTarget.offsetParent.children[0].attributes &&
-        relatedTarget.offsetParent.children[0].attributes['data-keypad']
-      )
-    ) {
+      (!IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.attributes?.['data-keypad']) ||
+      (IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.children[0]?.attributes?.['data-keypad'])) {
       this.setState({ activeAnswerBlock: '' });
     }
   };
+
+  setTooltipRef(ref) {
+    // Safari Hack: https://stackoverflow.com/a/42764495/5757635
+    setTimeout(() => {
+      if (ref && IS_SAFARI) {
+        const div = document.querySelector("[role='tooltip']");
+        if (div) {
+          const el = div.firstChild;
+          el.setAttribute('tabindex', '-1');
+        }
+      }
+    }, 1);
+  }
 
   render() {
     const { model, classes } = this.props;
     const state = this.state;
     const { activeAnswerBlock, showCorrect, session } = state;
+    const { config: { showNote, note, env: { mode, role } = {}} = {}} = model;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     if (!model.config) {
       return null;
@@ -376,6 +387,7 @@ export class Main extends React.Component {
               })}
             >
               <Tooltip
+                ref={ref => this.setTooltipRef(ref)}
                 interactive
                 open={!!activeAnswerBlock}
                 classes={{
@@ -427,6 +439,12 @@ export class Main extends React.Component {
           )}
         </div>
         </Readable>
+        {displayNote && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
       </div>
     );
 
@@ -556,6 +574,9 @@ const styles = (theme) => ({
   },
   content: {
     marginTop: theme.spacing.unit * 2,
+  },
+  note: {
+    paddingTop: '15px',
   },
   collapsible: {
     marginTop: theme.spacing.unit * 2,

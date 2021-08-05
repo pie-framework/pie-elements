@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import isEmpty from 'lodash/isEmpty';
-import { isResponseCorrect } from './utils';
+import {isResponseCorrect, parseHTML} from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
@@ -8,8 +8,12 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
   const { role, mode } = env || {};
   const out = {
     label: choice.label,
-    value: choice.value
+    value: choice.value,
   };
+
+  if(model.accessibilityLabelsEnabled){
+    out.accessibility = parseHTML(choice.accessibility).textContent || choice.value;
+  }
 
   if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {
     out.rationale = model.rationaleEnabled ? choice.rationale : null;
@@ -69,11 +73,19 @@ export async function model(question, session, env, updateSession) {
     );
   }
 
+  // This is used for offering support for old models which have the property verticalMode
+  // Same thing is set in authoring : packages/multiple-choice/configure/src/main.jsx - componentDidMount
+  let layout = '';
+  if(normalizedQuestion.verticalMode !== undefined) {
+    layout = normalizedQuestion.verticalMode === false ? 'horizontal': 'vertical';
+  }
+
   const out = {
     disabled: env.mode !== 'gather',
     mode: env.mode,
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-    verticalMode: normalizedQuestion.verticalMode,
+    choicesLayout: normalizedQuestion.choicesLayout || layout,
+    gridColumns: normalizedQuestion.gridColumns,
     choiceMode: normalizedQuestion.choiceMode,
     keyMode: normalizedQuestion.choicePrefix,
     choices,

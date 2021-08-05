@@ -9,6 +9,11 @@ exports[`main snapshot renders 1`] = `
       disableUnderline={true}
       nonEmpty={false}
       onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </FormSection>
   <WithStyles(CardBar)
@@ -67,6 +72,7 @@ exports[`main snapshot renders 1`] = `
                 "major": 2,
                 "minor": 1,
               },
+              "toolbarEditorPosition": "bottom",
               "width": 500,
             },
           }
@@ -103,6 +109,11 @@ exports[`main snapshot renders 1`] = `
     <EditableHtml
       markup=""
       onChange={[Function]}
+      toolbarOpts={
+        Object {
+          "position": "bottom",
+        }
+      }
     />
   </FormSection>
   <FormSection
@@ -185,6 +196,7 @@ exports[`main snapshot renders 1`] = `
                 "major": 2,
                 "minor": 1,
               },
+              "toolbarEditorPosition": "bottom",
               "width": 500,
             },
             "title": undefined,
@@ -267,6 +279,7 @@ exports[`main snapshot renders 1`] = `
               "major": 2,
               "minor": 1,
             },
+            "toolbarEditorPosition": "bottom",
             "width": 500,
           },
           "title": undefined,
@@ -288,6 +301,11 @@ exports[`main snapshot renders 1`] = `
   <br />
   <FeedbackConfig
     onChange={[Function]}
+    toolbarOpts={
+      Object {
+        "position": "bottom",
+      }
+    }
   />
 </div>
 `;

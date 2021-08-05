@@ -82,13 +82,7 @@ export default {
       settings: false,
       label: 'Scoring Type'
     },
-    partA: {
-      ...cloneDeep(defaultConfig),
-      choiceMode: {
-        settings: false,
-        label: 'Response Type'
-      }
-    },
+    partA: cloneDeep(defaultConfig),
     partB: cloneDeep(defaultConfig),
     partLabels: {
       settings: true,

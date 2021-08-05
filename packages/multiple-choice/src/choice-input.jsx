@@ -71,7 +71,7 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -83,6 +83,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
   const miniProps = { checked, onChange, disabled };
   return (
     <Checkbox
+      aria-label={accessibility}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -95,7 +96,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -108,6 +109,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
 
   return (
     <Radio
+      aria-label={accessibility}
       {...miniProps}
       className={CLASS_NAME}
       classes={{
@@ -128,6 +130,7 @@ export class ChoiceInput extends React.Component {
     feedback: PropTypes.string,
     label: PropTypes.string.isRequired,
     rationale: PropTypes.string,
+    accessibility: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
@@ -136,6 +139,7 @@ export class ChoiceInput extends React.Component {
 
   static defaultProps = {
     rationale: null,
+    accessibility: null,
     checked: false,
   };
 
@@ -163,6 +167,7 @@ export class ChoiceInput extends React.Component {
       classes,
       className,
       rationale,
+      accessibility,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -178,6 +183,7 @@ export class ChoiceInput extends React.Component {
               label={displayKey ? displayKey + '. ' : ''}
               control={
                 <Tag
+                  accessibility={accessibility}
                   checked={checked}
                   correctness={correctness}
                   onChange={this.onToggleChoice}

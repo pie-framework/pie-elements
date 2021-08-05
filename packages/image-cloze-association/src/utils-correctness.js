@@ -35,6 +35,28 @@ const getUniqueCorrectAnswers = (answers, validResponses) => {
   return finalAnswers;
 };
 
+export const getUnansweredAnswers = (answers, validation) => {
+  const { validResponse: { value } = {}} = validation;
+
+  const unansweredAnswers = (value || []).reduce((unanswered, response, index) => {
+    const isAnswered = !!answers.find(answer => answer.containerIndex === index);
+
+    if (!isAnswered) {
+      return [...unanswered, {
+        id: `unanswered-${index}`,
+        value: response.images[0] || '',
+        containerIndex: index,
+        isCorrect: false,
+        hidden: true
+      }];
+    }
+
+    return unanswered;
+  }, []);
+
+  return unansweredAnswers;
+};
+
 export const getAnswersCorrectness = (answers, validation) => {
   const { validResponse: { value }, altResponses } = validation;
 

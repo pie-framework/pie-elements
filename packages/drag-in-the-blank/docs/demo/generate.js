@@ -34,5 +34,6 @@ exports.model = (id, element) => ({
   'feedback': {},
   'mode': 'gather',
   'disabled': false,
-  'teacherInstructions': null
+  'teacherInstructions': null,
+  'toolbarEditorPosition': 'bottom'
 });
