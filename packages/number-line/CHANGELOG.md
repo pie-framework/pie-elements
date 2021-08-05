@@ -3,39 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.11.0...@pie-element/number-line@5.11.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [5.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.10.0...@pie-element/number-line@5.11.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* **number-line:** Fixed height ([#612](https://github.com/pie-framework/pie-elements/issues/612)) ([1237413](https://github.com/pie-framework/pie-elements/commit/12374132ddfe13ec055b722559c0c8b963214735))
-* **number-line:** if feedback is not specified in the model, it is set to none PD-935 ([#580](https://github.com/pie-framework/pie-elements/issues/580)) ([d1246e1](https://github.com/pie-framework/pie-elements/commit/d1246e184b4678d4515409c0bab16bc0f6e826dc))
-* **number-line:** Overwrite style for reboot PD-474 ([#607](https://github.com/pie-framework/pie-elements/issues/607)) ([10e972d](https://github.com/pie-framework/pie-elements/commit/10e972da3abd9a1fab2f1eb0d6ce162b3fd6379a))
-* **number-line:** partial scoring not working correctly PD-448 ([#586](https://github.com/pie-framework/pie-elements/issues/586)) ([c73b903](https://github.com/pie-framework/pie-elements/commit/c73b903fe2229e73c3e55965a188b2fe3dd5947f))
-* **number-line:** remove the possibility to plot the same objects multiple times PD-1166 ([#593](https://github.com/pie-framework/pie-elements/issues/593)) ([808e4d9](https://github.com/pie-framework/pie-elements/commit/808e4d9855e63f44740ee719166399908e90b42b))
-* **number-line:** show correct should not display feedback PD-577 ([#595](https://github.com/pie-framework/pie-elements/issues/595)) ([c1e42db](https://github.com/pie-framework/pie-elements/commit/c1e42dbc3fd9b8e6f32f7ac1221c423560a2197d))
-
-
-### Features
-
-* **number-line:** Changed vertical space depending on max number of points - PD-1011 \n\n BREAKING CHANGE: Removed height from the model ([#605](https://github.com/pie-framework/pie-elements/issues/605)) ([eb3bf84](https://github.com/pie-framework/pie-elements/commit/eb3bf84474803bb648d61dbddb53fa137863eda7))
-* **number-line:** circles indicating an open interval should have a white fill PD-1164 ([#592](https://github.com/pie-framework/pie-elements/issues/592)) ([fb11746](https://github.com/pie-framework/pie-elements/commit/fb11746201da59f5d3714a9d0517daa85e9331a2))
-
-
-
-
-
 # [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.9.18...@pie-element/number-line@5.10.0) (2021-04-07)
 
 

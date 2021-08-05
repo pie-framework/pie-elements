@@ -3,41 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [10.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.6.0...@pie-element/pie-models@10.6.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [10.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.5.0...@pie-element/pie-models@10.6.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* **multi-trait-rubric:** Fixed the toolbar cut off - PD-1106 ([#564](https://github.com/pie-framework/pie-elements/issues/564)) ([7880804](https://github.com/pie-framework/pie-elements/commit/788080479dcc44e0fc4ee780cce5b5b7e68d07eb))
-* **placement-ordering:** Fixed Placement Ordering items are displaying an incorrect label - PD-1147 ([#576](https://github.com/pie-framework/pie-elements/issues/576)) ([c7e3284](https://github.com/pie-framework/pie-elements/commit/c7e3284d0eadd6ccc082f474f385b565217db0f9))
-* image-cloze-association create schemas for PD-1095 ([#562](https://github.com/pie-framework/pie-elements/issues/562)) ([d2e39da](https://github.com/pie-framework/pie-elements/commit/d2e39da045f594938239f1a25ac9786bdaffa6d9))
-* multi-trait-rubric change label for remove trait, add configuration props for the content of the dialog boxes PD-1118 ([#563](https://github.com/pie-framework/pie-elements/issues/563)) ([afc563a](https://github.com/pie-framework/pie-elements/commit/afc563a22e107ce95dc1bf0f3241d77485744d56))
-
-
-### Features
-
-* **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
-* Displayed a message when the item has one or more alternate answers - PD-167 ([#590](https://github.com/pie-framework/pie-elements/issues/590)) ([889d8b5](https://github.com/pie-framework/pie-elements/commit/889d8b578a915c997a95bd5cd4bdf18f53cc2b68))
-* **drawing-response:** remove rationale PD-191 ([#597](https://github.com/pie-framework/pie-elements/issues/597)) ([3b52331](https://github.com/pie-framework/pie-elements/commit/3b52331ac843084e6d402daad3536627ab0ddf28))
-* **ebsr:** Added vertical/horizontal layout setting - PD-1144 ([#579](https://github.com/pie-framework/pie-elements/issues/579)) ([51c4093](https://github.com/pie-framework/pie-elements/commit/51c4093b4ade86a9c1118066b9dee36bc0582f3a))
-* **number-line:** Changed vertical space depending on max number of points - PD-1011 \n\n BREAKING CHANGE: Removed height from the model ([#605](https://github.com/pie-framework/pie-elements/issues/605)) ([eb3bf84](https://github.com/pie-framework/pie-elements/commit/eb3bf84474803bb648d61dbddb53fa137863eda7))
-* **rubric:** Added sample answers to the model - PD-621 ([#559](https://github.com/pie-framework/pie-elements/issues/559)) ([d436b47](https://github.com/pie-framework/pie-elements/commit/d436b47b1cb8dd7cfbd82dbd2de4dd5eab36905c))
-
-
-
-
-
 # [10.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.4.3...@pie-element/pie-models@10.5.0) (2021-04-07)
 
 

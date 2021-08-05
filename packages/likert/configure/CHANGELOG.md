@@ -3,25 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.0.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.20...@pie-element/likert-configure@0.0.22) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-## [0.0.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.19...@pie-element/likert-configure@0.0.20) (2021-06-29)
-
-**Note:** Version bump only for package @pie-element/likert-configure
-
-
-
-
-
 ## [0.0.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.18...@pie-element/likert-configure@0.0.19) (2021-04-07)
 
 **Note:** Version bump only for package @pie-element/likert-configure

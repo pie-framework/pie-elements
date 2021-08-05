@@ -3,25 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.2.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.2.14...@pie-element/graphing-controller@3.2.16) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-## [3.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.2.13...@pie-element/graphing-controller@3.2.14) (2021-06-29)
-
-**Note:** Version bump only for package @pie-element/graphing-controller
-
-
-
-
-
 ## [3.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.2.10...@pie-element/graphing-controller@3.2.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/graphing-controller
