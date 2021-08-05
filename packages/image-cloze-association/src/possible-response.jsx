@@ -32,14 +32,11 @@ export class PossibleResponse extends React.Component {
       bottom: '3px',
       right: '3px'
     };
+    const spanClassName = data.hidden ? classes.hiddenSpan : classes.span;
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span
-          style={data.hidden && { visibility: 'hidden' }}
-          className={classes.span}
-          dangerouslySetInnerHTML={{__html: data.value}}
-        />
+        <span className={spanClassName} dangerouslySetInnerHTML={{__html: data.value}} />
         <EvaluationIcon
           isCorrect={data.isCorrect}
           containerStyle={evaluationStyle}
@@ -87,6 +84,10 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background()
+  },
+  hiddenSpan: {
+    backgroundColor: color.background(),
+    visibility: 'hidden'
   }
 });
 
