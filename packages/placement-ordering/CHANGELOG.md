@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.5.2...@pie-element/placement-ordering@7.6.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* **placement-ordering:** Updated documentation PD-305 ([ff31ac5](https://github.com/pie-framework/pie-elements/commit/ff31ac57139f59413748e88f152ef7629ae6e5be))
+
+
+### Features
+
+* **placement-ordering:** added option to set toolbar editor position ([9b1b291](https://github.com/pie-framework/pie-elements/commit/9b1b2916f2c34297f3d4b239e393376f87be3826))
+
+
+
+
+
 ## [7.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.5.0...@pie-element/placement-ordering@7.5.2) (2021-08-05)
 
 

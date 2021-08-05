@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.10.2...@pie-element/drag-in-the-blank@3.11.0) (2021-08-05)
+
+
+### Features
+
+* **drag-in-the-blank:** set toolbar editor position to bottom ([8a16b0f](https://github.com/pie-framework/pie-elements/commit/8a16b0f2965af63ab6e20267131cc1da19dce8e1))
+
+
+
+
+
 ## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.10.0...@pie-element/drag-in-the-blank@3.10.2) (2021-08-05)
 
 
