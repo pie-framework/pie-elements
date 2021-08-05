@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { DragSource } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/render-ui';
+import classNames from 'classnames';
 
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
@@ -27,14 +28,18 @@ export class PossibleResponse extends React.Component {
     const { classes, connectDragSource, containerStyle, data } = this.props;
     const additionalClass = this.getClassname();
     const evaluationStyle = {
-      alignSelf: 'center',
       fontSize: 14,
-      paddingRight: 2
+      position: 'absolute',
+      bottom: '3px',
+      right: '3px'
     };
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span className={classes.span} dangerouslySetInnerHTML={{__html: data.value}}/>
+        <span
+          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
+          dangerouslySetInnerHTML={{__html: data.value}}
+        />
         <EvaluationIcon
           isCorrect={data.isCorrect}
           containerStyle={evaluationStyle}
@@ -62,6 +67,7 @@ PossibleResponse.defaultProps = {
 
 const styles = () => ({
   base: {
+    position: 'relative',
     backgroundColor: color.background(),
     border: `1px solid ${color.primary()}`,
     display: 'flex',
@@ -81,6 +87,9 @@ const styles = () => ({
   },
   span: {
     backgroundColor: color.background()
+  },
+  hiddenSpan: {
+    visibility: 'hidden'
   }
 });
 

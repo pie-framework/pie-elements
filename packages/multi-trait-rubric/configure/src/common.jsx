@@ -148,7 +148,7 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels }) => {
+})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels, alignToRight }) => {
 
   const scoreBoxClasses =
     showScorePointLabels ? classes.scorePointBox : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -168,6 +168,7 @@ export const ScorePoint = withStyles({
           onChange={onChange}
           pluginProps={pluginProps}
           activePlugins={filteredDefaultPlugins}
+          toolbarOpts={alignToRight && { alignment: 'right' }}
         /> : null}
       </div>
     </div>
