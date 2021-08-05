@@ -3,35 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.0...@pie-element/multi-trait-rubric@1.4.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [1.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.3.0...@pie-element/multi-trait-rubric@1.4.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* **multi-trait-rubric:** Fixed the toolbar cut off - PD-1106 ([#564](https://github.com/pie-framework/pie-elements/issues/564)) ([7880804](https://github.com/pie-framework/pie-elements/commit/788080479dcc44e0fc4ee780cce5b5b7e68d07eb))
-* multi-trait-rubric change label for remove trait, add configuration props for the content of the dialog boxes PD-1118 ([#563](https://github.com/pie-framework/pie-elements/issues/563)) ([afc563a](https://github.com/pie-framework/pie-elements/commit/afc563a22e107ce95dc1bf0f3241d77485744d56))
-
-
-### Features
-
-* **multi-trait-rubric:** change drag and drop to push instead of swap, drag traits by handle PD-1109 ([#561](https://github.com/pie-framework/pie-elements/issues/561)) ([93d621f](https://github.com/pie-framework/pie-elements/commit/93d621f35d04ecbd571ee0cf179cc0d99d11987c))
-* multi-trait-rubric update ui PD-1107 ([#560](https://github.com/pie-framework/pie-elements/issues/560)) ([448d925](https://github.com/pie-framework/pie-elements/commit/448d9257e755870838fdecbb8acf457ed0c4f16a))
-
-
-
-
-
 # [1.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.2.3...@pie-element/multi-trait-rubric@1.3.0) (2021-04-07)
 
 

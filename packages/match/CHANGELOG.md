@@ -3,36 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.7.0...@pie-element/match@4.7.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.6.0...@pie-element/match@4.7.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
-* **match:** Changed the horizontal spacing ([#569](https://github.com/pie-framework/pie-elements/issues/569)) ([1e9ed15](https://github.com/pie-framework/pie-elements/commit/1e9ed15df316f9de98552597d20d58db03e359e7))
-* **match:** remove rationale and teacher instructions from the item model returned by the API PD-1158 ([#591](https://github.com/pie-framework/pie-elements/issues/591)) ([e33786a](https://github.com/pie-framework/pie-elements/commit/e33786ad0bc788872c3624805790c82b3819c879))
-
-
-### Features
-
-* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
-* **match:** change partial scoring method for match items that use checkboxes PD-741 ([#588](https://github.com/pie-framework/pie-elements/issues/588)) ([65cd5dd](https://github.com/pie-framework/pie-elements/commit/65cd5dd6adb2307f89f53248b0d4489b0dd71e39))
-
-
-
-
-
 # [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.5.18...@pie-element/match@4.6.0) (2021-04-07)
 
 

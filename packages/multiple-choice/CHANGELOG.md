@@ -3,34 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.9.0...@pie-element/multiple-choice@5.9.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.8.0...@pie-element/multiple-choice@5.9.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
-
-
-### Features
-
-* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
-* **ebsr:** Added vertical/horizontal layout setting - PD-1144 ([#579](https://github.com/pie-framework/pie-elements/issues/579)) ([51c4093](https://github.com/pie-framework/pie-elements/commit/51c4093b4ade86a9c1118066b9dee36bc0582f3a))
-
-
-
-
-
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.7.3...@pie-element/multiple-choice@5.8.0) (2021-04-07)
 
 

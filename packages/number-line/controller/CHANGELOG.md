@@ -3,29 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.3.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.15...@pie-element/number-line-controller@4.3.17) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-## [4.3.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.14...@pie-element/number-line-controller@4.3.15) (2021-06-29)
-
-
-### Bug Fixes
-
-* **number-line:** if feedback is not specified in the model, it is set to none PD-935 ([#580](https://github.com/pie-framework/pie-elements/issues/580)) ([d1246e1](https://github.com/pie-framework/pie-elements/commit/d1246e184b4678d4515409c0bab16bc0f6e826dc))
-* **number-line:** partial scoring not working correctly PD-448 ([#586](https://github.com/pie-framework/pie-elements/issues/586)) ([c73b903](https://github.com/pie-framework/pie-elements/commit/c73b903fe2229e73c3e55965a188b2fe3dd5947f))
-
-
-
-
-
 ## [4.3.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-controller@4.3.13...@pie-element/number-line-controller@4.3.14) (2021-04-07)
 
 

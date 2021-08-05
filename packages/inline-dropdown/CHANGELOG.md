@@ -3,34 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.0...@pie-element/inline-dropdown@3.8.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.7.0...@pie-element/inline-dropdown@3.8.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
-* **inline-dropdown:** Improved the UX when adding an answer choice PD-294 ([#570](https://github.com/pie-framework/pie-elements/issues/570)) ([7ed2843](https://github.com/pie-framework/pie-elements/commit/7ed2843cdb536ec1bc1a0645f54ef7e58b76663b))
-
-
-### Features
-
-* **inline-dropdown:** remove table, lists, audio and video buttons from choices toolbar PD-1179, PD-1180 ([#600](https://github.com/pie-framework/pie-elements/issues/600)) ([b6cbeda](https://github.com/pie-framework/pie-elements/commit/b6cbeda042d17660e7339e3010610e4ba1f3a682))
-
-
-
-
-
 # [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.6.3...@pie-element/inline-dropdown@3.7.0) (2021-04-07)
 
 

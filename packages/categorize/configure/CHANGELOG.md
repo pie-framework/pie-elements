@@ -3,34 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.0...@pie-element/categorize-configure@5.4.2) (2021-08-05)
-
-
-### Bug Fixes
-
-* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
-
-
-
-
-
-# [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.3.0...@pie-element/categorize-configure@5.4.0) (2021-06-29)
-
-
-### Bug Fixes
-
-* **categorize:** Fixed Row labels appearance and the display of categories - PD-197 ([#594](https://github.com/pie-framework/pie-elements/issues/594)) ([825724e](https://github.com/pie-framework/pie-elements/commit/825724e57a3c95b29c4f9ecfafea0618ed38b250))
-
-
-### Features
-
-* **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
-* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
-
-
-
-
-
 # [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.2.23...@pie-element/categorize-configure@5.3.0) (2021-04-07)
 
 
