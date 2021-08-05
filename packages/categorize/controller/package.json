@@ -7,7 +7,7 @@
     "@pie-lib/feedback": "^0.4.27",
     "lodash": "^4.17.15"
   },
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "",
   "scripts": {},
   "main": "lib/index.js",

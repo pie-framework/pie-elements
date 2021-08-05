@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.11...@pie-element/extended-text-entry-controller@4.1.13) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
 ## [4.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-controller@4.1.10...@pie-element/extended-text-entry-controller@4.1.11) (2021-06-29)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-controller
