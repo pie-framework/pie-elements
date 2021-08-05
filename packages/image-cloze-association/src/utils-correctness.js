@@ -46,7 +46,8 @@ export const getUnansweredAnswers = (answers, validation) => {
         id: `unanswered-${index}`,
         value: response.images[0] || '',
         containerIndex: index,
-        isCorrect: false
+        isCorrect: false,
+        hidden: true
       }];
     }
 
