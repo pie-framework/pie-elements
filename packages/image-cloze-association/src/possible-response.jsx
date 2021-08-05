@@ -35,7 +35,11 @@ export class PossibleResponse extends React.Component {
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span className={classes.span} dangerouslySetInnerHTML={{__html: data.value}}/>
+        <span
+          style={data.hidden && { visibility: 'hidden' }}
+          className={classes.span}
+          dangerouslySetInnerHTML={{__html: data.value}}
+        />
         <EvaluationIcon
           isCorrect={data.isCorrect}
           containerStyle={evaluationStyle}
