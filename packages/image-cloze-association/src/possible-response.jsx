@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { DragSource } from '@pie-lib/drag';
 import { withStyles } from '@material-ui/core/styles';
 import { color } from '@pie-lib/render-ui';
+import classNames from 'classnames';
 
 import EvaluationIcon from './evaluation-icon';
 import c from './constants';
@@ -32,11 +33,13 @@ export class PossibleResponse extends React.Component {
       bottom: '3px',
       right: '3px'
     };
-    const spanClassName = data.hidden ? classes.hiddenSpan : classes.span;
 
     return connectDragSource(
       <div className={`${classes.base} ${additionalClass}`} style={containerStyle}>
-        <span className={spanClassName} dangerouslySetInnerHTML={{__html: data.value}} />
+        <span
+          className={classNames([classes.span, { [classes.hiddenSpan]: data.hidden }])}
+          dangerouslySetInnerHTML={{__html: data.value}}
+        />
         <EvaluationIcon
           isCorrect={data.isCorrect}
           containerStyle={evaluationStyle}
@@ -86,7 +89,6 @@ const styles = () => ({
     backgroundColor: color.background()
   },
   hiddenSpan: {
-    backgroundColor: color.background(),
     visibility: 'hidden'
   }
 });
