@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.8.3...@pie-element/hotspot@4.9.0) (2021-08-05)
+
+
+### Features
+
+* **hotspot:** Added option to set toolbar editor position ([a36faea](https://github.com/pie-framework/pie-elements/commit/a36faea1cc0cb9ed5574fcb860941eea298b1cd3))
+* **hotspot:** Added tooltip annotations to the icons PD-625 ([354a41e](https://github.com/pie-framework/pie-elements/commit/354a41ea2738d35fc09b1d7ab4bc7f796eb31c65))
+* **hotspot:** set toolbar editor position to bottom ([3f3db3a](https://github.com/pie-framework/pie-elements/commit/3f3db3accdb1469f8b52535081da0cc339e43a48))
+* **hotspot:** toolbar editor position - change double quotes into single quotes ([722ec64](https://github.com/pie-framework/pie-elements/commit/722ec64c1f87f69f2c086e80923d0c137b4aad39))
+
+
+
+
+
 ## [4.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.8.1...@pie-element/hotspot@4.8.3) (2021-08-05)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.9.2...@pie-element/explicit-constructed-response@3.10.0) (2021-08-05)
+
+
+### Features
+
+* **explicit-constructed-response:** set toolbar editor position to bottom ([75cc827](https://github.com/pie-framework/pie-elements/commit/75cc827c14307f4cf96389112cbc4311eff3795a))
+
+
+
+
+
 ## [3.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.9.0...@pie-element/explicit-constructed-response@3.9.2) (2021-08-05)
 
 

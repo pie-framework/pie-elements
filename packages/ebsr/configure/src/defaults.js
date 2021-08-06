@@ -40,13 +40,10 @@ const defaultConfig = {
     settings: true,
     label: 'Teacher Instructions'
   },
-  choicesLayout: {
-    settings: false,
-    label: 'Choices Layout',
-  },
-  gridColumns: {
-    label: 'Grid columns',
-  },
+  verticalMode: {
+    settings: true,
+    label: 'Vertical Mode',
+  }
 };
 
 const partModel = base => ({
@@ -61,8 +58,7 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  choicesLayout: 'vertical',
-  gridColumns: '2',
+  verticalMode: true,
   ...base
 });
 

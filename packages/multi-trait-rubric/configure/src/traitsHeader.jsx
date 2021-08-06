@@ -10,6 +10,7 @@ import { color } from '@pie-lib/render-ui';
 
 import {
   Block,
+  BlockWidth,
   PrimaryBlock,
   Row,
   SecondaryBlock,
@@ -81,6 +82,7 @@ export class TraitsHeaderTile extends React.Component {
       scorePointsLabels,
       traitLabel,
       classes,
+      currentPosition,
       showStandards,
       onTraitLabelChange,
       showDescription,
@@ -89,6 +91,7 @@ export class TraitsHeaderTile extends React.Component {
       updateMaxPointsFieldValue,
       scaleIndex,
       showScorePointLabels,
+      secondaryBlockWidth,
       setSecondaryBlockRef,
     } = this.props;
     const { anchorEl } = this.state;
@@ -148,10 +151,10 @@ export class TraitsHeaderTile extends React.Component {
           setRef={ref => {
             if (ref) {
               this.secondaryBlock = ref;
-
               setSecondaryBlockRef(ref);
             }
           }}
+          width={`${secondaryBlockWidth}px`}
         >
 
           {showStandards && (
@@ -171,6 +174,8 @@ export class TraitsHeaderTile extends React.Component {
           )}
 
           {scorePointsValues.map((scorePointsValue, index) => {
+            const adjustedBlockWidth = BlockWidth + 2 * 8; // 8 is padding
+            const remainingSpace = secondaryBlockWidth - adjustedBlockWidth * index + currentPosition - 128;
             const value = scorePointsValues.length - index - 1;
             let scoreDescriptor;
 
@@ -188,6 +193,7 @@ export class TraitsHeaderTile extends React.Component {
                   pluginProps={labelPlugins}
                   showScorePointLabels={showScorePointLabels}
                   onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
+                  alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
                 />
               </Block>
             )
@@ -212,6 +218,7 @@ TraitsHeaderTile.propTypes = {
   updateMaxPointsFieldValue: PropTypes.func,
   scaleIndex: PropTypes.number,
   currentPosition: PropTypes.number,
+  secondaryBlockWidth: PropTypes.number,
   showDeleteScaleModal: PropTypes.func,
   showScorePointLabels: PropTypes.bool,
   setSecondaryBlockRef: PropTypes.func

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.7.2...@pie-element/drawing-response@3.8.0) (2021-08-05)
+
+
+### Features
+
+* **drawing-response:** set toolbar editor position to bottom ([cac36e9](https://github.com/pie-framework/pie-elements/commit/cac36e96e1113a4843409ebaa6683b415ea1ee4a))
+
+
+
+
+
 ## [3.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.7.0...@pie-element/drawing-response@3.7.2) (2021-08-05)
 
 

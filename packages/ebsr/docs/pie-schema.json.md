@@ -326,21 +326,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-### `choicesLayout` (object)
+### `verticalMode` (object)
 
-Properties of the `choicesLayout` object:
-
-#### `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-#### `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-### `gridColumns` (object)
-
-Properties of the `gridColumns` object:
+Properties of the `verticalMode` object:
 
 #### `settings` (boolean)
 

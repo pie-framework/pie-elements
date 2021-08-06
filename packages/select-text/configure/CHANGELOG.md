@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.2...@pie-element/select-text-configure@5.2.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **select-text:** fix initial view of tokens in authoring PD-1235 ([22cbc2c](https://github.com/pie-framework/pie-elements/commit/22cbc2cf58e874e095866bd7b36a0a026fc4f11c))
+
+
+
+
+
 ## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.0...@pie-element/select-text-configure@5.2.2) (2021-08-05)
 
 

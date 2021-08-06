@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.7.2...@pie-element/match@4.8.0) (2021-08-05)
+
+
+### Features
+
+* **match:** authoring UI should allow up to 10 columns. Change column header fields PD-601 ([6015d9f](https://github.com/pie-framework/pie-elements/commit/6015d9fd8768f7b8462b7c85c2a2ce61df9ab535))
+* **match:** remove insert audio and video buttons from question text PD-601 ([6407962](https://github.com/pie-framework/pie-elements/commit/64079623bbba4803e18d49b33b43f62f9b1082cb))
+* **match:** set toolbar editor position to bottom ([54c781e](https://github.com/pie-framework/pie-elements/commit/54c781e16207ddb5cbc623626ab1bc8980518b49))
+
+
+
+
+
 ## [4.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match@4.7.0...@pie-element/match@4.7.2) (2021-08-05)
 
 

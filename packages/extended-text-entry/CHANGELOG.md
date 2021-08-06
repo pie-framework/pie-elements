@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.3...@pie-element/extended-text-entry@6.6.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
+
+
+### Features
+
+* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
+
+
+
+
+
 ## [6.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.1...@pie-element/extended-text-entry@6.5.3) (2021-08-05)
 
 

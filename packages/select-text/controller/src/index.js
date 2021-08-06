@@ -3,7 +3,6 @@ import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
 import defaults from './defaults';
-import { prepareText } from './utils';
 
 const log = debug('@pie-element:select-text:controller');
 
@@ -106,24 +105,14 @@ export const normalizeSession = (s) => ({
   ...s,
 });
 
-export const normalize = (question) => {
-  const newQuestion = {
-    ...question
-  };
-
-  const newText = prepareText(newQuestion.text);
-
-  return {
+export const normalize = (question) => ({
   feedbackEnabled: true,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-    ...newQuestion,
-    unpreparedText: newQuestion.text,
-    text: newText
-  };
-};
+  ...question,
+});
 
 export const model = (question, session, env) => {
   session = session || { selectedToken: [] };

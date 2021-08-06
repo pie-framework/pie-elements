@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.2...@pie-element/image-cloze-association@3.6.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** add show correct answer toggle for evaluate ([4ac53e7](https://github.com/pie-framework/pie-elements/commit/4ac53e71d10eb9bbe417a9bc445bd1623830823d))
+* **image-cloze-association:** Added missing responses and marked as incorrect in evaluate mode PD-1246 ([a5d0e98](https://github.com/pie-framework/pie-elements/commit/a5d0e9807e5c99dd352e908483e143b6081eefe3))
+* **image-cloze-association:** Fixed scoring method console errors PD-1249 ([1484c63](https://github.com/pie-framework/pie-elements/commit/1484c6354d59afcc0b541232c70ddfc5869ecfee))
+* **image-cloze-association:** Moved the evaluate symbol to fit in the available content PD-1244 ([3266e19](https://github.com/pie-framework/pie-elements/commit/3266e199e1147773fe57d199a6ae468855d05af6))
+* **image-cloze-association:** Removed correct answer in evaluate mode for empty response ([18c886c](https://github.com/pie-framework/pie-elements/commit/18c886c14655b42e4b9b549a700bf0258b9cefc1))
+* **image-cloze-association:** Used classnames instead ([544be10](https://github.com/pie-framework/pie-elements/commit/544be10da1225e5a52e4f0d3b51d52f9714591ae))
+* add dependency for correct answer toggle ([66d52cd](https://github.com/pie-framework/pie-elements/commit/66d52cdff3a5e0500a4ec0efb623948772b4aefe))
+
+
+
+
+
 ## [3.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.0...@pie-element/image-cloze-association@3.6.2) (2021-08-05)
 
 

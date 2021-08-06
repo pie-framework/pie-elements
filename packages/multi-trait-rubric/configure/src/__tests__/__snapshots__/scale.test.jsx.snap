@@ -19,6 +19,7 @@ exports[`Scale snapshot renders 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     setSecondaryBlockRef={[Function]}
     showDeleteScaleModal={[Function]}
     showStandards={true}
@@ -123,6 +124,7 @@ exports[`Scale snapshot renders with drag and drop enabled 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     setSecondaryBlockRef={[Function]}
     showDeleteScaleModal={[Function]}
     showStandards={true}
@@ -227,6 +229,7 @@ exports[`Scale snapshot renders without descriptions 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     setSecondaryBlockRef={[Function]}
     showDeleteScaleModal={[Function]}
     showDescription={false}
@@ -333,6 +336,7 @@ exports[`Scale snapshot renders without standards 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     setSecondaryBlockRef={[Function]}
     showDeleteScaleModal={[Function]}
     showStandards={false}
@@ -437,6 +441,7 @@ exports[`Scale snapshot renders without traits 1`] = `
       ]
     }
     scorePointsValues={Array []}
+    secondaryBlockWidth={320}
     setSecondaryBlockRef={[Function]}
     showDeleteScaleModal={[Function]}
     showStandards={true}

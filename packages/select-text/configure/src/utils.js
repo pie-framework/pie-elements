@@ -1,5 +1,3 @@
-// TODO: move this to pie-lib in order to be used in multiple packages
-
 const createElementFromHTML = (htmlString = '') => {
   const div = document.createElement('div');
 
