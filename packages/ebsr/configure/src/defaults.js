@@ -41,7 +41,7 @@ const defaultConfig = {
     label: 'Teacher Instructions'
   },
   choicesLayout: {
-    settings: true,
+    settings: false,
     label: 'Choices Layout',
   },
   gridColumns: {

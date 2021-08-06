@@ -23,7 +23,7 @@ export default {
   },
   configuration: {
     choicesLayout: {
-      settings: true,
+      settings: false,
       label: 'Choices Layout',
     },
     gridColumns: {
