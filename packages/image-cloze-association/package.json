@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/image-cloze-association",
-  "version": "3.6.2",
+  "version": "3.6.3",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -10,9 +10,12 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.1",
     "@pie-framework/pie-player-events": "^0.1.0",
+    "@pie-lib/correct-answer-toggle": "^2.3.28",
     "@pie-lib/drag": "^1.1.52",
     "@pie-lib/math-rendering": "^2.3.8",
     "@pie-lib/render-ui": "^4.11.9",
+    "@pie-lib/correct-answer-toggle": "^2.3.28",
+    "classnames": "^2.2.6",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

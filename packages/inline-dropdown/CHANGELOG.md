@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.2...@pie-element/inline-dropdown@3.8.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **inline-dropdown:** add math input when author clicks + without pressing the green checkmark PD-1230 ([7cfdc3f](https://github.com/pie-framework/pie-elements/commit/7cfdc3f6763fe5b56921824aae3a75e0536e7344))
+
+
+
+
+
 ## [3.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.0...@pie-element/inline-dropdown@3.8.2) (2021-08-05)
 
 

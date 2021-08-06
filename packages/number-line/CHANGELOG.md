@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.11.2...@pie-element/number-line@5.12.0) (2021-08-05)
+
+
+### Features
+
+* **number-line:** set toolbar editor position to bottom ([148ccaf](https://github.com/pie-framework/pie-elements/commit/148ccafcf586debe3710c63029f5fae3d9c66c1f))
+
+
+
+
+
 ## [5.11.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.11.0...@pie-element/number-line@5.11.2) (2021-08-05)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.2...@pie-element/multi-trait-rubric@1.4.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **multi-trait-rubric:** Fixed the score point label toolbar cut off PD-1238 ([1f15681](https://github.com/pie-framework/pie-elements/commit/1f15681f913acc5f5fd4ba47131ede53c456839b))
+
+
+
+
+
 ## [1.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.0...@pie-element/multi-trait-rubric@1.4.2) (2021-08-05)
 
 
