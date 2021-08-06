@@ -17,7 +17,6 @@ export default {
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true,
     toolbarEditorPosition: 'bottom',
     choicesLayout: 'vertical',
     gridColumns: '2',
