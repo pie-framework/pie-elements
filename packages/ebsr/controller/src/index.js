@@ -71,7 +71,8 @@ export const normalize = question => ({
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true,
+    choicesLayout: 'vertical',
+    gridColumns: '2',
     ...question.partA
   },
   partB: {
@@ -81,7 +82,8 @@ export const normalize = question => ({
     feedbackEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true,
+    choicesLayout: 'vertical',
+    gridColumns: '2',
     ...question.partB
   }
 });
