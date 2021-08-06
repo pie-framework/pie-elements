@@ -98,16 +98,7 @@ export class Design extends React.Component {
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled } =
       model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
     return (
       <layout.ConfigLayout
         settings={
@@ -169,7 +160,6 @@ export class Design extends React.Component {
               onChange={this.onTeacherInstructionsChange}
               imageSupport={imageSupport}
               nonEmpty={false}
-              toolbarOpts={toolbarOpts}
             />
           </InputContainer>
         )}
@@ -185,7 +175,6 @@ export class Design extends React.Component {
                 markup={model.prompt}
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -198,7 +187,6 @@ export class Design extends React.Component {
                   markup={model.rationale || ''}
                   onChange={this.onRationaleChange}
                   imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -220,7 +208,6 @@ export class Design extends React.Component {
                   className={classes.prompt}
                   markup={model.choiceLabel}
                   onChange={this.onChoiceAreaLabelChange}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -238,7 +225,6 @@ export class Design extends React.Component {
                   className={classes.prompt}
                   markup={model.targetLabel}
                   onChange={this.onAnswerAreaLabelChange}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -255,7 +241,6 @@ export class Design extends React.Component {
                 onChange={this.onChoiceEditorChange}
                 imageSupport={imageSupport}
                 disableImages={!model.enableImages}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -266,7 +251,6 @@ export class Design extends React.Component {
             feedback={model.feedback}
             onChange={this.onFeedbackChange}
             imageSupport={imageSupport}
-            toolbarOpts={toolbarOpts}
           />
         )}
       </layout.ConfigLayout>

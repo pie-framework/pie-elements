@@ -10,8 +10,7 @@ export default {
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    studentInstructionsEnabled: true
   },
   configuration: {
     prompt: {
@@ -33,10 +32,6 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
-    },
-    toolbarEditorPosition:{
-      settings: false,
-      label: 'Toolbar Editor Position'
-    },
+    }
   }
 };

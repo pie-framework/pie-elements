@@ -263,6 +263,7 @@ export class Scale extends React.Component {
       scorePointsValues.push(pointValue);
     }
 
+
     return (
       <div
         key={`scale-${scaleIndex}`}
@@ -292,7 +293,6 @@ export class Scale extends React.Component {
           scaleIndex={scaleIndex}
           showDeleteScaleModal={this.showDeleteScaleModal}
           currentPosition={currentPosition}
-          secondaryBlockWidth={secondaryBlockWidth}
         />
 
         {traits.map((trait, index) => (

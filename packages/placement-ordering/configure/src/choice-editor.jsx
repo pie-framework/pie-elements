@@ -79,7 +79,6 @@ class ChoiceEditor extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     disableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
   };
 
   constructor(props) {
@@ -88,7 +87,7 @@ class ChoiceEditor extends React.Component {
     this.instanceId = uniqueId();
 
     this.onChoiceChange = choice => {
-      const { choices, onChange, correctResponse, toolbarOpts } = this.props;
+      const { choices, onChange, correctResponse } = this.props;
       const index = choices.findIndex(c => c.id === choice.id);
 
       choices.splice(index, 1, { ...choices[index], label: choice.label });
@@ -141,7 +140,7 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport, disableImages, toolbarOpts } = this.props;
+    const { classes, correctResponse, choices, imageSupport, disableImages } = this.props;
 
     const ordering = {
       choices,
@@ -168,7 +167,6 @@ class ChoiceEditor extends React.Component {
               onChoiceChange={this.onChoiceChange}
               onDropChoice={(source, index) => this.onDropChoice(ordering, c, source, index)}
               disableImages={disableImages}
-              toolbarOpts={toolbarOpts}
             />
           ))}
         </div>

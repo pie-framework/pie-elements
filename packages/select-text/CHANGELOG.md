@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.0...@pie-element/select-text@6.5.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [6.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.4.0...@pie-element/select-text@6.5.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
+* **select-text:** partial scoring not working correctly PD-407 ([#584](https://github.com/pie-framework/pie-elements/issues/584)) ([d78e194](https://github.com/pie-framework/pie-elements/commit/d78e19447aeb7953f7eeefb75ce1b71c3d683dea))
+
+
+### Features
+
+* **select-text:** disallow too small values for maxSelections PD-475 ([#604](https://github.com/pie-framework/pie-elements/issues/604)) ([f61386c](https://github.com/pie-framework/pie-elements/commit/f61386cd1929f6c43dd672b941670d6723858e15))
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.3.17...@pie-element/select-text@6.4.0) (2021-04-07)
 
 

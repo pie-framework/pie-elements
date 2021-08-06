@@ -238,7 +238,6 @@ export const outcome = (question, session, env) => {
 };
 
 export const normalize = question => ({
-  ...defaults,
   feedbackEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
@@ -275,26 +274,15 @@ export function model(question, session, env) {
       };
 
       let out;
-      let showNote = false;
-
-      (config && config.responses || []).forEach(response => {
-        if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
-          showNote = true;
-          return;
-        }
-      });
 
       if (env.mode === 'evaluate') {
         out = Object.assign(base, {
           correctResponse
         });
-
-        out.config.showNote = showNote;
       } else {
         out = base;
 
         out.config.responses = [];
-        out.config.showNote = false;
       }
 
       if (
@@ -307,7 +295,6 @@ export function model(question, session, env) {
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
-        out.config.showNote = showNote;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
@@ -315,7 +302,6 @@ export function model(question, session, env) {
         out.config.teacherInstructions = null;
       }
 
-      out.config.env = env;
       out.config.prompt = normalizedQuestion.promptEnabled
         ? normalizedQuestion.prompt
         : null;

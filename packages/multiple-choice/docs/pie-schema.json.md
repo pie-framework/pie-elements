@@ -80,34 +80,11 @@ The question prompt or item stem
 
 Determines if prompt should show
 
-# `choicesLayout` (string, enum)
+# `verticalMode` (boolean)
 
 Indicates the layout of choices for player
 
-This element must be one of the following enum values:
-
-* `grid`
-* `horizontal`
-* `vertical`
-
-Default: `": 'vertical'"`
-
-# `gridColumns` (number)
-
-Indicates the number of columns for the grid layout
-
-Default: `": 2"`
-
-# `toolbarEditorPosition` (string, enum)
-
-Indicates the editor's toolbar position which can be 'bottom' or 'top'
-
-This element must be one of the following enum values:
-
-* `bottom`
-* `top`
-
-Default: `": 'bottom'"`
+Default: `": true"`
 
 # `lockChoiceOrder` (boolean)
 

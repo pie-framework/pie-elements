@@ -75,16 +75,6 @@ export class Root extends React.Component {
       preserveAspectRatio = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
 
     return (
       <div className={classes.base}>
@@ -121,7 +111,6 @@ export class Root extends React.Component {
                   onChange={onTeacherInstructionsChanged}
                   imageSupport={imageSupport}
                   nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -132,7 +121,6 @@ export class Root extends React.Component {
                   onChange={onPromptChanged}
                   imageSupport={imageSupport}
                   nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -146,7 +134,6 @@ export class Root extends React.Component {
                   markup={model.rationale || ''}
                   onChange={onRationaleChanged}
                   imageSupport={imageSupport}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}

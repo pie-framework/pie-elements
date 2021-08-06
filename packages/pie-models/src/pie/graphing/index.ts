@@ -119,19 +119,6 @@ enum Tool {
     label = 'label'
 }
 
-interface Arrows {
-    /** Indicates if left arrow is enabled */
-    left: boolean;
-
-    /** Indicates if right arrow is enabled */
-    right: boolean;
-
-    /** Indicates if up arrow is enabled */
-    up: boolean;
-
-    /** Indicates if down arrow is enabled */
-    down: boolean;
-}
 
 /**
  * NOTE: There's no functionality described for studentInstructions
@@ -150,13 +137,10 @@ export interface GraphingPie extends PieModel {
     };
 
     /** Indicates if arrows are enabled */
-    arrows?: Arrows;
+    arrows?: boolean;
 
     /** Indicates marks that have to be displayed in background */
     backgroundMarks: [Mark];
-
-    /** Indicates if coordinates of a point are displayed on hover */
-    coordinatesOnHover?: boolean;
 
     /** Indicates domain settings for the graph */
     domain: GraphSettings;
@@ -207,37 +191,6 @@ export interface GraphingPie extends PieModel {
     teacherInstructionsEnabled: boolean;
 }
 
-interface ArrowsProp {
-    /**
-     * Indicates the label for the arrow that has to be displayed in the Settings Panel
-     */
-    label?: string;
-}
-
-interface ArrowsConfigProp {
-    /**
-     * Indicates if the item has to be displayed in the Settings Panel
-     */
-    settings?: boolean;
-
-    /**
-     * Indicates the label for the item that has to be displayed in the Settings Panel
-     */
-    label?: string;
-
-    /** Indicates the props of the left arrow for the Settings Panel*/
-    left?: ArrowsProp;
-
-    /** Indicates the props of the right arrow for the Settings Panel*/
-    right?: ArrowsProp;
-
-    /** Indicates the props of the up arrow for the Settings Panel*/
-    up?: ArrowsProp
-
-    /** Indicates the props of the down arrow for the Settings Panel*/
-    down?: ArrowsProp
-}
-
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
@@ -251,12 +204,7 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
     /**
      * Arrows configuration
      */
-    arrows?: ArrowsConfigProp;
-
-    /**
-     *  Coordinates configuration
-     */
-    coordinatesOnHover?: ConfigureProp;
+    arrows?: ConfigureProp;
 
     /**
      * Padding configuration

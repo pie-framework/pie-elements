@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.1.1...@pie-element/matrix@0.1.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [0.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.1.0...@pie-element/matrix@0.1.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
+
+
+
+
+
 # [0.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.0.7...@pie-element/matrix@0.1.0) (2021-04-07)
 
 

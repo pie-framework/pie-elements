@@ -68,12 +68,12 @@ export class AnswerGrid extends React.Component {
       <div className={classes.controlsContainer}>
         <table className={classes.table}>
           <colgroup>
-            {(headers || []).map((header, idx) => (<col key={`col-${idx}`}/>))}
+            {headers.map((header, idx) => (<col key={`col-${idx}`}/>))}
           </colgroup>
 
           <thead>
           <tr>
-            {(headers || []).map((header, idx) => (
+            {headers.map((header, idx) => (
               <th
                 className={classes.rowHeader}
                 key={`th-${idx}`}
@@ -89,7 +89,7 @@ export class AnswerGrid extends React.Component {
           </tr>
           </thead>
 
-          {(rows || []).map((row, idx) => (
+          {rows.map((row, idx) => (
             <tbody key={`row-${idx}`} role="group">
             <tr className={classes.separator}>
               <td
@@ -102,7 +102,7 @@ export class AnswerGrid extends React.Component {
                 />
               </td>
 
-              {(answers[row.id] || []).map((rowItem, answerIndex) => (
+              {answers[row.id].map((rowItem, answerIndex) => (
                 <td
                   key={`td-${idx}-${answerIndex}`}
                   className={classes.column}

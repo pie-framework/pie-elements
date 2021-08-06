@@ -5,7 +5,7 @@ const getAllCorrectness = (answers, responses) =>
   }));
 
 const getValidAnswer = (answer, response) =>
-  (response[answer.containerIndex].images || []).filter(res => res === answer.value);
+  response[answer.containerIndex].filter(res => res === answer.value);
 
 export const getAllUniqueCorrectness = (answers, validResponses) => {
   let allCorrectness = getAllCorrectness(answers, validResponses);
@@ -22,6 +22,7 @@ export const getAllUniqueCorrectness = (answers, validResponses) => {
         allCorrectness = allCorrectness.map(finalAnswer => {
           if (finalAnswer.id === value.id) {
             let valid = getValidAnswer(finalAnswer, validResponses);
+
             return {
               ...finalAnswer,
               isCorrect: valid.length > index + 1

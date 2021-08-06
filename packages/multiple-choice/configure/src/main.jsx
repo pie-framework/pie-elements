@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const { Panel, toggle, radio, dropdown } = settings;
+const { Panel, toggle, radio } = settings;
 
 const MAX_CHOICES = 9;
 
@@ -31,13 +31,7 @@ const styles = theme => ({
   rationaleHolder: {
     width: '70%'
   },
-  accessibilityHolder: {
-    width: '70%'
-  },
   rationale: {
-    paddingTop: theme.spacing.unit * 2
-  },
-  accessibility: {
     paddingTop: theme.spacing.unit * 2
   },
   design: {
@@ -100,42 +94,23 @@ const Design = withStyles(styles)(props => {
     teacherInstructions = {},
     studentInstructions = {},
     rationale = {},
-    accessibility = {},
     scoringType = {},
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
-    choicesLayout,
-    gridColumns,
+    verticalMode
   } = configuration || {};
   const {
     limitChoicesNumber: limitChoicesNumberModel,
     teacherInstructionsEnabled,
     rationaleEnabled,
-    accessibilityLabelsEnabled,
     feedbackEnabled,
-    promptEnabled,
-    choices
+    promptEnabled
   } = model || {};
-
-  const nrOfColumnsAvailable = (choices && choices.length)
-      ? Array.from({length: choices.length}, (_, i) => (`${i + 1}`))
-      : [];
 
   const labelPlugins = {
     audio: { disabled: true },
     video: { disabled: true }
   };
-
-  const toolbarOpts = {};
-
-  switch (model.toolbarEditorPosition) {
-    case 'top':
-      toolbarOpts.position = 'top';
-      break;
-    default:
-      toolbarOpts.position = 'bottom';
-      break;
-  }
 
   const Content = (
     <div>
@@ -150,7 +125,6 @@ const Design = withStyles(styles)(props => {
             onChange={onTeacherInstructionsChanged}
             imageSupport={imageSupport}
             nonEmpty={false}
-            toolbarOpts={toolbarOpts}
           />
         </InputContainer>
       )}
@@ -164,7 +138,6 @@ const Design = withStyles(styles)(props => {
             imageSupport={imageSupport}
             nonEmpty={false}
             disableUnderline
-            toolbarOpts={toolbarOpts}
           />
         </InputContainer>
       )}
@@ -187,7 +160,6 @@ const Design = withStyles(styles)(props => {
             allowFeedBack={feedbackEnabled}
             allowDelete={deleteChoice.settings}
             noLabels
-            toolbarOpts={toolbarOpts}
           />
           {rationaleEnabled && (
             <InputContainer
@@ -205,30 +177,9 @@ const Design = withStyles(styles)(props => {
                   })
                 }
                 imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
                 pluginProps={labelPlugins}
               />
             </InputContainer>
-          )}
-          {accessibilityLabelsEnabled && (
-              <InputContainer
-                  key={`accessibility-${index}`}
-                  label={accessibility.label}
-                  className={classes.accessibilityHolder}
-              >
-                <EditableHtml
-                    className={classes.accessibility}
-                    markup={choice.accessibility || ''}
-                    onChange={c =>
-                        onChoiceChanged(index, {
-                          ...choice,
-                          accessibility: c
-                        })
-                    }
-                    imageSupport={imageSupport}
-                    pluginProps={labelPlugins}
-                />
-              </InputContainer>
           )}
         </div>
       ))}
@@ -249,30 +200,6 @@ const Design = withStyles(styles)(props => {
     </div>
   );
 
-  const settingsInPanel = {
-    choiceMode:
-        choiceMode.settings &&
-        radio(choiceMode.label, ['checkbox', 'radio']),
-    'sequentialChoiceLabels.enabled':
-        sequentialChoiceLabels.settings &&
-        toggle(sequentialChoiceLabels.label, true),
-    choicePrefix:
-        choicePrefix.settings &&
-        radio(choicePrefix.label, ['numbers', 'letters']),
-    partialScoring:
-        partialScoring.settings && toggle(partialScoring.label),
-    limitChoicesNumber:
-        limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
-    lockChoiceOrder:
-        lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-    feedbackEnabled: feedback.settings && toggle(feedback.label),
-    choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
-  };
-
-  if (model.choicesLayout === 'grid' && nrOfColumnsAvailable.length > 0) {
-    settingsInPanel.gridColumns = dropdown(gridColumns.label, nrOfColumnsAvailable);
-  }
-
   return (
     <div className={classes.design}>
       {settingsPanelDisabled ? (
@@ -286,7 +213,25 @@ const Design = withStyles(styles)(props => {
               configuration={configuration}
               onChangeConfiguration={onConfigurationChanged}
               groups={{
-                Settings: settingsInPanel,
+                Settings: {
+                  choiceMode:
+                    choiceMode.settings &&
+                    radio(choiceMode.label, ['checkbox', 'radio']),
+                  'sequentialChoiceLabels.enabled':
+                    sequentialChoiceLabels.settings &&
+                    toggle(sequentialChoiceLabels.label, true),
+                  choicePrefix:
+                    choicePrefix.settings &&
+                    radio(choicePrefix.label, ['numbers', 'letters']),
+                  partialScoring:
+                    partialScoring.settings && toggle(partialScoring.label),
+                  limitChoicesNumber:
+                    limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
+                  lockChoiceOrder:
+                    lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+                  feedbackEnabled: feedback.settings && toggle(feedback.label),
+                  verticalMode: verticalMode.settings && toggle(verticalMode.label)
+                },
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&
@@ -297,8 +242,6 @@ const Design = withStyles(styles)(props => {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
-                  accessibilityLabelsEnabled:
-                      accessibility.settings && toggle(accessibility.label),
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric'])
@@ -326,19 +269,6 @@ export class Main extends React.Component {
       delete: PropTypes.func.isRequired
     })
   };
-
-  componentDidMount() {
-    // This is used for offering support for old models which have the property verticalMode
-    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
-    const { model, onModelChanged } = this.props;
-    const { verticalMode } = model;
-
-    if (verticalMode !== undefined) {
-      const choicesLayout = verticalMode === false ? 'horizontal': 'vertical';
-
-      onModelChanged({...model, choicesLayout: choicesLayout});
-    }
-  }
 
   onRemoveChoice = index => {
     const { model } = this.props;

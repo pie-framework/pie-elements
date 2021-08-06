@@ -29,7 +29,7 @@ export class Main extends React.Component {
   removeExtraChoices = (choices) => {
     let correctFound = false;
 
-     return (choices || []).map(choice => {
+    return (choices || []).map(choice => {
       if (correctFound) {
         choice.correct = false;
         return choice;

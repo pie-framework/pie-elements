@@ -109,16 +109,6 @@ describe('choice', () => {
 
         expect(onDeleteRow).toBeCalledWith(1);
       });
-
-      it('does not delete all rows and shows dialog', () => {
-        let onModelChanged = jest.fn();
-        const w = wrapper();
-        const callback = w.instance().onDeleteRow(1);
-
-        callback();
-
-        expect(onModelChanged).toHaveBeenCalledTimes(0);
-      });
     });
 
     describe('onMouseDownOnHandle', () => {

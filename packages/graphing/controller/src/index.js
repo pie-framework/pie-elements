@@ -140,28 +140,7 @@ export function model(question, session, env) {
   return new Promise(resolve => {
     const normalizedQuestion = normalize(question);
     const { prompt, promptEnabled, graph, answers, ...questionProps } = normalizedQuestion || {};
-    let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
-
-    // This is used for offering support for old models which have the property arrows: boolean
-    // Same thing is set in authoring : packages/graphing/configure/src/configure.jsx - componentDidMount
-    if (typeof arrows === 'boolean') {
-      if (arrows) {
-        arrows = {
-          left: true,
-          right: true,
-          up: true,
-          down: true
-        };
-      } else {
-        arrows = {
-          left: false,
-          right: false,
-          up: false,
-          down: false
-        };
-      }
-    }
 
     const base = {
       ...questionProps,
@@ -172,7 +151,6 @@ export function model(question, session, env) {
       size: graph,
       showToggle: env.mode === 'evaluate' && !isEmpty(answers),
       teacherInstructions: null,
-      arrows
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

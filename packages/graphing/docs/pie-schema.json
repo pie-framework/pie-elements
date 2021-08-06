@@ -981,36 +981,9 @@
       "title": "answers"
     },
     "arrows": {
-      "title": "Arrows",
-      "type": "object",
-      "properties": {
-        "left": {
-          "description": "Indicates if left arrow is enabled",
-          "type": "boolean",
-          "title": "left"
-        },
-        "right": {
-          "description": "Indicates if right arrow is enabled",
-          "type": "boolean",
-          "title": "right"
-        },
-        "up": {
-          "description": "Indicates if up arrow is enabled",
-          "type": "boolean",
-          "title": "up"
-        },
-        "down": {
-          "description": "Indicates if down arrow is enabled",
-          "type": "boolean",
-          "title": "down"
-        }
-      },
-      "required": [
-        "down",
-        "left",
-        "right",
-        "up"
-      ]
+      "description": "Indicates if arrows are enabled",
+      "type": "boolean",
+      "title": "arrows"
     },
     "backgroundMarks": {
       "description": "Indicates marks that have to be displayed in background",
@@ -1480,11 +1453,6 @@
       },
       "title": "backgroundMarks"
     },
-    "coordinatesOnHover": {
-      "description": "Indicates if coordinates of a point are displayed on hover",
-      "type": "boolean",
-      "title": "coordinatesOnHover"
-    },
     "domain": {
       "title": "GraphSettings",
       "type": "object",
@@ -1768,77 +1736,6 @@
           "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
           "type": "boolean",
           "title": "enabled"
-        }
-      }
-    },
-    "ArrowsConfigProp": {
-      "title": "ArrowsConfigProp",
-      "type": "object",
-      "properties": {
-        "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
-          "type": "boolean",
-          "title": "settings"
-        },
-        "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
-        },
-        "left": {
-          "title": "ArrowsProp",
-          "type": "object",
-          "properties": {
-            "label": {
-              "description": "Indicates the label for the arrow that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "right": {
-          "title": "ArrowsProp",
-          "type": "object",
-          "properties": {
-            "label": {
-              "description": "Indicates the label for the arrow that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "up": {
-          "title": "ArrowsProp",
-          "type": "object",
-          "properties": {
-            "label": {
-              "description": "Indicates the label for the arrow that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        },
-        "down": {
-          "title": "ArrowsProp",
-          "type": "object",
-          "properties": {
-            "label": {
-              "description": "Indicates the label for the arrow that has to be displayed in the Settings Panel",
-              "type": "string",
-              "title": "label"
-            }
-          }
-        }
-      }
-    },
-    "ArrowsProp": {
-      "title": "ArrowsProp",
-      "type": "object",
-      "properties": {
-        "label": {
-          "description": "Indicates the label for the arrow that has to be displayed in the Settings Panel",
-          "type": "string",
-          "title": "label"
         }
       }
     },
@@ -2587,38 +2484,6 @@
       "required": [
         "x",
         "y"
-      ]
-    },
-    "Arrows": {
-      "title": "Arrows",
-      "type": "object",
-      "properties": {
-        "left": {
-          "description": "Indicates if left arrow is enabled",
-          "type": "boolean",
-          "title": "left"
-        },
-        "right": {
-          "description": "Indicates if right arrow is enabled",
-          "type": "boolean",
-          "title": "right"
-        },
-        "up": {
-          "description": "Indicates if up arrow is enabled",
-          "type": "boolean",
-          "title": "up"
-        },
-        "down": {
-          "description": "Indicates if down arrow is enabled",
-          "type": "boolean",
-          "title": "down"
-        }
-      },
-      "required": [
-        "down",
-        "left",
-        "right",
-        "up"
       ]
     },
     "GraphSettings": {

@@ -279,16 +279,6 @@ export class Main extends React.Component {
     const initialView = cloneDeep(graph.initialElements || []).map(
       toGraphFormat
     );
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
 
     return (
       <div className={classes.root}>
@@ -301,7 +291,6 @@ export class Main extends React.Component {
               onChange={prompt => onChange({ prompt })}
               nonEmpty={false}
               disableUnderline
-              toolbarOpts={toolbarOpts}
             />
           </FormSection>
         )}
@@ -340,7 +329,6 @@ export class Main extends React.Component {
           <EditableHtml
             markup={graph.title || ''}
             onChange={this.changeGraphTitle}
-            toolbarOpts={toolbarOpts}
           />
         </FormSection>
         <FormSection label={'Limits'}>
@@ -427,7 +415,6 @@ export class Main extends React.Component {
             <FeedbackConfig
               feedback={model.feedback}
               onChange={feedback => onChange({ feedback })}
-              toolbarOpts={toolbarOpts}
             />
           </React.Fragment>
         )}

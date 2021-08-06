@@ -20,8 +20,7 @@ export default {
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    studentInstructionsEnabled: true
   },
   configuration: {
     selectionCount: {

@@ -160,16 +160,7 @@ export class Design extends React.Component {
     const {
       teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled
     } = model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
     let { tokens: tokensModel } = model;
     tokensModel = tokensModel || [];
 
@@ -221,7 +212,6 @@ export class Design extends React.Component {
                 onChange={this.onTeacherInstructionsChanged}
                 imageSupport={imageSupport}
                 nonEmpty={false}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -236,7 +226,6 @@ export class Design extends React.Component {
                 markup={model.prompt}
                 onChange={this.onPromptChanged}
                 imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -251,7 +240,6 @@ export class Design extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChanged}
                 imageSupport={imageSupport}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -318,7 +306,6 @@ export class Design extends React.Component {
             <FeedbackConfig
               feedback={model.feedback}
               onChange={this.changeFeedback}
-              toolbarOpts={toolbarOpts}
             />
           )}
         </div>

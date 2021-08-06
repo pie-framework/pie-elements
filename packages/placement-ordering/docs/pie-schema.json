@@ -72,21 +72,7 @@
       "description": "Array that contains the correct alternate responses",
       "type": "array",
       "items": {
-        "title": "AlternateResponse",
-        "type": "object",
-        "properties": {
-          "alternateResponse": {
-            "description": "Array that contains the alternate response ids",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "title": "alternateResponse"
-          }
-        },
-        "required": [
-          "alternateResponse"
-        ]
+        "type": "string"
       },
       "title": "alternateResponses"
     },
@@ -364,16 +350,6 @@
       "type": "string",
       "title": "note"
     },
-    "toolbarEditorPosition": {
-      "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
-      "default": ": 'bottom'",
-      "enum": [
-        "bottom",
-        "top"
-      ],
-      "type": "string",
-      "title": "toolbarEditorPosition"
-    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -460,23 +436,6 @@
       },
       "required": [
         "id"
-      ]
-    },
-    "AlternateResponse": {
-      "title": "AlternateResponse",
-      "type": "object",
-      "properties": {
-        "alternateResponse": {
-          "description": "Array that contains the alternate response ids",
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "alternateResponse"
-        }
-      },
-      "required": [
-        "alternateResponse"
       ]
     },
     "ComplexFeedbackType": {

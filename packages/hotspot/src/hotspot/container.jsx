@@ -15,22 +15,6 @@ export class Container extends React.Component {
 
   correctness = (isCorrect, isChecked) => isCorrect ? isChecked : !isChecked;
 
-  getEvaluateText = (isCorrect, selected) => {
-    if (selected && isCorrect) {
-      return 'Correctly\nselected';
-    }
-
-    if (selected && !isCorrect) {
-      return 'Should not have\nbeen selected';
-    }
-
-    if (!selected && isCorrect) {
-      return 'Should have\nbeen selected';
-    }
-
-    return null;
-  };
-
   render() {
     const {
       classes,
@@ -72,13 +56,11 @@ export class Container extends React.Component {
             {rectangles.map((shape) => {
               const selected = this.isSelected(shape);
               const isCorrect = isEvaluateMode ? this.correctness(shape.correct, selected) : undefined;
-              const evaluateText = isEvaluateMode ? this.getEvaluateText(shape.correct, selected) : null;
 
               return (
                 <Rectangle
                   isEvaluateMode={isEvaluateMode}
                   isCorrect={isCorrect}
-                  evaluateText={evaluateText}
                   disabled={disabled}
                   selected={selected}
                   height={shape.height}
@@ -97,13 +79,11 @@ export class Container extends React.Component {
             {polygons.map((polygon) => {
               const selected = this.isSelected(polygon);
               const isCorrect = isEvaluateMode ? this.correctness(polygon.correct, selected) : undefined;
-              const evaluateText = isEvaluateMode ? this.getEvaluateText(polygon.correct, selected) : null;
 
               return (
                 <Polygon
                   isEvaluateMode={isEvaluateMode}
                   isCorrect={!!isCorrect}
-                  evaluateText={evaluateText}
                   disabled={disabled}
                   selected={selected}
                   hotspotColor={hotspotColor}

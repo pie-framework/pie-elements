@@ -105,12 +105,7 @@ exports.model = (id, element) => ({
         }]
     }
   },
-  arrows: {
-    left: true,
-    right: true,
-    up: true,
-    down: true
-  },
+  arrows: true,
   backgroundMarks: [
     {
       type: 'point',
@@ -132,7 +127,6 @@ exports.model = (id, element) => ({
     width: 480,
     height: 480
   },
-  coordinatesOnHover: false,
   labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
   padding: true,
   prompt: 'Here goes item stem !!!!!!',

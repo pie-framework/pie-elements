@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.0...@pie-element/image-cloze-association@3.6.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.5.0...@pie-element/image-cloze-association@3.6.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** Displayed prompt - PD-1094 ([#566](https://github.com/pie-framework/pie-elements/issues/566)) ([2c5e91f](https://github.com/pie-framework/pie-elements/commit/2c5e91fbb4e487347c39063b48219b25d8f18b90))
+* **image-cloze-association:** Dragging a token from one container to other should move it - PD-1099 ([#587](https://github.com/pie-framework/pie-elements/issues/587)) ([6f67fe3](https://github.com/pie-framework/pie-elements/commit/6f67fe35cc6bf3e9b4f28d6bb80a26e33212810e))
+* **image-cloze-association:** Fixed possible responses padding - PD-1096 ([#567](https://github.com/pie-framework/pie-elements/issues/567)) ([ba69438](https://github.com/pie-framework/pie-elements/commit/ba694380dce75d36d4d1218d0658c5380d61f8bc))
+* image-cloze-association create schemas for PD-1095 ([#562](https://github.com/pie-framework/pie-elements/issues/562)) ([d2e39da](https://github.com/pie-framework/pie-elements/commit/d2e39da045f594938239f1a25ac9786bdaffa6d9))
+
+
+### Features
+
+* **image-cloze-association:** Displayed a warning message when the max limit of an area is reached - PD-1100 ([#585](https://github.com/pie-framework/pie-elements/issues/585)) ([a9f9f48](https://github.com/pie-framework/pie-elements/commit/a9f9f48e974c46b2affad87bf458478803c96a11))
+* **multi-trait-rubric:** change drag and drop to push instead of swap, drag traits by handle PD-1109 ([#561](https://github.com/pie-framework/pie-elements/issues/561)) ([93d621f](https://github.com/pie-framework/pie-elements/commit/93d621f35d04ecbd571ee0cf179cc0d99d11987c))
+
+
+
+
+
 # [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.4.17...@pie-element/image-cloze-association@3.5.0) (2021-04-07)
 
 
