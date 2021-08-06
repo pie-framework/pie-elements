@@ -27,6 +27,7 @@ export default {
     equationEditor: '3',
     expression: '',
     rationale: 'Rationale goes here.',
+    note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     prompt: '',
     responses: [],
     customKeys: [],
@@ -35,7 +36,8 @@ export default {
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom',
   },
   configuration: {
     prompt: {

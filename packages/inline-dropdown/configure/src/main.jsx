@@ -357,6 +357,17 @@ export class Main extends React.Component {
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
       model || {};
 
+    const toolbarOpts = {};
+
+    switch (model.toolbarEditorPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
+
     return (
       <div className={classes.design}>
         <layout.ConfigLayout
@@ -399,6 +410,7 @@ export class Main extends React.Component {
                   onChange={this.onTeacherInstructionsChanged}
                   imageSupport={imageSupport}
                   nonEmpty={false}
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -415,6 +427,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   disableUnderline
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -429,6 +442,7 @@ export class Main extends React.Component {
                   markup={model.rationale || ''}
                   onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
+                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}

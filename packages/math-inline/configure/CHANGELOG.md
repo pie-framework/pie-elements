@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.4.3...@pie-element/math-inline-configure@5.5.0) (2021-08-05)
+
+
+### Features
+
+* **math-inline:** added option to set toolbar editor position ([01282e4](https://github.com/pie-framework/pie-elements/commit/01282e4a07d200f7b81c684a11b51aa1f226ddeb))
+* **math-inline:** Displayed a message when the item has additional correct responses PD-198 - BREAKING CHANGE: Added note property to the model ([7fce264](https://github.com/pie-framework/pie-elements/commit/7fce2649a9c8ddae2eb6643e5d5e9d307233a23b))
+* **math-inline:** toolbar editor position - change double quotes into single quotes ([9a1edfa](https://github.com/pie-framework/pie-elements/commit/9a1edfa965187230b70c915075ab23d33738ea15))
+
+
+
+
+
 ## [5.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.4.1...@pie-element/math-inline-configure@5.4.3) (2021-08-05)
 
 

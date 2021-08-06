@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.4.2...@pie-element/multiple-choice-configure@3.5.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* merge conflict ([01655ca](https://github.com/pie-framework/pie-elements/commit/01655caf59311cc1a7a6624a6243147b2819d76e))
+
+
+### Features
+
+* **multiple-choice:** accessibility label - added aria label to checkbox and radio input types ([22514bb](https://github.com/pie-framework/pie-elements/commit/22514bb5e2476bc79a55756ff9a5c0c1e0642a29))
+* if there are no choices - do not show grid columns dropdown BREAKING CHANGE: removed verticalMode(boolean) from model & configuration - and replaced it with choicesLayout(string) ([1c36ae8](https://github.com/pie-framework/pie-elements/commit/1c36ae8b7f9369b2723a6a84e7350370e1186c50))
+* **multiple-choice:** added possibility to change layout - vertical, grid, horizontal ([46e7681](https://github.com/pie-framework/pie-elements/commit/46e7681a178ff29c983db1c7b6206389b55e2a00))
+* **multiple-choice:** grid layout - fix tests ([ab3c750](https://github.com/pie-framework/pie-elements/commit/ab3c750af03d9fbe0794f7ec53452c948b530ad8))
+* **multiple-choice:** toolbar position ( bottom or top ) ([9af6cd9](https://github.com/pie-framework/pie-elements/commit/9af6cd9f6b893501e00640500a34e1c3404edc94))
+* **multiple-choice:** update docs ([0843122](https://github.com/pie-framework/pie-elements/commit/084312288b501a7f1129b24a046f9ab19cf25f79))
+
+
+
+
+
 ## [3.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.4.0...@pie-element/multiple-choice-configure@3.4.2) (2021-08-05)
 
 

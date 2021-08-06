@@ -134,15 +134,11 @@ interface PartConfiguration {
      */
     teacherInstructions?: ConfigureProp;
 
-    /** Indicates the layout of choices for player
-     * @default: 'vertical'
+    /**
+     * Indicates the layout of choices for player
+     * @default: true
      */
-    choicesLayout?: ConfigureProp;
-
-    /** Indicates the number of columns for the grid layout
-     * @default: 2
-     */
-    gridColumns?: ConfigureProp;
+    verticalMode?: ConfigureProp;
 }
 
 /**

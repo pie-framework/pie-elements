@@ -46,6 +46,17 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `toolbarEditorPosition` (string, enum)
+
+Indicates the editor's toolbar position which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

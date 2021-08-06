@@ -7,6 +7,7 @@ import {
   InputContainer
 } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
+import { withDragContext } from '@pie-lib/drag';
 import PropTypes from 'prop-types';
 import debug from 'debug';
 import GeneralConfigBlock from './general-config-block';
@@ -204,6 +205,17 @@ class Configure extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
       model || {};
 
+    const toolbarOpts = {};
+
+    switch (model.toolbarEditorPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
+
     log('[render] model', model);
 
     return (
@@ -254,6 +266,7 @@ class Configure extends React.Component {
                 onChange={this.onTeacherInstructionsChanged}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -270,6 +283,7 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 disableUnderline
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -284,6 +298,7 @@ class Configure extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChanged}
                 imageSupport={imageSupport}
+                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -300,11 +315,13 @@ class Configure extends React.Component {
             onChange={this.onChange}
             onAddRow={this.onAddRow}
             onDeleteRow={this.onDeleteRow}
+            toolbarOpts={toolbarOpts}
           />
           {feedbackEnabled && (
             <FeedbackConfig
               feedback={model.feedback}
               onChange={this.onFeedbackChange}
+              toolbarOpts={toolbarOpts}
             />
           )}
         </div>
@@ -315,4 +332,4 @@ class Configure extends React.Component {
 
 export const Config = Configure;
 
-export default withStyles(styles)(Configure);
+export default withDragContext(withStyles(styles)(Configure));
