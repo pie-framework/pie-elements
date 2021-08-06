@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.2.0...@pie-element/categorize-controller@5.2.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [5.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.16...@pie-element/categorize-controller@5.2.0) (2021-06-29)
+
+
+### Features
+
+* **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
+* Displayed a message when the item has one or more alternate answers - PD-167 ([#590](https://github.com/pie-framework/pie-elements/issues/590)) ([889d8b5](https://github.com/pie-framework/pie-elements/commit/889d8b578a915c997a95bd5cd4bdf18f53cc2b68))
+
+
+
+
+
 ## [5.1.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-controller@5.1.13...@pie-element/categorize-controller@5.1.16) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/categorize-controller

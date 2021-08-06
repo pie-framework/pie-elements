@@ -35,8 +35,7 @@ export class ChoiceTile extends React.Component {
     choice: PropTypes.object,
     onChoiceChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    disableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    disableImages: PropTypes.bool
   };
 
   onLabelChange = label => {
@@ -58,7 +57,6 @@ export class ChoiceTile extends React.Component {
       onDelete,
       imageSupport,
       disableImages,
-      toolbarOpts
     } = this.props;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
@@ -87,7 +85,6 @@ export class ChoiceTile extends React.Component {
           imageSupport={imageSupport || undefined}
           onChange={this.onLabelChange}
           pluginProps={choicePlugins}
-          toolbarOpts={toolbarOpts}
         />
         {editable && (
           <div className={classes.controls}>

@@ -12,7 +12,6 @@ export default {
     partialScoring: false,
     choiceMode: 'radio',
     prompt: 'Prompt goes here',
-    toolbarEditorPosition: 'bottom',
     rows: [
       {
         id: 1,

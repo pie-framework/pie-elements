@@ -66,12 +66,6 @@ export interface ExplicitConstructedResponsePie extends PieModel {
 
     /** Indicates the note for the answer */
     note?: string;
-    
-    /**
-     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-     * @default: 'bottom'
-     */
-    toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**

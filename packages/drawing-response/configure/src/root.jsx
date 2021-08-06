@@ -61,16 +61,6 @@ export class Root extends React.Component {
       configuration || {};
     const { teacherInstructionsEnabled, promptEnabled } =
       model || {};
-    const toolbarOpts = {};
-
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
 
     return (
       <div className={classes.base}>
@@ -108,7 +98,6 @@ export class Root extends React.Component {
                   onChange={this.onTeacherInstructionsChanged}
                   imageSupport={imageSupport}
                   nonEmpty={false}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}
@@ -118,7 +107,6 @@ export class Root extends React.Component {
                 <EditableHtml
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
-                  toolbarOpts={toolbarOpts}
                 />
               </InputContainer>
             )}

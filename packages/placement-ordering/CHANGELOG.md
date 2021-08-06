@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.5.0...@pie-element/placement-ordering@7.5.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [7.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.4.0...@pie-element/placement-ordering@7.5.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
+* **placement-ordering:** fixed createCorrectResponseSession and added more tests for it PD-542 ([#574](https://github.com/pie-framework/pie-elements/issues/574)) ([16fb27f](https://github.com/pie-framework/pie-elements/commit/16fb27f1c32d75f7744cf5f24dc53b9a251090c2))
+* **placement-ordering:** Fixed Placement Ordering items are displaying an incorrect label - PD-1147 ([#576](https://github.com/pie-framework/pie-elements/issues/576)) ([c7e3284](https://github.com/pie-framework/pie-elements/commit/c7e3284d0eadd6ccc082f474f385b565217db0f9))
+* **placement-ordering:** render math when component updates for show correct answer toggle PD-120 ([#573](https://github.com/pie-framework/pie-elements/issues/573)) ([782a3a4](https://github.com/pie-framework/pie-elements/commit/782a3a4f8048c9f13dd17f48f82332c75324501c))
+
+
+### Features
+
+* Displayed a message when the item has one or more alternate answers - PD-167 ([#590](https://github.com/pie-framework/pie-elements/issues/590)) ([889d8b5](https://github.com/pie-framework/pie-elements/commit/889d8b578a915c997a95bd5cd4bdf18f53cc2b68))
+* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
+
+
+
+
+
 # [7.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.3.17...@pie-element/placement-ordering@7.4.0) (2021-04-07)
 
 

@@ -23,6 +23,11 @@ defineMultipleChoice();
 const prepareCustomizationObject = (config, model) => {
   const configuration = defaults(config, sensibleDefaults.configuration);
   configuration.settingsPanelDisabled = true;
+  // it is required for ebsr partA not to allow changing response type
+  configuration.partA.choiceMode = {
+    settings: false,
+    label: 'Response Type'
+  };
 
   return {
     configuration,

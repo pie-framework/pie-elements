@@ -36,6 +36,17 @@ class RectComponent extends React.Component {
 
   getOutlineWidth = (selected, strokeWidth) => selected ? strokeWidth : 0;
 
+  getEvaluateText = (isCorrect, selected) => {
+    if (selected && isCorrect) {
+      return 'Correctly\nselected';
+    } else if (selected && !isCorrect) {
+      return 'Incorrectly\nselected';
+    } else if (!selected && isCorrect) {
+      return 'Correctly\nunselected';
+    }
+    return 'Incorrectly\nunselected';
+  };
+
   render() {
     const {
       classes,
@@ -48,7 +59,6 @@ class RectComponent extends React.Component {
       width,
       x,
       y,
-      evaluateText,
       strokeWidth
     } = this.props;
 
@@ -99,7 +109,6 @@ class RectComponent extends React.Component {
             src={iconSrc}
             x={iconX}
             y={iconY}
-            tooltip={evaluateText}
           />
         ): null}
       </Group>
@@ -129,13 +138,11 @@ RectComponent.propTypes = {
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  evaluateText: PropTypes.string,
   strokeWidth: PropTypes.number
 };
 
 RectComponent.defaultProps = {
   isCorrect: false,
-  evaluateText: null,
   strokeWidth: 5
 };
 

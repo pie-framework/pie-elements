@@ -5,7 +5,6 @@ export default {
     prompt: 'Use the inputs to complete the sentence',
     shuffle: true,
     markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
-    toolbarEditorPosition: 'bottom',
     choices: {
       0: [
         {

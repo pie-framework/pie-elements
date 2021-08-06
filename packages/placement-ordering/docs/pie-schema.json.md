@@ -56,14 +56,6 @@ Note: weights are not configurable in the existing component so we'll ignore it 
 
 Array that contains the correct alternate responses
 
-The object is an array with all elements of the type `object`.
-
-The array object has the following properties:
-
-## `alternateResponse` (array, required)
-
-Array that contains the alternate response ids
-
 The object is an array with all elements of the type `string`.
 
 # `enableImages` (boolean)
@@ -172,17 +164,6 @@ Indicates if Choice Label is enabled
 
 Indicates the note for the answer
 
-# `toolbarEditorPosition` (string, enum)
-
-Indicates the editor's toolbar position which can be 'bottom' or 'top'
-
-This element must be one of the following enum values:
-
-* `bottom`
-* `top`
-
-Default: `": 'bottom'"`
-
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -246,16 +227,6 @@ The id of the correct response
 
 The weight of the correct response
 Note: weights are not configurable in the existing component so we'll ignore it for now
-
-## `AlternateResponse` (object)
-
-Properties of the `AlternateResponse` object:
-
-### `alternateResponse` (array, required)
-
-Array that contains the alternate response ids
-
-The object is an array with all elements of the type `string`.
 
 ## `ComplexFeedbackType` (object)
 

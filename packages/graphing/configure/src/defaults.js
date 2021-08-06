@@ -1,6 +1,6 @@
-import {tools} from '@pie-lib/graphing';
+import { tools } from '@pie-lib/graphing';
 
-const {allTools = []} = tools;
+const { allTools = [] } = tools;
 /**
  * NOTE: There's no functionality described for padding
  * so there's no implementation (they are only added in model)
@@ -9,12 +9,7 @@ const {allTools = []} = tools;
 export default {
   model: {
     answers: {},
-    arrows: {
-      left: true,
-      right: true,
-      up: true,
-      down: true
-    },
+    arrows: true,
     backgroundMarks: [],
     domain: {
       min: -5,
@@ -40,7 +35,6 @@ export default {
     rationale: '',
     title: '',
     toolbarTools: allTools,
-    coordinatesOnHover: false,
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
@@ -53,20 +47,8 @@ export default {
       enabled: false
     },
     arrows: {
-      settings: true,
-      label: 'Include Arrows',
-      left: {
-        label: 'left'
-      },
-      right: {
-        label: 'right'
-      },
-      up: {
-        label: 'up'
-      },
-      down: {
-        label: 'down'
-      }
+      settings: false,
+      label: 'Include arrows'
     },
     padding: {
       settings: false,
@@ -101,10 +83,6 @@ export default {
       settings: false,
       label: 'Graph Title',
       enabled: true
-    },
-    coordinatesOnHover: {
-      settings: true,
-      label: 'Coordinates on Hover'
     }
   }
 };

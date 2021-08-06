@@ -30,8 +30,7 @@ export class Choice extends React.Component {
       correctness,
       displayKey,
       classes,
-      choicesLayout,
-      gridColumns
+      verticalMode
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -45,13 +44,12 @@ export class Choice extends React.Component {
       feedback,
       correctness,
       displayKey,
-      choicesLayout,
-      gridColumns,
+      verticalMode,
       onChange: this.onChange,
     };
 
     const names = classNames(classes.choice, {
-      [classes.noBorder]: (index === choicesLength - 1) || this.props.choicesLayout !== 'vertical'
+      [classes.noBorder]: (index === choicesLength - 1) || !this.props.verticalMode,
     });
 
     return (
@@ -75,8 +73,7 @@ Choice.propTypes = {
   checked: PropTypes.bool,
   correctness: PropTypes.string,
   displayKey: PropTypes.string,
-  choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-  gridColumns: PropTypes.string
+  verticalMode: PropTypes.string
 };
 
 const StyledChoice = withStyles({
@@ -104,12 +101,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap'
-  },
-  gridLayout: {
-    display: 'grid'
-  },
-  getColumns: function(columns) {
-      return columns > 1 ? {gridTemplateColumns: `repeat(${columns}, 1fr)`} : undefined;
   }
 };
 
@@ -127,8 +118,7 @@ export class MultipleChoice extends React.Component {
     responseCorrect: PropTypes.bool,
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
-    choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    gridColumns: PropTypes.string
+    verticalMode: PropTypes.bool
   };
 
   constructor(props) {
@@ -215,7 +205,7 @@ export class MultipleChoice extends React.Component {
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
-    
+
     return (
       <div className={classes.corespringChoice}>
         {teacherInstructions && (
@@ -238,11 +228,10 @@ export class MultipleChoice extends React.Component {
         />
         {showCorrectAnswerToggle && <br />}
         <PreviewPrompt className="prompt" prompt={prompt}/>
-        <div className={classNames({ [classes.gridLayout]: this.props.choicesLayout === 'grid'}, {[classes.horizontalLayout]: this.props.choicesLayout === 'horizontal' })} style={styles.getColumns(this.props.gridColumns)}>
+        <div className={this.props.verticalMode ? '' : classes.horizontalLayout}>
           {choices.map((choice, index) => (
             <StyledChoice
-              choicesLayout={this.props.choicesLayout}
-              gridColumns={this.props.gridColumns}
+              verticalMode={this.props.verticalMode}
               key={`choice-${index}`}
               choice={choice}
               index={index}

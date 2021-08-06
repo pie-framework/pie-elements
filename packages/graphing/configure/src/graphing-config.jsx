@@ -169,7 +169,7 @@ export class GraphingConfig extends React.Component {
   render() {
     const { classes, model, authoringEnabled } = this.props;
     let { graph } = model || {};
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, labels, range, title, toolbarTools } = model || {};
+    const { arrows, backgroundMarks, domain, labels, range, title, toolbarTools } = model || {};
     graph = graph || {};
 
     return (
@@ -194,7 +194,6 @@ export class GraphingConfig extends React.Component {
             <GraphContainer
               axesSettings={{ includeArrows: arrows }}
               backgroundMarks={[]}
-              coordinatesOnHover={coordinatesOnHover}
               domain={domain}
               key="graphing-config"
               labels={labels}

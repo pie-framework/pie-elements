@@ -33,20 +33,9 @@ export interface MultipleChoicePie extends PieModel {
   promptEnabled?: boolean;
 
   /** Indicates the layout of choices for player
-   * @default: 'vertical'
+   * @default: true
    */
-  choicesLayout?: 'vertical' | 'grid' | 'horizontal';
-
-  /** Indicates the number of columns for the grid layout
-   * @default: 2
-   */
-  gridColumns?: number;
-
-  /**
-   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-   * @default: 'bottom'
-   */
-  toolbarEditorPosition?: 'bottom' | 'top';
+  verticalMode?: boolean;
 
   /**  Indicates the order of choices should be randomly ordered when presented to user */
   lockChoiceOrder?: boolean;
@@ -74,9 +63,6 @@ export interface MultipleChoicePie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
-
-  /** Indicates if Accessibility Labels are enabled */
-  accessibilityLabelsEnabled: boolean;
 }
 
 
@@ -126,15 +112,11 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    */
   prompt?: ConfigureProp;
 
-  /** Indicates the layout of choices for player
-   * @default: 'vertical'
+  /**
+   * Indicates the layout of choices for player
+   * @default: true
    */
-  choicesLayout?: ConfigureProp;
-
-  /** Indicates the number of columns for the grid layout
-   * @default: 2
-   */
-  gridColumns?: ConfigureProp;
+  verticalMode?: ConfigureProp;
 
   /**
    * Indicates whether the settings panel will allow author to control choice shuffling
@@ -169,10 +151,5 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   /**
    * Indicates if sequential choice labels configuration (currently not used)
    */
-  sequentialChoiceLabels?: ConfigurePropWithEnabled;
-  
-  /**
-   * Accessibility configuration
-   */
-  accessibility?: ConfigureProp;
+  sequentialChoiceLabels?: ConfigurePropWithEnabled
 }

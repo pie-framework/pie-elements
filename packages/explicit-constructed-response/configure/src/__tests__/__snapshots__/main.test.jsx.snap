@@ -85,7 +85,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
-            "toolbarEditorPosition": "bottom",
           }
         }
         onChangeConfiguration={[Function]}
@@ -101,11 +100,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup=""
           nonEmpty={false}
           onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
         />
       </InputContainer>
       <InputContainer
@@ -116,11 +110,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup="Complete the sentence"
           nonEmpty={false}
           onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
         />
       </InputContainer>
       <WithStyles(Typography)>
@@ -198,7 +187,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
-            "toolbarEditorPosition": "bottom",
           }
         }
         onChange={[Function]}
@@ -209,11 +197,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           markup=""
           onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
         />
       </InputContainer>
     </div>
@@ -306,7 +289,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
-            "toolbarEditorPosition": "bottom",
           }
         }
         onChangeConfiguration={[Function]}
@@ -390,7 +372,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
-            "toolbarEditorPosition": "bottom",
           }
         }
         onChange={[Function]}

@@ -7,29 +7,13 @@ exports[`Configure renders snapshot 1`] = `
       configuration={
         Object {
           "arrows": Object {
-            "down": Object {
-              "label": "down",
-            },
-            "label": "Include Arrows",
-            "left": Object {
-              "label": "left",
-            },
-            "right": Object {
-              "label": "right",
-            },
-            "settings": true,
-            "up": Object {
-              "label": "up",
-            },
+            "label": "Include arrows",
+            "settings": false,
           },
           "authoring": Object {
             "enabled": false,
             "label": "Allow authoring",
             "settings": false,
-          },
-          "coordinatesOnHover": Object {
-            "label": "Coordinates on Hover",
-            "settings": true,
           },
           "labels": Object {
             "enabled": true,
@@ -70,8 +54,7 @@ exports[`Configure renders snapshot 1`] = `
       groups={
         Object {
           "Item Type": Object {
-            "arrows": undefined,
-            "coordinatesOnHover": undefined,
+            "arrows": false,
             "labels": false,
             "padding": false,
             "title.enabled": false,
@@ -89,14 +72,8 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": Object {
-            "down": true,
-            "left": true,
-            "right": true,
-            "up": true,
-          },
+          "arrows": true,
           "backgroundMarks": Array [],
-          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -177,14 +154,8 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": Object {
-            "down": true,
-            "left": true,
-            "right": true,
-            "up": true,
-          },
+          "arrows": true,
           "backgroundMarks": Array [],
-          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,
@@ -226,14 +197,8 @@ exports[`Configure renders snapshot 1`] = `
       model={
         Object {
           "answers": Object {},
-          "arrows": Object {
-            "down": true,
-            "left": true,
-            "right": true,
-            "up": true,
-          },
+          "arrows": true,
           "backgroundMarks": Array [],
-          "coordinatesOnHover": false,
           "domain": Object {
             "axisLabel": "x",
             "labelStep": 1,

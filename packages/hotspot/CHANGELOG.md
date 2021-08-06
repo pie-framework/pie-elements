@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.8.1...@pie-element/hotspot@4.8.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [4.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.8.0...@pie-element/hotspot@4.8.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **hotspot:** partial scoring not working correctly PD-816 ([#583](https://github.com/pie-framework/pie-elements/issues/583)) ([8266134](https://github.com/pie-framework/pie-elements/commit/8266134bd0e298a89cbcbeb1f8ad16bb803e60ae))
+
+
+
+
+
 # [4.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.7.17...@pie-element/hotspot@4.8.0) (2021-04-07)
 
 

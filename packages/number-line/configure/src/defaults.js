@@ -14,7 +14,6 @@ export const model = {
     width: 500,
     initialType: 'PF',
     exhibitOnly: false,
-    toolbarEditorPosition: 'bottom',
     availableTypes: {
       PF: true,
       LFF: true,

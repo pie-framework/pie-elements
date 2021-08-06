@@ -107,29 +107,6 @@ describe('Main', () => {
       });
     });
 
-    describe('sets choice layout according to old verticalMode property if it is set - for legacy items', () => {
-      it('verticalMode: false => choicesLayout: horizontal', () => {
-        w = wrapper({model: model({ verticalMode: false, choicesLayout: undefined })});
-
-        expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
-          verticalMode: false,
-          choicesLayout: 'horizontal'
-        });
-      });
-
-      it('verticalMode: true => choicesLayout: vertical', () => {
-        w = wrapper({model: model({ verticalMode: true, choicesLayout: undefined })});
-
-        expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
-          verticalMode: true,
-          choicesLayout: 'vertical'
-        });
-      });
-
-    });
-
     describe('onAddChoice', () => {
       it('adds a choice', () => {
         w.instance().onAddChoice();

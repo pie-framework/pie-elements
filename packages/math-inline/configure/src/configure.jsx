@@ -75,16 +75,7 @@ export class Configure extends React.Component {
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
     return (
       <div>
         <layout.ConfigLayout
@@ -126,7 +117,6 @@ export class Configure extends React.Component {
                     onChange={this.changeTeacherInstructions}
                     imageSupport={imageSupport}
                     nonEmpty={false}
-                    toolbarOpts={toolbarOpts}
                   />
                 </InputContainer>
               )}
@@ -138,14 +128,12 @@ export class Configure extends React.Component {
                 onChange={this.onChange}
                 rationaleEnabled={rationaleEnabled}
                 promptEnabled={promptEnabled}
-                toolbarOpts={toolbarOpts}
               />
               {
                 feedbackEnabled && (
                   <FeedbackConfig
                     feedback={model.feedback}
                     onChange={this.onFeedbackChange}
-                    toolbarOpts={toolbarOpts}
                   />
                 )
               }

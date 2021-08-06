@@ -22,8 +22,7 @@ export default {
     feedbackEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    studentInstructionsEnabled: true
   },
   configuration: {
     choiceLabel: {

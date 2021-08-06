@@ -114,11 +114,11 @@ export const normalize = (question) => {
   const newText = prepareText(newQuestion.text);
 
   return {
-    feedbackEnabled: true,
-    rationaleEnabled: true,
-    promptEnabled: true,
-    teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true,
+  feedbackEnabled: true,
+  rationaleEnabled: true,
+  promptEnabled: true,
+  teacherInstructionsEnabled: true,
+  studentInstructionsEnabled: true,
     ...newQuestion,
     unpreparedText: newQuestion.text,
     text: newText

@@ -68,16 +68,7 @@ export class Main extends React.Component {
       equationEditor = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled } = model || {};
-    const toolbarOpts = {};
 
-    switch (model.toolbarEditorPosition) {
-      case 'top':
-        toolbarOpts.position = 'top';
-        break;
-      default:
-        toolbarOpts.position = 'bottom';
-        break;
-    }
     return (
       <layout.ConfigLayout
         settings={
@@ -139,7 +130,6 @@ export class Main extends React.Component {
                 onChange={this.changeTeacherInstructions}
                 imageSupport={imageSupport}
                 nonEmpty={false}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -155,7 +145,6 @@ export class Main extends React.Component {
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
                 nonEmpty={false}
-                toolbarOpts={toolbarOpts}
               />
             </InputContainer>
           )}
@@ -171,7 +160,6 @@ export class Main extends React.Component {
                   label="When submitted, show"
                   feedback={model.feedback || defaultFeedback}
                   onChange={this.changeFeedback}
-                  toolbarOpts={toolbarOpts}
                 />
               </React.Fragment>
             )

@@ -63,6 +63,5 @@ exports.model = (id, element) => ({
   },
   rationale: null,
   teacherInstructions: null,
-  toolbarEditorPosition: 'bottom',
   prompt: '<div><audio controls="controls" src="https://storage.googleapis.com/pie-prod-221718-assets/audio/77f3f61e-5f2d-425f-80a5-fb814dfa5e4c"></audio><br><br>Choose ALL of the words with the long /o/ sound.</div>',
 });

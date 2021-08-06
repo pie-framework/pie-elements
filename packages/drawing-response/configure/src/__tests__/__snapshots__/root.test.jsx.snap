@@ -56,11 +56,6 @@ exports[`Root snapshot renders 1`] = `
         <EditableHtml
           markup="Test Prompt"
           onChange={[Function]}
-          toolbarOpts={
-            Object {
-              "position": "bottom",
-            }
-          }
         />
       </Component>
       <div>

@@ -142,7 +142,6 @@ class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool,
-    toolbarOpts: PropTypes.object
   };
 
   constructor(props) {
@@ -329,7 +328,6 @@ class GeneralConfigBlock extends React.Component {
       configuration,
       promptEnabled,
       rationaleEnabled,
-      toolbarOpts
     } = this.props;
     const { showKeypad } = this.state;
     const {
@@ -367,7 +365,6 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('prompt')}
               imageSupport={imageSupport}
               nonEmpty={false}
-              toolbarOpts={toolbarOpts}
             />
           </InputContainer>
         )}
@@ -387,7 +384,6 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
-              toolbarOpts={toolbarOpts}
             />
           </InputContainer>
         )}

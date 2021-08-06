@@ -14,12 +14,7 @@ const allTools = [
 /* model defaults */
 export default {
   answers: {},
-  arrows: {
-    left: true,
-    right: true,
-    up: true,
-    down: true
-  },
+  arrows: true,
   backgroundMarks: [],
   domain: {
     min: -5,
@@ -33,7 +28,6 @@ export default {
     height: 500
   },
   labels: {},
-  coordinatesOnHover: false,
   padding: true,
   prompt: '',
   range: {

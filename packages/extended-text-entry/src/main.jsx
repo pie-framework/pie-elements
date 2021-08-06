@@ -12,6 +12,7 @@ const log = debug('@pie-ui:extended-text-entry');
 
 const style = theme => ({
   main: {
+    padding: '10px 20px',
     backgroundColor: color.background(),
     color: color.text()
   },

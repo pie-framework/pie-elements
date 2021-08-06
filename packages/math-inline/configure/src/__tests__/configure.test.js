@@ -85,7 +85,6 @@ const defaultProps = {
         validation: 'literal'
       }
     ],
-    note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
     configure: defaultValues.configure
   },

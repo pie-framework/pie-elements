@@ -29,7 +29,6 @@ export class Main extends React.Component {
       answersCorrected,
       arrows,
       backgroundMarks,
-      coordinatesOnHover,
       correctResponse,
       disabled,
       domain,
@@ -43,7 +42,9 @@ export class Main extends React.Component {
       teacherInstructions,
       toolbarTools
     } = model || {};
+
     const marks = answersCorrected || answer || [];
+
 
     return (
       <div className={classes.mainContainer}>
@@ -57,7 +58,6 @@ export class Main extends React.Component {
           <GraphContainer
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={backgroundMarks}
-            coordinatesOnHover={coordinatesOnHover}
             disabled={true}
             domain={domain}
             labels={labels}
@@ -91,7 +91,6 @@ export class Main extends React.Component {
         <GraphContainer
           axesSettings={{ includeArrows: arrows }}
           backgroundMarks={backgroundMarks}
-          coordinatesOnHover={coordinatesOnHover}
           disabled={disabled}
           domain={domain}
           labels={labels}

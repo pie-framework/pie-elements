@@ -25,8 +25,8 @@ This element must be one of the following enum values:
 * `Grade 6 - 7`
 * `Grade 8 - HS`
 * `advanced-algebra`
-* `geometry`
 * `miscellaneous`
+* `geometry`
 * `statistics`
 
 # `feedback` (object)
@@ -87,13 +87,6 @@ Indicates if Student Instructions are enabled
 # `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
-
-# `toolbarEditorPosition` (string, enum)
-
-This element must be one of the following enum values:
-
-* `bottom`
-* `top`
 
 # `id` (string, required)
 

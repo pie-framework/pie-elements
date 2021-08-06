@@ -34,11 +34,6 @@ export interface CorrectResponse {
     weight?: number;
 }
 
-export interface AlternateResponse {
-    /** Array that contains the alternate response ids */
-    alternateResponse: string[];
-}
-
 /** NOTE: teacherInstructions, studentInstructions & scoringType
  * functionalities are not defined yet - the value for those can belong to
  * model or to configuration (to be moved when the functionality is defined)
@@ -59,7 +54,7 @@ export interface PlacementOrderingPie extends PieModel {
     correctResponse?: CorrectResponse[];
 
     /** Array that contains the correct alternate responses */
-    alternateResponses: AlternateResponse[];
+    alternateResponses: string[];
 
     /** Indicates if the choices editor can use images */
     enableImages?: boolean;
@@ -123,12 +118,6 @@ export interface PlacementOrderingPie extends PieModel {
 
     /** Indicates the note for the answer */
     note?: string;
-
-    /**
-     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-     * @default: 'bottom'
-     */
-    toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**

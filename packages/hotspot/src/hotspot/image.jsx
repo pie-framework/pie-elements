@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Group, Image, Text, Tag, Label } from 'react-konva';
+import { Image } from 'react-konva';
 
 class ImageComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: null,
-      showTooltip: false
+      image: null
     };
   }
 
@@ -40,32 +39,17 @@ class ImageComponent extends React.Component {
   };
 
   render() {
-    const { x, y, tooltip } = this.props;
-    const { image, showTooltip } = this.state;
+    const { x, y } = this.props;
+    const { image } = this.state;
 
     return (
-      <Group>
-        <Image
-          width={20}
-          height={20}
-          x={x}
-          y={y}
-          image={image}
-          onMouseEnter={() => this.setState({ showTooltip: true })}
-          onMouseLeave={() => this.setState({ showTooltip: false })}
-        />
-
-        {showTooltip && tooltip && (
-          <Label x={x - 30} y={y + 25}>
-            <Tag
-              fill="white"
-              cornerRadius={5}
-              opacity={0.9}
-            />
-            <Text text={tooltip} padding={5} />
-          </Label>
-        )}
-      </Group>
+      <Image
+        width={20}
+        height={20}
+        x={x}
+        y={y}
+        image={image}
+      />
     );
   }
 }
@@ -73,8 +57,7 @@ class ImageComponent extends React.Component {
 ImageComponent.propTypes = {
   src: PropTypes.string.isRequired,
   x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  tooltip: PropTypes.string
+  y: PropTypes.number.isRequired
 };
 
 export default ImageComponent;
