@@ -14,7 +14,6 @@
     "@pie-lib/drag": "^1.1.52",
     "@pie-lib/math-rendering": "^2.3.8",
     "@pie-lib/render-ui": "^4.11.9",
-    "@pie-lib/correct-answer-toggle": "^2.3.28",
     "classnames": "^2.2.6",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
