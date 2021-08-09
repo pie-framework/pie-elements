@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.17...@pie-element/select-text-controller@4.1.18) (2021-08-09)
+
+
+### Bug Fixes
+
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
+
+
+
+
+
 ## [4.1.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.15...@pie-element/select-text-controller@4.1.17) (2021-08-05)
 
 

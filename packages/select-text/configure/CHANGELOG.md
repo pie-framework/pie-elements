@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.3...@pie-element/select-text-configure@5.2.4) (2021-08-09)
+
+
+### Bug Fixes
+
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
+
+
+
+
+
 ## [5.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.2...@pie-element/select-text-configure@5.2.3) (2021-08-05)
 
 

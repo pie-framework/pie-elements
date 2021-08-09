@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.4.0...@pie-element/ebsr-configure@7.0.0) (2021-08-09)
+
+
+### Features
+
+* **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
+* **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
+
+
+### BREAKING CHANGES
+
+* **ebsr:** removed vertical mode.
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.3.2...@pie-element/ebsr-configure@6.4.0) (2021-08-05)
 
 
