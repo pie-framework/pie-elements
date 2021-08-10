@@ -14,3 +14,5 @@ NEXT.CHANGELOG.json
 packages/shared-*
 packages/**/module
 playground/**
+.yalc
+yarn-error.log

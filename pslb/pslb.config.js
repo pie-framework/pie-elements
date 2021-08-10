@@ -124,19 +124,26 @@ const blacklist = [
   'calculator',
 ];
 
+const packagesDir = path.resolve(__dirname, '../packages');
 /** Pslb will only support pie packages that have a configure and controller subpkg */
 const listPackages = () => {
   // eslint-disable-next-line no-undef
-  const root = path.resolve(__dirname, 'packages');
-  const files = fs.readdirSync(root);
+  // const root = path.resolve(__dirname, 'packages');
+
+  const files = fs.readdirSync(packagesDir);
 
   return _.compact(
     files
       .filter((f) => !f.includes('@'))
-      .filter((f) => !blacklist.includes(f))
+
+      // Note: we only build multiple-choice for now
+      .filter((f) => f.includes('multiple-choice'))
+      //!blacklist.includes(f))
       .map((f) => {
         try {
-          const rootPkg = fs.readJsonSync(path.join(root, f, 'package.json'));
+          const rootPkg = fs.readJsonSync(
+            path.join(packagesDir, f, 'package.json')
+          );
           return rootPkg.name;
         } catch (e) {
           console.warn(`error for: ${f}, ${e.message}`);
@@ -147,8 +154,13 @@ const listPackages = () => {
 
 module.exports = {
   packages: listPackages(),
-  packagesDir: path.resolve(__dirname, './packages'),
+  packagesDir,
   type: 'pie-package',
+  piePkgOpts: {
+    configure: true,
+    controller: true,
+    element: true,
+  },
   extensions: {
     commonJs,
   },
@@ -157,39 +169,22 @@ module.exports = {
   minify: false,
   libs: {
     repository: 'pie-framework/pie-elements',
+    /**
+     * ["@pie-lib/drag-module@1.0.1",
+     * "@pie-lib/math-rendering-module@1.0.3",
+     * "@pie-lib/math-edit-module@1.0.1",
+     * "@pie-lib/shared-module@1.1.0",
+     * "@pie-lib/editable-html-module@1.0.1",
+     * "@pie-lib/config-module@1.0.1"]
+     */
     packages: [
-      {
-        name: '@pie-element/shared-config',
-        // eslint-disable-next-line no-undef
-        output: path.resolve(__dirname, '../packages'),
-        repository: 'pie-framework/pie-elements',
-        modules: [
-          /** make use of the pie-ui shared lib */
-          { name: '@pie-ui/shared-lib', version: '^4.1.1' },
-          { name: '@pie-ui/shared-math-edit', version: '^1.18.1' },
-        ],
-        /**
-         * Ideally namespace imports would be the default import method.
-         * But this can cause problems if a library does the following:
-         * `module.exports = require("path");` - this causes the properties to get lost,
-         * when really we'd like all the properties to be set on the module.
-         * For now - specify the import method as a key of `imports`.
-         *
-         * To fix this we'd probably need to make a change to rollup,
-         * get it to follow the var until it gets to the object definition,
-         * then to use the keys to set the export object.
-         *
-         * @see rollup/src/ast/NamespaceVariable
-         * @see rollup/plugin-commonjs/ too
-         */
-        imports: {
-          default: ['@pie-lib/editable-html'],
-          namespace: [
-            '@pie-framework/pie-configure-events',
-            '@pie-lib/config-ui',
-          ],
-        },
-      },
+      { name: '@pie-lib/drag-module', version: '^1.0.0' },
+      { name: '@pie-lib/math-rendering-module', version: '^1.0.0' },
+      { name: '@pie-lib/math-edit-module', version: '^1.0.0' },
+      { name: '@pie-lib/shared-module', version: '^1.1.0' },
+      { name: '@pie-lib/editable-html-module', version: '^1.0.0' },
+      { name: '@pie-lib/config-module', version: '^1.0.0' },
+      // { name: '@pie-lib/graphing-module', version: '^1.0.0' },
     ],
   },
 };
