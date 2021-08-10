@@ -26,5 +26,10 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    "print": {
+      "import": "./src/print.js"
+    }
+  }
 }
