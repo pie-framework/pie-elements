@@ -21,12 +21,24 @@ const DEFAULT_KEYPAD_VARIANT = 6;
 const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 function generateAdditionalKeys(keyData = []) {
-  return keyData.map((key) => ({
-    name: key,
-    latex: key,
-    write: key,
-    label: key,
-  }));
+  return keyData.map((key) => {
+    // if absolute notation is a custom key, we want it to behave like the regular absolute value button
+    if (key === '\\abs{}') {
+      return {
+        name: key,
+        latex: key,
+        symbol: '| |',
+        command: '|'
+      };
+    }
+
+    return {
+      name: key,
+      latex: key,
+      write: key,
+      label: key
+    };
+  });
 }
 
 function getKeyPadWidth(additionalKeys = [], equationEditor) {
