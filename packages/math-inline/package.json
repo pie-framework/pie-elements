@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "@pie-framework/math-validation": "file:.yalc/@pie-framework/math-validation",
     "@pie-framework/mathquill": "^1.1.0",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/correct-answer-toggle": "^2.3.27",

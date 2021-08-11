@@ -1,0 +1,25 @@
+{
+  "name": "@pie-framework/math-validation",
+  "version": "1.0.0",
+  "description": "New math validation",
+  "module": "src/index.ts",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "jest",
+    "test:report": "jest --config jest-stare.config.js",
+    "build:demo": "tsc && yarn rollup -c rollup.config.js",
+    "demo": "yarn rollup -c rollup.config.js && serve docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "mathjs": "^9.4.2"
+  },
+  "yalcSig": "57b1622e1bdc1b63f3f311866e76513a"
+}
