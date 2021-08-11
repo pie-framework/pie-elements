@@ -28,8 +28,7 @@
   "main": "lib/index.js",
   "module": "src/index.js",
   "exports": {
-    "print": {
-      "import": "./src/print.js"
-    }
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
   }
 }

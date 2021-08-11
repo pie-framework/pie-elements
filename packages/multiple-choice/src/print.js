@@ -49,6 +49,7 @@ export default class MultipleChoicePrint extends HTMLElement {
   }
 
   connectedCallback() {
+    console.log('test of changes');
     log('connected...');
     // this.innerHTML = '<h1>PRINT</h1>';
   }
