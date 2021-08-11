@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.2.2...@pie-element/match-configure@4.3.0) (2021-08-05)
+
+
+### Features
+
+* **match:** authoring UI should allow up to 10 columns. Change column header fields PD-601 ([6015d9f](https://github.com/pie-framework/pie-elements/commit/6015d9fd8768f7b8462b7c85c2a2ce61df9ab535))
+* **match:** remove insert audio and video buttons from question text PD-601 ([6407962](https://github.com/pie-framework/pie-elements/commit/64079623bbba4803e18d49b33b43f62f9b1082cb))
+
+
+
+
+
+## [4.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.2.0...@pie-element/match-configure@4.2.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.1.24...@pie-element/match-configure@4.2.0) (2021-06-29)
+
+
+### Features
+
+* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
+
+
+
+
+
 ## [4.1.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.1.23...@pie-element/match-configure@4.1.24) (2021-04-07)
 
 **Note:** Version bump only for package @pie-element/match-configure

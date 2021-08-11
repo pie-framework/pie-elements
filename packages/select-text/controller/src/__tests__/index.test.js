@@ -6,6 +6,7 @@ import {
   createCorrectResponseSession,
 } from '../index';
 import isFunction from 'lodash/isFunction';
+import { prepareText } from '../utils';
 
 const token = (start, end, text, correct) => ({ start, end, text, correct });
 
@@ -298,7 +299,7 @@ describe('model', () => {
       correctness: 'incorrect',
     });
 
-    it('does not remove html entities from text', async () => {
+    it('parses text', async () => {
       const text =
         '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>';
       const result = await model(
@@ -310,7 +311,7 @@ describe('model', () => {
         e()
       );
 
-      expect(result.text).toEqual(text);
+      expect(result.text).toEqual(prepareText(text));
     });
   });
 

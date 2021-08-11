@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.6.2...@pie-element/rubric@1.6.3) (2021-08-05)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.6.0...@pie-element/rubric@1.6.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [1.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.5.16...@pie-element/rubric@1.6.0) (2021-06-29)
+
+
+### Features
+
+* **rubric:** Added sample answers to the model - PD-621 ([#559](https://github.com/pie-framework/pie-elements/issues/559)) ([d436b47](https://github.com/pie-framework/pie-elements/commit/d436b47b1cb8dd7cfbd82dbd2de4dd5eab36905c))
+
+
+
+
+
 ## [1.5.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.5.15...@pie-element/rubric@1.5.16) (2021-04-07)
 
 **Note:** Version bump only for package @pie-element/rubric

@@ -68,7 +68,7 @@ export class Main extends React.Component {
       configuration,
       onConfigurationChanged
     } = this.props;
-    const { partLabelType } = model;
+    const { partLabelType, partA: modelPartA, partB: modelPartB } = model;
     const { partA, partB, partialScoring, scoringType, ...generalConfiguration } = configuration;
     const {
       feedback: feedbackA = {},
@@ -78,7 +78,8 @@ export class Main extends React.Component {
       prompt: promptA = {},
       teacherInstructions: teacherInstructionsA = {},
       studentInstructions: studentInstructionsA = {},
-      verticalMode: verticalModeA = {},
+      choicesLayout: choicesLayoutA = {},
+      gridColumns: gridColumnsA = {},
       rationale: rationaleA = {}
     } = partA || {};
     const {
@@ -89,13 +90,20 @@ export class Main extends React.Component {
       prompt: promptB = {},
       teacherInstructions: teacherInstructionsB = {},
       studentInstructions: studentInstructionsB = {},
-      verticalMode: verticalModeB = {},
+      choicesLayout: choicesLayoutB = {},
+      gridColumns: gridColumnsB = {},
       rationale: rationaleB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
     const firstPart = `Part ${typeIsNumber ? '1' : 'A'}`;
     const secondPart = `Part ${typeIsNumber ? '2' : 'B'}`;
+    const nrOfColumnsAvailable = {
+      partA: modelPartA.choices && modelPartA.choices.length ?
+        Array.from({length: modelPartA.choices.length}, (_, i) => (`${i + 1}`)) : [],
+      partB: modelPartB.choices && modelPartB.choices.length ?
+        Array.from({length: modelPartB.choices.length}, (_, i) => (`${i + 1}`)) : [],
+    };
 
     return (
       <div className={classes.design}>
@@ -127,8 +135,12 @@ export class Main extends React.Component {
                     radio(choicePrefixA.label, ['numbers', 'letters']),
                   'partA.lockChoiceOrder':
                     lockChoiceOrderA.settings && toggle(lockChoiceOrderA.label),
-                  'partA.verticalMode':
-                    verticalModeA.settings && toggle(verticalModeA.label)
+                  'partA.choicesLayout':
+                    choicesLayoutA.settings &&
+                    dropdown(choicesLayoutA.label, ['vertical', 'grid', 'horizontal']),
+                  'partA.gridColumns':
+                    modelPartA.choicesLayout === 'grid' && nrOfColumnsAvailable.partA.length > 0 &&
+                    dropdown(gridColumnsA.label, nrOfColumnsAvailable.partA)
                 },
                 [`Properties ${firstPart}`]: {
                   'partA.feedbackEnabled': feedbackA.settings &&
@@ -153,8 +165,12 @@ export class Main extends React.Component {
                     radio(choicePrefixB.label, ['numbers', 'letters']),
                   'partB.lockChoiceOrder':
                     lockChoiceOrderB.settings && toggle(lockChoiceOrderB.label),
-                  'partB.verticalMode':
-                    verticalModeB.settings && toggle(verticalModeB.label)
+                  'partB.choicesLayout':
+                    choicesLayoutB.settings &&
+                    dropdown(choicesLayoutB.label, ['vertical', 'grid', 'horizontal']),
+                  'partB.gridColumns':
+                    modelPartB.choicesLayout === 'grid' && nrOfColumnsAvailable.partB.length > 0 &&
+                    dropdown(gridColumnsB.label, nrOfColumnsAvailable.partB)
                 },
                 [`Properties ${secondPart}`]: {
                   'partB.feedbackEnabled':

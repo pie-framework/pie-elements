@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.6.0",
+  "version": "1.6.4",
   "publishConfig": {
     "access": "public"
   },
@@ -11,7 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/render-ui": "^4.11.8",
+    "@pie-lib/render-ui": "^4.11.9",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

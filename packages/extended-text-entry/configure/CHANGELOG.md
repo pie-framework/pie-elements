@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.9...@pie-element/extended-text-entry-configure@5.3.0) (2021-08-05)
+
+
+### Features
+
+* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
+
+
+
+
+
+## [5.2.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.7...@pie-element/extended-text-entry-configure@5.2.9) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [5.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.6...@pie-element/extended-text-entry-configure@5.2.7) (2021-06-29)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
 ## [5.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.5...@pie-element/extended-text-entry-configure@5.2.6) (2021-04-07)
 
 

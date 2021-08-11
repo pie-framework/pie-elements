@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.15...@pie-element/select-text-controller@4.1.17) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [4.1.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.14...@pie-element/select-text-controller@4.1.15) (2021-06-29)
+
+
+### Bug Fixes
+
+* **select-text:** partial scoring not working correctly PD-407 ([#584](https://github.com/pie-framework/pie-elements/issues/584)) ([d78e194](https://github.com/pie-framework/pie-elements/commit/d78e19447aeb7953f7eeefb75ce1b71c3d683dea))
+
+
+
+
+
 ## [4.1.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.11...@pie-element/select-text-controller@4.1.14) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/select-text-controller

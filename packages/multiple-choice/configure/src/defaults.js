@@ -17,14 +17,13 @@ export default {
     limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    verticalMode: true,
     toolbarEditorPosition: 'bottom',
     choicesLayout: 'vertical',
     gridColumns: '2',
   },
   configuration: {
     choicesLayout: {
-      settings: true,
+      settings: false,
       label: 'Choices Layout',
     },
     gridColumns: {
@@ -69,6 +68,10 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+    },
+    accessibility: {
+      settings: false,
+      label: 'Accessibility Label'
     },
     scoringType: {
       settings: false,

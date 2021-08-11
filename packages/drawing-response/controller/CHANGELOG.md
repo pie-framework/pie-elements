@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.2.0...@pie-element/drawing-response-controller@3.2.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [3.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.1.8...@pie-element/drawing-response-controller@3.2.0) (2021-06-29)
+
+
+### Features
+
+* **drawing-response:** remove rationale PD-191 ([#597](https://github.com/pie-framework/pie-elements/issues/597)) ([3b52331](https://github.com/pie-framework/pie-elements/commit/3b52331ac843084e6d402daad3536627ab0ddf28))
+
+
+
+
+
 ## [3.1.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response-controller@3.1.6...@pie-element/drawing-response-controller@3.1.8) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/drawing-response-controller

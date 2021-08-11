@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.3.3...@pie-element/multiple-choice-controller@3.4.0) (2021-08-05)
+
+
+### Features
+
+* **multiple-choice:** accessibility label - added aria label to checkbox and radio input types ([22514bb](https://github.com/pie-framework/pie-elements/commit/22514bb5e2476bc79a55756ff9a5c0c1e0642a29))
+* if there are no choices - do not show grid columns dropdown BREAKING CHANGE: removed verticalMode(boolean) from model & configuration - and replaced it with choicesLayout(string) ([1c36ae8](https://github.com/pie-framework/pie-elements/commit/1c36ae8b7f9369b2723a6a84e7350370e1186c50))
+* **multiple-choice:** added possibility to change layout - vertical, grid, horizontal ([46e7681](https://github.com/pie-framework/pie-elements/commit/46e7681a178ff29c983db1c7b6206389b55e2a00))
+
+
+
+
+
+## [3.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.3.1...@pie-element/multiple-choice-controller@3.3.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.3.0...@pie-element/multiple-choice-controller@3.3.1) (2021-06-29)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-controller
+
+
+
+
+
 # [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.2.13...@pie-element/multiple-choice-controller@3.3.0) (2021-04-07)
 
 
