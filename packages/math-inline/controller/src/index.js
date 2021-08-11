@@ -4,7 +4,12 @@ import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import areValuesEqual from '@pie-lib/math-evaluator';
 import { ResponseTypes } from './utils';
 
+import * as mv from '@pie-framework/math-validation';
+
+console.log('I have mv: ', mv);
+
 import defaults from './defaults';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 const log = debug('@pie-element:math-inline:controller');
 const decimalRegex = /\.|,/g;
@@ -37,7 +42,8 @@ function processAnswerItem(answerItem = '', isLiteral) {
 
   newAnswerItem = newAnswerItem.replace(textRegex, '');
   if (
-    containsDecimal(newAnswerItem) && validExpressionWithThousandSeparator(newAnswerItem)
+    containsDecimal(newAnswerItem) &&
+    validExpressionWithThousandSeparator(newAnswerItem)
   ) {
     newAnswerItem = newAnswerItem.replace(decimalCommaRegex, '');
   }
@@ -45,9 +51,7 @@ function processAnswerItem(answerItem = '', isLiteral) {
   newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
 
   // eslint-disable-next-line no-useless-escape
-  newAnswerItem = newAnswerItem
-    .replace(/\\%/g, '')
-    .replace(/%/g, '');
+  newAnswerItem = newAnswerItem.replace(/\\%/g, '').replace(/%/g, '');
 
   return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
 }
@@ -64,7 +68,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     return {
       correctness: 'unanswered',
       score: isOutcome ? 0 : '0%',
-      correct: false
+      correct: false,
     };
   }
 
@@ -75,7 +79,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctnessObject = {
     correctness: 'incorrect',
     score: isOutcome ? 0 : '0%',
-    correct: false
+    correct: false,
   };
 
   if (isAnswerCorrect) {
@@ -97,26 +101,29 @@ const stripTargets = [
   /\\s/g,
   /left/g,
   /right/g,
-  / /g
+  / /g,
 ];
 
 const validExpressionWithThousandSeparator = (answer) => {
   const numericValues = answer.split(noNumbers);
 
   for (let i = 0; i < numericValues.length; i++) {
-    if (numericValues[i] != '' && containsDecimal(numericValues[i]) && !decimalWithThousandSeparatorNumberRegex.test(numericValues[i])) {
-
+    if (
+      numericValues[i] != '' &&
+      containsDecimal(numericValues[i]) &&
+      !decimalWithThousandSeparatorNumberRegex.test(numericValues[i])
+    ) {
       return false;
     }
   }
 
-  return true
-}
+  return true;
+};
 
 function stripForStringCompare(answer = '') {
   let stripped = answer;
 
-  stripTargets.forEach(stripTarget => {
+  stripTargets.forEach((stripTarget) => {
     return (stripped = stripped.replace(stripTarget, ''));
   });
 
@@ -143,12 +150,12 @@ function handleStringBasedCheck(acceptedValues, answerItem) {
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
-  correctResponseItem.forEach(correctResponse => {
+  correctResponseItem.forEach((correctResponse) => {
     // if not already deemed correct for one of the correct responses
     if (!answerCorrect) {
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates || {}).map(
-          alternateId => correctResponse.alternates[alternateId]
+          (alternateId) => correctResponse.alternates[alternateId]
         )
       );
 
@@ -173,7 +180,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
               processAnswerItem(answerItem),
               {
                 isLatex: true,
-                allowThousandsSeparator: correctResponse.allowThousandsSeparator
+                allowThousandsSeparator:
+                  correctResponse.allowThousandsSeparator,
               }
             );
             if (answerCorrect) {
@@ -211,18 +219,18 @@ const getCorrectness = (question, env, session, isOutcome) => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       config: {
         ...defaults,
-        ...model
-      }
+        ...model,
+      },
     });
   });
 }
 
 export const outcome = (question, session, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -237,18 +245,18 @@ export const outcome = (question, session, env) => {
   });
 };
 
-export const normalize = question => ({
+export const normalize = (question) => ({
   ...defaults,
   feedbackEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  ...question
+  ...question,
 });
 
 export function model(question, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
     const correctResponse = {};
@@ -265,20 +273,23 @@ export function model(question, session, env) {
         ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const base = {
         config,
         correctness,
         feedback,
         disabled: env.mode !== 'gather',
-        view: env.mode === 'view'
+        view: env.mode === 'view',
       };
 
       let out;
       let showNote = false;
 
-      (config && config.responses || []).forEach(response => {
-        if (response.validation === 'symbolic' || Object.keys(response.alternates || {}).length > 0) {
+      ((config && config.responses) || []).forEach((response) => {
+        if (
+          response.validation === 'symbolic' ||
+          Object.keys(response.alternates || {}).length > 0
+        ) {
           showNote = true;
           return;
         }
@@ -286,7 +297,7 @@ export function model(question, session, env) {
 
       if (env.mode === 'evaluate') {
         out = Object.assign(base, {
-          correctResponse
+          correctResponse,
         });
 
         out.config.showNote = showNote;
@@ -326,20 +337,20 @@ export function model(question, session, env) {
   });
 }
 
-const escape = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
-const simpleSessionResponse = question =>
-  new Promise(resolve => {
+const simpleSessionResponse = (question) =>
+  new Promise((resolve) => {
     const { responses } = question;
     const { answer } = responses ? responses[0] : {};
     resolve({
       id: question.id,
       response: answer,
-      completeAnswer: answer
+      completeAnswer: answer,
     });
   });
 
-const advancedSessionResponse = question =>
+const advancedSessionResponse = (question) =>
   new Promise((resolve, reject) => {
     const { responses } = question;
     const { answer } = responses ? responses[0] : {};
@@ -349,7 +360,7 @@ const advancedSessionResponse = question =>
       const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
 
       const o = escape(e).split(RESPONSE_TOKEN);
-      const to = o.map(t => (t === '' ? t : t.replace(/\s+/g, () => ('\\s*'))));
+      const to = o.map((t) => (t === '' ? t : t.replace(/\s+/g, () => '\\s*')));
       const tt = to.join('(.*)');
 
       const m = answer.match(new RegExp(tt));
@@ -360,7 +371,7 @@ const advancedSessionResponse = question =>
         resolve({
           answers: {},
           completeAnswer: answer,
-          id: question.id
+          id: question.id,
         });
 
         console.log(`can not find match: ${o} in ${answer}`);
@@ -379,19 +390,18 @@ const advancedSessionResponse = question =>
       resolve({
         answers,
         completeAnswer: answer,
-        id: question.id
+        id: question.id,
       });
     } catch (e) {
       resolve({
         answers: {},
         completeAnswer: answer,
-        id: question.id
+        id: question.id,
       });
 
       console.error(e.toString());
     }
   });
-
 
 export const createCorrectResponseSession = (question, env) => {
   if (env.mode === 'evaluate' || env.role !== 'instructor') {
