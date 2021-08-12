@@ -172,6 +172,10 @@ export class Main extends React.Component {
     this.handleAnswerBlockDomUpdate();
   }
 
+  componentWillUnmount() {
+    this.setState({ activeAnswerBlock: '' });
+  }
+
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { config } = this.props.model;
     const { config: nextConfig = {} } = nextProps.model || {};
