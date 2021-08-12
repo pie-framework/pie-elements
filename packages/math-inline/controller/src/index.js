@@ -1,22 +1,16 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import areValuesEqual from '@pie-lib/math-evaluator';
 import { ResponseTypes } from './utils';
 
 import * as mv from '@pie-framework/math-validation';
 
 console.log('I have mv: ', mv);
+console.log(mv.latexEqual(1, 1, {}));
 
 import defaults from './defaults';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 const log = debug('@pie-element:math-inline:controller');
-const decimalRegex = /\.|,/g;
-const decimalCommaRegex = /,/g;
-const textRegex = /\\text\{([^{}]+)\}/g;
-const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
-const noNumbers = /[^0-9.,]+/g;
 
 /**
  * TODO:
@@ -31,35 +25,6 @@ const noNumbers = /[^0-9.,]+/g;
  * This would override any shared setting at the root.
  */
 
-function processAnswerItem(answerItem = '', isLiteral) {
-  // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
-  // further processing is to be added here if needed
-  let newAnswerItem = answerItem.replace('−', '-');
-
-  newAnswerItem = newAnswerItem.replace(/\\cdot/g, '\\times');
-
-  // also ignore text nodes, just swap out with empty string
-
-  newAnswerItem = newAnswerItem.replace(textRegex, '');
-  if (
-    containsDecimal(newAnswerItem) &&
-    validExpressionWithThousandSeparator(newAnswerItem)
-  ) {
-    newAnswerItem = newAnswerItem.replace(decimalCommaRegex, '');
-  }
-
-  newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
-
-  // eslint-disable-next-line no-useless-escape
-  newAnswerItem = newAnswerItem.replace(/\\%/g, '').replace(/%/g, '');
-
-  return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
-}
-
-function containsDecimal(expression = '') {
-  return expression.match(decimalRegex);
-}
-
 const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
   const isAdvanced = model.responseType === ResponseTypes.advanced;
@@ -72,10 +37,14 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
+  console.log(answerItem, "answerItem")
+  debugger;
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem
   );
+
+  console.log(isAnswerCorrect, "is answer correct ")
   const correctnessObject = {
     correctness: 'incorrect',
     score: isOutcome ? 0 : '0%',
@@ -91,118 +60,39 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [
-  /{/g,
-  /}/g,
-  /\[/g,
-  /]/g,
-  /\\ /g,
-  /\\/g,
-  /\\s/g,
-  /left/g,
-  /right/g,
-  / /g,
-];
-
-const validExpressionWithThousandSeparator = (answer) => {
-  const numericValues = answer.split(noNumbers);
-
-  for (let i = 0; i < numericValues.length; i++) {
-    if (
-      numericValues[i] != '' &&
-      containsDecimal(numericValues[i]) &&
-      !decimalWithThousandSeparatorNumberRegex.test(numericValues[i])
-    ) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-function stripForStringCompare(answer = '') {
-  let stripped = answer;
-
-  stripTargets.forEach((stripTarget) => {
-    return (stripped = stripped.replace(stripTarget, ''));
-  });
-
-  return stripped;
-}
-
-function handleStringBasedCheck(acceptedValues, answerItem) {
-  let answerValueToUse = processAnswerItem(answerItem, true);
-  let answerCorrect = false;
-
-  for (let i = 0; i < acceptedValues.length; i++) {
-    let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
-
-    answerCorrect = answerValueToUse === acceptedValueToUse;
-
-    if (answerCorrect === true) {
-      break;
-    }
-  }
-
-  return answerCorrect;
-}
 
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
+  // debugger;
 
-  correctResponseItem.forEach((correctResponse) => {
+  correctResponseItem.forEach(correctResponse => {
+    let opts = {
+      mode: correctResponse.validation
+    }
     // if not already deemed correct for one of the correct responses
     if (!answerCorrect) {
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates || {}).map(
-          (alternateId) => correctResponse.alternates[alternateId]
+          alternateId => correctResponse.alternates[alternateId]
         )
       );
 
-      if (correctResponse.validation === 'literal') {
-        for (let i = 0; i < acceptedValues.length; i++) {
-          let answerValueToUse = processAnswerItem(answerItem, true);
-          let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
 
-          if (acceptedValueToUse === answerValueToUse) {
-            answerCorrect = true;
-            break;
-          }
-        }
-      } else {
-        try {
-          for (let i = 0; i < acceptedValues.length; i++) {
-            // let answerValueToUse = processAnswerItem(answerItem);
-            // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+      for (let i = 0; i < acceptedValues.length; i++) {
 
-            answerCorrect = areValuesEqual(
-              processAnswerItem(acceptedValues[i]),
-              processAnswerItem(answerItem),
-              {
-                isLatex: true,
-                allowThousandsSeparator:
-                  correctResponse.allowThousandsSeparator,
-              }
-            );
-            if (answerCorrect) {
-              break;
-            }
-          }
-        } catch (e) {
-          log(
-            'Parse failure when evaluating math',
-            e,
-            correctResponse,
-            answerItem
-          );
-          // try to string check compare, last resort?
-          // once invalid models have been weeded out, this'll get removed.
-          answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
+        console.log(opts, "opts")
+        answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
+        console.log(answerCorrect, "answerCorrect")
+
+        if (answerCorrect) {
+          break;
         }
       }
     }
   });
 
+
+  console.log(answerCorrect, "answercorrect")
   return answerCorrect;
 }
 
@@ -337,7 +227,7 @@ export function model(question, session, env) {
   });
 }
 
-const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+//const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
 const simpleSessionResponse = (question) =>
   new Promise((resolve) => {

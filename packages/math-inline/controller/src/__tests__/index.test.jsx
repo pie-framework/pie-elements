@@ -1,5 +1,9 @@
 import { model, outcome, createCorrectResponseSession } from '../index';
 
+jest.mock('@pie-framework/math-validation', () =>({
+  latexEqual: jest.fn()
+}));
+
 const defaultModel = {
   responseType: 'Advanced Multi',
   equationEditor: '3',
