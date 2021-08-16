@@ -61,6 +61,16 @@ function prepareForStatic(model, state) {
   }
 }
 
+// increase the font of the parallel notation
+const updateSpans = () => {
+  const spans = Array.from(document.querySelectorAll('span[mathquill-command-id]'));
+  (spans || []).forEach(span => {
+    if (span && span.innerText === '∥' && span.className !== 'mq-editable-field') {
+      span.style.fontSize = '32px';
+    }
+  });
+};
+
 export class Main extends React.Component {
   static propTypes = {
     classes: PropTypes.object,
@@ -289,6 +299,8 @@ export class Main extends React.Component {
   };
 
   subFieldChanged = (name, subfieldValue) => {
+    updateSpans();
+
     if (name) {
       this.setState(
         (state) => ({
