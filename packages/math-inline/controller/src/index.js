@@ -3,17 +3,15 @@ import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { ResponseTypes } from './utils';
 
+import defaults from './defaults';
+
 import * as mv from '@pie-framework/math-validation';
 
-console.log('I have mv: ', mv);
-console.log(mv.latexEqual(1, 1, {}));
-
-import defaults from './defaults';
 
 const log = debug('@pie-element:math-inline:controller');
 
 /**
- * TODO:
+ * TODO: ?
  *
  * We have `stringCheck` which if true disabled 'literal' and 'symbolic' so really it should be a validation method. And if it is what's the difference between it and 'literal'?
  *
@@ -37,14 +35,12 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
-  console.log(answerItem, "answerItem")
-  debugger;
+  //debugger;
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem
   );
 
-  console.log(isAnswerCorrect, "is answer correct ")
   const correctnessObject = {
     correctness: 'incorrect',
     score: isOutcome ? 0 : '0%',
@@ -69,7 +65,14 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
     let opts = {
       mode: correctResponse.validation
     }
-    // if not already deemed correct for one of the correct responses
+
+    if (opts.mode == "literal") {
+      opts.literal = {
+        allowTrailingZeros: correctResponse.allowTrailingZeros || false,
+        ignoreOrder: correctResponse.ignoreOrder || true,
+      };
+    }
+
     if (!answerCorrect) {
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates || {}).map(
@@ -77,13 +80,8 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         )
       );
 
-
       for (let i = 0; i < acceptedValues.length; i++) {
-
-        console.log(opts, "opts")
         answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
-        console.log(answerCorrect, "answerCorrect")
-
         if (answerCorrect) {
           break;
         }
@@ -91,8 +89,6 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
     }
   });
 
-
-  console.log(answerCorrect, "answercorrect")
   return answerCorrect;
 }
 
@@ -227,7 +223,7 @@ export function model(question, session, env) {
   });
 }
 
-//const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
 const simpleSessionResponse = (question) =>
   new Promise((resolve) => {
