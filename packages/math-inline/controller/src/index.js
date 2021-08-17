@@ -10,18 +10,6 @@ import * as mv from '@pie-framework/math-validation';
 
 const log = debug('@pie-element:math-inline:controller');
 
-/**
- * TODO: ?
- *
- * We have `stringCheck` which if true disabled 'literal' and 'symbolic' so really it should be a validation method. And if it is what's the difference between it and 'literal'?
- *
- * We should support a equivalence option per correct response like:
- * responses: [ { answer: '..', validation: 'symbolic', alternates: [{ value: '..', validation: 'stringCompare'}, 'abc'] } ]
- *
- * if option is a string it is turned into an object w/ inherited opts.
- *
- * This would override any shared setting at the root.
- */
 
 const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
@@ -35,7 +23,6 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     };
   }
 
-  //debugger;
   const isAnswerCorrect = getIsAnswerCorrect(
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem
@@ -59,17 +46,17 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
-  // debugger;
 
   correctResponseItem.forEach(correctResponse => {
+
     let opts = {
-      mode: correctResponse.validation
+      mode: correctResponse.validation || "literal"
     }
 
     if (opts.mode == "literal") {
       opts.literal = {
         allowTrailingZeros: correctResponse.allowTrailingZeros || false,
-        ignoreOrder: correctResponse.ignoreOrder || true,
+        ignoreOrder: correctResponse.ignoreOrder || false,
       };
     }
 
@@ -182,6 +169,7 @@ export function model(question, session, env) {
       });
 
       if (env.mode === 'evaluate') {
+
         out = Object.assign(base, {
           correctResponse,
         });
