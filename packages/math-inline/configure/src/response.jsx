@@ -264,10 +264,10 @@ class Response extends React.Component {
               <Select
                 className={classes.select}
                 onChange={this.onChange('validation')}
-                value={validation}
+                value={validation || "literal"}
               >
                 <MenuItem value="literal">Literal Validation</MenuItem>
-                {/* Remove symbolic validation PD-690 <MenuItem value="symbolic">Symbolic Validation</MenuItem>*/}
+                <MenuItem value="symbolic">Symbolic Validation</MenuItem>
               </Select>
             </InputContainer>
           </div>
