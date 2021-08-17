@@ -225,7 +225,7 @@
           },
           "validation": {
             "description": "Indicates what type of validation should be applied on the response",
-            "default": "is symbolic",
+            "default": "is literal",
             "enum": [
               "literal",
               "symbolic"
@@ -290,7 +290,7 @@
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
-          "default": "is symbolic",
+          "default": "is literal",
           "enum": [
             "literal",
             "symbolic"
@@ -675,7 +675,7 @@
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
-          "default": "is symbolic",
+          "default": "is literal",
           "enum": [
             "literal",
             "symbolic"
