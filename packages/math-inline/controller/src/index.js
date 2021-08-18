@@ -118,15 +118,32 @@ export const outcome = (question, session, env) => {
   });
 };
 
-export const normalize = (question) => ({
-  ...defaults,
-  feedbackEnabled: true,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question,
-});
+export const normalize = (question) => {
+
+  if (!isEmpty(question.responses)) {
+    let correctResponses = question.responses;
+
+    correctResponses = correctResponses.map(correctResponse => {
+      if (!correctResponse.hasOwnProperty('validation')) {
+
+        correctResponse.validation = "literal"
+      }
+      return correctResponse
+    })
+  }
+
+  return {
+    ...defaults,
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    ...question,
+  }
+}
+
+
 
 export function model(question, session, env) {
   return new Promise((resolve) => {

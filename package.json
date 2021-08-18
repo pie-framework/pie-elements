@@ -52,6 +52,5 @@
     "packages/*",
     "packages/*/configure",
     "packages/*/controller"
-  ],
-  "dependencies": {}
+  ]
 }
