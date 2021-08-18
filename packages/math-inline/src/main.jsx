@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
 import { Feedback, Collapsible, Readable, hasText } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
@@ -60,16 +60,6 @@ function prepareForStatic(model, state) {
     }).replace(NEWLINE_LATEX, '\\embed{newLine}[]');
   }
 }
-
-// increase the font of the parallel notation
-const updateSpans = () => {
-  const spans = Array.from(document.querySelectorAll('span[mathquill-command-id]'));
-  (spans || []).forEach(span => {
-    if (span && span.innerText === '∥' && span.className !== 'mq-editable-field') {
-      span.style.fontSize = '32px';
-    }
-  });
-};
 
 export class Main extends React.Component {
   static propTypes = {
