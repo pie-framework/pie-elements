@@ -16,16 +16,9 @@ const log = debug('pie-elements:math-inline:configure');
 export default class MathInlineConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
 
+    // making sure that validation type is set
     if (!isEmpty(model.responses)) {
-      let correctResponses = model.responses;
-
-      correctResponses = correctResponses.map(correctResponse => {
-        if (!correctResponse.hasOwnProperty('validation')) {
-          correctResponse.validation = "literal"
-        }
-
-        return correctResponse
-      })
+      model.responses = model.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || "literal" }))
     }
 
     return { ...defaults.model, ...model }

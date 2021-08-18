@@ -120,16 +120,9 @@ export const outcome = (question, session, env) => {
 
 export const normalize = (question) => {
 
+  // making sure that validation type is set
   if (!isEmpty(question.responses)) {
-    let correctResponses = question.responses;
-
-    correctResponses = correctResponses.map(correctResponse => {
-      if (!correctResponse.hasOwnProperty('validation')) {
-
-        correctResponse.validation = "literal"
-      }
-      return correctResponse
-    })
+    question.responses = question.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || "literal" }))
   }
 
   return {
