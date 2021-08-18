@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Configure from './configure';
+import isEmpty from 'lodash/isEmpty';
 import {
   ModelUpdatedEvent,
   DeleteImageEvent,
@@ -13,10 +14,15 @@ import defaults from './defaults';
 const log = debug('pie-elements:math-inline:configure');
 
 export default class MathInlineConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaults.model,
-    ...model
-  });
+  static createDefaultModel = (model = {}) => {
+
+    // making sure that validation type is set
+    if (!isEmpty(model.responses)) {
+      model.responses = model.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || "literal" }))
+    }
+
+    return { ...defaults.model, ...model }
+  };
 
   constructor() {
     super();

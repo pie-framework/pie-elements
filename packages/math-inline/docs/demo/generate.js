@@ -24,7 +24,7 @@ const E262456 = {
   'responses': [
     {
       'allowSpaces': true,
-      'validation': 'symbolic',
+      // 'validation': 'symbolic',
       'answer': '$410',
       'id': '1'
     }

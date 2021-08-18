@@ -81,7 +81,7 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
 
 ## `answer` (string, required)
 
@@ -109,7 +109,7 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
 
 ## `answer` (string, required)
 
@@ -275,7 +275,7 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
 
 ### `answer` (string, required)
 

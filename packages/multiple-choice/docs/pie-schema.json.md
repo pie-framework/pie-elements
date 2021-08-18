@@ -150,6 +150,10 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `accessibilityLabelsEnabled` (boolean, required)
+
+Indicates if Accessibility Labels are enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
