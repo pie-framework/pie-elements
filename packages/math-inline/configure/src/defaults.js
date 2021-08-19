@@ -13,21 +13,22 @@ export default {
     feedback: {
       correct: {
         default: 'Correct',
-        type: 'none'
+        type: 'none',
       },
       incorrect: {
         default: 'Incorrect',
-        type: 'none'
+        type: 'none',
       },
       partial: {
         default: 'Nearly',
-        type: 'none'
-      }
+        type: 'none',
+      },
     },
     equationEditor: '3',
     expression: '',
     rationale: 'Rationale goes here.',
-    note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
+    note:
+      'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
     prompt: '',
     responses: [],
     customKeys: [],
@@ -42,35 +43,43 @@ export default {
   configuration: {
     prompt: {
       settings: true,
-      label: 'Prompt'
+      label: 'Prompt',
     },
     feedback: {
       settings: true,
-      label: 'Feedback'
+      label: 'Feedback',
     },
     responseType: {
       settings: true,
-      label: 'Response type'
+      label: 'Response type',
     },
     rationale: {
       settings: true,
-      label: 'Rationale'
+      label: 'Rationale',
     },
     scoringType: {
       settings: false,
-      label: 'Scoring Type'
+      label: 'Scoring Type',
     },
     studentInstructions: {
       settings: false,
-      label: 'Student Instructions'
+      label: 'Student Instructions',
     },
     teacherInstructions: {
       settings: true,
-      label: 'Teacher Instructions'
+      label: 'Teacher Instructions',
     },
     partialScoring: {
       settings: false,
-      label: 'Allow Partial Scoring'
-    }
-  }
+      label: 'Allow Partial Scoring',
+    },
+    ignoreOrder: {
+      controls: true,
+      label: 'Ignore Order'
+    },
+    allowTrailingZeros: {
+      controls: true,
+      label: 'Allow Trailing Zeros'
+    },
+  },
 };

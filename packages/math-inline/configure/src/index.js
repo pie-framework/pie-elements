@@ -18,7 +18,7 @@ export default class MathInlineConfigure extends HTMLElement {
 
     // making sure that validation type is set
     if (!isEmpty(model.responses)) {
-      model.responses = model.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || "literal" }))
+      model.responses = model.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || 'literal' }))
     }
 
     return { ...defaults.model, ...model }

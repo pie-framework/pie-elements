@@ -100,7 +100,7 @@ export class Main extends React.Component {
     const height = this.getAdjustedHeight(availableTypes, maxNumberOfPoints);
 
     this.graphChange({ height });
-  };
+  }
 
   graphChange = o => {
     const { onChange } = this.props;
