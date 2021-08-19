@@ -132,6 +132,24 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
+  onAllowTrailingZerosChange = (event) => {
+    const { response, onResponseChange, index } = this.props;
+    const newResponse = { ...response };
+
+
+    newResponse?.allowTrailingZeros = !response.allowTrailingZeros;
+     onResponseChange(newResponse, index);
+  }
+
+    onIgnoreOrderChange = (event) => {
+    const { response, onResponseChange, index } = this.props;
+    const newResponse = { ...response };
+
+
+    newResponse?.ignoreOrder = !response.ignoreOrder;
+     onResponseChange(newResponse, index);
+  }
+
   onAnswerChange = (answer) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
@@ -311,7 +329,7 @@ class Response extends React.Component {
                 control={
                   <Checkbox
                     checked={ignoreOrder}
-                    onChange={this.onIgnoreOrder}
+                    onChange={this.onIgnoreOrderChange}
                   />
                 }
               />
