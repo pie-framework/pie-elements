@@ -343,7 +343,6 @@ class GeneralConfigBlock extends React.Component {
     } = model;
     const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {} } = configuration || {};
 
-    console.log(configuration, 'configuration')
     const classNames = {
       editor: classes.responseEditor,
       mathToolbar: classes.mathToolbar,

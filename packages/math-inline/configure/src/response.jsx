@@ -137,7 +137,7 @@ class Response extends React.Component {
     const newResponse = { ...response };
 
 
-    newResponse?.allowTrailingZeros = !response.allowTrailingZeros;
+    newResponse.allowTrailingZeros = !response.allowTrailingZeros;
      onResponseChange(newResponse, index);
   }
 
@@ -146,7 +146,7 @@ class Response extends React.Component {
     const newResponse = { ...response };
 
 
-    newResponse?.ignoreOrder = !response.ignoreOrder;
+    newResponse.ignoreOrder = !response.ignoreOrder;
      onResponseChange(newResponse, index);
   }
 
@@ -258,11 +258,6 @@ class Response extends React.Component {
       cAllowTrailingZeros,
       cIgnoreOrder,
     } = this.props;
-    console.log(this.props, 'this props');
-
-    console.log(cAllowTrailingZeros, ' cAllowTrailingZeros');
-
-    console.log(cIgnoreOrder, 'cIgnoreOrder');
 
     const { showKeypad } = this.state;
     const {

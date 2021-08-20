@@ -122,7 +122,7 @@ export const normalize = (question) => {
 
   // making sure that validation type is set
   if (!isEmpty(question.responses)) {
-    question.responses = question.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || 'literal' }))
+    question.responses = question.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || 'literal', allowTrailingZeros: correctResponse.allowTrailingZeros || false, ignoreOrder: correctResponse.ignoreOrder || false }))
   }
 
   return {
