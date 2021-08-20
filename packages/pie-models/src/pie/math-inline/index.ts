@@ -26,6 +26,18 @@ interface MathInlineResponse {
    */
   validation: 'literal' | 'symbolic';
 
+  /**
+   * Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  ignoreOrder: boolean;
+
+  /**
+   * Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  allowTrailingZeros: boolean;
+
   /** The answer for the question */
   answer: string;
 
@@ -93,6 +105,17 @@ export interface MathInlinePie extends PieModel {
    * This property is not used yet.
    */
   partialScoring?: boolean;
+
+  /**
+   * Indicates if ignoreOrder option is shown on Design Screen
+   * @default is false
+   */
+  ignoreOrder: boolean;
+  /**
+   * Indicates if allowTrailingZeros option is shown on Design Screen
+   * @default is false
+   */
+  allowTrailingZeros: boolean;
 
   /** Indicates the value for rationale */
   rationale?: string;

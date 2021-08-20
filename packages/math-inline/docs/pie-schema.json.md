@@ -83,6 +83,18 @@ This element must be one of the following enum values:
 
 Default: `"is literal"`
 
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
 ## `answer` (string, required)
 
 The answer for the question
@@ -111,6 +123,18 @@ This element must be one of the following enum values:
 
 Default: `"is literal"`
 
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
 ## `answer` (string, required)
 
 The answer for the question
@@ -124,6 +148,18 @@ an object with some alternatives for the correct answers
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
+
+# `ignoreOrder` (boolean, required)
+
+Indicates if ignoreOrder option is shown on Design Screen
+
+Default: `"is false"`
+
+# `allowTrailingZeros` (boolean, required)
+
+Indicates if allowTrailingZeros option is shown on Design Screen
+
+Default: `"is false"`
 
 # `rationale` (string)
 
@@ -276,6 +312,18 @@ This element must be one of the following enum values:
 * `symbolic`
 
 Default: `"is literal"`
+
+### `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+### `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 ### `answer` (string, required)
 

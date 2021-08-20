@@ -233,6 +233,18 @@
             "type": "string",
             "title": "validation"
           },
+          "ignoreOrder": {
+            "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+            "default": "is false",
+            "type": "boolean",
+            "title": "ignoreOrder"
+          },
+          "allowTrailingZeros": {
+            "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+            "default": "is false",
+            "type": "boolean",
+            "title": "allowTrailingZeros"
+          },
           "answer": {
             "description": "The answer for the question",
             "type": "string",
@@ -268,9 +280,11 @@
           }
         },
         "required": [
+          "allowTrailingZeros",
           "alternates",
           "answer",
           "id",
+          "ignoreOrder",
           "validation"
         ]
       },
@@ -297,6 +311,18 @@
           ],
           "type": "string",
           "title": "validation"
+        },
+        "ignoreOrder": {
+          "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "ignoreOrder"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
         },
         "answer": {
           "description": "The answer for the question",
@@ -333,9 +359,11 @@
         }
       },
       "required": [
+        "allowTrailingZeros",
         "alternates",
         "answer",
         "id",
+        "ignoreOrder",
         "validation"
       ]
     },
@@ -343,6 +371,18 @@
       "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
       "type": "boolean",
       "title": "partialScoring"
+    },
+    "ignoreOrder": {
+      "description": "Indicates if ignoreOrder option is shown on Design Screen",
+      "default": "is false",
+      "type": "boolean",
+      "title": "ignoreOrder"
+    },
+    "allowTrailingZeros": {
+      "description": "Indicates if allowTrailingZeros option is shown on Design Screen",
+      "default": "is false",
+      "type": "boolean",
+      "title": "allowTrailingZeros"
     },
     "rationale": {
       "description": "Indicates the value for rationale",
@@ -423,10 +463,12 @@
     }
   },
   "required": [
+    "allowTrailingZeros",
     "element",
     "expression",
     "feedbackEnabled",
     "id",
+    "ignoreOrder",
     "rationaleEnabled",
     "responses",
     "studentInstructionsEnabled",
@@ -683,6 +725,18 @@
           "type": "string",
           "title": "validation"
         },
+        "ignoreOrder": {
+          "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "ignoreOrder"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
+        },
         "answer": {
           "description": "The answer for the question",
           "type": "string",
@@ -718,9 +772,11 @@
         }
       },
       "required": [
+        "allowTrailingZeros",
         "alternates",
         "answer",
         "id",
+        "ignoreOrder",
         "validation"
       ]
     },
