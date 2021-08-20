@@ -6,13 +6,11 @@ import defaults from 'lodash/defaults';
 import Main from './main';
 
 import sensibleDefaults from './defaults';
-import cloneDeep from 'lodash/cloneDeep';
 
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
-class EbsrMCConfigure extends MultipleChoiceConfigure {
-}
+class EbsrMCConfigure extends MultipleChoiceConfigure { }
 
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
@@ -60,8 +58,6 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   set model(m) {
-    console.log('***EBSR*** set model', cloneDeep(m));
-
     this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this._render();
@@ -74,8 +70,6 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelChanged = (m, reset) => {
-    console.log('***EBSR*** onModelChanged', { m: cloneDeep(m), model: this._model });
-
     this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
@@ -110,8 +104,6 @@ export default class EbsrConfigure extends HTMLElement {
     e.stopImmediatePropagation();
 
     const id = e.target && e.target.getAttribute('id');
-
-    console.log('***EBSR*** onModelUpdated', { update: cloneDeep(e.update), model: this._model });
 
     if (id) {
       if (e.update) {
