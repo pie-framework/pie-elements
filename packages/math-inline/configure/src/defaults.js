@@ -79,7 +79,7 @@ export default {
     ignoreOrder: {
       settings: false,
       label: 'Ignore Order',
-      enabled: true
+      enabled: true,
     },
     allowTrailingZeros: {
       settings: false,

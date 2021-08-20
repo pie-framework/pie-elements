@@ -22,7 +22,7 @@ export default class MathInlineConfigure extends HTMLElement {
         ...correctResponse,
         validation: correctResponse.validation || defaults.model.validationDefault,
         allowTrailingZeros: correctResponse.allowTrailingZeros || defaults.model.allowTrailingZerosDefault,
-        ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault
+        ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault || false
       }))
     }
 

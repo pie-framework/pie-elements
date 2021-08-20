@@ -88,8 +88,6 @@ export class Configure extends React.Component {
         break;
     }
 
-    console.log('\n\n', { model, configuration }, '\n\n')
-
     return (
       <div>
         <layout.ConfigLayout

@@ -123,9 +123,9 @@ export const normalize = (question) => {
   // making sure that validation type is set
   if (!isEmpty(question.responses)) {
     question.responses = question.responses.map(correctResponse => ({
-      ...correctResponse, validation: correctResponse.validation || defaults.model.validationDefault,
-      allowTrailingZeros: correctResponse.allowTrailingZeros || defaults.model.allowTrailingZerosDefault,
-      ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault
+      ...correctResponse, validation: correctResponse.validation || question.validationDefault,
+      allowTrailingZeros: correctResponse.allowTrailingZeros || question.allowTrailingZerosDefault,
+      ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault
     }))
   }
 
