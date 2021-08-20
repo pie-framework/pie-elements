@@ -136,19 +136,17 @@ class Response extends React.Component {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
-
     newResponse.allowTrailingZeros = !response.allowTrailingZeros;
-     onResponseChange(newResponse, index);
-  }
+    onResponseChange(newResponse, index);
+  };
 
-    onIgnoreOrderChange = (event) => {
+  onIgnoreOrderChange = (event) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
-
     newResponse.ignoreOrder = !response.ignoreOrder;
-     onResponseChange(newResponse, index);
-  }
+    onResponseChange(newResponse, index);
+  };
 
   onAnswerChange = (answer) => {
     const { response, onResponseChange, index } = this.props;
@@ -264,8 +262,8 @@ class Response extends React.Component {
       validation,
       answer,
       alternates,
-      ignoreOrder: ignoreOrder = true,
-      allowTrailingZeros: allowTrailingZeros = true,
+      ignoreOrder,
+      allowTrailingZeros,
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
@@ -304,32 +302,29 @@ class Response extends React.Component {
           </div>
           {validation === 'literal' && (
             <div className={classes.flexContainer}>
-              {cAllowTrailingZeros.controls &&
-                cAllowTrailingZeros.controls == true && (
-                  <FormControlLabel
-                    label={cAllowTrailingZeros.label}
-                    control={
-                      <Checkbox
-                        checked={allowTrailingZeros}
-                        onChange={this.onAllowTrailingZerosChange}
-                      />
-                    }
-                  />
-                )}
+              {cAllowTrailingZeros.enabled && (
+                <FormControlLabel
+                  label={cAllowTrailingZeros.label}
+                  control={
+                    <Checkbox
+                      checked={allowTrailingZeros}
+                      onChange={this.onAllowTrailingZerosChange}
+                    />
+                  }
+                />
+              )}
 
-              {cIgnoreOrder.controls &&
-                cIgnoreOrder.controls == true && (
-                 <FormControlLabel
-                label={cIgnoreOrder.label}
-                control={
-                  <Checkbox
-                    checked={ignoreOrder}
-                    onChange={this.onIgnoreOrderChange}
-                  />
-                }
-              />
-                )}
-
+              {cIgnoreOrder.enabled && (
+                <FormControlLabel
+                  label={cIgnoreOrder.label}
+                  control={
+                    <Checkbox
+                      checked={ignoreOrder}
+                      onChange={this.onIgnoreOrderChange}
+                    />
+                  }
+                />
+              )}
             </div>
           )}
           <div className={classes.inputContainer}>

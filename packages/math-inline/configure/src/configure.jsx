@@ -71,7 +71,9 @@ export class Configure extends React.Component {
       studentInstructions = {},
       rationale = {},
       prompt = {},
-      scoringType = {}
+      scoringType = {},
+      ignoreOrder = {},
+      allowTrailingZeros={}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
@@ -85,6 +87,9 @@ export class Configure extends React.Component {
         toolbarOpts.position = 'bottom';
         break;
     }
+
+    console.log('\n\n', { model, configuration }, '\n\n')
+
     return (
       <div>
         <layout.ConfigLayout
@@ -111,6 +116,10 @@ export class Configure extends React.Component {
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
                   scoringType: scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
+                  'ignoreOrder.enabled':
+                    ignoreOrder.settings && toggle(ignoreOrder.label),
+                  'allowTrailingZeros.enabled':
+                    allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
                 },
               }}
             />

@@ -50,7 +50,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
   correctResponseItem.forEach(correctResponse => {
 
     let opts = {
-      mode: correctResponse.validation || 'literal'
+      mode: correctResponse.validation || defaults.validationDefault
     }
 
     if (opts.mode == 'literal') {
@@ -122,7 +122,11 @@ export const normalize = (question) => {
 
   // making sure that validation type is set
   if (!isEmpty(question.responses)) {
-    question.responses = question.responses.map(correctResponse => ({ ...correctResponse, validation: correctResponse.validation || 'literal', allowTrailingZeros: correctResponse.allowTrailingZeros || false, ignoreOrder: correctResponse.ignoreOrder || false }))
+    question.responses = question.responses.map(correctResponse => ({
+      ...correctResponse, validation: correctResponse.validation || defaults.model.validationDefault,
+      allowTrailingZeros: correctResponse.allowTrailingZeros || defaults.model.allowTrailingZerosDefault,
+      ignoreOrder: correctResponse.ignoreOrder || defaults.model.ignoreOrderDefault
+    }))
   }
 
   return {

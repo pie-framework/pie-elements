@@ -39,6 +39,9 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    validationDefault: "literal",
+    ignoreOrderDefault: false,
+    allowTrailingZerosDefault: false,
   },
   configuration: {
     prompt: {
@@ -74,12 +77,14 @@ export default {
       label: 'Allow Partial Scoring',
     },
     ignoreOrder: {
-      controls: true,
-      label: 'Ignore Order'
+      settings: false,
+      label: 'Ignore Order',
+      enabled: true
     },
     allowTrailingZeros: {
-      controls: true,
-      label: 'Allow Trailing Zeros'
+      settings: false,
+      label: 'Allow Trailing Zeros',
+      enabled: true
     },
   },
 };
