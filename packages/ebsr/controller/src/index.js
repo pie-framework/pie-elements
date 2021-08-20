@@ -60,7 +60,7 @@ const parsePart = (part, key, session, env) => {
   };
 };
 
-export const normalize = question => ({
+export const normalize = ({ partA = {}, partB = {}, ...question }) => ({
   partLabels: true,
   partLabelType: 'Letters',
   ...question,
@@ -71,9 +71,9 @@ export const normalize = question => ({
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    choicesLayout: 'vertical',
     gridColumns: '2',
-    ...question.partA
+    ...partA,
+    choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || 'vertical'
   },
   partB: {
     ...defaults.partB,
@@ -82,9 +82,9 @@ export const normalize = question => ({
     feedbackEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    choicesLayout: 'vertical',
     gridColumns: '2',
-    ...question.partB
+    ...partB,
+    choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || 'vertical'
   }
 });
 

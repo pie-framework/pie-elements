@@ -12,6 +12,7 @@ import { choiceUtils as utils } from '@pie-lib/config-ui';
 import defaults from 'lodash/defaults';
 
 import sensibleDefaults from './defaults';
+import cloneDeep from 'lodash/cloneDeep';
 
 const log = debug('multiple-choice:configure');
 
@@ -52,7 +53,10 @@ export default class MultipleChoice extends HTMLElement {
   static createDefaultModel = (model = {}) => utils.normalizeChoices({
     ...sensibleDefaults.model,
     ...model,
-    choices: generateFormattedChoices((model && model.choices) || [])
+    choices: generateFormattedChoices((model && model.choices) || []),
+    // This is used for offering support for old models which have the property "verticalMode"
+    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
+    choicesLayout: model.choicesLayout || (model.verticalMode === false && 'horizontal') || sensibleDefaults.model.choicesLayout
   });
 
   constructor() {
@@ -64,6 +68,8 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   set model(s) {
+    console.log('***MC*** set model', cloneDeep(s));
+
     this._model = MultipleChoice.createDefaultModel(s);
 
     this._render();
@@ -89,8 +95,11 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   onModelChanged(m, reset) {
+    console.log('***MC*** onModelChanged', cloneDeep(m));
+
     this._model = m;
     this._render();
+
     this.dispatchModelUpdated(reset);
   }
 

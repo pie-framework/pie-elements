@@ -327,19 +327,6 @@ export class Main extends React.Component {
     })
   };
 
-  componentDidMount() {
-    // This is used for offering support for old models which have the property verticalMode
-    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
-    const { model, onModelChanged } = this.props;
-    const { verticalMode } = model;
-
-    if (verticalMode !== undefined) {
-      const choicesLayout = verticalMode === false ? 'horizontal': 'vertical';
-
-      onModelChanged({...model, choicesLayout: choicesLayout});
-    }
-  }
-
   onRemoveChoice = index => {
     const { model } = this.props;
 

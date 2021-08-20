@@ -6,11 +6,13 @@ import defaults from 'lodash/defaults';
 import Main from './main';
 
 import sensibleDefaults from './defaults';
+import cloneDeep from 'lodash/cloneDeep';
 
 const MODEL_UPDATED = ModelUpdatedEvent.TYPE;
 const MC_TAG_NAME = 'ebsr-multiple-choice-configure';
 
-class EbsrMCConfigure extends MultipleChoiceConfigure { }
+class EbsrMCConfigure extends MultipleChoiceConfigure {
+}
 
 const defineMultipleChoice = () => {
   if (!customElements.get(MC_TAG_NAME)) {
@@ -30,17 +32,21 @@ const prepareCustomizationObject = (config, model) => {
   };
 };
 
+const { model: modelDefault } = sensibleDefaults || {};
+
 export default class EbsrConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults.model,
+  static createDefaultModel = ({ partA = {}, partB = {}, ...model } = {}, defaults = modelDefault) => ({
+    ...defaults,
     ...model,
     partA: {
-      ...sensibleDefaults.model.partA,
-      ...model.partA
+      ...defaults.partA,
+      ...partA,
+      choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || defaults.partA.choicesLayout
     },
     partB: {
-      ...sensibleDefaults.model.partB,
-      ...model.partB
+      ...defaults.partB,
+      ...partB,
+      choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || defaults.partB.choicesLayout
     },
   });
 
@@ -48,23 +54,15 @@ export default class EbsrConfigure extends HTMLElement {
     super();
 
     this._model = EbsrConfigure.createDefaultModel();
+
     this._configuration = sensibleDefaults.configuration;
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(m) {
-    this._model = {
-      ...this._model,
-      ...m,
-      partA: {
-        ...this._model.partA,
-        ...m.partA,
-      },
-      partB: {
-        ...this._model.partB,
-        ...m.partB,
-      }
-    };
+    console.log('***EBSR*** set model', cloneDeep(m));
+
+    this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this._render();
   }
@@ -76,18 +74,9 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelChanged = (m, reset) => {
-    this._model = {
-      ...this._model,
-      ...m,
-      partA: {
-        ...this._model.partA,
-        ...m.partA,
-      },
-      partB: {
-        ...this._model.partB,
-        ...m.partB,
-      }
-    };
+    console.log('***EBSR*** onModelChanged', { m: cloneDeep(m), model: this._model });
+
+    this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
     this._render();
@@ -112,6 +101,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelUpdated = e => {
+
     if (e.target === this) {
       return;
     }
@@ -120,6 +110,8 @@ export default class EbsrConfigure extends HTMLElement {
     e.stopImmediatePropagation();
 
     const id = e.target && e.target.getAttribute('id');
+
+    console.log('***EBSR*** onModelUpdated', { update: cloneDeep(e.update), model: this._model });
 
     if (id) {
       if (e.update) {

@@ -21,7 +21,8 @@ exports.model = (id, element) => ({
     choicePrefix: 'numbers',
     partialScoring: false,
     prompt: 'What color is the sky?',
-    promptEnabled: true
+    promptEnabled: true,
+    verticalMode: false
   },
   partB: {
     choiceMode: 'radio',

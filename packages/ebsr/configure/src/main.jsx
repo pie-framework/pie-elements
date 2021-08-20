@@ -201,6 +201,7 @@ export class Main extends React.Component {
                     // do not use destructuring to get model from props
                     this.partA = ref;
                     this.partA._model = cloneDeep(this.props.model.partA);
+                    console.log('***EBSR*** this.partA._model', cloneDeep(this.props.model.partA));
                     this.partA.configuration = {
                       ...partA,
                       ...generalConfiguration
@@ -220,6 +221,7 @@ export class Main extends React.Component {
                     // do not use destructuring to get model from props
                     this.partB = ref;
                     this.partB._model = cloneDeep(this.props.model.partB);
+                    console.log('***EBSR*** this.partB._model', cloneDeep(this.props.model.partB));
                     this.partB.configuration = {
                       ...partB,
                       ...generalConfiguration
