@@ -118,8 +118,8 @@ const Design = withStyles(styles)(props => {
   } = model || {};
 
   const nrOfColumnsAvailable = (choices && choices.length)
-      ? Array.from({length: choices.length}, (_, i) => (`${i + 1}`))
-      : [];
+    ? Array.from({length: choices.length}, (_, i) => (`${i + 1}`))
+    : [];
 
   const labelPlugins = {
     audio: { disabled: true },
@@ -211,24 +211,24 @@ const Design = withStyles(styles)(props => {
             </InputContainer>
           )}
           {accessibilityLabelsEnabled && (
-              <InputContainer
-                  key={`accessibility-${index}`}
-                  label={accessibility.label}
-                  className={classes.accessibilityHolder}
-              >
-                <EditableHtml
-                    className={classes.accessibility}
-                    markup={choice.accessibility || ''}
-                    onChange={c =>
-                        onChoiceChanged(index, {
-                          ...choice,
-                          accessibility: c
-                        })
-                    }
-                    imageSupport={imageSupport}
-                    pluginProps={labelPlugins}
-                />
-              </InputContainer>
+            <InputContainer
+              key={`accessibility-${index}`}
+              label={accessibility.label}
+              className={classes.accessibilityHolder}
+            >
+              <EditableHtml
+                className={classes.accessibility}
+                markup={choice.accessibility || ''}
+                onChange={c =>
+                  onChoiceChanged(index, {
+                    ...choice,
+                    accessibility: c
+                  })
+                }
+                imageSupport={imageSupport}
+                pluginProps={labelPlugins}
+              />
+            </InputContainer>
           )}
         </div>
       ))}
@@ -251,20 +251,20 @@ const Design = withStyles(styles)(props => {
 
   const settingsInPanel = {
     choiceMode:
-        choiceMode.settings &&
-        radio(choiceMode.label, ['checkbox', 'radio']),
+      choiceMode.settings &&
+      radio(choiceMode.label, ['checkbox', 'radio']),
     'sequentialChoiceLabels.enabled':
-        sequentialChoiceLabels.settings &&
-        toggle(sequentialChoiceLabels.label, true),
+      sequentialChoiceLabels.settings &&
+      toggle(sequentialChoiceLabels.label, true),
     choicePrefix:
-        choicePrefix.settings &&
-        radio(choicePrefix.label, ['numbers', 'letters']),
+      choicePrefix.settings &&
+      radio(choicePrefix.label, ['numbers', 'letters']),
     partialScoring:
-        partialScoring.settings && toggle(partialScoring.label),
+      partialScoring.settings && toggle(partialScoring.label),
     limitChoicesNumber:
-        limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
+      limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
     lockChoiceOrder:
-        lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
+      lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
     feedbackEnabled: feedback.settings && toggle(feedback.label),
     choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
   };
@@ -298,7 +298,7 @@ const Design = withStyles(styles)(props => {
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
                   accessibilityLabelsEnabled:
-                      accessibility.settings && toggle(accessibility.label),
+                    accessibility.settings && toggle(accessibility.label),
                   scoringType:
                     scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric'])
@@ -326,19 +326,6 @@ export class Main extends React.Component {
       delete: PropTypes.func.isRequired
     })
   };
-
-  componentDidMount() {
-    // This is used for offering support for old models which have the property verticalMode
-    // Same thing is set in the controller: packages/multiple-choice/controller/src/index.js - model
-    const { model, onModelChanged } = this.props;
-    const { verticalMode } = model;
-
-    if (verticalMode !== undefined) {
-      const choicesLayout = verticalMode === false ? 'horizontal': 'vertical';
-
-      onModelChanged({...model, choicesLayout: choicesLayout});
-    }
-  }
 
   onRemoveChoice = index => {
     const { model } = this.props;
