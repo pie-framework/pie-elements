@@ -83,6 +83,18 @@ This element must be one of the following enum values:
 
 Default: `"is literal"`
 
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
 ## `answer` (string, required)
 
 The answer for the question
@@ -111,6 +123,18 @@ This element must be one of the following enum values:
 
 Default: `"is literal"`
 
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
 ## `answer` (string, required)
 
 The answer for the question
@@ -124,6 +148,18 @@ an object with some alternatives for the correct answers
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
+
+# `ignoreOrderDefault` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+# `allowTrailingZerosDefault` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 # `rationale` (string)
 
@@ -209,6 +245,23 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
 ## `ComplexFeedbackType` (object)
 
 Properties of the `ComplexFeedbackType` object:
@@ -276,6 +329,18 @@ This element must be one of the following enum values:
 * `symbolic`
 
 Default: `"is literal"`
+
+### `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+### `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 ### `answer` (string, required)
 

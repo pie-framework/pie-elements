@@ -2,7 +2,7 @@ import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp } from '../ConfigurationProp';
+import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Alternate {
   /** The id for the alternative response */
@@ -25,6 +25,18 @@ interface MathInlineResponse {
    * @default is literal
    */
   validation: 'literal' | 'symbolic';
+
+  /**
+   * Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  ignoreOrder: boolean;
+
+  /**
+   * Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  allowTrailingZeros: boolean;
 
   /** The answer for the question */
   answer: string;
@@ -93,6 +105,18 @@ export interface MathInlinePie extends PieModel {
    * This property is not used yet.
    */
   partialScoring?: boolean;
+
+  /**
+   * Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  ignoreOrderDefault: boolean;
+
+  /**
+   * Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+   * @default is false
+   */
+  allowTrailingZerosDefault: boolean;
 
   /** Indicates the value for rationale */
   rationale?: string;
@@ -172,4 +196,14 @@ export interface MathInlineConfigure
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Ignore Order configuration
+   */
+  ignoreOrder?: ConfigurePropWithEnabled;
+
+  /**
+   * Allow Trailing Zeros configuration
+   */
+  allowTrailingZeros?: ConfigurePropWithEnabled;
 }

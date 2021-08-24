@@ -16,33 +16,33 @@ import { withStyles } from '@material-ui/core/styles';
 // TODO once we support individual response correctness, we need to remove this constant
 const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
 
-const styles = theme => ({
+const styles = (theme) => ({
   responseContainer: {
     marginTop: theme.spacing.unit * 2,
     width: '100%',
     border: '1px solid darkgray',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   cardContent: {
-    paddingBottom: `${theme.spacing.unit}px !important`
+    paddingBottom: `${theme.spacing.unit}px !important`,
   },
   title: {
     fontWeight: 700,
     fontSize: '1.2rem',
-    flex: 3
+    flex: 3,
   },
   selectContainer: {
-    flex: 2
+    flex: 2,
   },
   inputContainer: {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit,
   },
   titleBar: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   responseEditor: {
     display: 'flex',
@@ -52,34 +52,34 @@ const styles = theme => ({
     minWidth: '500px',
     maxWidth: '900px',
     height: 'auto',
-    minHeight: '40px'
+    minHeight: '40px',
   },
   mathToolbar: {
-    width: '100%'
+    width: '100%',
   },
   configPanel: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   alternateButton: {
-    border: '1px solid lightgrey'
+    border: '1px solid lightgrey',
   },
   removeAlternateButton: {
     marginLeft: theme.spacing.unit * 2,
     border: '1px solid lightgrey',
     color: 'gray',
-    fontSize: '0.8rem'
+    fontSize: '0.8rem',
   },
   checkboxContainer: {
     marginTop: theme.spacing.unit * 2,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   configLabel: {
-    marginRight: 'auto'
-  }
+    marginRight: 'auto',
+  },
 });
 
 class Response extends React.Component {
@@ -89,12 +89,14 @@ class Response extends React.Component {
     mode: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     index: PropTypes.number,
     onResponseChange: PropTypes.func.isRequired,
-    response: PropTypes.object.isRequired
+    response: PropTypes.object.isRequired,
+    cIgnoreOrder: PropTypes.object.isRequired,
+    cAllowTrailingZeros: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
     defaultResponse: false,
-    mode: 'miscellaneous'
+    mode: 'miscellaneous',
   };
 
   constructor(props) {
@@ -107,12 +109,12 @@ class Response extends React.Component {
       alternateIdCounter: alternatesLength + 1,
       showKeypad: {
         openCount: 0,
-        main: false
-      }
+        main: false,
+      },
     };
   }
 
-  onChange = name => evt => {
+  onChange = (name) => (evt) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
@@ -121,7 +123,7 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
-  onConfigChanged = name => evt => {
+  onConfigChanged = (name) => (evt) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
@@ -130,7 +132,23 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
-  onAnswerChange = answer => {
+  onAllowTrailingZerosChange = (event) => {
+    const { response, onResponseChange, index } = this.props;
+    const newResponse = { ...response };
+
+    newResponse.allowTrailingZeros = !response.allowTrailingZeros;
+    onResponseChange(newResponse, index);
+  };
+
+  onIgnoreOrderChange = (event) => {
+    const { response, onResponseChange, index } = this.props;
+    const newResponse = { ...response };
+
+    newResponse.ignoreOrder = !response.ignoreOrder;
+    onResponseChange(newResponse, index);
+  };
+
+  onAnswerChange = (answer) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
@@ -139,7 +157,7 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
   };
 
-  onAlternateAnswerChange = alternateId => answer => {
+  onAlternateAnswerChange = (alternateId) => (answer) => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
@@ -162,11 +180,11 @@ class Response extends React.Component {
     onResponseChange(newResponse, index);
 
     this.setState({
-      alternateIdCounter: alternateIdCounter + 1
+      alternateIdCounter: alternateIdCounter + 1,
     });
   };
 
-  onRemoveAlternate = alternateId => () => {
+  onRemoveAlternate = (alternateId) => () => {
     const { response, onResponseChange, index } = this.props;
     const newResponse = { ...response };
 
@@ -174,75 +192,86 @@ class Response extends React.Component {
 
     onResponseChange(newResponse, index);
 
-    this.setState(state => ({
+    this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
         openCount: !state.showKeypad[alternateId]
           ? state.showKeypad.openCount
-          : state.showKeypad.openCount - 1
-      }
+          : state.showKeypad.openCount - 1,
+      },
     }));
   };
 
   onDone = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
         openCount: state.showKeypad.openCount - 1,
-        main: false
-      }
+        main: false,
+      },
     }));
   };
 
   onFocus = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
         openCount: !state.showKeypad.main
           ? state.showKeypad.openCount + 1
           : state.showKeypad.openCount,
-        main: true
-      }
+        main: true,
+      },
     }));
   };
 
-  onAlternateFocus = alternateId => () => {
-    this.setState(state => ({
+  onAlternateFocus = (alternateId) => () => {
+    this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
         openCount: !state.showKeypad[alternateId]
           ? state.showKeypad.openCount + 1
           : state.showKeypad.openCount,
-        [alternateId]: true
-      }
+        [alternateId]: true,
+      },
     }));
   };
 
-  onAlternateDone = alternateId => () => {
-    this.setState(state => ({
+  onAlternateDone = (alternateId) => () => {
+    this.setState((state) => ({
       showKeypad: {
         ...state.showKeypad,
         openCount: state.showKeypad.openCount - 1,
-        [alternateId]: false
-      }
+        [alternateId]: false,
+      },
     }));
   };
 
   render() {
-    const { classes, mode, defaultResponse, index, response } = this.props;
+    const {
+      classes,
+      mode,
+      defaultResponse,
+      index,
+      response,
+      cAllowTrailingZeros,
+      cIgnoreOrder,
+    } = this.props;
+
     const { showKeypad } = this.state;
     const {
       validation,
       answer,
       alternates,
+      ignoreOrder,
+      allowTrailingZeros,
     } = response;
     const hasAlternates = Object.keys(alternates || {}).length > 0;
     const classNames = {
       editor: classes.responseEditor,
-      mathToolbar: classes.mathToolbar
+      mathToolbar: classes.mathToolbar,
     };
     const styles = {
-      minHeight: `${showKeypad.openCount > 0 ? 430 : 230}px`
+      minHeight: `${showKeypad.openCount > 0 ? 430 : 230}px`,
     };
 
     return (
@@ -264,13 +293,40 @@ class Response extends React.Component {
               <Select
                 className={classes.select}
                 onChange={this.onChange('validation')}
-                value={validation || "literal"}
+                value={validation || 'literal'}
               >
                 <MenuItem value="literal">Literal Validation</MenuItem>
                 <MenuItem value="symbolic">Symbolic Validation</MenuItem>
               </Select>
             </InputContainer>
           </div>
+          {validation === 'literal' && (
+            <div className={classes.flexContainer}>
+              {cAllowTrailingZeros.enabled && (
+                <FormControlLabel
+                  label={cAllowTrailingZeros.label}
+                  control={
+                    <Checkbox
+                      checked={allowTrailingZeros}
+                      onChange={this.onAllowTrailingZerosChange}
+                    />
+                  }
+                />
+              )}
+
+              {cIgnoreOrder.enabled && (
+                <FormControlLabel
+                  label={cIgnoreOrder.label}
+                  control={
+                    <Checkbox
+                      checked={ignoreOrder}
+                      onChange={this.onIgnoreOrderChange}
+                    />
+                  }
+                />
+              )}
+            </div>
+          )}
           <div className={classes.inputContainer}>
             <InputLabel>Correct Answer</InputLabel>
             <MathToolbar
@@ -321,8 +377,7 @@ class Response extends React.Component {
               >
                 ADD ALTERNATE
               </Button>
-              <div className={classes.checkboxContainer}>
-              </div>
+              <div className={classes.checkboxContainer}></div>
             </div>
           )}
         </CardContent>
