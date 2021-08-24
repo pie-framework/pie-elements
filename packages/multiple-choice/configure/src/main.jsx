@@ -265,13 +265,14 @@ const Design = withStyles(styles)(props => {
       limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
     lockChoiceOrder:
       lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
-    feedbackEnabled: feedback.settings && toggle(feedback.label),
-    choicesLayout: choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+    feedbackEnabled:
+      feedback.settings && toggle(feedback.label),
+    choicesLayout:
+      choicesLayout.settings && dropdown(choicesLayout.label, ['vertical', 'grid', 'horizontal']),
+    gridColumns:
+      choicesLayout.settings && model.choicesLayout === 'grid' && nrOfColumnsAvailable.length > 0 &&
+      dropdown(gridColumns.label, nrOfColumnsAvailable)
   };
-
-  if (model.choicesLayout === 'grid' && nrOfColumnsAvailable.length > 0) {
-    settingsInPanel.gridColumns = dropdown(gridColumns.label, nrOfColumnsAvailable);
-  }
 
   return (
     <div className={classes.design}>
