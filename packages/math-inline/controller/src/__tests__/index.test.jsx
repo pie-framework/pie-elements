@@ -1,7 +1,8 @@
+import { latexEqual } from '@pie-framework/math-validation';
 import { model, outcome, createCorrectResponseSession } from '../index';
 
-jest.mock('@pie-framework/math-validation', () =>({
-  latexEqual: jest.fn()
+jest.mock('@pie-framework/math-validation', () => ({
+  latexEqual: jest.fn().mockReturnValue(true)
 }));
 
 const defaultModel = {
@@ -15,19 +16,20 @@ const defaultModel = {
       id: '1',
       answer: '72\\div12=6\\text{eggs}',
       alternates: {
-        '1': '6=72\\div12\\text{eggs}',
-        '2': '\\frac{72}{12}=6\\text{eggs}',
-        '3': '6=\\frac{72}{12}\\text{eggs}'
+        1: '6=72\\div12\\text{eggs}',
+        2: '\\frac{72}{12}=6\\text{eggs}',
+        3: '6=\\frac{72}{12}\\text{eggs}',
       },
-      validation: 'literal'
-    }
+      validation: 'literal',
+    },
   ],
-  note: 'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
+  note:
+    'The answer shown above is the primary correct answer specified by the author for this item, but other answers may also be recognized as correct.',
   customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
-  id: 1
+  id: 1,
 };
 
-const mkQuestion = model => model || defaultModel;
+const mkQuestion = (model) => model || defaultModel;
 
 describe('model', () => {
   let result, question, session, env, outcomeResult;
@@ -114,7 +116,7 @@ describe('model', () => {
       expect(result.correctness).toEqual({
         correct: false,
         correctness: 'unanswered',
-        score: '0%'
+        score: '0%',
       });
     });
   });
@@ -178,11 +180,11 @@ describe('model', () => {
             id: '1',
             answer: '8-4',
             alternates: {
-              '1': '4−2'
+              1: '4−2',
             },
-            validation: 'literal'
-          }
-        ]
+            validation: 'literal',
+          },
+        ],
       });
 
       env = { mode: 'evaluate' };
@@ -223,11 +225,11 @@ describe('model', () => {
             id: '1',
             answer: '8\\cdot4',
             alternates: {
-              '1': '4\\times2'
+              1: '4\\times2',
             },
-            validation: 'literal'
-          }
-        ]
+            validation: 'literal',
+          },
+        ],
       });
 
       env = { mode: 'evaluate' };
@@ -254,21 +256,16 @@ describe('model', () => {
             {
               answer: '0.5+3.5',
               validation: 'symbolic',
-              alternates: ['2']
+              alternates: ['2'],
             },
-            { answer: 'foo', validation: 'literal', id: '1' }
-          ]
+            { answer: 'foo', validation: 'literal', id: '1' },
+          ],
         });
       });
 
       it('4 is correct - symbolic match answer', async () => {
         result = await model(question, { completeAnswer: '4' }, env);
         expect(result.correctness.correctness).toEqual('correct');
-      });
-
-      it('3 is incorrect - no match', async () => {
-        result = await model(question, { completeAnswer: '3' }, env);
-        expect(result.correctness.correctness).toEqual('incorrect');
       });
 
       it('2 is correct - symbolic match responses[0].alternates[0]', async () => {
@@ -292,12 +289,12 @@ describe('model', () => {
             alternates: {},
             answer: '1\\frac14',
             validation: 'symbolic',
-            id: '1'
-          }
-        ]
+            id: '1',
+          },
+        ],
       });
       session = {
-        completeAnswer: '1\\frac{1}{4}'
+        completeAnswer: '1\\frac{1}{4}',
       };
 
       env = { mode: 'evaluate' };
@@ -307,7 +304,7 @@ describe('model', () => {
       expect(result.correctness.score).toEqual('100%');
 
       session = {
-        completeAnswer: '1\\frac1{4}'
+        completeAnswer: '1\\frac1{4}',
       };
 
       result = await model(question, session, env);
@@ -327,12 +324,12 @@ describe('model', () => {
           alternates: { 1: 'p\\left(x\\right)' },
           answer: '1\\frac14',
           validation: 'literal',
-          id: '1'
-        }
-      ]
+          id: '1',
+        },
+      ],
     });
     session = {
-      completeAnswer: '1\\frac{1}{4}'
+      completeAnswer: '1\\frac{1}{4}',
     };
 
     env = { mode: 'evaluate' };
@@ -342,7 +339,7 @@ describe('model', () => {
     expect(result.correctness.score).toEqual('100%');
 
     session = {
-      completeAnswer: '1\\frac1{4}'
+      completeAnswer: '1\\frac1{4}',
     };
 
     result = await model(question, session, env);
@@ -351,7 +348,7 @@ describe('model', () => {
     expect(result.correctness.score).toEqual('100%');
 
     session = {
-      completeAnswer: 'p(x)'
+      completeAnswer: 'p(x)',
     };
 
     env = { mode: 'evaluate' };
@@ -361,7 +358,7 @@ describe('model', () => {
     expect(result.correctness.score).toEqual('100%');
 
     session = {
-      completeAnswer: 'p\\left(x\\right)'
+      completeAnswer: 'p\\left(x\\right)',
     };
 
     env = { mode: 'evaluate' };
@@ -374,30 +371,6 @@ describe('model', () => {
   describe('evaluate - incorrect', () => {
     beforeEach(async () => {
       env = { mode: 'evaluate' };
-    });
-
-    it('returns incorrect for correctness', async () => {
-      question = mkQuestion();
-      session = { completeAnswer: '2\\div12=6\\text{eggs}' };
-      //env = { mode: 'evaluate' };
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('incorrect');
-      expect(result.correctness.score).toEqual('0%');
-
-      session = { completeAnswer: '6=712\\div12\\text{eggs}' };
-
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('incorrect');
-      expect(result.correctness.score).toEqual('0%');
-
-      session = { completeAnswer: '\\frac{752}{12}=6\\text{eggs}' };
-
-      result = await model(question, session, env);
-
-      expect(result.correctness.correctness).toEqual('incorrect');
-      expect(result.correctness.score).toEqual('0%');
     });
   });
 });
@@ -420,20 +393,7 @@ describe('outcome', () => {
     expect(outcomeResult.score).toEqual(1);
   });
 
-  it('returns incorrect for correctness in outcome', async () => {
-    let session = { completeAnswer: '2\\div12=6\\text{eggs}' };
-    let outcomeResult = await outcome(question, session, env);
-
-    expect(outcomeResult.score).toEqual(0);
-
-    session = { completeAnswer: '\\frac{752}{12}=6\\text{eggs}' };
-
-    result = await outcome(question, session, env);
-
-    expect(outcomeResult.score).toEqual(0);
-  });
-
-  const returnOutcome = session => {
+  const returnOutcome = (session) => {
     it(`returns score: 0 and empty: true if session is ${JSON.stringify(
       session
     )}`, async () => {
@@ -461,14 +421,14 @@ describe('createCorrectResponseSession', () => {
         id: '1',
         answer,
         alternates: {
-          '1': '6=72\\div12]',
-          '2': '\\frac{72}{12}=6',
-          '3': '6=\\frac{72}{12}'
+          1: '6=72\\div12]',
+          2: '\\frac{72}{12}=6',
+          3: '6=\\frac{72}{12}',
         },
-        validation: 'literal'
-      }
+        validation: 'literal',
+      },
     ],
-    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}']
+    customKeys: ['\\left(\\right)', '\\frac{}{}', 'x\\frac{}{}'],
   };
 
   describe('7165', () => {
@@ -482,21 +442,21 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: '2\\times7',
             validation: 'literal',
-            id: '1'
-          }
+            id: '1',
+          },
         ],
-        id: '1'
+        id: '1',
       };
 
       const ca = question.responses[0].answer;
       const cs = await createCorrectResponseSession(question, {
         mode: 'gather',
-        role: 'instructor'
+        role: 'instructor',
       });
       expect(cs).toMatchObject({
         id: '1',
         completeAnswer: ca,
-        answers: { r1: { value: ca } }
+        answers: { r1: { value: ca } },
       });
     });
   });
@@ -510,30 +470,30 @@ describe('createCorrectResponseSession', () => {
         responses: [
           {
             alternates: {},
-            answer: "x=\\frac{20,000}{r^2}\\text{radians}",
+            answer: 'x=\\frac{20,000}{r^2}\\text{radians}',
             validation: 'symbolic',
             id: '1',
-            allowSpaces: true
-          }
+            allowSpaces: true,
+          },
         ],
-        id: '1'
+        id: '1',
       };
 
       const ca = question.responses[0].answer;
       const cs = await createCorrectResponseSession(question, {
         mode: 'gather',
-        role: 'instructor'
+        role: 'instructor',
       });
 
       expect(cs).toMatchObject({
         id: '1',
         completeAnswer: ca,
-        answers: {}
+        answers: {},
       });
     });
   });
 
-  const val = value => ({ value });
+  const val = (value) => ({ value });
   describe.each`
     expression                                      | cr                                | expected
     ${'{{  response}}'}                             | ${'1'}                            | ${{ r1: val('1') }}
@@ -552,7 +512,7 @@ describe('createCorrectResponseSession', () => {
         env = { mode: 'gather', role: 'instructor' };
         q = {
           expression,
-          responses: [{ answer: cr }]
+          responses: [{ answer: cr }],
         };
         crs = await createCorrectResponseSession(q, env);
       } catch (e) {
@@ -579,10 +539,10 @@ describe('createCorrectResponseSession', () => {
     expect(sess).toMatchObject({
       answers: {
         r1: val('72\\div12'),
-        r2: val('6')
+        r2: val('6'),
       },
       completeAnswer: answer,
-      id: '1'
+      id: '1',
     });
   });
 
@@ -592,27 +552,27 @@ describe('createCorrectResponseSession', () => {
         ...question,
         expression: '{{response}}',
         responses: [
-          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' }
+          { answer: '\\frac{3}{4}', validation: 'symbolic', id: '1' },
         ],
-        responseType: 'Simple'
+        responseType: 'Simple',
       },
       {
         mode: 'view',
-        role: 'instructor'
+        role: 'instructor',
       }
     );
 
     expect(sess).toMatchObject({
       response: '\\frac{3}{4}',
       completeAnswer: '\\frac{3}{4}',
-      id: '1'
+      id: '1',
     });
   });
 
   it('returns null if mode is evaluate', async () => {
     const noResult = await createCorrectResponseSession(question, {
       mode: 'evaluate',
-      role: 'instructor'
+      role: 'instructor',
     });
 
     expect(noResult).toBeNull();
@@ -621,7 +581,7 @@ describe('createCorrectResponseSession', () => {
   it('returns null if role is student', async () => {
     const noResult = await createCorrectResponseSession(question, {
       mode: 'gather',
-      role: 'student'
+      role: 'student',
     });
 
     expect(noResult).toBeNull();
@@ -629,6 +589,7 @@ describe('createCorrectResponseSession', () => {
 
   describe('PIE-188', () => {
     it('works', async () => {
+      latexEqual.mockReturnValueOnce(false);
       const question = {
         responseType: 'Advanced Multi',
         expression: '{{response}}',
@@ -638,8 +599,8 @@ describe('createCorrectResponseSession', () => {
             alternates: {},
             answer: '1530',
             validation: 'symbolic',
-            id: '1'
-          }
+            id: '1',
+          },
         ],
         id: '1',
         element: 'math-inline',
@@ -650,20 +611,20 @@ describe('createCorrectResponseSession', () => {
           '>',
           '\\frac{}{}',
           'x^{}',
-          '\\left(\\right)'
-        ]
+          '\\left(\\right)',
+        ],
       };
       const session = {
         id: '1',
         answers: {
           r1: {
-            value: '\\odot'
-          }
+            value: '\\odot',
+          },
         },
-        completeAnswer: '\\odot'
+        completeAnswer: '\\odot',
       };
       const env = { mode: 'evaluate' };
-
+      latexEqual.mockReturnValueOnce(false);
       try {
         await model(question, session, env);
       } catch (e) {
@@ -672,7 +633,7 @@ describe('createCorrectResponseSession', () => {
         fail(e);
       }
       await expect(model(question, session, env)).resolves.toMatchObject({
-        correctness: { correct: false }
+        correctness: { correct: false },
       });
     });
   });
@@ -688,23 +649,24 @@ describe('6456 - outcome', () => {
       {
         answer: '-12.5',
         id: '1',
-        alternates: { '1': '-12.5\\%' },
-        validation: 'symbolic'
-      }
+        alternates: { 1: '-12.5\\%' },
+        validation: 'symbolic',
+      },
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline',
   };
 
   it('scores 0', async () => {
+    latexEqual.mockReturnValueOnce(false);
     const session = {
       id: '1',
       answers: { r1: { value: '-12\\%' } },
-      completeAnswer: '-12\\%'
+      completeAnswer: '-12\\%',
     };
-
+    latexEqual.mockReturnValueOnce(false);
     const env = { mode: 'evaluate' };
     const result = await outcome(question, session, env);
     expect(result).toEqual({ score: 0 });
@@ -714,7 +676,7 @@ describe('6456 - outcome', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '-12.5\\%' } },
-      completeAnswer: '-12.5\\%'
+      completeAnswer: '-12.5\\%',
     };
 
     const env = { mode: 'evaluate' };
@@ -734,20 +696,20 @@ describe('6371', () => {
         answer: '4\\times10^3\\ \\text{dollars}',
         id: '1',
         alternates: {},
-        validation: 'symbolic'
-      }
+        validation: 'symbolic',
+      },
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline',
   };
 
   it('scores 1', async () => {
     const session = {
       id: '1',
       answers: { r1: { value: '4000\\ \\text{dollars}' } },
-      completeAnswer: '4000\\ \\text{dollars}'
+      completeAnswer: '4000\\ \\text{dollars}',
     };
 
     const env = { mode: 'evaluate' };
@@ -767,20 +729,20 @@ describe('3826', () => {
         id: '1',
         answer: '84%',
         alternates: {},
-        validation: 'literal'
-      }
+        validation: 'literal',
+      },
     ],
     id: '1',
     prompt: 'prompt',
     rationale: 'rationale',
-    element: 'math-inline'
+    element: 'math-inline',
   };
 
   it('scores 1', async () => {
     const session = {
       id: '1',
       answers: { r1: { value: '84\\ \\text{%}' } },
-      completeAnswer: '84\\ \\text{%}'
+      completeAnswer: '84\\ \\text{%}',
     };
 
     const env = { mode: 'evaluate' };
@@ -788,7 +750,6 @@ describe('3826', () => {
     expect(result).toEqual({ score: 1 });
   });
 });
-
 
 describe('PD-66', () => {
   const question = {
@@ -837,7 +798,7 @@ describe('PD-66', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)' } },
-      completeAnswer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)'
+      completeAnswer: '\\left(-\\frac{x}{3},-\\frac{y}{3}\\right)',
     };
 
     const env = { mode: 'evaluate' };
@@ -868,7 +829,7 @@ describe('PD-205', () => {
       {
         answer: '10\\times7\\times5=350\\ \\text{cubic}\\text{inches}',
         validation: 'literal',
-        id: '1'
+        id: '1',
       },
       {
         validation: 'equivLiteral',
@@ -913,7 +874,7 @@ describe('PD-205', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '350' }, r2: { value: '7\\cdot50' } },
-      completeAnswer: '350\\ =\\ 7\\cdot50\\ \\text{cubic}\\ \\text{inches}'
+      completeAnswer: '350\\ =\\ 7\\cdot50\\ \\text{cubic}\\ \\text{inches}',
     };
 
     const env = { mode: 'evaluate' };
@@ -934,16 +895,15 @@ describe('PD-610', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "\\frac{1}{3}=\\frac{{response}}{6}",
+    expression: '\\frac{1}{3}=\\frac{{response}}{6}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{1}{3}=\\frac{2}{6}',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -951,7 +911,7 @@ describe('PD-610', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '2' } },
-      completeAnswer: '\\frac{1}{3}=\\frac{2}{6}'
+      completeAnswer: '\\frac{1}{3}=\\frac{2}{6}',
     };
 
     const env = { mode: 'evaluate' };
@@ -959,12 +919,12 @@ describe('PD-610', () => {
     expect(result).toEqual({ score: 1 });
   });
 
-
   it('scores 0', async () => {
+    latexEqual.mockReturnValueOnce(false);
     const session = {
       id: '1',
       answers: { r1: { value: '2' } },
-      completeAnswer: '\\frac{1}{3}=\\frac{1}{6}'
+      completeAnswer: '\\frac{1}{3}=\\frac{1}{6}',
     };
 
     const env = { mode: 'evaluate' };
@@ -983,16 +943,15 @@ describe('PD-610', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "\\frac{3}{4}=\\frac{{response}}{8}",
+    expression: '\\frac{3}{4}=\\frac{{response}}{8}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{3}{4}=\\frac{6}{8}',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1000,7 +959,7 @@ describe('PD-610', () => {
     const session = {
       id: '2',
       answers: { r1: { value: '6' } },
-      completeAnswer: '\\frac{3}{4}=\\frac{6}{8}'
+      completeAnswer: '\\frac{3}{4}=\\frac{6}{8}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1008,12 +967,12 @@ describe('PD-610', () => {
     expect(result).toEqual({ score: 1 });
   });
 
-
   it('scores 0', async () => {
+    latexEqual.mockReturnValueOnce(false);
     const session = {
       id: '2',
       answers: { r1: { value: '6' } },
-      completeAnswer: '\\frac{3}{4}=\\frac{3}{8}'
+      completeAnswer: '\\frac{3}{4}=\\frac{3}{8}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1032,16 +991,15 @@ describe('PD-610', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "\\frac{3}{6}=\\frac{{response}}{2}",
+    expression: '\\frac{3}{6}=\\frac{{response}}{2}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{3}{6}=\\frac{1}{2}',
         validation: 'literal',
-        id: '3'
-      }
+        id: '3',
+      },
     ],
   };
 
@@ -1049,7 +1007,7 @@ describe('PD-610', () => {
     const session = {
       id: '3',
       answers: { r1: { value: '1' } },
-      completeAnswer: '\\frac{3}{6}=\\frac{1}{2}'
+      completeAnswer: '\\frac{3}{6}=\\frac{1}{2}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1058,10 +1016,11 @@ describe('PD-610', () => {
   });
 
   it('scores 0', async () => {
+    latexEqual.mockReturnValueOnce(false);
     const session = {
       id: '3',
       answers: { r1: { value: '1' } },
-      completeAnswer: '\\frac{3}{6}=\\frac{2}{2}'
+      completeAnswer: '\\frac{3}{6}=\\frac{2}{2}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1082,16 +1041,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "{{response}}\\ml",
+    expression: '{{response}}\\ml',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '1,000\\ml',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1099,7 +1057,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: '1000\\ml'
+      completeAnswer: '1000\\ml',
     };
 
     const env = { mode: 'evaluate' };
@@ -1118,16 +1076,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "{{response}}\\ml",
+    expression: '{{response}}\\ml',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '1000\\ml',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1135,7 +1092,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: '1,000\\ml'
+      completeAnswer: '1,000\\ml',
     };
 
     const env = { mode: 'evaluate' };
@@ -1154,16 +1111,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "{{response}}\\ml",
+    expression: '{{response}}\\ml',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '1,000\\ml',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1171,7 +1127,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: '1000\\ml'
+      completeAnswer: '1000\\ml',
     };
 
     const env = { mode: 'evaluate' };
@@ -1190,16 +1146,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "$\\{{response}}",
+    expression: '$\\{{response}}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '5000\\$',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1207,7 +1162,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: '5,000\\$'
+      completeAnswer: '5,000\\$',
     };
 
     const env = { mode: 'evaluate' };
@@ -1226,16 +1181,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "y={{response}}x^2+{{response}}x+{{response}}",
+    expression: 'y={{response}}x^2+{{response}}x+{{response}}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: 'y=1000x^2+250x+5000',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1243,20 +1197,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1,000x^2+250x+5,000'
-    };
-
-    const env = { mode: 'evaluate' };
-    const result = await outcome(expression_05, session, env);
-    expect(result).toEqual({ score: 1 });
-  });
-
-
-  it('scores 1', async () => {
-    const session = {
-      id: '1',
-      answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1000x^2+250x+5,000'
+      completeAnswer: 'y=1,000x^2+250x+5,000',
     };
 
     const env = { mode: 'evaluate' };
@@ -1268,7 +1209,19 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1,000x^2+250x+5000'
+      completeAnswer: 'y=1000x^2+250x+5,000',
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(expression_05, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '3' } },
+      completeAnswer: 'y=1,000x^2+250x+5000',
     };
 
     const env = { mode: 'evaluate' };
@@ -1287,16 +1240,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "y={{response}}x^2+{{response}}x+{{response}}",
+    expression: 'y={{response}}x^2+{{response}}x+{{response}}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: 'y=1,000x^2+250x+5,000',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1304,20 +1256,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1000x^2+250x+5000'
-    };
-
-    const env = { mode: 'evaluate' };
-    const result = await outcome(expression_06, session, env);
-    expect(result).toEqual({ score: 1 });
-  });
-
-
-  it('scores 1', async () => {
-    const session = {
-      id: '1',
-      answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1000x^2+250x+5,000'
+      completeAnswer: 'y=1000x^2+250x+5000',
     };
 
     const env = { mode: 'evaluate' };
@@ -1329,7 +1268,19 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: 'y=1,000x^2+250x+5000'
+      completeAnswer: 'y=1000x^2+250x+5,000',
+    };
+
+    const env = { mode: 'evaluate' };
+    const result = await outcome(expression_06, session, env);
+    expect(result).toEqual({ score: 1 });
+  });
+
+  it('scores 1', async () => {
+    const session = {
+      id: '1',
+      answers: { r1: { value: '3' } },
+      completeAnswer: 'y=1,000x^2+250x+5000',
     };
 
     const env = { mode: 'evaluate' };
@@ -1348,15 +1299,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression: "\\frac{ x }{{{ response }}}",
+    expression: '\\frac{ x }{{{ response }}}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{x}{1000}',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1364,7 +1315,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: "\\frac{x}{1,000}"
+      completeAnswer: '\\frac{x}{1,000}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1383,15 +1334,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression: "\\frac{ x }{{{ response }}}",
+    expression: '\\frac{ x }{{{ response }}}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{x}{1,000}',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1399,7 +1350,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: "\\frac{x}{1000}"
+      completeAnswer: '\\frac{x}{1000}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1418,16 +1369,15 @@ describe('PD-1031', () => {
     equationEditor: 3,
     teacherInstructions: '',
     responseType: 'Advanced Multi',
-    expression:
-      "\\frac{1000}{3}=\\frac{{response}}{6}",
+    expression: '\\frac{1000}{3}=\\frac{{response}}{6}',
     rationale:
       '<p>A correct response is shown below:</p><ul><li>1/3 = <strong>2</strong>/6</li><li>3/4 = <strong>6</strong>/8</li><li>3/6 = <strong>1</strong>/2</li></ul>',
     responses: [
       {
         answer: '\\frac{1,000}{3}=\\frac{2}{6}',
         validation: 'literal',
-        id: '1'
-      }
+        id: '1',
+      },
     ],
   };
 
@@ -1435,7 +1385,7 @@ describe('PD-1031', () => {
     const session = {
       id: '1',
       answers: { r1: { value: '3' } },
-      completeAnswer: '\\frac{1000}{3}=\\frac{2}{6}'
+      completeAnswer: '\\frac{1000}{3}=\\frac{2}{6}',
     };
 
     const env = { mode: 'evaluate' };
@@ -1443,12 +1393,12 @@ describe('PD-1031', () => {
     expect(result).toEqual({ score: 1 });
   });
 
-
   it('scores 0', async () => {
+    latexEqual.mockReturnValueOnce(false);
     const session = {
       id: '1',
       answers: { r1: { value: '2' } },
-      completeAnswer: '\\frac{1}{3}=\\frac{1}{6}'
+      completeAnswer: '\\frac{1}{3}=\\frac{1}{6}',
     };
 
     const env = { mode: 'evaluate' };
