@@ -183,7 +183,7 @@ module.exports = {
       { name: '@pie-lib/shared-module', version: '^1.1.0' },
       { name: '@pie-lib/editable-html-module', version: '^1.0.0' },
       { name: '@pie-lib/config-module', version: '^1.0.0' },
-      { name: '@pie-lib/graphing-module', version: '^1.0.0' },
+      // { name: '@pie-lib/graphing-module', version: '^1.0.0' },
     ],
   },
 };
