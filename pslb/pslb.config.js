@@ -135,7 +135,10 @@ const listPackages = () => {
   return _.compact(
     files
       .filter((f) => !f.includes('@'))
-      .filter((f) => f.includes('multiple-choice')) //!blacklist.includes(f))
+
+      // Note: we only build multiple-choice for now
+      .filter((f) => f.includes('multiple-choice'))
+      //!blacklist.includes(f))
       .map((f) => {
         try {
           const rootPkg = fs.readJsonSync(
@@ -149,15 +152,13 @@ const listPackages = () => {
   );
 };
 
-console.log('packages: ', listPackages());
-
 module.exports = {
   packages: listPackages(),
   packagesDir,
   type: 'pie-package',
   piePkgOpts: {
-    configure: false,
-    controller: false,
+    configure: true,
+    controller: true,
     element: true,
   },
   extensions: {
