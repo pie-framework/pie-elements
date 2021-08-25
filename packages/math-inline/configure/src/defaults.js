@@ -39,7 +39,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    validationDefault: "literal",
+    validationDefault: 'literal',
     ignoreOrderDefault: false,
     allowTrailingZerosDefault: false,
   },
