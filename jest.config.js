@@ -12,6 +12,5 @@ module.exports = {
     '^react-dnd-touch-backend$': 'react-dnd-touch-backend/dist/cjs',
     '^react-dnd-test-backend$': 'react-dnd-test-backend/dist/cjs',
     '^react-dnd-test-utils$': 'react-dnd-test-utils/dist/cjs'
-  },
-  modulePathIgnorePatterns: ["/.yalc/@pie-framework/math-validation/package.json"]
+  }
 };
