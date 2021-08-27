@@ -5,6 +5,8 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { PreviewLayout } from '@pie-lib/render-ui';
 import MultipleChoice from './multiple-choice';
+import printDefaults from './printDefaults';
+import isEmpty from 'lodash/isEmpty';
 
 class Main extends React.Component {
   static propTypes = {
@@ -12,18 +14,22 @@ class Main extends React.Component {
     session: PropTypes.object,
     onChoiceChanged: PropTypes.func,
     classes: PropTypes.object.isRequired,
+    printOptions: PropTypes.object,
   };
 
   static defaultProps = {
     model: {},
     session: {},
+    printOptions: {},
   };
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { model, onChoiceChanged, session, classes } = this.props;
+    const { model, onChoiceChanged, session, classes, printOptions } = this.props;
+    const printMode = !isEmpty(printOptions);
+    const updatedModel = printMode ? { ...printDefaults, ...model} : model;
 
     // model.partLabel is a property used for ebsr
     return (
@@ -31,9 +37,11 @@ class Main extends React.Component {
         {model.partLabel && <p>{model.partLabel}</p>}
         <div className={classNames(classes.root, classes[model.className])}>
           <MultipleChoice
-            {...model}
+            {...updatedModel}
             session={session}
             onChoiceChanged={onChoiceChanged}
+            printOptions={printOptions}
+            printMode={printMode}
           />
         </div>
       </PreviewLayout>

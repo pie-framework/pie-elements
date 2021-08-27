@@ -135,6 +135,8 @@ export class ChoiceInput extends React.Component {
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
     className: PropTypes.string,
+    printMode: PropTypes.bool,
+    teacherMode: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -168,10 +170,13 @@ export class ChoiceInput extends React.Component {
       className,
       rationale,
       accessibility,
+      printMode,
+      teacherMode,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
+    const showRationale = !printMode || printMode && teacherMode;
 
     return (
       <div className={classNames(className, 'corespring-' + classSuffix)}>
@@ -198,7 +203,7 @@ export class ChoiceInput extends React.Component {
             />
           </div>
         </div>
-        {rationale && (
+        {rationale && showRationale && (
           <PreviewPrompt className="rationale" prompt={rationale} />
         )}
         <Feedback feedback={feedback} correctness={correctness} />

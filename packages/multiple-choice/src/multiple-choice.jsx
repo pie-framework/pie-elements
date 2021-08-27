@@ -31,7 +31,9 @@ export class Choice extends React.Component {
       displayKey,
       classes,
       choicesLayout,
-      gridColumns
+      gridColumns,
+      printMode,
+      teacherMode
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -47,11 +49,13 @@ export class Choice extends React.Component {
       displayKey,
       choicesLayout,
       gridColumns,
+      printMode,
+      teacherMode,
       onChange: this.onChange,
     };
 
     const names = classNames(classes.choice, {
-      [classes.noBorder]: (index === choicesLength - 1) || this.props.choicesLayout !== 'vertical'
+      [classes.noBorder]: (index === choicesLength - 1) || choicesLayout !== 'vertical'
     });
 
     return (
@@ -76,7 +80,9 @@ Choice.propTypes = {
   correctness: PropTypes.string,
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-  gridColumns: PropTypes.string
+  gridColumns: PropTypes.string,
+  printMode: PropTypes.bool,
+  teacherMode: PropTypes.string
 };
 
 const StyledChoice = withStyles({
@@ -128,7 +134,8 @@ export class MultipleChoice extends React.Component {
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    gridColumns: PropTypes.string
+    gridColumns: PropTypes.string,
+    printOptions: PropTypes.object
   };
 
   constructor(props) {
@@ -206,19 +213,35 @@ export class MultipleChoice extends React.Component {
       disabled,
       choices = [],
       choiceMode,
+      choicesLayout,
+      gridColumns,
       prompt,
       onChoiceChanged,
       responseCorrect,
       teacherInstructions,
       classes,
+      printOptions,
+      printMode,
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
-    
+    const { mode: role } = printOptions;
+    const teacherMode = role === 'instructor';
+    const showTeacherInstructions = !printMode || printMode && teacherMode;
+
+    // const newStyle = document.createElement('style');
+    // newStyle.type = 'text/css';
+    // newStyle.innerHTML = `
+    //   .test-class {
+    //     background: red;
+    //   }
+    // `;
+    // document.getElementsByTagName('head')[0].appendChild(newStyle);
+
     return (
-      <div className={classes.corespringChoice}>
-        {teacherInstructions && (
+      <div className={classNames(classes.corespringChoice, 'test-class')}>
+        {teacherInstructions && showTeacherInstructions && (
           <React.Fragment>
             <Collapsible
               labels={{
@@ -238,11 +261,19 @@ export class MultipleChoice extends React.Component {
         />
         {showCorrectAnswerToggle && <br />}
         <PreviewPrompt className="prompt" prompt={prompt}/>
-        <div className={classNames({ [classes.gridLayout]: this.props.choicesLayout === 'grid'}, {[classes.horizontalLayout]: this.props.choicesLayout === 'horizontal' })} style={styles.getColumns(this.props.gridColumns)}>
+        <div
+          className={
+            classNames(
+              {[classes.gridLayout]: choicesLayout === 'grid'},
+              {[classes.horizontalLayout]: choicesLayout === 'horizontal' }
+            )
+          }
+          style={styles.getColumns(gridColumns)}
+        >
           {choices.map((choice, index) => (
             <StyledChoice
-              choicesLayout={this.props.choicesLayout}
-              gridColumns={this.props.gridColumns}
+              choicesLayout={choicesLayout}
+              gridColumns={gridColumns}
               key={`choice-${index}`}
               choice={choice}
               index={index}
@@ -261,6 +292,8 @@ export class MultipleChoice extends React.Component {
                 isEvaluateMode ? this.getCorrectness(choice) : undefined
               }
               displayKey={this.indexToSymbol(index)}
+              printMode={printMode}
+              teacherMode={teacherMode}
             />
           ))}
         </div>

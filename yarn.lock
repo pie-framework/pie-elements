@@ -2483,10 +2483,10 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@pslb/pslb@4.0.7-beta.7":
-  version "4.0.7-beta.7"
-  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.0.7-beta.7.tgz#adde043bcffe297a483d76df7cdc874b4396d294"
-  integrity sha512-YFIhFL191rOLTlQlrTuhVtKHbKCCmgeL+o7WxubYu6yyWIpLyV7ZjBF0Q0MEssWS/9c26Hza/GUQ7t7BihSjqg==
+"@pslb/pslb@4.0.7-beta.10":
+  version "4.0.7-beta.10"
+  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.0.7-beta.10.tgz#ab24c7a311e6dad437de573915b11f60d5700899"
+  integrity sha512-NQb14+MVotWnuUW6lS9PhORvDe/mN+sTI6aEfs815pQgaPXJzqZb7pyEiJOqTFWT7I3xAqmMvY0EnsLOV/njmw==
   dependencies:
     "@pslb/estree-helper" "^4.0.4"
     "@pslb/plugin-commonjs" "^11.0.3"

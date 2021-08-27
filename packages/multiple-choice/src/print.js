@@ -23,10 +23,14 @@ export default class MultipleChoicePrint extends HTMLElement {
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
-          var element = React.createElement(Main, {
-            model: this._model,
-            session: {},
-          });
+          const element = this._options && this._options.mode === 'student'
+            ? React.createElement(Main, {
+                model: this._model,
+                session: {},
+                printOptions: this._options
+              })
+            : <h1>Not supported yet</h1>;
+
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
             renderMath(this);
