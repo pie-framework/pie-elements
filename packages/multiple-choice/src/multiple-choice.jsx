@@ -230,17 +230,8 @@ export class MultipleChoice extends React.Component {
     const teacherMode = role === 'instructor';
     const showTeacherInstructions = !printMode || printMode && teacherMode;
 
-    // const newStyle = document.createElement('style');
-    // newStyle.type = 'text/css';
-    // newStyle.innerHTML = `
-    //   .test-class {
-    //     background: red;
-    //   }
-    // `;
-    // document.getElementsByTagName('head')[0].appendChild(newStyle);
-
     return (
-      <div className={classNames(classes.corespringChoice, 'test-class')}>
+      <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && showTeacherInstructions && (
           <React.Fragment>
             <Collapsible

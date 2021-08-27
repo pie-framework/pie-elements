@@ -179,10 +179,10 @@ export class ChoiceInput extends React.Component {
     const showRationale = !printMode || printMode && teacherMode;
 
     return (
-      <div className={classNames(className, 'corespring-' + classSuffix)}>
+      <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           <FeedbackTick correctness={correctness} />
-          <div className={classes.checkboxHolder}>
+          <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
             <StyledFormControlLabel
               disabled={disabled}
               label={displayKey ? displayKey + '. ' : ''}

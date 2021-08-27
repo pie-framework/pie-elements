@@ -2467,10 +2467,10 @@
     react-portal "^4.2.0"
     trigonometry-calculator "^2.0.0"
 
-"@pslb/estree-helper@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@pslb/estree-helper/-/estree-helper-4.0.4.tgz#9820cb9e3b2fbca65216856080a85bdc522ff19e"
-  integrity sha512-yMzElhKlw33DJ5A+4buJp/ErDuZpWfrE1vYSTi0T3AFenyIEk6faDyM6mDpcMSuksSEV91xGMDZjr7Cw1lU+Kg==
+"@pslb/estree-helper@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@pslb/estree-helper/-/estree-helper-4.2.0.tgz#682d7b8eed6db06a94fe3e8687ca3ef7b69d110f"
+  integrity sha512-R8FkTDSBHHvmZjZfILyX3vu/8cdfTmsqMJ0I/O3Tv0f4nC5F2vHc41KY7C5JQYxhOjhsbM/4H4N+YDmy+P7w1Q==
 
 "@pslb/plugin-commonjs@^11.0.3":
   version "11.0.3"
@@ -2483,24 +2483,23 @@
     magic-string "^0.25.2"
     resolve "^1.11.0"
 
-"@pslb/pslb@4.0.7-beta.10":
-  version "4.0.7-beta.10"
-  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.0.7-beta.10.tgz#ab24c7a311e6dad437de573915b11f60d5700899"
-  integrity sha512-NQb14+MVotWnuUW6lS9PhORvDe/mN+sTI6aEfs815pQgaPXJzqZb7pyEiJOqTFWT7I3xAqmMvY0EnsLOV/njmw==
+"@pslb/pslb@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@pslb/pslb/-/pslb-4.2.0.tgz#4cb1d4ad2fd6db5844dd5e24f52ea693cb983077"
+  integrity sha512-tK4u1d7EYRtFRAjzruo4VdK3vVGlEli/8IMUsR/ZipVgOWne6rPWIwhFbSqY/wQLp1NAmjY6P1Q05/6l7bA3ew==
   dependencies:
-    "@pslb/estree-helper" "^4.0.4"
+    "@pslb/estree-helper" "^4.2.0"
     "@pslb/plugin-commonjs" "^11.0.3"
-    "@pslb/rollup-plugin-dll" "^4.0.4"
+    "@pslb/rollup-plugin-dll" "^4.2.0"
     "@rollup/plugin-json" "^4.1.0"
     "@rollup/plugin-node-resolve" "^13.0.4"
     "@rollup/plugin-replace" "^3.0.0"
     "@rollup/plugin-sucrase" "^4.0.0"
     "@rollup/plugin-virtual" "^2.0.3"
     "@yarnpkg/lockfile" "^1.1.0"
-    acorn "^8.4.1"
     astring "1.7.5"
     change-case "^4.1.2"
-    estree-walker "^2.0.0"
+    estree-walker "^2.0.2"
     fs-extra "^10.0.0"
     glob "^7.1.7"
     libnpmpublish "^4.0.2"
@@ -2518,19 +2517,18 @@
     serve-handler "^6.1.3"
     winston "^3.3.3"
 
-"@pslb/rollup-plugin-dll@^4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-4.0.4.tgz#1c1526b781baa2593dd2f595fbfebbfd6752eeb1"
-  integrity sha512-9trsQXT3e5FGsKU4VYdOaLxT9Be31NkvHCVQfh8t+8p2C86mhzJBQ4op+pdSpDZh5CW4bV63HzUU84SFgTIbcw==
+"@pslb/rollup-plugin-dll@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@pslb/rollup-plugin-dll/-/rollup-plugin-dll-4.2.0.tgz#8157d11df7577034f73d70f21454bac6518a1274"
+  integrity sha512-5MEwVecMkDFMag1ujpfmFS4V/eQTONKaogqtousFY+ZPbWtOjFoBNMbb+TYcE0nbLoSp5WOnPA8+7Q1XKSGE+A==
   dependencies:
-    "@pslb/estree-helper" "^4.0.4"
-    acorn "^7.3.1"
-    astring "1.4.3"
-    estree-walker "2.0.1"
-    lodash "^4.17.15"
-    query-string "^6.13.1"
-    rollup "^2.16.1"
-    semver "^7.3.2"
+    "@pslb/estree-helper" "^4.2.0"
+    astring "1.7.5"
+    estree-walker "^2.0.2"
+    lodash "^4.17.21"
+    query-string "^7.0.1"
+    rollup "^2.56.2"
+    semver "^7.3.5"
 
 "@react-dnd/asap@^4.0.0":
   version "4.0.0"
@@ -3058,16 +3056,6 @@ acorn@^6.0.1, acorn@^6.0.2:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.2.tgz#35866fd710528e92de10cf06016498e47e39e1e6"
   integrity sha512-XtGIhXwF8YM8bJhGxG5kXgjkEuNGLTkoYqVE+KMR+aspr4KGYmKYg7yUe3KghyQ9yheNwLnjmzh/7+gfDBmHCQ==
 
-acorn@^7.3.1:
-  version "7.4.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
-  integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
-
-acorn@^8.4.1:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.4.1.tgz#56c36251fc7cabc7096adc18f05afe814321a28c"
-  integrity sha512-asabaBSkEKosYKMITunzX177CXxQ4Q8BSSzMTKD+FefUhipQC70gfW5SiUDhYQ3vk8G+81HqQk7Fv9OXwwn9KA==
-
 add-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
@@ -3416,11 +3404,6 @@ astral-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
-
-astring@1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/astring/-/astring-1.4.3.tgz#b99d4b0349bc7b28934bb9f03f86ec34d69c3a09"
-  integrity sha512-yJlJU/bmN820vL+cbWShu2YQU87dBP5V7BH2N4wODapRv27A2dZtUD0LgjP9lZENvPe9XRoSyWx+pZR6qKqNBw==
 
 astring@1.7.5:
   version "1.7.5"
@@ -6504,11 +6487,6 @@ estraverse@^5.1.0, estraverse@^5.2.0:
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-5.2.0.tgz#307df42547e6cc7324d3cf03c155d5cdb8c53880"
   integrity sha512-BxbNGGNm0RyRYvUdHpIwv9IWzeM9XClbOxwoATuFdOE7ZE6wHL+HQ5T8hoPM+zHvmKzzsEqhgy0GrQ5X13afiQ==
 
-estree-walker@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.1.tgz#f8e030fb21cefa183b44b7ad516b747434e7a3e0"
-  integrity sha512-tF0hv+Yi2Ot1cwj9eYHtxC0jB9bmjacjQs6ZBTj82H8JwUywFuc+7E83NWfNMwHXZc11mjfFcVXPe9gEP4B8dg==
-
 estree-walker@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.6.1.tgz#53049143f40c6eb918b23671d1fe3219f3a1b362"
@@ -6519,7 +6497,7 @@ estree-walker@^1.0.1:
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
 
-estree-walker@^2.0.0, estree-walker@^2.0.1:
+estree-walker@^2.0.1, estree-walker@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
   integrity sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
@@ -12093,7 +12071,7 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-string@^6.13.1, query-string@^6.13.8, query-string@^6.9.0:
+query-string@^6.13.8, query-string@^6.9.0:
   version "6.13.8"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.8.tgz#8cf231759c85484da3cf05a851810d8e825c1159"
   integrity sha512-jxJzQI2edQPE/NPUOusNjO/ZOGqr1o2OBa/3M00fU76FsLXDVbJDv/p7ng5OdQyorKrkRz1oqfwmbe5MAMePQg==
@@ -13042,13 +13020,6 @@ rollup-pluginutils@^2.8.2:
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
   dependencies:
     estree-walker "^0.6.1"
-
-rollup@^2.16.1:
-  version "2.38.4"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.38.4.tgz#1b84ea8728c73b1a00a6a6e9c630ec8c3fe48cea"
-  integrity sha512-B0LcJhjiwKkTl79aGVF/u5KdzsH8IylVfV56Ut6c9ouWLJcUK17T83aZBetNYSnZtXf2OHD4+2PbmRW+Fp5ulg==
-  optionalDependencies:
-    fsevents "~2.3.1"
 
 rollup@^2.56.2:
   version "2.56.2"
