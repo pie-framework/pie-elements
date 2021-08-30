@@ -67,11 +67,23 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         )
       );
 
-      for (let i = 0; i < acceptedValues.length; i++) {
-        answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
-        if (answerCorrect) {
-          break;
+      try {
+        for (let i = 0; i < acceptedValues.length; i++) {
+          answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
+
+          if (answerCorrect) {
+            break;
+          }
         }
+      } catch (e) {
+        log(
+          'Parse failure when evaluating math',
+          e,
+          correctResponse,
+          answerItem
+        );
+
+        answerCorrect = false;
       }
     }
   });
