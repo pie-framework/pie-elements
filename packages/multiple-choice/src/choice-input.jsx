@@ -204,7 +204,7 @@ export class ChoiceInput extends React.Component {
           </div>
         </div>
         {rationale && showRationale && (
-          <PreviewPrompt className="rationale" prompt={rationale} />
+          <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />
         )}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>

@@ -82,7 +82,7 @@ Choice.propTypes = {
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
   printMode: PropTypes.bool,
-  teacherMode: PropTypes.string
+  teacherMode: PropTypes.bool
 };
 
 const StyledChoice = withStyles({
@@ -135,7 +135,8 @@ export class MultipleChoice extends React.Component {
     correctResponse: PropTypes.array,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
     gridColumns: PropTypes.string,
-    printOptions: PropTypes.object
+    printOptions: PropTypes.object,
+    printMode: PropTypes.bool
   };
 
   constructor(props) {
@@ -228,7 +229,8 @@ export class MultipleChoice extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
     const { mode: role } = printOptions;
     const teacherMode = role === 'instructor';
-    const showTeacherInstructions = !printMode || printMode && teacherMode;
+    const showTeacherInstructions = !printMode;
+    const showTeacherInstructionsPrintMode = printMode && teacherMode;
 
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
@@ -245,13 +247,16 @@ export class MultipleChoice extends React.Component {
             <br />
           </React.Fragment>
         )}
+        {teacherInstructions && showTeacherInstructionsPrintMode && (
+          <PreviewPrompt className="prompt" defaultClassName="teacher-instructions" prompt={teacherInstructions}/>
+        )}
         <CorrectAnswerToggle
           show={showCorrectAnswerToggle}
           toggled={showCorrect}
           onToggle={this.onToggle.bind(this)}
         />
         {showCorrectAnswerToggle && <br />}
-        <PreviewPrompt className="prompt" prompt={prompt}/>
+        <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt}/>
         <div
           className={
             classNames(
