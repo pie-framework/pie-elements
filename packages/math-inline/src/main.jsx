@@ -608,7 +608,8 @@ const styles = (theme) => ({
   inputAndKeypadContainer: {
     position: 'relative',
     '& .mq-overarrow-inner': {
-      border: 'none !important'
+      border: 'none !important',
+      padding: '0 !important'
     },
     '& .mq-overarrow-inner-right': {
       display: 'none !important'
@@ -617,7 +618,24 @@ const styles = (theme) => ({
       display: 'none !important'
     },
     '& .mq-overarrow.mq-arrow-both': {
-      minWidth: '1.23em'
+      minWidth: '1.23em',
+      '&:before': {
+        top: '-0.4em',
+        left: '-1px'
+      },
+      '&:after': {
+        top: '-2.36em',
+        right: '-1px'
+      },
+      '&.mq-empty:after': {
+        top: '-0.45em'
+      }
+    },
+    '& .mq-overarrow.mq-arrow-right': {
+      '&:before': {
+        top: '-0.4em',
+        right: '-1px'
+      }
     }
   },
   showCorrectness: {
