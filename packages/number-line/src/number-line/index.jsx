@@ -110,7 +110,7 @@ export class NumberLine extends React.Component {
       const { answers } = this.state;
 
       const contains = answers.some((element) => {
-        return JSON.stringify(element) === JSON.stringify(elementData);
+        return isEqual(element, elementData);
       });
 
       if (!contains) {

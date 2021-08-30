@@ -9,6 +9,8 @@ import Rectangle from './hotspot-rectangle';
 import Polygon from './hotspot-polygon';
 import { updateImageDimensions, getUpdatedShapes } from './utils';
 
+const IMAGE_MAX_WIDTH = 800;
+
 export class Drawable extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     let dimensions = nextProps.dimensions;
@@ -153,8 +155,12 @@ export class Drawable extends React.Component {
     const elementStyle = getComputedStyle(target);
     const newHeight = parseFloat(elementStyle.height);
     const newWidth = parseFloat(elementStyle.width);
+    const aspectWidth = newWidth / IMAGE_MAX_WIDTH;
 
-    const dimensions = {
+    const dimensions = newWidth > IMAGE_MAX_WIDTH ? {
+      height: newHeight / aspectWidth,
+      width: IMAGE_MAX_WIDTH
+    } : {
       height: newHeight,
       width: newWidth
     };
