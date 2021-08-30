@@ -636,6 +636,10 @@ const styles = (theme) => ({
         top: '-0.4em',
         right: '-1px'
       }
+    },
+    '& .mq-longdiv-inner': {
+      borderTop: '1px solid !important',
+      paddingTop: '1.5px !important'
     }
   },
   showCorrectness: {
