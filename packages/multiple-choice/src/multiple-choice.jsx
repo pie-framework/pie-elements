@@ -280,7 +280,7 @@ export class MultipleChoice extends React.Component {
               disabled={disabled}
               onChoiceChanged={onChoiceChanged}
               checked={
-                showCorrect
+                showCorrect || printMode && teacherMode
                   ? choice.correct || false
                   : this.isSelected(choice.value)
               }
