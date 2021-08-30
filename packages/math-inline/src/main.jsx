@@ -348,7 +348,7 @@ export class Main extends React.Component {
     const { model, classes } = this.props;
     const state = this.state;
     const { activeAnswerBlock, showCorrect, session } = state;
-    const { config: { showNote, note, env: { mode, role } = {}} = {}} = model;
+    const { config: { showNote, note, prompt, env: { mode, role } = {}} = {}} = model;
     const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     if (!model.config) {
@@ -363,9 +363,11 @@ export class Main extends React.Component {
 
     const midContent = (
       <div className={classes.main}>
-        <div className={classes.content}>
-          <div dangerouslySetInnerHTML={{ __html: model.config.prompt }} />
-        </div>
+        {prompt && (
+          <div className={classes.content}>
+            <div dangerouslySetInnerHTML={{ __html: prompt }} />
+          </div>
+        )}
         <Readable false>
           <div className={classes.inputAndKeypadContainer}>
           {model.config.responseType === ResponseTypes.simple && (
@@ -590,7 +592,6 @@ const styles = (theme) => ({
   },
   expression: {
     maxWidth: 'fit-content',
-    marginTop: theme.spacing.unit * 2,
     '& > .mq-math-mode': {
       '& > .mq-root-block': {
         '& > .mq-editable-field': {
@@ -607,13 +608,34 @@ const styles = (theme) => ({
   inputAndKeypadContainer: {
     position: 'relative',
     '& .mq-overarrow-inner': {
-      border: 'none !important'
+      border: 'none !important',
+      padding: '0 !important'
     },
     '& .mq-overarrow-inner-right': {
       display: 'none !important'
     },
     '& .mq-overarrow-inner-left': {
       display: 'none !important'
+    },
+    '& .mq-overarrow.mq-arrow-both': {
+      minWidth: '1.23em',
+      '&:before': {
+        top: '-0.4em',
+        left: '-1px'
+      },
+      '&:after': {
+        top: '-2.36em',
+        right: '-1px'
+      },
+      '&.mq-empty:after': {
+        top: '-0.45em'
+      }
+    },
+    '& .mq-overarrow.mq-arrow-right': {
+      '&:before': {
+        top: '-0.4em',
+        right: '-1px'
+      }
     },
     '& .mq-longdiv-inner': {
       borderTop: '1px solid !important',
