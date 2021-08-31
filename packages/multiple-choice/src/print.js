@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import Main from './print/main';
+import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
 
