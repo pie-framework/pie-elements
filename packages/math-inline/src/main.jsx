@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
 import { Feedback, Collapsible, Readable, hasText } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
@@ -289,6 +289,8 @@ export class Main extends React.Component {
   };
 
   subFieldChanged = (name, subfieldValue) => {
+    updateSpans();
+
     if (name) {
       this.setState(
         (state) => ({
