@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import Main from './main';
+import Main from './print/main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
 
@@ -14,6 +14,25 @@ const log = debug('pie-element:multiple-choice:print');
  * - update demo el
  * - get configure/controller building
  */
+
+const preparePrintModel = (model, opts) => {
+  const instr = opts.mode === 'instructor';
+
+  // TODO: getting a render error for Collapse in Collapsible - see what's going on
+  // model.teacherInstructions = 'this is some instructions..';
+  model.showTeacherInstructions = true;
+  model.alwaysShowCorrect = instr;
+  model.mode = instr ? 'evaluate' : model.mode;
+
+  model.disabled = instr;
+  model.choices = model.choices.map((c) => {
+    c.rationale = instr ? c.rationale : undefined;
+    c.hideTick = instr;
+    return c;
+  });
+  return model;
+};
+
 export default class MultipleChoicePrint extends HTMLElement {
   constructor() {
     super();
@@ -23,11 +42,15 @@ export default class MultipleChoicePrint extends HTMLElement {
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
-          const element = this._options && React.createElement(Main, {
-                model: this._model,
-                session: {},
-                printOptions: this._options
-              });
+          const printModel = preparePrintModel(this._model, this._options);
+
+          console.log('printModel: ', printModel, this._options);
+          const element =
+            this._options &&
+            React.createElement(Main, {
+              model: printModel,
+              session: {},
+            });
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
@@ -50,9 +73,5 @@ export default class MultipleChoicePrint extends HTMLElement {
     this._rerender();
   }
 
-  connectedCallback() {
-    console.log('test of changes');
-    log('connected...');
-    // this.innerHTML = '<h1>PRINT</h1>';
-  }
+  connectedCallback() {}
 }
