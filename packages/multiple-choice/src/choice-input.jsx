@@ -71,7 +71,14 @@ const inputStyles = {
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
+  const {
+    correctness,
+    classes,
+    checked,
+    onChange,
+    disabled,
+    accessibility,
+  } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -96,7 +103,14 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } = props;
+  const {
+    correctness,
+    classes,
+    checked,
+    onChange,
+    disabled,
+    accessibility,
+  } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -135,8 +149,7 @@ export class ChoiceInput extends React.Component {
     value: PropTypes.string.isRequired,
     classes: PropTypes.object,
     className: PropTypes.string,
-    printMode: PropTypes.bool,
-    teacherMode: PropTypes.bool,
+    hideTick: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -170,19 +183,17 @@ export class ChoiceInput extends React.Component {
       className,
       rationale,
       accessibility,
-      printMode,
-      teacherMode,
+      hideTick,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
-    const showRationale = !printMode || printMode && teacherMode;
 
     return (
-      <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
+      <div className={classNames(className, 'corespring-' + classSuffix)}>
         <div className={classes.row}>
-          <FeedbackTick correctness={correctness} />
-          <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
+          {!hideTick && <FeedbackTick correctness={correctness} />}
+          <div className={classes.checkboxHolder}>
             <StyledFormControlLabel
               disabled={disabled}
               label={displayKey ? displayKey + '. ' : ''}
@@ -203,8 +214,8 @@ export class ChoiceInput extends React.Component {
             />
           </div>
         </div>
-        {rationale && showRationale && (
-          <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />
+        {rationale && (
+          <PreviewPrompt className="rationale" prompt={rationale} />
         )}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>
