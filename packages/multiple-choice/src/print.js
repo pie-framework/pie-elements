@@ -18,13 +18,13 @@ const log = debug('pie-element:multiple-choice:print');
 const preparePrintModel = (model, opts) => {
   const instr = opts.mode === 'instructor';
 
-  // TODO: getting a render error for Collapse in Collapsible - see what's going on
-  // model.teacherInstructions = 'this is some instructions..';
-  model.showTeacherInstructions = true;
+  model.teacherInstructions = instr ? model.teacherInstructions : undefined;
+  model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
 
-  model.disabled = instr;
+  model.disabled = true;
+  model.animationsDisabled = true;
   model.choices = model.choices.map((c) => {
     c.rationale = instr ? c.rationale : undefined;
     c.hideTick = instr;

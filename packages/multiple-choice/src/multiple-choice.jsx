@@ -48,6 +48,7 @@ export class MultipleChoice extends React.Component {
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
     gridColumns: PropTypes.string,
     alwaysShowCorrect: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -131,6 +132,7 @@ export class MultipleChoice extends React.Component {
       teacherInstructions,
       classes,
       alwaysShowCorrect,
+      animationsDisabled
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
@@ -140,18 +142,24 @@ export class MultipleChoice extends React.Component {
       <div className={classes.corespringChoice}>
         {teacherInstructions && (
           <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
+            {!animationsDisabled ?
+              <Collapsible
+                labels={{
+                  hidden: 'Show Teacher Instructions',
+                  visible: 'Hide Teacher Instructions',
+                }}
+              >
+                <PreviewPrompt
+                  tagName="div"
+                  className="prompt"
+                  prompt={teacherInstructions}
+                />
+              </Collapsible> :
               <PreviewPrompt
                 tagName="div"
                 className="prompt"
                 prompt={teacherInstructions}
-              />
-            </Collapsible>
+              />}
             <br />
           </React.Fragment>
         )}
