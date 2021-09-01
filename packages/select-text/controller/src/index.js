@@ -2,8 +2,8 @@ import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
+import { prepareText } from '@pie-lib/text-select';
 import defaults from './defaults';
-import { prepareText } from './utils';
 
 const log = debug('@pie-element:select-text:controller');
 

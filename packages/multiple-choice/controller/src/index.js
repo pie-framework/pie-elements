@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import isEmpty from 'lodash/isEmpty';
-import {isResponseCorrect, parseHTML} from './utils';
+import { isResponseCorrect, parseHTML } from './utils';
 import defaults from './defaults';
 import { lockChoices, partialScoring, getShuffledChoices } from '@pie-lib/controller-utils';
 
@@ -11,7 +11,7 @@ const prepareChoice = (model, env, defaultFeedback) => choice => {
     value: choice.value,
   };
 
-  if(model.accessibilityLabelsEnabled){
+  if (model.accessibilityLabelsEnabled) {
     out.accessibility = parseHTML(choice.accessibility).textContent || choice.value;
   }
 
@@ -42,7 +42,17 @@ export function createDefaultModel(model = {}) {
   return new Promise(resolve => resolve({ ...defaults, ...model }));
 }
 
-export const normalize = question => ({ ...defaults, ...question });
+export const normalize = question => {
+  const { verticalMode, choicesLayout, ...questionProps } = question || {};
+
+  return {
+    ...defaults,
+    ...questionProps,
+    // This is used for offering support for old models which have the property verticalMode
+    // Same thing is set in authoring : packages/multiple-choice/configure/src/index.jsx - createDefaultModel
+    choicesLayout: choicesLayout || (verticalMode === false && 'horizontal') || defaults.choicesLayout
+  };
+};
 
 /**
  *
@@ -53,6 +63,7 @@ export const normalize = question => ({ ...defaults, ...question });
  */
 export async function model(question, session, env, updateSession) {
   const normalizedQuestion = normalize(question);
+
   const defaultFeedback = Object.assign(
     { correct: 'Correct', incorrect: 'Incorrect' },
     normalizedQuestion.defaultFeedback
@@ -73,18 +84,11 @@ export async function model(question, session, env, updateSession) {
     );
   }
 
-  // This is used for offering support for old models which have the property verticalMode
-  // Same thing is set in authoring : packages/multiple-choice/configure/src/main.jsx - componentDidMount
-  let layout = '';
-  if(normalizedQuestion.verticalMode !== undefined) {
-    layout = normalizedQuestion.verticalMode === false ? 'horizontal': 'vertical';
-  }
-
   const out = {
     disabled: env.mode !== 'gather',
     mode: env.mode,
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
-    choicesLayout: normalizedQuestion.choicesLayout || layout,
+    choicesLayout: normalizedQuestion.choicesLayout,
     gridColumns: normalizedQuestion.gridColumns,
     choiceMode: normalizedQuestion.choiceMode,
     keyMode: normalizedQuestion.choicePrefix,
