@@ -190,10 +190,10 @@ export class ChoiceInput extends React.Component {
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
     return (
-      <div className={classNames(className, 'corespring-' + classSuffix)}>
+      <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {!hideTick && <FeedbackTick correctness={correctness} />}
-          <div className={classes.checkboxHolder}>
+          <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
             <StyledFormControlLabel
               disabled={disabled}
               label={displayKey ? displayKey + '. ' : ''}
@@ -215,7 +215,7 @@ export class ChoiceInput extends React.Component {
           </div>
         </div>
         {rationale && (
-          <PreviewPrompt className="rationale" prompt={rationale} />
+          <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />
         )}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>

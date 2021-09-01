@@ -139,7 +139,7 @@ export class MultipleChoice extends React.Component {
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
     return (
-      <div className={classes.corespringChoice}>
+      <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (
           <React.Fragment>
             {!animationsDisabled ?
@@ -158,6 +158,7 @@ export class MultipleChoice extends React.Component {
               <PreviewPrompt
                 tagName="div"
                 className="prompt"
+                defaultClassName="teacher-instructions"
                 prompt={teacherInstructions}
               />}
             <br />
@@ -171,7 +172,7 @@ export class MultipleChoice extends React.Component {
           />
         )}
         {showCorrectAnswerToggle && <br />}
-        <PreviewPrompt className="prompt" prompt={prompt} />
+        <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} />
         <div
           className={classNames(
             { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
