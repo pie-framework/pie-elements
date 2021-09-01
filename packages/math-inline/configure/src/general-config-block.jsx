@@ -341,7 +341,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale,
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {} } = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
@@ -459,6 +459,8 @@ class GeneralConfigBlock extends React.Component {
             defaultResponse={responseType === ResponseTypes.simple}
             onResponseChange={this.onResponseChange}
             index={idx}
+            cIgnoreOrder={cIgnoreOrder}
+            cAllowTrailingZeros={cAllowTrailingZeros}
           />
         ))}
       </div>
