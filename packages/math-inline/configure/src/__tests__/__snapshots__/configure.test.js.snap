@@ -7,9 +7,19 @@ exports[`Configure renders correctly with snapshot 1`] = `
       <Panel
         configuration={
           Object {
+            "allowTrailingZeros": Object {
+              "enabled": true,
+              "label": "Allow Trailing Zeros",
+              "settings": false,
+            },
             "feedback": Object {
               "label": "Feedback",
               "settings": true,
+            },
+            "ignoreOrder": Object {
+              "enabled": true,
+              "label": "Ignore Order",
+              "settings": false,
             },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
@@ -44,6 +54,8 @@ exports[`Configure renders correctly with snapshot 1`] = `
         groups={
           Object {
             "Properties": Object {
+              "allowTrailingZeros.enabled": false,
+              "ignoreOrder.enabled": false,
               "rationaleEnabled": undefined,
               "scoringType": false,
               "studentInstructionsEnabled": false,
@@ -126,9 +138,19 @@ exports[`Configure renders correctly with snapshot 1`] = `
         <WithStyles(GeneralConfigBlock)
           configuration={
             Object {
+              "allowTrailingZeros": Object {
+                "enabled": true,
+                "label": "Allow Trailing Zeros",
+                "settings": false,
+              },
               "feedback": Object {
                 "label": "Feedback",
                 "settings": true,
+              },
+              "ignoreOrder": Object {
+                "enabled": true,
+                "label": "Ignore Order",
+                "settings": false,
               },
               "partialScoring": Object {
                 "label": "Allow Partial Scoring",
@@ -408,6 +430,20 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
     </InputContainer>
   </div>
   <WithStyles(Response)
+    cAllowTrailingZeros={
+      Object {
+        "enabled": true,
+        "label": "Allow Trailing Zeros",
+        "settings": false,
+      }
+    }
+    cIgnoreOrder={
+      Object {
+        "enabled": true,
+        "label": "Ignore Order",
+        "settings": false,
+      }
+    }
     defaultResponse={false}
     index={0}
     key="1"

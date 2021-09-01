@@ -139,7 +139,8 @@ export class Main extends React.Component {
                     choicesLayoutA.settings &&
                     dropdown(choicesLayoutA.label, ['vertical', 'grid', 'horizontal']),
                   'partA.gridColumns':
-                    modelPartA.choicesLayout === 'grid' && nrOfColumnsAvailable.partA.length > 0 &&
+                    choicesLayoutA.settings && modelPartA.choicesLayout === 'grid' &&
+                    nrOfColumnsAvailable.partA.length > 0 &&
                     dropdown(gridColumnsA.label, nrOfColumnsAvailable.partA)
                 },
                 [`Properties ${firstPart}`]: {
@@ -169,7 +170,8 @@ export class Main extends React.Component {
                     choicesLayoutB.settings &&
                     dropdown(choicesLayoutB.label, ['vertical', 'grid', 'horizontal']),
                   'partB.gridColumns':
-                    modelPartB.choicesLayout === 'grid' && nrOfColumnsAvailable.partB.length > 0 &&
+                    choicesLayoutB.settings && modelPartB.choicesLayout === 'grid' &&
+                    nrOfColumnsAvailable.partB.length > 0 &&
                     dropdown(gridColumnsB.label, nrOfColumnsAvailable.partB)
                 },
                 [`Properties ${secondPart}`]: {
