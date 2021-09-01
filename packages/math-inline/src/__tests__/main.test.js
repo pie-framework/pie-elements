@@ -17,11 +17,6 @@ jest.mock('@pie-framework/mathquill', () => ({
   getInterface: jest.fn().mockReturnThis(),
 }));
 
-jest.mock('@pie-lib/math-input', () => ({
-  ...jest.requireActual('@pie-lib/math-input'),
-  updateSpans: jest.fn()
-}));
-
 describe('Math-Inline Main', () => {
   const defaultProps = {
     onSessionChange: jest.fn(),
