@@ -16,7 +16,7 @@ const log = debug('pie-elements:math-inline:configure');
 export default class MathInlineConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
 
-    // making sure that validation type is set
+    // making sure that defaults are set
     if (!isEmpty(model.responses)) {
       model.responses = model.responses.map(correctResponse => ({
         ...correctResponse,
@@ -49,6 +49,7 @@ export default class MathInlineConfigure extends HTMLElement {
     this._model = model;
     log('[onModelChanged]: ', this._model);
     this._render();
+
     this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 

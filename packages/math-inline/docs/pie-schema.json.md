@@ -151,13 +151,13 @@ This property is not used yet.
 
 # `ignoreOrderDefault` (boolean, required)
 
-Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+Indicates the default value for ignoreOrder, in case that it's not set
 
 Default: `"is false"`
 
 # `allowTrailingZerosDefault` (boolean, required)
 
-Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+Indicates the default value for allowTrailingZeros, in case that it's not set
 
 Default: `"is false"`
 

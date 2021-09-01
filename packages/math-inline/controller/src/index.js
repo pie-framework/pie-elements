@@ -47,7 +47,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
-  correctResponseItem.forEach(correctResponse => {
+  (correctResponseItem || []).forEach(correctResponse => {
 
     let opts = {
       mode: correctResponse.validation || defaults.validationDefault
@@ -65,7 +65,7 @@ function getIsAnswerCorrect(correctResponseItem, answerItem) {
         Object.keys(correctResponse.alternates || {}).map(
           alternateId => correctResponse.alternates[alternateId]
         )
-      );
+      ) || [];
 
       try {
         for (let i = 0; i < acceptedValues.length; i++) {
@@ -132,7 +132,7 @@ export const outcome = (question, session, env) => {
 
 export const normalize = (question) => {
 
-  // making sure that validation type is set
+  // making sure that defaults are set
   if (!isEmpty(question.responses)) {
     question.responses = question.responses.map(correctResponse => ({
       ...correctResponse, validation: correctResponse.validation || question.validationDefault,
@@ -151,8 +151,6 @@ export const normalize = (question) => {
     ...question,
   }
 }
-
-
 
 export function model(question, session, env) {
   return new Promise((resolve) => {
