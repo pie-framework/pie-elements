@@ -107,13 +107,13 @@ export interface MathInlinePie extends PieModel {
   partialScoring?: boolean;
 
   /**
-   * Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+   * Indicates the default value for ignoreOrder, in case that it's not set
    * @default is false
    */
   ignoreOrderDefault: boolean;
 
   /**
-   * Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+   * Indicates the default value for allowTrailingZeros, in case that it's not set
    * @default is false
    */
   allowTrailingZerosDefault: boolean;
