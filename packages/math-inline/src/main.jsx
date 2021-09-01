@@ -266,7 +266,13 @@ export class Main extends React.Component {
     if (c.type === 'clear') {
       this.input.clear();
     } else if (c.type === 'command') {
-      this.input.cmd(c.value);
+      if (Array.isArray(c.value)) {
+        c.value.forEach(vv => {
+          this.input.cmd(vv);
+        });
+      } else {
+        this.input.cmd(c.value);
+      }
     } else if (c.type === 'cursor') {
       this.input.keystroke(c.value);
     } else {
