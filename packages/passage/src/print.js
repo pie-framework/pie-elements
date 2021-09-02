@@ -16,7 +16,6 @@ const preparePrintPassage = model =>
     };
   });
 
-
 export default class PassagePrint extends HTMLElement {
   constructor() {
     super();
@@ -40,9 +39,6 @@ export default class PassagePrint extends HTMLElement {
       50,
       { leading: false, trailing: true }
     );
-  }
-  set options(o) {
-    this._options = o;
   }
 
   set model(s) {
