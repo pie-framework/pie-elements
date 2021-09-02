@@ -12,7 +12,6 @@ const preparePrintPassage = model =>
       id: index,
       title: passage.title,
       text: passage.text,
-      disabledTabs: true
     };
   });
 
@@ -28,7 +27,7 @@ export default class PassagePrint extends HTMLElement {
           if (this._model.passages && this._model.passages.length > 0) {
             const printPassage = preparePrintPassage(this._model);
 
-            const element = React.createElement(StimulusTabs, { tabs: printPassage });
+            const element = React.createElement(StimulusTabs, { tabs: printPassage, disabledTabs: true });
 
             ReactDOM.render(element, this);
           }

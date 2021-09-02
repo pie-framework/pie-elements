@@ -75,11 +75,11 @@ class StimulusTabs extends React.Component {
   parsedText = (text) => text.replace(/(<br\/>\n)/g, '<br/>');
 
   render() {
-    const { classes, tabs } = this.props;
+    const { classes, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
     if (tabs && tabs.length > 1) {
-      return tabs[0].disabledTabs ? (
+      return disabledTabs ? (
         <div className="passages">
           {tabs.map(tab =>
             <div key={tab.id} className={`passage-${tab.id}`}>
@@ -157,9 +157,9 @@ StimulusTabs.propTypes = {
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      disabledTabs: PropTypes.bool
     }).isRequired
   ).isRequired,
+  disabledTabs: PropTypes.bool
 };
 
 export default withStyles(styles)(StimulusTabs);
