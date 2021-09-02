@@ -7,6 +7,7 @@ import debug from 'debug';
 import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
+import classNames from 'classnames';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -43,7 +44,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
-    const { dimensions, disabled, feedback, teacherInstructions, mathInput } = model;
+    const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled } = model;
     const { value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
@@ -59,19 +60,21 @@ export class Main extends React.Component {
         {
           teacherInstructions && (
             <div>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                className={classes.collapsible}
-              >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
-              <br />
+              {!animationsDisabled ? (
+                <Collapsible
+                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  className={classes.collapsible}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                </Collapsible>
+              ) : <div className="teacher-instructions" dangerouslySetInnerHTML={{ __html: teacherInstructions }}/> }
+              <br/>
             </div>
           )
         }
         {model.prompt && (
           <Typography
-            className={classes.prompt}
+            className={classNames(classes.prompt, 'prompt')}
             dangerouslySetInnerHTML={{ __html: model.prompt }}
           />
         )}
