@@ -26,6 +26,7 @@ exports[`Main render should render in evaluate mode 1`] = `
     toggled={false}
   />
   <div
+    className="prompt"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Prompt",
@@ -142,6 +143,7 @@ exports[`Main render should render in gather mode 1`] = `
     toggled={false}
   />
   <div
+    className="prompt"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Prompt",
@@ -258,6 +260,7 @@ exports[`Main render should render in view mode 1`] = `
     toggled={false}
   />
   <div
+    className="prompt"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Prompt",
@@ -483,6 +486,7 @@ exports[`Main render should render without rationale 1`] = `
     toggled={false}
   />
   <div
+    className="prompt"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Prompt",
@@ -563,6 +567,7 @@ exports[`Main render should render without teacher instructions 1`] = `
     toggled={false}
   />
   <div
+    className="prompt"
     dangerouslySetInnerHTML={
       Object {
         "__html": "Prompt",
