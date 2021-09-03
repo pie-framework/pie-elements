@@ -50,6 +50,11 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     log('[render] disabled? ', disabled);
 
+    const teacherInstructionsDiv = <div
+      className="teacher-instructions"
+      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
+    />;
+
     return (
       <div
         className={classes.main}
@@ -65,9 +70,9 @@ export class Main extends React.Component {
                   labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
                   className={classes.collapsible}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                  {teacherInstructionsDiv}
                 </Collapsible>
-              ) : <div className="teacher-instructions" dangerouslySetInnerHTML={{ __html: teacherInstructions }}/> }
+              ) : teacherInstructionsDiv }
               <br/>
             </div>
           )
