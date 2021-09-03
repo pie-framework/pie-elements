@@ -6,6 +6,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -21,7 +22,9 @@ export class Main extends React.Component {
     teacherInstructions: PropTypes.string,
     value: PropTypes.object,
     feedback: PropTypes.object,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    alwaysShowCorrect: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,7 +32,7 @@ export class Main extends React.Component {
   };
 
   state = {
-    showCorrectAnswer: false,
+    showCorrectAnswer: this.props.alwaysShowCorrect || false,
     value: this.props.value
   };
 
@@ -53,28 +56,43 @@ export class Main extends React.Component {
 
   render() {
     const { showCorrectAnswer, value } = this.state;
-    const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env } = this.props;
+    const {
+      classes,
+      mode,
+      prompt,
+      rationale,
+      teacherInstructions,
+      note,
+      showNote,
+      env,
+      animationsDisabled,
+      alwaysShowCorrect
+    } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
+    const mainClasses = alwaysShowCorrect ? classNames(classes.mainContainer, classes.noBorderColor)
+      : classes.mainContainer;
 
     return (
-      <div className={classes.mainContainer}>
+      <div className={mainClasses}>
         {
           teacherInstructions && hasText(teacherInstructions) && (
             <div className={classes.collapsible}>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
+              {!animationsDisabled ? <Collapsible
+                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                </Collapsible>
+                :
+                <div className="teacher-instructions" dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>}
             </div>
           )
         }
-        <CorrectAnswerToggle
+        {!alwaysShowCorrect && <CorrectAnswerToggle
           show={mode === 'evaluate'}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
-        />
+        />}
         {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
         <ConstructedResponse
           {...this.props}
@@ -90,11 +108,13 @@ export class Main extends React.Component {
         )}
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
-            </Collapsible>
+            {!animationsDisabled ? <Collapsible
+                labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+              >
+                <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+              </Collapsible>
+              :
+              <div dangerouslySetInnerHTML={{ __html: rationale }}/>}
           </div>
         )}
       </div>
@@ -113,6 +133,11 @@ const styles = theme => ({
   },
   collapsible: {
     margin: `${theme.spacing.unit * 2}px 0`,
+  },
+  noBorderColor: {
+    '& *': {
+      borderColor: `${color.text()} !important`
+    }
   }
 });
 
