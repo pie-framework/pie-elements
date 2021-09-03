@@ -73,6 +73,13 @@ export class Main extends React.Component {
     const mainClasses = alwaysShowCorrect ? classNames(classes.mainContainer, classes.noBorderColor)
       : classes.mainContainer;
 
+    const teacherInstructionsDiv = <div
+      className="teacher-instructions"
+      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
+    />;
+
+    const rationaleDiv = <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>;
+
     return (
       <div className={mainClasses}>
         {
@@ -81,10 +88,9 @@ export class Main extends React.Component {
               {!animationsDisabled ? <Collapsible
                   labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                  {teacherInstructionsDiv}
                 </Collapsible>
-                :
-                <div className="teacher-instructions" dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>}
+                : teacherInstructionsDiv }
             </div>
           )
         }
@@ -111,10 +117,9 @@ export class Main extends React.Component {
             {!animationsDisabled ? <Collapsible
                 labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               >
-                <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+                {rationaleDiv}
               </Collapsible>
-              :
-              <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>}
+              : rationaleDiv }
           </div>
         )}
       </div>

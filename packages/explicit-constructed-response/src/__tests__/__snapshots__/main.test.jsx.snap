@@ -12,6 +12,7 @@ exports[`Main render should render in evaluate mode 1`] = `
       }
     >
       <div
+        className="teacher-instructions"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Teacher Instructions",
@@ -106,6 +107,7 @@ exports[`Main render should render in evaluate mode 1`] = `
       }
     >
       <div
+        className="rationale"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Rationale",
@@ -129,6 +131,7 @@ exports[`Main render should render in gather mode 1`] = `
       }
     >
       <div
+        className="teacher-instructions"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Teacher Instructions",
@@ -223,6 +226,7 @@ exports[`Main render should render in gather mode 1`] = `
       }
     >
       <div
+        className="rationale"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Rationale",
@@ -246,6 +250,7 @@ exports[`Main render should render in view mode 1`] = `
       }
     >
       <div
+        className="teacher-instructions"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Teacher Instructions",
@@ -340,6 +345,7 @@ exports[`Main render should render in view mode 1`] = `
       }
     >
       <div
+        className="rationale"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Rationale",
@@ -363,6 +369,7 @@ exports[`Main render should render without prompt 1`] = `
       }
     >
       <div
+        className="teacher-instructions"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Teacher Instructions",
@@ -449,6 +456,7 @@ exports[`Main render should render without prompt 1`] = `
       }
     >
       <div
+        className="rationale"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Rationale",
@@ -472,6 +480,7 @@ exports[`Main render should render without rationale 1`] = `
       }
     >
       <div
+        className="teacher-instructions"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Teacher Instructions",
@@ -647,6 +656,7 @@ exports[`Main render should render without teacher instructions 1`] = `
       }
     >
       <div
+        className="rationale"
         dangerouslySetInnerHTML={
           Object {
             "__html": "Rationale",
