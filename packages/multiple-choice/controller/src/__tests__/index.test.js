@@ -1,5 +1,6 @@
-import { model, outcome, getScore, createCorrectResponseSession } from '../index';
+import { model, outcome, getScore, createCorrectResponseSession, normalize } from '../index';
 import { isResponseCorrect } from '../utils';
+import defaults from '../defaults';
 
 jest.mock('../utils', () => ({
   isResponseCorrect: jest.fn()
@@ -188,7 +189,7 @@ describe('controller', () => {
         );
       });
 
-        it('returns proper feedback if feedbackEnabled is true', async () => {
+      it('returns proper feedback if feedbackEnabled is true', async () => {
         result = await model({
           ...question,
           feedbackEnabled: true
@@ -443,6 +444,32 @@ describe('controller', () => {
     it('returns null env is student', async () => {
       const noResult = await createCorrectResponseSession(question, { mode: 'gather', role: 'student' });
       expect(noResult).toBeNull();
+    });
+  });
+
+  describe('normalize', () => {
+    it('sets choicesLayout: horizontal if verticalMode: false', async () => {
+      const sess = await normalize({ ...question, verticalMode: false });
+
+      expect(sess).toEqual({ ...defaults, ...question, choicesLayout: 'horizontal' });
+    });
+
+    it('sets choicesLayout: vertical if verticalMode: true', async () => {
+      const sess = await normalize({ ...question, verticalMode: true });
+
+      expect(sess).toEqual({ ...defaults, ...question, choicesLayout: 'vertical' });
+    });
+
+    it('sets choicesLayout: grid if verticalMode: true && choicesLayout: grid', async () => {
+      const sess = await normalize({ ...question, verticalMode: true, choicesLayout: 'grid' });
+
+      expect(sess).toEqual({ ...defaults, ...question, choicesLayout: 'grid' });
+    });
+
+    it('sets choicesLayout: vertical', async () => {
+      const sess = await normalize(question);
+
+      expect(sess).toEqual({ ...defaults, ...question, choicesLayout: 'vertical' });
     });
   });
 });

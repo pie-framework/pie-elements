@@ -13,7 +13,6 @@
     "@pie-framework/pie-configure-events": "^1.2.0",
     "@pie-lib/config-ui": "^10.10.2",
     "@pie-lib/editable-html": "^7.17.2",
-    "@pie-lib/math-evaluator": "^2.1.6",
     "@pie-lib/math-input": "^6.5.14",
     "@pie-lib/math-toolbar": "^1.7.14",
     "classnames": "^2.2.5",

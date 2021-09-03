@@ -44,7 +44,6 @@ export default class MultipleChoicePrint extends HTMLElement {
         if (this._model && this._session) {
           const printModel = preparePrintModel(this._model, this._options);
 
-          console.log('printModel: ', printModel, this._options);
           const element =
             this._options &&
             React.createElement(Main, {

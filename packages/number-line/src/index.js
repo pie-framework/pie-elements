@@ -131,6 +131,10 @@ export default class NumberLine extends HTMLElement {
   _render() {
     try {
       if (this._model && this._session) {
+        if (!this._session.answer) {
+          this._applyInitialElements();
+        }
+
         let answer = (this._session.answer || []).map(toGraphFormat);
         let model = cloneDeep(this._model);
         model.correctResponse =
