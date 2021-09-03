@@ -225,13 +225,25 @@
           },
           "validation": {
             "description": "Indicates what type of validation should be applied on the response",
-            "default": "is symbolic",
+            "default": "is literal",
             "enum": [
               "literal",
               "symbolic"
             ],
             "type": "string",
             "title": "validation"
+          },
+          "ignoreOrder": {
+            "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+            "default": "is false",
+            "type": "boolean",
+            "title": "ignoreOrder"
+          },
+          "allowTrailingZeros": {
+            "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+            "default": "is false",
+            "type": "boolean",
+            "title": "allowTrailingZeros"
           },
           "answer": {
             "description": "The answer for the question",
@@ -268,9 +280,11 @@
           }
         },
         "required": [
+          "allowTrailingZeros",
           "alternates",
           "answer",
           "id",
+          "ignoreOrder",
           "validation"
         ]
       },
@@ -290,13 +304,25 @@
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
-          "default": "is symbolic",
+          "default": "is literal",
           "enum": [
             "literal",
             "symbolic"
           ],
           "type": "string",
           "title": "validation"
+        },
+        "ignoreOrder": {
+          "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "ignoreOrder"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
         },
         "answer": {
           "description": "The answer for the question",
@@ -333,9 +359,11 @@
         }
       },
       "required": [
+        "allowTrailingZeros",
         "alternates",
         "answer",
         "id",
+        "ignoreOrder",
         "validation"
       ]
     },
@@ -343,6 +371,18 @@
       "description": "Indicates if partial scoring is allowed.\nThis property is not used yet.",
       "type": "boolean",
       "title": "partialScoring"
+    },
+    "ignoreOrderDefault": {
+      "description": "Indicates the default value for ignoreOrder, in case that it's not set",
+      "default": "is false",
+      "type": "boolean",
+      "title": "ignoreOrderDefault"
+    },
+    "allowTrailingZerosDefault": {
+      "description": "Indicates the default value for allowTrailingZeros, in case that it's not set",
+      "default": "is false",
+      "type": "boolean",
+      "title": "allowTrailingZerosDefault"
     },
     "rationale": {
       "description": "Indicates the value for rationale",
@@ -423,10 +463,12 @@
     }
   },
   "required": [
+    "allowTrailingZerosDefault",
     "element",
     "expression",
     "feedbackEnabled",
     "id",
+    "ignoreOrderDefault",
     "rationaleEnabled",
     "responses",
     "studentInstructionsEnabled",
@@ -446,6 +488,27 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
         }
       }
     },
@@ -675,13 +738,25 @@
         },
         "validation": {
           "description": "Indicates what type of validation should be applied on the response",
-          "default": "is symbolic",
+          "default": "is literal",
           "enum": [
             "literal",
             "symbolic"
           ],
           "type": "string",
           "title": "validation"
+        },
+        "ignoreOrder": {
+          "description": "Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "ignoreOrder"
+        },
+        "allowTrailingZeros": {
+          "description": "Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct",
+          "default": "is false",
+          "type": "boolean",
+          "title": "allowTrailingZeros"
         },
         "answer": {
           "description": "The answer for the question",
@@ -718,9 +793,11 @@
         }
       },
       "required": [
+        "allowTrailingZeros",
         "alternates",
         "answer",
         "id",
+        "ignoreOrder",
         "validation"
       ]
     },

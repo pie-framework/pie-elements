@@ -4,10 +4,12 @@ import React from 'react';
 import { Main } from '../main';
 import defaults from '../defaults';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
+import MultipleChoice from '../index';
 
 jest.mock('@pie-lib/config-ui', () => ({
   choiceUtils: {
-    firstAvailableIndex: jest.fn()
+    firstAvailableIndex: jest.fn(),
+    normalizeChoices: jest.fn((model) => model)
   },
   settings: {
     Panel: props => <div {...props} />,
@@ -107,27 +109,30 @@ describe('Main', () => {
       });
     });
 
-    describe('sets choice layout according to old verticalMode property if it is set - for legacy items', () => {
-      it('verticalMode: false => choicesLayout: horizontal', () => {
-        w = wrapper({model: model({ verticalMode: false, choicesLayout: undefined })});
+    describe('createDefaultModel', () => {
+      it('sets choicesLayout: horizontal if verticalMode: false', () => {
+        const m = MultipleChoice.createDefaultModel(model({ verticalMode: false, choicesLayout: undefined }));
 
-        expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
-          verticalMode: false,
-          choicesLayout: 'horizontal'
-        });
+        expect(m.choicesLayout).toEqual('horizontal')
       });
 
-      it('verticalMode: true => choicesLayout: vertical', () => {
-        w = wrapper({model: model({ verticalMode: true, choicesLayout: undefined })});
+      it('sets choicesLayout: vertical if verticalMode: true', () => {
+        const m = MultipleChoice.createDefaultModel(model({ verticalMode: true, choicesLayout: undefined }));
 
-        expect(onModelChanged).toBeCalledWith({
-          ...initialModel,
-          verticalMode: true,
-          choicesLayout: 'vertical'
-        });
+        expect(m.choicesLayout).toEqual('vertical')
       });
 
+      it('sets choicesLayout: grid if verticalMode: true && choicesLayout: grid', () => {
+        const m = MultipleChoice.createDefaultModel(model({ verticalMode: true, choicesLayout: 'grid' }));
+
+        expect(m.choicesLayout).toEqual('grid')
+      });
+
+      it('sets choicesLayout: vertical', () => {
+        const m = MultipleChoice.createDefaultModel(model());
+
+        expect(m.choicesLayout).toEqual('vertical')
+      });
     });
 
     describe('onAddChoice', () => {

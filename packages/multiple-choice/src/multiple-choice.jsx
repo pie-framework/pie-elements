@@ -1,94 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ChoiceInput from './choice-input';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible , PreviewPrompt} from '@pie-lib/render-ui';
-
-// Choice
-
-export class Choice extends React.Component {
-  onChange = (choice) => {
-    const { disabled, onChoiceChanged } = this.props;
-
-    if (!disabled) {
-      onChoiceChanged(choice);
-    }
-  };
-
-  render() {
-    const {
-      choice,
-      index,
-      choicesLength,
-      showCorrect,
-      isEvaluateMode,
-      choiceMode,
-      disabled,
-      checked,
-      correctness,
-      displayKey,
-      classes,
-      choicesLayout,
-      gridColumns
-    } = this.props;
-    const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
-
-    const feedback = !isEvaluateMode || showCorrect ? '' : choice.feedback;
-
-    const choiceProps = {
-      ...choice,
-      checked,
-      choiceMode,
-      disabled,
-      feedback,
-      correctness,
-      displayKey,
-      choicesLayout,
-      gridColumns,
-      onChange: this.onChange,
-    };
-
-    const names = classNames(classes.choice, {
-      [classes.noBorder]: (index === choicesLength - 1) || this.props.choicesLayout !== 'vertical'
-    });
-
-    return (
-      <div className={choiceClass} key={index}>
-        <ChoiceInput {...choiceProps} className={names} />
-      </div>
-    );
-  }
-}
-
-Choice.propTypes = {
-  choiceMode: PropTypes.oneOf(['radio', 'checkbox']),
-  choice: PropTypes.object,
-  disabled: PropTypes.bool.isRequired,
-  onChoiceChanged: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  index: PropTypes.number,
-  choicesLength: PropTypes.number,
-  showCorrect: PropTypes.bool,
-  isEvaluateMode: PropTypes.bool,
-  checked: PropTypes.bool,
-  correctness: PropTypes.string,
-  displayKey: PropTypes.string,
-  choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-  gridColumns: PropTypes.string
-};
-
-const StyledChoice = withStyles({
-  choice: {
-    paddingTop: '20px',
-    paddingBottom: '10px',
-    borderBottom: '1px solid #E0DEE0',
-  },
-  noBorder: {
-    borderBottom: 'none',
-  }
-})(Choice);
+import { color, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
+import StyledChoice from './choice';
 
 // MultipleChoice
 
@@ -103,14 +19,16 @@ const styles = {
   horizontalLayout: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   gridLayout: {
-    display: 'grid'
+    display: 'grid',
   },
-  getColumns: function(columns) {
-      return columns > 1 ? {gridTemplateColumns: `repeat(${columns}, 1fr)`} : undefined;
-  }
+  getColumns: function (columns) {
+    return columns > 1
+      ? { gridTemplateColumns: `repeat(${columns}, 1fr)` }
+      : undefined;
+  },
 };
 
 export class MultipleChoice extends React.Component {
@@ -122,20 +40,22 @@ export class MultipleChoice extends React.Component {
     prompt: PropTypes.string,
     teacherInstructions: PropTypes.string,
     session: PropTypes.object,
-    disabled: PropTypes.bool.isRequired,
-    onChoiceChanged: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
+    onChoiceChanged: PropTypes.func,
     responseCorrect: PropTypes.bool,
     classes: PropTypes.object.isRequired,
     correctResponse: PropTypes.array,
     choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
-    gridColumns: PropTypes.string
+    gridColumns: PropTypes.string,
+    alwaysShowCorrect: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      showCorrect: false,
+      showCorrect: this.props.alwaysShowCorrect || false,
     };
 
     this.onToggle = this.onToggle.bind(this);
@@ -211,34 +131,58 @@ export class MultipleChoice extends React.Component {
       responseCorrect,
       teacherInstructions,
       classes,
+      alwaysShowCorrect,
+      animationsDisabled
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
-    
+
     return (
-      <div className={classes.corespringChoice}>
+      <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (
           <React.Fragment>
-            <Collapsible
-              labels={{
-                hidden: 'Show Teacher Instructions',
-                visible: 'Hide Teacher Instructions',
-              }}
-            >
-              <PreviewPrompt className="prompt" prompt={teacherInstructions} />
-            </Collapsible>
+            {!animationsDisabled ?
+              <Collapsible
+                labels={{
+                  hidden: 'Show Teacher Instructions',
+                  visible: 'Hide Teacher Instructions',
+                }}
+              >
+                <PreviewPrompt
+                  tagName="div"
+                  className="prompt"
+                  prompt={teacherInstructions}
+                />
+              </Collapsible> :
+              <PreviewPrompt
+                tagName="div"
+                className="prompt"
+                defaultClassName="teacher-instructions"
+                prompt={teacherInstructions}
+              />}
             <br />
           </React.Fragment>
         )}
-        <CorrectAnswerToggle
-          show={showCorrectAnswerToggle}
-          toggled={showCorrect}
-          onToggle={this.onToggle.bind(this)}
-        />
+        {!alwaysShowCorrect && (
+          <CorrectAnswerToggle
+            show={showCorrectAnswerToggle}
+            toggled={showCorrect}
+            onToggle={this.onToggle.bind(this)}
+          />
+        )}
         {showCorrectAnswerToggle && <br />}
-        <PreviewPrompt className="prompt" prompt={prompt}/>
-        <div className={classNames({ [classes.gridLayout]: this.props.choicesLayout === 'grid'}, {[classes.horizontalLayout]: this.props.choicesLayout === 'horizontal' })} style={styles.getColumns(this.props.gridColumns)}>
+        <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} />
+        <div
+          className={classNames(
+            { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
+            {
+              [classes.horizontalLayout]:
+                this.props.choicesLayout === 'horizontal',
+            }
+          )}
+          style={styles.getColumns(this.props.gridColumns)}
+        >
           {choices.map((choice, index) => (
             <StyledChoice
               choicesLayout={this.props.choicesLayout}
@@ -252,6 +196,7 @@ export class MultipleChoice extends React.Component {
               choiceMode={choiceMode}
               disabled={disabled}
               onChoiceChanged={onChoiceChanged}
+              hideTick={choice.hideTick}
               checked={
                 showCorrect
                   ? choice.correct || false
