@@ -93,7 +93,7 @@ export class Main extends React.Component {
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />}
-        {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
+        {prompt && <div className="prompt" dangerouslySetInnerHTML={{ __html: prompt }}/>}
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
@@ -102,7 +102,7 @@ export class Main extends React.Component {
         />
         {displayNote && (
           <div
-            className={classes.note}
+            className={classNames(classes.note, 'note')}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
           />
         )}
@@ -114,7 +114,7 @@ export class Main extends React.Component {
                 <div dangerouslySetInnerHTML={{ __html: rationale }}/>
               </Collapsible>
               :
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>}
+              <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>}
           </div>
         )}
       </div>
