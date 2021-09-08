@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextSelect } from '@pie-lib/text-select';
+import { TextSelect, prepareText } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, Collapsible, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -30,6 +30,18 @@ export class Main extends React.Component {
 
   UNSAFE_componentWillReceiveProps() {
     this.setState({ showCorrectAnswer: false });
+
+    const { model } = this.props;
+
+    if(!model.unpreparedText) {
+      const oldModel = {
+        ...model
+      };
+      const newText = prepareText(oldModel.text);
+
+      model.unpreparedText = oldModel.text;
+      model.text = newText;
+    }
   }
 
   toggleShowCorrect = () => {
