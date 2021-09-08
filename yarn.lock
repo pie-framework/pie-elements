@@ -2323,7 +2323,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.4.1", "@pie-lib/graphing@^2.4.2":
+"@pie-lib/graphing@^2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.4.2.tgz#c6ead5937488674b8f83566db387feaf724566c4"
   integrity sha512-tlSxV3KBMklQRSt6HIdPxo94Il9E3RxXQlANqLJxORBPMLWu7GFtPjarqqyh4LFI+ObnSNZlDoxxySrtP1J/lA==
@@ -2360,7 +2360,7 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.10.19", "@pie-lib/mask-markup@^1.10.20":
+"@pie-lib/mask-markup@^1.10.20":
   version "1.10.20"
   resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.10.20.tgz#6390a07797b9c5f5c18b41bfe715a8726b0507af"
   integrity sha512-8LLNBdy/sZ+z9dktP3BGE2WNhU3BE8h5u+qrCooq5aVkAWNkIV2mb87n5ysOzouaJy0g7hnDEm0aCmLBESTVFg==
@@ -2499,7 +2499,7 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.3.5":
+"@pie-lib/rubric@^0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.3.6.tgz#7f42f9db2be0030a92ddd320c05784552b943a3c"
   integrity sha512-jLM4xAjUB1VcAhZpuQT3j6l/ed4TXMwgjnUJ0qO8uf6B1/IlOCqeXugYv1R6aOvqEL9k/IbDFCAk31dUR796Yg==
@@ -2514,7 +2514,7 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.131":
+"@pie-lib/scoring-config@^3.5.132":
   version "3.5.132"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.132.tgz#50d50984ccd778220c13e2dbbc57ac976ab369b7"
   integrity sha512-vDz/4JYzk7tuvYYHxB58iHHxw3NZ4cpT0ETvynyB/Bsp7r64rTF5LsV4upJdO1/oHy36Ut8lY+wWlebrHSU3Ng==
@@ -2536,13 +2536,13 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.14.tgz#2692a92838d6baf2c45172e48d9c600bd842094e"
   integrity sha512-CWtR+ihnwWXEX78wFFvTIXcvvrKwYtbk7b8d1dpsUnCOVlHaPE7hZK4/t1T+NA5NkrNKfjybMCX4vwI9WT/eEw==
 
-"@pie-lib/text-select@^1.8.4":
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.4.tgz#7e554808e5cf8c198bc29218d897008f0686cd18"
-  integrity sha512-lZA0GeL/yUApqTyORwMkoLC3bTztnRoCVHfjMZJr7GMzY75VIkhxgTs6g7JZMSeE7HghXgEM3KBRFII9eQ1Miw==
+"@pie-lib/text-select@^1.8.5":
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.5.tgz#d87121b672eeb11b92ad143bd8f82bb06893813b"
+  integrity sha512-VFMq7LgHZp9bnKQnwi64QjbhJj7W88582L7MOztDzoG+4I43FalOlHDCR0NzO2i1LpjPMXOL9b4DSvSDlKAvEA==
   dependencies:
     "@pie-framework/parse-english" "^1.0.0"
-    "@pie-lib/render-ui" "^4.11.9"
+    "@pie-lib/render-ui" "^4.12.0"
     "@pie-lib/style-utils" "^0.1.25"
     classnames "^2.2.6"
     debug "^4.1.1"
@@ -2643,6 +2643,19 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@react-dnd/shallowequal/-/shallowequal-2.0.0.tgz#a3031eb54129f2c66b2753f8404266ec7bf67f0a"
   integrity sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==
+
+"@rollup/plugin-commonjs@^20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-20.0.0.tgz#3246872dcbcb18a54aaa6277a8c7d7f1b155b745"
+  integrity sha512-5K0g5W2Ol8hAcTHqcTBHiA7M58tfmYi1o9KxeJuuRNpGaTa5iLjcyemBitCBcKXaHamOBBEH2dGom6v6Unmqjg==
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    commondir "^1.0.1"
+    estree-walker "^2.0.1"
+    glob "^7.1.6"
+    is-reference "^1.2.1"
+    magic-string "^0.25.7"
+    resolve "^1.17.0"
 
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
@@ -5182,6 +5195,11 @@ commander@^7.1.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
 
+commondir@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
+  integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
+
 compare-func@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/compare-func/-/compare-func-2.0.0.tgz#fb65e75edbddfd2e568554e8b5b05fff7a51fcb3"
@@ -6715,7 +6733,7 @@ expect@^23.6.0:
     jest-message-util "^23.4.0"
     jest-regex-util "^23.3.0"
 
-express@^4.16.3:
+express@^4.16.3, express@^4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
   integrity sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==
@@ -8385,7 +8403,7 @@ is-primitive@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-primitive/-/is-primitive-2.0.0.tgz#207bab91638499c07b2adf240a41a87210034575"
   integrity sha1-IHurkWOEmcB7Kt8kCkGochADRXU=
 
-is-reference@^1.1.2:
+is-reference@^1.1.2, is-reference@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/is-reference/-/is-reference-1.2.1.tgz#8b2dac0b371f4bc994fdeaba9eb542d03002d0b7"
   integrity sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==
@@ -13084,6 +13102,11 @@ rimraf@~2.6.2:
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
   dependencies:
     glob "^7.1.3"
+
+rollup-plugin-analyzer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-analyzer/-/rollup-plugin-analyzer-4.0.0.tgz#96b757ed64a098b59d72f085319e68cdd86d5798"
+  integrity sha512-LL9GEt3bkXp6Wa19SNR5MWcvHNMvuTFYg+eYBZN2OIFhSWN+pEJUQXEKu5BsOeABob3x9PDaLKW7w5iOJnsESQ==
 
 rollup-plugin-postcss@^4.0.0:
   version "4.0.1"

@@ -53,5 +53,10 @@
     "packages/*/configure",
     "packages/*/controller",
     "packages/*/print"
-  ]
+  ],
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "express": "^4.17.1",
+    "rollup-plugin-analyzer": "^4.0.0"
+  }
 }
