@@ -2,6 +2,10 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import { Main } from '../main';
 
+jest.mock('@pie-lib/text-select', () => ({
+  prepareText: jest.fn()
+}));
+
 describe('main', () => {
   const getWrapper = props => {
     return shallow(
