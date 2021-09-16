@@ -81,7 +81,19 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
+
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 ## `answer` (string, required)
 
@@ -109,7 +121,19 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
+
+## `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+## `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 ## `answer` (string, required)
 
@@ -124,6 +148,18 @@ an object with some alternatives for the correct answers
 
 Indicates if partial scoring is allowed.
 This property is not used yet.
+
+# `ignoreOrderDefault` (boolean, required)
+
+Indicates the default value for ignoreOrder, in case that it's not set
+
+Default: `"is false"`
+
+# `allowTrailingZerosDefault` (boolean, required)
+
+Indicates the default value for allowTrailingZeros, in case that it's not set
+
+Default: `"is false"`
 
 # `rationale` (string)
 
@@ -168,6 +204,21 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `note` (string)
+
+Indicates the note for the answer
+
+# `toolbarEditorPosition` (string, enum)
+
+Indicates the editor's toolbar position which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
@@ -193,6 +244,23 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `ConfigurePropWithEnabled` (object)
+
+Properties of the `ConfigurePropWithEnabled` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates the value of the item if it affects config-ui
+(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
 ## `ComplexFeedbackType` (object)
 
@@ -260,7 +328,19 @@ This element must be one of the following enum values:
 * `literal`
 * `symbolic`
 
-Default: `"is symbolic"`
+Default: `"is literal"`
+
+### `ignoreOrder` (boolean, required)
+
+Indicates if the order of expression elements in literal validation can be ignore - whilst the expression is still mathematically correct
+
+Default: `"is false"`
+
+### `allowTrailingZeros` (boolean, required)
+
+Indicates the allowance of trailing zeros in expressions - whilst the expression is still mathematically correct
+
+Default: `"is false"`
 
 ### `answer` (string, required)
 

@@ -106,8 +106,8 @@ export class InlineDropdown extends React.Component {
         {choiceRationalesHaveText && (
           <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
             <div>
-              {choiceRationales.map(choices =>
-                <div>
+              {choiceRationales.map((choices, index) =>
+                <div key={index}>
                   {choices && choices.length > 0 && choices.map( choice =>
                     <div className={classes.choiceRationale} key={choice.label}>
                       <div

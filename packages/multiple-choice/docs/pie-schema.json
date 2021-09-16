@@ -97,11 +97,32 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
-    "verticalMode": {
+    "choicesLayout": {
       "description": "Indicates the layout of choices for player",
-      "default": ": true",
-      "type": "boolean",
-      "title": "verticalMode"
+      "default": ": 'vertical'",
+      "enum": [
+        "grid",
+        "horizontal",
+        "vertical"
+      ],
+      "type": "string",
+      "title": "choicesLayout"
+    },
+    "gridColumns": {
+      "description": "Indicates the number of columns for the grid layout",
+      "default": ": 2",
+      "type": "number",
+      "title": "gridColumns"
+    },
+    "toolbarEditorPosition": {
+      "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
+      "default": ": 'bottom'",
+      "enum": [
+        "bottom",
+        "top"
+      ],
+      "type": "string",
+      "title": "toolbarEditorPosition"
     },
     "lockChoiceOrder": {
       "description": "Indicates the order of choices should be randomly ordered when presented to user",
@@ -152,6 +173,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "accessibilityLabelsEnabled": {
+      "description": "Indicates if Accessibility Labels are enabled",
+      "type": "boolean",
+      "title": "accessibilityLabelsEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -164,6 +190,7 @@
     }
   },
   "required": [
+    "accessibilityLabelsEnabled",
     "choices",
     "element",
     "feedbackEnabled",

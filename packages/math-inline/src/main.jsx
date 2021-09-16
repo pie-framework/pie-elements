@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { mq, HorizontalKeypad } from '@pie-lib/math-input';
+import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
 import { Feedback, Collapsible, Readable, hasText } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,6 +17,8 @@ let registered = false;
 const NEWLINE_LATEX = /\\newline/g;
 const REGEX = /{{response}}/gm;
 const DEFAULT_KEYPAD_VARIANT = 6;
+
+const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 function generateAdditionalKeys(keyData = []) {
   return keyData.map((key) => ({
@@ -264,7 +266,13 @@ export class Main extends React.Component {
     if (c.type === 'clear') {
       this.input.clear();
     } else if (c.type === 'command') {
-      this.input.cmd(c.value);
+      if (Array.isArray(c.value)) {
+        c.value.forEach(vv => {
+          this.input.cmd(vv);
+        });
+      } else {
+        this.input.cmd(c.value);
+      }
     } else if (c.type === 'cursor') {
       this.input.keystroke(c.value);
     } else {
@@ -287,6 +295,8 @@ export class Main extends React.Component {
   };
 
   subFieldChanged = (name, subfieldValue) => {
+    updateSpans();
+
     if (name) {
       this.setState(
         (state) => ({
@@ -323,22 +333,31 @@ export class Main extends React.Component {
     if (
       !relatedTarget ||
       !currentTarget ||
-      !(
-        relatedTarget.offsetParent &&
-        relatedTarget.offsetParent.children &&
-        relatedTarget.offsetParent.children[0] &&
-        relatedTarget.offsetParent.children[0].attributes &&
-        relatedTarget.offsetParent.children[0].attributes['data-keypad']
-      )
-    ) {
+      (!IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.attributes?.['data-keypad']) ||
+      (IS_SAFARI && !relatedTarget?.offsetParent?.children[0]?.children[0]?.attributes?.['data-keypad'])) {
       this.setState({ activeAnswerBlock: '' });
     }
   };
+
+  setTooltipRef(ref) {
+    // Safari Hack: https://stackoverflow.com/a/42764495/5757635
+    setTimeout(() => {
+      if (ref && IS_SAFARI) {
+        const div = document.querySelector('[role=\'tooltip\']');
+        if (div) {
+          const el = div.firstChild;
+          el.setAttribute('tabindex', '-1');
+        }
+      }
+    }, 1);
+  }
 
   render() {
     const { model, classes } = this.props;
     const state = this.state;
     const { activeAnswerBlock, showCorrect, session } = state;
+    const { config: { showNote, note, prompt, env: { mode, role } = {}} = {}} = model;
+    const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
 
     if (!model.config) {
       return null;
@@ -352,9 +371,11 @@ export class Main extends React.Component {
 
     const midContent = (
       <div className={classes.main}>
-        <div className={classes.content}>
-          <div dangerouslySetInnerHTML={{ __html: model.config.prompt }} />
-        </div>
+        {prompt && (
+          <div className={classes.content}>
+            <div dangerouslySetInnerHTML={{ __html: prompt }} />
+          </div>
+        )}
         <Readable false>
           <div className={classes.inputAndKeypadContainer}>
           {model.config.responseType === ResponseTypes.simple && (
@@ -376,6 +397,7 @@ export class Main extends React.Component {
               })}
             >
               <Tooltip
+                ref={ref => this.setTooltipRef(ref)}
                 interactive
                 open={!!activeAnswerBlock}
                 classes={{
@@ -427,6 +449,12 @@ export class Main extends React.Component {
           )}
         </div>
         </Readable>
+        {displayNote && (
+          <div
+            className={classes.note}
+            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
+          />
+        )}
       </div>
     );
 
@@ -557,6 +585,9 @@ const styles = (theme) => ({
   content: {
     marginTop: theme.spacing.unit * 2,
   },
+  note: {
+    paddingTop: '15px',
+  },
   collapsible: {
     marginTop: theme.spacing.unit * 2,
   },
@@ -569,7 +600,6 @@ const styles = (theme) => ({
   },
   expression: {
     maxWidth: 'fit-content',
-    marginTop: theme.spacing.unit * 2,
     '& > .mq-math-mode': {
       '& > .mq-root-block': {
         '& > .mq-editable-field': {
@@ -586,13 +616,38 @@ const styles = (theme) => ({
   inputAndKeypadContainer: {
     position: 'relative',
     '& .mq-overarrow-inner': {
-      border: 'none !important'
+      border: 'none !important',
+      padding: '0 !important'
     },
     '& .mq-overarrow-inner-right': {
       display: 'none !important'
     },
     '& .mq-overarrow-inner-left': {
       display: 'none !important'
+    },
+    '& .mq-overarrow.mq-arrow-both': {
+      minWidth: '1.23em',
+      '&:before': {
+        top: '-0.4em',
+        left: '-1px'
+      },
+      '&:after': {
+        top: '-2.36em',
+        right: '-1px'
+      },
+      '&.mq-empty:after': {
+        top: '-0.45em'
+      }
+    },
+    '& .mq-overarrow.mq-arrow-right': {
+      '&:before': {
+        top: '-0.4em',
+        right: '-1px'
+      }
+    },
+    '& .mq-longdiv-inner': {
+      borderTop: '1px solid !important',
+      paddingTop: '1.5px !important'
     }
   },
   showCorrectness: {

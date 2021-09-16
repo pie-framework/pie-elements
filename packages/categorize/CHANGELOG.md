@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.7.2...@pie-element/categorize@6.8.0) (2021-08-05)
+
+
+### Features
+
+* **categorize:** set toolbar editor position to bottom ([10da834](https://github.com/pie-framework/pie-elements/commit/10da834902b136aa4fa83e46315d9155d4308b5a))
+
+
+
+
+
+## [6.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.7.0...@pie-element/categorize@6.7.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.6.0...@pie-element/categorize@6.7.0) (2021-06-29)
+
+
+### Bug Fixes
+
+* **categorize:** Fixed choices position ([#611](https://github.com/pie-framework/pie-elements/issues/611)) ([2494876](https://github.com/pie-framework/pie-elements/commit/2494876a03221fdae5d77ae4bbb992042e98e2df))
+* Removed excess white space at the beginning of all items - PD-1184 ([#602](https://github.com/pie-framework/pie-elements/issues/602)) ([25b9f72](https://github.com/pie-framework/pie-elements/commit/25b9f72d2fe73bd46ea1a5c3611ff82eef3efb84))
+* **categorize:** Changed category labels font size - PD-1141 ([#572](https://github.com/pie-framework/pie-elements/issues/572)) ([7df6244](https://github.com/pie-framework/pie-elements/commit/7df6244c687f8d713d6403313b49f315600d7a84))
+* **categorize:** Fixed Row labels appearance and the display of categories - PD-197 ([#594](https://github.com/pie-framework/pie-elements/issues/594)) ([825724e](https://github.com/pie-framework/pie-elements/commit/825724e57a3c95b29c4f9ecfafea0618ed38b250))
+
+
+### Features
+
+* **categorize:** Changed draggable tokens to be sized according to their content PD-401 ([#609](https://github.com/pie-framework/pie-elements/issues/609)) ([e5ae5d5](https://github.com/pie-framework/pie-elements/commit/e5ae5d5db3188a8bd732048ee4b70761810815e5))
+* Displayed a message when the item has one or more alternate answers - PD-167 ([#590](https://github.com/pie-framework/pie-elements/issues/590)) ([889d8b5](https://github.com/pie-framework/pie-elements/commit/889d8b578a915c997a95bd5cd4bdf18f53cc2b68))
+* remove audio and video buttons from various fields of various items PD-1180 ([#601](https://github.com/pie-framework/pie-elements/issues/601)) ([8766b25](https://github.com/pie-framework/pie-elements/commit/8766b25690f5dde6c3e896860d63e205bf3c831b))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.5.18...@pie-element/categorize@6.6.0) (2021-04-07)
 
 

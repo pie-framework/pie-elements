@@ -11,7 +11,8 @@ export default {
     rationaleEnabled: true,
     choiceRationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    toolbarEditorPosition: 'bottom'
   },
   configuration: {
     prompt: {
@@ -37,6 +38,10 @@ export default {
     choiceRationale: {
       settings: true,
       label: 'Choice Rationale'
-    }
+    },
+    toolbarEditorPosition:{
+      settings: false,
+      label: 'Toolbar Editor Position'
+    },
   }
 };

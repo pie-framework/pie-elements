@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.16...@pie-element/image-cloze-association-controller@3.2.17) (2021-08-05)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** Fixed scoring method console errors PD-1249 ([1484c63](https://github.com/pie-framework/pie-elements/commit/1484c6354d59afcc0b541232c70ddfc5869ecfee))
+
+
+
+
+
+## [3.2.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.14...@pie-element/image-cloze-association-controller@3.2.16) (2021-08-05)
+
+
+### Bug Fixes
+
+* force bump ([5ea7295](https://github.com/pie-framework/pie-elements/commit/5ea7295e4755fbc492a76e7ec69e5fc35b196919))
+
+
+
+
+
+## [3.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.13...@pie-element/image-cloze-association-controller@3.2.14) (2021-06-29)
+
+
+### Bug Fixes
+
+* image-cloze-association create schemas for PD-1095 ([#562](https://github.com/pie-framework/pie-elements/issues/562)) ([d2e39da](https://github.com/pie-framework/pie-elements/commit/d2e39da045f594938239f1a25ac9786bdaffa6d9))
+
+
+
+
+
 ## [3.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.10...@pie-element/image-cloze-association-controller@3.2.13) (2021-03-03)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association-controller

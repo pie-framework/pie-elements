@@ -23,11 +23,6 @@ defineMultipleChoice();
 const prepareCustomizationObject = (config, model) => {
   const configuration = defaults(config, sensibleDefaults.configuration);
   configuration.settingsPanelDisabled = true;
-  // it is required for ebsr partA not to allow changing response type
-  configuration.partA.choiceMode = {
-    settings: false,
-    label: 'Response Type'
-  };
 
   return {
     configuration,
@@ -35,17 +30,21 @@ const prepareCustomizationObject = (config, model) => {
   };
 };
 
+const { model: modelDefault } = sensibleDefaults || {};
+
 export default class EbsrConfigure extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...sensibleDefaults.model,
+  static createDefaultModel = ({ partA = {}, partB = {}, ...model } = {}, defaults = modelDefault) => ({
+    ...defaults,
     ...model,
     partA: {
-      ...sensibleDefaults.model.partA,
-      ...model.partA
+      ...defaults.partA,
+      ...partA,
+      choicesLayout: partA.choicesLayout || (partA.verticalMode === false && 'horizontal') || defaults.partA.choicesLayout
     },
     partB: {
-      ...sensibleDefaults.model.partB,
-      ...model.partB
+      ...defaults.partB,
+      ...partB,
+      choicesLayout: partB.choicesLayout || (partB.verticalMode === false && 'horizontal') || defaults.partB.choicesLayout
     },
   });
 
@@ -53,23 +52,13 @@ export default class EbsrConfigure extends HTMLElement {
     super();
 
     this._model = EbsrConfigure.createDefaultModel();
+
     this._configuration = sensibleDefaults.configuration;
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
   }
 
   set model(m) {
-    this._model = {
-      ...this._model,
-      ...m,
-      partA: {
-        ...this._model.partA,
-        ...m.partA,
-      },
-      partB: {
-        ...this._model.partB,
-        ...m.partB,
-      }
-    };
+    this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this._render();
   }
@@ -81,18 +70,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelChanged = (m, reset) => {
-    this._model = {
-      ...this._model,
-      ...m,
-      partA: {
-        ...this._model.partA,
-        ...m.partA,
-      },
-      partB: {
-        ...this._model.partB,
-        ...m.partB,
-      }
-    };
+    this._model = EbsrConfigure.createDefaultModel(m, this._model);
 
     this.dispatchModelUpdated(reset);
     this._render();
@@ -117,6 +95,7 @@ export default class EbsrConfigure extends HTMLElement {
   }
 
   onModelUpdated = e => {
+
     if (e.target === this) {
       return;
     }

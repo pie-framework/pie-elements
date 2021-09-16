@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/hotspot",
-  "version": "4.8.0",
+  "version": "4.9.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^2.3.8",
-    "@pie-lib/render-ui": "^4.11.7",
+    "@pie-lib/math-rendering": "^2.3.9",
+    "@pie-lib/render-ui": "^4.12.0",
     "konva": "^3.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",

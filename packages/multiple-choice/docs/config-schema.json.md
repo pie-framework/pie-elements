@@ -84,9 +84,21 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `verticalMode` (object)
+# `choicesLayout` (object)
 
-Properties of the `verticalMode` object:
+Properties of the `choicesLayout` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+# `gridColumns` (object)
+
+Properties of the `gridColumns` object:
 
 ## `settings` (boolean)
 
@@ -184,6 +196,18 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
+
+# `accessibility` (object)
+
+Properties of the `accessibility` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
 
 # `showPrompt` (boolean)
 

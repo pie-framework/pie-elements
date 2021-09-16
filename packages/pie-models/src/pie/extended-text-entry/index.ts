@@ -72,7 +72,12 @@ export interface ExtendedTextEntryPie extends PieModel {
   studentInstructionsEnabled: boolean;
 
   /** Indicates if Teacher Instructions are enabled */
-  teacherInstructionsEnabled: boolean;
+  teacherInstructionsEnabled: boolean;  /**
+
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**

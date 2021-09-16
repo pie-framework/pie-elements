@@ -151,6 +151,12 @@ export interface NumberLinePie extends PieModel {
 
   /**  The question prompt or item stem */
   prompt?: string;
+
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**

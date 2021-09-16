@@ -49,11 +49,18 @@ const prepareCustomizationObject = (config, model) => {
 };
 
 export default class MultipleChoice extends HTMLElement {
-  static createDefaultModel = (model = {}) => utils.normalizeChoices({
-    ...sensibleDefaults.model,
-    ...model,
-    choices: generateFormattedChoices((model && model.choices) || [])
-  });
+  static createDefaultModel = (model = {}) => {
+    const normalizedModel = utils.normalizeChoices({
+      ...sensibleDefaults.model,
+      ...model,
+      choices: generateFormattedChoices((model && model.choices) || [])
+    });
+
+    // This is used for offering support for old models which have the property "verticalMode"
+    normalizedModel.choicesLayout = model.choicesLayout || (model.verticalMode === false && 'horizontal') || sensibleDefaults.model.choicesLayout;
+
+    return normalizedModel;
+  }
 
   constructor() {
     super();
@@ -91,6 +98,7 @@ export default class MultipleChoice extends HTMLElement {
   onModelChanged(m, reset) {
     this._model = m;
     this._render();
+
     this.dispatchModelUpdated(reset);
   }
 

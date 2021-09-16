@@ -142,6 +142,7 @@ class GeneralConfigBlock extends React.Component {
     onChange: PropTypes.func.isRequired,
     promptEnabled: PropTypes.bool,
     rationaleEnabled: PropTypes.bool,
+    toolbarOpts: PropTypes.object
   };
 
   constructor(props) {
@@ -328,6 +329,7 @@ class GeneralConfigBlock extends React.Component {
       configuration,
       promptEnabled,
       rationaleEnabled,
+      toolbarOpts
     } = this.props;
     const { showKeypad } = this.state;
     const {
@@ -339,7 +341,7 @@ class GeneralConfigBlock extends React.Component {
       responseType,
       rationale,
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {} } = configuration || {};
 
     const classNames = {
       editor: classes.responseEditor,
@@ -365,6 +367,7 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('prompt')}
               imageSupport={imageSupport}
               nonEmpty={false}
+              toolbarOpts={toolbarOpts}
             />
           </InputContainer>
         )}
@@ -384,6 +387,7 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('rationale')}
               imageSupport={imageSupport}
               nonEmpty={false}
+              toolbarOpts={toolbarOpts}
             />
           </InputContainer>
         )}
@@ -455,6 +459,8 @@ class GeneralConfigBlock extends React.Component {
             defaultResponse={responseType === ResponseTypes.simple}
             onResponseChange={this.onResponseChange}
             index={idx}
+            cIgnoreOrder={cIgnoreOrder}
+            cAllowTrailingZeros={cAllowTrailingZeros}
           />
         ))}
       </div>

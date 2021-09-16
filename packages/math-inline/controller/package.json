@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/math-inline-controller",
   "private": true,
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -11,7 +11,7 @@
   "dependencies": {
     "@pie-lib/controller-utils": "^0.2.26",
     "@pie-lib/feedback": "^0.4.27",
-    "@pie-lib/math-evaluator": "2.1.6",
+      "@pie-framework/math-validation": "^1.0.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.15"
   },

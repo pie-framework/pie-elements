@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "6.6.0",
+  "version": "6.8.0",
   "description": "",
   "author": "pie framework developers",
   "license": "ISC",
@@ -12,10 +12,10 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/categorize": "^0.6.24",
-    "@pie-lib/correct-answer-toggle": "^2.3.26",
+    "@pie-lib/correct-answer-toggle": "^2.3.29",
     "@pie-lib/drag": "^1.1.52",
-    "@pie-lib/math-rendering": "^2.3.8",
-    "@pie-lib/render-ui": "^4.11.7",
+    "@pie-lib/math-rendering": "^2.3.9",
+    "@pie-lib/render-ui": "^4.12.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",

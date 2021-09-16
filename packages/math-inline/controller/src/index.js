@@ -1,60 +1,15 @@
 import debug from 'debug';
 import isEmpty from 'lodash/isEmpty';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
-import areValuesEqual from '@pie-lib/math-evaluator';
 import { ResponseTypes } from './utils';
 
 import defaults from './defaults';
 
+import * as mv from '@pie-framework/math-validation';
+
+
 const log = debug('@pie-element:math-inline:controller');
-const decimalRegex = /\.|,/g;
-const decimalCommaRegex = /,/g;
-const textRegex = /\\text\{([^{}]+)\}/g;
-const decimalWithThousandSeparatorNumberRegex = /^(?!0+\.00)(?=.{1,9}(\.|$))(?!0(?!\.))\d{1,3}(,\d{3})*(\.\d+)?$/;
-const noNumbers = /[^0-9.,]+/g;
 
-/**
- * TODO:
- *
- * We have `stringCheck` which if true disabled 'literal' and 'symbolic' so really it should be a validation method. And if it is what's the difference between it and 'literal'?
- *
- * We should support a equivalence option per correct response like:
- * responses: [ { answer: '..', validation: 'symbolic', alternates: [{ value: '..', validation: 'stringCompare'}, 'abc'] } ]
- *
- * if option is a string it is turned into an object w/ inherited opts.
- *
- * This would override any shared setting at the root.
- */
-
-function processAnswerItem(answerItem = '', isLiteral) {
-  // looks confusing, but we're replacing U+002D and U+2212 (minus and hyphen) so we have the same symbol everywhere consistently
-  // further processing is to be added here if needed
-  let newAnswerItem = answerItem.replace('−', '-');
-
-  newAnswerItem = newAnswerItem.replace(/\\cdot/g, '\\times');
-
-  // also ignore text nodes, just swap out with empty string
-
-  newAnswerItem = newAnswerItem.replace(textRegex, '');
-  if (
-    containsDecimal(newAnswerItem) && validExpressionWithThousandSeparator(newAnswerItem)
-  ) {
-    newAnswerItem = newAnswerItem.replace(decimalCommaRegex, '');
-  }
-
-  newAnswerItem = newAnswerItem.replace(/\\ /g, '').replace(/ /g, '');
-
-  // eslint-disable-next-line no-useless-escape
-  newAnswerItem = newAnswerItem
-    .replace(/\\%/g, '')
-    .replace(/%/g, '');
-
-  return isLiteral ? stripForStringCompare(newAnswerItem) : newAnswerItem;
-}
-
-function containsDecimal(expression = '') {
-  return expression.match(decimalRegex);
-}
 
 const getResponseCorrectness = (model, answerItem, isOutcome) => {
   const correctResponses = model.responses;
@@ -64,7 +19,7 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     return {
       correctness: 'unanswered',
       score: isOutcome ? 0 : '0%',
-      correct: false
+      correct: false,
     };
   }
 
@@ -72,10 +27,11 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
     isAdvanced ? correctResponses : correctResponses.slice(0, 1),
     answerItem
   );
+
   const correctnessObject = {
     correctness: 'incorrect',
     score: isOutcome ? 0 : '0%',
-    correct: false
+    correct: false,
   };
 
   if (isAnswerCorrect) {
@@ -87,110 +43,47 @@ const getResponseCorrectness = (model, answerItem, isOutcome) => {
   return correctnessObject;
 };
 
-const stripTargets = [
-  /{/g,
-  /}/g,
-  /\[/g,
-  /]/g,
-  /\\ /g,
-  /\\/g,
-  /\\s/g,
-  /left/g,
-  /right/g,
-  / /g
-];
-
-const validExpressionWithThousandSeparator = (answer) => {
-  const numericValues = answer.split(noNumbers);
-
-  for (let i = 0; i < numericValues.length; i++) {
-    if (numericValues[i] != '' && containsDecimal(numericValues[i]) && !decimalWithThousandSeparatorNumberRegex.test(numericValues[i])) {
-
-      return false;
-    }
-  }
-
-  return true
-}
-
-function stripForStringCompare(answer = '') {
-  let stripped = answer;
-
-  stripTargets.forEach(stripTarget => {
-    return (stripped = stripped.replace(stripTarget, ''));
-  });
-
-  return stripped;
-}
-
-function handleStringBasedCheck(acceptedValues, answerItem) {
-  let answerValueToUse = processAnswerItem(answerItem, true);
-  let answerCorrect = false;
-
-  for (let i = 0; i < acceptedValues.length; i++) {
-    let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
-
-    answerCorrect = answerValueToUse === acceptedValueToUse;
-
-    if (answerCorrect === true) {
-      break;
-    }
-  }
-
-  return answerCorrect;
-}
 
 function getIsAnswerCorrect(correctResponseItem, answerItem) {
   let answerCorrect = false;
 
-  correctResponseItem.forEach(correctResponse => {
-    // if not already deemed correct for one of the correct responses
+  (correctResponseItem || []).forEach(correctResponse => {
+
+    let opts = {
+      mode: correctResponse.validation || defaults.validationDefault
+    }
+
+    if (opts.mode == 'literal') {
+      opts.literal = {
+        allowTrailingZeros: correctResponse.allowTrailingZeros || false,
+        ignoreOrder: correctResponse.ignoreOrder || false,
+      };
+    }
+
     if (!answerCorrect) {
       const acceptedValues = [correctResponse.answer].concat(
         Object.keys(correctResponse.alternates || {}).map(
           alternateId => correctResponse.alternates[alternateId]
         )
-      );
+      ) || [];
 
-      if (correctResponse.validation === 'literal') {
+      try {
         for (let i = 0; i < acceptedValues.length; i++) {
-          let answerValueToUse = processAnswerItem(answerItem, true);
-          let acceptedValueToUse = processAnswerItem(acceptedValues[i], true);
+          answerCorrect = mv.latexEqual(answerItem, acceptedValues[i], opts)
 
-          if (acceptedValueToUse === answerValueToUse) {
-            answerCorrect = true;
+          if (answerCorrect) {
             break;
           }
         }
-      } else {
-        try {
-          for (let i = 0; i < acceptedValues.length; i++) {
-            // let answerValueToUse = processAnswerItem(answerItem);
-            // let acceptedValueToUse = processAnswerItem(acceptedValues[i]);
+      } catch (e) {
+        log(
+          'Parse failure when evaluating math',
+          e,
+          correctResponse,
+          answerItem
+        );
 
-            answerCorrect = areValuesEqual(
-              processAnswerItem(acceptedValues[i]),
-              processAnswerItem(answerItem),
-              {
-                isLatex: true,
-                allowThousandsSeparator: correctResponse.allowThousandsSeparator
-              }
-            );
-            if (answerCorrect) {
-              break;
-            }
-          }
-        } catch (e) {
-          log(
-            'Parse failure when evaluating math',
-            e,
-            correctResponse,
-            answerItem
-          );
-          // try to string check compare, last resort?
-          // once invalid models have been weeded out, this'll get removed.
-          answerCorrect = handleStringBasedCheck(acceptedValues, answerItem);
-        }
+        answerCorrect = false;
       }
     }
   });
@@ -211,18 +104,18 @@ const getCorrectness = (question, env, session, isOutcome) => {
 };
 
 export function createDefaultModel(model = {}) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     resolve({
       config: {
         ...defaults,
-        ...model
-      }
+        ...model,
+      },
     });
   });
 }
 
 export const outcome = (question, session, env) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (env.mode !== 'evaluate') {
       resolve({ score: undefined, completed: undefined });
     } else {
@@ -237,17 +130,30 @@ export const outcome = (question, session, env) => {
   });
 };
 
-export const normalize = question => ({
-  feedbackEnabled: true,
-  promptEnabled: true,
-  rationaleEnabled: true,
-  teacherInstructionsEnabled: true,
-  studentInstructionsEnabled: true,
-  ...question
-});
+export const normalize = (question) => {
+
+  // making sure that defaults are set
+  if (!isEmpty(question.responses)) {
+    question.responses = question.responses.map(correctResponse => ({
+      ...correctResponse, validation: correctResponse.validation || question.validationDefault,
+      allowTrailingZeros: correctResponse.allowTrailingZeros || question.allowTrailingZerosDefault,
+      ignoreOrder: correctResponse.ignoreOrder || question.ignoreOrderDefault
+    }))
+  }
+
+  return {
+    ...defaults,
+    feedbackEnabled: true,
+    promptEnabled: true,
+    rationaleEnabled: true,
+    teacherInstructionsEnabled: true,
+    studentInstructionsEnabled: true,
+    ...question,
+  }
+}
 
 export function model(question, session, env) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
     const correctResponse = {};
@@ -264,25 +170,40 @@ export function model(question, session, env) {
         ? getFeedbackForCorrectness(correctness, normalizedQuestion.feedback)
         : Promise.resolve(undefined);
 
-    fb.then(feedback => {
+    fb.then((feedback) => {
       const base = {
         config,
         correctness,
         feedback,
         disabled: env.mode !== 'gather',
-        view: env.mode === 'view'
+        view: env.mode === 'view',
       };
 
       let out;
+      let showNote = false;
+
+      ((config && config.responses) || []).forEach((response) => {
+        if (
+          response.validation === 'symbolic' ||
+          Object.keys(response.alternates || {}).length > 0
+        ) {
+          showNote = true;
+          return;
+        }
+      });
 
       if (env.mode === 'evaluate') {
+
         out = Object.assign(base, {
-          correctResponse
+          correctResponse,
         });
+
+        out.config.showNote = showNote;
       } else {
         out = base;
 
         out.config.responses = [];
+        out.config.showNote = false;
       }
 
       if (
@@ -295,6 +216,7 @@ export function model(question, session, env) {
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
+        out.config.showNote = showNote;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
@@ -302,6 +224,7 @@ export function model(question, session, env) {
         out.config.teacherInstructions = null;
       }
 
+      out.config.env = env;
       out.config.prompt = normalizedQuestion.promptEnabled
         ? normalizedQuestion.prompt
         : null;
@@ -312,20 +235,20 @@ export function model(question, session, env) {
   });
 }
 
-const escape = string => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 
-const simpleSessionResponse = question =>
-  new Promise(resolve => {
+const simpleSessionResponse = (question) =>
+  new Promise((resolve) => {
     const { responses } = question;
     const { answer } = responses ? responses[0] : {};
     resolve({
       id: question.id,
       response: answer,
-      completeAnswer: answer
+      completeAnswer: answer,
     });
   });
 
-const advancedSessionResponse = question =>
+const advancedSessionResponse = (question) =>
   new Promise((resolve, reject) => {
     const { responses } = question;
     const { answer } = responses ? responses[0] : {};
@@ -335,7 +258,7 @@ const advancedSessionResponse = question =>
       const RESPONSE_TOKEN = /\\{\\{\s*response\s*\\}\\}/g;
 
       const o = escape(e).split(RESPONSE_TOKEN);
-      const to = o.map(t => (t === '' ? t : t.replace(/\s+/g, () => ('\\s*'))));
+      const to = o.map((t) => (t === '' ? t : t.replace(/\s+/g, () => '\\s*')));
       const tt = to.join('(.*)');
 
       const m = answer.match(new RegExp(tt));
@@ -346,7 +269,7 @@ const advancedSessionResponse = question =>
         resolve({
           answers: {},
           completeAnswer: answer,
-          id: question.id
+          id: question.id,
         });
 
         console.log(`can not find match: ${o} in ${answer}`);
@@ -365,19 +288,18 @@ const advancedSessionResponse = question =>
       resolve({
         answers,
         completeAnswer: answer,
-        id: question.id
+        id: question.id,
       });
     } catch (e) {
       resolve({
         answers: {},
         completeAnswer: answer,
-        id: question.id
+        id: question.id,
       });
 
       console.error(e.toString());
     }
   });
-
 
 export const createCorrectResponseSession = (question, env) => {
   if (env.mode === 'evaluate' || env.role !== 'instructor') {

@@ -71,10 +71,22 @@ export class Configure extends React.Component {
       studentInstructions = {},
       rationale = {},
       prompt = {},
-      scoringType = {}
+      scoringType = {},
+      ignoreOrder = {},
+      allowTrailingZeros={}
     } = configuration || {};
     log('[render] model', model);
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
+    const toolbarOpts = {};
+
+    switch (model.toolbarEditorPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
 
     return (
       <div>
@@ -102,6 +114,10 @@ export class Configure extends React.Component {
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
                   scoringType: scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
+                  'ignoreOrder.enabled':
+                    ignoreOrder.settings && toggle(ignoreOrder.label),
+                  'allowTrailingZeros.enabled':
+                    allowTrailingZeros.settings && toggle(allowTrailingZeros.label),
                 },
               }}
             />
@@ -117,6 +133,7 @@ export class Configure extends React.Component {
                     onChange={this.changeTeacherInstructions}
                     imageSupport={imageSupport}
                     nonEmpty={false}
+                    toolbarOpts={toolbarOpts}
                   />
                 </InputContainer>
               )}
@@ -128,12 +145,14 @@ export class Configure extends React.Component {
                 onChange={this.onChange}
                 rationaleEnabled={rationaleEnabled}
                 promptEnabled={promptEnabled}
+                toolbarOpts={toolbarOpts}
               />
               {
                 feedbackEnabled && (
                   <FeedbackConfig
                     feedback={model.feedback}
                     onChange={this.onFeedbackChange}
+                    toolbarOpts={toolbarOpts}
                   />
                 )
               }

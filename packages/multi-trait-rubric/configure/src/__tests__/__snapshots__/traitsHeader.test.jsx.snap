@@ -62,6 +62,7 @@ exports[`Trait Header snapshot renders 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -77,6 +78,7 @@ exports[`Trait Header snapshot renders 1`] = `
       key="secondary-block-part-0"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -103,6 +105,7 @@ exports[`Trait Header snapshot renders 1`] = `
       key="secondary-block-part-1"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -129,6 +132,7 @@ exports[`Trait Header snapshot renders 1`] = `
       key="secondary-block-part-2"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -217,6 +221,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -227,6 +232,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
       key="secondary-block-part-0"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -253,6 +259,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
       key="secondary-block-part-1"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -279,6 +286,7 @@ exports[`Trait Header snapshot renders without description 1`] = `
       key="secondary-block-part-2"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -346,6 +354,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -361,6 +370,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
       key="secondary-block-part-0"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -387,6 +397,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
       key="secondary-block-part-1"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -413,6 +424,7 @@ exports[`Trait Header snapshot renders without level tag input 1`] = `
       key="secondary-block-part-2"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -501,6 +513,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -516,6 +529,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
       key="secondary-block-part-0"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -542,6 +556,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
       key="secondary-block-part-1"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -568,6 +583,7 @@ exports[`Trait Header snapshot renders without score point labels 1`] = `
       key="secondary-block-part-2"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -656,6 +672,7 @@ exports[`Trait Header snapshot renders without score point values 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -733,6 +750,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
   </WithStyles(Component)>
   <WithStyles(Component)
     setRef={[Function]}
+    width="undefinedpx"
   >
     <WithStyles(Component)>
       <div>
@@ -743,6 +761,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
       key="secondary-block-part-0"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -769,6 +788,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
       key="secondary-block-part-1"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {
@@ -795,6 +815,7 @@ exports[`Trait Header snapshot renders without standards 1`] = `
       key="secondary-block-part-2"
     >
       <WithStyles(Component)
+        alignToRight={false}
         onChange={[Function]}
         pluginProps={
           Object {

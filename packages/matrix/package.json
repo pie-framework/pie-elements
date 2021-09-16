@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +12,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^2.3.8",
-    "@pie-lib/render-ui": "^4.11.7",
+    "@pie-lib/math-rendering": "^2.3.9",
+    "@pie-lib/render-ui": "^4.12.0",
     "debug": "^4.1.1",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",

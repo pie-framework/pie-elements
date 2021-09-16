@@ -40,10 +40,13 @@ const defaultConfig = {
     settings: true,
     label: 'Teacher Instructions'
   },
-  verticalMode: {
-    settings: true,
-    label: 'Vertical Mode',
-  }
+  choicesLayout: {
+    settings: false,
+    label: 'Choices Layout',
+  },
+  gridColumns: {
+    label: 'Grid columns',
+  },
 };
 
 const partModel = base => ({
@@ -58,7 +61,8 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  verticalMode: true,
+  choicesLayout: 'vertical',
+  gridColumns: '2',
   ...base
 });
 
@@ -82,13 +86,7 @@ export default {
       settings: false,
       label: 'Scoring Type'
     },
-    partA: {
-      ...cloneDeep(defaultConfig),
-      choiceMode: {
-        settings: false,
-        label: 'Response Type'
-      }
-    },
+    partA: cloneDeep(defaultConfig),
     partB: cloneDeep(defaultConfig),
     partLabels: {
       settings: true,

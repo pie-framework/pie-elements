@@ -7,6 +7,10 @@ import {
 } from '../index';
 import isFunction from 'lodash/isFunction';
 
+jest.mock('@pie-lib/text-select', () => ({
+  prepareText: jest.fn()
+}));
+
 const token = (start, end, text, correct) => ({ start, end, text, correct });
 
 describe('getCorrectness', () => {
@@ -296,21 +300,6 @@ describe('model', () => {
 
     assert('correctness undefined in view', q(), {}, e({ mode: 'evaluate' }), {
       correctness: 'incorrect',
-    });
-
-    it('does not remove html entities from text', async () => {
-      const text =
-        '<p>&#8220;Lucy?&#63; Are you using your time wisely to plan your project?&#33;&#33;&#33;&#8221; Mr. Wilson asked.</p><p>Lucy looked a little confused at first. &#195; Then she grinned and proudly stated, &#8220;Why, yes I am! I plan to make a bird feeder for that tree out our window!&#8221;</p>';
-      const result = await model(
-        {
-          ...q(),
-          text,
-        },
-        s(),
-        e()
-      );
-
-      expect(result.text).toEqual(text);
     });
   });
 

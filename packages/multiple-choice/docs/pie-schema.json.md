@@ -80,11 +80,34 @@ The question prompt or item stem
 
 Determines if prompt should show
 
-# `verticalMode` (boolean)
+# `choicesLayout` (string, enum)
 
 Indicates the layout of choices for player
 
-Default: `": true"`
+This element must be one of the following enum values:
+
+* `grid`
+* `horizontal`
+* `vertical`
+
+Default: `": 'vertical'"`
+
+# `gridColumns` (number)
+
+Indicates the number of columns for the grid layout
+
+Default: `": 2"`
+
+# `toolbarEditorPosition` (string, enum)
+
+Indicates the editor's toolbar position which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
 
 # `lockChoiceOrder` (boolean)
 
@@ -126,6 +149,10 @@ Indicates if Student Instructions are enabled
 # `teacherInstructionsEnabled` (boolean, required)
 
 Indicates if Teacher Instructions are enabled
+
+# `accessibilityLabelsEnabled` (boolean, required)
+
+Indicates if Accessibility Labels are enabled
 
 # `id` (string, required)
 
