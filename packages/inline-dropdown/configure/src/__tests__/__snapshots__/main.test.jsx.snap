@@ -54,7 +54,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
                 "2",
               ],
             },
-            "choiceRationaleEnabled": false,
+            "choiceRationaleEnabled": true,
             "choices": Object {
               "0": Array [
                 Object {
@@ -183,6 +183,204 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
       />
       <br />
+      <div
+        key="0"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #1
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="cow "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for cow  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for cow"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="dog "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for dog  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="cat "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for cat  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
+      <div
+        key="1"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #2
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="over "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for over  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for over"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="under "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for under  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="across "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for across  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
+      <div
+        key="2"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #3
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="moon "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for moon  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for moon"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="sun"
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for sun (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="house "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for house  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
     </div>
   </ConfigLayout>
 </div>
@@ -242,7 +440,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
                 "2",
               ],
             },
-            "choiceRationaleEnabled": false,
+            "choiceRationaleEnabled": true,
             "choices": Object {
               "0": Array [
                 Object {
@@ -344,6 +542,204 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         }
       />
       <br />
+      <div
+        key="0"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #1
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="cow "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for cow  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for cow"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="dog "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for dog  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="cat "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for cat  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
+      <div
+        key="1"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #2
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="over "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for over  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for over"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="under "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for under  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="across "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for across  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
+      <div
+        key="2"
+      >
+        <WithStyles(ExpansionPanel)>
+          <WithStyles(ExpansionPanelSummary)
+            expandIcon={<pure(ExpandMoreIcon) />}
+          >
+            <WithStyles(Typography)>
+              Rationale for response area #3
+            </WithStyles(Typography)>
+          </WithStyles(ExpansionPanelSummary)>
+          <WithStyles(ExpansionPanelDetails)>
+            <InputContainer
+              key="moon "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for moon  (correct)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup="rationale for moon"
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="sun"
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for sun (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+            <InputContainer
+              key="house "
+              label={
+                <span
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "Rationale for house  (incorrect)",
+                    }
+                  }
+                />
+              }
+            >
+              <EditableHtml
+                markup=""
+                onChange={[Function]}
+              />
+            </InputContainer>
+          </WithStyles(ExpansionPanelDetails)>
+        </WithStyles(ExpansionPanel)>
+      </div>
     </div>
   </ConfigLayout>
 </div>

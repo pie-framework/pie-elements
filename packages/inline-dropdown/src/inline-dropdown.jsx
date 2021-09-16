@@ -7,6 +7,7 @@ import { InlineDropdown as DropDown } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 export class InlineDropdown extends React.Component {
   static propTypes = {
@@ -107,15 +108,19 @@ export class InlineDropdown extends React.Component {
           <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
             <div>
               {choiceRationales.map(choices =>
-                choices && choices.length > 0 && choices.map( choice =>
+                <div>
+                  {choices && choices.length > 0 && choices.map( choice =>
                     <div className={classes.choiceRationale} key={choice.label}>
                       <div
-                        className={classes.choiceRationaleLabel}
+                        className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
                         dangerouslySetInnerHTML={{__html: `${choice.label}: `}}
                       />
                       <div dangerouslySetInnerHTML={{__html: choice.rationale}}/>
                     </div>
-                ))}
+                )}
+                  {choices && choices.length > 0 && <br />}
+                </div>
+              )}
             </div>
           </Collapsible>)}
         <DropDown
@@ -138,8 +143,13 @@ const styles = (theme) => ({
     whiteSpace: 'break-spaces'
   },
   choiceRationaleLabel: {
-    color: theme.palette.primary.light,
-    display: 'flex'
+    display: 'flex',
+    '&.correct': {
+      color: color.correct()
+    },
+    '&.incorrect': {
+      color: color.incorrect()
+    }
   }
 });
 

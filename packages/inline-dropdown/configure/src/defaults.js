@@ -9,7 +9,7 @@ export default {
     alternateResponse: {},
     promptEnabled: true,
     rationaleEnabled: true,
-    choiceRationaleEnabled: false,
+    choiceRationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true
   },

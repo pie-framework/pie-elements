@@ -59,59 +59,71 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -259,59 +271,71 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -459,59 +483,71 @@ exports[`InlineDropdown render should render in view mode 1`] = `
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -651,59 +687,71 @@ exports[`InlineDropdown render should render without prompt 1`] = `
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -835,59 +883,71 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>
@@ -1018,59 +1078,71 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     }
   >
     <div>
-      <div
-        key="cow "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "cow : ",
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale cow",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="over "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "over : ",
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale over",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
-      <div
-        key="moon "
-      >
+      <div>
         <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "moon : ",
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
             }
-          }
-        />
-        <div
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "rationale moon",
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
             }
-          }
-        />
+          />
+        </div>
+        <br />
       </div>
     </div>
   </WithStyles(Collapsible)>

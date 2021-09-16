@@ -338,7 +338,6 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
-          choices: choicesWithNullRationale,
           ...expected,
         });
       });
@@ -357,7 +356,8 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null
+        teacherInstructions: null,
+        choices: choicesWithNullRationale
       }
     );
 

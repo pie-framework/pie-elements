@@ -1,6 +1,7 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
+import cloneDeep from 'lodash/cloneDeep';
 import {
   lockChoices,
   getShuffledChoices,
@@ -22,7 +23,7 @@ export const normalize = (question) => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  choiceRationaleEnabled: false,
+  choiceRationaleEnabled: true,
   ...question,
 });
 
@@ -105,7 +106,6 @@ export function model(question, session, env, updateSession) {
 
     let teacherInstructions = null;
     let rationale = null;
-    let initialChoices = choices;
 
     const choicesWillNullRationales = (Object.keys(choices) || []).reduce((acc, currentValue) => {
       acc[currentValue] = (choices[currentValue] || []).map(choice => {
@@ -126,11 +126,10 @@ export function model(question, session, env, updateSession) {
         ? normalizedQuestion.teacherInstructions
         : null;
 
-      if (!normalizedQuestion.choiceRationaleEnabled) {
-        choices = choicesWillNullRationales;
-      } else {
-        choices = initialChoices;
-      }
+      choices = normalizedQuestion.choiceRationaleEnabled
+        ? normalizedQuestion.choices
+        : choicesWillNullRationales;
+
     } else {
       rationale = null;
       teacherInstructions = null;
