@@ -1,7 +1,6 @@
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import isEmpty from 'lodash/isEmpty';
-import cloneDeep from 'lodash/cloneDeep';
 import {
   lockChoices,
   getShuffledChoices,

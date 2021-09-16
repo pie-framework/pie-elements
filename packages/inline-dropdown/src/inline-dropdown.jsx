@@ -17,7 +17,6 @@ export class InlineDropdown extends React.Component {
     markup: PropTypes.string,
     mode: PropTypes.string,
     rationale: PropTypes.string,
-    correctChoicesRationales: PropTypes.array,
     teacherInstructions: PropTypes.string,
     choices: PropTypes.object,
     value: PropTypes.object,
