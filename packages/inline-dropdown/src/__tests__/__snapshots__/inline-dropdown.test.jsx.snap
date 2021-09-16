@@ -59,7 +59,9 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -81,7 +83,9 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -103,7 +107,9 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
@@ -271,7 +277,9 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -293,7 +301,9 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -315,7 +325,9 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
@@ -483,7 +495,9 @@ exports[`InlineDropdown render should render in view mode 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -505,7 +519,9 @@ exports[`InlineDropdown render should render in view mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -527,7 +543,9 @@ exports[`InlineDropdown render should render in view mode 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
@@ -687,7 +705,9 @@ exports[`InlineDropdown render should render without prompt 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -709,7 +729,9 @@ exports[`InlineDropdown render should render without prompt 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -731,7 +753,9 @@ exports[`InlineDropdown render should render without prompt 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
@@ -883,7 +907,9 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -905,7 +931,9 @@ exports[`InlineDropdown render should render without rationale 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -927,7 +955,9 @@ exports[`InlineDropdown render should render without rationale 1`] = `
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
@@ -1078,7 +1108,9 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     }
   >
     <div>
-      <div>
+      <div
+        key="0"
+      >
         <div
           key="cow "
         >
@@ -1100,7 +1132,9 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="1"
+      >
         <div
           key="over "
         >
@@ -1122,7 +1156,9 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
         </div>
         <br />
       </div>
-      <div>
+      <div
+        key="2"
+      >
         <div
           key="moon "
         >
