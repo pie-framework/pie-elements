@@ -184,7 +184,7 @@ export class Main extends React.Component {
 
   onChoiceRationaleChanged = (index, choice) => {
     const { model } = this.props;
-    const indexOfChoice = model.choices[index] && model.choices[index]
+    const indexOfChoice = model.choices && model.choices[index] && model.choices[index]
       .findIndex(elem => elem.label === choice.label && elem.value === choice.value);
 
     model.choices[index] && model.choices[index].splice(indexOfChoice, 1, choice);

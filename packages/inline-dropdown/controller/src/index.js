@@ -107,9 +107,7 @@ export function model(question, session, env, updateSession) {
     let rationale = null;
 
     const choicesWillNullRationales = (Object.keys(choices) || []).reduce((acc, currentValue) => {
-      acc[currentValue] = (choices[currentValue] || []).map(choice => {
-        return {...choice, rationale: null};
-      });
+      acc[currentValue] = (choices[currentValue] || []).map(choice => ({ ...choice, rationale: null }));
 
       return acc;
     }, {});
