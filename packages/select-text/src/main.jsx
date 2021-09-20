@@ -26,18 +26,6 @@ export class Main extends React.Component {
     this.state = {
       showCorrectAnswer: false
     };
-
-    const { model } = this.props;
-
-    if(!model.unpreparedText) {
-      const oldModel = {
-        ...model
-      };
-      const newText = prepareText(oldModel.text);
-
-      model.unpreparedText = oldModel.text;
-      model.text = newText;
-    }
   }
 
   UNSAFE_componentWillReceiveProps() {
