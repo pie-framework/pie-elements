@@ -363,7 +363,6 @@ class Response extends React.Component {
                 />
               </div>
             ))}
-          {validation === 'literal' && (
             <div className={classes.configPanel}>
               <Button
                 className={classes.alternateButton}
@@ -374,7 +373,6 @@ class Response extends React.Component {
               </Button>
               <div className={classes.checkboxContainer}></div>
             </div>
-          )}
         </CardContent>
       </Card>
     );
