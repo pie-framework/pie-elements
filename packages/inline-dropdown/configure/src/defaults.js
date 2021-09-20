@@ -9,6 +9,7 @@ export default {
     alternateResponse: {},
     promptEnabled: true,
     rationaleEnabled: true,
+    choiceRationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom'
@@ -33,6 +34,10 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    choiceRationale: {
+      settings: true,
+      label: 'Choice Rationale'
     },
     toolbarEditorPosition:{
       settings: false,

@@ -15,7 +15,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
-
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
 import max from 'lodash/max';
 
@@ -83,6 +86,16 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#495B8F'
+  },
+  rationaleLabel: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
+  },
+  rationaleChoices: {
+    marginTop: '16px'
+  },
+  panelDetails: {
+   display: 'block'
   }
 });
 
@@ -167,6 +180,16 @@ export class Main extends React.Component {
 
   onRationaleChanged = rationale => {
     this.onModelChange({ rationale });
+  };
+
+  onChoiceRationaleChanged = (index, choice) => {
+    const { model } = this.props;
+    const indexOfChoice = model.choices && model.choices[index] && model.choices[index]
+      .findIndex(elem => elem.label === choice.label && elem.value === choice.value);
+
+    model.choices[index] && model.choices[index].splice(indexOfChoice, 1, choice);
+
+    this.onModelChange(model);
   };
 
   onTeacherInstructionsChanged = teacherInstructions => {
@@ -352,10 +375,58 @@ export class Main extends React.Component {
       partialScoring = {},
       lockChoiceOrder = {},
       rationale = {},
+      choiceRationale = {},
       teacherInstructions = {}
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
-      model || {};
+    const {
+      rationaleEnabled,
+      choiceRationaleEnabled,
+      promptEnabled,
+      teacherInstructionsEnabled,
+      choices
+    } =
+    model || {};
+
+    const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
+      <div key={key} className={classes.rationaleChoices}>
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+            <Typography className={classes.text}>
+              {`Rationale for response area #${parseInt(key) + 1}`}
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails className={classes.panelDetails}>
+            {(choices[key] || []).map(choice =>
+              <InputContainer
+                key={choice.label}
+                label={
+                  <span
+                    className={classes.rationaleLabel}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        `${rationale.label} for ${choice.label} (${choice.correct ? 'correct' : 'incorrect'})`
+                    }}
+                  />
+                }
+                className={classes.promptHolder}
+              >
+                <EditableHtml
+                  className={classes.prompt}
+                  markup={choice.rationale || ''}
+                  onChange={c =>
+                    this.onChoiceRationaleChanged(key, {
+                      ...choice,
+                      rationale: c
+                    })
+                  }
+                  imageSupport={imageSupport}
+                />
+              </InputContainer>
+            )}
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
+    )
 
     const toolbarOpts = {};
 
@@ -392,6 +463,8 @@ export class Main extends React.Component {
                     toggle(teacherInstructions.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
+                  choiceRationaleEnabled:
+                    choiceRationale.settings && toggle(choiceRationale.label),
                   promptEnabled: prompt.settings && toggle(prompt.label)
                 }
               }}
@@ -493,6 +566,8 @@ export class Main extends React.Component {
               disabled={false}
               highlightShape={false}
             />
+            <br />
+            {choiceRationaleEnabled && renderChoiceRationale()}
           </div>
         </layout.ConfigLayout>
       </div>

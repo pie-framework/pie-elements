@@ -32,6 +32,7 @@ describe('inline-dropdown', () => {
             correct: true,
             value: '9719398',
             label: '16,000',
+            rationale: 'rationale for choice'
           },
         ],
       },
@@ -59,7 +60,7 @@ describe('inline-dropdown', () => {
   });
 
   describe('model - with updateSession', () => {
-    it.only('calls updateSession', async () => {
+    it('calls updateSession', async () => {
       session = { id: '1', element: 'inline-dropdown-element' };
       env = { mode: 'gather' };
       const updateSession = jest.fn().mockResolvedValue();
@@ -89,16 +90,19 @@ const question = {
         label: 'cow ',
         value: '0',
         correct: true,
+        rationale: 'rationale cow'
       },
       {
         label: 'dog ',
         value: '1',
         correct: false,
+        rationale: 'rationale dog'
       },
       {
         label: 'cat ',
         value: '2',
         correct: false,
+        rationale: 'rationale cat'
       },
     ],
     '1': [
@@ -106,16 +110,19 @@ const question = {
         label: 'over ',
         value: '0',
         correct: true,
+        rationale: 'rationale over'
       },
       {
         label: 'under ',
         value: '1',
         correct: false,
+        rationale: 'rationale under'
       },
       {
         label: 'across ',
         value: '2',
         correct: false,
+        rationale: 'rationale across'
       },
     ],
     '2': [
@@ -123,16 +130,19 @@ const question = {
         label: 'moon ',
         value: '0',
         correct: true,
+        rationale: 'rationale moon'
       },
       {
         label: 'sun',
         value: '2',
         correct: false,
+        rationale: 'rationale sun'
       },
       {
         label: 'house ',
         value: '3',
         correct: false,
+        rationale: 'rationale house'
       },
     ],
   },
@@ -141,13 +151,14 @@ const question = {
 describe('controller', () => {
   describe('model', () => {
     let q;
+    const updateSession = jest.fn().mockResolvedValue();
 
     it('output when session is defined', async () => {
       const m = await model(
         question,
         { value: { 0: '0', 1: '0', 2: '0' } },
         { mode: 'evaluate' },
-        jest.fn()
+        updateSession
       );
 
       expect(m).toEqual(
@@ -164,7 +175,7 @@ describe('controller', () => {
           question,
           session,
           { mode: 'evaluate' },
-          jest.fn()
+          updateSession
         );
 
         expect(m).toEqual(
@@ -180,8 +191,73 @@ describe('controller', () => {
     returnModel(null);
     returnModel({});
 
+    const choicesWithNullRationale = {
+      '0': [
+        {
+          label: 'cow ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'dog ',
+          value: '1',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'cat ',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+      ],
+      '1': [
+        {
+          label: 'over ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'under ',
+          value: '1',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'across ',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+      ],
+      '2': [
+        {
+          label: 'moon ',
+          value: '0',
+          correct: true,
+          rationale: null
+        },
+        {
+          label: 'sun',
+          value: '2',
+          correct: false,
+          rationale: null
+        },
+        {
+          label: 'house ',
+          value: '3',
+          correct: false,
+          rationale: null
+        }
+      ]
+    };
+
+
     const assertGather = (label, extra, session, expected) => {
       it(`'mode: gather, ${label}'`, async () => {
+
         q = {
           ...question,
           alternateResponse: { '2': ['2'] },
@@ -198,7 +274,7 @@ describe('controller', () => {
             ...session,
           },
           { mode: 'gather' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -207,6 +283,7 @@ describe('controller', () => {
           mode: 'gather',
           feedback: {},
           responseCorrect: undefined,
+          choices: choicesWithNullRationale,
           ...expected,
         });
       });
@@ -218,7 +295,7 @@ describe('controller', () => {
       {},
       {
         rationale: null,
-        teacherInstructions: null,
+        teacherInstructions: null
       }
     );
 
@@ -234,7 +311,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null,
+        teacherInstructions: null
       }
     );
 
@@ -252,7 +329,7 @@ describe('controller', () => {
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'view', role: 'instructor' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -267,28 +344,30 @@ describe('controller', () => {
     };
 
     assertView(
-      ' + role: instructor, promptEnabled, rationaleEnabled and teacherInstructionsEnabled set to false',
+      ' + role: instructor, promptEnabled, rationaleEnabled, teacherInstructionsEnabled and choiceRationaleEnabled set to false',
       {
         promptEnabled: false,
         rationaleEnabled: false,
         teacherInstructionsEnabled: false,
         studentInstructionsEnabled: false,
+        choiceRationaleEnabled: false
       },
       {},
       {
         prompt: null,
         rationale: null,
         teacherInstructions: null,
+        choices: choicesWithNullRationale
       }
     );
 
     assertView(
-      ' + role: instructor, promptEnabled, rationaleEnabled and teacherInstructionsEnabled unset',
+      ' + role: instructor, promptEnabled, rationaleEnabled, teacherInstructionsEnabled and choiceRationaleEnabled unset',
       {},
       {},
       {
         teacherInstructions: 'Teacher Instructions',
-        rationale: 'Rationale',
+        rationale: 'Rationale'
       }
     );
 
@@ -314,6 +393,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
+          choices: choicesWithNullRationale,
           ...expected,
         });
       });
@@ -331,7 +411,7 @@ describe('controller', () => {
       {
         prompt: null,
         rationale: null,
-        teacherInstructions: null,
+        teacherInstructions: null
       }
     );
 
@@ -353,13 +433,14 @@ describe('controller', () => {
           lockChoiceOrder: true,
           teacherInstructions: 'Teacher Instructions',
           rationale: 'Rationale',
+          choiceRationaleEnabled: true,
           ...extra,
         };
         const result = await model(
           q,
           { id: '1', element: 'explicit-constructed-response', ...session },
           { mode: 'evaluate', role: 'instructor' },
-          jest.fn()
+          updateSession
         );
 
         expect(result).toEqual({
@@ -368,7 +449,6 @@ describe('controller', () => {
           rationale: 'Rationale',
           mode: 'evaluate',
           disabled: true,
-
           ...expected,
         });
       });
