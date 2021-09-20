@@ -28,6 +28,11 @@
                 "description": "Indicates if choice is correct",
                 "type": "boolean",
                 "title": "correct"
+              },
+              "rationale": {
+                "description": "Rationale for the choice",
+                "type": "string",
+                "title": "rationale"
               }
             },
             "required": [
@@ -107,6 +112,11 @@
       "type": "boolean",
       "title": "rationaleEnabled"
     },
+    "choiceRationaleEnabled": {
+      "description": "Indicates if Choice Level Rationales are enabled",
+      "type": "boolean",
+      "title": "choiceRationaleEnabled"
+    },
     "studentInstructionsEnabled": {
       "description": "Indicates if Student Instructions are enabled",
       "type": "boolean",
@@ -140,6 +150,7 @@
   },
   "required": [
     "alternateResponses",
+    "choiceRationaleEnabled",
     "choices",
     "element",
     "id",
@@ -187,6 +198,11 @@
           "description": "Indicates if choice is correct",
           "type": "boolean",
           "title": "correct"
+        },
+        "rationale": {
+          "description": "Rationale for the choice",
+          "type": "string",
+          "title": "rationale"
         }
       },
       "required": [

@@ -122,7 +122,7 @@ export default class NumberLine extends HTMLElement {
       this._model.graph &&
       this._model.graph.initialElements &&
       this._session &&
-      !this._session.answer
+      (!this._session.answer || !this._session.answer.length)
     ) {
       this._session.answer = cloneDeep(this._model.graph.initialElements);
     }

@@ -56,6 +56,10 @@ Indicates teacher instructions
 
 Indicates if Rationale are enabled
 
+# `choiceRationaleEnabled` (boolean, required)
+
+Indicates if Choice Level Rationales are enabled
+
 # `studentInstructionsEnabled` (boolean, required)
 
 Indicates if Student Instructions are enabled
@@ -116,3 +120,7 @@ The label of the choice
 ### `correct` (boolean)
 
 Indicates if choice is correct
+
+### `rationale` (string)
+
+Rationale for the choice

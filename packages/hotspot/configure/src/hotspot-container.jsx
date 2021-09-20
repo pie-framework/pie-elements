@@ -49,6 +49,14 @@ export class Container extends Component {
   enableDropzone = () => this.setState({ dropzoneActive: true });
   disableDropzone = () => this.setState({ dropzoneActive: false });
 
+  handleOnPaste = (e) => {
+    const { files } = e.clipboardData;
+
+    if (files && isImage(files[0])) {
+      this.handleFileRead(files[0]);
+    }
+  };
+
   handleOnDrop = (e) => {
     e.preventDefault();
 
@@ -139,7 +147,8 @@ export class Container extends Component {
                onDragExit: this.handleOnDragExit,
                onDragLeave: this.handleOnDragExit,
                onDragOver: this.handleOnDragOver,
-               onDrop: this.handleOnDrop
+               onDrop: this.handleOnDrop,
+               onPaste: this.handleOnPaste
              } : {}}
         >
           <div className={classes.toolbar}>

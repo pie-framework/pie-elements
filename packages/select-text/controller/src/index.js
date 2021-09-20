@@ -106,24 +106,14 @@ export const normalizeSession = (s) => ({
   ...s,
 });
 
-export const normalize = (question) => {
-  const newQuestion = {
-    ...question
-  };
-
-  const newText = prepareText(newQuestion.text);
-
-  return {
+export const normalize = (question) => ({
   feedbackEnabled: true,
   rationaleEnabled: true,
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-    ...newQuestion,
-    unpreparedText: newQuestion.text,
-    text: newText
-  };
-};
+  ...question,
+});
 
 export const model = (question, session, env) => {
   session = session || { selectedToken: [] };

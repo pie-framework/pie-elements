@@ -25,17 +25,20 @@ export class ChoicePreview extends React.Component {
     const { classes, className, choice } = this.props;
     return (
       <div className={classNames(classes.choicePreview, className)}>
-        <Choice>
-          <HtmlAndMath html={choice.content} />
-          <IconButton
-            color="secondary"
-            aria-label="delete"
-            className={classes.delete}
-            onClick={this.delete}
-          >
-            <Delete />
-          </IconButton>
-        </Choice>
+        {
+          choice ? <Choice>
+            <HtmlAndMath html={choice?.content} />
+            <IconButton
+              color="secondary"
+              aria-label="delete"
+              className={classes.delete}
+              onClick={this.delete}
+            >
+              <Delete />
+            </IconButton>
+          </Choice>
+            : null
+        }
       </div>
     );
   }
