@@ -28,6 +28,7 @@ const preparePrintModel = (model, opts) => {
   model.choices = model.choices.map((c) => {
     c.rationale = instr ? c.rationale : undefined;
     c.hideTick = instr;
+    c.feedback = undefined;
     return c;
   });
   return model;
