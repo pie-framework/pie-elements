@@ -24,13 +24,13 @@ const Helper = withStyles(() => ({
 
 const Previews = ({ choices, onDeleteChoice }) => (
   <React.Fragment>
-    {choices.map((c, index) => (
-      <ChoicePreview
+    {choices.map((c, index) =>
+      c && <ChoicePreview
         choice={c}
         key={index}
         onDelete={choice => onDeleteChoice(choice, index)}
       />
-    ))}
+    )}
   </React.Fragment>
 );
 
