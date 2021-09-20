@@ -30,18 +30,6 @@ export class Main extends React.Component {
 
   UNSAFE_componentWillReceiveProps() {
     this.setState({ showCorrectAnswer: false });
-
-    const { model } = this.props;
-
-    if(!model.unpreparedText) {
-      const oldModel = {
-        ...model
-      };
-      const newText = prepareText(oldModel.text);
-
-      model.unpreparedText = oldModel.text;
-      model.text = newText;
-    }
   }
 
   toggleShowCorrect = () => {
@@ -53,9 +41,25 @@ export class Main extends React.Component {
     return model.tokens.filter(t => t.correct);
   };
 
+  updateText = () => {
+    const { model } = this.props;
+
+    const oldModel = {
+      ...model
+    };
+    const newText = prepareText(oldModel.text);
+
+    model.unpreparedText = oldModel.text;
+    model.text = newText;
+  };
+
   render() {
     const { model, session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer } = this.state;
+
+    if(!model.unpreparedText) {
+      this.updateText();
+    }
 
     const selectedTokens = showCorrectAnswer
       ? this.correctAnswer()
