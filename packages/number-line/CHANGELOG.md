@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.12.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.12.1...@pie-element/number-line@5.12.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **number-line:** fix initial view on pits ([4f3e572](https://github.com/pie-framework/pie-elements/commit/4f3e572a16356e5a2d16557f9c23d7a011f24578))
+* **number-line:** initial view should render correctly in pits ([dcbeb43](https://github.com/pie-framework/pie-elements/commit/dcbeb43ea593671129843801d148663ee98bb048))
+
+
+
+
+
 ## [5.12.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.12.0...@pie-element/number-line@5.12.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/number-line

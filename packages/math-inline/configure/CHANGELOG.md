@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.5.1...@pie-element/math-inline-configure@5.5.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **math-inline:** show add alternate button for both literal and symbolic validation PD-333 ([0cf44c8](https://github.com/pie-framework/pie-elements/commit/0cf44c8bae938eae9d4cf92b341f1cb3085cffd2))
+
+
+
+
+
 ## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.5.0...@pie-element/math-inline-configure@5.5.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

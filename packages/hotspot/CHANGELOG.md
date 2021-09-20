@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.9.1...@pie-element/hotspot@4.10.0) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **hotspot:** Added a max width when loading a new image PD-261 ([7fcbb8a](https://github.com/pie-framework/pie-elements/commit/7fcbb8a896f73024053a97075d8cb368b8bb6b71))
+
+
+### Features
+
+* **hotspot:** add the possibility to paste image in authoring PD-478 ([16f1198](https://github.com/pie-framework/pie-elements/commit/16f1198ea5a839759f626927f1b65b5483a9aa85))
+
+
+
+
+
 ## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.9.0...@pie-element/hotspot@4.9.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/hotspot

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.26...@pie-element/rubric-configure@1.2.27) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+
+
+
 ## [1.2.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.25...@pie-element/rubric-configure@1.2.26) (2021-08-05)
 
 **Note:** Version bump only for package @pie-element/rubric-configure

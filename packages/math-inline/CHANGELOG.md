@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.7.1...@pie-element/math-inline@5.8.0) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **math-inline:** Added a min width for line notation PD-1263 ([96db654](https://github.com/pie-framework/pie-elements/commit/96db6541cb95ce895be7d84a4763697880e35adf))
+* **math-inline:** fix based log button PD-1281 ([215812e](https://github.com/pie-framework/pie-elements/commit/215812ea7965a659631215a670b71164ff1effc1))
+* **math-inline:** fix parallelogram symbol for pits ([a90e363](https://github.com/pie-framework/pie-elements/commit/a90e36326fe55cd986f833c2ddaacdb84fdff9ad))
+* **math-inline:** Fixed arrows for pits ([72815e6](https://github.com/pie-framework/pie-elements/commit/72815e6beac69628b9ea3be249a661d9924329c6))
+* **math-inline:** Made segment, ray and line more consistent PD-1264 ([670fef9](https://github.com/pie-framework/pie-elements/commit/670fef9d29a634497dbb3b05928c7dd2d8fc2164))
+* **math-inline:** Removed the margin top of the response area PD-1274 ([48d3f84](https://github.com/pie-framework/pie-elements/commit/48d3f8430027dec409c9abb79d3b436866271308))
+* **math-inline:** render parallel sign with bigger font-size PD-1258 ([1756f7e](https://github.com/pie-framework/pie-elements/commit/1756f7e3f8e75e28b5c4420703dc428cee8776bc))
+* **math-inline:** show add alternate button for both literal and symbolic validation PD-333 ([0cf44c8](https://github.com/pie-framework/pie-elements/commit/0cf44c8bae938eae9d4cf92b341f1cb3085cffd2))
+
+
+### Features
+
+* **math-inline:** override style for long division symbol PD-888 ([1e190da](https://github.com/pie-framework/pie-elements/commit/1e190dac51c9cbadf5b9391d330a5923fcf7b6ab))
+
+
+
+
+
 ## [5.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.7.0...@pie-element/math-inline@5.7.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/math-inline

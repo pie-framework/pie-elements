@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.0.1...@pie-element/multiple-choice@6.1.0) (2021-09-20)
+
+
+### Bug Fixes
+
+* exports ([66ed4d2](https://github.com/pie-framework/pie-elements/commit/66ed4d2ae44df712b8b48849023e6849d6d69126))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* print demo ([a7f9707](https://github.com/pie-framework/pie-elements/commit/a7f9707592e1ec89a55e9d61450b0600aea4d486))
+
+
+
+
+
 ## [6.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.0.0...@pie-element/multiple-choice@6.0.1) (2021-09-01)
 
 **Note:** Version bump only for package @pie-element/multiple-choice
