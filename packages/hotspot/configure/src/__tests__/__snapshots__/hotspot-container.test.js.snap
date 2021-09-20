@@ -8,6 +8,7 @@ exports[`HotspotContainer render renders 1`] = `
     onDragLeave={[Function]}
     onDragOver={[Function]}
     onDrop={[Function]}
+    onPaste={[Function]}
   >
     <div>
       <WithStyles(UploadControl)

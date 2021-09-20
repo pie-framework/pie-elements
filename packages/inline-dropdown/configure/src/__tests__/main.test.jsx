@@ -31,7 +31,8 @@ const model = {
       {
         label: 'cow ',
         value: '0',
-        correct: true
+        correct: true,
+        rationale: 'rationale for cow'
       },
       {
         label: 'dog ',
@@ -48,7 +49,8 @@ const model = {
       {
         label: 'over ',
         value: '0',
-        correct: true
+        correct: true,
+        rationale: 'rationale for over'
       },
       {
         label: 'under ',
@@ -65,7 +67,8 @@ const model = {
       {
         label: 'moon ',
         value: '0',
-        correct: true
+        correct: true,
+        rationale: 'rationale for moon'
       },
       {
         label: 'sun',
@@ -319,6 +322,77 @@ describe('Main', () => {
           ...oldModel,
           slateMarkup: newMarkup,
           choices: newChoices
+        });
+      });
+    });
+
+    describe('onChoiceRationaleChanged', () => {
+      it('changes the choice level rationale value', () => {
+        w.instance().onChoiceRationaleChanged(0,  {
+          label: 'cow ',
+          value: '0',
+          correct: true,
+          rationale: 'new rationale for cow'
+        });
+
+        expect(onModelChanged).toBeCalledWith({
+          ...prepareModel(model),
+          choices: {
+            '0': [
+              {
+                label: 'cow ',
+                value: '0',
+                correct: true,
+                rationale: 'new rationale for cow'
+              },
+              {
+                label: 'dog ',
+                value: '1',
+                correct: false
+              },
+              {
+                label: 'cat ',
+                value: '2',
+                correct: false
+              }
+            ],
+            '1': [
+              {
+                label: 'over ',
+                value: '0',
+                correct: true,
+                rationale: 'rationale for over'
+              },
+              {
+                label: 'under ',
+                value: '1',
+                correct: false
+              },
+              {
+                label: 'across ',
+                value: '2',
+                correct: false
+              }
+            ],
+            '2': [
+              {
+                label: 'moon ',
+                value: '0',
+                correct: true,
+                rationale: 'rationale for moon'
+              },
+              {
+                label: 'sun',
+                value: '2',
+                correct: false
+              },
+              {
+                label: 'house ',
+                value: '3',
+                correct: false
+              }
+            ]
+          }
         });
       });
     });

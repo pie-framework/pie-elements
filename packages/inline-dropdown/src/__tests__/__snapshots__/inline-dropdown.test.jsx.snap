@@ -49,6 +49,90 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
       }
     />
   </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -56,6 +140,7 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -73,6 +158,7 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -90,6 +176,7 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {
@@ -180,6 +267,90 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
       }
     />
   </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -187,6 +358,7 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -204,6 +376,7 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -221,6 +394,7 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {
@@ -311,6 +485,90 @@ exports[`InlineDropdown render should render in view mode 1`] = `
       }
     />
   </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -318,6 +576,7 @@ exports[`InlineDropdown render should render in view mode 1`] = `
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -335,6 +594,7 @@ exports[`InlineDropdown render should render in view mode 1`] = `
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -352,6 +612,7 @@ exports[`InlineDropdown render should render in view mode 1`] = `
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {
@@ -434,6 +695,90 @@ exports[`InlineDropdown render should render without prompt 1`] = `
       }
     />
   </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -441,6 +786,7 @@ exports[`InlineDropdown render should render without prompt 1`] = `
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -458,6 +804,7 @@ exports[`InlineDropdown render should render without prompt 1`] = `
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -475,6 +822,7 @@ exports[`InlineDropdown render should render without prompt 1`] = `
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {
@@ -549,6 +897,90 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     }
   />
   <br />
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -556,6 +988,7 @@ exports[`InlineDropdown render should render without rationale 1`] = `
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -573,6 +1006,7 @@ exports[`InlineDropdown render should render without rationale 1`] = `
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -590,6 +1024,7 @@ exports[`InlineDropdown render should render without rationale 1`] = `
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {
@@ -663,6 +1098,90 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
       }
     />
   </WithStyles(Collapsible)>
+  <br />
+  <WithStyles(Collapsible)
+    labels={
+      Object {
+        "hidden": "Show Rationale for choices",
+        "visible": "Hide Rationale for choices",
+      }
+    }
+  >
+    <div>
+      <div
+        key="0"
+      >
+        <div
+          key="cow "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "cow : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale cow",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="1"
+      >
+        <div
+          key="over "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "over : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale over",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+      <div
+        key="2"
+      >
+        <div
+          key="moon "
+        >
+          <div
+            className="correct"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "moon : ",
+              }
+            }
+          />
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "rationale moon",
+              }
+            }
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+  </WithStyles(Collapsible)>
   <WithMask
     choices={
       Object {
@@ -670,6 +1189,7 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
           Object {
             "correct": true,
             "label": "cow ",
+            "rationale": "rationale cow",
             "value": "0",
           },
           Object {
@@ -687,6 +1207,7 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
           Object {
             "correct": true,
             "label": "over ",
+            "rationale": "rationale over",
             "value": "0",
           },
           Object {
@@ -704,6 +1225,7 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
           Object {
             "correct": true,
             "label": "moon ",
+            "rationale": "rationale moon",
             "value": "0",
           },
           Object {

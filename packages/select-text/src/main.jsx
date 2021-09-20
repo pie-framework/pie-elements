@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextSelect } from '@pie-lib/text-select';
+import { TextSelect, prepareText } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { color, Feedback, Collapsible, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
@@ -41,9 +41,25 @@ export class Main extends React.Component {
     return model.tokens.filter(t => t.correct);
   };
 
+  updateText = () => {
+    const { model } = this.props;
+
+    const oldModel = {
+      ...model
+    };
+    const newText = prepareText(oldModel.text);
+
+    model.unpreparedText = oldModel.text;
+    model.text = newText;
+  };
+
   render() {
     const { model, session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer } = this.state;
+
+    if(!model.unpreparedText) {
+      this.updateText();
+    }
 
     const selectedTokens = showCorrectAnswer
       ? this.correctAnswer()

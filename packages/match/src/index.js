@@ -39,9 +39,12 @@ export default class Match extends HTMLElement {
   sessionChanged(s) {
     this._session.answers = s.answers;
     const complete = isComplete(this._session, this._model);
+
     this.dispatchEvent(
       new SessionChangedEvent(this.tagName.toLowerCase(), complete)
     );
+
+    this._render();
   }
 
   connectedCallback() {
