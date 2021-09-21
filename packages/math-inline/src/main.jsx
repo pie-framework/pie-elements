@@ -627,6 +627,9 @@ const styles = (theme) => ({
     },
     '& .mq-overarrow.mq-arrow-both': {
       minWidth: '1.23em',
+      '& *': {
+        lineHeight: '1 !important'
+      },
       '&:before': {
         top: '-0.4em',
         left: '-1px'
@@ -648,6 +651,9 @@ const styles = (theme) => ({
     '& .mq-longdiv-inner': {
       borderTop: '1px solid !important',
       paddingTop: '1.5px !important'
+    },
+    '& .mq-parallelogram': {
+      lineHeight: 0.8
     }
   },
   showCorrectness: {
