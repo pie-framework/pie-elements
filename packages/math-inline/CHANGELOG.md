@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.8.0...@pie-element/math-inline@5.8.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* Merge with develop and pull missing files. ([5fe2864](https://github.com/pie-framework/pie-elements/commit/5fe2864d0b92669ae936ba5de956354df4a6a741))
+
+
+
+
+
 # [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.7.1...@pie-element/math-inline@5.8.0) (2021-09-20)
 
 
