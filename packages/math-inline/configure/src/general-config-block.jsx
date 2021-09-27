@@ -263,7 +263,7 @@ class GeneralConfigBlock extends React.Component {
     if (!isEqual(responseAreas, this.state.responseAreas)) {
       this.setState(
         {
-          responseAreas, 
+          responseAreas,
         },
         () => {
           if (this.root && Object.keys(responseAreas).length) {
