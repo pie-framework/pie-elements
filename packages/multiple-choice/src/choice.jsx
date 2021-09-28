@@ -44,6 +44,7 @@ export class Choice extends React.Component {
       choicesLayout,
       gridColumns,
       onChange: this.onChange,
+      isEvaluateMode,
     };
 
     const names = classNames(classes.choice, {
