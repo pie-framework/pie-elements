@@ -11,6 +11,7 @@ export class SimpleQuestionBlockRaw extends React.Component {
     classes: PropTypes.object,
     onSimpleResponseChange: PropTypes.func,
     model: PropTypes.object.isRequired,
+    emptyResponse: PropTypes.bool,
     session: PropTypes.object.isRequired,
     showCorrect: PropTypes.bool
   };
@@ -35,24 +36,23 @@ export class SimpleQuestionBlockRaw extends React.Component {
       model,
       showCorrect,
       session,
+      emptyResponse,
       onSimpleResponseChange
     } = this.props;
-    const correct =
-      model.correctness &&
-      model.correctness.correct;
-    const showAsCorrect = showCorrect || correct;
-    const showAsIncorrect = !correct && !showCorrect && !model.view;
-    const { config } = model || {};
+    const { config, disabled, correctness, view } = model || {};
 
     if (!config) {
       return;
     }
 
+    const correct = correctness && correctness.correct;
+    const showAsCorrect = !emptyResponse && (showCorrect || correct);
+    const showAsIncorrect = !emptyResponse && !correct && !showCorrect && !view;
     const { responses, equationEditor } = config;
 
     return (
       <div className={classes.expression}>
-        {showCorrect || model.disabled ? (
+        {showCorrect || disabled ? (
           <div
             className={cx(classes.static, {
               [classes.correct]: showAsCorrect,

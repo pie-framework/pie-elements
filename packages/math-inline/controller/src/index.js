@@ -156,7 +156,6 @@ export function model(question, session, env) {
   return new Promise((resolve) => {
     const normalizedQuestion = normalize(question);
     const correctness = getCorrectness(normalizedQuestion, env, session);
-    const correctResponse = {};
     const { responses, ...config } = normalizedQuestion;
 
     if (config.responseType === ResponseTypes.simple) {
@@ -179,7 +178,7 @@ export function model(question, session, env) {
         view: env.mode === 'view',
       };
 
-      let out;
+      const out = base;
       let showNote = false;
 
       ((config && config.responses) || []).forEach((response) => {
@@ -193,15 +192,9 @@ export function model(question, session, env) {
       });
 
       if (env.mode === 'evaluate') {
-
-        out = Object.assign(base, {
-          correctResponse,
-        });
-
+        out.correctResponse = {};
         out.config.showNote = showNote;
       } else {
-        out = base;
-
         out.config.responses = [];
         out.config.showNote = false;
       }
@@ -216,7 +209,6 @@ export function model(question, session, env) {
         out.teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
           ? normalizedQuestion.teacherInstructions
           : null;
-        out.config.showNote = showNote;
       } else {
         out.rationale = null;
         out.teacherInstructions = null;
