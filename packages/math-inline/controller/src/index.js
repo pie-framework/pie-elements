@@ -192,6 +192,7 @@ export function model(question, session, env) {
       });
 
       if (env.mode === 'evaluate') {
+        out.correctResponse = {};
         out.config.showNote = showNote;
       } else {
         out.config.responses = [];
