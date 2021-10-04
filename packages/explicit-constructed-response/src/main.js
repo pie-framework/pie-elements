@@ -53,7 +53,7 @@ export class Main extends React.Component {
 
   render() {
     const { showCorrectAnswer, value } = this.state;
-    const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env } = this.props;
+    const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env, maxChoicesLength } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
 
@@ -81,6 +81,7 @@ export class Main extends React.Component {
           onChange={this.onChange}
           showCorrectAnswer={showCorrectAnswer}
           value={value}
+          maxLength={maxChoicesLength}
         />
         {displayNote && (
           <div

@@ -136,8 +136,17 @@ export class AlternateResponses extends React.Component {
     }
   };
 
+  onLengthChanged = (value, key) => {
+    const { model, onLengthChange } = this.props;
+    const { maxChoicesLength } = model;
+
+    maxChoicesLength[key] = value;
+    onLengthChange(maxChoicesLength);
+  }
+
   render() {
     const { choices } = this.state;
+    const { model: { maxChoicesLength, maxChoicesLengthEnabled }} = this.props
 
     return (
       <div>
@@ -152,8 +161,11 @@ export class AlternateResponses extends React.Component {
                 onSelect={choice => this.onSectionSelect(choice, key)}
                 choiceChanged={choice => this.onChoiceChanged(choice, key)}
                 choiceRemoved={value => this.onChoiceRemoved(value, key)}
+                lengthChanged={value => this.onLengthChanged(value, key)}
                 selectChoices={[selected]}
                 choices={c}
+                maxLength={maxChoicesLength[key]}
+                showMaxLength={maxChoicesLengthEnabled}
               />
             );
           }

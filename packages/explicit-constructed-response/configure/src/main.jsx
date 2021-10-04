@@ -130,24 +130,42 @@ export class Main extends React.Component {
     });
   };
 
+  onLengthChanged = maxChoicesLength => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      maxChoicesLength
+    });
+  };
+
   onChangeResponse = (index, newVal) => {
-    const {
-      model: { choices }
-    } = this.props;
+    console.log('index', index);
+    console.log('newVal', newVal);
+    const { model, onModelChanged} = this.props;
+    const { choices, maxChoicesLength } = model;
+    const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: '', value: '0' }];
+      maxChoicesLength.splice(index, 0, newValLength);
     }
 
     choices[index][0].label = newVal || '';
 
-    this.props.onModelChanged({
-      ...this.props.model,
-      choices
+    if (maxChoicesLength && newVal && maxChoicesLength[index] < newValLength) {
+      maxChoicesLength[index] = newVal.length;
+    }
+
+    onModelChanged({
+      ...model,
+      choices,
+      maxChoicesLength
     });
   };
 
   onChange = markup => {
+    console.log('ONchange called');
     const {
       model: { choices }
     } = this.props;
@@ -162,8 +180,11 @@ export class Main extends React.Component {
       el.dataset.index = index;
     });
 
+    console.log('allRespAreas', allRespAreas);
+
     allRespAreas.forEach((el, index) => {
       const newChoices = cloneDeep(Object.values(choices)[index]);
+      console.log('newChoices', newChoices);
 
       if (newChoices) {
         newChoices[0] = {
@@ -174,6 +195,7 @@ export class Main extends React.Component {
 
       allChoices[el.dataset.index] = newChoices;
     });
+    console.log('allChoices', allChoices);
 
     this.props.onModelChanged({
       ...this.props.model,
@@ -194,11 +216,13 @@ export class Main extends React.Component {
       prompt = {},
       partialScoring = {},
       rationale = {},
-      teacherInstructions = {}
+      teacherInstructions = {},
+      maxChoicesLength = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
       model || {};
     const toolbarOpts = {};
+    console.log('model.maxChoicesLength', model.maxChoicesLength);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -222,7 +246,9 @@ export class Main extends React.Component {
               groups={{
                 Settings: {
                   partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label)
+                    partialScoring.settings && toggle(partialScoring.label),
+                  maxChoicesLengthEnabled:
+                    maxChoicesLength.settings && toggle(maxChoicesLength.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -314,6 +340,7 @@ export class Main extends React.Component {
             <AlternateResponses
               model={model}
               onChange={this.onResponsesChanged}
+              onLengthChange={this.onLengthChanged}
             />
             {rationaleEnabled && (
               <InputContainer
