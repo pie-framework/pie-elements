@@ -263,8 +263,7 @@ class GeneralConfigBlock extends React.Component {
     if (!isEqual(responseAreas, this.state.responseAreas)) {
       this.setState(
         {
-          showKeypad: false,
-          responseAreas,
+          responseAreas, 
         },
         () => {
           if (this.root && Object.keys(responseAreas).length) {
