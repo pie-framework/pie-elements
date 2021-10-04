@@ -628,7 +628,7 @@ const styles = (theme) => ({
         left: '-1px'
       },
       '&:after': {
-        top: '-2.36em',
+        top: '-2.4em',
         right: '-1px'
       },
       '&.mq-empty:after': {
