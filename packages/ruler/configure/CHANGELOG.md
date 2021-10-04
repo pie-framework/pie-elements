@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.28...@pie-element/ruler-configure@2.7.29) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/ruler-configure
+
+
+
+
+
 ## [2.7.28](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler-configure@2.7.27...@pie-element/ruler-configure@2.7.28) (2021-09-20)
 
 
