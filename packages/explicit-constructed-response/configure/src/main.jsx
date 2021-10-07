@@ -172,24 +172,25 @@ export class Main extends React.Component {
     );
 
     const allChoices = {};
+    const updatedMaxChoicesLength = [];
 
     allRespAreas.forEach((el, index) => {
       allChoices[index] = cloneDeep(Object.values(choices)[el.dataset.index]) || [{label: el.dataset.value || '', value: '0'}];
+      if (maxChoicesLength[el.dataset.index]) {
+        updatedMaxChoicesLength[index] = maxChoicesLength[el.dataset.index];
+      } else {
+        const labelLengthsArr = allChoices[index].map(choice => (choice.label || '').length);
+        updatedMaxChoicesLength[index] = Math.max(...labelLengthsArr);
+      }
+
       el.dataset.index = index;
-    });
-
-    Object.values(allChoices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-      const maxLength = Math.max(...labelLengthsArr);
-
-      maxChoicesLength[index] = Math.max(maxChoicesLength[index], maxLength);
     });
 
     this.props.onModelChanged({
       ...this.props.model,
       choices: allChoices,
       slateMarkup: domMarkup.innerHTML,
-      maxChoicesLength
+      maxChoicesLength: updatedMaxChoicesLength
     });
   };
 
