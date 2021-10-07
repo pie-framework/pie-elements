@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import max from 'lodash/max';
 
 const styles = () => ({
@@ -61,6 +61,12 @@ export class Choice extends React.Component {
 
   updateText = debounce(this.props.onChange, 300);
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.markup) {
+      this.setState({ value: nextProps.markup });
+    }
+  }
+
   onChange = (e) => {
     const { value } = e.target;
 
@@ -106,8 +112,11 @@ export class AlternateSection extends React.Component {
     classes: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
+    lengthChanged: PropTypes.func,
     choiceRemoved: PropTypes.func.isRequired,
-    value: PropTypes.string
+    value: PropTypes.string,
+    maxLength: PropTypes.number,
+    showMaxLength: PropTypes.bool
   };
 
   state = {};
@@ -185,9 +194,7 @@ export class AlternateSection extends React.Component {
     }
 
     const labelLengthsArr = choices.map(choice => (choice.label || '').length);
-    const maxLength = Math.max(...labelLengthsArr);
-
-    return maxLength;
+    return Math.max(...labelLengthsArr);
   };
 
   changeLength = event => {
@@ -210,7 +217,6 @@ export class AlternateSection extends React.Component {
     } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
-    console.log('this.props', this.props);
 
     return (
       <div className={classes.design}>

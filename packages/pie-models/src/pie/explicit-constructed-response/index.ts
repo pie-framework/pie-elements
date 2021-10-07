@@ -66,12 +66,15 @@ export interface ExplicitConstructedResponsePie extends PieModel {
 
     /** Indicates the note for the answer */
     note?: string;
-    
+
     /**
      * Indicates the editor's toolbar position which can be 'bottom' or 'top'
      * @default: 'bottom'
      */
     toolbarEditorPosition?: 'bottom' | 'top';
+
+    /** Indicates the maximum length for each response area */
+    maxChoicesLength?: number[];
 }
 
 /**
@@ -115,4 +118,7 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
 
     /** Alternates Configuration */
     alternates?: ConfigureProp;
+
+    /** Maximum Choices Length Configuration */
+    maxChoicesLength?: ConfigureProp;
 }

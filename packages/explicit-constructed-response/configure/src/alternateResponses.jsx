@@ -9,7 +9,8 @@ import AlternateSection from './alternateSection';
 export class AlternateResponses extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    onLengthChange: PropTypes.func.isRequired
   };
 
   state = {};

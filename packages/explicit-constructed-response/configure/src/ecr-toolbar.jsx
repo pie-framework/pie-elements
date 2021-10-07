@@ -70,12 +70,9 @@ export class ECRToolbar extends React.Component {
   render() {
     const { classes } = this.props;
     const { markup, toolbarStyle } = this.state;
-    console.log('this.props', this.props);
-    console.log('CE SA FACEM?');
 
     return (
       <div
-        id={'BAG ---- PULAAAAA '}
         style={{
           ...toolbarStyle,
           backgroundColor: '#E0E1E6'

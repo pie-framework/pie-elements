@@ -7,6 +7,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       <Panel
         configuration={
           Object {
+            "maxChoicesLength": Object {
+              "label": "Maximum Choices Length",
+              "settings": true,
+            },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -33,6 +37,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "maxChoicesLengthEnabled": undefined,
               "partialScoring": false,
             },
           }
@@ -77,6 +82,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "maxChoicesLength": Array [
+              6,
+              6,
+              4,
+            ],
+            "maxChoicesLengthEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": true,
@@ -190,6 +201,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "maxChoicesLength": Array [
+              6,
+              6,
+              4,
+            ],
+            "maxChoicesLengthEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": true,
@@ -202,6 +219,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           }
         }
         onChange={[Function]}
+        onLengthChange={[Function]}
       />
       <InputContainer
         label="Rationale"
@@ -228,6 +246,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
       <Panel
         configuration={
           Object {
+            "maxChoicesLength": Object {
+              "label": "Maximum Choices Length",
+              "settings": true,
+            },
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -254,6 +276,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
+              "maxChoicesLengthEnabled": undefined,
               "partialScoring": false,
             },
           }
@@ -298,6 +321,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "maxChoicesLength": Array [
+              6,
+              6,
+              4,
+            ],
+            "maxChoicesLengthEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": false,
@@ -382,6 +411,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
+            "maxChoicesLength": Array [
+              6,
+              6,
+              4,
+            ],
+            "maxChoicesLengthEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": false,
@@ -394,6 +429,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           }
         }
         onChange={[Function]}
+        onLengthChange={[Function]}
       />
     </div>
   </ConfigLayout>

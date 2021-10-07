@@ -71,6 +71,12 @@ This element must be one of the following enum values:
 
 Default: `": 'bottom'"`
 
+# `maxChoicesLength` (array)
+
+Indicates the maximum length for each response area
+
+The object is an array with all elements of the type `number`.
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

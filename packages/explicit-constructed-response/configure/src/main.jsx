@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
+import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+import {InputContainer, layout, settings} from '@pie-lib/config-ui';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-
-const { toggle, Panel } = settings;
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
+
+const { toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -140,8 +140,6 @@ export class Main extends React.Component {
   };
 
   onChangeResponse = (index, newVal) => {
-    console.log('index', index);
-    console.log('newVal', newVal);
     const { model, onModelChanged} = this.props;
     const { choices, maxChoicesLength } = model;
     const newValLength = (newVal || '').length;
@@ -165,9 +163,8 @@ export class Main extends React.Component {
   };
 
   onChange = markup => {
-    console.log('ONchange called');
     const {
-      model: { choices }
+      model: { choices, maxChoicesLength }
     } = this.props;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll(
@@ -177,30 +174,22 @@ export class Main extends React.Component {
     const allChoices = {};
 
     allRespAreas.forEach((el, index) => {
+      allChoices[index] = cloneDeep(Object.values(choices)[el.dataset.index]) || [{label: el.dataset.value || '', value: '0'}];
       el.dataset.index = index;
     });
 
-    console.log('allRespAreas', allRespAreas);
+    Object.values(allChoices).forEach((choice, index) => {
+      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const maxLength = Math.max(...labelLengthsArr);
 
-    allRespAreas.forEach((el, index) => {
-      const newChoices = cloneDeep(Object.values(choices)[index]);
-      console.log('newChoices', newChoices);
-
-      if (newChoices) {
-        newChoices[0] = {
-          label: el.dataset.value || '',
-          value: '0'
-        };
-      }
-
-      allChoices[el.dataset.index] = newChoices;
+      maxChoicesLength[index] = Math.max(maxChoicesLength[index], maxLength);
     });
-    console.log('allChoices', allChoices);
 
     this.props.onModelChanged({
       ...this.props.model,
       choices: allChoices,
-      slateMarkup: domMarkup.innerHTML
+      slateMarkup: domMarkup.innerHTML,
+      maxChoicesLength
     });
   };
 
@@ -217,12 +206,22 @@ export class Main extends React.Component {
       partialScoring = {},
       rationale = {},
       teacherInstructions = {},
-      maxChoicesLength = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    let { maxChoicesLength }  = configuration || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, choices } =
       model || {};
     const toolbarOpts = {};
-    console.log('model.maxChoicesLength', model.maxChoicesLength);
+
+    if (!model.maxChoicesLength) {
+      model.maxChoicesLength = [];
+
+      (Object.values(choices) || []).forEach(choice => {
+        const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+        const maxLength = Math.max(...labelLengthsArr);
+
+        model.maxChoicesLength.push(maxLength);
+      });
+    }
 
     switch (model.toolbarEditorPosition) {
       case 'top':

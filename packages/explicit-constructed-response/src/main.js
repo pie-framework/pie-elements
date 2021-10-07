@@ -21,7 +21,8 @@ export class Main extends React.Component {
     teacherInstructions: PropTypes.string,
     value: PropTypes.object,
     feedback: PropTypes.object,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    maxChoicesLength: PropTypes.array
   };
 
   static defaultProps = {
