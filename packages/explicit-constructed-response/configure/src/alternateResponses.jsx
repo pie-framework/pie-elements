@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
+import cloneDeep from 'lodash/cloneDeep';
 
 import AlternateSection from './alternateSection';
 
@@ -13,7 +14,7 @@ export class AlternateResponses extends React.Component {
     onLengthChange: PropTypes.func.isRequired
   };
 
-  state = {};
+  state = { maxChoicesLength: cloneDeep(this.props.model.maxChoicesLength) };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.updateChoicesIfNeeded(nextProps);
@@ -24,6 +25,18 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
+    const { maxChoicesLength } = props.model;
+
+    const lengthChanged = this.state.maxChoicesLength.length && !isEqual(maxChoicesLength, this.state.maxChoicesLength);
+
+    if (lengthChanged) {
+      this.setState({
+        maxChoicesLength: cloneDeep(maxChoicesLength)
+      });
+
+      return;
+    }
+
     if (!this.state.choices
       || !isEqual(this.state.choices, props.model.choices)
       || !isEqual(props.model.choices, this.props.model.choices)
