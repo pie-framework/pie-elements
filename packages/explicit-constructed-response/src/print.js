@@ -8,7 +8,7 @@ import debug from 'debug';
 const log = debug('pie-element:explicit-constructed-response:print');
 
 const preparePrintModel = (model, opts) => {
-  const instr = opts.mode === 'instructor';
+  const instr = opts.role === 'instructor';
 
   model.teacherInstructions = instr ? model.teacherInstructions : undefined;
   model.rationale = instr ? model.rationale : undefined;

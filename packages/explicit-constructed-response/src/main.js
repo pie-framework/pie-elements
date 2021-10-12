@@ -40,6 +40,10 @@ export class Main extends React.Component {
     if (isEmpty(nextProps.feedback)) {
       this.setState({ showCorrectAnswer: false });
     }
+
+    if (nextProps.alwaysShowCorrect) {
+      this.setState({ showCorrectAnswer: true });
+    }
   }
 
   toggleShowCorrect = () => {
