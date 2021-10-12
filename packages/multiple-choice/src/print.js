@@ -66,7 +66,6 @@ export default class MultipleChoicePrint extends HTMLElement {
   }
   set options(o) {
     this._options = o;
-    // this._rerender();
   }
 
   set model(s) {
