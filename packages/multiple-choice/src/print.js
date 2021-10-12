@@ -16,7 +16,7 @@ const log = debug('pie-element:multiple-choice:print');
  */
 
 const preparePrintModel = (model, opts) => {
-  const instr = opts.mode === 'instructor';
+  const instr = opts.role === 'instructor';
 
   model.teacherInstructions = instr ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
@@ -66,6 +66,7 @@ export default class MultipleChoicePrint extends HTMLElement {
   }
   set options(o) {
     this._options = o;
+    // this._rerender();
   }
 
   set model(s) {
