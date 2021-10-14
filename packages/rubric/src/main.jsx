@@ -27,6 +27,7 @@ class Rubric extends React.Component {
 
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    animationsDisabled: PropTypes.bool,
     value: RubricType,
   };
 
@@ -44,51 +45,58 @@ class Rubric extends React.Component {
   };
 
   render() {
-    const { value, classes } = this.props;
+    const { value, classes, animationsDisabled } = this.props;
     if (value && value.points) {
       const { points, sampleAnswers } = value;
 
+      const rubricList = <List component="nav">
+        {points.map(
+          (desc, index) =>
+            this.shouldRenderPoint(index, value) && (
+              <React.Fragment key={index}>
+                <ListItem key={`P${index}`}>
+                  <ListItemText
+                    className={classes.rubricCol}
+                    primary={`${index} PTS`}
+                  />
+                  <ListItemText
+                    primary={
+                      <div dangerouslySetInnerHTML={{ __html: desc }} />
+                    }
+                  />
+                </ListItem>
+                {sampleAnswers && sampleAnswers[index] && (
+                  <ListItem key={`S${index}`}>
+                    <ListItemText
+                      className={classes.rubricCol}
+                      style={{marginLeft: '20px'}}
+                      primary={'Sample Answer'}
+                    />
+                    <ListItemText
+                      primary={
+                        <div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
+                      }
+                    />
+                  </ListItem>
+                )}
+              </React.Fragment>
+            )
+        )}
+      </List>;
+
       return (
         <div className={classes.root}>
-          <Link href={this.dudUrl} onClick={this.toggleRubric}>
-            {this.state.linkPrefix} Rubric
-          </Link>
-          <Collapse in={this.state.rubricOpen} timeout="auto">
-            <List component="nav">
-              {points.map(
-                (desc, index) =>
-                  this.shouldRenderPoint(index, value) && (
-                    <React.Fragment key={index}>
-                      <ListItem key={`P${index}`}>
-                        <ListItemText
-                          className={classes.rubricCol}
-                          primary={`${index} PTS`}
-                        />
-                        <ListItemText
-                          primary={
-                            <div dangerouslySetInnerHTML={{ __html: desc }} />
-                          }
-                        />
-                      </ListItem>
-                      {sampleAnswers && sampleAnswers[index] && (
-                        <ListItem key={`S${index}`}>
-                          <ListItemText
-                            className={classes.rubricCol}
-                            style={{marginLeft: '20px'}}
-                            primary={'Sample Answer'}
-                          />
-                          <ListItemText
-                            primary={
-                              <div dangerouslySetInnerHTML={{ __html: sampleAnswers[index] }} />
-                            }
-                          />
-                        </ListItem>
-                      )}
-                    </React.Fragment>
-                  )
-              )}
-            </List>
-          </Collapse>
+          {!animationsDisabled ?
+            <React.Fragment>
+              <Link href={this.dudUrl} onClick={this.toggleRubric}>
+                {this.state.linkPrefix} Rubric
+              </Link>
+              <Collapse in={this.state.rubricOpen} timeout="auto">
+                {rubricList}
+              </Collapse>
+            </React.Fragment>
+            : rubricList
+          }
         </div>
       );
     } else {
