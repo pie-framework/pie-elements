@@ -51,6 +51,7 @@ export default {
         }
       ]
     },
+    maxLengthPerChoiceEnabled: true,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
@@ -73,5 +74,9 @@ export default {
       settings: true,
       label: 'Teacher Instructions'
     },
+    maxLengthPerChoice: {
+      settings: true,
+      label: 'Maximum Length Per Choice'
+    }
   }
 };

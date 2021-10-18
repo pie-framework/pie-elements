@@ -52,7 +52,7 @@ const styles = (theme) => ({
     justifyContent: 'center',
     width: '100%',
     minWidth: '500px',
-    maxWidth: '900px',
+    maxWidth: 'inherit',
     height: 'auto',
     minHeight: '130px',
     textAlign: 'left',

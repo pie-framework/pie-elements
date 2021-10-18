@@ -29,6 +29,7 @@ const model = {
     1: [{ label: 'over', value: '0' }, { label: 'past', value: '1' }, { label: 'beyond', value: '2' }],
     2: [{ label: 'moon', value: '0' }]
   },
+  maxLengthPerChoice: [6, 6, 4],
   prompt: 'Complete the sentence',
 };
 
@@ -198,7 +199,13 @@ describe('Main', () => {
       let wr;
 
       beforeEach(() => {
-        wr = wrapper();
+        wr = wrapper({
+          choices: {
+            0: [{label: 'cow', value: '0'}, {label: 'cattle', value: '1'}, {label: 'calf', value: '2'}],
+            1: [{label: 'over', value: '0'}, {label: 'past', value: '1'}, {label: 'beyond', value: '2'}],
+            2: [{label: 'moon', value: '0'}]
+          },
+        });
       });
 
       it('slateMarkup and choices are updated', () => {
@@ -217,16 +224,15 @@ describe('Main', () => {
 
       it('slateMarkup and choices are updated', () => {
         const newMarkup = `<p>The <span data-type="explicit_constructed_response" data-index="0" data-value="cow"></span> jumped <span data-type="explicit_constructed_response" data-index="1" data-value="over"></span> the <span data-type="explicit_constructed_response" data-index="2" data-value="moon"></span>and <span data-type="explicit_constructed_response" data-index="3" data-value="test"></span></p>`;
-
         wr.instance().onChange(newMarkup);
 
-        expect(onModelChanged).toBeCalledWith({
+        setTimeout(() => expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
           slateMarkup: newMarkup,
           choices: expect.objectContaining({
             3: [{ label: 'test', value: '0' }]
           })
-        });
+        }) , 10);
       });
 
       it('slateMarkup and choices are updated', () => {
@@ -234,13 +240,13 @@ describe('Main', () => {
 
         wr.instance().onChange(newMarkup);
 
-        expect(onModelChanged).toBeCalledWith({
+        setTimeout(() => expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
           slateMarkup: newMarkup,
           choices: expect.objectContaining({
             0: [{ label: 'rabbit', value: '0' }, { label: 'cattle', value: '1' }, { label: 'calf', value: '2' }]
           })
-        });
+        }), 10);
       });
     });
   });
