@@ -7,8 +7,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
       <Panel
         configuration={
           Object {
-            "maxChoicesLength": Object {
-              "label": "Maximum Choices Length",
+            "maxLengthPerChoice": Object {
+              "label": "Maximum Length Per Choice",
               "settings": true,
             },
             "partialScoring": Object {
@@ -37,7 +37,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
-              "maxChoicesLengthEnabled": undefined,
+              "maxLengthPerChoiceEnabled": undefined,
               "partialScoring": false,
             },
           }
@@ -82,12 +82,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxChoicesLength": Array [
+            "maxLengthPerChoice": Array [
               6,
               6,
               4,
             ],
-            "maxChoicesLengthEnabled": true,
+            "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": true,
@@ -201,12 +201,12 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxChoicesLength": Array [
+            "maxLengthPerChoice": Array [
               6,
               6,
               4,
             ],
-            "maxChoicesLengthEnabled": true,
+            "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": true,
@@ -246,8 +246,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
       <Panel
         configuration={
           Object {
-            "maxChoicesLength": Object {
-              "label": "Maximum Choices Length",
+            "maxLengthPerChoice": Object {
+              "label": "Maximum Length Per Choice",
               "settings": true,
             },
             "partialScoring": Object {
@@ -276,7 +276,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
-              "maxChoicesLengthEnabled": undefined,
+              "maxLengthPerChoiceEnabled": undefined,
               "partialScoring": false,
             },
           }
@@ -321,12 +321,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxChoicesLength": Array [
+            "maxLengthPerChoice": Array [
               6,
               6,
               4,
             ],
-            "maxChoicesLengthEnabled": true,
+            "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": false,
@@ -411,12 +411,12 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             },
             "disabled": false,
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
-            "maxChoicesLength": Array [
+            "maxLengthPerChoice": Array [
               6,
               6,
               4,
             ],
-            "maxChoicesLengthEnabled": true,
+            "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
             "prompt": "Complete the sentence",
             "promptEnabled": false,

@@ -131,7 +131,7 @@
         }
       }
     },
-    "maxChoicesLength": {
+    "maxLengthPerChoice": {
       "title": "ConfigureProp",
       "type": "object",
       "properties": {

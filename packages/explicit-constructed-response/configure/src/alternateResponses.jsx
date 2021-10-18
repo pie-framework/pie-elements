@@ -14,7 +14,7 @@ export class AlternateResponses extends React.Component {
     onLengthChange: PropTypes.func.isRequired
   };
 
-  state = { maxChoicesLength: cloneDeep(this.props.model.maxChoicesLength) };
+  state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.updateChoicesIfNeeded(nextProps);
@@ -25,13 +25,13 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
-    const { maxChoicesLength } = props.model;
-
-    const lengthChanged = this.state.maxChoicesLength.length && !isEqual(maxChoicesLength, this.state.maxChoicesLength);
+    const { maxLengthPerChoice } = props.model;
+    const { maxLengthPerChoice: maxLengthPerChoiceState } = this.state;
+    const lengthChanged = maxLengthPerChoiceState.length && !isEqual(maxLengthPerChoice, maxLengthPerChoiceState);
 
     if (lengthChanged) {
       this.setState({
-        maxChoicesLength: cloneDeep(maxChoicesLength)
+        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
       });
 
       return;
@@ -152,15 +152,15 @@ export class AlternateResponses extends React.Component {
 
   onLengthChanged = (value, key) => {
     const { model, onLengthChange } = this.props;
-    const { maxChoicesLength } = model;
+    const { maxLengthPerChoice } = model;
 
-    maxChoicesLength[key] = value;
-    onLengthChange(maxChoicesLength);
+    maxLengthPerChoice[key] = value;
+    onLengthChange(maxLengthPerChoice);
   }
 
   render() {
     const { choices } = this.state;
-    const { model: { maxChoicesLength, maxChoicesLengthEnabled }} = this.props
+    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }} = this.props
 
     return (
       <div>
@@ -178,8 +178,8 @@ export class AlternateResponses extends React.Component {
                 lengthChanged={value => this.onLengthChanged(value, key)}
                 selectChoices={[selected]}
                 choices={c}
-                maxLength={maxChoicesLength[key]}
-                showMaxLength={maxChoicesLengthEnabled}
+                maxLength={maxLengthPerChoice[key]}
+                showMaxLength={maxLengthPerChoiceEnabled}
               />
             );
           }

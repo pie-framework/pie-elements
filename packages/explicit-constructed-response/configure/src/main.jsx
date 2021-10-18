@@ -130,41 +130,41 @@ export class Main extends React.Component {
     });
   };
 
-  onLengthChanged = maxChoicesLength => {
+  onLengthChanged = maxLengthPerChoice => {
     const { model, onModelChanged } = this.props;
 
     onModelChanged({
       ...model,
-      maxChoicesLength
+      maxLengthPerChoice
     });
   };
 
   onChangeResponse = (index, newVal) => {
     const { model, onModelChanged} = this.props;
-    const { choices, maxChoicesLength } = model;
+    const { choices, maxLengthPerChoice } = model;
     const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: '', value: '0' }];
-      maxChoicesLength.splice(index, 0, newValLength);
+      maxLengthPerChoice.splice(index, 0, newValLength);
     }
 
     choices[index][0].label = newVal || '';
 
-    if (maxChoicesLength && newVal && maxChoicesLength[index] < newValLength) {
-      maxChoicesLength[index] = newVal.length;
+    if (maxLengthPerChoice && newVal && maxLengthPerChoice[index] < newValLength) {
+      maxLengthPerChoice[index] = newVal.length;
     }
 
     onModelChanged({
       ...model,
       choices,
-      maxChoicesLength
+      maxLengthPerChoice
     });
   };
 
   onChange = markup => {
     const {
-      model: { choices, maxChoicesLength }
+      model: { choices, maxLengthPerChoice }
     } = this.props;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll(
@@ -172,15 +172,15 @@ export class Main extends React.Component {
     );
 
     const allChoices = {};
-    const updatedMaxChoicesLength = [];
+    const updatedMaxLengthPerChoice = [];
 
     allRespAreas.forEach((el, index) => {
       allChoices[index] = cloneDeep(Object.values(choices)[el.dataset.index]) || [{label: el.dataset.value || '', value: '0'}];
-      if (maxChoicesLength[el.dataset.index]) {
-        updatedMaxChoicesLength[index] = maxChoicesLength[el.dataset.index];
+      if (maxLengthPerChoice[el.dataset.index]) {
+        updatedMaxLengthPerChoice[index] = maxLengthPerChoice[el.dataset.index];
       } else {
         const labelLengthsArr = allChoices[index].map(choice => (choice.label || '').length);
-        updatedMaxChoicesLength[index] = Math.max(...labelLengthsArr);
+        updatedMaxLengthPerChoice[index] = Math.max(...labelLengthsArr);
       }
 
       el.dataset.index = index;
@@ -190,7 +190,7 @@ export class Main extends React.Component {
       ...this.props.model,
       choices: allChoices,
       slateMarkup: domMarkup.innerHTML,
-      maxChoicesLength: updatedMaxChoicesLength
+      maxLengthPerChoice: updatedMaxLengthPerChoice
     });
   };
 
@@ -208,19 +208,19 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {},
     } = configuration || {};
-    let { maxChoicesLength }  = configuration || {};
+    let { maxLengthPerChoice }  = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, choices } =
       model || {};
     const toolbarOpts = {};
 
-    if (!model.maxChoicesLength) {
-      model.maxChoicesLength = [];
+    if (!model.maxLengthPerChoice) {
+      model.maxLengthPerChoice = [];
 
       (Object.values(choices) || []).forEach(choice => {
         const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
         const maxLength = Math.max(...labelLengthsArr);
 
-        model.maxChoicesLength.push(maxLength);
+        model.maxLengthPerChoice.push(maxLength);
       });
     }
 
@@ -247,8 +247,8 @@ export class Main extends React.Component {
                 Settings: {
                   partialScoring:
                     partialScoring.settings && toggle(partialScoring.label),
-                  maxChoicesLengthEnabled:
-                    maxChoicesLength.settings && toggle(maxChoicesLength.label),
+                  maxLengthPerChoiceEnabled:
+                    maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:

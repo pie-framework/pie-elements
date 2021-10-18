@@ -71,7 +71,7 @@ This element must be one of the following enum values:
 
 Default: `": 'bottom'"`
 
-# `maxChoicesLength` (array)
+# `maxLengthPerChoice` (array)
 
 Indicates the maximum length for each response area
 

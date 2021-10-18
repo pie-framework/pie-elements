@@ -74,7 +74,7 @@ export interface ExplicitConstructedResponsePie extends PieModel {
     toolbarEditorPosition?: 'bottom' | 'top';
 
     /** Indicates the maximum length for each response area */
-    maxChoicesLength?: number[];
+    maxLengthPerChoice?: number[];
 }
 
 /**
@@ -119,6 +119,6 @@ export interface ExplicitConstructedResponseConfigure extends PromptConfig, Comm
     /** Alternates Configuration */
     alternates?: ConfigureProp;
 
-    /** Maximum Choices Length Configuration */
-    maxChoicesLength?: ConfigureProp;
+    /** Maximum Length Per Choice Configuration */
+    maxLengthPerChoice?: ConfigureProp;
 }

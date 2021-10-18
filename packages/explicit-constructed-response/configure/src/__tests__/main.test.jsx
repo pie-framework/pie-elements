@@ -29,7 +29,7 @@ const model = {
     1: [{ label: 'over', value: '0' }, { label: 'past', value: '1' }, { label: 'beyond', value: '2' }],
     2: [{ label: 'moon', value: '0' }]
   },
-  maxChoicesLength: [6, 6, 4],
+  maxLengthPerChoice: [6, 6, 4],
   prompt: 'Complete the sentence',
 };
 
