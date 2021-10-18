@@ -78,11 +78,23 @@ export class Main extends React.Component {
 
   componentDidMount() {
     const {
-      model: { slateMarkup }
+      model: { slateMarkup, choices, maxLengthPerChoice = [] }, onModelChanged
     } = this.props;
 
     this.setState({
       markup: slateMarkup
+    });
+
+    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+    Object.values(choices).forEach((choice, index) => {
+      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+
+      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
+    });
+
+    onModelChanged({
+      ...this.props.model,
+      maxLengthPerChoice
     });
   }
 
@@ -207,22 +219,10 @@ export class Main extends React.Component {
       partialScoring = {},
       rationale = {},
       teacherInstructions = {},
+      maxLengthPerChoice = {}
     } = configuration || {};
-    let { maxLengthPerChoice }  = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, choices } =
-      model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
     const toolbarOpts = {};
-
-    if (!model.maxLengthPerChoice) {
-      model.maxLengthPerChoice = [];
-
-      (Object.values(choices) || []).forEach(choice => {
-        const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-        const maxLength = Math.max(...labelLengthsArr);
-
-        model.maxLengthPerChoice.push(maxLength);
-      });
-    }
 
     switch (model.toolbarEditorPosition) {
       case 'top':

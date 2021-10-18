@@ -107,16 +107,14 @@ export function model(question, session, env) {
        }
     });
 
-    let maxLengthPerChoice = [];
+    const { maxLengthPerChoice = [] } = normalizedQuestion;
 
-    if (!normalizedQuestion.maxLengthPerChoice) {
-      Object.values(choices).forEach(choice => {
-        const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-        const maxLength = Math.max(...labelLengthsArr);
+    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+    Object.values(choices).forEach((choice, index) => {
+      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
 
-        maxLengthPerChoice.push(maxLength);
-      });
-    }
+      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
+    });
 
     const out = {
       disabled: env.mode !== 'gather',
@@ -128,7 +126,7 @@ export function model(question, session, env) {
       env,
       note: normalizedQuestion.note,
       showNote,
-      maxLengthPerChoice: normalizedQuestion.maxLengthPerChoice || maxLengthPerChoice,
+      maxLengthPerChoice,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };
