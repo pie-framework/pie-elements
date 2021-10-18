@@ -166,11 +166,11 @@ export class AlternateSection extends React.Component {
   };
 
   onChoiceChanged = (choice, value) => {
-    const { choiceChanged, lengthChanged } = this.props;
-    const maxLength = this.getChoicesMaxLength();
+    const { choiceChanged, lengthChanged, maxLength } = this.props;
+    const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
     const newLength = value.length;
 
-    if (newLength > maxLength) {
+    if (newLength > newMaxLength) {
       lengthChanged(newLength);
     }
 
