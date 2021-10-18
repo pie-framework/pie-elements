@@ -22,6 +22,8 @@ exports[`AlternateResponses snapshot renders 1`] = `
       ]
     }
     key="0"
+    lengthChanged={[Function]}
+    maxLength={6}
     onSelect={[Function]}
     selectChoices={
       Array [
@@ -31,6 +33,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
         },
       ]
     }
+    showMaxLength={true}
     value="0"
   />
   <WithStyles(AlternateSection)
@@ -53,6 +56,8 @@ exports[`AlternateResponses snapshot renders 1`] = `
       ]
     }
     key="1"
+    lengthChanged={[Function]}
+    maxLength={6}
     onSelect={[Function]}
     selectChoices={
       Array [
@@ -62,6 +67,7 @@ exports[`AlternateResponses snapshot renders 1`] = `
         },
       ]
     }
+    showMaxLength={true}
     value="0"
   />
   <WithStyles(AlternateSection)

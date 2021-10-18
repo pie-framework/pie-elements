@@ -22,13 +22,15 @@ exports[`AlternateSection snapshot renders 1`] = `
         moon
       </WithStyles(MenuItem)>
     </WithStyles(WithFormControlContext(Select))>
-    <WithStyles(Button)
-      color="primary"
-      onClick={[Function]}
-      variant="contained"
-    >
-      Add
-    </WithStyles(Button)>
+    <div>
+      <WithStyles(Button)
+        color="primary"
+        onClick={[Function]}
+        variant="contained"
+      >
+        Add
+      </WithStyles(Button)>
+    </div>
   </div>
   <div>
     <Choice
