@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/correct-answer-toggle": "^2.3.29",
+    "@pie-lib/correct-answer-toggle": "^2.3.31",
     "@pie-lib/drag": "^1.1.52",
-    "@pie-lib/math-rendering": "^2.3.9",
-    "@pie-lib/render-ui": "^4.12.0",
+    "@pie-lib/math-rendering": "^2.3.11",
+    "@pie-lib/render-ui": "^4.12.2",
     "debug": "^4.1.1",
     "decimal.js": "^10.0.0",
     "lodash": "^4.17.10",

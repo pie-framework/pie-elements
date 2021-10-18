@@ -2171,7 +2171,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/charting@^4.5.10", "@pie-lib/charting@^4.5.13":
+"@pie-lib/charting@^4.5.13":
   version "4.5.13"
   resolved "https://registry.yarnpkg.com/@pie-lib/charting/-/charting-4.5.13.tgz#3412e44e34d02c1f906d06d7d929ab885b3dbfb5"
   integrity sha512-wMm8WUKiSUkcMFXPL3NhuDEdrWC5CdK4Rjuniaj75fFtPtIULYB0EpJLvtt3Ov647gJWXnJbB13UlLFoQqMOYg==
@@ -2208,7 +2208,7 @@
     "@material-ui/icons" "^3.0.2"
     "@pie-lib/editable-html" "^7.17.11"
     "@pie-lib/icons" "^2.4.25"
-    "@pie-lib/render-ui" "^4.12.0"
+    "@pie-lib/render-ui" "^4.12.2"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2223,20 +2223,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/correct-answer-toggle@2.3.29":
-  version "2.3.29"
-  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.29.tgz#10785f7ac41b53983b5a17b18dfe3f1e9b163cef"
-  integrity sha512-uhI0Oxf8xdyoETTPNl83Sj90FMwKEvIICFQnHrBA8PsKKPG3akdTsoFzIXVxaXrbi+QNtRRupmsKvG/hzeSiVw==
-  dependencies:
-    "@material-ui/core" "^3.8.3"
-    "@pie-lib/icons" "^2.4.25"
-    "@pie-lib/render-ui" "^4.12.0"
-    classnames "^2.2.6"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-transition-group "^2.5.2"
-
-"@pie-lib/correct-answer-toggle@^2.3.29", "@pie-lib/correct-answer-toggle@^2.3.31":
+"@pie-lib/correct-answer-toggle@2.3.31", "@pie-lib/correct-answer-toggle@^2.3.31":
   version "2.3.31"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.31.tgz#47af4427c4092dade0cb1dca40d7df7c99402ed2"
   integrity sha512-w9pBNmc/ynX5PKiQHtmogWt+F1ZYbCx9s6RjF3Iwc8DYSd+aiNb8r3GBEBU18BS+zRKR3P5oe56yaoZm6h/6ZA==
@@ -2307,7 +2294,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/graphing@^2.4.2", "@pie-lib/graphing@^2.4.4":
+"@pie-lib/graphing@^2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@pie-lib/graphing/-/graphing-2.4.4.tgz#2826149a7fe189ef69ac9798f3c47e61a7ef4b32"
   integrity sha512-Hvh8BomqyP0kJk6qfHHWxJ7EwEShz09/UfZTygRmFwa7LWuZWNFuryxjOeR0SgZhNqT8z0X36HRQKHbAH5cmMg==
@@ -2344,10 +2331,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.10.20":
-  version "1.10.22"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.10.22.tgz#f989b43833c0a8b8673ea149f8dde5636a161a9d"
-  integrity sha512-wxCqYFmA+b02m8nyW7/JVvjyacjdxq/ofFiTTlg4Rm3hJ+Fj31CEqqwtH+Md/nly6lPzQ226WKyesGnrq+oskA==
+"@pie-lib/mask-markup@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.11.1.tgz#c4827ed61a494fb36470446f12b85cae9bf0b533"
+  integrity sha512-PwQGAwkvNJnahicr5c56drbvEGmC+fUHa27Iu8St/7m5P7LI5n7p2pyRJzLWfN0eqr2xBZ/HE/JQutkcW0Pztw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.52"
