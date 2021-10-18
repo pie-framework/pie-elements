@@ -45,6 +45,7 @@ describe('AlternateSection', () => {
   let onSelect = jest.fn();
   let choiceChanged = jest.fn();
   let choiceRemoved = jest.fn();
+  let lengthChanged = jest.fn();
 
   const wrapper = () => {
     const defaults = {
@@ -54,6 +55,7 @@ describe('AlternateSection', () => {
       onSelect,
       choiceChanged,
       choiceRemoved,
+      lengthChanged,
       selectChoices: [{ label: 'moon', value: '2' }],
       choices
     };

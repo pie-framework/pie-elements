@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
+import cloneDeep from 'lodash/cloneDeep';
 
 import AlternateSection from './alternateSection';
 
 export class AlternateResponses extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    onLengthChange: PropTypes.func.isRequired
   };
 
-  state = {};
+  state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.updateChoicesIfNeeded(nextProps);
@@ -23,6 +25,18 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
+    const { maxLengthPerChoice } = props.model;
+    const { maxLengthPerChoice: maxLengthPerChoiceState } = this.state;
+    const lengthChanged = maxLengthPerChoiceState.length && !isEqual(maxLengthPerChoice, maxLengthPerChoiceState);
+
+    if (lengthChanged) {
+      this.setState({
+        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
+      });
+
+      return;
+    }
+
     if (!this.state.choices
       || !isEqual(this.state.choices, props.model.choices)
       || !isEqual(props.model.choices, this.props.model.choices)
@@ -136,8 +150,17 @@ export class AlternateResponses extends React.Component {
     }
   };
 
+  onLengthChanged = (value, key) => {
+    const { model, onLengthChange } = this.props;
+    const { maxLengthPerChoice } = model;
+
+    maxLengthPerChoice[key] = value;
+    onLengthChange(maxLengthPerChoice);
+  }
+
   render() {
     const { choices } = this.state;
+    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }} = this.props
 
     return (
       <div>
@@ -152,8 +175,11 @@ export class AlternateResponses extends React.Component {
                 onSelect={choice => this.onSectionSelect(choice, key)}
                 choiceChanged={choice => this.onChoiceChanged(choice, key)}
                 choiceRemoved={value => this.onChoiceRemoved(value, key)}
+                lengthChanged={value => this.onLengthChanged(value, key)}
                 selectChoices={[selected]}
                 choices={c}
+                maxLength={maxLengthPerChoice[key]}
+                showMaxLength={maxLengthPerChoiceEnabled}
               />
             );
           }
