@@ -107,6 +107,17 @@ export function model(question, session, env) {
        }
     });
 
+    let maxLengthPerChoice = [];
+
+    if (!normalizedQuestion.maxLengthPerChoice) {
+      Object.values(choices).forEach(choice => {
+        const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+        const maxLength = Math.max(...labelLengthsArr);
+
+        maxLengthPerChoice.push(maxLength);
+      });
+    }
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -117,6 +128,7 @@ export function model(question, session, env) {
       env,
       note: normalizedQuestion.note,
       showNote,
+      maxLengthPerChoice: normalizedQuestion.maxLengthPerChoice || maxLengthPerChoice,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };

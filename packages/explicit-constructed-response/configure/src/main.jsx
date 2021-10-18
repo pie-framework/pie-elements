@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
-import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
-import { InputContainer, layout, settings } from '@pie-lib/config-ui';
-import { withStyles } from '@material-ui/core/styles';
+import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+import {InputContainer, layout, settings} from '@pie-lib/config-ui';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-
-const { toggle, Panel } = settings;
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
+
+const { toggle, Panel } = settings;
 
 const styles = theme => ({
   promptHolder: {
@@ -130,26 +130,41 @@ export class Main extends React.Component {
     });
   };
 
+  onLengthChanged = maxLengthPerChoice => {
+    const { model, onModelChanged } = this.props;
+
+    onModelChanged({
+      ...model,
+      maxLengthPerChoice
+    });
+  };
+
   onChangeResponse = (index, newVal) => {
-    const {
-      model: { choices }
-    } = this.props;
+    const { model, onModelChanged} = this.props;
+    const { choices, maxLengthPerChoice } = model;
+    const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: '', value: '0' }];
+      maxLengthPerChoice.splice(index, 0, newValLength);
     }
 
     choices[index][0].label = newVal || '';
 
-    this.props.onModelChanged({
-      ...this.props.model,
-      choices
+    if (maxLengthPerChoice && newVal && maxLengthPerChoice[index] < newValLength) {
+      maxLengthPerChoice[index] = newVal.length;
+    }
+
+    onModelChanged({
+      ...model,
+      choices,
+      maxLengthPerChoice
     });
   };
 
   onChange = markup => {
     const {
-      model: { choices }
+      model: { choices, maxLengthPerChoice }
     } = this.props;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll(
@@ -157,28 +172,25 @@ export class Main extends React.Component {
     );
 
     const allChoices = {};
+    const updatedMaxLengthPerChoice = [];
 
     allRespAreas.forEach((el, index) => {
-      el.dataset.index = index;
-    });
-
-    allRespAreas.forEach((el, index) => {
-      const newChoices = cloneDeep(Object.values(choices)[index]);
-
-      if (newChoices) {
-        newChoices[0] = {
-          label: el.dataset.value || '',
-          value: '0'
-        };
+      allChoices[index] = cloneDeep(Object.values(choices)[el.dataset.index]) || [{label: el.dataset.value || '', value: '0'}];
+      if (maxLengthPerChoice[el.dataset.index]) {
+        updatedMaxLengthPerChoice[index] = maxLengthPerChoice[el.dataset.index];
+      } else {
+        const labelLengthsArr = allChoices[index].map(choice => (choice.label || '').length);
+        updatedMaxLengthPerChoice[index] = Math.max(...labelLengthsArr);
       }
 
-      allChoices[el.dataset.index] = newChoices;
+      el.dataset.index = index;
     });
 
     this.props.onModelChanged({
       ...this.props.model,
       choices: allChoices,
-      slateMarkup: domMarkup.innerHTML
+      slateMarkup: domMarkup.innerHTML,
+      maxLengthPerChoice: updatedMaxLengthPerChoice
     });
   };
 
@@ -194,11 +206,23 @@ export class Main extends React.Component {
       prompt = {},
       partialScoring = {},
       rationale = {},
-      teacherInstructions = {}
+      teacherInstructions = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    let { maxLengthPerChoice }  = configuration || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, choices } =
       model || {};
     const toolbarOpts = {};
+
+    if (!model.maxLengthPerChoice) {
+      model.maxLengthPerChoice = [];
+
+      (Object.values(choices) || []).forEach(choice => {
+        const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+        const maxLength = Math.max(...labelLengthsArr);
+
+        model.maxLengthPerChoice.push(maxLength);
+      });
+    }
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -222,7 +246,9 @@ export class Main extends React.Component {
               groups={{
                 Settings: {
                   partialScoring:
-                    partialScoring.settings && toggle(partialScoring.label)
+                    partialScoring.settings && toggle(partialScoring.label),
+                  maxLengthPerChoiceEnabled:
+                    maxLengthPerChoice.settings && toggle(maxLengthPerChoice.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -314,6 +340,7 @@ export class Main extends React.Component {
             <AlternateResponses
               model={model}
               onChange={this.onResponsesChanged}
+              onLengthChange={this.onLengthChanged}
             />
             {rationaleEnabled && (
               <InputContainer
