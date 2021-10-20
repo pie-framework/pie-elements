@@ -1,4 +1,4 @@
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import CardActions from '@material-ui/core/CardActions';
 import DragHandle from '@material-ui/icons/DragHandle';
 
@@ -70,6 +70,8 @@ export class ChoiceTile extends React.Component {
       audio: { disabled: true },
       video: { disabled: true }
     };
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
+      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
 
     const opacity = isDragging ? 0 : 1;
     const markup = (
@@ -88,6 +90,7 @@ export class ChoiceTile extends React.Component {
           onChange={this.onLabelChange}
           pluginProps={choicePlugins}
           toolbarOpts={toolbarOpts}
+          activePlugins={filteredDefaultPlugins}
         />
         {editable && (
           <div className={classes.controls}>
