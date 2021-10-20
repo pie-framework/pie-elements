@@ -9,9 +9,8 @@ import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml, {DEFAULT_PLUGINS} from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import { InfoDialog } from './common';
-import EditableHTML from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
