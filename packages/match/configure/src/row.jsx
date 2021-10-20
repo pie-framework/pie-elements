@@ -9,8 +9,9 @@ import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml, {DEFAULT_PLUGINS} from '@pie-lib/editable-html';
 import { InfoDialog } from './common';
+import EditableHTML from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -158,6 +159,8 @@ export class Row extends React.Component {
       audio: { disabled: true },
       video: { disabled: true }
     };
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
+      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
 
     const content = (
       <div style={{
@@ -183,6 +186,7 @@ export class Row extends React.Component {
               pluginProps={rowPlugins}
               toolbarOpts={toolbarOpts}
               allowValidation
+              activePlugins={filteredDefaultPlugins}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
