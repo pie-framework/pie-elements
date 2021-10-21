@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { swap } from '@pie-lib/drag';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
@@ -97,7 +96,13 @@ class AnswerConfigBlock extends React.Component {
 
     log('[moveRow]: ', from, to);
 
-    const update = swap(rows, from, to);
+    const movedRow = rows.find((row, index) => index === from);
+    const remainingRows = rows.filter((row, index) => index !== from);
+    const update = [
+      ...remainingRows.slice(0, to),
+        movedRow,
+      ...remainingRows.slice(to)
+    ];
 
     log('update: ', update);
 

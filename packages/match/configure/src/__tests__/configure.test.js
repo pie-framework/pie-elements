@@ -421,13 +421,13 @@ describe('AnswerConfigBlock', () => {
         ...clonedDefaultProps.model,
         rows: [
           {
-            id: 1,
-            title: 'Question Text 1',
+            id: 2,
+            title: 'Question Text 2',
             values: [false, false]
           },
           {
-            id: 2,
-            title: 'Question Text 2',
+            id: 1,
+            title: 'Question Text 1',
             values: [false, false]
           },
           {
