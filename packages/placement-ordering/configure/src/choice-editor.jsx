@@ -82,7 +82,9 @@ class ChoiceEditor extends React.Component {
     }),
     disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
-    placementArea: PropTypes.bool
+    placementArea: PropTypes.bool,
+    singularChoiceLabel: PropTypes.string,
+    pluralChoiceLabel: PropTypes.string
   };
 
   constructor(props) {
@@ -160,7 +162,16 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport, disableImages, toolbarOpts } = this.props;
+    const {
+      classes,
+      correctResponse,
+      choices,
+      imageSupport,
+      disableImages,
+      toolbarOpts,
+      singularChoiceLabel,
+      pluralChoiceLabel
+    } = this.props;
 
     const ordering = {
       choices,
@@ -202,7 +213,7 @@ class ChoiceEditor extends React.Component {
               label: classes.addButtonLabel
             }}
           >
-            SHUFFLE CHOICES
+            {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
           </Button>
           <Button
             onClick={this.addChoice}
@@ -214,7 +225,7 @@ class ChoiceEditor extends React.Component {
               label: classes.addButtonLabel
             }}
           >
-            ADD CHOICE
+            {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </Button>
         </div>
       </div>
