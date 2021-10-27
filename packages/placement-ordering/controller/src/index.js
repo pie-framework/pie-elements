@@ -176,11 +176,9 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { correctResponse } = question;
-
       resolve({
         id: '1',
-        value: correctResponse
+        value: flattenCorrect(question)
       });
     } else {
       resolve(null);
