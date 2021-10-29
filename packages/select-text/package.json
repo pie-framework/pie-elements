@@ -9,10 +9,10 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.29",
-    "@pie-lib/math-rendering": "^2.3.9",
-    "@pie-lib/render-ui": "^4.12.0",
-    "@pie-lib/text-select": "^1.8.5",
+    "@pie-lib/correct-answer-toggle": "^2.3.31",
+    "@pie-lib/math-rendering": "^2.3.11",
+    "@pie-lib/render-ui": "^4.12.2",
+    "@pie-lib/text-select": "^1.8.8",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"

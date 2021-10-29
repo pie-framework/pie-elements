@@ -107,6 +107,15 @@ export function model(question, session, env) {
        }
     });
 
+    const { maxLengthPerChoice = [] } = normalizedQuestion;
+
+    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+    Object.values(choices).forEach((choice, index) => {
+      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+
+      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
+    });
+
     const out = {
       disabled: env.mode !== 'gather',
       mode: env.mode,
@@ -117,6 +126,7 @@ export function model(question, session, env) {
       env,
       note: normalizedQuestion.note,
       showNote,
+      maxLengthPerChoice,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };

@@ -25,6 +25,7 @@ export class Main extends React.Component {
     onChange: PropTypes.func,
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
+    maxLengthPerChoice: PropTypes.array
   };
 
   static defaultProps = {
@@ -70,7 +71,8 @@ export class Main extends React.Component {
       showNote,
       env,
       animationsDisabled,
-      alwaysShowCorrect
+      alwaysShowCorrect,
+      maxLengthPerChoice
     } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
@@ -109,6 +111,7 @@ export class Main extends React.Component {
           onChange={this.onChange}
           showCorrectAnswer={showCorrectAnswer}
           value={value}
+          maxLength={maxLengthPerChoice}
         />
         {displayNote && (
           <div

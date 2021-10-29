@@ -22,6 +22,7 @@ export const normalize = (question) => ({
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  choiceRationaleEnabled: true,
   ...question,
 });
 
@@ -105,6 +106,12 @@ export function model(question, session, env, updateSession) {
     let teacherInstructions = null;
     let rationale = null;
 
+    const choicesWillNullRationales = (Object.keys(choices) || []).reduce((acc, currentValue) => {
+      acc[currentValue] = (choices[currentValue] || []).map(choice => ({ ...choice, rationale: null }));
+
+      return acc;
+    }, {});
+
     if (
       env.role === 'instructor' &&
       (env.mode === 'view' || env.mode === 'evaluate')
@@ -115,9 +122,15 @@ export function model(question, session, env, updateSession) {
       teacherInstructions = normalizedQuestion.teacherInstructionsEnabled
         ? normalizedQuestion.teacherInstructions
         : null;
+
+      choices = normalizedQuestion.choiceRationaleEnabled
+        ? normalizedQuestion.choices
+        : choicesWillNullRationales;
+
     } else {
       rationale = null;
       teacherInstructions = null;
+      choices = choicesWillNullRationales;
     }
 
     const out = {
@@ -135,7 +148,7 @@ export function model(question, session, env, updateSession) {
           ? getScore(normalizedQuestion, session) === 1
           : undefined,
       rationale,
-      teacherInstructions,
+      teacherInstructions
     };
 
     resolve(out);

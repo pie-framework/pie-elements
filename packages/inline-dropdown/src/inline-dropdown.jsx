@@ -7,6 +7,7 @@ import { InlineDropdown as DropDown } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 export class InlineDropdown extends React.Component {
   static propTypes = {
@@ -50,8 +51,19 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions } = this.props;
+    const { classes, prompt, mode, rationale, teacherInstructions, choices } = this.props;
     const showCorrectAnswerToggle = mode === 'evaluate';
+    let choiceRationalesHaveText = false;
+
+    const choiceRationales = (Object.keys(choices) || []).map(key => (choices[key] || [])
+      .reduce((acc, currentValue) => {
+        if (currentValue.rationale && hasText(currentValue.rationale)) {
+          choiceRationalesHaveText = true;
+
+          acc.push(currentValue);
+        }
+        return acc;
+      }, []));
 
     return (
       <div className={classes.mainContainer}>
@@ -90,6 +102,26 @@ export class InlineDropdown extends React.Component {
             </Collapsible>
           )
         }
+        <br />
+        {choiceRationalesHaveText && (
+          <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
+            <div>
+              {choiceRationales.map((choices, index) =>
+                <div key={index}>
+                  {choices && choices.length > 0 && choices.map( choice =>
+                    <div className={classes.choiceRationale} key={choice.label}>
+                      <div
+                        className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
+                        dangerouslySetInnerHTML={{__html: `${choice.label}: `}}
+                      />
+                      <div dangerouslySetInnerHTML={{__html: choice.rationale}}/>
+                    </div>
+                )}
+                  {choices && choices.length > 0 && <br />}
+                </div>
+              )}
+            </div>
+          </Collapsible>)}
         <DropDown
           {...this.props}
           showCorrectAnswer={showCorrectAnswer}
@@ -104,6 +136,19 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     padding: theme.spacing.unit
+  },
+  choiceRationale: {
+    display: 'flex',
+    whiteSpace: 'break-spaces'
+  },
+  choiceRationaleLabel: {
+    display: 'flex',
+    '&.correct': {
+      color: color.correct()
+    },
+    '&.incorrect': {
+      color: color.incorrect()
+    }
   }
 });
 

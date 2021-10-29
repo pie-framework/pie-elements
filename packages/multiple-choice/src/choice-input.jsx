@@ -150,12 +150,14 @@ export class ChoiceInput extends React.Component {
     classes: PropTypes.object,
     className: PropTypes.string,
     hideTick: PropTypes.bool,
+    isEvaluateMode: PropTypes.bool,
   };
 
   static defaultProps = {
     rationale: null,
     accessibility: null,
     checked: false,
+    isEvaluateMode: false,
   };
 
   constructor(props) {
@@ -184,6 +186,7 @@ export class ChoiceInput extends React.Component {
       rationale,
       accessibility,
       hideTick,
+      isEvaluateMode,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
@@ -192,7 +195,7 @@ export class ChoiceInput extends React.Component {
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
-          {!hideTick && <FeedbackTick correctness={correctness} />}
+          {(!hideTick && isEvaluateMode) && <FeedbackTick correctness={correctness} />}
           <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
             <StyledFormControlLabel
               disabled={disabled}

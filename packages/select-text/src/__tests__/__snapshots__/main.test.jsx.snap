@@ -24,7 +24,6 @@ exports[`main snapshot renders 1`] = `
         },
       ]
     }
-    text="foo"
     tokens={
       Array [
         Object {
@@ -62,7 +61,6 @@ exports[`main snapshot renders rationale 1`] = `
         },
       ]
     }
-    text="foo"
     tokens={
       Array [
         Object {
@@ -92,7 +90,6 @@ exports[`main snapshot renders showCorrect 1`] = `
   <Component
     onChange={[MockFunction]}
     selectedTokens={Array []}
-    text="foo"
     tokens={
       Array [
         Object {

@@ -79,6 +79,7 @@ export class ECRToolbar extends React.Component {
         }}
       >
         <OutlinedInput
+          style={{ width: '100%' }}
           autoFocus
           labelWidth={0}
           classes={{

@@ -8,7 +8,8 @@ import Delete from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import {withStyles} from '@material-ui/core/styles';
 import max from 'lodash/max';
 
 const styles = () => ({
@@ -30,10 +31,18 @@ const styles = () => ({
     fill: 'gray'
   },
   selectContainer: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%'
+  },
+  rightContainer: {
+    alignItems: 'center',
+    display: 'flex',
+  },
+  lengthField: {
+    width: '230px',
+    marginRight: '20px'
   }
 });
 
@@ -51,6 +60,12 @@ export class Choice extends React.Component {
   };
 
   updateText = debounce(this.props.onChange, 300);
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.markup) {
+      this.setState({ value: nextProps.markup });
+    }
+  }
 
   onChange = (e) => {
     const { value } = e.target;
@@ -97,8 +112,11 @@ export class AlternateSection extends React.Component {
     classes: PropTypes.object.isRequired,
     onSelect: PropTypes.func.isRequired,
     choiceChanged: PropTypes.func.isRequired,
+    lengthChanged: PropTypes.func,
     choiceRemoved: PropTypes.func.isRequired,
-    value: PropTypes.string
+    value: PropTypes.string,
+    maxLength: PropTypes.number,
+    showMaxLength: PropTypes.bool
   };
 
   state = {};
@@ -148,7 +166,13 @@ export class AlternateSection extends React.Component {
   };
 
   onChoiceChanged = (choice, value) => {
-    const { choiceChanged } = this.props;
+    const { choiceChanged, lengthChanged, maxLength } = this.props;
+    const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
+    const newLength = value.length;
+
+    if (newLength > newMaxLength) {
+      lengthChanged(newLength);
+    }
 
     choiceChanged({
       ...choice,
@@ -162,13 +186,37 @@ export class AlternateSection extends React.Component {
     choiceRemoved(choice.value);
   };
 
+  getChoicesMaxLength = () => {
+    const { choices } = this.props;
+
+    if (!choices) {
+      return 1;
+    }
+
+    const labelLengthsArr = choices.map(choice => (choice.label || '').length);
+    return Math.max(...labelLengthsArr);
+  };
+
+  changeLength = event => {
+    const { lengthChanged } = this.props;
+    const numberValue = parseInt(event.target.value, 10);
+    const minLength = this.getChoicesMaxLength();
+
+    if (numberValue && numberValue >= minLength && numberValue <= minLength + 10) {
+      lengthChanged(numberValue);
+    }
+  };
+
   render() {
     const {
       classes,
       selectChoices,
+      maxLength,
+      showMaxLength,
       value
     } = this.props;
     const { choices } = this.state;
+    const minLength = this.getChoicesMaxLength();
 
     return (
       <div className={classes.design}>
@@ -190,14 +238,29 @@ export class AlternateSection extends React.Component {
           </Select>
           {
             choices && choices.length > 0 &&
-            <Button
-              className={classes.addButton}
-              variant="contained"
-              color="primary"
-              onClick={this.onAddChoice}
-            >
-              Add
-            </Button>
+            <div className={classes.rightContainer}>
+              {maxLength && showMaxLength && (
+                <TextField
+                  className={classes.lengthField}
+                  label="Maximum length (characters)"
+                  type="number"
+                  inputProps={{
+                    min: minLength,
+                    max: minLength + 10
+                  }}
+                  value={maxLength}
+                  onChange={this.changeLength}
+                />
+              )}
+              <Button
+                className={classes.addButton}
+                variant="contained"
+                color="primary"
+                onClick={this.onAddChoice}
+              >
+                Add
+              </Button>
+            </div>
           }
         </div>
         <div

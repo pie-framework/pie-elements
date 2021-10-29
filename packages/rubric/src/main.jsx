@@ -45,6 +45,7 @@ class Rubric extends React.Component {
 
   render() {
     const { value, classes } = this.props;
+
     if (value && value.points) {
       const { points, sampleAnswers } = value;
 
@@ -70,7 +71,7 @@ class Rubric extends React.Component {
                           }
                         />
                       </ListItem>
-                      {sampleAnswers && sampleAnswers[index] && (
+                      {sampleAnswers && sampleAnswers[index] && sampleAnswers[index] !== 'null' && (
                         <ListItem key={`S${index}`}>
                           <ListItemText
                             className={classes.rubricCol}

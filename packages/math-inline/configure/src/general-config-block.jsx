@@ -52,7 +52,7 @@ const styles = (theme) => ({
     justifyContent: 'center',
     width: '100%',
     minWidth: '500px',
-    maxWidth: '900px',
+    maxWidth: 'inherit',
     height: 'auto',
     minHeight: '130px',
     textAlign: 'left',
@@ -263,8 +263,7 @@ class GeneralConfigBlock extends React.Component {
     if (!isEqual(responseAreas, this.state.responseAreas)) {
       this.setState(
         {
-          showKeypad: false,
-          responseAreas,
+          responseAreas, 
         },
         () => {
           if (this.root && Object.keys(responseAreas).length) {
