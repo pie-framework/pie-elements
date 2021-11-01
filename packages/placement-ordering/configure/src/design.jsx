@@ -271,6 +271,7 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 disableImages={!model.enableImages}
                 toolbarOpts={toolbarOpts}
+                choicesLabel={choices.label}
                 placementArea={model.placementArea}
                 singularChoiceLabel={singularLabel}
                 pluralChoiceLabel={pluralLabel}
