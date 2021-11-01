@@ -18,6 +18,11 @@ exports[`ECRToolbar snapshot renders 1`] = `
     labelWidth={0}
     onBlur={[Function]}
     onChange={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
   />
 </div>
 `;
