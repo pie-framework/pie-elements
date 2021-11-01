@@ -92,12 +92,23 @@ class AnswerConfigBlock extends React.Component {
   moveRow = (from, to) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
-    const rows = newModel.rows;
+    const rows = newModel.rows || [];
 
     log('[moveRow]: ', from, to);
 
-    const movedRow = rows.find((row, index) => index === from);
-    const remainingRows = rows.filter((row, index) => index !== from);
+    const { movedRow, remainingRows } = rows.reduce(
+      (acc, item, index) => {
+        if (index === from) {
+          acc.movedRow = item;
+        } else {
+          acc.remainingRows.push(item);
+        }
+
+        return acc;
+      },
+      { movedRow: null, remainingRows: [] }
+    );
+
     const update = [
       ...remainingRows.slice(0, to),
         movedRow,
