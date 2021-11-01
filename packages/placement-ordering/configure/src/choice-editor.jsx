@@ -43,24 +43,67 @@ function findFreeChoiceSlot(choices) {
 
 const log = debug('@pie-element:placement-ordering:configure:choice-editor');
 
-function updateResponse(response, from, to) {
-  const update = cloneDeep(response);
-  const { type: fromType } = from;
+function updateResponseOrChoices(response, choices, from, to) {
+  const { type: fromType, index: fromIndex } = from;
   const { type: toType, index: placeAtIndex } = to;
 
-  if ((fromType === 'choice' && toType === 'target') || (fromType === 'target' && toType === 'target')) {
-    const optionToSwitch = update[placeAtIndex];
+  if (fromType === 'target' && toType === 'target') {
+    const updatedResponse = cloneDeep(response) || [];
 
-    const currentPositionOfOption = update.findIndex(up => up.id === from.id);
-    const option = update.find(up => up.id === from.id);
+    const { movedItem, remainingItems } = updatedResponse.reduce(
+      (acc, item, index) => {
+        if (index === fromIndex) {
+          acc.movedItem = item;
+        } else {
+          acc.remainingItems.push(item);
+        }
 
-    update[placeAtIndex] = option;
-    update[currentPositionOfOption] = optionToSwitch;
+        return acc;
+      },
+      { movedItem: null, remainingItems: [] }
+    );
 
-    return update;
+    return {
+      response: [
+        ...remainingItems.slice(0, placeAtIndex),
+        movedItem,
+        ...remainingItems.slice(placeAtIndex)
+      ],
+      choices
+    };
   }
 
-  return response;
+  if (fromType === 'choice' && toType === 'choice') {
+    const updatedChoices = cloneDeep(choices) || [];
+
+    const { movedItem, remainingItems, toIndex } = updatedChoices.reduce(
+      (acc, item, index) => {
+        if (item.id === from.id) {
+          acc.movedItem = item;
+        } else {
+          acc.remainingItems.push(item);
+        }
+
+        if (item.id === to.id) {
+          acc.toIndex = index;
+        }
+
+        return acc;
+      },
+      { movedItem: null, remainingItems: [], toIndex: null }
+    );
+
+    return {
+      response,
+      choices: [
+        ...remainingItems.slice(0, toIndex),
+        movedItem,
+        ...remainingItems.slice(toIndex)
+      ]
+    };
+  }
+
+  return { response, choices };
 }
 
 function buildTiles(choices, response, instanceId) {
@@ -218,13 +261,13 @@ class ChoiceEditor extends React.Component {
     };
 
     this.onDropChoice = (ordering, target, source) => {
-      const { onChange, choices } = this.props;
+      const { onChange } = this.props;
       const from = ordering.tiles.find(
         t => t.id === source.id && t.type === source.type
       );
       const to = target;
       log('[onDropChoice] ', from, to);
-      const response = updateResponse(ordering.response, from, to);
+      const { response, choices } = updateResponseOrChoices(ordering.response, ordering.choices, from, to);
 
       onChange(choices, response);
     };
