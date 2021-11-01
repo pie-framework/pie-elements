@@ -2128,10 +2128,10 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-validation@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.0.7.tgz#ace9b01a4f330d4a149720ce42755dcbb8cd12d8"
-  integrity sha512-gq5zvw/DLk6M+/u0Y3Y7uILckSBtUSMogpARwAksN8fXSwZsphl2YYYDe0+GRgQ5qTXg5ra5x1vhmVQf+CSE8A==
+"@pie-framework/math-validation@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.0.8.tgz#37dd665a2e28b498d2503866a3474fcbe0721a36"
+  integrity sha512-uUqz2d5KH6dOO1y+U4/v0l57/M6ntbytRs4X9S9lOuy2HSL0FIbj678kvVtypMu8Gmkvv4mtQ2dtKAghOJ29vA==
   dependencies:
     lodash "^4.17.21"
     mathjs "^9.4.2"
@@ -11533,6 +11533,11 @@ pluralize@^7.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
   integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
 
+pluralize@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
+  integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
+
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
@@ -12937,6 +12942,11 @@ rimraf@~2.6.2:
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
   dependencies:
     glob "^7.1.3"
+
+rollup-plugin-analyzer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-analyzer/-/rollup-plugin-analyzer-4.0.0.tgz#96b757ed64a098b59d72f085319e68cdd86d5798"
+  integrity sha512-LL9GEt3bkXp6Wa19SNR5MWcvHNMvuTFYg+eYBZN2OIFhSWN+pEJUQXEKu5BsOeABob3x9PDaLKW7w5iOJnsESQ==
 
 rollup-plugin-postcss@^4.0.0:
   version "4.0.1"

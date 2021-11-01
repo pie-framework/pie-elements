@@ -1,44 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
+
 import debug from 'debug';
 
-const log = debug('pie-element:multiple-choice:print');
-
-/**
- * Live in same package as main element - so we can access some of the shared comps!
- *
- * - update pslb to build print if src/print.js is there
- * - update demo el
- * - get configure/controller building
- */
+const log = debug('pie-element:extended-text-entry:print');
 
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
   model.teacherInstructions = instr ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
-  model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
 
+  const defaultDimensions = { height: 100, width: 500 };
+
+  model.dimensions = {
+    ...defaultDimensions,
+    ...model.dimensions
+  };
+
   model.disabled = true;
+  model.feedback = undefined;
   model.animationsDisabled = true;
 
-  const choices = cloneDeep(model.choices);
-
-  model.choices = choices.map((c) => {
-    c.rationale = instr ? c.rationale : undefined;
-    c.hideTick = instr;
-    c.feedback = undefined;
-    return c;
-  });
   return model;
 };
 
-export default class MultipleChoicePrint extends HTMLElement {
+export default class ExtendedTextEntryPrint extends HTMLElement {
   constructor() {
     super();
     this._options = null;
@@ -54,7 +45,9 @@ export default class MultipleChoicePrint extends HTMLElement {
             React.createElement(Main, {
               model: printModel,
               session: {},
+              onChange: () => {}
             });
+
 
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
