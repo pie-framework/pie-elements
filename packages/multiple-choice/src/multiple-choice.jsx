@@ -71,6 +71,10 @@ export class MultipleChoice extends React.Component {
     if (!nextProps.correctResponse) {
       this.setState({ showCorrect: false });
     }
+
+    if (nextProps.alwaysShowCorrect) {
+      this.setState({ showCorrect: true });
+    }
   }
 
   isSelected(value) {

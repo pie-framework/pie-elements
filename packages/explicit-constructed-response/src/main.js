@@ -6,6 +6,7 @@ import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 export class Main extends React.Component {
   static propTypes = {
@@ -22,6 +23,8 @@ export class Main extends React.Component {
     value: PropTypes.object,
     feedback: PropTypes.object,
     onChange: PropTypes.func,
+    alwaysShowCorrect: PropTypes.bool,
+    animationsDisabled: PropTypes.bool,
     maxLengthPerChoice: PropTypes.array
   };
 
@@ -30,13 +33,17 @@ export class Main extends React.Component {
   };
 
   state = {
-    showCorrectAnswer: false,
+    showCorrectAnswer: this.props.alwaysShowCorrect || false,
     value: this.props.value
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (isEmpty(nextProps.feedback)) {
       this.setState({ showCorrectAnswer: false });
+    }
+
+    if (nextProps.alwaysShowCorrect) {
+      this.setState({ showCorrectAnswer: true });
     }
   }
 
@@ -54,29 +61,50 @@ export class Main extends React.Component {
 
   render() {
     const { showCorrectAnswer, value } = this.state;
-    const { classes, mode, prompt, rationale, teacherInstructions, note, showNote, env, maxLengthPerChoice } = this.props;
+    const {
+      classes,
+      mode,
+      prompt,
+      rationale,
+      teacherInstructions,
+      note,
+      showNote,
+      env,
+      animationsDisabled,
+      alwaysShowCorrect,
+      maxLengthPerChoice
+    } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
+    const mainClasses = classNames([classes.mainContainer, alwaysShowCorrect ? classes.noBorderColor : {}]);
+
+    const teacherInstructionsDiv = <div
+      className="teacher-instructions"
+      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
+    />;
+
+    const rationaleDiv = <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>;
 
     return (
-      <div className={classes.mainContainer}>
+      <div className={mainClasses}>
         {
           teacherInstructions && hasText(teacherInstructions) && (
             <div className={classes.collapsible}>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-              >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
+              {!animationsDisabled ? <Collapsible
+                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+                >
+                  {teacherInstructionsDiv}
+                </Collapsible>
+                : teacherInstructionsDiv}
             </div>
           )
         }
-        <CorrectAnswerToggle
+        {!alwaysShowCorrect && <CorrectAnswerToggle
           show={mode === 'evaluate'}
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
-        />
-        {prompt && <div dangerouslySetInnerHTML={{ __html: prompt }}/>}
+        />}
+        {prompt && <div className="prompt" dangerouslySetInnerHTML={{ __html: prompt }}/>}
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}
@@ -86,17 +114,18 @@ export class Main extends React.Component {
         />
         {displayNote && (
           <div
-            className={classes.note}
+            className={classNames(classes.note, 'note')}
             dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
           />
         )}
         {rationale && hasText(rationale) && (
           <div className={classes.collapsible}>
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
-            </Collapsible>
+            {!animationsDisabled ? <Collapsible
+                labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+              >
+                {rationaleDiv}
+              </Collapsible>
+              : rationaleDiv}
           </div>
         )}
       </div>
@@ -115,6 +144,11 @@ const styles = theme => ({
   },
   collapsible: {
     margin: `${theme.spacing.unit * 2}px 0`,
+  },
+  noBorderColor: {
+    '& *': {
+      borderColor: `${color.text()} !important`
+    }
   }
 });
 

@@ -14,11 +14,22 @@ import cloneDeep from 'lodash/cloneDeep';
 import { get, set } from 'nested-property';
 import PropTypes from 'prop-types';
 import React from 'react';
+import pluralize from 'pluralize';
 
 import ChoiceEditor from './choice-editor';
 
 const log = debug('@pie-element:placement-ordering:design');
 const { Panel, toggle, radio } = settings;
+
+const getSingularAndPlural = label => {
+  return !pluralize.isPlural(label) ? {
+    singularLabel: label,
+    pluralLabel: pluralize(label)
+  } : {
+    singularLabel: pluralize.singular(label),
+    pluralLabel: label
+  };
+};
 
 export class Design extends React.Component {
   constructor(props) {
@@ -99,6 +110,10 @@ export class Design extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled } =
       model || {};
     const toolbarOpts = {};
+    const {
+      singularLabel = '',
+      pluralLabel = ''
+    } = choices && choices.label && getSingularAndPlural(choices.label) || {};
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -205,14 +220,14 @@ export class Design extends React.Component {
           </FormSection>
         )}
 
-        <FormSection label="Define Choices">
+        <FormSection label={`Define ${pluralLabel}`}>
           <div className={classes.row}>
             {choiceLabelEnabled && (
               <InputContainer
                 label={
                   choiceLabel &&
                   choiceLabel.label &&
-                  choiceLabel.label.toUpperCase()
+                  `${singularLabel} label`.toUpperCase()
                 }
                 className={classes.promptHolder}
               >
@@ -246,7 +261,7 @@ export class Design extends React.Component {
 
           {choices.settings && (
             <InputContainer
-              label={choices && choices.label && choices.label.toUpperCase()}
+              label={choices && choices.label && pluralLabel.toUpperCase()}
               className={classes.promptHolder}
             >
               <ChoiceEditor
@@ -256,6 +271,10 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 disableImages={!model.enableImages}
                 toolbarOpts={toolbarOpts}
+                choicesLabel={choices.label}
+                placementArea={model.placementArea}
+                singularChoiceLabel={singularLabel}
+                pluralChoiceLabel={pluralLabel}
               />
             </InputContainer>
           )}

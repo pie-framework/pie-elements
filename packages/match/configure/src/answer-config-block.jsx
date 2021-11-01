@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { swap } from '@pie-lib/drag';
 import AddRow from './add-row';
 import Row from './row';
 import debug from 'debug';
@@ -93,11 +92,28 @@ class AnswerConfigBlock extends React.Component {
   moveRow = (from, to) => {
     const { model, onChange } = this.props;
     const newModel = { ...model };
-    const rows = newModel.rows;
+    const rows = newModel.rows || [];
 
     log('[moveRow]: ', from, to);
 
-    const update = swap(rows, from, to);
+    const { movedRow, remainingRows } = rows.reduce(
+      (acc, item, index) => {
+        if (index === from) {
+          acc.movedRow = item;
+        } else {
+          acc.remainingRows.push(item);
+        }
+
+        return acc;
+      },
+      { movedRow: null, remainingRows: [] }
+    );
+
+    const update = [
+      ...remainingRows.slice(0, to),
+        movedRow,
+      ...remainingRows.slice(to)
+    ];
 
     log('update: ', update);
 

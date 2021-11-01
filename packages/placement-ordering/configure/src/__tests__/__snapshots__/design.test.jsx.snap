@@ -185,9 +185,13 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}
+        choicesLabel="Choices"
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        placementArea={false}
+        pluralChoiceLabel="Choices"
+        singularChoiceLabel="Choice"
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -392,9 +396,13 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
     >
       <WithStyles(ChoiceEditor)
         choices={Array []}
+        choicesLabel="Choices"
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        placementArea={false}
+        pluralChoiceLabel="Choices"
+        singularChoiceLabel="Choice"
         toolbarOpts={
           Object {
             "position": "bottom",
