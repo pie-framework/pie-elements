@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { color, Purpose } from '@pie-lib/render-ui';
-import previewLayout from '@pie-lib/render-ui/lib/preview-layout';
+import classNames from 'classnames';
 
 const styles = (/*theme*/) => ({
   root: {
@@ -21,6 +21,13 @@ const styles = (/*theme*/) => ({
     paddingBottom: '20px',
     position: 'sticky',
     top: 0,
+  },
+  title: {
+    textTransform: 'uppercase',
+    padding: '6px 24px',
+    borderBottom: `2px solid ${color.secondary()}`,
+    width: 'fit-content',
+    marginBottom: '6px'
   }
 });
 
@@ -68,11 +75,30 @@ class StimulusTabs extends React.Component {
   parsedText = (text) => text.replace(/(<br\/>\n)/g, '<br/>');
 
   render() {
-    const { classes, tabs } = this.props;
+    const { classes, tabs, disabledTabs } = this.props;
     const { activeTab } = this.state;
 
     if (tabs && tabs.length > 1) {
-      return (
+      return disabledTabs ? (
+        <div className="passages">
+          {tabs.map(tab =>
+            <div key={tab.id} className={`passage-${tab.id}`}>
+              <TabContainer multiple >
+                <div
+                  className={classNames(classes.title, 'title')}
+                  dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
+                />
+                <Purpose purpose="passage-text">
+                  <div
+                    className="text"
+                    key={tab.id}
+                    dangerouslySetInnerHTML={{ __html: this.parsedText(tab.text) }}
+                  />
+                </Purpose>
+              </TabContainer>
+            </div>)}
+        </div>
+      ) : (
         <div className={classes.root}>
           <Tabs
             classes={{
@@ -89,7 +115,7 @@ class StimulusTabs extends React.Component {
                   <Purpose purpose="passage-title">
                     <span
                       dangerouslySetInnerHTML={{ __html: this.parsedText(tab.title) }}
-                    ></span>
+                    />
                   </Purpose>
                 }
                 value={tab.id}
@@ -114,9 +140,9 @@ class StimulusTabs extends React.Component {
 
     } else if (tabs && tabs[0]) {
       return (
-        <div style={{ whiteSpace: 'break-spaces' }} >
+        <div className="passage" style={{ whiteSpace: 'break-spaces' }} >
           <TabContainer>
-            <div dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
+            <div className="text" dangerouslySetInnerHTML={{ __html: this.parsedText(tabs[0].text) }} />
           </TabContainer>
         </div>
       );
@@ -133,6 +159,7 @@ StimulusTabs.propTypes = {
       text: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  disabledTabs: PropTypes.bool
 };
 
 export default withStyles(styles)(StimulusTabs);
