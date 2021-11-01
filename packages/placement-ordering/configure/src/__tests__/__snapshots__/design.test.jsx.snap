@@ -188,6 +188,9 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        placementArea={false}
+        pluralChoiceLabel="Choices"
+        singularChoiceLabel="Choice"
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -395,6 +398,9 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         correctResponse={Array []}
         disableImages={true}
         onChange={[Function]}
+        placementArea={false}
+        pluralChoiceLabel="Choices"
+        singularChoiceLabel="Choice"
         toolbarOpts={
           Object {
             "position": "bottom",

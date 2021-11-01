@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
+import shuffle from 'lodash/shuffle';
+import isEqual from 'lodash/isEqual';
 import Button from '@material-ui/core/Button';
 
 function findFreeChoiceSlot(choices) {
@@ -79,7 +81,10 @@ class ChoiceEditor extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     disableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    placementArea: PropTypes.bool,
+    singularChoiceLabel: PropTypes.string,
+    pluralChoiceLabel: PropTypes.string
   };
 
   constructor(props) {
@@ -127,6 +132,22 @@ class ChoiceEditor extends React.Component {
       onChange(updatedChoices, updatedCorrectResponse);
     };
 
+    this.shuffleChoices = () => {
+      const { onChange, choices, correctResponse, placementArea } = this.props;
+      let shuffled = shuffle(choices);
+
+      // if placementArea is disabled, make sure we don't shuffle choices in the correct order
+      const shuffledCorrect = !placementArea && isEqual(shuffled.map(item => item.id), correctResponse.map(item => item.id));
+
+      if (shuffledCorrect) {
+        const shuffledTwice = shuffle(shuffled);
+
+        onChange(shuffledTwice, correctResponse);
+      } else {
+        onChange(shuffled, correctResponse);
+      }
+    };
+
     this.onDropChoice = (ordering, target, source) => {
       const { onChange, choices } = this.props;
       const from = ordering.tiles.find(
@@ -141,7 +162,16 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport, disableImages, toolbarOpts } = this.props;
+    const {
+      classes,
+      correctResponse,
+      choices,
+      imageSupport,
+      disableImages,
+      toolbarOpts,
+      singularChoiceLabel,
+      pluralChoiceLabel
+    } = this.props;
 
     const ordering = {
       choices,
@@ -174,6 +204,18 @@ class ChoiceEditor extends React.Component {
         </div>
         <div className={classes.controls}>
           <Button
+            onClick={this.shuffleChoices}
+            size="small"
+            variant="contained"
+            color="default"
+            classes={{
+              root: classes.addButtonRoot,
+              label: classes.addButtonLabel
+            }}
+          >
+            {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
+          </Button>
+          <Button
             onClick={this.addChoice}
             size="small"
             variant="contained"
@@ -183,7 +225,7 @@ class ChoiceEditor extends React.Component {
               label: classes.addButtonLabel
             }}
           >
-            ADD CHOICE
+            {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </Button>
         </div>
       </div>
