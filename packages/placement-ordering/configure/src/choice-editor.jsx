@@ -24,9 +24,20 @@ function updateResponseOrChoices(response, choices, from, to) {
   const { type: toType, index: placeAtIndex } = to;
 
   if (fromType === 'target' && toType === 'target') {
-    const updatedResponse = cloneDeep(response);
-    const movedItem = updatedResponse.find((item, index) => index === fromIndex);
-    const remainingItems = updatedResponse.filter((item, index) => index !== fromIndex);
+    const updatedResponse = cloneDeep(response) || [];
+
+    const { movedItem, remainingItems } = updatedResponse.reduce(
+      (acc, item, index) => {
+        if (index === fromIndex) {
+          acc.movedItem = item;
+        } else {
+          acc.remainingItems.push(item);
+        }
+
+        return acc;
+      },
+      { movedItem: null, remainingItems: [] }
+    );
 
     return {
       response: [
