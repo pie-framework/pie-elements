@@ -75,7 +75,7 @@ export function model(question, session, env) {
     base.env = env;
     base.outcomes = [];
     base.completeLength = (normalizedQuestion.correctResponse || []).length;
-    base.choices = normalizedQuestion.choices.filter(choice => choice.label);
+    base.choices = (normalizedQuestion.choices || []).filter(choice => choice.label);
     base.note = normalizedQuestion.note;
     base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
 
@@ -176,11 +176,9 @@ export function model(question, session, env) {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { correctResponse } = question;
-
       resolve({
         id: '1',
-        value: correctResponse
+        value: flattenCorrect(question)
       });
     } else {
       resolve(null);

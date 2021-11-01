@@ -45,7 +45,7 @@ export default {
       label: 'Layout'
     },
     lockChoiceOrder: {
-      settings: true,
+      settings: false,
       label: 'Lock Choice Order'
     },
     partialScoring: {

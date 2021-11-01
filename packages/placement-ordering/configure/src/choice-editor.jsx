@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import isEmpty from 'lodash/isEmpty';
 import cloneDeep from 'lodash/cloneDeep';
 import uniqueId from 'lodash/uniqueId';
+import shuffle from 'lodash/shuffle';
+import isEqual from 'lodash/isEqual';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -102,6 +104,9 @@ class ChoiceEditor extends React.Component {
     }),
     disableImages: PropTypes.bool,
     toolbarOpts: PropTypes.object,
+    placementArea: PropTypes.bool,
+    singularChoiceLabel: PropTypes.string,
+    pluralChoiceLabel: PropTypes.string,
     choicesLabel: PropTypes.string
   };
 
@@ -117,7 +122,7 @@ class ChoiceEditor extends React.Component {
     this.instanceId = uniqueId();
 
     this.onChoiceChange = choice => {
-      const { choices, onChange, correctResponse } = this.props;
+      const { choices, onChange, correctResponse, toolbarOpts } = this.props;
       const index = choices.findIndex(c => c.id === choice.id);
 
       choices.splice(index, 1, { ...choices[index], label: choice.label });
@@ -196,6 +201,22 @@ class ChoiceEditor extends React.Component {
       }
     };
 
+    this.shuffleChoices = () => {
+      const { onChange, choices, correctResponse, placementArea } = this.props;
+      let shuffled = shuffle(choices);
+
+      // if placementArea is disabled, make sure we don't shuffle choices in the correct order
+      const shuffledCorrect = !placementArea && isEqual(shuffled.map(item => item.id), correctResponse.map(item => item.id));
+
+      if (shuffledCorrect) {
+        const shuffledTwice = shuffle(shuffled);
+
+        onChange(shuffledTwice, correctResponse);
+      } else {
+        onChange(shuffled, correctResponse);
+      }
+    };
+
     this.onDropChoice = (ordering, target, source) => {
       const { onChange, choices } = this.props;
       const from = ordering.tiles.find(
@@ -210,7 +231,17 @@ class ChoiceEditor extends React.Component {
   }
 
   render() {
-    const { classes, correctResponse, choices, imageSupport, disableImages, toolbarOpts, choicesLabel } = this.props;
+    const {
+      classes,
+      correctResponse,
+      choices,
+      imageSupport,
+      disableImages,
+      toolbarOpts,
+      singularChoiceLabel,
+      pluralChoiceLabel,
+      choicesLabel
+    } = this.props;
     const { dialog } = this.state;
 
     const ordering = {
@@ -246,6 +277,18 @@ class ChoiceEditor extends React.Component {
         </div>
         <div className={classes.controls}>
           <Button
+            onClick={this.shuffleChoices}
+            size="small"
+            variant="contained"
+            color="default"
+            classes={{
+              root: classes.addButtonRoot,
+              label: classes.addButtonLabel
+            }}
+          >
+            {`SHUFFLE ${pluralChoiceLabel}`.toUpperCase()}
+          </Button>
+          <Button
             onClick={this.addChoice}
             size="small"
             variant="contained"
@@ -255,7 +298,7 @@ class ChoiceEditor extends React.Component {
               label: classes.addButtonLabel
             }}
           >
-            ADD CHOICE
+            {`ADD ${singularChoiceLabel}`.toUpperCase()}
           </Button>
         </div>
         <InfoDialog
