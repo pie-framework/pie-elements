@@ -76,8 +76,7 @@ export class Main extends React.Component {
     } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
-    const mainClasses = alwaysShowCorrect ? classNames(classes.mainContainer, classes.noBorderColor)
-      : classes.mainContainer;
+    const mainClasses = classNames([classes.mainContainer, alwaysShowCorrect ? classes.noBorderColor : {}]);
 
     const teacherInstructionsDiv = <div
       className="teacher-instructions"
@@ -96,7 +95,7 @@ export class Main extends React.Component {
                 >
                   {teacherInstructionsDiv}
                 </Collapsible>
-                : teacherInstructionsDiv }
+                : teacherInstructionsDiv}
             </div>
           )
         }
@@ -126,7 +125,7 @@ export class Main extends React.Component {
               >
                 {rationaleDiv}
               </Collapsible>
-              : rationaleDiv }
+              : rationaleDiv}
           </div>
         )}
       </div>
