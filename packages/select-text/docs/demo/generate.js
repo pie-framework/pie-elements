@@ -58,39 +58,43 @@ const base = extras =>
   Object.assign(
     {},
     {
-      highlightChoices: true,
-      feedback: {
-        correct: {
-          type: 'default',
-          default: 'Correct'
+      "teacherInstructions": "",
+      "tokens": [
+        {
+          "start": 32,
+          "text": "string",
+          "end": 38,
+          "correct": false
         },
-        incorrect: {
-          type: 'default',
-          default: 'Incorrect'
+        {
+          "text": "paper.",
+          "correct": false,
+          "start": 61,
+          "end": 74
         },
-        partial: {
-          type: 'default',
-          default: 'Nearly'
+        {
+          "end": 118,
+          "start": 113,
+          "correct": false,
+          "text": "times"
+        },
+        {
+          "start": 144,
+          "text": "patterns",
+          "correct": true,
+          "end": 152
+        },
+        {
+          "correct": false,
+          "end": 267,
+          "text": "colors.",
+          "start": 253
         }
-      },
-      partialScoring: false,
-      maxSelections: 2,
-      mode: 'sentence',
-      rationale: 'Rationale goes here.',
-      prompt: 'What sentences contain the character 6 in them?',
-      promptEnabled: true,
-      toolbarEditorPosition: 'bottom',
-      // text: `<p>Warhol was born in 1928 in Pittsburgh, Pennsylvania. When he was eight years old, he became very sick and had to stay in bed for months. To help him pass the time his mother, who was an artist, taught him how to draw. He took to it like a fish to water. Art became the center of Andy's world. A year later he added picture-taking to his interests when his mother gave him a camera. He also became fascinated with movies.</p><p>Andy studied art in school and learned many ways to make art. He learned how to use different art materials, such as oil paints, metal, clay, and wood. In 1949 he moved to New York City, where he got a job drawing and painting pictures for magazines.</p>`,
-      text: `<p>If 'tweren't for sight and sound and smell,<br />
-I'd like the city pretty well,<br />
-But when it comes to getting rest,<br />
-I like the country lots the best.</p>
-
-<p>Sometimes it seems to me I must<br />
-Just quit the city's din and dust,<br />
-And get out where the sky is blue,<br />
-And say, now, how does it seem to you?</p>`,
-      tokens: tokens(),
+      ],
+      "text": "<p>3. Drop the paint-covered <u>string</u> onto the piece of <u>paper</u>. Lift the string and drop it 2 or 3 <u>times</u> to make different <u>patterns</u>. Try wiggling the string to smear the paint.</p>\n\n<p>4. Repeat step three using the other paint <u>colors</u>.</p>\n",
+      "partialScoring": true,
+      "rationale": "<p><em>Patterns</em> in this context are decorations or designs, especially those that create&#160;a regular or repeated motif.</p>",
+      "prompt": "<p>The author uses a word that means&#160;&#34;repeated decorations or designs.&#34; Select&#160;the underlined word in the sentences&#160;that <span class=\"relative-emphasis\">best</span> shows that meaning.<br />&#160;</p>"
     },
     extras
   );
