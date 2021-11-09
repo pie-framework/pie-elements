@@ -51,9 +51,10 @@ class Rubric extends React.Component {
       const { points, sampleAnswers } = value;
 
       const rubricList = <List component="nav">
-        {points.map(
-          (desc, index) =>
-            this.shouldRenderPoint(index, value) && (
+        {points.slice(0).reverse().map(
+          (desc, index) => {
+            index = points.length - index - 1;
+            return this.shouldRenderPoint(index, value) && (
               <React.Fragment key={index}>
                 <ListItem key={`P${index}`}>
                   <ListItemText
@@ -82,7 +83,7 @@ class Rubric extends React.Component {
                 )}
               </React.Fragment>
             )
-        )}
+          })}
       </List>;
 
       return (
