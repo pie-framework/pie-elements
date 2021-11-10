@@ -59,7 +59,7 @@ class Rubric extends React.Component {
                 <ListItem key={`P${index}`}>
                   <ListItemText
                     className={classes.rubricCol}
-                    primary={`${index} PTS`}
+                    primary={index === 1 ? `${index} PT` : `${index} PTS`}
                   />
                   <ListItemText
                     primary={
@@ -110,6 +110,7 @@ class Rubric extends React.Component {
 const styles = () => ({
   rubricCol: {
     flex: '0 1 auto',
+    minWidth: 'fit-content'
   },
 });
 

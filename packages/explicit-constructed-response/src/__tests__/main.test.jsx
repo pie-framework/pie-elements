@@ -68,5 +68,18 @@ describe('Main', () => {
         expect(onChange).toHaveBeenCalledWith({ 0: '0', 1: '0', 2: '0' });
       }, 400);
     });
+
+    it('onChange when all responses have max length 1', () => {
+      wrapper({
+        choices: {
+          0: [choice('b', '0')],
+          1: [choice('a', '0')],
+          2: [choice('c', '0')]
+        },
+        maxLengthPerChoice: [1, 1, 1]
+      }).instance().onChange({ 0: 'a', 1: 'b', 2: 'c' });
+
+      expect(onChange).toHaveBeenCalledWith({ 0: 'a', 1: 'b', 2: 'c' });
+    });
   });
 });

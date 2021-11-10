@@ -6201,7 +6201,7 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
                                 <WithStyles(ListItemText)
                                   className="Rubric-rubricCol-1"
                                   key=".0"
-                                  primary="1 PTS"
+                                  primary="1 PT"
                                 >
                                   <ListItemText
                                     className="Rubric-rubricCol-1"
@@ -6217,7 +6217,7 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
                                     }
                                     disableTypography={false}
                                     inset={false}
-                                    primary="1 PTS"
+                                    primary="1 PT"
                                     theme={
                                       Object {
                                         "breakpoints": Object {
@@ -7026,7 +7026,7 @@ exports[`rubric viewer expanded snapshot renders 1`] = `
                                           <span
                                             className="MuiTypography-root-7 MuiTypography-subheading-14 MuiListItemText-primary-66"
                                           >
-                                            1 PTS
+                                            1 PT
                                           </span>
                                         </Typography>
                                       </WithStyles(Typography)>
@@ -17584,7 +17584,7 @@ exports[`rubric viewer snapshot renders 1`] = `
                                 <WithStyles(ListItemText)
                                   className="Rubric-rubricCol-1"
                                   key=".0"
-                                  primary="1 PTS"
+                                  primary="1 PT"
                                 >
                                   <ListItemText
                                     className="Rubric-rubricCol-1"
@@ -17600,7 +17600,7 @@ exports[`rubric viewer snapshot renders 1`] = `
                                     }
                                     disableTypography={false}
                                     inset={false}
-                                    primary="1 PTS"
+                                    primary="1 PT"
                                     theme={
                                       Object {
                                         "breakpoints": Object {
@@ -18409,7 +18409,7 @@ exports[`rubric viewer snapshot renders 1`] = `
                                           <span
                                             className="MuiTypography-root-7 MuiTypography-subheading-14 MuiListItemText-primary-66"
                                           >
-                                            1 PTS
+                                            1 PT
                                           </span>
                                         </Typography>
                                       </WithStyles(Typography)>
