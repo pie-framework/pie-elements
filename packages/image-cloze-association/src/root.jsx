@@ -216,6 +216,7 @@ class ImageClozeAssociationComponent extends React.Component {
         teacherInstructions,
         prompt,
         showDashedBorder,
+        mode,
       },
     } = this.props;
     const {
@@ -227,8 +228,8 @@ class ImageClozeAssociationComponent extends React.Component {
       maxResponsePerZoneWarning,
       showCorrect
     } = this.state;
-
-    const showToggle = responseCorrect !== undefined;
+    const isEvaluateMode = mode === 'evaluate';
+    const showToggle = isEvaluateMode && !responseCorrect;
 
     const { validResponse } = validation || {};
     const correctAnswers = [];

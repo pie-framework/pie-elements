@@ -7,6 +7,7 @@ exports[`stimulus tabs snapshot should render component 1`] = `
       "root": "StimulusTabs-root-1",
       "stickyTabs": "StimulusTabs-stickyTabs-3",
       "tab": "StimulusTabs-tab-2",
+      "title": "StimulusTabs-title-4",
     }
   }
   tabs={

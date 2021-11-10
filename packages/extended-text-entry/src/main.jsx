@@ -7,6 +7,7 @@ import debug from 'debug';
 import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
+import classNames from 'classnames';
 import AnnotationEditor from './annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
@@ -52,13 +53,19 @@ export class Main extends React.Component {
       feedback,
       teacherInstructions,
       mathInput,
+      animationsDisabled,
       predefinedAnnotations
     } = model;
     const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
     log('[render] disabled? ', disabled);
-    
+
+    const teacherInstructionsDiv = <div
+      className="teacher-instructions"
+      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
+    />;
+
     const testValue = '<div><p>Ana <b>are mere</b>. Alex nu <b>are</b> mere.<br/></p><div><p><em>Alex</em> doreste mere.</p></div><p>Alex merge la magazin, <div> <div></div><u>dar cumpara</u> bere. </p><p>new line 1</p><p>new line 2</p><p>new line 3</p><p>new line 4</p><p>new line 5</p><p>new line 6</p><p>new line 7</p><p>new line 8 </p><p>new line 9 </p><p>new line 10</p><p>new line 11</p><p>new line 12</p><p>new line 13</p><p>new line 14</p><p>new line 15</p><p>new line 16</p></div>'
     const testAnnotations = [
       {
@@ -86,6 +93,7 @@ export class Main extends React.Component {
         "end": 39
       }
     ];
+
     return (
       <div
         className={classes.main}
@@ -96,19 +104,21 @@ export class Main extends React.Component {
         {
           teacherInstructions && (
             <div>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
-                className={classes.collapsible}
-              >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
-              <br />
+              {!animationsDisabled ? (
+                <Collapsible
+                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  className={classes.collapsible}
+                >
+                  {teacherInstructionsDiv}
+                </Collapsible>
+              ) : teacherInstructionsDiv }
+              <br/>
             </div>
           )
         }
         {model.prompt && (
           <Typography
-            className={classes.prompt}
+            className={classNames(classes.prompt, 'prompt')}
             dangerouslySetInnerHTML={{ __html: model.prompt }}
           />
         )}

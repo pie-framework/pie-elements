@@ -170,6 +170,7 @@ const styles = (theme) => ({
     padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background(),
+    overflow: 'hidden'
   },
   prompt: {
     verticalAlign: 'middle',
