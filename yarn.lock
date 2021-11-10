@@ -2413,10 +2413,10 @@
     classnames "^2.2.6"
     prop-types "^15.6.2"
 
-"@pie-lib/mask-markup@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.11.1.tgz#c4827ed61a494fb36470446f12b85cae9bf0b533"
-  integrity sha512-PwQGAwkvNJnahicr5c56drbvEGmC+fUHa27Iu8St/7m5P7LI5n7p2pyRJzLWfN0eqr2xBZ/HE/JQutkcW0Pztw==
+"@pie-lib/mask-markup@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@pie-lib/mask-markup/-/mask-markup-1.11.2.tgz#ad4319debbfe93b48ca2b60a91bcce32fd47e597"
+  integrity sha512-Ru/2OxUPwMXuHWSVK02A9gB5QmVHR/ie3iRxeY0kOdDv3InqKF5QX0XolMo4uvoHmr8Xu63H11vKQIV2SlF/Mw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@pie-lib/drag" "^1.1.52"
@@ -2589,10 +2589,10 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.19.tgz#655afd9d4a396ddea5e07df751d97fc644e696ca"
   integrity sha512-RbNuq6hbPH8pejROms3XXuFHD1JoyTvtpaG/9Rya4bKFo9onZK3IyiqpaeInOtpE1wM2MhVC84MYmdHGEOvhhQ==
 
-"@pie-lib/text-select@^1.8.8":
-  version "1.8.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.8.tgz#3709f8e0fdbb876c6921b6c6d17a5668cae1b7e2"
-  integrity sha512-J/cX5KB8QjPHVNUFV+wWWG5xV58y3XwAgqOgNAX9i7DC3am4jyq+fTEUQhXEBERAStHDrVv0fAov2zni4qRPnw==
+"@pie-lib/text-select@^1.8.9":
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.9.tgz#1fdc1a10d47a6aca9564ea735a540823716c665e"
+  integrity sha512-a08WiNXRWU44g/ggaeo4AmlZgkgXqtojJ4lCIiW+gl3qU0zAz6NB18VNpI6Wm/ggKuetkVsm9MAhE5KVDP/Ovw==
   dependencies:
     "@pie-framework/parse-english" "^1.0.0"
     "@pie-lib/render-ui" "^4.12.2"
