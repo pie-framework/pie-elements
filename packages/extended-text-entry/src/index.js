@@ -59,6 +59,28 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this.dispatchEvent(
       new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value))
     );
+
+    this.render();
+  }
+
+  annotationsChange(annotations) {
+    this._session.annotations = annotations;
+
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase())
+    );
+
+    this.render();
+  }
+
+  commentChange(comment) {
+    this._session.comment = comment;
+
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase())
+    );
+
+    this.render();
   }
 
   connectedCallback() {
@@ -70,7 +92,9 @@ export default class RootExtendedTextEntry extends HTMLElement {
       let elem = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onChange: this.handleChange.bind(this)
+        onChange: this.handleChange.bind(this),
+        onAnnotationsChange: this.annotationsChange.bind(this),
+        onCommentChange: this.commentChange.bind(this),
       });
       ReactDOM.render(elem, this);
     }

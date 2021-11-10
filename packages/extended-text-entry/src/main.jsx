@@ -7,6 +7,7 @@ import debug from 'debug';
 import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
+import AnnotationEditor from './annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -42,13 +43,49 @@ export class Main extends React.Component {
   changeSession = debounce(this.props.onChange, 1500);
 
   render() {
-    const { model, classes, session } = this.props;
-    const { dimensions, disabled, feedback, teacherInstructions, mathInput } = model;
-    const { value } = session;
+    const { model, classes, session, onAnnotationsChange, onCommentChange } = this.props;
+    const {
+      annotatorEnabled,
+      dimensions,
+      disabled,
+      disabledAnnotator,
+      feedback,
+      teacherInstructions,
+      mathInput,
+      predefinedAnnotations
+    } = model;
+    const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
     log('[render] disabled? ', disabled);
-
+    
+    const testValue = '<div><p>Ana <b>are mere</b>. Alex nu <b>are</b> mere.<br/></p><div><p><em>Alex</em> doreste mere.</p></div><p>Alex merge la magazin, <div> <div></div><u>dar cumpara</u> bere. </p><p>new line 1</p><p>new line 2</p><p>new line 3</p><p>new line 4</p><p>new line 5</p><p>new line 6</p><p>new line 7</p><p>new line 8 </p><p>new line 9 </p><p>new line 10</p><p>new line 11</p><p>new line 12</p><p>new line 13</p><p>new line 14</p><p>new line 15</p><p>new line 16</p></div>'
+    const testAnnotations = [
+      {
+        "id": "a28f92db-0361-4ee0-8648-16a593b3b423",
+        "label": "punctuation",
+        "type": "positive",
+        "text": "are mer",
+        "start": 4,
+        "end": 11
+      },
+      {
+        "id": "0dbabc16-f726-48ce-bd39-c55def7b4093",
+        "label": "01234567890123456789",
+        "type": "negative",
+        "text": "magazin",
+        "start": 63,
+        "end": 70
+      },
+      {
+        "id": "3f3a3cad-247e-4c1e-bb90-670ba2113852",
+        "label": "punctuation",
+        "type": "positive",
+        "text": "ex dor",
+        "start": 33,
+        "end": 39
+      }
+    ];
     return (
       <div
         className={classes.main}
@@ -75,29 +112,44 @@ export class Main extends React.Component {
             dangerouslySetInnerHTML={{ __html: model.prompt }}
           />
         )}
-        <EditableHTML
-          onChange={this.changeSession}
-          markup={value || ''}
-          width={width && width.toString()}
-          minHeight={height && height.toString()}
-          maxHeight={maxHeight}
-          disabled={disabled}
-          highlightShape={true}
-          pluginProps={{
-            math: {
-              disabled: !mathInput,
-              customKeys: this.props.model.customKeys,
-              keypadMode: this.props.model.equationEditor,
-              controlledKeypadMode: false
-            },
-            video: {
-              disabled: true
-            },
-             audio: {
-              disabled: true
-            }
-          }}
-        />
+        {annotatorEnabled ? (
+          <AnnotationEditor
+            text={value || ''}
+            annotations={annotations || testAnnotations}
+            comment={comment || ''}
+            predefinedAnnotations={predefinedAnnotations}
+            onChange={onAnnotationsChange}
+            onCommentChange={onCommentChange}
+            width={width}
+            height={height}
+            maxHeight={maxHeight}
+            disabled={disabledAnnotator}
+          />
+        ) : (
+          <EditableHTML
+            onChange={this.changeSession}
+            markup={value || ''}
+            width={width && width.toString()}
+            minHeight={height && height.toString()}
+            maxHeight={maxHeight}
+            disabled={disabled}
+            highlightShape={true}
+            pluginProps={{
+              math: {
+                disabled: !mathInput,
+                customKeys: this.props.model.customKeys,
+                keypadMode: this.props.model.equationEditor,
+                controlledKeypadMode: false
+              },
+              video: {
+                disabled: true
+              },
+              audio: {
+                disabled: true
+              }
+            }}
+          />
+        )}
         {feedback && (
           <div>
             <br />
