@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
 import { color, Collapsible, hasText } from '@pie-lib/render-ui';
@@ -37,7 +38,14 @@ export class Main extends React.Component {
     value: this.props.value
   };
 
+  // if for all responses max length is 1, call onChange for each keystroke
+  getChangeSession = maxLengthPerChoice =>
+    maxLengthPerChoice && maxLengthPerChoice.every((val, i, arr) => val === arr[0] && val === 1) ? this.props.onChange
+      : debounce(this.props.onChange, 1500, { maxWait: 1500 });
+
   UNSAFE_componentWillReceiveProps(nextProps) {
+    const { maxLengthPerChoice } = this.props;
+
     if (isEmpty(nextProps.feedback)) {
       this.setState({ showCorrectAnswer: false });
     }
@@ -45,13 +53,17 @@ export class Main extends React.Component {
     if (nextProps.alwaysShowCorrect) {
       this.setState({ showCorrectAnswer: true });
     }
+
+    if (maxLengthPerChoice && !isEqual(maxLengthPerChoice, nextProps.maxLengthPerChoice)) {
+      this.changeSession = this.getChangeSession(nextProps.maxLengthPerChoice);
+    }
   }
 
   toggleShowCorrect = () => {
     this.setState({ showCorrectAnswer: !this.state.showCorrectAnswer });
   };
 
-  changeSession = debounce(this.props.onChange, 1500);
+  changeSession = this.getChangeSession(this.props.maxLengthPerChoice);
 
   onChange = value => {
     this.setState({ value });
