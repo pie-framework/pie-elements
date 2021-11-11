@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.3.2...@pie-element/placement-ordering-controller@6.4.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **placement-ordering:** fix create correct session for IBX browse items PD-1349 ([e84c30d](https://github.com/pie-framework/pie-elements/commit/e84c30dd075085ef5d917f2893568bca2003d225))
+
+
+### Features
+
+* **placement-ordering:** add baseline validation for authoring PD-600, PD-1334 ([2350279](https://github.com/pie-framework/pie-elements/commit/23502790000e3c4f14e4dae6744519b004eb1172))
+
+
+
+
+
+
 ## [6.3.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-controller@6.3.2...@pie-element/placement-ordering-controller@6.3.3) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-controller

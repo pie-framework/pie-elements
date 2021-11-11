@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.2...@pie-element/select-text@6.5.10) (2021-11-11)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* **select-text:** fix tokens in pits ([975622d](https://github.com/pie-framework/pie-elements/commit/975622dee9ec69d91387de21eef2278b53209a53))
+* move dom logic from controller to player ([2425be1](https://github.com/pie-framework/pie-elements/commit/2425be1e506b153d946b7643f4b024d2e0edfbbb))
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **select-text:** fix initial view of tokens in authoring PD-1235 ([22cbc2c](https://github.com/pie-framework/pie-elements/commit/22cbc2cf58e874e095866bd7b36a0a026fc4f11c))
+* **select-text:** move prepareText function to pie-lib ([26eb7bd](https://github.com/pie-framework/pie-elements/commit/26eb7bd7e9d2804286886a0f92f9993d67f6cf77))
+
+
+
+
+
+
 ## [6.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.7...@pie-element/select-text@6.5.8) (2021-10-04)
 
 **Note:** Version bump only for package @pie-element/select-text

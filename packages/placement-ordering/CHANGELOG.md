@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.5.2...@pie-element/placement-ordering@7.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **placement-ordering:** fix create correct session for IBX browse items PD-1349 ([e84c30d](https://github.com/pie-framework/pie-elements/commit/e84c30dd075085ef5d917f2893568bca2003d225))
+* **placement-ordering:** fix issues with dragging answer choices in authoring PD-1329 ([286a495](https://github.com/pie-framework/pie-elements/commit/286a495e313cb33227a8672f38331b283c283583))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **placement-ordering:** Updated documentation PD-305 ([ff31ac5](https://github.com/pie-framework/pie-elements/commit/ff31ac57139f59413748e88f152ef7629ae6e5be))
+
+
+### Features
+
+* **placement-ordering:** add baseline validation for authoring PD-600, PD-1334 ([2350279](https://github.com/pie-framework/pie-elements/commit/23502790000e3c4f14e4dae6744519b004eb1172))
+* **placement-ordering:** add shuffle button to UI for authoring PD-1300 ([734fcda](https://github.com/pie-framework/pie-elements/commit/734fcda4b50b50cb54d66789b854f270818ba6fc))
+* **placement-ordering:** added option to set toolbar editor position ([9b1b291](https://github.com/pie-framework/pie-elements/commit/9b1b2916f2c34297f3d4b239e393376f87be3826))
+* **placement-ordering:** remove list buttons from choice labels PD-1337 ([1f1f927](https://github.com/pie-framework/pie-elements/commit/1f1f9276a29d84b551a3eaa93e15738ef1e22681))
+
+
+
+
+
+
 ## [7.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.6.3...@pie-element/placement-ordering@7.6.4) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/placement-ordering
