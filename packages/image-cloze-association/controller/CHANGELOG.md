@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.16...@pie-element/image-cloze-association-controller@3.2.18) (2021-11-11)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** Fixed scoring method console errors PD-1249 ([1484c63](https://github.com/pie-framework/pie-elements/commit/1484c6354d59afcc0b541232c70ddfc5869ecfee))
+
+
+
+
+
 ## [3.2.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association-controller@3.2.16...@pie-element/image-cloze-association-controller@3.2.17) (2021-08-05)
 
 

@@ -38,6 +38,7 @@ export class Main extends React.Component {
 
   correctAnswer = () => {
     const { model } = this.props;
+
     return model.tokens.filter(t => t.correct);
   };
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.2...@pie-element/image-cloze-association@3.6.10) (2021-11-11)
+
+
+### Bug Fixes
+
+* **image-cloze-association:** show correct toggle should not be visible when answer is correct PD-1327 ([e0c7b3f](https://github.com/pie-framework/pie-elements/commit/e0c7b3fa15f3ed94a4e78589980230e798ebf91d))
+* add dependency for correct answer toggle ([66d52cd](https://github.com/pie-framework/pie-elements/commit/66d52cdff3a5e0500a4ec0efb623948772b4aefe))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **image-cloze-association:** add show correct answer toggle for evaluate ([4ac53e7](https://github.com/pie-framework/pie-elements/commit/4ac53e71d10eb9bbe417a9bc445bd1623830823d))
+* **image-cloze-association:** Added missing responses and marked as incorrect in evaluate mode PD-1246 ([a5d0e98](https://github.com/pie-framework/pie-elements/commit/a5d0e9807e5c99dd352e908483e143b6081eefe3))
+* **image-cloze-association:** Fixed scoring method console errors PD-1249 ([1484c63](https://github.com/pie-framework/pie-elements/commit/1484c6354d59afcc0b541232c70ddfc5869ecfee))
+* **image-cloze-association:** Moved the evaluate symbol to fit in the available content PD-1244 ([3266e19](https://github.com/pie-framework/pie-elements/commit/3266e199e1147773fe57d199a6ae468855d05af6))
+* **image-cloze-association:** Removed correct answer in evaluate mode for empty response ([18c886c](https://github.com/pie-framework/pie-elements/commit/18c886c14655b42e4b9b549a700bf0258b9cefc1))
+* **image-cloze-association:** Used classnames instead ([544be10](https://github.com/pie-framework/pie-elements/commit/544be10da1225e5a52e4f0d3b51d52f9714591ae))
+
+
+
+
+
 ## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.2...@pie-element/image-cloze-association@3.6.3) (2021-08-05)
 
 
