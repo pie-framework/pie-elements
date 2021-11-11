@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.2...@pie-element/select-text-configure@5.2.4) (2021-11-11)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **select-text:** move prepareText function to pie-lib ([26eb7bd](https://github.com/pie-framework/pie-elements/commit/26eb7bd7e9d2804286886a0f92f9993d67f6cf77))
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
+* **select-text:** fix initial view of tokens in authoring PD-1235 ([22cbc2c](https://github.com/pie-framework/pie-elements/commit/22cbc2cf58e874e095866bd7b36a0a026fc4f11c))
+
+
+
+
+
 ## [5.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.2...@pie-element/select-text-configure@5.2.3) (2021-08-05)
 
 
