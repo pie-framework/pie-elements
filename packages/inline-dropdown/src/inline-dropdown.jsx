@@ -93,39 +93,40 @@ export class InlineDropdown extends React.Component {
             <br />
           </React.Fragment>
         )}
-        {
-          rationale && hasText(rationale) && (
+        <DropDown
+          {...this.props}
+          showCorrectAnswer={showCorrectAnswer}
+        />
+        {rationale && hasText(rationale) && (
             <Collapsible
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
             >
               <div dangerouslySetInnerHTML={{ __html: rationale }}/>
             </Collapsible>
-          )
-        }
-        <br />
+        )}
         {choiceRationalesHaveText && (
-          <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
-            <div>
-              {choiceRationales.map((choices, index) =>
-                <div key={index}>
-                  {choices && choices.length > 0 && choices.map( choice =>
-                    <div className={classes.choiceRationale} key={choice.label}>
-                      <div
-                        className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
-                        dangerouslySetInnerHTML={{__html: `${choice.label}: `}}
-                      />
-                      <div dangerouslySetInnerHTML={{__html: choice.rationale}}/>
-                    </div>
+          <React.Fragment>
+            <br />
+            <Collapsible labels={{hidden: 'Show Rationale for choices', visible: 'Hide Rationale for choices'}}>
+              <div>
+                {choiceRationales.map((choices, index) =>
+                  <div key={index}>
+                    {choices && choices.length > 0 && choices.map( choice =>
+                      <div className={classes.choiceRationale} key={choice.label}>
+                        <div
+                          className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
+                          dangerouslySetInnerHTML={{ __html: `${choice.label}: ` }}
+                        />
+                        <div dangerouslySetInnerHTML={{ __html: choice.rationale }}/>
+                      </div>
+                    )}
+                    {choices && choices.length > 0 && <br />}
+                  </div>
                 )}
-                  {choices && choices.length > 0 && <br />}
-                </div>
-              )}
-            </div>
-          </Collapsible>)}
-        <DropDown
-          {...this.props}
-          showCorrectAnswer={showCorrectAnswer}
-        />
+              </div>
+            </Collapsible>
+          </React.Fragment>
+        )}
       </div>
     );
   }
