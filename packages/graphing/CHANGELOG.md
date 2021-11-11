@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.5.3...@pie-element/graphing@3.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **graphing:** BREAKING CHANGE - update model and config schemas. Change model arrows prop and add arrows in config PD-483 ([fb1c27b](https://github.com/pie-framework/pie-elements/commit/fb1c27bcc25632c15d228d14483835d919e2d357))
+* **graphing:** control over displaying graph arrows PD-483 ([6f98639](https://github.com/pie-framework/pie-elements/commit/6f98639b4bcce0e7ce75f28435c6fe1c8db8a4d4))
+* **graphing:** Displayed point coordinates on hover PD-188 \n BREAKING CHANGE: Added coordinatesOnHover property to the model ([124cc2d](https://github.com/pie-framework/pie-elements/commit/124cc2de418fbdd1825c6c39eee550875a3e24af))
+
+
+
+
+
+
 ## [3.6.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.6.2...@pie-element/graphing@3.6.3) (2021-10-04)
 
 **Note:** Version bump only for package @pie-element/graphing

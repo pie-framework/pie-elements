@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.6.2...@pie-element/rubric@1.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **rubric:** display rubric in reverse order in player PD-1375 ([0620538](https://github.com/pie-framework/pie-elements/commit/06205386a3d2c530378be2dccb7943cefa6f5c55))
+* **rubric:** use singular 1PT instead of 1PTS, fix style in IBX PD-1373, PD-1374 ([0c27b32](https://github.com/pie-framework/pie-elements/commit/0c27b327e861831687576a639ba2b6101c7fc0ff))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **rubric:** Added Studio support: Treat 'null' as null value for sample answer PD-1313 ([04ea11d](https://github.com/pie-framework/pie-elements/commit/04ea11da0b4b2077693c7a22f63091eabdf09481))
+
+
+
+
+
+
 ## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.6.5...@pie-element/rubric@1.6.6) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/rubric

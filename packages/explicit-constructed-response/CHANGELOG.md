@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.9.2...@pie-element/explicit-constructed-response@3.11.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** call session change depending on input max length PD-1353 ([2664a10](https://github.com/pie-framework/pie-elements/commit/2664a108cce80a9e3a9d34141613836cf057e25e))
+* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **explicit-constructed-response:** Added a max limit of characters and adjusted the width PD-794 ([135f176](https://github.com/pie-framework/pie-elements/commit/135f176402187e9a6120b88768ae7fb0152ac418))
+* **explicit-constructed-response:** Calculate maxChoicesLength if it's undefined. Fixed delete response area and choices bug. BREAKING CHANGE: add maxChoicesLength prop ([97431b9](https://github.com/pie-framework/pie-elements/commit/97431b9c3fbdafd84e040653c54d5f04bae16a1d))
+* **explicit-constructed-response:** implement print PD-1284 ([3a387ba](https://github.com/pie-framework/pie-elements/commit/3a387ba5e9aff0e94cbb6465550bd07185ba7eff))
+* **explicit-constructed-response:** set toolbar editor position to bottom ([75cc827](https://github.com/pie-framework/pie-elements/commit/75cc827c14307f4cf96389112cbc4311eff3795a))
+
+
+
+
+
+
 ## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.10.4...@pie-element/explicit-constructed-response@3.10.5) (2021-11-01)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response
