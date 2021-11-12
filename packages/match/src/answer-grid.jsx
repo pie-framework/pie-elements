@@ -117,7 +117,7 @@ export class AnswerGrid extends React.Component {
                         ),
                         [classes.tag]: true,
                         [classes.checked]: rowItem === true && !evaluate,
-                        [classes.tagDisabled]: disabled ,
+                        [classes.tagDisabled]: disabled,
                         [classes.incorrect]: evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex)
                       })}
                       disabled={disabled}
