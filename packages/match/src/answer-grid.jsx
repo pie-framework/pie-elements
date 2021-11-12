@@ -9,7 +9,6 @@ import { color } from '@pie-lib/render-ui';
 
 export class AnswerGrid extends React.Component {
   static propTypes = {
-    allowFeedback: PropTypes.bool.isRequired,
     classes: PropTypes.object.isRequired,
     correctAnswers: PropTypes.object,
     view: PropTypes.bool.isRequired,
@@ -52,8 +51,9 @@ export class AnswerGrid extends React.Component {
   };
 
   render() {
-    const { allowFeedback, classes, showCorrect, headers, rows, choiceMode, answers, disabled, view } = this.props;
+    const { classes, showCorrect, headers, rows, choiceMode, answers, disabled, view } = this.props;
     const Tag = choiceMode === 'radio' ? Radio : Checkbox;
+    const evaluate = disabled && !view;
 
     if (!rows || rows.length === 0) {
       return (
@@ -111,14 +111,14 @@ export class AnswerGrid extends React.Component {
                   <div className={classes.rowItem}>
                     <Tag
                       className={cx({
-                        [classes.correct]: allowFeedback && (
+                        [classes.correct]: (
                           (showCorrect && rowItem === true) ||
-                          (disabled && !view && this.answerIsCorrect(row.id, rowItem, answerIndex))
+                          (evaluate && this.answerIsCorrect(row.id, rowItem, answerIndex))
                         ),
                         [classes.tag]: true,
-                        [classes.checked]: rowItem === true,
-                        [classes.tagDisabled]: disabled,
-                        [classes.incorrect]: allowFeedback && disabled && !view && this.answerIsIncorrect(row.id, rowItem, answerIndex)
+                        [classes.checked]: rowItem === true && !evaluate,
+                        [classes.tagDisabled]: disabled ,
+                        [classes.incorrect]: evaluate && this.answerIsIncorrect(row.id, rowItem, answerIndex)
                       })}
                       disabled={disabled}
                       onChange={this.onRowValueChange(row.id, answerIndex)}
