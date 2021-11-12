@@ -302,7 +302,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
   >
     <WithStyles(WithFormControlContext(Select))
       onChange={[Function]}
-      value="miscellaneous"
+      value="8"
     >
       <WithStyles(MenuItem)
         value={1}
@@ -364,7 +364,7 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
         }
       }
       controlledKeypad={true}
-      keypadMode="miscellaneous"
+      keypadMode="8"
       latex="\\\\embed{answerBlock}[r1] = \\\\embed{answerBlock}[r2] \\\\text{eggs}"
       onChange={[Function]}
       onDone={[Function]}
