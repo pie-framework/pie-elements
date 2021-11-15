@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.6.3...@pie-element/math-inline@5.8.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **CTT-174:** add safari tooltip fix ([1541bc0](https://github.com/pie-framework/pie-elements/commit/1541bc04c21ca8d89c43e5edf918368320cee9ce))
+* **math-inline:** Added a min width for line notation PD-1263 ([96db654](https://github.com/pie-framework/pie-elements/commit/96db6541cb95ce895be7d84a4763697880e35adf))
+* **math-inline:** do not hide math editor when focus is still on response template ([ef07786](https://github.com/pie-framework/pie-elements/commit/ef07786306c1d287b648000b0a2a0223cec3760c))
+* **math-inline:** Evaluate should not highlight answers when no correct response is defined + refactoring PD-994 ([58bfe7c](https://github.com/pie-framework/pie-elements/commit/58bfe7c209da39a31b20d2d905d14b5697aa5375))
+* **math-inline:** fix based log button PD-1281 ([215812e](https://github.com/pie-framework/pie-elements/commit/215812ea7965a659631215a670b71164ff1effc1))
+* **math-inline:** fix parallelogram symbol for pits ([a90e363](https://github.com/pie-framework/pie-elements/commit/a90e36326fe55cd986f833c2ddaacdb84fdff9ad))
+* **math-inline:** Fixed arrows for pits ([72815e6](https://github.com/pie-framework/pie-elements/commit/72815e6beac69628b9ea3be249a661d9924329c6))
+* **math-inline:** Fixed left-right arrow ([e891113](https://github.com/pie-framework/pie-elements/commit/e89111398ee4747541809b0ffa84715fa8cc7620))
+* **math-inline:** Fixed parallelogram for pits ([a5ead4f](https://github.com/pie-framework/pie-elements/commit/a5ead4f5fd0fc949223bb92cb2f61caf7223d06c))
+* **math-inline:** Initialized correctResponse in evaluate mode ([27161c1](https://github.com/pie-framework/pie-elements/commit/27161c154c2dcc7bfd2a3cb3d7f8ec158f23beb8))
+* **math-inline:** Made segment, ray and line more consistent PD-1264 ([670fef9](https://github.com/pie-framework/pie-elements/commit/670fef9d29a634497dbb3b05928c7dd2d8fc2164))
+* **math-inline:** make response area button to fit in response template area ([efaa45d](https://github.com/pie-framework/pie-elements/commit/efaa45d2dc936c8d3dec6158e1e2e22392025e31))
+* **math-inline:** override response area block style for PRB - PD-1300 ([ba1a038](https://github.com/pie-framework/pie-elements/commit/ba1a038066b7d9d41ef244da0327f8ea8f4f0c28))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **math-inline:** Removed the margin top of the response area PD-1274 ([48d3f84](https://github.com/pie-framework/pie-elements/commit/48d3f8430027dec409c9abb79d3b436866271308))
+* **math-inline:** render parallel sign with bigger font-size PD-1258 ([1756f7e](https://github.com/pie-framework/pie-elements/commit/1756f7e3f8e75e28b5c4420703dc428cee8776bc))
+* **math-inline:** show add alternate button for both literal and symbolic validation PD-333 ([0cf44c8](https://github.com/pie-framework/pie-elements/commit/0cf44c8bae938eae9d4cf92b341f1cb3085cffd2))
+
+
+### Features
+
+* **math-inline:** added option to set toolbar editor position ([01282e4](https://github.com/pie-framework/pie-elements/commit/01282e4a07d200f7b81c684a11b51aa1f226ddeb))
+* **math-inline:** Displayed a message when the item has additional correct responses PD-198 - BREAKING CHANGE: Added note property to the model ([7fce264](https://github.com/pie-framework/pie-elements/commit/7fce2649a9c8ddae2eb6643e5d5e9d307233a23b))
+* **math-inline:** override style for long division symbol PD-888 ([1e190da](https://github.com/pie-framework/pie-elements/commit/1e190dac51c9cbadf5b9391d330a5923fcf7b6ab))
+* **math-inline:** set toolbar editor position to bottom ([0b70554](https://github.com/pie-framework/pie-elements/commit/0b705548f3f1a41b9af0467ee16e39499fd8caee))
+* **math-inline:** toolbar editor position - change double quotes into single quotes ([9a1edfa](https://github.com/pie-framework/pie-elements/commit/9a1edfa965187230b70c915075ab23d33738ea15))
+
+
+
+
+
 # [5.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.6.3...@pie-element/math-inline@5.7.0) (2021-08-05)
 
 

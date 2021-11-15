@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.17...@pie-element/select-text-controller@4.1.18) (2021-11-11)
+
+
+### Bug Fixes
+
+* move dom logic from controller to player ([2425be1](https://github.com/pie-framework/pie-elements/commit/2425be1e506b153d946b7643f4b024d2e0edfbbb))
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **select-text:** move prepareText function to pie-lib ([26eb7bd](https://github.com/pie-framework/pie-elements/commit/26eb7bd7e9d2804286886a0f92f9993d67f6cf77))
+
+
+
+
+
 ## [4.1.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.15...@pie-element/select-text-controller@4.1.17) (2021-08-05)
 
 

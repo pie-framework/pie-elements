@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.3...@pie-element/extended-text-entry@6.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+* **extended-text-entry:** Removed main content padding PD-384 ([e3f0bb3](https://github.com/pie-framework/pie-elements/commit/e3f0bb33ef66fe7fdd2de80d470eaecc4864dbbb))
+
+
+### Features
+
+* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
+* **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
+
+
+
+
+
 # [6.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.5.3...@pie-element/extended-text-entry@6.6.0) (2021-08-05)
 
 

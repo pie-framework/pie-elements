@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.9.2...@pie-element/multiple-choice@6.0.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* show tick if available only in evaluate mode ([dddca13](https://github.com/pie-framework/pie-elements/commit/dddca137875221d3b52b17151163610f5eb1ea98))
+* **multiple-choice-print:** remove feedback ([25cbac5](https://github.com/pie-framework/pie-elements/commit/25cbac5647afe8864bedd9c50cd98abe6b31ddb0))
+* exports ([66ed4d2](https://github.com/pie-framework/pie-elements/commit/66ed4d2ae44df712b8b48849023e6849d6d69126))
+* merge conflict ([01655ca](https://github.com/pie-framework/pie-elements/commit/01655caf59311cc1a7a6624a6243147b2819d76e))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* print demo ([a7f9707](https://github.com/pie-framework/pie-elements/commit/a7f9707592e1ec89a55e9d61450b0600aea4d486))
+* **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
+* **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
+* **multiple-choice:** accessibility label - added aria label to checkbox and radio input types ([22514bb](https://github.com/pie-framework/pie-elements/commit/22514bb5e2476bc79a55756ff9a5c0c1e0642a29))
+* **multiple-choice:** added possibility to change layout - vertical, grid, horizontal ([46e7681](https://github.com/pie-framework/pie-elements/commit/46e7681a178ff29c983db1c7b6206389b55e2a00))
+* **multiple-choice:** grid layout - fix tests ([ab3c750](https://github.com/pie-framework/pie-elements/commit/ab3c750af03d9fbe0794f7ec53452c948b530ad8))
+* **multiple-choice:** grid layout - review comments ([540073f](https://github.com/pie-framework/pie-elements/commit/540073faeae2b67645a63e8ca609e7682138c710))
+* **multiple-choice:** toolbar editor position set to bottom ([08ee249](https://github.com/pie-framework/pie-elements/commit/08ee249d45fdaab2c93a32453d757ec3c79215cd))
+* if there are no choices - do not show grid columns dropdown BREAKING CHANGE: removed verticalMode(boolean) from model & configuration - and replaced it with choicesLayout(string) ([1c36ae8](https://github.com/pie-framework/pie-elements/commit/1c36ae8b7f9369b2723a6a84e7350370e1186c50))
+* **multiple-choice:** remove unused class name ([a7aa576](https://github.com/pie-framework/pie-elements/commit/a7aa576a32f5c44415994fe413491f3f3dd17b3f))
+* **multiple-choice:** toolbar position ( bottom or top ) ([9af6cd9](https://github.com/pie-framework/pie-elements/commit/9af6cd9f6b893501e00640500a34e1c3404edc94))
+* **multiple-choice:** update docs ([0843122](https://github.com/pie-framework/pie-elements/commit/084312288b501a7f1129b24a046f9ab19cf25f79))
+
+
+### BREAKING CHANGES
+
+* **ebsr:** removed vertical mode.
+
+
+
+
+
 # [5.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@5.9.2...@pie-element/multiple-choice@5.10.0) (2021-08-05)
 
 
