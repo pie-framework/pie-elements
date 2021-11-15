@@ -66,7 +66,7 @@ const getTextNodesBetween = (range) => {
   const getTextNodes = (node) => {
     const { nodeValue: value, childNodes } = node;
 
-    if(node === startNode && node === endNode /*&& node !== rootNode*/) {
+    if(node === startNode && node === endNode) {
       if (value) {
         text += value.substring(startOffset, endOffset);
       }
@@ -161,6 +161,27 @@ export const getRangeDetails = (range, rootNode) => {
   };
 };
 
+// removes the annotation spans without changing the content inside
+export const removeElemsWrapping = (elems, container) => {
+  elems.forEach(elem => {
+    const parent = elem.parentNode;
+    const childNodes = elem.childNodes;
+    const childNodesLength = childNodes.length;
+
+    if (childNodesLength > 0) {
+      for (let i = 0; i < childNodesLength; i++) {
+        parent.insertBefore(childNodes[0], elem);
+      }
+    } else {
+      parent.insertBefore(document.createTextNode(elem.textContent), elem);
+    }
+
+    parent.removeChild(elem);
+  });
+
+  container.normalize();
+};
+
 // also used in select-text
 export const clearSelection = () => {
   if (document.getSelection) {
@@ -185,3 +206,11 @@ export const clearSelection = () => {
 
 // check if annotation label contains line breaks or its length >= 20 characters
 export const isSideLabel = text => text.length >= 20 || text.search(/\n|\r|\r\n/) !== -1;
+
+export const getAnnotationElements = id => {
+  return Array.from(document.querySelectorAll(`[data-id='${id}']`));
+};
+
+export const getLabelElement = id => {
+  return document.querySelector(`[data-ann-id='${id}']`);
+};

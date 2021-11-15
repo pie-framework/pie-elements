@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Popover } from '@material-ui/core';
 
@@ -73,6 +74,18 @@ const styles = {
 };
 
 class AnnotationMenu extends React.Component {
+  static propTypes = {
+    anchorEl: PropTypes.object,
+    open: PropTypes.bool,
+    annotations: PropTypes.array,
+    isNewAnnotation: PropTypes.bool,
+    onClose: PropTypes.func,
+    onDelete: PropTypes.func,
+    onEdit: PropTypes.func,
+    onWrite: PropTypes.func,
+    onAnnotate: PropTypes.func,
+  };
+
   render() {
     const {
       anchorEl,
@@ -123,15 +136,6 @@ class AnnotationMenu extends React.Component {
             <div style={{pointerEvents: 'none'}} className={classes.button}/>
             {isNewAnnotation ? (
               <React.Fragment>
-                <div className={classes.button} onClick={onDelete}>
-                  Delete
-                </div>
-                <div className={classes.button} onClick={onEdit}>
-                  Edit
-                </div>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
                 <div
                   className={classNames(classes.button, classes.positive)}
                   onClick={() => onWrite('positive')}
@@ -143,6 +147,15 @@ class AnnotationMenu extends React.Component {
                   onClick={() => onWrite('negative')}
                 >
                   Write
+                </div>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <div className={classes.button} onClick={onDelete}>
+                  Delete
+                </div>
+                <div className={classes.button} onClick={onEdit}>
+                  Edit
                 </div>
               </React.Fragment>
             )}

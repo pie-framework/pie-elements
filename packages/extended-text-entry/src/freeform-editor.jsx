@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { Popover, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -22,6 +23,18 @@ const styles = {
     flexWrap: 'wrap',
     borderTop: '2px solid #d3d3d3'
   },
+  positive: {
+    backgroundColor: 'rgb(153, 255, 153) !important',
+    '&:hover': {
+      filter: 'brightness(85%)'
+    }
+  },
+  negative: {
+    backgroundColor: 'rgb(255, 204, 238) !important',
+    '&:hover': {
+      filter: 'brightness(85%)'
+    }
+  },
   button: {
     flexGrow: 1,
     width: '28%',
@@ -33,6 +46,12 @@ const styles = {
     },
     '&:hover': {
       backgroundColor: '#d3d3d3'
+    },
+    '&.negative:hover': {
+      backgroundColor: 'rgb(153, 255, 153) !important',
+    },
+    '&.positive:hover': {
+      backgroundColor: 'rgb(255, 204, 238) !important',
     }
   },
   arrow: {
@@ -61,6 +80,18 @@ const styles = {
 };
 
 class FreeformEditor extends React.Component {
+  static propTypes = {
+    anchorEl: PropTypes.object,
+    open: PropTypes.bool,
+    offset: PropTypes.number,
+    value: PropTypes.string,
+    type: PropTypes.string,
+    onClose: PropTypes.func,
+    onDelete: PropTypes.func,
+    onSave: PropTypes.func,
+    onTypeChange: PropTypes.func,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -137,11 +168,10 @@ class FreeformEditor extends React.Component {
           <TextField
             id="annotation-editor"
             style={{
-              padding: '5px',
+              padding: '2px 5px',
               width: '95%'
             }}
             autoFocus
-            // inputRef={input => input && input.focus()}
             multiline
             rows={1}
             rowsMax={4}
@@ -153,7 +183,7 @@ class FreeformEditor extends React.Component {
             <div className={classes.button} onClick={onDelete}>
               Delete
             </div>
-            <div className={classes.button} onClick={this.handleTypeChange} >
+            <div className={classNames(classes.button, type)} onClick={this.handleTypeChange} >
               { type === 'negative' ? 'Green' : 'Pink' }
             </div>
             <div className={classes.button} onClick={this.handleSave} >

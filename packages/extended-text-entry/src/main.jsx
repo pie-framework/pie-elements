@@ -27,11 +27,15 @@ const style = theme => ({
 
 export class Main extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
+    onAnnotationsChange: PropTypes.func.isRequired,
+    onCommentChange: PropTypes.func.isRequired,
     model: PropTypes.object,
     classes: PropTypes.object.isRequired,
     session: PropTypes.shape({
-      value: PropTypes.string
+      value: PropTypes.string,
+      annotations: PropTypes.array,
+      comment: PropTypes.string
     }).isRequired
   };
 
@@ -41,20 +45,25 @@ export class Main extends React.Component {
     }
   }
 
-  changeSession = debounce(this.props.onChange, 1500);
+  changeSessionValue = debounce(this.props.onValueChange, 1500);
+
+  changeSessionComment = debounce(this.props.onCommentChange, 1500);
 
   render() {
-    const { model, classes, session, onAnnotationsChange, onCommentChange } = this.props;
+    const { model, classes, session, onAnnotationsChange } = this.props;
     const {
+      animationsDisabled,
       annotatorEnabled,
+      customKeys,
       dimensions,
       disabled,
       disabledAnnotator,
+      equationEditor,
       feedback,
-      teacherInstructions,
       mathInput,
-      animationsDisabled,
-      predefinedAnnotations
+      predefinedAnnotations,
+      prompt,
+      teacherInstructions
     } = model;
     const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
@@ -65,34 +74,6 @@ export class Main extends React.Component {
       className="teacher-instructions"
       dangerouslySetInnerHTML={{ __html: teacherInstructions }}
     />;
-
-    const testValue = '<div><p>Ana <b>are mere</b>. Alex nu <b>are</b> mere.<br/></p><div><p><em>Alex</em> doreste mere.</p></div><p>Alex merge la magazin, <div> <div></div><u>dar cumpara</u> bere. </p><p>new line 1</p><p>new line 2</p><p>new line 3</p><p>new line 4</p><p>new line 5</p><p>new line 6</p><p>new line 7</p><p>new line 8 </p><p>new line 9 </p><p>new line 10</p><p>new line 11</p><p>new line 12</p><p>new line 13</p><p>new line 14</p><p>new line 15</p><p>new line 16</p></div>'
-    const testAnnotations = [
-      {
-        "id": "a28f92db-0361-4ee0-8648-16a593b3b423",
-        "label": "punctuation",
-        "type": "positive",
-        "text": "are mer",
-        "start": 4,
-        "end": 11
-      },
-      {
-        "id": "0dbabc16-f726-48ce-bd39-c55def7b4093",
-        "label": "01234567890123456789",
-        "type": "negative",
-        "text": "magazin",
-        "start": 63,
-        "end": 70
-      },
-      {
-        "id": "3f3a3cad-247e-4c1e-bb90-670ba2113852",
-        "label": "punctuation",
-        "type": "positive",
-        "text": "ex dor",
-        "start": 33,
-        "end": 39
-      }
-    ];
 
     return (
       <div
@@ -106,7 +87,7 @@ export class Main extends React.Component {
             <div>
               {!animationsDisabled ? (
                 <Collapsible
-                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                   className={classes.collapsible}
                 >
                   {teacherInstructionsDiv}
@@ -116,28 +97,31 @@ export class Main extends React.Component {
             </div>
           )
         }
-        {model.prompt && (
+        {prompt && (
           <Typography
             className={classNames(classes.prompt, 'prompt')}
-            dangerouslySetInnerHTML={{ __html: model.prompt }}
+            dangerouslySetInnerHTML={{ __html: prompt }}
           />
         )}
         {annotatorEnabled ? (
           <AnnotationEditor
             text={value || ''}
-            annotations={annotations || testAnnotations}
+            annotations={annotations || []}
             comment={comment || ''}
-            predefinedAnnotations={predefinedAnnotations}
+            predefinedAnnotations={predefinedAnnotations || []}
             onChange={onAnnotationsChange}
-            onCommentChange={onCommentChange}
+            onCommentChange={this.changeSessionComment}
             width={width}
             height={height}
             maxHeight={maxHeight}
             disabled={disabledAnnotator}
+            disabledMath={!mathInput}
+            customKeys={customKeys}
+            keypadMode={equationEditor}
           />
         ) : (
           <EditableHTML
-            onChange={this.changeSession}
+            onChange={this.changeSessionValue}
             markup={value || ''}
             width={width && width.toString()}
             minHeight={height && height.toString()}
@@ -147,8 +131,8 @@ export class Main extends React.Component {
             pluginProps={{
               math: {
                 disabled: !mathInput,
-                customKeys: this.props.model.customKeys,
-                keypadMode: this.props.model.equationEditor,
+                customKeys: customKeys,
+                keypadMode: equationEditor,
                 controlledKeypadMode: false
               },
               video: {

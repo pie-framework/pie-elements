@@ -59,8 +59,8 @@ export async function model(question, session, env) {
     default:
       break;
   }
-  
-  const annotatorEnabled = env.role === 'instructor' || env.mode === 'evaluate' && env.role === 'student';
+
+  const annotatorEnabled = env.role === 'instructor' || env.mode === 'evaluate';
   const disabledAnnotator = env.role !== 'instructor';
 
   return fb.then(feedback => ({

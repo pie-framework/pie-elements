@@ -1,9 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Popover, TextField } from '@material-ui/core';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { getDOMNodes, wrapRange, getRangeDetails, clearSelection, isSideLabel } from './annotation-utils';
+import {
+  clearSelection,
+  isSideLabel,
+  getAnnotationElements,
+  getDOMNodes,
+  getLabelElement,
+  getRangeDetails,
+  removeElemsWrapping,
+  wrapRange
+} from './annotation-utils';
 import EditableHtml from '@pie-lib/editable-html';
 import { InputContainer } from '@pie-lib/config-ui';
 import FreeformEditor from './freeform-editor';
@@ -15,10 +24,16 @@ const style = {
     backgroundColor: 'rgba(0, 0, 0, 0.06)',
     border: '1px solid #ccc',
     borderRadius: '4px',
-    overflowY: 'scroll'
+    overflowY: 'scroll',
+    lineHeight: '36px',
+    whiteSpace: 'pre-wrap',
+    overflowWrap: 'break-word',
+    '& p': {
+      margin: 0
+    }
   },
   labelsContainer: {
-    width: '220px'
+    width: '230px'
   },
   wrapper: {
     position: 'relative',
@@ -34,45 +49,74 @@ const style = {
   annotation: {
     position: 'relative',
     cursor: 'pointer',
+
     '&.positive': {
       backgroundColor: 'rgb(51, 255, 51, 0.5)',
     },
+
     '&.negative': {
       backgroundColor: 'rgba(255, 102, 204, 0.4)',
     }
   },
   annotationLabel: {
+    backgroundColor: 'rgb(242, 242, 242)',
+    padding: '2px',
     position: 'absolute',
-    // pointerEvents: 'none',
     userSelect: 'none',
     whiteSpace: 'nowrap',
     top: '-10px',
-    left: 0,
-    fontSize: '10px',
+    left: '-2px',
+    fontSize: '12px',
     fontStyle: 'normal',
     fontWeight: 'normal',
-    '-webkit-user-select': 'none', /* Safari */
-    '-moz-user-select': 'none', /* Firefox */
-    '-ms-user-select': 'none' /* IE10+/Edge */,
+    lineHeight: '6px',
+    '-webkit-user-select': 'none',
+    '-moz-user-select': 'none',
+    '-ms-user-select': 'none',
+
     '&.positive': {
       color: 'rgb(0, 128, 0)',
     },
+
     '&.negative': {
       color: 'rgb(204, 0, 136)',
     }
   },
-  hover: {
-    filter: 'brightness(85%)',
+  labelHover: {
+    zIndex: 20,
+
+    '&.positive': {
+      color: 'rgb(0, 77, 0)',
+    },
+
+    '&.negative': {
+      color: 'rgb(153, 0, 102)',
+    }
+  },
+  highlight: {
     zIndex: 10
   },
+  hover: {
+    zIndex: 20,
+
+    '&.positive': {
+      backgroundColor: 'rgb(51, 255, 51, 0.7)',
+    },
+
+    '&.negative': {
+      backgroundColor: 'rgba(255, 102, 204, 0.55)',
+    }
+  },
   sideAnnotationHover: {
-    zIndex: 10,
+    zIndex: 20,
+
     '&.negative': {
       backgroundColor: 'rgb(255, 179, 230) !important',
       '&:before': {
         borderRightColor: 'rgb(255, 179, 230) !important'
       }
     },
+
     '&.positive': {
       backgroundColor: 'rgb(128, 255, 128) !important',
       '&:before': {
@@ -83,13 +127,15 @@ const style = {
   sideAnnotation: {
     position: 'absolute',
     padding: '4px',
-    // backgroundColor: '#d3d3d3',
     borderRadius: '4px',
     marginLeft: '8px',
-    maxWidth: '180px',
+    width: '180px',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
     border: '2px solid #ffffff',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
 
     '&:before': {
       position: 'absolute',
@@ -101,7 +147,6 @@ const style = {
       width: 0,
       pointerEvents: 'none',
       borderWidth: '7px',
-      // borderRightColor: '#d3d3d3'
     },
 
     '&.negative': {
@@ -121,6 +166,23 @@ const style = {
 };
 
 class AnnotationEditor extends React.Component {
+  static propTypes = {
+    text: PropTypes.string,
+    comment: PropTypes.string,
+    annotations: PropTypes.array,
+    predefinedAnnotations: PropTypes.array,
+    onChange: PropTypes.func.isRequired,
+    onCommentChange: PropTypes.func.isRequired,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    maxHeight: PropTypes.string,
+    disabled: PropTypes.bool,
+    disabledMath: PropTypes.bool,
+    customKeys: PropTypes.array,
+    keypadMode: PropTypes.string,
+    classes: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -129,7 +191,7 @@ class AnnotationEditor extends React.Component {
       openedEditor: false,
       selectedElems: [],
       labelElem: null,
-      selectionDetails: {},
+      selectionDetails: null,
       annotation: null,
       annotationIndex: null
     };
@@ -158,44 +220,44 @@ class AnnotationEditor extends React.Component {
     const left = this.textRef.offsetLeft + this.textRef.offsetWidth + 8;
 
     Array.from(this.labelsRef.children).forEach(label => {
-      const spans = this.getAnnotationElements(label.dataset.annId);
-      const top = spans[0].offsetTop - this.textRef.scrollTop; // - spans[0].offsetHeight
+      const spans = getAnnotationElements(label.dataset.annId);
+      const spanOffset = spans[0].offsetTop ? spans[0].offsetTop : spans[0].offsetParent.offsetTop;
+      const top = spanOffset - this.textRef.scrollTop - 6;
 
       label.style.top = `${top}px`;
       label.style.left = `${left}px`;
     });
   };
 
-  getAnnotationElements = id => {
-    return Array.from(document.querySelectorAll(`[data-id='${id}']`));
-  };
-
-  getLabelElement = id => {
-    return document.querySelector(`[data-ann-id='${id}']`);
-  }
-
   handleClick = event => {
     const { annotations, classes } = this.props;
+    const { selectionDetails } = this.state;
+
+    if (selectionDetails) {
+      // new selection was made inside another annotation and should not update that annotation
+      return;
+    }
+
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
-    const selectedElems = this.getAnnotationElements(annotationId);
-    const labelElem = this.getLabelElement(annotationId)
+    const selectedElems = getAnnotationElements(annotationId);
+    const labelElem = getLabelElement(annotationId)
     const annotationIndex = annotations.findIndex(annotation => annotation.id === annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
-    console.log('annotations', annotations);
-    console.log('annotationindex', annotationIndex);
-    console.log('annotations[annotationIndex]', annotations[annotationIndex]);
-    console.log('labelElem', labelElem);
+
+    if (isSideLabel) {
+      labelElem.classList.add(classes.highlight);
+    }
 
     this.setState({
       anchorEl: selectedElems[0],
-      openedMenu: !!id || !!annId && !isSideLabel,
-      openedEditor: !!annId && isSideLabel,
+      openedMenu: !!id || !!annId && !isSideLabel, // true if the annotation or the label was clicked
+      openedEditor: !!annId && isSideLabel, // true if the side label was clicked
       selectedElems,
       labelElem,
       annotationIndex,
       annotation: annotations[annotationIndex],
-      selectionDetails: {}
+      selectionDetails: null
     });
   };
 
@@ -203,31 +265,36 @@ class AnnotationEditor extends React.Component {
     const { classes } = this.props;
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
-    const selectedElems = this.getAnnotationElements(annotationId);
-    const labelElem = this.getLabelElement(annotationId);
+    const selectedElems = getAnnotationElements(annotationId);
+    const labelElem = getLabelElement(annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
     selectedElems.forEach(elem => elem.classList.add(classes.hover));
-    labelElem.classList.add(isSideLabel ? classes.sideAnnotationHover : classes.hover);
+    labelElem.classList.add(isSideLabel ? classes.sideAnnotationHover : classes.labelHover);
   };
 
   handleCancelHover = event => {
     const { classes } = this.props;
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
-    const selectedElems = this.getAnnotationElements(annotationId);
-    const labelElem = this.getLabelElement(annotationId);
+    const selectedElems = getAnnotationElements(annotationId);
+    const labelElem = getLabelElement(annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
     selectedElems.forEach(elem => elem.classList.remove(classes.hover));
-    labelElem.classList.remove(isSideLabel ? classes.sideAnnotationHover : classes.hover);
+    labelElem.classList.remove(isSideLabel ? classes.sideAnnotationHover : classes.labelHover);
   };
 
   handleClose = event => {
-    const { selectedElems } = this.state;
+    const { classes } = this.props;
+    const { selectedElems, labelElem } = this.state;
 
     if (selectedElems.length && !selectedElems[0].hasAttribute('data-id')) {
-      this.removeElemsWrapping(selectedElems);
+      removeElemsWrapping(selectedElems, this.textRef);
+    }
+
+    if (labelElem) {
+      labelElem.classList.remove(classes.highlight);
     }
 
     this.setState({
@@ -236,7 +303,7 @@ class AnnotationEditor extends React.Component {
       openedEditor: false,
       selectedElems: [],
       labelElem: null,
-      selectionDetails: {},
+      selectionDetails: null,
       annotationIndex: null,
       annotation: null
     });
@@ -247,7 +314,13 @@ class AnnotationEditor extends React.Component {
   handleSelection = event => {
     const selection = window.getSelection();
 
-    if (event.detail <= 2 && selection && selection.rangeCount > 0) { // prevent unwanted selections
+    // prevent unwanted selections
+    if (event.detail > 2) {
+      clearSelection();
+      return;
+    }
+
+    if (selection && selection.rangeCount > 0) {
       const selectedRange = selection.getRangeAt(0);
       const selectedText = selectedRange.toString();
       const isSelectionInside = this.textRef.contains(selectedRange.commonAncestorContainer);
@@ -266,33 +339,13 @@ class AnnotationEditor extends React.Component {
     }
   };
 
-  removeElemsWrapping = elems => {
-    elems.forEach(elem => {
-      const parent = elem.parentNode;
-      const childNodes = elem.childNodes;
-      const childNodesLength = childNodes.length;
-
-      if (childNodesLength > 0) {
-        for (let i = 0; i < childNodesLength; i++) {
-          parent.insertBefore(childNodes[0], elem);
-        }
-      } else {
-        parent.insertBefore(document.createTextNode(elem.textContent), elem);
-      }
-
-      parent.removeChild(elem);
-    });
-
-    this.textRef.normalize();
-  };
-
   deleteAnnotation = () => {
     const { annotations, onChange } = this.props;
     const { selectedElems, labelElem, annotationIndex, annotation } = this.state;
     const parentRef = isSideLabel(annotation.label) ? this.labelsRef : selectedElems[0];
 
     parentRef.removeChild(labelElem);
-    this.removeElemsWrapping(selectedElems);
+    removeElemsWrapping(selectedElems, this.textRef);
 
     annotations.splice(annotationIndex, 1);
     onChange(annotations);
@@ -321,7 +374,8 @@ class AnnotationEditor extends React.Component {
     labelElem.onmouseout = this.handleCancelHover;
 
     if (isSideLabel(label)) {
-      const top = firstSpan.offsetTop - this.textRef.scrollTop;
+      const spanOffset = firstSpan.offsetTop ? firstSpan.offsetTop : firstSpan.offsetParent.offsetTop;
+      const top = spanOffset - this.textRef.scrollTop;
       const left = this.textRef.offsetLeft + this.textRef.offsetWidth + 8;
 
       labelElem.dataset.freeform = true;
@@ -340,7 +394,7 @@ class AnnotationEditor extends React.Component {
     const { selectedElems, selectionDetails, annotation, annotationIndex } = this.state;
     const { type, text: label } = newAnnotation;
 
-    if (!_.isEmpty(annotation)) {
+    if (annotation) {
       const updatedAnnotation = { ...annotation, label, type };
       const { type: oldType, label: oldLabel } = annotation;
 
@@ -381,7 +435,7 @@ class AnnotationEditor extends React.Component {
 
     this.createDOMAnnotation(selectedElems, annotation);
     annotations.push(annotation);
-    const labelElem = this.getLabelElement(annotation.id);
+    const labelElem = getLabelElement(annotation.id);
 
     this.setState({
       openedMenu: false,
@@ -395,7 +449,6 @@ class AnnotationEditor extends React.Component {
   };
 
   updateLabel = (oldLabel, annotation, oldType) => {
-    const { classes } = this.props;
     const { selectedElems, labelElem } = this.state;
     const { label, type } = annotation;
 
@@ -405,13 +458,14 @@ class AnnotationEditor extends React.Component {
       if (oldType) {
         labelElem.classList.remove(oldType);
         labelElem.classList.add(type);
+
+        selectedElems.forEach(elem => {
+          elem.classList.remove(oldType);
+          elem.classList.add(type);
+        });
       }
     } else if (isSideLabel(label) && !isSideLabel(oldLabel)) {
-      console.log('selectedElems', selectedElems);
-      console.log('labelElem', labelElem);
-      if (selectedElems[0]) {
-        selectedElems[0].removeChild(labelElem);
-      }
+      selectedElems[0].removeChild(labelElem);
       this.createDOMAnnotation(selectedElems, annotation);
     } else if (!isSideLabel(label) && isSideLabel(oldLabel)) {
       this.labelsRef.removeChild(labelElem);
@@ -452,18 +506,30 @@ class AnnotationEditor extends React.Component {
   };
 
   render() {
-    const { annotations, classes, comment, disabled, height, width, maxHeight, onCommentChange, predefinedAnnotations, text } = this.props;
-    const { anchorEl, openedMenu, openedEditor, selectionDetails, currentValue, annotation } = this.state;
-    const topOffset = this.textRef && anchorEl ? (anchorEl.offsetTop - this.textRef.scrollTop - 8) : 0;
-    console.log('annotations', annotations);
-    console.log('annotation', annotation);
+    const {
+      classes,
+      comment,
+      customKeys,
+      disabled,
+      disabledMath,
+      keypadMode,
+      height,
+      width,
+      maxHeight,
+      onCommentChange,
+      predefinedAnnotations,
+      text
+    } = this.props;
+    const { anchorEl, annotation, openedMenu, openedEditor, selectionDetails } = this.state;
+    const anchorOffset = anchorEl && (anchorEl.offsetTop ? anchorEl.offsetTop : anchorEl.offsetParent.offsetTop);
+    const topOffset = this.textRef && anchorOffset ? (anchorOffset - this.textRef.scrollTop - 8) : 0;
 
     return (
       <div>
         <div className={classes.wrapper}>
           <div
             className={classes.textContainer}
-            style={{ width: width, minHeight: height, maxHeight: maxHeight }}
+            style={{ width: width - 34, minHeight: height, maxHeight: maxHeight }}
             ref={r => (this.textRef = r)}
             onMouseDown={!disabled ? clearSelection : () => {}}
             onMouseUp={!disabled ? this.handleSelection : () => {}}
@@ -474,32 +540,28 @@ class AnnotationEditor extends React.Component {
             ref={r => (this.labelsRef = r)}
           />
         </div>
+
         <InputContainer label={'Comment'} className={classes.commentContainer}>
           <EditableHtml
             className={classes.prompt}
             markup={comment|| ''}
             onChange={onCommentChange}
-            width={'534' || width && width.toString()}
+            width={width && width.toString()}
             disabled={disabled}
-            // highlightShape={true}
-            // imageSupport={imageSupport}
-            nonEmpty={false}
-            // toolbarOpts={toolbarOpts}
-
-            // pluginProps={{
-            //   math: {
-            //     disabled: !mathInput,
-            //     customKeys: this.props.model.customKeys,
-            //     keypadMode: this.props.model.equationEditor,
-            //     controlledKeypadMode: false
-            //   },
-            //   video: {
-            //     disabled: true
-            //   },
-            //   audio: {
-            //     disabled: true
-            //   }
-            // }}
+            pluginProps={{
+              math: {
+                disabled: disabledMath,
+                customKeys: customKeys,
+                keypadMode: keypadMode,
+                controlledKeypadMode: false
+              },
+              video: {
+                disabled: true
+              },
+              audio: {
+                disabled: true
+              }
+            }}
           />
         </InputContainer>
 
@@ -507,7 +569,7 @@ class AnnotationEditor extends React.Component {
           anchorEl={anchorEl}
           open={openedMenu && !disabled}
           annotations={predefinedAnnotations}
-          isNewAnnotation={_.isEmpty(selectionDetails)}
+          isNewAnnotation={!!selectionDetails}
           onClose={this.handleClose}
           onDelete={this.deleteAnnotation}
           onEdit={this.editAnnotation}
