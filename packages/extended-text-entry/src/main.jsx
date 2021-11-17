@@ -8,7 +8,7 @@ import debounce from 'lodash/debounce';
 import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import classNames from 'classnames';
-import AnnotationEditor from './annotation-editor';
+import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 

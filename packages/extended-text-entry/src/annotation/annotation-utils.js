@@ -8,12 +8,14 @@ const getAllTextNodesBeforePosition = (node, stopOffset, nodeArray) => {
     return false;
   }
 
-  // 3 = HTML DOM node value for text nodes
-  if (node.nodeType === 3 && node.parentNode && !node.parentNode.hasAttribute('data-ann-id')) {
-    nodes.push(node);
-  }
+  if (node) {
+    // 3 = HTML DOM node value for text nodes
+    if (node.nodeType === 3 && node.parentNode && !node.parentNode.hasAttribute('data-ann-id')) {
+      nodes.push(node);
+    }
 
-  node = node.firstChild;
+    node = node.firstChild;
+  }
 
   while(node && keepWalking) {
     keepWalking = getAllTextNodesBeforePosition(node, stopOffset, nodes);
@@ -81,7 +83,7 @@ const getTextNodesBetween = (range) => {
         text += value.substring(0, endOffset);
       }
       reachedEndNode = true;
-    } else if(node.nodeType === 3 && node.parentNode && !node.parentNode.hasAttribute('data-ann-id')) {
+    } else if(node && node.nodeType === 3 && node.parentNode && !node.parentNode.hasAttribute('data-ann-id')) {
       // 3 = HTML DOM node value for text nodes
       if (value && pastStartNode && !reachedEndNode) {
         text += value;

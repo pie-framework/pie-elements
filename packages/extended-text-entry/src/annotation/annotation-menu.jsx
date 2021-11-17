@@ -125,7 +125,7 @@ class AnnotationMenu extends React.Component {
                   classes.button,
                   annotation.type === 'positive' ? classes.positive : classes.negative
                 )}
-                onClick={event => onAnnotate(event, annotation)}
+                onClick={() => onAnnotate(annotation)}
               >{annotation.label}</div>
             ))}
           </div>

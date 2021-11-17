@@ -203,30 +203,37 @@ class AnnotationEditor extends React.Component {
     if (text) {
       annotations.forEach(annotation => {
         const [ domStart, domEnd ] = getDOMNodes(annotation.start, annotation.end, this.textRef);
-        const range = document.createRange();
-        range.setStart(domStart.node, domStart.offset);
-        range.setEnd(domEnd.node, domEnd.offset);
 
-        const spans = wrapRange(range);
-        this.createDOMAnnotation(spans, annotation);
+        if (domStart && domEnd) {
+          const range = document.createRange();
+          range.setStart(domStart.node, domStart.offset);
+          range.setEnd(domEnd.node, domEnd.offset);
+
+          const spans = wrapRange(range);
+          this.createDOMAnnotation(spans, annotation);
+        }
       });
     }
 
-    this.adjustAnnotationsPosition();
-    this.textRef.addEventListener('scroll', this.adjustAnnotationsPosition);
+    if (this.textRef) {
+      this.adjustAnnotationsPosition();
+      this.textRef.addEventListener('scroll', this.adjustAnnotationsPosition);
+    }
   };
 
   adjustAnnotationsPosition = () => {
-    const left = this.textRef.offsetLeft + this.textRef.offsetWidth + 8;
+    if (this.textRef && this.labelsRef) {
+      const left = this.textRef.offsetLeft + this.textRef.offsetWidth + 8;
 
-    Array.from(this.labelsRef.children).forEach(label => {
-      const spans = getAnnotationElements(label.dataset.annId);
-      const spanOffset = spans[0].offsetTop ? spans[0].offsetTop : spans[0].offsetParent.offsetTop;
-      const top = spanOffset - this.textRef.scrollTop - 6;
+      Array.from(this.labelsRef.children).forEach(label => {
+        const spans = getAnnotationElements(label.dataset.annId);
+        const spanOffset = spans[0].offsetTop ? spans[0].offsetTop : spans[0].offsetParent.offsetTop;
+        const top = spanOffset - this.textRef.scrollTop - 6;
 
-      label.style.top = `${top}px`;
-      label.style.left = `${left}px`;
-    });
+        label.style.top = `${top}px`;
+        label.style.left = `${left}px`;
+      });
+    }
   };
 
   handleClick = event => {
@@ -356,7 +363,7 @@ class AnnotationEditor extends React.Component {
     const { classes, disabled } = this.props;
     const { id, label, type } = annotation;
 
-    elems.forEach(elem => {
+    (elems || []).forEach(elem => {
       elem.dataset.id = id;
       elem.className = classNames(classes.annotation, type);
       elem.onclick = !disabled && this.handleClick;
@@ -364,7 +371,7 @@ class AnnotationEditor extends React.Component {
       elem.onmouseout = this.handleCancelHover;
     });
 
-    const firstSpan = elems[0];
+    const firstSpan = elems && elems[0] || {};
     const labelElem = document.createElement('SPAN');
 
     labelElem.dataset.annId = id;
@@ -389,7 +396,7 @@ class AnnotationEditor extends React.Component {
     }
   };
 
-  handleMenuClick = (event, newAnnotation) => {
+  handleMenuClick = newAnnotation => {
     const { annotations, onChange } = this.props;
     const { selectedElems, selectionDetails, annotation, annotationIndex } = this.state;
     const { type, text: label } = newAnnotation;
@@ -474,7 +481,7 @@ class AnnotationEditor extends React.Component {
   };
 
   changeAnnotationType = (newLabel) => {
-    const { annotations, onChange, classes } = this.props;
+    const { annotations, onChange } = this.props;
     const { annotationIndex, selectedElems } = this.state;
     const { type: oldType, label: oldLabel } = annotations[annotationIndex];
     const type = oldType === 'positive' ? 'negative' : 'positive';
