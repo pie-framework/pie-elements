@@ -53,7 +53,7 @@ export class Main extends React.Component {
     const { model, classes, session, onAnnotationsChange } = this.props;
     const {
       animationsDisabled,
-      annotatorEnabled,
+      annotatorMode,
       customKeys,
       dimensions,
       disabled,
@@ -103,7 +103,7 @@ export class Main extends React.Component {
             dangerouslySetInnerHTML={{ __html: prompt }}
           />
         )}
-        {annotatorEnabled ? (
+        {annotatorMode ? (
           <AnnotationEditor
             text={value || ''}
             annotations={annotations || []}

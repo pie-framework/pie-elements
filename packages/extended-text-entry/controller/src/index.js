@@ -60,7 +60,7 @@ export async function model(question, session, env) {
       break;
   }
 
-  const annotatorEnabled = env.role === 'instructor' || env.mode === 'evaluate';
+  const annotatorMode = env.role === 'instructor' || env.mode === 'evaluate';
   const disabledAnnotator = env.role !== 'instructor';
 
   return fb.then(feedback => ({
@@ -72,7 +72,7 @@ export async function model(question, session, env) {
     teacherInstructions,
     mathInput: normalizedQuestion.mathInput,
     equationEditor,
-    annotatorEnabled,
+    annotatorMode,
     disabledAnnotator,
     predefinedAnnotations: normalizedQuestion.predefinedAnnotations
   }));

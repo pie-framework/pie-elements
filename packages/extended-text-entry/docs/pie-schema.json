@@ -116,6 +116,41 @@
       "type": "string",
       "title": "toolbarEditorPosition"
     },
+    "predefinedAnnotations": {
+      "description": "Indicates the predefined annotations",
+      "type": "array",
+      "items": {
+        "title": "PredefinedAnnotation",
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "Indicates the value displayed in the annotation button",
+            "type": "string",
+            "title": "label"
+          },
+          "text": {
+            "description": "Indicates the annotation value",
+            "type": "string",
+            "title": "text"
+          },
+          "type": {
+            "description": "Indicates the type of the annotation",
+            "enum": [
+              "negative",
+              "positive"
+            ],
+            "type": "string",
+            "title": "type"
+          }
+        },
+        "required": [
+          "label",
+          "text",
+          "type"
+        ]
+      },
+      "title": "predefinedAnnotations"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -210,6 +245,36 @@
         }
       },
       "required": [
+        "type"
+      ]
+    },
+    "PredefinedAnnotation": {
+      "title": "PredefinedAnnotation",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates the value displayed in the annotation button",
+          "type": "string",
+          "title": "label"
+        },
+        "text": {
+          "description": "Indicates the annotation value",
+          "type": "string",
+          "title": "text"
+        },
+        "type": {
+          "description": "Indicates the type of the annotation",
+          "enum": [
+            "negative",
+            "positive"
+          ],
+          "type": "string",
+          "title": "type"
+        }
+      },
+      "required": [
+        "label",
+        "text",
         "type"
       ]
     }

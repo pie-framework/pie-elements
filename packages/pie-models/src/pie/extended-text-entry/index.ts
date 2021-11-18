@@ -19,6 +19,23 @@ interface Dimensions {
   height?: string;
 }
 
+interface PredefinedAnnotation  {
+  /**
+   * Indicates the value displayed in the annotation button
+   */
+  label: string;
+
+  /**
+   * Indicates the annotation value
+   */
+  text: string;
+
+  /**
+   * Indicates the type of the annotation
+   */
+  type: 'positive' | 'negative';
+}
+
 /**
  * NOTE: studentInstructions & multipleParts
  * functionalities are not defined yet - the value for those can belong to
@@ -78,6 +95,9 @@ export interface ExtendedTextEntryPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /** Indicates the predefined annotations */
+  predefinedAnnotations?: Array<PredefinedAnnotation>
 }
 
 /**
