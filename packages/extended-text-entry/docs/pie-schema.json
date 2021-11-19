@@ -117,7 +117,7 @@
       "title": "toolbarEditorPosition"
     },
     "predefinedAnnotations": {
-      "description": "Indicates the predefined annotations",
+      "description": "Indicates the predefined annotations for the annotation menu",
       "type": "array",
       "items": {
         "title": "PredefinedAnnotation",

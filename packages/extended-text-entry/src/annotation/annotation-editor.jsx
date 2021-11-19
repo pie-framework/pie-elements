@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 import {
   clearSelection,
   isSideLabel,
@@ -30,6 +29,12 @@ const style = {
     overflowWrap: 'break-word',
     '& p': {
       margin: 0
+    },
+    '& span[data-latex]': {
+      userSelect: 'none',
+      '-webkit-user-select': 'none',
+      '-moz-user-select': 'none',
+      '-ms-user-select': 'none'
     }
   },
   labelsContainer: {
@@ -206,10 +211,12 @@ class AnnotationEditor extends React.Component {
 
         if (domStart && domEnd) {
           const range = document.createRange();
+
           range.setStart(domStart.node, domStart.offset);
           range.setEnd(domEnd.node, domEnd.offset);
 
           const spans = wrapRange(range);
+
           this.createDOMAnnotation(spans, annotation);
         }
       });
@@ -353,8 +360,8 @@ class AnnotationEditor extends React.Component {
 
     parentRef.removeChild(labelElem);
     removeElemsWrapping(selectedElems, this.textRef);
-
     annotations.splice(annotationIndex, 1);
+
     onChange(annotations);
     this.handleClose();
   };
@@ -389,6 +396,7 @@ class AnnotationEditor extends React.Component {
       labelElem.className = classNames(classes.sideAnnotation, type);
       labelElem.style.top = `${top}px`;
       labelElem.style.left = `${left}px`;
+
       this.labelsRef.appendChild(labelElem);
     } else {
       labelElem.className = classNames(classes.annotationLabel, type);
@@ -396,9 +404,23 @@ class AnnotationEditor extends React.Component {
     }
   };
 
+  createNewAnnotation = (label, type) => {
+    const { selectedElems, selectionDetails } = this.state;
+    const annotation = {
+      id: [selectionDetails.start, selectionDetails.end, new Date().getTime()].join('-'),
+      label,
+      type,
+      ...selectionDetails
+    };
+
+    this.createDOMAnnotation(selectedElems, annotation);
+
+    return annotation;
+  };
+
   handleMenuClick = newAnnotation => {
     const { annotations, onChange } = this.props;
-    const { selectedElems, selectionDetails, annotation, annotationIndex } = this.state;
+    const { annotation, annotationIndex } = this.state;
     const { type, text: label } = newAnnotation;
 
     if (annotation) {
@@ -408,14 +430,8 @@ class AnnotationEditor extends React.Component {
       this.updateLabel(oldLabel, updatedAnnotation, type !== oldType && oldType);
       annotations.splice(annotationIndex, 1, updatedAnnotation);
     } else {
-      const newAnnotation = {
-        id: uuidv4(),
-        label,
-        type,
-        ...selectionDetails
-      };
+      const newAnnotation = this.createNewAnnotation(label, type);
 
-      this.createDOMAnnotation(selectedElems, newAnnotation);
       annotations.push(newAnnotation);
     }
 
@@ -431,18 +447,11 @@ class AnnotationEditor extends React.Component {
   };
 
   addAnnotation = type => {
-    const { selectedElems, selectionDetails } = this.state;
     const { annotations, onChange } = this.props;
-    const annotation = {
-      id: uuidv4(),
-      label: '',
-      type,
-      ...selectionDetails
-    };
-
-    this.createDOMAnnotation(selectedElems, annotation);
-    annotations.push(annotation);
+    const annotation = this.createNewAnnotation('', type);
     const labelElem = getLabelElement(annotation.id);
+
+    annotations.push(annotation);
 
     this.setState({
       openedMenu: false,
@@ -494,6 +503,7 @@ class AnnotationEditor extends React.Component {
 
     this.updateLabel(oldLabel, updatedAnnotation, oldType);
     annotations.splice(annotationIndex, 1, updatedAnnotation);
+
     onChange(annotations);
     this.handleClose();
   };
@@ -505,6 +515,7 @@ class AnnotationEditor extends React.Component {
 
     this.updateLabel(oldLabel, updatedAnnotation);
     annotations.splice(annotationIndex, 1, updatedAnnotation);
+
     onChange(annotations);
   };
 

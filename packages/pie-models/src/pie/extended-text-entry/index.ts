@@ -96,7 +96,7 @@ export interface ExtendedTextEntryPie extends PieModel {
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 
-  /** Indicates the predefined annotations */
+  /** Indicates the predefined annotations for the annotation menu*/
   predefinedAnnotations?: Array<PredefinedAnnotation>
 }
 

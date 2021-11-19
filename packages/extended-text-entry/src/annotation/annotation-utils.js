@@ -60,9 +60,9 @@ const getTextNodesBetween = (range) => {
     startOffset,
     endOffset
   } = range;
+  const textNodes = [];
   let pastStartNode = false;
   let reachedEndNode = false;
-  const textNodes = [];
   let text = '';
 
   const getTextNodes = (node) => {
@@ -72,16 +72,19 @@ const getTextNodesBetween = (range) => {
       if (value) {
         text += value.substring(startOffset, endOffset);
       }
+
       pastStartNode = reachedEndNode = true;
     } else if(node === startNode) {
       if (value) {
         text += value.substring(startOffset);
       }
+
       pastStartNode = true;
     } else if(node === endNode) {
       if (value) {
         text += value.substring(0, endOffset);
       }
+
       reachedEndNode = true;
     } else if(node && node.nodeType === 3 && node.parentNode && !node.parentNode.hasAttribute('data-ann-id')) {
       // 3 = HTML DOM node value for text nodes
@@ -101,6 +104,7 @@ const getTextNodesBetween = (range) => {
   };
 
   getTextNodes(rootNode);
+
   return [textNodes, text];
 };
 
@@ -122,14 +126,18 @@ export const wrapRange = (range) => {
 
   // wrap the start node
   const startRange = document.createRange();
+
   startRange.selectNodeContents(range.startContainer);
   startRange.setStart(range.startContainer, range.startOffset);
+
   const startWrapper = surroundContent(startRange);
 
   // wrap the end node
   const endRange = document.createRange();
+
   endRange.selectNode(range.endContainer);
   endRange.setEnd(range.endContainer, range.endOffset);
+
   const endWrapper = surroundContent(endRange);
 
   // wrap the nodes between start and end nodes, if any
@@ -148,6 +156,7 @@ export const wrapRange = (range) => {
 // returns text in range with start and end position in rootNode
 export const getRangeDetails = (range, rootNode) => {
   const rangeBefore = document.createRange();
+
   rangeBefore.setStart(rootNode, 0);
   rangeBefore.setEnd(range.startContainer, range.startOffset);
 
@@ -165,7 +174,7 @@ export const getRangeDetails = (range, rootNode) => {
 
 // removes the annotation spans without changing the content inside
 export const removeElemsWrapping = (elems, container) => {
-  elems.forEach(elem => {
+  (elems || []).forEach(elem => {
     const parent = elem.parentNode;
     const childNodes = elem.childNodes;
     const childNodesLength = childNodes.length;
@@ -209,10 +218,6 @@ export const clearSelection = () => {
 // check if annotation label contains line breaks or its length >= 20 characters
 export const isSideLabel = text => text.length >= 20 || text.search(/\n|\r|\r\n/) !== -1;
 
-export const getAnnotationElements = id => {
-  return Array.from(document.querySelectorAll(`[data-id='${id}']`));
-};
+export const getAnnotationElements = id => Array.from(document.querySelectorAll(`[data-id='${id}']`));
 
-export const getLabelElement = id => {
-  return document.querySelector(`[data-ann-id='${id}']`);
-};
+export const getLabelElement = id => document.querySelector(`[data-ann-id='${id}']`);

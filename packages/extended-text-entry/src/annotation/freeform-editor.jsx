@@ -94,9 +94,7 @@ class FreeformEditor extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      value: props.value,
-    };
+    this.state = { value: props.value };
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -108,11 +106,7 @@ class FreeformEditor extends React.Component {
     }
   };
 
-  onValueChange = event => {
-    this.setState({
-      value: event.target.value,
-    });
-  };
+  onValueChange = event => this.setState({ value: event.target.value });
 
   handleSave = () => {
     const { value: oldValue, onSave, onClose, onDelete } = this.props;

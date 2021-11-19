@@ -97,7 +97,7 @@ This element must be one of the following enum values:
 
 # `predefinedAnnotations` (array)
 
-Indicates the predefined annotations
+Indicates the predefined annotations for the annotation menu
 
 The object is an array with all elements of the type `object`.
 

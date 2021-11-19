@@ -5,6 +5,7 @@ import {
   ModelSetEvent,
   SessionChangedEvent
 } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
 
 const log = debug('@pie-ui:extended-text-entry');
@@ -96,7 +97,10 @@ export default class RootExtendedTextEntry extends HTMLElement {
         onAnnotationsChange: this.annotationsChange.bind(this),
         onCommentChange: this.commentChange.bind(this),
       });
-      ReactDOM.render(elem, this);
+
+      ReactDOM.render(elem, this, () => {
+        renderMath(this);
+      });
     }
   }
 }
