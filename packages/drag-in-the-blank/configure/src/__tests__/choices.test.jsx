@@ -106,13 +106,19 @@ describe('Choices', () => {
         ]);
       });
 
-      it('does not add identical choice', () => {
-        w.instance().onChoiceChanged('<div>12</div>', '<div>9</div>', '2');
+      it('does not add new choice if it is identical to another choice', () => {
+        w.instance().onChoiceChanged('', '<div>9</div>', '2');
 
         expect(onChange).toBeCalledWith([
           { value: '<div>6</div>', id: '0' },
           { value: '<div>9</div>', id: '1' }
         ]);
+      });
+
+      it('does not change choice if it would be identical to another choice', () => {
+        w.instance().onChoiceChanged('<div>6</div>', '<div>9</div>', '0');
+
+        expect(onChange).toHaveBeenCalledTimes(0);
       });
 
       it('does not remove a choice if its new value is empty, but is used in correct response', () => {
