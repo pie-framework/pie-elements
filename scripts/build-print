@@ -1,0 +1,100 @@
+#!/usr/bin/env node
+
+/**
+ * pie print support
+ *
+ * build print enabled modules w/ pslb
+ * then publish them to `args.tag`
+ */
+
+const minimist = require('minimist');
+const path = require('path');
+const { readdirSync, readJson, writeJson } = require('fs-extra');
+const { execSync, exec } = require('child_process');
+const util = require('util');
+const toPkgFlag = (p) => `--package ${p.pkg.name}`;
+
+const args = minimist(process.argv.slice(2));
+
+console.log('args:', args);
+args.build = args.build !== false;
+args.publish = args.publish !== false;
+args.tag = args.tag || 'ps';
+
+const ep = util.promisify(exec);
+
+const getCurrentVersion = async (pkg, tag) => {
+  const r = await ep(`npm view ${pkg.name}@${tag} version`);
+  const existing = r.stdout.trim();
+  return existing || `${pkg.version}-${tag}.0`;
+};
+
+const bumpVersion = (v) => {
+  const arr = v.split('.');
+  const last = arr.pop();
+  const next = Number(last) + 1;
+  return `${arr.join('.')}.${next}`.replace('print', args.tag);
+};
+
+const applyVersion = async (p, version) => {
+  await writeJson(
+    path.join(p.dir, 'package.json'),
+    { ...p.pkg, version },
+    { spaces: 2 }
+  );
+};
+
+const run = async () => {
+  const root = path.resolve(__dirname, '../packages');
+  const allPackages = readdirSync(root);
+  const pkgJson = await Promise.all(
+    allPackages.map(async (n) => {
+      const dir = path.resolve(root, n);
+      return { dir, pkg: await readJson(path.resolve(dir, 'package.json')) };
+    })
+  );
+
+  const printPkgs = pkgJson.filter(
+    (p) => p.pkg.exports && p.pkg.exports['./print']
+  );
+  console.log(
+    'printPkgs',
+    printPkgs.map((p) => p.dir)
+  );
+
+  const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
+    .map(toPkgFlag)
+    .join(' ')} --logLevel silly`;
+
+  if (args.build) {
+    if (args.dryRun) {
+      console.log('build: dryRun - skip');
+    } else {
+      execSync(cmd, { stdio: 'inherit', cwd: path.resolve(__dirname, '..') });
+    }
+  }
+
+  if (args.publish) {
+    for (let p of printPkgs) {
+      const cmd = `npm publish --tag ${args.tag}`;
+      if (args.dryRun) {
+        console.log(cmd, p.dir);
+      } else {
+        const currentVersion = await getCurrentVersion(p.pkg, args.tag);
+        console.log('current version', currentVersion);
+        const nextVersion = bumpVersion(currentVersion);
+        console.log('next version', nextVersion);
+        await applyVersion(p, nextVersion);
+        execSync(`npm publish --tag ${args.tag}`, {
+          cwd: p.dir,
+          stdio: 'inherit',
+        });
+        await applyVersion(p, p.pkg.version);
+      }
+    }
+  }
+};
+
+run()
+  .then((result) => console.log(result))
+  .catch((e) => console.error(e));

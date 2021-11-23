@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.2.2...@pie-element/match-configure@4.4.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **match:** set default false for lock choice order settings PD-1333 ([4f07002](https://github.com/pie-framework/pie-elements/commit/4f07002ceece8b82450cc6fff13515923df370cc))
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **match:** authoring UI should allow up to 10 columns. Change column header fields PD-601 ([6015d9f](https://github.com/pie-framework/pie-elements/commit/6015d9fd8768f7b8462b7c85c2a2ce61df9ab535))
+* **match:** change drag-and-drop behavior from swap to push PD-1336 ([0383630](https://github.com/pie-framework/pie-elements/commit/0383630ba588fed54aa9ff0b9a936f1c8d773eff))
+* **match:** remove insert audio and video buttons from question text PD-601 ([6407962](https://github.com/pie-framework/pie-elements/commit/64079623bbba4803e18d49b33b43f62f9b1082cb))
+* **match:** remove list buttons from question text PD-1335 ([671d0fb](https://github.com/pie-framework/pie-elements/commit/671d0fbbf79e343dc9a89dc6f820309edcccbaaf))
+
+
+
+
+
 # [4.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.2.2...@pie-element/match-configure@4.3.0) (2021-08-05)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/placement-ordering-configure",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "private": true,
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -14,6 +14,7 @@
     "debug": "^3.1.0",
     "lodash": "^4.17.15",
     "nested-property": "^0.0.7",
+    "pluralize": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
     "react-dnd": "^9.3.2",

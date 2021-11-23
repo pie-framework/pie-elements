@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/extended-text-entry",
-  "version": "6.6.0",
+  "version": "6.7.0",
   "description": "",
   "repository": "pie-framework/pie-elements",
   "publishConfig": {
@@ -15,6 +15,7 @@
     "@pie-lib/editable-html": "^7.17.11",
     "@pie-lib/math-rendering": "^2.3.11",
     "@pie-lib/render-ui": "^4.12.2",
+    "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash.throttle": "^4.1.1",
     "prop-types": "^15.6.1",
@@ -26,5 +27,9 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  }
 }

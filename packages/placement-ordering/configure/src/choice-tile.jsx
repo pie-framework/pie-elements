@@ -1,4 +1,4 @@
-import EditableHtml from '@pie-lib/editable-html';
+import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import CardActions from '@material-ui/core/CardActions';
 import DragHandle from '@material-ui/icons/DragHandle';
 
@@ -11,6 +11,7 @@ import React from 'react';
 import RemoveCircle from '@material-ui/icons/RemoveCircle';
 import debug from 'debug';
 import { withStyles } from '@material-ui/core/styles';
+import { InfoDialog } from './choice-editor';
 
 const log = debug('@pie-element:placement-ordering:configure:choice-tile');
 
@@ -33,16 +34,52 @@ export class ChoiceTile extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     choice: PropTypes.object,
+    choices: PropTypes.array.isRequired,
     onChoiceChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     disableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    choicesLabel: PropTypes.string
+  };
+
+  state = {
+    dialog: {
+      open: false
+    }
   };
 
   onLabelChange = label => {
-    const { choice, onChoiceChange } = this.props;
-    choice.label = label;
-    onChoiceChange(choice);
+    const { choice, onChoiceChange, choices, choicesLabel } = this.props;
+    const currentValue = choice.label;
+    const sameValue = choices.filter(choice => {
+      const wasChanged = currentValue !== label && `<div>${currentValue}</div>` !== label;
+      const sameValueEntered = choice.label === label || `<div>${choice.label}</div>` === label;
+
+      return wasChanged && sameValueEntered;
+    });
+
+    const empty = label === '<div></div>';
+
+    if (sameValue.length || empty) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: `Each of the ${choicesLabel} must be non-empty and unique.`,
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              }
+            );
+          }
+        }
+      });
+    } else {
+      choice.label = label;
+      onChoiceChange(choice);
+    }
   };
 
   render() {
@@ -60,6 +97,7 @@ export class ChoiceTile extends React.Component {
       disableImages,
       toolbarOpts
     } = this.props;
+    const { dialog } = this.state;
 
     const dragSourceOpts = {}; //dropEffect: moveOnDrag ? 'move' : 'copy'};
 
@@ -70,6 +108,8 @@ export class ChoiceTile extends React.Component {
       audio: { disabled: true },
       video: { disabled: true }
     };
+    const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
+      .filter(p => p !== 'bulleted-list' && p !== 'numbered-list');
 
     const opacity = isDragging ? 0 : 1;
     const markup = (
@@ -88,6 +128,8 @@ export class ChoiceTile extends React.Component {
           onChange={this.onLabelChange}
           pluginProps={choicePlugins}
           toolbarOpts={toolbarOpts}
+          activePlugins={filteredDefaultPlugins}
+          allowValidation
         />
         {editable && (
           <div className={classes.controls}>
@@ -100,6 +142,11 @@ export class ChoiceTile extends React.Component {
             </IconButton>
           </div>
         )}
+        <InfoDialog
+          title={dialog.message}
+          open={dialog.open}
+          onOk={dialog.onOk}
+        />
       </div>
     );
 

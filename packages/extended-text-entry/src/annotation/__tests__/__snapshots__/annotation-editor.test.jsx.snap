@@ -1,0 +1,450 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`freeform editor snapshots renders 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={false}
+      markup=""
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={Array []}
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;
+
+exports[`freeform editor snapshots renders disabled 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={true}
+      markup=""
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={Array []}
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;
+
+exports[`freeform editor snapshots renders with complex text and nested annotations 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<div>This is <b>a complex </b><em>example</em><br/>This is a new line.</div>",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={false}
+      markup=""
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={Array []}
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;
+
+exports[`freeform editor snapshots renders with predefined annotations 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={false}
+      markup=""
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={
+      Array [
+        Object {
+          "label": "good",
+          "text": "good",
+          "type": "positive",
+        },
+        Object {
+          "label": "★",
+          "text": "★",
+          "type": "positive",
+        },
+        Object {
+          "label": "cut",
+          "text": "cut",
+          "type": "negative",
+        },
+        Object {
+          "label": "sp",
+          "text": "spelling",
+          "type": "negative",
+        },
+      ]
+    }
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;
+
+exports[`freeform editor snapshots renders with text and annotations 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<div>This is an example.</div>",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={false}
+      markup=""
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={Array []}
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;
+
+exports[`freeform editor snapshots renders with text and comment 1`] = `
+<div>
+  <div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<div>This is an example.</div>",
+        }
+      }
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      style={
+        Object {
+          "maxHeight": "40vh",
+          "minHeight": 100,
+          "width": 466,
+        }
+      }
+    />
+    <div />
+  </div>
+  <Component
+    label="Comment"
+  >
+    <EditableHtml
+      disabled={false}
+      markup="<div>Very good</div>"
+      onChange={[MockFunction]}
+      pluginProps={
+        Object {
+          "audio": Object {
+            "disabled": true,
+          },
+          "math": Object {
+            "controlledKeypadMode": false,
+            "customKeys": Array [],
+            "disabled": false,
+            "keypadMode": "miscellaneous",
+          },
+          "video": Object {
+            "disabled": true,
+          },
+        }
+      }
+      width="500"
+    />
+  </Component>
+  <WithStyles(AnnotationMenu)
+    anchorEl={null}
+    annotations={Array []}
+    isNewAnnotation={false}
+    onAnnotate={[Function]}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onEdit={[Function]}
+    onWrite={[Function]}
+    open={false}
+  />
+  <WithStyles(FreeformEditor)
+    offset={0}
+    onClose={[Function]}
+    onDelete={[Function]}
+    onSave={[Function]}
+    onTypeChange={[Function]}
+    open={false}
+    type={null}
+    value=""
+  />
+</div>
+`;

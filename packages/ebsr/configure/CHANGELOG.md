@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.3.2...@pie-element/ebsr-configure@7.0.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
+* **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
+* **ebsr:** Allowed Part A to be multiple select PD-259 ([85530fc](https://github.com/pie-framework/pie-elements/commit/85530fce124ca5b09c024959c0147ac56b027a15))
+
+
+### BREAKING CHANGES
+
+* **ebsr:** removed vertical mode.
+
+
+
+
+
 # [6.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr-configure@6.3.2...@pie-element/ebsr-configure@6.4.0) (2021-08-05)
 
 

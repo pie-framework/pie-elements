@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
+import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
@@ -16,7 +17,7 @@ const log = debug('pie-element:multiple-choice:print');
  */
 
 const preparePrintModel = (model, opts) => {
-  const instr = opts.mode === 'instructor';
+  const instr = opts.role === 'instructor';
 
   model.teacherInstructions = instr ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
@@ -25,9 +26,13 @@ const preparePrintModel = (model, opts) => {
 
   model.disabled = true;
   model.animationsDisabled = true;
-  model.choices = model.choices.map((c) => {
+
+  const choices = cloneDeep(model.choices);
+
+  model.choices = choices.map((c) => {
     c.rationale = instr ? c.rationale : undefined;
     c.hideTick = instr;
+    c.feedback = undefined;
     return c;
   });
   return model;

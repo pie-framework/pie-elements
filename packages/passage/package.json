@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/passage",
-  "version": "1.6.4",
+  "version": "1.7.0",
   "publishConfig": {
     "access": "public"
   },
@@ -12,6 +12,7 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/render-ui": "^4.12.2",
+    "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
@@ -21,5 +22,9 @@
     "postpublish": "../../scripts/postpublish"
   },
   "main": "lib/index.js",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  }
 }

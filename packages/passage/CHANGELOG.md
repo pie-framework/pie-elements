@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.3...@pie-element/passage@1.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+### Features
+
+* **passage:** implement print PD-1282 ([7fa16d3](https://github.com/pie-framework/pie-elements/commit/7fa16d35568419109c8394a091a88d5d3b418564))
+
+
+
+
+
 ## [1.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.3...@pie-element/passage@1.6.4) (2021-08-05)
 
 **Note:** Version bump only for package @pie-element/passage
