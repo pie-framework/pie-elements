@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
-import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
-import {InputContainer, layout, settings} from '@pie-lib/config-ui';
-import {withStyles} from '@material-ui/core/styles';
+import EditableHtml, { ALL_PLUGINS } from '@pie-lib/editable-html';
+import { InputContainer, layout, settings } from '@pie-lib/config-ui';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
+import { getAdjustedLength } from './markupUtils';
 
 const { toggle, Panel } = settings;
 
@@ -78,18 +79,21 @@ export class Main extends React.Component {
 
   componentDidMount() {
     const {
-      model: { slateMarkup, choices, maxLengthPerChoice = [] }, onModelChanged
+      model: { slateMarkup, choices, maxLengthPerChoice = []},
+      onModelChanged
     } = this.props;
+    const undefinedLengths = !maxLengthPerChoice.length;
 
-    this.setState({
-      markup: slateMarkup
-    });
+    this.setState({ markup: slateMarkup });
 
-    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+    // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
       const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const length = getAdjustedLength(Math.max(...labelLengthsArr));
 
-      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
+      if (undefinedLengths || !maxLengthPerChoice[index] || maxLengthPerChoice[index] < length) {
+        maxLengthPerChoice[index] = length;
+      }
     });
 
     onModelChanged({

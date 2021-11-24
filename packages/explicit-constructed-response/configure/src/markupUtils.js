@@ -40,3 +40,20 @@ export const createSlateMarkup = (markup, choices) => {
     return `<span data-type="explicit_constructed_response" data-index="${g}" data-value="${escape(label)}"></span>`;
   });
 };
+
+// also used in controller/src/index.js
+export const getAdjustedLength = length => {
+  if (length <= 2) {
+    return length + 2;
+  }
+
+  if (length <= 4) {
+    return length + 3;
+  }
+
+  if (length <= 6) {
+    return length + 4;
+  }
+
+  return length + 5;
+};

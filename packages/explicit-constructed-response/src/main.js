@@ -84,6 +84,7 @@ export class Main extends React.Component {
       env,
       animationsDisabled,
       alwaysShowCorrect,
+      maxLengthPerChoiceEnabled,
       maxLengthPerChoice
     } = this.props;
     const { role } = env || {};
@@ -123,6 +124,7 @@ export class Main extends React.Component {
           showCorrectAnswer={showCorrectAnswer}
           value={value}
           maxLength={maxLengthPerChoice}
+          adjustedLimit={maxLengthPerChoiceEnabled}
         />
         {displayNote && (
           <div

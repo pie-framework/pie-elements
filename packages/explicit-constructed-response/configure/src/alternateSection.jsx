@@ -9,7 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import { getAdjustedLength } from './markupUtils';
 import max from 'lodash/max';
 
 const styles = () => ({
@@ -168,9 +169,9 @@ export class AlternateSection extends React.Component {
   onChoiceChanged = (choice, value) => {
     const { choiceChanged, lengthChanged, maxLength } = this.props;
     const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
-    const newLength = value.length;
+    const newLength = getAdjustedLength(value.length);
 
-    if (newLength > newMaxLength) {
+    if (newLength > newMaxLength || newLength + 10 < newMaxLength) {
       lengthChanged(newLength);
     }
 
@@ -194,7 +195,8 @@ export class AlternateSection extends React.Component {
     }
 
     const labelLengthsArr = choices.map(choice => (choice.label || '').length);
-    return Math.max(...labelLengthsArr);
+
+    return getAdjustedLength(Math.max(...labelLengthsArr));
   };
 
   changeLength = event => {
