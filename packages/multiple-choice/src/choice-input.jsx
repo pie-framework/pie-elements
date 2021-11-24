@@ -15,6 +15,41 @@ const styleSheet = () => ({
     alignItems: 'center',
     backgroundColor: color.background(),
   },
+  promptTest: {
+    '& mjx-mtr': {
+      position: 'relative',
+    },
+    '& mjx-mstyle': {
+      position: 'relative',
+    },
+    '& mjx-mstyle:after': {
+      width: '100%',
+      position: 'absolute',
+      top: '50%',
+      background: 'darkslateblue',
+      height: '2px',
+      left: '0',
+      content: '" "',
+    },
+    '& mjx-mtr:after': {
+      width: '100%',
+      position: 'absolute',
+      top: '50%',
+      background: 'darkslateblue',
+      height: '2px',
+      left: '0',
+      content: '" "',
+    },
+    // '& mjx-mtd::after': {
+    //   content: '""',
+    //   borderTop: '1px solid #c9302c',
+    //   borderBottom: '1px solid #c9302c',
+    //   position: 'absolute',
+    //   left: 0,
+    //   top: '50%',
+    //   width: '100%',
+    // },
+  },
   checkboxHolder: {
     display: 'flex',
     alignItems: 'center',
@@ -68,6 +103,14 @@ const inputStyles = {
     cursor: 'not-allowed !important',
     pointerEvents: 'initial !important',
   },
+  choiceTag: {
+    '&:before': {
+      content: '"——"',
+      position: 'absolute',
+      letterSpacing: '-3px',
+      left: '0.3em',
+    },
+  },
 };
 
 export const StyledCheckbox = withStyles(inputStyles)((props) => {
@@ -78,6 +121,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
     onChange,
     disabled,
     accessibility,
+    strikethrough,
   } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
@@ -92,7 +136,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
     <Checkbox
       aria-label={accessibility}
       {...miniProps}
-      className={CLASS_NAME}
+      className={classNames(CLASS_NAME, strikethrough && classes.choiceTag)}
       classes={{
         root: resolved.root,
         checked: resolved.checked,
@@ -103,14 +147,8 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const {
-    correctness,
-    classes,
-    checked,
-    onChange,
-    disabled,
-    accessibility,
-  } = props;
+  const { correctness, classes, checked, onChange, disabled, accessibility } =
+    props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -187,16 +225,27 @@ export class ChoiceInput extends React.Component {
       accessibility,
       hideTick,
       isEvaluateMode,
+      strikethrough,
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
     return (
-      <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
+      <div
+        className={classNames(
+          className,
+          'corespring-' + classSuffix,
+          'choice-input'
+        )}
+      >
         <div className={classes.row}>
-          {(!hideTick && isEvaluateMode) && <FeedbackTick correctness={correctness} />}
-          <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
+          {!hideTick && isEvaluateMode && (
+            <FeedbackTick correctness={correctness} />
+          )}
+          <div
+            className={classNames(classes.checkboxHolder, 'checkbox-holder')}
+          >
             <StyledFormControlLabel
               disabled={disabled}
               label={displayKey ? displayKey + '. ' : ''}
@@ -205,20 +254,28 @@ export class ChoiceInput extends React.Component {
                   accessibility={accessibility}
                   checked={checked}
                   correctness={correctness}
+                  strikethrough={strikethrough}
+                  className={classNames(classes.choiceTag)}
                   onChange={this.onToggleChoice}
                 />
               }
             />
-            <PreviewPrompt
-              className="label"
-              onClick={this.onToggleChoice}
-              prompt={label}
-              tagName="span"
-            />
+            <div className={classNames(classes.promptTest)}>
+              <PreviewPrompt
+                className={classNames('label', classes.promptTest)}
+                onClick={this.onToggleChoice}
+                prompt={label}
+                tagName="span"
+              />
+            </div>
           </div>
         </div>
         {rationale && (
-          <PreviewPrompt className="rationale" defaultClassName="rationale" prompt={rationale} />
+          <PreviewPrompt
+            className="rationale"
+            defaultClassName="rationale"
+            prompt={rationale}
+          />
         )}
         <Feedback feedback={feedback} correctness={correctness} />
       </div>

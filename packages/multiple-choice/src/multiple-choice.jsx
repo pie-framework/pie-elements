@@ -85,6 +85,15 @@ export class MultipleChoice extends React.Component {
     );
   }
 
+  isStrikethrough(value) {
+    if (!this.props.tools.strikethrough.enabled) {
+      return false;
+    }
+
+    const arr = this.props.session && this.props.session.strikethrough;
+    return Array.isArray(arr) && arr.includes(value);
+  }
+
   indexToSymbol(index) {
     if (this.props.keyMode === 'numbers') {
       return `${index + 1}`;
@@ -136,17 +145,19 @@ export class MultipleChoice extends React.Component {
       teacherInstructions,
       classes,
       alwaysShowCorrect,
-      animationsDisabled
+      animationsDisabled,
+      tools,
     } = this.props;
     const { showCorrect } = this.state;
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
+    console.log('context:', this.props.tools);
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (
           <React.Fragment>
-            {!animationsDisabled ?
+            {!animationsDisabled ? (
               <Collapsible
                 labels={{
                   hidden: 'Show Teacher Instructions',
@@ -158,13 +169,15 @@ export class MultipleChoice extends React.Component {
                   className="prompt"
                   prompt={teacherInstructions}
                 />
-              </Collapsible> :
+              </Collapsible>
+            ) : (
               <PreviewPrompt
                 tagName="div"
                 className="prompt"
                 defaultClassName="teacher-instructions"
                 prompt={teacherInstructions}
-              />}
+              />
+            )}
             <br />
           </React.Fragment>
         )}
@@ -176,7 +189,11 @@ export class MultipleChoice extends React.Component {
           />
         )}
         {showCorrectAnswerToggle && <br />}
-        <PreviewPrompt className="prompt" defaultClassName="prompt" prompt={prompt} />
+        <PreviewPrompt
+          className="prompt"
+          defaultClassName="prompt"
+          prompt={prompt}
+        />
         <div
           className={classNames(
             { [classes.gridLayout]: this.props.choicesLayout === 'grid' },
@@ -201,6 +218,7 @@ export class MultipleChoice extends React.Component {
               disabled={disabled}
               onChoiceChanged={onChoiceChanged}
               hideTick={choice.hideTick}
+              strikethrough={this.isStrikethrough(choice.value)}
               checked={
                 showCorrect
                   ? choice.correct || false

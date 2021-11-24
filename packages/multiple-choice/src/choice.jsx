@@ -28,6 +28,7 @@ export class Choice extends React.Component {
       classes,
       choicesLayout,
       gridColumns,
+      strikethrough,
     } = this.props;
     const choiceClass = 'choice' + (index === choicesLength - 1 ? ' last' : '');
 
@@ -45,6 +46,7 @@ export class Choice extends React.Component {
       gridColumns,
       onChange: this.onChange,
       isEvaluateMode,
+      strikethrough,
     };
 
     const names = classNames(classes.choice, {
@@ -75,6 +77,7 @@ Choice.propTypes = {
   displayKey: PropTypes.string,
   choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   gridColumns: PropTypes.string,
+  strikethrough: PropTypes.bool,
 };
 
 export default withStyles({

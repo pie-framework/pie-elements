@@ -26,25 +26,25 @@ processFix(log, () => {
 log('pkg: ', argv._[0]);
 const pkg = argv._[0];
 
-const getWatchesForPie = async p => {
+const getWatchesForPie = async (p) => {
   const out = [];
   if (await fs.exists(`packages/${p}/src`)) {
     out.push({
       src: `packages/${p}/src`,
-      target: `packages/${p}/lib`
+      target: `packages/${p}/lib`,
     });
   }
 
   if (await fs.exists(`packages/${p}/configure/src`)) {
     out.push({
       src: `packages/${p}/configure/src`,
-      target: `packages/${p}/configure/lib`
+      target: `packages/${p}/configure/lib`,
     });
   }
   if (await fs.exists(`packages/${p}/controller/src`)) {
     out.push({
       src: `packages/${p}/controller/src`,
-      target: `packages/${p}/controller/lib`
+      target: `packages/${p}/controller/lib`,
     });
   }
 
@@ -54,7 +54,11 @@ const getWatchesForPie = async p => {
 const run = async () => {
   const watches = await getWatchesForPie(pkg);
   processes = watch(watches);
-  info = spawn('pie', ['info'], { cwd: `packages/${pkg}`, stdio: 'inherit' });
+  //info = spawn('pie', ['info'], { cwd: `packages/${pkg}`, stdio: 'inherit' });
+  info = spawn('../../node_modules/pie/bin/pie', ['info'], {
+    cwd: `packages/${pkg}`,
+    stdio: 'inherit',
+  });
 };
 
 run();
