@@ -179,7 +179,7 @@ export class Main extends React.Component {
     const { config: nextConfig = {} } = nextProps.model || {};
 
     if (config.env && config.env.mode !== 'evaluate') {
-      this.setState({...this.state.session, showCorrect: false})
+      this.setState({...this.state.session, showCorrect: false});
     }
 
     if (
