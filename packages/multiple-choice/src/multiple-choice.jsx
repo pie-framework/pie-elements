@@ -152,7 +152,7 @@ export class MultipleChoice extends React.Component {
     const isEvaluateMode = mode === 'evaluate';
     const showCorrectAnswerToggle = isEvaluateMode && !responseCorrect;
 
-    console.log('context:', this.props.tools);
+    // console.log('context:', this.props.tools);
     return (
       <div className={classNames(classes.corespringChoice, 'multiple-choice')}>
         {teacherInstructions && (

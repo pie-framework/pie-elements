@@ -108,7 +108,11 @@ export default class MultipleChoice extends HTMLElement {
   }
 
   _onChange(data) {
-    if (this._strikethroughEnabled) {
+    if (
+      this._strikethrough &&
+      this._strikethrough.enabled &&
+      this._strikethrough.on
+    ) {
       this._session.strikethrough = this._session.strikethrough || [];
       const i = this._session.strikethrough.indexOf(data.value);
       if (i >= 0) {

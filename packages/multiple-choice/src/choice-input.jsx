@@ -15,9 +15,22 @@ const styleSheet = () => ({
     alignItems: 'center',
     backgroundColor: color.background(),
   },
-  promptTest: {
+  promptStrikethrough: {
+    '& > *': {
+      textDecoration: 'line-through',
+    },
+    textDecoration: 'line-through',
     '& mjx-mtr': {
       position: 'relative',
+    },
+    '& mjx-mtr:after': {
+      width: '100%',
+      position: 'absolute',
+      top: '50%',
+      background: color.text(),
+      height: '1px',
+      left: '0',
+      content: '" "',
     },
     '& mjx-mstyle': {
       position: 'relative',
@@ -26,29 +39,11 @@ const styleSheet = () => ({
       width: '100%',
       position: 'absolute',
       top: '50%',
-      background: 'darkslateblue',
-      height: '2px',
+      background: color.text(),
+      height: '1px',
       left: '0',
       content: '" "',
     },
-    '& mjx-mtr:after': {
-      width: '100%',
-      position: 'absolute',
-      top: '50%',
-      background: 'darkslateblue',
-      height: '2px',
-      left: '0',
-      content: '" "',
-    },
-    // '& mjx-mtd::after': {
-    //   content: '""',
-    //   borderTop: '1px solid #c9302c',
-    //   borderBottom: '1px solid #c9302c',
-    //   position: 'absolute',
-    //   left: 0,
-    //   top: '50%',
-    //   width: '100%',
-    // },
   },
   checkboxHolder: {
     display: 'flex',
@@ -260,9 +255,13 @@ export class ChoiceInput extends React.Component {
                 />
               }
             />
-            <div className={classNames(classes.promptTest)}>
+            <div
+              className={classNames(
+                strikethrough && classes.promptStrikethrough
+              )}
+            >
               <PreviewPrompt
-                className={classNames('label', classes.promptTest)}
+                className={classNames('label')}
                 onClick={this.onToggleChoice}
                 prompt={label}
                 tagName="span"
