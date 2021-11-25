@@ -158,9 +158,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
       />
       <WithStyles(Typography)>
-        Define Alternates
+        Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        maxLengthPerChoiceEnabled={true}
         model={
           Object {
             "choices": Object {
@@ -368,9 +369,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         }
       />
       <WithStyles(Typography)>
-        Define Alternates
+        Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        maxLengthPerChoiceEnabled={true}
         model={
           Object {
             "choices": Object {

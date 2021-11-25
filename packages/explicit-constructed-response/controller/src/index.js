@@ -73,7 +73,7 @@ export function model(question, session, env) {
     // like: { label: 'test' }
     if (question.choices) {
       Object.keys(question.choices).forEach(key => {
-        question.choices[key] = question.choices[key].map((item, index) => {
+        question.choices[key] = (question.choices[key] || []).map((item, index) => {
           if (!item.value) {
             log('Choice does not contain "value" property, which is required.', item);
             return { value: `${index}`, ...item };

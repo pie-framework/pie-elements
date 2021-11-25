@@ -230,6 +230,7 @@ export class AlternateSection extends React.Component {
             displayEmpty
             onChange={this.handleSelect}
             value={value || ''}
+            readOnly={showMaxLength}
           >
             <MenuItem value="">
               <em>

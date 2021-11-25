@@ -11,7 +11,8 @@ export class AlternateResponses extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    onLengthChange: PropTypes.func.isRequired
+    onLengthChange: PropTypes.func.isRequired,
+    maxLengthPerChoiceEnabled: PropTypes.bool.isRequired
   };
 
   state = { maxLengthPerChoice: cloneDeep(this.props.model.maxLengthPerChoice) };
@@ -25,26 +26,17 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
-    const { maxLengthPerChoice } = props.model;
-    const { maxLengthPerChoice: maxLengthPerChoiceState } = this.state;
-    const lengthChanged = maxLengthPerChoiceState.length && !isEqual(maxLengthPerChoice, maxLengthPerChoiceState);
-
-    if (lengthChanged) {
-      this.setState({
-        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
-      });
-
-      return;
-    }
-
     if (!this.state.choices
       || !isEqual(this.state.choices, props.model.choices)
       || !isEqual(props.model.choices, this.props.model.choices)
+      || (this.state.values && Object.keys(this.state.values).length !== Object.keys(this.props.model.choices).length)
+      || props.maxLengthPerChoiceEnabled !== this.props.maxLengthPerChoiceEnabled
     ) {
-      const { choices } = props.model;
+      const { choices, maxLengthPerChoice } = props.model;
 
       const selectedValues = reduce(choices, (obj, c, key) => {
-        if (c && c.length > 1) {
+        // if maxLengthPerChoiceEnabled is true, we display all the choices
+        if (c && (props.maxLengthPerChoiceEnabled || c.length > 1)) {
           obj[key] = c[0];
         }
 
@@ -53,7 +45,8 @@ export class AlternateResponses extends React.Component {
 
       this.setState({
         choices: props.model.choices,
-        values: selectedValues
+        values: selectedValues,
+        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
       });
     }
   };
@@ -165,7 +158,8 @@ export class AlternateResponses extends React.Component {
     return (
       <div>
         {map(choices, (c, key) => {
-          if (c && c.length > 1) {
+          // if maxLengthPerChoiceEnabled is true, we display all the choices
+          if (c && (maxLengthPerChoiceEnabled || c.length > 1)) {
             const selected = this.state.values[key];
 
             return (
