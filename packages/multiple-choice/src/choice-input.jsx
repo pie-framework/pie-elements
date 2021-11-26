@@ -32,10 +32,10 @@ const styleSheet = () => ({
       left: '0',
       content: '" "',
     },
-    '& mjx-mstyle': {
+    '& mjx-math': {
       position: 'relative',
     },
-    '& mjx-mstyle:after': {
+    '& mjx-math:after': {
       width: '100%',
       position: 'absolute',
       top: '50%',
@@ -142,8 +142,15 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
 });
 
 export const StyledRadio = withStyles(inputStyles)((props) => {
-  const { correctness, classes, checked, onChange, disabled, accessibility } =
-    props;
+  const {
+    correctness,
+    classes,
+    checked,
+    onChange,
+    disabled,
+    accessibility,
+    strikethrough
+  } = props;
   const key = (k) => (correctness ? `${correctness}-${k}` : k);
 
   const resolved = {
@@ -158,7 +165,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
     <Radio
       aria-label={accessibility}
       {...miniProps}
-      className={CLASS_NAME}
+      className={classNames(CLASS_NAME, strikethrough && classes.choiceTag)}
       classes={{
         root: resolved.root,
         checked: resolved.checked,
