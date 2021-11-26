@@ -171,14 +171,14 @@ export class AlternateSection extends React.Component {
     const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
     const newLength = getAdjustedLength(value.length);
 
-    if (newLength > newMaxLength || newLength + 10 < newMaxLength) {
-      lengthChanged(newLength);
-    }
-
     choiceChanged({
       ...choice,
       label: value
     });
+
+    if (newLength > newMaxLength || newLength + 10 < newMaxLength) {
+      lengthChanged(newLength);
+    }
   };
 
   onRemoveChoice = choice => {
