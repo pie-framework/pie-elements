@@ -31,6 +31,9 @@ export interface ExplicitConstructedResponsePie extends PieModel {
      */
     choices: Choices;
 
+    /** The type of display the container of the pie-ui element will be used */
+    displayType: string;
+
     /** The markup for the pie-ui element */
     markup: string;
 

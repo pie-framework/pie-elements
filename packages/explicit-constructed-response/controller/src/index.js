@@ -127,6 +127,7 @@ export function model(question, session, env) {
       note: normalizedQuestion.note,
       showNote,
       maxLengthPerChoice,
+      displayType: normalizedQuestion.displayType,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };
