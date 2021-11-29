@@ -73,10 +73,18 @@ export const flattenCorrect = question =>
  * Returns all correct responses for this question
  * @param question - array
  */
-export const getAllCorrectResponses = question => [
-  flattenCorrect(question),
-  ...(question.alternateResponses || [])
-];
+export const getAllCorrectResponses = question => {
+  const alternates = (question.alternateResponses || []).map(alternate => {
+    if (Array.isArray(alternate)) {
+
+      return alternate;
+    }
+
+    return alternate.response;
+  });
+
+  return [ flattenCorrect(question), ...alternates ];
+};
 
 /**
  * Returns the score for a session. If weighted scoring is present in the correctResponse
