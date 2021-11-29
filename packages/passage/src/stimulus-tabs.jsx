@@ -72,7 +72,24 @@ class StimulusTabs extends React.Component {
     });
   };
 
-  parsedText = (text) => text.replace(/(<br\/>\n)/g, '<br/>');
+  parsedText = text => {
+    // fix imported audio content for Safari PD-1391
+    const div = document.createElement('div');
+    div.innerHTML = text.replace(/(<br\/>\n)/g, '<br/>');
+
+    const audio = div.querySelector('audio');
+    if (audio) {
+      const source = document.createElement('source');
+
+      source.setAttribute('type', 'audio/mp3');
+      source.setAttribute('src', audio.getAttribute('src'));
+
+      audio.removeAttribute('src');
+      audio.appendChild(source);
+    }
+
+    return div.innerHTML;
+  };
 
   render() {
     const { classes, tabs, disabledTabs } = this.props;

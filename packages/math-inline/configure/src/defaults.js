@@ -24,7 +24,7 @@ export default {
         type: 'none',
       },
     },
-    equationEditor: '3',
+    equationEditor: '8',
     expression: '',
     rationale: 'Rationale goes here.',
     note:
