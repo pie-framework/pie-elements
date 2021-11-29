@@ -9,14 +9,9 @@ describe('Render Main Component', () => {
     let wrapper = shallow(
       <Main
         model={model}
-        session={{
-          value: 'hi',
-          annotations: [],
-          comment: 'hello'
+        session={{ value: 'hi' }}
+        onChange={() => {
         }}
-        onValueChange={() => {}}
-        onAnnotationsChange={() => {}}
-        onCommentChange={() => {}}
         classes={{}}
       />
     );
@@ -27,14 +22,9 @@ describe('Render Main Component', () => {
     let wrapper = shallow(
       <Main
         model={{ ...model, teacherInstructions: 'Teacher Instructions' }}
-        session={{
-          value: 'hi',
-          annotations: [],
-          comment: 'hello'
+        session={{ value: 'hi' }}
+        onChange={() => {
         }}
-        onValueChange={() => {}}
-        onAnnotationsChange={() => {}}
-        onCommentChange={() => {}}
         classes={{}}
       />
     );
