@@ -14,9 +14,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 
 window.renMath = renderMath;
 
-const InfoDialog = ({ open, onOk }) => (
+const InfoDialog = ({ open, title, onOk }) => (
   <Dialog open={open}>
-    <DialogTitle>Identical answer choices are not allowed and will be discarded</DialogTitle>
+    <DialogTitle>{title || ''}</DialogTitle>
     <DialogActions>
       {onOk && (
         <Button onClick={onOk} color="primary">
@@ -30,6 +30,7 @@ const InfoDialog = ({ open, onOk }) => (
 InfoDialog.propTypes = {
   open: PropTypes.bool,
   onOk: PropTypes.func,
+  title: PropTypes.string
 };
 
 const styles = theme => ({
@@ -79,7 +80,8 @@ export class Choices extends React.Component {
     const { choices, correctResponse, alternateResponses } = model;
     const exists = (choices || []).filter(c => c.value === val);
 
-    if(exists.length) {
+    // discard the new added choice if it is a duplicate
+    if (prevValue === '' && exists.length) {
       const newChoices = (choices || []).filter(c => c.id !== key);
 
       onChange(newChoices);
@@ -87,6 +89,29 @@ export class Choices extends React.Component {
       this.setState({
         dialog: {
           open: true,
+          message:
+            'Identical answer choices are not allowed and will be discarded',
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              }
+            );
+          }
+        }
+      });
+
+      return;
+    }
+
+    // discard the change if the choice would be a duplicate to one that already exists
+    if(exists.length) {
+      this.setState({
+        dialog: {
+          open: true,
+          message: 'Identical answer choices are not allowed and the changes will be discarded',
           onOk: () => {
             this.setState(
               {
@@ -208,6 +233,7 @@ export class Choices extends React.Component {
       <div className={classes.design}>
         <InfoDialog
           open={dialog.open}
+          title={dialog.message}
           onOk={dialog.onOk}
         />
         <Button

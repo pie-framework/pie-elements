@@ -153,7 +153,6 @@ export class Main extends React.Component {
           {showCorrectAnswerToggle && <br />}
           <AnswerGrid
             showCorrect={showCorrect}
-            allowFeedback={model.allowFeedback}
             correctAnswers={model.correctResponse}
             disabled={model.disabled}
             view={model.view}

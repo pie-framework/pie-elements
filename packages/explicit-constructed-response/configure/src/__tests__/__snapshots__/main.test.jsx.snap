@@ -81,6 +81,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               ],
             },
             "disabled": false,
+            "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
               6,
@@ -200,6 +201,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               ],
             },
             "disabled": false,
+            "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
               6,
@@ -320,6 +322,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               ],
             },
             "disabled": false,
+            "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
               6,
@@ -410,6 +413,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               ],
             },
             "disabled": false,
+            "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
               6,

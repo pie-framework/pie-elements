@@ -49,7 +49,7 @@ export class Choices extends React.Component {
     return (
       <div className={classes.wrapper}>
         {model.choicesLabel && model.choicesLabel !== '' && (
-          <div className={classes.labelHolder}>{model.choicesLabel}</div>
+          <div className={classes.labelHolder} dangerouslySetInnerHTML={{__html: model.choicesLabel}}></div>
         )}
         <div className={classes.choices} style={style}>
           {choices.map((c, index) => {
