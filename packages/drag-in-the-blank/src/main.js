@@ -72,9 +72,15 @@ export class Main extends React.Component {
             <br />
           </React.Fragment>
         )}
+        <DraggableDragInTheBlank
+          {...modelWithValue}
+          onChange={onChange}
+          showCorrectAnswer={showCorrectAnswer}
+        />
         {
           model.rationale && hasText(model.rationale) && (
             <React.Fragment>
+              <br />
               <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
                 <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
               </Collapsible>
@@ -82,11 +88,6 @@ export class Main extends React.Component {
             </React.Fragment>
           )
         }
-        <DraggableDragInTheBlank
-          {...modelWithValue}
-          onChange={onChange}
-          showCorrectAnswer={showCorrectAnswer}
-        />
       </div>
     );
   }
