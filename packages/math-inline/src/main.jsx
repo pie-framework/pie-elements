@@ -384,6 +384,7 @@ export class Main extends React.Component {
     const additionalKeys = generateAdditionalKeys(customKeys);
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
+    const viewMode =  disabled && !correctness;
 
     const midContent = (
       <div className={classes.main}>
@@ -457,6 +458,27 @@ export class Main extends React.Component {
             )}
           </div>
         </Readable>
+        {
+          viewMode && teacherInstructions && hasText(teacherInstructions) && (
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              >
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
+          )
+        }
+        {
+          viewMode && rationale && hasText(rationale) && (
+            <Collapsible
+              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+            </Collapsible>
+          )
+        }
         {displayNote && (
           <div
             className={classes.note}
