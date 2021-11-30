@@ -54,6 +54,7 @@ export default class InlineDropdown extends HTMLElement {
         maxLengthPerChoiceEnabled: this._model.maxLengthPerChoiceEnabled,
         value: this._session.value,
         feedback: this._model.feedback,
+        displayType: this._model.displayType,
         onChange: this.changeSession
       });
       ReactDOM.render(elem, this, () => {

@@ -84,12 +84,15 @@ export class Main extends React.Component {
       env,
       animationsDisabled,
       alwaysShowCorrect,
+      maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
-      maxLengthPerChoice
+      displayType
     } = this.props;
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
-    const mainClasses = classNames([classes.mainContainer, alwaysShowCorrect ? classes.noBorderColor : {}]);
+    const mainClasses = classNames([classes.mainContainer, {
+      [classes.noBorderColor]: alwaysShowCorrect
+    }]);
 
     const teacherInstructionsDiv = <div
       className="teacher-instructions"
@@ -99,7 +102,7 @@ export class Main extends React.Component {
     const rationaleDiv = <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>;
 
     return (
-      <div className={mainClasses}>
+      <div className={mainClasses} style={{ display: `${displayType}` }}>
         {
           teacherInstructions && hasText(teacherInstructions) && (
             <div className={classes.collapsible}>
@@ -153,11 +156,17 @@ const styles = theme => ({
     color: color.text(),
     backgroundColor: color.background()
   },
+  inlineDisplay: {
+    display: 'inline-block'
+  },
+  blockDisplay: {
+    display: 'block'
+  },
   note: {
-    padding: '5px 0',
+    padding: '5px 0'
   },
   collapsible: {
-    margin: `${theme.spacing.unit * 2}px 0`,
+    margin: `${theme.spacing.unit * 2}px 0`
   },
   noBorderColor: {
     '& *': {

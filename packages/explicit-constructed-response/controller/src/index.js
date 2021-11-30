@@ -149,6 +149,7 @@ export function model(question, session, env) {
       showNote,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
+      displayType: normalizedQuestion.displayType,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };
