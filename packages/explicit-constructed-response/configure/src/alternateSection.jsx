@@ -166,17 +166,20 @@ export class AlternateSection extends React.Component {
     }
   };
 
-  onChoiceChanged = (choice, value) => {
-    const { choiceChanged, lengthChanged, maxLength } = this.props;
-    const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
-    const newLength = getAdjustedLength(value.length);
+  onChoiceChanged = (choice, value, index) => {
+    const { choiceChanged, lengthChanged, maxLength, choices } = this.props;
+
+    const labelLengthsArr = choices.map(choice => (choice.label || '').length);
+    labelLengthsArr[index] = value.length;
+
+    const newLength = getAdjustedLength(Math.max(...labelLengthsArr));
 
     choiceChanged({
       ...choice,
       label: value
     });
 
-    if (newLength > newMaxLength || newLength + 10 < newMaxLength) {
+    if (newLength > maxLength || newLength + 10 < maxLength) {
       lengthChanged(newLength);
     }
   };
@@ -188,7 +191,7 @@ export class AlternateSection extends React.Component {
   };
 
   getChoicesMaxLength = () => {
-    const { choices } = this.props;
+    const { choices } = this.state;
 
     if (!choices) {
       return 1;
@@ -276,7 +279,7 @@ export class AlternateSection extends React.Component {
                 key={index}
                 classes={classes}
                 markup={c.label}
-                onChange={val => this.onChoiceChanged(c, val)}
+                onChange={val => this.onChoiceChanged(c, val, index)}
                 onDelete={() => this.onRemoveChoice(c)}
               />
             ))
