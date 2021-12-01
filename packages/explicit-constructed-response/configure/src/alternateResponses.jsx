@@ -26,18 +26,6 @@ export class AlternateResponses extends React.Component {
   }
 
   updateChoicesIfNeeded = props => {
-    const { maxLengthPerChoice } = props.model;
-    const { maxLengthPerChoice: maxLengthPerChoiceState } = this.state;
-    const lengthChanged = maxLengthPerChoiceState.length && !isEqual(maxLengthPerChoice, maxLengthPerChoiceState);
-
-    if (lengthChanged) {
-      this.setState({
-        maxLengthPerChoice: cloneDeep(maxLengthPerChoice)
-      });
-
-      return;
-    }
-
     if (!this.state.choices
       || !isEqual(this.state.choices, props.model.choices)
       || !isEqual(props.model.choices, this.props.model.choices)

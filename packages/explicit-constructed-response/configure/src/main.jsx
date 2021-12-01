@@ -100,18 +100,6 @@ export class Main extends React.Component {
       ...this.props.model,
       maxLengthPerChoice
     });
-
-    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
-    Object.values(choices).forEach((choice, index) => {
-      const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-
-      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
-    });
-
-    onModelChanged({
-      ...this.props.model,
-      maxLengthPerChoice
-    });
   }
 
   onModelChange = newVal => {
