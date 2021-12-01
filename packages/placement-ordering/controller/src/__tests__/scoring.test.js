@@ -113,7 +113,7 @@ describe('pairwiseCombinationScore', () => {
 });
 
 const correctResponse = ['c1', 'c2', 'c3', 'c4'];
-const alternateResponses = [['c4', 'c3', 'c2', 'c1']];
+const alternateResponses = [{ response: ['c4', 'c3', 'c2', 'c1'] }];
 
 describe('score', () => {
   let baseQuestion = {

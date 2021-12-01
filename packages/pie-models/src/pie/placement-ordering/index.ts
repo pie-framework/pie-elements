@@ -36,7 +36,7 @@ export interface CorrectResponse {
 
 export interface AlternateResponse {
     /** Array that contains the alternate response ids */
-    alternateResponse: string[];
+    response: string[];
 }
 
 /** NOTE: teacherInstructions, studentInstructions & scoringType
