@@ -27,7 +27,11 @@ export const normalize = question => ({
 
 export async function model(question, session, env) {
   log('[question]', question);
+  console.log('session', session);
+  console.log('question', question);
+  console.log('env', env);
   const normalizedQuestion = normalize(question);
+  console.log('normalizedQuestion', normalizedQuestion);
 
   const fb =
     env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
@@ -60,15 +64,22 @@ export async function model(question, session, env) {
       break;
   }
 
+  const annotatorMode = env.role === 'instructor' || env.mode === 'evaluate';
+  const disabledAnnotator = env.role !== 'instructor';
+
   return fb.then(feedback => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
     customKeys: normalizedQuestion.customKeys || [],
+    id: normalizedQuestion.id,
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
     mathInput: normalizedQuestion.mathInput,
-    equationEditor
+    equationEditor,
+    annotatorMode,
+    disabledAnnotator,
+    predefinedAnnotations: normalizedQuestion.predefinedAnnotations
   }));
 }
 
