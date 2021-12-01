@@ -9,7 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import { getAdjustedLength } from './markupUtils';
 import max from 'lodash/max';
 
 const styles = () => ({
@@ -165,19 +166,22 @@ export class AlternateSection extends React.Component {
     }
   };
 
-  onChoiceChanged = (choice, value) => {
-    const { choiceChanged, lengthChanged, maxLength } = this.props;
-    const newMaxLength = Math.max(this.getChoicesMaxLength(), maxLength);
-    const newLength = value.length;
+  onChoiceChanged = (choice, value, index) => {
+    const { choiceChanged, lengthChanged, maxLength, choices } = this.props;
 
-    if (newLength > newMaxLength) {
-      lengthChanged(newLength);
-    }
+    const labelLengthsArr = choices.map(choice => (choice.label || '').length);
+    labelLengthsArr[index] = value.length;
+
+    const newLength = getAdjustedLength(Math.max(...labelLengthsArr));
 
     choiceChanged({
       ...choice,
       label: value
     });
+
+    if (newLength > maxLength || newLength + 10 < maxLength) {
+      lengthChanged(newLength);
+    }
   };
 
   onRemoveChoice = choice => {
@@ -187,14 +191,15 @@ export class AlternateSection extends React.Component {
   };
 
   getChoicesMaxLength = () => {
-    const { choices } = this.props;
+    const { choices } = this.state;
 
     if (!choices) {
       return 1;
     }
 
     const labelLengthsArr = choices.map(choice => (choice.label || '').length);
-    return Math.max(...labelLengthsArr);
+
+    return getAdjustedLength(Math.max(...labelLengthsArr));
   };
 
   changeLength = event => {
@@ -228,6 +233,7 @@ export class AlternateSection extends React.Component {
             displayEmpty
             onChange={this.handleSelect}
             value={value || ''}
+            readOnly={showMaxLength}
           >
             <MenuItem value="">
               <em>
@@ -273,7 +279,7 @@ export class AlternateSection extends React.Component {
                 key={index}
                 classes={classes}
                 markup={c.label}
-                onChange={val => this.onChoiceChanged(c, val)}
+                onChange={val => this.onChoiceChanged(c, val, index)}
                 onDelete={() => this.onRemoveChoice(c)}
               />
             ))

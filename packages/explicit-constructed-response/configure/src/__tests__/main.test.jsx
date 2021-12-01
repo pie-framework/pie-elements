@@ -213,13 +213,13 @@ describe('Main', () => {
 
         wr.instance().onChange(newMarkup);
 
-        expect(onModelChanged).toBeCalledWith({
+        setTimeout(() => expect(onModelChanged).toBeCalledWith({
           ...prepareModel(model),
           slateMarkup: newMarkup,
           choices: expect.objectContaining({
             3: [{ label: '', value: '0' }]
           })
-        });
+        }), 10);
       });
 
       it('slateMarkup and choices are updated', () => {

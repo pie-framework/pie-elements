@@ -73,6 +73,28 @@ exports[`AlternateResponses snapshot renders 1`] = `
   <WithStyles(AlternateSection)
     choiceChanged={[Function]}
     choiceRemoved={[Function]}
+    choices={
+      Array [
+        Object {
+          "label": "moon",
+          "value": "0",
+        },
+      ]
+    }
+    key="2"
+    lengthChanged={[Function]}
+    maxLength={4}
+    onSelect={[Function]}
+    selectChoices={
+      Array [
+        undefined,
+      ]
+    }
+    showMaxLength={true}
+  />
+  <WithStyles(AlternateSection)
+    choiceChanged={[Function]}
+    choiceRemoved={[Function]}
     onSelect={[Function]}
     selectChoices={
       Array [
