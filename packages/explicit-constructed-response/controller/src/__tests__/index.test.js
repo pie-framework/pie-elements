@@ -107,7 +107,7 @@ describe('controller', () => {
           mode: 'gather',
           feedback: {},
           responseCorrect: undefined,
-          maxLengthPerChoice: [6, 6, 4],
+          maxLengthPerChoice: [10, 10, 7],
           env,
           ...expected
         });
@@ -163,7 +163,7 @@ describe('controller', () => {
           feedback: {},
           responseCorrect: undefined,
           env,
-          maxLengthPerChoice: [6, 6, 4],
+          maxLengthPerChoice: [10, 10, 7],
           ...expected
         });
       });
@@ -219,7 +219,7 @@ describe('controller', () => {
           disabled: true,
           feedback: {},
           responseCorrect: undefined,
-          maxLengthPerChoice: [6, 6, 4],
+          maxLengthPerChoice: [10, 10, 7],
           env,
           ...expected
         });
@@ -289,7 +289,7 @@ describe('controller', () => {
             ],
             2: [{ label: 'moon', value: '0', correct: true }]
           },
-          maxLengthPerChoice: [6, 6, 4],
+          maxLengthPerChoice: [10, 10, 7],
           env,
           ...expected
         });

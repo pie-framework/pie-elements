@@ -73,7 +73,7 @@ describe('index', () => {
 
       model = base({
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']],
+        alternateResponses: [{ response: ['c', 'b', 'a'] }],
         choices: [
           { label: 'a', id: 'a' },
           { label: 'b', id: 'b' },
@@ -185,7 +185,7 @@ describe('index', () => {
     describe('correct response', () => {
       const model = base({
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']],
+        alternateResponses: [{ response: ['c', 'b', 'a'] }],
         choices: [
           { label: 'a', id: 'a' },
           { label: 'b', id: 'b' },
@@ -204,7 +204,7 @@ describe('index', () => {
       it('returns correct response if env is correct for shuffled choices', async () => {
         const model = base({
           correctResponse: ['a', 'b', 'c'],
-          alternateResponses: [['c', 'b', 'a']],
+          alternateResponses: [{ response: ['c', 'b', 'a'] }],
           choices: [
             { label: 'c', id: 'c' },
             { label: 'b', id: 'b' },
@@ -305,7 +305,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']],
+        alternateResponses: [{ response: ['c'] }],
       },
       ['a'],
       1
@@ -314,7 +314,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']],
+        alternateResponses: [{ response: ['c'] }],
       },
       ['b'],
       0
@@ -322,7 +322,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['b', 'c', 'a']],
+        alternateResponses: [{ response: ['b', 'c', 'a'] }],
       },
       ['c', 'a', 'b'],
       0.33
@@ -335,7 +335,7 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']],
+        alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
       0.33
@@ -344,7 +344,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'b']],
+        alternateResponses: [{ response: ['a', 'b'] }],
       },
       ['c', 'a', 'b'],
       0.33
@@ -353,7 +353,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']],
+        alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
       0
@@ -362,7 +362,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'b']],
+        alternateResponses: [{ response: ['a', 'b'] }],
       },
       ['c', 'a', 'b'],
       0,
@@ -374,7 +374,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']],
+        alternateResponses: [{ response: ['c'] }],
       },
       ['c'],
       1
@@ -383,7 +383,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a'],
-        alternateResponses: [['c']],
+        alternateResponses: [{ response: ['c'] }],
       },
       ['b'],
       0
@@ -391,20 +391,20 @@ describe('index', () => {
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']],
+        alternateResponses: [{ response: ['c', 'b', 'a'] }],
       },
       ['c', 'a', 'b'],
       0.67
     );
     assertOutcome(
-      { correctResponse: ['a', 'b'], alternateResponses: [['c', 'b']] },
+      { correctResponse: ['a', 'b'], alternateResponses: [{ response: ['c', 'b'] }] },
       ['c', 'a', 'b'],
       0
     );
     assertOutcome(
       {
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['c', 'b', 'a']],
+        alternateResponses: [{ response: ['c', 'b', 'a'] }],
       },
       ['c', 'b'],
       0.33
@@ -413,7 +413,7 @@ describe('index', () => {
       {
         partialScoring: true,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']],
+        alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['c', 'a', 'b'],
       0.67
@@ -422,7 +422,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']],
+        alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['a', 'b'],
       0
@@ -431,7 +431,7 @@ describe('index', () => {
       {
         partialScoring: false,
         correctResponse: ['a', 'b', 'c'],
-        alternateResponses: [['a', 'c', 'b']],
+        alternateResponses: [{ response: ['a', 'c', 'b'] }],
       },
       ['c', 'a', 'b'],
       0,

@@ -84,9 +84,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+              10,
+              10,
+              7,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -159,9 +159,10 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
       />
       <WithStyles(Typography)>
-        Define Alternates
+        Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        maxLengthPerChoiceEnabled={true}
         model={
           Object {
             "choices": Object {
@@ -204,9 +205,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+              10,
+              10,
+              7,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -325,9 +326,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+              10,
+              10,
+              7,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -371,9 +372,10 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         }
       />
       <WithStyles(Typography)>
-        Define Alternates
+        Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        maxLengthPerChoiceEnabled={true}
         model={
           Object {
             "choices": Object {
@@ -416,9 +418,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              6,
-              6,
-              4,
+              10,
+              10,
+              7,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
