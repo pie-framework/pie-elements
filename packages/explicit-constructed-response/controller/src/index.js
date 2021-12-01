@@ -36,6 +36,23 @@ const getFeedback = value => {
   return 'incorrect';
 };
 
+// also used in configure/src/markupUtils.js
+const getAdjustedLength = length => {
+  if (length <= 2) {
+    return length + 2;
+  }
+
+  if (length <= 4) {
+    return length + 3;
+  }
+
+  if (length <= 6) {
+    return length + 4;
+  }
+
+  return length + 5;
+};
+
 export const normalize = question => ({
   rationaleEnabled: true,
   promptEnabled: true,
@@ -56,7 +73,7 @@ export function model(question, session, env) {
     // like: { label: 'test' }
     if (question.choices) {
       Object.keys(question.choices).forEach(key => {
-        question.choices[key] = question.choices[key].map((item, index) => {
+        question.choices[key] = (question.choices[key] || []).map((item, index) => {
           if (!item.value) {
             log('Choice does not contain "value" property, which is required.', item);
             return { value: `${index}`, ...item };
@@ -107,13 +124,17 @@ export function model(question, session, env) {
        }
     });
 
-    const { maxLengthPerChoice = [] } = normalizedQuestion;
+    const { maxLengthPerChoice = [], maxLengthPerChoiceEnabled } = normalizedQuestion;
+    const undefinedLengths = !maxLengthPerChoice.length;
 
-    //calculate maxLengthPerChoice array if it is not defined or defined incorrectly
+    // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
       const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
+      const length = getAdjustedLength(Math.max(...labelLengthsArr));
 
-      maxLengthPerChoice[index] = Math.max(...labelLengthsArr, maxLengthPerChoice && maxLengthPerChoice[index] || 1);
+      if (undefinedLengths || !maxLengthPerChoice[index] || maxLengthPerChoice[index] < length) {
+        maxLengthPerChoice[index] = length;
+      }
     });
 
     const out = {
@@ -127,6 +148,7 @@ export function model(question, session, env) {
       note: normalizedQuestion.note,
       showNote,
       maxLengthPerChoice,
+      maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined

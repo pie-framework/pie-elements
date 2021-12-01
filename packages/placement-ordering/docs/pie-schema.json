@@ -75,17 +75,17 @@
         "title": "AlternateResponse",
         "type": "object",
         "properties": {
-          "alternateResponse": {
+          "response": {
             "description": "Array that contains the alternate response ids",
             "type": "array",
             "items": {
               "type": "string"
             },
-            "title": "alternateResponse"
+            "title": "response"
           }
         },
         "required": [
-          "alternateResponse"
+          "response"
         ]
       },
       "title": "alternateResponses"
@@ -466,17 +466,17 @@
       "title": "AlternateResponse",
       "type": "object",
       "properties": {
-        "alternateResponse": {
+        "response": {
           "description": "Array that contains the alternate response ids",
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "alternateResponse"
+          "title": "response"
         }
       },
       "required": [
-        "alternateResponse"
+        "response"
       ]
     },
     "ComplexFeedbackType": {

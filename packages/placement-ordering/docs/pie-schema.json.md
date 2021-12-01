@@ -60,7 +60,7 @@ The object is an array with all elements of the type `object`.
 
 The array object has the following properties:
 
-## `alternateResponse` (array, required)
+## `response` (array, required)
 
 Array that contains the alternate response ids
 
@@ -251,7 +251,7 @@ Note: weights are not configurable in the existing component so we'll ignore it 
 
 Properties of the `AlternateResponse` object:
 
-### `alternateResponse` (array, required)
+### `response` (array, required)
 
 Array that contains the alternate response ids
 
