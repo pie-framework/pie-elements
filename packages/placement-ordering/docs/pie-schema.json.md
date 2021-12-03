@@ -22,19 +22,6 @@ The id of the choice
 
 The label of the choice
 
-## `moveOnDrag` (boolean)
-
-Indicates if choice will be removed after is placed into a placement area
-
-Default: `false`
-
-## `lockChoiceOrder` (boolean)
-
-If the entire array of choices can lockChoiceOrder, each choice itself
-has this property to indicate if it should lockChoiceOrder
-
-Default: `true`
-
 # `correctResponse` (array)
 
 Array of the correct responses in the correct order
@@ -220,19 +207,6 @@ The id of the choice
 ### `label` (string)
 
 The label of the choice
-
-### `moveOnDrag` (boolean)
-
-Indicates if choice will be removed after is placed into a placement area
-
-Default: `false`
-
-### `lockChoiceOrder` (boolean)
-
-If the entire array of choices can lockChoiceOrder, each choice itself
-has this property to indicate if it should lockChoiceOrder
-
-Default: `true`
 
 ## `CorrectResponse` (object)
 
