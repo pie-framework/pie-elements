@@ -3,13 +3,14 @@
 const debug = require('debug');
 const log = debug('pie-element:scripts:build');
 const argv = require('minimist')(process.argv.slice(2));
-const { readdirSync, pathExistsSync } = require('fs-extra');
+const { readdirSync, pathExistsSync, readJson } = require('fs-extra');
 const _ = require('lodash');
 const { Commands, getPackage } = require('@pie-framework/build-helper');
 const { resolve, relative, join } = require('path');
 const minimist = require('minimist');
-
 log('scope: ', argv.scope);
+
+const toPkgFlag = (p) => `--package ${p.pkg.name}`;
 
 const args = minimist(process.argv.slice(2));
 
@@ -59,11 +60,30 @@ class ElementsCommands extends Commands {
     );
   }
 
-  // sharedBuild() {
-  //   return this.runCmd(
-  //     `yarn pslb --publishLibs --token ${args.token} --cleanLibs --logLevel info`
-  //   );
-  // }
+  async sharedBuild() {
+    const root = resolve(__dirname, '../packages');
+    const allPackages = readdirSync(root);
+    const pkgJson = await Promise.all(
+      allPackages.map(async (n) => {
+        const dir = resolve(root, n);
+        return { dir, pkg: await readJson(resolve(dir, 'package.json')) };
+      })
+    );
+
+    const printPkgs = pkgJson.filter(
+      (p) => p.pkg.exports && p.pkg.exports['./print']
+    );
+    console.log(
+      'printPkgs',
+      printPkgs.map((p) => p.dir)
+    );
+
+    const cmd = `yarn pslb --config pslb/pslb.config.js ${printPkgs
+      .map(toPkgFlag)
+      .join(' ')} --logLevel silly`;
+
+    return this.runCmd(cmd);
+  }
 
   // build() {
   //   return super.build().then(() => this.sharedBuild());
