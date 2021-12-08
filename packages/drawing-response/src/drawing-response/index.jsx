@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { Collapsible } from '@pie-lib/render-ui';
+import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import Container from './container';
@@ -48,14 +48,14 @@ class DrawingResponseComponent extends React.Component {
                 visible: 'Hide Teacher Instructions'
               }}
             >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+              <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
             <br />
           </React.Fragment>
         )}
 
         <Typography className={classes.prompt}>
-          <span dangerouslySetInnerHTML={{ __html: prompt }} />
+          <PreviewPrompt tagName="span" prompt={prompt} />
         </Typography>
 
         <Container

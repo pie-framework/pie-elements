@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
-import { Feedback, Collapsible, Readable, hasText } from '@pie-lib/render-ui';
+import {Feedback, Collapsible, Readable, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -389,7 +389,7 @@ export class Main extends React.Component {
       <div className={classes.main}>
         {prompt && (
           <div className={classes.content}>
-            <div dangerouslySetInnerHTML={{ __html: prompt }} />
+            <PreviewPrompt prompt={prompt} />
           </div>
         )}
         <Readable false>
@@ -495,7 +495,7 @@ export class Main extends React.Component {
                   }}
                   className={classes.collapsible}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+                  <PreviewPrompt prompt={teacherInstructions} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}
@@ -507,7 +507,7 @@ export class Main extends React.Component {
                     visible: 'Hide Rationale',
                   }}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: rationale }} />
+                  <PreviewPrompt prompt={rationale} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}
@@ -550,6 +550,11 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 2,
     border: `1px solid ${color.secondary()}`,
     fontSize: '16px',
+    '& :not(.MathJax) > table tr': {
+      '&:nth-child(2n)': {
+        backgroundColor: 'unset !important'
+      }
+    }
   },
   tooltipPopper: {
     opacity: 1,

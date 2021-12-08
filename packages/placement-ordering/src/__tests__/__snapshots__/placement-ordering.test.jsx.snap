@@ -9,13 +9,9 @@ exports[`PlacementOrdering render shows toggle 1`] = `
     show={true}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
-  />
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="3"
@@ -37,13 +33,9 @@ exports[`PlacementOrdering render snapshot 1`] = `
     onToggle={[Function]}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
-  />
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="1"
@@ -65,13 +57,9 @@ exports[`PlacementOrdering render snapshot with rationale 1`] = `
     onToggle={[Function]}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": undefined,
-      }
-    }
-  />
+  <div>
+    <WithStyles(PreviewPrompt) />
+  </div>
   <OrderingTiler
     includeTargets={true}
     instanceId="5"
@@ -89,12 +77,8 @@ exports[`PlacementOrdering render snapshot with rationale 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "This is rationale.",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="This is rationale."
     />
   </WithStyles(Collapsible)>
   <WithStyles(Feedback) />
