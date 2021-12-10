@@ -35,6 +35,9 @@ const preparePrintModel = (model, opts) => {
     c.feedback = undefined;
     return c;
   });
+
+  model.keyMode = model.choicePrefix || 'letters';
+
   return model;
 };
 
