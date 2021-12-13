@@ -18,13 +18,9 @@ exports[`Main render should render in evaluate mode 1`] = `
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -33,13 +29,8 @@ exports[`Main render should render in evaluate mode 1`] = `
     show={true}
     toggled={false}
   />
-  <div
-    className="prompt"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <WithMask
     choices={
@@ -113,13 +104,8 @@ exports[`Main render should render in evaluate mode 1`] = `
         }
       }
     >
-      <div
-        className="rationale"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        prompt="Rationale"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -144,13 +130,9 @@ exports[`Main render should render in gather mode 1`] = `
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -159,13 +141,8 @@ exports[`Main render should render in gather mode 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    className="prompt"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <WithMask
     choices={
@@ -239,13 +216,8 @@ exports[`Main render should render in gather mode 1`] = `
         }
       }
     >
-      <div
-        className="rationale"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        prompt="Rationale"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -270,13 +242,9 @@ exports[`Main render should render in view mode 1`] = `
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -285,13 +253,8 @@ exports[`Main render should render in view mode 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    className="prompt"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <WithMask
     choices={
@@ -365,13 +328,8 @@ exports[`Main render should render in view mode 1`] = `
         }
       }
     >
-      <div
-        className="rationale"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        prompt="Rationale"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -396,13 +354,9 @@ exports[`Main render should render without prompt 1`] = `
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -483,13 +437,8 @@ exports[`Main render should render without prompt 1`] = `
         }
       }
     >
-      <div
-        className="rationale"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        prompt="Rationale"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -514,13 +463,9 @@ exports[`Main render should render without rationale 1`] = `
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
   </div>
@@ -529,13 +474,8 @@ exports[`Main render should render without rationale 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    className="prompt"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <WithMask
     choices={
@@ -617,13 +557,8 @@ exports[`Main render should render without teacher instructions 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    className="prompt"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <WithMask
     choices={
@@ -697,13 +632,8 @@ exports[`Main render should render without teacher instructions 1`] = `
         }
       }
     >
-      <div
-        className="rationale"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Rationale",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        prompt="Rationale"
       />
     </WithStyles(Collapsible)>
   </div>

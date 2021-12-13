@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { InlineDropdown as DropDown } from '@pie-lib/mask-markup';
-import { color, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -73,7 +73,7 @@ export class InlineDropdown extends React.Component {
               <Collapsible
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
               >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                <PreviewPrompt prompt={teacherInstructions} />
               </Collapsible>
               <br />
             </React.Fragment>
@@ -89,7 +89,7 @@ export class InlineDropdown extends React.Component {
 
         {prompt && (
           <React.Fragment>
-            <div dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <PreviewPrompt prompt={prompt} />
             <br />
           </React.Fragment>
         )}
@@ -101,7 +101,7 @@ export class InlineDropdown extends React.Component {
             <Collapsible
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
             >
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+              <PreviewPrompt prompt={rationale} />
             </Collapsible>
         )}
         {choiceRationalesHaveText && (
@@ -117,7 +117,7 @@ export class InlineDropdown extends React.Component {
                           className={classNames(classes.choiceRationaleLabel, choice.correct ? 'correct' : 'incorrect')}
                           dangerouslySetInnerHTML={{ __html: `${choice.label}: ` }}
                         />
-                        <div dangerouslySetInnerHTML={{ __html: choice.rationale }}/>
+                        <PreviewPrompt prompt={choice.rationale} />
                       </div>
                     )}
                     {choices && choices.length > 0 && <br />}

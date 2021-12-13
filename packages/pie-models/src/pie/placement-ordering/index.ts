@@ -2,7 +2,7 @@ import {PieModel} from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
     /** The id of the choice */
@@ -10,18 +10,6 @@ export interface Choice {
 
     /** The label of the choice */
     label?: string;
-
-    /** Indicates if choice will be removed after is placed into a placement area
-     * @default false
-     */
-    moveOnDrag?: boolean;
-
-    /**
-     * If the entire array of choices can lockChoiceOrder, each choice itself
-     * has this property to indicate if it should lockChoiceOrder
-     * @default true
-     */
-    lockChoiceOrder?: boolean;
 }
 
 export interface CorrectResponse {

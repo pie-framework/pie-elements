@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { mq, HorizontalKeypad, updateSpans } from '@pie-lib/math-input';
-import { Feedback, Collapsible, Readable, hasText } from '@pie-lib/render-ui';
+import {Feedback, Collapsible, Readable, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -384,12 +384,13 @@ export class Main extends React.Component {
     const additionalKeys = generateAdditionalKeys(customKeys);
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
+    const viewMode =  disabled && !correctness;
 
     const midContent = (
       <div className={classes.main}>
         {prompt && (
           <div className={classes.content}>
-            <div dangerouslySetInnerHTML={{ __html: prompt }} />
+            <PreviewPrompt prompt={prompt} />
           </div>
         )}
         <Readable false>
@@ -457,6 +458,27 @@ export class Main extends React.Component {
             )}
           </div>
         </Readable>
+        {
+          viewMode && teacherInstructions && hasText(teacherInstructions) && (
+            <React.Fragment>
+              <Collapsible
+                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              >
+                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              </Collapsible>
+              <br />
+            </React.Fragment>
+          )
+        }
+        {
+          viewMode && rationale && hasText(rationale) && (
+            <Collapsible
+              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+            </Collapsible>
+          )
+        }
         {displayNote && (
           <div
             className={classes.note}
@@ -495,7 +517,7 @@ export class Main extends React.Component {
                   }}
                   className={classes.collapsible}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+                  <PreviewPrompt prompt={teacherInstructions} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}
@@ -507,7 +529,7 @@ export class Main extends React.Component {
                     visible: 'Hide Rationale',
                   }}
                 >
-                  <div dangerouslySetInnerHTML={{ __html: rationale }} />
+                  <PreviewPrompt prompt={rationale} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}
@@ -550,6 +572,11 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 2,
     border: `1px solid ${color.secondary()}`,
     fontSize: '16px',
+    '& :not(.MathJax) > table tr': {
+      '&:nth-child(2n)': {
+        backgroundColor: 'unset !important'
+      }
+    }
   },
   tooltipPopper: {
     opacity: 1,

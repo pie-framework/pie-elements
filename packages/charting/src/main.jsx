@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { color, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { Chart, chartTypes } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
@@ -92,7 +92,7 @@ export class Main extends React.Component {
                 visible: 'Hide Teacher Instructions',
               }}
             >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+              <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
             <br />
           </React.Fragment>
@@ -100,10 +100,7 @@ export class Main extends React.Component {
 
         {prompt && (
           <React.Fragment>
-            <div
-              className={classes.prompt}
-              dangerouslySetInnerHTML={{ __html: prompt }}
-            />
+            <PreviewPrompt className="prompt" prompt={prompt} />
             <br />
           </React.Fragment>
         )}
@@ -157,7 +154,7 @@ export class Main extends React.Component {
           <Collapsible
             labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
           >
-            <div dangerouslySetInnerHTML={{ __html: rationale }} />
+            <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
       </div>
@@ -171,10 +168,7 @@ const styles = (theme) => ({
     color: color.text(),
     backgroundColor: color.background(),
     overflow: 'hidden'
-  },
-  prompt: {
-    verticalAlign: 'middle',
-  },
+  }
 });
 
 export default withStyles(styles)(Main);

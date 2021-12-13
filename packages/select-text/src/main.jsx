@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextSelect, prepareText } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Feedback, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 
 import debug from 'debug';
@@ -77,16 +77,15 @@ export class Main extends React.Component {
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                 className={classes.collapsible}
               >
-                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+                <PreviewPrompt prompt={model.teacherInstructions} />
               </Collapsible>
               <br />
             </React.Fragment>
           )
         }
-        <div
-          className={classes.prompt}
-          dangerouslySetInnerHTML={{ __html: model.prompt }}
-        />
+        <div className={classes.prompt}>
+          <PreviewPrompt prompt={model.prompt} />
+        </div>
         <CorrectAnswerToggle
           show={model.disabled && model.incorrect}
           toggled={showCorrectAnswer}
@@ -108,7 +107,7 @@ export class Main extends React.Component {
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
+              <PreviewPrompt prompt={model.rationale} />
             </Collapsible>
           )
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
-import { Collapsible, hasText } from '@pie-lib/render-ui';
+import {Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import Container from './container';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -49,13 +49,13 @@ class HotspotComponent extends React.Component {
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
           )
         }
 
         <Typography className={classes.prompt}>
-          <span dangerouslySetInnerHTML={{ __html: prompt }} />
+          <PreviewPrompt prompt={prompt} />
         </Typography>
 
         {imageUrl ? (
@@ -80,7 +80,7 @@ class HotspotComponent extends React.Component {
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: rationale }} />
+              <PreviewPrompt prompt={rationale} />
             </Collapsible>
           )
         }

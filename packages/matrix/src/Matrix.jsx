@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import ChoiceInput from './ChoiceInput';
-import {Collapsible} from '@pie-lib/render-ui';
-
-const PromptWrapper = styled.div`
-  vertical-align: middle;
-  color: var(--pie-primary-text, var(--pie-text, #000000));
-`;
+import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
 
 const MatrixWrapper = styled.div`
   font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -78,12 +73,12 @@ const Matrix = (props) => {
               visible: 'Hide Teacher Instructions',
             }}
           >
-            <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
+            <PreviewPrompt prompt={teacherInstructions} />
           </Collapsible>
           <br />
         </React.Fragment>
       )}
-      <PromptWrapper dangerouslySetInnerHTML={{__html: prompt}}/>
+      <PreviewPrompt className="prompt" prompt={prompt} />
       <MatrixGridWrapper gridTemplateColumns={gridTemplateColumns}>
         {gridMatrixItems.map((gridMatrixItem, gridMatrixIndex) => {
           return (
