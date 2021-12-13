@@ -5,9 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
+import {color, Feedback, Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
-import classNames from 'classnames';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -50,10 +49,7 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     log('[render] disabled? ', disabled);
 
-    const teacherInstructionsDiv = <div
-      className="teacher-instructions"
-      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
-    />;
+    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
 
     return (
       <div
@@ -79,9 +75,10 @@ export class Main extends React.Component {
         }
         {model.prompt && (
           <Typography
-            className={classNames(classes.prompt, 'prompt')}
-            dangerouslySetInnerHTML={{ __html: model.prompt }}
-          />
+            className={classes.prompt}
+          >
+            <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
+          </Typography>
         )}
         <EditableHTML
           onChange={this.changeSession}

@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { ConstructedResponse } from '@pie-lib/mask-markup';
-import { color, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 
@@ -94,12 +94,9 @@ export class Main extends React.Component {
       [classes.noBorderColor]: alwaysShowCorrect
     }]);
 
-    const teacherInstructionsDiv = <div
-      className="teacher-instructions"
-      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
-    />;
+    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
 
-    const rationaleDiv = <div className="rationale" dangerouslySetInnerHTML={{ __html: rationale }}/>;
+    const rationaleDiv = <PreviewPrompt prompt={rationale} />;
 
     return (
       <div className={mainClasses} style={{ display: `${displayType}` }}>
@@ -120,7 +117,7 @@ export class Main extends React.Component {
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />}
-        {prompt && <div className="prompt" dangerouslySetInnerHTML={{ __html: prompt }}/>}
+        {prompt && <PreviewPrompt prompt={prompt} />}
         <ConstructedResponse
           {...this.props}
           onChange={this.onChange}

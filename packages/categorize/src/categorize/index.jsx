@@ -10,7 +10,7 @@ import {
   moveChoiceToCategory
 } from '@pie-lib/categorize';
 import { withDragContext, uid } from '@pie-lib/drag';
-import { color, Feedback, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import debug from 'debug';
 
 const log = debug('@pie-ui:categorize');
@@ -149,7 +149,7 @@ export class Categorize extends React.Component {
                 labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                 className={classes.collapsible}
               >
-                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+                <PreviewPrompt prompt={model.teacherInstructions} />
               </Collapsible>
               <br />
             </React.Fragment>
@@ -164,8 +164,9 @@ export class Categorize extends React.Component {
           model.prompt && removeHTMLTags(model.prompt) &&
           <div
             className={classes.prompt}
-            dangerouslySetInnerHTML={{ __html: model.prompt }}
-          />
+           >
+            <PreviewPrompt prompt={model.prompt} />
+          </div>
         }
         <div className={classes.categorize} style={style}>
           <div style={{ display: 'flex', flex: 1 }}>
@@ -215,7 +216,7 @@ export class Categorize extends React.Component {
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
+              <PreviewPrompt prompt={model.rationale} />
             </Collapsible>
           )
         }

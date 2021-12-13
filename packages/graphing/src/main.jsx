@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer } from '@pie-lib/graphing';
-import { color, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 
 export class Main extends React.Component {
@@ -74,7 +74,7 @@ export class Main extends React.Component {
           teacherInstructions && hasText(teacherInstructions) && (
             <React.Fragment>
               <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+                <PreviewPrompt prompt={teacherInstructions} />
               </Collapsible>
               <br />
             </React.Fragment>
@@ -83,7 +83,7 @@ export class Main extends React.Component {
 
         {prompt && (
           <React.Fragment>
-            <div className={classes.prompt} dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <PreviewPrompt className="prompt" prompt={prompt} />
             <br />
           </React.Fragment>
         )}
@@ -108,7 +108,7 @@ export class Main extends React.Component {
         {
           rationale && hasText(rationale) && (
             <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+              <PreviewPrompt prompt={rationale} />
             </Collapsible>
           )
         }
@@ -122,8 +122,7 @@ const styles = theme => ({
     padding: theme.spacing.unit,
     color: color.text(),
     backgroundColor: color.background()
-  },
-  prompt: { verticalAlign: 'middle' }
+  }
 });
 
 export default withStyles(styles)(Main);

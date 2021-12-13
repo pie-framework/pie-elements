@@ -7,12 +7,9 @@ exports[`Main render renders correctly 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Your prompt goes here",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    className="prompt"
+    prompt="Your prompt goes here"
   />
   <WithStyles(AnswerArea)
     disabled={true}

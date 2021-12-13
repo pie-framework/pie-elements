@@ -269,7 +269,7 @@ class ImageClozeAssociationComponent extends React.Component {
               visible: 'Hide Teacher Instructions',
             }}
           >
-            <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+            <PreviewPrompt prompt={teacherInstructions} />
           </Collapsible>
         )}
 

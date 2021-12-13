@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChoiceInput from './choice-input';
 import { withStyles } from '@material-ui/core/styles';
-import { Collapsible } from '@pie-lib/render-ui';
+import {Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
 import { LIKERT_ORIENTATION } from './likertEntities';
 
 const styles = {
@@ -64,17 +64,16 @@ export class Likert extends React.Component {
                 visible: 'Hide Teacher Instructions',
               }}
             >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }} />
+              <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
             <br />
           </React.Fragment>
         )}
 
         {prompt && (
-          <div
-            className={classes.prompt}
-            dangerouslySetInnerHTML={{ __html: prompt }}
-          />
+          <div className={classes.prompt}>
+            <PreviewPrompt prompt={prompt} />
+          </div>
         )}
 
         <div className={classes.choicesWrapper} style={{ flexDirection }}>
