@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.12.15...@pie-element/ruler@3.12.16) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/ruler
+
+
+
+
+
 ## [3.12.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/ruler@3.12.12...@pie-element/ruler@3.12.13) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/ruler

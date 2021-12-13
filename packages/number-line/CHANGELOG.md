@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.13.4...@pie-element/number-line@5.13.5) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [5.13.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.13.1...@pie-element/number-line@5.13.2) (2021-11-29)
 
 **Note:** Version bump only for package @pie-element/number-line
