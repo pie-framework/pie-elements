@@ -19,7 +19,8 @@ const log = debug('pie-element:multiple-choice:print');
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
-  model.teacherInstructions = instr ? model.teacherInstructions : undefined;
+  model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
+  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
@@ -30,7 +31,7 @@ const preparePrintModel = (model, opts) => {
   const choices = cloneDeep(model.choices);
 
   model.choices = choices.map((c) => {
-    c.rationale = instr ? c.rationale : undefined;
+    c.rationale = instr && model.rationaleEnabled !== false ? c.rationale : undefined;
     c.hideTick = instr;
     c.feedback = undefined;
     return c;
