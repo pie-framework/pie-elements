@@ -7,7 +7,7 @@ import Toggle from '@pie-lib/correct-answer-toggle';
 import { buildElementModel } from './graph/elements/builder';
 import classNames from 'classnames';
 import cloneDeep from 'lodash/cloneDeep';
-import { color } from '@pie-lib/render-ui';
+import {color, PreviewPrompt} from '@pie-lib/render-ui';
 import injectSheet from 'react-jss';
 import isArray from 'lodash/isArray';
 import isNumber from 'lodash/isNumber';
@@ -279,10 +279,9 @@ export class NumberLine extends React.Component {
     return (
       <div className={names} style={{ width }}>
         {prompt && (
-          <div
-            className={classes.prompt}
-            dangerouslySetInnerHTML={{ __html: prompt }}
-          />
+          <div className={classes.prompt}>
+            <PreviewPrompt prompt={prompt} />
+          </div>
         )}
         <div>
           <div style={{ width: adjustedWidth }}>

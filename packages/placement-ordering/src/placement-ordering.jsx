@@ -1,6 +1,6 @@
 import { HorizontalTiler, VerticalTiler } from './tiler';
 import { buildState, reducer } from './ordering';
-import { color, Feedback, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -208,7 +208,7 @@ export class PlacementOrdering extends React.Component {
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
               className={classes.collapsible}
             >
-              <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
+              <PreviewPrompt prompt={teacherInstructions} />
             </Collapsible>
             <br/>
           </React.Fragment>
@@ -218,10 +218,9 @@ export class PlacementOrdering extends React.Component {
           toggled={showingCorrect}
           onToggle={this.toggleCorrect}
         />
-        <div
-          className={classes.prompt}
-          dangerouslySetInnerHTML={{ __html: prompt }}
-        />
+        <div className={classes.prompt}>
+          <PreviewPrompt prompt={prompt} />
+        </div>
         <OrderingTiler
           instanceId={this.instanceId}
           choiceLabel={config.choiceLabel}
@@ -248,7 +247,7 @@ export class PlacementOrdering extends React.Component {
             labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
             className={classes.collapsible}
           >
-            <div dangerouslySetInnerHTML={{ __html: rationale }}/>
+            <PreviewPrompt prompt={rationale} />
           </Collapsible>
         )}
         {!showingCorrect && (

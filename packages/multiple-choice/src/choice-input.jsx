@@ -96,7 +96,7 @@ export const StyledCheckbox = withStyles(inputStyles)((props) => {
       classes={{
         root: resolved.root,
         checked: resolved.checked,
-        disabled: resolved.disabled,
+        disabled: `${correctness ? '' : resolved.disabled}`,
       }}
     />
   );
@@ -129,6 +129,7 @@ export const StyledRadio = withStyles(inputStyles)((props) => {
       classes={{
         root: resolved.root,
         checked: resolved.checked,
+        disabled: `${correctness ? '' : resolved.disabled}`,
       }}
     />
   );

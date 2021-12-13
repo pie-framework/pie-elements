@@ -34,6 +34,11 @@
       },
       "title": "choices"
     },
+    "displayType": {
+      "description": "The type of display the container of the pie-ui element will be used",
+      "type": "string",
+      "title": "displayType"
+    },
     "markup": {
       "description": "The markup for the pie-ui element",
       "type": "string",
@@ -130,6 +135,7 @@
   "required": [
     "autoScoring",
     "choices",
+    "displayType",
     "element",
     "id",
     "markup",
