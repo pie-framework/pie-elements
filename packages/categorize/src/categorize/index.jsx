@@ -168,7 +168,7 @@ export class Categorize extends React.Component {
           />
         }
         <div className={classes.categorize} style={style}>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', flex: 1 }}>
             {
               rowLabels && nbOfRows && (
                 <div style={{ display: 'grid', marginRight: '20px' }}>
