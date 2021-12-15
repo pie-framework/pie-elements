@@ -19,7 +19,7 @@ import AnnotationMenu from './annotation-menu';
 
 const style = {
   textContainer: {
-    padding: '10px 16px',
+    padding: '10px 170px 10px 16px',
     backgroundColor: 'rgba(0, 0, 0, 0.06)',
     border: '1px solid #ccc',
     borderRadius: '4px',
@@ -54,6 +54,8 @@ const style = {
   annotation: {
     position: 'relative',
     cursor: 'pointer',
+    display: 'inline-block',
+    lineHeight: '19px',
 
     '&.positive': {
       backgroundColor: 'rgb(51, 255, 51, 0.5)',
@@ -564,7 +566,7 @@ class AnnotationEditor extends React.Component {
             className={classes.prompt}
             markup={comment|| ''}
             onChange={onCommentChange}
-            width={width && width.toString()}
+            width={width && (width + 154).toString()}
             disabled={disabled}
             pluginProps={{
               math: {
