@@ -10,12 +10,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Teacher Instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -25,12 +21,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
     toggled={false}
   />
   <br />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -124,12 +116,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Rationale"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -156,12 +144,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -180,12 +164,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -204,12 +184,8 @@ exports[`InlineDropdown render should render in evaluate mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />
@@ -229,12 +205,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Teacher Instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -243,12 +215,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -342,12 +310,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Rationale"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -374,12 +338,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -398,12 +358,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -422,12 +378,8 @@ exports[`InlineDropdown render should render in gather mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />
@@ -447,12 +399,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Teacher Instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -461,12 +409,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -560,12 +504,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Rationale"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -592,12 +532,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -616,12 +552,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -640,12 +572,8 @@ exports[`InlineDropdown render should render in view mode 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />
@@ -665,12 +593,8 @@ exports[`InlineDropdown render should render without prompt 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Teacher Instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -770,12 +694,8 @@ exports[`InlineDropdown render should render without prompt 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Rationale"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -802,12 +722,8 @@ exports[`InlineDropdown render should render without prompt 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -826,12 +742,8 @@ exports[`InlineDropdown render should render without prompt 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -850,12 +762,8 @@ exports[`InlineDropdown render should render without prompt 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />
@@ -875,12 +783,8 @@ exports[`InlineDropdown render should render without rationale 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Teacher Instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Teacher Instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -889,12 +793,8 @@ exports[`InlineDropdown render should render without rationale 1`] = `
     show={false}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -1004,12 +904,8 @@ exports[`InlineDropdown render should render without rationale 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -1028,12 +924,8 @@ exports[`InlineDropdown render should render without rationale 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -1052,12 +944,8 @@ exports[`InlineDropdown render should render without rationale 1`] = `
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />
@@ -1074,12 +962,8 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
     show={false}
     toggled={false}
   />
-  <div
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "Prompt",
-      }
-    }
+  <WithStyles(PreviewPrompt)
+    prompt="Prompt"
   />
   <br />
   <WithMask
@@ -1173,12 +1057,8 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="Rationale"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -1205,12 +1085,8 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale cow",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale cow"
           />
         </div>
         <br />
@@ -1229,12 +1105,8 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale over",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale over"
           />
         </div>
         <br />
@@ -1253,12 +1125,8 @@ exports[`InlineDropdown render should render without teacher instructions 1`] = 
               }
             }
           />
-          <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "rationale moon",
-              }
-            }
+          <WithStyles(PreviewPrompt)
+            prompt="rationale moon"
           />
         </div>
         <br />

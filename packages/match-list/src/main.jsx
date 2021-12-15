@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withDragContext, swap } from '@pie-lib/drag';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import { color, Feedback } from '@pie-lib/render-ui';
+import {color, Feedback, PreviewPrompt} from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
 import uniqueId from 'lodash/uniqueId';
 import isUndefined from 'lodash/isUndefined';
@@ -72,10 +72,7 @@ export class Main extends React.Component {
           toggled={showCorrectAnswer}
           onToggle={this.toggleShowCorrect}
         />
-        <div
-          className={classes.prompt}
-          dangerouslySetInnerHTML={{ __html: prompt }}
-        />
+        <PreviewPrompt className="prompt" prompt={prompt} />
         <AnswerArea
           instanceId={this.instanceId}
           model={model}
@@ -123,9 +120,6 @@ const styles = theme => ({
   },
   toggle: {
     paddingBottom: theme.spacing.unit * 3
-  },
-  prompt: {
-    verticalAlign: 'middle'
   }
 });
 

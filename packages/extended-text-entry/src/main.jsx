@@ -5,9 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import { color, Feedback, Collapsible } from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
-import classNames from 'classnames';
 import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
@@ -70,10 +69,7 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     log('[render] disabled? ', disabled);
 
-    const teacherInstructionsDiv = <div
-      className="teacher-instructions"
-      dangerouslySetInnerHTML={{ __html: teacherInstructions }}
-    />;
+    const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
 
     return (
       <div
@@ -98,10 +94,9 @@ export class Main extends React.Component {
           )
         }
         {prompt && (
-          <Typography
-            className={classNames(classes.prompt, 'prompt')}
-            dangerouslySetInnerHTML={{ __html: prompt }}
-          />
+          <Typography className={classes.prompt} >
+            <PreviewPrompt defaultClassName="prompt" prompt={prompt} />
+          </Typography>
         )}
         {annotatorMode ? (
           <AnnotationEditor
@@ -147,7 +142,7 @@ export class Main extends React.Component {
         {feedback && (
           <div>
             <br />
-            <Feedback correctness="correct" feedback={feedback}/>
+            <Feedback correctness="correct" feedback={feedback} />
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
 import { DragInTheBlank } from '@pie-lib/mask-markup';
 import { withDragContext } from '@pie-lib/drag';
-import { color, Collapsible, hasText } from '@pie-lib/render-ui';
+import {color, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -54,7 +54,7 @@ export class Main extends React.Component {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
             <React.Fragment>
               <Collapsible labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}>
-                <div dangerouslySetInnerHTML={{ __html: model.teacherInstructions }}/>
+                <PreviewPrompt prompt={model.teacherInstructions} />
               </Collapsible>
               <br />
             </React.Fragment>
@@ -68,7 +68,7 @@ export class Main extends React.Component {
         {showCorrectAnswerToggle && <br />}
         {prompt && (
           <React.Fragment>
-            <div dangerouslySetInnerHTML={{ __html: prompt }}/>
+            <PreviewPrompt prompt={prompt} />
             <br />
           </React.Fragment>
         )}
@@ -82,7 +82,7 @@ export class Main extends React.Component {
             <React.Fragment>
               <br />
               <Collapsible labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}>
-                <div dangerouslySetInnerHTML={{ __html: model.rationale }}/>
+                <PreviewPrompt prompt={model.rationale} />
               </Collapsible>
               <br />
             </React.Fragment>

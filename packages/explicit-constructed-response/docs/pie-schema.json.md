@@ -7,6 +7,10 @@ The schema defines the following properties:
 * Object with all the available choices for each response area.
 * Keys need to be integers from 0 to n - 1 (where n is the number of areas)
 
+# `displayType` (string, required)
+
+The type of display the container of the pie-ui element will be used
+
 # `markup` (string, required)
 
 The markup for the pie-ui element

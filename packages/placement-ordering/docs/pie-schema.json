@@ -24,18 +24,6 @@
             "description": "The label of the choice",
             "type": "string",
             "title": "label"
-          },
-          "moveOnDrag": {
-            "description": "Indicates if choice will be removed after is placed into a placement area",
-            "default": false,
-            "type": "boolean",
-            "title": "moveOnDrag"
-          },
-          "lockChoiceOrder": {
-            "description": "If the entire array of choices can lockChoiceOrder, each choice itself\nhas this property to indicate if it should lockChoiceOrder",
-            "default": true,
-            "type": "boolean",
-            "title": "lockChoiceOrder"
           }
         },
         "required": [
@@ -425,18 +413,6 @@
           "description": "The label of the choice",
           "type": "string",
           "title": "label"
-        },
-        "moveOnDrag": {
-          "description": "Indicates if choice will be removed after is placed into a placement area",
-          "default": false,
-          "type": "boolean",
-          "title": "moveOnDrag"
-        },
-        "lockChoiceOrder": {
-          "description": "If the entire array of choices can lockChoiceOrder, each choice itself\nhas this property to indicate if it should lockChoiceOrder",
-          "default": true,
-          "type": "boolean",
-          "title": "lockChoiceOrder"
         }
       },
       "required": [
