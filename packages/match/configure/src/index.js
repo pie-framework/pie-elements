@@ -38,7 +38,7 @@ export default class MatchConfigure extends HTMLElement {
     this._model = model;
     log('[onModelChanged]: ', this._model);
     this._render();
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   }
 
   onConfigurationChanged(config) {
