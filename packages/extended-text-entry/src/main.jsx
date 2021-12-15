@@ -84,6 +84,7 @@ export class Main extends React.Component {
           />
         )}
         <EditableHTML
+          className="response-area-editor"
           onChange={this.changeSession}
           markup={value || ''}
           width={width && width.toString()}
