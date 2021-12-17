@@ -56,6 +56,7 @@ export class Layout extends React.Component {
 
 const styles = theme => ({
   choice: {
+    direction: 'initial',
     cursor: 'pointer',
     width: '100%',
     '&.correct': {

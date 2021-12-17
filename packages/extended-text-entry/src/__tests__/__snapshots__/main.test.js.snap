@@ -38,13 +38,9 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
         }
       }
     >
-      <div
-        className="teacher-instructions"
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "Teacher Instructions",
-          }
-        }
+      <WithStyles(PreviewPrompt)
+        defaultClassName="teacher-instructions"
+        prompt="Teacher Instructions"
       />
     </WithStyles(Collapsible)>
     <br />

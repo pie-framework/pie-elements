@@ -18,6 +18,7 @@ exports[`categorize snapshots incorrect 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >
@@ -65,6 +66,7 @@ exports[`categorize snapshots renders 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >
@@ -112,6 +114,7 @@ exports[`categorize snapshots renders with feedback 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >

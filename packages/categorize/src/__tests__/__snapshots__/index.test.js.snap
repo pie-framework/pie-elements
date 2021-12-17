@@ -18,6 +18,7 @@ exports[`categorize renders snapshot 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >
@@ -67,6 +68,7 @@ exports[`categorize renders snapshot with rationale 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >
@@ -105,12 +107,8 @@ exports[`categorize renders snapshot with rationale 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "This is rationale",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="This is rationale"
     />
   </WithStyles(Collapsible)>
 </div>
@@ -126,12 +124,8 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       }
     }
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "These are teacher instructions",
-        }
-      }
+    <WithStyles(PreviewPrompt)
+      prompt="These are teacher instructions"
     />
   </WithStyles(Collapsible)>
   <br />
@@ -151,6 +145,7 @@ exports[`categorize renders snapshot with teacherInstructions 1`] = `
       style={
         Object {
           "display": "flex",
+          "flex": 1,
         }
       }
     >

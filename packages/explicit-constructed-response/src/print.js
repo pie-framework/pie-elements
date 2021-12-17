@@ -10,8 +10,9 @@ const log = debug('pie-element:explicit-constructed-response:print');
 const preparePrintModel = (model, opts) => {
   const instr = opts.role === 'instructor';
 
-  model.teacherInstructions = instr ? model.teacherInstructions : undefined;
-  model.rationale = instr ? model.rationale : undefined;
+  model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
+  model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
 
   model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
