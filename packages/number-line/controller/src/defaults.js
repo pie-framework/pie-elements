@@ -9,10 +9,7 @@ export default {
       }
     ],
     maxNumberOfPoints: 20,
-    tickFrequency: 6,
-    showMinorTicks: true,
     snapPerTick: 1,
-    tickLabelOverrides: [],
     initialType: 'PF',
     availableTypes: {
       PF: true,

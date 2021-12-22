@@ -115,7 +115,6 @@ describe('controller', () => {
           initialElements: [],
           width: 500,
           initialType: 'PF',
-          tickLabelOverrides: ['1/6', '1/3', '1/2', '2/3', '5/6'],
           domain: {
             max: 1,
             min: 0,
