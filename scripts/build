@@ -73,7 +73,6 @@ class ElementsCommands extends Commands {
     const printPkgs = pkgJson.filter(
       (p) => p.pkg.exports && p.pkg.exports['./print']
     );
-
     console.log(
       'printPkgs',
       printPkgs.map((p) => p.dir)

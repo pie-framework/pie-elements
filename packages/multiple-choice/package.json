@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
-    "@pie-lib/config-ui": "^10.10.13",
-    "@pie-lib/correct-answer-toggle": "^2.3.33",
+    "@pie-lib/config-ui": "^10.10.14",
+    "@pie-lib/correct-answer-toggle": "^2.3.34",
     "@pie-lib/math-rendering": "^2.3.12",
     "@pie-lib/render-ui": "^4.12.4",
     "classnames": "^2.2.5",
