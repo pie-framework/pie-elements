@@ -2199,14 +2199,14 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^10.10.13":
-  version "10.10.13"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.10.13.tgz#3afeb40425977c0c5ccd33aa737a70f515f92c79"
-  integrity sha512-b/vZabe0uBXZXDsbgcO15CC4LNkjav2vJR3logh7YxttdZ9PXukNuHrvjN6uivFBd7Y9TckUKlcv//nW2L8JkA==
+"@pie-lib/config-ui@^10.10.14":
+  version "10.10.14"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.10.14.tgz#98a6c9d932e64045b50be5623fa4f45e2e81beed"
+  integrity sha512-OcoP7DvcTqdbImJp24F7deSIiA8aR6h6VRkdAx0EGRfaPIkeGsR5Mbk3QP+PIFf8MbQ8B/P4Dgc3QSbsrvfCHw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.17.13"
+    "@pie-lib/editable-html" "^7.17.14"
     "@pie-lib/icons" "^2.4.25"
     "@pie-lib/render-ui" "^4.12.4"
     classnames "^2.2.6"
@@ -2223,10 +2223,10 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/correct-answer-toggle@2.3.33", "@pie-lib/correct-answer-toggle@^2.3.33":
-  version "2.3.33"
-  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.33.tgz#e7f51c46c3ee8b80d45f501239e266b09747836d"
-  integrity sha512-55bFzjFuE+KVgKGW46mEHpjejuhdSIbATiWlwltYQbS4l6O+T3tutQ619Brl1z4bHy1sVNp+c6VP1jmEi1vRhA==
+"@pie-lib/correct-answer-toggle@2.3.34", "@pie-lib/correct-answer-toggle@^2.3.34":
+  version "2.3.34"
+  resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.34.tgz#a8bf3e746719d5bd7749a19448ca7512efa0a4b6"
+  integrity sha512-/F98GlD+wGhx3ruQdYG/cYd2NxEPhqRlFY9PrZ4mSSYTKCKjuAtbj9RSA9puGWQgLexSv9S0Pen2YoGQrGGkeg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@pie-lib/icons" "^2.4.25"
@@ -2247,10 +2247,10 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/editable-html@^7.17.13":
-  version "7.17.13"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.17.13.tgz#f821ae41bc89c55d86e94e84c31a0ec94fd65dc2"
-  integrity sha512-otfTEHxAp0WVJ4B25sY787tHJU5i/jWSQwTtTJv0Op7Yj7s2+q5JyNeYn6RQZheySGJR6WvagRYKaPbC1gjr4g==
+"@pie-lib/editable-html@^7.17.14":
+  version "7.17.14"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.17.14.tgz#73a5ceb267d2ccb2da85efd9051922ce255971ef"
+  integrity sha512-9NtxLOK0QfXpXUxlYcNJymPDFbS4ibk2iLGUblXsp/Ab9WJXN5MEDYjF4nftjLkyUnEAI7zlaxeB9SMIMviTcQ==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2423,14 +2423,14 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.3.tgz#b30468b306fec1cfde2abe7ac3ce40d2a0b0e45e"
-  integrity sha512-UeoqlGrHhkZ9gPrmVWtcC68PzSD16/yBoDiHp3XKqM+57MNHQ1mdVuMsHtP8R2Mp2Nf++aDvumWbeWioyCGW8Q==
+"@pie-lib/rubric@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.4.tgz#7057b8b389343d27194b8aa463646de4510ea6a2"
+  integrity sha512-gnivwuiihTQT+yXUq7o0t4PtQ4n7dIm3eiS3uCXv+QdRv8rMEfg6tye4xV3Fcy0xGZVs94HcXnB//rZpJbdlDQ==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.17.13"
+    "@pie-lib/editable-html" "^7.17.14"
     debug "^4.1.1"
     lodash "^4.17.11"
     prop-types "^15.7.2"
@@ -2438,14 +2438,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.142":
-  version "3.5.142"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.142.tgz#b7cf760e1e4b7f04d822890401c6ffc03bc4eb60"
-  integrity sha512-tHsMQU+olr0xc3cxXzJQ22IqfAuVILqrI1hAj2OVcIVw4x3OZFWujEFm6W+FPhua7Byijjz9xVk+bIQ9cfWebA==
+"@pie-lib/scoring-config@^3.5.143":
+  version "3.5.143"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.143.tgz#1e4a7e6b4b2eb0def7a0fc2ab6a70f309b83fb92"
+  integrity sha512-qkb1anPlMaG4WWH52LaC/u6L3aqr0KlgvSA2wuXqhQEJSaw7FfeM65naKwNsCWe07oIcZ1EAly/OcaFHb5UJyg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^10.10.13"
+    "@pie-lib/config-ui" "^10.10.14"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
