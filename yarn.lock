@@ -2135,10 +2135,10 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-validation@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.0.tgz#7170603e24dffe93936bf42e03a69cc80753286e"
-  integrity sha512-2swQ9rYGC7yzi63YhXPVYJPSLn7LCFs3npRe3Y1weBcsWzGZsFD/tmy88s15phZ5SwYOrgycftVwaNrUddNMWw==
+"@pie-framework/math-validation@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.1.tgz#d58cf3ccd146fef31858623fa69ac098b7cee9bf"
+  integrity sha512-+mIU44aJbKe4BKoUMTYMA64UGfmcn760LSpQaxajiUDsn/leyd70z1IxwpUZSeCvHZiVASh2S36tSPQTrYngmg==
   dependencies:
     lodash "^4.17.21"
     mathjs "^9.4.2"
