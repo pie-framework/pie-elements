@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/multi-trait-rubric",
   "repository": "pie-framework/pie-elements",
-  "version": "1.4.16",
+  "version": "1.4.17",
   "publishConfig": {
     "access": "public"
   },

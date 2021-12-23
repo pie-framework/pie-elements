@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.17...@pie-element/match-list@1.12.18) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
 ## [1.12.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.15...@pie-element/match-list@1.12.16) (2021-12-13)
 
 **Note:** Version bump only for package @pie-element/match-list
