@@ -50,7 +50,6 @@ exports.oldModel = (id, element) => ({
       }
     ],
     maxNumberOfPoints: 20,
-    snapPerTick: 1,
     tickLabelOverrides: [],
     initialType: 'PF',
     exhibitOnly: false,
