@@ -6,6 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles/index';
 
 import Rectangle from './hotspot-rectangle';
+import Circle from './hotspot-circle';
 import Polygon from './hotspot-polygon';
 import { updateImageDimensions, getUpdatedShapes } from './utils';
 
@@ -294,7 +295,7 @@ export class Drawable extends React.Component {
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
-              const Tag = shape.group === 'polygons' ? Polygon : Rectangle;
+              const Tag = shape.group === 'polygons' ? Polygon : Circle;
 
               return (
                 <Tag
