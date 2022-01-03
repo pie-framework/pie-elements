@@ -205,7 +205,6 @@ export function model(question, session, env) {
       base.correctedAnswer = answers;
       base.correctAnswer = correctAnswer;
       base.addCategoryEnabled = false;
-
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
