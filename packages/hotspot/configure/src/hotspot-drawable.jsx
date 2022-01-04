@@ -295,7 +295,21 @@ export class Drawable extends React.Component {
         >
           <Layer>
             {shapesToUse.map((shape, index) => {
-              const Tag = shape.group === 'polygons' ? Polygon : Circle;
+              let Tag = Polygon;
+
+              switch (shape.group) {
+                case 'polygons':
+                  Tag = Polygon;
+                  break;
+
+                case 'rectangles':
+                  Tag = Rectangle;
+                  break;
+
+                case 'circles':
+                  Tag = Circle;
+                  break;
+              }
 
               return (
                 <Tag

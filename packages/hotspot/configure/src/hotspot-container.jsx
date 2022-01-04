@@ -326,7 +326,8 @@ Container.propTypes = {
   outlineColor: PropTypes.string.isRequired,
   shapes: PropTypes.shape({
     rectangles: PropTypes.array,
-    polygons: PropTypes.array
+    polygons: PropTypes.array,
+    circles: PropTypes.array
   }).isRequired,
   strokeWidth: PropTypes.number,
   preserveAspectRatioEnabled: PropTypes.bool

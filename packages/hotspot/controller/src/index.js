@@ -29,7 +29,7 @@ export function model(question, session, env) {
     prompt,
     shapes
   } = normalizedQuestion;
-  const { rectangles, polygons } = shapes || {};
+  const { rectangles, polygons, circles } = shapes || {};
 
   return new Promise(resolve => {
     const out = {
@@ -46,7 +46,8 @@ export function model(question, session, env) {
         // eslint-disable-next-line no-unused-vars
         rectangles: (rectangles || []).map(({ index, ...rectProps }) => ({ ...rectProps })),
         // eslint-disable-next-line no-unused-vars
-        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps }))
+        polygons: (polygons || []).map(({ index, ...polyProps }) => ({ ...polyProps })),
+        circles: (circles || []).map(({ index, ...circleProps }) => ({ ...circleProps }))
       },
       responseCorrect:
         env.mode === 'evaluate'
@@ -81,11 +82,11 @@ export const createDefaultModel = (model = {}) =>
 const getScore = (config, session, env = {}) => {
   const { answers } = session || {};
 
-  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons)) {
+  if (!config.shapes || (!config.shapes.rectangles && !config.shapes.polygons && !config.shapes.circles)) {
     return 0;
   }
 
-  const { shapes: { rectangles = [], polygons = [] } = {} } = config;
+  const { shapes: { rectangles = [], polygons = [], circles = [] } = {} } = config;
   const partialScoringEnabled = partialScoring.enabled(config, env);
 
   if (!partialScoringEnabled) {
@@ -95,7 +96,7 @@ const getScore = (config, session, env = {}) => {
   let correctAnswers = 0;
   let selectedChoices = 0;
 
-  const choices = [...rectangles, ...polygons];
+  const choices = [...rectangles, ...polygons, ...circles];
 
   const correctChoices = choices.filter(choice => choice.correct);
 
@@ -152,15 +153,17 @@ const returnShapesCorrect = (shapes) => {
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
-      const { shapes: { rectangles = [], polygons = {} } = {} } = question;
+      const { shapes: { rectangles = [], polygons = {}, circles = [] } = {} } = question;
 
       const rectangleCorrect = returnShapesCorrect(rectangles);
       const polygonsCorrect = returnShapesCorrect(polygons);
+      const circlesCorrect = returnShapesCorrect(circles);
 
       resolve({
         answers: [
           ...rectangleCorrect,
-          ...polygonsCorrect
+          ...polygonsCorrect,
+          ...circlesCorrect
         ],
         id: '1'
       });

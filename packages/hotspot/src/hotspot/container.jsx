@@ -6,6 +6,7 @@ import { color } from '@pie-lib/render-ui';
 
 import Rectangle from './rectangle';
 import Polygon from './polygon';
+import Circle from './circle';
 
 export class Container extends React.Component {
   isSelected(shape) {
@@ -41,7 +42,7 @@ export class Container extends React.Component {
       isEvaluateMode,
       outlineColor,
       onSelectChoice,
-      shapes: { rectangles, polygons },
+      shapes: { rectangles, polygons, circles },
       strokeWidth
     } = this.props;
 
@@ -112,6 +113,32 @@ export class Container extends React.Component {
                   onClick={onSelectChoice}
                   outlineColor={outlineColor}
                   points={polygon.points}
+                  strokeWidth={strokeWidth}
+                />
+              )
+            })}
+            {circles.map((circle) => {
+              const selected = this.isSelected(circle);
+              const isCorrect = isEvaluateMode ? this.correctness(circle.correct, selected) : undefined;
+              const evaluateText = isEvaluateMode ? this.getEvaluateText(circle.correct, selected) : null;
+
+              return (
+                <Circle
+                  isEvaluateMode={isEvaluateMode}
+                  isCorrect={isCorrect}
+                  evaluateText={evaluateText}
+                  disabled={disabled}
+                  selected={selected}
+                  height={circle.height}
+                  hotspotColor={hotspotColor}
+                  id={circle.id}
+                  key={circle.id}
+                  onClick={onSelectChoice}
+                  outlineColor={outlineColor}
+                  width={circle.width}
+                  x={circle.x}
+                  y={circle.y}
+                  radius={circle.radius}
                   strokeWidth={strokeWidth}
                 />
               )
