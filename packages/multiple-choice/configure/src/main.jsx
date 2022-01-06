@@ -13,6 +13,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import merge from 'lodash/merge';
 import Tooltip from '@material-ui/core/Tooltip';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
@@ -90,7 +93,6 @@ const Design = withStyles(styles)(props => {
   const {
     prompt = {},
     addChoiceButton = {},
-    limitChoicesNumber = {},
     feedback = {},
     deleteChoice = {},
     choiceMode = {},
@@ -107,8 +109,9 @@ const Design = withStyles(styles)(props => {
     choicesLayout,
     gridColumns,
   } = configuration || {};
+  let { maxAnswerChoices } = configuration || {};
   const {
-    limitChoicesNumber: limitChoicesNumberModel,
+    limitChoicesNumber,
     teacherInstructionsEnabled,
     rationaleEnabled,
     accessibilityLabelsEnabled,
@@ -135,6 +138,11 @@ const Design = withStyles(styles)(props => {
     default:
       toolbarOpts.position = 'bottom';
       break;
+  }
+
+  // if old property is used instead of maxAnswerChoices, set max to 9
+  if (limitChoicesNumber && !maxAnswerChoices) {
+    maxAnswerChoices = MAX_CHOICES;
   }
 
   const Content = (
@@ -234,9 +242,9 @@ const Design = withStyles(styles)(props => {
       ))}
       <br />
       {addChoiceButton.settings && (
-        <Tooltip title={limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? `Only ${MAX_CHOICES} allowed maximum` : ''} classes={{ tooltip: classes.tooltip }}>
+        <Tooltip title={maxAnswerChoices  && model.choices.length >= maxAnswerChoices ? `Only ${maxAnswerChoices} allowed maximum` : ''} classes={{ tooltip: classes.tooltip }}>
           <Button
-            classes={{ root: limitChoicesNumberModel && model.choices.length >= MAX_CHOICES ? classes.disableButton : undefined }}
+            classes={{ root: maxAnswerChoices  && model.choices.length >= maxAnswerChoices ? classes.disableButton : undefined }}
             className={classes.addButton}
             variant="contained"
             color="primary"
@@ -261,8 +269,6 @@ const Design = withStyles(styles)(props => {
       radio(choicePrefix.label, ['numbers', 'letters']),
     partialScoring:
       partialScoring.settings && toggle(partialScoring.label),
-    limitChoicesNumber:
-      limitChoicesNumber.settings && toggle(limitChoicesNumber.label),
     lockChoiceOrder:
       lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
     feedbackEnabled:
@@ -315,9 +321,35 @@ const Design = withStyles(styles)(props => {
   );
 });
 
+const InfoDialog = ({ open, onCancel, onOk, title }) => (
+  <Dialog open={open}>
+    <DialogTitle>{title}</DialogTitle>
+    <DialogActions>
+      {onOk && (
+        <Button onClick={onOk} color="primary">
+          OK
+        </Button>
+      )}
+      {onCancel && (
+        <Button onClick={onCancel} color="primary">
+          Cancel
+        </Button>
+      )}
+    </DialogActions>
+  </Dialog>
+);
+
+InfoDialog.propTypes = {
+  open: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onOk: PropTypes.func,
+  title: PropTypes.string
+};
+
 export class Main extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     disableSidePanel: PropTypes.bool,
     onModelChanged: PropTypes.func.isRequired,
     onConfigurationChanged: PropTypes.func.isRequired,
@@ -328,17 +360,71 @@ export class Main extends React.Component {
     })
   };
 
-  onRemoveChoice = index => {
-    const { model } = this.props;
+  state = {
+    dialog: {
+      open: false
+    }
+  };
 
-    model.choices.splice(index, 1);
-    this.props.onModelChanged(model);
+  onRemoveChoice = index => {
+    const { model, configuration: { minAnswerChoices } } = this.props;
+
+    if (minAnswerChoices && model.choices.length === minAnswerChoices) {
+      this.setState({
+        dialog: {
+          open: true,
+          message:
+            `There can't be less than ${minAnswerChoices} choices.`,
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              },
+            );
+          },
+          onCancel: () =>
+            this.setState({
+              dialog: {
+                open: false
+              }
+            })
+        }
+      });
+    } else {
+      model.choices.splice(index, 1);
+      this.props.onModelChanged(model);
+    }
   };
 
   onAddChoice = () => {
-    const { model } = this.props;
+    const { model, configuration: { maxAnswerChoices } } = this.props;
 
-    if (!model.limitChoicesNumber || (model.limitChoicesNumber && model.choices.length < MAX_CHOICES)) {
+    if (maxAnswerChoices && model.choices.length === maxAnswerChoices) {
+      this.setState({
+        dialog: {
+          open: true,
+          message:
+            `There can't be more than ${maxAnswerChoices} choices.`,
+          onOk: () => {
+            this.setState(
+              {
+                dialog: {
+                  open: false
+                }
+              },
+            );
+          },
+          onCancel: () =>
+            this.setState({
+              dialog: {
+                open: false
+              }
+            })
+        }
+      });
+    } else {
       model.choices.push({
         label: '',
         value: utils.firstAvailableIndex(model.choices.map(c => c.value), 0),
@@ -410,16 +496,26 @@ export class Main extends React.Component {
   };
 
   render() {
+    const { dialog} = this.state;
+
     return (
-      <Design
-        {...this.props}
-        onChangeModel={this.onModelChanged}
-        onRemoveChoice={this.onRemoveChoice}
-        onChoiceChanged={this.onChoiceChanged}
-        onAddChoice={this.onAddChoice}
-        onPromptChanged={this.onPromptChanged}
-        onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
-      />
+      <>
+        <InfoDialog
+          open={dialog.open}
+          title={dialog.message}
+          onCancel={dialog.onCancel}
+          onOk={dialog.onOk}
+        />
+        <Design
+          {...this.props}
+          onChangeModel={this.onModelChanged}
+          onRemoveChoice={this.onRemoveChoice}
+          onChoiceChanged={this.onChoiceChanged}
+          onAddChoice={this.onAddChoice}
+          onPromptChanged={this.onPromptChanged}
+          onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
+        />
+      </>
     );
   }
 }
