@@ -132,7 +132,8 @@ export class NumberLineGraph extends React.Component {
       height,
       onToggleElement,
       onMoveElement,
-      disabled
+      disabled,
+      fraction
     } = this.props;
     let { arrows } = this.props;
 
@@ -220,12 +221,17 @@ export class NumberLineGraph extends React.Component {
       });
 
       return (
-        <svg width={width} height={height}>
-          {false && <Debug domain={domain} ticks={ticks}/>}
-          <BaseLine y={lineY} width={width}/>
-          {arrows.left && <Arrow y={lineY}/>}
-          {arrows.right && <Arrow x={width} y={lineY} direction="right"/>}
-          <Ticks y={lineY} domain={domain} ticks={ticks}/>
+        <svg width={width} height={fraction ? height + 20 : height}>
+          {false && <Debug domain={domain} ticks={ticks} />}
+          <BaseLine y={lineY} width={width} />
+          {arrows.left && <Arrow y={lineY} />}
+          {arrows.right && <Arrow x={width} y={lineY} direction="right" />}
+          <Ticks
+            y={lineY}
+            domain={domain}
+            ticks={ticks}
+            fraction={fraction}
+          />
           <rect
             ref={rect => (this.rect = rect)}
             //need to have a fill for it to be clickable

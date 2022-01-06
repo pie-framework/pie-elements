@@ -3,12 +3,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
+import * as math from "mathjs";
 
 export default class NumberLine extends HTMLElement {
-  static createDefaultModel = (model = {}) => ({
-    ...defaults.model,
-    ...model
-  });
+  static createDefaultModel = (model = {}) => {
+    const normalizedModel = {
+      ...defaults.model,
+      ...model
+    };
+    const { graph: { labelStep, ticks: { minor, major } = {}} = {}} = normalizedModel;
+
+    if (labelStep && typeof labelStep === 'string') {
+      normalizedModel.graph.fraction = true;
+
+      // update the ticks frequency and label value to match the label step if needed
+      const step = math.evaluate(labelStep);
+
+      if (step !== major) {
+        const spacesBetweenLabels = major / minor;
+
+        major = step;
+        minor = step / spacesBetweenLabels;
+      }
+    };
+
+    return normalizedModel;
+  };
 
   constructor() {
     super();

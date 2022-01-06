@@ -7,6 +7,7 @@ import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
+import * as math from 'mathjs';
 
 import defaults from './defaults';
 
@@ -226,14 +227,27 @@ export function model(question, session, env) {
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
+      const { exhibitOnly, labelStep, ticks: { minor, major } = {}} = graph;
+
+      if (labelStep && typeof labelStep === 'string') {
+        graph.fraction = true;
+
+        // update the ticks frequency and label value to match the label step if needed
+        const step = math.evaluate(labelStep);
+
+        if (step !== major) {
+          const spacesBetweenLabels = major / minor;
+
+          major = step;
+          minor = step / spacesBetweenLabels;
+        }
+      };
 
       const correctResponse = cloneDeep(normalizedQuestion.correctResponse);
       const corrected =
         evaluateMode &&
         getCorrected(session ? session.answer || [] : [], correctResponse);
       const correctness = evaluateMode && getCorrectness(corrected);
-
-      const { exhibitOnly } = graph;
 
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
 

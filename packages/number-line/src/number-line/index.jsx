@@ -206,15 +206,17 @@ export class NumberLine extends React.Component {
       height,
       availableTypes,
       title,
+      fraction
     } = graph;
     const width = this.getSize('width', 400, 1600, 600);
-    let graphProps = {
+    const graphProps = {
       disabled,
       domain,
       ticks,
       width,
       height: height || 100,
       arrows,
+      fraction
     };
 
     let getAnswerElements = () => {
