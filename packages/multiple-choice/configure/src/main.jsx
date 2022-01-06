@@ -367,7 +367,8 @@ export class Main extends React.Component {
   };
 
   onRemoveChoice = index => {
-    const { model, configuration: { minAnswerChoices } } = this.props;
+    const { model, configuration } = this.props;
+    const { minAnswerChoices } = configuration || {};
 
     if (minAnswerChoices && model.choices.length === minAnswerChoices) {
       this.setState({
@@ -399,7 +400,8 @@ export class Main extends React.Component {
   };
 
   onAddChoice = () => {
-    const { model, configuration: { maxAnswerChoices } } = this.props;
+    const { model, configuration } = this.props;
+    const { maxAnswerChoices } = configuration || {};
 
     if (maxAnswerChoices && model.choices.length === maxAnswerChoices) {
       this.setState({
