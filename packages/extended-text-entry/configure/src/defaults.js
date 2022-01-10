@@ -6,7 +6,7 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
-    equationEditor: 'miscellaneous',
+    equationEditor: 'Grade 8 - HS',
     feedbackEnabled: true,
     rationaleEnabled: true,
     promptEnabled: true,
