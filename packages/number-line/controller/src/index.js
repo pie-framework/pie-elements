@@ -216,7 +216,7 @@ export function createDefaultModel(model = {}) {
 };
 
 // this function is duplicated in configure; at some point, use the same shared function
-const updateFractionStep = model => {
+const updateTicks = model => {
   const { graph: { labelStep, ticks = {}} = {}} = model;
   const { minor, major } = ticks;
 
@@ -242,7 +242,7 @@ export function model(question, session, env) {
 
   return new Promise(async (resolve, reject) => {
     const normalizedQuestion = await normalize(question);
-    const { graph } = updateFractionStep(normalizedQuestion);
+    const { graph } = updateTicks(normalizedQuestion);
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';

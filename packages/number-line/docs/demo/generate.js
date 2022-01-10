@@ -96,7 +96,6 @@ exports.model = (id, element) => ({
     availableTypes: {
       PF: true
     },
-    labelStep: '1/6',
     title: '<div></div>'
   },
   id,
