@@ -191,13 +191,20 @@ export function model(question, session, env) {
       scoringType
     };
 
-    if (env.mode === 'evaluate' || env.mode === 'view') {
-      base.correctedAnswer = filterCategories(getScore(normalizedQuestion, session, env).answers, false);
+    const answers = filterCategories(getScore(normalizedQuestion, session, env).answers, false);
+
+    if (env.mode === 'view') {
+      base.correctedAnswer = answers.map(({correctness, ...rest}) => {
+        return { ...rest, interactive: false };
+      });
+
       base.addCategoryEnabled = false;
     }
 
     if (env.mode === 'evaluate') {
+      base.correctedAnswer = answers;
       base.correctAnswer = correctAnswer;
+      base.addCategoryEnabled = false;
     }
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {
