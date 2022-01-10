@@ -90,6 +90,10 @@ export class Main extends React.Component {
               'Settings': {
                 mathInput: mathInput.settings && toggle(mathInput.label),
                 equationEditor: equationEditor.enabled && model.mathInput && dropdown(equationEditor.label, [
+                  'non-negative-integers',
+                  'integers',
+                  'decimals',
+                  'fractions',
                   'Grade 1 - 2',
                   'Grade 3 - 5',
                   'Grade 6 - 7',
@@ -97,7 +101,7 @@ export class Main extends React.Component {
                   'geometry',
                   'advanced-algebra',
                   'statistics',
-                  'miscellaneous'
+                  'item-authoring'
                 ]),
                 dimensions: numberFields(dimensions.label, {
                   width: {
