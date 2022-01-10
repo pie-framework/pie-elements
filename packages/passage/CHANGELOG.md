@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.4...@pie-element/passage@1.7.5) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.7.1...@pie-element/passage@1.7.2) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.7.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.6...@pie-element/passage@1.7.1) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
 # [1.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.3...@pie-element/passage@1.7.0) (2021-11-11)
 
 
@@ -14,6 +38,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **passage:** implement print PD-1282 ([7fa16d3](https://github.com/pie-framework/pie-elements/commit/7fa16d35568419109c8394a091a88d5d3b418564))
+
+
+
+
+
+
+## [1.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.5...@pie-element/passage@1.6.6) (2021-11-01)
+
+**Note:** Version bump only for package @pie-element/passage
+
+
+
+
+
+## [1.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/passage@1.6.4...@pie-element/passage@1.6.5) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/passage
 
 
 

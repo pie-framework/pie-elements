@@ -3,12 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.17...@pie-element/match-list@1.12.18) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.12.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.15...@pie-element/match-list@1.12.16) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.12.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.12...@pie-element/match-list@1.12.13) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
+## [1.12.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.5...@pie-element/match-list@1.12.12) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/match-list
+
+
+
+
+
 ## [1.12.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.3...@pie-element/match-list@1.12.11) (2021-11-11)
 
 
 ### Bug Fixes
 
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+
+
+
+
+## [1.12.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-list@1.12.4...@pie-element/match-list@1.12.5) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/match-list
 
 
 

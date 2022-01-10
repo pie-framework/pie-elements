@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.16...@pie-element/image-cloze-association@3.6.17) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.14...@pie-element/image-cloze-association@3.6.15) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.11...@pie-element/image-cloze-association@3.6.12) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.7...@pie-element/image-cloze-association@3.6.11) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
 ## [3.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.2...@pie-element/image-cloze-association@3.6.10) (2021-11-11)
 
 
@@ -19,6 +51,44 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **image-cloze-association:** Moved the evaluate symbol to fit in the available content PD-1244 ([3266e19](https://github.com/pie-framework/pie-elements/commit/3266e199e1147773fe57d199a6ae468855d05af6))
 * **image-cloze-association:** Removed correct answer in evaluate mode for empty response ([18c886c](https://github.com/pie-framework/pie-elements/commit/18c886c14655b42e4b9b549a700bf0258b9cefc1))
 * **image-cloze-association:** Used classnames instead ([544be10](https://github.com/pie-framework/pie-elements/commit/544be10da1225e5a52e4f0d3b51d52f9714591ae))
+
+
+
+
+
+
+## [3.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.6...@pie-element/image-cloze-association@3.6.7) (2021-11-01)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.5...@pie-element/image-cloze-association@3.6.6) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.4...@pie-element/image-cloze-association@3.6.5) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+
+
+
+## [3.6.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.3...@pie-element/image-cloze-association@3.6.4) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
 
 
 

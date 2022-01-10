@@ -3,7 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.6.2...@pie-element/ebsr@7.0.0) (2021-11-11)
+## [7.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.10...@pie-element/ebsr@7.0.11) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.8...@pie-element/ebsr@7.0.9) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.5...@pie-element/ebsr@7.0.6) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.4...@pie-element/ebsr@7.0.5) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.3...@pie-element/ebsr@7.0.4) (2021-11-01)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.2...@pie-element/ebsr@7.0.3) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+## [7.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.1...@pie-element/ebsr@7.0.2) (2021-09-20)
 
 
 ### Bug Fixes
@@ -13,11 +61,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 
+
+
+
+## [7.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@7.0.0...@pie-element/ebsr@7.0.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/ebsr
+
+
+
+
+
+# [7.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/ebsr@6.7.0...@pie-element/ebsr@7.0.0) (2021-08-09)
+
+
 ### Features
 
 * **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
 * **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
-* **ebsr:** Allowed Part A to be multiple select PD-259 ([85530fc](https://github.com/pie-framework/pie-elements/commit/85530fce124ca5b09c024959c0147ac56b027a15))
 
 
 ### BREAKING CHANGES

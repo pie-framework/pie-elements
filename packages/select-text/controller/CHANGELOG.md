@@ -3,16 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.1.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.17...@pie-element/select-text-controller@4.1.18) (2021-11-11)
+## [4.1.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.25...@pie-element/select-text-controller@4.1.26) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.22...@pie-element/select-text-controller@4.1.23) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.21...@pie-element/select-text-controller@4.1.22) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.20...@pie-element/select-text-controller@4.1.21) (2021-10-01)
+
+
+### Bug Fixes
+
+* Remove breaking import. ([a89168d](https://github.com/pie-framework/pie-elements/commit/a89168ddc8d6986eadf74589994f4b4012040721))
+
+
+
+
+
+## [4.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.19...@pie-element/select-text-controller@4.1.20) (2021-09-20)
 
 
 ### Bug Fixes
 
 * move dom logic from controller to player ([2425be1](https://github.com/pie-framework/pie-elements/commit/2425be1e506b153d946b7643f4b024d2e0edfbbb))
-* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
-* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 * **select-text:** move prepareText function to pie-lib ([26eb7bd](https://github.com/pie-framework/pie-elements/commit/26eb7bd7e9d2804286886a0f92f9993d67f6cf77))
+
+
+
+
+
+## [4.1.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.18...@pie-element/select-text-controller@4.1.19) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/select-text-controller
+
+
+
+
+
+## [4.1.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.17...@pie-element/select-text-controller@4.1.18) (2021-08-09)
+
+
+### Bug Fixes
+
+* tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
+* tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
 
 
 

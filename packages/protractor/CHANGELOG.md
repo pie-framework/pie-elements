@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.7.3...@pie-element/protractor@2.7.11) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/protractor
+
+
+
+
+
 ## [2.7.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/protractor@2.7.3...@pie-element/protractor@2.7.10) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/protractor
