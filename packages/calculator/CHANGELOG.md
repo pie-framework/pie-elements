@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.14.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.18...@pie-element/calculator@2.14.19) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
 ## [2.14.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.17...@pie-element/calculator@2.14.18) (2021-12-23)
 
 **Note:** Version bump only for package @pie-element/calculator
