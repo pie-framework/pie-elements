@@ -3,27 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.4.2...@pie-element/multiple-choice-configure@4.0.0) (2021-11-11)
+## [4.0.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.8...@pie-element/multiple-choice-configure@4.0.9) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [4.0.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.6...@pie-element/multiple-choice-configure@4.0.7) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [4.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.3...@pie-element/multiple-choice-configure@4.0.4) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [4.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.2...@pie-element/multiple-choice-configure@4.0.3) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+## [4.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.1...@pie-element/multiple-choice-configure@4.0.2) (2021-09-20)
 
 
 ### Bug Fixes
 
-* merge conflict ([01655ca](https://github.com/pie-framework/pie-elements/commit/01655caf59311cc1a7a6624a6243147b2819d76e))
 * pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
 * Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
+
+
+
+
+
+## [4.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.0...@pie-element/multiple-choice-configure@4.0.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
+# [4.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@3.5.0...@pie-element/multiple-choice-configure@4.0.0) (2021-08-09)
 
 
 ### Features
 
 * **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
 * **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
-* **multiple-choice:** accessibility label - added aria label to checkbox and radio input types ([22514bb](https://github.com/pie-framework/pie-elements/commit/22514bb5e2476bc79a55756ff9a5c0c1e0642a29))
-* if there are no choices - do not show grid columns dropdown BREAKING CHANGE: removed verticalMode(boolean) from model & configuration - and replaced it with choicesLayout(string) ([1c36ae8](https://github.com/pie-framework/pie-elements/commit/1c36ae8b7f9369b2723a6a84e7350370e1186c50))
-* **multiple-choice:** added possibility to change layout - vertical, grid, horizontal ([46e7681](https://github.com/pie-framework/pie-elements/commit/46e7681a178ff29c983db1c7b6206389b55e2a00))
-* **multiple-choice:** grid layout - fix tests ([ab3c750](https://github.com/pie-framework/pie-elements/commit/ab3c750af03d9fbe0794f7ec53452c948b530ad8))
-* **multiple-choice:** toolbar position ( bottom or top ) ([9af6cd9](https://github.com/pie-framework/pie-elements/commit/9af6cd9f6b893501e00640500a34e1c3404edc94))
-* **multiple-choice:** update docs ([0843122](https://github.com/pie-framework/pie-elements/commit/084312288b501a7f1129b24a046f9ab19cf25f79))
 
 
 ### BREAKING CHANGES

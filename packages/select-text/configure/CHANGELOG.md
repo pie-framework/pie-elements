@@ -3,7 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.2...@pie-element/select-text-configure@5.2.4) (2021-11-11)
+## [5.2.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.12...@pie-element/select-text-configure@5.2.13) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.10...@pie-element/select-text-configure@5.2.11) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.7...@pie-element/select-text-configure@5.2.8) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.6...@pie-element/select-text-configure@5.2.7) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.5...@pie-element/select-text-configure@5.2.6) (2021-09-20)
 
 
 ### Bug Fixes
@@ -12,9 +44,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 * **select-text:** move prepareText function to pie-lib ([26eb7bd](https://github.com/pie-framework/pie-elements/commit/26eb7bd7e9d2804286886a0f92f9993d67f6cf77))
+
+
+
+
+
+## [5.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.4...@pie-element/select-text-configure@5.2.5) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.3...@pie-element/select-text-configure@5.2.4) (2021-08-09)
+
+
+### Bug Fixes
+
 * tokens in player ([e9a8ad7](https://github.com/pie-framework/pie-elements/commit/e9a8ad7205212640e349982cd84fe4d606efbc79))
 * tokens in player ([fc96766](https://github.com/pie-framework/pie-elements/commit/fc96766884b14fed7ad6e476431edde27dffcd52))
-* **select-text:** fix initial view of tokens in authoring PD-1235 ([22cbc2c](https://github.com/pie-framework/pie-elements/commit/22cbc2cf58e874e095866bd7b36a0a026fc4f11c))
 
 
 
