@@ -83,7 +83,7 @@ exports.model = (id, element) => ({
     maxNumberOfPoints: 1,
     ticks: {
       major: 0.08333333,
-      minor: 0.08333333
+      minor: 0.041666665,
     },
     domain: {
       min: 0,
@@ -96,6 +96,7 @@ exports.model = (id, element) => ({
     availableTypes: {
       PF: true
     },
+    labelStep: '1/6',
     title: '<div></div>'
   },
   id,

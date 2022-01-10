@@ -69,7 +69,12 @@ export class Tick extends React.Component {
     const displayFraction = fraction && x.n !== x.d && x.n !== 0;
     const labelTick = type === 'major';
     const height = labelTick ? 20 : 10;
-    const fractionWidth = this.text ? this.text.getBBox().width : 0;
+    const {
+      width: textWidth = 0,
+      height: textHeight = 0,
+      x: textX = 0,
+      y: textY = 0
+    } = this.text ? this.text.getBBox() : {};
 
     const xText = !fraction ? Number(x.toFixed(2))
       : !displayFraction ? x.n
@@ -91,10 +96,10 @@ export class Tick extends React.Component {
         {displayFraction &&
           <line
             className={classes.line}
-            x1={(fractionWidth / 2) * -1}
-            x2={fractionWidth / 2}
-            y1="28"
-            y2="28"
+            x1={textX}
+            x2={textX + textWidth}
+            y1={textY + textHeight / 2}
+            y2={textY + textHeight / 2}
           />
         }
 
