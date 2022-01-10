@@ -46,6 +46,7 @@ export class Tick extends React.Component {
     y: PropTypes.number.isRequired,
     x: PropTypes.number.isRequired,
     major: PropTypes.bool,
+    fraction: PropTypes.bool,
     xScale: PropTypes.func,
     type: PropTypes.string
   };
@@ -54,21 +55,45 @@ export class Tick extends React.Component {
     major: false
   };
 
+  constructor(props) {
+    super(props);
+    this.wasRendered = false;
+  };
+
   componentDidMount() {
     //center align the tick text
     if (this.text) {
+      const { fraction } = this.props;
       let { width } = this.text.getBBox();
       this.text.setAttribute('x', (width / 2) * -1);
+
+      if (fraction && !this.wasRendered) {
+        // used for rendering the line fraction
+        this.wasRendered = true;
+        this.forceUpdate();
+      }
     }
   }
 
   render() {
     //the domain value
-    let { x, y, type, classes, xScale } = this.props;
-
-    let xText = Number(x.toFixed(2));
+    let { x, y, type, classes, xScale, fraction } = this.props;
+    const displayFraction = fraction && x.n !== x.d && x.n !== 0;
     const labelTick = type === 'major';
-    let height = labelTick ? 20 : 10;
+    const height = labelTick ? 20 : 10;
+    const {
+      width: textWidth = 0,
+      height: textHeight = 0,
+      x: textX = 0,
+      y: textY = 0
+    } = this.text && this.text.getBBox() || {};
+
+    const xText = !fraction ? Number(x.toFixed(2))
+      : !displayFraction ? x.n
+        : <>
+          <tspan x="0" dy="0.71em">{x.n}</tspan>
+          <tspan x="0" dy="1.11em">{x.d}</tspan>
+        </>;
 
     return (
       <g opacity="1" transform={`translate(${xScale(x)}, ${y})`}>
@@ -79,6 +104,17 @@ export class Tick extends React.Component {
           x1="0.5"
           x2="0.5"
         />
+
+        {displayFraction &&
+          <line
+            className={classes.line}
+            x1={textX}
+            x2={textX + textWidth}
+            y1={textY + textHeight / 2}
+            y2={textY + textHeight / 2}
+          />
+        }
+
         {labelTick && (
           <text
             ref={text => (this.text = text)}
@@ -86,6 +122,7 @@ export class Tick extends React.Component {
             y="14"
             width="10"
             dy="0.71em"
+            textAnchor={displayFraction && "middle"}
           >
             {xText}
           </text>
@@ -106,21 +143,24 @@ export class Ticks extends React.Component {
       min: PropTypes.number.isRequired,
       max: PropTypes.number.isRequired
     }).isRequired,
+    fraction: PropTypes.bool,
     ticks: TickValidator,
     y: PropTypes.number.isRequired
   };
 
   render() {
-    let { domain, ticks, y, classes } = this.props;
+    let { domain, ticks, y, classes, fraction } = this.props;
     let { xScale } = this.context;
 
-    const tickData = buildTickData(domain, ticks);
+    const tickData = buildTickData(domain, ticks, { fraction });
+
     return (
       <g>
         {tickData.map(({ x, type }) => {
           return (
             <Tick
               classes={classes}
+              fraction={fraction}
               x={x}
               y={y}
               type={type}

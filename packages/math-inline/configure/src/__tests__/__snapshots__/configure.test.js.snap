@@ -305,6 +305,26 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       value="8"
     >
       <WithStyles(MenuItem)
+        value="non-negative-integers"
+      >
+        Numeric - Non-Negative Integers
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="integers"
+      >
+        Numeric - Integers
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="decimals"
+      >
+        Numeric - Decimals
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
+        value="fractions"
+      >
+        Numeric - Fractions
+      </WithStyles(MenuItem)>
+      <WithStyles(MenuItem)
         value={1}
       >
         Grade 1 - 2
@@ -340,9 +360,9 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
         Statistics
       </WithStyles(MenuItem)>
       <WithStyles(MenuItem)
-        value="miscellaneous"
+        value="item-authoring"
       >
-        Miscellaneous
+        Item Authoring
       </WithStyles(MenuItem)>
     </WithStyles(WithFormControlContext(Select))>
   </InputContainer>
@@ -387,6 +407,26 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
         value="3"
       >
         <WithStyles(MenuItem)
+          value="non-negative-integers"
+        >
+          Numeric - Non-Negative Integers
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="integers"
+        >
+          Numeric - Integers
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="decimals"
+        >
+          Numeric - Decimals
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          value="fractions"
+        >
+          Numeric - Fractions
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
           value={1}
         >
           Grade 1 - 2
@@ -422,9 +462,9 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
           Statistics
         </WithStyles(MenuItem)>
         <WithStyles(MenuItem)
-          value="miscellaneous"
+          value="item-authoring"
         >
-          Miscellaneous
+          Item Authoring
         </WithStyles(MenuItem)>
       </WithStyles(WithFormControlContext(Select))>
     </InputContainer>

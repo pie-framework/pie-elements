@@ -56,6 +56,7 @@ interface Domain {
 interface Ticks {
   /** smallest tick - These ticks don't have labels. */
   minor: number;
+
   /** larger tick - These ticks have labels. */
   major: number;
 }
@@ -68,6 +69,7 @@ interface Arrows {
 interface NumberLineDomainConfiguration {
   /** display arrows */
   arrows: Arrows;
+
   /** Indicates domain representation width */
   width: number;
 
@@ -130,6 +132,9 @@ interface NumberLineDomainConfiguration {
 
   /** Array of initial responses */
   initialElements: ResponseArray;
+
+  /** Indicates the fractional step between 2 labeled ticks */
+  labelStep: string
 }
 
 /**

@@ -401,6 +401,10 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('promptEquationEditor')}
               value={promptEquationEditor}
             >
+              <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
+              <MenuItem value="integers">Numeric - Integers</MenuItem>
+              <MenuItem value="decimals">Numeric - Decimals</MenuItem>
+              <MenuItem value="fractions">Numeric - Fractions</MenuItem>
               <MenuItem value={1}>Grade 1 - 2</MenuItem>
               <MenuItem value={3}>Grade 3 - 5</MenuItem>
               <MenuItem value={6}>Grade 6 - 7</MenuItem>
@@ -408,7 +412,7 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'geometry'}>Geometry</MenuItem>
               <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
               <MenuItem value={'statistics'}>Statistics</MenuItem>
-              <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
+              <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
             </Select>
           </InputContainer>,
           <div className={classes.inputContainer} key="templateHolder">
@@ -439,6 +443,10 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('equationEditor')}
               value={equationEditor}
             >
+              <MenuItem value="non-negative-integers">Numeric - Non-Negative Integers</MenuItem>
+              <MenuItem value="integers">Numeric - Integers</MenuItem>
+              <MenuItem value="decimals">Numeric - Decimals</MenuItem>
+              <MenuItem value="fractions">Numeric - Fractions</MenuItem>
               <MenuItem value={1}>Grade 1 - 2</MenuItem>
               <MenuItem value={3}>Grade 3 - 5</MenuItem>
               <MenuItem value={6}>Grade 6 - 7</MenuItem>
@@ -446,7 +454,7 @@ class GeneralConfigBlock extends React.Component {
               <MenuItem value={'geometry'}>Geometry</MenuItem>
               <MenuItem value={'advanced-algebra'}>Advanced Algebra</MenuItem>
               <MenuItem value={'statistics'}>Statistics</MenuItem>
-              <MenuItem value={'miscellaneous'}>Miscellaneous</MenuItem>
+              <MenuItem value={'item-authoring'}>Item Authoring</MenuItem>
             </Select>
           </InputContainer>
         </div>
