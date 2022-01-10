@@ -14,7 +14,6 @@ export default {
     feedbackEnabled: true,
     promptEnabled: true,
     rationaleEnabled: true,
-    limitChoicesNumber: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
@@ -33,10 +32,6 @@ export default {
     addChoiceButton: {
       settings: true,
       label: 'Add a Choice',
-    },
-    limitChoicesNumber: {
-      settings: true,
-      label: 'Limit choices to 9',
     },
     choiceMode: {
       settings: true,
@@ -89,5 +84,7 @@ export default {
       settings: false,
       label: 'Toolbar Editor Position',
     },
+    minAnswerChoices: 2,
+    maxAnswerChoices: 5
   },
 };

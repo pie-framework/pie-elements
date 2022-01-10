@@ -271,6 +271,16 @@
         }
       }
     },
+    "minAnswerChoices": {
+      "description": "Minimum number of answer choices",
+      "type": "number",
+      "title": "minAnswerChoices"
+    },
+    "maxAnswerChoices": {
+      "description": "Maximum number of answer choices",
+      "type": "number",
+      "title": "maxAnswerChoices"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,
