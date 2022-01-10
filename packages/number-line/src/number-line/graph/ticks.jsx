@@ -55,11 +55,23 @@ export class Tick extends React.Component {
     major: false
   };
 
+  constructor(props) {
+    super(props);
+    this.wasRendered = false;
+  };
+
   componentDidMount() {
     //center align the tick text
     if (this.text) {
+      const { fraction } = this.props;
       let { width } = this.text.getBBox();
       this.text.setAttribute('x', (width / 2) * -1);
+
+      if (fraction && !this.wasRendered) {
+        // used for rendering the line fraction
+        this.wasRendered = true;
+        this.forceUpdate();
+      }
     }
   }
 
@@ -74,7 +86,7 @@ export class Tick extends React.Component {
       height: textHeight = 0,
       x: textX = 0,
       y: textY = 0
-    } = this.text ? this.text.getBBox() : {};
+    } = this.text && this.text.getBBox() || {};
 
     const xText = !fraction ? Number(x.toFixed(2))
       : !displayFraction ? x.n
