@@ -1,141 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
-<WithStyles(Component)
-  classes={Object {}}
-  model={
-    Object {
-      "choiceMode": "checkbox",
-      "choicePrefix": "letters",
-      "choices": Array [
-        Object {
-          "correct": true,
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+<Fragment>
+  <InfoDialog
+    open={false}
+  />
+  <WithStyles(Component)
+    classes={Object {}}
+    model={
+      Object {
+        "choiceMode": "checkbox",
+        "choicePrefix": "letters",
+        "choices": Array [
+          Object {
+            "correct": true,
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Sweden",
+            "value": "sweden",
           },
-          "label": "Sweden",
-          "value": "sweden",
-        },
-        Object {
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Iceland",
+            "value": "iceland",
           },
-          "label": "Iceland",
-          "value": "iceland",
-        },
-        Object {
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Norway",
+            "value": "norway",
           },
-          "label": "Norway",
-          "value": "norway",
-        },
-        Object {
-          "correct": true,
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "correct": true,
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Finland",
+            "value": "finland",
           },
-          "label": "Finland",
-          "value": "finland",
-        },
-      ],
-      "choicesLayout": "vertical",
-      "configure": Object {},
-      "feedbackEnabled": true,
-      "gridColumns": "2",
-      "limitChoicesNumber": true,
-      "lockChoiceOrder": true,
-      "partialScoring": false,
-      "prompt": "Which of these northern European countries are EU members?",
-      "promptEnabled": true,
-      "rationaleEnabled": true,
-      "scoringType": "auto",
-      "studentInstructionsEnabled": true,
-      "teacherInstructionsEnabled": true,
-      "toolbarEditorPosition": "bottom",
+        ],
+        "choicesLayout": "vertical",
+        "configure": Object {},
+        "feedbackEnabled": true,
+        "gridColumns": "2",
+        "lockChoiceOrder": true,
+        "partialScoring": false,
+        "prompt": "Which of these northern European countries are EU members?",
+        "promptEnabled": true,
+        "rationaleEnabled": true,
+        "scoringType": "auto",
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "toolbarEditorPosition": "bottom",
+      }
     }
-  }
-  onAddChoice={[Function]}
-  onChangeModel={[Function]}
-  onChoiceChanged={[Function]}
-  onConfigurationChanged={[MockFunction]}
-  onModelChanged={[MockFunction]}
-  onPromptChanged={[Function]}
-  onRemoveChoice={[Function]}
-  onTeacherInstructionsChanged={[Function]}
-/>
+    onAddChoice={[Function]}
+    onChangeModel={[Function]}
+    onChoiceChanged={[Function]}
+    onConfigurationChanged={[MockFunction]}
+    onModelChanged={[MockFunction]}
+    onPromptChanged={[Function]}
+    onRemoveChoice={[Function]}
+    onTeacherInstructionsChanged={[Function]}
+  />
+</Fragment>
 `;
 
 exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
-<WithStyles(Component)
-  classes={Object {}}
-  model={
-    Object {
-      "choiceMode": "checkbox",
-      "choicePrefix": "numbers",
-      "choices": Array [
-        Object {
-          "correct": true,
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+<Fragment>
+  <InfoDialog
+    open={false}
+  />
+  <WithStyles(Component)
+    classes={Object {}}
+    model={
+      Object {
+        "choiceMode": "checkbox",
+        "choicePrefix": "numbers",
+        "choices": Array [
+          Object {
+            "correct": true,
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Sweden",
+            "value": "sweden",
           },
-          "label": "Sweden",
-          "value": "sweden",
-        },
-        Object {
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Iceland",
+            "value": "iceland",
           },
-          "label": "Iceland",
-          "value": "iceland",
-        },
-        Object {
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Norway",
+            "value": "norway",
           },
-          "label": "Norway",
-          "value": "norway",
-        },
-        Object {
-          "correct": true,
-          "feedback": Object {
-            "type": "none",
-            "value": "",
+          Object {
+            "correct": true,
+            "feedback": Object {
+              "type": "none",
+              "value": "",
+            },
+            "label": "Finland",
+            "value": "finland",
           },
-          "label": "Finland",
-          "value": "finland",
-        },
-      ],
-      "choicesLayout": "vertical",
-      "configure": Object {},
-      "feedbackEnabled": true,
-      "gridColumns": "2",
-      "limitChoicesNumber": true,
-      "lockChoiceOrder": true,
-      "partialScoring": false,
-      "prompt": "Which of these northern European countries are EU members?",
-      "promptEnabled": true,
-      "rationaleEnabled": true,
-      "scoringType": "auto",
-      "studentInstructionsEnabled": true,
-      "teacherInstructionsEnabled": true,
-      "toolbarEditorPosition": "bottom",
+        ],
+        "choicesLayout": "vertical",
+        "configure": Object {},
+        "feedbackEnabled": true,
+        "gridColumns": "2",
+        "lockChoiceOrder": true,
+        "partialScoring": false,
+        "prompt": "Which of these northern European countries are EU members?",
+        "promptEnabled": true,
+        "rationaleEnabled": true,
+        "scoringType": "auto",
+        "studentInstructionsEnabled": true,
+        "teacherInstructionsEnabled": true,
+        "toolbarEditorPosition": "bottom",
+      }
     }
-  }
-  onAddChoice={[Function]}
-  onChangeModel={[Function]}
-  onChoiceChanged={[Function]}
-  onConfigurationChanged={[MockFunction]}
-  onModelChanged={[MockFunction]}
-  onPromptChanged={[Function]}
-  onRemoveChoice={[Function]}
-  onTeacherInstructionsChanged={[Function]}
-/>
+    onAddChoice={[Function]}
+    onChangeModel={[Function]}
+    onChoiceChanged={[Function]}
+    onConfigurationChanged={[MockFunction]}
+    onModelChanged={[MockFunction]}
+    onPromptChanged={[Function]}
+    onRemoveChoice={[Function]}
+    onTeacherInstructionsChanged={[Function]}
+  />
+</Fragment>
 `;

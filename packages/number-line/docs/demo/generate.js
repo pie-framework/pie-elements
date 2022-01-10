@@ -50,9 +50,6 @@ exports.oldModel = (id, element) => ({
       }
     ],
     maxNumberOfPoints: 20,
-    // tickFrequency: 6,
-    showMinorTicks: true,
-    snapPerTick: 1,
     tickLabelOverrides: [],
     initialType: 'PF',
     exhibitOnly: false,
@@ -83,7 +80,7 @@ exports.model = (id, element) => ({
     maxNumberOfPoints: 1,
     ticks: {
       major: 0.08333333,
-      minor: 0.08333333
+      minor: 0.041666665,
     },
     domain: {
       min: 0,

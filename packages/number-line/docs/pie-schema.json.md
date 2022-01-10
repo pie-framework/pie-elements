@@ -136,6 +136,10 @@ Indicates if ray with empty point and positive direction is available
 
 Array that returns responses
 
+## `labelStep` (string, required)
+
+Indicates the fractional step between 2 labeled ticks
+
 # `prompt` (string)
 
 The question prompt or item stem
@@ -438,6 +442,10 @@ Indicates if ray with empty point and positive direction is available
 ### `initialElements` (object, required)
 
 Array that returns responses
+
+### `labelStep` (string, required)
+
+Indicates the fractional step between 2 labeled ticks
 
 ## `Arrows` (object)
 

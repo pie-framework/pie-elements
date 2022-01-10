@@ -618,6 +618,11 @@
             }
           },
           "title": "initialElements"
+        },
+        "labelStep": {
+          "description": "Indicates the fractional step between 2 labeled ticks",
+          "type": "string",
+          "title": "labelStep"
         }
       },
       "required": [
@@ -627,6 +632,7 @@
         "exhibitOnly",
         "initialElements",
         "initialType",
+        "labelStep",
         "maxNumberOfPoints",
         "tick",
         "width"
@@ -1326,6 +1332,11 @@
             }
           },
           "title": "initialElements"
+        },
+        "labelStep": {
+          "description": "Indicates the fractional step between 2 labeled ticks",
+          "type": "string",
+          "title": "labelStep"
         }
       },
       "required": [
@@ -1335,6 +1346,7 @@
         "exhibitOnly",
         "initialElements",
         "initialType",
+        "labelStep",
         "maxNumberOfPoints",
         "tick",
         "width"
