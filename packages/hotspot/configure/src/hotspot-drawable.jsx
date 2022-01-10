@@ -43,22 +43,34 @@ export class Drawable extends React.Component {
   /// start of handling HotSpots section
   handleOnMouseDown = (e) => {
     if (e.target === e.currentTarget) {
-      const { onUpdateShapes, shapes } = this.props;
-      // Add a new rectangle at the mouse position with 0 width and height
+      const {onUpdateShapes, shapes, currentShape} = this.props;
+      // Add a new rectangle or circle at the mouse position with 0 width and height
       const newShapes = shapes.slice();
       const value = max(newShapes.map(c => parseInt(c.id)).filter(id => !isNaN(id))) || 0;
 
-      newShapes.push({
-        id: `${value + 1}`,
-        height: 0,
-        width: 0,
-        x: e.evt.layerX,
-        y: e.evt.layerY,
-        group: 'rectangles',
-        index: shapes.length
-      });
-
-      this.setState({ isDrawing: true, isDrawingShapeId: `${value + 1}` });
+      console.log(e.evt);
+      if (currentShape === 'rectangle') {
+        newShapes.push({
+          id: `${value + 1}`,
+          height: 0,
+          width: 0,
+          x: e.evt.layerX,
+          y: e.evt.layerY,
+          group: 'rectangles',
+          index: shapes.length
+        });
+      } else if (currentShape === 'circle') {
+        newShapes.push({
+          id: `${value + 1}`,
+          height: 0,
+          width: 0,
+          x: e.evt.layerX,
+          y: e.evt.layerY,
+          group: 'circles',
+          index: shapes.length
+        });
+      }
+      this.setState({isDrawing: true, isDrawingShapeId: `${value + 1}`});
       onUpdateShapes(newShapes);
     }
   };

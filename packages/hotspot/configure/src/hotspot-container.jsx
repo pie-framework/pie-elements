@@ -7,6 +7,8 @@ import Drawable from './hotspot-drawable';
 import Button from './button';
 import UploadControl from './upload-control';
 import { getAllShapes, groupShapes } from './utils';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const isImage = (file) => {
   const imageType = /image.*/;
@@ -28,7 +30,8 @@ export class Container extends Component {
     this.state = {
       dragEnabled: true,
       // always transform shapes map into shapes array at this level
-      shapes: getAllShapes(props.shapes)
+      shapes: getAllShapes(props.shapes),
+      currentShape: 'rectangle'
     }
   }
 
@@ -136,7 +139,8 @@ export class Container extends Component {
     const {
       dropzoneActive,
       dragEnabled,
-      showTooltip
+      showTooltip,
+      currentShape
     } = this.state;
     const { shapes } = this.state;
 
@@ -152,6 +156,14 @@ export class Container extends Component {
              } : {}}
         >
           <div className={classes.toolbar}>
+            <Select
+              value={currentShape}
+              onChange={(event => this.setState({ ...this.state, currentShape: event.target.value }))}
+            >
+              <MenuItem value={'rectangle'}>Rectangle</MenuItem>
+              <MenuItem value={'circle'}>Circle</MenuItem>
+            </Select>
+
             {imageUrl && (
               <UploadControl
                 classNameButton={classes.replaceButton}
@@ -196,6 +208,7 @@ export class Container extends Component {
                   shapes={shapes}
                   strokeWidth={strokeWidth}
                   preserveAspectRatioEnabled={preserveAspectRatioEnabled}
+                  currentShape={currentShape}
                 />
               )
               : (
@@ -269,7 +282,7 @@ const styles = theme => ({
     color: '#C1C1C1'
   },
   replaceButton: {
-    marginLeft: 0,
+    marginLeft: 10,
   },
   replaceSection: {
     marginRight: 'auto'
