@@ -78,7 +78,7 @@ export class Tick extends React.Component {
   render() {
     //the domain value
     let { x, y, type, classes, xScale, fraction } = this.props;
-    const displayFraction = fraction && x.n !== x.d && x.n !== 0;
+    const displayFraction = fraction && x.n !== x.d && x.n !== 0 && x.d !== 1;
     const labelTick = type === 'major';
     const height = labelTick ? 20 : 10;
     const {
