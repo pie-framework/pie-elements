@@ -49,7 +49,7 @@ export default class NumberLine extends HTMLElement {
   onChange = o => {
     this._model = { ...this._model, ...o };
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
 
     this._rerender();
   };
