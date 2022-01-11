@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.9.7...@pie-element/drawing-response@3.9.8) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/drawing-response
+
+
+
+
+
 ## [3.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/drawing-response@3.9.6...@pie-element/drawing-response@3.9.7) (2021-12-23)
 
 **Note:** Version bump only for package @pie-element/drawing-response

@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "3.9.8",
+  "version": "3.9.9",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
