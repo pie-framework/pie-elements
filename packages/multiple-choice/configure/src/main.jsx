@@ -401,7 +401,13 @@ export class Main extends React.Component {
 
   onAddChoice = () => {
     const { model, configuration } = this.props;
-    const { maxAnswerChoices } = configuration || {};
+    let { maxAnswerChoices } = configuration || {};
+    const { limitChoicesNumber } = model || {};
+
+    // if old property is used, set maxAnswerChoices to 9
+    if (limitChoicesNumber) {
+      maxAnswerChoices = MAX_CHOICES;
+    }
 
     if (maxAnswerChoices && model.choices.length === maxAnswerChoices) {
       this.setState({
