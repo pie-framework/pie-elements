@@ -89,9 +89,9 @@ export class Tick extends React.Component {
     } = this.text && this.text.getBBox() || {};
 
     const xText = !fraction ? Number(x.toFixed(2))
-      : !displayFraction ? x.n
+      : !displayFraction ? x.n * x.s
         : <>
-          <tspan x="0" dy="0.71em">{x.n}</tspan>
+          <tspan x="0" dy="0.71em">{x.n * x.s}</tspan>
           <tspan x="0" dy="1.11em">{x.d}</tspan>
         </>;
 
