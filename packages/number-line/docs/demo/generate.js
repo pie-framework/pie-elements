@@ -80,7 +80,7 @@ exports.model = (id, element) => ({
     maxNumberOfPoints: 1,
     ticks: {
       major: 0.08333333,
-      minor: 0.041666665,
+      minor: 0.08333333,
     },
     domain: {
       min: 0,
