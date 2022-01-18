@@ -40,6 +40,14 @@ const getUpdatedRectangle = (initialDim, nextDim, shape) => ({
   y: getDelta(initialDim.height, nextDim.height, shape.y),
 });
 
+const getUpdatedCircle = (initialDim, nextDim, shape) => ({
+  ...shape,
+  width: getDelta(initialDim.width, nextDim.width, shape.width),
+  height: getDelta(initialDim.height, nextDim.height, shape.height),
+  x: getDelta(initialDim.width, nextDim.width, shape.x),
+  y: getDelta(initialDim.height, nextDim.height, shape.y),
+});
+
 const getUpdatedPlygon = (initialDim, nextDim, shape) => ({
   ...shape,
   points: shape.points.map(point => ({
@@ -59,6 +67,10 @@ const getUpdatedShapes = (initialDim, nextDim, shapes) => {
 
     if (shape.group === 'polygons') {
       return getUpdatedPlygon(initialDim, nextDim, shape);
+    }
+
+    if (shape.group === 'circles') {
+      return getUpdatedCircle(initialDim, nextDim, shape);
     }
   });
 };

@@ -48,7 +48,7 @@ class RectComponent extends React.Component {
       width,
       x,
       y,
-      radius,
+      radius = 50,
       evaluateText,
       strokeWidth
     } = this.props;
@@ -94,7 +94,7 @@ class RectComponent extends React.Component {
           onMouseEnter={this.handleMouseEnter}
           x={x}
           y={y}
-          radius={radius || 50}
+          radius={radius < 0 ? 0 : radius}
         />
         {(isEvaluateMode && iconSrc) ? (
           <Image

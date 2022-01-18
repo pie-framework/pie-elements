@@ -64,6 +64,7 @@ export class Drawable extends React.Component {
           id: `${value + 1}`,
           height: 0,
           width: 0,
+          radius: 0,
           x: e.evt.layerX,
           y: e.evt.layerY,
           group: 'circles',
@@ -110,10 +111,11 @@ export class Drawable extends React.Component {
 
         newShapesList[currShapeIndex] = {
           ...newShapesList[currShapeIndex],
-          height: newHeight,
+          height: currShape.group === 'circles' ? Math.abs(newHeight) : newHeight,
           width: newWidth,
           x: currShape.x,
-          y: currShape.y
+          y: currShape.y,
+          radius: currShape.radius
         };
 
         // On mouse move don't trigger any event. Put the shapes on this state instead.
@@ -339,6 +341,7 @@ export class Drawable extends React.Component {
                   y={shape.y}
                   points={shape.points}
                   strokeWidth={strokeWidth}
+                  radius={shape.radius}
                 />
               );
             })}

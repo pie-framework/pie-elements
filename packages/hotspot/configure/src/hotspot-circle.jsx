@@ -40,15 +40,16 @@ class CircleComponent extends React.Component {
       width,
       x,
       y,
-      strokeWidth = 5
+      strokeWidth = 5,
+      radius = 50
     } = this.props;
 
     return (
       <Group>
         <Circle
           classes={classes.base}
-          width={width}
-          height={height}
+          width={width < 0 ? 0 : width}
+          height={height < 0 ? 0 : height}
           fill={hotspotColor}
           onClick={this.handleClick}
           onTap={this.handleClick}
@@ -60,7 +61,7 @@ class CircleComponent extends React.Component {
           onDragEnd={this.handleOnDragEnd}
           x={x}
           y={y}
-          radius={50}
+          radius={radius < 0 ? 0 : radius}
         />
       </Group>
     );
@@ -87,7 +88,8 @@ CircleComponent.propTypes = {
   width: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  radius: PropTypes.number
 };
 
 CircleComponent.defaultProps = {
