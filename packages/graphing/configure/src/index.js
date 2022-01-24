@@ -22,7 +22,7 @@ const sortedAnswers = (answers) => {
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
-    
+
     if (!isEmpty(model.answers) && model.answers.hasOwnProperty('correctAnswer')) {
         model.answers = Object.assign({ correctAnswer: model.answers.correctAnswer }, sortedAnswers(model.answers));
     }
@@ -52,7 +52,7 @@ export default class GraphLinesConfigure extends HTMLElement {
 
     log('[onModelChanged]: ', this._model);
 
-    this.dispatchEvent(new ModelUpdatedEvent(this._model, true));
+    this.dispatchEvent(new ModelUpdatedEvent(this._model));
   };
 
   onConfigurationChanged = (config) => {
