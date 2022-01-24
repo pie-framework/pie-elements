@@ -2,7 +2,8 @@ import escape from 'lodash/escape';
 
 export const removeUnwantedCharacters = markup =>
   markup
-    .replace(/(\t+(?!imes))|(\n)|(\\t+(?!imes))|(\\n)/g, '')
+    // do not remove \t from \times, \triangle, \tan or \theta
+    .replace(/(\t(?!imes|riangle|an|heta))|(\n)|(\\t(?!imes|riangle|an|heta))|(\\n)/g, '')
     .replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 const createElementFromHTML = (htmlString = '') => {
