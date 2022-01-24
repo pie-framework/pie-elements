@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.8...@pie-element/extended-text-entry@6.8.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **extended-text-entry:** add static classname for editor DNA-13102 ([3ad662f](https://github.com/pie-framework/pie-elements/commit/3ad662fbc6413f5c1721862f87120696071bfdea))
+* **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
+* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+* **multiple-choice, explicit-constructed-response, extended-text-entry:** print do not show teacher instructions, rationale or prompt if they are diabled DNA-13089 ([06b9555](https://github.com/pie-framework/pie-elements/commit/06b9555b25e094e0b2bce0e6a852a206c6d2c17d))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+### Features
+
+* **extended-text-entry:** Added the ability for instructor to annotate student's response with comments PD-744 ([6d266f9](https://github.com/pie-framework/pie-elements/commit/6d266f9de59bfe3f9b71089f8e222e9ad9026cbc))
+* **extended-text-entry:** implement print PD-1283 ([7e4f7d8](https://github.com/pie-framework/pie-elements/commit/7e4f7d8203f54d905f542369d444232b54261582))
+
+
+
+
+
 ## [6.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.7.7...@pie-element/extended-text-entry@6.7.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry

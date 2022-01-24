@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.11...@pie-element/multiple-choice-configure@4.1.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* check if limitChoicesNumber is defined when adding a choice ([6f32cf0](https://github.com/pie-framework/pie-elements/commit/6f32cf05a1095b2be28864f2bb697080d05744f8))
+* **multiple-choice:** limit choice number to 9 if it's defined ([4fa374c](https://github.com/pie-framework/pie-elements/commit/4fa374c77ca625522549ce68e1062ca4a5145b8b))
+
+
+### Features
+
+* **multiple-choice:** set min and max number of choices. BREAKING CHANGE: removed limitChoicesNumber from config and added minAnswerChoices and maxAnswerChoices ([a467f8f](https://github.com/pie-framework/pie-elements/commit/a467f8f4827c032c88de480b25eb49efcf1486aa))
+
+
+
+
+
 ## [4.0.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.10...@pie-element/multiple-choice-configure@4.0.11) (2022-01-11)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure

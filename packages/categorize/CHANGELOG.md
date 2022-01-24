@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.8...@pie-element/categorize@6.9.9) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **categorize:** fix layout issue and choice content direction PD-1420 ([f6f7a3c](https://github.com/pie-framework/pie-elements/commit/f6f7a3c50173669cf994a358eea58d97d9b1f507))
+* **categorize:** render choicesLabel as Html ([ca8c542](https://github.com/pie-framework/pie-elements/commit/ca8c54297d8ab7370ea452a17f5be60f94b55843))
+
+
+
+
+
 ## [6.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize@6.9.7...@pie-element/categorize@6.9.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/categorize

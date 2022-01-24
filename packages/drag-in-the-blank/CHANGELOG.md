@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.12.8...@pie-element/drag-in-the-blank@3.13.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **drag-in-the-blank:** fix validation behavior PD-1404 ([02f3f5c](https://github.com/pie-framework/pie-elements/commit/02f3f5ca82b03d54e055a3d746027e8b5ac66790))
+
+
+### Features
+
+* **drag-in-the-blank, inline-dropdown:** move rationale after the item content PD-1379 ([fd71c58](https://github.com/pie-framework/pie-elements/commit/fd71c5853bdd63b31a746241dd5649e5de051300))
+
+
+
+
+
 ## [3.12.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.12.7...@pie-element/drag-in-the-blank@3.12.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

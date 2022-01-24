@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.5.8...@pie-element/placement-ordering-configure@5.6.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **placement-ordering:** fix issues with dragging answer choices in authoring PD-1329 ([286a495](https://github.com/pie-framework/pie-elements/commit/286a495e313cb33227a8672f38331b283c283583))
+
+
+### Features
+
+* **placement-ordering:** add baseline validation for authoring PD-600, PD-1334 ([2350279](https://github.com/pie-framework/pie-elements/commit/23502790000e3c4f14e4dae6744519b004eb1172))
+* **placement-ordering:** add shuffle button to UI for authoring PD-1300 ([734fcda](https://github.com/pie-framework/pie-elements/commit/734fcda4b50b50cb54d66789b854f270818ba6fc))
+* **placement-ordering:** remove list buttons from choice labels PD-1337 ([1f1f927](https://github.com/pie-framework/pie-elements/commit/1f1f9276a29d84b551a3eaa93e15738ef1e22681))
+
+
+
+
+
 ## [5.5.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering-configure@5.5.7...@pie-element/placement-ordering-configure@5.5.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/placement-ordering-configure

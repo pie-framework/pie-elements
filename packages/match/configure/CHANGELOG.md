@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.4.8...@pie-element/match-configure@4.5.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* match - after the player gives all the responses, feedback is 'you have not entered a response' PD-902 ([6bbcac9](https://github.com/pie-framework/pie-elements/commit/6bbcac9d4349e59b221471ea1b07957ea2c608e0))
+* **match:** set default false for lock choice order settings PD-1333 ([4f07002](https://github.com/pie-framework/pie-elements/commit/4f07002ceece8b82450cc6fff13515923df370cc))
+
+
+### Features
+
+* **match:** change drag-and-drop behavior from swap to push PD-1336 ([0383630](https://github.com/pie-framework/pie-elements/commit/0383630ba588fed54aa9ff0b9a936f1c8d773eff))
+* **match:** remove list buttons from question text PD-1335 ([671d0fb](https://github.com/pie-framework/pie-elements/commit/671d0fbbf79e343dc9a89dc6f820309edcccbaaf))
+
+
+
+
+
 ## [4.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/match-configure@4.4.7...@pie-element/match-configure@4.4.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/match-configure

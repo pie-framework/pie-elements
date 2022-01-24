@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.7.8...@pie-element/graphing@3.7.9) (2022-01-24)
+
+
+### Bug Fixes
+
+* **graphing:** no correctness indicator if correct response is authored PD-1500 ([f03b8c1](https://github.com/pie-framework/pie-elements/commit/f03b8c15919a4fa3bb3eb91d56fd4b7d45508e83))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+
+
+
 ## [3.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing@3.7.7...@pie-element/graphing@3.7.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/graphing

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.6.9...@pie-element/explicit-constructed-response-configure@3.7.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **explicit-constructed-response:** Displayed delta, theta, times and tan symbols correctly PD-1507 ([29d97ec](https://github.com/pie-framework/pie-elements/commit/29d97ec68c6b66056595eb9444b9984aeb04472e))
+* **explicit-constructed-response:** fix authoring bug when changing markup PD-1413. Show all choices and change title when maxLengthPerChoice is enabled PD-1396 ([b7944f4](https://github.com/pie-framework/pie-elements/commit/b7944f4ee7ae82eb7d40b7ec13dd1c5214157690))
+* **explicit-constructed-response:** Fixed characters limit PD-1396 PD-1395 ([fcbf149](https://github.com/pie-framework/pie-elements/commit/fcbf149e49b5ead36585935e0b5616a970d0a81e))
+
+
+### Features
+
+* **explicit-constructed-response:** Added a max limit of characters and adjusted the width PD-794 ([135f176](https://github.com/pie-framework/pie-elements/commit/135f176402187e9a6120b88768ae7fb0152ac418))
+* **explicit-constructed-response:** added the ability to choose the display property of the element [PD-1418] ([ac3ad81](https://github.com/pie-framework/pie-elements/commit/ac3ad8182911077b0eb3096944304c935bdf5e9a))
+* **explicit-constructed-response:** Calculate maxChoicesLength if it's undefined. Fixed delete response area and choices bug. BREAKING CHANGE: add maxChoicesLength prop ([97431b9](https://github.com/pie-framework/pie-elements/commit/97431b9c3fbdafd84e040653c54d5f04bae16a1d))
+
+
+
+
+
 ## [3.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.6.8...@pie-element/explicit-constructed-response-configure@3.6.9) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure

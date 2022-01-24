@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.7.18...@pie-element/charting@2.7.19) (2022-01-24)
+
+
+### Bug Fixes
+
+* **charting:** view mode should not show correctness PD-1480 ([9d5e4c7](https://github.com/pie-framework/pie-elements/commit/9d5e4c76cbe02f63a5aa4cef39f1276173692634))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **charting:** improve styling for PRB PD-1362 ([5079579](https://github.com/pie-framework/pie-elements/commit/50795796f0991cfe5e60c37ffc3804d03184bbb0))
+
+
+
+
+
 ## [2.7.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting@2.7.17...@pie-element/charting@2.7.18) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/charting

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.12...@pie-element/drag-in-the-blank-configure@3.6.13) (2022-01-24)
+
+
+### Bug Fixes
+
+* **drag-in-the-blank:** fix validation behavior PD-1404 ([02f3f5c](https://github.com/pie-framework/pie-elements/commit/02f3f5ca82b03d54e055a3d746027e8b5ac66790))
+
+
+
+
+
 ## [3.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank-configure@3.6.11...@pie-element/drag-in-the-blank-configure@3.6.12) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank-configure
