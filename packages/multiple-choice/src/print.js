@@ -27,6 +27,7 @@ const preparePrintModel = (model, opts) => {
 
   model.disabled = true;
   model.animationsDisabled = true;
+  model.lockChoiceOrder = true;
 
   const choices = cloneDeep(model.choices);
 
