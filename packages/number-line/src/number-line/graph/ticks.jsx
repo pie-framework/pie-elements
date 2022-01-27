@@ -58,7 +58,7 @@ export class Tick extends React.Component {
   constructor(props) {
     super(props);
     this.wasRendered = false;
-  };
+  }
 
   componentDidMount() {
     //center align the tick text
@@ -90,10 +90,7 @@ export class Tick extends React.Component {
 
     const xText = !fraction ? Number(x.toFixed(2))
       : !displayFraction ? x.n * x.s
-        : <>
-          <tspan x="0" dy="0.71em">{x.n * x.s}</tspan>
-          <tspan x="0" dy="1.11em">{x.d}</tspan>
-        </>;
+        : <>'         '<tspan x="0" dy="0.71em">{x.n * x.s}</tspan>'         '<tspan x="0" dy="1.11em">{x.d}</tspan>'       '</>;
 
     return (
       <g opacity="1" transform={`translate(${xScale(x)}, ${y})`}>
@@ -122,7 +119,7 @@ export class Tick extends React.Component {
             y="14"
             width="10"
             dy="0.71em"
-            textAnchor={displayFraction && "middle"}
+            textAnchor={displayFraction && 'middle'}
           >
             {xText}
           </text>
