@@ -13,6 +13,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    playersToolbarPosition:"top"
   },
   configuration: {
     dimensions: {

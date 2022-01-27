@@ -57,6 +57,7 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, onModelChanged, configuration, onConfigurationChanged, imageSupport } = this.props;
+    console.log(model, "MODEL")
     const {
       multiple = {},
       feedback = {},

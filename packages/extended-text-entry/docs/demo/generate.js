@@ -8,5 +8,6 @@ exports.model = (id, element) => ({
   prompt: 'This is the question prompt',
   promptEnabled: true,
   mathInput: true,
-  toolbarEditorPosition: 'bottom',
+  playersToolbarPosition: 'top',
+  toolbarEditorPosition: 'bottom'
 });
