@@ -26,7 +26,6 @@ const preparePrintModel = (model, opts) => {
   model.disabled = true;
   model.feedback = undefined;
   model.animationsDisabled = true;
-  model.playersToolbarPosition = 'top'
 
   return model;
 };

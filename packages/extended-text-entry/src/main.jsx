@@ -43,7 +43,6 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
-    console.log(this.props, "props")
     const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled, playersToolbarPosition } = model;
     const { value } = session;
     const { width, height } = dimensions || {};
@@ -52,18 +51,16 @@ export class Main extends React.Component {
 
     log('[render] disabled? ', disabled);
 
-    console.log(model, "MODEL")
-
     const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
 
-    // switch (playersToolbarPosition) {
-    //   case 'top':
-    //     toolbarOpts.position = 'top';
-    //     break;
-    //   default:
-    //     toolbarOpts.position = 'bottom';
-    //     break;
-    // }
+    switch (playersToolbarPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
 
     return (
       <div

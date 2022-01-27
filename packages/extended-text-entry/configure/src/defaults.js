@@ -12,8 +12,7 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom',
-    playersToolbarPosition:"top"
+    toolbarEditorPosition: 'bottom'
   },
   configuration: {
     dimensions: {
