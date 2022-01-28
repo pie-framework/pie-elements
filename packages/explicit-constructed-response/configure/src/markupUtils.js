@@ -5,7 +5,7 @@ const tSymbols = 'imes|riangle|an|heta|herefore';
 // do not remove \n from \nthroot, \nparallel, \ncong, \napprox, \neq, \ne or \nsim
 const nSymbols = 'throot|parallel|cong|approx|eq|e|sim';
 // match all \t and \n that are not part of math symbols that starts with \t or \n
-const matchTabAndNewLine = new RegExp(`(\t(?!${tSymbols}))|(\n(?!${nSymbols}))|(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))`, 'g');
+const matchTabAndNewLine = new RegExp(`(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))|(\\\\t(?!${tSymbols}))|(\\\\n(?!${nSymbols}))`, 'g');
 
 export const removeUnwantedCharacters = markup =>
   markup.replace(matchTabAndNewLine, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
