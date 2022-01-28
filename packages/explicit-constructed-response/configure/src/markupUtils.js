@@ -1,10 +1,14 @@
 import escape from 'lodash/escape';
 
+// do not remove \t from \times, \triangle, \tan, \theta or \therefore
+const tSymbols = 'imes|riangle|an|heta|herefore';
+// do not remove \n from \nthroot, \nparallel, \ncong, \napprox, \neq, \ne or \nsim
+const nSymbols = 'throot|parallel|cong|approx|eq|e|sim';
+// match all \t and \n that are not part of math symbols that starts with \t or \n
+const matchTabAndNewLine = new RegExp(`(\t(?!${tSymbols}))|(\n(?!${nSymbols}))|(\\t(?!${tSymbols}))|(\\n(?!${nSymbols}))`, 'g');
+
 export const removeUnwantedCharacters = markup =>
-  markup
-    // do not remove \t from \times, \triangle, \tan or \theta
-    .replace(/(\t(?!imes|riangle|an|heta))|(\n)|(\\t(?!imes|riangle|an|heta))|(\\n)/g, '')
-    .replace(/\\"/g, '"').replace(/\\\//g, '/');
+  markup.replace(matchTabAndNewLine, '').replace(/\\"/g, '"').replace(/\\\//g, '/');
 
 const createElementFromHTML = (htmlString = '') => {
   const div = document.createElement('div');
