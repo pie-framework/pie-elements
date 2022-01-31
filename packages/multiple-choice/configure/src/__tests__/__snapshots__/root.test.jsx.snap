@@ -2,11 +2,9 @@
 
 exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
 <Fragment>
-  '       '
   <InfoDialog
     open={false}
   />
-  '       '
   <WithStyles(Component)
     classes={Object {}}
     model={
@@ -73,17 +71,14 @@ exports[`Main snapshot renders with choicePrefix="letters" as default 1`] = `
     onRemoveChoice={[Function]}
     onTeacherInstructionsChanged={[Function]}
   />
-  '     '
 </Fragment>
 `;
 
 exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
 <Fragment>
-  '       '
   <InfoDialog
     open={false}
   />
-  '       '
   <WithStyles(Component)
     classes={Object {}}
     model={
@@ -150,6 +145,5 @@ exports[`Main snapshot renders with choicePrefix="numbers" 1`] = `
     onRemoveChoice={[Function]}
     onTeacherInstructionsChanged={[Function]}
   />
-  '     '
 </Fragment>
 `;
