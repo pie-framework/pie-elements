@@ -90,7 +90,7 @@ export class Tick extends React.Component {
 
     const xText = !fraction ? Number(x.toFixed(2))
       : !displayFraction ? x.n * x.s
-        : <>'         '<tspan x="0" dy="0.71em">{x.n * x.s}</tspan>'         '<tspan x="0" dy="1.11em">{x.d}</tspan>'       '</>;
+        : <><tspan x="0" dy="0.71em">{x.n * x.s}</tspan><tspan x="0" dy="1.11em">{x.d}</tspan></>;
 
     return (
       <g opacity="1" transform={`translate(${xScale(x)}, ${y})`}>
