@@ -248,5 +248,375 @@ const simpleItem = {
 };
 
 exports.model = (id, element) => {
-  return Object.assign({}, { id, element }, base(simpleItem));
+  return Object.assign({}, { id, element }, base(     {
+    "partialScoring": true,
+    "tokens": [
+      {
+        "correct": false,
+        "start": 3,
+        "end": 6,
+        "text": "Our"
+      },
+      {
+        "correct": false,
+        "start": 7,
+        "end": 16,
+        "text": "challenge"
+      },
+      {
+        "correct": false,
+        "start": 18,
+        "end": 21,
+        "text": "not"
+      },
+      {
+        "correct": false,
+        "start": 22,
+        "end": 30,
+        "text": "tomorrow"
+      },
+      {
+        "correct": false,
+        "start": 31,
+        "end": 34,
+        "text": "but"
+      },
+      {
+        "correct": false,
+        "start": 35,
+        "end": 40,
+        "text": "today"
+      },
+      {
+        "correct": false,
+        "start": 42,
+        "end": 44,
+        "text": "is"
+      },
+      {
+        "correct": false,
+        "start": 45,
+        "end": 47,
+        "text": "to"
+      },
+      {
+        "correct": false,
+        "start": 48,
+        "end": 58,
+        "text": "accomplish"
+      },
+      {
+        "correct": false,
+        "start": 59,
+        "end": 69,
+        "text": "objectives"
+      },
+      {
+        "correct": false,
+        "start": 70,
+        "end": 75,
+        "text": "which"
+      },
+      {
+        "correct": false,
+        "start": 76,
+        "end": 80,
+        "text": "have"
+      },
+      {
+        "correct": false,
+        "start": 81,
+        "end": 87,
+        "text": "eluded"
+      },
+      {
+        "correct": false,
+        "start": 88,
+        "end": 95,
+        "text": "mankind"
+      },
+      {
+        "correct": false,
+        "start": 96,
+        "end": 101,
+        "text": "since"
+      },
+      {
+        "correct": false,
+        "start": 102,
+        "end": 105,
+        "text": "the"
+      },
+      {
+        "correct": false,
+        "start": 106,
+        "end": 115,
+        "text": "beginning"
+      },
+      {
+        "correct": false,
+        "start": 116,
+        "end": 118,
+        "text": "of"
+      },
+      {
+        "correct": false,
+        "start": 119,
+        "end": 123,
+        "text": "time"
+      },
+      {
+        "correct": false,
+        "start": 125,
+        "end": 127,
+        "text": "We"
+      },
+      {
+        "correct": false,
+        "start": 128,
+        "end": 132,
+        "text": "must"
+      },
+      {
+        "correct": false,
+        "start": 133,
+        "end": 138,
+        "text": "bring"
+      },
+      {
+        "correct": false,
+        "start": 139,
+        "end": 144,
+        "text": "equal"
+      },
+      {
+        "correct": false,
+        "start": 145,
+        "end": 152,
+        "text": "justice"
+      },
+      {
+        "correct": false,
+        "start": 153,
+        "end": 155,
+        "text": "to"
+      },
+      {
+        "correct": false,
+        "start": 156,
+        "end": 159,
+        "text": "all"
+      },
+      {
+        "correct": false,
+        "start": 160,
+        "end": 163,
+        "text": "our"
+      },
+      {
+        "correct": false,
+        "start": 164,
+        "end": 172,
+        "text": "citizens"
+      },
+      {
+        "correct": false,
+        "start": 174,
+        "end": 176,
+        "text": "We"
+      },
+      {
+        "correct": false,
+        "start": 177,
+        "end": 181,
+        "text": "must"
+      },
+      {
+        "correct": false,
+        "start": 182,
+        "end": 189,
+        "text": "abolish"
+      },
+      {
+        "correct": false,
+        "start": 190,
+        "end": 195,
+        "text": "human"
+      },
+      {
+        "correct": true,
+        "start": 196,
+        "end": 203,
+        "text": "poverty"
+      },
+      {
+        "correct": false,
+        "start": 205,
+        "end": 207,
+        "text": "We"
+      },
+      {
+        "correct": false,
+        "start": 208,
+        "end": 212,
+        "text": "must"
+      },
+      {
+        "correct": false,
+        "start": 213,
+        "end": 222,
+        "text": "eradicate"
+      },
+      {
+        "correct": false,
+        "start": 223,
+        "end": 230,
+        "text": "killing"
+      },
+      {
+        "correct": false,
+        "start": 231,
+        "end": 234,
+        "text": "and"
+      },
+      {
+        "correct": false,
+        "start": 235,
+        "end": 244,
+        "text": "crippling"
+      },
+      {
+        "correct": true,
+        "start": 245,
+        "end": 252,
+        "text": "disease"
+      },
+      {
+        "correct": false,
+        "start": 253,
+        "end": 256,
+        "text": "and"
+      },
+      {
+        "correct": false,
+        "start": 257,
+        "end": 265,
+        "text": "lengthen"
+      },
+      {
+        "correct": false,
+        "start": 266,
+        "end": 269,
+        "text": "the"
+      },
+      {
+        "correct": false,
+        "start": 270,
+        "end": 274,
+        "text": "span"
+      },
+      {
+        "correct": false,
+        "start": 275,
+        "end": 277,
+        "text": "of"
+      },
+      {
+        "correct": false,
+        "start": 278,
+        "end": 282,
+        "text": "life"
+      },
+      {
+        "correct": false,
+        "start": 283,
+        "end": 285,
+        "text": "to"
+      },
+      {
+        "correct": false,
+        "start": 286,
+        "end": 289,
+        "text": "100"
+      },
+      {
+        "correct": false,
+        "start": 290,
+        "end": 292,
+        "text": "or"
+      },
+      {
+        "correct": false,
+        "start": 293,
+        "end": 296,
+        "text": "200"
+      },
+      {
+        "correct": false,
+        "start": 297,
+        "end": 302,
+        "text": "years"
+      },
+      {
+        "correct": false,
+        "start": 304,
+        "end": 306,
+        "text": "We"
+      },
+      {
+        "correct": false,
+        "start": 307,
+        "end": 311,
+        "text": "must"
+      },
+      {
+        "correct": false,
+        "start": 312,
+        "end": 321,
+        "text": "eliminate"
+      },
+      {
+        "correct": true,
+        "start": 322,
+        "end": 332,
+        "text": "illiteracy"
+      },
+      {
+        "correct": false,
+        "start": 333,
+        "end": 338,
+        "text": "among"
+      },
+      {
+        "correct": false,
+        "start": 339,
+        "end": 342,
+        "text": "all"
+      },
+      {
+        "correct": false,
+        "start": 343,
+        "end": 345,
+        "text": "of"
+      },
+      {
+        "correct": false,
+        "start": 346,
+        "end": 349,
+        "text": "our"
+      },
+      {
+        "correct": false,
+        "start": 350,
+        "end": 356,
+        "text": "people"
+      }
+    ],
+    // "id": "0",
+    "text": "<p>Our challenge, not tomorrow but today, is to accomplish objectives which have eluded mankind since the beginning of time. We must bring equal justice to all our citizens. We must abolish human poverty. We must eradicate killing and crippling disease and lengthen the span of life to 100 or 200 years. We must eliminate illiteracy among all of our people.</p>\n",
+    "prompt": "<p>Select the <span class=\"relative-emphasis\">three</span> words from below that specifically describe the &#8220;enemies&#8221; which Johnson wants to eliminate.</p>",
+    "rationale": "<p>In paragraph 6, Johnson refers to the &#8220;ancient enemies&#8221;&#8212;which he defines as poverty, disease, illiteracy, strife, and bigotry. In paragraph 3, he talks about this idea by explaining that he wants to &#8220;accomplish objectives which have eluded mankind;&#8221; that is, to eliminate these enemies.</p>",
+    // "element": "select-text",
+    "maxSelections": 3
+  }  ));
 };
