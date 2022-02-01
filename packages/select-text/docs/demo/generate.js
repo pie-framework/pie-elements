@@ -132,10 +132,6 @@ And say, now, how does it seem to you?</p>`,
   );
 };
 
-exports.model = (id, element) => {
-  return Object.assign({}, { id, element }, base({}));
-};
-
 exports.mathSample = (id, element) => {
   return Object.assign({}, { id, element }, mathSample({}));
 };
@@ -209,3 +205,48 @@ exports.htmlAscii = (id, element) => ({
     }]
   }
 );
+
+const simpleItem = {
+  "text": "A. Almost never\n\nB. Once in a while\n\nC. Sometimes\n\nD. Often\n\nE. Almost all the time",
+  "tokens": [
+    {
+      "text": "A. Almost never",
+      "end": 15,
+      "start": 0,
+      "correct": true
+    },
+    {
+      "start": 17,
+      "end": 35,
+      "correct": false,
+      "text": "B. Once in a while"
+    },
+    {
+      "correct": false,
+      "end": 49,
+      "start": 37,
+      "text": "C. Sometimes"
+    },
+    {
+      "text": "D. Often",
+      "correct": false,
+      "end": 59,
+      "start": 51
+    },
+    {
+      "start": 61,
+      "correct": false,
+      "end": 83,
+      "text": "E. Almost all the time"
+    }
+  ],
+  "rationale": "<p>answers vary</p>",
+  "partialScoring": true,
+  "teacherInstructions": "",
+  "prompt": "<p>I got my work done right away instead of waiting until the last minute.</p>",
+  "maxSelections": 1,
+};
+
+exports.model = (id, element) => {
+  return Object.assign({}, { id, element }, base(simpleItem));
+};
