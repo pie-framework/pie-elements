@@ -29,5 +29,9 @@
   "author": "",
   "license": "ISC",
   "gitHead": "0e14ff981bcdc8a89a0e58484026496701bfdbc3",
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./print": "./src/print.js"
+  }
 }

@@ -361,7 +361,16 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { activeAnswerBlock, showCorrect, session } = this.state;
-    const { config, correctness, disabled, view, teacherInstructions, rationale, feedback } = model || {};
+    const {
+      config,
+      correctness,
+      disabled,
+      view,
+      teacherInstructions,
+      rationale,
+      feedback,
+      animationsDisabled
+    } = model || {};
 
     if (!config) {
       return null;
@@ -461,22 +470,24 @@ export class Main extends React.Component {
         {
           viewMode && teacherInstructions && hasText(teacherInstructions) && (
             <React.Fragment>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              {!animationsDisabled ? <Collapsible
+                labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
               >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
-              <br />
+                <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
+              </Collapsible> : <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>}
+                <br />
             </React.Fragment>
           )
         }
         {
           viewMode && rationale && hasText(rationale) && (
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
-            </Collapsible>
+            <React.Fragment>
+              {!animationsDisabled ? <Collapsible
+                labels={{hidden: 'Show Rationale', visible: 'Hide Rationale'}}
+              >
+                <div dangerouslySetInnerHTML={{__html: rationale}}/>
+              </Collapsible> : <div dangerouslySetInnerHTML={{__html: rationale}}/>}
+            </React.Fragment>
           )
         }
         {displayNote && (
