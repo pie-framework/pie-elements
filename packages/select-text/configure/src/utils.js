@@ -60,24 +60,27 @@ export default (model) => {
     const tokenText = prepareText(model.text.slice(token.start, token.end));
 
     if (!tokenText) {
-      return token;
+      return [...acc, token];
     }
 
-    function getAllIndexes(arr, val) {
-      var indexes = [], i = -1;
+    const getStartIndex = (start) => {
+      let length = start;
 
-      while ((i = (arr || '').indexOf(val, i + 1)) != -1) {
-        if (!(acc.filter(({ start, text }) => (text === val && start === i)) || []).length) {
-          indexes.push(i);
+      while (length >= 0) {
+        let newStartIndex = modelText.slice(length).indexOf(tokenText);
+
+        if (newStartIndex >= 0) {
+          return newStartIndex + length;
         }
+
+        length--;
       }
 
-      return indexes;
-    }
+      return 0;
+    };
 
-    var indexes = getAllIndexes(modelText, tokenText);
-
-    const newStart = indexes[0];
+    const lastToken = acc[acc.length - 1];
+    const newStart = getStartIndex(lastToken ? lastToken.end : token.start);
     const newEnd = newStart + tokenText.length;
 
     return [
