@@ -7,14 +7,6 @@ var createElementFromHTML = function createElementFromHTML() {
   return div;
 };
 
-var parseBrs = function parseBrs(dom) {
-  var brs = dom.querySelectorAll('br');
-  brs.forEach(function (br) {
-    return br.replaceWith('\n');
-  });
-  dom.innerHTML = dom.innerHTML.replace(/\n\n/g, '\n');
-};
-
 var parseParagraph = function parseParagraph(paragraph, end) {
   if (end) {
     return paragraph.innerHTML;
@@ -36,11 +28,9 @@ var parseParagraphs = function parseParagraphs(dom) {
 var prepareText = function prepareText(text) {
   var txtDom = createElementFromHTML(text);
 
-  if (txtDom.querySelectorAll('div').length === 0) {
-    var div = document.createElement('div');
-    div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
-    txtDom = div;
-  } // if no dom elements, we just return the text
+  var div = document.createElement('div');
+  div.innerHTML = '<div separator=\'true\'>'.concat(txtDom.innerHTML, '</div>');
+  txtDom = div;
 
   var allDomElements = Array.from(txtDom.querySelectorAll('*'));
 
@@ -48,7 +38,6 @@ var prepareText = function prepareText(text) {
     return text;
   }
 
-  parseBrs(txtDom);
   return parseParagraphs(txtDom);
 };
 
