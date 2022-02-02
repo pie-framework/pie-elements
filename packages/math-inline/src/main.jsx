@@ -100,7 +100,7 @@ export class Main extends React.Component {
         answers,
       },
       activeAnswerBlock: '',
-      showCorrect: false,
+      showCorrect: this.props.model.config.alwaysShowCorrect || false,
     };
   }
 
@@ -180,6 +180,10 @@ export class Main extends React.Component {
 
     if ((config.env && config.env.mode !== 'evaluate') || (nextConfig.env && nextConfig.env.mode !== 'evaluate')) {
       this.setState({...this.state.session, showCorrect: false});
+    }
+
+    if (nextConfig.alwaysShowCorrect) {
+      this.setState({ showCorrect: true });
     }
 
     if (
@@ -369,7 +373,8 @@ export class Main extends React.Component {
       teacherInstructions,
       rationale,
       feedback,
-      animationsDisabled
+      animationsDisabled,
+      alwaysShowCorrect
     } = model || {};
 
     if (!config) {
