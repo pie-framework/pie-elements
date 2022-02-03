@@ -95,6 +95,17 @@ This element must be one of the following enum values:
 * `bottom`
 * `top`
 
+# `playersToolbarPosition` (string, enum)
+
+Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
+
+This element must be one of the following enum values:
+
+* `bottom`
+* `top`
+
+Default: `": 'bottom'"`
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.

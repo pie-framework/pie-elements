@@ -78,6 +78,12 @@ export interface ExtendedTextEntryPie extends PieModel {
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
+
+  /**
+  * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
+  * @default: 'bottom'
+  */
+  playersToolbarPosition?: 'bottom' | 'top';
 }
 
 /**

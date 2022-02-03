@@ -116,6 +116,16 @@
       "type": "string",
       "title": "toolbarEditorPosition"
     },
+    "playersToolbarPosition": {
+      "description": "Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'",
+      "default": ": 'bottom'",
+      "enum": [
+        "bottom",
+        "top"
+      ],
+      "type": "string",
+      "title": "playersToolbarPosition"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",

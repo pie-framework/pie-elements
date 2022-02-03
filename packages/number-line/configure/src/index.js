@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import * as defaults from './defaults';
-import * as math from "mathjs";
+import * as math from 'mathjs';
 
 // this function is duplicated in controller; at some point, use the same shared function
 const updateTicks = model => {
@@ -20,7 +20,7 @@ const updateTicks = model => {
       ticks.major = step;
       ticks.minor = step / (major / minor);
     }
-  };
+  }
 
   return model;
 };
