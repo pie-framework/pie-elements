@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
@@ -23,6 +22,8 @@ const preparePrintModel = (model, opts) => {
   model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
+  model.printMode = true;
+  model.feedback = undefined;
 
   model.animationsDisabled = true;
   return {

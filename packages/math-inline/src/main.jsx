@@ -39,7 +39,7 @@ function getKeyPadWidth(additionalKeys = [], equationEditor) {
 
 function prepareForStatic(model, state) {
   const { config, disabled } = model || {};
-  const { expression, responses } = config || {};
+  const { expression, responses, printMode, alwaysShowCorrect } = config || {};
 
   if (config && expression) {
     const modelExpression = expression;
@@ -53,6 +53,12 @@ function prepareForStatic(model, state) {
 
     return (modelExpression || '').replace(REGEX, function () {
       const answer = state.session.answers[`r${answerBlocks}`];
+
+      if (printMode && !alwaysShowCorrect) {
+        const blankSpace ='\\ \\ '.repeat(30) + '\\newline ';
+
+        return `\\MathQuillMathField[r${answerBlocks++}]{${blankSpace.repeat(3)}}`;
+      }
 
       if (disabled) {
         return `\\embed{answerBlock}[r${answerBlocks++}]`;
@@ -374,6 +380,7 @@ export class Main extends React.Component {
       rationale,
       feedback,
       animationsDisabled,
+      printMode,
       alwaysShowCorrect
     } = model || {};
 
@@ -399,6 +406,19 @@ export class Main extends React.Component {
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
     const viewMode =  disabled && !correctness;
+    const studentPrintMode = printMode && !alwaysShowCorrect;
+
+    const printView = <div className={classes.printContainer}>
+      <mq.Static
+        ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+        latex={staticLatex}
+        onSubFieldChange={this.subFieldChanged}
+        getFieldName={this.getFieldName}
+        setInput={this.setInput}
+        onSubFieldFocus={this.onSubFieldFocus}
+        onBlur={this.onBlur}
+      />
+    </div>;
 
     const midContent = (
       <div className={classes.main}>
@@ -407,7 +427,7 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
-        <Readable false>
+        {studentPrintMode ?  printView : <Readable false>
           <div className={classes.inputAndKeypadContainer}>
             {responseType === ResponseTypes.simple && (
               <SimpleQuestionBlock
@@ -471,7 +491,7 @@ export class Main extends React.Component {
               </div>
             )}
           </div>
-        </Readable>
+        </Readable>}
         {
           viewMode && teacherInstructions && hasText(teacherInstructions) && (
             <React.Fragment>
@@ -744,6 +764,10 @@ const styles = (theme) => ({
       },
     },
   },
+  printContainer: {
+    marginBottom: '10px',
+    pointerEvents: 'none'
+  }
 });
 
 export default withStyles(styles)(Main);
