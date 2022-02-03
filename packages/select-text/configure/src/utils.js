@@ -42,11 +42,13 @@ var prepareText = function prepareText(text) {
 };
 
 export default (model) => {
-// parsing
-  const modelText = prepareText(model.text);
+  if (!model) return model;
 
-  const newTokens = (model.tokens || []).reduce((acc, token) => {
-    const tokenText = prepareText(model.text.slice(token.start, token.end));
+  // parsing
+  const modelText = prepareText(model.text || '');
+
+  const newTokens = (model.tokens || []).reduce((acc, token = {}) => {
+    const tokenText = prepareText((model.text || '').slice(token.start, token.end));
 
     if (!tokenText) {
       return [...acc, token];
