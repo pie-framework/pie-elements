@@ -78,49 +78,22 @@ export class Choices extends React.Component {
   onChoiceChanged = (prevValue, val, key) => {
     const { onChange, model } = this.props;
     const { choices, correctResponse, alternateResponses } = model;
-    const exists = (choices || []).filter(c => c.value === val);
+    const duplicatedValue = (choices || []).find(c => c.value === val && c.id !== key);
 
-    // discard the new added choice if it is a duplicate
-    if (prevValue === '' && exists.length) {
-      const newChoices = (choices || []).filter(c => c.id !== key);
+    // discard the new added choice or the changes if the choice would be a duplicate to one that already exists
+    if (duplicatedValue) {
+      if (prevValue === '') {
+        // remove the new added choice from choices
+        const newChoices = (choices || []).filter(c => c.id !== key);
 
-      onChange(newChoices);
+        onChange(newChoices);
+      }
 
-      this.setState({
-        dialog: {
-          open: true,
-          message:
-            'Identical answer choices are not allowed and will be discarded',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false
-                }
-              }
-            );
-          }
-        }
-      });
-
-      return;
-    }
-
-    // discard the change if the choice would be a duplicate to one that already exists
-    if(exists.length) {
       this.setState({
         dialog: {
           open: true,
           message: 'Identical answer choices are not allowed and the changes will be discarded',
-          onOk: () => {
-            this.setState(
-              {
-                dialog: {
-                  open: false
-                }
-              }
-            );
-          }
+          onOk: () => this.setState({ dialog: { open: false }})
         }
       });
 
