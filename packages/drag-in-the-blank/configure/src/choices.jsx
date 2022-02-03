@@ -64,15 +64,23 @@ export class Choices extends React.Component {
     }
   };
 
-  componentDidUpdate() {
-    //eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
+  componentDidMount() {
+    this.rerenderMath();
+  }
 
-    renderMath(domNode);
+  componentDidUpdate() {
+    this.rerenderMath();
 
     if (this.focusedNodeRef) {
       this.focusedNodeRef.focus('end');
     }
+  }
+
+  rerenderMath = () => {
+    //eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this);
+
+    renderMath(domNode);
   }
 
   onChoiceChanged = (prevValue, val, key) => {
