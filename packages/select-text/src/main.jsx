@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextSelect, prepareText } from '@pie-lib/text-select';
+import { TextSelect } from '@pie-lib/text-select';
 import CorrectAnswerToggle from '@pie-lib/correct-answer-toggle';
-import {color, Feedback, Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, hasText, PreviewPrompt } from '@pie-lib/render-ui';
 import { withStyles } from '@material-ui/core/styles';
+import generateModel from './utils';
 
 import debug from 'debug';
 
@@ -25,15 +26,15 @@ export class Main extends React.Component {
 
     this.state = {
       showCorrectAnswer: this.props.model.alwaysShowCorrect || false,
+      model: generateModel(props.model)
     };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({ showCorrectAnswer: false });
-
-    if (nextProps.model.alwaysShowCorrect) {
-      this.setState({ showCorrectAnswer: true });
-    }
+    this.setState({
+      showCorrectAnswer: !!nextProps.model.alwaysShowCorrect,
+      model: generateModel(nextProps.model)
+    });
   }
 
   toggleShowCorrect = () => {
@@ -46,25 +47,11 @@ export class Main extends React.Component {
     return model.tokens.filter(t => t.correct);
   };
 
-  updateText = () => {
-    const { model } = this.props;
-
-    const oldModel = {
-      ...model
-    };
-    const newText = prepareText(oldModel.text);
-
-    model.unpreparedText = oldModel.text;
-    model.text = newText;
-  };
-
   render() {
-    const { model, session, onSelectionChange, classes } = this.props;
-    const { showCorrectAnswer } = this.state;
+    const { session, onSelectionChange, classes } = this.props;
+    const { showCorrectAnswer, model } = this.state;
 
-    if(!model.unpreparedText) {
-      this.updateText();
-    }
+    // const model = generateTokens(this.props.model)
 
     const selectedTokens = showCorrectAnswer
       ? this.correctAnswer()
@@ -79,6 +66,7 @@ export class Main extends React.Component {
             <React.Fragment>
               {!model.animationsDisabled ? <Collapsible
                   labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  className={classes.collapsible}
                 >
                   <PreviewPrompt prompt={model.teacherInstructions}/>
 
@@ -90,7 +78,7 @@ export class Main extends React.Component {
           )
         }
         <div className={classes.prompt}>
-          <PreviewPrompt prompt={model.prompt} />
+          <PreviewPrompt prompt={model.prompt}/>
         </div>
         {!model.alwaysShowCorrect && (
           <CorrectAnswerToggle
@@ -115,6 +103,7 @@ export class Main extends React.Component {
             <React.Fragment>
               {!model.animationsDisabled ? <Collapsible
                   labels={{hidden: 'Show Rationale', visible: 'Hide Rationale'}} className={classes.collapsible}
+                  className={classes.collapsible}
                 >
                   <PreviewPrompt prompt={model.rationale}/>
                 </Collapsible>
@@ -123,7 +112,7 @@ export class Main extends React.Component {
             </React.Fragment>)
         }
         {model.correctness && model.feedback && !showCorrectAnswer && (
-          <Feedback correctness={model.correctness} feedback={model.feedback} />
+          <Feedback correctness={model.correctness} feedback={model.feedback}/>
         )}
       </div>
     );
