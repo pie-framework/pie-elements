@@ -7,7 +7,7 @@ import {
   ModelUpdatedEvent
 } from '@pie-framework/pie-configure-events';
 import defaultValues from './defaultConfiguration';
-import { prepareText } from '@pie-lib/text-select';
+import generateModel  from './utils';
 
 export default class SelectTextConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
@@ -15,13 +15,8 @@ export default class SelectTextConfigure extends HTMLElement {
       ...defaultValues.model,
       ...model
     };
-    const newText = prepareText(newModel.text);
 
-    return {
-      ...newModel,
-      unpreparedText: newModel.text,
-      text: newText
-    };
+    return generateModel(newModel);
   };
 
   constructor() {

@@ -24,6 +24,11 @@ exports[`Render Main Component should match snapshot 1`] = `
         },
       }
     }
+    toolbarOpts={
+      Object {
+        "position": "bottom",
+      }
+    }
   />
 </div>
 `;
@@ -66,6 +71,11 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
         "video": Object {
           "disabled": true,
         },
+      }
+    }
+    toolbarOpts={
+      Object {
+        "position": "bottom",
       }
     }
   />

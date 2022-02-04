@@ -39,7 +39,7 @@ function getKeyPadWidth(additionalKeys = [], equationEditor) {
 
 function prepareForStatic(model, state) {
   const { config, disabled } = model || {};
-  const { expression, responses } = config || {};
+  const { expression, responses, printMode, alwaysShowCorrect } = config || {};
 
   if (config && expression) {
     const modelExpression = expression;
@@ -53,6 +53,12 @@ function prepareForStatic(model, state) {
 
     return (modelExpression || '').replace(REGEX, function () {
       const answer = state.session.answers[`r${answerBlocks}`];
+
+      if (printMode && !alwaysShowCorrect) {
+        const blankSpace ='\\ \\ '.repeat(30) + '\\newline ';
+
+        return `\\MathQuillMathField[r${answerBlocks++}]{${blankSpace.repeat(3)}}`;
+      }
 
       if (disabled) {
         return `\\embed{answerBlock}[r${answerBlocks++}]`;
@@ -100,7 +106,7 @@ export class Main extends React.Component {
         answers,
       },
       activeAnswerBlock: '',
-      showCorrect: false,
+      showCorrect: this.props.model.config.alwaysShowCorrect || false,
     };
   }
 
@@ -180,6 +186,10 @@ export class Main extends React.Component {
 
     if ((config.env && config.env.mode !== 'evaluate') || (nextConfig.env && nextConfig.env.mode !== 'evaluate')) {
       this.setState({...this.state.session, showCorrect: false});
+    }
+
+    if (nextConfig.alwaysShowCorrect) {
+      this.setState({ showCorrect: true });
     }
 
     if (
@@ -361,7 +371,18 @@ export class Main extends React.Component {
   render() {
     const { model, classes } = this.props;
     const { activeAnswerBlock, showCorrect, session } = this.state;
-    const { config, correctness, disabled, view, teacherInstructions, rationale, feedback } = model || {};
+    const {
+      config,
+      correctness,
+      disabled,
+      view,
+      teacherInstructions,
+      rationale,
+      feedback,
+      animationsDisabled,
+      printMode,
+      alwaysShowCorrect
+    } = model || {};
 
     if (!config) {
       return null;
@@ -385,6 +406,19 @@ export class Main extends React.Component {
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
     const viewMode =  disabled && !correctness;
+    const studentPrintMode = printMode && !alwaysShowCorrect;
+
+    const printView = <div className={classes.printContainer}>
+      <mq.Static
+        ref={(mqStatic) => (this.mqStatic = mqStatic || this.mqStatic)}
+        latex={staticLatex}
+        onSubFieldChange={this.subFieldChanged}
+        getFieldName={this.getFieldName}
+        setInput={this.setInput}
+        onSubFieldFocus={this.onSubFieldFocus}
+        onBlur={this.onBlur}
+      />
+    </div>;
 
     const midContent = (
       <div className={classes.main}>
@@ -393,7 +427,7 @@ export class Main extends React.Component {
             <PreviewPrompt prompt={prompt} />
           </div>
         )}
-        <Readable false>
+        {studentPrintMode ?  printView : <Readable false>
           <div className={classes.inputAndKeypadContainer}>
             {responseType === ResponseTypes.simple && (
               <SimpleQuestionBlock
@@ -457,26 +491,28 @@ export class Main extends React.Component {
               </div>
             )}
           </div>
-        </Readable>
+        </Readable>}
         {
           viewMode && teacherInstructions && hasText(teacherInstructions) && (
             <React.Fragment>
-              <Collapsible
-                labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
+              {!animationsDisabled ? <Collapsible
+                labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
               >
-                <div dangerouslySetInnerHTML={{ __html: teacherInstructions }}/>
-              </Collapsible>
-              <br />
+                <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>
+              </Collapsible> : <div dangerouslySetInnerHTML={{__html: teacherInstructions}}/>}
+                <br />
             </React.Fragment>
           )
         }
         {
           viewMode && rationale && hasText(rationale) && (
-            <Collapsible
-              labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
-            >
-              <div dangerouslySetInnerHTML={{ __html: rationale }}/>
-            </Collapsible>
+            <React.Fragment>
+              {!animationsDisabled ? <Collapsible
+                labels={{hidden: 'Show Rationale', visible: 'Hide Rationale'}}
+              >
+                <div dangerouslySetInnerHTML={{__html: rationale}}/>
+              </Collapsible> : <div dangerouslySetInnerHTML={{__html: rationale}}/>}
+            </React.Fragment>
           )
         }
         {displayNote && (
@@ -728,6 +764,10 @@ const styles = (theme) => ({
       },
     },
   },
+  printContainer: {
+    marginBottom: '10px',
+    pointerEvents: 'none'
+  }
 });
 
 export default withStyles(styles)(Main);

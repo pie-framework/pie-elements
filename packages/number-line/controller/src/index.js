@@ -198,7 +198,7 @@ export function normalize(question) {
       resolve({ ...question, feedback });
     }
   });
-};
+}
 
 export function createDefaultModel(model = {}) {
   return new Promise(resolve => {
@@ -213,7 +213,7 @@ export function createDefaultModel(model = {}) {
 
     resolve(omitBy(out, v => !v));
   });
-};
+}
 
 // this function is duplicated in configure; at some point, use the same shared function
 const updateTicks = model => {
@@ -230,7 +230,7 @@ const updateTicks = model => {
       ticks.major = step;
       ticks.minor = step / (major / minor);
     }
-  };
+  }
 
   return model;
 };
@@ -285,7 +285,7 @@ export function model(question, session, env) {
       reject(new Error('graph is undefined'));
     }
   });
-};
+}
 
 export const createCorrectResponseSession = (question, env) => {
   return new Promise(resolve => {
