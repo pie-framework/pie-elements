@@ -68,7 +68,8 @@ export async function model(question, session, env) {
     feedback,
     teacherInstructions,
     mathInput: normalizedQuestion.mathInput,
-    equationEditor
+    equationEditor, 
+    playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom'
   }));
 }
 

@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
 
-const log = debug('pie-element:multiple-choice:print');
+const log = debug('pie-element:select-text:print');
 
 /**
  * Live in same package as main element - so we can access some of the shared comps!
@@ -27,28 +26,19 @@ const preparePrintModel = (model, opts) => {
 
   model.disabled = true;
   model.animationsDisabled = true;
-  model.lockChoiceOrder = true;
-
-  const choices = cloneDeep(model.choices);
-
-  model.choices = choices.map((c) => {
-    c.rationale = instr && model.rationaleEnabled !== false ? c.rationale : undefined;
-    c.hideTick = instr;
-    c.feedback = undefined;
-    return c;
-  });
-
-  model.keyMode = model.choicePrefix || 'letters';
+  model.highlightChoices = true;
+  model.feedback = undefined;
 
   return model;
 };
 
-export default class MultipleChoicePrint extends HTMLElement {
+export default class SelectTextPrint extends HTMLElement {
   constructor() {
     super();
     this._options = null;
     this._model = null;
-    this._session = [];
+    this._session = {};
+    this._session.selectedTokens = [];
     this._rerender = debounce(
       () => {
         if (this._model && this._session) {
@@ -58,7 +48,7 @@ export default class MultipleChoicePrint extends HTMLElement {
             this._options &&
             React.createElement(Main, {
               model: printModel,
-              session: {},
+              session: { selectedTokens: [] }
             });
 
           ReactDOM.render(element, this, () => {
