@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.1.0...@pie-element/multiple-choice-configure@4.1.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/multiple-choice-configure
+
+
+
+
+
 # [4.1.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.0.11...@pie-element/multiple-choice-configure@4.1.0) (2022-01-24)
 
 
