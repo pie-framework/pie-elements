@@ -87,8 +87,6 @@ export class Main extends React.Component {
       // build out local state model using responses declared in expression
 
       (props.model.config.expression || '').replace(REGEX, () => {
-
-        console.log(props.session, "CONSOLELOG")
         answers[`r${answerBlocks}`] = {
           value:
             (props.session &&
@@ -390,9 +388,6 @@ export class Main extends React.Component {
       return null;
     }
 
-   const showCorrectD = true;
-
-    console.log(showCorrect, "showCorrect")
     const {
       showNote,
       note,
@@ -433,7 +428,7 @@ export class Main extends React.Component {
           </div>
         )}
         {studentPrintMode ?  printView : <Readable false>
-          <div className={classes.responseContainer}>
+          <div className={classes.inputAndKeypadContainer}>
             {responseType === ResponseTypes.simple && (
               <SimpleQuestionBlock
                 onSimpleResponseChange={this.onSimpleResponseChange}
@@ -529,9 +524,6 @@ export class Main extends React.Component {
       </div>
     );
 
-    console.log(tooltipModeEnabled, "tooltipModeEnabled")
-    console.log(showCorrectAnswerToggle, "showCorrectAnswerToggle")
-    console.log((tooltipModeEnabled && (showCorrectAnswerToggle || teacherInstructions || rationale || feedback)))
     if (tooltipModeEnabled && (showCorrectAnswerToggle || teacherInstructions || rationale || feedback)) {
       return (
         <Tooltip
