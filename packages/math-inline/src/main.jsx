@@ -87,6 +87,8 @@ export class Main extends React.Component {
       // build out local state model using responses declared in expression
 
       (props.model.config.expression || '').replace(REGEX, () => {
+
+        console.log(props.session, "CONSOLELOG")
         answers[`r${answerBlocks}`] = {
           value:
             (props.session &&
@@ -388,6 +390,9 @@ export class Main extends React.Component {
       return null;
     }
 
+   const showCorrectD = true;
+
+    console.log(showCorrect, "showCorrect")
     const {
       showNote,
       note,
@@ -401,7 +406,7 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
     const emptyResponse = isEmpty(responses);
     const showCorrectAnswerToggle = !emptyResponse && correctness && correctness.correctness !== 'correct';
-    const tooltipModeEnabled = disabled && correctness && responseType !== ResponseTypes.simple;
+    const tooltipModeEnabled = disabled && correctness 
     const additionalKeys = generateAdditionalKeys(customKeys);
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
@@ -428,7 +433,7 @@ export class Main extends React.Component {
           </div>
         )}
         {studentPrintMode ?  printView : <Readable false>
-          <div className={classes.inputAndKeypadContainer}>
+          <div className={classes.responseContainer}>
             {responseType === ResponseTypes.simple && (
               <SimpleQuestionBlock
                 onSimpleResponseChange={this.onSimpleResponseChange}
@@ -489,7 +494,7 @@ export class Main extends React.Component {
                   />
                 </Tooltip>
               </div>
-            )}
+             )} 
           </div>
         </Readable>}
         {
@@ -524,6 +529,9 @@ export class Main extends React.Component {
       </div>
     );
 
+    console.log(tooltipModeEnabled, "tooltipModeEnabled")
+    console.log(showCorrectAnswerToggle, "showCorrectAnswerToggle")
+    console.log((tooltipModeEnabled && (showCorrectAnswerToggle || teacherInstructions || rationale || feedback)))
     if (tooltipModeEnabled && (showCorrectAnswerToggle || teacherInstructions || rationale || feedback)) {
       return (
         <Tooltip
