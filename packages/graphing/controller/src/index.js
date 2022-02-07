@@ -191,7 +191,7 @@ export function model(question, session, env) {
         base.correctResponse = bestScoreAnswerKey ? (answers[bestScoreAnswerKey] || {}).marks : [];
         base.showToggle = base.showToggle && bestScore !== 1;
       } else {
-        base.answersCorrected = [];
+        base.answersCorrected = session && session.answer || [];
         base.correctResponse = [];
       }
     }
