@@ -75,6 +75,11 @@
       "type": "string",
       "title": "markup"
     },
+    "lockChoiceOrder": {
+      "description": "Indicates if the choices are presented in a fixed order",
+      "type": "boolean",
+      "title": "lockChoiceOrder"
+    },
     "prompt": {
       "description": "The item stem for the question",
       "type": "string",
@@ -146,6 +151,7 @@
     "correctResponse",
     "element",
     "id",
+    "lockChoiceOrder",
     "markup",
     "rationale",
     "rationaleEnabled",
