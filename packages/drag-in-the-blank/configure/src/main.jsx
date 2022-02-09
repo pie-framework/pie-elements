@@ -115,6 +115,7 @@ export class Main extends React.Component {
       model: { correctResponse, markup }
     } = this.props;
     const slateMarkup = createSlateMarkup(markup, choices, correctResponse);
+    console.log(slateMarkup, "slatemarkup")
 
     this.props.onModelChanged({
       ...this.props.model,
@@ -143,6 +144,8 @@ export class Main extends React.Component {
     const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
       model || {};
     const toolbarOpts = {};
+
+    console.log(model.slateMarkup, "slatemarkup")
 
     switch (model.toolbarEditorPosition) {
       case 'top':

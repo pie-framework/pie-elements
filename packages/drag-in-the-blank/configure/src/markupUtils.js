@@ -40,6 +40,7 @@ export const processMarkup = markup => {
     s.replaceWith(`{{${index++}}}`);
   });
 
+  console.log(slateMarkup.innerHTML, "SLATE")
   return {
     markup: slateMarkup.innerHTML,
     choices: choices,
@@ -67,6 +68,8 @@ export const createSlateMarkup = (markup, choices, correctResponse) => {
         value: ''
       };
     }
+
+    console.log(`<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${escape(correctChoice.value)}"></span>`,"new mark")
 
     return `<span data-type="drag_in_the_blank" data-index="${index++}" data-id="${correctChoice.id}" data-value="${escape(correctChoice.value)}"></span>`;
   });

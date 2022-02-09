@@ -47,7 +47,7 @@ export class Main extends React.Component {
       value
     };
     const showCorrectAnswerToggle = mode === 'evaluate';
-
+console.log(modelWithValue, "model")
     return (
       <div className={classes.mainContainer}>
         {
@@ -72,6 +72,7 @@ export class Main extends React.Component {
             <br />
           </React.Fragment>
         )}
+        <div>UNDE SUNT</div>
         <DraggableDragInTheBlank
           {...modelWithValue}
           onChange={onChange}
