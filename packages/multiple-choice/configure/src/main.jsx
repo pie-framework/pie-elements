@@ -107,6 +107,7 @@ const Design = withStyles(styles)(props => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
     choicesLayout,
+    spellCheck,
     gridColumns
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
@@ -310,6 +311,7 @@ const Design = withStyles(styles)(props => {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
+                    spellCheckEnabled: spellCheck.settings && toggle(spellCheck.label),
                   accessibilityLabelsEnabled:
                     accessibility.settings && toggle(accessibility.label),
                   scoringType:

@@ -24,8 +24,8 @@ export default {
   configuration: {
     spellCheck: {
       label: "Spellcheck",
-      settings:false,
-      enabled:false
+      settings:true,
+      enabled:true
     },
     choicesLayout: {
       settings: false,
