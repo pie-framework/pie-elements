@@ -17,8 +17,14 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    spellCheckEnabled:false
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     feedback: {
       settings: true,
       label: 'Feedback',
