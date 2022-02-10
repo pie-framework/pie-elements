@@ -19,8 +19,14 @@ export default {
     toolbarEditorPosition: 'bottom',
     choicesLayout: 'vertical',
     gridColumns: '2',
+    spellCheckEnabled:false
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:false,
+      enabled:false
+    },
     choicesLayout: {
       settings: false,
       label: 'Choices Layout',

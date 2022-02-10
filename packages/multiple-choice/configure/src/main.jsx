@@ -107,7 +107,7 @@ const Design = withStyles(styles)(props => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
     choicesLayout,
-    gridColumns,
+    gridColumns
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
   const {
@@ -117,6 +117,7 @@ const Design = withStyles(styles)(props => {
     accessibilityLabelsEnabled,
     feedbackEnabled,
     promptEnabled,
+    spellCheckEnabled,
     choices
   } = model || {};
 
@@ -159,6 +160,7 @@ const Design = withStyles(styles)(props => {
             imageSupport={imageSupport}
             nonEmpty={false}
             toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
           />
         </InputContainer>
       )}
@@ -173,6 +175,7 @@ const Design = withStyles(styles)(props => {
             nonEmpty={false}
             disableUnderline
             toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
           />
         </InputContainer>
       )}
@@ -196,6 +199,7 @@ const Design = withStyles(styles)(props => {
             allowDelete={deleteChoice.settings}
             noLabels
             toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
           />
           {rationaleEnabled && (
             <InputContainer
@@ -215,6 +219,7 @@ const Design = withStyles(styles)(props => {
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
                 pluginProps={labelPlugins}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -235,6 +240,7 @@ const Design = withStyles(styles)(props => {
                 }
                 imageSupport={imageSupport}
                 pluginProps={labelPlugins}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
