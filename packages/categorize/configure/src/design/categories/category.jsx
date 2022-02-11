@@ -43,6 +43,7 @@ export class Category extends React.Component {
       onDeleteChoice,
       onAddChoice,
       imageSupport,
+      spellCheck,
       toolbarOpts
     } = this.props;
     return (
@@ -55,6 +56,7 @@ export class Category extends React.Component {
               onDelete={onDelete}
               imageSupport={imageSupport}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheck}
             />
           )
         }

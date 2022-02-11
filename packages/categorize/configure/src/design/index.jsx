@@ -288,6 +288,7 @@ export class Design extends React.Component {
               categories={categories || []}
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
 
             <Header
@@ -313,6 +314,7 @@ export class Design extends React.Component {
                     model={model}
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
+                    
                   />
                 </React.Fragment>
               );
@@ -325,6 +327,7 @@ export class Design extends React.Component {
               model={model}
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
 
             {feedbackEnabled && (
