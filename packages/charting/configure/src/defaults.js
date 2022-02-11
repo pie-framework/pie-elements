@@ -41,9 +41,15 @@ export default {
     title: 'This is a chart!',
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    spellCheckEnabled:false
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     prompt: {
       settings: true,
       label: 'Item Stem'
