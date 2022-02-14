@@ -46,6 +46,10 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'

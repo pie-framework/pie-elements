@@ -57,9 +57,9 @@ export class Root extends React.Component {
       onConfigurationChanged,
       onModelChanged
     } = this.props;
-    const { backgroundImage = {}, prompt = {}, teacherInstructions = {} } =
+    const { backgroundImage = {}, prompt = {}, teacherInstructions = {},  spellCheck = {} } =
       configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
 
@@ -86,7 +86,9 @@ export class Root extends React.Component {
                   'backgroundImage.enabled':
                     backgroundImage.settings &&
                     toggle(backgroundImage.label, true),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -109,6 +111,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -119,6 +122,7 @@ export class Root extends React.Component {
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}

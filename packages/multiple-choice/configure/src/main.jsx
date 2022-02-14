@@ -107,7 +107,7 @@ const Design = withStyles(styles)((props) => {
     sequentialChoiceLabels = {},
     settingsPanelDisabled,
     choicesLayout,
-    spellCheck,
+    spellCheck = {},
     gridColumns,
   } = configuration || {};
   let { maxAnswerChoices } = configuration || {};
