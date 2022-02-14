@@ -14,8 +14,14 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    spellCheckEnabled:false
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     choicesPosition: {
       settings: true,
       label: 'Choices Position'

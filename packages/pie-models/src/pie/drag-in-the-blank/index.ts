@@ -78,6 +78,9 @@ export interface DragInTheBlankPie extends PieModel {
     /** Indicates if Rationale are enabled */
     rationaleEnabled: boolean;
 
+      /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
     /** Indicates if Student Instructions are enabled */
     studentInstructionsEnabled: boolean;
 
@@ -111,6 +114,11 @@ export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSetti
      * Item Stem configuration
      */
     prompt?: ConfigureProp;
+
+      /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
     /**
      * Rationale configuration
