@@ -80,7 +80,8 @@ export class Main extends React.Component {
       studentInstructions: studentInstructionsA = {},
       choicesLayout: choicesLayoutA = {},
       gridColumns: gridColumnsA = {},
-      rationale: rationaleA = {}
+      rationale: rationaleA = {},
+      spellCheck: spellCheckA = {}
     } = partA || {};
     const {
       feedback: feedbackB = {},
@@ -92,7 +93,8 @@ export class Main extends React.Component {
       studentInstructions: studentInstructionsB = {},
       choicesLayout: choicesLayoutB = {},
       gridColumns: gridColumnsB = {},
-      rationale: rationaleB = {}
+      rationale: rationaleB = {},
+      spellCheck: spellCheckB = {}
     } = partB || {};
     const type = partLabelType || 'Numbers';
     const typeIsNumber = type === 'Numbers';
@@ -104,6 +106,10 @@ export class Main extends React.Component {
       partB: modelPartB.choices && modelPartB.choices.length ?
         Array.from({length: modelPartB.choices.length}, (_, i) => (`${i + 1}`)) : [],
     };
+
+    console.log(this.props.model.partA, "this.props.model.partA")
+    console.log(partA, "part A")
+    console.log(generalConfiguration, "generalConfig")
 
     return (
       <div className={classes.design}>
@@ -155,7 +161,9 @@ export class Main extends React.Component {
                     studentInstructionsA.settings &&
                     toggle(studentInstructionsA.label),
                   'partA.rationaleEnabled':
-                    rationaleA.settings && toggle(rationaleA.label)
+                    rationaleA.settings && toggle(rationaleA.label),
+                    'partA.spellCheckEnabled':
+                    spellCheckA.settings && toggle(spellCheckA.label),
                 },
                 [`Settings ${secondPart}`]: {
                   'partB.choiceMode':
@@ -186,7 +194,9 @@ export class Main extends React.Component {
                     studentInstructionsB.settings &&
                     toggle(studentInstructionsB.label),
                   'partB.rationaleEnabled':
-                    rationaleB.settings && toggle(rationaleB.label)
+                    rationaleB.settings && toggle(rationaleB.label),
+                    'partB.spellCheckEnabled':
+                    spellCheckB.settings && toggle(spellCheckB.label),
                 }
               }}
             />

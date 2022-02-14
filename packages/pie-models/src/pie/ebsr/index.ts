@@ -41,6 +41,9 @@ export interface Part {
     /** Indicates if Rationale are enabled */
     rationaleEnabled: boolean;
 
+      /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
     /** Indicates if Student Instructions are enabled */
     studentInstructionsEnabled: boolean;
 
@@ -119,6 +122,12 @@ interface PartConfiguration {
      */
     prompt?: ConfigureProp;
 
+      /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  
     /**
      * Rationale configuration
      */
