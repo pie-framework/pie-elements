@@ -28,6 +28,11 @@ exports[`Root render renders 1`] = `
               "label": "Rationale",
               "settings": true,
             },
+            "spellCheck": Object {
+              "enabled": true,
+              "label": "Spellcheck",
+              "settings": true,
+            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -38,6 +43,7 @@ exports[`Root render renders 1`] = `
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {

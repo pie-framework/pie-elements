@@ -25,6 +25,7 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    spellCheckEnabled:false,
     strokeWidth: 5
   },
   configuration: {
@@ -43,6 +44,11 @@ export default {
     prompt: {
       settings: true,
       label: 'Prompt'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     teacherInstructions: {
       settings: true,
