@@ -61,6 +61,9 @@ export interface ImageClozeAssociationPie extends PieModel {
     /** Indicates if Rationale is enabled */
     rationaleEnabled?: boolean;
 
+      /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
     /** Indicates if Teacher Instructions are enabled */
     teacherInstructionsEnabled?: boolean;
 
@@ -110,4 +113,9 @@ export interface ImageClozeAssociationConfigure extends PromptConfig, CommonConf
      * Teacher Instructions configuration
      */
     teacherInstructions?: ConfigureProp;
+
+      /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 }
