@@ -54,6 +54,10 @@ the text label that will be presented to the user for this likert choice
 
 Indicates if Teacher Instructions are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `id` (string, required)
 
 Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.
