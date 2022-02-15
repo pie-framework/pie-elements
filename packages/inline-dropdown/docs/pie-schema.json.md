@@ -56,6 +56,10 @@ Indicates teacher instructions
 
 Indicates if Rationale are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `choiceRationaleEnabled` (boolean, required)
 
 Indicates if Choice Level Rationales are enabled

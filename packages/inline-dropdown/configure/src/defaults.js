@@ -12,12 +12,18 @@ export default {
     choiceRationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
+    spellCheckEnabled:false
   },
   configuration: {
     prompt: {
       settings: true,
       label: 'Prompt'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     lockChoiceOrder: {
       settings: true,
