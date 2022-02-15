@@ -13,6 +13,7 @@ export default {
     choiceMode: 'radio',
     prompt: 'Prompt goes here',
     toolbarEditorPosition: 'bottom',
+    spellCheckEnabled:false,
     rows: [
       {
         id: 1,
@@ -63,6 +64,11 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     scoringType: {
       settings: false,

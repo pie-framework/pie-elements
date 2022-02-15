@@ -200,9 +200,10 @@ class Configure extends React.Component {
       lockChoiceOrder = {},
       scoringType = {},
       prompt = {},
-      feedback = {}
+      feedback = {},
+      spellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled } =
       model || {};
 
     const toolbarOpts = {};
@@ -246,6 +247,8 @@ class Configure extends React.Component {
                   toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
+                spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric'])
@@ -267,6 +270,7 @@ class Configure extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -284,6 +288,7 @@ class Configure extends React.Component {
                 nonEmpty={false}
                 disableUnderline
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -299,6 +304,7 @@ class Configure extends React.Component {
                 onChange={this.onRationaleChanged}
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -316,6 +322,7 @@ class Configure extends React.Component {
             onAddRow={this.onAddRow}
             onDeleteRow={this.onDeleteRow}
             toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
           />
           {feedbackEnabled && (
             <FeedbackConfig

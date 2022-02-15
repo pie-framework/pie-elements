@@ -146,7 +146,8 @@ export class Row extends React.Component {
       row,
       idx,
       enableImages,
-      toolbarOpts
+      toolbarOpts,
+      spellCheck
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -186,6 +187,7 @@ export class Row extends React.Component {
               toolbarOpts={toolbarOpts}
               allowValidation
               activePlugins={filteredDefaultPlugins}
+              spellCheck={spellCheck}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (
