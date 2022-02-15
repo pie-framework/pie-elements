@@ -23,6 +23,10 @@ The item stem for the question
 
 Indicates if the prompt is enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `rationale` (string, required)
 
 Indicates correct answer rationale

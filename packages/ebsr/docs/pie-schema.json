@@ -85,6 +85,11 @@
           "type": "boolean",
           "title": "rationaleEnabled"
         },
+        "spellCheckEnabled": {
+          "description": "Indicates if spellcheck is enabled",
+          "type": "boolean",
+          "title": "spellCheckEnabled"
+        },
         "studentInstructionsEnabled": {
           "description": "Indicates if Student Instructions are enabled",
           "type": "boolean",
@@ -109,6 +114,7 @@
         "feedbackEnabled",
         "prompt",
         "rationaleEnabled",
+        "spellCheckEnabled",
         "studentInstructionsEnabled",
         "teacherInstructionsEnabled"
       ]
@@ -195,6 +201,11 @@
           "type": "boolean",
           "title": "rationaleEnabled"
         },
+        "spellCheckEnabled": {
+          "description": "Indicates if spellcheck is enabled",
+          "type": "boolean",
+          "title": "spellCheckEnabled"
+        },
         "studentInstructionsEnabled": {
           "description": "Indicates if Student Instructions are enabled",
           "type": "boolean",
@@ -219,6 +230,7 @@
         "feedbackEnabled",
         "prompt",
         "rationaleEnabled",
+        "spellCheckEnabled",
         "studentInstructionsEnabled",
         "teacherInstructionsEnabled"
       ]
@@ -372,6 +384,22 @@
           }
         },
         "prompt": {
+          "title": "ConfigureProp",
+          "type": "object",
+          "properties": {
+            "settings": {
+              "description": "Indicates if the item has to be displayed in the Settings Panel",
+              "type": "boolean",
+              "title": "settings"
+            },
+            "label": {
+              "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+              "type": "string",
+              "title": "label"
+            }
+          }
+        },
+        "spellCheck": {
           "title": "ConfigureProp",
           "type": "object",
           "properties": {
@@ -567,6 +595,11 @@
           "type": "boolean",
           "title": "rationaleEnabled"
         },
+        "spellCheckEnabled": {
+          "description": "Indicates if spellcheck is enabled",
+          "type": "boolean",
+          "title": "spellCheckEnabled"
+        },
         "studentInstructionsEnabled": {
           "description": "Indicates if Student Instructions are enabled",
           "type": "boolean",
@@ -591,6 +624,7 @@
         "feedbackEnabled",
         "prompt",
         "rationaleEnabled",
+        "spellCheckEnabled",
         "studentInstructionsEnabled",
         "teacherInstructionsEnabled"
       ]
