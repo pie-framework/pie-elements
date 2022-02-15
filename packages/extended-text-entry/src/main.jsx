@@ -43,11 +43,13 @@ export class Main extends React.Component {
 
   render() {
     const { model, classes, session } = this.props;
-    const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled, playersToolbarPosition } = model;
+    const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled, playersToolbarPosition, spellCheckEnabled } = model;
     const { value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
     const toolbarOpts = {};
+
+    console.log(spellCheckEnabled, "spellcheck")
 
     log('[render] disabled? ', disabled);
 
@@ -101,6 +103,7 @@ export class Main extends React.Component {
           disabled={disabled}
           highlightShape={true}
           toolbarOpts={toolbarOpts}
+          spellCheck={spellCheckEnabled}
           pluginProps={{
             math: {
               disabled: !mathInput,

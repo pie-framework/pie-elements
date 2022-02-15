@@ -44,7 +44,8 @@ export default {
     promptEnabled: true,
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
-    studentInstructionsEnabled: true
+    studentInstructionsEnabled: true,
+    spellCheckEnabled:false
   },
   configuration: {
     authoring: {
@@ -101,6 +102,11 @@ export default {
       settings: false,
       label: 'Graph Title',
       enabled: true
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     coordinatesOnHover: {
       settings: true,

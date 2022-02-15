@@ -69,6 +69,7 @@ export async function model(question, session, env) {
     teacherInstructions,
     mathInput: normalizedQuestion.mathInput,
     equationEditor, 
+    spellCheckEnabled: normalizedQuestion.spellCheckEnabled || false,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom'
   }));
 }
