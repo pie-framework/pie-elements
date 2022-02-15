@@ -42,6 +42,7 @@ export default {
     validationDefault: 'literal',
     ignoreOrderDefault: false,
     allowTrailingZerosDefault: false,
+    spellCheckEnabled:false
   },
   configuration: {
     prompt: {
@@ -59,6 +60,11 @@ export default {
     rationale: {
       settings: true,
       label: 'Rationale',
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     scoringType: {
       settings: false,
