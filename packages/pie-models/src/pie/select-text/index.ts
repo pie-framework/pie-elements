@@ -79,6 +79,9 @@ export interface SelectTextPie extends PieModel {
 
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+
+    /** Indicates if spellcheck is enabled */
+    spellCheckEnabled: boolean;
   
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
@@ -146,6 +149,11 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
    * Rationale configuration
    */
   rationale?: ConfigureProp;
+
+    /**
+   * Configuration for the spellcheck
+   */
+     spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
