@@ -107,10 +107,6 @@ export class Main extends React.Component {
         Array.from({length: modelPartB.choices.length}, (_, i) => (`${i + 1}`)) : [],
     };
 
-    console.log(this.props.model.partA, "this.props.model.partA")
-    console.log(partA, "part A")
-    console.log(generalConfiguration, "generalConfig")
-
     return (
       <div className={classes.design}>
         <layout.ConfigLayout

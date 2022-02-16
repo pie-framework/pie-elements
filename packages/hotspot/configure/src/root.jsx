@@ -78,9 +78,6 @@ export class Root extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
-    console.log(spellCheckEnabled, "spell check E")
-    console.log(spellCheck, "spell")
-
     switch (model.toolbarEditorPosition) {
       case 'top':
         toolbarOpts.position = 'top';

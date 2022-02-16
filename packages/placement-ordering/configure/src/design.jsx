@@ -116,7 +116,6 @@ export class Design extends React.Component {
       pluralLabel = ''
     } = choices && choices.label && getSingularAndPlural(choices.label) || {};
 
-    console.log(spellCheckEnabled, "spellCheckEnabled")
     switch (model.toolbarEditorPosition) {
       case 'top':
         toolbarOpts.position = 'top';

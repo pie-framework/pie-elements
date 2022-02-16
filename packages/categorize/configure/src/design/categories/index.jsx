@@ -176,7 +176,6 @@ export class Categories extends React.Component {
       spellCheck
     } = this.props;
 
-    console.log(this.props, "trhis pros")
     const { categoriesPerRow, rowLabels } = model;
 
     const holderStyle = {

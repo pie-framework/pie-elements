@@ -314,7 +314,6 @@ export class Design extends React.Component {
                     model={model}
                     categories={categoriesList}
                     onModelChanged={this.updateModel}
-                    
                   />
                 </React.Fragment>
               );

@@ -1,5 +1,5 @@
-import {PromptConfig} from '../../PromptConfig';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
@@ -80,16 +80,15 @@ export interface SelectTextPie extends PieModel {
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 
-    /** Indicates if spellcheck is enabled */
-    spellCheckEnabled: boolean;
-  
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
    */
   toolbarEditorPosition?: 'bottom' | 'top';
 }
-
 
 /**
  * Config Object for @pie-elements/select-text
@@ -98,7 +97,9 @@ export interface SelectTextPie extends PieModel {
  * @TJS-title this is the title
  * @additionalProperties false
  */
-export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings {
+export interface SelectTextConfigure
+  extends PromptConfig,
+    CommonConfigSettings {
   /**
    * Selection Count configuration
    */
@@ -108,7 +109,6 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
    * Selections configuration
    */
   selections?: ConfigureProp;
-
 
   /**
    * Mode configuration
@@ -150,10 +150,10 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
    */
   rationale?: ConfigureProp;
 
-    /**
+  /**
    * Configuration for the spellcheck
    */
-     spellCheck?: ConfigureProp;
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
@@ -170,4 +170,3 @@ export interface SelectTextConfigure extends PromptConfig ,CommonConfigSettings 
    */
   teacherInstructions?: ConfigureProp;
 }
-
