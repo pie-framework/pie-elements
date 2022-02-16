@@ -50,7 +50,7 @@ describe('main', () => {
     });
 
     it('shows correct answer', () => {
-      const correctTokens = [{ start: 0, end: 1, text: 'f', correct: true }];
+      const correctTokens = [{ start: 0, end: 1, text: 'f', correct: true, oldStart: 0, oldEnd: 1 }];
       w.setProps({
         model: { text: 'foo', tokens: correctTokens }
       });
