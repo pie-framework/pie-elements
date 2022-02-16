@@ -42,7 +42,7 @@ export class Main extends React.Component {
   };
 
   correctAnswer = () => {
-    const { model } = this.props;
+    const { model } = this.state;
 
     return model.tokens.filter(t => t.correct);
   };
@@ -50,8 +50,6 @@ export class Main extends React.Component {
   render() {
     const { session, onSelectionChange, classes } = this.props;
     const { showCorrectAnswer, model } = this.state;
-
-    // const model = generateTokens(this.props.model)
 
     const selectedTokens = showCorrectAnswer
       ? this.correctAnswer()
@@ -65,7 +63,7 @@ export class Main extends React.Component {
           model.teacherInstructions && hasText(model.teacherInstructions) && (
             <React.Fragment>
               {!model.animationsDisabled ? <Collapsible
-                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                   className={classes.collapsible}
                 >
                   <PreviewPrompt prompt={model.teacherInstructions}/>
@@ -73,8 +71,8 @@ export class Main extends React.Component {
                 </Collapsible>
                 : <PreviewPrompt prompt={model.teacherInstructions}/>}
 
-                <br />
-                </React.Fragment>
+              <br/>
+            </React.Fragment>
           )
         }
         <div className={classes.prompt}>
@@ -93,7 +91,20 @@ export class Main extends React.Component {
           text={model.text}
           tokens={model.tokens}
           selectedTokens={selectedTokens}
-          onChange={onSelectionChange}
+          onChange={selection => {
+            const newSelections = selection.map(select => {
+              const token = model.tokens.find(({ start, end }) => select.start === start && select.end === end);
+
+              // needed for getScore when tokens position is recalculated, to keep oldStart and oldEnd
+              if (token) {
+                return token;
+              }
+
+              return select;
+            })
+
+            onSelectionChange(newSelections);
+          }}
           highlightChoices={model.highlightChoices}
           maxNoOfSelections={model.maxSelections}
           animationsDisabled={model.animationsDisabled}
@@ -102,7 +113,7 @@ export class Main extends React.Component {
           model.rationale && hasText(model.rationale) && (
             <React.Fragment>
               {!model.animationsDisabled ? <Collapsible
-                  labels={{hidden: 'Show Rationale', visible: 'Hide Rationale'}} className={classes.collapsible}
+                  labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }} className={classes.collapsible}
                   className={classes.collapsible}
                 >
                   <PreviewPrompt prompt={model.rationale}/>
