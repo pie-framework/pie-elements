@@ -155,6 +155,10 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if Choice Label is enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `note` (string)
 
 Indicates the note for the answer

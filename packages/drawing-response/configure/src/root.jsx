@@ -86,14 +86,14 @@ export class Root extends React.Component {
                   'backgroundImage.enabled':
                     backgroundImage.settings &&
                     toggle(backgroundImage.label, true),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
-                  spellCheckEnabled:
-                  spellCheck.settings && toggle(spellCheck.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&
-                    toggle(teacherInstructions.label)
+                    toggle(teacherInstructions.label),
+                    spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                 }
               }}
             />

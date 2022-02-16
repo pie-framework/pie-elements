@@ -30,12 +30,12 @@ exports[`Root snapshot renders 1`] = `
         groups={
           Object {
             "Properties": Object {
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
               "backgroundImage.enabled": undefined,
               "promptEnabled": undefined,
-              "spellCheckEnabled": undefined,
             },
           }
         }
