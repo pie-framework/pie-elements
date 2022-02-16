@@ -99,7 +99,7 @@ export const ACTION_TYPE = {
 };
 
 const MatrixLabelEditableButton = (props) => {
-  const { onLabelUpdate, value, resourceIndex, onAction } = props;
+  const { onLabelUpdate, value, resourceIndex, onAction, spellCheck } = props;
   const [labelValue, setLabelValue] = useState(null);
   const [scoreValue, setScoreValue] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -107,6 +107,8 @@ const MatrixLabelEditableButton = (props) => {
   const [scoresToRef,] = React.useState(React.createRef());
 
   const open = Boolean(anchorEl);
+
+  console.log(spellCheck, "spellcheck in matrix")
 
   const onActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -171,6 +173,7 @@ const MatrixLabelEditableButton = (props) => {
               value={labelValue}
               onChange={e => setLabelValue(e.target.value)}
               onBlur={onBlur}
+              spellCheck = {spellCheck}
             />
           )
           : (

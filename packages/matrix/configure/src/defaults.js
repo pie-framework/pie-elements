@@ -9,12 +9,18 @@ export default {
     rowLabels: ['I\'m interested in politics.', 'I\'m interested in economics.'],
     columnLabels: ['Disagree', 'Unsure', 'Agree'],
     matrixValues: {},
+    spellCheckEnabled:false,
     prompt: 'How interested are you in the following domains?'
   },
   configuration: {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     prompt: {
       settings: true,
