@@ -110,7 +110,8 @@ export class TraitTile extends React.Component {
       showDescription,
       enableDragAndDrop,
       currentPosition,
-      secondaryBlockWidth
+      secondaryBlockWidth,
+      spellCheck
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -161,6 +162,7 @@ export class TraitTile extends React.Component {
                 onChange={name => this.onTraitChanged({ name })}
                 pluginProps={labelPlugins}
                 placeholder='Enter Trait'
+                spellCheck={spellCheck}
               />
             </PrimaryBlock>
             <SecondaryBlock
@@ -176,6 +178,7 @@ export class TraitTile extends React.Component {
                     markup={standards.join(',')}
                     onChange={standards => this.onTraitChanged({ standards: standards.split(',') })}
                     pluginProps={pluginProps}
+                    spellCheck={spellCheck}
                   />
                 </Block>
               )}
@@ -187,6 +190,7 @@ export class TraitTile extends React.Component {
                       markup={description}
                       onChange={description => this.onTraitChanged({ description })}
                       pluginProps={pluginProps}
+                      spellCheck={spellCheck}
                     />
                   </Block>
                 )}
@@ -211,6 +215,7 @@ export class TraitTile extends React.Component {
                         onChange={descriptor => this.onScorePointDescriptorChange({ descriptor, value })}
                         pluginProps={pluginProps}
                         alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                        spellCheck={spellCheck}
                       />
                     </Block>
                   )

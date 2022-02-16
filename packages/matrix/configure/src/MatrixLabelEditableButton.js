@@ -108,8 +108,6 @@ const MatrixLabelEditableButton = (props) => {
 
   const open = Boolean(anchorEl);
 
-  console.log(spellCheck, "spellcheck in matrix")
-
   const onActionClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

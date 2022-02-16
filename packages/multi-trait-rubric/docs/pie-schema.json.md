@@ -26,6 +26,10 @@ Indicates if standards should be shown
 
 Indicates if scoring should start at 0 or 1
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `scales` (array, required)
 
 scales

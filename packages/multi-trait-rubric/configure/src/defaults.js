@@ -7,6 +7,7 @@ export default {
     standards: false,
     scales: [],
     excludeZero: false,
+    spellCheckEnabled:false,
   },
   configuration: {
     excludeZeroDialogBoxContent: {
@@ -58,6 +59,11 @@ export default {
       text: ` You are about to decrease max score point value.
         <br/>
         All the Labels and Descriptions for scores above Max Point will be deleted.`
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     showExcludeZero: {
       settings: true,

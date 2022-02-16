@@ -170,8 +170,6 @@ const MatrixValues = (props) => {
     })
   };
 
-  console.log(spellCheckEnabled, "spellcheck en")
-
   return (
     <ScoringContainer>
       <div/>

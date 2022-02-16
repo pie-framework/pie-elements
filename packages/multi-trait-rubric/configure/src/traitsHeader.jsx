@@ -93,6 +93,7 @@ export class TraitsHeaderTile extends React.Component {
       showScorePointLabels,
       secondaryBlockWidth,
       setSecondaryBlockRef,
+      spellCheck
     } = this.props;
     const { anchorEl } = this.state;
 
@@ -104,6 +105,7 @@ export class TraitsHeaderTile extends React.Component {
               markup={traitLabel || 'Trait'}
               onChange={onTraitLabelChange}
               pluginProps={labelPlugins}
+              spellCheck={spellCheck}
               label='Level Label'
             />
           )}
@@ -194,6 +196,7 @@ export class TraitsHeaderTile extends React.Component {
                   showScorePointLabels={showScorePointLabels}
                   onChange={scorePointLabel => this.onScorePointLabelChange({ scorePointLabel, value })}
                   alignToRight={remainingSpace < 296} // 296 is the space required for the toolbar
+                  spellCheck={spellCheck}
                 />
               </Block>
             )
