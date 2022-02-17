@@ -80,15 +80,17 @@ export default (model) => {
         ...token,
         text: tokenText,
         start: newStart,
-        end: newEnd
+        end: newEnd,
+        // needed for getScore when tokens position is recalculated
+        oldStart: token.start,
+        oldEnd: token.end
       }
     ];
   }, []);
-
 
   return {
     ...model,
     tokens: newTokens,
     text: modelText
-  }
-}
+  };
+};
