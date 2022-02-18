@@ -45,7 +45,12 @@ export const getCorrectness = (tokens, selected) => {
 const getCorrectSelected = (tokens, selected) => {
   return (selected || []).filter((s) => {
     const index = tokens.findIndex((c) => {
-      return c.correct && c.start === s.start && c.end === s.end;
+      return c.correct &&
+        (
+          (c.start === s.start && c.end === s.end) ||
+          // this case is used for the cases when the token's start & end were recalculated
+          (c.start === s.oldStart && c.end === s.oldEnd)
+        );
     });
     return index !== -1;
   });

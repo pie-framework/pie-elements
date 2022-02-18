@@ -19,6 +19,7 @@ exports[`Math-Inline Main render renders correctly with snapshot 1`] = `
       "main": "Main-main-6",
       "mainContainer": "Main-mainContainer-1",
       "note": "Main-note-9",
+      "printContainer": "Main-printContainer-22",
       "responseContainer": "Main-responseContainer-11",
       "showCorrectness": "Main-showCorrectness-14",
       "title": "Main-title-7",

@@ -10,7 +10,7 @@ exports[`main snapshot renders 1`] = `
     toggled={false}
   />
   <Component
-    onChange={[MockFunction]}
+    onChange={[Function]}
     selectedTokens={
       Array [
         Object {
@@ -20,10 +20,13 @@ exports[`main snapshot renders 1`] = `
         },
       ]
     }
+    text="foo"
     tokens={
       Array [
         Object {
           "end": 1,
+          "oldEnd": 1,
+          "oldStart": 0,
           "start": 0,
           "text": "f",
         },
@@ -43,7 +46,7 @@ exports[`main snapshot renders rationale 1`] = `
     toggled={false}
   />
   <Component
-    onChange={[MockFunction]}
+    onChange={[Function]}
     selectedTokens={
       Array [
         Object {
@@ -53,10 +56,13 @@ exports[`main snapshot renders rationale 1`] = `
         },
       ]
     }
+    text="foo"
     tokens={
       Array [
         Object {
           "end": 1,
+          "oldEnd": 1,
+          "oldStart": 0,
           "start": 0,
           "text": "f",
         },
@@ -76,12 +82,15 @@ exports[`main snapshot renders showCorrect 1`] = `
     toggled={true}
   />
   <Component
-    onChange={[MockFunction]}
+    onChange={[Function]}
     selectedTokens={Array []}
+    text="foo"
     tokens={
       Array [
         Object {
           "end": 1,
+          "oldEnd": 1,
+          "oldStart": 0,
           "start": 0,
           "text": "f",
         },

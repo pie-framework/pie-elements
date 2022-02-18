@@ -508,13 +508,12 @@ export class Main extends React.Component {
 
     return (
       <>
-        <InfoDialog
+      <InfoDialog
           open={dialog.open}
           title={dialog.message}
           onCancel={dialog.onCancel}
           onOk={dialog.onOk}
-        />
-        <Design
+        /><Design
           {...this.props}
           onChangeModel={this.onModelChanged}
           onRemoveChoice={this.onRemoveChoice}
@@ -522,8 +521,7 @@ export class Main extends React.Component {
           onAddChoice={this.onAddChoice}
           onPromptChanged={this.onPromptChanged}
           onTeacherInstructionsChanged={this.onTeacherInstructionsChanged}
-        />
-      </>
+        /></>
     );
   }
 }

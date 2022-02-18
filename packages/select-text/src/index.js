@@ -6,6 +6,7 @@ import {
 } from '@pie-framework/pie-player-events';
 import Main from './main';
 import { renderMath } from '@pie-lib/math-rendering';
+import generateModel from './utils';
 
 export default class SelectText extends HTMLElement {
   constructor() {
@@ -27,6 +28,27 @@ export default class SelectText extends HTMLElement {
 
   set session(s) {
     this._session = s;
+
+    if (this._model) {
+      const generatedModel = generateModel(this._model) || {};
+      const { tokens } = generatedModel;
+
+      // make sure initial session tokens are parsed and have correct start and end (according to the regenerated model) - this case was introduced mostly for createCorrectSession
+
+      // check if the selectedTokens have the correct start and end
+      const areCorrect = (s.selectedTokens || []).filter(({ start, end }) => tokens.find(({ start: tStart, end: tEnd }) => start === tStart && end === tEnd)).length;
+
+      if (!areCorrect) {
+        const generatedModel = generateModel({ ...this._model, tokens: s.selectedTokens }) || {};
+        const { tokens } = generatedModel;
+
+        if (tokens) {
+          this._session.selectedTokens = tokens;
+        }
+      }
+    }
+
+
     if (!Array.isArray(this._session.selectedTokens)) {
       this._session.selectedTokens = [];
     }
