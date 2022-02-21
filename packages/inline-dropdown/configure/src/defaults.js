@@ -13,6 +13,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
+    displayType: 'block'
   },
   configuration: {
     prompt: {

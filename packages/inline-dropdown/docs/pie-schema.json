@@ -132,6 +132,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "displayType": {
+      "description": "Indicates display type for the container of the pie-ui element",
+      "type": "string",
+      "title": "displayType"
+    },
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
@@ -157,6 +162,7 @@
     "alternateResponses",
     "choiceRationaleEnabled",
     "choices",
+    "displayType",
     "element",
     "id",
     "lockChoiceOrder",

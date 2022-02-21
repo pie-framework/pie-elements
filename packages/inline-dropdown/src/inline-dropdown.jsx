@@ -16,6 +16,7 @@ export class InlineDropdown extends React.Component {
     disabled: PropTypes.bool,
     markup: PropTypes.string,
     mode: PropTypes.string,
+    displayType: PropTypes.string,
     rationale: PropTypes.string,
     teacherInstructions: PropTypes.string,
     choices: PropTypes.object,
@@ -51,7 +52,7 @@ export class InlineDropdown extends React.Component {
 
   render() {
     const { showCorrectAnswer } = this.state;
-    const { classes, prompt, mode, rationale, teacherInstructions, choices } = this.props;
+    const { classes, prompt, mode, rationale, teacherInstructions, choices, displayType } = this.props;
     const showCorrectAnswerToggle = mode === 'evaluate';
     let choiceRationalesHaveText = false;
 
@@ -66,7 +67,7 @@ export class InlineDropdown extends React.Component {
       }, []));
 
     return (
-      <div className={classes.mainContainer}>
+      <div className={classes.mainContainer} style={{ display: `${displayType}` }}>
         {
           teacherInstructions && hasText(teacherInstructions) && (
             <React.Fragment>
