@@ -2206,14 +2206,14 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^10.10.18":
-  version "10.10.18"
-  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.10.18.tgz#afc1a0222aae196605a5f87611a3954fe7135ea5"
-  integrity sha512-5MQde/8HHtknsShcLYxChfPFZtfWj2JkqMljJTbJkOySkpj/V6G8HoaxBIKk8zvz3ks2B4sq/hXaPVsCxkVL3A==
+"@pie-lib/config-ui@^10.10.20":
+  version "10.10.20"
+  resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.10.20.tgz#faeab7126ed08373afedd6f27ccc348a106736e9"
+  integrity sha512-70ttFVMt7JOOkqzEcQS99Xod2zErywl818bOU09OiEikZSpE0MwUFp2M0d5s15K7a2GQJ9l62Ne7R3v39jjPiA==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.17.18"
+    "@pie-lib/editable-html" "^7.18.0"
     "@pie-lib/icons" "^2.4.25"
     "@pie-lib/render-ui" "^4.12.4"
     classnames "^2.2.6"
@@ -2254,10 +2254,10 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/editable-html@^7.17.18":
-  version "7.17.18"
-  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.17.18.tgz#946d1181338f7a6ab7b28ecb382d9a88c64e4cef"
-  integrity sha512-wPMdrdr/Ej/iF5h/buOtp3jukzBTAmW6j2Vgnl2EcNDcty0/1n66cpNlKUQ530WuOcxYwA/z5PYgTmlc80adlw==
+"@pie-lib/editable-html@^7.18.0":
+  version "7.18.0"
+  resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.18.0.tgz#1625974825b1eaad011cec9f46a93fe48d1fcef6"
+  integrity sha512-POwuuwXO9eydcRMszpHmZE01RFyJQHeMwKD0rgry7iyQA5qXsqvAj3zwHWlIKAf8vdaKKTwgVCvJDxfdDndAKw==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
@@ -2430,14 +2430,14 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@^0.4.8":
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.8.tgz#230ffdc6b640b7d973c8b896b171f8cecb6d703b"
-  integrity sha512-ACokpOJgT/zWeWxROT9mYjmS3+ddp8vOvk8HG19JHqA1cubAK74eT2n/a/SGEoEvWTWXbSh2Ue89wa+l5utVyg==
+"@pie-lib/rubric@^0.4.10":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.10.tgz#7772c2615f64bd1e7744f438418e822336cbc38f"
+  integrity sha512-KTfzcQP93uLoCeTU5h3PyJNaVT3n6MvORqc811Ri81fvxVaIe81VgbqQ2OunuplfWy1ujNMyrP6WHYuNkQ6nQw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/editable-html" "^7.17.18"
+    "@pie-lib/editable-html" "^7.18.0"
     debug "^4.1.1"
     lodash "^4.17.11"
     prop-types "^15.7.2"
@@ -2445,14 +2445,14 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@^3.5.147":
-  version "3.5.147"
-  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.147.tgz#775ca7d42976ad7cfb304805123a0801d69b087e"
-  integrity sha512-SCsZGwjBifChL8FyGFN2J5m46MkIHUmVHeUrioHT4qRUViJQa9YIzHXNwKHFUaBJ7I84HjSTKXJXwW9NlLANxA==
+"@pie-lib/scoring-config@^3.5.149":
+  version "3.5.149"
+  resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.149.tgz#81b5c1e5d83e984e5abf95edef73638f82b3c0fe"
+  integrity sha512-/U4EkfzdjX8QHAhsEqoTK9By7kvVVYOxwAmbbXoU/wIUMZadb838uLfg79qhHjEwUDusLZUgDhrSiDCN4vyLPg==
   dependencies:
     "@material-ui/core" "^3.8.3"
     "@material-ui/icons" "^3.0.2"
-    "@pie-lib/config-ui" "^10.10.18"
+    "@pie-lib/config-ui" "^10.10.20"
     classnames "^2.2.6"
     debug "^4.1.1"
     lodash "^4.17.11"
@@ -2467,10 +2467,10 @@
   resolved "https://registry.yarnpkg.com/@pie-lib/test-utils/-/test-utils-0.2.19.tgz#655afd9d4a396ddea5e07df751d97fc644e696ca"
   integrity sha512-RbNuq6hbPH8pejROms3XXuFHD1JoyTvtpaG/9Rya4bKFo9onZK3IyiqpaeInOtpE1wM2MhVC84MYmdHGEOvhhQ==
 
-"@pie-lib/text-select@^1.8.12":
-  version "1.8.12"
-  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.12.tgz#c155840379bdd5cc41479a79c6e295c3f77197c2"
-  integrity sha512-Wuw7Uit6iJDgrLky4zb2cAZKtQB0Y95AwCqQB1oU9jvE2bxwdEagqSxGodhez9tqgBXLp/8RNbAVPyZHqpSwCA==
+"@pie-lib/text-select@^1.8.13":
+  version "1.8.13"
+  resolved "https://registry.yarnpkg.com/@pie-lib/text-select/-/text-select-1.8.13.tgz#8a8cd964683ea83cd9a942f8e37308a268dbf498"
+  integrity sha512-anMHKtp/QqiEu2/yRxxZ2G8MpSC1esmu0BHuNf7QFMPRJwjYrE5jm0BQ9hYoMgqXnmRKyJGlryNoVFJ8kkdLcw==
   dependencies:
     "@pie-framework/parse-english" "^1.0.0"
     "@pie-lib/render-ui" "^4.12.4"
