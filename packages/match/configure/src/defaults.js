@@ -13,7 +13,6 @@ export default {
     choiceMode: 'radio',
     prompt: 'Prompt goes here',
     toolbarEditorPosition: 'bottom',
-    spellCheckEnabled:false,
     rows: [
       {
         id: 1,

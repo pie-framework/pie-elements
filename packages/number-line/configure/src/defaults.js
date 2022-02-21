@@ -1,6 +1,5 @@
 export const model = {
   correctResponse: [],
-  spellCheckEnabled:false,
   graph: {
     domain: { min: -5, max: 5 },
     ticks: {

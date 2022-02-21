@@ -42,7 +42,6 @@ export default {
     validationDefault: 'literal',
     ignoreOrderDefault: false,
     allowTrailingZerosDefault: false,
-    spellCheckEnabled:false
   },
   configuration: {
     prompt: {

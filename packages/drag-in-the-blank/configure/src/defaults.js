@@ -13,7 +13,6 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-
   },
   configuration: {
     spellCheck: {

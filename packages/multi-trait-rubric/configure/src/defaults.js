@@ -7,7 +7,6 @@ export default {
     standards: false,
     scales: [],
     excludeZero: false,
-    spellCheckEnabled:false,
   },
   configuration: {
     excludeZeroDialogBoxContent: {

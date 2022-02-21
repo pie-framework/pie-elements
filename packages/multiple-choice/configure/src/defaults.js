@@ -19,7 +19,6 @@ export default {
     toolbarEditorPosition: 'bottom',
     choicesLayout: 'vertical',
     gridColumns: '2',
-    spellCheckEnabled:false
   },
   configuration: {
     spellCheck: {

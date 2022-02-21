@@ -45,7 +45,6 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    spellCheckEnabled:false
   },
   configuration: {
     authoring: {

@@ -25,7 +25,6 @@ export default {
     rationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    spellCheckEnabled:false,
     strokeWidth: 5
   },
   configuration: {

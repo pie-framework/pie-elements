@@ -9,7 +9,6 @@ export default {
     likertOrientation: 'horizontal',
     choices: [],
     teacherInstructionsEnabled: true,
-    spellCheckEnabled:false
   },
   configuration: {
     teacherInstructions: {
