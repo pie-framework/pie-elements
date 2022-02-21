@@ -57,6 +57,9 @@ export interface DragInTheBlankPie extends PieModel {
     /** The markup for the pie-ui element */
     markup: string;
 
+    /** Indicates if the choices are presented in a fixed order */
+    lockChoiceOrder: boolean;
+
     /** The item stem for the question */
     prompt?: string;
 

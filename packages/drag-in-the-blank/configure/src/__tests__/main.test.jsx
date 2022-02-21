@@ -24,7 +24,6 @@ jest.mock('@pie-lib/config-ui', () => ({
 const model = {
   markup: '{{0}} + {{1}} = 15',
   prompt: '<p>Solve the equation below.</p>',
-  shuffle: true,
   choices: [
     { value: '<div>6</div>', id: '0' },
     { value: '<div>9</div>', id: '1' }

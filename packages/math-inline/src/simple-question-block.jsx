@@ -55,8 +55,8 @@ export class SimpleQuestionBlockRaw extends React.Component {
         {showCorrect || disabled ? (
           <div
             className={cx(classes.static, {
-              [classes.correct]: showAsCorrect,
-              [classes.incorrect]: showAsIncorrect
+              [classes.incorrect]: !emptyResponse && !correct && !showCorrect,
+                  [classes.correct]: !emptyResponse && (correct || showCorrect)
             })}
           >
             <mq.Static
@@ -88,8 +88,7 @@ const SimpleQuestionBlock = withStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     width: 'auto',
-    minWidth: '500px',
-    maxWidth: '900px',
+    maxWidth: 'fit-content',
     height: 'auto',
     textAlign: 'left',
     padding: theme.spacing.unit,
@@ -106,7 +105,7 @@ const SimpleQuestionBlock = withStyles(theme => ({
     color: color.text(),
     background: color.background(),
     border: `1px solid ${color.primaryLight()}`,
-    width: '100%',
+    width: 'fit-content',
     fontSize: '1rem',
     padding: theme.spacing.unit / 2,
     '& > .mq-math-mode': {
@@ -118,12 +117,14 @@ const SimpleQuestionBlock = withStyles(theme => ({
     }
   },
   correct: {
-    color: color.correct(),
-    border: `1px solid ${color.correct()} !important`,
+    border: `2px solid ${color.correct()} !important`,
+    padding: theme.spacing.unit,
+    letterSpacing: '0.5px',
   },
   incorrect: {
-    color: color.incorrect(),
-    border: `1px solid ${color.incorrect()} !important`,
+    border: `2px solid ${color.incorrect()} !important`,
+    padding: theme.spacing.unit,
+    letterSpacing: '0.5px',
   }
 }))(SimpleQuestionBlockRaw);
 

@@ -23,7 +23,6 @@ describe('Main', () => {
           element: 'drag-in-the-blank',
           markup: '{{0}} + {{1}} = 15',
           disabled: false,
-          shuffle: true,
           choices: [{ value: '<div>9</div>', id: '1' }, { value: '<div>6</div>', id: '0' }],
           choicesPosition: 'below',
           correctResponse: { 0: '0', 1: '1' },
