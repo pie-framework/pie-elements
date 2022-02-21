@@ -43,6 +43,7 @@ export default class RootInlineDropdown extends HTMLElement {
         rationale: this._model.rationale,
         teacherInstructions: this._model.teacherInstructions,
         disabled: this._model.disabled,
+        displayType: this._model.displayType,
         markup: this._model.markup,
         mode: this._model.mode,
         choices: this._model.choices,

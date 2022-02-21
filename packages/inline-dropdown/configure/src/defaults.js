@@ -13,7 +13,8 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    spellCheckEnabled:false
+    spellCheckEnabled:false,
+    displayType: 'block'
   },
   configuration: {
     prompt: {
