@@ -92,7 +92,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "rationale": "<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>",
             "rationaleEnabled": true,
             "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
-            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
             "toolbarEditorPosition": "bottom",
@@ -111,7 +110,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup=""
           nonEmpty={false}
           onChange={[Function]}
-          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -127,7 +125,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup="<p>Solve the equation below.</p>"
           nonEmpty={false}
           onChange={[Function]}
-          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -161,7 +158,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "type": "drag-in-the-blank",
           }
         }
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -204,7 +200,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "rationale": "<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>",
             "rationaleEnabled": true,
             "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
-            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
             "toolbarEditorPosition": "bottom",
@@ -223,7 +218,6 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           markup="<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>"
           onChange={[Function]}
-          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -328,7 +322,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "rationale": "<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>",
             "rationaleEnabled": false,
             "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
-            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
             "toolbarEditorPosition": "bottom",
@@ -366,7 +359,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "type": "drag-in-the-blank",
           }
         }
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -409,7 +401,6 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "rationale": "<p>A correct response is shown below:</p><ul><li>2/6 = 1/3</li><li>4/8 = 1/2</li><li>6/10 = 3/5</li><li>9/12 = 3/4</li></ul>",
             "rationaleEnabled": false,
             "slateMarkup": "<span data-type=\\"drag_in_the_blank\\" data-index=\\"0\\" data-id=\\"0\\" data-value=\\"&lt;div&gt;6&lt;/div&gt;\\"></span> + <span data-type=\\"drag_in_the_blank\\" data-index=\\"1\\" data-id=\\"1\\" data-value=\\"&lt;div&gt;9&lt;/div&gt;\\"></span> = 15",
-            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
             "toolbarEditorPosition": "bottom",

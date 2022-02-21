@@ -127,7 +127,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -153,7 +152,6 @@ exports[`Configure renders snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <InputContainer
@@ -164,7 +162,6 @@ exports[`Configure renders snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <InputContainer
@@ -173,7 +170,6 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         markup=""
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <WithStyles(GraphingConfig)
@@ -219,7 +215,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -269,7 +264,6 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",

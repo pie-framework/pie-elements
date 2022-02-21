@@ -139,7 +139,6 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "This is a chart!",
@@ -164,7 +163,6 @@ exports[`Configure renders snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <InputContainer
@@ -175,7 +173,6 @@ exports[`Configure renders snapshot 1`] = `
         markup="Here goes item stem!"
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <InputContainer
@@ -184,7 +181,6 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         markup="Rationale goes here!"
         onChange={[Function]}
-        spellCheck={false}
       />
     </InputContainer>
     <WithStyles(Component)
@@ -251,7 +247,6 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "This is a chart!",
@@ -318,7 +313,6 @@ exports[`Configure renders snapshot 1`] = `
           "rationale": "Rationale goes here!",
           "rationaleEnabled": true,
           "scoringType": "all or nothing",
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "This is a chart!",

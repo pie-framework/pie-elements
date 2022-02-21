@@ -18,7 +18,6 @@ exports[`Main snapshot renders with default values 1`] = `
         "I'm interested in politics.",
         "I'm interested in economics.",
       ],
-      "spellCheckEnabled": false,
       "teacherInstructionsEnabled": true,
     }
   }

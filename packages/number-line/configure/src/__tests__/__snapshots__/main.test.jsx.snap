@@ -75,7 +75,6 @@ exports[`main snapshot renders 1`] = `
               "toolbarEditorPosition": "bottom",
               "width": 500,
             },
-            "spellCheckEnabled": false,
           }
         }
       />
@@ -200,7 +199,6 @@ exports[`main snapshot renders 1`] = `
               "toolbarEditorPosition": "bottom",
               "width": 500,
             },
-            "spellCheckEnabled": false,
             "title": undefined,
           },
           "prompt": undefined,
@@ -284,7 +282,6 @@ exports[`main snapshot renders 1`] = `
             "toolbarEditorPosition": "bottom",
             "width": 500,
           },
-          "spellCheckEnabled": false,
           "title": undefined,
         },
         "prompt": undefined,
