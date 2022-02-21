@@ -49,13 +49,19 @@ class HotspotComponent extends React.Component {
               labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
               className={classes.collapsible}
             >
-              <PreviewPrompt prompt={teacherInstructions} />
+              <PreviewPrompt
+                className="prompt"
+                prompt={teacherInstructions}
+              />
             </Collapsible>
           )
         }
 
         <Typography className={classes.prompt}>
-          <PreviewPrompt prompt={prompt} />
+          <PreviewPrompt
+            className="prompt"
+            prompt={prompt}
+          />
         </Typography>
 
         {imageUrl ? (
@@ -80,7 +86,10 @@ class HotspotComponent extends React.Component {
               labels={{ hidden: 'Show Rationale', visible: 'Hide Rationale' }}
               className={classes.collapsible}
             >
-              <PreviewPrompt prompt={rationale} />
+              <PreviewPrompt
+                className="prompt"
+                prompt={rationale}
+              />
             </Collapsible>
           )
         }
