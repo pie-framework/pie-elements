@@ -49,6 +49,10 @@ Indicates if duplicates are enabled
 
 The markup for the pie-ui element
 
+# `lockChoiceOrder` (boolean, required)
+
+Indicates if the choices are presented in a fixed order
+
 # `prompt` (string)
 
 The item stem for the question
