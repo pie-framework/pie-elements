@@ -58,7 +58,7 @@ const base = extras =>
   Object.assign(
     {},
     {
-      highlightChoices: true,
+      // highlightChoices: true,
       feedback: {
         correct: {
           type: 'default',
@@ -249,374 +249,56 @@ const simpleItem = {
 
 exports.model = (id, element) => {
   return Object.assign({}, { id, element }, base(     {
+    // "id": "8a808081701d693801703174fb900421",
+    "teacherInstructions": "",
     "partialScoring": true,
+    "prompt": "<p>Select the sentence from&#160;&#34;The Gymnast&#34; that <span class=\"relative-emphasis\">best</span> represents the theme.</p>",
+    "rationale": "<p>The final sentence of the passage best exemplifies the theme of the short story because Natasha&#39;s practice and determination finally pays off.</p>",
     "tokens": [
       {
-        "correct": false,
+        "text": "She thought about what she had to do, struggling to rein in her wild, fearful thoughts.",
+        "end": 90,
         "start": 3,
-        "end": 6,
-        "text": "Our"
+        "correct": false
       },
       {
-        "correct": false,
-        "start": 7,
-        "end": 16,
-        "text": "challenge"
+        "start": 449,
+        "end": 585,
+        "text": "Just for a hair of a moment, Natasha wondered if she really wanted a perfect 10, so weary was she of trying for but never achieving one.",
+        "correct": false
       },
       {
+        "end": 627,
         "correct": false,
-        "start": 18,
-        "end": 21,
-        "text": "not"
+        "text": "At last Natasha's moment arrived.",
+        "start": 594
       },
       {
+        "end": 743,
+        "text": "The faces of past giants of gymnastics swam before her mind's eye, now razor&#8211;sharp with fierce determination.",
         "correct": false,
-        "start": 22,
-        "end": 30,
-        "text": "tomorrow"
+        "start": 628
       },
       {
+        "text": "Suddenly, the din of the gymnasium was silent to her.",
+        "end": 997,
         "correct": false,
-        "start": 31,
-        "end": 34,
-        "text": "but"
+        "start": 944
       },
       {
+        "end": 1087,
+        "start": 998,
         "correct": false,
-        "start": 35,
-        "end": 40,
-        "text": "today"
-      },
-      {
-        "correct": false,
-        "start": 42,
-        "end": 44,
-        "text": "is"
-      },
-      {
-        "correct": false,
-        "start": 45,
-        "end": 47,
-        "text": "to"
-      },
-      {
-        "correct": false,
-        "start": 48,
-        "end": 58,
-        "text": "accomplish"
-      },
-      {
-        "correct": false,
-        "start": 59,
-        "end": 69,
-        "text": "objectives"
-      },
-      {
-        "correct": false,
-        "start": 70,
-        "end": 75,
-        "text": "which"
-      },
-      {
-        "correct": false,
-        "start": 76,
-        "end": 80,
-        "text": "have"
-      },
-      {
-        "correct": false,
-        "start": 81,
-        "end": 87,
-        "text": "eluded"
-      },
-      {
-        "correct": false,
-        "start": 88,
-        "end": 95,
-        "text": "mankind"
-      },
-      {
-        "correct": false,
-        "start": 96,
-        "end": 101,
-        "text": "since"
-      },
-      {
-        "correct": false,
-        "start": 102,
-        "end": 105,
-        "text": "the"
-      },
-      {
-        "correct": false,
-        "start": 106,
-        "end": 115,
-        "text": "beginning"
-      },
-      {
-        "correct": false,
-        "start": 116,
-        "end": 118,
-        "text": "of"
-      },
-      {
-        "correct": false,
-        "start": 119,
-        "end": 123,
-        "text": "time"
-      },
-      {
-        "correct": false,
-        "start": 125,
-        "end": 127,
-        "text": "We"
-      },
-      {
-        "correct": false,
-        "start": 128,
-        "end": 132,
-        "text": "must"
-      },
-      {
-        "correct": false,
-        "start": 133,
-        "end": 138,
-        "text": "bring"
-      },
-      {
-        "correct": false,
-        "start": 139,
-        "end": 144,
-        "text": "equal"
-      },
-      {
-        "correct": false,
-        "start": 145,
-        "end": 152,
-        "text": "justice"
-      },
-      {
-        "correct": false,
-        "start": 153,
-        "end": 155,
-        "text": "to"
-      },
-      {
-        "correct": false,
-        "start": 156,
-        "end": 159,
-        "text": "all"
-      },
-      {
-        "correct": false,
-        "start": 160,
-        "end": 163,
-        "text": "our"
-      },
-      {
-        "correct": false,
-        "start": 164,
-        "end": 172,
-        "text": "citizens"
-      },
-      {
-        "correct": false,
-        "start": 174,
-        "end": 176,
-        "text": "We"
-      },
-      {
-        "correct": false,
-        "start": 177,
-        "end": 181,
-        "text": "must"
-      },
-      {
-        "correct": false,
-        "start": 182,
-        "end": 189,
-        "text": "abolish"
-      },
-      {
-        "correct": false,
-        "start": 190,
-        "end": 195,
-        "text": "human"
+        "text": "Forcing all sound out of her mind, she focused on the gleaming balance beam ahead of her."
       },
       {
         "correct": true,
-        "start": 196,
-        "end": 203,
-        "text": "poverty"
-      },
-      {
-        "correct": false,
-        "start": 205,
-        "end": 207,
-        "text": "We"
-      },
-      {
-        "correct": false,
-        "start": 208,
-        "end": 212,
-        "text": "must"
-      },
-      {
-        "correct": false,
-        "start": 213,
-        "end": 222,
-        "text": "eradicate"
-      },
-      {
-        "correct": false,
-        "start": 223,
-        "end": 230,
-        "text": "killing"
-      },
-      {
-        "correct": false,
-        "start": 231,
-        "end": 234,
-        "text": "and"
-      },
-      {
-        "correct": false,
-        "start": 235,
-        "end": 244,
-        "text": "crippling"
-      },
-      {
-        "correct": true,
-        "start": 245,
-        "end": 252,
-        "text": "disease"
-      },
-      {
-        "correct": false,
-        "start": 253,
-        "end": 256,
-        "text": "and"
-      },
-      {
-        "correct": false,
-        "start": 257,
-        "end": 265,
-        "text": "lengthen"
-      },
-      {
-        "correct": false,
-        "start": 266,
-        "end": 269,
-        "text": "the"
-      },
-      {
-        "correct": false,
-        "start": 270,
-        "end": 274,
-        "text": "span"
-      },
-      {
-        "correct": false,
-        "start": 275,
-        "end": 277,
-        "text": "of"
-      },
-      {
-        "correct": false,
-        "start": 278,
-        "end": 282,
-        "text": "life"
-      },
-      {
-        "correct": false,
-        "start": 283,
-        "end": 285,
-        "text": "to"
-      },
-      {
-        "correct": false,
-        "start": 286,
-        "end": 289,
-        "text": "100"
-      },
-      {
-        "correct": false,
-        "start": 290,
-        "end": 292,
-        "text": "or"
-      },
-      {
-        "correct": false,
-        "start": 293,
-        "end": 296,
-        "text": "200"
-      },
-      {
-        "correct": false,
-        "start": 297,
-        "end": 302,
-        "text": "years"
-      },
-      {
-        "correct": false,
-        "start": 304,
-        "end": 306,
-        "text": "We"
-      },
-      {
-        "correct": false,
-        "start": 307,
-        "end": 311,
-        "text": "must"
-      },
-      {
-        "correct": false,
-        "start": 312,
-        "end": 321,
-        "text": "eliminate"
-      },
-      {
-        "correct": true,
-        "start": 322,
-        "end": 332,
-        "text": "illiteracy"
-      },
-      {
-        "correct": false,
-        "start": 333,
-        "end": 338,
-        "text": "among"
-      },
-      {
-        "correct": false,
-        "start": 339,
-        "end": 342,
-        "text": "all"
-      },
-      {
-        "correct": false,
-        "start": 343,
-        "end": 345,
-        "text": "of"
-      },
-      {
-        "correct": false,
-        "start": 346,
-        "end": 349,
-        "text": "our"
-      },
-      {
-        "correct": false,
-        "start": 350,
-        "end": 356,
-        "text": "people"
+        "start": 1088,
+        "end": 1225,
+        "text": "Taking a deep breath, Natasha made her graceful, yet powerful approach, mounted the beam flawlessly, and...executed her first perfect 10."
       }
     ],
-    // "id": "0",
-    "text": "<p>Our challenge, not tomorrow but today, is to accomplish objectives which have eluded mankind since the beginning of time. We must bring equal justice to all our citizens. We must abolish human poverty. We must eradicate killing and crippling disease and lengthen the span of life to 100 or 200 years. We must eliminate illiteracy among all of our people.</p>\n",
-    "prompt": "<p>Select the <span class=\"relative-emphasis\">three</span> words from below that specifically describe the &#8220;enemies&#8221; which Johnson wants to eliminate.</p>",
-    "rationale": "<p>In paragraph 6, Johnson refers to the &#8220;ancient enemies&#8221;&#8212;which he defines as poverty, disease, illiteracy, strife, and bigotry. In paragraph 3, he talks about this idea by explaining that he wants to &#8220;accomplish objectives which have eluded mankind;&#8221; that is, to eliminate these enemies.</p>",
     // "element": "select-text",
-    "maxSelections": 3
+    "text": "<p>She thought about what she had to do, struggling to rein in her wild, fearful thoughts. Coach Cummings always said that an undisciplined mind never scored a perfect 10. Natasha wanted to please her Coach, yet sometimes his approval wasn't as exciting as his anger. The gymnasts were unanimous about one thing: Coach Cummings's fits of disapproving rage were much more humorous to witness than his infrequent, backslapping moments of high praise. Just for a hair of a moment, Natasha wondered if she really wanted a perfect 10, so weary was she of trying for but never achieving one.</p>\n\n<p>At last Natasha's moment arrived. The faces of past giants of gymnastics swam before her mind's eye, now razor&#8211;sharp with fierce determination. \"I am talented. I am not afraid. I will make a perfect 10,\" she spoke aloud to herself, as she approached the mat, dusted her hands with chalk to prevent slippage, and returned to her starting point. Suddenly, the din of the gymnasium was silent to her. Forcing all sound out of her mind, she focused on the gleaming balance beam ahead of her. Taking a deep breath, Natasha made her graceful, yet powerful approach, mounted the beam flawlessly, and...executed her first perfect 10.</p>\n"
   }  ));
 };
