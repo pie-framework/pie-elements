@@ -3,7 +3,6 @@ export default {
     disabled: false,
     mode: 'gather',
     prompt: 'Use the inputs to complete the sentence',
-    shuffle: true,
     markup: '',
     choices: [],
     choicesPosition: 'below',
@@ -14,7 +13,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     toolbarEditorPosition: 'bottom',
-    spellCheckEnabled:false
+
   },
   configuration: {
     spellCheck: {
