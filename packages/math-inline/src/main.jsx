@@ -401,7 +401,7 @@ export class Main extends React.Component {
     const displayNote = (showCorrect || mode === 'view' && role === 'instructor') && showNote && note;
     const emptyResponse = isEmpty(responses);
     const showCorrectAnswerToggle = !emptyResponse && correctness && correctness.correctness !== 'correct';
-    const tooltipModeEnabled = disabled && correctness 
+    const tooltipModeEnabled = disabled && correctness;
     const additionalKeys = generateAdditionalKeys(customKeys);
     const correct = correctness && correctness.correct;
     const staticLatex = prepareForStatic(model, this.state) || '';
