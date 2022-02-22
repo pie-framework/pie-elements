@@ -118,6 +118,13 @@ export default class Ebsr extends HTMLElement {
         mode,
         keyMode: this._model[key].choicePrefix,
       };
+
+      if (!part._session) {
+        // for print, "set session" is not called,
+        // but ebsr needs sessions in order to render the elements,
+        // so we set it here it was not set already
+        part.session = {};
+      }
     }
   }
 
