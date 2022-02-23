@@ -29,6 +29,7 @@ const preparePrintModel = (model, opts) => {
 
   model.disabled = true;
   model.animationsDisabled = true;
+  model.lockChoiceOrder = true;
 
   const choices = cloneDeep(model.choices);
 
@@ -68,6 +69,7 @@ export default class Ebsr extends HTMLElement {
     super();
     this._model = {};
     this._session = {};
+    this._options = null;
   }
 
   onSessionUpdated = (e) => {
@@ -114,7 +116,7 @@ export default class Ebsr extends HTMLElement {
       const { mode } = this._model;
 
       part.model = {
-        ...this._model[key],
+        ...preparePrintModel(this._model[key], this._options),
         mode,
         keyMode: this._model[key].choicePrefix,
       };
@@ -126,6 +128,10 @@ export default class Ebsr extends HTMLElement {
         part.session = {};
       }
     }
+  }
+
+  set options(o) {
+    this._options = o;
   }
 
   setPartSession(part, key) {
