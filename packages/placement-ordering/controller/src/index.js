@@ -84,6 +84,10 @@ export function model(question, session, env) {
     base.note = normalizedQuestion.note;
     base.showNote = normalizedQuestion.alternateResponses && normalizedQuestion.alternateResponses.length > 0;
 
+    if (env.mode === 'gather' && !normalizedQuestion.placementArea && !session.value) {
+      session.value = base.choices.map(m => m.id);
+    }
+
     log('[model] removing tileSize for the moment.');
 
     base.prompt = normalizedQuestion.promptEnabled
