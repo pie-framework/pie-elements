@@ -19,7 +19,7 @@ import AnnotationMenu from './annotation-menu';
 
 const style = {
   textContainer: {
-    padding: '10px 170px 10px 16px',
+    padding: '10px 120px 10px 16px',
     backgroundColor: 'rgba(0, 0, 0, 0.06)',
     border: '1px solid #ccc',
     borderRadius: '4px',
@@ -566,7 +566,7 @@ class AnnotationEditor extends React.Component {
             className={classes.prompt}
             markup={comment|| ''}
             onChange={onCommentChange}
-            width={width && (width + 154).toString()}
+            width={width && (width + 104).toString()}
             disabled={disabled}
             pluginProps={{
               math: {
