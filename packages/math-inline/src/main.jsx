@@ -445,6 +445,7 @@ export class Main extends React.Component {
                   [classes.correct]: !emptyResponse && (correct || showCorrect),
                   [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
                   [classes.correctAnswerShown]: showCorrect,
+                  [classes.printCorrect]: printMode && alwaysShowCorrect
                 })}
               >
                 <Tooltip
@@ -489,7 +490,7 @@ export class Main extends React.Component {
                   />
                 </Tooltip>
               </div>
-             )} 
+             )}
           </div>
         </Readable>}
         {
@@ -722,6 +723,9 @@ const styles = (theme) => ({
   correctAnswerShown: {
     padding: theme.spacing.unit,
     letterSpacing: '0.5px',
+  },
+  printCorrect: {
+    border: `2px solid ${color.correct()} !important`,
   },
   correct: {
     borderColor: `${color.correct()} !important`,
