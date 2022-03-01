@@ -44,7 +44,7 @@ exports[`freeform editor snapshots renders 1`] = `
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
@@ -115,7 +115,7 @@ exports[`freeform editor snapshots renders disabled 1`] = `
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
@@ -186,7 +186,7 @@ exports[`freeform editor snapshots renders with complex text and nested annotati
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
@@ -257,7 +257,7 @@ exports[`freeform editor snapshots renders with predefined annotations 1`] = `
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
@@ -351,7 +351,7 @@ exports[`freeform editor snapshots renders with text and annotations 1`] = `
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
@@ -422,7 +422,7 @@ exports[`freeform editor snapshots renders with text and comment 1`] = `
           },
         }
       }
-      width="654"
+      width="604"
     />
   </Component>
   <WithStyles(AnnotationMenu)
