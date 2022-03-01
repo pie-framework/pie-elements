@@ -54,7 +54,6 @@ const style = {
   annotation: {
     position: 'relative',
     cursor: 'pointer',
-    display: 'inline-block',
     lineHeight: '19px',
 
     '&.positive': {
@@ -257,7 +256,7 @@ class AnnotationEditor extends React.Component {
     const { id, annId } = event.target.dataset;
     const annotationId = id || annId;
     const selectedElems = getAnnotationElements(annotationId);
-    const labelElem = getLabelElement(annotationId)
+    const labelElem = getLabelElement(annotationId);
     const annotationIndex = annotations.findIndex(annotation => annotation.id === annotationId);
     const isSideLabel = labelElem.hasAttribute('data-freeform');
 
@@ -402,7 +401,7 @@ class AnnotationEditor extends React.Component {
       this.labelsRef.appendChild(labelElem);
     } else {
       labelElem.className = classNames(classes.annotationLabel, type);
-      firstSpan.insertBefore(labelElem, firstSpan.firstChild);
+      firstSpan.appendChild(labelElem);
     }
   };
 
