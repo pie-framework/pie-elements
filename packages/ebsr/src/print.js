@@ -30,6 +30,7 @@ const preparePrintModel = (model, opts) => {
   model.disabled = true;
   model.animationsDisabled = true;
   model.lockChoiceOrder = true;
+  model.choicesLayout = model.choicesLayout || 'vertical';
 
   const choices = cloneDeep(model.choices);
 
