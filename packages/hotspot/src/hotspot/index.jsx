@@ -2,15 +2,46 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import {Collapsible, hasText, PreviewPrompt} from '@pie-lib/render-ui';
-import Container from './container';
 import { withStyles } from '@material-ui/core/styles';
+
+import Container from './container';
 
 class HotspotComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCorrect: false
+      showCorrect: false,
+      observer: null,
+      scale: 1
     };
+  }
+
+  componentDidMount() {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        const target = document.getElementById('question-container')?.style?.cssText
+        const zoom = target?.substring(
+          target.indexOf('--pie-zoom') + 11,
+          target.lastIndexOf('%')
+        );
+
+        const zoomParsed = zoom?.replace(/\s/g, '');
+        if (zoomParsed) {
+          this.setState({
+            scale: parseFloat(zoomParsed) / 100,
+          })
+        }
+      });
+    });
+
+    const target = document.getElementById('question-container');
+    if (target) {
+      this.observer.observe(target, { attributes : true, attributeFilter : ['style'] })
+    }
+  }
+
+  componentWillUnmount() {
+    this.observer?.disconnect();
   }
 
   onToggle = () => {
@@ -77,6 +108,7 @@ class HotspotComponent extends React.Component {
             shapes={shapes}
             disabled={disabled}
             strokeWidth={strokeWidth}
+            scale={this.state.scale}
           />
         ) : null}
 

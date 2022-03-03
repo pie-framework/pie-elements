@@ -65,7 +65,8 @@ class PolygonComponent extends React.Component {
       selected,
       points,
       evaluateText,
-      strokeWidth
+      strokeWidth,
+      scale
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
@@ -95,7 +96,7 @@ class PolygonComponent extends React.Component {
     }
 
     return (
-      <Group>
+      <Group scaleX={scale} scaleY={scale}>
         <Line
           points={pointsParsed}
           closed={true}
@@ -142,12 +143,14 @@ PolygonComponent.propTypes = {
   points: PropTypes.array.isRequired,
   selected: PropTypes.bool.isRequired,
   evaluateText: PropTypes.string,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  scale: PropTypes.number
 };
 
 PolygonComponent.defaultProps = {
   evaluateText: null,
-  strokeWidth: 5
+  strokeWidth: 5,
+  scale: 1
 };
 
 export default withStyles(styles)(PolygonComponent);
