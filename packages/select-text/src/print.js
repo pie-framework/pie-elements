@@ -20,6 +20,7 @@ const preparePrintModel = (model, opts) => {
 
   model.prompt = model.promptEnabled !== false ? model.prompt : undefined;
   model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
+  model.rationale = instr && model.rationaleEnabled !== false ? model.rationale : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
   model.mode = instr ? 'evaluate' : model.mode;
