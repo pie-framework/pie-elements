@@ -25,6 +25,7 @@ const preparePrintModel = (model, opts) => {
   model.alwaysShowCorrect = instr;
   model.printMode = true;
   model.feedback = undefined;
+  model.expression = model.expression || '{{response}}';
 
   model.animationsDisabled = true;
   return {
