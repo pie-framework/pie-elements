@@ -91,10 +91,15 @@ export class Main extends React.Component {
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
       const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-      const length = getAdjustedLength(Math.max(...labelLengthsArr));
+      const length = Math.max(...labelLengthsArr);
 
-      if (undefinedLengths || !maxLengthPerChoice[index] || maxLengthPerChoice[index] < length) {
-        maxLengthPerChoice[index] = length;
+      if (
+        undefinedLengths
+        || !maxLengthPerChoice[index]
+        || maxLengthPerChoice[index] < length
+        || maxLengthPerChoice[index] > length + 10
+      ) {
+        maxLengthPerChoice[index] = getAdjustedLength(length);
       }
     });
 
@@ -160,7 +165,7 @@ export class Main extends React.Component {
   onChangeResponse = (index, newVal) => {
     const { model, onModelChanged} = this.props;
     const { choices, maxLengthPerChoice } = model;
-    const newValLength = getAdjustedLength((newVal || '').length);
+    const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
       choices[index] = [{ label: '', value: '0' }];
