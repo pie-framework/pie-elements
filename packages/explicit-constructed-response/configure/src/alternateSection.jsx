@@ -92,7 +92,6 @@ export class Choice extends React.Component {
           value={value}
           onChange={this.onChange}
           labelWidth={0}
-          disableUnderline
         />
         <IconButton
           aria-label="delete"

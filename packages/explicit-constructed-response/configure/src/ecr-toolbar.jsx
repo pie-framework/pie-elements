@@ -23,7 +23,9 @@ export class ECRToolbar extends React.Component {
     })
   };
 
-  state = {};
+  state = {
+    markup: ''
+  };
 
   componentDidMount() {
     const { correctChoice, node } = this.props;
@@ -61,7 +63,7 @@ export class ECRToolbar extends React.Component {
 
     change.moveFocusTo(nextText.key, 0).moveAnchorTo(nextText.key, 0);
 
-    onToolbarDone(change, false);
+    onToolbarDone(change, true);
     onChangeResponse(newValue);
   };
 
@@ -87,7 +89,7 @@ export class ECRToolbar extends React.Component {
           }}
           onChange={this.onChange}
           onBlur={this.onDone}
-          value={markup}
+          value={markup || ''}
         />
       </div>
     );

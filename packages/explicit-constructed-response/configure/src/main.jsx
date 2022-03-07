@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
+import pick from 'lodash/pick';
+import throttle from 'lodash/throttle';
 import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
 import {InputContainer, layout, settings} from '@pie-lib/config-ui';
 import {withStyles} from '@material-ui/core/styles';
@@ -180,7 +182,8 @@ export class Main extends React.Component {
 
   onChange = markup => {
     const {
-      model: { choices, maxLengthPerChoice }
+      model: { choices, maxLengthPerChoice },
+      onModelChanged
     } = this.props;
     const domMarkup = createElementFromHTML(markup);
     const allRespAreas = domMarkup.querySelectorAll(
@@ -206,13 +209,59 @@ export class Main extends React.Component {
       el.dataset.index = index;
     });
 
-    this.props.onModelChanged({
+    const callback = () => onModelChanged({
       ...this.props.model,
       choices: allChoices,
       slateMarkup: domMarkup.innerHTML,
       maxLengthPerChoice: updatedMaxLengthPerChoice
     });
+
+    this.setState({
+      cachedChoices: undefined
+    }, callback);
   };
+
+  onHandleAreaChange = throttle((nodes) => {
+    const {
+      model: { choices },
+      onModelChanged
+    } = this.props;
+    const { cachedChoices } = this.state;
+
+    if (!nodes) {
+      return;
+    }
+
+    const newChoices = choices ? cloneDeep(choices) : {};
+    const newCachedChoices = cachedChoices ? cloneDeep(cachedChoices) : {};
+
+    nodes.forEach((node) => {
+      const keyForNode = node.data.get('index');
+
+      if (!newChoices[keyForNode] && newCachedChoices[keyForNode]) {
+        Object.assign(newChoices, pick(newCachedChoices, keyForNode));
+
+        if (newCachedChoices.hasOwnProperty(keyForNode)) {
+          delete newCachedChoices[keyForNode];
+        }
+      } else {
+        Object.assign(newCachedChoices, pick(newChoices, keyForNode));
+
+        if (newChoices.hasOwnProperty(keyForNode)) {
+          delete newChoices[keyForNode];
+        }
+      }
+    });
+
+    const callback = () => onModelChanged({
+      ...this.props.model,
+      choices: newChoices
+    });
+
+    this.setState({
+      cachedChoices: newCachedChoices
+    }, callback);
+  }, 500, { trailing: false, leading: true });
 
   render() {
     const {
@@ -330,7 +379,8 @@ export class Main extends React.Component {
                       correctChoice={correctChoice}
                     />
                   );
-                }
+                },
+                onHandleAreaChange: this.onHandleAreaChange
               }}
               className={classes.markup}
               markup={model.slateMarkup}
