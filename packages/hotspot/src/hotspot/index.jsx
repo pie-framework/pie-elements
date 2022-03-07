@@ -27,9 +27,12 @@ class HotspotComponent extends React.Component {
 
         const zoomParsed = zoom?.replace(/\s/g, '');
         if (zoomParsed) {
-          this.setState({
-            scale: parseFloat(zoomParsed) / 100,
-          })
+          const newScale = parseFloat(zoomParsed) / 100;
+          if (newScale !== this.state.scale) {
+            this.setState({
+              scale: parseFloat(zoomParsed) / 100,
+            })
+          }
         }
       });
     });
