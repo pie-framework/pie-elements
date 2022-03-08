@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.4.6...@pie-element/explicit-constructed-response-controller@3.4.7) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/explicit-constructed-response-controller
+
+
+
+
+
 ## [3.4.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-controller@3.4.2...@pie-element/explicit-constructed-response-controller@3.4.3) (2021-12-01)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-controller

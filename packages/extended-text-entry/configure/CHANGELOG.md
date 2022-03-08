@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.11...@pie-element/extended-text-entry-configure@5.4.12) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
 ## [5.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.10...@pie-element/extended-text-entry-configure@5.4.11) (2022-02-21)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure
