@@ -10,7 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import { getAdjustedLength } from './markupUtils';
 import max from 'lodash/max';
 
 const styles = () => ({
@@ -92,7 +91,6 @@ export class Choice extends React.Component {
           value={value}
           onChange={this.onChange}
           labelWidth={0}
-          disableUnderline
         />
         <IconButton
           aria-label="delete"
@@ -172,14 +170,14 @@ export class AlternateSection extends React.Component {
     const labelLengthsArr = choices.map(choice => (choice.label || '').length);
     labelLengthsArr[index] = value.length;
 
-    const newLength = getAdjustedLength(Math.max(...labelLengthsArr));
+    const newLength = Math.max(...labelLengthsArr);
 
     choiceChanged({
       ...choice,
       label: value
     });
 
-    if (newLength > maxLength || newLength + 10 < maxLength) {
+    if (newLength > maxLength || newLength + 10 <= maxLength) {
       lengthChanged(newLength);
     }
   };
@@ -199,7 +197,7 @@ export class AlternateSection extends React.Component {
 
     const labelLengthsArr = choices.map(choice => (choice.label || '').length);
 
-    return getAdjustedLength(Math.max(...labelLengthsArr));
+    return Math.max(...labelLengthsArr);
   };
 
   changeLength = event => {

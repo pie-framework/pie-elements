@@ -61,9 +61,6 @@ export interface PlacementOrderingPie extends PieModel {
     /** Determines if prompt should show */
     promptEnabled?: boolean;
 
-    /** Indicates if the choices can lockChoiceOrder */
-    lockChoiceOrder?: boolean;
-
     /** If placement type is placement; show ordering indicates if the boxes are numbered */
     numberedGuides?: boolean;
 

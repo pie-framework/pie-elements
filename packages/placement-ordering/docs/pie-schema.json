@@ -259,11 +259,6 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
-    "lockChoiceOrder": {
-      "description": "Indicates if the choices can lockChoiceOrder",
-      "type": "boolean",
-      "title": "lockChoiceOrder"
-    },
     "numberedGuides": {
       "description": "If placement type is placement; show ordering indicates if the boxes are numbered",
       "type": "boolean",

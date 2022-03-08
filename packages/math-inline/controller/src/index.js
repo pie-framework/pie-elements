@@ -231,19 +231,30 @@ const escape = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& 
 
 const simpleSessionResponse = (question) =>
   new Promise((resolve) => {
-    const { responses } = question;
-    const { answer } = responses ? responses[0] : {};
+    const { responses, id } = question;
+    const { answer } = responses && responses.length ? responses[0] : {};
+
     resolve({
-      id: question.id,
-      response: answer,
-      completeAnswer: answer,
+      id,
+      response: answer || '',
+      completeAnswer: answer || ''
     });
   });
 
 const advancedSessionResponse = (question) =>
   new Promise((resolve, reject) => {
-    const { responses } = question;
-    const { answer } = responses ? responses[0] : {};
+    const { responses, id } = question;
+    const { answer } = responses && responses.length ? responses[0] : {};
+
+    if (!answer) {
+      resolve({
+        id,
+        answers: {},
+        completeAnswer: ''
+      });
+
+      return;
+    }
 
     try {
       const e = question.expression;
@@ -259,9 +270,9 @@ const advancedSessionResponse = (question) =>
 
       if (!m) {
         resolve({
+          id,
           answers: {},
-          completeAnswer: answer,
-          id: question.id,
+          completeAnswer: answer
         });
 
         console.log(`can not find match: ${o} in ${answer}`);
@@ -278,15 +289,15 @@ const advancedSessionResponse = (question) =>
       }
 
       resolve({
+        id,
         answers,
-        completeAnswer: answer,
-        id: question.id,
+        completeAnswer: answer
       });
     } catch (e) {
       resolve({
+        id,
         answers: {},
-        completeAnswer: answer,
-        id: question.id,
+        completeAnswer: answer
       });
 
       console.error(e.toString());

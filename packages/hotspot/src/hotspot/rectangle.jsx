@@ -49,7 +49,8 @@ class RectComponent extends React.Component {
       x,
       y,
       evaluateText,
-      strokeWidth
+      strokeWidth,
+      scale
     } = this.props;
 
     const outlineColorParsed = isEvaluateMode
@@ -78,7 +79,7 @@ class RectComponent extends React.Component {
     }
 
     return (
-      <Group>
+      <Group scaleX={scale} scaleY={scale}>
         <Rect
           classes={classes.base}
           width={width}
@@ -130,13 +131,15 @@ RectComponent.propTypes = {
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
   evaluateText: PropTypes.string,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  scale: PropTypes.number
 };
 
 RectComponent.defaultProps = {
   isCorrect: false,
   evaluateText: null,
-  strokeWidth: 5
+  strokeWidth: 5,
+  scale: 1
 };
 
 export default withStyles(styles)(RectComponent);
