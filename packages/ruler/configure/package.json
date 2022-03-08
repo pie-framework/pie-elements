@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/ruler-configure",
   "private": true,
-  "version": "2.7.40",
+  "version": "2.7.41",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
