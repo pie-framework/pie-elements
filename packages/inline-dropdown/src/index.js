@@ -5,7 +5,7 @@ import {
   SessionChangedEvent
 } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
-import InlineDropdown from './inline-dropdown';
+import InlineDropdown from './inline-dropdown'; 
 
 export default class RootInlineDropdown extends HTMLElement {
   constructor() {
@@ -43,6 +43,7 @@ export default class RootInlineDropdown extends HTMLElement {
         rationale: this._model.rationale,
         teacherInstructions: this._model.teacherInstructions,
         disabled: this._model.disabled,
+        displayType: this._model.displayType,
         markup: this._model.markup,
         mode: this._model.mode,
         choices: this._model.choices,
