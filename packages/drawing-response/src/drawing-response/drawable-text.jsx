@@ -193,7 +193,7 @@ export default class TextDrawable {
   handleTransform = (e, textNode) => {
     this[textNode].setAttrs({
       width: this[textNode].width() * this[textNode].scaleX(),
-      scaleX: 1
+      scaleX: this.props.scale,
     });
   };
 
