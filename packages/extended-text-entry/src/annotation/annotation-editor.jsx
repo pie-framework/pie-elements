@@ -54,7 +54,6 @@ const style = {
   annotation: {
     position: 'relative',
     cursor: 'pointer',
-    lineHeight: '19px',
 
     '&.positive': {
       backgroundColor: 'rgb(51, 255, 51, 0.5)',
