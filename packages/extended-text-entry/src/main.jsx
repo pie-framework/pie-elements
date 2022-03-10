@@ -5,8 +5,9 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import debug from 'debug';
 import debounce from 'lodash/debounce';
-import {color, Feedback, Collapsible, PreviewPrompt} from '@pie-lib/render-ui';
+import { color, Feedback, Collapsible, PreviewPrompt } from '@pie-lib/render-ui';
 import { renderMath } from '@pie-lib/math-rendering';
+import AnnotationEditor from './annotation/annotation-editor';
 
 const log = debug('@pie-ui:extended-text-entry');
 
@@ -25,11 +26,15 @@ const style = theme => ({
 
 export class Main extends React.Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
+    onAnnotationsChange: PropTypes.func.isRequired,
+    onCommentChange: PropTypes.func.isRequired,
     model: PropTypes.object,
     classes: PropTypes.object.isRequired,
     session: PropTypes.shape({
-      value: PropTypes.string
+      value: PropTypes.string,
+      annotations: PropTypes.array,
+      comment: PropTypes.string
     }).isRequired
   };
 
@@ -39,12 +44,28 @@ export class Main extends React.Component {
     }
   }
 
-  changeSession = debounce(this.props.onChange, 1500);
+  changeSessionValue = debounce(this.props.onValueChange, 1500);
+
+  changeSessionComment = debounce(this.props.onCommentChange, 1500);
 
   render() {
-    const { model, classes, session } = this.props;
-    const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled, playersToolbarPosition } = model;
-    const { value } = session;
+    const { model, classes, session, onAnnotationsChange } = this.props;
+    const {
+      animationsDisabled,
+      annotatorMode,
+      customKeys,
+      dimensions,
+      disabled,
+      disabledAnnotator,
+      equationEditor,
+      feedback,
+      mathInput,
+      predefinedAnnotations,
+      prompt,
+      teacherInstructions,
+      playersToolbarPosition
+    } = model;
+    const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
     const toolbarOpts = {};
@@ -74,7 +95,7 @@ export class Main extends React.Component {
             <div>
               {!animationsDisabled ? (
                 <Collapsible
-                  labels={{hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions'}}
+                  labels={{ hidden: 'Show Teacher Instructions', visible: 'Hide Teacher Instructions' }}
                   className={classes.collapsible}
                 >
                   {teacherInstructionsDiv}
@@ -84,42 +105,58 @@ export class Main extends React.Component {
             </div>
           )
         }
-        {model.prompt && (
-          <Typography
-            className={classes.prompt}
-          >
-            <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
+        {prompt && (
+          <Typography className={classes.prompt} >
+            <PreviewPrompt defaultClassName="prompt" prompt={prompt} />
           </Typography>
         )}
-        <EditableHTML
-          className="response-area-editor"
-          onChange={this.changeSession}
-          markup={value || ''}
-          width={width && width.toString()}
-          minHeight={height && height.toString()}
-          maxHeight={maxHeight}
-          disabled={disabled}
-          highlightShape={true}
-          toolbarOpts={toolbarOpts}
-          pluginProps={{
-            math: {
-              disabled: !mathInput,
-              customKeys: this.props.model.customKeys,
-              keypadMode: this.props.model.equationEditor,
-              controlledKeypadMode: false
-            },
-            video: {
-              disabled: true
-            },
-             audio: {
-              disabled: true
-            }
-          }}
-        />
+        {annotatorMode ? (
+          <AnnotationEditor
+            text={value || ''}
+            annotations={annotations || []}
+            comment={comment || ''}
+            predefinedAnnotations={predefinedAnnotations || []}
+            onChange={onAnnotationsChange}
+            onCommentChange={this.changeSessionComment}
+            width={width}
+            height={height}
+            maxHeight={maxHeight}
+            disabled={disabledAnnotator}
+            disabledMath={!mathInput}
+            customKeys={customKeys}
+            keypadMode={equationEditor}
+          />
+        ) : (
+          <EditableHTML
+            className="response-area-editor"
+            onChange={this.changeSessionValue}
+            markup={value || ''}
+            width={width && width.toString()}
+            minHeight={height && height.toString()}
+            maxHeight={maxHeight}
+            disabled={disabled}
+            highlightShape={true}
+            toolbarOpts={toolbarOpts}
+            pluginProps={{
+              math: {
+                disabled: !mathInput,
+                customKeys: customKeys,
+                keypadMode: equationEditor,
+                controlledKeypadMode: false
+              },
+              video: {
+                disabled: true
+              },
+              audio: {
+                disabled: true
+              }
+            }}
+          />
+        )}
         {feedback && (
           <div>
             <br />
-            <Feedback correctness="correct" feedback={feedback}/>
+            <Feedback correctness="correct" feedback={feedback} />
           </div>
         )}
       </div>

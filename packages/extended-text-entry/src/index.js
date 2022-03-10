@@ -5,6 +5,7 @@ import {
   ModelSetEvent,
   SessionChangedEvent
 } from '@pie-framework/pie-player-events';
+import { renderMath } from '@pie-lib/math-rendering';
 import debug from 'debug';
 
 const log = debug('@pie-ui:extended-text-entry');
@@ -16,9 +17,11 @@ export function textContent(value) {
   if (typeof value !== 'string') {
     return undefined;
   }
+
   try {
     const document = domParser.parseFromString(value, 'text/html');
     const textContent = document.body.textContent;
+
     return textContent;
   } catch (err) {
     log('tried to parse as dom and failed', value);
@@ -29,6 +32,7 @@ export function textContent(value) {
 export function isComplete(value) {
   const tc = textContent(value);
   const out = tc !== undefined && tc.length > 0;
+
   return out;
 }
 
@@ -53,12 +57,31 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this.render();
   }
 
-  handleChange(value) {
+  valueChange(value) {
     this._session.value = value;
-
     this.dispatchEvent(
       new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(value))
     );
+
+    this.render();
+  }
+
+  annotationsChange(annotations) {
+    this._session.annotations = annotations;
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase(), true)
+    );
+
+    this.render();
+  }
+
+  commentChange(comment) {
+    this._session.comment = comment;
+    this.dispatchEvent(
+      new SessionChangedEvent(this.tagName.toLowerCase(), isComplete(comment))
+    );
+
+    this.render();
   }
 
   connectedCallback() {
@@ -70,9 +93,14 @@ export default class RootExtendedTextEntry extends HTMLElement {
       let elem = React.createElement(Main, {
         model: this._model,
         session: this._session,
-        onChange: this.handleChange.bind(this)
+        onValueChange: this.valueChange.bind(this),
+        onAnnotationsChange: this.annotationsChange.bind(this),
+        onCommentChange: this.commentChange.bind(this),
       });
-      ReactDOM.render(elem, this);
+
+      ReactDOM.render(elem, this, () => {
+        renderMath(this);
+      });
     }
   }
 }

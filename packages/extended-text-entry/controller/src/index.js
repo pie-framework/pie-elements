@@ -60,15 +60,22 @@ export async function model(question, session, env) {
       break;
   }
 
+  const annotatorMode = env.role === 'instructor' || env.mode === 'evaluate';
+  const disabledAnnotator = env.role !== 'instructor';
+
   return fb.then(feedback => ({
     prompt: normalizedQuestion.promptEnabled ? normalizedQuestion.prompt : null,
     dimensions: normalizedQuestion.dimensions,
     customKeys: normalizedQuestion.customKeys || [],
+    id: normalizedQuestion.id,
     disabled: env.mode !== 'gather',
     feedback,
     teacherInstructions,
     mathInput: normalizedQuestion.mathInput,
-    equationEditor, 
+    equationEditor,
+    annotatorMode,
+    disabledAnnotator,
+    predefinedAnnotations: normalizedQuestion.predefinedAnnotations,
     playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom'
   }));
 }

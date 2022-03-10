@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`freeform editor snapshots opened 1`] = `
+<AnnotationMenu
+  anchorEl={Object {}}
+  annotations={Array []}
+  classes={
+    Object {
+      "annotationsWrapper": "AnnotationMenu-annotationsWrapper-2",
+      "arrow": "AnnotationMenu-arrow-8",
+      "button": "AnnotationMenu-button-4",
+      "controlsWrapper": "AnnotationMenu-controlsWrapper-3",
+      "holder": "AnnotationMenu-holder-7",
+      "mainWrapper": "AnnotationMenu-mainWrapper-1",
+      "negative": "AnnotationMenu-negative-6",
+      "positive": "AnnotationMenu-positive-5",
+    }
+  }
+  isNewAnnotation={false}
+  onAnnotate={[MockFunction]}
+  onClose={[MockFunction]}
+  onDelete={[MockFunction]}
+  onEdit={[MockFunction]}
+  onWrite={[MockFunction]}
+  open={true}
+/>
+`;
+
+exports[`freeform editor snapshots opened and new annotation selected 1`] = `
+<AnnotationMenu
+  anchorEl={Object {}}
+  annotations={Array []}
+  classes={
+    Object {
+      "annotationsWrapper": "AnnotationMenu-annotationsWrapper-2",
+      "arrow": "AnnotationMenu-arrow-8",
+      "button": "AnnotationMenu-button-4",
+      "controlsWrapper": "AnnotationMenu-controlsWrapper-3",
+      "holder": "AnnotationMenu-holder-7",
+      "mainWrapper": "AnnotationMenu-mainWrapper-1",
+      "negative": "AnnotationMenu-negative-6",
+      "positive": "AnnotationMenu-positive-5",
+    }
+  }
+  isNewAnnotation={true}
+  onAnnotate={[MockFunction]}
+  onClose={[MockFunction]}
+  onDelete={[MockFunction]}
+  onEdit={[MockFunction]}
+  onWrite={[MockFunction]}
+  open={true}
+/>
+`;
+
+exports[`freeform editor snapshots renders 1`] = `
+<AnnotationMenu
+  anchorEl={Object {}}
+  annotations={Array []}
+  classes={
+    Object {
+      "annotationsWrapper": "AnnotationMenu-annotationsWrapper-2",
+      "arrow": "AnnotationMenu-arrow-8",
+      "button": "AnnotationMenu-button-4",
+      "controlsWrapper": "AnnotationMenu-controlsWrapper-3",
+      "holder": "AnnotationMenu-holder-7",
+      "mainWrapper": "AnnotationMenu-mainWrapper-1",
+      "negative": "AnnotationMenu-negative-6",
+      "positive": "AnnotationMenu-positive-5",
+    }
+  }
+  isNewAnnotation={false}
+  onAnnotate={[MockFunction]}
+  onClose={[MockFunction]}
+  onDelete={[MockFunction]}
+  onEdit={[MockFunction]}
+  onWrite={[MockFunction]}
+  open={false}
+/>
+`;

@@ -8,6 +8,25 @@ const defaults = {
     width: '150',
     height: '150'
   },
+  predefinedAnnotations: [
+    {
+      label: 'good',
+      text: 'good',
+      type: 'positive'
+    }, {
+      label: 'creative',
+      text: 'creative',
+      type: 'positive'
+    }, {
+      label: 'run-on',
+      text: 'run-on',
+      type: 'negative'
+    }, {
+      label: 'frag',
+      text: 'fragment',
+      type: 'negative'
+    }
+  ],
   teacherInstructions: 'Teacher Instructions'
 };
 const q = extras => ({ ...defaults, ...extras });
@@ -43,10 +62,13 @@ describe('controller', () => {
     it('gather mode, promptEnabled: true', async () => {
       const result = await model(question, session, env);
       expect(result).toEqual({
+        annotatorMode: false,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: false,
+        disabledAnnotator: true,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -57,10 +79,13 @@ describe('controller', () => {
     it('gather mode, promptEnabled: false', async () => {
       const result = await model(q({ promptEnabled: false }), session, env);
       expect(result).toEqual({
+        annotatorMode: false,
         customKeys: [],
         prompt: null,
         dimensions: defaults.dimensions,
         disabled: false,
+        disabledAnnotator: true,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -71,10 +96,13 @@ describe('controller', () => {
     it('view mode, student role', async () => {
       const result = await model(question, session, { mode: 'view' });
       expect(result).toEqual({
+        annotatorMode: false,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -85,10 +113,13 @@ describe('controller', () => {
     it('view mode, instructor role, teacherInstructions enabled', async () => {
       const result = await model(question, session, { mode: 'view', role: 'instructor' });
       expect(result).toEqual({
+        annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: false,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
@@ -99,10 +130,13 @@ describe('controller', () => {
     it('view mode, instructor role, teacherInstructions disabled', async () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'view', role: 'instructor' });
       expect(result).toEqual({
+        annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: false,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -113,10 +147,13 @@ describe('controller', () => {
     it('evaluate mode, student role', async () => {
       const result = await model(question, session, { mode: 'evaluate' });
       expect(result).toEqual({
+        annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: true,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
@@ -127,10 +164,13 @@ describe('controller', () => {
     it('evaluate mode, instructor role, teacherInstructions enabled', async () => {
       const result = await model(question, session, { mode: 'evaluate', role: 'instructor' });
       expect(result).toEqual({
+        annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: false,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: 'this is default feedback',
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
@@ -141,10 +181,13 @@ describe('controller', () => {
     it('evaluate mode, instructor role, teacherInstructions disabled', async () => {
       const result = await model(q({ teacherInstructionsEnabled: false }), session, { mode: 'evaluate', role: 'instructor' });
       expect(result).toEqual({
+        annotatorMode: true,
         customKeys: [],
         prompt: defaults.prompt,
         dimensions: defaults.dimensions,
         disabled: true,
+        disabledAnnotator: false,
+        predefinedAnnotations: defaults.predefinedAnnotations,
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
