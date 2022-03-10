@@ -3,6 +3,7 @@
 exports[`Render Main Component should match snapshot 1`] = `
 <div>
   <EditableHtml
+    className="response-area-editor"
     highlightShape={true}
     markup="hi"
     maxHeight="40vh"
@@ -21,6 +22,11 @@ exports[`Render Main Component should match snapshot 1`] = `
         "video": Object {
           "disabled": true,
         },
+      }
+    }
+    toolbarOpts={
+      Object {
+        "position": "bottom",
       }
     }
   />
@@ -46,6 +52,7 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
     <br />
   </div>
   <EditableHtml
+    className="response-area-editor"
     highlightShape={true}
     markup="hi"
     maxHeight="40vh"
@@ -64,6 +71,11 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
         "video": Object {
           "disabled": true,
         },
+      }
+    }
+    toolbarOpts={
+      Object {
+        "position": "bottom",
       }
     }
   />

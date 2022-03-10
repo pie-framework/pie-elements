@@ -3,30 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.6.2...@pie-element/pie-models@11.0.0) (2021-11-11)
+## [11.0.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.9...@pie-element/pie-models@11.0.10) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/pie-models
 
 
-### Bug Fixes
 
-* merge conflict ([01655ca](https://github.com/pie-framework/pie-elements/commit/01655caf59311cc1a7a6624a6243147b2819d76e))
-* **placement-ordering:** Updated documentation PD-305 ([ff31ac5](https://github.com/pie-framework/pie-elements/commit/ff31ac57139f59413748e88f152ef7629ae6e5be))
+
+
+## [11.0.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.7...@pie-element/pie-models@11.0.8) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.4...@pie-element/pie-models@11.0.5) (2021-12-01)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.3...@pie-element/pie-models@11.0.4) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.2...@pie-element/pie-models@11.0.3) (2021-10-18)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.1...@pie-element/pie-models@11.0.2) (2021-09-20)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+## [11.0.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@11.0.0...@pie-element/pie-models@11.0.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/pie-models
+
+
+
+
+
+# [11.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/pie-models@10.7.0...@pie-element/pie-models@11.0.0) (2021-08-09)
 
 
 ### Features
 
 * **ebsr:** Added choicesLayout support ([33fb7e7](https://github.com/pie-framework/pie-elements/commit/33fb7e765146a7343a58663f3667f4a5de472960))
 * **ebsr:** Added choicesLayout support \n BREAKING CHANGE: removed vertical mode ([348fc00](https://github.com/pie-framework/pie-elements/commit/348fc0031536d458071a1105e742c3d19399a15e))
-* **explicit-constructed-response:** Calculate maxChoicesLength if it's undefined. Fixed delete response area and choices bug. BREAKING CHANGE: add maxChoicesLength prop ([97431b9](https://github.com/pie-framework/pie-elements/commit/97431b9c3fbdafd84e040653c54d5f04bae16a1d))
-* **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
-* **graphing:** BREAKING CHANGE - update model and config schemas. Change model arrows prop and add arrows in config PD-483 ([fb1c27b](https://github.com/pie-framework/pie-elements/commit/fb1c27bcc25632c15d228d14483835d919e2d357))
-* **graphing:** Displayed point coordinates on hover PD-188 \n BREAKING CHANGE: Added coordinatesOnHover property to the model ([124cc2d](https://github.com/pie-framework/pie-elements/commit/124cc2de418fbdd1825c6c39eee550875a3e24af))
-* **hotspot:** Added option to set toolbar editor position ([a36faea](https://github.com/pie-framework/pie-elements/commit/a36faea1cc0cb9ed5574fcb860941eea298b1cd3))
-* **math-inline:** added option to set toolbar editor position ([01282e4](https://github.com/pie-framework/pie-elements/commit/01282e4a07d200f7b81c684a11b51aa1f226ddeb))
-* **math-inline:** Displayed a message when the item has additional correct responses PD-198 - BREAKING CHANGE: Added note property to the model ([7fce264](https://github.com/pie-framework/pie-elements/commit/7fce2649a9c8ddae2eb6643e5d5e9d307233a23b))
-* **multiple-choice:** added new option to enable accessibility labels ([eb36fe5](https://github.com/pie-framework/pie-elements/commit/eb36fe50218481b6407363247a8e1baa981e0cf7))
-* **multiple-choice:** added possibility to set toolbar position ([9172b47](https://github.com/pie-framework/pie-elements/commit/9172b470705ec3a38db53aeebbad686ce47bba3e))
-* **multiple-choice:** update docs ([0843122](https://github.com/pie-framework/pie-elements/commit/084312288b501a7f1129b24a046f9ab19cf25f79))
-* **placement-ordering:** added option to set toolbar editor position ([9b1b291](https://github.com/pie-framework/pie-elements/commit/9b1b2916f2c34297f3d4b239e393376f87be3826))
 
 
 ### BREAKING CHANGES

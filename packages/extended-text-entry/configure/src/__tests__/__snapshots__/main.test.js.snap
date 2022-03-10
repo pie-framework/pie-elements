@@ -65,7 +65,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "height": 100,
             "width": 500,
           },
-          "equationEditor": "miscellaneous",
+          "equationEditor": "Grade 8 - HS",
           "feedbackEnabled": true,
           "mathInput": false,
           "prompt": "This is the question prompt",

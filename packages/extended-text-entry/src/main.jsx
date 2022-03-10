@@ -62,14 +62,26 @@ export class Main extends React.Component {
       mathInput,
       predefinedAnnotations,
       prompt,
-      teacherInstructions
+      teacherInstructions,
+      playersToolbarPosition
     } = model;
     const { annotations, comment, value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
+    const toolbarOpts = {};
+
     log('[render] disabled? ', disabled);
 
     const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
+
+    switch (playersToolbarPosition) {
+      case 'top':
+        toolbarOpts.position = 'top';
+        break;
+      default:
+        toolbarOpts.position = 'bottom';
+        break;
+    }
 
     return (
       <div
@@ -116,6 +128,7 @@ export class Main extends React.Component {
           />
         ) : (
           <EditableHTML
+            className="response-area-editor"
             onChange={this.changeSessionValue}
             markup={value || ''}
             width={width && width.toString()}
@@ -123,6 +136,7 @@ export class Main extends React.Component {
             maxHeight={maxHeight}
             disabled={disabled}
             highlightShape={true}
+            toolbarOpts={toolbarOpts}
             pluginProps={{
               math: {
                 disabled: !mathInput,

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.6.1...@pie-element/math-inline-controller@5.6.2) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.5.4...@pie-element/math-inline-controller@5.6.1) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
 # [5.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.4.3...@pie-element/math-inline-controller@5.6.0) (2021-11-11)
 
 
@@ -15,6 +31,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **math-inline:** Displayed a message when the item has additional correct responses PD-198 - BREAKING CHANGE: Added note property to the model ([7fce264](https://github.com/pie-framework/pie-elements/commit/7fce2649a9c8ddae2eb6643e5d5e9d307233a23b))
+
+
+
+
+
+
+## [5.5.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.5.3...@pie-element/math-inline-controller@5.5.4) (2021-11-01)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.5.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.5.2...@pie-element/math-inline-controller@5.5.3) (2021-10-18)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.5.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.5.1...@pie-element/math-inline-controller@5.5.2) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
+
+
+
+
+
+## [5.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-controller@5.5.0...@pie-element/math-inline-controller@5.5.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/math-inline-controller
 
 
 

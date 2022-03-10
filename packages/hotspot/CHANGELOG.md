@@ -3,7 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.8.3...@pie-element/hotspot@4.10.0) (2021-11-11)
+## [4.10.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.8...@pie-element/hotspot@4.10.9) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.7...@pie-element/hotspot@4.10.8) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.5...@pie-element/hotspot@4.10.6) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.2...@pie-element/hotspot@4.10.3) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.1...@pie-element/hotspot@4.10.2) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.0...@pie-element/hotspot@4.10.1) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+# [4.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.9.1...@pie-element/hotspot@4.10.0) (2021-09-20)
 
 
 ### Bug Fixes
@@ -21,6 +69,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **hotspot:** Added tooltip annotations to the icons PD-625 ([354a41e](https://github.com/pie-framework/pie-elements/commit/354a41ea2738d35fc09b1d7ab4bc7f796eb31c65))
 * **hotspot:** set toolbar editor position to bottom ([3f3db3a](https://github.com/pie-framework/pie-elements/commit/3f3db3accdb1469f8b52535081da0cc339e43a48))
 * **hotspot:** toolbar editor position - change double quotes into single quotes ([722ec64](https://github.com/pie-framework/pie-elements/commit/722ec64c1f87f69f2c086e80923d0c137b4aad39))
+
+
+
+
+## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.9.0...@pie-element/hotspot@4.9.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/hotspot
 
 
 

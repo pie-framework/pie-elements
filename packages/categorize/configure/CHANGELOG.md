@@ -3,7 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.2...@pie-element/categorize-configure@5.4.4) (2021-11-11)
+## [5.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.11...@pie-element/categorize-configure@5.4.12) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.10...@pie-element/categorize-configure@5.4.11) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.8...@pie-element/categorize-configure@5.4.9) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.5...@pie-element/categorize-configure@5.4.6) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.4...@pie-element/categorize-configure@5.4.5) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.3...@pie-element/categorize-configure@5.4.4) (2021-09-20)
 
 
 ### Bug Fixes

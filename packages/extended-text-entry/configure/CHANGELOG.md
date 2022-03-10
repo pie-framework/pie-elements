@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.7...@pie-element/extended-text-entry-configure@5.4.8) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.6...@pie-element/extended-text-entry-configure@5.4.7) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.4...@pie-element/extended-text-entry-configure@5.4.5) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.1...@pie-element/extended-text-entry-configure@5.4.2) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.3.2...@pie-element/extended-text-entry-configure@5.4.1) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
 # [5.4.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.2.9...@pie-element/extended-text-entry-configure@5.4.0) (2021-11-11)
 
 
@@ -16,6 +56,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **extended-text-entry:** added option to set toolbar editor position ([3fefb22](https://github.com/pie-framework/pie-elements/commit/3fefb222a7b8ffe01304d7b23385f53b4709eeb8))
+
+
+
+
+
+
+## [5.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.3.1...@pie-element/extended-text-entry-configure@5.3.2) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.3.0...@pie-element/extended-text-entry-configure@5.3.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 
 

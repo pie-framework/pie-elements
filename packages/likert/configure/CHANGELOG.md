@@ -3,7 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.0.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.22...@pie-element/likert-configure@0.0.24) (2021-11-11)
+## [0.0.32](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.31...@pie-element/likert-configure@0.0.32) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.31](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.30...@pie-element/likert-configure@0.0.31) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.28...@pie-element/likert-configure@0.0.29) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.25...@pie-element/likert-configure@0.0.26) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.24...@pie-element/likert-configure@0.0.25) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.23...@pie-element/likert-configure@0.0.24) (2021-09-20)
 
 
 ### Bug Fixes

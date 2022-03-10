@@ -170,9 +170,19 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Indicates if sequential choice labels configuration (currently not used)
    */
   sequentialChoiceLabels?: ConfigurePropWithEnabled;
-  
+
   /**
    * Accessibility configuration
    */
   accessibility?: ConfigureProp;
+
+  /**
+   * Minimum number of answer choices
+   */
+  minAnswerChoices?: number;
+
+  /**
+   * Maximum number of answer choices
+   */
+  maxAnswerChoices?: number;
 }

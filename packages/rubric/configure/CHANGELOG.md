@@ -3,7 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.2.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.25...@pie-element/rubric-configure@1.2.27) (2021-11-11)
+## [1.2.35](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.34...@pie-element/rubric-configure@1.2.35) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.34](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.33...@pie-element/rubric-configure@1.2.34) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.32](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.31...@pie-element/rubric-configure@1.2.32) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.28...@pie-element/rubric-configure@1.2.29) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.28](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.27...@pie-element/rubric-configure@1.2.28) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/rubric-configure
+
+
+
+
+
+## [1.2.27](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric-configure@1.2.26...@pie-element/rubric-configure@1.2.27) (2021-09-20)
 
 
 ### Bug Fixes

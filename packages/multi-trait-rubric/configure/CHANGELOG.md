@@ -3,7 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.2...@pie-element/multi-trait-rubric-configure@1.4.4) (2021-11-11)
+## [1.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.11...@pie-element/multi-trait-rubric-configure@1.4.12) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
+## [1.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.10...@pie-element/multi-trait-rubric-configure@1.4.11) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
+## [1.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.8...@pie-element/multi-trait-rubric-configure@1.4.9) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
+## [1.4.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.5...@pie-element/multi-trait-rubric-configure@1.4.6) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
+## [1.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.4...@pie-element/multi-trait-rubric-configure@1.4.5) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric-configure
+
+
+
+
+
+## [1.4.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric-configure@1.4.3...@pie-element/multi-trait-rubric-configure@1.4.4) (2021-09-20)
 
 
 ### Bug Fixes
@@ -11,7 +51,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
 * Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-* **multi-trait-rubric:** Fixed the score point label toolbar cut off PD-1238 ([1f15681](https://github.com/pie-framework/pie-elements/commit/1f15681f913acc5f5fd4ba47131ede53c456839b))
 
 
 

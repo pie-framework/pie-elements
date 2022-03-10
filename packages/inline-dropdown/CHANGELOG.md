@@ -3,7 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.2...@pie-element/inline-dropdown@3.9.0) (2021-11-11)
+## [3.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.8...@pie-element/inline-dropdown@3.9.9) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.7...@pie-element/inline-dropdown@3.9.8) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.5...@pie-element/inline-dropdown@3.9.6) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.2...@pie-element/inline-dropdown@3.9.3) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.1...@pie-element/inline-dropdown@3.9.2) (2021-10-18)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.0...@pie-element/inline-dropdown@3.9.1) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+# [3.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.4...@pie-element/inline-dropdown@3.9.0) (2021-09-20)
 
 
 ### Bug Fixes
@@ -11,12 +59,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
 * Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
 * Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
-* **inline-dropdown:** add math input when author clicks + without pressing the green checkmark PD-1230 ([7cfdc3f](https://github.com/pie-framework/pie-elements/commit/7cfdc3f6763fe5b56921824aae3a75e0536e7344))
 
 
 ### Features
 
 * **inline-dropdown:** add rationale at choice level PD-488 ([1d88366](https://github.com/pie-framework/pie-elements/commit/1d88366f857b90e4ffc5735fe3af78432aa8844c))
+
+
+
+
+
+## [3.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.8.3...@pie-element/inline-dropdown@3.8.4) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
 
 
 

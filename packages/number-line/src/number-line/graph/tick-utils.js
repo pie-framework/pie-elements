@@ -210,6 +210,7 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
     .map((x) => {
       let type = 'minor';
       const modulo = math.mod(x, ticks.major);
+
       if (closeTo(math.number(modulo), 0)) {
         type = 'major';
       }
@@ -223,7 +224,8 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
 export const buildTickData = (domain, ticks, opts) => {
   const result = buildTickDataAsFractions(domain, ticks, opts);
 
-  const out = result.map((o) => ({ ...o, x: math.number(o.x) }));
+  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) }));
+
   return out;
 };
 
@@ -239,9 +241,11 @@ export const snapElements = (domain, ticks, elements) => {
       e.domainPosition
     );
     const out = { ...e, domainPosition };
+
     if (Number.isFinite(size)) {
       out.size = size;
     }
+
     return out;
   });
 };

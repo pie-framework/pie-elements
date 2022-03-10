@@ -130,10 +130,15 @@ export function model(question, session, env) {
     // calculate maxLengthPerChoice array if it is not defined or defined incorrectly
     Object.values(choices).forEach((choice, index) => {
       const labelLengthsArr = (choice || []).map(choice => (choice.label || '').length);
-      const length = getAdjustedLength(Math.max(...labelLengthsArr));
+      const length = Math.max(...labelLengthsArr);
 
-      if (undefinedLengths || !maxLengthPerChoice[index] || maxLengthPerChoice[index] < length) {
-        maxLengthPerChoice[index] = length;
+      if (
+        undefinedLengths
+        || !maxLengthPerChoice[index]
+        || maxLengthPerChoice[index] < length
+        || maxLengthPerChoice[index] > length + 10
+      ) {
+        maxLengthPerChoice[index] = getAdjustedLength(length);
       }
     });
 

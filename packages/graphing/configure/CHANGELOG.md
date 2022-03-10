@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.7...@pie-element/graphing-configure@3.3.8) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.6...@pie-element/graphing-configure@3.3.7) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.4...@pie-element/graphing-configure@3.3.5) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.1...@pie-element/graphing-configure@3.3.2) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.2.2...@pie-element/graphing-configure@3.3.1) (2021-11-11)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
 # [3.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.1.27...@pie-element/graphing-configure@3.3.0) (2021-11-11)
 
 
@@ -17,6 +57,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **graphing:** control over displaying graph arrows PD-483 ([6f98639](https://github.com/pie-framework/pie-elements/commit/6f98639b4bcce0e7ce75f28435c6fe1c8db8a4d4))
 * **graphing:** Displayed point coordinates on hover PD-188 \n BREAKING CHANGE: Added coordinatesOnHover property to the model ([124cc2d](https://github.com/pie-framework/pie-elements/commit/124cc2de418fbdd1825c6c39eee550875a3e24af))
+
+
+
+
+
+
+## [3.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.2.1...@pie-element/graphing-configure@3.2.2) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.2.0...@pie-element/graphing-configure@3.2.1) (2021-09-20)
+
+
+### Bug Fixes
+
+* pie-lib updates ([e521c2f](https://github.com/pie-framework/pie-elements/commit/e521c2f1a44aa7f3e14f82a1cee05ceb484ed0a6))
+* Updated pie-lib versions ([2fe4c5d](https://github.com/pie-framework/pie-elements/commit/2fe4c5d0be2d40f5fdb34815855695a7f1087f56))
+* Updated pie-lib versions ([1c23830](https://github.com/pie-framework/pie-elements/commit/1c23830fc75d1de5f7bb3bb16de3c665ae5fa350))
 
 
 

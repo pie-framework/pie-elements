@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "3.11.0",
+  "version": "3.11.9",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,8 +13,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.33",
-    "@pie-lib/mask-markup": "^1.11.4",
+    "@pie-lib/correct-answer-toggle": "^2.3.34",
+    "@pie-lib/mask-markup": "^1.12.0",
     "@pie-lib/math-rendering": "^2.3.12",
     "@pie-lib/render-ui": "^4.12.4",
     "classnames": "^2.2.5",

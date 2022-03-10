@@ -72,6 +72,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -88,6 +89,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -104,6 +106,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -120,6 +123,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -136,6 +140,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -152,7 +157,8 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        equationEditor: 'miscellaneous'
+        playersToolbarPosition: "bottom",
+        equationEditor: 'miscellaneous',
       });
     });
     it('evaluate mode, instructor role, teacherInstructions enabled', async () => {
@@ -168,6 +174,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });
@@ -184,6 +191,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
+        playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
     });

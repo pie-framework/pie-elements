@@ -68,6 +68,10 @@ Indicates if Student Instructions are enabled
 
 Indicates if Teacher Instructions are enabled
 
+# `displayType` (string, required)
+
+Indicates display type for the container of the pie-ui element
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'

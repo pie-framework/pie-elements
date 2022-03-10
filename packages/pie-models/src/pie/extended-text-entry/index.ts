@@ -98,6 +98,12 @@ export interface ExtendedTextEntryPie extends PieModel {
 
   /** Indicates the predefined annotations for the annotation menu*/
   predefinedAnnotations?: Array<PredefinedAnnotation>
+
+  /**
+  * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
+  * @default: 'bottom'
+  */
+  playersToolbarPosition?: 'bottom' | 'top';
 }
 
 /**

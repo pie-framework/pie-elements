@@ -7,6 +7,7 @@ import merge from 'lodash/merge';
 import omitBy from 'lodash/omitBy';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
+import * as math from 'mathjs';
 
 import defaults from './defaults';
 
@@ -214,6 +215,26 @@ export function createDefaultModel(model = {}) {
   });
 }
 
+// this function is duplicated in configure; at some point, use the same shared function
+const updateTicks = model => {
+  const { graph: { labelStep, ticks = {}} = {}} = model;
+  const { minor, major } = ticks;
+
+  if (labelStep && typeof labelStep === 'string' && labelStep.match(/^[1-9][0-9]*\/[1-9][0-9]*$/g)) {
+    model.graph.fraction = true;
+
+    // update the ticks frequency and label value to match the label step if needed
+    const step = math.evaluate(labelStep);
+
+    if (step !== major) {
+      ticks.major = step;
+      ticks.minor = step / (major / minor);
+    }
+  }
+
+  return model;
+};
+
 export function model(question, session, env) {
   if (!question) {
     return Promise.reject(new Error('question is null'));
@@ -221,8 +242,7 @@ export function model(question, session, env) {
 
   return new Promise(async (resolve, reject) => {
     const normalizedQuestion = await normalize(question);
-
-    const { graph } = normalizedQuestion;
+    const { graph } = updateTicks(normalizedQuestion);
 
     if (graph) {
       const evaluateMode = env.mode === 'evaluate';
@@ -234,7 +254,6 @@ export function model(question, session, env) {
       const correctness = evaluateMode && getCorrectness(corrected);
 
       const { exhibitOnly } = graph;
-
       const disabled = env.mode !== 'gather' || exhibitOnly === true;
 
       const fb = evaluateMode

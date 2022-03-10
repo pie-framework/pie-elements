@@ -27,11 +27,7 @@ export const normalize = question => ({
 
 export async function model(question, session, env) {
   log('[question]', question);
-  console.log('session', session);
-  console.log('question', question);
-  console.log('env', env);
   const normalizedQuestion = normalize(question);
-  console.log('normalizedQuestion', normalizedQuestion);
 
   const fb =
     env.mode === 'evaluate' && normalizedQuestion.feedbackEnabled
@@ -79,7 +75,8 @@ export async function model(question, session, env) {
     equationEditor,
     annotatorMode,
     disabledAnnotator,
-    predefinedAnnotations: normalizedQuestion.predefinedAnnotations
+    predefinedAnnotations: normalizedQuestion.predefinedAnnotations,
+    playersToolbarPosition: normalizedQuestion.playersToolbarPosition || 'bottom'
   }));
 }
 

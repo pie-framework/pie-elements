@@ -6,13 +6,13 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
-    equationEditor: 'miscellaneous',
+    equationEditor: 'Grade 8 - HS',
     feedbackEnabled: true,
     rationaleEnabled: true,
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom',
+    toolbarEditorPosition: 'bottom'
   },
   configuration: {
     dimensions: {

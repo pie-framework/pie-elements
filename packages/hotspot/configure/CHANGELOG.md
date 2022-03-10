@@ -3,7 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.4.25...@pie-element/hotspot-configure@4.6.0) (2021-11-11)
+## [4.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.7...@pie-element/hotspot-configure@4.6.8) (2022-01-10)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.6.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.6...@pie-element/hotspot-configure@4.6.7) (2021-12-23)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.6.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.4...@pie-element/hotspot-configure@4.6.5) (2021-12-13)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.6.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.1...@pie-element/hotspot-configure@4.6.2) (2021-11-29)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+## [4.6.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.0...@pie-element/hotspot-configure@4.6.1) (2021-10-04)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
+# [4.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.5.1...@pie-element/hotspot-configure@4.6.0) (2021-09-20)
 
 
 ### Bug Fixes
@@ -17,8 +57,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **hotspot:** add the possibility to paste image in authoring PD-478 ([16f1198](https://github.com/pie-framework/pie-elements/commit/16f1198ea5a839759f626927f1b65b5483a9aa85))
-* **hotspot:** Added option to set toolbar editor position ([a36faea](https://github.com/pie-framework/pie-elements/commit/a36faea1cc0cb9ed5574fcb860941eea298b1cd3))
-* **hotspot:** toolbar editor position - change double quotes into single quotes ([722ec64](https://github.com/pie-framework/pie-elements/commit/722ec64c1f87f69f2c086e80923d0c137b4aad39))
+
+
+
+
+
+## [4.5.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.5.0...@pie-element/hotspot-configure@4.5.1) (2021-09-01)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
 
 
 

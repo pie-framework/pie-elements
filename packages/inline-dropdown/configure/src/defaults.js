@@ -12,7 +12,8 @@ export default {
     choiceRationaleEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    toolbarEditorPosition: 'bottom'
+    toolbarEditorPosition: 'bottom',
+    displayType: 'block'
   },
   configuration: {
     prompt: {
