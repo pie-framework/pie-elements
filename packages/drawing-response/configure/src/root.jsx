@@ -59,7 +59,7 @@ export class Root extends React.Component {
     } = this.props;
     const { backgroundImage = {}, prompt = {}, teacherInstructions = {} } =
       configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, backgroundImageEnabled} =
       model || {};
     const toolbarOpts = {};
 
@@ -83,9 +83,7 @@ export class Root extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
-                  'backgroundImage.enabled':
-                    backgroundImage.settings &&
-                    toggle(backgroundImage.label, true),
+                  backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
                   promptEnabled: prompt.settings && toggle(prompt.label)
                 },
                 Properties: {
@@ -123,7 +121,7 @@ export class Root extends React.Component {
               </InputContainer>
             )}
 
-            {backgroundImage.enabled && (
+            {backgroundImageEnabled && (
               <div>
                 <Typography className={classes.label} variant="subheading">
                   Define Background Image

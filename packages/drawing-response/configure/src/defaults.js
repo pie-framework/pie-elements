@@ -9,6 +9,7 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    backgroundImageEnabled: true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {

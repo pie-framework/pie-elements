@@ -29,7 +29,8 @@ export class Container extends Component {
     session: PropTypes.object.isRequired,
     onSessionChange: PropTypes.func.isRequired,
     imageDimensions: PropTypes.object.isRequired,
-    imageUrl: PropTypes.string.isRequired
+    imageUrl: PropTypes.string.isRequired,
+    backgroundImageEnabled: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -131,7 +132,8 @@ export class Container extends Component {
       imageUrl,
       imageDimensions,
       onSessionChange,
-      session
+      session,
+      backgroundImageEnabled
     } = this.props;
     const {
       drawableDimensions,
@@ -198,6 +200,7 @@ export class Container extends Component {
               imageDimensions={imageDimensions}
               toolActive={toolActive}
               TextEntry={TextEntry}
+              backgroundImageEnabled={backgroundImageEnabled}
             />
           </div>
         </div>

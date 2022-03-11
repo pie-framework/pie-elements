@@ -185,6 +185,7 @@ export class DrawableMain extends React.Component {
       paintColor,
       outlineColor,
       TextEntry,
+      backgroundImageEnabled,
       toolActive: { type }
     } = this.props;
     const { isOver, newDrawable } = this.state;
@@ -221,6 +222,7 @@ export class DrawableMain extends React.Component {
       }
     }
 
+    console.log('backgroundImageEnabled', backgroundImageEnabled);
     return (
       <div>
         <div className={classes.undoControls}>
@@ -228,7 +230,7 @@ export class DrawableMain extends React.Component {
           <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all" />
         </div>
         <div className={classes.base}>
-          {imageUrl && (
+          {backgroundImageEnabled && imageUrl && (
             <ImageBackground dimensions={imageDimensions} url={imageUrl} />
           )}
 
@@ -297,7 +299,8 @@ DrawableMain.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   TextEntry: PropTypes.object.isRequired,
   toolActive: PropTypes.object.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  backgroundImageEnabled: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(DrawableMain);
