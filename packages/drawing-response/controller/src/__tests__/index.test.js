@@ -12,7 +12,8 @@ describe('controller', () => {
         height: 0,
         width: 0
       },
-      teacherInstructions: 'Teacher Instructions'
+      teacherInstructions: 'Teacher Instructions',
+      backgroundImageEnabled: true
     };
   });
 
@@ -56,7 +57,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -69,7 +71,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: null,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -83,7 +86,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -96,7 +100,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: question.teacherInstructions
+          teacherInstructions: question.teacherInstructions,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -112,7 +117,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -125,7 +131,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -138,7 +145,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: question.teacherInstructions
+          teacherInstructions: question.teacherInstructions,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
 
@@ -154,7 +162,8 @@ describe('controller', () => {
           imageUrl: question.imageUrl,
           imageDimensions: question.imageDimensions,
           prompt: question.prompt,
-          teacherInstructions: null
+          teacherInstructions: null,
+          backgroundImageEnabled: question.backgroundImageEnabled
         });
       });
     });

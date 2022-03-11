@@ -185,7 +185,7 @@ export class DrawableMain extends React.Component {
       paintColor,
       outlineColor,
       TextEntry,
-      backgroundImageEnabled,
+      backgroundImageEnabled = true,
       toolActive: { type }
     } = this.props;
     const { isOver, newDrawable } = this.state;
@@ -222,7 +222,6 @@ export class DrawableMain extends React.Component {
       }
     }
 
-    console.log('backgroundImageEnabled', backgroundImageEnabled);
     return (
       <div>
         <div className={classes.undoControls}>

@@ -8,7 +8,6 @@ exports[`Root snapshot renders 1`] = `
         configuration={
           Object {
             "backgroundImage": Object {
-              "enabled": true,
               "label": "Background Image",
               "settings": true,
             },
@@ -28,7 +27,7 @@ exports[`Root snapshot renders 1`] = `
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
-              "backgroundImage.enabled": undefined,
+              "backgroundImageEnabled": undefined,
               "promptEnabled": undefined,
             },
           }
@@ -63,18 +62,6 @@ exports[`Root snapshot renders 1`] = `
           }
         />
       </Component>
-      <div>
-        <WithStyles(Typography)
-          variant="subheading"
-        >
-          Define Background Image
-        </WithStyles(Typography)>
-        <WithStyles(ImageContainer)
-          imageUrl=""
-          onImageUpload={[Function]}
-          onUpdateImageDimension={[Function]}
-        />
-      </div>
     </div>
   </ConfigLayout>
 </div>
