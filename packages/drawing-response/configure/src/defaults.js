@@ -15,8 +15,7 @@ export default {
   configuration: {
     backgroundImage: {
       settings: true,
-      label: 'Background Image',
-      enabled: true
+      label: 'Background Image'
     },
     prompt: {
       settings: true,
