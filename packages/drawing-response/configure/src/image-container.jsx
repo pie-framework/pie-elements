@@ -13,8 +13,8 @@ export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxImageWidth: 0,
-      maxImageHeight: 0,
+      maxImageWidth: "100%",
+      maxImageHeight: "auto",
       dragEnabled: true,
       dropzoneActive: false,
     }
@@ -191,7 +191,7 @@ export class ImageContainer extends Component {
                   onLoad={this.handleOnImageLoad}
                   ref={ref => { this.image = ref; }}
                   src={imageUrl}
-                  style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight }}
+                  style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight, aspectRatio:"1/1", objectFit:"contain" }}
                   alt=''
                 />
                 <div ref={ref => { this.resize = ref; }} className={classes.resize} />
@@ -237,7 +237,7 @@ const styles = theme => ({
   },
   imageContainer: {
     position: 'relative',
-    width: 'fit-content'
+    width: 'fit-content',
   },
   resize: {
     borderBottom: '1px solid #727272',
