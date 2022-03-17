@@ -13,8 +13,8 @@ export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxImageWidth: "100%",
-      maxImageHeight: "auto",
+      maxImageWidth: 0,
+      maxImageHeight: 0,
       dragEnabled: true,
       dropzoneActive: false,
     }
@@ -117,7 +117,7 @@ export class ImageContainer extends Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { maxImageWidth } = this.state;
+    const { maxImageWidth, maxImageHeight } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
     const x = e.clientX - bounds.left;
@@ -126,11 +126,25 @@ export class ImageContainer extends Component {
     const fitsContainer = x <= maxImageWidth + 5;
     const hasMinimumWidth = x > 150 && y > 150;
 
-    if (fitsContainer && hasMinimumWidth) {
-      box.style.width = `${x}px`;
-      box.style.height = `${y}px`;
 
-      this.setState({ dimensions: { height: y, width: x }});
+    let keepAspectRatioWidth = x;
+    let keepAspectRatioHeight = y;
+
+      if (keepAspectRatioWidth >= keepAspectRatioHeight) {
+        keepAspectRatioWidth= x
+        keepAspectRatioHeight= "auto"
+      }
+      else {
+        keepAspectRatioHeight= y
+        keepAspectRatioWidth= "auto"
+      }
+ 
+
+    if (fitsContainer && hasMinimumWidth) {
+      box.style.width = `${keepAspectRatioWidth}px`;
+      box.style.height = `${keepAspectRatioHeight}px`;
+
+      this.setState({ dimensions: { height: keepAspectRatioHeight, width: keepAspectRatioWidth}})
     }
 
     this.handleDisableDrag();
@@ -165,7 +179,8 @@ export class ImageContainer extends Component {
       dropzoneActive,
       dragEnabled,
       maxImageHeight,
-      maxImageWidth
+      maxImageWidth,
+      dimensions
     } = this.state;
 
     return (
@@ -191,7 +206,7 @@ export class ImageContainer extends Component {
                   onLoad={this.handleOnImageLoad}
                   ref={ref => { this.image = ref; }}
                   src={imageUrl}
-                  style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight, aspectRatio:"1/1", objectFit:"contain" }}
+                style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight, ...dimensions}}
                   alt=''
                 />
                 <div ref={ref => { this.resize = ref; }} className={classes.resize} />

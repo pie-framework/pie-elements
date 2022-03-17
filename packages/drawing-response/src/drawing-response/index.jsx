@@ -36,6 +36,8 @@ class DrawingResponseComponent extends React.Component {
     const { hasError, errorMessage } = this.state;
     const isEvaluateMode = mode === 'evaluate';
 
+    console.log(imageDimensions, "image dinmensions player")
+
     return hasError ? (
       <div>An error occured: {errorMessage}</div>
     ) : (

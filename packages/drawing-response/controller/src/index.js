@@ -19,6 +19,8 @@ export function model(question, session, env) {
     promptEnabled
   } = normalizedQuestion;
 
+  console.log(imageDimensions, "imagedimensions in controller")
+
   return new Promise(resolve => {
     const out = {
       disabled: env.mode !== 'gather',
