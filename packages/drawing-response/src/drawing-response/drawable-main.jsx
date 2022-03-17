@@ -188,7 +188,6 @@ export class DrawableMain extends React.Component {
       toolActive: { type }
     } = this.props;
     const { isOver, newDrawable } = this.state;
-    console.log(imageDimensions, "imagedeminsion")
 
     const draggable = type === 'Select';
     const paint = type === 'PaintBucket';

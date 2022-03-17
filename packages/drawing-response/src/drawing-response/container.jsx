@@ -145,8 +145,6 @@ export class Container extends Component {
       TextEntry
     } = this.state;
 
-    console.log(imageDimensions, "dimensions in container")
-
     return (
       <div className={classes.base}>
         <DrawablePalette
