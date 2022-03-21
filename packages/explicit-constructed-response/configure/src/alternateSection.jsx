@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
+import { getAdjustedLength } from './markupUtils';
 
 const styles = () => ({
   altChoices: {
@@ -178,7 +179,7 @@ export class AlternateSection extends React.Component {
     });
 
     if (newLength > maxLength || newLength + 10 <= maxLength) {
-      lengthChanged(newLength);
+      lengthChanged(getAdjustedLength(newLength));
     }
   };
 
