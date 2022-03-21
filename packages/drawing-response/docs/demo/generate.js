@@ -3,6 +3,7 @@ exports.model = (id, element) => ({
   element,
   prompt: 'This is the question prompt',
   promptEnabled: true,
+  backgroundImageEnabled: true,
   toolbarEditorPosition: 'bottom',
   imageUrl: '',
   imageDimensions: {

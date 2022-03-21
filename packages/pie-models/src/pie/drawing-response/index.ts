@@ -37,7 +37,10 @@ export interface DrawingResponsePie extends PieModel {
 
     /** Indicates if Teacher Instructions are enabled */
     teacherInstructionsEnabled: boolean;
-    
+
+    /** Indicates if Background Image is enabled */
+    backgroundImageEnabled: boolean;
+
     /**
      * Indicates the editor's toolbar position which can be 'bottom' or 'top'
      * @default: 'bottom'
@@ -51,9 +54,9 @@ export interface DrawingResponsePie extends PieModel {
  */
 export interface DrawingResponseConfigure extends PromptConfig {
     /**
-     * Configuration for multiple correct
+     * Configuration for background image
      */
-    backgroundImage?: ConfigurePropWithEnabled;
+    backgroundImage?: ConfigureProp;
 
     /**
      * Configuration for partial scoring
