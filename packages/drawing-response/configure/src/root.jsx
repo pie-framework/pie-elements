@@ -63,7 +63,7 @@ export class Root extends React.Component {
       teacherInstructions = {},
       spellCheck = {},
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } =
       model || {};
     const toolbarOpts = {};
 
