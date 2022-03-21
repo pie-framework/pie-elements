@@ -164,18 +164,28 @@ export class Main extends React.Component {
 
   onChangeResponse = (index, newVal) => {
     const { model, onModelChanged} = this.props;
-    const { choices, maxLengthPerChoice } = model;
+    const { choices } = model;
+    let { maxLengthPerChoice } = model;
     const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
-      choices[index] = [{ label: '', value: '0' }];
-      maxLengthPerChoice.splice(index, 0, newValLength);
-    }
+      choices[index] = [{ label: newVal || '', value: '0' }];
 
-    choices[index][0].label = newVal || '';
+      // add default values for missing choices up to the new index position
+      const nbOfMissingChoices = index > maxLengthPerChoice.length ? index - maxLengthPerChoice.length : 0;
 
-    if (maxLengthPerChoice && newVal && maxLengthPerChoice[index] < newValLength) {
-      maxLengthPerChoice[index] = newValLength;
+      maxLengthPerChoice = [ ...maxLengthPerChoice, ...Array(nbOfMissingChoices).fill(1) ];
+
+      maxLengthPerChoice.splice(index, 0, getAdjustedLength(newValLength));
+    } else {
+      choices[index][0].label = newVal || '';
+
+      if (
+        maxLengthPerChoice
+        && (maxLengthPerChoice[index] < newValLength || maxLengthPerChoice[index] > newValLength + 10)
+      ) {
+        maxLengthPerChoice[index] = getAdjustedLength(newValLength);
+      }
     }
 
     onModelChanged({

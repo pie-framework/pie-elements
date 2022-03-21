@@ -33,6 +33,10 @@ class HotspotComponent extends React.Component {
               scale: parseFloat(zoomParsed) / 100,
             })
           }
+        } else if (!zoomParsed && this.state.scale !== 1) {
+          this.setState({
+            scale: 1,
+          });
         }
       });
     });
