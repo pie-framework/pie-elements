@@ -50,6 +50,10 @@ Indicates if Teacher Instructions are enabled
 
 Indicates if spellcheck is enabled
 
+# `backgroundImageEnabled` (boolean, required)
+
+Indicates if Background Image is enabled
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'

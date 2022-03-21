@@ -87,10 +87,8 @@ export class Root extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
-                  'backgroundImage.enabled':
-                    backgroundImage.settings &&
-                    toggle(backgroundImage.label, true),
-                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
+                  promptEnabled: prompt.settings && toggle(prompt.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -132,7 +130,7 @@ export class Root extends React.Component {
               </InputContainer>
             )}
 
-            {backgroundImage.enabled && (
+            {backgroundImageEnabled && (
               <div>
                 <Typography className={classes.label} variant="subheading">
                   Define Background Image

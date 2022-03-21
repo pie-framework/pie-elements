@@ -187,6 +187,7 @@ export class DrawableMain extends React.Component {
       paintColor,
       outlineColor,
       TextEntry,
+      backgroundImageEnabled = true,
       toolActive: { type },
       scale
     } = this.props;
@@ -235,10 +236,10 @@ export class DrawableMain extends React.Component {
           <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all" />
         </div>
         <div className={classes.base}>
-          {imageUrl && (
+          {backgroundImageEnabled && imageUrl && (
             <ImageBackground
-              dimensions={{ height: imageHeight, width: imageWidth }}
-              url={imageUrl} />
+              dimensions={{height: imageHeight, width: imageWidth}}
+              url={imageUrl}/>
           )}
 
           {TextEntry.renderTextareas()}
@@ -309,6 +310,7 @@ DrawableMain.propTypes = {
   TextEntry: PropTypes.object.isRequired,
   toolActive: PropTypes.object.isRequired,
   session: PropTypes.object.isRequired,
+  backgroundImageEnabled: PropTypes.bool.isRequired,
   scale: PropTypes.number.isRequired
 };
 

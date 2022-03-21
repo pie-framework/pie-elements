@@ -17,7 +17,7 @@ export class ImageContainer extends Component {
       maxImageHeight: 0,
       dragEnabled: true,
       dropzoneActive: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -26,7 +26,7 @@ export class ImageContainer extends Component {
       const { height, width } = positionInfo;
       this.setState({
         maxImageWidth: width,
-        maxImageHeight: height
+        maxImageHeight: height,
       });
     }
   }
@@ -46,7 +46,7 @@ export class ImageContainer extends Component {
     this.handleFileRead(file);
   };
 
-  makeDropzoneActive= () => this.setState({ dropzoneActive: true });
+  makeDropzoneActive = () => this.setState({ dropzoneActive: true });
 
   makeDropzoneInactive = () => this.setState({ dropzoneActive: false });
 
@@ -90,7 +90,7 @@ export class ImageContainer extends Component {
 
     const dimensions = {
       height: offsetHeight,
-      width: offsetWidth
+      width: offsetWidth,
     };
 
     this.setState({ dimensions });
@@ -126,11 +126,19 @@ export class ImageContainer extends Component {
     const fitsContainer = x <= maxImageWidth + 5;
     const hasMinimumWidth = x > 150 && y > 150;
 
-    if (fitsContainer && hasMinimumWidth) {
-      box.style.width = `${x}px`;
-      box.style.height = `${y}px`;
+    const keepAspectRatioWidth = x > y ? x : 'auto';
+    const keepAspectRatioHeight = x > y ? 'auto' : y;
 
-      this.setState({ dimensions: { height: y, width: x }});
+    if (fitsContainer && hasMinimumWidth) {
+      box.style.width = `${keepAspectRatioWidth}px`;
+      box.style.height = `${keepAspectRatioHeight}px`;
+
+      this.setState({
+        dimensions: {
+          height: keepAspectRatioHeight,
+          width: keepAspectRatioWidth,
+        },
+      });
     }
 
     this.handleDisableDrag();
@@ -141,60 +149,80 @@ export class ImageContainer extends Component {
 
     return (
       <div>
-        <Button
-          label={label}
-          onClick={this.handleInputClick}
-        />
+        <Button label={label} onClick={this.handleInputClick} />
         <input
           accept="image/*"
           className={classes.input}
           onChange={this.handleUploadImage}
-          ref={ref => { this.input = ref; }}
+          ref={(ref) => {
+            this.input = ref;
+          }}
           type="file"
         />
       </div>
-    )
+    );
   }
 
   render() {
-    const {
-      classes,
-      imageUrl
-    } = this.props;
+    const { classes, imageUrl } = this.props;
     const {
       dropzoneActive,
       dragEnabled,
       maxImageHeight,
-      maxImageWidth
+      maxImageWidth,
+      dimensions,
     } = this.state;
 
     return (
-      <div className={classes.base} >
-        <div className={`${classes.box} ${dropzoneActive ? classes.boxActive : ''}`}
-             {...dragEnabled ? {
-               onDragExit: this.handleOnDragExit,
-               onDragLeave: this.handleOnDragExit,
-               onDragOver: this.handleOnDragOver ,
-               onDrop: this.handleOnDrop
-             } : {}}
+      <div className={classes.base}>
+        <div
+          className={`${classes.box} ${
+            dropzoneActive ? classes.boxActive : ''
+          }`}
+          {...(dragEnabled
+            ? {
+                onDragExit: this.handleOnDragExit,
+                onDragLeave: this.handleOnDragExit,
+                onDragOver: this.handleOnDragOver,
+                onDrop: this.handleOnDrop,
+              }
+            : {})}
         >
           <div className={classes.toolbar}>
-            {this.renderUploadControl(imageUrl ? 'Replace Image' : 'Upload Image')}
+            {this.renderUploadControl(
+              imageUrl ? 'Replace Image' : 'Upload Image'
+            )}
           </div>
 
-          <div ref={ref => { this.imageSection = ref; }} className={classes.drawableHeight}>
+          <div
+            ref={(ref) => {
+              this.imageSection = ref;
+            }}
+            className={classes.drawableHeight}
+          >
             {imageUrl ? (
               <div className={classes.imageContainer}>
                 <img
                   className={classes.image}
                   height="auto"
                   onLoad={this.handleOnImageLoad}
-                  ref={ref => { this.image = ref; }}
+                  ref={(ref) => {
+                    this.image = ref;
+                  }}
                   src={imageUrl}
-                  style={{ maxWidth: maxImageWidth, maxHeight: maxImageHeight }}
-                  alt=''
+                  style={{
+                    maxWidth: maxImageWidth,
+                    maxHeight: maxImageHeight,
+                    ...dimensions,
+                  }}
+                  alt=""
                 />
-                <div ref={ref => { this.resize = ref; }} className={classes.resize} />
+                <div
+                  ref={(ref) => {
+                    this.resize = ref;
+                  }}
+                  className={classes.resize}
+                />
               </div>
             ) : (
               <div className={`${classes.drawableHeight} ${classes.centered}`}>
@@ -210,25 +238,25 @@ export class ImageContainer extends Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   box: {
     border: '1px solid #E0E1E6',
-    borderRadius: '5px'
+    borderRadius: '5px',
   },
   boxActive: {
-    border: '1px solid #0032C2'
+    border: '1px solid #0032C2',
   },
   centered: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   drawableHeight: {
-    minHeight: 350
+    minHeight: 350,
   },
   image: {
     alignItems: 'center',
@@ -237,7 +265,7 @@ const styles = theme => ({
   },
   imageContainer: {
     position: 'relative',
-    width: 'fit-content'
+    width: 'fit-content',
   },
   resize: {
     borderBottom: '1px solid #727272',
@@ -247,10 +275,10 @@ const styles = theme => ({
     height: '10px',
     position: 'absolute',
     right: '-10px',
-    width: '10px'
+    width: '10px',
   },
   input: {
-    display: 'none'
+    display: 'none',
   },
   toolbar: {
     backgroundColor: '#ECEDF1',
@@ -258,15 +286,15 @@ const styles = theme => ({
     borderTopLeftRadius: '5px',
     borderTopRightRadius: '5px',
     display: 'flex',
-    padding: '12px 8px'
-  }
+    padding: '12px 8px',
+  },
 });
 
 ImageContainer.propTypes = {
   classes: PropTypes.object.isRequired,
   imageUrl: PropTypes.string.isRequired,
   onImageUpload: PropTypes.func.isRequired,
-  onUpdateImageDimension: PropTypes.func.isRequired
+  onUpdateImageDimension: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ImageContainer);

@@ -40,6 +40,9 @@ export interface DrawingResponsePie extends PieModel {
   /** Indicates if spellcheck is enabled */
   spellCheckEnabled: boolean;
 
+  /** Indicates if Background Image is enabled */
+  backgroundImageEnabled: boolean;
+
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
