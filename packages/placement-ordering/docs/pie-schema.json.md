@@ -81,6 +81,10 @@ The item stem for the question
 
 Determines if prompt should show
 
+# `lockChoiceOrder` (boolean)
+
+Indicates if the choices can lockChoiceOrder
+
 # `numberedGuides` (boolean)
 
 If placement type is placement; show ordering indicates if the boxes are numbered
