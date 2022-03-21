@@ -26,7 +26,12 @@ exports[`DrawingResponse DrawableMain snapshot renders 1`] = `
   </div>
   <div>
     <WithStyles(DrawableImage)
-      dimensions={Object {}}
+      dimensions={
+        Object {
+          "height": NaN,
+          "width": NaN,
+        }
+      }
       url="url"
     />
     <ForwardRef
@@ -58,7 +63,12 @@ exports[`DrawingResponse DrawableMain snapshot renders disabled 1`] = `
   </div>
   <div>
     <WithStyles(DrawableImage)
-      dimensions={Object {}}
+      dimensions={
+        Object {
+          "height": NaN,
+          "width": NaN,
+        }
+      }
       url="url"
     />
     <ForwardRef
