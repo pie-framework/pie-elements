@@ -23,6 +23,7 @@ exports[`ECRToolbar snapshot renders 1`] = `
         "width": "100%",
       }
     }
+    value=""
   />
 </div>
 `;

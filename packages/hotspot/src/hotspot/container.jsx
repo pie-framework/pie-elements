@@ -34,7 +34,7 @@ export class Container extends React.Component {
   render() {
     const {
       classes,
-      dimensions: { width, height },
+      dimensions: { width: withProp, height: heightProp },
       disabled,
       hotspotColor,
       imageUrl,
@@ -42,8 +42,12 @@ export class Container extends React.Component {
       outlineColor,
       onSelectChoice,
       shapes: { rectangles, polygons },
+      scale: SCALE,
       strokeWidth
     } = this.props;
+
+    const width = withProp * SCALE;
+    const height = heightProp * SCALE;
 
     return (
       <div
@@ -53,6 +57,7 @@ export class Container extends React.Component {
         {imageUrl ? (
           <div className={classes.imageContainer}>
             <img
+              alt="hotspot-image"
               className={classes.image}
               height="auto"
               src={imageUrl}
@@ -76,6 +81,7 @@ export class Container extends React.Component {
 
               return (
                 <Rectangle
+                  scale={SCALE}
                   isEvaluateMode={isEvaluateMode}
                   isCorrect={isCorrect}
                   evaluateText={evaluateText}
@@ -101,6 +107,7 @@ export class Container extends React.Component {
 
               return (
                 <Polygon
+                  scale={SCALE}
                   isEvaluateMode={isEvaluateMode}
                   isCorrect={!!isCorrect}
                   evaluateText={evaluateText}
@@ -165,7 +172,12 @@ Container.propTypes = {
   outlineColor:PropTypes.string.isRequired,
   session:PropTypes.object.isRequired,
   shapes:PropTypes.object.isRequired,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  scale: PropTypes.number
+};
+
+Container.defaultProps = {
+  scale: 1
 };
 
 export default withStyles(styles)(Container);

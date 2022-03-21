@@ -127,6 +127,7 @@ export class Root extends React.Component {
                   onChange={this.onPromptChanged}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}

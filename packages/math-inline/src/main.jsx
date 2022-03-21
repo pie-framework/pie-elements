@@ -445,6 +445,7 @@ export class Main extends React.Component {
                   [classes.correct]: !emptyResponse && (correct || showCorrect),
                   [classes.showCorrectness]: !emptyResponse && disabled && correctness && !view,
                   [classes.correctAnswerShown]: showCorrect,
+                  [classes.printCorrect]: printMode && alwaysShowCorrect
                 })}
               >
                 <Tooltip
@@ -489,7 +490,7 @@ export class Main extends React.Component {
                   />
                 </Tooltip>
               </div>
-             )} 
+             )}
           </div>
         </Readable>}
         {
@@ -515,12 +516,14 @@ export class Main extends React.Component {
             </React.Fragment>
           )
         }
-        {displayNote && (
-          <div
-            className={classes.note}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
-          />
-        )}
+        {
+          viewMode && displayNote && (
+            <div
+              className={classes.note}
+              dangerouslySetInnerHTML={{__html: `<strong>Note:</strong> ${note}`}}
+            />
+          )
+        }
       </div>
     );
 
@@ -566,6 +569,18 @@ export class Main extends React.Component {
                   }}
                 >
                   <PreviewPrompt prompt={rationale} />
+                </Collapsible>,
+                <br key="br"/>,
+              ]}
+              {displayNote && hasText(note) && [
+                <Collapsible
+                  key="collapsible"
+                  labels={{
+                    hidden: 'Show Note',
+                    visible: 'Hide Note',
+                  }}
+                >
+                  <PreviewPrompt prompt={note} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}
@@ -722,6 +737,9 @@ const styles = (theme) => ({
   correctAnswerShown: {
     padding: theme.spacing.unit,
     letterSpacing: '0.5px',
+  },
+  printCorrect: {
+    border: `2px solid ${color.correct()} !important`,
   },
   correct: {
     borderColor: `${color.correct()} !important`,

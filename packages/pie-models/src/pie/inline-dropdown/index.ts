@@ -86,8 +86,8 @@ export interface InlineDropdownPie extends PieModel {
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 
-   /** Indicates display type for the container of the pie-ui element */
-   displayType: string;
+  /** Indicates display type for the container of the pie-ui element */
+  displayType: string;
 
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'

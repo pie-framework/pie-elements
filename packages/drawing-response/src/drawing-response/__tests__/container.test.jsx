@@ -1,5 +1,12 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+
+global.MutationObserver = class {
+  constructor(callback) {}
+  disconnect() {}
+  observe(element, initObject) {}
+};
+
 import { Container } from '../container';
 
 beforeEach(() => {

@@ -507,7 +507,8 @@ describe('DrawingResponse', () => {
         startx: 200,
         starty: 200,
         x: 300,
-        y: 300
+        y: 300,
+        scale: 1
       };
       wrapper = mkWrapper('DrawableText', props, 'div');
     });

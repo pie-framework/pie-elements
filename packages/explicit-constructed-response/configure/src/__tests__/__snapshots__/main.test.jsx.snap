@@ -90,9 +90,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              10,
-              10,
-              7,
+              6,
+              6,
+              4,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -154,6 +154,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,
             },
@@ -215,9 +216,9 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              10,
-              10,
-              7,
+              6,
+              6,
+              4,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -345,9 +346,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              10,
-              10,
-              7,
+              6,
+              6,
+              4,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",
@@ -378,6 +379,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,
             },
@@ -439,9 +441,9 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "displayType": "block",
             "markup": "<p>The {{0}} jumped {{1}} the {{2}}</p>",
             "maxLengthPerChoice": Array [
-              10,
-              10,
-              7,
+              6,
+              6,
+              4,
             ],
             "maxLengthPerChoiceEnabled": true,
             "mode": "gather",

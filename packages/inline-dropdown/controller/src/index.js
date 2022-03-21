@@ -106,11 +106,17 @@ export function model(question, session, env, updateSession) {
     let teacherInstructions = null;
     let rationale = null;
 
-    const choicesWillNullRationales = (Object.keys(choices) || []).reduce((acc, currentValue) => {
-      acc[currentValue] = (choices[currentValue] || []).map(choice => ({ ...choice, rationale: null }));
+    const choicesWillNullRationales = (Object.keys(choices) || []).reduce(
+      (acc, currentValue) => {
+        acc[currentValue] = (choices[currentValue] || []).map((choice) => ({
+          ...choice,
+          rationale: null,
+        }));
 
-      return acc;
-    }, {});
+        return acc;
+      },
+      {}
+    );
 
     if (
       env.role === 'instructor' &&
@@ -126,7 +132,6 @@ export function model(question, session, env, updateSession) {
       choices = normalizedQuestion.choiceRationaleEnabled
         ? normalizedQuestion.choices
         : choicesWillNullRationales;
-
     } else {
       rationale = null;
       teacherInstructions = null;
@@ -149,7 +154,7 @@ export function model(question, session, env, updateSession) {
           ? getScore(normalizedQuestion, session) === 1
           : undefined,
       rationale,
-      teacherInstructions
+      teacherInstructions,
     };
 
     resolve(out);
