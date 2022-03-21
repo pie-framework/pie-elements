@@ -47,6 +47,11 @@ const defaultConfig = {
   gridColumns: {
     label: 'Grid columns',
   },
+  spellCheck: {
+    label: "Spellcheck",
+    settings:true,
+    enabled:true
+  },
 };
 
 const partModel = base => ({
@@ -61,6 +66,7 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  spellCheckEnabled:false,
   choicesLayout: 'vertical',
   gridColumns: '2',
   ...base

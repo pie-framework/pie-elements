@@ -95,6 +95,7 @@ export class ChoiceTile extends React.Component {
       onDelete,
       imageSupport,
       disableImages,
+      spellCheck,
       toolbarOpts
     } = this.props;
     const { dialog } = this.state;
@@ -129,6 +130,7 @@ export class ChoiceTile extends React.Component {
           pluginProps={choicePlugins}
           toolbarOpts={toolbarOpts}
           activePlugins={filteredDefaultPlugins}
+          spellCheck={spellCheck}
           allowValidation
         />
         {editable && (

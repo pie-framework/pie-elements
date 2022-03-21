@@ -54,6 +54,11 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "rationale": {
       "description": "Indicates correct answer rationale",
       "type": "string",
@@ -142,6 +147,7 @@
     "rationale",
     "rationaleEnabled",
     "rubric",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

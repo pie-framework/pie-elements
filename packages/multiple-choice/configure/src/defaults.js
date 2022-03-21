@@ -21,6 +21,11 @@ export default {
     gridColumns: '2',
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     choicesLayout: {
       settings: false,
       label: 'Choices Layout',

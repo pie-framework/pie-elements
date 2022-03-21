@@ -283,7 +283,8 @@ class ChoiceEditor extends React.Component {
       toolbarOpts,
       singularChoiceLabel,
       pluralChoiceLabel,
-      choicesLabel
+      choicesLabel,
+      spellCheck
     } = this.props;
     const { dialog } = this.state;
 
@@ -315,6 +316,7 @@ class ChoiceEditor extends React.Component {
               toolbarOpts={toolbarOpts}
               choices={choices}
               choicesLabel={choicesLabel}
+              spellCheck={spellCheck}
             />
           ))}
         </div>

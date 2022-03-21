@@ -289,6 +289,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
@@ -316,6 +321,7 @@
     "id",
     "prompt",
     "rationaleEnabled",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled",
     "text",

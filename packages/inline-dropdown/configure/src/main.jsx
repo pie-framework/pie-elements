@@ -376,14 +376,16 @@ export class Main extends React.Component {
       lockChoiceOrder = {},
       rationale = {},
       choiceRationale = {},
-      teacherInstructions = {}
+      teacherInstructions = {},
+      spellCheck = {},
     } = configuration || {};
     const {
       rationaleEnabled,
       choiceRationaleEnabled,
       promptEnabled,
       teacherInstructionsEnabled,
-      choices
+      choices,
+      spellCheckEnabled
     } =
     model || {};
 
@@ -413,6 +415,7 @@ export class Main extends React.Component {
                 <EditableHtml
                   className={classes.prompt}
                   markup={choice.rationale || ''}
+                  spellCheck={spellCheckEnabled}
                   onChange={c =>
                     this.onChoiceRationaleChanged(key, {
                       ...choice,
@@ -465,7 +468,9 @@ export class Main extends React.Component {
                     rationale.settings && toggle(rationale.label),
                   choiceRationaleEnabled:
                     choiceRationale.settings && toggle(choiceRationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label)
                 }
               }}
             />
@@ -484,6 +489,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -501,6 +507,7 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   disableUnderline
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -516,6 +523,7 @@ export class Main extends React.Component {
                   onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -554,10 +562,12 @@ export class Main extends React.Component {
                       value={value}
                       onToolbarDone={onToolbarDone}
                       choices={respAreaChoices[node.data.get('index')]}
+                      spellCheck={spellCheckEnabled}
                     />
                   );
                 }
               }}
+              spellCheck={spellCheckEnabled}
               className={classes.markup}
               markup={model.slateMarkup || ''}
               onChange={this.onChange}

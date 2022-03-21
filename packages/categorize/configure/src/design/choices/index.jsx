@@ -70,6 +70,7 @@ export class Choices extends React.Component {
       model,
       imageSupport,
       onModelChanged,
+      spellCheck,
       toolbarOpts
     } = this.props;
 
@@ -86,6 +87,7 @@ export class Choices extends React.Component {
           categoryCountIsOne={categoryCountIsOne}
           onModelChanged={onModelChanged}
           allChoicesHaveCount={this.allChoicesHaveCount}
+          spellCheck={spellCheck}
         />
         <div className={classes.choiceHolder} style={choiceHolderStyle}>
           {choices.map((h, index) => (
@@ -97,6 +99,7 @@ export class Choices extends React.Component {
               onChange={this.changeChoice}
               onDelete={() => this.deleteChoice(h)}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheck}
             />
           ))}
         </div>

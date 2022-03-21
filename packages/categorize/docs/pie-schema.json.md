@@ -150,6 +150,10 @@ Indicates if Feedback is enabled
 
 Indicates if Rationale are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `studentInstructionsEnabled` (boolean, required)
 
 Indicates if Student Instructions are enabled

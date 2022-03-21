@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 });
 
-const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts }) => {
+const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck}) => {
   return (
     <div
       style={{
@@ -54,6 +54,7 @@ const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageS
         imageSupport={imageSupport}
         nonEmpty={false}
         toolbarOpts={toolbarOpts}
+        spellCheck={spellCheck}
       />
     </div>
   );
@@ -171,8 +172,10 @@ export class Categories extends React.Component {
       className,
       categories,
       imageSupport,
-      toolbarOpts
+      toolbarOpts,
+      spellCheck
     } = this.props;
+
     const { categoriesPerRow, rowLabels } = model;
 
     const holderStyle = {
@@ -211,6 +214,7 @@ export class Categories extends React.Component {
                     onChange={(val) => this.changeRowLabel(val, rowIndex)}
                     imageSupport={imageSupport}
                     toolbarOpts={toolbarOpts}
+                    spellCheck={spellCheck}
                   />
                 )}
                 <Category
@@ -220,6 +224,7 @@ export class Categories extends React.Component {
                   onDelete={() => this.delete(category)}
                   onAddChoice={this.addChoiceToCategory}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheck}
                   onDeleteChoice={(choice, choiceIndex) =>
                     this.deleteChoiceFromCategory(category, choice, choiceIndex)
                   }

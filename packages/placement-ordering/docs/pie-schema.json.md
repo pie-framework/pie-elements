@@ -81,6 +81,10 @@ The item stem for the question
 
 Determines if prompt should show
 
+# `lockChoiceOrder` (boolean)
+
+Indicates if the choices can lockChoiceOrder
+
 # `numberedGuides` (boolean)
 
 If placement type is placement; show ordering indicates if the boxes are numbered
@@ -150,6 +154,10 @@ Indicates if Teacher Instructions are enabled
 # `choiceLabelEnabled` (boolean)
 
 Indicates if Choice Label is enabled
+
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
 
 # `note` (string)
 

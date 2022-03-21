@@ -1,30 +1,30 @@
-import {PieModel} from '../../PieModel';
+import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
-    /** The id of the choice */
-    id: string;
+  /** The id of the choice */
+  id: string;
 
-    /** The label of the choice */
-    label?: string;
+  /** The label of the choice */
+  label?: string;
 }
 
 export interface CorrectResponse {
-    /** The id of the correct response */
-    id: string;
+  /** The id of the correct response */
+  id: string;
 
-    /** The weight of the correct response
-     * Note: weights are not configurable in the existing component so we'll ignore it for now
-     */
-    weight?: number;
+  /** The weight of the correct response
+   * Note: weights are not configurable in the existing component so we'll ignore it for now
+   */
+  weight?: number;
 }
 
 export interface AlternateResponse {
-    /** Array that contains the alternate response ids */
-    response: string[];
+  /** Array that contains the alternate response ids */
+  response: string[];
 }
 
 /** NOTE: teacherInstructions, studentInstructions & scoringType
@@ -37,167 +37,180 @@ export interface AlternateResponse {
  * @additionalProperties false
  */
 export interface PlacementOrderingPie extends PieModel {
-    /** The label for possible choices */
-    choiceLabel?: string;
+  /** The label for possible choices */
+  choiceLabel?: string;
 
-    /** Array of all the available choices */
-    choices: Choice[];
+  /** Array of all the available choices */
+  choices: Choice[];
 
-    /** Array of the correct responses in the correct order */
-    correctResponse?: CorrectResponse[];
+  /** Array of the correct responses in the correct order */
+  correctResponse?: CorrectResponse[];
 
-    /** Array that contains the correct alternate responses */
-    alternateResponses: AlternateResponse[];
+  /** Array that contains the correct alternate responses */
+  alternateResponses: AlternateResponse[];
 
-    /** Indicates if the choices editor can use images */
-    enableImages?: boolean;
+  /** Indicates if the choices editor can use images */
+  enableImages?: boolean;
 
-    /** Feedback for student answer */
-    feedback?: ComplexFeedbackType;
+  /** Feedback for student answer */
+  feedback?: ComplexFeedbackType;
 
-    /** The item stem for the question */
-    prompt?: string;
+  /** The item stem for the question */
+  prompt?: string;
 
-    /** Determines if prompt should show */
-    promptEnabled?: boolean;
+  /** Determines if prompt should show */
+  promptEnabled?: boolean;
 
-    /** If placement type is placement; show ordering indicates if the boxes are numbered */
-    numberedGuides?: boolean;
+  /** Indicates if the choices can lockChoiceOrder */
+  lockChoiceOrder?: boolean;
 
-    /** The layout for displaying the choices */
-    orientation?: 'vertical' | 'horizontal';
+  /** If placement type is placement; show ordering indicates if the boxes are numbered */
+  numberedGuides?: boolean;
 
-    /** Indicates if partialScoring is enabled */
-    partialScoring?: boolean;
+  /** The layout for displaying the choices */
+  orientation?: 'vertical' | 'horizontal';
 
-    /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
-    placementArea?: boolean;
+  /** Indicates if partialScoring is enabled */
+  partialScoring?: boolean;
 
-    /** Indicates correct answer rationale */
-    rationale?: string;
+  /** Indicates if the items can be replaced with each other or if they can be placed inside other boxes */
+  placementArea?: boolean;
 
-    /** Indicates if each choice will be removed from choices after becoming a target */
-    removeTilesAfterPlacing?: boolean;
+  /** Indicates correct answer rationale */
+  rationale?: string;
 
-    /** Indicates scoring type */
-    scoringType?: 'auto' | 'rubric';
+  /** Indicates if each choice will be removed from choices after becoming a target */
+  removeTilesAfterPlacing?: boolean;
 
-    /** Indicates student instructions */
-    studentInstructions?: string;
+  /** Indicates scoring type */
+  scoringType?: 'auto' | 'rubric';
 
-    /** The label for answer area if placement area is enabled */
-    targetLabel?: string;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-    /** Indicates if Feedback is enabled */
-    feedbackEnabled: boolean;
+  /** The label for answer area if placement area is enabled */
+  targetLabel?: string;
 
-    /** Indicates teacher instructions */
-    teacherInstructions?: string;
+  /** Indicates if Feedback is enabled */
+  feedbackEnabled: boolean;
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 
-    /** Indicates if Student Instructions are enabled */
-    studentInstructionsEnabled: boolean;
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
 
-    /** Indicates if Teacher Instructions are enabled */
-    teacherInstructionsEnabled: boolean;
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
 
-    /** Indicates if Choice Label is enabled */
-    choiceLabelEnabled?: boolean;
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
 
-    /** Indicates the note for the answer */
-    note?: string;
+  /** Indicates if Choice Label is enabled */
+  choiceLabelEnabled?: boolean;
 
-    /**
-     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-     * @default: 'bottom'
-     */
-    toolbarEditorPosition?: 'bottom' | 'top';
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
+  /** Indicates the note for the answer */
+  note?: string;
+
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**
  * Config Object for @pie-elements/placement-ordering
  * @additionalProperties false
  */
-export interface PlacementOrderingConfigure extends PromptConfig, CommonConfigSettings {
-    /**
-     * Choice Label configuration
-     */
-    choiceLabel?: ConfigureProp;
+export interface PlacementOrderingConfigure
+  extends PromptConfig,
+    CommonConfigSettings {
+  /**
+   * Choice Label configuration
+   */
+  choiceLabel?: ConfigureProp;
 
-    /**
-     * Choices configuration
-     */
-    choices?: ConfigureProp;
+  /**
+   * Choices configuration
+   */
+  choices?: ConfigureProp;
 
-    /**
-     * Numbered Guides configuration
-     */
-    enableImages?: ConfigureProp;
+  /**
+   * Numbered Guides configuration
+   */
+  enableImages?: ConfigureProp;
 
-    /**
-     * Indicates whether feedback is enabled
-     */
-    feedback?: ConfigureProp;
+  /**
+   * Indicates whether feedback is enabled
+   */
+  feedback?: ConfigureProp;
 
-    /**
-     * Item Stem configuration
-     */
-    prompt?: ConfigureProp;
+  /**
+   * Item Stem configuration
+   */
+  prompt?: ConfigureProp;
 
-    /**
-     * Lock Choice Order configuration
-     */
-    lockChoiceOrder?: ConfigureProp;
+  /**
+   * Lock Choice Order configuration
+   */
+  lockChoiceOrder?: ConfigureProp;
 
-    /**
-     * Numbered Guides configuration
-     */
-    numberedGuides?: ConfigureProp;
+  /**
+   * Numbered Guides configuration
+   */
+  numberedGuides?: ConfigureProp;
 
-    /**
-     * Orientation configuration
-     */
-    orientation?: ConfigureProp;
+  /**
+   * Orientation configuration
+   */
+  orientation?: ConfigureProp;
 
-    /**
-     * Partial Scoring configuration
-     */
-    partialScoring?: ConfigureProp;
+  /**
+   * Partial Scoring configuration
+   */
+  partialScoring?: ConfigureProp;
 
-    /**
-     * Placement Area configuration
-     */
-    placementArea?: ConfigureProp;
+  /**
+   * Placement Area configuration
+   */
+  placementArea?: ConfigureProp;
 
-    /**
-     * Rationale configuration
-     */
-    rationale?: ConfigureProp;
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
 
-    /**
-     * Remove tiles after placing configuration
-     */
-    removeTilesAfterPlacing?: ConfigureProp;
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
-    /**
-     * Scoring Type configuration
-     */
-    scoringType?: ConfigureProp;
+  /**
+   * Remove tiles after placing configuration
+   */
+  removeTilesAfterPlacing?: ConfigureProp;
 
-    /**
-     * Student Instructions configuration
-     */
-    studentInstructions?: ConfigureProp;
+  /**
+   * Scoring Type configuration
+   */
+  scoringType?: ConfigureProp;
 
-    /**
-     * Target Label configuration
-     */
-    targetLabel?: ConfigureProp;
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
 
-    /**
-     * Teacher Instructions configuration
-     */
-    teacherInstructions?: ConfigureProp;
+  /**
+   * Target Label configuration
+   */
+  targetLabel?: ConfigureProp;
+
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 }

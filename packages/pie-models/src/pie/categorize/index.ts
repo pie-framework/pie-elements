@@ -1,5 +1,5 @@
-import {PromptConfig} from '../../PromptConfig';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { PieModel } from '../../PieModel';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ComplexFeedbackType } from '../../Feedback';
 import { ConfigureProp } from '../ConfigurationProp';
@@ -19,14 +19,14 @@ interface CategoryChoice {
 }
 
 interface Category {
-    /** Identifier for the category */
-    id: string;
+  /** Identifier for the category */
+  id: string;
 
-    /** The label to display with the category. */
-    label: string;
+  /** The label to display with the category. */
+  label: string;
 
-    /** The choices presented in this category */
-    choices: CategoryChoice[];
+  /** The choices presented in this category */
+  choices: CategoryChoice[];
 }
 
 type AlternateResponse = string[];
@@ -40,14 +40,13 @@ interface CategoryCorrectResponse {
 
   /** Array of alternatives correct choices */
   alternateResponses?: AlternateResponse[];
-
 }
 
 enum ChoicesPosition {
   above = 'above',
   below = 'below',
   left = 'left',
-  right = 'right'
+  right = 'right',
 }
 
 /**
@@ -55,7 +54,6 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface CategorizePie extends PieModel {
-
   /** The available choices */
   choices: CategoryChoice[];
 
@@ -109,6 +107,9 @@ export interface CategorizePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -129,7 +130,9 @@ export interface CategorizePie extends PieModel {
  * Config Object for @pie-elements/categorize
  * @additionalProperties false
  */
-export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings {
+export interface CategorizeConfigure
+  extends PromptConfig,
+    CommonConfigSettings {
   /**
    * Partial Scoring configuration
    */
@@ -139,6 +142,11 @@ export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings 
    * Rationale configuration
    */
   rationale?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration
@@ -155,4 +163,3 @@ export interface CategorizeConfigure extends PromptConfig ,CommonConfigSettings 
    */
   teacherInstructions?: ConfigureProp;
 }
-

@@ -81,6 +81,10 @@ Indicates value for rubric
 
 Indicates if Rationale are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `studentInstructionsEnabled` (boolean, required)
 
 Indicates if Student Instructions are enabled

@@ -92,7 +92,7 @@ export class Config extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes, className, categoryCountIsOne, config } = this.props;
+    const { classes, className, categoryCountIsOne, config, spellCheck} = this.props;
 
     const positionOption =
       positionOptions.find(option => option.value === config.choicesPosition) ||
@@ -122,6 +122,7 @@ export class Config extends React.Component {
             label="Label"
             value={config.choicesLabel}
             onChange={this.changeLabel}
+            spellCheck={spellCheck}
           />
           <List component="nav">
             <ListItem

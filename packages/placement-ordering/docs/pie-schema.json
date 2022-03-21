@@ -259,6 +259,11 @@
       "type": "boolean",
       "title": "promptEnabled"
     },
+    "lockChoiceOrder": {
+      "description": "Indicates if the choices can lockChoiceOrder",
+      "type": "boolean",
+      "title": "lockChoiceOrder"
+    },
     "numberedGuides": {
       "description": "If placement type is placement; show ordering indicates if the boxes are numbered",
       "type": "boolean",
@@ -342,6 +347,11 @@
       "type": "boolean",
       "title": "choiceLabelEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "note": {
       "description": "Indicates the note for the answer",
       "type": "string",
@@ -375,6 +385,7 @@
     "feedbackEnabled",
     "id",
     "rationaleEnabled",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

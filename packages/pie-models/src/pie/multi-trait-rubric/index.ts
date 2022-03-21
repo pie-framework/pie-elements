@@ -1,6 +1,5 @@
-import {PieModel} from '../../PieModel';
-import {ConfigureProp} from '../ConfigurationProp';
-
+import { PieModel } from '../../PieModel';
+import { ConfigureProp } from '../ConfigurationProp';
 
 interface Trait {
   /** Trait name */
@@ -14,7 +13,6 @@ interface Trait {
 
   /** Score point descriptors. Starting from 0 to max. */
   scorePointsDescriptors: string[];
-
 }
 
 interface Scale {
@@ -30,7 +28,6 @@ interface Scale {
   /** Traits */
   traits: Trait[];
 }
-
 
 /**
  * Model for the MultiTraitRubric Interaction
@@ -54,6 +51,9 @@ export interface MultiTraitRubricPie extends PieModel {
 
   /** Indicates if scoring should start at 0 or 1 */
   excludeZero?: boolean;
+
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
 
   /** scales */
   scales: Scale[];
@@ -123,10 +123,14 @@ export interface MultiTraitRubricConfigure {
   showHalfScoring?: ConfigureProp;
 
   /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
    * How large (in px) should multi-trait-rubric be
    */
-  width: string
-
+  width: string;
 
   // these should not be set to true (should not be used) for now
   //

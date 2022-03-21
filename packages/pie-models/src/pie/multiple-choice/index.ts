@@ -1,8 +1,7 @@
-import {Choice}  from '../../Choice';
-import {PieModel} from '../../PieModel';
+import { Choice } from '../../Choice';
+import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
-
 
 /**
  * NOTE: teacherInstructions, studentInstructions, rationale & scoringType
@@ -69,6 +68,9 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -78,7 +80,6 @@ export interface MultipleChoicePie extends PieModel {
   /** Indicates if Accessibility Labels are enabled */
   accessibilityLabelsEnabled: boolean;
 }
-
 
 /**
  * Config Object for @pie-elements/multiple-choice
@@ -125,6 +126,11 @@ export interface MultipleChoiceConfigure extends PromptConfig {
    * Configuration for the prompt
    */
   prompt?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /** Indicates the layout of choices for player
    * @default: 'vertical'

@@ -291,9 +291,10 @@ export class Main extends React.Component {
       partialScoring = {},
       rationale = {},
       teacherInstructions = {},
-      maxLengthPerChoice = {}
+      maxLengthPerChoice = {},
+      spellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -328,7 +329,9 @@ export class Main extends React.Component {
                     toggle(teacherInstructions.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label),
                 }
               }}
             />
@@ -347,6 +350,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -363,6 +367,7 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   disableUnderline
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -372,6 +377,7 @@ export class Main extends React.Component {
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
+              spellCheck={spellCheckEnabled}
               responseAreaProps={{
                 type: 'explicit-constructed-response',
                 options: {
@@ -415,6 +421,7 @@ export class Main extends React.Component {
               onChange={this.onResponsesChanged}
               onLengthChange={this.onLengthChanged}
               maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
+              spellCheck={spellCheckEnabled}
             />
             {rationaleEnabled && (
               <InputContainer
@@ -427,6 +434,7 @@ export class Main extends React.Component {
                   onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}

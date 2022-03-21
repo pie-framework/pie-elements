@@ -229,7 +229,7 @@ export class RespAreaToolbar extends React.Component {
   };
 
   render() {
-    const { classes, choices } = this.props;
+    const { classes, choices, spellCheck } = this.props;
     const { respAreaMarkup, toolbarStyle } = this.state;
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || []).filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
@@ -274,6 +274,7 @@ export class RespAreaToolbar extends React.Component {
             activePlugins={filteredDefaultPlugins}
             pluginProps={labelPlugins}
             onBlur={this.onBlur}
+            spellCheck={spellCheck}
           />
           <i
             style={{

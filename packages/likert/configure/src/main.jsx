@@ -209,9 +209,11 @@ const Design = withStyles(styles)(props => {
     prompt = {},
     teacherInstructions = {},
     scoringType = {},
+    spellCheck = {}
   } = configuration || {};
   const {
-    teacherInstructionsEnabled
+    teacherInstructionsEnabled,
+    spellCheckEnabled,
   } = model || {};
 
   const valuesMap = buildValuesMap(model);
@@ -228,6 +230,8 @@ const Design = withStyles(styles)(props => {
             groups={{
               Properties: {
                 teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
                 scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
               }
             }}
@@ -252,6 +256,7 @@ const Design = withStyles(styles)(props => {
                 onChange={onTeacherInstructionsChanged}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -263,6 +268,7 @@ const Design = withStyles(styles)(props => {
               onChange={onPromptChanged}
               imageSupport={imageSupport}
               nonEmpty={false}
+              spellCheck={spellCheckEnabled}
               disableUnderline
             />
           </InputContainer>
@@ -290,6 +296,7 @@ const Design = withStyles(styles)(props => {
                       })
                     }
                     imageSupport={imageSupport}
+                    spellCheck={spellCheckEnabled}
                   />
                 </InputContainer>
 

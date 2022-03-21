@@ -27,6 +27,11 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Rationale",
               "settings": true,
             },
+            "spellCheck": Object {
+              "enabled": true,
+              "label": "Spellcheck",
+              "settings": true,
+            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -43,6 +48,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
@@ -434,6 +440,11 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Rationale",
               "settings": true,
             },
+            "spellCheck": Object {
+              "enabled": true,
+              "label": "Spellcheck",
+              "settings": true,
+            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -450,6 +461,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "choiceRationaleEnabled": undefined,
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {

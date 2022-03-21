@@ -12,12 +12,18 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    spellCheckEnabled:false,
     toolbarEditorPosition: 'bottom'
   },
   configuration: {
     dimensions: {
       settings: true,
       label: 'Text-Entry Display Size'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     equationEditor: {
       settings: false,

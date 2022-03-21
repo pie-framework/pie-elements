@@ -112,11 +112,12 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       coordinatesOnHover = {},
+      spellCheck = {},
       prompt = {},
       authoring = {}
     } = configuration || {};
     log('[render] model', model);
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
 
     return (
@@ -151,6 +152,8 @@ export class Configure extends React.Component {
                   toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
+                spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['dichotomous', 'partial scoring'])
@@ -179,6 +182,7 @@ export class Configure extends React.Component {
                 onChange={this.onTeacherInstructionsChange}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -194,6 +198,7 @@ export class Configure extends React.Component {
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
                 disableUnderline
               />
             </InputContainer>
@@ -209,6 +214,7 @@ export class Configure extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}

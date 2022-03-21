@@ -10,6 +10,10 @@ The question prompt or item stem
 
 Indicates if Rationale is enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `teacherInstructionsEnabled` (boolean)
 
 Indicates if Teacher Instructions are enabled

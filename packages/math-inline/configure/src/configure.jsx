@@ -73,10 +73,11 @@ export class Configure extends React.Component {
       prompt = {},
       scoringType = {},
       ignoreOrder = {},
-      allowTrailingZeros={}
+      allowTrailingZeros={},
+      spellCheck = {}
     } = configuration || {};
     log('[render] model', model);
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled } = model || {};
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, feedbackEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -112,6 +113,8 @@ export class Configure extends React.Component {
                   studentInstructionsEnabled: studentInstructions.settings &&
                     toggle(studentInstructions.label),
                   rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
                   scoringType: scoringType.settings &&
                     radio(scoringType.label, ['auto', 'rubric']),
                   'ignoreOrder.enabled':
@@ -134,6 +137,7 @@ export class Configure extends React.Component {
                     imageSupport={imageSupport}
                     nonEmpty={false}
                     toolbarOpts={toolbarOpts}
+                    spellCheck={spellCheckEnabled}
                   />
                 </InputContainer>
               )}
@@ -146,6 +150,7 @@ export class Configure extends React.Component {
                 rationaleEnabled={rationaleEnabled}
                 promptEnabled={promptEnabled}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
               {
                 feedbackEnabled && (

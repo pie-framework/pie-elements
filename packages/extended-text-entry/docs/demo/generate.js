@@ -9,5 +9,6 @@ exports.model = (id, element) => ({
   promptEnabled: true,
   mathInput: true,
   playersToolbarPosition: 'bottom',
-  toolbarEditorPosition: 'bottom'
+  toolbarEditorPosition: 'bottom',
+  spellCheckEnabled: "false"
 });

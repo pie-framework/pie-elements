@@ -13,6 +13,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     backgroundImage: {
       settings: true,
       label: 'Background Image'
