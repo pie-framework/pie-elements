@@ -212,7 +212,14 @@ exports[`Container snapshot renders 1`] = `
         />
       </div>
     </div>
-    <div>
+    <div
+      style={
+        Object {
+          "height": NaN,
+          "maxHeight": NaN,
+        }
+      }
+    >
       <WithStyles(DrawableMain)
         TextEntry={
           TextDrawable {
@@ -240,6 +247,7 @@ exports[`Container snapshot renders 1`] = `
         onSessionChange={[MockFunction]}
         outlineColor="black"
         paintColor="red"
+        scale={1}
         session={Object {}}
         toolActive={
           Object {
@@ -466,7 +474,14 @@ exports[`Container snapshot renders disabled 1`] = `
         />
       </div>
     </div>
-    <div>
+    <div
+      style={
+        Object {
+          "height": NaN,
+          "maxHeight": NaN,
+        }
+      }
+    >
       <WithStyles(DrawableMain)
         TextEntry={
           TextDrawable {
@@ -495,6 +510,7 @@ exports[`Container snapshot renders disabled 1`] = `
         onSessionChange={[MockFunction]}
         outlineColor="black"
         paintColor="red"
+        scale={1}
         session={Object {}}
         toolActive={
           Object {

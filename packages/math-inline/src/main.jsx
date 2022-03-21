@@ -516,12 +516,14 @@ export class Main extends React.Component {
             </React.Fragment>
           )
         }
-        {displayNote && (
-          <div
-            className={classes.note}
-            dangerouslySetInnerHTML={{ __html: `<strong>Note:</strong> ${note}` }}
-          />
-        )}
+        {
+          viewMode && displayNote && (
+            <div
+              className={classes.note}
+              dangerouslySetInnerHTML={{__html: `<strong>Note:</strong> ${note}`}}
+            />
+          )
+        }
       </div>
     );
 
@@ -567,6 +569,18 @@ export class Main extends React.Component {
                   }}
                 >
                   <PreviewPrompt prompt={rationale} />
+                </Collapsible>,
+                <br key="br"/>,
+              ]}
+              {displayNote && hasText(note) && [
+                <Collapsible
+                  key="collapsible"
+                  labels={{
+                    hidden: 'Show Note',
+                    visible: 'Hide Note',
+                  }}
+                >
+                  <PreviewPrompt prompt={note} />
                 </Collapsible>,
                 <br key="br"/>,
               ]}

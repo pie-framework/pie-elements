@@ -38,6 +38,7 @@ export class Container extends Component {
     const TextEntry = new DrawableText();
 
     this.state = {
+      scale: 1,
       drawableDimensions: {
         height: 0,
         width: 0
@@ -81,12 +82,42 @@ export class Container extends Component {
 
   componentDidMount() {
     this.setDimensions();
+
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach(() => {
+        const target = document.getElementById('question-container')?.style?.cssText
+        const zoom = target?.substring(
+          target.indexOf('--pie-zoom') + 11,
+          target.lastIndexOf('%')
+        );
+        const zoomParsed = zoom?.replace(/\s/g, '');
+
+      if (zoomParsed) {
+          const newScale = parseFloat(zoomParsed) / 100;
+          if (newScale !== this.state.scale) {
+            this.setState({
+              scale: parseFloat(zoomParsed) / 100,
+            })
+          }
+        } else if (!zoomParsed && this.state.scale !== 1) {
+          this.setState({
+            scale: 1,
+          });
+        }
+      });
+    });
+
+    const target = document.getElementById('question-container');
+    if (target) {
+      this.observer.observe(target, { attributes : true, attributeFilter : ['style'] })
+    }
   }
 
   componentWillUnmount() {
     const { TextEntry } = this.state;
 
     TextEntry.removeEventListeners();
+    this.observer?.disconnect();
   }
 
   handleMakeToolActive(tool) {
@@ -147,6 +178,8 @@ export class Container extends Component {
       TextEntry
     } = this.state;
 
+    const heightToUse = drawableDimensions * this.state.scale;
+
     return (
       <div className={classes.base}>
         <DrawablePalette
@@ -187,8 +220,10 @@ export class Container extends Component {
               this.drawable = drawable;
             }}
             className={classes.drawableHeight}
+            style={{ height: heightToUse, maxHeight: heightToUse }}
           >
             <DrawableMain
+              scale={this.state.scale}
               session={session}
               disabled={disabled}
               onSessionChange={onSessionChange}

@@ -117,6 +117,7 @@ export class Root extends React.Component {
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
                   toolbarOpts={toolbarOpts}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}

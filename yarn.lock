@@ -2123,10 +2123,10 @@
     chevrotain "^3.0.1"
     debug "^3.1.0"
 
-"@pie-framework/material-ui-calculator@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@pie-framework/material-ui-calculator/-/material-ui-calculator-3.1.1.tgz#11ba5e0cc524cc82e01bd58b818a7af8021da972"
-  integrity sha512-KWNUgHF1TCeraQJiP2Ov5vtM/TuICbFHoOJp7qai62Q5I+HX4NtB5kRDyjUcRWzpOCtMjfoA28mVHsRlkq9siA==
+"@pie-framework/material-ui-calculator@^3.1.5":
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/@pie-framework/material-ui-calculator/-/material-ui-calculator-3.1.5.tgz#648583d060c8491bb44208696847ea97fe178f1e"
+  integrity sha512-rdcWKKS0L5E9FXhIQdNeVrl5WXUiqb2PbUDvXx/c3dLizqwt3/o7XrYqCc9Z9q6ER5iJIItvHcQE50Ek4mi2jg==
   dependencies:
     "@material-ui/core" "^3.9.2"
     "@material-ui/icons" "^3.0.2"
@@ -2135,10 +2135,10 @@
     invariant "^2.2.4"
     lodash "^4.17.10"
 
-"@pie-framework/math-validation@^1.0.8":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.1.tgz#d58cf3ccd146fef31858623fa69ac098b7cee9bf"
-  integrity sha512-+mIU44aJbKe4BKoUMTYMA64UGfmcn760LSpQaxajiUDsn/leyd70z1IxwpUZSeCvHZiVASh2S36tSPQTrYngmg==
+"@pie-framework/math-validation@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@pie-framework/math-validation/-/math-validation-1.2.2.tgz#34402109b073f014287eb6c9451188819cc76645"
+  integrity sha512-QgLAZmi15SWL6jxUpYSOwhPODRUjuN2MCuC1My8HxoqyPoruUB6jcz8iton1t3wUOPG+eIp78v4GmU2KqHrokg==
   dependencies:
     lodash "^4.17.21"
     mathjs "^9.4.2"

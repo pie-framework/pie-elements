@@ -5,12 +5,13 @@ import { withStyles } from '@material-ui/core/styles';
 const DrawableImage = ({ classes, url, dimensions: { height, width } }) => (
   <div className={classes.imageContainer}>
     <img
+      alt="drawing-response-image"
       className={classes.image}
       src={url}
       style={{
         height,
         maxWidth: width,
-        maxHeight: 350,
+        maxHeight: height,
         width,
       }}
     />
