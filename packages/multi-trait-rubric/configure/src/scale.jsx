@@ -237,8 +237,10 @@ export class Scale extends React.Component {
       showLevelTagInput,
       showScorePointLabels,
       enableDragAndDrop,
+      spellCheck,
       width
     } = this.props || {};
+
     const {
       maxPoints,
       scorePointsLabels,
@@ -293,6 +295,7 @@ export class Scale extends React.Component {
           showDeleteScaleModal={this.showDeleteScaleModal}
           currentPosition={currentPosition}
           secondaryBlockWidth={secondaryBlockWidth}
+          spellCheck={spellCheck}
         />
 
         {traits.map((trait, index) => (
@@ -310,6 +313,7 @@ export class Scale extends React.Component {
             currentPosition={currentPosition}
             enableDragAndDrop={enableDragAndDrop}
             secondaryBlockWidth={secondaryBlockWidth}
+            spellCheck={spellCheck}
           />
         ))}
 

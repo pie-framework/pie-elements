@@ -64,6 +64,11 @@ export default {
       settings: true,
       label: 'Rationale'
     },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     scoringType: {
       settings: false,
       label: 'Scoring Type'

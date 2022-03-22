@@ -59,6 +59,11 @@ export default {
         <br/>
         All the Labels and Descriptions for scores above Max Point will be deleted.`
     },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     showExcludeZero: {
       settings: true,
       label: 'Exclude Zero',

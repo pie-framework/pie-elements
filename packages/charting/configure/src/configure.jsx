@@ -14,26 +14,26 @@ import ChartType from './chart-type';
 const log = debug('@pie-element:graphing:configure');
 const { Panel, toggle, radio, numberFields } = settings;
 
-const styles = theme => ({
+const styles = (theme) => ({
   title: {
     fontSize: '1.1rem',
     display: 'block',
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
   },
   content: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 const charts = [
@@ -42,7 +42,7 @@ const charts = [
   chartTypes.LineDot(),
   chartTypes.LineCross(),
   chartTypes.DotPlot(),
-  chartTypes.LinePlot()
+  chartTypes.LinePlot(),
 ];
 
 export class Configure extends React.Component {
@@ -52,18 +52,22 @@ export class Configure extends React.Component {
     classes: PropTypes.object,
     imageSupport: PropTypes.object,
     model: PropTypes.object.isRequired,
-    configuration: PropTypes.object.isRequired
+    configuration: PropTypes.object.isRequired,
   };
 
   static defaultProps = { classes: {} };
 
-  onRationaleChange = rationale => this.props.onModelChanged({ ...this.props.model, rationale });
+  onRationaleChange = (rationale) =>
+    this.props.onModelChanged({ ...this.props.model, rationale });
 
-  onPromptChange = prompt => this.props.onModelChanged({ ...this.props.model, prompt });
+  onPromptChange = (prompt) =>
+    this.props.onModelChanged({ ...this.props.model, prompt });
 
-  onTeacherInstructionsChange = teacherInstructions => this.props.onModelChanged({ ...this.props.model, teacherInstructions });
+  onTeacherInstructionsChange = (teacherInstructions) =>
+    this.props.onModelChanged({ ...this.props.model, teacherInstructions });
 
-  onChartTypeChange = chartType => this.props.onModelChanged({ ...this.props.model, chartType });
+  onChartTypeChange = (chartType) =>
+    this.props.onModelChanged({ ...this.props.model, chartType });
 
   render() {
     const {
@@ -72,7 +76,7 @@ export class Configure extends React.Component {
       configuration,
       onConfigurationChanged,
       onModelChanged,
-      imageSupport
+      imageSupport,
     } = this.props;
     log('[render] model', model);
     const { graph } = model;
@@ -83,8 +87,10 @@ export class Configure extends React.Component {
       studentInstructions = {},
       teacherInstructions = {},
       prompt = {},
+      spellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
+      model || {};
 
     return (
       <layout.ConfigLayout
@@ -102,15 +108,15 @@ export class Configure extends React.Component {
                     label: 'Width',
                     suffix: 'px',
                     min: 400,
-                    max: 700
+                    max: 700,
                   },
                   height: {
                     label: 'Height',
                     suffix: 'px',
                     min: 400,
-                    max: 700
-                  }
-                })
+                    max: 700,
+                  },
+                }),
               },
               Properties: {
                 teacherInstructionsEnabled:
@@ -119,14 +125,17 @@ export class Configure extends React.Component {
                 studentInstructionsEnabled:
                   studentInstructions.settings &&
                   toggle(studentInstructions.label),
-                rationaleEnabled:
-                  rationale.settings && toggle(rationale.label),
-                promptEnabled:
-                  prompt.settings && toggle(prompt.label),
+                rationaleEnabled: rationale.settings && toggle(rationale.label),
+                spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label),
+                promptEnabled: prompt.settings && toggle(prompt.label),
                 scoringType:
                   scoringType.settings &&
-                  radio(scoringType.label, ['all or nothing', 'partial scoring'])
-              }
+                  radio(scoringType.label, [
+                    'all or nothing',
+                    'partial scoring',
+                  ]),
+              },
             }}
           />
         }
@@ -134,20 +143,25 @@ export class Configure extends React.Component {
         <div className={classes.content}>
           <Typography component="div" type="body1">
             <span>
-              This interaction asks a student to draw a chart that meets specific criteria.
-              The student will draw a category on the chart by clicking Add Category
-              and dragging the top part of the category.
+              This interaction asks a student to draw a chart that meets
+              specific criteria. The student will draw a category on the chart
+              by clicking Add Category and dragging the top part of the
+              category.
             </span>
           </Typography>
 
           {teacherInstructionsEnabled && (
-            <InputContainer label={teacherInstructions.label} className={classes.promptHolder}>
+            <InputContainer
+              label={teacherInstructions.label}
+              className={classes.promptHolder}
+            >
               <EditableHtml
                 className={classes.prompt}
                 markup={model.teacherInstructions || ''}
                 onChange={this.onTeacherInstructionsChange}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -163,6 +177,7 @@ export class Configure extends React.Component {
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
                 disableUnderline
               />
             </InputContainer>
@@ -178,13 +193,14 @@ export class Configure extends React.Component {
                 markup={model.rationale || ''}
                 onChange={this.onRationaleChange}
                 imageSupport={imageSupport}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
 
           <ChartType
             value={model.chartType}
-            onChange={e => this.onChartTypeChange(e.target.value)}
+            onChange={(e) => this.onChartTypeChange(e.target.value)}
           />
 
           <ChartingConfig

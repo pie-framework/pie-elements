@@ -63,6 +63,16 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
+    "backgroundImageEnabled": {
+      "description": "Indicates if Background Image is enabled",
+      "type": "boolean",
+      "title": "backgroundImageEnabled"
+    },
     "toolbarEditorPosition": {
       "description": "Indicates the editor's toolbar position which can be 'bottom' or 'top'",
       "default": ": 'bottom'",
@@ -85,9 +95,11 @@
     }
   },
   "required": [
+    "backgroundImageEnabled",
     "element",
     "id",
     "imageDimensions",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

@@ -51,9 +51,10 @@ const Design = withStyles(styles)(props => {
     prompt = {},
     teacherInstructions = {},
     scoringType = {},
+    spellCheck = {}
   } = configuration || {};
   const {
-    teacherInstructionsEnabled
+    teacherInstructionsEnabled, spellCheckEnabled
   } = model || {};
 
   return (
@@ -68,6 +69,8 @@ const Design = withStyles(styles)(props => {
             groups={{
               Properties: {
                 teacherInstructionsEnabled: teacherInstructions.settings && toggle(teacherInstructions.label),
+                spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
                 scoringType: scoringType.settings && radio(scoringType.label, ['auto', 'rubric'])
               }
             }}
@@ -92,6 +95,7 @@ const Design = withStyles(styles)(props => {
                 onChange={onTeacherInstructionsChanged}
                 imageSupport={imageSupport}
                 nonEmpty={false}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -103,6 +107,7 @@ const Design = withStyles(styles)(props => {
               onChange={onPromptChanged}
               imageSupport={imageSupport}
               nonEmpty={!prompt.settings}
+              spellCheck={spellCheckEnabled}
               disableUnderline
             />
           </InputContainer>

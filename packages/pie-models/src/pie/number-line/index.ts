@@ -134,7 +134,7 @@ interface NumberLineDomainConfiguration {
   initialElements: ResponseArray;
 
   /** Indicates the fractional step between 2 labeled ticks */
-  labelStep: string
+  labelStep: string;
 }
 
 /**
@@ -157,6 +157,9 @@ export interface NumberLinePie extends PieModel {
   /**  The question prompt or item stem */
   prompt?: string;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /**
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
@@ -175,4 +178,9 @@ export interface NumberLineConfigure
    * Configuration for the prompt
    */
   prompt?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 }

@@ -27,7 +27,8 @@ class DrawingResponseComponent extends React.Component {
         imageUrl,
         prompt,
         mode,
-        teacherInstructions
+        teacherInstructions,
+        backgroundImageEnabled = true
       },
       session,
       onSessionChange,
@@ -64,6 +65,7 @@ class DrawingResponseComponent extends React.Component {
           isEvaluateMode={isEvaluateMode}
           imageDimensions={imageDimensions}
           imageUrl={imageUrl}
+          backgroundImageEnabled={backgroundImageEnabled}
           disabled={disabled}
         />
       </div>

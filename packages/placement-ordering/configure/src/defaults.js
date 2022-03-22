@@ -23,6 +23,7 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    spellCheckEnabled:false,
     toolbarEditorPosition: 'bottom'
   },
   configuration: {
@@ -82,6 +83,11 @@ export default {
     targetLabel: {
       settings: true,
       label: 'Target label',
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     teacherInstructions: {
       settings: true,

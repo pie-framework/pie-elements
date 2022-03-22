@@ -189,7 +189,8 @@ class AnswerConfigBlock extends React.Component {
       onAddRow,
       imageSupport,
       configuration,
-      toolbarOpts
+      toolbarOpts,
+      spellCheck
     } = this.props;
     const { headers = {} } = configuration || {};
     const { dialog } = this.state;
@@ -226,6 +227,7 @@ class AnswerConfigBlock extends React.Component {
                     pluginProps={labelPlugins}
                     autoWidthToolbar
                     allowValidation
+                    spellCheck={spellCheck}
                   />
                 </div>
               ))}
@@ -248,6 +250,7 @@ class AnswerConfigBlock extends React.Component {
               imageSupport={imageSupport}
               enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheck}
             />
           ))}
           <AddRow onAddClick={onAddRow} />

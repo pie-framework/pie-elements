@@ -144,6 +144,10 @@ Indicates the fractional step between 2 labeled ticks
 
 The question prompt or item stem
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled
+
 # `toolbarEditorPosition` (string, enum)
 
 Indicates the editor's toolbar position which can be 'bottom' or 'top'

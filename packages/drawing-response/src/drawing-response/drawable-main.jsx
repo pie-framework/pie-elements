@@ -90,13 +90,13 @@ export class DrawableMain extends React.Component {
 
   handleMouseDown = e => {
     const { newDrawable, textIsSelected } = this.state;
-    const { toolActive, fillColor, outlineColor } = this.props;
+    const { toolActive, fillColor, outlineColor, scale } = this.props;
 
     if (newDrawable.length === 0 && !textIsSelected) {
       const { x, y } = e.target.getStage().getPointerPosition();
       const newDrawable = factory(toolActive.type, {
-        startx: x,
-        starty: y,
+        startx: x / scale,
+        starty: y / scale,
         fillColor,
         outlineColor,
         createdAt: new Date()
@@ -110,12 +110,13 @@ export class DrawableMain extends React.Component {
 
   handleMouseUp = e => {
     const { newDrawable, drawables } = this.state;
+    const { scale } = this.props;
 
     if (newDrawable.length === 1) {
       const { x, y } = e.target.getStage().getPointerPosition();
       const drawableToAdd = newDrawable[0];
 
-      drawableToAdd.registerMovement(x, y);
+      drawableToAdd.registerMovement(x / scale, y / scale);
       drawables.push(drawableToAdd);
 
       this.setState(
@@ -130,12 +131,13 @@ export class DrawableMain extends React.Component {
 
   handleMouseMove = e => {
     const { newDrawable } = this.state;
+    const { scale } = this.props;
 
     if (newDrawable.length === 1) {
       const { x, y } = e.target.getStage().getPointerPosition();
       const updatedNewDrawable = newDrawable[0];
 
-      updatedNewDrawable.registerMovement(x, y);
+      updatedNewDrawable.registerMovement(x / scale, y / scale);
 
       this.setState({
         newDrawable: [updatedNewDrawable]
@@ -185,7 +187,9 @@ export class DrawableMain extends React.Component {
       paintColor,
       outlineColor,
       TextEntry,
-      toolActive: { type }
+      backgroundImageEnabled = true,
+      toolActive: { type },
+      scale
     } = this.props;
     const { isOver, newDrawable } = this.state;
 
@@ -205,7 +209,8 @@ export class DrawableMain extends React.Component {
       handleSessionChange: this.handleSessionChange,
       stage: this.stage,
       onMouseOverElement: this.onMouseOverElement,
-      onMouseOutElement: this.onMouseOutElement
+      onMouseOutElement: this.onMouseOutElement,
+      scale
     };
 
     let listeners = {};
@@ -221,6 +226,9 @@ export class DrawableMain extends React.Component {
       }
     }
 
+    const imageHeight = imageDimensions.height * scale;
+    const imageWidth = imageDimensions.width * scale;
+
     return (
       <div>
         <div className={classes.undoControls}>
@@ -228,13 +236,17 @@ export class DrawableMain extends React.Component {
           <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all" />
         </div>
         <div className={classes.base}>
-          {imageUrl && (
-            <ImageBackground dimensions={imageDimensions} url={imageUrl} />
+          {backgroundImageEnabled && imageUrl && (
+            <ImageBackground
+              dimensions={{height: imageHeight, width: imageWidth}}
+              url={imageUrl}/>
           )}
 
           {TextEntry.renderTextareas()}
 
           <Stage
+            scaleX={scale}
+            scaleY={scale}
             ref={ref => {
               this.stage = ref;
             }}
@@ -297,7 +309,9 @@ DrawableMain.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   TextEntry: PropTypes.object.isRequired,
   toolActive: PropTypes.object.isRequired,
-  session: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired,
+  backgroundImageEnabled: PropTypes.bool.isRequired,
+  scale: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(DrawableMain);

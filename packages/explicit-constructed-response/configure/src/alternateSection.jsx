@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
+import { getAdjustedLength } from './markupUtils';
 
 const styles = () => ({
   altChoices: {
@@ -76,7 +77,7 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete } = this.props;
+    const { classes, onDelete, spellCheck } = this.props;
 
     return (
       <div
@@ -91,6 +92,8 @@ export class Choice extends React.Component {
           value={value}
           onChange={this.onChange}
           labelWidth={0}
+          disableUnderline
+          spellCheck = {spellCheck}
         />
         <IconButton
           aria-label="delete"
@@ -178,7 +181,7 @@ export class AlternateSection extends React.Component {
     });
 
     if (newLength > maxLength || newLength + 10 <= maxLength) {
-      lengthChanged(newLength);
+      lengthChanged(getAdjustedLength(newLength));
     }
   };
 
@@ -216,7 +219,8 @@ export class AlternateSection extends React.Component {
       selectChoices,
       maxLength,
       showMaxLength,
-      value
+      value,
+      spellCheck
     } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
@@ -279,6 +283,7 @@ export class AlternateSection extends React.Component {
                 markup={c.label}
                 onChange={val => this.onChoiceChanged(c, val, index)}
                 onDelete={() => this.onRemoveChoice(c)}
+                spellCheck = {spellCheck}
               />
             ))
           }

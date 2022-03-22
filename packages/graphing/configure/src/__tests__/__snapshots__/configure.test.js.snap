@@ -52,6 +52,11 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Scoring Type",
             "settings": false,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -81,6 +86,7 @@ exports[`Configure renders snapshot 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
+            "spellCheckEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },

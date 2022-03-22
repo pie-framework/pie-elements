@@ -33,6 +33,11 @@
       "type": "boolean",
       "title": "excludeZero"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "scales": {
       "description": "scales",
       "type": "array",
@@ -125,7 +130,8 @@
   "required": [
     "element",
     "id",
-    "scales"
+    "scales",
+    "spellCheckEnabled"
   ],
   "definitions": {
     "DialogContent": {

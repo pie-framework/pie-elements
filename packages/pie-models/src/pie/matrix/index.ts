@@ -1,7 +1,6 @@
-import {PieModel} from '../../PieModel';
-import {PromptConfig} from '../../PromptConfig';
-import {ConfigureProp} from '../ConfigurationProp';
-
+import { PieModel } from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { ConfigureProp } from '../ConfigurationProp';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -21,11 +20,18 @@ export interface MatrixPie extends PieModel {
   /** Indicates the matrix values*/
   matrixValue?: Object[];
   /** Indicates the matrix label type */
-  labelType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
+  labelType?:
+    | 'agreement'
+    | 'frequency'
+    | 'yesNo'
+    | 'importance'
+    | 'likelihood'
+    | 'like';
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
 }
-
 
 /**
  * Config Object for @pie-elements/matrix
@@ -36,4 +42,9 @@ export interface MatrixConfigure extends PromptConfig {
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 }

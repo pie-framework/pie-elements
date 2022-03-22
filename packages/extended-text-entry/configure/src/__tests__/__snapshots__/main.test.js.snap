@@ -33,6 +33,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Prompt",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -56,6 +61,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "mathInput": undefined,
             "multiple.enabled": false,
             "promptEnabled": undefined,
+            "spellCheckEnabled": undefined,
           },
         }
       }
@@ -71,6 +77,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "prompt": "This is the question prompt",
           "promptEnabled": true,
           "rationaleEnabled": true,
+          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
@@ -90,6 +97,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
+        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -106,6 +114,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup="This is the question prompt"
         nonEmpty={false}
         onChange={[Function]}
+        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",

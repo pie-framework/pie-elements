@@ -88,7 +88,8 @@ export class AlternateResponses extends React.Component {
       classes,
       className,
       categories,
-      imageSupport
+      imageSupport,
+      spellCheck
     } = this.props;
     const { categoriesPerRow } = model;
 
@@ -104,6 +105,7 @@ export class AlternateResponses extends React.Component {
               key={index}
               imageSupport={imageSupport}
               category={category}
+              spellCheck={spellCheck}
               onAddChoice={this.addChoiceToCategory}
               onDeleteChoice={(choice, choiceIndex) =>
                 this.deleteChoiceFromCategory(category, choice, choiceIndex)

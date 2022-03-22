@@ -65,6 +65,11 @@
       "type": "boolean",
       "title": "teacherInstructionsEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "id": {
       "description": "Identifier to identify the Pie Element in html markup, Must be unique within a pie item config.",
       "type": "string",
@@ -80,6 +85,7 @@
     "choices",
     "element",
     "id",
+    "spellCheckEnabled",
     "teacherInstructionsEnabled"
   ],
   "definitions": {

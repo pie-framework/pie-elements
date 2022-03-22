@@ -1,9 +1,8 @@
-import {PromptConfig} from '../../PromptConfig';
-import {CommonConfigSettings} from '../../CommonConfigSettings';
-import {PieModel} from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { CommonConfigSettings } from '../../CommonConfigSettings';
+import { PieModel } from '../../PieModel';
 import { DefaultFeedbackType } from '../../Feedback';
 import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
-
 
 interface Dimensions {
   /**
@@ -26,9 +25,9 @@ interface Dimensions {
  */
 
 /**
-* Model for the @pie-elements/extended-text-entry Interaction
-* @additionalProperties false
-*/
+ * Model for the @pie-elements/extended-text-entry Interaction
+ * @additionalProperties false
+ */
 export interface ExtendedTextEntryPie extends PieModel {
   /**
    * Dimensions the editor should take
@@ -36,7 +35,15 @@ export interface ExtendedTextEntryPie extends PieModel {
   dimensions: Dimensions;
 
   /** Indicates if equation editor is enabled */
-  equationEditor?: 'miscellaneous' | 'statistics' | 'advanced-algebra' | 'geometry' | 'Grade 8 - HS' | 'Grade 6 - 7' | 'Grade 3 - 5' | 'Grade 1 - 2';
+  equationEditor?:
+    | 'miscellaneous'
+    | 'statistics'
+    | 'advanced-algebra'
+    | 'geometry'
+    | 'Grade 8 - HS'
+    | 'Grade 6 - 7'
+    | 'Grade 3 - 5'
+    | 'Grade 1 - 2';
 
   /** Feedback configuration */
   feedback?: DefaultFeedbackType;
@@ -68,21 +75,24 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
   /** Indicates if Teacher Instructions are enabled */
-  teacherInstructionsEnabled: boolean;  /**
+  teacherInstructionsEnabled: boolean /**
 
    * Indicates the editor's toolbar position which can be 'bottom' or 'top'
    * @default: 'bottom'
-   */
+   */;
   toolbarEditorPosition?: 'bottom' | 'top';
 
   /**
-  * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
-  * @default: 'bottom'
-  */
+   * Indicates the editor's toolbar position for the player, which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
   playersToolbarPosition?: 'bottom' | 'top';
 }
 
@@ -90,7 +100,9 @@ export interface ExtendedTextEntryPie extends PieModel {
  * Config Object for @pie-elements/extended-text-entry
  * @additionalProperties false
  */
-export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSettings {
+export interface ExtendedTextEntryConfigure
+  extends PromptConfig,
+    CommonConfigSettings {
   /**
    * Equation Editor configuration
    */
@@ -117,8 +129,12 @@ export interface ExtendedTextEntryConfigure extends PromptConfig, CommonConfigSe
   teacherInstructions?: ConfigureProp;
 
   /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
+
+  /**
    * Dimensions configuration
    */
   dimensions?: ConfigureProp;
-
 }
