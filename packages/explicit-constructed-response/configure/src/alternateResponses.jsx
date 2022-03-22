@@ -153,7 +153,7 @@ export class AlternateResponses extends React.Component {
 
   render() {
     const { choices } = this.state;
-    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }} = this.props
+    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }, spellCheck} = this.props
 
     return (
       <div>
@@ -174,6 +174,7 @@ export class AlternateResponses extends React.Component {
                 choices={c}
                 maxLength={maxLengthPerChoice[key]}
                 showMaxLength={maxLengthPerChoiceEnabled}
+                spellCheck = {spellCheck}
               />
             );
           }
@@ -187,6 +188,7 @@ export class AlternateResponses extends React.Component {
             choiceChanged={choice => this.onChoiceChanged(choice)}
             choiceRemoved={value => this.onChoiceRemoved(value)}
             selectChoices={this.getRemainingChoices()}
+            spellCheck = {spellCheck}
           />
         }
       </div>

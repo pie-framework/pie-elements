@@ -67,6 +67,7 @@ export class Choice extends React.Component {
       connectDragSource,
       connectDragPreview,
       imageSupport,
+      spellCheck,
       toolbarOpts
     } = this.props;
 
@@ -94,6 +95,7 @@ export class Choice extends React.Component {
               onChange={this.changeContent}
               onDelete={onDelete}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheck}
             />
           </span>
         )}

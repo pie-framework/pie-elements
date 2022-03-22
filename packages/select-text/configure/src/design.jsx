@@ -155,10 +155,11 @@ export class Design extends React.Component {
       studentInstructions = {},
       rationale = {},
       scoringType = {},
+      spellCheck = {},
       highlightChoices = {}
     } = configuration || {};
     const {
-      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled
+      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled
     } = model || {};
     const toolbarOpts = {};
 
@@ -201,6 +202,8 @@ export class Design extends React.Component {
                   toggle(studentInstructions.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
+                spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric'])
@@ -222,6 +225,7 @@ export class Design extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -237,6 +241,7 @@ export class Design extends React.Component {
                 onChange={this.onPromptChanged}
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -252,6 +257,7 @@ export class Design extends React.Component {
                 onChange={this.onRationaleChanged}
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -263,6 +269,7 @@ export class Design extends React.Component {
               multiline
               value={textValue}
               onChange={this.changeText}
+              spellCheck={spellCheckEnabled}
             />
           )}
 

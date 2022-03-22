@@ -105,9 +105,10 @@ export class Design extends React.Component {
       teacherInstructions = {},
       studentInstructions = {},
       rationale = {},
+      spellCheck = {},
       scoringType = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
     const {
@@ -165,6 +166,8 @@ export class Design extends React.Component {
                   toggle(studentInstructions.label),
                 rationaleEnabled: rationale.settings && toggle(rationale.label),
                 promptEnabled: prompt.settings && toggle(prompt.label),
+                spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
                 scoringType:
                   scoringType.settings &&
                   radio(scoringType.label, ['auto', 'rubric'])
@@ -185,6 +188,7 @@ export class Design extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
           </InputContainer>
         )}
@@ -201,6 +205,7 @@ export class Design extends React.Component {
                 onChange={this.onPromptChange}
                 imageSupport={imageSupport}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
             {rationaleEnabled && (
@@ -214,6 +219,7 @@ export class Design extends React.Component {
                   onChange={this.onRationaleChange}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -236,6 +242,7 @@ export class Design extends React.Component {
                   markup={model.choiceLabel}
                   onChange={this.onChoiceAreaLabelChange}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -254,6 +261,7 @@ export class Design extends React.Component {
                   markup={model.targetLabel}
                   onChange={this.onAnswerAreaLabelChange}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -275,6 +283,7 @@ export class Design extends React.Component {
                 placementArea={model.placementArea}
                 singularChoiceLabel={singularLabel}
                 pluralChoiceLabel={pluralLabel}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}

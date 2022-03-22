@@ -1,17 +1,17 @@
-import {PieModel} from '../../PieModel';
+import { PieModel } from '../../PieModel';
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { ConfigureProp } from '../ConfigurationProp';
 
 export interface Choice {
-    /** The value for the choice */
-    value: string;
+  /** The value for the choice */
+  value: string;
 
-    /** The label of the choice */
-    label: string;
+  /** The label of the choice */
+  label: string;
 
-    /** Indicates if choice is correct */
-    correct?: boolean;
+  /** Indicates if choice is correct */
+  correct?: boolean;
 }
 
 export interface CorrectResponse {
@@ -24,7 +24,7 @@ enum ChoicesPosition {
   above = 'above',
   below = 'below',
   left = 'left',
-  right = 'right'
+  right = 'right',
 }
 
 /** NOTE: teacherInstructions, studentInstructions, rationale & rubric
@@ -37,25 +37,28 @@ enum ChoicesPosition {
  * @additionalProperties false
  */
 export interface DragInTheBlankPie extends PieModel {
-    /** Array of all the available choices */
-    choices: Choice[];
+  /** Array of all the available choices */
+  choices: Choice[];
 
-    /**
-     * Indicates where the choices should be presented in relation to the categories.
-     */
-    choicesPosition?: ChoicesPosition;
+  /**
+   * Indicates where the choices should be presented in relation to the categories.
+   */
+  choicesPosition?: ChoicesPosition;
 
-    /** Object containing the correct answer for each response area */
-    correctResponse: CorrectResponse;
+  /** Object containing the correct answer for each response area */
+  correctResponse: CorrectResponse;
 
-    /** Array of alternatives correct choices */
-    alternateResponses?: AlternateResponse[];
+  /** Array of alternatives correct choices */
+  alternateResponses?: AlternateResponse[];
 
-    /** Indicates if duplicates are enabled */
-    duplicates?: boolean;
+  /** Indicates if duplicates are enabled */
+  duplicates?: boolean;
 
-    /** The markup for the pie-ui element */
-    markup: string;
+  /** The markup for the pie-ui element */
+  markup: string;
+
+    /** Indicates if the choices are presented in a fixed order */
+    lockChoiceOrder: boolean;
 
     /** Indicates if the choices are presented in a fixed order */
     lockChoiceOrder: boolean;
@@ -63,73 +66,82 @@ export interface DragInTheBlankPie extends PieModel {
     /** The item stem for the question */
     prompt?: string;
 
-    /**  Indicates if the prompt is enabled */
-    promptEnabled?: boolean;
+  /**  Indicates if the prompt is enabled */
+  promptEnabled?: boolean;
 
-    /** Indicates correct answer rationale */
-    rationale: string;
+  /** Indicates correct answer rationale */
+  rationale: string;
 
-    /** Indicates student instructions */
-    studentInstructions?: string;
+  /** Indicates student instructions */
+  studentInstructions?: string;
 
-    /** Indicates teacher instructions */
-    teacherInstructions?: string;
+  /** Indicates teacher instructions */
+  teacherInstructions?: string;
 
-    /** Indicates value for rubric */
-    rubric: string;
+  /** Indicates value for rubric */
+  rubric: string;
 
-    /** Indicates if Rationale are enabled */
-    rationaleEnabled: boolean;
+  /** Indicates if Rationale are enabled */
+  rationaleEnabled: boolean;
 
-    /** Indicates if Student Instructions are enabled */
-    studentInstructionsEnabled: boolean;
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
 
-    /** Indicates if Teacher Instructions are enabled */
-    teacherInstructionsEnabled: boolean;
+  /** Indicates if Student Instructions are enabled */
+  studentInstructionsEnabled: boolean;
 
-    /**
-     * Indicates the editor's toolbar position which can be 'bottom' or 'top'
-     * @default: 'bottom'
-     */
-    toolbarEditorPosition?: 'bottom' | 'top';
+  /** Indicates if Teacher Instructions are enabled */
+  teacherInstructionsEnabled: boolean;
+
+  /**
+   * Indicates the editor's toolbar position which can be 'bottom' or 'top'
+   * @default: 'bottom'
+   */
+  toolbarEditorPosition?: 'bottom' | 'top';
 }
 
 /**
  * Config Object for @pie-elements/drag-in-the-blank
  * @additionalProperties false
  */
-export interface DragInTheBlankConfigure extends PromptConfig, CommonConfigSettings {
+export interface DragInTheBlankConfigure
+  extends PromptConfig,
+    CommonConfigSettings {
+  /**
+   * Choices configuration
+   */
+  choices?: ConfigureProp;
 
-    /**
-     * Choices configuration
-     */
-    choices?: ConfigureProp;
+  /**
+   * Duplicates configuration
+   */
+  duplicates?: ConfigureProp;
 
-    /**
-     * Duplicates configuration
-     */
-    duplicates?: ConfigureProp;
+  /**
+   * Item Stem configuration
+   */
+  prompt?: ConfigureProp;
 
-    /**
-     * Item Stem configuration
-     */
-    prompt?: ConfigureProp;
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
-    /**
-     * Rationale configuration
-     */
-    rationale?: ConfigureProp;
+  /**
+   * Rationale configuration
+   */
+  rationale?: ConfigureProp;
 
-    /**
-     * Student Instructions configuration
-     */
-    studentInstructions?: ConfigureProp;
+  /**
+   * Student Instructions configuration
+   */
+  studentInstructions?: ConfigureProp;
 
-    /**
-     * Teacher Instructions configuration
-     */
-    teacherInstructions?: ConfigureProp;
+  /**
+   * Teacher Instructions configuration
+   */
+  teacherInstructions?: ConfigureProp;
 
-    /** Rubric configuration */
-    rubric?: ConfigureProp;
+  /** Rubric configuration */
+  rubric?: ConfigureProp;
 }

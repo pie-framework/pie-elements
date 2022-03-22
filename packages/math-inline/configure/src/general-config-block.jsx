@@ -339,6 +339,7 @@ class GeneralConfigBlock extends React.Component {
       responses,
       responseType,
       rationale,
+      spellCheckEnabled
     } = model;
     const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {} } = configuration || {};
 
@@ -367,6 +368,7 @@ class GeneralConfigBlock extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
           </InputContainer>
         )}
@@ -387,6 +389,7 @@ class GeneralConfigBlock extends React.Component {
               imageSupport={imageSupport}
               nonEmpty={false}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
           </InputContainer>
         )}

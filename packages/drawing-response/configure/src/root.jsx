@@ -11,22 +11,22 @@ import cloneDeep from 'lodash/cloneDeep';
 const { Panel, toggle } = settings;
 
 export class Root extends React.Component {
-  onPromptChanged = prompt => {
+  onPromptChanged = (prompt) => {
     const { model, onModelChanged } = this.props;
     const update = cloneDeep(model);
 
     onModelChanged({
       ...update,
-      prompt
+      prompt,
     });
   };
 
-  onTeacherInstructionsChanged = teacherInstructions => {
+  onTeacherInstructionsChanged = (teacherInstructions) => {
     const { model, onModelChanged } = this.props;
 
     onModelChanged({
       ...model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
@@ -35,16 +35,16 @@ export class Root extends React.Component {
 
     onModelChanged({
       ...model,
-      imageDimensions: dimensions
+      imageDimensions: dimensions,
     });
   };
 
-  onImageUpload = imageUrl => {
+  onImageUpload = (imageUrl) => {
     const { model, onModelChanged } = this.props;
 
     onModelChanged({
       ...model,
-      imageUrl
+      imageUrl,
     });
   };
 
@@ -55,11 +55,15 @@ export class Root extends React.Component {
       model,
       imageSupport,
       onConfigurationChanged,
-      onModelChanged
+      onModelChanged,
     } = this.props;
-    const { backgroundImage = {}, prompt = {}, teacherInstructions = {} } =
-      configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled } =
+    const {
+      backgroundImage = {},
+      prompt = {},
+      teacherInstructions = {},
+      spellCheck = {},
+    } = configuration || {};
+    const { teacherInstructionsEnabled, promptEnabled, spellCheckEnabled, backgroundImageEnabled } =
       model || {};
     const toolbarOpts = {};
 
@@ -83,16 +87,16 @@ export class Root extends React.Component {
               onChangeConfiguration={onConfigurationChanged}
               groups={{
                 Settings: {
-                  'backgroundImage.enabled':
-                    backgroundImage.settings &&
-                    toggle(backgroundImage.label, true),
+                  backgroundImageEnabled: backgroundImage.settings && toggle(backgroundImage.label),
                   promptEnabled: prompt.settings && toggle(prompt.label)
                 },
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings &&
-                    toggle(teacherInstructions.label)
-                }
+                    toggle(teacherInstructions.label),
+                  spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
+                },
               }}
             />
           }
@@ -109,6 +113,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -119,11 +124,13 @@ export class Root extends React.Component {
                   markup={model.prompt}
                   onChange={this.onPromptChanged}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
+                  imageSupport={imageSupport}
                 />
               </InputContainer>
             )}
 
-            {backgroundImage.enabled && (
+            {backgroundImageEnabled && (
               <div>
                 <Typography className={classes.label} variant="subheading">
                   Define Background Image
@@ -143,20 +150,20 @@ export class Root extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   base: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
   },
   label: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 4,
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   regular: {
-    marginBottom: theme.spacing.unit * 3
-  }
+    marginBottom: theme.spacing.unit * 3,
+  },
 });
 
 Root.propTypes = {
@@ -165,7 +172,7 @@ Root.propTypes = {
   model: PropTypes.object.isRequired,
   imageSupport: PropTypes.shape({
     add: PropTypes.func,
-    delete: PropTypes.func
+    delete: PropTypes.func,
   }),
   onModelChanged: PropTypes.func.isRequired,
   onConfigurationChanged: PropTypes.func.isRequired,

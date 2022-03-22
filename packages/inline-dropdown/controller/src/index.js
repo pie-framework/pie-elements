@@ -144,7 +144,7 @@ export function model(question, session, env, updateSession) {
       prompt: normalizedQuestion.promptEnabled
         ? normalizedQuestion.prompt
         : null,
-      displayType: normalizedQuestion.displayType,
+        displayType: normalizedQuestion.displayType,
       markup: normalizedQuestion.markup,
       choices,
       feedback,

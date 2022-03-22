@@ -269,9 +269,11 @@ export class Main extends React.Component {
   render() {
     const { classes, model, onChange, configuration } = this.props;
 
-    const { graph } = model;
-    const { prompt = {} } = configuration || {};
+    const { graph, spellCheckEnabled } = model;
+    const { prompt = {}, spellCheck = {} } = configuration || {};
 
+
+    console.log(spellCheckEnabled, spellCheckEnabled)
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
     );
@@ -302,6 +304,7 @@ export class Main extends React.Component {
               nonEmpty={false}
               disableUnderline
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
           </FormSection>
         )}
@@ -341,6 +344,7 @@ export class Main extends React.Component {
             markup={graph.title || ''}
             onChange={this.changeGraphTitle}
             toolbarOpts={toolbarOpts}
+            spellCheck={spellCheckEnabled}
           />
         </FormSection>
         <FormSection label={'Limits'}>

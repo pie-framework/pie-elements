@@ -8,12 +8,17 @@ export default {
     likertType: 'agreement',
     likertOrientation: 'horizontal',
     choices: [],
-    teacherInstructionsEnabled: true
+    teacherInstructionsEnabled: true,
   },
   configuration: {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
+    },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
     },
     prompt: {
       settings: true,

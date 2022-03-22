@@ -6,11 +6,11 @@ import {
   FeedbackConfig,
   InputContainer,
   layout,
-  settings
+  settings,
 } from '@pie-lib/config-ui';
 import {
   countInAnswer,
-  ensureNoExtraChoicesInAnswer
+  ensureNoExtraChoicesInAnswer,
 } from '@pie-lib/categorize';
 import EditableHtml from '@pie-lib/editable-html';
 import { uid, withDragContext } from '@pie-lib/drag';
@@ -36,8 +36,8 @@ export class Design extends React.Component {
     uid: PropTypes.string,
     imageSupport: PropTypes.shape({
       add: PropTypes.func.isRequired,
-      delete: PropTypes.func.isRequired
-    })
+      delete: PropTypes.func.isRequired,
+    }),
   };
 
   constructor(props) {
@@ -45,12 +45,12 @@ export class Design extends React.Component {
     this.uid = props.uid || uid.generateId();
   }
 
-  updateModel = props => {
+  updateModel = (props) => {
     const { model, onChange } = this.props;
 
     const updatedModel = {
       ...model,
-      ...props
+      ...props,
     };
 
     //Ensure that there are no extra choices in correctResponse, if the user has decided that only one choice may be used.
@@ -60,73 +60,73 @@ export class Design extends React.Component {
     );
 
     //clean categories
-    updatedModel.categories = updatedModel.categories.map(c => ({
+    updatedModel.categories = updatedModel.categories.map((c) => ({
       id: c.id,
-      label: c.label
+      label: c.label,
     }));
 
-    updatedModel.choices = updatedModel.choices.map(h => ({
+    updatedModel.choices = updatedModel.choices.map((h) => ({
       id: h.id,
       content: h.content,
-      categoryCount: h.categoryCount
+      categoryCount: h.categoryCount,
     }));
 
     onChange(updatedModel);
   };
 
-  changeRationale = rationale => {
+  changeRationale = (rationale) => {
     const { model, onChange } = this.props;
 
     onChange({
       ...model,
-      rationale
+      rationale,
     });
   };
 
-  changeTeacherInstructions = teacherInstructions => {
+  changeTeacherInstructions = (teacherInstructions) => {
     const { model, onChange } = this.props;
 
     onChange({
       ...model,
-      teacherInstructions
+      teacherInstructions,
     });
   };
 
-  changeFeedback = feedback => {
+  changeFeedback = (feedback) => {
     this.updateModel({ feedback });
   };
 
   onAddAlternateResponse = () => {
     const {
-      model: { correctResponse }
+      model: { correctResponse },
     } = this.props;
 
     this.updateModel({
-      correctResponse: (correctResponse || []).map(cr => ({
+      correctResponse: (correctResponse || []).map((cr) => ({
         ...cr,
-        alternateResponses: [...(cr.alternateResponses || []), []]
-      }))
+        alternateResponses: [...(cr.alternateResponses || []), []],
+      })),
     });
   };
 
-  onPromptChanged = prompt => this.updateModel({ prompt });
+  onPromptChanged = (prompt) => this.updateModel({ prompt });
 
-  onRemoveAlternateResponse = index => {
+  onRemoveAlternateResponse = (index) => {
     const {
-      model: { correctResponse }
+      model: { correctResponse },
     } = this.props;
 
     this.updateModel({
-      correctResponse: (correctResponse || []).map(cr => ({
+      correctResponse: (correctResponse || []).map((cr) => ({
         ...cr,
         alternateResponses: (cr.alternateResponses || []).filter(
           (alt, altIndex) => altIndex !== index
-        )
-      }))
+        ),
+      })),
     });
   };
 
-  countChoiceInCorrectResponse = choice => {
+  countChoiceInCorrectResponse = (choice) => {
     const { model } = this.props;
 
     return countInAnswer(choice.id, model.correctResponse);
@@ -140,7 +140,7 @@ export class Design extends React.Component {
       imageSupport,
       configuration,
       onChange,
-      onConfigurationChanged
+      onConfigurationChanged,
     } = this.props;
     const {
       partialScoring = {},
@@ -150,13 +150,15 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {},
       feedback = {},
-      prompt = {}
+      prompt = {},
+      spellCheck = {},
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
       promptEnabled,
       rationaleEnabled,
-      feedbackEnabled
+      feedbackEnabled,
+      spellCheckEnabled,
     } = model || {};
 
     const toolbarOpts = {};
@@ -185,7 +187,7 @@ export class Design extends React.Component {
       model.correctResponse || []
     );
 
-    const choices = model.choices.map(c => {
+    const choices = model.choices.map((c) => {
       c.correctResponseCount = this.countChoiceInCorrectResponse(c);
       return c;
     });
@@ -206,8 +208,7 @@ export class Design extends React.Component {
                   lockChoiceOrder:
                     lockChoiceOrder.settings && toggle(lockChoiceOrder.label),
                   promptEnabled: prompt.settings && toggle(prompt.label),
-                  feedbackEnabled:
-                    feedback.settings && toggle(feedback.label)
+                  feedbackEnabled: feedback.settings && toggle(feedback.label),
                 },
                 Properties: {
                   teacherInstructionsEnabled:
@@ -218,10 +219,12 @@ export class Design extends React.Component {
                     toggle(studentInstructions.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                   scoringType:
                     scoringType.settings &&
-                    radio(scoringType.label, ['auto', 'rubric'])
-                }
+                    radio(scoringType.label, ['auto', 'rubric']),
+                },
               }}
             />
           }
@@ -240,6 +243,7 @@ export class Design extends React.Component {
                   nonEmpty={false}
                   disableUnderline
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -256,6 +260,7 @@ export class Design extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -272,6 +277,7 @@ export class Design extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -282,6 +288,7 @@ export class Design extends React.Component {
               categories={categories || []}
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
 
             <Header
@@ -319,6 +326,7 @@ export class Design extends React.Component {
               model={model}
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
 
             {feedbackEnabled && (
@@ -335,41 +343,41 @@ export class Design extends React.Component {
   }
 }
 
-const styles = theme => ({
+const styles = (theme) => ({
   alternatesHeader: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   text: {
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
   },
   design: {
     paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit
+    paddingBottom: theme.spacing.unit,
   },
   inputHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   input: {
     paddingTop: theme.spacing.unit * 2,
     width: '100%',
-    maxWidth: '600px'
+    maxWidth: '600px',
   },
   prompt: {
     paddingTop: theme.spacing.unit * 2,
-    width: '100%'
+    width: '100%',
   },
   promptHolder: {
     width: '100%',
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   title: {
-    marginBottom: '30px'
-  }
+    marginBottom: '30px',
+  },
 });
 
 export default withDragContext(withStyles(styles)(Design));

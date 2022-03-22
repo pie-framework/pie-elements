@@ -7,7 +7,8 @@ import Toggle from './toggle';
 const styles = {
   ruler: {
     position: 'absolute',
-    left: '200px'
+    left: '200px',
+    zIndex: '101'
   }
 };
 

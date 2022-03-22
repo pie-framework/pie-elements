@@ -28,6 +28,9 @@ const styles = (/*theme*/) => ({
     borderBottom: `2px solid ${color.secondary()}`,
     width: 'fit-content',
     marginBottom: '6px'
+  },
+  buttonContainer: {
+    background: 'white'
   }
 });
 
@@ -120,6 +123,7 @@ class StimulusTabs extends React.Component {
           <Tabs
             classes={{
               root: classes.stickyTabs,
+              flexContainer: classes.buttonContainer
             }}
             value={activeTab}
             onChange={this.handleChange}

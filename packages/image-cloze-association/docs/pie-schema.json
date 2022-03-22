@@ -13,6 +13,11 @@
       "type": "boolean",
       "title": "rationaleEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "teacherInstructionsEnabled": {
       "description": "Indicates if Teacher Instructions are enabled",
       "type": "boolean",
@@ -185,7 +190,8 @@
   },
   "required": [
     "element",
-    "id"
+    "id",
+    "spellCheckEnabled"
   ],
   "definitions": {
     "ConfigureProp": {

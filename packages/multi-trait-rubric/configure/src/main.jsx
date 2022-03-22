@@ -218,9 +218,10 @@ export class Main extends React.Component {
       showHalfScoring,
       showScorePointLabels,
       dragAndDrop,
+      spellCheck = {},
       width
     } = configuration || {};
-    const { scales, excludeZero, description, pointLabels, standards } = model || {};
+    const { scales, excludeZero, description, pointLabels, standards, spellCheckEnabled } = model || {};
     const { showExcludeZeroDialog } = this.state || {};
     const adjustedWidth = parseInt(width) > parseInt(MIN_WIDTH) ? width : MIN_WIDTH;
 
@@ -244,7 +245,9 @@ export class Main extends React.Component {
                 },
                 Properties: {
                   description: showDescription.settings && toggle(showDescription.label),
-                  pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label)
+                  pointLabels: showScorePointLabels.settings && toggle(showScorePointLabels.label),
+                  spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label),
                 }
               }}
             />
@@ -264,6 +267,7 @@ export class Main extends React.Component {
                 showLevelTagInput={showLevelTagInput.enabled}
                 excludeZero={excludeZero}
                 enableDragAndDrop={dragAndDrop.enabled}
+                spellCheck={spellCheckEnabled}
                 width={adjustedWidth}
                 {...this.props}
                 classes={{}}

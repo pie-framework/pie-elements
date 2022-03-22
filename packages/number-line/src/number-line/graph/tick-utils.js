@@ -224,7 +224,7 @@ export const buildTickDataAsFractions = (domain, ticks, opts) => {
 export const buildTickData = (domain, ticks, opts) => {
   const result = buildTickDataAsFractions(domain, ticks, opts);
 
-  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) }));
+  const out = result.map((o) => (opts.fraction ? o : { ...o, x: math.number(o.x) || 0 }));
 
   return out;
 };

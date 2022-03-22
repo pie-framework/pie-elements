@@ -19,6 +19,11 @@ export default {
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     feedback: {
       settings: true,
       label: 'Feedback',

@@ -164,18 +164,28 @@ export class Main extends React.Component {
 
   onChangeResponse = (index, newVal) => {
     const { model, onModelChanged} = this.props;
-    const { choices, maxLengthPerChoice } = model;
+    const { choices } = model;
+    let { maxLengthPerChoice } = model;
     const newValLength = (newVal || '').length;
 
     if (!choices[index]) {
-      choices[index] = [{ label: '', value: '0' }];
-      maxLengthPerChoice.splice(index, 0, newValLength);
-    }
+      choices[index] = [{ label: newVal || '', value: '0' }];
 
-    choices[index][0].label = newVal || '';
+      // add default values for missing choices up to the new index position
+      const nbOfMissingChoices = index > maxLengthPerChoice.length ? index - maxLengthPerChoice.length : 0;
 
-    if (maxLengthPerChoice && newVal && maxLengthPerChoice[index] < newValLength) {
-      maxLengthPerChoice[index] = newValLength;
+      maxLengthPerChoice = [ ...maxLengthPerChoice, ...Array(nbOfMissingChoices).fill(1) ];
+
+      maxLengthPerChoice.splice(index, 0, getAdjustedLength(newValLength));
+    } else {
+      choices[index][0].label = newVal || '';
+
+      if (
+        maxLengthPerChoice
+        && (maxLengthPerChoice[index] < newValLength || maxLengthPerChoice[index] > newValLength + 10)
+      ) {
+        maxLengthPerChoice[index] = getAdjustedLength(newValLength);
+      }
     }
 
     onModelChanged({
@@ -281,9 +291,10 @@ export class Main extends React.Component {
       partialScoring = {},
       rationale = {},
       teacherInstructions = {},
-      maxLengthPerChoice = {}
+      maxLengthPerChoice = {},
+      spellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -318,7 +329,9 @@ export class Main extends React.Component {
                     toggle(teacherInstructions.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
-                  promptEnabled: prompt.settings && toggle(prompt.label)
+                  promptEnabled: prompt.settings && toggle(prompt.label),
+                  spellCheckEnabled:
+                  spellCheck.settings && toggle(spellCheck.label),
                 }
               }}
             />
@@ -337,6 +350,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -353,6 +367,7 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   disableUnderline
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -362,6 +377,7 @@ export class Main extends React.Component {
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
+              spellCheck={spellCheckEnabled}
               responseAreaProps={{
                 type: 'explicit-constructed-response',
                 options: {
@@ -405,6 +421,7 @@ export class Main extends React.Component {
               onChange={this.onResponsesChanged}
               onLengthChange={this.onLengthChanged}
               maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
+              spellCheck={spellCheckEnabled}
             />
             {rationaleEnabled && (
               <InputContainer
@@ -417,6 +434,7 @@ export class Main extends React.Component {
                   onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}

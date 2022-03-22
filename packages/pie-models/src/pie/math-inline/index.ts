@@ -139,6 +139,9 @@ export interface MathInlinePie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
@@ -181,6 +184,11 @@ export interface MathInlineConfigure
    * Rationale configuration
    */
   rationale?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Scoring Type configuration

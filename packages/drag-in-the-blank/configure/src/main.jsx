@@ -138,9 +138,10 @@ export class Main extends React.Component {
       lockChoiceOrder = {},
       rationale = {},
       teacherInstructions = {},
-      choicesPosition = {}
+      choicesPosition = {},
+      spellCheck = {}
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled } =
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
 
@@ -185,6 +186,8 @@ export class Main extends React.Component {
                     toggle(teacherInstructions.label),
                   rationaleEnabled:
                     rationale.settings && toggle(rationale.label),
+                    spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                   promptEnabled: prompt.settings && toggle(prompt.label)
                 }
               }}
@@ -204,6 +207,7 @@ export class Main extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -220,6 +224,7 @@ export class Main extends React.Component {
                   nonEmpty={false}
                   disableUnderline
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -246,6 +251,7 @@ export class Main extends React.Component {
                 video: { disabled: true }
               }}
               toolbarOpts={toolbarOpts}
+              spellCheck={spellCheckEnabled}
             />
             <Choices
               model={model}
@@ -264,6 +270,7 @@ export class Main extends React.Component {
                   onChange={this.onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}

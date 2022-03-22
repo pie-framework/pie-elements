@@ -44,6 +44,11 @@ export default {
       settings: true,
       label: 'Prompt'
     },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'

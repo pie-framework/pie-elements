@@ -99,7 +99,7 @@ export const ACTION_TYPE = {
 };
 
 const MatrixLabelEditableButton = (props) => {
-  const { onLabelUpdate, value, resourceIndex, onAction } = props;
+  const { onLabelUpdate, value, resourceIndex, onAction, spellCheck } = props;
   const [labelValue, setLabelValue] = useState(null);
   const [scoreValue, setScoreValue] = useState('');
   const [showInput, setShowInput] = useState(false);
@@ -171,6 +171,7 @@ const MatrixLabelEditableButton = (props) => {
               value={labelValue}
               onChange={e => setLabelValue(e.target.value)}
               onBlur={onBlur}
+              spellCheck = {spellCheck}
             />
           )
           : (

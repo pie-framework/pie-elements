@@ -23,6 +23,11 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Rationale",
               "settings": true,
             },
+            "spellCheck": Object {
+              "enabled": true,
+              "label": "Spellcheck",
+              "settings": true,
+            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -34,6 +39,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "Properties": Object {
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
@@ -95,6 +101,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "rationaleEnabled": true,
             "shuffle": true,
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
             "toolbarEditorPosition": "bottom",
@@ -113,6 +120,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup=""
           nonEmpty={false}
           onChange={[Function]}
+          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -128,6 +136,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           markup="Complete the sentence"
           nonEmpty={false}
           onChange={[Function]}
+          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -153,6 +162,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "type": "explicit-constructed-response",
           }
         }
+        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "top",
@@ -217,6 +227,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
             "rationaleEnabled": true,
             "shuffle": true,
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": true,
             "toolbarEditorPosition": "bottom",
@@ -224,6 +235,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         }
         onChange={[Function]}
         onLengthChange={[Function]}
+        spellCheck={false}
       />
       <InputContainer
         label="Rationale"
@@ -231,6 +243,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         <EditableHtml
           markup=""
           onChange={[Function]}
+          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -266,6 +279,11 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Rationale",
               "settings": true,
             },
+            "spellCheck": Object {
+              "enabled": true,
+              "label": "Spellcheck",
+              "settings": true,
+            },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
               "settings": true,
@@ -277,6 +295,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "Properties": Object {
               "promptEnabled": undefined,
               "rationaleEnabled": undefined,
+              "spellCheckEnabled": undefined,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
@@ -338,6 +357,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "rationaleEnabled": false,
             "shuffle": true,
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
             "toolbarEditorPosition": "bottom",
@@ -367,6 +387,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "type": "explicit-constructed-response",
           }
         }
+        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "top",
@@ -431,6 +452,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
             "rationaleEnabled": false,
             "shuffle": true,
             "slateMarkup": "<p>The <span data-type=\\"explicit_constructed_response\\" data-index=\\"0\\" data-value=\\"cow\\"></span> jumped <span data-type=\\"explicit_constructed_response\\" data-index=\\"1\\" data-value=\\"over\\"></span> the <span data-type=\\"explicit_constructed_response\\" data-index=\\"2\\" data-value=\\"moon\\"></span></p>",
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": true,
             "teacherInstructionsEnabled": false,
             "toolbarEditorPosition": "bottom",
@@ -438,6 +460,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         }
         onChange={[Function]}
         onLengthChange={[Function]}
+        spellCheck={false}
       />
     </div>
   </ConfigLayout>

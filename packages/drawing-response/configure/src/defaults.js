@@ -9,13 +9,18 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
+    backgroundImageEnabled: true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     backgroundImage: {
       settings: true,
-      label: 'Background Image',
-      enabled: true
+      label: 'Background Image'
     },
     prompt: {
       settings: true,

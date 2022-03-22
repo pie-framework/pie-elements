@@ -342,6 +342,11 @@
       "type": "boolean",
       "title": "choiceLabelEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "note": {
       "description": "Indicates the note for the answer",
       "type": "string",
@@ -375,6 +380,7 @@
     "feedbackEnabled",
     "id",
     "rationaleEnabled",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

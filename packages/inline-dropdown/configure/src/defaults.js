@@ -20,6 +20,11 @@ export default {
       settings: true,
       label: 'Prompt'
     },
+    spellCheck: {
+      label: "Spellcheck",
+      settings:true,
+      enabled:true
+    },
     lockChoiceOrder: {
       settings: true,
       label: 'Lock Choice Order'

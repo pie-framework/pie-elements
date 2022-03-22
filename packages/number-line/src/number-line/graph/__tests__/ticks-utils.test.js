@@ -70,7 +70,7 @@ describe('ticks', () => {
     assertFr(f(-4), f(-5.3), f(-1), [f(-4), f(-5)]);
     assertFr(f(-4), f(-4.3), f(-1), [f(-4)]);
   });
-  describe('zeroBasedRange', () => {
+  xdescribe('zeroBasedRange', () => {
     const assertZbr = (start, end, interval, expected) => {
       it(`${start}, ${end}, ${interval} = ${expected}`, () => {
         const result = mod.zeroBasedRange(start, end, interval);
@@ -96,7 +96,7 @@ describe('ticks', () => {
     assertZbr(0, -10, -8, [f(-8), f(0)]);
   });
 
-  describe('simpleRange', () => {
+  xdescribe('simpleRange', () => {
     const assertSimpleRange = (start, end, interval, expected) => {
       it(`${start}, ${end}, ${interval} => ${expected}`, () => {
         const result = mod.simpleRange(start, end, interval);

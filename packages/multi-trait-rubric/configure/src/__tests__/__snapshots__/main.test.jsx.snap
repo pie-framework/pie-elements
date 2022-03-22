@@ -54,6 +54,7 @@ exports[`Main snapshot renders 1`] = `
             "Properties": Object {
               "description": undefined,
               "pointLabels": undefined,
+              "spellCheckEnabled": undefined,
             },
             "Settings": Object {
               "dragAndDrop.enabled": false,
@@ -1088,6 +1089,7 @@ exports[`Main snapshot renders without scales 1`] = `
             "Properties": Object {
               "description": undefined,
               "pointLabels": undefined,
+              "spellCheckEnabled": undefined,
             },
             "Settings": Object {
               "dragAndDrop.enabled": false,

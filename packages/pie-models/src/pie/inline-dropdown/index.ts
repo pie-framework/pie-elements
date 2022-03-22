@@ -74,6 +74,9 @@ export interface InlineDropdownPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
+
   /** Indicates if Choice Level Rationales are enabled */
   choiceRationaleEnabled: boolean;
 
@@ -124,6 +127,11 @@ export interface InlineDropdownConfigure
    * Rationale configuration
    */
   rationale?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 
   /**
    * Choice Level Rationales configuration

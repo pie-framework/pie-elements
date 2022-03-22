@@ -98,6 +98,11 @@
       "type": "boolean",
       "title": "rationaleEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "studentInstructionsEnabled": {
       "description": "Indicates if Student Instructions are enabled",
       "type": "boolean",
@@ -143,6 +148,7 @@
     "feedbackEnabled",
     "id",
     "rationaleEnabled",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

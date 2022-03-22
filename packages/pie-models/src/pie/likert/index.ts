@@ -1,8 +1,7 @@
-import {PieModel} from '../../PieModel';
-import {PromptConfig} from '../../PromptConfig';
-import {ConfigureProp} from '../ConfigurationProp';
-import {LikertChoice} from "../../LikertChoice";
-
+import { PieModel } from '../../PieModel';
+import { PromptConfig } from '../../PromptConfig';
+import { ConfigureProp } from '../ConfigurationProp';
+import { LikertChoice } from '../../LikertChoice';
 
 /**
  * NOTE: teacherInstruction functionality is not defined yet - the value for
@@ -18,15 +17,22 @@ export interface LikertPie extends PieModel {
   /** Indicates the likert scale */
   likertScale?: 'likert3' | 'likert5' | 'likert7';
   /** Indicates the likert type */
-  likertType?: 'agreement' | 'frequency' | 'yesNo' | 'importance' | 'likelihood' | 'like';
+  likertType?:
+    | 'agreement'
+    | 'frequency'
+    | 'yesNo'
+    | 'importance'
+    | 'likelihood'
+    | 'like';
   /** Indicates the likert type */
   likertOrientation?: 'horizontal' | 'vertical';
   /** The choice options for the question */
   choices: LikertChoice[];
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
+  /** Indicates if spellcheck is enabled */
+  spellCheckEnabled: boolean;
 }
-
 
 /**
  * Config Object for @pie-elements/likert
@@ -37,4 +43,9 @@ export interface LikertConfigure extends PromptConfig {
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Configuration for the spellcheck
+   */
+  spellCheck?: ConfigureProp;
 }

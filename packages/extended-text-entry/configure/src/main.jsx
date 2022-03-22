@@ -73,8 +73,9 @@ export class Main extends React.Component {
       mathInput = {},
       dimensions = {},
       equationEditor = {},
+      spellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled  } =
       model || {};
     const toolbarOpts = {};
 
@@ -132,6 +133,8 @@ export class Main extends React.Component {
                   multiple.settings && toggle(multiple.label, true),
                 promptEnabled: prompt.settings && toggle(prompt.label),
                 feedbackEnabled: feedback.settings && toggle(feedback.label),
+                spellCheckEnabled:
+                spellCheck.settings && toggle(spellCheck.label),
               },
               Properties: {
                 teacherInstructionsEnabled:
@@ -158,6 +161,7 @@ export class Main extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}
@@ -177,6 +181,7 @@ export class Main extends React.Component {
                 imageSupport={imageSupport}
                 nonEmpty={false}
                 toolbarOpts={toolbarOpts}
+                spellCheck={spellCheckEnabled}
               />
             </InputContainer>
           )}

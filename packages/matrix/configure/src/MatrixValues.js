@@ -78,7 +78,7 @@ export const Content = styled.div`
 
 const MatrixValues = (props) => {
   const { model, onChangeModel } = props;
-  const { rowLabels, columnLabels, matrixValues } = model;
+  const { rowLabels, columnLabels, matrixValues, spellCheckEnabled} = model;
 
   const onSetMatrixValue = (matrixValueIndex, value) => {
     const matrixValuesClone = {
@@ -183,6 +183,7 @@ const MatrixValues = (props) => {
                 onAction={onActionByColumn}
                 value={value}
                 onLabelUpdate={(labelValue) => onSetColumnLabel(columnLabelIndex, labelValue)}
+                spellCheck = {spellCheckEnabled}
               />
             </ColumnLabelWrapper>
           ))
@@ -200,6 +201,7 @@ const MatrixValues = (props) => {
                 onAction={onActionByRow}
                 value={value}
                 onLabelUpdate={(labelValue) => onSetRowLabel(rowLabelIndex, labelValue)}
+                spellCheck = {spellCheckEnabled}
               />
             </RowLabelWrapper>
           ))

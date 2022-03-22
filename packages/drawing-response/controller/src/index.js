@@ -7,6 +7,7 @@ export const normalize = question => ({
   promptEnabled: true,
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
+  backgroundImageEnabled: true,
   ...question,
 });
 
@@ -16,7 +17,8 @@ export function model(question, session, env) {
     imageUrl,
     imageDimensions,
     prompt,
-    promptEnabled
+    promptEnabled,
+    backgroundImageEnabled
   } = normalizedQuestion;
 
   return new Promise(resolve => {
@@ -26,6 +28,7 @@ export function model(question, session, env) {
       imageDimensions,
       imageUrl,
       prompt: promptEnabled ? prompt : null,
+      backgroundImageEnabled
     };
 
     if (env.role === 'instructor' && (env.mode === 'view' || env.mode === 'evaluate')) {

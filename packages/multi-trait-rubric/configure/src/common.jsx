@@ -148,7 +148,7 @@ export const ScorePoint = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels, alignToRight }) => {
+})(({ classes, scorePointsValue, scoreDescriptor, pluginProps, onChange, showScorePointLabels, alignToRight, spellCheck }) => {
 
   const scoreBoxClasses =
     showScorePointLabels ? classes.scorePointBox : `${classes.scorePointBox} ${classes.scorePointBoxDisabled}`;
@@ -168,6 +168,7 @@ export const ScorePoint = withStyles({
           onChange={onChange}
           pluginProps={pluginProps}
           activePlugins={filteredDefaultPlugins}
+          spellCheck={spellCheck}
           toolbarOpts={alignToRight && { alignment: 'right' }}
         /> : null}
       </div>
@@ -237,7 +238,7 @@ export const SimpleInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label }) => (
+})(({ classes, markup, onChange, pluginProps, label, spellCheck }) => (
   <div className={classes.simpleInput}>
     {label && <div>{label}</div>}
 
@@ -249,6 +250,7 @@ export const SimpleInput = withStyles({
       placeholder='Trait Label'
       pluginProps={pluginProps}
       activePlugins={filteredDefaultPlugins}
+      spellCheck={spellCheck}
     />
   </div>
 ));
@@ -279,7 +281,7 @@ export const UnderlinedInput = withStyles({
   slateEditor: {
     fontFamily: 'Cerebri',
   },
-})(({ classes, markup, onChange, pluginProps, label, placeholder }) => (
+})(({ classes, markup, onChange, pluginProps, label, placeholder, spellCheck }) => (
   <div className={classes.underlinedInputWrapper}>
     {label && <div>{label}</div>}
 
@@ -291,6 +293,7 @@ export const UnderlinedInput = withStyles({
       placeholder={placeholder}
       pluginProps={pluginProps}
       activePlugins={filteredDefaultPlugins}
+      spellCheck={spellCheck}
     />
   </div>
 ));
@@ -307,7 +310,7 @@ export const ExpandedInput = withStyles({
     margin: '10px',
     marginTop: 0
   },
-})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight }) => (
+})(({ classes, markup, onChange, pluginProps, placeholder, alignToRight, spellCheck }) => (
   <div>
     <EditableHtml
       className={classes.prompt}
@@ -317,6 +320,7 @@ export const ExpandedInput = withStyles({
       placeholder={placeholder}
       pluginProps={pluginProps}
       toolbarOpts={alignToRight && { alignment: 'right' }}
+      spellCheck={spellCheck}
     />
   </div>
 ));

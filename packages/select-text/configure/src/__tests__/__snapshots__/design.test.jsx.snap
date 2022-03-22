@@ -46,6 +46,11 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -70,6 +75,7 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
+            "spellCheckEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -172,6 +178,11 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -196,6 +207,7 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
+            "spellCheckEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -289,6 +301,11 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -313,6 +330,7 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
+            "spellCheckEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -415,6 +433,11 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "label": "Selections Available",
             "settings": true,
           },
+          "spellCheck": Object {
+            "enabled": true,
+            "label": "Spellcheck",
+            "settings": true,
+          },
           "studentInstructions": Object {
             "label": "Student Instructions",
             "settings": false,
@@ -439,6 +462,7 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
+            "spellCheckEnabled": undefined,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },

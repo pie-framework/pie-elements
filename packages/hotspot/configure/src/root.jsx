@@ -72,9 +72,10 @@ export class Root extends React.Component {
       prompt = {},
       teacherInstructions = {},
       rationale = {},
+      spellCheck = {},
       preserveAspectRatio = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
 
     switch (model.toolbarEditorPosition) {
@@ -107,7 +108,9 @@ export class Root extends React.Component {
                 Properties: {
                   teacherInstructionsEnabled:
                     teacherInstructions.settings && toggle(teacherInstructions.label),
-                  rationaleEnabled: rationale.settings && toggle(rationale.label)
+                  rationaleEnabled: rationale.settings && toggle(rationale.label),
+                  spellCheckEnabled:
+                    spellCheck.settings && toggle(spellCheck.label),
                 }
               }}
             />
@@ -122,6 +125,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -133,6 +137,7 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}
@@ -147,6 +152,7 @@ export class Root extends React.Component {
                   onChange={onRationaleChanged}
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
+                  spellCheck={spellCheckEnabled}
                 />
               </InputContainer>
             )}

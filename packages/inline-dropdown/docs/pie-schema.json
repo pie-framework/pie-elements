@@ -112,6 +112,11 @@
       "type": "boolean",
       "title": "rationaleEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "choiceRationaleEnabled": {
       "description": "Indicates if Choice Level Rationales are enabled",
       "type": "boolean",
@@ -166,6 +171,7 @@
     "rationale",
     "rationaleEnabled",
     "scoringType",
+    "spellCheckEnabled",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"
   ],

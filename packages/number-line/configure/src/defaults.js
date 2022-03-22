@@ -48,5 +48,10 @@ export const configuration = {
   prompt: {
     settings: true,
     label: 'Prompt'
-  }
+  },
+  spellCheck: {
+    label: "Spellcheck",
+    settings:true,
+    enabled:true
+  },
 };
