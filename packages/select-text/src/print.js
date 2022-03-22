@@ -49,7 +49,8 @@ export default class SelectTextPrint extends HTMLElement {
             this._options &&
             React.createElement(Main, {
               model: printModel,
-              session: { selectedTokens: [] }
+              session: { selectedTokens: [] },
+              onSelectionChange: () => {}
             });
 
           ReactDOM.render(element, this, () => {
