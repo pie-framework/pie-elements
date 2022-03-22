@@ -185,7 +185,6 @@ export class GraphingConfig extends React.Component {
               </div>
             )
           }
-
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
               <span>Use the tools below to set background shapes</span>
