@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.7.4...@pie-element/explicit-constructed-response-configure@3.7.5) (2022-03-22)
+
+
+### Bug Fixes
+
+* test ([61f9577](https://github.com/pie-framework/pie-elements/commit/61f95775a3086c6a4fce64c46b31b15b081f4243))
+
+
+
+
+
 ## [3.7.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response-configure@3.7.3...@pie-element/explicit-constructed-response-configure@3.7.4) (2022-03-08)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response-configure
