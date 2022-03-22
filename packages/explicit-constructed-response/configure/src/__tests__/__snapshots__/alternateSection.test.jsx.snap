@@ -62,6 +62,7 @@ exports[`Choice snapshot renders 1`] = `
   }
 >
   <WithStyles(OutlinedInput)
+    disableUnderline={true}
     labelWidth={0}
     onChange={[Function]}
     value="cow"
