@@ -88,6 +88,7 @@ export class Main extends React.Component {
         }
         {model.prompt && (
           <Typography
+            component={'span'}
             className={classes.prompt}
           >
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />
