@@ -66,7 +66,7 @@ const partModel = base => ({
   rationale: '',
   teacherInstructionsEnabled: true,
   studentInstructionsEnabled: true,
-  spellCheckEnabled:false,
+  spellCheckEnabled:true,
   choicesLayout: 'vertical',
   gridColumns: '2',
   ...base

@@ -12,7 +12,7 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    spellCheckEnabled:false,
+    spellCheckEnabled:true,
     toolbarEditorPosition: 'bottom'
   },
   configuration: {
@@ -22,7 +22,7 @@ export default {
     },
     spellCheck: {
       label: "Spellcheck",
-      settings:true,
+      settings:false,
       enabled:true
     },
     equationEditor: {

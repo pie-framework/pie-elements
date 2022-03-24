@@ -10,12 +10,13 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     backgroundImageEnabled: true,
+    spellCheckEnabled:true,
     toolbarEditorPosition: 'bottom',
   },
   configuration: {
     spellCheck: {
       label: "Spellcheck",
-      settings:true,
+      settings:false,
       enabled:true
     },
     backgroundImage: {

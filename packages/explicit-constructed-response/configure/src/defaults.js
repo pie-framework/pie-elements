@@ -7,7 +7,7 @@ export default {
     markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
     toolbarEditorPosition: 'bottom',
     displayType: 'block',
-    spellCheckEnabled:false,
+    spellCheckEnabled:true,
     choices: {
       0: [
         {
@@ -74,7 +74,7 @@ export default {
     },
     spellCheck: {
       label: "Spellcheck",
-      settings:true,
+      settings:false,
       enabled:true
     },
     teacherInstructions: {

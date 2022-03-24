@@ -22,7 +22,7 @@ export default {
     },
     spellCheck: {
       label: "Spellcheck",
-      settings:true,
+      settings:false,
       enabled:true
     },
     lockChoiceOrder: {
