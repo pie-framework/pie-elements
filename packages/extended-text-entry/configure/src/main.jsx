@@ -73,9 +73,10 @@ export class Main extends React.Component {
       mathInput = {},
       dimensions = {},
       equationEditor = {},
-      spellCheck = {}
+      spellCheck = {},
+      playerSpellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled  } =
+    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled, playerSpellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
 
@@ -135,6 +136,8 @@ export class Main extends React.Component {
                 feedbackEnabled: feedback.settings && toggle(feedback.label),
                 spellCheckEnabled:
                 spellCheck.settings && toggle(spellCheck.label),
+                playerSpellCheckEnabled:
+                playerSpellCheck.settings && toggle(playerSpellCheck.label),
               },
               Properties: {
                 teacherInstructionsEnabled:

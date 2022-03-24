@@ -13,6 +13,7 @@ export default {
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
     spellCheckEnabled:true,
+    playerSpellCheckEnabled:true,
     toolbarEditorPosition: 'bottom'
   },
   configuration: {
@@ -23,6 +24,11 @@ export default {
     spellCheck: {
       label: "Spellcheck",
       settings:false,
+      enabled:true
+    },
+    playerSpellCheck: {
+      label: "Student Spellcheck",
+      settings:true,
       enabled:true
     },
     equationEditor: {
