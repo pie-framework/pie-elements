@@ -76,7 +76,7 @@ export class Main extends React.Component {
       spellCheck = {},
       playerSpellCheck = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled, playerSpellCheckEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, feedbackEnabled, spellCheckEnabled } =
       model || {};
     const toolbarOpts = {};
 

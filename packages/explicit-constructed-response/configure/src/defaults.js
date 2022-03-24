@@ -8,6 +8,7 @@ export default {
     toolbarEditorPosition: 'bottom',
     displayType: 'block',
     spellCheckEnabled:true,
+    playerSpellCheckEnabled:true,
     choices: {
       0: [
         {
@@ -75,6 +76,11 @@ export default {
     spellCheck: {
       label: "Spellcheck",
       settings:false,
+      enabled:true
+    },
+    playerSpellCheck: {
+      label: "Student Spellcheck",
+      settings:true,
       enabled:true
     },
     teacherInstructions: {
