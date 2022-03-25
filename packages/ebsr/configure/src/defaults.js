@@ -48,7 +48,7 @@ const defaultConfig = {
     label: 'Grid columns',
   },
   spellCheck: {
-    label: "Spellcheck",
+    label: 'Spellcheck',
     settings:true,
     enabled:true
   },

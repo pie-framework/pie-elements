@@ -49,7 +49,7 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     const toolbarOpts = {};
 
-    console.log(spellCheckEnabled, "spellcheck")
+    console.log(spellCheckEnabled, 'spellcheck')
 
     log('[render] disabled? ', disabled);
 

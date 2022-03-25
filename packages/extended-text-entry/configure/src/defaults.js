@@ -22,12 +22,12 @@ export default {
       label: 'Text-Entry Display Size'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },
     playerSpellCheck: {
-      label: "Student Spellcheck",
+      label: 'Student Spellcheck',
       settings:true,
       enabled:true
     },

@@ -50,7 +50,7 @@ export const configuration = {
     label: 'Prompt'
   },
   spellCheck: {
-    label: "Spellcheck",
+    label: 'Spellcheck',
     settings:true,
     enabled:true
   },

@@ -73,7 +73,7 @@ export default {
       label: 'Feedback'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },

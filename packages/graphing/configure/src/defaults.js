@@ -103,7 +103,7 @@ export default {
       enabled: true
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },

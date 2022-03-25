@@ -45,7 +45,7 @@ export default {
       label: 'Prompt'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },

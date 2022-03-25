@@ -52,7 +52,7 @@ export interface MultiTraitRubricPie extends PieModel {
   /** Indicates if scoring should start at 0 or 1 */
   excludeZero?: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** scales */
@@ -123,9 +123,9 @@ export interface MultiTraitRubricConfigure {
   showHalfScoring?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 
   /**
    * How large (in px) should multi-trait-rubric be

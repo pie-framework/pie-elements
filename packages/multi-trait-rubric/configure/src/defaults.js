@@ -60,7 +60,7 @@ export default {
         All the Labels and Descriptions for scores above Max Point will be deleted.`
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },

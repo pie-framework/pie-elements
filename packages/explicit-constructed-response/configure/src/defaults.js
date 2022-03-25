@@ -74,12 +74,12 @@ export default {
       label: 'Rationale'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },
     playerSpellCheck: {
-      label: "Student Spellcheck",
+      label: 'Student Spellcheck',
       settings:true,
       enabled:true
     },

@@ -84,7 +84,7 @@ export default {
       label: 'Target label',
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },

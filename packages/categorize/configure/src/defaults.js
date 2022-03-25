@@ -20,7 +20,7 @@ export default {
   },
   configuration: {
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
       settings:false,
       enabled:true
     },
