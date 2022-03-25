@@ -157,7 +157,7 @@ Indicates if Choice Label is enabled
 
 # `spellCheckEnabled` (boolean, required)
 
-Indicates if spellcheck is enabled
+Indicates if spellcheck is enabled for the author. Default value is true
 
 # `note` (string)
 

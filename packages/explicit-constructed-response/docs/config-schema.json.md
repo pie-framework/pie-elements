@@ -50,6 +50,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `playerSpellCheck` (object)
+
+Properties of the `playerSpellCheck` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
 # `autoScoring` (object)
 
 Properties of the `autoScoring` object:
