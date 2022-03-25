@@ -51,7 +51,7 @@ export const configuration = {
   },
   spellCheck: {
     label: 'Spellcheck',
-    settings:true,
+    settings:false,
     enabled:true
   },
 };
