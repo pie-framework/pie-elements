@@ -114,11 +114,9 @@ export default class Ebsr extends HTMLElement {
 
   setPartModel(part, key) {
     if (this._model && this._model[key]) {
-      const { mode } = this._model;
 
       part.model = {
         ...preparePrintModel(this._model[key], this._options),
-        mode,
         keyMode: this._model[key].choicePrefix,
       };
 
