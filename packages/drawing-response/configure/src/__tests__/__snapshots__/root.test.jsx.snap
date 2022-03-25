@@ -18,7 +18,7 @@ exports[`Root snapshot renders 1`] = `
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
-              "settings": true,
+              "settings": false,
             },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
@@ -29,7 +29,7 @@ exports[`Root snapshot renders 1`] = `
         groups={
           Object {
             "Properties": Object {
-              "spellCheckEnabled": undefined,
+              "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {
