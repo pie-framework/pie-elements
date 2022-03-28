@@ -162,6 +162,7 @@ export function model(question, session, env) {
       config.responses = responses.slice(0, 1);
     } else {
       config.responses = responses;
+      config.customKeys = [];
     }
 
     const fb =
