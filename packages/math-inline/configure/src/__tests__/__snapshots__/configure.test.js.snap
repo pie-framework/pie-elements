@@ -44,7 +44,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
-              "settings": true,
+              "settings": false,
             },
             "studentInstructions": Object {
               "label": "Student Instructions",
@@ -63,7 +63,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "ignoreOrder.enabled": false,
               "rationaleEnabled": undefined,
               "scoringType": false,
-              "spellCheckEnabled": undefined,
+              "spellCheckEnabled": false,
               "studentInstructionsEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
@@ -181,7 +181,7 @@ exports[`Configure renders correctly with snapshot 1`] = `
               "spellCheck": Object {
                 "enabled": true,
                 "label": "Spellcheck",
-                "settings": true,
+                "settings": false,
               },
               "studentInstructions": Object {
                 "label": "Student Instructions",

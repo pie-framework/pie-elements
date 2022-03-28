@@ -55,9 +55,14 @@
       "title": "promptEnabled"
     },
     "spellCheckEnabled": {
-      "description": "Indicates if spellcheck is enabled",
+      "description": "Indicates if spellcheck is enabled for the author. Default value is true",
       "type": "boolean",
       "title": "spellCheckEnabled"
+    },
+    "playerSpellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled for the player. Default value is true",
+      "type": "boolean",
+      "title": "playerSpellCheckEnabled"
     },
     "rationale": {
       "description": "Indicates correct answer rationale",
@@ -144,6 +149,7 @@
     "element",
     "id",
     "markup",
+    "playerSpellCheckEnabled",
     "rationale",
     "rationaleEnabled",
     "rubric",

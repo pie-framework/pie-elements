@@ -138,6 +138,10 @@ Indicates if Rationale are enabled
 
 Indicates if Student Instructions are enabled
 
+# `spellCheckEnabled` (boolean, required)
+
+Indicates if spellcheck is enabled for the author. Default value is true
+
 # `strokeWidth` (number, required)
 
 Indicates the width of the outline for a selection

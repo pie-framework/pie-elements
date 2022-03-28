@@ -49,7 +49,7 @@ describe('controller', () => {
         disabled: false,
         feedback: undefined,
         teacherInstructions: null,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         mathInput: defaults.mathInput,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
@@ -65,7 +65,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
@@ -79,7 +79,7 @@ describe('controller', () => {
         disabled: true,
         feedback: undefined,
         teacherInstructions: null,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         mathInput: defaults.mathInput,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
@@ -95,7 +95,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
@@ -110,7 +110,7 @@ describe('controller', () => {
         feedback: undefined,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous'
       });
@@ -125,7 +125,7 @@ describe('controller', () => {
         feedback: 'this is default feedback',
         teacherInstructions: null,
         mathInput: defaults.mathInput,
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         playersToolbarPosition: "bottom",
         equationEditor: 'miscellaneous',
       });
@@ -138,7 +138,7 @@ describe('controller', () => {
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         teacherInstructions: defaults.teacherInstructions,
         mathInput: defaults.mathInput,
         playersToolbarPosition: "bottom",
@@ -153,7 +153,7 @@ describe('controller', () => {
         dimensions: defaults.dimensions,
         disabled: true,
         feedback: 'this is default feedback',
-        spellCheckEnabled:false,
+        spellCheckEnabled:true,
         teacherInstructions: null,
         mathInput: defaults.mathInput,
         playersToolbarPosition: "bottom",

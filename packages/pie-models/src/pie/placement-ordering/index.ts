@@ -109,7 +109,7 @@ export interface PlacementOrderingPie extends PieModel {
   /** Indicates if Choice Label is enabled */
   choiceLabelEnabled?: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** Indicates the note for the answer */
@@ -185,9 +185,9 @@ export interface PlacementOrderingConfigure
   rationale?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 
   /**
    * Remove tiles after placing configuration

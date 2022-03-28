@@ -49,8 +49,6 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     const toolbarOpts = {};
 
-    console.log(spellCheckEnabled, "spellcheck")
-
     log('[render] disabled? ', disabled);
 
     const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;

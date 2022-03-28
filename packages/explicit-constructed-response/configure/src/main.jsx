@@ -292,7 +292,8 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {},
       maxLengthPerChoice = {},
-      spellCheck = {}
+      spellCheck = {},
+      playerSpellCheck = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled, spellCheckEnabled } = model || {};
     const toolbarOpts = {};
@@ -332,6 +333,8 @@ export class Main extends React.Component {
                   promptEnabled: prompt.settings && toggle(prompt.label),
                   spellCheckEnabled:
                   spellCheck.settings && toggle(spellCheck.label),
+                  playerSpellCheckEnabled:
+                  playerSpellCheck.settings && toggle(playerSpellCheck.label),
                 }
               }}
             />

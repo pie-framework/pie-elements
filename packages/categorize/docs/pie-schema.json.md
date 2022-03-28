@@ -152,7 +152,7 @@ Indicates if Rationale are enabled
 
 # `spellCheckEnabled` (boolean, required)
 
-Indicates if spellcheck is enabled
+Indicates if spellcheck is enabled for the author. Default value is true
 
 # `studentInstructionsEnabled` (boolean, required)
 

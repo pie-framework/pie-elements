@@ -10,5 +10,5 @@ exports.model = (id, element) => ({
   mathInput: true,
   playersToolbarPosition: 'bottom',
   toolbarEditorPosition: 'bottom',
-  spellCheckEnabled: "false"
+  spellCheckEnabled: true
 });
