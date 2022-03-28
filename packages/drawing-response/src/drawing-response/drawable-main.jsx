@@ -226,8 +226,8 @@ export class DrawableMain extends React.Component {
       }
     }
 
-    const imageHeight = imageDimensions.height * scale;
-    const imageWidth = imageDimensions.width * scale;
+    const imageHeight = imageDimensions?.height * scale;
+    const imageWidth = imageDimensions?.width * scale;
 
     return (
       <div>
