@@ -21,8 +21,8 @@ export default {
       label: 'Prompt'
     },
     spellCheck: {
-      label: "Spellcheck",
-      settings:true,
+      label: 'Spellcheck',
+      settings:false,
       enabled:true
     },
     lockChoiceOrder: {

@@ -76,7 +76,7 @@ export interface MatchPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** Indicates if Student Instructions are enabled */
@@ -138,9 +138,9 @@ export interface MatchConfigure extends PromptConfig, CommonConfigSettings {
   prompt?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 
   /**
    * Rationale configuration

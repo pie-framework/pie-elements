@@ -31,7 +31,7 @@ exports[`Root render renders 1`] = `
             "spellCheck": Object {
               "enabled": true,
               "label": "Spellcheck",
-              "settings": true,
+              "settings": false,
             },
             "teacherInstructions": Object {
               "label": "Teacher Instructions",
@@ -43,7 +43,7 @@ exports[`Root render renders 1`] = `
           Object {
             "Properties": Object {
               "rationaleEnabled": undefined,
-              "spellCheckEnabled": undefined,
+              "spellCheckEnabled": false,
               "teacherInstructionsEnabled": undefined,
             },
             "Settings": Object {

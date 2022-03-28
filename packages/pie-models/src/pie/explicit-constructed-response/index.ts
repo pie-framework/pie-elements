@@ -43,8 +43,11 @@ export interface ExplicitConstructedResponsePie extends PieModel {
   /**  Indicates if the prompt is enabled */
   promptEnabled?: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
+
+  /** Indicates if spellcheck is enabled for the player. Default value is true */
+  playerSpellCheckEnabled: boolean;
 
   /** Indicates correct answer rationale */
   rationale: string;
@@ -106,9 +109,14 @@ export interface ExplicitConstructedResponseConfigure
   rationale?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
+
+   /**
+    * Configuration for the player's spellcheck
+    */
+   playerSpellCheck?: ConfigureProp;
 
   /**
    * Auto Scoring Type configuration

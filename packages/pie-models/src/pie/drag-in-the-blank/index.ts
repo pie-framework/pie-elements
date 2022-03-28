@@ -57,14 +57,11 @@ export interface DragInTheBlankPie extends PieModel {
   /** The markup for the pie-ui element */
   markup: string;
 
-    /** Indicates if the choices are presented in a fixed order */
-    lockChoiceOrder: boolean;
+  /** Indicates if the choices are presented in a fixed order */
+  lockChoiceOrder: boolean;
 
-    /** Indicates if the choices are presented in a fixed order */
-    lockChoiceOrder: boolean;
-
-    /** The item stem for the question */
-    prompt?: string;
+  /** The item stem for the question */
+  prompt?: string;
 
   /**  Indicates if the prompt is enabled */
   promptEnabled?: boolean;
@@ -84,7 +81,7 @@ export interface DragInTheBlankPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** Indicates if Student Instructions are enabled */
@@ -123,7 +120,7 @@ export interface DragInTheBlankConfigure
   prompt?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
 

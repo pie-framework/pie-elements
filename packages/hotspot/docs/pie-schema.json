@@ -200,6 +200,11 @@
       "type": "boolean",
       "title": "studentInstructionsEnabled"
     },
+    "spellCheckEnabled": {
+      "description": "Indicates if spellcheck is enabled for the author. Default value is true",
+      "type": "boolean",
+      "title": "spellCheckEnabled"
+    },
     "strokeWidth": {
       "description": "Indicates the width of the outline for a selection",
       "type": "number",
@@ -239,6 +244,7 @@
     "partialScoring",
     "rationaleEnabled",
     "shapes",
+    "spellCheckEnabled",
     "strokeWidth",
     "studentInstructionsEnabled",
     "teacherInstructionsEnabled"

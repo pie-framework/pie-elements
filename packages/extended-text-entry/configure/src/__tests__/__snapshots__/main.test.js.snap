@@ -29,6 +29,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Multiple Parts",
             "settings": false,
           },
+          "playerSpellCheck": Object {
+            "enabled": true,
+            "label": "Student Spellcheck",
+            "settings": true,
+          },
           "prompt": Object {
             "label": "Prompt",
             "settings": true,
@@ -36,7 +41,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
-            "settings": true,
+            "settings": false,
           },
           "studentInstructions": Object {
             "label": "Student Instructions",
@@ -60,8 +65,9 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "feedbackEnabled": undefined,
             "mathInput": undefined,
             "multiple.enabled": false,
+            "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
-            "spellCheckEnabled": undefined,
+            "spellCheckEnabled": false,
           },
         }
       }
@@ -74,10 +80,11 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "equationEditor": "Grade 8 - HS",
           "feedbackEnabled": true,
           "mathInput": false,
+          "playerSpellCheckEnabled": true,
           "prompt": "This is the question prompt",
           "promptEnabled": true,
           "rationaleEnabled": true,
-          "spellCheckEnabled": false,
+          "spellCheckEnabled": true,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "toolbarEditorPosition": "bottom",
@@ -97,7 +104,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup=""
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
+        spellCheck={true}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -114,7 +121,7 @@ exports[`Render Main Component Match Snapshot 1`] = `
         markup="This is the question prompt"
         nonEmpty={false}
         onChange={[Function]}
-        spellCheck={false}
+        spellCheck={true}
         toolbarOpts={
           Object {
             "position": "bottom",

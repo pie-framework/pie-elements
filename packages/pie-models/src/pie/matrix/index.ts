@@ -29,7 +29,7 @@ export interface MatrixPie extends PieModel {
     | 'like';
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 }
 
@@ -44,7 +44,7 @@ export interface MatrixConfigure extends PromptConfig {
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 }

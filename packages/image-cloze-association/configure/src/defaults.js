@@ -6,8 +6,8 @@ export default {
   },
   configuration: {
     spellCheck: {
-      label: "Spellcheck",
-      settings:true,
+      label: 'Spellcheck',
+      settings:false,
       enabled:true
     },
     teacherInstructions: {

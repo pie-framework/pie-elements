@@ -75,8 +75,11 @@ export interface ExtendedTextEntryPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
+
+  /** Indicates if spellcheck is enabled for the player. Default value is true */
+  playerSpellCheckEnabled: boolean;
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
@@ -129,9 +132,14 @@ export interface ExtendedTextEntryConfigure
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
+
+   /**
+    * Configuration for the player's spellcheck
+    */
+   playerSpellCheck?: ConfigureProp;
 
   /**
    * Dimensions configuration

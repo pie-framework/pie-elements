@@ -155,6 +155,7 @@ export function model(question, session, env) {
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
       displayType: normalizedQuestion.displayType,
+      playerSpellCheckEnabled: normalizedQuestion.playerSpellCheckEnabled,
       responseCorrect:
         env.mode === 'evaluate' ? getScore(normalizedQuestion, session) === 1 : undefined
     };

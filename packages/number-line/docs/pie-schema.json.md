@@ -146,7 +146,7 @@ The question prompt or item stem
 
 # `spellCheckEnabled` (boolean, required)
 
-Indicates if spellcheck is enabled
+Indicates if spellcheck is enabled for the author. Default value is true
 
 # `toolbarEditorPosition` (string, enum)
 

@@ -37,7 +37,7 @@ export interface DrawingResponsePie extends PieModel {
   /** Indicates if Teacher Instructions are enabled */
   teacherInstructionsEnabled: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** Indicates if Background Image is enabled */
@@ -66,9 +66,9 @@ export interface DrawingResponseConfigure extends PromptConfig {
   partialScoring?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 
   /**
    * Student Instructions configuration

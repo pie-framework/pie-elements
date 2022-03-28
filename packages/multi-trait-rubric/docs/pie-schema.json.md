@@ -28,7 +28,7 @@ Indicates if scoring should start at 0 or 1
 
 # `spellCheckEnabled` (boolean, required)
 
-Indicates if spellcheck is enabled
+Indicates if spellcheck is enabled for the author. Default value is true
 
 # `scales` (array, required)
 

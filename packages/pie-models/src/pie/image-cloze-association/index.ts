@@ -60,7 +60,7 @@ export interface ImageClozeAssociationPie extends PieModel {
   /** Indicates if Rationale is enabled */
   rationaleEnabled?: boolean;
 
-  /** Indicates if spellcheck is enabled */
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
   spellCheckEnabled: boolean;
 
   /** Indicates if Teacher Instructions are enabled */
@@ -116,7 +116,7 @@ export interface ImageClozeAssociationConfigure
   teacherInstructions?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
-  spellCheck?: ConfigureProp;
+   spellCheck?: ConfigureProp;
 }

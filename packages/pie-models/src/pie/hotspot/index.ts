@@ -51,6 +51,9 @@ export interface HotspotPie extends PieModel {
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
 
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
   /** Indicates the width of the outline for a selection */
   strokeWidth: number;
 
@@ -83,7 +86,7 @@ export interface MultipleChoiceConfigure extends PromptConfig {
   rationale?: ConfigureProp;
 
   /**
-   * Configuration for the spellcheck
+   * Configuration for the author's spellcheck
    */
   spellCheck?: ConfigureProp;
 
