@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/math-inline-controller",
   "private": true,
-  "version": "5.6.7",
+  "version": "5.6.8",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.19...@pie-element/matrix-configure@0.1.20) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/matrix-configure
+
+
+
+
+
 ## [0.1.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix-configure@0.1.18...@pie-element/matrix-configure@0.1.19) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/matrix-configure

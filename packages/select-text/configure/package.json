@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/select-text-configure",
   "private": true,
-  "version": "5.2.21",
+  "version": "5.2.22",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
