@@ -14,7 +14,7 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/correct-answer-toggle": "^2.3.35",
-    "@pie-lib/mask-markup": "^1.12.2",
+    "@pie-lib/mask-markup": "^1.12.3",
     "@pie-lib/math-rendering": "^2.3.13",
     "@pie-lib/render-ui": "^4.12.5",
     "classnames": "^2.2.5",
