@@ -7,7 +7,8 @@ export default {
     markup: '<p>The {{0}} jumped {{1}} the {{2}}</p>',
     toolbarEditorPosition: 'bottom',
     displayType: 'block',
-    spellCheckEnabled:false,
+    spellCheckEnabled:true,
+    playerSpellCheckEnabled:true,
     choices: {
       0: [
         {
@@ -73,7 +74,12 @@ export default {
       label: 'Rationale'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
+      settings:false,
+      enabled:true
+    },
+    playerSpellCheck: {
+      label: 'Student Spellcheck',
       settings:true,
       enabled:true
     },

@@ -61,8 +61,8 @@ export default {
       label: 'Rationale',
     },
     spellCheck: {
-      label: "Spellcheck",
-      settings:true,
+      label: 'Spellcheck',
+      settings:false,
       enabled:true
     },
     scoringType: {

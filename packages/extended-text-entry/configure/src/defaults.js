@@ -12,7 +12,8 @@ export default {
     promptEnabled: true,
     teacherInstructionsEnabled: true,
     studentInstructionsEnabled: true,
-    spellCheckEnabled:false,
+    spellCheckEnabled:true,
+    playerSpellCheckEnabled:true,
     toolbarEditorPosition: 'bottom'
   },
   configuration: {
@@ -21,7 +22,12 @@ export default {
       label: 'Text-Entry Display Size'
     },
     spellCheck: {
-      label: "Spellcheck",
+      label: 'Spellcheck',
+      settings:false,
+      enabled:true
+    },
+    playerSpellCheck: {
+      label: 'Student Spellcheck',
       settings:true,
       enabled:true
     },

@@ -49,8 +49,6 @@ export class Main extends React.Component {
     const maxHeight = '40vh';
     const toolbarOpts = {};
 
-    console.log(spellCheckEnabled, "spellcheck")
-
     log('[render] disabled? ', disabled);
 
     const teacherInstructionsDiv = <PreviewPrompt defaultClassName="teacher-instructions" prompt={teacherInstructions} />;
@@ -88,6 +86,7 @@ export class Main extends React.Component {
         }
         {model.prompt && (
           <Typography
+            component={'span'}
             className={classes.prompt}
           >
             <PreviewPrompt defaultClassName="prompt" prompt={model.prompt} />

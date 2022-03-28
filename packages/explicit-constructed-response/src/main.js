@@ -26,7 +26,8 @@ export class Main extends React.Component {
     onChange: PropTypes.func,
     alwaysShowCorrect: PropTypes.bool,
     animationsDisabled: PropTypes.bool,
-    maxLengthPerChoice: PropTypes.array
+    maxLengthPerChoice: PropTypes.array,
+    playerSpellCheckEnabled: PropTypes.bool
   };
 
   static defaultProps = {
@@ -86,8 +87,10 @@ export class Main extends React.Component {
       alwaysShowCorrect,
       maxLengthPerChoice,
       maxLengthPerChoiceEnabled,
-      displayType
+      displayType,
+      playerSpellCheckEnabled
     } = this.props;
+
     const { role } = env || {};
     const displayNote = (showCorrectAnswer || mode === 'view' && role === 'instructor') && showNote && note;
     const mainClasses = classNames([classes.mainContainer, {
@@ -125,6 +128,7 @@ export class Main extends React.Component {
           value={value}
           maxLength={maxLengthPerChoice}
           adjustedLimit={maxLengthPerChoiceEnabled}
+          spellCheck={playerSpellCheckEnabled}
         />
         {displayNote && (
           <div

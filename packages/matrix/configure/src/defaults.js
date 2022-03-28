@@ -17,8 +17,8 @@ export default {
       label: 'Teacher Instructions'
     },
     spellCheck: {
-      label: "Spellcheck",
-      settings:true,
+      label: 'Spellcheck',
+      settings:false,
       enabled:true
     },
     prompt: {

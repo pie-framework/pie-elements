@@ -58,7 +58,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
-            "settings": true,
+            "settings": false,
           },
           "studentInstructions": Object {
             "label": "Student Instructions",
@@ -80,7 +80,7 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
             "promptEnabled": undefined,
             "rationaleEnabled": undefined,
             "scoringType": false,
-            "spellCheckEnabled": undefined,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -113,7 +113,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "targetLabel": "",
           "teacherInstructionsEnabled": true,
@@ -132,7 +131,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       markup=""
       nonEmpty={false}
       onChange={[Function]}
-      spellCheck={false}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -149,7 +147,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       <EditableHtml
         markup="Item Stem goes here"
         onChange={[Function]}
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -163,7 +160,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
       <EditableHtml
         markup=""
         onChange={[Function]}
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -182,7 +178,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         <EditableHtml
           markup=""
           onChange={[Function]}
-          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -203,7 +198,6 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
         placementArea={false}
         pluralChoiceLabel="Choices"
         singularChoiceLabel="Choice"
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -281,7 +275,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
-            "settings": true,
+            "settings": false,
           },
           "studentInstructions": Object {
             "label": "Student Instructions",
@@ -303,7 +297,7 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
             "promptEnabled": false,
             "rationaleEnabled": undefined,
             "scoringType": false,
-            "spellCheckEnabled": undefined,
+            "spellCheckEnabled": false,
             "studentInstructionsEnabled": false,
             "teacherInstructionsEnabled": undefined,
           },
@@ -336,7 +330,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
           "rationaleEnabled": true,
           "removeTilesAfterPlacing": true,
           "scoringType": "auto",
-          "spellCheckEnabled": false,
           "studentInstructionsEnabled": true,
           "targetLabel": "",
           "teacherInstructionsEnabled": true,
@@ -355,7 +348,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       markup=""
       nonEmpty={false}
       onChange={[Function]}
-      spellCheck={false}
       toolbarOpts={
         Object {
           "position": "bottom",
@@ -372,7 +364,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       <EditableHtml
         markup="Item Stem goes here"
         onChange={[Function]}
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -386,7 +377,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
       <EditableHtml
         markup=""
         onChange={[Function]}
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",
@@ -405,7 +395,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         <EditableHtml
           markup=""
           onChange={[Function]}
-          spellCheck={false}
           toolbarOpts={
             Object {
               "position": "bottom",
@@ -426,7 +415,6 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
         placementArea={false}
         pluralChoiceLabel="Choices"
         singularChoiceLabel="Choice"
-        spellCheck={false}
         toolbarOpts={
           Object {
             "position": "bottom",

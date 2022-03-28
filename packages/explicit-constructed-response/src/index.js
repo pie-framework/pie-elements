@@ -52,6 +52,7 @@ export default class InlineDropdown extends HTMLElement {
         mode: this._model.mode,
         maxLengthPerChoice: this._model.maxLengthPerChoice,
         maxLengthPerChoiceEnabled: this._model.maxLengthPerChoiceEnabled,
+        playerSpellCheckEnabled: this._model.playerSpellCheckEnabled,
         value: this._session.value,
         feedback: this._model.feedback,
         displayType: this._model.displayType,

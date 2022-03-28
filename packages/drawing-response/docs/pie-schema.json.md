@@ -48,7 +48,7 @@ Indicates if Teacher Instructions are enabled
 
 # `spellCheckEnabled` (boolean, required)
 
-Indicates if spellcheck is enabled
+Indicates if spellcheck is enabled for the author. Default value is true
 
 # `backgroundImageEnabled` (boolean, required)
 

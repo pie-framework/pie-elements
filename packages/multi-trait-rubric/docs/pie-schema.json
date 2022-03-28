@@ -34,7 +34,7 @@
       "title": "excludeZero"
     },
     "spellCheckEnabled": {
-      "description": "Indicates if spellcheck is enabled",
+      "description": "Indicates if spellcheck is enabled for the author. Default value is true",
       "type": "boolean",
       "title": "spellCheckEnabled"
     },
