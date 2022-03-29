@@ -5,7 +5,7 @@ import {
   SessionChangedEvent
 } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
-import InlineDropdown from './inline-dropdown'; 
+import InlineDropdown from './inline-dropdown';
 
 export default class RootInlineDropdown extends HTMLElement {
   constructor() {
@@ -51,6 +51,7 @@ export default class RootInlineDropdown extends HTMLElement {
         feedback: this._model.feedback,
         onChange: this.changeSession
       });
+
       ReactDOM.render(elem, this, () => {
         renderMath(this);
       });

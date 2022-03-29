@@ -71,6 +71,10 @@ export default class Ebsr extends HTMLElement {
     });
   }
 
+  get session() {
+    return this._session;
+  }
+
   setPartModel(part, key) {
     if (this._model && this._model[key]) {
       const { mode } = this._model;

@@ -29,8 +29,9 @@ export default class RubricRender extends HTMLElement {
   _render() {
     if (this._model) {
       const el = (
-        <Rubric value={this._model}/>
+        <Rubric value={this._model} />
       );
+
       ReactDOM.render(el, this);
     }
   }

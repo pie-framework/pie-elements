@@ -55,6 +55,10 @@ export default class SelectText extends HTMLElement {
     this.render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   isSessionComplete() {
     const { selectedTokens } = this._session || {};
     return Array.isArray(selectedTokens) && selectedTokens.length > 0;

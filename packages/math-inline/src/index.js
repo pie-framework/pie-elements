@@ -18,8 +18,8 @@ export default class MathInline extends HTMLElement {
   constructor() {
     super();
     this._configuration = defaults.configuration;
-    this.sessionChangedEventCaller = _.debounce((session) => {
-      this.dispatchEvent(new SessionChangedEvent(session, true));
+    this.sessionChangedEventCaller = _.debounce(() => {
+      this.dispatchEvent(new SessionChangedEvent(this.tagName.toLowerCase(), true));
     }, 1000);
   }
 
@@ -34,6 +34,10 @@ export default class MathInline extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   set configuration(c) {
     this._configuration = c;
     this._render();
@@ -44,7 +48,7 @@ export default class MathInline extends HTMLElement {
       this._session[key] = s[key];
     });
 
-    this.sessionChangedEventCaller(this._session);
+    this.sessionChangedEventCaller();
     log('session: ', this._session);
   }
 
