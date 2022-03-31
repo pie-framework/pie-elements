@@ -172,3 +172,47 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model) => {
+  const { choices } = model;
+  const choicesErrors = {};
+  let correctResponseDefined = false;
+
+  (choices || []).forEach((choice, index) => {
+    const { correct, value, label } = choice;
+
+    if (correct) {
+      correctResponseDefined = true;
+    }
+
+    if (label === '' || label === '<div></div>') {
+      choicesErrors[value] = 'Content should not be empty.';
+    }
+
+    const identicalAnswer = choices.slice(index + 1).some(c => c.label === label);
+
+    if (identicalAnswer) {
+      const message = 'Content should be unique.';
+
+      choicesErrors[value] = choicesErrors[value]
+        ? (choicesErrors[value]).concat('\n', message)
+        : message;
+    }
+  });
+
+  const errors = {};
+
+  if (choices.length < 2) {
+    errors.nbOfAnswerChoices = 'Should be defined at least two choices.';
+  }
+
+  if (!correctResponseDefined) {
+    errors.correctResponse = 'No correct response defined.';
+  }
+
+  if (!isEmpty(choicesErrors)) {
+    errors.choices = choicesErrors;
+  }
+
+  return errors;
+};
