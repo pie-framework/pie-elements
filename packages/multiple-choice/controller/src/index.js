@@ -206,7 +206,7 @@ export const validate = (model = {}, config = {}) => {
   } else if (nbOfChoices > maxAnswerChoices) {
     errors.nbOfAnswerChoices = `No more than ${maxAnswerChoices} choices should be defined.`
   } else if (nbOfChoices < 2 && !minAnswerChoices) {
-    errors.nbOfAnswerChoices = 'Should be defined at least 11 choices.';
+    errors.nbOfAnswerChoices = 'Should be defined at least 2 choices.';
   }
 
   if (!hasCorrectResponse) {
