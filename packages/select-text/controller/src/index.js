@@ -123,6 +123,7 @@ export const model = (question, session, env) => {
   session = session || { selectedToken: [] };
   session.selectedTokens = session.selectedTokens || [];
   const normalizedQuestion = normalize(question);
+
   return new Promise((resolve) => {
     log('[model]', 'normalizedQuestion: ', normalizedQuestion);
     log('[model]', 'session: ', session);
@@ -191,4 +192,27 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { tokens } = model;
+  const { minTokens = 2, maxTokens, maxSelections } = config;
+  const errors = {};
+  const nbOfTokens = (tokens || []).length;
+
+  const nbOfSelections = (tokens || []).reduce((acc, token) => token.correct ? acc + 1 : acc, 0);
+
+  if (nbOfTokens < minTokens) {
+    errors.nbOfTokens = `Should be defined at least ${minTokens} tokens.`;
+  } else if (nbOfTokens > maxTokens) {
+    errors.nbOfTokens = `No more than ${maxTokens} tokens should be defined.`;
+  }
+
+  if (nbOfSelections < 1) {
+    errors.nbOfSelections = `Should be selected at least 1 token.`;
+  } else if (nbOfSelections > maxSelections) {
+    errors.nbOfSelections = `No more than ${maxSelections} tokens should be selected.`;
+  }
+
+  return errors;
 };
