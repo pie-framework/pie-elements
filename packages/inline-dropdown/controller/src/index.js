@@ -250,3 +250,20 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { markup } = model;
+  const { maxResponseAreas } = config;
+
+  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+
+  const errors = {};
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.nbOfResponseAreas = `No more than ${maxResponseAreas} response areas should be defined.`
+  } else if (nbOfResponseAreas < 1) {
+    errors.nbOfResponseAreas = 'Should be defined at least 1 response area.'
+  }
+
+  return errors;
+};
