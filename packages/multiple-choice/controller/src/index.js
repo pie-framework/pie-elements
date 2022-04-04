@@ -175,7 +175,7 @@ export const createCorrectResponseSession = (question, env) => {
 
 export const validate = (model = {}, config = {}) => {
   const { choices } = model;
-  const { minAnswerChoices, maxAnswerChoices } = config;
+  const { minAnswerChoices = 2, maxAnswerChoices } = config;
   const reversedChoices = [...choices || []].reverse();
   const choicesErrors = {};
   let hasCorrectResponse = false;
@@ -202,11 +202,9 @@ export const validate = (model = {}, config = {}) => {
   const nbOfChoices = (choices || []).length;
 
   if (nbOfChoices < minAnswerChoices) {
-    errors.nbOfAnswerChoices = `Should be defined at least ${minAnswerChoices} choices.`
+    errors.nbOfAnswerChoices = `Should be defined at least ${minAnswerChoices} choices.`;
   } else if (nbOfChoices > maxAnswerChoices) {
-    errors.nbOfAnswerChoices = `No more than ${maxAnswerChoices} choices should be defined.`
-  } else if (nbOfChoices < 2 && !minAnswerChoices) {
-    errors.nbOfAnswerChoices = 'Should be defined at least 2 choices.';
+    errors.nbOfAnswerChoices = `No more than ${maxAnswerChoices} choices should be defined.`;
   }
 
   if (!hasCorrectResponse) {
