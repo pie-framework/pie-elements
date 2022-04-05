@@ -16,6 +16,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
+import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
@@ -74,6 +76,28 @@ const styles = (theme) => ({
       backgroundColor: color.disabled(),
     },
   },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  titleText: {
+    fontFamily: 'Cerebri Sans',
+    fontSize: '18px',
+    lineHeight: '19px',
+    color: '#495B8F',
+    marginRight: '5px',
+    marginBottom: '5px'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '5px'
+  }
 });
 
 const Design = withStyles(styles)((props) => {
@@ -120,8 +144,10 @@ const Design = withStyles(styles)((props) => {
     promptEnabled,
     spellCheckEnabled,
     choices,
+    errors
   } = model || {};
 
+  const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
   const nrOfColumnsAvailable =
     choices && choices.length
       ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
@@ -181,7 +207,21 @@ const Design = withStyles(styles)((props) => {
           />
         </InputContainer>
       )}
-      {model.choices.map((choice, index) => (
+      <div className={classes.flexContainer}>
+        <Typography className={classes.titleText}>Choices</Typography>
+        <Tooltip
+          classes={{tooltip: classes.tooltip}}
+          disableFocusListener
+          disableTouchListener
+          placement={'right'}
+          title={'Validation requirements:\nThere should at least two answer choices, non-blank and unique.\nA correct answer must be defined.'}
+        >
+          <Info fontSize={'small'} color={'primary'}/>
+        </Tooltip>
+      </div>
+      {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+      {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
+      {choices.map((choice, index) => (
         <div
           key={`choice-${index}`}
           className={classes.choiceConfigurationHolder}
@@ -202,6 +242,8 @@ const Design = withStyles(styles)((props) => {
             noLabels
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
+            error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
+            noCorrectAnswerError={correctResponseError}
           />
           {rationaleEnabled && (
             <InputContainer
