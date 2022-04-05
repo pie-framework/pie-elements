@@ -259,9 +259,9 @@ export const validate = (model = {}, config = {}) => {
   const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
 
   if (nbOfResponseAreas > maxResponseAreas) {
-    errors.nbOfResponseAreas = `No more than ${maxResponseAreas} response areas should be defined.`;
+    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
   } else if (nbOfResponseAreas < 1) {
-    errors.nbOfResponseAreas = 'Should be defined at least 1 response area.';
+    errors.responseAreasError = 'Should be defined at least 1 response area.';
   }
 
   return errors;
