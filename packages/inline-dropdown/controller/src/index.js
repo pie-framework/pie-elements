@@ -261,7 +261,7 @@ export const validate = (model = {}, config = {}) => {
   if (nbOfResponseAreas > maxResponseAreas) {
     errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
   } else if (nbOfResponseAreas < 1) {
-    errors.responseAreasError = 'Should be defined at least 1 response area.';
+    errors.responseAreasError = 'There should be defined at least 1 response area.';
   }
 
   return errors;
