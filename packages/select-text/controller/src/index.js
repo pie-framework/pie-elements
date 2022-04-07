@@ -203,13 +203,13 @@ export const validate = (model = {}, config = {}) => {
   const nbOfSelections = (tokens || []).reduce((acc, token) => token.correct ? acc + 1 : acc, 0);
 
   if (nbOfTokens < minTokens) {
-    errors.tokensError = `Should be defined at least ${minTokens} tokens.`;
+    errors.tokensError = `There should be at least ${minTokens} tokens defined.`;
   } else if (nbOfTokens > maxTokens) {
     errors.tokensError = `No more than ${maxTokens} tokens should be defined.`;
   }
 
   if (nbOfSelections < 1) {
-    errors.selectionsError = 'Should be selected at least 1 token.';
+    errors.selectionsError = 'There should be at least 1 token selected.';
   } else if (nbOfSelections > maxSelections) {
     errors.selectionsError = `No more than ${maxSelections} tokens should be selected.`;
   }

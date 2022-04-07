@@ -13,8 +13,10 @@ import {
   layout
 } from '@pie-lib/config-ui';
 import Chip from '@material-ui/core/Chip';
+import Info from '@material-ui/icons/Info';
 import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const { Panel, toggle, radio } = settings;
 
@@ -156,12 +158,21 @@ export class Design extends React.Component {
       rationale = {},
       scoringType = {},
       spellCheck = {},
-      highlightChoices = {}
+      highlightChoices = {},
+      minTokens,
+      maxTokens,
+      maxSelections
     } = configuration || {};
     const {
-      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled
+      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled, errors
     } = model || {};
     const toolbarOpts = {};
+    const configSettings = maxSelections || minTokens ||  maxTokens;
+    const maxSelectionsValidation = maxSelections ? `\nNo more than ${maxSelections} tokens should be selected.` : '';
+    const minTokensValidation = minTokens ? `\nThere should be at least ${minTokens} tokens defined.` : '';
+    const maxTokensValidation = maxTokens ? `\nNo more than ${maxTokens} tokens should be defined.` : '';
+
+    const { tokensError, selectionsError } = errors || {};
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -273,6 +284,19 @@ export class Design extends React.Component {
             />
           )}
 
+          {configSettings && <Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'left'}
+            title={`Validation requirements:${maxSelectionsValidation}${minTokensValidation}${maxTokensValidation}`}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+          </Tooltip>}
+
+          {tokensError && <div className={classes.errorText}>{tokensModel}</div>}
+          {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+
           {tokens.settings && (
             <InputContainer
               label={tokens.label || ''}
@@ -378,5 +402,15 @@ export default withStyles(theme => ({
   },
   numberField: {
     width: '180px'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
   }
 }))(Design);
