@@ -96,6 +96,12 @@ const styles = theme => ({
   },
   panelDetails: {
    display: 'block'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '5px',
+    marginTop: '8px'
   }
 });
 
@@ -385,9 +391,11 @@ export class Main extends React.Component {
       promptEnabled,
       teacherInstructionsEnabled,
       choices,
-      spellCheckEnabled
+      spellCheckEnabled,
+      errors
     } =
     model || {};
+    const { responseAreasError } = errors || {};
 
     const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
       <div key={key} className={classes.rationaleChoices}>
@@ -531,6 +539,7 @@ export class Main extends React.Component {
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
             <InfoDialog
               open={dialog.open}
               title={dialog.message}
@@ -575,6 +584,7 @@ export class Main extends React.Component {
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}
+              error={responseAreasError}
             />
             <br />
             {choiceRationaleEnabled && renderChoiceRationale()}
