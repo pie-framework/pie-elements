@@ -3,11 +3,10 @@ import { flattenCorrect, getAllCorrectResponses, score } from './scoring';
 import _ from 'lodash';
 import { getFeedbackForCorrectness } from '@pie-lib/feedback';
 import { partialScoring } from '@pie-lib/controller-utils';
+import isEqual from 'lodash/isEqual';
 import debug from 'debug';
 
 import defaults from './defaults';
-import isEmpty from 'lodash/isEmpty';
-import isEqual from 'lodash/isEqual';
 
 const log = debug('@pie-element:placement-ordering:controller');
 
