@@ -276,3 +276,34 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { rows, choiceMode } = model;
+  const rowsErrors = {};
+
+  (rows || []).forEach(row => {
+    const { id, values = [] } = row;
+    let hasCorrectResponse = false;
+
+    values.forEach(value => {
+      if (value) {
+        hasCorrectResponse = true;
+      }
+    });
+
+    if (!hasCorrectResponse) {
+      rowsErrors[id] = 'No correct response defined.';
+    }
+  });
+
+  const errors = {};
+
+  if (!isEmpty(rowsErrors)) {
+    errors.rowsErrors = rowsErrors;
+    errors.correctResponseError = choiceMode === 'radio'
+      ? 'Should be defined a correct response for every row.'
+      : 'Should be defined at least one correct response for every row.';
+  }
+
+  return errors;
+};
