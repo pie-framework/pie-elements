@@ -6,6 +6,7 @@ import { partialScoring } from '@pie-lib/controller-utils';
 import debug from 'debug';
 
 import defaults from './defaults';
+import isEqual from 'lodash/isEqual';
 
 const log = debug('@pie-element:placement-ordering:controller');
 
@@ -189,4 +190,18 @@ export const createCorrectResponseSession = (question, env) => {
       resolve(null);
     }
   });
+};
+
+export const validate = (model = {}, config = {}) => {
+  const { choices, correctResponse } = model;
+  const errors = {};
+
+  const choicesIds = (choices || []).map(choice => choice.id);
+  const correctResponseIds = (correctResponse || []).map(response => response.id || response);
+
+  if (isEqual(choicesIds, correctResponseIds)) {
+    errors.orderError = 'The correct ordering should not be identical to the initial ordering.';
+  }
+
+  return errors;
 };
