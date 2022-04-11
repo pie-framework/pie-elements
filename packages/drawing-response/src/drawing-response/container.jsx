@@ -178,7 +178,7 @@ export class Container extends Component {
       TextEntry
     } = this.state;
 
-    const heightToUse = drawableDimensions * this.state.scale;
+    const heightToUse = drawableDimensions.height * this.state.scale;
 
     return (
       <div className={classes.base}>
