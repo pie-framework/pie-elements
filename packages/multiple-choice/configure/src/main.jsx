@@ -79,14 +79,14 @@ const styles = (theme) => ({
   flexContainer: {
     display: 'flex',
     alignItems: 'center',
+    marginBottom: '5px'
   },
   titleText: {
     fontFamily: 'Cerebri Sans',
     fontSize: '18px',
     lineHeight: '19px',
     color: '#495B8F',
-    marginRight: '5px',
-    marginBottom: '5px'
+    marginRight: '5px'
   },
   tooltip: {
     fontSize: '12px',
@@ -134,7 +134,7 @@ const Design = withStyles(styles)((props) => {
     spellCheck = {},
     gridColumns,
   } = configuration || {};
-  let { maxAnswerChoices } = configuration || {};
+  let { minAnswerChoices, maxAnswerChoices } = configuration || {};
   const {
     limitChoicesNumber,
     teacherInstructionsEnabled,
@@ -174,6 +174,12 @@ const Design = withStyles(styles)((props) => {
     maxAnswerChoices = MAX_CHOICES;
   }
 
+  const validationMessage = 'Validation requirements:\n' +
+    `There should be at least ${minAnswerChoices}` +
+    (maxAnswerChoices ? ` and at most ${maxAnswerChoices}` : '') + ' answer choices.\n' +
+    'Every answer choice should be non-blank and unique.\n' +
+    'A correct answer must be defined.';
+
   const Content = (
     <div>
       {teacherInstructionsEnabled && (
@@ -210,11 +216,11 @@ const Design = withStyles(styles)((props) => {
       <div className={classes.flexContainer}>
         <Typography className={classes.titleText}>Choices</Typography>
         <Tooltip
-          classes={{tooltip: classes.tooltip}}
+          classes={{ tooltip: classes.tooltip }}
           disableFocusListener
           disableTouchListener
           placement={'right'}
-          title={'Validation requirements:\nThere should at least two answer choices, non-blank and unique.\nA correct answer must be defined.'}
+          title={validationMessage}
         >
           <Info fontSize={'small'} color={'primary'}/>
         </Tooltip>
@@ -301,12 +307,7 @@ const Design = withStyles(styles)((props) => {
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
-            classes={{
-              root:
-                maxAnswerChoices && model.choices.length >= maxAnswerChoices
-                  ? classes.disableButton
-                  : undefined,
-            }}
+            classes={{ root: maxAnswerChoices && model.choices.length >= maxAnswerChoices && classes.disableButton }}
             className={classes.addButton}
             variant="contained"
             color="primary"
@@ -444,14 +445,8 @@ export class Main extends React.Component {
                 open: false,
               },
             });
-          },
-          onCancel: () =>
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            }),
-        },
+          }
+        }
       });
     } else {
       model.choices.splice(index, 1);
@@ -469,40 +464,17 @@ export class Main extends React.Component {
       maxAnswerChoices = MAX_CHOICES;
     }
 
-    if (maxAnswerChoices && model.choices.length === maxAnswerChoices) {
-      this.setState({
-        dialog: {
-          open: true,
-          message: `There can't be more than ${maxAnswerChoices} choices.`,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            });
-          },
-          onCancel: () =>
-            this.setState({
-              dialog: {
-                open: false,
-              },
-            }),
-        },
-      });
-    } else {
-      model.choices.push({
-        label: '',
-        value: utils.firstAvailableIndex(
-          model.choices.map((c) => c.value),
-          0
-        ),
-        feedback: {
-          type: 'none',
-        },
-      });
-
-      this.props.onModelChanged(model);
+    if (maxAnswerChoices && model.choices.length >= maxAnswerChoices) {
+      return;
     }
+
+    model.choices.push({
+      label: '',
+      value: utils.firstAvailableIndex(model.choices.map((c) => c.value), 0),
+      feedback: { type: 'none' }
+    });
+
+    this.props.onModelChanged(model);
   };
 
   onChoiceChanged = (index, choice) => {
@@ -545,15 +517,18 @@ export class Main extends React.Component {
           model.choices = model.choices.map((c) => {
             if (correctFound) {
               c.correct = false;
+
               return c;
             }
 
             if (c.correct) {
               correctFound = true;
             }
+
             return c;
           });
         }
+
         onModelChanged(model, true);
         break;
       }
