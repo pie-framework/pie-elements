@@ -182,13 +182,13 @@ export const validate = (model = {}, config = {}) => {
   const nbOfShapes = (allShapes || []).length;
 
   if (nbOfShapes < minShapes) {
-    errors.shapesError = `Should be defined at least ${minShapes} shapes.`;
+    errors.shapesError = `There should be at least ${minShapes} shapes defined.`;
   } else if (nbOfShapes > maxShapes) {
     errors.shapesError = `No more than ${maxShapes} shapes should be defined.`;
   }
 
   if (nbOfSelections < 1) {
-    errors.selectionsError = 'Should be selected at least 1 shape.';
+    errors.selectionsError = 'There should be at least 1 shape selected.';
   } else if (nbOfSelections > maxSelections) {
     errors.selectionsError = `No more than ${maxSelections} shapes should be selected.`;
   }
