@@ -21,6 +21,10 @@ export default class MultiTraitRubric extends HTMLElement {
     this._session = s;
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
