@@ -8,7 +8,7 @@
   "main": "lib/index.js",
   "description": "",
   "dependencies": {
-    "@pie-lib/scoring-config": "^3.5.42",
+    "@pie-lib/scoring-config": "3.5.133-next.224",
     "@pie-ui/point-intercept": "^1.2.16"
   },
   "author": "pie framework developers",
