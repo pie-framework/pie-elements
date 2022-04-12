@@ -51,6 +51,7 @@ export default class RootInlineDropdown extends HTMLElement {
         feedback: this._model.feedback,
         onChange: this.changeSession
       });
+
       ReactDOM.render(elem, this, () => {
         renderMath(this);
       });

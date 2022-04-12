@@ -40,6 +40,10 @@ export default class Categorize extends HTMLElement {
     this.render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   changeAnswers(answers) {
     this._session.answers = answers;
 
@@ -62,6 +66,7 @@ export default class Categorize extends HTMLElement {
         onAnswersChange: this.changeAnswers.bind(this),
         onShowCorrectToggle: this.onShowCorrectToggle.bind(this),
       });
+
       ReactDOM.render(el, this, () => {
         renderMath(this);
       });

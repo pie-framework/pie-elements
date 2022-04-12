@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.14.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.24...@pie-element/calculator@2.14.25) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.14.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.23...@pie-element/calculator@2.14.24) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.14.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.22...@pie-element/calculator@2.14.23) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.14.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.21...@pie-element/calculator@2.14.22) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.14.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.20...@pie-element/calculator@2.14.21) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
+## [2.14.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.19...@pie-element/calculator@2.14.20) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/calculator
+
+
+
+
+
 ## [2.14.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator@2.14.18...@pie-element/calculator@2.14.19) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/calculator

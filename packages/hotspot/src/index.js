@@ -42,6 +42,10 @@ export default class Hotspot extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   onSelectChoice(data) {
     updateSessionValue(this._session, this._model, data);
 
@@ -63,6 +67,7 @@ export default class Hotspot extends HTMLElement {
         session: this._session,
         onSelectChoice: this.onSelectChoice.bind(this)
       });
+
       ReactDOM.render(el, this, () => {
         renderMath(this);
       });

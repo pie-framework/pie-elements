@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.14...@pie-element/math-inline-configure@5.6.15) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.13...@pie-element/math-inline-configure@5.6.14) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.12...@pie-element/math-inline-configure@5.6.13) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.11...@pie-element/math-inline-configure@5.6.12) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.10...@pie-element/math-inline-configure@5.6.11) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.9...@pie-element/math-inline-configure@5.6.10) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/math-inline-configure
+
+
+
+
+
+## [5.6.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.8...@pie-element/math-inline-configure@5.6.9) (2022-01-24)
+
+
+### Bug Fixes
+
+* **math-inline:** default editors to grade 8-HS PD-1385 ([54dc77a](https://github.com/pie-framework/pie-elements/commit/54dc77afbbb8c9e3413cb1cb303d5defd72f32d2))
+* **math-inline:** do not hide math editor when focus is still on response template ([ef07786](https://github.com/pie-framework/pie-elements/commit/ef07786306c1d287b648000b0a2a0223cec3760c))
+* **math-inline:** make response area button to fit in response template area ([efaa45d](https://github.com/pie-framework/pie-elements/commit/efaa45d2dc936c8d3dec6158e1e2e22392025e31))
+* **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
+
+
+
+
+
 ## [5.6.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline-configure@5.6.7...@pie-element/math-inline-configure@5.6.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/math-inline-configure

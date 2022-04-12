@@ -38,6 +38,10 @@ export default class NumberLine extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
@@ -151,6 +155,7 @@ export default class NumberLine extends HTMLElement {
         };
 
         let el = React.createElement(RootComponent, props);
+
         ReactDOM.render(el, this, () => {
           renderMath(this);
         });

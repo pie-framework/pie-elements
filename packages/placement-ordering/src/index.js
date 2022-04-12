@@ -67,4 +67,8 @@ export default class Ordering extends HTMLElement {
     this._session = newSession;
     this.render();
   }
+
+  get session() {
+    return this._session;
+  }
 }
