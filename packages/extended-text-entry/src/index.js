@@ -53,6 +53,10 @@ export default class RootExtendedTextEntry extends HTMLElement {
     this.render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   handleChange(value) {
     this._session.value = value;
 
@@ -72,6 +76,7 @@ export default class RootExtendedTextEntry extends HTMLElement {
         session: this._session,
         onChange: this.handleChange.bind(this)
       });
+
       ReactDOM.render(elem, this);
     }
   }

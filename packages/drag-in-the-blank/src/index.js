@@ -42,6 +42,7 @@ export default class InlineDropdown extends HTMLElement {
         value: this._session.value,
         onChange: this.changeSession
       });
+
       ReactDOM.render(elem, this);
     }
   };
