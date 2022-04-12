@@ -215,7 +215,7 @@ export class Drawable extends React.Component {
     const resizeValid = this.checkIfResizeValid(width, height);
     const hasMinimumWidth = width > 150 && height > 150;
 
-    if (resizeValid && hasMinimumWidth) {
+    if (resizeValid && hasMinimumWidth && box) {
       box.style.width = `${width}px`;
       box.style.height = `${height}px`;
 

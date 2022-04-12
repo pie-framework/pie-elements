@@ -7,7 +7,7 @@
   "author": "Pie Framework Authors",
   "dependencies": {
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/rubric": "^0.4.14",
+    "@pie-lib/rubric": "^0.4.15",
     "debug": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

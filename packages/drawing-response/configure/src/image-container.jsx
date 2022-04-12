@@ -13,8 +13,8 @@ export class ImageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxImageWidth: 0,
-      maxImageHeight: 0,
+      maxImageWidth: "100%",
+      maxImageHeight: "auto",
       dragEnabled: true,
       dropzoneActive: false,
     };
@@ -117,11 +117,13 @@ export class ImageContainer extends Component {
 
   startResizing = (e) => {
     const box = this.image;
-    const { maxImageWidth } = this.state;
+    const { maxImageWidth, dimensions } = this.state;
 
     const bounds = e.target.getBoundingClientRect();
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
+
+    const imageAspectRatio = dimensions.width / dimensions.height;
 
     const fitsContainer = x <= maxImageWidth + 5;
     const hasMinimumWidth = x > 150 && y > 150;
@@ -130,13 +132,13 @@ export class ImageContainer extends Component {
     const keepAspectRatioHeight = x > y ? 'auto' : y;
 
     if (fitsContainer && hasMinimumWidth) {
-      box.style.width = `${keepAspectRatioWidth}px`;
-      box.style.height = `${keepAspectRatioHeight}px`;
+      box.style.width = `${x}px`;
+      box.style.height = `${x/imageAspectRatio}px`;
 
       this.setState({
         dimensions: {
-          height: keepAspectRatioHeight,
-          width: keepAspectRatioWidth,
+          height:x/imageAspectRatio,
+          width:x,
         },
       });
     }
@@ -212,8 +214,7 @@ export class ImageContainer extends Component {
                   src={imageUrl}
                   style={{
                     maxWidth: maxImageWidth,
-                    maxHeight: maxImageHeight,
-                    ...dimensions,
+                    maxHeight: maxImageHeight
                   }}
                   alt=""
                 />

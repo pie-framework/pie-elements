@@ -24,6 +24,7 @@ export default class MultipleChoice extends HTMLElement {
             session: this._session,
             onChoiceChanged: this._onChange.bind(this)
           });
+
           ReactDOM.render(element, this, () => {
             log('render complete - render math');
             renderMath(this);

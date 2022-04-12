@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Main from './main';
 import { SessionChangedEvent } from '@pie-framework/pie-player-events';
 import { renderMath } from '@pie-lib/math-rendering';
-
 import get from 'lodash/get';
 
 export { Main as Component };
@@ -34,6 +33,10 @@ export default class Match extends HTMLElement {
   set session(s) {
     this._session = s;
     this._render();
+  }
+
+  get session() {
+    return this._session;
   }
 
   sessionChanged(s) {

@@ -21,6 +21,10 @@ export default class Graphing extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
