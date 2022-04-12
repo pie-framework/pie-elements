@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.25...@pie-element/image-cloze-association@3.6.26) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
 ## [3.6.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.24...@pie-element/image-cloze-association@3.6.25) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association

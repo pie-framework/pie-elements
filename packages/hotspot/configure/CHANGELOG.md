@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.6.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.15...@pie-element/hotspot-configure@4.6.16) (2022-04-12)
+
+**Note:** Version bump only for package @pie-element/hotspot-configure
+
+
+
+
+
 ## [4.6.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.14...@pie-element/hotspot-configure@4.6.15) (2022-03-28)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure
