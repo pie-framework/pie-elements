@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.4.4...@pie-element/graphing-controller@3.4.5) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/graphing-controller
+
+
+
+
+
 ## [3.4.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-controller@3.3.0...@pie-element/graphing-controller@3.4.1) (2021-11-11)
 
 **Note:** Version bump only for package @pie-element/graphing-controller

@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.26](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.25...@pie-element/select-text@6.5.26) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.24...@pie-element/select-text@6.5.25) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.23...@pie-element/select-text@6.5.24) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.22...@pie-element/select-text@6.5.23) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.21...@pie-element/select-text@6.5.22) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.20...@pie-element/select-text@6.5.21) (2022-02-17)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.19...@pie-element/select-text@6.5.20) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/select-text
+
+
+
+
+
+## [6.5.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.18...@pie-element/select-text@6.5.19) (2022-01-24)
+
+
+### Bug Fixes
+
+* Try to re-trigger ([04e6e41](https://github.com/pie-framework/pie-elements/commit/04e6e41d36a630b5d11abb8683d6b08ec0d2b3ec))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+
+
+
 ## [6.5.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text@6.5.17...@pie-element/select-text@6.5.18) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/select-text

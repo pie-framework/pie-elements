@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.14.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.6...@pie-element/number-line@5.14.7) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.5...@pie-element/number-line@5.14.6) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.4...@pie-element/number-line@5.14.5) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.3...@pie-element/number-line@5.14.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.2...@pie-element/number-line@5.14.3) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.1...@pie-element/number-line@5.14.2) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+## [5.14.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.14.0...@pie-element/number-line@5.14.1) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
+# [5.14.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.13.9...@pie-element/number-line@5.14.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **number-line:** Added fractions sign ([fa95e96](https://github.com/pie-framework/pie-elements/commit/fa95e963c44a6da11657fdaba3876009f3627d81))
+* **number-line:** Displayed only the numerator when the denominator is 1 ([f1a07e8](https://github.com/pie-framework/pie-elements/commit/f1a07e8410c29d64837b94ce3f01f16afc1af04e))
+* **number-line:** Fixed 'You have not entered a response' issue in pits ([0618d5e](https://github.com/pie-framework/pie-elements/commit/0618d5eeadbf38aca04b0f4c7e3529c2b479ec6b))
+* **number-line:** Fixed line fraction for pits ([b949180](https://github.com/pie-framework/pie-elements/commit/b949180b109cd30842c7d00cc613bb8893a995ad))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+### Features
+
+* **number-line:** Added support for fractions PD-472 ([4f5f525](https://github.com/pie-framework/pie-elements/commit/4f5f525f1878fe70d32cfae0b79925fcc685031c))
+* **number-line:** Refactoring ([392ae4f](https://github.com/pie-framework/pie-elements/commit/392ae4f20bf297d2482179b3b437fad0c69e3c64))
+* **number-line:** Refactoring ([1fb0bb8](https://github.com/pie-framework/pie-elements/commit/1fb0bb8b302efcabd06abd9c66272e9b4353dd02))
+
+
+
+
+
+## [5.13.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.13.8...@pie-element/number-line@5.13.9) (2022-01-11)
+
+**Note:** Version bump only for package @pie-element/number-line
+
+
+
+
+
 ## [5.13.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line@5.13.7...@pie-element/number-line@5.13.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/number-line

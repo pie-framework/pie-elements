@@ -1,14 +1,14 @@
 {
   "name": "@pie-element/number-line-configure",
   "private": true,
-  "version": "4.8.13",
+  "version": "4.9.6",
   "main": "lib/index.js",
   "module": "src/index.js",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "10.11.0",
-    "@pie-lib/editable-html": "7.20.0",
+    "@pie-lib/config-ui": "^10.11.0",
+    "@pie-lib/editable-html": "^7.20.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   }
