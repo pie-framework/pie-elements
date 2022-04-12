@@ -272,8 +272,6 @@ export class Main extends React.Component {
     const { graph, spellCheckEnabled } = model;
     const { prompt = {}, spellCheck = {} } = configuration || {};
 
-
-    console.log(spellCheckEnabled, spellCheckEnabled)
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
     );
