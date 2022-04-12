@@ -2238,7 +2238,7 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@10.11.0", "@pie-lib/config-ui@^10.11.0":
+"@pie-lib/config-ui@^10.11.0":
   version "10.11.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.11.0.tgz#5714c3feda6cc525dd995705a61332055e506ea6"
   integrity sha512-pkEPCM/Jg8uwXpwPhMFeoSUxsyMYawh7Hpl1VqSSOcScRmGtTCyCtgBYrOcGjuEYgudMXjNwyIxVCXJG4OnyrA==
@@ -2286,7 +2286,7 @@
     react-dnd "^11.1.3"
     react-dnd-html5-backend "^11.1.3"
 
-"@pie-lib/editable-html@7.20.0", "@pie-lib/editable-html@^7.20.0":
+"@pie-lib/editable-html@^7.20.0":
   version "7.20.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.20.0.tgz#4179ac69906856051e1c173bfd2648a055c05f5c"
   integrity sha512-v+EEgR8emJrYgj1H2sPqKquxYqjU2K8ScxIDytJDNpmM+R2BssapUR5da7MoIVrNmQ3OMn0DMWSM6nch4Th6KQ==
@@ -2391,7 +2391,7 @@
     slate-react "^0.14.3"
     to-style "^1.3.3"
 
-"@pie-lib/math-input@6.6.9", "@pie-lib/math-input@^6.6.9":
+"@pie-lib/math-input@^6.6.9":
   version "6.6.9"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-input/-/math-input-6.6.9.tgz#d4b33785cf352ccc0d1c8f26dec26b094d32aeed"
   integrity sha512-0CMN5CZh59ZJ37kw70kZPV3JYj7qSJy2ECsyCGy5CUWdu9RdRY+hfqaTqgWWa9UKBmvypnxkAvwZedRJLRnxPg==
@@ -2412,7 +2412,7 @@
     lodash "^4.17.11"
     mathjax-full "^3.2.0"
 
-"@pie-lib/math-toolbar@1.8.9", "@pie-lib/math-toolbar@^1.8.9":
+"@pie-lib/math-toolbar@^1.8.9":
   version "1.8.9"
   resolved "https://registry.yarnpkg.com/@pie-lib/math-toolbar/-/math-toolbar-1.8.9.tgz#5f49e8b91099966f00150c57e7b14790704acb41"
   integrity sha512-8tnRAiWh9Ph3EdgqwnZxz5Remg0gA8Rt/q2TA7oeaj2mKTAVKTWy25G9hYl3yT1LIv5ofGszA9+/EoNcMZIc9A==
@@ -2462,7 +2462,7 @@
     prop-types "^15.7.2"
     react-transition-group "^2.5.2"
 
-"@pie-lib/rubric@0.4.15":
+"@pie-lib/rubric@^0.4.15":
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/@pie-lib/rubric/-/rubric-0.4.15.tgz#62fa270ee42affb6d3bdb1e9599b0157db882f1d"
   integrity sha512-hqKFSQ82bht0g/Qcu7U4KFjPpUb3gVpBw7bi/yvNC0svydsd4TnYdZfL72mXqcPqkD8Om2D4nWguNCcL4Cn7wg==
@@ -2477,7 +2477,7 @@
     react-beautiful-dnd "^11.0.2"
     react-dom "^16.9.0"
 
-"@pie-lib/scoring-config@3.5.154":
+"@pie-lib/scoring-config@^3.5.154":
   version "3.5.154"
   resolved "https://registry.yarnpkg.com/@pie-lib/scoring-config/-/scoring-config-3.5.154.tgz#b6ea5acf55df38bba542d64bff18bd1a82857a0d"
   integrity sha512-qFrp212rxKsRfwe4zLs82fkwRGW5DXxqigD2CuFNkJi5iZ9VGlFp1B7Ard1iCzACxpSaisgra5gcH623C2Y8Nw==

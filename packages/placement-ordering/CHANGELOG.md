@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.5...@pie-element/placement-ordering@7.8.6) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.4...@pie-element/placement-ordering@7.8.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.3...@pie-element/placement-ordering@7.8.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.2...@pie-element/placement-ordering@7.8.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.1...@pie-element/placement-ordering@7.8.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+## [7.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.0...@pie-element/placement-ordering@7.8.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
+# [7.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.7.9...@pie-element/placement-ordering@7.8.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **placement-ordering:** Changed alternatesResponse model structure PD-1287 BREAKING CHANGE: Changed alternateResponse: string[][] to { response: string[] }[] ([1414eaf](https://github.com/pie-framework/pie-elements/commit/1414eafcfc4b553bc6f688f4863082b991f72165))
+* **placement-ordering:** fix create correct session for IBX browse items PD-1349 ([e84c30d](https://github.com/pie-framework/pie-elements/commit/e84c30dd075085ef5d917f2893568bca2003d225))
+* **placement-ordering:** fix issues with dragging answer choices in authoring PD-1329 ([286a495](https://github.com/pie-framework/pie-elements/commit/286a495e313cb33227a8672f38331b283c283583))
+
+
+### Features
+
+* **placement-ordering:** add baseline validation for authoring PD-600, PD-1334 ([2350279](https://github.com/pie-framework/pie-elements/commit/23502790000e3c4f14e4dae6744519b004eb1172))
+* **placement-ordering:** add shuffle button to UI for authoring PD-1300 ([734fcda](https://github.com/pie-framework/pie-elements/commit/734fcda4b50b50cb54d66789b854f270818ba6fc))
+* **placement-ordering:** remove list buttons from choice labels PD-1337 ([1f1f927](https://github.com/pie-framework/pie-elements/commit/1f1f9276a29d84b551a3eaa93e15738ef1e22681))
+
+
+
+
+
 ## [7.7.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.7.8...@pie-element/placement-ordering@7.7.9) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

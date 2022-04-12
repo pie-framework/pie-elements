@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.5...@pie-element/math-inline@5.9.6) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.4...@pie-element/math-inline@5.9.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.3...@pie-element/math-inline@5.9.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.2...@pie-element/math-inline@5.9.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.1...@pie-element/math-inline@5.9.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+## [5.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.0...@pie-element/math-inline@5.9.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
+# [5.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.8.12...@pie-element/math-inline@5.9.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **math-inline:** default editors to grade 8-HS PD-1385 ([54dc77a](https://github.com/pie-framework/pie-elements/commit/54dc77afbbb8c9e3413cb1cb303d5defd72f32d2))
+* **math-inline:** do not hide math editor when focus is still on response template ([ef07786](https://github.com/pie-framework/pie-elements/commit/ef07786306c1d287b648000b0a2a0223cec3760c))
+* **math-inline:** Evaluate should not highlight answers when no correct response is defined + refactoring PD-994 ([58bfe7c](https://github.com/pie-framework/pie-elements/commit/58bfe7c209da39a31b20d2d905d14b5697aa5375))
+* **math-inline:** fix gather in pits PD-1417 ([c3204da](https://github.com/pie-framework/pie-elements/commit/c3204da09402c9ec33bb266e80d8489d4b433a5c))
+* **math-inline:** fix gather not working unless show correct answer is first turned off PD-1417 ([11f8c7f](https://github.com/pie-framework/pie-elements/commit/11f8c7f0117b2ea563da002ce28eb961aec4e8c8))
+* **math-inline:** Fixed left-right arrow ([e891113](https://github.com/pie-framework/pie-elements/commit/e89111398ee4747541809b0ffa84715fa8cc7620))
+* **math-inline:** Fixed parallelogram for pits ([a5ead4f](https://github.com/pie-framework/pie-elements/commit/a5ead4f5fd0fc949223bb92cb2f61caf7223d06c))
+* **math-inline:** Initialized correctResponse in evaluate mode ([27161c1](https://github.com/pie-framework/pie-elements/commit/27161c154c2dcc7bfd2a3cb3d7f8ec158f23beb8))
+* **math-inline:** make response area button to fit in response template area ([efaa45d](https://github.com/pie-framework/pie-elements/commit/efaa45d2dc936c8d3dec6158e1e2e22392025e31))
+* **math-inline:** override response area block style for PRB - PD-1300 ([ba1a038](https://github.com/pie-framework/pie-elements/commit/ba1a038066b7d9d41ef244da0327f8ea8f4f0c28))
+
+
+### Features
+
+* **math-inline:** display rationale and teacher instructions link in instructor view mode PD-1380 ([8e75f89](https://github.com/pie-framework/pie-elements/commit/8e75f89fb3296c1b76f520da2c193dcfc9daa031))
+
+
+
+
+
 ## [5.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.8.11...@pie-element/math-inline@5.8.12) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/math-inline

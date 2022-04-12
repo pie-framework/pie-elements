@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.10.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.15...@pie-element/hotspot@4.10.16) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.14...@pie-element/hotspot@4.10.15) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.13...@pie-element/hotspot@4.10.14) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.12...@pie-element/hotspot@4.10.13) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.11...@pie-element/hotspot@4.10.12) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.10...@pie-element/hotspot@4.10.11) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/hotspot
+
+
+
+
+
+## [4.10.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.9...@pie-element/hotspot@4.10.10) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+
+
+
 ## [4.10.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot@4.10.8...@pie-element/hotspot@4.10.9) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/hotspot

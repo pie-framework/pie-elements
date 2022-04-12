@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.14...@pie-element/extended-text-entry-configure@5.4.15) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.13...@pie-element/extended-text-entry-configure@5.4.14) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.12...@pie-element/extended-text-entry-configure@5.4.13) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.11...@pie-element/extended-text-entry-configure@5.4.12) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.10...@pie-element/extended-text-entry-configure@5.4.11) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.9...@pie-element/extended-text-entry-configure@5.4.10) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/extended-text-entry-configure
+
+
+
+
+
+## [5.4.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.8...@pie-element/extended-text-entry-configure@5.4.9) (2022-01-24)
+
+
+### Bug Fixes
+
+* **math-inline, extended-text-entry:** use new editors ([2123b8a](https://github.com/pie-framework/pie-elements/commit/2123b8a6d930852a629140053a8459dbc75f281f))
+
+
+
+
+
 ## [5.4.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry-configure@5.4.7...@pie-element/extended-text-entry-configure@5.4.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry-configure

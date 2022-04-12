@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.14...@pie-element/graphing-configure@3.3.15) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.13...@pie-element/graphing-configure@3.3.14) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.12...@pie-element/graphing-configure@3.3.13) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.11...@pie-element/graphing-configure@3.3.12) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.10...@pie-element/graphing-configure@3.3.11) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.9...@pie-element/graphing-configure@3.3.10) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
+## [3.3.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.8...@pie-element/graphing-configure@3.3.9) (2022-01-24)
+
+
+### Bug Fixes
+
+* **graphing:** no correctness indicator if correct response is authored PD-1500 ([f03b8c1](https://github.com/pie-framework/pie-elements/commit/f03b8c15919a4fa3bb3eb91d56fd4b7d45508e83))
+
+
+
+
+
 ## [3.3.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.7...@pie-element/graphing-configure@3.3.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

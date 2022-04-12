@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.24...@pie-element/image-cloze-association@3.6.25) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.23...@pie-element/image-cloze-association@3.6.24) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.22...@pie-element/image-cloze-association@3.6.23) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.21...@pie-element/image-cloze-association@3.6.22) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.20...@pie-element/image-cloze-association@3.6.21) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.19...@pie-element/image-cloze-association@3.6.20) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/image-cloze-association
+
+
+
+
+
+## [3.6.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.18...@pie-element/image-cloze-association@3.6.19) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+* **image-cloze-association:** show correct toggle should not be visible when answer is correct PD-1327 ([e0c7b3f](https://github.com/pie-framework/pie-elements/commit/e0c7b3fa15f3ed94a4e78589980230e798ebf91d))
+
+
+
+
+
 ## [3.6.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/image-cloze-association@3.6.17...@pie-element/image-cloze-association@3.6.18) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/image-cloze-association
