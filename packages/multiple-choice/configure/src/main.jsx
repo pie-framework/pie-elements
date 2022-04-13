@@ -18,6 +18,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
+import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
@@ -132,9 +133,9 @@ const Design = withStyles(styles)((props) => {
     settingsPanelDisabled,
     choicesLayout,
     spellCheck = {},
-    gridColumns,
+    gridColumns
   } = configuration || {};
-  let { minAnswerChoices, maxAnswerChoices } = configuration || {};
+  let { maxAnswerChoices } = configuration || {};
   const {
     limitChoicesNumber,
     teacherInstructionsEnabled,
@@ -144,10 +145,10 @@ const Design = withStyles(styles)((props) => {
     promptEnabled,
     spellCheckEnabled,
     choices,
-    errors
+    // errors
   } = model || {};
 
-  const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
+  // const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
   const nrOfColumnsAvailable =
     choices && choices.length
       ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
@@ -174,11 +175,7 @@ const Design = withStyles(styles)((props) => {
     maxAnswerChoices = MAX_CHOICES;
   }
 
-  const validationMessage = 'Validation requirements:\n' +
-    `There should be at least ${minAnswerChoices}` +
-    (maxAnswerChoices ? ` and at most ${maxAnswerChoices}` : '') + ' answer choices.\n' +
-    'Every answer choice should be non-blank and unique.\n' +
-    'A correct answer must be defined.';
+  // const validationMessage = generateValidationMessage(configuration);
 
   const Content = (
     <div>
@@ -213,20 +210,20 @@ const Design = withStyles(styles)((props) => {
           />
         </InputContainer>
       )}
-      <div className={classes.flexContainer}>
-        <Typography className={classes.titleText}>Choices</Typography>
-        <Tooltip
-          classes={{ tooltip: classes.tooltip }}
-          disableFocusListener
-          disableTouchListener
-          placement={'right'}
-          title={validationMessage}
-        >
-          <Info fontSize={'small'} color={'primary'}/>
-        </Tooltip>
-      </div>
-      {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
-      {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
+      {/*<div className={classes.flexContainer}>*/}
+      {/*  <Typography className={classes.titleText}>Choices</Typography>*/}
+      {/*  <Tooltip*/}
+      {/*    classes={{ tooltip: classes.tooltip }}*/}
+      {/*    disableFocusListener*/}
+      {/*    disableTouchListener*/}
+      {/*    placement={'right'}*/}
+      {/*    title={validationMessage}*/}
+      {/*  >*/}
+      {/*    <Info fontSize={'small'} color={'primary'}/>*/}
+      {/*  </Tooltip>*/}
+      {/*</div>*/}
+      {/*{correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}*/}
+      {/*{answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}*/}
       {choices.map((choice, index) => (
         <div
           key={`choice-${index}`}
@@ -248,8 +245,8 @@ const Design = withStyles(styles)((props) => {
             noLabels
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
-            error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
-            noCorrectAnswerError={correctResponseError}
+            // error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
+            // noCorrectAnswerError={correctResponseError}
           />
           {rationaleEnabled && (
             <InputContainer

@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.5...@pie-element/number-line-configure@4.9.6) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.4...@pie-element/number-line-configure@4.9.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.3...@pie-element/number-line-configure@4.9.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.2...@pie-element/number-line-configure@4.9.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.1...@pie-element/number-line-configure@4.9.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+## [4.9.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.9.0...@pie-element/number-line-configure@4.9.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
+# [4.9.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.8.14...@pie-element/number-line-configure@4.9.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **number-line:** Fixed 'You have not entered a response' issue in pits ([0618d5e](https://github.com/pie-framework/pie-elements/commit/0618d5eeadbf38aca04b0f4c7e3529c2b479ec6b))
+
+
+### Features
+
+* **number-line:** Added support for fractions PD-472 ([4f5f525](https://github.com/pie-framework/pie-elements/commit/4f5f525f1878fe70d32cfae0b79925fcc685031c))
+* **number-line:** Refactoring ([1fb0bb8](https://github.com/pie-framework/pie-elements/commit/1fb0bb8b302efcabd06abd9c66272e9b4353dd02))
+
+
+
+
+
+## [4.8.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.8.13...@pie-element/number-line-configure@4.8.14) (2022-01-11)
+
+**Note:** Version bump only for package @pie-element/number-line-configure
+
+
+
+
+
 ## [4.8.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/number-line-configure@4.8.12...@pie-element/number-line-configure@4.8.13) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/number-line-configure

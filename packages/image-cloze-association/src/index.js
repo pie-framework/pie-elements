@@ -41,6 +41,10 @@ export default class ImageClozeAssociation extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   updateAnswer(data) {
     this._session.answers = data;
 
@@ -62,6 +66,7 @@ export default class ImageClozeAssociation extends HTMLElement {
         session: this._session,
         updateAnswer: this.updateAnswer.bind(this)
       });
+
       ReactDOM.render(el, this, () => {
         renderMath(this);
       });

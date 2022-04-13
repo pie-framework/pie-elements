@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.39](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.38...@pie-element/likert-configure@0.0.39) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.38](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.37...@pie-element/likert-configure@0.0.38) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.37](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.36...@pie-element/likert-configure@0.0.37) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.36](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.35...@pie-element/likert-configure@0.0.36) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.35](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.34...@pie-element/likert-configure@0.0.35) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.34](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.33...@pie-element/likert-configure@0.0.34) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
+## [0.0.33](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.32...@pie-element/likert-configure@0.0.33) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/likert-configure
+
+
+
+
+
 ## [0.0.32](https://github.com/pie-framework/pie-elements/compare/@pie-element/likert-configure@0.0.31...@pie-element/likert-configure@0.0.32) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/likert-configure

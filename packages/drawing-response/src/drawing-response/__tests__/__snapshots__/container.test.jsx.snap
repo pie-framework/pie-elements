@@ -215,8 +215,8 @@ exports[`Container snapshot renders 1`] = `
     <div
       style={
         Object {
-          "height": NaN,
-          "maxHeight": NaN,
+          "height": 0,
+          "maxHeight": 0,
         }
       }
     >
@@ -477,8 +477,8 @@ exports[`Container snapshot renders disabled 1`] = `
     <div
       style={
         Object {
-          "height": NaN,
-          "maxHeight": NaN,
+          "height": 0,
+          "maxHeight": 0,
         }
       }
     >
