@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.5...@pie-element/inline-dropdown@3.10.6) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.10.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.4...@pie-element/inline-dropdown@3.10.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.10.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.3...@pie-element/inline-dropdown@3.10.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.10.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.2...@pie-element/inline-dropdown@3.10.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.10.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.1...@pie-element/inline-dropdown@3.10.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+## [3.10.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.10.0...@pie-element/inline-dropdown@3.10.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/inline-dropdown
+
+
+
+
+
+# [3.10.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.9...@pie-element/inline-dropdown@3.10.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* use preview prompt for prompt, rationale and teacher instructions to fix table rendering PD-1456 ([f330601](https://github.com/pie-framework/pie-elements/commit/f3306019a2d1c8ce3e2783823dfe9ef0a0394e4f))
+
+
+### Features
+
+* **drag-in-the-blank, inline-dropdown:** move rationale after the item content PD-1379 ([fd71c58](https://github.com/pie-framework/pie-elements/commit/fd71c5853bdd63b31a746241dd5649e5de051300))
+
+
+
+
+
 ## [3.9.9](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown@3.9.8...@pie-element/inline-dropdown@3.9.9) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown

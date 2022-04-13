@@ -40,6 +40,10 @@ export default class DrawingResponse extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   connectedCallback() {
     this._render();
   }
@@ -51,6 +55,7 @@ export default class DrawingResponse extends HTMLElement {
         session: this._session,
         onSessionChange: this.sessionChanged
       });
+
       ReactDOM.render(el, this, () => {
         renderMath(this);
       });

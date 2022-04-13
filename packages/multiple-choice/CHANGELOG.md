@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.6](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.5...@pie-element/multiple-choice@6.2.6) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+## [6.2.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.4...@pie-element/multiple-choice@6.2.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+## [6.2.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.3...@pie-element/multiple-choice@6.2.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+## [6.2.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.2...@pie-element/multiple-choice@6.2.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+## [6.2.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.1...@pie-element/multiple-choice@6.2.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+## [6.2.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.0...@pie-element/multiple-choice@6.2.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
+# [6.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.1.11...@pie-element/multiple-choice@6.2.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* check if limitChoicesNumber is defined when adding a choice ([6f32cf0](https://github.com/pie-framework/pie-elements/commit/6f32cf05a1095b2be28864f2bb697080d05744f8))
+* **multiple-choice:** fix colors for evaluate and view PD-1433 ([7050109](https://github.com/pie-framework/pie-elements/commit/705010946a1b0175fe19566d9daa86846fc55ca7))
+* **multiple-choice:** limit choice number to 9 if it's defined ([4fa374c](https://github.com/pie-framework/pie-elements/commit/4fa374c77ca625522549ce68e1062ca4a5145b8b))
+* **multiple-choice:** show choice prefix in print DNA-13066 ([52bd9bf](https://github.com/pie-framework/pie-elements/commit/52bd9bf862ad7adaf5ff0067a6738ad944b6d32d))
+* **multiple-choice-print:** remove feedback ([25cbac5](https://github.com/pie-framework/pie-elements/commit/25cbac5647afe8864bedd9c50cd98abe6b31ddb0))
+* **multiple-choice-print, ecr-print:** fix toggle issue, change options.mode to options.role ([0b3f534](https://github.com/pie-framework/pie-elements/commit/0b3f534bb4d2f969e21528e74516345e84f18d72))
+* **multiple-choice, explicit-constructed-response, extended-text-entry:** print do not show teacher instructions, rationale or prompt if they are diabled DNA-13089 ([06b9555](https://github.com/pie-framework/pie-elements/commit/06b9555b25e094e0b2bce0e6a852a206c6d2c17d))
+* show tick if available only in evaluate mode ([dddca13](https://github.com/pie-framework/pie-elements/commit/dddca137875221d3b52b17151163610f5eb1ea98))
+
+
+### Features
+
+* **multiple-choice:** set min and max number of choices. BREAKING CHANGE: removed limitChoicesNumber from config and added minAnswerChoices and maxAnswerChoices ([a467f8f](https://github.com/pie-framework/pie-elements/commit/a467f8f4827c032c88de480b25eb49efcf1486aa))
+
+
+
+
+
+## [6.1.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.1.10...@pie-element/multiple-choice@6.1.11) (2022-01-11)
+
+**Note:** Version bump only for package @pie-element/multiple-choice
+
+
+
+
+
 ## [6.1.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.1.9...@pie-element/multiple-choice@6.1.10) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

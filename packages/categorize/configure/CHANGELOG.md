@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.18...@pie-element/categorize-configure@5.4.19) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.17...@pie-element/categorize-configure@5.4.18) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.16...@pie-element/categorize-configure@5.4.17) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.15...@pie-element/categorize-configure@5.4.16) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.14...@pie-element/categorize-configure@5.4.15) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.13...@pie-element/categorize-configure@5.4.14) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
+## [5.4.13](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.12...@pie-element/categorize-configure@5.4.13) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/categorize-configure
+
+
+
+
+
 ## [5.4.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/categorize-configure@5.4.11...@pie-element/categorize-configure@5.4.12) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/categorize-configure

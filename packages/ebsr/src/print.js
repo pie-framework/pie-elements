@@ -25,7 +25,7 @@ const preparePrintModel = (model, opts) => {
   model.teacherInstructions = instr && model.teacherInstructionsEnabled !== false ? model.teacherInstructions : undefined;
   model.showTeacherInstructions = instr;
   model.alwaysShowCorrect = instr;
-  model.mode = instr ? 'evaluate' : model.mode;
+  model.mode = instr ? 'evaluate' : 'gather';
 
   model.disabled = true;
   model.animationsDisabled = true;
