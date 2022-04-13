@@ -23,6 +23,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
+import { generateValidationMessage } from './utils';
 
 const { toggle, Panel } = settings;
 
@@ -463,10 +464,7 @@ export class Main extends React.Component {
         break;
     }
 
-    const validationMessage = 'Validation rules:\n' +
-      'There should be at least 1' +
-      (maxResponseAreas ? ` and at most ${maxResponseAreas}` : '') + ' response area' +
-      (maxResponseAreas ? 's.' : '.');
+    const validationMessage = generateValidationMessage(configuration);
 
     return (
       <div className={classes.design}>
