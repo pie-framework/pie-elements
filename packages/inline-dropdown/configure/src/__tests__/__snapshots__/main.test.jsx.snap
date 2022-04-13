@@ -196,8 +196,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           disableFocusListener={true}
           disableTouchListener={true}
           placement="right"
-          title="Validation rules:
-There should be at least 1 response area."
+          title="Validation requirements:
+There should be at least 1 response area defined."
         >
           <pure(InfoIcon)
             color="primary"
@@ -587,8 +587,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           disableFocusListener={true}
           disableTouchListener={true}
           placement="right"
-          title="Validation rules:
-There should be at least 1 response area."
+          title="Validation requirements:
+There should be at least 1 response area defined."
         >
           <pure(InfoIcon)
             color="primary"
