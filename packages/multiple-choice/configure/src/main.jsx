@@ -149,10 +149,9 @@ const Design = withStyles(styles)((props) => {
   } = model || {};
 
   const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
-  const nrOfColumnsAvailable =
-    choices && choices.length
-      ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
-      : [];
+  const nrOfColumnsAvailable = choices && choices.length
+    ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
+    : [];
 
   const labelPlugins = {
     audio: { disabled: true },
@@ -293,7 +292,7 @@ const Design = withStyles(styles)((props) => {
           )}
         </div>
       ))}
-      <br />
+      <br/>
       {addChoiceButton.settings && (
         <Tooltip
           title={
