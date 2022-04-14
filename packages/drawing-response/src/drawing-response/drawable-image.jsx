@@ -10,7 +10,7 @@ const DrawableImage = ({ classes, url, dimensions: { height, width } }) => (
       src={url}
       style={{
         height,
-        maxWidth: 598,
+        maxWidth: width,
         maxHeight: 350,
         width,
       }}

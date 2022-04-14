@@ -44,6 +44,10 @@ export default class MatchList extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   sessionChanged(s) {
     this._session.value = s.value;
 

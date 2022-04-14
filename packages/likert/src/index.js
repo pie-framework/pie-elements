@@ -22,6 +22,10 @@ export default class Likert extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   sessionChanged(s) {
     this._session.value = s.value;
     const complete = isComplete(this._session, this._model);

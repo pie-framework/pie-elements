@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.21...@pie-element/select-text-configure@5.2.22) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.20...@pie-element/select-text-configure@5.2.21) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.19...@pie-element/select-text-configure@5.2.20) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.18...@pie-element/select-text-configure@5.2.19) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.17...@pie-element/select-text-configure@5.2.18) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.17](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.16...@pie-element/select-text-configure@5.2.17) (2022-02-17)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.15...@pie-element/select-text-configure@5.2.16) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
+## [5.2.15](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.14...@pie-element/select-text-configure@5.2.15) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/select-text-configure
+
+
+
+
+
 ## [5.2.14](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.13...@pie-element/select-text-configure@5.2.14) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

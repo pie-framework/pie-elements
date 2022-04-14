@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.25](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.24...@pie-element/multi-trait-rubric@1.4.25) (2022-03-28)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.24](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.23...@pie-element/multi-trait-rubric@1.4.24) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.22...@pie-element/multi-trait-rubric@1.4.23) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.21...@pie-element/multi-trait-rubric@1.4.22) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.20...@pie-element/multi-trait-rubric@1.4.21) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.19...@pie-element/multi-trait-rubric@1.4.20) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
+## [1.4.19](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.18...@pie-element/multi-trait-rubric@1.4.19) (2022-01-24)
+
+**Note:** Version bump only for package @pie-element/multi-trait-rubric
+
+
+
+
+
 ## [1.4.18](https://github.com/pie-framework/pie-elements/compare/@pie-element/multi-trait-rubric@1.4.17...@pie-element/multi-trait-rubric@1.4.18) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/multi-trait-rubric

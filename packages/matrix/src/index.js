@@ -26,6 +26,10 @@ export default class Matrix extends HTMLElement {
     this._render();
   }
 
+  get session() {
+    return this._session;
+  }
+
   sessionChanged({matrixKey, matrixValue}) {
     const matrixRowKey = matrixKey.split('-')[0];
     const sessionValueClone = Object
@@ -39,6 +43,7 @@ export default class Matrix extends HTMLElement {
     sessionValueClone[matrixKey] = matrixValue;
     this._session.value = sessionValueClone;
     const complete = isComplete(this._session, this._model);
+
     this.dispatchEvent(
       new SessionChangedEvent(this.tagName.toLowerCase(), complete)
     );

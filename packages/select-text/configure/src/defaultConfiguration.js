@@ -84,6 +84,7 @@ export default {
     mode: {
       settings: true,
       label: 'Mode'
-    }
+    },
+    minTokens: 2
   }
 };

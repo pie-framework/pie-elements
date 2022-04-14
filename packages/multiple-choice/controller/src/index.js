@@ -173,45 +173,46 @@ export const createCorrectResponseSession = (question, env) => {
   });
 };
 
-export const validate = (model) => {
+export const validate = (model = {}, config = {}) => {
   const { choices } = model;
+  const { minAnswerChoices = 2, maxAnswerChoices } = config;
+  const reversedChoices = [...choices || []].reverse();
   const choicesErrors = {};
-  let correctResponseDefined = false;
+  let hasCorrectResponse = false;
 
-  (choices || []).forEach((choice, index) => {
+  reversedChoices.forEach((choice, index) => {
     const { correct, value, label } = choice;
 
     if (correct) {
-      correctResponseDefined = true;
+      hasCorrectResponse = true;
     }
 
     if (label === '' || label === '<div></div>') {
       choicesErrors[value] = 'Content should not be empty.';
-    }
+    } else {
+      const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
 
-    const identicalAnswer = choices.slice(index + 1).some(c => c.label === label);
-
-    if (identicalAnswer) {
-      const message = 'Content should be unique.';
-
-      choicesErrors[value] = choicesErrors[value]
-        ? (choicesErrors[value]).concat('\n', message)
-        : message;
+      if (identicalAnswer) {
+        choicesErrors[value] = 'Content should be unique.';
+      }
     }
   });
 
   const errors = {};
+  const nbOfChoices = (choices || []).length;
 
-  if (choices.length < 2) {
-    errors.nbOfAnswerChoices = 'Should be defined at least two choices.';
+  if (nbOfChoices < minAnswerChoices) {
+    errors.answerChoicesError = `There should be at least ${minAnswerChoices} choices defined.`;
+  } else if (nbOfChoices > maxAnswerChoices) {
+    errors.answerChoicesError = `No more than ${maxAnswerChoices} choices should be defined.`;
   }
 
-  if (!correctResponseDefined) {
-    errors.correctResponse = 'No correct response defined.';
+  if (!hasCorrectResponse) {
+    errors.correctResponseError = 'No correct response defined.';
   }
 
   if (!isEmpty(choicesErrors)) {
-    errors.choices = choicesErrors;
+    errors.choicesErrors = choicesErrors;
   }
 
   return errors;

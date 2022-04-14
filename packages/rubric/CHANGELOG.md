@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.4...@pie-element/rubric@1.8.5) (2022-03-22)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.4](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.3...@pie-element/rubric@1.8.4) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.3](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.2...@pie-element/rubric@1.8.3) (2022-03-08)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.2](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.1...@pie-element/rubric@1.8.2) (2022-02-21)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+## [1.8.1](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.8.0...@pie-element/rubric@1.8.1) (2022-02-04)
+
+**Note:** Version bump only for package @pie-element/rubric
+
+
+
+
+
+# [1.8.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.7.8...@pie-element/rubric@1.8.0) (2022-01-24)
+
+
+### Bug Fixes
+
+* **rubric:** display rubric in reverse order in player PD-1375 ([0620538](https://github.com/pie-framework/pie-elements/commit/06205386a3d2c530378be2dccb7943cefa6f5c55))
+* **rubric:** use singular 1PT instead of 1PTS, fix style in IBX PD-1373, PD-1374 ([0c27b32](https://github.com/pie-framework/pie-elements/commit/0c27b327e861831687576a639ba2b6101c7fc0ff))
+
+
+### Features
+
+* **rubric:** Added Studio support: Treat 'null' as null value for sample answer PD-1313 ([04ea11d](https://github.com/pie-framework/pie-elements/commit/04ea11da0b4b2077693c7a22f63091eabdf09481))
+
+
+
+
+
 ## [1.7.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/rubric@1.7.7...@pie-element/rubric@1.7.8) (2022-01-10)
 
 **Note:** Version bump only for package @pie-element/rubric
