@@ -175,7 +175,7 @@ const Design = withStyles(styles)((props) => {
     maxAnswerChoices = MAX_CHOICES;
   }
 
-  // const validationMessage = generateValidationMessage(configuration);
+  const validationMessage = generateValidationMessage(configuration);
 
   const Content = (
     <div>
@@ -210,20 +210,20 @@ const Design = withStyles(styles)((props) => {
           />
         </InputContainer>
       )}
-      {/*<div className={classes.flexContainer}>*/}
-      {/*  <Typography className={classes.titleText}>Choices</Typography>*/}
-      {/*  <Tooltip*/}
-      {/*    classes={{ tooltip: classes.tooltip }}*/}
-      {/*    disableFocusListener*/}
-      {/*    disableTouchListener*/}
-      {/*    placement={'right'}*/}
-      {/*    title={validationMessage}*/}
-      {/*  >*/}
-      {/*    <Info fontSize={'small'} color={'primary'}/>*/}
-      {/*  </Tooltip>*/}
-      {/*</div>*/}
-      {/*{correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}*/}
-      {/*{answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}*/}
+      <div className={classes.flexContainer}>
+        <Typography className={classes.titleText}>Choices</Typography>
+        <Tooltip
+          classes={{ tooltip: classes.tooltip }}
+          disableFocusListener
+          disableTouchListener
+          placement={'right'}
+          title={validationMessage}
+        >
+          <Info fontSize={'small'} color={'primary'}/>
+        </Tooltip>
+      </div>
+      {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
+      {answerChoicesError && <div className={classes.errorText}>{answerChoicesError}</div>}
       {choices.map((choice, index) => (
         <div
           key={`choice-${index}`}
