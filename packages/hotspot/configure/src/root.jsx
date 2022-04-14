@@ -9,6 +9,8 @@ import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
@@ -73,10 +75,19 @@ export class Root extends React.Component {
       teacherInstructions = {},
       rationale = {},
       spellCheck = {},
-      preserveAspectRatio = {}
+      preserveAspectRatio = {},
+      maxSelections,
+      minShapes,
+      maxShapes
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } = model || {};
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
     const toolbarOpts = {};
+    const configSettings = maxSelections || minShapes || maxShapes;
+    const maxSelectionsValidation = maxSelections ? `\nNo more than ${maxSelections} shapes should be selected.` : '';
+    const minShapesValidation = minShapes ? `\nThere should be at least ${minShapes} shapes defined.` : '';
+    const maxShapesValidation = maxShapes ? `\nNo more than ${maxShapes} shapes should be defined.` : '';
+
+    const { shapesError, selectionsError } = errors || {};
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -160,6 +171,19 @@ export class Root extends React.Component {
             <Typography className={classes.label} variant="subheading">
               Define Hotspot
             </Typography>
+
+            {configSettings && <Tooltip
+              classes={{tooltip: classes.tooltip}}
+              disableFocusListener
+              disableTouchListener
+              placement={'left'}
+              title={`Validation requirements:${maxSelectionsValidation}${minShapesValidation}${maxShapesValidation}`}
+            >
+              <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+            </Tooltip>}
+
+            {shapesError && <div className={classes.errorText}>{shapesError}</div>}
+            {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
             <HotspotPalette
               hotspotColor={model.hotspotColor}
@@ -251,6 +275,16 @@ const styles = theme => ({
   switchElement: {
     justifyContent: 'space-between',
     margin: 0
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
   }
 });
 
