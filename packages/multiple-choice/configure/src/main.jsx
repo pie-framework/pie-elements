@@ -145,10 +145,10 @@ const Design = withStyles(styles)((props) => {
     promptEnabled,
     spellCheckEnabled,
     choices,
-    // errors
+    errors
   } = model || {};
 
-  // const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
+  const { choicesErrors, correctResponseError, answerChoicesError } = errors || {};
   const nrOfColumnsAvailable =
     choices && choices.length
       ? Array.from({ length: choices.length }, (_, i) => `${i + 1}`)
@@ -245,8 +245,8 @@ const Design = withStyles(styles)((props) => {
             noLabels
             toolbarOpts={toolbarOpts}
             spellCheck={spellCheckEnabled}
-            // error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
-            // noCorrectAnswerError={correctResponseError}
+            error={choicesErrors && choicesErrors[choice.value] ? choicesErrors[choice.value] : null}
+            noCorrectAnswerError={correctResponseError}
           />
           {rationaleEnabled && (
             <InputContainer
