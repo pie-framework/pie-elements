@@ -450,7 +450,8 @@ export class Main extends React.Component {
                     />
                   );
                 },
-                error: choicesErrors,
+                // tODO use proper index
+                error: () => this.errors.choicesErrors,
                 onHandleAreaChange: this.onHandleAreaChange
               }}
               className={classes.markup}
