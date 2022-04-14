@@ -8,6 +8,9 @@ import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
 import {InputContainer, layout, settings} from '@pie-lib/config-ui';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 import { getAdjustedLength } from './markupUtils';
@@ -52,6 +55,20 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     marginTop: theme.spacing.unit * 4
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end'
   }
 });
 
@@ -284,7 +301,8 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport
+      imageSupport,
+      validate
     } = this.props;
     const {
       prompt = {},
@@ -293,10 +311,25 @@ export class Main extends React.Component {
       teacherInstructions = {},
       maxLengthPerChoice = {},
       spellCheck = {},
-      playerSpellCheck = {}
+      playerSpellCheck = {},
+      maxResponseAreas = 6
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled, spellCheckEnabled } = model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      maxLengthPerChoiceEnabled,
+      spellCheckEnabled,
+      // errors
+    } = model || {};
     const toolbarOpts = {};
+    this.errors = {
+      ...this.errors,
+      ...validate(model, configuration)
+    };
+    const { responseAreasError, choicesErrors = {} } = this.errors || {};
+
+    console.log('choices', choicesErrors);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -374,9 +407,22 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+            <div className={classes.flexContainer}>
+              <Typography className={classes.text}>
+                Define Template, Choices, and Correct Responses
+              </Typography>
+              <Tooltip
+                classes={{tooltip: classes.tooltip}}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={`Validation requirements:\nThe response area content should not be empty and should be unique.\nThere should be at least 1 response area defined.${maxResponseAreas ? `\nNo more than ${maxResponseAreas} response areas should be defined.` : ''}`}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+              </Tooltip>
+            </div>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
@@ -404,6 +450,7 @@ export class Main extends React.Component {
                     />
                   );
                 },
+                error: choicesErrors,
                 onHandleAreaChange: this.onHandleAreaChange
               }}
               className={classes.markup}

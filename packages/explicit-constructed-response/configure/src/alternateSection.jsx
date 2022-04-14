@@ -77,7 +77,7 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck } = this.props;
+    const { classes, onDelete, spellCheck, error } = this.props;
 
     return (
       <div

@@ -13,6 +13,7 @@ import Main from './main';
 
 import sensibleDefaults from './defaults';
 import { processMarkup, createSlateMarkup } from './markupUtils'
+import isEmpty from 'lodash/isEmpty';
 
 const log = debug('explicit-constructed-response:configure');
 
@@ -55,6 +56,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     this._configuration = sensibleDefaults.configuration;
     this.onModelChanged = this.onModelChanged.bind(this);
     this.onConfigurationChanged = this.onConfigurationChanged.bind(this);
+    this.validate = this.validate.bind(this);
   }
 
   set model(s) {
@@ -89,6 +91,51 @@ export default class ExplicitConstructedResponse extends HTMLElement {
     this._render();
   }
 
+  validate(model = {}, config = {}){
+    const { choices, markup } = model;
+    const { maxResponseAreas } = config;
+    const allChoicesErrors = {};
+
+    Object.entries(choices || {}).forEach(([key, values]) => {
+      const reversedChoices = [...values || []].reverse();
+      const choicesErrors = {};
+
+      reversedChoices.forEach((choice, index) => {
+        const { value, label } = choice;
+
+        if (label === '' || label === '<div></div>') {
+          choicesErrors[value] = 'Content should not be empty.';
+        } else {
+          const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
+
+          if (identicalAnswer) {
+            choicesErrors[value] = 'Content should be unique.';
+          }
+        }
+      });
+
+      if (!isEmpty(choicesErrors)) {
+        allChoicesErrors[key] = choicesErrors;
+      }
+    });
+
+    const errors = {};
+    const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+
+    if (nbOfResponseAreas > maxResponseAreas) {
+      errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+    } else if (nbOfResponseAreas < 1) {
+      errors.responseAreasError = 'There should be at least 1 response area defined.';
+    }
+
+    if (!isEmpty(allChoicesErrors)) {
+      errors.choicesErrors = allChoicesErrors;
+    }
+
+    // this._render();
+    return errors;
+  };
+
   /** @param {done, progress, file} handler */
   insertImage(handler) {
     this.dispatchEvent(new InsertImageEvent(handler));
@@ -105,6 +152,7 @@ export default class ExplicitConstructedResponse extends HTMLElement {
       configuration: this._configuration,
       onModelChanged: this.onModelChanged,
       onConfigurationChanged: this.onConfigurationChanged,
+      validate: this.validate,
       disableSidePanel: this._disableSidePanel,
       imageSupport: {
         add: this.insertImage.bind(this),
