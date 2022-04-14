@@ -7,14 +7,20 @@ import {
 } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import EditableHtml from '@pie-lib/editable-html';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Info from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
-
 import HotspotPalette from './hotspot-palette';
 import HotspotContainer from './hotspot-container';
-import { updateImageDimensions, getUpdatedShapes, getAllShapes, groupShapes } from './utils';
+import classNames from 'classnames';
+import {
+  updateImageDimensions,
+  generateValidationMessage,
+  getUpdatedShapes,
+  getAllShapes,
+  groupShapes
+} from './utils';
 
 const { Panel, toggle } = settings;
 
@@ -75,19 +81,13 @@ export class Root extends React.Component {
       teacherInstructions = {},
       rationale = {},
       spellCheck = {},
-      preserveAspectRatio = {},
-      maxSelections,
-      minShapes,
-      maxShapes
+      preserveAspectRatio = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
-    const toolbarOpts = {};
-    const configSettings = maxSelections || minShapes || maxShapes;
-    const maxSelectionsValidation = maxSelections ? `\nNo more than ${maxSelections} shapes should be selected.` : '';
-    const minShapesValidation = minShapes ? `\nThere should be at least ${minShapes} shapes defined.` : '';
-    const maxShapesValidation = maxShapes ? `\nNo more than ${maxShapes} shapes should be defined.` : '';
-
     const { shapesError, selectionsError } = errors || {};
+    const toolbarOpts = {};
+
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -168,20 +168,20 @@ export class Root extends React.Component {
               </InputContainer>
             )}
 
-            <Typography className={classes.label} variant="subheading">
-              Define Hotspot
-            </Typography>
-
-            {configSettings && <Tooltip
-              classes={{tooltip: classes.tooltip}}
-              disableFocusListener
-              disableTouchListener
-              placement={'left'}
-              title={`Validation requirements:${maxSelectionsValidation}${minShapesValidation}${maxShapesValidation}`}
-            >
-              <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
-            </Tooltip>}
-
+            <div className={classNames(classes.label, classes.flexContainer)}>
+              <Typography className={classes.subheading} variant="subheading">
+                Define Hotspot
+              </Typography>
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                disableFocusListener
+                disableTouchListener
+                placement={'left'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+              </Tooltip>
+            </div>
             {shapesError && <div className={classes.errorText}>{shapesError}</div>}
             {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
@@ -269,12 +269,19 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     width: '100%'
   },
+  subheading: {
+    marginRight: '5px'
+  },
   regular: {
     marginBottom: theme.spacing.unit * 3
   },
   switchElement: {
     justifyContent: 'space-between',
     margin: 0
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center'
   },
   tooltip: {
     fontSize: '12px',
