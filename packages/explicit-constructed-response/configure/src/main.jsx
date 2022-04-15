@@ -14,6 +14,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 import { getAdjustedLength } from './markupUtils';
+import {generateValidationMessage} from './utils';
 
 const { toggle, Panel } = settings;
 
@@ -312,7 +313,6 @@ export class Main extends React.Component {
       maxLengthPerChoice = {},
       spellCheck = {},
       playerSpellCheck = {},
-      maxResponseAreas = 6
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -320,16 +320,12 @@ export class Main extends React.Component {
       rationaleEnabled,
       maxLengthPerChoiceEnabled,
       spellCheckEnabled,
-      // errors
+      errors
     } = model || {};
     const toolbarOpts = {};
-    this.errors = {
-      ...this.errors,
-      ...validate(model, configuration)
-    };
-    const { responseAreasError, choicesErrors = {} } = this.errors || {};
 
-    console.log('choices', choicesErrors);
+    const { responseAreasError, choicesErrors = {} } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -416,7 +412,7 @@ export class Main extends React.Component {
                 disableFocusListener
                 disableTouchListener
                 placement={'right'}
-                title={`Validation requirements:\nThe response area content should not be empty and should be unique.\nThere should be at least 1 response area defined.${maxResponseAreas ? `\nNo more than ${maxResponseAreas} response areas should be defined.` : ''}`}
+                title={validationMessage}
               >
                 <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
               </Tooltip>
@@ -450,8 +446,7 @@ export class Main extends React.Component {
                     />
                   );
                 },
-                // tODO use proper index
-                error: () => this.errors.choicesErrors,
+                error: () => choicesErrors,
                 onHandleAreaChange: this.onHandleAreaChange
               }}
               className={classes.markup}
@@ -461,6 +456,7 @@ export class Main extends React.Component {
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}
+              error={responseAreasError}
             />
             {!isEmpty(model.choices) && (
               <Typography className={classes.text}>
@@ -473,6 +469,7 @@ export class Main extends React.Component {
               onLengthChange={this.onLengthChanged}
               maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
               spellCheck={spellCheckEnabled}
+              choicesErrors={choicesErrors}
             />
             {rationaleEnabled && (
               <InputContainer
