@@ -302,8 +302,7 @@ export class Main extends React.Component {
       model,
       configuration,
       onConfigurationChanged,
-      imageSupport,
-      validate
+      imageSupport
     } = this.props;
     const {
       prompt = {},
@@ -313,6 +312,7 @@ export class Main extends React.Component {
       maxLengthPerChoice = {},
       spellCheck = {},
       playerSpellCheck = {},
+      maxResponseAreas
     } = configuration || {};
     const {
       teacherInstructionsEnabled,
@@ -428,6 +428,7 @@ export class Main extends React.Component {
                 options: {
                   duplicates: true
                 },
+                maxResponseAreas: maxResponseAreas,
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { model } = this.props;
                   const correctChoice = (model.choices[
