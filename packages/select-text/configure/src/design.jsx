@@ -409,9 +409,5 @@ export default withStyles(theme => ({
     fontSize: '12px',
     color: 'red',
     padding: '5px 0'
-  },
-  flexContainer: {
-    display: 'flex',
-    alignItems: 'end'
   }
 }))(Design);
