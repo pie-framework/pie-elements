@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
-import { set } from 'lodash';
+import { set, isEqual } from 'lodash';
 
 const { allTools } = tools;
 
@@ -131,6 +131,22 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
+  filterMarks = (tool) => {
+    const { model: { answers }} = this.props;
+    const filteredAnswers = {};
+
+    Object.entries(answers || {}).forEach(([key, answer]) => {
+      const filteredMarks = (answer.marks || []).filter(mark => mark.type !== tool);
+
+      filteredAnswers[key] = {
+        ...answer,
+        marks: filteredMarks
+      };
+    });
+
+    return filteredAnswers;
+  };
+
   changeToolbarTools = toolbarTools => {
     const { model, onChange } = this.props;
     model.toolbarTools = toolbarTools;
@@ -138,18 +154,47 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
+  updateModel = props => {
+    const { model, onChange } = this.props;
+
+    onChange({
+      ...model,
+      ...props
+    });
+  };
+
   toggleToolBarTool = tool => {
-    const { toolbarTools } = this.props.model;
+    const { model: { toolbarTools, answers = {}}} = this.props;
+    const updatedToolbarTools = [ ...toolbarTools ];
 
     const index = toolbarTools.findIndex(t => tool === t);
 
     if (index >= 0) {
-      const update = [...toolbarTools];
-      update.splice(index, 1);
-      this.changeToolbarTools(update);
+      const updatedAnswers = this.filterMarks(tool);
+      updatedToolbarTools.splice(index, 1);
+
+      if (!isEqual(answers, updatedAnswers)) {
+        this.setState({
+          dialog: {
+            open: true,
+            title: 'Warning',
+            text: `Correct answer includes one or more ${tool} objects and all of them will be deleted.`,
+            onConfirm: () => this.handleAlertDialog(
+              false, this.updateModel({
+                toolbarTools: updatedToolbarTools,
+                answers: updatedAnswers
+              })),
+            onClose: () => this.handleAlertDialog(false)
+          }
+        });
+
+        return;
+      }
     } else {
-      this.changeToolbarTools([...toolbarTools, tool]);
+      updatedToolbarTools.push(tool);
     }
+
+    this.updateModel({ toolbarTools: updatedToolbarTools });
   };
 
   addAlternateResponse = () => {

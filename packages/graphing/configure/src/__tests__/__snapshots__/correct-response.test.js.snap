@@ -40,11 +40,7 @@ exports[`CorrectResponse: if answers is null it should still work as expected re
   <Tools
     classes={Object {}}
     toggleToolBarTool={[Function]}
-    toolbarTools={
-      Array [
-        "point",
-      ]
-    }
+    toolbarTools={Array []}
   />
   <div>
     <div
@@ -65,11 +61,7 @@ exports[`CorrectResponse: if answers is undefined it should still work as expect
   <Tools
     classes={Object {}}
     toggleToolBarTool={[Function]}
-    toolbarTools={
-      Array [
-        "point",
-      ]
-    }
+    toolbarTools={Array []}
   />
   <div>
     <div
