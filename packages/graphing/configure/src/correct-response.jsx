@@ -3,16 +3,11 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
+import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import { set } from 'lodash';
 
 const { allTools } = tools;
-
-import { set } from 'lodash';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
 
 const styles = theme => ({
   column: {
@@ -33,7 +28,7 @@ const styles = theme => ({
     border: '2px solid white',
     textTransform: 'capitalize',
     '&:hover': {
-      color: 'black'
+      color: '#4d4d4d'
     }
   },
   selectedTool: {
@@ -64,12 +59,10 @@ const styles = theme => ({
   },
   iconButton: {
     marginLeft: '6px',
-    // color: 'black',
-    color: '#ababab',
-    '& :hover': {
+    color: '#6d6d6d',
+    '&:hover': {
       cursor: 'pointer',
-      // color: '#ababab'
-      color: 'black'
+      color: '#000000'
     }
   },
   name: {
@@ -126,6 +119,11 @@ export class CorrectResponse extends React.Component {
     }
   };
 
+  handleAlertDialog = (open, callback) =>
+    this.setState({
+      dialog: { open }
+    }, callback);
+
   changeMarks = (key, marks) => {
     const { model, onChange } = this.props;
 
@@ -167,48 +165,38 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
-  deleteAlternateResponse = (mark) => {
-    console.log('mark', mark);
+  deleteAlternateResponse = (key, answer) => {
     const { model, onChange } = this.props;
     const { answers } = model || {};
-    const { marks, name } = answers[mark] || {};
+    const { marks = [], name } = answer || {};
 
-    console.log('answers[mark]', answers[mark]);
-    if ((marks || []).length) {
+    const deleteAnswer = () => {
+      delete answers[key];
+      onChange(model);
+    };
+
+    if (marks.length) {
       this.setState({
         dialog: {
           open: true,
-          message: `${name} includes one or more objects. The entire response will be deleted.`,
-          onOk: () => {
-            this.setState({
-              dialog: {
-                open: false
-              }
-            });
-
-            delete answers[mark];
-            onChange(model);
-          },
-          onCancel: () => this.setState({
-            dialog: {
-              open: false
-            }
-          })
+          title: 'Warning',
+          text: `${name} includes one or more shapes and the entire response will be deleted.`,
+          onConfirm: () => this.handleAlertDialog(false, deleteAnswer),
+          onClose: () => this.handleAlertDialog(false)
         }
       });
 
       return;
     }
 
-    delete answers[mark];
-    onChange(model);
+    deleteAnswer();
   };
 
   render() {
     const { classes, model } = this.props;
     const { dialog } = this.state;
     const {
-      answers,
+      answers = {},
       arrows,
       backgroundMarks,
       coordinatesOnHover,
@@ -220,8 +208,6 @@ export class CorrectResponse extends React.Component {
       toolbarTools
     } = model || {};
 
-   const answersKeys = Object.keys(answers || {});
-
     return (
       <div>
         Define Correct Response
@@ -232,17 +218,17 @@ export class CorrectResponse extends React.Component {
         />
 
         <div className={classes.container}>
-          {answersKeys.map(mark => {
-            const { marks, name } = answers[mark] || {};
+          {Object.entries(answers).map(([key, answer]) => {
+            const { marks = [], name } = answer || {};
 
             return (
               <div key={`correct-response-graph-${name}`}>
                 <div className={classes.responseTitle}>
-                  <p className={classes.name} >{name}</p>
-                  {mark !== 'correctAnswer' &&
+                  <p className={classes.name}>{name}</p>
+                  {key !== 'correctAnswer' &&
                     <Delete
                       className={classes.iconButton}
-                      onClick={() => this.deleteAlternateResponse(mark)}
+                      onClick={() => this.deleteAlternateResponse(key, answer)}
                     />}
                 </div>
 
@@ -253,7 +239,7 @@ export class CorrectResponse extends React.Component {
                   domain={domain}
                   labels={labels}
                   marks={marks}
-                  onChangeMarks={newMarks => this.changeMarks(mark, newMarks)}
+                  onChangeMarks={newMarks => this.changeMarks(key, newMarks)}
                   range={range}
                   size={{ width: graph.width, height: graph.height }}
                   title={title}
@@ -268,40 +254,16 @@ export class CorrectResponse extends React.Component {
           </div>
         </div>
 
-        <InfoDialog
+        <AlertDialog
           open={dialog.open}
-          title={dialog.message}
-          onCancel={dialog.onCancel}
-          onOk={dialog.onOk}
+          title={dialog.title}
+          text={dialog.text}
+          onClose={dialog.onClose}
+          onConfirm={dialog.onConfirm}
         />
       </div>
     );
   }
-};
-
-const InfoDialog = ({ open, onCancel, onOk, title }) => (
-  <Dialog open={open}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogActions>
-      {onOk && (
-        <Button onClick={onOk} color="primary">
-          OK
-        </Button>
-      )}
-      {onCancel && (
-        <Button onClick={onCancel} color="primary">
-          Cancel
-        </Button>
-      )}
-    </DialogActions>
-  </Dialog>
-);
-
-InfoDialog.propTypes = {
-  open: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onOk: PropTypes.func,
-  title: PropTypes.string,
 };
 
 export default withStyles(styles)(CorrectResponse);
