@@ -218,7 +218,7 @@ export class CorrectResponse extends React.Component {
         />
 
         <div className={classes.container}>
-          {Object.entries(answers).map(([key, answer]) => {
+          {Object.entries(answers || {}).map(([key, answer]) => {
             const { marks = [], name } = answer || {};
 
             return (
