@@ -268,6 +268,7 @@ export class Design extends React.Component {
             </InputContainer>
           )}
 
+
           {text.settings && (
             <TextField
               label={text.label}
@@ -279,24 +280,21 @@ export class Design extends React.Component {
             />
           )}
 
-          <Tooltip
-            classes={{ tooltip: classes.tooltip }}
-            disableFocusListener
-            disableTouchListener
-            placement={'left'}
-            title={validationMessage}
-          >
-            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
-          </Tooltip>
-
-          {tokensError && <div className={classes.errorText}>{tokensError}</div>}
-          {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
           {tokens.settings && (
             <InputContainer
               label={tokens.label || ''}
               className={classes.tokenizerContainer}
             >
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{ position: 'absolute', left: '40px', top: '-3px' }}/>
+              </Tooltip>
               <Tokenizer
                 className={classes.tokenizer}
                 text={model.text}
@@ -305,6 +303,9 @@ export class Design extends React.Component {
               />
             </InputContainer>
           )}
+
+          {tokensError && <div className={classes.errorText}>{tokensError}</div>}
+          {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
 
           {mode.settings && (
             <Chip
@@ -408,5 +409,9 @@ export default withStyles(theme => ({
     fontSize: '12px',
     color: 'red',
     padding: '5px 0'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end'
   }
 }))(Design);
