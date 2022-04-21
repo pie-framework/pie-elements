@@ -10,8 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Response from './response';
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import isEqual from 'lodash/isEqual';
-import { ResponseTypes } from './utils';
+import { ResponseTypes, generateValidationMessage } from './utils';
 import MathQuill from '@pie-framework/mathquill';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 let registered = false;
 
@@ -104,6 +106,16 @@ const styles = (theme) => ({
         },
       },
     },
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
   },
 });
 
@@ -328,7 +340,7 @@ class GeneralConfigBlock extends React.Component {
       configuration,
       promptEnabled,
       rationaleEnabled,
-      toolbarOpts
+      toolbarOpts,
     } = this.props;
     const { showKeypad } = this.state;
     const {
@@ -339,9 +351,12 @@ class GeneralConfigBlock extends React.Component {
       responses,
       responseType,
       rationale,
-      spellCheckEnabled
+      spellCheckEnabled,
+      errors = {}
     } = model;
-    const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {} } = configuration || {};
+    const { rationale: cRationale = {}, prompt: cPrompt = {}, ignoreOrder: cIgnoreOrder = {}, allowTrailingZeros: cAllowTrailingZeros = {}, maxResponseAreas } = configuration || {};
+    const validationMessage = generateValidationMessage(configuration, model);
+    const { responsesErrors, responseAreasError } = errors;
 
     const classNames = {
       editor: classes.responseEditor,
@@ -393,6 +408,20 @@ class GeneralConfigBlock extends React.Component {
             />
           </InputContainer>
         )}
+        <div className={classes.flexContainer} style={{ justifyContent: 'flex-start' }}>
+          <h3>Define Response</h3>
+          <Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+            >
+          <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+        </Tooltip>
+        </div>
+        {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+
         {responseType === ResponseTypes.advanced && ([
           <InputContainer
             key="templateEditorType"
@@ -432,10 +461,12 @@ class GeneralConfigBlock extends React.Component {
               onChange={this.onChange('expression')}
               onFocus={this.onFocus}
               onDone={this.onDone}
+              maxResponseAreas={maxResponseAreas}
+              error={responseAreasError}
             />
           </div>
         ])}
-        <h3>Define Correct Response</h3>
+        <h4>Define Correct Response</h4>
         <div className={classes.flexContainer}>
           <InputContainer
             label="Equation Editor"
@@ -471,6 +502,7 @@ class GeneralConfigBlock extends React.Component {
             index={idx}
             cIgnoreOrder={cIgnoreOrder}
             cAllowTrailingZeros={cAllowTrailingZeros}
+            error={responsesErrors && responsesErrors[idx]}
           />
         ))}
       </div>

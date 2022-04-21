@@ -323,7 +323,7 @@ export const createCorrectResponseSession = (question, env) => {
 };
 
 export const validate = (model = {}, config = {}) => {
-  const { expression, responses, responseType } = model;
+  const { expression = '', responses, responseType } = model;
   const { maxResponseAreas } = config;
   const responsesErrors = {};
 
@@ -363,7 +363,7 @@ export const validate = (model = {}, config = {}) => {
     if (nbOfResponseAreas > maxResponseAreas) {
       errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
     } else if (nbOfResponseAreas < 1) {
-      errors.responseAreasError = 'Should be defined at least 1 response area.';
+      errors.responseAreasError = 'There should be at least 1 response area defined.';
     }
   }
 
