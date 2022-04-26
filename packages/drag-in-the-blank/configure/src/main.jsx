@@ -7,9 +7,12 @@ import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
+import {generateValidationMessage} from '../utils';
 const { dropdown, toggle, Panel } = settings;
 
 const styles = theme => ({
@@ -49,6 +52,20 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#495B8F'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end'
   }
 });
 
@@ -123,6 +140,28 @@ export class Main extends React.Component {
     });
   };
 
+  validate = (model = {}, config = {}) => {
+    const { choices, markup } = model;
+    const { minChoices = 2, maxChoices = 3, maxResponseAreas = 4 } = config;
+    const errors = {};
+
+    const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+    const nbOfChoices = (choices || []).length;
+
+    if (nbOfResponseAreas > maxResponseAreas) {
+      errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+    } else if (nbOfResponseAreas < 1) {
+      errors.responseAreasError = 'There should be defined at least 1 response area.';
+    }
+
+    if (nbOfChoices < minChoices) {
+      errors.choicesError = `There should be defined at least ${minChoices} choices.`;
+    } else if (nbOfChoices > maxChoices) {
+      errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+    }
+
+    return errors;
+  };
   render() {
     const {
       classes,
@@ -141,9 +180,15 @@ export class Main extends React.Component {
       choicesPosition = {},
       spellCheck = {}
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled } =
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled } = //errors
       model || {};
     const toolbarOpts = {};
+
+    const errors = this.validate(model, configuration);
+    console.log(errors, 'errors');
+
+    const { responseAreasError, choicesError }  = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -228,9 +273,22 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+            <div className={classes.flexContainer}>
+              <Typography className={classes.text}>
+                Define Template, Choices, and Correct Responses
+              </Typography>
+              <Tooltip
+                classes={{tooltip: classes.tooltip}}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{marginLeft: '5px'}}/>
+              </Tooltip>
+            </div>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+            {choicesError && <div className={classes.errorText}>{choicesError}</div>}
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}

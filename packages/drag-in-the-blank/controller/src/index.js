@@ -171,11 +171,11 @@ export const validate = (model = {}, config = {}) => {
   if (nbOfResponseAreas > maxResponseAreas) {
     errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
   } else if (nbOfResponseAreas < 1) {
-    errors.responseAreasError = 'There should be defined at least 1 response area.';
+    errors.responseAreasError = 'There should be at least 1 response area defined.';
   }
 
   if (nbOfChoices < minChoices) {
-    errors.choicesError = `There should be defined at least ${minChoices} choices.`;
+    errors.choicesError = `There should be at least ${minChoices} choices defined.`;
   } else if (nbOfChoices > maxChoices) {
     errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
   }
