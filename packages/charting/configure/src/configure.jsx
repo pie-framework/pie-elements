@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { chartTypes } from '@pie-lib/charting';
+import { chartTypes, ConfigChart } from '@pie-lib/charting';
 import { settings, layout, InputContainer } from '@pie-lib/config-ui';
 import PropTypes from 'prop-types';
 import debug from 'debug';
@@ -201,6 +201,13 @@ export class Configure extends React.Component {
           <ChartType
             value={model.chartType}
             onChange={(e) => this.onChartTypeChange(e.target.value)}
+          />
+
+          <ConfigChart
+            config={graph}
+            model={model}
+            onChange={onModelChanged}
+            charts={charts}
           />
 
           <ChartingConfig
