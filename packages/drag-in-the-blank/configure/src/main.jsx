@@ -140,28 +140,6 @@ export class Main extends React.Component {
     });
   };
 
-  validate = (model = {}, config = {}) => {
-    const { choices, markup } = model;
-    const { minChoices = 2, maxChoices = 3, maxResponseAreas = 4 } = config;
-    const errors = {};
-
-    const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
-    const nbOfChoices = (choices || []).length;
-
-    if (nbOfResponseAreas > maxResponseAreas) {
-      errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
-    } else if (nbOfResponseAreas < 1) {
-      errors.responseAreasError = 'There should be defined at least 1 response area.';
-    }
-
-    if (nbOfChoices < minChoices) {
-      errors.choicesError = `There should be defined at least ${minChoices} choices.`;
-    } else if (nbOfChoices > maxChoices) {
-      errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
-    }
-
-    return errors;
-  };
   render() {
     const {
       classes,
@@ -178,14 +156,13 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {},
       choicesPosition = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxChoices,
+      maxResponseAreas
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled } = //errors
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
       model || {};
     const toolbarOpts = {};
-
-    const errors = this.validate(model, configuration);
-    console.log(errors, 'errors');
 
     const { responseAreasError, choicesError }  = errors || {};
     const validationMessage = generateValidationMessage(configuration);
@@ -296,7 +273,8 @@ export class Main extends React.Component {
                 type: 'drag-in-the-blank',
                 options: {
                   duplicates: model.duplicates
-                }
+                },
+                maxResponseAreas: maxResponseAreas,
               }}
               className={classes.markup}
               markup={model.slateMarkup}
@@ -316,6 +294,7 @@ export class Main extends React.Component {
               duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
+              maxChoices={maxChoices}
             />
             {rationaleEnabled && (
               <InputContainer
