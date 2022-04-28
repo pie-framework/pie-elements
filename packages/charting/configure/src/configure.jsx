@@ -69,6 +69,8 @@ export class Configure extends React.Component {
   onChartTypeChange = (chartType) =>
     this.props.onModelChanged({ ...this.props.model, chartType });
 
+  changeData = prop => this.props.onModelChanged({ ...this.props.model, prop });
+
   render() {
     const {
       classes,
@@ -206,7 +208,7 @@ export class Configure extends React.Component {
           <ConfigChart
             config={graph}
             model={model}
-            onChange={onModelChanged}
+            onChange={this.props.onModelChanged}
             charts={charts}
           />
 
