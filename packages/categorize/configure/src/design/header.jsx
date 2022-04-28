@@ -11,17 +11,21 @@ export class Header extends React.Component {
     className: PropTypes.string,
     buttonLabel: PropTypes.string,
     onAdd: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    info: PropTypes.any
   };
 
   static defaultProps = {};
   render() {
-    const { classes, className, onAdd, label, buttonLabel } = this.props;
+    const { classes, className, onAdd, label, buttonLabel, info } = this.props;
     return (
       <div className={classNames(classes.header, className)}>
+        <div className={classes.titleContainer}>
         <Typography variant="title" className={classes.title}>
           {label}
         </Typography>
+        {info}
+        </div>
         <AddButton onClick={onAdd} label={buttonLabel} />
       </div>
     );
@@ -32,6 +36,9 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: 2 * theme.spacing.unit
+  },
+  titleContainer: {
+    display: 'flex',
   }
 });
 export default withStyles(styles)(Header);

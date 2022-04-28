@@ -289,6 +289,7 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              configuration={configuration}
             />
 
             <Header

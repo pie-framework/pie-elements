@@ -6,9 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import EditableHtml from '@pie-lib/editable-html';
 import classNames from 'classnames';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
+import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+
 import Category from './category';
 import Header from '../header';
-import { moveChoiceToCategory, removeCategory, removeChoiceFromCategory } from '@pie-lib/categorize';
+import { generateValidationMessage } from '../../utils';
 
 const styles = theme => ({
   categories: {
@@ -33,7 +37,17 @@ const styles = theme => ({
   },
   rowLabelHolder: {
     width: '100%'
-  }
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
 });
 
 const RowLabel = withStyles(styles)(({ categoriesPerRow, classes, markup, imageSupport, onChange, toolbarOpts, spellCheck}) => {
@@ -173,7 +187,8 @@ export class Categories extends React.Component {
       categories,
       imageSupport,
       toolbarOpts,
-      spellCheck
+      spellCheck,
+      configuration
     } = this.props;
 
     const { categoriesPerRow, rowLabels } = model;
@@ -182,9 +197,24 @@ export class Categories extends React.Component {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
 
+    const validationMessage = generateValidationMessage(configuration);
+
     return (
       <div className={classNames(classes.categories, className)}>
-        <Header label="Categories" buttonLabel="ADD A CATEGORY" onAdd={this.add} />
+        <Header
+          label="Categories"
+          buttonLabel="ADD A CATEGORY"
+          onAdd={this.add}
+          info={<Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+          </Tooltip>}
+        />
         <div className={classes.row}>
           <TextField
             label="Categories per row"

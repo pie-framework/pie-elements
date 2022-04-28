@@ -249,11 +249,11 @@ export const validate = (model = {}, config = {}) => {
   if (nbOfCategories > maxCategories) {
     errors.categoriesError = `No more than ${maxCategories} categories should be defined.`;
   } else if (nbOfCategories < 1) {
-    errors.categoriesError = 'There should be defined at least 1 category.';
+    errors.categoriesError = 'There should be at least 1 category defined.';
   }
 
   if (nbOfChoices < minChoices) {
-    errors.choicesError = `There should be defined at least ${minChoices} choices.`;
+    errors.choicesError = `There should be at least ${minChoices} choices defined.`;
   } else if (nbOfChoices > maxChoices) {
     errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
   }
