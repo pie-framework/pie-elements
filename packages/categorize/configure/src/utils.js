@@ -1,5 +1,5 @@
 export const generateValidationMessage = config => {
-  const { minChoices = 1, maxChoices, maxCategories } = config;
+  const { minChoices = 1, maxChoices, maxCategories } = config || {};
 
   const validationMessage = '\nThe choices content should ' +
     'not be empty and should be unique.\nThere should be at least 1 ' +

@@ -47,12 +47,13 @@ const DeleteButton = withStyles(() => ({
     margin: 0,
     padding: 0
   }
-}))(({ classes, label, onClick }) => (
+}))(({ classes, label, onClick, disabled }) => (
   <Button
     className={classes.deleteButton}
     onClick={onClick}
     size="small"
     color="primary"
+    disabled={disabled}
   >
     {label}
   </Button>

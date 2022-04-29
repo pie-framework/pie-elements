@@ -21,6 +21,7 @@ import Choices from './choices';
 import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
+import isEmpty from 'lodash/isEmpty';
 
 const { Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
@@ -159,6 +160,7 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
+      errors
     } = model || {};
 
     const toolbarOpts = {};
@@ -328,6 +330,7 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              configuration={configuration}
             />
 
             {feedbackEnabled && (

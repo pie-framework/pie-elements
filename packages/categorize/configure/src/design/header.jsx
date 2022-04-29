@@ -12,12 +12,13 @@ export class Header extends React.Component {
     buttonLabel: PropTypes.string,
     onAdd: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
-    info: PropTypes.any
+    info: PropTypes.any,
+    buttonDisabled: PropTypes.bool
   };
 
   static defaultProps = {};
   render() {
-    const { classes, className, onAdd, label, buttonLabel, info } = this.props;
+    const { classes, className, onAdd, label, buttonLabel, info, buttonDisabled } = this.props;
     return (
       <div className={classNames(classes.header, className)}>
         <div className={classes.titleContainer}>
@@ -26,7 +27,7 @@ export class Header extends React.Component {
         </Typography>
         {info}
         </div>
-        <AddButton onClick={onAdd} label={buttonLabel} />
+        <AddButton onClick={onAdd} label={buttonLabel} disabled={buttonDisabled}/>
       </div>
     );
   }

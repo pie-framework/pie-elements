@@ -85,6 +85,7 @@ export class Categories extends React.Component {
     categories: PropTypes.array,
     onModelChanged: PropTypes.func,
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     toolbarOpts: PropTypes.object
   };
 
@@ -191,8 +192,9 @@ export class Categories extends React.Component {
       configuration
     } = this.props;
 
-    const { categoriesPerRow, rowLabels } = model;
-
+    const { categoriesPerRow, rowLabels, errors } = model;
+    const { associationError, categoriesError } = errors || {};
+    const { maxCategories } = configuration || {};
     const holderStyle = {
       gridTemplateColumns: `repeat(${categoriesPerRow}, 1fr)`
     };
@@ -214,7 +216,10 @@ export class Categories extends React.Component {
           >
             <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
           </Tooltip>}
+          buttonDisabled={maxCategories && categories && maxCategories === categories.length}
         />
+        {associationError && <div className={classes.errorText}>{associationError}</div>}
+        {categoriesError && <div className={classes.errorText}>{categoriesError}</div>}
         <div className={classes.row}>
           <TextField
             label="Categories per row"
