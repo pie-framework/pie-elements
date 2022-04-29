@@ -21,7 +21,6 @@ import Choices from './choices';
 import { Divider } from './buttons';
 import { buildAlternateResponses, buildCategories } from './builder';
 import Header from './header';
-import isEmpty from 'lodash/isEmpty';
 
 const { Panel, toggle, radio } = settings;
 const { Provider: IdProvider } = uid;
