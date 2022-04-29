@@ -29,7 +29,6 @@ export class ChartingConfig extends React.Component {
 
   render() {
     const { classes, model, charts } = this.props;
-    console.log(model,"model")
 
     return (
       <div>
