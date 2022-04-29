@@ -1,14 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChartType renders snapshot 1`] = `
-<Component
-  classes={
-    Object {
-      "chartType": "Component-chartType-2",
-      "chartTypeLabel": "Component-chartTypeLabel-3",
-      "formControl": "Component-formControl-1",
-    }
-  }
+<UNDEFINED
+  classes={Object {}}
   onChange={[MockFunction]}
   value="bar"
 />
@@ -183,9 +177,71 @@ exports[`Configure renders snapshot 1`] = `
         onChange={[Function]}
       />
     </InputContainer>
-    <WithStyles(Component)
-      onChange={[Function]}
-      value="lineCross"
+    <Component
+      charts={
+        Array [
+          Object {
+            "Component": [Function],
+            "type": "bar",
+          },
+          Object {
+            "Component": [Function],
+            "type": "histogram",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineDot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "lineCross",
+          },
+          Object {
+            "Component": [Function],
+            "type": "dotPlot",
+          },
+          Object {
+            "Component": [Function],
+            "type": "linePlot",
+          },
+        ]
+      }
+      config={
+        Object {
+          "height": 480,
+          "width": 480,
+        }
+      }
+      model={
+        Object {
+          "addCategoryEnabled": true,
+          "categoryDefaultLabel": "Category",
+          "chartType": "lineCross",
+          "correctAnswer": Object {},
+          "data": Array [],
+          "domain": Object {
+            "label": "Fruits",
+          },
+          "editCategoryEnabled": true,
+          "graph": Object {
+            "height": 480,
+            "width": 480,
+          },
+          "prompt": "Here goes item stem!",
+          "promptEnabled": true,
+          "range": Object {
+            "label": "Amount",
+            "max": 5.5,
+            "min": 0,
+          },
+          "rationale": "Rationale goes here!",
+          "rationaleEnabled": true,
+          "scoringType": "all or nothing",
+          "studentInstructionsEnabled": true,
+          "teacherInstructionsEnabled": true,
+          "title": "This is a chart!",
+        }
+      }
     />
     <WithStyles(ChartingConfig)
       charts={

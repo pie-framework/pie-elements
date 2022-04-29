@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { Configure } from '../configure';
 import { ChartingConfig } from '../charting-config';
-import ChartType from '../chart-type';
+import { ChartType }  from '@pie-lib/charting';
 import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
@@ -248,7 +248,7 @@ describe('ChartType', () => {
     wrapper = newProps => {
       const configureProps = { ...props, newProps };
 
-      return shallow(<ChartType { ...configureProps } />);
+      return <ChartType { ...configureProps } />;
     };
   });
 
