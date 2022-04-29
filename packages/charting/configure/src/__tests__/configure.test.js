@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 
 import { Configure } from '../configure';
 import { ChartingConfig } from '../charting-config';
-import { ChartType }  from '@pie-lib/charting';
 import { CorrectResponse } from '../correct-response';
 import defaultValues from '../defaults';
 
@@ -232,30 +231,3 @@ describe('ChartingConfig', () => {
     })
   });
 });
-
-describe('ChartType', () => {
-  let wrapper;
-  let props;
-  const onChange = jest.fn();
-
-  beforeEach(() => {
-    props = {
-      classes: {},
-      value: 'bar',
-      onChange
-    };
-
-    wrapper = newProps => {
-      const configureProps = { ...props, newProps };
-
-      return <ChartType { ...configureProps } />;
-    };
-  });
-
-  describe('renders', () => {
-    it('snapshot', () => {
-      expect(wrapper()).toMatchSnapshot();
-    })
-  });
-});
-

@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChartType renders snapshot 1`] = `
-<UNDEFINED
-  classes={Object {}}
-  onChange={[MockFunction]}
-  value="bar"
-/>
-`;
-
 exports[`ChartingConfig renders snapshot 1`] = `
 <div>
   Define Graph Attributes
