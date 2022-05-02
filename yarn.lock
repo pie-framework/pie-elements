@@ -2352,7 +2352,7 @@
     slate-soft-break "^0.8.1"
     to-style "^1.3.3"
 
-"@pie-lib/editable-html@^7.20.0":
+"@pie-lib/editable-html@^7.20.0", "editable-html@npm:@pie-lib/editable-html@7.20.0":
   version "7.20.0"
   resolved "https://registry.yarnpkg.com/@pie-lib/editable-html/-/editable-html-7.20.0.tgz#4179ac69906856051e1c173bfd2648a055c05f5c"
   integrity sha512-v+EEgR8emJrYgj1H2sPqKquxYqjU2K8ScxIDytJDNpmM+R2BssapUR5da7MoIVrNmQ3OMn0DMWSM6nch4Th6KQ==
