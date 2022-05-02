@@ -301,8 +301,8 @@ export const validate = (model = {}, config = {}) => {
   if (!isEmpty(rowsErrors)) {
     errors.rowsErrors = rowsErrors;
     errors.correctResponseError = choiceMode === 'radio'
-      ? 'Should be defined a correct response for every row.'
-      : 'Should be defined at least one correct response for every row.';
+      ? 'There should be a correct response defined for every row.'
+      : 'There should be at least one correct response defined for every row.';
   }
 
   return errors;
