@@ -10,7 +10,6 @@ import debug from 'debug';
 import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import { InfoDialog } from './common';
-import isEmpty from 'lodash/isEmpty';
 
 const log = debug('pie-elements:match:configure');
 
