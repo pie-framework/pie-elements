@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.23...@pie-element/select-text-configure@5.3.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* Fix select-text tokens. ([9da07f5](https://github.com/pie-framework/pie-elements/commit/9da07f51821dfcfe3a029de3cf018bcd5d4ebfd2))
+* in controller we don't have access to the model (text & tokens) parser functions, so I have added 2 props (oldStart and oldEnd) to compare the start & and of the selected tokens (which are parsed) with the correct tokens (which are not parsed). Also, for the createCorrectSession to work, we need to make sure that when session is set, we have the correct start & end for the tokens (that come unparsed from controller). ([d6670b5](https://github.com/pie-framework/pie-elements/commit/d6670b53185acedd3be2dfc37b8f3616c9ce27f3))
+* multiple tokens containing the same text (wrong token index) ([ac9d3a7](https://github.com/pie-framework/pie-elements/commit/ac9d3a71d35074d74ad7f2ec8c433555f8e8c186))
+* multiple tokens containing the same text + html ascii codes ([bb73710](https://github.com/pie-framework/pie-elements/commit/bb73710d68394a33447191e5d56dc1b7797bb0ed))
+* remove br parser and allowed div elements inside text ([2dfca2f](https://github.com/pie-framework/pie-elements/commit/2dfca2fb17841e8f25e0f0cb1c02a8d9fa4a9bb8))
+
+
+### Features
+
+* **select-text:** ui/ux validation PD-1701 ([3ae2723](https://github.com/pie-framework/pie-elements/commit/3ae27238a70124dcf2b544f0f1c8ae93ddeb0f6e))
+
+
+
+
+
 ## [5.2.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-configure@5.2.22...@pie-element/select-text-configure@5.2.23) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/select-text-configure

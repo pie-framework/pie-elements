@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.12.7...@pie-element/explicit-constructed-response@3.13.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **explcit-constructed-response, inline-dropdown, drag-in-the-blank:** Fixed some math symbols rendering PD-1535 ([98b99ff](https://github.com/pie-framework/pie-elements/commit/98b99ff26742c15563b365c7fbb7fab981f057d8))
+* **explicit-constructed-response:** Adjusted minimum and maximum values for MaxLengthPerChoice PD-1552 ([3ab3398](https://github.com/pie-framework/pie-elements/commit/3ab3398cc8c92a0effc492f7dc06c92ffc51eac0))
+* **explicit-constructed-response:** Maximum Length field should always appear when Maximum Length Per Choice is set to true PD-1591 ([153123e](https://github.com/pie-framework/pie-elements/commit/153123ebb4162c8cb342bc7c6a979d68abc4b0c3))
+
+
+### Features
+
+* **choices:** implemented response deletion and undo capabilities [PD-1592] ([158a6e1](https://github.com/pie-framework/pie-elements/commit/158a6e1cb67a1804af28acb4c731daaf40d8435a))
+* **choices:** made sure adding a choice changes the markup [PD-1592] ([26768c0](https://github.com/pie-framework/pie-elements/commit/26768c0c04085d254633d099e45aaa68d7a4a269))
+
+
+
+
+
 ## [3.12.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/explicit-constructed-response@3.12.6...@pie-element/explicit-constructed-response@3.12.7) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/explicit-constructed-response

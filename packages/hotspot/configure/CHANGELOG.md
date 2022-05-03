@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.16...@pie-element/hotspot-configure@4.7.0) (2022-05-03)
+
+
+### Features
+
+* **hotspot:** PD-1703 implement ui/ux for item validation ([a962183](https://github.com/pie-framework/pie-elements/commit/a962183d0941936b69a95b32002135507d769170))
+
+
+
+
+
 ## [4.6.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/hotspot-configure@4.6.15...@pie-element/hotspot-configure@4.6.16) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/hotspot-configure

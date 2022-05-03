@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.8](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.7...@pie-element/math-inline@5.9.8) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/math-inline
+
+
+
+
+
 ## [5.9.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/math-inline@5.9.6...@pie-element/math-inline@5.9.7) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/math-inline

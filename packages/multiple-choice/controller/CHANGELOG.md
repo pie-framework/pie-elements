@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.6.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.5.5...@pie-element/multiple-choice-controller@3.6.0) (2022-05-03)
+
+
+### Features
+
+* **multiple-choice:** updated validation behaviors PD-1696 PD-1697 ([ab009c4](https://github.com/pie-framework/pie-elements/commit/ab009c4832572dab96c5b4130a5088dea17222e6))
+* added configurable validation ([1e3a0d6](https://github.com/pie-framework/pie-elements/commit/1e3a0d6da3c790e68a7fd401df2c832917d62480))
+* added configurable validation + refactoring PD-1696 ([31f6354](https://github.com/pie-framework/pie-elements/commit/31f6354b256fef876fa6c48e79a3f82486b5fce7))
+* added configurable validation + refactoring PD-1696 ([08d9b70](https://github.com/pie-framework/pie-elements/commit/08d9b70991f159707ef7fd5b3e533a0addda1d90))
+* added configurable validation + refactoring PD-1696 ([07c42c2](https://github.com/pie-framework/pie-elements/commit/07c42c2811349d1e829d367993541157fbbe2dfc))
+* start working on multiple-choice validation ([722037b](https://github.com/pie-framework/pie-elements/commit/722037bc0fddd2e090ec1506e85a91949ad86c91))
+
+
+
+
+
 ## [3.5.5](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-controller@3.5.4...@pie-element/multiple-choice-controller@3.5.5) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-controller

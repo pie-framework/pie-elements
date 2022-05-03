@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.1.7...@pie-element/multiple-choice-configure@4.2.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* build ([7b3a278](https://github.com/pie-framework/pie-elements/commit/7b3a278f2c83562cbe848bd08c38a20d6cd2b8a0))
+* fix crash ([0b5ab48](https://github.com/pie-framework/pie-elements/commit/0b5ab48ecf0468ac7fb724a152a5640dc25fea62))
+* **multiple-choice:** comment validation ui/ux ([89e731c](https://github.com/pie-framework/pie-elements/commit/89e731c549a3da60f4dcbdb2e131d53a4587b5ea))
+
+
+### Features
+
+* **multiple-choice:** PD-1697 ui/ux for validation ([9a088a3](https://github.com/pie-framework/pie-elements/commit/9a088a3d4af75586d6b8e302078c8629a3e7d718))
+* **multiple-choice:** updated validation behaviors PD-1696 PD-1697 ([ab009c4](https://github.com/pie-framework/pie-elements/commit/ab009c4832572dab96c5b4130a5088dea17222e6))
+
+
+
+
+
 ## [4.1.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice-configure@4.1.6...@pie-element/multiple-choice-configure@4.1.7) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/multiple-choice-configure

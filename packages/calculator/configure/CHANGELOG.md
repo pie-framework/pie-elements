@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@1.9.20...@pie-element/calculator-configure@1.9.21) (2022-05-03)
+
+**Note:** Version bump only for package @pie-element/calculator-configure
+
+
+
+
+
 ## [1.9.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/calculator-configure@1.9.19...@pie-element/calculator-configure@1.9.20) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/calculator-configure

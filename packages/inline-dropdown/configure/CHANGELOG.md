@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.7.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.6.16...@pie-element/inline-dropdown-configure@3.7.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **explcit-constructed-response, inline-dropdown, drag-in-the-blank:** Fixed some math symbols rendering PD-1535 ([98b99ff](https://github.com/pie-framework/pie-elements/commit/98b99ff26742c15563b365c7fbb7fab981f057d8))
+
+
+### Features
+
+* **inline-dropdown:** added validation UI improvements PD-1698 ([477066b](https://github.com/pie-framework/pie-elements/commit/477066b51d746d37ba8ba81ece42c95972466fc3))
+* **inline-dropdown:** ui/ux for validation PD-1699 ([d277f49](https://github.com/pie-framework/pie-elements/commit/d277f4958284cfc8dc8b16df49de924f1810c159))
+
+
+
+
+
 ## [3.6.16](https://github.com/pie-framework/pie-elements/compare/@pie-element/inline-dropdown-configure@3.6.15...@pie-element/inline-dropdown-configure@3.6.16) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/inline-dropdown-configure

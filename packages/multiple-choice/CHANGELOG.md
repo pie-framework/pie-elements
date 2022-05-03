@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.7...@pie-element/multiple-choice@6.3.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* build ([7b3a278](https://github.com/pie-framework/pie-elements/commit/7b3a278f2c83562cbe848bd08c38a20d6cd2b8a0))
+* fix crash ([0b5ab48](https://github.com/pie-framework/pie-elements/commit/0b5ab48ecf0468ac7fb724a152a5640dc25fea62))
+* **multiple-choice:** comment validation ui/ux ([89e731c](https://github.com/pie-framework/pie-elements/commit/89e731c549a3da60f4dcbdb2e131d53a4587b5ea))
+* added getters for the session PD-1668 ([de8a754](https://github.com/pie-framework/pie-elements/commit/de8a754f4580370b127257c435e43db405b4bdc4))
+* **multiple-choice:** set choices layout for print PD-1623 ([ed90d57](https://github.com/pie-framework/pie-elements/commit/ed90d578da7d8db040082e93e718357a60dd8881))
+* **multiple-choice:** set lockChoiceOrder to true for print ([5de2c75](https://github.com/pie-framework/pie-elements/commit/5de2c751b7a6cc63d54d4c8a1bbfb7adab4d2c00))
+
+
+### Features
+
+* **multiple-choice:** PD-1697 ui/ux for validation ([9a088a3](https://github.com/pie-framework/pie-elements/commit/9a088a3d4af75586d6b8e302078c8629a3e7d718))
+* **multiple-choice:** updated validation behaviors PD-1696 PD-1697 ([ab009c4](https://github.com/pie-framework/pie-elements/commit/ab009c4832572dab96c5b4130a5088dea17222e6))
+* added configurable validation ([1e3a0d6](https://github.com/pie-framework/pie-elements/commit/1e3a0d6da3c790e68a7fd401df2c832917d62480))
+* added configurable validation + refactoring PD-1696 ([31f6354](https://github.com/pie-framework/pie-elements/commit/31f6354b256fef876fa6c48e79a3f82486b5fce7))
+* added configurable validation + refactoring PD-1696 ([08d9b70](https://github.com/pie-framework/pie-elements/commit/08d9b70991f159707ef7fd5b3e533a0addda1d90))
+* added configurable validation + refactoring PD-1696 ([07c42c2](https://github.com/pie-framework/pie-elements/commit/07c42c2811349d1e829d367993541157fbbe2dfc))
+* start working on multiple-choice validation ([722037b](https://github.com/pie-framework/pie-elements/commit/722037bc0fddd2e090ec1506e85a91949ad86c91))
+
+
+
+
+
 ## [6.2.7](https://github.com/pie-framework/pie-elements/compare/@pie-element/multiple-choice@6.2.6...@pie-element/multiple-choice@6.2.7) (2022-04-12)
 
 **Note:** Version bump only for package @pie-element/multiple-choice

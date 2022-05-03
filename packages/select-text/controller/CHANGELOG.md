@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.31...@pie-element/select-text-controller@4.2.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* in controller we don't have access to the model (text & tokens) parser functions, so I have added 2 props (oldStart and oldEnd) to compare the start & and of the selected tokens (which are parsed) with the correct tokens (which are not parsed). Also, for the createCorrectSession to work, we need to make sure that when session is set, we have the correct start & end for the tokens (that come unparsed from controller). ([d6670b5](https://github.com/pie-framework/pie-elements/commit/d6670b53185acedd3be2dfc37b8f3616c9ce27f3))
+
+
+### Features
+
+* **select-text:** added configurable validation ([fcea834](https://github.com/pie-framework/pie-elements/commit/fcea834fc7d9d19dbd3bc65d10ef3ecbf2618097))
+* **select-text:** added configurable validation PD-1700 ([467f4a6](https://github.com/pie-framework/pie-elements/commit/467f4a640e560e26c932ce067b1b09ffe444b290))
+* **select-text:** ui/ux validation PD-1701 ([3ae2723](https://github.com/pie-framework/pie-elements/commit/3ae27238a70124dcf2b544f0f1c8ae93ddeb0f6e))
+
+
+
+
+
 ## [4.1.31](https://github.com/pie-framework/pie-elements/compare/@pie-element/select-text-controller@4.1.30...@pie-element/select-text-controller@4.1.31) (2022-03-22)
 
 **Note:** Version bump only for package @pie-element/select-text-controller
