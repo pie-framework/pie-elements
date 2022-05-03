@@ -9,8 +9,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/math-rendering": "^2.3.13",
-    "@pie-lib/render-ui": "^4.12.5",
+    "@pie-lib/math-rendering": "^2.4.0",
+    "@pie-lib/render-ui": "^4.12.6",
     "konva": "^3.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
