@@ -57,6 +57,7 @@ export default {
       settings: false,
       enabled: true,
       label: 'Preserve aspect ratio'
-    }
+    },
+    minShapes: 2
   }
 };

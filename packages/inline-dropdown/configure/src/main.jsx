@@ -9,18 +9,21 @@ import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
 import isEmpty from 'lodash/isEmpty';
 import reduce from 'lodash/reduce';
+import max from 'lodash/max';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Info from '@material-ui/icons/Info';
 import InlineDropdownToolbar from './inline-dropdown-toolbar';
-import max from 'lodash/max';
+import { generateValidationMessage } from './utils';
 
 const { toggle, Panel } = settings;
 
@@ -85,7 +88,8 @@ const styles = theme => ({
     fontFamily: 'Cerebri Sans',
     fontSize: '16px',
     lineHeight: '19px',
-    color: '#495B8F'
+    color: '#495B8F',
+    marginRight: '5px'
   },
   rationaleLabel: {
     display: 'flex',
@@ -96,6 +100,22 @@ const styles = theme => ({
   },
   panelDetails: {
    display: 'block'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: '5px'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '5px',
+    marginTop: '8px'
   }
 });
 
@@ -378,6 +398,7 @@ export class Main extends React.Component {
       choiceRationale = {},
       teacherInstructions = {},
       spellCheck = {},
+      maxResponseAreas
     } = configuration || {};
     const {
       rationaleEnabled,
@@ -385,9 +406,10 @@ export class Main extends React.Component {
       promptEnabled,
       teacherInstructionsEnabled,
       choices,
-      spellCheckEnabled
-    } =
-    model || {};
+      spellCheckEnabled,
+      errors
+    } = model || {};
+    const { responseAreasError } = errors || {};
 
     const renderChoiceRationale = () => (Object.keys(choices) || []).map(key =>
       <div key={key} className={classes.rationaleChoices}>
@@ -441,6 +463,8 @@ export class Main extends React.Component {
         toolbarOpts.position = 'bottom';
         break;
     }
+
+    const validationMessage = generateValidationMessage(configuration);
 
     return (
       <div className={classes.design}>
@@ -528,9 +552,22 @@ export class Main extends React.Component {
               </InputContainer>
             )}
 
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+            <div className={classes.flexContainer}>
+              <Typography className={classes.text}>
+                Define Template, Choices, and Correct Responses
+              </Typography>
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'}/>
+              </Tooltip>
+            </div>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+
             <InfoDialog
               open={dialog.open}
               title={dialog.message}
@@ -545,6 +582,7 @@ export class Main extends React.Component {
                 options: {
                   duplicates: true
                 },
+                maxResponseAreas: maxResponseAreas,
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { respAreaChoices } = this.state;
 
@@ -575,6 +613,7 @@ export class Main extends React.Component {
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}
+              error={responseAreasError}
             />
             <br />
             {choiceRationaleEnabled && renderChoiceRationale()}

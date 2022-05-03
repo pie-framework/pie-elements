@@ -169,3 +169,29 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { shapes } = model;
+  const { minShapes = 2, maxShapes, maxSelections } = config;
+  const errors = {};
+
+  const allShapes = Object.values(shapes || {}).reduce((acc, shape) => [...acc, ...shape], []);
+
+  const nbOfSelections = (allShapes || []).reduce((acc, shape) => shape.correct ? acc + 1 : acc, 0);
+
+  const nbOfShapes = (allShapes || []).length;
+
+  if (nbOfShapes < minShapes) {
+    errors.shapesError = `There should be at least ${minShapes} shapes defined.`;
+  } else if (nbOfShapes > maxShapes) {
+    errors.shapesError = `No more than ${maxShapes} shapes should be defined.`;
+  }
+
+  if (nbOfSelections < 1) {
+    errors.selectionsError = 'There should be at least 1 shape selected.';
+  } else if (nbOfSelections > maxSelections) {
+    errors.selectionsError = `No more than ${maxSelections} shapes should be selected.`;
+  }
+
+  return errors;
+};

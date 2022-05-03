@@ -5,6 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+// import EditableHtmlNew from 'editable-html';
 import {InputContainer, layout, settings} from '@pie-lib/config-ui';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -372,6 +373,16 @@ export class Main extends React.Component {
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
                 />
+                {/*<EditableHtmlNew*/}
+                {/*  className={classes.prompt}*/}
+                {/*  markup={model.prompt}*/}
+                {/*  onChange={this.onPromptChanged}*/}
+                {/*  imageSupport={imageSupport}*/}
+                {/*  nonEmpty={false}*/}
+                {/*  disableUnderline*/}
+                {/*  toolbarOpts={toolbarOpts}*/}
+                {/*  spellCheck={spellCheckEnabled}*/}
+                {/*/>*/}
               </InputContainer>
             )}
             <Typography className={classes.text}>

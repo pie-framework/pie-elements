@@ -7,6 +7,7 @@ exports[`Root render renders 1`] = `
       <Panel
         configuration={
           Object {
+            "minShapes": 2,
             "multipleCorrect": Object {
               "label": "Multiple Correct Responses",
               "settings": true,
@@ -176,11 +177,38 @@ exports[`Root render renders 1`] = `
     }
   >
     <div>
-      <WithStyles(Typography)
-        variant="subheading"
+      <div
+        className=""
       >
-        Define Hotspot
-      </WithStyles(Typography)>
+        <WithStyles(Typography)
+          variant="subheading"
+        >
+          Define Hotspot
+        </WithStyles(Typography)>
+        <WithStyles(Tooltip)
+          classes={
+            Object {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="left"
+          title="Validation requirements:
+There should be at least 2 shapes defined.
+There should be at least 1 shape selected."
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+            style={
+              Object {
+                "float": "right",
+              }
+            }
+          />
+        </WithStyles(Tooltip)>
+      </div>
       <WithStyles(Palette)
         hotspotColor="rgba(137, 183, 244, 0.65)"
         hotspotList={

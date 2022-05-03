@@ -41,7 +41,7 @@ var prepareText = function prepareText(text) {
   return parseParagraphs(txtDom);
 };
 
-export default (model) => {
+export const generateModel = model => {
   if (!model) return model;
 
   // parsing
@@ -93,4 +93,19 @@ export default (model) => {
     tokens: newTokens,
     text: modelText
   };
+};
+
+export const generateValidationMessage = config => {
+  const { minTokens, maxTokens, maxSelections } = config;
+
+  const tokensMessage = `\nThere should be at least ${minTokens} ` +
+    (maxTokens ? `and at most ${maxTokens} ` : '') + 'tokens defined.';
+
+  const selectionsMessage = `\nThere should be at least 1 ` +
+    (maxSelections ? `and at most ${maxSelections} ` : '') + 'token' +
+    (maxSelections ? 's' : '') +  ' selected.';
+
+  const message = 'Validation requirements:' + tokensMessage + selectionsMessage;
+
+  return message;
 };
