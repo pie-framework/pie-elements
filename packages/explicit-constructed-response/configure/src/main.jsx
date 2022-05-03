@@ -4,8 +4,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
-import EditableHtmlOld, {ALL_PLUGINS} from '@pie-lib/editable-html';
-import EditableHtml from 'editable-html';
+import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+// import EditableHtmlNew from 'editable-html';
 import {InputContainer, layout, settings} from '@pie-lib/config-ui';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -347,7 +347,7 @@ export class Main extends React.Component {
                 label={teacherInstructions.label}
                 className={classes.promptHolder}
               >
-                <EditableHtmlOld
+                <EditableHtml
                   className={classes.prompt}
                   markup={model.teacherInstructions || ''}
                   onChange={this.onTeacherInstructionsChanged}
@@ -363,16 +363,6 @@ export class Main extends React.Component {
                 label={prompt.label}
                 className={classes.promptHolder}
               >
-                <EditableHtmlOld
-                  className={classes.prompt}
-                  markup={model.prompt}
-                  onChange={this.onPromptChanged}
-                  imageSupport={imageSupport}
-                  nonEmpty={false}
-                  disableUnderline
-                  toolbarOpts={toolbarOpts}
-                  spellCheck={spellCheckEnabled}
-                />
                 <EditableHtml
                   className={classes.prompt}
                   markup={model.prompt}
@@ -383,12 +373,22 @@ export class Main extends React.Component {
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
                 />
+                {/*<EditableHtmlNew*/}
+                {/*  className={classes.prompt}*/}
+                {/*  markup={model.prompt}*/}
+                {/*  onChange={this.onPromptChanged}*/}
+                {/*  imageSupport={imageSupport}*/}
+                {/*  nonEmpty={false}*/}
+                {/*  disableUnderline*/}
+                {/*  toolbarOpts={toolbarOpts}*/}
+                {/*  spellCheck={spellCheckEnabled}*/}
+                {/*/>*/}
               </InputContainer>
             )}
             <Typography className={classes.text}>
               Define Template, Choices, and Correct Responses
             </Typography>
-            <EditableHtmlOld
+            <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
               spellCheck={spellCheckEnabled}
@@ -442,7 +442,7 @@ export class Main extends React.Component {
                 label={rationale.label}
                 className={classes.promptHolder}
               >
-                <EditableHtmlOld
+                <EditableHtml
                   className={classes.prompt}
                   markup={model.rationale || ''}
                   onChange={this.onRationaleChanged}
