@@ -110,5 +110,27 @@ const groupShapes = (shapesArray) => {
   return cloneDeep(shapesMap);
 };
 
+const generateValidationMessage = config => {
+  const { minShapes, maxShapes, maxSelections } = config;
 
-export { updateImageDimensions, getUpdatedShapes, getAllShapes, groupShapes, getUpdatedRectangle, getUpdatedPlygon };
+  const shapesMessage = `\nThere should be at least ${minShapes} ` +
+    (maxShapes ? `and at most ${maxShapes} ` : '') + 'shapes defined.';
+
+  const selectionsMessage = `\nThere should be at least 1 ` +
+    (maxSelections ? `and at most ${maxSelections} ` : '') + 'shape' +
+    (maxSelections ? 's' : '') +  ' selected.';
+
+  const message = 'Validation requirements:' + shapesMessage + selectionsMessage;
+
+  return message;
+};
+
+export {
+  updateImageDimensions,
+  generateValidationMessage,
+  getUpdatedShapes,
+  getAllShapes,
+  groupShapes,
+  getUpdatedRectangle,
+  getUpdatedPlygon
+};

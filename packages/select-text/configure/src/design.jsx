@@ -13,8 +13,11 @@ import {
   layout
 } from '@pie-lib/config-ui';
 import Chip from '@material-ui/core/Chip';
+import Info from '@material-ui/icons/Info';
 import debug from 'debug';
 import EditableHtml from '@pie-lib/editable-html';
+import Tooltip from '@material-ui/core/Tooltip';
+import { generateValidationMessage } from './utils';
 
 const { Panel, toggle, radio } = settings;
 
@@ -159,9 +162,12 @@ export class Design extends React.Component {
       highlightChoices = {}
     } = configuration || {};
     const {
-      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled
+      teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, feedbackEnabled, errors
     } = model || {};
     const toolbarOpts = {};
+    const { tokensError, selectionsError } = errors || {};
+
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -273,6 +279,19 @@ export class Design extends React.Component {
             />
           )}
 
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            disableFocusListener
+            disableTouchListener
+            placement={'left'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ float: 'right' }}/>
+          </Tooltip>
+
+          {tokensError && <div className={classes.errorText}>{tokensError}</div>}
+          {selectionsError && <div className={classes.errorText}>{selectionsError}</div>}
+
           {tokens.settings && (
             <InputContainer
               label={tokens.label || ''}
@@ -332,7 +351,8 @@ export class Design extends React.Component {
       </layout.ConfigLayout>
     );
   }
-}
+};
+
 export default withStyles(theme => ({
   container: {
     paddingTop: theme.spacing.unit
@@ -378,5 +398,15 @@ export default withStyles(theme => ({
   },
   numberField: {
     width: '180px'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
   }
 }))(Design);

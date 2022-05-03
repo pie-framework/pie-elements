@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/graphing-configure",
   "private": true,
-  "version": "3.3.15",
+  "version": "3.3.16",
   "description": "",
   "main": "lib/index.js",
   "module": "src/index.js",
@@ -9,9 +9,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-configure-events": "^1.2.0",
-    "@pie-lib/config-ui": "^10.11.0",
-    "@pie-lib/editable-html": "^7.20.0",
-    "@pie-lib/graphing": "^2.4.16",
+    "@pie-lib/config-ui": "^10.12.1",
+    "@pie-lib/editable-html": "^7.22.1",
+    "@pie-lib/graphing": "^2.5.0",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "prop-types": "^15.6.2",

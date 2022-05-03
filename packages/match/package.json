@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "4.10.6",
+  "version": "4.10.7",
   "main": "lib/index.js",
   "description": "",
   "scripts": {
@@ -14,9 +14,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/correct-answer-toggle": "^2.3.35",
-    "@pie-lib/math-rendering": "^2.3.13",
-    "@pie-lib/render-ui": "^4.12.5",
+    "@pie-lib/correct-answer-toggle": "^2.3.36",
+    "@pie-lib/math-rendering": "^2.4.0",
+    "@pie-lib/render-ui": "^4.12.6",
     "classnames": "^2.2.5",
     "debug": "^4.1.1",
     "lodash": "^4.17.10",
