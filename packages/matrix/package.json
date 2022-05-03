@@ -13,7 +13,7 @@
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
     "@pie-lib/math-rendering": "^2.4.0",
-    "@pie-lib/render-ui": "^4.12.5",
+    "@pie-lib/render-ui": "^4.12.6",
     "debug": "^4.1.1",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
