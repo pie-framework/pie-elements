@@ -183,9 +183,28 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           }
         />
       </InputContainer>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
+      <div>
+        <WithStyles(Typography)>
+          Define Template, Choices, and Correct Responses
+        </WithStyles(Typography)>
+        <WithStyles(Tooltip)
+          classes={
+            Object {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="right"
+          title="Validation requirements:
+There should be at least 1 response area defined."
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+          />
+        </WithStyles(Tooltip)>
+      </div>
       <InfoDialog
         open={false}
       />
@@ -196,6 +215,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "maxResponseAreas": undefined,
             "options": Object {
               "duplicates": true,
             },
@@ -554,9 +574,28 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     }
   >
     <div>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
+      <div>
+        <WithStyles(Typography)>
+          Define Template, Choices, and Correct Responses
+        </WithStyles(Typography)>
+        <WithStyles(Tooltip)
+          classes={
+            Object {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="right"
+          title="Validation requirements:
+There should be at least 1 response area defined."
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+          />
+        </WithStyles(Tooltip)>
+      </div>
       <InfoDialog
         open={false}
       />
@@ -567,6 +606,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "maxResponseAreas": undefined,
             "options": Object {
               "duplicates": true,
             },
