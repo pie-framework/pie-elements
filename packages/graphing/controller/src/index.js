@@ -238,3 +238,29 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { toolbarTools, answers, graph } = model || {};
+  const { correctAnswer } = answers || {};
+  const { width, height } = graph || {};
+  const errors = {};
+
+
+  if (width <= 150 || width >= 800) {
+    errors.widthError = 'Width should be a value between 150 and 800';
+  }
+
+  if (height <= 150 || height >= 800) {
+    errors.heightError = 'Height should be a value between 150 and 800';
+  }
+
+  if (!correctAnswer || (correctAnswer.marks  && !correctAnswer.marks.length)) {
+    errors.correctAnswerError = 'The correct answer should include at least one graph object.';
+  }
+
+  if (!toolbarTools || !toolbarTools.length) {
+    errors.toolbarToolsError = 'A graphing item must make at least one graph tool available';
+  }
+
+  return errors;
+};
