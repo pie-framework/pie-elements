@@ -8,6 +8,8 @@ import {
 import EditableHtml from '@pie-lib/editable-html';
 import { withStyles } from '@material-ui/core/styles';
 import { withDragContext } from '@pie-lib/drag';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import debug from 'debug';
 import cloneDeep from 'lodash/cloneDeep';
@@ -17,6 +19,7 @@ import React from 'react';
 import pluralize from 'pluralize';
 
 import ChoiceEditor from './choice-editor';
+import { generateValidationMessage } from './utils';
 
 const log = debug('@pie-element:placement-ordering:design');
 const { Panel, toggle, radio } = settings;
@@ -108,8 +111,11 @@ export class Design extends React.Component {
       spellCheck = {},
       scoringType = {}
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled } =
+    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, feedbackEnabled, choiceLabelEnabled, spellCheckEnabled, errors } =
       model || {};
+    const { orderError } = errors || {};
+    const validationMessage = generateValidationMessage();
+
     const toolbarOpts = {};
     const {
       singularLabel = '',
@@ -226,7 +232,19 @@ export class Design extends React.Component {
           </FormSection>
         )}
 
-        <FormSection label={`Define ${pluralLabel}`}>
+        <FormSection label={`Define ${pluralLabel}`} labelExtraStyle={{display: 'inline-flex'}}>
+          <div className={classes.inlineFlexContainer}>
+          <Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{marginLeft: '5px'}}/>
+          </Tooltip>
+          </div>
+          {orderError && <div className={classes.errorText}>{orderError}</div>}
           <div className={classes.row}>
             {choiceLabelEnabled && (
               <InputContainer
@@ -332,6 +350,20 @@ export default withDragContext(
       gridAutoFlow: 'column',
       gridAutoColumns: '1fr',
       gridGap: '8px'
+    },
+    tooltip: {
+      fontSize: '12px',
+      whiteSpace: 'pre',
+      maxWidth: '500px'
+    },
+    errorText: {
+      fontSize: '12px',
+      color: 'red',
+      padding: '5px 0'
+    },
+    inlineFlexContainer: {
+      display: 'inline-flex',
+      position: 'absolute'
     }
   }))(Design)
 );

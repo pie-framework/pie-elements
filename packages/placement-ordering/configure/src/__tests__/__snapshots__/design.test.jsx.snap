@@ -170,7 +170,38 @@ exports[`Placement Ordering snapshot renders all default items 1`] = `
   </FormSection>
   <FormSection
     label="Define Choices"
+    labelExtraStyle={
+      Object {
+        "display": "inline-flex",
+      }
+    }
   >
+    <div>
+      <WithStyles(Tooltip)
+        classes={
+          Object {
+            "tooltip": undefined,
+          }
+        }
+        disableFocusListener={true}
+        disableTouchListener={true}
+        placement="right"
+        title="Validation requirements:
+There should be at least 3 tokens.
+The tokens should not be empty and should be unique.
+The correct ordering should not be identical to the initial ordering."
+      >
+        <pure(InfoIcon)
+          color="primary"
+          fontSize="small"
+          style={
+            Object {
+              "marginLeft": "5px",
+            }
+          }
+        />
+      </WithStyles(Tooltip)>
+    </div>
     <div>
       <InputContainer
         label="CHOICE LABEL"
@@ -387,7 +418,38 @@ exports[`Placement Ordering snapshot renders custom items 1`] = `
   </FormSection>
   <FormSection
     label="Define Choices"
+    labelExtraStyle={
+      Object {
+        "display": "inline-flex",
+      }
+    }
   >
+    <div>
+      <WithStyles(Tooltip)
+        classes={
+          Object {
+            "tooltip": undefined,
+          }
+        }
+        disableFocusListener={true}
+        disableTouchListener={true}
+        placement="right"
+        title="Validation requirements:
+There should be at least 3 tokens.
+The tokens should not be empty and should be unique.
+The correct ordering should not be identical to the initial ordering."
+      >
+        <pure(InfoIcon)
+          color="primary"
+          fontSize="small"
+          style={
+            Object {
+              "marginLeft": "5px",
+            }
+          }
+        />
+      </WithStyles(Tooltip)>
+    </div>
     <div>
       <InputContainer
         label="CHOICE LABEL"
