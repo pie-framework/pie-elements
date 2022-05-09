@@ -151,9 +151,34 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           }
         />
       </InputContainer>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
+      <div>
+        <WithStyles(Typography)>
+          Define Template, Choices, and Correct Responses
+        </WithStyles(Typography)>
+        <WithStyles(Tooltip)
+          classes={
+            Object {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="right"
+          title="Validation requirements:
+The response area content should not be empty and should be unique.
+There should be at least 1 response area defined."
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+            style={
+              Object {
+                "marginLeft": "5px",
+              }
+            }
+          />
+        </WithStyles(Tooltip)>
+      </div>
       <EditableHtml
         disabled={false}
         highlightShape={false}
@@ -161,6 +186,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "error": [Function],
+            "maxResponseAreas": undefined,
             "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,
@@ -180,6 +207,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
         Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        choicesErrors={Object {}}
         maxLengthPerChoiceEnabled={true}
         model={
           Object {
@@ -384,9 +412,34 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
     }
   >
     <div>
-      <WithStyles(Typography)>
-        Define Template, Choices, and Correct Responses
-      </WithStyles(Typography)>
+      <div>
+        <WithStyles(Typography)>
+          Define Template, Choices, and Correct Responses
+        </WithStyles(Typography)>
+        <WithStyles(Tooltip)
+          classes={
+            Object {
+              "tooltip": undefined,
+            }
+          }
+          disableFocusListener={true}
+          disableTouchListener={true}
+          placement="right"
+          title="Validation requirements:
+The response area content should not be empty and should be unique.
+There should be at least 1 response area defined."
+        >
+          <pure(InfoIcon)
+            color="primary"
+            fontSize="small"
+            style={
+              Object {
+                "marginLeft": "5px",
+              }
+            }
+          />
+        </WithStyles(Tooltip)>
+      </div>
       <EditableHtml
         disabled={false}
         highlightShape={false}
@@ -394,6 +447,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         onChange={[Function]}
         responseAreaProps={
           Object {
+            "error": [Function],
+            "maxResponseAreas": undefined,
             "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,
@@ -413,6 +468,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
         Define Alternates and Character Limits
       </WithStyles(Typography)>
       <AlternateResponses
+        choicesErrors={Object {}}
         maxLengthPerChoiceEnabled={true}
         model={
           Object {

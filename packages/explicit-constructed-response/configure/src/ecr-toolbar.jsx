@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import classNames from 'classnames';
 
 const findSlateNode = key => {
   return window.document.querySelector('[data-key="' + key + '"]');
@@ -70,7 +71,7 @@ export class ECRToolbar extends React.Component {
   onChange = e => this.setState({ markup: e.target.value });
 
   render() {
-    const { classes } = this.props;
+    const { classes, error } = this.props;
     const { markup, toolbarStyle } = this.state;
 
     return (
@@ -103,6 +104,9 @@ const StyledECRToolbar = withStyles({
   input: {
     backgroundColor: '#fff',
     padding: '10px 20px 10px 10px'
+  },
+  errorInput: {
+    border: '2px solid red'
   }
 })(ECRToolbar);
 
