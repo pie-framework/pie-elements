@@ -1,5 +1,5 @@
 export const generateValidationMessage = config => {
-  const { maxResponseAreas, minChoices, maxChoices } = config;
+  const { maxResponseAreas, minChoices = 3, maxChoices } = config;
 
   const responseAreasMessage = '\nThe tokens should ' +
     'not be empty and should be unique.\nThere should be at least 1 ' +
