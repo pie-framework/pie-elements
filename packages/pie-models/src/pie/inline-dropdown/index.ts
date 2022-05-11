@@ -152,4 +152,9 @@ export interface InlineDropdownConfigure
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
 }

@@ -162,4 +162,19 @@ export interface CategorizeConfigure
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Minimum number of choices
+   */
+  minChoices?: number;
+
+  /**
+   * Maximum number of choices
+   */
+  maxChoices?: number;
+
+  /**
+   * Maximum number of categories
+   */
+  maxCategories?: number
 }
