@@ -266,11 +266,15 @@ export default class TextDrawable {
       if (!props.disabled) {
         extraProps = {
           onClick: e => this.handleClick(e, id),
+          onTap: e => this.handleClick(e, id),
           onDblClick: e => this.handleDblClick(e, text),
+          onDblTap: e => this.handleDblClick(e, text),
           onTransform: e => this.handleTransform(e, textNode),
           onTransformEnd: this.props.handleSessionChange,
           onMouseDown: this.handleMouseDown,
+          onTouchStart: this.handleMouseDown,
           onMouseUp: this.handleMouseUp,
+          onTouchEnd: this.handleMouseUp,
           onDragEnd: this.props.handleSessionChange,
           onMouseEnter: this.props.onMouseOverElement,
           onMouseLeave: this.props.onMouseOutElement,
@@ -307,7 +311,9 @@ export default class TextDrawable {
             }}
             selectedShapeName={textNode}
             onMouseDown={this.handleMouseDown}
+            onTouchStart={this.handleMouseDown}
             onMouseUp={this.handleMouseUp}
+            onTouchEnd={this.handleMouseUp}
           />
         )
       ];
