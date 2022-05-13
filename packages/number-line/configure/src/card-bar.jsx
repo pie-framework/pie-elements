@@ -7,10 +7,13 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
 const CardBar = props => {
-  const { classes, header, children, mini } = props;
+  const { classes, header, children, mini, info } = props;
   return (
     <div className={classes.cardBar}>
-      <Typography variant={mini ? 'subheading' : 'h5'}>{header}</Typography>
+      <div className={classes.flexContainer}>
+        <Typography variant={mini ? 'subheading' : 'h5'}>{header}</Typography>
+        {info}
+      </div>
       {children && (
         <Tooltip title={children} classes={{ tooltip: classes.tooltip }}>
           <IconButton aria-label="Delete" className={classes.button}>
@@ -41,6 +44,10 @@ const styles = theme => ({
   },
   tooltip: {
     fontSize: '12px'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center'
   }
 });
 export default withStyles(styles)(CardBar);
