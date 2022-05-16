@@ -50,6 +50,7 @@ export class Choice extends React.Component {
     const names = classNames(classes.choice, {
       [classes.noBorder]:
         index === choicesLength - 1 || choicesLayout !== 'vertical',
+      [classes.horizontalLayout]: choicesLayout === 'horizontal',
     });
 
     return (
@@ -86,4 +87,13 @@ export default withStyles({
   noBorder: {
     borderBottom: 'none',
   },
+  horizontalLayout: {
+    paddingRight: '20px',
+    '& label': {
+      marginRight: '8px',
+      // '& span:first-child': {
+      //   paddingRight: 0
+      // }
+    },
+  }
 })(Choice);

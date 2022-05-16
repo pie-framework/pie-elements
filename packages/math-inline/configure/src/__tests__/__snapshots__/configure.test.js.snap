@@ -306,6 +306,40 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       onFocus={[Function]}
     />
   </InputContainer>
+  <div
+    className="GeneralConfigBlock-flexContainer-8"
+    style={
+      Object {
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <h3>
+      Define Response
+    </h3>
+    <WithStyles(Tooltip)
+      classes={
+        Object {
+          "tooltip": "GeneralConfigBlock-tooltip-19",
+        }
+      }
+      disableFocusListener={true}
+      disableTouchListener={true}
+      placement="right"
+      title="Validation requirements:
+All correct answers (the primary and any alternates) should not be empty and should be unique."
+    >
+      <pure(InfoIcon)
+        color="primary"
+        fontSize="small"
+        style={
+          Object {
+            "marginLeft": "5px",
+          }
+        }
+      />
+    </WithStyles(Tooltip)>
+  </div>
   <InputContainer
     className="GeneralConfigBlock-selectContainer-9"
     key="templateEditorType"
@@ -403,9 +437,9 @@ exports[`GeneralConfigBlock renders correctly with snapshot 1`] = `
       showKeypad={false}
     />
   </div>
-  <h3>
+  <h4>
     Define Correct Response
-  </h3>
+  </h4>
   <div
     className="GeneralConfigBlock-flexContainer-8"
   >

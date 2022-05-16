@@ -7,9 +7,12 @@ import { withDragContext } from '@pie-lib/drag';
 import { renderMath } from '@pie-lib/math-rendering';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import Choices from './choices';
 import { createSlateMarkup } from './markupUtils';
+import {generateValidationMessage} from '../utils';
 const { dropdown, toggle, Panel } = settings;
 
 const styles = theme => ({
@@ -49,6 +52,20 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#495B8F'
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end'
   }
 });
 
@@ -139,11 +156,16 @@ export class Main extends React.Component {
       rationale = {},
       teacherInstructions = {},
       choicesPosition = {},
-      spellCheck = {}
+      spellCheck = {},
+      maxChoices,
+      maxResponseAreas
     } = configuration || {};
-    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled } =
+    const { rationaleEnabled, promptEnabled, teacherInstructionsEnabled, spellCheckEnabled, errors } =
       model || {};
     const toolbarOpts = {};
+
+    const { responseAreasError, choicesError }  = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -228,9 +250,22 @@ export class Main extends React.Component {
                 />
               </InputContainer>
             )}
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+            <div className={classes.flexContainer}>
+              <Typography className={classes.text}>
+                Define Template, Choices, and Correct Responses
+              </Typography>
+              <Tooltip
+                classes={{tooltip: classes.tooltip}}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{marginLeft: '5px'}}/>
+              </Tooltip>
+            </div>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+            {choicesError && <div className={classes.errorText}>{choicesError}</div>}
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
@@ -238,7 +273,8 @@ export class Main extends React.Component {
                 type: 'drag-in-the-blank',
                 options: {
                   duplicates: model.duplicates
-                }
+                },
+                maxResponseAreas: maxResponseAreas,
               }}
               className={classes.markup}
               markup={model.slateMarkup}
@@ -258,6 +294,7 @@ export class Main extends React.Component {
               duplicates={model.duplicates}
               onChange={this.onResponsesChanged}
               toolbarOpts={toolbarOpts}
+              maxChoices={maxChoices}
             />
             {rationaleEnabled && (
               <InputContainer

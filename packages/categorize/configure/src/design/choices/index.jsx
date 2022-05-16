@@ -13,6 +13,7 @@ import { removeAllChoices } from '@pie-lib/categorize';
 export class Choices extends React.Component {
   static propTypes = {
     model: PropTypes.object.isRequired,
+    configuration: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     choices: PropTypes.array.isRequired,
@@ -71,8 +72,12 @@ export class Choices extends React.Component {
       imageSupport,
       onModelChanged,
       spellCheck,
-      toolbarOpts
+      toolbarOpts,
+      configuration,
     } = this.props;
+    const { errors } = model;
+    const { choicesError, choicesErrors } = errors || {};
+    const { maxChoices } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
@@ -81,7 +86,13 @@ export class Choices extends React.Component {
 
     return (
       <div className={classNames(classes.choices, className)}>
-        <Header label="Choices" buttonLabel="ADD A CHOICE" onAdd={this.addChoice} />
+        <Header
+          label="Choices"
+          buttonLabel="ADD A CHOICE"
+          onAdd={this.addChoice}
+          buttonDisabled={maxChoices && choices && maxChoices === choices.length}
+        />
+        {choicesError && <div className={classes.errorText}>{choicesError}</div>}
         <Config
           config={model}
           categoryCountIsOne={categoryCountIsOne}
@@ -100,6 +111,7 @@ export class Choices extends React.Component {
               onDelete={() => this.deleteChoice(h)}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
+              error={choicesErrors && choicesErrors[h.id]}
             />
           ))}
         </div>
@@ -120,6 +132,11 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
   },
-  label: {}
+  label: {},
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
 });
 export default withStyles(styles)(Choices);

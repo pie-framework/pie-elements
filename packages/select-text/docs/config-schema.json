@@ -227,6 +227,21 @@
         }
       }
     },
+    "maxSelections": {
+      "description": "Maximum number of selected tokens in correct answer",
+      "type": "number",
+      "title": "maxSelections"
+    },
+    "minTokens": {
+      "description": "Minimum number of tokens",
+      "type": "number",
+      "title": "minTokens"
+    },
+    "maxTokens": {
+      "description": "Maximum number of tokens",
+      "type": "number",
+      "title": "maxTokens"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,

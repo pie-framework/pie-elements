@@ -159,3 +159,26 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { choices, markup } = model;
+  const { minChoices = 2, maxChoices, maxResponseAreas } = config;
+  const errors = {};
+
+  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+  const nbOfChoices = (choices || []).length;
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+  } else if (nbOfResponseAreas < 1) {
+    errors.responseAreasError = 'There should be at least 1 response area defined.';
+  }
+
+  if (nbOfChoices < minChoices) {
+    errors.choicesError = `There should be at least ${minChoices} choices defined.`;
+  } else if (nbOfChoices > maxChoices) {
+    errors.choicesError = `No more than ${maxChoices} choices should be defined.`;
+  }
+
+  return errors;
+};
