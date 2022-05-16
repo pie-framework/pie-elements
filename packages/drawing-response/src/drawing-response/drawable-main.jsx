@@ -89,11 +89,15 @@ export class DrawableMain extends React.Component {
   onMouseOutElement = () => this.setState({ isOver: false });
 
   handleMouseDown = e => {
+    // ONLY IF MOBILE?
+    document.body.style.overflow = 'hidden';
+
     const { newDrawable, textIsSelected } = this.state;
     const { toolActive, fillColor, outlineColor, scale } = this.props;
 
     if (newDrawable.length === 0 && !textIsSelected) {
       const { x, y } = e.target.getStage().getPointerPosition();
+
       const newDrawable = factory(toolActive.type, {
         startx: x / scale,
         starty: y / scale,
@@ -109,6 +113,9 @@ export class DrawableMain extends React.Component {
   };
 
   handleMouseUp = e => {
+    // ONLY IF MOBILE?
+    document.body.style.overflow = 'initial';
+
     const { newDrawable, drawables } = this.state;
     const { scale } = this.props;
 
@@ -218,11 +225,14 @@ export class DrawableMain extends React.Component {
     if (!disabled) {
       listeners = {
         onMouseUp: this.handleMouseUp,
-        onMouseMove: this.handleMouseMove
+        onTouchEnd: this.handleMouseUp,
+        onMouseMove: this.handleMouseMove,
+        onTouchMove: this.handleMouseMove,
       };
 
       if (!draggable) {
         listeners.onMouseDown = this.handleMouseDown;
+        listeners.onTouchStart = this.handleMouseDown;
       }
     }
 
@@ -232,13 +242,13 @@ export class DrawableMain extends React.Component {
     return (
       <div>
         <div className={classes.undoControls}>
-          <Button disabled={disabled} onClick={this.handleUndo} label="Undo" />
-          <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all" />
+          <Button disabled={disabled} onClick={this.handleUndo} label="Undo"/>
+          <Button disabled={disabled} onClick={this.handleClearAll} label="Clear all"/>
         </div>
         <div className={classes.base}>
           {backgroundImageEnabled && imageUrl && (
             <ImageBackground
-              dimensions={{height: imageHeight, width: imageWidth}}
+              dimensions={{ height: imageHeight, width: imageWidth }}
               url={imageUrl}/>
           )}
 
@@ -252,8 +262,8 @@ export class DrawableMain extends React.Component {
             }}
             className={classnames(classes.stage, {
               [classes.active]:
-                draggable &&
-                (isOver || (newDrawable && newDrawable.length === 1))
+              draggable &&
+              (isOver || (newDrawable && newDrawable.length === 1))
             })}
             height={drawableDimensions.height}
             width={drawableDimensions.width}

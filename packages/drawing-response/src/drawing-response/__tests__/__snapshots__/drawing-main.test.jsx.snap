@@ -39,6 +39,8 @@ exports[`DrawingResponse DrawableMain snapshot renders 1`] = `
       height={350}
       onMouseMove={[Function]}
       onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
       width={353}
     >
       <Layer />
@@ -93,9 +95,13 @@ exports[`DrawingResponse DrawableText snapshot renders 1`] = `
     name="text_gcifqhhimf8k2d6g8hs"
     onClick={[Function]}
     onDblClick={[Function]}
+    onDblTap={[Function]}
     onDragEnd={[MockFunction]}
     onMouseDown={[Function]}
     onMouseUp={[Function]}
+    onTap={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     onTransform={[Function]}
     onTransformEnd={[MockFunction]}
     text="Double click to edit this text. Press Enter to submit."
@@ -108,6 +114,8 @@ exports[`DrawingResponse DrawableText snapshot renders 1`] = `
     key="transformer_gcifqhhimf8k2d6g8hs"
     onMouseDown={[Function]}
     onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     selectedShapeName="text_gcifqhhimf8k2d6g8hs"
   />
 </div>
@@ -137,9 +145,13 @@ exports[`DrawingResponse DrawableText snapshot when there is no value renders 1`
     name="text_gcifqhhimf8k2d6g8hs"
     onClick={[Function]}
     onDblClick={[Function]}
+    onDblTap={[Function]}
     onDragEnd={[MockFunction]}
     onMouseDown={[Function]}
     onMouseUp={[Function]}
+    onTap={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     onTransform={[Function]}
     onTransformEnd={[MockFunction]}
     text="Double click to edit this text. Press Enter to submit."
@@ -152,6 +164,8 @@ exports[`DrawingResponse DrawableText snapshot when there is no value renders 1`
     key="transformer_gcifqhhimf8k2d6g8hs"
     onMouseDown={[Function]}
     onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     selectedShapeName="text_gcifqhhimf8k2d6g8hs"
   />
 </div>
