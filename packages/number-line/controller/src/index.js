@@ -301,3 +301,33 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  // TODO: add configurable validation props after authoring is updated
+  const { graph, correctResponse } = model || {};
+  const { width, domain, maxNumberOfPoints } = graph || {};
+  const { min, max } = domain || {};
+  const errors = {};
+
+  if (width < 200 || width > 800) {
+    errors.widthError = 'Width should be a value between 200 and 800.';
+  }
+
+  if (min < -100000 || min > 10000 || max < -100000 || max > 10000) {
+    errors.domainError = 'Min and max must both be in the range [-100000, 10000].';
+  }
+
+  if (min >= max) {
+    errors.maxError = 'Max must be greater than min.';
+  }
+
+  if (maxNumberOfPoints < 1 || maxNumberOfPoints > 20) {
+    errors.pointsError = 'Max number of elements should be between 1 and 20.';
+  }
+
+  if (correctResponse && correctResponse.length === 0) {
+    errors.correctResponseError = 'The correct answer should include at least one number line object.';
+  }
+
+  return errors;
+};
