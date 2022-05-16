@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.29](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.1.28...@pie-element/matrix@0.1.29) (2022-05-16)
+
+**Note:** Version bump only for package @pie-element/matrix
+
+
+
+
+
 ## [0.1.28](https://github.com/pie-framework/pie-elements/compare/@pie-element/matrix@0.1.27...@pie-element/matrix@0.1.28) (2022-05-09)
 
 **Note:** Version bump only for package @pie-element/matrix
