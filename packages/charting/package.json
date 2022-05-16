@@ -13,7 +13,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/charting": "^4.5.14",
+    "@pie-lib/charting": "^4.5.15",
     "@pie-lib/correct-answer-toggle": "^2.3.36",
     "@pie-lib/math-rendering": "^2.4.0",
     "@pie-lib/render-ui": "^4.12.6",
