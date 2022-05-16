@@ -3,29 +3,33 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
+import { AlertDialog } from '@pie-lib/config-ui';
+import Delete from '@material-ui/icons/Delete';
+import { set } from 'lodash';
 
 const { allTools } = tools;
-
-import { set } from 'lodash';
 
 const styles = theme => ({
   column: {
     flex: 1
   },
   graphingTools: {
-    marginTop: theme.spacing.unit * 3,
+    margin: `${theme.spacing.unit * 3}px 0`,
     color: '#ababab'
   },
   availableTools: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit,
     display: 'flex'
   },
   availableTool: {
     cursor: 'pointer',
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
-    textTransform: 'capitalize'
+    border: '2px solid white',
+    textTransform: 'capitalize',
+    '&:hover': {
+      color: '#4d4d4d'
+    }
   },
   selectedTool: {
     background: '#d8d8d8',
@@ -34,7 +38,7 @@ const styles = theme => ({
   container: {
     border: '2px solid #ababab',
     borderRadius: '4px',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
+    padding: `0 ${theme.spacing.unit * 4}px ${theme.spacing.unit * 2}px`,
     background: '#fafafa'
   },
   button: {
@@ -43,7 +47,26 @@ const styles = theme => ({
     background: '#eee',
     padding: theme.spacing.unit * 2,
     width: 'fit-content',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    '&:hover': {
+      background: '#d8d8d8'
+    }
+  },
+  responseTitle: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '20px'
+  },
+  iconButton: {
+    marginLeft: '6px',
+    color: '#6d6d6d',
+    '&:hover': {
+      cursor: 'pointer',
+      color: '#000000'
+    }
+  },
+  name: {
+    margin: '5px 0'
   }
 });
 
@@ -54,7 +77,6 @@ export const Tools = ({ classes, toolbarTools, toggleToolBarTool }) => {
   return (
     <div className={classes.graphingTools}>
       GRAPHING TOOLS
-
       <div className={classes.availableTools}>
         {([...allToolsNoLabel, 'label']).map(tool => {
           const selected = toolbarTools.find(t => t === tool);
@@ -90,6 +112,17 @@ export class CorrectResponse extends React.Component {
     onChange: PropTypes.func.isRequired,
     toolbarTools: PropTypes.arrayOf(PropTypes.String)
   };
+
+  state = {
+    dialog: {
+      open: false
+    }
+  };
+
+  handleAlertDialog = (open, callback) =>
+    this.setState({
+      dialog: { open }
+    }, callback);
 
   changeMarks = (key, marks) => {
     const { model, onChange } = this.props;
@@ -132,23 +165,48 @@ export class CorrectResponse extends React.Component {
     onChange(model);
   };
 
+  deleteAlternateResponse = (key, answer) => {
+    const { model, onChange } = this.props;
+    const { answers } = model || {};
+    const { marks = [], name } = answer || {};
+
+    const deleteAnswer = () => {
+      delete answers[key];
+      onChange(model);
+    };
+
+    if (marks.length) {
+      this.setState({
+        dialog: {
+          open: true,
+          title: 'Warning',
+          text: `${name} includes one or more shapes and the entire response will be deleted.`,
+          onConfirm: () => this.handleAlertDialog(false, deleteAnswer),
+          onClose: () => this.handleAlertDialog(false)
+        }
+      });
+
+      return;
+    }
+
+    deleteAnswer();
+  };
+
   render() {
     const { classes, model } = this.props;
-    let { graph } = model || {};
+    const { dialog } = this.state;
     const {
-      answers,
+      answers = {},
       arrows,
       backgroundMarks,
       coordinatesOnHover,
       domain,
+      graph = {},
       labels,
       range,
       title,
       toolbarTools
     } = model || {};
-    graph = graph || {};
-
-   const answersKeys = Object.keys(answers || {});
 
     return (
       <div>
@@ -160,12 +218,19 @@ export class CorrectResponse extends React.Component {
         />
 
         <div className={classes.container}>
-          {answersKeys.map(mark => {
-            const { marks, name } = answers[mark] || {};
+          {Object.entries(answers || {}).map(([key, answer]) => {
+            const { marks = [], name } = answer || {};
 
             return (
               <div key={`correct-response-graph-${name}`}>
-                <p>{name}</p>
+                <div className={classes.responseTitle}>
+                  <p className={classes.name}>{name}</p>
+                  {key !== 'correctAnswer' &&
+                    <Delete
+                      className={classes.iconButton}
+                      onClick={() => this.deleteAlternateResponse(key, answer)}
+                    />}
+                </div>
 
                 <Graph
                   axesSettings={{ includeArrows: arrows }}
@@ -174,7 +239,7 @@ export class CorrectResponse extends React.Component {
                   domain={domain}
                   labels={labels}
                   marks={marks}
-                  onChangeMarks={newMarks => this.changeMarks(mark, newMarks)}
+                  onChangeMarks={newMarks => this.changeMarks(key, newMarks)}
                   range={range}
                   size={{ width: graph.width, height: graph.height }}
                   title={title}
@@ -188,9 +253,17 @@ export class CorrectResponse extends React.Component {
             ADD ALTERNATE
           </div>
         </div>
+
+        <AlertDialog
+          open={dialog.open}
+          title={dialog.title}
+          text={dialog.text}
+          onClose={dialog.onClose}
+          onConfirm={dialog.onConfirm}
+        />
       </div>
     );
   }
-}
+};
 
 export default withStyles(styles)(CorrectResponse);
