@@ -16,8 +16,12 @@ import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import { withStyles } from '@material-ui/core/styles';
 import EditableHtml from '@pie-lib/editable-html';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import Ticks from './ticks';
 import { model as defaultModel } from './defaults';
+import { generateValidationMessage } from './utils';
 
 const trimModel = model => ({
   ...model,
@@ -69,6 +73,19 @@ const styles = theme => ({
   section: {
     margin: 0,
     padding: 0
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px'
+  },
+  inlineFlexContainer: {
+    display: 'inline-flex',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
   }
 });
 
@@ -269,8 +286,10 @@ export class Main extends React.Component {
   render() {
     const { classes, model, onChange, configuration } = this.props;
 
-    const { graph, spellCheckEnabled } = model;
+    const { graph, spellCheckEnabled, errors } = model || {};
     const { prompt = {}, spellCheck = {} } = configuration || {};
+    const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
+    const validationMessage = generateValidationMessage();
 
 
     console.log(spellCheckEnabled, spellCheckEnabled)
@@ -308,12 +327,26 @@ export class Main extends React.Component {
             />
           </FormSection>
         )}
-
-        <CardBar header="Attributes">
+        <CardBar
+          header="Attributes"
+          info={<Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+          </Tooltip>}
+        >
           Set up the number line by entering the domain and number of tick marks
           to display. Labels on the number line can be edited or removed by
           clicking on the label.
         </CardBar>
+
+        {widthError && <div className={classes.errorText}>{widthError}</div>}
+        {domainError && <div className={classes.errorText}>{domainError}</div>}
+        {maxError && <div className={classes.errorText}>{maxError}</div>}
 
         <div className={classes.row}>
           <FormSection label={'Size'}>
@@ -379,6 +412,9 @@ export class Main extends React.Component {
                 plotted.
               </i>
             </CardBar>
+
+            {pointsError && <div className={classes.errorText}>{pointsError}</div>}
+            {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
 
             <NumberLineComponent
               onMoveElement={this.moveCorrectResponse}

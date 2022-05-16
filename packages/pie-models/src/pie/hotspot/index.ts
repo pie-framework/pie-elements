@@ -71,7 +71,7 @@ export interface HotspotPie extends PieModel {
  * Config Object for @pie-elements/hotspot
  * @additionalProperties false
  */
-export interface MultipleChoiceConfigure extends PromptConfig {
+export interface HotspotConfigure extends PromptConfig {
   /**
    * Configuration for multiple correct
    */
@@ -92,4 +92,19 @@ export interface MultipleChoiceConfigure extends PromptConfig {
 
   /** Configuration for preserveAspectRatio. If enabled, then the image aspect ratio will be preserved. It is enabled by default. */
   preserveAspectRatio?: ConfigureProp;
+
+  /**
+   * Minimum number of shapes
+   */
+  minShapes?: number;
+
+  /**
+   * Maximum number of shapes
+   */
+  maxShapes?: number;
+
+  /**
+   * Maximum number of selected shapes in correct answer
+   */
+  maxSelections?: number;
 }

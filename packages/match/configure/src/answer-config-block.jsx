@@ -65,6 +65,11 @@ const styles = theme => ({
     '&> div': {
       fontWeight: 'bold'
     }
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '5px'
   }
 });
 
@@ -194,6 +199,8 @@ class AnswerConfigBlock extends React.Component {
     } = this.props;
     const { headers = {} } = configuration || {};
     const { dialog } = this.state;
+    const { errors } = model || {};
+    const { correctResponseError, rowsErrors } = errors || {};
 
     const filteredDefaultPlugins = (DEFAULT_PLUGINS || [])
       .filter(p => p !== 'table' && p !== 'bulleted-list' && p !== 'numbered-list');
@@ -208,6 +215,7 @@ class AnswerConfigBlock extends React.Component {
           Click on the labels to edit or remove. Set the correct answers by
           clicking each correct answer per row.
         </Typography>
+        {correctResponseError && <div className={classes.errorText}>{correctResponseError}</div>}
         <div className={classes.rowTable}>
           <div className={classes.rowContainer}>
             {headers.settings &&
@@ -251,6 +259,7 @@ class AnswerConfigBlock extends React.Component {
               enableImages={model.enableImages}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
+              error={rowsErrors && rowsErrors[row.id]}
             />
           ))}
           <AddRow onAddClick={onAddRow} />

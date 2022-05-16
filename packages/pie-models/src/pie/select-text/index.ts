@@ -169,4 +169,19 @@ export interface SelectTextConfigure
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Maximum number of selected tokens in correct answer
+   */
+  maxSelections?: number;
+
+  /**
+   * Minimum number of tokens
+   */
+  minTokens?: number;
+
+  /**
+   * Maximum number of tokens
+   */
+  maxTokens?: number;
 }

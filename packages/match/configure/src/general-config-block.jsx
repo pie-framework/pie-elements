@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import { generateValidationMessage } from '../utils';
 
 const styles = theme => ({
   container: {
@@ -15,6 +20,23 @@ const styles = theme => ({
   },
   inputContainer: {
     width: '90%'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: '10px'
+  },
+  titleText: {
+    fontFamily: 'Cerebri Sans',
+    fontSize: '18px',
+    lineHeight: '19px',
+    color: '#495B8F',
+    marginRight: '5px',
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px'
   }
 });
 
@@ -52,10 +74,25 @@ class GeneralConfigBlock extends React.Component {
       choiceMode = {}
     } = configuration || {};
 
+    const validationMessage = generateValidationMessage(model);
+
     return (
-      <div className={classes.container}>
-        <div className={classes.input}>
-          {layout.settings &&
+      <>
+        <div className={classes.flexContainer}>
+          <Typography className={classes.titleText}>Define questions</Typography>
+          <Tooltip
+            classes={{tooltip: classes.tooltip}}
+            disableFocusListener
+            disableTouchListener
+            placement={'right'}
+            title={validationMessage}
+          >
+            <Info fontSize={'small'} color={'primary'}/>
+          </Tooltip>
+        </div>
+        <div className={classes.container}>
+          <div className={classes.input}>
+            {layout.settings &&
             <InputContainer
               label={layout.label}
               className={classes.inputContainer}
@@ -69,24 +106,25 @@ class GeneralConfigBlock extends React.Component {
                 suffix={'Columns'}
               />
             </InputContainer>
-          }
+            }
+          </div>
+          <div className={classes.input}>
+            {
+              choiceMode.settings &&
+              <InputContainer label={choiceMode.label} className={classes.inputContainer}>
+                <Select
+                  className={classes.select}
+                  onChange={this.onChangeResponseType('choiceMode')}
+                  value={model.choiceMode}
+                >
+                  <MenuItem value="radio">Radio - One Answer</MenuItem>
+                  <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
+                </Select>
+              </InputContainer>
+            }
+          </div>
         </div>
-        <div className={classes.input}>
-          {
-            choiceMode.settings &&
-            <InputContainer label={choiceMode.label} className={classes.inputContainer}>
-              <Select
-                className={classes.select}
-                onChange={this.onChangeResponseType('choiceMode')}
-                value={model.choiceMode}
-              >
-                <MenuItem value="radio">Radio - One Answer</MenuItem>
-                <MenuItem value="checkbox">Checkbox - Multiple Answers</MenuItem>
-              </Select>
-            </InputContainer>
-          }
-        </div>
-      </div>
+      </>
     );
   }
 }

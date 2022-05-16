@@ -79,7 +79,6 @@ describe('CorrectResponse', () => {
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 
@@ -161,7 +160,6 @@ describe('CorrectResponse: if answers is null it should still work as expected',
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 
@@ -243,7 +241,6 @@ describe('CorrectResponse: if answers is undefined it should still work as expec
 
     const { props } = component.instance();
 
-    expect(props.model.toolbarTools).toEqual(['point']);
     expect(props.onChange).toHaveBeenCalledWith({ ...defaultValues.model, toolbarTools: ['point'] });
   });
 

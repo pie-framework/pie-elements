@@ -321,3 +321,55 @@ export const createCorrectResponseSession = (question, env) => {
     return advancedSessionResponse(question, env);
   }
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { expression = '', responses, responseType } = model;
+  const { maxResponseAreas } = config;
+  const responsesErrors = {};
+
+  (responses || []).forEach((response, index) => {
+    const { answer } = response;
+    const reversedAlternates = [ ...Object.entries(response.alternates || {}) ].reverse();
+    const alternatesErrors = {};
+    const responseError = {};
+
+    if (answer === '') {
+      responseError.answer = 'Content should not be empty.';
+    }
+
+    reversedAlternates.forEach(([key, value], index) => {
+      if (value === '') {
+        alternatesErrors[key] = 'Content should not be empty.';
+      } else {
+        const identicalAnswer = answer === value ||
+          reversedAlternates.slice(index + 1).some(([ , val]) => val === value);
+
+        if (identicalAnswer) {
+          alternatesErrors[key] = 'Content should be unique.';
+        }
+      }
+    });
+
+    if (!isEmpty(responseError) || !isEmpty(alternatesErrors)) {
+      responsesErrors[index] = { ...responseError, ...alternatesErrors };
+    }
+  });
+
+  const errors = {};
+
+  if (responseType === 'Advanced Multi') {
+    const nbOfResponseAreas = (expression.match(/\{\{response\}\}/g) || []).length;
+
+    if (nbOfResponseAreas > maxResponseAreas) {
+      errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+    } else if (nbOfResponseAreas < 1) {
+      errors.responseAreasError = 'There should be at least 1 response area defined.';
+    }
+  }
+
+  if (!isEmpty(responsesErrors)) {
+    errors.responsesErrors = responsesErrors;
+  }
+
+  return errors;
+};
