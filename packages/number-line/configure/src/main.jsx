@@ -291,8 +291,6 @@ export class Main extends React.Component {
     const { widthError, domainError, maxError, pointsError, correctResponseError } = errors || {};
     const validationMessage = generateValidationMessage();
 
-
-    console.log(spellCheckEnabled, spellCheckEnabled)
     const correctResponse = cloneDeep(model.correctResponse || []).map(
       toGraphFormat
     );
