@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
+import cx from 'classnames';
 
 // TODO once we support individual response correctness, we need to remove this constant
 const INDIVIDUAL_RESPONSE_CORRECTNESS_SUPPORTED = false;
@@ -80,6 +81,11 @@ const styles = (theme) => ({
   configLabel: {
     marginRight: 'auto',
   },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  }
 });
 
 class Response extends React.Component {
@@ -248,6 +254,7 @@ class Response extends React.Component {
       response,
       cAllowTrailingZeros,
       cIgnoreOrder,
+      error
     } = this.props;
 
     const { showKeypad } = this.state;
@@ -333,7 +340,9 @@ class Response extends React.Component {
               onChange={this.onAnswerChange}
               onFocus={this.onFocus}
               onDone={this.onDone}
+              error={error && error.answer}
             />
+            {error && error.answer ? <div className={classes.errorText}>{error.answer}</div> : null}
           </div>
           {hasAlternates &&
             Object.keys(alternates).map((alternateId, altIdx) => (
@@ -360,7 +369,9 @@ class Response extends React.Component {
                   onChange={this.onAlternateAnswerChange(alternateId)}
                   onFocus={this.onAlternateFocus(alternateId)}
                   onDone={this.onAlternateDone(alternateId)}
+                  error={error && error[altIdx + 1]}
                 />
+                {error && error[altIdx + 1] ? <div className={classes.errorText}>{error[altIdx + 1]}</div> : null}
               </div>
             ))}
             <div className={classes.configPanel}>

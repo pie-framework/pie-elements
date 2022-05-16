@@ -6,6 +6,33 @@ exports[`Categories snapshot renders 1`] = `
 >
   <WithStyles(Header)
     buttonLabel="ADD A CATEGORY"
+    info={
+      <WithStyles(Tooltip)
+        classes={
+          Object {
+            "tooltip": undefined,
+          }
+        }
+        disableFocusListener={true}
+        disableTouchListener={true}
+        placement="right"
+        title="Validation requirements:
+The choices content should not be empty and should be unique.
+There should be at least 1 category defined.
+There should be at least 1 choices defined.
+At least one token should be assigned to at least one category."
+      >
+        <pure(InfoIcon)
+          color="primary"
+          fontSize="small"
+          style={
+            Object {
+              "marginLeft": "5px",
+            }
+          }
+        />
+      </WithStyles(Tooltip)>
+    }
     label="Categories"
     onAdd={[Function]}
   />

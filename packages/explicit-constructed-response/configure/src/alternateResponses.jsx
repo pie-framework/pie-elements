@@ -153,7 +153,7 @@ export class AlternateResponses extends React.Component {
 
   render() {
     const { choices } = this.state;
-    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }, spellCheck} = this.props
+    const { model: { maxLengthPerChoice, maxLengthPerChoiceEnabled }, spellCheck, choicesErrors } = this.props
 
     return (
       <div>
@@ -166,6 +166,7 @@ export class AlternateResponses extends React.Component {
               <AlternateSection
                 key={key}
                 value={selected && selected.value}
+                errors={choicesErrors && choicesErrors[key]}
                 onSelect={choice => this.onSectionSelect(choice, key)}
                 choiceChanged={choice => this.onChoiceChanged(choice, key)}
                 choiceRemoved={value => this.onChoiceRemoved(value, key)}

@@ -141,4 +141,9 @@ export interface ExplicitConstructedResponseConfigure
 
   /** Maximum Length Per Choice Configuration */
   maxLengthPerChoice?: ConfigureProp;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
 }

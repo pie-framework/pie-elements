@@ -132,6 +132,10 @@ Indicates the label for the item that has to be displayed in the Settings Panel
 Indicates the value of the item if it affects config-ui
 (eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)
 
+# `maxResponseAreas` (number)
+
+Maximum number of response areas
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not

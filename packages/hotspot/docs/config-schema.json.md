@@ -1,34 +1,10 @@
-Config Object for @pie-elements/inline-dropdown
+Config Object for @pie-elements/hotspot
 
 The schema defines the following properties:
 
-# `choices` (object)
+# `multipleCorrect` (object)
 
-Properties of the `choices` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `prompt` (object)
-
-Properties of the `prompt` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `lockChoiceOrder` (object)
-
-Properties of the `lockChoiceOrder` object:
+Properties of the `multipleCorrect` object:
 
 ## `settings` (boolean)
 
@@ -74,21 +50,9 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `choiceRationale` (object)
+# `preserveAspectRatio` (object)
 
-Properties of the `choiceRationale` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `scoringType` (object)
-
-Properties of the `scoringType` object:
+Properties of the `preserveAspectRatio` object:
 
 ## `settings` (boolean)
 
@@ -98,33 +62,17 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
-# `studentInstructions` (object)
+# `minShapes` (number)
 
-Properties of the `studentInstructions` object:
+Minimum number of shapes
 
-## `settings` (boolean)
+# `maxShapes` (number)
 
-Indicates if the item has to be displayed in the Settings Panel
+Maximum number of shapes
 
-## `label` (string)
+# `maxSelections` (number)
 
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `teacherInstructions` (object)
-
-Properties of the `teacherInstructions` object:
-
-## `settings` (boolean)
-
-Indicates if the item has to be displayed in the Settings Panel
-
-## `label` (string)
-
-Indicates the label for the item that has to be displayed in the Settings Panel
-
-# `maxResponseAreas` (number)
-
-Maximum number of response areas
+Maximum number of selected shapes in correct answer
 
 # `showPrompt` (boolean)
 
@@ -137,12 +85,6 @@ Default: `true`
 The label for the item stem/prompt field
 
 Default: `"Item Stemm"`
-
-# `settingsPartialScoring` (boolean)
-
-Indicates whether the settings panel wil allow the author to modify settings for partial scoring
-
-Default: `true`
 
 ---
 
