@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { NumberTextField } from '@pie-lib/config-ui';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { NumberTextField } from '@pie-lib/config-ui';
+import { GraphContainer, tools } from '@pie-lib/graphing';
+import { TextField, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer } from '@pie-lib/graphing';
-import { TextField } from '@material-ui/core';
-
 import { get, set } from 'lodash';
-import Typography from '@material-ui/core/Typography';
+
+const { allTools = [] } = tools;
 
 export const AuthoringColumn = ({ columnKey, axis, classes, model }) => {
   const rows = [{
@@ -168,23 +168,20 @@ export class GraphingConfig extends React.Component {
 
   render() {
     const { classes, model, authoringEnabled } = this.props;
-    let { graph } = model || {};
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, labels, range, title, toolbarTools } = model || {};
-    graph = graph || {};
+    const { arrows, backgroundMarks, coordinatesOnHover, domain, graph = {}, labels, range, title } = model || {};
 
     return (
       <div>
         Define Graph Attributes
 
         <div className={classes.container}>
-          {
-            authoringEnabled && (
-              <div className={classnames(classes.column, classes.settings)} key="settings">
-                <AuthoringColumn columnKey="domain" axis="x" classes={classes} model={model} />
-                <AuthoringColumn columnKey="range" axis="y" classes={classes} model={model} />
-              </div>
-            )
-          }
+          {authoringEnabled && (
+            <div className={classnames(classes.column, classes.settings)} key="settings">
+              <AuthoringColumn columnKey="domain" axis="x" classes={classes} model={model} />
+              <AuthoringColumn columnKey="range" axis="y" classes={classes} model={model} />
+            </div>
+          )}
+
           <div className={classes.column} key="graph">
             <Typography component="div" type="body1">
               <span>Use the tools below to set background shapes</span>
@@ -202,7 +199,7 @@ export class GraphingConfig extends React.Component {
               range={range}
               size={{ width: graph.width, height: graph.height }}
               title={title}
-              toolbarTools={toolbarTools}
+              toolbarTools={allTools}
             />
           </div>
 
@@ -210,6 +207,6 @@ export class GraphingConfig extends React.Component {
       </div>
     );
   }
-}
+};
 
 export default withStyles(styles)(GraphingConfig);
