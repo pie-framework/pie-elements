@@ -133,18 +133,15 @@ export class CorrectResponse extends React.Component {
 
   filterMarks = (tool) => {
     const { model: { answers }} = this.props;
-    const filteredAnswers = {};
 
-    Object.entries(answers || {}).forEach(([key, answer]) => {
-      const filteredMarks = (answer.marks || []).filter(mark => mark.type !== tool);
-
-      filteredAnswers[key] = {
+    return Object.entries(answers || {}).reduce((object, [key, answer]) => {
+      object[key] = {
         ...answer,
-        marks: filteredMarks
+        marks: (answer.marks || []).filter(mark => mark.type !== tool)
       };
-    });
 
-    return filteredAnswers;
+      return object;
+    }, {});
   };
 
   changeToolbarTools = toolbarTools => {
