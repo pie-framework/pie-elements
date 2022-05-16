@@ -98,6 +98,18 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `minChoices` (number)
+
+Minimum number of choices
+
+# `maxChoices` (number)
+
+Maximum number of choices
+
+# `maxResponseAreas` (number)
+
+Maximum number of response areas
+
 # `showPrompt` (boolean)
 
 Determines whether prompt field will be displayed or not
