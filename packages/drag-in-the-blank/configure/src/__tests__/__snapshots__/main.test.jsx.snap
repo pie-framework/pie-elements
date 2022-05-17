@@ -19,6 +19,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Lock Choice Order",
               "settings": true,
             },
+            "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -147,7 +148,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           placement="right"
           title="Validation requirements:
 The tokens should not be empty and should be unique.
-There should be at least 1 response area defined.
+There should be at least 1 and at most 10 response areas defined.
 There should be at least 3 tokens defined."
         >
           <pure(InfoIcon)
@@ -178,7 +179,7 @@ There should be at least 3 tokens defined."
         }
         responseAreaProps={
           Object {
-            "maxResponseAreas": undefined,
+            "maxResponseAreas": 10,
             "options": Object {
               "duplicates": true,
             },
@@ -276,6 +277,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Lock Choice Order",
               "settings": true,
             },
+            "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -375,7 +377,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           placement="right"
           title="Validation requirements:
 The tokens should not be empty and should be unique.
-There should be at least 1 response area defined.
+There should be at least 1 and at most 10 response areas defined.
 There should be at least 3 tokens defined."
         >
           <pure(InfoIcon)
@@ -406,7 +408,7 @@ There should be at least 3 tokens defined."
         }
         responseAreaProps={
           Object {
-            "maxResponseAreas": undefined,
+            "maxResponseAreas": 10,
             "options": Object {
               "duplicates": true,
             },

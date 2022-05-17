@@ -47,6 +47,7 @@ export default {
     teacherInstructions: {
       settings: true,
       label: 'Teacher Instructions'
-    }
+    },
+    maxResponseAreas: 10
   }
 };
