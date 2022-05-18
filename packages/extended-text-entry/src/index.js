@@ -1,6 +1,8 @@
 import Main from './main';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { renderMath } from '@pie-lib/math-rendering';
+
 import {
   ModelSetEvent,
   SessionChangedEvent
