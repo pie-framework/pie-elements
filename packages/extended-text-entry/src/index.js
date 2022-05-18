@@ -77,7 +77,9 @@ export default class RootExtendedTextEntry extends HTMLElement {
         onChange: this.handleChange.bind(this)
       });
 
-      ReactDOM.render(elem, this);
+      ReactDOM.render(elem, this, () => {
+        renderMath(this);
+      });
     }
   }
 }
