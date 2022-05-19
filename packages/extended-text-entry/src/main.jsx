@@ -33,12 +33,6 @@ export class Main extends React.Component {
     }).isRequired
   };
 
-  componentDidUpdate() {
-    if (this.containerRef) {
-      renderMath(this.containerRef);
-    }
-  }
-
   changeSession = debounce(this.props.onChange, 1500);
 
   render() {

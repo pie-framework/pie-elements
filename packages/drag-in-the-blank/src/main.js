@@ -27,13 +27,6 @@ export class Main extends React.Component {
     showCorrectAnswer: false
   };
 
-  componentDidUpdate() {
-    // eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this);
-
-    renderMath(domNode);
-  }
-
   toggleShowCorrect = () => {
     this.setState({ showCorrectAnswer: !this.state.showCorrectAnswer });
   };
