@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.10...@pie-element/drag-in-the-blank@3.13.11) (2022-05-19)
+
+
+### Bug Fixes
+
+* PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
+
+
+
+
+
 ## [3.13.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/drag-in-the-blank@3.13.9...@pie-element/drag-in-the-blank@3.13.10) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/drag-in-the-blank

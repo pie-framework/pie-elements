@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.10...@pie-element/extended-text-entry@6.8.11) (2022-05-19)
+
+
+### Bug Fixes
+
+* PD-1499 not having desired result with TTS - PD-1793 ([674432b](https://github.com/pie-framework/pie-elements/commit/674432b81b3577118ad5b8619f28a3d1ec0eefed))
+
+
+
+
+
 ## [6.8.10](https://github.com/pie-framework/pie-elements/compare/@pie-element/extended-text-entry@6.8.9...@pie-element/extended-text-entry@6.8.10) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/extended-text-entry
