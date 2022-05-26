@@ -34,6 +34,7 @@ exports[`ChartingConfig renders snapshot 1`] = `
         categoryDefaultLabel="Category"
         chartType="lineCross"
         data={Array []}
+        defineChart={true}
         domain={
           Object {
             "label": "Fruits",
