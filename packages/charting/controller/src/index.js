@@ -21,7 +21,6 @@ export const setCorrectness = (answers, partialScoring) => answers ? answers.map
 
 export const normalize = question => ({
   addCategoryEnabled: true,
-  editCategoryEnabled: true,
   promptEnabled: true,
   rationaleEnabled: true,
   teacherInstructionsEnabled: true,
@@ -30,7 +29,7 @@ export const normalize = question => ({
 });
 
 export const getScore = (question, session, env = {}) => {
-  const { correctAnswer, data: initialData = [], scoringType, editCategoryEnabled } = question;
+  const { correctAnswer, data: initialData = [], scoringType } = question;
 
   const isPartialScoring = partialScoring.enabled(
     { partialScoring: scoringType !== undefined ? scoringType === 'partial scoring' : scoringType },
@@ -38,7 +37,7 @@ export const getScore = (question, session, env = {}) => {
   );
 
   const { data: correctAnswers = [] } = correctAnswer || {};
-  const defaultAnswers = filterCategories(initialData, editCategoryEnabled);
+  const defaultAnswers = filterCategories(initialData);
 
   let answers = setCorrectness((session && session.answer) || defaultAnswers, isPartialScoring);
 
@@ -157,7 +156,6 @@ export function model(question, session, env) {
       chartType,
       data,
       domain,
-      editCategoryEnabled,
       graph,
       prompt,
       promptEnabled,
@@ -177,9 +175,8 @@ export function model(question, session, env) {
       addCategoryEnabled,
       categoryDefaultLabel,
       chartType,
-      data: filterCategories(data, editCategoryEnabled),
+      data: filterCategories(data),
       domain,
-      editCategoryEnabled,
       graph,
       prompt: promptEnabled ? prompt : null,
       range,
@@ -191,7 +188,7 @@ export function model(question, session, env) {
       scoringType
     };
 
-    const answers = filterCategories(getScore(normalizedQuestion, session, env).answers, false);
+    const answers = filterCategories(getScore(normalizedQuestion, session, env).answers);
 
     if (env.mode === 'view') {
       base.correctedAnswer = answers.map(({correctness, ...rest}) => {

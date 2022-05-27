@@ -24,7 +24,6 @@ export default {
     domain: {
       label: 'Fruits',
     },
-    //editCategoryEnabled: true,
     graph: {
       width: 480,
       height: 480

@@ -1,7 +1,6 @@
 exports.model = (id, element) => ({
   id,
   element,
-
   addCategoryEnabled: true,
   categoryDefaultLabel: 'Category',
   chartType: 'bar',
@@ -12,7 +11,6 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: false,
-        editable: true,
         deletable: true
       },
       {
@@ -20,7 +18,6 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: true,
-        editable: true,
         deletable: true
       },
       {
@@ -28,7 +25,6 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: true,
-        editable: true,
         deletable: true
       },
     ]
@@ -39,7 +35,7 @@ exports.model = (id, element) => ({
       value: 1,
       initial: true,
       interactive: false,
-      editable: true,
+      editable: false,
       deletable: true
     },
     {
@@ -47,7 +43,7 @@ exports.model = (id, element) => ({
       value: 1,
       initial: true,
       interactive: true,
-      editable: true,
+      editable: false,
       deletable: true
     },
     {
@@ -55,14 +51,13 @@ exports.model = (id, element) => ({
       value: 2,
       initial: true,
       interactive: true,
-      editable: true,
+      editable: false,
       deletable: true
     },
   ],
   domain: {
     label: 'Characters',
   },
-  //editCategoryEnabled: true,
   graph: {
     width: 480,
     height: 480
