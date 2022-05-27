@@ -50,7 +50,6 @@ export class ChartingConfig extends React.Component {
               data={model.data}
               title={model.title}
               onDataChange={this.changeData}
-              editCategoryEnabled={true}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />

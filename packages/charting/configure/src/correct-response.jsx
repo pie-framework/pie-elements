@@ -42,7 +42,7 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  changeEditable = value => this.props.onChange({ ...this.props.model, editCategoryEnabled: value });
+  //changeEditable = value => this.props.onChange({ ...this.props.model, editCategoryEnabled: value });
 
   changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
 
@@ -64,19 +64,9 @@ export class CorrectResponse extends React.Component {
               data={model.correctAnswer.data || []}
               title={model.title}
               onDataChange={(data) => this.changeData(data)}
-              editCategoryEnabled={true}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
-            <div>
-              <Checkbox
-                checked={model.editCategoryEnabled}
-                onChange={(e) => {
-                  this.changeEditable(e.target.checked)
-                }}
-              />
-              Student can edit category labels
-            </div>
             <div>
               <Checkbox
                 checked={model.addCategoryEnabled}
