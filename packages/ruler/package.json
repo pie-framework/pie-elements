@@ -1,6 +1,6 @@
 {
   "name": "@pie-element/ruler",
-  "version": "3.12.29",
+  "version": "3.12.30",
   "publishConfig": {
     "access": "public"
   },

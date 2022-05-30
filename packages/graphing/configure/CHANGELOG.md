@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.21](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.20...@pie-element/graphing-configure@3.3.21) (2022-05-30)
+
+**Note:** Version bump only for package @pie-element/graphing-configure
+
+
+
+
+
 ## [3.3.20](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.19...@pie-element/graphing-configure@3.3.20) (2022-05-16)
 
 **Note:** Version bump only for package @pie-element/graphing-configure

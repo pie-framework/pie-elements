@@ -1,7 +1,7 @@
 {
   "name": "@pie-element/ebsr-controller",
   "private": true,
-  "version": "6.0.4",
+  "version": "6.0.5",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

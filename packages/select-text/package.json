@@ -4,7 +4,7 @@
     "access": "public"
   },
   "repository": "pie-framework/pie-elements",
-  "version": "6.6.2",
+  "version": "6.6.3",
   "description": "",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
