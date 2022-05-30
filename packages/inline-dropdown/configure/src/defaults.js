@@ -49,5 +49,6 @@ export default {
       settings: false,
       label: 'Toolbar Editor Position'
     },
+    maxResponseAreas: 10
   }
 };
