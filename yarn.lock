@@ -2137,6 +2137,26 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@pie-element/multiple-choice@^6.3.2":
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@pie-element/multiple-choice/-/multiple-choice-6.3.2.tgz#895e40ffe78e324b5866c3e0754b8ce3da85e875"
+  integrity sha512-NxYR1O59nNhhfh/TJS6LhVhkWuW8ClFlL29ubBInLLTJ/J8h7D5hhu7EIg4P6keveLOqGgjnkn4qC08KmdEJpw==
+  dependencies:
+    "@material-ui/core" "^3.9.2"
+    "@pie-lib/config-ui" "^10.13.0"
+    "@pie-lib/correct-answer-toggle" "^2.3.36"
+    "@pie-lib/math-rendering" "^2.4.0"
+    "@pie-lib/render-ui" "^4.12.6"
+    classnames "^2.2.5"
+    debug "^4.1.1"
+    enzyme-to-json "^3.3.3"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+    react "^16.8.1"
+    react-dom "^16.8.1"
+    react-test-renderer "^16.3.2"
+    react-transition-group "^2.3.1"
+
 "@pie-framework/build-helper@^5.2.9":
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@pie-framework/build-helper/-/build-helper-5.2.9.tgz#1a06eb0b7c471042eefce3d5f994192c6576d311"
@@ -2245,7 +2265,7 @@
     redux "^4.0.1"
     redux-undo beta
 
-"@pie-lib/config-ui@^10.13.2":
+"@pie-lib/config-ui@^10.13.0", "@pie-lib/config-ui@^10.13.2":
   version "10.13.2"
   resolved "https://registry.yarnpkg.com/@pie-lib/config-ui/-/config-ui-10.13.2.tgz#94472e5166086bf7d26b2e51f523bf737c4e66c8"
   integrity sha512-aD6KtK8gleumNfIlX3ikj3u++OHkI7VZCJS2rTCgzNCwmQEQP5PT2SsJ+VScbaJRJHATMoj+fBpDAbN4UbMe+A==
@@ -2269,7 +2289,7 @@
     debug "^4.1.1"
     lodash "^4.17.11"
 
-"@pie-lib/correct-answer-toggle@2.3.38", "@pie-lib/correct-answer-toggle@^2.3.38":
+"@pie-lib/correct-answer-toggle@2.3.38", "@pie-lib/correct-answer-toggle@^2.3.36", "@pie-lib/correct-answer-toggle@^2.3.38":
   version "2.3.38"
   resolved "https://registry.yarnpkg.com/@pie-lib/correct-answer-toggle/-/correct-answer-toggle-2.3.38.tgz#9c0c2e0af44156fc42a09e430117a7bab4e1f1a2"
   integrity sha512-Tc2UmAaQ9o4aZ6+vWE7iaI8ZMX1vlRSj7c58a3nON0JnXcXdJo6jg3ZU2x2VPVvRrohjVgzz3n/HvxjoVPQM1g==
