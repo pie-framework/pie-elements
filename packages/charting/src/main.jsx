@@ -29,6 +29,8 @@ export class Main extends React.Component {
     const { model: { data: nextData = [] } = {} } = nextProps;
     const { model: { data = [] } = {} } = this.props;
 
+    console.log(this.props, "this props in controler")
+
     if (!isEqual(nextData, data)) {
       this.setState({ categories: nextData });
     }
@@ -46,6 +48,8 @@ export class Main extends React.Component {
 
   render() {
     const { categories, showingCorrect } = this.state;
+
+    console.log(categories, " data in controller")
     const { model, classes } = this.props;
     const {
       teacherInstructions,
@@ -55,7 +59,6 @@ export class Main extends React.Component {
       domain,
       range,
       title,
-      editCategoryEnabled,
       addCategoryEnabled,
       categoryDefaultLabel,
       rationale,
@@ -122,7 +125,6 @@ export class Main extends React.Component {
             data={correctData || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={false}
             addCategoryEnabled={false}
             categoryDefaultLabel={categoryDefaultLabel}
           />
@@ -143,7 +145,6 @@ export class Main extends React.Component {
             data={correctedAnswer || categories}
             title={title}
             onDataChange={this.changeData}
-            editCategoryEnabled={editCategoryEnabled}
             addCategoryEnabled={addCategoryEnabled}
             categoryDefaultLabel={categoryDefaultLabel}
           />

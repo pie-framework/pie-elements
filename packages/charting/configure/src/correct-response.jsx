@@ -42,8 +42,6 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  //changeEditable = value => this.props.onChange({ ...this.props.model, editCategoryEnabled: value });
-
   changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
 
   render() {

@@ -11,6 +11,7 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: false,
+        editable: false,
         deletable: true
       },
       {
@@ -18,6 +19,7 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: true,
+        editable: false,
         deletable: true
       },
       {
@@ -25,6 +27,7 @@ exports.model = (id, element) => ({
         value: 1,
         initial: true,
         interactive: true,
+        editable: false,
         deletable: true
       },
     ]

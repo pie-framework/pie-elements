@@ -92,6 +92,9 @@ export class Configure extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
 
+      console.log(model.data, "model data in config")
+
+
     return (
       <layout.ConfigLayout
         settings={
@@ -203,6 +206,7 @@ export class Configure extends React.Component {
             onChange={(e) => this.onChartTypeChange(e.target.value)}
           />
 
+        
           <ChartingConfig
             config={graph}
             model={model}
