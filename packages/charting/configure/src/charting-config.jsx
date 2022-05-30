@@ -41,6 +41,7 @@ export class ChartingConfig extends React.Component {
             </Typography>
 
             <Chart
+              defineChart={true}
               chartType={model.chartType}
               size={model.graph}
               domain={model.domain}
