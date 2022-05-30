@@ -6,7 +6,6 @@ module.exports = [
     //   {
     //     label: 'A',
     //     value: 1,
-    //     initial: true,
     //     interactive: false,
     //     editable: true,
     //     deletable: true
@@ -14,7 +13,6 @@ module.exports = [
     //   {
     //     label: 'B',
     //     value: 1,
-    //     initial: true,
     //     interactive: true,
     //     editable: true,
     //     deletable: true
@@ -22,7 +20,6 @@ module.exports = [
     //   {
     //     label: 'C',
     //     value: 1,
-    //     initial: true,
     //     interactive: true,
     //     editable: true,
     //     deletable: true

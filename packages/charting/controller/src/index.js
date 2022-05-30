@@ -144,8 +144,7 @@ export const getScore = (question, session, env = {}) => {
 export const filterCategories = (categories, editable) => categories ? categories.map(category => ({
   ...category,
   deletable: false,
-  editable,
-  initial: true
+  editable
 })) : [];
 
 export function model(question, session, env) {

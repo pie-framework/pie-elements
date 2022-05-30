@@ -98,7 +98,6 @@ describe('filterCategories', () => {
         label: 'A',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: true,
       },
       {
@@ -106,7 +105,6 @@ describe('filterCategories', () => {
         label: 'B',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: true,
       },
       {
@@ -114,7 +112,6 @@ describe('filterCategories', () => {
         label: 'C',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: true,
       },
     ]);
@@ -133,7 +130,6 @@ describe('filterCategories', () => {
         label: 'A',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: false,
       },
       {
@@ -141,7 +137,6 @@ describe('filterCategories', () => {
         label: 'B',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: false,
       },
       {
@@ -149,7 +144,6 @@ describe('filterCategories', () => {
         label: 'C',
         interactive: true,
         deletable: false,
-        initial: true,
         editable: false,
       },
     ]);
@@ -1222,7 +1216,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'A',
           value: 1,
-          initial: true,
           interactive: false,
           editable: true,
           deletable: true,
@@ -1230,7 +1223,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'B',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1238,7 +1230,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'C',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1249,7 +1240,6 @@ describe('createCorrectResponseSession', () => {
       {
         label: 'A',
         value: 1,
-        initial: true,
         interactive: false,
         editable: true,
         deletable: true,
@@ -1257,7 +1247,6 @@ describe('createCorrectResponseSession', () => {
       {
         label: 'B',
         value: 1,
-        initial: true,
         interactive: true,
         editable: true,
         deletable: true,
@@ -1265,7 +1254,6 @@ describe('createCorrectResponseSession', () => {
       {
         label: 'D',
         value: 1,
-        initial: true,
         interactive: true,
         editable: true,
         deletable: true,
@@ -1301,7 +1289,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'A',
           value: 1,
-          initial: true,
           interactive: false,
           editable: true,
           deletable: true,
@@ -1309,7 +1296,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'B',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1317,7 +1303,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'C',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1338,7 +1323,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'A',
           value: 1,
-          initial: true,
           interactive: false,
           editable: true,
           deletable: true,
@@ -1346,7 +1330,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'B',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1354,7 +1337,6 @@ describe('createCorrectResponseSession', () => {
         {
           label: 'C',
           value: 1,
-          initial: true,
           interactive: true,
           editable: true,
           deletable: true,
@@ -1389,13 +1371,11 @@ describe('outcome', () => {
       {
         interactive: true,
         deletable: false,
-        initial: true,
         value: 3,
         label: 'Three',
       },
       {
         deletable: false,
-        initial: true,
         value: 2,
         label: 'Four',
         interactive: true,
@@ -1405,7 +1385,6 @@ describe('outcome', () => {
         label: 'Five',
         interactive: true,
         deletable: false,
-        initial: true,
       },
       {
         interactive: true,
@@ -1441,21 +1420,18 @@ describe('outcome', () => {
         value: 3,
         label: 'Three',
         deletable: false,
-        initial: true,
       },
       {
         interactive: true,
         value: 0,
         label: 'Four',
         deletable: false,
-        initial: true,
       },
       {
         interactive: true,
         value: 0,
         label: 'Five',
         deletable: false,
-        initial: true,
       },
     ],
     correctAnswer: {
