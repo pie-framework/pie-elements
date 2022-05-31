@@ -18,6 +18,7 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(props,'constructor');
 
     this.state = {
       categories: props.categories || props.model.data,

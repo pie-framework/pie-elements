@@ -140,11 +140,9 @@ export const getScore = (question, session, env = {}) => {
   };
 };
 
-export const filterCategories = (categories, editable) => categories ? categories.map(category => ({
+export const filterCategories = (categories) => categories ? categories.map(category => ({
   ...category,
-  deletable: false,
-  editable,
-  initial: true
+  deletable: false
 })) : [];
 
 export function model(question, session, env) {
@@ -169,6 +167,9 @@ export function model(question, session, env) {
       scoringType
     } = normalizedQuestion;
 
+    console.log(filterCategories(data), "data in controller after filter--------")
+
+    console.log(data, "DATA ")
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
     const base = {
