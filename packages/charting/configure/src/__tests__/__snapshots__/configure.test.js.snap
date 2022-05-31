@@ -40,7 +40,6 @@ exports[`ChartingConfig renders snapshot 1`] = `
             "label": "Fruits",
           }
         }
-        editCategoryEnabled={true}
         onDataChange={[Function]}
         range={
           Object {
@@ -125,7 +124,6 @@ exports[`Configure renders snapshot 1`] = `
           "domain": Object {
             "label": "Fruits",
           },
-          "editCategoryEnabled": true,
           "graph": Object {
             "height": 480,
             "width": 480,
@@ -233,7 +231,6 @@ exports[`Configure renders snapshot 1`] = `
           "domain": Object {
             "label": "Fruits",
           },
-          "editCategoryEnabled": true,
           "graph": Object {
             "height": 480,
             "width": 480,
@@ -299,7 +296,6 @@ exports[`Configure renders snapshot 1`] = `
           "domain": Object {
             "label": "Fruits",
           },
-          "editCategoryEnabled": true,
           "graph": Object {
             "height": 480,
             "width": 480,
@@ -342,7 +338,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
             "label": "Fruits",
           }
         }
-        editCategoryEnabled={true}
         onDataChange={[Function]}
         range={
           Object {
@@ -359,13 +354,6 @@ exports[`CorrectResponse renders snapshot 1`] = `
         }
         title="This is a chart!"
       />
-      <div>
-        <WithStyles(Checkbox)
-          checked={true}
-          onChange={[Function]}
-        />
-        Student can edit category labels
-      </div>
       <div>
         <WithStyles(Checkbox)
           checked={true}
