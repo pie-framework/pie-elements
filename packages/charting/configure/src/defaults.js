@@ -8,7 +8,6 @@
 // const createCategory = (label, value) => ({
 //   label,
 //   value,
-//   initial: true,
 //   interactive: true,
 //   editable: true,
 //   deletable: true

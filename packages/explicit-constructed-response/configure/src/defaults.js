@@ -90,6 +90,7 @@ export default {
     maxLengthPerChoice: {
       settings: true,
       label: 'Maximum Length Per Choice'
-    }
+    },
+    maxResponseAreas: 10
   }
 };

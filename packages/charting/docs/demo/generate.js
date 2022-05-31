@@ -9,7 +9,6 @@ exports.model = (id, element) => ({
       {
         label: 'A',
         value: 1,
-        initial: true,
         interactive: false,
         editable: false,
         deletable: true
@@ -17,7 +16,6 @@ exports.model = (id, element) => ({
       {
         label: 'B',
         value: 1,
-        initial: true,
         interactive: true,
         editable: false,
         deletable: true
@@ -25,7 +23,6 @@ exports.model = (id, element) => ({
       {
         label: 'C',
         value: 1,
-        initial: true,
         interactive: true,
         editable: false,
         deletable: true
@@ -36,7 +33,6 @@ exports.model = (id, element) => ({
     {
       label: 'A',
       value: 1,
-      initial: true,
       interactive: false,
       editable: false,
       deletable: true
@@ -44,7 +40,6 @@ exports.model = (id, element) => ({
     {
       label: 'B',
       value: 1,
-      initial: true,
       interactive: true,
       editable: false,
       deletable: true
@@ -52,7 +47,6 @@ exports.model = (id, element) => ({
     {
       label: 'D',
       value: 2,
-      initial: true,
       interactive: true,
       editable: false,
       deletable: true
