@@ -203,7 +203,6 @@ export class Configure extends React.Component {
             onChange={(e) => this.onChartTypeChange(e.target.value)}
           />
 
-        
           <ChartingConfig
             config={graph}
             model={model}
