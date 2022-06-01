@@ -82,15 +82,14 @@ describe('checkLabelsEquality', () => {
 
 describe('filterCategories', () => {
   it('returns categories filtered with correct values', () => {
-    expect(filterCategories(null, true)).toEqual([]);
+    expect(filterCategories(null)).toEqual([]);
     expect(
       filterCategories(
         [
-          { value: 0, label: 'A', interactive: true },
-          { value: 1, label: 'B', interactive: true },
-          { value: 2, label: 'C', interactive: true },
-        ],
-        true
+          { value: 0, label: 'A', interactive: true, editable: true},
+          { value: 1, label: 'B', interactive: true, editable: true},
+          { value: 2, label: 'C', interactive: true, editable: true},
+        ]
       )
     ).toEqual([
       {
@@ -118,11 +117,10 @@ describe('filterCategories', () => {
     expect(
       filterCategories(
         [
-          { value: 0, label: 'A', interactive: true },
-          { value: 1, label: 'B', interactive: true },
-          { value: 2, label: 'C', interactive: true },
-        ],
-        false
+          { value: 0, label: 'A', interactive: true, editable: false },
+          { value: 1, label: 'B', interactive: true, editable: false },
+          { value: 2, label: 'C', interactive: true, editable: false },
+        ]
       )
     ).toEqual([
       {
@@ -151,17 +149,15 @@ describe('filterCategories', () => {
 });
 
 describe('getScore partialScoring test', () => {
-  const editCategoryEnabled = true;
   const mkQuestion = (extras) => ({
     correctAnswer: {
       data: [
-        { label: 'A', value: 0 },
-        { label: 'B', value: 1 },
-        { label: 'C', value: 2 },
+        { label: 'A', value: 0, editable:true },
+        { label: 'B', value: 1, editable:true },
+        { label: 'C', value: 2, editable:true },
       ],
     },
     data: [],
-    editCategoryEnabled,
     ...extras,
   });
 
@@ -191,8 +187,7 @@ describe('getScore partialScoring test', () => {
           [
             { label: 'A', value: 0 },
             { label: 'C', value: 2 },
-          ],
-          editCategoryEnabled
+          ]
         ),
       };
 
@@ -206,7 +201,6 @@ describe('getScore partialScoring test', () => {
 
 describe('getScore all or nothing', () => {
   const scoringType = 'all or nothing';
-  const editCategoryEnabled = true;
   const question = {
     correctAnswer: {
       data: [
@@ -217,7 +211,6 @@ describe('getScore all or nothing', () => {
     },
     data: [],
     scoringType,
-    editCategoryEnabled,
   };
 
   const assertGetScore = (message, session, expected) => {
@@ -234,8 +227,7 @@ describe('getScore all or nothing', () => {
           { label: 'A', value: 0 },
           { label: 'B', value: 1 },
           { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -257,8 +249,7 @@ describe('getScore all or nothing', () => {
             value: 2,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -271,8 +262,7 @@ describe('getScore all or nothing', () => {
           { label: 'A', value: 0 },
           { label: 'B', value: 2 },
           { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -294,8 +284,7 @@ describe('getScore all or nothing', () => {
             value: 2,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -308,8 +297,7 @@ describe('getScore all or nothing', () => {
           { label: 'A', value: 0 },
           { label: 'D', value: 1 },
           { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -331,8 +319,7 @@ describe('getScore all or nothing', () => {
             value: 2,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -345,8 +332,7 @@ describe('getScore all or nothing', () => {
           { label: 'A', value: 0 },
           { label: 'D', value: 2 },
           { label: 'C', value: 2 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -368,8 +354,7 @@ describe('getScore all or nothing', () => {
             value: 2,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -383,8 +368,7 @@ describe('getScore all or nothing', () => {
           { label: 'B', value: 1 },
           { label: 'C', value: 2 },
           { label: 'D', value: 3 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -411,8 +395,7 @@ describe('getScore all or nothing', () => {
             value: 3,
             correctness: { value: 'incorrect', label: 'incorrect' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -424,8 +407,7 @@ describe('getScore all or nothing', () => {
         [
           { label: 'A', value: 0 },
           { label: 'B', value: 1 },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -442,8 +424,7 @@ describe('getScore all or nothing', () => {
             value: 1,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -457,24 +438,21 @@ describe('getScore all or nothing', () => {
 
 describe('getScore partial scoring - editable - interactive', () => {
   const scoringType = 'partial scoring';
-  const editCategoryEnabled = true;
   const question = {
     correctAnswer: {
       data: [
-        { label: 'A', value: 0 },
-        { label: 'B', value: 1 },
-        { label: 'C', value: 2 },
+        { label: 'A', value: 0, editable: true },
+        { label: 'B', value: 1, editable: true },
+        { label: 'C', value: 2, editable: true },
       ],
     },
     data: filterCategories(
       [
-        { label: 'A', value: 0, interactive: true },
-        { label: 'B', value: 1, interactive: true },
-      ],
-      editCategoryEnabled
+        { label: 'A', value: 0, interactive: true, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+      ]
     ),
     scoringType,
-    editCategoryEnabled,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
@@ -497,16 +475,17 @@ describe('getScore partial scoring - editable - interactive', () => {
             label: 'A',
             value: 0,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -517,11 +496,10 @@ describe('getScore partial scoring - editable - interactive', () => {
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: true, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 1, interactive: true, editable: true},
+        ]
       ),
     },
     {
@@ -532,22 +510,24 @@ describe('getScore partial scoring - editable - interactive', () => {
             label: 'A',
             value: 0,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -558,11 +538,10 @@ describe('getScore partial scoring - editable - interactive', () => {
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: true },
-          { label: 'D', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: true, editable: true },
+          { label: 'D', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 1, interactive: true, editable: true },
+        ]
       ),
     },
     {
@@ -573,22 +552,24 @@ describe('getScore partial scoring - editable - interactive', () => {
             label: 'A',
             value: 0,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'D',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'incorrect' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -598,20 +579,18 @@ describe('getScore partial scoring - editable - interactive', () => {
     {
       data: filterCategories(
         [
-          { label: 'A-wrong', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A-wrong', value: 0, interactive: true, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+        ]
       ),
     },
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: true },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 2, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: true, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 2, interactive: true, editable: true},
+        ]
       ),
     },
     {
@@ -622,22 +601,24 @@ describe('getScore partial scoring - editable - interactive', () => {
             label: 'A',
             value: 0,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 2,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -645,7 +626,6 @@ describe('getScore partial scoring - editable - interactive', () => {
 
 describe('getScore partial scoring - NOT editable - interactive', () => {
   const scoringType = 'partial scoring';
-  const editCategoryEnabled = false;
   const question = {
     correctAnswer: {
       data: [
@@ -658,11 +638,9 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
       [
         { label: 'A', value: 0, interactive: true },
         { label: 'B', value: 1, interactive: true },
-      ],
-      editCategoryEnabled
+      ]
     ),
     scoringType,
-    editCategoryEnabled,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
@@ -693,8 +671,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
             interactive: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -708,8 +685,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
           { label: 'A', value: 0, interactive: true },
           { label: 'B', value: 1, interactive: true },
           { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -734,8 +710,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
             interactive: true,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -749,8 +724,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
           { label: 'A', value: 0, interactive: true },
           { label: 'B', value: 1, interactive: true },
           { label: 'D', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -775,8 +749,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
             interactive: true,
             correctness: { value: 'incorrect', label: 'incorrect' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -788,8 +761,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
         [
           { label: 'A-wrong', value: 0, interactive: true },
           { label: 'B', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -798,8 +770,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
           { label: 'A-wrong', value: 0, interactive: true },
           { label: 'B', value: 1, interactive: true },
           { label: 'C', value: 2, interactive: true },
-        ],
-        editCategoryEnabled
+        ]
       ),
     },
     {
@@ -824,8 +795,7 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
             interactive: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -833,7 +803,6 @@ describe('getScore partial scoring - NOT editable - interactive', () => {
 
 describe('getScore partial scoring - editable - randomly interactive', () => {
   const scoringType = 'partial scoring';
-  const editCategoryEnabled = true;
   const question = {
     correctAnswer: {
       data: [
@@ -844,13 +813,11 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
     },
     data: filterCategories(
       [
-        { label: 'A', value: 0, interactive: false },
-        { label: 'B', value: 1, interactive: true },
-      ],
-      editCategoryEnabled
+        { label: 'A', value: 0, interactive: false, editable: true },
+        { label: 'B', value: 1, interactive: true, editable: true },
+      ]
     ),
-    scoringType,
-    editCategoryEnabled,
+    scoringType
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
@@ -873,16 +840,17 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
             label: 'A',
             value: 0,
             interactive: false,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -893,11 +861,10 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
+          { label: 'A', value: 0, interactive: false, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 1, interactive: true, editable: true },
         ],
-        editCategoryEnabled
       ),
     },
     {
@@ -908,22 +875,24 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
             label: 'A',
             value: 0,
             interactive: false,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -934,11 +903,10 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: false },
-          { label: 'D', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: false, editable: true },
+          { label: 'D', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 1, interactive: true, editable: true },
+        ]
       ),
     },
     {
@@ -949,22 +917,24 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
             label: 'A',
             value: 0,
             interactive: false,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'D',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'incorrect' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -974,20 +944,18 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
     {
       data: filterCategories(
         [
-          { label: 'A-wrong', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A-wrong', value: 0, interactive: false, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+        ]
       ),
     },
     {
       answer: filterCategories(
         [
-          { label: 'A-wrong', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 2, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A-wrong', value: 0, interactive: false, editable: true },
+          { label: 'B', value: 1, interactive: true, editable: true },
+          { label: 'C', value: 2, interactive: true, editable: true },
+        ]
       ),
     },
     {
@@ -998,22 +966,24 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
             label: 'A-wrong',
             value: 0,
             interactive: false,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 2,
             interactive: true,
+            editable: true,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -1021,7 +991,6 @@ describe('getScore partial scoring - editable - randomly interactive', () => {
 
 describe('getScore partial scoring - NOT editable - randomly interactive', () => {
   const scoringType = 'partial scoring';
-  const editCategoryEnabled = false;
   const question = {
     correctAnswer: {
       data: [
@@ -1032,13 +1001,11 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     },
     data: filterCategories(
       [
-        { label: 'A', value: 0, interactive: false },
-        { label: 'B', value: 1, interactive: true },
-      ],
-      editCategoryEnabled
+        { label: 'A', value: 0, interactive: false, editable: false },
+        { label: 'B', value: 1, interactive: true, editable: false },
+      ]
     ),
     scoringType,
-    editCategoryEnabled,
   };
 
   const assertGetScore = (message, questionExtra, session, expected) => {
@@ -1061,16 +1028,17 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
             label: 'A',
             value: 0,
             interactive: false,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -1081,11 +1049,10 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: false, editable: false },
+          { label: 'B', value: 1, interactive: true, editable: false },
+          { label: 'C', value: 1, interactive: true, editable: false },
+        ]
       ),
     },
     {
@@ -1096,22 +1063,24 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
             label: 'A',
             value: 0,
             interactive: false,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -1122,11 +1091,10 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     {
       answer: filterCategories(
         [
-          { label: 'A', value: 0, interactive: false },
-          { label: 'D', value: 1, interactive: true },
-          { label: 'C', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A', value: 0, interactive: false, editable: false },
+          { label: 'D', value: 1, interactive: true, editable: false },
+          { label: 'C', value: 1, interactive: true, editable: false },
+        ]
       ),
     },
     {
@@ -1137,22 +1105,24 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
             label: 'A',
             value: 0,
             interactive: false,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'D',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'incorrect', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -1162,20 +1132,18 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
     {
       data: filterCategories(
         [
-          { label: 'A-wrong', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A-wrong', value: 0, interactive: false, editable: false },
+          { label: 'B', value: 1, interactive: true, editable: false },
+        ]
       ),
     },
     {
       answer: filterCategories(
         [
-          { label: 'A-wrong', value: 0, interactive: false },
-          { label: 'B', value: 1, interactive: true },
-          { label: 'C', value: 2, interactive: true },
-        ],
-        editCategoryEnabled
+          { label: 'A-wrong', value: 0, interactive: false, editable: false },
+          { label: 'B', value: 1, interactive: true, editable: false },
+          { label: 'C', value: 2, interactive: true, editable: false },
+        ]
       ),
     },
     {
@@ -1186,22 +1154,24 @@ describe('getScore partial scoring - NOT editable - randomly interactive', () =>
             label: 'A-wrong',
             value: 0,
             interactive: false,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'B',
             value: 1,
             interactive: true,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
           {
             label: 'C',
             value: 2,
             interactive: true,
+            editable: false,
             correctness: { value: 'correct', label: 'correct' },
           },
-        ],
-        editCategoryEnabled
+        ]
       ),
     }
   );
@@ -1412,7 +1382,6 @@ describe('outcome', () => {
   };
   const question = {
     addCategoryEnabled: true,
-    editCategoryEnabled: false,
     chartType: 'bar',
     data: [
       {

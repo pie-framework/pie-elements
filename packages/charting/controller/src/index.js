@@ -167,9 +167,6 @@ export function model(question, session, env) {
       scoringType
     } = normalizedQuestion;
 
-    console.log(filterCategories(data), "data in controller after filter--------")
-
-    console.log(data, "DATA ")
     const correctInfo = { correctness: 'incorrect', score: '0%' };
 
     const base = {

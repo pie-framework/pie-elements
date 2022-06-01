@@ -18,7 +18,6 @@ export class Main extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props,'constructor');
 
     this.state = {
       categories: props.categories || props.model.data,
@@ -29,8 +28,6 @@ export class Main extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { model: { data: nextData = [] } = {} } = nextProps;
     const { model: { data = [] } = {} } = this.props;
-
-    console.log(this.props, "this props in controler")
 
     if (!isEqual(nextData, data)) {
       this.setState({ categories: nextData });
@@ -49,8 +46,6 @@ export class Main extends React.Component {
 
   render() {
     const { categories, showingCorrect } = this.state;
-
-    console.log(categories, " data in controller")
     const { model, classes } = this.props;
     const {
       teacherInstructions,

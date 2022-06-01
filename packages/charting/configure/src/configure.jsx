@@ -92,9 +92,6 @@ export class Configure extends React.Component {
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
 
-      console.log(model.data, "model data in config")
-
-
     return (
       <layout.ConfigLayout
         settings={
