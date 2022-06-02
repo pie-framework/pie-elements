@@ -35,12 +35,15 @@ const style = {
   correct: rayColor(colors.correct),
   incorrect: rayColor(colors.incorrect),
   arrowCorrect: {
+    fill: colors.correct,
     '--arrow-color': colors.correct
   },
   arrowIncorrect: {
+    fill: colors.incorrect,
     '--arrow-color': colors.incorrect
   },
   arrowSelected: {
+    fill: colors.selected,
     '--arrow-color': colors.selected
   }
 };

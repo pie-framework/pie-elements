@@ -11,6 +11,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
               "label": "Maximum Length Per Choice",
               "settings": true,
             },
+            "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -166,7 +167,7 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           placement="right"
           title="Validation requirements:
 The response area content should not be empty and should be unique.
-There should be at least 1 response area defined."
+There should be at least 1 and at most 10 response areas defined."
         >
           <pure(InfoIcon)
             color="primary"
@@ -187,7 +188,7 @@ There should be at least 1 response area defined."
         responseAreaProps={
           Object {
             "error": [Function],
-            "maxResponseAreas": undefined,
+            "maxResponseAreas": 10,
             "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,
@@ -303,6 +304,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
               "label": "Maximum Length Per Choice",
               "settings": true,
             },
+            "maxResponseAreas": 10,
             "partialScoring": Object {
               "label": "Allow Partial Scoring",
               "settings": false,
@@ -427,7 +429,7 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           placement="right"
           title="Validation requirements:
 The response area content should not be empty and should be unique.
-There should be at least 1 response area defined."
+There should be at least 1 and at most 10 response areas defined."
         >
           <pure(InfoIcon)
             color="primary"
@@ -448,7 +450,7 @@ There should be at least 1 response area defined."
         responseAreaProps={
           Object {
             "error": [Function],
-            "maxResponseAreas": undefined,
+            "maxResponseAreas": 10,
             "onHandleAreaChange": [Function],
             "options": Object {
               "duplicates": true,

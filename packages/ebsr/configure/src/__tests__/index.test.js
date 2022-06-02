@@ -79,7 +79,8 @@ const model = createDefaultModel(defaults.model, {
       }
     ],
     choicePrefix: 'numbers',
-    prompt: `prompt ${PART_A}`
+    prompt: `prompt ${PART_A}`,
+    errors: {}
   },
   partB: {
     choiceMode: 'radio',
@@ -102,7 +103,8 @@ const model = createDefaultModel(defaults.model, {
       }
     ],
     choicePrefix: 'numbers',
-    prompt: `prompt ${PART_B}`
+    prompt: `prompt ${PART_B}`,
+    errors: {}
   }
 });
 

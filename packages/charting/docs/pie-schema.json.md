@@ -229,10 +229,6 @@ Indicates category label
 
 Indicates category value
 
-### `initial` (boolean, required)
-
-Indicates if category is default category
-
 ### `interactive` (boolean, required)
 
 Indicates if category label & value are interactive

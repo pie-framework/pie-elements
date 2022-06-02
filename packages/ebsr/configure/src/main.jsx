@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { settings, layout } from '@pie-lib/config-ui';
 import { withStyles } from '@material-ui/core/styles';
-import cloneDeep from 'lodash/cloneDeep';
 
 const { Panel, toggle, radio, dropdown } = settings;
 
@@ -208,7 +207,10 @@ export class Main extends React.Component {
                   if (ref) {
                     // do not use destructuring to get model from props
                     this.partA = ref;
-                    this.partA._model = cloneDeep(this.props.model.partA);
+                    this.partA._model = {
+                      ...this.props.model.partA,
+                      errors: this.props.model.errors && this.props.model.errors.partA || {}
+                    };
                     this.partA.configuration = {
                       ...partA,
                       ...generalConfiguration
@@ -227,7 +229,10 @@ export class Main extends React.Component {
                   if (ref) {
                     // do not use destructuring to get model from props
                     this.partB = ref;
-                    this.partB._model = cloneDeep(this.props.model.partB);
+                    this.partB._model ={
+                      ...this.props.model.partB,
+                      errors: this.props.model.errors && this.props.model.errors.partB || {}
+                    };
                     this.partB.configuration = {
                       ...partB,
                       ...generalConfiguration

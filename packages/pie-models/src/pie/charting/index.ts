@@ -35,9 +35,6 @@ interface Category {
   /** Indicates category value */
   value: number;
 
-  /** Indicates if category is default category */
-  initial: boolean;
-
   /** Indicates if category label & value are interactive */
   interactive: boolean;
 
