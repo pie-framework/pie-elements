@@ -9,8 +9,7 @@
 //   label,
 //   value,
 //   interactive: true,
-//   editable: true,
-//   deletable: true
+//   editable: true
 // });
 
 export default {

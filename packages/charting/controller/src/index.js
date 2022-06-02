@@ -140,9 +140,9 @@ export const getScore = (question, session, env = {}) => {
   };
 };
 
+// do we need this anymore?
 export const filterCategories = (categories) => categories ? categories.map(category => ({
-  ...category,
-  deletable: false
+  ...category
 })) : [];
 
 export function model(question, session, env) {

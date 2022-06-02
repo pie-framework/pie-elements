@@ -10,22 +10,19 @@ exports.model = (id, element) => ({
         label: 'A',
         value: 1,
         interactive: false,
-        editable: false,
-        deletable: true
+        editable: false
       },
       {
         label: 'B',
         value: 1,
         interactive: true,
-        editable: false,
-        deletable: true
+        editable: false
       },
       {
         label: 'C',
         value: 1,
         interactive: true,
-        editable: false,
-        deletable: true
+        editable: false
       },
     ]
   },
@@ -34,22 +31,19 @@ exports.model = (id, element) => ({
       label: 'A',
       value: 1,
       interactive: false,
-      editable: false,
-      deletable: true
+      editable: false
     },
     {
       label: 'B',
       value: 1,
       interactive: true,
-      editable: false,
-      deletable: true
+      editable: false
     },
     {
       label: 'D',
       value: 2,
       interactive: true,
-      editable: false,
-      deletable: true
+      editable: false
     },
   ],
   domain: {
