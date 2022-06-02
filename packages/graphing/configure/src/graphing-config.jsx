@@ -77,7 +77,6 @@ export class GraphingConfig extends React.Component {
       <div className={classes.container}>
         <div className={classes.gridConfig}>
           <GridSetup
-            constraints={constraints}
             domain={domain}
             dimensionsEnabled={enabled}
             includeAxes={includeAxes}

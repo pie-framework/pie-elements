@@ -834,15 +834,7 @@ it('sortedAnswers should return an array of answers sorted alphabetically', () =
         label: 'Point',
         showLabel: true
       }]
-    },
-    correctAnswer: {
-      name: 'Correct Answer',
-      marks: [{
-        type: 'point',
-        x: 0,
-        y: 0
-      }]
-    },
+    }
   };
 
   expect(sortedAnswers(answers)).toEqual(result);

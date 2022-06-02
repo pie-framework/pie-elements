@@ -1,83 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AuthoringColumn renders snapshot 1`] = `
-<div
-  key="columnKey"
->
-  COLUMNKEY (X)
-  <div
-    key="\${columnKey}-min-max"
-  >
-    <TextField
-      key="columnKey.min"
-      label="MIN VALUE"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      variant="standard"
-    />
-    <TextField
-      key="columnKey.max"
-      label="MAX VALUE"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      variant="standard"
-    />
-  </div>
-  <div
-    key="columnKey-tick-frequency"
-  >
-    <TextField
-      key="columnKey.step"
-      label="TICK FREQUENCY"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      variant="standard"
-    />
-  </div>
-  <div
-    key="columnKey-tick-label-frequency"
-  >
-    <TextField
-      key="columnKey.labelStep"
-      label="TICK LABEL FREQUENCY"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      type="number"
-      variant="standard"
-    />
-  </div>
-  <div
-    key="columnKey-axis-label"
-  >
-    <TextField
-      label="X AXIS LABEL"
-      onChange={[Function]}
-      required={false}
-      select={false}
-      variant="standard"
-    />
-  </div>
-</div>
-`;
-
 exports[`GraphingConfig renders snapshot 1`] = `
 <div>
   <div>
     <WithStyles(GridSetup)
-      constraints={
-        Object {
-          "max": NaN,
-          "min": NaN,
-          "step": 20,
-        }
-      }
       domain={
         Object {
           "axisLabel": "x",
