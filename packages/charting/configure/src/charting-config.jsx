@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
+
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -25,10 +26,6 @@ export class ChartingConfig extends React.Component {
   };
 
   changeData = data => this.props.onChange({ ...this.props.model, data });
-
-  enableAddCategory = addCategoryEnabled => this.props.onChange({ ...this.props.model, addCategoryEnabled });
-
- 
 
   render() {
     const { classes, model, charts } = this.props;
@@ -54,10 +51,8 @@ export class ChartingConfig extends React.Component {
               title={model.title}
               onDataChange={this.changeData}
               addCategoryEnabled={true}
-              enableAddCategory={this.enableAddCategory}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
-            
           </div>
 
         </div>
