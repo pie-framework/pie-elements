@@ -233,8 +233,22 @@ export const createCorrectResponseSession = (question, env) => {
     if (env.mode !== 'evaluate' && env.role === 'instructor') {
       const { correctAnswer } = question;
 
+      let answers = correctAnswer && correctAnswer.data;
+
+      // for IBX preview mode
+      if (env.mode === 'gather') {
+        const {data} = question;
+
+        answers = (correctAnswer && correctAnswer.data || []).map((answer, index) => {
+          return {
+            ...data[index],
+            ...answer
+          };
+        });
+      }
+
       resolve({
-        answer: correctAnswer && correctAnswer.data,
+        answer: answers,
         id: '1'
       });
     } else {
