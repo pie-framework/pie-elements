@@ -121,16 +121,16 @@ exports.model = (id, element) => ({
     }
   ],
   domain: {
-    min: -10,
-    max: 10,
+    min: -14,
+    max: 20,
     padding: 0,
     step: 1,
     labelStep: 1,
     axisLabel: 'x'
   },
   graph: {
-    width: 480,
-    height: 480
+    width: 450,
+    height: 450
   },
   coordinatesOnHover: false,
   labels: { top: 'top', left: 'left', bottom: 'bottom', right: 'right' },
@@ -138,8 +138,8 @@ exports.model = (id, element) => ({
   prompt: 'Here goes item stem !!!!!!',
   promptEnabled: true,
   range: {
-    min: -5,
-    max: 5,
+    min: -14,
+    max: 20,
     padding: 0,
     step: 1,
     labelStep: 1,
