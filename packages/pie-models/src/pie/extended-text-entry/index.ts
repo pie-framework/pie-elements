@@ -54,6 +54,18 @@ export interface ExtendedTextEntryPie extends PieModel {
    */
   mathInput?: boolean;
 
+  /**
+   * Whether a control to allow insertion of spanish characters should be displayed
+   * @default false
+   */
+  spanishInput?: boolean;
+
+  /**
+   * Whether a control to allow insertion of special characters should be displayed
+   * @default false
+   */
+  specialInput?: boolean;
+
   /** Indicates if multiple parts are enabled */
   multiple?: boolean;
 
@@ -115,6 +127,16 @@ export interface ExtendedTextEntryConfigure
    * Math Input configuration
    */
   mathInput?: ConfigureProp;
+
+  /**
+   * Spanish Input configuration
+   */
+  spanishInput?: ConfigureProp;
+
+  /**
+   * Special Input configuration
+   */
+  specialInput?: ConfigureProp;
 
   /**
    * Multiple Parts configuration
