@@ -34,6 +34,8 @@ const setCorrectResponseInitialData = (correctAnswer, data) => {
 // })
 
 data.forEach((category, i) => { 
+  console.log("correctAnswer[i]?.value", correctAnswer[i]?.value)
+  console.log("category.value", category.value)
   correctResponseDefinition[i] = {label: correctAnswer[i]?.label || category.label, value:correctAnswer[i]?.value || category.value,  editable: category.editable , interactive: category.interactive } ;
 })
 
@@ -67,7 +69,7 @@ export class CorrectResponse extends React.Component {
     console.log(nextProps, "next props in correct response")
     console.log(nextData, "next data in correct response")
 
-    if (!isEqual(nextData, data)) {
+    if (!isEqual(nextCategoies, data)) {
       this.setState({ categories:  nextCategoies});
     }
   }
