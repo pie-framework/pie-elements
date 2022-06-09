@@ -9,8 +9,6 @@ import every from 'lodash/every';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import { removeAllChoices } from '@pie-lib/categorize';
-import Categories from '../categories';
-import EditableHtml from '@pie-lib/editable-html';
 
 export class Choices extends React.Component {
   static propTypes = {
