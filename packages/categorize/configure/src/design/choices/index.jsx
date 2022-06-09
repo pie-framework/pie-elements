@@ -9,6 +9,8 @@ import every from 'lodash/every';
 import Config from './config';
 import { choiceUtils as utils } from '@pie-lib/config-ui';
 import { removeAllChoices } from '@pie-lib/categorize';
+import Categories from '../categories';
+import EditableHtml from '@pie-lib/editable-html';
 
 export class Choices extends React.Component {
   static propTypes = {
@@ -74,10 +76,16 @@ export class Choices extends React.Component {
       spellCheck,
       toolbarOpts,
       configuration,
+      defaultImageMaxWidth,
+      defaultImageMaxHeight
     } = this.props;
     const { errors } = model;
     const { choicesError, choicesErrors } = errors || {};
-    const { maxChoices } = configuration || {};
+    const {
+      maxChoices,
+      maxImageWidth = {},
+      maxImageHeight = {}
+    } = configuration || {};
 
     const categoryCountIsOne = this.allChoicesHaveCount(1);
     const choiceHolderStyle = {
@@ -112,6 +120,8 @@ export class Choices extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={choicesErrors && choicesErrors[h.id]}
+              maxImageWidth={maxImageWidth && maxImageWidth.choice || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.choice || defaultImageMaxHeight}
             />
           ))}
         </div>
