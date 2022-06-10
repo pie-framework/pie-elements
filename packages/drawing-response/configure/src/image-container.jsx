@@ -163,7 +163,7 @@ export class ImageContainer extends Component {
   }
 
   render() {
-    const { classes, imageUrl } = this.props;
+    const { classes, imageUrl, imageDimensions } = this.props;
     const {
       dropzoneActive,
       dragEnabled,
@@ -209,6 +209,7 @@ export class ImageContainer extends Component {
                   }}
                   src={imageUrl}
                   style={{
+                    width: imageDimensions && imageDimensions.width,
                     maxWidth: maxImageWidth,
                     maxHeight: maxImageHeight
                   }}
