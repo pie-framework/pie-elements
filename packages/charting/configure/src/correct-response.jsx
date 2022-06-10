@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
 import { Chart } from '@pie-lib/charting';
 
 const styles = theme => ({
@@ -42,15 +41,13 @@ export class CorrectResponse extends React.Component {
     });
   };
 
-  changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
-
   render() {
     const { classes, model, charts } = this.props;
 
     return (
       <div>
         Define Correct Response
-        <div className={classes.container}>
+       
           <div key={`correct-response-graph-${model.correctAnswer.name}`}>
             <p>{model.correctAnswer.name}</p>
             <Chart
@@ -62,20 +59,11 @@ export class CorrectResponse extends React.Component {
               data={model.correctAnswer.data || []}
               title={model.title}
               onDataChange={(data) => this.changeData(data)}
-              addCategoryEnabled={true}
+              addCategoryEnabled={model.addCategoryEnabled}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
-            <div>
-              <Checkbox
-                checked={model.addCategoryEnabled}
-                onChange={(e) => {
-                  this.changeAddRemoveEnabled(e.target.checked)
-                }}
-              />
-              Student can add/remove category labels
-            </div>
           </div>
-        </div>
+
       </div>
     );
   }
