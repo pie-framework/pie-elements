@@ -140,10 +140,7 @@ export const getScore = (question, session, env = {}) => {
   };
 };
 
-// do we need this anymore?
-export const filterCategories = (categories) => categories ? categories.map(category => ({
-  ...category
-})) : [];
+export const filterCategories = (categories) => categories ? categories.map(({deletable, ...rest}) => rest) : [];
 
 export function model(question, session, env) {
   return new Promise(resolve => {

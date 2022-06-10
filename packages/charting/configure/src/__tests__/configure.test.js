@@ -154,14 +154,6 @@ describe('CorrectResponse', () => {
         w = wrapper();
     });
 
-    it('changes addCategoryEnabled', () => {
-      w.instance().changeAddRemoveEnabled(true);
-
-      expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
-        addCategoryEnabled: true
-      }));
-    });
-
     it('changes correctAnswer data', () => {
       w.instance().changeData([]);
 
