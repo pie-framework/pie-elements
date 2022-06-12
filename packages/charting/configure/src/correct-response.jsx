@@ -4,12 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     border: '2px solid #ababab',
     borderRadius: '4px',
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
-    background: '#fafafa'
+    background: '#fafafa',
   },
   button: {
     marginTop: theme.spacing.unit * 3,
@@ -17,105 +17,163 @@ const styles = theme => ({
     background: '#eee',
     padding: theme.spacing.unit * 2,
     width: 'fit-content',
-    borderRadius: '4px'
-  }
+    borderRadius: '4px',
+  },
 });
 
-const setCorrectResponseInitialData = (correctAnswer, data) => {
+const updateCorrectResponseInitialData = (correctAnswer, data) => {
   if (!correctAnswer) {
-    return data
+    return data;
   }
-  console.log("data in set  state", data )
+
+  console.log(correctAnswer, "correct Answer ------------------")
 
   let correctResponseDefinition = [];
-//label: model.correctAnswer.data[i].label, value: model.correctAnswer.data[i].value
-//   correctAnswer.forEach((correct, i) => { 
-//     correctResponseDefinition[i] = {...correct, editable: data[i].editable , interactive: data[i].interactive } ;
-// })
 
-data.forEach((category, i) => { 
-  console.log("correctAnswer[i]?.value", correctAnswer[i]?.value)
-  console.log("category.value", category.value)
-  correctResponseDefinition[i] = {label: correctAnswer[i]?.label || category.label, value:correctAnswer[i]?.value || category.value,  editable: category.editable , interactive: category.interactive } ;
-})
+  data.forEach((category, currentIndex) => {
+    const editable = category.editable;
+    const interactive = category.interactive;
 
-return correctResponseDefinition
-}
+    const label =  (editable && correctAnswer[currentIndex]?.label)
+    ? correctAnswer[currentIndex].label
+    : category.label
+
+    const value =  (interactive && correctAnswer[currentIndex]?.value)
+    ? correctAnswer[currentIndex].value
+    : category.value
+
+    console.log(interactive && correctAnswer[currentIndex], interactive, correctAnswer[currentIndex]?.label, "interactive && correctAnswer[currentIndex]?.value")
+    correctResponseDefinition[currentIndex] = {
+      label:label,
+      value:value,
+      editable: category.editable,
+      interactive: category.interactive,
+    };
+  });
+
+  if (correctResponseDefinition.length < correctAnswer.length) {
+    const missingCategories = correctAnswer.slice(correctResponseDefinition.length, correctAnswer.length)
+
+    console.log('missingCategories', missingCategories)
+
+    return correctResponseDefinition.concat(missingCategories);
+  }
+
+  return correctResponseDefinition;
+};
 
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    charts: PropTypes.array
+    charts: PropTypes.array,
   };
 
   constructor(props) {
     super(props);
-    console.log(props, "props in correct response")
+    console.log(props, 'props in correct response');
     this.state = {
-      categories: setCorrectResponseInitialData(props.model.correctAnswer.data, props.model.data),
+      correctAnswer: updateCorrectResponseInitialData(
+        props.model.correctAnswer.data,
+        props.model.data
+      ),
+    //  correctAnswer: props.model.correctAnswer.data,
     };
-  
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { model: { data: nextData = [] } = {} } = nextProps;
-    const { model: { data = [] } = {} } = this.props;
+    const {
+      model: {
+        data: nextData = [],
+        correctAnswer: { data: nextCorrectAnswerData = [] },
+      } = {},
+    } = nextProps;
+    const {
+      model: {
+        data = [],
+        correctAnswer: {
+          data: [],
+        },
+      } = {},
+    } = this.props;
 
-    const nextCategoies = setCorrectResponseInitialData(nextProps.model.correctAnswer.data, nextData);
-    console.log("nextCategoies", nextCategoies)
+    const { correctAnswer } = this.state;
 
-    console.log(nextProps, "next props in correct response")
-    console.log(nextData, "next data in correct response")
+    console.log(correctAnswer, "correctAnswer in correct response")
+
+    let nextCategoies = [];
+
+    console.log(nextCorrectAnswerData, 'nextCorrectAnswerData');
+    console.log(this.props, "this props")
+    console.log(nextProps, "next props")
+    // check what was changed: correctAnswer or data?
+
+  //  if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
+      //  nextCategoies = setCorrectResponseInitialData(nextData, nextProps.model.correctAnswer.data);
+  //  } else if (!isEqual(nextData, data)) {
+      nextCategoies = updateCorrectResponseInitialData(
+        correctAnswer,
+        nextData
+      );
+ //   }
+
+    console.log(
+      isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data),
+      'nextCorrectAnswerData equality'
+    );
+    console.log(isEqual(nextData, data), 'nextData equality');
+
+    console.log('nextCategoies', nextCategoies);
+
+    console.log(nextProps, 'next props in correct response');
+    console.log(nextData, 'next data in correct response');
 
     if (!isEqual(nextCategoies, data)) {
-      this.setState({ categories:  nextCategoies});
+     // this.setState({ categories: nextCategoies });
+      this.setState({ correctAnswer: nextCategoies });
+     
     }
   }
 
-  changeData = data => {
+  changeData = (data) => {
     const { model, onChange } = this.props;
-    const { correctAnswer } = model || {};
-    const {categories} = this.state;
-
+  //  const { correctAnswer } = model || {};
+    const { correctAnswer } = this.state;
+console.log(correctAnswer, "correctAnswer in change data")
     onChange({
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data
-      }
+        data,
+      },
     });
   };
 
   render() {
     const { classes, model, charts } = this.props;
-    const {categories} = this.state;
+    const { correctAnswer } = this.state;
 
-    console.log(categories, "categories in correct response")
-
-  
+   // console.log(categories, 'categories in correct response');
 
     return (
       <div>
         Define Correct Response
-       
-          <div key={`correct-response-graph-${model.correctAnswer.name}`}>
-            <p>{model.correctAnswer.name}</p>
-            <Chart
-              chartType={model.chartType}
-              size={model.graph}
-              domain={model.domain}
-              range={model.range}
-              charts={charts}
-              data={categories}
-              title={model.title}
-              onDataChange={(data) => this.changeData(data)}
-              addCategoryEnabled={model.addCategoryEnabled}
-              categoryDefaultLabel={model.categoryDefaultLabel}
-            />
-          </div>
-
+        <div key={`correct-response-graph-${model.correctAnswer.name}`}>
+          <p>{model.correctAnswer.name}</p>
+          <Chart
+            chartType={model.chartType}
+            size={model.graph}
+            domain={model.domain}
+            range={model.range}
+            charts={charts}
+            data={correctAnswer}
+            title={model.title}
+            onDataChange={(data) => this.changeData(data)}
+            addCategoryEnabled={model.addCategoryEnabled}
+            categoryDefaultLabel={model.categoryDefaultLabel}
+          />
+        </div>
       </div>
     );
   }
