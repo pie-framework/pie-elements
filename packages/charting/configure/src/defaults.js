@@ -9,8 +9,7 @@
 //   label,
 //   value,
 //   interactive: true,
-//   editable: true,
-//   deletable: true
+//   editable: true
 // });
 
 export default {
@@ -23,7 +22,6 @@ export default {
     domain: {
       label: 'Fruits',
     },
-    editCategoryEnabled: true,
     graph: {
       width: 480,
       height: 480
