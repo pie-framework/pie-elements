@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.12](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.11...@pie-element/placement-ordering@7.8.12) (2022-06-13)
+
+**Note:** Version bump only for package @pie-element/placement-ordering
+
+
+
+
+
 ## [7.8.11](https://github.com/pie-framework/pie-elements/compare/@pie-element/placement-ordering@7.8.10...@pie-element/placement-ordering@7.8.11) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/placement-ordering

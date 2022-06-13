@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.49...@pie-element/charting-configure@3.0.0) (2022-06-13)
+
+
+### Features
+
+* **charting:** remove editCategoryEnabled property checkbox and usage. ([b5e6a93](https://github.com/pie-framework/pie-elements/commit/b5e6a93fb99c957bec304bac7d7bf34ee3c98f27))
+
+
+### BREAKING CHANGES
+
+* **charting:** The editCategoryEnabled checkbox and property was removed.
+Enabled property will be used for each category.
+
+
+
+
+
 ## [2.1.49](https://github.com/pie-framework/pie-elements/compare/@pie-element/charting-configure@2.1.48...@pie-element/charting-configure@2.1.49) (2022-05-30)
 
 **Note:** Version bump only for package @pie-element/charting-configure
