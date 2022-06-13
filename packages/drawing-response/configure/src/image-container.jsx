@@ -209,7 +209,7 @@ export class ImageContainer extends Component {
                   }}
                   src={imageUrl}
                   style={{
-                    width: imageDimensions && imageDimensions.width,
+                    width: imageDimensions && imageDimensions.width ? imageDimensions.width : undefined,
                     maxWidth: maxImageWidth,
                     maxHeight: maxImageHeight
                   }}
