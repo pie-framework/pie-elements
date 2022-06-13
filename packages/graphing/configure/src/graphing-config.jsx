@@ -1,208 +1,163 @@
 import * as React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { NumberTextField } from '@pie-lib/config-ui';
-import { GraphContainer, tools } from '@pie-lib/graphing';
-import { TextField, Typography } from '@material-ui/core';
+import { GraphContainer, GridSetup, tools } from '@pie-lib/graphing';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { get, set } from 'lodash';
+import { applyConstraints, getGridValues, getLabelValues } from './utils';
 
 const { allTools = [] } = tools;
 
-export const AuthoringColumn = ({ columnKey, axis, classes, model }) => {
-  const rows = [{
-    key: '${columnKey}-min-max',
-    inputs: [
-      {
-        key: `${columnKey}.min`,
-        label: 'Min value',
-        className: classes.smallInput
-      },
-      {
-        key: `${columnKey}.max`,
-        label: 'Max value',
-        className: classes.smallInput
-      }
-    ]
-  }, {
-    key: `${columnKey}-tick-frequency`,
-    inputs: [
-      {
-        key: `${columnKey}.step`,
-        label: 'Tick frequency'
-      }
-    ]
-  },
-    {
-      key: `${columnKey}-tick-label-frequency`,
-      inputs: [
-        {
-          key: `${columnKey}.labelStep`,
-          label: 'Tick label frequency'
-        }
-      ]
-    },
-    {
-      key: `${columnKey}-axis-label`,
-      inputs: [
-        {
-          type: 'text',
-          key: `${axis}-axis-label-input`,
-          label: `${axis} Axis Label`
-        }
-      ]
-    }
-  ];
-
-  return (
-    <div className={classes.column} key={columnKey}>
-      {`${columnKey.toUpperCase()} (${axis.toUpperCase()})`}
-
-      {rows.map(row => (
-        <div className={classes.row} key={row.key}>
-          {row.inputs.map(input => {
-            if (input.type === 'text') {
-              return (
-                <TextField
-                  className={classes.input}
-                  label={input.label.toUpperCase()}
-                  value={model[`${axis}AxisLabel`]}
-                  onChange={({ target }) => this.onChangeInputValue(`${axis}AxisLabel`, target.value)}
-                />
-              );
-            }
-
-            return (
-              <TextField
-                type="number"
-                key={input.key}
-                label={input.label.toUpperCase()}
-                onChange={(event, value) => this.onChangeInputValue(input.key, value)}
-                value={get(model, input.key)}
-                className={input.className || classes.input}
-              />
-            );
-          })}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-AuthoringColumn.propTypes = {
-  axis: PropTypes.String,
-  classes: PropTypes.object,
-  columnKey: PropTypes.String,
-  model: PropTypes.object,
-};
-
 const styles = theme => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
     display: 'flex',
-    flex: 1,
+    flexWrap: 'wrap',
+    marginBottom: theme.spacing.unit * 7
   },
-  column: {
-    flex: 1
-  },
-  row: {
-    marginTop: theme.spacing.unit * 2,
-    flex: 1
-  },
-  settings: {
+  gridConfig: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'column',
+    marginRight: theme.spacing.unit * 4,
+    marginBottom: theme.spacing.unit * 3
   },
-  input: {
-    width: 'calc(100% -  32px)'
+  graphConfig: {
+    display: 'flex',
+    flexDirection: 'column'
   },
-  smallInput: {
-    width: 'calc(50% -  32px)'
+  subheading: {
+    marginBottom: theme.spacing.unit * 2
+  },
+  body: {
+    marginBottom: theme.spacing.unit
   }
 });
 
 export class GraphingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
+    authoringEnabled: PropTypes.bool,
+    graphDimensions: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
-    authoringEnabled: PropTypes.bool,
   };
 
-  onChangeInputValue = (key, value) => {
-    const { model } = this.props;
+  constructor(props) {
+    super(props);
+    const { domain, range, graph } = props.model || {};
 
-    set(model, key, value);
-    this.props.onChange(model);
-  };
+    const gridValues = {
+      domain: getGridValues(domain, graph.width, true),
+      range: getGridValues(range, graph.height, true)
+    };
+    const labelValues = {
+      domain: getLabelValues(domain.step),
+      range: getLabelValues(range.step)
+    };
 
-  renderInput = (key, label, className) => {
-    const { classes, model } = this.props;
-
-    return (
-      <NumberTextField
-        key={key}
-        label={label.toUpperCase()}
-        onChange={(event, value) => this.onChangeInputValue(key, value)}
-        value={get(model, key)}
-        className={className || classes.input}
-      />
-    )
-  };
-
-  renderRow = (key, content) => {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.row} key={key}>
-        {content}
-      </div>
-    );
+    this.state = { gridValues, labelValues };
   };
 
   changeBackgroundMarks = backgroundMarks => {
     const model = { ...this.props.model, backgroundMarks };
+
     this.props.onChange(model);
   };
 
+  onConfigChange = config => {
+    const { model, onChange } = this.props;
+    const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
+    const updatedModel = { ...model, ...config };
+    const { domain, includeAxes, graph, range, standardGrid } = updatedModel;
+    const gridValues = { domain: [], range: [] };
+    const labelValues = { domain: [], range: [] };
+
+    if (includeAxes) {
+      const domainConstraints = applyConstraints(domain, graph.width, oldGridValues.domain, oldLabelValues.domain);
+
+      gridValues.domain = domainConstraints.gridValues || [];
+      labelValues.domain = domainConstraints.labelValues || [];
+    }
+
+    if (standardGrid) {
+      gridValues.range = gridValues.domain;
+      labelValues.range = labelValues.domain;
+      range.step = domain.step;
+      range.labelStep = domain.labelStep;
+    } else {
+      if (includeAxes) {
+        const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
+
+        gridValues.range = rangeConstraints.gridValues || [];
+        labelValues.range = rangeConstraints.labelValues || [];
+      }
+    }
+
+    this.setState({ gridValues, labelValues });
+    onChange(updatedModel);
+  };
+
   render() {
-    const { classes, model, authoringEnabled } = this.props;
-    const { arrows, backgroundMarks, coordinatesOnHover, domain, graph = {}, labels, range, title } = model || {};
+    const { classes, model, graphDimensions } = this.props;
+    const {
+      arrows,
+      backgroundMarks,
+      coordinatesOnHover,
+      domain,
+      includeAxes,
+      labels,
+      range,
+      standardGrid,
+      title
+    } = model || {};
+    const graph = (model || {}).graph || {};
+    const { enabled, min, max, step } = graphDimensions || {};
+    const { gridValues, labelValues } = this.state;
+
+    const sizeConstraints = {
+      min: Math.max(150, min),
+      max: Math.min(800, max),
+      step: step >= 1 ? Math.min(200, step) : 20
+    };
 
     return (
-      <div>
-        Define Graph Attributes
+      <div className={classes.container}>
+        <div className={classes.gridConfig}>
+          <GridSetup
+            domain={domain}
+            dimensionsEnabled={enabled}
+            gridValues={gridValues}
+            includeAxes={includeAxes}
+            labelValues={labelValues}
+            range={range}
+            size={graph}
+            sizeConstraints={sizeConstraints}
+            standardGrid={standardGrid}
+            onChange={this.onConfigChange}
+          />
+        </div>
 
-        <div className={classes.container}>
-          {authoringEnabled && (
-            <div className={classnames(classes.column, classes.settings)} key="settings">
-              <AuthoringColumn columnKey="domain" axis="x" classes={classes} model={model} />
-              <AuthoringColumn columnKey="range" axis="y" classes={classes} model={model} />
-            </div>
-          )}
+        <div className={classes.graphConfig} key="graph">
+          <Typography component="div" variant="subheading2" className={classes.subheading}>
+            <span>Define Graph Attributes</span>
+          </Typography>
 
-          <div className={classes.column} key="graph">
-            <Typography component="div" type="body1">
-              <span>Use the tools below to set background shapes</span>
-            </Typography>
+          <Typography component="div" variant="body1" className={classes.body}>
+            <span>Use this interface to add/edit a title and/or labels, and to set background shapes</span>
+          </Typography>
 
-            <GraphContainer
-              axesSettings={{ includeArrows: arrows }}
-              backgroundMarks={[]}
-              coordinatesOnHover={coordinatesOnHover}
-              domain={domain}
-              key="graphing-config"
-              labels={labels}
-              marks={backgroundMarks}
-              onChangeMarks={this.changeBackgroundMarks}
-              range={range}
-              size={{ width: graph.width, height: graph.height }}
-              title={title}
-              toolbarTools={allTools}
-            />
-          </div>
-
+          <GraphContainer
+            axesSettings={{ includeArrows: arrows }}
+            backgroundMarks={[]}
+            coordinatesOnHover={coordinatesOnHover}
+            domain={domain}
+            key="graphing-config"
+            labels={labels}
+            marks={backgroundMarks}
+            onChangeMarks={this.changeBackgroundMarks}
+            range={range}
+            size={{ width: graph.width, height: graph.height }}
+            title={title}
+            toolbarTools={allTools}
+          />
         </div>
       </div>
     );

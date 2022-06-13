@@ -100,25 +100,25 @@ export class Configure extends React.Component {
       onModelChanged,
       imageSupport
     } = this.props;
-    const config = model.graph;
-
     const {
       arrows = {},
-      title = {},
-      padding = {},
+      authoring = {},
+      coordinatesOnHover = {},
+      graphDimensions = {},
       labels = {},
+      padding = {},
+      prompt = {},
+      title = {},
       rationale = {},
       scoringType = {},
-      studentInstructions = {},
-      teacherInstructions = {},
-      coordinatesOnHover = {},
       spellCheck = {},
-      prompt = {},
-      authoring = {}
+      studentInstructions = {},
+      teacherInstructions = {}
     } = configuration || {};
-    log('[render] model', model);
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled } =
       model || {};
+
+    log('[render] model', model);
 
     return (
       <layout.ConfigLayout
@@ -221,13 +221,12 @@ export class Configure extends React.Component {
 
           <GraphingConfig
             authoringEnabled={authoring && authoring.enabled}
-            config={config}
+            graphDimensions={graphDimensions}
             model={model}
             onChange={this.props.onModelChanged}
           />
 
           <CorrectResponse
-            config={config}
             model={model}
             onChange={this.props.onModelChanged}
           />

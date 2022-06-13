@@ -71,6 +71,8 @@ export class Main extends React.Component {
       prompt = {},
       studentInstructions = {},
       mathInput = {},
+      spanishInput = {},
+      specialInput = {},
       dimensions = {},
       equationEditor = {},
       spellCheck = {},
@@ -116,6 +118,8 @@ export class Main extends React.Component {
                     'statistics',
                     'item-authoring',
                   ]),
+                spanishInput: spanishInput.settings && toggle(spanishInput.label),
+                specialInput: specialInput.settings && toggle(specialInput.label),
                 dimensions: numberFields(dimensions.label, {
                   width: {
                     label: 'Width (px)',

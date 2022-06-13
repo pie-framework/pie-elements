@@ -54,19 +54,9 @@ const getPartialScoring = ({ scoringType, env }) => {
   return partialScoring.enabled({ partialScoring: pS }, env);
 };
 
-export const orderCorrectAnswers = (questionPossibleAnswers) => {
-  questionPossibleAnswers = questionPossibleAnswers || {};
-
-  if (!questionPossibleAnswers.hasOwnProperty('correctAnswer')) {
-    sortedAnswers(questionPossibleAnswers);
-  }
-
-  return Object.assign({ correctAnswer: questionPossibleAnswers.correctAnswer }, sortedAnswers(questionPossibleAnswers));
-};
-
 export const getBestAnswer = (question, session, env = {}) => {
   // questionPossibleAnswers contains all possible answers (correct response and alternates);
-  let { answers: questionPossibleAnswers, scoringType } = question || {};
+  let { answers: questionPossibleAnswers = {}, scoringType } = question || {};
   let { answer } = session || {};
 
   // initialize answer if no values
@@ -76,7 +66,10 @@ export const getBestAnswer = (question, session, env = {}) => {
   if (isEmpty(questionPossibleAnswers)) {
     questionPossibleAnswers = { correctAnswer: initializeGraphMap() };
   } else {
-    orderCorrectAnswers(questionPossibleAnswers);
+    questionPossibleAnswers = {
+      correctAnswer: questionPossibleAnswers.correctAnswer,
+      ...sortedAnswers(questionPossibleAnswers)
+    };
   }
 
   const partialScoringEnabled = getPartialScoring({ scoringType, env });
