@@ -74,11 +74,10 @@ export class CorrectResponse extends React.Component {
     super(props);
     console.log(props, 'props in correct response');
     this.state = {
-      correctAnswer: updateCorrectResponseInitialData(
+      categories: updateCorrectResponseInitialData(
         props.model.correctAnswer.data,
         props.model.data
-      ),
-    //  correctAnswer: props.model.correctAnswer.data,
+      )
     };
   }
 
@@ -98,10 +97,6 @@ export class CorrectResponse extends React.Component {
       } = {},
     } = this.props;
 
-    const { correctAnswer } = this.state;
-
-    console.log(correctAnswer, "correctAnswer in correct response")
-
     let nextCategoies = [];
 
     console.log(nextCorrectAnswerData, 'nextCorrectAnswerData');
@@ -113,7 +108,7 @@ export class CorrectResponse extends React.Component {
       //  nextCategoies = setCorrectResponseInitialData(nextData, nextProps.model.correctAnswer.data);
   //  } else if (!isEqual(nextData, data)) {
       nextCategoies = updateCorrectResponseInitialData(
-        correctAnswer,
+        this.props.model.correctAnswer.data,
         nextData
       );
  //   }
@@ -131,28 +126,29 @@ export class CorrectResponse extends React.Component {
 
     if (!isEqual(nextCategoies, data)) {
      // this.setState({ categories: nextCategoies });
-      this.setState({ correctAnswer: nextCategoies });
+      this.setState({ categories: nextCategoies });
      
     }
   }
 
   changeData = (data) => {
     const { model, onChange } = this.props;
-  //  const { correctAnswer } = model || {};
-    const { correctAnswer } = this.state;
+   const { correctAnswer } = model || {};
+   const {categories} = this.state;
+   // const { correctAnswer } = this.state;
 console.log(correctAnswer, "correctAnswer in change data")
+console.log(categories, "categories in on change data")
     onChange({
       ...model,
       correctAnswer: {
-        ...correctAnswer,
-        data,
+        data
       },
     });
   };
 
   render() {
     const { classes, model, charts } = this.props;
-    const { correctAnswer } = this.state;
+    const { categories } = this.state;
 
    // console.log(categories, 'categories in correct response');
 
@@ -167,7 +163,7 @@ console.log(correctAnswer, "correctAnswer in change data")
             domain={model.domain}
             range={model.range}
             charts={charts}
-            data={correctAnswer}
+            data={categories}
             title={model.title}
             onDataChange={(data) => this.changeData(data)}
             addCategoryEnabled={model.addCategoryEnabled}
