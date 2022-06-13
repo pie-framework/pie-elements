@@ -47,7 +47,6 @@ export class CorrectResponse extends React.Component {
     return (
       <div>
         Define Correct Response
-       
           <div key={`correct-response-graph-${model.correctAnswer.name}`}>
             <p>{model.correctAnswer.name}</p>
             <Chart
@@ -63,7 +62,6 @@ export class CorrectResponse extends React.Component {
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
           </div>
-
       </div>
     );
   }
