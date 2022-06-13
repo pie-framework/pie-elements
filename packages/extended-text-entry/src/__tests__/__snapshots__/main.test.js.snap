@@ -5,6 +5,7 @@ exports[`Render Main Component should match snapshot 1`] = `
   <EditableHtml
     className="response-area-editor"
     highlightShape={true}
+    languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}
@@ -54,6 +55,7 @@ exports[`Render Main Component should match snapshot with teacher instructions 1
   <EditableHtml
     className="response-area-editor"
     highlightShape={true}
+    languageCharactersProps={Array []}
     markup="hi"
     maxHeight="40vh"
     onChange={[Function]}

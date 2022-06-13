@@ -182,19 +182,21 @@ export class Container extends Component {
 
     return (
       <div className={classes.base}>
-        <DrawablePalette
-          fillColor={fillColor}
-          fillList={fillColorList}
-          outlineColor={outlineColor}
-          outlineList={outlineColorList}
-          paintColor={paintColor}
-          paintList={paintColorList}
-          onFillColorChange={color => this.handleColorChange('fill', color)}
-          onOutlineColorChange={color =>
-            this.handleColorChange('outline', color)
-          }
-          onPaintColorChange={color => this.handleColorChange('paint', color)}
-        />
+        {!disabled &&
+          <DrawablePalette
+            fillColor={fillColor}
+            fillList={fillColorList}
+            outlineColor={outlineColor}
+            outlineList={outlineColorList}
+            paintColor={paintColor}
+            paintList={paintColorList}
+            onFillColorChange={color => this.handleColorChange('fill', color)}
+            onOutlineColorChange={color =>
+              this.handleColorChange('outline', color)
+            }
+            onPaintColorChange={color => this.handleColorChange('paint', color)}
+          />
+        }
 
         <div className={classes.box}>
           <div className={classes.toolbar}>

@@ -3,31 +3,40 @@ import ReactDOM from 'react-dom';
 import Configure from './configure';
 import { DeleteImageEvent, InsertImageEvent, ModelUpdatedEvent } from '@pie-framework/pie-configure-events';
 import debug from 'debug';
-
 import defaultValues from './defaults';
 
 const log = debug('pie-elements:graphing:configure');
-import isEmpty from 'lodash/isEmpty';
 
 // this function is implemented in controller as well
-const sortedAnswers = (answers) => {
-  answers = answers || {};
-
-  return Object.keys(answers).sort().reduce((result, key) => {
+const sortedAnswers = answers => Object.keys(answers || {}).sort().reduce((result, key) => {
+  if (key !== 'correctAnswer') {
     result[key] = answers[key];
+  }
 
-    return result;
-  }, {});
-};
+  return result;
+}, {});
 
 export default class GraphLinesConfigure extends HTMLElement {
   static createDefaultModel = (model = {}) => {
+    const { answers = {}, domain = {}, graph = {}, range = {}, standardGrid } = model;
+    const normalizedModel = {
+      ...defaultValues.model,
+      ...model,
+      answers: answers && answers.correctAnswer && {
+        correctAnswer: answers.correctAnswer,
+        ...sortedAnswers(answers)
+      } || answers,
+      range: standardGrid && {
+        ...range,
+        min: domain.min,
+        max: domain.max,
+        step: domain.step,
+        labelStep: domain.labelStep
+      } || range,
+      graph: standardGrid && { ...graph, height: graph.width } || graph
+    };
 
-    if (!isEmpty(model.answers) && model.answers.hasOwnProperty('correctAnswer')) {
-        model.answers = Object.assign({ correctAnswer: model.answers.correctAnswer }, sortedAnswers(model.answers));
-    }
-
-    return { ...defaultValues.model, ...model }
+    return normalizedModel;
   };
 
   constructor() {

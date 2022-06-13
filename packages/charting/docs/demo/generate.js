@@ -1,7 +1,6 @@
 exports.model = (id, element) => ({
   id,
   element,
-
   addCategoryEnabled: true,
   categoryDefaultLabel: 'Category',
   chartType: 'bar',
@@ -11,22 +10,19 @@ exports.model = (id, element) => ({
         label: 'A',
         value: 1,
         interactive: false,
-        editable: true,
-        deletable: true
+        editable: false
       },
       {
         label: 'B',
         value: 1,
         interactive: true,
-        editable: true,
-        deletable: true
+        editable: false
       },
       {
         label: 'C',
         value: 1,
         interactive: true,
-        editable: true,
-        deletable: true
+        editable: false
       },
     ]
   },
@@ -35,28 +31,24 @@ exports.model = (id, element) => ({
       label: 'A',
       value: 1,
       interactive: false,
-      editable: true,
-      deletable: true
+      editable: false
     },
     {
       label: 'B',
       value: 1,
       interactive: true,
-      editable: true,
-      deletable: true
+      editable: false
     },
     {
       label: 'D',
       value: 2,
       interactive: true,
-      editable: true,
-      deletable: true
+      editable: false
     },
   ],
   domain: {
     label: 'Characters',
   },
-  editCategoryEnabled: true,
   graph: {
     width: 480,
     height: 480

@@ -1,24 +1,8 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-import { GraphingConfig, AuthoringColumn } from '../graphing-config';
+import { GraphingConfig } from '../graphing-config';
 import defaultValues from '../defaults';
-
-describe('AuthoringColumn', () => {
-  describe('renders', () => {
-    it('snapshot', () => {
-      const props = {
-        classes: {},
-        axis: 'x',
-        columnKey: 'columnKey',
-        model: defaultValues.model
-      };
-
-      expect(shallow(<AuthoringColumn {...props} />)).toMatchSnapshot();
-    })
-  });
-});
-
 
 describe('GraphingConfig', () => {
   let wrapper;
@@ -56,20 +40,6 @@ describe('GraphingConfig', () => {
         ...defaultValues.model,
         backgroundMarks: bM
       });
-    });
-
-    it('onChangeInputValue calls onChange', () => {
-      const component = wrapper();
-      component.instance().onChangeInputValue('domain.min', 20);
-
-      expect(component.instance().props.model.domain.min).toEqual(20);
-      expect(component.instance().props.onChange).toHaveBeenCalledWith({
-        ...defaultValues.model,
-        domain: {
-          ...defaultValues.model.domain,
-          min: 20
-        }
-      })
     });
   });
 });

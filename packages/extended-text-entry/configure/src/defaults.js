@@ -6,6 +6,8 @@ export default {
     },
     prompt: 'This is the question prompt',
     mathInput: false,
+    spanishInput: false,
+    specialInput: false,
     equationEditor: 'Grade 8 - HS',
     feedbackEnabled: true,
     rationaleEnabled: true,
@@ -43,6 +45,16 @@ export default {
     mathInput: {
       settings: true,
       label: 'Student response can include math notation',
+      enabled: false,
+    },
+    spanishInput: {
+      settings: true,
+      label: 'Students can insert Spanish',
+      enabled: false,
+    },
+    specialInput: {
+      settings: true,
+      label: 'Students can insert Special Characters',
       enabled: false,
     },
     multiple: {

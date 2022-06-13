@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -27,6 +28,8 @@ export class ChartingConfig extends React.Component {
 
   changeData = data => this.props.onChange({ ...this.props.model, data });
 
+  changeAddRemoveEnabled = value => this.props.onChange({ ...this.props.model, addCategoryEnabled: value });
+
   render() {
     const { classes, model, charts } = this.props;
 
@@ -50,10 +53,18 @@ export class ChartingConfig extends React.Component {
               data={model.data}
               title={model.title}
               onDataChange={this.changeData}
-              editCategoryEnabled={true}
               addCategoryEnabled={true}
               categoryDefaultLabel={model.categoryDefaultLabel}
             />
+             <div>
+              <Checkbox
+                checked={model.addCategoryEnabled}
+                onChange={(e) => {
+                  this.changeAddRemoveEnabled(e.target.checked)
+                }}
+              />
+              Student can add categories
+            </div>
           </div>
 
         </div>
