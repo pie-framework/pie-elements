@@ -366,11 +366,6 @@
         "step"
       ]
     },
-    "editCategoryEnabled": {
-      "description": "Indicates if user can edit default categories",
-      "type": "boolean",
-      "title": "editCategoryEnabled"
-    },
     "graph": {
       "title": "Chart",
       "type": "object",
@@ -506,7 +501,6 @@
     "correctAnswer",
     "data",
     "domain",
-    "editCategoryEnabled",
     "element",
     "graph",
     "id",

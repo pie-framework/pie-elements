@@ -92,9 +92,6 @@ export interface ChartingPie extends PieModel {
   /** Indicates domain settings for the chart */
   domain: ChartSettings;
 
-  /** Indicates if user can edit default categories */
-  editCategoryEnabled: boolean;
-
   /** Indicates the chart line model */
   graph: Chart;
 

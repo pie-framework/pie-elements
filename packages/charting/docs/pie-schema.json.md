@@ -69,10 +69,6 @@ Label step value
 
 Axis Label
 
-# `editCategoryEnabled` (boolean, required)
-
-Indicates if user can edit default categories
-
 # `graph` (object, required)
 
 Properties of the `graph` object:
