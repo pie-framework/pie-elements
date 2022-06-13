@@ -172,6 +172,9 @@ export interface GraphingPie extends PieModel {
   /** Indicates the graph line model */
   graph: Graph;
 
+  /** Indicates if the graph axes and labels are enabled */
+  includeAxes?: boolean
+
   /** Indicates labels */
   labels?: Labels;
 
@@ -208,8 +211,11 @@ export interface GraphingPie extends PieModel {
   /** Indicates if Rationale are enabled */
   rationaleEnabled: boolean;
 
- /** Indicates if spellcheck is enabled for the author. Default value is true */
- spellCheckEnabled: boolean;
+  /** Indicates if spellcheck is enabled for the author. Default value is true */
+  spellCheckEnabled: boolean;
+
+  /** Indicates if some domain values will be synched to the range values */
+  standardGrid?: boolean;
 
   /** Indicates if Student Instructions are enabled */
   studentInstructionsEnabled: boolean;
@@ -249,6 +255,32 @@ interface ArrowsConfigProp {
   down?: ArrowsProp;
 }
 
+interface DimensionsConfigProp {
+  /**
+   * Indicates if the item has to be displayed in the Settings Panel
+   */
+  settings?: boolean;
+
+  /**
+   * Indicates the label for the item that has to be displayed in the Settings Panel
+   */
+  label?: string;
+
+  /**
+   * Indicates if the graph dimensions are included in the Grid Setup Panel
+   */
+  enabled?: boolean;
+
+  /** Indicates the minimum value for the graph width and height */
+  min?: number;
+
+  /** Indicates the maximum value for the graph width and height */
+  max?: number;
+
+  /** Indicates the increase/decrease value for the graph width and height */
+  step?: number;
+}
+
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
@@ -265,9 +297,14 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   arrows?: ArrowsConfigProp;
 
   /**
-   *  Coordinates configuration
+   * Coordinates configuration
    */
   coordinatesOnHover?: ConfigureProp;
+
+  /**
+   * Graph dimensions configuration
+   */
+  graphDimensions?: DimensionsConfigProp;
 
   /**
    * Padding configuration

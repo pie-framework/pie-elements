@@ -9,7 +9,8 @@ const allTools = [
   'ray',
   'segment',
   'sine',
-  'vector'];
+  'vector'
+];
 
 /* model defaults */
 export default {
@@ -32,6 +33,7 @@ export default {
     width: 500,
     height: 500
   },
+  includeAxes: true,
   labels: {},
   coordinatesOnHover: false,
   padding: true,
@@ -44,6 +46,7 @@ export default {
     axisLabel: 'y'
   },
   rationale: '',
+  standardGrid: false,
   title: '',
   toolbarTools: allTools,
   promptEnabled: true,
