@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.23](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.22...@pie-element/graphing-configure@3.3.23) (2022-06-13)
+
+
+### Bug Fixes
+
+* **graphing:** fixed horizontal/vertical gridlines when includeAxes is false PD-1842 (merged with develop) ([52f38ea](https://github.com/pie-framework/pie-elements/commit/52f38ea44fb9be0e438537abb0ecf1e1308a8834))
+
+
+
+
+
 ## [3.3.22](https://github.com/pie-framework/pie-elements/compare/@pie-element/graphing-configure@3.3.21...@pie-element/graphing-configure@3.3.22) (2022-06-13)
 
 **Note:** Version bump only for package @pie-element/graphing-configure
