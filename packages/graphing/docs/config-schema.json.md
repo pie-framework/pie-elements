@@ -75,6 +75,34 @@ Indicates if the item has to be displayed in the Settings Panel
 
 Indicates the label for the item that has to be displayed in the Settings Panel
 
+# `graphDimensions` (object)
+
+Properties of the `graphDimensions` object:
+
+## `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+## `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `enabled` (boolean)
+
+Indicates if the graph dimensions are included in the Grid Setup Panel
+
+## `min` (number)
+
+Indicates the minimum value for the graph width and height
+
+## `max` (number)
+
+Indicates the maximum value for the graph width and height
+
+## `step` (number)
+
+Indicates the increase/decrease value for the graph width and height
+
 # `padding` (object)
 
 Properties of the `padding` object:
@@ -292,3 +320,31 @@ Indicates if the item has to be displayed in the Settings Panel
 ### `label` (string)
 
 Indicates the label for the item that has to be displayed in the Settings Panel
+
+## `DimensionsConfigProp` (object)
+
+Properties of the `DimensionsConfigProp` object:
+
+### `settings` (boolean)
+
+Indicates if the item has to be displayed in the Settings Panel
+
+### `label` (string)
+
+Indicates the label for the item that has to be displayed in the Settings Panel
+
+### `enabled` (boolean)
+
+Indicates if the graph dimensions are included in the Grid Setup Panel
+
+### `min` (number)
+
+Indicates the minimum value for the graph width and height
+
+### `max` (number)
+
+Indicates the maximum value for the graph width and height
+
+### `step` (number)
+
+Indicates the increase/decrease value for the graph width and height

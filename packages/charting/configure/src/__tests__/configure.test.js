@@ -154,22 +154,6 @@ describe('CorrectResponse', () => {
         w = wrapper();
     });
 
-    it('changes editCategoryEnabled', () => {
-      w.instance().changeEditable(false);
-
-      expect(onChange).toBeCalledWith(expect.objectContaining({
-        editCategoryEnabled: false
-      }));
-    });
-
-    it('changes addCategoryEnabled', () => {
-      w.instance().changeAddRemoveEnabled(true);
-
-      expect(onChange).toHaveBeenCalledWith(expect.objectContaining({
-        addCategoryEnabled: true
-      }));
-    });
-
     it('changes correctAnswer data', () => {
       w.instance().changeData([]);
 

@@ -31,6 +31,14 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Coordinates on Hover",
             "settings": true,
           },
+          "graphDimensions": Object {
+            "enabled": true,
+            "label": "Graph Dimensions",
+            "max": 800,
+            "min": 150,
+            "settings": false,
+            "step": 20,
+          },
           "labels": Object {
             "enabled": true,
             "label": "Labels",
@@ -114,6 +122,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -127,6 +136,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -174,10 +184,14 @@ exports[`Configure renders snapshot 1`] = `
     </InputContainer>
     <WithStyles(GraphingConfig)
       authoringEnabled={false}
-      config={
+      graphDimensions={
         Object {
-          "height": 500,
-          "width": 500,
+          "enabled": true,
+          "label": "Graph Dimensions",
+          "max": 800,
+          "min": 150,
+          "settings": false,
+          "step": 20,
         }
       }
       model={
@@ -202,6 +216,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -215,6 +230,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",
@@ -223,12 +239,6 @@ exports[`Configure renders snapshot 1`] = `
       }
     />
     <WithStyles(CorrectResponse)
-      config={
-        Object {
-          "height": 500,
-          "width": 500,
-        }
-      }
       model={
         Object {
           "answers": Object {},
@@ -251,6 +261,7 @@ exports[`Configure renders snapshot 1`] = `
             "height": 500,
             "width": 500,
           },
+          "includeAxes": true,
           "labels": Object {},
           "padding": true,
           "prompt": "",
@@ -264,6 +275,7 @@ exports[`Configure renders snapshot 1`] = `
           },
           "rationale": "",
           "rationaleEnabled": true,
+          "standardGrid": false,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,
           "title": "",

@@ -166,7 +166,8 @@ exports[`Main snapshot renders with teacher instructions, prompt and rationale e
           disableTouchListener={true}
           placement="right"
           title="Validation requirements:
-The response area content should not be empty and should be unique.
+Correct answers should not be blank.
+Each answer defined for a response area should be unique.
 There should be at least 1 and at most 10 response areas defined."
         >
           <pure(InfoIcon)
@@ -428,7 +429,8 @@ exports[`Main snapshot renders without teacher instructions, prompt and rational
           disableTouchListener={true}
           placement="right"
           title="Validation requirements:
-The response area content should not be empty and should be unique.
+Correct answers should not be blank.
+Each answer defined for a response area should be unique.
 There should be at least 1 and at most 10 response areas defined."
         >
           <pure(InfoIcon)
