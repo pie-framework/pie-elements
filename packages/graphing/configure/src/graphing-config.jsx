@@ -66,14 +66,16 @@ export class GraphingConfig extends React.Component {
     const { model, onChange } = this.props;
     const { gridValues: oldGridValues, labelValues: oldLabelValues } = this.state;
     const updatedModel = { ...model, ...config };
-    const { domain, graph, range, standardGrid } = updatedModel;
-    const gridValues = {};
-    const labelValues = {};
+    const { domain, includeAxes, graph, range, standardGrid } = updatedModel;
+    const gridValues = { domain: [], range: [] };
+    const labelValues = { domain: [], range: [] };
 
-    const domainConstraints = applyConstraints(domain, graph.width, oldGridValues.domain, oldLabelValues.domain);
+    if (includeAxes) {
+      const domainConstraints = applyConstraints(domain, graph.width, oldGridValues.domain, oldLabelValues.domain);
 
-    gridValues.domain = domainConstraints.gridValues;
-    labelValues.domain = domainConstraints.labelValues;
+      gridValues.domain = domainConstraints.gridValues || [];
+      labelValues.domain = domainConstraints.labelValues || [];
+    }
 
     if (standardGrid) {
       gridValues.range = gridValues.domain;
@@ -81,10 +83,12 @@ export class GraphingConfig extends React.Component {
       range.step = domain.step;
       range.labelStep = domain.labelStep;
     } else {
-      const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
+      if (includeAxes) {
+        const rangeConstraints = applyConstraints(range, graph.height, oldGridValues.range, oldLabelValues.range);
 
-      gridValues.range = rangeConstraints.gridValues;
-      labelValues.range = rangeConstraints.labelValues;
+        gridValues.range = rangeConstraints.gridValues || [];
+        labelValues.range = rangeConstraints.labelValues || [];
+      }
     }
 
     this.setState({ gridValues, labelValues });
