@@ -11,7 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@pie-framework/pie-player-events": "^0.1.0",
-    "@pie-lib/render-ui": "^4.12.8",
+    "@pie-lib/render-ui": "^4.12.9",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.8.1",
