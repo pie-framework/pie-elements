@@ -99,6 +99,7 @@ export class CorrectResponse extends React.Component {
         correctAnswer: { data: nextCorrectAnswerData = [] },
       } = {},
     } = nextProps;
+    
     const {
       model: {
         data = [],
