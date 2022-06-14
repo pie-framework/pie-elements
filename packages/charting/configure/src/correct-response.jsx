@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
-import  isEmpty  from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   container: {
