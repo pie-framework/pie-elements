@@ -11,6 +11,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import debug from 'debug';
 import EditableHtml, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import { InfoDialog } from './common';
+import EditableHTML from '@pie-lib/editable-html';
 
 const log = debug('@pie-element:categorize:configure:choice');
 
@@ -149,7 +150,9 @@ export class Row extends React.Component {
       enableImages,
       toolbarOpts,
       spellCheck,
-      error
+      error,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -190,6 +193,8 @@ export class Row extends React.Component {
               allowValidation
               activePlugins={filteredDefaultPlugins}
               spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
             />
           </div>
           {row.values.map((rowValue, rowIdx) => (

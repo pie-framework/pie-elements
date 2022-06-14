@@ -10,6 +10,7 @@ import debug from 'debug';
 import lodash from 'lodash';
 import EditableHTML, { DEFAULT_PLUGINS } from '@pie-lib/editable-html';
 import { InfoDialog } from './common';
+import EditableHtml from '@pie-lib/editable-html';
 
 const log = debug('pie-elements:match:configure');
 
@@ -197,7 +198,7 @@ class AnswerConfigBlock extends React.Component {
       toolbarOpts,
       spellCheck
     } = this.props;
-    const { headers = {} } = configuration || {};
+    const { headers = {}, maxImageWidth = {}, maxImageHeight = {} } = configuration || {};
     const { dialog } = this.state;
     const { errors } = model || {};
     const { correctResponseError, rowsErrors } = errors || {};
@@ -208,6 +209,9 @@ class AnswerConfigBlock extends React.Component {
       audio: { disabled: true },
       video: { disabled: true }
     };
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     return (
       <div className={classes.container}>
@@ -260,6 +264,8 @@ class AnswerConfigBlock extends React.Component {
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
               error={rowsErrors && rowsErrors[row.id]}
+              maxImageWidth={maxImageWidth && maxImageWidth.rowTitles || defaultImageMaxWidth}
+              maxImageHeight={maxImageHeight && maxImageHeight.rowTitles || defaultImageMaxHeight}
             />
           ))}
           <AddRow onAddClick={onAddRow} />
