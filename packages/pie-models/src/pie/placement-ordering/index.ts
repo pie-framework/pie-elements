@@ -122,6 +122,26 @@ export interface PlacementOrderingPie extends PieModel {
   toolbarEditorPosition?: 'bottom' | 'top';
 }
 
+interface ConfigureMaxImageDimensionsProp {
+  /** Indicates the max dimension for images in teacher instructions */
+  teacherInstructions?: number;
+
+  /** Indicates the max dimension for images in prompt - this is also the default dimension for all other input fields if it's not specified */
+  prompt?: number;
+
+  /** Indicates the max dimension for images in rationale */
+  rationale?: number;
+
+  /** Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is enabled */
+  choicesWithPlacementArea?: number;
+
+  /** Only available for the width prop: indicates the max width for images in choices and choices labels when placement area is disabled */
+  choicesWithoutPlacementArea?: number;
+
+  /** Only available for the height prop: indicates the max height for images in choices and choices labels */
+  choices?: number;
+}
+
 /**
  * Config Object for @pie-elements/placement-ordering
  * @additionalProperties false
@@ -213,4 +233,14 @@ export interface PlacementOrderingConfigure
    * Teacher Instructions configuration
    */
   teacherInstructions?: ConfigureProp;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }
