@@ -284,7 +284,9 @@ class ChoiceEditor extends React.Component {
       singularChoiceLabel,
       pluralChoiceLabel,
       choicesLabel,
-      spellCheck
+      spellCheck,
+      maxImageWidth,
+      maxImageHeight
     } = this.props;
     const { dialog } = this.state;
 
@@ -317,6 +319,8 @@ class ChoiceEditor extends React.Component {
               choices={choices}
               choicesLabel={choicesLabel}
               spellCheck={spellCheck}
+              maxImageWidth={maxImageWidth}
+              maxImageHeight={maxImageHeight}
             />
           ))}
         </div>
