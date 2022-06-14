@@ -63,6 +63,18 @@
       "type": "boolean",
       "title": "mathInput"
     },
+    "spanishInput": {
+      "description": "Whether a control to allow insertion of spanish characters should be displayed",
+      "default": false,
+      "type": "boolean",
+      "title": "spanishInput"
+    },
+    "specialInput": {
+      "description": "Whether a control to allow insertion of special characters should be displayed",
+      "default": false,
+      "type": "boolean",
+      "title": "specialInput"
+    },
     "multiple": {
       "description": "Indicates if multiple parts are enabled",
       "type": "boolean",
