@@ -3,7 +3,7 @@
 exports[`GraphingConfig renders snapshot 1`] = `
 <div>
   <div>
-    <WithStyles(GridSetup)
+    <Component
       domain={
         Object {
           "axisLabel": "x",
