@@ -100,18 +100,32 @@ export class CorrectResponse extends React.Component {
     let nextCategoies = [];
 
     console.log(nextCorrectAnswerData, 'nextCorrectAnswerData');
+console.log(this.props.model.correctAnswer.data, 'this.props.model.correctAnswer.data');
+    console.log(nextData, data, 'nextData data');
     console.log(this.props, "this props")
     console.log(nextProps, "next props")
     // check what was changed: correctAnswer or data?
 
-  //  if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
-      //  nextCategoies = setCorrectResponseInitialData(nextData, nextProps.model.correctAnswer.data);
-  //  } else if (!isEqual(nextData, data)) {
+    if (!isEqual(nextData, data)) {
+      console.log('data changed');
+        nextCategoies = updateCorrectResponseInitialData(
+          this.props.model.correctAnswer.data,
+          nextData
+        );
+    } else if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)){
+      console.log('correctAnswer changed');
+      nextCategoies =nextCorrectAnswerData;
+    } else {
       nextCategoies = updateCorrectResponseInitialData(
         this.props.model.correctAnswer.data,
-        nextData
+        data
       );
- //   }
+    }
+  //  if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
+
+  //   console.log('correctAnswer changed');
+  //      nextCategoies =nextCorrectAnswerData;
+  //  } else 
 
     console.log(
       isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data),
@@ -134,16 +148,22 @@ export class CorrectResponse extends React.Component {
   changeData = (data) => {
     const { model, onChange } = this.props;
    const { correctAnswer } = model || {};
-   const {categories} = this.state;
+  // const {categories} = this.state;
    // const { correctAnswer } = this.state;
 console.log(correctAnswer, "correctAnswer in change data")
-console.log(categories, "categories in on change data")
+
+
     onChange({
       ...model,
       correctAnswer: {
-        data
+       ...correctAnswer,
+        data: data,
       },
     });
+
+    console.log(this.props.model.correctAnswer, "correctAnswer in change data after onchange")
+
+   // this.setState({ categories: correctAnswer });
   };
 
   render() {
