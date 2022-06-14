@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chart } from '@pie-lib/charting';
 import isEqual from 'lodash/isEqual';
+import isEmpty from 'lodash/isEmpty';
 
 const styles = (theme) => ({
   container: {
@@ -101,9 +102,6 @@ export class CorrectResponse extends React.Component {
     const {
       model: {
         data = [],
-        correctAnswer: {
-          data: [],
-        },
       } = {},
     } = this.props;
 
@@ -119,7 +117,7 @@ export class CorrectResponse extends React.Component {
 
    if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)){
     nextCategories =nextCorrectAnswerData;
-  } else {
+  } else if (isEmpty(nextCategories)) {
     nextCategories = updateCorrectResponseData(
       nextCorrectAnswerData,
       nextData
