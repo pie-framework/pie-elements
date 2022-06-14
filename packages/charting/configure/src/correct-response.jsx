@@ -62,6 +62,31 @@ const updateCorrectResponseInitialData = (correctAnswer, data) => {
   return correctResponseDefinition;
 };
 
+const insertCategory = (correctAnswer, data) => {
+
+const position = data.length -1
+const categoryToInsert =  data[data.length - 1]
+console.log("position to inser", position)
+console.log("category to insert", categoryToInsert)
+console.log(correctAnswer, "correctAnswer")
+ correctAnswer.splice(position, 0,categoryToInsert);
+
+return correctAnswer
+  
+}
+
+const removeCategory = (correctAnswer, data) => {
+
+  const position = data.length -1
+
+  console.log("position to inser", position)
+ 
+  console.log(correctAnswer, "correctAnswer")
+   correctAnswer.splice(position, 1);
+  
+  return correctAnswer
+    
+  }
 export class CorrectResponse extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
@@ -100,25 +125,31 @@ export class CorrectResponse extends React.Component {
     let nextCategoies = [];
 
     console.log(nextCorrectAnswerData, 'nextCorrectAnswerData');
-console.log(this.props.model.correctAnswer.data, 'this.props.model.correctAnswer.data');
-    console.log(nextData, data, 'nextData data');
-    console.log(this.props, "this props")
-    console.log(nextProps, "next props")
+    console.log(this.props.model.correctAnswer.data, 'this.props.model.correctAnswer.data');
+    console.log(nextData, 'nextData ');
+    console.log( data, ' data');
+
     // check what was changed: correctAnswer or data?
 
-    if (!isEqual(nextData, data)) {
-      console.log('data changed');
-        nextCategoies = updateCorrectResponseInitialData(
-          this.props.model.correctAnswer.data,
-          nextData
-        );
-    } else if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)){
+    // if (!isEqual(nextData, data)) {
+    //   console.log('data changed');
+      if (nextData.length > data.length && nextCorrectAnswerData.length > data.length) {
+        console.log("INSERT CATEGORY")
+        nextCategoies= insertCategory( nextCorrectAnswerData, nextData);
+      }
+      
+      if (nextData.length < data.length) {
+        nextCategoies = removeCategory( nextCorrectAnswerData, nextData);
+     }
+      
+     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)){
       console.log('correctAnswer changed');
       nextCategoies =nextCorrectAnswerData;
     } else {
+      console.log('what changed ??? ');
       nextCategoies = updateCorrectResponseInitialData(
-        this.props.model.correctAnswer.data,
-        data
+        nextCorrectAnswerData,
+        nextData
       );
     }
   //  if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
@@ -131,25 +162,17 @@ console.log(this.props.model.correctAnswer.data, 'this.props.model.correctAnswer
       isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data),
       'nextCorrectAnswerData equality'
     );
-    console.log(isEqual(nextData, data), 'nextData equality');
 
-    console.log('nextCategoies', nextCategoies);
-
-    console.log(nextProps, 'next props in correct response');
-    console.log(nextData, 'next data in correct response');
 
     if (!isEqual(nextCategoies, data)) {
-     // this.setState({ categories: nextCategoies });
       this.setState({ categories: nextCategoies });
-     
     }
   }
 
   changeData = (data) => {
     const { model, onChange } = this.props;
    const { correctAnswer } = model || {};
-  // const {categories} = this.state;
-   // const { correctAnswer } = this.state;
+
 console.log(correctAnswer, "correctAnswer in change data")
 
 
