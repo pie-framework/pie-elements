@@ -132,7 +132,15 @@ export const normalize = question => ({ ...defaults, ...question });
 export function model(question, session, env) {
   return new Promise(resolve => {
     const normalizedQuestion = normalize(question);
-    const { prompt, promptEnabled, graph, answers, ...questionProps } = normalizedQuestion || {};
+    const {
+      defaultTool,
+      prompt,
+      promptEnabled,
+      graph,
+      answers,
+      toolbarTools,
+      ...questionProps
+    } = normalizedQuestion || {};
     let { arrows } = normalizedQuestion;
     const { mode, role } = env || {};
 
@@ -156,16 +164,22 @@ export function model(question, session, env) {
       }
     }
 
+    // added support for models without defaultTool defined; also used in packages/graphing/configure/src/index.js
+    const toolbarToolsNoLabel = (toolbarTools || []).filter(tool => tool !== 'label');
+    const normalizedDefaultTool = defaultTool || toolbarToolsNoLabel.length && toolbarToolsNoLabel[0] || '';
+
     const base = {
       ...questionProps,
       answers,
+      arrows,
+      defaultTool: normalizedDefaultTool,
       disabled: env.mode !== 'gather',
       prompt: promptEnabled ? prompt : null,
       rationale: null,
       size: graph,
       showToggle: env.mode === 'evaluate' && !isEmpty(answers),
       teacherInstructions: null,
-      arrows
+      toolbarTools
     };
 
     if (role === 'instructor' && (mode === 'view' || mode === 'evaluate')) {

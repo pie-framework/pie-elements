@@ -128,6 +128,7 @@ exports.model = (id, element) => ({
     labelStep: 1,
     axisLabel: 'x'
   },
+  defaultTool: 'point',
   graph: {
     width: 480,
     height: 480

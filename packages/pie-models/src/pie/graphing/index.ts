@@ -166,6 +166,18 @@ export interface GraphingPie extends PieModel {
   /** Indicates if coordinates of a point are displayed on hover */
   coordinatesOnHover?: boolean;
 
+  /** Indicates the default selected tool for the graph */
+  defaultTool:
+      | 'point'
+      | 'segment'
+      | 'line'
+      | 'vector'
+      | 'circle'
+      | 'sine'
+      | 'polygon'
+      | 'ray'
+      | 'parabola';
+
   /** Indicates domain settings for the graph */
   domain: GraphSettings;
 
