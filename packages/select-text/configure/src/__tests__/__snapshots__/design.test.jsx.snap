@@ -18,6 +18,16 @@ exports[`design snapshot renders all items except feedback 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
           "minTokens": 2,
           "mode": Object {
             "label": "Mode",
@@ -176,6 +186,16 @@ exports[`design snapshot renders all items except the content input 1`] = `
             "label": "Highlight choices",
             "settings": true,
           },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
           "minTokens": 2,
           "mode": Object {
             "label": "Mode",
@@ -324,6 +344,16 @@ exports[`design snapshot renders all items with defaultProps 1`] = `
           "highlightChoices": Object {
             "label": "Highlight choices",
             "settings": true,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
           },
           "minTokens": 2,
           "mode": Object {
@@ -482,6 +512,16 @@ exports[`design snapshot tokenizer renders with html entities 1`] = `
           "highlightChoices": Object {
             "label": "Highlight choices",
             "settings": true,
+          },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
           },
           "minTokens": 2,
           "mode": Object {
