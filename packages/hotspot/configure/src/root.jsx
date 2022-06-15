@@ -81,13 +81,18 @@ export class Root extends React.Component {
       teacherInstructions = {},
       rationale = {},
       spellCheck = {},
-      preserveAspectRatio = {}
+      preserveAspectRatio = {},
+      maxImageWidth = {},
+      maxImageHeight = {}
     } = configuration || {};
     const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, spellCheckEnabled, errors } = model || {};
     const { shapesError, selectionsError } = errors || {};
     const toolbarOpts = {};
 
     const validationMessage = generateValidationMessage(configuration);
+
+    const defaultImageMaxWidth = maxImageWidth && maxImageWidth.prompt;
+    const defaultImageMaxHeight = maxImageHeight && maxImageHeight.prompt;
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -137,6 +142,8 @@ export class Root extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.teacherInstructions || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.teacherInstructions || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -149,6 +156,8 @@ export class Root extends React.Component {
                   nonEmpty={false}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={defaultImageMaxWidth}
+                  maxImageHeight={defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
@@ -164,6 +173,8 @@ export class Root extends React.Component {
                   imageSupport={imageSupport}
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
+                  maxImageWidth={maxImageWidth && maxImageWidth.rationale || defaultImageMaxWidth}
+                  maxImageHeight={maxImageHeight && maxImageHeight.rationale || defaultImageMaxHeight}
                 />
               </InputContainer>
             )}
