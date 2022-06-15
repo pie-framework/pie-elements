@@ -8,21 +8,15 @@ exports.model = (id, element) => ({
     data: [
       {
         label: 'A',
-        value: 1,
-        interactive: false,
-        editable: false
+        value: 1
       },
       {
         label: 'B',
-        value: 1,
-        interactive: true,
-        editable: false
+        value: 1
       },
       {
         label: 'C',
-        value: 1,
-        interactive: true,
-        editable: false
+        value: 1
       },
     ]
   },
