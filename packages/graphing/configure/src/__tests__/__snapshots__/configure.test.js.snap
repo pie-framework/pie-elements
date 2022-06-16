@@ -44,6 +44,16 @@ exports[`Configure renders snapshot 1`] = `
             "label": "Labels",
             "settings": false,
           },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "rationale": 300,
+            "teacherInstructions": 300,
+          },
           "padding": Object {
             "label": "Padding",
             "settings": false,
@@ -160,6 +170,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -170,6 +182,8 @@ exports[`Configure renders snapshot 1`] = `
       <EditableHtml
         disableUnderline={true}
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
       />
@@ -179,6 +193,8 @@ exports[`Configure renders snapshot 1`] = `
     >
       <EditableHtml
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         onChange={[Function]}
       />
     </InputContainer>
