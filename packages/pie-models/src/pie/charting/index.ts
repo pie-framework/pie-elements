@@ -1,7 +1,7 @@
 import { PromptConfig } from '../../PromptConfig';
 import { CommonConfigSettings } from '../../CommonConfigSettings';
 import { PieModel } from '../../PieModel';
-import { ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
+import { ConfigureMaxImageDimensionsProp, ConfigureProp, ConfigurePropWithEnabled } from '../ConfigurationProp';
 
 interface Chart {
   /** Width for chart representation */
@@ -171,4 +171,14 @@ export interface ChartingConfigure extends PromptConfig, CommonConfigSettings {
    * Chart title configuration
    */
   title?: ConfigurePropWithEnabled;
+
+  /**
+   * Maximum image width for input fields
+   */
+  maxImageWidth?: ConfigureMaxImageDimensionsProp;
+
+  /**
+   * Maximum image height for input fields
+   */
+  maxImageHeight?: ConfigureMaxImageDimensionsProp;
 }
