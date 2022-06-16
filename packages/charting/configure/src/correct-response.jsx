@@ -50,7 +50,7 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   });
 
   if (correctResponseDefinition.length < correctAnswer.length) {
-    const missingCategories = correctAnswer.slice(correctResponseDefinition.length, correctAnswer.length)
+    const missingCategories = correctAnswer.slice(correctResponseDefinition.length, correctAnswer.length).map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
 
     return correctResponseDefinition.concat(missingCategories);
   }
@@ -64,7 +64,7 @@ const insertCategory = (correctAnswer, data) => {
 
   correctAnswer.splice(positionToInsert, 0, categoryToInsert);
 
-  return correctAnswer
+  return correctAnswer.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
 }
 
 const removeCategory = (correctAnswer, data) => {
@@ -72,7 +72,7 @@ const removeCategory = (correctAnswer, data) => {
 
   correctAnswer.splice(positionToRemove, 1);
 
-  return correctAnswer
+  return correctAnswer.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
 }
 export class CorrectResponse extends React.Component {
   static propTypes = {
@@ -117,7 +117,7 @@ export class CorrectResponse extends React.Component {
    }
 
    if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)){
-    nextCategories =nextCorrectAnswerData;
+    nextCategories = nextCorrectAnswerData.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
   } else if (isEmpty(nextCategories)) {
     nextCategories = updateCorrectResponseData(
       nextCorrectAnswerData,
@@ -138,7 +138,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data,
+        data: data.map(({interactive, editable, ...keepAttrs}) => keepAttrs),
       },
     });
   };
