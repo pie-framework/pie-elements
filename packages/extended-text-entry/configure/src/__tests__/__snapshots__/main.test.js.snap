@@ -24,6 +24,14 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Student response can include math notation",
             "settings": true,
           },
+          "maxImageHeight": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
+          "maxImageWidth": Object {
+            "prompt": 300,
+            "teacherInstructions": 300,
+          },
           "multiple": Object {
             "enabled": false,
             "label": "Multiple Parts",
@@ -116,6 +124,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
       <EditableHtml
         imageSupport={Object {}}
         markup=""
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
         spellCheck={true}
@@ -133,6 +143,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
       <EditableHtml
         imageSupport={Object {}}
         markup="This is the question prompt"
+        maxImageHeight={300}
+        maxImageWidth={300}
         nonEmpty={false}
         onChange={[Function]}
         spellCheck={true}
