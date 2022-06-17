@@ -1,6 +1,4 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-
 import { MathToolbar } from '@pie-lib/math-toolbar';
 import { mq } from '@pie-lib/math-input';
 import cx from 'classnames';
@@ -24,22 +22,18 @@ export class SimpleQuestionBlockRaw extends React.Component {
     this.state = {
       showKeypad: true
     };
-    // this.mathToolBarRef = React.createRef();
     this.mathToolBarId = `math-toolbar-${new Date().getTime()}`;
   }
 
   componentDidMount() {
-    window.addEventListener('click', this.clickMe);
+    window.addEventListener('click', this.handleClick);
   }
 
-  clickMe = (e) => {
-    // eslint-disable-next-line react/no-find-dom-node
-    // const tbref = ReactDOM.findDOMNode(this.mathToolBarRef.current);
-    //
-    // if (!tbref.contains(e.target)) {
-    //   this.setState({ showKeypad: false });
-    // }
+  componentWillUnmount() {
+    window.removeEventListener('click', this.handleClick);
+  }
 
+  handleClick = (e) => {
     try {
       if (!document.getElementById(this.mathToolBarId).contains(e.target)) {
         this.setState({ showKeypad: false });
@@ -47,10 +41,6 @@ export class SimpleQuestionBlockRaw extends React.Component {
     } catch (e) {
       // console.log(e.toString());
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.clickMe);
   }
 
   onFocus = () => this.setState({ showKeypad: true })
@@ -91,7 +81,6 @@ export class SimpleQuestionBlockRaw extends React.Component {
         ) : (
           <div id={this.mathToolBarId}>
             <MathToolbar
-              // ref={this.mathToolBarRef}
               classNames={{ editor: classes.responseEditor }}
               latex={session.response || ''}
               keypadMode={equationEditor}
