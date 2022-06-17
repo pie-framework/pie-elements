@@ -22,6 +22,8 @@ const styles = (theme) => ({
   },
 });
 
+const addCategoryProps = (correctAnswer, data) => correctAnswer.map((correct, index) => ({...correct, editable: index<data.length  ? data[index].editable: true, interactive: index<data.length ?  data[index].interactive :true}));;
+
 const updateCorrectResponseData = (correctAnswer, data) => {
   if (!correctAnswer) {
     return data;
@@ -54,22 +56,20 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   if (correctResponseDefinition.length < correctAnswer.length) {
     const missingCategories = correctAnswerData.slice(correctResponseDefinition.length, correctAnswer.length)
 
-    return correctResponseDefinition.concat(missingCategories).map((correct, index) => ({...correct, editable: index<data.length  ? data[index].editable: true, interactive: index<data.length ?  data[index].interactive :true}));;
+    return addCategoryProps(correctResponseDefinition.concat(missingCategories), data);
   }
 
   return correctResponseDefinition;
 };
 
 const insertCategory = (correctAnswer, data) => {
-  
   const positionToInsert = data.length - 1;
- // const categoryToInsert = data[data.length - 1];
   const {editable, interactive, deletable, ... categoryToInsert} = data[data.length - 1];
 
   correctAnswer.splice(positionToInsert, 0, categoryToInsert);
   const correctAnswerData = [...correctAnswer];
-  
-  return correctAnswerData.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
+
+  return addCategoryProps(correctAnswerData, data);
 }
 
 const removeCategory = (correctAnswer, data) => {
@@ -77,7 +77,9 @@ const removeCategory = (correctAnswer, data) => {
 
   correctAnswer.splice(positionToRemove, 1);
 
-  return correctAnswer.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
+  const correctAnswerData = [...correctAnswer];
+
+  return addCategoryProps(correctAnswerData, data);
 }
 export class CorrectResponse extends React.Component {
   static propTypes = {
@@ -96,6 +98,19 @@ export class CorrectResponse extends React.Component {
       )
     };
   }
+
+  changeData = (data) => {
+    const { model, onChange } = this.props;
+    const { correctAnswer } = model || {};
+
+    onChange({
+      ...model,
+      correctAnswer: {
+        ...correctAnswer,
+        data: data.map(({interactive, editable, ...keepAttrs}) => keepAttrs),
+      },
+    });
+  };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const {
@@ -135,18 +150,7 @@ export class CorrectResponse extends React.Component {
     }
   }
 
-  changeData = (data) => {
-    const { model, onChange } = this.props;
-    const { correctAnswer } = model || {};
 
-    onChange({
-      ...model,
-      correctAnswer: {
-        ...correctAnswer,
-        data: data.map(({interactive, editable, ...keepAttrs}) => keepAttrs),
-      },
-    });
-  };
 
   render() {
     const {  model, charts } = this.props;
