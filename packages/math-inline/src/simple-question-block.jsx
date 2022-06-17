@@ -33,9 +33,11 @@ export class SimpleQuestionBlockRaw extends React.Component {
     window.removeEventListener('click', this.handleClick);
   }
 
+  mathToolBarContainsTarget = e => document.getElementById(this.mathToolBarId).contains(e.target);
+
   handleClick = (e) => {
     try {
-      if (!document.getElementById(this.mathToolBarId).contains(e.target)) {
+      if (!this.mathToolBarContainsTarget(e)) {
         this.setState({ showKeypad: false });
       }
     } catch (e) {
