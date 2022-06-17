@@ -148,6 +148,8 @@ export class GraphingConfig extends React.Component {
             axesSettings={{ includeArrows: arrows }}
             backgroundMarks={[]}
             coordinatesOnHover={coordinatesOnHover}
+            collapsibleToolbar={true}
+            collapsibleToolbarTitle={'Add Background Shapes to Graph'}
             domain={domain}
             key="graphing-config"
             labels={labels}
