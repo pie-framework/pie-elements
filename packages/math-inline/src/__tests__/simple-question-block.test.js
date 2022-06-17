@@ -80,10 +80,11 @@ describe('SimpleQuestionBlock', () => {
 
     component.instance().onFocus();
     expect(component.state().showKeypad).toEqual(true);
-    component.instance().onBlur({
-      relatedTarget: { offsetParent: 'editor1'},
-      currentTarget: { offsetParent: 'editor1'}
-    });
+
+    // hardcoded
+    component.instance().mathToolBarContainsTarget = () => true;
+    component.instance().handleClick();
+
     expect(component.state().showKeypad).toEqual(true);
   });
 
@@ -92,11 +93,11 @@ describe('SimpleQuestionBlock', () => {
 
     component.instance().onFocus();
     expect(component.state().showKeypad).toEqual(true);
-    component.instance().onBlur({
-      relatedTarget: { offsetParent: 'editor1'},
-      currentTarget: { offsetParent: 'editor2'}
-    });
-    expect(component.state().showKeypad).toEqual(false);
 
+    // hardcoded
+    component.instance().mathToolBarContainsTarget = () => false;
+    component.instance().handleClick();
+
+    expect(component.state().showKeypad).toEqual(false);
   });
 });
