@@ -27,6 +27,8 @@ const updateCorrectResponseData = (correctAnswer, data) => {
     return data;
   }
 
+  const correctAnswerData = [...correctAnswer];
+
   let correctResponseDefinition = [];
 
   data.forEach((category, currentIndex) => {
@@ -50,21 +52,24 @@ const updateCorrectResponseData = (correctAnswer, data) => {
   });
 
   if (correctResponseDefinition.length < correctAnswer.length) {
-    const missingCategories = correctAnswer.slice(correctResponseDefinition.length, correctAnswer.length).map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
+    const missingCategories = correctAnswerData.slice(correctResponseDefinition.length, correctAnswer.length)
 
-    return correctResponseDefinition.concat(missingCategories);
+    return correctResponseDefinition.concat(missingCategories).map((correct, index) => ({...correct, editable: index<data.length  ? data[index].editable: true, interactive: index<data.length ?  data[index].interactive :true}));;
   }
 
   return correctResponseDefinition;
 };
 
 const insertCategory = (correctAnswer, data) => {
-  const positionToInsert = data.length - 1
-  const categoryToInsert = data[data.length - 1]
+  
+  const positionToInsert = data.length - 1;
+ // const categoryToInsert = data[data.length - 1];
+  const {editable, interactive, deletable, ... categoryToInsert} = data[data.length - 1];
 
   correctAnswer.splice(positionToInsert, 0, categoryToInsert);
-
-  return correctAnswer.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
+  const correctAnswerData = [...correctAnswer];
+  
+  return correctAnswerData.map((correct, index) => ({...correct, editable: index<data.length? data[index].editable: true, interactive: index<data.length?  data[index].interactive :true}));
 }
 
 const removeCategory = (correctAnswer, data) => {
