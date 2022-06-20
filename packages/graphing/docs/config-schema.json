@@ -100,6 +100,42 @@
         }
       }
     },
+    "graphDimensions": {
+      "title": "DimensionsConfigProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates if the graph dimensions are included in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "min": {
+          "description": "Indicates the minimum value for the graph width and height",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Indicates the maximum value for the graph width and height",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Indicates the increase/decrease value for the graph width and height",
+          "type": "number",
+          "title": "step"
+        }
+      }
+    },
     "padding": {
       "title": "ConfigureProp",
       "type": "object",
@@ -374,6 +410,42 @@
           "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
           "type": "string",
           "title": "label"
+        }
+      }
+    },
+    "DimensionsConfigProp": {
+      "title": "DimensionsConfigProp",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates if the graph dimensions are included in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "min": {
+          "description": "Indicates the minimum value for the graph width and height",
+          "type": "number",
+          "title": "min"
+        },
+        "max": {
+          "description": "Indicates the maximum value for the graph width and height",
+          "type": "number",
+          "title": "max"
+        },
+        "step": {
+          "description": "Indicates the increase/decrease value for the graph width and height",
+          "type": "number",
+          "title": "step"
         }
       }
     }

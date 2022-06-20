@@ -1,10 +1,6 @@
-import {tools} from '@pie-lib/graphing';
+import { tools } from '@pie-lib/graphing';
 
-const {allTools = []} = tools;
-/**
- * NOTE: There's no functionality described for padding
- * so there's no implementation (they are only added in model)
- */
+const { allTools = [] } = tools;
 
 export default {
   model: {
@@ -27,6 +23,7 @@ export default {
       width: 500,
       height: 500
     },
+    includeAxes: true,
     labels: {},
     padding: true,
     prompt: '',
@@ -38,6 +35,7 @@ export default {
       axisLabel: 'y'
     },
     rationale: '',
+    standardGrid: false,
     title: '',
     toolbarTools: allTools,
     coordinatesOnHover: false,
@@ -67,6 +65,14 @@ export default {
       down: {
         label: 'down'
       }
+    },
+    graphDimensions: {
+      settings: false,
+      label: 'Graph Dimensions',
+      enabled: true,
+      min: 150,
+      max: 800,
+      step: 20
     },
     padding: {
       settings: false,

@@ -249,3 +249,47 @@ export const createCorrectResponseSession = (question, env) => {
     }
   });
 };
+
+export const validate = (model = {}, config = {}) => {
+  const { choices, markup } = model;
+  const { maxResponseAreas } = config;
+  const allChoicesErrors = {};
+
+  Object.entries(choices || {}).forEach(([key, values]) => {
+    const reversedChoices = [...values || []].reverse();
+    const choicesErrors = {};
+
+    reversedChoices.forEach((choice, index) => {
+      const { value, label } = choice;
+
+      if (label === '' || label === '<div></div>') {
+        choicesErrors[value] = 'Content should not be empty.';
+      } else {
+        const identicalAnswer = reversedChoices.slice(index + 1).some(c => c.label === label);
+
+        if (identicalAnswer) {
+          choicesErrors[value] = 'Content should be unique.';
+        }
+      }
+    });
+
+    if (!isEmpty(choicesErrors)) {
+      allChoicesErrors[key] = choicesErrors;
+    }
+  });
+
+  const errors = {};
+  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+
+  if (nbOfResponseAreas > maxResponseAreas) {
+    errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
+  } else if (nbOfResponseAreas < 1) {
+    errors.responseAreasError = 'There should be at least 1 response area defined.';
+  }
+
+  if (!isEmpty(allChoicesErrors)) {
+    errors.choicesErrors = allChoicesErrors;
+  }
+
+  return errors;
+};

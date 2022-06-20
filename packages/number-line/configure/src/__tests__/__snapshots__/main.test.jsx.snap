@@ -18,6 +18,34 @@ exports[`main snapshot renders 1`] = `
   </FormSection>
   <WithStyles(CardBar)
     header="Attributes"
+    info={
+      <WithStyles(Tooltip)
+        classes={
+          Object {
+            "tooltip": undefined,
+          }
+        }
+        disableFocusListener={true}
+        disableTouchListener={true}
+        placement="right"
+        title="Validation requirements:
+Width should be a value between 200 and 800.
+Min and max must both be in the range [-100000, 10000].
+Max must be greater than min.
+Max number of elements should be between 1 and 20.
+The correct answer should include at least one number line object."
+      >
+        <pure(InfoIcon)
+          color="primary"
+          fontSize="small"
+          style={
+            Object {
+              "marginLeft": "5px",
+            }
+          }
+        />
+      </WithStyles(Tooltip)>
+    }
   >
     Set up the number line by entering the domain and number of tick marks to display. Labels on the number line can be edited or removed by clicking on the label.
   </WithStyles(CardBar)>

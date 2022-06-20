@@ -140,6 +140,7 @@ export class Root extends React.Component {
                   imageUrl={model.imageUrl}
                   onUpdateImageDimension={this.onUpdateImageDimension}
                   onImageUpload={this.onImageUpload}
+                  imageDimensions={model.imageDimensions}
                 />
               </div>
             )}

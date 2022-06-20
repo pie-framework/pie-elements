@@ -37,7 +37,8 @@ export class Choice extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    error: PropTypes.string
   };
 
   static defaultProps = {};
@@ -68,7 +69,8 @@ export class Choice extends React.Component {
       connectDragPreview,
       imageSupport,
       spellCheck,
-      toolbarOpts
+      toolbarOpts,
+      error
     } = this.props;
 
     const draggable = canDrag(this.props);
@@ -96,7 +98,9 @@ export class Choice extends React.Component {
               onDelete={onDelete}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheck}
+              error={error}
             />
+            {error && <div className={classes.errorText}>{error}</div>}
           </span>
         )}
 
@@ -127,7 +131,12 @@ const styles = theme => ({
   },
   dragDisabled: {
     cursor: 'inherit'
-  }
+  },
+  errorText: {
+    fontSize: '11px',
+    color: 'red',
+    paddingBottom: '5px'
+  },
 });
 
 const StyledChoice = withStyles(styles)(Choice);

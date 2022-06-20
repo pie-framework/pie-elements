@@ -33,7 +33,8 @@ export class Row extends React.Component {
       delete: PropTypes.func.isRequired
     }),
     enableImages: PropTypes.bool,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    error: PropTypes.string
   };
 
   static defaultProps = {};
@@ -147,7 +148,8 @@ export class Row extends React.Component {
       idx,
       enableImages,
       toolbarOpts,
-      spellCheck
+      spellCheck,
+      error
     } = this.props;
     const { dialog } = this.state;
     const opacity = isDragging ? 0 : 1;
@@ -212,6 +214,7 @@ export class Row extends React.Component {
             </Button>
           </div>
         </div>
+        {error && <div className={classes.errorText}>{error}</div>}
         <hr className={classes.separator} />
         <InfoDialog
           title={dialog.message}
@@ -273,6 +276,12 @@ const styles = theme => ({
     border: 0,
     borderTop: '2px solid lightgray',
     width: '100%'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '10px',
+    textAlign: 'center'
   }
 });
 

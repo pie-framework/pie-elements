@@ -99,6 +99,21 @@
         }
       }
     },
+    "minChoices": {
+      "description": "Minimum number of choices",
+      "type": "number",
+      "title": "minChoices"
+    },
+    "maxChoices": {
+      "description": "Maximum number of choices",
+      "type": "number",
+      "title": "maxChoices"
+    },
+    "maxCategories": {
+      "description": "Maximum number of categories",
+      "type": "number",
+      "title": "maxCategories"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,

@@ -15,12 +15,13 @@ export class InputHeader extends React.Component {
       add: PropTypes.func.isRequired,
       delete: PropTypes.func.isRequired
     }),
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    error: PropTypes.string,
   };
 
   static defaultProps = {};
   render() {
-    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck } = this.props;
+    const { onChange, label, classes, className, imageSupport, toolbarOpts, spellCheck, error } = this.props;
     const choicePlugins = {
       audio: { disabled: true },
       video: { disabled: true }
@@ -38,6 +39,7 @@ export class InputHeader extends React.Component {
           pluginProps={choicePlugins}
           toolbarOpts={toolbarOpts}
           spellCheck={spellCheck}
+          error={error}
         />
       </div>
     );

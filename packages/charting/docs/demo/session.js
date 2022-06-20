@@ -6,26 +6,20 @@ module.exports = [
     //   {
     //     label: 'A',
     //     value: 1,
-    //     initial: true,
     //     interactive: false,
-    //     editable: true,
-    //     deletable: true
+    //     editable: true
     //   },
     //   {
     //     label: 'B',
     //     value: 1,
-    //     initial: true,
     //     interactive: true,
-    //     editable: true,
-    //     deletable: true
+    //     editable: true
     //   },
     //   {
     //     label: 'C',
     //     value: 1,
-    //     initial: true,
     //     interactive: true,
-    //     editable: true,
-    //     deletable: true
+    //     editable: true
     //   }
     // ]
   },

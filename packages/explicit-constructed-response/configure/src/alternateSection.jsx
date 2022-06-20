@@ -11,6 +11,8 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import max from 'lodash/max';
+import classnames from 'classnames';
+
 import { getAdjustedLength } from './markupUtils';
 
 const styles = () => ({
@@ -44,6 +46,15 @@ const styles = () => ({
   lengthField: {
     width: '230px',
     marginRight: '20px'
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    paddingTop: '5px'
+  },
+  inputError: {
+    border: '2px solid red',
+    borderRadius: '6px'
   }
 });
 
@@ -77,32 +88,35 @@ export class Choice extends React.Component {
 
   render() {
     const { value } = this.state;
-    const { classes, onDelete, spellCheck } = this.props;
+    const { classes, onDelete, spellCheck, error } = this.props;
 
     return (
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'space-between'
-        }}
-      >
-        <OutlinedInput
-          className={classes.choice}
-          value={value}
-          onChange={this.onChange}
-          labelWidth={0}
-          disableUnderline
-          spellCheck = {spellCheck}
-        />
-        <IconButton
-          aria-label="delete"
-          className={classes.deleteBtn}
-          onClick={onDelete}
+      <>
+        <div
+          style={{
+            alignItems: 'center',
+            display: 'flex',
+            justifyContent: 'space-between'
+          }}
         >
-          <Delete />
-        </IconButton>
-      </div>
+          <OutlinedInput
+            className={classnames(classes.choice, error && classes.inputError)}
+            value={value}
+            onChange={this.onChange}
+            labelWidth={0}
+            disableUnderline
+            spellCheck={spellCheck}
+          />
+          <IconButton
+            aria-label="delete"
+            className={classes.deleteBtn}
+            onClick={onDelete}
+          >
+            <Delete/>
+          </IconButton>
+        </div>
+        {error && <div className={classes.errorText}>{error}</div>}
+      </>
     );
   }
 }
@@ -220,7 +234,8 @@ export class AlternateSection extends React.Component {
       maxLength,
       showMaxLength,
       value,
-      spellCheck
+      spellCheck,
+      errors
     } = this.props;
     const { choices } = this.state;
     const minLength = this.getChoicesMaxLength();
@@ -271,6 +286,7 @@ export class AlternateSection extends React.Component {
             </div>
           }
         </div>
+        {errors && errors[0] && <div className={classes.errorText}>{errors[0]}</div>}
         <div
           className={classes.altChoices}
         >
@@ -284,6 +300,7 @@ export class AlternateSection extends React.Component {
                 onChange={val => this.onChoiceChanged(c, val, index)}
                 onDelete={() => this.onRemoveChoice(c)}
                 spellCheck = {spellCheck}
+                error={errors && errors[index]}
               />
             ))
           }

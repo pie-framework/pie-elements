@@ -214,4 +214,9 @@ export interface MathInlineConfigure
    * Allow Trailing Zeros configuration
    */
   allowTrailingZeros?: ConfigurePropWithEnabled;
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
 }

@@ -38,6 +38,16 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "label": "Prompt",
             "settings": true,
           },
+          "spanishInput": Object {
+            "enabled": false,
+            "label": "Students can insert Spanish",
+            "settings": true,
+          },
+          "specialInput": Object {
+            "enabled": false,
+            "label": "Students can insert Special Characters",
+            "settings": true,
+          },
           "spellCheck": Object {
             "enabled": true,
             "label": "Spellcheck",
@@ -67,6 +77,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
             "multiple.enabled": false,
             "playerSpellCheckEnabled": undefined,
             "promptEnabled": undefined,
+            "spanishInput": undefined,
+            "specialInput": undefined,
             "spellCheckEnabled": false,
           },
         }
@@ -84,6 +96,8 @@ exports[`Render Main Component Match Snapshot 1`] = `
           "prompt": "This is the question prompt",
           "promptEnabled": true,
           "rationaleEnabled": true,
+          "spanishInput": false,
+          "specialInput": false,
           "spellCheckEnabled": true,
           "studentInstructionsEnabled": true,
           "teacherInstructionsEnabled": true,

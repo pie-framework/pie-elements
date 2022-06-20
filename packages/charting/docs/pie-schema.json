@@ -52,11 +52,6 @@
                   "type": "number",
                   "title": "value"
                 },
-                "initial": {
-                  "description": "Indicates if category is default category",
-                  "type": "boolean",
-                  "title": "initial"
-                },
                 "interactive": {
                   "description": "Indicates if category label & value are interactive",
                   "type": "boolean",
@@ -104,7 +99,6 @@
                 "correctness",
                 "deletable",
                 "editable",
-                "initial",
                 "interactive",
                 "label",
                 "value"
@@ -127,11 +121,6 @@
                     "description": "Indicates category value",
                     "type": "number",
                     "title": "value"
-                  },
-                  "initial": {
-                    "description": "Indicates if category is default category",
-                    "type": "boolean",
-                    "title": "initial"
                   },
                   "interactive": {
                     "description": "Indicates if category label & value are interactive",
@@ -180,7 +169,6 @@
                   "correctness",
                   "deletable",
                   "editable",
-                  "initial",
                   "interactive",
                   "label",
                   "value"
@@ -213,11 +201,6 @@
               "description": "Indicates category value",
               "type": "number",
               "title": "value"
-            },
-            "initial": {
-              "description": "Indicates if category is default category",
-              "type": "boolean",
-              "title": "initial"
             },
             "interactive": {
               "description": "Indicates if category label & value are interactive",
@@ -266,7 +249,6 @@
             "correctness",
             "deletable",
             "editable",
-            "initial",
             "interactive",
             "label",
             "value"
@@ -289,11 +271,6 @@
                 "description": "Indicates category value",
                 "type": "number",
                 "title": "value"
-              },
-              "initial": {
-                "description": "Indicates if category is default category",
-                "type": "boolean",
-                "title": "initial"
               },
               "interactive": {
                 "description": "Indicates if category label & value are interactive",
@@ -342,7 +319,6 @@
               "correctness",
               "deletable",
               "editable",
-              "initial",
               "interactive",
               "label",
               "value"
@@ -389,11 +365,6 @@
         "min",
         "step"
       ]
-    },
-    "editCategoryEnabled": {
-      "description": "Indicates if user can edit default categories",
-      "type": "boolean",
-      "title": "editCategoryEnabled"
     },
     "graph": {
       "title": "Chart",
@@ -530,7 +501,6 @@
     "correctAnswer",
     "data",
     "domain",
-    "editCategoryEnabled",
     "element",
     "graph",
     "id",
@@ -605,11 +575,6 @@
                   "type": "number",
                   "title": "value"
                 },
-                "initial": {
-                  "description": "Indicates if category is default category",
-                  "type": "boolean",
-                  "title": "initial"
-                },
                 "interactive": {
                   "description": "Indicates if category label & value are interactive",
                   "type": "boolean",
@@ -657,7 +622,6 @@
                 "correctness",
                 "deletable",
                 "editable",
-                "initial",
                 "interactive",
                 "label",
                 "value"
@@ -680,11 +644,6 @@
                     "description": "Indicates category value",
                     "type": "number",
                     "title": "value"
-                  },
-                  "initial": {
-                    "description": "Indicates if category is default category",
-                    "type": "boolean",
-                    "title": "initial"
                   },
                   "interactive": {
                     "description": "Indicates if category label & value are interactive",
@@ -733,7 +692,6 @@
                   "correctness",
                   "deletable",
                   "editable",
-                  "initial",
                   "interactive",
                   "label",
                   "value"
@@ -762,11 +720,6 @@
           "description": "Indicates category value",
           "type": "number",
           "title": "value"
-        },
-        "initial": {
-          "description": "Indicates if category is default category",
-          "type": "boolean",
-          "title": "initial"
         },
         "interactive": {
           "description": "Indicates if category label & value are interactive",
@@ -815,7 +768,6 @@
         "correctness",
         "deletable",
         "editable",
-        "initial",
         "interactive",
         "label",
         "value"

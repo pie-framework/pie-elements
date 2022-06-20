@@ -163,6 +163,11 @@
         }
       }
     },
+    "maxResponseAreas": {
+      "description": "Maximum number of response areas",
+      "type": "number",
+      "title": "maxResponseAreas"
+    },
     "showPrompt": {
       "description": "Determines whether prompt field will be displayed or not",
       "default": true,

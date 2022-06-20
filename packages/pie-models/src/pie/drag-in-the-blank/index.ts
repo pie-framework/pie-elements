@@ -141,4 +141,19 @@ export interface DragInTheBlankConfigure
 
   /** Rubric configuration */
   rubric?: ConfigureProp;
+
+  /**
+   * Minimum number of choices
+   */
+  minChoices?: number
+
+  /**
+   * Maximum number of choices
+   */
+  maxChoices?: number
+
+  /**
+   * Maximum number of response areas
+   */
+  maxResponseAreas?: number;
 }

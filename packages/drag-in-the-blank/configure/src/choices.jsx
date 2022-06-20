@@ -55,7 +55,8 @@ export class Choices extends React.Component {
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
-    toolbarOpts: PropTypes.object
+    toolbarOpts: PropTypes.object,
+    maxChoices: PropTypes.number
   };
 
   state = {
@@ -206,7 +207,9 @@ export class Choices extends React.Component {
     const {
       classes,
       duplicates,
-      toolbarOpts
+      toolbarOpts,
+      maxChoices,
+      model: { choices }
     } = this.props;
     const visibleChoices = this.getVisibleChoices() || [];
 
@@ -222,6 +225,7 @@ export class Choices extends React.Component {
           variant="contained"
           color="primary"
           onClick={this.onAddChoice}
+          disabled={maxChoices && choices && maxChoices === choices.length}
         >
           Add Choice
         </Button>

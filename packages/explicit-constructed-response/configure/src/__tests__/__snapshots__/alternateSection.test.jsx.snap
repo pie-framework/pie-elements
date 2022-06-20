@@ -52,26 +52,29 @@ exports[`AlternateSection snapshot renders 1`] = `
 `;
 
 exports[`Choice snapshot renders 1`] = `
-<div
-  style={
-    Object {
-      "alignItems": "center",
-      "display": "flex",
-      "justifyContent": "space-between",
+<Fragment>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
     }
-  }
->
-  <WithStyles(OutlinedInput)
-    disableUnderline={true}
-    labelWidth={0}
-    onChange={[Function]}
-    value="cow"
-  />
-  <WithStyles(IconButton)
-    aria-label="delete"
-    onClick={[MockFunction]}
   >
-    <pure(DeleteIcon) />
-  </WithStyles(IconButton)>
-</div>
+    <WithStyles(OutlinedInput)
+      className=""
+      disableUnderline={true}
+      labelWidth={0}
+      onChange={[Function]}
+      value="cow"
+    />
+    <WithStyles(IconButton)
+      aria-label="delete"
+      onClick={[MockFunction]}
+    >
+      <pure(DeleteIcon) />
+    </WithStyles(IconButton)>
+  </div>
+</Fragment>
 `;

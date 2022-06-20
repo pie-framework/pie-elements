@@ -9,6 +9,8 @@ import FeedbackTick from './feedback-tick';
 import Radio from '@material-ui/core/Radio';
 import classNames from 'classnames';
 
+const CLASS_NAME = 'multiple-choice-component';
+
 const styleSheet = () => ({
   row: {
     display: 'flex',
@@ -24,6 +26,11 @@ const styleSheet = () => ({
       color: color.text(),
     },
   },
+  horizontalLayout: {
+    [`& .${CLASS_NAME}`]: {
+      paddingRight: '8px',
+    }
+  }
 });
 
 const formStyleSheet = {
@@ -38,8 +45,6 @@ export const StyledFormControlLabel = withStyles(formStyleSheet, {
 })((props) => (
   <FormControlLabel {...props} classes={{ label: props.classes.label }} />
 ));
-
-const CLASS_NAME = 'multiple-choice-component';
 
 const colorStyle = (varName, fallback) => ({
   [`&.${CLASS_NAME}`]: {
@@ -152,6 +157,7 @@ export class ChoiceInput extends React.Component {
     className: PropTypes.string,
     hideTick: PropTypes.bool,
     isEvaluateMode: PropTypes.bool,
+    choicesLayout: PropTypes.oneOf(['vertical', 'grid', 'horizontal']),
   };
 
   static defaultProps = {
@@ -188,16 +194,21 @@ export class ChoiceInput extends React.Component {
       accessibility,
       hideTick,
       isEvaluateMode,
+      choicesLayout
     } = this.props;
 
     const Tag = choiceMode === 'checkbox' ? StyledCheckbox : StyledRadio;
     const classSuffix = choiceMode === 'checkbox' ? 'checkbox' : 'radio-button';
 
+    const holderClassNames = classNames(classes.checkboxHolder, {
+      [classes.horizontalLayout]: choicesLayout === 'horizontal',
+    });
+
     return (
       <div className={classNames(className, 'corespring-' + classSuffix, 'choice-input')}>
         <div className={classes.row}>
           {(!hideTick && isEvaluateMode) && <FeedbackTick correctness={correctness} />}
-          <div className={classNames(classes.checkboxHolder, 'checkbox-holder')}>
+          <div className={classNames(holderClassNames, 'checkbox-holder')}>
             <StyledFormControlLabel
               disabled={disabled}
               label={displayKey ? displayKey + '. ' : ''}

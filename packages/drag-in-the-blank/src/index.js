@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { renderMath } from '@pie-lib/math-rendering';
 import {
   ModelSetEvent,
   SessionChangedEvent
@@ -43,7 +44,9 @@ export default class InlineDropdown extends HTMLElement {
         onChange: this.changeSession
       });
 
-      ReactDOM.render(elem, this);
+      ReactDOM.render(elem, this, () => {
+        renderMath(this);
+      });
     }
   };
 

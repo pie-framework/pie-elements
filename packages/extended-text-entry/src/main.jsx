@@ -33,17 +33,22 @@ export class Main extends React.Component {
     }).isRequired
   };
 
-  componentDidUpdate() {
-    if (this.containerRef) {
-      renderMath(this.containerRef);
-    }
-  }
-
   changeSession = debounce(this.props.onChange, 1500);
 
   render() {
     const { model, classes, session } = this.props;
-    const { dimensions, disabled, feedback, teacherInstructions, mathInput, animationsDisabled, playersToolbarPosition, spellCheckEnabled } = model;
+    const {
+      dimensions,
+      disabled,
+      feedback,
+      teacherInstructions,
+      mathInput,
+      spanishInput,
+      specialInput,
+      animationsDisabled,
+      playersToolbarPosition,
+      spellCheckEnabled
+    } = model;
     const { value } = session;
     const { width, height } = dimensions || {};
     const maxHeight = '40vh';
@@ -60,6 +65,16 @@ export class Main extends React.Component {
       default:
         toolbarOpts.position = 'bottom';
         break;
+    }
+
+    const languageCharactersProps = [];
+
+    if (spanishInput) {
+      languageCharactersProps.push({ language: 'spanish' });
+    }
+
+    if (specialInput) {
+      languageCharactersProps.push({ language: 'special' });
     }
 
     return (
@@ -117,6 +132,7 @@ export class Main extends React.Component {
               disabled: true
             }
           }}
+          languageCharactersProps={languageCharactersProps}
         />
         {feedback && (
           <div>

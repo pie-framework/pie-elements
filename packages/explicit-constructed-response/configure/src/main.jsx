@@ -5,12 +5,17 @@ import isEmpty from 'lodash/isEmpty';
 import pick from 'lodash/pick';
 import throttle from 'lodash/throttle';
 import EditableHtml, {ALL_PLUGINS} from '@pie-lib/editable-html';
+// import EditableHtmlNew from 'editable-html';
 import {InputContainer, layout, settings} from '@pie-lib/config-ui';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Info from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import ECRToolbar from './ecr-toolbar';
 import AlternateResponses from './alternateResponses';
 import { getAdjustedLength } from './markupUtils';
+import {generateValidationMessage} from './utils';
 
 const { toggle, Panel } = settings;
 
@@ -52,6 +57,20 @@ const styles = theme => ({
     fontSize: '16px',
     lineHeight: '19px',
     marginTop: theme.spacing.unit * 4
+  },
+  tooltip: {
+    fontSize: '12px',
+    whiteSpace: 'pre',
+    maxWidth: '500px',
+  },
+  errorText: {
+    fontSize: '12px',
+    color: 'red',
+    padding: '5px 0'
+  },
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'end'
   }
 });
 
@@ -293,10 +312,21 @@ export class Main extends React.Component {
       teacherInstructions = {},
       maxLengthPerChoice = {},
       spellCheck = {},
-      playerSpellCheck = {}
+      playerSpellCheck = {},
+      maxResponseAreas
     } = configuration || {};
-    const { teacherInstructionsEnabled, promptEnabled, rationaleEnabled, maxLengthPerChoiceEnabled, spellCheckEnabled } = model || {};
+    const {
+      teacherInstructionsEnabled,
+      promptEnabled,
+      rationaleEnabled,
+      maxLengthPerChoiceEnabled,
+      spellCheckEnabled,
+      errors
+    } = model || {};
     const toolbarOpts = {};
+
+    const { responseAreasError, choicesErrors = {} } = errors || {};
+    const validationMessage = generateValidationMessage(configuration);
 
     switch (model.toolbarEditorPosition) {
       case 'top':
@@ -372,11 +402,34 @@ export class Main extends React.Component {
                   toolbarOpts={toolbarOpts}
                   spellCheck={spellCheckEnabled}
                 />
+                {/*<EditableHtmlNew*/}
+                {/*  className={classes.prompt}*/}
+                {/*  markup={model.prompt}*/}
+                {/*  onChange={this.onPromptChanged}*/}
+                {/*  imageSupport={imageSupport}*/}
+                {/*  nonEmpty={false}*/}
+                {/*  disableUnderline*/}
+                {/*  toolbarOpts={toolbarOpts}*/}
+                {/*  spellCheck={spellCheckEnabled}*/}
+                {/*/>*/}
               </InputContainer>
             )}
-            <Typography className={classes.text}>
-              Define Template, Choices, and Correct Responses
-            </Typography>
+            <div className={classes.flexContainer}>
+              <Typography className={classes.text}>
+                Define Template, Choices, and Correct Responses
+              </Typography>
+              <Tooltip
+                classes={{tooltip: classes.tooltip}}
+                disableFocusListener
+                disableTouchListener
+                placement={'right'}
+                title={validationMessage}
+              >
+                <Info fontSize={'small'} color={'primary'} style={{ marginLeft: '5px' }}/>
+              </Tooltip>
+            </div>
+            {responseAreasError && <div className={classes.errorText}>{responseAreasError}</div>}
+
             <EditableHtml
               activePlugins={ALL_PLUGINS}
               toolbarOpts={{ position: 'top' }}
@@ -386,6 +439,7 @@ export class Main extends React.Component {
                 options: {
                   duplicates: true
                 },
+                maxResponseAreas: maxResponseAreas,
                 respAreaToolbar: (node, value, onToolbarDone) => {
                   const { model } = this.props;
                   const correctChoice = (model.choices[
@@ -404,6 +458,7 @@ export class Main extends React.Component {
                     />
                   );
                 },
+                error: () => choicesErrors,
                 onHandleAreaChange: this.onHandleAreaChange
               }}
               className={classes.markup}
@@ -413,6 +468,7 @@ export class Main extends React.Component {
               onBlur={this.onBlur}
               disabled={false}
               highlightShape={false}
+              error={responseAreasError}
             />
             {!isEmpty(model.choices) && (
               <Typography className={classes.text}>
@@ -425,6 +481,7 @@ export class Main extends React.Component {
               onLengthChange={this.onLengthChanged}
               maxLengthPerChoiceEnabled={maxLengthPerChoiceEnabled}
               spellCheck={spellCheckEnabled}
+              choicesErrors={choicesErrors}
             />
             {rationaleEnabled && (
               <InputContainer

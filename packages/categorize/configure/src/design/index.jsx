@@ -159,6 +159,7 @@ export class Design extends React.Component {
       rationaleEnabled,
       feedbackEnabled,
       spellCheckEnabled,
+      errors
     } = model || {};
 
     const toolbarOpts = {};
@@ -289,6 +290,7 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              configuration={configuration}
             />
 
             <Header
@@ -327,6 +329,7 @@ export class Design extends React.Component {
               onModelChanged={this.updateModel}
               toolbarOpts={toolbarOpts}
               spellCheck={spellCheckEnabled}
+              configuration={configuration}
             />
 
             {feedbackEnabled && (
