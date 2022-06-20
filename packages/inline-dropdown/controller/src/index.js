@@ -256,7 +256,7 @@ export const validate = (model = {}, config = {}) => {
   const { maxResponseAreas } = config;
   const errors = {};
 
-  const nbOfResponseAreas = (markup.match(/\{\{(\d+)\}\}/g) || []).length;
+  const nbOfResponseAreas = ((markup || '').match(/\{\{(\d+)\}\}/g) || []).length;
 
   if (nbOfResponseAreas > maxResponseAreas) {
     errors.responseAreasError = `No more than ${maxResponseAreas} response areas should be defined.`;
