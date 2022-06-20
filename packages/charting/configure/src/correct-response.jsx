@@ -107,7 +107,7 @@ export class CorrectResponse extends React.Component {
       ...model,
       correctAnswer: {
         ...correctAnswer,
-        data: data.map(({interactive, editable, ...keepAttrs}) => keepAttrs),
+        data: data.map(({interactive, editable,  ...keepAttrs}) => keepAttrs),
       },
     });
   };
