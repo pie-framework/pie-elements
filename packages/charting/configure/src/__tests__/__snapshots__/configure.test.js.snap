@@ -220,7 +220,6 @@ exports[`Configure renders snapshot 1`] = `
           "domain": Object {
             "label": "Fruits",
           },
-          "editCategoryEnabled": true,
           "graph": Object {
             "height": 480,
             "width": 480,
