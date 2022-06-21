@@ -47,8 +47,30 @@ export default {
   configuration: {
     authoring: {
       settings: false,
-      label: 'Allow authoring',
-      enabled: false
+      label: 'Customize Grid Setup',
+      enabled: true,
+      includeAxesEnabled: true,
+      standardGridEnabled: true,
+      min: {
+        label: 'Min Value',
+        enabled: true
+      },
+      max: {
+        label: 'Max Value',
+        enabled: true
+      },
+      axisLabel: {
+        label: 'Label',
+        enabled: true
+      },
+      step: {
+        label: 'Grid Interval',
+        enabled: true
+      },
+      labelStep: {
+        label: 'Label Interval',
+        enabled: true
+      }
     },
     arrows: {
       settings: true,

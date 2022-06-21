@@ -23,9 +23,31 @@ exports[`Configure renders snapshot 1`] = `
             },
           },
           "authoring": Object {
-            "enabled": false,
-            "label": "Allow authoring",
+            "axisLabel": Object {
+              "enabled": true,
+              "label": "Label",
+            },
+            "enabled": true,
+            "includeAxesEnabled": true,
+            "label": "Customize Grid Setup",
+            "labelStep": Object {
+              "enabled": true,
+              "label": "Label Interval",
+            },
+            "max": Object {
+              "enabled": true,
+              "label": "Max Value",
+            },
+            "min": Object {
+              "enabled": true,
+              "label": "Min Value",
+            },
             "settings": false,
+            "standardGridEnabled": true,
+            "step": Object {
+              "enabled": true,
+              "label": "Grid Interval",
+            },
           },
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
@@ -183,7 +205,35 @@ exports[`Configure renders snapshot 1`] = `
       />
     </InputContainer>
     <WithStyles(GraphingConfig)
-      authoringEnabled={false}
+      authoring={
+        Object {
+          "axisLabel": Object {
+            "enabled": true,
+            "label": "Label",
+          },
+          "enabled": true,
+          "includeAxesEnabled": true,
+          "label": "Customize Grid Setup",
+          "labelStep": Object {
+            "enabled": true,
+            "label": "Label Interval",
+          },
+          "max": Object {
+            "enabled": true,
+            "label": "Max Value",
+          },
+          "min": Object {
+            "enabled": true,
+            "label": "Min Value",
+          },
+          "settings": false,
+          "standardGridEnabled": true,
+          "step": Object {
+            "enabled": true,
+            "label": "Grid Interval",
+          },
+        }
+      }
       graphDimensions={
         Object {
           "enabled": true,

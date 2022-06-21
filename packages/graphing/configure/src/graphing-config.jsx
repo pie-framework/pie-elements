@@ -34,7 +34,7 @@ const styles = theme => ({
 export class GraphingConfig extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    authoringEnabled: PropTypes.bool,
+    authoring: PropTypes.object,
     graphDimensions: PropTypes.object,
     model: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -96,7 +96,7 @@ export class GraphingConfig extends React.Component {
   };
 
   render() {
-    const { classes, model, graphDimensions } = this.props;
+    const { authoring = {}, classes, model, graphDimensions = {}} = this.props;
     const {
       arrows,
       backgroundMarks,
@@ -109,7 +109,7 @@ export class GraphingConfig extends React.Component {
       title
     } = model || {};
     const graph = (model || {}).graph || {};
-    const { enabled, min, max, step } = graphDimensions || {};
+    const { enabled: dimensionsEnabled, min, max, step } = graphDimensions || {};
     const { gridValues, labelValues } = this.state;
 
     const sizeConstraints = {
@@ -118,21 +118,38 @@ export class GraphingConfig extends React.Component {
       step: step >= 1 ? Math.min(200, step) : 20
     };
 
+    const displayedFields = {
+      axisLabel: authoring.axisLabel,
+      dimensionsEnabled,
+      includeAxesEnabled: authoring.includeAxesEnabled,
+      labelStep: authoring.labelStep,
+      min: authoring.min,
+      max: authoring.max,
+      standardGridEnabled: authoring.standardGridEnabled,
+      step: authoring.step
+    };
+
+    const displayGridSetup = authoring.enabled &&
+      Object.values(displayedFields).some(field => typeof field === 'object' ? field.enabled : field);
+
     return (
       <div className={classes.container}>
         <div className={classes.gridConfig}>
-          <GridSetup
-            domain={domain}
-            dimensionsEnabled={enabled}
-            gridValues={gridValues}
-            includeAxes={includeAxes}
-            labelValues={labelValues}
-            range={range}
-            size={graph}
-            sizeConstraints={sizeConstraints}
-            standardGrid={standardGrid}
-            onChange={this.onConfigChange}
-          />
+          {displayGridSetup && (
+            <GridSetup
+              displayedFields={displayedFields}
+              domain={domain}
+              dimensionsEnabled={dimensionsEnabled}
+              gridValues={gridValues}
+              includeAxes={includeAxes}
+              labelValues={labelValues}
+              range={range}
+              size={graph}
+              sizeConstraints={sizeConstraints}
+              standardGrid={standardGrid}
+              onChange={this.onConfigChange}
+            />
+          )}
         </div>
 
         <div className={classes.graphConfig} key="graph">

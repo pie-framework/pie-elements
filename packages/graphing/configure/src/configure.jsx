@@ -220,7 +220,7 @@ export class Configure extends React.Component {
           )}
 
           <GraphingConfig
-            authoringEnabled={authoring && authoring.enabled}
+            authoring={authoring}
             graphDimensions={graphDimensions}
             model={model}
             onChange={this.props.onModelChanged}

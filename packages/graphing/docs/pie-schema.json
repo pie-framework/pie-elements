@@ -1766,22 +1766,128 @@
     "teacherInstructionsEnabled"
   ],
   "definitions": {
-    "ConfigurePropWithEnabled": {
-      "title": "ConfigurePropWithEnabled",
+    "AuthoringConfigProp": {
+      "title": "AuthoringConfigProp",
       "type": "object",
       "properties": {
         "settings": {
-          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "description": "Indicates if the item is displayed in the Settings Panel",
           "type": "boolean",
           "title": "settings"
         },
         "label": {
-          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "description": "Indicates the label for the item that is displayed in the Settings Panel",
           "type": "string",
           "title": "label"
         },
         "enabled": {
-          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "description": "Indicates if the Grid Setup Panel is displayed",
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "includeAxesEnabled": {
+          "description": "Indicates if the \"includeAxes\" toggle is displayed in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "includeAxesEnabled"
+        },
+        "standardGridEnabled": {
+          "description": "Indicates if the \"standardGrid\" toggle is displayed in the Grid Setup Panel",
+          "type": "boolean",
+          "title": "standardGridEnabled"
+        },
+        "min": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "max": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "axisLabel": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "step": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        },
+        "labelStep": {
+          "title": "GridPanelConfigProp",
+          "type": "object",
+          "properties": {
+            "label": {
+              "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+              "type": "string",
+              "title": "label"
+            },
+            "enabled": {
+              "description": "Indicates if the item is displayed in the Grid Setup Panel",
+              "type": "boolean",
+              "title": "enabled"
+            }
+          }
+        }
+      }
+    },
+    "GridPanelConfigProp": {
+      "title": "GridPanelConfigProp",
+      "type": "object",
+      "properties": {
+        "label": {
+          "description": "Indicates the label for the item that is displayed in the Grid Setup Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates if the item is displayed in the Grid Setup Panel",
           "type": "boolean",
           "title": "enabled"
         }
@@ -1907,6 +2013,27 @@
           "description": "Indicates the increase/decrease value for the graph width and height",
           "type": "number",
           "title": "step"
+        }
+      }
+    },
+    "ConfigurePropWithEnabled": {
+      "title": "ConfigurePropWithEnabled",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "description": "Indicates if the item has to be displayed in the Settings Panel",
+          "type": "boolean",
+          "title": "settings"
+        },
+        "label": {
+          "description": "Indicates the label for the item that has to be displayed in the Settings Panel",
+          "type": "string",
+          "title": "label"
+        },
+        "enabled": {
+          "description": "Indicates the value of the item if it affects config-ui\n(eg.: if item is a switch and displaying an input on the config-ui depends on the switch value: on/off)",
+          "type": "boolean",
+          "title": "enabled"
         }
       }
     },
