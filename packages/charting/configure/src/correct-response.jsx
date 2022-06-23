@@ -143,6 +143,29 @@ export class CorrectResponse extends React.Component {
       nextCorrectAnswerData,
       nextData
     );
+
+    console.log(nextCorrectAnswerData, "before")
+
+    nextCorrectAnswerData.map((answer, currentIndex) => {
+      const dataExists = currentIndex < nextData.length;
+      let label;
+      let value;
+
+      if (dataExists) {
+        label = nextData[currentIndex].editable?  answer.label : nextData[currentIndex].label;
+        value = nextData[currentIndex].interactive? answer.value:nextData[currentIndex].value;
+      } else {
+        label = answer.label;
+        value = answer.value;
+      }
+  
+      nextCorrectAnswerData[currentIndex] = {
+        label: label,
+        value: value,
+      };
+    });
+
+    console.log(nextCorrectAnswerData, "after")
   }
 
     if (!isEqual(nextCategories, data)) {
