@@ -130,6 +130,7 @@ export default {
       label: 'Graph Title',
       enabled: true
     },
+    availableTools: allTools,
     spellCheck: {
       label: 'Spellcheck',
       settings:false,

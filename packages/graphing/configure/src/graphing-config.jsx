@@ -1,11 +1,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { GraphContainer, GridSetup, tools } from '@pie-lib/graphing';
+import { GraphContainer, GridSetup } from '@pie-lib/graphing';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { applyConstraints, getGridValues, getLabelValues } from './utils';
-
-const { allTools = [] } = tools;
 
 const styles = theme => ({
   container: {
@@ -96,7 +94,7 @@ export class GraphingConfig extends React.Component {
   };
 
   render() {
-    const { authoring = {}, classes, model, graphDimensions = {}} = this.props;
+    const { authoring = {}, availableTools = [], classes, model, graphDimensions = {}} = this.props;
     const {
       arrows,
       backgroundMarks,
@@ -173,7 +171,7 @@ export class GraphingConfig extends React.Component {
             range={range}
             size={{ width: graph.width, height: graph.height }}
             title={title}
-            toolbarTools={allTools}
+            toolbarTools={availableTools}
           />
         </div>
       </div>

@@ -2,12 +2,10 @@ import * as React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { GraphContainer as Graph, tools } from '@pie-lib/graphing';
+import { GraphContainer as Graph } from '@pie-lib/graphing';
 import { AlertDialog } from '@pie-lib/config-ui';
 import Delete from '@material-ui/icons/Delete';
 import { set, isEqual } from 'lodash';
-
-const { allTools } = tools;
 
 const styles = theme => ({
   column: {
@@ -70,15 +68,21 @@ const styles = theme => ({
   }
 });
 
-export const Tools = ({ classes, toolbarTools, toggleToolBarTool }) => {
-  // label has to be placed at the end of the list
-  const allToolsNoLabel = (allTools || []).filter(tool => tool !== 'label');
+export const Tools = ({ classes, availableTools, toolbarTools, toggleToolBarTool }) => {
+  let allTools = availableTools || [];
+  const isLabelAvailable = allTools.includes('label');
+
+  if (isLabelAvailable) {
+    // label has to be placed at the end of the list
+    const allToolsNoLabel = allTools.filter(tool => tool !== 'label');
+    allTools = [ ...allToolsNoLabel, 'label'];
+  }
 
   return (
     <div className={classes.graphingTools}>
       GRAPHING TOOLS
       <div className={classes.availableTools}>
-        {([...allToolsNoLabel, 'label']).map(tool => {
+        {allTools.map(tool => {
           const selected = toolbarTools.find(t => t === tool);
 
           return (
@@ -235,7 +239,7 @@ export class CorrectResponse extends React.Component {
   };
 
   render() {
-    const { classes, model } = this.props;
+    const { availableTools, classes, model } = this.props;
     const { dialog } = this.state;
     const {
       answers = {},
@@ -255,6 +259,7 @@ export class CorrectResponse extends React.Component {
         Define Correct Response
         <Tools
           classes={classes}
+          availableTools={availableTools}
           toggleToolBarTool={this.toggleToolBarTool}
           toolbarTools={toolbarTools}
         />

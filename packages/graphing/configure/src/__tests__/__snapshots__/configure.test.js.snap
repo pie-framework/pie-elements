@@ -49,6 +49,7 @@ exports[`Configure renders snapshot 1`] = `
               "label": "Grid Interval",
             },
           },
+          "availableTools": Array [],
           "coordinatesOnHover": Object {
             "label": "Coordinates on Hover",
             "settings": true,
@@ -234,6 +235,7 @@ exports[`Configure renders snapshot 1`] = `
           },
         }
       }
+      availableTools={Array []}
       graphDimensions={
         Object {
           "enabled": true,
@@ -289,6 +291,7 @@ exports[`Configure renders snapshot 1`] = `
       }
     />
     <WithStyles(CorrectResponse)
+      availableTools={Array []}
       model={
         Object {
           "answers": Object {},
