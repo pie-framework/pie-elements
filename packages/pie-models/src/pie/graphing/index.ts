@@ -337,6 +337,11 @@ export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   arrows?: ArrowsConfigProp;
 
   /**
+   * Graph toolbar tools configuration
+   */
+  availableTools?: string[];
+
+  /**
    * Coordinates configuration
    */
   coordinatesOnHover?: ConfigureProp;

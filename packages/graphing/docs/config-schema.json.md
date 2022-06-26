@@ -130,6 +130,12 @@ Properties of the `down` object:
 
 Indicates the label for the arrow that has to be displayed in the Settings Panel
 
+# `availableTools` (array)
+
+Graph toolbar tools configuration
+
+The object is an array with all elements of the type `string`.
+
 # `coordinatesOnHover` (object)
 
 Properties of the `coordinatesOnHover` object:
