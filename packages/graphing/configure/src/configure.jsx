@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import EditableHtml from '@pie-lib/editable-html';
 import GraphingConfig from './graphing-config';
 import CorrectResponse from './correct-response';
+import intersection from 'lodash/intersection';
 
 const { Panel, toggle, radio, checkboxes } = settings;
 const log = debug('@pie-element:graphing:configure');
@@ -47,11 +48,12 @@ export class Configure extends React.Component {
   static defaultProps = { classes: {} };
 
   componentDidMount() {
-    // This is used for offering support for old models which have the property arrows: boolean
-    // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
-    const { onModelChanged, model } = this.props;
+    const { configuration, onModelChanged, model } = this.props;
+    const { availableTools } = configuration || {};
     let { arrows } = model || {};
 
+    // This is used for offering support for old models which have the property arrows: boolean
+    // Same thing is set in the controller: packages/graphing/controller/src/index.js - model
     if (typeof arrows === 'boolean') {
       if (arrows) {
         arrows = {
@@ -68,10 +70,12 @@ export class Configure extends React.Component {
           down: false
         };
       }
-
-      onModelChanged({ ...model, arrows });
     }
-  }
+
+    const toolbarTools = intersection(availableTools || [], model.toolbarTools || []);
+
+    onModelChanged && onModelChanged({ ...model, arrows, toolbarTools });
+  };
 
   onRationaleChange = rationale => {
     const { onModelChanged, model } = this.props;
@@ -103,6 +107,7 @@ export class Configure extends React.Component {
     const {
       arrows = {},
       authoring = {},
+      availableTools = [],
       coordinatesOnHover = {},
       graphDimensions = {},
       labels = {},
@@ -231,13 +236,15 @@ export class Configure extends React.Component {
           )}
 
           <GraphingConfig
-            authoringEnabled={authoring && authoring.enabled}
+            authoring={authoring}
+            availableTools={availableTools}
             graphDimensions={graphDimensions}
             model={model}
             onChange={this.props.onModelChanged}
           />
 
           <CorrectResponse
+            availableTools={availableTools}
             model={model}
             onChange={this.props.onModelChanged}
           />

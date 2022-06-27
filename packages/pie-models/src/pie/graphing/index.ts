@@ -293,20 +293,65 @@ interface DimensionsConfigProp {
   step?: number;
 }
 
+interface GridPanelConfigProp {
+  /** Indicates the label for the item that is displayed in the Grid Setup Panel */
+  label?: string;
+
+  /** Indicates if the item is displayed in the Grid Setup Panel */
+  enabled?: boolean;
+}
+
+interface AuthoringConfigProp {
+  /** Indicates if the item is displayed in the Settings Panel */
+  settings?: boolean;
+
+  /** Indicates the label for the item that is displayed in the Settings Panel */
+  label?: string;
+
+  /** Indicates if the Grid Setup Panel is displayed */
+  enabled?: boolean;
+
+  /** Indicates if the "includeAxes" toggle is displayed in the Grid Setup Panel */
+  includeAxesEnabled?: boolean;
+
+  /** Indicates if the "standardGrid" toggle is displayed in the Grid Setup Panel */
+  standardGridEnabled?: boolean;
+
+  /** Axes minimum values configuration */
+  min?: GridPanelConfigProp;
+
+  /** Axes maximum values configuration */
+  max?: GridPanelConfigProp;
+
+  /** Axes labels configuration */
+  axisLabel?: GridPanelConfigProp;
+
+  /** Axes step values configuration */
+  step?: GridPanelConfigProp;
+
+  /** Axes label step values configuration */
+  labelStep?: GridPanelConfigProp;
+}
+
 /**
  * Config Object for @pie-elements/graphing
  * @additionalProperties false
  */
 export interface GraphingConfigure extends PromptConfig, CommonConfigSettings {
   /**
-   * Authoring configuration
+   * Grid Setup Panel configuration
    */
-  authoring?: ConfigurePropWithEnabled;
+  authoring?: AuthoringConfigProp;
 
   /**
    * Arrows configuration
    */
   arrows?: ArrowsConfigProp;
+
+  /**
+   * Graph toolbar tools configuration
+   */
+  availableTools?: string[];
 
   /**
    * Coordinates configuration

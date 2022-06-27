@@ -2,82 +2,7 @@
 
 exports[`GraphingConfig renders snapshot 1`] = `
 <div>
-  <div>
-    <WithStyles(GridSetup)
-      domain={
-        Object {
-          "axisLabel": "x",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      gridValues={
-        Object {
-          "domain": Array [
-            0.2,
-            0.25,
-            0.5,
-            1,
-            2,
-          ],
-          "range": Array [
-            0.2,
-            0.25,
-            0.5,
-            1,
-            2,
-          ],
-        }
-      }
-      includeAxes={true}
-      labelValues={
-        Object {
-          "domain": Array [
-            0,
-            1,
-            2,
-            4,
-            5,
-            10,
-          ],
-          "range": Array [
-            0,
-            1,
-            2,
-            4,
-            5,
-            10,
-          ],
-        }
-      }
-      onChange={[Function]}
-      range={
-        Object {
-          "axisLabel": "y",
-          "labelStep": 1,
-          "max": 5,
-          "min": -5,
-          "step": 1,
-        }
-      }
-      size={
-        Object {
-          "height": 500,
-          "width": 500,
-        }
-      }
-      sizeConstraints={
-        Object {
-          "max": NaN,
-          "min": NaN,
-          "step": 20,
-        }
-      }
-      standardGrid={false}
-    />
-  </div>
+  <div />
   <div
     key="graph"
   >
@@ -141,20 +66,7 @@ exports[`GraphingConfig renders snapshot 1`] = `
         }
       }
       title=""
-      toolbarTools={
-        Array [
-          "circle",
-          "line",
-          "label",
-          "parabola",
-          "point",
-          "polygon",
-          "ray",
-          "segment",
-          "sine",
-          "vector",
-        ]
-      }
+      toolbarTools={Array []}
     />
   </div>
 </div>
