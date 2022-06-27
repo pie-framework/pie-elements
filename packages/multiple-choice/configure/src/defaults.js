@@ -90,6 +90,18 @@ export default {
       label: 'Toolbar Editor Position',
     },
     minAnswerChoices: 2,
-    maxAnswerChoices: 5
+    maxAnswerChoices: 5,
+    maxImageWidth: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 636,
+      choices: 636
+    },
+    maxImageHeight: {
+      teacherInstructions: 300,
+      prompt: 300,
+      rationale: 300,
+      choices: 300
+    }
   },
 };
