@@ -138,16 +138,12 @@ export class CorrectResponse extends React.Component {
       console.log(data, nextData, "data, nextdata")
       let index ;
 
-      for(var i = 0; i < nextData.length; i++) {
-        if(nextData[i].index !== i) {
-         index = i;
-         break
-        }
-      }
-
-      console.log(index, "index")
-
-      nextCategories = removeCategory(categories, nextData, index);
+      let idxsNextData = nextData.map( x => x.index )
+      let idxsData = [...Array(data.length).keys()];
+      let idxsToRemove = idxsData.filter( x => !idxsNextData.includes(x) )
+      
+      this.props.model.correctAnswer.data.splice(idxsToRemove[0], 1);
+      nextCategories = removeCategory(categories, nextData, idxsToRemove[0]);
     }
 
     if (!isEqual(nextCorrectAnswerData, this.props.model.correctAnswer.data)) {
